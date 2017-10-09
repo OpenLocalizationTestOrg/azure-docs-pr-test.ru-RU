@@ -1,5 +1,5 @@
 ---
-title: "Создание первого контейнера в службе \"Экземпляры контейнеров Azure\" | Документация Azure"
+title: "aaaCreate первого контейнера экземпляры контейнером Azure | Azure документы"
 description: "Начало работы со службой \"Экземпляры контейнеров Azure\" и развертывание в ней"
 services: container-instances
 documentationcenter: 
@@ -17,15 +17,15 @@ ms.workload: na
 ms.date: 07/26/2017
 ms.author: seanmck
 ms.custom: mvc
-ms.openlocfilehash: 905f69e5e1e237a31d9bb1e326969ec83292c244
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: b57c52714933bd3b28c44d33f9af7cd1f23fb951
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-your-first-container-in-azure-container-instances"></a>Создание первого контейнера в службе "Экземпляры контейнеров Azure"
 
-Служба "Экземпляры контейнеров Azure" упрощает создание контейнеров и управление ими в Azure. В этом кратком руководстве мы создадим контейнер в Azure и предоставим к нему доступ в Интернете по общедоступному IP-адресу. Эта операция выполняется при помощи одной команды. Через несколько секунд контейнер отобразится в браузере:
+Экземпляры контейнером Azure позволяет легко toocreate контейнеров и управления ими в Azure. В этом кратком руководстве вы создадите контейнер в Azure и предоставлять его toohello Интернет, общий IP-адрес. Эта операция выполняется при помощи одной команды. Через несколько секунд контейнер отобразится в браузере:
 
 ![Приложение, развернутое с помощью службы "Экземпляры контейнеров Azure" (просмотр в браузере)][aci-app-browser]
 
@@ -33,15 +33,15 @@ ms.lasthandoff: 08/18/2017
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Если вы решили установить и использовать CLI локально, для выполнения инструкций в этом руководстве вам понадобится Azure CLI 2.0.12 или более поздней версии. Чтобы узнать версию, выполните команду `az --version`. Если вам необходимо выполнить установку или обновление, см. статью [Установка Azure CLI 2.0]( /cli/azure/install-azure-cli). 
+Если выбрать tooinstall и использовать hello CLI локально, краткого руководства требуется управлением hello Azure CLI версии 2.0.12 или более поздней версии. Запустите `az --version` версии toofind hello. Если требуется tooinstall или обновления, см. раздел [установить CLI Azure 2.0]( /cli/azure/install-azure-cli). 
 
 ## <a name="create-a-resource-group"></a>Создание группы ресурсов
 
 Служба "Экземпляры контейнеров Azure" является ресурсом Azure и должна быть помещена в группу ресурсов Azure — логическую коллекцию, в которой выполняется развертывание ресурсов Azure и управление ими.
 
-Создайте группу ресурсов с помощью команды [az group create](/cli/azure/group#create). 
+Создание группы ресурсов с hello [Создание группы az](/cli/azure/group#create) команды. 
 
-В следующем примере создается группа ресурсов с именем *myResourceGroup* в расположении *eastus*.
+Hello следующий пример создает группу ресурсов с именем *myResourceGroup* в hello *eastus* расположение.
 
 ```azurecli-interactive 
 az group create --name myResourceGroup --location eastus
@@ -49,19 +49,19 @@ az group create --name myResourceGroup --location eastus
 
 ## <a name="create-a-container"></a>Создание контейнера
 
-Чтобы создать контейнер, нужно указать его имя, образ Docker и группу ресурсов Azure. Либо же можно предоставить контейнер в Интернете по общедоступному IP-адресу. В этом случае мы используем контейнер, в котором размещено очень простое веб-приложение, написанное на [Node.js](http://nodejs.org).
+Чтобы создать контейнер, нужно указать его имя, образ Docker и группу ресурсов Azure. Может предоставлять toohello контейнера hello Интернет, общий IP-адрес. В этом случае мы используем контейнер, в котором размещено очень простое веб-приложение, написанное на [Node.js](http://nodejs.org).
 
 ```azurecli-interactive
 az container create --name mycontainer --image microsoft/aci-helloworld --resource-group myResourceGroup --ip-address public 
 ```
 
-Через несколько секунд вы должны получить ответ на запрос. Изначально контейнер будет в состоянии **создания**, но через несколько секунд он запустится. Его состояние можно проверить с помощью команды `show`:
+Через несколько секунд вы должны получить tooyour запрос ответа. Изначально hello контейнер будет в **создание** состояние, но при этом следует запустить через несколько секунд. Можно проверить состояние hello, с помощью hello `show` команды:
 
 ```azurecli-interactive
 az container show --name mycontainer --resource-group myResourceGroup
 ```
 
-В нижней части окна выходных данных отобразятся сведения о состоянии подготовки контейнера и его IP-адрес:
+Внизу hello hello выходных данных вы увидите состояние подготовки hello контейнера и его IP-адрес:
 
 ```json
 ...
@@ -79,13 +79,13 @@ az container show --name mycontainer --resource-group myResourceGroup
 ...
 ```
 
-Когда контейнер перейдет в состояние **успешного выполнения**, к нему можно будет получить доступ в браузере по указанному IP-адресу. 
+После hello контейнер перемещает toohello **успешно** состояния, требуется получить доступ в браузере hello, с помощью IP-адрес hello предоставлен. 
 
 ![Приложение, развернутое с помощью службы "Экземпляры контейнеров Azure" (просмотр в браузере)][aci-app-browser]
 
-## <a name="pull-the-container-logs"></a>Извлечение журналов контейнера
+## <a name="pull-hello-container-logs"></a>Журналы контейнера hello по запросу
 
-Вы можете извлечь журналы для созданного контейнера с помощью команды `logs`:
+Вы можете извлечь hello журналы для контейнера hello, созданных с помощью hello `logs` команды:
 
 ```azurecli-interactive
 az container logs --name mycontainer --resource-group myResourceGroup
@@ -99,9 +99,9 @@ listening on port 80
 ::ffff:10.240.255.105 - - [21/Jul/2017:00:01:46 +0000] "GET /favicon.ico HTTP/1.1" 404 150 "http://104.210.39.122/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36"
 ```
 
-## <a name="delete-the-container"></a>Удаление контейнера
+## <a name="delete-hello-container"></a>Удаление контейнера hello
 
-По завершении работы с контейнером его можно удалить с помощью команды `delete`:
+Закончив с контейнером hello, его можно удалить с помощью hello `delete` команды:
 
 ```azurecli-interactive
 az container delete --name mycontainer --resource-group myResourceGroup
@@ -109,7 +109,7 @@ az container delete --name mycontainer --resource-group myResourceGroup
 
 ## <a name="next-steps"></a>Дальнейшие действия
 
-Полный код для контейнера, используемого в этом кратком руководстве, и файл Dockerfile доступны [на сайте GitHub][app-github-repo]. Если вы хотите выполнить сборку самостоятельно и развернуть контейнер в службе "Экземпляры контейнеров Azure" с помощью реестра контейнеров Azure, продолжайте изучение руководств по этой службе.
+Все hello кода для hello контейнер, используемый в данном кратком доступен [на GitHub][app-github-repo], вместе с его Dockerfile. При желании tootry его самостоятельно ее построении и развертывании экземпляры контейнером tooAzure, с помощью hello Azure контейнер реестра продолжить работу с учебником toohello экземпляров контейнера Azure.
 
 > [!div class="nextstepaction"]
 > [Руководства по использованию службы "Экземпляры контейнеров Azure"](./container-instances-tutorial-prepare-app.md)

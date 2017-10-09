@@ -1,6 +1,6 @@
 ---
-title: "Использование Caffe в кластере Azure HDInsight Spark для распределенного глубокого обучения | Документация Майкрософт"
-description: "Сведения об использовании Caffe в кластере Azure HDInsight Spark для выполнения распределенного глубокого обучения."
+title: "aaaUse Caffe на Azure HDInsight Spark для распределенных углубленного обучения | Документы Microsoft"
+description: "Использование Caffe в кластере Azure HDInsight Spark для распределенного глубокого обучения"
 services: hdinsight
 documentationcenter: 
 author: xiaoyongzhu
@@ -16,44 +16,44 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/17/2017
 ms.author: xiaoyzhu
-ms.openlocfilehash: 14b7808c9534bce3049422d6bce1e8914b2c2fbc
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: d6476a7ed3a0df38538e845d7d5404067b01113c
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="use-caffe-on-azure-hdinsight-spark-for-distributed-deep-learning"></a>Использование Caffe в кластере Azure HDInsight Spark для распределенного глубокого обучения
 
 
 ## <a name="introduction"></a>Введение
 
-Глубокое обучение используется во всех отраслях, начиная от здравоохранения и заканчивая сферой транспортировки и производством. Компании используют глубокое обучение для решения сложных проблем, таких так [классификация образов](http://blogs.microsoft.com/next/2015/12/10/microsoft-researchers-win-imagenet-computer-vision-challenge/), [распознавание речи](http://googleresearch.blogspot.jp/2015/08/the-neural-networks-behind-google-voice.html), распознавание объектов и машинный перевод. 
+Углубленного обучения влияет все данные из сферы здравоохранения tootransportation toomanufacturing и многое другое. Компании требуется включить toodeep обучения toosolve сложных проблем, таких как [изображения классификации](http://blogs.microsoft.com/next/2015/12/10/microsoft-researchers-win-imagenet-computer-vision-challenge/), [распознавания речи](http://googleresearch.blogspot.jp/2015/08/the-neural-networks-behind-google-voice.html)объекта распознавания и машинного перевода. 
 
-Существует [множество популярных платформ](https://en.wikipedia.org/wiki/Comparison_of_deep_learning_software), в том числе [Microsoft Cognitive Toolkit](https://www.microsoft.com/en-us/research/product/cognitive-toolkit/), [Tensorflow](https://www.tensorflow.org/), MXNet, Theano и т. д. Caffe — это самая известная платформа изучения нейронных сетей, работающая на уровне машинных команд. Она широко используется во многих областях, в том числе в компьютерном зрении. Более того, система [CaffeOnSpark](http://yahoohadoop.tumblr.com/post/139916563586/caffeonspark-open-sourced-for-distributed-deep) сочетает в себе возможности Caffe и Apache Spark, за счет чего глубокое обучение может выполняться непосредственно в кластере Hadoop с конвейерами извлечения, преобразования и загрузки Spark. Это уменьшает сложность системы комплексного обучения и задержки при выполнении этого процесса.
+Существует [множество популярных платформ](https://en.wikipedia.org/wiki/Comparison_of_deep_learning_software), в том числе [Microsoft Cognitive Toolkit](https://www.microsoft.com/en-us/research/product/cognitive-toolkit/), [Tensorflow](https://www.tensorflow.org/), MXNet, Theano и т. д. Caffe является одним из hello самый знаменитый платформы не являющиеся символьными (императивного) нейронной сети и широко используется во многих областях, включая компьютерного зрения. Более того, система [CaffeOnSpark](http://yahoohadoop.tumblr.com/post/139916563586/caffeonspark-open-sourced-for-distributed-deep) сочетает в себе возможности Caffe и Apache Spark, за счет чего глубокое обучение может выполняться непосредственно в кластере Hadoop с конвейерами извлечения, преобразования и загрузки Spark. Это уменьшает сложность системы комплексного обучения и задержки при выполнении этого процесса.
 
-[HDInsight](https://azure.microsoft.com/en-us/services/hdinsight/) — это единственное полностью управляемое облачное предложение Hadoop, предоставляющее оптимизированные аналитические кластеры с открытым кодом для Spark, Hive, MapReduce, HBase, Storm, Kafka и R Server и поддерживающее Соглашение об уровне обслуживания на 99,9 %. Каждую из этих технологий работы с большими данными и каждое из этих приложений от независимых поставщиков программного обеспечения можно с легкостью развернуть в качестве управляемого кластера, обеспечив при этом безопасность и мониторинг корпоративного класса.
+[HDInsight](https://azure.microsoft.com/en-us/services/hdinsight/) — hello только предложения Hadoop полностью управляются облака, предоставляющий оптимизированный аналитической кластеров открытым исходным кодом для Spark, Hive, MapReduce, HBase, Storm, Kafka и R Server, поддерживаемый 99,9% SLA. Каждую из этих технологий работы с большими данными и каждое из этих приложений от независимых поставщиков программного обеспечения можно с легкостью развернуть в качестве управляемого кластера, обеспечив при этом безопасность и мониторинг корпоративного класса.
 
-Некоторые пользователи спрашивают нас, как выполнять глубокое обучение в кластере HDInsight, который является решением PaaS для Hadoop, предоставленным корпорацией Майкрософт. В будущем мы предоставим более детальные сведения, но сейчас хотим рассказать о технических моментах использования Caffe в HDInsight Spark.
+Некоторые пользователи просим нам о том, как toouse глубокого изучения на HDInsight PaaS Hadoop продуктов корпорации Майкрософт. Мы должны иметь дополнительные tooshare в будущем hello, однако сегодня мы хотим toosummarize Технический блог о том, как toouse Caffe на HDInsight Spark.
 
-Если вы устанавливали Caffe раньше, вы заметили, что этот процесс связан с определенными трудностями. В этом блоге мы сначала рассмотрим процесс установки [CaffeOnSpark](https://github.com/yahoo/CaffeOnSpark) в кластере HDInsight, а затем используем встроенную демоверсию базы данных MNIST, чтобы продемонстрировать, как выполнить распределенное глубокое обучение с помощью HDInsight Spark на ЦП.
+Если вы устанавливали Caffe раньше, вы заметили, что этот процесс связан с определенными трудностями. В этом блоге мы будет показано как tooinstall [Caffe на Spark](https://github.com/yahoo/CaffeOnSpark) для кластера HDInsight, затем использовать hello встроенных MNIST Демонстрация toodemostrate как toouse распределенных углубленного обучения с помощью HDInsight Spark на процессорах.
 
-Установка Caffe on Spark в кластере HDInsight состоит из приведенных ниже четырех основных этапов.
+Существует четыре основных шагов tooget, он работает в HDInsight.
 
-1. Установка необходимых зависимостей на всех узлах.
-2. Создание CaffeOnSpark для HDInsight на головном узле.
-3. Развертывание необходимых библиотек на всех рабочих узлах.
+1. Установите необходимые hello зависимости на всех узлах hello
+2. Построение Caffe на Spark для HDInsight на головном узле hello
+3. Распространение hello необходимые библиотеки tooall hello рабочих узлов
 4. Разработка модели и распределенный запуск Caffe.
 
-HDInsight — это платформа PaaS, предоставляющая расширенные функции, которые значительно упрощают выполнение некоторых заданий. Одна из функций, которую вы будете часто использовать при выполнении действий, описанных в этой записи блога, называется [Script Action](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux) (Действие скрипта). Она позволяет выполнять команды оболочки, необходимые для настройки узлов кластера (головного, рабочего или граничного).
+Так как HDInsight решением PaaS, он обеспечивает значительные функций - это довольно просто tooperform некоторые задачи. Одна из функций hello, активно используемые в этой записи блога называется [действие сценария](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux), с которой выполнен оболочки команды toocustomize узлов кластера (головного узла, рабочий узел или граничного узла).
 
-## <a name="step-1--install-the-required-dependencies-on-all-the-nodes"></a>Этап 1. Установка необходимых зависимостей на всех узлах
+## <a name="step-1--install-hello-required-dependencies-on-all-hello-nodes"></a>Шаг 1: Установка hello необходимые зависимости на всех узлах hello
 
-Чтобы начать работу, нужно установить необходимые зависимости. На сайте Caffe и [CaffeOnSpark](https://github.com/yahoo/CaffeOnSpark/wiki/GetStarted_yarn) доступны некоторые очень полезные вики-сайты для установки зависимостей Spark в режиме YARN (режим для HDInsight Spark), но нам нужно добавить дополнительные зависимости для платформы HDInsight. Мы будем использовать приведенное ниже действие скрипта и выполним его на всех головных и рабочих узлах. Его выполнение занимает примерно 20 минут, так как эти зависимости также зависят от других пакетов. Это действие скрипта следует разместить в доступном для кластера HDInsight расположении, например в репозитории GitHub или в учетной записи хранилища BLOB-объектов по умолчанию.
+tooget к работе, нам нужна tooinstall hello зависимости, которые необходимы. узел Caffe Hello и [CaffeOnSpark сайта](https://github.com/yahoo/CaffeOnSpark/wiki/GetStarted_yarn) предлагает некоторые вики-сайте очень полезен для установки зависимостей hello для Spark на YARN режиме (режим hello для HDInsight Spark), но нам нужен tooadd несколько Дополнительные зависимости для платформы HDInsight. Мы будет используйте действие скрипта hello, как показано ниже и запустите его на всех узлах головного hello и узлов рабочих ролей. Его выполнение занимает примерно 20 минут, так как эти зависимости также зависят от других пакетов. Необходимо поместить его в нужное расположение, доступный tooyour кластера HDInsight, такие как расположение GitHub или учетной записи хранилища больших двоичных ОБЪЕКТОВ по умолчанию hello.
 
     #!/bin/bash
-    #Please be aware that installing the below will add additional 20 mins to cluster creation because of the dependencies
-    #installing all dependencies, including the ones mentioned in http://caffe.berkeleyvision.org/install_apt.html, as well a few packages that are not included in HDInsight, such as gflags, glog, lmdb, numpy
-    #It seems numpy will only needed during compilation time, but for safety purpose we install them on all the nodes
+    #Please be aware that installing hello below will add additional 20 mins toocluster creation because of hello dependencies
+    #installing all dependencies, including hello ones mentioned in http://caffe.berkeleyvision.org/install_apt.html, as well a few packages that are not included in HDInsight, such as gflags, glog, lmdb, numpy
+    #It seems numpy will only needed during compilation time, but for safety purpose we install them on all hello nodes
 
     sudo apt-get install -y libprotobuf-dev libleveldb-dev libsnappy-dev libopencv-dev libhdf5-serial-dev protobuf-compiler maven libatlas-base-dev libgflags-dev libgoogle-glog-dev liblmdb-dev build-essential  libboost-all-dev python-numpy python-scipy python-matplotlib ipython ipython-notebook python-pandas python-sympy python-nose
 
@@ -69,18 +69,18 @@ HDInsight — это платформа PaaS, предоставляющая р
     echo "protobuf installation done"
 
 
-Приведенный выше скрипт выполняется в два этапа. Первый этап — установка всех необходимых библиотек. Это библиотеки, необходимые для компиляции (например, gflags, glog) и запуска Caffe (например, numpy). Для оптимизации ЦП мы используем библиотеку libatlas, но вы можете установить другие библиотеки, например MKL или CUDA (для графического процессора), следуя указаниям, приведенным на вики-сайте CaffeOnSpark.
+Действие сценария hello выше состоит из двух этапов. Hello первым шагом является tooinstall Здравствуйте, все необходимые библиотеки. Эти библиотеки включают в себя необходимые библиотеки hello для компиляции Caffe (например, gflags glog) и на которых работает Caffe (например, numpy). Мы используем libatlas оптимизации использования ЦП, но может всегда следуют за hello CaffeOnSpark wiki об установке других библиотек оптимизации, например MKL или CUDA (для GPU).
 
-Второй этап — скачивание, компиляция и установка ProtoBuf 2.5.0 для Caffe во время выполнения. ProtoBuf 2.5.0 — это [обязательный](https://github.com/yahoo/CaffeOnSpark/issues/87) элемент, но эта версия недоступна в виде пакета для Ubuntu 16. Поэтому ее нужно скомпилировать из исходного кода. В Интернете также можно найти несколько ресурсов по компиляции этой версии, таких как [эта запись блога](http://jugnu-life.blogspot.com/2013/09/install-protobuf-25-on-ubuntu.html).
+Hello второй шаг — toodownload, скомпилировать и установить protobuf 2.5.0 для Caffe во время выполнения. Protobuf 2.5.0 [требуется](https://github.com/yahoo/CaffeOnSpark/issues/87), однако эта версия не предоставляется в виде пакета на Ubuntu 16, поэтому мы должны toocompile его из исходного кода hello. Есть несколько ресурсов на hello Интернет о том, как toocompile, такие как [это](http://jugnu-life.blogspot.com/2013/09/install-protobuf-25-on-ubuntu.html)
 
-Чтобы приступить к работе, вы можете просто выполнить это действие скрипта в кластере для всех рабочих и головных узлов (для HDInsight 3.5). Эти действия скрипта можно выполнить в работающем кластере или во время его подготовки. Дополнительные сведения о действиях скрипта см. в [этой документации](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux#view-history-promote-and-demote-script-actions).
+toosimply начать работу, просто выполните это действие сценария для вашей рабочей hello tooall кластера узлов, узлов и head (для HDInsight 3.5). Можно либо запустить hello действий сценария для выполнения кластера или hello действия скрипта можно также запустить во время подготовки кластера hello. Дополнительные сведения о действиях скрипта hello см. в разделе документации hello [здесь](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux#view-history-promote-and-demote-script-actions)
 
-![Действия скриптов для установки зависимостей](./media/hdinsight-deep-learning-caffe-spark/Script-Action-1.png)
+![Действия сценария tooInstall зависимости](./media/hdinsight-deep-learning-caffe-spark/Script-Action-1.png)
 
 
-## <a name="step-2-build-caffe-on-spark-for-hdinsight-on-the-head-node"></a>Этап 2. Создание CaffeOnSpark для HDInsight на головном узле
+## <a name="step-2-build-caffe-on-spark-for-hdinsight-on-hello-head-node"></a>Шаг 2: Построение Caffe на Spark для HDInsight на головном узле hello
 
-Второй этап заключается в создании Caffe на головном узле и развертывании скомпилированных библиотек на всех рабочих узлах. На этом этапе вам потребуется [подключиться к головному узлу по протоколу SSH](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-hadoop-linux-use-ssh-unix), а затем просто выполнить [указания по созданию CaffeOnSpark](https://github.com/yahoo/CaffeOnSpark/wiki/GetStarted_yarn). Ниже приведен скрипт, который позволяет создать CaffeOnSpark, но он подразумевает выполнение нескольких дополнительных действий. 
+второй шаг Hello — toobuild Caffe на hello головному узлу, а затем распространите hello скомпилированные библиотеки tooall hello рабочих узлов. На этом шаге необходимо будет слишком[ssh в к головному узлу](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-hadoop-linux-use-ssh-unix), просто выполните hello [процесс построения CaffeOnSpark](https://github.com/yahoo/CaffeOnSpark/wiki/GetStarted_yarn), а ниже приведен скрипт hello toobuild CaffeOnSpark можно использовать ряд дополнительных действий. 
 
     #!/bin/bash
     git clone https://github.com/yahoo/CaffeOnSpark.git --recursive
@@ -89,7 +89,7 @@ HDInsight — это платформа PaaS, предоставляющая р
     pushd ${CAFFE_ON_SPARK}/caffe-public/
     cp Makefile.config.example Makefile.config
     echo "INCLUDE_DIRS += ${JAVA_HOME}/include" >> Makefile.config
-    #Below configurations might need to be updated based on actual cases. For example, if you are using GPU, or using a different BLAS library, you may want to update those settings accordingly.
+    #Below configurations might need toobe updated based on actual cases. For example, if you are using GPU, or using a different BLAS library, you may want tooupdate those settings accordingly.
     echo "CPU_ONLY := 1" >> Makefile.config
     echo "BLAS := atlas" >> Makefile.config
     echo "INCLUDE_DIRS += /usr/include/hdf5/serial/" >> Makefile.config
@@ -98,9 +98,9 @@ HDInsight — это платформа PaaS, предоставляющая р
 
     #compile CaffeOnSpark
     pushd ${CAFFE_ON_SPARK}
-    #always clean up the environment before building (especially when rebuiding), or there will be errors such as "failed to execute goal org.apache.maven.plugins:maven-antrun-plugin:1.7:run (proto) on project caffe-distri: An Ant BuildException has occured: exec returned: 2"
+    #always clean up hello environment before building (especially when rebuiding), or there will be errors such as "failed tooexecute goal org.apache.maven.plugins:maven-antrun-plugin:1.7:run (proto) on project caffe-distri: An Ant BuildException has occured: exec returned: 2"
     make clean 
-    #the build step usually takes 20~30 mins, since it has a lot maven dependencies
+    #hello build step usually takes 20~30 mins, since it has a lot maven dependencies
     make build 
     popd
     export LD_LIBRARY_PATH=${CAFFE_ON_SPARK}/caffe-public/distribute/lib:${CAFFE_ON_SPARK}/caffe-distri/distribute/lib
@@ -113,41 +113,41 @@ HDInsight — это платформа PaaS, предоставляющая р
     ${CAFFE_ON_SPARK}/scripts/setup-cifar10.sh
     hadoop fs -put -f ${CAFFE_ON_SPARK}/data/cifar10_*_lmdb wasb:///projects/machine_learning/image_dataset/
 
-    #put the already compiled CaffeOnSpark libraries to wasb storage, then read back to each node using script actions. This is because CaffeOnSpark requires all the nodes have the libarries
+    #put hello already compiled CaffeOnSpark libraries toowasb storage, then read back tooeach node using script actions. This is because CaffeOnSpark requires all hello nodes have hello libarries
     hadoop fs -mkdir -p /CaffeOnSpark/caffe-public/distribute/lib/
     hadoop fs -mkdir -p /CaffeOnSpark/caffe-distri/distribute/lib/
     hadoop fs -put CaffeOnSpark/caffe-distri/distribute/lib/* /CaffeOnSpark/caffe-distri/distribute/lib/
     hadoop fs -put CaffeOnSpark/caffe-public/distribute/lib/* /CaffeOnSpark/caffe-public/distribute/lib/
 
-Вам может потребоваться выполнить больше действий, чем описано в документации по CaffeOnSpark. К этим дополнительным действиям относятся:
-- Переход к конфигурации ЦП и настройка использования библиотеки libatlas именно для этого.
-- Отправка наборов данных в хранилище BLOB-объектов, которое находится в общем расположении, доступном для всех рабочих узлов (для последующего использования).
-- Отправка скомпилированных библиотек Caffe в хранилище BLOB-объектов и копирование этих библиотек во все узлы с помощью действий скриптов, чтобы сократить время компиляции.
+Может потребоваться toodo больше, чем говорит документации CaffeOnSpark какие hello. Hello изменениям относятся:
+- Изменение только tooCPU и использование libatlas для этой конкретной цели.
+- Поместите hello наборы данных toohello BLOB-ОБЪЕКТА хранилища, которое является общей папкой, доступный tooall рабочих узлов для последующего использования.
+- PUT hello скомпилированных Caffe библиотеки tooBLOB хранилища, а позже будет копировать с помощью дополнительных компиляции действия сценария tooavoid этих библиотек tooall hello узлов.
 
 
 ### <a name="troubleshooting-an-ant-buildexception-has-occured-exec-returned-2"></a>Устранение неполадок, связанных с ошибкой An Ant BuildException has occured: exec returned: 2
 
-При первом создании CaffeOnSpark может отобразиться следующее сообщение об ошибке:
+При первом toobuild CaffeOnSpark иногда появится сообщение
 
-    failed to execute goal org.apache.maven.plugins:maven-antrun-plugin:1.7:run (proto) on project caffe-distri: An Ant BuildException has occured: exec returned: 2
+    failed tooexecute goal org.apache.maven.plugins:maven-antrun-plugin:1.7:run (proto) on project caffe-distri: An Ant BuildException has occured: exec returned: 2
 
-Чтобы решить эту проблему, просто очистите репозиторий кода, используя команду make clean, а затем выполните команду make build (при условии, что вы установили правильные зависимости).
+Репозиторий кода просто чистой hello, «создание чистой», а затем выполнения» убедитесь построения» решает эту проблему, поскольку имеют правильные зависимости hello.
 
 ### <a name="troubleshooting-maven-repository-connection-time-out"></a>Устранение неполадок, связанных с ошибкой времени ожидания подключения к репозиторию Maven
 
-Иногда при подключении к Maven возникает ошибка времени ожидания подключения, аналогичная представленной ниже.
+Иногда maven дает мне ошибка времени ожидания подключения hello, аналогичные toobelow:
 
     Retry:
     [INFO] Downloading: https://repo.maven.apache.org/maven2/com/twitter/chill_2.11/0.8.0/chill_2.11-0.8.0.jar
     Feb 01, 2017 5:14:49 AM org.apache.maven.wagon.providers.http.httpclient.impl.execchain.RetryExec execute
-    INFO: I/O exception (java.net.SocketException) caught when processing request to {s}->https://repo.maven.apache.org:443: Connection timed out (Read failed)
+    INFO: I/O exception (java.net.SocketException) caught when processing request too{s}->https://repo.maven.apache.org:443: Connection timed out (Read failed)
 
-Подождите несколько минут, а затем просто перестройте код. Возможно, это связано с тем, что Maven каким-либо образом ограничивает трафик из указанного IP-адреса.
+Оно ОК после ожидания в течение нескольких минут и затем повторите toorebuild hello кода, поэтому он может быть Maven каким-либо образом ограничения hello трафик от данного IP-адреса.
 
 
 ### <a name="troubleshooting-test-failure-for-caffe"></a>Устранение неполадок, связанных со сбоем тестирования Caffe
 
-При выполнении окончательной проверки CaffeOnSpark может возникнуть ошибка тестирования, аналогичная представленной ниже. Скорее всего, это связано с кодировкой UTF-8, но эта ошибка не влияет на использование Caffe.
+Возможно, появится сбоя теста при выполнении hello окончательная проверка для CaffeOnSpark, аналогичные с ниже. Это prabably, связанные с кодировкой UTF-8, но не должен влиять hello использование Caffe
 
     Run completed in 32 seconds, 78 milliseconds.
     Total number of tests run: 7
@@ -155,30 +155,30 @@ HDInsight — это платформа PaaS, предоставляющая р
     Tests: succeeded 6, failed 1, canceled 0, ignored 0, pending 0
     *** 1 TEST FAILED ***
 
-## <a name="step-3-distribute-the-required-libraries-to-all-the-worker-nodes"></a>Этап 3. Развертывание необходимых библиотек на всех рабочих узлах.
+## <a name="step-3-distribute-hello-required-libraries-tooall-hello-worker-nodes"></a>Шаг 3: Распространять hello необходимые библиотеки tooall hello рабочих узлов
 
-Следующий этап заключается в развертывании библиотек (в основном они расположены в каталоге CaffeOnSpark/caffe-public/distribute/lib/ и CaffeOnSpark/caffe-distri/distribute/lib/) на всех узлах. На этапе 2 мы поместили эти библиотеки в хранилище BLOB-объектов. Теперь с помощью действий скриптов это хранилище необходимо скопировать на все головные и рабочие узлы.
+Hello следующим шагом является toodistribute hello библиотеки (по сути hello библиотек в CaffeOnSpark/caffe-public или распространять/lib/и CaffeOnSpark/caffe автомат или распространять/lib /) tooall hello узлов. На шаге 2 мы поместили эти библиотеки в хранилище больших двоичных ОБЪЕКТОВ, и на этом шаге мы используем скрипт действия toocopy его tooall hello головного узла и узлов рабочих ролей.
 
-Для этого просто выполните действие скрипта, как показано ниже (укажите расположение в соответствии с используемым кластером).
+toodo, простого выполнения сценария действия, как показано ниже (требуется правильное местоположение конкретного tooyour toopoint toohello кластера):
 
     #!/bin/bash
     hadoop fs -get wasb:///CaffeOnSpark /home/changetoyourusername/
 
-На этапе 2 мы поместили это действие скрипта в хранилище BLOB-объектов, доступное для всех узлов, поэтому сейчас его нужно просто скопировать на все узлы.
+Так как на шаге 2 мы поместили в хранилище больших двоичных ОБЪЕКТОВ, т. е узлы hello доступного tooall hello, на этом шаге мы просто скопировать tooall hello узлов.
 
 ## <a name="step-4-compose-a-caffe-model-and-run-it-distributely"></a>Этап 4. Разработка модели и распределенный запуск Caffe
 
-Выполнив описанные выше действия, вы установили Caffe на головном узле, и теперь мы можем продолжить. Следующий этап заключается в написании модели Caffe. 
+После выполнения hello выше действия, который, установлены на головному узлу hello уже Caffe и мы являются хорошим toogo. Hello следующим шагом является toowrite Caffe модели. 
 
-Caffe использует "выразительную" архитектуру, где для разработки модели необходимо просто определить файл конфигурации, не выполняя работу с кодом (в большинстве случаев). Давайте рассмотрим этот процесс более подробно. 
+Caffe использует «выразительный архитектура,» там, где для составления модель, точно так же, вы должны toodefine файл конфигурации, а также без создания кода (в большинстве случаев). Давайте рассмотрим этот процесс более подробно. 
 
-Сегодня мы обучим модель, которая является образцом модели для обучения MNIST. База данных образцов рукописного написания цифр MNIST содержит 60 000 образцов наборов данных для обучения и тестовый набор из 10 000 образцов. Это подмножество более широкого набора из базы данных NIST. Цифры были нормализованы по размеру и расположены в центре изображения фиксированного размера. CaffeOnSpark содержит некоторые скрипты, которые позволяют скачать набор данных и преобразовать его в правильный формат.
+Сегодня мы обучить модель Hello является образца модели для обучения MNIST. База данных MNIST Hello рукописные цифр имеет 60 000 примеров обучающий и проверочный набор из 10 000 примеров. Это подмножество более широкого набора из базы данных NIST. Hello цифр были нормализованы размер и по центру в образе фиксированного размера. CaffeOnSpark имеет некоторые сценарии toodownload hello dataset и преобразовать его в нужном формате hello.
 
-Эта система предоставляет несколько образцов сетевых топологий для обучения MNIST. Она предоставляет эффективную модель разбиения и оптимизации сетевой инфраструктуры (топология сети). В этом случае вам потребуется два указанных ниже файла. 
+Эта система предоставляет несколько образцов сетевых топологий для обучения MNIST. Он имеет четкий разработки разделения hello сетевую архитектуру (hello топологии сети hello) и оптимизации. В этом случае вам потребуется два указанных ниже файла. 
 
-Файл "алгоритма решения" (${CAFFE_ON_SPARK}/data/lenet_memory_solver.prototxt) используется для отслеживания оптимизаций и создания обновлений параметров. Например, он определяет, следует ли использовать ЦП или графический процессор, а также определяет динамику, число итераций и т. д. Кроме того, он определяет, какую топологию нейронных сетей должна использовать программа (в этом случае нам нужен второй файл). Дополнительные сведения об алгоритме решения см. в [документации по Caffe](http://caffe.berkeleyvision.org/tutorial/solver.html).
+файл «Поиск решения» Hello (${CAFFE_ON_SPARK}/data/lenet_memory_solver.prototxt) используется для наблюдения за hello оптимизации и создания параметра обновления. Например, определяет ли ЦП или GPU будет использован, какова импульс hello, число итераций, будут выполняться, и т. д. Он также определяет топологию сети нейрон следует Здравствуйте, используйте программу (который является второй файл hello будут). Дополнительные сведения о поиска решения можно найти слишком[Caffe документации](http://caffe.berkeleyvision.org/tutorial/solver.html).
 
-Так как мы используем ЦП, а не графический процессор, измените последнюю строку следующим образом:
+Например так как мы используем ЦП, а не GPU, мы следует изменить hello последней строки для:
 
     # solver mode: CPU or GPU
     solver_mode: CPU
@@ -187,42 +187,42 @@ Caffe использует "выразительную" архитектуру, 
 
 При необходимости вы можете изменить и другие строки.
 
-Второй файл (${CAFFE_ON_SPARK}/data/lenet_memory_train_test.prototxt) определяет, как выглядит нейронная сеть, а также соответствующий входной и выходной файл. Этот файл также необходимо обновить в соответствии с расположением данных для обучения. Измените в файле lenet_memory_train_test.prototxt следующие части (укажите расположение в соответствии с используемым кластером):
+второй файл Hello (${CAFFE_ON_SPARK}/data/lenet_memory_train_test.prototxt) определяет как сети нейрон hello выглядит и соответствующих входных данных hello и выходного файла. Мы также должны tooupdate hello tooreflect hello обучающих данных местоположения. Изменение hello следующие части в lenet_memory_train_test.prototxt (требуется правильное местоположение конкретного tooyour toopoint toohello кластера).
 
-- Замените file:/Users/mridul/bigml/demodl/mnist_train_lmdb на wasb:///projects/machine_learning/image_dataset/mnist_train_lmdb.
-- Замените file:/Users/mridul/bigml/demodl/mnist_test_lmdb/ на wasb:///projects/machine_learning/image_dataset/mnist_test_lmdb.
+- изменить file:/Users/mridul/bigml/demodl/mnist_train_lmdb «hello» слишком "wasb: / / / проекты/machine_learning/image_dataset/mnist_train_lmdb»
+- Измените «file:/Users/mridul/bigml/demodl/mnist_test_lmdb/» слишком "wasb: / / / проекты/machine_learning/image_dataset/mnist_test_lmdb»
 
 ![Конфигурация Caffe](./media/hdinsight-deep-learning-caffe-spark/Caffe-2.png)
 
-Дополнительные сведения об определении сети см. в [документации Caffe по использованию набора данных MNIST](http://caffe.berkeleyvision.org/gathered/examples/mnist.html).
+Дополнительные сведения о как toodefine hello сети Проверьте hello [Caffe документацию по MNIST набора данных](http://caffe.berkeleyvision.org/gathered/examples/mnist.html)
 
-В этом блоге мы используем простой образец данных MNIST. На головном узле выполните следующую команду:
+Целью этого блога hello мы просто используйте этот простой пример MNIST. Hello указанную ниже команду необходимо запускать из головного узла hello.
 
     spark-submit --master yarn --deploy-mode cluster --num-executors 8 --files ${CAFFE_ON_SPARK}/data/lenet_memory_solver.prototxt,${CAFFE_ON_SPARK}/data/lenet_memory_train_test.prototxt --conf spark.driver.extraLibraryPath="${LD_LIBRARY_PATH}" --conf spark.executorEnv.LD_LIBRARY_PATH="${LD_LIBRARY_PATH}" --class com.yahoo.ml.caffe.CaffeOnSpark ${CAFFE_ON_SPARK}/caffe-grid/target/caffe-grid-0.1-SNAPSHOT-jar-with-dependencies.jar -train -features accuracy,loss -label label -conf lenet_memory_solver.prototxt -devices 1 -connection ethernet -model wasb:///mnist.model -output wasb:///mnist_features_result
 
-Эта команда отправляет необходимые файлы в каждый контейнер YARN (lenet_memory_solver.prototxt и lenet_memory_train_test.prototxt), а также задает соответствующий путь каждого драйвера или исполнителя Spark к LD_LIBRARY_PATH, который определен в предыдущем фрагменте кода, и указывает расположение, в котором сохранены библиотеки CaffeOnSpark. 
+По сути он распределяет hello необходимые файлы (lenet_memory_solver.prototxt и lenet_memory_train_test.prototxt) tooeach YARN контейнера, а также задать hello соответствующие пути каждого tooLD_LIBRARY_PATH драйвера или исполнитель Spark, которая определена в hello предыдущего фрагмента и точки toohello расположения в коде с CaffeOnSpark библиотеки. 
 
 ## <a name="monitoring-and-troubleshooting"></a>Мониторинг и устранение неполадок
 
-Так как мы используем режим кластера YARN, время, когда драйвер Spark будет выполняться в случайном контейнере (и случайном рабочем узле), можно узнать, просто просмотрев выходные данные консоли примерно такого содержания:
+Так как мы используем режим YARN кластера, в этом случае драйвер Spark hello будет запланированных tooan произвольный контейнер (и произвольные рабочий узел) вы должны видеть только в вывод консоли hello что-то наподобие:
 
     17/02/01 23:22:16 INFO Client: Application report for application_1485916338528_0015 (state: RUNNING)
 
-Если вы хотите узнать, что произошло, просмотрите эти сведения в журнале драйвера Spark. В этом случае, чтобы найти соответствующие журналы YARN, вам потребуется перейти к пользовательскому интерфейсу YARN. Для этого перейдите по следующему URL-адресу: 
+Если вы хотите tooknow, что произошло, обычно требуется журнал tooget hello Spark драйвер, который содержит дополнительные сведения. В этом случае необходимо toogo toohello пользовательского интерфейса YARN toofind hello YARN журналы. Чтобы узнать hello YARN пользовательского интерфейса, этот URL-адрес: 
 
     https://yourclustername.azurehdinsight.net/yarnui
    
 ![Пользовательский интерфейс YARN](./media/hdinsight-deep-learning-caffe-spark/YARN-UI-1.png)
 
-Здесь вы можете просмотреть сведения о количестве выделенных ресурсов для этого конкретного приложения. Щелкнув ссылку "Планировщик", вы увидите, что для этого приложения запущено 9 контейнеров. Восемь из них используется в качестве исполнителей, а один для обработки драйвера. 
+Здесь вы можете просмотреть сведения о количестве выделенных ресурсов для этого конкретного приложения. Можно щелкнуть ссылку «Планировщик» hello, и будет отображаться для этого приложения, 9 запущенных контейнеров. Мы просим YARN tooprovide 8 исполнителей, а другой контейнер — для процесса драйвера. 
 
 ![Планировщик YARN](./media/hdinsight-deep-learning-caffe-spark/YARN-Scheduler.png)
 
-При сбое можно проверить журналы драйвера или контейнера. Чтобы просмотреть журналы драйвера, в пользовательском интерфейсе YARN щелкните идентификатор приложения, а затем нажмите кнопку "Журналы". Журналы драйвера записываются в поток stderr.
+Вы можете toocheck hello драйвер журналов или контейнер журналов в случае сбоев. Для журналов драйвера можно щелкните идентификатор приложения hello в пользовательском Интерфейсе YARN, а затем нажмите кнопку «Журналы» hello. Hello драйвер журналы записываются в stderr.
 
 ![Пользовательский интерфейс YARN 2](./media/hdinsight-deep-learning-caffe-spark/YARN-UI-2.png)
 
-Например, в некоторых журналах вы можете увидеть указанные ниже сообщения об ошибках, указывающие на наличие слишком большого числа исполнителей.
+Например может появиться некоторые hello следующую ошибку из журналов драйвер hello, о том, что выделено слишком много исполнителей.
 
     17/02/01 07:26:06 ERROR ApplicationMaster: User class threw exception: java.lang.IllegalStateException: Insufficient training data. Please adjust hyperparameters or increase dataset.
     java.lang.IllegalStateException: Insufficient training data. Please adjust hyperparameters or increase dataset.
@@ -235,7 +235,7 @@ Caffe использует "выразительную" архитектуру, 
         at java.lang.reflect.Method.invoke(Method.java:498)
         at org.apache.spark.deploy.yarn.ApplicationMaster$$anon$2.run(ApplicationMaster.scala:627)
 
-Иногда проблемы возникают с исполнителями, а не с драйверами. В этом случае необходимо проверить журналы контейнера. Вы всегда можете получить журналы контейнера, чтобы определить контейнер со сбоем. Например, этот сбой может произойти при запуске Caffe.
+В некоторых случаях hello проблема может произойти на исполнителей, а не драйверы. В этом случае необходимо toocheck hello контейнера журналы. Всегда получать журналы контейнера hello и затем получить hello сбой контейнер. Например, этот сбой может произойти при запуске Caffe.
 
     17/02/01 07:12:05 WARN YarnAllocator: Container marked as failed: container_1485916338528_0008_05_000005 on host: 10.0.0.14. Exit status: 134. Diagnostics: Exception from container-launch.
     Container id: container_1485916338528_0008_05_000005
@@ -258,26 +258,26 @@ Caffe использует "выразительную" архитектуру, 
 
     Container exited with a non-zero exit code 134
 
-В этом случае необходимо получить идентификатор контейнера, в котором произошел сбой (в приведенном выше примере это container_1485916338528_0008_05_000005). Затем на головном узле необходимо выполнить следующую команду: 
+В этом случае требуется идентификатор контейнера hello сбой tooget (hello выше случая при container_1485916338528_0008_05_000005). Затем необходимо toorun 
 
     yarn logs -containerId container_1485916338528_0008_03_000005
 
-Проверив сведения о сбое контейнера, вы определите, что он произошел из-за использования режима графического процессора в файле lenet_memory_solver.prototxt (вместо режима ЦП).
+из головному узлу hello. вы определите, что он произошел из-за использования режима графического процессора в файле lenet_memory_solver.prototxt (вместо режима ЦП).
 
     17/02/01 07:10:48 INFO LMDB: Batch size:100
-    WARNING: Logging before InitGoogleLogging() is written to STDERR
+    WARNING: Logging before InitGoogleLogging() is written tooSTDERR
     F0201 07:10:48.309725 11624 common.cpp:79] Cannot use GPU in CPU-only Caffe: check mode.
 
 
 ## <a name="getting-results"></a>Получение результатов
 
-Так как мы выделяем 8 исполнителей и используем простую топологию сети, получение результатов занимает около 30 минут. В окне командной строки вы можете видеть, что мы поместили модель в папку wasb:///mnist.model, а результаты — в папку wasb:///mnist_features_result.
+Поскольку мы выделяемый 8 исполнителей и топология сети hello проста, его обычно занимает около 30 минут toorun hello результат. Из командной строки hello, вы увидите мы поместить toowasb:///mnist.model модели hello и помещать hello результаты tooa папку с именем wasb: / / / mnist_features_result.
 
-Чтобы получить результаты, выполните следующую команду:
+Hello результаты можно получить, выполнив
 
     hadoop fs -cat hdfs:///mnist_features_result/*
 
-Результат должен выглядеть следующим образом:
+и как выглядит результат hello:
 
     {"SampleID":"00009597","accuracy":[1.0],"loss":[0.028171852],"label":[2.0]}
     {"SampleID":"00009598","accuracy":[1.0],"loss":[0.028171852],"label":[6.0]}
@@ -289,12 +289,12 @@ Caffe использует "выразительную" архитектуру, 
     {"SampleID":"00009604","accuracy":[0.97],"loss":[0.0677709],"label":[3.0]}
     {"SampleID":"00009605","accuracy":[0.97],"loss":[0.0677709],"label":[4.0]}
 
-Параметр SampleID представляет идентификатор в наборе данных MNIST, а параметр label — это номер, определенный моделью.
+Hello SampleID представляет идентификатор hello в наборе данных MNIST hello и hello метки является определяет число hello, hello модели.
 
 
 ## <a name="conclusion"></a>Заключение
 
-В этой статье представлены сведения об установке CaffeOnSpark с использованием простого образца данных. HDInsight — это полностью управляемая облачная распределенная вычислительная платформа, оптимизированная для выполнения рабочих нагрузок машинного обучения и расширенной аналитики с использованием большого набора данных, а также для выполнения заданий распределенного глубокого обучения с помощью Caffe в HDInsight Spark.
+В этой документации предпринята tooinstall CaffeOnSpark с работающими простой пример. HDInsight — это платформа распределенных вычислений полный управляемой облачной и hello лучше всего подходит для выполнения машинного обучения и расширенных аналитических рабочих нагрузок на большой набор данных, и для распределенной углубленного обучения, можно использовать Caffe на HDInsight Spark tooperform углубленного обучения задачи.
 
 
 ## <a name="seealso"></a>Дополнительные материалы
@@ -302,8 +302,8 @@ Caffe использует "выразительную" архитектуру, 
 
 ### <a name="scenarios"></a>Сценарии
 * [Использование Spark с машинным обучением. Использование Spark в HDInsight для анализа температуры в здании на основе данных системы кондиционирования](hdinsight-apache-spark-ipython-notebook-machine-learning.md)
-* [Использование Spark с машинным обучением. Использование Spark в HDInsight для прогнозирования результатов контроля качества пищевых продуктов](hdinsight-apache-spark-machine-learning-mllib-ipython.md)
+* [Spark с машинного обучения: используйте Spark в HDInsight toopredict food проверки результатов](hdinsight-apache-spark-machine-learning-mllib-ipython.md)
 
 ### <a name="manage-resources"></a>Управление ресурсами
-* [Управление ресурсами кластера Apache Spark в Azure HDInsight](hdinsight-apache-spark-resource-manager.md)
+* [Управление ресурсами кластера hello Apache Spark в Azure HDInsight](hdinsight-apache-spark-resource-manager.md)
 

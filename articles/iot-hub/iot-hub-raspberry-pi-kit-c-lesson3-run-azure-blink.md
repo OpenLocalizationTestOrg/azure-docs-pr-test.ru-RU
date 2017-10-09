@@ -1,6 +1,6 @@
 ---
-title: "Подключение Raspberry Pi (C) к Интернету вещей Azure. Урок 3. Запуск примера | Документация Майкрософт"
-description: "Развертывание и запуск на устройстве Raspberry Pi 3 примера приложения, которое отправляет сообщения в Центр Интернета вещей и заставляет светодиодный индикатор мигать."
+title: "Connect Raspberry PI (C) tooAzure IoT — занятия 3: выполнение примера | Документы Microsoft"
+description: "Развертывание и запуск образца приложения tooRaspberry Pi 3, отправляет сообщения центр IoT tooyour и hello Индикатор мигает."
 services: iot-hub
 documentationcenter: 
 author: shizn
@@ -17,51 +17,51 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/21/2017
 ms.author: xshi
-ms.openlocfilehash: e583ba455a94f9afcc7b31e49425b518d7968919
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: c484beb2e2d3a3cf19f071f2ba87b9a4fe41c1fb
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="run-a-sample-application-to-send-device-to-cloud-messages"></a>Запуск примера приложения для отправки сообщений с устройства в облако
+# <a name="run-a-sample-application-toosend-device-to-cloud-messages"></a>Запустите образец приложения toosend сообщения из устройства в облако
 ## <a name="what-you-will-do"></a>Выполняемая задача
-В этой статье показано, как развернуть и запустить на устройстве Raspberry Pi 3 пример приложения, которое отправляет сообщения в Центр Интернета вещей. Если возникнут какие-либо проблемы, то решения можно найти на [странице со сведениями об устранении неполадок](iot-hub-raspberry-pi-kit-c-troubleshooting.md).
+В этой статье показано, как toodeploy и выполнение примера приложения на 3 Raspberry Pi, который отправляет сообщения tooyour центр IoT. Если у вас возникнут проблемы, искать решения на hello [страницу устранения неполадок](iot-hub-raspberry-pi-kit-c-troubleshooting.md).
 
 ## <a name="what-you-will-learn"></a>Новые знания
-Вы узнаете, как с помощью средства Gulp развернуть и запустить пример приложения Node.js на устройстве Pi.
+Вы узнаете, как toouse hello gulp toodeploy средства и запустите приложение Node.js образец hello на Pi.
 
 ## <a name="what-you-need"></a>Необходимые элементы
-* К выполнению этой задачи следует приступать только после выполнения действий, описанных в статье [Create an Azure function app and an Azure Storage account to process and store IoT hub messages](iot-hub-raspberry-pi-kit-c-lesson3-deploy-resource-manager-template.md) (Создание приложения-функции Azure и учетной записи хранения Azure для обработки и хранения сообщений Центра Интернета вещей).
+* Прежде чем начать эту задачу, необходимо успешно выполнить [создания приложения Azure функции и концентратор IoT tooprocess и хранилище учетной записи хранилища сообщений](iot-hub-raspberry-pi-kit-c-lesson3-deploy-resource-manager-template.md).
 
 ## <a name="get-your-iot-hub-and-device-connection-strings"></a>Получение строк подключения Центра Интернета вещей и устройства
-Строка подключения устройства используется устройством Pi для подключения к Центру Интернета вещей. Строка подключения Центра Интернета вещей используется для подключения к реестру удостоверений в Центре Интернета вещей, чтобы управлять устройствами, которым разрешено подключаться к этому центру. 
+Строка подключения устройства Hello используется ваш центр IoT tooyour tooconnect Pi. Строка подключения концентратора IoT Hello — реестра удостоверений toohello tooconnect используется в вашей IoT hub toomanage hello устройства, которым разрешен центра IoT tooyour tooconnect. 
 
-* Для вывода списка всех Центров Интернета вещей в группе ресурсов выполните следующую команду Azure CLI:
+* Перечислить все центры IoT в группе ресурсов, выполнив следующую команду Azure CLI hello:
 
 ```bash
 az iot hub list -g iot-sample --query [].name
 ```
 
-Используйте `iot-sample` в качестве значения `{resource group name}`, если вы не меняли это значение.
+Используйте `iot-sample` в качестве значения hello `{resource group name}` Если вы не изменили значение hello.
 
-* Для получения строки подключения Центра Интернета вещей выполните следующую команду интерфейса командной строки Azure:
+* Получите строку подключения концентратора IoT hello, выполнив следующую команду Azure CLI hello:
 
 ```bash
 az iot hub show-connection-string --name {my hub name} -g iot-sample
 ```
 
-`{my hub name}` — это имя, которое вы указали при создании Центра Интернета вещей и регистрации устройства Pi.
+`{my hub name}`— Имя hello, указанный вами создали концентратор IoT при регистрации Pi.
 
-* Для получения строки подключения устройства выполните следующую команду:
+* Получите строку подключения устройства hello, выполнив следующую команду hello:
 
 ```bash
 az iot device show-connection-string --hub-name {my hub name} --device-id myraspberrypi -g iot-sample
 ```
 
-Используйте `myraspberrypi` в качестве значения `{device id}`, если вы не меняли это значение.
+Используйте `myraspberrypi` в качестве значения hello `{device id}` Если вы не изменили значение hello.
 
-## <a name="configure-the-device-connection"></a>Настройка подключения устройства
-1. Запустите файл конфигурации, выполнив приведенную ниже команду.
+## <a name="configure-hello-device-connection"></a>Настройка подключения устройства hello
+1. Инициализируйте hello файл конфигурации, выполнив следующие команды hello:
    
    ```bash
    npm install
@@ -71,7 +71,7 @@ az iot device show-connection-string --hub-name {my hub name} --device-id myrasp
 > [!NOTE]
 > Выполните также **gulp install-tools**, если это не было сделано на уроке 1.
 
-2. Откройте файл конфигурации устройства `config-raspberrypi.json` в Visual Studio Code, выполнив приведенную ниже команду.
+2. Файл конфигурации устройства Привет открыть `config-raspberrypi.json` в коде Visual Studio, выполнив следующую команду hello:
    
    ```bash
    # For Windows command prompt
@@ -82,31 +82,31 @@ az iot device show-connection-string --hub-name {my hub name} --device-id myrasp
    ```
    
    ![config.json](media/iot-hub-raspberry-pi-lessons/lesson3/config.png)
-3. В файле `config-raspberrypi.json` выполните следующие замены.
+3. Сделать после замены в hello hello `config-raspberrypi.json` файла:
    
-   * Замените **[device hostname or IP address]** IP-адресом или именем узла устройства, полученным в результате выполнения команды `device-discovery-cli`, или значением, унаследованным из настроек устройства.
-   * Замените **[строка подключения устройства Интернета вещей]** на полученное значение `device connection string`.
-   * Замените **[IoT hub connection string]** (строка подключения Центра Интернета вещей) полученным значением `iot hub connection string`.
+   * Замените **[устройства имя узла или IP-адрес]** hello IP адрес или имя устройства, полученный из `device-discovery-cli` или со значением hello наследуется при настройке устройства.
+   * Замените **[строка подключения устройств IoT]** с hello `device connection string` полученных.
+   * Замените **[строка подключения концентратора IoT]** с hello `iot hub connection string` полученных.
 
 > [!NOTE]
 > В этой статье не требуется `azure_storage_connection_string`. Оставьте эту настройку без изменений.
 
-Обновите файл `config-raspberrypi.json`, чтобы можно было развернуть пример приложения с компьютера.
+Обновление hello `config-raspberrypi.json` так, можно развернуть пример приложения hello с вашего компьютера.
 
-## <a name="deploy-and-run-the-sample-application"></a>Развертывание и запуск примера приложения
-Разверните и запустите пример приложения на устройстве Pi, выполнив следующую команду.
+## <a name="deploy-and-run-hello-sample-application"></a>Развертывание и запуск образца приложения hello
+Развертывание и запуск образца приложения hello на Pi, выполнив следующую команду hello:
 
 ```bash
 gulp deploy && gulp run
 ```
 
-## <a name="verify-that-the-sample-application-works"></a>Проверка работы примера приложения
-Светодиодный индикатор, подключенный к устройству Pi, должен мигать с частотой в две секунды. Каждый раз, когда индикатор мигает, пример приложения отправляет сообщение в Центр Интернета вещей и проверяет, что сообщение успешно отправлено. Кроме того, каждое сообщение, полученное Центром Интернета вещей, выводится в окне консоли. Пример приложения автоматически завершает работу после отправки 20 сообщений.
+## <a name="verify-that-hello-sample-application-works"></a>Проверка работы образца приложения hello
+Вы увидите hello Индикатор, подключенных tooPi мигает каждые две секунды. Каждый раз hello Индикатор мигает, пример приложения hello отправляет центр IoT tooyour сообщения и подтверждает, что это сообщение hello было успешно отправлено tooyour центр IoT. Кроме того каждое сообщение, полученных центра IoT hello выводится в окне консоли hello. Пример приложения Hello автоматически завершает после отправки 20 сообщений.
 
 ![Пример приложения с отправленными и полученными сообщениями](media/iot-hub-raspberry-pi-lessons/lesson3/gulp_run_c.png)
 
 ## <a name="summary"></a>Сводка
-Вы развернули и запустили новый пример приложения для включения индикатора на устройстве Pi для отправки сообщений с устройства в облако, то есть в Центр Интернета вещей. Теперь можно отслеживать сообщения по мере их записывания в учетную запись хранения.
+Вы развертывания и запуска hello новый blink образца приложения-концентратора IoT tooyour Pi toosend сообщения из устройства в облако. Теперь отслеживать сообщения, записываемые toohello учетной записи хранилища.
 
 ## <a name="next-steps"></a>Дальнейшие действия
 [Чтение сообщений, сохраненных в службе хранилища Azure](iot-hub-raspberry-pi-kit-c-lesson3-read-table-storage.md)

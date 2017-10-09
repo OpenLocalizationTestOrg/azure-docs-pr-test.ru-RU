@@ -1,5 +1,5 @@
 ---
-title: "Диагностика ошибок и исключений в веб-приложениях с помощью Application Insights | Документация Майкрософт"
+title: "aaaDiagnose сбои и исключения в веб-приложений с помощью Azure Application Insights | Документы Microsoft"
 description: "Регистрируйте исключения приложений ASP.NET и телеметрию запросов."
 services: application-insights
 documentationcenter: .net
@@ -13,23 +13,23 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2017
 ms.author: bwren
-ms.openlocfilehash: 7eeacdc6677ccdebb1653e94a163ecb47090b7ee
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 8930e6d2b29f83ea635c4ecb7afd11fc1d97d085
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="diagnose-exceptions-in-your-web-apps-with-application-insights"></a>Диагностика исключений в веб-приложениях с помощью Application Insights
-Об исключениях активного веб-приложения сообщает [Application Insights](app-insights-overview.md). Вы можете сопоставлять неудачно завершенные запросы с исключениями и другими событиями на клиенте и сервере, чтобы быстро выявлять причины неполадок.
+Об исключениях активного веб-приложения сообщает [Application Insights](app-insights-overview.md). Вы можете соотнести неудачных запросов с исключениями и других событий на сервер и клиент hello, чтобы быстро найти причину причины hello.
 
 ## <a name="set-up-exception-reporting"></a>Настройка создания отчетов об исключениях
-* Вот как можно настроить создание отчетов об исключениях серверного приложения.
+* исключения toohave, полученные от сервера приложения.
   * Запрограммируйте установку [пакета SDK для Application Insights](app-insights-asp-net.md) в приложении или:
   * веб-серверы IIS: запустите [агент Application Insights](app-insights-monitor-performance-live-website-now.md) либо
-  * веб-приложения Azure: добавьте [расширение Application Insights](app-insights-azure-web-apps.md).
-  * Веб-приложения Java: установите [агент Java](app-insights-java-agent.md)
-* Добавьте [фрагмент кода JavaScript](app-insights-javascript.md) в веб-страницы для перехвата исключений браузера.
-* Для некоторых платформ приложений или заданных параметров необходимо выполнить дополнительные шаги, чтобы перехватывать дополнительные исключения:
+  * Веб-приложениях Azure: добавить hello [расширение Application Insights](app-insights-azure-web-apps.md)
+  * Веб-приложений Java: hello установки [агента Java](app-insights-java-agent.md)
+* Установка hello [фрагмент JavaScript](app-insights-javascript.md) в свои исключения браузера toocatch веб-страницы.
+* Некоторые платформы приложений или некоторые параметры, необходимые tootake toocatch некоторые дополнительные шаги дополнительные исключения:
   * [веб-формы](#web-forms);
   * [MVC](#mvc);
   * [веб-API 1.*](#web-api-1);
@@ -37,77 +37,77 @@ ms.lasthandoff: 08/18/2017
   * [WCF](#wcf)
 
 ## <a name="diagnosing-exceptions-using-visual-studio"></a>Диагностика исключений с помощью Visual Studio
-Откройте приложение в Visual Studio для отладки.
+Откройте решение для приложения hello в Visual Studio toohelp в процессе отладки.
 
-Запустите приложение на сервере или на компьютере разработки, нажав клавишу F5.
+Запустите приложение hello на сервере или на компьютере разработки, нажав клавишу F5.
 
-Откройте окно поиска Application Insights в Visual Studio и настройте его для отображения событий из приложения. Во время отладки это можно сделать, просто нажав кнопку Application Insights.
+Откройте окно hello поиска Application Insights в Visual Studio и задать для него toodisplay события из приложения. Во время отладки, это можно сделать, просто нажав кнопку hello Application Insights.
 
-![Щелкните правой кнопкой мыши проект и последовательно выберите пункты "Application Insights" и "Открыть".](./media/app-insights-asp-net-exceptions/34.png)
+![Щелкните правой кнопкой мыши проект hello и Application Insights, нажмите кнопку Открыть.](./media/app-insights-asp-net-exceptions/34.png)
 
-Обратите внимание: отчет можно отфильтровать так, чтобы отображались только исключения.
+Обратите внимание, что hello отчетов tooshow просто исключения можно фильтровать.
 
 *Исключения не отображаются? См. раздел [Запись исключений](#exceptions).*
 
-Щелкните отчет об исключении, чтобы отобразить для него трассировку стека.
-Щелкните ссылку на строку в трассировке стека, чтобы открыть соответствующий файл кода.  
+Щелкните отчет исключение tooshow трассировку стека.
+Щелкните Справочник по строке в трассировке стека hello, соответствующий код файла tooopen hello.  
 
-В коде обратите внимание, что CodeLens показывает данные об исключениях.
+В коде hello Обратите внимание, что CodeLens показывает данные об исключениях hello:
 
 ![Уведомление об исключениях CodeLens](./media/app-insights-asp-net-exceptions/35.png)
 
-## <a name="diagnosing-failures-using-the-azure-portal"></a>Диагностика сбоев с помощью портала Azure
-В обзоре Application Insights в приложении на плитке "Сбои" показаны диаграммы исключений, ошибок HTTP-запросов и список URL-адресов запросов, наиболее часто вызывающих сбои.
+## <a name="diagnosing-failures-using-hello-azure-portal"></a>Диагностика ошибок с помощью портала Azure hello
+Из Application Insights hello Общие сведения о приложении Плитка сбоев hello отображает диаграммы для исключения и невыполненных запросов HTTP, вместе со списком hello запроса URL-адреса, которые наиболее частые ошибки hello.
 
 ![Последовательно выберите элементы "Параметры" и "Сбои".](./media/app-insights-asp-net-exceptions/012-start.png)
 
-Щелкните один из типов исключений в списке, чтобы отобразить отдельные случаи исключения и просмотреть подробные сведения и трассировку стека.
+Щелкните по одной из hello сбой типов исключений в tooget tooindividual hello список вхождений hello исключения, где можно подробно рассмотреть hello и трассировка стека:
 
-![Выберите экземпляр неудачно завершенного запроса и в разделе сведений об исключении перейдите к нужному экземпляру исключения.](./media/app-insights-asp-net-exceptions/030-req-drill.png)
+![Выберите экземпляр невыполненных запросов, а также в разделе сведения об исключении, получить tooinstances hello исключения.](./media/app-insights-asp-net-exceptions/030-req-drill.png)
 
-**Кроме того**, можно начать со списка запросов и найти исключения, связанные с ними.
+**Кроме того** можно запустить из списка hello запросов и найти связанные tooit исключения.
 
 *Исключения не отображаются? См. раздел [Запись исключений](#exceptions).*
 
 
 ## <a name="custom-tracing-and-log-data"></a>Пользовательская трассировка и данные журналов
-Для получения диагностических данных своего приложения вставьте код для отправки собственных данных телеметрии. Они отображаются в результатах диагностического поиска вместе с запросом, просмотром страницы и другими данными, которые собираются автоматически.
+приложение конкретных tooyour tooget диагностических данных, можно вставить код toosend данные телеметрии. Это отображаются при поиске диагностики наряду с hello запрос представления страницы и другие данные, автоматически сохраняются.
 
 Доступно несколько параметров.
 
-* [TrackEvent()](app-insights-api-custom-events-metrics.md#trackevent) обычно используется для мониторинга шаблонов использования, но отправляемые с его помощью данные также отображаются в разделе пользовательских событий диагностического поиска. У событий есть имена и они могут содержать строковые свойства и числовые метрики, по которым можно [фильтровать результаты поиска диагностических данных](app-insights-diagnostic-search.md).
+* [TrackEvent()](app-insights-api-custom-events-metrics.md#trackevent) обычно используется для наблюдения за шаблонов использования, но также отправляет данных отображается под пользовательские события диагностики поиска hello. У событий есть имена и они могут содержать строковые свойства и числовые метрики, по которым можно [фильтровать результаты поиска диагностических данных](app-insights-diagnostic-search.md).
 * [TrackTrace()](app-insights-api-custom-events-metrics.md#tracktrace) позволяет отправлять более длинные данные, например данные POST.
 * [TrackException()](#exceptions) отправляет трассировки стеков. [Дополнительные сведения об исключениях](#exceptions).
 * Если вы уже используете какую-либо платформу ведения журналов, например Log4Net или NLog, [эти журналы можно записывать](app-insights-asp-net-trace-logs.md) и включать в результаты поиска диагностических данных вместе с данными запросов и исключений.
 
-Чтобы просмотреть эти события, откройте область [Поиск](app-insights-diagnostic-search.md), щелкните "Фильтр", а затем выберите пользовательское событие, трассировку и исключение.
+Откройте эти события toosee [поиска](app-insights-diagnostic-search.md)откройте фильтра и нажмите кнопку Custom Event, трассировку или исключения.
 
 ![Детализация](./media/app-insights-asp-net-exceptions/viewCustomEvents.png)
 
 > [!NOTE]
-> Если приложение генерирует много телеметрических данных, модуль адаптивной выборки автоматически сокращает объем отправляемых на портал данных, пересылая только репрезентативную часть событий. События, составляющие часть той же операции, отбираются как группа, что позволяет перемещаться между связанными событиями. [Дополнительная информация о выборке.](app-insights-sampling.md)
+> Если приложение создает большой объем данных телеметрии, модуль адаптивной выборки hello автоматически уменьшит hello тома, отправляемое toohello портала, отправляя репрезентативной часть событий. События, которые являются частью hello одной операции будет иметь или отмену выбора как группу, так что можно перемещаться между связанными событиями. [Дополнительная информация о выборке.](app-insights-sampling.md)
 >
 >
 
-### <a name="how-to-see-request-post-data"></a>Просмотр данных POST запроса
-Сведения о запросе не содержат данные, отправляемые в приложение в вызове метода POST. Для внесения этих данных в отчет:
+### <a name="how-toosee-request-post-data"></a>Способ toosee запроса данные POST
+Сведения о запросе не включайте hello данные, отправляемые tooyour приложения в вызове процедуры POST. toohave эти данные, определенные как:
 
-* [Установите пакет SDK](app-insights-asp-net.md) в проект своего приложения.
-* Вставьте в свое приложение код для вызова [Microsoft.ApplicationInsights.TrackTrace()](app-insights-api-custom-events-metrics.md#tracktrace). Передайте данные POST в параметр сообщения. На допустимый размер есть ограничение, поэтому следует пытаться передавать только самые необходимые данные.
-* При исследовании неудачно завершенных запросов найдите связанные трассировки.  
+* [Установка пакета SDK для hello](app-insights-asp-net.md) в проекте приложения.
+* Вставьте код в вашего приложения toocall [Microsoft.ApplicationInsights.TrackTrace()](app-insights-api-custom-events-metrics.md#tracktrace). Отправьте данные POST hello в параметре сообщение hello. Нет toohello допускается ограничение на размер, поэтому попробуйте toosend hello только необходимые данные.
+* При исследовании невыполненных запросов, найти связанные hello трассировок.  
 
 ![Детализация](./media/app-insights-asp-net-exceptions/060-req-related.png)
 
 ## <a name="exceptions"></a> Запись исключений и связанных диагностических данных
-Сначала вы не увидите на портале все исключения, которые приводят к сбоям в приложении. Вы увидите все исключения браузера (если на веб-страницах используется [пакет SDK для JavaScript](app-insights-javascript.md)). Но большинство серверных исключений перехватываются IIS, и вам нужно написать небольшой код, чтобы увидеть их.
+Сначала вы не увидите hello портале все исключения hello, привести к сбою приложения. Вы увидите все исключения браузера (Если вы используете hello [JavaScript SDK](app-insights-javascript.md) на веб-страницах). Но большинство server исключения перехватываются службами IIS и у вас есть немного кода toosee toowrite их.
 
 Вы можете:
 
-* **Явно регистрировать исключения** путем вставки кода в обработчики исключений для регистрации исключений.
-* **Автоматически записывать исключения** путем настройки своей платформы ASP.NET. Для разных типов платформы необходимы различные дополнения.
+* **Явно журнала исключений** путем вставки кода в tooreport hello исключение обработчиков исключений.
+* **Автоматически записывать исключения** путем настройки своей платформы ASP.NET. Hello необходимых дополнений отличаются для разных типов framework.
 
 ## <a name="reporting-exceptions-explicitly"></a>Явная регистрация исключений
-Самый простой способ — добавление в обработчик исключений вызова TrackException().
+Hello простым способом является tooinsert tooTrackException() вызов в обработчике исключений.
 
 JavaScript
 
@@ -137,7 +137,7 @@ C#
        var measurements = new Dictionary <string, double>
          {{"Users", currentGame.Users.Count}};
 
-       // Send the exception telemetry:
+       // Send hello exception telemetry:
        telemetry.TrackException(ex, properties, measurements);
     }
 
@@ -155,21 +155,21 @@ VB
       Dim measurements = New Dictionary (Of String, Double)
       measurements.Add("Users", currentGame.Users.Count)
 
-      ' Send the exception telemetry:
+      ' Send hello exception telemetry:
       telemetry.TrackException(ex, properties, measurements)
     End Try
 
-Параметры свойств и значений не являются обязательными, но они удобны для [фильтрации и добавления](app-insights-diagnostic-search.md) дополнительной информации. Например, если у вас есть приложение, которое запускает несколько игр, вы можете просматривать все отчеты об исключениях для каждой конкретной игры. Вы можете добавить в каждый словарь столько элементов, сколько вам нужно.
+Hello свойства и значения параметров не являются обязательными, но они полезны для [фильтрацию и добавление](app-insights-diagnostic-search.md) дополнительных сведений. Например если у вас есть приложение, которое можно запустить несколько игр, можно найти все hello исключение отчеты связанные tooa конкретной игры. Можно добавить столько элементов, так как tooeach словарь.
 
 ## <a name="browser-exceptions"></a>Исключения браузера
 Большинство исключений браузера регистрируются.
 
-Если веб-страница содержит файлы сценариев из сети доставки содержимого или других доменов, убедитесь, что тег сценария содержит атрибут ```crossorigin="anonymous"```, а сервер отправляет [заголовки CORS](http://enable-cors.org/). Это позволит вам извлекать трассировки стека и регистрировать необработанные исключения JavaScript из этих ресурсов.
+Если веб-страница содержит файлы скриптов из сети доставки содержимого или других доменов, убедитесь в скрипт содержит атрибут hello ```crossorigin="anonymous"```, и отправляет этот сервер hello [заголовки CORS](http://enable-cors.org/). Это позволит вам tooget трассировку стека и сведения для необработанных исключений JavaScript из этих ресурсов.
 
 ## <a name="web-forms"></a>Веб-формы
-Для веб-форм HTTP-модуль будет собирать исключения, если в CustomErrors не настроено перенаправление.
+Для веб-формы hello HTTP-модуль будет может toocollect hello исключений при переадресации, не настроены CustomErrors.
 
-Однако при наличии активных перенаправлений добавьте следующие строки в функцию Application_Error в сценарий Global.asax.cs. (Добавьте файл Global.asax, если он еще не создан).
+Но при наличии активных переадресации, добавить следующие функции Application_Error строки toohello в Global.asax.cs hello. (Добавьте файл Global.asax, если он еще не создан).
 
 *C#*
 
@@ -185,7 +185,7 @@ VB
 
 
 ## <a name="mvc"></a>MVC
-Если для конфигурации [CustomErrors](https://msdn.microsoft.com/library/h0hfz6fc.aspx) установлено значение `Off`, исключения будут доступны для сбора в [HTTP-модуле](https://msdn.microsoft.com/library/ms178468.aspx). Тем не менее, если это значение `RemoteOnly` (по умолчанию) или `On`, то исключение будет удалено и недоступно для автоматического сбора в Application Insights. Эту ситуацию можно исправить, переопределив [класс System.Web.Mvc.HandleErrorAttribute](http://msdn.microsoft.com/library/system.web.mvc.handleerrorattribute.aspx) и применив переопределенный класс, как показано для разных версий MVC ([источник на GitHub](https://github.com/AppInsightsSamples/Mvc2UnhandledExceptions/blob/master/MVC2App/Controllers/AiHandleErrorAttribute.cs)):
+Если hello [CustomErrors](https://msdn.microsoft.com/library/h0hfz6fc.aspx) конфигурация `Off`, то исключения будут доступны для hello [HTTP-модуля](https://msdn.microsoft.com/library/ms178468.aspx) toocollect. Тем не менее если это `RemoteOnly` (по умолчанию), или `On`, hello исключение будет очищено и недоступно для Application Insights tooautomatically сбора. Можно исправить, путем переопределения hello [класса System.Web.Mvc.HandleErrorAttribute](http://msdn.microsoft.com/library/system.web.mvc.handleerrorattribute.aspx)и применение hello переопределении класса, как показано для hello разные MVC версии ниже ([github источника](https://github.com/AppInsightsSamples/Mvc2UnhandledExceptions/blob/master/MVC2App/Controllers/AiHandleErrorAttribute.cs)):
 
     using System;
     using System.Web.Mvc;
@@ -200,7 +200,7 @@ VB
         {
             if (filterContext != null && filterContext.HttpContext != null && filterContext.Exception != null)
             {
-                //If customError is Off, then AI HTTPModule will report the exception
+                //If customError is Off, then AI HTTPModule will report hello exception
                 if (filterContext.HttpContext.IsCustomErrorEnabled)
                 {   //or reuse instance (recommended!). see note above  
                     var ai = new TelemetryClient();
@@ -213,7 +213,7 @@ VB
     }
 
 #### <a name="mvc-2"></a>MVC 2
-Замените атрибут HandleError новым атрибутом в контроллерах.
+Замените на новый атрибут в контроллерах атрибут HandleError hello.
 
     namespace MVC2App.Controllers
     {
@@ -244,7 +244,7 @@ VB
     {
       public static void RegisterGlobalFilters(GlobalFilterCollection filters)
       {
-        // Default replaced with the override to track unhandled exceptions
+        // Default replaced with hello override tootrack unhandled exceptions
         filters.Add(new AiHandleErrorAttribute());
       }
     }
@@ -273,7 +273,7 @@ VB
       }
     }
 
-Можно добавить этот переопределенный атрибут в нужные контроллеры или в конфигурации глобальных фильтров в классе WebApiConfig:
+Можно добавить этот атрибут переопределенный toospecific контроллеры, или добавить глобальный фильтр конфигурации toohello класса WebApiConfig hello:
 
     using System.Web.Http;
     using WebApi1.x.App_Start;
@@ -297,7 +297,7 @@ VB
 
 [Пример](https://github.com/AppInsightsSamples/WebApi_1.x_UnhandledExceptions)
 
-Существует несколько ситуаций, когда обработка фильтров исключений невозможна. Например:
+Существует несколько вариантов, не может обрабатывать hello фильтры исключений. Например:
 
 * Исключения выброшены из конструкторов контроллеров.
 * Исключения выброшены из обработчиков сообщений.
@@ -326,7 +326,7 @@ VB
       }
     }
 
-Добавьте это в службы в WebApiConfig:
+При добавлении этой службы toohello WebApiConfig.
 
     using System.Web.Http;
     using System.Web.Http.ExceptionHandling;
@@ -357,8 +357,8 @@ VB
 
 В качестве альтернативы можно выполнить следующее.
 
-1. Замените только ExceptionHandler пользовательской реализацией IExceptionHandler. Он вызывается, только когда платформа по-прежнему может выбирать ответное сообщение для отправки (но не после прерывания соединения для экземпляра)
-2. Фильтры исключений (как описано выше в разделе для контроллеров Web API 1.x) — не вызываются во всех случаях.
+1. Замените hello только ExceptionHandler на собственную реализацию IExceptionHandler. Это только вызывается, когда инфраструктура hello это все еще может toochoose какой ответ сообщений toosend (не при прерывании hello соединения для экземпляра)
+2. Не вызывается во всех случаях фильтры исключений (как описано в разделе hello контроллерах веб-API 1.x выше).
 
 ## <a name="wcf"></a>WCF
 Добавьте класс, который расширяет Attribute и реализует IErrorHandler и IServiceBehavior.
@@ -412,7 +412,7 @@ VB
       }
     }
 
-Добавьте атрибут в реализации службы:
+Добавьте hello атрибут toohello службы реализации:
 
     namespace WcfService4
     {
@@ -424,19 +424,19 @@ VB
 [Пример](https://github.com/AppInsightsSamples/WCFUnhandledExceptions)
 
 ## <a name="exception-performance-counters"></a>Счетчики производительности исключений
-Если на сервере [установлен агент Application Insights](app-insights-monitor-performance-live-website-now.md), то можно получить диаграмму частоты исключений, вычисленной платформой .NET. Она включает как обработанные, так и необработанные исключения .NET.
+Если у вас есть [установлен агент аналитики приложений hello](app-insights-monitor-performance-live-website-now.md) на сервере, вы можете получить диаграмму скорости исключения hello, измеренное .NET. Она включает как обработанные, так и необработанные исключения .NET.
 
 Откройте колонку обозревателя метрик, добавьте новую диаграмму и выберите счетчик **Частота исключений**в списке "Счетчики производительности".
 
-Для вычисление частоты платформа .NET подсчитывает число исключений в интервале и делит его на длину интервала.
+Hello .NET framework вычисляет скорость hello путем подсчета hello число исключений в интервал hello продолжительность интервала hello.
 
-Обратите внимание, что она будет отличаться от значения счетчика Exceptions, вычисленного порталом Application Insights по количеству отчетов TrackException. Интервалы выборки различаются, а пакет SDK не отправляет отчеты TrackException для всех обработанных и необработанных исключений.
+Обратите внимание, что он будет отличаться от вычислены порталом Application Insights hello TrackException отчеты по инвентаризации число исключений «hello». интервалов выборки Hello различаются, а hello SDK не отправляет отчеты TrackException для обработанные и необработанные исключения.
 
 ## <a name="video"></a>Видео
 
 > [!VIDEO https://channel9.msdn.com/events/Connect/2016/112/player] 
 
 ## <a name="next-steps"></a>Дальнейшие действия
-* [Мониторинг вызовов REST, SQL и других вызовов зависимостей](app-insights-asp-net-dependencies.md)
+* [Мониторинг REST, SQL и другие вызовы toodependencies](app-insights-asp-net-dependencies.md)
 * [Мониторинг времени загрузки страниц, исключений браузера и вызовов AJAX](app-insights-javascript.md)
 * [Мониторинг счетчиков производительности](app-insights-performance-counters.md)

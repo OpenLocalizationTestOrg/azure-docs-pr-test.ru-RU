@@ -1,6 +1,6 @@
 ---
-title: "Элемент пользовательского интерфейса DropDown управляемого приложения Azure | Документация Майкрософт"
-description: "Сведения об элементе пользовательского интерфейса Microsoft.Common.DropDown для управляемых приложений Azure"
+title: "элемент пользовательского интерфейса раскрывающийся список управляемых приложений aaaAzure | Документы Microsoft"
+description: "Описывает hello элемент пользовательского интерфейса Microsoft.Common.DropDown для управляемых приложений Azure"
 services: azure-resource-manager
 documentationcenter: na
 author: tabrezm
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/12/2017
 ms.author: tabrezm;tomfitz
-ms.openlocfilehash: a769e14efbae928b811fa1f1b1c2d4fba3c7692b
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 1c07a48ad66b8e8b7fd8f59561776ecb1fc6224f
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="microsoftcommondropdown-ui-element"></a>Элемент пользовательского интерфейса Microsoft.Common.DropDown
 Элемент управления для выбора с раскрывающимся списком. Этот элемент используется при [создании управляемого приложения Azure](managed-application-publishing.md).
@@ -50,10 +50,10 @@ ms.lasthandoff: 07/11/2017
 ```
 
 ## <a name="remarks"></a>Примечания
-- Метка для `constraints.allowedValues` — это отображаемый текст элемента. Его значение — это выходное значение при выборе элемента.
-- Если указано, значение по умолчанию должно быть меткой в `constraints.allowedValues`. Если не указано, выбирается первый элемент в `constraints.allowedValues`. Значение по умолчанию — **null**.
+- Метка Hello `constraints.allowedValues` hello отображаемый текст для элемента, который его значение hello выходное значение при выборе элемента hello.
+- Если указано, значение по умолчанию hello должен быть в метку `constraints.allowedValues`. Если не указан, hello первого элемента в `constraints.allowedValues` выбран. значение по умолчанию Hello — **null**.
 - Параметр `constraints.allowedValues` должен содержать по крайней мере один элемент.
-- Этот элемент не поддерживает свойство `constraints.required`. Чтобы эмулировать такое поведение, добавьте элемент с меткой и значением `""` (пустая строка) в `constraints.allowedValues`.
+- Этот элемент не поддерживает hello `constraints.required` свойство. tooemulate такое поведение, добавить элемент с подписью и значение `""` (пустая строка) слишком`constraints.allowedValues`.
 
 ## <a name="sample-output"></a>Пример выходных данных
 ```json
@@ -61,6 +61,6 @@ ms.lasthandoff: 07/11/2017
 ```
 
 ## <a name="next-steps"></a>Дальнейшие действия
-* Общие сведения об управляемых приложениях Azure см. в [этой статье](managed-application-overview.md).
-* Общие сведения о создании определений пользовательского интерфейса см. в статье [Начало работы с CreateUiDefinition](managed-application-createuidefinition-overview.md).
+* Введение toomanaged приложений, в разделе [Обзор управляемого приложения Azure](managed-application-overview.md).
+* Для определения пользовательского интерфейса toocreating Общие сведения см. в разделе [Приступая к работе с CreateUiDefinition](managed-application-createuidefinition-overview.md).
 * Дополнительные сведения об общих свойствах элементов пользовательского интерфейса см. в статье [Элементы CreateUiDefinition](managed-application-createuidefinition-elements.md).

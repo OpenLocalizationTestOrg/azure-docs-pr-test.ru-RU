@@ -1,5 +1,5 @@
 ---
-title: "Начало работы с Azure Service Fabric и XPlat CLI"
+title: "aaaGetting работы с Azure Service Fabric XPlat CLI"
 description: "Начало работы с Azure Service Fabric и XPlat CLI"
 services: service-fabric
 documentationcenter: .net
@@ -14,17 +14,17 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 8/9/2017
 ms.author: subramar
-ms.openlocfilehash: ddf881f6c202a82a3f64773639aa29b660057f8d
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: e4baa30536b4d8668d8efad301ed8210eb9c0335
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="using-the-xplat-cli-to-interact-with-a-service-fabric-cluster"></a>Использование XPlat CLI для взаимодействия с кластером Service Fabric
+# <a name="using-hello-xplat-cli-toointeract-with-a-service-fabric-cluster"></a>Использование hello toointeract XPlat-CLI с кластера Service Fabric
 
-Вы можете взаимодействовать с кластером Service Fabric с компьютера под управлением Linux с помощью XPlat CLI для Linux.
+Вы можете взаимодействовать с кластером Service Fabric с компьютеров Linux с помощью hello XPlat-CLI в Linux.
 
-Для этого сначала нужно получить и установить последнюю версию CLI из репозитория Git с помощью следующих команд:
+Hello первый шаг получить последнюю версию hello hello CLI из hello git rep и набор его в пути с помощью hello, следующие команды:
 
 ```sh
  git clone https://github.com/Azure/azure-xplat-cli.git
@@ -34,20 +34,20 @@ ms.lasthandoff: 08/18/2017
  azure servicefabric
 ```
 
-По всем командам можно получить справку. Наберите имя нужной команды, чтобы узнать о ее возможностях.
-Для команд также поддерживается функция автозавершения. Например, следующая команда отобразит справку по всем командам application. 
+Для каждой команды он поддерживает, можно ввести имя hello tooobtain hello hello команду справки для этой команды.
+Для команды hello поддерживается функция автозавершения. Например следующая команда позволяет справки для всех команд приложения hello hello. 
 
 ```sh
  azure servicefabric application 
 ```
 
-Можно ограничить справочную информацию одной конкретной командой, как показано в следующем примере:
+Можно отфильтровать hello справки tooa конкретной команды, как следующий пример показывает hello:
 
 ```sh
  azure servicefabric application  create
 ```
 
-Чтобы включить в интерфейсе командной строки функцию автозавершения, выполните следующие команды:
+tooenable автоматическое заполнение в hello CLI, запустите hello, следующие команды:
 
 ```sh
 azure --completion >> ~/azure.completion.sh
@@ -55,70 +55,70 @@ echo 'source ~/azure.completion.sh' >> ~/.sh\_profile
 source ~/azure.completion.sh
 ```
 
-Следующие команды позволяют подключиться к кластеру и просмотреть список узлов кластера:
+следующие команды Hello соединения кластера toohello Показать hello узлов в кластере hello:
 
 ```sh
  azure servicefabric cluster connect http://localhost:19080
  azure servicefabric node show
 ```
 
-Чтобы узнать, какие можно использовать именованные параметры и для чего они нужны, введите после команды оператор --help. Например:
+toouse именованных параметров и найти их, можно ввести — помочь после команды. Например:
 
 ```sh
  azure servicefabric node show --help
  azure servicefabric application create --help
 ```
 
-Чтобы подключиться к кластеру с несколькими компьютерами с компьютера, **который не входит в кластер**, используйте следующую команду:
+При подключении нескольких машин кластера tooa на машине **, не является частью кластера hello**, использовать hello следующую команду:
 
 ```sh
  azure servicefabric cluster connect http://PublicIPorFQDN:19080
 ```
 
-Замените тег PublicIPorFQDN нужным IP-адресом или полным доменным именем. Чтобы подключиться к кластеру с несколькими компьютерами с компьютера, **который входит в кластер**, используйте следующую команду:
+Замените тег PublicIPorFQDN hello hello реальные IP-адрес или полное доменное имя соответствующим образом. При подключении нескольких машин кластера tooa на машине **, являющийся частью кластера hello**, использовать hello следующую команду:
 
 ```sh
  azure servicefabric cluster connect --connection-endpoint http://localhost:19080 --client-connection-endpoint PublicIPorFQDN:19000
 ```
 
-Можно использовать PowerShell или CLI для взаимодействия с кластером Service Fabric, созданным с помощью портала Azure.
+Можно использовать PowerShell или создать toointeract CLI с вашего кластера Service Fabric Linux с помощью hello портал Azure.
 
 > [!WARNING]
-> Эти кластеры не являются защищенными, и вы можете поставить ваш компьютер под угрозу, добавив общедоступный IP-адрес в манифест кластера.
+> Эти кластеры незащищенные, таким образом, вы может открыть один-поле путем добавления hello общедоступный IP-адрес в манифесте кластера hello.
 
-## <a name="using-the-xplat-cli-to-connect-to-a-service-fabric-cluster"></a>Использование XPlat CLI для подключения к кластеру Service Fabric
+## <a name="using-hello-xplat-cli-tooconnect-tooa-service-fabric-cluster"></a>С помощью hello кластера Service Fabric tooa tooconnect XPlat-CLI
 
-Следующие команды интерфейса командной строки Azure позволяют подключиться к безопасному кластеру. Сведения о сертификате должны соответствовать сертификату на узлах кластера.
+следующие команды Azure CLI Hello описывают, как tooconnect tooa обеспечивать безопасность кластера. сведения о сертификате Hello должно соответствовать сертификат на узлах кластера hello.
 
 ```sh
 azure servicefabric cluster connect --connection-endpoint http://ip:19080 --client-key-path /tmp/key --client-cert-path /tmp/cert
 ```
 
-Если ваш сертификат выдан центром сертификации, следует добавить параметр --ca-cert-path, как показано в следующем примере: 
+Если сертификат имеет центров сертификации (ЦС), необходимо параметр--ЦС cert путь к hello tooadd как следующий пример hello. 
 
 ```sh
  azure servicefabric cluster connect --connection-endpoint http://ip:19080 --client-key-path /tmp/key --client-cert-path /tmp/cert --ca-cert-path /tmp/ca1,/tmp/ca2 
 ```
 
-Если вы используете несколько центров сертификации, перечислите их все, разделив запятыми.
+Если у вас есть несколько центров сертификации, используйте запятую в качестве разделителя hello.
 
-Если параметр "Общее имя" в сертификате не соответствует конечной точке подключения, для обхода проверки можно использовать параметр `--strict-ssl-false` , как показано в следующем примере:
+Если ваш общее имя в сертификате hello не соответствует hello конечной точки подключения, можно использовать параметр hello `--strict-ssl-false` toobypass hello проверки, как показано в hello следующую команду:
 
 ```sh
 azure servicefabric cluster connect --connection-endpoint http://ip:19080 --client-key-path /tmp/key --client-cert-path /tmp/cert --strict-ssl-false 
 ```
 
-Если вы хотите пропустить проверку центра сертификации, можно добавить параметр --reject-unauthorized-false, как показано в следующем примере: 
+При желании проверки tooskip hello ЦС, можно добавить hello--параметр отклонить, доступ запрещен ЛОЖЬ, как показано в hello следующую команду: 
 
 ```sh
 azure servicefabric cluster connect --connection-endpoint http://ip:19080 --client-key-path /tmp/key --client-cert-path /tmp/cert --reject-unauthorized-false 
 ```
 
-После подключения вы сможете взаимодействовать с кластером с помощью дополнительных команд интерфейса командной строки.
+После подключения должен быть доступ toorun других toointeract команд CLI с hello кластера.
 
 ## <a name="deploying-your-service-fabric-application"></a>Развертывание приложения Service Fabric
 
-Выполните следующие команды, чтобы скопировать, зарегистрировать и запустить приложение Service Fabric:
+Выполните следующие команды toocopy, зарегистрировать и запустить приложение service fabric hello hello:
 
 ```sh
 azure servicefabric application package copy [applicationPackagePath] [imageStoreConnectionString] [applicationPathInImageStore]
@@ -128,9 +128,9 @@ azure servicefabric application create [applicationName] [applicationTypeName] [
 
 ## <a name="upgrading-your-application"></a>Обновление приложения
 
-Процесс выполняется так же, [как и в среде Windows](service-fabric-application-upgrade-tutorial-powershell.md).
+Hello выполняется аналогично toohello [процесса в Windows](service-fabric-application-upgrade-tutorial-powershell.md)).
 
-Выполняйте сборку, копирование, регистрацию и создание приложения в корневом каталоге проекта. Если экземпляр приложения имеет имя `fabric:/MySFApp` и тип MySFApp, команда будет выглядеть так:
+Выполняйте сборку, копирование, регистрацию и создание приложения в корневом каталоге проекта. Если именованный экземпляр приложения `fabric:/MySFApp`и тип hello MySFApp, hello команды будет выглядеть следующим образом:
 
 ```sh
  azure servicefabric cluster connect http://localhost:19080
@@ -139,7 +139,7 @@ azure servicefabric application create [applicationName] [applicationTypeName] [
  azure servicefabric application create fabric:/MySFApp MySFApp 1.0
 ```
 
-Внесите изменения в приложение и выполните повторную сборку службы в измененном виде.  Замените файл манифеста измененной службы (ServiceManifest.xml) обновленной версией для этой службы (а также все необходимые файлы из каталогов Code, Config и Data). Также замените манифест приложения (ApplicationManifest.xml) обновленной версией для приложения и измененной службы.  Теперь скопируйте и зарегистрируйте обновленное приложение с помощью следующих команд:
+Сделайте hello tooyour применение изменений и заново создайте hello изменения службы.  Обновление hello изменить службы файл манифеста (ServiceManifest.xml) с версиями hello обновлен для hello службы (и кода или конфигурации или данных соответствующим образом). Также изменить манифест приложения hello (ApplicationManifest.xml) с hello обновить номер версии для приложения hello и hello измененные службы.  Теперь скопировать и зарегистрировать обновленные приложения с помощью hello, следующие команды:
 
 ```sh
  azure servicefabric cluster connect http://localhost:19080>
@@ -147,68 +147,68 @@ azure servicefabric application create [applicationName] [applicationTypeName] [
  azure servicefabric application type register MySFApp
 ```
 
-Теперь можно запустить обновление приложения с помощью следующей команды:
+Теперь можно начать обновление приложения hello с hello следующую команду:
 
 ```sh
  azure servicefabric application upgrade start -–application-name fabric:/MySFApp -–target-application-type-version 2.0 --rolling-upgrade-mode UnmonitoredAuto
 ```
 
-Обновление приложения можно отслеживать с помощью SFX. Процесс обновления завершится через несколько минут. Можно также проверить обновленное приложение на наличие ошибок или использовать возможность автоматического отката в Service Fabric.
+Теперь можно отслеживать с помощью SFX обновление приложения hello. Через несколько минут hello приложения будут обновлены. Также попробуйте обновленные приложения с ошибкой и проверьте возможность отката автоматически hello в service fabric.
 
-## <a name="converting-from-pfx-to-pem-and-vice-versa"></a>Преобразование из PFX в PEM и обратно
+## <a name="converting-from-pfx-toopem-and-vice-versa"></a>Преобразование из PFX tooPEM и наоборот
 
-Для доступа к безопасным кластерам, работающим в разных средах, может потребоваться установить сертификат на локальном компьютере (под управлением Windows или Linux). Например, при доступе к защищенному кластеру Linux с компьютера Windows (или наоборот) может потребоваться преобразовать сертификат из формата PFX в PEM (или наоборот). 
+Может потребоваться tooinstall сертификат в ваш локальный компьютер (с Windows или Linux) tooaccess защищенных кластеров, в другой среде. Например при доступе к защищенным кластеров Linux с компьютером Windows и наоборот нужно tooconvert сертификата из PFX-ФАЙЛ tooPEM и наоборот. 
 
-Чтобы преобразовать PEM-файл в PFX-файл, используйте следующую команду:
+tooconvert из PEM файл tooa PFX-файла, hello используйте следующую команду:
 
 ```bash
 openssl pkcs12 -export -out certificate.pfx -inkey mycert.pem -in mycert.pem -certfile mycert.pem
 ```
 
-Чтобы преобразовать PFX-файл в PEM-файл, используйте следующую команду:
+tooconvert из файла PEM tooa файла PFX, hello используйте следующую команду:
 
 ```bash
 openssl pkcs12 -in certificate.pfx -out mycert.pem -nodes
 ```
 
-Дополнительные сведения см. в [документации по OpenSSL](https://www.openssl.org/docs/man1.0.1/apps/pkcs12.html).
+См. слишком[OpenSSL документации](https://www.openssl.org/docs/man1.0.1/apps/pkcs12.html) подробные сведения.
 
 <a id="troubleshooting"></a>
 
 ## <a name="troubleshooting"></a>Устранение неполадок
 
 
-### <a name="copying-of-the-application-package-does-not-succeed"></a>Копирование пакета приложения завершается ошибками
+### <a name="copying-of-hello-application-package-does-not-succeed"></a>Копирование пакета приложения hello завершилась с ошибками
 
-Проверьте, установлен ли клиент `openssh`. Так как по умолчанию он отсутствует в Ubuntu Desktop, установите его с помощью следующей команды.
+Проверьте, установлен ли клиент `openssh`. Так как по умолчанию он отсутствует в Ubuntu Desktop, Установите его с помощью hello следующую команду:
 
 ```sh
 sudo apt-get install openssh-server openssh-client**
 ```
 
-Если проблема сохранится, попробуйте отключить PAM для SSH, изменив файл `sshd_config` с помощью следующих команд:
+При повторном возникновении проблемы hello, попробуйте отключить PAM для ssh, изменив hello `sshd_config` файла с помощью hello, следующие команды:
 
 ```sh
 sudo vi /etc/ssh/sshd_config
-#Change the line with UsePAM to the following: UsePAM no
+#Change hello line with UsePAM toohello following: UsePAM no
 sudo service sshd reload
 ```
 
-Если проблема сохранится, попробуйте число количество сеансов ssh, выполнив следующие команды:
+Если hello проблема сохраняется, попробуйте использовать hello увеличивающихся ssh сеансы, выполнив следующие команды hello.
 
 ```sh
 sudo vi /etc/ssh/sshd\_config
-# Add the following to lines:
+# Add hello following toolines:
 # MaxSessions 500
 # MaxStartups 300:30:500
 sudo service sshd reload
 ```
 
-Использование ключей (вместо паролей) для проверки подлинности ssh пока не поддерживается (так как платформа использует ssh для копирования пакетов), поэтому используйте только проверку пароля.
+С помощью ключей для ssh проверки подлинности (как противоположность toopasswords) еще не поддерживается (поскольку hello платформа использует ssh toocopy пакетов), поэтому вместо этого используйте пароль проверки подлинности.
 
 ## <a name="next-steps"></a>Дальнейшие действия
 
-[Настройте среду разработки и разверните приложение Service Fabric в кластер Linux.](service-fabric-get-started-linux.md)
+[Настройка среды разработки hello и развертывание кластера Service Fabric tooa приложения Linux.](service-fabric-get-started-linux.md)
 
 ## <a name="related-articles"></a>Связанные статьи
 

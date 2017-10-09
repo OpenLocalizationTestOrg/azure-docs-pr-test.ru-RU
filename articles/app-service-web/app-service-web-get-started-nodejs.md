@@ -1,5 +1,5 @@
 ---
-title: "Создание веб-приложений Node.js в Azure | Документация Майкрософт"
+title: "aaaCreate Node.js веб-приложения в Azure | Документы Microsoft"
 description: "Быстрое развертывание первого приложения Hello World на Node.js в веб-приложении службы приложений Azure."
 services: app-service\web
 documentationcenter: 
@@ -15,26 +15,26 @@ ms.topic: quickstart
 ms.date: 05/05/2017
 ms.author: cfowler
 ms.custom: mvc
-ms.openlocfilehash: ce845da09a7c088b8a2ba29b818a46a3b41aa4e7
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 163edf83b2353755fc9fa2d75aed489038cf7c81
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-a-nodejs-web-app-in-azure"></a>Создание веб-приложений Node.js в Azure
 
-[Веб-приложения Azure](https://docs.microsoft.com/azure/app-service-web/app-service-web-overview) — это служба веб-размещения с самостоятельной установкой исправлений и высоким уровнем масштабируемости.  В этом кратком руководстве объясняется, как развертывать приложения Node.js в веб-приложениях Azure. С помощью [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) вы можете создавать веб-приложения, в которых можно развертывать примеры кода Node.js с использованием Git.
+[Веб-приложения Azure](https://docs.microsoft.com/azure/app-service-web/app-service-web-overview) — это служба веб-размещения с самостоятельной установкой исправлений и высоким уровнем масштабируемости.  Краткого руководства показано, как toodeploy tooAzure приложение Node.js веб-приложений. Создание веб-приложения hello, с помощью hello [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli), и использовать Git toodeploy образец кода toohello веб-приложение Node.js.
 
 ![Пример приложения, выполняющегося в Azure](media/app-service-web-get-started-nodejs-poc/hello-world-in-browser.png)
 
-Выполните действия, приведенные ниже, с помощью компьютера Mac, Windows или Linux. После установки необходимых компонентов для выполнения этих шагов потребуется около пяти минут.   
+Выполните действия hello ниже, с помощью компьютером Mac, Windows или Linux. После установки необходимых компонентов hello, требует toocomplete около пяти минут hello действия.   
 
 > [!VIDEO https://channel9.msdn.com/Shows/Azure-for-Node-Developers/Create-a-Nodejs-app-in-Azure-Quickstart/player]   
 
 
 ## <a name="prerequisites"></a>Предварительные требования
 
-Для работы с этим кратким руководством сделайте следующее:
+toocomplete краткого руководства:
 
 * [установите Git](https://git-scm.com/);
 * [установите Node.j и NPM](https://nodejs.org/).
@@ -43,41 +43,41 @@ ms.lasthandoff: 08/18/2017
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Если вы решили установить и использовать интерфейс командной строки локально, для работы с этим руководством вам понадобится Azure CLI 2.0 или более поздней версии. Чтобы узнать версию, выполните команду `az --version`. Если вам необходимо выполнить установку или обновление, см. статью [Установка Azure CLI 2.0]( /cli/azure/install-azure-cli). 
+Если выбрать tooinstall и использовать hello CLI локально, в этом разделе требуется под управлением hello Azure CLI версии 2.0 или более поздней версии. Запустите `az --version` версии toofind hello. Если требуется tooinstall или обновления, см. раздел [установить CLI Azure 2.0]( /cli/azure/install-azure-cli). 
 
-## <a name="download-the-sample"></a>Скачивание примера приложения
+## <a name="download-hello-sample"></a>Загрузить образец hello
 
-В окне терминала выполните следующую команду, чтобы клонировать репозиторий с примером приложения на локальный компьютер.
+В окне терминала запустите hello, следующая команда tooclone hello образец приложения репозитория tooyour локального компьютера.
 
 ```bash
 git clone https://github.com/Azure-Samples/nodejs-docs-hello-world
 ```
 
-Используйте это окно терминала для выполнения всех команд в рамках этого руководства.
+В этом кратком руководстве все команды hello использовать этот toorun окно терминала.
 
-Перейдите в каталог, в котором содержится образец кода.
+Изменить toohello каталог, содержащий образец кода hello.
 
 ```bash
 cd nodejs-docs-hello-world
 ```
 
-## <a name="run-the-app-locally"></a>Локальный запуск приложения
+## <a name="run-hello-app-locally"></a>Выполните приложение hello локально
 
-Запустите приложение в локальной среде, открыв окно терминала и выполнив скрипт `npm start`, чтобы запустить встроенный HTTP-сервер Node.js.
+Запустите приложение hello локально, откройте окно терминала и с помощью hello `npm start` hello toolaunch сценария, встроенных в сервер Node.js HTTP.
 
 ```bash
 npm start
 ```
 
-Откройте браузер и перейдите к примеру приложения по адресу http://localhost:1337.
+Откройте веб-браузер и перейдите toohello пример приложения на http://localhost:1337.
 
-На странице отобразится сообщение **Hello World** из примера приложения.
+Вы видите hello **Hello World** сообщения из примера приложения hello, отображаемое на странице приветствия.
 
 ![Пример приложения, выполняющегося локально](media/app-service-web-get-started-nodejs-poc/localhost-hello-world-in-browser.png)
 
-В окне терминала нажмите клавиши **CTRL+C**, чтобы выйти из веб-сервера.
+В окне терминала, нажмите клавишу **Ctrl + C** tooexit hello веб-сервера.
 
-[!INCLUDE [Log in to Azure](../../includes/login-to-azure.md)] 
+[!INCLUDE [Log in tooAzure](../../includes/login-to-azure.md)] 
 
 [!INCLUDE [Configure deployment user](../../includes/configure-deployment-user.md)] 
 
@@ -93,11 +93,11 @@ npm start
 
 [!INCLUDE [Configure local git](../../includes/app-service-web-configure-local-git.md)] 
 
-[!INCLUDE [Push to Azure](../../includes/app-service-web-git-push-to-azure.md)] 
+[!INCLUDE [Push tooAzure](../../includes/app-service-web-git-push-to-azure.md)] 
 
 ```bash
 Counting objects: 23, done.
-Delta compression using up to 4 threads.
+Delta compression using up too4 threads.
 Compressing objects: 100% (21/21), done.
 Writing objects: 100% (23/23), 3.71 KiB | 0 bytes/s, done.
 Total 23 (delta 8), reused 7 (delta 1)
@@ -119,62 +119,62 @@ remote: Copying file: 'process.json'
 remote: Deleting file: 'hostingstart.html'
 remote: Ignoring: .git
 remote: Using start-up script index.js from package.json.
-remote: Node.js versions available on the platform are: 4.4.7, 4.5.0, 6.2.2, 6.6.0, 6.9.1.
-remote: Selected node.js version 6.9.1. Use package.json file to choose a different version.
+remote: Node.js versions available on hello platform are: 4.4.7, 4.5.0, 6.2.2, 6.6.0, 6.9.1.
+remote: Selected node.js version 6.9.1. Use package.json file toochoose a different version.
 remote: Selected npm version 3.10.8
 remote: Finished successfully.
 remote: Running post deployment command(s)...
 remote: Deployment successful.
-To https://<app_name>.scm.azurewebsites.net:443/<app_name>.git
+toohttps://<app_name>.scm.azurewebsites.net:443/<app_name>.git
  * [new branch]      master -> master
 ```
 
-## <a name="browse-to-the-app"></a>Переход в приложение
+## <a name="browse-toohello-app"></a>Обзор toohello приложения
 
-Перейдите в развертываемое приложение с помощью веб-браузера.
+Обзор toohello развернуть приложение с помощью веб-браузере.
 
 ```bash
 http://<app_name>.azurewebsites.net
 ```
 
-Пример кода Node.js выполняется в веб-приложении службы приложений Azure.
+Hello Node.js образце кода выполняется в веб-приложение службы приложений Azure.
 
 ![Пример приложения, выполняющегося в Azure](media/app-service-web-get-started-nodejs-poc/hello-world-in-browser.png)
 
-**Поздравляем!** Вы развернули свое первое приложение Node.js в службе приложений.
+**Поздравляем!** Ваш первый tooApp приложение Node.js службы после развертывания.
 
-## <a name="update-and-redeploy-the-code"></a>Обновление и повторное развертывание кода
+## <a name="update-and-redeploy-hello-code"></a>Обновление и повторное развертывание кода hello
 
-В текстовом редакторе в приложении Node.js откройте файл `index.js` и измените текст в вызове `response.end`:
+В текстовом редакторе, откройте hello `index.js` в Node.js приложение hello и создайте текстовый toohello небольшое изменение в вызове hello слишком`response.end`:
 
 ```nodejs
 response.end("Hello Azure!");
 ```
 
-Зафиксируйте изменения в Git, а затем отправьте изменения кода в Azure.
+Фиксация изменений в Git и затем отправьте tooAzure изменения кода hello.
 
 ```bash
 git commit -am "updated output"
 git push azure master
 ```
 
-После завершения развертывания переключитесь в окно браузера, открытое на этапе **перехода в приложение**, и щелкните "Обновить".
+После завершения развертывания переключитесь задней toohello окно браузера, который открыт в hello **toohello приложения обзора** шаг и нажмите кнопку обновления.
 
 ![Обновленный пример приложения, выполняющегося в Azure](media/app-service-web-get-started-nodejs-poc/hello-azure-in-browser.png)
 
 ## <a name="manage-your-new-azure-web-app"></a>Управление новым веб-приложением Azure
 
-Перейдите на <a href="https://portal.azure.com" target="_blank">портал Azure</a> для управления созданным веб-приложением.
+Go toohello <a href="https://portal.azure.com" target="_blank">портал Azure</a> toomanage hello веб-приложения был создан.
 
-В меню слева выберите **Службы приложений**, а затем щелкните имя своего веб-приложения Azure.
+Hello в левом меню, щелкните **службы приложений**, а затем щелкните имя hello Azure веб-приложения.
 
-![Переход к веб-приложению Azure на портале](./media/app-service-web-get-started-nodejs-poc/nodejs-docs-hello-world-app-service-list.png)
+![Веб-приложения портала навигации tooAzure](./media/app-service-web-get-started-nodejs-poc/nodejs-docs-hello-world-app-service-list.png)
 
 Отобразится страница обзора вашего веб-приложения. Вы можете выполнять базовые задачи управления: обзор, завершение, запуск, перезагрузку и удаление. 
 
 ![Колонка службы приложений на портале Azure](media/app-service-web-get-started-nodejs-poc/nodejs-docs-hello-world-app-service-detail.png)
 
-В меню слева доступно несколько страниц для настройки приложения. 
+меню слева Hello предоставляет различные страницы для настройки приложения. 
 
 [!INCLUDE [cli-samples-clean-up](../../includes/cli-samples-clean-up.md)]
 

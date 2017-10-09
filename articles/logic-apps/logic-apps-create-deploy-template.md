@@ -1,5 +1,5 @@
 ---
-title: "Создание шаблонов развертывания для Azure Logic Apps | Документация Майкрософт"
+title: "aaaCreate шаблоны развертывания для приложения логики Azure | Документы Microsoft"
 description: "Узнайте, как создавать шаблоны Azure Resource Manager для развертывания приложений логики и управлять выпусками."
 services: logic-apps
 documentationcenter: .net,nodejs,java
@@ -15,96 +15,96 @@ ms.workload: integration
 ms.custom: H1Hack27Feb2017
 ms.date: 10/18/2016
 ms.author: LADocs; jehollan
-ms.openlocfilehash: 9cfbb294010d48deaf4b4c78c6a6bcd59a387d87
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 2f09445f10a376a745d6acbba94ca29d5f79fc09
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-templates-for-logic-apps-deployment-and-release-management"></a>Создание шаблонов для развертывания приложений логики и управления выпусками
 
-После создания приложения логики на его основе можно создать шаблон Azure Resource Manager.
-Таким образом вы сможете легко развернуть приложение логики в любой среде или группе ресурсов, где это может потребоваться.
+После создания приложения логики, может потребоваться toocreate ее в качестве шаблона диспетчера ресурсов Azure.
+Таким образом, можно легко развернуть среды tooany hello логику приложения или группы ресурсов, где он может понадобиться.
 Дополнительные сведения о шаблонах Resource Manager см. в статьях [Создание шаблонов диспетчера ресурсов Azure](../azure-resource-manager/resource-group-authoring-templates.md) и [Развертывание ресурсов с использованием шаблонов Resource Manager и Azure PowerShell](../azure-resource-manager/resource-group-template-deploy.md).
 
 ## <a name="logic-app-deployment-template"></a>Шаблон развертывания приложения логики
 
 Приложение логики состоит из трех основных компонентов:
 
-* **Ресурс приложения логики**: содержит такие сведения, как тарифный план, расположение и определение рабочего процесса.
-* **Определение рабочего процесса**: описывает этапы рабочего процесса приложения логики и способ выполнения рабочего процесса обработчиком приложений логики.
+* **Ресурсов приложения логики**: содержит сведения о таких вещей, как ценовой план, расположение и hello определения рабочего процесса.
+* **Определение рабочего процесса**: описание действия рабочего процесса приложения логики и как механизм логики приложения hello должна выполняться hello рабочего процесса.
 Это определение можно просмотреть в окне **Представление кода** приложения логики.
-В ресурсе приложения логики это определение можно найти в свойстве `definition`.
-* **Подключения**: отдельные ресурсы для безопасного хранения метаданных, связанных со всеми подключениями соединителя, таких как строка подключения и маркер доступа.
-Эти ресурсы указываются в разделе `parameters` ресурса приложения логики.
+В ресурсе приложения hello логики, можно найти это определение в hello `definition` свойство.
+* **Подключения**: ссылается tooseparate ресурсы, которые безопасно хранить метаданные любого подключения соединитель, такие как строка подключения и маркер доступа.
+В ресурсе приложения hello логику, логику приложения ссылается на эти ресурсы в hello `parameters` раздела.
 
 Вы можете просмотреть все эти компоненты имеющихся приложений логики с помощью таких инструментов, как [обозреватель ресурсов Azure](http://resources.azure.com).
 
-Чтобы создать шаблон для приложения логики, который можно использовать для развертываний групп ресурсов, необходимо определить ресурсы и при необходимости параметризовать их.
-Например, если развертывание осуществляется в тестовой, рабочей среде или в среде разработки, то скорее всего в каждой из этих сред потребуется использовать различные строки подключения к базе данных SQL.
-Или выполнить развертывания в разных подписках или группах ресурсов.  
+toomake шаблон для логики приложения toouse с развертывания группы ресурсов, необходимо определить ресурсы hello и параметризовать при необходимости.
+Например при развертывании tooa разработку, тестирование и рабочей среде, скорее всего нужно toouse строки другое подключение tooa базы данных SQL в каждой среде.
+Или можно разместить toodeploy в разных подписок или групп ресурсов.  
 
 ## <a name="create-a-logic-app-deployment-template"></a>Создание шаблона развертывания приложения логики
 
-Самый простой способ создать допустимый шаблон развертывания приложения логики — это воспользоваться [инструментами Visual Studio для приложений логики](logic-apps-deploy-from-vs.md).
-Инструменты Visual Studio создают допустимый шаблон развертывания, который можно использовать в разных подписках или расположениях.
+toohave простым способом Hello шаблон развертывания допустимым логику приложения является toouse [средств Visual Studio для приложения логики](logic-apps-deploy-from-vs.md).
+средства Visual Studio Hello создавать шаблон допустимым развертывания, который может использоваться в любой подписки или расположение.
 
 При создании шаблона для развертывания приложения логики могут быть полезными и некоторые другие инструменты.
-Его можно создать вручную, используя указанные выше ресурсы и настроив требуемые параметры.
-Также можно использовать модуль PowerShell для [создания шаблона приложения логики](https://github.com/jeffhollan/LogicAppTemplateCreator) . Этот модуль с открытым исходным кодом оценивает приложение логики и все подключения, используемые в этом приложении, а затем создает ресурсы шаблона с необходимыми параметрами для развертывания.
-Например, если приложение логики получает сообщение из очереди служебной шины Azure и добавляет данные в базу данных SQL Azure, то инструмент сохраняет всю логику оркестрации и параметризует строки подключения SQL и служебной шины, чтобы их можно было настроить во время развертывания.
+Можно создавать вручную, то есть с помощью hello ресурсы уже описанные здесь параметры toocreate при необходимости.
+Другой вариант — toouse [создатель шаблон приложения логики](https://github.com/jeffhollan/LogicAppTemplateCreator) модуля PowerShell. Этот модуль с открытым исходным кодом сначала вычисляет hello логики приложения, а также любые соединения, он использует и создает ресурсов шаблона с hello необходимые параметры для развертывания.
+Например если у вас есть приложение логики, которая получает сообщение из очереди Azure Service Bus и добавляет базы данных Azure SQL tooan данных, средство hello сохраняет всю логику orchestration hello и параметризует hello SQL и строки подключения служебной шины, чтобы их можно задать во время развертывания.
 
 > [!NOTE]
-> Подключения должны относиться к той же группе ресурсов, что и приложение логики.
+> Подключения должны быть в пределах hello же группе ресурсов приложения логики hello.
 >
 >
 
-### <a name="install-the-logic-app-template-powershell-module"></a>Установка модуля PowerShell для шаблона приложения логики
-Проще всего установить модуль через [коллекцию PowerShell](https://www.powershellgallery.com/packages/LogicAppTemplate/0.1) с использованием команды `Install-Module -Name LogicAppTemplate`.  
+### <a name="install-hello-logic-app-template-powershell-module"></a>Установка модуля PowerShell шаблон приложения логики hello
+Hello простым способом tooinstall hello модуль — это via hello [коллекции PowerShell](https://www.powershellgallery.com/packages/LogicAppTemplate/0.1), с помощью команды hello `Install-Module -Name LogicAppTemplate`.  
 
-Также можно установить модуль PowerShell вручную:
+Также можно установить модуль PowerShell hello вручную:
 
-1. Скачайте последний выпуск [модуля для создания шаблона приложения логики](https://github.com/jeffhollan/LogicAppTemplateCreator/releases).  
-2. Извлеките содержимое папки в папку модуля PowerShell (обычно это `%UserProfile%\Documents\WindowsPowerShell\Modules`).
+1. Загрузить последний выпуск hello hello [создатель шаблон приложения логики](https://github.com/jeffhollan/LogicAppTemplateCreator/releases).  
+2. Извлеките hello папки в папку модуля PowerShell (обычно `%UserProfile%\Documents\WindowsPowerShell\Modules`).
 
-Чтобы модуль поддерживал любой маркер доступа клиента или подписки, рекомендуется использовать программу командной строки [ARMClient](https://github.com/projectkudu/ARMClient).  В этой [записи блога](http://blog.davidebbo.com/2015/01/azure-resource-manager-client.html) программа ARMClient рассматривается подробней.
+Для toowork модуля hello любого клиента и подписки доступ токена, мы рекомендуем использовать с hello [ARMClient](https://github.com/projectkudu/ARMClient) средство командной строки.  В этой [записи блога](http://blog.davidebbo.com/2015/01/azure-resource-manager-client.html) программа ARMClient рассматривается подробней.
 
 ### <a name="generate-a-logic-app-template-by-using-powershell"></a>Создание шаблона приложения логики с помощью PowerShell
-После установки PowerShell можно создать шаблон, используя следующую команду:
+После установки PowerShell, можно создать шаблон с помощью hello следующую команду:
 
 `armclient token $SubscriptionId | Get-LogicAppTemplate -LogicApp MyApp -ResourceGroup MyRG -SubscriptionId $SubscriptionId -Verbose | Out-File C:\template.json`
 
-`$SubscriptionId` — это идентификатор подписки Azure. Эта строка сначала получает маркер доступа через программу ARMClient, затем передает его по конвейеру в сценарий PowerShell и создает шаблон в JSON-файл.
+`$SubscriptionId`— идентификатор подписки Azure hello. Эту строку сначала получает доступ маркера через ARMClient, а затем передает его через toohello сценарий PowerShell и создает hello шаблона в JSON-файла.
 
-## <a name="add-parameters-to-a-logic-app-template"></a>Добавление параметров для шаблона приложения логики
-После создания шаблона приложения логики можно добавлять или изменять любые дополнительные параметры. Например, если определение включает идентификатор ресурса в функции Azure или вложенном рабочем процессе, где планируется одно развертывание, можно добавить дополнительные ресурсы для шаблона и при необходимости параметризовать идентификаторы. То же касается и ссылок на пользовательские интерфейсы API или конечные точки Swagger, которые будут развернуты в каждой группе ресурсов.
+## <a name="add-parameters-tooa-logic-app-template"></a>Добавить шаблон приложения логики tooa параметров
+После создания шаблона логики приложения, можно продолжить tooadd или изменить параметры, которые могут потребоваться. Например если определение включает tooan идентификатор ресурса Azure функцию или вложенный рабочий процесс планирования toodeploy в одно развертывание, можно добавить дополнительные ресурсы tooyour шаблон и параметризовать идентификаторов, при необходимости. Hello применимо и к tooany ссылки toocustom API-интерфейсы Swagger конечных точек или предполагается, что toodeploy с каждой группой ресурсов.
 
 ## <a name="deploy-a-logic-app-template"></a>Развертывание шаблона приложения логики
 
-Шаблон можно развернуть, используя любые инструменты, включая PowerShell, REST API, [Visual Studio Team Services Release Management](#team-services), а также функцию развертывания шаблона на портале Azure.
-Кроме того, для сохранения значений параметров рекомендуется создать [файл параметров](../azure-resource-manager/resource-group-template-deploy.md#parameter-files).
-Узнайте, как [развертывать ресурсы с помощью шаблонов Azure Resource Manager и PowerShell](../azure-resource-manager/resource-group-template-deploy.md) или [развертывать ресурсы с помощью шаблонов Azure Resource Manager и портала Azure](../azure-resource-manager/resource-group-template-deploy-portal.md).
+С помощью любого средства, как PowerShell, API-Интерфейс REST, можно развернуть шаблон [Visual Studio Team Services Release Management](#team-services)и шаблона-развертывания через портал Azure hello.
+Кроме того, toostore hello значения для параметров, рекомендуется создать [файл параметров](../azure-resource-manager/resource-group-template-deploy.md#parameter-files).
+Узнайте, каким образом слишком[развертывания ресурсов с помощью PowerShell и шаблоны Azure Resource Manager](../azure-resource-manager/resource-group-template-deploy.md) или [развертывания ресурсов с помощью шаблонов диспетчера ресурсов Azure и hello портал Azure](../azure-resource-manager/resource-group-template-deploy-portal.md).
 
 ### <a name="authorize-oauth-connections"></a>Авторизация подключений OAuth
 
-После развертывания приложение логики будет полноценно работать с допустимыми параметрами.
-Но чтобы создать допустимый маркер доступа, необходимо авторизовать подключения OAuth.
-Чтобы разрешить подключения OAuth, откройте приложение логики в конструкторе приложений логики и авторизуйте эти подключения. Или, если выполняется автоматизированное развертывание, можно использовать сценарий, предоставляющий разрешение на каждое подключение OAuth.
+После развертывания приложения hello логики работает конца в конец с допустимыми параметрами.
+Вы по-прежнему необходимо разрешить toogenerate подключений OAuth действительный маркер доступа.
+tooauthorize OAuth подключения, откройте приложение hello логику в конструкторе логики приложения hello и разрешить эти подключения. Или для автоматического развертывания можно использовать сценарий tooconsent tooeach OAuth подключения.
 На GitHub есть пример сценария в проекте [LogicAppConnectionAuth](https://github.com/logicappsio/LogicAppConnectionAuth) .
 
 <a name="team-services"></a>
 ## <a name="visual-studio-team-services-release-management"></a>Visual Studio Team Services Release Management
 
-При развертывании среды и управлении ею часто используется инструмент Release Management в Visual Studio Team Services и шаблон развертывания приложения логики. Служба Visual Studio Team Services содержит задачу [развертывания группы ресурсов Azure](https://github.com/Microsoft/vsts-tasks/tree/master/Tasks/DeployAzureResourceGroup), которую можно добавить в любую сборку или конвейер выпуска. Для авторизации развертывания требуется [субъект-служба](https://blogs.msdn.microsoft.com/visualstudioalm/2015/10/04/automating-azure-resource-group-deployment-using-a-service-principal-in-visual-studio-online-buildrelease-management/). При ее наличии можно создать определение выпуска.
+Общие сценарии развертывания и управления ими среды — toouse средства, подобного управления выпусками в Visual Studio Team Services с помощью шаблона развертывания логику приложения. Visual Studio Team Services включает в себя [развертывания группы ресурсов Azure](https://github.com/Microsoft/vsts-tasks/tree/master/Tasks/DeployAzureResourceGroup) задач можно добавить tooany сборки или выпуска конвейера. Требуется toohave [участника-службы](https://blogs.msdn.microsoft.com/visualstudioalm/2015/10/04/automating-azure-resource-group-deployment-using-a-service-principal-in-visual-studio-online-buildrelease-management/) для авторизации toodeploy, а затем можно создать определение выпуска hello.
 
 1. Для создания пустого определения в Release Management выберите пункт **Пусто**.
 
     ![Создание пустого определения][1]
 
-2. Выберите для этого любые ресурсы. Лучше всего подойдет шаблон приложения логики, созданный вручную или в процессе сборки.
+2. Выберите все ресурсы, необходимые для этого, скорее всего, включая hello логику приложения шаблона, созданного вручную или как часть hello процесса построения.
 3. Добавьте задачу **развертывания группы ресурсов Azure** .
-4. Настройте использование [субъекта-службы](https://blogs.msdn.microsoft.com/visualstudioalm/2015/10/04/automating-azure-resource-group-deployment-using-a-service-principal-in-visual-studio-online-buildrelease-management/)и добавьте ссылку на файлы шаблона и параметров шаблона.
-5. При необходимости выполните соответствующие действия в процессе выпуска для других сред, автоматических тестов или механизмов утверждения.
+4. Настройка с помощью [участника-службы](https://blogs.msdn.microsoft.com/visualstudioalm/2015/10/04/automating-azure-resource-group-deployment-using-a-service-principal-in-visual-studio-online-buildrelease-management/)и ссылаться на файлы шаблонов и параметров шаблона hello.
+5. По-прежнему toobuild действия в процессе выпуска hello для среды, автоматических тестов или утверждающих при необходимости.
 
 <!-- Image References -->
 [1]: ./media/logic-apps-create-deploy-template/emptyreleasedefinition.png

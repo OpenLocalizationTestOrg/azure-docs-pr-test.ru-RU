@@ -1,5 +1,5 @@
 ---
-title: "Использование OneDrive для бизнеса с Azure RemoteApp | Документация Майкрософт"
+title: "aaaUsing OneDrive для бизнеса и Azure RemoteApp | Документы Microsoft"
 description: "Использование OneDrive для бизнеса с Azure RemoteApp."
 services: remoteapp
 documentationcenter: 
@@ -14,19 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: compute
 ms.date: 04/26/2017
 ms.author: mbaldwin
-ms.openlocfilehash: e718f1e5edb72f66eab2a531c5e2509ea584ac72
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 1a7bc6e972a2a22350f61a0e9a04b4a1afb47ae9
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="onedrive-for-business-and-azure-remoteapp"></a>OneDrive для бизнеса и Azure RemoteApp
 > [!IMPORTANT]
-> Мы выводим службу Azure RemoteApp из эксплуатации 31 августа 2017 года. Дополнительные сведения см. в [объявлении](https://go.microsoft.com/fwlink/?linkid=821148).
+> Мы выводим службу Azure RemoteApp из эксплуатации 31 августа 2017 года. Чтение hello [объявления](https://go.microsoft.com/fwlink/?linkid=821148) подробные сведения.
 > 
 > 
 
-Azure RemoteApp не поддерживает агент синхронизации OneDrive для бизнеса.
+Hello OneDrive для бизнеса агент синхронизации не поддерживается в Azure RemoteApp.
 
 OneDrive для бизнеса можно включить в коллекцию для использования с Office 365. 
 

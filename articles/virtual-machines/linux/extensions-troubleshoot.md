@@ -1,5 +1,5 @@
 ---
-title: "Устранение неполадок расширения виртуальной машины Linux | Документация Майкрософт"
+title: "aaaTroubleshooting ВМ Linux сбоев расширения | Документы Microsoft"
 description: "Узнайте об устранении неполадок в расширении виртуальной машины Linux в Azure."
 services: virtual-machines-linux
 documentationcenter: 
@@ -15,17 +15,17 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/29/2016
 ms.author: kundanap
-ms.openlocfilehash: 589890de379d0b729de1f1ba9e604e0ec0496f50
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 29a0ca34207421e0014380000a313d3c44e7e594
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="troubleshooting-azure-linux-vm-extension-failures"></a>Устранение неполадок расширения виртуальной машины Linux
 [!INCLUDE [virtual-machines-common-extensions-troubleshoot](../../../includes/virtual-machines-common-extensions-troubleshoot.md)]
 
 ## <a name="viewing-extension-status"></a>Просмотр состояния расширения
-Шаблоны Azure Resource Manager можно выполнять из Azure CLI. После выполнения шаблона состояние расширения можно узнать в обозревателе ресурсов Azure или с помощью средств командной строки.
+Шаблоны Azure Resource Manager могут быть выполнены из hello Azure CLI. После выполнения шаблона hello состояние расширения hello можно просмотреть с помощью обозревателя ресурсов Azure или hello средств командной строки.
 
 Пример:
 
@@ -34,7 +34,7 @@ Azure CLI:
       azure vm get-instance-view
 
 
-Пример выходных данных:
+Вот пример выходных данных hello.
 
       Extensions:  {
       "ExtensionType": "Microsoft.Compute.CustomScriptExtension",
@@ -60,14 +60,14 @@ Azure CLI:
   ]
 
 ## <a name="troubleshooting-extenson-failures"></a>Устранение сбоев в расширениях
-### <a name="re-running-the-extension-on-the-vm"></a>Повторное выполнение расширения на виртуальной машине
-При выполнении сценариев на виртуальной машине с помощью расширения пользовательских сценариев может возникать ошибка, указывающая на то, что виртуальная машина создана успешно, но сценарий не выполнен. В этом случае рекомендуется удалить соответствующее расширение и выполнить шаблон еще раз.
-Примечание. В будущем эта функция будет усовершенствована, что позволит устранить необходимость в удалении расширения.
+### <a name="re-running-hello-extension-on-hello-vm"></a>Повторный запуск расширения hello на hello виртуальной Машины
+При выполнении скриптов на виртуальной Машине с помощью настраиваемого расширения скриптов hello иногда может запустить произошла ошибка, когда виртуальная машина успешно создана, но hello в сценарии возникла ошибка. В этих conditons hello, рекомендуется toorecover способом после этой ошибки — расширение tooremove hello и перезапустите процесс hello шаблона.
+Примечание: В будущем, эта функция будет улучшенные tooremove hello необходимость удаления расширения hello.
 
-#### <a name="remove-the-extension-from-azure-cli"></a>Удаление расширения с помощью Azure CLI
+#### <a name="remove-hello-extension-from-azure-cli"></a>Удалите расширение hello из Azure CLI
       azure vm extension set --resource-group "KPRG1" --vm-name "kundanapdemo" --publisher-name "Microsoft.Compute.CustomScriptExtension" --name "myCustomScriptExtension" --version 1.4 --uninstall
 
-В данном коде publisher-name соответствует типу расширения из выходных данных azure vm get-instance-view, а имя представляет собой имя ресурса расширения из шаблона.
+Где «приложением Publisher name» соответствует тип расширения toohello из выходных данных hello «виртуальная машина azure get экземпляр-View», а имя является именем hello hello расширения ресурса из шаблона hello
 
-После удаления расширения шаблон можно выполнить повторно, чтобы запустить скрипты на виртуальной машине.
+После удаления расширения hello hello шаблон может быть повторно выполняется toorun hello сценариев на hello виртуальной Машины.
 

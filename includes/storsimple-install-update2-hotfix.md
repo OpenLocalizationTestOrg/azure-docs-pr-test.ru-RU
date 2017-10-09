@@ -1,40 +1,40 @@
 <!--author=alkohli last changed: 03/17/16-->
 
-#### <a name="to-download-hotfixes"></a>Загрузка исправления
-Для загрузки обновления программного обеспечения из каталога обновления Майкрософт выполните следующие действия.
+#### <a name="toodownload-hotfixes"></a>toodownload исправления
+Выполните следующие действия toodownload hello обновления из каталога Центра обновления Майкрософт hello hello.
 
-1. Запустите Internet Explorer и откройте страницу [http://catalog.update.microsoft.com](http://catalog.update.microsoft.com).
-2. Если вы впервые используете каталог Центра обновления Майкрософт на этом компьютере, нажмите кнопку **Установить** , когда будет предложено установить надстройку каталога Центра обновления Майкрософт.
+1. Запустите Internet Explorer и перейдите слишком[http://catalog.update.microsoft.com](http://catalog.update.microsoft.com).
+2. Если вы впервые используете hello каталога Центра обновления Майкрософт на этом компьютере, нажмите кнопку **установить** при запрашиваемые tooinstall hello надстройку каталога Центра обновления Майкрософт.
     ![Установка каталога](./media/storsimple-install-update2-hotfix/HCS_InstallCatalog-include.png)
-3. В поле поиска каталога Центра обновления Майкрософт введите номер необходимого исправления в базе знаний, например **3121901**, а затем нажмите кнопку **Найти**.
+3. В поле поиска hello hello каталога Центра обновления Майкрософт, введите номер базы знаний (KB) hello hello исправления требуется toodownload, например **3121901**, а затем нажмите кнопку **поиска**.
    
-    Появится список исправлений, например **Совокупное обновление программного обеспечения версии 2.0 для StorSimple серии 8000**.
+    Hello исправление вхождение отображаться, например, **совокупное 2.0 обновления пакета программного обеспечения для StorSimple серии 8000**.
    
     ![Поиск в каталоге](./media/storsimple-install-update2-hotfix/HCS_SearchCatalog1-include.png)
-4. Щелкните **Добавить**. Обновление будет добавлено в корзину.
-5. Найдите дополнительные исправления, перечисленные в приведенной выше таблице (**3121900**, **3080728**, **3090322** и **3121899**), и добавьте каждое из них в корзину.
+4. Щелкните **Добавить**. Обновление Hello добавляется toohello корзины.
+5. Поиск дополнительных исправления, перечисленные в приведенной выше таблице hello (**3121900**, **3080728**, **3090322**, и **3121899**) и добавьте каждый Hello корзины.
 6. Щелкните **Просмотреть корзину**.
-7. Щелкните элемент **Загрузить**. Укажите или **выберите** локальное расположение, в которое хотите скачать файлы. Обновления скачиваются в указанное расположение и помещаются во вложенную папку с тем же именем, что и имя обновления. Этот каталог также можно скопировать в сетевую папку, которая доступна с вашего устройства.
+7. Щелкните элемент **Загрузить**. Укажите или **Обзор** tooa локального место tooappear загружает hello. Hello обновления загружаются toohello определенное место и помещается во вложенную папку с точно такое же имя, как и при обновлении hello hello. Папка Hello также может быть скопированный tooa сетевая папка, которая доступна из устройства hello.
 
 > [!NOTE]
-> Исправления должны быть доступны с обоих контроллеров, чтобы можно было получить любые возможные сообщения об ошибке от однорангового контроллера.
+> исправления Hello должен быть доступен с обоих контроллеров toodetect, все потенциальные ошибки сообщений hello однорангового контроллера.
 > 
 > 
 
-#### <a name="to-install-and-verify-regular-mode-hotfixes"></a>Установка и проверка исправлений обычного режима
-Выполните следующие действия для установки и проверки обычных исправлений. Если вы уже установили их с помощью портала Azure, перейдите к [установке и проверке исправлений режима обслуживания](#to-install-and-verify-maintenance-mode-hotfixes).
+#### <a name="tooinstall-and-verify-regular-mode-hotfixes"></a>tooinstall исправления обычный режим
+Выполните следующие шаги tooinstall hello и проверьте исправления в обычном режиме. Если вы установили их с помощью hello портала Azure пропускать слишком[Установка исправлений в режиме обслуживания,](#to-install-and-verify-maintenance-mode-hotfixes).
 
-1. Чтобы установить исправления, откройте интерфейс Windows PowerShell на последовательной консоли своего устройства StorSimple. Подробные инструкции см. в разделе [Подключение к последовательной консоли устройства с помощью PuTTY](../articles/storsimple/storsimple-deployment-walkthrough.md#use-putty-to-connect-to-the-device-serial-console). В командной строке нажмите клавишу **ВВОД**.
-2. Выберите **Вариант 1** , чтобы войти на устройство с правами на полный доступ.
-3. Чтобы установить исправление, в командной строке введите следующую команду:
+1. исправления tooinstall hello, доступа к интерфейсу Windows PowerShell hello в последовательной консоли устройства StorSimple. Выполните hello подробные инструкции в [последовательной консоли используйте PuTTy tooconnect toohello](../articles/storsimple/storsimple-deployment-walkthrough.md#use-putty-to-connect-to-the-device-serial-console). Hello командной строки, нажмите клавишу **ввод**.
+2. Выберите **вариант 1** toolog на устройстве toohello с полным доступом.
+3. исправление tooinstall hello в hello командной строке введите:
    
-    `Start-HcsHotfix -Path <path to update file> -Credential <credentials in domain\username format>`
+    `Start-HcsHotfix -Path <path tooupdate file> -Credential <credentials in domain\username format>`
    
-    В указанной выше команде вместо DNS в адресе общей папки укажите IP-адрес. Параметр "credential" используется только для доступа к общему ресурсу с проверкой подлинности.
+    Используйте IP, а не DNS в пути к папке в hello выше команды. параметр Hello учетных данных используется только в том случае, если вы обращаетесь ресурс прошедшего проверку подлинности.
    
-    Для доступа к общим ресурсам рекомендуем использовать параметр учетных данных. Даже те общие ресурсы, которые доступны для всех, обычно закрыты для пользователей, не прошедших проверку подлинности.
+    Рекомендуется использовать параметр tooaccess hello учетных данных долей. Даже общих папок, которые открыты слишком пребывание «everyone» обычно не открыть toounauthenticated пользователей.
    
-    Пример выходных данных этой команды показан ниже.
+    Результат выполнения команды показан ниже.
    
     ```
     Controller0>Start-HcsHotfix -Path \\10.100.100.100\share
@@ -42,15 +42,15 @@
 
     Confirm
 
-    This operation starts the hotfix installation and could reboot one or
-    both of the controllers. If the device is serving I/Os, these will not
-    be disrupted. Are you sure you want to continue?
+    This operation starts hello hotfix installation and could reboot one or
+    both of hello controllers. If hello device is serving I/Os, these will not
+    be disrupted. Are you sure you want toocontinue?
     [Y] Yes [N] No [?] Help (default is "Y"): Y
     ```
-4. Введите **Y** , когда будет предложено подтвердить установку исправлений.
-5. Проверьте обновление с помощью командлета `Get-HcsUpdateStatus` .
+4. Тип **Y** при запрашиваемые tooconfirm hello установки исправления.
+5. Мониторинг hello обновления с помощью hello `Get-HcsUpdateStatus` командлета.
    
-    Ниже приведен пример выходных данных для обновления, которое выполняется. Пока обновление выполняется, `RunInprogress` будет иметь значение `True`.
+    Hello следующий образец вывода показывает hello обновление выполняется. Hello `RunInprogress` будет `True` при hello идет обновление.
    
     ```
     Controller0>Get-HcsUpdateStatus
@@ -61,7 +61,7 @@
     Controller1Events   :
     ```
    
-     Ниже приведен пример выходных данных для обновления, установка которого завершена. После установки обновления `RunInProgress` будет иметь значение `False`.
+     Следующий пример выходных данных Hello указывает, что завершения обновления hello. Hello `RunInProgress` будет `False` после завершения обновления hello.
    
     ```
     Controller1>Get-HcsUpdateStatus
@@ -74,34 +74,34 @@
     ```
    
    > [!NOTE]
-   > В некоторых случаях командлет выдает значение `False`, пока обновление еще устанавливается. Чтобы проверить установку обновления, подождите несколько минут, выполните эту команду еще раз и убедитесь в том, что `RunInProgress` имеет значение `False`. Если это так, значит, исправление установлено.
+   > В некоторых случаях hello отчеты командлет `False` при обновлении hello она все еще выполняется. tooensure, hello исправление завершена, подождите несколько минут, выполните эту команду повторно и убедитесь, что hello `RunInProgress` — `False`. Если это так, исправление hello завершена.
 
-6. После завершения обновления программного обеспечения повторите шаги 3–5 для установки агента SaaS и агента MDS и наблюдения за ними. Убедитесь, что `all-hcsmdssoftwareupdate_0b438ddf0d5b686aada2378b754fac8c7f2160e9.exe` установлен до `all-cismdsagentupdatebundle_f98e62f4d56c79e2a6644d027af7a2393a93827a.exe`.
-7. Проверьте версии программного обеспечения системы. Тип:
+6. После программного обеспечения hello обновление является полным, повторите шаги 3 – 5 tooinstall и монитор hello SaaS агента и MDS агента. Убедитесь, что `all-hcsmdssoftwareupdate_0b438ddf0d5b686aada2378b754fac8c7f2160e9.exe` установлен до `all-cismdsagentupdatebundle_f98e62f4d56c79e2a6644d027af7a2393a93827a.exe`.
+7. Проверка версий программного обеспечения системы hello. Тип:
    
     `Get-HcsSystem`
    
-    Номера версий должны быть следующими:
+    Вы должны увидеть следующие версии hello.
    
    * HcsSoftwareVersion: 6.3.9600.17673
    * CisAgentVersion: 1.0.9150.0
    * MdsAgentVersion: 30.0.4698.13
      
-     Если после установки обновления номера версий не изменились, значит, исправление установить не удалось. В этом случае обратитесь за дополнительной помощью в [службу поддержки Майкрософт](../articles/storsimple/storsimple-contact-microsoft-support.md).
-8. Повторите шаги 3–5 для установки оставшихся обычных исправлений.
+     Если номера версий hello не изменяются после применения обновления hello, это означает, что сбой tooapply исправление hello. В этом случае обратитесь за дополнительной помощью в [службу поддержки Майкрософт](../articles/storsimple/storsimple-contact-microsoft-support.md).
+8. Повторите шаги 3 – 5 tooinstall hello оставшихся исправления в обычном режиме.
    
-   * Драйвер LSI — KB3121900
-   * Обновление Storport — KB3080728
-   * Обновление Spaceport — KB3090322
+   * Hello драйвера LSI - KB3121900
+   * Обновление Storport - KB3080728 Hello
+   * Обновление Spaceport - KB3090322 Hello
 
-#### <a name="to-install-and-verify-maintenance-mode-hotfixes"></a>Установка и проверка исправлений режима обслуживания
-Используйте KB3121899, чтобы установить обновления встроенного ПО дисков. Эти обновления прерывают работу, и на их завершение может потребоваться около 30 минут. Данные обновления можно установить в период планового техобслуживания, подключившись к последовательной консоли устройства.
+#### <a name="tooinstall-and-verify-maintenance-mode-hotfixes"></a>tooinstall исправления режима обслуживания
+Используйте обновления встроенного по диска tooinstall KB3121899. Эти обновления нарушают работу и занять toocomplete около 30 минут. Вы можете tooinstall в период планового обслуживания, подключающегося последовательной консоли устройства toohello.
 
-Обратите внимание, что если встроенное ПО диска уже обновлено, устанавливать эти обновления не требуется. Выполните командлет `Get-HcsUpdateAvailability` в последовательной консоли устройства, чтобы проверить, доступны ли обновления и являются ли они критическими (режим обслуживания) или некритическими (обычный режим).
+Обратите внимание, что если встроенного по диска уже обновлена, вам не нужно tooinstall эти обновления. Запустите hello `Get-HcsUpdateAvailability` из последовательной консоли toocheck hello устройства, если обновления доступны, является ли hello обновляет являются критическими (режим обслуживания) или не нарушают работу (обычный режим) обновления.
 
-Чтобы установить обновления встроенного ПО диска, следуйте приведенным ниже инструкциям.
+обновления встроенного по диска tooinstall hello, следуйте приведенным ниже инструкциям hello.
 
-1. Переведите устройство в режим обслуживания. Обратите внимание, что не следует использовать удаленное взаимодействие Windows PowerShell при переключении устройства в режим обслуживания. Вместо этого запустите следующий командлет при подключении через последовательную консоль устройства. Тип:
+1. Поместите hello устройства в режим обслуживания hello. Обратите внимание, что не следует использовать удаленное взаимодействие Windows PowerShell при подключении tooa устройство находится в режиме обслуживания. Вместо этого используйте этот командлет на контроллере устройства hello при подключении через последовательную консоль устройства hello. Тип:
    
     `Enter-HcsMaintenanceMode`
    
@@ -110,7 +110,7 @@
         Controller0>Enter-HcsMaintenanceMode
         Checking device state...
    
-        In maintenance mode, your device will not service IOs and will be disconnected from the Microsoft Azure StorSimple Manager service. Entering maintenance mode will end the current session and reboot both controllers, which takes a few minutes to complete. Are you sure you want to enter maintenance mode?
+        In maintenance mode, your device will not service IOs and will be disconnected from hello Microsoft Azure StorSimple Manager service. Entering maintenance mode will end hello current session and reboot both controllers, which takes a few minutes toocomplete. Are you sure you want tooenter maintenance mode?
         [Y] Yes [N] No (Default is "Y"): Y
    
         -----------------------MAINTENANCE MODE------------------------
@@ -118,7 +118,7 @@
         Name: Update2-8100-SHG0997879L76YD
         Software Version: 6.3.9600.17664
         Copyright (C) 2014 Microsoft Corporation. All rights reserved.
-        You are connected to Controller0 - Passive
+        You are connected tooController0 - Passive
         ---------------------------------------------------------------
    
         Serial Console Menu
@@ -128,26 +128,26 @@
         [4] Change language
         Please enter your choice>
    
-    После этого оба контроллера перезапускаются и переходят в режим обслуживания.
-2. Чтобы установить обновление встроенного ПО диска, введите:
+    Оба контроллера hello перезапустите в режим обслуживания.
+2. обновление встроенного по диска hello tooinstall, тип
    
-    `Start-HcsHotfix -Path <path to update file> -Credential <credentials in domain\username format>`
+    `Start-HcsHotfix -Path <path tooupdate file> -Credential <credentials in domain\username format>`
    
     Результат выполнения команды показан ниже.
    
         Controller1>Start-HcsHotfix -Path \\10.100.100.100\share\DiskFirmwarePackage.exe -Credential contoso\john
         Enter Password:
-        WARNING: In maintenance mode, hotfixes should be installed on each controller sequentially. After the hotfix is installed on this controller, install it on the peer controller.
+        WARNING: In maintenance mode, hotfixes should be installed on each controller sequentially. After hello hotfix is installed on this controller, install it on hello peer controller.
         Confirm
-        This operation starts a hotfix installation and could reboot one or both of the controllers. By installing new updates you agree to, and accept any additional terms associated with, the new functionality listed in the release notes (https://go.microsoft.com/fwLink/?LinkID=613790). Are you sure you want to continue?
+        This operation starts a hotfix installation and could reboot one or both of hello controllers. By installing new updates you agree to, and accept any additional terms associated with, hello new functionality listed in hello release notes (https://go.microsoft.com/fwLink/?LinkID=613790). Are you sure you want toocontinue?
         [Y] Yes [N] No (Default is "Y"): Y
-        WARNING: Installation is currently in progress. This operation can take several minutes to complete.
-3. Отслеживайте ход выполнения установки с помощью команды `Get-HcsUpdateStatus` . Обновление завершится, когда `RunInProgress` поменяется на `False`.
-4. После завершения установки контроллер, на котором установлено исправление режима обслуживания, будет перезагружен. В качестве варианта 1 войдите в систему с полным доступом и проверьте версию встроенного ПО диска. Тип:
+        WARNING: Installation is currently in progress. This operation can take several minutes toocomplete.
+3. Монитор hello установка выполняется с помощью `Get-HcsUpdateStatus` команды. Hello обновление будет завершено, после hello `RunInProgress` изменяет слишком`False`.
+4. По завершении установки hello перезапуска контроллера hello, на какие hello было установлено исправление режима обслуживания. Войдите в систему как вариант 1 с полным доступом и проверка версии встроенного по диска hello. Тип:
    
    `Get-HcsFirmwareVersion`
    
-   Ожидаемые версии встроенного ПО диска:
+   Hello ожидаемого версии встроенного по диска:
    
    `XMGG, XGEG, KZ50, F6C2, VR08`
    
@@ -158,7 +158,7 @@
        Name: Update2-8100-SHG0997879L76YD
        Software Version: 6.3.9600.17664
        Copyright (C) 2014 Microsoft Corporation. All rights reserved.
-       You are connected to Controller1
+       You are connected tooController1
        ---------------------------------------------------------------
    
        Controller1>Get-HcsFirmwareVersion
@@ -205,8 +205,8 @@
          SEAGATE:ST4000NM0023:XMGG
          SEAGATE:ST4000NM0023:XMGG
    
-    Выполните команду `Get-HcsFirmwareVersion` на втором контроллере, чтобы проверить обновление версии программного обеспечения. Затем можно выйти из режима обслуживания. Для этого введите следующую команду для каждого контроллера устройства:
+    Запустите hello `Get-HcsFirmwareVersion` команду на второй контроллер tooverify hello, hello версия программного обеспечения был обновлен. Затем можно выйти из режима обслуживания hello. toodo таким образом, введите следующую команду для каждого устройства контроллера hello:
    
    `Exit-HcsMaintenanceMode`
-5. При выходе из режима обслуживания контроллеры перезапускаются. Когда обновления встроенного ПО диска будут успешно установлены, а устройство будет выведено из режима обслуживания, вернитесь в классический портал Azure. Обратите внимание, что для отображения установленных обновлений режима обслуживания на портале может потребоваться до 24 часов.
+5. контроллеры Hello перезапустите при выходе из режима обслуживания. После встроенного по диска hello успешного применения обновлений и устройство hello вышел из режима обслуживания, возвращаемого toohello классический портал Azure. Обратите внимание, что этот портал hello может показывать установку обновлений в режиме обслуживания hello на 24 часа.
 

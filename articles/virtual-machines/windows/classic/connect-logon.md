@@ -1,6 +1,6 @@
 ---
-title: "Вход на классическую виртуальную машину Azure | Документация Майкрософт"
-description: "Используйте портал Azure для входа в виртуальную машину Windows, созданную с использованием классической модели развертывания."
+title: "aaaLog на tooa классической виртуальной Машине Azure | Документы Microsoft"
+description: "Используйте hello Azure портала toolog на виртуальной машине Windows tooa, созданных с помощью hello классической модели развертывания."
 services: virtual-machines-windows
 documentationcenter: 
 author: cynthn
@@ -15,53 +15,53 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/30/2017
 ms.author: cynthn
-ms.openlocfilehash: 43d54de7e875de9212c23c49ad0539bf2272a312
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 2e32b7036c2538e73b46580e0f5f8f4979e8a685
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="log-on-to-a-windows-virtual-machine-using-the-azure-portal"></a>Вход в виртуальную машину под управлением Windows с помощью портала Azure
-На портале Azure для запуска сеанса удаленного рабочего стола и входа в виртуальную машину Windows используйте кнопку **Подключиться** .
+# <a name="log-on-tooa-windows-virtual-machine-using-hello-azure-portal"></a>Войдите на tooa виртуальной машины Windows с помощью портала Azure hello
+Hello портал Azure, используется в hello **Connect** кнопку toostart сеанс удаленного рабочего стола и войдите в систему виртуальной Машины Windows tooa.
 
-Хотите подключиться к виртуальной машине Linux? Ознакомьтесь со статьей [How to log on to a virtual machine running Linux](../../linux/mac-create-ssh-keys.md) (Как войти в виртуальную машину под управлением Linux).
+Вы хотите, чтобы tooconnect tooa виртуальных Машин Linux? В разделе [как toolog на tooa виртуальной машине под управлением Linux](../../linux/mac-create-ssh-keys.md).
 
 <!--
 Deleting, but not 100% sure
-Learn how to [perform these steps using new Azure portal](../connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Learn how too[perform these steps using new Azure portal](../connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 -->
 
 > [!IMPORTANT]
-> В Azure предлагаются две модели развертывания для создания ресурсов и работы с ними: [модель диспетчера ресурсов и классическая модель](../../../resource-manager-deployment-model.md). В этой статье рассматривается использование классической модели развертывания. Для большинства новых развертываний Майкрософт рекомендует использовать модель диспетчера ресурсов. Дополнительные сведения о том, как войти в виртуальную машину с помощью модели Resource Manager, см. [здесь](../connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+> В Azure предлагаются две модели развертывания для создания ресурсов и работы с ними: [модель диспетчера ресурсов и классическая модель](../../../resource-manager-deployment-model.md). В этой статье описан с помощью hello классической модели развертывания. Корпорация Майкрософт рекомендует наиболее новые развертывания модели hello диспетчера ресурсов. Сведения о как toolog на tooa виртуальной Машины с помощью hello диспетчера ресурсов модели см. в разделе [здесь](../connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
-## <a name="connect-to-the-virtual-machine"></a>Подключение к виртуальной машине
-1. Войдите на портал Azure.
-2. Щелкните виртуальную машину, доступ к которой необходимо получить. Имя указывается в области **Все ресурсы**.
+## <a name="connect-toohello-virtual-machine"></a>Подключение toohello виртуальной машины
+1. Войдите в систему toohello портал Azure.
+2. Щелкните на виртуальной машине hello, tooaccess. Hello имя указано в hello **все ресурсы** области.
 
     ![Расположения виртуальных машин](./media/connect-logon/azureportaldashboard.png)
 
-3. Щелкните **Подключиться** на панели команд вверху панели мониторинга виртуальной машины.
+3. Нажмите кнопку **Connect** на панели команд hello поверх панели мониторинга виртуальной машины hello.
 
-    ![Значок подключения для виртуальной машины](./media/connect-logon/virtualmachine_dashboard_connect.png)
+    ![Значок для виртуальной машины hello подключения](./media/connect-logon/virtualmachine_dashboard_connect.png)
 
 <!-- Don't know if this still applies
      I think we can zap this.
 > [!TIP]
-> If the **Connect** button isn't available, see the troubleshooting tips at the end of this article.
+> If hello **Connect** button isn't available, see hello troubleshooting tips at hello end of this article.
 >
 >
 -->
 
-## <a name="log-on-to-the-virtual-machine"></a>Вход на виртуальную машину
+## <a name="log-on-toohello-virtual-machine"></a>Войдите на виртуальную машину toohello
 [!INCLUDE [virtual-machines-log-on-win-server](../../../../includes/virtual-machines-log-on-win-server.md)]
 
 ## <a name="next-steps"></a>Дальнейшие действия
-* Если кнопка **Подключиться** неактивна или возникли другие проблемы с подключением к удаленному рабочему столу, попробуйте переустановить конфигурацию. Щелкните **Сброс удаленного доступа** на панели мониторинга виртуальной машины.
+* Если hello **Connect** кнопка неактивна, или возникли другие проблемы с подключением удаленного рабочего стола hello, попробуйте сбросить настройки hello. Нажмите кнопку **сбросьте удаленный доступ** из панели мониторинга виртуальной машины hello.
 
     ![Сброс удаленного доступа](./media/connect-logon/virtualmachine_dashboard_reset_remote_access.png)
 
-* Если возникли проблемы с паролем, попробуйте сбросить его. Щелкните **Сбросить пароль** возле левого края панели мониторинга виртуальной машины, в разделе **Поддержка и устранение неполадок**.
+* Если возникли проблемы с паролем, попробуйте сбросить его. Нажмите кнопку **сброс пароля** вдоль hello левого края панели мониторинга виртуальной машины, в разделе **поддержки + Устранение неполадок**.
 
     ![Сброс пароля](./media/connect-logon/virtualmachine_dashboard_reset_password.png)
 
-Если эти рекомендации не помогли устранить проблему или они вам не подходят, см. статью [Устранение неполадок с подключением к удаленному рабочему столу на виртуальной машине Azure под управлением Windows](../troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). В ней описывается процесс диагностики и решения распространенных проблем.
+Если эти советы не работают или не то, что нужно, в разделе [tooa подключений удаленного рабочего стола на устранение неполадок виртуальной машины на основе Windows Azure](../troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). В ней описывается процесс диагностики и решения распространенных проблем.

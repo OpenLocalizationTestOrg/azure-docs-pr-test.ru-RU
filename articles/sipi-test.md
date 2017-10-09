@@ -1,6 +1,6 @@
 ---
 title: "Файл теста SIPI | Документы Microsoft"
-description: "Тестовый файл, чтобы проверить ReadyForTest зависимости"
+description: "Файл toocheck ReadyForTest зависимости тестов"
 services: active-directory-b2c
 documentationcenter: 
 author: Sipi
@@ -14,26 +14,26 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 6/13/2017
 ms.author: Sipi
-ms.openlocfilehash: 871d58818dcbaee5f7a5f07c19e2297ec6459a6f
-ms.sourcegitcommit: b0af2a2cf44101a1b1ff41bd2ad795eaef29612a
+ms.openlocfilehash: afd3dc94dfb30926b316256fb06a768a391004f5
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 09/28/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="sipi-test-file"></a>Файл SIPI теста
 
-Из этого краткого руководства вы узнаете, как зарегистрировать приложение в клиенте Microsoft Azure Active Directory (Azure AD) B2C за несколько минут. Ознакомившись с этим руководством, вы зарегистрируете приложение для использования в клиенте Azure AD B2C.
+Из этого краткого руководства вы узнаете, как зарегистрировать приложение в клиенте Microsoft Azure Active Directory (Azure AD) B2C за несколько минут. После завершения приложение регистрируется для использования в клиенте hello Azure B2C.
 
 ## <a name="prerequisites"></a>Предварительные требования
 
-Чтобы создать приложение с поддержкой регистрации и входа пользователей, его сначала нужно зарегистрировать с использованием клиента Azure Active Directory B2C. Получите собственный клиент, следуя указаниям в статье о [создании клиента Azure AD B2C](active-directory-b2c-get-started.md).
+toobuild приложения, которое принимает потребителя регистрации и входе в систему, необходимо сначала приложения hello tooregister с клиентом Azure Active Directory B2C. Получение вашего собственного клиента с помощью hello действия, описанные в [создание клиента Azure AD B2C](active-directory-b2c-get-started.md).
 
-Управление приложениями, созданными в колонке Azure AD B2C на портале Azure, должно осуществляться в том же расположении. Если вы измените приложения B2C с помощью PowerShell или другого портала, их поддержка прекратится и они не будут работать с Azure AD B2C. Дополнительные сведения см. в разделе [Неисправные приложения](#faulted-apps). 
+Приложения, созданные из колонки hello Azure AD B2C в hello портал Azure, должна управляться из hello местоположения. При редактировании hello B2C приложений с помощью PowerShell или другого портала становятся не поддерживается и не работают с Azure AD B2C. Просмотреть сведения в hello [произошел сбой приложения](#faulted-apps) раздела. 
 
-## <a name="navigate-to-b2c-settings"></a>Переход к параметрам B2C
+## <a name="navigate-toob2c-settings"></a>Параметры tooB2C перехода
 
-Войдите на [портал Azure](https://portal.azure.com/) как глобальный администратор клиента B2C. 
+Войдите в toohello [портал Azure](https://portal.azure.com/) как глобальный администратор клиента hello B2C hello. 
 
 [!INCLUDE [active-directory-b2c-switch-b2c-tenant](../includes/active-directory-b2c-switch-b2c-tenant.md)]
 
-Выберите следующие действия в зависимости от типа приложения, которое регистрируется:
+Выбор следующего действия в зависимости от типа приложения hello, регистрируемая:

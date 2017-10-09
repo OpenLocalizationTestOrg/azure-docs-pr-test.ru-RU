@@ -1,6 +1,6 @@
 ---
-title: "Компиляция конфигураций в Azure Automation DSC | Документация Майкрософт"
-description: "В этой статье описывается, как компилировать конфигурации службы настройки требуемого состояния (DSC) для службы автоматизации Azure."
+title: "aaaCompiling конфигурации в DSC службы автоматизации Azure | Документы Microsoft"
+description: "В этой статье описывается как toocompile конфигурации требуемого состояния (DSC) для автоматизации Azure."
 services: automation
 documentationcenter: na
 author: eslesar
@@ -13,20 +13,20 @@ ms.tgt_pltfrm: powershell
 ms.workload: na
 ms.date: 02/07/2017
 ms.author: magoedte; eslesar
-ms.openlocfilehash: 1aadd604e676659475f00760af3b0bdfb13a4792
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: b195311318a2d7431c4d6b29f4b9a5f3a0a0a9a5
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="compiling-configurations-in-azure-automation-dsc"></a>Компилирование конфигураций в Azure Automation DSC
 
-Вы можете компилировать конфигурации службы настройки требуемого состояния (DSC) двумя способами: на портале Azure или с помощью PowerShell. Нижеприведенная таблица поможет определить, когда и какой метод использовать с учетом характеристик каждого метода.
+Можно скомпилировать конфигурации требуемого состояния (DSC) в службе автоматизации Azure двумя способами: в hello портал Azure, а также с помощью Windows PowerShell. Hello Следующая таблица поможет определить, когда какой метод на основе hello характеристик каждого toouse:
 
 ### <a name="azure-portal"></a>Портал Azure
 
 * Простейший способ с интерактивным пользовательским интерфейсом.
-* Форма для предоставления значений простых параметров.
+* Значения параметра простой формы tooprovide
 * Легко отслеживаемое состояние задания.
 * Доступ с проверкой подлинности в Azure.
 
@@ -36,29 +36,29 @@ ms.lasthandoff: 07/11/2017
 * Может быть добавлено в автоматизированное решение, состоящее из нескольких шагов.
 * Необходимо предоставить значения простых и сложных параметров.
 * Отслеживание состояния задания
-* Для поддержки командлетов PowerShell необходим клиент.
+* Требуется клиент toosupport командлеты PowerShell
 * Передача данных ConfigurationData.
 * Компилирование конфигураций, использующих учетные данные.
 
-После выбора метода компиляции вы можете выполнять процедуры, описанные ниже, чтобы начать компилирование.
+После выбора метода компиляции, можно выполнить соответствующие процедуры hello ниже toostart компиляции.
 
-## <a name="compiling-a-dsc-configuration-with-the-azure-portal"></a>Компилирование конфигурации DSC с помощью портала Azure
+## <a name="compiling-a-dsc-configuration-with-hello-azure-portal"></a>При компиляции конфигурации DSC с hello портал Azure
 
 1. В учетной записи службы автоматизации щелкните **DSC Configurations** (Конфигурации DSC).
-2. Щелкните конфигурацию, чтобы открыть ее колонку.
+2. Щелкните tooopen конфигурации колонке.
 3. Нажмите кнопку **Компилировать**.
-4. Если конфигурация не имеет параметров, нужно будет подтвердить ее компилирование. Если конфигурация имеет параметры, то отобразится колонка **Compile Configuration** (Компилирование конфигурации), в которой можно указать значения параметров. Дополнительные сведения о параметрах см. в разделе [**Базовые параметры**](#basic-parameters) ниже.
-5. Откроется колонка **Задание компилирования** , где вы можете отследить статус задания компилирования, а также конфигурации узла (документы конфигурации MOF), которые это задание расположило на опрашивающем сервере Azure Automation DSC.
+4. Если конфигурация hello не имеет параметров, можно запрашиваемые tooconfirm следует toocompile ли он. Если параметры конфигурации hello, hello **компиляции конфигурации** колонке будет открыт, чтобы обеспечить значения параметров. В разделе hello [ **базовых параметров** ](#basic-parameters) ниже, в разделе для получения сведений о параметрах.
+5. Hello **задание компиляции** открывается колонка, чтобы отследить состояние задания компиляции hello и hello конфигурации узла (документам MOF конфигурации), она вызвана toobe обмена hello опрашивающего сервера Azure Automation DSC.
 
 ## <a name="compiling-a-dsc-configuration-with-windows-powershell"></a>Компилирование конфигурации DSC с помощью Windows PowerShell
 
-Чтобы начать компилирование с помощью Windows PowerShell, вы можете использовать [`Start-AzureRmAutomationDscCompilationJob`](/powershell/module/azurerm.automation/start-azurermautomationdsccompilationjob) . В следующем примере кода запускается компилирование конфигурации DSC под именем **SampleConfig**.
+Можно использовать [ `Start-AzureRmAutomationDscCompilationJob` ](/powershell/module/azurerm.automation/start-azurermautomationdsccompilationjob) toostart компиляции с помощью Windows PowerShell. Следующий пример кода Hello запускает компиляции конфигурации DSC, называемой **SampleConfig**.
 
 ```powershell
 Start-AzureRmAutomationDscCompilationJob -ResourceGroupName "MyResourceGroup" -AutomationAccountName "MyAutomationAccount" -ConfigurationName "SampleConfig"
 ```
 
-`Start-AzureRmAutomationDscCompilationJob` возвращает объект задания компилирования, с помощью которого вы можете отслеживать состояние. После этого вы можете использовать этот объект задания компилирования с помощью [`Get-AzureRmAutomationDscCompilationJob`](/powershell/module/azurerm.automation/get-azurermautomationdsccompilationjob), чтобы определить статус задания компилирования, или с помощью [`Get-AzureRmAutomationDscCompilationJobOutput`](/powershell/module/azurerm.automation/get-azurermautomationdsccompilationjoboutput), чтобы просматривать его потоки (выходные данные). В следующем примере кода мы запускаем компилирование конфигурации **SampleConfig** , ждем, пока оно завершится, а затем отображаем его потоки.
+`Start-AzureRmAutomationDscCompilationJob`Возвращает компиляции заданий, которые можно использовать tootrack его состояние объекта. Затем можно использовать этот объект задания компиляции с [ `Get-AzureRmAutomationDscCompilationJob` ](/powershell/module/azurerm.automation/get-azurermautomationdsccompilationjob) toodetermine hello состояние задания компиляции hello, и [ `Get-AzureRmAutomationDscCompilationJobOutput` ](/powershell/module/azurerm.automation/get-azurermautomationdsccompilationjoboutput) tooview свои потоки (output). Следующий образец кода Hello начинает компиляцию hello **SampleConfig** конфигурации, ожидает его завершения, а затем отображает свои потоки.
 
 ```powershell
 $CompilationJob = Start-AzureRmAutomationDscCompilationJob -ResourceGroupName "MyResourceGroup" -AutomationAccountName "MyAutomationAccount" -ConfigurationName "SampleConfig"
@@ -73,9 +73,9 @@ $CompilationJob | Get-AzureRmAutomationDscCompilationJobOutput –Stream Any
 ```
 
 ## <a name="basic-parameters"></a>Базовые параметры
-Объявление параметров, в том числе типов и свойств параметров, в конфигурациях DSC выполняется так же, как и в модулях Runbook службы автоматизации Azure. Дополнительные сведения о параметрах модуля Runbook см. в статье [Запуск модуля Runbook в службе автоматизации Azure](automation-starting-a-runbook.md).
+Объявление параметра в конфигурациях DSC, включая типы параметров и свойств, работает hello таким же как модулей Runbook службы автоматизации Azure. В разделе [запуск runbook в автоматизации Azure](automation-starting-a-runbook.md) toolearn Дополнительные сведения о параметрах runbook.
 
-Чтобы определить значения свойств в конфигурации узла **ParametersExample.sample**, созданной во время компилирования, в следующем примере используются два параметра — **FeatureName** и **IsPresent**.
+Hello следующий пример использует два параметра при вызове **FeatureName** и **IsPresent**, значений свойств в hello hello toodetermine **ParametersExample.sample** узла Конфигурация, созданные во время компиляции.
 
 ```powershell
 Configuration ParametersExample
@@ -106,17 +106,17 @@ Configuration ParametersExample
 }
 ```
 
-Вы можете компилировать конфигурации DSC, использующие базовые параметры, на портале Azure Automation DSC или с помощью Azure PowerShell:
+Вы можете скомпилировать конфигураций DSC, используйте базовых параметров портала Azure Automation DSC hello, или с помощью Azure PowerShell.
 
 ### <a name="portal"></a>Microsoft Azure
 
-Чтобы ввести значения параметров на портале, нажмите кнопку **Компилировать**.
+На портале hello, можно ввести значения параметров после нажатия кнопки **компиляции**.
 
 ![замещающий текст](./media/automation-dsc-compile/DSC_compiling_1.png)
 
 ### <a name="powershell"></a>PowerShell
 
-Для модуля PowerShell нужны параметры в таблице [hashtable](http://technet.microsoft.com/library/hh847780.aspx) , в которой раздел соответствует имени параметра, а значение — значению параметра.
+PowerShell требуются параметры в [hashtable](http://technet.microsoft.com/library/hh847780.aspx) hello ключ совпадает с именем параметра hello, куда hello, значение равно значению параметра hello.
 
 ```powershell
 $Parameters = @{
@@ -130,12 +130,12 @@ Start-AzureRmAutomationDscCompilationJob -ResourceGroupName "MyResourceGroup" -A
 Сведения о передаче учетных данных PSCredentials в качестве параметров см. в разделе <a href="#credential-assets">**Активы учетных данных**</a> ниже.
 
 ## <a name="configurationdata"></a>ConfigurationData
-Параметр **ConfigurationData** позволяет при использовании PowerShell DSC отделить конфигурацию структуры от любой конфигурации среды. Дополнительные сведения о **ConfigurationData** см. в публикации блога [Separating "What" from "Where" in PowerShell DSC](http://blogs.msdn.com/b/powershell/archive/2014/01/09/continuous-deployment-using-dsc-with-minimal-change.aspx) (Разница между "что" и "где" в DSC PowerShell).
+**ConfigurationData** позволяет tooseparate отделение структурной конфигурации из какой-либо настройки среды при работе с PowerShell DSC. В разделе [отделение «Что» от «Where» в PowerShell DSC](http://blogs.msdn.com/b/powershell/archive/2014/01/09/continuous-deployment-using-dsc-with-minimal-change.aspx) toolearn Дополнительные сведения о **ConfigurationData**.
 
 > [!NOTE]
-> Вы можете использовать **ConfigurationData**, когда выполняете компилирование на платформе Azure Automation DSC с помощью Azure PowerShell. Не следует использовать этот параметр на портале Azure.
+> Можно использовать **ConfigurationData** при компиляции в Azure Automation DSC с помощью Azure PowerShell, но не в hello портал Azure.
 
-В приведенном ниже примере конфигурации DSC параметр **ConfigurationData** используется через ключевые слова **$ConfigurationData** и **$AllNodes**. Для этого примера также понадобится [модуль **xWebAdministration**](https://www.powershellgallery.com/packages/xWebAdministration/):
+Hello ниже примере DSC конфигурации используется **ConfigurationData** через hello **$ConfigurationData** и **$AllNodes** ключевые слова. Кроме того, потребуется hello [ **xWebAdministration** модуль](https://www.powershellgallery.com/packages/xWebAdministration/) в этом примере:
 
 ```powershell
 Configuration ConfigurationDataSample
@@ -156,7 +156,7 @@ Configuration ConfigurationDataSample
 }
 ```
 
-Вы можете компилировать конфигурацию DSC, показанную выше, с помощью PowerShell. Команда PowerShell ниже добавляет две конфигурации узла в опрашивающий сервер службы автоматизации Azure: **ConfigurationDataSample.MyVM1** и **ConfigurationDataSample.MyVM3**:
+Можно скомпилировать конфигурацию DSC hello выше с помощью PowerShell. Hello под PowerShell добавляет два узла конфигурации toohello опрашивающего сервера Azure Automation DSC: **ConfigurationDataSample.MyVM1** и **ConfigurationDataSample.MyVM3**:
 
 ```powershell
 $ConfigData = @{
@@ -185,7 +185,7 @@ Start-AzureRmAutomationDscCompilationJob -ResourceGroupName "MyResourceGroup" -A
 
 ## <a name="assets"></a>Активы
 
-Ссылки на активы одинаковы в конфигурациях и модулях Runbook платформы Azure Automation DSC. Дополнительную информацию см. в следующих статьях:
+Ссылки на средства hello же Azure Automation DSC конфигурации и модулей Runbook. Hello ниже для получения дополнительной информации см.:
 
 * [Сертификаты](automation-certificates.md)
 * [Подключения](automation-connections.md)
@@ -194,13 +194,13 @@ Start-AzureRmAutomationDscCompilationJob -ResourceGroupName "MyResourceGroup" -A
 
 ### <a name="credential-assets"></a>Активы учетных данных
 
-Хотя конфигурации DSC в службе автоматизации Azure могут ссылаться на ресурсы учетных данных с помощью командлета **Get-AzureRmAutomationCredential**, при необходимости эти ресурсы можно передавать и в качестве параметров. Если конфигурация принимает параметр типа **PSCredential** , в качестве значения этого параметра нужно использовать имя строки ресурса учетных данных (используется в службе автоматизации Azure), а не объект PSCredential. Названный так актив учетных данных, используемых для службы автоматизации Azure, будет в фоновом режиме извлечен и передан в конфигурацию.
+Хотя конфигурации DSC в службе автоматизации Azure могут ссылаться на ресурсы учетных данных с помощью командлета **Get-AzureRmAutomationCredential**, при необходимости эти ресурсы можно передавать и в качестве параметров. Если конфигурация принимает параметр **PSCredential** тип, как значение этого параметра, а не объект PSCredential, потребуется toopass hello строковое имя актива учетных данных службы автоматизации Azure. В фоновом hello hello Azure учетных данных службы автоматизации с таким именем будет получаться и переданный toohello конфигурации.
 
-Чтобы обеспечить безопасность учетных данных в конфигурациях узла (документы конфигурации MOF), учетные данные нужно зашифровать в MOF-файле конфигурации узла. Служба автоматизации Azure делает больше — она зашифровывает MOF-файл целиком. Но сейчас в модуле DSC PowerShell нужно подтверждать, что учетные данные можно отображать в формате обычного текста во время создания MOF-файла конфигурации узла. Это связано с тем, что модулю DSC PowerShell неизвестно, что, когда MOF-файл будет создан с помощью задачи компилирования, служба автоматизации Azure будет шифровать его целиком.
+Хранение учетных данных безопасности в конфигурации узла (документам MOF конфигурации) требует шифрования hello учетных данных в MOF-файл конфигурации узла hello. Служба автоматизации Azure расширяет эти дополнительные и шифрует hello всей MOF-файл. Однако в настоящее время необходимо сообщить PowerShell DSC допустимо для toobe учетные данные, выводимые в виде обычного текста во время создания MOF конфигурации узла, так как PowerShell DSC не знает, что службы автоматизации Azure будет шифрования hello всей MOF-файл после его Создание через задание компиляции.
 
-Вы можете подтвердить в модуле DSC PowerShell, что учетные данные можно отобразить в формате обычного текста в MOF-файлах конфигурации узлов, использующих [**ConfigurationData**](#configurationdata). `PSDscAllowPlainTextPassword = $true` следует передать через **ConfigurationData** для каждого имени блока узла, которое отображается в конфигурации DSC и для которого нужны учетные данные.
+Можно определить PowerShell DSC, что допустимо для toobe учетные данные, выводимые в виде обычного текста в конфигурации узла hello созданный MOF-файлы с помощью [ **ConfigurationData**](#configurationdata). Необходимо передать `PSDscAllowPlainTextPassword = $true` через **ConfigurationData** для каждого узла блока имя, которое отображается в конфигурации hello DSC и использует учетные данные.
 
-В следующем примере показана конфигурация DSC, использующая актив учетных данных автоматизации.
+Hello пример конфигурации DSC, использующий актива учетных данных службы автоматизации.
 
 ```powershell
 Configuration CredentialSample
@@ -219,7 +219,7 @@ Configuration CredentialSample
 }
 ```
 
-Вы можете компилировать конфигурацию DSC, показанную выше, с помощью PowerShell. Команда PowerShell ниже добавляет две конфигурации узла в опрашивающий сервер службы автоматизации Azure: **CredentialSample.MyVM1** и **CredentialSample.MyVM2**.
+Можно скомпилировать конфигурацию DSC hello выше с помощью PowerShell. Hello под PowerShell добавляет два узла конфигурации toohello опрашивающего сервера Azure Automation DSC: **CredentialSample.MyVM1** и **CredentialSample.MyVM2**.
 
 ```powershell
 $ConfigData = @{
@@ -243,31 +243,31 @@ Start-AzureRmAutomationDscCompilationJob -ResourceGroupName "MyResourceGroup" -A
 ## <a name="importing-node-configurations"></a>Импорт конфигураций узлов
 
 Вы также можете импортировать конфигурации узла (MOF-файлы), скомпилированные за пределами Azure. Одним из преимуществ является то, что конфигурации узла могут быть заверены.
-Заверенная конфигурация узла проверяется локально на управляемом узле агентом DSC. Тем самым гарантируется, что конфигурация, применяемая к узлу, передана из авторизованного источника.
+Настройка знаком узла подтверждается локально на управляемом узле агент hello DSC, гарантируя, что в этой конфигурации hello, примененные toohello узла поступает из авторизованного источника.
 
 > [!NOTE]
 > Заверенные конфигурации можно импортировать в учетную запись службы автоматизации Azure, но служба автоматизации Azure в настоящее время не поддерживает компиляцию заверенных конфигураций.
 
 > [!NOTE]
-> Размер файла конфигурации узла не должен превышать 1 МБ, чтобы его можно было импортировать в службу автоматизации Azure.
+> Файл конфигурации узла должно быть не больше 1 МБ tooallow его toobe, импортированные в службу автоматизации Azure.
 
-Сведения о том, как заверить конфигурацию узла, см. по следующей ссылке: https://msdn.microsoft.com/en-us/powershell/wmf/5.1/dsc-improvements#how-to-sign-configuration-and-module.
+Рассказывается, как на https://msdn.microsoft.com/en-us/powershell/wmf/5.1/dsc-improvements#how-to-sign-configuration-and-module toosign узла конфигурации.
 
-### <a name="importing-a-node-configuration-in-the-azure-portal"></a>Импорт конфигурации узла на портале Azure
+### <a name="importing-a-node-configuration-in-hello-azure-portal"></a>Импорт конфигурации узла в hello портал Azure
 
 1. В учетной записи службы автоматизации щелкните **DSC node configurations** (Конфигурации узла DSC).
 
     ![Конфигурации узла DSC](./media/automation-dsc-compile/node-config.png)
-2. В колонке **DSC node configurations** (Конфигурации узла DSC) щелкните **Add a NodeConfiguration** (Добавить конфигурацию узла).
-3. В колонке **Import** (Импорт) щелкните значок папки рядом с текстовым полем **Node Configuration File** (Файл конфигурации узла), чтобы найти файл конфигурации узла (MOF) на локальном компьютере.
+2. В hello **конфигурации узла DSC** колонка, щелкните **добавить NodeConfiguration**.
+3. В hello **импорта** колонке нажмите кнопку Далее toohello hello папки значок **файла конфигурации узла** toobrowse textbox для файла конфигурации узла (MOF) на локальном компьютере.
 
     ![Поиск локального файла](./media/automation-dsc-compile/import-browse.png)
-4. В текстовом поле **Configuration Name** (Имя конфигурации) введите имя. Это имя должно совпадать с именем конфигурации, из которой была скомпилирована данная конфигурация узла.
+4. Введите имя в hello **имя конфигурации** текстового поля. Это имя должно совпадать с именем hello hello конфигурации, из которой была скомпилирована hello конфигурации узла.
 5. Нажмите кнопку **ОК**.
 
 ### <a name="importing-a-node-configuration-with-powershell"></a>Импорт конфигурации узла с помощью PowerShell
 
-Для импорта конфигурации узла в учетную запись службы автоматизации можно использовать командлет [Import-AzureRmAutomationDscNodeConfiguration](/powershell/module/azurerm.automation/import-azurermautomationdscnodeconfiguration).
+Можно использовать hello [AzureRmAutomationDscNodeConfiguration импорта](/powershell/module/azurerm.automation/import-azurermautomationdscnodeconfiguration) tooimport командлет конфигурации узла, в свою учетную запись автоматизации.
 
 ```powershell
 Import-AzureRmAutomationDscNodeConfiguration -AutomationAccountName "MyAutomationAccount" -ResourceGroupName "MyResourceGroup" -ConfigurationName "MyNodeConfiguration" -Path "C:\MyConfigurations\TestVM1.mof"

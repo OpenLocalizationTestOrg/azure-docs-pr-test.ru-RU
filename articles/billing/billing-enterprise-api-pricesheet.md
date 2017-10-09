@@ -1,6 +1,6 @@
 ---
-title: "Интерфейсы API для выставления счетов Azure корпоративным клиентам: прейскурант | Документация Майкрософт"
-description: "Узнайте, как с помощью интерфейсов API отчетов для корпоративных клиентов Azure извлекать данные о потреблении программным способом."
+title: "aaaAzure выставления счетов Enterprise API-интерфейсов - PriceSheet | Документы Microsoft"
+description: "Дополнительные сведения о hello API отчетов, которые программным образом включить корпоративных клиентов toopull потребления данных Azure."
 services: 
 documentationcenter: 
 author: aedwin
@@ -15,18 +15,18 @@ ms.tgt_pltfrm: na
 ms.workload: billing
 ms.date: 04/25/2017
 ms.author: aedwin
-ms.openlocfilehash: 2e7d6e883abe4cee13bc5f684baf2a1ea9c6c397
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 4cfe694c63fba266d117054b046d9caacb3b7197
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="reporting-apis-for-enterprise-customers---price-sheet"></a>API-интерфейсы отчетов для корпоративных клиентов: прейскурант
 
-API прейскуранта предоставляет соответствующий тариф для каждой метрики в отдельной регистрации и за определенный расчетный период.
+Hello цена лист API предоставляет соответствующему курсу hello для каждого индикатора для регистрации и выставления счетов за период hello.
 
 ##<a name="request"></a>Запрос
-Общие свойства заголовка, которые необходимо добавить, указываются [здесь](billing-enterprise-api.md). Если расчетный период не указан, то возвращаются данные за текущий расчетный период.
+Задаются общие свойства заголовка, которые необходимо добавить toobe [здесь](billing-enterprise-api.md). Если периода выставления счетов не указан, данные для выставления счетов hello для текущего периода возвращается.
 
 |Метод | URI запроса|
 |-|-|
@@ -34,7 +34,7 @@ API прейскуранта предоставляет соответствую
 |ПОЛУЧЕНИЕ|https://consumption.azure.com/v2/enrollments/{enrollmentNumber}/billingPeriods/{billingPeriod}/pricesheet|
 
 > [!Note]
-> Чтобы использовать предварительную версию API, измените v2 на v1 в URL-адресе выше.
+> toouse hello предварительную версию API, замените v2 v1 в hello выше URL-адрес.
 >
 
 ## <a name="response"></a>Ответ
@@ -68,22 +68,22 @@ API прейскуранта предоставляет соответствую
     
 
 > [!Note]
->Если вы используете API предварительной версии, поле meterId недоступно.
+>Если вы используете hello API предварительной версии, meterId поле недоступно.
 >
 
 **Определения свойств ответа**
 
 |Имя свойства| Тип| Описание
 |-|-|-|
-|id| string| Уникальный идентификатор, представляющий определенный элемент PriceSheet (метрика за расчетный период)|
-|billingPeriodId| string| Уникальный идентификатор, представляющий определенный расчетный период|
-|meterId| string| Идентификатор средства измерения. Может сопоставляться с идентификатором meterId использования.|
-|meterName| string| Имя метрики|
-|unitOfMeasure| string| Единица измерения для измерения службы|
+|id| string| Hello уникальный идентификатор, представляющий определенный элемент PriceSheet (индикатор, расчетный период)|
+|billingPeriodId| string| Hello уникальный идентификатор, представляющий определенного периода выставления счетов|
+|meterId| string| Идентификатор Hello индикатор hello. Это может быть meterId сопоставленных toohello использования.|
+|meterName| string| имя индикатора Hello|
+|unitOfMeasure| string| Hello единица измерения для измерения службы hello|
 |includedQuantity| decimal| Количество, которое включено |
-|partNumber| string| Артикул, связанный со метрикой|
-|unitPrice| decimal| Цена единицы измерения для метрики|
-|currencyCode| string| Код валюты для unitPrice|
+|partNumber| string| Номер части Hello, связанный с hello индикатора|
+|unitPrice| decimal| Hello цену за единицу для индикатора hello|
+|currencyCode| string| Код валюты Hello hello unitPrice|
 <br/>
 ## <a name="see-also"></a>См. также
 

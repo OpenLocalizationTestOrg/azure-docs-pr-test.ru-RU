@@ -1,12 +1,12 @@
 ---
-title: "Подключение Arduino (C) к Интернету вещей Azure. Урок 3. Запуск примера | Документация Майкрософт"
-description: "Разверните и запустите на плате Adafruit Feather M0 WiFi пример приложения, которое отправляет сообщения в Центр Интернета вещей и заставляет светодиодный индикатор мигать."
+title: "Connect Arduino (C) tooAzure IoT — занятия 3: выполнение примера | Документы Microsoft"
+description: "Развертывание и запуск образца приложения tooAdafruit Растушевка M0 Wi-Fi, отправляет сообщения центр IoT tooyour и hello Индикатор мигает."
 services: iot-hub
 documentationcenter: 
 author: shizn
 manager: timtl
 tags: 
-keywords: "облачная служба Интернета вещей, отправка данных в облако с помощью Arduino"
+keywords: "IOT облачной службы, arduino отправки данных toocloud"
 ROBOTS: NOINDEX
 redirect_url: /azure/iot-hub/iot-hub-adafruit-feather-m0-wifi-kit-arduino-get-started
 ms.assetid: 92cce319-2b17-4c9b-889d-deac959e3e7c
@@ -17,64 +17,64 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/21/2017
 ms.author: xshi
-ms.openlocfilehash: 0c17fe74dbd78abca955f7789a1674ed6333367f
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: ddca015a3655f8a1a9de2a00e718ec0d28a5affb
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="run-a-sample-application-to-send-device-to-cloud-messages"></a>Запуск примера приложения для отправки сообщений с устройства в облако
+# <a name="run-a-sample-application-toosend-device-to-cloud-messages"></a>Запустите образец приложения toosend сообщения из устройства в облако
 ## <a name="what-you-will-do"></a>Выполняемая задача
-В этой статье показано, как развернуть и запустить на плате Adafruit Feather M0 WiFi Arduino пример приложения, которое отправляет сообщения в Центр Интернета вещей.
+В этой статье показано, как toodeploy и выполнение примера приложения на ваш Adafruit Растушевка M0 Wi-Fi Arduino плата центра IoT tooyour, отправляет сообщения.
 
-Если возникнут какие-либо проблемы, то решения можно найти на [странице со сведениями об устранении неполадок][troubleshooting].
+Если у вас возникнут проблемы, искать решения на hello [страницу устранения неполадок][troubleshooting].
 
 ## <a name="what-you-will-learn"></a>Новые знания
-Вы узнаете, как с помощью инструмента Gulp развернуть и запустить пример приложения Arduino на плате Arduino.
+Вы узнаете, как toouse hello gulp toodeploy средства и запустите приложение Arduino образец hello в Arduino на доске.
 
 ## <a name="what-you-need"></a>Необходимые элементы
-* К выполнению этой задачи следует приступать только после выполнения действий, описанных в статье [Создание приложения-функции Azure и учетной записи хранения Azure][process-and-store-iot-hub-messages].
+* Прежде чем начать эту задачу, необходимо успешно выполнить [создания приложения Azure функции и концентратор IoT tooprocess и хранилище учетной записи хранилища сообщений][process-and-store-iot-hub-messages].
 
 ## <a name="get-your-iot-hub-and-device-connection-strings"></a>Получение строк подключения Центра Интернета вещей и устройства
-Строка подключения устройства используется для подключения платы Arduino к Центру Интернета вещей. Строка подключения Центра Интернета вещей используется для его подключения к удостоверению устройства, которое представляет плату Arduino в Центре Интернета вещей.
+Здравствуйте, строка подключения устройства является используется tooconnect ваш центр IoT Arduino tooyour платы. Строка подключения концентратора IoT Hello — используется tooconnect вашей IoT hub toohello удостоверение устройства, представляющий вашей Arduino плата в центр IoT hello.
 
-* Для вывода списка всех Центров Интернета вещей в группе ресурсов выполните следующую команду Azure CLI:
+* Перечислить все центры IoT в группе ресурсов, выполнив следующую команду Azure CLI hello:
 
 ```bash
 az iot hub list -g iot-sample --query [].name
 ```
 
-Используйте `iot-sample` в качестве значения `{resource group name}`, если вы не меняли это значение.
+Используйте `iot-sample` в качестве значения hello `{resource group name}` Если вы не изменили значение hello.
 
-* Для получения строки подключения Центра Интернета вещей выполните следующую команду интерфейса командной строки Azure:
+* Получите строку подключения концентратора IoT hello, выполнив следующую команду Azure CLI hello:
 
 ```bash
 az iot hub show-connection-string --name {my hub name}
 ```
 
-`{my hub name}` — это имя, указанное при создании Центра Интернета вещей и регистрации платы Arduinoi.
+`{my hub name}`— hello имя, указанное при создании ваш центр IoT и зарегистрирован Arduino доске.
 
-* Для получения строки подключения устройства выполните следующую команду:
+* Получите строку подключения устройства hello, выполнив следующую команду hello:
 
 ```bash
 az iot device show-connection-string --hub-name {my hub name} --device-id mym0wifi
 ```
 
-Используйте `mym0wifi` в качестве значения `{device id}`, если вы не меняли это значение.
-## <a name="configure-the-device-connection"></a>Настройка подключения устройства
-Чтобы настроить подключение устройства, выполните следующие действия.
+Используйте `mym0wifi` в качестве значения hello `{device id}` Если вы не изменили значение hello.
+## <a name="configure-hello-device-connection"></a>Настройка подключения устройства hello
+tooconfigure Здравствуйте подключения устройства, выполните следующие действия:
 
-1. Получите последовательный порт устройства, используя интерфейс командной строки обнаружения устройств:
+1. Получите hello последовательного порта hello устройства с cli обнаружения устройства hello.
 
    ```bash
    devdisco list --usb
    ```
 
-   Отобразятся следующие выходные данные, и вы сможете найти COM-порт вашей платы Arduino.
+   Должны видеть выходные данные, аналогичные следующие toohello и найти COM-порт hello usb плата Arduino:
 
    ![Обнаружение устройства][device-discovery]
 
-2. Откройте файл `config.json` в папке занятия и добавьте значение найденного номера COM-порта:
+2. Привет открыть файл `config.json` в hello папку занятия и добавьте значение hello hello, найти номер COM-порта:
 
    ```json
    {
@@ -85,16 +85,16 @@ az iot device show-connection-string --hub-name {my hub name} --device-id mym0wi
    ![config.json][config-json]
 
    > [!NOTE]
-   > Для COM-порта на платформе Windows он имеет формат `COM1, COM2, ...`. На macOS или Ubuntu он начинается с `/dev/`.
+   > Для порта hello COM, на платформе Windows, он имеет формат hello `COM1, COM2, ...`. На macOS или Ubuntu он начинается с `/dev/`.
 
-3. Запустите файл конфигурации, выполнив приведенную ниже команду.
+3. Инициализируйте hello файл конфигурации, выполнив следующие команды hello:
 
    ```bash
    npm install
    gulp init
    gulp install-tools
    ```
-4. Откройте файл конфигурации устройства `config-arduino.json` в Visual Studio Code, выполнив приведенную ниже команду.
+4. Файл конфигурации устройства Привет открыть `config-arduino.json` в коде Visual Studio, выполнив следующую команду hello:
 
    ```bash
    # For Windows command prompt
@@ -106,22 +106,22 @@ az iot device show-connection-string --hub-name {my hub name} --device-id mym0wi
 
    ![config-arduino.json][config-arduino-json]
 
-5. В файле `config-arduino.json` выполните следующие замены.
+5. Сделать после замены в hello hello `config-arduino.json` файла:
 
-   * Замените **[Wi-Fi SSID]** своим SSID для Wi-Fi, подключенным к Интернету.
-   * Замените **[Wi-Fi password]** своим паролем Wi-Fi. Удалите строку, если для подключения к Wi-Fi не требуется пароль.
-   * Замените **[строка подключения устройства Интернета вещей]** на полученное значение `device connection string`.
-   * Замените **[IoT hub connection string]** (строка подключения Центра Интернета вещей) полученным значением `iot hub connection string`.
+   * Замените **[Wi-Fi SSID]** с вашей SSID Wi-Fi, подключенный toohello Интернета.
+   * Замените **[Wi-Fi password]** своим паролем Wi-Fi. Удалите строку hello, если Wi-Fi не требует пароля.
+   * Замените **[строка подключения устройств IoT]** с hello `device connection string` полученных.
+   * Замените **[строка подключения концентратора IoT]** с hello `iot hub connection string` полученных.
 
    > [!NOTE]
    > В этой статье не требуется `azure_storage_connection_string`. Оставьте эту настройку без изменений.
 
-## <a name="deploy-and-run-the-sample-application"></a>Развертывание и запуск примера приложения
-Разверните и запустите пример приложения на плате Arduino, выполнив следующую команду:
+## <a name="deploy-and-run-hello-sample-application"></a>Развертывание и запуск образца приложения hello
+Развертывание и запуск образца приложения hello на доске Arduino, выполнив следующую команду hello:
 
 ```bash
 gulp run
-# You can monitor the serial port by running listen task:
+# You can monitor hello serial port by running listen task:
 gulp listen
 
 # Or you can combine above two gulp tasks into one:
@@ -129,15 +129,15 @@ gulp run --listen
 ```
 
 > [!NOTE]
-> Задача инструмента Gulp по умолчанию последовательно запускает задачи `install-tools` и `run`. [Развернув приложение для включения индикатора][deployed-the-blink-app], выполните эти задачи отдельно.
+> Hello gulp задачи по умолчанию выполняется `install-tools` и `run` задачи последовательно. Когда вы [hello blink приложение развернуто][deployed-the-blink-app], выполнении этих задач отдельно.
 
-## <a name="verify-that-the-sample-application-works"></a>Проверка работы примера приложения
-Встроенный светодиодный индикатор GPIO #0 должен мигать каждые две секунды. Каждый раз, когда индикатор мигает, пример приложения отправляет сообщение в Центр Интернета вещей и проверяет, что сообщение успешно отправлено. Кроме того, каждое сообщение, полученное Центром Интернета вещей, выводится в окне консоли. Пример приложения автоматически завершает работу после отправки 20 сообщений.
+## <a name="verify-that-hello-sample-application-works"></a>Проверка работы образца приложения hello
+Вы увидите hello объект групповой ПОЛИТИКИ #0 встроенный Индикатор мигает. каждые две секунды. Каждый раз hello Индикатор мигает, пример приложения hello отправляет центр IoT tooyour сообщения и подтверждает, что это сообщение hello было успешно отправлено tooyour центр IoT. Кроме того каждое сообщение, полученных центра IoT hello выводится в окне консоли hello. Пример приложения Hello автоматически завершает после отправки 20 сообщений.
 
 ![Пример приложения с отправленными и полученными сообщениями][sample-application-with-sent-and-received-messages]
 
 ## <a name="summary"></a>Сводка
-Вы развернули и запустили новый пример приложения для включения светодиодного индикатора на плате Arduino для отправки сообщений с устройства в облако, в котором находится Центр Интернета вещей. Теперь можно отслеживать сообщения по мере их записывания в учетную запись хранения.
+После развертывания и запустить hello новый blink пример приложения на концентратор IoT tooyour Arduino плата toosend сообщения из устройства в облако. Теперь отслеживать сообщения, записываемые toohello учетной записи хранилища.
 
 ## <a name="next-steps"></a>Дальнейшие действия
 [Чтение сообщений, сохраненных в службе хранилища Azure][read-messages-persisted-in-azure-storage]

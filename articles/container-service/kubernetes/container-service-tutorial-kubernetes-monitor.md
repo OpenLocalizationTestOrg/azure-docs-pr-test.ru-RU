@@ -1,5 +1,5 @@
 ---
-title: "Руководство по службе контейнеров Azure — мониторинг Kubernetes | Документация Майкрософт"
+title: "Учебник контейнера службы aaaAzure - монитор Kubernetes | Документы Microsoft"
 description: "Руководство по службе контейнеров Azure — мониторинг Kubernetes с помощью Microsoft Operations Management Suite (OMS)"
 services: container-service
 documentationcenter: 
@@ -17,40 +17,40 @@ ms.workload: na
 ms.date: 07/25/2017
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: f4d09973ada8e3cd0ff2b00d20aca979e834cd7f
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 54fa789453768529deaf25d7575e5b21d0e41882
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="monitor-a-kubernetes-cluster-with-operations-management-suite"></a>Мониторинг кластера Kubernetes с помощью Operations Management Suite
 
 Мониторинг кластера Kubernetes и контейнеров крайне важен, особенно в том случае, если вы управляете масштабируемым рабочим кластером с несколькими приложениями. 
 
-Вы можете воспользоваться преимуществами нескольких решений для мониторинга Kubernetes от корпорации Майкрософт или других поставщиков. В этом руководстве выполняется мониторинг кластера Kubernetes с помощью решения "Контейнеры" в [Operations Management Suite](../../operations-management-suite/operations-management-suite-overview.md). Это облачное решение Майкрософт для управления ИТ-средой. (Решение "Контейнеры" OMS находится в предварительной версии.)
+Вы можете воспользоваться преимуществами нескольких решений для мониторинга Kubernetes от корпорации Майкрософт или других поставщиков. В этом учебнике отслеживать Kubernetes кластера с помощью решения контейнеры hello в [Operations Management Suite](../../operations-management-suite/operations-management-suite-overview.md), Облачное решение управления ИТ корпорации Майкрософт. (hello решений OMS контейнеры находится в предварительной версии).
 
-В этом руководстве, (часть 7 из 7) рассматриваются следующие задачи:
+В этом учебнике, часть 7 семь, приведены hello следующие задачи:
 
 > [!div class="checklist"]
 > * Получение параметров рабочей области OMS.
-> * Настройка агентов OMS на узлах Kubernetes.
-> * Доступ к данным мониторинга на портале OMS или на портале Azure.
+> * Настроить агенты OMS на узлах Kubernetes hello
+> * Доступ к данным мониторинга на портале OMS hello или портал Azure
 
 ## <a name="before-you-begin"></a>Перед началом работы
 
-В предыдущих руководствах приложение было упаковано в образы контейнеров, образы были отправлены в реестр контейнеров Azure и был создан кластер Kubernetes. Если вы не выполнили эти действия, вы можете ознакомиться со статьей [Создание образов контейнеров для использования со службой контейнеров Azure](./container-service-tutorial-kubernetes-prepare-app.md). 
+В предыдущих учебниках приложение было упаковано в образах контейнеров, эти образы, отправленном tooAzure реестра контейнера и создан Kubernetes кластера. Если вы не были выполнены следующие действия и хотите toofollow вдоль, возвращают слишком[учебник 1 – Создание образов контейнеров](./container-service-tutorial-kubernetes-prepare-app.md). 
 
 Для этого руководства требуется по крайней мере кластер Kubernetes с узлами агентов Linux и учетная запись OMS. При необходимости зарегистрируйтесь для получения [бесплатной пробной версии OMS](https://www.microsoft.com/en-us/cloud-platform/operations-management-suite-trial).
 
 ## <a name="get-workspace-settings"></a>Получение параметров рабочей области
 
-На [портале OMS](https://mms.microsoft.com) последовательно выберите **Параметры** > **Подключенные источники** > **Серверы Linux**. Здесь можно найти *идентификатор рабочей области*, а также основной и дополнительный *ключ рабочей области*. Запишите эти значения, так как они понадобятся для настройки агентов OMS в кластере.
+При доступе к hello [портал OMS](https://mms.microsoft.com), перейдите в слишком**параметры** > **подключенные источники** > **серверы Linux**. Здесь можно найти hello *идентификатор рабочей области* и основных или дополнительных *ключ рабочей области*. Запишите эти значения, которые необходимо tooset копирование агенты OMS в кластере hello.
 
 ## <a name="set-up-oms-agents"></a>Настройка агентов OMS
 
-Ниже приведен файл YAML для настройки агентов OMS на узлах кластера Linux. Он создает [DaemonSet](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/) Kubernetes, который запускает идентичный модуль на каждом узле кластера. Ресурс DaemonSet идеально подходит для развертывания агента мониторинга. 
+Вот tooset файл YAML копирование OMS агенты на узлах кластера hello Linux. Он создает [DaemonSet](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/) Kubernetes, который запускает идентичный модуль на каждом узле кластера. Hello ресурсов DaemonSet идеально подходит для развертывания агента мониторинга. 
 
-Сохраните следующий текст в файл с именем `oms-daemonset.yaml` и замените значения заполнителей *myWorkspaceID* и *myWorkspaceKey* на идентификатор и ключ рабочей области OMS. (В рабочей среде можно закодировать эти значения в виде секретов.)
+Сохраните следующий текстовый файл tooa с именем hello `oms-daemonset.yaml`и замените значения заполнителей hello для *myWorkspaceID* и *myWorkspaceKey* с идентификатор рабочей области OMS и ключа. (В рабочей среде можно закодировать эти значения в виде секретов.)
 
 ```YAML
 apiVersion: extensions/v1beta1
@@ -105,40 +105,40 @@ spec:
        path: /var/log
 ```
 
-Создайте DaemonSet с помощью следующей команды:
+Создайте hello DaemonSet с hello следующую команду:
 
 ```azurecli-interactive
 kubectl create -f oms-daemonset.yaml
 ```
 
-Чтобы убедиться, что DaemonSet был создан, выполните следующую команду:
+выполните для этого hello создания DaemonSet toosee:
 
 ```azurecli-interactive
 kubectl get daemonset
 ```
 
-Результат аналогичен приведенному ниже:
+Выходные данные выглядят аналогично toohello следующее:
 
 ```azurecli-interactive
 NAME       DESIRED   CURRENT   READY     UP-TO-DATE   AVAILABLE   NODE-SELECTOR   AGE
 omsagent   3         3         3         0            3           <none>          5m
 ```
 
-Через несколько минут после запуска агентов OMS начнет принимать и обрабатывать данные.
+После запуска агентов hello он занимает несколько минут для OMS tooingest и обрабатывающие данные hello.
 
 ## <a name="access-monitoring-data"></a>Доступ к данным мониторинга
 
-Просматривать и анализировать данные мониторинга контейнера OMS можно с помощью [решения "Контейнер"](../../log-analytics/log-analytics-containers.md) на портале Azure или на портале OMS. 
+Просматривать и анализировать данные мониторинга с hello контейнера OMS hello [решения контейнера](../../log-analytics/log-analytics-containers.md) в портал OMS hello или hello портал Azure. 
 
-Для установки решения "Контейнер" с помощью [портала OMS](https://mms.microsoft.com) перейдите в **Коллекция решений**. Затем добавьте **решение "Контейнер"**. Кроме того, можно добавить решение "Контейнеры" из [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft.containersoms?tab=Overview).
+tooinstall hello контейнера решения с помощью hello [портал OMS](https://mms.microsoft.com), перейдите в слишком**коллекции решений**. Затем добавьте **решение "Контейнер"**. Кроме того, добавить решение контейнеры hello из hello [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft.containersoms?tab=Overview).
 
-На портале OMS найдите плитку сводки **Контейнеры** на панели мониторинга OMS. Щелкните плитку, чтобы просмотреть дополнительные сведения, в том числе события контейнера, ошибки, состояние, список образов, использование ЦП и памяти. Более детализированные сведения можно получить, щелкнув строку на одной из плиток или выполнив [поиск по журналам](../../log-analytics/log-analytics-log-searches.md).
+На портале OMS hello, искать **контейнеры** сводки плитки на панели мониторинга OMS hello. Щелкните плитку hello Дополнительные сведения, включая: события контейнера, ошибки, состояние, изображение инвентаризации и использования ЦП и памяти. Более детализированные сведения можно получить, щелкнув строку на одной из плиток или выполнив [поиск по журналам](../../log-analytics/log-analytics-log-searches.md).
 
 ![Панель мониторинга "Контейнеры" на портале OMS](./media/container-service-tutorial-kubernetes-monitor/oms-containers-dashboard.png)
 
-На портале Azure перейдите к **Log Analytics** и выберите имя рабочей области. Чтобы увидеть плитку сводки **Контейнеры**, щелкните **Решения** > **Контейнеры**. Чтобы просмотреть сведения, щелкните плитку.
+Аналогичным образом в hello портал Azure, перейдите слишком**анализа журналов** и выберите имя рабочей области. toosee hello **контейнеры** Плитка сводки, щелкните **решения** > **контейнеры**. сведения о toosee, щелкните плитку hello.
 
-Подробные сведения о создании запросов и анализе данных мониторинга см. в [документации по Log Analytics](../../log-analytics/index.md).
+В разделе hello [документации Azure Log Analytics](../../log-analytics/index.md) подробное руководство по запросу и анализ данных наблюдения.
 
 ## <a name="next-steps"></a>Дальнейшие действия
 
@@ -146,11 +146,11 @@ omsagent   3         3         3         0            3           <none>        
 
 > [!div class="checklist"]
 > * Получение параметров рабочей области OMS.
-> * Настройка агентов OMS на узлах Kubernetes.
-> * Доступ к данным мониторинга на портале OMS или на портале Azure.
+> * Настроить агенты OMS на узлах Kubernetes hello
+> * Доступ к данным мониторинга на портале OMS hello или портал Azure
 
 
-Чтобы увидеть предварительно созданные примеры сценариев для службы контейнеров, перейдите по ссылке ниже.
+Выполните этот toosee ссылку готовые примеры скриптов для службы контейнеров.
 
 > [!div class="nextstepaction"]
 > [Примеры Azure CLI для службы контейнеров Azure](cli-samples.md)

@@ -1,6 +1,6 @@
 ---
-title: "Руководство по созданию шаблона решения для Marketplace | Документация Майкрософт"
-description: "Подробные инструкции по созданию, сертификации и развертыванию шаблона решения с поддержкой нескольких образов виртуальных машин для продажи в Azure Marketplace."
+title: "aaaGuide toocreating шаблон решения для hello Marketplace | Документы Microsoft"
+description: "Подробные инструкции, как toocreate, сертификации и развернуть решение шаблон изображения нескольких виртуальных Машин для покупки в Azure Marketplace hello."
 services: marketplace-publishing
 documentationcenter: 
 author: HannibalSII
@@ -14,17 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/27/2016
 ms.author: hascipio; v-divte
-ms.openlocfilehash: b753bfb4bd69bd9aacf4eebd8999397394c28bc4
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: b0e7067176337dd0d3f6f6ec04c963f80f706ab0
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="guide-to-create-a-solution-template-for-azure-marketplace"></a>Руководство по созданию шаблона решения для Azure Marketplace
-Выполнив шаг 1 [Создание учетной записи разработчика Майкрософт][link-acct-creation], вы перейдете к статье [Технические компоненты, необходимые для создания шаблона решения для Azure Marketplace](marketplace-publishing-solution-template-creation-prerequisites.md) с инструкциями по созданию шаблона решения, совместимого с Azure. Рассмотрим процедуру создания шаблона решения для нескольких виртуальных машин на [портале публикации][link-pubportal] для Azure Marketplace.
+# <a name="guide-toocreate-a-solution-template-for-azure-marketplace"></a>Руководство по toocreate шаблон решения для Azure Marketplace
+После завершения шага 1, [создания и регистрации учетной записи][link-acct-creation], вы интерактивной при создании hello шаблона решения Azure совместимой во [технические предварительные условия для создания шаблон решения](marketplace-publishing-solution-template-creation-prerequisites.md). Теперь мы поможет hello действия по созданию шаблона решения для нескольких виртуальных машин на hello [портал публикации] [ link-pubportal] для hello Azure Marketplace.
 
-## <a name="create-your-solution-template-offer-in-the-publishing-portal"></a>Создание шаблона решения на портале публикации
-Откройте страницу [https://publish.windowsazure.com](http://publish.windowsazure.com). При первом входе в [портал публикации](https://publish.windowsazure.com/)укажите учетную запись, под которой зарегистрирован профиль продавца для вашей компании. Впоследствии вы сможете добавить в качестве соадминистратора на портале публикации любого сотрудника своей компании.
+## <a name="create-your-solution-template-offer-in-hello-publishing-portal"></a>Создание шаблона ваше решение предложение в hello портал публикации
+Go слишком [https://publish.windowsazure.com](http://publish.windowsazure.com). При входе для hello первый раз toohello [портал публикации](https://publish.windowsazure.com/), используйте hello же учетной записи, под которым было зарегистрировано профиль продавца вашей компании. Позже в качестве соадминистратора в hello портал публикации можно добавить любой сотрудник вашей компании.
 
 ### <a name="1-select-solution-templates"></a>1. Выберите "Шаблоны решений"
   ![рисунок][img-pubportal-menu-sol-templ]
@@ -33,9 +33,9 @@ ms.lasthandoff: 08/29/2017
   ![рисунок][img-pubportal-sol-templ-new]
 
 ### <a name="3-start-with-topologies"></a>3. Начните с топологий
-Шаблон решения служит родительским элементом для всех своих топологий. В одном шаблоне предложений или решения можно определить сразу несколько топологий. Когда предложение переходит к стадии промежуточного развертывания, вместе с ним отправляются все его топологии. Выполните следующее, чтобы определить предложение:     
+Шаблон решения — «родительский» tooall его топологий. В одном шаблоне предложений или решения можно определить сразу несколько топологий. При передаче toostaging предложение, то при переносе со всеми его топологии. Выполните действия hello ниже toodefine ваше предложение.     
 
-* Создайте топологию (как правило, в качестве имени топологии для шаблона решения используется "идентификатор топологии"). Идентификатор топологии включается в URL-адрес, как показано ниже.
+* Создание топологии: «Идентификатор топологии» обычно — имя hello hello топологии для шаблона решения hello. Идентификатор Hello топологии используется в URL-адрес hello, как показано ниже:
 
   Azure Marketplace: http://azure.microsoft.com/marketplace/partners/{пространство_имен_издателя}/{идентификатор_заказа}{идентификатор_топологии};
 
@@ -43,25 +43,25 @@ ms.lasthandoff: 08/29/2017
 * Добавьте новую версию.
 
 ### <a name="4-get-your-topology-versions-certified"></a>4. Сертифицируйте версии топологии
-Передайте ZIP-файл, содержащий все файлы, необходимые для подготовки соответствующей версии топологии. Этот ZIP-файл должен содержать следующее:
+Отправка ZIP-файл, содержащий все требуемые файлы tooprovision конкретную версию hello топологии. Этот ZIP-файл должен содержать hello следующее:
 
 * файлы *mainTemplate.json* и *createUiDefinition.json* в корневом каталоге;
 * связанные шаблоны и все необходимые сценарии.
 
   > [!TIP]
-  > Создание и сертификацию топологий шаблонов решений осуществляют ваши разработчики, а разработкой маркетинговых и юридических материалов может заняться коммерческий, маркетинговый или юридический отдел вашей компании.
+  > Во время работы разработчиков по созданию решения hello топологии шаблона и их Сертифицирован бизнеса hello, маркетинга и/или юридических отделов компании могут работать hello маркетинговые и юридические материалы.
   >
   >
 
 ## <a name="next-steps"></a>Дальнейшие действия
-После создания шаблона решения и отправки ZIP-файла выполните инструкции в статье [Завершение создания предложения с маркетинговыми материалами](marketplace-publishing-push-to-staging.md), прежде чем перемещать предложение в промежуточную среду. Полный список статей о публикации в Marketplace см. в статье [Как опубликовать предложение и управлять им в Azure Marketplace](marketplace-publishing-getting-started.md).
+Теперь, когда создан шаблон решения и отправлены hello ZIP-файл, следуйте инструкциям hello hello [руководство по содержимому маркетинга Marketplace](marketplace-publishing-push-to-staging.md) до отправки toostaging предложение hello. Посетите toosee hello полный набор marketplace публикация статей, [Приступая к работе: как toopublish toohello предложение Azure Marketplace](marketplace-publishing-getting-started.md).
 
 Вас также могут заинтересовать следующие связанные статьи:
 
 * Образы виртуальных машин: [Об образах виртуальных машин в Azure](https://msdn.microsoft.com/library/azure/dn790290.aspx)
 * Расширения виртуальных машин: [общие сведения об агенте, расширениях](https://msdn.microsoft.com/library/azure/dn832621.aspx) и [компонентах виртуальных машин Azure](https://msdn.microsoft.com/library/azure/dn606311.aspx)
 * Azure Resource Manager: [Создание шаблонов Azure Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md) и [простые примеры шаблонов](https://github.com/rjmax/ArmExamples)
-* Регулирование учетной записи хранения: [How to Monitor for Storage Account Throttling](http://blogs.msdn.com/b/mast/archive/2014/08/02/how-to-monitor-for-storage-account-throttling.aspx) (Отслеживание регулирования учетной записи хранения) и [Хранилище класса "Премиум": высокопроизводительная служба хранилища для рабочих нагрузок виртуальных машин Azure](../storage/common/storage-premium-storage.md#scalability-and-performance-targets)
+* Регулирует учетной записи хранилища: [как tooMonitor для регулирования учетной записи хранилища](http://blogs.msdn.com/b/mast/archive/2014/08/02/how-to-monitor-for-storage-account-throttling.aspx) и [хранилища Premium](../storage/common/storage-premium-storage.md#scalability-and-performance-targets)
 
 [img-pubportal-menu-sol-templ]:media/marketplace-publishing-solution-template-creation/pubportal-menu-solution-templates.png
 [img-pubportal-sol-templ-new]:media/marketplace-publishing-solution-template-creation/pubportal-solution-template-new.png

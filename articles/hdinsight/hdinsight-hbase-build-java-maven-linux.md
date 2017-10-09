@@ -1,6 +1,6 @@
 ---
-title: "Клиент Java HBase для Azure HDInsight | Документация Майкрософт"
-description: "Сведения об использовании Apache Maven для создания приложения Java для Apache HBase и его последующем развертывании в HBase в Azure HDInsight."
+title: "Клиент aaaJava HBase - Azure HDInsight | Документы Microsoft"
+description: "Узнайте, как toouse приложения Apache HBase Apache Maven toobuild на языке Java, затем развернуть его tooHBase на Azure HDInsight."
 services: hdinsight
 documentationcenter: 
 author: Blackmist
@@ -15,23 +15,23 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/07/2017
 ms.author: larryfr
-ms.openlocfilehash: 03c88397e36c0fc7f19410e49f6b6f1a607659f8
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 41ef92b2900280dd59089c4fa40686c44133b337
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="build-java-applications-for-apache-hbase"></a>Создание приложений Java для Apache HBase
 
-Узнайте, как создать приложение [Apache HBase](http://hbase.apache.org/) в среде Java. Затем вы будете использовать приложение с HBase в Azure HDInsight.
+Узнайте, как toocreate [Apache HBase](http://hbase.apache.org/) приложение Java. Затем можно используйте приложение hello с HBase на Azure HDInsight.
 
-В этом руководстве используется [Maven](http://maven.apache.org/) для создания и сборки проекта. Maven — это инструмент для управления и повышения обозримости проектов программного обеспечения, позволяющий создавать ПО, документацию и отчеты для проектов Java.
+Hello шаги в этом документе используется [Maven](http://maven.apache.org/) toocreate и построения проекта hello. Maven — это программное обеспечение управления проектами и понимания средство, которое позволяет вам toobuild программное обеспечение, документация и отчеты для проектов Java.
 
 > [!NOTE]
-> Действия, описанные в этом документе, в последний раз были протестированы с помощью HDInsight 3.6.
+> Hello в данном пошаговом руководстве были недавно протестированных с HDInsight 3.6.
 
 > [!IMPORTANT]
-> Для выполнения действий, описанных в этом документе, необходим кластер HDInsight под управлением Linux. Linux — это единственная операционная система, используемая для работы с HDInsight 3.4 или более поздних версий. Дополнительные сведения см. в разделе [Приближается дата прекращения сопровождения HDI версии 3.3](hdinsight-component-versioning.md#hdinsight-windows-retirement).
+> Hello в данном пошаговом руководстве требуется кластер HDInsight, использующий Linux. Linux — hello только операционную систему, используемую в HDInsight версии 3.4 или более поздней. Дополнительные сведения см. в разделе [Приближается дата прекращения сопровождения HDI версии 3.3](hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
 ## <a name="requirements"></a>Требования
 
@@ -45,33 +45,33 @@ ms.lasthandoff: 08/18/2017
 * [Кластер Azure HDInsight под управлением Linux с HBase.](hdinsight-hbase-tutorial-get-started-linux.md#create-hbase-cluster)
 
   > [!NOTE]
-  > Действия, описанные в этом документе, выполнялись с версиями кластера HDInsight 3.4 и 3.5. Значения по умолчанию в примерах предназначены для кластера HDInsight 3.5.
+  > Hello в данном пошаговом руководстве были проверены с версиями кластеров HDInsight 3.4 и 3.5. значения по умолчанию Hello в примерах предназначены для кластера HDInsight 3.5.
 
-## <a name="create-the-project"></a>Создание проекта
+## <a name="create-hello-project"></a>Создание проекта hello
 
-1. Из командной строки вашей среды разработки измените каталоги на расположение, где вы хотите создать проект. Например, `cd code\hbase`.
+1. Из командной строки hello в среде разработки, измените каталоги toohello место, куда toocreate hello проекта, например, `cd code\hbase`.
 
-2. Используйте команду **mvn** , которая будет установлена вместе с Maven, для создания шаблона проекта.
+2. Используйте hello **mvn** команду, которая устанавливается вместе с Maven, toogenerate hello формирование шаблонов для проекта hello.
 
     ```bash
     mvn archetype:generate -DgroupId=com.microsoft.examples -DartifactId=hbaseapp -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
     ```
 
     > [!NOTE]
-    > При использовании PowerShell параметры `-D` необходимо заключить в кавычки.
+    > Если вы используете PowerShell, необходимо заключить hello `-D` параметров в двойные кавычки.
     >
     > `mvn archetype:generate "-DgroupId=com.microsoft.examples" "-DartifactId=hbaseapp" "-DarchetypeArtifactId=maven-archetype-quickstart" "-DinteractiveMode=false"`
 
-    При этом будет создан каталог, имя которого будет совпадать с именем параметра **artifactID** (в нашем случае **hbaseapp**). Этот каталог содержит следующие элементы:
+    Эта команда создает каталог с точно такое же имя, как hello hello **artifactID** параметра (**hbaseapp** в этом примере.) В этом каталоге содержатся hello следующих элементов:
 
-   * **pom.xml** — это модель объекта проекта ([POM](http://maven.apache.org/guides/introduction/introduction-to-the-pom.html)), которая содержит информацию и подробности конфигурации, учитывающиеся при сборке проекта;
-   * **src** — каталог, содержащий каталог **main/java/com/microsoft/examples**, в котором создается приложение.
+   * **pom.XML**: hello объектной модели Project ([POM](http://maven.apache.org/guides/introduction/introduction-to-the-pom.html)) содержит сведения и конфигурации, используемой toobuild hello проекта.
+   * **src**: hello каталог, содержащий hello **main-java/com/microsoft/примеры** каталог, в котором создается приложение hello.
 
-3. Удалите файл `src/test/java/com/microsoft/examples/apptest.java`. Он не используется в этом примере.
+3. Удалить hello `src/test/java/com/microsoft/examples/apptest.java` файла. Он не используется в этом примере.
 
-## <a name="update-the-project-object-model"></a>Обновление модели объекта проекта
+## <a name="update-hello-project-object-model"></a>Обновление hello объектной модели Project
 
-1. Измените файл `pom.xml`, добавив в раздел `<dependencies>` следующий код:
+1. Изменить hello `pom.xml` и добавьте следующий код внутри hello hello `<dependencies>` раздела:
 
    ```xml
     <dependency>
@@ -86,19 +86,19 @@ ms.lasthandoff: 08/18/2017
     </dependency>
    ```
 
-    В этом разделе показано, что для проекта требуются компоненты **hbase-client** и **phoenix-core**. При компиляции эти зависимости скачиваются из репозитория Maven по умолчанию. Можно воспользоваться [поиском в центральном репозитории Maven](http://search.maven.org/#artifactdetails%7Corg.apache.hbase%7Chbase-client%7C0.98.4-hadoop2%7Cjar) , чтобы получить дополнительную информацию об этой зависимости.
+    В этом разделе показывает hello проект должен **hbase клиента** и **ядрами Финиксе** компонентов. Во время компиляции эти зависимости загружаются из репозитория Maven по умолчанию hello. Можно использовать hello [Maven центральный репозиторий поиска](http://search.maven.org/#artifactdetails%7Corg.apache.hbase%7Chbase-client%7C0.98.4-hadoop2%7Cjar) toolearn Дополнительные сведения об этой зависимости.
 
    > [!IMPORTANT]
-   > Номер версии hbase-client должен соответствовать версии HBase, которая поставляется с кластером HDInsight. Воспользуйтесь следующей таблицей, чтобы найти правильный номер версии.
+   > номер версии Hello hello hbase клиента должна совпадать hello версией, предоставляемого с кластером HDInsight HBase. Используйте следующие таблицы toofind hello правильный номер версии hello.
 
-   | Версия кластера HDInsight | Используемая версия HBase |
+   | Версия кластера HDInsight | Toouse версия HBase |
    | --- | --- |
    | 3.2 |0.98.4-hadoop2 |
    | 3.3, 3.4, 3.5 и 3.6 |1.1.2 |
 
-    Дополнительные сведения о версиях и компонентах HDInsight см. в статье [Что представляют собой различные компоненты Hadoop, доступные в HDInsight?](hdinsight-component-versioning.md)
+    Дополнительные сведения о версии HDInsight и компонентов см. в разделе [Каковы hello различных Hadoop компоненты, доступные с HDInsight](hdinsight-component-versioning.md).
 
-3. Добавьте в файл **pom.xml** следующий код. Эти строки должны находиться в файле внутри тегов `<project>...</project>` (например, между тегами `</dependencies>` и `</project>`).
+3. Добавьте следующий код toohello hello **pom.xml** файла. Этот текст должен находиться внутри hello `<project>...</project>` тегов в hello файла, например, между `</dependencies>` и `</project>`.
 
    ```xml
     <build>
@@ -148,17 +148,17 @@ ms.lasthandoff: 08/18/2017
     В этом разделе настраивается ресурс (`conf/hbase-site.xml`), который содержит информацию о конфигурации для HBase.
 
    > [!NOTE]
-   > Также можно настроить значения конфигурации непосредственно из кода. Ознакомьтесь с комментариями к примеру `CreateTable`.
+   > Также можно настроить значения конфигурации непосредственно из кода. См. комментарии hello в hello `CreateTable` примере.
 
-    В разделе также будут настроены подключаемые модули [компилятора Maven](http://maven.apache.org/plugins/maven-compiler-plugin/) и[Maven Shade](http://maven.apache.org/plugins/maven-shade-plugin/). Подключаемый модуль компилятора используется для компиляции топологии. Подключаемый модуль shade используется для предотвращения дублирования лицензии в JAR-файле, собранном Maven. Этот подключаемый модуль используется для предотвращения ошибки с дублированием файлов лицензий, которая появляется во время выполнения на кластере HDInsight. Использование maven-shade-plugin с реализацией `ApacheLicenseResourceTransformer` позволяет избежать этой ошибки.
+    В этом разделе также настраивает hello [подключаемого модуля компилятора Maven](http://maven.apache.org/plugins/maven-compiler-plugin/) и [подключаемого модуля оттенок Maven](http://maven.apache.org/plugins/maven-shade-plugin/). Компилятор Hello подключаемый модуль — используется toocompile hello топологии. Подключаемый модуль оттенок Hello — дублирования лицензии tooprevent используется в пакете JAR hello, построенного с Maven. Этот подключаемый модуль является ошибкой «повторяющиеся файлы лицензии» используется tooprevent во время выполнения в кластере HDInsight hello. Использование maven оттенок подключаемого модуля с hello `ApacheLicenseResourceTransformer` реализация предотвращает ошибки hello.
 
-    maven-shade-plugin также создает так называемый uber jar, который содержит все зависимости, требуемые для приложения.
+    Привет, maven оттенок-подключаемый модуль также создает полный JAR-файл, содержащий все зависимости hello, необходимые для приложения hello.
 
-4. Сохраните файл `pom.xml`.
+4. Сохранить hello `pom.xml` файла.
 
-5. Создайте каталог с именем `conf` в каталоге `hbaseapp`. Этот каталог будет использоваться для хранения сведений о конфигурации для подключения к HBase.
+5. Создайте каталог с именем `conf` в hello `hbaseapp` каталога. Этот каталог является используется toohold сведения о конфигурации для подключения tooHBase.
 
-6. Для копирования конфигурации HBase из кластера HBase в каталог `conf` используйте следующую команду. Замените `USERNAME` именем пользователя SSH, а `CLUSTERNAME` — именем кластера HDInsight:
+6. Используйте hello следующая команда конфигурации HBase hello toocopy из toohello кластер HBase hello `conf` каталога. Замените `USERNAME` с именем hello SSH имени входа. а `CLUSTERNAME` — именем кластера HDInsight:
 
     ```bash
     scp USERNAME@CLUSTERNAME-ssh.azurehdinsight.net:/etc/hbase/conf/hbase-site.xml ./conf/hbase-site.xml
@@ -166,11 +166,11 @@ ms.lasthandoff: 08/18/2017
 
    Дополнительные сведения об использовании `ssh` и `scp` см. в статье [Подключение к HDInsight (Hadoop) с помощью SSH](hdinsight-hadoop-linux-use-ssh-unix.md).
 
-## <a name="create-the-application"></a>Создание приложения
+## <a name="create-hello-application"></a>Создание приложения hello
 
-1. Перейдите к каталогу `hbaseapp/src/main/java/com/microsoft/examples` и переименуйте файл app.java в `CreateTable.java`.
+1. Go toohello `hbaseapp/src/main/java/com/microsoft/examples` каталога и переименования hello app.java файл слишком`CreateTable.java`.
 
-2. Откройте файл `CreateTable.java` и замените имеющееся содержимое следующим текстом:
+2. Откройте hello `CreateTable.java` и замените существующее содержимое hello hello следующий текст:
 
    ```java
     package com.microsoft.examples;
@@ -201,13 +201,13 @@ ms.lasthandoff: 08/18/2017
         //NOTE: Actual zookeeper host names can be found using Ambari:
         //curl -u admin:PASSWORD -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/hosts"
 
-        //Linux-based HDInsight clusters use /hbase-unsecure as the znode parent
+        //Linux-based HDInsight clusters use /hbase-unsecure as hello znode parent
         config.set("zookeeper.znode.parent","/hbase-unsecure");
 
-        // create an admin object using the config
+        // create an admin object using hello config
         HBaseAdmin admin = new HBaseAdmin(config);
 
-        // create the table...
+        // create hello table...
         HTableDescriptor tableDescriptor = new HTableDescriptor(TableName.valueOf("people"));
         // ... with two column families
         tableDescriptor.addFamily(new HColumnDescriptor("name"));
@@ -225,9 +225,9 @@ ms.lasthandoff: 08/18/2017
 
         HTable table = new HTable(config, "people");
 
-        // Add each person to the table
-        //   Use the `name` column family for the name
-        //   Use the `contactinfo` column family for the email
+        // Add each person toohello table
+        //   Use hello `name` column family for hello name
+        //   Use hello `contactinfo` column family for hello email
         for (int i = 0; i< people.length; i++) {
             Put person = new Put(Bytes.toBytes(people[i][0]));
             person.add(Bytes.toBytes("name"), Bytes.toBytes("first"), Bytes.toBytes(people[i][1]));
@@ -235,18 +235,18 @@ ms.lasthandoff: 08/18/2017
             person.add(Bytes.toBytes("contactinfo"), Bytes.toBytes("email"), Bytes.toBytes(people[i][3]));
             table.put(person);
         }
-        // flush commits and close the table
+        // flush commits and close hello table
         table.flushCommits();
         table.close();
         }
     }
    ```
 
-    Это код класса **CreateTable**, который создает таблицу с именем **people** и заполняет ее заранее определенными пользователями.
+    Данный пример кода является hello **CreateTable** класс, который создает таблицу с именем **людей** и ее заполнение некоторых стандартных пользователей.
 
-3. Сохраните файл `CreateTable.java`.
+3. Сохранить hello `CreateTable.java` файла.
 
-4. В каталоге `hbaseapp/src/main/java/com/microsoft/examples` создайте файл с именем `SearchByEmail.java`. В качестве содержимого файла добавьте следующий текст:
+4. В hello `hbaseapp/src/main/java/com/microsoft/examples` каталога, создайте файл с именем `SearchByEmail.java`. Используйте hello после текста как hello содержимое этого файла:
 
    ```java
     package com.microsoft.examples;
@@ -268,18 +268,18 @@ ms.lasthandoff: 08/18/2017
         public static void main(String[] args) throws IOException {
         Configuration config = HBaseConfiguration.create();
 
-        // Use GenericOptionsParser to get only the parameters to the class
-        // and not all the parameters passed (when using WebHCat for example)
+        // Use GenericOptionsParser tooget only hello parameters toohello class
+        // and not all hello parameters passed (when using WebHCat for example)
         String[] otherArgs = new GenericOptionsParser(config, args).getRemainingArgs();
         if (otherArgs.length != 1) {
             System.out.println("usage: [regular expression]");
             System.exit(-1);
         }
 
-        // Open the table
+        // Open hello table
         HTable table = new HTable(config, "people");
 
-        // Define the family and qualifiers to be used
+        // Define hello family and qualifiers toobe used
         byte[] contactFamily = Bytes.toBytes("contactinfo");
         byte[] emailQualifier = Bytes.toBytes("email");
         byte[] nameFamily = Bytes.toBytes("name");
@@ -288,8 +288,8 @@ ms.lasthandoff: 08/18/2017
 
         // Create a regex filter
         RegexStringComparator emailFilter = new RegexStringComparator(otherArgs[0]);
-        // Attach the regex filter to a filter
-        //   for the email column
+        // Attach hello regex filter tooa filter
+        //   for hello email column
         SingleColumnValueFilter filter = new SingleColumnValueFilter(
             contactFamily,
             emailQualifier,
@@ -297,11 +297,11 @@ ms.lasthandoff: 08/18/2017
             emailFilter
         );
 
-        // Create a scan and set the filter
+        // Create a scan and set hello filter
         Scan scan = new Scan();
         scan.setFilter(filter);
 
-        // Get the results
+        // Get hello results
         ResultScanner results = table.getScanner(scan);
         // Iterate over results and print  values
         for (Result result : results ) {
@@ -321,11 +321,11 @@ ms.lasthandoff: 08/18/2017
     }
    ```
 
-    Класс **SearchByEmail** можно использовать для запроса строк по адресу электронной почты. При использовании класса можно задавать либо строку, либо регулярное выражение, так как используется фильтр регулярных выражений.
+    Hello **SearchByEmail** класс может быть tooquery используется для строк по адресу электронной почты. Так как он использует регулярное выражение фильтра, чтобы обеспечить строку или регулярное выражение при использовании класса hello.
 
-5. Сохраните файл `SearchByEmail.java`.
+5. Сохранить hello `SearchByEmail.java` файла.
 
-6. В каталоге `hbaseapp/src/main/hava/com/microsoft/examples` создайте файл с именем `DeleteTable.java`. В качестве содержимого файла добавьте следующий текст:
+6. В hello `hbaseapp/src/main/hava/com/microsoft/examples` каталога, создайте файл с именем `DeleteTable.java`. Используйте hello после текста как hello содержимое этого файла:
 
    ```java
     package com.microsoft.examples;
@@ -339,57 +339,57 @@ ms.lasthandoff: 08/18/2017
         public static void main(String[] args) throws IOException {
         Configuration config = HBaseConfiguration.create();
 
-        // Create an admin object using the config
+        // Create an admin object using hello config
         HBaseAdmin admin = new HBaseAdmin(config);
 
-        // Disable, and then delete the table
+        // Disable, and then delete hello table
         admin.disableTable("people");
         admin.deleteTable("people");
         }
     }
    ```
 
-    Этот класс предназначен, только чтобы очистить таблицы HBase, созданные в данном примере, отключив и удалив таблицу, созданную классом `CreateTable`.
+    Этот класс очищает hello HBase таблицы, созданные в этом примере отключение и удаление таблицы hello созданные hello `CreateTable` класса.
 
-7. Сохраните файл `DeleteTable.java`.
+7. Сохранить hello `DeleteTable.java` файла.
 
-## <a name="build-and-package-the-application"></a>Сборка и создание пакета приложения
+## <a name="build-and-package-hello-application"></a>Сборки и пакет приложения hello
 
-1. Выполните следующую команду из каталога `hbaseapp`, чтобы собрать JAR-файл, содержащий приложение:
+1. Из hello `hbaseapp` каталога, используйте hello следующая команда toobuild JAR-файл, содержащий приложение hello:
 
     ```bash
     mvn clean package
     ```
 
-    Эта команда создает и упаковывает приложение в JAR-файл.
+    Эта команда выполняет сборку и пакеты hello приложения в JAR-файлу.
 
-2. После выполнения команды каталог `hbaseapp/target` будет содержать файл с именем `hbaseapp-1.0-SNAPSHOT.jar`.
+2. Когда hello выполнения команды hello `hbaseapp/target` каталог содержит файл с именем `hbaseapp-1.0-SNAPSHOT.jar`.
 
    > [!NOTE]
-   > Файл `hbaseapp-1.0-SNAPSHOT.jar` относится к типу uber jar. Он содержит все зависимости, необходимые для запуска приложения.
+   > Hello `hbaseapp-1.0-SNAPSHOT.jar` файл является полный jar. Он содержит все необходимые toorun приложений hello зависимости hello.
 
 
-## <a name="upload-the-jar-and-run-jobs-ssh"></a>Передача JAR-файла и запуск заданий (SSH)
+## <a name="upload-hello-jar-and-run-jobs-ssh"></a>Отправка hello JAR-ФАЙЛ и запустите задания (SSH)
 
-В следующих действиях используется команда `scp` для копирования JAR-файла в головной узел HBase в кластере HDInsight. С помощью команды `ssh` выполняется подключение к кластеру; пример запускается непосредственно на головном узле.
+Здравствуйте, выполнив действия, используйте `scp` toocopy hello JAR toohello первичного головного узла к HBase на HDInsight кластера. Hello `ssh` команда будет использовать tooconnect toohello кластера и выполнить пример hello непосредственно на головном узле hello.
 
-1. Чтобы отправить JAR-файл в кластер, используйте следующую команду:
+1. tooupload hello jar toohello кластер, hello используйте следующую команду:
 
     ```bash
     scp ./target/hbaseapp-1.0-SNAPSHOT.jar USERNAME@CLUSTERNAME-ssh.azurehdinsight.net:hbaseapp-1.0-SNAPSHOT.jar
     ```
 
-    Замените `USERNAME` именем пользователя SSH, а `CLUSTERNAME` — именем кластера HDInsight.
+    Замените `USERNAME` с именем hello SSH имени входа. а `CLUSTERNAME` — именем кластера HDInsight.
 
-2. Чтобы подключиться к кластеру HBase, используйте следующую команду:
+2. кластер HBase toohello tooconnect, hello используйте следующую команду:
 
     ```bash
     ssh USERNAME@CLUSTERNAME-ssh.azurehdinsight.net
     ```
 
-    Замените `USERNAME` именем для входа SSH, а `CLUSTERNAME` — именем кластера HDInsight.
+    Замените `USERNAME` hello имя входа SSH. а `CLUSTERNAME` — именем кластера HDInsight.
 
-3. Чтобы создать таблицу HBase с помощью приложения Java, воспользуйтесь следующей командой:
+3. к таблице HBase с помощью toocreate hello приложения Java, hello используйте следующую команду:
 
     ```bash
     yarn jar hbaseapp-1.0-SNAPSHOT.jar com.microsoft.examples.CreateTable
@@ -397,13 +397,13 @@ ms.lasthandoff: 08/18/2017
 
     Эта команда создает таблицу HBase с именем **people** и заполняет ее данными.
 
-4. Для поиска адресов электронной почты, хранящихся в этой таблице, воспользуйтесь следующей командой:
+4. toosearch для адресов электронной почты, которые хранятся в таблице hello, hello используйте следующую команду:
 
     ```bash
     yarn jar hbaseapp-1.0-SNAPSHOT.jar com.microsoft.examples.SearchByEmail contoso.com
     ```
 
-    Вы получите следующие результаты:
+    Появляется hello следующие результаты:
 
         Franklin Holtz - ID: 2
         Franklin Holtz - franklin@contoso.com - ID: 2
@@ -412,23 +412,23 @@ ms.lasthandoff: 08/18/2017
         Gabriela Ingram - ID: 6
         Gabriela Ingram - gabriela@contoso.com - ID: 6
 
-5. Чтобы удалить таблицу, используйте следующую команду:
+5. Таблица toodelete hello, hello используйте следующую команду:
 
     
 
-## <a name="upload-the-jar-and-run-jobs-powershell"></a>Передача JAR-файла и запуск заданий (PowerShell)
+## <a name="upload-hello-jar-and-run-jobs-powershell"></a>Отправка hello JAR-ФАЙЛ и запустите задания (PowerShell)
 
-Далее используется Azure PowerShell для передачи JAR-файла в хранилище по умолчанию для кластера HBase. Затем командлеты HDInsight используются для удаленного запуска примеров.
+Hello действий использовать Azure PowerShell tooupload hello JAR toohello хранилища по умолчанию для кластера HBase. Командлеты HDInsight, то используется toorun hello примеры удаленно.
 
-1. После установки и настройки Azure PowerShell создайте файл с именем `hbase-runner.psm1`. В качестве содержимого файла добавьте следующий текст:
+1. После установки и настройки Azure PowerShell создайте файл с именем `hbase-runner.psm1`. Используйте hello после текста как hello содержимое этого файла:
 
    ```powershell
     <#
     .SYNOPSIS
-    Copies a file to the primary storage of an HDInsight cluster.
+    Copies a file toohello primary storage of an HDInsight cluster.
     .DESCRIPTION
-    Copies a file from a local directory to the blob container for
-    the HDInsight cluster.
+    Copies a file from a local directory toohello blob container for
+    hello HDInsight cluster.
     .EXAMPLE
     Start-HBaseExample -className "com.microsoft.examples.CreateTable"
     -clusterName "MyHDInsightCluster"
@@ -447,11 +447,11 @@ ms.lasthandoff: 08/18/2017
     function Start-HBaseExample {
     [CmdletBinding(SupportsShouldProcess = $true)]
     param(
-    #The class to run
+    #hello class toorun
     [Parameter(Mandatory = $true)]
     [String]$className,
 
-    #The name of the HDInsight cluster
+    #hello name of hello HDInsight cluster
     [Parameter(Mandatory = $true)]
     [String]$clusterName,
 
@@ -459,34 +459,34 @@ ms.lasthandoff: 08/18/2017
     [Parameter(Mandatory = $false)]
     [String]$emailRegex,
 
-    #Use if you want to see stderr output
+    #Use if you want toosee stderr output
     [Parameter(Mandatory = $false)]
     [Switch]$showErr
     )
 
     Set-StrictMode -Version 3
 
-    # Is the Azure module installed?
+    # Is hello Azure module installed?
     FindAzure
 
-    # Get the login for the HDInsight cluster
-    $creds=Get-Credential -Message "Enter the login for the cluster" -UserName "admin"
+    # Get hello login for hello HDInsight cluster
+    $creds=Get-Credential -Message "Enter hello login for hello cluster" -UserName "admin"
 
-    # The JAR
+    # hello JAR
     $jarFile = "wasb:///example/jars/hbaseapp-1.0-SNAPSHOT.jar"
 
-    # The job definition
+    # hello job definition
     $jobDefinition = New-AzureRmHDInsightMapReduceJobDefinition `
         -JarFile $jarFile `
         -ClassName $className `
         -Arguments $emailRegex
 
-    # Get the job output
+    # Get hello job output
     $job = Start-AzureRmHDInsightJob `
         -ClusterName $clusterName `
         -JobDefinition $jobDefinition `
         -HttpCredential $creds
-    Write-Host "Wait for the job to complete ..." -ForegroundColor Green
+    Write-Host "Wait for hello job toocomplete ..." -ForegroundColor Green
     Wait-AzureRmHDInsightJob `
         -ClusterName $clusterName `
         -JobId $job.JobId `
@@ -500,7 +500,7 @@ ms.lasthandoff: 08/18/2017
                 -HttpCredential $creds `
                 -DisplayOutputType StandardError
     }
-    Write-Host "Display the standard output ..." -ForegroundColor Green
+    Write-Host "Display hello standard output ..." -ForegroundColor Green
     Get-AzureRmHDInsightJobOutput `
                 -Clustername $clusterName `
                 -JobId $job.JobId `
@@ -509,10 +509,10 @@ ms.lasthandoff: 08/18/2017
 
     <#
     .SYNOPSIS
-    Copies a file to the primary storage of an HDInsight cluster.
+    Copies a file toohello primary storage of an HDInsight cluster.
     .DESCRIPTION
-    Copies a file from a local directory to the blob container for
-    the HDInsight cluster.
+    Copies a file from a local directory toohello blob container for
+    hello HDInsight cluster.
     .EXAMPLE
     Add-HDInsightFile -localPath "C:\temp\data.txt"
     -destinationPath "example/data/data.txt"
@@ -527,15 +527,15 @@ ms.lasthandoff: 08/18/2017
     function Add-HDInsightFile {
         [CmdletBinding(SupportsShouldProcess = $true)]
         param(
-            #The path to the local file.
+            #hello path toohello local file.
             [Parameter(Mandatory = $true)]
             [String]$localPath,
 
-            #The destination path and file name, relative to the root of the container.
+            #hello destination path and file name, relative toohello root of hello container.
             [Parameter(Mandatory = $true)]
             [String]$destinationPath,
 
-            #The name of the HDInsight cluster
+            #hello name of hello HDInsight cluster
             [Parameter(Mandatory = $true)]
             [String]$clusterName,
 
@@ -546,22 +546,22 @@ ms.lasthandoff: 08/18/2017
 
         Set-StrictMode -Version 3
 
-        # Is the Azure module installed?
+        # Is hello Azure module installed?
         FindAzure
 
-        # Get authentication for the cluster
+        # Get authentication for hello cluster
         $creds=Get-Credential
 
-        # Does the local path exist?
+        # Does hello local path exist?
         if (-not (Test-Path $localPath))
         {
             throw "Source path '$localPath' does not exist."
         }
 
-        # Get the primary storage container
+        # Get hello primary storage container
         $storage = GetStorage -clusterName $clusterName
 
-        # Upload file to storage, overwriting existing files if -force was used.
+        # Upload file toostorage, overwriting existing files if -force was used.
         Set-AzureStorageBlobContent -File $localPath `
             -Blob $destinationPath `
             -force:$force `
@@ -574,7 +574,7 @@ ms.lasthandoff: 08/18/2017
         $sub = Get-AzureRmSubscription -ErrorAction SilentlyContinue
         if(-not($sub))
         {
-            throw "No active Azure subscription found! If you have a subscription, use the Login-AzureRmAccount cmdlet to login to your subscription."
+            throw "No active Azure subscription found! If you have a subscription, use hello Login-AzureRmAccount cmdlet toologin tooyour subscription."
         }
     }
 
@@ -584,7 +584,7 @@ ms.lasthandoff: 08/18/2017
             [String]$clusterName
         )
         $hdi = Get-AzureRmHDInsightCluster -ClusterName $clusterName
-        # Does the cluster exist?
+        # Does hello cluster exist?
         if (!$hdi)
         {
             throw "HDInsight cluster '$clusterName' does not exist."
@@ -600,67 +600,67 @@ ms.lasthandoff: 08/18/2017
         $storageAccountKey=(Get-AzureRmStorageAccountKey `
             -Name $storageAccountName `
         -ResourceGroupName $resourceGroup)[0].Value
-        # Get the resource group, in case we need that
+        # Get hello resource group, in case we need that
         $return.resourceGroup = $resourceGroup
-        # Get the storage context, as we can't depend
-        # on using the default storage context
+        # Get hello storage context, as we can't depend
+        # on using hello default storage context
         $return.context = New-AzureStorageContext -StorageAccountName $storageAccountName -StorageAccountKey $storageAccountKey
-        # Get the container, so we know where to
+        # Get hello container, so we know where to
         # find/store blobs
         $return.container = $container
-        # Return storage accounts to support finding all accounts for
+        # Return storage accounts toosupport finding all accounts for
         # a cluster
         $return.storageAccount = $storageAccountName
         $return.storageAccountKey = $storageAccountKey
 
         return $return
     }
-    # Only export the verb-phrase things
+    # Only export hello verb-phrase things
     export-modulemember *-*
    ```
 
     Этот файл содержит два модуля:
 
-   * **Add-HDInsightFile** — используется для загрузки файлов в кластер;
-   * **Start-HBaseExample** — используется для запуска классов, созданных ранее.
+   * **Добавить HDInsightFile** — служат tooupload файлы toohello кластера
+   * **Начало HBaseExample** -используемые классы toorun hello, созданного ранее
 
-2. Сохраните файл `hbase-runner.psm1`.
+2. Сохранить hello `hbase-runner.psm1` файла.
 
-3. Откройте окно Azure PowerShell, измените каталоги на каталог `hbaseapp`, а затем выполните следующую команду:
+3. Откройте новое окно Azure PowerShell, измените каталоги toohello `hbaseapp` каталога, а затем выполнения hello следующую команду:
 
     ```powershell
     PS C:\ Import-Module c:\path\to\hbase-runner.psm1
     ```
 
-    Измените путь на место расположения созданного ранее файла `hbase-runner.psm1`. Эта команда регистрирует модуль в Azure PowerShell.
+    Изменение расположения toohello путь hello hello `hbase-runner.psm1` файла, созданного ранее. Эта команда регистрирует модуль hello Azure PowerShell.
 
-4. Воспользуйтесь следующей командой, чтобы отправить файл `hbaseapp-1.0-SNAPSHOT.jar` в ваш кластер.
+4. Используйте hello следующая команда tooupload hello `hbaseapp-1.0-SNAPSHOT.jar` tooyour кластера.
 
     ```powershell
     Add-HDInsightFile -localPath target\hbaseapp-1.0-SNAPSHOT.jar -destinationPath example/jars/hbaseapp-1.0-SNAPSHOT.jar -clusterName hdinsightclustername
     ```
 
-    Замените `hdinsightclustername` именем кластера. Команда отправляет файл `hbaseapp-1.0-SNAPSHOT.jar` в расположение `example/jars` в главном хранилище кластера.
+    Замените `hdinsightclustername` с hello имя кластера. Команда Hello отправляет hello `hbaseapp-1.0-SNAPSHOT.jar` toohello `example/jars` расположение в hello основного хранилища для кластера.
 
-5. Чтобы создать таблицу с помощью `hbaseapp`, используйте следующую команду:
+5. Здравствуйте, таблицы с помощью toocreate `hbaseapp`, использовать hello следующую команду:
 
     ```powershell
     Start-HBaseExample -className com.microsoft.examples.CreateTable -clusterName hdinsightclustername
     ```
 
-    Замените `hdinsightclustername` именем кластера.
+    Замените `hdinsightclustername` с hello имя кластера.
 
-    Эта команда создает таблицу с именем **people** в HBase в кластере HDInsight. Эта команда не отображает какие-либо выходные данные в окне консоли.
+    Эта команда создает таблицу с именем **people** в HBase в кластере HDInsight. Эта команда не содержит никаких выходных данных окна консоли «hello».
 
-6. Для осуществления поиска записей таблицы используйте следующую команду:
+6. toosearch для записи в таблице hello, hello используйте следующую команду:
 
     ```powershell
     Start-HBaseExample -className com.microsoft.examples.SearchByEmail -clusterName hdinsightclustername -emailRegex contoso.com
     ```
 
-    Замените `hdinsightclustername` именем кластера.
+    Замените `hdinsightclustername` с hello имя кластера.
 
-    Будет использован класс `SearchByEmail` для поиска всех строк, у которых значение семейства столбцов `contactinformation` и столбца `email` содержит строку `contoso.com`. Вы получите следующие результаты:
+    Эта команда использует hello `SearchByEmail` класса toosearch для всех строк, где hello `contactinformation` семейство столбца и hello `email` столбец, содержащий строку hello `contoso.com`. Должно появиться hello следующие результаты:
 
           Franklin Holtz - ID: 2
           Franklin Holtz - franklin@contoso.com - ID: 2
@@ -669,15 +669,15 @@ ms.lasthandoff: 08/18/2017
           Gabriela Ingram - ID: 6
           Gabriela Ingram - gabriela@contoso.com - ID: 6
 
-    Использование **fabrikam.com** для значения `-emailRegex` вернет список пользователей, у которых имеется строка **fabrikam.com** в поле электронного адреса. В качестве поискового запроса также можно использовать регулярные выражения. Например, **^r** возвращает адреса электронной почты, начинающиеся с буквы r.
+    С помощью **fabrikam.com** для hello `-emailRegex` значение возвращает hello пользователи, имеющие **fabrikam.com** в поле hello электронной почты. Также можно использовать регулярные выражения как hello поисковому запросу. Например **^ r** Возвращает адреса, начинающиеся с буквы hello 'r' по электронной почте.
 
 ### <a name="no-results-or-unexpected-results-when-using-start-hbaseexample"></a>При использовании Start-HBaseExample результаты отсутствуют или не получено каких-либо неожиданных результатов.
 
-Используйте параметр `-showErr` для просмотра стандартной ошибки (STDERR), выдаваемой при выполнении задания.
+Используйте hello `-showErr` параметр tooview hello стандартные ошибки (STDERR), созданного во время выполнения задания hello.
 
-## <a name="delete-the-table"></a>Удаление таблицы
+## <a name="delete-hello-table"></a>Удалить таблицу hello
 
-Завершив работу с примером, удалите таблицу **people**, используя следующую команду в сеансе Azure PowerShell.
+После этого пример hello использовать hello, следуя toodelete hello **людей** таблицы, используемой в этом примере:
 
 __Из сеанса `ssh`__ :
 
@@ -689,4 +689,4 @@ __Из Azure PowerShell__:
 
 ## <a name="next-steps"></a>Дальнейшие действия
 
-[Использование Apache Phoenix с кластерами HBase под управлением Linux в HDInsight](hdinsight-hbase-phoenix-squirrel-linux.md)
+[Узнайте, как toouse белка SQL с HBase](hdinsight-hbase-phoenix-squirrel-linux.md)

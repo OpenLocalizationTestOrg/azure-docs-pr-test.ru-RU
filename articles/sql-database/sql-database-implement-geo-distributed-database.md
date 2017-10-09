@@ -1,6 +1,6 @@
 ---
-title: "Реализация решения географически распределенной базы данных SQL Azure | Документация Майкрософт"
-description: "Сведения о настройке базы данных SQL Azure и приложения для отработки отказа в реплицированную базу данных и тестовой отработки отказа."
+title: "aaaImplement решение географически распределенных баз данных SQL Azure | Документы Microsoft"
+description: "Узнайте, tooconfigure вашей базы данных SQL Azure и приложения для отработки отказа tooa репликации базы данных и тестовой отработки отказа."
 services: sql-database
 documentationcenter: 
 author: CarlRabeler
@@ -16,21 +16,21 @@ ms.tgt_pltfrm: na
 ms.workload: 
 ms.date: 05/26/2017
 ms.author: carlrab
-ms.openlocfilehash: 9f53f318e20dac9248906bdbe898ba4dacb286ac
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 9295d33c669405108a1a64ef1e7cb77f582773a1
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="implement-a-geo-distributed-database"></a>Реализация географически распределенной базы данных
 
-В этом руководстве вы настроите базу данных SQL Azure и приложение для отработки отказа в удаленный регион, а затем протестируете план отработки отказа. Вы узнаете, как выполнять следующие задачи: 
+В этом учебнике Настройка базы данных Azure SQL и приложения для отработки отказа tooa удаленной области и затем протестируйте план, переход на другой ресурс. Вы узнаете, как выполнять следующие задачи: 
 
 > [!div class="checklist"]
 > * создавать пользователей базы данных и предоставлять им разрешения;
 > * настраивать правила брандмауэра уровня базы данных;
 > * создавать [группу отработки отказа георепликации](sql-database-geo-replication-overview.md);
-> * создавать и компилировать приложения Java для запроса базы данных SQL Azure;
+> * Создание и компиляция tooquery приложений Java из базы данных Azure SQL
 > * выполнять отработку аварийного восстановления.
 
 Если у вас еще нет подписки Azure, [создайте бесплатную учетную запись Azure](https://azure.microsoft.com/free/), прежде чем начинать работу.
@@ -38,47 +38,47 @@ ms.lasthandoff: 07/11/2017
 
 ## <a name="prerequisites"></a>Предварительные требования
 
-Для работы с этим руководством выполните следующие предварительные требования:
+toocomplete завершения этого учебника, убедитесь, что hello следующие предварительные требования:
 
-- Установите последнюю версию [Azure PowerShell](https://docs.microsoft.com/powershell/azureps-cmdlets-docs). 
-- Установите базу данных SQL Azure. В этом руководстве используется пример базы данных AdventureWorksLT с именем **mySampleDatabase** из одного из этих кратких руководств:
+- Последняя версия установленного hello [Azure PowerShell](https://docs.microsoft.com/powershell/azureps-cmdlets-docs). 
+- Установите базу данных SQL Azure. В этом учебнике используется hello учебной базой данных AdventureWorksLT с именем **mySampleDatabase** из одного из этих краткие руководства:
 
    - [Создание базы данных с помощью портала](sql-database-get-started-portal.md)
    - [Создание базы данных SQL Azure и отправка к ней запросов с помощью Azure CLI](sql-database-get-started-cli.md)
    - [Создание базы данных с помощью PowerShell](sql-database-get-started-powershell.md)
 
-- После определения метода для выполнения сценариев SQL для базы данных можно использовать одно из следующих средств запроса:
-   - Редактор запросов на [портале Azure](https://portal.azure.com). Дополнительные сведения об использовании редактора запросов на портале Azure см. в разделе [Отправка запросов к базе данных SQL](sql-database-get-started-portal.md#query-the-sql-database).
-   - Последнюю версию [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms), которая является интегрированной средой для управления любой инфраструктурой SQL, от SQL Server до базы данных SQL для Microsoft Windows.
-   - Последнюю версию [Visual Studio Code](https://code.visualstudio.com/docs), которая является графическим редактором кода для Linux, macOS и Windows, поддерживающим различные расширения, включая [расширение mssql](https://aka.ms/mssql-marketplace), для выполнения запросов к Microsoft SQL Server, базе данных SQL Azure и хранилищу данных SQL. Дополнительные сведения об использовании этого средства в базе данных SQL Azure см. в статье [База данных SQL Azure: подключение и запрос данных с помощью Visual Studio Code](sql-database-connect-query-vscode.md). 
+- Определен метод tooexecute SQL скриптов к базе данных можно использовать один hello следующие средства:
+   - редактор запросов Hello в hello [портал Azure](https://portal.azure.com). Дополнительные сведения об использовании редактора запросов hello в hello портала Azure см. в разделе [подключение и запрос, с помощью редактора запросов](sql-database-get-started-portal.md#query-the-sql-database).
+   - Hello новейшую версию [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms), который — это интегрированная среда для управления любой инфраструктуры SQL из SQL Server tooSQL базы данных для Microsoft Windows.
+   - Hello новейшую версию [кода Visual Studio](https://code.visualstudio.com/docs), являющийся редактором графический кода для Linux, macOS, и Windows, которые поддерживает расширения, включая hello [mssql расширения](https://aka.ms/mssql-marketplace) для выполнения запросов Microsoft SQL Server , База данных azure SQL и хранилище данных SQL. Дополнительные сведения об использовании этого средства в базе данных SQL Azure см. в статье [База данных SQL Azure: подключение и запрос данных с помощью Visual Studio Code](sql-database-connect-query-vscode.md). 
 
 ## <a name="create-database-users-and-grant-permissions"></a>Создание пользователей базы данных и предоставление им разрешений
 
-Подключитесь к базе данных и создайте учетные записи пользователей с помощью одного из следующих средств запроса:
+Подключитесь tooyour базы данных и создайте учетные записи пользователей с помощью одного из hello следующие средства:
 
-- редактора запросов на портале Azure;
+- редактор запросов Hello в hello портал Azure
 - SQL Server Management Studio
 - Visual Studio Code.
 
-Эти учетные записи пользователей автоматически реплицируются на сервер-получатель (синхронизация обязательна). Чтобы использовать SQL Server Management Studio или Visual Studio Code, вам может потребоваться настроить правило брандмауэра при подключении из клиента по IP-адресу, для которого еще не настроен брандмауэр. Подробные инструкции см. в разделе [Создание правила брандмауэра на уровне сервера](sql-database-get-started-portal.md#create-a-server-level-firewall-rule).
+Эти учетные записи пользователей автоматически реплицировать tooyour сервера-получателя (и обеспечивать синхронизацию). toouse SQL Server Management Studio или кода Visual Studio, может потребоваться tooconfigure правила брандмауэра при подключении клиента с IP-адресом, для которого вы еще не настроен брандмауэр. Подробные инструкции см. в разделе [Создание правила брандмауэра на уровне сервера](sql-database-get-started-portal.md#create-a-server-level-firewall-rule).
 
-- Чтобы создать в базе данных две учетные записи пользователя, в окне запроса выполните следующий запрос: Этот скрипт предоставляет разрешения **db_owner** для учетной записи **app_admin**, а также разрешения **SELECT** и **UPDATE** для учетной записи **app_user**. 
+- В окне запроса выполните hello, выполнив запрос toocreate две учетные записи пользователя в базе данных. Этот сценарий предоставляет **db_owner** toohello разрешений **app_admin** учетной записи и предоставляет **ВЫБЕРИТЕ** и **обновление** toohello разрешения **app_user** учетной записи. 
 
    ```sql
    CREATE USER app_admin WITH PASSWORD = 'ChangeYourPassword1';
-   --Add SQL user to db_owner role
+   --Add SQL user toodb_owner role
    ALTER ROLE db_owner ADD MEMBER app_admin; 
    --Create additional SQL user
    CREATE USER app_user WITH PASSWORD = 'ChangeYourPassword1';
-   --grant permission to SalesLT schema
-   GRANT SELECT, INSERT, DELETE, UPDATE ON SalesLT.Product TO app_user;
+   --grant permission tooSalesLT schema
+   GRANT SELECT, INSERT, DELETE, UPDATE ON SalesLT.Product tooapp_user;
    ```
 
 ## <a name="create-database-level-firewall"></a>Создание брандмауэра на уровне базы данных
 
-Создайте [правило брандмауэра уровня базы данных](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-set-database-firewall-rule-azure-sql-database) для базы данных SQL. Оно автоматически реплицируется на сервер-получатель, созданный в рамках этого руководства. Для удобства (в рамках этого руководства) используйте общедоступный IP-адрес компьютера, на котором выполняются действия из этого руководства. Ознакомьтесь с разделом [Создание правила брандмауэра на уровне сервера](sql-database-get-started-portal.md#create-a-server-level-firewall-rule), чтобы определить IP-адрес, используемый для правила брандмауэра уровня сервера для текущего компьютера.  
+Создайте [правило брандмауэра уровня базы данных](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-set-database-firewall-rule-azure-sql-database) для базы данных SQL. Это правило брандмауэра уровня базы данных автоматически реплицирует toohello сервера-получателя, созданный в этом учебнике. Для простоты (в этом учебнике) Используйте общедоступный IP-адрес hello hello компьютера, на котором hello действия выполняются в этом учебнике. toodetermine hello IP-адрес, используемый для hello правила брандмауэра уровня сервера для текущего компьютера, в разделе [создания брандмауэра уровня сервера](sql-database-get-started-portal.md#create-a-server-level-firewall-rule).  
 
-- В открытом окне запроса замените предыдущий запрос следующим запросом, указав соответствующие IP-адреса для вашей среды.  
+- В окне Открыть запрос замените предыдущий запрос hello приветствия при следующем запросе, заменив hello IP-адресов hello соответствующие IP-адресов для вашей среды.  
 
    ```sql
    -- Create database-level firewall setting for your public IP address
@@ -87,13 +87,13 @@ ms.lasthandoff: 07/11/2017
 
 ## <a name="create-an-active-geo-replication-auto-failover-group"></a>Создание группы автоматической отработки отказа и активная георепликация 
 
-С помощью Azure PowerShell создайте [группу автоматической отработки отказа активной георепликации](sql-database-geo-replication-overview.md) между существующим сервером SQL Azure и новым пустым сервером SQL Azure в регионе Azure, а затем добавьте пример базы данных в группу отработки отказа.
+С помощью Azure PowerShell, создать [активной георепликации автоматического перехода на другой ресурс группы](sql-database-geo-replication-overview.md) между существующего сервера Azure SQL и hello новый пустой сервера Azure SQL в регионе Azure, а затем добавьте группе отработки отказа toohello образца базы данных.
 
 > [!IMPORTANT]
 > Для выполнения этих командлетов требуется Azure PowerShell версии 4.0. [!INCLUDE [sample-powershell-install](../../includes/sample-powershell-install-no-ssh.md)]
 >
 
-1. Заполните переменные для сценариев PowerShell, используя значения для имеющегося сервера и примера базы данных, а также присвойте имени группы отработки отказа глобальное уникальное значение.
+1. Присвоения значений переменным для написания сценариев PowerShell, используя hello значения для существующего сервера и образец базы данных и предоставляют глобальное уникальное значение для имени группы перехода на другой ресурс.
 
    ```powershell
    $adminlogin = "ServerAdmin"
@@ -117,7 +117,7 @@ ms.lasthandoff: 07/11/2017
    $mydrserver   
    ```
 
-3. Создайте группу отработки отказа между двумя серверами.
+3. Создайте группу отработки отказа между двумя серверами hello.
 
    ```powershell
    $myfailovergroup = New-AzureRMSqlDatabaseFailoverGroup `
@@ -130,7 +130,7 @@ ms.lasthandoff: 07/11/2017
    $myfailovergroup   
    ```
 
-4. Добавьте базу данных в группу отработки отказа.
+4. Добавьте группу отказоустойчивого toohello вашей базы данных.
 
    ```powershell
    $myfailovergroup = Get-AzureRmSqlDatabase `
@@ -146,10 +146,10 @@ ms.lasthandoff: 07/11/2017
 
 ## <a name="install-java-software"></a>Установка программного обеспечения Java
 
-В этом разделе предполагается, что у вас уже есть опыт разработки на Java и вы только начали работу с Базой данных SQL Azure. 
+Hello в этом разделе предполагается, что представление о разработке с использованием Java и являются новый tooworking с базой данных SQL Azure. 
 
 ### <a name="mac-os"></a>**Mac OS**
-Откройте терминал и перейдите в каталог, в котором вы планируете создать проект Java. Введите следующие команды для установки **brew** и **Maven**. 
+Откройте терминала и перейдите в каталог tooa, куда планируется создание проекта Java. Установка **brew** и **Maven** , введя hello, следующие команды: 
 
 ```bash
 ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
@@ -157,23 +157,23 @@ brew update
 brew install maven
 ```
 
-Для получения подробных инструкций по установке и настройке сред Java и Maven перейдите на ресурс [создания приложения с помощью SQL Server](https://www.microsoft.com/sql-server/developer-get-started/), выберите **Java**, затем — **MacOS** и выполните подробные инструкции по настройке Java и Maven (шаги 1.2 и 1.3).
+Подробные инструкции по установке и настройке среды Java и Maven go hello [построение приложения с помощью SQL Server](https://www.microsoft.com/sql-server/developer-get-started/)выберите **Java**выберите **MacOS**и следуйте Hello подробные инструкции по настройке шаг 1.2, 1.3 и Java и Maven.
 
 ### <a name="linux-ubuntu"></a>**Linux (Ubuntu)**
-Откройте терминал и перейдите в каталог, в котором вы планируете создать проект Java. Введите следующие команды для установки **Maven**.
+Откройте терминала и перейдите в каталог tooa, куда планируется создание проекта Java. Установка **Maven** , введя hello, следующие команды:
 
 ```bash
 sudo apt-get install maven
 ```
 
-Для получения подробных инструкций по установке и настройке сред Java и Maven перейдите на ресурс [создания приложения с помощью SQL Server](https://www.microsoft.com/sql-server/developer-get-started/), выберите **Java**, затем — **Ubuntu** и выполните подробные инструкции по настройке Java и Maven (шаги 1.2, 1.3 и 1.4).
+Подробные инструкции по установке и настройке среды Java и Maven go hello [построение приложения с помощью SQL Server](https://www.microsoft.com/sql-server/developer-get-started/)выберите **Java**выберите **Ubuntu**и следуйте Hello подробные инструкции по настройке Java и Maven шаг 1.2, 1.3 и 1.4.
 
 ### <a name="windows"></a>**Windows**
-Установите [Maven](https://maven.apache.org/download.cgi) с помощью официального установщика. Maven можно использовать для управления зависимостями, выполнения сборки, тестирования и запуска проекта Java. Для получения подробных инструкций по установке и настройке сред Java и Maven перейдите на ресурс [создания приложения с помощью SQL Server](https://www.microsoft.com/sql-server/developer-get-started/), выберите **Java**, затем — Windows и выполните подробные инструкции по настройке Java и Maven (шаги 1.2 и 1.3).
+Установка [Maven](https://maven.apache.org/download.cgi) с помощью установщика официальный hello. Используйте Maven toohelp Управление зависимостями, создания, тестирования и запуска проекта Java. Подробные инструкции по установке и настройке среды Java и Maven go hello [построение приложения с помощью SQL Server](https://www.microsoft.com/sql-server/developer-get-started/)выберите **Java**, выберите Windows, а затем следуйте hello подробные инструкции по Настройка Java и Maven на шаге 1.2 и 1.3.
 
 ## <a name="create-sqldbsample-project"></a>Создание проекта SqlDbSample
 
-1. В окне командной консоли (например, Bash) создайте проект Maven. 
+1. В командной консоли hello (таких как Bash) создайте проект Maven. 
    ```bash
    mvn archetype:generate "-DgroupId=com.sqldbsamples" "-DartifactId=SqlDbSample" "-DarchetypeArtifactId=maven-archetype-quickstart" "-Dversion=1.0.0"
    ```
@@ -184,9 +184,9 @@ sudo apt-get install maven
    cd SqlDbSamples
    ```
 
-4. Используя любой удобный редактор, откройте файл pom.xml в папке проекта. 
+4. Используя текстовый редактор, откройте файл pom.xml hello в папку проекта. 
 
-5. Добавьте Microsoft JDBC Driver для зависимости SQL Server в проект Maven. Для этого откройте удобный текстовый редактор, скопируйте и вставьте следующие строки в файл pom.xml. Не перезаписывайте имеющиеся значения, предварительно заполненные в файле. JDBC-зависимость необходимо вставить в рамках большего раздела зависимостей.   
+5. Добавьте hello драйвера JDBC для SQL Server зависимостей tooyour Maven проекта, открыв в привычном текстовом редакторе и скопировав и вставив hello следующие строки в файл pom.xml. Не перезаписывать существующие значения hello подставлена в файл hello. Hello JDBC зависимостей необходимо вставить в () раздела hello большего «зависимости».   
 
    ```xml
    <dependency>
@@ -196,7 +196,7 @@ sudo apt-get install maven
    </dependency>
    ```
 
-6. Укажите версию Java, с помощью которой нужно скомпилировать проект. Для этого добавьте следующий раздел свойств в файл pom.xml после раздела зависимостей. 
+6. Укажите версию hello проект hello toocompile Java, для добавляя hello в следующем разделе «свойства» в файл pom.xml hello после раздела «зависимости» hello. 
 
    ```xml
    <properties>
@@ -204,7 +204,7 @@ sudo apt-get install maven
      <maven.compiler.target>1.8</maven.compiler.target>
    </properties>
    ```
-7. Добавьте следующий раздел сборки в файл pom.xml после раздела свойств для поддержки файлов манифеста в JAR-файлах.       
+7. Добавьте следующие hello «сборки» раздел в файл pom.xml hello после hello раздел «свойства» toosupport манифеста файлов JAR-файлов.       
 
    ```xml
    <build>
@@ -224,8 +224,8 @@ sudo apt-get install maven
      </plugins>
    </build>
    ```
-8. Сохраните и закройте файл pom.xml.
-9. Откройте файл App.java (C:\apache-maven-3.5.0\SqlDbSample\src\main\java\com\sqldbsamples\App.java) и замените его содержимое на содержимое ниже. Замените имя группы отработки отказа на имя своей группы отработки отказа. Если вы изменили значения для имени базы данных, пользователя или пароля, измените также эти значения.
+8. Сохраните и закройте файл pom.xml hello.
+9. Откройте файл App.java hello (C:\apache-maven-3.5.0\SqlDbSample\src\main\java\com\sqldbsamples\App.java) и замените содержимое hello hello после содержимого. Замените имя группы отработки отказа hello hello имя для вашей группы перехода на другой ресурс. Если вы изменили значения hello hello имя базы данных, пользователя или пароль, измените эти значения также.
 
    ```java
    package com.sqldbsamples;
@@ -272,7 +272,7 @@ sudo apt-get install maven
    }
 
    private static boolean insertData(int id) {
-      // Insert data into the product table with a unique product name that we can use to find the product again later
+      // Insert data into hello product table with a unique product name that we can use toofind hello product again later
       String sql = "INSERT INTO SalesLT.Product (Name, ProductNumber, Color, StandardCost, ListPrice, SellStartDate) VALUES (?,?,?,?,?,?);";
 
       try (Connection connection = DriverManager.getConnection(READ_WRITE_URL); 
@@ -290,7 +290,7 @@ sudo apt-get install maven
    }
 
    private static boolean selectData(int id) {
-      // Query the data that was previously inserted into the primary database from the geo replicated database
+      // Query hello data that was previously inserted into hello primary database from hello geo replicated database
       String sql = "SELECT Name, Color, ListPrice FROM SalesLT.Product WHERE Name = ?";
 
       try (Connection connection = DriverManager.getConnection(READ_ONLY_URL); 
@@ -305,7 +305,7 @@ sudo apt-get install maven
    }
 
    private static int getHighWaterMarkId() {
-      // Query the high water mark id that is stored in the table to be able to make unique inserts 
+      // Query hello high water mark id that is stored in hello table toobe able toomake unique inserts 
       String sql = "SELECT MAX(ProductId) FROM SalesLT.Product";
       int result = 1;
         
@@ -322,16 +322,16 @@ sudo apt-get install maven
       }
    }
    ```
-6. Сохраните и закройте файл App.java.
+6. Сохраните и закройте файл App.java hello.
 
-## <a name="compile-and-run-the-sqldbsample-project"></a>Компиляция и выполнение проекта SqlDbSample
+## <a name="compile-and-run-hello-sqldbsample-project"></a>Компиляция и выполнение проекта SqlDbSample hello
 
-1. В окне командной консоли выполните следующую команду.
+1. В командной консоли hello выполните команду toofollowing.
 
    ```bash
    mvn package
    ```
-2. После завершения выполните следующую команду для запуска приложения (запуск выполняется около часа, если не завершить эту задачу вручную):
+2. После завершения выполнения hello, следующая команда toorun hello приложения (он выполняется для примерно 1 час, пока не будет остановлена пользователем вручную):
 
    ```bash
    mvn -q -e exec:java "-Dexec.mainClass=com.sqldbsamples.App"
@@ -356,7 +356,7 @@ sudo apt-get install maven
    -FailoverGroupName $myfailovergroupname
    ```
 
-2. Просмотрите результаты приложения во время отработки отказа. Во время обновления кэша DNS некоторые операции вставки завершатся ошибкой.     
+2. Наблюдать результаты приложения hello во время отработки отказа. Некоторые операции вставки ошибкой, пока обновит hello кэша DNS.     
 
 3. Узнайте, какую роль выполняет сервер аварийного восстановления.
 
@@ -373,7 +373,7 @@ sudo apt-get install maven
    -FailoverGroupName $myfailovergroupname
    ```
 
-5. Просмотрите результаты приложения во время восстановления размещения. Во время обновления кэша DNS некоторые операции вставки завершатся ошибкой.     
+5. Наблюдать результаты приложения hello при отработке отказа. Некоторые операции вставки ошибкой, пока обновит hello кэша DNS.     
 
 6. Узнайте, какую роль выполняет сервер аварийного восстановления.
 

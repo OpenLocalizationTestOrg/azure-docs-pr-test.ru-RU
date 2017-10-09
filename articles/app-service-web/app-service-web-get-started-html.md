@@ -1,6 +1,6 @@
 ---
-title: "Создание статического веб-приложения HTML в Azure | Документация Майкрософт"
-description: "Узнайте, как запускать веб-приложения в службе приложений Azure, развернув пример статического HTML-приложения."
+title: "aaaCreate статическим HTML веб-приложения в Azure | Документы Microsoft"
+description: "Узнайте, как toorun веб-приложений в службе приложений Azure, развернув статическим HTML пример приложения."
 services: app-service\web
 documentationcenter: 
 author: rick-anderson
@@ -15,48 +15,48 @@ ms.topic: quickstart
 ms.date: 05/26/2017
 ms.author: riande
 ms.custom: mvc
-ms.openlocfilehash: 42af5b08b8d2ff0c75fd73dcfa61c861647fd2c9
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: efd8c8189a3aa1ac35602b688eeb31bff6f5a373
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-a-static-html-web-app-in-azure"></a>Создание статического веб-приложения HTML в Azure
 
-[Веб-приложения Azure](https://docs.microsoft.com/azure/app-service-web/app-service-web-overview) — это служба веб-размещения с самостоятельной установкой исправлений и высоким уровнем масштабируемости.  В этом кратком руководстве объясняется, как развернуть базовый сайт HTML+CSS в веб-приложениях Azure. Создайте веб-приложение с помощью [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) и разверните пример HTML-содержимого в веб-приложении с помощью Git.
+[Веб-приложения Azure](https://docs.microsoft.com/azure/app-service-web/app-service-web-overview) — это служба веб-размещения с самостоятельной установкой исправлений и высоким уровнем масштабируемости.  Краткого руководства показано, как toodeploy основные HTML + CSS сайта tooAzure веб-приложений. Создание веб-приложения hello, с помощью hello [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli), и использовать Git toodeploy образец HTML toohello содержимого веб-приложения.
 
 ![Домашняя страница в примере приложения](media/app-service-web-get-started-html/hello-world-in-browser-az.png)
 
-Выполните действия, приведенные ниже, с помощью компьютера Mac, Windows или Linux. После установки необходимых компонентов для выполнения этих шагов потребуется около пяти минут.
+Выполните действия hello ниже, с помощью компьютером Mac, Windows или Linux. После установки необходимых компонентов hello, требует toocomplete около пяти минут hello действия.
 
 ## <a name="prerequisites"></a>Предварительные требования
 
-Для работы с этим кратким руководством сделайте следующее:
+toocomplete краткого руководства:
 
 - [Установите Git](https://git-scm.com/)
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)].
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Если вы решили установить и использовать интерфейс командной строки локально, для работы с этим руководством вам понадобится Azure CLI 2.0 или более поздней версии. Чтобы узнать версию, выполните команду `az --version`. Если вам необходимо выполнить установку или обновление, см. статью [Установка Azure CLI 2.0]( /cli/azure/install-azure-cli). 
+Если выбрать tooinstall и использовать hello CLI локально, в этом разделе требуется под управлением hello Azure CLI версии 2.0 или более поздней версии. Запустите `az --version` версии toofind hello. Если требуется tooinstall или обновления, см. раздел [установить CLI Azure 2.0]( /cli/azure/install-azure-cli). 
 
-## <a name="download-the-sample"></a>Скачивание примера приложения
+## <a name="download-hello-sample"></a>Загрузить образец hello
 
-В окне терминала выполните следующую команду, чтобы клонировать репозиторий с примером приложения на локальный компьютер.
+В окне терминала запустите hello, следующая команда tooclone hello образец приложения репозитория tooyour локального компьютера.
 
 ```bash
 git clone https://github.com/Azure-Samples/html-docs-hello-world.git
 ```
 
-Используйте это окно терминала для выполнения всех команд в рамках этого руководства.
+В этом кратком руководстве все команды hello использовать этот toorun окно терминала.
 
-## <a name="view-the-html"></a>Просмотр HTML
+## <a name="view-hello-html"></a>Hello представление HTML
 
-Перейдите в каталог, в котором содержится пример HTML. Откройте файл *index.html* в браузере.
+Перейдите в каталог toohello, который содержит образец hello HTML. Откройте hello *index.html* файла в браузере.
 
 ![Домашняя страница примера приложения](media/app-service-web-get-started-html/hello-world-in-browser.png)
 
-[!INCLUDE [Log in to Azure](../../includes/login-to-azure.md)] 
+[!INCLUDE [Log in tooAzure](../../includes/login-to-azure.md)] 
 
 [!INCLUDE [Configure deployment user](../../includes/configure-deployment-user.md)] 
 
@@ -72,11 +72,11 @@ git clone https://github.com/Azure-Samples/html-docs-hello-world.git
 
 [!INCLUDE [Configure local git](../../includes/app-service-web-configure-local-git.md)] 
 
-[!INCLUDE [Push to Azure](../../includes/app-service-web-git-push-to-azure.md)] 
+[!INCLUDE [Push tooAzure](../../includes/app-service-web-git-push-to-azure.md)] 
 
 ```bash
 Counting objects: 13, done.
-Delta compression using up to 4 threads.
+Delta compression using up too4 threads.
 Compressing objects: 100% (11/11), done.
 Writing objects: 100% (13/13), 2.07 KiB | 0 bytes/s, done.
 Total 13 (delta 2), reused 0 (delta 0)
@@ -96,52 +96,52 @@ remote: Copying file: 'README.md'
 remote: Finished successfully.
 remote: Running post deployment command(s)...
 remote: Deployment successful.
-To https://<app_name>.scm.azurewebsites.net/<app_name>.git
+toohttps://<app_name>.scm.azurewebsites.net/<app_name>.git
  * [new branch]      master -> master
 ```
 
-## <a name="browse-to-the-app"></a>Переход в приложение
+## <a name="browse-toohello-app"></a>Обзор toohello приложения
 
-В браузере перейдите по URL-адресу веб-приложения Azure:
+В браузере перейдите на URL-адрес приложения Azure web toohello:
 
 ```
 http://<app_name>.azurewebsites.net
 ```
 
-Страница выполняется как веб-приложение службы приложений Azure.
+Страница приветствия работает как веб-приложение службы приложений Azure.
 
 ![Домашняя страница примера приложения](media/app-service-web-get-started-html/hello-world-in-browser-az.png)
 
-**Поздравляем!** Вы развернули свое первое HTML-приложение в службе приложений.
+**Поздравляем!** Ваш первый tooApp приложения HTML службы после развертывания.
 
-## <a name="update-and-redeploy-the-app"></a>Обновление и повторное развертывание приложения
+## <a name="update-and-redeploy-hello-app"></a>Обновить и повторно развернуть приложение hello
 
-Откройте файл *index.html* в текстовом редакторе и измените разметку. Например, измените заголовок H1 "Служба приложений Azure — пример статического HTML-сайта" на "Служба приложений Azure".
+Откройте hello *index.html* файл в текстовом редакторе и внести изменение toohello разметки. Изменить заголовок hello H1 из toojust Azure приложения — образец статических HTML «сайт службами», например, «служба приложений Azure ".
 
-Зафиксируйте изменения в Git, а затем отправьте изменения кода в Azure.
+Фиксация изменений в Git и затем отправьте tooAzure изменения кода hello.
 
 ```bash
 git commit -am "updated HTML"
 git push azure master
 ```
 
-Завершив развертывание, обновите страницу в браузере, чтобы увидеть изменения.
+После завершения развертывания обновления изменения hello toosee браузера.
 
 ![Обновленная домашняя страница примера приложения](media/app-service-web-get-started-html/hello-azure-in-browser-az.png)
 
 ## <a name="manage-your-new-azure-web-app"></a>Управление новым веб-приложением Azure
 
-Перейдите на <a href="https://portal.azure.com" target="_blank">портал Azure</a> для управления созданным веб-приложением.
+Go toohello <a href="https://portal.azure.com" target="_blank">портал Azure</a> toomanage hello веб-приложения был создан.
 
-В меню слева выберите **Службы приложений**, а затем щелкните имя своего веб-приложения Azure.
+Hello в левом меню, щелкните **службы приложений**, а затем щелкните имя hello Azure веб-приложения.
 
-![Переход к веб-приложению Azure на портале](./media/app-service-web-get-started-html/portal1.png)
+![Веб-приложения портала навигации tooAzure](./media/app-service-web-get-started-html/portal1.png)
 
 Отобразится страница обзора вашего веб-приложения. Вы можете выполнять базовые задачи управления: обзор, завершение, запуск, перезагрузку и удаление. 
 
 ![Колонка службы приложений на портале Azure](./media/app-service-web-get-started-html/portal2.png)
 
-В меню слева доступно несколько страниц для настройки приложения. 
+меню слева Hello предоставляет различные страницы для настройки приложения. 
 
 [!INCLUDE [cli-samples-clean-up](../../includes/cli-samples-clean-up.md)]
 

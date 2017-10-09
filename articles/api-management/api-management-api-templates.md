@@ -1,6 +1,6 @@
 ---
-title: "Шаблоны API в службе управления API Azure | Документация Майкрософт"
-description: "Сведения о настройке содержимого страниц API на портале разработчика в службе управления API Azure."
+title: "шаблоны aaaAPI в службе управления API Azure | Документы Microsoft"
+description: "Узнайте, как toocustomize hello содержимого страниц hello API на портале разработчиков hello в службе управления API Azure."
 services: api-management
 documentationcenter: 
 author: miaojiang
@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-ms.openlocfilehash: 3802868470f0f74cd1f895a00195259861ea16f8
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: fdfa76167cfaf3b23b22d6321904f34da077fecb
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="api-templates-in-azure-api-management"></a>Шаблоны API в службе управления API Azure
-Служба управления API Azure позволяет настраивать содержимое страниц портала разработчика с помощью набора шаблонов. С помощью этих шаблонов вы можете гибко настраивать содержимое страниц, используя синтаксис [DotLiquid](http://dotliquidmarkup.org/), любой удобный текстовый редактор, например [DotLiquid для разработчиков](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers), и предоставленный набор локализованных [строковых ресурсов](api-management-template-resources.md#strings), [ресурсов глифов](api-management-template-resources.md#glyphs), а также [элементов управления страницы](api-management-page-controls.md).  
+Управления API Azure предоставляет hello возможность toocustomize hello содержимое страницы портала разработчиков с помощью набора шаблонов, которые настраивают их содержимого. С помощью [DotLiquid](http://dotliquidmarkup.org/) синтаксис и hello редактора, таких как [DotLiquid для конструкторов](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers), предоставленным набором локализации и [строковые ресурсы](api-management-template-resources.md#strings), [ Ресурсы глиф](api-management-template-resources.md#glyphs), и [страницы элементов управления](api-management-page-controls.md), у вас есть гибкость tooconfigure hello содержимого hello страниц по своему усмотрению, с помощью этих шаблонов.  
   
- С помощью шаблонов в этом разделе вы сможете настроить содержимое страниц API на портале разработчика.  
+ шаблоны Hello в этом разделе разрешить доступ к содержимому hello toocustomize страниц hello API на портале разработчиков hello.  
   
 -   [Список API](#APIList)  
 -   [Операция](#Product)  
@@ -38,10 +38,10 @@ ms.lasthandoff: 07/11/2017
     -   [Ruby](#Ruby)  
 
 > [!NOTE]
->  Примеры стандартных шаблонов включены в следующую документацию, но могут в любой момент измениться, так как ведется постоянная работа по их улучшению. Актуальные шаблоны по умолчанию можно просмотреть на портале разработчика, перейдя к требуемому отдельному шаблону. Дополнительные сведения о работе с шаблонами см. в статье [Настройка портала разработчика в службе управления API Azure с помощью шаблонов](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/).  
+>  Примеры шаблонов по умолчанию включены в следующие документации hello, но являются toochange субъекта из-за toocontinuous улучшения. Можно просмотреть шаблоны динамической по умолчанию hello в портал разработчиков hello, перейдя по toohello требуемого отдельных шаблонов. Дополнительные сведения о работе с шаблонами см. в разделе [как toocustomize hello портал разработчика управления API, с помощью шаблонов](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/).  
   
 ##  <a name="APIList"></a>Список API  
- Шаблон **списка API** позволяет настроить текст страницы со списком API на портале разработчика.  
+ Hello **список API** шаблон позволяет текст hello toocustomize страницу списка hello API на портале разработчиков hello.  
   
  ![Список API на портале разработчика](./media/api-management-api-templates/APIM-Developer-Portal-Templates-API-List.png "Список API на портале разработчика APIM")  
   
@@ -76,7 +76,7 @@ ms.lasthandoff: 07/11/2017
 ```  
   
 ### <a name="controls"></a>Управление  
- В шаблоне `API list` можно использовать следующие [элементы управления страницы](api-management-page-controls.md).  
+ Hello `API list` шаблона может использовать следующие hello [страницы элементов управления](api-management-page-controls.md).  
   
 -   [paging-control](api-management-page-controls.md#paging-control)  
   
@@ -86,7 +86,7 @@ ms.lasthandoff: 07/11/2017
   
 |Свойство|Тип|Описание|  
 |--------------|----------|-----------------|  
-|apis|Коллекция сущностей [API summary](api-management-template-data-model-reference.md#APISummary) (Сводные данные API).|API, доступные для текущего пользователя.|  
+|apis|Коллекция сущностей [API summary](api-management-template-data-model-reference.md#APISummary) (Сводные данные API).|Hello API-интерфейсы видимым toohello текущего пользователя.|  
   
 ### <a name="sample-template-data"></a>Пример данных шаблона  
   
@@ -109,7 +109,7 @@ ms.lasthandoff: 07/11/2017
 ```  
   
 ##  <a name="Product"></a> Операция  
- Шаблон **операции** позволяет настроить текст страницы операции на портале разработчика.  
+ Hello **операции** шаблон позволяет текст hello toocustomize операции страницы приветствия на портале разработчиков hello.  
   
  ![Страница операции на портале разработчика](./media/api-management-api-templates/APIM-Developer-Portal-templates-Operation-page.png "Страница операции в шаблонах портала разработчика APIM")  
   
@@ -335,21 +335,21 @@ ms.lasthandoff: 07/11/2017
 ```  
   
 ### <a name="controls"></a>Управление  
- В шаблоне `Operation` нельзя использовать [элементы управления страницы](api-management-page-controls.md).  
+ Hello `Operation` шаблона не позволяет использовать hello любого [страницы элементов управления](api-management-page-controls.md).  
   
 ### <a name="data-model"></a>Модель данных  
   
 |Свойство|Тип|Описание|  
 |--------------|----------|-----------------|  
-|apiId|строка|Идентификатор текущего API.|  
-|apiName|строка|Имя API.|  
-|apiDescription|строка|Описание API.|  
-|api|Сущность [API summary](api-management-template-data-model-reference.md#APISummary) (Сводные данные API).|Текущий API.|  
-|операция|[Операция](api-management-template-data-model-reference.md#Operation)|Операция, отображаемая в настоящий момент.|  
-|sampleUrl|строка|URL-адрес текущей операции.|  
+|apiId|string|Идентификатор текущей API hello Hello.|  
+|apiName|string|Имя Hello hello API.|  
+|apiDescription|string|Описание hello API.|  
+|api|Сущность [API summary](api-management-template-data-model-reference.md#APISummary) (Сводные данные API).|текущий API Hello.|  
+|операция|[Операция](api-management-template-data-model-reference.md#Operation)|Операция Hello отображаемую в данный момент.|  
+|sampleUrl|string|URL-адрес Hello hello текущей операции.|  
 |operationMenu|[Меню операций](api-management-template-data-model-reference.md#Menu)|Меню операций для API.|  
-|consoleUrl|URI|Универсальный код ресурса для кнопки **Попробуйте**.|  
-|примеры|Коллекция сущностей [Code sample](api-management-template-data-model-reference.md#Sample) (Пример кода).|Примеры кода для текущей операции.|  
+|consoleUrl|URI|Hello URI для hello **опробовать** кнопки.|  
+|примеры|Коллекция сущностей [Code sample](api-management-template-data-model-reference.md#Sample) (Пример кода).|Здравствуйте, примеры кода для текущей операции hello...|  
   
 ### <a name="sample-template-data"></a>Пример данных шаблона  
   
@@ -376,7 +376,7 @@ ms.lasthandoff: 07/11/2017
             "headers": [  
                 {  
                     "name": "Ocp-Apim-Subscription-Key",  
-                    "description": "Subscription key which provides access to this API. Found in your <a href='/developer'>Profile</a>.",  
+                    "description": "Subscription key which provides access toothis API. Found in your <a href='/developer'>Profile</a>.",  
                     "value": "{subscription key}",  
                     "typeName": "string",  
                     "options": null,  
@@ -456,7 +456,7 @@ ms.lasthandoff: 07/11/2017
             "headers": [  
                 {  
                     "name": "Ocp-Apim-Subscription-Key",  
-                    "description": "Subscription key which provides access to this API. Found in your <a href='/developer'>Profile</a>.",  
+                    "description": "Subscription key which provides access toothis API. Found in your <a href='/developer'>Profile</a>.",  
                     "value": "{subscription key}",  
                     "typeName": "string",  
                     "options": null,  
@@ -480,7 +480,7 @@ ms.lasthandoff: 07/11/2017
             "headers": [  
                 {  
                     "name": "Ocp-Apim-Subscription-Key",  
-                    "description": "Subscription key which provides access to this API. Found in your <a href='/developer'>Profile</a>.",  
+                    "description": "Subscription key which provides access toothis API. Found in your <a href='/developer'>Profile</a>.",  
                     "value": "{subscription key}",  
                     "typeName": "string",  
                     "options": null,  
@@ -504,7 +504,7 @@ ms.lasthandoff: 07/11/2017
             "headers": [  
                 {  
                     "name": "Ocp-Apim-Subscription-Key",  
-                    "description": "Subscription key which provides access to this API. Found in your <a href='/developer'>Profile</a>.",  
+                    "description": "Subscription key which provides access toothis API. Found in your <a href='/developer'>Profile</a>.",  
                     "value": "{subscription key}",  
                     "typeName": "string",  
                     "options": null,  
@@ -528,7 +528,7 @@ ms.lasthandoff: 07/11/2017
             "headers": [  
                 {  
                     "name": "Ocp-Apim-Subscription-Key",  
-                    "description": "Subscription key which provides access to this API. Found in your <a href='/developer'>Profile</a>.",  
+                    "description": "Subscription key which provides access toothis API. Found in your <a href='/developer'>Profile</a>.",  
                     "value": "{subscription key}",  
                     "typeName": "string",  
                     "options": null,  
@@ -552,7 +552,7 @@ ms.lasthandoff: 07/11/2017
             "headers": [  
                 {  
                     "name": "Ocp-Apim-Subscription-Key",  
-                    "description": "Subscription key which provides access to this API. Found in your <a href='/developer'>Profile</a>.",  
+                    "description": "Subscription key which provides access toothis API. Found in your <a href='/developer'>Profile</a>.",  
                     "value": "{subscription key}",  
                     "typeName": "string",  
                     "options": null,  
@@ -576,7 +576,7 @@ ms.lasthandoff: 07/11/2017
             "headers": [  
                 {  
                     "name": "Ocp-Apim-Subscription-Key",  
-                    "description": "Subscription key which provides access to this API. Found in your <a href='/developer'>Profile</a>.",  
+                    "description": "Subscription key which provides access toothis API. Found in your <a href='/developer'>Profile</a>.",  
                     "value": "{subscription key}",  
                     "typeName": "string",  
                     "options": null,  
@@ -600,7 +600,7 @@ ms.lasthandoff: 07/11/2017
             "headers": [  
                 {  
                     "name": "Ocp-Apim-Subscription-Key",  
-                    "description": "Subscription key which provides access to this API. Found in your <a href='/developer'>Profile</a>.",  
+                    "description": "Subscription key which provides access toothis API. Found in your <a href='/developer'>Profile</a>.",  
                     "value": "{subscription key}",  
                     "typeName": "string",  
                     "options": null,  
@@ -624,7 +624,7 @@ ms.lasthandoff: 07/11/2017
             "headers": [  
                 {  
                     "name": "Ocp-Apim-Subscription-Key",  
-                    "description": "Subscription key which provides access to this API. Found in your <a href='/developer'>Profile</a>.",  
+                    "description": "Subscription key which provides access toothis API. Found in your <a href='/developer'>Profile</a>.",  
                     "value": "{subscription key}",  
                     "typeName": "string",  
                     "options": null,  
@@ -639,7 +639,7 @@ ms.lasthandoff: 07/11/2017
 ```  
   
 ##  <a name="CodeSamples"></a> Примеры кода  
- Следующие шаблоны позволяют настроить текст отдельных примеров кода на странице операции.  
+ Hello следующие шаблоны позволяют вам toocustomize текст hello образцы отдельных кода hello на странице приветствия операции.  
   
  ![Примеры кода в шаблонах портала разработчика](./media/api-management-api-templates/APIM-Developer-Portal-Templates-Code-samples.png "Примеры кода в шаблонах портала разработчика APIM")  
   
@@ -660,7 +660,7 @@ ms.lasthandoff: 07/11/2017
 -   [Ruby](#Ruby)  
   
 ###  <a name="Curl"></a> Curl  
- Шаблон **DocumentationSamplesCurl** позволяет настраивать отображение примеров такого кода в разделе примеров кода на странице операции.  
+ Hello **DocumentationSamplesCurl** шаблон позволяет toocustomize пример в разделе примеров кода hello hello операции страницы из кода.  
   
 #### <a name="default-template"></a>Шаблон по умолчанию  
   
@@ -678,7 +678,7 @@ curl -v -X {{method}} "{{scheme}}://{{host}}{{path}}{{query | escape }}"
 ```  
   
 #### <a name="controls"></a>Управление  
- В шаблонах примеров кода нельзя использовать [элементы управления страницы](api-management-page-controls.md).  
+ Hello образцах кода не разрешать использование hello любой [страницы элементов управления](api-management-page-controls.md).  
   
 #### <a name="data-model"></a>Модель данных  
  Сущность [Code sample](api-management-template-data-model-reference.md#Sample) (Пример кода).  
@@ -700,7 +700,7 @@ curl -v -X {{method}} "{{scheme}}://{{host}}{{path}}{{query | escape }}"
     "headers": [  
         {  
             "name": "Ocp-Apim-Subscription-Key",  
-            "description": "Subscription key which provides access to this API. Found in your <a href='/developer'>Profile</a>.",  
+            "description": "Subscription key which provides access toothis API. Found in your <a href='/developer'>Profile</a>.",  
             "value": "{subscription key}",  
             "typeName": "string",  
             "options": null,  
@@ -713,7 +713,7 @@ curl -v -X {{method}} "{{scheme}}://{{host}}{{path}}{{query | escape }}"
 ```  
   
 ###  <a name="CSharp"></a> C#  
- Шаблон **DocumentationSamplesCsharp** позволяет настраивать отображение примеров такого кода в разделе примеров кода на странице операции.  
+ Hello **DocumentationSamplesCsharp** шаблон позволяет toocustomize пример в разделе примеров кода hello hello операции страницы из кода.  
   
 #### <a name="default-template"></a>Шаблон по умолчанию  
   
@@ -731,7 +731,7 @@ namespace CSHttpClientSample
         static void Main()  
         {  
             MakeRequest();  
-            Console.WriteLine("Hit ENTER to exit...");  
+            Console.WriteLine("Hit ENTER tooexit...");  
             Console.ReadLine();  
         }  
   
@@ -857,7 +857,7 @@ namespace CSHttpClientSample
 ```  
   
 #### <a name="controls"></a>Управление  
- В шаблонах примеров кода нельзя использовать [элементы управления страницы](api-management-page-controls.md).  
+ Hello образцах кода не разрешать использование hello любой [страницы элементов управления](api-management-page-controls.md).  
   
 #### <a name="data-model"></a>Модель данных  
  Сущность [Code sample](api-management-template-data-model-reference.md#Sample) (Пример кода).  
@@ -879,7 +879,7 @@ namespace CSHttpClientSample
     "headers": [  
         {  
             "name": "Ocp-Apim-Subscription-Key",  
-            "description": "Subscription key which provides access to this API. Found in your <a href='/developer'>Profile</a>.",  
+            "description": "Subscription key which provides access toothis API. Found in your <a href='/developer'>Profile</a>.",  
             "value": "{subscription key}",  
             "typeName": "string",  
             "options": null,  
@@ -892,12 +892,12 @@ namespace CSHttpClientSample
 ```  
   
 ###  <a name="Stub"></a> Java  
- Шаблон **DocumentationSamplesJava** позволяет настраивать отображение примеров такого кода в разделе примеров кода на странице операции.  
+ Hello **DocumentationSamplesJava** шаблон позволяет toocustomize пример в разделе примеров кода hello hello операции страницы из кода.  
   
 #### <a name="default-template"></a>Шаблон по умолчанию  
   
 ```xml  
-// // This sample uses the Apache HTTP client from HTTP Components (http://hc.apache.org/httpcomponents-client-ga/)  
+// // This sample uses hello Apache HTTP client from HTTP Components (http://hc.apache.org/httpcomponents-client-ga/)  
 import java.net.URI;  
 import org.apache.http.HttpEntity;  
 import org.apache.http.HttpResponse;  
@@ -953,7 +953,7 @@ public class JavaSample
 ```  
   
 #### <a name="controls"></a>Управление  
- В шаблонах примеров кода нельзя использовать [элементы управления страницы](api-management-page-controls.md).  
+ Hello образцах кода не разрешать использование hello любой [страницы элементов управления](api-management-page-controls.md).  
   
 #### <a name="data-model"></a>Модель данных  
  Сущность [Code sample](api-management-template-data-model-reference.md#Sample) (Пример кода).  
@@ -975,7 +975,7 @@ public class JavaSample
     "headers": [  
         {  
             "name": "Ocp-Apim-Subscription-Key",  
-            "description": "Subscription key which provides access to this API. Found in your <a href='/developer'>Profile</a>.",  
+            "description": "Subscription key which provides access toothis API. Found in your <a href='/developer'>Profile</a>.",  
             "value": "{subscription key}",  
             "typeName": "string",  
             "options": null,  
@@ -988,7 +988,7 @@ public class JavaSample
 ```  
   
 ###  <a name="JavaScript"></a> JavaScript  
- Шаблон **DocumentationSamplesJs** позволяет настраивать отображение примеров такого кода в разделе примеров кода на странице операции.  
+ Hello **DocumentationSamplesJs** шаблон позволяет toocustomize пример в разделе примеров кода hello hello операции страницы из кода.  
   
 #### <a name="default-template"></a>Шаблон по умолчанию  
   
@@ -1042,7 +1042,7 @@ public class JavaSample
 ```  
   
 #### <a name="controls"></a>Управление  
- В шаблонах примеров кода нельзя использовать [элементы управления страницы](api-management-page-controls.md).  
+ Hello образцах кода не разрешать использование hello любой [страницы элементов управления](api-management-page-controls.md).  
   
 #### <a name="data-model"></a>Модель данных  
  Сущность [Code sample](api-management-template-data-model-reference.md#Sample) (Пример кода).  
@@ -1064,7 +1064,7 @@ public class JavaSample
     "headers": [  
         {  
             "name": "Ocp-Apim-Subscription-Key",  
-            "description": "Subscription key which provides access to this API. Found in your <a href='/developer'>Profile</a>.",  
+            "description": "Subscription key which provides access toothis API. Found in your <a href='/developer'>Profile</a>.",  
             "value": "{subscription key}",  
             "typeName": "string",  
             "options": null,  
@@ -1077,7 +1077,7 @@ public class JavaSample
 ```  
   
 ###  <a name="ObjectiveC"></a>Objective C  
- Шаблон **DocumentationSamplesObjc** позволяет настраивать отображение примеров такого кода в разделе примеров кода на странице операции.  
+ Hello **DocumentationSamplesObjc** шаблон позволяет toocustomize пример в разделе примеров кода hello hello операции страницы из кода.  
   
 #### <a name="default-template"></a>Шаблон по умолчанию  
   
@@ -1154,7 +1154,7 @@ int main(int argc, const char * argv[])
 ```  
   
 #### <a name="controls"></a>Управление  
- В шаблонах примеров кода нельзя использовать [элементы управления страницы](api-management-page-controls.md).  
+ Hello образцах кода не разрешать использование hello любой [страницы элементов управления](api-management-page-controls.md).  
   
 #### <a name="data-model"></a>Модель данных  
  Сущность [Code sample](api-management-template-data-model-reference.md#Sample) (Пример кода).  
@@ -1176,7 +1176,7 @@ int main(int argc, const char * argv[])
     "headers": [  
         {  
             "name": "Ocp-Apim-Subscription-Key",  
-            "description": "Subscription key which provides access to this API. Found in your <a href='/developer'>Profile</a>.",  
+            "description": "Subscription key which provides access toothis API. Found in your <a href='/developer'>Profile</a>.",  
             "value": "{subscription key}",  
             "typeName": "string",  
             "options": null,  
@@ -1189,13 +1189,13 @@ int main(int argc, const char * argv[])
 ```  
   
 ###  <a name="PHP"></a> PHP  
- Шаблон **DocumentationSamplesPhp** позволяет настраивать отображение примеров такого кода в разделе примеров кода на странице операции.  
+ Hello **DocumentationSamplesPhp** шаблон позволяет toocustomize пример в разделе примеров кода hello hello операции страницы из кода.  
   
 #### <a name="default-template"></a>Шаблон по умолчанию  
   
 ```xml  
 <?php  
-// This sample uses the Apache HTTP client from HTTP Components (http://hc.apache.org/httpcomponents-client-ga/)  
+// This sample uses hello Apache HTTP client from HTTP Components (http://hc.apache.org/httpcomponents-client-ga/)  
 require_once 'HTTP/Request2.php';  
   
 $request = new Http_Request2('{{scheme}}://{{host}}{{path}}');  
@@ -1244,7 +1244,7 @@ catch (HttpException $ex)
 ```  
   
 #### <a name="controls"></a>Управление  
- В шаблонах примеров кода нельзя использовать [элементы управления страницы](api-management-page-controls.md).  
+ Hello образцах кода не разрешать использование hello любой [страницы элементов управления](api-management-page-controls.md).  
   
 #### <a name="data-model"></a>Модель данных  
  Сущность [Code sample](api-management-template-data-model-reference.md#Sample) (Пример кода).  
@@ -1266,7 +1266,7 @@ catch (HttpException $ex)
     "headers": [  
         {  
             "name": "Ocp-Apim-Subscription-Key",  
-            "description": "Subscription key which provides access to this API. Found in your <a href='/developer'>Profile</a>.",  
+            "description": "Subscription key which provides access toothis API. Found in your <a href='/developer'>Profile</a>.",  
             "value": "{subscription key}",  
             "typeName": "string",  
             "options": null,  
@@ -1279,7 +1279,7 @@ catch (HttpException $ex)
 ```  
   
 ###  <a name="Python"></a> Python  
- Шаблон **DocumentationSamplesPython** позволяет настраивать отображение примеров такого кода в разделе примеров кода на странице операции.  
+ Hello **DocumentationSamplesPython** шаблон позволяет toocustomize пример в разделе примеров кода hello hello операции страницы из кода.  
   
 #### <a name="default-template"></a>Шаблон по умолчанию  
   
@@ -1362,7 +1362,7 @@ except Exception as e:
 ```  
   
 #### <a name="controls"></a>Управление  
- В шаблонах примеров кода нельзя использовать [элементы управления страницы](api-management-page-controls.md).  
+ Hello образцах кода не разрешать использование hello любой [страницы элементов управления](api-management-page-controls.md).  
   
 #### <a name="data-model"></a>Модель данных  
  Сущность [Code sample](api-management-template-data-model-reference.md#Sample) (Пример кода).  
@@ -1384,7 +1384,7 @@ except Exception as e:
     "headers": [  
         {  
             "name": "Ocp-Apim-Subscription-Key",  
-            "description": "Subscription key which provides access to this API. Found in your <a href='/developer'>Profile</a>.",  
+            "description": "Subscription key which provides access toothis API. Found in your <a href='/developer'>Profile</a>.",  
             "value": "{subscription key}",  
             "typeName": "string",  
             "options": null,  
@@ -1397,7 +1397,7 @@ except Exception as e:
 ```  
   
 ###  <a name="Ruby"></a> Ruby  
- Шаблон **DocumentationSamplesRuby** позволяет настраивать отображение примеров такого кода в разделе примеров кода на странице операции.  
+ Hello **DocumentationSamplesRuby** шаблон позволяет toocustomize пример в разделе примеров кода hello hello операции страницы из кода.  
   
 #### <a name="default-template"></a>Шаблон по умолчанию  
   
@@ -1433,7 +1433,7 @@ puts response.body
 ```  
   
 #### <a name="controls"></a>Управление  
- В шаблонах примеров кода нельзя использовать [элементы управления страницы](api-management-page-controls.md).  
+ Hello образцах кода не разрешать использование hello любой [страницы элементов управления](api-management-page-controls.md).  
   
 #### <a name="data-model"></a>Модель данных  
  Сущность [Code sample](api-management-template-data-model-reference.md#Sample) (Пример кода).  
@@ -1455,7 +1455,7 @@ puts response.body
     "headers": [  
         {  
             "name": "Ocp-Apim-Subscription-Key",  
-            "description": "Subscription key which provides access to this API. Found in your <a href='/developer'>Profile</a>.",  
+            "description": "Subscription key which provides access toothis API. Found in your <a href='/developer'>Profile</a>.",  
             "value": "{subscription key}",  
             "typeName": "string",  
             "options": null,  
@@ -1468,4 +1468,4 @@ puts response.body
 ```
 
 ## <a name="next-steps"></a>Дальнейшие действия
-Дополнительные сведения о работе с шаблонами см. в статье [Настройка портала разработчика в службе управления API Azure с помощью шаблонов](api-management-developer-portal-templates.md).
+Дополнительные сведения о работе с шаблонами см. в разделе [как toocustomize hello портал разработчика управления API, с помощью шаблонов](api-management-developer-portal-templates.md).

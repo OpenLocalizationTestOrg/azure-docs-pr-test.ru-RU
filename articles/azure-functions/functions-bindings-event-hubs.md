@@ -1,6 +1,6 @@
 ---
-title: "Привязки концентраторов событий Функций Azure | Документация Майкрософт"
-description: "Узнайте, как использовать привязки концентраторов событий Azure в функциях Azure."
+title: "привязки функции концентраторов событий aaaAzure | Документы Microsoft"
+description: "Понять, как привязки toouse концентраторов событий Azure в функциях Azure."
 services: functions
 documentationcenter: na
 author: wesmc7777
@@ -16,55 +16,55 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 06/20/2017
 ms.author: wesmc
-ms.openlocfilehash: 19021bef8b7156b3049f43b0275c0ed0c6b22514
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: e864f032ad5ac58d318c9843c3844b5642733a70
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-functions-event-hubs-bindings"></a>Привязки концентраторов событий функций Azure
 [!INCLUDE [functions-selector-bindings](../../includes/functions-selector-bindings.md)]
 
-Здесь объясняется, как настроить и использовать привязки [концентраторов событий Azure](../event-hubs/event-hubs-what-is-event-hubs.md) для Функций Azure.
+В этой статье объясняется, как tooconfigure и использовать [концентраторов событий Azure](../event-hubs/event-hubs-what-is-event-hubs.md) привязки для функций Azure.
 Функции Azure поддерживают привязки триггера и выходные привязки для концентраторов событий Azure.
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
-Если вы еще не работали с концентраторами событий Azure, ознакомьтесь с [их обзором](../event-hubs/event-hubs-what-is-event-hubs.md).
+При наличии новых концентраторов событий tooAzure разделе hello [Обзор концентраторов событий](../event-hubs/event-hubs-what-is-event-hubs.md).
 
 <a name="trigger"></a>
 
 ## <a name="event-hub-trigger"></a>Триггер концентратора событий
-Используйте триггер концентраторов событий Azure для ответа на событие, отправленное в поток событий концентратора событий. Чтобы настроить триггер, необходимо иметь доступ для чтения к концентратору событий.
+Концентраторы событий используйте hello Активация события tooan toorespond, отправленных поток tooan события концентратора событий. Необходимо иметь доступ на чтение toohello события концентратора tooset копирование триггера hello.
 
-Триггер концентратора событий для функции использует следующий объект JSON в массиве `bindings` файла function.json:
+триггер функции Hello концентраторов событий использует следующий объект JSON в hello hello `bindings` массив function.json:
 
 ```json
 {
     "type": "eventHubTrigger",
     "name": "<Name of trigger parameter in function signature>",
     "direction": "in",
-    "path": "<Name of the event hub>",
-    "consumerGroup": "Consumer group to use - see below",
+    "path": "<Name of hello event hub>",
+    "consumerGroup": "Consumer group toouse - see below",
     "connection": "<Name of app setting with connection string - see below>"
 }
 ```
 
-`consumerGroup` — необязательное свойство, которое используется для задания [группы потребителей](../event-hubs/event-hubs-features.md#event-consumers), используемой для подписки на события в концентраторе. Если аргумент опущен, используется группа потребителей `$Default`.  
-`connection` — имя параметра приложения, содержащего строку подключения к пространству имен концентратора событий.
-Скопируйте эту строку подключения, нажав кнопку **Сведения о подключении** для *пространства имен*, а не сам концентратор событий. Для активации триггера эта строка подключения должна обладать, по крайней мере, правами на чтение.
+`consumerGroup`является hello необязательное свойство, используемое tooset [группы потребителей](../event-hubs/event-hubs-features.md#event-consumers) используется toosubscribe tooevents в концентраторе hello. Если не указано, hello `$Default` используется группа потребителей.  
+`connection`должно быть именем hello Настройка приложения, содержащий пространство имен hello соединения строки toohello концентратора событий по.
+Скопируйте эту строку подключения, нажав hello **сведения о соединении** кнопки для hello *имен*, не hello концентратора событий сам. Эта строка подключения должна иметь по крайней мере чтение разрешений tooactivate hello триггера.
 
-[Дополнительные параметры](https://github.com/Azure/azure-webjobs-sdk-script/wiki/host.json) можно указать в файле host.json для дальнейшей настройки триггеров концентратора событий.  
+[Дополнительные параметры](https://github.com/Azure/azure-webjobs-sdk-script/wiki/host.json) могут предоставляться в host.json toofurther файл точной настройки триггеры концентраторов событий.  
 
 <a name="triggerusage"></a>
 
 ## <a name="trigger-usage"></a>Использование триггера
-При активации функции триггера концентратора событий сообщение, вызвавшее активацию, передается в функцию в качестве строки.
+При запуске функции концентраторов событий триггера приветственное сообщение, которое запускает его передается функции hello как строка.
 
 <a name="triggersample"></a>
 
 ## <a name="trigger-sample"></a>Пример триггера
-Предположим, что у вас есть следующий триггер концентраторов событий в массиве `bindings` файла function.json:
+Предположим, что имеется следующий концентраторов событий триггера в hello hello `bindings` массив function.json:
 
 ```json
 {
@@ -76,7 +76,7 @@ ms.lasthandoff: 07/11/2017
 }
 ```
 
-Ознакомьтесь с примером для конкретного языка, записывающим текст сообщения триггера концентратора событий.
+См. Образец hello конкретного языка, записывающий в журнал сообщения hello триггера концентратора событий hello.
 
 * [C#](#triggercsharp)
 * [F#](#triggerfsharp)
@@ -95,7 +95,7 @@ public static void Run(string myEventHubMessage, TraceWriter log)
 }
 ```
 
-Вы также можете получить событие как объект [EventData](/dotnet/api/microsoft.servicebus.messaging.eventdata), который предоставляет доступ к метаданным события.
+Вы также можете получать события hello в виде [EventData](/dotnet/api/microsoft.servicebus.messaging.eventdata) объект, который предоставляет доступ к метаданным toohello событий.
 
 ```cs
 #r "Microsoft.ServiceBus"
@@ -108,7 +108,7 @@ public static void Run(EventData myEventHubMessage, TraceWriter log)
 }
 ```
 
-Чтобы получить пакет событий, измените сигнатуру метода на `string[]` или `EventData[]`.
+tooreceive событий в пакете, изменить сигнатуру метода hello слишком`string[]` или `EventData[]`.
 
 ```cs
 public static void Run(string[] eventHubMessages, TraceWriter log)
@@ -143,9 +143,9 @@ module.exports = function (context, myEventHubMessage) {
 <a name="output"></a>
 
 ## <a name="event-hubs-output-binding"></a>Выходная привязка концентраторов событий
-Используйте выходную привязку концентратора событий для записи событий в поток событий концентратора событий. Чтобы записывать события в концентратор событий, необходимо иметь разрешение на оправку в него событий.
+Используйте hello концентраторов событий вывода toowrite привязки событий событие tooan концентратора поток событий. Необходимо иметь разрешение send tooan концентратора событий toowrite tooit события.
 
-Выходная привязка использует следующий объект JSON в массиве `bindings` файла function.json:
+Hello вывода привязка использует следующий объект JSON в hello hello `bindings` массив function.json:
 
 ```json
 {
@@ -157,22 +157,22 @@ module.exports = function (context, myEventHubMessage) {
 }
 ```
 
-`connection` — имя параметра приложения, содержащего строку подключения к пространству имен концентратора событий.
-Скопируйте эту строку подключения, нажав кнопку **Сведения о подключении** для *пространства имен*, а не сам концентратор событий. Чтобы отправлять сообщения в поток событий, эта строка подключения должна иметь разрешения на отправку.
+`connection`должно быть именем hello Настройка приложения, содержащий пространство имен hello соединения строки toohello концентратора событий по.
+Скопируйте эту строку подключения, нажав hello **сведения о соединении** кнопки для hello *имен*, не hello концентратора событий сам. Это строка соединения должна иметь разрешения send toosend сообщение hello toohello поток событий.
 
 ## <a name="output-usage"></a>Использование выходной привязки
-В этом разделе показано, как использовать выходную привязку концентраторов событий в коде функции.
+В этом разделе показано, как toouse вывода привязки в коде функция концентраторов событий.
 
-Можно выводить сообщения в настроенный концентратор событий со следующими типами параметров.
+Концентратор событий toohello настроен сообщения могут выводиться с hello следующие типы параметров:
 
 * `out string`
-* `ICollector<string>` (для вывода нескольких сообщений).
+* `ICollector<string>`(toooutput несколько сообщений)
 * `IAsyncCollector<string>` (асинхронная версия `ICollector<T>`).
 
 <a name="outputsample"></a>
 
 ## <a name="output-sample"></a>Пример выходной привязки
-Предположим, что у вас есть следующая выходная привязка концентраторов событий в массиве `bindings` файла function.json:
+Предположим, что имеется следующее hello концентраторов событий вывода привязки в hello `bindings` массив function.json:
 
 ```json
 {
@@ -184,7 +184,7 @@ module.exports = function (context, myEventHubMessage) {
 }
 ```
 
-Ознакомьтесь с примером для конкретного языка, записывающим событие в поток событий.
+См. пример hello зависящие от языка, который записывает поток даже toohello событий.
 
 * [C#](#outcsharp)
 * [F#](#outfsharp)
@@ -205,7 +205,7 @@ public static void Run(TimerInfo myTimer, out string outputEventHubMessage, Trac
 }
 ```
 
-Создание нескольких сообщений:
+Или toocreate несколько сообщений:
 
 ```cs
 public static void Run(TimerInfo myTimer, ICollector<string> outputEventHubMessage, TraceWriter log)
@@ -241,7 +241,7 @@ module.exports = function (context, myTimer) {
 };
 ```
 
-Отправка нескольких сообщений:
+Или toosend несколько сообщений
 
 ```javascript
 module.exports = function(context) {

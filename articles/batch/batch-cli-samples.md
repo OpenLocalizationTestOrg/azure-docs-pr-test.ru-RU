@@ -1,5 +1,5 @@
 ---
-title: "Примеры сценариев Azure CLI для пакетной службы Azure | Документация Майкрософт"
+title: "aaaAzure пакета CLI образцы | Документы Microsoft"
 description: "Примеры кода интерфейса командной строки для пакетной службы Azure"
 services: batch
 documentationcenter: 
@@ -14,17 +14,17 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 05/01/2017
 ms.author: antisch
-ms.openlocfilehash: 51fd27536994ca36bf9559a780660c3a16bf30cc
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 0d700a6edebd35a3b2bb86926d1e57d4a33584b4
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-batch-cli-samples"></a>Примеры кода интерфейса командной строки для пакетной службы Azure
 
 ## <a name="tutorials-with-sample-shell-scripts"></a>Руководства с примерами сценариев оболочки
 
-В следующей таблице содержатся ссылки на сценарии Bash на основе Azure CLI, которые демонстрируют использование пакетной службы.
+Hello следующей таблице представлены ссылки toobash скрипты, созданные с помощью hello Azure CLI, демонстрирующие использование hello пакетной службы.
 
 | Скрипт | Примечания |
 |---|---|
@@ -35,4 +35,4 @@ ms.lasthandoff: 07/11/2017
 
 ## <a name="next-steps"></a>Дальнейшие действия
 
-Дополнительные сведения об Azure CLI см. в [документации по Azure CLI](https://docs.microsoft.com/cli/azure/overview).
+Дополнительные сведения о hello Azure CLI см. в разделе [документации Azure CLI](https://docs.microsoft.com/cli/azure/overview).

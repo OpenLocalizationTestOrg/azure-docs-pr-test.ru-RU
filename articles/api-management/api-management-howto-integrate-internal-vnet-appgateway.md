@@ -1,6 +1,6 @@
 ---
-title: "Как использовать службу управления API Azure в виртуальных сетях со шлюзом приложений | Документация Майкрософт"
-description: "Узнайте, как установить и настроить службу управления API Azure во внутренней виртуальной сети с интерфейсным шлюзом приложений (WAF)"
+title: "aaaHow toouse управления API Azure в виртуальной сети со шлюзом приложений | Документы Microsoft"
+description: "Узнайте, как toosetup и настройка службы управления API Azure в внутреннюю виртуальную сеть с помощью приложения шлюза (WAF) в качестве внешнего интерфейса"
 services: api-management
 documentationcenter: 
 author: solankisamir
@@ -14,64 +14,64 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/16/2017
 ms.author: sasolank
-ms.openlocfilehash: 8131ded6b74e9c544bf70b1a4659ed07e5def04d
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 74303a2ee8a10db633ab1740ec7267728eacb473
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="integrate-api-management-in-an-internal-vnet-with-application-gateway"></a>Интеграция службы управления API во внутреннюю сеть со шлюзом приложений 
 
 ##<a name="overview"> </a> Обзор
  
-Если настроить службу управления API для работы в виртуальной сети в режиме внутренней сети, она будет доступна только из этой виртуальной сети. Шлюз приложений Azure — это служба PaaS, выполняющая функции подсистемы балансировки нагрузки на сетевом уровне 7. Это служба обратного прокси-сервера, которая содержит также брандмауэр веб-приложения (WAF).
+Hello службы управления API можно настроить в виртуальной сети в режиме внутренней, который делает доступными только из hello виртуальной сети. Шлюз приложений Azure — это служба PaaS, выполняющая функции подсистемы балансировки нагрузки на сетевом уровне 7. Это служба обратного прокси-сервера, которая содержит также брандмауэр веб-приложения (WAF).
 
-Объединяя возможности службы управления API, работающей во внутренней виртуальной сети, и интерфейса шлюза приложений, вы можете реализовать следующие сценарии.
+Объединение API управления подготовкой в внутренней виртуальной сети с сервера переднего плана для шлюза приложения hello обеспечивает hello следующие сценарии:
 
-* Использовать один ресурс управления API одновременно и для внешних, и для внутренних потребителей.
+* Используйте hello же ресурсов API-Интерфейс управления для использования, потребители внутренних и внешних потребителей.
 * Использовать один ресурс управления API, определив для него в службе управления API подмножество API-интерфейсов, доступных для внешних потребителей.
-* Создать простой способ включать и отключать доступ из Интернета к управлению API. 
+* Укажите способ под ключ tooswitch доступа tooAPI управления из hello общедоступный Интернет и отключать. 
 
 ##<a name="scenario"> </a> Сценарий
-В этой статье мы рассмотрим, как можно использовать одну службу управления API одновременно для внутренних и внешних потребителей, а также как сделать ее единым интерфейсным компонентом для локальных и облачных API. Также вы узнаете, как предоставить некоторое подмножество этих API-интерфейсов (в нашем примере они выделены зеленым цветом) для внешнего использования, применив функцию шлюза приложений PathBasedRouting.
+В этой статье будет охватывать как toouse единого управления API службы для внутренних и внешних потребителей и сделать ее выступать в качестве одного сервера переднего плана для обоих локальных и облачных API-интерфейсы. Также отображается как tooexpose только подмножество собственные интерфейсы API (в примере hello, они будут выделены зеленым цветом) для внешнего использования, с помощью hello PathBasedRouting функциональные возможности, доступные в шлюз приложений.
 
-В первом примере конфигурации все API-интерфейсы управляются только из виртуальной сети. Внутренние потребители (выделены оранжевым цветом) могут обращаться ко всем внутренним и внешним API. Так трафик никогда не выходит в Интернет, а благодаря каналам Express Route достигается высокая производительность.
+В первом примере установки hello все интерфейсы API можно управлять только с внутри виртуальной сети. Внутренние потребители (выделены оранжевым цветом) могут обращаться ко всем внутренним и внешним API. Трафик никогда не идет через цепи Express Route tooInternet доставки высокой производительности.
 
 ![Маршрут URL-адреса](./media/api-management-howto-integrate-internal-vnet-appgateway/api-management-howto-integrate-internal-vnet-appgateway.png)
 
 ## <a name="before-you-begin"> </a> Перед началом работы
 
-1. Установите последнюю версию командлетов Azure PowerShell, используя установщик веб-платформы. Последнюю версию можно загрузить и установить в разделе **Windows PowerShell** на [странице загрузок](https://azure.microsoft.com/downloads/).
+1. Установите последнюю версию hello hello командлетов Azure PowerShell с помощью установщика веб-платформы hello. Можно загрузить и установить последнюю версию hello из hello **Windows PowerShell** раздел hello [страницу загрузки](https://azure.microsoft.com/downloads/).
 2. Создайте виртуальную сеть и отдельные подсети в ней для службы управления API и шлюза приложений. 
-3. Если вы планируете создавать пользовательские DNS-серверы для виртуальной сети, сделайте это перед началом развертывания. Проверьте, все ли работает правильно. Виртуальная машина, созданная в новой подсети этой виртуальной сети, должна разрешать адреса всех конечных точек службы Azure и обращаться к ним.
+3. Если предполагается toocreate пользовательского DNS-сервера для hello виртуальной сети, сделать это перед началом развертывания hello. Проверьте ее работы за счет того, виртуальную машину, созданную в новую подсеть в hello виртуальной сети можно разрешить и открывать все конечные точки службы Azure.
 
-## <a name="what-is-required-to-create-an-integration-between-api-management-and-application-gateway"></a>Что нужно для того, чтобы интегрировать управление API со шлюзом приложений?
+## <a name="what-is-required-toocreate-an-integration-between-api-management-and-application-gateway"></a>Что такое необходимые toocreate интеграцию между API управления и шлюз приложений?
 
-* **Пул тыловых серверов**. Это внутренний виртуальный IP-адрес службы управления API.
-* **Параметры внутреннего пула серверов**. Каждый пул имеет такие параметры, как порт, протокол и сходство на основе файлов cookie. Эти параметры применяются ко всем серверам в этом пуле.
-* **Внешний порт**. Общедоступный порт, открытый в шлюзе приложений. Трафик, поступающий на этот порт, перенаправляется на один из тыловых серверов.
-* **Прослушиватель**. У прослушивателя есть интерфейсный порт, протокол (Http или Https — с учетом регистра) и имя SSL-сертификата (в случае настройки разгрузки SSL).
-* **Правило**. Это правило связывает прослушиватель с пулом тыловых серверов.
-* **Пользовательские проверки работоспособности**. Шлюз приложений по умолчанию использует проверки на основе IP-адреса, чтобы найти активные серверы в пуле BackendAddressPool. Служба управления API отвечает только на те запросы, которые имеют правильный заголовок узла, поэтому стандартные проверки завершаются ошибкой. Вам следует определить пользовательскую проверку работоспособности, чтобы шлюз приложений мог определять работоспособность службы и передавать в нее запросы.
-* **Сертификат для пользовательского домена**. Чтобы осуществлять доступ из Интернета в службу управления API, создайте сопоставление CNAME, связывающее имя узла с DNS-именем интерфейса шлюза приложений. Это позволит службе управления API распознавать допустимость заголовка hostname и сертификата, который передан в шлюз приложений и пересылается в управление API.
+* **Пул серверных:** это hello внутренний виртуальный IP-адрес hello службы управления API.
+* **Параметры внутреннего пула серверов**. Каждый пул имеет такие параметры, как порт, протокол и сходство на основе файлов cookie. Эти параметры используются примененных tooall серверы в пуле hello.
+* **Интерфейсный порт:** hello открытый порт, открытый для шлюза приложения hello. Трафик попадание он получает перенаправленный tooone hello внутренними серверами.
+* **Прослушиватель:** hello прослушиватель имеет интерфейсный порт, протокол (Http или Https, эти значения зависят от регистра) и имя сертификата SSL hello (при настройке протокола SSL разгрузки).
+* **Правило:** правило hello привязывает пул серверных tooa прослушивателя.
+* **Пользовательский зонд работоспособности:** шлюз приложений по умолчанию использует IP адрес на основе проб toofigure какие серверов в hello BackendAddressPool активны. Hello службы управления API отвечает только toorequests, имеющих правильный заголовок hello, поэтому пробы по умолчанию hello сбой. Зонд пользовательских работоспособности требуется toobe определенные toohelp шлюз приложений определить hello служба находится в активном состоянии и пересылать запросы.
+* **Сертификат для пользовательского домена:** tooaccess управления API из hello Интернет необходимо toocreate сопоставление CNAME его имя узла toohello шлюз приложений интерфейса DNS-имя. Это обеспечивает hello заголовок узла и сертификат, отправленный tooApplication шлюза, который пересылается tooAPI управления, который APIM может распознать как допустимый.
 
 ## <a name="overview-steps"> </a> Действия по интеграции управления API со шлюзом приложений 
 
 1. Создание группы ресурсов для диспетчера ресурсов.
-2. Создание виртуальной сети, подсети и общедоступного IP-адреса для шлюза приложений. Создайте еще одну подсеть для управления API.
-3. Создайте службу управления API в той подсети виртуальной сети, которую вы создали ранее. Должен использоваться режим внутренней сети.
-4. Настройте пользовательское доменное имя в службе управления API.
+2. Создайте виртуальную сеть, подсеть и общедоступный IP-адрес для шлюза приложения hello. Создайте еще одну подсеть для управления API.
+3. Создать службу управления API внутри hello подсети виртуальной сети, созданной ранее и убедитесь, что используется внутренний режим hello.
+4. Настройте пользовательское доменное имя hello в службе управления API hello.
 5. Создайте объект конфигурации шлюза приложений.
 6. Создайте ресурс шлюза приложений.
-7. Создайте сопоставление CNAME, связывающее DNS-имя шлюза приложений с именем узла прокси-сервера управления API.
+7. Создайте запись CNAME из hello открытому DNS-имени имя узла прокси-сервера управления API toohello шлюза приложения hello.
 
 ## <a name="create-a-resource-group-for-resource-manager"></a>Создание группы ресурсов для диспетчера ресурсов
 
-Убедитесь, что у вас установлена последняя версия Azure PowerShell. Дополнительные сведения см. в статье [Использование Windows PowerShell с диспетчером ресурсов](../powershell-azure-resource-manager.md).
+Убедитесь, что используется последняя версия Azure PowerShell hello. Дополнительные сведения см. в статье [Использование Windows PowerShell с диспетчером ресурсов](../powershell-azure-resource-manager.md).
 
 ### <a name="step-1"></a>Шаг 1
 
-Вход в Azure
+Войдите в tooAzure
 
 ```powershell
 Login-AzureRmAccount
@@ -81,7 +81,7 @@ Login-AzureRmAccount
 
 ### <a name="step-2"></a>Шаг 2
 
-Проверьте и выберите подписки для учетной записи.
+Проверьте hello подписки для учетной записи hello и выберите его.
 
 ```powershell
 Get-AzureRmSubscription -Subscriptionid "GUID of subscription" | Select-AzureRmSubscription
@@ -94,15 +94,15 @@ Get-AzureRmSubscription -Subscriptionid "GUID of subscription" | Select-AzureRmS
 ```powershell
 New-AzureRmResourceGroup -Name "apim-appGw-RG" -Location "West US"
 ```
-В диспетчере ресурсов Azure для всех групп ресурсов должно быть указано расположение. Оно используется в качестве расположения по умолчанию для всех ресурсов данной группы. Убедитесь, что во всех командах для создания шлюза приложений используется одна группа ресурсов.
+В диспетчере ресурсов Azure для всех групп ресурсов должно быть указано расположение. Используется как расположение по умолчанию hello для ресурсов в этой группе ресурсов. Убедитесь, что все команды toocreate hello использование шлюза приложений одну группу ресурсов.
 
-## <a name="create-a-virtual-network-and-a-subnet-for-the-application-gateway"></a>Создание виртуальной сети и подсети для шлюза приложений
+## <a name="create-a-virtual-network-and-a-subnet-for-hello-application-gateway"></a>Создание виртуальной сети и подсети для шлюза приложения hello
 
-В следующем примере показано создание виртуальной сети с помощью Resource Manager.
+Hello в следующем примере показано, как toocreate виртуальной сети с помощью hello диспетчера ресурсов.
 
 ### <a name="step-1"></a>Шаг 1
 
-Создайте переменную подсети с диапазоном адресов 10.0.0.0/24, которая будет использоваться для шлюза приложений при создании виртуальной сети.
+Назначьте hello адрес диапазона 10.0.0.0/24 toohello подсети переменной toobe использовать для шлюза приложения при создании виртуальной сети.
 
 ```powershell
 $appgatewaysubnet = New-AzureRmVirtualNetworkSubnetConfig -Name "apim01" -AddressPrefix "10.0.0.0/24"
@@ -110,7 +110,7 @@ $appgatewaysubnet = New-AzureRmVirtualNetworkSubnetConfig -Name "apim01" -Addres
 
 ### <a name="step-2"></a>Шаг 2
 
-Создайте переменную подсети с диапазоном адресов 10.0.1.0/24, которая будет использоваться для управления API при создании виртуальной сети.
+Назначьте hello адрес диапазона 10.0.1.0/24 toohello подсети переменной toobe используется для управления API при создании виртуальной сети.
 
 ```powershell
 $apimsubnet = New-AzureRmVirtualNetworkSubnetConfig -Name "apim02" -AddressPrefix "10.0.1.0/24"
@@ -118,7 +118,7 @@ $apimsubnet = New-AzureRmVirtualNetworkSubnetConfig -Name "apim02" -AddressPrefi
 
 ### <a name="step-3"></a>Шаг 3.
 
-Создайте виртуальную сеть с именем **appgwvnet** в группе ресурсов **apim-appGw-RG** для региона "Западная часть США", назначив ей префикс 10.0.0.0/16. Создайте в ней подсети 10.0.0.0/24 и 10.0.1.0/24.
+Создайте виртуальную сеть с именем **appgwvnet** в группе ресурсов **apim appGw группы Маршрутизации** для регионе hello Запад США, с помощью 10.0.0.0/16 hello префикс подсети 10.0.0.0/24 и 10.0.1.0/24.
 
 ```powershell
 $vnet = New-AzureRmVirtualNetwork -Name "appgwvnet" -ResourceGroupName "apim-appGw-RG" -Location "West US" -AddressPrefix "10.0.0.0/16" -Subnet $appgatewaysubnet,$apimsubnet
@@ -126,7 +126,7 @@ $vnet = New-AzureRmVirtualNetwork -Name "appgwvnet" -ResourceGroupName "apim-app
 
 ### <a name="step-4"></a>Шаг 4.
 
-Назначьте переменную для подсети, которая будет использоваться далее.
+Присвоить значение переменной подсети для получения дальнейших указаний hello
 
 ```powershell
 $appgatewaysubnetdata=$vnet.Subnets[0]
@@ -134,56 +134,56 @@ $apimsubnetdata=$vnet.Subnets[1]
 ```
 ## <a name="create-an-api-management-service-inside-a-vnet-configured-in-internal-mode"></a>Создание службы управления API в виртуальной сети, настроенной в режиме внутренней сети
 
-В следующем примере демонстрируется создание службы управления API в виртуальной сети, настроенной только для внутреннего доступа.
+Hello следующем примере показано, как toocreate службу управления API в виртуальной сети настроена только для внутренней.
 
 ### <a name="step-1"></a>Шаг 1
-Создайте объект виртуальной сети для управления API, используя созданную выше переменную подсети $apimsubnetdata.
+Создайте объект API управления виртуальной сети с помощью подсети hello $apimsubnetdata созданной выше.
 
 ```powershell
 $apimVirtualNetwork = New-AzureRmApiManagementVirtualNetwork -Location "West US" -SubnetResourceId $apimsubnetdata.Id
 ```
 ### <a name="step-2"></a>Шаг 2
-Создайте службу управления API в виртуальной сети.
+Создание службы управления API внутри hello виртуальной сети.
 
 ```powershell
 $apimService = New-AzureRmApiManagement -ResourceGroupName "apim-appGw-RG" -Location "West US" -Name "ContosoApi" -Organization "Contoso" -AdminEmail "admin@contoso.com" -VirtualNetwork $apimVirtualNetwork -VpnType "Internal" -Sku "Developer"
 ```
-Когда завершится выполнение предыдущей команды, выполните инструкции из раздела [DNS Configuration ](api-management-using-with-internal-vnet.md#apim-dns-configuration) (Настройка DNS) для доступа к службе управления API во внутренней виртуальной сети.
+После успешного завершения hello выше команда ссылаться слишком[tooaccess внутреннюю службу управления API виртуальной сети требуется настройки DNS](api-management-using-with-internal-vnet.md#apim-dns-configuration) tooaccess его.
 
 ## <a name="set-up-a-custom-domain-name-in-api-management"></a>Настройка пользовательского доменного имени в службе управления API
 
 ### <a name="step-1"></a>Шаг 1
-Отправьте сертификат с закрытым ключом для домена. В нашем примере это `*.contoso.net`. 
+Отправьте hello сертификат с закрытым ключом для домена hello. В нашем примере это `*.contoso.net`. 
 
 ```powershell
-$certUploadResult = Import-AzureRmApiManagementHostnameCertificate -ResourceGroupName "apim-appGw-RG" -Name "ContosoApi" -HostnameType "Proxy" -PfxPath <full path to .pfx file> -PfxPassword <password for certificate file> -PassThru
+$certUploadResult = Import-AzureRmApiManagementHostnameCertificate -ResourceGroupName "apim-appGw-RG" -Name "ContosoApi" -HostnameType "Proxy" -PfxPath <full path too.pfx file> -PfxPassword <password for certificate file> -PassThru
 ```
 
 ### <a name="step-2"></a>Шаг 2
-Отправив сертификат, создайте объект конфигурации имени узла для прокси-сервера с именем узла `api.contoso.net`. Имя должно быть именно в домене `*.contoso.net`, на который предоставляет права этот сертификат. 
+После отправки сертификата hello создать объект конфигурации имя узла для hello прокси-сервера с именем узла из `api.contoso.net`, как сертификат пример hello обеспечивает полномочия для hello `*.contoso.net` домена. 
 
 ```powershell
 $proxyHostnameConfig = New-AzureRmApiManagementHostnameConfiguration -CertificateThumbprint $certUploadResult.Thumbprint -Hostname "api.contoso.net"
 $result = Set-AzureRmApiManagementHostnames -Name "ContosoApi" -ResourceGroupName "apim-appGw-RG" -ProxyHostnameConfiguration $proxyHostnameConfig
 ```
 
-## <a name="create-a-public-ip-address-for-the-front-end-configuration"></a>Создание общедоступного IP-адреса для конфигурации интерфейсной части
+## <a name="create-a-public-ip-address-for-hello-front-end-configuration"></a>Создать общедоступный IP-адрес для интерфейса конфигурации hello
 
-Создайте ресурс общедоступного IP-адреса с именем **publicIP01** в группе ресурсов **apim-appGw-RG** для региона "Западная часть США".
+Создание общих ресурсов IP **publicIP01** в группе ресурсов **apim appGw-RG** для региона hello Запад США.
 
 ```powershell
 $publicip = New-AzureRmPublicIpAddress -ResourceGroupName "apim-appGw-RG" -name "publicIP01" -location "West US" -AllocationMethod Dynamic
 ```
 
-IP-адрес назначается шлюзу приложений при запуске службы.
+IP-адрес назначается шлюз приложений toohello при запуске службы hello.
 
 ## <a name="create-application-gateway-configuration"></a>Создание конфигурации шлюза приложений
 
-Перед созданием шлюза приложений необходимо настроить все элементы конфигурации. В ходе следующих шагов создаются необходимые элементы конфигурации для ресурса шлюза приложений.
+Необходимо настроить все элементы конфигурации, перед созданием шлюза приложения hello. Hello следующие действия создадут hello элементы конфигурации, которые необходимы для ресурса шлюза приложения.
 
 ### <a name="step-1"></a>Шаг 1
 
-Создайте конфигурацию IP-адресов шлюза приложений с именем **gatewayIP01**. При запуске шлюз приложений получает IP-адрес из настроенной подсети. Затем шлюз маршрутизирует сетевой трафик на IP-адреса из внутреннего пула IP-адресов. Помните, что для каждого экземпляра требуется отдельный IP-адрес.
+Создайте конфигурацию IP-адресов шлюза приложений с именем **gatewayIP01**. При запуске шлюза приложения, он принимает IP-адрес из подсети hello настроен и маршрутизацию сетевого трафика toohello IP-адресов в пул IP-адресов серверной части hello. Помните, что для каждого экземпляра требуется отдельный IP-адрес.
 
 ```powershell
 $gipconfig = New-AzureRmApplicationGatewayIPConfiguration -Name "gatewayIP01" -Subnet $appgatewaysubnetdata
@@ -191,14 +191,14 @@ $gipconfig = New-AzureRmApplicationGatewayIPConfiguration -Name "gatewayIP01" -S
 
 ### <a name="step-2"></a>Шаг 2
 
-Настройте интерфейсный порт IP для конечной точки с общедоступным IP-адресом. Это порт, к которому подключаются пользователи.
+Настройте hello интерфейсный IP-порт для hello общедоступную конечную точку IP. Это используется порт hello, конечные пользователи подключены.
 
 ```powershell
 $fp01 = New-AzureRmApplicationGatewayFrontendPort -Name "port01"  -Port 443
 ```
 ### <a name="step-3"></a>Шаг 3.
 
-Настройте внешний IP-адрес, используя конечную точку с общедоступным IP-адресом.
+Настройте интерфейсный IP hello общедоступную конечную точку IP.
 
 ```powershell
 $fipconfig01 = New-AzureRmApplicationGatewayFrontendIPConfig -Name "frontend1" -PublicIPAddress $publicip
@@ -206,15 +206,15 @@ $fipconfig01 = New-AzureRmApplicationGatewayFrontendIPConfig -Name "frontend1" -
 
 ### <a name="step-4"></a>Шаг 4.
 
-Настройте в шлюзе приложений сертификат для шифрования и расшифровки проходящего трафика.
+Настройте сертификат hello для hello шлюз приложений, используемых toodecrypt и повторное шифрование трафика hello, проходящие через.
 
 ```powershell
-$cert = New-AzureRmApplicationGatewaySslCertificate -Name "cert01" -CertificateFile <full path to .pfx file> -Password <password for certificate file>
+$cert = New-AzureRmApplicationGatewaySslCertificate -Name "cert01" -CertificateFile <full path too.pfx file> -Password <password for certificate file>
 ```
 
 ### <a name="step-5"></a>Шаг 5
 
-Создайте прослушиватель HTTP для шлюза приложений. Назначьте для внешнего интерфейса параметры IP-адресов, порт и сертификат SSL.
+Создайте прослушиватель HTTP hello для шлюза приложения hello. Назначьте hello интерфейсный IP-конфигурации, порта и tooit сертификат ssl.
 
 ```powershell
 $listener = New-AzureRmApplicationGatewayHttpListener -Name "listener01" -Protocol "Https" -FrontendIPConfiguration $fipconfig01 -FrontendPort $fp01 -SslCertificate $cert
@@ -222,10 +222,10 @@ $listener = New-AzureRmApplicationGatewayHttpListener -Name "listener01" -Protoc
 
 ### <a name="step-6"></a>Шаг 6
 
-Создайте пользовательскую проверку для конечной точки `ContosoApi` прокси-сервера службы управления API. По умолчанию на всех службах управления API для конечной точки проверки работоспособности используется путь `/status-0123456789abcdef`. Укажите `api.contoso.net` в качестве имени узла пользовательской пробы, чтобы защитить его с помощью SSL-сертификата.
+Создать пользовательский зонд toohello службы управления API `ContosoApi` конечная точка прокси для домена. путь Hello `/status-0123456789abcdef` работоспособности конечной точки по умолчанию, размещенных на все службы управления API hello. Задать `api.contoso.net` как toosecure пользовательский зонд имя узла с помощью SSL-сертификат.
 
 > [!NOTE]
-> Когда в общедоступной службе Azure создается служба с именем `contosoapi.azure-api.net`, для ее прокси-сервера по умолчанию назначается имя узла `contosoapi`. 
+> Здравствуйте, имя узла `contosoapi.azure-api.net` узла прокси-сервера по умолчанию hello настраивается при службы с именем `contosoapi` создается в открытый Azure. 
 > 
 
 ```powershell
@@ -234,15 +234,15 @@ $apimprobe = New-AzureRmApplicationGatewayProbeConfig -Name "apimproxyprobe" -Pr
 
 ### <a name="step-7"></a>Шаг 7
 
-Передайте сертификат, который будет использоваться для ресурсов внутреннего пула, поддерживающих протокол SSL. Это тот же сертификат, который вы указали выше на шаге 4.
+Отправьте сертификат hello toobe используется hello протокол SSL включен внутреннего пула ресурсов. Это hello же сертификат, который вы указали в шаге 4 выше.
 
 ```powershell
-$authcert = New-AzureRmApplicationGatewayAuthenticationCertificate -Name "whitelistcert1" -CertificateFile <full path to .cer file>
+$authcert = New-AzureRmApplicationGatewayAuthenticationCertificate -Name "whitelistcert1" -CertificateFile <full path too.cer file>
 ```
 
 ### <a name="step-8"></a>Шаг 8
 
-Настройте HTTP для внутреннего пула шлюза приложений. К настройкам относится и предел времени ожидания, по истечении которого запрос к внутренним серверам отменяется. Это значение отличается от времени ожидания проверки работоспособности.
+Серверная часть настройки для hello шлюз приложений HTTP. К настройкам относится и предел времени ожидания, по истечении которого запрос к внутренним серверам отменяется. Это значение отличается от времени ожидания проверки hello.
 
 ```powershell
 $apimPoolSetting = New-AzureRmApplicationGatewayBackendHttpSettings -Name "apimPoolSetting" -Port 443 -Protocol "Https" -CookieBasedAffinity "Disabled" -Probe $apimprobe -AuthenticationCertificates $authcert -RequestTimeout 180
@@ -250,7 +250,7 @@ $apimPoolSetting = New-AzureRmApplicationGatewayBackendHttpSettings -Name "apimP
 
 ### <a name="step-9"></a>Шаг 9.
 
-Настройте пул IP-адресов серверной части с именем **apimbackend**, указав для него внутренний виртуальный IP-адрес, созданный ранее для службы управления API.
+Настройка внутренней пул IP-адресов с именем **apimbackend** hello внутренний виртуальный IP-адрес службы управления API hello созданной выше.
 
 ```powershell
 $apimProxyBackendPool = New-AzureRmApplicationGatewayBackendAddressPool -Name "apimbackend" -BackendIPAddresses $apimService.StaticIPs[0]
@@ -258,21 +258,21 @@ $apimProxyBackendPool = New-AzureRmApplicationGatewayBackendAddressPool -Name "a
 
 ### <a name="step-10"></a>Шаг 10
 
-Создайте параметры для фиктивного (несуществующего) внутреннего пула. Запросы к путям API, к которым вы не хотите предоставлять доступ из управления API через шлюз приложений, будут попадать на этот внутренний пул и возвращать ошибку 404.
+Создайте параметры для фиктивного (несуществующего) внутреннего пула. Пути tooAPI запросы, которые нам не нужно будет попаданий этой базы данных и возвращают 404 tooexpose из API управления через шлюз приложений.
 
-Настройте параметры HTTP для внутреннего пула.
+Настройте параметры HTTP для внутреннего фиктивный hello.
 
 ```powershell
 $dummyBackendSetting = New-AzureRmApplicationGatewayBackendHttpSettings -Name "dummySetting01" -Port 80 -Protocol Http -CookieBasedAffinity Disabled
 ```
 
-Настройте фиктивный внутренний пул **dummyBackendPool**, который указывает на адрес полного доменного имени **dummybackend.com**. Этот адрес полного доменного имени не существует в виртуальной сети.
+Настройка фиктивный серверной **dummyBackendPool**, который указывает адрес полного доменного ИМЕНИ tooa **dummybackend.com**. Этот адрес полного доменного ИМЕНИ не существует в виртуальной сети hello.
 
 ```powershell
 $dummyBackendPool = New-AzureRmApplicationGatewayBackendAddressPool -Name "dummyBackendPool" -BackendFqdns "dummybackend.com"
 ```
 
-Создайте параметр правила, который шлюз приложений будет использовать по умолчанию и который указывает на несуществующий внутренний пул **dummybackend.com** в виртуальной сети.
+Создать правило, установка этого hello, будет использовать шлюз приложения по умолчанию, указывающая серверной несуществующий toohello **dummybackend.com** в hello виртуальной сети.
 
 ```powershell
 $dummyPathRule = New-AzureRmApplicationGatewayPathRuleConfig -Name "nonexistentapis" -Paths "/*" -BackendAddressPool $dummyBackendPool -BackendHttpSettings $dummyBackendSetting
@@ -280,25 +280,25 @@ $dummyPathRule = New-AzureRmApplicationGatewayPathRuleConfig -Name "nonexistenta
 
 ### <a name="step-11"></a>Шаг 11
 
-Настройте пути URL-правил для пулов тыловых серверов. Это позволяет выбрать некоторое подмножество интерфейсов API из управления API, чтобы открыть к ним общий доступ. Например, из набора `Echo API` (/echo/), `Calculator API` (/calc/) и т. д. сделать доступным из Интернета только `Echo API`. 
+Настройте правило пути URL-адресов для пулов hello серверной части. Это позволяет, выбор только некоторые hello интерфейсы API управления API, предоставляемые toohello public. Например, из набора `Echo API` (/echo/), `Calculator API` (/calc/) и т. д. сделать доступным из Интернета только `Echo API`. 
 
-В следующем примере создается простое правило для маршрутизации трафика от пути /echo/ к пулу тыловых серверов apimProxyBackendPool.
+Hello пример создает простое правило для hello «/ echo /» путь маршрутизации трафика toohello серверной части «apimProxyBackendPool».
 
 ```powershell
 $echoapiRule = New-AzureRmApplicationGatewayPathRuleConfig -Name "externalapis" -Paths "/echo/*" -BackendAddressPool $apimProxyBackendPool -BackendHttpSettings $apimPoolSetting
 ```
 
-Если путь не соответствует правилам, которые необходимо включить с помощью управления API, то при настройке сопоставления для пути правил также настраивается внутренний пул адресов по умолчанию с именем **dummyBackendPool**. Например, файл http://api.contoso.net/calc/* перейдет в **dummyBackendPool**, так как этот пул определен как пул по умолчанию для несоответствующего трафика.
+Если путь hello не соответствует пути hello правила мы хотим tooenable из системы управления API, путь конфигурации карты также настраивает пула адресов серверной части по умолчанию с именем правила hello **dummyBackendPool**. Например, http://api.contoso.net/calc/ * становится слишком**dummyBackendPool** как она определена в качестве пула по умолчанию hello несовпадающие трафика.
 
 ```powershell
 $urlPathMap = New-AzureRmApplicationGatewayUrlPathMapConfig -Name "urlpathmap" -PathRules $echoapiRule, $dummyPathRule -DefaultBackendAddressPool $dummyBackendPool -DefaultBackendHttpSettings $dummyBackendSetting
 ```
 
-Предыдущий шаг нужен для того, чтобы через шлюз приложений проходили запросы только для пути /echo. В ответ на запросы из Интернета на другие API-интерфейсы, настроенные в управлении API, шлюз приложений будет возвращать ошибки 404. 
+Hello выше шаг гарантирует только по запросу для hello путь «/ echo» разрешается доступ через шлюз приложения hello. Запросы tooother настроенного API-интерфейсов в API управления вызовет ошибки 404 из шлюза приложения, если доступ осуществляется из Интернета hello. 
 
 ### <a name="step-12"></a>Шаг 12
 
-Создайте правило для использования маршрутизации на основе URL-путей в шлюзе приложений.
+Создание параметра правила для hello шлюз приложений toouse URL-адрес на основе пути маршрутизации.
 
 ```powershell
 $rule01 = New-AzureRmApplicationGatewayRequestRoutingRule -Name "rule1" -RuleType PathBasedRouting -HttpListener $listener -UrlPathMap $urlPathMap
@@ -306,7 +306,7 @@ $rule01 = New-AzureRmApplicationGatewayRequestRoutingRule -Name "rule1" -RuleTyp
 
 ### <a name="step-13"></a>Шаг 13
 
-Настройте число экземпляров и размер шлюза приложений. Здесь мы используем [WAF SKU](../application-gateway/application-gateway-webapplicationfirewall-overview.md) для повышения уровня безопасности ресурса управления API.
+Настройте hello число экземпляров и размер для шлюза приложения hello. Здесь мы используем hello [WAF SKU](../application-gateway/application-gateway-webapplicationfirewall-overview.md) для повышения уровня безопасности hello ресурса управления API.
 
 ```powershell
 $sku = New-AzureRmApplicationGatewaySku -Name "WAF_Medium" -Tier "WAF" -Capacity 2
@@ -314,31 +314,31 @@ $sku = New-AzureRmApplicationGatewaySku -Name "WAF_Medium" -Tier "WAF" -Capacity
 
 ### <a name="step-14"></a>Шаг 14
 
-Настройте WAF в режиме предотвращения.
+Настройка WAF toobe в режиме «Защита».
 ```powershell
 $config = New-AzureRmApplicationGatewayWebApplicationFirewallConfiguration -Enabled $true -FirewallMode "Prevention"
 ```
 
 ## <a name="create-application-gateway"></a>Создание шлюза приложений
 
-Создайте шлюз приложений, используя все созданные ранее объекты конфигурации.
+Создание шлюза приложения со всеми объектами конфигурации hello из hello в предыдущих шагах.
 
 ```powershell
 $appgw = New-AzureRmApplicationGateway -Name $applicationGatewayName -ResourceGroupName $resourceGroupName  -Location $location -BackendAddressPools $apimProxyBackendPool, $dummyBackendPool -BackendHttpSettingsCollection $apimPoolSetting, $dummyBackendSetting  -FrontendIpConfigurations $fipconfig01 -GatewayIpConfigurations $gipconfig -FrontendPorts $fp01 -HttpListeners $listener -UrlPathMaps $urlPathMap -RequestRoutingRules $rule01 -Sku $sku -WebApplicationFirewallConfig $config -SslCertificates $cert -AuthenticationCertificates $authcert -Probes $apimprobe
 ```
 
-## <a name="cname-the-api-management-proxy-hostname-to-the-public-dns-name-of-the-application-gateway-resource"></a>Создание сопоставления CNAME для связи имени узла прокси-сервера управления API с общедоступным DNS-именем ресурса шлюза приложений
+## <a name="cname-hello-api-management-proxy-hostname-toohello-public-dns-name-of-hello-application-gateway-resource"></a>Запись CNAME hello API управления прокси-сервера имя узла toohello открытому DNS-имени hello ресурсов шлюза приложений
 
-После создания шлюза следует настроить внешний интерфейс для обмена данными. Если вы используете общедоступный IP-адрес, шлюзу приложений требуется динамически назначаемое имя DNS, которое может быть неудобным для использования. 
+После создания шлюза hello hello следующим шагом является tooconfigure hello внешнего интерфейса для обмена данными. При использовании общедоступных IP-адресов, шлюз приложений требуется динамически назначаемый имени DNS, которое может быть легко toouse. 
 
-Для DNS-имени шлюза приложений следует создать запись CNAME, которая будет связывать имя узла прокси-сервера (в примере выше это `api.contoso.net`) с этим DNS-именем. Чтобы настроить запись CNAME интерфейсного IP-адреса, получите сведения о шлюзе приложений и соответствующее IP- или DNS-имя с помощью элемента PublicIPAddress. Мы не рекомендуем использовать записи типа A, так как виртуальный IP-адрес может измениться после перезапуска шлюза.
+Hello шлюз приложений DNS-имя должно быть используется toocreate запись CNAME, которое указывает имя узла hello APIM прокси-сервера (например `api.contoso.net` в вышеприведенных примерах hello) toothis DNS-имя. tooconfigure hello интерфейсных IP запись CNAME, получить hello сведения о hello шлюз приложений и соответствующее IP или DNS-имя с помощью элемента PublicIPAddress hello. Использование Hello записи A не рекомендуется, поскольку hello виртуального IP-адреса могут изменяться при перезапуске шлюза.
 
 ```powershell
 Get-AzureRmPublicIpAddress -ResourceGroupName "apim-appGw-RG" -Name "publicIP01"
 ```
 
 ##<a name="summary"> </a> Сводка
-Служба управления API Azure, настроенная в виртуальной сети, предоставляет свой шлюз в качестве единого интерфейса для всех настроенных API-интерфейсов, как локальных, так и облачных. Интеграция шлюза приложений с управлением API дает вам дополнительную гибкость, позволяя избирательно предоставлять доступ к API-интерфейсам через Интернет. Также вы можете использовать брандмауэр веб-приложения в качестве интерфейсного компонента для экземпляра службы управления API.
+Управления API Azure, настроенные в виртуальной сети предоставляет интерфейс один шлюз для всех настроенных интерфейсов API, размещенной в локальной среде ли они в облаке hello. Интеграция шлюза приложений со службой управления API обеспечивает гибкость hello выборочного включения определенного toobe API-интерфейсы доступны на hello Интернета, а также предоставление брандмауэр веб-приложения как экземпляр интерфейса API управления tooyour переднего плана.
 
 ##<a name="next-steps"> </a> Дальнейшие действия
 * Дополнительные сведения о шлюзе приложений Azure:
@@ -346,5 +346,5 @@ Get-AzureRmPublicIpAddress -ResourceGroupName "apim-appGw-RG" -Name "publicIP01"
   * [Application Gateway Web Application Firewall (preview)](../application-gateway/application-gateway-webapplicationfirewall-overview.md) (Брандмауэр веб-приложения шлюза приложений (предварительная версия))
   * [Создание шлюза приложений с помощью маршрутизации на основе пути](../application-gateway/application-gateway-create-url-route-arm-ps.md)
 * См. дополнительные сведения о службе управлении API и виртуальных сетях
-  * [Использование службы управления API Azure совместно с внутренней виртуальной сетью](api-management-using-with-internal-vnet.md)
+  * [С помощью API управления доступен только в пределах hello виртуальной сети](api-management-using-with-internal-vnet.md)
   * [How to use Azure API Management with virtual networks](api-management-using-with-vnet.md) (Использование управления API Azure в виртуальных сетях)

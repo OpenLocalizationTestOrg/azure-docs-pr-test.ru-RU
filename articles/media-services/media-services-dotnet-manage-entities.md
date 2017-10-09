@@ -1,6 +1,6 @@
 ---
-title: "Управление активами и связанными сущностями с помощью пакета SDK служб мультимедиа для .NET"
-description: "Описание способов управления активами и связанными сущностями с помощью пакета SDK служб мультимедиа для .NET."
+title: "Активы aaaManaging и связанных сущностей с помощью пакета SDK .NET служб мультимедиа"
+description: "Узнайте, как активы toomanage и связанных сущностей с hello пакета SDK служб мультимедиа для .NET."
 author: juliako
 manager: cfowler
 editor: 
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/17/2017
 ms.author: juliako
-ms.openlocfilehash: 5efe16a09808267d0797521f9e1df2b60aec9cbb
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 59a8543ffc6f7f30da2c67a6fcae09bc46da7a52
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="managing-assets-and-related-entities-with-media-services-net-sdk"></a>Управление активами и связанными сущностями с помощью пакета SDK служб мультимедиа для .NET
 > [!div class="op_single_selector"]
@@ -27,50 +27,50 @@ ms.lasthandoff: 08/29/2017
 > 
 > 
 
-В этой статье показано, как управлять сущностями служб мультимедиа с помощью .NET. 
+В этом разделе показано, как toomanage служб мультимедиа Azure для сущностей в .NET Framework. 
 
 >[!NOTE]
-> Начиная с 1 апреля 2017 г. все записи задания в вашей учетной записи и связанные с ней записи задач старше 90 дней будут автоматически удалены, даже если общее число записей не превышает значение максимальной квоты. Например, 1 апреля 2017 г. будет автоматически удалена любая запись задания в вашей учетной записи, созданная ранее 31 декабря 2016 г. Если необходимо архивировать данные задания или задачи, то можно использовать код, описанный в этой статье.
+> Начиная с 1 апреля 2017 г., записи любого задания в вашей учетной записи старше 90 дней автоматически удаляется, а также связанные с ней записи задачи, даже если hello общее количество записей ниже максимальная квота hello. Например, 1 апреля 2017 г. будет автоматически удалена любая запись задания в вашей учетной записи, созданная ранее 31 декабря 2016 г. Если вам нужна информация задания или задачи tooarchive hello, можно использовать код hello, описанные в этом разделе.
 
 ## <a name="prerequisites"></a>Предварительные требования
 
-Настройте среду разработки и укажите в файле app.config сведения о подключении, как описано в статье [Разработка служб мультимедиа с помощью .NET](media-services-dotnet-how-to-use.md). 
+Настройка среды разработки и заполнить hello файл app.config с данными подключения, как описано в [разработки служб мультимедиа с помощью .NET](media-services-dotnet-how-to-use.md). 
 
 ## <a name="get-an-asset-reference"></a>Получение ссылки на актив
-Распространенной задачей является получение ссылки на существующий актив в службах мультимедиа. В следующем примере кода показано, как можно получить ссылку на актив (Assets) из коллекции активов в объекте контекста сервера, указав идентификатор (Id) актива. В следующем примере кода используется запрос Linq для получения ссылки на существующий объект IAsset.
+Зачастую является tooget существующего средства tooan ссылку в службах мультимедиа. Hello в следующем примере кода показано, как получить ссылку на актив из коллекции средств hello на сервере hello объекта контекста, основании hello активов идентификатор, следующий код в этом примере используется запроса Linq tooget существующий объект IAsset ссылки tooan.
 
     static IAsset GetAsset(string assetId)
     {
-        // Use a LINQ Select query to get an asset.
+        // Use a LINQ Select query tooget an asset.
         var assetInstance =
             from a in _context.Assets
             where a.Id == assetId
             select a;
-        // Reference the asset as an IAsset.
+        // Reference hello asset as an IAsset.
         IAsset asset = assetInstance.FirstOrDefault();
 
         return asset;
     }
 
 ## <a name="list-all-assets"></a>Перечисление всех активов
-По мере роста числа активов в хранилище полезно получать список всех активов. В следующем примере кода показано, как обойти всю коллекцию активов (Assets) в объекте контекста сервера. С каждым активом пример также записывает некоторые значения его свойств в консоль. Например, каждый актив может содержать множество файлов мультимедиа. Пример кода записывает все файлы, связанные с каждым активом.
+По мере роста числа hello активов, в хранилище, это полезно toolist активов. Hello в следующем примере кода показано, как tooiterate через hello коллекции средств на hello объекта контекста сервера. С каждым активом пример кода hello записывает некоторые из его свойств значения toohello консоли. Например, каждый актив может содержать множество файлов мультимедиа. пример кода Hello записывает все файлы, связанные с каждым активом.
 
     static void ListAssets()
     {
-        string waitMessage = "Building the list. This may take a few "
-            + "seconds to a few minutes depending on how many assets "
+        string waitMessage = "Building hello list. This may take a few "
+            + "seconds tooa few minutes depending on how many assets "
             + "you have."
             + Environment.NewLine + Environment.NewLine
             + "Please wait..."
             + Environment.NewLine;
         Console.Write(waitMessage);
 
-        // Create a Stringbuilder to store the list that we build. 
+        // Create a Stringbuilder toostore hello list that we build. 
         StringBuilder builder = new StringBuilder();
 
         foreach (IAsset asset in _context.Assets)
         {
-            // Display the collection of assets.
+            // Display hello collection of assets.
             builder.AppendLine("");
             builder.AppendLine("******ASSET******");
             builder.AppendLine("Asset ID: " + asset.Id);
@@ -78,7 +78,7 @@ ms.lasthandoff: 08/29/2017
             builder.AppendLine("==============");
             builder.AppendLine("******ASSET FILES******");
 
-            // Display the files associated with each asset. 
+            // Display hello files associated with each asset. 
             foreach (IAssetFile fileItem in asset.AssetFiles)
             {
                 builder.AppendLine("Name: " + fileItem.Name);
@@ -93,48 +93,48 @@ ms.lasthandoff: 08/29/2017
 
 ## <a name="get-a-job-reference"></a>Получение ссылки на задание
 
-При работе с задачами обработки в коде служб мультимедиа часто требуется получить ссылку на существующее задание по идентификатору. В следующем примере кода показано, как получить ссылку на объект IJob из коллекции заданий (Jobs).
+При работе с задачами в коде службы мультимедиа обработки часто требуется tooget ссылки tooan существующего задания, основанные на hello идентификатор, следующий пример кода показывает, как ссылка tooan IJob tooget объекта из коллекции заданий hello.
 
-Получение ссылки на задание может потребоваться при запуске длительного задания кодирования, когда необходимо проверять состояние задания в программном потоке. В таких случаях при возвращении метода из потока требуется получить обновленную ссылку на задание.
+Вы может tooget ссылку на задание при запуске задания кодирования длительное время и состояние задания toocheck hello в потоке. В таких случаях при возвращении метода hello из потока, необходимо tooretrieve задание tooa обновленную ссылку.
 
     static IJob GetJob(string jobId)
     {
-        // Use a Linq select query to get an updated 
+        // Use a Linq select query tooget an updated 
         // reference by Id. 
         var jobInstance =
             from j in _context.Jobs
             where j.Id == jobId
             select j;
-        // Return the job reference as an Ijob. 
+        // Return hello job reference as an Ijob. 
         IJob job = jobInstance.FirstOrDefault();
 
         return job;
     }
 
 ## <a name="list-jobs-and-assets"></a>Перечисление заданий и активов
-Важная связанная задача — перечисление активов с заданиями, с которыми они связаны, в службах мультимедиа. В следующем примере кода показано, как перечислить каждый объект IJob, а затем для каждого задания отображаются свойства задания, все связанные задачи, все входные активы и все выходные активы. Данный пример кода может быть полезен для множества других задач. Например, если требуется перечислить выходные активы из одного или нескольких заданий кодирования, которые выполнялись ранее, данный код показывает, как получить доступ к этим выходным активам. При наличии ссылки на выходной актив можно затем доставлять содержимое другим пользователям или приложениям путем загрузки или передачи URL-адресов. 
+Важная задача — toolist активов со связанным заданием в службах мультимедиа. Hello следующем примере кода показано как toolist каждого объекта IJob и затем для каждого задания отображаются свойства задания hello, все связанные задачи, все входные и выходные активы. в данном примере кода Hello можно использовать для множества других задач. Например если требуется toolist hello выходные активы одного или нескольких заданий кодирования, которые были выполнены ранее, этот код показывает, как tooaccess hello выходные активы. При наличии актива выходной tooan ссылку, вы можете предоставить hello содержимого tooother пользователям или приложениям, загрузив его или передав URL-адреса. 
 
-Дополнительные сведения о вариантах доставки ресурсов-контейнеров см. в статье [Доставка ресурсов-контейнеров с помощью пакета SDK служб мультимедиа для .NET](media-services-deliver-streaming-content.md).
+Дополнительные сведения о вариантах предоставления активов см. в разделе [доставка активов с помощью пакета SDK служб мультимедиа для .NET hello](media-services-deliver-streaming-content.md).
 
-    // List all jobs on the server, and for each job, also list 
+    // List all jobs on hello server, and for each job, also list 
     // all tasks, all input assets, all output assets.
 
     static void ListJobsAndAssets()
     {
-        string waitMessage = "Building the list. This may take a few "
-            + "seconds to a few minutes depending on how many assets "
+        string waitMessage = "Building hello list. This may take a few "
+            + "seconds tooa few minutes depending on how many assets "
             + "you have."
             + Environment.NewLine + Environment.NewLine
             + "Please wait..."
             + Environment.NewLine;
         Console.Write(waitMessage);
 
-        // Create a Stringbuilder to store the list that we build. 
+        // Create a Stringbuilder toostore hello list that we build. 
         StringBuilder builder = new StringBuilder();
 
         foreach (IJob job in _context.Jobs)
         {
-            // Display the collection of jobs on the server.
+            // Display hello collection of jobs on hello server.
             builder.AppendLine("");
             builder.AppendLine("******JOB*******");
             builder.AppendLine("Job ID: " + job.Id);
@@ -144,7 +144,7 @@ ms.lasthandoff: 08/29/2017
             builder.AppendLine("==============");
 
 
-            // For each job, display the associated tasks (a job  
+            // For each job, display hello associated tasks (a job  
             // has one or more tasks). 
             builder.AppendLine("******TASKS*******");
             foreach (ITask task in job.Tasks)
@@ -160,7 +160,7 @@ ms.lasthandoff: 08/29/2017
                 builder.AppendLine("==============");
             }
 
-            // For each job, display the list of input media assets.
+            // For each job, display hello list of input media assets.
             builder.AppendLine("******JOB INPUT MEDIA ASSETS*******");
             foreach (IAsset inputAsset in job.InputMediaAssets)
             {
@@ -173,7 +173,7 @@ ms.lasthandoff: 08/29/2017
                 }
             }
 
-            // For each job, display the list of output media assets.
+            // For each job, display hello list of output media assets.
             builder.AppendLine("******JOB OUTPUT MEDIA ASSETS*******");
             foreach (IAsset theAsset in job.OutputMediaAssets)
             {
@@ -192,9 +192,9 @@ ms.lasthandoff: 08/29/2017
     }
 
 ## <a name="list-all-access-policies"></a>Перечисление всех политик доступа
-В службах мультимедиа можно определить политику доступа для актива или его файлов. Политика доступа определяет разрешения для файла или актива (тип доступа и продолжительность). В коде служб мультимедиа политика доступа обычно определяется путем создания объекта IAccessPolicy и последующей его привязки к существующему активу. Затем создается объект ILocator, который позволяет предоставлять прямой доступ к активам в службах мультимедиа. Проект Visual Studio, прилагаемый к этой документации, содержит несколько примеров кода, которые показывают, как создавать и назначать политики доступа и указатели на активы.
+В службах мультимедиа можно определить политику доступа для актива или его файлов. Политика доступа задает hello разрешения для файла или актива (тип доступа и длительность hello). В коде служб мультимедиа политика доступа обычно определяется путем создания объекта IAccessPolicy и последующей его привязки к существующему активу. Затем создается объект ILocator, который позволяет предоставлять прямой доступ tooassets в службах мультимедиа. проект Visual Studio Hello, поставляемый вместе с этой документацией содержит несколько примеров кода, которые показывают, как toocreate и назначить доступ к tooassets политик и указатели.
 
-В следующем примере кода показано, как перечислить все политики доступа на сервере, а также показаны связанные с каждой из них типы разрешений. Другой полезный способ просмотра политик доступа — получить список всех объектов ILocator на сервере, а затем для каждого указателя можно перечислить связанную политику доступа с помощью его свойства AccessPolicy.
+Здравствуйте, следуя примере кода показано, как все политики доступа на сервере hello и показывает тип hello разрешений, связанных с каждым toolist. Политики доступа tooview другой удобным способом является toolist все ILocator объекты на сервере hello, а затем для каждого локатора можно перечислить связанную политику доступа, с помощью его свойства AccessPolicy.
 
     static void ListAllPolicies()
     {
@@ -212,9 +212,9 @@ ms.lasthandoff: 08/29/2017
 ## <a name="limit-access-policies"></a>Ограничение политик доступа 
 
 >[!NOTE]
-> Действует ограничение в 1 000 000 записей для разных политик AMS (например, для политики Locator или ContentKeyAuthorizationPolicy). Следует указывать один и тот же идентификатор политики, если вы используете те же дни, разрешения доступа и т. д. Например, политики для указателей, которые должны оставаться на месте в течение длительного времени (не политики передачи). 
+> Действует ограничение в 1 000 000 записей для разных политик AMS (например, для политики Locator или ContentKeyAuthorizationPolicy). Следует использовать hello же идентификатор политики, если вы используете всегда hello же дни / доступа разрешения, например, политики для указатели, которые являются предполагаемого tooremain на месте в течение длительного времени (без передачи политики). 
 
-Например, вы можете создать универсальный набор политик, используя следующий код, который будет выполняться в приложении только один раз. Идентификаторы можно записать в файл журнала для последующего использования:
+Например можно создать универсальный набор политик с hello, следующий код, который будет запускаться только один раз в приложении. Файл журнала tooa идентификаторы для последующего использования можно записывать в журнал:
 
     double year = 365.25;
     double week = 7;
@@ -226,18 +226,18 @@ ms.lasthandoff: 08/29/2017
     Console.WriteLine("100 year policy ID is: " + policy100Year.Id);
     Console.WriteLine("One week policy ID is: " + policyWeek.Id);
 
-Затем вы можете использовать существующие идентификаторы в своем коде, как показано здесь:
+Затем можно использовать hello существующие идентификаторы в коде следующим образом:
 
     const string policy1YearId = "nb:pid:UUID:2a4f0104-51a9-4078-ae26-c730f88d35cf";
 
 
-    // Get the standard policy for 1 year read only
+    // Get hello standard policy for 1 year read only
     var tempPolicyId = from b in _context.AccessPolicies
                        where b.Id == policy1YearId
                        select b;
     IAccessPolicy policy1Year = tempPolicyId.FirstOrDefault();
 
-    // Get the existing asset
+    // Get hello existing asset
     var tempAsset = from a in _context.Assets
                 where a.Id == assetID
                 select a;
@@ -246,14 +246,14 @@ ms.lasthandoff: 08/29/2017
     ILocator originLocator = _context.Locators.CreateLocator(LocatorType.OnDemandOrigin, asset,
         policy1Year,
         DateTime.UtcNow.AddMinutes(-5));
-    Console.WriteLine("The locator base path is " + originLocator.BaseUri.ToString());
+    Console.WriteLine("hello locator base path is " + originLocator.BaseUri.ToString());
 
 ## <a name="list-all-locators"></a>Перечисление всех указателей
-Указатель — это URL-адрес, предоставляющий прямой путь для доступа к активу, а также разрешения для этого актива, определенные связанной с указателем политикой доступа. Каждый актив может содержать коллекцию объектов ILocator, связанную с ним через его свойство Locators. Контекст сервера также содержит коллекцию Locators, содержащую все указатели.
+Указатель является URL-адрес tooaccess прямой путь к активу, а также разрешения toohello активов в соответствии с определением hello локатора связанную политику доступа. Каждый актив может содержать коллекцию объектов ILocator, связанную с ним через его свойство Locators. контекст сервера Hello также содержит указатели коллекция, содержащая все указатели.
 
-В следующем примере кода перечисляются все указатели на сервере. Для каждого указателя отображается идентификатор (Id) связанного актива и политики доступа. Также отображаются тип разрешений, дата окончания срока действия и полный путь к активу.
+Hello следующий пример кода перечисляет все локаторы на сервере hello. Для каждого локатора она отображает hello идентификатор для связанных активов hello и политики доступа. Она также отображает hello типа разрешений, Дата окончания срока действия hello и активов toohello hello полный путь.
 
-Обратите внимание, что путь указателя к активу представляет собой только базовый URL-адрес актива. Чтобы создать прямой путь к отдельным файлам, которые может просматривать пользователь или приложения, в коде необходимо добавить к пути указателя конкретный файловый путь. Сведения о том, как это сделать, см. в статье [Доставка ресурсов-контейнеров с помощью пакета SDK служб мультимедиа для .NET](media-services-deliver-streaming-content.md).
+Обратите внимание, что ресурс tooan путь локатора только базовый URL-адрес toohello ресурс. toocreate tooindividual прямой путь файлы, могут просматривать пользователя или приложения, код должен добавить hello конкретного файлового пути toohello указателя пути. Дополнительные сведения о том, как toodo, см. раздел hello [доставка активов с помощью пакета SDK служб мультимедиа для .NET hello](media-services-deliver-streaming-content.md).
 
     static void ListAllLocators()
     {
@@ -265,18 +265,18 @@ ms.lasthandoff: 08/29/2017
             Console.WriteLine("Locator access policy Id: " + locator.AccessPolicyId);
             Console.WriteLine("Access policy permissions: " + locator.AccessPolicy.Permissions);
             Console.WriteLine("Locator expiration: " + locator.ExpirationDateTime);
-            // The locator path is the base or parent path (with included permissions) to access  
-            // the media content of an asset. To create a full URL to a specific media file, take 
-            // the locator path and then append a file name and info as needed.  
+            // hello locator path is hello base or parent path (with included permissions) tooaccess  
+            // hello media content of an asset. toocreate a full URL tooa specific media file, take 
+            // hello locator path and then append a file name and info as needed.  
             Console.WriteLine("Locator base path: " + locator.Path);
             Console.WriteLine("");
         }
     }
 
 ## <a name="enumerating-through-large-collections-of-entities"></a>Перечисление больших коллекций сущностей
-При запросе сущностей существует ограничение в 1000 сущностей, возвращаемых за один раз, так как в открытой версии 2 REST количество результатов запросов ограничено 1000. При перечислении больших коллекций сущностей необходимо использовать предложения "Пропустить" и "Принять". 
+При запросе сущности, имеется ограничение в 1000 сущностей, возвращаемых одновременно, так как открытые v2 REST ограничивает результаты too1000 результаты запроса. Потребуется toouse Skip и Take при перечисление больших коллекций сущностей. 
 
-Следующая функция перебирает все задания для предоставленной учетной записи служб мультимедиа. Службы мультимедиа возвращают 1000 заданий в коллекции заданий. Эта функция использует предложения "Пропустить" и "Принять", чтобы убедиться в том, что все задания перечислены (при наличии более 1000 заданий в учетной записи).
+Здравствуйте, следующая функция обрабатывает в цикле всех заданий hello в hello, предоставленные учетной записи службы мультимедиа. Службы мультимедиа возвращают 1000 заданий в коллекции заданий. функции Hello делает или пропустить и toomake убедитесь, что это перечисление всех заданий (если у вас есть более чем на 1000 заданий в вашей учетной записи).
 
     static void ProcessJobs()
     {
@@ -289,7 +289,7 @@ ms.lasthandoff: 08/29/2017
 
             while (true)
             {
-                // Loop through all Jobs (1000 at a time) in the Media Services account
+                // Loop through all Jobs (1000 at a time) in hello Media Services account
                 IQueryable _jobsCollectionQuery = _context.Jobs.Skip(skipSize).Take(batchSize);
                 foreach (IJob job in _jobsCollectionQuery)
                 {
@@ -315,23 +315,23 @@ ms.lasthandoff: 08/29/2017
     }
 
 ## <a name="delete-an-asset"></a>Удаление актива
-В следующем примере удаляется актив.
+Привет, следующий пример удаляет актив.
 
     static void DeleteAsset( IAsset asset)
     {
-        // delete the asset
+        // delete hello asset
         asset.Delete();
 
         // Verify asset deletion
         if (GetAsset(asset.Id) == null)
-            Console.WriteLine("Deleted the Asset");
+            Console.WriteLine("Deleted hello Asset");
 
     }
 
 ## <a name="delete-a-job"></a>Удаление задания
-Чтобы удалить задание, необходимо проверить состояние задания, как указано в свойстве State. Можно удалить задания, которые завершены или отменены, в то время как задания, которые находятся в некоторых других состояниях (помещенные в очередь, запланированные или обрабатываемые), необходимо сначала отменить, а затем их можно будет удалить.
+toodelete задания, необходимо проверить состояние hello hello задания, как указано в свойстве состояние hello. Можно удалить задания, которые завершены или отменены, в то время как задания, которые находятся в некоторых других состояниях (помещенные в очередь, запланированные или обрабатываемые), необходимо сначала отменить, а затем их можно будет удалить.
 
-В следующем примере кода показан метод удаления задания, проверяющий состояния заданий и удаляющий их при завершенном или отмененном состоянии. Этот код зависит от содержащегося выше раздела данной статьи "Получение ссылки на задание".
+Hello примере кода показан метод для удаления задания, который проверяет состояния заданий и удаляет их, если состояние hello будет завершена или отменена. Этот код зависит от hello выше в этом разделе для получения задания tooa ссылка: получение ссылки на задание.
 
     static void DeleteJob(string jobId)
     {
@@ -353,7 +353,7 @@ ms.lasthandoff: 08/29/2017
                 case JobState.Error:
                     // Job errors should already be logged by polling or event 
                     // handling methods such as CheckJobProgress or StateChanged.
-                    // You can also call job.DeleteAsync to do async deletes.
+                    // You can also call job.DeleteAsync toodo async deletes.
                     job.Delete();
                     Console.WriteLine("Job has been deleted.");
                     jobDeleted = true;
@@ -380,12 +380,12 @@ ms.lasthandoff: 08/29/2017
 
 
 ## <a name="delete-an-access-policy"></a>Удаление политики доступа
-В следующем примере кода показано, как получить ссылку на политику доступа на основе идентификатора (Id) политики, а затем удалить эту политику.
+Hello следующий пример кода показывает, как tooget политику доступа tooan ссылку на основе политики идентификатор, а затем toodelete hello политики.
 
     static void DeleteAccessPolicy(string existingPolicyId)
     {
-        // To delete a specific access policy, get a reference to the policy.  
-        // based on the policy Id passed to the method.
+        // toodelete a specific access policy, get a reference toohello policy.  
+        // based on hello policy Id passed toohello method.
         var policyInstance =
                 from p in _context.AccessPolicies
                 where p.Id == existingPolicyId

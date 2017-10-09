@@ -1,5 +1,5 @@
 ---
-title: "Модель данных Azure Application Insights | Документация Майкрософт"
+title: "aaaAzure модели данных аналитики приложений | Документы Microsoft"
 description: "Описание свойств, экспортируемых с помощью непрерывного экспорта в формате JSON и используемых в качестве фильтров."
 services: application-insights
 documentationcenter: 
@@ -13,22 +13,22 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/21/2016
 ms.author: bwren
-ms.openlocfilehash: a485ddd555f65473d81896effc4a3562bda71410
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 5ff3ce7953b91cc69b5d96c0ea9b6d58a6016e61
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="application-insights-export-data-model"></a>Экспорт модели данных Application Insights
-В этой таблице перечислены свойства телеметрии, отправляемой из различных пакетов SDK для [Application Insights](app-insights-overview.md) на портал.
+В этой таблице перечислены свойства hello телеметрии, отправленные hello [Application Insights](app-insights-overview.md) портала toohello пакеты SDK.
 Вы увидите эти свойства в выходных данных [непрерывного экспорта](app-insights-export-telemetry.md).
 Они также отображаются в фильтрах свойств в [обозревателе метрик](app-insights-metrics-explorer.md) и при [диагностическом поиске](app-insights-diagnostic-search.md).
 
-Примечания:
+Toonote точек:
 
-* `[0]` в этих таблицах обозначает точку в пути, куда необходимо вставить индекс. При этом значение не всегда равно 0.
+* `[0]`в этих таблицах обозначает точку пути hello, когда имеется tooinsert индекса; но не всегда 0.
 * Продолжительность времени указана в десятых долях микросекунды, поэтому 10 000 000 = 1 с.
-* Значения даты и времени в формате UTC указаны в формате ISO `yyyy-MM-DDThh:mm:ss.sssZ`
+* Значения даты и времени UTC и указываются в формате ISO hello`yyyy-MM-DDThh:mm:ss.sssZ`
 
 
 ## <a name="example"></a>Пример
@@ -41,15 +41,15 @@ ms.lasthandoff: 08/18/2017
           "base": "/",
           "hashTag": ""
         },
-        "responseCode": 200, // Sent to client
+        "responseCode": 200, // Sent tooclient
         "success": true, // Default == responseCode<400
-        // Request id becomes the operation id of child events
+        // Request id becomes hello operation id of child events
         "id": "fCOhCdCnZ9I=",  
         "name": "GET Home/Index",
         "count": 1, // 100% / sampling rate
         "durationMetric": {
           "value": 1046804.0, // 10000000 == 1 second
-          // Currently the following fields are redundant:
+          // Currently hello following fields are redundant:
           "count": 1.0,
           "min": 1046804.0,
           "max": 1046804.0,
@@ -75,14 +75,14 @@ ms.lasthandoff: 08/18/2017
       "location": { // derived from client ip
         "continent": "North America",
         "country": "United States",
-        // last octagon is anonymized to 0 at portal:
+        // last octagon is anonymized too0 at portal:
         "clientip": "168.62.177.0",
         "province": "",
         "city": ""
       },
       "data": {
         "isSynthetic": true, // we identified source as a bot
-        // percentage of generated data sent to portal:
+        // percentage of generated data sent tooportal:
         "samplingRate": 100.0,
         "eventTime": "2016-03-21T10:05:45.7334717Z" // UTC
       },
@@ -116,11 +116,11 @@ ms.lasthandoff: 08/18/2017
 
 | Путь | Тип | Примечания |
 | --- | --- | --- |
-| context.custom.dimensions [0] |объект [ ] |Набор пар "ключ — значение", заданный параметром пользовательских свойств. Максимальная длина ключа — 100, максимальная длина значения —1024. Более 100 уникальных значений. Свойства можно использовать для поиска, но не для сегментации. Максимальное количество — 200 ключей на ключ ikey. |
+| context.custom.dimensions [0] |объект [ ] |Набор пар "ключ — значение", заданный параметром пользовательских свойств. Максимальная длина ключа — 100, максимальная длина значения —1024. Более 100 уникальные значения, свойство hello может выполняться поиск, но не может использоваться для сегментации. Максимальное количество — 200 ключей на ключ ikey. |
 | context.custom.metrics [0] |объект [ ] |Набор пар "ключ — значение", заданный параметром пользовательских измерений и метриками TrackMetric. Максимальная длина ключа — 100. Значения могут быть числовыми. |
 | context.data.eventTime |строка |Формат UTC. |
-| context.data.isSynthetic |Логическое |Запрос поступает от программы-робота или веб-теста. |
-| context.data.samplingRate |number |Процентная доля данных телеметрии, созданных с помощью пакета SDK, отправленного на портал. Диапазон 0,0–100,0. |
+| context.data.isSynthetic |Логическое |Запрос отображается toocome нижняя или веб-теста. |
+| context.data.samplingRate |number |Процент создаваемых hello SDK, который отправляется tooportal телеметрии. Диапазон 0,0–100,0. |
 | context.device |object |Устройство клиента |
 | context.device.browser |строка |IE, Chrome… |
 | context.device.browserVersion |строка |Chrome 48.0… |
@@ -136,14 +136,14 @@ ms.lasthandoff: 08/18/2017
 | context.device.type |строка |ПК, браузер… |
 | context.location |object |На основе значения clientip. |
 | context.location.city |строка |На основе значения clientip (если известно) |
-| context.location.clientip |строка |Последний восьмиугольник анонимизирован и имеет значение 0. |
+| context.location.clientip |string |Последний восьмиугольник — анонимные too0. |
 | context.location.continent |строка | |
 | context.location.country |строка | |
 | context.location.province |строка |Страна или область |
-| context.operation.id |строка |Элементы с одинаковым идентификатором операций отображаются на портале как связанные элементы. Как правило, это идентификатор запроса. |
+| context.operation.id |string |Элементы, имеющие hello таким же идентификатором операции отображаются в виде связанных элементов портала hello. Обычно идентификатор запроса hello. |
 | context.operation.name |строка |URL-адрес или имя запроса |
 | context.operation.parentId |строка |Разрешает использование вложенных связанных элементов. |
-| context.session.id |строка |Идентификатор группы операций из одного источника. 30-минутный период без операций указывает на завершение сеанса. |
+| context.session.id |string |Идентификатор группы операций из hello одного источника. Период, в течение 30 минут без операции сигналы hello завершение сеанса. |
 | context.session.isFirst |Логическое | |
 | context.user.accountAcquisitionDate |строка | |
 | context.user.anonAcquisitionDate |строка | |
@@ -165,7 +165,7 @@ ms.lasthandoff: 08/18/2017
 | event [0] urlData.host |строка | |
 
 ## <a name="exceptions"></a>Исключения
-Отправляются сведения об [исключениях](app-insights-asp-net-exceptions.md) на сервере и в браузере.
+Отчеты [исключения](app-insights-asp-net-exceptions.md) в hello server и hello браузера.
 
 | Путь | Тип | Примечания |
 | --- | --- | --- |
@@ -194,17 +194,17 @@ ms.lasthandoff: 08/18/2017
 | basicException [0] typeName |строка | |
 
 ## <a name="trace-messages"></a>Сообщения трассировки
-Отправитель: [TrackTrace](app-insights-api-custom-events-metrics.md#tracktrace) и [адаптеры ведения журналов](app-insights-asp-net-trace-logs.md).
+Отправленные [TrackTrace](app-insights-api-custom-events-metrics.md#tracktrace), а по hello [адаптеры ведения журналов](app-insights-asp-net-trace-logs.md).
 
 | Путь | Тип | Примечания |
 | --- | --- | --- |
 | message [0] loggerName |строка | |
 | message [0] parameters |строка | |
-| message [0] raw |строка |Сообщение журнала, максимальная длина — 10 тысяч символов. |
+| message [0] raw |string |сообщение журнала Hello, максимальной длиной 10 КБ. |
 | message [0] severityLevel |строка | |
 
 ## <a name="remote-dependency"></a>Удаленная зависимость
-Отправитель: TrackDependency. Используется для создания отчетов о производительности и использовании [вызовов к зависимостям](app-insights-asp-net-dependencies.md) на сервере, а также вызовов AJAX в браузере.
+Отправитель: TrackDependency. Использовать tooreport производительности и использовании [вызывает toodependencies](app-insights-asp-net-dependencies.md) сервера hello и вызовы AJAX в браузере hello.
 
 | Путь | Тип | Примечания |
 | --- | --- | --- |
@@ -213,7 +213,7 @@ ms.lasthandoff: 08/18/2017
 | remoteDependency [0] commandName |строка |Например, home/index |
 | remoteDependency [0] count |целое число |100/(частота[выборки](app-insights-sampling.md) ). Например, 4 = &gt; 25 %. |
 | remoteDependency [0] dependencyTypeName |строка |HTTP, SQL, … |
-| remoteDependency [0] durationMetric.value |number |Время от вызова до завершения отклика зависимостью. |
+| remoteDependency [0] durationMetric.value |number |Время от вызова toocompletion ответа зависимостей |
 | remoteDependency [0] id |строка | |
 | remoteDependency [0] name |строка |URL-адрес. Максимальная длина: 250 |
 | remoteDependency [0] resultCode |строка |Из зависимости HTTP. |
@@ -225,15 +225,15 @@ ms.lasthandoff: 08/18/2017
 | remoteDependency [0] urlData.host |строка |Максимальная длина: 200 |
 
 ## <a name="requests"></a>Requests (Запросы)
-Отправитель: [TrackRequest](app-insights-api-custom-events-metrics.md#trackrequest). Используется стандартными модулями для создания отчетов о времени отклика сервера (измеряется на сервере).
+Отправитель: [TrackRequest](app-insights-api-custom-events-metrics.md#trackrequest). Стандартные модули Hello использовать этот tooreports время ответа сервера, на сервере hello.
 
 | Путь | Тип | Примечания |
 | --- | --- | --- |
 | request [0] count |целое число |100/(частота[выборки](app-insights-sampling.md) ). Например: 4 =&gt; 25 %. |
-| request [0] durationMetric.value |number |Время от поступления запроса до отклика. 1e7 = 1 с. |
+| request [0] durationMetric.value |number |Время от tooresponse поступающих запросов. 1e7 = 1 с. |
 | request [0] id |строка |Идентификатор операции |
 | request [0] name |строка |GET или POST + базовый URL-адрес.  Максимальная длина: 250 |
-| request [0] responseCode |целое число |HTTP-отклик, отправленный клиенту. |
+| request [0] responseCode |целое число |Отправлено ответов tooclient HTTP |
 | request [0] success |Логическое |Значение по умолчанию == (responseCode &lt; 400) |
 | request [0] url |строка |Не включая узел. |
 | request [0] urlData.base |строка | |
@@ -241,18 +241,18 @@ ms.lasthandoff: 08/18/2017
 | request [0] urlData.host |строка | |
 
 ## <a name="page-view-performance"></a>Производительность просмотра страницы
-Отправитель: браузер. Измеряет время обработки страницы — с момента инициации пользователем запроса до полного отображения страницы (за исключением асинхронных вызовов AJAX).
+Отправленные hello браузера. Меры hello tooprocess время страницы, от пользователя вызывающей стороны hello запроса toodisplay завершения (за исключением асинхронные вызовы AJAX).
 
 Контекстные значения показывают версию клиентской ОС и версию браузера.
 
 | Путь | Тип | Примечания |
 | --- | --- | --- |
-| clientPerformance [0] clientProcess.value |целое число |Время от завершения получения HTML до отображения страницы. |
+| clientPerformance [0] clientProcess.value |целое число |Время в конце получение toodisplaying hello hello HTML-страницы. |
 | clientPerformance [0] name |строка | |
-| clientPerformance [0] networkConnection.value |целое число |Время, необходимое для установки подключения к сети. |
-| clientPerformance [0] receiveRequest.value |целое число |Время от завершения отправки запроса до получения HTML в отклике. |
-| clientPerformance [0] sendRequest.value |целое число |Время на отправку HTTP-запроса. |
-| clientPerformance [0] total.value |целое число |Время от запуска отправки запроса до отображения страницы. |
+| clientPerformance [0] networkConnection.value |целое число |Время, затраченное tooestablish сетевое подключение. |
+| clientPerformance [0] receiveRequest.value |целое число |Время в конце отправки hello запроса tooreceiving hello HTML в ответе. |
+| clientPerformance [0] sendRequest.value |целое число |Время от запроса сделанной toosend hello HTTP. |
+| clientPerformance [0] total.value |целое число |Время от начала страницы toosend hello запроса toodisplaying hello. |
 | clientPerformance [0] url |строка |URL-адрес запроса. |
 | clientPerformance [0] urlData.base |строка | |
 | clientPerformance [0] urlData.hashTag |строка | |
@@ -265,7 +265,7 @@ ms.lasthandoff: 08/18/2017
 | Путь | Тип | Примечания |
 | --- | --- | --- |
 | view [0] count |целое число |100/(частота[выборки](app-insights-sampling.md) ). Например, 4 = &gt; 25 %. |
-| view [0] durationMetric.value |целое число |При необходимости значение можно указать в методе trackPageView() или с помощью метода start/stopTrackPage(). Не совпадает со значениями clientPerformance. |
+| view [0] durationMetric.value |целое число |При необходимости значение можно указать в методе trackPageView() или с помощью метода start/stopTrackPage(). Не Здравствуйте таким же, как clientPerformance значения. |
 | view [0] name |строка |Заголовок страницы.  Максимальная длина: 250 |
 | view [0] url |строка | |
 | view [0] urlData.base |строка | |
@@ -294,7 +294,7 @@ ms.lasthandoff: 08/18/2017
 ## <a name="metrics"></a>Метрики
 Создатель: TrackMetric().
 
-Значение метрики можно найти в context.custom.metrics[0].
+найдено значение метрики Hello в context.custom.metrics[0]
 
 Например:
 
@@ -335,13 +335,13 @@ ms.lasthandoff: 08/18/2017
         "sampledValue": 468.71603053650279
       }
 
-Сейчас (хотя это может измениться в будущем) во всех значениях, включенных в отчеты стандартных модулей SDK, полезными являются только поля `name` и `value`, а также `count==1`. Они будут отличаться, только если вы напишете собственный вызов TrackMetric, указав другие параметры.
+В настоящее время - то, что это может изменить в будущих - сообщили hello стандартные модули SDK, все значения hello `count==1` и только hello `name` и `value` поля могут быть полезны. Hello единственный случай, где они будут отличаться бы при написании TrackMetric вызовы в которых hello другие параметры.
 
-Другие поля нужны для того, чтобы разрешить статистическое вычисление метрик в пакете SDK, тем самым снизив нагрузку (в виде трафика) на портал. Например, перед отправкой каждого отчета с метриками вы можете получить среднее значение для нескольких последовательных показаний. Затем вы можете рассчитать минимальное и максимальное значение, а также стандартное отклонение и агрегированное значение (сумму или среднее), а затем указать в счетчике количество показаний, представленных в отчете.
+Здравствуйте, назначение hello остальные поля — toobe tooallow метрики, статистически hello SDK tooreduce трафика toohello портала. Например, перед отправкой каждого отчета с метриками вы можете получить среднее значение для нескольких последовательных показаний. Затем будет расчета hello min, max, стандартное отклонение и статистическое значение (сумма или среднее) и задайте заданное число toohello показания, представленный hello отчета.
 
-В таблицах выше мы опустили редко используемые поля count, min, max, stdDev и sampledValue.
+В таблицах hello выше мы опущен hello редко используемые поля count, min, max, stdDev и sampledValue.
 
-Вместо предварительного статистического вычисления метрик вы можете использовать [выборки](app-insights-sampling.md) , чтобы сократить объем данных телеметрии.
+Вместо предварительной статистической обработке метрик, можно использовать [выборки](app-insights-sampling.md) при необходимости tooreduce hello объем телеметрии.
 
 ### <a name="durations"></a>Длительность
 За исключением оговоренных случаев, показатели длительности представлены в десятых долях микросекунды, то есть 10 000 000,0 — это 1 с.

@@ -1,6 +1,6 @@
 ---
-title: "Защита взаимодействия служб в Azure Service Fabric | Документация Майкрософт"
-description: "Общие сведения о способах защиты взаимодействия служб Reliable Services, выполняющихся в кластере Azure Service Fabric."
+title: "aaaHelp безопасную связь для службы в Azure Service Fabric | Документы Microsoft"
+description: "Обзор как toohelp безопасности соединения для надежных служб, выполняющихся в кластере Azure Service Fabric."
 services: service-fabric
 documentationcenter: .net
 author: suchiagicha
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 04/20/2017
 ms.author: suchiagicha
-ms.openlocfilehash: 53119244f8f09c0c6c43f43761af1cc074f8d0af
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 15201eb503322b17db329b319f1f42860b0f0c6b
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="help-secure-communication-for-services-in-azure-service-fabric"></a>Защита взаимодействия служб в Azure Service Fabric
 > [!div class="op_single_selector"]
@@ -27,12 +27,12 @@ ms.lasthandoff: 07/11/2017
 >
 >
 
-Безопасность — один из самых важных аспектов взаимодействия. Платформа приложений Reliable Services предоставляет несколько готовых стеков взаимодействия и средств, которыми можно воспользоваться для повышения безопасности. В этой статье рассматриваются способы повышения безопасности при использовании удаленного взаимодействия служб и стека взаимодействия Windows Communication Foundation (WCF).
+Безопасность является одним из самых важных аспектов hello связи. Платформа приложения Hello надежные службы предоставляет несколько готовых связи стеки и средства, которые можно использовать tooimprove безопасности. В этой статье рассказывается о tooimprove безопасности при использовании службы удаленного взаимодействия и hello стек связи Windows Communication Foundation (WCF).
 
 ## <a name="help-secure-a-service-when-youre-using-service-remoting"></a>Защита службы при использовании удаленного взаимодействия служб
-Мы используем существующий [пример](service-fabric-reliable-services-communication-remoting.md), в котором описывается настройка удаленного взаимодействия для Reliable Services. Для защиты службы при использовании удаленного взаимодействия служб выполните следующие действия:
+Мы используем существующего [пример](service-fabric-reliable-services-communication-remoting.md) объясняет, как tooset копирование удаленного взаимодействия для надежного обмена. toohelp защиты службы при использовании службы удаленного доступа, выполните следующие действия:
 
-1. Создайте интерфейс `IHelloWorldStateful`, определяющий методы, которые будут доступны для удаленного вызова процедур в службе. Служба также будет использовать прослушиватель `FabricTransportServiceRemotingListener`, который объявляется в пространстве имен `Microsoft.ServiceFabric.Services.Remoting.FabricTransport.Runtime`. Это реализация `ICommunicationListener` , которая предоставляет возможности удаленного взаимодействия.
+1. Создайте интерфейс, `IHelloWorldStateful`, определяющий hello методы, которые будут доступны для удаленного вызова процедур для службы. Служба будет использовать `FabricTransportServiceRemotingListener`, которое объявлено в hello `Microsoft.ServiceFabric.Services.Remoting.FabricTransport.Runtime` пространства имен. Это реализация `ICommunicationListener` , которая предоставляет возможности удаленного взаимодействия.
 
     ```csharp
     public interface IHelloWorldStateful : IService
@@ -57,9 +57,9 @@ ms.lasthandoff: 07/11/2017
     ```
 2. Добавьте параметры прослушивателя и учетные данные безопасности.
 
-    Убедитесь, что сертификат, который вы хотите использовать для защиты взаимодействия со службой, установлен на всех узлах в кластере. Существует два способа указания параметров прослушивателя и учетных данных безопасности:
+    Убедитесь, что hello сертификат, который toouse toohelp безопасной связи службы установлен на всех узлах кластера hello hello. Существует два способа указания параметров прослушивателя и учетных данных безопасности:
 
-   1. Предоставьте их непосредственно в коде службы:
+   1. Укажите их непосредственно в код службы hello:
 
        ```csharp
        protected override IEnumerable<ServiceReplicaListener> CreateServiceReplicaListeners()
@@ -94,7 +94,7 @@ ms.lasthandoff: 07/11/2017
        ```
    2. Предоставьте их с помощью [пакета конфигурации](service-fabric-application-model.md):
 
-       Добавьте раздел `TransportSettings` в файл settings.xml.
+       Добавить `TransportSettings` раздел в файле settings.xml hello.
 
        ```xml
        <Section Name="HelloWorldStatefulTransportSettings">
@@ -110,7 +110,7 @@ ms.lasthandoff: 07/11/2017
        </Section>
        ```
 
-       В этом случае метод `CreateServiceReplicaListeners` будет выглядеть следующим образом:
+       В этом случае hello `CreateServiceReplicaListeners` метода будет выглядеть следующим образом:
 
        ```csharp
        protected override IEnumerable<ServiceReplicaListener> CreateServiceReplicaListeners()
@@ -124,7 +124,7 @@ ms.lasthandoff: 07/11/2017
        }
        ```
 
-        При добавлении раздела `TransportSettings` в файл settings.xml `FabricTransportRemotingListenerSettings ` по умолчанию загрузит все параметры из этого раздела.
+        При добавлении `TransportSettings` раздела в файле settings.xml hello, `FabricTransportRemotingListenerSettings ` будет загружать все параметры hello из этого раздела по умолчанию.
 
         ```xml
         <!--"TransportSettings" section .-->
@@ -132,7 +132,7 @@ ms.lasthandoff: 07/11/2017
             ...
         </Section>
         ```
-        В этом случае метод `CreateServiceReplicaListeners` будет выглядеть следующим образом:
+        В этом случае hello `CreateServiceReplicaListeners` метода будет выглядеть следующим образом:
 
         ```csharp
         protected override IEnumerable<ServiceReplicaListener> CreateServiceReplicaListeners()
@@ -145,7 +145,7 @@ ms.lasthandoff: 07/11/2017
             };
         }
         ```
-3. При вызове методов для защищенной службы с помощью стека удаленного взаимодействия вместо использования класса `Microsoft.ServiceFabric.Services.Remoting.Client.ServiceProxy` для создания прокси-службы используйте `Microsoft.ServiceFabric.Services.Remoting.Client.ServiceProxyFactory`. Передайте параметр `FabricTransportRemotingSettings`, который содержит объект `SecurityCredentials`.
+3. При вызове методов в службе, защищенной с помощью стека hello удаленного взаимодействия, вместо использования hello `Microsoft.ServiceFabric.Services.Remoting.Client.ServiceProxy` toocreate класс прокси-службы, используйте `Microsoft.ServiceFabric.Services.Remoting.Client.ServiceProxyFactory`. Передайте параметр `FabricTransportRemotingSettings`, который содержит объект `SecurityCredentials`.
 
     ```csharp
 
@@ -175,7 +175,7 @@ ms.lasthandoff: 07/11/2017
 
     ```
 
-    Если клиентский код выполняется как часть службы, можно загрузить `FabricTransportRemotingSettings` из файла settings.xml. Создайте раздел HelloWorldClientTransportSettings по аналогии с кодом службы, как показано выше. Внесите следующие изменения в клиентский код:
+    Если код клиента hello выполняется как часть службы, можно загрузить `FabricTransportRemotingSettings` из файла settings.xml hello. Создайте раздел HelloWorldClientTransportSettings, подобный код службы toohello, как показано выше. Внесите следующие изменения toohello клиентского кода hello:
 
     ```csharp
     ServiceProxyFactory serviceProxyFactory = new ServiceProxyFactory(
@@ -188,11 +188,11 @@ ms.lasthandoff: 07/11/2017
 
     ```
 
-    Если клиент не выполняется как часть службы, можно создать файл client_name.settings.xml в том же каталоге, в котором находится файл client_name.exe. Затем создайте раздел TransportSettings в этом файле.
+    Если клиент hello не работает как часть службы, можно создать файл client_name.settings.xml в hello же место, где hello client_name.exe. Затем создайте раздел TransportSettings в этом файле.
 
-    Как и для службы, если в файл клиента settings.xml/client_name.settings.xml добавить раздел `TransportSettings`, то `FabricTransportRemotingSettings` по умолчанию загрузит все параметры из этого раздела.
+    Аналогичную службу toohello при добавлении `TransportSettings` раздела settings.xml/client_name.settings.xml клиента `FabricTransportRemotingSettings` загружает все параметры hello из этого раздела по умолчанию.
 
-    В этом случае приведенный выше код еще более упрощается.  
+    В этом случае hello предыдущих еще больше упростит код:  
 
     ```csharp
 
@@ -204,9 +204,9 @@ ms.lasthandoff: 07/11/2017
     ```
 
 ## <a name="help-secure-a-service-when-youre-using-a-wcf-based-communication-stack"></a>Защита службы при использовании стека взаимодействия на основе WCF
-Мы используем существующий [пример](service-fabric-reliable-services-communication-wcf.md), в котором описывается настройка стека связи на основе WCF для Reliable Services. Для защиты службы при использовании стека взаимодействия на основе WCF выполните следующие действия:
+Мы используем существующего [пример](service-fabric-reliable-services-communication-wcf.md) , объясняется, как tooset вверх связи на основе WCF стека для надежного обмена. toohelp защиты службы при использовании стека связи на основе WCF, выполните следующие действия:
 
-1. Для службы необходимо обеспечить защиту создаваемого прослушивателя взаимодействия WCF (`WcfCommunicationListener`). Чтобы сделать это, измените метод `CreateServiceReplicaListeners` .
+1. Для службы hello необходимо toohelp безопасного hello WCF связи прослушивателя (`WcfCommunicationListener`), вы создаете. toodo это, измените hello `CreateServiceReplicaListeners` метод.
 
     ```csharp
     protected override IEnumerable<ServiceReplicaListener> CreateServiceReplicaListeners()
@@ -227,7 +227,7 @@ ms.lasthandoff: 07/11/2017
             listenerBinding: GetNetTcpBinding(),
             endpointResourceName:"WcfServiceEndpoint");
 
-        // Add certificate details in the ServiceHost credentials.
+        // Add certificate details in hello ServiceHost credentials.
         wcfCommunicationListener.ServiceHost.Credentials.ServiceCertificate.SetCertificate(
             StoreLocation.LocalMachine,
             StoreName.My,
@@ -243,7 +243,7 @@ ms.lasthandoff: 07/11/2017
         return b;
     }
     ```
-2. В клиенте класс `WcfCommunicationClient` , созданный в предыдущем [примере](service-fabric-reliable-services-communication-wcf.md) , остается неизменным. Однако необходимо переопределить метод `CreateClientAsync` фабрики `WcfCommunicationClientFactory`.
+2. В клиенте hello hello `WcfCommunicationClient` класс, который был создан в hello предыдущих [пример](service-fabric-reliable-services-communication-wcf.md) остается без изменений. Но необходимо toooverride hello `CreateClientAsync` метод `WcfCommunicationClientFactory`:
 
     ```csharp
     public class SecureWcfCommunicationClientFactory<TServiceContract> : WcfCommunicationClientFactory<TServiceContract> where TServiceContract : class
@@ -277,8 +277,8 @@ ms.lasthandoff: 07/11/2017
             {
                 channelFactory = new ChannelFactory<TServiceContract>(this.clientBinding, endpointAddress);
             }
-            // Add certificate details to the ChannelFactory credentials.
-            // These credentials will be used by the clients created by
+            // Add certificate details toohello ChannelFactory credentials.
+            // These credentials will be used by hello clients created by
             // SecureWcfCommunicationClientFactory.  
             channelFactory.Credentials.ClientCertificate.SetCertificate(
                 StoreLocation.LocalMachine,
@@ -293,7 +293,7 @@ ms.lasthandoff: 07/11/2017
     }
     ```
 
-    Используйте `SecureWcfCommunicationClientFactory`, чтобы создать клиент взаимодействия WCF (`WcfCommunicationClient`). Воспользуйтесь клиентом для вызова методов службы.
+    Используйте `SecureWcfCommunicationClientFactory` toocreate связи клиента WCF (`WcfCommunicationClient`). Используйте методы службы tooinvoke hello клиента.
 
     ```csharp
     IServicePartitionResolver partitionResolver = ServicePartitionResolver.GetDefault();

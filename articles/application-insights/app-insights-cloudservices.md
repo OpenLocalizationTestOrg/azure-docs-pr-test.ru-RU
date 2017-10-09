@@ -1,5 +1,5 @@
 ---
-title: "Application Insights для облачных служб Azure | Документация Майкрософт"
+title: "aaaApplication аналитики для облачных служб Azure | Документы Microsoft"
 description: "Эффективное отслеживание веб-ролей и рабочих ролей с помощью Application Insights"
 services: application-insights
 documentationcenter: 
@@ -15,14 +15,14 @@ ms.topic: get-started-article
 ms.workload: tbd
 ms.date: 05/05/2017
 ms.author: bwren
-ms.openlocfilehash: c12b225aa351d0c272243469550791a6840091e0
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 6956ce423eea1e2cf387bd98250bae32d9501ed0
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="application-insights-for-azure-cloud-services"></a>Application Insights для облачных служб Azure
-С помощью [Application Insights][start] можно отслеживать [приложения облачной службы Microsoft Azure](https://azure.microsoft.com/services/cloud-services/) на предмет доступности, производительности, сбоев и использования, объединяя данные из пакета SDK Application Insights с данными [диагностики Azure](https://docs.microsoft.com/en-us/azure/monitoring-and-diagnostics/azure-diagnostics) из облачных служб. Благодаря получаемым данным о производительности и эффективности работы приложения на практике вы можете принимать осознанные решения о направлении разработки в каждом жизненном цикле.
+С помощью [Application Insights][start] можно отслеживать [приложения облачной службы Microsoft Azure](https://azure.microsoft.com/services/cloud-services/) на предмет доступности, производительности, сбоев и использования, объединяя данные из пакета SDK Application Insights с данными [диагностики Azure](https://docs.microsoft.com/en-us/azure/monitoring-and-diagnostics/azure-diagnostics) из облачных служб. Отзыв hello, получаемых о hello производительность и эффективность работы приложения в hello подстановки можно сделать правильный выбор hello направления проектирования hello в каждом жизненного цикла разработки.
 
 ![Пример](./media/app-insights-cloudservices/sample.png)
 
@@ -34,153 +34,153 @@ ms.lasthandoff: 08/18/2017
 * Developer Analytics Tools 7.10 или более поздней версии.
 
 ## <a name="quick-start"></a>Быстрый запуск
-Самый быстрый и простой способ настроить мониторинг облачной службы с помощью Application Insights — выбрать этот вариант при публикации своей службы в Azure.
+Здравствуйте, toomonitor быстрее и проще всего облачной службы с помощью Application Insights — toochoose, при публикации tooAzure вашей службы.
 
 ![Пример](./media/app-insights-cloudservices/azure-cloud-application-insights.png)
 
-Этот вариант позволяет инструментировать приложение во время выполнения, что обеспечивает все данные телеметрии, необходимые для мониторинга запросов, исключений и зависимостей в веб-роли, а также счетчиков производительности рабочих ролей. Все диагностические трассировки, генерируемые вашим приложением, также отправляются в Application Insights.
+Этот параметр, инструменты счетчики приложения во время выполнения, что дает вам все данные телеметрии hello toomonitor запросы, исключения и зависимости в веб-роли, а также производительность из ваших рабочих ролей. Все диагностические трассировки, сгенерированный вашим приложением tooApplication аналитики также передаются.
 
-Если это все, что вам нужно, то все готово. Следующие шаги — [просмотр метрик приложения](app-insights-metrics-explorer.md), [запрос данных с помощью Аналитики](app-insights-analytics.md), и, возможно, настройка [мониторинга](app-insights-dashboards.md). Вам может потребоваться настроить [тесты доступности](app-insights-monitor-web-app-availability.md) и [добавить в веб-страницы код ](app-insights-javascript.md) для мониторинга производительности в браузере.
+Если это все, что вам нужно, то все готово. Следующие шаги — [просмотр метрик приложения](app-insights-metrics-explorer.md), [запрос данных с помощью Аналитики](app-insights-analytics.md), и, возможно, настройка [мониторинга](app-insights-dashboards.md). Копирование может потребоваться tooset [тестов доступности](app-insights-monitor-web-app-availability.md) и [добавлять код tooyour веб-страницы](app-insights-javascript.md) toomonitor производительности в браузере hello.
 
 Но можно также получить дополнительные возможности:
 
-* отправлять данные для различных компонентов и конфигураций борки в отдельные ресурсы;
+* Отправить данные из различных компонентов и конфигураций сборки tooseparate ресурсов.
 * добавить пользовательские данные телеметрии из своего приложения.
 
-Если эти возможности представляют для вас интерес, продолжайте чтение.
+Если эти параметры имеют tooyou интерес, читайте дальше.
 
 ## <a name="sample-application-instrumented-with-application-insights"></a>Пример приложения, инструментированного с помощью Application Insights
-Взгляните на этот [пример приложения](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/AzureEmailService) , в котором служба Application Insights добавлена в облачную службу с двумя рабочими ролями, размещенными в Azure. 
+Рассмотрим это [образец приложения](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/AzureEmailService) в котором Application Insights добавляется tooa облачной службы с двумя рабочими ролями, размещенных в Azure. 
 
-Ниже описано, как адаптировать собственный проект облачной службы таким же образом.
+Далее рассказывается, как tooadapt облачной службы проект hello таким же образом.
 
 ## <a name="plan-resources-and-resource-groups"></a>Планирование ресурсов и групп ресурсов
-Данные телеметрии из приложения сохраняются, анализируются и отображаются в ресурсе Azure типа Application Insights. 
+Hello телеметрии из приложения сохраняется, анализируются и отображается в ресурс Azure типа Application Insights. 
 
-Каждый ресурс относится к группе ресурсов. Группы ресурсов используются для управления затратами, предоставления доступа участникам команды и развертывания обновлений при помощи отдельной согласованной транзакции. Например, вы можете [написать сценарий для развертывания](../azure-resource-manager/resource-group-template-deploy.md) облачной службы Azure и ее ресурсов мониторинга Application Insights одной операцией.
+Группа ресурсов tooa принадлежит каждый ресурс. Группы ресурсов используются для управления затратами, для предоставления доступа членов tooteam и toodeploy обновления в одной транзакции скоординированного. Например, можно было бы [записи toodeploy сценария](../azure-resource-manager/resource-group-template-deploy.md) облачной службы Azure и его Application Insights, отслеживание ресурсов в одной операции.
 
 ### <a name="resources-for-components"></a>Ресурсы для компонентов
-Рекомендуемая схема — создавать отдельный ресурс для каждого компонента приложения, то есть каждой веб-роли и рабочей роли. Вы можете анализировать каждый компонент отдельно, но можно создать [панель мониторинга](app-insights-dashboards.md), содержащую ключевые диаграммы для всех компонентов. Это позволит сравнивать и отслеживать их вместе. 
+Hello рекомендуемые схема является toocreate отдельный ресурс для каждого компонента приложения — то есть каждый веб-роли и рабочей роли. Можно анализировать каждый компонент отдельно, но можно создать [мониторинга](app-insights-dashboards.md) , объединяет в себе hello основные диаграммы из всех компонентов hello, можно сравнить и отслеживать их друг с другом. 
 
-Альтернативной схемой является отправка данных телеметрии из нескольких ролей в один ресурс, но с [добавлением свойства измерения в каждый элемент телеметрии](app-insights-api-filtering-sampling.md#add-properties-itelemetryinitializer), определяющего его исходную роль. В этой схеме диаграммы метрик (например, исключений) обычно отображаются вместе с показателями других ролей. Но при необходимости вы можете сегментировать диаграммы по идентификатору роли. Результаты поиска также можно фильтровать по одному измерению. Этот вариант делает более удобным одновременный просмотр информации, но может привести к некоторой путанице с ролями.
+Альтернативные схемы является toosend hello телеметрии из более чем одной роли toohello одного ресурса, но [добавьте элемент измерения tooeach свойств телеметрии](app-insights-api-filtering-sampling.md#add-properties-itelemetryinitializer) , определяющий его роль источника. В этой схеме метрики диаграммы, такие как исключения обычно показывают агрегат hello счетчики hello разные роли, но можно отделить hello диаграммы с идентификатором hello роли, при необходимости. Поиск также можно фильтровать по hello одно измерение. Этот вариант делает его более удобным tooview все в hello же времени, но может также привести toosome путаницы между ролями hello.
 
-Данные телеметрии браузера обычно добавляются в тот же ресурс, что и данные соответствующей серверной веб-роли.
+Браузер телеметрии обычно включаются в hello того же ресурса в качестве его серверные веб-роли.
 
-Поместите ресурсы Application Insights для различных компонентов в одну группу ресурсов. Это позволяет легко управлять ими одновременно. 
+Поместите ресурсы Application Insights hello для различных компонентов hello в одну группу ресурсов. Это позволяет легко toomanage их вместе. 
 
 ### <a name="separating-development-test-and-production"></a>Разделение данных для разработки, тестирования и эксплуатации
-При разработке пользовательских событий для следующего компонента в то время, когда предыдущая версия еще активна, необходимо отправлять данные телеметрии для разработки в отдельный ресурс Application Insights. В противном случае будет трудно найти данные телеметрии тестирования среди всего трафика, поступающего от активного сайта.
+При разработке пользовательских событий для следующего компонента при динамической hello предыдущей версии, необходимо toosend hello разработки телеметрии tooa отдельный ресурс Application Insights. В противном случае он будет жестких toofind телеметрии тестирования среди всех hello трафик от hello действующем сайте.
 
-Чтобы избежать такой ситуации, создайте отдельные ресурсы для каждой конфигурации сборки или "метки" (разработка, тестирование, эксплуатация и т. п.) своей системы. Поместите ресурсы для каждой конфигурации сборки в отдельную группу ресурсов. 
+tooavoid этой ситуации создать отдельные ресурсы для каждой конфигурации сборки или «метка» (разработки, тестирования, производства,...) системы. Поместите hello ресурсы для каждой конфигурации сборки в отдельной группе ресурсов. 
 
-Чтобы отправлять данные телеметрии в соответствующие ресурсы, можно настроить пакет SDK для Application Insights, чтобы он собирал разные ключи инструментирования, в зависимости от конфигурации сборки. 
+toosend hello телеметрии toohello соответствующие ресурсы, можно выполнить настройку hello пакет SDK Application Insights, чтобы он собирает ключ инструментирования разные в зависимости от конфигурации построения hello. 
 
 ## <a name="create-an-application-insights-resource-for-each-role"></a>Создание ресурса Application Insights для каждой роли
-Если вы решили создать отдельный ресурс для каждой роли и, возможно, отдельный набор для каждой конфигурации сборки, то создать их проще всего будет на портале Application Insights. Если создается много ресурсов, можно [автоматизировать этот процесс](app-insights-powershell.md).
+Если вы решили toocreate отдельный ресурс для каждой роли - и возможно отдельный набор для каждой конфигурации сборки -, то он является простым toocreate их на портале Application Insights hello. (Если гораздо создания ресурсов можно [автоматизации процесса hello](app-insights-powershell.md).
 
-1. На [портале Azure][portal] создайте ресурс Application Insights. Для параметра типа приложения выберите приложение ASP.NET. 
+1. В hello [портал Azure][portal], создать новый ресурс Application Insights. Для параметра типа приложения выберите приложение ASP.NET. 
 
     ![Нажмите "Создать" и "Application Insights"](./media/app-insights-cloudservices/01-new.png)
-2. Обратите внимание, что каждый ресурс идентифицируется с помощью ключа инструментирования. Это может понадобиться позже, если вы захотите вручную настроить или проверить конфигурацию пакета SDK.
+2. Обратите внимание, что каждый ресурс идентифицируется с помощью ключа инструментирования. Возможно потребуется позже при необходимости toomanually настройте или проверьте конфигурацию hello hello SDK.
 
-    ![Нажмите "Свойства", выберите ключ и нажмите сочетание клавиш CTRL + C](./media/app-insights-cloudservices/02-props.png) 
+    ![Щелкните свойства, выберите раздел hello и нажмите клавиши ctrl + C](./media/app-insights-cloudservices/02-props.png) 
 
 ## <a name="set-up-azure-diagnostics-for-each-role"></a>Настройка системы диагностики Azure для каждой роли
-Настройте мониторинг приложения с помощью Application Insights. Для веб-ролей это обеспечивает мониторинг производительности, создание оповещений и диагностику, а также анализ сведений об использовании. Для других ролей можно искать и отслеживать диагностические данные Azure, например о событиях перезапуска, показаниях счетчиков производительности и вызовах System.Diagnostics.Trace. 
+Задайте этот параметр toomonitor приложения с помощью Application Insights. Для веб-ролей это обеспечивает мониторинг производительности, создание оповещений и диагностику, а также анализ сведений об использовании. Для других ролей можно найти и отслеживать диагностики Azure, такие как перезапуск, счетчики производительности и tooSystem.Diagnostics.Trace вызовы. 
 
-1. В обозревателе решений Visual Studio в разделе &lt;Ваша_облачная_служба&gt; > "Роли" откройте свойства каждой роли.
-2. В разделе **Конфигурация** выберите **Отправка диагностических данных в Application Insights** и выберите соответствующий ресурс Application Insights, созданный ранее.
+1. В обозревателе решений Visual Studio в разделе &lt;YourCloudService&gt;, роли, откройте свойства каждой роли hello.
+2. В **конфигурации**, задайте **отправка данных диагностики tooApplication аналитики** и выберите hello соответствующего ресурса Application Insights, созданного ранее.
 
-Если вы решили использовать отдельный ресурс Application Insights для каждой конфигурации сборки, сначала выберите эту конфигурацию.
+Если вы решили toouse отдельный ресурс Application Insights для каждой конфигурации сборки, сначала выберите конфигурацию hello.
 
-![В свойствах каждой роли Azure настройте Application Insights.](./media/app-insights-cloudservices/configure-azure-diagnostics.png)
+![В окне приветствия свойства каждой роли Azure Настройка Application Insights](./media/app-insights-cloudservices/configure-azure-diagnostics.png)
 
-Это приведет к добавлению ключей инструментирования Application Insights в файлы `ServiceConfiguration.*.cscfg`. ([Пример кода](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/AzureEmailService/ServiceConfiguration.Cloud.cscfg)).
+Действует hello вставки ключи инструментирования Application Insights в hello файлы с именем `ServiceConfiguration.*.cscfg`. ([Пример кода](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/AzureEmailService/ServiceConfiguration.Cloud.cscfg)).
 
-Если требуется изменить уровень диагностических сведений, отправляемых в Application Insights, это можно сделать, [напрямую изменив файлы с расширением `.cscfg`](app-insights-azure-diagnostics.md).
+Следует toovary уровень hello диагностические сведения, передаваемые tooApplication аналитики это можно сделать [путем редактирования hello `.cscfg` непосредственно файлы](app-insights-azure-diagnostics.md).
 
-## <a name="sdk"></a>Установка пакета SDK в каждый проект
-Этот параметр позволяет добавить пользовательские данные бизнес-телеметрии в любую роль для более тщательного анализа того, как приложение используется и работает.
+## <a name="sdk"></a>Установка пакета SDK для hello в каждом проекте
+Этот параметр добавляет hello возможность tooadd пользовательские бизнес-телеметрии tooany роли, для более тщательного анализа того, как используется приложение и выполняет.
 
-В Visual Studio настройте пакет SDK для Application Insights для каждого проекта облачного приложения.
+В Visual Studio настройте hello пакет SDK Application Insights для каждого проекта облачных приложений.
 
-1. **Веб-роли**: щелкните проект правой кнопкой мыши и выберите **Настроить Application Insights** или **Добавить > Телеметрия Application Insights**.
+1. **Веб-ролей**: щелкните правой кнопкой мыши проект hello и выберите **настроить Application Insights** или **Добавить > телеметрии Application Insights**.
 
 2. **Рабочие роли**: 
- * щелкните проект правой кнопкой мыши и выберите **Управление пакетами Nuget**.
+ * Щелкните правой кнопкой мыши проект hello и выберите **управление пакетами Nuget**.
  * Добавьте [Application Insights для Windows Servers](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WindowsServer/).
 
     ![Поиск Application Insights](./media/app-insights-cloudservices/04-ai-nuget.png)
 
-3. Настройте пакет SDK для отправки данных в ресурсы Application Insights.
+3. Настройка данных toosend toohello ресурс Application Insights для hello SDK.
 
-    В соответствующей функции запуска задайте ключ инструментирования из параметра конфигурации, заданного в CSCFG-файле.
+    В функцию запуска подходящий задайте ключ инструментирования hello в параметр конфигурации hello в cscfg-файле hello:
  
     ```C#
    
      TelemetryConfiguration.Active.InstrumentationKey = RoleEnvironment.GetConfigurationSettingValue("APPINSIGHTS_INSTRUMENTATIONKEY");
     ```
    
-    Сделайте это для каждой роли в вашем приложении. См. указанные ниже примеры.
+    Сделайте это для каждой роли в вашем приложении. См. Примеры hello.
    
    * [Веб-роль](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/MvcWebRole/Global.asax.cs#L27)
    * [Рабочая роль](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/WorkerRoleA.cs#L232)
    * [При работе с веб-страницами](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/MvcWebRole/Views/Shared/_Layout.cshtml#L13) 
-4. Задайте для файла ApplicationInsights.config незамедлительное копирование в выходной каталог. 
+4. Toobe файл ApplicationInsights.config hello набор всегда копируются toohello выходной каталог. 
    
-    (в CONFIG-файле имеются сообщения, указывающие, куда именно поместить ключ инструментирования. Тем не менее для облачных приложений лучше задать его в CSCFG-файле. Это обеспечит правильную идентификацию роли на портале.)
+    (В файле .config hello, вы увидите попросить вас tooplace hello ключ инструментирования существует сообщения. Однако для облачных приложений это лучше tooset его из hello cscfg-файле. Это гарантирует, что эта роль hello правильно задан в портал hello.)
 
-#### <a name="run-and-publish-the-app"></a>Запуск и публикация приложения
-Запустите приложение и войдите в Azure. Откройте созданные ресурсы Application Insights, и вы увидите отдельные точки данных в области [Поиск](app-insights-diagnostic-search.md) и объединенные данные в [обозревателе метрик](app-insights-metrics-explorer.md). 
+#### <a name="run-and-publish-hello-app"></a>Запустить и опубликовать приложение hello
+Запустите приложение и войдите в Azure. Создать ресурсы Application Insights Привет открыть, и вы увидите отдельных точек данных в [поиска](app-insights-diagnostic-search.md), и статистические данные в [Explorer метрика](app-insights-metrics-explorer.md). 
 
-Добавьте дополнительные данные телеметрии (см. разделы ниже), а затем опубликуйте приложение для оперативного получения отзывов о диагностике и использовании. 
+Добавьте дополнительные телеметрии - разделах hello ниже - и опубликуйте приложение tooget динамической диагностике и использовании отзыв. 
 
 #### <a name="no-data"></a>Данные отсутствуют?
-* Откройте плитку [Поиск][diagnostic], чтобы просмотреть отдельные события.
-* Используйте приложение, открывая различные страницы, чтобы создать некоторый объем данных телеметрии.
+* Откройте hello [поиска] [ diagnostic] плитки toosee отдельные события.
+* С помощью приложения hello, открыв разные страницы, чтобы он создает некоторые телеметрии.
 * Подождите несколько секунд и нажмите "Обновить".
 * Ознакомьтесь с разделом [Устранение неполадок][qna].
 
 ## <a name="view-azure-diagnostic-events"></a>Просмотр событий диагностики Azure
-Источники данных [диагностики Azure](https://docs.microsoft.com/en-us/azure/monitoring-and-diagnostics/azure-diagnostics) в Application Insights:
+Где toofind hello [диагностики Azure](https://docs.microsoft.com/en-us/azure/monitoring-and-diagnostics/azure-diagnostics) данные в Application Insights:
 
 * Счетчики производительности отображаются в виде настраиваемых метрик. 
 * Журналы событий Windows отображаются в виде трассировок и настраиваемых событий.
 * Журналы приложений, журналы трассировки событий Windows и все журналы инфраструктуры диагностики отображаются в виде трассировок.
 
-Чтобы просмотреть счетчики производительности и счетчики событий, откройте [обозреватель метрик](app-insights-metrics-explorer.md) и добавьте новую диаграмму:
+toosee счетчики производительности и счетчики событий, откройте [обозревателя метрик](app-insights-metrics-explorer.md) и добавить новую диаграмму:
 
 ![Диагностические данные Azure](./media/app-insights-cloudservices/23-wad.png)
 
-Используйте [Поиск](app-insights-diagnostic-search.md) или [запрос аналитики](app-insights-analytics-tour.md) для поиска в различных журналах трассировки, отправляемых системой диагностики Azure. Например предположим, что возникло необработанное исключение, которое вызвало сбой и перезапуск роли. Эта информация будет отображена в канале приложения журнала событий Windows. Можно использовать Поиск, чтобы просмотреть ошибку в журнале событий Windows и получить полную трассировку стека для исключения. Это поможет вам найти первопричину проблемы.
+Используйте [поиска](app-insights-diagnostic-search.md) или [аналитический запрос](app-insights-analytics-tour.md) toosearch через hello, различными трассировки журналов, отправляемых системой диагностики Azure. Например предположим, что у вас есть необрабатываемое исключение, вызвавшее toocrash роли и повторный запуск. Эти сведения будут отображаться в hello приложения канал журнала событий Windows. Можно использовать toolook поиска на ошибки в журнале событий Windows hello и получить hello полную трассировку стека для исключения hello. Помогут вам найти hello причину проблемы hello.
 
 ![Поиск диагностических данных Azure](./media/app-insights-cloudservices/25-wad.png)
 
 ## <a name="more-telemetry"></a>Дополнительные данные телеметрии
-В следующих подразделах показано, как получить дополнительные данные телеметрии из различных аспектов приложения.
+Здравствуйте, разделы ниже показано как tooget дополнительные данные телеметрии из различных аспектов приложения.
 
 ## <a name="track-requests-from-worker-roles"></a>Отслеживание запросов из рабочих ролей
-В веб-ролях модуль запросов собирает данные об HTTP-запросах автоматически. Примеры переопределения поведения коллекции по умолчанию см. на странице с [примером роли MVCWebRole](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/AzureEmailService/MvcWebRole). 
+В веб-роли модуля hello запросов автоматически собирает данные о HTTP-запросов. В разделе hello [пример MVCWebRole](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/AzureEmailService/MvcWebRole) примеры как можно переопределить поведение коллекции по умолчанию hello. 
 
-Производительность вызовов для рабочих ролей можно регистрировать, отслеживая их таким же образом, как запросы HTTP. В Application Insights тип телеметрии запроса определяет единицу работы для указанного сервера, которую можно учесть и которая может быть независимо выполнена или не выполнена. Во время автоматической регистрации HTTP-запросов пакетом SDK можно добавить собственный код для отслеживания запросов к рабочим ролям.
+Можно записать производительности hello вызовов tooworker ролей путем их отслеживания в hello так же, как HTTP-запросов. В Application Insights тип телеметрии запроса hello измеряет единицы именованный серверные работы, которая была ограничена по времени и могут независимо друг от друга завершаются успехом или сбоем. Во время HTTP-запросы автоматически фиксируются по hello SDK, вы можете вставить свои собственные роли tooworker запросов tootrack кода.
 
-Ознакомьтесь с двумя примерами рабочих ролей, которые инструментированы для отправки отчетов по запросам: [WorkerRoleA](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/AzureEmailService/WorkerRoleA) и [WorkerRoleB](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/AzureEmailService/WorkerRoleB).
+В разделе hello два образца рабочих ролей инструментированного tooreport запросов: [WorkerRoleA](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/AzureEmailService/WorkerRoleA) и [WorkerRoleB](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/AzureEmailService/WorkerRoleB)
 
 ## <a name="exceptions"></a>Исключения
 Способы сбора необработанных исключений, выдаваемых веб-приложениями разных типов, см. в статье [Настройка Application Insights: диагностика исключений](app-insights-asp-net-exceptions.md).
 
-Образец веб-роли имеет контроллеры MVC5 и веб-API 2. Необработанные исключения, поступающие из них, регистрируются следующими обработчиками:
+веб-роль Образец Hello имеет MVC5 и веб-API 2 устройства. Hello необработанные исключения из двух hello регистрируются с hello следующие обработчики.
 
 * объектом [AiHandleErrorAttribute](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/MvcWebRole/Telemetry/AiHandleErrorAttribute.cs), заданным [здесь](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/MvcWebRole/App_Start/FilterConfig.cs#L12) для контроллеров MVC5;
 * объектом [AiWebApiExceptionLogger](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/MvcWebRole/Telemetry/AiWebApiExceptionLogger.cs), заданным [здесь](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/MvcWebRole/App_Start/WebApiConfig.cs#L25) для контроллеров веб-API 2.
 
-Для рабочих ролей есть два способа отслеживания исключений.
+Для рабочих ролей существует два способа tootrack исключения:
 
 * TrackException(ex);
-* Если вы добавили пакет NuGet прослушивателя трассировки Application Insights, то вы можете вносить исключения в журнал с помощью **System.Diagnostics.Trace**. [Пример кода](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/WorkerRoleA.cs#L107)
+* При добавлении пакета NuGet прослушивателя трассировки Application Insights hello, можно использовать **System.Diagnostics.Trace** toolog исключения. [Пример кода](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/WorkerRoleA.cs#L107)
 
 ## <a name="performance-counters"></a>Счетчики производительности
-По умолчанию собираются приведенные ниже счетчики.
+по умолчанию собираются Hello следующие счетчики:
 
     * \Process(??APP_WIN32_PROC??)\% Загруженность процессора
     * \Память\доступные байты
@@ -200,33 +200,33 @@ ms.lasthandoff: 08/18/2017
   ![Счетчики производительности](./media/app-insights-cloudservices/OLfMo2f.png)
 
 ## <a name="correlated-telemetry-for-worker-roles"></a>Коррелированная телеметрия для рабочих ролей
-Если вы видите причины неудавшихся запросов или запросов с высокой задержкой, это значит, что вы обладаете широким спектром возможностей диагностики. При работе с веб-ролями пакет SDK автоматически настраивает корреляцию между связанными данными телеметрии. Для рабочих ролей вы можете использовать пользовательский инициализатор телеметрии, чтобы задать атрибут общего контекста Operation.Id, и тогда эта возможность будет доступна для всех сведений телеметрии. Вы сможете узнать причину сбоя или задержки — зависимость или ваш код — с первого взгляда. 
+Это богатые возможности диагностики, можно увидеть, какие индикаторы tooa сбой или высокой задержкой запроса. С веб-ролей приветствия SDK автоматически настраивает корреляции между сопутствующей телеметрии. Для рабочих ролей tooset инициализатора пользовательского телеметрии общий атрибут контекста Operation.Id можно использовать для всех tooachieve телеметрии hello это. Это позволяет вам toosee проблему задержки и сбоев hello, вызываемые из-за зависимостей tooa или код, с первого взгляда! 
 
 Этот процесс описывается далее.
 
-* Задайте идентификатор корреляции в объекте CallContext, как показано [здесь](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/WorkerRoleA.cs#L36). В этом случае мы используем идентификатор запроса как идентификатор корреляции.
-* Добавьте пользовательскую реализацию TelemetryInitializer, которая задает для Operation.Id значение correlationId, заданное ранее. Пример: [ItemCorrelationTelemetryInitializer](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/Telemetry/ItemCorrelationTelemetryInitializer.cs#L13).
-* Добавьте пользовательский инициализатор телеметрии. Это можно сделать в файле ApplicationInsights.config или в коде, как показано [ниже](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/WorkerRoleA.cs#L233)
+* Задайте идентификатор корреляции hello в CallContext, как показано [здесь](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/WorkerRoleA.cs#L36). В этом случае мы используем hello ИД запроса как идентификатор корреляции hello
+* Добавление пользовательской реализации TelemetryInitializer, tooset hello Operation.Id toohello correlationId больше. Пример: [ItemCorrelationTelemetryInitializer](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/Telemetry/ItemCorrelationTelemetryInitializer.cs#L13).
+* Добавьте инициализатор пользовательского телеметрии hello. Это можно сделать в файле ApplicationInsights.config hello, или в коде следующим [здесь](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/WorkerRoleA.cs#L233)
 
-Вот и все! Взаимодействие с порталом уже настроено, и вы можете просматривать все связанные сведения телеметрии одновременно.
+Вот и все! взаимодействие с порталом Hello уже подключено toohelp позволяет просматривать все связанные данные телеметрии с одного взгляда:
 
 ![Коррелированные данные телеметрии](./media/app-insights-cloudservices/bHxuUhd.png)
 
 ## <a name="client-telemetry"></a>Данные телеметрии клиента
-[Добавьте пакет SDK JavaScript на веб-страницы][client], которые позволяют получать браузерные данные телеметрии, такие как число просмотров страниц, время загрузки страницы, исключения сценариев, и записывать настраиваемую телеметрию в сценарии страниц.
+[Добавить hello JavaScript SDK tooyour веб-страницы] [ client] tooget на основе браузера телеметрии, например число просмотров страниц, время загрузки страницы, исключений в скриптах и toolet записи настраиваемой телеметрии в скриптах страницы.
 
 ## <a name="availability-tests"></a>Тесты доступности
-[Настройте веб-тесты][availability], которые помогут быть уверенными в том, что приложение остается работоспособным и правильно отвечает на запросы.
+[Настройка веб-тестов] [ availability] toomake убедиться, что приложение остается динамической и отвечать на запросы.
 
 ## <a name="display-everything-together"></a>Отображение всей информации вместе
-Чтобы получить общее представление о системе, можно отобразить ключевые диаграммы мониторинга на одной [панели мониторинга](app-insights-dashboards.md). Например, можно закрепить количество запросов и сбоев для каждой роли. 
+tooget общее представление о системе, можно использовать ключ hello диаграммы мониторинга вместе на одном [мониторинга](app-insights-dashboards.md). Например можно закрепить запрос hello и неудачных установок для каждой роли. 
 
 Если в системе используются другие службы Azure, такие как Stream Analytics, добавьте и их диаграммы мониторинга. 
 
-При наличии клиентского мобильного приложения добавьте код, отправляющий пользовательские события для ключевых операций пользователей, и создайте [мост HockeyApp](app-insights-hockeyapp-bridge-app.md). Создайте запросы в [Аналитике](app-insights-analytics.md) для отображения числа событий и закрепите эти показатели на панели мониторинга.
+Если у вас есть мобильные клиентские приложения, некоторые коды toosend пользовательских событий ключа пользовательские операции вставки и создать [HockeyApp моста](app-insights-hockeyapp-bridge-app.md). Создание запросов в [Analytics](app-insights-analytics.md) toodisplay hello счетчиков событий и закреплять их toohello панели мониторинга.
 
 ## <a name="example"></a>Пример
-[примере](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/AzureEmailService) отслеживается служба, которая имеет веб-роль и две рабочие роли.
+[пример Hello](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/AzureEmailService) отслеживает службу с веб-роли и два рабочих ролей.
 
 ## <a name="exception-method-not-found-on-running-in-azure-cloud-services"></a>Исключение "метод не найден" при выполнении в облачных службах Azure
 Выполняется сборка для .NET 4.6? Версия 4.6 не поддерживается автоматически в ролях облачных служб Azure. [установите версию 4.6 в каждой роли](../cloud-services/cloud-services-dotnet-install-dotnet.md) .
@@ -236,7 +236,7 @@ ms.lasthandoff: 08/18/2017
 > [!VIDEO https://channel9.msdn.com/events/Connect/2016/100/player]
 
 ## <a name="next-steps"></a>Дальнейшие действия
-* [Настройка системы диагностики Azure для отправки данных в Application Insights](app-insights-azure-diagnostics.md)
+* [Настройка отправки аналитики tooApplication диагностики Azure](app-insights-azure-diagnostics.md)
 * [Автоматизация создания ресурсов Application Insights](app-insights-powershell.md)
 * [Автоматизация системы диагностики Azure](app-insights-powershell-azure-diagnostics.md)
 * [Функции Azure](https://github.com/christopheranderson/azure-functions-app-insights-sample)

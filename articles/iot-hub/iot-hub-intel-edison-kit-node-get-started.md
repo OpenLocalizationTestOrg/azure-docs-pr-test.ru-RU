@@ -1,12 +1,12 @@
 ---
-title: "Intel Edison в облако (Node.js) — подключение Intel Edison к Центру Интернета вещей Azure | Документы Майкрософт"
-description: "Узнайте, как настроить и подключить модуль Intel Edison к Центру Интернета вещей Azure и передавать данные с этого модуля в облако Azure."
+title: "aaaIntel Edison toocloud (Node.js) - подключения Edison Intel tooAzure центр IoT | Документы Microsoft"
+description: "Узнайте, как toosetup и подключите tooAzure Intel Edison центр IoT для Intel Edison toosend данных toohello Azure облачной платформы в этом учебнике."
 services: iot-hub
 documentationcenter: 
 author: shizn
 manager: timlt
 tags: 
-keywords: "Интернет вещей azure intel edison, Центр Интернета вещей intel edison, отправка данных intel edison в облако, intel edison в облако"
+keywords: "Azure iot intel edison, intel центр iot edison, intel edison отправки данных toocloud, intel edison toocloud"
 ms.assetid: a7c9cf2d-c102-41b0-aa45-41285c6877eb
 ms.service: iot-hub
 ms.devlang: nodejs
@@ -16,17 +16,17 @@ ms.workload: na
 ms.date: 6/15/2017
 ms.author: xshi
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5a31efba704045196b5563f7bc467c773bea7805
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: bfc3387efc532b4b83f0626a9cf61d12c2952af2
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="connect-intel-edison-to-azure-iot-hub-nodejs"></a>Подключение Intel Edison к Центру Интернета вещей Azure (Node.js)
+# <a name="connect-intel-edison-tooazure-iot-hub-nodejs"></a>Подключение tooAzure Intel Edison центр IoT (Node.js)
 
 [!INCLUDE [iot-hub-get-started-device-selector](../../includes/iot-hub-get-started-device-selector.md)]
 
-В этом руководстве вы начнете с того, что узнаете основы работы с Intel Edison. Также вы узнаете, как можно легко подключать устройства к облаку с помощью [Центра Интернета вещей Azure](iot-hub-what-is-iot-hub.md).
+В этом учебнике сначала обучения hello основы работы с Intel Edison. Затем вы узнаете, как tooseamlessly подключаться toohello облачных устройств с помощью [центр IoT Azure](iot-hub-what-is-iot-hub.md).
 
 Нет начального набора? Начните [здесь](https://azure.microsoft.com/develop/iot/starter-kits)
 
@@ -35,41 +35,41 @@ ms.lasthandoff: 08/03/2017
 * Настройте модули Intel Edison и Grove.
 * Создайте Центр Интернета вещей.
 * Зарегистрируйте устройство для Edison в Центре Интернета вещей.
-* Запустите пример приложения на Edison для отправки данных в Центр Интернета вещей.
+* Запустите образец приложения на tooyour Edison toosend датчиков данных центра IoT.
 
-Подключите Intel Edison к созданному Центру Интернета вещей. После этого запустите пример приложения на Edison, чтобы собрать данные о температуре и влажности с датчика температуры Grove. После этого отправьте данные с датчика в Центр Интернета вещей.
+Подключение центра IoT tooan Intel Edison созданного вами. Тогда выполнение примера приложения на Edison toocollect температуры и влажности данных из Grove датчика температуры. Отправьте центра IoT tooyour данных датчика hello.
 
 ## <a name="what-you-learn"></a>Что вы узнаете
 
-* Как создать Центр Интернета вещей Azure и получить строку подключения нового устройства.
-* Как подключить Edison к датчику температуры Grove.
-* Как собирать данные датчика, запустив пример приложения на Edison.
-* Как отправить данные датчика в Центр Интернета вещей.
+* Как toocreate центр Azure IoT и получить новые строки подключения устройства.
+* Как tooconnect Edison с Grove датчика температуры.
+* Как toocollect датчиков, выполнив пример приложения на Edison.
+* Как центр IoT tooyour данных датчика toosend.
 
 ## <a name="what-you-need"></a>Необходимые элементы
 
 ![Необходимые элементы](media/iot-hub-intel-edison-kit-node-get-started/0_kit.png)
 
-* Плата Intel Edison.
+* плата Intel Edison Hello
 * плата расширения Arduino;
 * Активная подписка Azure. Если ее нет, можно создать [бесплатную пробную учетную запись Azure](https://azure.microsoft.com/free/) всего за несколько минут.
 * ПК или компьютер Mac под управлением Windows или Linux.
 * Подключение к Интернету.
-* кабель micro-USB (тип B-A);
+* Micro B tooType USB-кабель
 * источник питания постоянного тока (DC). Источник питания должен иметь такие параметры:
   - напряжение постоянного тока 7–15 В;
   - мощность не менее 1500 мА;
-  - центральная клемма положительной полярности.
+  - Hello center или внутренний ПИН-код должен быть полюса положительный результат hello hello источника питания
 
-Ниже приведены необязательные компоненты.
+Привет, следующие элементы являются необязательными.
 
 * Grove Base Shield V2
 * Grove — датчик температуры
 * Кабель Grove
-* все прокладки и винты, которые входят в комплект поставки, включая два винта для крепления модуля к плате расширения и четыре набора винтов с пластиковыми опорами;
+* Разделитель строки или винты, включенных в пакетов hello, включая два винты toofasten hello модуля toohello плата расширения и четыре набора винты и пластиковая разделителей.
 
 > [!NOTE] 
-Эти компоненты необязательны, поскольку пример кода поддерживает использование смоделированных данных датчиков.
+Эти элементы являются необязательными, поскольку поддержка образец кода hello смоделированные данные датчиков.
 
 [!INCLUDE [iot-hub-get-started-create-hub-and-device](../../includes/iot-hub-get-started-create-hub-and-device.md)]
 
@@ -77,23 +77,23 @@ ms.lasthandoff: 08/03/2017
 
 ### <a name="assemble-your-board"></a>Сборка платы
 
-Этот раздел описывает процедуру подключения модуля Intel® Edison к плате расширения.
+Этот раздел содержит действия tooattach доске Intel® Edison tooyour модуля расширения.
 
-1. Поместите модуль Intel® Edison в белый контур на плате расширения, совместив отверстия в модуле с винтами на плате расширения.
+1. Поместите модуль Intel® Edison hello внутри структуры hello белого на доске расширения, выравнивается отверстия hello hello модуля с винты hello платы расширения hello.
 
-2. Нажмите на модуль в точке под словами `What will you make?`, опустив его вниз до щелчка.
+2. Нажмите и удерживайте на модуль hello сразу после слова hello `What will you make?` до привязки.
 
    ![Сборка платы 2](media/iot-hub-intel-edison-kit-node-get-started/1_assemble_board2.jpg)
 
-3. Используйте две шестигранные гайки (входят в комплект) для крепления модуля к плате расширения.
+3. Используйте toohello плата расширения toosecure hello hello два шестнадцатеричных основы (включен в пакет hello) модуля.
 
    ![Сборка платы 3](media/iot-hub-intel-edison-kit-node-get-started/2_assemble_board3.jpg)
 
-4. Вставьте винт в одно из четырех угловых отверстий на плате расширения. Наденьте на винт и плотно затяните белую пластмассовую опору.
+4. Вставьте винт одним hello четыре угла отверстия на доске расширения hello. Скручивание и усилить одним из разделителей пластиковая hello белого на винт hello.
 
    ![Сборка платы 4](media/iot-hub-intel-edison-kit-node-get-started/3_assemble_board4.jpg)
 
-5. Повторите этот шаг для других угловых опор.
+5. Повторите эти действия для hello других разделителей трех углов.
 
    ![Сборка платы 5](media/iot-hub-intel-edison-kit-node-get-started/4_assemble_board5.jpg)
 
@@ -101,15 +101,15 @@ ms.lasthandoff: 08/03/2017
 
    ![Собранная плата](media/iot-hub-intel-edison-kit-node-get-started/5_assembled_board.jpg)
 
-### <a name="connect-the-grove-base-shield-and-the-temperature-sensor"></a>Подключение Grove Base Shield и датчика температуры
+### <a name="connect-hello-grove-base-shield-and-hello-temperature-sensor"></a>Подключения hello щита базы Grove и датчик температуры hello
 
-1. Расположите Grove Base Shield на плате. Убедитесь, что все контакты хорошо подключены к плате.
+1. Поместите hello щита базы Grove tooyour системной платы. Убедитесь, что все контакты хорошо подключены к плате.
    
    ![Grove Base Shield](media/iot-hub-intel-edison-kit-node-get-started/6_grove_base_sheild.jpg)
 
-2. С помощью кабеля Grove подключите датчик температуры Grove к порту **A0** Grove Base Shield.
+2. Используйте Grove кабель tooconnect Grove датчик температуры на hello щита базы Grove **A0** порта.
 
-   ![Подключение к датчику температуры](media/iot-hub-intel-edison-kit-node-get-started/7_temperature_sensor.jpg)
+   ![Подключение tootemperature датчика](media/iot-hub-intel-edison-kit-node-get-started/7_temperature_sensor.jpg)
 
    ![Подключение Edison и датчика](media/iot-hub-intel-edison-kit-node-get-started/16_edion_sensor.png)
 
@@ -117,78 +117,78 @@ ms.lasthandoff: 08/03/2017
 
 ### <a name="power-up-edison"></a>Подключение питания Edison
 
-1. Подключите источник питания.
+1. Подключите питание hello.
 
    ![Подключение источника питания](media/iot-hub-intel-edison-kit-node-get-started/8_plug_power.jpg)
 
-2. Должен загореться зеленый светодиод (на плате расширения Arduino* он обозначен как DS1).
+2. Зеленый Индикатор (с меткой DS1 hello плата расширения Arduino *) необходимо включить и оставаться включенными.
 
-3. Подождите минуту, пока завершится загрузка системной платы.
+3. Подождите одну минуту, для загрузки toofinish плата hello.
 
    > [!NOTE]
-   > Если у вас нет источника питания постоянного тока, вы можете подать на плату питание через порт USB. Дополнительные сведения см. в разделе `Connect Edison to your computer`. Такой способ подачи питания может привести к непредсказуемому поведению системной платы, особенно при использовании Wi-Fi или двигателей.
+   > Если у вас питания постоянного ТОКА, вы можете платы hello питания через USB-порт. Дополнительные сведения см. в разделе `Connect Edison tooyour computer`. Такой способ подачи питания может привести к непредсказуемому поведению системной платы, особенно при использовании Wi-Fi или двигателей.
 
-### <a name="connect-edison-to-your-computer"></a>Подключение Edison к компьютеру
+### <a name="connect-edison-tooyour-computer"></a>Подключите компьютер tooyour Edison
 
-1. Переведите микропереключатель вниз, в сторону двух портов micro-USB, чтобы перевести Edison в режим устройства. Различия между режимами устройства и узла описаны [здесь](https://software.intel.com/en-us/node/628233#usb-device-mode-vs-usb-host-mode).
+1. Переключение вниз микропереключателя hello сторону hello два micro USB-портов, так, чтобы Edison режим устройства. Различия между режимами устройства и узла описаны [здесь](https://software.intel.com/en-us/node/628233#usb-device-mode-vs-usb-host-mode).
 
-   ![Переключение микропереключателя вниз](media/iot-hub-intel-edison-kit-node-get-started/9_toggle_down_microswitch.jpg)
+   ![Переключение вниз микропереключателя hello](media/iot-hub-intel-edison-kit-node-get-started/9_toggle_down_microswitch.jpg)
 
-2. Подключите кабель micro-USB к верхнему порту micro-USB.
+2. Подключите кабель USB micro hello hello top micro USB-порту.
 
    ![Верхний порт micro-USB](media/iot-hub-intel-edison-kit-node-get-started/10_top_usbport.jpg)
 
-3. Другой конец кабеля USB подключите к компьютеру.
+3. Другой конец USB-кабель Здравствуйте, подключаемых к компьютеру.
 
    ![Подключение USB к компьютеру](media/iot-hub-intel-edison-kit-node-get-started/11_computer_usb.jpg)
 
 4. Вы можете быть уверены, что инициализация платы завершилась, когда компьютер присоединит новый диск (примерно так же, как при подключении SD-карты).
 
-## <a name="download-and-run-the-configuration-tool"></a>Скачивание и запуск инструмента настройки
-Скачайте последнюю версию инструмента настройки, выбрав нужный вариант в разделе `Installers` на [этой странице](https://software.intel.com/en-us/iot/hardware/edison/downloads). Запустите инструмент и выполните инструкции, которые будут отображаться на экране. Нажимайте кнопку "Далее" по мере необходимости.
+## <a name="download-and-run-hello-configuration-tool"></a>Загрузите и запустите средство настройки hello
+Получить последние средство настройки hello из [эту ссылку](https://software.intel.com/en-us/iot/hardware/edison/downloads) списке hello `Installers` заголовок. Выполнение средства hello и выполните его на экране инструкции, нажав кнопку Далее, при необходимости
 
 ### <a name="flash-firmware"></a>Встроенное ПО
-1. На странице `Set up options` нажмите кнопку `Flash Firmware`.
-2. Выберите образ, который нужно установить на плату:
-   - чтобы скачать и установить последнюю версию встроенного ПО, предлагаемого Intel для вашей платы, выберите `Download the latest image version xxxx`;
-   - чтобы установить образ, который вы ранее сохранили на своем компьютере, выберите `Select the local image`. Найдите и выберите образ для установки на плату.
-3. Инструмент настройки попытается установить ПО на плату. Этот процесс может занять до 10 минут.
+1. На hello `Set up options` щелкните `Flash Firmware`.
+2. Выберите tooflash hello изображения на доске, выполнив одно из следующих hello:
+   - Выберите toodownload и flash вашей системной платы с hello последнюю образ встроенного ПО Intel, доступные `Download hello latest image version xxxx`.
+   - tooflash вашей системной платы с изображением, уже сохранен на компьютере, выберите `Select hello local image`. Обзор tooand выберите hello изображения должны tooflash tooyour платы.
+3. средство установки Hello попытается tooflash доске. весь процесс Мерцающий Hello может занять too10 минут.
 
 ### <a name="set-password"></a>Установка пароля
-1. На странице `Set up options` нажмите кнопку `Enable Security`.
+1. На hello `Set up options` щелкните `Enable Security`.
 2. Для платы Intel® Edison вы можете задать пользовательское имя. Это необязательно.
 3. Введите пароль для вашей платы, а затем щелкните `Set password`.
-4. Запишите пароль, он вам пригодится позднее.
+4. Помечен как неработающий hello пароль, который будет использоваться позднее.
 
 ### <a name="connect-wi-fi"></a>Подключение Wi-Fi
-1. На странице `Set up options` нажмите кнопку `Connect Wi-Fi`. Подождите примерно одну минуту, пока компьютер найдет доступные сети Wi-Fi.
-2. В раскрывающемся списке `Detected Networks` выберите нужную сеть.
-3. В раскрывающемся списке `Security` выберите режим безопасности для этой сети.
+1. На hello `Set up options` щелкните `Connect Wi-Fi`. Ожидание копирования tooone минуты в виде проверки вашего компьютера для доступных сетей Wi-Fi.
+2. Из hello `Detected Networks` раскрывающегося списка выберите сети.
+3. Из hello `Security` раскрывающегося списка, выберите hello сетевой безопасности типа.
 4. Укажите имя и пароль для входа, затем нажмите `Configure Wi-Fi`.
-5. Запишите полученный IP-адрес, он вам пригодится позже.
+5. Помечен как неработающий hello IP-адрес, который будет использоваться позднее.
 
 > [!NOTE]
-> Убедитесь, что плата Edison подключена к той же сети, что и компьютер. Компьютер подключается к плате Edison по IP-адресу.
+> Убедитесь, что Edison подключенных toohello сетевых как на компьютере. Tooyour Edison подключения компьютера с помощью hello IP-адрес.
 
-   ![Подключение к датчику температуры](media/iot-hub-intel-edison-kit-node-get-started/12_configuration_tool.png)
+   ![Подключение tootemperature датчика](media/iot-hub-intel-edison-kit-node-get-started/12_configuration_tool.png)
 
 Поздравляем! Вы успешно настроили устройство Edison.
 
 ## <a name="run-a-sample-application-on-intel-edison"></a>Запуск примера приложения на Intel Edison
 
-### <a name="prepare-the-azure-iot-device-sdk"></a>Подготовка пакета SDK устройства для Центра Интернета вещей
+### <a name="prepare-hello-azure-iot-device-sdk"></a>Подготовка hello устройств IoT Azure SDK
 
-1. Используйте один из следующих SSH-клиентов для подключения к Intel Edison с главного компьютера. IP-адрес и пароль взяты из средства настройки.
+1. Используйте одну из hello следующую SSH клиентов из вашего узла компьютера tooconnect tooyour Intel Edison. Hello IP-адрес имеет из средства настройки hello и пароль hello hello один, которые заданы в нем.
     - [PuTTY](http://www.putty.org/) для Windows.
-    - Встроенный SSH-клиент ОС Ubuntu или macOS.
+    - Hello встроенный клиент SSH на Ubuntu или macOS.
 
-2. Клонируйте пример клиентского приложения на свое устройство. 
+2. Клонирование hello образец клиентского приложения tooyour устройства. 
    
    ```bash
    git clone https://github.com/Azure-Samples/iot-hub-node-intel-edison-client-app
    ```
 
-3. После этого перейдите к папке репозитория и выполните указанную ниже команду, чтобы установить все пакеты, что может занять несколько минут.
+3. Перейдите toohello папки репозитория toorun hello, следующая команда tooinstall все пакеты, может потребоваться toocomplete serval минут.
    
    ```bash
    cd iot-hub-node-intel-edison-client-app
@@ -196,9 +196,9 @@ ms.lasthandoff: 08/03/2017
    ```
 
 
-### <a name="configure-and-run-the-sample-application"></a>Настройка и запуск примера приложения
+### <a name="configure-and-run-hello-sample-application"></a>Настройка и выполнение примера приложения hello
 
-1. Откройте файл конфигурации, выполнив следующие команды:
+1. Откройте файл конфигурации hello, запустив hello, следующие команды:
 
    ```bash
    nano config.json
@@ -206,28 +206,28 @@ ms.lasthandoff: 08/03/2017
 
    ![Файл конфигурации](media/iot-hub-intel-edison-kit-node-get-started/13_configure_file.png)
 
-   В этом файле можно настроить два макроса. Первый из них — `INTERVAL`, который определяет промежуток времени между отправкой двух сообщений в облако. Второй — `simulatedData`, который представляет собой логическое значение, определяющее, будут ли использоваться смоделированные данные датчика.
+   В этом файле можно настроить два макроса. Hello сначала он `INTERVAL`, который определяет hello временной интервал между двумя сообщений, передаваемых toocloud. Здравствуйте, вторая — `simulatedData`, — логическое значение для ли toouse смоделированные данные датчиков или нет.
 
-   Если у вас **нет датчика**, задайте для параметра `simulatedData` значение `true`, чтобы пример приложения создал и использовал смоделированные данные датчика.
+   Если вы **нет hello датчика**, задайте hello `simulatedData` значение слишком`true` пример приложения hello toomake создать и использовать имитацию датчиков.
 
 1. Сохраните изменения и закройте окно, нажав клавиши Control-O > ВВОД > Control-X.
 
 
-1. Запустите пример приложения, выполнив следующую команду:
+1. Выполните пример приложения hello, выполнив следующую команду hello:
 
    ```bash
    sudo node index.js '<your Azure IoT hub device connection string>'
    ```
 
    > [!NOTE] 
-   Обязательно скопируйте и вставьте строку подключения устройства, заключив ее в одинарные кавычки.
+   Убедитесь, что вы скопированные и вставленные строки подключения устройств hello в одинарных кавычках hello.
 
-Должны отобразиться следующие результаты, содержащие данные датчика и сообщения, которые отправляются в Центр Интернета вещей.
+Вы увидите следующее hello выходных данных, показано hello датчик данных и hello сообщений, отправляемых tooyour центр IoT.
 
-![Выходные данные — данные датчика, отправленные с Intel Edison в Центр Интернета вещей](media/iot-hub-intel-edison-kit-node-get-started/15_message_sent.png)
+![Вывод — данные датчика, отправленные из центра IoT tooyour Intel Edison](media/iot-hub-intel-edison-kit-node-get-started/15_message_sent.png)
 
 ## <a name="next-steps"></a>Дальнейшие действия
 
-Вы запустили пример приложения, чтобы собрать данные датчика и отправить их в Центр Интернета вещей.
+Вы впервые запускаете в образце данных датчика toocollect приложения и отправьте его центр IoT tooyour.
 
 [!INCLUDE [iot-hub-get-started-next-steps](../../includes/iot-hub-get-started-next-steps.md)]

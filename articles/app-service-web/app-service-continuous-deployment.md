@@ -1,6 +1,6 @@
 ---
-title: "Непрерывное развертывание в службе приложений Azure | Документация Майкрософт"
-description: "Узнайте, как включить непрерывное развертывание в службе приложений Azure."
+title: "aaaContinuous tooAzure развертывания службы приложений | Документы Microsoft"
+description: "Узнайте, как tooAzure tooenable непрерывного развертывания служб приложений."
 services: app-service
 documentationcenter: 
 author: dariagrigoriu
@@ -14,32 +14,32 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/28/2016
 ms.author: dariagrigoriu
-ms.openlocfilehash: 7d978e623aaff25a9400090bd3ac18ed560d2ebf
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 62a22cbda354fd5b0a1b9729c8c375408e75049f
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="continuous-deployment-to-azure-app-service"></a>Непрерывное развертывание в службе приложений Azure
-В этом руководстве описано, как настроить рабочий процесс непрерывного развертывания для приложения [службы приложений Azure] . Служба приложений Azure интегрируется с BitBucket, GitHub и [Visual Studio Team Services (VSTS](https://www.visualstudio.com/team-services/)), что обеспечивает непрерывное развертывание, когда Azure извлекает последние обновления из проекта, опубликованные в одной из этих служб. Непрерывное развертывание очень удобно для проектов, которые часто обновляются несколькими участниками.
+# <a name="continuous-deployment-tooazure-app-service"></a>TooAzure непрерывного развертывания служб приложений
+В этом учебнике показано как tooconfigure рабочего процесса непрерывного развертывания для вашего [службе приложений Azure] приложения. Интеграция служб приложений с BitBucket, GitHub, и [Visual Studio Team Services (VSTS)](https://www.visualstudio.com/team-services/) позволяет непрерывной рабочий процесс развертывания, где Azure извлекает hello самые последние обновления из проекта опубликованных tooone из этих служб. Непрерывное развертывание очень удобно для проектов, которые часто обновляются несколькими участниками.
 
-Чтобы узнать, как вручную настроить непрерывное развертывание из облачного репозитория, которого нет списке на портале Azure (например, [GitLab](https://gitlab.com/)), см. раздел [Setting up continuous deployment using manual steps](https://github.com/projectkudu/kudu/wiki/Continuous-deployment#setting-up-continuous-deployment-using-manual-steps) (Настройка непрерывного развертывания вручную).
+toofind out как tooconfigure непрерывного развертывания вручную из репозитория облака, не перечислен в hello портал Azure (такие как [GitLab](https://gitlab.com/)), в разделе [Настройка непрерывного развертывания, с помощью действий вручную](https://github.com/projectkudu/kudu/wiki/Continuous-deployment#setting-up-continuous-deployment-using-manual-steps).
 
 ## <a name="overview"></a>Включение непрерывного развертывания
-Чтобы включить непрерывное развертывание, выполните следующие действия.
+tooenable непрерывного развертывания,
 
-1. Опубликуйте содержимое приложения в репозиторий, который будет использоваться для непрерывного развертывания.  
-    Дополнительные сведения о публикации проекта в этих службах см. в статьях, посвященных [Create a repo (GitHub)], [Create a repo (BitBucket)] и [началу работы с VSTS].
-2. В колонке меню приложения на [портале Azure] выберите пункт **Развертывание приложения > Параметры развертывания**. Щелкните **Выбор источника** и укажите источник развертывания.  
+1. Опубликуйте репозиторий содержимого toohello приложения, который будет использоваться для непрерывного развертывания.  
+    Дополнительные сведения о публикации служб toothese проекта см. в разделе [создания репозитория (GitHub)], [создания репозитория (BitBucket)], и [Приступая к работе с VSTS].
+2. В колонке меню приложения в hello [портал Azure], нажмите кнопку **развертывание Приложений > варианты развертывания**. Нажмите кнопку **Выбор источника**, а затем выберите источник развертывания hello.  
    
     ![](./media/app-service-continuous-deployment/cd_options.png)
    
    > [!NOTE]
-   > Настроить учетную запись VSTS для развертывания службы приложений можно с помощью этого [руководства](https://github.com/projectkudu/kudu/wiki/Setting-up-a-VSTS-account-so-it-can-deploy-to-a-Web-App).
+   > tooconfigure учетную запись VSTS для развертывания службы приложений см. в разделе это [учебника](https://github.com/projectkudu/kudu/wiki/Setting-up-a-VSTS-account-so-it-can-deploy-to-a-Web-App).
    > 
    > 
-3. Пройдите авторизацию.
-4. В колонке **Источник развертывания** выберите проект и ветвь. Закончив, нажмите кнопку **OK**.
+3. Полный рабочий процесс авторизации hello.
+4. В hello **источник развертывания** колонке выберите проект hello и ветвление toodeploy из. Закончив, нажмите кнопку **OK**.
    
     ![](./media/app-service-continuous-deployment/github_option.png)
    
@@ -48,51 +48,51 @@ ms.lasthandoff: 08/03/2017
    > 
    > 
    
-    Служба приложений создает связь с выбранным репозиторием, извлекает файлы из указанного филиала и поддерживает клон репозитория для приложения службы приложений. При настройке непрерывного развертывания VSTS на портале Azure для интеграции используется [подсистема развертывания Kudu](https://github.com/projectkudu/kudu/wiki) службы приложений. Она автоматизирует задачи сборки и развертывания при каждом вызове `git push`. Настраивать отдельно непрерывное развертывание в VSTS не нужно. Когда этот процесс завершится, в колонке **Параметры развертывания** для приложения отобразится активное развертывание.
-5. Чтобы проверить развертывание приложения, щелкните **URL-адрес** в верхней части колонки приложения на портале Azure.
-6. Чтобы убедиться, что непрерывное развертывание выполняется из выбранного репозитория, отправьте в этот репозиторий изменения. Приложение должно обновиться в соответствии с этими изменениями вскоре после их отправки в репозиторий. Проверить применение в приложении соответствующих изменений можно в колонке **Параметры развертывания** для этого приложения.
+    Службы приложений создает связь с выбранном репозитории hello, запрашивающий hello файлы из указанной ветви hello и сохраняет копию репозиторий для своего приложения службы приложений. При настройке VSTS непрерывного развертывания из hello портал Azure, интеграция hello использует службы приложения hello [подсистема развертывания Kudu](https://github.com/projectkudu/kudu/wiki), который уже автоматизирует задачи построения и развертывания с каждой `git push`. Нет необходимости tooseparately непрерывное развертывание в VSTS. После завершения этого процесса hello **варианты развертывания** колонка приложения будет отображаться активное развертывание, указывающее развертывания завершилась успешно.
+5. приложение hello tooverify успешно развернут, нажмите кнопку hello **URL-адрес** hello верхней части колонки приложение hello в hello портал Azure.
+6. tooverify, возникающей непрерывного развертывания из репозитория hello по своему усмотрению push репозиторий toohello изменений. Приложение следует обновить изменения hello tooreflect вскоре после завершения hello принудительной toohello репозитория. Убедитесь, что он извлечены обновления hello в hello **варианты развертывания** колонке приложения.
 
 ## <a name="VSsolution"></a>Непрерывное развертывание решения Visual Studio
-Передача решения Visual Studio в службу приложений Azure не сложнее передачи простого файла index.html. Процесс развертывания службы приложений упрощает выполнение всех операций, включая восстановление зависимостей NuGet и создание двоичных файлов приложения. Вы можете воспользоваться практическими рекомендациями по управлению версиями только в репозитории Git, а всем остальным займется процесс развертывания службы приложений Azure.
+Помещает tooAzure решения Visual Studio приложения службы — так же просто, как отправить файл index.html простой. процесс развертывания службы приложения Hello упрощает все сведения о hello, включая восстановление NuGet зависимостей и построения двоичные файлы приложения hello. Рекомендации по hello источника управления поддержания кода только в репозиторий Git и позволить позаботиться о hello rest развертывания службы приложений.
 
-Операции по передаче решения Visual Studio в службу приложений будут такими же, как в [предыдущем разделе](#overview), если вы настроите решение и репозиторий следующим образом.
+Hello шаги для принудительной отправки вашего tooApp решения Visual Studio, службы, hello же, как и hello [предыдущего раздела](#overview), предоставленном настройке решения и репозитория следующим образом:
 
-* С помощью функции управления версиями в Visual Studio создайте файл `.gitignore`, как на рисунке ниже. Или вручную добавьте в корневую папку репозитория файл `.gitignore` с тем же содержимым, что и в [примере GITIGNORE-файла](https://github.com/github/gitignore/blob/master/VisualStudio.gitignore).
+* Используйте hello Visual Studio исходный элемент управления параметр toogenerate `.gitignore` файла, например hello образ ниже или добавьте вручную `.gitignore` файл в корневом каталоге репозитория с содержимым аналогичные toothis [.gitignore пример](https://github.com/github/gitignore/blob/master/VisualStudio.gitignore).
   
   ![](./media/app-service-continuous-deployment/VS_source_control.png)
-* Добавьте в репозиторий все дерево каталогов решения с файлом .sln в корневой папке репозитория.
+* Добавьте репозиторий tooyour дерева каталогов hello всего решения, с hello SLN-файл в корневом хранилище hello.
 
-Настроив, как указано, репозиторий и задав непрерывную публикацию приложения Azure из одного из сетевых репозиториев Git, можно разрабатывать приложение ASP.NET локально в Visual Studio и непрерывно разворачивать свой код путем простой отправки изменений в сетевой репозиторий Git.
+После настройки вашего хранилища, как описано и настроить приложение в Azure для непрерывной публикации из одного hello online репозиториев Git, можно разрабатывать приложения ASP.NET локально в Visual Studio и постоянно путем простого развертывания вашего кода нажать online репозиторий Git изменения tooyour.
 
 ## <a name="disableCD"></a>Отключение непрерывного развертывания
-Чтобы отключить непрерывное развертывание, выполните следующие действия.
+toodisable непрерывного развертывания,
 
-1. В колонке меню приложения на [портале Azure] выберите пункт **Развертывание приложения > Параметры развертывания**. В колонке **Параметры развертывания** щелкните **Отключить**.
+1. В колонке меню приложения в hello [портал Azure], нажмите кнопку **развертывание Приложений > варианты развертывания**. Нажмите кнопку **Disconnect** в hello **варианты развертывания** колонку.
    
     ![](./media/app-service-continuous-deployment/cd_disconnect.png)
-2. Ответив **Да** на запрос подтверждения, можно вернуться к колонке приложения, чтобы выбрать **Развертывание приложения > Параметры развертывания**, если вам нужно настроить публикацию из другого источника.
+2. После ответа на **Да** toohello сообщение с подтверждением, можно возвращать колонка tooyour приложения и нажмите кнопку **развертывание Приложений > варианты развертывания** при желании tooset вверх публикации из другого источника.
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
-* [Изучение распространенных проблем с непрерывным развертыванием](https://github.com/projectkudu/kudu/wiki/Investigating-continuous-deployment)
-* [Использование PowerShell для Azure]
-* [Средства командной строки Azure для Mac и Linux]
+* [Как tooinvestigate распространенные проблемы с непрерывным развертыванием](https://github.com/projectkudu/kudu/wiki/Investigating-continuous-deployment)
+* [Как toouse PowerShell для Azure]
+* [Как toouse hello средства командной строки Azure для Mac и Linux]
 * [Документация по Git]
 * [Project Kudu](https://github.com/projectkudu/kudu/wiki)
-* [Использование Azure для автоматического создания конвейера CI/CD для развертывания приложения ASP.NET 4](https://www.visualstudio.com/docs/build/get-started/aspnet-4-ci-cd-azure-automatic)
+* [Использовать Azure tooautomatically создания приложении CI/CD конвейера toodeploy ASP.NET 4](https://www.visualstudio.com/docs/build/get-started/aspnet-4-ci-cd-azure-automatic)
 
 > [!NOTE]
-> Чтобы приступить к работе со службой приложений Azure до создания учетной записи Azure, перейдите к разделу [Пробное использование службы приложений](https://azure.microsoft.com/try/app-service/), где вы можете быстро создать кратковременное веб-приложение начального уровня в службе приложений. Никаких кредитных карт и обязательств.
+> Tooget работы в службе приложений Azure перед регистрацией учетную запись Azure, перейдите слишком[повторите служб приложений](https://azure.microsoft.com/try/app-service/), в котором можно немедленно создать кратковременных начальный веб-приложения в службе приложений. Никаких кредитных карт и обязательств.
 > 
 > 
 
-[службы приложений Azure]: https://azure.microsoft.com/en-us/documentation/articles/app-service-changes-existing-services/
-[портале Azure]: https://portal.azure.com
+[службе приложений Azure]: https://azure.microsoft.com/en-us/documentation/articles/app-service-changes-existing-services/
+[портал Azure]: https://portal.azure.com
 [VSTS Portal]: https://www.visualstudio.com/en-us/products/visual-studio-team-services-vs.aspx
 [Installing Git]: http://git-scm.com/book/en/Getting-Started-Installing-Git
-[Использование PowerShell для Azure]: /powershell/azureps-cmdlets-docs
-[Средства командной строки Azure для Mac и Linux]:../cli-install-nodejs.md
+[Как toouse PowerShell для Azure]: /powershell/azureps-cmdlets-docs
+[Как toouse hello средства командной строки Azure для Mac и Linux]:../cli-install-nodejs.md
 [Документация по Git]: http://git-scm.com/documentation
 
-[Create a repo (GitHub)]: https://help.github.com/articles/create-a-repo (Создание репозитория GitHub)
-[Create a repo (BitBucket)]: https://confluence.atlassian.com/display/BITBUCKET/Create+an+Account+and+a+Git+Repo (Создание репозитория BitBucket)
-[началу работы с VSTS]: https://www.visualstudio.com/docs/vsts-tfs-overview (Приступая к работе с VSTS)
+[создания репозитория (GitHub)]: https://help.github.com/articles/create-a-repo (Создание репозитория GitHub)
+[создания репозитория (BitBucket)]: https://confluence.atlassian.com/display/BITBUCKET/Create+an+Account+and+a+Git+Repo (Создание репозитория BitBucket)
+[Приступая к работе с VSTS]: https://www.visualstudio.com/docs/vsts-tfs-overview (Приступая к работе с VSTS)

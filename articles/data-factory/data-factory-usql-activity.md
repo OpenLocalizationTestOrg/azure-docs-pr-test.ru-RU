@@ -1,6 +1,6 @@
 ---
-title: "Преобразование данных с помощью сценария U-SQL в Azure | Документация Майкрософт"
-description: "Узнайте, как обрабатывать и преобразовывать данные с помощью сценариев U-SQL в службе вычислений Azure Data Lake Analytics."
+title: "aaaTransform данных с помощью скрипт U-SQL - Azure | Документы Microsoft"
+description: "Узнайте, как службы вычислений tooprocess или преобразования данных, выполняя сценарии U-SQL на аналитики Озера данных Azure."
 services: data-factory
 documentationcenter: 
 author: spelluru
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/10/2017
 ms.author: spelluru
-ms.openlocfilehash: 49a809af92ed1bc6664fbdd3bf1aabf36afb8180
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 51fdb40334d0c131720f65c3a96b4c5045a98b24
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="transform-data-by-running-u-sql-scripts-on-azure-data-lake-analytics"></a>Преобразование данных с помощью сценариев U-SQL в Azure Data Lake Analytics 
 > [!div class="op_single_selector" title1="Transformation Activities"]
@@ -33,46 +33,46 @@ ms.lasthandoff: 08/18/2017
 > * [Действие U-SQL в Data Lake Analytics](data-factory-usql-activity.md)
 > * [Настраиваемое действие .NET](data-factory-use-custom-activities.md)
 
-Конвейер в фабрике данных Azure обрабатывает данные в связанной службе хранилища с помощью связанных вычислительных служб. В нем содержится последовательность действий, каждое из которых выполняет определенную операцию обработки. В этой статье описывается **действие U-SQL в Data Lake Analytics**, которое запускает сценарий **U-SQL** в связанной службе вычислений **Azure Data Lake Analytics**. 
+Конвейер в фабрике данных Azure обрабатывает данные в связанной службе хранилища с помощью связанных вычислительных служб. В нем содержится последовательность действий, каждое из которых выполняет определенную операцию обработки. В этой статье описывается hello **действия U-SQL аналитики Озера данных** , на котором запущена **U-SQL** скрипта на **аналитики Озера данных Azure** вычислений связанной службы. 
 
 > [!NOTE]
-> Перед созданием конвейера с действием U-SQL в Data Lake Analytics следует создать учетную запись Data Lake Analytics. Дополнительные сведения об Azure Data Lake Analytics см. в статье [Начало работы с аналитикой озера данных Azure](../data-lake-analytics/data-lake-analytics-get-started-portal.md).
+> Перед созданием конвейера с действием U-SQL в Data Lake Analytics следует создать учетную запись Data Lake Analytics. toolearn о аналитики Озера данных Azure, в разделе [Приступая к работе с аналитики Озера данных Azure](../data-lake-analytics/data-lake-analytics-get-started-portal.md).
 > 
-> В руководстве по [созданию первого конвейера](data-factory-build-your-first-pipeline.md) подробно описаны процедуры создания фабрики данных, связанных служб, наборов данных и конвейера. Для создания сущностей фабрики данных запустите предложенные фрагменты кода JSON в редакторе фабрики данных, Visual Studio или Azure PowerShell.
+> Просмотрите hello [сборки в первом учебнике конвейера](data-factory-build-your-first-pipeline.md) для фабрики данных toocreate подробное описание действий, связанных служб, наборы данных и конвейера. Редактор фабрики данных или toocreate сущностей фабрики данных в Visual Studio или Azure PowerShell с помощью фрагментов JSON.
 
 ## <a name="supported-authentication-types"></a>Поддерживаемые типы аутентификации
 Действие U-SQL поддерживает указанные ниже типы проверки подлинности Data Lake Analytics.
 * Проверка подлинности субъекта-службы
 * Проверка подлинности учетных данных пользователя (OAuth) 
 
-Мы рекомендуем использовать проверку подлинности субъекта-службы, особенно для выполнения U-SQL по расписанию. При проверке подлинности учетных данных пользователя может истечь срок действия маркера. Сведения о настройке см. в разделе [Свойства связанной службы](#azure-data-lake-analytics-linked-service).
+Мы рекомендуем использовать проверку подлинности субъекта-службы, особенно для выполнения U-SQL по расписанию. При проверке подлинности учетных данных пользователя может истечь срок действия маркера. Сведения о конфигурации, в разделе hello [связанные свойства службы](#azure-data-lake-analytics-linked-service) раздела.
 
 ## <a name="azure-data-lake-analytics-linked-service"></a>Связанная служба аналитики озера данных Azure
-Можно создать связанную службу **Azure Data Lake Analytics** , чтобы связать службу вычислений Azure Data Lake Analytics с фабрикой данных Azure. Действие U-SQL Data Lake Analytics в конвейере ссылается на эту связанную службу. 
+Вы создаете **аналитики Озера данных Azure** связанные toolink служба фабрики данных Azure tooan службы вычислений аналитики Озера данных Azure. действия U-SQL аналитики Озера данных в конвейере hello Hello ссылается toothis связанной службы. 
 
-В следующей таблице приведены описания универсальных свойств из определения JSON. Вы можете выбирать между проверкой подлинности на основе субъекта-службы и учетных данных пользователя.
+Hello следующей таблице приводится описание hello универсальных свойств, используемых в определении JSON hello. Вы можете выбирать между проверкой подлинности на основе субъекта-службы и учетных данных пользователя.
 
 | Свойство | Описание | Обязательно |
 | --- | --- | --- |
-| **type** |Свойству type необходимо присвоить значение **AzureDataLakeAnalytics**. |Да |
+| **type** |свойство типа Hello должно быть присвоено: **AzureDataLakeAnalytics**. |Да |
 | **accountName** |Имя учетной записи аналитики озера данных Azure. |Да |
 | **dataLakeAnalyticsUri** |Универсальный код ресурса (URI) аналитики озера данных Azure. |Нет |
-| **subscriptionId** |Идентификатор подписки Azure |Нет (если не указан, используется подписка фабрики данных). |
-| **resourceGroupName** |Имя группы ресурсов Azure |Нет (если не указано, используется группа ресурсов фабрики данных). |
+| **subscriptionId** |Идентификатор подписки Azure |Нет (если не указан, подписка hello используется фабрики данных). |
+| **resourceGroupName** |Имя группы ресурсов Azure |Нет (если не указан, группа ресурсов для hello используется фабрики данных). |
 
 ### <a name="service-principal-authentication-recommended"></a>Проверка подлинности на основе субъекта-службы (рекомендуется)
-При использовании проверки подлинности на основе субъекта-службы необходимо зарегистрировать сущность приложения в Azure Active Directory (Azure AD) и предоставить ей доступ к Data Lake Store. Подробные инструкции см. в статье [Аутентификация между службами в Data Lake Store с помощью Azure Active Directory](../data-lake-store/data-lake-store-authenticate-using-active-directory.md). Запишите следующие значения, которые используются для определения связанной службы:
+toouse основной проверки подлинности службы, регистрация сущности приложения в Azure Active Directory (Azure AD) и предоставьте его hello доступа к хранилищу Озера tooData. Подробные инструкции см. в статье [Аутентификация между службами в Data Lake Store с помощью Azure Active Directory](../data-lake-store/data-lake-store-authenticate-using-active-directory.md). Запишите следующие значения, которые вы используете hello toodefine hello связанной службы:
 * Идентификатор приложения
 * Ключ приложения 
 * Tenant ID
 
-Используйте проверку подлинности на основе субъекта-службы, указав следующие свойства:
+Используйте основной проверки подлинности службы, указав hello следующие свойства:
 
 | Свойство | Описание | Обязательно |
 |:--- |:--- |:--- |
-| **servicePrincipalId** | Укажите идентификатора клиента приложения. | Да |
-| **servicePrincipalKey** | Укажите ключ приложения. | Да |
-| **tenant** | Укажите сведения о клиенте (доменное имя или идентификатор клиента), в котором находится приложение. Эти сведения можно получить, наведя указатель мыши на правый верхний угол страницы портала Azure. | Да |
+| **servicePrincipalId** | Укажите идентификатор клиента приложения hello. | Да |
+| **servicePrincipalKey** | Укажите ключ приложения hello. | Да |
+| **tenant** | Укажите информацию о клиенте hello (имя или клиента код домена), в которой расположено приложение. Его можно получить путем наведения указателя мыши hello в правом верхнем углу hello hello портал Azure. | Да |
 
 **Пример. Проверка подлинности на основе субъекта-службы**
 ```json
@@ -94,12 +94,12 @@ ms.lasthandoff: 08/18/2017
 ```
 
 ### <a name="user-credential-authentication"></a>Использование проверки подлинности на основе учетных данных пользователя
-Кроме того, для Data Lake Analytics можно использовать проверку подлинности на основе учетных данных пользователя, указав приведенные ниже свойства.
+Кроме того можно использовать проверку подлинности учетных данных пользователя для аналитики Озера данных, указав hello следующие свойства:
 
 | Свойство | Описание | Обязательно |
 |:--- |:--- |:--- |
-| **authorization** | Нажмите кнопку **Авторизовать** в редакторе фабрики данных и введите учетные данные. URL-адрес авторизации будет создан автоматически и присвоен этому свойству. | Да |
-| **sessionId** | Идентификатор сеанса OAuth из сеанса авторизации OAuth. Каждый идентификатор сеанса является уникальным и используется только один раз. Этот параметр создается автоматически при использовании редактора фабрики данных. | Да |
+| **authorization** | Нажмите кнопку hello **авторизовать** в hello редактор фабрики данных и ввести учетные данные, назначает hello автоматически авторизации URL-адрес toothis свойство. | Да |
+| **sessionId** | Идентификатор сеанса OAuth из сеанса авторизации OAuth hello. Каждый идентификатор сеанса является уникальным и используется только один раз. Этот параметр автоматически создается при использовании hello редактор фабрики данных. | Да |
 
 **Пример. Использование проверки подлинности на основе учетных данных пользователя**
 ```json
@@ -120,14 +120,14 @@ ms.lasthandoff: 08/18/2017
 ```
 
 #### <a name="token-expiration"></a>Срок действия маркера
-Срок действия кода авторизации, созданного с помощью кнопки **Авторизовать**, через некоторое время истекает. Сроки действия для различных типов учетных записей пользователей см. в следующей таблице. По истечении **срока действия маркера** проверки подлинности может появиться следующее сообщение об ошибке: "Произошла ошибка при операции с учетными данными: invalid_grant — AADSTS70002: ошибка при проверке учетных данных". AADSTS70008: срок действия предоставленных прав доступа истек или они были отозваны. Идентификатор отслеживания: d18629e8-af88-43c5-88e3-d8419eb1fca1 Идентификатор корреляции: fac30a0c-6be6-4e02-8d69-a776d2ffefd7 Временная отметка: 2015-12-15 21:09:31Z".
+Здравствуйте, код авторизации, созданный с помощью hello **авторизовать** кнопку срок действия истекает спустя некоторое время. См. в следующей таблице для hello сроков действия для различных типов учетных записей пользователей hello. Может появиться сообщение об ошибке после hello hello проверки подлинности при **истечения срока действия маркера**: Ошибка действия учетных данных: invalid_grant - AADSTS70002: ошибка при проверке учетных данных. AADSTS70008: hello предоставляется право доступа просрочен или отозван. Идентификатор отслеживания: d18629e8-af88-43c5-88e3-d8419eb1fca1 Идентификатор корреляции: fac30a0c-6be6-4e02-8d69-a776d2ffefd7 Временная отметка: 2015-12-15 21:09:31Z".
 
 | Тип пользователя | Срок действия |
 |:--- |:--- |
 | Учетные записи пользователей, которые не управляются с помощью Azure Active Directory (@hotmail.com, @live.com и т. д.) |12 часов |
-| Учетные записи пользователей, которые управляются Azure Active Directory (AAD) |14 дней после последнего запуска среза. <br/><br/>90 дней, если срез, основанный на связанной службе на основе OAuth, выполняется по крайней мере раз в 14 дней. |
+| Учетные записи пользователей, которые управляются Azure Active Directory (AAD) |Запустите через 14 дней после последнего фрагмента hello. <br/><br/>90 дней, если срез, основанный на связанной службе на основе OAuth, выполняется по крайней мере раз в 14 дней. |
 
-Чтобы избежать этой ошибки или исправить ее, вам потребуется повторно авторизоваться с помощью кнопки **Авторизовать** и повторно развернуть связанную службу, когда **срок действия маркера истечет**. Значения свойств **sessionId** и **authorization** также можно задавать программно с помощью кода:
+tooavoid и разрешения этой ошибки, повторно авторизовать с помощью hello **авторизовать** когда hello **истечения срока действия маркера** и повторного развертывания hello связанной службы. Значения свойств **sessionId** и **authorization** также можно задавать программно с помощью кода:
 
 ```csharp
 if (linkedService.Properties.TypeProperties is AzureDataLakeStoreLinkedService ||
@@ -154,16 +154,16 @@ if (linkedService.Properties.TypeProperties is AzureDataLakeStoreLinkedService |
 }
 ```
 
-Подробные сведения о классах фабрики данных, используемых в коде, см. в статьях [AzureDataLakeStoreLinkedService — класс](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakestorelinkedservice.aspx), [AzureDataLakeAnalyticsLinkedService — класс](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakeanalyticslinkedservice.aspx) и [AuthorizationSessionGetResponse — класс](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.authorizationsessiongetresponse.aspx). Для использования класса WindowsFormsWebAuthenticationDialog следует добавить ссылку на Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll. 
+В разделе [класс AzureDataLakeStoreLinkedService](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakestorelinkedservice.aspx), [класс AzureDataLakeAnalyticsLinkedService](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakeanalyticslinkedservice.aspx), и [AuthorizationSessionGetResponse класса](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.authorizationsessiongetresponse.aspx) подробные сведения о hello фабрики данных классы, используемые в коде hello. Добавьте ссылку на: Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll для hello WindowsFormsWebAuthenticationDialog класса. 
 
 ## <a name="data-lake-analytics-u-sql-activity"></a>Действие U-SQL в аналитике озера данных
-В следующем фрагменте кода JSON определяется конвейер с действием U-SQL в аналитике озера данных. Определение действия содержит ссылку на созданную ранее связанную службу аналитики озера данных Azure.   
+Привет, следующий фрагмент JSON определяет конвейера действием U-SQL аналитики Озера данных. Определение действия Hello имеет ссылку toohello службы связаны аналитики Озера данных Azure, созданную ранее.   
 
 ```json
 {
     "name": "ComputeEventsByRegionPipeline",
     "properties": {
-        "description": "This is a pipeline to compute events for en-gb locale and date less than 2012/02/19.",
+        "description": "This is a pipeline toocompute events for en-gb locale and date less than 2012/02/19.",
         "activities": 
         [
             {
@@ -210,25 +210,25 @@ if (linkedService.Properties.TypeProperties is AzureDataLakeStoreLinkedService |
 }
 ```
 
-В следующей таблице описаны имена и описания свойств, относящихся к этому действию. 
+Hello следующей таблице описаны имена и описания свойства, которые являются определенной toothis действия. 
 
 | Свойство | Описание | Обязательно |
 |:--- |:--- |:--- |
-| Тип |Для свойства type нужно задать значение **DataLakeAnalyticsU-SQL**. |Да |
-| scriptPath |Путь к папке, содержащей скрипт U-SQL В имени файла учитывается регистр. |Нет (если используется скрипт) |
-| scriptLinkedService |Связанная служба, которая связывает хранилище, содержащее скрипт, с фабрикой данных |Нет (если используется скрипт) |
+| type |свойство типа Hello должно быть задано слишком**DataLakeAnalyticsU SQL**. |Да |
+| scriptPath |Toofolder путь, содержащий скрипт hello U-SQL. Имя файла hello учитывается регистр. |Нет (если используется скрипт) |
+| scriptLinkedService |Связанной службы, которая связывает hello хранилища, содержащий фабрики данных toohello сценария hello |Нет (если используется скрипт) |
 | script |Указание сценария непосредственно в строке вместо использования scriptPath и scriptLinkedService. Например, `"script": "CREATE DATABASE test"`. |Нет (при использовании scriptPath и scriptLinkedService) |
-| degreeOfParallelism |Максимальное количество узлов, используемых одновременно для выполнения задания. |Нет |
-| priority |Определяет, какие задания из всех в очереди должны запускаться в первую очередь. Чем меньше число, тем выше приоритет. |Нет |
-| parameters |Параметры скрипта U-SQL |Нет |
-| runtimeVersion | Версия среды выполнения обработчика U-SQL, которую нужно использовать. | Нет | 
-| compilationMode | <p>Режим компиляции U-SQL. Может иметь одно из следующих значений.</p> <ul><li>**Semantic**: выполнение только семантических проверок и необходимых проверок работоспособности.</li><li>**Full:** выполнение полной компиляции, включая проверку синтаксиса, оптимизацию, создание кода и т. д.</li><li>**SingleBox:** выполнение полной компиляции с параметром TargetType, заданным для SingleBox.</li></ul><p>Если не указать значение для этого свойства, сервер определит оптимальный режим компиляции. </p>| Нет | 
+| degreeOfParallelism |Максимальное количество узлов Hello одновременно использовать toorun hello задания. |Нет |
+| priority |Определяет, какие задания из всех, поставленных в очередь должна быть выбранного toorun сначала. Hello hello снижать hello более высокий приоритет hello. |Нет |
+| parameters |Параметры для скрипта hello U-SQL |Нет |
+| runtimeVersion | Версия среды выполнения toouse engine hello U-SQL | Нет | 
+| compilationMode | <p>Режим компиляции U-SQL. Может иметь одно из следующих значений.</p> <ul><li>**Semantic**: выполнение только семантических проверок и необходимых проверок работоспособности.</li><li>**Full:** выполнение полной компиляции hello, включая проверку синтаксиса оптимизации, создание кода, и т. д.</li><li>**SingleBox:** выполнения полной компиляции hello с tooSingleBox параметр TargetType.</li></ul><p>Если не указать значение для этого свойства, hello сервер определяет режим оптимальной компиляции hello. </p>| Нет | 
 
-Определение сценария см. в разделе [Определение сценария SearchLogProcessing.txt](#sample-u-sql-script). 
+В разделе [SearchLogProcessing.txt сценарий определения](#sample-u-sql-script) hello скрипт определения. 
 
 ## <a name="sample-input-and-output-datasets"></a>Примеры входных и выходных наборов данных
 ### <a name="input-dataset"></a>Входной набор данных
-В этом примере входной набор данных находится в хранилище озера данных Azure (файл SearchLog.tsv в папке datalake/input). 
+В этом примере hello входные данные хранятся в хранилище Озера данных Azure (SearchLog.tsv файл в папке datalake или ввода hello). 
 
 ```json
 {
@@ -254,7 +254,7 @@ if (linkedService.Properties.TypeProperties is AzureDataLakeStoreLinkedService |
 ```
 
 ### <a name="output-dataset"></a>Выходной набор данных
-В этом примере выходные данные, порождаемые скриптом U-SQL, сохраняются в хранилище озера данных Azure (папка datalake/output). 
+В этом примере hello выходных данных, полученных при hello скрипт U-SQL хранится в хранилище Озера данных Azure (datalake/выходная папка). 
 
 ```json
 {
@@ -274,7 +274,7 @@ if (linkedService.Properties.TypeProperties is AzureDataLakeStoreLinkedService |
 ```
 
 ### <a name="sample-data-lake-store-linked-service"></a>Пример связанной службы Data Lake Store
-Вот определение примера связанной службы Azure Data Lake Store, используемой наборами входных и выходных данных. 
+Вот определение hello образца hello хранилища Озера данных Azure связанной службы, используемые наборы данных hello ввода вывода. 
 
 ```json
 {
@@ -291,7 +291,7 @@ if (linkedService.Properties.TypeProperties is AzureDataLakeStoreLinkedService |
 }
 ```
 
-Описания свойств JSON см. в статье [Перемещение данных в озеро данных Azure и обратно с помощью фабрики данных Azure](data-factory-azure-datalake-connector.md). 
+В разделе [перемещения tooand данных из хранилища Озера данных Azure](data-factory-azure-datalake-connector.md) статьи для описания свойств JSON. 
 
 ## <a name="sample-u-sql-script"></a>Пример сценария U-SQL
 
@@ -318,16 +318,16 @@ WHERE Region == "en-gb";
     WHERE Start <= DateTime.Parse("2012/02/19");
 
 OUTPUT @rs1   
-    TO @out
+    too@out
       USING Outputters.Tsv(quoting:false, dateTimeFormat:null);
 ```
 
-Значения параметров **@in** и **@out** в сценарии U-SQL передаются динамически с помощью ADF, используя раздел parameters. См. раздел parameters в определении конвейера.
+Здравствуйте, значения для  **@in**  и  **@out**  параметры в сценарий hello U-SQL, передаются динамически по ADF с помощью раздела «параметры» hello. См. раздел «Параметры» hello в определении конвейера hello.
 
-В определении конвейера для заданий, которые выполняются в службе Azure Data Lake Analytics, можно определить другие свойства, например degreeOfParallelism и priority.
+Другие свойства, такие как degreeOfParallelism и приоритет также можно указать в определении конвейера для hello заданий, запускаемых на hello Служба аналитики Озера данных Azure.
 
 ## <a name="dynamic-parameters"></a>Динамические параметры
-В примере определения конвейера параметрам in и out присвоено жестко заданные значения. 
+Увеличение и уменьшение hello пример конвейера определения параметров назначаются с фиксированными значениями. 
 
 ```json
 "parameters": {
@@ -336,7 +336,7 @@ OUTPUT @rs1
 }
 ```
 
-Вместо этого можно использовать динамические параметры. Например: 
+Вместо этого — toouse возможных динамических параметров. Например: 
 
 ```json
 "parameters": {
@@ -345,5 +345,5 @@ OUTPUT @rs1
 }
 ```
 
-В этом случае входные файлы по-прежнему берутся из папки /datalake/input, а выходные файлы создаются в папке /datalake/output. Имена файлов присваиваются динамически, на основе времени начала среза.  
+В этом случае входные файлы по-прежнему извлекаются из папки /datalake/input hello и выходные файлы создаются в папке /datalake/output hello. имена файлов Hello являются динамическими по времени начала фрагмента hello.  
 

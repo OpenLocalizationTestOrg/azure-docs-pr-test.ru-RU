@@ -1,6 +1,6 @@
 ---
-title: "Использование хранилища ключей Azure из веб-приложения | Документация Майкрософт"
-description: "В этом учебнике показано, как использовать хранилище ключей Azure из веб-приложения."
+title: "Хранилище ключей Azure из веб-приложения aaaUse | Документы Microsoft"
+description: "С помощью этого учебника toohelp, вы узнаете, как toouse Azure ключ хранилища из веб-приложения."
 services: key-vault
 documentationcenter: 
 author: adhurwit
@@ -14,77 +14,77 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/07/2017
 ms.author: adhurwit
-ms.openlocfilehash: d095bcfe37baefa90cf79bb48bff3f703ce1dad7
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: d5e2299e60b379c4e234d5cd6be03411c5a5c958
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="use-azure-key-vault-from-a-web-application"></a>Использование хранилища ключей Azure из веб-приложения
 ## <a name="introduction"></a>Введение
-В этом учебнике показано, как использовать хранилище ключей Azure из веб-приложения Azure. В нем рассматривается процесс доступа к секрету в хранилище ключей Azure для его использования в веб-приложении.
+С помощью этого учебника toohelp, вы узнаете, как toouse Azure ключ хранилища из веб-приложения в Azure. Помогает выполнить процесс hello доступа к секрета из хранилища ключей Azure, чтобы он может использоваться в веб-приложении.
 
-**Предполагаемое время выполнения:** 15 минут.
+**Предполагаемое время toocomplete:** 15 минут
 
 Общие сведения о хранилище ключей Azure см. в статье [Что такое хранилище ключей Azure?](key-vault-whatis.md)
 
 ## <a name="prerequisites"></a>Предварительные требования
-Для работы с этим учебником требуется:
+toocomplete этого учебника необходимо иметь следующие hello:
 
-* URI для секрета кода в хранилище ключей Azure
-* Идентификатор клиента и секрет клиента для веб-приложения, зарегистрированного в Azure Active Directory, которое имеет доступ к вашему хранилищу ключей
-* Веб-приложение. Мы покажем действия для приложения ASP.NET MVC, развернутого в Azure в качестве веб-приложения.
+* Секрет tooa URI в хранилище ключей Azure
+* Идентификатор клиента и секрет клиента для веб-приложения, зарегистрированные с Azure Active Directory, имеющую доступ tooyour хранилища ключей
+* Веб-приложение. Мы будет отображаться hello шаги для приложения ASP.NET MVC, развернутых в Azure в качестве веб-приложения.
 
 > [!NOTE]
-> Необходимо выполнить действия, описанные в разделе [Приступая к работе с хранилищем ключей Azure](key-vault-get-started.md) , чтобы получить URI секрета, идентификатор клиента и секрет клиента для веб-приложения.
+> Очень важно, что завершили hello действия, приведенные в [Приступая к работе с хранилищем ключей Azure](key-vault-get-started.md) для этого учебника, чтобы получить hello секрет tooa URI и hello идентификатор клиента и секрет клиента для веб-приложения.
 > 
 > 
 
-Доступ к хранилищу ключей будет получать веб-приложение, зарегистрированное в Azure Active Directory и получившее права доступа к хранилищу ключей. Если это не так, вернитесь к разделу "Регистрация приложения" в учебнике "Приступая к работе" и повторите перечисленные шаги.
+веб-приложения Hello, будут получать доступ к hello хранилище ключей — hello один, зарегистрированный в Azure Active Directory, который предоставил доступ tooyour хранилища ключей. Если это не так hello, вернитесь tooRegister приложения hello учебника приступить к работе и повторите перечисленные шаги hello.
 
-Этот учебник поможет веб-разработчикам понять принципы создания веб-приложений в Azure. Дополнительные сведения о веб-приложениях Azure см. в статье [Обзор веб-приложений](../app-service-web/app-service-web-overview.md).
+Этот учебник предназначен для веб-разработчиков, которые понимают hello основные принципы создания веб-приложений в Azure. Дополнительные сведения о веб-приложениях Azure см. в статье [Обзор веб-приложений](../app-service-web/app-service-web-overview.md).
 
 ## <a id="packages"></a>Добавление пакетов NuGet
-Существует два пакета, которые необходимо установить для веб-приложения.
+Существует два пакета, необходимые для веб-приложения toohave установлен.
 
 * Библиотека проверки подлинности Active Directory содержит методы для взаимодействия с Azure Active Directory и управления удостоверениями пользователей.
 * Библиотека хранилища ключей Azure содержит методы для взаимодействия с хранилищем ключей Azure.
 
-Оба пакета можно установить с помощью консоли диспетчера пакетов, используя команду Install-Package.
+Оба этих пакетов можно установить с помощью консоли диспетчера пакетов с помощью команды hello Install-Package hello.
 
-    // this is currently the latest stable version of ADAL
+    // this is currently hello latest stable version of ADAL
     Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory -Version 2.16.204221202
 
     Install-Package Microsoft.Azure.KeyVault
 
 
 ## <a id="webconfig"></a>Изменение файла Web.Config
-Существует три параметра приложения, которые необходимо добавить в файл web.config следующим образом.
+Существует три параметра приложения, которым требуется файл web.config добавлена toohello toobe следующим образом.
 
-    <!-- ClientId and ClientSecret refer to the web application registration with Azure Active Directory -->
+    <!-- ClientId and ClientSecret refer toohello web application registration with Azure Active Directory -->
     <add key="ClientId" value="clientid" />
     <add key="ClientSecret" value="clientsecret" />
 
-    <!-- SecretUri is the URI for the secret in Azure Key Vault -->
+    <!-- SecretUri is hello URI for hello secret in Azure Key Vault -->
     <add key="SecretUri" value="secreturi" />
 
 
-Если вы не собираетесь размещать приложения как веб-приложения Azure, добавьте фактические значения идентификатора клиента, секрета клиента и URI секрета в файл Web.config. В противном случае оставьте значения-заполнители, так как мы добавим фактические значения на портале Azure, чтобы получить дополнительный уровень безопасности.
+Если вы не собираетесь toohost приложения как веб-приложение Azure, следует добавить hello фактическое ClientId, секрет клиента и секрет URI значения toohello web.config. В противном случае оставьте эти пустые значения, так как мы будем добавлять фактическими значениями hello в hello портала Azure для создания дополнительного уровня безопасности.
 
-## <a id="gettoken"></a>Добавление метода для получения маркера доступа
-Для использования API хранилища ключей требуется маркер доступа. Клиент хранилища ключей обрабатывает вызовы API хранилища ключей, но вам необходимо предоставить ему функцию, которая возвращает маркер доступа.  
+## <a id="gettoken"></a>Добавьте метод tooGet токена доступа
+В порядке toouse hello API хранилища ключей требуется маркер доступа. Ключ хранилища клиента Hello обрабатывает вызовы, toohello API хранилища ключей, но требуется toosupply в функцию, которая получает маркер доступа hello.  
 
-Ниже приведен код для получения маркера доступа из Azure Active Directory. Этот код можно расположить в любом месте приложения. Я добавлю его в класс Utils или EncryptionHelper.  
+Ниже приведен код hello tooget маркера доступа из Azure Active Directory. Этот код можно расположить в любом месте приложения. Мне нравится tooadd Utils или EncryptionHelper класса.  
 
     //add these using statements
     using Microsoft.IdentityModel.Clients.ActiveDirectory;
     using System.Threading.Tasks;
     using System.Web.Configuration;
 
-    //this is an optional property to hold the secret after it is retrieved
+    //this is an optional property toohold hello secret after it is retrieved
     public static string EncryptSecret { get; set; }
 
-    //the method that will be provided to the KeyVaultClient
+    //hello method that will be provided toohello KeyVaultClient
     public static async Task<string> GetToken(string authority, string resource, string scope)
     {
         var authContext = new AuthenticationContext(authority);
@@ -93,18 +93,18 @@ ms.lasthandoff: 07/11/2017
         AuthenticationResult result = await authContext.AcquireTokenAsync(resource, clientCred);
 
         if (result == null)
-            throw new InvalidOperationException("Failed to obtain the JWT token");
+            throw new InvalidOperationException("Failed tooobtain hello JWT token");
 
         return result.AccessToken;
     }
 
 > [!NOTE]
-> Использование идентификатора клиента и секрета клиента — это самый простой способ выполнить проверку подлинности для приложения Azure AD. Его использование в веб-приложении обеспечивает разделение обязанностей и больший контроль над вашим управлением ключами. Но ему требуется размещение секрета клиента в параметрах конфигурации, что в некоторых ситуациях может быть так же рискованно, как размещение секрета, который необходимо защитить, в параметрах конфигурации. Ниже приведены сведения о том, как использовать идентификатор клиента и сертификат вместо идентификатора и секрета клиента для проверки подлинности приложения Azure AD.
+> С помощью идентификатора клиента и секрет клиента — hello простым способом tooauthenticate приложения Azure AD. Его использование в веб-приложении обеспечивает разделение обязанностей и больший контроль над вашим управлением ключами. Но он полагаться на размещение hello секрет клиента в параметрах конфигурации, в которых для некоторых как рискованно, как и добавлять hello секрет, которые должны tooprotect в параметры конфигурации. Обсуждение hello как toouse идентификатор клиента и сертификат вместо tooauthenticate идентификатор клиента и секрет клиента приложения Azure AD см. ниже.
 > 
 > 
 
-## <a id="appstart"></a>Получение секрета при запуске приложения
-Теперь нам требуется, чтобы код вызвал API хранилища ключей и получил секрет. Следующий фрагмент кода можно поместить в любом месте, при условии что он вызывается перед тем, как его необходимо использовать. Я поместил код в событии запуска приложения в файле Global.asax, чтобы он выполнялся один раз при запуске, а секрет становился доступным для приложения.
+## <a id="appstart"></a>Извлечь секрет hello на запуск приложения
+Теперь нам нужна кода hello toocall API хранилища ключей и извлечь секрет hello. Hello следующий код можно поместить в любом месте при условии, что он вызывается, прежде чем выполнить toouse его. Я поместил этот код в событие запустить приложение hello в hello Global.asax, чтобы он запускается один раз при запуске и делает hello секрет для приложения hello.
 
     //add these using statements
     using Microsoft.Azure.KeyVault;
@@ -115,34 +115,34 @@ ms.lasthandoff: 07/11/2017
 
     var sec = await kv.GetSecretAsync(WebConfigurationManager.AppSettings["SecretUri"]);
 
-    //I put a variable in a Utils class to hold the secret for general  application use.
+    //I put a variable in a Utils class toohold hello secret for general  application use.
     Utils.EncryptSecret = sec.Value;
 
 
 
-## <a id="portalsettings"></a>Добавление параметров приложения на портале Azure (необязательно)
-Если у вас есть веб-приложение Azure, теперь вы можете добавить фактические значения параметров приложений на портале Azure. При этом фактические значения не будут размещены в файле web.config, а будут защищены с помощью портала, где предоставляются отдельные возможности управления доступом. Эти значения будут заменены на значения, введенные в файле web.config. Убедитесь, что имена совпадают.
+## <a id="portalsettings"></a>Добавить параметры приложения в hello портал Azure (необязательно)
+Если у вас есть веб-приложение Azure теперь можно добавить hello фактические значения для hello AppSettings в hello портала Azure. Таким образом, фактические значения hello в файле web.config hello не будет, но защищен с помощью портала при наличии возможности управления доступом отдельных hello. Эти значения будут заменены значениями hello, указанными в файл web.config. Убедитесь, что имена hello hello таким же.
 
 ![Параметры приложения на портале Azure][1]
 
 ## <a name="authenticate-with-a-certificate-instead-of-a-client-secret"></a>Проверка подлинности с помощью сертификата вместо секрета клиента
-Еще один способ проверки подлинности приложения Azure AD состоит в использовании идентификатора клиента и сертификата вместо идентификатора и секрета клиента. Ниже приведены действия по использованию сертификата в веб-приложении Azure.
+Другой способ tooauthenticate приложения Azure AD — с помощью идентификатора клиента и сертификат, а не идентификатор клиента и секрет клиента. Следующие являются hello toouse действия сертификата в веб-приложение Azure:
 
 1. Получите или создайте сертификат
-2. Свяжите сертификат с приложением Azure AD
-3. Добавьте код в веб-приложение, чтобы использовать сертификат
-4. Добавьте сертификат в веб-приложение
+2. Связать hello сертификат с помощью приложения Azure AD
+3. Добавить код tooyour веб-приложение toouse hello сертификата
+4. Добавление сертификата tooyour веб-приложения
 
-**Получение или создание сертификата** Для наших целей будет создан тестовый сертификат. Вот несколько команд, которые можно использовать в командной строке разработчика для создания сертификата. Измените каталог, в котором будут созданы файлы сертификата.  Кроме того, для начальной и конечной даты сертификата используется текущая дата плюс один год.
+**Получение или создание сертификата** Для наших целей будет создан тестовый сертификат. Ниже приведено несколько команд, которые используются в toocreate Командная строка разработчика сертификат. Изменить каталог toowhere, нужно создать файлы cert hello.  Кроме того для hello открывающая и закрывающая дату hello сертификата, используйте hello текущую дату плюс 1 год.
 
     makecert -sv mykey.pvk -n "cn=KVWebApp" KVWebApp.cer -b 03/07/2017 -e 03/07/2018 -r
     pvk2pfx -pvk mykey.pvk -spc KVWebApp.cer -pfx KVWebApp.pfx -po test123
 
-Запишите дату окончания и пароль для PFX-файла (в этом примере: 07/31/2016 и test123). Они вам потребуются позднее.
+Запишите дату окончания hello и hello пароль для PFX-файл hello (в этом примере: 07/31/2016 и test123). Они вам потребуются позднее.
 
 Дополнительные сведения о создании тестового сертификата см. в [этом практическом руководстве](https://msdn.microsoft.com/library/ff699202.aspx).
 
-**Свяжите сертификат с приложением Azure AD** Теперь, когда у вас есть сертификат, необходимо связать его с приложением Azure AD. В настоящее время портал Azure не поддерживает этот рабочий процесс. Однако это можно сделать с помощью PowerShell. Чтобы связать сертификат с приложением Azure AD, выполните следующие команды:
+**Свяжите hello сертификат с помощью приложения Azure AD** имеется сертификат, необходимо tooassociate его с помощью приложения Azure AD. В настоящее время hello портала Azure не поддерживает этот рабочий процесс; Это можно сделать с помощью PowerShell. Выполните следующие команды tooassoicate hello сертификат с hello Azure AD приложения hello.
 
     $x509 = New-Object System.Security.Cryptography.X509Certificates.X509Certificate2
     $x509.Import("C:\data\KVWebApp.cer")
@@ -158,16 +158,16 @@ ms.lasthandoff: 07/11/2017
 
     Set-AzureRmKeyVaultAccessPolicy -VaultName 'contosokv' -ServicePrincipalName $sp.ServicePrincipalName -PermissionsToSecrets all -ResourceGroupName 'contosorg'
 
-    # get the thumbprint to use in your app settings
+    # get hello thumbprint toouse in your app settings
     $x509.Thumbprint
 
-После выполнения этих команд приложение можно будет увидеть в Azure AD. Во время поиска в диалогом окне поиска выберите "Приложения, которыми владеет моя компания", а не "Приложения, которые использует моя компания".
+После выполнения этих команд можно увидеть приложения hello в Azure AD. При поиске, убедитесь, что выбран «Приложений, которыми владеет Моя компания» вместо «Приложений использует Моя компания» в диалоговом окне поиска hello.
 
-Дополнительные сведения об объектах приложения Azure AD и ServicePrincipal см. в статье [Объекты приложения и субъекта-службы в Azure Active Directory](../active-directory/active-directory-application-objects.md).
+в разделе toolearn Дополнительные сведения о Azure AD и объекты приложений субъекта-службы, [участника-службы и объекты приложений](../active-directory/active-directory-application-objects.md)
 
-**Добавление кода для веб-приложения, чтобы использовать сертификат** Теперь в веб-приложение будет добавлен код для доступа к сертификату и его использования для проверки подлинности.
+**Добавить код tooyour веб-приложение toouse hello сертификат** теперь мы добавим код tooyour веб-приложение tooaccess hello сертификатов и использовать его для проверки подлинности.
 
-Во-первых, есть код для доступа к сертификату.
+Во-первых, есть cert hello tooaccess кода.
 
     public static class CertificateHelper
     {
@@ -178,7 +178,7 @@ ms.lasthandoff: 07/11/2017
             {
                 store.Open(OpenFlags.ReadOnly);
                 X509Certificate2Collection col = store.Certificates.Find(X509FindType.FindByThumbprint,
-                    findValue, false); // Don't validate certs, since the test root isn't installed.
+                    findValue, false); // Don't validate certs, since hello test root isn't installed.
                 if (col == null || col.Count == 0)
                     return null;
                 return col[0];
@@ -191,9 +191,9 @@ ms.lasthandoff: 07/11/2017
     }
 
 
-Обратите внимание, что StoreLocation является CurrentUser вместо LocalMachine и что мы указали false для метода Find, поскольку мы используем тестовый сертификат.
+Обратите внимание, что hello StoreLocation — CurrentUser вместо LocalMachine. И что мы указали 'false' toohello найти метод, так как мы используем тестовым сертификатом.
 
-Далее следует код, который с помощью CertificateHelper и создает ClientAssertionCertificate, необходимый для проверки подлинности.
+Далее следует код, который использует hello CertificateHelper и создает ClientAssertionCertificate, которая используется для проверки подлинности.
 
     public static ClientAssertionCertificate AssertionCert { get; set; }
 
@@ -204,7 +204,7 @@ ms.lasthandoff: 07/11/2017
     }
 
 
-Здесь представлен новый код для получения токена доступа. Этот параметр заменяет метод GetToken выше. Для удобства я задал другое имя.
+Вот hello новый код tooget hello маркер доступа. Эта процедура заменяет описанный выше метод GetToken hello. Для удобства я задал другое имя.
 
     public static async Task<string> GetAccessToken(string authority, string resource, string scope)
     {
@@ -215,21 +215,21 @@ ms.lasthandoff: 07/11/2017
 
 Я поместил весь этот код в класс Utils проекта веб-приложения для удобства использования.
 
-Последнее изменение кода находится в методе Application_Start. Сначала необходимо вызвать метод GetCert() для загрузки ClientAssertionCertificate. А затем мы изменяем метод обратного вызова, который использовался при создании нового KeyVaultClient. Обратите внимание, что этот параметр заменяет имевшийся ранее код.
+Последнее изменение кода Hello находится в hello метода Application_Start. Сначала нужно hello toocall GetCert() метод tooload hello ClientAssertionCertificate. И мы измените метод обратного вызова hello, предоставляемый нами при создании нового KeyVaultClient. Обратите внимание, что этот параметр заменяет hello код, который мы должны были выше.
 
     Utils.GetCert();
     var kv = new KeyVaultClient(new KeyVaultClient.AuthenticationCallback(Utils.GetAccessToken));
 
 
-**Добавление сертификата в веб-приложение на портале Azure** Добавление сертификата в веб-приложение — это простой двухэтапный процесс. Сначала войдите на портал управления Azure и перейдите к своему веб-приложению. В колонке "Параметры" веб-приложения щелкните запись "Пользовательские домены и SSL". В открывшейся колонке вы сможете загрузить ранее созданный сертификат KVWebApp.pfx. Убедитесь, что вы помните пароль для PFX.
+**Добавление сертификата tooyour веб-приложения через портал Azure hello** Добавление tooyour сертификат веб-приложения — это простой двухэтапный процесс. Сначала перейдите toohello портала Azure и перейдите tooyour веб-приложения. В колонке hello параметры веб-приложения, щелкните запись hello для «пользовательские домены и SSL». На hello колонку, вы быть hello может tooupload сертификат, созданный выше KVWebApp.pfx, убедитесь, что следует помнить hello пароль для hello pfx.
 
-![Добавление сертификата в веб-приложение на портале Azure][2]
+![Добавление сертификата tooa веб-приложения в hello портала Azure][2]
 
-Последнее, что требуется выполнить, — добавить в веб-приложение параметр с именем WEBSITE\_LOAD\_CERTIFICATES и значением "*". Это позволит гарантировать загрузку всех сертификатов. Если требуется загрузить только переданные сертификаты, можно ввести разделенный запятыми список их отпечатков.
+Hello последнее, что необходимые toodo это tooadd tooyour параметр приложения веб-приложения с веб-сайте приветствия имен\_НАГРУЗКИ\_СЕРТИФИКАТЫ и значение *. Это позволит гарантировать загрузку всех сертификатов. Если требуется, только hello tooload сертификаты, которые вы отправили, а затем можно ввести список разделенных запятыми их отпечаткам.
 
-Дополнительные сведения о добавлении сертификата в веб-приложение см. в статье [Использование сертификатов в приложениях веб-сайтов Azure](https://azure.microsoft.com/blog/2014/10/27/using-certificates-in-azure-websites-applications/).
+toolearn Дополнительные сведения о добавлении tooa сертификат веб-приложения в разделе [с помощью сертификатов в приложениях веб-сайтов Azure](https://azure.microsoft.com/blog/2014/10/27/using-certificates-in-azure-websites-applications/)
 
-**Добавление сертификата в хранилище ключей в качестве секрета** Вместо отправки сертификата непосредственно в службу веб-приложения вы можете сохранить его в хранилище ключей в секрете, а затем развернуть его оттуда. Этот двухэтапный процесс описан в записи блога, посвященной [развертыванию сертификата веб-приложения Azure из хранилища ключей](https://blogs.msdn.microsoft.com/appserviceteam/2016/05/24/deploying-azure-web-app-certificate-through-key-vault/)
+**Добавьте сертификат tooKey хранилище в качестве секрета** вместо отправки вашего сертификата toohello службы веб-приложения напрямую, можно сохранить его в хранилище ключей как секрет и развернуть ее оттуда. Это в два этапа, описанных в следующие записи блога hello [развертывание Azure сертификат веб-приложения через хранилище ключей](https://blogs.msdn.microsoft.com/appserviceteam/2016/05/24/deploying-azure-web-app-certificate-through-key-vault/)
 
 ## <a id="next"></a>Дальнейшие действия
 Справочные материалы по программированию см. в [справочнике по API клиента C# для хранилища ключей Azure](https://msdn.microsoft.com/library/azure/dn903628.aspx).

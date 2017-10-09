@@ -1,6 +1,6 @@
 ---
-title: "Документация по Azure HDInsight. Руководства и справочник по API | Документация Майкрософт"
-description: "Узнайте о Hadoop в HDInsight. Документация, в которой показано, как использовать Hadoop, Spark, HBase, R-Server и другие службы для обработки и анализа больших данных."
+title: "aaaAzure документация HDInsight - учебники, справочник по API | Документы Microsoft"
+description: "Узнайте о Hadoop в HDInsight. Документации показано, как toouse Hadoop, Spark, HBase, R-Server и дополнительные tooprocess анализа и получения полезных сведений из данных большого размера."
 services: hdinsight
 author: carolz
 manager: carolz
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: 6f16d77f3590bedf9338afc784110c2acff80592
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 592c31863df2e90886c9e9596b1a24edea79e990
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 #<a name="azure-hdinsight-documentation"></a>Документация по Azure HDInsight
 
-Узнайте, как использовать Hadoop в облаке в HDInsight для анализа данных потоковой передачи или исторических данных. Руководства и другая документация, в которой показано, как создавать кластеры, обрабатывать и анализировать большие данные, а также разрабатывать решения с помощью Hadoop, Spark, HBase, R-Server, Storm и других технологий в экосистеме Hadoop.
+Дополнительные сведения об облачных toouse Hadoop в hello на HDInsight tooanalyze потоковой передачи или исторические данные. Учебники и другую документацию показано, как кластеры toocreate обработки и анализа больших данных и разрабатывать решения с Hadoop, Spark, HBase, R-сервер, Storm и другие технологии в экосистеме Hadoop hello.
 
 <ul class="panelContent cardsFTitle">
     <li>

@@ -1,6 +1,6 @@
 ---
-title: "Подключение веб-приложения службы приложений Azure к кэшу Redis через протокол Memcache | Документация Майкрософт"
-description: "Присоединение веб-приложения в службе приложений Azure к кэшу Redis с помощью протокола Memcache"
+title: "aaaConnect tooRedis приложения web службы приложений, через протокол Memcache - Azure hello | Документы Microsoft"
+description: "Подключение веб-приложения в приложение Azure службы tooRedis кэша с помощью протокола Memcache hello"
 services: app-service\web
 documentationcenter: php
 author: SyntaxC4
@@ -14,76 +14,76 @@ ms.tgt_pltfrm: windows
 ms.workload: na
 ms.date: 02/29/2016
 ms.author: cfowler
-ms.openlocfilehash: 0eea1d64a50bec8fb7da155e2088ddfc36b377f6
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 48036d60fbbced59eb1e37584f507fffffff753d
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# Присоединение веб-приложения в службе приложений Azure к кэшу Redis при помощи протокола Memcache
-Из этой статьи вы узнаете, как подключить веб-приложение WordPress в [службе приложений Azure](http://go.microsoft.com/fwlink/?LinkId=529714) к [кэшу Redis для Azure][12] с использованием протокола [Memcache][13]. Существующее веб-приложение, которое использует сервер Memcached для кэширования в память, можно перенести в службу приложений Azure и использовать для кэширования основное решение в службе Microsoft Azure с минимальными изменениями кода приложения или без изменений вообще. Кроме того, можно использовать существующие навыки работы с Memcache для создания в службе приложений Azure распределенных приложений высокой степени масштабируемости с кэшем Redis для Azure для кэширования в память, используя при этом известные программные платформы, такие как .NET, PHP, Node.js, Java и Python.  
+# Подключение веб-приложения в службе приложений Azure tooRedis кэша через протокол Memcache hello
+В этой статье вы узнаете, как приложение в веб-tooconnect WordPress [службе приложений Azure](http://go.microsoft.com/fwlink/?LinkId=529714) слишком[кэш Azure Redis] [ 12] с помощью hello [Memcache] [ 13] протокола. При наличии существующего веб-приложения, которая использует сервер Memcached для кэша в памяти, можно перенести tooAzure службы приложений и использовать hello основном кэширования решение в Microsoft Azure с незначительной или нулевой изменение tooyour кода приложения. Кроме того можно использовать существующие Memcache опыт toocreate масштабируемых, распределенные приложения в службе приложений Azure с помощью кэша Redis для Azure для кэширования в памяти, при использовании популярных платформ приложений, таких как .NET, PHP, Node.js, Java и Python.  
 
-Веб-приложения службы приложений разрешают сценарий этого приложения с оболочкой совместимости веб-приложений Memcache, которая является локальным сервером Memcache, действующим как прокси-сервер Memcache для кэширования вызовов в кэш Redis для Azure. Это позволяет любому приложению, которое передает данные при помощи протокола Memcache, кэшировать данные в кэше Redis. Эта оболочка совместимости Memcache работает на уровне протокола, поэтому ее может использовать любое приложение или любая исполняющая среда, при условии использования протокола Memcache для связи.
+Службы приложений веб-приложения поддерживает такие сценарии приложений с оболочке Memcache приложения Web hello, являющийся локального сервера Memcached, который выступает в качестве прокси-сервера Memcache для кэширования вызовы tooAzure кэша Redis. Это позволяет любому приложению, которое взаимодействует с помощью протокола toocache hello Memcache данных с кэшем Redis. Прокладку Memcache работает на уровне протокола hello, поэтому он может использоваться любым приложения или платформы приложения до тех пор, пока он взаимодействует с помощью протокола Memcache hello.
 
 [!INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
 
 ## Предварительные требования
-Оболочку совместимости веб-приложений Memcache можно использовать с любым приложением при условии использования для связи протокола Memcache. В этом конкретном примере используется масштабируемый сайт WordPress, который можно получить на сайте Azure Marketplace.
+оболочке Memcache Web приложения Hello может использоваться с любым приложением, предоставляемых обменивается данными с помощью протокола Memcache hello. Для этого конкретного примера приложения hello ссылка является масштабируемой WordPress сайт, который может предоставляться из hello Azure Marketplace.
 
-Выполните шаги, описанные в следующих статьях:
+Выполните шаги hello, описанные в следующих статьях:
 
-* [Подготовка экземпляра службы кэша Redis для Azure][0]
+* [Подготовка экземпляра hello служба кэша Redis Azure][0]
 * [Развертывание масштабируемого сайта WordPress в Azure][1]
 
-После развертывания масштабируемого сайта WordPress и создания экземпляра кэша Redis можно продолжить включение оболочки совместимости Memcache в веб-приложениях службы приложений Azure.
+После развертывания сайта WordPress масштабируемой hello и подготовить экземпляр кэша Redis будет готов tooproceed с включением оболочке Memcache hello в веб-приложениях службы приложений Azure.
 
-## Включение оболочки совместимости веб-приложений Memcache
-Чтобы настроить оболочку совместимости Memcache, необходимо создать три параметра приложения. Это можно сделать разнообразными способами, в том числе с помощью [портала Azure](http://go.microsoft.com/fwlink/?LinkId=529715), [классического портала][3], [командлетов PowerShell для Azure][5] или [интерфейса командной строки Azure][5]. В этой публикации мы будем использовать [портал Azure][4] для определения параметров приложения. Следующие значения можно получить в колонке **Параметры** вашего экземпляра кэша Redis.
+## Включить оболочке Memcache Web приложения hello
+В оболочке Memcache tooconfigure заказ необходимо создать три параметра приложения. Это можно сделать с помощью различных методов, включая hello [портала Azure](http://go.microsoft.com/fwlink/?LinkId=529715), hello [классический портал][3], hello [командлеты PowerShell Azure] [ 5] или hello [интерфейса командной строки Azure][5]. Hello целях эту запись, я буду toouse hello [портала Azure] [ 4] tooset параметры приложения hello. Hello следующие значения могут быть получены из **параметры** колонке экземпляра кэша Redis.
 
 ![Колонка параметров кэша Redis для Azure](./media/web-sites-connect-to-redis-using-memcache-protocol/1-azure-redis-cache-settings.png)
 
 ### Добавление параметра приложения REDIS_HOST
-Сначала нужно создать параметр приложения **REDIS\_HOST**. Этот параметр определяет назначение, к которому оболочка совместимости направляет данные кэша. Значение, необходимое для параметра приложения REDIS_HOST, можно получить в колонке **Свойства** вашего экземпляра кэша Redis.
+Здравствуйте, первый параметр приложения, необходимо toocreate — hello **REDIS\_узла** параметра приложения. Этот параметр задает hello toowhich hello оболочки пересылает hello кэша данные о месте назначения. Здравствуйте, значение является обязательным для параметра приложения hello REDIS_HOST могут быть получены из hello **свойства** колонке экземпляра кэша Redis.
 
 ![Имя хоста кэша Redis для Azure](./media/web-sites-connect-to-redis-using-memcache-protocol/2-azure-redis-cache-hostname.png)
 
-Задайте ключ параметра приложения **REDIS\_HOST** и значение параметра приложения **hostname** для экземпляра кэша Redis.
+Набор hello ключ установки приложения hello слишком**REDIS\_узла** и значение hello toohello параметр приложения hello **hostname** hello экземпляра кэша Redis.
 
 ![Параметр веб-приложения REDIS_HOST](./media/web-sites-connect-to-redis-using-memcache-protocol/3-azure-website-appsettings-redis-host.png)
 
 ### Добавление параметра приложения REDIS_KEY
-Затем необходимо создать параметр приложения **REDIS\_KEY**. Этот параметр предоставляет маркер аутентификации для получения безопасного доступа к экземпляру кэша Redis. Значение, необходимое для параметра REDIS_KEY, можно получить в колонке **Ключи доступа** экземпляра кэша Redis.
+Здравствуйте, второй параметр приложения, необходимо toocreate — hello **REDIS\_ключ** параметра приложения. Данный параметр предоставляет кэш Redis hello проверки подлинности маркеров требуется toosecurely доступ hello экземпляра. Можно получить значение hello, необходимые для параметра приложения hello REDIS_KEY из hello **ключи доступа** колонку кэша Redis экземпляра hello.
 
 ![Первичный ключ кэша Redis для Azure](./media/web-sites-connect-to-redis-using-memcache-protocol/4-azure-redis-cache-primarykey.png)
 
-Задайте ключ параметра приложения **REDIS\_KEY** и значение параметра приложения **Primary Key** для экземпляра кэша Redis.
+Ключ набора hello установки приложения hello слишком**REDIS\_ключ** и значение hello toohello параметр приложения hello **первичный ключ** hello экземпляра кэша Redis.
 
 ![Параметр веб-приложения REDIS_KEY](./media/web-sites-connect-to-redis-using-memcache-protocol/5-azure-website-appsettings-redis-primarykey.png)
 
 ### Добавление параметра приложения MEMCACHESHIM_REDIS_ENABLE
-Последний параметр приложения используется для включения оболочки совместимости Memcache в веб-приложениях, которые будут использовать параметры REDIS_HOST и REDIS_KEY для подключения к кэшу Redis для Azure и переадресовывать вызовы кэша. Задайте ключ параметра приложения **MEMCACHESHIM\_REDIS\_ENABLE** и значение **true**.
+Последний параметр приложения Hello — используется tooenable hello оболочке Memcache в веб-приложения, использующего hello REDIS_HOST и REDIS_KEY toohello tooconnect кэша Redis для Azure и прямой hello вызовов кэша. Ключ набора hello установки приложения hello слишком**MEMCACHESHIM\_REDIS\_ВКЛЮЧИТЬ** и hello значение слишком**true**.
 
 ![Параметр веб-приложения MEMCACHESHIM_REDIS_ENABLE](./media/web-sites-connect-to-redis-using-memcache-protocol/6-azure-website-appsettings-enable-shim.png)
 
-После добавления трех (3) параметров приложения щелкните **Сохранить**.
+После завершения добавления параметров приложения hello трех (3), нажмите кнопку **Сохранить**.
 
 ## Включение расширения Memcache для PHP
-Чтобы приложение использовало протокол Memcache, установите расширение Memcache в PHP — языковой платформе вашего сайта WordPress.
+Чтобы hello toospeak приложения hello протокол Memcache при необходимости tooinstall hello Memcache расширения tooPHP--hello языковой платформе для сайта WordPress.
 
-### Загрузка расширения php_memcache
-Перейдите в раздел [PECL][6]. В категории кэширования щелкните [memcache][7]. В столбце загрузок щелкните ссылку DLL.
+### Загрузить php_memcache hello расширения
+Обзор слишком[нагрузка PECL][6]. В разделе hello кэширование категории, нажмите кнопку [memcache][7]. В разделе загрузок hello столбца по ссылке hello DLL.
 
 ![Веб-сайт PHP PECL](./media/web-sites-connect-to-redis-using-memcache-protocol/7-php-pecl-website.png)
 
-Загрузите расширение по ссылке Non-Thread Safe (NTS) x86 для версии PHP, работающей в веб-приложениях (по умолчанию это PHP 5.4).
+Загрузите hello потока не безопасном (Обновить) x86 ссылку для hello версии включены в веб-приложений PHP. (по умолчанию это PHP 5.4).
 
 ![Пакет Memcache веб-сайта PHP PECL](./media/web-sites-connect-to-redis-using-memcache-protocol/8-php-pecl-memcache-package.png)
 
-### Включение расширения php_memcache
-Скачав файл, распакуйте его и добавьте файл **php\_memcache.dll** в каталог **d:\\home\\site\\wwwroot\\bin\\ext\\**. После загрузки файла php_memcache.dll в веб-приложение необходимо включить расширение в среде выполнения PHP. Чтобы включить расширение Memcache на портале Azure, откройте колонку **Параметры приложения** для веб-приложения, а затем добавьте новый параметр приложения с ключом **PHP\_EXTENSIONS** и значением **bin\\ext\\php_memcache.dll**.
+### Включить расширение php_memcache hello
+После загрузки файла hello, распаковка и отправить hello **php\_memcache.dll** в hello **d:\\домашней\\сайта\\wwwroot\\bin\\ext\\**  каталога. После передачи hello php_memcache.dll в веб-приложения hello необходимо tooenable hello расширения toohello среды выполнения PHP. hello tooenable расширение Memcache в портале Azure, откройте hello hello **параметры приложения** колонку для веб-приложения hello, затем добавьте новый параметр приложения с ключом hello **PHP\_расширения** и hello значение **bin\\ext\\php_memcache.dll**.
 
 > [!NOTE]
-> Если для веб-приложения необходимо загрузить несколько расширений PHP, значение параметра PHP_EXTENSIONS должно быть списком относительных путей к DLL-файлам с разделителями-запятыми.
+> Если веб-приложение hello должен tooload несколько расширений PHP, значение hello PHP_EXTENSIONS должен быть список с разделителями запятыми файлы tooDLL относительные пути.
 > 
 > 
 
@@ -93,29 +93,29 @@ ms.lasthandoff: 07/11/2017
 
 ## Установка подключаемого модуля Memcache WordPress
 > [!NOTE]
-> На сайте WordPress.org. можно также скачать подключаемый модуль [Memcached Object Cache Plugin](https://wordpress.org/plugins/memcached/).
+> Можно также загрузить hello [подключаемый модуль кэша объекта Memcached](https://wordpress.org/plugins/memcached/) из WordPress.org.
 > 
 > 
 
-На странице подключаемых модулей WordPress нажмите кнопку **Добавить новый**.
+На странице приветствия WordPress подключаемых модулей щелкните **добавить новое**.
 
 ![Страница подключаемого модуля WordPress](./media/web-sites-connect-to-redis-using-memcache-protocol/10-wordpress-plugin.png)
 
-В поле поиска введите **memcached** и нажмите клавишу **ВВОД**.
+Введите в поле поиска hello **memcached** и нажмите клавишу **ввод**.
 
 ![Добавление нового подключаемого модуля WordPress](./media/web-sites-connect-to-redis-using-memcache-protocol/11-wordpress-add-new-plugin.png)
 
-Найдите **Memcached Object Cache** в списке, а затем нажмите кнопку **Установить**.
+Найти **кэш объектов Memcached** hello списка, а затем нажмите кнопку **установить сейчас**.
 
 ![Установка подключаемого модуля Memcache для WordPress](./media/web-sites-connect-to-redis-using-memcache-protocol/12-wordpress-install-memcache-plugin.png)
 
-### Включение подключаемого модуля Memcache WordPress
+### Включить hello подключаемого модуля Memcache WordPress
 > [!NOTE]
-> Чтобы установить Visual Studio Team Services, следуйте указаниям в записи блога [Как включить расширение сайта в веб-приложениях][8].
+> Следуйте инструкциям hello в этом блоге на [как расширение сайта в веб-приложениях tooenable] [ 8] tooinstall Visual Studio Team Services.
 > 
 > 
 
-В файле `wp-config.php` добавьте следующий фрагмент кода перед комментарием о прекращении правки в самом конце файла.
+В hello `wp-config.php` файл, добавьте следующий код выше редактирования комментарий hello stop конце hello файл hello hello.
 
 ```php
 $memcached_servers = array(
@@ -123,30 +123,30 @@ $memcached_servers = array(
 );
 ```
 
-После вставки этого фрагмента кода функция monaco автоматически сохранит документ.
+После вставленных этот код Монако автоматически сохранит hello документа.
 
-Следующим действием будет включение подключаемого модуля кэша объектов. Для этого перетащите файл **object-cache.php** из папки **wp-content/plugins/memcached** в папку **wp-content**, чтобы включить функциональность кэша объектов Memcache.
+Hello следующим шагом является tooenable hello объекта кэша, подключаемый модуль. Это делается с помощью перетаскивания **объекта cache.php** из **wp-content/подключаемых модулей и memcached** toohello папки **wp-content** tooenable папку hello объекта Memcache Функции кэша.
 
-![Поиск расположения подключаемого модуля memcache object-cache.php](./media/web-sites-connect-to-redis-using-memcache-protocol/13-locate-memcache-object-cache-plugin.png)
+![Найдите подключаемый модуль объекта cache.php memcache hello](./media/web-sites-connect-to-redis-using-memcache-protocol/13-locate-memcache-object-cache-plugin.png)
 
-Теперь, когда файл **object-cache.php** находится в папке **object-cache.php**, кэш объектов Memcached включен.
+Теперь этот hello **объекта cache.php** файл находится в hello **wp-content** папки кэша объектов Memcached включен hello.
 
-![Включение подключаемого модуля memcache object-cache.php](./media/web-sites-connect-to-redis-using-memcache-protocol/14-enable-memcache-object-cache-plugin.png)
+![Включение подключаемого модуля объекта cache.php memcache hello](./media/web-sites-connect-to-redis-using-memcache-protocol/14-enable-memcache-object-cache-plugin.png)
 
-## Проверка функционирования подключаемого модуля Memcache Object Cache
-На этом все действия по включению оболочки совместимости Memcache в веб-приложениях завершены. Остается проверить заполнение данными экземпляра кэша Redis.
+## Проверьте hello кэш объектов Memcache работы подключаемого модуля
+Все оболочки совместимости приложений Memcache Web hello действия tooenable hello, теперь завершения. что осталось Hello — tooverify, что данные hello заполнения экземпляра кэша Redis.
 
-### Включение поддержки порта подключения без SSL в кэше Redis для Azure
+### Включить поддержку порт не SSL hello в кэше Redis для Azure
 > [!NOTE]
-> На момент написания этой статьи интерфейс командной строки Redis не поддерживал соединение SSL, поэтому необходимо выполнить следующие действия.
+> Во время написания данной статьи hello hello Redis CLI не поддерживает SSL-подключение, таким образом hello процедуры ниже необходимы.
 > 
 > 
 
-В портале Azure найдите в созданном вами экземпляре кэша Redis это веб-приложение. Открыв колонку кэша, щелкните значок **Параметры** .
+Откройте экземпляр кэша Redis toohello, созданный для этого веб-приложения в hello портала Azure. После открытия hello кэша щелкните hello **параметры** значок.
 
 ![Кнопка параметров кэша Redis для Azure](./media/web-sites-connect-to-redis-using-memcache-protocol/15-azure-redis-cache-settings-button.png)
 
-Выберите **Порты доступа** в списке.
+Выберите **порты доступа** из списка hello.
 
 ![Порт доступа к кэшу Redis для Azure](./media/web-sites-connect-to-redis-using-memcache-protocol/16-azure-redis-cache-access-port.png)
 
@@ -154,38 +154,38 @@ $memcached_servers = array(
 
 ![Порт доступа к кэшу Redis для Azure (только SSL)](./media/web-sites-connect-to-redis-using-memcache-protocol/17-azure-redis-cache-access-port-ssl-only.png)
 
-После этого отобразится установленный порт, не использующий протокол SSL. Щелкните **Сохранить**.
+Вы увидите hello порт SSL не настроена. Щелкните **Сохранить**.
 
 ![Портал доступа к кэшу Redis для Azure (без SSL)](./media/web-sites-connect-to-redis-using-memcache-protocol/18-azure-redis-cache-access-port-non-ssl.png)
 
-### Подключение к кэшу Redis для Azure через Redis CLI
+### Подключение из redis cli tooAzure кэша Redis
 > [!NOTE]
 > При выполнении этого действия предполагается, что программное обеспечение Redis установлено локально на компьютере, на котором проводится разработка. [Установите Redis локально, следуя этим указаниям][9].
 > 
 > 
 
-Откройте выбранную консоль командной строки и введите следующую команду:
+Откройте консоль командной строки для hello выбора и введите следующую команду:
 
 ```shell
 redis-cli –h <hostname-for-redis-cache> –a <primary-key-for-redis-cache> –p 6379
 ```
 
-Замените **&lt;hostname-for-redis-cache&gt;** фактическим именем узла xxxxx.redis.cache.windows.net, а **&lt;primary-key-for-redis-cache&gt;** — ключом доступа для кэша, после чего нажмите клавишу **ВВОД**. После подключения CLI к экземпляру кэша Redis запустите любую команду redis. На снимке экрана ниже я выбрал список ключей.
+Замените hello  **&lt;имя узла для redis кэша&gt;**  с именем узла фактическое xxxxx.redis.cache.windows.net hello и hello  **&lt;первичный ключ для redis кэша&gt;**  hello ключ доступа для кэша hello, затем нажмите клавишу **ввод**. После hello CLI подключенный экземпляр кэша Redis toohello, выполните любые команды redis. В приведенном далее снимке экрана приветствия я выбрал toolist hello ключей.
 
-![Подключение к кэшу Redis для Azure через интерфейс командной строки Redis в терминале](./media/web-sites-connect-to-redis-using-memcache-protocol/19-redis-cli-terminal.png)
+![Подключение из Redis CLI в терминале tooAzure кэша Redis](./media/web-sites-connect-to-redis-using-memcache-protocol/19-redis-cli-terminal.png)
 
-Вызов списка ключей должен возвратить значение. Если нет, перейдите к веб-приложению и повторите попытку.
+Hello вызовов toolist hello ключи должны возвращать значение. Если нет, навигация по toohello веб-приложение и повторите попытку.
 
 ## Заключение
-Поздравляем! Приложение WordPress теперь располагает централизованным кэшированием в памяти, что поддерживает увеличение пропускной способности. Помните, что оболочку совместимости веб-приложений Memcache можно использовать с любым клиентом Memcache, независимо от языка программирования или исполняющей среды. Отправить отзыв или задать вопросы об оболочке совместимости веб-приложений Memcache можно на [форумах MSDN][10] или на сайте [Stackoverflow][11].
+Поздравляем! Теперь приложение Hello WordPress имеет tooaid централизованного кэша в памяти в увеличить пропускную способность. Обратите внимание, что hello оболочке Memcache Web приложений можно использовать с любой клиент Memcache, независимо от того, платформа приложения или языка программирования. tooprovide отзывы или tooask вопросы об оболочке Memcache Web приложения hello, учет слишком[форумы MSDN] [ 10] или [Stackoverflow][11].
 
 > [!NOTE]
-> Чтобы приступить к работе со службой приложений Azure до создания учетной записи Azure, перейдите к разделу [Пробное использование службы приложений](https://azure.microsoft.com/try/app-service/), где вы можете быстро создать кратковременное веб-приложение начального уровня в службе приложений. Никаких кредитных карт и обязательств.
+> Tooget работы в службе приложений Azure перед регистрацией учетную запись Azure, перейдите слишком[повторите служб приложений](https://azure.microsoft.com/try/app-service/), в котором можно немедленно создать кратковременных начальный веб-приложения в службе приложений. Никаких кредитных карт и обязательств.
 > 
 > 
 
 ## Изменения
-* Руководство по переходу от веб-сайтов к службе приложений см. в статье [Служба приложений Azure и существующие службы Azure](http://go.microsoft.com/fwlink/?LinkId=529714).
+* Toohello руководство изменений из tooApp веб-сайтов службы. в разделе: [службе приложений Azure и ее влияние на существующие службы Azure](http://go.microsoft.com/fwlink/?LinkId=529714)
 
 [0]: ../redis-cache/cache-dotnet-how-to-use-azure-redis-cache.md#create-a-cache
 [1]: http://bit.ly/1t0KxBQ

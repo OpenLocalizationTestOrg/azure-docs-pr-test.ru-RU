@@ -1,5 +1,5 @@
 ---
-title: "Обзор сообщества служб мультимедиа Azure | Документация Майкрософт"
+title: "Обзор сообщества Media Services aaaAzure | Документы Microsoft"
 description: "На этой странице сообщества служб мультимедиа Azure (AMS) описаны различные возможности для получения новых сведений об AMS, ознакомления с новыми видеороликами и подкастами, а также для обратной связи, с помощью которой вы можете задавать вопросы и отправлять отзывы. "
 services: media-services
 documentationcenter: 
@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 07/17/2017
 ms.author: juliako
-ms.openlocfilehash: ef77ed3a4efee7ebcdd716376be78db38ce46f8f
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 97329ef099752506af6ec6947a88a00c35d141a3
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-media-services-community"></a>Сообщество служб мультимедиа Azure
 На этой странице сообщества служб мультимедиа Azure (AMS) описаны различные возможности для получения новых сведений об AMS, ознакомления с новыми видеороликами и подкастами, а также для обратной связи, с помощью которой вы можете задавать вопросы и отправлять отзывы.   
@@ -37,10 +37,10 @@ ms.lasthandoff: 08/29/2017
 
 ## <a name="discussion"></a>Обсуждение
 ### <a name="twitter"></a>Twitter
-Используйте дескриптор [@MSFTAzureMedia](https://twitter.com/MSFTAzureMedia) для подписки на новости AMS и обновления в Twitter. Вы можете использовать дескриптор [@AzureSupport](https://twitter.com/azuresupport) для запроса поддержки в Twitter.  
+Используйте hello [ @MSFTAzureMedia ](https://twitter.com/MSFTAzureMedia) twitter дескриптор toofollow hello AMS новости и обновления в Twitter. Можно использовать hello [ @AzureSupport ](https://twitter.com/azuresupport) twitter поддержки toorequest дескриптор в Twitter.  
 
 ### <a name="online-forums"></a>Интернет-форумы
-Можно использовать указанные ниже форумы для отправки вопросов о существующих продуктах и функциях.
+Hello ниже форумы можно использовать для вопросов о текущие продукты и компоненты.
 
 В настоящее время MSDN является основным форумом по вопросам AMS.
 
@@ -48,10 +48,10 @@ ms.lasthandoff: 08/29/2017
 
 [![StackOverflow](./media/media-services-community/stack-overflow.png)](http://stackoverflow.com/questions/tagged/azure-media-services) 
 
-## <a name="contact-the-team"></a>Связаться с командой
+## <a name="contact-hello-team"></a>Обратитесь в службу hello команды
 Основной адрес электронной почты для служб мультимедиа Azure: **mediaservices@microsoft.com**.
 
-В следующей таблице перечислены адреса электронной почты подгрупп разработчиков различных функций.
+Hello в следующей таблице перечислены функции подкоманд адреса электронной почты.
 
 | Функция | Email |
 | --- | --- |

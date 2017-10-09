@@ -1,6 +1,6 @@
 ---
-title: "Создание решений для управления в Operations Management Suite (OMS) | Документация Майкрософт"
-description: "Решения для управления расширяют функции консоли Operations Management Suite (OMS), предоставляя упакованные сценарии управления, которые клиенты могут добавить в свое рабочее пространство OMS.  В этой статье описано, как создавать решения для управления, которые можно использовать в своей среде или предоставлять другим пользователям."
+title: "aaaCreating решения для управления в Operations Management Suite (OMS) | Документы Microsoft"
+description: "Решения для управления расширить функциональность hello Operations Management Suite (OMS), предоставляя сценариев пакете управления, клиентам можно добавить tootheir рабочей области OMS.  Эта статья содержит сведения по созданию toobe решений управления используется в вашей рабочей среде или сделаны доступными tooyour клиентов."
 services: operations-management-suite
 documentationcenter: 
 author: bwren
@@ -15,22 +15,22 @@ ms.workload: infrastructure-services
 ms.date: 04/30/2017
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ee3462c13101d18921dc488b08c79e1e4e02ff3a
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: f408df1b21f519fd1eb2cbeb19cca18f6c4161f5
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="creating-a-management-solution-file-in-operations-management-suite-oms-preview"></a>Создание файла решения по управлению в Operations Management Suite (OMS) (предварительная версия)
 > [!NOTE]
-> Это предварительная документация для создания решений для управления в консоли OMS, которая доступна в данный момент в режиме предварительной версии. Любые схемы, приведенные ниже, могут измениться.  
+> Это предварительная документация для создания решений для управления в консоли OMS, которая доступна в данный момент в режиме предварительной версии. Ни одной схеме, описанной ниже — toochange субъекта.  
 
-Решения по управлению в Operations Management Suite (OMS) реализованы в виде [шаблонов Resource Manager](../azure-resource-manager/resource-manager-template-walkthrough.md).  Поэтому создание решения для управления — это, по сути, [создание шаблона](../azure-resource-manager/resource-group-authoring-templates.md).  В этой статье подробно описываются шаблоны, используемые для решений, а также способы настойки ресурсов для типичного решения.
+Решения по управлению в Operations Management Suite (OMS) реализованы в виде [шаблонов Resource Manager](../azure-resource-manager/resource-manager-template-walkthrough.md).  Основная задача Hello при изучении способ обучения tooauthor решения для управления как слишком[создания шаблона](../azure-resource-manager/resource-group-authoring-templates.md).  Эта статья содержит уникальные сведения шаблонов, используемых решениями и каким образом ресурсы tooconfigure стандартного решения.
 
 
 ## <a name="tools"></a>Средства
 
-Для работы с файлами решения можно использовать любой текстовый редактор, но мы рекомендуем использовать компоненты, предоставляемые в Visual Studio или Visual Studio Code, как описано в следующих статьях.
+Можно использовать любой текстовый редактор toowork файлы решений, но рекомендуется использование возможностей hello, представлены в Visual Studio или кода Visual Studio, как описано в следующих статей hello.
 
 - [Создание и развертывание групп ресурсов Azure с помощью Visual Studio](../azure-resource-manager/vs-azure-tools-resource-groups-deployment-projects-create-deploy.md)
 - [Работа с шаблонами Azure Resource Manager в Visual Studio Code](../azure-resource-manager/resource-manager-vs-code.md)
@@ -39,7 +39,7 @@ ms.lasthandoff: 07/11/2017
 
 
 ## <a name="structure"></a>structure
-Базовая структура файла решения для управления аналогична структуре [шаблона Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md#template-format) и выглядит следующим образом.  В следующих разделах описаны элементы верхнего уровня и их содержимое в решении.  
+Базовая структура файла решения управления Hello Здравствуйте, таким же, как [шаблона диспетчера ресурсов](../azure-resource-manager/resource-group-authoring-templates.md#template-format) которой выглядит следующим образом.  В следующих разделах hello описаны элементы верхнего уровня hello и и их содержимое в решении.  
 
     {
        "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
@@ -51,11 +51,11 @@ ms.lasthandoff: 07/11/2017
     }
 
 ## <a name="parameters"></a>Параметры
-[Параметры](../azure-resource-manager/resource-group-authoring-templates.md#parameters) — это значения, которые пользователь указывает при установке решения для управления.  Существуют стандартные параметры для всех решений. При необходимости можно добавить дополнительные параметры для конкретного решения.  Каким образом пользователи будут указывать значения параметров при установке решения, будет зависеть от конкретного параметра и способа установки решения.
+[Параметры](../azure-resource-manager/resource-group-authoring-templates.md#parameters) являются значениями, которые требуют от пользователя hello при установке решения по управлению hello.  Существуют стандартные параметры для всех решений. При необходимости можно добавить дополнительные параметры для конкретного решения.  Как пользователи будут указывать значения параметров при установке решения будет зависеть от определенного параметра hello и установка решения hello.
 
-Если пользователь устанавливает решение для управления с помощью [Azure Marketplace](operations-management-suite-solutions.md#finding-and-installing-management-solutions) или [шаблонов быстрого запуска Azure](operations-management-suite-solutions.md#finding-and-installing-management-solutions), ему будет предложено выбрать [рабочую область OMS и учетную запись службы автоматизации](operations-management-suite-solutions.md#oms-workspace-and-automation-account).  Их используют для заполнения значений для каждого из стандартных параметров.  Здесь пользователю совсем не обязательно указывать значения для всех стандартных параметров, а только для дополнительных.
+Если пользователь устанавливает решение управления через hello [Azure Marketplace](operations-management-suite-solutions.md#finding-and-installing-management-solutions) или [быстрый запуск Azure шаблоны](operations-management-suite-solutions.md#finding-and-installing-management-solutions) они являются запрашиваемые tooselect [OMS рабочей области и учетной записи автоматизации ](operations-management-suite-solutions.md#oms-workspace-and-automation-account).  Это используется toopopulate hello значения каждого из стандартных параметров hello.  Hello пользователю не предлагается toodirectly указать значения для стандартных параметров hello, но они запрашиваемые tooprovide значения для всех дополнительных параметров.
 
-При установке решения [другим способом](operations-management-suite-solutions.md#finding-and-installing-management-solutions) пользователю нужно указать значения для всех стандартных и дополнительных параметров.
+Когда hello пользователь устанавливает решение [другой метод](operations-management-suite-solutions.md#finding-and-installing-management-solutions), они должны предоставить значение для всех стандартных параметров и все дополнительные параметры.
 
 Ниже приведен пример параметра.  
 
@@ -67,20 +67,20 @@ ms.lasthandoff: 07/11/2017
             "category": "Schedule"
         }
 
-В следующей таблице описываются атрибуты параметра.
+Привет, в следующей таблице описываются атрибуты hello параметра.
 
 | Атрибут | Description (Описание) |
 |:--- |:--- |
-| type |Тип данных для параметра. Элемент управления вводом, отображаемый для пользователя, зависит от типа данных.<br><br>bool — раскрывающийся список<br>string — текстовое поле<br>int — текстовое поле<br>securestring — поле для ввода пароля<br> |
-| category |Необязательная категория для параметра.  Параметры одной категории группируются. |
-| control |Дополнительная функция для строковых параметров.<br><br>datetime — отображается элемент управления для даты и времени.<br>guid — значение GUID создается автоматически и параметр не отображается. |
-| Описание |Необязательное описание параметра.  Отображается в информационном всплывающем предупреждении возле параметра. |
+| type |Тип данных параметра hello. Hello управления вводом, отображаемый для пользователя hello зависит от типа данных hello.<br><br>bool — раскрывающийся список<br>string — текстовое поле<br>int — текстовое поле<br>securestring — поле для ввода пароля<br> |
+| category |Необязательный категорию параметра hello.  Параметры в одной категории группируются hello. |
+| control |Дополнительная функция для строковых параметров.<br><br>datetime — отображается элемент управления для даты и времени.<br>Идентификатор GUID - значение идентификатора Guid формируется автоматически и не отображается параметр hello. |
+| Описание |Необязательное описание для параметра hello.  Отображаются сведения всплывающей Далее toohello параметр. |
 
 ### <a name="standard-parameters"></a>Стандартные параметры
-В следующей таблице перечислены стандартные параметры для всех решений для управления.  Эти значения заполняются автоматически, а не предлагаются для заполнения пользователем при установке решения из Azure Marketplace или с помощью шаблонов быстрого запуска.  Пользователь должен указать значения для стандартных параметров, если решение устанавливается другим способом.
+Hello следующей таблице перечислены стандартные параметры hello для всех решений управления.  Эти значения будут заполнены пользователем hello вместо запроса их при установке решения на основе шаблонов hello Azure Marketplace или краткое руководство.  необходимо указать значения для них Hello пользователя, если hello решение устанавливается с помощью другого метода.
 
 > [!NOTE]
-> Пользовательский интерфейс в Azure Marketplace и шаблонах быстрого запуска ожидает ввода имен параметров, указанных в таблице.  При использовании других имен параметров пользователю будет предложено указать их, они не будут указаны автоматически.
+> пользовательский интерфейс Hello в шаблонах Azure Marketplace и примеры использования hello ожидает hello имена параметров в таблице hello.  Если вы используете разные имена параметров затем hello пользователя будет запрашиваться их и они будут заполнены автоматически.
 >
 >
 
@@ -88,13 +88,13 @@ ms.lasthandoff: 07/11/2017
 |:--- |:--- |:--- |
 | accountName |строка |Учетная запись службы автоматизации Azure. |
 | pricingTier |string |Ценовая категория рабочей области Log Analytics и учетной записи службы автоматизации Azure. |
-| regionId |строка |Регион службы автоматизации Azure. |
-| solutionName |строка |Имя решения.  При развертывании решения с использованием шаблонов быстрого запуска следует указать solutionName как параметр, чтобы можно было определить строку и не требовалось, чтобы ее указывал пользователь. |
+| regionId |string |Область hello учетной записи службы автоматизации Azure. |
+| solutionName |string |Имя решения hello.  При развертывании решения через примеры использования шаблонов, то следует определить имя_решения как параметр, можно определить строку, вместо необходимости toospecify пользователя hello один. |
 | workspaceName |строка |Имя рабочей области Log Analytics. |
-| workspaceRegionId |строка |Регион рабочего пространства Log Analytics. |
+| workspaceRegionId |string |Области рабочей области аналитики журналов hello. |
 
 
-Ниже приведена структура стандартных параметров, которую можно скопировать и вставить в файл решения.  
+Ниже приведен структуры hello hello стандартных параметров, которые можно скопировать и вставить в файл решения.  
 
     "parameters": {
         "workspaceName": {
@@ -112,13 +112,13 @@ ms.lasthandoff: 07/11/2017
         "workspaceRegionId": {
                "type": "string",
                "metadata": {
-                   "description": "Region of the Log Analytics workspace"
+                   "description": "Region of hello Log Analytics workspace"
             }
         },
         "regionId": {
             "type": "string",
             "metadata": {
-                "description": "Region of the Azure Automation account"
+                "description": "Region of hello Azure Automation account"
             }
         },
         "pricingTier": {
@@ -130,10 +130,10 @@ ms.lasthandoff: 07/11/2017
     }
 
 
-Ссылки на значения параметров в других элементах решения создаются с помощью синтаксиса **parameters('имя_параметра')**.  Например, для доступа к имени рабочей области можно использовать **parameters('имя_рабочей_области')**.
+Ссылки tooparameter значения в других элементах hello решения с использованием синтаксиса hello **параметры ("имя параметра")**.  Например, tooaccess Здравствуйте имя рабочей области, можно использовать **parameters('workspaceName')**
 
 ## <a name="variables"></a>Переменные
-[Переменные](../azure-resource-manager/resource-group-authoring-templates.md#variables) представляют собой значения, которые будут использоваться в остальной части решения по управлению.  Эти значения невидимы для пользователя, который устанавливает решение.  Их задача — обеспечить пользователя единым расположением для управления значениями, которые в решении могут использоваться многократно. Все значения для решения следует поместить в переменные, а не прямо указывать их в элементе **resources** в коде.  Таким образом код становится более удобным для чтения. Кроме того, в этом случае значения можно легко изменить в более поздних версиях.
+[Переменные](../azure-resource-manager/resource-group-authoring-templates.md#variables) — это значения, которые будут использоваться в hello остальной части решения по управлению hello.  Эти значения не предоставляется toohello пользователь, устанавливающий hello решения.  Они являются предполагаемого tooprovide hello автору, с одного места, где ими значения, которые могут использоваться несколько раз на протяжении hello решения. Решения определенных tooyour значения должны быть помещены в переменные как противоположность toohard кодировать их в hello **ресурсов** элемента.  Это повышает удобочитаемость кода hello и предоставляет tooeasily изменения этих значений в более поздних версиях.
 
 Ниже приведен пример элемента **variables** с типичные параметрами, используемыми в решениях.
 
@@ -145,9 +145,9 @@ ms.lasthandoff: 07/11/2017
         "AutomationApiVersion": "2015-10-31"
     },
 
-Обращаться к значениям переменных в рамках решения можно с помощью синтаксиса **variables('имя_переменной')**.  Например, для доступа к переменной SolutionName можно использовать синтаксис **variables('имя_решения')**.
+Ссылки toovariable значений с помощью решения hello синтаксису hello **переменных ("имя переменной")**.  Например, tooaccess Здравствуйте имя_решения переменной, следует использовать **variables('SolutionName')**.
 
-Кроме того, можно определить сложные переменные как несколько наборов значений.  Это особенно удобно в решениях по управлению, где для разных типов ресурсов определяется несколько свойств.  Например, можно изменить структуру переменных решения выше, чтобы они выглядели следующим образом.
+Кроме того, можно определить сложные переменные как несколько наборов значений.  Это особенно удобно в решениях по управлению, где для разных типов ресурсов определяется несколько свойств.  Например вы измените показанный выше toohello следующие переменные решения hello.
 
     "variables": {
         "Solution": {
@@ -159,20 +159,20 @@ ms.lasthandoff: 07/11/2017
         "AutomationApiVersion": "2015-10-31"
     },
 
-В этом случае обращаться к значениям переменных в рамках решения можно с помощью синтаксиса **variables('имя_переменной').property**.  Например, для доступа к переменной SolutionName можно использовать синтаксис **variables('решение').Name**.
+В этом случае ссылки toovariable значений с помощью решения hello синтаксису hello **variables('variable name').property**.  Например, tooaccess Здравствуйте переменной имя решения, следует использовать **variables('Solution'). Имя**.
 
 ## <a name="resources"></a>Ресурсы
-Элемент [Resources](../azure-resource-manager/resource-group-authoring-templates.md#resources) определяет различные ресурсы, которые будет устанавливать и настраивать решение по управлению.  Это самая крупная и сложная часть шаблона.  Структуру и полное описание элементов ресурсов см. в статье [Создание шаблонов Azure Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md#resources).  В других статьях этой документации описаны различные ресурсы, которые обычно определяются. 
+[Ресурсы](../azure-resource-manager/resource-group-authoring-templates.md#resources) определить hello различных ресурсов, которые будут устанавливать и настраивать решения по управлению.  Это будет наибольшее hello и самые сложные части шаблона hello.  Можно получить структуру hello и полное описание элементов ресурсов в [шаблоны разработки Azure Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md#resources).  В других статьях этой документации описаны различные ресурсы, которые обычно определяются. 
 
 
 ### <a name="dependencies"></a>Зависимости
-Элемент **dependsOn** указывает [зависимость](../azure-resource-manager/resource-group-define-dependencies.md) от другого ресурса.  При установке решения ресурс не создается, пока не будут созданы все его зависимости.  Например, при установке решение может [запустить модуль Runbook](operations-management-suite-solutions-resources-automation.md#runbooks) с помощью [ресурса задания](operations-management-suite-solutions-resources-automation.md#automation-jobs).  Ресурс задания будет зависеть от ресурса модуля Runbook. Таким образом обеспечивается создание модуля Runbook до задания.
+Hello **dependsOn** указывает элементы [зависимостей](../azure-resource-manager/resource-group-define-dependencies.md) на другой ресурс.  При установке решения hello ресурса не создается, пока все его зависимости были созданы.  Например, при установке решение может [запустить модуль Runbook](operations-management-suite-solutions-resources-automation.md#runbooks) с помощью [ресурса задания](operations-management-suite-solutions-resources-automation.md#automation-jobs).  ресурс Hello заданий будет зависеть от hello runbook ресурсов toomake том, что для этого модуля hello создается перед созданием задания hello.
 
 ### <a name="oms-workspace-and-automation-account"></a>Рабочая область OMS и учетная запись службы автоматизации
-Решения для управления требуют [рабочую область OMS](../log-analytics/log-analytics-manage-access.md) для хранения представлений и [учетную запись службы автоматизации](../automation/automation-security-overview.md#automation-account-overview) для хранения модулей Runbook и связанных ресурсов.  К ним нужно предоставить доступ перед созданием ресурсов решения. Их не нужно определять в самом решении.  Пользователь указывает [рабочую область и учетную запись](operations-management-suite-solutions.md#oms-workspace-and-automation-account) при развертывании решения. Однако разработчик решения должен учитывать следующие моменты.
+Решения управления требуют [рабочей области OMS](../log-analytics/log-analytics-manage-access.md) toocontain представления и [учетной записи автоматизации](../automation/automation-security-overview.md#automation-account-overview) toocontain модулей Runbook и ресурсы, связанные с.  Они должны быть доступны перед hello ресурсы в hello решения создаются и не должен быть определен в самом решении hello.  Hello пользователя будет [укажите рабочую область и учетную запись](operations-management-suite-solutions.md#oms-workspace-and-automation-account) при развертывании решения, но разработчики hello следует после точки hello.
 
 ## <a name="solution-resource"></a>Ресурс решения
-Для каждого решения требуется запись ресурса в элементе **resources**, который определяет само решение.  Ресурс представлен типом **Microsoft.OperationsManagement/solutions** и имеет следующую структуру. К ним относятся [стандартные параметры](#parameters) и [переменные](#variables), которые, как правило, используются для определения свойств решения.
+Каждое решение требует запись ресурса в hello **ресурсов** элемент, определяющий само решение hello.  Это будет иметь тип **Microsoft.OperationsManagement/solutions** и имеют следующие структуры hello. Сюда входят [стандартные параметры](#parameters) и [переменных](#variables) , являются типовыми toodefine свойствами hello решения.
 
 
     {
@@ -206,41 +206,41 @@ ms.lasthandoff: 07/11/2017
 
 
 ### <a name="dependencies"></a>Зависимости
-Ресурс решения должен содержать [зависимость](../azure-resource-manager/resource-group-define-dependencies.md) от всех ресурсов решения, так как их нужно создать до решения.  Это можно сделать, добавив запись для каждого ресурса в элемент **dependsOn**.
+Hello решения ресурс должен иметь [зависимостей](../azure-resource-manager/resource-group-define-dependencies.md) на каждый ресурс в решении hello, так как они должны tooexist перед созданием hello решения.  Это делается путем добавления записи для каждого ресурса в hello **dependsOn** элемента.
 
 ### <a name="properties"></a>Свойства
-У ресурса решения есть свойства, приведенные в таблице ниже.  Сюда входят ресурсы, на которые решение ссылается и которые оно содержит. Это и определяет, как будет осуществляться управление ресурсом после установки решения.  Каждый ресурс в решении должен быть указан в одном из свойств: **referencedResources** или **containedResources**.
+Библиотека ресурсов Hello имеет свойства hello в следующей таблице hello.  Сюда входят ресурсы hello ссылки и принадлежащих hello решение, которое определяет управление hello ресурсов после установки решения для hello.  Каждый ресурс в решении hello должна быть указана в любом hello **referencedResources** или hello **containedResources** свойство.
 
 | Свойство | Описание |
 |:--- |:--- |
-| workspaceResourceId |Идентификатор рабочей области Log Analytics в формате *<Resource Group ID>/providers/Microsoft.OperationalInsights/workspaces/\<имя_рабочей_области\>*. |
-| referencedResources |Список ресурсов решения, которые не будут удалены при удалении решения. |
-| containedResources |Список ресурсов решения, которые будут удалены при удалении решения. |
+| workspaceResourceId |Идентификатор рабочей области аналитики журналов hello в форме hello  *<Resource Group ID>/providers/Microsoft.OperationalInsights/workspaces/\<имя рабочей области\>*. |
+| referencedResources |Список ресурсов в решении hello, который не должен быть удален при удалении решения hello. |
+| containedResources |Список ресурсов в решении hello, который должен быть удален при удалении решения hello. |
 
-Приведенный выше пример предназначен для решения с модулем Runbook, расписанием и представлением.  На расписание и модуль Runbook *ссылается* элемент **properties**, поэтому они не будут удалены вместе с решением.  Представление *содержится* в решении, поэтому будет удалено при удалении решения.
+пример Hello выше предназначен для решения с runbook, расписание и представления.  расписание Hello и runbook *упоминаемого* в hello **свойства** элемента, поэтому они не удаляются при удалении решения hello.  представление Hello *содержится* , он удаляется при удалении решения hello.
 
 ### <a name="plan"></a>План
-Свойства сущности **plan** ресурса решения приведены в таблице ниже.
+Hello **плана** сущность hello решения ресурса имеет свойства hello в hello в следующей таблице.
 
 | Свойство | Description (Описание) |
 |:--- |:--- |
-| name |Имя решения. |
-| версия |Версия решения, указанная разработчиком. |
-| product |Уникальная строка для определения решения. |
-| publisher |Издатель решения. |
+| name |Имя решения hello. |
+| версия |Версия решения hello определяется автором hello. |
+| product |Уникальная строка tooidentify hello решения. |
+| publisher |Издатель решения hello. |
 
 
 
 ## <a name="sample"></a>Образец
-Примеры файлов решения с ресурсом решения см. в следующих статьях.
+Образцы файлов решения с ресурсом решения можно просмотреть в следующих расположения hello.
 
-- [Automation resources](operations-management-suite-solutions-resources-automation.md#sample) (Ресурсы службы автоматизации)
+- [Ресурсы службы автоматизации](operations-management-suite-solutions-resources-automation.md#sample)
 - [Сохраненные поиски и оповещения Log Analytics в решениях OMS (предварительная версия)](operations-management-suite-solutions-resources-searches-alerts.md#sample)
 
 
 ## <a name="next-steps"></a>Дальнейшие действия
-* [Добавьте сохраненные поиски и оповещения](operations-management-suite-solutions-resources-searches-alerts.md) в решение для управления.
-* [Добавьте представления](operations-management-suite-solutions-resources-views.md) в решение для управления.
-* [Добавьте модули Runbook и другие ресурсы службы автоматизации](operations-management-suite-solutions-resources-automation.md) в решение по управлению.
-* Узнайте больше о [создании шаблонов Azure Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md).
+* [Добавьте сохраненные поисковые запросы и оповещения](operations-management-suite-solutions-resources-searches-alerts.md) tooyour решение для управления.
+* [Добавление представления](operations-management-suite-solutions-resources-views.md) tooyour решение для управления.
+* [Добавление модулей Runbook и другие ресурсы автоматизации](operations-management-suite-solutions-resources-automation.md) tooyour решение для управления.
+* Узнайте подробности hello [шаблоны разработки Azure Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md).
 * Найдите в коллекции [шаблонов быстрого запуска Azure](https://azure.microsoft.com/documentation/templates) примеры разных шаблонов Resource Manager.

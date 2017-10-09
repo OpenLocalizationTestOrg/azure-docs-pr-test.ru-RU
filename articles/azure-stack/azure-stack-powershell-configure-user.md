@@ -1,6 +1,6 @@
 ---
-title: "Настройка среды PowerShell пользователя стек Azure | Документы Microsoft"
-description: "Настройка среды PowerShell пользователя стек Azure"
+title: "Среда PowerShell aaaConfigure hello Azure стека пользователя | Документы Microsoft"
+description: "Настройка среды PowerShell hello Azure стека пользователя"
 services: azure-stack
 documentationcenter: 
 author: SnehaGunda
@@ -14,31 +14,31 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/18/2017
 ms.author: sngun
-ms.openlocfilehash: dabbd83fb35397f2cf90fac5957d299f0c5d446e
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 8e7ccea24a1917d349ab06e0abe29f534b47b5d3
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="configure-the-azure-stack-users-powershell-environment"></a>Настройка среды PowerShell пользователя стек Azure
+# <a name="configure-hello-azure-stack-users-powershell-environment"></a>Настройка среды PowerShell hello Azure стека пользователя
 
-Как пользователь с стек Azure можно настроить пакет средств Azure стека разработки среды PowerShell. После настройки, можно использовать PowerShell для управления Azure стека, ресурсы, такие как подписаться на предложения, создания виртуальных машин, развернуть шаблоны Azure Resource Manager и т. д. В этом разделе предназначена для использования с этим пользователем, в средах, если вы хотите настроить PowerShell оператор к облачной среде относятся только к [настройки среды PowerShell оператор стек Azure](azure-stack-powershell-configure-admin.md) раздела. 
+Как пользователь с стек Azure можно настроить пакет средств Azure стека разработки среды PowerShell. После настройки, можно использовать PowerShell toomanage стека Azure ресурсов, таких как подписаться toooffers, создания виртуальных машин, развертывание шаблонов диспетчера ресурсов Azure и т. д. В этом разделе с областью toouse с hello пользовательских сред, следует tooset копирование PowerShell для hello облачной среде оператор обратитесь toohello [настройки среды PowerShell hello Azure стека оператор](azure-stack-powershell-configure-admin.md) раздела. 
 
 ## <a name="prerequisites"></a>Предварительные требования 
 
-Выполнить следующие предварительные требования, либо из [пакет средств разработки](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-remote-desktop), или из внешнего клиента Windows в случае [подключен через виртуальную частную сеть](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-vpn):
+Запустите hello следующие необходимые компоненты из hello [пакет средств разработки](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-remote-desktop), или из внешнего клиента Windows в случае [подключен через виртуальную частную сеть](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-vpn):
 
 * Установка [модули Azure PowerShell Azure стека совместимой](azure-stack-powershell-install.md).  
-* Загрузить [инструменты, необходимые для работы с Azure стека](azure-stack-powershell-download.md). 
+* Загрузите hello [toowork необходимые средства с Azure стека](azure-stack-powershell-download.md). 
 
-## <a name="configure-the-user-environment-and-sign-in-to-azure-stack"></a>Настройка среды пользователя и войти в стек Azure
+## <a name="configure-hello-user-environment-and-sign-in-tooazure-stack"></a>Настройка среды пользователя hello и вход tooAzure стека
 
-В зависимости от типа развертывания (Azure AD или AD FS), выполните одну из следующий скрипт, чтобы настроить PowerShell для Azure стека:
+В зависимости от типа развертывания (Azure AD или AD FS), выполните одну из следующих tooconfigure сценария PowerShell для Azure стека hello hello:
 
 ### <a name="azure-active-directory-aad-based-deployments"></a>Azure Active Directory (AAD) на основе развертываний
        
   ```powershell
-  # Navigate to the downloaded folder and import the **Connect** PowerShell module
+  # Navigate toohello downloaded folder and import hello **Connect** PowerShell module
   Set-ExecutionPolicy RemoteSigned
   Import-Module .\Connect\AzureStack.Connect.psm1
 
@@ -47,17 +47,17 @@ ms.lasthandoff: 08/29/2017
     -Name "AzureStackUser" `
     -ArmEndpoint "https://management.local.azurestack.external"
 
-  # Set the GraphEndpointResourceId value
+  # Set hello GraphEndpointResourceId value
   Set-AzureRmEnvironment `
     -Name "AzureStackUser" `
     -GraphAudience "https://graph.windows.net/"
 
-  # Get the Active Directory tenantId that is used to deploy Azure Stack
+  # Get hello Active Directory tenantId that is used toodeploy Azure Stack
   $TenantID = Get-AzsDirectoryTenantId `
     -AADTenantName "<myDirectoryTenantName>.onmicrosoft.com" `
     -EnvironmentName "AzureStackUser"
 
-  # Sign in to your environment
+  # Sign in tooyour environment
   Login-AzureRmAccount `
     -EnvironmentName "AzureStackUser" `
     -TenantId $TenantID 
@@ -66,7 +66,7 @@ ms.lasthandoff: 08/29/2017
 ### <a name="active-directory-federation-services-ad-fs-based-deployments"></a>Службы федерации Active Directory (AD FS) на основе развертываний 
           
   ```powershell
-  # Navigate to the downloaded folder and import the **Connect** PowerShell module
+  # Navigate toohello downloaded folder and import hello **Connect** PowerShell module
   Set-ExecutionPolicy RemoteSigned
   Import-Module .\Connect\AzureStack.Connect.psm1
 
@@ -75,18 +75,18 @@ ms.lasthandoff: 08/29/2017
     -Name "AzureStackUser" `
     -ArmEndpoint "https://management.local.azurestack.external"
 
-  # Set the GraphEndpointResourceId value
+  # Set hello GraphEndpointResourceId value
   Set-AzureRmEnvironment `
     -Name "AzureStackUser" `
     -GraphAudience "https://graph.local.azurestack.external/" `
     -EnableAdfsAuthentication:$true
 
-  # Get the Active Directory tenantId that is used to deploy Azure Stack     
+  # Get hello Active Directory tenantId that is used toodeploy Azure Stack     
   $TenantID = Get-AzsDirectoryTenantId `
     -ADFS `
     -EnvironmentName "AzureStackUser"
 
-  # Sign in to your environment
+  # Sign in tooyour environment
   Login-AzureRmAccount `
     -EnvironmentName "AzureStackUser" `
     -TenantId $TenantID 
@@ -94,7 +94,7 @@ ms.lasthandoff: 08/29/2017
 
 ## <a name="register-resource-providers"></a>Регистрация поставщиков ресурсов
 
-При работе на только что созданного пользователя подписку, которая не содержит все ресурсы, развертываемые на портале поставщиков ресурсов не регистрируются автоматически. Следует явно регистрировать их с помощью следующего сценария:
+При работе на только что созданного пользователя подписку, которая не содержит все ресурсы, развертываемые через портал hello поставщиков ресурсов hello не регистрируются автоматически. Следует явным образом их необходимо зарегистрировать с помощью hello следующий скрипт:
 
 ```powershell
 foreach($s in (Get-AzureRmSubscription)) {
@@ -104,9 +104,9 @@ Get-AzureRmResourceProvider -ListAvailable | Register-AzureRmResourceProvider -F
     } 
 ```
 
-## <a name="test-the-connectivity"></a>Проверка подключения
+## <a name="test-hello-connectivity"></a>Проверка подключения hello
 
-Теперь, когда у нас есть все настройки, воспользуемся PowerShell для создания ресурсов в Azure стека. Например можно создать группу ресурсов для приложения и добавить виртуальную машину. Создать группу ресурсов с именем «MyResourceGroup», используйте следующую команду:
+Теперь, когда у нас есть все настройки, воспользуемся PowerShell toocreate ресурсов в Azure стека. Например можно создать группу ресурсов для приложения и добавить виртуальную машину. Hello используется следующая команда toocreate группу ресурсов с именем «MyResourceGroup»:
 
 ```powershell
 New-AzureRmResourceGroup -Name "MyResourceGroup" -Location "Local"

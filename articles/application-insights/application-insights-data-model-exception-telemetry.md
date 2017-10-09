@@ -1,5 +1,5 @@
 ---
-title: "Модель данных телеметрии Azure Application Insights — телеметрия исключений | Документы Майкрософт"
+title: "aaaAzure модели данных телеметрии приложения аналитики - исключение телеметрии | Документы Microsoft"
 description: "Модель данных Application Insights для телеметрии исключений"
 services: application-insights
 documentationcenter: .net
@@ -12,19 +12,19 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 04/25/2017
 ms.author: bwren
-ms.openlocfilehash: 6b220b0cb6719bac606f599d657d08ab847c7590
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 4c2b7d1ac3816d5623db9a35819a48a68a13a9cd
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="exception-telemetry-application-insights-data-model"></a>Телеметрия исключений: модель данных Application Insights
 
-В [Application Insights](app-insights-overview.md) экземпляр исключения представляет обработанное или необработанное исключение, возникшее во время выполнения отслеживаемого приложения.
+В [Application Insights](app-insights-overview.md), обработано или необработанное исключение, которое произошло во время выполнения приложения hello отслеживаемых представляет экземпляр исключения.
 
 ## <a name="problem-id"></a>Идентификатор проблемы
 
-Идентификатор места в коде, где возникло исключение. Используется для группирования исключений. Обычно это сочетание типа исключения и функции из стека вызовов.
+Идентификатор где hello возникло исключение в коде. Используется для группирования исключений. Обычно сочетание тип исключения и функцию из стека вызовов hello.
 
 Максимальная длина: 1024 символа
 
@@ -34,7 +34,7 @@ ms.lasthandoff: 08/18/2017
 
 ## <a name="exception-details"></a>Сведения об исключении
 
-(Эти сведения будут добавлены позже.)
+(расширенный toobe)
 
 ## <a name="custom-properties"></a>Пользовательские свойства
 
@@ -47,5 +47,5 @@ ms.lasthandoff: 08/18/2017
 ## <a name="next-steps"></a>Дальнейшие действия
 
 - В [этой статье](application-insights-data-model.md) представлены типы данных и модель данных для Application Insights.
-- Вы можете научиться [диагностировать исключения в веб-приложениях с помощью Application Insights](app-insights-asp-net-exceptions.md).
+- Узнайте, каким образом слишком[диагностики исключений в веб-приложения с помощью Application Insights](app-insights-asp-net-exceptions.md).
 - Ознакомление с [платформами](app-insights-platforms.md), поддерживаемыми Application Insights.

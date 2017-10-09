@@ -1,12 +1,12 @@
 ---
 title: "Приступая к работе с устройством SensorTag и шлюзом Azure IoT | Документация Майкрософт"
-description: "Приступая к работе с начальным набором для шлюза Azure IoT, создание Центра Интернета вещей Azure и подключение шлюза и SensorTag к Центру Интернета вещей"
+description: "Приступая к работе с IoT шлюза начального набора, создать ваш центр Azure IoT Подключите концентратор IoT toohello SensorTag и шлюза"
 services: iot-hub
 documentationcenter: 
 author: shizn
 manager: timtl
 tags: 
-keywords: "Центр Интернета вещей Azure, шлюз Интернета вещей, приступая к работе с Интернетом вещей, инструментарий Интернета вещей"
+keywords: "Azure iot hub, шлюз iot, Приступая к работе с hello Интернет вещей, набор средств iot"
 ROBOTS: NOINDEX
 redirect_url: /azure/iot-hub/iot-hub-gateway-kit-c-lesson1-set-up-nuc
 ms.assetid: 56d05f4e-f2c1-4b22-8701-f01e14deead6
@@ -17,11 +17,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/21/2017
 ms.author: xshi
-ms.openlocfilehash: 624bdc7877d5048da08897f868272fd8e8f3f7b6
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: d8e4057e7774e43c069dd3f2f2e03f098c1ac844
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="get-started-with-iot-gateway-starter-kit-with-a-sensortag"></a>Приступая к работе с начальным набором шлюза Интернета вещей
 
@@ -29,7 +29,7 @@ ms.lasthandoff: 07/11/2017
 > * [SensorTag](iot-hub-gateway-kit-c-get-started.md)
 > * [Имитация устройства](iot-hub-gateway-kit-c-sim-get-started.md)
 
-В этом руководстве вы начнете с того, что узнаете основы работы с [начальным набором для шлюза Интернета вещей](https://aka.ms/gateway-kit). Вы будете работать с Intel NUC под управлением Wind River Linux и устройством [SensorTag от Texas Instruments](http://www.ti.com/ww/en/wireless_connectivity/sensortag2015/index.html#main). Кроме того, вы узнаете, как можно легко подключать устройства к облаку с помощью Центра Интернета вещей Azure.
+В этом учебнике, начните с изучения hello основы работы с [IoT шлюза начального набора](https://aka.ms/gateway-kit). Вы будете работать с Intel NUC под управлением Linux воздушного р. и hello [TI SensorTag](http://www.ti.com/ww/en/wireless_connectivity/sensortag2015/index.html#main). Вы узнаете, как tooseamleesly подключаться toohello облачных устройств с помощью центра IoT Azure.
 
 ***
 **Нет начального набора?** Щелкните [здесь](https://aka.ms/gateway-kit). **Нет SensorTag?** [Начните имитацию устройства](iot-hub-gateway-kit-c-sim-get-started.md) или [купите SensorTag](http://www.ti.com/ww/en/wireless_connectivity/sensortag2015/?INTC=SensorTag&HQS=sensortag).
@@ -38,73 +38,73 @@ ms.lasthandoff: 07/11/2017
 ## <a name="lesson-1-configure-your-nuc"></a>Урок 1. Настройка NUC
 ![Урок 1. Сквозная схема](media/iot-hub-gateway-kit-lessons/e2e-lesson1.png)
 
-На этом уроке вы настроите Intel NUC (Next Unit of Computing) из набора в качестве шлюза Интернета вещей Azure, установите пакет Edge Интернета вещей Azure на NUC и запустите пример приложения, чтобы проверить работоспособность шлюза.
+На этом занятии настроить NUC Intel (Далее единицы для вычисления) в hello Kit виде шлюза Azure IoT, установите пакет Azure IoT Edge hello на NUC и запуска шлюза функциональность tooverify hello образца приложения.
 
-*Предполагаемое время выполнения: 15 минут.*
+*Предполагаемое время toocomplete: 15 минут*
 
-Перейдите к статье [Настройка Intel NUC в качестве шлюза Интернета вещей](iot-hub-gateway-kit-c-lesson1-set-up-nuc.md).
+Go слишком[Настройка NUC Intel виде шлюза IoT](iot-hub-gateway-kit-c-lesson1-set-up-nuc.md)
 
 ## <a name="lesson-2-create-your-iot-hub"></a>Урок 2. Создание Центра Интернета вещей
 ![Урок 2. Сквозная схема](media/iot-hub-gateway-kit-lessons/e2e-lesson2.png)
 
-В ходе этого урока вы установите инструменты и программное обеспечение на главном компьютере. Затем создадите бесплатную учетную запись Azure, подготовите Центр Интернета вещей Azure и создадите в нем первое устройство.
+На этом занятии устанавливается hello средств и программного обеспечения на компьютере узла. Затем можно создать бесплатную учетную запись Azure, подготовки ваш центр Azure IoT и создания своим первым устройством в центр IoT hello.
 
 Прежде чем продолжать, завершите урок 1.
 
-### <a name="get-the-tools"></a>Получить инструменты
-Установите инструменты и программное обеспечение на главном компьютере.
+### <a name="get-hello-tools"></a>Получить средства hello
+На главном компьютере установите hello средств и программного обеспечения.
 
-*Предполагаемое время выполнения: 20 минут*
+*Предполагаемое время toocomplete: 20 минут*
 
-Ознакомьтесь со статьей [Get the tools](iot-hub-gateway-kit-c-lesson2-get-the-tools-win32.md) (Получение инструментов).
+Go слишком[средства hello](iot-hub-gateway-kit-c-lesson2-get-the-tools-win32.md)
 
 ### <a name="create-an-iot-hub-and-register-your-device"></a>Создание Центра Интернета вещей и регистрация устройства
-Создайте группу ресурсов, подготовьте Центр Интернета вещей Azure и добавьте в него первое устройство, используя Azure CLI.
+Создание группы ресурсов, подготовки к первой центр Azure IoT и добавить вашего первого устройства toohello центр IoT с помощью hello Azure CLI.
 
-*Предполагаемое время выполнения: 10 минут*
+*Предполагаемое время toocomplete: 10 минут*
 
-Перейдите к разделу [Создание Центра Интернета вещей и регистрация устройства](iot-hub-gateway-kit-c-lesson2-register-device.md).
+Go слишком[создать центр IoT и регистрация устройства](iot-hub-gateway-kit-c-lesson2-register-device.md)
 
 ## <a name="lesson-3-receive-messages-from-sensortag-and-read-messages-from-your-iot-hub"></a>Урок 3. Получение сообщений из SensorTag и чтение сообщений из Центра Интернета вещей
-На этом уроке вы будете использовать сценарии для автоматизации настройки и выполнения примера приложения BLE в шлюзе. Такие приложения используют коллекцию модулей для агрегации и преобразования данных, обработки команд или для выполнения любого количества связанных задач. Модули взаимодействуют друг с другом через брокер сообщений. Пример приложения содержит модуль BLE и Центра Интернета вещей. Модуль BLE получает данные из SensorTag BLE. Модуль Центра Интернета вещей упаковывает полученные данные и отправляет их в Центр Интернета вещей через платформу шлюза, предоставленную в Edge Интернета вещей Azure.
+На этом занятии будет использовать конфигурации hello tooautomate сценарии и выполнение примера приложения ЛЮЧИТЬ шлюза. Такие приложения использовать коллекцию модулей tooaggregate и преобразования данных, обработки команд и выполнять любое количество связанных задач. Модули взаимодействуют друг с другом через брокер сообщений. Пример приложения Hello имеет ЛЮЧИТЬ модуля и модуль концентратора IoT. Hello ЛЮЧИТЬ модуль получает данные из SensorTag отключить. Здравствуйте, пакеты модуля концентратора IoT данных hello полученных и отправляет его центр IoT tooyour через шлюз платформы hello в Azure IoT Edge.
 
 ![Урок 3. Сквозная схема](media/iot-hub-gateway-kit-lessons/e2e-lesson3.png)
 
-### <a name="configure-and-run-the-ble-sample-app"></a>Настройка и запуск примера приложения BLE
-Настройте подключение между SensorTag и шлюзом. Затем завершите настройку и запустите пример приложения BLE.
+### <a name="configure-and-run-hello-ble-sample-app"></a>Настройка и выполнение примера приложения hello ЛЮЧИТЬ
+Настройте подключение hello между SensorTag и шлюза. Затем завершите настройку hello и запустить пример приложения hello отключить.
 
-*Предполагаемое время выполнения: 15 минут.*
+*Предполагаемое время toocomplete: 15 минут*
 
-Перейдите к статье [Настройка и запуск примера приложения BLE](iot-hub-gateway-kit-c-lesson3-configure-ble-app.md).
+Go слишком[настройки и выполнения hello ЛЮЧИТЬ пример приложения](iot-hub-gateway-kit-c-lesson3-configure-ble-app.md)
 
 ### <a name="read-messages-from-your-iot-hub"></a>Чтение сообщений из Центра Интернета вещей
-Запустите пример кода на главном компьютере для чтения сообщений из Центра Интернета вещей.
+Запустите образец кода на вашем узле компьютер tooread сообщения из вашего центра IoT.
 
-*Предполагаемое время выполнения: 15 минут.*
+*Предполагаемое время toocomplete: 15 минут*
 
-Перейдите к статье [Чтение сообщений из Центра Интернета вещей](iot-hub-gateway-kit-c-lesson3-read-messages-from-hub.md).
+Go слишком[чтения сообщений из вашего центра IoT](iot-hub-gateway-kit-c-lesson3-read-messages-from-hub.md)
 
-## <a name="lesson-4-save-messages-to-azure-table-storage"></a>Урок 4. Сохранение сообщений в Хранилище таблиц Azure
-Создайте приложение-функцию Azure, которое получает входящие сообщения из Центра Интернета вещей и записывает их в Хранилище таблиц Azure.
+## <a name="lesson-4-save-messages-tooazure-table-storage"></a>Урок 4: Сохранить сообщения tooAzure хранилище таблиц
+Создайте приложение Azure функции, которое получает входящие сообщения от вашего центра IoT и записывает их в хранилище таблиц tooAzure.
 
 ![Урок 4. Сквозная схема](media/iot-hub-gateway-kit-lessons/e2e-lesson4.png)
 
 ### <a name="create-an-azure-function-app-and-azure-storage-account"></a>Создание учетной записи хранения Azure и приложения-функции Azure
-С помощью шаблона Azure Resource Manager создайте приложение-функцию Azure и учетную запись хранения Azure.
+Используйте toocreate шаблона диспетчера ресурсов Azure, приложение Azure функции и учетную запись хранилища Azure.
 
-*Предполагаемое время выполнения: 10 минут*
+*Предполагаемое время toocomplete: 10 минут*
 
-Перейдите к статье [Создание приложения-функции Azure и учетной записи хранения Azure](iot-hub-gateway-kit-c-lesson4-deploy-resource-manager-template.md).
+Go слишком[создать учетную запись хранилища Azure и Azure функции приложения](iot-hub-gateway-kit-c-lesson4-deploy-resource-manager-template.md)
 
 ### <a name="read-messages-persisted-in-azure-table-storage"></a>Чтение сообщений, сохраненных в Хранилище таблиц Azure
-Отслеживайте сообщения, передаваемые из шлюза в облако, по мере их записывания в Хранилище таблиц Azure.
+Они записываются в хранилище таблиц tooAzure наблюдать за сообщений hello шлюза в облако.
 
-*Предполагаемое время выполнения: 5 минут*
+*Предполагаемое время toocomplete: 5 минут*
 
-Ознакомьтесь со статьей [Чтение сообщений, сохраненных в Хранилище таблиц Azure](iot-hub-gateway-kit-c-lesson4-read-table-storage.md).
+Go слишком[чтения сообщения сохраняются в хранилище таблиц Azure](iot-hub-gateway-kit-c-lesson4-read-table-storage.md).
 
 ## <a name="troubleshooting"></a>Устранение неполадок
-Если в ходе какого-либо урока у вас возникнут проблемы, то решение можно найти в статье [Troubleshooting](iot-hub-gateway-kit-c-troubleshooting.md) (Устранение неполадок).
+Если у вас возникнут проблемы во время занятия hello поиск решений в hello [Устранение неполадок](iot-hub-gateway-kit-c-troubleshooting.md) статьи.
 
 ## <a name="explore-more"></a>Изучить подробнее
-Дополнительные сведения см. на странице сообщества [Developer Zone комплекта Intel IoT Gateway](http://software.intel.com/iot/microsoft-azure).
+Посетите hello [Intel IoT шлюза для разработчика зоны](http://software.intel.com/iot/microsoft-azure) toolearn дополнительные.

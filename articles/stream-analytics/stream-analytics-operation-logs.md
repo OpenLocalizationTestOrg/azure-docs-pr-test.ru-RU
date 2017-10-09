@@ -1,6 +1,6 @@
 ---
-title: "Основные сведения о службе Stream Analytics и журналах операций | Документация Майкрософт"
-description: "Порядок работы с журналами операций Stream Analytics"
+title: "с помощью операции и служба журналов в Stream Analytics aaaDebug | Документы Microsoft"
+description: "Поток как toouse аналитика журналов операций"
 keywords: "журналы служб"
 services: stream-analytics
 documentationcenter: 
@@ -15,78 +15,78 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 03/28/2017
 ms.author: jeffstok
-ms.openlocfilehash: c95d240ebef6a84228eb98db70002792fcfbdea6
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: d3dd27706ccc879a724e1894b33d47021d972f31
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="debug-stream-analytics-jobs-using-service-and-operation-logs"></a>Основные сведения о службе Stream Analytics и журналах операций
-Все службы Azure предоставляют пользователям сообщения операционного журнала для записи данных, связанных с операциями управления. В службе Azure Stream Analytics эти данные можно использовать в целях отладки, например для просмотра состояния задания, хода его выполнения и сообщений об ошибках, а также для отслеживания хода выполнения задания с течением времени, от запуска до обработки и получения выходных данных.
+Всех служб Azure, оперативной питания ведения журнала сообщений toousers toorecord сведений о связанных с toomanagement операций. В Azure Stream Analytics эти сведения можно использовать для отладки, такие как просмотр состояния задания, ход выполнения задания и сбой сообщения tootrack hello ход выполнения задания по времени, из начала tooprocessing toooutput.
 
-## <a name="find-operation-logs-in-the-azure-management-portal"></a>Поиск журналов операций на портале управления Azure
+## <a name="find-operation-logs-in-hello-azure-management-portal"></a>Найти журналы операций на портале управления Azure hello
 Доступ к журналам операций можно получить одним из двух способов.  
 
-* Панель мониторинга задания Stream Analytics  
-* Службы управления на классическом портале Azure  
+* Панель мониторинга задания Stream Analytics hello  
+* Службы управления Azure классическом портале hello  
 
-## <a name="dashboard-of-the-stream-analytics-job"></a>Панель мониторинга задания Stream Analytics
-Ссылка на соответствующие журналы задания Stream Analytics отображается на вкладке панели мониторинга задания. При переходе по этой ссылке фильтры настраиваются на отображение последних журналов соответствующего задания.
+## <a name="dashboard-of-hello-stream-analytics-job"></a>Панель мониторинга задания Stream Analytics hello
+Ссылка toohello соответствующие журналы задания Stream Analytics отображаются на вкладке панели мониторинга hello задания. Если щелкнуть эту ссылку, установит hello фильтры таким образом, что в нем отображаются последние журналы для этого конкретного задания.
 
   ![Выбор журналов служб управления](./media/stream-analytics-operation-logs/01-stream-analytics-operation-logs.png)  
 
 ## <a name="management-services"></a>Службы управления
-Чтобы перейти к журналам операций Stream Analytics и других служб на классическом портале Azure, выполните следующие действия:
+toomanually перейдите журналы операций toohello Stream Analytics и других служб Azure в классическом портале hello:
 
-1. На **классическом портале Azure** щелкните [Службы управления](https://manage.windowsazure.com).
-2. Выберите значение **Stream Analytics** в поле **Тип** и имя задания в поле **Имя службы**.  
+1. Щелкните **служб управления** в hello [Azure классический портал](https://manage.windowsazure.com).
+2. Выберите **Stream Analytics** для **тип** и имя hello hello задания для **имя службы**.  
    
    ![Выбор Stream Analytics](./media/stream-analytics-operation-logs/02-stream-analytics-operation-logs.png)  
 
-## <a name="find-audit-logs-in-the-azure-portal"></a>Поиск журналов аудита на портале Azure
-Чтобы найти на портале Azure журналы операций для задания Stream Analytics, щелкните **Обзор** и выберите **Журналы аудита**.
+## <a name="find-audit-logs-in-hello-azure-portal"></a>Найти журналы аудита в hello портал Azure
+toofind операционные журналы для задания Stream Analytics в hello портала Azure щелкните **Обзор** , а затем выберите **журналы аудита**.
 
   ![Выбор Stream Analytics на портале Azure](./media/stream-analytics-operation-logs/06-stream-analytics-operation-logs.png)  
 
-Откроется колонка с событиями за последние 7 дней для всех ресурсов в подписке.  Вы можете применить фильтр, чтобы просмотреть события определенного типа или за указанный временной интервал, выбрав команду **Фильтр** .
+Откроется колонка событий из hello последние 7 дней для всех ресурсов в вашей подписке.  Можно отфильтровать такие события toosee, укажите тип или промежуток времени, щелкнув hello **фильтра** команды.
 
   ![Выбор Stream Analytics на портале Azure](./media/stream-analytics-operation-logs/07-stream-analytics-operation-logs.png)  
 
 ## <a name="get-log-details"></a>Получение подробных сведений журнала
-Для просмотра журналов задания можно использовать фильтры "Диапазон времени" и "Состояние".
+Можно отфильтровать диапазон времени и состояние tooview hello журналы для задания.
 
-На портале управления Azure нажмите кнопку **Сведения** в нижней части окна, чтобы увидеть дополнительные сведения о выбранном событии. 
+На портале управления Azure hello, нажмите кнопку hello **сведения** кнопку внизу hello tooview окно hello подробной информации о выбранном событии. 
 
   ![Выбор сведений](./media/stream-analytics-operation-logs/03-stream-analytics-operation-logs.png)  
 
-На портале Azure щелкните раздел журнала, чтобы просмотреть включенные в него события.
+В hello портал Azure, щелкните запись журнала toosee hello подробные события внутри него.
 
   ![Выбор подробных сведений на портале Azure](./media/stream-analytics-operation-logs/08-stream-analytics-operation-logs.png)  
 
-Здесь вы можете открыть колонку **Сведения** , щелкнув событие.
+После этого можно открыть hello **сведений** колонки, щелкнув событие hello.
 
   ![Выбор подробных сведений на портале Azure](./media/stream-analytics-operation-logs/09-stream-analytics-operation-logs.png)  
 
 ## <a name="debug-a-failed-job"></a>Отладка невыполненного задания
-На портале управления Azure нажмите значок поиска и введите "failed". Это позволит получить все журналы с ошибками. 
+На портале управления Azure hello щелкните значок поиска hello и введите «сбой». Это позволит получить все журналы с ошибками. 
 
   ![Отладка задания с ошибкой](./media/stream-analytics-operation-logs/04-stream-analytics-operation-logs.png)  
 
-На портале Azure журналы можно отфильтровать по уровню сообщений и просмотреть только **критические** события.
+В hello портал Azure, можно фильтровать по уровень сообщения tooview **критическое** события.
 
   ![Отладка на портале Azure](./media/stream-analytics-operation-logs/10-stream-analytics-operation-logs.png)  
 
-Выберите одну из ошибок, нажмите кнопку **Сведения** и ознакомьтесь с дополнительными сведениями об ошибке.  Некоторые сообщения об ошибках содержат также информацию о том, как устранить проблему. 
+Можно выбрать любой из ошибок hello и щелкнуть hello **сведения** Дополнительные сведения об ошибке hello.  Некоторые сообщения об ошибках также предоставляют сведения о как toomitigate hello проблему. 
 
   ![Сведения об операции](./media/stream-analytics-operation-logs/05-stream-analytics-operation-logs.png)  
 
-Если вам нужно связаться со [службой поддержки](https://azure.microsoft.com/support/options/) или передать информацию специалистам через [форум MSDN](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics), обратите внимание на раздел "Сведения об операции", особенно на **Идентификатор корреляции**. 
+При необходимости toocontact [поддержки](https://azure.microsoft.com/support/options/) или предоставить авторам toohello сведения через hello [форум MSDN](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics), имейте в виду hello сведения об операции, в частности hello **идентификатор корреляции**. 
 
 ## <a name="get-help"></a>Получение справки
 Дополнительную помощь и поддержку вы можете получить на нашем [форуме Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)
 
 ## <a name="next-steps"></a>Дальнейшие действия
-* [Введение в Azure Stream Analytics](stream-analytics-introduction.md)
+* [Введение tooAzure Stream Analytics](stream-analytics-introduction.md)
 * [Приступая к работе с Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md)
 * [Масштабирование заданий в службе Azure Stream Analytics](stream-analytics-scale-jobs.md)
 * [Справочник по языку запросов Azure Stream Analytics](https://msdn.microsoft.com/library/azure/dn834998.aspx)

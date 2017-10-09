@@ -14,33 +14,33 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
 ms.author: v-donglo
-ms.openlocfilehash: 18edabe267ec06c08074d7a7a6d71435cedc8489
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 539c2abb053a0f981be0374defe45cf4d96b740b
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-machine-learning-web-services-deployment-and-consumption"></a>Развертывание и использование веб-служб Машинного обучения Azure
-Машинное обучение Azure позволяет развертывать рабочие процессы и модели машинного обучения в качестве веб-служб. Затем эти веб-службы можно использовать для вызова моделей машинного обучения из приложений в Интернете, чтобы делать прогнозы в режиме реального времени или в пакетном режиме. Так как это веб-службы RESTful, их можно вызывать, используя различные языки программирования и платформы, например .NET и Java, а также приложения, например Microsoft Excel.
+Рабочие процессы машинного обучения toodeploy машинного обучения Azure и модели можно использовать как веб-службы. Эти веб-службы затем можно использовать toocall hello машинного обучения моделей из приложений через hello Internet toodo прогнозов в реальном времени или в пакетном режиме. Поскольку категории RESTful hello веб-служб, их можно вызывать из различных языков программирования и платформах, например .NET и Java и из приложений, таких как Excel.
 
-В следующих разделах представлены ссылки на пошаговые инструкции, код и документацию, которые помогут вам приступить к работе.
+Hello далее разделах содержатся ссылки toowalkthroughs, кода и документации toohelp приступить к работе.
 
 ## <a name="deploy-a-web-service"></a>Развертывание веб-службы
 ### <a name="with-azure-machine-learning-studio"></a>С помощью Студии машинного обучения Azure
-На портале Студии машинного обучения и веб-служб Машинного обучения Microsoft Azure можно развернуть веб-службы, а также управлять ими без написания кода.
+Портал веб-службы Microsoft Azure Machine Learning hello и студии машинного обучения поможет вам развернуть и управлять веб-службы без написания кода.
 
-В статьях по следующим ссылкам содержатся общие сведения о процессе развертывания новой веб-службы:
+Hello следующие ссылки предоставляют общие сведения о том, как toodeploy веб-службу:
 
-* Общие сведения о развертывании новой веб-службы на основе Azure Resource Manager см. в статье [Развертывание новой веб-службы](machine-learning-webservice-deploy-a-web-service.md).
-* Пошаговое руководство по развертыванию веб-службы см. в статье [Развертывание веб-службы машинного обучения Azure](machine-learning-publish-a-machine-learning-web-service.md).
-* Полное пошаговое руководство по созданию и развертыванию веб-службы см. в статье [Шаг 1. Создание рабочей области машинного обучения](machine-learning-walkthrough-1-create-ml-workspace.md).
+* Общие сведения о том, как toodeploy новую веб-службу, которая основана на Azure Resource Manager отображается [развернуть веб-службу](machine-learning-webservice-deploy-a-web-service.md).
+* Пошаговые инструкции о том, как toodeploy веб-службы, в разделе [развертывания веб-службы машинного обучения Azure](machine-learning-publish-a-machine-learning-web-service.md).
+* Полное Пошаговое руководство о том, как toocreate и развернуть веб-службы см. в разделе [шаг 1 пошагового руководства: Создание рабочей области машинного обучения](machine-learning-walkthrough-1-create-ml-workspace.md).
 * Конкретные примеры развертывания веб-службы см. в следующих статьях:
 
-  * [Шаг 5. Развертывание веб-службы машинного обучения Azure](machine-learning-walkthrough-5-publish-web-service.md)
-  * [Развертывание веб-службы в нескольких регионах](machine-learning-how-to-deploy-to-multiple-regions.md)
+  * [Пошаговое руководство шаг 5: Развертывание веб-службы машинного обучения Azure hello](machine-learning-walkthrough-5-publish-web-service.md)
+  * [Как toodeploy веб-сайт службы toomultiple областей](machine-learning-how-to-deploy-to-multiple-regions.md)
 
 ### <a name="with-web-services-resource-provider-apis-azure-resource-manager-apis"></a>С помощью интерфейсов API поставщика ресурсов веб-служб (интерфейсов API Azure Resource Manager)
-Поставщик ресурсов Машинного обучения Azure для веб-служб позволяет развертывать веб-службы и управлять ими с помощью вызовов REST API. Дополнительные сведения см. в статье [Machine Learning Web Service (REST)](/rest/api/machinelearning/index) (Веб-служба машинного обучения (REST)).
+поставщик ресурсов Hello машинного обучения Azure для веб-служб обеспечивает развертывания и управления веб-служб с помощью вызовов REST API. Дополнительные сведения см. в статье [Machine Learning Web Service (REST)](/rest/api/machinelearning/index) (Веб-служба машинного обучения (REST)).
 
 <!-- [Machine Learning Web Service (REST)](https://msdn.microsoft.com/library/azure/mt767538.aspx) reference. -->
 
@@ -48,22 +48,22 @@ ms.lasthandoff: 07/11/2017
 ### <a name="with-powershell-cmdlets"></a>С помощью командлетов PowerShell
 Поставщик ресурсов Машинного обучения Azure для веб-служб позволяет развертывать веб-службы и управлять ими с помощью командлетов PowerShell.
 
-Для использования командлетов необходимо сначала войти в учетную запись Azure в среде PowerShell с помощью командлета [Add-AzureRmAccount](https://msdn.microsoft.com/library/mt619267.aspx). Если вы не знакомы с вызовом команд PowerShell на основе Resource Manager, см. статью [Использование Azure PowerShell с Azure Resource Manager](../azure-resource-manager/powershell-azure-resource-manager.md#log-in-to-your-azure-account).
+командлеты hello toouse, необходимо сначала войти в учетную запись Azure из среды PowerShell hello tooyour с помощью hello [AzureRmAccount добавить](https://msdn.microsoft.com/library/mt619267.aspx) командлета. Если вы не знакомы с как toocall PowerShell команды основаны на диспетчера ресурсов см. в разделе [с помощью Azure PowerShell с помощью диспетчера ресурсов Azure](../azure-resource-manager/powershell-azure-resource-manager.md#log-in-to-your-azure-account).
 
-Чтобы экспортировать прогнозный эксперимент, используйте [этот пример кода](https://github.com/ritwik20/AzureML-WebServices). После создания EXE-файла из кода можно ввести следующую команду:
+tooexport вашей прогнозной поэкспериментировать, используйте [этот пример кода](https://github.com/ritwik20/AzureML-WebServices). После создания файла .exe hello из кода hello, можно ввести:
 
     C:\<folder>\GetWSD <experiment-url> <workspace-auth-token>
 
-При запуске приложения создается шаблон JSON веб-службы. Чтобы использовать шаблон для развертывания веб-службы, необходимо добавить следующие сведения:
+Запуск приложения hello создает JSON шаблона веб-службы. шаблон toodeploy hello toouse веб-службы, необходимо добавить hello следующую информацию:
 
 * Имя и ключ учетной записи хранения.
 
-    Их можно получить на [портале Azure](https://portal.azure.com/) или на [классическом портале Azure](http://manage.windowsazure.com/).
+    Имя учетной записи хранения hello и ключ можно получить из любой hello [портал Azure](https://portal.azure.com/) или hello [классический портал Azure](http://manage.windowsazure.com/).
 * Идентификатор плана предложения.
 
-    Идентификатор плана можно получить на портале [веб-служб машинного обучения Azure](https://services.azureml.net). Для этого необходимо войти на портал и щелкнуть имя плана.
+    Можно получить идентификатор плана hello hello [веб-службы Azure Machine Learning](https://services.azureml.net) портала, войдя в систему и выбрать имя плана.
 
-Добавьте их в шаблон JSON в качестве дочерних элементов узла *Properties* на том же уровне, где находится узел *MachineLearningWorkspace*.
+Добавить шаблон toohello JSON как дочерние элементы hello *свойства* узел на hello же уровня как hello *MachineLearningWorkspace* узла.
 
 Ниже приведен пример:
 
@@ -75,24 +75,24 @@ ms.lasthandoff: 07/11/2017
         "id": "subscriptions/YouSubscriptionID/resourceGroups/YourResourceGroupID/providers/Microsoft.MachineLearning/commitmentPlans/YourPlanName"
     }
 
-Дополнительные сведения см. в следующих статьях и примерах кода:
+См. следующие статьи hello и образцы кода для получения дополнительных сведений:
 
 * [Azure Machine Learning Cmdlets](https://msdn.microsoft.com/library/azure/mt767952.aspx) (Командлеты Машинного обучения Azure) на сайте MSDN.
 * Пример [пошагового руководства](https://github.com/raymondlaghaeian/azureml-webservices-arm-powershell/blob/master/sample-commands.txt) на сайте GitHub.
 
-## <a name="consume-the-web-services"></a>Использование веб-служб
-### <a name="from-the-azure-machine-learning-web-services-ui-testing"></a>Через пользовательский интерфейс веб-служб Машинного обучения Azure (тестирование)
-Веб-службу можно проверить на портале веб-служб Машинного обучения Azure. Эта проверка включает в себя тестирование интерфейсов службы запрос-ответ (RRS) и службы пакетного выполнения (BES).
+## <a name="consume-hello-web-services"></a>Использование hello веб-служб
+### <a name="from-hello-azure-machine-learning-web-services-ui-testing"></a>Из hello Azure машины обучения веб-интерфейса служб (тестирования)
+Можно проверить веб-службу из веб-службы Azure Machine Learning портала hello. Сюда входят тестирование службы hello запрос-ответ (RR) и интерфейсы службы пакетного выполнения (BES).
 
 * [Развертывание новой веб-службы](machine-learning-webservice-deploy-a-web-service.md)
 * [Развертывание веб-службы машинного обучения Azure](machine-learning-publish-a-machine-learning-web-service.md)
-* [Шаг 5. Развертывание веб-службы машинного обучения Azure](machine-learning-walkthrough-5-publish-web-service.md)
+* [Пошаговое руководство шаг 5: Развертывание веб-службы машинного обучения Azure hello](machine-learning-walkthrough-5-publish-web-service.md)
 
 ### <a name="from-excel"></a>Из Excel
-Вы можете скачать шаблон Excel, который использует веб-службу:
+Можно загрузить шаблон Excel, использующего hello веб-службы:
 
 * [Использование веб-службы Машинного обучения Azure в Excel](machine-learning-consuming-from-excel.md)
 * [Надстройка Excel для веб-служб машинного обучения Azure](machine-learning-excel-add-in-for-web-services.md)
 
 ### <a name="from-a-rest-based-client"></a>Из клиента на основе REST
-Веб-службы Машинного обучения Azure представляют собой интерфейсы API RESTful. Их можно использовать на различных платформах, например .NET, Python, R, Java и т. д. На странице **Consume** (Использование) для веб-службы на [портале веб-служб машинного обучения Microsoft Azure](https://services.azureml.net) размещен пример кода, позволяющий приступить к работе. Дополнительные сведения см. в статье [Как использовать веб-службу машинного обучения Azure, развернутую из эксперимента машинного обучения](machine-learning-consume-web-services.md).
+Веб-службы Машинного обучения Azure представляют собой интерфейсы API RESTful. Можно использовать эти API-интерфейсы из различных платформ, таких как .NET, Python, R, Java, т. д. hello **использование** страницы веб-службы на hello [портал веб-службы Microsoft Azure Machine Learning](https://services.azureml.net) образец код, который поможет вам приступить к работе. Дополнительные сведения см. в разделе [как tooconsume в Azure Machine обучения, веб-службу](machine-learning-consume-web-services.md).

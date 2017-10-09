@@ -1,6 +1,6 @@
 ---
-title: "Повышение прав доступа администратором клиентов в Azure AD | Документация Майкрософт"
-description: "В этом разделе описаны встроенные роли для управления доступом на основе ролей (RBAC)."
+title: "Администратор aaaTenant повышение прав доступа - Azure AD | Документы Microsoft"
+description: "В этом разделе описываются hello, встроенных в роли для управления доступом на основе ролей (RBAC)."
 services: active-directory
 documentationcenter: 
 author: andredm7
@@ -14,29 +14,29 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/09/2017
 ms.author: andredm
-ms.openlocfilehash: bf64a92b359a6f68d84fa5ee17eda64ed6371990
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 7996f2af3277dc40e2a1766cc4a7862a2399cdef
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="elevate-access-as-a-tenant-admin-with-role-based-access-control"></a>Повышение прав доступа администратором клиентов с помощью управления доступом на основе ролей
 
-Управление доступом на основе ролей позволяет администраторам клиентов временно повысить права доступа, чтобы предоставить больше разрешений, чем обычно. При необходимости администратор клиентов может повысить свои права до роли администратора доступа пользователей. Эта роль позволяет администратору клиентов предоставить себе или другим пользователям роли в области "/".
+Управление доступом на основе ролей позволяет администраторам клиентов временно повысить права доступа, чтобы предоставить больше разрешений, чем обычно. Администратор клиента может повысить себе toohello роли Администратор доступа пользователя, если это требуется. Эта роль предоставляет hello себе или другим toogrant разрешения администратора для клиента роли hello область «/».
 
-Эта возможность важна, так как она позволяет администратору клиентов видеть все подписки, которые существуют в организации. Она также позволяет приложениям службы автоматизации (например, приложениям для выставления счетов и аудита) обращаться ко всем подпискам и обеспечивать точное представление о состоянии организации с точки зрения выставления счетов или управления ресурсами.  
+Эта функция важна, так как она допускает hello клиента администратора toosee все hello подписок, которые существуют в организации. Он также позволяет для автоматизации приложений (например, выставление счетов и аудит) tooaccess все подписки hello и обеспечить точное представление состояния hello hello организации для выставления счетов или средства управления.  
 
-## <a name="how-to-use-elevateaccess-to-give-tenant-access"></a>Как использовать elevateAccess для предоставления доступа клиентам
+## <a name="how-toouse-elevateaccess-toogive-tenant-access"></a>Как toouse elevateAccess toogive клиента доступа
 
-Базовый процесс состоит из приведенных ниже действий.
+базовый процесс Hello работает с hello следующие шаги:
 
-1. С помощью REST вызовите действие *elevateAccess*, который предоставляет вам роль администратора доступа пользователей в области "/".
+1. С помощью REST, вызовите *elevateAccess*, какие предоставляет вам Здравствуйте, администратор доступа пользователя роли на «/» области.
 
     ```
     POST https://management.azure.com/providers/Microsoft.Authorization/elevateAccess?api-version=2016-07-01
     ```
 
-2. Создание [назначение роли](/rest/api/authorization/roleassignments), чтобы назначить любую роль в любой области. В следующем примере показаны свойства для назначения роли "Читатель" для области "/".
+2. Создание [назначение ролей](/rest/api/authorization/roleassignments) tooassign любой роли в любой области. Следующий пример Hello показано назначение свойства hello hello роль модуля чтения в «/» области:
 
     ```
     { "properties":{
@@ -55,17 +55,17 @@ ms.lasthandoff: 08/29/2017
 4. Отзовите привилегии администратора доступа пользователей, пока они не понадобятся вновь.
 
 
-## <a name="how-to-undo-the-elevateaccess-action"></a>Как отменить действие elevateAccess
+## <a name="how-tooundo-hello-elevateaccess-action"></a>Как tooundo hello elevateAccess действие
 
-При вызове *elevateAccess* для вас создается назначение роли. Поэтому, чтобы отозвать эти привилегии, необходимо удалить назначение.
+При вызове *elevateAccess* создать назначение ролей для текущего пользователя, поэтому toorevoke те права доступа вы должны toodelete hello назначения.
 
-1.  Вызовите [GET roleDefinitions](/rest/api/authorization/roledefinitions#RoleDefinitions_Get), где roleName — администратор доступа пользователей, чтобы определить GUID параметра name роли администратор доступа пользователей. Результат должен выглядеть следующим образом.
+1.  Вызовите [GET roleDefinitions](/rest/api/authorization/roledefinitions#RoleDefinitions_Get) где roleName = hello toodetermine администратор доступа пользователя имя GUID роли пользователя администратора hello. Hello ответ должен выглядеть следующим образом:
 
     ```
     {"value":[{"properties":{
     "roleName":"User Access Administrator",
     "type":"BuiltInRole",
-    "description":"Lets you manage user access to Azure resources.",
+    "description":"Lets you manage user access tooAzure resources.",
     "assignableScopes":["/"],
     "permissions":[{"actions":["*/read","Microsoft.Authorization/*","Microsoft.Support/*"],"notActions":[]}],
     "createdOn":"0001-01-01T08:00:00.0000000Z",
@@ -78,9 +78,9 @@ ms.lasthandoff: 08/29/2017
     "nextLink":null}
     ```
 
-    Сохраните GUID из параметра *name*, в данном случае это **18d7d88d-d35e-4fb5-a5c3-7773c20a72d9**.
+    Сохранить hello GUID из hello *имя* параметра в данном случае **18d7d88d-d35e-4fb5-a5c3-7773c20a72d9**.
 
-2. Вызовите [GET roleAssignments](/rest/api/authorization/roleassignments#RoleAssignments_Get), где principalId — ваш ObjectId. Буден выведен список всех назначений в клиенте. Найдите назначение, у которого задана область "/" и RoleDefinitionId заканчивается значением GUID из параметра name роли, найденным на шаге 1. Назначение роли должно выглядеть следующим образом.
+2. Вызовите [GET roleAssignments](/rest/api/authorization/roleassignments#RoleAssignments_Get), где principalId — ваш ObjectId. Перечисляет все назначения, в клиенте hello. Найти для одного hello которых hello область «/» и заканчивается RoleDefinitionId hello роли hello имя идентификатором GUID, найденным в шаге 1. Назначение ролей Hello должен выглядеть следующим образом:
 
     ```
     {"value":[{"properties":{
@@ -97,12 +97,12 @@ ms.lasthandoff: 08/29/2017
     "nextLink":null}
     ```
 
-    Опять же, сохраните GUID из параметра *name*. В данном случае это **e7dd75bc-06f6-4e71-9014-ee96a929d099**.
+    Снова, сохраните hello GUID из hello *имя* параметра в данном случае **e7dd75bc-06f6-4e71-9014-ee96a929d099**.
 
-3. Наконец, вызовите [DELETE roleAssignments](/rest/api/authorization/roleassignments#RoleAssignments_DeleteById), где roleAssignmentId — GUID из параметра name роли, найденный на шаге 2.
+3. Наконец, вызовите [DELETE roleAssignments](/rest/api/authorization/roleassignments#RoleAssignments_DeleteById) где roleAssignmentId = hello имя идентификатора GUID, определенным на шаге 2.
 
 ## <a name="next-steps"></a>Дальнейшие действия
 
 - Узнайте больше об [управлении доступом на основе ролей с помощью REST](role-based-access-control-manage-access-rest.md).
 
-- Изучите [управление правами доступа](role-based-access-control-manage-assignments.md) на портале Azure.
+- [Управление назначениями доступа](role-based-access-control-manage-assignments.md) в hello портал Azure

@@ -1,6 +1,6 @@
 ---
-title: "Создание групп действий с помощью шаблонов Resource Manager | Документация Майкрософт"
-description: "Узнайте, как создать группу действий с помощью шаблона Azure Resource Manager."
+title: "группы действий aaaCreate с помощью шаблонов диспетчера ресурсов | Документы Microsoft"
+description: "Узнайте, как toocreate действия группы с помощью шаблона диспетчера ресурсов Azure."
 author: anirudhcavale
 manager: orenr
 editor: 
@@ -14,26 +14,26 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
 ms.author: ancav
-ms.openlocfilehash: 76bf353cac13f1c2169380f8dd3c1e163d4f3f41
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 9902b33cad99bd99b3deda0cf6f4ff12278c89c3
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-an-action-group-with-a-resource-manager-template"></a>Создание группы действий с помощью шаблона Resource Manager
-В этой статье показано, как можно использовать [шаблон Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authoring-templates) для настройки групп действий. С помощью шаблонов можно автоматически настроить группы действий, которые можно использовать повторно в определенных типах оповещений. С помощью этих групп действий обеспечивается уведомление соответствующих участников при активации оповещения.
+В этой статье показано, как toouse [шаблона Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authoring-templates) tooconfigure группы действий. С помощью шаблонов можно автоматически настроить группы действий, которые можно использовать повторно в определенных типах оповещений. Эти группы действий убедитесь, что все hello правильных сторонам получать уведомления при активации оповещения.
 
-Основными шагами являются:
+Основные этапы Hello
 
-1. Создайте шаблон в виде JSON-файла, который описывает создание группы действий.
+1. Создание шаблона в формате JSON, описывающий, как toocreate hello группы действий.
 
-2. Разверните шаблон, используя [любой метод развертывания](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy).
+2. Развертывание с помощью шаблона hello [любой метод развертывания](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy).
 
-Ниже описано, как создать шаблон Resource Manager для группы действий, в котором определения действий жестко запрограммированы, а также представлены способы создания шаблона, принимающего данные конфигурации веб-перехватчика в качестве входных параметров при развертывании шаблона.
+Во-первых, мы опишем как toocreate шаблона диспетчера ресурсов для действия группы, где определения действие hello жестко запрограммированы в шаблоне hello. Во-вторых чтобы описать как toocreate шаблон, который принимает данные конфигурации веб-перехватчика hello как входные параметры при развертывании шаблона hello.
 
 ## <a name="resource-manager-templates-for-an-action-group"></a>Шаблоны Resource Manager для группы действий
 
-Чтобы создать группу действий с помощью шаблона Resource Manager, создайте ресурс типа `Microsoft.Insights/actionGroups`. Затем следует заполнить все связанные свойства. Ниже представлено два примера шаблонов для создания группы действий.
+toocreate группу действий с помощью шаблона диспетчера ресурсов, создать ресурс типа hello `Microsoft.Insights/actionGroups`. Затем следует заполнить все связанные свойства. Ниже представлено два примера шаблонов для создания группы действий.
 
 ```json
 {
@@ -43,13 +43,13 @@ ms.lasthandoff: 08/29/2017
     "actionGroupName": {
       "type": "string",
       "metadata": {
-        "description": "Unique name (within the Resource Group) for the Action group."
+        "description": "Unique name (within hello Resource Group) for hello Action group."
       }
     },
     "actionGroupShortName": {
       "type": "string",
       "metadata": {
-        "description": "Short name (maximum 12 characters) for the Action group."
+        "description": "Short name (maximum 12 characters) for hello Action group."
       }
     }
   },
@@ -114,13 +114,13 @@ ms.lasthandoff: 08/29/2017
     "actionGroupName": {
       "type": "string",
       "metadata": {
-        "description": "Unique name (within the Resource Group) for the Action group."
+        "description": "Unique name (within hello Resource Group) for hello Action group."
       }
     },
     "actionGroupShortName": {
       "type": "string",
       "metadata": {
-        "description": "Short name (maximum 12 characters) for the Action group."
+        "description": "Short name (maximum 12 characters) for hello Action group."
       }
     },
     "webhookReceiverName": {
@@ -171,4 +171,4 @@ ms.lasthandoff: 08/29/2017
 ## <a name="next-steps"></a>Дальнейшие действия
 * Дополнительные сведения о группах действий см. в статье [Создание групп действий и управление ими на портале Azure](monitoring-action-groups.md).
 * Узнайте больше об [оповещениях](monitoring-overview-alerts.md).
-* Узнайте, как добавить [оповещения с помощью шаблона Resource Manager](monitoring-create-activity-log-alerts-with-resource-manager-template.md).
+* Узнайте, как tooadd [оповещений с помощью шаблона диспетчера ресурсов](monitoring-create-activity-log-alerts-with-resource-manager-template.md).

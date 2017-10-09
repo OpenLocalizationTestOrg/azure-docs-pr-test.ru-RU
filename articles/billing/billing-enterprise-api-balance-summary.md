@@ -1,6 +1,6 @@
 ---
-title: "Интерфейсы API для выставления счетов Azure корпоративным клиентам: баланс и сводка | Документация Майкрософт"
-description: "Сведения об интерфейсах API использования и RateCard для выставления счетов Azure, которые применяются для получения ценных сведений о потреблении ресурсов Azure и соответствующих тенденциях."
+title: "aaaAzure выставления счетов Enterprise API-интерфейсов - баланс и Сводка | Документы Microsoft"
+description: "Дополнительные сведения об использовании выставления счетов Azure и RateCard API-интерфейсы, которые используется tooprovide анализировать потребление ресурсов Azure и тенденции."
 services: 
 documentationcenter: 
 author: aedwin
@@ -15,19 +15,19 @@ ms.tgt_pltfrm: na
 ms.workload: billing
 ms.date: 04/25/2017
 ms.author: aedwin
-ms.openlocfilehash: f6b149f0e656d2263705048aa5b644f5bb4a5712
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: b031de2c347e5abeacd11743cc96024434518918
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="reporting-apis-for-enterprise-customers---balance-and-summary"></a>API-интерфейсы отчетов для корпоративных клиентов: баланс и сводка
 
-API-интерфейс для управления балансом предоставляет ежемесячную сводку о состоянии баланса, новых покупках, расходах на службы Azure Marketplace, корректировках и взимании платы за превышение.
+Hello баланс и Сводка API предоставляет ежемесячные сводку сведений о сальдо, новый покупок, плата за Azure Marketplace, корректировки и избыточные расходы.
 
 
 ##<a name="request"></a>Запрос 
-Общие свойства заголовка, которые необходимо добавить, указываются [здесь](billing-enterprise-api.md). Если расчетный период не указан, то возвращаются данные за текущий расчетный период.
+Задаются общие свойства заголовка, которые необходимо добавить toobe [здесь](billing-enterprise-api.md). Если периода выставления счетов не указан, данные для выставления счетов hello для текущего периода возвращается.
 
 |Метод | URI запроса|
 |-|-|
@@ -35,7 +35,7 @@ API-интерфейс для управления балансом предос
 |ПОЛУЧЕНИЕ| https://consumption.azure.com/v2/enrollments/{enrollmentNumber}/billingPeriods/{billingPeriod}/balancesummary|
 
 > [!Note]
-> Чтобы использовать предварительную версию API, измените v2 на v1 в URL-адресе выше.
+> toouse hello предварительную версию API, замените v2 v1 в hello выше URL-адрес.
 >
 
 ## <a name="response"></a>Ответ
@@ -77,11 +77,11 @@ API-интерфейс для управления балансом предос
 
 |Имя свойства| Тип| Описание
 |-|-|-|
-|id|string|Уникальный идентификатор для определенного расчетного периода и регистрации|
-|billingPeriodId|string |Идентификатор расчетного периода|
-|currencyCode|string |Код валюты|
-|beginningBalance|decimal| Начальный баланс для расчетного периода|
-|endingBalance|decimal| Конечное сальдо для расчетного периода (для открытых периодов это значение обновляется ежедневно)|
+|id|string|Hello уникальный идентификатор для определенного периода выставления счетов и регистрации|
+|billingPeriodId|string |Привет, код периода выставления счетов|
+|currencyCode|string |Код валюты Hello|
+|beginningBalance|decimal| Начальное сальдо Hello hello цикл выставления счетов|
+|endingBalance|decimal| Привет, конечное сальдо периода выставления счетов hello (для открытых периодов, это будет обновляться ежедневно)|
 |newPurchases|decimal| Общая сумма новой покупки|
 |adjustments|decimal| Общая сумма корректировки|
 |utilized|decimal| Общая сумма обязательств|

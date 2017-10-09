@@ -1,6 +1,6 @@
 ---
-title: "Перенос имеющихся баз данных для масштабирования | Документация Майкрософт"
-description: "Преобразование сегментированных баз данных для использования средств эластичной базы данных путем создания диспетчера сопоставления сегментов"
+title: "aaaMigrate существующих баз данных вне tooscale | Документы Microsoft"
+description: "Преобразование Сервис эластичной базы данных toouse сегментированных баз данных путем создания диспетчера карты сегментов"
 services: sql-database
 documentationcenter: 
 author: ddove
@@ -15,29 +15,29 @@ ms.tgt_pltfrm: NA
 ms.workload: data-management
 ms.date: 10/24/2016
 ms.author: ddove
-ms.openlocfilehash: 099f40d00753b7c86ba726a818f17d440a125221
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: fa2c9e3699f30667cf547d1faadf4504609199be
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="migrate-existing-databases-to-scale-out"></a>Перенос существующих баз данных для масштабирования
-Вы можете легко управлять существующими масштабируемыми сегментированными базами данных с помощью средств базы данных SQL Azure (таких как [клиентская библиотека для эластичных баз данных](sql-database-elastic-database-client-library.md)). Для использования [диспетчера карты сегментов](sql-database-elastic-scale-shard-map-management.md)следует сначала преобразовать существующий набор баз данных. 
+# <a name="migrate-existing-databases-tooscale-out"></a>Миграция существующих баз данных tooscale масштабированием
+Легко управлять существующих масштабируемых сегментированных баз данных с помощью базы данных SQL Azure инструменты для баз данных (таких как hello [клиентской библиотеке эластичной базы данных](sql-database-elastic-database-client-library.md)). Необходимо сначала преобразовать существующий набор баз данных toouse hello [диспетчера карты сегментов](sql-database-elastic-scale-shard-map-management.md). 
 
 ## <a name="overview"></a>Обзор
-Для переноса существующей сегментированной базы данных выполните следующие действия. 
+toomigrate сегментированной базы данных: 
 
-1. Подготовка [базы данных диспетчера карты сегментов](sql-database-elastic-scale-shard-map-management.md).
-2. Создание карты сегментов.
-3. Подготовка отдельных сегментов.  
-4. Добавление сопоставлений на карту сегментов.
+1. Подготовка hello [базы данных диспетчера карты сегментов](sql-database-elastic-scale-shard-map-management.md).
+2. Создание карты сегментов hello.
+3. Подготовьте hello отдельные сегменты.  
+4. Добавление карты сегментов toohello сопоставления.
 
-Эти методы можно реализовать с помощью [клиентской библиотеки .NET Framework](http://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/) или сценариев PowerShell, которые можно найти на странице [Azure SQL DB — Elastic Database tools scripts](https://gallery.technet.microsoft.com/scriptcenter/Azure-SQL-DB-Elastic-731883db) (База данных SQL Azure — сценарии для инструментов эластичной базы данных). В приведенных здесь примерах используются скрипты PowerShell.
+Эти методы можно реализовать с помощью либо hello [клиентская библиотека .NET Framework](http://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/), или скрипты PowerShell hello, обнаруженным в [база данных SQL Azure — скриптов средств эластичной базы данных](https://gallery.technet.microsoft.com/scriptcenter/Azure-SQL-DB-Elastic-731883db). Приведенные здесь примеры Hello использовать скрипты PowerShell hello.
 
-Чтобы больше узнать о ShardMapManager, ознакомьтесь с [управлением картами сегментов](sql-database-elastic-scale-shard-map-management.md). Общие сведения об инструментах эластичной базы данных см. в [обзоре возможностей эластичных баз данных](sql-database-elastic-scale-introduction.md).
+Дополнительные сведения о hello ShardMapManager см. в разделе [управления карты сегментов](sql-database-elastic-scale-shard-map-management.md). Обзор средств hello эластичной базы данных см. в разделе [Общие сведения о возможностях эластичной базы данных](sql-database-elastic-scale-introduction.md).
 
-## <a name="prepare-the-shard-map-manager-database"></a>Подготовка базы данных диспетчера карты сегментов
-Диспетчер карты сегментов — это специальная база данных, хранящая данные для управления масштабируемыми базами данных. Можно использовать существующую базу данных или создать новую. Обратите внимание, что для диспетчера карты сегментов и для сегмента следует использовать разные базы данных. Также помните, что скрипт PowerShell не создает базу данных. 
+## <a name="prepare-hello-shard-map-manager-database"></a>Подготовка базы данных диспетчера карты сегментов hello
+диспетчера карты сегментов Hello является специальная база данных, содержащей данные toomanage hello масштабируемых-базы данных. Можно использовать существующую базу данных или создать новую. Обратите внимание, что база данных выступает в роли диспетчера карты сегментов не должно быть hello же базы данных, как тот или иной сегмент. Также Обратите внимание, что скрипт PowerShell hello не создаются hello базы данных. 
 
 ## <a name="step-1-create-a-shard-map-manager"></a>Шаг 1. Создание диспетчера сопоставления сегментов
     # Create a shard map manager. 
@@ -45,56 +45,56 @@ ms.lasthandoff: 07/11/2017
     -Password '<password>' 
     -SqlServerName '<server_name>' 
     -SqlDatabaseName '<smm_db_name>' 
-    #<server_name> and <smm_db_name> are the server name and database name 
-    # for the new or existing database that should be used for storing 
+    #<server_name> and <smm_db_name> are hello server name and database name 
+    # for hello new or existing database that should be used for storing 
     # tenant-database mapping information.
 
-### <a name="to-retrieve-the-shard-map-manager"></a>Извлечение диспетчера сопоставления сегментов
-Созданный диспетчер сопоставления сегментов можно извлечь с помощью этого командлета. Этот шаг требуется выполнять при каждом использовании объекта ShardMapManager.
+### <a name="tooretrieve-hello-shard-map-manager"></a>диспетчера карты сегментов tooretrieve hello
+После создания можно извлечь hello диспетчера карты сегментов с этим командлетом. Этот шаг требуется каждый раз, когда необходимо toouse hello ShardMapManager объекта.
 
-    # Try to get a reference to the Shard Map Manager  
+    # Try tooget a reference toohello Shard Map Manager  
     $ShardMapManager = Get-ShardMapManager -UserName '<user_name>' 
     -Password '<password>' 
     -SqlServerName '<server_name>' 
     -SqlDatabaseName '<smm_db_name>' 
 
 
-## <a name="step-2-create-the-shard-map"></a>Шаг 2. Создание карты сегментов
-Следует выбрать тип создаваемой карты сегментов. Этот выбор зависит от архитектуры базы данных. 
+## <a name="step-2-create-hello-shard-map"></a>Шаг 2: Создание карты сегментов hello
+Необходимо выбрать тип hello toocreate карты сегментов. Выбор Hello зависит от архитектуры hello базы данных. 
 
-1. Один клиент на базу данных (определения терминов см. в [глоссарии](sql-database-elastic-scale-glossary.md)). 
+1. Для каждой базы данных одного клиента (условия, в разделе hello [Глоссарий](sql-database-elastic-scale-glossary.md).) 
 2. Несколько клиентов на одну базу данных (два типа):
    1. Сопоставление по спискам
    2. Сопоставление по диапазонам
 
-Для модели с одним клиентом создайте карту сегментов с **сопоставлением по списку** . В модели с одним клиентом каждому клиенту назначается по одной базе данных. Эта модель подходит для разработчиков SaaS, так как она упрощает управление.
+Для модели с одним клиентом создайте карту сегментов с **сопоставлением по списку** . модель одного клиента Hello назначает одной базы данных на клиенте. Эта модель подходит для разработчиков SaaS, так как она упрощает управление.
 
 ![Сопоставление по спискам][1]
 
-В модели базы данных с несколькими клиентами для одной базы данных назначается несколько клиентов (а группы клиентов можно распределять по нескольким базам данных). Эту модель можно использовать, когда у каждого отдельного клиента низкие потребности в обработке данных. В этой модели клиенты соотносятся с базой данных с использованием **сопоставления по диапазонам**. 
+Hello мультитенантной модели назначает несколько клиентов tooa одной базы данных (и групп клиентов можно распределить по нескольким базам данных). Эту модель можно используйте, когда предполагается, что данные, toohave небольшой каждого клиента. В этой модели мы назначает диапазон клиентов tooa базы данных с помощью **сопоставления диапазона**. 
 
 ![Сопоставление по диапазонам][2]
 
-Вы можете также реализовать модель с несколькими клиентами с помощью *сопоставления по списку* , в котором одной базе данных соответствует несколько клиентов. Например, база данных DB1 используется для хранения информации о клиенте 1 и 5, а DB2 хранит данные о клиенте 7 и 10. 
+Или можно применить модель базы данных нескольких клиентов с помощью *сопоставление списка* tooassign несколько клиентов tooa одной базы данных. Например используется toostore сведения об ИД клиента 1 и 5 — DB1 и DB2 хранит данные для клиента 7 и 10 клиента. 
 
 ![Несколько клиентов для одной базы данных][3] 
 
 **Выберите один из вариантов, соответствующий вашему выбору.**
 
 ### <a name="option-1-create-a-shard-map-for-a-list-mapping"></a>Вариант 1. Создание карты сегментов для сопоставления по списку
-Создайте карту сегментов, используя объект ShardMapManager. 
+Создайте карту сегментов, с помощью объекта ShardMapManager hello. 
 
-    # $ShardMapManager is the shard map manager object. 
+    # $ShardMapManager is hello shard map manager object. 
     $ShardMap = New-ListShardMap -KeyType $([int]) 
     -ListShardMapName 'ListShardMap' 
     -ShardMapManager $ShardMapManager 
 
 
 ### <a name="option-2-create-a-shard-map-for-a-range-mapping"></a>Вариант 2. Создание карты сегментов для сопоставления по диапазонам
-Обратите внимание, что для использования этого шаблона сопоставления потребуются непрерывные диапазоны значений идентификаторов клиентов. Кроме того, можно не включать все диапазоны и просто пропустить один из них при создании базы данных.
+Обратите внимание, что tooutilize этот шаблон для сопоставления, значения идентификатора клиента должен toobe непрерывного диапазона, и он является приемлемым toohave разрыв в диапазонах hello пропустив просто hello диапазона при создании баз данных hello.
 
-    # $ShardMapManager is the shard map manager object 
-    # 'RangeShardMap' is the unique identifier for the range shard map.  
+    # $ShardMapManager is hello shard map manager object 
+    # 'RangeShardMap' is hello unique identifier for hello range shard map.  
     $ShardMap = New-RangeShardMap 
     -KeyType $([int]) 
     -RangeShardMapName 'RangeShardMap' 
@@ -104,22 +104,22 @@ ms.lasthandoff: 07/11/2017
 Для настройки этого шаблона также требуется создать карту списков, как показано в разделе "Шаг 2, вариант 1".
 
 ## <a name="step-3-prepare-individual-shards"></a>Шаг 3. Подготовка отдельных сегментов
-Добавьте каждый сегмент (база данных) в диспетчер сопоставления сегментов. Таким образом отдельные базы данных будут подготовлены для хранения сведений о сопоставлении. Подготовьте так каждый сегмент.
+Добавьте каждый диспетчера карты сегментов toohello сегментов (база данных). Это подготавливает hello отдельных баз данных для хранения сведений о сопоставлении. Подготовьте так каждый сегмент.
 
     Add-Shard 
     -ShardMap $ShardMap 
     -SqlServerName '<shard_server_name>' 
     -SqlDatabaseName '<shard_database_name>'
-    # The $ShardMap is the shard map created in step 2.
+    # hello $ShardMap is hello shard map created in step 2.
 
 
 ## <a name="step-4-add-mappings"></a>Шаг 4. Добавление сопоставлений
-Добавление сопоставлений зависит от вида созданной карты сегментов. Если создана карта списков, нужно добавить сопоставления по спискам. Если создана карта диапазонов, нужно добавить сопоставления по диапазонам.
+Добавление Hello сопоставлений зависит от вида hello карта сегментов, созданный. Если создана карта списков, нужно добавить сопоставления по спискам. Если создана карта диапазонов, нужно добавить сопоставления по диапазонам.
 
-### <a name="option-1-map-the-data-for-a-list-mapping"></a>Вариант 1. Сопоставление данных для сопоставления по списку
-Сопоставьте данные, добавив сопоставление по спискам для каждого клиента.  
+### <a name="option-1-map-hello-data-for-a-list-mapping"></a>Вариант 1: данные hello карты для отображения списка
+Сопоставление данных hello, добавив сопоставление списка для каждого клиента.  
 
-    # Create the mappings and associate it with the new shards 
+    # Create hello mappings and associate it with hello new shards 
     Add-ListMapping 
     -KeyType $([int]) 
     -ListPoint '<tenant_id>' 
@@ -127,10 +127,10 @@ ms.lasthandoff: 07/11/2017
     -SqlServerName '<shard_server_name>' 
     -SqlDatabaseName '<shard_database_name>' 
 
-### <a name="option-2-map-the-data-for-a-range-mapping"></a>Вариант 2. Сопоставление данных для сопоставления по диапазонам
-Добавьте сопоставления по диапазонам для всех связанных диапазонов идентификаторов клиентов и баз данных:
+### <a name="option-2-map-hello-data-for-a-range-mapping"></a>Вариант 2: данные hello карты для сопоставления диапазона
+Добавьте hello диапазон сопоставления для всех диапазон идентификаторов клиента hello - связи баз данных:
 
-    # Create the mappings and associate it with the new shards 
+    # Create hello mappings and associate it with hello new shards 
     Add-RangeMapping 
     -KeyType $([int]) 
     -RangeHigh '5' 
@@ -140,31 +140,31 @@ ms.lasthandoff: 07/11/2017
     -SqlDatabaseName '<shard_database_name>' 
 
 
-### <a name="step-4-option-3-map-the-data-for-multiple-tenants-on-a-single-database"></a>Шаг 4, вариант 3. Сопоставление данных для нескольких клиентов в одной базе данных
-Для каждого клиента следует выполнить функцию Add-ListMapping (вариант 1 выше). 
+### <a name="step-4-option-3-map-hello-data-for-multiple-tenants-on-a-single-database"></a>Вариант 3. шаг 4: сопоставление hello данных для нескольких клиентов в одной базе данных
+Для каждого клиента, запустите hello добавить ListMapping (параметр 1, выше). 
 
-## <a name="checking-the-mappings"></a>Проверка сопоставлений
-Сведения о существующих сегментах и сопоставлениях, связанных с ними, можно запросить с помощью следующих команд:  
+## <a name="checking-hello-mappings"></a>Проверка сопоставления hello
+Сведения о существующих сегментов hello и сопоставления hello, связанные с ними можно запросить с помощью следующих команд:  
 
-    # List the shards and mappings 
+    # List hello shards and mappings 
     Get-Shards -ShardMap $ShardMap 
     Get-Mappings -ShardMap $ShardMap 
 
-## <a name="summary"></a>Резюме
-После завершения настройки можно начать работу с клиентской библиотекой эластичной базы данных. Кроме того, можно воспользоваться [маршрутизацией, зависящей от данных](sql-database-elastic-scale-data-dependent-routing.md), и [формированием многосегментных запросов](sql-database-elastic-scale-multishard-querying.md).
+## <a name="summary"></a>Сводка
+После завершения установки hello, можно начать toouse hello эластичной базы данных клиентской библиотеки. Кроме того, можно воспользоваться [маршрутизацией, зависящей от данных](sql-database-elastic-scale-data-dependent-routing.md), и [формированием многосегментных запросов](sql-database-elastic-scale-multishard-querying.md).
 
 ## <a name="next-steps"></a>Дальнейшие действия
-Скачайте скрипты PowerShell на странице [Azure SQL DB-Elastic Database tools scripts](https://gallery.technet.microsoft.com/scriptcenter/Azure-SQL-DB-Elastic-731883db)(База данных SQL Azure — скрипты для средств эластичной базы данных).
+Получение скриптов PowerShell hello из [базы данных эластичных БД SQL Azure средств sripts](https://gallery.technet.microsoft.com/scriptcenter/Azure-SQL-DB-Elastic-731883db).
 
-Средства также доступны на сайте GitHub: [Azure/elastic-db-tools](https://github.com/Azure/elastic-db-tools).
+Hello средства доступны на сайте GitHub: [Azure/гибкому db-tools](https://github.com/Azure/elastic-db-tools).
 
-Используйте средство разбиения и слияния для перемещения данных из модели с несколькими клиентами в модель с одним клиентом и наоборот. Ознакомьтесь со статьей о [средстве разбиения и объединения](sql-database-elastic-scale-get-started.md).
+Используйте tooor hello средство слияния разбиение toomove данных из одного клиента модели tooa мультитенантной модели. Ознакомьтесь со статьей о [средстве разбиения и объединения](sql-database-elastic-scale-get-started.md).
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 Сведения о распространенных шаблонах архитектуры данных для мультитенантных приложений базы данных SaaS см. в статье [Шаблоны разработки для мультитенантных приложений SaaS с использованием базы данных Azure SQL](sql-database-design-patterns-multi-tenancy-saas-applications.md).
 
 ## <a name="questions-and-feature-requests"></a>Вопросы и запросы на функции
-Все возникшие вопросы задавайте на [форуме по базам данных SQL](http://social.msdn.microsoft.com/forums/azure/home?forum=ssdsgetstarted), а запросы новых функций оставляйте на [форуме отзывов и предложений по базам данных SQL](https://feedback.azure.com/forums/217321-sql-database/).
+Ответить на вопросы, пожалуйста направляться на hello toous [форум базы данных SQL](http://social.msdn.microsoft.com/forums/azure/home?forum=ssdsgetstarted) и для запросов, компонент, добавьте их toohello [форуме обратной связи в базе данных SQL](https://feedback.azure.com/forums/217321-sql-database/).
 
 <!--Image references-->
 [1]: ./media/sql-database-elastic-convert-to-use-elastic-tools/listmapping.png

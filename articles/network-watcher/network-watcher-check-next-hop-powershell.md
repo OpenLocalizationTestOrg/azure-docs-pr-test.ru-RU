@@ -1,6 +1,6 @@
 ---
-title: "Поиск следующего прыжка с помощью возможности определения следующего прыжка Наблюдателя за сетями Azure (PowerShell) | Документация Майкрософт"
-description: "В этой статье описано, как определить тип следующего прыжка и IP-адрес, используя возможность определения следующего прыжка с помощью PowerShell."
+title: "Следующий прыжок aaaFind с Azure сети наблюдателя следующего прыжка — PowerShell | Документы Microsoft"
+description: "В этой статье описывается, как можно найти какие hello тип следующего прыжка — и адрес ip с помощью следующего прыжка с помощью PowerShell."
 services: network-watcher
 documentationcenter: na
 author: georgewallace
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: gwallace
-ms.openlocfilehash: 00161e7c6fb4becdb7d8eab266fa27128e50f8ca
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: fdb0b4a02d95fc45c103fe952fc1afa095414c18
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="find-out-what-the-next-hop-type-is-using-the-next-hop-capability-in-azure-network-watcher-using-powershell"></a>Определите тип следующего прыжка, используя возможность определения следующего прыжка Наблюдателя за сетями Azure с помощью PowerShell.
+# <a name="find-out-what-hello-next-hop-type-is-using-hello-next-hop-capability-in-azure-network-watcher-using-powershell"></a>Узнать, какой тип следующего прыжка hello является использование возможностей следующего прыжка hello в Наблюдатель сети Azure с помощью PowerShell
 
 > [!div class="op_single_selector"]
 > - [Портал Azure](network-watcher-check-next-hop-portal.md)
@@ -29,21 +29,21 @@ ms.lasthandoff: 07/11/2017
 > - [CLI 2.0](network-watcher-check-next-hop-cli.md)
 > - [Azure REST API](network-watcher-check-next-hop-rest.md)
 
-Определение следующего прыжка — это возможность Наблюдателя за сетями, позволяющая определить тип следующего прыжка и IP-адрес на основе указанной виртуальной машины. Эта возможность используется, чтобы определить путь передачи исходящего трафика виртуальной машины (шлюз, Интернет или виртуальные сети) к месту назначения.
+Следующий прыжок является компонентом Наблюдатель сети, который предоставляет возможность hello получить тип следующего прыжка hello и IP-адрес, на основе указанной виртуальной машины. Эта функция полезна при определении Если пакетов, отправляемых виртуальная машина проходит через шлюз, Интернет или назначения tooits tooget виртуальных сетей.
 
 ## <a name="before-you-begin"></a>Перед началом работы
 
-В этом сценарии для определения типа следующего прыжка и IP-адреса используется портал Azure.
+В этом сценарии используется hello тип следующего прыжка Azure портала toofind hello и IP-адрес.
 
-В этом сценарии предполагается, что вы создали Наблюдатель за сетями в соответствии с инструкциями в статье [Create an Azure Network Watcher instance](network-watcher-create.md) (Наблюдатель за сетями: создание экземпляра службы). Предполагается также, что у вас есть группа ресурсов с допустимой виртуальной машиной.
+Этот сценарий предполагает уже были выполнены шаги hello в [создать Наблюдатель сети](network-watcher-create.md) toocreate Наблюдатель сети. сценарий Hello также предполагается, что группа ресурсов с действительной виртуальной машиной существует toobe используется.
 
 ## <a name="scenario"></a>Сценарий
 
-В сценарии, описанном в этой статье, используется определение следующего прыжка — возможность Наблюдателя за сетями, которая позволяет определить тип следующего перехода и IP-адрес для ресурса. Дополнительные сведения об определении следующего прыжка см. в [этой статье](network-watcher-next-hop-overview.md).
+Hello сценарии, описанные в данной статье используется следующего прыжка, функция Наблюдатель сети, извлекают тип следующего прыжка hello и IP-адрес для ресурса. Посетите toolearn Дополнительные сведения о следующего прыжка [следующего прыжка Обзор](network-watcher-next-hop-overview.md).
 
 ## <a name="retrieve-network-watcher"></a>Извлечение Наблюдателя за сетями
 
-Сначала необходимо извлечь экземпляр Наблюдателя за сетями. Переменная `$networkWatcher` передается в командлет проверки следующего прыжка.
+Первым шагом Hello — экземпляр Наблюдатель сети tooretrieve hello. Hello `$networkWatcher` переменной передается toohello следующего прыжка проверка командлета.
 
 ```powershell
 $nw = Get-AzurermResource | Where {$_.ResourceType -eq "Microsoft.Network/networkWatchers" -and $_.Location -eq "WestCentralUS" } 
@@ -52,18 +52,18 @@ $networkWatcher = Get-AzureRmNetworkWatcher -Name $nw.Name -ResourceGroupName $n
 
 ## <a name="get-a-virtual-machine"></a>Получение виртуальной машины
 
-Функция определения следующего прыжка возвращает сведения о следующем прыжке из виртуальной машины и его IP-адрес. Для командлета требуется идентификатор виртуальной машины. Если вы уже знаете идентификатор виртуальной машины, этот шаг можно пропустить.
+Следующий прыжок возвращает следующего прыжка hello и hello IP-адрес следующего прыжка hello из виртуальной машины. Идентификатор виртуальной машины является обязательным для командлета hello. Если вы уже знаете идентификатор hello toouse hello виртуальной машины, этот шаг можно пропустить.
 
 ```powershell
 $VM = Get-AzurermVM -ResourceGroupName "testrg" -Name "testvm1"
 ```
 
 > [!NOTE]
-> Для получения следующего прыжка необходимо, чтобы ресурс виртуальной машины был выделен.
+> Следующий прыжок требуется что toorun распределения ресурсов виртуальной Машины hello.
 
-## <a name="get-the-network-interfaces"></a>Получение сетевых интерфейсов
+## <a name="get-hello-network-interfaces"></a>Получить hello сетевых интерфейсов
 
-Вам понадобится IP-адрес сетевой карты на виртуальной машине. В этом примере мы получаем сетевые карты на виртуальной машине. Если вы уже знаете IP-адрес, который необходимо протестировать на виртуальной машине, этот шаг можно пропустить.
+в этом примере мы получить hello сетевых адаптеров на виртуальной машине требуется Hello IP-адрес сетевого адаптера на виртуальной машине hello. Если вы уже знаете hello IP адрес, о котором требуется tootest на виртуальной машине hello, этот шаг можно пропустить.
 
 ```powershell
 $Nics = Get-AzureRmNetworkInterface | Where {$_.Id -eq $vm.NetworkProfile.NetworkInterfaces.Id.ForEach({$_})}
@@ -71,7 +71,7 @@ $Nics = Get-AzureRmNetworkInterface | Where {$_.Id -eq $vm.NetworkProfile.Networ
 
 ## <a name="get-next-hop"></a>Получение следующего прыжка
 
-Теперь необходимо вызвать командлет `Get-AzureRmNetworkWatcherNextHop`. Мы передаем в этот командлет Наблюдатель за сетями, идентификатор виртуальной машины, IP-адрес источника и места назначения. В этом примере в качестве IP-адреса места назначения используется IP-адрес виртуальной машины в другой виртуальной сети. Между двумя виртуальными сетями находится шлюз виртуальной сети.
+Теперь мы называем hello `Get-AzureRmNetworkWatcherNextHop` командлета. Мы передайте hello командлет hello Наблюдатель сети виртуальной машины идентификатор, исходный IP-адрес и IP-адрес назначения. В этом примере hello конечный IP-адрес — tooa виртуальной Машины в другой виртуальной сети. Нет шлюза виртуальной сети между двумя виртуальными сетями hello.
 
 ```powershell
 Get-AzureRmNetworkWatcherNextHop -NetworkWatcher $networkWatcher -TargetVirtualMachineId $VM.Id -SourceIPAddress $nics[0].IpConfigurations[0].PrivateIpAddress  -DestinationIPAddress 10.0.2.4 
@@ -79,7 +79,7 @@ Get-AzureRmNetworkWatcherNextHop -NetworkWatcher $networkWatcher -TargetVirtualM
 
 ## <a name="review-results"></a>Просмотр результатов
 
-По завершении выводятся результаты. Возвращается IP-адрес следующего прыжка и тип ресурса. В этом случае это общедоступный IP-адрес шлюза виртуальной сети.
+По завершении приведены результаты hello. а также hello тип ресурса, который является возвращается IP-адрес следующего прыжка Hello. В этом случае это hello общедоступный IP-адрес шлюза виртуальной сети hello.
 
 ```
 NextHopIpAddress NextHopType           RouteTableId 
@@ -87,7 +87,7 @@ NextHopIpAddress NextHopType           RouteTableId
 13.78.238.92     VirtualNetworkGateway Gateway Route
 ```
 
-Ниже перечислены доступные значения NextHopType.
+Hello ниже перечислены в настоящее время доступных значений NextHopType hello.
 
 **Типы следующего прыжка**
 
@@ -101,7 +101,7 @@ NextHopIpAddress NextHopType           RouteTableId
 
 ## <a name="next-steps"></a>Дальнейшие действия
 
-Узнайте, как просмотреть параметры группы безопасности сети программным образом, в статье [NSG Auditing with Network Watcher](network-watcher-nsg-auditing-powershell.md) (Выполнение аудита групп безопасности сети с помощью Наблюдателя за сетями).
+Узнайте, как tooreview параметров группы безопасности сети программным способом, посетив [NSG аудита и Наблюдатель сети](network-watcher-nsg-auditing-powershell.md)
 
 
 

@@ -25,13 +25,13 @@
 ### [Настройка правил трафика для роли](cloud-services-enable-communication-role-instances.md)
 ### [Обработка событий жизненного цикла облачной службы](cloud-services-role-lifecycle-dotnet.md)
 ### [Socket.IO (Node.js)](cloud-services-nodejs-chat-app-socketio.md)
-### [Использование Twilio для телефонных звонков (.NET)](../partner-twilio-cloud-services-dotnet-phone-call-web-role.md)
+### [Использование Twilio toomake телефонный звонок (.NET)](../partner-twilio-cloud-services-dotnet-phone-call-web-role.md)
 ### [New Relic](../store-new-relic-cloud-services-dotnet-application-performance-management.md)
 
 ### Настройка задач запуска
 #### [Создание задач запуска](cloud-services-startup-tasks.md)
 #### [Распространенные задачи запуска](cloud-services-startup-tasks-common.md)
-#### [Установка .NET в роли облачной службы с помощью задачи](cloud-services-dotnet-install-dotnet.md)
+#### [Использовать задачу tooInstall .NET на роль облачной службы](cloud-services-dotnet-install-dotnet.md)
 
 ### Настройка удаленного рабочего стола
 #### [Портал](cloud-services-role-enable-remote-desktop-new-portal.md)
@@ -47,7 +47,7 @@
 #### [Портал](cloud-services-custom-domain-name-portal.md)
 #### [Классический портал](cloud-services-custom-domain-name.md)
 ### [Развертывание облачной службы (Node.js)](cloud-services-nodejs-stage-application.md)
-### [Подключение к пользовательскому контроллеру домена](cloud-services-connect-to-custom-domain.md)
+### [Подключение tooa настраиваемый контроллер домена](cloud-services-connect-to-custom-domain.md)
 
 ## Управление службой
 ### Общие задачи управления
@@ -59,8 +59,8 @@
 ### [Управление облачной службой с помощью службы автоматизации Azure](automation-manage-cloud-services.md)
 ### Настройка автоматического масштабирования
 #### [Портал](cloud-services-how-to-scale-portal.md)
-#### [Классический портал](cloud-services-how-to-scale.md)
-### [Использование языка Python для управления ресурсами Azure](cloud-services-python-how-to-use-service-management.md)
+#### [Классический портал.](cloud-services-how-to-scale.md)
+### [Использовать ресурсы Azure toomanage Python](cloud-services-python-how-to-use-service-management.md)
 
 ### [Исправления гостевой ОС](cloud-services-guestos-msrc-releases.md)
 ### Прекращение использования гостевой ОС
@@ -86,7 +86,7 @@
 ### [Использование счетчиков производительности в системе диагностики Azure](cloud-services-dotnet-diagnostics-performance-counters.md)
 ### [Хранение и просмотр диагностических данных в службе хранилища Azure](cloud-services-dotnet-diagnostics-storage.md)
 ### [Трассировка облачной службы с помощью системы диагностики](cloud-services-dotnet-diagnostics-trace-flow.md)
-### [Отправка диагностических данных в App Insights](cloud-services-dotnet-diagnostics-applicationinsights.md)
+### [Отправка диагностических данных tooApp аналитики](cloud-services-dotnet-diagnostics-applicationinsights.md)
 
 ## Устранение неполадок
 ### Отладка 
@@ -98,7 +98,7 @@
 ### [Распространенные причины перезапуска ролей облачной службы](cloud-services-troubleshoot-common-issues-which-cause-roles-recycle.md)
 ### [Используемый по умолчанию размер папки TEMP слишком мал для роли](cloud-services-troubleshoot-default-temp-folder-size-too-small-web-worker-role.md)
 ### [Распространенные проблемы с развертыванием](cloud-services-troubleshoot-deployment-problems.md)
-### [Роль не запускается](cloud-services-troubleshoot-roles-that-fail-start.md)
+### [Сбой при установке роли toostart](cloud-services-troubleshoot-roles-that-fail-start.md)
 ### [Инструкции по восстановлению](cloud-services-disaster-recovery-guidance.md)
 ### Часто задаваемые вопросы об облачных службах
 #### [Часто задаваемые вопросы о доступности приложений и служб](cloud-services-application-and-service-availability-faq.md)

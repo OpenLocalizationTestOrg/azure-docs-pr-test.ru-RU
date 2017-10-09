@@ -1,6 +1,6 @@
 ---
-title: "Сообщения об ошибках трассировки стека Hadoop в Azure HDInsight | Документы Майкрософт"
-description: "Указатель сообщений об ошибке трассировки стека в Azure HDInsight. Найдите ошибку в списке, чтобы просмотреть сведения об устранении неполадок."
+title: "aaaHadoop стека трассировки сообщения об ошибках - Azure HDInsight | Документы Microsoft"
+description: "Указатель сообщений об ошибке трассировки стека в Azure HDInsight. Поиск ошибки hello в сведения об устранении неполадок toosee список hello."
 keywords: "Трассировка стека, сообщения об ошибке"
 services: hdinsight
 documentationcenter: NA
@@ -16,20 +16,20 @@ ms.tgt_pltfrm: NA
 ms.workload: big-data
 ms.date: 08/15/2017
 ms.author: jgao
-ms.openlocfilehash: 45b3df39dcabf8be640bf6b9e5b83a452d6dd824
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 875cea0198d74feac5791b3bea095a01319dc45e
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="index-of-hadoop-in-hdinsight-troubleshooting-articles"></a>Указатель статей об устранении неполадок Hadoop в HDInsight
 Статьи упорядочены по типу ошибок.
 
 ## <a name="out-of-memory-error"></a>Ошибка нехватки памяти
-* [Устранение ошибки нехватки памяти (OOM) с помощью параметров памяти Hive в Hadoop в Azure HDInsight](hdinsight-hadoop-hive-out-of-memory-error-oom.md) — устранение ошибки нехватки памяти, возникшей из-за запроса Hive. Пользовательский сценарий включает в себя запрос ко множеству больших таблиц.
+* [Устранение ошибки нехватки памяти (OOM) с помощью параметров памяти Hive в Hadoop в Azure HDInsight](hdinsight-hadoop-hive-out-of-memory-error-oom.md) — устранение ошибки нехватки памяти, возникшей из-за запроса Hive. сценарий клиента Hello включает запрос через много больших таблиц.
 
 ## <a name="hive-query-performance"></a>Производительность запросов Hive
-* [Optimize Hive queries for Hadoop in HDInsight](hdinsight-hadoop-optimize-hive-query.md)(Оптимизация запросов Hive для Hadoop в HDInsight): в этой статье описывается несколько наиболее распространенных методов оптимизации производительности Hive, которые можно применить к запросам Hive.
+* [Оптимизация запросов Hive для Hadoop в HDInsight](hdinsight-hadoop-optimize-hive-query.md): в этой статье описываются некоторые наиболее распространенные Hive производительности оптимизации методы, могут быть применены tooHive запросы.
 * [Troubleshoot Hive query performance issues in HDInsight Hadoop cluster](https://blogs.msdn.microsoft.com/bigdatasupport/2015/08/13/troubleshooting-hive-query-performance-in-hdinsight-hadoop-cluster/)(Устранение проблем с производительностью запросов Hive в кластере HDInsight Hadoop).
 
 ## <a name="more-troubleshooting-articles"></a>Дополнительные статьи об устранении неполадок

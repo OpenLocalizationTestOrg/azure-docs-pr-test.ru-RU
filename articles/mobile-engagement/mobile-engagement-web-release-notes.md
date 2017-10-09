@@ -1,6 +1,6 @@
 ---
-title: "Заметки о выпуске веб-пакета SDK для Служб мобильного взаимодействия Azure | Документация Майкрософт"
-description: "Последние обновления и процедуры для веб-пакета SDK для Служб мобильного взаимодействия Azure."
+title: "aaaAzure Mobile Engagement Web SDK заметки о выпуске | Документы Microsoft"
+description: "Hello последние обновления и процедуры для Web SDK для Azure Mobile Engagement"
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
@@ -14,11 +14,11 @@ ms.devlang: js
 ms.topic: article
 ms.date: 10/18/2016
 ms.author: piyushjo
-ms.openlocfilehash: dc90620d284bdcae888b990f55191be18b29d6f5
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: a082f1fec07341b5cc06efe50512c2dcf01ec1df
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-mobile-engagement-web-sdk-release-notes"></a>Заметки о выпуске веб-пакета SDK для Служб мобильного взаимодействия Azure
 ## <a name="202-10182016"></a>2.0.2 (10/18/2016)
@@ -26,16 +26,16 @@ ms.lasthandoff: 07/11/2017
 * Фиксированный сбой в браузерах с отключенными файлами cookie.
 
 ## <a name="201-6102016"></a>2.0.1 (10.06.2016)
-* Пакет SDK отключен в Internet Explorer 8 и Internet Explorer 9.
+* Отключенные hello SDK в Internet Explorer 8 и Internet Explorer 9.
 * Исправлено обнаружение веб-браузера Opera.
 
 ## <a name="200-672016"></a>2.0.0 (6/7/2016)
 * Выпущены Службы мобильного взаимодействия Azure.
-* Выполнено обновление: конфигурация `appId` заменена конфигурацией строки подключения.
-* Добавлены API-интерфейсы для включения и отключения агента.
+* Обновление, которое hello `appId` конфигурации заменяется конфигурацию строки подключения.
+* Добавлены API-интерфейсы tooenable и отключите hello агента.
 * Внесены улучшения безопасности.
-* Выполнено обновление: собственные API-интерфейсы JSON можно использовать из браузеров.
-* API, который отвечает обмен сообщениями между устройствами (отправка и получение), удален.
-* Удалены обратные вызовы, связанные с нерекомендованным соединением XMPP.
-* Удалена поддержка рекламных кампаний.
+* Обновленный toouse собственные интерфейсы API JSON с помощью браузеров.
+* Удалить hello API, который отправляет и получает сообщения между устройствами.
+* Связанные toohello обратные вызовы удаленных устаревшим XMPP соединения.
+* Удалена поддержка функции hello Reach.
 

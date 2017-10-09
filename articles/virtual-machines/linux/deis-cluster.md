@@ -1,6 +1,6 @@
 ---
-title: "Развертывание 3-узлового кластера Deis | Документация Майкрософт"
-description: "В этой статье описывается создание 3-узлового кластера Deis в Azure с помощью шаблона диспетчера ресурсов Azure."
+title: "aaaDeploy Deis 3-узловой кластер | Документы Microsoft"
+description: "В этой статье описывается как toocreate 3-узловой Deis кластера в Azure с помощью шаблона диспетчера ресурсов Azure"
 services: virtual-machines-linux
 documentationcenter: 
 author: HaishiBai
@@ -16,63 +16,63 @@ ms.workload: infrastructure-services
 ms.date: 06/24/2015
 ms.author: hbai
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9a0c3dd7562dfb5ce54c2ebfd4665109f59cd8fd
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: a4c0fb8cbb849264e64b433540157c9afecd184e
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="deploy-and-configure-a-3-node-deis-cluster-in-azure"></a>Развертывание и настройка 3-узлового кластера Deis в Azure
-В этой статье пошагово описана подготовка кластера [Deis](http://deis.io/) в Azure. Она охватывает все действия, от создания необходимых сертификатов до развертывания и масштабирования примера приложения **Go** на новом подготовленном кластере.
+В этой статье пошагово описана подготовка кластера [Deis](http://deis.io/) в Azure. Она охватывает все действия hello на создание сертификатов, необходимых toodeploying hello и масштабирование образец **Go** приложение hello нового кластера.
 
-На следующей схеме показана архитектура развернутой системы. Системный администратор управляет кластером с помощью инструментов Deis, таких как **deis** и **deisctl**. Подключения устанавливаются через посредством подсистемы балансировки нагрузки Azure, переадресовывающей подключения одному из узлов, участвующих в кластере. Кроме того, доступ клиентов к развернутым приложениям также осуществляется через подсистему балансировки нагрузки. В этом случае подсистема балансировки нагрузки переадресовывает трафик в сеть маршрутизатора Deis, который, в свою очередь, перенаправляет трафик в соответствующие контейнеры Docker, размещенные в кластере.
+Hello следующей схеме показана архитектура hello hello развертывания системы. Системный администратор управляет hello кластера с помощью Deis средств, таких как **deis** и **deisctl**. Соединения устанавливаются с помощью балансировки нагрузки Azure, направляет tooone подключений hello члена hello узлы в кластере hello. доступ клиентов Hello развернутых приложений через hello также балансировки нагрузки. В этом случае балансировки нагрузки hello перенаправляет трафик tooa hello Deis сетки маршрутизатор, который дальнейшей перенаправляет вызвавший контейнеры Docker toocorresponding трафика, размещенных в кластере hello.
 
   ![Схема архитектуры развернутого кластера Deis](./media/deis-cluster/architecture-overview.png)
 
-Вот что требуется, чтобы выполнить следующие действия:
+Порядок toorun через hello, выполнив действия вам потребуется:
 
 * Активная подписка Azure. Если у вас ее нет, можно получить бесплатную ознакомительную версию на сайте [azure.com](https://azure.microsoft.com/).
-* Рабочий или учебный идентификатор для использования групп ресурсов Azure. Если у вас имеется личная учетная запись и для входа вы используете идентификатор Майкрософт, необходимо [создать рабочий идентификатор на основе вашего личного идентификатора](../windows/create-aad-work-id.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
-* Либо, в зависимости от клиентской операционной системы, [Azure PowerShell](/powershell/azureps-cmdlets-docs) или [Azure CLI для Mac, Linux и Windows](../../cli-install-nodejs.md).
-* [OpenSSL](https://www.openssl.org/). OpenSSL используется для создания необходимых сертификатов.
+* Рабочий или группы ресурсов Azure toouse идентификатор учебного заведения. Если имеется личная учетная запись и войти в систему с Microsoft id, необходимо слишком[создать из вашего личного один идентификатор рабочего](../windows/create-aad-work-id.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+* Либо — в зависимости от операционной системы клиента--hello [Azure PowerShell](/powershell/azureps-cmdlets-docs) или hello [Azure CLI для Mac, Linux и Windows](../../cli-install-nodejs.md).
+* [OpenSSL](https://www.openssl.org/). OpenSSL — используется toogenerate hello необходимые сертификаты.
 * Клиент Git, например [Git Bash](https://git-scm.com/).
-* Чтобы протестировать пример приложения, также необходим DNS-сервер. Можно использовать любые DNS-серверы или службы, которые поддерживают записи A с подстановочным знаком.
-* Компьютер для запуска клиентских инструментов Deis. Можно использовать локальный компьютер или виртуальную машину. Эти инструменты можно запустить практически на любом дистрибутиве Linux, но приведенные указания относятся к Ubuntu.
+* Пример приложения hello tootest, кроме того, потребуется DNS-сервера. Можно использовать любые DNS-серверы или службы, которые поддерживают записи A с подстановочным знаком.
+* Toorun компьютер Deis клиентских средств. Можно использовать локальный компьютер или виртуальную машину. Эти инструменты можно использовать на любой дистрибутив Linux, но hello следующие инструкции используют Ubuntu.
 
-## <a name="provision-the-cluster"></a>Подготовка кластера
-В этом разделе вы будете использовать шаблон [Azure Resource Manager](../../azure-resource-manager/resource-group-overview.md) из репозитория открытого кода [azure-quickstart-templates](https://github.com/Azure/azure-quickstart-templates). Сначала вы скопируете шаблон. Затем создадите новую пару ключей SSH для аутентификации. После этого вы настроите новый идентификатор для кластера. И, наконец, вы используете сценарий оболочки или сценарий PowerShell для подготовки кластера.
+## <a name="provision-hello-cluster"></a>Подготовка кластера hello
+В этом разделе мы используем [диспетчера ресурсов Azure](../../azure-resource-manager/resource-group-overview.md) шаблона из открытого репозитория hello [azure — начало работы — шаблоны](https://github.com/Azure/azure-quickstart-templates). Во-первых будет копировать вниз hello шаблона. Затем создадите новую пару ключей SSH для аутентификации. После этого вы настроите новый идентификатор для кластера. И наконец, используйте сценарий hello или hello PowerShell скрипт tooprovision hello кластера.
 
-1. Клонируйте репозиторий: [https://github.com/Azure/azure-quickstart-templates](https://github.com/Azure/azure-quickstart-templates).
+1. Репозиторий hello клона: [https://github.com/Azure/azure-quickstart-templates](https://github.com/Azure/azure-quickstart-templates).
    
         git clone https://github.com/Azure/azure-quickstart-templates
-2. Перейдите в папку шаблона:
+2. Перейдите в папку toohello шаблона:
    
         cd azure-quickstart-templates\deis-cluster-coreos
 3. Создайте новую пару ключей SSH, используя ssh-keygen:
    
         ssh-keygen -t rsa -b 4096 -c "[your_email@domain.com]"
-4. Создайте сертификат с помощью полученного выше закрытого ключа:
+4. Создайте сертификат с помощью hello выше закрытого ключа:
    
-        openssl req -x509 -days 365 -new -key [your private key file] -out [cert file to be generated]
-5. Перейдите по адресу [https://discovery.etcd.io/new](https://discovery.etcd.io/new) , чтобы создать новый токен кластера, который имеет следующий вид:
+        openssl req -x509 -days 365 -new -key [your private key file] -out [cert file toobe generated]
+5. Go слишком[https://discovery.etcd.io/new](https://discovery.etcd.io/new) toogenerate новый маркер кластера, который выглядит примерно:
    
         https://discovery.etcd.io/6a28e078895c5ec737174db2419bb2f3
    <br />
-   У каждого кластера CoreOS должен быть уникальный токен от этой бесплатной службы. Дополнительные сведения см. в [документации по CoreOS](https://coreos.com/docs/cluster-management/setup/cluster-discovery/).
-6. Измените файл **cloud-config.yaml**, чтобы заменить существующий токен **discovery** новым.
+   Для каждого кластера CoreOS должен toohave уникального токена из этой бесплатной службой. Дополнительные сведения см. в [документации по CoreOS](https://coreos.com/docs/cluster-management/setup/cluster-discovery/).
+6. Изменить hello **облака config.yaml** файла существующие hello tooreplace **обнаружения** токена с hello новый маркер:
    
         #cloud-config
         ---
         coreos:
           etcd:
             # generate a new token for each unique cluster from https://discovery.etcd.io/new
-            # uncomment the following line and replace it with your discovery URL
+            # uncomment hello following line and replace it with your discovery URL
             discovery: https://discovery.etcd.io/3973057f670770a7628f917d58c2208a
         ...
-7. Измените файл **azuredeploy-parameters.json** : откройте сертификат, созданный на шаге 4, в текстовом редакторе. Скопируйте весь текст между `----BEGIN CERTIFICATE-----` и `-----END CERTIFICATE-----` в параметр **sshKeyData** (необходимо удалить все знаки новой строки).
-8. Измените параметр **newStorageAccountName** . Это учетная запись хранения для дисков операционной системы виртуальной машины. Это имя учетной записи должно быть глобально уникальным.
-9. Измените параметр **publicDomainName** . Это значение станет частью DNS-имени, связанного с общедоступным IP-адресом подсистемы балансировки нагрузки. У окончательного полного доменного имени будет такой формат: *[значение этого параметра]*.*[регион]*.cloudapp.azure.com. Например, если указать имя deishbai32, и группа ресурсов развернута в западной части США, окончательным полным доменным именем вашей подсистемы балансировки нагрузки будет deishbai32.westus.cloudapp.azure.com.
-10. Сохраните файл параметров. После этого можно подготовить кластер с помощью Azure PowerShell:
+7. Изменение hello **azuredeploy parameters.json** файла: hello откройте сертификат, созданный на шаге 4, в текстовом редакторе. Скопируйте весь текст между `----BEGIN CERTIFICATE-----` и `-----END CERTIFICATE-----` в hello **sshKeyData** параметра (потребуется tooremove все символы новой строки).
+8. Изменение hello **newStorageAccountName** параметра. Это учетная запись хранения hello для дисков операционной системы виртуальной Машины. Это имя учетной записи имеет toobe глобально уникальным.
+9. Изменение hello **publicDomainName** параметра. Это значение станет частью hello DNS-имя, связанное с общедоступным IP-подсистемы балансировки нагрузки hello. Hello окончательного полное доменное имя будет иметь формат hello *[значение этого параметра]*. *[region]* . cloudapp.azure.com. Например если указать имя hello как deishbai32 и группы ресурсов hello toohello развернутой области Запад США, а затем hello окончательного deishbai32.westus.cloudapp.azure.com будет балансировки нагрузки tooyour полное доменное имя.
+10. Сохраните файл параметров hello. И затем можно подготовить hello кластера с помощью Azure PowerShell:
     
         .\deploy-deis.ps1 -ResourceGroupName [resource group name] -ResourceGroupLocation "West US" -TemplateFile
         .\azuredeploy.json -ParametersFile .\azuredeploy-parameters.json -CloudInitFile .\cloud-config.yaml
@@ -81,49 +81,49 @@ ms.lasthandoff: 07/11/2017
     
         ./deploy-deis.sh -n "[resource group name]" -l "West US" -f ./azuredeploy.json -e ./azuredeploy-parameters.json
         -c ./cloud-config.yaml  
-11. После подготовки группы ресурсов вы увидите все эти ресурсы в данной группе на классическом портале Azure. Как показано на следующем снимке экрана, группа ресурсов содержит виртуальную сеть с тремя виртуальными машинами, которые присоединены к одной группе доступности. Группа также содержит подсистему балансировки нагрузки, имеющую связанный общедоступный IP-адрес.
+11. После подготовки hello группы ресурсов, можно просмотреть все ресурсы hello в группе hello на классический портал Azure. Как показано на следующий снимок экрана, hello hello, группа ресурсов содержит виртуальную сеть с трех виртуальных машин, которые являются объединить toohello одной группе доступности. Группа Hello также содержит подсистему балансировки нагрузки, имеющая связанный общедоступный IP-адрес.
     
-    ![Подготовленная группа ресурсов на классическом портале Azure](./media/deis-cluster/resource-group.png)
+    ![Группа ресурсов на классический портал Azure подготовлена Hello](./media/deis-cluster/resource-group.png)
 
-## <a name="install-the-client"></a>Установка клиента
-Для управления кластером Deis необходим **deisctl** . Хотя deisctl автоматически устанавливается на всех узлах кластера, рекомендуется использовать deisctl на отдельном компьютере администрирования. Более того, так как для всех узлов настроены только частные IP-адреса, для подключения к компьютерам узлов необходимо использовать туннелирование SSH через подсистему балансировки нагрузки, имеющую общедоступный IP-адрес. Ниже приведены шаги по настройке deisctl на отдельном физическом компьютере или виртуальной машине Ubuntu.
+## <a name="install-hello-client"></a>Установка клиента на приветствия
+Требуется **deisctl** toocontrol вашей Deis кластера. Несмотря на то, что deisctl автоматически устанавливается на всех узлах кластера hello, это deisctl toouse рекомендаций на отдельном компьютере правами администратора. Кроме того так как все узлы должны быть настроены только частные IP-адреса, вам потребуется toouse туннелирования SSH с помощью подсистемы балансировки нагрузки hello, имеющая общедоступный IP-адрес, узел машины tooconnect toohello. Hello ниже приведены hello шаги по настройке deisctl на отдельном Ubuntu физической или виртуальной машины.
 
 1. Установите deisctl:mkdir deis:
    
         cd deis
         curl -sSL http://deis.io/deisctl/install.sh | sh -s 1.6.1
         sudo ln -fs $PWD/deisctl /usr/local/bin/deisctl
-2. Добавьте закрытый ключ в агент ssh:
+2. Добавление агента toossh закрытого ключа:
    
         eval `ssh-agent -s`
-        ssh-add [path to the private key file, see step 1 in the previous section]
+        ssh-add [path toohello private key file, see step 1 in hello previous section]
 3. Настройте deisctl:
    
-        export DEISCTL_TUNNEL=[public ip of the load balancer]:2223
+        export DEISCTL_TUNNEL=[public ip of hello load balancer]:2223
 
-Шаблон определяет правила для входящих подключений NAT, сопоставляющие 2223 с экземпляром 1, 2224 с экземпляром 2 и 2225 с экземпляром 3. Это обеспечивает избыточность при использовании инструмента deisctl. Можно просмотреть эти правила на классическом портале Azure.
+Hello шаблон определяет NAT правила для входящих подключений, которые сопоставляют 2223 tooinstance 1, 2224 tooinstance 2 и 2225 tooinstance 3. Это обеспечивает избыточность для использования инструмента deisctl hello. Можно просмотреть эти правила на классическом портале Azure.
 
-![Правила NAT в подсистеме балансировки нагрузки](./media/deis-cluster/nat-rules.png)
+![Подсистема балансировки нагрузки правила NAT на hello](./media/deis-cluster/nat-rules.png)
 
 > [!NOTE]
-> Сейчас шаблон поддерживает только 3-узловые кластеры. Это связано с ограничением в определении правил NAT шаблона диспетчера ресурсов Azure, которое не позволяет использовать синтаксис цикла.
+> В настоящее время шаблона hello поддерживает только 3 узлов кластеров. Это связано с ограничением в определении правил NAT шаблона диспетчера ресурсов Azure, которое не позволяет использовать синтаксис цикла.
 > 
 > 
 
-## <a name="install-and-start-the-deis-platform"></a>Установка и запуск платформы Deis
-Теперь можно использовать deisctl для установки и запуска платформы Deis:
+## <a name="install-and-start-hello-deis-platform"></a>Установка и запуск hello Deis платформы
+Теперь можно использовать deisctl tooinstall и запустить hello Deis платформа:
 
     deisctl config platform set domain=[some domain]
-    deisctl config platform set sshPrivateKey=[path to the private key file]
+    deisctl config platform set sshPrivateKey=[path toohello private key file]
     deisctl install platform
     deisctl start platform
 
 > [!NOTE]
-> Запуск платформы занимает некоторое время (до 10 минут). Особенно долго запускается служба builder. Иногда требуется несколько попыток: если операция перестает отвечать на запросы, попробуйте ввести `ctrl+c`, чтобы прервать выполнение команды и повторить попытку.
+> Начальный платформы hello занимает некоторое время (до 10 минут). Особенно запуск hello построитель службы может занять много времени. Иногда занимает несколько попыток toosucceed: Если hello операции toohang, попробуйте ввести `ctrl+c` toobreak выполнения команды hello и повторите попытку.
 > 
 > 
 
-Можно использовать `deisctl list`, чтобы проверить, все ли службы запущены:
+Можно использовать `deisctl list` tooverify, если все службы запущены:
 
     deisctl list
     UNIT                            MACHINE                 LOAD    ACTIVE          SUB
@@ -155,12 +155,12 @@ ms.lasthandoff: 07/11/2017
     deis-store-volume.service       9c79bbdd.../10.0.0.5    loaded  active          running
     deis-store-volume.service       ebe3005e.../10.0.0.6    loaded  active          running
 
-Поздравляем! Теперь у вас есть работающий кластер Deis в Azure! Теперь давайте развернем пример приложения Go, чтобы просмотреть, как работает кластер.
+Поздравляем! Теперь у вас есть работающий кластер Deis в Azure! Теперь давайте развернуть пример Go приложения toosee hello кластера в действии.
 
 ## <a name="deploy-and-scale-a-hello-world-application"></a>Развертывание и масштабирование приложения Hello World
-Ниже показано, как развернуть приложение Go «Hello World» в кластере. Шаги основаны на [документации по Deis](http://docs.deis.io/en/latest/using_deis/using-dockerfiles/#using-dockerfiles).
+Hello следующие шаги показывают, как toodeploy «Hello World» Go кластера toohello приложения. на основе действия Hello [Deis документации](http://docs.deis.io/en/latest/using_deis/using-dockerfiles/#using-dockerfiles).
 
-1. Чтобы сеть маршрутизации работала правильно, необходимо иметь запись A с подстановочным знаком для домена, указывающую на общедоступный IP-адрес подсистемы балансировки нагрузки. На следующем снимке экрана показана запись A для примера регистрации домена на GoDaddy:
+1. Для маршрутизации toowork сетки hello надлежащим образом, вам потребуется toohave запись A подстановочный знак для вашего домена, указывающий toohello общедоступный IP-адрес подсистемы балансировки нагрузки hello. Hello следующем снимке экрана показана запись hello A для регистрации домена образец на GoDaddy:
    
     ![Запись A Godaddy](./media/deis-cluster/go-daddy.png)
    
@@ -171,11 +171,11 @@ ms.lasthandoff: 07/11/2017
         cd deis
         curl -sSL http://deis.io/deis-cli/install.sh | sh
         ln -fs $PWD/deis /usr/local/bin/deis
-3. Создайте новый ключ SSH, а затем добавьте открытый ключ в GitHub (конечно, можно также повторно использовать существующие ключи). Чтобы создать новую пару ключей SSH, используйте:
+3. Создание нового ключа SSH, а затем добавьте открытого ключа tooGitHub hello (Конечно, можно также повторно использовать существующие ключи). toocreate новую пару ключей SSH, используйте:
    
         cd ~/.ssh
-        ssh-keygen (press [Enter]s to use default file names and empty passcode)
-4. Добавьте в GitHub id_rsa.pub или открытый ключ (по своему усмотрению). Это можно сделать с помощью кнопки «Add SSH key» (Добавить ключ SSH) на экране настройки ключей SSH:
+        ssh-keygen (press [Enter]s toouse default file names and empty passcode)
+4. Добавьте id_rsa.pub или открытый ключ hello по своему усмотрению, tooGitHub. Это можно сделать с помощью hello добавить SSH ключа кнопки на экране настройки ключей SSH:
    
    ![Ключ GitHub](./media/deis-cluster/github-key.png)
    
@@ -184,9 +184,9 @@ ms.lasthandoff: 07/11/2017
    
         deis register http://deis.[your domain]
    <p />
-6. Добавьте ключ SSH:
+6. Добавьте hello SSH-ключ:
    
-        deis keys:add [path to your SSH public key]
+        deis keys:add [path tooyour SSH public key]
    <p />      
 7. Создайте приложение:
    
@@ -195,29 +195,29 @@ ms.lasthandoff: 07/11/2017
         deis create
         git push deis master
    <p />
-8. Отправка git инициирует сборку и развертывание образов Docker, что может занять несколько минут. Из личного опыта: иногда на шаге 10 (при отправке образа в частный репозиторий) система может перестать отвечать на запросы. В этом случае можно остановить процесс и удалить приложение с помощью команды deis apps:destroy –a <application name>` to remove the application and try again. You can use `deis apps:list, чтобы узнать имя приложения. Если все работает, по завершении вывода команды вы увидите примерно следующее:
+8.Отправка git Hello активируют Docker изображения toobe построения и развертывания, который может занять несколько минут. Из Мои возможности в некоторых случаях шаг 10 (Pushing tooprivate репозитория образов) может зависнуть. В этом случае вы можете остановить процесс hello приложения hello удалить с помощью "deis приложений: уничтожить <application name> ` tooremove hello application and try again. You can use `deis apps:list" toofind hello имя приложения. Если все работает, вы увидите нечто похожее на следующее hello в конце hello выходные данные команды:
    
         -----> Launching...
-               done, lambda-underdog:v2 deployed to Deis
+               done, lambda-underdog:v2 deployed tooDeis
                http://lambda-underdog.artitrack.com
-               To learn more, use `deis help` or visit http://deis.io
-        To ssh://git@deis.artitrack.com:2222/lambda-underdog.git
+               toolearn more, use `deis help` or visit http://deis.io
+        toossh://git@deis.artitrack.com:2222/lambda-underdog.git
          * [new branch]      master -> master
    <p />
-9. Проверьте, работает ли приложение:
+9. Проверьте, работает ли приложение hello.
    
         curl -S http://[your application name].[your domain]
    Вы должны увидеть следующее:
    
-        Welcome to Deis!
-        See the documentation at http://docs.deis.io/ for more information.
-        (you can use geis apps:list to get the name of your application).
+        Welcome tooDeis!
+        See hello documentation at http://docs.deis.io/ for more information.
+        (you can use geis apps:list tooget hello name of your application).
    <p />
-10. Масштабируйте приложение на 3 экземпляра:
+10. Масштабирование экземпляров too3 приложения hello:
     
         deis scale cmd=3
     <p />
-11. Кроме того, можно использовать deis info, чтобы просмотреть сведения о приложении. Ниже приведены выходные данные моего развертывания приложения:
+11. При необходимости можно использовать deis сведения подробности tooexamine приложения. Hello следующие выходные данные приведены из моей развертывания приложения.
     
         deis info
         === lambda-underdog Application
@@ -243,10 +243,10 @@ ms.lasthandoff: 07/11/2017
         No domains
 
 ## <a name="next-steps"></a>Дальнейшие действия
-В этой статье подробно описаны все шаги по подготовке нового кластера Deis в Azure с помощью шаблона диспетчера ресурсов Azure. Шаблон поддерживает избыточность подключений инструментов, а также балансировку нагрузки для развернутых приложений. Шаблон также позволяет избежать использования общедоступных IP-адресов на узлах кластера, что позволяет экономить ценные ресурсы общедоступных IP-адресов и обеспечивает более защищенную среду для размещения приложений. Для получения дополнительных сведений ознакомьтесь со следующими статьями:
+В этой статье подробно описан все tooprovision действия hello Deis новый кластер в Azure с помощью шаблона диспетчера ресурсов Azure. шаблон Hello поддерживает избыточность подключений, а также балансировку нагрузки для развернутых приложений для работы с проектами. шаблон Hello также позволяет избежать с помощью общедоступных IP-адресов на узлы элементов, которые обеспечивает экономию ценное открытый IP и предоставляет более безопасной среде toohost приложений. toolearn более, см. следующие статьи hello.
 
 [Общие сведения о диспетчере ресурсов Azure][resource-group-overview]  
-[Установка Azure CLI][azure-command-line-tools]  
+[Как toouse hello Azure CLI][azure-command-line-tools]  
 [Использование Azure PowerShell с Azure Resource Manager][powershell-azure-resource-manager]  
 
 [azure-command-line-tools]: ../../cli-install-nodejs.md

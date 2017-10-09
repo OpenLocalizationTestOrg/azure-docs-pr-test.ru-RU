@@ -1,5 +1,5 @@
 ---
-title: "Создание масштабируемых наборов виртуальных машин с помощью командлетов PowerShell | Документация Майкрософт"
+title: "Задает aaaCreating масштабирования виртуальных машин с помощью командлетов PowerShell | Документы Microsoft"
 description: "Приступите к созданию своего первого масштабируемого набора виртуальных машин Azure и научитесь им управлять с помощью Azure PowerShell."
 services: virtual-machines-windows
 documentationcenter: 
@@ -15,20 +15,20 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/21/2017
 ms.author: danielsollondon
-ms.openlocfilehash: a3a36028a75d6cb7eb36277f3e2b5ab833c96a96
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 7979be367d04c904b60d78849c1b751a52cc8caf
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="creating-virtual-machine-scale-sets-using-powershell-cmdlets"></a>Создание масштабируемых наборов виртуальных машин с помощью командлетов PowerShell
-В этой статье подробно рассматривается пример того, как создать масштабируемый набор виртуальных машин (VMSS). В нем создается масштабируемый набор из трех узлов со связанными сетью и хранилищем.
+В этой статье рассматриваются примером как toocreate набора масштабирования виртуальных машин (VMSS). В нем создается масштабируемый набор из трех узлов со связанными сетью и хранилищем.
 
 ## <a name="first-steps"></a>Первые шаги
-Убедитесь, что у вас установлен последний модуль Azure PowerShell и доступны командлеты PowerShell, необходимые для обслуживания и создания масштабируемых наборов.
-Перейдите к расположенным [здесь](http://aka.ms/webpi-azps) программам командной строки, чтобы узнать о последних доступных модулях Azure.
+Убедитесь, у вас есть hello установить последнюю версию модуля Azure PowerShell, необходимые toomaintain toomake том, что у вас есть командлеты PowerShell hello и создания набора масштабирования.
+Go средства командной строки toohello [здесь](http://aka.ms/webpi-azps) для hello последние доступные модули Azure.
 
-Чтобы найти связанные с VMSS командлеты, используйте строку поиска \*VMSS\*. Например, _gcm *vmss*_.
+toofind VMSS связанные командлеты, используйте строку hello поиска \*VMSS\*. Например, _gcm *vmss*_.
 
 ## <a name="creating-a-vmss"></a>Создание VMSS
 #### <a name="create-resource-group"></a>Создать группу ресурсов
@@ -50,12 +50,12 @@ $subnetName = 'websubnet'
 $vnet = New-AzureRmVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -Subnet $subnet;
 $vnet = Get-AzureRmVirtualNetwork -Name ('vnet' + $rgname) -ResourceGroupName $rgname;
 
-# In this case assume the new subnet is the only one
+# In this case assume hello new subnet is hello only one
 $subnetId = $vnet.Subnets[0].Id;
 ```
 
-#### <a name="create-public-ip-resource-to-allow-external-access"></a>Создание ресурса общедоступного IP-адреса для внешнего доступа
-Выполняется привязка к подсистеме балансировки нагрузки.
+#### <a name="create-public-ip-resource-tooallow-external-access"></a>Создание общих IP-ресурс tooAllow внешнего доступа
+Это будет привязанного toohello подсистемы балансировки нагрузки.
 
 ```
 $pubip = New-AzureRmPublicIpAddress -Force -Name ('pubip' + $rgname) -ResourceGroupName $rgname -Location $loc -AllocationMethod Dynamic -DomainNameLabel ('pubip' + $rgname);
@@ -71,24 +71,24 @@ $inboundNatPoolName = 'innatpool' + $rgname
 $lbruleName = 'lbrule' + $rgname
 $lbName = 'vmsslb' + $rgname
 
-# Bind Public IP to Load Balancer
+# Bind Public IP tooLoad Balancer
 $frontend = New-AzureRmLoadBalancerFrontendIpConfig -Name $frontendName -PublicIpAddress $pubip
 ```
 
 #### <a name="configure-load-balancer"></a>Настройка балансировщика нагрузки
-Создайте конфигурацию внутреннего пула адресов, которая будет совместно использоваться сетевыми картами виртуальных машин в масштабируемом наборе.
+Создать конфигурацию пула адресов серверной части, это будет совместно использоваться hello сетевые адаптеры виртуальных машин hello в наборе масштабирования hello.
 
 ```
 $backendAddressPool = New-AzureRmLoadBalancerBackendAddressPoolConfig -Name $backendAddressPoolName
 ```
 
-Задайте порт пробы с балансировкой нагрузки и настройте подходящие параметры для приложения.
+Необходимо задать порт пробы балансировкой нагрузки, изменить параметры hello в зависимости от приложения.
 
 ```
 $probe = New-AzureRmLoadBalancerProbeConfig -Name $probeName -RequestPath healthcheck.aspx -Protocol http -Port 80 -IntervalInSeconds 15 -ProbeCount 2
 ```
 
-Создайте пул входящих подключений NAT для подключений с прямой маршрутизацией (без балансировки) к виртуальным машинам в масштабируемом наборе с помощью подсистемы балансировки нагрузки. Это нужно для демонстрации использования протокола RDP и может не потребоваться в вашем приложении.
+Создайте пул NAT входящего трафика для прямого подключения перенаправленное (не Балансировка) toohello виртуальных машин в hello масштабирования, заданные через hello подсистемы балансировки нагрузки. Это toodemonstrate, с помощью протокола удаленного рабочего СТОЛА и могут не потребоваться в вашем приложении.
 
 ```
 $frontendpoolrangestart = 3360
@@ -98,7 +98,7 @@ $inboundNatPool = New-AzureRmLoadBalancerInboundNatPoolConfig -Name $inboundNatP
 $frontend.Id -Protocol Tcp -FrontendPortRangeStart $frontendpoolrangestart -FrontendPortRangeEnd $frontendpoolrangeend -BackendPort $backendvmport;
 ```
 
-Создайте правило с балансировкой нагрузки. В этом примере показаны запросы через порт 80 для балансировки нагрузки с использованием параметров из предыдущих шагов.
+Создайте hello правило балансировки нагрузки в этом примере показано нагрузки балансировки порт 80 запросов, с использованием параметров hello из предыдущих шагов.
 
 ```
 $protocol = 'Tcp'
@@ -119,14 +119,14 @@ $actualLb = New-AzureRmLoadBalancer -Name $lbName -ResourceGroupName $rgname -Lo
 -Probe $probe -LoadBalancingRule $lbrule -InboundNatPool $inboundNatPool -Verbose;
 ```
 
-Проверьте параметры балансировки нагрузки и конфигурации портов с балансировкой нагрузки. Помните, что правила NAT для входящего трафика отображаются только после создания виртуальных машин в масштабируемом наборе.
+Проверьте параметры балансировки Нагрузки, проверьте нагрузки балансировкой порт конфигураций, обратите внимание, что вы не увидите создаются правила NAT для входящего трафика до hello виртуальные машины в наборе масштабирования hello.
 
 ```
 $expectedLb = Get-AzureRmLoadBalancer -Name $lbName -ResourceGroupName $rgname
 ```
 
-##### <a name="configure-and-create-the-scale-set"></a>Настройка и создание масштабируемого набора
-Обратите внимание, что в этом примере инфраструктуры показано, как настроить распространение и масштабирование веб-трафика в масштабируемом наборе, однако в указанных здесь образах виртуальных машин нет установленных веб-служб.
+##### <a name="configure-and-create-hello-scale-set"></a>Настройка и создание hello в наборе
+Обратите внимание, что в этом примере инфраструктуры показано, как распространить tooset вверх и масштабирования веб-трафик через набор масштабирования hello, но hello образы виртуальных машин, указанные здесь нет установлен веб-служб.
 
 ```
 # specify scale set Name
@@ -149,7 +149,7 @@ $exttype = 'BGInfo';
 $extver = '2.1';
 ```
 
-Привязка сетевой карты к балансировщику нагрузки и подсети
+Привязки Сетевых tooLoad балансировки и подсети
 
 ```
 $ipCfg = New-AzureRmVmssIPConfig -Name 'nic' `
@@ -179,7 +179,7 @@ $vmss = New-AzureRmVmssConfig -Location $loc -SkuCapacity $numberofnodes -SkuNam
 New-AzureRmVmss -ResourceGroupName $rgname -Name $vmssName -VirtualMachineScaleSet $vmss -Verbose;
 ```
 
-Теперь вы создали масштабируемый набор. Подключение к отдельной виртуальной машине можно проверить с помощью протокола удаленного рабочего стола в этом примере:
+Теперь вы создали набор масштабирования hello. Можно проверить подключение toohello отдельных виртуальных Машин с помощью протокола удаленного рабочего СТОЛА в этом примере:
 
 ```
 VM0 : pubipmynewrgwu.westus.cloudapp.azure.com:3360

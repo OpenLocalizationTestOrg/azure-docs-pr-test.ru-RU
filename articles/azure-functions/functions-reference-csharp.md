@@ -1,6 +1,6 @@
 ---
-title: "Справочник разработчика скриптов C# по Функциям Azure | Документация Майкрософт"
-description: "Узнайте, как разрабатывать Функции Azure с помощью C#."
+title: "Справочник разработчика скрипт C# функции aaaAzure | Документы Microsoft"
+description: "Понять, как toodevelop функции Azure с помощью C#."
 services: functions
 documentationcenter: na
 author: lindydonna
@@ -16,11 +16,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 06/07/2017
 ms.author: donnam
-ms.openlocfilehash: 83a351ce0279ada8ce7fe0513497349471334a86
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 27a8f4eb77497a373ff4031539e2e930585e48e4
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-functions-c-script-developer-reference"></a>Справочник разработчика скриптов C# по функциям Azure
 > [!div class="op_single_selector"]
@@ -30,17 +30,17 @@ ms.lasthandoff: 08/29/2017
 >
 >
 
-Взаимодействие со скриптом C# для Функций Azure основано на пакете SDK с веб-заданиями Azure. Данные поступают в функцию C# через аргументы метода. Имена аргументов указываются в `function.json`, и есть предварительно определенные имена для доступа к таким объектам, как средство ведения журнала функций и маркеры отмены.
+Hello качества скрипт C# для функций Azure основан на hello Azure SDK веб-заданий. Данные поступают в функцию C# через аргументы метода. Указанные имена аргументов в `function.json`, и предварительно определенных имен для доступа к, например hello функции ведения журнала и токены отмены.
 
-В этой статье предполагается, что вы уже прочли [справочник разработчика по Функциям Azure](functions-reference.md).
+В этой статье предполагается, что вы прочитали hello [Справочник разработчика Azure функции](functions-reference.md).
 
 Дополнительные сведения об использовании библиотек классов C# с помощью Функций Azure см. в [этой статье](functions-dotnet-class-library.md).
 
 ## <a name="how-csx-works"></a>Как работает формат CSX
-Формат `.csx` позволяет писать меньше стандартного кода и сосредоточиться на написании только функции C#. Как обычно, укажите ссылки на необходимые сборки и пространства имен в начале файла, а затем вместо помещения всего кода в пространство имен и класс просто определите метод `Run`. Если необходимо включить какие-либо классы, например для определения объектов POCO, можно включить класс в тот же файл.   
+Hello `.csx` формат позволяет toowrite менее «стандартный» и сосредоточиться на запись только функции C#. Включить все ссылки на сборки и пространства имен в начале файла hello hello обычным образом. а затем вместо помещения всего кода в пространство имен и класс просто определите метод `Run`. Если вам требуется tooinclude всем классам для объектов объект среды CLR (POCO), можно включить класса внутри обычного toodefine экземпляр hello того же файла.   
 
-## <a name="binding-to-arguments"></a>Привязка к аргументам
-Различные привязки связываются с функцией C# через свойство `name` в файле конфигурации *function.json*. У каждой привязки есть собственные поддерживаемые типы. Например, триггер больших двоичных объектов может поддерживать строку, POCO или CloudBlockBlob. Поддерживаемые типы описаны в документации для каждой привязки. Для каждого свойства объекта POCO нужно определить метод задания и считывания.
+## <a name="binding-tooarguments"></a>Tooarguments привязки
+Hello различных привязок, связанных tooa C# функция через hello `name` свойство в hello *function.json* конфигурации. У каждой привязки есть собственные поддерживаемые типы. Например, триггер больших двоичных объектов может поддерживать строку, POCO или CloudBlockBlob. Hello поддерживаемые типы описаны в hello справочник для каждой привязки. Для каждого свойства объекта POCO нужно определить метод задания и считывания.
 
 ```csharp
 public static void Run(string myBlob, out MyClass myQueueItem)
@@ -59,7 +59,7 @@ public class MyClass
 
 ## <a name="using-method-return-value-for-output-binding"></a>Использование возвращаемого значения метода для выходной привязки
 
-Используйте возвращаемое значение метода для выходной привязки, указав имя `$return` в *function.json*:
+Возвращаемое значение метода можно использовать для привязки выходные данные с помощью имени hello `$return` в *function.json*:
 
 ```json
 {
@@ -80,7 +80,7 @@ public static string Run(string input, TraceWriter log)
 
 ## <a name="writing-multiple-output-values"></a>Написание нескольких значений выходных данных
 
-Чтобы записать несколько значений в выходную привязку, используйте тип [`ICollector`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/ICollector.cs) или [`IAsyncCollector`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IAsyncCollector.cs). Эти типы представляют собой доступные только для записи коллекции, записываемые в выходную привязку по завершении метода.
+Вывод нескольких значений tooan toowrite привязку, использовать hello [ `ICollector` ](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/ICollector.cs) или [ `IAsyncCollector` ](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IAsyncCollector.cs) типов. Эти типы предназначены только для записи коллекции, записать toohello выходные данные привязки завершении метода hello.
 
 В следующем примере записываются несколько сообщений очереди с помощью `ICollector`:
 
@@ -93,9 +93,9 @@ public static void Run(ICollector<string> myQueueItem, TraceWriter log)
 ```
 
 ## <a name="logging"></a>Ведение журналов
-Для записи выходных данных в потоковые журналы в C# включите аргумент с типом `TraceWriter`. Рекомендуем присвоить ему имя `log`. Не используйте `Console.Write` в Функциях Azure. 
+toolog выходные данные журналов потоковой передачи tooyour в C#, включите аргумент типа `TraceWriter`. Рекомендуем присвоить ему имя `log`. Не используйте `Console.Write` в Функциях Azure. 
 
-`TraceWriter` определяется в [пакете SDK веб-заданий Azure](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.Host/TraceWriter.cs). Уровень ведения журнала для `TraceWriter` можно настроить в [host\.json].
+`TraceWriter`определен в hello [SDK веб-заданий Azure](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.Host/TraceWriter.cs). Здравствуйте, уровень ведения журнала для `TraceWriter` можно настроить в [узла\.json].
 
 ```csharp
 public static void Run(string myBlob, TraceWriter log)
@@ -105,7 +105,7 @@ public static void Run(string myBlob, TraceWriter log)
 ```
 
 ## <a name="async"></a>Асинхронный режим
-Чтобы сделать функцию асинхронной, используйте ключевое слово `async` и верните объект `Task`.
+использовать toomake асинхронно, функции hello `async` ключевое слово и возврат `Task` объекта.
 
 ```csharp
 public async static Task ProcessQueueMessageAsync(
@@ -118,7 +118,7 @@ public async static Task ProcessQueueMessageAsync(
 ```
 
 ## <a name="cancellation-token"></a>Токен отмены
-Для некоторых операций необходимо выполнить нормальное завершение работы. Всегда лучше написать код, который может обрабатывать сбои, однако в случаях, когда нужно обрабатывать запросы на нормальное завершение работы, можно определить аргумент с типом [`CancellationToken`](https://msdn.microsoft.com/library/system.threading.cancellationtoken.aspx).  В случае завершения работы узла будет предоставлен маркер `CancellationToken`.
+Для некоторых операций необходимо выполнить нормальное завершение работы. Хотя всегда наиболее toowrite код, который может обрабатывать аварийное завершение работы, в случаях, где нужно toohandle нормальное завершение работы запросов, определить [ `CancellationToken` ](https://msdn.microsoft.com/library/system.threading.cancellationtoken.aspx) типом аргумента.  Объект `CancellationToken` предоставляется toosignal срабатывание завершение работы узла.
 
 ```csharp
 public async static Task ProcessQueueMessageAsyncCancellationToken(
@@ -132,7 +132,7 @@ public async static Task ProcessQueueMessageAsyncCancellationToken(
 ```
 
 ## <a name="importing-namespaces"></a>Импорт пространств имен
-Если требуется импортировать пространства имен, это можно сделать как обычно — с помощью предложения `using` .
+Если вам требуется tooimport пространства имен, это можно сделать как обычно с hello `using` предложения.
 
 ```csharp
 using System.Net;
@@ -141,7 +141,7 @@ using System.Threading.Tasks;
 public static Task<HttpResponseMessage> Run(HttpRequestMessage req, TraceWriter log)
 ```
 
-Следующие пространства имен импортируются автоматически и поэтому являются необязательными:
+Hello следующие пространства имен автоматически импортируются и поэтому являются необязательными:
 
 * `System`
 * `System.Collections.Generic`
@@ -153,7 +153,7 @@ public static Task<HttpResponseMessage> Run(HttpRequestMessage req, TraceWriter 
 * `Microsoft.Azure.WebJobs.Host`
 
 ## <a name="referencing-external-assemblies"></a>Ссылки на внешние сборки
-Для сборок платформы добавьте ссылки с помощью директивы `#r "AssemblyName"` .
+Для сборок framework добавить ссылки с помощью hello `#r "AssemblyName"` директивы.
 
 ```csharp
 #r "System.Web.Http"
@@ -165,7 +165,7 @@ using System.Threading.Tasks;
 public static Task<HttpResponseMessage> Run(HttpRequestMessage req, TraceWriter log)
 ```
 
-Следующие сборки автоматически добавляются средой внешнего размещения Функций Azure:
+Hello следующие сборки автоматически добавляются hello Azure функциями среды размещения.
 
 * `mscorlib`
 * `System`
@@ -178,7 +178,7 @@ public static Task<HttpResponseMessage> Run(HttpRequestMessage req, TraceWriter 
 * `System.Web.Http`
 * `System.Net.Http.Formatting`
 
-К следующим сборкам можно обращаться по простому имени (например, `#r "AssemblyName"`):
+Hello следующие сборки может быть ссылается простое имя (например, `#r "AssemblyName"`):
 
 * `Newtonsoft.Json`
 * `Microsoft.WindowsAzure.Storage`
@@ -189,18 +189,18 @@ public static Task<HttpResponseMessage> Run(HttpRequestMessage req, TraceWriter 
 
 ## <a name="referencing-custom-assemblies"></a>Ссылки на пользовательские сборки
 
-Чтобы указать ссылку на пользовательские сборки, можно использовать *общую* или *закрытую* сборку.
-- Общие сборки совместно используют все функции в приложении-функции. Чтобы указать ссылку на пользовательские сборки, отправьте сборку в приложение-функцию, например как в папке `bin` в корне приложения-функции. 
-- Закрытые сборки входят в контекст указанной функции и поддерживают загрузку неопубликованных приложений разных версий. Закрытые сборки необходимо отправить в папку `bin` в каталоге функции. Укажите на них ссылки, используя имя файла, например `#r "MyAssembly.dll"`. 
+tooreference пользовательской сборки, можно использовать любой *общего* сборки или *закрытый* сборки:
+- Общие сборки совместно используют все функции в приложении-функции. tooreference пользовательской сборки, отправка hello сборки tooyour функции приложения, такие как в `bin` папки в корневом каталоге приложения функции hello. 
+- Закрытые сборки входят в контекст указанной функции и поддерживают загрузку неопубликованных приложений разных версий. Закрытые сборки должны быть отправлены в `bin` папку в каталоге функции hello. Ссылку можно с помощью имени файла hello, такие как `#r "MyAssembly.dll"`. 
 
-Дополнительные сведения о передаче файлов в папку функции см. в следующем разделе.
+Сведения о как tooyour функция папки с файлами tooupload hello в следующем разделе пакета управления см.
 
 ### <a name="watched-directories"></a>Каталоги отслеживания
 
-Каталог, содержащий файл сценария функции, автоматически отслеживает изменения в сборках. Чтобы отслеживать изменения сборки в других каталогах, добавьте их в список `watchDirectories` в [host\.json].
+tooassemblies изменения автоматически наступление Hello каталог, содержащий файл скрипта функции hello. toowatch изменить сборки в других каталогах, добавьте их toohello `watchDirectories` списка в [узла\.json].
 
 ## <a name="using-nuget-packages"></a>Использование пакетов NuGet
-Чтобы использовать пакеты NuGet в функции C#, отправьте файл *project.json* в папку соответствующей функции в файловой системе приложения-функции. Ниже приведен пример файла *project.json* , который добавляет ссылку на Microsoft.ProjectOxford.Face версии 1.1.0.
+отправить пакеты NuGet toouse в функции C# *project.json* toohello функция папка файла в файловой системе функция приложение hello. Ниже приведен пример *project.json* файл, который добавляет ссылку tooMicrosoft.ProjectOxford.Face версии 1.1.0:
 
 ```json
 {
@@ -214,18 +214,18 @@ public static Task<HttpResponseMessage> Run(HttpRequestMessage req, TraceWriter 
 }
 ```
 
-Поддерживается только версия платформы .NET Framework 4.6, поэтому убедитесь, что ваш файл *project.json* определяет `net46`, как показано ниже.
+Только для hello .NET Framework 4.6 поддерживается, поэтому убедитесь, что ваш *project.json* файл определяет `net46` как показано ниже.
 
-При отправке файла *project.json* среда выполнения получает пакеты и автоматически добавляет ссылки на сборки пакетов. Добавлять директивы `#r "AssemblyName"` не нужно. Для использования типов, определенных в пакетах NuGet, добавьте необходимые инструкции `using` в файл *run.csx*. 
+При отправке *project.json* файла, hello среда выполнения получает пакеты hello и автоматически добавляет ссылки на toohello пакет сборки. Не требуется tooadd `#r "AssemblyName"` директивы. toouse hello типы, определенные в пакетах NuGet hello, добавьте необходимые hello `using` tooyour инструкций *run.csx* файла 
 
-В среде выполнения функций восстановление NuGet работает путем сравнения `project.json` и `project.lock.json`. Если метки даты и времени файлов **не** совпадают, выполняется восстановление NuGet и скачиваются обновленные пакеты. Однако если дата и время создания файлов **совпадают**, NuGet не выполняет восстановление. Поэтому не следует развертывать `project.lock.json`, так как в результате NuGet пропустит восстановление пакета. Чтобы предотвратить развертывание блокирующего файла, добавьте `project.lock.json` в файл `.gitignore`.
+В среде выполнения функции hello, восстановление NuGet работает путем сравнения `project.json` и `project.lock.json`. Если дата и время создания файлов hello hello **не** совпадение, выполняется восстановление NuGet и NuGet загружает обновленные пакеты. Тем не менее, если hello Дата и время создания файлов hello **сделать** соответствия NuGet не выполняет восстановление. Таким образом `project.lock.json` не следует развертывать как он вызывает восстановление пакета NuGet tooskip. tooavoid развертывание hello блокировки файлов, добавьте hello `project.lock.json` toohello `.gitignore` файла.
 
-Чтобы использовать настраиваемые веб-каналы NuGet, укажите веб-канал в файле *Nuget.Config* в корне приложения-функции. Дополнительные сведения см. в статье [Configuring NuGet behavior](/nuget/consume-packages/configuring-nuget-behavior) (Настройка поведения NuGet).
+toouse настраиваемого канала NuGet, укажите hello веб-канала в *Nuget.Config* файл в корневом каталоге приложения функции hello. Дополнительные сведения см. в статье [Configuring NuGet behavior](/nuget/consume-packages/configuring-nuget-behavior) (Настройка поведения NuGet).
 
 ### <a name="using-a-projectjson-file"></a>Использование файла project.json
-1. Откройте функцию на портале Azure. На вкладке "Журналы" отображаются выходные данные установки пакета.
-2. Чтобы отправить файл project.json, используйте один из методов, описанных в разделе [Как обновить файлы приложения-функции](functions-reference.md#fileupdate) статьи "Руководство для разработчиков по Функциям Azure".
-3. После отправки файла *project.json* в потоковом журнале функции отобразятся выходные данные, как в следующем примере.
+1. Откройте функции hello в hello портал Azure. Hello заносит в журнал выходные данные установки пакета вкладка отображает hello.
+2. tooupload файл project.json, воспользуйтесь одним из описанных hello hello [как tooupdate функция файлов приложения](functions-reference.md#fileupdate) раздела Справочник разработчика Azure функции hello.
+3. После hello *project.json* передачи файла см. в разделе, выходные данные как следующий пример в функции hello потоковая передача журналов:
 
 ```
 2016-04-04T19:02:48.745 Restoring packages.
@@ -245,7 +245,7 @@ public static Task<HttpResponseMessage> Run(HttpRequestMessage req, TraceWriter 
 ```
 
 ## <a name="environment-variables"></a>Переменные среды
-Чтобы получить значение переменной среды или значение параметра приложения, используйте `System.Environment.GetEnvironmentVariable`, как показано в следующем примере кода.
+tooget переменной среды или значение параметра приложения, используйте `System.Environment.GetEnvironmentVariable`, как показано в следующем примере кода hello:
 
 ```csharp
 public static void Run(TimerInfo myTimer, TraceWriter log)
@@ -263,7 +263,7 @@ public static string GetEnvironmentVariable(string name)
 ```
 
 ## <a name="reusing-csx-code"></a>Повторное использование кода CSX
-В файле *run.csx* можно использовать классы и методы, определенные в других *CSX*-файлах. Для этого используйте директивы `#load` в файле *run.csx*. В следующем примере к процедуре ведения журнала с именем `MyLogger` предоставляется общий доступ в файле *myLogger.csx*, а также она загружается в файл *run.csx*. Для этого используется директива `#load`:
+В файле *run.csx* можно использовать классы и методы, определенные в других *CSX*-файлах. toodo, использовать `#load` директивы в вашей *run.csx* файла. В следующем примере hello, подпрограмма ведения журнала с именем `MyLogger` совместно в *myLogger.csx* и загружаются в *run.csx* с помощью hello `#load` директиву:
 
 Пример *run.csx*:
 
@@ -286,7 +286,7 @@ public static void MyLogger(TraceWriter log, string logtext)
 }
 ```
 
-Обычно для задания строго типизированных аргументов в функциях с использованием объекта POCO применяется общий файл с расширением *CSX*. В указанном ниже упрощенном примере триггер HTTP и очереди совместно используют объект POCO с именем `Order` для задания строго типизированных данных о заказах.
+С помощью общего *.csx* распространенный подход при необходимости toostrongly ввести аргументов между функциями, используя объект POCO. В следующий упрощенный пример hello, триггер HTTP и очереди триггера используют объект POCO с именем `Order` hello порядок toostrongly тип данных:
 
 Пример файла *run.csx* для триггера HTTP:
 
@@ -299,7 +299,7 @@ public static async Task<HttpResponseMessage> Run(Order req, IAsyncCollector<Ord
 {
     log.Info("C# HTTP trigger function received an order.");
     log.Info(req.ToString());
-    log.Info("Submitting to processing queue.");
+    log.Info("Submitting tooprocessing queue.");
 
     if (req.orderId == null)
     {
@@ -351,25 +351,25 @@ public class Order
 }
 ```
 
-В директиве `#load` можно использовать относительный путь:
+Можно использовать относительный путь с hello `#load` директиву:
 
-* `#load "mylogger.csx"` загружает файл, расположенный в папке функции.
-* `#load "loadedfiles\mylogger.csx"` загружает файл, расположенный в папке, которая содержится в папке функции.
-* `#load "..\shared\mylogger.csx"` загружает файл, расположенный в папке на том же уровне, что и папка функции, то есть непосредственно в разделе *wwwroot*.
+* `#load "mylogger.csx"`загружает файл, расположенный в папке функции hello.
+* `#load "loadedfiles\mylogger.csx"`загружает файл, расположенный в папке в папке функции hello.
+* `#load "..\shared\mylogger.csx"`загружает файл, расположенный в папке на hello же уровня, что и папка функции hello, т. е непосредственно под *wwwroot*.
 
-Директива `#load` работает только с *CSX*-файлами (сценариями C#), но не с *CS*-файлами.
+Hello `#load` директива работает только с *.csx* (C#) в сценарии, не с *.cs* файлов.
 
 <a name="imperative-bindings"></a> 
 
 ## <a name="binding-at-runtime-via-imperative-bindings"></a>Привязка в среде выполнения с помощью императивных привязок
 
-Для C# и других языков .NET можно использовать шаблон [императивной](https://en.wikipedia.org/wiki/Imperative_programming) привязки, которая отличается от [*декларативной*](https://en.wikipedia.org/wiki/Declarative_programming) привязки в файле *function.json*. Императивную привязку удобно использовать, когда параметры привязки должны вычисляться не при проектировании, а во время выполнения. С использованием такого шаблона можно на лету выполнить привязку к поддерживаемым входным и выходным привязкам в коде функции.
+В C# и других языков .NET, можно использовать [императивного](https://en.wikipedia.org/wiki/Imperative_programming) шаблон привязки, так как противоположность toohello [ *декларативный* ](https://en.wikipedia.org/wiki/Declarative_programming) привязок в *function.json*. Принудительный привязки полезно в том случае, если параметры привязки должны toobe вычислено во время выполнения, а не конструктора. С этим шаблоном можно привязать toosupported ввода и вывода привязки на лету в коде функции.
 
 Определите принудительную привязку следующим образом.
 
 - **Не** добавляйте запись для нужных императивных привязок в файл *function.json*.
 - Передайте входной параметр [`Binder binder`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.Host/Bindings/Runtime/Binder.cs) или [`IBinder binder`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IBinder.cs).
-- Используйте следующий шаблон C# для привязки данных,
+- Используйте следующие C# шаблон tooperform hello привязки данных hello.
 
 ```cs
 using (var output = await binder.BindAsync<T>(new BindingTypeAttribute(...)))
@@ -378,9 +378,9 @@ using (var output = await binder.BindAsync<T>(new BindingTypeAttribute(...)))
 }
 ```
 
-где `BindingTypeAttribute` — атрибут .NET, определяющий пользовательскую привязку, а `T` — входной или выходной тип, поддерживаемый этим типом привязки. `T` также не может быть параметром типа `out` (например, `out JObject`). Например, выходная привязка таблицы мобильных приложений поддерживает [шесть выходных типов](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.MobileApps/MobileTableAttribute.cs#L17-L22), но для `T` можно использовать только [ICollector<T>](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/ICollector.cs) или [IAsyncCollector<T>](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IAsyncCollector.cs).
+где `BindingTypeAttribute` является атрибутом hello .NET, который определяет пользовательскую привязку, и `T` является входной или выходной тип, поддерживаемый этим типом привязки "hello". `T` также не может быть параметром типа `out` (например, `out JObject`). Например, выходная привязка таблицы мобильных приложений поддерживает [шесть выходных типов](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.MobileApps/MobileTableAttribute.cs#L17-L22), но для `T` можно использовать только [ICollector<T>](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/ICollector.cs) или [IAsyncCollector<T>](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IAsyncCollector.cs).
 
-В следующем примере кода создается [выходная привязка большого двоичного объекта службы хранилища](functions-bindings-storage-blob.md#using-a-blob-output-binding) с путем к большому двоичному объекту, определенному во время выполнения, а затем записывается строка в большой двоичный объект.
+Привет, следующий пример кода создает [привязка для вывода BLOB-объекта хранилища](functions-bindings-storage-blob.md#using-a-blob-output-binding) с большим двоичным объектом путь, определенный во время выполнения, затем записывает большой двоичный объект toohello строки.
 
 ```cs
 using Microsoft.Azure.WebJobs;
@@ -395,8 +395,8 @@ public static async Task Run(string input, Binder binder)
 }
 ```
 
-[BlobAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/BlobAttribute.cs) определяет входную или выходную привязку [большого двоичного объекта службы хранилища](functions-bindings-storage-blob.md), а [TextWriter](https://msdn.microsoft.com/library/system.io.textwriter.aspx) представляет собой поддерживаемый тип выходной привязки.
-Код возвращает параметр приложения по умолчанию для строки подключения к учетной записи службы хранилища (`AzureWebJobsStorage`). Вы можете указать пользовательский параметр приложения, который следует использовать, добавив [StorageAccountAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs) и передавая массив атрибутов в `BindAsync<T>()`. Например,
+[BlobAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/BlobAttribute.cs) определяет hello [BLOB-объекта хранилища](functions-bindings-storage-blob.md) входного или выходного привязки, и [TextWriter](https://msdn.microsoft.com/library/system.io.textwriter.aspx) является поддерживаемой выходной тип привязки.
+Возвращает, hello кода hello приложения по умолчанию hello строка подключения учетной записи хранения (который является `AzureWebJobsStorage`). Можно указать toouse параметр пользовательского приложения путем добавления [StorageAccountAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs) и передачи массива атрибутов hello в `BindAsync<T>()`. Например,
 
 ```cs
 using Microsoft.Azure.WebJobs;
@@ -417,7 +417,7 @@ public static async Task Run(string input, Binder binder)
 }
 ```
 
-В следующей таблице перечислены атрибуты .NET для каждого типа привязки и пакеты, в которых они определены.
+Hello следующей таблице перечислены атрибуты hello .NET для каждой привязки тип и hello пакетов, в которых они определены.
 
 > [!div class="mx-codeBreakAll"]
 | Привязка | Атрибут | Ссылка, которую нужно добавить |
@@ -435,7 +435,7 @@ public static async Task Run(string input, Binder binder)
 
 
 ## <a name="next-steps"></a>Дальнейшие действия
-Для получения дополнительных сведений см. следующие ресурсы:
+Дополнительные сведения см. в разделе hello следующие ресурсы:
 
 * [Best Practices for Azure Functions](functions-best-practices.md) (Рекомендации по Функциям Azure)
 * [Справочник разработчика по функциям Azure](functions-reference.md)

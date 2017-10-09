@@ -1,5 +1,5 @@
 ---
-title: "Расположения POP в Azure CDN | Документация Майкрософт"
+title: "Расположения POP в CDN aaaAzure | Документы Microsoft"
 description: "В этом разделе перечислены расположения точек подключения сети доставки содержимого Azure (CDN)."
 services: cdn
 documentationcenter: 
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: 7c13931aa6d17036e59674cdd917e3ca221ac57f
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 8f10afb12c168aa610f996f1e49b0ef133f2236a
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-cdn-pop-locations"></a>Расположение узлов POP сети Azure CDN
 В этом разделе перечислены доступные в текущий момент расположения узлов POP для **Azure CDN от Verizon** и **Azure CDN от Akamai**.
@@ -26,7 +26,7 @@ ms.lasthandoff: 07/11/2017
 > [!IMPORTANT]
 > Расположения узлов POP для \***Azure CDN от Akamai** не раскрываются каждому пользователю.  
 > 
-> Оба поставщика создают инфраструктуры CDN двумя различными способами.  Мы не рекомендуем выбирать тип продукта Azure CDN по расположению узлов POP. Вместо этого рассмотрите функции и производительность каждого продукта.  Чтобы выбрать подходящий для ваших пользователей продукт, рекомендуется протестировать производительность продуктов обоих поставщиков. 
+> Оба поставщика создают инфраструктуры CDN двумя различными способами.  Мы не рекомендуется использовать toodecide расположения POP какие toouse продукта Azure CDN и в качестве альтернативы возможности и производительность конечного пользователя.  Тестирование производительности hello с обоих поставщиков toochoose hello Azure CDN подходящее для пользователей. 
 > 
 > 
 
@@ -44,5 +44,5 @@ ms.lasthandoff: 07/11/2017
 | Австралия и Новая Зеландия |Мельбурн, Австралия<br />Сидней, Австралия |**&#x2713;**\* |
 
 ## <a name="see-also"></a>См. также
-* [Использование API граничных узлов Azure CDN для получения последних IP-адресов и создания списка разрешений](https://docs.microsoft.com/en-us/rest/api/cdn/edgenodes)
+* [Azure API узлов CDN Edge tooget последний IP-адресов для ведения списка разрешений](https://docs.microsoft.com/en-us/rest/api/cdn/edgenodes)
 

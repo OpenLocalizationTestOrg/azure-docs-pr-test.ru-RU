@@ -3,43 +3,43 @@
 
 ## <a name="c-program-example"></a>Пример программы C#
 
-В следующих разделах этой статьи представлена программа C#, в которой используется ADO.NET для отправки инструкций Transact-SQL в базу данных SQL. Программа C# выполняет следующие действия:
+Hello далее разделах данной статьи представлены программы C#, который использует ADO.NET toosend Transact-SQL инструкции toohello базы данных SQL. Программа Hello C# выполняет hello, следующие действия:
 
-1. [подключается к базе данных SQL с помощью ADO.NET](#cs_1_connect);
+1. [Подключается tooour базы данных SQL с помощью ADO.NET](#cs_1_connect).
 2. [создает таблицы](#cs_2_createtables);
-3. [заполняет таблицы данными, выполняя инструкции T-SQL INSERT](#cs_3_insert);
+3. [Заполняет hello таблиц с данными, путем выполнения инструкций T-SQL INSERT](#cs_3_insert).
 4. [обновляет данные с помощью соединения](#cs_4_updatejoin);
 5. [удаляет данные с помощью соединения](#cs_5_deletejoin);
 6. [выбирает данные с помощью соединения](#cs_6_selectrows);
-7. разрывает подключение (с удалением всех временных таблиц из базы данных tempdb).
+7. Закрывает соединение hello (которая удаляет все временные таблицы из базы данных tempdb).
 
-Программа C# содержит:
+Программа Hello C# содержит:
 
-- код C# для подключения к базе данных;
-- методы, которые возвращают исходный код T-SQL;
-- два способа отправки кода T-SQL в базу данных.
+- C# код tooconnect toohello базы данных.
+- Методы, возвращающие исходного кода hello T-SQL.
+- Два способа отправки базы данных toohello hello T-SQL.
 
-#### <a name="to-compile-and-run"></a>Компиляция и запуск
+#### <a name="toocompile-and-run"></a>toocompile и выполнения
 
-Программа C# логически является одним CS-файлом. Но в нашем примере она физически разделена на несколько блоков кода для удобства просмотра и изучения каждого блока. Чтобы скомпилировать и запустить программу, выполните инструкции ниже.
+Программа C# логически является одним CS-файлом. Но здесь программа hello физически разделить на несколько блоков кода, toomake каждый блок проще toosee и понять. toocompile и запустить программу, hello следующие:
 
 1. Создайте проект C# в Visual Studio.
-    - Тип проекта должно быть *консоли* приложение из примерно следующая иерархия: **шаблоны** > **Visual C#** >  **Для классических настольных приложений Windows** > **консольного приложения (.NET Framework)**.
-3. В файле **Program.cs** удалите небольшие строки кода в начале.
-3. Скопируйте и вставьте в Program.cs каждый из следующих блоков в той же последовательности, в которой они приведены ниже.
-4. В файле Program.cs измените указанные ниже значения в методе **Main**:
+    - Тип проекта Hello следует *консоли* приложение из примерно следующая иерархия hello: **шаблоны** > **Visual C#** > **Windows классического** > **консольного приложения (.NET Framework)**.
+3. В файле hello **Program.cs**, erase hello небольшой начальных строк кода.
+3. В Program.cs копирования и вставки каждой hello в следующих блоках hello же последовательности, в котором они приведены ниже.
+4. В Program.cs ниже hello редактирования значений в hello **Main** метод:
 
    - **cb.DataSource**
    - **cd.UserID**
    - **cb.Password**
    - **InitialCatalog**
 
-5. Убедитесь, что на сборку **System.Data.dll** есть ссылка. Для этого разверните узел **Ссылки** на панели **обозревателя решений**.
-6. Чтобы создать программу в Visual Studio, щелкните меню **Сборка**.
-7. Чтобы запустить программу из Visual Studio, нажмите кнопку **Запустить**. Результаты отчета отображаются в окне cmd.exe.
+5. Проверить эту сборку hello **System.Data.dll** имеется ссылка. tooverify, разверните hello **ссылки** узел в hello **обозревателе решений** области.
+6. Программа hello toobuild в Visual Studio щелкните hello **построения** меню.
+7. Программа hello toorun из Visual Studio, щелкните hello **запустить** кнопки. в окне cmd.exe вывода отчетов Hello.
 
 > [!NOTE]
-> Вы можете отредактировать T-SQL, чтобы добавить начальные **#** к именам таблиц, чтобы они создавались как временные таблицы в **tempdb**. Это удобно при демонстрации, когда тестовая база данных недоступна. Временные таблицы автоматически удаляются при закрытии подключения. Во временных таблицах ключевые слова REFERENCES для внешних ключей не применяются.
+> У вас есть возможность редактирования hello T-SQL tooadd символа hello  **#**  toohello имена таблиц, в которых будут созданы как временные таблицы в **tempdb**. Это удобно при демонстрации, когда тестовая база данных недоступна. Временные таблицы автоматически удаляются при закрытии соединения hello. Во временных таблицах ключевые слова REFERENCES для внешних ключей не применяются.
 >
 
 <a name="cs_1_connect"/>
@@ -92,14 +92,14 @@ namespace csharp_db_test
          {
             Console.WriteLine(e.ToString());
          }
-         Console.WriteLine("View the report output here, then press any key to end the program...");
+         Console.WriteLine("View hello report output here, then press any key tooend hello program...");
          Console.ReadKey();
       }
 ```
 
 
 <a name="cs_2_createtables"/>
-### <a name="c-block-2-t-sql-to-create-tables"></a>Блок C# 2: T-SQL для создания таблиц
+### <a name="c-block-2-t-sql-toocreate-tables"></a>C# блок 2: toocreate таблицы T-SQL
 
 - [Назад](#cs_1_connect) &nbsp; / &nbsp; [Далее](#cs_3_insert)
 
@@ -133,15 +133,15 @@ CREATE TABLE tabEmployee
 
 #### <a name="entity-relationship-diagram-erd"></a>Схема отношения элементов (ERD)
 
-Предыдущие инструкции CREATE TABLE включают ключевое слово **REFERENCES** для создания отношения *внешнего ключа* (FK) между двумя таблицами.  При использовании tempdb закомментируйте ключевое слово `--REFERENCES` с помощью пары начальных тире.
+Hello предыдущие инструкции CREATE TABLE включают hello **ссылки** toocreate ключевое слово *внешний ключ* (FK) связь между двумя таблицами.  Если вы используете базы данных tempdb, закомментируйте hello `--REFERENCES` ключевое слово, с помощью пары начальные тире.
 
-На следующей схеме ERD представлено отношение между двумя таблицами. Значения в *дочернем* столбце #tabEmployee.DepartmentCode ограничены значениями *родительского* столбца #tabDepartment.Department.
+Далее следует диска аварийного восстановления, отображающий hello связь между двумя таблицами hello. Здравствуйте, значения в hello #tabEmployee.DepartmentCode *дочерних* столбца, ограниченного toohello значения, имеющиеся в hello #tabDepartment.Department *родительского* столбца.
 
 ![Схема ERD с внешним ключом](./media/sql-database-csharp-adonet-create-query-2/erd-dept-empl-fky-2.png)
 
 
 <a name="cs_3_insert"/>
-### <a name="c-block-3-t-sql-to-insert-data"></a>Блок C# 3: T-SQL для вставки данных
+### <a name="c-block-3-t-sql-tooinsert-data"></a>C# блокировку 3: tooinsert данных T-SQL
 
 - [Назад](#cs_2_createtables) &nbsp; / &nbsp; [Далее](#cs_4_updatejoin)
 
@@ -150,7 +150,7 @@ CREATE TABLE tabEmployee
       static string Build_3_Tsql_Inserts()
       {
          return @"
--- The company has these departments.
+-- hello company has these departments.
 INSERT INTO tabDepartment
    (DepartmentCode, DepartmentName)
       VALUES
@@ -158,7 +158,7 @@ INSERT INTO tabDepartment
    ('hres', 'Human Resources'),
    ('legl', 'Legal');
 
--- The company has these employees, each in one department.
+-- hello company has these employees, each in one department.
 INSERT INTO tabEmployee
    (EmployeeName, EmployeeLevel, DepartmentCode)
       VALUES
@@ -173,7 +173,7 @@ INSERT INTO tabEmployee
 
 
 <a name="cs_4_updatejoin"/>
-### <a name="c-block-4-t-sql-to-update-join"></a>Блок C# 4: T-SQL для обновления соединения
+### <a name="c-block-4-t-sql-tooupdate-join"></a>C# блок 4: T-SQL tooupdate соединения
 
 - [Назад](#cs_3_insert) &nbsp; / &nbsp; [Далее](#cs_5_deletejoin)
 
@@ -201,7 +201,7 @@ UPDATE empl
 
 
 <a name="cs_5_deletejoin"/>
-### <a name="c-block-5-t-sql-to-delete-join"></a>Блок C# 5: T-SQL для удаления соединения
+### <a name="c-block-5-t-sql-toodelete-join"></a>C# блок 5: T-SQL toodelete соединения
 
 - [Назад](#cs_4_updatejoin) &nbsp; / &nbsp; [Далее](#cs_6_selectrows)
 
@@ -214,7 +214,7 @@ DECLARE @DName2  nvarchar(128);
 SET @DName2 = @csharpParmDepartmentName;  --'Legal';
 
 
--- Right size the Legal department.
+-- Right size hello Legal department.
 DELETE empl
    FROM
       tabEmployee   as empl
@@ -223,7 +223,7 @@ DELETE empl
    WHERE
       dept.DepartmentName = @DName2
 
--- Disband the Legal department.
+-- Disband hello Legal department.
 DELETE tabDepartment
    WHERE DepartmentName = @DName2;
 ";
@@ -233,7 +233,7 @@ DELETE tabDepartment
 
 
 <a name="cs_6_selectrows"/>
-### <a name="c-block-6-t-sql-to-select-rows"></a>Блок C# 6: T-SQL для выбора строк
+### <a name="c-block-6-t-sql-tooselect-rows"></a>Блоке C# 6: tooselect строк T-SQL
 
 - [Назад](#cs_5_deletejoin) &nbsp; / &nbsp; [Далее](#cs_6b_datareader)
 
@@ -242,7 +242,7 @@ DELETE tabDepartment
       static string Build_6_Tsql_SelectEmployees()
       {
          return @"
--- Look at all the final Employees.
+-- Look at all hello final Employees.
 SELECT
       empl.EmployeeGuid,
       empl.EmployeeName,
@@ -265,7 +265,7 @@ SELECT
 
 - [Назад](#cs_6_selectrows) &nbsp; / &nbsp; [Далее](#cs_7_executenonquery)
 
-Этот метод предназначен для выполнения инструкции T-SQL SELECT, созданной методом **Build_6_Tsql_SelectEmployees**.
+Этот метод является спроектированный toorun hello T-SQL SELECT, построенного с hello **Build_6_Tsql_SelectEmployees** метод.
 
 
 ```csharp
@@ -301,7 +301,7 @@ SELECT
 
 - [Назад](#cs_6b_datareader) &nbsp; / &nbsp; [Далее](#cs_8_output)
 
-Этот метод вызывается для операций, которые изменяют информационное содержимое таблиц, не возвращая строки данных.
+Этот метод вызывается для операций, изменяющих hello содержимого данных таблиц, не возвращая все строки данных.
 
 
 ```csharp
@@ -315,7 +315,7 @@ SELECT
       {
          Console.WriteLine();
          Console.WriteLine("=================================");
-         Console.WriteLine("T-SQL to {0}...", tsqlPurpose);
+         Console.WriteLine("T-SQL too{0}...", tsqlPurpose);
 
          using (var command = new SqlCommand(tsqlSourceCode, connection))
          {
@@ -335,11 +335,11 @@ SELECT
 
 
 <a name="cs_8_output"/>
-### <a name="c-block-8-actual-test-output-to-the-console"></a>Блок C# 8: вывод фактических результатов тестирования на консоль
+### <a name="c-block-8-actual-test-output-toohello-console"></a>C# блока 8: консоли toohello выходные данные теста
 
 - [Назад](#cs_7_executenonquery)
 
-Этот раздел содержит результаты, отправленные программой на консоль. Для разных тестовых запусков изменяются только значения guid.
+Этот раздел содержит hello выходные данные, hello программы отправлено toohello консоли. Только значения guid hello различаться для разных тестовых запусков.
 
 
 ```text

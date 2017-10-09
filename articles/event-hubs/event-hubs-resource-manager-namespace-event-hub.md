@@ -1,5 +1,5 @@
 ---
-title: "Создание пространства имен и группы потребителей концентраторов событий Azure с помощью шаблона | Документация Майкрософт"
+title: "aaaCreate концентраторов событий Azure пространства имен и потребитель группу с помощью шаблона | Документы Microsoft"
 description: "Создание пространства имен концентраторов событий c концентратором событий и группой потребителей с помощью шаблонов Azure Resource Manager."
 services: event-hubs
 documentationcenter: .net
@@ -14,41 +14,41 @@ ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 06/12/2017
 ms.author: sethm;shvija
-ms.openlocfilehash: eb9a80eec0326aaa605cb8b21aecbaeec94ff212
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 74b0d6b3fbe848705e2c20e628aa4e5269b53edb
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-an-event-hubs-namespace-with-event-hub-and-consumer-group-using-an-azure-resource-manager-template"></a>Создание пространства имен концентраторов событий с концентратором событий и группой потребителей с помощью шаблона Azure Resource Manager
 
-Из этой статьи вы узнаете, как с помощью шаблона Azure Resource Manager создать пространство имен типа EventHubs с одним концентратором событий и одной группой потребителей. Здесь показано, как определить развертываемые ресурсы и параметры, указываемые при развертывании. Этот шаблон можно использовать для собственных развертываний или изменить его в соответствии с вашими требованиями.
+В этой статье показано, как toouse шаблона диспетчера ресурсов Azure, создает пространство имен типа концентраторов событий с концентратором одно событие и одной группе потребителей. Hello статьи показано, как toodefine какие ресурсы развертываются с указанием как toodefine параметры, которые при выполнении развертывания hello. Этот шаблон используется для собственных развертывания или настройте его toomeet требований
 
 Дополнительные сведения о создании шаблонов см. в статье [Создание шаблонов Azure Resource Manager][Authoring Azure Resource Manager templates].
 
-Полный шаблон приведен в разделе [Event Hub and consumer group template][Event Hub and consumer group template] (Шаблон концентратора событий и группы потребителей) на сайте GitHub.
+Полный шаблон hello, в разделе hello [шаблона группы концентратора и потребитель события] [ Event Hub and consumer group template] на GitHub.
 
 > [!NOTE]
-> Чтобы узнать о новых шаблонах, изучите коллекцию [Шаблоны быстрого запуска Azure][Azure Quickstart Templates] и выполните в ней поиск по запросу "концентраторы событий".
+> toocheck для hello последние шаблоны, посетите hello [шаблоны быстрый запуск Azure] [ Azure Quickstart Templates] коллекции и выполните поиск концентраторов событий.
 > 
 > 
 
 ## <a name="what-will-you-deploy"></a>Что вы развернете?
 С помощью этого шаблона вы развернете пространство имен концентраторов событий с концентратором событий и группой потребителей.
 
-[Концентраторы событий](event-hubs-what-is-event-hubs.md) — это служба обработки событий, используемая для крупномасштабной передачи данных событий и телеметрии в Azure. Работа службы характеризуется низкой задержкой и высокой надежностью.
+[Концентраторы событий](event-hubs-what-is-event-hubs.md) событие обработки службы, используемой tooprovide событий и телеметрии входящих tooAzure в большом масштабе с небольшой задержкой и высокой степенью надежности.
 
-Чтобы выполнить развертывание автоматически, нажмите следующую кнопку.
+toorun hello развертывания автоматически, нажмите кнопку hello следующие кнопки:
 
-[![Развертывание в Azure](./media/event-hubs-resource-manager-namespace-event-hub/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-event-hubs-create-event-hub-and-consumer-group%2Fazuredeploy.json)
+[![Развертывание tooAzure](./media/event-hubs-resource-manager-namespace-event-hub/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-event-hubs-create-event-hub-and-consumer-group%2Fazuredeploy.json)
 
 ## <a name="parameters"></a>Параметры
-С помощью диспетчера ресурсов Azure можно определить параметры значений, которые должны указываться на этапе развертывания шаблона. В шаблоне есть раздел `Parameters` , содержащий все значения параметров. Для изменяющихся значений нужно определить параметры с учетом развертываемого проекта либо окружения, где выполняется развертывание. Не определяйте параметры для значений, которые не меняются. Значение каждого параметра в шаблоне определяет развертываемые ресурсы.
+С помощью диспетчера ресурсов Azure можно определить параметры для значения требуется toospecify при развертывании шаблона hello. шаблон Hello имеется раздел с именем `Parameters` , содержащий значения всех параметров hello. Следует определить параметр для те значения, которые могут меняться, на основе hello проекта, в которой выполняется развертывание или на основании toowhich среды hello, в которой выполняется развертывание. Определяет параметры для hello значения, которые всегда остаются одинаковыми. Каждое значение параметра в шаблоне hello определяет hello ресурсы, которые развертываются.
 
-Ниже описаны параметры, которые определяет шаблон.
+шаблон Hello определяет hello следующие параметры:
 
 ### <a name="eventhubnamespacename"></a>eventHubNamespaceName
-Имя создаваемого пространства имен концентраторов событий.
+Имя пространства имен toocreate hello концентраторов событий Hello.
 
 ```json
 "eventHubNamespaceName": {
@@ -57,7 +57,7 @@ ms.lasthandoff: 07/11/2017
 ```
 
 ### <a name="eventhubname"></a>eventHubName
-Имя концентратора событий, создаваемого в пространстве имен концентраторов событий.
+Имя Hello hello концентратора событий, созданные в пространстве имен концентраторы событий hello.
 
 ```json
 "eventHubName": {
@@ -66,7 +66,7 @@ ms.lasthandoff: 07/11/2017
 ```
 
 ### <a name="eventhubconsumergroupname"></a>eventHubConsumerGroupName
-Имя группы потребителей, создаваемой для концентратора событий.
+Имя группы потребителей hello, созданных для концентратора событий hello Hello.
 
 ```json
 "eventHubConsumerGroupName": {
@@ -75,7 +75,7 @@ ms.lasthandoff: 07/11/2017
 ```
 
 ### <a name="apiversion"></a>версия_API
-Версия API шаблона.
+версия Hello API hello шаблона.
 
 ```json
 "apiVersion": {
@@ -83,7 +83,7 @@ ms.lasthandoff: 07/11/2017
 }
 ```
 
-## <a name="resources-to-deploy"></a>Развертываемые ресурсы
+## <a name="resources-toodeploy"></a>Toodeploy ресурсы
 Создает пространство имен типа **EventHubs** с концентратором событий и группой потребителей.
 
 ```json
@@ -127,7 +127,7 @@ ms.lasthandoff: 07/11/2017
    ],
 ```
 
-## <a name="commands-to-run-deployment"></a>Команды для выполнения развертывания
+## <a name="commands-toorun-deployment"></a>Команды toorun развертывания
 [!INCLUDE [app-service-deploy-commands](../../includes/app-service-deploy-commands.md)]
 
 ## <a name="powershell"></a>PowerShell
@@ -143,7 +143,7 @@ azure group deployment create \<my-resource-group\> \<my-deployment-name\> --tem
 ```
 
 ## <a name="next-steps"></a>Дальнейшие действия
-Дополнительные сведения о концентраторах событий см. в следующих источниках:
+На сайте ссылкам hello, изучите более подробную концентраторов событий:
 
 * [Обзор концентраторов событий](event-hubs-what-is-event-hubs.md)
 * [Создание концентратора событий](event-hubs-create.md)
@@ -152,5 +152,5 @@ azure group deployment create \<my-resource-group\> \<my-deployment-name\> --tem
 [Authoring Azure Resource Manager templates]: ../azure-resource-manager/resource-group-authoring-templates.md
 [Azure Quickstart Templates]:  https://azure.microsoft.com/documentation/templates/?term=event+hubs
 [Using Azure PowerShell with Azure Resource Manager]: ../powershell-azure-resource-manager.md
-[Using the Azure CLI for Mac, Linux, and Windows with Azure Resource Management]: ../xplat-cli-azure-resource-manager.md
+[Using hello Azure CLI for Mac, Linux, and Windows with Azure Resource Management]: ../xplat-cli-azure-resource-manager.md
 [Event hub and consumer group template]: https://github.com/Azure/azure-quickstart-templates/blob/master/201-event-hubs-create-event-hub-and-consumer-group/

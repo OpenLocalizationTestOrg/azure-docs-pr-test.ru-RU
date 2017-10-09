@@ -1,6 +1,6 @@
 ---
-title: "Использование расширения виртуальных машин Docker для Linux на Azure"
-description: "Описание механизма Docker и расширений Виртуальных машин Azure, а также программного создания виртуальных машин в Azure как узлов Docker с помощью интерфейса CLI Azure."
+title: "hello aaaUsing расширение ВМ Docker для Linux в Azure"
+description: "Описывает Docker и расширения виртуальных машин Azure hello и показано, как tooprogrammatically создать виртуальные машины в Azure, которые узлы docker из командной строки hello, с помощью hello Azure CLI."
 services: virtual-machines-linux
 documentationcenter: 
 author: squillace
@@ -15,89 +15,89 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/29/2016
 ms.author: rasquill
-ms.openlocfilehash: a542332c921862241f1f000e6a8f0a0ae0e8a934
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 1e192ad7c273aa9c997ea7bfa53b7de0b41a43c6
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="using-the-docker-vm-extension-from-the-azure-command-line-interface-azure-cli"></a>Использование расширения виртуальных машин Docker в интерфейсе командной строки Azure (CLI Azure)
+# <a name="using-hello-docker-vm-extension-from-hello-azure-command-line-interface-azure-cli"></a>С помощью hello расширение ВМ Docker из hello Azure командной строки (CLI Azure)
 > [!IMPORTANT] 
-> В Azure предлагаются две модели развертывания для создания ресурсов и работы с ними: [модель диспетчера ресурсов и классическая модель](../../../resource-manager-deployment-model.md). В этой статье рассматривается использование классической модели развертывания. Для большинства новых развертываний Майкрософт рекомендует использовать модель диспетчера ресурсов. Дополнительные сведения об использовании расширения виртуальной машины Docker с моделью Resource Manager см. [здесь](../dockerextension.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+> В Azure предлагаются две модели развертывания для создания ресурсов и работы с ними: [модель диспетчера ресурсов и классическая модель](../../../resource-manager-deployment-model.md). В этой статье описан с помощью hello классической модели развертывания. Корпорация Майкрософт рекомендует наиболее новые развертывания модели hello диспетчера ресурсов. Сведения об использовании hello расширение ВМ Docker с моделью hello диспетчера ресурсов см. в разделе [здесь](../dockerextension.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
-В этой статье показано, как создать виртуальную машину с расширением виртуальных машин Docker в режиме управления службами (asm) в интерфейсе командной строки Azure на любой платформе. [Docker](https://www.docker.com/) — один из самых популярных подходов к виртуализации, использующий [контейнеры Linux](http://en.wikipedia.org/wiki/LXC) вместо виртуальных машин как способ изоляции данных и вычислений при использовании общих ресурсов. Можно использовать расширение виртуальной машины Docker и [агент Linux для Azure](../agent-user-guide.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) для создания виртуальной машины Docker, в которой можно разместить любое количество контейнеров для приложений в Azure. Обзорное обсуждение контейнеров и их преимуществ см. на [доске по Docker](http://channel9.msdn.com/Blogs/Regular-IT-Guy/Docker-High-Level-Whiteboard).
+Описывается, как toocreate виртуальную Машину с hello расширение ВМ Docker из hello службы режим управления (asm) в Azure CLI на любой платформе. [Docker](https://www.docker.com/) является одним из hello наиболее популярных виртуализации подходов, которые использует [контейнеров Linux](http://en.wikipedia.org/wiki/LXC) вместо виртуальных машин как способ разделения данных и вычисления на общих ресурсах. Можно использовать расширение ВМ Docker hello и hello [агент Azure Linux](../agent-user-guide.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) toocreate виртуальной Машины Docker, на котором размещена любое число контейнеров для приложений в Azure. toosee общие обсуждения контейнеров и их преимущества, в разделе hello [Docker высокий уровень доски](http://channel9.msdn.com/Blogs/Regular-IT-Guy/Docker-High-Level-Whiteboard).
 
-## <a name="how-to-use-the-docker-vm-extension-with-azure"></a>Использование расширения виртуальных машин Docker в Azure
-Чтобы использовать расширения виртуальных машин Docker в Azure, необходимо установить версию [интерфейса командной строки Azure](https://github.com/Azure/azure-sdk-tools-xplat) (Azure CLI) более позднюю, чем 0.8.6 (на момент написания статьи текущей версией является 0.10.0). Вы можете установить CLI Azure на компьютерах под управлением Mac, Linux и Windows.
+## <a name="how-toouse-hello-docker-vm-extension-with-azure"></a>Как toouse hello расширение ВМ Docker с помощью Azure
+расширение виртуальной Машины Docker hello toouse с Azure, необходимо установить версию hello [интерфейса командной строки Azure](https://github.com/Azure/azure-sdk-tools-xplat) (Azure CLI) выше, чем 0.8.6 (как для этой записи hello текущей версии 0.10.0). Hello Azure CLI можно установить на Mac, Linux и Windows.
 
-Процесс использования Docker в Azure прост.
+Hello полный процесс toouse Docker в Azure очень простой:
 
-* Установите CLI Azure и его зависимости на компьютере, с которого вы хотите управлять Azure (в случае Windows это будет дистрибутив Linux, запущенный в виде виртуальной машины).
-* Используйте команды Docker в CLI Azure, чтобы создать узел виртуальных машин Docker в Azure.
-* Используйте команды локального Docker для управления своим контейнерами на узле виртуальных машин Docker в Azure.
+* Установите на компьютере hello, из которого нужно toocontrol Azure hello Azure CLI и его зависимости (в Windows, это будет дистрибутив Linux, выполняющийся как виртуальная машина)
+* Использовать toocreate команды Azure CLI Docker hello узла виртуальной Машины Docker в Azure
+* Используйте hello локального Docker команды toomanage в контейнеры Docker в ВМ Docker в Azure.
 
-### <a name="install-the-azure-command-line-interface-azure-cli"></a>Установка интерфейса командной строки Azure (Azure CLI)
-Сведения об установке и настройке интерфейса командной строки Azure см. в статье [Установка Azure CLI](../../../cli-install-nodejs.md). Чтобы подтвердить установку, введите `azure` в командной строке, и через некоторое время отобразится рисунок ASCII интерфейса командной строки Azure, в котором перечислены основные доступные вам команды. Если установка прошла без ошибок, вы можете ввести `azure help vm` и увидеть в списке команд docker.
-
-> [!NOTE]
-> В Docker имеются инструменты для Windows, [Docker Machine](https://docs.docker.com/installation/windows/), позволяющие также автоматизировать создание клиента Docker, который можно использовать для работы с виртуальными машинами Azure в качестве узлов Docker.
-> 
-> 
-
-### <a name="connect-the-azure-cli-to-to-your-azure-account"></a>Подключение CLI Azure к учетной записи Azure
-Чтобы вы смогли использовать CLI Azure, свяжите учетные данные учетной записи Azure с CLI Azure для вашей платформы. В разделе [Подключение к подписке Azure](../../../xplat-cli-connect.md) описано, как скачать и импортировать **PUBLISHSETTINGS** -файл либо связать интерфейс командной строки Azure с идентификатором организации.
+### <a name="install-hello-azure-command-line-interface-azure-cli"></a>Установка hello Azure командной строки (CLI Azure)
+tooinstall и настроить hello Azure CLI см. в разделе [как tooinstall hello интерфейса командной строки Azure](../../../cli-install-nodejs.md). Установка tooconfirm hello, тип `azure` hello командной строки и через некоторое короткое время вы увидите доступные tooyou команды hello Azure CLI ASCII-графики, который содержит список hello basic. Если установки hello работал правильно, можно будет tootype `azure help vm` и увидеть, что одной из команд hello в списке «docker».
 
 > [!NOTE]
-> Есть некоторые различия в действиях при использовании первого или второго способа аутентификации, так что не забудьте прочитать вышеуказанный документ, чтобы понять различие в функциональности.
+> Docker содержит средства для Windows, [машины Docker](https://docs.docker.com/installation/windows/), который можно также использовать tooautomate hello создание клиента docker, можно использовать toowork с виртуальными машинами Azure в качестве узлов docker.
 > 
 > 
 
-### <a name="install-docker-and-use-the-docker-vm-extension-for-azure"></a>Установка Docker и использование расширения виртуальных машин Docker для Azure
-Следуйте [инструкции по установке Docker](https://docs.docker.com/installation/#installation) для того, чтобы установить Docker локально на вашем компьютере.
+### <a name="connect-hello-azure-cli-tootooyour-azure-account"></a>Подключение hello Azure CLI tootooyour учетной записи Azure
+Прежде чем использовать hello Azure CLI необходимо связать учетные данные учетной записи Azure с hello Azure CLI для конкретной платформы. Здравствуйте, раздел [как tooconnect tooyour подписки Azure](../../../xplat-cli-connect.md) объясняет, как загрузить и импортировать tooeither вашей **.publishsettings** файл или связать с ИД организации в Azure CLI.
 
-Для использования Docker на виртуальной машине Azure в образе Linux, который используется для нее, необходимо установить [агент виртуальных машин Linux для Azure](../agent-user-guide.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). В настоящее время это обеспечивается только двумя типами образов:
+> [!NOTE]
+> Существуют некоторые отличия в поведении при использовании одной или hello других методов проверки подлинности, следует убедиться, что документ hello tooread выше toounderstand hello различаются по функциональности.
+> 
+> 
 
-* образ Ubuntu из коллекции образов Azure или
-* пользовательский образ Linux, созданный вами, с установленным и настроенным агентом виртуальных машин Linux для Azure. Дополнительные сведения о создании собственной виртуальной машины с агентом Azure см. в [руководстве пользователя агента Linux для Azure](../agent-user-guide.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+### <a name="install-docker-and-use-hello-docker-vm-extension-for-azure"></a>Установка Docker и использовать расширение ВМ Docker hello Azure
+Выполните hello [инструкции по установке Docker](https://docs.docker.com/installation/#installation) tooinstall Docker на локальном компьютере.
 
-### <a name="using-the-azure-image-gallery"></a>Использование коллекции образов Azure
-В сеансе Bash или сеансе терминала используйте команду
+toouse Docker с виртуальной машины Azure hello Linux изображение, используемое для hello виртуальной Машины должен иметь hello [агент ВМ Linux](../agent-user-guide.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) установлен. В настоящее время это обеспечивается только двумя типами образов:
+
+* Ubuntu образ из коллекции образов Azure hello или
+* Настраиваемое изображение Linux, созданного с помощью hello агента ВМ Azure Linux установлен и настроен. В разделе [агент ВМ Linux](../agent-user-guide.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) Дополнительные сведения о том, как toobuild пользовательские виртуальной Машины Linux с hello агента ВМ Azure.
+
+### <a name="using-hello-azure-image-gallery"></a>С помощью коллекции образов Azure hello
+В Bash или сеанс используйте следующую команду Azure CLI toolocate hello самый последний Ubuntu образ в коллекции toouse hello виртуальной Машины, введя hello
 
 `azure vm image list | grep Ubuntu-14_04`
 
-в интерфейсе командной строки Azure для поиска последнего образа Ubuntu в коллекции виртуальных машин, выберите одно из имен образов, например `b39f27a8b8c64d52b05eac6a62ebad85__Ubuntu-14_04_4-LTS-amd64-server-20160516-en-us-30GB`, и используйте указанную ниже команду для создания виртуальной машины с помощью этого образа.
+и выберите одно из имен изображения hello, такие как `b39f27a8b8c64d52b05eac6a62ebad85__Ubuntu-14_04_4-LTS-amd64-server-20160516-en-us-30GB`, и используйте hello следующая команда toocreate новой виртуальной Машины с помощью данного образа.
 
 ```
 azure vm docker create -e 22 -l "West US" <vm-cloudservice name> "b39f27a8b8c64d52b05eac6a62ebad85__Ubuntu-14_04_4-LTS-amd64-server-20160516-en-us-30GB" <username> <password>
 ```
 
-где:
+Описание:
 
-* *&lt;vm-cloudservice name&gt;* — имя виртуальной машины, которая станет главным компьютером для контейнеров Docker в Azure;
-* *&lt;имени пользователя&gt;* is the имени пользователя of the default root user of the VM
-* *&lt;password&gt;* — пароль для *имени пользователя* учетной записи, который отвечает требованиям к сложности, предъявляемым для Azure.
+* *&lt;имя виртуальной машины cloudservice&gt;*  — имя hello hello виртуальной Машины, которая станет hello компьютер указанный контейнер Docker в Azure
+* *&lt;имя пользователя&gt;*  пользователя hello корневого пользователя по умолчанию hello hello виртуальной Машины
+* *&lt;пароль&gt;*  — пароль hello hello *username* учетную запись, которая соответствует стандартам hello сложности для Azure
 
 > [!NOTE]
-> В настоящий момент пароль должен включать не менее 8 символов, содержать как минимум один символ в нижнем и в верхнем регистре, цифру и один из следующих специальных символов: `!@#$%^&+=`. Точка в конце предыдущего выражения НЕ является специальным символом.
+> В настоящее время пароль должен быть по крайней мере 8 символов, содержать одной прописной и одну прописную букву, число и специальный символ, такой как один из hello следующие символы: `!@#$%^&+=`. Нет, период hello в конце hello hello предшествующий предложения не специальный символ.
 > 
 > 
 
-Если команда прошла успешно, вы увидите нечто вроде следующего, в зависимости от конкретных аргументов и параметров, используемых вами:
+При успешном выполнении команды hello, вы увидите нечто похожее на следующее hello, в зависимости от hello точные аргументы и параметры, которые вы использовали:
 
 ![](media/cli-use-docker/dockercreateresults.png)
 
 > [!NOTE]
-> Создание виртуальной машины может занять несколько минут, но после ее подготовки (значение состояния — `ReadyRole`) будет запущена управляющая программа Docker (служба Docker), и вы сможете подключиться к узлу контейнера Docker.
+> Создание виртуальной машины может занять несколько минут, но после того, как он был инициализирован (значение hello `ReadyRole`) hello запуска управляющей программы (hello службу Docker) Docker, можно подключить toohello узла контейнера Docker.
 > 
 > 
 
-Для проверки виртуальной машины Docker, только что созданной в Azure, введите
+hello tootest Docker виртуальных Машин, созданных в Azure, тип
 
 `docker --tls -H tcp://<vm-name-you-used>.cloudapp.net:2376 info`
 
-где *&lt;vm-name-you-used&gt;* — имя виртуальной машины, которое было использовано при вызове `azure vm docker create`. Вы должны увидеть вывод, похожий на пример ниже, который указывает, что виртуальная машина узла Docker в Azure работает и ожидает ваших команд. 
+где  *&lt;vm-name--использовалась&gt;*  является именем hello hello виртуальной машины, который использовался при вызове слишком`azure vm docker create`. Вы увидите, что-нибудь подобное toohello следующее, что указывает, что узел Docker ВМ работает в Azure и ожидания команды. 
 
-Теперь можно попытаться подключиться с помощью клиента Docker, чтобы получить информацию (в некоторых экземплярах клиента Docker, например в ОС Mac, может потребоваться использовать `sudo`):
+Теперь можно попробовать tooconnect использует информацию tooobtain клиента docker (в некоторых настроек клиента Docker, например, на Mac, может возникнуть toouse `sudo`):
 
     sudo docker --tls -H tcp://testsshasm.cloudapp.net:2376 info
     Password:
@@ -129,7 +129,7 @@ azure vm docker create -e 22 -l "West US" <vm-cloudservice name> "b39f27a8b8c64d
     Name: testsshasm
     WARNING: No swap limit support
 
-Чтобы убедиться, что все работает, можно проверить виртуальную машину для расширения Docker:
+Просто toobe убедиться, что все работы, можно изучить hello виртуальной Машины для hello расширения Docker:
 
     azure vm extension get testsshasm
     info: Executing command vm extension get
@@ -140,25 +140,25 @@ azure vm docker create -e 22 -l "West US" <vm-cloudservice name> "b39f27a8b8c64d
     info: vm extension get command OK
 
 ### <a name="docker-host-vm-authentication"></a>Проверка подлинности виртуальной машины узла Docker
-Помимо создания виртуальной машины Docker, команда `azure vm docker create` также автоматически создает необходимые сертификаты, чтобы разрешить подключение клиентского компьютера Docker к узлу контейнера Azure с помощью HTTPS. Сертификаты хранятся как на клиентских компьютерах, так и на хост-компьютерах, в зависимости от обстоятельств. При последующих попытках существующие сертификаты используются повторно и совместно с новым узлом.
+Кроме hello hello toocreating ВМ Docker `azure vm docker create` команда также автоматически создает необходимые сертификаты tooallow hello клиентского компьютера tooconnect toohello контейнер Azure узла Docker с помощью протокола HTTPS и hello сертификаты хранятся на обоих Hello клиентского и главного компьютеров соответствующим образом. При последующих попытках существующих сертификатов hello повторно и совместно с новым узлом hello.
 
-По умолчанию сертификаты помещаются в `~/.docker`, а Docker настраивается для запуска с использованием порта **2376**. Если вы хотите использовать другой порт или каталог, то вы можете использовать один из следующих параметров командной строки `azure vm docker create` для настройки виртуальной машины, в которой размещены контейнеры Docker, на использование другого порта или других сертификатов для подключения клиентов:
+По умолчанию сертификаты помещаются в `~/.docker`, и Docker будут toorun настроенный порт **2376**. Если вы хотите toouse другой порт или каталог, то можно использовать один из следующих hello `azure vm docker create` tooconfigure параметры командной строки к Docker контейнера узла виртуальной Машины toouse другой порт или разные сертификаты при подключении клиентов:
 
 ```
--dp, --docker-port [port]              Port to use for docker [2376]
+-dp, --docker-port [port]              Port toouse for docker [2376]
 -dc, --docker-cert-dir [dir]           Directory containing docker certs [.docker/]
 ```
 
-Управляющая программа Docker на узле настроена на прослушивание и проверку подлинности клиентских подключений на указанном порту с использованием сертификатов, созданных с помощью команды `azure vm docker create` . Клиентские компьютеры должны иметь эти сертификаты, чтобы получить доступ к узлу Docker.
+Hello управляющая программа Docker на узле hello является настроенным toolisten для и пройти проверку подлинности клиентских подключений на hello указанный порт, используя hello сертификаты, созданные hello `azure vm docker create` команды. Hello клиентский компьютер должен иметь эти сертификаты toogain доступа toohello Docker узла.
 
 > [!NOTE]
-> Сетевой узел, работающий без этих сертификатов, будет уязвим для всех, кто может подключиться к компьютеру. Перед тем как изменить конфигурацию по умолчанию, убедитесь, что вы понимаете все риски, которым могут быть подвержены компьютеры и приложения.
+> Узел сети, работающих без эти сертификаты будут уязвимыми tooanyone, можно tooconnect toohello машины. Перед изменением конфигурации по умолчанию hello, убедитесь, что вы понимаете hello рисков tooyour компьютеры и приложения.
 > 
 > 
 
 ## <a name="next-steps"></a>Дальнейшие действия
-* Переходите к [руководству пользователя Docker] и использованию виртуальной машины Docker. Для создания виртуальной машины с поддержкой Docker на новом портале см. раздел [Использование расширения виртуальных машин Docker на классическом портале Azure].
-* Расширение виртуальной машины Docker для Azure также поддерживает Docker Compose, использующий декларативный файл YAML, позволяющий использовать смоделированное разработчиком приложение в любой среде и обеспечить согласованное развертывание. Ознакомьтесь с разделом [Приступая к работе с решениями Docker и Compose для определения и запуска многоконтейнерного приложения на виртуальной машине Azure].  
+* Будут готовы toogo toohello [руководство пользователя по Docker] и использовать ВМ Docker. . в разделе toocreate поддержкой Docker виртуальной Машины в новый портал hello, [как toouse hello расширение ВМ Docker с hello портала].
+* Hello расширение ВМ Docker Azure также поддерживает Docker Compose, использующий декларативный tootake файл YAML приложении моделируется разработчика любой среде и создания согласованного развертывания. В разделе [начало работы с Docker и составлять toodefine и запустите приложение контейнера несколькими на виртуальной машине Azure].  
 
 <!--Anchors-->
 [Subheading 1]:#subheading-1
@@ -166,18 +166,18 @@ azure vm docker create -e 22 -l "West US" <vm-cloudservice name> "b39f27a8b8c64d
 [Subheading 3]:#subheading-3
 [Next steps]:#next-steps
 
-[How to use the Docker VM Extension with Azure]:#How-to-use-the-Docker-VM-Extension-with-Azure
+[How toouse hello Docker VM Extension with Azure]:#How-to-use-the-Docker-VM-Extension-with-Azure
 [Virtual Machine Extensions for Linux and Windows]:#Virtual-Machine-Extensions-For-Linux-and-Windows
 [Container and Container Management Resources for Azure]:#Container-and-Container-Management-Resources-for-Azure
 
 
 
 <!--Link references-->
-[Link 1 to another azure.microsoft.com documentation topic]:../../virtual-machines-windows-hero-tutorial.md
-[Link 2 to another azure.microsoft.com documentation topic]:../../../app-service-web/web-sites-custom-domain-name.md
-[Link 3 to another azure.microsoft.com documentation topic]:../storage-whatis-account.md
-[Использование расширения виртуальных машин Docker на классическом портале Azure]:http://azure.microsoft.com/documentation/articles/virtual-machines-docker-with-portal/
+[Link 1 tooanother azure.microsoft.com documentation topic]:../../virtual-machines-windows-hero-tutorial.md
+[Link 2 tooanother azure.microsoft.com documentation topic]:../../../app-service-web/web-sites-custom-domain-name.md
+[Link 3 tooanother azure.microsoft.com documentation topic]:../storage-whatis-account.md
+[как toouse hello расширение ВМ Docker с hello портала]:http://azure.microsoft.com/documentation/articles/virtual-machines-docker-with-portal/
 
-[руководству пользователя Docker]:https://docs.docker.com/userguide/
+[руководство пользователя по Docker]:https://docs.docker.com/userguide/
 
-[Приступая к работе с решениями Docker и Compose для определения и запуска многоконтейнерного приложения на виртуальной машине Azure]:../docker-compose-quickstart.md
+[начало работы с Docker и составлять toodefine и запустите приложение контейнера несколькими на виртуальной машине Azure]:../docker-compose-quickstart.md

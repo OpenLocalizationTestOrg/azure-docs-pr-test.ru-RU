@@ -1,6 +1,6 @@
 ---
-title: "Настройка кластеров HDInsight с помощью действий скрипта — Azure | Документы Майкрософт"
-description: "Дополнительные сведения о настройке кластеров HDInsight с помощью действия скрипта."
+title: "aaaCustomize кластеров HDInsight с помощью сценария действий - Azure | Документы Microsoft"
+description: "Узнайте, как toocustomize HDInsight кластеры, использующие действие сценария."
 services: hdinsight
 documentationcenter: 
 author: nitinme
@@ -16,41 +16,41 @@ ms.topic: article
 ms.date: 10/05/2016
 ms.author: nitinme
 ROBOTS: NOINDEX
-ms.openlocfilehash: ec95b6d66c71b4278dd1e16807fcc75f5e8b1c36
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 076fff23e016db47bc7e9963582a545ad638e691
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="customize-windows-based-hdinsight-clusters-using-script-action"></a>Настройка кластеров HDInsight под управлением Windows с помощью действия сценария
-**действий сценария** можно вызывать [пользовательские сценарии](hdinsight-hadoop-script-actions.md) во время создания кластера для установки в нем дополнительного программного обеспечения.
+**Записать действие в скрипт** может быть используется tooinvoke [пользовательские сценарии](hdinsight-hadoop-script-actions.md) во время создания кластера hello для установки дополнительного программного обеспечения в кластере.
 
-Информация, приведенная в этой статье, относится только к кластерам HDInsight под управлением Windows. О кластерах под управлением Linux читайте в статье [Настройка кластеров HDInsight под управлением Linux с помощью действия сценария](hdinsight-hadoop-customize-cluster-linux.md).
+Hello сведения в этой статье — конкретных tooWindows основе кластеров HDInsight. О кластерах под управлением Linux читайте в статье [Настройка кластеров HDInsight под управлением Linux с помощью действия сценария](hdinsight-hadoop-customize-cluster-linux.md).
 
 > [!IMPORTANT]
-> Linux — это единственная операционная система, используемая для работы с HDInsight 3.4 или более поздних версий. Дополнительные сведения см. в разделе [Приближается дата прекращения сопровождения HDI версии 3.3](hdinsight-component-versioning.md#hdinsight-windows-retirement).
+> Linux — hello только операционную систему, используемую в HDInsight версии 3.4 или более поздней. Дополнительные сведения см. в разделе [Приближается дата прекращения сопровождения HDI версии 3.3](hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
-Кластеры HDInsight можно настраивать множеством других способов, например включая дополнительные учетные записи хранения Azure, изменяя файлы конфигурации Hadoop (core-site.xml, hive-site.xml и т. д.) или добавляя общие библиотеки (например, Hive, Oozie) в стандартные расположения в кластере. Эти настройки можно выполнить с помощью Azure PowerShell, пакета SDK для Azure для HDInsight .NET или на портале Azure. Дополнительные сведения см. в статье [Создание кластеров Hadoop в HDInsight][hdinsight-provision-cluster].
+Кластеров HDInsight могут быть настроены в различных других целей, такие как включение дополнительных учетных записей хранилища Azure, изменение hello Hadoop (core-site.xml, hive-site.xml, т. д.), файлы конфигурации и добавление общие библиотеки (например, Hive, Oozie) в стандартных расположениях в кластере hello. Эти настройки можно сделать с помощью Azure PowerShell, hello Azure HDInsight .NET SDK или hello портал Azure. Дополнительные сведения см. в статье [Создание кластеров Hadoop в HDInsight][hdinsight-provision-cluster].
 
 [!INCLUDE [upgrade-powershell](../../includes/hdinsight-use-latest-powershell-cli-and-dotnet-sdk.md)]
 
-## <a name="script-action-in-the-cluster-creation-process"></a>Действие сценария в процессе создания кластера
-Действие сценария используется только в том случае, если кластеры находятся в процессе создания. На следующей схеме показано, когда выполняется действие сценария в процессе создания.
+## <a name="script-action-in-hello-cluster-creation-process"></a>Действие сценария в процессе создания кластера hello
+Действие сценария используется только в том случае, пока кластер находится в процессе создания hello. Hello следующей схеме показана при выполнении сценария действия во время создания hello.
 
 ![Настройка кластера HDInsight и этапы создания кластера][img-hdi-cluster-states]
 
-При выполнении сценария кластер переходит к этапу **ClusterCustomization** . На этой стадии скрипт выполняется под учетной записью администратора системы, параллельно на всех указанных узлах в кластере и предоставляет права администратора на узлах в полном объеме.
+При выполнении скрипта hello, кластер hello вводит hello **ClusterCustomization** рабочей области. На этом этапе сценария hello запускается под учетной записью администратора системы hello, параллельно на всех hello указан узлов в кластере hello и предоставляет права полного администратора на узлах hello.
 
 > [!NOTE]
-> Так как у вас есть права администратора в узлах кластера на этапе **ClusterCustomization**, вы можете использовать скрипт для выполнения таких операций, как остановка и запуск служб, в том числе служб, связанных с Hadoop. Таким образом, перед завершением работы сценария необходимо запустить службы Ambari и другие службы, связанные с Hadoop. Эти службы нужны для определения работоспособности и состояния кластера при его создании. При изменении любых настроек в кластере, затрагивающих эти службы, необходимо использовать указанные вспомогательные функции. Подробнее о вспомогательных функциях см. в статье [Разработка скриптов действия сценария для HDInsight][hdinsight-write-script].
+> Если у вас права администратора на узлах кластера hello во время **ClusterCustomization** рабочей области, можно использовать hello сценария tooperform операции, такие как остановка и запуск служб, включая службы, связанные с Hadoop. Так как часть сценария hello, необходимо убедиться, hello Ambari службы и другие службы, связанные с Hadoop доступны и запущены перед hello сценарий завершает работу. Эти службы необходимы toosuccessfully выяснить hello работоспособности и состояние кластера hello во время создания. Если изменить какой-либо настройки в кластере, который влияет на эти службы, необходимо использовать hello вспомогательные функции, которые предоставляются. Подробнее о вспомогательных функциях см. в статье [Разработка скриптов действия сценария для HDInsight][hdinsight-write-script].
 >
 >
 
-Выходные данные и журналы ошибок сценария хранятся в учетной записи хранения, заданной по умолчанию для кластера. Журналы хранятся в таблице с именем **u<фрагмент-имени-кластера><\метка-времени>setuplog**. Это сводные журналы сценария, выполняемого на всех узлах (на головном и рабочих) в кластере.
+Вывод Hello и hello журналы ошибок для скрипта hello хранятся в учетной записи хранилища hello по умолчанию, заданные для кластера hello. Hello журналы хранятся в таблице с именем hello **u < \cluster-name-fragment >< \time-stamp > setuplog**. Это совокупное журналы из hello сценариев, запускаемых на всех узлах hello (головного узла и рабочих узлов) в кластере hello.
 
-В каждом кластере можно использовать несколько действий сценариев, которые вызываются в том порядке, в котором они указаны. Сценарий может выполняться на головном узле, на рабочем узле или на обоих.
+Каждый кластер может принимать несколько действий скрипта, которые вызываются в порядке hello, в котором они указаны. Сценарий можно работали на головном узле hello и hello рабочих узлов.
 
-HDInsight предоставляет несколько скриптов для установки следующих компонентов в кластерах HDInsight:
+HDInsight предоставляет несколько сценариев tooinstall hello, следующие компоненты в кластерах HDInsight.
 
 | Имя | Скрипт |
 | --- | --- |
@@ -60,36 +60,36 @@ HDInsight предоставляет несколько скриптов для 
 | - **Установка Giraph** |https://hdiconfigactions.blob.core.windows.net/giraphconfigactionv01/giraph-installer-v01.ps1. Ознакомьтесь со статьей [Установка и использование Giraph в кластерах HDInsight](hdinsight-hadoop-giraph-install.md). |
 | **Предварительная загрузка библиотек Hive** |https://hdiconfigactions.blob.core.windows.net/setupcustomhivelibsv01/setup-customhivelibs-v01.ps1. Ознакомьтесь со статьей [Добавление библиотек Hive в кластеры HDInsight](hdinsight-hadoop-add-hive-libraries.md) |
 
-## <a name="call-scripts-using-the-azure-portal"></a>Вызов сценариев с помощью портала Azure
-**На портале Azure**
+## <a name="call-scripts-using-hello-azure-portal"></a>Вызов сценариев с помощью портала Azure hello
+**Из портала Azure hello**
 
 1. Начните создание кластера, как описано в разделе [Создание кластеров Hadoop под управлением Windows в HDInsight](hdinsight-hadoop-provision-linux-clusters.md).
-2. В разделе "Необязательная настройка" в колонке **Действия скрипта** щелкните **Добавить действие скрипта**, чтобы указать сведения об этом действии скрипта.
+2. В разделе дополнительной конфигурации hello **действия скрипта** колонке нажмите кнопку **добавьте действия скрипта** tooprovide сведений о hello действие скрипта, как показано ниже:
 
-    ![Использование действия сценария для настройки кластера](./media/hdinsight-hadoop-customize-cluster/HDI.CreateCluster.8.png "Использование действия сценария для настройки кластера")
+    ![Используйте действие скрипта toocustomize кластера](./media/hdinsight-hadoop-customize-cluster/HDI.CreateCluster.8.png "toocustomize действия скрипта для использования кластера")
 
     <table border='1'>
         <tr><th>Свойство</th><th>Значение</th></tr>
         <tr><td>Имя</td>
-            <td>Укажите имя для действия сценария.</td></tr>
+            <td>Укажите имя для действия сценария hello.</td></tr>
         <tr><td>URI-адрес сценария</td>
-            <td>Укажите URI для сценария, который вызывается для настройки кластера. s</td></tr>
+            <td>Укажите сценарий toohello URI hello, вызванный toocustomize hello кластера. s</td></tr>
         <tr><td>Головной/рабочий</td>
-            <td>Укажите узлы (**Головной** или **Рабочий**), на которых выполняется скрипт настройки</b>.
+            <td>Укажите узлы hello (**Head** или **рабочих**) на какие hello настройки выполнения скрипта.</b>.
         <tr><td>Параметры</td>
-            <td>Укажите параметры, если они требуются для сценария.</td></tr>
+            <td>Укажите параметры hello, если это требуется для сценария hello.</td></tr>
     </table>
 
-    Нажмите клавишу ВВОД, чтобы добавить несколько действий сценария для установки нескольких компонентов в кластере.
-3. Щелкните **Выбрать** , чтобы сохранить конфигурацию действия сценария и продолжить создание кластера.
+    Нажмите клавишу ВВОД tooadd больше, чем один скрипт действие tooinstall несколько компонентов в кластере hello.
+3. Нажмите кнопку **выберите** toosave hello скрипт конфигурации действия и продолжите создание кластера.
 
 ## <a name="call-scripts-using-azure-powershell"></a>Вызов сценариев с помощью Azure PowerShell
-Этот сценарий PowerShell показывает, как установить Spark в кластере HDInsight под управлением Windows.  
+Это следующий сценарий PowerShell показано, как tooinstall Spark в Windows на основе кластеров HDInsight.  
 
     # Provide values for these variables
-    $subscriptionID = "<Azure Suscription ID>" # After "Login-AzureRmAccount", use "Get-AzureRmSubscription" to list IDs.
+    $subscriptionID = "<Azure Suscription ID>" # After "Login-AzureRmAccount", use "Get-AzureRmSubscription" toolist IDs.
 
-    $nameToken = "<Enter A Name Token>"  # The token is use to create Azure service names.
+    $nameToken = "<Enter A Name Token>"  # hello token is use toocreate Azure service names.
     $namePrefix = $nameToken.ToLower() + (Get-Date -Format "MMdd")
 
     $resourceGroupName = $namePrefix + "rg"
@@ -103,7 +103,7 @@ HDInsight предоставляет несколько скриптов для 
     $defaultBlobContainerName = $hdinsightClusterName
 
     #############################################################
-    # Connect to Azure
+    # Connect tooAzure
     #############################################################
 
     Try{
@@ -115,7 +115,7 @@ HDInsight предоставляет несколько скриптов для 
     Select-AzureRmSubscription -SubscriptionId $subscriptionID
 
     #############################################################
-    # Prepare the dependent components
+    # Prepare hello dependent components
     #############################################################
 
     # Create resource group
@@ -141,13 +141,13 @@ HDInsight предоставляет несколько скриптов для 
     # Create cluster with ApacheSpark
     #############################################################
 
-    # Specify the configuration options
+    # Specify hello configuration options
     $config = New-AzureRmHDInsightClusterConfig `
                 -DefaultStorageAccountName "$defaultStorageAccountName.blob.core.windows.net" `
                 -DefaultStorageAccountKey $defaultStorageAccountKey
 
 
-    # Add a script action to the cluster configuration
+    # Add a script action toohello cluster configuration
     $config = Add-AzureRmHDInsightScriptAction `
                 -Config $config `
                 -Name "Install Spark" `
@@ -166,22 +166,22 @@ HDInsight предоставляет несколько скриптов для 
             -Config $config
 
 
-Чтобы установить другое программное обеспечение, необходимо заменить файл скрипта в сценарии:
+tooinstall другого программного обеспечения, вам потребуется файл сценария tooreplace hello в скрипте hello:
 
-При появлении запроса введите учетные данные для кластера. Создание кластера может занять несколько минут.
+При появлении запроса введите учетные данные hello hello кластера. Он может занять несколько минут, перед созданием кластера hello.
 
 ## <a name="call-scripts-using-net-sdk"></a>Вызов сценариев с помощью пакета SDK для .NET
-В следующем примере показано, как установить Spark на кластер HDInsight под управлением Windows. Чтобы установить другое программное обеспечение, необходимо заменить файл скрипта в коде.
+Hello следующий пример демонстрирует, как tooinstall Spark в Windows на основе кластеров HDInsight. tooinstall другого программного обеспечения, вам потребуется файл сценария tooreplace hello в коде hello.
 
-**Создание кластера HDInsight с использованием Spark**
+**кластер HDInsight с Spark toocreate**
 
 1. Создайте в Visual Studio консольное приложение C#.
-2. Введите следующую команду в окне консоли диспетчера пакетов NuGet.
+2. Запустите следующую команду hello из hello консоль диспетчера пакетов Nuget.
 
         Install-Package Microsoft.Rest.ClientRuntime.Azure.Authentication -Pre
         Install-Package Microsoft.Azure.Management.ResourceManager -Pre
         Install-Package Microsoft.Azure.Management.HDInsight
-3. Используйте следующие инструкции using в файле Program.cs:
+3. Используйте hello после с помощью инструкций в файле Program.cs hello:
 
         using System;
         using System.Security;
@@ -192,14 +192,14 @@ HDInsight предоставляет несколько скриптов для 
         using Microsoft.IdentityModel.Clients.ActiveDirectory;
         using Microsoft.Rest;
         using Microsoft.Rest.Azure.Authentication;
-4. Замените существующий код в файле класса следующим:
+4. Поместите код hello в классе hello hello следующее:
 
         private static HDInsightManagementClient _hdiManagementClient;
 
         // Replace with your AAD tenant ID if necessary
         private const string TenantId = UserTokenProvider.CommonTenantId;
         private const string SubscriptionId = "<Your Azure Subscription ID>";
-        // This is the GUID for the PowerShell client. Used for interactive logins in this example.
+        // This is hello GUID for hello PowerShell client. Used for interactive logins in this example.
         private const string ClientId = "1950a258-227b-4e31-a9cf-717495945fc2";
         private const string ResourceGroupName = "<ExistingAzureResourceGroupName>";
         private const string NewClusterName = "<NewAzureHDInsightClusterName>";
@@ -252,11 +252,11 @@ HDInsight предоставляет несколько скриптов для 
         }
 
         /// <summary>
-        /// Authenticate to an Azure subscription and retrieve an authentication token
+        /// Authenticate tooan Azure subscription and retrieve an authentication token
         /// </summary>
-        /// <param name="TenantId">The AAD tenant ID</param>
-        /// <param name="ClientId">The AAD client ID</param>
-        /// <param name="SubscriptionId">The Azure subscription ID</param>
+        /// <param name="TenantId">hello AAD tenant ID</param>
+        /// <param name="ClientId">hello AAD client ID</param>
+        /// <param name="SubscriptionId">hello Azure subscription ID</param>
         /// <returns></returns>
         static TokenCloudCredentials Authenticate(string TenantId, string ClientId, string SubscriptionId)
         {
@@ -276,42 +276,42 @@ HDInsight предоставляет несколько скриптов для 
         /// <param name="authToken">An authentication token for your Azure subscription</param>
         static void EnableHDInsight(TokenCloudCredentials authToken)
         {
-            // Create a client for the Resource manager and set the subscription ID
+            // Create a client for hello Resource manager and set hello subscription ID
             var resourceManagementClient = new ResourceManagementClient(new TokenCredentials(authToken.Token));
             resourceManagementClient.SubscriptionId = SubscriptionId;
-            // Register the HDInsight provider
+            // Register hello HDInsight provider
             var rpResult = resourceManagementClient.Providers.Register("Microsoft.HDInsight");
         }
-5. Нажмите клавишу **F5** для запуска приложения.
+5. Нажмите клавишу **F5** toorun приложения hello.
 
 ## <a name="support-for-open-source-software-used-on-hdinsight-clusters"></a>Поддержка программного обеспечения с открытым исходным кодом, используемого в кластере HDInsight
-Служба Microsoft Azure HDInsight — это гибкая платформа, которая позволяет создавать приложения для работы с данными большого размера в облаке, используя сформированную вокруг Hadoop экосистему технологий с открытым исходным кодом. Microsoft Azure предоставляет общий уровень поддержки для технологий с открытым исходным кодом, как описано в статье **Объем поддержки** на <a href="http://azure.microsoft.com/support/faq/" target="_blank">веб-сайте часто задаваемых вопросов о поддержке Azure</a>. Служба HDInsight предоставляет дополнительный уровень поддержки для некоторых описанных ниже компонентов.
+Hello службы Microsoft Azure HDInsight — это гибкая платформа, обеспечивающий toobuild больших данных приложений в облаке hello с помощью экосистему технологий открытым исходным кодом, сформированный вокруг Hadoop. Microsoft Azure предоставляет общие уровень поддержки для технологий с открытым исходным кодом, как описано в hello **область поддерживает** раздел hello <a href="http://azure.microsoft.com/support/faq/" target="_blank">веб-сайта Azure поддерживают часто задаваемые вопросы о</a>. Hello службы HDInsight предоставляет дополнительный уровень поддержки для некоторых компонентов hello, как описано ниже.
 
-В службе HDInsight доступно два типа компонентов с открытым исходным кодом.
+Существует два типа компонентов открытым исходным кодом, доступных в hello службы HDInsight:
 
-* **Встроенные компоненты.** Эти компоненты предварительно установлены в кластерах HDInsight и предоставляют его базовые функциональные возможности. Например, к этой категории относится диспетчер ресурсов YARN, язык запросов Hive (HiveQL) и библиотека Mahout. Полный список компонентов кластера доступен в статье [Что представляют собой различные компоненты Hadoop, доступные в HDInsight?](hdinsight-component-versioning.md)</a>
-* **Настраиваемые компоненты.** Как пользователь кластера вы можете установить или использовать в рабочей нагрузке любой компонент, полученный из сообщества или созданный самостоятельно.
+* **Встроенные компоненты** -эти компоненты предустановлен в кластерах HDInsight и предоставляют основные функциональные возможности кластера hello. Например YARN ResourceManager, язык запросов Hive hello (HiveQL) и библиотеку Mahout hello принадлежать toothis категории. Полный список компонентов кластера доступен в [новые возможности, предоставляемые HDInsight версиями кластеров Hadoop hello?](hdinsight-component-versioning.md) </a>.
+* **Пользовательские компоненты** -, как пользователь кластера hello, можно установить или использовать любой компонент, доступные в сообществе hello или созданный вами в рабочей нагрузке.
 
-Встроенные компоненты полностью поддерживаются, и служба поддержки корпорации Майкрософт поможет выявить и устранить проблемы, связанные с этими компонентами.
+Встроенные компоненты, полностью поддерживаются и поддержки Майкрософт способствуют tooisolate и разрешить проблемы toothese связанные компоненты.
 
 > [!WARNING]
-> Компоненты, предоставляемые вместе с кластером HDInsight, поддерживаются в полном объеме. Служба поддержки Майкрософт поможет вам выявить и устранить проблемы, связанные с этими компонентами.
+> Компоненты, предоставляемые с кластером HDInsight hello полностью поддерживаются и поддержки Майкрософт способствуют tooisolate и разрешить проблемы toothese связанные компоненты.
 >
-> Настраиваемые компоненты получают ограниченную коммерчески оправданную поддержку, способствующую дальнейшей диагностике проблемы. В результате проблема может быть устранена, либо вас могут попросить воспользоваться доступными каналами по технологиям с открытым исходным кодом, чтобы связаться с экспертами в данной области. Можно использовать ряд сайтов сообществ, например [форум MSDN по HDInsight](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hdinsight) или [http://stackoverflow.com](http://stackoverflow.com). Кроме того, проекты Apache можно просмотреть на соответствующих сайтах по адресу [http://apache.org](http://apache.org), например для [Hadoop](http://hadoop.apache.org/) и [Spark](http://spark.apache.org/).
+> Пользовательские компоненты получают toohelp ограниченную техническую поддержку вы toofurther устранить проблему hello. Это может привести к устранению проблемы hello и без tooengage доступных каналов для hello открытии источника технологий, которых находится глубокие знания для данной технологии. Можно использовать ряд сайтов сообществ, например [форум MSDN по HDInsight](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hdinsight) или [http://stackoverflow.com](http://stackoverflow.com). Кроме того, проекты Apache можно просмотреть на соответствующих сайтах по адресу [http://apache.org](http://apache.org), например для [Hadoop](http://hadoop.apache.org/) и [Spark](http://spark.apache.org/).
 >
 >
 
-Служба HDInsight позволяет использовать настраиваемые компоненты несколькими разными способами. Уровень поддержки не зависит от того, как компонент используется или устанавливается в кластере. Ниже приведен список самых распространенных способов использования настраиваемых компонентов в кластерах HDInsight.
+Служба HDInsight Hello предоставляет несколько способов toouse пользовательские компоненты. Независимо от того, как компонент используется, или установлена на кластере hello hello же уровнем поддержки применяется. Ниже приведен список наиболее распространенными способами hello, что пользовательские компоненты можно использовать в кластерах HDInsight.
 
-1. Отправка задания. В кластер можно отправлять задания Hadoop или другие типы заданий, выполняющие или использующие настраиваемые компоненты.
-2. Настройка кластера. Во время создания кластера можно указать дополнительные параметры и настраиваемые компоненты, которые будут установлены в узлах кластера.
-3. Примеры. Для популярных настраиваемых компонентов корпорация Майкрософт и другие компании могут предоставлять примеры использования таких компонентов в кластерах HDInsight. Эти примеры представляются без поддержки.
+1. Отправки заданий - Hadoop или других типов заданий, обрабатываемых или использовать пользовательские компоненты может быть отправлено toohello кластера.
+2. Настройка кластера - во время создания кластера можно указать дополнительные параметры и пользовательские компоненты, которые будут устанавливаться на узлах кластера hello.
+3. Примеры — для популярных пользовательские компоненты, корпорация Майкрософт и другие могут предоставлять примеры использования этих компонентов в кластерах HDInsight hello. Эти примеры представляются без поддержки.
 
 ## <a name="develop-script-action-scripts"></a>Разработка скрипта действия сценария
 Ознакомьтесь со статьей [Разработка скриптов действия сценария для HDInsight][hdinsight-write-script].
 
-## <a name="see-also"></a>Дополнительные материалы
-* В статье [Создание кластеров Hadoop под управлением Windows в HDInsight][hdinsight-provision-cluster] приведены указания по созданию кластера HDInsight с использованием других настраиваемых параметров.
+## <a name="see-also"></a>См. также
+* [Создание кластеров Hadoop в HDInsight] [ hdinsight-provision-cluster] описано, как toocreate HDInsight кластер с помощью другие настраиваемые параметры.
 * [Разработка скриптов действия сценария для HDInsight][hdinsight-write-script]
 * [Установка и использование Spark в кластерах HDInsight Hadoop с помощью действия сценария][hdinsight-install-spark]
 * [Установка и использование R на кластерах HDInsight Hadoop][hdinsight-install-r]

@@ -21,8 +21,8 @@
 ## [Проверка параметров диспетчера трафика](traffic-manager-testing-settings.md)
 ## [Комбинирование служб балансировки нагрузки](traffic-manager-load-balancing-azure.md)
 ## [Измерение производительности диспетчера трафика](traffic-manager-performance-considerations.md)
-## [Использование PowerShell для управления диспетчером трафика](traffic-manager-powershell-arm.md)
-## [Указание своего интернет-домена для диспетчера трафика](traffic-manager-point-internet-domain.md)
+## [Использовать toomanage PowerShell диспетчера трафика](traffic-manager-powershell-arm.md)
+## [Укажите ваш tooTraffic домена Интернета Manager](traffic-manager-point-internet-domain.md)
 ## Устранение неполадок
 ### [Устранение неполадок, связанных с состоянием сниженной функциональности диспетчера трафика Azure](traffic-manager-troubleshooting-degraded.md)
 

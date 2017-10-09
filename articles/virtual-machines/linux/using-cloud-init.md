@@ -1,6 +1,6 @@
 ---
-title: "Настройка виртуальной машины Linux с помощью cloud-init | Документация Майкрософт"
-description: "Как с помощью cloud-init и Azure CLI 2.0 настроить создаваемую виртуальную машину Linux"
+title: "toocustomize aaaUse init облака виртуальной Машины Linux | Документы Microsoft"
+description: "Как облачные init toocustomize toouse в виртуальной Машине Linux во время создания с hello Azure CLI 2.0"
 services: virtual-machines-linux
 documentationcenter: 
 author: iainfoulds
@@ -15,17 +15,17 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 05/11/2017
 ms.author: iainfou
-ms.openlocfilehash: a7a6daad34525683579e25b9591ed28f2bf29c04
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: e7297e162fc73f0da42f195bec2fcbe23b310c1e
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="use-cloud-init-to-customize-a-linux-vm-during-creation"></a>Настройка виртуальной машины Linux во время создания с помощью cloud-init
-В этой статье демонстрируется создание сценария cloud-init для задания имени узла, обновления установленных пакетов и управления учетными записями пользователей с помощью Azure CLI 2.0. Скрипты cloud-init вызываются во время создания виртуальной машины с помощью Azure CLI. Дополнительные сведения по установке приложений, записи файлов конфигурации и включении ключей из хранилища Key Vault см. в [этом руководстве](tutorial-automate-vm-deployment.md). Эти действия можно также выполнить с помощью [Azure CLI 1.0](using-cloud-init-nodejs.md).
+# <a name="use-cloud-init-toocustomize-a-linux-vm-during-creation"></a>Использовать toocustomize init облака виртуальной Машины Linux во время создания
+В этой статье показано, как toomake tooset сценарий облака init hello имя узла, установленных пакетов обновления и управление учетными записями пользователей с hello Azure CLI 2.0. При создании виртуальной машины (VM) из Azure CLI, называются Hello init облачных сценариев. Дополнительные сведения по установке приложений, записи файлов конфигурации и включении ключей из хранилища Key Vault см. в [этом руководстве](tutorial-automate-vm-deployment.md). Можно также выполнить следующие действия с hello [Azure CLI 1.0](using-cloud-init-nodejs.md).
 
 ## <a name="quick-commands"></a>Быстрые команды
-Создайте сценарий cloud-init.txt, который задает имя узла, обновляет все пакеты и добавляет в Linux пользователя sudo.
+Создание облака init.txt скрипт, который задает имя узла hello, все пакеты обновления и добавляет tooLinux sudo пользователя.
 
 ```yaml
 #cloud-config
@@ -40,13 +40,13 @@ users:
       - ssh-rsa AAAAB3<snip>==myAdminUser@myVM
 ```
 
-Создайте группу ресурсов для запуска виртуальных машин с помощью команды [az group create](/cli/azure/group#create). В следующем примере создается группа ресурсов с именем *myResourceGroup*:
+Создание toolaunch группы ресурсов в виртуальные машины с [Создание группы az](/cli/azure/group#create). Hello следующем примере создается с именем группы ресурсов hello *myResourceGroup*:
 
 ```azurecli
 az group create --name myResourceGroup --location eastus
 ```
 
-Выполните команду [az vm create](/cli/azure/vm#create) с параметром `--custom-data`, чтобы создать и настроить (при загрузке) виртуальную машину Linux с помощью cloud-init.
+Создание виртуальной Машины с Linux [создания виртуальной машины az](/cli/azure/vm#create) tooconfigure init облака с помощью его во время загрузки с hello `--custom-data` параметра.
 
 ```azurecli
 az vm create \
@@ -59,23 +59,23 @@ az vm create \
 ```
 
 ## <a name="detailed-walkthrough"></a>Подробное пошаговое руководство
-При запуске новой виртуальной машины Linux вы получаете стандартную виртуальную машину, не настроенную под ваши потребности. [Cloud-init](https://cloudinit.readthedocs.org) — это стандартный способ добавления сценария или параметров конфигурации в виртуальную машину Linux при ее первоначальной загрузке.
+При запуске новой виртуальной машины Linux вы получаете стандартную виртуальную машину, не настроенную под ваши потребности. [Облако init](https://cloudinit.readthedocs.org) является tooinject стандартный способ скрипт или конфигурации параметры в этой виртуальной Машины Linux при загрузке для hello первый раз.
 
-В Azure есть три способа внесения изменений в виртуальную машину Linux в процессе ее развертывания или загрузки.
+В Azure, существует несколько способов изменения toomake на виртуальной Машине Linux время развернут или загружен.
 
 * Внедрить сценарии с помощью cloud-init.
-* Внедрить сценарии с помощью [расширения VMAccess](using-vmaccess-extension.md)Azure.
+* Внедрить скриптов с использованием hello Azure [расширения VMAccess](using-vmaccess-extension.md).
 * Шаблон Azure с использованием cloud-init.
 * Шаблон Azure с использованием расширения [CustomScriptExtention](extensions-customscript.md).
 
-Для внедрения сценариев в любой момент после загрузки можно воспользоваться одним из ниже приведенных способов.
+сценарии tooinject в любое время после загрузки.
 
-* Подключиться по SSH для выполнения команд напрямую.
-* Внедрить сценарии с помощью [расширения VMAccess](using-vmaccess-extension.md)Azure принудительно или через шаблон Azure.
+* Непосредственно команды toorun SSH
+* Внедрить скриптов с использованием hello Azure [расширения VMAccess](using-vmaccess-extension.md), принудительно или в шаблоне Azure
 * Воспользоваться средствами управления, такими как Ansible, Salt, Chef или Puppet.
 
 > [!NOTE]
-> Расширение VMAccess выполняет сценарий от имени привилегированного пользователя, так же как при использовании протокола SSH. Однако применение расширения для виртуальных машин обеспечивает ряд предлагаемых Azure возможностей, которые могут быть полезны в некоторых сценариях.
+> Расширение VMAccess выполняет скрипт как корневой hello же можно с помощью SSH. Тем не менее использование расширения ВМ hello позволяет несколько функций, Azure предлагает, которые могут быть полезны в зависимости от ситуации.
 
 ## <a name="cloud-init-availability-on-azure-vm-quick-create-image-aliases"></a>Доступность cloud-init для псевдонимов быстрого создания образов виртуальных машин Azure:
 | Alias | Издатель | ПРЕДЛОЖЕНИЕ | SKU | Version (версия) | cloud-init |
@@ -87,18 +87,18 @@ az vm create \
 | RHEL |Redhat |RHEL |7,2 |последних |Нет |
 | UbuntuLTS |Canonical |UbuntuServer |14.04.4-LTS |последних |Да |
 
-Мы и наши партнеры работаем над тем, чтобы сценарии cloud-init были добавлены в образы, предоставляемые для Azure.
+Можно работать с наших партнеров tooget облака init включены и работу в том, что они предоставляют tooAzure образы hello.
 
-## <a name="add-a-cloud-init-script-to-the-vm-creation-with-the-azure-cli"></a>Добавление сценария cloud-init в создаваемую виртуальную машину с помощью Azure CLI
-Чтобы запустить сценарий cloud-init при создании виртуальной машины в Azure, укажите файл cloud-init с помощью параметра `--custom-data` интерфейса командной строки Azure.
+## <a name="add-a-cloud-init-script-toohello-vm-creation-with-hello-azure-cli"></a>Добавить создания облака init скрипта toohello ВМ с hello Azure CLI
+toolaunch сценарий init облака при создании виртуальной Машины в Azure, укажите файл init облака hello, с помощью hello Azure CLI `--custom-data` переключения.
 
-Создайте группу ресурсов для запуска виртуальных машин с помощью команды [az group create](/cli/azure/group#create). В следующем примере создается группа ресурсов с именем *myResourceGroup*:
+Создание toolaunch группы ресурсов в виртуальные машины с [Создание группы az](/cli/azure/group#create). Hello следующем примере создается с именем группы ресурсов hello *myResourceGroup*:
 
 ```azurecli
 az group create --name myResourceGroup --location eastus
 ```
 
-Выполните команду [az vm create](/cli/azure/vm#create) для создания виртуальной машины Linux, используя cloud-init для ее настройки в процессе загрузки.
+Создание виртуальной Машины с Linux [создания виртуальной машины az](/cli/azure/vm#create) tooconfigure init облака с помощью его во время загрузки.
 
 ```azurecli
 az vm create \
@@ -110,8 +110,8 @@ az vm create \
     --custom-data cloud-init.txt
 ```
 
-## <a name="create-a-cloud-init-script-to-set-the-hostname-of-a-linux-vm"></a>Создание сценария cloud-init для задания имени узла виртуальной машины Linux
-Один из самых простых, но наиболее важных параметров для любой виртуальной машины Linux — это имя узла. Его можно легко задать с помощью приведенного ниже сценария cloud-init.  
+## <a name="create-a-cloud-init-script-tooset-hello-hostname-of-a-linux-vm"></a>Создание облака init сценария tooset hello имени узла виртуальной машины Linux
+Одним из hello простейшим и наиболее важные параметры для виртуальной Машины с Linux будет hello имя узла. Его можно легко задать с помощью приведенного ниже сценария cloud-init.  
 
 ### <a name="example-cloud-init-script-named-cloudconfighostnametxt"></a>Пример сценария cloud-init с именем `cloud_config_hostname.txt`
 ```yaml
@@ -119,7 +119,7 @@ az vm create \
 hostname: myservername
 ```
 
-Во время первоначального запуска виртуальной машины этот скрипт cloud-init задает имя узла *myservername*. Выполните команду [az vm create](/cli/azure/vm#create) для создания виртуальной машины Linux, используя cloud-init для ее настройки в процессе загрузки.
+Во время запуска начальной hello hello виртуальной Машины, этот сценарий облака init задает hello hostname, слишком*myservername*. Создание виртуальной Машины с Linux [создания виртуальной машины az](/cli/azure/vm#create) tooconfigure init облака с помощью его во время загрузки.
 
 ```azurecli
 az vm create \
@@ -131,7 +131,7 @@ az vm create \
     --custom-data cloud-init.txt
 ```
 
-Выполните вход и проверьте имя узла новой виртуальной машины.
+Имя входа и проверьте имя узла hello hello новой виртуальной Машины.
 
 ```bash
 ssh myVM
@@ -140,15 +140,15 @@ myservername
 ```
 
 ## <a name="create-a-cloud-init-script"></a>Создание скрипта cloud-init
-В целях безопасности виртуальную машину Ubuntu следует обновить при первой загрузке. Это можно сделать с помощью приведенного ниже сценария (сценарий зависит от используемого дистрибутива Linux).
+В целях безопасности необходимо tooupdate вашей виртуальной Машине Ubuntu при первой загрузке hello. С помощью init облака можно сделать с hello выполните скрипт, в зависимости от hello дистрибутив Linux, которые вы используете.
 
-### <a name="example-cloud-init-script-cloudconfigaptupgradetxt-for-the-debian-family"></a>Пример сценария cloud-init `cloud_config_apt_upgrade.txt` для семейства Debian
+### <a name="example-cloud-init-script-cloudconfigaptupgradetxt-for-hello-debian-family"></a>Пример сценария в облаке init `cloud_config_apt_upgrade.txt` для hello Debian семейства
 ```yaml
 #cloud-config
 apt_upgrade: true
 ```
 
-После загрузки Linux все установленные пакеты обновляются с помощью команды **apt-get**. Выполните команду [az vm create](/cli/azure/vm#create) для создания виртуальной машины Linux, используя cloud-init для ее настройки в процессе загрузки.
+После загрузки операционной системы Linux, все пакеты установки hello обновляются через **apt get**. Создание виртуальной Машины с Linux [создания виртуальной машины az](/cli/azure/vm#create) tooconfigure init облака с помощью его во время загрузки.
 
 ```azurecli
 az vm create \
@@ -169,13 +169,13 @@ Reading package lists... Done
 Building dependency tree
 Reading state information... Done
 Calculating upgrade... Done
-The following packages have been kept back:
+hello following packages have been kept back:
   linux-generic linux-headers-generic linux-image-generic
-0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
+0 upgraded, 0 newly installed, 0 tooremove and 0 not upgraded.
 ```
 
-## <a name="create-a-cloud-init-script-to-add-a-user-to-linux"></a>Создание сценария cloud-init для добавления пользователя в Linux
-Одна из первых задач, которую необходимо выполнить на любой из новых виртуальных машин Linux, — добавить пользователя для себя, чтобы не использовать учетную запись *root*. Ключи SSH наиболее эффективны для обеспечения безопасности и удобства использования. Они добавляются в файл *~/.ssh/authorized_keys* с помощью этого скрипта cloud-init.
+## <a name="create-a-cloud-init-script-tooadd-a-user-toolinux"></a>Создание tooadd сценария облака init tooLinux пользователя
+Один из первых задач hello на все новые виртуальные Машины Linux — tooadd пользователя для себя, или с помощью tooavoid *корневой*. SSH ключи — это рекомендуется для безопасности и удобство использования и они добавляются toohello *~/.ssh/authorized_keys* файла с помощью этого сценария init облака.
 
 ### <a name="example-cloud-init-script-cloudconfigadduserstxt-for-debian-family"></a>Пример сценария cloud-init `cloud_config_add_users.txt` для семейства Debian
 ```yaml
@@ -189,7 +189,7 @@ users:
       - ssh-rsa AAAAB3<snip>==myAdminUser@myUbuntuVM
 ```
 
-После загрузки Linux все внесенные в список пользователи создаются и добавляются в группу sudo. Выполните команду [az vm create](/cli/azure/vm#create) для создания виртуальной машины Linux, используя cloud-init для ее настройки в процессе загрузки.
+После загрузки операционной системы Linux, все пользователи в списке hello являются группа создана и добавлена toohello sudo. Создание виртуальной Машины с Linux [создания виртуальной машины az](/cli/azure/vm#create) tooconfigure init облака с помощью его во время загрузки.
 
 ```azurecli
 az vm create \
@@ -201,7 +201,7 @@ az vm create \
     --custom-data cloud_config_add_users.txt
 ```
 
-Выполните вход и проверьте созданного пользователя.
+Имя входа и проверки hello только что созданный пользователь.
 
 ```bash
 ssh myVM
@@ -219,8 +219,8 @@ myCloudInitAddedAdminUser:x:1000:
 ```
 
 ## <a name="next-steps"></a>Дальнейшие действия
-Сценарии cloud-init становятся стандартным способом изменения виртуальной машины Linux при загрузке. Azure также поддерживает расширения виртуальных машин, которые позволяют изменить виртуальную машину Linux при загрузке или во время ее выполнения. Например, можно воспользоваться расширением VMAccessExtension, предоставляемым в Azure, для сброса данных SSH или сведений о пользователях во время выполнения виртуальной машины. При использовании cloud-init для сброса пароля требуется перезагрузка.
+Облако init становится один стандартный способ toomodify ВМ Linux во время загрузки. Azure также имеет расширения ВМ, позволяющих toomodify вашей LinuxVM во время загрузки или пока она запущена. Например можно использовать hello Azure VMAccessExtension tooreset SSH или сведения о пользователе во время выполнения hello виртуальной Машины. С инициализацией облака потребуется перезагрузка tooreset hello пароль.
 
 [Обзор расширений и компонентов виртуальной машины](extensions-features.md)
 
-[Управление пользователями, SSH и проверка или восстановление дисков в виртуальных машинах Azure с помощью расширения VMAccess](using-vmaccess-extension.md)
+[Управлять пользователями, SSH и проверку или восстановление дисков на виртуальных машинах Linux в Azure с помощью hello расширения VMAccess](using-vmaccess-extension.md)

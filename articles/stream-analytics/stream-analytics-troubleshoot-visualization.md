@@ -1,6 +1,6 @@
 ---
-title: "Визуализация заданий Stream Analytics и устранение неполадок при их выполнении | Документация Майкрософт"
-description: "Узнайте, как визуализировать конвейера заданий Stream Analytics для самостоятельного устранения неполадок с помощью схемы диагностики."
+title: "aaaVisualize и устранение неполадок заданий Stream Analytics | Документы Microsoft"
+description: "Узнайте, как конвейер toovisualize задания Stream Analytics для самообслуживания, устранение неполадок с помощью схемы функционал hello."
 keywords: 
 documentationcenter: 
 services: stream-analytics
@@ -15,32 +15,32 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 03/28/2017
 ms.author: jeffstok
-ms.openlocfilehash: 18c39a025f750cf5a17c535ab40923b7cafe413d
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 8a6715be601fdc47b8d9caf4112da161dad22618
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="visualize-and-troubleshoot-stream-analytics-jobs"></a>Визуализация заданий Stream Analytics и устранение неполадок при их выполнении
-В Stream Analytics, как и в других облачных технологиях, иногда требуется устранить неполадки, чтобы узнать, почему задание не выдает ожидаемый результат (или соответствующие выходные данные). С учетом этого Stream Analytics предоставляет возможность визуализировать задание потоковой передачи. Это также удобно для моделирования и является дополнительным преимуществом для тех, кому требуется документировать свою работу.
+В Stream Analytics как и в других облачных технологий, устранение неполадок иногда бывает необходимые toolook в. Почему задания не создает выходных данных ожидалось hello (или выходные данные по этой причине). С учетом этого Stream Analytics предоставляет возможность hello для визуализации потокового задания. Это удобно также, как средство моделирования и имеет hello побочным эффектом для тех, где требуется документации по своей работы.
 
-В области визуализации отображаются входные данные, а также выполняемый запрос и все настроенные выходные данные. Проблемы подключения или конфигурации могут стать более очевидными, а также может быть полезно просмотреть визуальное представление конфигурации.
+В визуализации hello входными значениями hello панели являются видимыми, а также при выполнении запроса hello и затем настроить все выходы hello. Проблемы с подключением или конфигурацией можно становятся более очевидными, и это может быть полезным toosee визуальное представление конфигурации.
 
-## <a name="using-the-diagnosis-diagram-tool"></a>Использование схемы диагностики
-Для доступа к этому визуализатору просто нажмите кнопку "Схема диагностики" в колонке "Параметры" для задания Stream Analytics.
+## <a name="using-hello-diagnosis-diagram-tool"></a>С помощью средства диаграммы диагностики hello
+Этот визуализатор, просто щелкните значок hello кнопка «Сводная схема диагностики» в tooaccess hello колонке «Параметры» hello задания Stream Analytics hello.
 
 ![stream-analytics-troubleshoot-visualization-diagnosis-diagram](./media/stream-analytics-troubleshoot-visualization/stream-analytics-troubleshoot-visualization-diagnosis-diagram1.png)
 
-Все входные и выходные данные маркируются цветом, чтобы указать текущее состояния этого компонента, как показано ниже.
+Каждый вход и выход — цветами tooindicate hello текущее состояние этого компонента, как показано ниже.
 
 ![stream-analytics-troubleshoot-visualization-input-map](./media/stream-analytics-troubleshoot-visualization/stream-analytics-troubleshoot-visualization-input-map.png)
 
-Если пользователь хочет просмотреть промежуточные этапы запроса, чтобы понять схемы потока данных внутри задания, инструмент визуализации может предоставить представление декомпозиции запроса на составляющие этапы и последовательность операций. Если щелкнуть какой-либо этап запроса, в области редактирования запроса отобразится соответствующий раздел, как показано ниже. 
+При hello пользователю toolook в промежуточный запрос действия toounderstand hello потока шаблоны данных внутри задания, средство визуализации hello обеспечивает представление hello распределение запросов hello в последовательности потока hello и составных шагов. Щелкнув каждого действия запроса будет показано hello соответствующий раздел, в запросе, редактирование области, как показано. 
 
 ![stream-analytics-troubleshoot-visualization-intermediate-steps](./media/stream-analytics-troubleshoot-visualization/stream-analytics-troubleshoot-visualization-intermediate-steps.png)
 
 ## <a name="next-steps"></a>Дальнейшие действия
-* [Введение в Azure Stream Analytics](stream-analytics-introduction.md)
+* [Введение tooAzure Stream Analytics](stream-analytics-introduction.md)
 * [Приступая к работе с Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md)
 * [Масштабирование заданий в службе Azure Stream Analytics](stream-analytics-scale-jobs.md)
 * [Справочник по языку запросов Azure Stream Analytics](https://msdn.microsoft.com/library/azure/dn834998.aspx)

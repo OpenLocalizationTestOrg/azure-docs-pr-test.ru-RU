@@ -1,5 +1,5 @@
 ---
-title: "Обзор групп доступности SQL Server и виртуальных машин Azure | Документация Майкрософт"
+title: "Общие сведения о группах доступности сервера - виртуальных машинах Azure - aaaSQL | Документы Microsoft"
 description: "В этой статье рассматриваются группы доступности SQL Server на виртуальных машинах Azure."
 services: virtual-machines
 documentationCenter: na
@@ -15,25 +15,25 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 01/13/2017
 ms.author: mikeray
-ms.openlocfilehash: 2cbb9ff3b2d13996b1b8dc64aa833807c264c877
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: ecac8b8c5073021af2aa22a05490bb8c4c20ed17
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="introducing-sql-server-always-on-availability-groups-on-azure-virtual-machines"></a>Введение в группы доступности AlwaysOn SQL Server на виртуальных машинах Azure #
 
 В этой статье рассматриваются группы доступности SQL Server на виртуальных машинах Azure. 
 
-Группы доступности AlwaysOn на виртуальных машинах Azure аналогичны группам доступности AlwaysOn в локальной среде. Дополнительные сведения см. в разделе [Группы доступности AlwaysOn (SQL Server)](http://msdn.microsoft.com/library/hh510230.aspx). 
+Группы доступности AlwaysOn на виртуальных машинах Azure, аналогичные tooAlways групп доступности на локальном компьютере. Дополнительные сведения см. в разделе [Группы доступности AlwaysOn (SQL Server)](http://msdn.microsoft.com/library/hh510230.aspx). 
 
-На схеме показаны компоненты полной группы доступности SQL Server на виртуальных машинах Azure.
+Hello диаграмме показаны компоненты hello завершения доступности группы серверов SQL Server в виртуальных машинах Azure.
 
 ![Группа доступности](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/00-EndstateSampleNoELB.png)
 
-Основное отличие группы доступности на виртуальных машинах Azure состоит в том, что для виртуальных машин Azure требуется [подсистема балансировки нагрузки](../../../load-balancer/load-balancer-overview.md). Подсистема балансировки нагрузки хранит IP-адреса для прослушивателя группы доступности. Если используется несколько групп доступности, то каждой из них требуется прослушиватель. Одна подсистема балансировки нагрузки может обслуживать несколько прослушивателей.
+Hello ключевое различие для группы доступности на виртуальных машинах Azure, hello виртуальных машинах Azure, требуют [подсистемы балансировки нагрузки](../../../load-balancer/load-balancer-overview.md). Подсистема балансировки нагрузки Hello содержит hello IP-адресов для прослушивателя группы доступности hello. Если используется несколько групп доступности, то каждой из них требуется прослушиватель. Одна подсистема балансировки нагрузки может обслуживать несколько прослушивателей.
 
-Когда все будет готово к созданию группы доступности SQL Server на виртуальных машинах Azure, обратитесь к этим руководствам.
+Когда вы будете готовы toobuild aroup доступности SQL Server на виртуальных машинах Azure, см. в toothese учебники.
 
 ## <a name="automatically-create-an-availability-group-from-a-template"></a>Автоматическое создание группы доступности из шаблона
 
@@ -41,11 +41,11 @@ ms.lasthandoff: 07/11/2017
 
 ## <a name="manually-create-an-availability-group-in-azure-portal"></a>Создание группы доступности на портале Azure вручную
 
-Имеется возможность создать виртуальные машины самостоятельно, без шаблона. Сначала выполните необходимые условия, после чего создайте группу доступности. Ознакомьтесь со следующими разделами. 
+Можно также создать виртуальные машины hello самостоятельно без шаблона hello. Во-первых выполните hello предварительные требования, а затем создайте группу доступности hello. В разделе hello следующие вопросы: 
 
 - [Настройка необходимых компонентов для создания групп доступности AlwaysOn в виртуальных машинах Azure](virtual-machines-windows-portal-sql-availability-group-prereq.md)
 
-- [Создание группы доступности AlwaysOn для улучшения доступности и аварийного восстановления](virtual-machines-windows-portal-sql-availability-group-tutorial.md)
+- [Создание группы доступности AlwaysOn tooimprove доступности и аварийного восстановления](virtual-machines-windows-portal-sql-availability-group-tutorial.md)
 
 ## <a name="next-steps"></a>Дальнейшие действия
 

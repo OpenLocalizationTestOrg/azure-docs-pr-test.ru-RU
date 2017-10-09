@@ -1,6 +1,6 @@
 ---
-title: "Развертывание веб-приложения, связанного с репозиторием GitHub | Документация Майкрософт"
-description: "Используйте шаблон диспетчера ресурсов Azure для развертывания веб-приложения, содержащего проект из репозитория GitHub."
+title: "aaaDeploy веб-приложения, связанные репозитории GitHub tooa | Документы Microsoft"
+description: "Используйте toodeploy шаблона диспетчера ресурсов Azure веб-приложения, которое содержит проект из репозитория GitHub."
 services: app-service
 documentationcenter: 
 author: cephalin
@@ -14,33 +14,33 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/27/2016
 ms.author: cephalin
-ms.openlocfilehash: 77064802814296d0c21f004534e4264d2f97252e
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 8b23416c4c06a60991517e6ee4cd82bebc5a9d73
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="deploy-a-web-app-linked-to-a-github-repository"></a>Развертывание веб-приложения, связанного с репозиторием GitHub
-В этом разделе рассказывается, как создать шаблон диспетчера ресурсов Azure, выполняющий развертывание веб-приложения, которое связано с проектом в репозитории GitHub. Вы узнаете, как определить развертываемые ресурсы и параметры, указываемые при развертывании. Этот шаблон можно использовать для собственных развертываний или настроить его в соответствии с вашими требованиями.
+# <a name="deploy-a-web-app-linked-tooa-github-repository"></a>Развертывание репозиторий GitHub tooa связанного приложения web
+В этом разделе вы узнаете, как toocreate шаблона Azure Resource Manager, которая развертывает веб-приложения, связанный проект tooa в репозитории GitHub. Вы узнаете, как toodefine какие ресурсы развертываются с указанием как toodefine параметры, которые при выполнении развертывания hello. Этот шаблон используется для собственных развертывания или настройте его toomeet вашим требованиям.
 
 Дополнительные сведения о создании шаблонов см. в статье [Создание шаблонов Azure Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md).
 
-Полная версия шаблона приведена в файле [Веб-приложение, связанное с шаблоном GitHub](https://github.com/Azure/azure-quickstart-templates/blob/master/201-web-app-github-deploy/azuredeploy.json).
+Полный шаблон hello, см. [Web App связанного шаблона tooGitHub](https://github.com/Azure/azure-quickstart-templates/blob/master/201-web-app-github-deploy/azuredeploy.json).
 
 [!INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
 
 ## <a name="what-you-will-deploy"></a>Что именно развертывается
-С помощью этого шаблона можно развернуть веб-приложение, содержащее код проекта из GitHub.
+С помощью этого шаблона нужно развернуть веб-приложение, содержащее код hello из проекта в GitHub.
 
-Чтобы выполнить развертывание автоматически, нажмите следующую кнопку.
+toorun hello развертывания автоматически, нажмите кнопку hello следующие кнопки:
 
-[![Развертывание в Azure](./media/app-service-web-arm-from-github-provision/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-web-app-github-deploy%2Fazuredeploy.json)
+[![Развертывание tooAzure](./media/app-service-web-arm-from-github-provision/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-web-app-github-deploy%2Fazuredeploy.json)
 
 ## <a name="parameters"></a>Параметры
 [!INCLUDE [app-service-web-deploy-web-parameters](../../includes/app-service-web-deploy-web-parameters.md)]
 
 ### <a name="repourl"></a>repoURL
-URL-адрес репозитория GitHub, в котором расположен развертываемый проект. Этот параметр содержит значение по умолчанию, которое лишь показывает, как указывать URL-адрес для репозитория. Это значение можно использовать при проверке шаблона, но при работе с ним вам нужно будет указать URL-адрес своего репозитория.
+URL-адрес Hello репозитории GitHub, содержащий toodeploy проекта hello. Этот параметр содержит значение по умолчанию, но это значение является только предполагаемым tooshow вы как tooprovide hello URL-адреса для репозитория. Это значение можно использовать при тестировании hello шаблона, но будете tooprovide hello URL-адрес собственный репозиторий при работе с шаблоном hello.
 
     "repoURL": {
         "type": "string",
@@ -48,23 +48,23 @@ URL-адрес репозитория GitHub, в котором располож
     }
 
 ### <a name="branch"></a>ветвь
-Ветвь репозитория для развертывания приложения. По умолчанию указана основная ветвь, но можно указать любую другую ветвь репозитория, из которой вы хотите развернуть приложение.
+ветвь Hello hello toouse репозитория при развертывании приложения hello. значение по умолчанию Hello master, но можно указать имя hello все ветви в репозитории hello обратиться в toodeploy.
 
     "branch": {
         "type": "string",
         "defaultValue": "master"
     }
 
-## <a name="resources-to-deploy"></a>Развертываемые ресурсы
+## <a name="resources-toodeploy"></a>Toodeploy ресурсы
 [!INCLUDE [app-service-web-deploy-web-host](../../includes/app-service-web-deploy-web-host.md)]
 
 ### <a name="web-app"></a>Веб-приложение
-Создает веб-приложение, связанное с проектом в GitHub. 
+Создает веб-приложение hello связанного toohello проекта в GitHub. 
 
-Имя веб-приложения задается с помощью параметра **siteName**, а его расположение — с помощью параметра **siteLocation**. В элементе **dependsOn** шаблон определяет зависимость веб-приложения от плана размещения служб. Поскольку веб-приложение зависит от плана размещения, оно не создается до тех пор, пока не завершено создание плана. Элемент **dependsOn** используется только для определения последовательности развертывания. Если веб-приложение не пометить как зависимое от плана размещения, диспетчер ресурсов Azure попытается создать оба ресурса одновременно, в результате чего может появиться сообщение об ошибке (в случае если веб-приложение будет создано до плана размещения).
+Укажите имя веб-приложения hello через hello hello **siteName** параметр и расположение hello hello веб-приложения через hello **siteLocation** параметра. В hello **dependsOn** элемент hello шаблон определяет веб-приложения hello как зависит от службы hello плана размещения. Так как он зависит от плана размещения hello, веб-приложения hello не создается, пока план размещения hello завершено. Hello **dependsOn** элементом является только используемые toospecify порядок развертывания. Если пользователь не помечает hello веб-приложения как зависимость от плана размещения hello, диспетчер ресурсов Azure попытается toocreate оба ресурса в hello одинаковое время и может возникнуть ошибка hello веб-приложения, созданный до hello плана размещения.
 
-У веб-приложения также есть дочерний ресурс, определенный в разделе **resources** ниже. Дочерний ресурс задает систему управления версиями для проекта, развертываемого с помощью веб-приложения. В этом шаблоне система управления версиями связана с определенным репозиторием GitHub. Репозиторий GitHub задается с помощью кода **"RepoUrl":"https://github.com/davidebbo-test/Mvc52Application.git"**. URL-адрес репозитория можно жестко задать, если необходимо создать шаблон, развертывающий один проект с минимальным набором параметров.
-Вместо этого также можно добавить параметр URL-адреса репозитория и использовать его значение для свойства **RepoUrl**.
+веб-приложения Hello также имеет дочерний ресурс, который определен в **ресурсов** разделе ниже. Этот дочерний ресурс определяет системы управления версиями для проекта hello, развернутых с помощью веб-приложения hello. В этом шаблоне hello системы управления версиями — связанного tooa конкретный репозиторий GitHub. репозитории GitHub Hello определяется кодом hello **«RepoUrl»: «https://github.com/davidebbo-test/Mvc52Application.git»** может URL-адрес репозитория hello жестко при необходимости toocreate шаблон, который развертывает несколько раз один проект, при этом не hello минимальное количество параметров.
+Вместо жестко запрограммированного Здравствуйте URL-адрес репозитория, можно добавить параметр для URL-адрес репозитория hello и использовать это значение для hello **RepoUrl** свойство.
 
     {
       "apiVersion": "2015-08-01",
@@ -94,7 +94,7 @@ URL-адрес репозитория GitHub, в котором располож
       ]
     }
 
-## <a name="commands-to-run-deployment"></a>Команды для выполнения развертывания
+## <a name="commands-toorun-deployment"></a>Команды toorun развертывания
 [!INCLUDE [app-service-deploy-commands](../../includes/app-service-deploy-commands.md)]
 
 ### <a name="powershell"></a>PowerShell
@@ -109,7 +109,7 @@ URL-адрес репозитория GitHub, в котором располож
     az group deployment create -g {resource-group-name} --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-web-app-github-deploy/azuredeploy.json --parameters '@azuredeploy.parameters.json'
 
 > [!NOTE] 
-> Содержимое JSON-файла параметров см. в [azuredeploy.parameters.json](https://github.com/Azure/azure-quickstart-templates/blob/master/201-web-app-github-deploy/azuredeploy.parameters.json).
+> Содержимое JSON-файл параметров hello, см. [azuredeploy.parameters.json](https://github.com/Azure/azure-quickstart-templates/blob/master/201-web-app-github-deploy/azuredeploy.parameters.json).
 >
 >
 

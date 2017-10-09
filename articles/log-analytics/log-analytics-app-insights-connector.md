@@ -1,6 +1,6 @@
 ---
-title: "Просмотр данных приложений Azure Application Insights | Документация Майкрософт"
-description: "Решение \"Соединитель Application Insights\" можно использовать для диагностики проблем с производительностью и для того, чтобы узнать, какие действия пользователи выполняют в вашем приложении, которое отслеживается с помощью Application Insights."
+title: "данные приложения Azure Application Insights aaaView | Документы Microsoft"
+description: "Можно использовать проблем с производительностью toodiagnose решения hello соединитель аналитики приложений и понять, какие пользователи должны иметь вместе с приложением при мониторинге с помощью Application Insights."
 services: log-analytics
 documentationcenter: 
 author: bandersmsft
@@ -14,133 +14,133 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: banders
-ms.openlocfilehash: fe6c003e095b25cf3ec3430fc68dcd399150b3ed
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 38109337ebbc8970dccb65365ba8284d9cee19a1
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="application-insights-connector-solution-preview-in-operations-management-suite-oms"></a>Решение "Соединитель Application Insights" (предварительная версия) в Operations Management Suite (OMS)
 
 ![Символ Application Insights](./media/log-analytics-app-insights-connector/app-insights-connector-symbol.png)
 
-С помощью решения "Соединитель Application Insights" можно диагностировать проблемы с производительностью, а также узнать, какие действия пользователи выполняют в вашем приложении, которое отслеживается с помощью [Application Insights](../application-insights/app-insights-overview.md). В OMS доступны представления данных телеметрии приложения, которые отображаются для разработчиков в Application Insights. Тем не менее при интеграции приложений Application Insights с OMS видимость приложений увеличивается, так как данные операций и приложения находятся в одном месте. Наличие тех же представлений, что и у разработчиков, поможет вам сотрудничать с ними. Благодаря общим представлениям вы сможете быстрее обнаруживать проблемы с платформой и приложением, а также решать их.
+Hello решения соединитель аналитики приложений служит для диагностики проблем с производительностью и понять, какие пользователи иметь приложения при его отслеживается с [Application Insights](../application-insights/app-insights-overview.md). Представления из hello же телеметрии приложения, разработчики в Application Insights, доступны в OMS. Тем не менее при интеграции приложений Application Insights с OMS видимость приложений увеличивается, так как данные операций и приложения находятся в одном месте. Того же hello представлений помогает toocollaborate с разработчиками вашего приложения. Общие представления Hello может помочь сократить время toodetect hello и разрешения приложения и проблем с платформой.
 
-Используя решение, вы можете:
+При использовании решения hello, вы можете:
 
 - просматривать все приложения Application Insights в одном месте, даже если они находятся в разных подписках Azure;
 - сопоставлять данные инфраструктуры с данными приложений;
 - визуализировать данные приложения с перспективами в поиске по журналам;
-- сводить данные из Log Analytics в приложение Application Insights в OMS и на порталах Azure.
+- Сведения из приложения Application Insights tooyour данных аналитики журналов в hello OMS и порталов Azure
 
 ## <a name="connected-sources"></a>Подключенные источники
 
-В отличие от большинства других решений Log Analytics, данные для соединителя Application Insights не собираются агентами. Все данные, используемые решением, поступают непосредственно из Azure.
+В отличие от большинства других решений анализа журналов данные не собираются для hello соединитель аналитики приложений агентами. Все данные, используемые решением hello получаются непосредственно из Azure.
 
 | Подключенный источник | Поддерживаются | Описание |
 | --- | --- | --- |
-| [Агенты Windows](log-analytics-windows-agents.md) | Нет | Решение не собирает сведения из агентов Windows. |
-| [Агенты Linux](log-analytics-linux-agents.md) | Нет | Решение не собирает сведения из агентов Linux. |
-| [Группы управления SCOM](log-analytics-om-agents.md) | Нет | Решение не собирает сведения из агентов в подключенной группе управления SCOM. |
-| [Учетная запись хранения Azure](log-analytics-azure-storage.md) | Нет | Решение не собирает сведения из службы хранилища Azure. |
+| [Агенты Windows](log-analytics-windows-agents.md) | Нет | решение Hello не собирать данные из агентов Windows. |
+| [Агенты Linux](log-analytics-linux-agents.md) | Нет | решение Hello не собирать данные из агентов Linux. |
+| [Группы управления SCOM](log-analytics-om-agents.md) | Нет | решение Hello не собирать данные из агентов в подключенной группе управления SCOM. |
+| [Учетная запись хранения Azure](log-analytics-azure-storage.md) | Нет | решение Hello не не сбора сведений из хранилища Azure. |
 
 ## <a name="prerequisites"></a>Предварительные требования
 
-- Для доступа к сведениям о соединителе Application Insights необходима подписка Azure.
+- tooaccess сведения соединитель аналитики приложений, необходимо иметь подписку Azure
 - Необходимо иметь хотя бы один настроенный ресурс Application Insights.
-- Необходимо быть владельцем или участником ресурса Application Insights.
+- Должен быть hello владельца или участника hello ресурс Application Insights.
 
 ## <a name="configuration"></a>Конфигурация
 
-1. Включите решение "Аналитика веб-приложений Azure" из [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.ApplicationInsights?tab=Overview) или выполните инструкции по [добавлению решений Log Analytics из коллекции решений](log-analytics-add-solutions.md).
-2. На портале OMS щелкните **Параметры** &gt; **Данные** &gt; **Application Insights**.
+1. Включить решение Azure Web Analytics приложения hello из hello [Azure marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.ApplicationInsights?tab=Overview) или с помощью hello процесс, описанный в [решений добавьте анализа журналов из коллекции решений hello](log-analytics-add-solutions.md).
+2. На портале OMS hello щелкните **параметры** &gt; **данные** &gt; **Application Insights**.
 3. В разделе **Выбор подписки** выберите подписку с ресурсами Application Insights, а затем в разделе **Имя приложения** выберите одно или несколько приложений.
 4. Щелкните **Сохранить**.
 
-Приблизительно через 30 минут данные станут доступными, а на плитке Application Insights появятся данные, как показано на следующем изображении:
+Около 30 минут данные становятся доступны и Application Insights плитки приветствия обновляется с данными, как hello после изображения:
 
 ![Плитка Application Insights](./media/log-analytics-app-insights-connector/app-insights-tile.png)
 
-Моменты, которые следует учитывать:
+Другие точки tookeep помнить:
 
-- Приложения Application Insights можно связать только с одной рабочей областью OMS.
-- С OMS Log Analytics можно связать [ресурсы Application Insights только уровня "Стандартный" или "Премиум"](https://azure.microsoft.com/pricing/details/application-insights). Тем не менее можно использовать уровень "Бесплатный" Log Analytics.
+- Можно связать только рабочая область OMS tooone приложений Application Insights.
+- Можно связать только [ресурсы Standard или Premium Application Insights](https://azure.microsoft.com/pricing/details/application-insights) tooOMS анализа журналов. Тем не менее можно использовать уровень Free hello аналитики журналов.
 
 ## <a name="management-packs"></a>Пакеты управления
 
 В этом решении не предусматривается установка пакетов управления в подключенных группах управления.
 
-## <a name="use-the-solution"></a>Использование решения
+## <a name="use-hello-solution"></a>Используйте решение hello
 
-В следующих разделах описываются способы использования колонок, отображаемых на панели мониторинга Application Insights, для просмотра данных из приложений и работы с ними.
+Hello следующих разделах описано, как можно использовать hello колонки, отображается в панели мониторинга tooview hello Application Insights и взаимодействовать с данными от приложений.
 
 ### <a name="view-application-insights-connector-information"></a>Просмотр сведений о соединителе Application Insights
 
-Щелкните плитку **Application Insights**, чтобы открыть панель мониторинга **Application Insights** для просмотра следующих колонок.
+Щелкните hello **Application Insights** плитки приветствия tooopen **Application Insights** следующие колонках hello toosee панели мониторинга.
 
 ![Панель мониторинга Application Insights](./media/log-analytics-app-insights-connector/app-insights-dash01.png)
 
 ![Панель мониторинга Application Insights](./media/log-analytics-app-insights-connector/app-insights-dash02.png)
 
-Панель мониторинга содержит колонки, приведенные в таблице. В каждой колонке содержится максимум 10 элементов, соответствующих таким указанным критериям, как область действия и диапазон времени. Вы можете выполнить поиск по журналам, в результате которого возвращаются все записи, если щелкнуть заголовок колонки или **Показать все** в ее нижней части.
+панель мониторинга Hello включает колонках hello, приведенных в таблице hello. Каждой колонки перечислены вверх too10 сузьте указан, в колонке критерий hello области и временной диапазон. Можно выполнить поиск журнала, который возвращает все записи при нажатии кнопки **все** внизу hello колонка hello, или если щелкнуть заголовок колонки hello.
 
 [!include[log-analytics-log-search-nextgeneration](../../includes/log-analytics-log-search-nextgeneration.md)]
 
 | **Столбец** | **Описание** |
 | --- | --- |
-| Applications — Number of applications | Указывает число приложений в ресурсах приложения. Кроме того, приводятся имена приложений и количество записей приложений в каждом из них. Щелкните количество, чтобы выполнить поиск по журналам: <code>Type=ApplicationInsights &#124; measure sum(SampledCount) by ApplicationName</code>. <br><br>  Щелкните имя приложения, чтобы выполнить поиск по журналам для приложения, в котором показаны записи приложения для каждого узла, записи по типам телеметрии и все данные по типам (в зависимости от последнего дня). |
-| Data Volume — Hosts sending data | Показывает число узлов компьютера, которые отправляют данные. Здесь также приводятся узлы компьютера и количество записей для каждого узла. Щелкните количество, чтобы выполнить поиск по журналам: <code>Type=ApplicationInsights &#124; measure sum(SampledCount) by Host</code>. <br><br> Щелкните имя компьютера, чтобы выполнить поиск по журналам для узла, в котором показаны записи приложения для каждого узла, записи по типам телеметрии и все данные по типам (в зависимости от последнего дня). |
-| Availability — Webtest results | Показывает кольцевую диаграмму с результатами веб-тестов, в которой указано, положительные они или отрицательные. Щелкните диаграмму, чтобы выполнить поиск по журналам: <code>Type=ApplicationInsights TelemetryType=Availability &#124; measure sum(SampledCount) by AvailabilityResult</code>. <br><br> Результаты показывают количество пройденных и непройденных тестов. Показывает все веб-приложения с трафиком за последнюю минуту. Щелкните имя приложения, чтобы просмотреть поиск по журналам с подробными сведениями о непройденных веб-тестах. |
-| Server Requests — Requests per hour | Показывает график запросов сервера в час для различных приложений. Наведите указатель мыши на линию на диаграмме, чтобы просмотреть 3 приложения, получающие наибольшее количество запросов на определенный момент времени. Кроме того, отображает список приложений, получающих запросы, и число запросов за выбранный период. <br><br>Щелкните диаграмму, чтобы выполнить поиск по журналам для <code>Type=ApplicationInsights TelemetryType=Request &#124; measure sum(SampledCount) by ApplicationName interval 1hour</code>, после чего отобразится график с подробными сведениями о количестве запросов сервера в час для различных приложений. <br><br> Щелкните приложение в списке, чтобы выполнить поиск по журналам для <code>Type=ApplicationInsights  ApplicationName=yourapplicationname  TelemetryType=Request</code>, после чего отобразится список запросов, диаграммы для запросов за период времени и длительность запросов, а также список кодов ответов на запросы.   |
-| Failures — Failed requests per hour | Показывает график со сведениями о количестве невыполненных запросов приложения в час. Наведите указатель мыши на диаграмму, чтобы просмотреть 3 приложения с наибольшим количеством невыполненных запросов на определенный момент времени. Кроме того, отображает список приложений и сведения о количестве невыполненных запросов для каждого из них. Щелкните диаграмму, чтобы выполнить поиск по журналам для <code>Type=ApplicationInsights TelemetryType=Request  RequestSuccess = false &#124; measure sum(SampledCount) by ApplicationName interval 1hour</code>, после чего отобразится график с подробными сведениями о невыполненных запросах приложения. <br><br>Щелкните элемент в списке, чтобы выполнить поиск по журналам для <code>Type=ApplicationInsights ApplicationName=yourapplicationname TelemetryType=Request  RequestSuccess=false</code>, после чего отобразятся невыполненные запросы, диаграммы с невыполненными запросами за период времени и длительность запросов, а также список кодов ответов на невыполненные запросы. |
-| Exceptions — Exceptions per hour | Показывает график со сведениями о количестве исключений в час. Наведите указатель мыши на диаграмму, чтобы просмотреть 3 приложения с наибольшим количеством исключений на определенный момент времени. Кроме того, отображает список приложений и сведения о количестве исключений для каждого из них. Щелкните диаграмму, чтобы выполнить поиск по журналам для <code>Type=ApplicationInsights TelemetryType=Exception &#124; measure sum(SampledCount) by ApplicationName interval 1hour</code>, после чего отобразится график с подробными сведениями об исключениях. <br><br>Щелкните элемент в списке, чтобы выполнить поиск по журналам для <code>Type=ApplicationInsights  ApplicationName=yourapplicationname TelemetryType=Exception</code>, после чего отобразится список исключений, диаграммы с исключениями на определенный момент времени и невыполненные запросы, а также список типов исключений.  |
+| Applications — Number of applications | Показывает номер hello приложений в ресурсы приложения. Также приложение списки имен и для каждой из них, hello количество записей приложения. Щелкните номер toorun hello поиск журнала<code>Type=ApplicationInsights &#124; measure sum(SampledCount) by ApplicationName</code> <br><br>  Щелкните toorun имя приложения поиска журналов приложения hello, записей приложения на узле, записей по типу данных телеметрии и все данные по типу (на основе hello последний день). |
+| Data Volume — Hosts sending data | Показывает номер hello узлов компьютера, которые отправляют данные. Здесь также приводятся узлы компьютера и количество записей для каждого узла. Щелкните номер toorun hello поиск журнала<code>Type=ApplicationInsights &#124; measure sum(SampledCount) by Host</code> <br><br> Щелкните имя компьютера toorun поиска журналов для узла hello показаны записи приложения для каждого узла, записей по типу данных телеметрии и все данные по типу (на основе hello последний день). |
+| Availability — Webtest results | Показывает кольцевую диаграмму с результатами веб-тестов, в которой указано, положительные они или отрицательные. Щелкните диаграмму toorun hello поиска журналов для<code>Type=ApplicationInsights TelemetryType=Availability &#124; measure sum(SampledCount) by AvailabilityResult</code> <br><br> Результаты показывают hello количество этапов и сбоев для всех тестов. Отображаются все веб-приложений с трафиком hello последнюю минуту. Щелкните имя приложения tooview поиска журналов, подробными сведениями о неудачных веб-тестов. |
+| Server Requests — Requests per hour | Просмотреть диаграмму строку hello server запросов в час для различных приложений. Наведите курсор на строку hello диаграммы toosee hello первые 3 приложений получения запросов для точки времени. Также отображается список приложения hello, получающие запросы и hello число запросов для hello выбранного периода. <br><br>Нажмите кнопку hello graph toorun поиска журналов для <code>Type=ApplicationInsights TelemetryType=Request &#124; measure sum(SampledCount) by ApplicationName interval 1hour</code> , можно просмотреть диаграмму подробных строку hello server запросов в час для различных приложений. <br><br> Выберите приложение из списка toorun hello поиска журналов для <code>Type=ApplicationInsights  ApplicationName=yourapplicationname  TelemetryType=Request</code> коды ответа, отображается список запросов, диаграммы для запросов на протяжении времени и запрос и список запроса.   |
+| Failures — Failed requests per hour | Показывает график со сведениями о количестве невыполненных запросов приложения в час. Наведите указатель мыши hello диаграммы toosee hello top 3 приложений с помощью невыполненных запросов для точки времени. Также отображает список приложений с использованием hello число невыполненных запросов для каждого. Щелкните диаграмму toorun hello поиска журналов для <code>Type=ApplicationInsights TelemetryType=Request  RequestSuccess = false &#124; measure sum(SampledCount) by ApplicationName interval 1hour</code> , отображающий подробные график запросов отказавшего приложения. <br><br>Щелкните элемент в списке toorun hello поиска журналов для <code>Type=ApplicationInsights ApplicationName=yourapplicationname TelemetryType=Request  RequestSuccess=false</code> , показывает количество неудачных запросов, диаграммы для неудачных запросов через длительность времени и запрос и список кодов ответа невыполненных запросов. |
+| Exceptions — Exceptions per hour | Показывает график со сведениями о количестве исключений в час. Наведите указатель мыши hello диаграммы toosee hello основных 3 приложений с исключениями для точки времени. Также отображает список приложений с hello число исключений для каждого. Щелкните диаграмму toorun hello поиска журналов для <code>Type=ApplicationInsights TelemetryType=Exception &#124; measure sum(SampledCount) by ApplicationName interval 1hour</code> , можно просмотреть диаграмму связи подробных исключений. <br><br>Щелкните элемент в списке toorun hello поиска журналов для <code>Type=ApplicationInsights  ApplicationName=yourapplicationname TelemetryType=Exception</code> , отображается список исключений, диаграммы для исключения по времени и неудачные запросы и список типов исключений.  |
 
-### <a name="view-the-application-insights-perspective-with-log-search"></a>Просмотр перспективы Application Insights с поиском по журналам
+### <a name="view-hello-application-insights-perspective-with-log-search"></a>Просмотреть перспективы hello Application Insights с поиска журналов
 
-Если щелкнуть какой-либо элемент на панели мониторинга, отобразится перспектива Application Insights, показанная в результатах поиска. Перспектива предоставляет более подробную визуализацию в зависимости от выбранного типа телеметрии. Таким образом содержимое визуализации изменяется для различных типов телеметрии.
+Если щелкнуть любой элемент в панель мониторинга hello, вы видите точки зрения Application Insights, показанные в поиске. Перспектива Hello предоставляет расширенные визуализации, в зависимости от выбранного типа телеметрии hello. Таким образом содержимое визуализации изменяется для различных типов телеметрии.
 
-Если щелкнуть в любом месте в колонке приложений, отобразится перспектива **Приложения** по умолчанию.
+Если щелкнуть в любом месте в колонке приложения hello, отображается по умолчанию hello **приложений** перспективы.
 
 ![Перспектива "Приложения" Application Insights](./media/log-analytics-app-insights-connector/applications-blade-drill-search.png)
 
-В перспективе приведен обзор выбранного приложения.
+перспективы Hello приведен обзор приложение hello, выбранное.
 
-В колонке **Доступность** приведено представление другой перспективы, в котором можно просмотреть результаты веб-тестов и связанные невыполненные запросы.
+Hello **доступности** колонке показано представление другую перспективу, где можно просмотреть результаты веб-теста и связанные невыполненных запросов.
 
 ![Перспектива "Доступность" Application Insights](./media/log-analytics-app-insights-connector/availability-blade-drill-search.png)
 
-Если щелкнуть в любом месте в колонках **Server Requests** (Запросы сервера) или **Сбои**, компоненты перспективы изменятся, предоставляя данные визуализации, связанные с запросами.
+Если щелкнуть в любом месте в hello **запросов к серверу** или **сбоев** колонки, изменяются компоненты toogive перспективы hello вы визуализации, связанные с toorequests.
 
 ![Колонка "Сбои" Application Insights](./media/log-analytics-app-insights-connector/server-requests-failures-drill-search.png)
 
-Если щелкнуть в любом месте в колонке **Исключения**, отобразятся данные визуализации, соответствующие исключениям.
+Если щелкнуть в любом месте в hello **исключения** колонки, отображается визуализации, которые соответствуют tooexceptions.
 
 ![Колонка "Исключения" Application Insights](./media/log-analytics-app-insights-connector/exceptions-blade-drill-search.png)
 
-Вне зависимости от того, что вы щелкнете на панели мониторинга **соединителя Application Insights** на странице **Поиск**, в любом запросе, возвращающем данные Application Insights, будет отображаться перспектива Application Insights. Например, если вы просматриваете данные Application Insights, в запросе **&#42;** также будет отображаться вкладка перспективы, как показано на следующем изображении:
+Независимо от выбранного параметра — что-то одно hello **соединитель аналитики приложений** панели мониторинга в среде hello **поиска** страницы, любой запрос, возвращающий данные Application Insights показывают hello Перспектива аналитики приложений. Например, если вы просматриваете данные Application Insights **&#42;** запроса также показана вкладка перспективы hello как hello после изображения:
 
 ![Application Insights ](./media/log-analytics-app-insights-connector/app-insights-search.png)
 
-Компоненты перспективы обновляются в зависимости от поискового запроса. Это означает, что результаты можно отфильтровать с помощью любого поля поиска, в результате чего вы сможете просматривать данные из:
+Перспективы компоненты будут обновлены в зависимости от hello поискового запроса. Это означает, что можно фильтровать результаты hello с помощью поля поиска, дает hello toosee возможность hello данные из:
 
 - всех ваших приложений;
 - одного выбранного приложения;
 - группы приложений.
 
-### <a name="pivot-to-an-app-in-the-azure-portal"></a>Сведение в приложение на портале Azure
+### <a name="pivot-tooan-app-in-hello-azure-portal"></a>Приложение tooan со сводными данными в hello портал Azure
 
-Колонки соединителя Application Insights предназначены для сведения данных в выбранное приложение Application Insights *при использовании портала OMS*. Решение можно использовать как высокоуровневую платформу мониторинга, которая позволяет устранять неполадки в приложении. При появлении потенциальной проблемы в одном из подключенных приложений вы можете получить о ней дополнительные сведения в поиске OMS или свести их непосредственно в приложение Application Insights.
+Колонки соединитель аналитики приложений являются спроектированный tooenable toopivot toohello выбранные приложения Application Insights *при использовании портала OMS hello*. Можно использовать решение hello как высокоуровневые мониторинга платформу, которая позволяет устранять неполадки в приложении. При появлении возможную проблему в одном из подключенных приложений, вы можете либо Исследуйте в поиске OMS или toohello приложения Application Insights позволяет прикрепить напрямую.
 
-Чтобы свести данные, нажмите символ с многоточием (**…**), который отображается в конце каждой строки, а затем выберите **Open in Application Insights** (Открыть в Application Insights).
+toopivot, нажмите кнопку с многоточием hello (**...** ), в конце каждой строки в hello и выберите пункт **открыт в Application Insights**.
 
 >[!NOTE]
->Параметр **Open in Application Insights** (Открыть в Application Insights) недоступен на портале Azure.
+>**Открыть в Application Insights** недоступно в hello портал Azure.
 
 ![Открыть в Application Insights](./media/log-analytics-app-insights-connector/open-in-app-insights.png)
 
 ### <a name="sample-corrected-data"></a>Данные исправления выборки
 
-В Application Insights предоставлена функция *[исправления выборки](../application-insights/app-insights-sampling.md)*, с помощью которой можно уменьшить трафик данных телеметрии. При включении выборки в приложении Application Insights уменьшается количество записей, хранимых в Application Insights и в службе OMS. В то время как на странице **соединителя Application Insights** и в перспективах данные остаются согласованными, для пользовательских запросов данные выборки необходимо исправлять вручную.
+Предоставляет Application Insights  *[выборки исправления](../application-insights/app-insights-sampling.md)*  toohelp уменьшить трафик телеметрии. При включении выборки в приложении Application Insights уменьшается количество записей, хранимых в Application Insights и в службе OMS. Во время проверки согласованности данных сохраняется в hello **соединитель аналитики приложений** страницы и перспектив, необходимо вручную исправить данные выборки для пользовательских запросов.
 
 Ниже приведен пример исправления выборки в запросе поиска по журналам:
 
@@ -148,25 +148,25 @@ ms.lasthandoff: 08/03/2017
 Type=ApplicationInsights | measure sum(SampledCount) by TelemetryType
 ```
 
-Поле **Sampled Count** (Количество данных выборки) есть во всех записях и обозначает количество точек данных, представленных в записи. Если включить функцию выборки для вашего приложения Application Insights, значение поля **Sampled Count** (Количество данных выборки) будет больше 1. Чтобы подсчитать число записей, создаваемых приложением, суммируйте значения полей **Sampled Count** (Количество данных выборки).
+Hello **выборки счетчика** во всех записях присутствует поле и отображает hello число точек данных, которые представляет запись hello. Если включить функцию выборки для вашего приложения Application Insights, значение поля **Sampled Count** (Количество данных выборки) будет больше 1. Фактическое число записей, которые приложение создает, сумма hello hello toocount **выборки счетчика** поля.
 
-Выборка влияет только на общее число записей, создаваемых приложением. Значение выборки не нужно исправлять для таких полей метрик, как **RequestDuration** или **AvailabilityDuration**, так как в этих полях отображается среднее значение представленных записей.
+Выборка затрагивает только hello общее количество записей, которые приложение создает. Не требуется toocorrect выборки для метрики полей, таких как **RequestDuration** или **AvailabilityDuration** из-за этих полях отображаются hello среднее значение для представленного записи.
 
 ## <a name="input-data"></a>Входные данные
 
-Решение принимает следующие типы данных телеметрии из подключенных приложений Application Insights:
+решение Hello получает hello следующие типы данных телеметрии из подключенных приложений Application Insights:
 
 - Доступность
 - Исключения
 - Запросы
-- Просмотры страниц. Чтобы ваша рабочая область получала данные о просмотре страниц, в приложении необходимо настроить сбор этих сведений. Дополнительные сведения см. в разделе [Просмотры страниц](../application-insights/app-insights-api-custom-events-metrics.md#page-views).
-- Настраиваемые события. Чтобы ваша рабочая область получала данные о настраиваемых событиях, в приложении необходимо настроить сбор этих сведений. Дополнительные сведения см. в разделе [TrackEvent (Отслеживание событий)](../application-insights/app-insights-api-custom-events-metrics.md#trackevent).
+- Страница представления — для вашей рабочей области tooreceive просмотры страниц, toocollect вашего приложения необходимо настроить эти сведения. Дополнительные сведения см. в разделе [Просмотры страниц](../application-insights/app-insights-api-custom-events-metrics.md#page-views).
+- Пользовательские события — для пользовательских событий tooreceive вашей рабочей области, необходимо настроить эти сведения toocollect вашего приложения. Дополнительные сведения см. в разделе [TrackEvent (Отслеживание событий)](../application-insights/app-insights-api-custom-events-metrics.md#trackevent).
 
 Как только данные станут доступными, они поступают из Application Insights в OMS.
 
 ## <a name="output-data"></a>Выходные данные
 
-Для каждого типа входных данных создается запись с данными о *типе* *ApplicationInsights*. Записи ApplicationInsights обладают свойствами, приведенными в следующих разделах.
+Для каждого типа входных данных создается запись с данными о *типе* *ApplicationInsights*. ApplicationInsights записи имеют свойства, показанные в следующих разделах hello:
 
 ### <a name="generic-fields"></a>Универсальные поля
 
@@ -174,24 +174,24 @@ Type=ApplicationInsights | measure sum(SampledCount) by TelemetryType
 | --- | --- |
 | Тип | ApplicationInsights |
 | ClientIP |   |
-| TimeGenerated | Время создания записи |
-| ApplicationId | Ключ инструментирования приложения Application Insights |
-| ApplicationName | Имя приложения Application Insights |
+| TimeGenerated | Время записи hello |
+| ApplicationId | Ключ инструментирования Application Insights приложения hello |
+| ApplicationName | Имя приложения hello Application Insights |
 | RoleInstance | Идентификатор узла сервера |
 | DeviceType | Устройство клиента |
 | ScreenResolution |   |
-| Continent | Континент, на котором создан запрос |
-| Страна | Страна, в которой создан запрос |
-| Province | Провинция, область или район, в котором создан запрос |
-| City | Город, в котором создан запрос |
-| isSynthetic | Указывает, был ли запрос создан пользователем или автоматически. Значение true означает, что запрос создан пользователем, а значение false — автоматически |
-| SamplingRate | Процентная доля данных телеметрии, созданных с помощью пакета SDK, отправленного на портал. Диапазон 0,0–100,0. |
+| Continent | Континент, где был сформирован запрос hello |
+| Страна | Страна, где был сформирован запрос hello |
+| Province | Край, состояние или где hello источником запроса языкового стандарта |
+| City | Города, где был сформирован запрос hello |
+| isSynthetic | Указывает, была создана hello запроса пользователем или автоматически. Значение true означает, что запрос создан пользователем, а значение false — автоматически |
+| SamplingRate | Процент создаваемых hello SDK, который отправляется tooportal телеметрии. Диапазон 0,0–100,0. |
 | SampledCount | 100/(частота выборки). Например, 4 = &gt; 25 %. |
 | IsAuthenticated | Значение true или false |
-| OperationID | Элементы с одинаковым идентификатором операций отображаются на портале как связанные элементы. Как правило, это идентификатор запроса. |
-| ParentOperationID | Идентификатор родительской операции |
+| OperationID | Элементы, имеющие hello таким же Идентификатором операции отображаются в виде связанных элементов портала hello. Идентификатор запроса обычно hello |
+| ParentOperationID | Идентификатор родительской операции hello |
 | OperationName |   |
-| SessionId | Идентификатор GUID для уникальной идентификации сеанса, в котором был создан запрос |
+| SessionId | GUID toouniquely идентификации сеанса hello, где был создан запрос hello |
 | SourceSystem | ApplicationInsights |
 
 ### <a name="availability-specific-fields"></a>Поля со сведениями о доступности
@@ -199,22 +199,22 @@ Type=ApplicationInsights | measure sum(SampledCount) by TelemetryType
 | Свойство | Описание |
 | --- | --- |
 | TelemetryType | Доступность |
-| AvailabilityTestName | Имя веб-теста |
+| AvailabilityTestName | Имя веб-теста hello |
 | AvailabilityRunLocation | Географический источник HTTP-запроса |
-| AvailabilityResult | Указывает успешный результат веб-теста |
-| AvailabilityMessage | Сообщение, прикрепленное к веб-тесту |
+| AvailabilityResult | Указывает hello успешный результат hello веб-теста |
+| AvailabilityMessage | приветственное сообщение присоединенного toohello веб-теста |
 | AvailabilityCount | 100/(частота выборки). Например, 4 = &gt; 25 %. |
 | DataSizeMetricValue | 1,0 или 0,0. |
 | DataSizeMetricCount | 100/(частота выборки). Например, 4 = &gt; 25 %. |
-| AvailabilityDuration | Время длительности веб-теста (в миллисекундах) |
+| AvailabilityDuration | Время (в миллисекундах) длительность теста hello web |
 | AvailabilityDurationCount | 100/(частота выборки). Например, 4 = &gt; 25 %. |
 | AvailabilityValue |   |
 | AvailabilityMetricCount |   |
-| AvailabilityTestId | Уникальный идентификатор GUID веб-теста |
-| AvailabilityTimestamp | Точная метка времени теста доступности |
-| AvailabilityDurationMin | Для записей выборки в этом поле отображается минимальная продолжительность веб-теста (в миллисекундах) для представленных точек данных |
-| AvailabilityDurationMax | Для записей выборки в этом поле отображается максимальная продолжительность веб-теста (в миллисекундах) для представленных точек данных |
-| AvailabilityDurationStdDev | Для записей выборки в этом поле отображается стандартное отклонение всех значений продолжительности веб-тестов (в миллисекундах) для представленных точек данных |
+| AvailabilityTestId | Уникальный идентификатор GUID для hello веб-теста |
+| AvailabilityTimestamp | Точные метки времени теста доступности hello |
+| AvailabilityDurationMin | Для выборки записей в этом поле отображается продолжительность теста hello минимальное web (в миллисекундах) для точек данных представлены hello |
+| AvailabilityDurationMax | Для выборки записей в этом поле отображается продолжительность теста hello максимальное web (в миллисекундах) для точек данных представлены hello |
+| AvailabilityDurationStdDev | Для выборки записей в этом поле показан hello стандартное отклонение между длительность всех веб-теста (в миллисекундах) для точек данных представлены hello |
 | AvailabilityMin |   |
 | AvailabilityMax |   |
 | AvailabilityStdDev | &nbsp;  |
@@ -224,14 +224,14 @@ Type=ApplicationInsights | measure sum(SampledCount) by TelemetryType
 | Тип | ApplicationInsights |
 | --- | --- |
 | TelemetryType | Исключение |
-| ExceptionType | Тип исключения |
-| ExceptionMethod | Метод, который создает исключение |
-| ExceptionAssembly | В сборке указана платформа и версия, а также маркер безопасности открытого ключа |
-| ExceptionGroup | Тип исключения |
-| ExceptionHandledAt | Указывает уровень, на котором обработано исключение |
+| ExceptionType | Тип исключения hello |
+| ExceptionMethod | метод Hello, который создает исключение hello |
+| ExceptionAssembly | Сборка включает hello framework и версия а также токен открытого ключа hello |
+| ExceptionGroup | Тип исключения hello |
+| ExceptionHandledAt | Указывает уровень hello, обработавшего исключение hello |
 | ExceptionCount | 100/(частота выборки). Например, 4 = &gt; 25 %. |
-| ExceptionMessage | Сообщение исключения |
-| ExceptionStack | Полный стек исключения |
+| ExceptionMessage | Сообщение hello исключения |
+| ExceptionStack | Полный стек исключений hello |
 | ExceptionHasStack | Значение true, если исключение содержит стек |
 
 
@@ -242,25 +242,25 @@ Type=ApplicationInsights | measure sum(SampledCount) by TelemetryType
 | --- | --- |
 | Тип | ApplicationInsights |
 | TelemetryType | Запрос |
-| ResponseCode | HTTP-отклик, отправленный клиенту. |
+| ResponseCode | Отправлено ответов tooclient HTTP |
 | RequestSuccess | Указывает успешное или неудачное выполнение. Значение true или false. |
-| RequestID | Идентификатор, позволяющий уникально идентифицировать запрос |
+| RequestID | Идентификатор toouniquely идентификации hello запроса |
 | RequestName | GET или POST + базовый URL-адрес |
-| RequestDuration | Время длительности запроса (в секундах) |
-| URL-адрес | URL-адрес запроса, не включая узел |
+| RequestDuration | Время в секундах для hello длительность запроса |
+| URL-адрес | URL-адрес запроса hello, без учета узла |
 | Узел | Узел веб-сервера |
-| URLBase | Полный URL-адрес запроса |
-| ApplicationProtocol | Тип протокола, используемого приложением |
+| URLBase | Полный URL-адрес запроса hello |
+| ApplicationProtocol | Тип протокола, используемого приложением hello |
 | RequestCount | 100/(частота выборки). Например, 4 = &gt; 25 %. |
 | RequestDurationCount | 100/(частота выборки). Например, 4 = &gt; 25 %. |
-| RequestDurationMin | Для записей выборки в этом поле отображается минимальная продолжительность запроса (в миллисекундах) для представленных точек данных |
-| RequestDurationMax | Для записей выборки в этом поле отображается максимальная продолжительность запроса (в миллисекундах) для представленных точек данных |
-| RequestDurationStdDev | Для записей выборки в этом поле отображается стандартное отклонение всех значений продолжительности запросов (в миллисекундах) для представленных точек данных |
+| RequestDurationMin | Для выборки записей в этом поле отображается длительность hello минимальное запроса (в миллисекундах) для точек данных представлены hello. |
+| RequestDurationMax | Для выборки записей в этом поле показан hello Максимальная длительность запроса (в миллисекундах) для точек данных представлены hello |
+| RequestDurationStdDev | Для выборки записей в этом поле показан hello стандартное отклонение от всех длительность запроса (в миллисекундах) для точек данных представлены hello |
 
 ## <a name="sample-log-searches"></a>Пример поисков журналов
 
-В этом решении нет примеров запросов поиска по журналам, отображаемых на панели мониторинга. Тем не менее пример запросов поиска по журналам с описаниями можно найти в разделе [Просмотр сведений о соединителе Application Insights](#view-application-insights-connector-information).
+Это решение не имеет набор образца запросов поиска журналов отображаются на панели мониторинга hello. Тем не менее, пример запросов поиска журналов с описаниями отображаются в hello [сведения соединитель аналитики приложений представление](#view-application-insights-connector-information) раздела.
 
 ## <a name="next-steps"></a>Дальнейшие действия
 
-- Используйте [поиск по журналам](log-analytics-log-searches.md), чтобы просматривать подробные сведения о приложениях Application Insights.
+- Используйте [поиска журналов](log-analytics-log-searches.md) tooview подробные сведения о приложениях Application Insights.

@@ -1,6 +1,6 @@
 ---
-title: "Настройка изолированного кластера Azure Service Fabric | Документация Майкрософт"
-description: "Создание изолированного кластера разработки с тремя узлами, работающими на одном и том же компьютере. После выполнения этого шага вы сможете создавать кластеры с несколькими компьютерами."
+title: "aaaSet кластера Azure Service Fabric автономный | Документы Microsoft"
+description: "Создание кластера автономный разработки с тремя узлами под управлением hello того же компьютера. После завершения этой установки, будет готов toocreate кластер с несколькими компьютерами."
 services: service-fabric
 documentationcenter: .net
 author: dkkapur
@@ -14,46 +14,46 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 07/06/2017
 ms.author: dekapur
-ms.openlocfilehash: 5c8f4c784eed7b64810a3dd1c36c043d22a66936
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: e4d0ea9fc3b8475160bd8ed19fd3716463791cc5
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-your-first-service-fabric-standalone-cluster"></a>Создание первого изолированного кластера Service Fabric
-Вы можете создать изолированный кластер Service Fabric на локально или в облаке на виртуальных машинах или компьютерах под управлением Windows Server 2012 R2 или Windows Server 2016. Это краткое руководство поможет вам создать изолированный кластер разработки в течение нескольких минут.  Завершив работу с этим руководством, вы получите работающий на отдельном компьютере кластер с тремя узлами, в который вы можете развертывать приложения.
+Можно создать автономный кластера Service Fabric на виртуальные машины или компьютеры под управлением Windows Server 2012 R2 или Windows Server 2016 в локальной среде или в облаке hello. Краткого руководства помогает toocreate кластера автономный разработки только через несколько минут.  Завершив работу с этим руководством, вы получите работающий на отдельном компьютере кластер с тремя узлами, в который вы можете развертывать приложения.
 
 ## <a name="before-you-begin"></a>Перед началом работы
-Service Fabric предоставляет установочный пакет для создания изолированных кластеров Service Fabric.  [Скачайте пакет установки](http://go.microsoft.com/fwlink/?LinkId=730690).  Распакуйте пакет установки в папку на компьютере или на виртуальной машине, на которой настраивается кластер разработки.  Содержимое пакета установки подробно описано [здесь](service-fabric-cluster-standalone-package-contents.md).
+Service Fabric предоставляет программу установки пакета toocreate Service Fabric изолированные кластеры.  [Скачайте пакет установки hello](http://go.microsoft.com/fwlink/?LinkId=730690).  Распакуйте hello установки tooa папку пакета в hello компьютер или виртуальную машину где вы настраиваете кластеру разработки hello.  подробно описаны Hello содержимое пакета установки hello [здесь](service-fabric-cluster-standalone-package-contents.md).
 
-У администратора кластера, который развертывает и настраивает кластер, должны быть привилегии администратора на компьютере. Пакет Service Fabric нельзя установить на контроллере домена.
+Администратор кластера Hello, развертыванию и настройке кластера hello требуются права администратора на компьютере hello. Пакет Service Fabric нельзя установить на контроллере домена.
 
-## <a name="validate-the-environment"></a>Проверка среды
-Скрипт *TestConfiguration.ps1* в изолированном пакете используется как рекомендуемый анализатор, проверяющий возможность развертывания кластера в конкретной среде. [Здесь](service-fabric-cluster-standalone-deployment-preparation.md) перечислены предварительные требования к среде при подготовке к развертыванию. Выполните сценарий чтобы проверить, можно ли создать кластер разработки:
+## <a name="validate-hello-environment"></a>Проверка среды hello
+Hello *TestConfiguration.ps1* сценарий в hello изолированный пакет используется в качестве наиболее toovalidate анализатора соответствия рекомендациям ли кластер может быть развернут в данной среде. [Подготовка к развертыванию](service-fabric-cluster-standalone-deployment-preparation.md) hello перечислены необходимые условия и требования к среде. Выполните сценарий tooverify hello при создании кластера hello разработки:
 
 ```powershell
 .\TestConfiguration.ps1 -ClusterConfigFilePath .\ClusterConfig.Unsecure.DevCluster.json
 ```
-## <a name="create-the-cluster"></a>Создание кластера
-Некоторые примеры файлов конфигурации кластера устанавливаются с помощью пакета установки. *ClusterConfig.Unsecure.DevCluster.json* — это самая простая конфигурация кластера: незащищенный кластер из трех узлов, работающий на одном компьютере.  Другие файлы конфигурации описывают кластеры с одним или несколькими компьютерами, защищенными с помощью системы безопасности Windows или сертификатов X.509.  Для работы с этим руководством не нужно изменять параметры конфигурации по умолчанию. Просто просмотрите файл конфигурации и ознакомьтесь с параметрами.  В разделе **Узлы** описываются три узла в кластере: имя, IP-адрес, а также [тип узла, домен сбоя и обновления](service-fabric-cluster-manifest.md#nodes-on-the-cluster).  В разделе **Свойства** определяются [безопасность, уровень надежности, сбор диагностических сведений и типы узлов](service-fabric-cluster-manifest.md#cluster-properties) для кластера.
+## <a name="create-hello-cluster"></a>Создание кластера hello
+Некоторые примеры файлов конфигурации кластера устанавливаются вместе с hello пакета установки. *ClusterConfig.Unsecure.DevCluster.json* — простая конфигурация кластера hello: небезопасным, трех узлов кластера, работающих на одном компьютере.  Другие файлы конфигурации описывают кластеры с одним или несколькими компьютерами, защищенными с помощью системы безопасности Windows или сертификатов X.509.  Не требуется toomodify ни один из параметров конфигурации по умолчанию hello в этом учебнике, но просмотрите файл конфигурации hello и ознакомиться с параметрами hello.  Hello **узлы** разделе описываются hello три узла в кластере hello: имя, IP-адрес [тип узла, домен сбоя и домен обновления](service-fabric-cluster-manifest.md#nodes-on-the-cluster).  Hello **свойства** раздел определяет hello [безопасности, уровень надежности, сбор диагностических сведений и типы узлов](service-fabric-cluster-manifest.md#cluster-properties) для hello кластера.
 
-Этот кластер не защищен.  Любой пользователь может анонимно подключиться и выполнять операции управления, поэтому рабочие кластеры нужно обязательно защищать с помощью сертификатов X.509 или средств обеспечения безопасности Windows.  Безопасность настраивается только во время создания кластера. После этого ее невозможно включить.  См. дополнительные сведения о безопасности кластера Service Fabric в статье о [защите кластеров](service-fabric-cluster-security.md).  
+Этот кластер не защищен.  Любой пользователь может анонимно подключиться и выполнять операции управления, поэтому рабочие кластеры нужно обязательно защищать с помощью сертификатов X.509 или средств обеспечения безопасности Windows.  Во время создания кластера только настройки безопасности и не возможные tooenable безопасности после создания кластера hello.  Чтение [защиты кластера](service-fabric-cluster-security.md) toolearn Дополнительные сведения о безопасности кластера Service Fabric.  
 
-Чтобы создать кластер разработки с тремя узлами, запустите скрипт *CreateServiceFabricCluster.ps1* из сеанса PowerShell с правами администратора:
+toocreate hello разработки трех узлов кластера, запустите hello *CreateServiceFabricCluster.ps1* сценарий из сеанса PowerShell администратора:
 
 ```powershell
 .\CreateServiceFabricCluster.ps1 -ClusterConfigFilePath .\ClusterConfig.Unsecure.DevCluster.json -AcceptEULA
 ```
 
-Пакет среды выполнения Service Fabric автоматически скачивается и устанавливается во время создания кластера.
+пакет среды выполнения Service Fabric Hello автоматически загружаются и устанавливаются во время создания кластера.
 
-## <a name="connect-to-the-cluster"></a>Подключение к кластеру
-Теперь кластер с тремя узлами работает. Модуль PowerShell ServiceFabric устанавливается вместе со средой выполнения.  Вы можете проверить, работает ли кластер на одном компьютере или на удаленном компьютере со средой выполнения Service Fabric.  Подключитесь к кластеру, используя командлет [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps).   
+## <a name="connect-toohello-cluster"></a>Подключите кластер toohello
+Теперь кластер с тремя узлами работает. Hello модуля ServiceFabric PowerShell устанавливается вместе с hello среды выполнения.  Можно проверить этот кластер hello выполняется с hello же компьютере или на удаленном компьютере со средой выполнения Service Fabric hello.  Hello [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) командлет устанавливает toohello подключения кластера.   
 
 ```powershell
 Connect-ServiceFabricCluster -ConnectionEndpoint localhost:19000
 ```
-Примеры других способов подключения к кластеру см. в статье о [безопасном подключении к кластеру](service-fabric-connect-to-secure-cluster.md). После подключения к кластеру используйте командлет [Get-ServiceFabricNode](/powershell/module/servicefabric/get-servicefabricnode?view=azureservicefabricps), чтобы отобразить список узлов в кластере и сведения о состоянии каждого узла. **Состояние работоспособности** каждого узла должно иметь значение *ОК*.
+В разделе [кластера безопасное подключение tooa](service-fabric-connect-to-secure-cluster.md) другие примеры соединения tooa кластера. После подключения кластера toohello, используйте hello [Get ServiceFabricNode](/powershell/module/servicefabric/get-servicefabricnode?view=azureservicefabricps) toodisplay командлет список узлов в hello сведения о кластере и состоянии для каждого узла. **Состояние работоспособности** каждого узла должно иметь значение *ОК*.
 
 ```powershell
 PS C:\temp\Microsoft.Azure.ServiceFabric.WindowsServer> Get-ServiceFabricNode |Format-Table
@@ -65,30 +65,30 @@ NodeDeactivationInfo NodeName IpAddressOrFQDN NodeType  CodeVersion  ConfigVersi
                      vm0      localhost       NodeType0 5.6.220.9494 0                     Up 00:02:43   00:00:00              OK
 ```
 
-## <a name="visualize-the-cluster-using-service-fabric-explorer"></a>Визуализация кластера с помощью Service Fabric Explorer
-[Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) — хорошее средство для визуализации кластера и управления приложениями.  Service Fabric Explorer — это служба, которая выполняется в кластере. Чтобы получить к ней доступ, перейдите в браузере по адресу [http://localhost:19080/Explorer](http://localhost:19080/Explorer). 
+## <a name="visualize-hello-cluster-using-service-fabric-explorer"></a>Визуализация hello кластера с помощью обозревателя Service Fabric
+[Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) — хорошее средство для визуализации кластера и управления приложениями.  Обозреватель Service Fabric — это служба, который работает в кластере hello, доступ к которому осуществляется с помощью браузера, перейдя по слишком[http://localhost:19080/обозреватель](http://localhost:19080/Explorer). 
 
-На панели мониторинга кластера представлены общие сведения о кластере, включая общие сведения о приложении и работоспособности узла кластера. В представлении "Узлы" отображается физическая структура кластера. Для каждого узла можно просмотреть, какие приложения были развернуты на этом узле
+панели мониторинга кластера Hello Обзор кластера, в том числе сводную приложения и состояние работоспособности узла. представление узла Hello отображает hello физическую структуру hello кластера. Для каждого узла можно просмотреть, какие приложения были развернуты на этом узле
 
 ![Service Fabric Explorer][service-fabric-explorer]
 
-## <a name="remove-the-cluster"></a>Удаление кластера
-Чтобы удалить кластер, запустите сценарий Powershell *RemoveServiceFabricCluster.ps1* из папки пакета и передайте в него путь к файлу конфигурации JSON. При необходимости можно указать расположение журнала удаления.
+## <a name="remove-hello-cluster"></a>Удаление кластера hello
+tooremove кластера, запустите hello *RemoveServiceFabricCluster.ps1* сценарий PowerShell из папки пакета hello и передайте его в файл конфигурации JSON toohello путь hello. При необходимости можно указать расположение для журнала hello hello операции удаления.
 
 ```powershell
-# Removes Service Fabric cluster nodes from each computer in the configuration file.
+# Removes Service Fabric cluster nodes from each computer in hello configuration file.
 .\RemoveServiceFabricCluster.ps1 -ClusterConfigFilePath .\ClusterConfig.Unsecure.DevCluster.json -Force
 ```
 
-Чтобы удалить среду выполнения Service Fabric с компьютера, выполните следующий скрипт PowerShell из папки пакета.
+tooremove hello среда выполнения Service Fabric с компьютера hello, запустите следующий сценарий PowerShell из папки пакета hello hello.
 
 ```powershell
-# Removes Service Fabric from the current computer.
+# Removes Service Fabric from hello current computer.
 .\CleanFabric.ps1
 ```
 
 ## <a name="next-steps"></a>Дальнейшие действия
-Теперь, когда вы настроили изолированный кластер разработки, перейдите к следующим статьям.
+Теперь, когда настраивается кластер автономный разработки, попробуйте hello в следующих статьях:
 * [Настройте изолированный кластер с несколькими компьютерами](service-fabric-cluster-creation-for-windows-server.md) и включите режим безопасности.
 * [Разверните приложения с помощью PowerShell](service-fabric-deploy-remove-applications.md)
 

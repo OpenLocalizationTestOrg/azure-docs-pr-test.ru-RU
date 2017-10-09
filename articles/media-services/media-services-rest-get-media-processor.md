@@ -1,6 +1,6 @@
 ---
-title: "Как получить экземпляр обработчика мультимедиа с помощью REST | Документация Майкрософт"
-description: "Узнайте, как создать компонент обработчика мультимедиа для кодирования, преобразования формата, шифрования или расшифровки мультимедийного контента служб мультимедиа Azure."
+title: "Как tooget экземпляр обработчика мультимедиа с помощью REST AAA | Документы Microsoft"
+description: "Узнайте, как toocreate tooencode компонента обработчика мультимедиа, преобразования формата, шифрования или расшифровки содержимого мультимедиа для служб мультимедиа Azure."
 services: media-services
 documentationcenter: 
 author: Juliako
@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/10/2017
 ms.author: juliako
-ms.openlocfilehash: 4ad90ad979c5bd74fc55155098c88d5c13cb12e2
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 9f423648ab73c90405c64895ce0f5b6a457862e4
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-get-a-media-processor-instance"></a>Как получить экземпляр обработчика мультимедиа
+# <a name="how-tooget-a-media-processor-instance"></a>Как tooget экземпляр обработчика мультимедиа
 > [!div class="op_single_selector"]
 > * [.NET](media-services-get-media-processor.md)
 > * [REST](media-services-rest-get-media-processor.md)
@@ -28,11 +28,11 @@ ms.lasthandoff: 08/29/2017
 > 
 
 ## <a name="overview"></a>Обзор
-В службах мультимедиа обработчик мультимедиа является компонентом, который работает со специфическими задачами обработки, такими как кодирование, преобразование формата, шифрование или расшифровка мультимедийного контента. Обработчик мультимедиа обычно создается при создании задачи для кодирования, шифрования или преобразования формата мультимедийного контента.
+В службах мультимедиа обработчик мультимедиа является компонентом, который работает со специфическими задачами обработки, такими как кодирование, преобразование формата, шифрование или расшифровка мультимедийного контента. Обычно вы Создание обработчика мультимедиа при создании tooencode задачи, зашифровать или преобразовать формат hello мультимедийного содержимого.
 
 ## <a name="azure-media-processors"></a>Обработчики мультимедиа Azure 
 
-В следующем разделе приводятся списки обработчиков мультимедиа.
+Hello разделе представлен список обработчиков мультимедиа:
 
 * [Кодировщики мультимедиа](scenarios-and-availability.md#encoding-media-processors)
 * [Обработчики мультимедиа аналитики](scenarios-and-availability.md#analytics-media-processors)
@@ -40,16 +40,16 @@ ms.lasthandoff: 08/29/2017
 >[!NOTE]
 >При доступе к сущностям в службах мультимедиа необходимо задать определенные поля и значения заголовков в HTTP-запросах. Дополнительную информацию см. в статье [Обзор интерфейса REST API служб мультимедиа](media-services-rest-how-to-use.md).
 
-## <a name="connect-to-media-services"></a>Подключение к службам мультимедиа
+## <a name="connect-toomedia-services"></a>Подключение служб tooMedia
 
-Сведения о подключении к API AMS см. в разделе [Доступ к API служб мультимедиа Azure с помощью аутентификации Azure AD](media-services-use-aad-auth-to-access-ams-api.md). 
+Сведения о tooconnect toohello AMS API, в статье [hello доступа к API служб мультимедиа Azure с проверкой подлинности Azure AD](media-services-use-aad-auth-to-access-ams-api.md). 
 
 >[!NOTE]
->После успешного подключения к https://media.windows.net вы получите ошибку 301 (перенаправление), в которой будет указан другой URI служб мультимедиа. Используйте для последующих вызовов новый URI.
+>После успешного подключения toohttps://media.windows.net, будет получено перенаправление 301 указывающее другой URI служб Media Services. Необходимо внести toohello последующих вызовов новый URI.
 
 ## <a name="get-a-media-processor"></a>Получение обработчика мультимедиа
 
-Следующий вызов REST показывает, как получить экземпляр обработчика мультимедиа по имени (в данном случае это **стандартный кодировщик мультимедиа**). 
+После вызова REST Hello показано, как экземпляр tooget обработчик мультимедиа по имени (в этом случае **Media Encoder Стандартная**). 
 
 Запрос:
 
@@ -89,5 +89,5 @@ ms.lasthandoff: 08/29/2017
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
 ## <a name="next-steps"></a>Дальнейшие действия
-Теперь, когда вы знаете, как получить экземпляр обработчика мультимедиа, перейдите в раздел [Кодировка актива](media-services-rest-get-started.md) , в котором будет показано, как использовать Media Encoder Standard для кодирования ресурса-контейнера.
+Теперь, когда вы знаете, как перейти tooget экземпляр обработчика мультимедиа toohello [как tooEncode актива](media-services-rest-get-started.md) раздела, в котором мы покажем, как toouse hello Media Encoder Стандартная tooencode актива.
 

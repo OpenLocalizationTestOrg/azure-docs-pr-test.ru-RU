@@ -1,5 +1,5 @@
 ---
-title: "Запросы на увеличение квоты ядер Azure Resource Manager | Документация Майкрософт"
+title: "запросы увеличения квоты ядер aaaAzure диспетчера ресурсов | Документы Microsoft"
 description: "Запросы на увеличение квоты ядер Azure Resource Manager."
 author: ganganarayanan
 ms.author: gangan
@@ -7,24 +7,24 @@ ms.date: 1/18/2017
 ms.topic: article
 ms.service: microsoft-docs
 ms.assetid: ce37c848-ddd9-46ab-978e-6a1445728a3b
-ms.openlocfilehash: cb6c5b3e86f126d4110d1cd29d8c9891e356e414
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: b158b9f0e0338eb239da9253c2146ea93c02e316
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="resource-manager-core-quota-increase-requests"></a>Запросы на увеличение квоты ядер Resource Manager
 
-Квоты ядер Resource Manager применяются на уровне региона и семейства SKU.
-Дополнительные сведения о применении квот доступны на странице [Подписка Azure, границы, квоты и ограничения службы](http://aka.ms/quotalimits).
-Чтобы узнать больше о семействах SKU, вы можете сравнить затраты и производительность на странице [Цены на виртуальные машины Windows](http://aka.ms/pricingcompute).
+На уровне области hello и SKU семейства уровне применяются квоты основных компонентов диспетчера ресурсов.
+Дополнительные сведения о применении квоты hello [подписка Azure и ограничения служб](http://aka.ms/quotalimits) страницы.
+Дополнительные сведения о семействах SKU toolearn, может сравнить стоимостью и производительностью на hello [расценки на виртуальные машины](http://aka.ms/pricingcompute) страницы.
 
-Чтобы запросить увеличение квоты ядер, отправьте соответствующее обращение в службу поддержки на портале Azure: [https://portal.azure.com](https://portal.azure.com).
+toorequest на увеличение, создать обращение в службу поддержки квоты для ядер в hello портал Azure [https://portal.azure.com](https://portal.azure.com).
 
 > [!NOTE]
-> Узнайте, как [создать запрос на поддержку](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request) на портале Azure.
+> Узнайте, каким образом слишком[Создание запроса на поддержку](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request) в hello портал Azure
 
-1. На странице создания запроса на поддержку выберите тип проблемы "Квота" и тип квоты как "Ядра".
+1. Hello новой поддержки запроса страницы выберите тип проблемы как «Квота» и тип квоты, как «Ядра».
 
     ![Колонка "Основные" для квоты](./media/resource-manager-core-quotas-request/Basics-blade.png)
 
@@ -32,13 +32,13 @@ ms.lasthandoff: 07/11/2017
 
     ![Колонка "Проблема" для квоты](./media/resource-manager-core-quotas-request/Problem-step.png)
 
-3. Выберите семейства SKU, которые требуют увеличения квоты.
+3. Выбор семейства hello SKU, требуется увеличение.
 
     ![Выбранные семейства SKU](./media/resource-manager-core-quotas-request/SKU-selected.png)
 
-4. Введите желаемые ограничения для подписки.
+4. Введите hello новые ограничения, которые будут отправлены в подписке hello.
 
     ![Новый запрос квоты для SKU](./media/resource-manager-core-quotas-request/SKU-new-quota.png)
 
-- Чтобы удалить строку, снимите флажок SKU в раскрывающемся списке семейства SKU или щелкните значок отмены "x".
-После ввода требуемой квоты для каждого семейства SKU нажмите кнопку "Далее" на странице "Проблема", чтобы продолжить создание запроса на поддержку.
+- tooremove строки, снимите флажок hello SKU hello SKU семейства раскрывающегося списка или нажмите кнопку hello отклонения «x» щелкните значок.
+После ввода hello требуемой квоты для каждого семейства SKU, нажмите кнопку «Далее» на hello toocontinue страницы шаг проблемы с созданием запроса поддержки hello.

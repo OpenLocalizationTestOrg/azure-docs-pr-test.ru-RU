@@ -1,5 +1,5 @@
 ---
-title: "Пример скрипта Azure CLI. Создание веб-приложения с непрерывным развертыванием из GitHub | Документация Майкрософт"
+title: "Пример сценария CLI - aaaAzure Создание веб-приложения с непрерывным развертыванием из GitHub | Документы Microsoft"
 description: "Пример скрипта Azure CLI. Создание веб-приложения с непрерывным развертыванием из GitHub"
 services: app-service\web
 documentationcenter: 
@@ -16,11 +16,11 @@ ms.topic: sample
 ms.date: 06/19/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: a12085a7a8146c22d6b079381542d4fe3a8e6e87
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 6adb06a35ceea8ea64723c9887c25c50f046e280
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-a-web-app-with-continuous-deployment-from-github"></a>Создание веб-приложения с непрерывным развертыванием из GitHub
 
@@ -33,17 +33,17 @@ ms.lasthandoff: 07/11/2017
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Если вы решили установить и использовать интерфейс командной строки локально, для работы с этим руководством вам понадобится Azure CLI 2.0 или более поздней версии. Чтобы узнать версию, выполните команду `az --version`. Если вам необходимо выполнить установку или обновление, см. статью [Установка Azure CLI 2.0]( /cli/azure/install-azure-cli). 
+Если выбрать tooinstall и использовать hello CLI локально, в этом разделе требуется под управлением hello Azure CLI версии 2.0 или более поздней версии. Запустите `az --version` версии toofind hello. Если требуется tooinstall или обновления, см. раздел [установить CLI Azure 2.0]( /cli/azure/install-azure-cli). 
 
 ## <a name="sample-script"></a>Пример скрипта
 
-[!code-azurecli-interactive[main](../../../cli_scripts/app-service/deploy-github-continuous/deploy-github-continuous.sh?highlight=3-4 "Создание веб-приложения с непрерывным развертыванием из GitHub")]
+[!code-azurecli-interactive[main](../../../cli_scripts/app-service/deploy-github-continuous/deploy-github-continuous.sh?highlight=3-4 "Create a web app with continuous deployment from GitHub")]
 
 [!INCLUDE [cli-script-clean-up](../../../includes/cli-script-clean-up.md)]
 
 ## <a name="script-explanation"></a>Описание скрипта
 
-Этот скрипт использует следующие команды. Для каждой команды в таблице приведены ссылки на соответствующую документацию.
+Этот скрипт использует hello, следующие команды. Каждая команда в таблице hello связывает toocommand документацию.
 
 | Команда | Примечания |
 |---|---|
@@ -55,6 +55,6 @@ ms.lasthandoff: 07/11/2017
 
 ## <a name="next-steps"></a>Дальнейшие действия
 
-Дополнительные сведения об Azure CLI см. в [документации по Azure CLI](https://docs.microsoft.com/cli/azure/overview).
+Дополнительные сведения о hello Azure CLI см. в разделе [документации Azure CLI](https://docs.microsoft.com/cli/azure/overview).
 
-Дополнительные примеры скриптов Azure CLI для службы приложений см. в [документации по службе приложений Azure](../app-service-cli-samples.md).
+Дополнительные образцы сценариев CLI приложения службы можно найти в hello [документации по службе приложений Azure](../app-service-cli-samples.md).

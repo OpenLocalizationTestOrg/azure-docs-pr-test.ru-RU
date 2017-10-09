@@ -1,6 +1,6 @@
 ---
-title: "Размеры виртуальных машин Linux в Azure, оптимизированных для памяти | Документация Майкрософт"
-description: "Список различных размеров виртуальных машин Linux в Azure, оптимизированных для памяти."
+title: "размеры виртуальной Машины Azure aaaLinux - памяти | Документы Microsoft"
+description: "Списки hello другой памяти оптимизированными размеры, доступные для виртуальных машин Linux в Azure."
 services: virtual-machines-linux
 documentationcenter: 
 author: jonbeck7
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/28/2017
 ms.author: jonbeck
-ms.openlocfilehash: 87317d7ed94bba39be6f4b8664563f9ac856b134
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: e1037db85af196f94bfd9eb138966a5047167c7c
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="memory-optimized-linux-vm-sizes"></a>Размеры виртуальных машин Linux, оптимизированных для памяти
 

@@ -1,6 +1,6 @@
 ---
-title: "Интеграция пакета SDK Engagement для Windows Phone Silverlight"
-description: "Интеграция Служб мобильного взаимодействия Azure с приложениями Windows Phone Silverlight"
+title: "aaaWindows Phone Silverlight Engagement SDK-интеграция"
+description: "Как tooIntegrate Azure Mobile Engagement с приложениями Silverlight для Windows Phone"
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: 29b18aecff783cebf617995e2a19f16f0b68b51b
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: f65683a62e5256cea469a3a73d99ade4331cb6bc
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="windows-phone-silverlight-engagement-sdk-integration"></a>Интеграция пакета SDK Engagement для Windows Phone Silverlight
 > [!div class="op_single_selector"]
@@ -29,41 +29,41 @@ ms.lasthandoff: 07/11/2017
 > 
 > 
 
-Здесь описана самая простая процедура активации функций раздела аналитики и мониторинга Служб мобильного взаимодействия Azure в приложении Windows Phone Silverlight.
+Эта процедура описывает hello простейший способ tooactivate Azure Mobile Engagement аналитики и наблюдение за функциями в приложении Windows Phone Silverlight.
 
-Достаточно выполнить следующие шаги, чтобы активировать отчеты по журналам, которые необходимы для вычисления всех статистических данных, касающихся пользователей, сеансов, действий, сбоев и технической информации. Отчеты по журналам, необходимые для вычисления других статистических данных (например, касающихся событий, ошибок и заданий), требуется активировать вручную с помощью API Служб мобильного взаимодействия (см. статью [Как использовать API для расширенного добавления тегов Служб мобильного взаимодействия в приложении Windows Phone Silverlight](mobile-engagement-windows-phone-use-engagement-api.md) ниже), так как эти статистические данные зависят от приложения.
+следующие шаги Hello — это отчет hello достаточно tooactivate журналов необходимости toocompute все статистические данные о пользователей, сеансы, действия, сбои и Technicals. Hello журналов требуется отчет toocompute другие статистические данные, как события, ошибок и задания должны выполняться вручную с помощью hello Engagement API (в разделе [как toouse hello дополнительные теги API в приложения Windows Phone Silverlight мобильного охвата](mobile-engagement-windows-phone-use-engagement-api.md) см. ниже), так как эти статистические данные, зависящие от приложения.
 
 ## <a name="supported-versions"></a>Поддерживаемые версии
-Пакет SDK для Служб мобильного взаимодействия для Windows Silverlight можно интегрировать только в приложения, предназначенные для:
+только Hello SDK Mobile Engagement для Windows Silverlight можно интегрировать в приложения, предназначенные для:
 
 * Windows Phone 8.0
 * Windows Phone 8.1 Silverlight
 
 > [!NOTE]
-> Если вы ориентируетесь на Windows Phone 8.1 (не Silverlight), см. статью [Интеграция пакета SDK Engagement для универсальных приложений для Windows](mobile-engagement-windows-store-integrate-engagement.md).
+> Если в качестве цели Windows Phone 8.1 (отличных от Silverlight), а затем ссылаться toohello [Windows универсальной процедуры интеграции](mobile-engagement-windows-store-integrate-engagement.md).
 > 
 > 
 
-## <a name="install-the-mobile-engagement-silverlight-sdk"></a>Установка пакета SDK для Служб мобильного взаимодействия для Silverlight
-Пакет SDK Служб мобильного взаимодействия для Windows Silverlight доступен в виде пакета Nuget, который называется *MicrosoftAzure.MobileEngagement*. Вы можете установить его из диспетчера пакетов NuGet в Visual Studio. 
+## <a name="install-hello-mobile-engagement-silverlight-sdk"></a>Установить пакет SDK Mobile Engagement Silverlight hello
+Hello SDK Mobile Engagement для Windows Silverlight доступен как пакет Nuget вызывается *MicrosoftAzure.MobileEngagement*. Его можно установить из hello диспетчера пакетов Nuget для Visual Studio. 
 
-## <a name="add-the-capabilities"></a>Добавление возможностей
-Для надлежащей работы пакету SDK для Engagement требуются некоторые возможности пакета SDK для Windows Phone Silverlight.
+## <a name="add-hello-capabilities"></a>Добавление возможностей hello
+Hello Engagement SDK должен некоторые возможности hello пакет SDK для Windows Phone Silverlight в порядке toowork должным образом.
 
-Откройте файл `WMAppManifest.xml` и убедитесь, что следующие возможности объявлены на панели `Capabilities`:
+Откройте ваш `WMAppManifest.xml` файл и убедитесь, что hello следующие возможности, объявляются в hello `Capabilities` панели:
 
 * `ID_CAP_NETWORKING`
 * `ID_CAP_IDENTITY_DEVICE`
 
-## <a name="initialize-the-engagement-sdk"></a>Запуск пакета SDK для Engagement
+## <a name="initialize-hello-engagement-sdk"></a>Инициализировать hello Engagement SDK
 ### <a name="engagement-configuration"></a>Конфигурация Engagement
-Конфигурация Engagement централизована в файле `Resources\EngagementConfiguration.xml` проекта.
+централизованный Hello проектной конфигурации в hello `Resources\EngagementConfiguration.xml` файла проекта.
 
-Измените файл, чтобы указать:
+Измените этот файл toospecify:
 
 * строку подключения приложения между тегами `<connectionString>` and `<\connectionString>`.
 
-Если вместо этого вам необходимо указать ее во время выполнения, можно вызвать следующий метод до инициализации агента Engagement:
+Если требуется, чтобы его во время выполнения вместо этого можно вызвать следующие hello toospecify метод до инициализации агента Engagement hello:
 
     /* Engagement configuration. */
     EngagementConfiguration engagementConfiguration = new EngagementConfiguration();
@@ -72,23 +72,23 @@ ms.lasthandoff: 07/11/2017
     /* Initialize Engagement agent with above configuration. */
     EngagementAgent.Instance.Init(engagementConfiguration);
 
-Строка подключения для приложения отображается на классическом портале Azure.
+Hello строку подключения для приложения отображается на hello классический портал Azure.
 
 ### <a name="engagement-initialization"></a>Инициализация Engagement
-При создании проекта создается файл `App.xaml.cs` . Этот класс наследуется из `Application` и содержит множество важных методов. Он также будет использоваться для инициализации пакета SDK для Engagement.
+При создании проекта создается файл `App.xaml.cs` . Этот класс наследуется из `Application` и содержит множество важных методов. Он также будет hello используется tooinitialize Engagement SDK.
 
-Измените `App.xaml.cs`:
+Изменение hello `App.xaml.cs`:
 
-* Добавьте операторы `using`:
+* Добавить tooyour `using` инструкции:
   
       using Microsoft.Azure.Engagement;
-* Вставьте `EngagementAgent.Instance.Init` в метод `Application_Launching`:
+* Вставить `EngagementAgent.Instance.Init` в hello `Application_Launching` метод:
   
       private void Application_Launching(object sender, LaunchingEventArgs e)
       {
         EngagementAgent.Instance.Init();
       }
-* Вставьте `EngagementAgent.Instance.OnActivated` в метод `Application_Activated`:
+* Вставить `EngagementAgent.Instance.OnActivated` в hello `Application_Activated` метод:
   
       private void Application_Activated(object sender, ActivatedEventArgs e)
       {
@@ -96,20 +96,20 @@ ms.lasthandoff: 07/11/2017
       }
 
 > [!WARNING]
-> Настоятельно рекомендуем не добавлять инициализацию Engagement в другом расположении приложения. Однако учтите, что метод `EngagementAgent.Instance.Init` выполняется в выделенном потоке, а не в потоке пользовательского интерфейса.
+> Настоятельно рекомендуется не вы tooadd hello Engagement инициализации в другом месте приложения. Однако учтите, что hello `EngagementAgent.Instance.Init` метод выполняется в выделенном потоке, а не на hello поток пользовательского интерфейса.
 > 
 > 
 
 ## <a name="basic-reporting"></a>Упрощенные отчеты
 ### <a name="recommended-method--overload-your-phoneapplicationpage-classes"></a>Рекомендуемый метод: перегрузка классов `PhoneApplicationPage`
-Чтобы активировать отчет по всем журналам, необходимым для Engagement при вычислении статистики пользователей, сеансов, действий, сбоев и технической информации, вы можете просто задать для подклассов `PhoneApplicationPage` наследование из классов `EngagementPage`.
+В отчете hello tooactivate порядок всех журналов hello, необходимых в Engagement toocompute пользователей, сеансы, действия, сбои и технические данные, можно просто сделать все вашей `PhoneApplicationPage` вложенные классы наследуют от hello `EngagementPage` классы.
 
-Ниже приведен пример того, как сделать это для страницы приложения. То же самое можно сделать для всех страниц приложения.
+Ниже приведен пример того, как toodo это для страницы приложения. Можно сделать hello одинаково для всех страниц приложения.
 
 #### <a name="c-source-file"></a>Исходный файл на C#
 Измените файл страницы `.xaml.cs` :
 
-* Добавьте операторы `using`:
+* Добавить tooyour `using` инструкции:
   
       using Microsoft.Azure.Engagement;
 * Замените `PhoneApplicationPage` на `EngagementPage`:
@@ -137,14 +137,14 @@ ms.lasthandoff: 07/11/2017
         }
 
 > [!WARNING]
-> Если страница наследуется из метода `OnNavigatedTo`, убедитесь в вызове `base.OnNavigatedTo(e)`. В противном случае служба не сообщит о действии. Более того, `EngagementPage` вызывает `StartActivity` в методе `OnNavigatedTo`.
+> Если на странице наследуется от hello `OnNavigatedTo` метод, быть тщательно toolet hello `base.OnNavigatedTo(e)` вызова. В противном случае действие hello не будут отображаться. На самом деле hello `EngagementPage` вызывает `StartActivity` внутри hello `OnNavigatedTo` метод.
 > 
 > 
 
 #### <a name="xaml-file"></a>XAML-файл
 Измените файл страницы `.xaml` :
 
-* Добавьте в объявления пространств имен:
+* Добавьте tooyour объявления пространств имен:
   
       xmlns:engagement="clr-namespace:Microsoft.Azure.Engagement;assembly=Microsoft.Azure.Engagement.EngagementAgent.WP"
 * Замените `phone:PhoneApplicationPage` на `engagement:EngagementPage`:
@@ -163,31 +163,31 @@ ms.lasthandoff: 07/11/2017
             <!-- layout -->
         </engagement:EngagementPage >
 
-#### <a name="override-the-default-behavior"></a>Переопределение действия по умолчанию
-По умолчанию имя класса страницы сообщается как имя действия без дополнительной информации. Если класс использует суффикс Page, Engagement также удалит его.
+#### <a name="override-hello-default-behavior"></a>Переопределить поведение по умолчанию hello
+По умолчанию имя класса hello страницы приветствия отображается как имя действия hello с без дополнительных. Если класс hello использует hello суффикс «Страница», Engagement также удалит ее.
 
-Если требуется переопределить поведение по умолчанию для имени, просто добавьте в код следующую строку:
+Если требуется поведение по умолчанию hello toooverride имени hello, просто добавьте следующий код tooyour.
 
-        // in the .xaml.cs file
+        // in hello .xaml.cs file
         protected override string GetEngagementPageName()
         {
            /* your code */
            return "new name";
         }
 
-Чтобы сообщить дополнительную информацию о действии, добавьте в код следующую строку:
+Если требуется tooreport некоторыми дополнительными сведениями с действием, можно добавить этот код tooyour:
 
-        // in the .xaml.cs file
+        // in hello .xaml.cs file
         protected override Dictionary<object,object> GetEngagementPageExtra()
         {
            /* your code */
            return extra;
         }
 
-Эти методы вызываются из метода `OnNavigatedTo` вашей страницы.
+Эти методы вызываются из внутри hello `OnNavigatedTo` метод страницы.
 
 ### <a name="alternate-method-call-startactivity-manually"></a>Альтернативный метод: вызов `StartActivity()` вручную
-Если вам не удается перегрузить классы `PhoneApplicationPage` или вы не хотите этого делать, запустите действия, вызвав методы `EngagementAgent` напрямую.
+Если невозможно или нежелательно toooverload вашей `PhoneApplicationPage` классы, вместо этого можно запустить ваши действия путем вызова `EngagementAgent` методы напрямую.
 
 Советуем вызывать `StartActivity` в методе `OnNavigatedTo` класса PhoneApplicationPage.
 
@@ -200,31 +200,31 @@ ms.lasthandoff: 07/11/2017
 > [!IMPORTANT]
 > Убедитесь, что сеанс завершен правильно.
 > 
-> Пакет SDK автоматически вызывает метод `EndActivity` при закрытии приложения. Поэтому мы **настоятельно** рекомендуем вызывать метод `StartActivity` при каждом изменении действия пользователя и **никогда** не вызывать метод `EndActivity`. Этот метод отправляет на сервер Engagement сообщение о том, что текущий пользователь вышел из приложения, и это отражается во всех журналах приложений.
+> пакет SDK для Hello автоматически вызывает hello `EndActivity` метод при закрытии приложения hello. Таким образом, **высокой** рекомендуется toocall hello `StartActivity` метод изменении hello действий пользователя hello и слишком**никогда** hello вызовов `EndActivity` метод. Этот метод отправляет сообщение сервера Engagement toohello что hello текущий пользователь покинул приложения hello, и это влияет на все журналы приложений.
 > 
 > 
 
 ## <a name="advanced-reporting"></a>Расширенные отчеты
-При желании можно также сообщать об определенных событиях, ошибках и заданиях приложения. Это можно сделать с помощью других методов в классе `EngagementAgent`. Engagement API позволяет использовать все дополнительные возможности Engagement.
+При необходимости вы можете tooreport приложения определенных событий, ошибок и задания, toodo таким образом, использование hello другие методы найдены в hello `EngagementAgent` класса. Hello Engagement API позволяет toouse всем Engagement расширенные возможности.
 
-Дополнительные сведения см. в статье [Как использовать API Служб мобильного взаимодействия в Windows Phone Silverlight](mobile-engagement-windows-phone-use-engagement-api.md).
+Дополнительные сведения см. в разделе [как toouse hello дополнительные теги API в приложения Windows Phone Silverlight мобильного охвата](mobile-engagement-windows-phone-use-engagement-api.md).
 
 ## <a name="advanced-configuration"></a>Расширенная конфигурация
 ### <a name="disable-automatic-crash-reporting"></a>Отключение автоматического создания отчетов о сбоях
-Вы можете отключить функцию автоматического создания отчетов о сбоях в Engagement. После этого при возникновении необработанного исключения Engagement не будет предпринимать никаких действий.
+Можно отключить hello аварийного завершения автоматического компонент рвением отчетов. После этого при возникновении необработанного исключения Engagement не будет предпринимать никаких действий.
 
 > [!WARNING]
-> Если вы планируете отключить эту функцию, учтите, что при возникновении необработанного сбоя в приложении Engagement не будет отправлять уведомление о сбое **И** не закроет сеанс и задания.
+> Если планируется toodisable эту функцию, помните, что, когда необработанное сбоя будет появляться в вашем приложении, Engagement не будет отправлять hello аварийного завершения **AND** не закроет сеанс hello и заданий.
 > 
 > 
 
-Чтобы отключить автоматическое создание отчетов о сбоях, просто настройте конфигурацию в зависимости от того, как она была объявлена:
+автоматического создания отчетов, о сбоях toodisable просто настроить конфигурацию, в зависимости от того, она была объявлена как hello:
 
 #### <a name="from-engagementconfigurationxml-file"></a>Из файла `EngagementConfiguration.xml`
-Задайте для параметра уведомления о сбоях значение `false` между тегами `<reportCrash>` и `</reportCrash>`.
+Отчет набора аварийное завершение работы слишком`false` между `<reportCrash>` и `</reportCrash>` тегов.
 
 #### <a name="from-engagementconfiguration-object-at-run-time"></a>Из объекта `EngagementConfiguration` во время выполнения
-Задайте для параметра уведомления о сбоях значение false с помощью объекта EngagementConfiguration.
+Задать toofalse сбоя отчетов с помощью объекта EngagementConfiguration.
 
         /* Engagement configuration. */
 
@@ -232,18 +232,18 @@ ms.lasthandoff: 07/11/2017
         /\* Disable Engagement crash reporting. \*/ engagementConfiguration.Agent.ReportCrash = false;
 
 ### <a name="burst-mode"></a>Пакетный режим
-По умолчанию служба Engagement ведет отчеты по журналам в режиме реального времени. Если приложение создает отчеты по журналам очень часто, лучше поместить журналы в буфер и создавать отчеты по всем журналам одновременно через регулярные промежутки времени (это называется «пакетный режим»).
+По умолчанию hello Engagement службы отчетов входит в режиме реального времени. Если приложение сообщает журналов производится очень часто, это лучше toobuffer hello журналы и tooreport их все за один раз на обычное время базового (это называется «пакетный режим» hello).
 
-Для этого вызовите следующий метод:
+toodo таким образом, необходимо вызвать метод hello:
 
         EngagementAgent.Instance.SetBurstThreshold(int everyMs);
 
-Значение аргумента задается в **миллисекундах**. Если вам в любое время потребуется повторно активировать ведение журнала в реальном времени, просто вызовите метод без каких-либо параметров или со значением 0.
+Hello аргумент представляет собой значение в **миллисекунд**. В любое время Если требуется ведение журнала hello в режиме реального времени для tooreactivate просто вызовите метод hello без какого-либо параметра или со значением hello 0.
 
-Пакетный режим немного продлевает время работы батареи, но влияет на Engagement Monitor: время выполнения всех сеансов и заданий будет округляться до порогового значения пакета (таким образом, сеансы и задания, время выполнения которых короче, чем пороговое значение пакета, могут не отображаться). Мы советуем использовать пороговое значение пакета не более чем 30 000 (30 с). Следует иметь в виду, что в сохраняемых журналах может быть не более 300 элементов. Если отправка занимает слишком много времени, некоторые журналы могут быть потеряны.
+Hello пакетный режим немного увеличить батареи hello жизни но оказывает влияние на hello монитор Engagement: все сеансы и задания будут скругленными toohello пороговое значение пакетного режима (таким образом, сеансы и задания короче, чем порог повышения hello не могут быть видны). Это рекомендуется toouse Повышение порогового значения больше чем 30000 (30s). Необходимо учитывать, сохраненные журналы являются элементами ограниченный too300 toobe. Если отправка занимает слишком много времени, некоторые журналы могут быть потеряны.
 
 > [!WARNING]
-> Для порогового значения пакета нельзя настроить период менее одной секунды. При попытке задать значение менее одной секунды трассировка в пакете SDK отобразится с ошибкой, и будет автоматически восстановлено значения по умолчанию, т. е. ноль секунд. Это приведет к тому, что пакет SDK начнет создавать отчеты по журналам в режиме реального времени.
+> Hello пороговое значение пакета не может быть настроен меньший период tooa одного раза в секунду. При попытке toodo таким образом, hello SDK будет отображать трассировку с ошибкой hello и автоматически сбросить toohello значение по умолчанию, то есть, ноль секунд. Это приведет к началу hello SDK tooreport hello журналы в режиме реального времени.
 > 
 > 
 

@@ -1,6 +1,6 @@
 ---
-title: "Создание ресурсов служебной шины Azure с использованием шаблонов Azure Resource Manager | Документация Майкрософт"
-description: "С помощью шаблонов Azure Resource Manager можно автоматизировать создание ресурсов служебной шины."
+title: "ресурсы Azure Service Bus aaaCreate с помощью шаблонов диспетчера ресурсов Azure | Документы Microsoft"
+description: "Использование диспетчера ресурсов Azure tooautomate шаблоны hello Создание ресурсов служебной шины"
 services: service-bus-messaging
 documentationcenter: .net
 author: sethmanheim
@@ -14,26 +14,26 @@ ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 08/07/2017
 ms.author: sethm
-ms.openlocfilehash: c8142d8edfd3a527b13d655bac21acf5332f2d14
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: e539902cae307b63ae7c332580e2064761331ec5
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-service-bus-resources-using-azure-resource-manager-templates"></a>Создание ресурсов служебной шины с использованием шаблонов Azure Resource Manager
 
-В этой статье описывается, как создать и развернуть ресурсы служебной шины с помощью шаблонов Azure Resource Manager, PowerShell и поставщика ресурсов служебной шины.
+В этой статье описывается как toocreate и развертывания ресурсов служебной шины с помощью шаблонов диспетчера ресурсов Azure, PowerShell и hello поставщика ресурсов служебной шины.
 
-В шаблонах Azure Resource Manager определяются ресурсы для развертывания решения и указываются параметры и переменные, позволяющие вводить значения для различных сред. Шаблон состоит из JSON и выражений, на основе которых можно создавать значения для развертывания. Дополнительные сведения о создании шаблонов Azure Resource Manager и описание формата шаблонов см. в статье [Описание структуры и синтаксиса шаблонов Azure Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md).
+Шаблоны Azure Resource Manager помогает определять hello toodeploy ресурсы для решения и toospecify параметры и переменные, которые позволяют tooinput значения для различных сред. шаблон Hello состоит из выражения, что tooconstruct значения можно использовать для развертывания и JSON. Подробные сведения о создании шаблонов диспетчера ресурсов Azure и обсуждение формата шаблона hello. в разделе [структуре и синтаксисе шаблонов диспетчера ресурсов Azure](../azure-resource-manager/resource-group-authoring-templates.md).
 
 > [!NOTE]
-> В примерах в этой статье показано, как использовать Azure Resource Manager для создания пространства имен и объекта обмена сообщениями (очереди) служебной шины. Чтобы узнать о новых шаблонах, в [коллекции шаблонов быстрого запуска Azure][Azure Quickstart Templates gallery] выполните поиск по запросу "служебная шина".
+> Здравствуйте, примеры в этой статье показано, как toouse Azure Resource Manager toocreate пространство имен служебной шины и обмена сообщениями (очередь) сущности. Другие примеры шаблона посетите hello [коллекции шаблонов быстрый запуск Azure] [ Azure Quickstart Templates gallery] и выполните поиск «Шина обслуживания».
 >
 >
 
 ## <a name="service-bus-resource-manager-templates"></a>Шаблоны Resource Manager для служебной шины
 
-Эти шаблоны Azure Resource Manager для служебной шины доступны для скачивания и развертывания. Чтобы получить подробные сведения о каждом из них со ссылками на шаблоны в GitHub, щелкните приведенные ниже ссылки.
+Эти шаблоны Azure Resource Manager для служебной шины доступны для скачивания и развертывания. Щелкните hello ссылкам подробные сведения о каждой из них с помощью шаблонов toohello ссылки на GitHub:
 
 * [Создайте пространство имен служебной шины](service-bus-resource-manager-namespace.md)
 * [Создание пространства имен служебной шины с очередью](service-bus-resource-manager-namespace-queue.md)
@@ -43,25 +43,25 @@ ms.lasthandoff: 08/18/2017
 
 ## <a name="deploy-with-powershell"></a>Развертывание с помощью PowerShell
 
-Ниже описывается использование PowerShell для развертывания шаблона Azure Resource Manager, который создает пространство имен служебной шины уровня **Standard** и очередь в ней. Этот пример основан на шаблоне [Создание пространства имен служебной шины с очередью](https://github.com/Azure/azure-quickstart-templates/tree/master/201-servicebus-create-queue). Ниже приведена примерная последовательность действий.
+Hello ниже описано, как toodeploy PowerShell toouse шаблона диспетчера ресурсов Azure, создает **Стандартная** уровня пространства имен шины обслуживания и очереди в этом пространстве имен. Этот пример основан на hello [создание пространства имен Service Bus с очередью](https://github.com/Azure/azure-quickstart-templates/tree/master/201-servicebus-create-queue) шаблона. Приблизительное Hello рабочий процесс выглядит следующим образом:
 
 1. Установите PowerShell.
-2. Создайте шаблон и (необязательно) файл параметров.
-3. В PowerShell войдите в свою учетную запись Azure.
+2. Создание шаблона hello и (необязательно) файл параметров.
+3. В PowerShell войдите в tooyour учетная запись Azure.
 4. Создайте группу ресурсов, если ее еще нет.
-5. Протестируйте развертывание.
-6. Если необходимо, задайте режим развертывания.
-7. Разверните шаблон.
+5. Тестирование развертывания hello.
+6. При желании установите режим развертывания hello.
+7. Развертывание шаблона hello.
 
 Подробные сведения о развертывании шаблонов Azure Resource Manager см. в статье [Deploy resources with Resource Manager templates and Azure PowerShell][Deploy resources with Azure Resource Manager templates] (Развертывание ресурсов с использованием шаблонов Resource Manager и Azure PowerShell).
 
 ### <a name="install-powershell"></a>Установка PowerShell
 
-Установите Azure PowerShell, следуя указаниям в разделе [Getting started with Azure PowerShell](/powershell/azure/get-started-azureps) (Приступая к работе с Azure PowerShell).
+Установите Azure PowerShell, следуя инструкциям hello [Приступая к работе с Azure PowerShell](/powershell/azure/get-started-azureps).
 
 ### <a name="create-a-template"></a>Создание шаблона
 
-Клонируйте и скопируйте шаблон [201-servicebus-create-queue](https://github.com/Azure/azure-quickstart-templates/blob/master/201-servicebus-create-queue/azuredeploy.json) из GitHub.
+Клон или копирования hello [201-servicebus создать очередь](https://github.com/Azure/azure-quickstart-templates/blob/master/201-servicebus-create-queue/azuredeploy.json) шаблона из GitHub:
 
 ```json
 {
@@ -71,20 +71,20 @@ ms.lasthandoff: 08/18/2017
         "serviceBusNamespaceName": {
             "type": "string",
             "metadata": {
-                "description": "Name of the Service Bus namespace"
+                "description": "Name of hello Service Bus namespace"
             }
         },
         "serviceBusQueueName": {
             "type": "string",
             "metadata": {
-                "description": "Name of the Queue"
+                "description": "Name of hello Queue"
             }
         },
         "serviceBusApiVersion": {
             "type": "string",
             "defaultValue": "2015-08-01",
             "metadata": {
-                "description": "Service Bus ApiVersion used by the template"
+                "description": "Service Bus ApiVersion used by hello template"
             }
         }
     },
@@ -131,7 +131,7 @@ ms.lasthandoff: 08/18/2017
 
 ### <a name="create-a-parameters-file-optional"></a>Создание файла параметров (необязательно)
 
-Чтобы использовать необязательный файл параметров, скопируйте файл [201-servicebus-create-queue](https://github.com/Azure/azure-quickstart-templates/blob/master/201-servicebus-create-queue/azuredeploy.parameters.json). Замените значение `serviceBusNamespaceName` на название пространства имен служебной шины, которое нужно создать в этом развертывании, а значение `serviceBusQueueName` — на имя очереди, которую нужно создать.
+toouse файл необязательные параметры копирования hello [201-servicebus создать очередь](https://github.com/Azure/azure-quickstart-templates/blob/master/201-servicebus-create-queue/azuredeploy.parameters.json) файла. Замените значение hello `serviceBusNamespaceName` с именем hello пространства имен Service Bus hello нужны toocreate в этом развертывании и замените значение hello `serviceBusQueueName` с именем hello hello очереди требуется toocreate.
 
 ```json
 {
@@ -151,37 +151,37 @@ ms.lasthandoff: 08/18/2017
 }
 ```
 
-Дополнительные сведения см. в разделе [Параметры](../azure-resource-manager/resource-group-template-deploy.md#parameter-files).
+Дополнительные сведения см. в разделе hello [параметры](../azure-resource-manager/resource-group-template-deploy.md#parameter-files) раздела.
 
-### <a name="log-in-to-azure-and-set-the-azure-subscription"></a>Вход в Azure и настройка подписки Azure
+### <a name="log-in-tooazure-and-set-hello-azure-subscription"></a>Войдите в tooAzure и задать hello подписки Azure
 
-В командной строке PowerShell выполните следующую команду:
+В командной строке PowerShell выполните следующую команду hello:
 
 ```powershell
 Login-AzureRmAccount
 ```
 
-Вам будет предложено войти в учетную запись Azure. Войдя в систему, выполните следующую команду, чтобы просмотреть доступные подписки.
+Все запрашиваемые toolog на tooyour учетная запись Azure. После входа в систему запустите следующие команды tooview hello доступных подписок.
 
 ```powershell
 Get-AzureRMSubscription
 ```
 
-Эта команда возвращает список доступных подписок Azure. Выберите подписку для текущего сеанса, выполнив приведенную ниже команду. Замените `<YourSubscriptionId>` идентификатором GUID подписки Azure, которую вы хотите использовать.
+Эта команда возвращает список доступных подписок Azure. Выберите подписку для hello текущего сеанса, выполнив следующую команду hello. Замените `<YourSubscriptionId>` hello GUID для hello подписки Azure необходимо toouse.
 
 ```powershell
 Set-AzureRmContext -SubscriptionID <YourSubscriptionId>
 ```
 
-### <a name="set-the-resource-group"></a>Задание группы ресурсов
+### <a name="set-hello-resource-group"></a>Группа ресурсов набор hello
 
-Если у вас нет группы ресурсов, создайте ее с помощью команды **New-AzureRmResourceGroup**. Введите имя группы ресурсов и нужное расположение. Например:
+Если нет существующего ресурса группы, создайте новую группу ресурсов с hello ** New AzureRmResourceGroup ** команды. Укажите имя группы ресурсов hello и место toouse hello. Например:
 
 ```powershell
 New-AzureRmResourceGroup -Name MyDemoRG -Location "West US"
 ```
 
-После успешного выполнения операции появится сводка по новой группе ресурсов.
+В случае успешного выполнения отображается сводка hello новую группу ресурсов.
 
 ```powershell
 ResourceGroupName : MyDemoRG
@@ -191,44 +191,44 @@ Tags              :
 ResourceId        : /subscriptions/<GUID>/resourceGroups/MyDemoRG
 ```
 
-### <a name="test-the-deployment"></a>тестирование развертывания
+### <a name="test-hello-deployment"></a>Тестирование развертывания hello
 
-Проверьте развертывание, выполнив командлет `Test-AzureRmResourceGroupDeployment`. При тестировании развернутой службы укажите точно такие же параметры, как и при ее выполнении.
-
-```powershell
-Test-AzureRmResourceGroupDeployment -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json
-```
-
-### <a name="create-the-deployment"></a>Создание развертывания
-
-Чтобы создать развертывание, выполните командлет `New-AzureRmResourceGroupDeployment` и укажите необходимые параметры при появлении запроса. Параметры включают в себя имя развертывания, имя группы ресурсов и путь к файлу шаблона или его URL-адрес. Если параметр **Режим** не указан, используется стандартное значение **Добавочный**. Дополнительные сведения см. в статье [Добавочные и полные развертывания](../azure-resource-manager/resource-group-template-deploy.md#incremental-and-complete-deployments).
-
-Следующая команда запрашивает три параметра в окне PowerShell:
+Проверка развертывания, выполнив hello `Test-AzureRmResourceGroupDeployment` командлета. При тестировании hello развертывания, укажите параметры, точно так, как при выполнении развертывания hello.
 
 ```powershell
-New-AzureRmResourceGroupDeployment -Name MyDemoDeployment -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json
+Test-AzureRmResourceGroupDeployment -ResourceGroupName MyDemoRG -TemplateFile <path tootemplate file>\azuredeploy.json
 ```
 
-Чтобы использовать вместо этого файл параметров, выполните приведенную ниже команду.
+### <a name="create-hello-deployment"></a>Создание развертывания hello
+
+toocreate hello новое развертывание, запустите hello `New-AzureRmResourceGroupDeployment` командлет и укажите необходимые параметры hello при появлении запроса. Hello параметры включают имя для вашего развертывания hello имя группы ресурсов и hello путь или URL-адрес файла шаблона toohello. Если hello **режим** параметр не указан, значение по умолчанию hello **Incremental** используется. Дополнительные сведения см. в статье [Добавочные и полные развертывания](../azure-resource-manager/resource-group-template-deploy.md#incremental-and-complete-deployments).
+
+Здравствуйте, следующие командные строки вы hello трех параметров в окне PowerShell hello:
 
 ```powershell
-New-AzureRmResourceGroupDeployment -Name MyDemoDeployment -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json -TemplateParameterFile <path to parameters file>\azuredeploy.parameters.json
+New-AzureRmResourceGroupDeployment -Name MyDemoDeployment -ResourceGroupName MyDemoRG -TemplateFile <path tootemplate file>\azuredeploy.json
 ```
 
-При выполнении командлета развертывания также можно использовать встроенные параметры. Команда выглядит следующим образом:
+toospecify файл параметров используйте следующую команду hello.
 
 ```powershell
-New-AzureRmResourceGroupDeployment -Name MyDemoDeployment -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json -parameterName "parameterValue"
+New-AzureRmResourceGroupDeployment -Name MyDemoDeployment -ResourceGroupName MyDemoRG -TemplateFile <path tootemplate file>\azuredeploy.json -TemplateParameterFile <path tooparameters file>\azuredeploy.parameters.json
 ```
 
-Чтобы выполнить [полное](../azure-resource-manager/resource-group-template-deploy.md#incremental-and-complete-deployments) развертывание, установите для параметра **Режим** значение **Полный**.
+Также можно использовать встроенные параметры, при запуске командлета развертывания hello. Команда Hello выглядит следующим образом:
 
 ```powershell
-New-AzureRmResourceGroupDeployment -Name MyDemoDeployment -Mode Complete -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json
+New-AzureRmResourceGroupDeployment -Name MyDemoDeployment -ResourceGroupName MyDemoRG -TemplateFile <path tootemplate file>\azuredeploy.json -parameterName "parameterValue"
 ```
 
-### <a name="verify-the-deployment"></a>Проверка развертывания
-В случае успешного развертывания ресурсов в окне PowerShell будет приведена сводка по развертыванию.
+toorun [завершения](../azure-resource-manager/resource-group-template-deploy.md#incremental-and-complete-deployments) развертывания, набор hello **режим** параметр слишком**завершить**:
+
+```powershell
+New-AzureRmResourceGroupDeployment -Name MyDemoDeployment -Mode Complete -ResourceGroupName MyDemoRG -TemplateFile <path tootemplate file>\azuredeploy.json
+```
+
+### <a name="verify-hello-deployment"></a>Проверка развертывания hello
+Если ресурсы hello успешно развертывается, сводка hello развертывания отображается в окне PowerShell hello:
 
 ```powershell
 DeploymentName    : MyDemoDeployment
@@ -247,7 +247,7 @@ Parameters        :
 ```
 
 ## <a name="next-steps"></a>Дальнейшие действия
-Мы рассмотрели базовую процедуру и команды для развертывания шаблона Azure Resource Manager. Для получения более подробных сведений перейдите по следующим ссылкам:
+Теперь вы увидели hello базовый рабочий процесс и команды для развертывания шаблона диспетчера ресурсов Azure. Для получения дополнительных сведений посетите hello ссылкам:
 
 * [Общие сведения о диспетчере ресурсов Azure][Azure Resource Manager overview]
 * [Развертывание ресурсов с использованием шаблонов Resource Manager и Azure PowerShell][Deploy resources with Azure Resource Manager templates]

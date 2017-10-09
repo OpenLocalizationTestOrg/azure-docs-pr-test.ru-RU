@@ -1,6 +1,6 @@
 ---
-title: "Устранение неполадок с HDFS при помощи Azure HDInsight | Документация Майкрософт"
-description: "Получите ответы на распространенные вопросы о работе с HDFS и Azure HDInsight."
+title: "aaaTroubleshoot HDFS с помощью Azure HDinsight | Документы Microsoft"
+description: "Ответы toocommon вопросов о работе с HDFS и Azure HDInsight."
 keywords: "Azure HDInsight, HDFS, вопросы и ответы, руководство по устранению неполадок, часто задаваемые вопросы"
 services: Azure HDInsight
 documentationcenter: na
@@ -15,25 +15,25 @@ ms.devlang: na
 ms.topic: article
 ms.date: 7/7/2017
 ms.author: arijitt
-ms.openlocfilehash: 58f3d160c1f2a32025b706f10863e0055d67bfcd
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: f5adec6879c947fcff82112e95d9d0303592c834
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="troubleshoot-hdfs-by-using-azure-hdinsight"></a>Устранение неполадок с HDFS при помощи Azure HDInsight
 
-Ознакомьтесь с основными проблемами и их способами их решения при работе с полезными данными распределенной файловой системы Hadoop (HDFS) в Apache Ambari.
+Дополнительные сведения о hello основные проблемы и способы их устранения при работе с полезными данными системы распределенных файла Hadoop (HDFS) Apache Ambari.
 
-## <a name="how-do-i-access-local-hdfs-from-inside-a-cluster"></a>Как получить доступ к локальной системе HDFS в пределах кластера
+## <a name="how-do-i-access-local-hdfs-from-inside-a-cluster"></a>Как открывать hello локального HDFS из внутри кластера
 
 ### <a name="issue"></a>Проблема
 
-Вместо хранилища BLOB-объектов Azure или Azure Data Lake Store для доступа к локальной системе HDFS в пределах кластера HDInsight используется командная строка и код приложения.   
+Hello доступа локального HDFS из командной строки и кода приложений вместо hello с помощью хранилища больших двоичных объектов Azure или хранилища Озера данных Azure из внутри hello кластера HDInsight.   
 
 ### <a name="resolution-steps"></a>Способы устранения
 
-1. Вставьте в командную строку `hdfs dfs -D "fs.default.name=hdfs://mycluster/" ...` без изменений, как в следующей команде:
+1. Hello командной строки, используйте `hdfs dfs -D "fs.default.name=hdfs://mycluster/" ...` буквально, как и hello следующую команду:
 
     ```apache
     hdiuser@hn0-spark2:~$ hdfs dfs -D "fs.default.name=hdfs://mycluster/" -ls /
@@ -43,7 +43,7 @@ ms.lasthandoff: 08/29/2017
     drwx------   - hdiuser hdfs          0 2016-11-10 22:22 /user
     ```
 
-2. Вставьте в исходный код универсальный код ресурса (URI) `hdfs://mycluster/` без изменений, как показано в примере приложения.
+2. Из исходного кода, используйте hello URI `hdfs://mycluster/` буквально, как следующий пример приложения hello:
 
     ```csharp
     import java.io.IOException;
@@ -68,7 +68,7 @@ ms.lasthandoff: 08/29/2017
     }
     ```
 
-3. Запустите скомпилированный JAR-файл (например, файл с именем `java-unit-tests-1.0.jar`) в кластере HDInsight с помощью следующей команды:
+3. Hello выполнения компиляции JAR-файлу (например, файл с именем `java-unit-tests-1.0.jar`) на hello HDInsight кластер с hello следующую команду:
 
     ```apache
     hdiuser@hn0-spark2:~$ hadoop jar java-unit-tests-1.0.jar JavaUnitTests
@@ -83,23 +83,23 @@ ms.lasthandoff: 08/29/2017
 
 ### <a name="issue"></a>Проблема
 
-Локальная система HDFS не выводится из безопасного режима в кластере HDInsight.   
+Здравствуйте, локальный HDFS застряла в безопасном режиме, в кластере HDInsight hello.   
 
 ### <a name="detailed-description"></a>Подробное описание
 
-Произошла ошибка при выполнении следующей команды HDFS:
+Произошла ошибка при выполнении hello следующую команду HDFS:
 
 ```apache
 hdfs dfs -D "fs.default.name=hdfs://mycluster/" -mkdir /temp
 ```
 
-При попытке выполнить эту команду возникла следующая ошибка:
+Появится следующая ошибка при выполнении команды hello hello:
 
 ```apache
 hdiuser@hn0-spark2:~$ hdfs dfs -D "fs.default.name=hdfs://mycluster/" -mkdir /temp
 17/04/05 16:20:52 WARN retry.RetryInvocationHandler: Exception while invoking ClientNamenodeProtocolTranslatorPB.mkdirs over hn0-spark2.2oyzcdm4sfjuzjmj5dnmvscjpg.dx.internal.cloudapp.net/10.0.0.22:8020. Not retrying because try once and fail.
 org.apache.hadoop.ipc.RemoteException(org.apache.hadoop.hdfs.server.namenode.SafeModeException): Cannot create directory /temp. Name node is in safe mode.
-It was turned on manually. Use "hdfs dfsadmin -safemode leave" to turn safe mode off.
+It was turned on manually. Use "hdfs dfsadmin -safemode leave" tooturn safe mode off.
         at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.checkNameNodeSafeMode(FSNamesystem.java:1359)
         at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.mkdirs(FSNamesystem.java:4010)
         at org.apache.hadoop.hdfs.server.namenode.NameNodeRpcServer.mkdirs(NameNodeRpcServer.java:1102)
@@ -149,11 +149,11 @@ mkdir: Cannot create directory /temp. Name node is in safe mode.
 
 ### <a name="probable-cause"></a>Возможные причины
 
-Кластер HDInsight был уменьшен до небольшого числа узлов. Число узлов ниже фактора репликации HDFS или близко к нему.
+Hello кластера HDInsight был уменьшен tooa очень небольшое число узлов. Hello количество узлов ниже или закройте коэффициентом репликации toohello HDFS.
 
 ### <a name="resolution-steps"></a>Способы устранения 
 
-1. Получите сведения о состоянии HDFS в кластере HDInsight, выполнив следующие команды:
+1. Получите состояние hello HDFS в кластере HDInsight hello с помощью hello, следующие команды:
 
     ```apache
     hdfs dfsadmin -D "fs.default.name=hdfs://mycluster/" -report
@@ -194,14 +194,14 @@ mkdir: Cannot create directory /temp. Name node is in safe mode.
     ...
     ```
 
-2. Сведения о состоянии целостности HDFS в кластере HDInsight можно получить с помощью следующих команд:
+2. Проверка целостности hello HDFS в кластере HDInsight hello с помощью hello, следующие команды:
 
     ```apache
     hdiuser@hn0-spark2:~$ hdfs fsck -D "fs.default.name=hdfs://mycluster/" /
     ```
 
     ```apache
-    Connecting to namenode via http://hn0-spark2.2oyzcdm4sfjuzjmj5dnmvscjpg.dx.internal.cloudapp.net:30070/fsck?ugi=hdiuser&path=%2F
+    Connecting toonamenode via http://hn0-spark2.2oyzcdm4sfjuzjmj5dnmvscjpg.dx.internal.cloudapp.net:30070/fsck?ugi=hdiuser&path=%2F
     FSCK started by hdiuser (auth:SIMPLE) from /10.0.0.22 for path / at Wed Apr 05 16:40:28 UTC 2017
     ....................................................................................................
 
@@ -224,10 +224,10 @@ mkdir: Cannot create directory /temp. Name node is in safe mode.
     Number of racks:               1
     FSCK ended at Wed Apr 05 16:40:28 UTC 2017 in 187 milliseconds
 
-    The filesystem under path '/' is HEALTHY
+    hello filesystem under path '/' is HEALTHY
     ```
 
-3. Если вы определили, что отсутствующих, поврежденных, либо нереплицированных блоков нет или что такие блоки можно игнорировать, выполните следующую команду, чтобы вывести узел имен из безопасного режима:
+3. Если вы установили, нет нет отсутствует, поврежден или under-реплицированных блоков, игнорирование этих блоков, выполните hello, следующая команда tootake hello имя узла из безопасного режима:
 
     ```apache
     hdfs dfsadmin -D "fs.default.name=hdfs://mycluster/" -safemode leave

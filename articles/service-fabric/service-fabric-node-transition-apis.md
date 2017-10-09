@@ -1,6 +1,6 @@
 ---
-title: "Запуск и остановка узлов кластера для проверки микрослужб Azure | Документация Майкрософт"
-description: "Узнайте, как использовать внесение ошибок для тестирования приложения Service Fabric, запуская и останавливая узлы кластера."
+title: "aaaStart и stop tootest узлы кластера Azure микрослужбами | Документы Microsoft"
+description: "Узнайте, как toouse fault tootest внедрение приложения Service Fabric, запуск и остановка узлов кластера."
 services: service-fabric
 documentationcenter: .net
 author: LMWF
@@ -14,57 +14,57 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 6/12/2017
 ms.author: lemai
-ms.openlocfilehash: 850fbc0c74811ec942292da64064dec867cd1b9e
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 7d3f5147328e6233a67533fbfb2a525aa5fc060e
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="replacing-the-start-node-and-stop-node-apis-with-the-node-transition-api"></a>Замена API-интерфейсов запуска и остановки узла API-интерфейсом перехода узла
+# <a name="replacing-hello-start-node-and-stop-node-apis-with-hello-node-transition-api"></a>Заменив hello узла перехода API hello начального узла и остановка узла API-интерфейсы
 
-## <a name="what-do-the-stop-node-and-start-node-apis-do"></a>Для чего нужны API-интерфейсы запуска и остановки узла?
+## <a name="what-do-hello-stop-node-and-start-node-apis-do"></a>Что hello остановить узел и запуск узла интерфейсы API?
 
-API остановки узла (управляемый: [StopNodeAsync()][stopnode], PowerShell: [Stop-ServiceFabricNode][stopnodeps]) останавливает узел Service Fabric.  Узел Service Fabric — это процесс, а не компьютер или виртуальная машина, поэтому компьютер или виртуальная машина будут продолжать работу.  В этом документе далее термин "узел" означает узел Service Fabric.  При остановке узел помещается в состояние *Остановлен*, при котором он не является элементом кластера и не может размещать службы, имитируя *отключенный* узел.  Это полезно для внесения ошибок в систему при тестировании приложения.  API запуска узла (управляемый: [StartNodeAsync()][startnode], PowerShell: [Start-ServiceFabricNode][startnodeps]]) обращает API остановки узла, возвращая узел в обычное состояние.
+Остановить узел API Hello (управляемые: [StopNodeAsync()][stopnode], PowerShell: [Stop ServiceFabricNode][stopnodeps]) останавливает узел Service Fabric.  Узел Service Fabric — процесс, виртуальная машина или машины — hello виртуальная машина или машины по-прежнему будут выполняться.  Hello оставшейся части документа hello «узла» будет означать узел Service Fabric.  Остановка узла помещает его в *остановлена* состоянии, которое он не является членом кластера hello невозможно разместить службы, что позволяет имитировать *работу* узла.  Это полезно для добавления ошибок в системе tootest hello приложения.  Hello запустить узел API (управляемые: [StartNodeAsync()][startnode], PowerShell: [начала ServiceFabricNode][startnodeps]]) отменяет hello API остановить узел  вызывает hello узел задней tooa нормальное состояние.
 
 ## <a name="why-are-we-replacing-these"></a>Зачем их заменять?
 
-Как было описано ранее, *остановленный* узел Service Fabric — это узел, к которому намеренно применен API остановки узла.  *Отключенный*  узел — это узел, который не работает по какой-либо другой причине (например, из-за отключения компьютера или виртуальной машины).  При использовании API остановки узла в системе не отображаются сведения, с помощью которых можно различить *остановленные* и *отключенные* узлы.
+Как было сказано выше, *остановлена* Service Fabric узел является узлом намеренно целевые с помощью hello API остановить узел.  Объект *работу* узел является узлом, не работает для какой-либо причине (например hello виртуальная машина или машины — off).  С hello остановить узел API системы hello не предоставляет сведения toodifferentiate между *остановлена* узлов и *работу* узлов.
 
-Кроме того, некоторые сообщения об ошибках, возвращаемые этими API-интерфейсами, недостаточно содержательны.  Например, при вызове API остановки узла на уже *остановленном* узле возвращается ошибка *InvalidAddress*.  Это поведение можно оптимизировать.
+Кроме того, некоторые сообщения об ошибках, возвращаемые этими API-интерфейсами, недостаточно содержательны.  Например, вызов hello остановить узел API на объект уже *остановлена* узел вернет ошибку hello *InvalidAddress*.  Это поведение можно оптимизировать.
 
-Кроме того, работа узла останавливается на неограниченное время до вызова API запуска узла.  Выяснилось, что это может привести к проблемам и возникновению ошибок.  Например, мы сталкивались с проблемами, когда пользователь вызывал API остановки узла, а потом забывал об этом.  Позже было невозможно установить, что произошло с узлом: был ли он *отключен* или *остановлен*.
+Кроме того пока hello, запустить узел API вызывается hello время, в течение которого узел остановлен на «бесконечность».  Выяснилось, что это может привести к проблемам и возникновению ошибок.  Например описанных выше проблем, где пользователь вызывается hello остановить узел API на узле и затем забыли о нем.  Позже, было ясно, если узел hello был *работу* или *остановлена*.
 
 
-## <a name="introducing-the-node-transition-apis"></a>Знакомство с API-интерфейсами перехода узла
+## <a name="introducing-hello-node-transition-apis"></a>Знакомство с приложением hello API-интерфейсы узла перехода
 
-Описанные выше проблемы можно решить с помощью нашего нового набора API-интерфейсов.  Новый API перехода узла (управляемый: [StartNodeTransitionAsync()][snt]) может использоваться для перехода узла Service Fabric в *остановленное* состояние или для перехода из *остановленного* состояния в нормальное рабочее состояние.  Обратите внимание на то, что "запуск" в названии API не означает собственно запуск узла.  Это означает начало асинхронной операции, которую выполняет система для перевода узла в *остановленное* или рабочее состояние.
+Описанные выше проблемы можно решить с помощью нашего нового набора API-интерфейсов.  новый узел перехода API Hello (управляемые: [StartNodeTransitionAsync()][snt]) может быть используется tootransition tooa узел Service Fabric *остановлена* состояния или tootransition его из *остановлена* состояние tooa обычного состояния.  Обратите внимание, что hello «Start» в качестве имени hello hello API не ссылается toostarting узла.  Он ссылается toobeginning асинхронной операции, система hello будет выполняться tootransition hello узел tooeither *остановлена* или рабочем состоянии.
 
 **Использование**
 
-Если при вызове API перехода узла не возвращается исключение, это означает, что система приняла асинхронную операцию и собирается ее выполнить.  Успешный вызов еще не означает, что операция завершена.  Для получения сведений о текущем состоянии операции вызовите API хода выполнения перехода узла (управляемый: [GetNodeTransitionProgressAsync()][gntp]) с помощью идентификатора GUID, используемого при вызове API перехода узла для этой операции.  API хода выполнения перехода узла возвращает объект NodeTransitionProgress.  Это свойство State объекта указывает текущее состояние операции.  Если свойство имеет значение Running, операция выполняется.  Значение Completed указывает на то, что операция завершена без ошибок.  А значение Faulted — на ошибку, возникшую при выполнении операции.  Свойство Exception в свойстве Result указывает на наличие проблемы.  Дополнительные сведения о свойстве State см. на странице https://docs.microsoft.com/dotnet/api/system.fabric.testcommandprogressstate. Примеры кода приведены в разделе "Пример использования" далее в этой статье.
+Если hello узла перехода API не вызывает исключение при вызове, система hello принял hello асинхронной операции и выполнит его.  Успешного вызова не означает, что еще завершена операция hello.  tooget сведения о текущем состоянии hello операции hello, hello вызов API выполняется переход узел (управляемые: [GetNodeTransitionProgressAsync()][gntp]) с идентификатором guid hello, используемых при вызове узла API переход для этой операции.  Hello узла перехода выполняется API возвращает объект NodeTransitionProgress.  Состояние объекта указывает текущее состояние операции hello hello.  Если hello состояние «выполняется», выполняется операция hello.  Если она будет завершена, операция hello завершена без ошибок.  Если он находится в состоянии сбоя, произошла ошибка при выполнении операции hello.  свойства Result Hello свойство будет указывать, какие hello выдавать исключение.  В разделе https://docs.microsoft.com/dotnet/api/system.fabric.testcommandprogressstate Дополнительные сведения о свойство State hello и hello «Использование образца» приведены ниже в разделе примеров кода.
 
 
-**Определение остановленного и отключенного узла.** Если узел *остановлен* с помощью API перехода узла, в выходных данных запроса узла (управляемый: [GetNodeListAsync()][nodequery], PowerShell: [Get-ServiceFabricNode][nodequeryps]) свойство *IsStopped* этого узла будет иметь значение true.  Обратите внимание, что оно отличается от значения свойства *NodeStatus*, которое равно *Down*.  Если свойство *NodeStatus* имеет значение *Down*, но свойство *IsStopped* имеет значение false, это значит, что узел не остановлен с помощью API перехода узла, а *отключен* по какой-то другой причине.  Если свойство *IsStopped* имеет значение true, а свойство *NodeStatus* — значение *Down*, это значит, что узел остановлен с помощью API перехода узла.
+**Разграничения остановлена узел и узел вниз** Если узел является *остановлена* с помощью hello API узел перехода, выходные данные запроса узел hello (управляемые: [GetNodeListAsync()] [ nodequery], PowerShell: [Get ServiceFabricNode][nodequeryps]) будет показывать, что этот узел есть *IsStopped* свойство значение true.  Обратите внимание на это поведение отличается от значение hello hello *NodeStatus* свойство, которое укажет *работу*.  Если hello *NodeStatus* свойство имеет значение *работу*, но *IsStopped* имеет значение false, то hello узел не был остановлен, с помощью API перехода узла hello и является  *Вниз* из-за какой-либо другой причине.  Если hello *IsStopped* свойство имеет значение true, а hello *NodeStatus* свойство *работу*, то остановлена с помощью hello API узла перехода.
 
-Запуск *остановленного* узла с помощью API перехода узла вернет его к работе в качестве обычного элемента кластера.  В выходных данных API запроса узла для свойства *IsStopped* будет отображаться значение false, а для свойства *NodeStatus* — значение, отличное от Down (например, Up).
+Запуск *остановлена* узла, используя hello узла перехода API вернет его toofunction как обычный членом кластера hello еще раз.  Hello выходные данные запроса узла hello API будет показывать *IsStopped* false, и *NodeStatus* как элемент, не являющийся вниз (например вверх).
 
 
-**Ограниченное время.** При использовании API перехода узла для остановки узла один из обязательных параметров, *stopNodeDurationInSeconds*, отображает время в секундах, в течение которого узел будет оставаться *остановленным*.  Это должно быть значение в разрешенном диапазоне — не менее 600 и не более 14 400.  По истечении этого времени узел автоматически перезапустится и перейдет в рабочее состояние (Up).  Использование этого API показано в примере 1 ниже.
-
-> [!WARNING]
-> Не используйте одновременно API-интерфейсы перехода узла и API-интерфейсы запуска и остановки узла.  Рекомендуем использовать только API перехода узла.  Если узел уже остановлен с помощью API остановки узла, его следует запустить с помощью API запуска узла и только потом использовать API перехода узла.
+**Ограниченные длительность** при использовании узла перехода API hello toostop узла, один из hello необходимые параметры *stopNodeDurationInSeconds*, представляет hello количество времени в секундах tookeep hello узел  *Остановить*.  Это значение должно быть в допустимый диапазон, имеющий 600 минимум и максимум 14400 hello.  После истечения этого времени, узел hello сам в показатель состояния автоматически перезагрузится.  См. пример использования tooSample 1 ниже.
 
 > [!WARNING]
-> На одном узле нельзя параллельно выполнить несколько вызовов API перехода узла.  В таком случае API перехода узла выдаст исключение FabricException со значением свойства ErrorCode, равным NodeTransitionInProgress.  После начала перехода на определенном узле следует подождать, пока операция достигнет конечного состояния (Completed, Faulted или ForceCancelled), прежде чем начинать новый переход на том же узле.  Параллельные вызовы перехода на разных узлах разрешены.
+> Использовать API-интерфейсы узла перехода и hello узла остановить и запустить узел API.  Hello рекомендуется слишком использовать только hello API узла перехода.  > Если узел уже была остановлена при помощи hello остановить узел API, она должна быть запущена посредством hello API запустить узел сначала перед использованием hello > API-интерфейсы узла перехода.
+
+> [!WARNING]
+> Несколько интерфейсов API перехода узла вызовы нельзя сделать на hello одним узлом в параллельном режиме.  В таком случае будет hello API перехода узла > throw FabricException со значением свойства ErrorCode NodeTransitionInProgress.  После перехода узла на определенном узле имеет > была запущена, нужно подождать, пока операция hello достигнет конечного состояния (завершено, Faulted или ForceCancelled) перед запуском > new переход на hello же узла.  Параллельные вызовы перехода на разных узлах разрешены.
 
 
 #### <a name="sample-usage"></a>Пример использования
 
 
-**Пример 1.** В этом примере API перехода узла используется для остановки узла.
+**Пример 1** -hello следующие образцы использования hello toostop API узла перехода узла.
 
 ```csharp
-        // Helper function to get information about a node
+        // Helper function tooget information about a node
         static Node GetNodeInfo(FabricClient fc, string node)
         {
             NodeList n = null;
@@ -105,7 +105,7 @@ API остановки узла (управляемый: [StopNodeAsync()][stopn
 
                     if (progress.State == TestCommandProgressState.Faulted)
                     {
-                        // Inspect the progress object's Result.Exception.HResult to get the error code.
+                        // Inspect hello progress object's Result.Exception.HResult tooget hello error code.
                         Console.WriteLine("'{0}' failed with: {1}, HResult: {2}", operationId, progress.Result.Exception, progress.Result.Exception.HResult);
 
                         // ...additional logic as required
@@ -125,7 +125,7 @@ API остановки узла (управляемый: [StopNodeAsync()][stopn
 
         static async Task StopNodeAsync(FabricClient fc, string nodeName, int durationInSeconds)
         {
-            // Uses the GetNodeListAsync() API to get information about the target node
+            // Uses hello GetNodeListAsync() API tooget information about hello target node
             Node n = GetNodeInfo(fc, nodeName);
 
             // Create a Guid
@@ -140,7 +140,7 @@ API остановки узла (управляемый: [StopNodeAsync()][stopn
             {
                 try
                 {
-                    // Invoke StartNodeTransitionAsync with the NodeStopDescription from above, which will stop the target node.  Retry transient errors.
+                    // Invoke StartNodeTransitionAsync with hello NodeStopDescription from above, which will stop hello target node.  Retry transient errors.
                     await fc.TestManager.StartNodeTransitionAsync(description, TimeSpan.FromMinutes(1), CancellationToken.None).ConfigureAwait(false);
                     wasSuccessful = true;
                 }
@@ -163,12 +163,12 @@ API остановки узла (управляемый: [StopNodeAsync()][stopn
         }
 ```
 
-**Пример 2.** В этом примере запускается *остановленный* узел.  Здесь используются некоторые вспомогательные методы из первого примера.
+**Пример 2** - hello после запуска образца *остановлена* узла.  Она использует некоторые вспомогательные методы из первого примера hello.
 
 ```csharp
         static async Task StartNodeAsync(FabricClient fc, string nodeName)
         {
-            // Uses the GetNodeListAsync() API to get information about the target node
+            // Uses hello GetNodeListAsync() API tooget information about hello target node
             Node n = GetNodeInfo(fc, nodeName);
 
             Guid guid = Guid.NewGuid();
@@ -183,7 +183,7 @@ API остановки узла (управляемый: [StopNodeAsync()][stopn
             {
                 try
                 {
-                    // Invoke StartNodeTransitionAsync with the NodeStartDescription from above, which will start the target stopped node.  Retry transient errors.
+                    // Invoke StartNodeTransitionAsync with hello NodeStartDescription from above, which will start hello target stopped node.  Retry transient errors.
                     await fc.TestManager.StartNodeTransitionAsync(description, TimeSpan.FromMinutes(1), CancellationToken.None).ConfigureAwait(false);
                     wasSuccessful = true;
                 }
@@ -206,7 +206,7 @@ API остановки узла (управляемый: [StopNodeAsync()][stopn
         }
 ```
 
-**Пример 3.** В этом примере показано неправильное использование.  Ошибка заключается в том, что для свойства *stopDurationInSeconds* указано значение за пределами допустимого диапазона.  Так как API StartNodeTransitionAsync() прекращает работу с неустранимой ошибкой, операция отклоняется, и API хода выполнения невозможно вызвать.  В этом примере используются некоторые вспомогательные методы из первого примера.
+**Пример 3** - hello ниже приведен пример неправильное использование.  Неверное использование этой поскольку hello *stopDurationInSeconds* он предоставляет больше, чем hello, допустимый диапазон.  Поскольку StartNodeTransitionAsync() завершится ошибкой при возникновении неустранимой ошибки, hello операции не был принят, и не следует вызывать API hello хода выполнения.  Этот пример использует некоторые вспомогательные методы из первого примера hello.
 
 ```csharp
         static async Task StopNodeWithOutOfRangeDurationAsync(FabricClient fc, string nodeName)
@@ -215,7 +215,7 @@ API остановки узла (управляемый: [StopNodeAsync()][stopn
 
             Guid guid = Guid.NewGuid();
 
-            // Use an out of range value for stopDurationInSeconds to demonstrate error
+            // Use an out of range value for stopDurationInSeconds toodemonstrate error
             NodeStopDescription description = new NodeStopDescription(guid, n.NodeName, n.NodeInstanceId, 99999);
 
             try
@@ -237,7 +237,7 @@ API остановки узла (управляемый: [StopNodeAsync()][stopn
         }
 ```
 
-**Пример 4.** В этом примере показаны сведения об ошибке, возвращаемые из API хода выполнения перехода узла, когда операция, запущенная с помощью API перехода узла, принимается, но затем при ее выполнении происходит сбой.  В этом случае сбой происходит из-за того, что API перехода узла пытается запустить несуществующий узел.  В этом примере используются некоторые вспомогательные методы из первого примера.
+**Пример 4** - hello ниже приведен пример hello сведения об ошибке, возвращаемое из hello узла перехода выполняется API hello операцию, запущенную методом hello узла перехода API принимается, когда происходит сбой позже, во время выполнения.  В случае hello происходит сбой, поскольку hello API перехода узел пытается toostart узел, который не существует.  Этот пример использует некоторые вспомогательные методы из первого примера hello.
 
 ```csharp
         static async Task StartNodeWithNonexistentNodeAsync(FabricClient fc)
@@ -254,7 +254,7 @@ API остановки узла (управляемый: [StopNodeAsync()][stopn
             {
                 try
                 {
-                    // Invoke StartNodeTransitionAsync with the NodeStartDescription from above, which will start the target stopped node.  Retry transient errors.
+                    // Invoke StartNodeTransitionAsync with hello NodeStartDescription from above, which will start hello target stopped node.  Retry transient errors.
                     await fc.TestManager.StartNodeTransitionAsync(description, TimeSpan.FromMinutes(1), CancellationToken.None).ConfigureAwait(false);
                     wasSuccessful = true;
                 }
@@ -272,8 +272,8 @@ API остановки узла (управляемый: [StopNodeAsync()][stopn
             }
             while (!wasSuccessful);
 
-            // Now call StartNodeTransitionProgressAsync() until the desired state is reached.  In this case, it will end up in the Faulted state since the node does not exist.
-            // When StartNodeTransitionProgressAsync()'s returned progress object has a State if Faulted, inspect the progress object's Result.Exception.HResult to get the error code.
+            // Now call StartNodeTransitionProgressAsync() until hello desired state is reached.  In this case, it will end up in hello Faulted state since hello node does not exist.
+            // When StartNodeTransitionProgressAsync()'s returned progress object has a State if Faulted, inspect hello progress object's Result.Exception.HResult tooget hello error code.
             // In this case, it will be NodeNotFound.
             await WaitForStateAsync(fc, guid, TestCommandProgressState.Faulted).ConfigureAwait(false);
         }

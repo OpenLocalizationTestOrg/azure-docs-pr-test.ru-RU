@@ -1,6 +1,6 @@
 ---
-title: "Выполнение задач запуска в облачных службах Azure | Документация Майкрософт"
-description: "Задачи запуска помогают подготовить среду облачной службы для приложения. Вы узнаете, как работают задачи запуска и как их можно создать."
+title: "aaaRun задачи запуска в облачных службах Azure | Документы Microsoft"
+description: "Задачи запуска помогают подготовить среду облачной службы для приложения. Это объясняется, как рабочих задач запуска и как toomake их"
 services: cloud-services
 documentationcenter: 
 author: Thraka
@@ -14,53 +14,53 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: adegeo
-ms.openlocfilehash: 1c1b3aa86dc8211de0c07c9fb68da5685c86f551
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 3391a5d7434164f59972b8e497e5c34e33409543
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-configure-and-run-startup-tasks-for-a-cloud-service"></a>Как настроить и выполнить задачи запуска для облачной службы
-С помощью задач запуска вы можете выполнять различные операции перед запуском роли. Это может быть установка компонента, регистрация компонентов COM, установка разделов реестра или запуск длительного процесса.
+# <a name="how-tooconfigure-and-run-startup-tasks-for-a-cloud-service"></a>Выполнение задач запуска tooconfigure и выполнения для облачной службы
+Можно использовать операции tooperform запуска задачи до запуска роли. Операции, вы можете tooperform включают установки компонента, регистрация компонентов COM, установка разделов реестра или запуск длительного процесса.
 
 > [!NOTE]
-> Задачи запуска неприменимы к виртуальным машинам, они подходят только для веб-ролей и рабочих ролей облачной службы.
+> При запуске задачи не машины tooVirtual применимо, только tooCloud Service Web и рабочих ролей.
 > 
 > 
 
 ## <a name="how-startup-tasks-work"></a>Как работают задачи запуска
-Задачи запуска — это действия, выполняемые до запуска роли и определяемые в файле [ServiceDefinition.csdef] с помощью элемента [Task] в элементе [Startup]. Часто задачи запуска — это пакетные файлы, но они также могут быть консольными приложениями или пакетными файлами, запускающими сценарии PowerShell.
+Задачи запуска — действия, выполняемые до роли begin и определены в hello [ServiceDefinition.csdef] файла с помощью hello [задачи] элемент в пределах hello [запуска]элемент. Часто задачи запуска — это пакетные файлы, но они также могут быть консольными приложениями или пакетными файлами, запускающими сценарии PowerShell.
 
-Переменные среды передают информацию в задачу запуска, а локальное хранилище можно использовать для передачи информации из задачи запуска. Например, в переменной среды можно указать путь к программе, которую вы хотите установить, и файлы могут быть записаны в локальное хранилище, чтобы позже их могла считать роль.
+Переменные среды передают сведения в задачу запуска, и локальное хранилище можно использовать toopass сведения из задачи запуска. Например, переменная среды можно указать hello путь tooa программы требуется tooinstall, а файлы могут быть записаны toolocal хранилище, могут считываться позже вашей роли.
 
-Задача запуска может записывать информацию и ошибки в журнал в каталоге, заданном переменной среды **TEMP** . Во время выполнения задачи запуска в облаке переменная среды **TEMP** сопоставляется с каталогом *C:\\Resources\\temp\\[guid].[имя_роли]\\RoleTemp*.
+Задача запуска может записывать сведения и ошибки toohello каталог, заданный параметром hello **TEMP** переменной среды. Во время выполнения задачи запуска hello, hello **TEMP** переменной среды устраняет toohello *C:\\ресурсов\\temp\\[guid]. [ roleName]\\RoleTemp* каталог при выполнении в облаке hello.
 
-Кроме того, задачи запуска могут выполняться несколько раз между перезагрузками. Например, задача запуска будет выполняться при каждом перезапуске роли, что не всегда подразумевает перезагрузку. Задачи запуска следует составлять таким способом, чтобы их можно было без проблем запускать несколько раз.
+Кроме того, задачи запуска могут выполняться несколько раз между перезагрузками. Например hello задача запуска будет выполняться при каждом перезапуске роли hello и они могут не всегда связано с перезагрузкой. Задачи запуска должен быть написан таким образом, их toorun несколько раз без проблем.
 
-Задачи запуска должны заканчиваться **errorlevel** (или кодом выхода), равным 0. Тогда процесс запуска будет завершен. Если задача запуска завершается ненулевым **errorlevel**, роль не запускается.
+Задачи запуска должны заканчиваться **errorlevel** (или кодом выхода) ноль toocomplete процесс запуска hello. Если задача запуска оканчивается ненулевым **errorlevel**, hello роль не запускается.
 
 ## <a name="role-startup-order"></a>Порядок запуска роли
-Ниже приведена процедура запуска роли в Azure.
+Hello ниже приведена процедура запуска роли hello в Azure.
 
-1. Экземпляр помечается как **Запуск** и не получает трафик.
-2. Все задачи запуска выполняются в соответствии с их атрибутом **taskType** .
+1. Hello экземпляр помечен как **запуск** и не принимает трафика.
+2. Все задачи запуска выполняются в соответствии с tootheir **taskType** атрибута.
    
-   * **Простые** задачи (simple) выполняются синхронно, по одной.
-   * **Фоновые** задачи (background) и задачи **переднего плана** (foreground) запускаются асинхронно, параллельно с задачей запуска.  
+   * Hello **простой** задачи выполняются синхронно, по одному.
+   * Hello **фона** и **переднего плана** задачи — задача запуска работает асинхронно, параллельные toohello.  
      
      > [!WARNING]
-     > Службы IIS могут не быть полностью настроены на этапе выполнения задач запуска в процессе запуска, поэтому данные, относящиеся к роли, могут быть недоступны. Для задач запуска, требующих данные, относящиеся к роли, следует использовать [Microsoft.WindowsAzure.ServiceRuntime.RoleEntryPoint.OnStart](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.onstart.aspx).
+     > Службы IIS могут не полностью настроен во время этапа запуска задач hello в процессе запуска hello, поэтому данные, зависящие от роли могут быть недоступны. Для задач запуска, требующих данные, относящиеся к роли, следует использовать [Microsoft.WindowsAzure.ServiceRuntime.RoleEntryPoint.OnStart](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.onstart.aspx).
      > 
      > 
-3. Запускается процесс размещения роли и в IIS создается сайт.
-4. Вызывается метод [Microsoft.WindowsAzure.ServiceRuntime.RoleEntryPoint.OnStart](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.onstart.aspx) .
-5. Экземпляр помечается как **Готов** , и трафик перенаправляется в него.
-6. Вызывается метод [Microsoft.WindowsAzure.ServiceRuntime.RoleEntryPoint.Run](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.run.aspx) .
+3. запускается процесс размещения роли Hello и в службах IIS создается узел hello.
+4. Hello [Microsoft.WindowsAzure.ServiceRuntime.RoleEntryPoint.OnStart](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.onstart.aspx) вызывается метод.
+5. Hello экземпляр помечен как **готовности** и трафика перенаправленное toohello экземпляра.
+6. Hello [Microsoft.WindowsAzure.ServiceRuntime.RoleEntryPoint.Run](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.run.aspx) вызывается метод.
 
 ## <a name="example-of-a-startup-task"></a>Пример задачи запуска
-Задачи запуска определяются в файле [ServiceDefinition.csdef], в элементе **Task**. Атрибут **commandLine** задает имя и параметры пакетного файла запуска или команды консоли. Атрибут **executionContext** задает уровень привилегий задачи запуска, а атрибут **taskType** указывает, каким образом будет выполняться задача.
+Задачи запуска определяются в hello [ServiceDefinition.csdef] файла в hello **задачи** элемента. Hello **commandLine** атрибут указывает имя hello и параметры hello пакетный файл или с помощью консоли команду, hello **executionContext** атрибут задает hello права доступа для запуска hello Задача и hello **taskType** атрибут указывает, каким образом будет выполняться задача hello.
 
-В этом примере для задачи запуска создается переменная среды **MyVersionNumber**, которой присваивается значение **1.0.0.0**.
+В этом примере переменной среды **MyVersionNumber**, создается для задачи запуска hello и задать значение toohello "**1.0.0.0**».
 
 **ServiceDefinition.csdef**:
 
@@ -74,76 +74,76 @@ ms.lasthandoff: 08/03/2017
 </Startup>
 ```
 
-В следующем примере пакетный файл **Startup.cmd** записывает строку «The current version is 1.0.0.0» в файл StartupLog.txt в каталоге, указанном в переменной среды TEMP. Строка `EXIT /B 0` гарантирует, что задача запуска завершается **errorlevel** , равным 0.
+В следующем примере hello, hello **Startup.cmd** пакетный файл записывает строку hello «hello текущая версия — 1.0.0.0» файл StartupLog.txt toohello в каталоге hello, указанном в переменной среды TEMP hello. Hello `EXIT /B 0` строки гарантирует, что hello задача запуска оканчивается **errorlevel** равно нулю.
 
 ```cmd
-ECHO The current version is %MyVersionNumber% >> "%TEMP%\StartupLog.txt" 2>&1
+ECHO hello current version is %MyVersionNumber% >> "%TEMP%\StartupLog.txt" 2>&1
 EXIT /B 0
 ```
 
 > [!NOTE]
-> В Visual Studio свойству **Копировать в выходной каталог** для пакетного файла запуска должно быть присвоено значение **Всегда копировать**, чтобы пакетный файл запуска был должным образом развернут в проекте Azure (**approot\\bin** для веб-ролей и **approot** для рабочих ролей).
+> В Visual Studio hello **скопируйте каталог tooOutput** свойства для пакетного файла запуска должно быть установлено слишком**всегда Копировать** toobe, убедитесь, что пакетный файл запуска должным образом развернут tooyour проекта в Azure (**approot\\bin** для веб-ролей и **approot** для рабочих ролей).
 > 
 > 
 
 ## <a name="description-of-task-attributes"></a>Описание атрибутов задачи
-Ниже описаны атрибуты элемента **Task** в файле [ServiceDefinition.csdef] .
+Hello ниже описываются атрибуты hello hello **задачи** элемент в hello [ServiceDefinition.csdef] файла:
 
-**commandLine** — задает командную строку для задачи запуска:
+**Командная строка** -указывает hello командной строки для запуска задачи hello:
 
-* Команда с необязательными параметрами командной строки, с которой начинается задача запуска.
-* Часто это имя пакетного CMD- или BAT-файла.
-* Задача задается относительно папки AppRoot\\bin развертывания. Переменные среды не разворачиваются при определении пути и файла задачи. Если требуется расширение среды, можно создать небольшой CMD-файл сценария, который вызывает задачу запуска.
+* Hello команда с необязательными параметрами командной строки, которая начинает задачу запуска hello.
+* Часто это имя файла hello .cmd или .bat пакетный файл.
+* Задача Hello — относительный toohello AppRoot\\папка Bin для развертывания hello. Переменные среды не будут развернуты при определении пути hello и задачи «hello». Если требуется расширение среды, можно создать небольшой CMD-файл сценария, который вызывает задачу запуска.
 * Может быть консольным приложением или пакетным файлом, который запускает [сценарий PowerShell](cloud-services-startup-tasks-common.md#create-a-powershell-startup-task).
 
-**executionContext** — задает уровень привилегий для задачи запуска. Уровень привилегий может быть ограничен или повышен:
+**executionContext** -указывает hello уровень прав доступа для запуска задачи hello. уровень прав доступа Hello можно ограничены или с повышенными привилегиями:
 
 * **limited**  
-  Задача запуска выполняется с теми же привилегиями, что и роль. Если атрибут **executionContext** элемента [Runtime] также имеет значение **limited**, то используются привилегии пользователя.
+  Hello задача запуска выполняется с одинаковыми правами как роль hello hello. Здравствуйте, когда **executionContext** атрибут для hello [среды выполнения] элемент является также **ограниченный**, то используются права доступа пользователя.
 * **elevated**  
-  Задача запуска выполняется с привилегиями администратора. Это позволяет задачам запуска устанавливать программы, вносить изменения в конфигурацию IIS, вносить изменения в реестр и выполнять другие административные задачи без увеличения уровня привилегий самой роли.  
+  Hello задача запуска выполняется с правами администратора. Это позволяет задачи запуска программы tooinstall, внести изменения в конфигурацию IIS, выполнять изменения в реестр, а также другие административные задачи без увеличения hello права доступа для самой роли hello.  
 
 > [!NOTE]
-> Уровень привилегий задачи запуска не обязательно должен совпадать с уровнем привилегий роли.
+> Hello уровень прав доступа задачи запуска не требуется toobe Здравствуйте таким же, как сама роль hello.
 > 
 > 
 
-**taskType** — указывает способ выполнения задачи запуска.
+**Тип задачи** -указывает, выполняется hello, каким образом задачи запуска.
 
 * **Простые**  
-  Задачи выполняются синхронно, поочередно и в порядке, указанном в файле [ServiceDefinition.csdef] . Если одна задача запуска **simple** завершается **errorlevel**, равным нулю, выполняется следующая задача запуска **simple**. Если больше нет задач запуска **simple** для выполнения, запускается сама роль.   
+  Задачи выполняются синхронно, одновременно в порядке hello, указываемой hello [ServiceDefinition.csdef] файла. Если в одном **простой** задача запуска оканчивается **errorlevel** равна нулю, hello рядом **простой** выполнения задачи запуска. Если больше нет **простой** задач запуска tooexecute, а затем запускается сама роль hello.   
   
   > [!NOTE]
-  > Если задача **simple** завершается ненулевым **errorlevel**, экземпляр будет заблокирован. Последующие задачи запуска **simple** не запустятся, как и сама роль.
+  > Если hello **простой** задача оканчивается с ненулевым **errorlevel**, hello экземпляр блокируется. Последующие **простой** задачи запуска и сама роль hello не запустится.
   > 
   > 
   
-    Чтобы убедиться, что пакетный файл завершается нулевым **errorlevel**, выполните команду `EXIT /B 0` в конце обработки пакетного файла.
+    tooensure, которая заканчивается пакетный файл **errorlevel** равна нулю, выполните команду hello `EXIT /B 0` конце hello процесса пакетного файла.
 * **background**  
-  Задачи выполняются асинхронно, параллельно с запуском роли.
+  Задачи выполняются асинхронно, параллельно с запуска hello hello роли.
 * **переднего плана**  
-  Задачи выполняются асинхронно, параллельно с запуском роли. Основное различие между задачами **foreground** и **background** состоит в том, что задача **foreground** не разрешает перезапуск или завершение работы роли до завершения задачи. Задачи **background** не имеют этого ограничения.
+  Задачи выполняются асинхронно, параллельно с запуска hello hello роли. Здравствуйте, основное отличие между **переднего плана** и **фона** том, что **переднего плана** задача позволяет роли hello из перезапуск или завершение работы, пока не получит задачу hello завершено. Hello **фона** задачи не имеют этого ограничения.
 
 ## <a name="environment-variables"></a>Переменные среды
-Переменные среды — это способ передачи информации в задачу запуска. Например, можно передать путь к большому двоичному объекту, содержащему программу для установки, или номера портов, которые будет использовать роль, или параметры для управления функциями задачи запуска.
+Переменные среды — задача запуска tooa способом toopass сведения. Например можно поместить hello путь tooa blob, содержащий tooinstall программы или номера портов, которые будет использовать роль или параметров функций toocontrol задачей запуска.
 
-Существует два типа переменных среды для задачи запуска: статические переменные среды и переменные среды на основе членов класса [RoleEnvironment] . Оба они находятся в разделе [Environment] файла [ServiceDefinition.csdef] и используют элемент [Variable] и атрибут **name**.
+Существует два типа переменных среды для задачи запуска; статические переменные среды и переменные среды на основе членов hello [ RoleEnvironment] класса. Обе они находятся в hello [среды] раздел hello [ServiceDefinition.csdef] файл и оба hello используйте [переменных] элемент и **имя** атрибут.
 
-Статические переменные среды используют атрибут **value** элемента [Variable] . В примере выше создается переменная среды **MyVersionNumber**, которая имеет статическое значение **1.0.0.0**. Другим примером может служить создание переменной среды **StagingOrProduction**, которой можно вручную присвоить значение **staging** или **production**, чтобы выполнять различные действия запуска в зависимости от значения переменной среды **StagingOrProduction**.
+Hello использует переменные среды статических **значение** атрибут hello [переменных] элемента. Приведенный выше пример Hello создает переменную среды hello **MyVersionNumber** содержит статическое значение «**1.0.0.0**». Другим примером может служить toocreate **StagingOrProduction** переменной среды, которую можно установить вручную, toovalues из «**промежуточных**«или»**рабочей**» tooperform различных действий запуска на основе hello значения hello **StagingOrProduction** переменной среды.
 
-Переменные среды на основе членов класса RoleEnvironment не используют атрибут **value** элемента [Variable] . Вместо этого дочерний элемент [RoleInstanceValue] с соответствующим значением атрибута **XPath** используется для создания переменной среды для конкретного члена класса [RoleEnvironment]. Значения атрибута **XPath** для доступа к различным значениям [RoleEnvironment] можно найти [здесь](cloud-services-role-config-xpath.md).
+Не используйте переменные среды на основе членов класса RoleEnvironment hello hello **значение** атрибут hello [переменных] элемента. Вместо этого hello [RoleInstanceValue] дочерний элемент с hello соответствующие **XPath** значение атрибута, будут использоваться toocreate переменной среды, в зависимости от конкретного члена hello [ RoleEnvironment] класса. Значения для hello **XPath** атрибута tooaccess различных [ RoleEnvironment] значения можно найти [здесь](cloud-services-role-config-xpath.md).
 
-Например, чтобы создать переменную среды, имеющую значение **true** при выполнении в эмуляторе вычислений и **false** — при выполнении в облаке, используйте следующие элементы [Variable] и [RoleInstanceValue]:
+К примеру, toocreate переменной среды, "**true**» при запуске hello в эмуляторе вычислений hello, и"**false**» при работе в облаке hello используйте следующие hello [переменных] и [RoleInstanceValue] элементов:
 
 ```xml
 <Startup>
     <Task commandLine="Startup.cmd" executionContext="limited" taskType="simple">
         <Environment>
 
-            <!-- Create the environment variable that informs the startup task whether it is running
-                in the Compute Emulator or in the cloud. "%ComputeEmulatorRunning%"=="true" when
-                running in the Compute Emulator, "%ComputeEmulatorRunning%"=="false" when running
-                in the cloud. -->
+            <!-- Create hello environment variable that informs hello startup task whether it is running
+                in hello Compute Emulator or in hello cloud. "%ComputeEmulatorRunning%"=="true" when
+                running in hello Compute Emulator, "%ComputeEmulatorRunning%"=="false" when running
+                in hello cloud. -->
 
             <Variable name="ComputeEmulatorRunning">
                 <RoleInstanceValue xpath="/RoleEnvironment/Deployment/@emulated" />
@@ -155,15 +155,15 @@ EXIT /B 0
 ```
 
 ## <a name="next-steps"></a>Дальнейшие действия
-Узнайте, как выполнять некоторые [стандартные задачи запуска](cloud-services-startup-tasks-common.md) с помощью облачной службы.
+Узнайте, как tooperform некоторые [общие задачи запуска](cloud-services-startup-tasks-common.md) с облачной службой.
 
 [Упакуйте](cloud-services-model-and-package.md) облачную службу.  
 
 [ServiceDefinition.csdef]: cloud-services-model-and-package.md#csdef
-[Task]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Task
-[Startup]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Startup
-[Runtime]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Runtime
-[Environment]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Environment
-[Variable]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Variable
+[задачи]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Task
+[запуска]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Startup
+[среды выполнения]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Runtime
+[среды]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Environment
+[переменных]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Variable
 [RoleInstanceValue]: https://msdn.microsoft.com/library/azure/gg557552.aspx#RoleInstanceValue
-[RoleEnvironment]: https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleenvironment.aspx
+[ RoleEnvironment]: https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleenvironment.aspx

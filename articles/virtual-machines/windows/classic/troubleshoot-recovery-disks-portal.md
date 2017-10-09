@@ -1,6 +1,6 @@
 ---
-title: "Устранение неполадок классической виртуальной машины Windows в Azure путем подключения ее диска ОС к виртуальной машине восстановления | Документация Майкрософт"
-description: "Узнайте, как устранить неполадки классической виртуальной машины Windows в Azure путем подключения ее диска ОС к виртуальной машине восстановления."
+title: "Классический ВМ Azure Windows путем присоединения виртуальную Машину восстановления tooa диска hello ОС aaaTroubleshoot | Документы Microsoft"
+description: "Узнайте, как tootroubleshoot классические ВМ Azure Windows путем присоединения hello восстановление tooa диска операционной системы виртуальной Машины"
 services: virtual-machines-windows
 documentationCenter: 
 authors: genlin
@@ -13,17 +13,17 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 07/21/2017
 ms.author: genli
-ms.openlocfilehash: c0174a535c7eae20632ac242e2ae4ea8cc51153e
-ms.sourcegitcommit: 422efcbac5b6b68295064bd545132fcc98349d01
+ms.openlocfilehash: ac5d2d247b89737c8be1bb505cd7c86a0277c58e
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="troubleshoot-a-windows-classic-vm-by-attaching-the-os-disk-to-a-recovery-vm"></a>Устранение неполадок классической виртуальной машины Windows путем подключения ее диска ОС к виртуальной машине восстановления
+# <a name="troubleshoot-a-windows-classic-vm-by-attaching-hello-os-disk-tooa-recovery-vm"></a>Устранение неполадок классической виртуальной Машине Windows путем присоединения восстановление tooa диска hello ОС виртуальной Машины
 
 [!INCLUDE [virtual-machines-classic-recovery-disks-portal](../../../../includes/virtual-machines-classic-recovery-disks-portal.md)]
 
 ## <a name="next-steps"></a>Дальнейшие действия
-При возникновении проблем с подключением к виртуальной машине ознакомьтесь со статьей [Устранение неполадок с подключением к виртуальной машине Azure через удаленный рабочий стол](../troubleshoot-rdp-connection.md). 
+Если возникают проблемы с подключением tooyour виртуальной Машины, см. раздел [tooan подключений RDP, устранение неполадок виртуальной Машины Azure](../troubleshoot-rdp-connection.md). 
 
 Для устранения проблем с доступом к приложениям, выполняющимся на виртуальной машине, прочитайте статью [Устранение неполадок доступа к приложению, выполняющемуся в виртуальной машине Windows в Azure](../troubleshoot-app-connection.md).

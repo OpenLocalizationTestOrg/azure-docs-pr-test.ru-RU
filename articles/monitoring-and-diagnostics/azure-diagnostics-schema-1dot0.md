@@ -1,5 +1,5 @@
 ---
-title: "Схема конфигурации системы диагностики Azure версии 1.0 | Документация Майкрософт"
+title: "Схема конфигурации службы диагностики 1.0 aaaAzure | Документы Microsoft"
 description: "Применимо ТОЛЬКО при использовании пакета Azure SDK 2.4 и ниже с виртуальными машинами Azure, масштабируемыми наборами виртуальных машин, Service Fabric или облачными службами."
 services: monitoring-and-diagnostics
 documentationcenter: .net
@@ -14,28 +14,28 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 05/15/2017
 ms.author: robb
-ms.openlocfilehash: a8fdfb52d5091d3fc9779657737c7430fcfada51
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: bdd2b26217d6ea28f19e651ab429e7e7401ff57b
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-diagnostics-10-configuration-schema"></a>Схема конфигурации системы диагностики Azure версии 1.0
 > [!NOTE]
-> Система диагностики Azure — это компонент, который используется для сбора данных счетчиков производительности и других статистических данных из виртуальных машин Azure, масштабируемых наборов виртуальных машин, Service Fabric и облачных служб.  Данная страница применяется только в том случае, если вы используете одну из этих служб.
+> Система диагностики Azure — счетчики производительности toocollect компонент, используемый hello и другие статистические данные из виртуальных машин Azure, наборы масштабирования виртуальных машин, Service Fabric и облачных служб.  Данная страница применяется только в том случае, если вы используете одну из этих служб.
 >
 
 Система диагностики Azure используется с другими продуктами диагностики корпорации Майкрософт, такими как Azure Monitor, Application Insights и Log Analytics.
 
-Файл конфигурации системы диагностики Azure определяет значения, которые используются для инициализации монитора диагностики. Этот файл используется для инициализации параметров конфигурации диагностики при запуске монитора диагностики.  
+файл конфигурации Azure Diagnostics Hello определяет значения, используемые tooinitialize hello монитор диагностики. Этот файл является используется tooinitialize диагностические параметры конфигурации при запуске монитора диагностики hello.  
 
- По умолчанию файл схемы конфигурации системы диагностики Azure устанавливается в каталог `C:\Program Files\Microsoft SDKs\Azure\.NET SDK\<version>\schemas`. Замените `<version>` установленной версией [пакета SDK для Azure](http://www.windowsazure.com/develop/downloads/).  
+ По умолчанию файл схемы конфигурации Azure Diagnostics hello является установленных toohello `C:\Program Files\Microsoft SDKs\Azure\.NET SDK\<version>\schemas` каталога. Замените `<version>` с версией hello установлен hello [пакета Azure SDK](http://www.windowsazure.com/develop/downloads/).  
 
 > [!NOTE]
->  Файл конфигурации диагностики обычно используется в задачах запуска, переда запуском которых должны быть собраны нужные им диагностические данные. Дополнительные сведения об использовании системы диагностики Azure см. в статье [Включение системы диагностики Azure в облачных службах Azure](assetId:///83a91c23-5ca2-4fc9-8df3-62036c37a3d7).  
+>  файл конфигурации диагностики Hello обычно используется с запуска задачи, которые требуют toobe диагностические данные, собранные ранее в процессе запуска hello. Дополнительные сведения об использовании системы диагностики Azure см. в статье [Включение системы диагностики Azure в облачных службах Azure](assetId:///83a91c23-5ca2-4fc9-8df3-62036c37a3d7).  
 
-## <a name="example-of-the-diagnostics-configuration-file"></a>Пример файла конфигурации диагностики  
- В следующем примере показан типичный файл конфигурации диагностики.  
+## <a name="example-of-hello-diagnostics-configuration-file"></a>Пример файла конфигурации диагностики hello  
+ Следующий пример Hello показан типичный файл конфигурации диагностики:  
 
 ```xml  
 <?xml version="1.0" encoding="utf-8"?>
@@ -52,28 +52,28 @@ ms.lasthandoff: 07/11/2017
    <Directories bufferQuotaInMB="1024"   
       scheduledTransferPeriod="PT1M">  
 
-      <!-- These three elements specify the special directories   
-           that are set up for the log types -->  
+      <!-- These three elements specify hello special directories   
+           that are set up for hello log types -->  
       <CrashDumps container="wad-crash-dumps" directoryQuotaInMB="256" />  
       <FailedRequestLogs container="wad-frq" directoryQuotaInMB="256" />  
       <IISLogs container="wad-iis" directoryQuotaInMB="256" />  
 
-      <!-- For regular directories the DataSources element is used -->  
+      <!-- For regular directories hello DataSources element is used -->  
       <DataSources>  
          <DirectoryConfiguration container="wad-panther" directoryQuotaInMB="128">  
             <!-- Absolute specifies an absolute path with optional environment expansion -->  
             <Absolute expandEnvironment="true" path="%SystemRoot%\system32\sysprep\Panther" />  
          </DirectoryConfiguration>  
          <DirectoryConfiguration container="wad-custom" directoryQuotaInMB="128">  
-            <!-- LocalResource specifies a path relative to a local   
-                 resource defined in the service definition -->  
+            <!-- LocalResource specifies a path relative tooa local   
+                 resource defined in hello service definition -->  
             <LocalResource name="MyLoggingLocalResource" relativePath="logs" />  
          </DirectoryConfiguration>  
       </DataSources>  
    </Directories>  
 
    <PerformanceCounters bufferQuotaInMB="512" scheduledTransferPeriod="PT1M">  
-      <!-- The counter specifier is in the same format as the imperative   
+      <!-- hello counter specifier is in hello same format as hello imperative   
            diagnostics configuration API -->  
       <PerformanceCounterConfiguration   
          counterSpecifier="\Processor(_Total)\% Processor Time" sampleRate="PT5S" />  
@@ -82,7 +82,7 @@ ms.lasthandoff: 07/11/2017
    <WindowsEventLog bufferQuotaInMB="512"  
       scheduledTransferLogLevelFilter="Verbose"  
       scheduledTransferPeriod="PT1M">  
-      <!-- The event log name is in the same format as the imperative   
+      <!-- hello event log name is in hello same format as hello imperative   
            diagnostics configuration API -->  
       <DataSource name="System!*" />  
    </WindowsEventLog>  
@@ -90,28 +90,28 @@ ms.lasthandoff: 07/11/2017
 ```  
 
 ## <a name="diagnosticsconfiguration-namespace"></a>Пространство имен DiagnosticsConfiguration  
- Пространство имен XML для файла конфигурации диагностики:  
+ пространство имен XML Hello для hello файла конфигурации диагностики таково:  
 
 ```  
 http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration  
 ```  
 
 ## <a name="schema-elements"></a>Элементы схемы  
- Файл конфигурации диагностики содержит следующие элементы.
+ файл конфигурации диагностики Hello содержит следующие элементы hello.
 
 
 ## <a name="diagnosticmonitorconfiguration-element"></a>Элемент DiagnosticMonitorConfiguration  
-Элемент верхнего уровня в файле конфигурации диагностики.  
+элемент верхнего уровня Hello hello файла конфигурации диагностики.  
 
 Атрибуты:
 
 |Атрибут  |Тип   |Обязательно| значение по умолчанию | Описание|  
 |-----------|-------|--------|---------|------------|  
-|**configurationChangePollInterval**|длительность|Необязательно | PT1M| Указывает интервал, с которым монитор диагностики опрашивает наличие изменений конфигурации диагностики.|  
-|**overallQuotaInMB**|unsignedInt|Необязательно| 4000 МБ. Если указать значение, оно не должно превышать эту величину. |Общий объем хранилища файловой системы, выделенный для всех буферов ведения журнала.|  
+|**configurationChangePollInterval**|длительность|Необязательно | PT1M| Указывает интервал hello в какой hello монитор диагностики опрашивает изменения в конфигурации диагностики.|  
+|**overallQuotaInMB**|unsignedInt|Необязательно| 4000 МБ. Если указать значение, оно не должно превышать эту величину. |общий объем хранилища файловой системы для всех буферов ведения журнала Hello.|  
 
 ## <a name="diagnosticinfrastructurelogs-element"></a>Элемент DiagnosticInfrastructureLogs  
-Определяет конфигурацию буфера для журналов, которые создает базовая инфраструктура диагностики.
+Определяет конфигурацию буфера hello hello журналы, созданные hello базовой инфраструктурой диагностики.
 
 Родительский элемент: [DiagnosticMonitorConfiguration](#DiagnosticMonitorConfiguration).  
 
@@ -119,12 +119,12 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 |Атрибут|Тип|Описание|  
 |---------|----|-----------------|  
-|**bufferQuotaInMB**|unsignedInt|необязательный параметр. Указывает максимальный объем хранилища файловой системы, который доступен для указанных данных.<br /><br /> Значение по умолчанию — 0.|  
-|**scheduledTransferLogLevelFilter**|строка|необязательный параметр. Указывает минимальный уровень серьезности для передаваемых записей журнала. По умолчанию используется значение **Undefined**. Другие возможные значения: **Verbose**, **Information**, **Warning**, **Error** и **Critical**.|  
-|**scheduledTransferPeriod**|длительность|необязательный параметр. Указывает интервал между запланированными передачами данных, округленный с точностью до ближайшей минуты.<br /><br /> По умолчанию используется значение PT0S.|  
+|**bufferQuotaInMB**|unsignedInt|необязательный параметр. Указывает максимальный объем хранилища файловой системы, доступные для указанного hello hello данных.<br /><br /> Hello по умолчанию — 0.|  
+|**scheduledTransferLogLevelFilter**|строка|необязательный параметр. Указывает hello минимальную степень серьезности для передаваемых записей журнала. значение по умолчанию Hello — **Undefined**. Другие возможные значения: **Verbose**, **Information**, **Warning**, **Error** и **Critical**.|  
+|**scheduledTransferPeriod**|длительность|необязательный параметр. Hello интервал между запланированными передачами данных, округленный toohello ближайшего минуты.<br /><br /> по умолчанию Hello — PT0S.|  
 
 ## <a name="logs-element"></a>Элемент Logs  
- Определяет конфигурацию буфера для базовых журналов Azure.
+ Определяет конфигурацию буфера hello для базовых журналов Azure.
 
  Родительский элемент: [DiagnosticMonitorConfiguration](#DiagnosticMonitorConfiguration).  
 
@@ -132,12 +132,12 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 |Атрибут|Тип|Описание|  
 |---------------|----------|-----------------|  
-|**bufferQuotaInMB**|unsignedInt|необязательный параметр. Указывает максимальный объем хранилища файловой системы, который доступен для указанных данных.<br /><br /> Значение по умолчанию — 0.|  
-|**scheduledTransferLogLevelFilter**|строка|необязательный параметр. Указывает минимальный уровень серьезности для передаваемых записей журнала. По умолчанию используется значение **Undefined**. Другие возможные значения: **Verbose**, **Information**, **Warning**, **Error** и **Critical**.|  
-|**scheduledTransferPeriod**|длительность|необязательный параметр. Указывает интервал между запланированными передачами данных, округленный с точностью до ближайшей минуты.<br /><br /> По умолчанию используется значение PT0S.|  
+|**bufferQuotaInMB**|unsignedInt|необязательный параметр. Указывает максимальный объем хранилища файловой системы, доступные для указанного hello hello данных.<br /><br /> Hello по умолчанию — 0.|  
+|**scheduledTransferLogLevelFilter**|строка|необязательный параметр. Указывает hello минимальную степень серьезности для передаваемых записей журнала. значение по умолчанию Hello — **Undefined**. Другие возможные значения: **Verbose**, **Information**, **Warning**, **Error** и **Critical**.|  
+|**scheduledTransferPeriod**|длительность|необязательный параметр. Hello интервал между запланированными передачами данных, округленный toohello ближайшего минуты.<br /><br /> по умолчанию Hello — PT0S.|  
 
 ## <a name="directories-element"></a>Элемент Directories  
-Определяет конфигурацию буфера для журналов на основе файлов, которые можно определить.
+Определяет конфигурацию буфера hello файлы журналов, можно определить.
 
 Родительский элемент: [DiagnosticMonitorConfiguration](#DiagnosticMonitorConfiguration).  
 
@@ -146,11 +146,11 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 |Атрибут|Тип|Описание|  
 |---------------|----------|-----------------|  
-|**bufferQuotaInMB**|unsignedInt|необязательный параметр. Указывает максимальный объем хранилища файловой системы, который доступен для указанных данных.<br /><br /> Значение по умолчанию — 0.|  
-|**scheduledTransferPeriod**|длительность|необязательный параметр. Указывает интервал между запланированными передачами данных, округленный с точностью до ближайшей минуты.<br /><br /> По умолчанию используется значение PT0S.|  
+|**bufferQuotaInMB**|unsignedInt|необязательный параметр. Указывает максимальный объем хранилища файловой системы, доступные для указанного hello hello данных.<br /><br /> Hello по умолчанию — 0.|  
+|**scheduledTransferPeriod**|длительность|необязательный параметр. Hello интервал между запланированными передачами данных, округленный toohello ближайшего минуты.<br /><br /> по умолчанию Hello — PT0S.|  
 
 ## <a name="crashdumps-element"></a>Элемент CrashDumps  
- Определяет каталог аварийных дампов.
+ Определяет каталог аварийных дампов hello.
 
  Родительский элемент: [Directories](#Directories).  
 
@@ -158,11 +158,11 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 |Атрибут|Тип|Описание|  
 |---------------|----------|-----------------|  
-|**container**|строка|Имя контейнера, в который будет передаваться содержимое каталога.|  
-|**directoryQuotaInMB**|unsignedInt|необязательный параметр. Определяет максимальный размер каталога в мегабайтах.<br /><br /> Значение по умолчанию — 0.|  
+|**container**|string|передано имя Hello hello контейнера, где toobe hello содержимое каталога hello.|  
+|**directoryQuotaInMB**|unsignedInt|необязательный параметр. Указывает максимальный размер hello hello каталога в мегабайтах.<br /><br /> Hello по умолчанию — 0.|  
 
 ## <a name="failedrequestlogs-element"></a>Элемент FailedRequestLogs  
- Определяет каталог журнала невыполненных запросов.
+ Определяет каталог журнала hello невыполненных запросов.
 
  Родительский элемент: [Directories](#Directories).  
 
@@ -170,11 +170,11 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 |Атрибут|Тип|Описание|  
 |---------------|----------|-----------------|  
-|**container**|строка|Имя контейнера, в который будет передаваться содержимое каталога.|  
-|**directoryQuotaInMB**|unsignedInt|необязательный параметр. Определяет максимальный размер каталога в мегабайтах.<br /><br /> Значение по умолчанию — 0.|  
+|**container**|string|передано имя Hello hello контейнера, где toobe hello содержимое каталога hello.|  
+|**directoryQuotaInMB**|unsignedInt|необязательный параметр. Указывает максимальный размер hello hello каталога в мегабайтах.<br /><br /> Hello по умолчанию — 0.|  
 
 ##  <a name="iislogs-element"></a>Элемент IISLogs  
- Определяет каталог журнала IIS.
+ Определяет каталог журнала IIS hello.
 
  Родительский элемент: [Directories](#Directories).  
 
@@ -182,8 +182,8 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 |Атрибут|Тип|Описание|  
 |---------------|----------|-----------------|  
-|**container**|строка|Имя контейнера, в который будет передаваться содержимое каталога.|  
-|**directoryQuotaInMB**|unsignedInt|необязательный параметр. Определяет максимальный размер каталога в мегабайтах.<br /><br /> Значение по умолчанию — 0.|  
+|**container**|string|передано имя Hello hello контейнера, где toobe hello содержимое каталога hello.|  
+|**directoryQuotaInMB**|unsignedInt|необязательный параметр. Указывает максимальный размер hello hello каталога в мегабайтах.<br /><br /> Hello по умолчанию — 0.|  
 
 ## <a name="datasources-element"></a>Элемент DataSources  
  Определяет ноль или более дополнительных каталогов журналов.
@@ -191,7 +191,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
  Родительский элемент: [Directories](#Directories).
 
 ## <a name="directoryconfiguration-element"></a>Элемент DirectoryConfiguration  
- Определяет каталог файлов журнала для отслеживания.
+ Определяет каталог hello toomonitor файлы журнала.
 
  Родительский элемент: [DataSources](#DataSources).
 
@@ -199,11 +199,11 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 |Атрибут|Тип|Описание|  
 |---------------|----------|-----------------|  
-|**container**|строка|Имя контейнера, в который будет передаваться содержимое каталога.|  
-|**directoryQuotaInMB**|unsignedInt|необязательный параметр. Определяет максимальный размер каталога в мегабайтах.<br /><br /> Значение по умолчанию — 0.|  
+|**container**|string|передано имя Hello hello контейнера, где toobe hello содержимое каталога hello.|  
+|**directoryQuotaInMB**|unsignedInt|необязательный параметр. Указывает максимальный размер hello hello каталога в мегабайтах.<br /><br /> Hello по умолчанию — 0.|  
 
 ## <a name="absolute-element"></a>Элемент Absolute  
- Определяет абсолютный путь к отслеживаемому каталогу с необязательным раскрытием переменных среды.
+ Определяет, является абсолютным hello toomonitor каталога с необязательным расширением среды.
 
  Родительский элемент: [DirectoryConfiguration](#DirectoryConfiguration).  
 
@@ -211,11 +211,11 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 |Атрибут|Тип|Описание|  
 |---------------|----------|-----------------|  
-|**path**|строка|обязательный параметр. Абсолютный путь к отслеживаемому каталогу.|  
-|**expandEnvironment**|Логическое|обязательный параметр. Если задано значение **true**, то переменные среды в пути раскрываются.|  
+|**path**|строка|Обязательный элемент. toomonitor directory toohello Hello абсолютный путь.|  
+|**expandEnvironment**|Логическое|Обязательный элемент. Если задать слишком**true**, переменные окружения по пути hello разворачиваются.|  
 
 ## <a name="localresource-element"></a>Элемент LocalResource  
- Определяет путь относительно локального ресурса, заданного в определении службы.
+ Определяет путь относительный tooa локальному ресурсу, заданному в определении службы hello.
 
  Родительский элемент: [DirectoryConfiguration](#DirectoryConfiguration).  
 
@@ -223,11 +223,11 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 |Атрибут|Тип|Описание|  
 |---------------|----------|-----------------|  
-|**name**|строка|обязательный параметр. Имя локального ресурса, который содержит каталог для отслеживания.|  
-|**relativePath**|строка|обязательный параметр. Путь относительно отслеживаемого локального ресурса.|  
+|**name**|строка|Обязательный элемент. Имя Hello hello локального ресурса, содержащего hello directory toomonitor.|  
+|**relativePath**|строка|Обязательный элемент. Здравствуйте, toomonitor локального ресурса toohello относительный путь.|  
 
 ## <a name="performancecounters-element"></a>Элемент PerformanceCounters  
- Определяет путь к счетчику производительности, данные которого будут собираться.
+ Определяет hello путь toohello производительности для счетчика toocollect.
 
  Родительский элемент: [DiagnosticMonitorConfiguration](#DiagnosticMonitorConfiguration).
 
@@ -236,11 +236,11 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 |Атрибут|Тип|Описание|  
 |---------------|----------|-----------------|  
-|**bufferQuotaInMB**|unsignedInt|необязательный параметр. Указывает максимальный объем хранилища файловой системы, который доступен для указанных данных.<br /><br /> Значение по умолчанию — 0.|  
-|**scheduledTransferPeriod**|длительность|необязательный параметр. Указывает интервал между запланированными передачами данных, округленный с точностью до ближайшей минуты.<br /><br /> По умолчанию используется значение PT0S.|  
+|**bufferQuotaInMB**|unsignedInt|необязательный параметр. Указывает максимальный объем хранилища файловой системы, доступные для указанного hello hello данных.<br /><br /> Hello по умолчанию — 0.|  
+|**scheduledTransferPeriod**|длительность|необязательный параметр. Hello интервал между запланированными передачами данных, округленный toohello ближайшего минуты.<br /><br /> по умолчанию Hello — PT0S.|  
 
 ## <a name="performancecounterconfiguration-element"></a>Элемент PerformanceCounterConfiguration  
- Определяет счетчик производительности, данные которого будут собираться.
+ Определяет toocollect счетчика производительности hello.
 
  Родительский элемент: [PerformanceCounters](#PerformanceCounters).  
 
@@ -248,11 +248,11 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 |Атрибут|Тип|Описание|  
 |---------------|----------|-----------------|  
-|**counterSpecifier**|строка|обязательный параметр. Путь к счетчику производительности, данные которого будут собираться.|  
-|**sampleRate**|длительность|обязательный параметр. Частота сбора данных счетчика производительности.|  
+|**counterSpecifier**|строка|Обязательный элемент. toocollect счетчик производительности toohello путь Hello.|  
+|**sampleRate**|длительность|Обязательный элемент. частота Hello какие hello счетчиков производительности должны собираться.|  
 
 ## <a name="windowseventlog-element"></a>Элемент WindowsEventLog  
- Определяет журналы событий для отслеживания.
+ Определяет toomonitor hello журналы событий.
 
  Родительский элемент: [DiagnosticMonitorConfiguration](#DiagnosticMonitorConfiguration).
 
@@ -260,12 +260,12 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 |Атрибут|Тип|Описание|  
 |---------------|----------|-----------------|  
-|**bufferQuotaInMB**|unsignedInt|необязательный параметр. Указывает максимальный объем хранилища файловой системы, который доступен для указанных данных.<br /><br /> Значение по умолчанию — 0.|  
-|**scheduledTransferLogLevelFilter**|строка|необязательный параметр. Указывает минимальный уровень серьезности для передаваемых записей журнала. По умолчанию используется значение **Undefined**. Другие возможные значения: **Verbose**, **Information**, **Warning**, **Error** и **Critical**.|  
-|**scheduledTransferPeriod**|длительность|необязательный параметр. Указывает интервал между запланированными передачами данных, округленный с точностью до ближайшей минуты.<br /><br /> По умолчанию используется значение PT0S.|  
+|**bufferQuotaInMB**|unsignedInt|необязательный параметр. Указывает максимальный объем хранилища файловой системы, доступные для указанного hello hello данных.<br /><br /> Hello по умолчанию — 0.|  
+|**scheduledTransferLogLevelFilter**|строка|необязательный параметр. Указывает hello минимальную степень серьезности для передаваемых записей журнала. значение по умолчанию Hello — **Undefined**. Другие возможные значения: **Verbose**, **Information**, **Warning**, **Error** и **Critical**.|  
+|**scheduledTransferPeriod**|длительность|необязательный параметр. Hello интервал между запланированными передачами данных, округленный toohello ближайшего минуты.<br /><br /> по умолчанию Hello — PT0S.|  
 
 ## <a name="datasource-element"></a>Элемент DataSource  
- Определяет журнал событий для отслеживания.
+ Определяет toomonitor hello журнала событий.
 
  Родительский элемент: [WindowsEventLog](#windowsEventLog).  
 
@@ -273,4 +273,4 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 |Атрибут|Тип|Описание|  
 |---------------|----------|-----------------|  
-|**name**|строка|обязательный параметр. Выражение XPath, задающее журнал для сбора.|  
+|**name**|строка|Обязательный элемент. Выражение XPath, задающее toocollect журнала hello.|  

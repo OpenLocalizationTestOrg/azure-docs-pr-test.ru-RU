@@ -1,5 +1,5 @@
 ---
-title: "Интерактивная настройка Azure AD версии 2 для приложений JS SPA. Введение | Документация Майкрософт"
+title: "aaaAzure AD v2 JS SPA Интерактивная установка - введение | Документы Microsoft"
 description: "В этой статье описано, как приложения JavaScript SPA могут вызывать API, которому необходимы маркеры доступа, с помощью конечной точки Azure Active Directory версии 2."
 services: active-directory
 documentationcenter: dev-center-name
@@ -13,37 +13,37 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 06/01/2017
 ms.author: andret
-ms.openlocfilehash: 3d195d0d67f8f82c9450ffd93767917698addee3
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 7e4250ccca837a17489a99603da167009cc2e3d6
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="call-the-microsoft-graph-api-from-a-javascript-single-page-application-spa"></a>Вызов API Microsoft Graph из одностраничного приложения JavaScript
+# <a name="call-hello-microsoft-graph-api-from-a-javascript-single-page-application-spa"></a>Вызов hello Microsoft Graph API из JavaScript одной страницы приложений (SPA)
 
-В этом руководстве показано, как одностраничное приложение JavaScript может выполнять вход с помощью личных, рабочих или учебных учетных записей, получать маркер доступа и вызывать API Microsoft Graph или другие API, требующие маркеры доступа, из конечной точки Azure Active Directory версии 2.
+В этом руководстве показано, как JavaScript одной страницы приложений (SPA) могут входить в личных, рабочих и учебных учетных записей, получить маркер доступа и вызвать метод hello Microsoft Graph API или других интерфейсов API, которые требуются токены доступа из hello конечной v2 Azure Active Directory.
 
 ### <a name="how-this-guide-works"></a>Принцип работы с руководством
 
-![Как работает пример приложения, созданный в этом руководстве](media/active-directory-singlepageapp-javascriptspa-introduction/javascriptspa-intro.png)
+![Как работает пример приложения hello, созданные в этом руководстве](media/active-directory-singlepageapp-javascriptspa-introduction/javascriptspa-intro.png)
 
 <!--start-collapse-->
 ### <a name="more-information"></a>Дополнительные сведения
 
-Пример приложения, созданный в этом руководстве, позволяет одностраничному приложению JavaScript выполнять запрос к API Microsoft Graph или веб-API, принимающему маркеры от конечной точки Azure Active Directory версии 2. В этом сценарии после выполнения входа в систему маркер доступа запрашивается и добавляется в запросы HTTP с помощью заголовка авторизации. Получение маркера и его обновление выполняет библиотека проверки подлинности Майкрософт (MSAL).
+Пример приложения Hello, созданные в этом руководстве позволяет hello tooquery JavaScript SPA Microsoft Graph API или веб-API, принимающий токены из конечной точки v2 Azure Active Directory. В этом сценарии после того, пользователь выполняет вход, маркер доступа — tooHTTP запрошенный и добавлены запросы через заголовок authorization hello. Получение токена и обновления обрабатываются hello библиотеки проверки подлинности Microsoft (MSAL).
 
 <!--end-collapse-->
 
 <!--start-collapse-->
 ### <a name="libraries"></a>Библиотеки
 
-В этом руководстве используется следующая библиотека:
+В этом руководстве используется hello следующие библиотеки:
 
 |Библиотека|Описание|
 |---|---|
 |[msal.js](https://github.com/AzureAD/microsoft-authentication-library-for-js)|Библиотека аутентификации Майкрософт для JavaScript (предварительная версия)|
 
 > [!NOTE]
-> В качестве целевого объекта в библиотеке *msal.js* задана *конечная точка Azure Active Directory версии 2*, что позволяет выполнять вход и запрашивать маркеры, используя личные, рабочие и учебные учетные записи. В отношении *конечной точки Azure Active Directory версии 2* применяется [ряд ограничений](..\active-directory-v2-limitations.md). Если вы заинтересованы только в учебной и рабочей учетных записях, используйте библиотеку *adal.js* и *конечную точку версии 1*. Чтобы понять различия между конечными точками версий 1 и 2, ознакомьтесь со [сравнением версий 1 и 2](..\active-directory-v2-compare.md).
+> *msal.js* hello цели *конечной v2 Azure Active Directory* -которого включает toosign, учебную и личные учетные записи в и получать маркеры. Hello *конечной v2 Azure Active Directory* имеет [некоторые ограничения](..\active-directory-v2-limitations.md). Если вы заинтересованы только в учебном заведении и рабочих учетных записей, используйте *adal.js* и hello *конечной точки версии 1*. toounderstand различия между конечными точками v1 и v2 hello чтения hello [сравнения v1-v2](..\active-directory-v2-compare.md).
 
 <!--end-collapse-->

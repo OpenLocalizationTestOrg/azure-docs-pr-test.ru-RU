@@ -1,6 +1,6 @@
 ---
-title: "Краткое руководство по Azure. Создание виртуальной машины Windows с помощью интерфейса командной строки | Документация Майкрософт"
-description: "Быстро научитесь создавать виртуальные машины Windows с помощью Azure CLI."
+title: "Быстрый запуск - aaaAzure создать CLI ВМ Windows | Документы Microsoft"
+description: "Быстро Узнайте toocreate виртуальных машинах с hello Azure CLI."
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: neilpeterson
@@ -16,29 +16,29 @@ ms.workload: infrastructure
 ms.date: 05/11/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: fcb2f1389b3434d0d2e3145217e54ceb2326b969
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 029bdecec219b12b80b958ceeedda214f1b13149
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="create-a-windows-virtual-machine-with-the-azure-cli"></a>Создание виртуальной машины Windows с помощью Azure CLI
+# <a name="create-a-windows-virtual-machine-with-hello-azure-cli"></a>Создание виртуальной машины Windows с hello Azure CLI
 
-Azure CLI используется для создания ресурсов Azure и управления ими из командной строки или с помощью скриптов. В этом руководстве описывается, как с помощью Azure CLI развернуть виртуальную машину под управлением Windows Server 2016. После завершения развертывания мы подключимся к серверу и установим IIS.
+Hello Azure CLI — используется toocreate и управления ресурсами Azure hello командной строке или в сценариях. В этом руководстве рассматривается использование виртуальной машины с ОС Windows Server 2016 toodeploy hello Azure CLI. После завершения развертывания мы подключения toohello сервера и установить службы IIS.
 
-Если у вас еще нет подписки Azure, [создайте бесплатную учетную запись Azure](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) , прежде чем начинать работу.
+Если у вас еще нет подписки Azure, [создайте бесплатную учетную запись Azure](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), прежде чем начинать работу.
 
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Если вы решили установить и использовать CLI локально, для выполнения инструкций в этом руководстве вам понадобится Azure CLI 2.0.4 или более поздней версии. Чтобы узнать версию, выполните команду `az --version`. Если вам необходимо выполнить установку или обновление, см. статью [Установка Azure CLI 2.0]( /cli/azure/install-azure-cli). 
+Если выбрать tooinstall и использовать hello CLI локально, краткого руководства требуется управлением hello Azure CLI версия 2.0.4 или более поздней версии. Запустите `az --version` версии toofind hello. Если требуется tooinstall или обновления, см. раздел [установить CLI Azure 2.0]( /cli/azure/install-azure-cli). 
 
 
 ## <a name="create-a-resource-group"></a>Создание группы ресурсов
 
 Создайте группу ресурсов с помощью команды [az group create](/cli/azure/group#create). Группа ресурсов Azure является логическим контейнером, в котором происходит развертывание ресурсов Azure и управление ими. 
 
-В следующем примере создается группа ресурсов с именем *myResourceGroup* в расположении *eastus*.
+Hello следующий пример создает группу ресурсов с именем *myResourceGroup* в hello *eastus* расположение.
 
 ```azurecli-interactive 
 az group create --name myResourceGroup --location eastus
@@ -48,13 +48,13 @@ az group create --name myResourceGroup --location eastus
 
 Создайте виртуальную машину с помощью команды [az vm create](/cli/azure/vm#create). 
 
-В следующем примере создается виртуальная машина с именем *myVM*. В этом примере используются имя администратора *azureuser* и его пароль *myPassword12*. Измените эти значения в соответствии со своей средой. Эти значения нужны для создания подключения к виртуальной машине.
+Hello следующий пример создает Виртуальную машину с именем *myVM*. В этом примере используется *azureuser* имени пользователя с правами администратора и *myPassword12* hello паролем. Обновите эти значения toosomething соответствующие tooyour среду. Эти значения необходимы при создании соединения с виртуальной машиной hello.
 
 ```azurecli-interactive 
 az vm create --resource-group myResourceGroup --name myVM --image win2016datacenter --admin-username azureuser --admin-password myPassword12
 ```
 
-После создания виртуальной машины в Azure CLI отображается информация следующего вида. Запишите значение `publicIpAaddress`. Этот адрес используется для доступа к виртуальной машине.
+При создании виртуальной Машины hello hello Azure CLI показано toohello аналогичные сведения, следующий пример. Запишите hello `publicIpAaddress`. Этот адрес будет hello используется tooaccess виртуальной Машины.
 
 ```azurecli-interactive 
 {
@@ -71,16 +71,16 @@ az vm create --resource-group myResourceGroup --name myVM --image win2016datacen
 
 ## <a name="open-port-80-for-web-traffic"></a>Открытие порта 80 для веб-трафика 
 
-По умолчанию виртуальные машины Windows, развернутые в Azure, поддерживают только RDP-подключения. Если эта виртуальная машина будет использоваться в качестве веб-сервера, необходимо открыть порт 80 через Интернет. Выполните команду [az vm open-port](/cli/azure/vm#open-port), чтобы открыть нужный порт.  
+По умолчанию в tooWindows виртуальных машин, развернутых в Azure допускаются только подключений по протоколу RDP. Если эта виртуальная машина будет toobe веб-сервере, необходимо tooopen порту 80 из Интернета hello. Используйте hello [az виртуальной машины откройте порт-](/cli/azure/vm#open-port) команда tooopen hello требуемого порта.  
  
  ```azurecli-interactive  
 az vm open-port --port 80 --resource-group myResourceGroup --name myVM
 ```
 
 
-## <a name="connect-to-virtual-machine"></a>Подключение к виртуальной машине
+## <a name="connect-toovirtual-machine"></a>Подключиться к компьютеру toovirtual
 
-Используйте следующую команду для создания сеанса удаленного рабочего стола с виртуальной машиной. Замените IP-адрес общедоступным IP-адресом виртуальной машины. При появлении запроса введите учетные данные, использованные при создании виртуальной машины.
+Используйте hello следующая команда toocreate сеанс удаленного рабочего стола с виртуальной машиной hello. Замените hello IP-адрес hello общедоступный IP-адрес виртуальной машины. При появлении запроса введите hello учетные данные, используемые при создании виртуальной машины hello.
 
 ```bash 
 mstsc /v:<Public IP Address>
@@ -88,21 +88,21 @@ mstsc /v:<Public IP Address>
 
 ## <a name="install-iis-using-powershell"></a>Установка IIS с помощью PowerShell
 
-После входа на виртуальную машину Azure вы можете установить IIS и включить локальное правило брандмауэра, разрешающее веб-трафик, с помощью одной строки кода PowerShell. Откройте командную строку PowerShell и выполните следующую команду:
+Теперь, когда вы вошли в toohello виртуальной Машине Azure, можно использовать одну строку PowerShell tooinstall IIS и включить hello локальном брандмауэре правило tooallow веб-трафика. Откройте командную строку PowerShell и выполните следующую команду hello:
 
 ```powershell
 Install-WindowsFeature -name Web-Server -IncludeManagementTools
 ```
 
-## <a name="view-the-iis-welcome-page"></a>Просмотр страницы приветствия IIS
+## <a name="view-hello-iis-welcome-page"></a>Представление hello страницу приветствия IIS
 
-Установив IIS и открыв через Интернет порт 80 на виртуальной машине, вы можете просмотреть страницу приветствия IIS по умолчанию в любом браузере. Чтобы перейти на страницу по умолчанию, используйте общедоступный IP-адрес, записанный ранее. 
+С установленными службами IIS и порт 80, теперь открыт на ВМ из hello Интернета можно использовать веб-браузере choice tooview hello по умолчанию службы IIS страницу приветствия. Быть убедиться, что toouse hello общедоступный IP-адрес, описанных выше toovisit страница по умолчанию hello. 
 
 ![Сайт IIS по умолчанию](./media/quick-create-powershell/default-iis-website.png) 
 
 ## <a name="clean-up-resources"></a>Очистка ресурсов
 
-Вы можете удалить ставшие ненужными группу ресурсов, виртуальную машину и все связанные с ней ресурсы, выполнив команду [az group delete](/cli/azure/group#delete).
+Если больше не нужны, можно использовать hello [удаление группы az](/cli/azure/group#delete) команд группы ресурсов tooremove hello, виртуальных Машин и все связанные ресурсы.
 
 ```azurecli-interactive 
 az group delete --name myResourceGroup
@@ -110,7 +110,7 @@ az group delete --name myResourceGroup
 
 ## <a name="next-steps"></a>Дальнейшие действия
 
-Из этого краткого руководства вы узнали о том, как развернуть простую виртуальную машину, о правилах группы безопасности сети и об установке веб-сервера. Дополнительные сведения о виртуальных машинах Azure см. в руководстве по работе с виртуальными машинами Windows.
+Из этого краткого руководства вы узнали о том, как развернуть простую виртуальную машину, о правилах группы безопасности сети и об установке веб-сервера. toolearn Дополнительные сведения о виртуальных машинах Azure, продолжить toohello учебника для виртуальных машин Windows.
 
 > [!div class="nextstepaction"]
 > [Создание виртуальных машин Windows и управление ими с помощью модуля Azure PowerShell](./tutorial-manage-vm.md)

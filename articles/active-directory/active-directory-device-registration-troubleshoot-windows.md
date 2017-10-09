@@ -1,6 +1,6 @@
 ---
-title: "Устранение неполадок автоматической регистрации присоединенных к домену Azure AD компьютеров для Windows 10 и Windows Server 2016 | Документация Майкрософт"
-description: "Устранение неполадок автоматической регистрации присоединенных к домену Azure AD компьютеров для Windows 10 и Windows Server 2016."
+title: "aaaTroubleshooting hello автоматической регистрации Azure AD домена компьютеров, присоединенных к для Windows 10 и Windows Server 2016 | Документы Microsoft"
+description: "Устранение неполадок hello функции автоматической регистрации Azure AD домена компьютеров, присоединенных к для Windows 10 и Windows Server 2016."
 services: active-directory
 documentationcenter: 
 author: MarkusVi
@@ -14,22 +14,22 @@ ms.topic: article
 ms.date: 06/23/2017
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 5b7f95f302f716d9221b5fae59aa2df5c956a524
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 3795323ce9392368b412b3e1208868431e59a74b
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="troubleshooting-auto-registration-of-domain-joined-computers-to-azure-ad--windows-10-and-windows-server-2016"></a>Устранение неполадок автоматической регистрации присоединенных к домену Azure AD компьютеров для Windows 10 и Windows Server 2016
+# <a name="troubleshooting-auto-registration-of-domain-joined-computers-tooazure-ad--windows-10-and-windows-server-2016"></a>Устранение неполадок автоматической регистрации домена присоединены компьютеры tooAzure AD – Windows 10 и Windows Server 2016
 
-Это руководство касается следующих клиентов:
+Этот раздел является применимо toohello следующих клиентов:
 
 -   Windows 10
 -   Windows Server 2016
 
-Сведения о других клиентах Windows см. в статье [Устранение неполадок автоматической регистрации присоединенных к домену Azure AD компьютеров для клиентов Windows нижнего уровня](active-directory-device-registration-troubleshoot-windows-legacy.md).
+Для других клиентов Windows в разделе [Устранение неполадок автоматической регистрации домена присоединены компьютеры tooAzure AD для клиентов нижнего уровня Windows](active-directory-device-registration-troubleshoot-windows-legacy.md).
 
-В этом руководстве предполагается, что вы [настроили автоматическую регистрацию присоединенных к домену устройств Windows в Azure Active Directory](active-directory-device-registration-get-started.md) для выполнения следующих сценариев:
+В этом разделе предполагается, что функции автоматической регистрации устройств, присоединенных к домену, перечисленные в описано в [как tooconfigure Автоматическая регистрация Windows, присоединенных к домену устройствами с помощью Azure Active Directory](active-directory-device-registration-get-started.md) toosupport hello следующие сценарии:
 
 - [Условный доступ на основе устройств](active-directory-conditional-access-automatic-device-registration-setup.md)
 
@@ -38,16 +38,16 @@ ms.lasthandoff: 08/03/2017
 - [Настройка Windows Hello для бизнеса](active-directory-azureadjoin-passport-deployment.md)
 
 
-Этот документ содержит рекомендации по устранению неполадок для устранения потенциальных проблем. 
+В этом документе приведены инструкции по устранению как tooresolve потенциальные проблемы. 
 
-Регистрация поддерживается в обновлении Windows 10 от ноября 2015 г. и в более поздних обновлениях.  
-Чтобы выполнить приведенные выше сценарии, мы рекомендуем использовать юбилейное обновление.
+Hello регистрация поддерживается в hello Windows обновление 10 ноября 2015 и более поздних версий.  
+Рекомендуется использовать для включения выше сценариев hello hello окончания действия обновления.
 
-## <a name="step-1-retrieve-the-registration-status"></a>Шаг 1. Получение сведений о состоянии регистрации 
+## <a name="step-1-retrieve-hello-registration-status"></a>Шаг 1: Получить состояние регистрации hello 
 
-**Чтобы получить сведения о состоянии регистрации, сделайте следующее:**
+**Состояние регистрации hello tooretrieve:**
 
-1. Запустите командную строку от имени администратора.
+1. Откройте командную строку hello с правами администратора.
 
 2. Введите **dsregcmd/status**.
 
@@ -57,7 +57,7 @@ ms.lasthandoff: 08/03/2017
     | Состояние устройства                                                         |  +----------------------------------------------------------------------+
     
         AzureAdJoined : YES
-     EnterpriseJoined : NO DeviceId : 5820fbe9-60c8-43b0-bb11-44aee233e4e7 Thumbprint : B753A6679CE720451921302CA873794D94C6204A KeyContainerId : bae6a60b-1d2f-4d2a-a298-33385f6d05e9 KeyProvider : Microsoft Platform Crypto Provider TpmProtected : YES KeySignTest: : MUST Run elevated to test.
+     EnterpriseJoined: Не DeviceId: 5820fbe9-60c8-43b0-bb11-44aee233e4e7 отпечаток: B753A6679CE720451921302CA873794D94C6204A KeyContainerId: bae6a60b-1d2f-4d2a-a298-33385f6d05e9 KeyProvider: TpmProtected поставщик криптографии Microsoft Platform: Да KeySignTest:: необходимо выполнить с повышенными привилегиями tootest.
                   Idp : login.windows.net TenantId : 72b988bf-86f1-41af-91ab-2d7cd011db47 TenantName : Contoso AuthCodeUrl : https://login.microsoftonline.com/msitsupp.microsoft.com/oauth2/authorize AccessTokenUrl : https://login.microsoftonline.com/msitsupp.microsoft.com/oauth2/token MdmUrl : https://enrollment.manage-beta.microsoft.com/EnrollmentServer/Discovery.svc MdmTouUrl : https://portal.manage-beta.microsoft.com/TermsOfUse.aspx dmComplianceUrl : https://portal.manage-beta.microsoft.com/?portalAction=Compliance SettingsUrl : eyJVcmlzIjpbImh0dHBzOi8va2FpbGFuaS5vbmUubWljcm9zb2Z0LmNvbS8iLCJodHRwczovL2thaWxhbmkxLm9uZS5taWNyb3NvZnQuY29tLyJdfQ== JoinSrvVersion : 1.0 JoinSrvUrl : https://enterpriseregistration.windows.net/EnrollmentServer/device/ JoinSrvId : urn:ms-drs:enterpriseregistration.windows.net KeySrvVersion : 1.0 KeySrvUrl : https://enterpriseregistration.windows.net/EnrollmentServer/key/ KeySrvId : urn:ms-drs:enterpriseregistration.windows.net DomainJoined : YES DomainName : CONTOSO
     
     +----------------------------------------------------------------------+
@@ -71,53 +71,53 @@ ms.lasthandoff: 08/03/2017
 
 
 
-## <a name="step-2-evaluate-the-registration-status"></a>Шаг 2. Анализ сведений о состоянии регистрации 
+## <a name="step-2-evaluate-hello-registration-status"></a>Шаг 2: Оценка hello состояние регистрации 
 
-Просмотрите следующие поля и убедитесь, что для них заданы ожидаемые значения.
+Просмотрите следующие поля hello и убедитесь в том, что они имеют hello ожидаемые значения:
 
 ### <a name="azureadjoined--yes"></a>AzureAdJoined: YES  
 
-Это поле показывает, зарегистрировано ли устройство в Azure AD. Если в поле отображается значение NO, то регистрация не завершена. 
+В этом поле показан, зарегистрировано ли устройство hello в Azure AD. Если значение hello показывает, как «Нет», регистрации не завершена. 
 
 **Возможные причины:**
 
-- Произошла ошибка аутентификации для регистрации компьютера.
+- Не удалось выполнить проверку подлинности компьютера hello для регистрации.
 
-- Компьютер не может обнаружить прокси-сервер HTTP в организации.
+- Есть прокси-сервер HTTP hello организации, которые не могут быть обнаружены на компьютере hello
 
-- Компьютеру не удается получить доступ к Azure AD, чтобы пройти аутентификацию, или Azure DRS, чтобы пройти регистрацию.
+- Hello недоступность Azure AD для проверки подлинности или DRS Azure для регистрации
 
-- Компьютер может быть не подключен к внутренней сети организации или к VPN в пределах "прямой видимости" локального контроллера домена AD.
+- Hello компьютер может быть hello внутренней сети организации или VPN с tooan прямая линия видимости локального контроллера домена AD.
 
-- Доверенный платформенный модуль на компьютере может быть неисправен.
+- Если компьютер hello доверенного платформенного МОДУЛЯ, возможно, в неверном состоянии.
 
-- Службы, упомянутые в документе выше, могут быть неправильно настроены. Это понадобится перепроверить. Ниже приведены распространенные примеры.
+- Может быть неправильной конфигурации в службах отмечалось в документе hello, которые понадобятся tooverify еще раз. Ниже приведены распространенные примеры.
 
     - На сервере федерации нет включенных конечных точек WS-Trust.
 
     - На сервере федерации может быть запрещена входящая аутентификация компьютеров в сети с использованием встроенной проверки подлинности Windows.
 
-    - Нет объекта точки подключения службы, указывающего на имя проверенного домена в Azure AD в лесу AD, к которому относится компьютер.
+    - Нет объекта точки подключения службы, указывающий tooyour проверенное имя домена в Azure AD в лесу hello AD, которой принадлежит компьютер hello
 
 ---
 
 ### <a name="domainjoined--yes"></a>DomainJoined: YES  
 
-Это поле показывает, присоединено ли устройство к локальному каталогу Active Directory или нет. Устройство не сможет автоматически зарегистрироваться в Azure AD, если отображается значение **NO**. Сначала проверьте, может ли устройство присоединиться к локальному каталогу Active Directory перед регистрацией в Azure AD. Узнайте о возможностях присоединения Azure Active Directory, если вы хотите присоединить компьютер к Azure AD напрямую.
+Это поле показывает, является hello устройства присоединены к домену tooan локальной Active Directory, или нет. Если отображается значение hello, что **нет**, hello устройства не может автоматически регистрируются в Azure AD. Сначала проверьте, toohello соединения hello устройства в локальной Active Directory, прежде чем он может зарегистрироваться в Azure AD. Если вы ищете присоединение hello tooAzure компьютера AD напрямую, перейдите в tooLearn о возможности присоединения Azure Active Directory.
 
 ---
 
 ### <a name="workplacejoined--no"></a>WorkplaceJoined: NO  
 
-Это поле показывает, зарегистрировано ли устройство в Azure AD в качестве личного устройства (с пометкой "Присоединено к рабочей области"). Для присоединенного к домену компьютера, зарегистрированного в Azure AD, значение этого поля должно быть NO. Однако если отображается значение YES, это означает, что до выполнения регистрации компьютера была добавлена рабочая или учебная учетная запись. В таком случае при использовании версии юбилейного обновления Windows 10 учетная запись будет игнорироваться (версия 1607 при выполнении команды WinVer в окне "Запуск" или в окне командной строки).
+В этом поле показан, зарегистрировано ли устройство hello в Azure AD, а также как личного устройства (помеченные как «Присоединено к рабочему месту»). Если это значение должно отображаться как «Нет» для присоединенных к домену компьютера, зарегистрированных в Azure AD, однако если показано значение "Да" означает, что рабочей или учебной учетной записи был Завершение регистрации добавлены предыдущих toohello компьютера. В этом случае hello учетной записи будет игнорироваться при использовании версии hello Юбилейного обновления Windows 10 (1607 при выполнении команды WinVer hello hello окна «Выполнить» или окно командной строки).
 
 ---
 
 ### <a name="wamdefaultset--yes-and-azureadprt--yes"></a>WamDefaultSet: YES и AzureADPrt: YES
   
-Эти поля показывают, что при входе в систему устройства пользователь успешно прошел аутентификацию в Azure AD. Ниже приведены возможные причины, по которым может отображаться значение NO.
+Эти поля видно, что этот пользователь hello еще успешно прошел проверку подлинности tooAzure AD после входа в устройство toohello. Если они показывают «Нет» hello ниже приведены возможные причины ее возникновения.
 
-- С устройством при регистрации был связан недопустимый ключ к хранилищу данных в доверенном платформенном модуле (проверьте KeySignTest во время работы с повышенными привилегиями).
+- Ключ хранилища неправильный (STK) в доверенный платформенный модуль, связанный с hello устройства при регистрации (hello проверка KeySignTest во время работы с повышенными правами).
 
 - Наличие альтернативного имени пользователя.
 
@@ -125,4 +125,4 @@ ms.lasthandoff: 08/03/2017
 
 ## <a name="next-steps"></a>Дальнейшие действия
 
-Дополнительные сведения см. в статье [Automatic device registration FAQ](active-directory-device-registration-faq.md) (Часто задаваемые вопросы об автоматической регистрации устройств) 
+Дополнительные сведения см. в разделе hello [автоматической регистрации устройств вопросы и ответы](active-directory-device-registration-faq.md) 

@@ -1,7 +1,7 @@
 ---
-title: "Написание запросов в Stream Analytics | Документация Майкрософт"
+title: "запросы toowrite aaaHow в Stream Analytics | Документы Microsoft"
 description: "Написание запросов в Stream Analytics и запрос данных | Сегмент схемы обучения"
-keywords: "написание запросов, данные запросов, как писать запрос"
+keywords: "как toowrite запросы, данные запроса, написать запрос, написание запросов"
 documentationcenter: 
 services: stream-analytics
 author: jeffstokes72
@@ -15,48 +15,48 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 03/28/2017
 ms.author: jeffstok
-ms.openlocfilehash: b44b0658a06761a805708e7fdeba9e3b2cf9d3ab
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: b943c34f10afd2b21789afbd341c471a5f168729
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-write-queries-in-stream-analytics"></a>Написание запросов в Stream Analytics
-Написание запросов для логической схемы обработки потоков в службе Azure Stream Analytics выполняется как "постоянный запрос", определенный до того, как задание было запущено и применено к поступившим данным. Преобразование данных выражается с помощью SQL-подобного языка запросов, который по большом счету представляет собой подмножество T-SQL с рядом дополнительных расширений языка, таких как [Оконное расширение](https://msdn.microsoft.com/library/azure/dn835019.aspx) , которое используется для выражения временной семантики.
+# <a name="how-toowrite-queries-in-stream-analytics"></a>Как toowrite запросы в Stream Analytics
+Написание запросов для обработки логики в Azure Stream Analytics потоков реализуется как «постоянный запрос», определенный перед запуском задания, а также содержать данные достигнет hello задания. Преобразование данных Hello выражается на языке SQL-подобного запроса, который во многом подмножество T-SQL с некоторыми добавляется расширений языка, например [оконных](https://msdn.microsoft.com/library/azure/dn835019.aspx) использовать временную семантику tooexpress.
 
 ## <a name="writing-queries"></a>Написание запросов:
-1. В задании Stream Analytics на портале управления Azure нажмите **Запрос**.
+1. В вашей задание Stream Analytics на портале управления Azure hello, щелкните **запроса**.
    
     ![Выбор запроса](./media/stream-analytics-write-queries/1-stream-analytics-write-queries.png)  
    
-    На портале Azure нажмите кнопку **Запрос**.
+    В hello портала Azure щелкните **запроса**.
    
     ![Выбор запроса в предварительной версии](./media/stream-analytics-write-queries/query-preview-portal.png)  
-2. Новые задания включают шаблон запроса, помогающий начать работу. Шаблон запроса выполняет запрос к серверу, проецирующий все поля из входных событий в выходные данные.  
+2. Новые задания имеют toohelp шаблона запроса приступить к работе. Hello что шаблона выполняет «сквозной» направляет запрос эти проекты все поля из события ввода в выходные данные hello.  
    
-   * Если в задании определен хотя бы один источник входных данных и один выход данных, заполнители [YourOutputAlias] и [YourInputAlias] в соответствующих полях можно заменить псевдонимами для входных и выходных данных, которые вы хотите использовать в первую очередь. Кроме того, создать и проверить запрос по-прежнему можно на классическом портале Azure, не определяя входных и выходных данных для задания.
-   * Если вам нужно больше, чем простой запрос к серверу, определение запроса можно изменить. Чтобы приступить к созданию запроса, рассмотрите некоторые общие схемы запросов, которые показаны [здесь](stream-analytics-stream-analytics-query-patterns.md).  
+   * При наличии по крайней мере один вход и выход для задания можно заменить hello заполнитель «[YourOutputAlias]» и «[YourInputAlias]» полей псевдонимов hello hello ввода и вывода, сначала нужно использовать. Кроме того по-прежнему можно создать и проверить запрос в hello классический портал Azure без определения входных и выходных данных задания hello.
+   * При необходимости дополнительной обработки, чем простой сквозной tooperform можно изменить определение запроса hello. tooget к созданию запроса, рассмотрим некоторые из распространенных запросов регистрируются шаблоны [здесь](stream-analytics-stream-analytics-query-patterns.md).  
    
    ![Окно данных запросов](./media/stream-analytics-write-queries/2-stream-analytics-write-queries.png)  
 
-## <a name="to-validate-query-data-is-working"></a>Проверка работоспособности данных запроса:
-Чтобы проверить работу запроса, запустите его в браузере, применив к одному или нескольким JSON-файлам с тестовыми данными. При этом задание не выполняется, а стоимость услуг не увеличивается.
+## <a name="toovalidate-query-data-is-working"></a>данные запроса toovalidate работает:
+Можно проверить, что запрос правильно работает, запустив его в браузере hello через один или несколько локальных JSON файлы, содержащие данные теста. Это будет запустить задание hello или не имеет отношения к выставления счетов.
 
 > [!NOTE]
-> В настоящий момент на портале Azure тестирование запросов не поддерживается.  
+> В настоящее время тестирование в браузере запроса не поддерживается в hello портала Azure.  
 > 
 > 
 
-1. Убедитесь, что в запросе нет ошибок (в противном случае кнопка «Тест» будет неактивна), и нажмите кнопку «Тест».  
+1. Убедитесь, что отсутствии ошибок в запросе hello (в противном случае hello теста кнопка будет неактивной) и нажмите кнопку "Тест" hello ".  
    
    ![Проверка данных запросов](./media/stream-analytics-write-queries/3-stream-analytics-write-queries.png)  
-2. Система предложит вам указать файлы для каждого источника входных данных, указанного в запросе. В этом примере шаблон запроса сохранен в исходном виде, поэтому в диалоговом окне источник входных данных запрашивается под именем yourinputalias.  
+2. Появится запрос toospecify файлов для каждого входа hello, указанным в запросе hello. В этом примере hello шаблона запроса останется значение-настолько, запрашивает у диалогового окна hello для входа с именем «yourinputalias».  
    
    ![Проверка запроса данных](./media/stream-analytics-write-queries/4-stream-analytics-write-queries.png)  
-3. Найдите тестовый файл. В [GitHub](https://github.com/Azure/azure-stream-analytics/tree/master/Sample Data) доступно несколько примеров файлов, а также возможность извлекать примеры данных из входных потоковых данных, используя функцию "Пример данных" на вкладке входных данных.  
+3. Найдите файл tooa теста. Несколько файлов примеров доступны на [github](https://github.com/Azure/azure-stream-analytics/tree/master/Sample Data) и образец данных также можно извлечь из собственных входные данные потока через hello функция образцы данных на вкладке hello входных данных.  
    
    ![Входные данные запроса](./media/stream-analytics-write-queries/5-stream-analytics-write-queries.png)  
-4. Когда вы закроете диалоговое окно, запрос будет применен к тестовым данным, а результаты его выполнения появятся в нижней части страницы «Запрос».  
+4. После закрытия диалогового окна hello, запрос будет выполняться через hello тестовых данных и вы увидите результаты hello внизу hello hello запроса страницы.  
    
    ![Сводные данные запроса](./media/stream-analytics-write-queries/6-stream-analytics-write-queries.png)  
 
@@ -64,7 +64,7 @@ ms.lasthandoff: 08/29/2017
 Дополнительную помощь и поддержку вы можете получить на нашем [форуме Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)
 
 ## <a name="next-steps"></a>Дальнейшие действия
-* [Введение в Azure Stream Analytics](stream-analytics-introduction.md)
+* [Введение tooAzure Stream Analytics](stream-analytics-introduction.md)
 * [Приступая к работе с Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md)
 * [Масштабирование заданий в службе Azure Stream Analytics](stream-analytics-scale-jobs.md)
 * [Справочник по языку запросов Azure Stream Analytics](https://msdn.microsoft.com/library/azure/dn834998.aspx)

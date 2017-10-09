@@ -1,6 +1,6 @@
 ---
-title: "Краткое руководство по Azure. Создание виртуальной машины с помощью PowerShell | Документация Майкрософт"
-description: "Быстро научитесь создавать виртуальные машины Linux с помощью PowerShell."
+title: "Быстрый запуск - aaaAzure создания виртуальной Машины PowerShell | Документы Microsoft"
+description: "Быстро Узнайте toocreate виртуальных машин Linux, с помощью PowerShell"
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: neilpeterson
@@ -16,25 +16,25 @@ ms.workload: infrastructure
 ms.date: 05/02/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: adcf492d4c2d935c880167675a1ed97566156ec7
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: f05ea7fedafe4fda660dc6084ae57ebf9dced473
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-a-linux-virtual-machine-with-powershell"></a>Создание виртуальной машины Linux с помощью PowerShell
 
-Модуль PowerShell используется для создания ресурсов Azure и управления ими с помощью командной строки PowerShell или сценариев. В этом руководстве описывается, как с помощью модуля Azure PowerShell развернуть виртуальную машину под управлением сервера Ubuntu. После развертывания сервера создается подключение по протоколу SSH и устанавливается веб-сервер NGINX.
+используется toocreate и управления ресурсами Azure из командной строки PowerShell hello, или в сценариях Hello модуля Azure PowerShell. В этом руководстве рассматривается использование toodeploy модуля Azure PowerShell hello виртуальной машины, работающей Ubuntu server. После развертывания сервера hello SSH-подключения создается и устанавливается веб-сервер NGINX.
 
-Если у вас еще нет подписки Azure, [создайте бесплатную учетную запись Azure](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) , прежде чем начинать работу.
+Если у вас еще нет подписки Azure, [создайте бесплатную учетную запись Azure](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), прежде чем начинать работу.
 
-Для работы с этим кратким руководством требуется модуль Azure PowerShell версии не ниже 3.6. Чтобы узнать версию, выполните команду ` Get-Module -ListAvailable AzureRM`. Если вам необходимо выполнить установку или обновление, см. статью [об установке модуля Azure PowerShell](/powershell/azure/install-azurerm-ps).
+В этом кратком руководстве требует hello Azure PowerShell модуль версии 3.6 или более поздней версии. Запустите ` Get-Module -ListAvailable AzureRM` версии toofind hello. Если требуется tooinstall или обновления, см. раздел [установите Azure PowerShell модуль](/powershell/azure/install-azurerm-ps).
 
-Наконец, необходимо сохранить открытый ключ SSH *id_rsa.pub* в каталог *.ssh* профиля пользователя Windows. Дополнительные сведения о создании ключей SSH для Azure см. в разделе [Создание пары из открытого и закрытого ключей SSH для виртуальных машин Linux](mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Наконец, открытый ключ SSH с именем hello *id_rsa.pub* должен toobe, хранящихся в hello *.ssh* каталог профиля пользователя Windows. Дополнительные сведения о создании ключей SSH для Azure см. в разделе [Создание пары из открытого и закрытого ключей SSH для виртуальных машин Linux](mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
-## <a name="log-in-to-azure"></a>Вход в Azure
+## <a name="log-in-tooazure"></a>Войдите в tooAzure
 
-Войдите в подписку Azure с помощью команды `Login-AzureRmAccount` и следуйте инструкциям на экране.
+Войдите в подписку Azure совместно с hello tooyour `Login-AzureRmAccount` команды и выполните hello на экране инструкциям.
 
 ```powershell
 Login-AzureRmAccount
@@ -50,7 +50,7 @@ New-AzureRmResourceGroup -Name myResourceGroup -Location eastus
 
 ## <a name="create-networking-resources"></a>Создание сетевых ресурсов
 
-Создайте виртуальную сеть, подсеть и общедоступный IP-адрес. Эти ресурсы используются для того, чтобы установить сетевое подключение к виртуальной машине и подключить ее к Интернету.
+Создайте виртуальную сеть, подсеть и общедоступный IP-адрес. Эти ресурсы, используемые tooprovide сетевого подключения toohello виртуальной машины и подключите его toohello Интернета.
 
 ```powershell
 # Create a subnet configuration
@@ -65,7 +65,7 @@ $pip = New-AzureRmPublicIpAddress -ResourceGroupName myResourceGroup -Location e
 -AllocationMethod Static -IdleTimeoutInMinutes 4 -Name "mypublicdns$(Get-Random)"
 ```
 
-Создайте группу безопасности сети и правило группы безопасности сети. Группа безопасности сети обеспечивает защиту виртуальной машины с помощью правил для входящего и исходящего трафика. В нашем случае создается правило для входящего трафика порта 22, которое разрешает входящие SSH-подключения. Мы также создадим правило входящего трафика для порта 80, разрешающее входящий веб-трафик.
+Создайте группу безопасности сети и правило группы безопасности сети. группы безопасности сети Hello защищает hello виртуальной машины, с помощью правила входящего и исходящего трафика. В нашем случае создается правило для входящего трафика порта 22, которое разрешает входящие SSH-подключения. Также мы хотим toocreate входящее правило для порта 80, который позволяет входящего веб-трафика.
 
 ```powershell
 # Create an inbound network security group rule for port 22
@@ -83,7 +83,7 @@ $nsg = New-AzureRmNetworkSecurityGroup -ResourceGroupName myResourceGroup -Locat
 -Name myNetworkSecurityGroup -SecurityRules $nsgRuleSSH,$nsgRuleWeb
 ```
 
-Создайте сетевую карту для виртуальной машины с помощью командлета [New-AzureRmNetworkInterface](/powershell/module/azurerm.network/new-azurermnetworkinterface). Сетевая карта подключает виртуальную машину к подсети, группе безопасности сети и общедоступному IP-адресу.
+Создание сетевого адаптера с [New AzureRmNetworkInterface](/powershell/module/azurerm.network/new-azurermnetworkinterface) для hello виртуальной машины. Hello сетевой адаптер подключается подсети tooa hello виртуальных машин, группы безопасности сети и общедоступный IP-адрес.
 
 ```powershell
 # Create a virtual network card and associate with public IP address and NSG
@@ -93,7 +93,7 @@ $nic = New-AzureRmNetworkInterface -Name myNic -ResourceGroupName myResourceGrou
 
 ## <a name="create-virtual-machine"></a>Создание виртуальной машины
 
-Создайте конфигурацию виртуальной машины. Эта конфигурация содержит параметры, которые используются при развертывании виртуальной машины, в том числе образ виртуальной машины, ее размер и настройки аутентификации.
+Создайте конфигурацию виртуальной машины. Такая настройка включает hello параметров, используемых при развертывании виртуальной машины hello, такие как изображения, размер и проверку подлинности конфигурации виртуальной машины.
 
 ```powershell
 # Define a credential object
@@ -111,34 +111,34 @@ $sshPublicKey = Get-Content "$env:USERPROFILE\.ssh\id_rsa.pub"
 Add-AzureRmVMSshPublicKey -VM $vmconfig -KeyData $sshPublicKey -Path "/home/azureuser/.ssh/authorized_keys"
 ```
 
-Создайте виртуальную машину с помощью командлета [New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm).
+Создание виртуальной машины hello с [New AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm).
 
 ```powershell
 New-AzureRmVM -ResourceGroupName myResourceGroup -Location eastus -VM $vmConfig
 ```
 
-## <a name="connect-to-virtual-machine"></a>Подключение к виртуальной машине
+## <a name="connect-toovirtual-machine"></a>Подключиться к компьютеру toovirtual
 
-После завершения развертывания создайте SSH-подключение к виртуальной машине.
+После завершения развертывания hello создания SSH-подключения с виртуальной машиной hello.
 
-Получите общедоступный IP-адрес виртуальной машины, выполнив команду [Get-AzureRmPublicIPAddress](/powershell/module/azurerm.network/get-azurermpublicipaddress).
+Используйте hello [Get AzureRmPublicIpAddress](/powershell/module/azurerm.network/get-azurermpublicipaddress) команды tooreturn hello общедоступный IP-адрес виртуальной машины hello.
 
 ```powershell
 Get-AzureRmPublicIpAddress -ResourceGroupName myResourceGroup | Select IpAddress
 ```
 
-Чтобы подключиться к виртуальной машине, в системе, в которой установлен протокол SSH, выполните следующую команду. В случае работы в Windows для создания подключения можно использовать [Putty](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-ssh-from-windows?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#create-a-private-key-for-putty). 
+С компьютера, где установлен SSH используемые hello следующая команда tooconnect toohello виртуальной машины. При работе в Windows, [Putty](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-ssh-from-windows?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#create-a-private-key-for-putty) может быть используется toocreate hello соединением. 
 
 ```bash 
 ssh <Public IP Address>
 ```
 
-При появлении запроса на имя пользователя для входа введите *azureuser*. Если при создании ключей SSH была введена парольная фраза, необходимо также ввести и ее.
+При появлении запроса является имя пользователя hello *azureuser*. Если парольная фраза было введено при создании ключей SSH, необходимо tooenter этом также.
 
 
 ## <a name="install-nginx"></a>Установка nginx
 
-Чтобы обновить источники пакетов и установить последнюю версию пакета nginx, используйте следующий bash-скрипт: 
+Используйте hello ниже bash источники пакетов tooupdate сценария и установить последнюю версию пакета NGINX hello. 
 
 ```bash 
 #!/bin/bash
@@ -150,15 +150,15 @@ apt-get -y update
 apt-get -y install nginx
 ```
 
-## <a name="view-the-ngix-welcome-page"></a>Просмотр страницы приветствия nginx
+## <a name="view-hello-ngix-welcome-page"></a>Просмотр hello NGIX начальной страницы
 
-Установив nginx и открыв через Интернет порт 80 на виртуальной машине, вы можете просмотреть страницу приветствия nginx по умолчанию в любом браузере. Чтобы перейти на страницу по умолчанию, используйте общедоступный IP-адрес, записанный ранее. 
+NGINX установлен и порт 80, теперь открыт на ВМ из hello Интернет - можно использовать веб-браузер на выбор tooview hello по умолчанию NGINX начальной страницы. Быть убедиться, что toouse hello общедоступный IP-адрес, описанных выше toovisit страница по умолчанию hello. 
 
 ![Сайт nginx по умолчанию](./media/quick-create-cli/nginx.png) 
 
 ## <a name="clean-up-resources"></a>Очистка ресурсов
 
-Вы можете удалить ставшие ненужными группу ресурсов, виртуальную машину и все связанные с ней ресурсы, выполнив команду [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup).
+Если больше не нужны, можно использовать hello [AzureRmResourceGroup удаление](/powershell/module/azurerm.resources/remove-azurermresourcegroup) команд группы ресурсов tooremove hello, виртуальных Машин и все связанные ресурсы.
 
 ```powershell
 Remove-AzureRmResourceGroup -Name myResourceGroup
@@ -166,7 +166,7 @@ Remove-AzureRmResourceGroup -Name myResourceGroup
 
 ## <a name="next-steps"></a>Дальнейшие действия
 
-Из этого краткого руководства вы узнали о том, как развернуть простую виртуальную машину, о правилах группы безопасности сети и об установке веб-сервера. Дополнительные сведения о виртуальных машинах Azure см. в руководстве для виртуальных машин Linux.
+Из этого краткого руководства вы узнали о том, как развернуть простую виртуальную машину, о правилах группы безопасности сети и об установке веб-сервера. toolearn Дополнительные сведения о виртуальных машинах Azure, продолжить toohello учебника для виртуальных машин Linux.
 
 > [!div class="nextstepaction"]
 > [Создание виртуальных машин Linux и управление ими с помощью Azure CLI](./tutorial-manage-vm.md)

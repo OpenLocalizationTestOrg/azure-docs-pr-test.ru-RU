@@ -1,5 +1,5 @@
 Редактировать Sipi.
 
-Чтобы переключиться на клиент Azure AD B2C, выберите каталог B2C в правом верхнем углу портала.
+tooswitch tooyour клиента Azure AD B2C, выберите каталог B2C hello в правом верхнем углу hello hello портала.
 
-![Переключение на клиент Azure AD B2C](./media/active-directory-b2c-switch-b2c-tenant/switch-to-b2c-tenant.png)
+![Переключение клиента Azure AD B2C tooyour](./media/active-directory-b2c-switch-b2c-tenant/switch-to-b2c-tenant.png)

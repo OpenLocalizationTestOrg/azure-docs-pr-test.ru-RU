@@ -1,5 +1,5 @@
 ---
-title: "Часто задаваемые вопросы про Azure стек | Документы Microsoft"
+title: "вопросы и ответы для стека Azure aaaFrequently | Документы Microsoft"
 description: "Стек Azure часто задаваемые вопросы."
 services: azure-stack
 documentationcenter: 
@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 4/17/2017
 ms.author: helaw
-ms.openlocfilehash: b5ba09a1cc26e49c80bf50d6155bd0d938f1885b
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: aa6f8afbb319e7c8999ce35edcb7ef968f34a0c5
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="frequently-asked-questions-for-azure-stack"></a>Часто задаваемые вопросы про Azure стека
 ## <a name="deployment"></a>Развертывание
-### <a name="do-i-need-to-format-my-data-disks-before-starting-or-restarting-an-installation"></a>Нужно ли форматировать диски с данными до запуска или перезапуска установки?
-Диски должны находиться в необработанном формате. Если необходимо переустановить операционную систему, может потребоваться проверить, если все еще присутствует старый пул носителей и удалить, выполнив следующие действия:
+### <a name="do-i-need-tooformat-my-data-disks-before-starting-or-restarting-an-installation"></a>Нужен ли мне tooformat диски с данными до запуска или перезапуска установки?
+Диски должны находиться в необработанном формате. При переустановке операционной системы hello может требуется toocheck, если пул носителей старого hello по-прежнему присутствует и удаления с помощью hello следующие шаги:
 
 1. Откройте диспетчер сервера.
 2. Выберите пулы носителей.
@@ -31,9 +31,9 @@ ms.lasthandoff: 07/11/2017
 4. Щелкните правой кнопкой мыши **пула носителей** Если в списке и включить чтения / записи.
 5. Щелкните правой кнопкой мыши **виртуальный жесткий диск** (нижнем левом углу) и выберите Удалить.
 6. Щелкните правой кнопкой мыши **пула носителей** и нажмите кнопку Удалить.
-7. Перед повторным запуском сценария Azure стека и проверьте, проходит проверку на диске.
+7. Перед повторным запуском сценария Azure стека и проверьте, проходит проверку диска hello.
 
-Кроме того можно использовать следующий скрипт:
+При необходимости можно использовать следующий скрипт hello:
 
 ```PowerShell
 $pools = Get-StoragePool -IsPrimordial $False -ErrorVariable Err -ErrorAction SilentlyContinue
@@ -45,21 +45,21 @@ if ($pools -ne $null) {
 }
 ```
 
-### <a name="can-i-use-all-ssd-disks-for-the-storage-pool-in-the-poc-installation"></a>Можно использовать все диски SSD для пула носителей во время установки проверки Концепции
-Дополнительные сведения о конфигурации хранилища см. в разделе [руководство по требованиям к](azure-stack-deploy.md).
+### <a name="can-i-use-all-ssd-disks-for-hello-storage-pool-in-hello-poc-installation"></a>Можно использовать все диски SSD в пуле носителей hello в hello подтверждения Концепции установки?
+Дополнительные сведения о конфигурации хранилища см. в разделе hello [руководство по требованиям к](azure-stack-deploy.md).
 
-### <a name="can-i-use-nvme-data-disks-for-the-microsoft-azure-stack-poc"></a>Можно использовать NVMe диски с данными для проверки Концепции стека Microsoft Azure?
-Хотя Storage Spaces Direct поддерживает NVMe дисков, стек Azure поддерживает только подмножество типов возможных дисков и возможных сочетаний для дисковых пространств.  В разделе [руководство по требованиям к](azure-stack-deploy.md) для получения дополнительной информации. 
+### <a name="can-i-use-nvme-data-disks-for-hello-microsoft-azure-stack-poc"></a>Можно использовать диски данных NVMe для hello эта стека Microsoft Azure?
+Хотя Storage Spaces Direct поддерживает NVMe дисков, стек Azure поддерживает только подмножество типов возможных дисков hello и возможных сочетаний для дисковых пространств.  В разделе hello [руководство по требованиям к](azure-stack-deploy.md) для получения дополнительной информации. 
 
 ### <a name="how-can-i-reinstall-azure-stack"></a>Как можно переустановить стек Azure
-Можно выполнить действия в [руководство повторного развертывания](azure-stack-redeploy.md).  
+Выполните действия hello в hello [руководство повторного развертывания](azure-stack-redeploy.md).  
 
 ## <a name="tenant"></a>Клиент
 ### <a name="can-i-deploy-my-own-images-as-a-tenant"></a>Можно развернуть собственный изображения как клиента
-Да, так же, как в Azure, клиент можно отправить изображения в стек Azure, наряду с использованием изображения у администратора службы. Общие сведения см. в разделе [Добавление образа виртуальной Машины](azure-stack-add-vm-image.md). 
+Да, так же, как в Azure, клиент может отправить изображений в стек Azure, кроме администратора службы toousing hello изображений из hello. Общие сведения см. в разделе hello [Добавление образа виртуальной Машины](azure-stack-add-vm-image.md). 
 
 ## <a name="testing"></a>Тестирование
-### <a name="can-i-use-nested-virtualization-to-test-the-microsoft-azure-stack-poc"></a>Можно использовать вложенной виртуализации для тестирования подтверждение Концепции стека Microsoft Azure?
+### <a name="can-i-use-nested-virtualization-tootest-hello-microsoft-azure-stack-poc"></a>Можно использовать hello tootest вложенной виртуализации эта стека Microsoft Azure?
 Вложенная виртуализация не поддерживается и не протестированы с Azure стека Technical Preview 3.
 
 ## <a name="virtual-machines"></a>Виртуальные машины

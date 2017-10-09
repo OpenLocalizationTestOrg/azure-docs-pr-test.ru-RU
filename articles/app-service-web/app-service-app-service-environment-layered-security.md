@@ -1,5 +1,5 @@
 ---
-title: "Многоуровневая архитектура безопасности в средах службы приложений"
+title: "aaaLayered архитектура безопасности с помощью среды службы приложений"
 description: "Реализация многоуровневой архитектуры безопасности в средах службы приложений."
 services: app-service
 documentationcenter: 
@@ -14,83 +14,83 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/30/2016
 ms.author: stefsch
-ms.openlocfilehash: 0fb02c13f99a8f4a46e0142c20da3b152c809b6b
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 0627ba6fa849908506fe62c451c888c147cabc03
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="implementing-a-layered-security-architecture-with-app-service-environments"></a>Реализация многоуровневой архитектуры безопасности со средами службы приложений
 ## <a name="overview"></a>Обзор
 Среды службы приложений предоставляют изолированную среду выполнения, развернутую в виртуальной сети. Поэтому разработчики могут создавать многоуровневую архитектуру безопасности, предусматривающую разные уровни доступа к сети для каждого физического уровня приложений.
 
-Основная цель заключается в том, чтобы сделать невозможным общий доступ к внутреннему приложению API из Интернета, разрешив вызывать API только вышестоящими веб-приложениями.  В подсетях, содержащих среды службы приложений, могут использоваться [группы безопасности сети][NetworkSecurityGroups] для ограничения общего доступа к приложениям API.
+Общие желания toohide API назад интерфейсов из общего доступа к Интернету и только позволяет toobe API-интерфейсы, вызванных вышестоящего веб-приложений.  [Сетевые группы безопасности (Nsg)] [ NetworkSecurityGroups] может использоваться в подсетях, содержащую приложения tooAPI общего доступа toorestrict среды службы приложения.
 
-На приведенной ниже схеме показан пример архитектуры с приложением на основе веб-API, развернутым в среде службы приложений.  Три отдельных экземпляра веб-приложения, развернутые в трех отдельных средах службы приложений, выполняют внутренний вызов одного приложения веб-API.
+Hello приведенной ниже схеме показана архитектура примера с управлением WebAPI приложение, развернутое в среде службы приложений.  Три экземпляра приложения Интернета отдельно, развернутый на три отдельные среды службы приложения, сделать вызовы внутренней toohello же WebAPI приложения.
 
 ![Концепция архитектуры][ConceptualArchitecture] 
 
-Знак зеленого плюса указывает на то, что группа безопасности сети разрешает выполнять в подсети, содержащей apiase, входящие вызовы от вышестоящих веб-приложений, а также вызовы от самого приложения.  При этом та же группа безопасности сети явным образом запрещает доступ к общему входящему трафику из Интернета. 
+Hello зеленый плюс указывают, hello сетевой группы безопасности в подсети hello, содержащая «apiase» позволяет входящих вызовов из hello вышестоящего веб-приложений, как хорошо вызовы от самого себя.  Однако hello явно отказывает в одной группе безопасности сети, доступ к toogeneral входящего трафика из Интернета hello. 
 
-В остальной части этого раздела описаны шаги по настройке группы безопасности сети в подсети, содержащей apiase.
+Hello оставшейся части этой статьи рассматриваются hello действия необходимые tooconfigure hello сетевой группы безопасности в подсети hello, содержащая «apiase».
 
-## <a name="determining-the-network-behavior"></a>Определение поведения сети
-Чтобы узнать требуемые правила сетевой безопасности, вам необходимо определить, какие клиенты сети смогут обращаться к среде службы приложений, содержащей приложение API, а какие — будут заблокированы.
+## <a name="determining-hello-network-behavior"></a>Определение hello неполадки в сети
+В порядке tooknow необходимости правила безопасности сети необходимо toodetermine, какие клиенты сети может tooreach среды службы приложений содержащего hello API приложение hello и какие клиенты будут заблокированы.
 
-[Группы безопасности сети][NetworkSecurityGroups] применяются к подсетям, в которых также развертываются среды службы приложений. Поэтому содержащиеся в группе безопасности сети правила применяются ко **всем** приложениям, выполняющимся в среде службы приложений.  Использование приведенного в этой статье примера архитектуры предполагает следующее. После того как группа безопасности сети будет применена к подсети, содержащей apiase, все приложения, выполняющиеся в среде службы приложений apiase, будут защищены этим же набором правил безопасности. 
+Так как [сетевых групп безопасности (Nsg)] [ NetworkSecurityGroups] , примененные toosubnets и развертываются среды службы приложения в подсетях, применяются правила hello, содержащихся в NSG слишком**все** приложения, работающие в среде службы приложений.  С помощью hello образец архитектуры для данной статьи после группы безопасности сети применяется toohello подсети, где «apiase», все приложения, работающие на hello «apiase» среды службы приложений будет защищен hello же набор правил безопасности. 
 
-* **Определение исходящего IP-адреса вышестоящих вызывающих объектов.** Какой IP-адрес или какие IP-адреса у вышестоящих вызывающих объектов?  Эти адреса нужны для явного разрешения доступа в NSG.  Вызовы между средами службы приложений считаются интернет-вызовами. Это означает, что исходящему IP-адресу, назначенному каждому из трех вышестоящих приложений среды службы приложений, в NSG должен быть разрешен доступ для подсети apiase.   Дополнительные сведения об определении исходящего IP-адреса для приложений, выполняемых в среде службы приложений, см. в обзорной статье [Сетевая архитектура][NetworkArchitecture].
-* **Необходимо ли внутреннему приложению API вызывать самого себя?**  Есть один интересный сценарий, который часто упускают из виду: внутреннему приложению необходимо вызвать самого себя.  Если внутреннему приложению API в среде службы приложений необходимо обратиться к себе же, такой вызов также будет расценен как интернет-вызов.  В нашем примере архитектуры для этого также необходимо разрешить доступ от исходящего IP-адреса apiase среды службы приложений.
+* **Определить hello исходящий IP-адрес вышестоящего вызывающим объектам:** возможности hello IP-адреса вышестоящего hello вызывающих объектов?  Эти адреса должны явно разрешен доступ в hello NSG toobe.  Поскольку вызовы между среды службы приложения считаются вызовы «Internet», это означает hello исходящих IP-адреса, назначенного tooeach из hello три вышестоящего среды службы приложения требованиям toobe доступ разрешен в hello NSG для подсети «apiase» hello.   Дополнительные сведения об определении hello исходящий IP-адрес приложения, выполняющиеся в среде службы приложений см. в разделе hello [архитектура сети] [ NetworkArchitecture] обзорную статью.
+* **Потребуется ли API приложение hello серверной части toocall сам?**  Иногда уделяется недостаточно внимания и неявные точки встречается hello целей toocall самого внутреннего приложения hello.  Если в приложении API серверной части в среде службы приложений требуются toocall сам, это также обрабатываются как вызов «Интернет».  В образец hello архитектуры для этого требуются доступ hello исходящий IP-адрес «apiase» среды службы приложений также hello.
 
-## <a name="setting-up-the-network-security-group"></a>Настройка группы безопасности сети
-Когда набор исходящих IP-адресов станет известен, можно переходить к созданию группы безопасности сети.  Группы безопасности сети можно создавать и для виртуальных сетей с Resource Manager, и для классических виртуальных сетей.  В приведенных ниже примерах показано создание и настройка группы безопасности сети в классической виртуальной сети с помощью Powershell.
+## <a name="setting-up-hello-network-security-group"></a>Настройка hello группы безопасности сети
+После набора hello известны исходящий IP-адресов, hello следующим шагом является tooconstruct группы безопасности сети.  Группы безопасности сети можно создавать и для виртуальных сетей с Resource Manager, и для классических виртуальных сетей.  Hello ниже примерах Создание и настройка NSG в классической виртуальной сети с помощью Powershell.
 
-Так как в этом примере архитектуры среды расположены в Южно-Центральном регионе США, пустая группа NSG создается в этом регионе:
+Для архитектуры образец hello средах hello находятся в США, так что в этом регионе создается пустой NSG:
 
     New-AzureNetworkSecurityGroup -Name "RestrictBackendApi" -Location "South Central US" -Label "Only allow web frontend and loopback traffic"
 
-Сначала для инфраструктуры управления Azure добавляется одно явно разрешающее правило, как описано в статье, посвященной [управлению входящим трафиком][InboundTraffic] в среде службы приложений.
+Сначала явно разрешить добавлено правило для hello инфраструктуры управления Azure, описанных в статье hello на [входящий трафик] [ InboundTraffic] для среды службы приложения.
 
     #Open ports for access by Azure management infrastructure
     Get-AzureNetworkSecurityGroup -Name "RestrictBackendApi" | Set-AzureNetworkSecurityRule -Name "ALLOW AzureMngmt" -Type Inbound -Priority 100 -Action Allow -SourceAddressPrefix 'INTERNET' -SourcePortRange '*' -DestinationAddressPrefix '*' -DestinationPortRange '454-455' -Protocol TCP
 
-Затем добавляются два правила, разрешающие вызовы HTTP и HTTPS из первой вышестоящей среды службы приложений (fe1ase).
+После этого два правила будут добавлены tooallow HTTP и HTTPS вызовы из hello первый вышестоящего среды службы приложений («fe1ase»).
 
-    #Grant access to requests from the first upstream web front-end
+    #Grant access toorequests from hello first upstream web front-end
     Get-AzureNetworkSecurityGroup -Name "RestrictBackendApi" | Set-AzureNetworkSecurityRule -Name "ALLOW HTTP fe1ase" -Type Inbound -Priority 200 -Action Allow -SourceAddressPrefix '65.52.xx.xyz'  -SourcePortRange '*' -DestinationAddressPrefix '*' -DestinationPortRange '80' -Protocol TCP
     Get-AzureNetworkSecurityGroup -Name "RestrictBackendApi" | Set-AzureNetworkSecurityRule -Name "ALLOW HTTPS fe1ase" -Type Inbound -Priority 300 -Action Allow -SourceAddressPrefix '65.52.xx.xyz'  -SourcePortRange '*' -DestinationAddressPrefix '*' -DestinationPortRange '443' -Protocol TCP
 
-То же самое выполняется для второй и третьей вышестоящих сред службы приложений (fe2ase и fe3ase).
+Здравствуйте, снова и повторите эти действия для второго и третьего вышестоящего приложения среды службы («fe2ase» и «fe3ase»).
 
-    #Grant access to requests from the second upstream web front-end
+    #Grant access toorequests from hello second upstream web front-end
     Get-AzureNetworkSecurityGroup -Name "RestrictBackendApi" | Set-AzureNetworkSecurityRule -Name "ALLOW HTTP fe2ase" -Type Inbound -Priority 400 -Action Allow -SourceAddressPrefix '191.238.xyz.abc'  -SourcePortRange '*' -DestinationAddressPrefix '*' -DestinationPortRange '80' -Protocol TCP
     Get-AzureNetworkSecurityGroup -Name "RestrictBackendApi" | Set-AzureNetworkSecurityRule -Name "ALLOW HTTPS fe2ase" -Type Inbound -Priority 500 -Action Allow -SourceAddressPrefix '191.238.xyz.abc'  -SourcePortRange '*' -DestinationAddressPrefix '*' -DestinationPortRange '443' -Protocol TCP
 
-    #Grant access to requests from the third upstream web front-end
+    #Grant access toorequests from hello third upstream web front-end
     Get-AzureNetworkSecurityGroup -Name "RestrictBackendApi" | Set-AzureNetworkSecurityRule -Name "ALLOW HTTP fe3ase" -Type Inbound -Priority 600 -Action Allow -SourceAddressPrefix '23.98.abc.xyz'  -SourcePortRange '*' -DestinationAddressPrefix '*' -DestinationPortRange '80' -Protocol TCP
     Get-AzureNetworkSecurityGroup -Name "RestrictBackendApi" | Set-AzureNetworkSecurityRule -Name "ALLOW HTTPS fe3ase" -Type Inbound -Priority 700 -Action Allow -SourceAddressPrefix '23.98.abc.xyz'  -SourcePortRange '*' -DestinationAddressPrefix '*' -DestinationPortRange '443' -Protocol TCP
 
-Наконец, нужно предоставить доступ для исходящего IP-адреса среды службы приложений, в которую входит внутреннее приложение API, чтобы оно смогло вызывать само себя.
+Наконец предоставьте доступ toohello исходящих IP-адрес внутреннего интерфейса API hello среды службы приложений, чтобы он может выполнять обратный вызов в саму себя.
 
-    #Allow apps on the apiase environment to call back into itself
+    #Allow apps on hello apiase environment toocall back into itself
     Get-AzureNetworkSecurityGroup -Name "RestrictBackendApi" | Set-AzureNetworkSecurityRule -Name "ALLOW HTTP apiase" -Type Inbound -Priority 800 -Action Allow -SourceAddressPrefix '70.37.xyz.abc'  -SourcePortRange '*' -DestinationAddressPrefix '*' -DestinationPortRange '80' -Protocol TCP
     Get-AzureNetworkSecurityGroup -Name "RestrictBackendApi" | Set-AzureNetworkSecurityRule -Name "ALLOW HTTPS apiase" -Type Inbound -Priority 900 -Action Allow -SourceAddressPrefix '70.37.xyz.abc'  -SourcePortRange '*' -DestinationAddressPrefix '*' -DestinationPortRange '443' -Protocol TCP
 
-Другие правила безопасности сети настраивать не нужно, так как у каждой группы NSG есть набор правил по умолчанию, блокирующий входящий доступ из Интернета по умолчанию.
+Нет правил безопасности сети должны toobe настроен по умолчанию, поскольку каждый NSG имеет набор правил по умолчанию, блокирующие доступ входящего трафика из Интернета hello.
 
-Полный список правил группы безопасности сети приведен ниже.  Обратите внимание, как последнее правило (выделено) блокирует входящий доступ ото всех вызывающих объектов, отличных от тех, которым явно предоставлен доступ.
+Ниже приведены Hello полный список правил в группе безопасности сети hello.  Обратите внимание на то, как hello последнего правило, которое выделяется, блокирует доступ входящего трафика от всех вызывающих объектов, отличных от тех, которые явным образом предоставлен доступ.
 
 ![Конфигурация NSG][NSGConfiguration] 
 
-Последним шагом является применение группы NSG к подсети, которая содержит среду службы приложений apiase.  
+последним шагом Hello является toohello подсети tooapply hello NSG, которая содержит apiase «hello» среды службы приложений.  
 
-     #Apply the NSG to the backend API subnet
+     #Apply hello NSG toohello backend API subnet
     Get-AzureNetworkSecurityGroup -Name "RestrictBackendApi" | Set-AzureNetworkSecurityGroupToSubnet -VirtualNetworkName 'yourvnetnamehere' -SubnetName 'API-ASE-Subnet'
 
-После применения группы NSG к подсети вызывать среду apiase смогут только три вышестоящие среды службы приложений, а также среда службы приложений, содержащая серверную часть API.
+С подсетью toohello hello NSG применяется только hello три вышестоящего среды службы приложения hello содержащего hello среды службы приложений API серверной части, разрешены и toocall в среду «apiase» hello.
 
 ## <a name="additional-links-and-information"></a>Дополнительные ссылки и сведения
-Все статьи и практические руководства, посвященные средам службы приложений, доступны в [файле сведений для сред службы приложений](../app-service/app-service-app-service-environments-readme.md).
+Все статьи и как-для пользователя для среды службы приложений теперь доступны в hello [файл README для среды службы приложения](../app-service/app-service-app-service-environments-readme.md).
 
 Информация о [группах безопасности сети](../virtual-network/virtual-networks-nsg.md). 
 

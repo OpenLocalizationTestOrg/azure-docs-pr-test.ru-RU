@@ -1,5 +1,5 @@
 ---
-title: "Приступая к работе с Azure AD для веб-приложения .NET | Документация Майкрософт"
+title: "Приступая к работе веб-приложение .NET aaaAzure AD | Документы Microsoft"
 description: "Узнайте, как выполнить сборку веб-приложения .NET MVC, которое интегрируется с Azure AD для входа."
 services: active-directory
 documentationcenter: .net
@@ -15,44 +15,44 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: dastrock
 ms.custom: aaddev
-ms.openlocfilehash: 7ac5d3e5cc28ead993e159d003244e6451acb0cc
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 6d3098c9e3d7e1916ccb110c703f501ae52e788f
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="aspnet-web-app-sign-in-and-sign-out-with-azure-ad"></a>Вход в веб-приложение ASP.NET и выход из него с помощью Azure AD
 [!INCLUDE [active-directory-devguide](../../../includes/active-directory-devguide.md)]
 
-Azure Active Directory (Azure AD) позволяет легко выполнять функции управления удостоверением веб-приложения, обеспечивая единый вход и выход с помощью всего лишь нескольких строк кода. Пользователи могут входить в веб-приложения ASP.NET и выходить из них с помощью реализованного корпорацией Майкрософт ПО промежуточного слоя OWIN (Open Web Interface for .NET). Поддерживаемое сообществом ПО промежуточного слоя OWIN включено в .NET Framework 4.5. В этой статье показано, как с помощью OWIN:
+Предоставив один вход и выход с помощью всего нескольких строк кода, Azure Active Directory (Azure AD) упрощает вы toooutsource веб-приложения диспетчера удостоверений. Можно подписать пользователей и из него веб-приложения ASP.NET с использованием реализации Microsoft Привет открыть веб-интерфейс для по промежуточного слоя .NET (OWIN). Поддерживаемое сообществом ПО промежуточного слоя OWIN включено в .NET Framework 4.5. В этой статье показано, как toouse OWIN для:
 
-* выполнять вход пользователей в веб-приложения с использованием Azure AD как поставщика удостоверений;
+* Вход пользователей tooweb приложений с помощью Azure AD как поставщика удостоверений hello.
 * отображать некоторые сведения о пользователе;
-* выполнять выход пользователей из приложений.
+* Вход пользователей из приложения hello.
 
 ## <a name="before-you-get-started"></a>Необходимые условия
-* Скачайте [схему приложения](https://github.com/AzureADQuickStarts/WebApp-OpenIdConnect-DotNet/archive/skeleton.zip) или [готовый пример](https://github.com/AzureADQuickStarts/WebApp-OpenIdConnect-DotNet/archive/complete.zip).
-* Вам также необходим клиент Azure AD для регистрации приложения. Если у вас еще нет клиента Azure AD, [узнайте, как его получить](active-directory-howto-tenant.md).
+* Загрузите hello [основу приложения](https://github.com/AzureADQuickStarts/WebApp-OpenIdConnect-DotNet/archive/skeleton.zip) или загрузить hello [полного примера](https://github.com/AzureADQuickStarts/WebApp-OpenIdConnect-DotNet/archive/complete.zip).
+* Необходимо также клиент Azure AD, в которой приложение hello tooregister. Если у вас еще нет клиента Azure AD, [Узнайте, как один tooget](active-directory-howto-tenant.md).
 
-Когда будете готовы, выполните процедуры, описанные в следующих четырех разделах.
+Когда будете готовы, выполните процедуры hello в hello рядом в четырех разделах.
 
-## <a name="step-1-register-the-new-app-with-azure-ad"></a>Шаг 1. Регистрация нового приложения в Azure AD
-Чтобы настроить приложение для аутентификации пользователей, сначала зарегистрируйте его в клиенте. Для этого выполните следующие действия:
+## <a name="step-1-register-hello-new-app-with-azure-ad"></a>Шаг 1: Регистрация нового приложения hello в Azure AD
+tooset пользователей tooauthenticate приложения hello, зарегистрировать его в клиенте, выполнив hello ниже:
 
-1. Войдите на [портал Azure](https://portal.azure.com).
-2. На верхней панели щелкните имя учетной записи. В списке **Каталог** выберите клиент Active Directory для регистрации приложения.
-3. В области слева щелкните **Больше служб** и выберите **Azure Active Directory**.
+1. Войдите в toohello [портал Azure](https://portal.azure.com).
+2. На верхней панели hello щелкните имя вашей учетной записи. В разделе hello **каталога** список, клиент Active Directory hello выберите нужное приложение hello tooregister.
+3. Нажмите кнопку **более служб** в hello левой панели, а затем выберите **Azure Active Directory**.
 4. Щелкните **Регистрация приложений**, а затем выберите **Добавить**.
-5. Следуйте инструкциям на экране, чтобы создать **веб-приложение и (или) веб-API**.
-  * **Имя** — это описание приложения для пользователей.
-  * **URL-адрес входа** — это базовый URL-адрес приложения. Формат URL-адреса по умолчанию — https://localhost:44320/.
-6. После завершения регистрации Azure AD присваивает приложению уникальный идентификатор. Скопируйте значение на странице приложения, чтобы использовать его в следующих разделах.
-7. На странице **Параметры** -> **Свойства** приложения обновите его универсальный код ресурса (URI) идентификатора. **URI кода приложения** — это уникальный идентификатор приложения. Соглашение об именовании — `https://<tenant-domain>/<app-name>` (например, `https://contoso.onmicrosoft.com/my-first-aad-app`).
+5. Выполните hello предлагает toocreate новый **веб-приложение или WebAPI**.
+  * **Имя** описывает toousers приложения hello.
+  * **URL-адрес входа** hello базовый URL-адрес приложения hello. URL-адрес по умолчанию Hello основу — https://localhost:44320 /.
+6. После завершения регистрации hello Azure AD присваивает приложение hello уникальный идентификатор приложения. Скопируйте значение hello из toouse страницы приложения hello в следующих разделах hello.
+7. Из hello **параметры** -> **свойства** страницы приложения, обновите URI идентификатора приложения hello. Hello **URI идентификатора приложения** — это уникальный идентификатор для приложения hello. Hello именования — `https://<tenant-domain>/<app-name>` (например, `https://contoso.onmicrosoft.com/my-first-aad-app`).
 
-## <a name="step-2-set-up-the-app-to-use-the-owin-authentication-pipeline"></a>Шаг 2. Настройка приложения для использования конвейера аутентификации OWIN
-На этом шаге настраивается ПО промежуточного слоя OWIN для использования протокола проверки подлинности OpenID Connect. OWIN используется для выдачи запросов на вход и выход, управления сеансами пользователей, получения сведений о пользователях и т. д.
+## <a name="step-2-set-up-hello-app-toouse-hello-owin-authentication-pipeline"></a>Шаг 2: Настройка проверки подлинности конвейер OWIN hello hello приложения toouse
+На этом шаге настраивается hello OWIN по промежуточного слоя toouse hello OpenID Connect протокол проверки подлинности. Использование запросов OWIN tooissue входа и выхода, управлять сеансами пользователей, получить сведения о пользователе и т.д.
 
-1. Чтобы начать, добавьте пакеты NuGet ПО промежуточного слоя OWIN в проект с помощью консоли диспетчера пакетов.
+1. toobegin, добавить toohello hello OWIN по промежуточного слоя NuGet пакетов проекта с помощью консоли диспетчера пакетов hello.
 
      ```
      PM> Install-Package Microsoft.Owin.Security.OpenIdConnect
@@ -60,8 +60,8 @@ Azure Active Directory (Azure AD) позволяет легко выполнят
      PM> Install-Package Microsoft.Owin.Host.SystemWeb
      ```
 
-2. Чтобы добавить класс запуска OWIN в проект с именем `Startup.cs`, щелкните этот проект правой кнопкой мыши, выберите **Добавить**, затем выберите **Новый элемент** и найдите **OWIN**. При запуске приложения ПО промежуточного слоя OWIN вызывает метод **Configuration(...)**.
-3. Замените объявление класса `public partial class Startup`. Часть этого класса уже была реализована в другом файле. В методе **Configuration(...)** отправьте вызов в **ConfigureAuth(...)**, чтобы настроить аутентификацию для приложения.  
+2. вызывается проект запуска OWIN класса toohello tooadd `Startup.cs`, щелкните правой кнопкой мыши проект hello, выберите **добавить**выберите **новый элемент**и выполните поиск **OWIN**. по промежуточного слоя OWIN Hello вызывает hello **Configuration(...)**  метод при запуске приложение hello.
+3. Измените объявление класса hello слишком`public partial class Startup`. Часть этого класса уже была реализована в другом файле. В hello **Configuration(...)**  метод, вызвать слишком**ConfgureAuth(...)**  tooset проверку подлинности для приложения hello.  
 
      ```C#
      public partial class Startup
@@ -73,7 +73,7 @@ Azure Active Directory (Azure AD) позволяет легко выполнят
      }
      ```
 
-4. Откройте файл App_Start\Startup.Auth.cs, а затем реализуйте метод **ConfigureAuth(...)**. Параметры, указанные в *OpenIDConnectAuthenticationOptions*, будут служить координатами приложения для взаимодействия с Azure AD. Также необходимо настроить аутентификацию на основе файлов cookie, так как ПО промежуточного слоя OpenID Connect использует файлы cookie в фоновом режиме.
+4. Откройте файл App_Start\Startup.Auth.cs hello, а затем реализуйте hello **ConfigureAuth(...)**  метод. Здравствуйте, параметры, указываемые в *OpenIDConnectAuthenticationOptions* служат в качестве координат для hello toocommunicate приложений с Azure AD. Необходимо также tooset копирование файла cookie проверки подлинности, так как по промежуточного слоя, OpenID Connect hello использует куки-файлы в фоновом режиме hello.
 
      ```C#
      public void ConfigureAuth(IAppBuilder app)
@@ -101,15 +101,15 @@ Azure Active Directory (Azure AD) позволяет легко выполнят
      }
      ```
 
-5. Откройте файл web.config в корне проекта, а затем введите значения конфигурации в разделе `<appSettings>`.
-  * `ida:ClientId`: GUID, скопированный с портала Azure на шаге 1 (Регистрация нового приложения в Azure AD).
-  * `ida:Tenant`: имя вашего клиента Azure AD (например, contoso.onmicrosoft.com).
-  * `ida:PostLogoutRedirectUri`: индикатор, указывающий системе Azure AD, куда должен перенаправляться пользователь после успешного выполнения запроса выхода.
+5. Откройте файл web.config hello в корневой hello hello проекта, а затем введите значения конфигурации hello в hello `<appSettings>` раздела.
+  * `ida:ClientId`: hello GUID, был скопирован из hello портал Azure на «шаг 1: hello зарегистрировать новое приложение с Azure AD.»
+  * `ida:Tenant`: hello имя вашего клиента Azure AD (например, contoso.onmicrosoft.com).
+  * `ida:PostLogoutRedirectUri`: hello индикатор, который сообщает Azure AD, которому следует перенаправлять пользователя после успешного завершения запроса выхода.
 
-## <a name="step-3-use-owin-to-issue-sign-in-and-sign-out-requests-to-azure-ad"></a>Шаг 3. Использование OWIN для выдачи запросов входа и выхода в Azure AD
-Теперь приложение правильно настроено для взаимодействия с Azure AD с использованием протокола проверки подлинности OpenID Connect. OWIN полностью возьмет на себя выполнение процессов создания сообщений аутентификации, проверки маркеров из Azure AD и поддержки сеансов пользователя. Остается лишь предоставить пользователям возможность выполнять вход и выход.
+## <a name="step-3-use-owin-tooissue-sign-in-and-sign-out-requests-tooazure-ad"></a>Шаг 3: Использование tooAzure AD запросов OWIN tooissue входа и выхода
+приложение Hello сейчас правильно настроен toocommunicate с Azure AD с помощью протокола проверки подлинности OpenID Connect hello. OWIN обработала все подробности hello отправляемого сообщения проверки подлинности, проверки токенов из Azure AD и поддержку пользовательских сеансов. Все, что остается является toogive пользователей toosign способом в и выхода.
 
-1. Вы можете использовать теги авторизации в своих контроллерах, чтобы обязать пользователей выполнять вход перед доступом к конкретным страницам. Для этого откройте файл Controllers\HomeController.cs и добавьте тег `[Authorize]` в контроллер About.
+1. Можно использовать теги в toosign пользователей toorequire вашей контроллеров, в авторизации, перед доступом к некоторые страницы. toodo таким образом, откройте Controllers\HomeController.cs, а затем добавьте hello `[Authorize]` тега toohello о контроллере.
 
      ```C#
      [Authorize]
@@ -118,7 +118,7 @@ Azure Active Directory (Azure AD) позволяет легко выполнят
        ...
      ```
 
-2. Вы также можете использовать OWIN для выдачи запросов проверки подлинности прямо из своего кода. Для этого откройте файл Controllers\AccountController.cs. Затем в действиях SignIn() и SignOut() выдавайте соответственно запросы входа и выхода из OpenID Connect.
+2. Также можно использовать запросов OWIN toodirectly проблема проверки подлинности из кода. toodo откройте Controllers\AccountController.cs. Затем в действиях SignIn() и SignOut() hello, выдавать запроса OpenID Connect и запросах на выход.
 
      ```C#
      public void SignIn()
@@ -137,7 +137,7 @@ Azure Active Directory (Azure AD) позволяет легко выполнят
      }
      ```
 
-3. Откройте файл Views\Shared\_LoginPartial.cshtml, чтобы показывать пользователю ссылки для входа и выхода из приложения, а также отображать имя пользователя.
+3. Откройте одну\_LoginPartial.cshtml tooshow hello пользователя hello приложения входа и выхода ссылки и tooprint в представлении имя пользователя hello.
 
     ```HTML
     @if (Request.IsAuthenticated)
@@ -162,9 +162,9 @@ Azure Active Directory (Azure AD) позволяет легко выполнят
     ```
 
 ## <a name="step-4-display-user-information"></a>Шаг 4. Отображение сведений о пользователе
-При аутентификации пользователей с помощью OpenID Connect служба Azure AD возвращает в приложение маркер id_token, который содержит "утверждения" о пользователе. Эти утверждения можно использовать для настройки приложения. Для этого выполните следующие действия:
+При проверке подлинности пользователей с OpenID Connect, Azure AD возвращает id_token toohello приложение, которое содержит «утверждения» или утверждения о пользователе hello. Можно использовать приложение hello toopersonalize этих утверждений, выполнив hello ниже:
 
-1. Откройте файл Controllers\HomeController.cs. Для доступа к утверждениям о пользователе в своих контроллерах можно использовать объект субъекта безопасности `ClaimsPrincipal.Current` .
+1. Откройте файл Controllers\HomeController.cs hello. Можно использовать утверждения пользователей hello в контроллерах через hello `ClaimsPrincipal.Current` объект субъекта безопасности.
 
  ```C#
  public ActionResult About()
@@ -179,17 +179,17 @@ Azure Active Directory (Azure AD) позволяет легко выполнят
  }
  ```
 
-2. Выполните сборку и запустите приложение. Если вы еще этого не сделали, то создайте пользователя в своем клиенте с доменом onmicrosoft.com. Этот процесс описывается далее.
+2. Постройте и запустите приложение hello. Если уже еще не создан новый пользователь в клиенте с домен onmicrosoft.com, поэтому теперь является toodo время hello. Этот процесс описывается далее.
 
-  а. Выполните вход от имени этого пользователя и обратите внимание на то, как удостоверение пользователя отображается на верхней панели.
+  а. Вход пользователя и обратите внимание на то, как удостоверение пользователя hello отражается на верхней панели hello.
 
   b. Выйдите, а затем снова войдите от имени другого пользователя в своем клиенте.
 
   c. Если у вас серьезные цели, зарегистрируйте и запустите другой экземпляр данного приложения (с его собственным clientId) и рассмотрите процесс единого входа в действии.
 
 ## <a name="next-steps"></a>Дальнейшие действия
-Для справки просмотрите [готовый пример](https://github.com/AzureADQuickStarts/WebApp-OpenIdConnect-DotNet/archive/complete.zip) (без ваших значений конфигурации).
+Справочную информацию см. в разделе [образец hello завершения](https://github.com/AzureADQuickStarts/WebApp-OpenIdConnect-DotNet/archive/complete.zip) (без настройки).
 
-Теперь можно перейти к более сложным темам. Например, попробуйте использовать [защиту веб-API с помощью Azure AD](active-directory-devquickstarts-webapi-dotnet.md).
+Теперь можно переходить на toomore дополнительные разделы. Например, попробуйте использовать [защиту веб-API с помощью Azure AD](active-directory-devquickstarts-webapi-dotnet.md).
 
 [!INCLUDE [active-directory-devquickstarts-additional-resources](../../../includes/active-directory-devquickstarts-additional-resources.md)]

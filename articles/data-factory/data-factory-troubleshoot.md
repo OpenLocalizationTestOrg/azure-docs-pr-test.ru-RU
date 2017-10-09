@@ -1,6 +1,6 @@
 ---
-title: "Устранение неполадок фабрики данных Azure"
-description: "Узнайте, как устранять неполадки при использовании фабрики данных Azure."
+title: "проблемы aaaTroubleshoot фабрики данных Azure"
+description: "Узнайте, как tootroubleshoot проблемы с помощью фабрики данных Azure."
 services: data-factory
 documentationcenter: 
 author: spelluru
@@ -14,55 +14,55 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/14/2017
 ms.author: spelluru
-ms.openlocfilehash: 953a2703db7c8991f580a7c963d6cbd94265c213
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: cf65bcf3e1c3f061d3ac1dbf32e99cc7b014f9dc
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="troubleshoot-data-factory-issues"></a>Устранение неполадок фабрики данных
-В этой статье приводятся советы по устранению неполадок, возникающих при использовании фабрики данных Azure. В этой статье перечислены не все возможные проблемы использования службы, однако рассматриваются некоторые вопросы и приводятся общие рекомендации по устранению неполадок.   
+В этой статье приводятся советы по устранению неполадок, возникающих при использовании фабрики данных Azure. В этой статье не включает все возможные причины неполадок hello, при использовании службы hello, однако он охватывает некоторые проблемы и Общие советы по устранению неполадок.   
 
 ## <a name="troubleshooting-tips"></a>Советы по устранению неполадок
-### <a name="error-the-subscription-is-not-registered-to-use-namespace-microsoftdatafactory"></a>Ошибка "Подписка не зарегистрирована для использования пространства имен Microsoft.DataFactory"
-Если эта ошибка возникает, поставщик ресурсов фабрики данных Azure не был зарегистрирован на компьютере. Выполните следующее:
+### <a name="error-hello-subscription-is-not-registered-toouse-namespace-microsoftdatafactory"></a>Ошибка: hello подписки не зарегистрированного toouse пространством имен «Microsoft.DataFactory»
+Если эта ошибка поставщика ресурсов hello фабрики данных Azure не был зарегистрирован на компьютере. Здравствуйте, следующие:
 
 1. Запустите Azure PowerShell.
-2. Войдите в свою учетную запись Azure с помощью следующей команды:
+2. Войдите в систему tooyour учетная запись Azure с помощью hello следующую команду.
 
     ```powershell
     Login-AzureRmAccount
     ```
-3. Выполните следующую команду, чтобы зарегистрировать поставщик фабрики данных Azure:
+3. Выполните следующие команды tooregister hello фабрики данных Azure поставщика hello.
 
     ```powershell        
     Register-AzureRmResourceProvider -ProviderNamespace Microsoft.DataFactory
     ```
 
 ### <a name="problem-unauthorized-error-when-running-a-data-factory-cmdlet"></a>Проблема: ошибка авторизации при выполнении командлета фабрики данных
-Скорее всего, для Azure PowerShell используется неправильная учетная запись или подписка Azure. Чтобы выбрать правильную учетную запись и подписку Azure для Azure PowerShell, используйте такие командлеты:
+Возможно, не используются hello справа учетной записи Azure или подписок с hello Azure PowerShell. Используйте следующие командлеты tooselect hello справа Azure toouse учетной записи и подписки с hello Azure PowerShell hello.
 
-1. Login-AzureRmAccount — ввод имени пользователя и пароля.
-2. Get-AzureRmSubscription — просмотр всех подписок в учетной записи.
-3. Select-AzureRmSubscription &lt;имя_подписки&gt; — выбор нужной подписки. Используйте подписку, которая использовалась для создания фабрики данных на портале Azure.
+1. AzureRmAccount входа - используйте hello правой пользователя и пароль
+2. Get-AzureRmSubscription - представление всех hello подписки для учетной записи hello.
+3. Выберите AzureRmSubscription &lt;имя подписки&gt; -выберите подходящую подписку hello. Используйте hello один на портал Azure hello используется toocreate фабрики данных.
 
-### <a name="problem-fail-to-launch-data-management-gateway-express-setup-from-azure-portal"></a>Проблема: не удается запустить экспресс-установку шлюза управления данными с портала Azure
-Для экспресс-установки шлюза управления данными требуется Internet Explorer или другой веб-браузер, совместимый с Microsoft ClickOnce. Если не удается запустить экспресс-установку, выполните одно из следующих действий:
+### <a name="problem-fail-toolaunch-data-management-gateway-express-setup-from-azure-portal"></a>Проблема: Не toolaunch экспресс-установки данных управления шлюза с портала Azure
+Установка экспресс-выпуск Hello для hello шлюз управления данными требуется Internet Explorer или браузер, совместимый Microsoft ClickOnce. При сбое установки Express hello toostart выполните одно из следующих hello.
 
 * Используйте Internet Explorer или другой веб-браузер, совместимый с Microsoft ClickOnce.
 
-    Если вы используете браузер Chrome, перейдите в [интернет-магазин Chrome](https://chrome.google.com/webstore/), введите ClickOnce в строке поиска, а затем выберите и установите одно из расширений ClickOnce.
+    При использовании Chrome go toohello [Chrome веб-хранилище](https://chrome.google.com/webstore/)поиска с ключевым словом «ClickOnce», выбрав один из модулей ClickOnce hello и установить его.
 
-    То же самое (установку надстройки) сделайте и в случае с браузером Firefox. Нажмите кнопку "Открыть меню" на панели инструментов (три горизонтальные линии в правом верхнем углу), нажмите кнопку "Надстройки", введите "ClickOnce" в строку поиска, выберите одно из расширений ClickOnce и установите его.
-* Щелкните ссылку **Установка вручную** в той же колонке на портале. Этот подход используется для скачивания файла установки и его запуска вручную. После успешного завершения установки откроется диалоговое окно настройки шлюза управления данными. Скопируйте **ключ** на экране портала и используйте его в диспетчере конфигурации, чтобы вручную зарегистрировать шлюз в службе.  
+    Здравствуйте же для Firefox (установка надстройки). Нажмите кнопку Открыть меню на панели инструментов hello (три горизонтальные линии в правом верхнем углу hello), выберите дополнительные компоненты, поиска с ключевым словом «ClickOnce», выбрать один из модулей ClickOnce hello и установить его.
+* Используйте hello **ручной установки** ссылки, представленной на hello же колонке hello портала. Используйте этот подход toodownload установочный файл и запустить его вручную. После успешного завершения установки hello, появится диалоговое окно настройки шлюза управления данными hello. Копировать hello **ключ** из портала экран приветствия и используйте его в hello configuration manager toomanually зарегистрируйте шлюз hello службе hello.  
 
-### <a name="problem-fail-to-connect-to-on-premises-sql-server"></a>Проблема: не удается подключиться к локальному серверу SQL Server
-Запустите **диспетчер конфигурации шлюза управления данными** на компьютере шлюза и используйте вкладку **Устранение неполадок**, чтобы проверить подключение к SQL Server с компьютера шлюза. Советы по устранению неполадок, связанных со шлюзом или подключением, см. в разделе [Устранение неполадок в работе шлюза](data-factory-data-management-gateway.md#troubleshooting-gateway-issues).   
+### <a name="problem-fail-tooconnect-tooon-premises-sql-server"></a>Проблема: Не tooconnect tooon локальный SQL Server
+Запустите **диспетчера конфигурации шлюза управления данными** на компьютере шлюза hello и использовать hello **Устранение неполадок** вкладке tooSQL подключения tootest hello Server с компьютера шлюза hello. Советы по устранению неполадок, связанных со шлюзом или подключением, см. в разделе [Устранение неполадок в работе шлюза](data-factory-data-management-gateway.md#troubleshooting-gateway-issues).   
 
 ### <a name="problem-input-slices-are-in-waiting-state-for-ever"></a>Проблема: срезы входных данных постоянно находятся в состоянии "Waiting"
-Срезы могут находиться в состоянии **ожидания** по разным причинам. Одна из распространенных причин — для свойства **external** не задано значение **true**. Все наборы данных, созданные вне фабрики данных Azure, должны быть помечены свойством **external** . Это свойство указывает на то, что данные являются внешними и не поддерживаются какими-либо конвейерами в фабрике данных. После того как данные станут доступны в соответствующем хранилище, срезы данных помечаются флагом **Ready** (готово).
+Hello срезы могут находиться в **ожидания** состояния из-за причин toovarious. Одной из распространенных причин hello является, hello **внешних** свойство не задано слишком**true**. Любой набор данных, производимых hello вне области фабрики данных Azure должны быть отмечены **внешних** свойство. Это свойство указывает, что данные hello внешний и не резервная копия по любой конвейера в фабрике данных hello. срезы данных Hello, помечаются как **готовности** после hello данные недоступны в хранилище соответствующие hello.
 
-Пример использования свойства **external** приведен ниже. При необходимости можно указать свойство **externalData***, если для свойства external задано значение true.
+См. следующий пример использования hello hello hello **внешних** свойство. Дополнительно можно указать **externalData*** при задании внешнего tootrue.
 
 Дополнительные сведения об этом свойстве см. в статье [Наборы данных](data-factory-create-datasets.md).
 
@@ -92,34 +92,34 @@ ms.lasthandoff: 08/18/2017
 }
 ```
 
-Чтобы устранить эту ошибку, добавьте свойство **external** и дополнительный раздел **externalData** в определение JSON входной таблицы и повторно создайте эту таблицу.
+tooresolve Здравствуйте ошибки, добавьте hello **внешних** свойство и необязательный hello **externalData** статьи toohello JSON определение входной таблицы hello и заново создайте таблицу hello.
 
 ### <a name="problem-hybrid-copy-operation-fails"></a>Проблема: сбой гибридной операции копирования
-Действия по устранению неполадок с копированием в локальное хранилище данных и из него с помощью шлюза управления данными см. в статье [Устранение неполадок в работе шлюза](data-factory-data-management-gateway.md#troubleshooting-gateway-issues).
+В разделе [Устранение неполадок шлюза](data-factory-data-management-gateway.md#troubleshooting-gateway-issues) для хранения tootroubleshoot проблемы с копированием из локальных данных с помощью действия hello шлюз управления данными.
 
 ### <a name="problem-on-demand-hdinsight-provisioning-fails"></a>Проблема: сбой подготовки HDInsight по запросу
-При использовании связанной службы типа HDInsightOnDemandLinkedService нужно задать имя linkedServiceName, указывающее на хранилище BLOB-объектов Azure. Фабрика данных использует это хранилище для хранения журналов и вспомогательных файлов для кластера HDInsight по запросу.  Иногда подготовка кластера HDInsight по запросу завершается следующей ошибкой:
+При использовании связанной службы типа HDInsightOnDemand, необходимо toospecify linkedServiceName, который указывает tooan хранилища больших двоичных объектов. Служба фабрики данных использует это хранилище toostore журналы и вспомогательные файлы для кластера HDInsight по требованию.  Иногда подготовки кластера HDInsight по требованию завершается hello следующая ошибка:
 
 ```
-Failed to create cluster. Exception: Unable to complete the cluster create operation. Operation failed with code '400'. Cluster left behind state: 'Error'. Message: 'StorageAccountNotColocated'.
+Failed toocreate cluster. Exception: Unable toocomplete hello cluster create operation. Operation failed with code '400'. Cluster left behind state: 'Error'. Message: 'StorageAccountNotColocated'.
 ```
 
-Обычно эта ошибка указывает на то, что расположение учетной записи хранения, указанной в linkedServiceName, не совпадает с расположением центра обработки данных, в котором происходит подготовка HDInsight. Например, если ваша фабрика данных Azure находится на Западе США (West US), а хранилище Azure расположено на Востоке США (East US), то подготовка по запросу на Западе США выполнена не будет.
+Эта ошибка обычно указывает, что расположение hello hello учетной записи хранения указан в hello linkedServiceName не hello местоположении, где происходит Подготовка HDInsight hello центра обработки данных и те же данные. Пример: Если фабрики данных является на Западе США и hello хранилища Azure находится в США, Восток, hello подготовки завершается с ошибкой по запросу на Западе США.
 
-Есть еще одно свойство JSON, additionalLinkedServiceNames, где можно указать дополнительные учетные записи хранения в HDInsight по запросу. Эти дополнительные связанные учетные записи хранения должны находиться в том же расположении, что и кластер HDInsight, иначе происходит сбой с той же ошибкой.
+Есть еще одно свойство JSON, additionalLinkedServiceNames, где можно указать дополнительные учетные записи хранения в HDInsight по запросу. Эти дополнительные связанные учетные записи хранения должно быть в hello местоположения кластера HDInsight hello, или она завершается ошибкой с hello же ошибка.
 
 ### <a name="problem-custom-net-activity-fails"></a>Проблема: сбой настраиваемого действия .NET
 Подробные действия см. в разделе [Отладка конвейера с помощью настраиваемого действия](data-factory-use-custom-activities.md#troubleshoot-failures).
 
-## <a name="use-azure-portal-to-troubleshoot"></a>Устранение неполадок с помощью портала Azure
+## <a name="use-azure-portal-tootroubleshoot"></a>Использование Azure tootroubleshoot портала
 ### <a name="using-portal-blades"></a>Использование колонок на портале
 Действия см. в статье [Мониторинг конвейера](data-factory-build-your-first-pipeline-using-editor.md#monitor-pipeline).
 
 ### <a name="using-monitor-and-manage-app"></a>Использование приложения по мониторингу и управлению
 Сведения см. в статье [Мониторинг конвейеров фабрики данных Azure и управление ими с помощью приложения по мониторингу и управлению](data-factory-monitor-manage-app.md).
 
-## <a name="use-azure-powershell-to-troubleshoot"></a>Использование Azure PowerShell для устранения неполадок
-### <a name="use-azure-powershell-to-troubleshoot-an-error"></a>Использование Azure PowerShell для устранения ошибок
+## <a name="use-azure-powershell-tootroubleshoot"></a>Использовать tootroubleshoot Azure PowerShell
+### <a name="use-azure-powershell-tootroubleshoot-an-error"></a>Использование Azure PowerShell tootroubleshoot ошибку
 Сведения см. в разделе [Мониторинг конвейеров фабрики данных с помощью Azure PowerShell](data-factory-build-your-first-pipeline-using-powershell.md#monitor-pipeline).
 
 [adfgetstarted]: data-factory-copy-data-from-azure-blob-storage-to-sql-database.md

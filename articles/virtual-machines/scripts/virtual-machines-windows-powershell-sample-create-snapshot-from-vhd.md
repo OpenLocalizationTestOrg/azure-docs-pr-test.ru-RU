@@ -1,6 +1,6 @@
 ---
-title: "Пример сценария Azure PowerShell. Создание моментального снимка из VHD для быстрого создания нескольких идентичных управляемых дисков | Документация Майкрософт"
-description: "Пример сценария Azure PowerShell для создания моментального снимка из VHD для быстрого создания нескольких идентичных управляемых дисков."
+title: "aaaAzure образец скрипта PowerShell - создание моментального снимка из VHD toocreate несколько идентичных управляемых дисков в небольшой промежуток времени | Документы Microsoft"
+description: "Сценарий Azure PowerShell пример — создание моментального снимка из VHD toocreate несколько идентичных управляемых дисков в небольшой промежуток времени"
 services: virtual-machines-windows
 documentationcenter: storage
 author: ramankumarlive
@@ -15,15 +15,15 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 06/05/2017
 ms.author: ramankum
-ms.openlocfilehash: 02a69abd6c17ce765996379309e22afad82c4e10
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 5f11793b3669df099b6c31dfdbe906c96ba51786
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="create-a-snapshot-from-a-vhd-to-create-multiple-identical-managed-disks-in-small-amount-of-time-with-powershell"></a>Создание моментального снимка из VHD для быстрого создания нескольких идентичных управляемых дисков с помощью PowerShell
+# <a name="create-a-snapshot-from-a-vhd-toocreate-multiple-identical-managed-disks-in-small-amount-of-time-with-powershell"></a>Создание моментального снимка из VHD toocreate несколько идентичных управляемых дисков в небольшой промежуток времени с помощью PowerShell
 
-Этот сценарий создает моментальный снимок из VHD-файла в учетной записи хранения в той же или другой подписке. Этот сценарий можно использовать, чтобы импортировать специализированный (не универсальный и не подготовленный командой Sysprep) VHD в моментальный снимок, затем с помощью этого моментального снимка создать несколько идентичных управляемых дисков за короткий промежуток времени. Кроме того, с его помощью можно импортировать VHD данных в моментальный снимок, а затем использовать этот моментальный снимок для быстрого создания нескольких управляемых дисков. 
+Этот сценарий создает моментальный снимок из VHD-файла в учетной записи хранения в той же или другой подписке. Использовать этот сценарий tooimport моментальный снимок специализированные tooa виртуальный жесткий ДИСК (не обобщенный или командой Sysprep), а затем использовать несколько идентичных дисков управляемого toocreate hello моментального снимка в небольшой промежуток времени. Кроме того, используйте моментальный снимок данных виртуального жесткого диска tooa tooimport, а затем использовать несколько дисков, управляемых toocreate hello моментального снимка в небольшой промежуток времени. 
 
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install.md)]
 
@@ -31,16 +31,16 @@ ms.lasthandoff: 08/29/2017
 
 ## <a name="sample-script"></a>Пример скрипта
 
-[!code-powershell[main](../../../powershell_scripts/virtual-machine/create-snapshots-from-vhd-in-different-subscription/create-snapshots-from-vhd-in-different-subscription.ps1 "Создание моментального снимка из VHD")]
+[!code-powershell[main](../../../powershell_scripts/virtual-machine/create-snapshots-from-vhd-in-different-subscription/create-snapshots-from-vhd-in-different-subscription.ps1 "Create snapshot from VHD")]
 
 
 ## <a name="script-explanation"></a>Описание скрипта
 
-Этот сценарий использует приведенные ниже команды для создания управляемого диска на основе VHD. Для каждой команды в таблице приведены ссылки на соответствующую документацию.
+Этот скрипт использует следующие команды toocreate управляемого диска из VHD в другую подписку. Каждая команда в таблице hello связывает toocommand документацию.
 
 | Команда | Примечания |
 |---|---|
-| [New-AzureRmDiskConfig](/powershell/module/azurerm.compute/New-AzureRmDiskConfig) | Создает конфигурацию диска, которая используется для создания диска. Она содержит тип хранилища, расположение, идентификатор ресурса учетной записи хранения, в которой хранится родительский VHD, и универсальный код ресурса (URI) родительского VHD. |
+| [New-AzureRmDiskConfig](/powershell/module/azurerm.compute/New-AzureRmDiskConfig) | Создает конфигурацию диска, которая используется для создания диска. Он включает тип хранилища, расположение, идентификатор учетной записи хранилища hello, где хранится hello родительского виртуального жесткого диска ресурса и URI VHD hello родительского виртуального жесткого диска. |
 | [New-AzureRmDisk](/powershell/module/azurerm.compute/New-AzureRmDisk) | Создает диск с помощью конфигурации диска, имени диска и имени группы ресурсов, которые передаются в качестве параметров. |
 
 ## <a name="next-steps"></a>Дальнейшие действия
@@ -50,6 +50,6 @@ ms.lasthandoff: 08/29/2017
 
 [Создание виртуальной машины путем подключения управляемого диска как диска ОС](./virtual-machines-windows-powershell-sample-create-vm-from-managed-os-disks.md?toc=%2fpowershell%2fmodule%2ftoc.json)
 
-Дополнительные сведения о модуле Azure PowerShell см. в [документации по Azure PowerShell](/powershell/azure/overview).
+Дополнительные сведения о hello модуля Azure PowerShell см. в разделе [документация по Azure PowerShell](/powershell/azure/overview).
 
-Дополнительные примеры сценариев PowerShell для виртуальных машин представлены в [документации по виртуальным машинам Azure под управлением Windows](../../app-service-web/app-service-powershell-samples.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Примеры сценариев PowerShell дополнительную виртуальную машину можно найти в hello [документации виртуальной Машины Windows Azure](../../app-service-web/app-service-powershell-samples.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).

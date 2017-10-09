@@ -1,6 +1,6 @@
 ---
-title: "Параметры Runbook | Документация Майкрософт"
-description: "Описываются параметры конфигурации для модуля Runbook службы автоматизации Azure и то, как изменить их с помощью портала управления Azure и Windows PowerShell."
+title: "Параметры aaaRunbook | Документы Microsoft"
+description: "Описывает hello параметры конфигурации для модуля runbook в автоматизации Azure и как toochange их с помощью обоих hello портал управления Azure и Windows PowerShell."
 services: automation
 documentationcenter: 
 author: mgoedtel
@@ -14,38 +14,38 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/11/2016
 ms.author: bwren
-ms.openlocfilehash: 20ecbc270e61d234e026e6ba2634c7aad63b3355
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 6f0ef09c148355a351464424c22c33df9300f0dd
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="runbook-settings"></a>Параметры модуля Runbook
-Каждый модуль Runbook в службе автоматизации Azure имеет несколько параметров, которые помогут определить его и изменить его поведение при ведении журнала. Каждый из этих параметров описан ниже, рядом с ним приводятся пояснения об изменении его значения.
+Каждый модуль runbook в автоматизации Azure имеется несколько параметров, помочь идентифицировать toobe и toochange его поведение при входе. Каждый из этих параметров описан ниже следуют процедуры о том, как toomodify их.
 
-## <a name="settings"></a>Параметры
+## <a name="settings"></a>данных
 ### <a name="name-and-description"></a>Имя и описание
-Имя модуля Runbook нельзя изменить после его создания. Описание не обязательно и может содержать до 512 символов.
+Hello имя модуля runbook невозможно изменить после его создания. Hello описание является необязательным и может быть вверх too512 символов.
 
 ### <a name="tags"></a>Теги
-Теги позволяют назначать отдельные слова и фразы для идентификации модуля Runbook. Например, при отправке модуля Runbook в [коллекцию PowerShell](https://www.powershellgallery.com/) можно указать определенные теги для идентификации категорий, к которым должен относиться модуль Runbook. Вы можете указать несколько тегов модуля Runbook, разделив их запятой.
+Разрешить теги вы tooassign отдельные слова и фразы toohelp идентификации модуля runbook. Например, при отправке runbook toohello [коллекции PowerShell](https://www.powershellgallery.com/), укажите tooidentify теги определенной категории hello runbook должны быть перечислены в. Вы можете указать несколько тегов модуля Runbook, разделив их запятой.
 
 ### <a name="logging"></a>Ведение журналов
-По умолчанию записи Verbose и Progress не записываются в журнал заданий. Вы можете изменить параметры для определенного модуля Runbook, чтобы записывать эти записи. Дополнительные сведения об этих записях см. в статье [Выходные данные и сообщения Runbook в службе автоматизации Azure](automation-runbook-output-and-messages.md).
+По умолчанию записи Verbose и Progress не записываются toojob журнала. Параметры hello для toolog конкретного модуля runbook можно изменить эти записи. Дополнительные сведения об этих записях см. в статье [Выходные данные и сообщения Runbook в службе автоматизации Azure](automation-runbook-output-and-messages.md).
 
 ## <a name="changing-runbook-settings"></a>Изменение параметров модуля Runbook
 
-### <a name="changing-runbook-settings-with-the-azure-portal"></a>Изменение параметров модуля Runbook с помощью портала Azure
-Параметры модуля Runbook можно изменить на портале Azure в колонке **Параметры** модуля Runbook.
+### <a name="changing-runbook-settings-with-hello-azure-portal"></a>Изменение параметров модуля runbook с hello портал Azure
+Можно изменить параметры модуля Runbook на портал Azure hello из hello **параметры** колонке hello runbook.
 
-1. На портале Azure щелкните **Служба автоматизации** и затем имя учетной записи службы автоматизации.
-2. Выберите вкладку **Модули Runbook** .
-3. Щелкните имя модуля Runbook. Откроется колонка "Параметры" выбранного модуля. В ней вы можете указать или изменить теги, ввести описание модуля Runbook, настроить параметры ведения журнала и трассировки, а также получить доступ к средствам поддержки, которые помогут устранить возникшие проблемы.     
+1. В hello портал Azure, выберите **автоматизации** и нажмите кнопку hello имя учетной записи автоматизации.
+2. Выберите hello **Runbooks** вкладки.
+3. Щелкните имя runbook hello и являются направленной toohello колонку параметров для модуля runbook hello. Здесь можно указать или изменять теги, hello описание runbook, настройте ведение журнала и параметры трассировки и toohelp средства поддержки устранения проблем доступа к.     
 
 ### <a name="changing-runbook-settings-with-windows-powershell"></a>Изменение параметров модуля Runbook с помощью Windows PowerShell
-Для изменения параметров модуля Runbook можно воспользоваться командлетом [Set-AzureRmAutomationRunbook](https://msdn.microsoft.com/library/mt603786.aspx). Если вы хотите указать несколько тегов, вы можете предоставить массив или единую строку со значениями, разделенными запятыми, в параметр Tags. С помощью командлета [Get-AzureRmAutomationRunbook](https://msdn.microsoft.com/library/mt603728.aspx) можно получить текущие теги.
+Можно использовать hello [AzureRmAutomationRunbook набор](https://msdn.microsoft.com/library/mt603786.aspx) командлет toochange hello параметров модуля runbook. Если вы хотите toospecify несколько тегов, можно либо добавить массив или одной строки с параметром теги toohello значений с разделителями-запятыми. Вы можете получить текущие теги hello с hello [Get AzureRmAutomationRunbook](https://msdn.microsoft.com/library/mt603728.aspx).
 
-Приведенные образцы команд показывают, как установить свойства для модуля Runbook. В этом примере к существующим тегам добавляются три тега и указывается, что необходимо вести запись подробных записей.
+Привет, следующие примеры команд показывают, как tooset hello свойств для модуля runbook. В этом примере добавляется три тега toohello существующие теги и указывает, что подробные записи следует вносить в журнал.
 
     $automationAccountName = "MyAutomationAccount"
     $runbookName = "Sample-TestRunbook"
@@ -56,6 +56,6 @@ ms.lasthandoff: 07/11/2017
     –AutomationAccountName $automationAccountName –Name $runbookName –LogVerbose $true –Tags $tags
 
 ## <a name="next-steps"></a>Дальнейшие действия
-* Чтобы узнать, как создавать и извлекать выходные данные и сообщения об ошибках из модулей Runbook, ознакомьтесь со статьей [Выходные данные и сообщения Runbook в службе автоматизации Azure](automation-runbook-output-and-messages.md) 
-* Сведения о добавлении модуля Runbook, который уже был разработан сообществом или взят из другого источника, а также сведения о создании собственного модуля Runbook см. в статье [Создание или импорт модуля Runbook](automation-creating-importing-runbook.md). 
+* toolearn toocreate и получение выходных данных и сообщения об ошибках из модулей Runbook, в статье [Runbook Output and Messages](automation-runbook-output-and-messages.md) 
+* toounderstand tooadd runbook, который уже разрабатывался hello сообщества или другой источник или toocreate собственные runbook. в статье [Создание или импорт модуля Runbook](automation-creating-importing-runbook.md) 
 

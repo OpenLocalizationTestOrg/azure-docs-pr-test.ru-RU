@@ -1,6 +1,6 @@
 ---
-title: "Действие скрипта: установка пакетов Python с Jupyter в Azure HDInsight | Документация Майкрософт"
-description: "Пошаговые инструкции по использованию действия скрипта для настройки записных книжек Jupyter с кластерами Spark HDInsight для использования внешних пакетов Python."
+title: "Действие aaaScript — пакеты установки Python с Jupyter на Azure HDInsight | Документы Microsoft"
+description: "Пошаговые инструкции по как toouse сценария действия tooconfigure Jupyter портативные компьютеры с HDInsight Spark кластеры пакеты toouse внешних python."
 services: hdinsight
 documentationcenter: 
 author: nitinme
@@ -16,49 +16,49 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/29/2017
 ms.author: nitinme
-ms.openlocfilehash: 20cf384c96d4ff4eaf064c8880ad128d521fb9bf
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 54db79e67995dee7ca00abff979f7d74ae5ab9cd
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="use-script-action-to-install-external-python-packages-for-jupyter-notebooks-in-apache-spark-clusters-on-hdinsight"></a>Использование действия сценария для установки внешних пакетов Python для записных книжек Jupyter в кластерах Apache Spark в HDInsight
+# <a name="use-script-action-tooinstall-external-python-packages-for-jupyter-notebooks-in-apache-spark-clusters-on-hdinsight"></a>Используйте действие сценария tooinstall внешние пакеты Python для записные книжки Jupyter в кластерах Apache Spark в HDInsight
 > [!div class="op_single_selector"]
 > * [Использование волшебных команд](hdinsight-apache-spark-jupyter-notebook-use-external-packages.md)
 > * [Использование действия сценария](hdinsight-apache-spark-python-package-installation.md)
 >
 >
 
-Узнайте, как с помощью действий сценария настроить кластер Apache Spark в HDInsight (Linux) для использования внешних, предоставленных сообществом пакетов **Python**, которые не включены в готовую версию кластера.
+Узнайте, как tooconfigure toouse действия скрипта кластера с Apache Spark на HDInsight (Linux) toouse внешних, сообществом **python** пакеты, которые не включены out of box в кластере hello.
 
 > [!NOTE]
-> Можно также настроить записную книжку Jupyter с помощью волшебной команды `%%configure`, чтобы использовать внешние пакеты. Дополнительные сведения см. в статье [Использование внешних пакетов с записными книжками Jupyter в кластерах Apache Spark в HDInsight](hdinsight-apache-spark-jupyter-notebook-use-external-packages.md).
+> Можно также настроить с помощью записной книжке Jupyter `%%configure` магическая toouse внешние пакеты. Дополнительные сведения см. в статье [Использование внешних пакетов с записными книжками Jupyter в кластерах Apache Spark в HDInsight](hdinsight-apache-spark-jupyter-notebook-use-external-packages.md).
 > 
 > 
 
-Полный список доступных пакетов можно найти в [указателе пакетов](https://pypi.python.org/pypi). Его также можно получить из других источников. Например, можно установить пакеты, предоставляемые посредством [Anaconda](https://docs.continuum.io/anaconda/pkg-docs) или [conda-forge](https://conda-forge.github.io/feedstocks.html).
+Можно выполнить поиск hello [индекса пакета](https://pypi.python.org/pypi) для hello полного списка доступных пакетов. Его также можно получить из других источников. Например, можно установить пакеты, предоставляемые посредством [Anaconda](https://docs.continuum.io/anaconda/pkg-docs) или [conda-forge](https://conda-forge.github.io/feedstocks.html).
 
-В этой статье вы узнаете, как установить в кластере пакет [TensorFlow](https://www.tensorflow.org/) с помощью действия сценария и использовать его посредством Jupyter Notebook.
+В этой статье вы узнаете, как tooinstall hello [TensorFlow](https://www.tensorflow.org/) пакета с помощью сценария Actoin в кластере и использовать его с помощью книжке Jupyter hello.
 
 ## <a name="prerequisites"></a>Предварительные требования
-Необходимо следующее:
+Необходимо иметь следующие hello.
 
 * Подписка Azure. Ознакомьтесь с [бесплатной пробной версией Azure](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
 * Кластер Apache Spark в HDInsight. Инструкции см. в статье [Начало работы. Создание кластера Apache Spark в HDInsight на платформе Linux и выполнение интерактивных запросов с помощью SQL Spark](hdinsight-apache-spark-jupyter-spark-sql.md).
 
    > [!NOTE]
-   > Если у вас еще нет кластера Spark в HDInsight на платформе Linux, можно выполнить действия сценария во время его создания. Обратитесь к документации по [использованию настраиваемых действий сценария](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux).
+   > Если у вас еще нет кластера Spark в HDInsight на платформе Linux, можно выполнить действия сценария во время его создания. Обратитесь к документации hello на [как toouse пользовательского скрипта действия](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux).
    > 
    > 
 
 ## <a name="use-external-packages-with-jupyter-notebooks"></a>Использование внешних пакетов с записными книжками Jupyter
 
-1. На начальной панели [портала Azure](https://portal.azure.com/)щелкните элемент кластера Spark (если он закреплен на начальной панели). Кроме того, вы можете перейти к кластеру, последовательно щелкнув **Просмотреть все** > **Кластеры HDInsight**.   
+1. Из hello [портала Azure](https://portal.azure.com/), hello начальной панели, щелкните плитку hello свой кластер Spark (Если вы закрепили toohello начальной панели). Вы также можете переходить tooyour кластера в списке **просмотреть все** > **кластеров HDInsight**.   
 
-2. В колонке кластера Spark щелкните **Действия скрипта** в разделе **Использование**. Выполните настраиваемое действие, устанавливающее TensorFlow на головные узлы и рабочие узлы. Сценарий bash может быть основан на https://hdiconfigactions.blob.core.windows.net/linuxtensorflow/tensorflowinstall.sh. Обратитесь к документации по [использованию настраиваемых действий сценария](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux).
+2. Из колонки кластера Spark hello, нажмите кнопку **действия скрипта** под **использование**. Выполните пользовательское действие hello, устанавливающий TensorFlow в hello головного узла и hello рабочих узлов. Hello bash сценария можно ссылаться из: https://hdiconfigactions.blob.core.windows.net/linuxtensorflow/tensorflowinstall.sh посещение hello документацию по [как toouse пользовательского скрипта действия](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux).
 
    > [!NOTE]
-   > В кластере имеются два установленных компонента Python. Spark будет использовать компонент Python Anaconda, расположенный в `/usr/bin/anaconda/bin`. Укажите его в настраиваемых действиях с помощью `/usr/bin/anaconda/bin/pip` и `/usr/bin/anaconda/bin/conda`.
+   > Существует два python установок в кластере hello. Spark будет использовать установки python hello Anaconda, расположенный в `/usr/bin/anaconda/bin`. Укажите его в настраиваемых действиях с помощью `/usr/bin/anaconda/bin/pip` и `/usr/bin/anaconda/bin/conda`.
    > 
    > 
 
@@ -66,20 +66,20 @@ ms.lasthandoff: 07/11/2017
 
     ![Создание записной книжки Jupyter](./media/hdinsight-apache-spark-python-package-installation/hdinsight-spark-create-notebook.png "Создание записной книжки Jupyter")
 
-4. Будет создана и открыта записная книжка с именем Untitled.pynb. Щелкните имя записной книжки в верхней части страницы сверху и введите понятное имя.
+4. Создается и открывается с именем hello Untitled.pynb новый блокнот. Щелкните имя записной книжки hello вверху hello и введите понятное имя.
 
-    ![Указание имени для записной книжки](./media/hdinsight-apache-spark-python-package-installation/hdinsight-spark-name-notebook.png "Указание имени для записной книжки")
+    ![Введите имя для ноутбука hello](./media/hdinsight-apache-spark-python-package-installation/hdinsight-spark-name-notebook.png "укажите имя для ноутбука hello")
 
 5. Теперь будет выполнена команда `import tensorflow` и запущен пример hello world. 
 
-    Следует скопировать приведенный ниже код.
+    Toocopy кода:
 
         import tensorflow as tf
         hello = tf.constant('Hello, TensorFlow!')
         sess = tf.Session()
         print(sess.run(hello))
 
-    Результат должен выглядеть так:
+    Hello результат будет выглядеть следующим образом:
     
     ![Выполнение кода TensorFlow](./media/hdinsight-apache-spark-python-package-installation/execution.png "Выполнение кода TensorFlow")
 
@@ -91,7 +91,7 @@ ms.lasthandoff: 07/11/2017
 ### <a name="scenarios"></a>Сценарии
 * [Использование Spark со средствами бизнес-аналитики. Выполнение интерактивного анализа данных с использованием Spark в HDInsight с помощью средств бизнес-аналитики](hdinsight-apache-spark-use-bi-tools.md)
 * [Использование Spark с машинным обучением. Использование Spark в HDInsight для анализа температуры в здании на основе данных системы кондиционирования](hdinsight-apache-spark-ipython-notebook-machine-learning.md)
-* [Использование Spark с машинным обучением. Использование Spark в HDInsight для прогнозирования результатов контроля качества пищевых продуктов](hdinsight-apache-spark-machine-learning-mllib-ipython.md)
+* [Spark с машинного обучения: используйте Spark в HDInsight toopredict food проверки результатов](hdinsight-apache-spark-machine-learning-mllib-ipython.md)
 * [Потоковая передача Spark. Использование Spark в HDInsight для сборки приложений потоковой передачи данных в режиме реального времени](hdinsight-apache-spark-eventhub-streaming.md)
 * [Анализ журнала веб-сайта с использованием Spark в HDInsight](hdinsight-apache-spark-custom-library-website-log-analysis.md)
 
@@ -101,12 +101,12 @@ ms.lasthandoff: 07/11/2017
 
 ### <a name="tools-and-extensions"></a>Средства и расширения
 * [Использование внешних пакетов с записными книжками Jupyter в кластерах Apache Spark в HDInsight](hdinsight-apache-spark-jupyter-notebook-use-external-packages.md)
-* [Использование подключаемого модуля средств HDInsight для IntelliJ IDEA для создания и отправки приложений Spark Scala](hdinsight-apache-spark-intellij-tool-plugin.md)
-* [Удаленная отладка приложений Spark в кластере HDInsight Spark Linux с помощью подключаемого модуля средств HDInsight для IntelliJ IDEA](hdinsight-apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
+* [Использование подключаемого модуля средства HDInsight для toocreate ИДЕЯ IntelliJ и отправка Spark Scala приложений](hdinsight-apache-spark-intellij-tool-plugin.md)
+* [Удаленно использовать подключаемый модуль средства HDInsight для приложений Spark toodebug ИДЕЯ IntelliJ](hdinsight-apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
 * [Использование записных книжек Zeppelin с кластером Spark в HDInsight](hdinsight-apache-spark-zeppelin-notebook.md)
 * [Ядра, доступные для записной книжки Jupyter в кластере Spark в HDInsight](hdinsight-apache-spark-jupyter-notebook-kernels.md)
-* [Установка записной книжки Jupyter на компьютере и ее подключение к кластеру Apache Spark в Azure HDInsight (предварительная версия)](hdinsight-apache-spark-jupyter-notebook-install-locally.md)
+* [Установка Jupyter на вашем компьютере и подключение tooan кластера HDInsight Spark](hdinsight-apache-spark-jupyter-notebook-install-locally.md)
 
 ### <a name="manage-resources"></a>Управление ресурсами
-* [Управление ресурсами кластера Apache Spark в Azure HDInsight](hdinsight-apache-spark-resource-manager.md)
+* [Управление ресурсами кластера hello Apache Spark в Azure HDInsight](hdinsight-apache-spark-resource-manager.md)
 * [Отслеживание и отладка заданий в кластере Apache Spark в HDInsight на платформе Linux](hdinsight-apache-spark-job-debugging.md)

@@ -1,14 +1,14 @@
-Создайте план службы приложений, выполнив команду [az appservice plan create](/cli/azure/appservice/plan#create).
+Создать план служб приложений с hello [создать план служб приложений az](/cli/azure/appservice/plan#create) команды.
 
 [!INCLUDE [app-service-plan](app-service-plan.md)]
 
-В следующем примере создается план службы приложений с именем `myAppServicePlan` и ценовой категорией **Бесплатный**.
+Hello следующий пример создает план службы приложений с именем `myAppServicePlan` в hello **Free** ценовой категории:
 
 ```azurecli-interactive
 az appservice plan create --name myAppServicePlan --resource-group myResourceGroup --sku FREE
 ```
 
-После создания плана службы приложений в Azure CLI отображается информация следующего вида:
+При создании плана служб приложений hello hello Azure CLI показано toohello аналогичные сведения, следующий пример:
 
 ```json
 { 

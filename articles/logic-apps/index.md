@@ -1,6 +1,6 @@
 ---
-title: "Документация по Azure Logic Apps. Руководства и справочник по API | Документация Майкрософт"
-description: "Узнайте, как разрабатывать приложения логики для автоматизации и упрощения бизнес-процессов в локальной среде и в облаке. Руководства, шаблоны и справочники по API."
+title: "aaaAzure документации логику приложения - учебники, справочник по API | Документы Microsoft"
+description: "Дополнительные сведения об облачных приложений логики toodevelop, автоматизировать и упростить бизнес-процессов между локальной и hello. Руководства, шаблоны и справочники по API."
 services: logic-apps
 author: carolz
 manager: carolz
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: 7f9790a52365b76e9d3dd1fdf1a17ab2aaaf8b5a
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 5cc3a730b1b6abcb3ec0132f6e8ebf2e54775836
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/19/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="logic-apps-documentation"></a>Документация по службе Logic Apps
 
-Узнайте, как разрабатывать приложения логики, которые упрощают и интегрируют масштабируемые рабочие процессы в облаке. Руководства, шаблоны и справочники по API помогут вам создавать и развертывать автоматизированные бизнес-процессы в локальной среде и в облаке.
+Узнайте, как toodevelop логику приложения, которые упрощают и интегрировать масштабируемой рабочих процессов в hello облака. Учебники, шаблоны и API ссылается на разработке и развертыванию автоматических бизнес-процессов в локальной и hello облака.
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -106,7 +106,7 @@ ms.lasthandoff: 07/19/2017
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Начало создания пользовательского API для Logic Apps</h3>
+                        <h3>Приступая к созданию пользовательских toouse API с приложениями логики</h3>
                     </div>
                 </div>
             </div>

@@ -1,5 +1,5 @@
 ---
-title: "Пример сценария Azure PowerShell для Docker | Документация Майкрософт"
+title: "aaaAzure образец скрипта PowerShell - Docker | Документы Microsoft"
 description: "Пример сценария Azure PowerShell для Docker."
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -16,15 +16,15 @@ ms.workload: infrastructure
 ms.date: 03/02/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: c8b700d13e4645d408e4e752a541e521ef93a6e0
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 556093d3cfaecda352ff52cce96728fc0e723a39
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-a-docker-host-with-powershell"></a>Создание узла Docker с помощью PowerShell
 
-Этот сценарий создает виртуальную машину с включенным Docker и запускает контейнер в котором будет запущен NGINX. После выполнения сценария можно получить доступ к веб-серверу NGINX, используя полное доменное имя виртуальной машины Azure. 
+Этот сценарий создает виртуальную машину с включенным Docker и запускает контейнер в котором будет запущен NGINX. После выполнения сценария hello, можно обращаться из веб-сервер NGINX hello hello полное доменное имя виртуальной машины Azure hello. 
 
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install.md)]
 
@@ -32,11 +32,11 @@ ms.lasthandoff: 07/11/2017
 
 ## <a name="sample-script"></a>Пример скрипта
 
-[!code-powershell[main](../../../powershell_scripts/virtual-machine/create-docker-host/create-docker-host.ps1 "Создание узла Docker")]
+[!code-powershell[main](../../../powershell_scripts/virtual-machine/create-docker-host/create-docker-host.ps1 "Create Docker host")]
 
 ## <a name="clean-up-deployment"></a>Очистка развертывания 
 
-Выполните следующую команду, чтобы удалить группу ресурсов, виртуальную машину и все связанные с ней ресурсы.
+Выполните следующие команды tooremove hello группы ресурсов, виртуальная машина и все связанные ресурсы hello.
 
 ```powershell
 Remove-AzureRmResourceGroup -Name myResourceGroup
@@ -44,25 +44,25 @@ Remove-AzureRmResourceGroup -Name myResourceGroup
 
 ## <a name="script-explanation"></a>Описание скрипта
 
-Чтобы создать развертывание, скрипт использует следующие команды. Для каждого элемента в таблице приведены ссылки на документацию по команде.
+Этот скрипт использует следующие команды toocreate hello развертывания hello. Каждый элемент в таблице hello связывает toocommand документацию.
 
 | Команда | Примечания |
 |---|---|
 | [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) | Создает группу ресурсов, в которой хранятся все ресурсы. |
-| [New-AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/new-azurermvirtualnetworksubnetconfig) | Создает конфигурацию подсети. Эта конфигурация используется в процессе создания виртуальной сети. |
+| [New-AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/new-azurermvirtualnetworksubnetconfig) | Создает конфигурацию подсети. Эта конфигурация используется с hello процесс создания виртуальной сети. |
 | [New-AzureRmVirtualNetwork](/powershell/module/azurerm.network/new-azurermvirtualnetwork) | Создает виртуальную сеть. |
 | [New-AzureRmPublicIpAddress](/powershell/module/azurerm.network/new-azurermpublicipaddress) | Создает общедоступный IP-адрес. |
-| [New-AzureRmNetworkSecurityRuleConfig](/powershell/module/azurerm.network/new-azurermnetworksecurityruleconfig) | Создает конфигурацию правил группы безопасности сети. Эта конфигурация используется для создания правила NSG при создании этой NSG. |
+| [New-AzureRmNetworkSecurityRuleConfig](/powershell/module/azurerm.network/new-azurermnetworksecurityruleconfig) | Создает конфигурацию правил группы безопасности сети. Такая настройка является toocreate используется правило NSG при создании hello NSG. |
 | [New-AzureRmNetworkSecurityGroup](/powershell/module/azurerm.network/new-azurermnetworksecuritygroup) | Создает группу безопасности сети. |
 | [Get-AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/get-azurermvirtualnetworksubnetconfig) | Возвращает сведения о подсети. Эта информация используется при создании сетевого интерфейса. |
 | [New-AzureRmNetworkInterface](/powershell/module/azurerm.network/new-azurermnetworkinterface) | Создает сетевой интерфейс. |
-| [New-AzureRmVMConfig](/powershell/module/azurerm.compute/new-azurermvmconfig) | Создает конфигурацию виртуальной машины. Эта конфигурация включает в себя такие сведения, как имя виртуальной машины, операционную систему и учетные данные администратора. Данная конфигурации используется при создании виртуальной машины. |
+| [New-AzureRmVMConfig](/powershell/module/azurerm.compute/new-azurermvmconfig) | Создает конфигурацию виртуальной машины. Эта конфигурация включает в себя такие сведения, как имя виртуальной машины, операционную систему и учетные данные администратора. Конфигурация Hello используется во время создания виртуальной Машины. |
 | [New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm) | Создайте виртуальную машину. |
-| [Set-AzureRmVMExtension](/powershell/module/azurerm.compute/set-azurermvmextension) | Добавляет в виртуальную машину расширение виртуальной машины. В этом примере расширение Docker используется для настройки Docker и запуска контейнера Docker NGINX. |
+| [Set-AzureRmVMExtension](/powershell/module/azurerm.compute/set-azurermvmextension) | Добавьте виртуальную машину toohello расширения виртуальной Машины. В этом образце hello расширения Docker используется tooconfigure Docker и запустите контейнер NGINX Docker. |
 |[Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) | Удаляет группу ресурсов и все ресурсы, содержащиеся в ней. |
 
 ## <a name="next-steps"></a>Дальнейшие действия
 
-Дополнительные сведения о модуле Azure PowerShell см. в [документации по Azure PowerShell](/powershell/azure/overview).
+Дополнительные сведения о hello модуля Azure PowerShell см. в разделе [документация по Azure PowerShell](/powershell/azure/overview).
 
-Дополнительные примеры сценариев PowerShell для виртуальных машин представлены в [документации по виртуальным машинам Azure под управлением Linux](../linux/powershell-samples.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Примеры сценариев PowerShell дополнительную виртуальную машину можно найти в hello [документации виртуальной Машине Linux Azure](../linux/powershell-samples.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).

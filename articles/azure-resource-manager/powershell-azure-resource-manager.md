@@ -1,6 +1,6 @@
 ---
-title: "Управление решениями Azure с помощью PowerShell | Документация Майкрософт"
-description: "Воспользуйтесь Azure PowerShell и Resource Manager для управления ресурсами."
+title: "aaaManage Azure решений с помощью PowerShell | Документы Microsoft"
+description: "Используете Azure PowerShell и диспетчера ресурсов toomanage ресурсы."
 services: azure-resource-manager
 documentationcenter: 
 author: tfitzmac
@@ -14,58 +14,58 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
 ms.author: tomfitz
-ms.openlocfilehash: ff42e5cb29005c5f4b97babdae58bef9382071f0
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 47a91af8d7eb59585bcfd43571ce76b90a0d7971
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="manage-resources-with-azure-powershell-and-resource-manager"></a>Управление ресурсами с помощью Azure PowerShell и Resource Manager
 > [!div class="op_single_selector"]
 > * [Портал](resource-group-portal.md)
 > * [Интерфейс командной строки Azure](xplat-cli-azure-resource-manager.md)
 > * [Azure PowerShell](powershell-azure-resource-manager.md)
-> * [ИНТЕРФЕЙС REST API](resource-manager-rest-api.md)
+> * [REST API](resource-manager-rest-api.md)
 >
 >
 
-В этой статье вы узнаете, как управлять решениями с помощью Azure PowerShell и Azure Resource Manager. Если вы не знакомы с Resource Manager, то см. статью [Общие сведения о диспетчере ресурсов Azure](resource-group-overview.md). Этот раздел посвящен задачам управления. Вы сможете выполнять следующие задачи:
+В этой статье вы узнаете, как toomanage решений с помощью Azure PowerShell и диспетчера ресурсов Azure. Если вы не знакомы с Resource Manager, то см. статью [Общие сведения о диспетчере ресурсов Azure](resource-group-overview.md). Этот раздел посвящен задачам управления. Вы сможете выполнять следующие задачи:
 
 1. Создание группы ресурсов
-2. Добавление ресурса в группу ресурсов
-3. Добавление тега к ресурсу
+2. Добавить группу ресурсов toohello ресурсов
+3. Добавить ресурс toohello тег
 4. Запрос ресурсов на основе имен или значений тегов
-5. Применение и удаление блокировки ресурса
+5. Применение и удаление блокировку ресурса hello
 6. Удаление группы ресурсов
 
-В этой статье не показан процесс развертывания в подписке шаблона Resource Manager. Эти сведения см. в статье [Deploy resources with Resource Manager templates and Azure PowerShell](resource-group-template-deploy.md) (Развертывание ресурсов с использованием шаблонов Resource Manager и Azure PowerShell).
+В этой статье не отображается как toodeploy подписки tooyour шаблона диспетчера ресурсов. Эти сведения см. в статье [Deploy resources with Resource Manager templates and Azure PowerShell](resource-group-template-deploy.md) (Развертывание ресурсов с использованием шаблонов Resource Manager и Azure PowerShell).
 
 ## <a name="get-started-with-azure-powershell"></a>Начало работы с Azure PowerShell
 
-Если вы еще не установили Azure PowerShell, то см. статью [Get started with Azure PowerShell cmdlets](/powershell/azure/overview) (Приступая к работе с командлетами Azure PowerShell).
+Если вы не установили Azure PowerShell, см. раздел [как tooinstall и настройка Azure PowerShell](/powershell/azure/overview).
 
-Если вы уже установили Azure PowerShell, но давно не выполняли обновление, то рекомендуется установить последнюю версию. Обновить версию можно тем же методом, что применялся для ее установки. Например, если вы использовали установщик веб-платформы, то запустите его снова и выберите параметр "Обновить".
+Если установлены в прошлом hello Azure PowerShell, но не его обновил недавно, рекомендуется установить последнюю версию hello. Вы можете обновить версию hello через hello метод, который используется tooinstall его. Например если вы использовали hello Web Platform Installer, повторный запуск и найти обновление.
 
-Для проверки версии модуля ресурсов Azure воспользуйтесь следующим командлетом:
+использование вашей версии hello модуля ресурсы Azure toocheck hello следующий командлет:
 
 ```powershell
 Get-Module -ListAvailable -Name AzureRm.Resources | Select Version
 ```
 
-Этот раздел был обновлен для версии 3.3.0. Если у вас установлена более ранняя версия, то выполняемые действия могут отличаться от шагов, описанных в этом разделе. Документация по командлетам, используемым в этой версии, доступна в [модуле AzureRM.Resources](/powershell/module/azurerm.resources).
+Этот раздел был обновлен для версии 3.3.0. При наличии более ранней версии работы могут не соответствовать hello, описанного в этом разделе. Документацию о командлетах hello в этой версии см. в разделе [AzureRM.Resources модуль](/powershell/module/azurerm.resources).
 
-## <a name="log-in-to-your-azure-account"></a>Вход в учетную запись Azure
-Прежде чем начать работу над решением, необходимо войти в учетную запись.
+## <a name="log-in-tooyour-azure-account"></a>Войдите в tooyour учетная запись Azure
+Прежде чем начать работу над решением, необходимо войти в tooyour учетной записи.
 
-Чтобы войти в учетную запись Azure, используйте командлет **Login-AzureRmAccount**.
+toolog в tooyour учетная запись Azure, используйте hello **AzureRmAccount входа** командлета.
 
 ```powershell
 Login-AzureRmAccount
 ```
 
-Командлет запрашивает учетные данные входа для вашей учетной записи Azure. После выполнения входа он загружает параметры учетной записи, чтобы они были доступны в Azure PowerShell.
+Hello командлет запросит hello учетные данные входа для учетной записи Azure. После входа в систему, он загружает параметры учетной записи, таким образом, они будут доступны tooAzure PowerShell.
 
-Командлет возвращает сведения об учетной записи и подписке, которые используются для выполнения задач.
+Hello командлет возвращает информацию о вашей учетной записи и hello toouse подписки для задач hello.
 
 ```powershell
 Environment           : AzureCloud
@@ -77,7 +77,7 @@ CurrentStorageAccount :
 
 ```
 
-При наличии нескольких подписок можно переключаться с одной подписки на другую. Для начала давайте просмотрим все подписки для учетной записи.
+Если у вас есть несколько подписок, можно переключиться tooa другую подписку. Во-первых давайте посмотрим, все подписки hello для вашей учетной записи.
 
 ```powershell
 Get-AzureRmSubscription
@@ -102,22 +102,22 @@ TenantId         : {guid}
 State            : Disabled
 ```
 
-Чтобы переключиться на другую подписку, укажите имя подписки с помощью командлета **Set-AzureRmContext**.
+tooswitch tooa другую подписку, укажите имя подписки hello с hello **AzureRmContext набор** командлета.
 
 ```powershell
 Set-AzureRmContext -SubscriptionName "Example Subscription Two"
 ```
 
 ## <a name="create-a-resource-group"></a>Создание группы ресурсов
-Прежде чем развертывать ресурсы в подписке, необходимо создать группу ресурсов, которая будет их содержать.
+Перед развертыванием tooyour подписки на все ресурсы, необходимо создать группу ресурсов, который будет содержать ресурсы hello.
 
-Чтобы создать группу ресурсов, используйте командлет **New-AzureRmResourceGroup** . В команде используются параметр **Name** для указания имени группы ресурсов и параметр **Location** для указания ее расположения.
+использовать toocreate группу ресурсов hello **New AzureRmResourceGroup** командлета. Команда Hello использует hello **имя** toospecify параметра имя группы ресурсов hello и hello **расположение** toospecify параметр его расположение.
 
 ```powershell
 New-AzureRmResourceGroup -Name TestRG1 -Location "South Central US"
 ```
 
-Выходные данные имеют следующий формат:
+Вывод Hello имеет hello следующий формат:
 
 ```powershell
 ResourceGroupName : TestRG1
@@ -127,30 +127,30 @@ Tags              :
 ResourceId        : /subscriptions/{guid}/resourceGroups/TestRG1
 ```
 
-Чтобы получить сведения о группе ресурсов, используйте следующий командлет:
+Группа ресурсов tooretrieve hello позже, используйте hello, выполнив командлет:
 
 ```powershell
 Get-AzureRmResourceGroup -ResourceGroupName TestRG1
 ```
 
-Чтобы просмотреть все группы ресурсов в подписке, не указывайте имя:
+tooget все Здравствуйте групп ресурсов в подписке, не указано имя:
 
 ```powershell
 Get-AzureRmResourceGroup
 ```
 
-## <a name="add-resources-to-a-resource-group"></a>Добавление ресурсов в группу ресурсов
-Чтобы добавить ресурс в группу ресурсов, можно использовать командлет **New-AzureRmResource** или командлет для конкретного типа создаваемого ресурса (например **New-AzureRmStorageAccount**). Возможно, проще использовать командлет для конкретного типа ресурса, так как он включает в себя параметры для свойств, которые необходимы для нового ресурса. Чтобы использовать командлет **New-AzureRmResource**, необходимо знать все свойства и ввести их без запроса.
+## <a name="add-resources-tooa-resource-group"></a>Добавить группы ресурсов tooa ресурсов
+tooadd toohello ресурсов группы ресурсов, можно использовать hello **New-AzureRmResource** командлета или командлета, toohello определенного типа ресурсов создается (как **New AzureRmStorageAccount**). Может оказаться проще toouse командлета, так как он включает параметры для hello свойства, необходимые для нового ресурса hello tooa определенного типа ресурсов. toouse **New-AzureRmResource**, необходимо знать все tooset hello свойства без необходимости вводить их.
 
-Однако добавление ресурса с помощью командлетов может привести к путанице в будущем, потому что новый ресурс не существует в шаблоне Resource Manager. Корпорация Майкрософт рекомендует определять инфраструктуру решения Azure в шаблоне Resource Manager. Шаблоны обеспечивают надежность развертывания и позволяют развернуть решение повторно. В этом примере учетная запись хранения создается с помощью командлета PowerShell, но затем создается шаблон из группы ресурсов.
+Однако добавление ресурса с помощью командлетов может ввести в заблуждение будущих поскольку hello новый ресурс не существует в шаблоне диспетчера ресурсов. Корпорация Майкрософт рекомендует определение hello инфраструктуры Azure решения в шаблона диспетчера ресурсов. Шаблоны позволяют tooreliably и повторно развернуть решение. В этом примере учетная запись хранения создается с помощью командлета PowerShell, но затем создается шаблон из группы ресурсов.
 
-Следующий командлет создает учетную запись хранения. Вместо имени, использованного в примере, укажите уникальное имя для учетной записи хранения. Это имя должно содержать от 3 до 24 знаков и состоять только из цифр и букв нижнего регистра. При использовании имени из примера возникнет ошибка, так как это имя уже используется.
+Привет, выполнив командлет создает учетную запись хранилища. Вместо использования имени hello, показано в примере hello, укажите уникальное имя для учетной записи хранения hello. Имя Hello должен находиться в диапазоне от 3 до 24 символов и содержать только строчные буквы и цифры. При использовании имени hello, показано в примере hello, сообщение об ошибке, поскольку это имя уже используется.
 
 ```powershell
 New-AzureRmStorageAccount -ResourceGroupName TestRG1 -AccountName mystoragename -Type "Standard_LRS" -Location "South Central US"
 ```
 
-Чтобы получить сведения об этом ресурсе, используйте следующий командлет:
+Если вам требуется tooretrieve этот ресурс позже, используйте hello, выполнив командлет:
 
 ```powershell
 Get-AzureRmResource -ResourceName mystoragename -ResourceGroupName TestRG1
@@ -158,15 +158,15 @@ Get-AzureRmResource -ResourceName mystoragename -ResourceGroupName TestRG1
 
 ## <a name="add-a-tag"></a>Добавление тега
 
-Теги позволяют организовать ресурсы в соответствии с различными свойствами. Например, в разных группах ресурсов могут находиться ресурсы, относящиеся к одному отделу. Чтобы пометить ресурсы как относящиеся к одной категории, к ним можно применить тег отдела и значение. Также можно пометить, в какой среде используется ресурс — рабочей или тестовой. В этом примере теги применяются только к одному ресурсу, но в вашей среде, скорее всего, имеет смысл применить теги ко всем ресурсам.
+Теги позволяют tooorganize ресурсы в соответствии с toodifferent свойства. Например, может иметь несколько ресурсов в разных группах ресурсов, принадлежащих toohello же отдела. Можно применить отдел тег и значение toothose ресурсов toomark их как принадлежащий toohello одной категории. Также можно пометить, в какой среде используется ресурс — рабочей или тестовой. В этом разделе применяются теги tooonly один ресурс, но в вашей среде скорее всего, имеет смысл, tooapply теги tooall свои ресурсы.
 
-Следующий командлет применяет к учетной записи хранения два тега:
+Привет, выполнив командлет применяется два учетной записи хранилища tooyour теги:
 
 ```powershell
 Set-AzureRmResource -Tag @{ Dept="IT"; Environment="Test" } -ResourceName mystoragename -ResourceGroupName TestRG1 -ResourceType Microsoft.Storage/storageAccounts
  ```
 
-Теги обновляются как один объект. Для добавления тега к ресурсу, который уже содержит теги, сначала получите сведения о существующих тегах. Добавьте новый тег в объект, содержащий существующие теги, а затем повторно примените к ресурсу все теги.
+Теги обновляются как один объект. tooadd ресурс tooa тег, который уже включает теги, сначала получить существующие теги hello. Добавьте hello новый тег toohello объект, содержащий существующие теги hello и повторно применить все hello теги toohello ресурсов.
 
 ```powershell
 $tags = (Get-AzureRmResource -ResourceName mystoragename -ResourceGroupName TestRG1).Tags
@@ -176,27 +176,27 @@ Set-AzureRmResource -Tag $tags -ResourceName mystoragename -ResourceGroupName Te
 
 ## <a name="search-for-resources"></a>Поиск ресурсов
 
-Используйте командлет **Find-AzureRmResource**, чтобы получить сведения о ресурсах для разных условий поиска.
+Используйте hello **Find-AzureRmResource** командлет tooretrieve ресурсы для поиска различных условий.
 
-* Чтобы найти ресурс по имени, укажите параметр **ResourceNameContains**:
+* tooget ресурсов по имени, предоставляют hello **ResourceNameContains** параметр:
 
   ```powershell
   Find-AzureRmResource -ResourceNameContains mystoragename
   ```
 
-* Чтобы получить сведения о всех ресурсах в группе ресурсов, укажите параметр **ResourceGroupNameContains**:
+* tooget все ресурсы hello в группе ресурсов обеспечивают hello **ResourceGroupNameContains** параметр:
 
   ```powershell
   Find-AzureRmResource -ResourceGroupNameContains TestRG1
   ```
 
-* Для получения сведений о всех ресурсах с именем и значением тега, укажите параметры **TagName** и **TagValue**:
+* tooget все ресурсы hello имя тега и значением, обеспечивают hello **TagName** и **TagValue** параметры:
 
   ```powershell
   Find-AzureRmResource -TagName Dept -TagValue IT
   ```
 
-* Для всех ресурсов с определенным типом ресурса укажите параметр **ResourceType**:
+* ресурсы hello tooall с определенного типа ресурсов, обеспечивают hello **ResourceType** параметр:
 
   ```powershell
   Find-AzureRmResource -ResourceType Microsoft.Storage/storageAccounts
@@ -204,17 +204,17 @@ Set-AzureRmResource -Tag $tags -ResourceName mystoragename -ResourceGroupName Te
 
 ## <a name="lock-a-resource"></a>Блокировка ресурса
 
-Чтобы гарантировать, что критически важный ресурс не будет случайно удален или изменен, примените к нему блокировку ресурса. Можно указать параметр **CanNotDelete** или **ReadOnly**.
+Когда требуется toomake убедитесь, что важный ресурс не удаляется случайно или изменены, применение toohello ресурса блокировки. Можно указать параметр **CanNotDelete** или **ReadOnly**.
 
-Для создания или удаления блокировок управления необходим доступ к действию `Microsoft.Authorization/*` или `Microsoft.Authorization/locks/*`. Из встроенных ролей эти действия предоставляются только владельцу и администратору доступа пользователей.
+блокировки управления toocreate или delete, необходимо иметь доступ слишком`Microsoft.Authorization/*` или `Microsoft.Authorization/locks/*` действия. Hello встроенных ролей эти действия предоставляются только владелец и администратор доступа пользователя.
 
-Чтобы применить блокировку, используйте следующий командлет:
+tooapply блокировку, используйте следующий командлет hello:
 
 ```powershell
 New-AzureRmResourceLock -LockLevel CanNotDelete -LockName LockStorage -ResourceName mystoragename -ResourceType Microsoft.Storage/storageAccounts -ResourceGroupName TestRG1
 ```
 
-Заблокированный ресурс в предыдущем примере невозможно удалить, пока не будет снята блокировка. Для снятия блокировки используйте следующий командлет:
+Hello ресурс блокировки в предшествующих пример hello нельзя удалить, пока блокировка hello удаляется. tooremove блокировку, используйте:
 
 ```powershell
 Remove-AzureRmResourceLock -LockName LockStorage -ResourceName mystoragename -ResourceType Microsoft.Storage/storageAccounts -ResourceGroupName TestRG1
@@ -223,36 +223,36 @@ Remove-AzureRmResourceLock -LockName LockStorage -ResourceName mystoragename -Re
 Дополнительные сведения об установке блокировок см. в статье [Блокировка ресурсов с помощью диспетчера ресурсов Azure](resource-group-lock-resources.md).
 
 ## <a name="remove-resources-or-resource-group"></a>Удаление ресурсов или группы ресурсов
-Ресурс или группу ресурсов можно удалить. При удалении группы ресурсов также удаляются все ресурсы, входящие в эту группу.
+Ресурс или группу ресурсов можно удалить. При удалении группы ресурсов, также удалить все ресурсы hello в пределах этой группы ресурсов.
 
-* Чтобы удалить ресурс из группы ресурсов, используйте командлет **Remove-AzureRmResource** . Этот командлет удаляет ресурс, но не удаляет группу ресурсов.
+* ресурс из группы ресурсов hello, используйте hello toodelete **Remove-AzureRmResource** командлета. Этот командлет удаляет hello ресурсов, но не удаляет группу ресурсов hello.
 
   ```powershell
   Remove-AzureRmResource -ResourceName mystoragename -ResourceType Microsoft.Storage/storageAccounts -ResourceGroupName TestRG1
   ```
 
-* Чтобы удалить группу ресурсов со всем ее содержимым, используйте командлет **Remove-AzureRmResourceGroup**.
+* toodelete группу ресурсов и его ресурсы используют hello **AzureRmResourceGroup удаление** командлета.
 
   ```powershell
   Remove-AzureRmResourceGroup -Name TestRG1
   ```
 
-В обоих командлетах требуется подтвердить, что вы хотите удалить ресурс или группу ресурсов. В случае успешного выполнения операции командлет возвращает значение **True**.
+Для обоих командлетов предлагают tooconfirm нужно tooremove hello ресурс или группу ресурсов. Если операция hello успешно удаляет hello ресурс или группа ресурсов, он возвращает **True**.
 
 ## <a name="run-resource-manager-scripts-with-azure-automation"></a>Выполнение сценариев Resource Manager со службой автоматизации Azure
 
-В этом разделе показано, как выполнять базовые операции с ресурсами, используя Azure PowerShell. Для расширенного управления обычно требуется создать сценарий, который затем применяется при необходимости или по расписанию. [Служба автоматизации Azure](../automation/automation-intro.md) предоставляет возможность автоматизации часто используемых сценариев, которые управляют решениями Azure.
+В этом разделе показано, как tooperform основных операций на ресурсы с помощью Azure PowerShell. Для более сложных сценариев управления обычно требуется toocreate сценария и повторно использовать этот скрипт, при необходимости, или по расписанию. [Служба автоматизации Azure](../automation/automation-intro.md) предоставляет способ для вас tooautomate распространенные сценарии, управляющие решений Azure.
 
-Ниже приведены статьи, в которых показано использование службы автоматизации Azure, Resource Manager и PowerShell для эффективного выполнения задач управления.
+Hello следующих разделах показано, как выполнять задачи управления toouse автоматизации Azure, диспетчер ресурсов и PowerShell tooeffectively:
 
 - Сведения о создании модулей Runbook см. в статье [Мой первый модуль Runbook PowerShell](../automation/automation-first-runbook-textual-powershell.md).
 - Сведения о работе с галереями сценариев см. в статье [Коллекции модулей Runbook и других модулей для службы автоматизации Azure](../automation/automation-runbook-gallery.md).
-- Сведения о модулях Runbook, запускающих и останавливающих виртуальные машины, см. в статье [Сценарий службы автоматизации Azure: создание расписания запуска и завершения работы виртуальной машины Azure с помощью тегов в формате JSON](../automation/automation-scenario-start-stop-vm-wjson-tags.md).
+- Модули Runbook, запускать и останавливать виртуальные машины, в разделе [сценарий автоматизации Azure: toocreate формата JSON с помощью тегов расписание для включения и выключения виртуальной Машины Azure](../automation/automation-scenario-start-stop-vm-wjson-tags.md).
 - Сведения о модулях Runbook, запускающих и останавливающих виртуальные машины в нерабочее время, см. в статье [Решение для запуска и остановки виртуальных машин в нерабочее время [предварительная версия] в службе автоматизации](../automation/automation-solution-vm-management.md).
 
 ## <a name="next-steps"></a>Дальнейшие действия
-* Сведения о создании шаблонов Resource Manager см. в статье [Создание шаблонов Azure Resource Manager](resource-group-authoring-templates.md).
-* Сведения о развертывании шаблонов см. в статье [Развертывание приложения с использованием шаблона Azure Resource Manager](resource-group-template-deploy.md).
-* Существующие ресурсы можно переместить в новую группу ресурсов. Примеры см. в статье [Перемещение ресурсов в новую группу ресурсов или подписку](resource-group-move-resources.md).
-* Руководство по использованию Resource Manager для эффективного управления подписками в организациях см [Azure enterprise scaffold - prescriptive subscription governance](resource-manager-subscription-governance.md) (Шаблон Azure для организаций. Рекомендуемая система управления подпиской).
+* в разделе toolearn о создании шаблонов диспетчера ресурсов [разработки шаблоны Azure Resource Manager](resource-group-authoring-templates.md).
+* в разделе toolearn о развертывании шаблонов, [развернуть приложение с помощью шаблона Azure Resource Manager](resource-group-template-deploy.md).
+* Можно переместить существующие ресурсы tooa новую группу ресурсов. Примеры см. в разделе [tooNew перемещение ресурсов группы ресурсов или подписку](resource-group-move-resources.md).
+* Для получения рекомендаций по как предприятия могут использовать диспетчер ресурсов tooeffectively управление подписками см. в разделе [корпоративные функции формирования шаблонов - управление конкретные подписки](resource-manager-subscription-governance.md).
 

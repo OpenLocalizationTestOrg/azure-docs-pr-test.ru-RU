@@ -1,0 +1,1 @@
+В этом разделе используется как его начала ресурсы hello точки, созданные в [создания первой функции из портала Azure hello](../articles/azure-functions/functions-create-first-azure-function.md). Если это еще не сделано, выполните эти действия теперь toocreate функции приложения.

@@ -1,5 +1,5 @@
 ---
-title: "Набор веб-служб нормального распределения Azure (устаревшая версия) | Документация Майкрософт"
+title: "AAA(deprecated) набор службы нормальное распределение веб - Azure | Документы Microsoft"
 description: "Сведения о наборе веб-служб нормального распределения (устаревшая версия)."
 services: machine-learning
 documentationcenter: 
@@ -16,69 +16,69 @@ ms.date: 01/06/2017
 ms.author: ireiter
 ROBOTS: NOINDEX
 redirect_url: https://gallery.cortanaintelligence.com/
-redirect_document_id: TRUE
-ms.openlocfilehash: 79d1621330ad56b0c62ca46cfac424c2306e371f
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+redirect_document_id: True
+ms.openlocfilehash: 8bdb5afd9fee88587f548d7c5299480f64289bbe
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="deprecated-normal-distribution-suite"></a>Набор нормального распределения (устаревшая версия)
 
 > [!NOTE]
-> Работа Microsoft DataMarket прекращается, и этот API больше не поддерживается. 
+> Hello Microsoft DataMarket прекращено, и этот API устарел. 
 > 
-> Много полезных примеров экспериментов и API можно найти в [коллекции Cortana Intelligence](http://gallery.cortanaintelligence.com). Дополнительные сведения о коллекции см. в статье [Поиск ресурсов в коллекции Cortana Intelligence и обмен ими](machine-learning-gallery-how-to-use-contribute-publish.md).
+> Можно найти множество полезный пример экспериментов и API-интерфейсы в hello [коллекции аналитики Cortana](http://gallery.cortanaintelligence.com). Дополнительные сведения о коллекции hello. в разделе [общего ресурса и поиска ресурсов в коллекции Cortana аналитики hello](machine-learning-gallery-how-to-use-contribute-publish.md).
 
-Набор веб-служб нормального распределения состоит из трех веб-служб ([Генератор](https://datamarket.azure.com/dataset/aml_labs/ndg7), [Калькулятор квантилей](https://datamarket.azure.com/dataset/aml_labs/ndq5), [Калькулятор вероятностей](https://datamarket.azure.com/dataset/aml_labs/ndp5)), предназначенных для создания нормальных распределений и работы с ними. С их помощью можно создать нормальное распределение любой длины, рассчитать квантили для любой заданной вероятности, а также вероятность — для заданного квантиля. Каждая служба выдает собственный набор выходных данных (см. описание ниже). В основе набора веб-служб нормального распределения лежит использование функций qnorm, rnorm и pnorm, которые входят в пакет статистических функций на языке R.
+Hello Suite нормальное распределение — это набор образец веб-служб ([генератор](https://datamarket.azure.com/dataset/aml_labs/ndg7), [калькулятора Квантиля](https://datamarket.azure.com/dataset/aml_labs/ndq5), [калькулятора вероятности](https://datamarket.azure.com/dataset/aml_labs/ndp5)), помогающие в создании и обработке нормальные распределения. службы Hello разрешить создание последовательности из любой длины, вычисление квантилей из данного вероятности и расчета вероятности из заданного квантиля нормальное распределение. Каждой из служб hello выдает различные выходы, на основе выбранных hello службы (см. описание ниже). Hello нормальное распределение набор основан на qnorm функции hello R, rnorm и pnorm, включенных в пакет R статистики.
 
 [!INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 
-> Эту веб-службу можно использовать через мобильное приложение, веб-сайт или на локальном компьютере. Веб-служба также служит примером того, как машинное обучение Azure можно использовать для создания веб-служб на основе кода R. Чтобы создать эксперимент с использованием кода R и опубликовать его как веб-службу, достаточно написать несколько строк кода R и нажать несколько кнопок в студии машинного обучения Azure. Затем веб-службу можно опубликовать в Azure Marketplace, и ее смогут применять пользователи и устройства по всему миру, при этом автору веб-службы не придется настраивать инфраструктуру.  
+> Эту веб-службу можно использовать через мобильное приложение, веб-сайт или на локальном компьютере. Но hello hello веб-службы служит также tooserve в качестве примера как машинного обучения Azure можно использовать toocreate веб-служб на основе кода R. Чтобы создать эксперимент с использованием кода R и опубликовать его как веб-службу, достаточно написать несколько строк кода R и нажать несколько кнопок в студии машинного обучения Azure. Hello веб-службы может быть опубликованным toohello Azure Marketplace и используемые пользователями и устройствами через Здравствуй, мир без настройки инфраструктуры автором hello hello веб-службы.  
 > 
 > 
 
 ## <a name="consumption-of-web-service"></a>Использование веб-службы
-В состав набора веб-служб нормального распределения входят перечисленные ниже три службы.
+Hello Suite нормальное распределение включает следующие 3 службы hello.
 
 ### <a name="normal-distribution-quantile-calculator"></a>Калькулятор квантилей нормального распределения
-Эта служба принимает четыре аргумента нормального распределения и рассчитывает соответствующий квантиль.
+Эта служба принимает аргументы 4 нормального распределения и вычисляет квантиля связанные hello.
 
-Входные аргументы:
+Hello входными аргументами являются:
 
 * p — одна вероятность события с нормальным распределением. 
-* Mean — среднее значение нормального распределения.
-* SD — стандартное отклонение нормального распределения. 
-* Side — L для нижней или U для верхней части распределения.
+* Среднее - среднее hello нормальное распределение.
+* SD - стандартное отклонение hello нормальное распределение. 
+* -L для hello нижней стороны распространения hello и стороны U для hello верхней части hello распространения.
 
-На выходе служба выдает рассчитанный квантиль, связанный с заданной вероятностью.
+Hello hello службы является квантиля hello вычисления, связанный с заданным вероятность hello.
 
 ### <a name="normal-distribution-probability-calculator"></a>Калькулятор вероятности нормального распределения
-Эта служба принимает четыре аргумента нормального распределения и рассчитывает соответствующую вероятность.
+Эта служба принимает аргументы 4 нормального распределения и вычисляет вероятность связанные hello.
 
-Входные аргументы:
+Hello входными аргументами являются:
 
 * q — один квантиль события с нормальным распределением. 
-* Mean — среднее значение нормального распределения.
-* SD — стандартное отклонение нормального распределения. 
-* Side — L для нижней или U для верхней части распределения.
+* Среднее - среднее hello нормальное распределение.
+* SD - стандартное отклонение hello нормальное распределение. 
+* -L для hello нижней стороны распространения hello и стороны U для hello верхней части hello распространения.
 
-На выходе служба выдает рассчитанную вероятность, связанную с заданным квантилем.
+выходные данные Hello hello службы — hello вычисляется вероятность, связанную с заданным квантиля hello.
 
 ### <a name="normal-distribution-generator"></a>Генератор нормального распределения
-Эта служба принимает три аргумента нормального распределения и создает случайную последовательность нормально распределенных чисел. Ниже описаны аргументы, передаваемые этой службе в запросе.
+Эта служба принимает три аргумента нормального распределения и создает случайную последовательность нормально распределенных чисел. Hello следующие аргументы должны предоставляться tooit внутри hello запроса:
 
-* n — количество наблюдений. 
-* Mean — среднее значение нормального распределения.
-* SD — стандартное отклонение нормального распределения. 
+* n - число hello наблюдений. 
+* Среднее - среднее hello нормальное распределение.
+* SD - стандартное отклонение hello нормальное распределение. 
 
-На выходе служба выдает последовательность чисел длины n с нормальным распределением на основе аргументов mean и sd.
+выходные данные Hello hello службы — это последовательность n длины с нормальным распределением на основе hello среднее и sd аргументов.
 
-> Эта служба, размещенная в Azure Marketplace, является службой на основе OData. Вызвать ее можно методами POST и GET. 
+> Эта служба, размещенного на hello Azure Marketplace, — это служба OData; Это может быть вызвана через методы POST или GET. 
 > 
 > 
 
-Автоматизировать использование этой службы можно несколькими способами (примеры приложений: [Генератор](http://microsoftazuremachinelearning.azurewebsites.net/NormalDistributionGenerator.aspx), [Калькулятор вероятности](http://microsoftazuremachinelearning.azurewebsites.net/NormalDistributionProbabilityCalculator.aspx), [Калькулятор квантилей](http://microsoftazuremachinelearning.azurewebsites.net/NormalDistributionQuantileCalculator.aspx)).
+Существует несколько способов использования службы hello в автоматическом режиме (пример приложения — здесь: [генератор](http://microsoftazuremachinelearning.azurewebsites.net/NormalDistributionGenerator.aspx), [калькулятора вероятности](http://microsoftazuremachinelearning.azurewebsites.net/NormalDistributionProbabilityCalculator.aspx), [Квантиля калькулятора](http://microsoftazuremachinelearning.azurewebsites.net/NormalDistributionQuantileCalculator.aspx)).
 
 ### <a name="starting-c-code-for-web-service-consumption"></a>Начало кода C# для использования веб-службы:
 ### <a name="normal-distribution-quantile-calculator"></a>Калькулятор квантилей нормального распределения
@@ -177,7 +177,7 @@ ms.lasthandoff: 07/11/2017
 > 
 > 
 
-Ниже приведен снимок экрана эксперимента, в результате которого была создана веб-служба, и пример кода для каждого модуля в эксперименте.
+Ниже приведен снимок экрана приветствия эксперимента, созданные для каждого из модулей hello в эксперименте hello hello веб-службы и пример кода.
 
 ### <a name="normal-distribution-quantile-calculator"></a>Калькулятор квантилей нормального распределения
 Ход эксперимента:
@@ -186,9 +186,9 @@ ms.lasthandoff: 07/11/2017
 
     #Data schema with example data (replaced with data from web service)
     data.set=data.frame(p=0.1,mean=0,sd=1,side='L');
-    maml.mapOutputPort("data.set"); #send data to output port
+    maml.mapOutputPort("data.set"); #send data toooutput port
 
-    # Map 1-based optional input ports to variables
+    # Map 1-based optional input ports toovariables
     dataset1 <- maml.mapInputPort(1) # class: data.frame
 
     param = dataset1
@@ -211,7 +211,7 @@ ms.lasthandoff: 07/11/2017
 
     output = as.data.frame(q)
 
-    # Select data.frame to be sent to the output Dataset port
+    # Select data.frame toobe sent toohello output Dataset port
     maml.mapOutputPort("output");
 
 ### <a name="normal-distribution-probability-calculator"></a>Калькулятор вероятности нормального распределения
@@ -221,9 +221,9 @@ ms.lasthandoff: 07/11/2017
 
      #Data schema with example data (replaced with data from web service)
     data.set=data.frame(q=-1,mean=0,sd=1,side='L');
-    maml.mapOutputPort("data.set"); #send data to output port
+    maml.mapOutputPort("data.set"); #send data toooutput port
 
-    # Map 1-based optional input ports to variables
+    # Map 1-based optional input ports toovariables
     dataset1 <- maml.mapInputPort(1) # class: data.frame
 
     param = dataset1
@@ -241,7 +241,7 @@ ms.lasthandoff: 07/11/2017
 
     output = as.data.frame(prob)
 
-    # Select data.frame to be sent to the output Dataset port
+    # Select data.frame toobe sent toohello output Dataset port
     maml.mapOutputPort("output");
 
 ### <a name="normal-distribution-generator"></a>Генератор нормального распределения
@@ -251,9 +251,9 @@ ms.lasthandoff: 07/11/2017
 
     #Data schema with example data (replaced with data from web service)
     data.set=data.frame(n=50,mean=0,sd=1);
-    maml.mapOutputPort("data.set"); #send data to output port
+    maml.mapOutputPort("data.set"); #send data toooutput port
 
-    # Map 1-based optional input ports to variables
+    # Map 1-based optional input ports toovariables
     dataset1 <- maml.mapInputPort(1) # class: data.frame
 
     param = dataset1
@@ -261,14 +261,14 @@ ms.lasthandoff: 07/11/2017
 
     output = as.data.frame(t(dist))
 
-    # Select data.frame to be sent to the output Dataset port
+    # Select data.frame toobe sent toohello output Dataset port
     maml.mapOutputPort("output");
 
 ## <a name="limitations"></a>Ограничения
-Это очень простой пример, выполняющий операции с нормальными распределениями. Как видно из приведенного выше образца кода, в нем практически не отслеживаются ошибки.
+Это очень простой примеры вокруг hello нормальное распределение. Как видно в приведенном выше примере кода hello, реализуется немного перехват ошибок.
 
 ## <a name="faq"></a>Часто задаваемые вопросы
-Ознакомиться с часто задаваемыми вопросами по использованию веб-службы и публикации в Azure Marketplace можно [здесь](machine-learning-marketplace-faq.md).
+Часто задаваемые вопросы о потреблении hello веб-службы или публикации toohello Azure Marketplace в разделе [здесь](machine-learning-marketplace-faq.md).
 
 [1]: ./media/machine-learning-r-csharp-normal-distribution/normal-img1.png
 [2]: ./media/machine-learning-r-csharp-normal-distribution/normal-img2.png

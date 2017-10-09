@@ -1,6 +1,6 @@
 ---
 title: "Руководство по интеграции Azure Active Directory с Mixpanel | Документация Майкрософт"
-description: "Сведения о настройке единого входа Azure Active Directory в Mixpanel."
+description: "Узнайте, как tooconfigure единый вход между Azure Active Directory и Mixpanel."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,109 +13,109 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/23/2017
 ms.author: jeedes
-ms.openlocfilehash: 3dd11b3477de1329c1c8e45a6dbf212b1635fd95
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 8da8aaefee3558c37babe3e10aeba4224ceffa16
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mixpanel"></a>Руководство. Интеграция Azure Active Directory с Mixpanel
 
-В этом руководстве описано, как интегрировать Mixpanel с Azure Active Directory (Azure AD).
+В этом учебнике вы узнаете, как toointegrate Mixpanel с Azure Active Directory (Azure AD).
 
-Интеграция Mixpanel с Azure AD обеспечивает следующие преимущества.
+Интеграция с Azure AD Mixpanel предоставляет hello следующие преимущества:
 
-- С помощью Azure AD вы можете контролировать доступ к Mixpanel.
-- Вы можете включить автоматический вход пользователей в Mixpanel (единый вход) с учетной записью Azure AD.
-- Вы можете управлять учетными записями централизованно — через портал Azure.
+- Можно управлять в Azure AD, имеющего доступ tooMixpanel
+- Можно включить на пользователей tooautomatically get вошедшего tooMixpanel (Single Sign-On) с помощью своих учетных записей Azure AD
+- Можно управлять учетными записями в одном централизованном месте - hello портал Azure
 
-Подробнее узнать об интеграции приложений SaaS с Azure AD можно в разделе [Что такое доступ к приложениям и единый вход с помощью Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Если tooknow Дополнительные сведения об интеграции приложений SaaS в Azure AD, см. [доступ к приложению и единый вход в Azure Active Directory](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Предварительные требования
 
-Чтобы настроить интеграцию Azure AD с Mixpanel, вам потребуется:
+tooconfigure интеграция Azure AD с Mixpanel требуется hello следующих элементов:
 
 - подписка Azure AD;
 - подписка с поддержкой единого входа Mixpanel.
 
 > [!NOTE]
-> Мы не рекомендуем использовать рабочую среду для проверки действий в этом учебнике.
+> в этом учебнике шаги tootest hello, не рекомендуется в рабочей среде.
 
-При проверке действий в этом учебнике соблюдайте следующие рекомендации:
+tootest hello шаги в этом учебнике, необходимо следовать приведенным ниже рекомендациям:
 
 - Не используйте рабочую среду без необходимости.
 - Если у вас нет пробной среды Azure AD, вы можете получить пробную версию на один месяц по [этой ссылке](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Описание сценария
-В рамках этого руководства проводится проверка единого входа Azure AD в тестовой среде. Сценарий, описанный в этом учебнике, состоит из двух основных блоков:
+В рамках этого руководства проводится проверка единого входа Azure AD в тестовой среде. Hello сценарий, описанный в этом учебнике состоит из двух основных компонентов:
 
-1. Добавление Mixpanel из коллекции
+1. Добавление Mixpanel из галереи hello
 2. Настройка и проверка единого входа в Azure AD
 
-## <a name="adding-mixpanel-from-the-gallery"></a>Добавление Mixpanel из коллекции
-Чтобы настроить интеграцию Mixpanel с Azure AD, необходимо добавить Mixpanel из коллекции в список управляемых приложений SaaS.
+## <a name="adding-mixpanel-from-hello-gallery"></a>Добавление Mixpanel из галереи hello
+tooconfigure hello интеграции Mixpanel в Azure AD, вы должны tooadd Mixpanel из списка tooyour коллекции hello управляемых приложений SaaS.
 
-**Чтобы добавить Mixpanel из коллекции, выполните следующие действия.**
+**tooadd Mixpanel из галереи hello, выполните следующие шаги hello.**
 
-1. На **[портале Azure](https://portal.azure.com)** в области навигации слева щелкните значок **Azure Active Directory**. 
+1. В hello  **[портал Azure](https://portal.azure.com)**на левой навигационной панели hello, нажмите кнопку **Azure Active Directory** значок. 
 
     ![Active Directory][1]
 
-2. Перейдите к разделу **Корпоративные приложения**. Затем выберите **Все приложения**.
+2. Перейдите в слишком**корпоративных приложений**. Затем перейдите слишком**все приложения**.
 
     ![Приложения][2]
     
-3. Чтобы добавить новое приложение, в верхней части диалогового окна нажмите кнопку **Создать приложение**.
+3. tooadd новое приложение, нажмите кнопку **новое приложение** кнопку в верхней части hello диалогового окна.
 
     ![Приложения][3]
 
-4. В поле поиска введите **Mixpanel**.
+4. Введите в поле поиска hello **Mixpanel**.
 
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-mixpanel-tutorial/tutorial_mixpanel_search.png)
 
-5. На панели результатов выберите **Mixpanel** и щелкните **Добавить**, чтобы добавить приложение.
+5. В панели результатов hello выберите **Mixpanel**и нажмите кнопку **добавить** кнопку tooadd приложения hello.
 
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-mixpanel-tutorial/tutorial_mixpanel_addfromgallery.png)
 
 ##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Настройка и проверка единого входа в Azure AD
 В этом разделе описаны настройка и проверка единого входа Azure AD в Mixpanel с использованием тестового пользователя Britta Simon.
 
-Для работы единого входа Azure AD необходимо знать, какому пользователю в Azure AD соответствует пользователь в Mixpanel. То есть необходимо установить связь между пользователем Azure AD и соответствующим пользователем в Mixpanel.
+Для единого входа toowork Azure AD необходима tooknow пользователь аналог какие hello в Mixpanel является tooa в Azure AD. Другими словами связи между пользователя Azure AD и связанных пользователей hello в Mixpanel должен установить toobe.
 
-Чтобы установить эту связь, назначьте **имя пользователя** в Azure AD в качестве значения **имени пользователя** в Mixpanel.
+В Mixpanel, присвойте значение hello hello **имя пользователя** в Azure AD в качестве значения hello hello **Username** tooestablish hello связи.
 
-Чтобы настроить и проверить единый вход Azure AD в Mixpanel, вам потребуется выполнить действия в следующих стандартных блоках.
+tooconfigure и теста Azure AD единого входа с Mixpanel, требуются следующие стандартные блоки hello toocomplete:
 
-1. **[Настройка единого входа в Azure AD](#configuring-azure-ad-single-sign-on)** необходима, чтобы пользователи могли использовать эту функцию.
-2. **[Создание тестового пользователя Azure AD](#creating-an-azure-ad-test-user)** требуется для проверки работы единого входа Azure AD от имени пользователя Britta Simon.
-3. **[Создание тестового пользователя Mixpanel](#creating-a-mixpanel-test-user)** требуется для создания в Mixpanel пользователя Britta Simon, связанного с представлением этого же пользователя в Azure AD.
-4. **[Назначение тестового пользователя Azure AD](#assigning-the-azure-ad-test-user)** необходимо, чтобы позволить Britta Simon использовать единый вход в Azure AD.
-5. **[Testing Single Sign-On](#testing-single-sign-on)** необходима, чтобы убедиться в корректной работе конфигурации.
+1. **[Настройка Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**  -tooenable вашей toouse пользователи этой функции.
+2. **[Создание тестового пользователя Azure AD](#creating-an-azure-ad-test-user)**  -tootest Azure AD единого входа с Саймон Britta.
+3. **[Создание тестового пользователя Mixpanel](#creating-a-mixpanel-test-user)**  -toohave аналог Саймон Britta в Mixpanel, который представляет связанный toohello Azure AD пользователя.
+4. **[Назначение hello Azure AD тестового пользователя](#assigning-the-azure-ad-test-user)**  -tooenable Britta Simon toouse Azure AD единым входом.
+5. **[Тестирование единого входа](#testing-single-sign-on)**  -tooverify ли hello works конфигурации.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Настройка единого входа в Azure AD
 
-В этом разделе описано, как включить единый вход Azure AD на портале Azure и настроить его в приложении Mixpanel.
+В этом разделе включения Azure AD единым входом в портал Azure hello и настройки единого входа в приложении Mixpanel.
 
-**Чтобы настроить единый вход Azure AD в Mixpanel, выполните следующие действия.**
+**tooconfigure Azure AD единого входа с Mixpanel, выполните следующие шаги hello.**
 
-1. На портале Azure на странице интеграции с приложением **Mixpanel** щелкните **Единый вход**.
+1. В hello в hello портала Azure **Mixpanel** странице интеграции приложения щелкните **единого входа**.
 
     ![Настройка единого входа][4]
 
-2. В диалоговом окне **Единый вход** в разделе **Режим** выберите **Вход на основе SAML**, чтобы включить функцию единого входа.
+2. На hello **единого входа** диалогового окна выберите **режим** как **входа на базе SAML** tooenable единого входа.
  
     ![Настройка единого входа](./media/active-directory-saas-mixpanel-tutorial/tutorial_mixpanel_samlbase.png)
 
-3. В разделе **Домены и URL-адреса приложения Mixpanel** выполните следующие действия:
+3. На hello **URL-адреса и домена Mixpanel** выполните следующие шаги hello:
 
     ![Настройка единого входа](./media/active-directory-saas-mixpanel-tutorial/tutorial_mixpanel_url.png)
 
-     В текстовом поле **URL-адрес для входа** введите URL-адрес в формате `https://mixpanel.com/login/`.
+     В hello **URL-адрес входа** текстовом поле введите URL-адрес как:`https://mixpanel.com/login/`
 
     > [!NOTE] 
-    > Зарегистрируйтесь на сайте [https://mixpanel.com/register/](https://mixpanel.com/register/), настройте учетные данные для входа в систему и обратитесь в [службу поддержки Mixpanel](mailto:support@mixpanel.com), чтобы включить параметры единого входа для своего клиента. Вы также можете получить URL-адрес единого входа, обратившись в службу поддержки Mixpanel. 
+    > Выполните регистрацию в [https://mixpanel.com/register/](https://mixpanel.com/register/) tooset учетные данные для входа и обратитесь в службу hello [Mixpanel поддержки](mailto:support@mixpanel.com) tooenable настройки единого входа для вашего клиента. Вы также можете получить URL-адрес единого входа, обратившись в службу поддержки Mixpanel. 
  
-4. В разделе **Сертификат подписи SAML** щелкните **Сертификат (Base64)**, а затем сохраните файл сертификата на компьютере.
+4. На hello **сертификат подписи SAML** щелкните **Certificate(Base64)** и затем сохраните файл сертификата hello на вашем компьютере.
 
     ![Настройка единого входа](./media/active-directory-saas-mixpanel-tutorial/tutorial_mixpanel_certificate.png) 
 
@@ -123,100 +123,100 @@ ms.lasthandoff: 07/11/2017
 
     ![Настройка единого входа](./media/active-directory-saas-mixpanel-tutorial/tutorial_general_400.png)
 
-6. В разделе **Настройка Mixpanel** щелкните **Настроить Mixpanel**, чтобы открыть окно **Настройка единого входа**. Скопируйте **URL-адрес службы единого входа SAML** из раздела **Краткий справочник**.
+6. На hello **конфигурации Mixpanel** щелкните **Настройка Mixpanel** tooopen **Настройка входа** окна. Копировать hello **SAML единого входа URL-адрес службы** из hello **краткий справочник.**
 
     ![Настройка единого входа](./media/active-directory-saas-mixpanel-tutorial/tutorial_mixpanel_configure.png) 
 
-7. В отдельном окне браузера войдите в приложение Mixpanel под учетной записью администратора.
+7. В другом окне браузера, tooyour входа Mixpanel приложения от имени администратора.
 
-8. Щелкните маленький значок **шестеренки** в левом нижнем углу страницы. 
+8. В нижней части страницы приветствия щелкните hello немного **шестеренки** значок в левом углу hello. 
    
     ![Единый вход в Mixpanel](./media/active-directory-saas-mixpanel-tutorial/tutorial_mixpanel_06.png) 
 
-9. Откройте вкладку **Access security** (Безопасность доступа) и щелкните **Change settings** (Изменить параметры).
+9. Нажмите кнопку hello **безопасность доступа к** , а затем щелкните **изменить параметры**.
    
     ![Параметры Mixpanel](./media/active-directory-saas-mixpanel-tutorial/tutorial_mixpanel_08.png) 
 
-10. На странице диалогового окна **Change your certificate** (Изменение сертификата) щелкните **Choose file** (Выбрать файл), чтобы передать скачанный сертификат, а затем щелкните **Next** (Далее).
+10. На hello **изменить свой сертификат** странице диалогового окна щелкните **выбрать файл** tooupload Скачанный сертификат, а затем щелкните **Далее**.
    
     ![Параметры Mixpanel](./media/active-directory-saas-mixpanel-tutorial/tutorial_mixpanel_09.png) 
 
-11.  В текстовом поле URL-адреса проверки подлинности диалоговой страницы **Change your authentication URL** (Изменение URL-адреса проверки подлинности) вставьте значение **URL-адрес службы единого входа SAML**, которое скопировано с портала Azure, и щелкните **Next** (Далее).
+11.  В текстовом поле URL-адрес проверки подлинности hello на hello **изменить URL-адрес проверки подлинности** странице диалогового окна, вставить значение hello **SAML единого входа URL-адрес службы** , скопированных из портала Azure и нажмите **Далее**.
    
    ![Параметры Mixpanel](./media/active-directory-saas-mixpanel-tutorial/tutorial_mixpanel_10.png) 
 
 12. Нажмите кнопку **Done**(Готово).
 
 > [!TIP]
-> Краткую версию этих инструкций теперь можно также прочитать на [портале Azure](https://portal.azure.com) во время настройки приложения.  После добавления этого приложения из раздела **Active Directory > Корпоративные приложения** просто выберите вкладку **Единый вход** и откройте встроенную документацию через раздел **Настройка** в нижней части страницы. Дополнительные сведения о встроенной документации см. в разделе [Встроенная документация Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985).
+> Вы сможете прочитать четкими версии этих инструкций внутри hello [портал Azure](https://portal.azure.com), а вы настраиваете приложение hello!  После добавления этого приложения из hello **Active Directory > корпоративных приложений** просто щелкните hello **Single Sign-On** вкладку и доступа hello внедренных документации с помощью hello  **Конфигурация** раздела внизу hello. Вы можете прочитать больше о документации embedded функции hello здесь: [документации внедренных Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
 
 ### <a name="creating-an-azure-ad-test-user"></a>Создание тестового пользователя Azure AD
-Цель этого раздела — создать на портале Azure тестового пользователя с именем Britta Simon.
+Цель этого раздела Hello — toocreate тестового пользователя в hello вызывается Саймон Britta портал Azure.
 
 ![Создание пользователя Azure AD][100]
 
-**Чтобы создать тестового пользователя в Azure AD, выполните следующие действия:**
+**toocreate тестового пользователя в Azure AD, выполните следующие шаги hello.**
 
-1. На **портале Azure** в области навигации слева щелкните значок **Azure Active Directory**.
+1. В hello **портал Azure**, на левой панели навигации hello, нажмите кнопку **Azure Active Directory** значок.
 
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-mixpanel-tutorial/create_aaduser_01.png) 
 
-2. Чтобы отобразить список пользователей, перейдите в раздел **Пользователи и группы** и щелкните **Все пользователи**.
+2. hello toodisplay список пользователей, перейдите в слишком**пользователей и групп** и нажмите кнопку **всех пользователей**.
     
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-mixpanel-tutorial/create_aaduser_02.png) 
 
-3. Чтобы открыть диалоговое окно **Пользователь**, в верхней части диалогового окна щелкните **Добавить**.
+3. tooopen hello **пользователя** диалоговое окно, нажмите кнопку **добавить** в верхней части hello диалогового окна "hello".
  
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-mixpanel-tutorial/create_aaduser_03.png) 
 
-4. На странице диалогового окна **Пользователь** выполните следующие действия.
+4. На hello **пользователя** диалогового окна выполните следующие шаги hello:
  
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-mixpanel-tutorial/create_aaduser_04.png) 
 
-    а. В текстовом поле **Имя** введите **BrittaSimon**.
+    а. В hello **имя** введите **BrittaSimon**.
 
-    b. В текстовом поле **Имя пользователя** введите **адрес электронной почты** учетной записи BrittaSimon.
+    b. В hello **имя пользователя** в текстовое поле типа hello **адрес электронной почты** из BrittaSimon.
 
-    c. Выберите **Показать пароль** и запишите значение поля **Пароль**.
+    c. Выберите **Показать пароль** и запишите значение hello hello **пароль**.
 
     d. Щелкните **Создать**.
  
 ### <a name="creating-a-mixpanel-test-user"></a>Создание тестового пользователя Mixpanel
 
-Цель этого раздела — создать пользователя с именем Britta Simon в Mixpanel. 
+Цель этого раздела Hello — toocreate пользователя с именем Саймон Britta в Mixpanel. 
 
-1. Войдите на веб-сайт компании Mixpanel в качестве администратора.
+1. Войдите на tooyour Mixpanel корпоративный сайт с правами администратора.
 
-2. Щелкните маленькую кнопку с шестеренкой в левом нижнем углу страницы, чтобы открыть окно **Параметры** .
+2. Hello нижней страницы приветствия щелкните hello мало шестеренки кнопу hello левом углу tooopen hello **параметры** окна.
 
-3. Откройте вкладку **Команды** .
+3. Нажмите кнопку hello **команды** вкладки.
 
-4. В текстовое поле **член команды** введите электронный адрес пользователя Britta Simon на портале Azure.
+4. В hello **член команды** текстовом поле введите адрес электронной почты Britta hello Azure.
    
     ![Параметры Mixpanel](./media/active-directory-saas-mixpanel-tutorial/tutorial_mixpanel_11.png) 
 
 5. Нажмите кнопку **Пригласить**. 
 
 > [!Note]
-> Пользователь получит по электронной почте письмо с предложением настроить свой профиль.
+> Hello пользователь получит по электронной почте tooset hello профиля.
 
-### <a name="assigning-the-azure-ad-test-user"></a>Назначение тестового пользователя Azure AD
+### <a name="assigning-hello-azure-ad-test-user"></a>Назначение hello Azure AD тестового пользователя
 
-В этом разделе описано, как разрешить пользователю Britta Simon использовать единый вход Azure путем предоставления доступа к Mixpanel.
+В этом разделе включите toouse Britta Simon Azure единого входа путем предоставления tooMixpanel доступа.
 
 ![Назначение пользователя][200] 
 
-**Чтобы назначить пользователя Britta Simon в Mixpanel, выполните следующие действия.**
+**tooassign tooMixpanel Britta Simon выполните следующие шаги hello.**
 
-1. На портале Azure откройте представление приложений, перейдите к представлению каталога, а затем выберите **Корпоративные приложения** и щелкните **Все приложения**.
+1. В hello портал Azure, откройте представление приложения hello, а затем перейдите toohello представления каталога и перейти слишком**корпоративных приложений** щелкните **все приложения**.
 
     ![Назначение пользователя][201] 
 
-2. В списке приложений выберите **Mixpanel**.
+2. В списке приложений hello выберите **Mixpanel**.
 
     ![Настройка единого входа](./media/active-directory-saas-mixpanel-tutorial/tutorial_mixpanel_app.png) 
 
-3. В меню слева выберите **Пользователи и группы**.
+3. В меню слева hello hello выберите **пользователей и групп**.
 
     ![Назначение пользователя][202] 
 
@@ -224,7 +224,7 @@ ms.lasthandoff: 07/11/2017
 
     ![Назначение пользователя][203]
 
-5. В диалоговом окне **Пользователи и группы** в списке пользователей выберите **Britta Simon**.
+5. На **пользователей и групп** диалогового окна выберите **Britta Simon** в список пользователей hello.
 
 6. В диалоговом окне **Пользователи и группы** нажмите кнопку **Выбрать**.
 
@@ -232,14 +232,14 @@ ms.lasthandoff: 07/11/2017
     
 ### <a name="testing-single-sign-on"></a>Проверка единого входа
 
-В этом разделе описано, как проверить конфигурацию единого входа Azure AD с помощью панели доступа.
+В этом разделе тестирования конфигурации Azure AD единого входа с помощью панели доступа hello.
 
-Щелкнув элемент Mixpanel на панели доступа, вы автоматически войдете в приложение Mixpanel.
-Дополнительные сведения о панели доступа см. в статье [Общие сведения о панели доступа](active-directory-saas-access-panel-introduction.md).
+При нажатии кнопки hello Mixpanel плитки в панели доступа hello, вы должны получить автоматически вошедшего tooyour Mixpanel приложения.
+Дополнительные сведения о панели доступа hello см. в разделе [toohello введение панели доступа](active-directory-saas-access-panel-introduction.md).
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
-* [Список учебников по интеграции приложений SaaS с Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Список учебников по tooIntegrate приложений SaaS в Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Что такое доступ к приложениям и единый вход с помощью Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 

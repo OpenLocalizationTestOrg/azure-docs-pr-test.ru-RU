@@ -1,5 +1,5 @@
 ---
-title: "Тестирование Функций Azure | Документация Майкрософт"
+title: "aaaTesting функции Azure | Документы Microsoft"
 description: "Тестирование функций Azure с помощью Postman, cURL и Node.js."
 services: functions
 documentationcenter: na
@@ -17,30 +17,30 @@ ms.workload: na
 ms.date: 02/02/2017
 ms.author: wesmc
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: aca03ba4137893157fcbe6650336782ab88cd234
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: a084f8dbc8089356c3c19d789dc9098f2bb63052
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="strategies-for-testing-your-code-in-azure-functions"></a>Методика тестирования кода с помощью Функций Azure
 
-В этом разделе показаны различные способы тестирования функций, включая следующие общие подходы:
+В этом разделе показаны различные функции tootest способами, включая использование hello следующие общие подходы hello:
 
 + инструменты на основе HTTP, например cURL, Postman и даже веб-браузер для веб-триггеров;
-+ Azure Storage Explorer для тестирования триггеров на основе службы хранилища Azure;
-+ вкладка тестирования на портале функций Azure;
++ Azure Storage Explorer tootest триггеры, основанные на хранилища Azure
++ Вкладка теста на портале Azure функции hello
 + активируемая по таймеру функция;
 + приложение или платформа для тестирования.
 
-Все эти методы тестирования используют функцию триггера HTTP, которая принимает входные данные через параметр строки запроса или текст запроса. Эта функция создается в первом разделе.
+Все эти методы тестирования использовать функцию триггер HTTP, принимающее вводимые данные через текст запроса hello или параметр строки запроса. В первом разделе hello создания этой функции.
 
 ## <a name="create-a-function-for-testing"></a>Создание функции для тестирования
-В большей части этого руководства мы будем использовать немного измененную версию шаблона функции JavaScript HttpTrigger, который доступен при создании функции. Если вам нужна помощь при создании функции, просмотрите этот [учебник](functions-create-first-azure-function.md). Выберите шаблон **HttpTrigger- JavaScript** при создании тестовой функции на [портале Azure].
+Для большей части этого учебника мы используем немного измененной версии шаблона функции HttpTrigger JavaScript, который будет использоваться при создании функции hello. Если вам нужна помощь при создании функции, просмотрите этот [учебник](functions-create-first-azure-function.md). Выберите hello **HttpTrigger - JavaScript** шаблона при создании тестовой функции hello в hello [портал Azure].
 
-Используемый по умолчанию шаблон функции по сути представляет собой функцию hello world, выводящую на экран имя из текста запроса или параметра строки запроса `name=<your name>`.  Мы обновим код, позволив указать имя и адрес в качестве содержимого JSON в тексте запроса. Затем функция выведет эти значения обратно на клиент при его наличии.   
+Hello шаблона функции по умолчанию является по сути «hello world» функцией, выводящий имя серверной hello из hello запроса текст или параметром строки запроса, `name=<your name>`.  Мы обновим кода hello tooalso позволяют tooprovide hello имя и адрес как содержимое JSON в теле запроса hello. Затем функция hello возвращает эти задней toohello клиента при ее наличии.   
 
-Добавьте в функцию следующий код, который будет использоваться для тестирования:
+Добавьте функции hello hello, следующий код, который мы будет использовать для тестирования:
 
 ```javascript
 module.exports = function (context, req) {
@@ -61,7 +61,7 @@ module.exports = function (context, req) {
     else {
         res = {
             status: 400,
-            body: "Please pass a name on the query string or in the request body"
+            body: "Please pass a name on hello query string or in hello request body"
         };
     }
     context.done(null, res);
@@ -73,11 +73,11 @@ function ProcessNewUserInformation(context, name, address) {
     var res;
 
     if (typeof address != "undefined") {
-        echoString += "\n" + "The address you provided is " + address;
+        echoString += "\n" + "hello address you provided is " + address;
         context.log("address = " + address);
     }
     res = {
-        // status: 200, /* Defaults to 200 */
+        // status: 200, /* Defaults too200 */
         body: echoString
     };
     return res;
@@ -85,28 +85,28 @@ function ProcessNewUserInformation(context, name, address) {
 ```
 
 ## <a name="test-a-function-with-tools"></a>Тестирование функции с помощью инструментов
-За пределами портала Azure существуют различные инструменты, которые можно использовать для активации функций в целях тестирования. К ним относятся инструменты тестирования HTTP на основе пользовательского интерфейса или командной строки, средства доступа к службе хранилища Azure и даже простой веб-браузер.
+За пределами hello портал Azure существуют различные инструменты, можно использовать tootrigger функций для тестирования. К ним относятся инструменты тестирования HTTP на основе пользовательского интерфейса или командной строки, средства доступа к службе хранилища Azure и даже простой веб-браузер.
 
 ### <a name="test-with-a-browser"></a>Тестирование с помощью браузера
-Веб-браузер — это простой способ активации функций с помощью протокола HTTP. Браузер можно использовать для запросов GET, в которых не требуются полезные данные текста, а применяются только параметры строки запроса.
+веб-обозреватель Hello — функций tootrigger простым способом через HTTP. Браузер можно использовать для запросов GET, в которых не требуются полезные данные текста, а применяются только параметры строки запроса.
 
-Чтобы протестировать определенную выше функцию, скопируйте **URL-адрес функции** с портала. В нем используется следующий формат:
+было определено ранее, hello копирования функции hello tootest **URL-адрес функции** из портала hello. Он имеет hello следующие формы:
 
     https://<Your Function App>.azurewebsites.net/api/<Your Function Name>?code=<your access code>
 
-Добавьте параметр `name` к строке запроса. Используйте фактическое имя для заполнителя `<Enter a name here>`.
+Добавление hello `name` параметр строки запроса toohello. Использовать фактическое имя для hello `<Enter a name here>` заполнителя.
 
     https://<Your Function App>.azurewebsites.net/api/<Your Function Name>?code=<your access code>&name=<Enter a name here>
 
-Вставьте URL-адрес в браузер. Должен отобразиться примерно такой ответ.
+URL-адрес hello вставить в браузере и должны получить ответ аналогичные toohello следующее.
 
 ![Снимок экрана: вкладка браузера Chrome с ответом теста](./media/functions-test-a-function/browser-test.png)
 
-В данном примере используется браузер Chrome, который заключает возвращаемую строку в формат XML. Другие браузеры отображают только строковое значение.
+Данный пример является браузера Chrome hello, который создает оболочку для hello вернул строку в формате XML. Другие обозреватели отображают только hello строковое значение.
 
-В окне **Журналы** на портале при выполнении функции регистрируются выходные данные, подобные следующим:
+На портале hello **журналы** вывода окна, аналогичные toohello ниже регистрируется при выполнении функции hello:
 
-    2016-03-23T07:34:59  Welcome, you are now connected to log-streaming service.
+    2016-03-23T07:34:59  Welcome, you are now connected toolog-streaming service.
     2016-03-23T07:35:09.195 Function started (Id=61a8c5a9-5e44-4da0-909d-91d293f20445)
     2016-03-23T07:35:10.338 Node.js HTTP trigger function processed a request. RequestUri=https://functionsExample.azurewebsites.net/api/WesmcHttpTriggerNodeJS1?code=XXXXXXXXXX==&name=Glenn from a browser
     2016-03-23T07:35:10.338 Request Headers = {"cache-control":"max-age=0","connection":"Keep-Alive","accept":"text/html","accept-encoding":"gzip","accept-language":"en-US"}
@@ -115,22 +115,22 @@ function ProcessNewUserInformation(context, name, address) {
     2016-03-23T07:35:10.369 Function completed (Success, Id=61a8c5a9-5e44-4da0-909d-91d293f20445)
 
 ### <a name="test-with-postman"></a>Тестирование с помощью приложения Postman
-Рекомендуемым инструментом для тестирования большинства функций является приложение Postman, которое интегрируется с браузером Chrome. Чтобы установить Postman, см. веб-страницу, на которой можно [получить приложение Postman](https://www.getpostman.com/). Приложение Postman позволяет контролировать намного больше атрибутов HTTP-запроса.
+Рекомендуется использовать средство tootest Hello большинство функций — почтальон, который интегрируется с браузера Chrome hello. в разделе tooinstall почтальон, [получить почтальон](https://www.getpostman.com/). Приложение Postman позволяет контролировать намного больше атрибутов HTTP-запроса.
 
 > [!TIP]
-> Используйте инструмент для тестирования на основе HTTP, который для вас наиболее удобен. Вот некоторые альтернативы Postman:  
+> Средство hello HTTP тестирования, наиболее вы знакомы с. Ниже приведены некоторые tooPostman альтернативных вариантов.  
 >
 > * [Fiddler](http://www.telerik.com/fiddler)  
 > * [Paw.](https://luckymarmot.com/paw)  
 >
 >
 
-Чтобы протестировать функцию с текстом запроса в приложении Postman, выполните следующие действия.
+функция hello tootest с текстом запроса в почтальон:
 
-1. Запустите Postman нажатием кнопки **Приложения** в левом верхнем углу окна браузера Chrome.
-2. Скопируйте **URL-адрес функции** и вставьте его в Postman. В нем содержится параметр строки запроса — код доступа.
-3. Замените метод HTTP на **POST**.
-4. Щелкните **Body** > **raw** (Текст > Необработанный) и добавьте текст запроса JSON, подобный следующему:
+1. Запуск из hello почтальон **приложений** кнопку в hello верхнего левого угла окна браузера Chrome.
+2. Скопируйте **URL-адрес функции** и вставьте его в Postman. Он включает параметр строки запроса доступа к коду hello.
+3. Изменение метода hello HTTP слишком**POST**.
+4. Нажмите кнопку **текст** > **необработанные**и добавьте аналогичные toohello следующий текст запроса JSON:
 
     ```json
     {
@@ -140,13 +140,13 @@ function ProcessNewUserInformation(context, name, address) {
     ```
 5. Нажмите кнопку **Send**(Отправить).
 
-На следующем рисунке показано тестирование простого примера эхо-функции из этого руководства.
+Hello ниже приведен пример функции простые эхо тестирования hello в этом учебнике.
 
 ![Снимок экрана: пользовательский интерфейс Postman](./media/functions-test-a-function/postman-test.png)
 
-В окне **Журналы** на портале при выполнении функции регистрируются выходные данные, подобные следующим:
+На портале hello **журналы** вывода окна, аналогичные toohello ниже регистрируется при выполнении функции hello:
 
-    2016-03-23T08:04:51  Welcome, you are now connected to log-streaming service.
+    2016-03-23T08:04:51  Welcome, you are now connected toolog-streaming service.
     2016-03-23T08:04:57.107 Function started (Id=dc5db8b1-6f1c-4117-b5c4-f6b602d538f7)
     2016-03-23T08:04:57.763 HTTP trigger function processed a request. RequestUri=https://functions841def78.azurewebsites.net/api/WesmcHttpTriggerNodeJS1?code=XXXXXXXXXX==
     2016-03-23T08:04:57.763 Request Headers = {"cache-control":"no-cache","connection":"Keep-Alive","accept":"*/*","accept-encoding":"gzip","accept-language":"en-US"}
@@ -156,28 +156,28 @@ function ProcessNewUserInformation(context, name, address) {
     2016-03-23T08:04:57.763 address = Seattle, W.A. 98101
     2016-03-23T08:04:57.795 Function completed (Success, Id=dc5db8b1-6f1c-4117-b5c4-f6b602d538f7)
 
-### <a name="test-with-curl-from-the-command-line"></a>Тестирование с помощью cURL из командной строки
-Часто при тестировании программного обеспечения для отладки приложения достаточно командной строки. То же самое справедливо и для функций. Обратите внимание, что инструмент cURL по умолчанию доступен в системах на основе Linux. При использовании Windows [инструмент cURL](https://curl.haxx.se/) необходимо сначала скачать и установить.
+### <a name="test-with-curl-from-hello-command-line"></a>Тестирование с помощью перелистывание из командной строки hello
+Часто при тестировании программного обеспечения не необходимые toolook любое дальнейшей, чем hello командной строки toohelp отладки приложения. То же самое справедливо и для функций. Обратите внимание, что перелистывание hello доступность по умолчанию в системах под управлением Linux. В Windows, необходимо сначала загрузить и установить hello [перелистывание средство](https://curl.haxx.se/).
 
-Чтобы протестировать определенную выше функцию, скопируйте **URL-адрес функции** с портала. В нем используется следующий формат:
+функция tootest hello, что было определено ранее, hello копирования **URL-адрес функции** из портала hello. Он имеет hello следующие формы:
 
     https://<Your Function App>.azurewebsites.net/api/<Your Function Name>?code=<your access code>
 
-Это URL-адрес для активации функции. Протестируйте его, используя команду cURL в командной строке, чтобы выполнить запрос GET (`-G` или `--get`) к функции:
+Это hello URL-адрес для запуска функции. Проверить это с помощью команды перелистывание hello в командной строке toomake hello GET (`-G` или `--get`) запрос к функции hello:
 
     curl -G https://<Your Function App>.azurewebsites.net/api/<Your Function Name>?code=<your access code>
 
-В этом конкретном примере требуется параметр строки запроса, который может быть передан как данные (`-d`) в команде cURL:
+Для этого конкретного примера требуются параметр строки запроса, которую можно передать в качестве данных (`-d`) в hello cURL команды:
 
     curl -G https://<Your Function App>.azurewebsites.net/api/<Your Function Name>?code=<your access code> -d name=<Enter a name here>
 
-Выполните команду, и вы увидите выходные данные функции в командной строке:
+Команда выполнения hello, отобразится hello следующие выходные данные функции hello в командной строке hello:
 
 ![Снимок экрана: выходные данные в командной строке](./media/functions-test-a-function/curl-test.png)
 
-В окне **Журналы** на портале при выполнении функции регистрируются выходные данные, подобные следующим:
+На портале hello **журналы** вывода окна, аналогичные toohello ниже регистрируется при выполнении функции hello:
 
-    2016-04-05T21:55:09  Welcome, you are now connected to log-streaming service.
+    2016-04-05T21:55:09  Welcome, you are now connected toolog-streaming service.
     2016-04-05T21:55:30.738 Function started (Id=ae6955da-29db-401a-b706-482fcd1b8f7a)
     2016-04-05T21:55:30.738 Node.js HTTP trigger function processed a request. RequestUri=https://functionsExample.azurewebsites.net/api/HttpTriggerNodeJS1?code=XXXXXXX&name=Azure Functions
     2016-04-05T21:55:30.738 Function completed (Success, Id=ae6955da-29db-401a-b706-482fcd1b8f7a)
@@ -185,32 +185,32 @@ function ProcessNewUserInformation(context, name, address) {
 ### <a name="test-a-blob-trigger-by-using-storage-explorer"></a>Тестирование триггера больших двоичных объектов с помощью Storage Explorer
 Функцию триггера больших двоичных объектов можно протестировать с помощью [Azure Storage Explorer](http://storageexplorer.com/).
 
-1. На [портале Azure] для приложения-функции создайте функцию триггера больших двоичных объектов на языке C#, F# или JavaScript. Задайте путь для отслеживания имени контейнера больших двоичных объектов. Например:
+1. В hello [портал Azure] функции приложения, создайте функцию триггер больших двоичных объектов C#, F # и JavaScript. Задать hello toomonitor toohello путь контейнера больших двоичных объектов. Например:
 
         files
-2. Нажмите кнопку **+** , чтобы выбрать или создать учетную запись хранения, которую следует использовать. Затем щелкните **Создать**.
-3. Создайте текстовый файл со следующим содержимым и сохраните его.
+2. Нажмите кнопку hello  **+**  кнопку tooselect или создать учетную запись хранения hello требуется toouse. Затем щелкните **Создать**.
+3. Создайте текстовый файл с после текста hello и сохраните его:
 
         A text file for blob trigger function testing.
-4. Запустите [Azure Storage Explorer](http://storageexplorer.com/) и подключитесь к контейнеру больших двоичных объектов в отслеживаемой учетной записи хранения.
-5. Нажмите кнопку **Отправить**, чтобы отправить текстовый файл.
+4. Запустите [обозреватель хранилищ Azure](http://storageexplorer.com/)и соедините контейнер больших двоичных объектов toohello в учетной записи хранения hello отслеживается.
+5. Нажмите кнопку **отправить** tooupload hello текстовый файл.
 
     ![Снимок экрана: Storage Explorer](./media/functions-test-a-function/azure-storage-explorer-test.png)
 
-Используемый по умолчанию код функции триггера больших двоичных объектов сообщит об обработке большого двоичного объекта в журналах:
+Код функции триггера больших двоичных объектов по умолчанию Hello сообщает обработки hello hello большого двоичного объекта в журналы hello:
 
-    2016-03-24T11:30:10  Welcome, you are now connected to log-streaming service.
+    2016-03-24T11:30:10  Welcome, you are now connected toolog-streaming service.
     2016-03-24T11:30:34.472 Function started (Id=739ebc07-ff9e-4ec4-a444-e479cec2e460)
     2016-03-24T11:30:34.472 C# Blob trigger function processed: A text file for blob trigger function testing.
     2016-03-24T11:30:34.472 Function completed (Success, Id=739ebc07-ff9e-4ec4-a444-e479cec2e460)
 
 ## <a name="test-a-function-within-functions"></a>Тестирование функции в рамках функций
-Портал Функций Azure разработан, чтобы помочь в тестировании функций, активируемых с помощью протокола HTTP или по таймеру. Также на нем можно создавать функции для активации других тестируемых функций.
+Hello Azure функции портал предназначен toolet проверки HTTP и таймер запускается функции. Можно также создать tootrigger функции других функций, которые вы тестируете.
 
-### <a name="test-with-the-functions-portal-run-button"></a>Тестирование с помощью кнопки "Выполнить" на портале функций
-На портале есть кнопка **Выполнить**, которая позволяет провести ограниченное тестирование. С помощью этой кнопки можно указать текст запроса, но нельзя указать параметры строки запроса или обновить заголовки запроса.
+### <a name="test-with-hello-functions-portal-run-button"></a>Тестирование с помощью портала кнопку запуска hello функции
+Предоставляет портал Hello **запуска** кнопки, которые можно использовать некоторые toodo ограниченный тестирования. Текст запроса можно предоставить с помощью кнопки hello, но не может предоставить параметры строки запроса или обновления заголовков запроса.
 
-Протестируйте функцию HTTP-триггера, созданную ранее, добавив в поле **Текст запроса** строку JSON, подобную указанной ниже. Затем нажмите кнопку **Выполнить**.
+Проверить функцию триггер hello HTTP, созданную ранее, добавив в hello JSON строка аналогичные toohello после **текст запроса** поля. Нажмите кнопку hello **запуска** кнопки.
 
 ```json
 {
@@ -219,9 +219,9 @@ function ProcessNewUserInformation(context, name, address) {
 }
 ```
 
-В окне **Журналы** на портале при выполнении функции регистрируются выходные данные, подобные следующим:
+На портале hello **журналы** вывода окна, аналогичные toohello ниже регистрируется при выполнении функции hello:
 
-    2016-03-23T08:03:12  Welcome, you are now connected to log-streaming service.
+    2016-03-23T08:03:12  Welcome, you are now connected toolog-streaming service.
     2016-03-23T08:03:17.357 Function started (Id=753a01b0-45a8-4125-a030-3ad543a89409)
     2016-03-23T08:03:18.697 HTTP trigger function processed a request. RequestUri=https://functions841def78.azurewebsites.net/api/wesmchttptriggernodejs1
     2016-03-23T08:03:18.697 Request Headers = {"connection":"Keep-Alive","accept":"*/*","accept-encoding":"gzip","accept-language":"en-US"}
@@ -233,43 +233,43 @@ function ProcessNewUserInformation(context, name, address) {
 
 
 ### <a name="test-with-a-timer-trigger"></a>Тестирование с помощью триггера таймера
-Некоторые функции нельзя правильно протестировать с помощью упомянутых ранее средств. Например, функцию триггера очереди, которая выполняется при поступлении сообщения в [хранилище очередей Azure](../storage/queues/storage-dotnet-how-to-use-queues.md). Всегда можно написать код, помещающий сообщение в очередь, пример которого указан в консольном проекте далее в этой статье. Однако существует другой подход, который можно использовать для непосредственного тестирования функций.  
+Некоторые функции не удается проверить адекватно с упомянутых ранее средств hello. Например, функцию триггера очереди, которая выполняется при поступлении сообщения в [хранилище очередей Azure](../storage/queues/storage-dotnet-how-to-use-queues.md). Можно всегда написать код toodrop сообщения в очереди, и соответствующий пример приведен в проект консольного приложения предоставляется далее в этой статье. Однако существует другой подход, который можно использовать для непосредственного тестирования функций.  
 
-Можно использовать триггер таймера, настроенный с привязкой для вывода очереди. Такой код триггера таймера может затем записывать тестовые сообщения в очередь. В этом разделе описан пример.
+Можно использовать триггер таймера, настроенный с привязкой для вывода очереди. Этот код триггера таймера можно написать тест сообщений hello toohello в очереди. В этом разделе описан пример.
 
-Более подробные сведения об использовании привязок с Функциями Azure см. в статье [Справочник разработчика по Функциям Azure](functions-reference.md).
+Дополнительные сведения об использовании привязок с помощью функций Azure, в разделе hello [Справочник разработчика Azure функции](functions-reference.md).
 
 #### <a name="create-a-queue-trigger-for-testing"></a>Создание триггера очереди для тестирования
-Чтобы продемонстрировать этот подход, мы сначала создадим функцию триггера очереди, которую нам нужно протестировать, для очереди с именем `queue-newusers`. Эта функция обрабатывает имя и адрес нового пользователя, поступившие в хранилище очередей.
+toodemonstrate этого подхода сначала создается функция очереди триггера, мы хотим tootest для очереди с именем `queue-newusers`. Эта функция обрабатывает имя и адрес нового пользователя, поступившие в хранилище очередей.
 
 > [!NOTE]
-> При использовании другого имени очереди убедитесь, что используемое имя соответствует правилам [именования очередей и метаданных](https://msdn.microsoft.com/library/dd179349.aspx) . В противном случае возникает ошибка.
+> При использовании имени другую очередь, убедитесь, что используется имя hello соответствует toohello [именование очередей и метаданные](https://msdn.microsoft.com/library/dd179349.aspx) правила. В противном случае возникает ошибка.
 >
 >
 
-1. На [портале Azure] для приложения-функции щелкните **Новая функция** > **QueueTrigger — C#**.
-2. Введите имя очереди, которое будет отслеживаться функцией очереди:
+1. В hello [портал Azure] функции приложения, щелкните **новая функция** > **QueueTrigger - C#**.
+2. Введите имя toobe hello очереди, отслеживаемый с помощью функции hello очереди:
 
         queue-newusers
-3. Нажмите кнопку **+** , чтобы выбрать или создать учетную запись хранения, которую следует использовать. Затем щелкните **Создать**.
-4. Оставьте это окно браузера с порталом открытым, чтобы можно было отслеживать записи журнала на наличие стандартного кода шаблона функции очереди.
+3. Нажмите кнопку hello  **+**  кнопку tooselect или создать учетную запись хранения hello требуется toouse. Затем щелкните **Создать**.
+4. Не закрывайте это окно браузера портала, можно наблюдать за hello записи в журнале для hello очереди функции шаблона по умолчанию.
 
-#### <a name="create-a-timer-trigger-to-drop-a-message-in-the-queue"></a>Создание триггера таймера для помещения сообщения в очередь
-1. Откройте [портале Azure] в новом окне браузера и перейдите к приложению-функции.
-2. Щелкните **Новая функция** > **TimerTrigger — C#**. Введите выражение CRON, чтобы задать частоту выполнения кода таймера при тестировании функции очереди. Затем щелкните **Создать**. Если тестирование нужно выполнять каждые 30 секунд, можно использовать следующее [выражение CRON](https://wikipedia.org/wiki/Cron#CRON_expression):
+#### <a name="create-a-timer-trigger-toodrop-a-message-in-hello-queue"></a>Создайте триггер таймера toodrop сообщение в очередь hello
+1. Откройте hello [портал Azure] в новом окне браузера и перейдите tooyour функции приложения.
+2. Щелкните **Новая функция** > **TimerTrigger — C#**. Введите выражение cron tooset частоту hello таймера код проверяет работу очереди. Затем щелкните **Создать**. Если требуется toorun теста hello каждые 30 секунд, можно использовать hello следующие [выражение CRON](https://wikipedia.org/wiki/Cron#CRON_expression):
 
         */30 * * * * *
-3. Выберите вкладку **Интеграция** для нового триггера таймера.
+3. Нажмите кнопку hello **Интеграция** вкладка нового таймера триггера.
 4. В разделе **Выходные данные** щелкните **+ Новое выходное значение**. Затем последовательно щелкните **Очередь** и **Выбрать**.
-5. Запишите имя, используемое для **объекта сообщения очереди**. Оно будет использоваться в коде функции таймера.
+5. Имя заметки hello, используйте для hello **объект очереди сообщений**. Можно использовать в коде функции hello таймера.
 
         myQueue
-6. Введите имя очереди, в которую будет отправлено сообщение:
+6. Введите имя очереди hello, куда отправлять сообщение hello:
 
         queue-newusers
-7. Нажмите кнопку **+**, чтобы выбрать учетную запись хранения, указанную ранее в триггере очереди. Нажмите кнопку **Сохранить**.
-8. Выберите вкладку **Разработка** для триггера таймера.
-9. Для функции таймера на языке C# можно использовать приведенный ниже код, если вы использовали то же имя объекта сообщения очереди, указанное выше. Нажмите кнопку **Сохранить**.
+7. Нажмите кнопку hello  **+**  кнопку tooselect учетной записи хранилища hello ранее используется с триггером очереди hello. Нажмите кнопку **Сохранить**.
+8. Нажмите кнопку hello **разработка** вкладку, триггер таймера.
+9. Привет, следующий код для функции таймера hello C#, можно использовать при условии, что вы использовали hello же очереди сообщений имя объекта, показанного выше. Нажмите кнопку **Сохранить**.
 
     ```cs
     using System;
@@ -286,31 +286,31 @@ function ProcessNewUserInformation(context, name, address) {
     }
     ```
 
-На этом этапе функция таймера на C# выполняется каждые 30 секунд, если вы использовали выражение CRON из примера. Журналы для функции таймера сообщают о каждом выполнении:
+На этом этапе hello таймера функции C# выполняется каждые 30 секунд, если используется выражение cron hello. Каждый выполнение отчета Hello журналы для функции hello таймера:
 
-    2016-03-24T10:27:02  Welcome, you are now connected to log-streaming service.
+    2016-03-24T10:27:02  Welcome, you are now connected toolog-streaming service.
     2016-03-24T10:27:30.004 Function started (Id=04061790-974f-4043-b851-48bd4ac424d1)
     2016-03-24T10:27:30.004 C# Timer trigger function executed at: 3/24/2016 10:27:30 AM
     2016-03-24T10:27:30.004 {"name":"User testing from C# timer function","address":"XYZ"}
     2016-03-24T10:27:30.004 Function completed (Success, Id=04061790-974f-4043-b851-48bd4ac424d1)
 
-В окне браузера для функции очереди отображается каждое обрабатываемое сообщение:
+В окне браузера hello для функции hello очереди можно увидеть каждого обрабатываемого сообщения:
 
-    2016-03-24T10:27:06  Welcome, you are now connected to log-streaming service.
+    2016-03-24T10:27:06  Welcome, you are now connected toolog-streaming service.
     2016-03-24T10:27:30.607 Function started (Id=e304450c-ff48-44dc-ba2e-1df7209a9d22)
     2016-03-24T10:27:30.607 C# Queue trigger function processed: {"name":"User testing from C# timer function","address":"XYZ"}
     2016-03-24T10:27:30.607 Function completed (Success, Id=e304450c-ff48-44dc-ba2e-1df7209a9d22)
 
 ## <a name="test-a-function-with-code"></a>Тестирование функции с помощью кода
-Вам может потребоваться создать внешнее приложение или платформу для тестирования функций.
+Может потребоваться toocreate внешних tootest приложение или платформу функций.
 
 ### <a name="test-an-http-trigger-function-with-code-nodejs"></a>Тестирование функции HTTP-триггера с помощью кода: Node.js
-Чтобы выполнить HTTP-запрос для тестирования функции, можно использовать приложение Node.js.
-Не забудьте задать следующие значения:
+Можно использовать функции tooexecute приложение Node.js tootest запроса HTTP.
+Убедитесь, что tooset:
 
-* для `host` в параметрах запроса — узел приложения функции;
-* имя функции в параметре `path`;
-* код доступа (`<your code>`) в параметре `path`.
+* Hello `host` в узел приложения tooyour функции hello запроса параметров.
+* Имя функции в hello `path`.
+* Код доступа (`<your code>`) в hello `path`.
 
 Пример кода:
 
@@ -361,11 +361,11 @@ req.end(bodyString);
     *** Sending name and address in body ***
     {"name" : "Wes testing with Node.JS code","address" : "Dallas, T.X. 75201"}
     Hello Wes testing with Node.JS code
-    The address you provided is Dallas, T.X. 75201
+    hello address you provided is Dallas, T.X. 75201
 
-В окне **Журналы** на портале при выполнении функции регистрируются выходные данные, подобные следующим:
+На портале hello **журналы** вывода окна, аналогичные toohello ниже регистрируется при выполнении функции hello:
 
-    2016-03-23T08:08:55  Welcome, you are now connected to log-streaming service.
+    2016-03-23T08:08:55  Welcome, you are now connected toolog-streaming service.
     2016-03-23T08:08:59.736 Function started (Id=607b891c-08a1-427f-910c-af64ae4f7f9c)
     2016-03-23T08:09:01.153 HTTP trigger function processed a request. RequestUri=http://functionsExample.azurewebsites.net/api/WesmcHttpTriggerNodeJS1/?code=XXXXXXXXXX==
     2016-03-23T08:09:01.153 Request Headers = {"connection":"Keep-Alive","host":"functionsExample.azurewebsites.net"}
@@ -377,12 +377,12 @@ req.end(bodyString);
 
 
 ### <a name="test-a-queue-trigger-function-with-code-c"></a>Тестирование функции триггера очереди с помощью кода: C# #
-Мы уже упоминали, что триггер очереди можно протестировать с помощью кода, поместив сообщение в очередь. Следующий пример кода основан на коде C#, представленном в руководстве [Приступая к работе с хранилищем очередей Azure с помощью .NET](../storage/queues/storage-dotnet-how-to-use-queues.md). По этой ссылке также доступен код для других языков.
+Упоминалось ранее, можно выполнить проверку очереди триггера с помощью кода toodrop сообщения в очереди. Привет, следующий пример кода основан на hello C# кода, представленного в hello [Приступая к работе с хранилищем очередей Azure](../storage/queues/storage-dotnet-how-to-use-queues.md) учебника. По этой ссылке также доступен код для других языков.
 
-Чтобы протестировать этот код в консольном приложении, необходимо сделать следующее:
+tootest этот код в консольном приложении, необходимо:
 
-* [Настройте строку подключения хранилища в файле app.config](../storage/queues/storage-dotnet-how-to-use-queues.md).
-* Передайте `name` и `address` в качестве параметров в приложение. Например, `C:\myQueueConsoleApp\test.exe "Wes testing queues" "in a console app"`. (Этот код принимает имя и адрес для нового пользователя в качестве аргументов командной строки во время выполнения.)
+* [Настройка строки подключения хранилища в файле app.config hello](../storage/queues/storage-dotnet-how-to-use-queues.md).
+* Передайте `name` и `address` как приложение toohello параметров. Например, `C:\myQueueConsoleApp\test.exe "Wes testing queues" "in a console app"`. (Этот код hello имя и адрес для нового пользователя в качестве принимает аргументы командной строки во время выполнения.)
 
 Пример кода C#:
 
@@ -406,16 +406,16 @@ static void Main(string[] args)
     // Retrieve storage account from connection string
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(ConfigurationManager.AppSettings["StorageConnectionString"]);
 
-    // Create the queue client
+    // Create hello queue client
     CloudQueueClient queueClient = storageAccount.CreateCloudQueueClient();
 
-    // Retrieve a reference to a queue
+    // Retrieve a reference tooa queue
     CloudQueue queue = queueClient.GetQueueReference(queueName);
 
-    // Create the queue if it doesn't already exist
+    // Create hello queue if it doesn't already exist
     queue.CreateIfNotExists();
 
-    // Create a message and add it to the queue.
+    // Create a message and add it toohello queue.
     if (name != null)
     {
         if (address != null)
@@ -424,7 +424,7 @@ static void Main(string[] args)
             JSON = String.Format("{{\"name\":\"{0}\"}}", name);
     }
 
-    Console.WriteLine("Adding message to " + queueName + "...");
+    Console.WriteLine("Adding message too" + queueName + "...");
     Console.WriteLine(JSON);
 
     CloudQueueMessage message = new CloudQueueMessage(JSON);
@@ -432,9 +432,9 @@ static void Main(string[] args)
 }
 ```
 
-В окне браузера для функции очереди отображается каждое обрабатываемое сообщение:
+В окне браузера hello для функции hello очереди можно увидеть каждого обрабатываемого сообщения:
 
-    2016-03-24T10:27:06  Welcome, you are now connected to log-streaming service.
+    2016-03-24T10:27:06  Welcome, you are now connected toolog-streaming service.
     2016-03-24T10:27:30.607 Function started (Id=e304450c-ff48-44dc-ba2e-1df7209a9d22)
     2016-03-24T10:27:30.607 C# Queue trigger function processed: {"name":"Wes testing queues","address":"in a console app"}
     2016-03-24T10:27:30.607 Function completed (Success, Id=e304450c-ff48-44dc-ba2e-1df7209a9d22)
@@ -442,4 +442,4 @@ static void Main(string[] args)
 
 <!-- URLs. -->
 
-[портале Azure]: https://portal.azure.com
+[портал Azure]: https://portal.azure.com

@@ -1,6 +1,6 @@
 ---
-title: "Создание пользовательских образов виртуальных машин с помощью Azure PowerShell | Документация Майкрософт"
-description: "Руководство по созданию пользовательского образа виртуальной машины с помощью Azure PowerShell."
+title: "aaaCreate пользовательских образов виртуальной Машины с hello Azure PowerShell | Документы Microsoft"
+description: "Учебник - создать образ виртуальной Машины с помощью hello Azure PowerShell."
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: cynthn
@@ -16,97 +16,97 @@ ms.workload: infrastructure
 ms.date: 05/08/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 96be2872a902a7d7063bf1dff7b4ca209a5b67c1
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 3a759fe1b7e7b72f531399b0f4a99e341713c6a4
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-a-custom-image-of-an-azure-vm-using-powershell"></a>Создание пользовательского образа виртуальной машины Azure с помощью PowerShell
 
-Пользовательские образы похожи на образы магазина, однако их можно создавать самостоятельно. Пользовательские образы можно использовать для начальной загрузки конфигураций, например при предварительной загрузке приложений, конфигураций приложений и других конфигураций операционной системы. В рамках этого руководства вы создадите собственный пользовательский образ виртуальной машины Azure. Вы узнаете, как выполнять следующие задачи:
+Пользовательские образы похожи на образы магазина, однако их можно создавать самостоятельно. Пользовательские изображения может быть конфигурации используется toobootstrap, такие как предварительной загрузки приложений, конфигурации приложений и других настроек операционной системы. В рамках этого руководства вы создадите собственный пользовательский образ виртуальной машины Azure. Вы узнаете, как выполнять следующие задачи:
 
 > [!div class="checklist"]
 > * Подготовка виртуальной машины к использованию с помощью Sysprep
 > * Создание пользовательского образа
 > * Создание виртуальной машины из пользовательского образа
-> * Получение списка всех образов в подписке
-> * Удаление образа
+> * Отображение списка всех образов hello в подписке
+> * удалять образ.
 
-Для работы с этим руководством требуется модуль Azure PowerShell версии не ниже 3.6. Чтобы узнать версию, выполните команду ` Get-Module -ListAvailable AzureRM`. Если вам необходимо выполнить обновление, ознакомьтесь со статьей, посвященной [установке модуля Azure PowerShell](/powershell/azure/install-azurerm-ps).
+Этот учебник требует hello Azure PowerShell модуль версии 3.6 или более поздней версии. Запустите ` Get-Module -ListAvailable AzureRM` версии toofind hello. Получить tooupgrade [установите Azure PowerShell модуль](/powershell/azure/install-azurerm-ps).
 
 ## <a name="before-you-begin"></a>Перед началом работы
 
-Ниже подробно описано, как преобразовать существующую виртуальную машину в многократно используемый пользовательский образ, на основе которого можно создавать экземпляры виртуальной машины.
+в следующих шагах Hello подробно, как tootake существующей виртуальной Машины и включите его в доступных для использования пользовательского образа, который можно использовать toocreate новые экземпляры виртуальной Машины.
 
-Для выполнения примера в этом руководстве требуется виртуальная машина. Этот [пример сценария](../scripts/virtual-machines-windows-powershell-sample-create-vm.md) позволяет создать ее при необходимости. При работе с примером по мере необходимости заменяйте имена групп ресурсов и виртуальных машин.
+Пример hello toocomplete в этом учебнике, необходимо иметь существующую виртуальную машину. Этот [пример сценария](../scripts/virtual-machines-windows-powershell-sample-create-vm.md) позволяет создать ее при необходимости. Если заменить прохождение учебника hello группы ресурсов hello и ВМ имен при необходимости.
 
 ## <a name="prepare-vm"></a>Подготовка виртуальной машины
 
-Чтобы создать образ виртуальной машины, нужно подготовить ее к использованию, отозвав и пометив исходную виртуальную машину как универсальную в Azure.
+toocreate образ виртуальной машины, необходимо tooprepare hello ВМ путем выявления hello виртуальной Машины, освобождение и пометки hello исходной виртуальной Машины, как обобщенный в Azure.
 
-### <a name="generalize-the-windows-vm-using-sysprep"></a>Подготовка виртуальной машины Windows к использованию с помощью Sysprep
+### <a name="generalize-hello-windows-vm-using-sysprep"></a>Обобщить hello виртуальной Машины Windows с помощью программы Sysprep
 
-Помимо прочих действий Sysprep удаляет все сведения о вашей учетной записи и подготавливает машину к использованию в качестве образа. Сведения о Sysprep см. в статье [Использование программы Sysprep: введение](http://technet.microsoft.com/library/bb457073.aspx).
+Sysprep удаляет все ваши личные сведения, помимо прочего и подготавливает toobe машины hello, используемое в качестве изображения. Дополнительные сведения о программе Sysprep см. в разделе [как tooUse Sysprep: введение](http://technet.microsoft.com/library/bb457073.aspx).
 
 
-1. Подключитесь к виртуальной машине.
-2. Откройте окно командной строки с правами администратора. Измените каталог на *%windir%\system32\sysprep* и запустите файл *sysprep.exe*.
-3. В диалоговом окне **Программа подготовки системы** выберите *Переход в окно приветствия системы (OOBE)* и убедитесь, что установлен флажок *Подготовка к использованию*.
+1. Подключение toohello виртуальной машины.
+2. Привет открыть окно командной строки с правами администратора. Измените каталог hello слишком*%windir%\system32\sysprep*, а затем запустите *sysprep.exe*.
+3. В hello **средство подготовки системы** выберите *Enter System Out-of-Box Experience (OOBE)*и убедитесь, что hello *Generalize* установлен флажок.
 4. В разделе **Параметры завершения работы** выберите *Завершение работы* и нажмите кнопку **ОК**.
-5. После выполнения всех необходимых действий Sysprep завершает работу виртуальной машины. **Не перезапускайте виртуальную машину.**
+5. По завершении работы программы Sysprep завершает hello виртуальной машины. **Не перезагружайте hello виртуальной Машины**.
 
-### <a name="deallocate-and-mark-the-vm-as-generalized"></a>Отмена выделения и пометка виртуальной машины как обобщенной
+### <a name="deallocate-and-mark-hello-vm-as-generalized"></a>Выделение и пометить hello виртуальной Машины как обобщенный
 
-Чтобы создать образ виртуальной машины, необходимо отменить ее выделение и пометить ее как универсальную в Azure.
+toocreate изображения hello виртуальной Машины должен toobe освобожден и отмечается как обобщенный в Azure.
 
-Отмените выделение виртуальной машины с помощью командлета [Stop-AzureRmVM](/powershell/module/azurerm.compute/stop-azurermvm).
+Освобожденные hello виртуальной Машины с помощью [Stop AzureRmVM](/powershell/module/azurerm.compute/stop-azurermvm).
 
 ```powershell
 Stop-AzureRmVM -ResourceGroupName myResourceGroupImages -Name myVM -Force
 ```
 
-Теперь задайте для виртуальной машины состояние `-Generalized`, выполнив командлет [Set-AzureRmVm](/powershell/module/azurerm.compute/set-azurermvm). 
+Задать состояние hello hello виртуальной машины слишком`-Generalized` с помощью [AzureRmVm набор](/powershell/module/azurerm.compute/set-azurermvm). 
    
 ```powershell
 Set-AzureRmVM -ResourceGroupName myResourceGroupImages -Name myVM -Generalized
 ```
 
 
-## <a name="create-the-image"></a>Создание образа
+## <a name="create-hello-image"></a>Создание образа hello
 
-Теперь можно создать образ виртуальной машины с помощью командлетов [New-AzureRmImageConfig](/powershell/module/azurerm.compute/new-azurermimageconfig) и [New-AzureRmImage](/powershell/module/azurerm.compute/new-azurermimage). В следующем примере создается образ *myImage* из виртуальной машины *myVM*.
+Теперь можно создавать с помощью образа виртуальной Машины hello [New AzureRmImageConfig](/powershell/module/azurerm.compute/new-azurermimageconfig) и [New AzureRmImage](/powershell/module/azurerm.compute/new-azurermimage). Hello следующий пример создает образ с именем *myImage* из виртуальной Машины с именем *myVM*.
 
-Получите виртуальную машину. 
+Получение hello виртуальной машины. 
 
 ```powershell
 $vm = Get-AzureRmVM -Name myVM -ResourceGroupName myResourceGroupImages
 ```
 
-Создайте конфигурацию образа.
+Создайте конфигурацию hello изображения.
 
 ```powershell
 $image = New-AzureRmImageConfig -Location EastUS -SourceVirtualMachineId $vm.ID 
 ```
 
-Создайте образ.
+Создание образа hello.
 
 ```powershell
 New-AzureRmImage -Image $image -ImageName myImage -ResourceGroupName myResourceGroupImages
 ``` 
 
  
-## <a name="create-vms-from-the-image"></a>Создание виртуальных машин из образа
+## <a name="create-vms-from-hello-image"></a>Создать виртуальные машины из образа hello
 
-Теперь, когда образ готов, из него можно создать одну или несколько виртуальных машин. Создание виртуальной машины из образа очень похоже на создание виртуальной машины с помощью образа Marketplace. При использовании образа Marketplace требуются сведения об образе, его поставщике, предложении, номере SKU и версии. В случае пользовательского образа необходимо просто указать идентификатор его ресурса. 
+Теперь, когда у вас есть образ, можно создать один или несколько новых виртуальных машин из образа hello. Создание виртуальной Машины из образа — очень похожа toocreating ВМ с помощью образа Marketplace. При использовании образа Marketplace, у вас есть tooinformation о hello изображения, поставщик образов, предложение, SKU и версии. С помощью пользовательского образа необходимо просто tooprovide идентификатор hello hello пользовательский ресурс изображения. 
 
-В следующем сценарии создается переменная *$image* для сохранения сведений о пользовательском образе с помощью командлета [Get-AzureRmImage](/powershell/module/azurerm.compute/get-azurermimage), затем выполняется командлет [Set-AzureRmVMSourceImage](/powershell/module/azurerm.compute/set-azurermvmsourceimage) и указывается идентификатор с помощью только что созданной переменной *$image*. 
+В следующий скрипт hello, мы создадим переменной *$image* toostore сведения об использовании настраиваемого образа hello [Get AzureRmImage](/powershell/module/azurerm.compute/get-azurermimage) и затем мы используем [Set-AzureRmVMSourceImage](/powershell/module/azurerm.compute/set-azurermvmsourceimage)и укажите идентификатор hello, с помощью hello *$image* переменной мы только что создали. 
 
-Этот сценарий создает виртуальную машину *myVMfromImage* из пользовательского образа в новой группе ресурсов *myResourceGroupFromImage* в расположении *Западная часть США*.
+Hello скрипт создает Виртуальную машину с именем *myVMfromImage* из наших настраиваемого изображения в новую группу ресурсов с именем *myResourceGroupFromImage* в hello *Запад США* расположение.
 
 
 ```powershell
-$cred = Get-Credential -Message "Enter a username and password for the virtual machine."
+$cred = Get-Credential -Message "Enter a username and password for hello virtual machine."
 
 New-AzureRmResourceGroup -Name myResourceGroupFromImage -Location EastUS
 
@@ -159,12 +159,12 @@ $vmConfig = New-AzureRmVMConfig `
         -ComputerName myComputer `
         -Credential $cred 
 
-# Here is where we create a variable to store information about the image 
+# Here is where we create a variable toostore information about hello image 
 $image = Get-AzureRmImage `
     -ImageName myImage `
     -ResourceGroupName myResourceGroupImages
 
-# Here is where we specify that we want to create the VM from and image and provide the image ID
+# Here is where we specify that we want toocreate hello VM from and image and provide hello image ID
 $vmConfig = Set-AzureRmVMSourceImage -VM $vmConfig -Id $image.Id
 
 $vmConfig = Add-AzureRmVMNetworkInterface -VM $vmConfig -Id $nic.Id
@@ -177,7 +177,7 @@ New-AzureRmVM `
 
 ## <a name="image-management"></a>Управление образами 
 
-Ниже приведены некоторые примеры распространенных задач управления образами, а также способы их выполнения с помощью PowerShell.
+Ниже приведены некоторые примеры типичных задач управления изображения и как toocomplete их с помощью PowerShell.
 
 Вывод списка всех образов по имени.
 
@@ -186,7 +186,7 @@ $images = Find-AzureRMResource -ResourceType Microsoft.Compute/images
 $images.name
 ```
 
-Удаление образа. В этом примере из *myResourceGroup* удаляется образ с именем *myOldImage*.
+Удаление образа. Этот пример удаляет hello изображение с именем *myOldImage* из hello *myResourceGroup*.
 
 ```powershell
 Remove-AzureRmImage `
@@ -202,10 +202,10 @@ Remove-AzureRmImage `
 > * Подготовка виртуальной машины к использованию с помощью Sysprep
 > * Создание пользовательского образа
 > * Создание виртуальной машины из пользовательского образа
-> * Получение списка всех образов в подписке
-> * Удаление образа
+> * Отображение списка всех образов hello в подписке
+> * удалять образ.
 
-Перейдите к следующему руководству, чтобы узнать о высокодоступных виртуальных машинах.
+Переместить следующий учебник toolearn toohello о том, как высокодоступные виртуальные машины.
 
 > [!div class="nextstepaction"]
 > [Создание высокодоступных виртуальных машин](tutorial-availability-sets.md)

@@ -1,6 +1,6 @@
 ---
-title: "Ресурсы-контейнеры учетных данных в службе автоматизации Azure | Документация Майкрософт"
-description: "Ресурсы-контейнеры учетных данных службы автоматизации Azure содержат учетные данные безопасности, которые могут использоваться для проверки подлинности при доступе к ресурсам с помощью модуля Runbook или конфигурации DSC. В этой статье описывается, как создать ресурсы-контейнеры учетных данных и использовать их в модуле Runbook или конфигурации DSC."
+title: "aaaCredential средств автоматизации Azure | Документы Microsoft"
+description: "Ресурсы учетных данных в службе автоматизации Azure содержат учетные данные безопасности, которые могут быть tooresources используется tooauthenticate обращаются hello runbook или конфигурации DSC. В этой статье описывается toocreate активы учетных данных и использовать их в runbook или конфигурации DSC."
 services: automation
 documentationcenter: 
 author: mgoedtel
@@ -14,68 +14,68 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/14/2017
 ms.author: bwren
-ms.openlocfilehash: e2857515f3842a875ef7b5a9327392818931168f
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 46f23a8f79d5863265af9cf84f6003e30f8e7d39
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="credential-assets-in-azure-automation"></a>Ресурсы учетных данных в службе автоматизации Azure
-В ресурсе-контейнере учетных данных службы автоматизации хранится объект [PSCredential](http://msdn.microsoft.com/library/system.management.automation.pscredential), содержащий учетные данные безопасности, например имя пользователя и пароль. Модули Runbook и конфигурации DSC могут использовать командлеты, которые принимают объект PSCredential для проверки подлинности или извлекать имя пользователя и пароль объекта PSCredential, чтобы предоставить их каким-либо приложениям или службам, требующим проверку подлинности. Свойства для учетных данных безопасно хранятся в службе автоматизации Azure. К ним можно получить доступ в модуле Runbook или конфигурации DSC с помощью действия [Get-AutomationPSCredential](http://msdn.microsoft.com/library/system.management.automation.pscredential.aspx).
+В ресурсе-контейнере учетных данных службы автоматизации хранится объект [PSCredential](http://msdn.microsoft.com/library/system.management.automation.pscredential), содержащий учетные данные безопасности, например имя пользователя и пароль. Конфигурации модулей Runbook и DSC могут использовать командлеты, которые принимают объект PSCredential для проверки подлинности, или они могут извлечь hello имя пользователя и пароль hello tooprovide toosome PSCredential объект приложения или службы, требующей проверки подлинности. Hello свойства учетных данных безопасно хранятся в службе автоматизации Azure и доступны в конфигурации DSC с hello или hello runbook [Get-AutomationPSCredential](http://msdn.microsoft.com/library/system.management.automation.pscredential.aspx) действия.
 
 > [!NOTE]
-> Безопасные средства в службе автоматизации Azure включают учетные данные, сертификаты, подключения и зашифрованные переменные. Эти ресурсы шифруются и хранятся в службе автоматизации Azure с помощью уникального ключа, который создается для каждой учетной записи службы автоматизации. Ключ шифруется главным сертификатом и хранится в службе автоматизации Azure. Перед сохранением защищенного ресурса ключ учетной записи службы автоматизации дешифруется с помощью главного сертификата и используется для шифрования ресурса.  
+> Безопасные средства в службе автоматизации Azure включают учетные данные, сертификаты, подключения и зашифрованные переменные. Эти ресурсы шифруются и хранятся в hello автоматизации Azure, используя уникальный ключ, который создается для каждой учетной записи автоматизации. Ключ шифруется главным сертификатом и хранится в службе автоматизации Azure. Перед сохранением безопасного ресурса, hello ключ для учетной записи автоматизации hello расшифровывается с помощью шаблона сертификата hello и затем использовать tooencrypt hello активов.  
 
 ## <a name="windows-powershell-cmdlets"></a>Командлеты Windows PowerShell
-Командлеты, представленные в следующей таблице, используются для создания ресурсов учетных данных службы автоматизации и управления ими с помощью Windows PowerShell.  Они входят в состав [модуля Azure PowerShell](/powershell/azure/overview) , доступного в модулях Runbook и конфигурациях DSC службы автоматизации.
+командлеты Hello в следующей таблице hello, используемые toocreate ресурсов и управления ими автоматизации учетных данных с помощью Windows PowerShell.  Они поставляются как часть hello [модуля Azure PowerShell](/powershell/azure/overview) доступный для использования в Runbook автоматизации и конфигураций DSC.
 
 | Командлеты | Описание |
 |:--- |:--- |
-| [Get-AzureAutomationCredential](/powershell/module/azure/get-azureautomationcredential?view=azuresmps-3.7.0) |Извлекает сведения о ресурсе учетных данных. Сами учетные данные можно извлечь только с помощью действия **Get-AutomationPSCredential** . |
+| [Get-AzureAutomationCredential](/powershell/module/azure/get-azureautomationcredential?view=azuresmps-3.7.0) |Извлекает сведения о ресурсе учетных данных. Сами hello учетные данные можно получить только из **Get-AutomationPSCredential** действия. |
 | [New-AzureAutomationCredential](/powershell/module/azure/new-azureautomationcredential?view=azuresmps-3.7.0) |Создает новые учетные данные службы автоматизации. |
 | [Remove- AzureAutomationCredential](/powershell/module/azure/new-azureautomationcredential?view=azuresmps-3.7.0) |Удаляет учетные данные службы автоматизации. |
-| [Set- AzureAutomationCredential](/powershell/module/azure/new-azureautomationcredential?view=azuresmps-3.7.0) |Задает свойства для существующих учетных данных службы автоматизации. |
+| [Set- AzureAutomationCredential](/powershell/module/azure/new-azureautomationcredential?view=azuresmps-3.7.0) |Задает hello свойства существующей учетной записи автоматизации. |
 
 ## <a name="runbook-activities"></a>Действия Runbook
-Действия в следующей таблице используются для доступа к учетным данным в модуле Runbook и конфигурациях DSC.
+Hello действия в следующей таблице hello, используемые tooaccess учетные данные в книгу и конфигураций DSC.
 
 | Действия | Описание |
 |:--- |:--- |
-| Get-AutomationPSCredential |Получает учетные данные для использования в модуле Runbook или в конфигурации DSC. Возвращает объект [System.Management.Automation.PSCredential](http://msdn.microsoft.com/library/system.management.automation.pscredential) . |
+| Get-AutomationPSCredential |Возвращает учетные данные toouse в runbook или конфигурации DSC. Возвращает объект [System.Management.Automation.PSCredential](http://msdn.microsoft.com/library/system.management.automation.pscredential) . |
 
 > [!NOTE]
-> Не следует использовать переменные в параметре –Name действия Get-AutomationPSCredential, так как это может усложнить обнаружение зависимостей между модулями Runbook или конфигурациями DSC и ресурсами-контейнерами учетных данных во время разработки.
+> Следует избегать использования переменных в hello — параметр Name командлета Get-AutomationPSCredential, так как это может усложнить обнаружение зависимостей между модулями Runbook или конфигураций DSC и учетных данных ресурсов во время разработки.
 > 
 > 
 
 ## <a name="creating-a-new-credential-asset"></a>Создание нового ресурса учетных данных
 
-### <a name="to-create-a-new-credential-asset-with-the-azure-portal"></a>Создание нового ресурса учетных данных на портале Azure
-1. Из учетной записи службы автоматизации щелкните **Ресурсы**, чтобы открыть колонку **Ресурсы**.
-2. Щелкните элемент **Учетные данные**, чтобы открыть колонку **Учетные данные**.
-3. Щелкните **Добавить учетные данные** в верхней части колонки.
-4. Заполните форму и нажмите кнопку **Создать** для сохранения новых учетных данных.
+### <a name="toocreate-a-new-credential-asset-with-hello-azure-portal"></a>toocreate ресурс учетных данных с hello портал Azure
+1. Из учетной записи автоматизации, нажмите кнопку hello **активы** hello часть tooopen **активы** колонку.
+2. Нажмите кнопку hello **учетные данные** hello tooopen часть **учетные данные** колонку.
+3. Нажмите кнопку **добавления учетных данных** hello верхней части колонки hello.
+4. Заполните форму hello и нажмите кнопку **создать** toosave hello новые учетные данные.
 
-### <a name="to-create-a-new-credential-asset-with-windows-powershell"></a>Создание нового ресурса учетных данных с помощью Windows PowerShell
-Команды, приведенные ниже в примере, демонстрируют создание новых учетных данных службы автоматизации. Сначала создается объект PSCredential с именем и паролем, а затем он используется для создания ресурса учетных данных. Кроме того, можно использовать командлет **Get-Credential** , чтобы отобразить запрос имени и пароля.
+### <a name="toocreate-a-new-credential-asset-with-windows-powershell"></a>toocreate ресурс учетных данных с помощью Windows PowerShell
+Hello следующие примеры команд показывают, как toocreate новый автоматизации учетных данных. Объект PSCredential сначала создается с именем hello и пароля и затем использовать ресурс учетных данных toocreate hello. Кроме того, можно использовать hello **Get-Credential** toobe командлет запрос tootype имени и пароля.
 
     $user = "MyDomain\MyUser"
     $pw = ConvertTo-SecureString "PassWord!" -AsPlainText -Force
     $cred = New-Object –TypeName System.Management.Automation.PSCredential –ArgumentList $user, $pw
     New-AzureAutomationCredential -AutomationAccountName "MyAutomationAccount" -Name "MyCredential" -Value $cred
 
-### <a name="to-create-a-new-credential-asset-with-the-azure-classic-portal"></a>Создание нового ресурса учетных данных на классическом портале Azure
-1. Из учетной записи службы автоматизации щелкните **Активы** в верхней части окна.
-2. Нажмите кнопку **Добавить параметр**в нижней части окна.
+### <a name="toocreate-a-new-credential-asset-with-hello-azure-classic-portal"></a>toocreate ресурс учетных данных с hello классический портал Azure
+1. Ваша учетная запись автоматизации щелкните **активы** hello верхней части окна hello.
+2. Hello нижней части окна hello, нажмите кнопку **добавить параметр**.
 3. Щелкните **Добавить учетные данные**.
-4. В раскрывающемся списке **Тип учетных данных** выберите **Учетные данные PowerShell**.
-5. Завершите работу мастера и установите флажок, чтобы сохранить новые учетные данные.
+4. В hello **тип учетных данных** раскрывающийся список, выберите **учетные данные PowerShell**.
+5. Завершение мастера hello и нажмите кнопку hello флажок toosave hello новые учетные данные.
 
 ## <a name="using-a-powershell-credential"></a>Использование учетных данных PowerShell
-Для получения ресурса-контейнера учетных данных из модуля Runbook или конфигурации DSC используется действие **Get-AutomationPSCredential**. Оно возвращает [объект PSCredential](http://msdn.microsoft.com/library/system.management.automation.pscredential.aspx), который можно использовать в действии или командлете, требующем параметр PSCredential. Можно также получить свойства объекта учетных данных, чтобы использовать их по отдельности. Объект имеет свойства для имени пользователя и надежного пароля. Также можно использовать метод **GetNetworkCredential** для возврата объекта [NetworkCredential](http://msdn.microsoft.com/library/system.net.networkcredential.aspx), предоставляющего небезопасную версию пароля.
+Получение актива учетных данных в конфигурации DSC с hello или runbook **Get-AutomationPSCredential** действия. Оно возвращает [объект PSCredential](http://msdn.microsoft.com/library/system.management.automation.pscredential.aspx), который можно использовать в действии или командлете, требующем параметр PSCredential. Можно также извлекать свойства hello объекта toouse hello учетных данных по отдельности. Hello объекта имеет свойство для hello имя пользователя и надежный пароль hello, или можно использовать hello **GetNetworkCredential** tooreturn метод [NetworkCredential](http://msdn.microsoft.com/library/system.net.networkcredential.aspx) объект, предоставляющий небезопасную версия hello пароль.
 
 ### <a name="textual-runbook-sample"></a>Пример текстового Runbook
-Команды в приведенном ниже примере демонстрируют использование учетных данных PowerShell в Runbook. В этом примере извлекаются учетные данные, и имя пользователя и пароль из них присваиваются переменным.
+Hello следующие примеры команд показывают, как toouse PowerShell учетные данные в книгу. В этом примере возвращаются учетные данные hello и его имя пользователя и пароль назначаются toovariables.
 
     $myCredential = Get-AutomationPSCredential -Name 'MyCredential'
     $userName = $myCredential.UserName
@@ -84,20 +84,20 @@ ms.lasthandoff: 07/11/2017
 
 
 ### <a name="graphical-runbook-sample"></a>Пример графического Runbook
-Можно добавить действие **Get-AutomationPSCredential** в графический Runbook, щелкнув правой кнопкой мыши учетные данные в области "Библиотека" графического редактора и выбрав пункт **Добавить на холст**.
+Добавить **Get-AutomationPSCredential** действия tooa графического модуля runbook, щелкнув hello учетных данных в области библиотеки hello графического редактора hello и выбрав **добавить toocanvas**.
 
-![Добавление учетных данных на холст](media/automation-credentials/credential-add-canvas.png)
+![Добавить toocanvas учетных данных](media/automation-credentials/credential-add-canvas.png)
 
-На следующем рисунке показан пример использования учетных данных в графическом Runbook.  В этом случае они используются для аутентификации Runbook для доступа к ресурсам Azure, как описано в разделе [Authenticate Runbooks with Azure AD User account](automation-create-aduser-account.md)(Проверка подлинности модулей Runbook с помощью учетной записи пользователя Azure AD).  Первое действие получает учетные данные с доступом к подписке Azure.  Затем действие **Add-AzureAccount** использует эти учетные данные для аутентификации любых последующих действий.  Здесь используется [конвейерная связь](automation-graphical-authoring-intro.md#links-and-workflow) , так как **Get-AutomationPSCredential** ожидает один объект.  
+Hello следующем рисунке показан пример использования учетных данных в графический runbook.  В этом случае время проверки подлинности используется tooprovide ресурсов tooAzure runbook как описано в [проверки подлинности модулей Runbook с помощью учетной записи пользователя Azure AD](automation-create-aduser-account.md).  Первое действие Hello извлекает hello учетными данными, имеющими доступ toohello подписки Azure.  Hello **Add-AzureAccount** действия затем используется этой проверки подлинности tooprovide учетных данных для всех действий, которые идти после нее.  Здесь используется [конвейерная связь](automation-graphical-authoring-intro.md#links-and-workflow) , так как **Get-AutomationPSCredential** ожидает один объект.  
 
-![Добавление учетных данных на холст](media/automation-credentials/get-credential.png)
+![Добавить toocanvas учетных данных](media/automation-credentials/get-credential.png)
 
 ## <a name="using-a-powershell-credential-in-dsc"></a>Использование учетных данных PowerShell в DSC
 Хотя конфигурации DSC в службе автоматизации Azure могут ссылаться на ресурсы-контейнеры учетных данных с помощью командлета **Get-AutomationPSCredential**, при необходимости эти ресурсы-контейнеры можно передавать и в качестве параметров. Дополнительные сведения см. в статье [Компилирование конфигураций в Azure Automation DSC](automation-dsc-compile.md#credential-assets).
 
 ## <a name="next-steps"></a>Дальнейшие действия
-* Дополнительные сведения о графической разработке см. в разделе [Связи и рабочий процесс](automation-graphical-authoring-intro.md#links-and-workflow).
-* Сведения о различных методах аутентификации в службе автоматизации см. в статье [Обеспечение безопасности в службе автоматизации Azure](automation-security-overview.md).
-* Чтобы начать работу с графическими модулями Runbook, см. инструкции в статье [Первый графический Runbook](automation-first-runbook-graphical.md).
-* Чтобы приступить к работе с модулями Runbook рабочих процессов PowerShell, обратитесь к статье [Мой первый модуль Runbook рабочего процесса PowerShell](automation-first-runbook-textual.md) 
+* toolearn Дополнительные сведения о связи в графический разработки, в разделе [ссылки в графический разработки](automation-graphical-authoring-intro.md#links-and-workflow)
+* toounderstand hello разными методами проверки подлинности с помощью автоматизации см. в разделе [безопасности автоматизации Azure](automation-security-overview.md)
+* tooget к работе с графический Runbook в разделе [Мой первый графический runbook](automation-first-runbook-graphical.md)
+* tooget к работе с PowerShell модули Runbook рабочего процесса, в разделе [Мой первый runbook рабочего процесса PowerShell](automation-first-runbook-textual.md) 
 

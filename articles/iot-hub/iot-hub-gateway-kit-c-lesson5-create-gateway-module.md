@@ -1,6 +1,6 @@
 ---
-title: "Создание первого модуля шлюза Azure IoT | Документация Майкрософт"
-description: "Создайте модуль и добавьте его в пример приложения для настройки поведения модуля."
+title: "aaaCreate модуля первого шлюза Azure IoT | Документы Microsoft"
+description: "Создайте модуль и добавьте его tooa образец приложения toocustomize модуль поведения."
 services: iot-hub
 documentationcenter: 
 author: shizn
@@ -17,26 +17,26 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/21/2017
 ms.author: xshi
-ms.openlocfilehash: 5e28422158684c3aaf0ac3fdf5b19c80fbccfb02
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 48996fc026c8b708e328b5629801465810e5b6a2
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="lesson-5-create-your-first-azure-iot-gateway-module"></a>Урок 5. Создание первого модуля шлюза Azure IoT
-Edge Интернета вещей Azure позволяет создавать модули, написанные на Java, .NET или Node.js, но в этом руководстве описаны шаги по созданию модуля на C.
+Край IoT Azure позволяет toobuild модули, написанные на языке Java, Node.js или .NET, этот учебник знакомит hello действия по созданию модуля на языке C.
 
 ## <a name="what-you-will-do"></a>Выполняемая задача
 
-- Компиляция и запуск примера приложения hello_world на устройстве Intel NUC.
+- Скомпилируйте и запустите пример приложения hello hello_world на Intel NUC.
 - Создание модуля и его компиляция на Intel NUC.
-- Добавление нового модуля в пример приложения hello_world и запуск примера на Intel NUC. Новый модуль выводит на экран сообщение "hello_world" с меткой времени.
+- Добавьте пример приложения hello новый модуль toohello hello_world и запустите образец hello Intel NUC. новый модуль Hello выводит сообщения «hello_world» с меткой времени.
 
 ## <a name="what-you-will-learn"></a>Новые знания
 
-- Как скомпилировать и запустить пример приложения на Intel NUC.
-- Как создать модуль.
-- Как добавить модуль в пример приложения.
+- Как toocompile и выполнение примера приложения на Intel NUC.
+- Как toocreate модуля.
+- Как tooa модуль tooadd пример приложения.
 
 ## <a name="what-you-need"></a>Необходимые элементы
 
@@ -44,20 +44,20 @@ Edge Интернета вещей Azure, установленный на гла
 
 ## <a name="folder-structure"></a>Структура папок
 
-В уроке 5 вложенная папка с примером кода, который вы клонировали в уроке 1, содержит папку `module` и папку `sample`.
+Hello занятия 5 во вложенной папке hello примером кода, который клонировать на занятии 1, является `module` папки и `sample` папки.
 
 ![my_module](media/iot-hub-gateway-kit-lessons/lesson5/my_module.png)
 
-- Папка `module/my_module` содержит исходный код и скрипт для создания модуля.
-- Папка `sample` содержит исходный код и скрипт для создания примера приложения.
+- Hello `module/my_module` папка содержит hello исходного кода и сценариев toobuild hello модуля.
+- Hello `sample` папка содержит hello исходного кода и сценариев toobuild hello образца приложения.
 
-## <a name="compile-and-run-the-helloworld-sample-app-on-intel-nuc"></a>Компиляция и запуск примера приложения hello_world на Intel NUC
+## <a name="compile-and-run-hello-helloworld-sample-app-on-intel-nuc"></a>Компиляция и выполнение примера приложения hello hello_world на Intel NUC
 
-Пример `hello_world` создает шлюз на основе файла `hello_world.json`, который задает два предопределенных модуля, связанных с приложением. Шлюз записывает сообщение "hello world" в файл каждые 5 секунд. В этом разделе вы скомпилируете и запустите приложение `hello_world` с его модулем по умолчанию.
+Hello `hello_world` образец создает шлюз, на основании hello `hello_world.json` файл, который указывает стандартные модули, два hello связанные с приложение hello. Hello журналы событий шлюза файл tooa сообщение «hello world» каждые 5 секунд. В этом разделе, компиляцией и выполнением hello `hello_world` приложения с ее модуля по умолчанию.
 
-Чтобы скомпилировать и запустить приложение `hello_world`, на главном компьютере выполните следующие действия.
+toocompile и выполнения hello `hello_world` приложения, выполните следующие действия на компьютере узла:
 
-1. Инициализируйте файлы конфигурации, выполнив приведенные ниже команды.
+1. Инициализируйте hello файлы конфигурации, выполнив следующие команды hello:
 
    ```bash
    cd iot-hub-c-intel-nuc-gateway-getting-started
@@ -66,9 +66,9 @@ Edge Интернета вещей Azure, установленный на гла
    gulp init
    ```
 
-1. Добавьте в файл конфигурации шлюза MAC-адрес устройства Intel NUC. Пропустите этот шаг, если вы прошли урок по [настройке и запуску примера приложения BLE][config_ble].
+1. Измените файл конфигурации шлюза hello hello Intel NUC MAC-адрес. Пропустите этот шаг, если вы прошли занятие hello слишком[настройки и запуска образца приложения ЛЮЧИТЬ][config_ble].
 
-   1. Откройте файл конфигурации шлюза, выполнив следующую команду:
+   1. Откройте файл конфигурации шлюза hello, выполнив следующую команду hello:
 
       ```bash
       # For Windows command prompt
@@ -78,31 +78,31 @@ Edge Интернета вещей Azure, установленный на гла
       code ~/.iot-hub-getting-started/config-gateway.json
       ```
 
-   1. Обновите MAC-адрес шлюза во время [настройки Intel NUC в качестве шлюза IoT][setup_nuc], а затем сохраните файл.
+   1. Обновление hello шлюза MAC-адресов при вы [Настройка NUC Intel как шлюз IoT][setup_nuc], а затем сохраните файл hello.
 
-1. Скомпилируйте пример исходного кода, выполнив следующую команду:
+1. Скомпилируйте исходный код образца hello, выполнив следующую команду hello:
 
    ```bash
    gulp compile
    ```
 
-   Команда передает пример исходного кода на Intel NUC и запускает `build.sh` для его компиляции.
+   Hello команда передает hello Образец исходного кода tooIntel NUC и выполняет `build.sh` toocompile его.
 
-1. Запустите приложение `hello_world` на Intel NUC, выполнив следующую команду:
+1. Запустите hello `hello_world` приложение на Intel NUC, выполнив следующую команду hello:
 
    ```bash
    gulp run
    ```
 
-   Команда запускает `../Tools/run-hello-world.js`, указанный в `config.json`, для запуска примера приложения на Intel NUC.
+   Здравствуйте, команда запускает `../Tools/run-hello-world.js` , указанным в `config.json` toostart hello пример приложения на Intel NUC.
 
    ![run_sample](media/iot-hub-gateway-kit-lessons/lesson5/run_sample.png)
 
 ## <a name="create-a-new-module-and-compile-it-on-intel-nuc"></a>Создание нового модуля и его компиляция на Intel NUC
 
-С помощью приведенных ниже действий вы сможете создать новый модуль и скомпилировать его на устройстве Intel NUC. При получении сообщений модуль выводит их на экран с меткой времени. В этом разделе вы создадите первый настроенный модуль шлюза.
+Приведенные ниже действия Hello поможет создать новый модуль и его компиляция Intel NUC. модуль Hello выводит сообщения с меткой времени после их получения. В этом разделе вы создадите первый настроенный модуль шлюза.
 
-Любой модуль Edge Интернета вещей Azure должен реализовать следующие интерфейсы:
+Любой модуль Azure IoT Edge необходимо реализовать hello следующие интерфейсы:
 
    ```C
    pfModule_ParseConfigurationFromJson Module_ParseConfigurationFromJson
@@ -112,19 +112,19 @@ Edge Интернета вещей Azure, установленный на гла
    pfModule_Receive Module_Receive
    ```
 
-При необходимости можно реализовать следующий интерфейс:
+При необходимости можно реализовать следующий интерфейс hello.
 
    ```C
    pfModule_Start Module_Start
    ```
 
-На схеме ниже показаны переходы между основными состояниями модуля. Прямоугольниками обозначены методы, с помощью которых выполняются операции, когда модуль перемещается между состояниями. Овалами показаны основные состояния, в которых может находиться модуль.
+Hello следующей диаграмме показаны пути hello важные состояния модуля. Hello квадратный прямоугольники представляют методы, которые реализуют операции tooperform при перемещении модуля hello между состояниями. Hello овалы-это основной номер состояния, hello модуля может находиться в.
 
 ![state_path](media/iot-hub-gateway-kit-lessons/lesson5/state_path.png)
 
-Теперь создадим модуль на основе шаблона:
+Теперь давайте создадим на основе шаблона hello модуля:
 
-1. Откройте папку шаблонов, выполнив следующую команду:
+1. Откройте папку hello шаблона, выполнив следующую команду hello:
 
    ```bash
    code module/my_module
@@ -132,16 +132,16 @@ Edge Интернета вещей Azure, установленный на гла
 
    ![code_module](media/iot-hub-gateway-kit-lessons/lesson5/code_module.png)
 
-   - `src/my_module.c` служит в качестве шаблона, который упрощает создание модуля. Шаблон объявляет интерфейсы. Вам остается только добавить логику в функцию `MyModule_Receive`.
-   - `build.sh` — это скрипт сборки для компиляции модуля на устройстве Intel NUC.
-1. Откройте файл `src/my_module.c` и включите два файла заголовков:
+   - `src/my_module.c`служит в качестве шаблона, который упрощает создание hello модуля. Hello шаблона объявляет hello интерфейсов. Все что нужно toodo — toohello логику tooadd `MyModule_Receive` функции.
+   - `build.sh`Представляет модуль hello toocompile скрипт построения hello на Intel NUC.
+1. Откройте hello `src/my_module.c` файла и ввести два файла заголовков:
 
    ```C
    #include <stdio.h>
    #include "azure_c_shared_utility/xlogging.h"
    ```
 
-1. Добавьте в функцию `MyModule_Receive` следующий код:
+1. Добавьте следующий код toohello hello `MyModule_Receive` функции:
 
    ```C
    if (message == NULL)
@@ -150,9 +150,9 @@ Edge Интернета вещей Azure, установленный на гла
    }
    else
    {
-      // get the message content
+      // get hello message content
       const CONSTBUFFER * content = Message_GetContent(message);
-      // get the local time and format it
+      // get hello local time and format it
       time_t temp = time(NULL);
       if (temp == (time_t)-1)
       {
@@ -170,7 +170,7 @@ Edge Интернета вещей Azure, установленный на гла
               char timetemp[80] = { 0 };
               if (strftime(timetemp, sizeof(timetemp) / sizeof(timetemp[0]), "%c", t) == 0)
               {
-                  LogError("unable to strftime");
+                  LogError("unable toostrftime");
               }
               else
               {
@@ -181,15 +181,15 @@ Edge Интернета вещей Azure, установленный на гла
    }
    ```
 
-1. Укажите в файле `config.json` папку `workspace` на главном компьютере и путь развертывания на устройстве Intel NUC. Во время компиляции файлы в папке `workspace` будут переданы в путь развертывания.
+1. Обновление hello `config.json` файл toospecify hello `workspace` папку на путь узла компьютера и hello развертывания на Intel NUC. Во время компиляции, hello файлы в hello `workspace` папка будет переносятся toohello пути развертывания.
 
-   1. Откройте файл `config.json`, выполнив следующую команду:
+   1. Откройте hello `config.json` файл, выполнив следующую команду hello:
 
       ```bash
       code config.json
       ```
 
-   1. Дополните `config.json` следующей конфигурацией:
+   1. Обновление `config.json` с hello следующая конфигурация:
 
       ```json
       "workspace": "./module/my_module",
@@ -198,41 +198,41 @@ Edge Интернета вещей Azure, установленный на гла
 
       ![config_json](media/iot-hub-gateway-kit-lessons/lesson5/config_json.png)
 
-1. Скомпилируйте модуль, выполнив следующую команду:
+1. Скомпилируйте модуль hello, выполнив следующую команду hello:
 
    ```bash
    gulp compile
    ```
 
-   Команда передает исходный код на устройство Intel NUC и выполняет `build.sh` для компиляции модуля.
+   Hello команда передает hello исходного кода tooIntel NUC и выполняет `build.sh` toocompile hello модуля.
 
-## <a name="add-the-module-to-the-helloworld-sample-app-and-run-the-app-on-intel-nuc"></a>Добавление модуля в пример приложения hello_world и запуск приложения на Intel NUC
+## <a name="add-hello-module-toohello-helloworld-sample-app-and-run-hello-app-on-intel-nuc"></a>Добавить hello модуля toohello hello_world пример приложения и запустить приложение hello на Intel NUC
 
-Для этого выполните следующие действия.
+tooperform это задача, выполните следующие действия:
 
-1. Выведите список всех доступных двоичных файлов модуля (SO-файлов) на устройстве Intel NUC, выполнив следующую команду:
+1. Перечислить все двоичные файлы модуля доступны hello (.so-файлы) на Intel NUC, выполнив следующую команду hello:
 
    ```bash
    gulp modules --list
    ```
 
-   Укажите путь к двоичным файлам скомпилированного кода `my_module`, как показано ниже:
+   Hello путь к двоичным файлам `my_module` , скомпилирован должен быть указан как показано ниже:
 
    ```path
    /root/gateway_sample/module/my_module/build/libmy_module.so
    ```
 
-   Если изменить стандартное имя пользователя для входа в `config-gateway.json`, путь к двоичным файлам будет начинаться с `home/<your username>`, а не `root`.
+   При изменении пользователя для входа по умолчанию hello в `config-gateway.json`, путь к двоичным файлам hello начинается с `home/<your username>` вместо `root`.
 
-1. Добавьте `my_module` в пример приложения `hello_world`:
+1. Добавить `my_module` toohello `hello_world` пример приложения:
 
-   1. Откройте файл `hello_world.json`, выполнив следующую команду:
+   1. Откройте hello `hello_world.json` файл, выполнив следующую команду hello:
 
       ```bash
       code sample/hello_world/src/hello_world.json
       ```
 
-   1. Добавьте в раздел `modules` следующий код:
+   1. Добавьте следующий код toohello hello `modules` раздела:
 
       ```json
       {
@@ -247,8 +247,8 @@ Edge Интернета вещей Azure, установленный на гла
       }
       ```
 
-      Значение `module.path` должно быть следующим: `/root/gateway_sample/module/my_module/build/libmy_module.so`. Код объявляет `my_module` для связывания со шлюзом, а также расположение двоичного файла модуля, указанного в `module.path`.
-   1. Добавьте в раздел `links` следующий код:
+      Здравствуйте, значение `module.path` должно быть `/root/gateway_sample/module/my_module/build/libmy_module.so`. Hello код объявляет `my_module` toobe, связанный с hello шлюза, а также расположение hello hello двоичного модуля, указанного в `module.path`.
+   1. Добавьте следующий код toohello hello `links` раздела:
 
       ```json
       {
@@ -257,25 +257,25 @@ Edge Интернета вещей Azure, установленный на гла
       }
       ```
 
-      Этот код указывает, что сообщения передаются из модуля `hello_world` в `my_module`.
+      Этот код указывает, что сообщения передаются из hello `hello_world` модуль слишком`my_module`.
 
       ![hello_world_json](media/iot-hub-gateway-kit-lessons/lesson5/hello_world_json.png)
 
-1. Запустите пример приложения `hello_world`, выполнив следующую команду:
+1. Запустите hello `hello_world` пример приложения, выполнив следующую команду hello:
 
    ```bash
    gulp run --config sample/hello_world/src/hello_world.json
    ```
 
-   Параметр `--config` принудительно запускает скрипт `run-hello-world.js` с помощью файла `hello_world.json`.
+   Hello `--config` параметр предписывает hello `run-hello-world.js` сценария с помощью hello toorun `hello_world.json` файл.
 
    ![hello_world_new](media/iot-hub-gateway-kit-lessons/lesson5/hello_world_new.png)
 
-Поздравляем! Теперь вы можете увидеть поведение этого нового модуля: он просто выводит на экран сообщения "hello world" с меткой времени, чем отличается от исходного модуля "hello_world".
+Поздравляем! Теперь можно увидеть поведение hello этого модуля, он просто выводит сообщения «hello world» с меткой времени, другой результат от исходного модуля «hello_world» hello.
 
 ## <a name="next-steps"></a>Дальнейшие действия
 
-Вы создали новый модуль, добавили его в пример приложения hello_world и запустили пример приложения с новым модулем в шлюзе. Дополнительные сведения о модулях шлюза Azure IoT и другие примеры модулей см. здесь: [https://github.com/Azure/azure-iot-gateway-sdk/tree/master/modules](https://github.com/Azure/azure-iot-gateway-sdk/tree/master/modules).
+Создан новый модуль, добавленные его образец hello_world toohello и toorun get hello пример приложения hello новый модуль на шлюзе. Дополнительные сведения о модулях шлюза Azure IoT toolearn следует Дополнительные примеры модуля здесь можно найти: [https://github.com/Azure/azure-iot-gateway-sdk/tree/master/modules](https://github.com/Azure/azure-iot-gateway-sdk/tree/master/modules).
 
 <!-- Images and links -->
 

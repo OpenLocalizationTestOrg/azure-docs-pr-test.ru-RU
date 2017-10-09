@@ -1,5 +1,5 @@
 ---
-title: "Модель данных телеметрии Azure Application Insights — телеметрия трассировки | Документы Майкрософт"
+title: "aaaAzure модели данных телеметрии приложения аналитики - телеметрии трассировки | Документы Microsoft"
 description: "Модель данных Application Insights для телеметрии трассировки"
 services: application-insights
 documentationcenter: .net
@@ -12,15 +12,15 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 04/25/2017
 ms.author: bwren
-ms.openlocfilehash: e1da0d6a6fbd9ca5486936c326ade667d7b01006
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: dfdee958e07d57448ff41abc5cd33bfd05dac090
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="trace-telemetry-application-insights-data-model"></a>Телеметрия трассировки: модель данных Application Insights
 
-Телеметрия трассировки (в [Application Insights](app-insights-overview.md)) представляет инструкции трассировки стиля `printf`, доступные для текстового поиска. `Log4Net`, `NLog` и другие записи файла журнала на основе текста преобразуются в экземпляры этого типа. Трассировка не имеет измерений в качестве расширения.
+Телеметрия трассировки (в [Application Insights](app-insights-overview.md)) представляет инструкции трассировки стиля `printf`, доступные для текстового поиска. `Log4Net`, `NLog` и другие записи файла журнала на основе текста преобразуются в экземпляры этого типа. Hello трассировки не имеет измерения как расширения.
 
 ## <a name="message"></a>Сообщение
 

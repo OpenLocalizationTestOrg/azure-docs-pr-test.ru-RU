@@ -1,6 +1,6 @@
 ---
-title: "Использование Elasticsearch в качестве хранилища данных трассировки приложения Service Fabric | Документация Майкрософт"
-description: "В этой статье описывается, как приложения Service Fabric используют ElasticSearch и Kibana для хранения, индексирования и поиска данных с помощью трассировки (журналов)."
+title: "aaaUsing Elasticsearch как магазин трассировки приложения Service Fabric | Документы Microsoft"
+description: "Описывает способ использования приложения Service Fabric Elasticsearch и Kibana toostore, индекса и поиск по трассировок приложения (журнал)"
 services: service-fabric
 documentationcenter: .net
 author: karolz-ms
@@ -15,64 +15,64 @@ ms.workload: NA
 ms.date: 04/07/2017
 ms.author: karolz@microsoft.com
 redirect_url: /azure/service-fabric/service-fabric-diagnostics-event-aggregation-eventflow
-ms.openlocfilehash: 2d2ceceea131b41ad1a1735aaa2a859d035ab098
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: b5977c54e69319e3caa376e44a02f971b66a3254
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="use-elasticsearch-as-a-service-fabric-application-trace-store"></a>Использование ElasticSearch в качестве хранилища данных трассировки приложения Service Fabric
 ## <a name="introduction"></a>Введение
 В этой статье описывается, как приложения [Azure Service Fabric](https://azure.microsoft.com/documentation/services/service-fabric/) используют **ElasticSearch** и **Kibana** для хранения данных трассировки приложений, индексирования и поиска. [ElasticSearch](https://www.elastic.co/guide/index.html) — это распределенная и масштабируемая система с открытым кодом, предназначенная для поиска и анализа данных в режиме реального времени. Она хорошо подходит для описанной здесь задачи. Ее можно установить на виртуальные машины Windows или Linux, запущенные в Microsoft Azure. ElasticSearch может эффективно обрабатывать *структурированные* трассировки, созданные с помощью таких технологий, как **трассировка событий Windows (ETW)**.
 
-Трассировка событий Windows используется средой выполнения Service Fabric в качестве источника диагностических сведений (трассировки). Этот способ сбора диагностических сведений также рекомендуется и для приложений Service Fabric. Точно такой же механизм позволяет коррелировать трассировки в среде выполнения и в приложении, а также облегчает устранение неполадок. Шаблоны проектов Service Fabric в Visual Studio включают в себя API ведения журнала (в зависимости от класса **EventSource** .NET), который выдает трассировки ETW по умолчанию. Общие сведения о трассировке приложений Service Fabric с помощью ETW см. в разделе [Мониторинг и диагностика состояния служб в локальной среде разработки](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md).
+Трассировка событий Windows используется служба среды выполнения toosource диагностических сведений о структуре (трассировки). Он является hello слишком рекомендуется метод toosource приложения Service Fabric для их диагностические сведения. С помощью hello тот же механизм позволяет корреляцию между трассировками предоставленный среды выполнения и предоставляемую приложением и облегчает Устранение неполадок. Service Fabric шаблоны проектов в Visual Studio включают API ведения журнала (в зависимости от hello .NET **EventSource** класса), создает трассировки событий Windows по умолчанию. Общие сведения о трассировке приложений Service Fabric с помощью ETW см. в разделе [Мониторинг и диагностика состояния служб в локальной среде разработки](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md).
 
-Чтобы данные трассировки отображались в ElasticSearch, их необходимо собирать на узлах кластера Service Fabric в реальном времени (во время работы приложения) и затем отправлять в конечную точку ElasticSearch. Есть два основных способа записи данных трассировки.
+Для hello трассировки tooshow вверх в Elasticsearch они должны toobe перенаправляться на узлах кластера Service Fabric hello в режиме реального времени (пока приложение hello) и отправляются в конечную точку tooan Elasticsearch. Есть два основных способа записи данных трассировки.
 
 * **Внутрипроцессная запись данных трассировки.**  
-  Приложение или, точнее, процесс службы, отвечает за отправку диагностических данных в хранилище данных трассировки (ElasticSearch).
+  приложения Hello, или более точно, процесс службы отвечает за отправку hello диагностических данных toohello трассировки хранилища (Elasticsearch).
 * **Внепроцессная запись данных трассировки.**  
-  Отдельный агент записывает данные трассировки из процессов службы и отправляет их в хранилище данных трассировки.
+  Отдельный агент захватывать трассировку из процесса hello службы или процессы и отправки их в хранилище toohello трассировки.
 
-Ниже мы опишем способ настройки ElasticSearch в Azure, обсудим преимущества и недостатки записи данных двумя указанными выше способами, а также объясним, как настроить службу Service Fabric для отправки данных в ElasticSearch.
+Ниже описаны как tooset копирование Elasticsearch в Azure, рассматриваются преимущества hello и недостатки для обоих параметров захвата и объясняется, как tooconfigure Service Fabric службы tooElasticsearch toosend данных.
 
 ## <a name="set-up-elasticsearch-on-azure"></a>Настройка ElasticSearch в Azure
-Самый простой способ настройки службы ElasticSearch в Azure — с помощью [**шаблонов Azure Resource Manager**](../azure-resource-manager/resource-group-overview.md). Полнофункциональный [шаблон быстрого запуска диспетчера ресурсов Azure для ElasticSearch](https://github.com/Azure/azure-quickstart-templates/tree/master/elasticsearch) можно получить из репозитория шаблонов быстрого запуска Azure. В этом шаблоне используются отдельные учетные записи хранения для единиц масштабирования (групп узлов). Он также может подготовить отдельные узлы клиента и сервера с различными конфигурациями и различным количеством подключенных дисков данных.
+Hello наиболее простым способом tooset hello Elasticsearch службы в Azure выполняется с помощью [ **шаблоны Azure Resource Manager**](../azure-resource-manager/resource-group-overview.md). Полнофункциональный [шаблон быстрого запуска диспетчера ресурсов Azure для ElasticSearch](https://github.com/Azure/azure-quickstart-templates/tree/master/elasticsearch) можно получить из репозитория шаблонов быстрого запуска Azure. В этом шаблоне используются отдельные учетные записи хранения для единиц масштабирования (групп узлов). Он также может подготовить отдельные узлы клиента и сервера с различными конфигурациями и различным количеством подключенных дисков данных.
 
-Здесь мы используем другой шаблон — **ES-MultiNode** из [репозитория инструментов диагностики Azure](https://github.com/Azure/azure-diagnostics-tools). Этот шаблон проще в использовании. Он создает кластер ElasticSearch, защищенный обычной проверкой подлинности HTTP. Прежде чем продолжить, скачайте репозиторий с сайта GitHub на свой компьютер (с помощью клонирования репозитория или скачав ZIP-файл). Шаблон ES-MultiNode находится в одноименной папке.
+Здесь мы используем другой шаблон, с именем **ES MultiNode** из hello [хранилища Azure средства диагностики](https://github.com/Azure/azure-diagnostics-tools). Этот шаблон является проще toouse и создает кластер Elasticsearch защищен обычной проверки подлинности HTTP. Прежде чем продолжить, загрузите репозитория hello из GitHub tooyour машины (путем клонирования репозитория hello или загрузка ZIP-файл). Hello ES MultiNode шаблона находится в папке hello с hello таким же именем.
 
-### <a name="prepare-a-machine-to-run-elasticsearch-installation-scripts"></a>Подготовка компьютера к выполнению скриптов установки ElasticSearch
-Самый простой способ использования шаблона ES-MultiNode — с помощью готового скрипта Azure PowerShell с именем `CreateElasticSearchCluster`. Чтобы использовать этот скрипт, нужно установить модули PowerShell и средство **openssl**. Это средство необходимо для создания SSH-ключа, который может использоваться для удаленного администрирования кластера ElasticSearch.
+### <a name="prepare-a-machine-toorun-elasticsearch-installation-scripts"></a>Подготовка toorun машины Elasticsearch сценарии установки
+Hello шаблона hello ES MultiNode toouse простым способом — через указанный сценарий Azure PowerShell с именем `CreateElasticSearchCluster`. toouse этот сценарий, необходимо tooinstall модули PowerShell и инструмент, который называется **openssl**. последний Hello необходим для создания SSH-ключ, который можно использовать tooadminister кластера Elasticsearch удаленно.
 
-`CreateElasticSearchCluster` предназначен для удобства использования шаблона ES-MultiNode на компьютере с Windows. Шаблон можно использовать на компьютерах под управлением других ОС (не Windows), но в этой статье подобные случаи не рассматриваются.
+`CreateElasticSearchCluster`скрипт предназначен для удобства использования с шаблоном hello ES MultiNode с компьютером Windows. Это шаблон hello возможных toouse на компьютере не под управлением Windows, но в этом сценарии выходит за рамки данной статьи hello.
 
 1. Установите [**модули Azure PowerShell**](http://aka.ms/webpi-azps) (если они еще не установлены). При появлении запроса щелкните **Запуск**, а затем — **Установить**. Требуется Azure PowerShell 1.3 или более поздней версии.
-2. Инструмент **openssl** входит в дистрибутив [**Git для Windows**](http://www.git-scm.com/downloads). Установите [Git для Windows](http://www.git-scm.com/downloads) , если вы этого еще не сделали. (Параметры установки по умолчанию изменять не нужно.)
-3. Далее предполагается, что компонент Git установлен, но не включен в системный путь. Откройте окно Microsoft Azure PowerShell и выполните следующие команды:
+2. Hello **openssl** средство включено в распределение hello [ **Git для Windows**](http://www.git-scm.com/downloads). Установите [Git для Windows](http://www.git-scm.com/downloads) , если вы этого еще не сделали. (параметры установки по умолчанию hello корректны.)
+3. Предположим, что Git установлен, но не включены в системном пути hello, откройте окно Microsoft Azure PowerShell и выполните hello, следующие команды:
    
     ```powershell
     $ENV:PATH += ";<Git installation folder>\usr\bin"
     $ENV:OPENSSL_CONF = "<Git installation folder>\usr\ssl\openssl.cnf"
     ```
    
-    Замените `<Git installation folder>` расположением Git на компьютере (по умолчанию это **C:\Program Files\Git**). Обратите внимание на точку с запятой в начале первого пути.
-4. Обязательно войдите в Azure (с помощью командлета [`Add-AzureRmAccount`](https://msdn.microsoft.com/library/mt619267.aspx) ) и выберите подписку, которую необходимо использовать для создания кластера Elastic Search. Проверить, правильно ли выбрана подписка, можно с помощью командлетов `Get-AzureRmContext` и `Get-AzureRmSubscription`.
-5. Измените текущий каталог на папку ES-MultiNode (если это еще не сделано).
+    Замените hello `<Git installation folder>` с расположением hello Git на компьютере; по умолчанию hello — **«C:\Program Files\Git»**. Обратите внимание, hello символ точки с запятой в начале hello hello первого пути.
+4. Убедитесь, что вы вошли на tooAzure (через [ `Add-AzureRmAccount` ](https://msdn.microsoft.com/library/mt619267.aspx) командлета) и выбранных hello подписка, которая используется toocreate кластера эластичной поиска. Проверить, правильно ли выбрана подписка, можно с помощью командлетов `Get-AzureRmContext` и `Get-AzureRmSubscription`.
+5. Если вы еще не сделали этого, измените hello в папку текущего каталога toohello ES MultiNode.
 
-### <a name="run-the-createelasticsearchcluster-script"></a>Запуск скрипта CreateElasticSearchCluster
-Прежде чем выполнять скрипт, откройте файл `azuredeploy-parameters.json` и проверьте значения параметров скрипта или введите их. Необходимо указать следующие параметры:
+### <a name="run-hello-createelasticsearchcluster-script"></a>Запустите сценарий CreateElasticSearchCluster hello
+Перед запуском сценария Привет открыть hello `azuredeploy-parameters.json` файл и проверьте либо указать значения для параметров сценария hello. предоставляются следующие параметры Hello.
 
 | Имя параметра | Описание |
 | --- | --- |
-| dnsNameForLoadBalancerIP |Это имя будет использоваться для создания общедоступного DNS-имени кластера Elastic Search (посредством добавления домена региона Azure к указанному имени). Например, если этот параметр имеет значение myBigCluster и выбран регион Azure "Запад США", то DNS-имя кластера будет выглядеть так: myBigCluster.westus.cloudapp.azure.com. <br /><br />Это имя также будет использоваться в качестве корневого для имен многих артефактов, связанных с кластером Elastic Search, например имен узлов данных. |
-| adminUsername |Имя учетной записи администратора для управления кластером Elastic Search (соответствующие ключи SSH будут сформированы автоматически). |
-| dataNodeCount |Количество узлов в кластере Elastic Search. Текущая версия сценария не различает узлы данных и запросов. Все узлы будут выполнять обе роли. Значение по умолчанию — 3. |
-| dataDiskSize |Размер дисков данных (в ГБ), выделяемый для каждого узла данных. Каждый узел получит по 4 диска данных, предназначенных исключительно для службы Elastic Search. |
-| region |Имя региона Azure, в котором будет размещаться кластер Elastic Search. |
-| esUserName |Имя пользователя, для которого будет настроен доступ к кластеру ES (с помощью обычной проверки подлинности HTTP). Пароль не хранится в файле параметров и указывается при вызове скрипта `CreateElasticSearchCluster` . |
-| vmSizeDataNodes |Размер виртуальной машины Azure для узлов кластера Elastic Search. Значение по умолчанию — Standard_D2. |
+| dnsNameForLoadBalancerIP |Имя Hello, используемые toocreate hello публично видимых DNS-имя кластера эластичной поиска hello (путем добавления toohello указано доменное имя для hello регион Azure). Например если значение этого параметра — «myBigCluster» и hello выбранный регион Azure находится Запад США, hello результирующее имя DNS для кластера hello — myBigCluster.westus.cloudapp.azure.com. <br /><br />Это имя также служит в качестве корневое имя для многих артефактов, связанных с кластером hello эластичной поиска, такие как имена узлов данных. |
+| adminUsername |Имя Hello hello учетной записи администратора по управлению кластером эластичной поиска hello (автоматически создаются соответствующие ключи SSH). |
+| dataNodeCount |количество узлов в кластере эластичной поиска hello Hello. Текущая версия скрипта hello Hello не различает узлы данных и запросов; все узлы воспроизвести обеих ролей. Узлы too3 значения по умолчанию. |
+| dataDiskSize |размер Hello дисков данных (в ГБ), выделяемый для каждого узла данных. Каждый узел получает 4 дисков данных, специально выделенном tooElastic службы поиска. |
+| region |Имя Hello регион Azure, где следует разместить hello эластичной поиска кластера. |
+| esUserName |Hello имя пользователя hello, настроить кластера tooES toohave доступа (тема tooHTTP обычной проверки подлинности). Hello пароль не является частью файла параметров и должно быть обеспечено при `CreateElasticSearchCluster` запуске сценария. |
+| vmSizeDataNodes |Hello Azure размер виртуальной машины для узлов кластера эластичной поиска. TooStandard_D2 значения по умолчанию. |
 
-Теперь все готово к запуску скрипта. Введите следующую команду:
+Теперь все готово toorun hello скрипта. Проблема hello следующую команду:
 
 ```powershell
 CreateElasticSearchCluster -ResourceGroupName <es-group-name> -Region <azure-region> -EsPassword <es-password>
@@ -82,86 +82,86 @@ CreateElasticSearchCluster -ResourceGroupName <es-group-name> -Region <azure-reg
 
 | Имя параметра скрипта | Описание |
 | --- | --- |
-| `<es-group-name>` |Имя группы ресурсов Azure, в которую будут входить все ресурсы кластера Elastic Search. |
-| `<azure-region>` |Имя региона Azure, в котором будет размещаться кластер Elastic Search. |
-| `<es-password>` |Пароль для пользователя Elastic Search. |
+| `<es-group-name>` |Имя группы ресурсов Azure hello, который будет содержать все ресурсы кластера эластичной поиска Hello. |
+| `<azure-region>` |Имя Hello hello регион Azure, которой должен быть создан hello эластичной поиска кластера. |
+| `<es-password>` |Hello пароль для пользователя эластичной поиска hello. |
 
 > [!NOTE]
-> Если при запуске командлета Test-AzureResourceGroup отображается исключение NullReferenceException, значит, вы не выполнили вход в Azure (`Add-AzureRmAccount`).
+> При появлении исключения NullReferenceException из командлета hello AzureResourceGroup теста, вы забыли toolog на tooAzure (`Add-AzureRmAccount`).
 > 
 > 
 
-Если возникла ошибка выполнения скрипта и вы определили, что она вызвана неправильным значением параметра шаблона, исправьте файл параметров и снова запустите скрипт с другим именем группы ресурсов. Также можно повторно использовать то же имя группы ресурсов и очистить старое с помощью скрипта. Для этого следует добавить параметр `-RemoveExistingResourceGroup` к вызову скрипта.
+Если появляется сообщение об ошибке из выполнения сценария hello и определить, что hello ошибка вызвана значение параметра неправильный шаблон, исправьте файл параметров hello и снова запустите скрипт hello с именем группы ресурсов, отличной. Кроме того, можно использовать повторно hello одинаковые имена групп ресурсов и иметь hello скрипт очистки hello старого, добавив hello `-RemoveExistingResourceGroup` вызов сценария toohello параметра.
 
-### <a name="result-of-running-the-createelasticsearchcluster-script"></a>Результат выполнения скрипта CreateElasticSearchCluster
-После выполнения скрипта `CreateElasticSearchCluster` будут созданы следующие основные артефакты. В данном примере предположим, что для параметра `dnsNameForLoadBalancerIP` указано значение myBigCluster, а кластер создан в регионе "Западная часть США".
+### <a name="result-of-running-hello-createelasticsearchcluster-script"></a>Результат выполнения сценария CreateElasticSearchCluster hello
+После запуска hello `CreateElasticSearchCluster` скрипта, будут созданы следующие основные артефакты hello. В этом примере предполагается, что «myBigCluster» используется в качестве значения hello hello `dnsNameForLoadBalancerIP` параметр и этого hello региона, где была создана hello кластера является Запад США.
 
 | Артефакт | Имя, расположение и примечания |
 | --- | --- |
-| Ключ SSH для удаленного администрирования |Файл myBigCluster.key (в каталоге, из которого запущен скрипт CreateElasticSearchCluster). <br /><br />Этот ключ может использоваться для подключения к узлу администрирования и (через узел администрирования) к узлам данных в кластере. |
-| Узел администрирования |myBigCluster-admin.westus.cloudapp.azure.com <br /><br />Выделенная виртуальная машина для удаленного администрирования кластера ElasticSearch. Только для нее разрешены внешние подключения по протоколу SSH. Эта виртуальная машина работает в той же виртуальной сети, что и остальные узлы кластера ElasticSearch, но не запускает какие-либо службы ElasticSearch. |
-| Узлы данных |myBigCluster1– myBigCluster*N* <br /><br />Узлы данных, на которых работают службы ElasticSearch и Kibana. К каждому узлу можно подключиться по протоколу SSH, но только через узел администрирования. |
-| Кластер Elasticsearch |http://myBigCluster.westus.cloudapp.azure.com/es/ <br /><br />Основная конечная точка кластера ElasticSearch (обратите внимание на суффикс /es). Кластер защищен с помощью базовой проверки подлинности HTTP (учетные данные указаны в параметрах esUserName/esPassword шаблона ES-MultiNode). Кроме того, в кластере установлен подключаемый модуль head (http://myBigCluster.westus.cloudapp.azure.com/es/_plugin/head) для выполнения базовых задач администрирования кластера. |
-| Служба Kibana |http://myBigCluster.westus.cloudapp.azure.com <br /><br />Служба Kibana настраивается для отображения данных из созданного кластера ElasticSearch. Она защищена теми же учетными данными проверки подлинности, что и сам кластер. |
+| Ключ SSH для удаленного администрирования |файл myBigCluster.key (в каталоге hello, из которого hello CreateElasticSearchCluster была запущена). <br /><br />Данный файл ключа может быть узел администрирования используется tooconnect toohello и (через узел администрирования hello) toodata узлов в кластере hello. |
+| Узел администрирования |myBigCluster-admin.westus.cloudapp.azure.com <br /><br />Выделенной виртуальной Машины для удаленного администрирования кластера Elasticsearch--hello только один из них обеспечивает внешних соединений по протоколу SSH. Он выполняется на hello же виртуальной сети, что все узлы кластера Elasticsearch hello, но он не не запускайте все службы Elasticsearch. |
+| Узлы данных |myBigCluster1– myBigCluster*N* <br /><br />Узлы данных, на которых работают службы ElasticSearch и Kibana. Вы можете подключиться через SSH tooeach узла, но только через узел администрирования hello. |
+| Кластер Elasticsearch |http://myBigCluster.westus.cloudapp.azure.com/es/ <br /><br />Hello основную конечную точку для кластера Elasticsearch hello (Примечание hello /es суффикс). Используется обычная проверка подлинности HTTP (hello учетные данные были hello указанных параметров esUserName/esPassword шаблона hello ES MultiNode). кластер Hello также имеет hello head подключаемый модуль установлен (http://myBigCluster.westus.cloudapp.azure.com/es/_plugin/head) для администрирования базового кластера. |
+| Служба Kibana |http://myBigCluster.westus.cloudapp.azure.com <br /><br />Hello Kibana службы, Настройка tooshow данных из hello создания кластера Elasticsearch. Он защищен hello же учетные данные проверки подлинности как hello кластера сам. |
 
 ## <a name="in-process-versus-out-of-process-trace-capturing"></a>Внутрипроцессная и внепроцессная запись данных трассировки
-Во введении мы упомянули два основных способа сбора диагностических данных: внутрипроцессный и внепроцессный. Каждый имеет свои преимущества и недостатки.
+В введение hello упоминалось два основных способа сбора диагностических данных: в процессе и out of process. Каждый имеет свои преимущества и недостатки.
 
-**Внутрипроцессная запись данных трассировки** имеет следующие преимущества.
+Преимущества hello **процесс записи трассировки** включают:
 
 1. *Простая настройка и развертывание.*
    
-   * Конфигурация сбора диагностических данных является лишь частью конфигурации приложения. Ее легко сохранять "синхронизированной" с остальной частью приложения.
+   * Конфигурация Hello сбора диагностических данных — просто частью конфигурации приложения hello. Это легко tooalways оставить его «синхронизировано» с hello остальной части приложения hello.
    * Настройка каждого приложения или службы также является несложной задачей.
-   * Внепроцессная запись данных трассировки обычно требует отдельного развертывания и настройки агента диагностики. Как правило, это прибавляет работы администратору и может являться источником ошибок. Технология определенного агента часто позволяет использовать только один экземпляр агента на каждую виртуальную машину (узел). Это означает, что конфигурация для коллекции конфигурации диагностики является общей для всех приложений и служб, работающих на этом узле.
+   * Захват трассировки out of process обычно требуется отдельное развертывание и конфигурация диагностики агента hello, лишние административную задачу и потенциальный источник ошибок. Технология определенного агента Hello часто позволяет только один экземпляр агента hello на каждую виртуальную машину (узел). Это означает этой конфигурации для hello коллекцию конфигурации диагностики hello является общим для всех приложений и служб, работающих на этом узле.
 2. *Гибкость*
    
-   * Приложение может отправлять данные куда угодно при наличии клиентской библиотеки, поддерживающей систему хранения целевых данных. При необходимости можно добавлять новые приемники.
+   * Hello приложение может отправлять данные hello везде, где он должен toogo, при условии, что имеется клиентская библиотека, которая поддерживает hello целевые системы хранения данных. При необходимости можно добавлять новые приемники.
    * Можно реализовать сложные правила сбора, фильтрации и статистической обработки данных.
-   * Внепроцессная запись данных трассировки часто ограничивается приемниками данных, которые поддерживает агент. Некоторые агенты являются расширяемыми.
-3. *Доступ к внутренним данным приложения и контексту*
+   * Захват трассировки out of process часто ограничивается hello данных приемников, которые поддерживает агент hello. Некоторые агенты являются расширяемыми.
+3. *Доступ к данным приложения toointernal и контекстом*
    
-   * В подсистему диагностики, которая работает внутри процесса приложения или службы, можно легко добавить трассировку с помощью контекстной информации.
-   * В случае внепроцессной записи данные должны отправляться агенту с помощью механизма межпроцессного взаимодействия, например трассировки событий Windows. Однако при таком механизме могут возникнуть дополнительные ограничения.
+   * Hello диагностики подсистемы, выполняющиеся внутри процесса hello приложения или службы можно легко дополнить hello трассировок с помощью контекстных сведений.
+   * В подходе out of process hello hello данных должны отправляться агента tooan через механизм межпроцессного взаимодействия например трассировки событий Windows. Однако при таком механизме могут возникнуть дополнительные ограничения.
 
-**Внепроцессная запись данных трассировки** имеет следующие преимущества.
+Преимущества hello **захват трассировки out of process** включают:
 
-1. *Возможность отслеживания приложения и сбора аварийных дампов*
+1. *Здравствуйте, приложение hello toomonitor возможности и сбор аварийных дампов*
    
-   * Внутрипроцессная запись данных трассировки может быть неудачной, если приложение не удается запустить или оно прекращает работу из-за сбоя. Независимый агент имеет гораздо больше шансов собрать важные сведения для устранения неполадок.<br /><br />
+   * Захват в процесс трассировки может быть неудачной, если приложение hello сбоя toostart или аварийно завершает работу. Независимый агент имеет гораздо больше шансов собрать важные сведения для устранения неполадок.<br /><br />
 2. *Зрелость, надежность и высокая производительность*
    
-   * Агент, разработанный поставщиком платформы (например, агент системы диагностики Microsoft Azure), прошел тщательное тестирование и испытан в рабочих условиях.
-   * Будьте осторожны, выбирая внутрипроцессную запись данных трассировки. Следите за тем, чтобы отправка диагностических данных из процесса приложения не повлияла на его основные задачи и не привела к проблемам со своевременным выполнением задач или производительностью. Независимый агент менее подвержен подобным проблемам и специально разработан для минимального влияния на работу системы.
+   * Поставщик платформы (например, агент диагностики Microsoft Azure), разработанный агент был toorigorous субъекта, тестирования и усиление Битва.
+   * В процессе трассировки записи необходимо соблюдать осторожность tooensure действие hello передачи диагностических данных из процесса приложения не мешать основных задач приложения hello или вызвать проблемы синхронизации или производительности. Независимо друг от друга агента является менее подвержены возникновению проблем toothese и специально разработанные toolimit его воздействие на систему hello.
 
-Преимущества обоих подходов можно объединить. Это действительно может оказаться наилучшим решением для многих приложений.
+Это возможно toocombine и преимущества обоих подходов. На самом деле бывает hello наилучшим решением для многих приложений.
 
-Здесь мы используем **библиотеку Microsoft.Diagnostic.Listeners** и внутрипроцессную запись данных трассировки для отправки данных из приложения Service Fabric в кластер ElasticSearch.
+Здесь мы используем hello **Microsoft.Diagnostic.Listeners библиотеки** и hello в процессе трассировки сбор данных toosend из кластера Service Fabric приложения tooan Elasticsearch.
 
-## <a name="use-the-listeners-library-to-send-diagnostic-data-to-elasticsearch"></a>Использование библиотеки прослушивателей для передачи диагностических данных в ElasticSearch
-Библиотека Microsoft.Diagnostic.Listeners входит в пример приложения Service Fabric с именем PartyCluster. Чтобы ее использовать, сделайте следующее:
+## <a name="use-hello-listeners-library-toosend-diagnostic-data-tooelasticsearch"></a>Используйте hello прослушиватели библиотеки toosend диагностических данных tooElasticsearch
+Библиотека Microsoft.Diagnostic.Listeners Hello является частью PartyCluster образец приложения Service Fabric. toouse его:
 
-1. Скачайте [пример PartyCluster](https://github.com/Azure-Samples/service-fabric-dotnet-management-party-cluster) с сайта GitHub.
-2. Скопируйте проекты Microsoft.Diagnostics.Listeners и Microsoft.Diagnostics.Listeners.Fabric (папки полностью) из каталога примера приложения Party Cluster в папку решения приложения, которое должно отправлять данные в ElasticSearch.
-3. Откройте это решение, щелкните правой кнопкой мыши узел решения в обозревателе решений и выберите **Добавить существующий проект**. Добавьте в решение проект Microsoft.Diagnostics.Listeners. Повторите те же действия с проектом Microsoft.Diagnostics.Listeners.Fabric.
-4. Добавьте ссылку на проект из ваших проектов служб в два добавленных проекта. (Каждая служба, которая будет отправлять данные в ElasticSearch, должна ссылаться на Microsoft.Diagnostics.EventListeners и Microsoft.Diagnostics.EventListeners.Fabric.)
+1. Загрузить [PartyCluster образец hello](https://github.com/Azure-Samples/service-fabric-dotnet-management-party-cluster) из GitHub.
+2. Копировать из hello PartyCluster directory toohello решения папки образца приложения hello, который должен toosend hello данных tooElasticsearch hello Microsoft.Diagnostics.Listeners и Microsoft.Diagnostics.Listeners.Fabric проекты (всей папки) .
+3. Откройте решение целевой hello, щелкните правой кнопкой мыши узел решения hello в hello в обозревателе решений и выберите **Добавление существующего проекта**. Добавьте проект toohello hello Microsoft.Diagnostics.Listeners решение. Повторите эти шаги hello же hello Microsoft.Diagnostics.Listeners.Fabric проекта.
+4. Добавьте ссылку на проект из службы проекты toohello двух добавленных проектов. (Microsoft.Diagnostics.EventListeners и Microsoft.Diagnostics.EventListeners.Fabric должен ссылаться каждой службы, который должен tooElasticsearch toosend данных).
    
-    ![Проект ссылается на библиотеки Microsoft.Diagnostics.EventListeners и Microsoft.Diagnostics.EventListeners.Fabric][1]
+    ![Проект ссылается на tooMicrosoft.Diagnostics.EventListeners и Microsoft.Diagnostics.EventListeners.Fabric библиотеки][1]
 
 ### <a name="service-fabric-general-availability-release-and-microsoftdiagnosticstracing-nuget-package"></a>Общедоступная версия Service Fabric и пакет Microsoft.Diagnostics.Tracing NuGet
-Приложения, основанные на общедоступной версии Service Fabric (версия 2.0.135 от 31 марта 2016 года), нацелены на платформу **.NET Framework 4.5.2**. Это самая новая версия .NET Framework, поддерживаемая Azure на этапе общедоступной версии. К сожалению, в этой версии платформы отсутствуют некоторые API-интерфейсы EventListener, необходимые для библиотеки Microsoft.Diagnostics.Listeners. EventSource (компонент, на котором строятся API-интерфейсы ведения журналов в приложениях Fabric) и EventListener тесно связаны. Поэтому все проекты, использующие библиотеку Microsoft.Diagnostics.Listeners, должны использовать альтернативную реализацию EventSource. Эта реализация доступна в **пакете NuGet Microsoft.Diagnostics.Tracing**, разработанном корпорацией Майкрософт. Этот пакет обратно совместим с компонентом EventSource, который входит в платформу. Следовательно, никакие правки в код вносить не нужно, разве что могут потребоваться изменения указанного пространства имен.
+Приложения, основанные на общедоступной версии Service Fabric (версия 2.0.135 от 31 марта 2016 года), нацелены на платформу **.NET Framework 4.5.2**. Эта версия предназначена hello самую новую версию hello поддерживается Azure во время hello hello Общедоступной версии .NET Framework. К сожалению эта версия hello framework отсутствуют некоторые EventListener API, требуется библиотека Microsoft.Diagnostics.Listeners hello. Поскольку EventSource (hello компонент, являющийся основой hello ведения журнала интерфейсы API в приложениях структуры) и EventListener тесно связаны, каждый проект, использующий библиотеку Microsoft.Diagnostics.Listeners hello необходимо использовать альтернативной реализации EventSource. Эта реализация обеспечивается hello **пакет Microsoft.Diagnostics.Tracing Nuget**, разработанный корпорацией Майкрософт. пакет Hello полной обратной совместимостью с EventSource включаются в hello framework, поэтому изменять код не должно возникать необходимости отличные от имен, на которую указывает ссылка.
 
-Чтобы начать работу с Microsoft.Diagnostics.Tracing, реализацией класса EventSource, выполните следующие действия для каждого проекта службы, который должен отправлять данные в ElasticSearch.
+toostart с помощью реализации Microsoft.Diagnostics.Tracing hello класса EventSource hello, выполните следующие действия для каждого проекта службы, который должен tooElasticsearch toosend данных:
 
-1. Щелкните проект службы правой кнопкой мыши и выберите **Управление пакетами NuGet**.
-2. Перейдите к источнику пакета nuget.org (если он еще не выбран) и введите**Microsoft.Diagnostics.Tracing**в строке поиска.
-3. Установите пакет `Microsoft.Diagnostics.Tracing.EventSource` (и его зависимости).
-4. Откройте файл **ServiceEventSource.cs** или **ActorEventSource.cs** в проекте службы и замените директиву `using System.Diagnostics.Tracing` в начале файла директивой `using Microsoft.Diagnostics.Tracing`.
+1. Правой кнопкой мыши проект службы hello и выберите **управление пакетами Nuget**.
+2. Переключение источника пакета toohello nuget.org (если он не установлен) и выполните поиск «**Microsoft.Diagnostics.Tracing**».
+3. Установка hello `Microsoft.Diagnostics.Tracing.EventSource` пакет (и его зависимости).
+4. Откройте hello **ServiceEventSource.cs** или **ActorEventSource.cs** в проекте службы и замените hello `using System.Diagnostics.Tracing` директив поверх hello файл с hello `using Microsoft.Diagnostics.Tracing` директивы.
 
-Эти действия будут не нужны, когда в Microsoft Azure появится поддержка **.NET Framework 4.6** .
+Эти действия не будет требоваться один раз hello **.NET Framework 4.6** поддерживается в Microsoft Azure.
 
 ### <a name="elasticsearch-listener-instantiation-and-configuration"></a>Создание и настройка экземпляра прослушивателя ElasticSearch
-Последним шагом, необходимым для отправки диагностических данных в ElasticSearch, является создание экземпляра `ElasticSearchListener` и его настройка с помощью данных подключения ElasticSearch. Прослушиватель будет автоматически записывать все события, вызванные через классы EventSource, заданные в проекте службы. Он должен быть активным в течение всего времени существования службы, поэтому лучше всего создать его в коде инициализации службы. Вот как может выглядеть код инициализации службы без отслеживания состояния после внесения необходимых изменений (добавлений, указанных в комментариях, начиная с `****`):
+Hello последним шагом для отправки tooElasticsearch диагностических данных является toocreate экземпляр `ElasticSearchListener` и настройте его с данными подключения Elasticsearch. прослушиватель Hello автоматически захватывает всех событий, вызванных через EventSource классов, определенных в проекте службы hello. Ему toobe активности во время существования hello службы hello, наиболее hello размещать toocreate, где находится hello код инициализации службы. Код инициализации hello для службы без отслеживания состояния может выглядеть после hello необходимые изменения (указано дополнения в комментарии, начиная с `****`):
 
 ```csharp
 using System;
@@ -171,7 +171,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.ServiceFabric.Services.Runtime;
 
-// **** Add the following directives
+// **** Add hello following directives
 using Microsoft.Diagnostics.EventListeners;
 using Microsoft.Diagnostics.EventListeners.Fabric;
 
@@ -180,7 +180,7 @@ namespace Stateless1
     internal static class Program
     {
         /// <summary>
-        /// This is the entry point of the service host process.
+        /// This is hello entry point of hello service host process.
         /// </summary>        
         private static void Main()
         {
@@ -194,10 +194,10 @@ namespace Stateless1
                     esListener = new ElasticSearchListener(configProvider, new FabricHealthReporter("ElasticSearchEventListener"));
                 }
 
-                // The ServiceManifest.XML file defines one or more service type names.
-                // Registering a service maps a service type name to a .NET type.
+                // hello ServiceManifest.XML file defines one or more service type names.
+                // Registering a service maps a service type name tooa .NET type.
                 // When Service Fabric creates an instance of this service type,
-                // an instance of the class is created in this host process.
+                // an instance of hello class is created in this host process.
 
                 ServiceRuntime.RegisterServiceAsync("Stateless1Type", 
                     context => new Stateless1(context)).GetAwaiter().GetResult();
@@ -207,7 +207,7 @@ namespace Stateless1
                 // Prevents this host process from terminating so services keep running.
                 Thread.Sleep(Timeout.Infinite);
 
-                // **** Ensure that the ElasticSearchListner instance is not garbage-collected prematurely
+                // **** Ensure that hello ElasticSearchListner instance is not garbage-collected prematurely
                 GC.KeepAlive(esListener);
             }
             catch (Exception e)
@@ -220,7 +220,7 @@ namespace Stateless1
 }
 ```
 
-Данные подключения ElasticSearch необходимо поместить в отдельный раздел файла конфигурации службы (**PackageRoot\Config\Settings.xml**). Имя раздела должно соответствовать значению, которое передается конструктору `FabricConfigurationProvider` , например:
+Данные подключения Elasticsearch должны быть помещены в отдельный раздел в файле конфигурации службы hello (**PackageRoot\Config\Settings.xml**). Имя Hello hello раздела должно соответствовать toohello значению, переданному в toohello `FabricConfigurationProvider` конструктор, например:
 
 ```xml
 <Section Name="ElasticSearchEventListener">
@@ -230,10 +230,10 @@ namespace Stateless1
   <Parameter Name="indexNamePrefix" Value="myapp" />
 </Section>
 ```
-Значения параметров `serviceUri`, `userName` и `password` — это адрес конечной точки кластера ElasticSearch, имя пользователя ElasticSearch и его пароль, соответственно. `indexNamePrefix` — префикс для индексов ElasticSearch. Библиотека Microsoft.Diagnostics.Listeners ежедневно создает новый индекс для своих данных.
+Здравствуйте, значения `serviceUri`, `userName` и `password` параметров соответствуют адрес конечной точки кластера Elasticsearch toohello, Elasticsearch имя пользователя и пароль, соответственно. `indexNamePrefix`— префикс hello Elasticsearch индексов; Библиотека Microsoft.Diagnostics.Listeners Hello ежедневно создает новый индекс для своих данных.
 
 ### <a name="verification"></a>Проверка
-Вот и все! Теперь при запуске служба будет отправлять данные трассировки в службу ElasticSearch, указанную в конфигурации. Это можно проверить, открыв пользовательский интерфейс Kibana, связанный с целевым экземпляром ElasticSearch. В нашем примере адрес страницы — http://myBigCluster.westus.cloudapp.azure.com/. Убедитесь, что индексы с префиксом имени, выбранным для экземпляра `ElasticSearchListener` , действительно были созданы и заполнены данными.
+Вот и все! Теперь при запуске службы hello начинается отправка трассировок toohello Elasticsearch службы, указанной в конфигурации hello. Это можно проверить, открывающей hello Kibana пользовательского интерфейса, связанного с hello целевого экземпляра Elasticsearch. В нашем примере адрес страницы приветствия — http://myBigCluster.westus.cloudapp.azure.com/. Убедитесь, что индексы с префиксом имени hello, выбранные для hello `ElasticSearchListener` экземпляр действительно были создается и заполняется данными.
 
 ![Отображение событий приложения PartyCluster в службе Kibana][2]
 

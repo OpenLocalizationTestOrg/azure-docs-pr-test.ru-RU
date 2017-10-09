@@ -1,5 +1,5 @@
 ---
-title: "Создание и оптимизация таблиц для быстрого параллельного импорта данных в SQL Server на виртуальной машине Azure | Документация Майкрософт"
+title: "aaaBuild и оптимизировать таблицы для быстрого параллельный импорт данных в SQL Server на Виртуальной машине Azure | Документы Microsoft"
 description: "Параллельный массовый импорт данных с использованием таблиц секционирования SQL"
 services: machine-learning
 documentationcenter: 
@@ -14,26 +14,26 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/29/2017
 ms.author: bradsev
-ms.openlocfilehash: aae4e4f59e76bf48b00a2ee92aedd7d5643ba91a
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: ab748c47348ec6ca3b98ba39e27181bba5d36fc0
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="parallel-bulk-data-import-using-sql-partition-tables"></a>Параллельный массовый импорт данных с использованием таблиц секционирования SQL
-В этом документе описывается создание секционированных таблиц для быстрого параллельного массового импорта данных в Базу данных SQL Server. При загрузке и передаче больших данных в базу данных SQL с помощью *секционированных таблиц и представлений* можно оптимизировать импорт информации в эту базу, а также выполнение последующих запросов. 
+В этом документе описывается, как toobuild секционированных таблиц для быстрого параллельный массовый импорт данных базы данных SQL Server tooa. Базы данных SQL tooa загрузки или передачи данных большого размера, импорт данных toohello баз данных SQL Server и последующие запросы, может быть повышена путем использования *секционированных таблиц и представлений*. 
 
 ## <a name="create-a-new-database-and-a-set-of-filegroups"></a>Создание новой базы данных и набора групп файлов
 * [Создайте базу данных](https://technet.microsoft.com/library/ms176061.aspx), если она еще не существует.
-* Добавьте группы файлов базы данных в базу данных, которая будет содержать секционированные физические файлы. Это можно сделать с помощью команды [CREATE DATABASE](https://technet.microsoft.com/library/ms176061.aspx) (при создании базы) или команды [ALTER DATABASE](https://msdn.microsoft.com/library/bb522682.aspx) (если база данных уже существует).
-* При необходимости добавьте один или несколько файлов в каждую группу файлов базы данных.
+* Добавление базы данных базы данных файловые группы toohello, где будут содержаться hello секционированы физических файлов. Это можно сделать с помощью [CREATE DATABASE](https://technet.microsoft.com/library/ms176061.aspx) Если новый или [инструкции ALTER DATABASE](https://msdn.microsoft.com/library/bb522682.aspx) Если hello базы данных уже существует.
+* Добавьте один или несколько файловых групп базы данных файлы (при необходимости) tooeach.
   
   > [!NOTE]
-  > Укажите целевую группу файлов, которая будет содержать данные для этого секционирования, и имена физических файлов базы данных, в которых будут храниться данные группы файлов.
+  > Укажите целевой файловой группе, которая содержит данные для этой секции и hello имена файлов физической базы данных хранения hello файловую группу данных hello.
   > 
   > 
 
-В следующем примере создается новая база данных с тремя группами файлов в отличие от основных групп и групп журналов, содержащих по одному физическому файлу. Файлы базы данных создаются в папке данных SQL Server по умолчанию, настроенной в экземпляре SQL Server. Дополнительные сведения о расположении файлов по умолчанию см. в статье [Расположение файлов для экземпляра по умолчанию и именованных экземпляров SQL Server](https://msdn.microsoft.com/library/ms143547.aspx).
+Hello следующий пример создает новую базу данных с три файловые группы, отличные от основной hello и группы журналов, содержащие один физический файл в каждом. Hello файлы базы данных создаются в папке данных SQL Server по умолчанию hello, как настроено в экземпляре SQL Server hello. Дополнительные сведения о hello расположения файлов по умолчанию см. в разделе [расположения файлов по умолчанию и именованных экземпляров SQL Server](https://msdn.microsoft.com/library/ms143547.aspx).
 
     DECLARE @data_path nvarchar(256);
     SET @data_path = (SELECT SUBSTRING(physical_name, 1, CHARINDEX(N'master.mdf', LOWER(physical_name)) - 1)
@@ -55,26 +55,26 @@ ms.lasthandoff: 07/11/2017
     ')
 
 ## <a name="create-a-partitioned-table"></a>Создание секционированной таблицы
-Создайте секционированные таблицы в соответствии со схемой данных, сопоставленной с группами файлов базы данных, созданных на предыдущем шаге. При массовом импорте данных в секционированные таблицы записи будут распределены между группами файлов в соответствии со схемой секционирования, как описано ниже.
+Создание секционированных таблиц, в соответствии с toohello данные схемы, сопоставленные toohello файловые группы базы данных на предыдущем шаге hello. При массовом импорте данных toohello секционированные таблицы, записи распределяются среди hello файловые группы в соответствии с tooa схему секционирования, как описано ниже.
 
-**Чтобы создать таблицу секционирования:**
+**toocreate секции таблицы, необходимо:**
 
-* [Создайте функцию секционирования](https://msdn.microsoft.com/library/ms187802.aspx), которая определяет диапазон значений или границ для каждой отдельной таблицы секционирования, чтобы, например, ограничить секции по месяцам (поле\_даты_и\_времени) в 2013 году.
+* [Создать функцию секционирования](https://msdn.microsoft.com/library/ms187802.aspx) определяющего hello диапазон значений или границы toobe включены в каждой отдельной секции таблицы, например, toolimit секции по месяцам (некоторые\_datetime\_поля) в течение года hello 2013:
   
         CREATE PARTITION FUNCTION <DatetimeFieldPFN>(<datetime_field>)  
         AS RANGE RIGHT FOR VALUES (
             '20130201', '20130301', '20130401',
             '20130501', '20130601', '20130701', '20130801',
             '20130901', '20131001', '20131101', '20131201' )
-* [Создайте схему секционирования](https://msdn.microsoft.com/library/ms179854.aspx) , в которой каждый диапазон секционирования в функции секционирования сопоставляется с физической группой файлов, например:
+* [Создание схемы секционирования,](https://msdn.microsoft.com/library/ms179854.aspx) который сопоставляет каждый диапазон секции в hello секции функция tooa физической файловой группы, например:
   
         CREATE PARTITION SCHEME <DatetimeFieldPScheme> AS  
-        PARTITION <DatetimeFieldPFN> TO (
+        PARTITION <DatetimeFieldPFN> too(
         <filegroup_1>, <filegroup_2>, <filegroup_3>, <filegroup_4>,
         <filegroup_5>, <filegroup_6>, <filegroup_7>, <filegroup_8>,
         <filegroup_9>, <filegroup_10>, <filegroup_11>, <filegroup_12> )
   
-  Чтобы проверить диапазоны на практике в каждой секции в соответствии с функцией и схемой, выполните следующий запрос:
+  диапазоны hello tooverify действует в каждом соответствующим toohello функция и схема секционирования, запустите приветствия при следующем запросе:
   
         SELECT psch.name as PartitionScheme,
             prng.value AS ParitionValue,
@@ -83,26 +83,26 @@ ms.lasthandoff: 07/11/2017
         INNER JOIN sys.partition_schemes psch ON pfun.function_id = psch.function_id
         INNER JOIN sys.partition_range_values prng ON prng.function_id=pfun.function_id
         WHERE pfun.name = <DatetimeFieldPFN>
-* [Создайте секционированные таблицы](https://msdn.microsoft.com/library/ms174979.aspx)в соответствии со схемой данных и укажите схему секционирования и поле ограничений, используемые для секционирования таблицы, например:
+* [Создать секционированную таблицу](https://msdn.microsoft.com/library/ms174979.aspx)(s) tooyour данных схемы в соответствии с и использовать схему и ограничение поле hello раздела toopartition hello таблицы, например:
   
         CREATE TABLE <table_name> ( [include schema definition here] )
         ON <TablePScheme>(<partition_field>)
 
 Дополнительные сведения см. в статье [Создание секционированных таблиц и индексов](https://msdn.microsoft.com/library/ms188730.aspx).
 
-## <a name="bulk-import-the-data-for-each-individual-partition-table"></a>Массовый импорт данных для каждой отдельной таблицы секционирования
-* Можно использовать BCP, BULK INSERT или другие средства, например [мастер миграции SQL Server](http://sqlazuremw.codeplex.com/). В приведенном ниже примере используется метод BCP.
-* [Измените базу данных](https://msdn.microsoft.com/library/bb522682.aspx), заменив схему ведения журнала транзакций на BULK_LOGGED, что позволит свести к минимуму нагрузку ведения журнала, например:
+## <a name="bulk-import-hello-data-for-each-individual-partition-table"></a>Массового импорта данных hello для каждой отдельной секции таблицы
+* Можно использовать BCP, BULK INSERT или другие средства, например [мастер миграции SQL Server](http://sqlazuremw.codeplex.com/). предоставленный пример Hello метод hello BCP.
+* [Инструкции ALTER hello database](https://msdn.microsoft.com/library/bb522682.aspx) затраты на toominimize tooBULK_LOGGED схема ведения журнала, например ведение журнала транзакций toochange:
   
         ALTER DATABASE <database_name> SET RECOVERY BULK_LOGGED
-* Чтобы ускорить загрузку данных, запустите параллельные операции массового импорта. Советы по ускорению импорта больших данных в базы SQL Server см. в статье [Загрузка данных емкостью 1 ТБ менее чем за час](http://blogs.msdn.com/b/sqlcat/archive/2006/05/19/602142.aspx).
+* Загрузка, tooexpedite данных запустите hello операций массового импорта в параллельном режиме. Советы по ускорению импорта больших данных в базы SQL Server см. в статье [Загрузка данных емкостью 1 ТБ менее чем за час](http://blogs.msdn.com/b/sqlcat/archive/2006/05/19/602142.aspx).
 
-В следующем сценарии PowerShell приведен пример параллельной загрузки данных с использованием BCP.
+Hello следующий скрипт PowerShell приведен пример параллельную загрузку с помощью программы BCP данных.
 
     # Set database name, input data directory, and output log directory
     # This example loads comma-separated input data files
-    # The example assumes the partitioned data files are named as <base_file_name>_<partition_number>.csv
-    # Assumes the input data files include a header line. Loading starts at line number 2.
+    # hello example assumes hello partitioned data files are named as <base_file_name>_<partition_number>.csv
+    # Assumes hello input data files include a header line. Loading starts at line number 2.
 
     $dbname = "<database_name>"
     $indir  = "<path_to_data_files>"
@@ -111,15 +111,15 @@ ms.lasthandoff: 07/11/2017
     # Select authentication mode
     $sqlauth = 0
 
-    # For SQL authentication, set the server and user credentials
+    # For SQL authentication, set hello server and user credentials
     $sqlusr = "<user@server>"
     $server = "<tcp:serverdns>"
     $pass   = "<password>"
 
-    # Set number of partitions per table - Should match the number of input data files per table
+    # Set number of partitions per table - Should match hello number of input data files per table
     $numofparts = <number_of_partitions>
 
-    # Set table name to be loaded, basename of input data files, input format file, and number of partitions
+    # Set table name toobe loaded, basename of input data files, input format file, and number of partitions
     $tbname = "<table_name>"
     $basename = "<base_input_data_filename_no_extension>"
     $fmtfile = "<full_path_to_format_file>"
@@ -161,9 +161,9 @@ ms.lasthandoff: 07/11/2017
     date
 
 
-## <a name="create-indexes-to-optimize-joins-and-query-performance"></a>Создание индексов для оптимизации производительности запросов и объединений
-* В случае извлечения данных для моделирования из нескольких таблиц создайте индексы для ключей объединений, чтобы повысить производительность объединений.
-* [Создайте индексы](https://technet.microsoft.com/library/ms188783.aspx) (кластеризованные или некластеризованные) для одной и той же целевой группы файлов каждой секции, например:
+## <a name="create-indexes-toooptimize-joins-and-query-performance"></a>Создание индексов toooptimize соединения и производительность запросов
+* Если данные для моделирования будут извлекаться из нескольких таблиц, создайте индексы ключи соединения hello производительности соединения tooimprove hello.
+* [Создание индексов](https://technet.microsoft.com/library/ms188783.aspx) (кластеризованный или некластеризованный), предназначенных для hello одной файловой группе для каждой секции для например:
   
         CREATE CLUSTERED INDEX <table_idx> ON <table_name>( [include index columns here] )
         ON <TablePScheme>(<partition)field>)
@@ -173,10 +173,10 @@ ms.lasthandoff: 07/11/2017
         ON <TablePScheme>(<partition)field>)
   
   > [!NOTE]
-  > Вы можете создать индексы перед массовым импортом данных. Однако это приведет к замедлению загрузки данных.
+  > Вы можете toocreate индексы hello перед массовым импортом данных hello. Создание индекса перед массовым импортом замедлится загрузки данных hello.
   > 
   > 
 
 ## <a name="advanced-analytics-process-and-technology-in-action-example"></a>Расширенный процесс аналитики и технологии в действии: пример
-Полноценный пошаговый пример применения процесса Cortana Analytics с использованием общедоступного набора данных см. в статье [Процесс обработки и анализа данных группы на практике: использование SQL Server](machine-learning-data-science-process-sql-walkthrough.md).
+Пример Пошаговое руководство с начала до конца, с помощью hello процесса Cortana аналитика с помощью открытого набора данных, в разделе [Analytics процесса Cortana в действии: с помощью SQL Server](machine-learning-data-science-process-sql-walkthrough.md).
 

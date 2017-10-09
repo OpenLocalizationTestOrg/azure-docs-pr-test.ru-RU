@@ -1,6 +1,6 @@
 ---
-title: "Устранение неполадок шлюза виртуальной сети и подключений с помощью Наблюдателя за сетями Azure (REST) | Документация Майкрософт"
-description: "На этой странице объясняется, как в службе наблюдения за сетями Azure с помощью REST устранять неполадки шлюза виртуальной сети и подключений"
+title: "aaaTroubleshoot шлюз виртуальной сети и подключения с помощью Наблюдатель сети Azure - REST | Документы Microsoft"
+description: "На этой странице объясняется, как tootroubleshoot шлюзах виртуальной сети и подключения с помощью Наблюдатель сети Azure REST"
 services: network-watcher
 documentationcenter: na
 author: georgewallace
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2017
 ms.author: gwallace
-ms.openlocfilehash: bc61be74d85a309c158716460b918baaf4fa94dc
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: cc89b46643fdbfefe53727b45d6b7d06914b58a6
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="troubleshoot-virtual-network-gateway-and-connections-using-azure-network-watcher"></a>Устранение неполадок шлюза виртуальной сети и подключений, используя Наблюдатель за сетями Azure
 
@@ -29,24 +29,24 @@ ms.lasthandoff: 08/29/2017
 > - [CLI 2.0](network-watcher-troubleshoot-manage-cli.md)
 > - [REST API](network-watcher-troubleshoot-manage-rest.md)
 
-Наблюдатель за сетями предоставляет множество возможностей, так как он позволяет проанализировать сетевые ресурсы в Azure. Одна из этих возможностей — устранение неполадок в ресурсах. Процедуру устранения неполадок с ресурсами можно вызывать с помощью портала, PowerShell, интерфейса командной строки или API-интерфейса REST. При вызове Наблюдатель за сетями проверяет работоспособность шлюза виртуальной сети или подключения и возвращает результаты.
+Наблюдатель сети предоставляет множество возможностей, по отношению к сетевым ресурсам в Azure toounderstanding. Одна из этих возможностей — устранение неполадок в ресурсах. Устранение неполадок ресурсов можно вызвать через портал hello, PowerShell, CLI или REST API. При вызове Наблюдатель сети проверяет работоспособность hello шлюза виртуальной сети или подключения и возвращает результаты.
 
-В этой статье вы ознакомитесь с разными задачами управления, доступными в настоящее время для устранения неполадок в ресурсах.
+В этой статье описывается hello различными задачами управления, доступных в данный момент сведения об устранении неполадок ресурса.
 
 - [**Устранение неполадок шлюза виртуальной сети**](#troubleshoot-a-virtual-network-gateway)
 - [**Устранение неполадок подключений**](#troubleshoot-connections)
 
 ## <a name="before-you-begin"></a>Перед началом работы
 
-Чтобы вызвать REST API при помощи PowerShell, потребуется ARMClient. Пакет ARMClient можно скачать на сайте [Chocolatey](https://chocolatey.org/packages/ARMClient).
+ARMclient — используется toocall hello REST API с помощью PowerShell. Пакет ARMClient можно скачать на сайте [Chocolatey](https://chocolatey.org/packages/ARMClient).
 
-В этом сценарии предполагается, что вы создали Наблюдатель за сетями в соответствии с инструкциями в статье [Create an Azure Network Watcher instance](network-watcher-create.md) (Наблюдатель за сетями: создание экземпляра службы).
+Этот сценарий предполагает уже были выполнены шаги hello в [создать Наблюдатель сети](network-watcher-create.md) toocreate Наблюдатель сети.
 
 Список поддерживаемых типов шлюзов см. в разделе [Поддерживаемые типы шлюзов](network-watcher-troubleshoot-overview.md#supported-gateway-types).
 
 ## <a name="overview"></a>Обзор
 
-Средство устранения неполадок Наблюдатель за сетями позволяет устранить неполадки в работе шлюзов виртуальной сети и подключений. При запросе на устранение неполадок в ресурсах запрашиваются и проверяются журналы. По завершении проверки возвращаются результаты. Запросы к API устранения неполадок выполняются долго, поэтому для возвращения результатов может потребоваться несколько минут. Журналы хранятся в контейнере учетной записи хранения.
+Устранение неполадок Наблюдатель сети предоставляет возможность hello Устранение неполадок, возникающих со шлюзами виртуальной сети и подключения. При запросе ресурсов toohello Устранение неполадок, журналы запросов и проверен. После завершения проверки hello результатов. Hello устранения API запросов являются длинными выполняемых запросов, это может занять несколько минут tooreturn результат. Журналы хранятся в контейнере учетной записи хранения.
 
 ## <a name="log-in-with-armclient"></a>Вход с помощью ARMClient
 
@@ -57,9 +57,9 @@ armclient login
 ## <a name="troubleshoot-a-virtual-network-gateway"></a>Устранение неполадок шлюза виртуальной сети
 
 
-### <a name="post-the-troubleshoot-request"></a>Запрос POST на устранение неполадок
+### <a name="post-hello-troubleshoot-request"></a>POST hello Диагностика запроса
 
-В следующем примере запрашивается состояние шлюза виртуальной сети.
+Здравствуйте, следующий пример запросов hello состояние шлюза виртуальной сети.
 
 ```powershell
 
@@ -84,12 +84,12 @@ $requestBody = @"
 armclient post "https://management.azure.com/subscriptions/${subscriptionId}/ResourceGroups/${NWresourceGroupName}/providers/Microsoft.Network/networkWatchers/${networkWatcherName}/troubleshoot?api-version=2016-03-30 "
 ```
 
-Поскольку эта операция выполняется долго, URI для запроса операции и URI результата возвращаются в заголовке ответа, как показано в следующем примере.
+Так как эта операция велика запущен, hello URI для выполнения запросов к операции hello и hello URI для hello результат возвращается в заголовке ответа hello, как показано в hello следующий ответ:
 
 **Важные значения**
 
-* **Azure-AsyncOperation** (Асинхронная операция Azure) — это свойство содержит URI для запроса асинхронной операции устранения неполадок.
-* **Location** (Расположение) — это свойство содержит универсальный код ресурса (URI), где находятся результаты после выполнения операции.
+* **Azure AsyncOperation** -это свойство содержит hello URI tooquery hello Async Устранение неполадок с операцией
+* **Расположение** -это свойство содержит hello URI, где hello при результаты становятся hello операция завершена
 
 ```
 HTTP/1.1 202 Accepted
@@ -109,15 +109,15 @@ Date: Thu, 12 Jan 2017 18:32:01 GMT
 null
 ```
 
-### <a name="query-the-async-operation-for-completion"></a>Запрос на выполнение асинхронной операции
+### <a name="query-hello-async-operation-for-completion"></a>Hello асинхронные операции для завершения запроса
 
-Используйте URI операций, чтобы запросить ход выполнения операции, как показано в следующем примере:
+Введите URI tooquery hello операций hello ход выполнения операции hello в следующий пример hello:
 
 ```powershell
 armclient get "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Network/locations/westcentralus/operations/8a1167b7-6768-4ac1-85dc-703c9c9b9247?api-version=2016-03-30"
 ```
 
-Во время выполнения операции ответ показывает состояние **InProgress** (Выполняется), как видно в следующем примере:
+Во время операции hello hello показан ответ **InProgress** как видно в hello в следующем примере:
 
 ```json
 {
@@ -125,7 +125,7 @@ armclient get "https://management.azure.com/subscriptions/00000000-0000-0000-000
 }
 ```
 
-После завершения операции состояние изменится на **Succeeded** (Успешно).
+Операция hello при изменениях состояния завершения hello слишком**успешно**.
 
 ```json
 {
@@ -133,15 +133,15 @@ armclient get "https://management.azure.com/subscriptions/00000000-0000-0000-000
 }
 ```
 
-### <a name="retrieve-the-results"></a>Получение результатов
+### <a name="retrieve-hello-results"></a>Получить результаты hello
 
-После того как возвратится состояние **Succeeded**, вызовите метод GET на URI operationResult, чтобы получить результаты.
+Когда возвращается состояние hello **успешно**, на hello operationResult URI tooretrieve hello результаты вызова метод GET.
 
 ```powershell
 armclient get "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Network/locations/westcentralus/operationResults/8a1167b7-6768-4ac1-85dc-703c9c9b9247?api-version=2016-03-30"
 ```
 
-Следующие ответы являются примерами стандартного ограниченного ответа, который возвращается при запросе результатов устранения неполадок шлюза. См. раздел [Анализ результатов](#understanding-the-results), чтобы понять значения свойств в ответе.
+Hello следующие ответы приведены примеры типичных ограниченной ответ возвращается, если запрос к результатам hello устранения неполадок шлюза. В разделе [основные сведения о результатах hello](#understanding-the-results) tooget разъяснение к какие свойства hello в ответ означают hello.
 
 ```json
 {
@@ -152,15 +152,15 @@ armclient get "https://management.azure.com/subscriptions/00000000-0000-0000-000
     {
       "id": "PlatformInActive",
       "summary": "We are sorry, your VPN gateway is in standby mode",
-      "detail": "During this time the gateway will not initiate or accept VPN connections with on premises VPN devices or other Azure VPN Gateways. This is a transient state while the Azure platform is being updated.",
+      "detail": "During this time hello gateway will not initiate or accept VPN connections with on premises VPN devices or other Azure VPN Gateways. This is a transient state while hello Azure platform is being updated.",
       "recommendedActions": [
         {
-          "actionText": "If the condition persists, please try resetting your Azure VPN gateway",
+          "actionText": "If hello condition persists, please try resetting your Azure VPN gateway",
           "actionUri": "https://azure.microsoft.com/en-us/documentation/articles/vpn-gateway-resetgw-classic/",
-          "actionUriText": "resetting the VPN Gateway"
+          "actionUriText": "resetting hello VPN Gateway"
         },
         {
-          "actionText": "If your VPN gateway isn't up and running by the expected resolution time, contact support",
+          "actionText": "If your VPN gateway isn't up and running by hello expected resolution time, contact support",
           "actionUri": "http://azure.microsoft.com/support",
           "actionUriText": "contact support"
         }
@@ -172,7 +172,7 @@ armclient get "https://management.azure.com/subscriptions/00000000-0000-0000-000
       "detail": "There aren't any known Azure platform problems affecting this VPN Connection",
       "recommendedActions": [
         {
-          "actionText": "If you are still experience problems with the VPN gateway, please try resetting the VPN gateway.",
+          "actionText": "If you are still experience problems with hello VPN gateway, please try resetting hello VPN gateway.",
           "actionUri": "https://azure.microsoft.com/en-us/documentation/articles/vpn-gateway-resetgw-classic/",
           "actionUriText": "resetting VPN gateway"
         },
@@ -190,7 +190,7 @@ armclient get "https://management.azure.com/subscriptions/00000000-0000-0000-000
 
 ## <a name="troubleshoot-connections"></a>Устранение неполадок подключений
 
-В следующем примере запрашивается состояние подключения.
+Следующий пример запросов hello состояние соединения Hello.
 
 ```powershell
 
@@ -213,14 +213,14 @@ armclient post "https://management.azure.com/subscriptions/${subscriptionId}/Res
 ```
 
 > [!NOTE]
-> Невозможно запустить операцию устранения неполадок подключения и соответствующих шлюзов в параллельном режиме. Прежде чем запускать операцию, необходимо дождаться завершения ее выполнения для предыдущего ресурса.
+> Устранение неполадок с операцией для Hello не может выполняться параллельно на подключение и его соответствующие шлюзов. Hello операция должна быть завершена предыдущих toorunning ее на предыдущий ресурс hello.
 
-Поскольку эта операция выполняется долго, в заголовке ответа возвращаются URI для запроса операции и URI результата, как показано в следующем примере.
+Так как это долго выполняющаяся транзакция, в заголовке ответа hello, hello URI для выполнения запросов к операции hello и hello URI для hello результат возвращается как показано в hello следующий ответ:
 
 **Важные значения**
 
-* **Azure-AsyncOperation** (Асинхронная операция Azure) — это свойство содержит URI для запроса асинхронной операции устранения неполадок.
-* **Location** (Расположение) — это свойство содержит универсальный код ресурса (URI), где находятся результаты после выполнения операции.
+* **Azure AsyncOperation** -это свойство содержит hello URI tooquery hello Async Устранение неполадок с операцией
+* **Расположение** -это свойство содержит hello URI, где hello при результаты становятся hello операция завершена
 
 ```
 HTTP/1.1 202 Accepted
@@ -240,15 +240,15 @@ Date: Thu, 12 Jan 2017 18:32:01 GMT
 null
 ```
 
-### <a name="query-the-async-operation-for-completion"></a>Запрос на выполнение асинхронной операции
+### <a name="query-hello-async-operation-for-completion"></a>Hello асинхронные операции для завершения запроса
 
-Используйте URI операций, чтобы запросить ход выполнения операции, как показано в следующем примере:
+Введите URI tooquery hello операций hello ход выполнения операции hello в следующий пример hello:
 
 ```powershell
 armclient get "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Network/locations/westcentralus/operations/843b1c31-4717-4fdd-b7a6-4c786ca9c501?api-version=2016-03-30"
 ```
 
-Во время выполнения операции ответ показывает состояние **InProgress** (Выполняется), как видно в следующем примере:
+Во время операции hello hello показан ответ **InProgress** как видно в hello в следующем примере:
 
 ```json
 {
@@ -256,7 +256,7 @@ armclient get "https://management.azure.com/subscriptions/00000000-0000-0000-000
 }
 ```
 
-После завершения операции состояние изменится на **Succeeded** (Успешно).
+По завершении операции hello hello состояние изменяется слишком**успешно**.
 
 ```json
 {
@@ -264,17 +264,17 @@ armclient get "https://management.azure.com/subscriptions/00000000-0000-0000-000
 }
 ```
 
-Следующие ответы являются примерами стандартного ответа, который возвращается при запросе результатов устранения неполадок подключения.
+Hello следующие ответы приведены примеры типичных ответ возвращается, если запрос к результатам hello Устранение неполадок при подключении.
 
-### <a name="retrieve-the-results"></a>Получение результатов
+### <a name="retrieve-hello-results"></a>Получить результаты hello
 
-После того как возвратится состояние **Succeeded**, вызовите метод GET на URI operationResult, чтобы получить результаты.
+Когда возвращается состояние hello **успешно**, на hello operationResult URI tooretrieve hello результаты вызова метод GET.
 
 ```powershell
 armclient get "https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Network/locations/westcentralus/operationResults/843b1c31-4717-4fdd-b7a6-4c786ca9c501?api-version=2016-03-30"
 ```
 
-Следующие ответы являются примерами стандартного ответа, который возвращается при запросе результатов устранения неполадок подключения.
+Hello следующие ответы приведены примеры типичных ответ возвращается, если запрос к результатам hello Устранение неполадок при подключении.
 
 ```json
 {
@@ -285,16 +285,16 @@ armclient get "https://management.azure.com/subscriptions/00000000-0000-0000-000
     {
       "id": "PlatformInActive",
       "summary": "We are sorry, your VPN gateway is in standby mode",
-      "detail": "During this time the gateway will not initiate or accept VPN connections with on premises VPN devices or other Azure VPN Gateways. This 
-is a transient state while the Azure platform is being updated.",
+      "detail": "During this time hello gateway will not initiate or accept VPN connections with on premises VPN devices or other Azure VPN Gateways. This 
+is a transient state while hello Azure platform is being updated.",
       "recommendedActions": [
         {
-          "actionText": "If the condition persists, please try resetting your Azure VPN gateway",
+          "actionText": "If hello condition persists, please try resetting your Azure VPN gateway",
           "actionUri": "https://azure.microsoft.com/en-us/documentation/articles/vpn-gateway-resetgw-classic/",
-          "actionUriText": "resetting the VPN gateway"
+          "actionUriText": "resetting hello VPN gateway"
         },
         {
-          "actionText": "If your VPN Connection isn't up and running by the expected resolution time, contact support",
+          "actionText": "If your VPN Connection isn't up and running by hello expected resolution time, contact support",
           "actionUri": "http://azure.microsoft.com/support",
           "actionUriText": "contact support"
         }
@@ -306,7 +306,7 @@ is a transient state while the Azure platform is being updated.",
       "detail": "There aren't any known Azure platform problems affecting this VPN Connection",
       "recommendedActions": [
         {
-          "actionText": "If you are still experience problems with the VPN gateway, please try resetting the VPN gateway.",
+          "actionText": "If you are still experience problems with hello VPN gateway, please try resetting hello VPN gateway.",
           "actionUri": "https://azure.microsoft.com/en-us/documentation/articles/vpn-gateway-resetgw-classic/",
           "actionUriText": "resetting VPN gateway"
         },
@@ -321,12 +321,12 @@ is a transient state while the Azure platform is being updated.",
 }
 ```
 
-## <a name="understanding-the-results"></a>Анализ результатов
+## <a name="understanding-hello-results"></a>Основные сведения о результатах hello
 
-Текст действий содержит общие рекомендации по устранению проблемы. Если для устранения проблемы можно что-то сделать, предоставляется ссылка на дополнительные инструкции. Если дополнительных рекомендаций нет, в ответе указывается URL-адрес, открыв который можно отправить запрос в службу поддержки.  Дополнительные сведения о свойствах ответа, а также о данных, которые он содержит, см. в статье [Network Watcher Troubleshoot overview](network-watcher-troubleshoot-overview.md) (Обзор устранения неполадок наблюдателя за сетями).
+текст Hello действия даются общие рекомендации по как tooresolve hello проблему. Если действие может устранить проблему hello, ссылка предоставляется с Дополнительные рекомендации. В случае hello которых нет Дополнительные рекомендации, ответ hello предоставляет tooopen URL-адрес hello обращение в службу поддержки.  Дополнительные сведения о свойствах hello ответа hello и которые не включены [Общие сведения об устранении Наблюдатель сети](network-watcher-troubleshoot-overview.md)
 
-Инструкции по скачиванию файлов из учетных записей хранения Azure см. в статье [Приступая к работе с хранилищем BLOB-объектов Azure с помощью .NET](../storage/blobs/storage-dotnet-how-to-use-blobs.md). Кроме того, можно использовать такое средство, как Storage Explorer. Дополнительные сведения об обозревателе хранилищ см. на [этой странице](http://storageexplorer.com/).
+Инструкции по загрузке файлов из учетных записей хранилища azure, см. в разделе слишком[приступить к работе с хранилищем больших двоичных объектов Azure с помощью .NET](../storage/blobs/storage-dotnet-how-to-use-blobs.md). Кроме того, можно использовать такое средство, как Storage Explorer. Дополнительные сведения об обозревателе хранилища можно найти по ссылке hello здесь: [обозреватель хранилищ](http://storageexplorer.com/)
 
 ## <a name="next-steps"></a>Дальнейшие действия
 
-Если изменены параметры, которые мешают VPN-подключению, см. статью [Управление группами безопасности сети с помощью портала](../virtual-network/virtual-network-manage-nsg-arm-portal.md), чтобы найти сведения о группах безопасности сети и соответствующие правила безопасности.
+Если параметры были изменены, остановите подключения VPN, см. раздел [Управление группами безопасности сети](../virtual-network/virtual-network-manage-nsg-arm-portal.md) tootrack вниз hello правила сетевой безопасности группы и безопасности, возможно, в вопросе.

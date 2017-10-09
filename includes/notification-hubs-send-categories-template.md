@@ -1,28 +1,28 @@
 
-В этом разделе показано, как отправлять экстренные новости в виде шаблонных уведомлений с тегами из консольного приложения .NET.
+В этом разделе показано, как toosend новости, как пометить шаблон уведомления из консольного приложения .NET.
 
-Если вы используете мобильные приложения, см. руководство по [добавлению push-уведомлений в мобильные приложения] (выберите платформу в верхней части страницы).
+При использовании мобильных приложений можно найти toohello [Добавление push-уведомлений для мобильных приложений] учебника и выбрать платформу вверху hello.
 
-Если вы хотите использовать Java или PHP, см. руководство по [использованию Центров уведомлений из Java и PHP]. Можно отправлять уведомления из любого серверного компонента с помощью [интерфейса REST Центров уведомлений].
+Toouse Java или PHP см. слишком[как концентраторы уведомлений из Java и PHP toouse]. Можно отправлять уведомления из любого серверного компонента с помощью [интерфейса REST Центров уведомлений].
 
-Пропустите шаги 1–3, если консольное приложение для отправки уведомлений создано после завершения работы с руководством по [началу работы с Центрами уведомлений].
+Пропустите шаги 1 – 3, при создании консольного приложения hello для отправки уведомлений, завершения [приступить к работе с концентраторами уведомлений].
 
 1. В Visual Studio создайте новое консольное приложение Visual C#:
    
        ![][13]
-2. В главном меню Visual Studio выберите пункт **Сервис**, **Диспетчер пакетов библиотеки** и **Консоль диспетчера пакетов**, а затем в окне консоли введите следующую команду и нажмите клавишу **ВВОД**:
+2. В главном меню Visual Studio hello, щелкните **средства**, **диспетчер пакетов библиотеки**, и **консоль диспетчера пакетов**, затем в окне консоли hello введите следующую команду и нажмите клавишу **Введите**:
    
         Install-Package Microsoft.Azure.NotificationHubs
    
-    После этого будет добавлена ссылка на пакет SDK для Центров уведомлений Azure с помощью [пакета NuGet Microsoft.Azure.Notification Hubs].
-3. Откройте файл Program.cs и добавьте следующий оператор `using` :
+    При этом добавляется ссылка toohello концентраторов уведомлений Azure SDK с помощью hello [пакет NuGet концентраторов Microsoft.Azure.Notification].
+3. Откройте файл hello Program.cs и добавьте следующее hello `using` инструкции:
    
         using Microsoft.Azure.NotificationHubs;
-4. В класс `Program` добавьте следующий метод или замените его, если он уже существует:
+4. В hello `Program` класса, добавьте следующий метод hello или заменить его, если он уже существует:
    
         private static async void SendTemplateNotificationAsync()
         {
-            // Define the notification hub.
+            // Define hello notification hub.
             NotificationHubClient hub =
                 NotificationHubClient.CreateClientFromConnectionString(
                     "<connection string with full access>", "<hub name>");
@@ -31,8 +31,8 @@
             var categories = new string[] { "World", "Politics", "Business",
                                             "Technology", "Science", "Sports"};
    
-            // Sending the notification as a template notification. All template registrations that contain
-            // "messageParam" and the proper tags will receive the notifications.
+            // Sending hello notification as a template notification. All template registrations that contain
+            // "messageParam" and hello proper tags will receive hello notifications.
             // This includes APNS, GCM, WNS, and MPNS template registrations.
    
             Dictionary<string, string> templateParams = new Dictionary<string, string>();
@@ -44,20 +44,20 @@
             }
          }
    
-    Этот код отправляет шаблонное уведомление по каждому из шести тегов в массиве строк. Использование тегов гарантирует, что устройства будут получать уведомления только зарегистрированных категорий.
-5. В приведенном выше коде замените заполнители `<hub name>` и `<connection string with full access>` именем центра уведомлений и строкой подключения для *DefaultFullSharedAccessSignature*, полученными ранее на панели мониторинга центра уведомлений.
-6. Добавьте следующие строки в метод **Main** :
+    Этот код отправляет уведомление шаблона для каждого из шести тегов hello в массив строк hello. Hello использование тегов гарантирует, что устройства получать уведомления только для зарегистрированных hello категорий.
+5. В hello над кодом, замените hello `<hub name>` и `<connection string with full access>` местозаполнителей уведомления имя и hello строку подключения к концентратору для *DefaultFullSharedAccessSignature* из панели мониторинга hello центра уведомлений .
+6. Добавьте следующие строки в hello hello **Main** метод:
    
          SendTemplateNotificationAsync();
          Console.ReadLine();
-7. Выполните сборку консольного приложения.
+7. Построение консольного приложения hello.
 
 <!-- Images. -->
 [13]: ./media/notification-hubs-back-end/notification-hub-create-console-app.png
 
 <!-- URLs. -->
-[началу работы с Центрами уведомлений]: ../articles/notification-hubs/notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md
+[приступить к работе с концентраторами уведомлений]: ../articles/notification-hubs/notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md
 [интерфейса REST Центров уведомлений]: http://msdn.microsoft.com/library/windowsazure/dn223264.aspx (REST API Центров уведомлений)
-[добавлению push-уведомлений в мобильные приложения]: ../articles/app-service-mobile/app-service-mobile-windows-store-dotnet-get-started-push.md
-[использованию Центров уведомлений из Java и PHP]: ../articles/notification-hubs/notification-hubs-java-push-notification-tutorial.md
-[пакета NuGet Microsoft.Azure.Notification Hubs]: http://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/ (Центры уведомлений Microsoft Azure 1.0.7)
+[Добавление push-уведомлений для мобильных приложений]: ../articles/app-service-mobile/app-service-mobile-windows-store-dotnet-get-started-push.md
+[как концентраторы уведомлений из Java и PHP toouse]: ../articles/notification-hubs/notification-hubs-java-push-notification-tutorial.md
+[пакет NuGet концентраторов Microsoft.Azure.Notification]: http://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/ (Центры уведомлений Microsoft Azure 1.0.7)

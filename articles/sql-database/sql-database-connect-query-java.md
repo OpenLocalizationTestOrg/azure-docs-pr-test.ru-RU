@@ -1,6 +1,6 @@
 ---
-title: "Использование Java для создания запросов к базе данных SQL Azure | Документация Майкрософт"
-description: "В этой статье показано, как использовать Java для создания программы, которая подключается к базе данных SQL Azure, и создавать к ней запросы с помощью инструкций Transact-SQL."
+title: "tooquery Java aaaUse базы данных SQL Azure | Документы Microsoft"
+description: "В этом разделе показано, как toocreate Java toouse программу, которая соединяет tooan базы данных SQL Azure и запросов с помощью инструкций Transact-SQL."
 services: sql-database
 documentationcenter: 
 author: ajlam
@@ -15,55 +15,55 @@ ms.devlang: java
 ms.topic: hero-article
 ms.date: 07/10/2017
 ms.author: andrela
-ms.openlocfilehash: 103b0755ab89a13297cfdc9ec72416664da8c1e9
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: f014edbe38ca0e7b6e43f4eb4d2e53d3561bf3e7
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="use-java-to-query-an-azure-sql-database"></a>Использование Java для создания запросов к базе данных SQL Azure
+# <a name="use-java-tooquery-an-azure-sql-database"></a>Используйте Java tooquery базы данных Azure SQL
 
-В этом кратком руководстве показано, как использовать [Java](https://docs.microsoft.com/sql/connect/jdbc/microsoft-jdbc-driver-for-sql-server) для подключения к базе данных SQL Azure, а затем с помощью инструкций Transact-SQL выполнить запрос к данным.
+В этом кратком руководстве показано, как toouse [Java](https://docs.microsoft.com/sql/connect/jdbc/microsoft-jdbc-driver-for-sql-server) tooconnect tooan Azure SQL базы данных и затем использовать данные tooquery инструкций Transact-SQL.
 
 ## <a name="prerequisites"></a>Предварительные требования
 
-Ниже указаны требования для работы с этим кратким руководством.
+toocomplete этом краткое руководство по началу работы, убедитесь, что у вас есть hello следующие предварительные требования:
 
-- База данных SQL Azure. В этом кратком руководстве используются ресурсы, созданные в одном из этих кратких руководств: 
+- База данных SQL Azure. В этом кратком руководстве использует ресурсы hello, созданные в одном из этих краткие руководства: 
 
    - [Создание базы данных с помощью портала](sql-database-get-started-portal.md)
    - [Создание базы данных SQL Azure и отправка к ней запросов с помощью Azure CLI](sql-database-get-started-cli.md)
    - [Создание базы данных с помощью PowerShell](sql-database-get-started-powershell.md)
 
-- [Правило брандмауэра на уровне сервера](sql-database-get-started-portal.md#create-a-server-level-firewall-rule) для общедоступного IP-адреса компьютера, на котором выполняются действия из этого краткого руководства.
+- Объект [правила брандмауэра уровня сервера](sql-database-get-started-portal.md#create-a-server-level-firewall-rule) для hello общедоступный IP-адрес компьютера hello, используйте для этого краткого руководства.
 
 - Убедитесь, что установлен Java и связанное программное обеспечение для вашей операционной системы.
 
     - **Mac OS.** Установите Homebrew и Java, а затем Maven. Ознакомьтесь с шагами 1.2 и 1.3 в [этом руководстве](https://www.microsoft.com/sql-server/developer-get-started/java/mac/).
-    - **Ubuntu.** Установите комплект разработчика Java и Maven. Ознакомьтесь с шагами 1.2, 1.3 и 1.4 в [этом руководстве](https://www.microsoft.com/sql-server/developer-get-started/java/ubuntu/).
-    - **Windows.** Установите комплект разработчика Java и Maven. Ознакомьтесь с шагами 1.2 и 1.3 в [этом руководстве](https://www.microsoft.com/sql-server/developer-get-started/java/windows/).    
+    - **Ubuntu**: hello Java Development Kit установки и установки Maven. Ознакомьтесь с шагами 1.2, 1.3 и 1.4 в [этом руководстве](https://www.microsoft.com/sql-server/developer-get-started/java/ubuntu/).
+    - **Windows**: Установка hello Java Development Kit и Maven. Ознакомьтесь с шагами 1.2 и 1.3 в [этом руководстве](https://www.microsoft.com/sql-server/developer-get-started/java/windows/).    
 
 ## <a name="sql-server-connection-information"></a>Сведения о подключении SQL Server
 
-Получите сведения о подключении, необходимые для подключения к базе данных SQL Azure. Вам понадобится следующее: полное имя сервера, имя базы данных и сведения для входа.
+Получите базу данных Azure SQL toohello tooconnect в сведения, необходимые подключения hello. Необходимо будет hello полное имя сервера, имя базы данных и сведения об имени входа в следующих процедурах hello.
 
-1. Войдите на [портал Azure](https://portal.azure.com/).
-2. В меню слева выберите **Базы данных SQL** и на странице **Базы данных SQL** щелкните имя своей базы данных. 
-3. На странице **Обзор** базы данных просмотрите полное имя сервера, как показано на рисунке ниже. Вы можете навести указатель мыши на имя сервера, чтобы отобразился пункт **Щелкните, чтобы скопировать**.  
+1. Войдите в toohello [портал Azure](https://portal.azure.com/).
+2. Выберите **баз данных SQL** hello левом меню и выберите базу данных на hello **баз данных SQL** страницы. 
+3. На hello **Обзор** страниц для базы данных, просмотрите hello полное имя сервера, как показано в hello после изображения: можно навести на toobring имя сервера hello копирование hello **щелкните toocopy** параметр.  
 
    ![server-name](./media/sql-database-connect-query-dotnet/server-name.png) 
 
-4. Если вы забыли данные для входа на сервер базы данных SQL, перейдите на соответствующую страницу, чтобы просмотреть имя администратора сервера.  При необходимости сбросьте пароль.     
+4. Если вы забыли учетные данные входа сервера, перейдите toohello базы данных SQL server tooview hello server admin имя страницы.  При необходимости hello сброс пароля.     
 
 ## <a name="create-maven-project-and-dependencies"></a>**Создание проекта Maven и зависимостей**
-1. В терминале создайте проект Maven с именем **sqltest**. 
+1. Hello терминалов, создайте новый проект с именем Maven **sqltest**. 
 
    ```bash
    mvn archetype:generate "-DgroupId=com.sqldbsamples" "-DartifactId=sqltest" "-DarchetypeArtifactId=maven-archetype-quickstart" "-Dversion=1.0.0"
    ```
 
 2. При появлении запроса введите **Y**.
-3. Перейдите в каталог **sqltest** и откройте ***pom.xml*** с помощью предпочитаемого текстового редактора.  Добавьте **Microsoft JDBC Driver для SQL Server** к зависимостям проекта, используя следующий код:
+3. Измените каталог слишком**sqltest** и откройте ***pom.xml*** с помощью любого текстового редактора.  Добавить hello **драйвера Microsoft JDBC для SQL Server** зависимостей tooyour проекта с помощью hello следующий код:
 
    ```xml
    <dependency>
@@ -73,7 +73,7 @@ ms.lasthandoff: 08/29/2017
    </dependency>
    ```
 
-4. В файле ***pom.xml*** добавьте в проект указанные ниже свойства.  Если у вас нет раздела свойств, его можно добавить после зависимостей.
+4. Кроме того, в ***pom.xml***, добавьте следующие свойства проекта tooyour hello.  Если отсутствует раздел свойств, его можно добавить после hello зависимостей.
 
    ```xml
    <properties>
@@ -84,11 +84,11 @@ ms.lasthandoff: 08/29/2017
 
 5. Сохраните и закройте файл ***pom.xml***.
 
-## <a name="insert-code-to-query-sql-database"></a>Вставка кода для отправки запроса к базе данных SQL
+## <a name="insert-code-tooquery-sql-database"></a>Вставьте код базы данных SQL tooquery
 
 1. В проекте Maven уже должен быть файл с именем ***App.java***, расположенный в папке: \sqltest\src\main\java\com\sqlsamples\App.java.
 
-2. Откройте файл, замените содержимое следующим кодом и добавьте соответствующие значения для сервера, базы данных, пользователя и пароля.
+2. Откройте файл hello и заменить его содержимое hello следующий код и добавить hello соответствующие значения для сервера, базы данных, пользователя и пароль.
 
    ```java
    package com.sqldbsamples;
@@ -103,7 +103,7 @@ ms.lasthandoff: 08/29/2017
 
     public static void main(String[] args) {
     
-        // Connect to database
+        // Connect toodatabase
            String hostName = "your_server.database.windows.net";
            String dbName = "your_database";
            String user = "your_username";
@@ -144,16 +144,16 @@ ms.lasthandoff: 08/29/2017
    }
    ```
 
-## <a name="run-the-code"></a>Выполнение кода
+## <a name="run-hello-code"></a>Выполнение кода hello
 
-1. В командной строке выполните следующие команды:
+1. Hello командной строки выполните следующие команды hello.
 
    ```bash
    mvn package
    mvn -q exec:java "-Dexec.mainClass=com.sqldbsamples.App"
    ```
 
-2. Убедитесь, что возвращены первые 20 строк, а затем закройте окно приложения.
+2. Убедитесь, что возвращаются первые 20 строк hello и закройте окно приложения hello.
 
 
 ## <a name="next-steps"></a>Дальнейшие действия

@@ -1,6 +1,6 @@
 ---
-title: "Изучение данных в процессе обработки и анализа данных группы | Документация Майкрософт"
-description: "Описывается, как изучать данные в различных средах хранения."
+title: "данные aaaExplore в hello командного процесса обработки и анализа данных | Документы Microsoft"
+description: "Как tooexplore данных в различных средах хранилища."
 services: machine-learning,storage
 documentationcenter: 
 author: bradsev
@@ -14,21 +14,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/24/2017
 ms.author: bradsev
-ms.openlocfilehash: b0735d659412699d06d5e4f1e9a713444ad5ac61
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: ec582a43fbfcdb19429138a0a4ce9ffe396bee5f
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="explore-data-in-the-team-data-science-process"></a>Изучение данных в процессе обработки и анализа данных группы
-В этом документе описано, как изучать данные в четырех разных средах хранения, которые обычно применяются в процессе обработки и анализа данных.
+# <a name="explore-data-in-hello-team-data-science-process"></a>Просмотр данных в hello командного процесса обработки и анализа данных
+В этом документе рассматриваются как данные tooexplore в четыре разных хранилища сред, которые обычно используются в hello процесса обработки и анализа данных:
 
-* **контейнера больших двоичных объектов Azure** осуществляется с помощью пакета Python [Pandas](http://pandas.pydata.org/) .
+* **Контейнер больших двоичных объектов Azure** данных будет использовать с помощью hello [Pandas](http://pandas.pydata.org/) пакета Python.
 * **SQL Server** осуществляется с помощью SQL и с использованием языка программирования, например Python.
 * **таблицы Hive** осуществляется с помощью запросов Hive.
 * **Студии машинного обучения Azure (AML)** осуществляется с помощью модулей AML.
 
-Следующее **меню** содержит ссылки на статьи, описывающие использование этих средств для просмотра данных из различных сред хранения. 
+следующие Hello **меню** связывает toohello разделы, описывающие, как toouse данных tooexplore этих средств из различных сред хранилища. 
 
 [!INCLUDE [cap-explore-data-selector](../../includes/cap-explore-data-selector.md)]
 

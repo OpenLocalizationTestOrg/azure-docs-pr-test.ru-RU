@@ -1,6 +1,6 @@
 ---
-title: "Сбор журналов и метрик для служб Azure в Log Analytics | Документация Майкрософт"
-description: "Настройте диагностику ресурсов Azure для записи журналов и метрик в Log Analytics."
+title: "aaaCollect Azure службы журналов и метрики для службы анализа журналов | Документы Microsoft"
+description: "Настройка диагностики на ресурсы Azure toowrite журналы и показатели tooLog Analytics."
 services: log-analytics
 documentationcenter: 
 author: MGoedtel
@@ -15,20 +15,20 @@ ms.topic: article
 ms.date: 04/12/2017
 ms.author: magoedte
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7a3785e39f0d1cf849dbbf0d83d89eaed58c5b0b
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 1cede9a94ec83c4e3a95853dc2ec355d8df06d6e
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="collect-azure-service-logs-and-metrics-for-use-in-log-analytics"></a>Сбор журналов и метрик для служб Azure для использования в Log Analytics
 
 Сбор журналов и метрик для служб Azure можно выполнить четырьмя разными способами:
 
-1. Направление диагностики Azure напрямую в Log Analytics (*диагностика* в следующей таблице).
-2. Отправка диагностики Azure в службу хранилища Azure, а затем — в Log Analytics (*хранилище* в следующей таблице).
-3. Использование соединителей для служб Azure (*соединители* в следующей таблице).
-4. Сценарии для сбора и публикации данных в Log Analytics (не указано в следующей таблице, а также для служб, которые не указаны).
+1. TooLog аналитика прямой диагностики Azure (*диагностики* в следующей таблице hello)
+2. TooLog tooAzure хранилища для диагностики Azure Analytics (*хранения* в следующей таблице hello)
+3. Соединители для служб Azure (*соединители* в следующей таблице hello)
+4. Сценарии toocollect, а затем данные post в службе анализа журналов (в следующей таблице hello и для служб, которые не указаны, то пустые)
 
 
 | служба                 | Тип ресурса                           | Журналы        | Метрики     | Решение |
@@ -60,22 +60,22 @@ ms.lasthandoff: 08/29/2017
 
 
 > [!NOTE]
-> Для мониторинга виртуальных машин Azure (Linux и Windows) рекомендуется установить [расширение виртуальной машины Analytics журнала](log-analytics-azure-vm-extension.md). Агент предоставляет сведения, собранные в виртуальных машинах. Вы можете также использовать расширение для масштабируемых наборов виртуальных машин.
+> Для мониторинга виртуальных машин Azure (Linux и Windows), рекомендуется устанавливать hello [расширение ВМ аналитика журналов](log-analytics-azure-vm-extension.md). агент Hello предоставляет аналитики, полученные в виртуальных машинах. Можно также использовать расширение hello для набора масштабирования виртуальной машины.
 >
 >
 
-## <a name="azure-diagnostics-direct-to-log-analytics"></a>Направление диагностики Azure в Log Analytics
-Множество ресурсов Azure могут записывать журналы диагностики и метрики напрямую в Log Analytics. Это предпочтительный способ сбора данных для анализа. При использовании диагностики Azure данные сразу записываются в Log Analytics, поэтому их не нужно сначала записывать в хранилище.
+## <a name="azure-diagnostics-direct-toolog-analytics"></a>Прямой tooLog диагностики Azure Analytics
+Многие ресурсы Azure, журналы диагностики может toowrite и метрики, напрямую tooLog аналитика и она hello предпочтительный способ сбора данных hello для обработки. При использовании службы диагностики Azure, данные записываются немедленно tooLog аналитика, и нет данных без необходимости записи toofirst hello toostorage.
 
-Ресурсы Azure с поддержкой [Azure Monitor](../monitoring-and-diagnostics/monitoring-overview.md) могут отправлять свои журналы и метрики напрямую в Log Analytics.
+Ресурсы Azure, которые поддерживают [монитора Azure](../monitoring-and-diagnostics/monitoring-overview.md) может отправлять свои журналы и показатели непосредственно tooLog Analytics.
 
-* Дополнительные сведения о доступных метриках см. в разделе [Метрики, поддерживаемые Azure Monitor](../monitoring-and-diagnostics/monitoring-supported-metrics.md).
-* Дополнительные сведения о доступных журналах см. в разделе [Поддерживаемые службы и схемы для журналов диагностики](../monitoring-and-diagnostics/monitoring-diagnostic-logs-schema.md).
+* Подробности hello доступных метрик hello ссылаться слишком[поддерживаемых метрик с помощью монитора Azure](../monitoring-and-diagnostics/monitoring-supported-metrics.md).
+* Hello сведений о доступных журналов hello, см. в разделе слишком[поддерживается для журналов диагностики служб и схемы](../monitoring-and-diagnostics/monitoring-diagnostic-logs-schema.md).
 
 ### <a name="enable-diagnostics-with-powershell"></a>Включение диагностики с помощью PowerShell
-Вам потребуется выпуск за ноябрь 2016 года (версия 2.3.0) и более поздний выпуск [Azure PowerShell](/powershell/azure/overview).
+Требуется hello ноябрь 2016 г. (v2.3.0) или более поздней версии версии [Azure PowerShell](/powershell/azure/overview).
 
-В следующем примере PowerShell показано, как включить диагностику в группе безопасности сети с использованием [Set-AzureRmDiagnosticSetting](/powershell/module/azurerm.insights/set-azurermdiagnosticsetting). Тот же подход работает для всех поддерживаемых ресурсов. Задайте для параметра `$resourceId` идентификатор ресурса, для которого нужно включить диагностику.
+Здравствуйте, как следующая PowerShell в примере toouse [AzureRmDiagnosticSetting набор](/powershell/module/azurerm.insights/set-azurermdiagnosticsetting) tooenable диагностики на группы безопасности сети. Hello же подход работает для всех поддерживаемых ресурсов — задать `$resourceId` toohello идентификатор hello ресурс, tooenable диагностики для ресурса.
 
 ```powershell
 $workspaceId = "/subscriptions/d2e37fee-1234-40b2-5678-0b2199de3b50/resourcegroups/oi-default-east-us/providers/microsoft.operationalinsights/workspaces/rollingbaskets"
@@ -87,7 +87,7 @@ Set-AzureRmDiagnosticSetting -ResourceId $ResourceId  -WorkspaceId $workspaceId 
 
 ### <a name="enable-diagnostics-with-resource-manager-templates"></a>Включение диагностики с помощью шаблонов Resource Manager
 
-Чтобы включить диагностику при создании ресурса и отправлять ее в рабочую область Log Analytics, можно использовать шаблон, аналогичный приведенному ниже. Этот пример предназначен для учетной записи службы автоматизации, но он также подходит для всех поддерживаемых типов ресурсов.
+tooenable диагностики для ресурса, когда он создается и диагностики hello отправили анализа журналов tooyour рабочую область, которую можно использовать аналогичный toohello шаблона, один ниже. Этот пример предназначен для учетной записи службы автоматизации, но он также подходит для всех поддерживаемых типов ресурсов.
 
 ```json
         {
@@ -116,11 +116,11 @@ Set-AzureRmDiagnosticSetting -ResourceId $ResourceId  -WorkspaceId $workspaceId 
 
 [!INCLUDE [log-analytics-troubleshoot-azure-diagnostics](../../includes/log-analytics-troubleshoot-azure-diagnostics.md)]
 
-## <a name="azure-diagnostics-to-storage-then-to-log-analytics"></a>Отправка диагностики Azure в хранилище и в Log Analytics
+## <a name="azure-diagnostics-toostorage-then-toolog-analytics"></a>Toostorage диагностики Azure, а затем tooLog аналитика
 
-Для сбора журналов из некоторых ресурсов можно отправлять журналы в хранилище Azure, а затем настроить Log Analytics для чтения журналов из хранилища.
+Для сбора журналов из в некоторые ресурсы, он возможных toosend hello журналы tooAzure хранилища и затем настройте журналы hello tooread анализа журналов из хранилища.
 
-Этот подход можно использовать в Log Analytics для сбора диагностических данных из хранилища Azure для таких журналов и ресурсов:
+Служба аналитики журналов можно будет использовать диагностику toocollect этот подход из хранилища Azure для hello следующие журналы и ресурсы:
 
 | Ресурс | Журналы |
 | --- | --- |
@@ -129,26 +129,26 @@ Set-AzureRmDiagnosticSetting -ResourceId $ResourceId  -WorkspaceId $workspaceId 
 | веб-роли; <br> Рабочие роли |Системный журнал Linux <br> Событие Windows <br> Журнал IIS <br> Событие трассировки событий Windows |
 
 > [!NOTE]
-> За хранение и выполнение операций взимается стандартная плата Azure, если вы отправляете данные диагностики в учетную запись хранения, и служба Log Analytics считывает данные из вашей учетной записи хранения.
+> Взимается Стандартная Azure плата для хранилища и транзакций при отправке tooa учетной записи хранения диагностики и анализа журналов считывает hello данные из вашей учетной записи хранилища.
 >
 >
 
-Дополнительные сведения о сборе этих журналов в Log Analytics см. в статье [Использование хранилища BLOB-объектов для IIS и хранилища таблиц для событий](log-analytics-azure-storage-iis-table.md).
+В разделе [используйте хранилище больших двоичных объектов для служб IIS и таблица хранения событий](log-analytics-azure-storage-iis-table.md) toolearn Дополнительные сведения о как служба аналитики журналов может собирать эти журналы.
 
 ## <a name="connectors-for-azure-services"></a>Соединители для служб Azure
 
-Для Application Insights существует соединитель, позволяющий отправлять данные, собранные с помощью Application Insights, в Log Analytics.
+Отсутствует соединитель для Application Insights, позволяющего данными, собранными toobe Application Insights отправлены tooLog Analytics.
 
-Дополнительные сведения о [соединителе Application Insights](https://blogs.technet.microsoft.com/msoms/2016/09/26/application-insights-connector-in-oms/).
+Дополнительные сведения о hello [соединитель Application Insights](https://blogs.technet.microsoft.com/msoms/2016/09/26/application-insights-connector-in-oms/).
 
-## <a name="scripts-to-collect-and-post-data-to-log-analytics"></a>Сценарии для сбора и отправки данных в Log Analytics
+## <a name="scripts-toocollect-and-post-data-toolog-analytics"></a>Сценарии toocollect и post данных tooLog аналитика
 
-Для служб Azure, в которых не предусмотрена отправка журналов и метрик в Log Analytics напрямую, можно использовать сценарий автоматизации Azure для сбора журналов и метрик. Сценарий может отправить данные в Log Analytics с помощью [API сборщика данных](log-analytics-data-collector-api.md).
+Для служб Azure, которые не предоставляют tooLog журналы и показатели toosend прямым способом аналитики можно использовать сценарий автоматизации Azure toocollect hello журнала и метрик. Здравствуйте, затем отправить hello данных tooLog аналитика с помощью Hello сценария можно [API-Интерфейс сборщика данных](log-analytics-data-collector-api.md)
 
-В коллекции шаблонов Azure есть [примеры использования службы автоматизации Azure](https://azure.microsoft.com/en-us/resources/templates/?term=OMS) для сбора данных из служб и их отправки в Log Analytics.
+Коллекция Hello Azure шаблонов имеет [примеры использования автоматизации Azure](https://azure.microsoft.com/en-us/resources/templates/?term=OMS) toocollect данные из службы и отправкой tooLog Analytics.
 
 ## <a name="next-steps"></a>Дальнейшие действия
 
-* [Используйте хранилище BLOB-объектов для IIS и хранилище таблиц для событий](log-analytics-azure-storage-iis-table.md), чтобы считывать журналы служб Azure, которые записывают диагностические данные в табличное хранилище, или журналы IIS, записанные в хранилище BLOB-объектов.
-* [Включите решения](log-analytics-add-solutions.md) , чтобы обеспечить глубокое понимание данных.
-* [Воспользуйтесь запросами поиска](log-analytics-log-searches.md) для анализа данных.
+* [Использовать хранилище больших двоичных объектов для служб IIS и таблица хранения событий](log-analytics-azure-storage-iis-table.md) tooread hello журналы для служб Azure, которые записывают диагностики tootable хранилища или IIS заносит в журнал запись tooblob хранилища.
+* [Включить решения](log-analytics-add-solutions.md) tooprovide понимание данных hello.
+* [Использовать запросы поиска](log-analytics-log-searches.md) tooanalyze hello данных.

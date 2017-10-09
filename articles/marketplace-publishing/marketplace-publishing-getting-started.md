@@ -1,6 +1,6 @@
 ---
-title: "Общие сведения о создании и развертывании предложения в Marketplace | Документация Майкрософт"
-description: "Описание шагов, необходимых для того, чтобы стать утвержденным разработчиком Майкрософт и создавать и развертывать образ виртуальной машины, шаблон, службу данных и службу разработчика в Azure Marketplace"
+title: "aaaOverview как toocreate и развернуть toohello предложение Marketplace | Документы Microsoft"
+description: "Понимание toobecome утвержденных Microsoft developer необходимые шаги hello и создать и развернуть образ виртуальной машины, шаблон, служба данных или разработчик службы в Azure Marketplace hello"
 services: marketplace-publishing
 documentationcenter: 
 author: HannibalSII
@@ -14,53 +14,53 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/05/2017
 ms.author: hascipio
-ms.openlocfilehash: 8fbf201343f6710d2781a4b56ae54833ed4c06cf
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: ac5480b98b8b1021a595db951ed9c974f74415dd
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="publish-and-manage-an-offer-in-the-azure-marketplace"></a>Публикация предложения и управление им в Azure Marketplace
-Эта статья поможет разработчикам создать и развернуть решения, а также управлять ими в Azure Marketplace, чтобы их могли приобрести и использовать другие клиенты и партнеры Azure.
+# <a name="publish-and-manage-an-offer-in-hello-azure-marketplace"></a>Публиковать и управлять предложение в hello Azure Marketplace
+В этой статье предоставляется toohelp разработчикам создавать, развертывать и управлять их решения, перечисленные в hello Azure Marketplace для других клиентов Azure и toopurchase партнеров и использования.
 
 ## <a name="marketplace-publishing"></a>Публикация в Marketplace
-Издатель Azure может распространять и продавать свои инновационные решения или службы другим разработчикам, независимым поставщикам программного обеспечения и ИТ-специалистам в Marketplace. Через Marketplace вы можете взаимодействовать с клиентами, которые хотят быстро разрабатывать облачные приложения и мобильные решения. Если решение предназначено для бизнес-пользователей, воспользуйтесь магазином [AppSource](http://appsource.microsoft.com).
+Как издатель Azure можно распространять и продавать инновационные решения или службы tooother разработчики, независимые поставщики программного обеспечения, и ИТ-специалистов в hello Marketplace. Через hello Marketplace, можно получить доступ пользователи будут tooquickly разработки их облачных приложений и мобильных решений. Если решение предназначено для бизнес-пользователей, может потребоваться tooconsider hello [AppSource](http://appsource.microsoft.com) marketplace.
 
 
 ## <a name="supported-types-of-solutions"></a>Поддерживаемые типы решений
-Первое, что нужно сделать издателю, — определить тип решений, которые предлагает компания. Marketplace поддерживает следующие типы предложений:
+Прежде всего Hello предполагается toodo как издатель — toodefine, какого рода решения предлагает вашей компании. Hello Marketplace поддерживает следующие типы предложений hello:
 
 |Тип решения|Виртуальная машина.|Шаблон решения|
 |---|---|---|
-|**Определение**|Предварительно настроенные образы с полностью установленной операционной системой и одним или несколькими приложениями. Образ виртуальной машины содержит всю информацию для создания и развертывания виртуальных машин в службе виртуальных машин Azure.|Структура данных, которая может ссылаться на одну или несколько отдельных служб Azure, включая службы, опубликованные другими продавцами. Таким образом, подписчики Azure могут согласованно развертывать одно или несколько предложений.|
-|**Пример**|Издатель Azure может создать и проверить виртуальную машину с помощью инновационной службы базы данных. Другие подписчики Azure захотят приобрести и развернуть такую виртуальную машину в своей облачной среде.|Издатель Azure может включить несколько независимых служб Azure в пакет, которые позволят быстро развернуть безопасные облачные службы с высоким уровнем доступности и балансировкой нагрузки. Другие подписчики Azure могут сэкономить время, подготовив шаблон решения в соответствии с целью. Им не придется самостоятельно искать, приобретать, развертывать и настраивать аналогичные службы Azure.|
+|**Определение**|Предварительно настроенные образы с полностью установленной операционной системой и одним или несколькими приложениями. Образ виртуальной машины предоставляет toocreate необходимые сведения hello и развертывание виртуальных машин в hello служба виртуальных машин Azure.|Структура данных, которая может ссылаться на одну или несколько отдельных служб Azure, включая службы, опубликованные другими продавцами. Подписчики Azure могут использовать его toodeploy одно или несколько предложений в виде единого, согласованной.|
+|**Пример**|Издатель Azure может создать и проверить виртуальную машину с помощью инновационной службы базы данных. Других подписчиков Azure требуется tooprocure и развернуть эту виртуальную Машину в своих средах облачной службы.|Как издатель Azure упакованные набор служб в Azure, и упрощает быстрый toodeploy облачные службы с повышенной безопасностью, балансировки нагрузки и высокий уровень доступности. Других подписчиков Azure можно сэкономить время, приобретение шаблон решения hello, соответствующий их цель. Они не имеют toomanually поиск, приобретение, развертывание и настройка hello одинаковые или похожие служб Azure.|
 
 > [!NOTE]
-> Некоторые шаги подходят для разных типов решений, а другие используются только в конкретном решении. В этой статье представлен короткий обзор шагов, которые необходимо выполнить для каждого типа решения.
+> Некоторые шаги являются общими для различных типов решений hello, а другие относятся distinct toohello соответствующего типа решения. В данной статье представлен краткий обзор шагов hello toocomplete необходимо для любого типа решения.
 
 ## <a name="publish-a-solution"></a>Публикация решения
 ![Назначение, регистрация и публикация](media/marketplace-publishing-getting-started/img01.png)
 
 ### <a name="nominate-your-solution-for-pre-approval"></a>Предложите свое решение для предварительного утверждения
-Для публикации [решения](https://createopportunity.azurewebsites.net) виртуальной машины в Marketplace заполните **форму на предварительное утверждение решения** для получения сертификации Microsoft Azure Certified.
+toopublish виртуальной машины [решения](https://createopportunity.azurewebsites.net) toohello Marketplace завершения hello Microsoft Azure Certified **форму заявку решения**.
 
 >[!NOTE]
-> Если вы работаете с менеджером PAM или менеджером партнеров DX, попросите, чтобы они представили ваше решение к участию в программе сертификации Azure. Вы также можете перейти на веб-страницу [Microsoft Azure Certified](http://createopportunity.azurewebsites.net) и заполнить форму заявки. В поле **Microsoft Sponsor Contact** (Контактное лицо) введите электронную почту вашего менеджера PAM или менеджера партнеров DX.
+> При работе с руководителем учетной записи участника или диспетчер партнера DX просьбой toonominate решение для программы Azure Certified hello. Вы можете перейти toohello [Microsoft Azure Certified](http://createopportunity.azurewebsites.net) веб-страницы и заполните hello формы приложения. Введите адрес электронной почты hello, диспетчер учетных записей партнера или диспетчер DX партнера в hello **обратитесь в службу Microsoft главным** поле.
 
-Если вы соответствуете основным требованиям [политик участия в Azure Marketplace](http://go.microsoft.com/fwlink/?LinkID=526833) и ваше приложение утверждено, мы начнем с вами совместную работу по адаптации решения в Marketplace.
+Если отвечают критериям hello в hello [Azure Marketplace участие политики](http://go.microsoft.com/fwlink/?LinkID=526833) и утверждены приложение, мы начнем работа с вы tooonboard вашего решения toohello Marketplace.
 
 ### <a name="register-your-account-as-a-microsoft-seller"></a>Зарегистрируйте свою учетную запись в качестве продавец Майкрософт
 [Зарегистрируйте свою учетную запись Майкрософт в качестве учетной записи разработчика Майкрософт](marketplace-publishing-accounts-creation-registration.md).
 
 ### <a name="publish-your-solution"></a>Опубликуйте свое решения
-Для публикации решения в Marketplace сделайте следующее:
-1. Выполните нетехнические требования.
+toopublish решения toohello Marketplace, выполните следующие действия.
+1. Выполнить требования нетехнический hello.
 
-    а. Выполните [предварительные нетехнические требования](marketplace-publishing-pre-requisites.md).
+    а. Выполнить hello [нетехнический предварительные требования](marketplace-publishing-pre-requisites.md).
 
-    b. Выполните [предварительные технические требования к виртуальной машине](marketplace-publishing-vm-image-creation-prerequisites.md).
+    b. Выполнить hello [технические предварительные требования виртуальной Машины](marketplace-publishing-vm-image-creation-prerequisites.md).
 
-    c. Выполните [предварительные технические требования для шаблона решения](marketplace-publishing-solution-template-creation-prerequisites.md).
+    c. Выполнить hello [технические требования к шаблону решения](marketplace-publishing-solution-template-creation-prerequisites.md).
 
 2. Создайте предложение.
 
@@ -76,29 +76,29 @@ ms.lasthandoff: 07/11/2017
 
     b. [Протестируйте предложение шаблона решения на этапе промежуточного развертывания](marketplace-publishing-solution-template-test-in-staging.md).
 
-5. [Разверните предложение в Azure Marketplace](marketplace-publishing-push-to-production.md).
+5. Развертывание вашего предложения toohello [Marketplace](marketplace-publishing-push-to-production.md).
 
 
 ### <a name="create-and-manage-a-virtual-machine-image"></a>Создание образа виртуальной машины и управление им
 Создайте образ виртуальной машины и управляйте им с помощью этих ресурсов:
 * [Локальное](marketplace-publishing-vm-image-creation-on-premise.md) создание образа виртуальной машины.
-* Создание первой виртуальной машины [Windows на портале Azure](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
-* Создание виртуальной машины [Linux в Azure с помощью портала](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+* Создание виртуальной машины под управлением [Windows в hello портал Azure](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+* Создание виртуальной машины под управлением [Linux на портал Azure hello](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 * Устранение распространенных неполадок, возникающих в процессе [создания виртуального жесткого диска](marketplace-publishing-vm-image-creation-troubleshooting.md).
 
 ## <a name="manage-your-solution"></a>Управление решением
-Управляйте решением с помощью следующих ресурсов:
-* [Руководство по эксплуатации предложений виртуальных машин в Azure Marketplace](marketplace-publishing-vm-image-post-publishing.md)
-* [Обновление нетехнических сведений о предложении или номере SKU](marketplace-publishing-vm-image-post-publishing.md#update-the-nontechnical-details-of-an-offer-or-a-sku)
-* [Обновление нетехнических сведений о предложении или номере SKU](marketplace-publishing-vm-image-post-publishing.md#update-the-technical-details-of-a-sku)
+Управление с помощью решения из hello следующие ресурсы.
+* [Чтение hello после производства для виртуальной машины содержит](marketplace-publishing-vm-image-post-publishing.md)
+* [Обновить сведения нетехнический hello предложение или SKU](marketplace-publishing-vm-image-post-publishing.md#update-the-nontechnical-details-of-an-offer-or-a-sku)
+* [Обновить hello технические детали предложение или SKU](marketplace-publishing-vm-image-post-publishing.md#update-the-technical-details-of-a-sku)
 * [Добавление нового SKU во внесенное в список предложение](marketplace-publishing-vm-image-post-publishing.md#add-a-new-sku-under-a-listed-offer)
-* [Изменение числа дисков данных для внесенного в список номера SKU](marketplace-publishing-vm-image-post-publishing.md#change-the-data-disk-count-for-a-listed-sku)
-* [Удаление внесенного в список предложения из Azure Marketplace](marketplace-publishing-vm-image-post-publishing.md)
-* [Удаление внесенного в список номера SKU из Azure Marketplace](marketplace-publishing-vm-image-post-publishing.md#delete-a-listed-sku-from-the-marketplace)
-* [Удаление текущей версии внесенного в список номера SKU из Azure Marketplace](marketplace-publishing-vm-image-post-publishing.md#delete-the-current-version-of-a-listed-sku-from-the-marketplace)
-* [Возврат рабочих значений цен для внесенных в список элементов](marketplace-publishing-vm-image-post-publishing.md#revert-the-listing-price-to-production-values)
-* [Возврат рабочих значений для модели выставления счетов](marketplace-publishing-vm-image-post-publishing.md#revert-the-billing-model-to-production-values)
-* [Возврат рабочего значения параметра видимости для внесенного в список номера SKU](marketplace-publishing-vm-image-post-publishing.md#revert-the-visibility-setting-of-a-listed-sku-to-the-production-value)
+* [Изменить количество дисков данных hello перечисленных SKU](marketplace-publishing-vm-image-post-publishing.md#change-the-data-disk-count-for-a-listed-sku)
+* [Удаляет предложение перечисленных из hello Marketplace](marketplace-publishing-vm-image-post-publishing.md)
+* [Удалить указанные SKU из hello Marketplace](marketplace-publishing-vm-image-post-publishing.md#delete-a-listed-sku-from-the-marketplace)
+* [Удаление текущей версии перечисленных SKU hello из hello Marketplace](marketplace-publishing-vm-image-post-publishing.md#delete-the-current-version-of-a-listed-sku-from-the-marketplace)
+* [Отменить вывод значения цен tooproduction hello](marketplace-publishing-vm-image-post-publishing.md#revert-the-listing-price-to-production-values)
+* [Вернуть hello значения tooproduction модели выставления счетов](marketplace-publishing-vm-image-post-publishing.md#revert-the-billing-model-to-production-values)
+* [Отменить параметр видимости hello перечисленных toohello рабочее значение SKU](marketplace-publishing-vm-image-post-publishing.md#revert-the-visibility-setting-of-a-listed-sku-to-the-production-value)
 * [Просмотр и изменение статуса участия в программе поощрения поставщиков облачных решений в Azure Marketplace](marketplace-publishing-csp-incentive.md)
 * [Основная информация об отчетах о выплатах Azure Marketplace](marketplace-publishing-report-payout.md)
 * [Поддержка издателей](marketplace-publishing-get-publisher-support.md)

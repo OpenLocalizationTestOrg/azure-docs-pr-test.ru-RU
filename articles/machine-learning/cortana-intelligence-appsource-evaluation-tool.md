@@ -1,6 +1,6 @@
 ---
-title: "Средство оценки решений Cortana Intelligence | Документация Майкрософт"
-description: "Ниже описаны все шаги, которые партнеру корпорации Майкрософт необходимо выполнить для публикации решений Cortana Intelligence."
+title: "Средство оценки решения аналитики aaaCortana | Документы Microsoft"
+description: "Партнеры Майкрософт вот все hello шаги, которые toofollow toopublish tooAppSource решение вашей Cortana аналитики."
 services: machine-learning
 documentationcenter: 
 author: AnupamMicrosoft
@@ -13,25 +13,25 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/07/2017
 ms.author: anupams;v-bruham;garye
-ms.openlocfilehash: e79ca131bddc9e65dd24da109b9e8a08606f7bc6
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 76cde4e2090c121683b7026f3d80f90f64566607
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="cortana-intelligence-solution-evaluation-tool"></a>Средство оценки решений Cortana Intelligence
 ## <a name="overview"></a>Обзор
-Средство оценки решений Cortana Intelligence можно использовать для проверки расширенных аналитических решений на соответствие рекомендациям Майкрософт. Корпорация Майкрософт с готовностью сотрудничает со своими партнерами (независимыми поставщиками программного обеспечения и системными интеграторами), чтобы предоставить клиентам, торговым посредникам и партнерам внедрения высококачественных решений. В этом руководстве будет рассмотрен процесс использования средства оценки решений с вашим решением и описаны конкретные рекомендации по проверке.
+Можно использовать hello tooassess средство оценки решения аналитики Cortana решениях расширенной аналитики на соответствие рекомендациям Майкрософт. Корпорация Майкрософт считает сообщаем toowork со своими партнерами (независимые поставщики программного обеспечения и SIs) tooprovide высококачественных решений для заказчиков, торговых посредников и реализации. В этом руководстве будет Пройдите hello процесс использования средства оценки решения hello вместе с вашим решением и описывают hello конкретные рекомендации в проверки.
 
 ## <a name="getting-started"></a>Приступая к работе
-[Скачайте](https://aka.ms/aa-evaluation-tool-download) и установите средство оценки решений Cortana Intelligence.
+Проверьте [загрузки](https://aka.ms/aa-evaluation-tool-download) и установить средства оценки решения аналитики Cortana hello.
 
 Предварительные требования:
 - Windows 10: [официальный сайт Windows 10](https://www.microsoft.com/en-us/windows);
 - Azure Powershell: [Install and configure Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-4.0.0) (Установка и настройка Azure PowerShell).
 
 ## <a name="identifying-your-app"></a>Определение приложения
-После завершения установки откройте средство и приступите к первой оценке.
+После завершения установки откройте средство hello и перед началом первого знакомства с.
 
 ![Открытие средства оценки](./media/cortana-intelligence-appsource-evaluation-tool/1-open-evaluation-tool.png)
 
@@ -39,22 +39,22 @@ ms.lasthandoff: 07/11/2017
 
 ![Подключение к подписке Azure](./media/cortana-intelligence-appsource-evaluation-tool/2-connect-azure-subscription.png)
 
-Подключитесь к подписке Azure и укажите группу ресурсов, содержащую приложение.
+Подключите tooyour подписки Azure и укажите группу ресурсов, содержащую приложение hello.
 
 ![Выбор ресурсов](./media/cortana-intelligence-appsource-evaluation-tool/3-select-resources.png)
 
-После загрузки группы ресурсов выберите ресурсы решения и определите доступность всех ресурсов данных, таких как:
+После загрузки группы ресурсов hello выберите hello ресурсы, которые включены в решение и определить доступность hello все ресурсы данных, либо как:
 - Прием
 - Потребление
 - Внутренний
 
-Мы используем эти сведения, чтобы лучше понять, как решение использует различные компоненты, а также, чтобы убедиться в том, что компоненты пользовательского интерфейса соответствуют рекомендациям.
+Мы используем эти сведения toobetter понимать, как решение использует различные компоненты и компоненты пользовательского интерфейса tooensure согласованы с рекомендациями.
 
 ### <a name="ingestion"></a>Прием
-В этом случае прием означает все источники данных, которые используются для извлечения данных за пределами решения, или любые службы за пределами решения, которые используются для отправки в него данных.
+В этом случае приема означает источников данных, используемых toopull в данных из внешних hello решения или что все службы вне решения hello использовать toopush данные в него.
 
 ### <a name="consumption"></a>Потребление
-Потребление в данном случае означает все наборы данных, которые используются для прямой или косвенной отправки данных пользователям. Например:
+В этом случае потребление означает все наборы данных, которые пользователи tooend данных используется toopush, прямо или косвенно. Например:
 - Наборы данных, используемые в прямых запросах из Power BI.
 - Наборы данных, запрашиваемые в веб-приложениях.
 
@@ -64,52 +64,52 @@ ms.lasthandoff: 07/11/2017
 ### <a name="internal"></a>Внутренний
 Укажите все внутренние ресурсы данных, которые используются только при обработке внутри приложения.
 
-После этого вам будет предложено предоставить действительные учетные данные для всех баз данных, указанные на предыдущем шаге:
+Далее будет запрашиваемые tooprovide действительные учетные данные для всех баз данных, указанное в предыдущем шаге hello:
 
 ![Настройка необходимых условий для теста](./media/cortana-intelligence-appsource-evaluation-tool/4-set-test-prerequisites.png)
 
 ## <a name="solution-test-cases"></a>Тестовые случаи приложений
-Средство решения выполнит несколько автоматических тестов решения.
+Hello решения средство выполнит набор автоматических тестов в решении.
 
 ![Выполнение набора тестов](./media/cortana-intelligence-appsource-evaluation-tool/5-set-test-execution.png)
 
-После выполнения тестов появится запрос на предоставление пояснений или причин, по которым решение не соответствует требованиям.
+После завершения тестов hello, будет задаваемые tooprovide объяснение или обоснование почему решения отвечает требованию hello.
 
 ![Предоставление коммерческого обоснования](./media/cortana-intelligence-appsource-evaluation-tool/6-provide-business-justification.png)
 
-Если решение публикуется в хранилище данных SQL Azure, для оценочных тестов потребуется также публикация в Azure Analysis Services. 
+Например если решение публикует tooAzure хранилища данных SQL, вычисления hello тестов требуется tooalso вы опубликовать tooAzure Analysis Services. 
 
-Решение может использовать виртуальные машины IaaS под управлением SQL Server Analysis Services вместо Azure Analysis Services. Это может быть приемлемой причиной неудачного выполнения теста.
+Решение может использовать виртуальные машины IaaS под управлением SQL Server Analysis Services вместо Azure Analysis Services. Это может быть приемлемым причину сбоя теста hello.
 ## <a name="packaging-your-evaluation-results"></a>Упаковка результатов оценки
-После выполнения тестовых случаев пакет оценки будет экспортирован в ZIP-файл, и вам будет предложено отправить отзыв о средстве оценки. 
+После завершения hello тестовые случаи, оценки пакета будет tooa экспортируемый ZIP-файл и будет выведено tooprovide отзывы на средства оценки hello. 
 
-Этот ZIP-файл результатов теста вашего решения нужно предоставить корпорации Майкрософт для оценки перед получением подтверждения и добавлением в AppSource.
+Требуется этот тест приводит к ZIP-файл с корпорацией Майкрософт для вашего решения toobe, вычисляется перед получением toobe утверждения добавлены tooshare tooAppSource
 
 ![Градация средства оценки](./media/cortana-intelligence-appsource-evaluation-tool/7-grade-evaluation-tool.png)
 
-В разделе выше этой статьи рассматриваются различные функции средства. Теперь давайте рассмотрим типы рекомендаций, которые этот инструмент оценивает.
+Над разделом это статье рассматриваются различные возможности средства hello, теперь давайте рассмотрим типы рекомендаций, это средство оценивает.
 
 ## <a name="security-evaluation-considerations"></a>Рекомендации по оценке безопасности
 ### <a name="databases-should-use-azure-active-directory-authentication"></a>Базы данных должны использовать проверку подлинности Azure Active Directory
-Все ресурсы Azure SQL или хранилища данных SQL Azure в решении должны поддерживать проверку подлинности Azure Active Directory (AAD). AAD представляет собой единое место для управления всеми удостоверениями и ролями.
+Все ресурсы Azure SQL или хранилища данных SQL Azure в hello sloution должна быть включена с помощью проверки подлинности Azure Active Directory (AAD). AAD предоставляет toomanage единое место, все удостоверения и ролей.
 
 | Дополнительные сведения | Статья |
 | --- | --- |
 | AAD с базой данных SQL Azure и хранилищем данных SQL | [Использование аутентификации Azure Active Directory для аутентификации с помощью базы данных SQL или хранилища данных SQL](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-aad-authentication) |
 | Настройка и управление AAD | [Настройка аутентификации Azure Active Directory и управление ею с использованием базы данных SQL или хранилища данных SQL](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-aad-authentication-configure) |
 | Проверки подлинности веб-приложений Azure | [Проверка подлинности и авторизация в службе приложений Azure](https://docs.microsoft.com/en-us/azure/app-service/app-service-authentication-overview) |
-| Настройка веб-приложений с помощью AAD | [Настройка приложения службы приложений для использования службы входа Azure Active Directory](https://docs.microsoft.com/en-us/azure/app-service-mobile/app-service-mobile-how-to-configure-active-directory-authentication)|
+| Настройка веб-приложений с помощью AAD | [Как tooconfigure вход Azure Active Directory toouse приложения служб приложений](https://docs.microsoft.com/en-us/azure/app-service-mobile/app-service-mobile-how-to-configure-active-directory-authentication)|
 
-### <a name="datasets-accessible-to-end-users-should-support-role-based-access-control"></a>Наборы данных, доступные пользователям, должны поддерживать управление доступом на основе ролей
-Во время выполнения средства оценки вам будет предложено указать ресурсы отчетности и публикации. Предполагается, что эти ресурсы предназначены для использования пользователями, а не разработчиками. Чтобы убедиться, что пользователи имеют доступ только к авторизованным данным, этим ресурсам следует предоставить возможность управления доступом на основе ролей (RBAC).
+### <a name="datasets-accessible-tooend-users-should-support-role-based-access-control"></a>Наборы данных доступны tooend — пользователи должны поддерживать управление доступом на основе ролей
+Во время выполнения средства оценки hello, появится запрос toospecify отчеты или публикации ресурсов. Предполагается, что эти ресурсы предназначены для использования пользователями, а не разработчиками. Эти ресурсы должны быть обеспечивают управление доступом на основе ролей (RBAC) в порядке tooensure, конечные пользователи являются только может tooaccess полномочным данных.
 
-В частности все следующие ресурсы Azure можно настроить с помощью RBAC и все они считаются приемлемыми.
-- Общие сведения о защите HDInsight см. в статье [Основные сведения о безопасности Hadoop в присоединенных к домену кластерах HDInsight (предварительная версия)](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-domain-joined-introduction).
+В частности любой из hello следующие ресурсы Azure можно настроить с помощью RBAC и считаются приемлемыми:
+- Защита HDInsight см. в разделе [безопасности tooHadoop Знакомство с кластерами HDInsight на присоединенных к домену](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-domain-joined-introduction)
 - Общие сведения об Azure SQL см. в статье [Использование аутентификации Azure Active Directory для аутентификации с помощью базы данных SQL или хранилища данных SQL]( https://docs.microsoft.com/en-us/azure/sql-database/sql-database-aad-authentication).
 - Общие сведения о службах Azure Analysis Services см. в статье [Manage database roles and users](https://docs.microsoft.com/azure/analysis-services/analysis-services-database-users) (Управление ролями баз данных и пользователями).
 - Хранилище данных SQL Azure (так как хранилище данных SQL поддерживает RBAC, мы не рекомендуем предоставлять к нему доступ пользователям).
 
-Если вы используете другой тип ресурса, поддерживающий RBAC, укажите это в обосновании тестового случая.
+Если вы используете другой тип ресурса, поддерживающий RBAC, укажите, в тестовый случай обоснование hello.
 
 ### <a name="azure-data-lake-store-should-use-at-rest-encryption"></a>Для Azure Data Lake Store следует использовать шифрование неактивных данных
 Azure Data Lake Store (ADLS) по умолчанию поддерживает шифрование неактивных данных с помощью ключей шифрования, под управлением ADLS. Шифрование также можно настроить с использованием Azure Key Vault.
@@ -126,29 +126,29 @@ Azure SQL и хранилище данных SQL Azure поддерживают 
 | Настройка Azure SQL с прозрачным шифрованием данных | [Прозрачное шифрование данных в Базе данных SQL Azure](https://docs.microsoft.com/en-us/sql/relational-databases/security/encryption/transparent-data-encryption-with-azure-sql-database) |
 | Настройка SQL Azure с шифрованием Always Encrypted | [Always Encrypted: защита конфиденциальных данных в Базе данных SQL и хранение ключей шифрования в хранилище ключей Azure](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-always-encrypted-azure-key-vault)|
 
-Помимо прозрачного шифрования данных Azure SQL также поддерживает шифрование Always Encrypted — новую технологию шифрования данных, которая гарантирует, что данные шифруются не только при хранении и во время передачи между клиентом и сервером, но и при использовании данных во время выполнения команды на сервере.
+Кроме tooTDE Azure SQL также поддерживает постоянное шифрование, новая технология шифрования данных, что гарантирует, что данные шифруются не только на rest и во время перемещения между клиентом и сервером, но при данных используется при выполнении команды на сервере hello.
 
-### <a name="any-virtual-machines-must-be-deployed-from-the-azure-marketplace"></a>Все виртуальные машины нужно развертывать из Azure Marketplace
-Чтобы обеспечить приемлемый уровень безопасности в AppSource, требуется, чтобы все виртуальные машины, развернутые как часть решения Cortana Intelligence, были сертифицированы и опубликованы в Azure Marketplace.
+### <a name="any-virtual-machines-must-be-deployed-from-hello-azure-marketplace"></a>Все виртуальные машины должны быть развернуты из hello Azure Marketplace
+В порядке tooprovide приемлемый уровень безопасности по AppSource требует, что все виртуальные машины, развернутые как часть решения аналитики Cortana быть Сертифицировано и опубликована на hello Azure Marketplace.
 
-Текущий список образов Azure Marketplace см. в [Microsoft Azure Marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/category/compute).
+toosearch hello текущий список образов Azure Marketplace в разделе [Microsoft Azure Marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/category/compute).
 
-Сведения о том, как опубликовать образ виртуальной машины для Azure Marketplace, см. в статье [Руководство по созданию образа виртуальной машины для Azure Marketplace](https://docs.microsoft.com/en-us/azure/marketplace-publishing/marketplace-publishing-vm-image-creation).
+Сведения о том, как toopublish образ виртуальной машины для Azure Marketplace см. в разделе [toocreate руководство образ виртуальной машины для hello Azure Marketplace](https://docs.microsoft.com/en-us/azure/marketplace-publishing/marketplace-publishing-vm-image-creation).
 
 ## <a name="scalability-evaluation-considerations"></a>Рекомендации по оценке масштабируемости
 ### <a name="cortana-intelligence-solutions-should-include-a-scalable-big-data-platform"></a>Решения Cortana Intelligence должны содержать масштабируемую платформу для больших данных
-Решения Cortana Intelligence должны масштабироваться до очень больших объемов данных. В Azure это означает, что они должны содержать одну из двух платформ данных петабайтного уровня:
+Решения аналитики Cortana следует использовать масштабирование toovery данные большого размера. В Azure это означает, что они должны включать одну из двух петабайт масштаб данных для hello платформ:
 - Хранилище озера данных Azure
 - Хранилище данных SQL Azure
 
-Если решению не требуется поддержка данных таких размеров или в случае использования альтернативной платформы данных, укажите это в обосновании тестового случая.
+Если решение не требуется поддержка этих размеров данных или при использовании платформу альтернативных данных опишите это в обоснование hello тестового случая.
 ### <a name="cortana-intelligence-solutions-should-include-dedicated-ingestion-data-environments"></a>Решения Cortana Intelligence должны содержать выделенные среды приема данных
 Решения Cortana Intelligence не должны непосредственно вставлять данные в реляционные источники данных. Вместо этого необработанные данные должны храниться в неструктурированной среде с идемпотентными вставками или обновлениями в любом реляционном хранилище с помощью фабрики данных Azure.
 
 Дополнительные сведения о копировании данных с помощью фабрики данных Azure см. в статье [Руководство. Создание конвейера с действием копирования с помощью Visual Studio](https://docs.microsoft.com/en-us/azure/data-factory/data-factory-copy-activity-tutorial-using-visual-studio).
 
 ### <a name="azure-sql-data-warehouse-should-use-polybase-for-data-ingestion"></a>В хранилище данных SQL Azure для приема данных следует использовать PolyBase
-Хранилище данных SQL поддерживает PolyBase для параллельного приема данных с высоким уровнем масштабируемости. PolyBase позволяет использовать хранилище данных SQL Azure, чтобы отправлять запросы к внешним наборам данных, хранящимся в хранилище BLOB-объектов или в Azure Data Lake Store. Это обеспечивает высокую производительность альтернативных методов массовых обновлений.
+Хранилище данных SQL поддерживает PolyBase для параллельного приема данных с высоким уровнем масштабируемости. PolyBase позволяет toouse хранилища данных SQL Azure tooissue запросы внешних наборов данных, хранящихся в хранилище больших двоичных объектов Azure или хранилища Озера данных Azure. Это обеспечивает высокую производительность tooalternative методов массового обновления.
 
 Инструкции по началу работы с PolyBase и хранилищем данных SQL Azure см. в статье [Загрузка данных в хранилище данных SQL с помощью PolyBase](https://docs.microsoft.com/en-us/azure/sql-data-warehouse/sql-data-warehouse-get-started-load-with-polybase).
 
@@ -156,46 +156,46 @@ Azure SQL и хранилище данных SQL Azure поддерживают 
 
 ## <a name="availability-evaluation-considerations"></a>Рекомендации по оценке доступности
 
-### <a name="datasets-accessible-to-end-users-should-support-a-large-volume-of-concurrent-users"></a>Наборы данных, доступные пользователям, должны поддерживать большое количество одновременных пользователей
-Во время выполнения средства оценки вам будет предложено указать ресурсы отчетности и публикации. Предполагается, что эти ресурсы предназначены для использования пользователями, а не разработчиками. Эти ресурсы должны поддерживать от среднего до большого количества одновременных пользователей.
+### <a name="datasets-accessible-tooend-users-should-support-a-large-volume-of-concurrent-users"></a>Пользователям доступны tooend наборы данных должны поддерживать большое количество одновременных пользователей
+Во время выполнения средства оценки hello, появится запрос toospecify отчеты или публикации ресурсов. Предполагается, что эти ресурсы предназначены для использования пользователями, а не разработчиками. Эти ресурсы должны поддерживать от среднего до большого количества одновременных пользователей.
 
-В частности хранилище данных SQL Azure не должно быть единственным источником данных, доступным для пользователей. Если хранилище данных SQL Azure предоставляется как ресурс для опытных пользователей, необходимо предоставить доступ к службам Azure Analysis Services обычным пользователям.
+В частности хранилище данных SQL Azure не должно быть hello единственным данных источника tooend доступных пользователей. Если хранилища данных SQL Azure предоставляется в качестве ресурса для опытных пользователей, Azure Analysis Services должны быть сделаны доступными tootypical пользователей.
 
 Дополнительные сведения об ограничениях параллелизма хранилища данных SQL Azure см. в статье [Управление параллелизмом и рабочей нагрузкой в хранилище данных SQL](https://docs.microsoft.com/en-us/azure/sql-data-warehouse/sql-data-warehouse-develop-concurrency).
 
 Дополнительные сведения о службах Analysis Services Azure см. в статье [Службы Azure Analysis Services](https://docs.microsoft.com/azure/analysis-services/analysis-services-overview).
 
 ### <a name="azure-sql-resources-should-have-a-read-only-replica-for-failover"></a>Для отработки отказа ресурсы SQL Azure должны иметь реплику только для чтения
-Базы данных SQL Azure поддерживают георепликацию данных на вторичный экземпляр. Затем этот экземпляр можно использовать в качестве экземпляра отработки отказа, чтобы обеспечить высокий уровень доступности приложений.
+Базы данных SQL Azure поддерживают георепликацию tooa второй экземпляр. Этот экземпляр можно как отработки отказа экземпляр tooprovide высокий уровень доступности приложения.
 
 Дополнительные сведения о георепликации в базе данных SQL Azure см. в статье [Обзор. Группы отработки отказа и активная георепликация](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-geo-replication-overview).
 
-Инструкции по настройке георепликации в SQL Azure см. в разделе [Настройка активной георепликации для базы данных SQL Azure с помощью Transact-SQL](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-geo-replication-transact-sql).
+Дополнительные сведения о tooconfigure географическую репликацию данных Azure SQL в разделе [Настройка активной георепликации для базы данных SQL Azure с помощью Transact-SQL](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-geo-replication-transact-sql).
 
 ### <a name="azure-sql-data-warehouse-should-have-geo-redundant-backups-enabled"></a>В хранилище данных SQL Azure необходимо включить геоизбыточное резервное копирование
-Хранилище данных SQL Azure поддерживает ежедневное резервное копирование в геоизбыточное хранилище. Георепликация гарантирует, что вы сможете восстановить хранилище данных даже при отсутствии доступа к моментальным снимкам, размещенным в основном регионе. Эта функция включена по умолчанию и не должна отключаться в решениях Cortana Intelligence.
+Хранилища данных SQL поддерживает toogeo избыточного хранилища ежедневных резервных копий. Географическая репликация гарантирует, что вы можете восстановить hello хранилище данных даже в ситуациях, где не может получить доступ к моментальных снимков, хранящихся в основном регионе. Эта функция включена по умолчанию и не должна отключаться в решениях Cortana Intelligence.
 
 Дополнительные сведения о резервных копиях и восстановлении хранилища данных SQL Azure см. в [этой статье ](https://docs.microsoft.com/en-us/azure/sql-data-warehouse/sql-data-warehouse-backups).
 
 ### <a name="virtual-machines-should-be-configured-with-availability-sets"></a>Виртуальные машины необходимо настроить с помощью групп доступности
-Это необходимо для минимизации влияния запланированных и незапланированных событий обслуживания.
+Виртуальные машины Azure должны быть настроены в группах доступности в порядке toominimize hello воздействие обслуживания запланированных и незапланированных событий.
 
-Дополнительные сведения о виртуальных машинах Azure и группах доступности см. в статье [Управление доступностью виртуальных машин Windows в Azure](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/manage-availability).
+Дополнительные сведения о доступности виртуальной машины Azure см. в разделе [управлять доступностью hello виртуальных машинах в Azure](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/manage-availability).
 
 ## <a name="other-evaluation-considerations"></a>Рекомендации по другим оценкам
 ### <a name="cortana-intelligence-apps-should-use-a-centralized-tool-for-data-orchestration"></a>Приложения Cortana Intelligence должны использовать централизованное средство для оркестрации данных
-Использование одного средства для планирования перемещения и преобразования данных, а также для управления этими процессами обеспечивает согласованность критически важных данных. Это обеспечивает четкую логику при управлении зависимостями, логику повторных попыток, предупреждения и ведения журнала и т. д. Мы рекомендуем использовать [фабрику данных Azure](https://docs.microsoft.com/en-us/azure/data-factory/data-factory-introduction) для оркестрации данных в Azure.
+Использование одного средства для планирования перемещения и преобразования данных, а также для управления этими процессами обеспечивает согласованность критически важных данных. Это обеспечивает четкую логику при управлении зависимостями, логику повторных попыток, предупреждения и ведения журнала и т. д. Рекомендуется использовать hello [фабрики данных Azure](https://docs.microsoft.com/en-us/azure/data-factory/data-factory-introduction) для данных orchestration в Azure.
 
 Если для оркестрации данных используется средство, отличное от фабрики данных Azure, опишите, какие именно средства вы используете.
 ### <a name="azure-machine-learning-models-should-be-retrained-using-azure-data-factory"></a>Переобучение моделей машинного обучения Azure следует выполнять с помощью фабрики данных Azure
-Машинное обучение Azure предоставляет простые в использовании средства для создания и развертывания конвейеров прогнозного моделирования и машинного обучения. Тем не менее важно, чтобы развертывание этих моделей в рабочей среде не зависело от одного основного набора данных, но вместо этого адаптировалось к изменяющейся динамике реальных явлений.
+Azure машинного обучения (AzureML) предоставляет средства easy toouse для hello Создание и развертывание прогнозирующее моделирование и машинное обучение конвейеров. Тем не менее важно рабочих развертываний этих моделей AzureML не зависит от одного основного набора данных, что вместо адаптирует toohello сдвиг dynamics реальных явлений.
 
 Дополнительные сведения о создании переобучаемых веб-служб в AzureML см. в статье [Программное переобучение моделей машинного обучения](https://docs.microsoft.com/en-us/azure/machine-learning/machine-learning-retrain-models-programmatically).
 
-Дополнительные сведения об автоматизации процесса обучения модели с помощью фабрики данных Azure см. в статье [Обновление моделей машинного обучения Azure с помощью действия "Обновить ресурс"](https://docs.microsoft.com/en-us/azure/data-factory/data-factory-azure-ml-update-resource-activity).
+Дополнительные сведения об автоматизации процесса обучения модели hello, с помощью фабрики данных Azure см. в разделе [моделей обновления машинного обучения Azure, с помощью действия ресурса обновления](https://docs.microsoft.com/en-us/azure/data-factory/data-factory-azure-ml-update-resource-activity).
 
 ## <a name="existing-documentation"></a>Имеющаяся документация
-[Сертификация Microsoft Azure](https://azure.microsoft.com/en-us/marketplace/programs/certified/)
+[Microsoft Azure Certified toogrow бизнеса облака](https://azure.microsoft.com/en-us/marketplace/programs/certified/)
 
 [Сертификация Microsoft Azure: Cortana Intelligence](https://azure.microsoft.com/en-us/marketplace/programs/certified/cortana/)
 

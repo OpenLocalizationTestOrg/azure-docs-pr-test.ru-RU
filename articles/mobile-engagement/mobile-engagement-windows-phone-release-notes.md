@@ -1,5 +1,5 @@
 ---
-title: "Заметки о выпуске пакета SDK для Windows Phone Silverlight для Служб мобильного взаимодействия Azure | Документация Майкрософт"
+title: "aaaAzure Mobile Engagement Windows Phone Silverlight SDK заметки о выпуске | Документы Microsoft"
 description: "Заметки о выпуске пакета SDK для Windows Phone Silverlight для Служб мобильного взаимодействия Azure"
 services: mobile-engagement
 documentationcenter: mobile
@@ -14,33 +14,33 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 11/03/2016
 ms.author: piyushjo
-ms.openlocfilehash: df754a3002750e6ba0b71b664c1df84d506808a4
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: f9af6ca91295dbecfa4c51fe4b3bad6626fa5999
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="windows-phone-silverlight-sdk-release-notes"></a>Заметки о выпуске пакета SDK для Windows Phone Silverlight
 ##<a name="331-11032016"></a>3.3.1 (11/03/2016)
-Входит в пакет NuGet *MicrosoftAzure.MobileEngagement***версии 3.4.1**
+Часть hello *MicrosoftAzure.MobileEngagement* пакет Nuget **v3.4.1**
 
 * Улучшение стабильности.
 
 ## <a name="330-04192016"></a>3.3.0 (19.04.2016)
-Входит в пакет Nuget *MicrosoftAzure.MobileEngagement***версии 3.4.0**
+Часть hello *MicrosoftAzure.MobileEngagement* пакет Nuget **v3.4.0**
 
-* Добавлен API "TestLogLevel" для включения, отключения или фильтрации журналов консоли, созданных с помощью пакета SDK.
+* Добавлены журналы консоли tooenable/disable фильтр «TestLogLevel» API, генерируемой hello SDK.
 
 ## <a name="320-01222016"></a>3.2.0 (22.01.2016 г.)
-Входит в пакет Nuget *MicrosoftAzure.MobileEngagement***версии 3.3.0**
+Часть hello *MicrosoftAzure.MobileEngagement* пакет Nuget **v3.3.0**
 
 * По URL-адресам действия доступны настраиваемые схемы, ms-appx и ms-appdata.
 * Улучшение стабильности.
 
 ## <a name="310-11202015"></a>3.1.0 (11/20/2015)
-Входит в пакет Nuget *MicrosoftAzure.MobileEngagement***версии 3.2.0**
+Часть hello *MicrosoftAzure.MobileEngagement* пакет Nuget **v3.2.0**
 
-* Исправлена проблема сбоев при запросе идентификатора устройства сразу после инициализации.
+* Фиксированный сбоя при запросе hello идентификатор устройства сразу после инициализации hello.
 * Улучшены журналы консоли.
 
 ## <a name="300-04032015"></a>3.0.0 (03.04.2015)

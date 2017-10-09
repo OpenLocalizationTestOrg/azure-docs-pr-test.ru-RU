@@ -1,6 +1,6 @@
 ---
 title: "Поставщики услуг подключения и расположения Azure ExpressRoute | Документация Майкрософт"
-description: "В этой статье приведена подробная информация о расположениях, где предлагаются услуги, и способах подключения к регионам Azure. Эта таблица отсортирована по поставщику услуг подключения."
+description: "В этой статье приведен подробный обзор расположений, где предоставляются услуги и как tooconnect tooAzure областей. Эта таблица отсортирована по поставщику услуг подключения."
 services: expressroute
 documentationcenter: na
 author: cherylmc
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/17/2017
 ms.author: kaanan
-ms.openlocfilehash: c9f44dbc943e854915c4e34b4dffa2c294f7866d
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: df906ae6ff4e149c9cab4aa46ab78c8dd6aa4366
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>Партнеры и одноранговые расположения ExpressRoute
 
@@ -27,17 +27,17 @@ ms.lasthandoff: 08/29/2017
 > * [Поставщики по расположению](expressroute-locations-providers.md)
 
 
-В данной статье приведены таблицы со сведениями о поставщиках услуг подключения ExpressRoute, географическом покрытии ExpressRoute, облачных службах Майкрософт, поддерживаемых через ExpressRoute, и системных интеграторах ExpressRoute.
+Hello таблицах в этой статье содержатся сведения о ExpressRoute поставщиков услуг подключения, географических покрытия ExpressRoute, облачные службы Майкрософт, поддерживается через ExpressRoute и системным интеграторам ExpressRoute (копий SIs).
 
 ## <a name="partners"></a>Поставщики услуг подключения ExpressRoute
-ExpressRoute поддерживается во всех регионах и расположениях Azure. На следующей карте обозначены регионы Azure и расположения ExpressRoute. Расположения ExpressRoute соответствуют тем территориям, где Майкрософт взаимодействует с несколькими одноранговыми поставщиками услуг.
+ExpressRoute поддерживается во всех регионах и расположениях Azure. После сопоставления Hello список регионов Azure и расположения ExpressRoute. Расположения ExpressRoute см. в toothose, где Microsoft одноранговые элементы с несколькими поставщиками услуг.
 
 ![Карта расположения][0]
 
-Вы сможете получить доступ ко всем службам Azure во всех регионах соответствующего геополитического региона, если вы подключены по меньшей мере к одному расположению ExpressRoute в этом регионе.
+Будет иметь tooAzure доступ к службам по всем регионам в геополитические области, если подключение tooat по крайней мере одно расположение ExpressRoute в пределах области геополитические hello.
 
-### <a name="azure-regions-to-expressroute-locations-within-a-geopolitical-region"></a>Регионы Azure с расположениями ExpressRoute в пределах геополитических регионов
-В следующей таблице сопоставлены регионы Azure с расположениями ExpressRoute в пределах геополитических регионов.
+### <a name="azure-regions-tooexpressroute-locations-within-a-geopolitical-region"></a>Расположения tooExpressRoute регионах Azure геополитические области.
+Привет, в следующей таблице предоставляются ссылки карта областей Azure tooExpressRoute геополитических области.
 
 | **Геополитический регион** | **Регионы Azure** | **Расположения ExpressRoute** |
 | --- | --- | --- |
@@ -51,7 +51,7 @@ ExpressRoute поддерживается во всех регионах и ра
 | **Южная Корея** |Центральная Корея, Южная Корея |Пусан, Сеул |
 
 ### <a name="regions-and-geopolitical-boundaries-for-national-clouds"></a>Регионы и геополитические границы для национальных облаков
-В таблице ниже содержатся сведения о регионах и геополитических границах для национальных облаков.
+в следующей таблице Hello сведения для областей и геополитические границы national облаков.
 
 | **Геополитический регион** | **Регионы Azure** | **Расположения ExpressRoute** |
 | --- | --- | --- |
@@ -59,11 +59,11 @@ ExpressRoute поддерживается во всех регионах и ра
 | **Китай** |Северный Китай, Восточный Китай |Пекин, Шанхай |
 | **Германия** |Центральная Германия, восточная Германия |Берлин, Франкфурт |
 
-В стандартном номере SKU ExpressRoute подключение между геополитическими регионами не поддерживается. Для поддержки глобальных подключений необходимо включить надстройку ExpressRoute класса "Премиум". Подключение к национальным облачным средам не поддерживается. При необходимости вы можете работать с поставщиками услуг подключения.
+Подключение геополитические регионах в стандартных hello ExpressRoute SKU не поддерживается. Требуется tooenable hello ExpressRoute premium надстройку toosupport глобального подключение. Подключение toonational облачных сред, не поддерживается. При необходимости вы можете работать с поставщиками услуг подключения.
 
 ## <a name="locations"></a>Расположения поставщиков услуг подключения
 
-В следующей таблице показаны расположения по поставщикам услуг. См. дополнительные сведения о [службах доступных поставщиков по расположению](expressroute-locations-providers.md#locations).
+Привет, в следующей таблице показаны положения поставщиком услуг. Если tooview доступных поставщиков по расположению, см. [поставщики по расположению](expressroute-locations-providers.md#locations).
 
 
 ### <a name="production-azure"></a>Рабочая среда Azure
@@ -139,7 +139,7 @@ ExpressRoute поддерживается во всех регионах и ра
 | --- | --- | --- | --- |
 | **China Telecom** |Поддерживаются |Не поддерживается |Пекин, Шанхай |
 
-Дополнительные сведения см. на странице [ExpressRoute в Китае](http://www.windowsazure.cn/home/features/expressroute/).
+toolearn более, в разделе [ExpressRoute в Китае](http://www.windowsazure.cn/home/features/expressroute/).
 
 ### <a name="germany"></a>Германия
 | **Поставщик услуг** | **Microsoft Azure** | **Office 365** | **Расположения** |
@@ -155,7 +155,7 @@ ExpressRoute поддерживается во всех регионах и ра
 
 Вы можете создать подключение, даже если ваш поставщик услуг подключения не указан в предыдущих разделах.
 
-* Узнайте у своего поставщика услуг подключения, подключен ли он к какому-либо Exchange, указанному в таблице выше. Дополнительные сведения об услугах, предлагаемых поставщиками Exchange, см. по ссылкам ниже. Несколько поставщиков услуг подключения уже подключены к серверам Ethernet Exchange.
+* Проверьте у вашего toosee подключения поставщика они являются подключенных tooany обмена hello в приведенной выше таблице hello. Можно проверить следующие hello ссылки toogather Дополнительные сведения о службах, предлагаемыми поставщиками exchange. Несколько поставщиков услуг подключения, уже подключенные tooEthernet обмен.
   * [Cologix](http://www.cologix.com/)
   * [Console](https://www.consoleconnect.com/partners/cloudsaas/)
   * [CoreSite](http://www.coresite.com/)
@@ -164,10 +164,10 @@ ExpressRoute поддерживается во всех регионах и ра
   * [Megaport](https://www.megaport.com/services/microsoft-expressroute/)
   * [NextDC](http://www.nextdc.com/)
   * [TeleCity CloudIX](http://www.telecitygroup.com/colocation-services/cloud-ix.htm)
-* Обратитесь к своему поставщику услуг подключения, чтобы он расширил вашу сеть, добавив необходимое пиринговое расположение.
+* У вашего поставщика услуг подключения расширить вашей сети toohello расположение пиринга по выбору.
   * Убедитесь, что поставщик услуг подключения расширяет границы вашего подключения, сохраняя высокую доступность во избежание влияния единых точек отказа.
-* Закажите канал ExpressRoute с Exchange у вашего поставщика услуг подключения для связи с Майкрософт.
-  * Для настройки подключения выполните действия, описанные в статье [Создание и изменение канала ExpressRoute с помощью PowerShell](expressroute-howto-circuit-classic.md) .
+* Закажите канал ExpressRoute с hello exchange как поставщиком соединения tooconnect tooMicrosoft.
+  * Выполните шаги в [создать канал ExpressRoute](expressroute-howto-circuit-classic.md) tooset копирование подключения.
 
 ## <a name="connectivity-through-additional-service-providers"></a>Подключение через дополнительных поставщиков услуг
 
@@ -232,10 +232,10 @@ ExpressRoute поддерживается во всех регионах и ра
 | **SINET**|
 | **Surfnet, через GÉANT**|
 
-* Если вашего поставщика услуг подключения нет в списке, проверьте, подключены ли они к любому из перечисленных выше партнеров ExpressRoute Exchange.
+* Если поставщиком соединения нет в списке, проверьте toosee, если они являются подключенных tooany hello ExpressRoute Exchange партнеров, перечисленные выше.
 
 ## <a name="expressroute-system-integrators"></a>Системные интеграторы ExpressRoute
-Возможность частного подключения, соответствующего вашим потребностям, будет зависеть от масштаба сети. Чтобы упростить переход на ExpressRoute, вы можете обратиться к одному из системных интеграторов, указанных в таблице ниже.
+Включение toofit частного соединения, может оказаться сложной задачей вашим потребностям, на основе hello масштаба сети. Можно работать с любыми hello системных интеграторов, перечисленные в следующие таблицы tooassist hello вы с tooExpressRoute адаптации.
 
 | **Системный интегратор** | **Континент** |
 | --- | --- |
@@ -246,7 +246,7 @@ ExpressRoute поддерживается во всех регионах и ра
 | **[Equinix Professional Services](http://www.equinix.com/services/consulting/)** | Северная Америка |
 | **[FlexManage](http://www.flexmanage.com/cloud)** | Северная Америка |
 | **[Inframon](http://www.inframon.com/partner/microsoft/)** | Европа |
-| **[The IT Consultancy Group](http://itconsult.com.au/microsoft-expressroute)** | Австралия |
+| **[Hello Consultancy ИТ-группа](http://itconsult.com.au/microsoft-expressroute)** | Австралия |
 | **[MOQdigital](http://www.moqdigital.com.au/insights/technical/network-connectivity-options-for-azure)** | Австралия |
 | **[MSG Services](https://www.msg-services.de/it-services/managed-services/cloud-outsourcing/)** | Европа (Германия) |
 | **[Nelite](http://nelite.com/)** | Европа |
@@ -260,7 +260,7 @@ ExpressRoute поддерживается во всех регионах и ра
 
 
 ## <a name="next-steps"></a>Дальнейшие действия
-* Дополнительные сведения об ExpressRoute см. в статье [Вопросы и ответы по ExpressRoute](expressroute-faqs.md).
+* Дополнительные сведения об ExpressRoute см. в разделе hello [часто задаваемые вопросы о ExpressRoute](expressroute-faqs.md).
 * Убедитесь, что выполнены все необходимые условия. См. статью [Предварительные требования и контрольный список для ExpressRoute](expressroute-prerequisites.md).
 
 <!--Image References-->

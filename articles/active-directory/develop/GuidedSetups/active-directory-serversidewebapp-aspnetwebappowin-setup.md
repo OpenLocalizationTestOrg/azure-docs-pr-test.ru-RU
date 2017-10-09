@@ -1,5 +1,5 @@
 ---
-title: "Приступая к работе с Azure AD версии 2 для веб-сервера ASP.NET. Настройка | Документация Майкрософт"
+title: "aaaAzure AD v2 ASP.NET Web Server Приступая к работе - установки | Документы Microsoft"
 description: "Реализация входа Майкрософт в решении ASP.NET с традиционным браузерным приложением с использованием стандарта OpenID Connect"
 services: active-directory
 documentationcenter: dev-center-name
@@ -15,17 +15,17 @@ ms.workload: identity
 ms.date: 05/09/2017
 ms.author: andret
 ms.custom: aaddev
-ms.openlocfilehash: ebf54f5a203adb7f0e5b0c47dcc07595e269e218
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: eadc59666557e9cd294e6e99391001120579144c
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 ## <a name="set-up-your-project"></a>Настройка проекта
 
-В этом разделе описаны шаги по установке и настройке конвейера проверки подлинности через промежуточный слой OWIN в проекте ASP.NET с помощью OpenID Connect. 
+В этом разделе показаны шаги tooinstall hello и настройте hello конвейера проверки подлинности через по промежуточного слоя OWIN в проект ASP.NET с использованием OpenID Connect. 
 
-> Предпочитаете скачать этот пример проекта Visual Studio? [Скачайте проект](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-DotNet/archive/master.zip) и перейдите к [настройке](#create-an-application-express), чтобы настроить пример кода перед выполнением.
+> Предпочтение toodownload проекта Visual Studio в этом примере вместо этого? [Загрузка проекта](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-DotNet/archive/master.zip) и пропустить toohello [шаг настройки](#create-an-application-express) образец кода hello tooconfigure перед выполнением.
 
 <!--start-collapse-->
 > ### <a name="create-your-aspnet-project"></a>Создание проекта ASP.NET
@@ -33,13 +33,13 @@ ms.lasthandoff: 07/11/2017
 > 1. В Visual Studio выберите `File` > `New` > `Project`.<br/>
 > 2. В разделе *Visual C#\Web* выберите `ASP.NET Web Application (.NET Framework)`.
 > 3. Присвойте имя приложению и нажмите кнопку *ОК*.
-> 4. Выберите `Empty` и установите флажок, чтобы добавить ссылки `MVC`.
+> 4. Выберите `Empty` и выберите hello флажок tooadd `MVC` ссылки
 <!--end-collapse-->
 
 ## <a name="add-authentication-components"></a>Добавление компонентов проверки подлинности
 
 1. В Visual Studio выберите `Tools` > `Nuget Package Manager` > `Package Manager Console`.
-2. Добавьте *пакеты NuGet для промежуточного слоя OWIN*, введя следующие команды в окне консоли диспетчера пакетов:
+2. Добавить *пакетов NuGet по промежуточного слоя OWIN* , введя следующее hello в hello в окне консоли диспетчера пакетов:
 
 ```powershell
 Install-Package Microsoft.Owin.Security.OpenIdConnect
@@ -50,20 +50,20 @@ Install-Package Microsoft.Owin.Host.SystemWeb
 <!--start-collapse-->
 > ### <a name="about-these-libraries"></a>О библиотеках
 
->Библиотеки, приведенные выше, позволяют выполнять единый вход с помощью OpenID Connect через проверку подлинности на основе файлов cookie. После завершения проверки подлинности и отправки приложению маркера, представляющего пользователя, промежуточный слой OWIN создаст файл cookie сеанса. Затем браузер будет использовать этот файл cookie при последующих запросах, так что пользователю не нужно будет повторно вводить пароль и проходить дополнительную проверку.
+>библиотеки Hello выше Включение единого входа (SSO) через проверку подлинности на основе файлов cookie с использованием OpenID Connect. После завершения проверки подлинности и hello токен, представляющий hello пользователя отправляется tooyour приложения, по промежуточного слоя OWIN создает файл cookie сеанса. Hello обозреватель использует этот файл cookie при последующих запросах, hello пользователю не нужны tooretype свой пароль и требуется дополнительная проверка.
 <!--end-collapse-->
 
-## <a name="configure-the-authentication-pipeline"></a>Настройка конвейера для проверки подлинности
-Приведенные ниже шаги позволяют создать класс запуска промежуточного слоя OWIN для настройки проверки подлинности OpenID Connect. Этот класс будет выполняться автоматически при запуске процесса IIS.
+## <a name="configure-hello-authentication-pipeline"></a>Настройка проверки подлинности конвейера hello
+Hello шаги, используемые toocreate OWIN по промежуточного слоя класс запуска tooconfigure OpenID Connect проверки подлинности. Этот класс будет выполняться автоматически при запуске процесса IIS.
 
-> Если проект не содержит файл `Startup.cs` в корневой папке, сделайте следующее:<br/>
-> 1. Щелкните правой кнопкой мыши корневую папку проекта: >    `Add` > `New Item...` > `OWIN Startup class`.<br/>
+> Если ваш проект не имеет `Startup.cs` файл в корневой папке hello:<br/>
+> 1. Щелкните правой кнопкой мыши корневой папки проекта hello: >`Add` > `New Item...` > `OWIN Startup class`<br/>
 > 2. Назовите класс `Startup.cs`.
 
-> Выберите класс запуска OWIN, а не стандартный класс C#. Если вы выбрали нужный класс, вы должны увидеть `[assembly: OwinStartup(typeof({NameSpace}.Startup))]` над пространством имен.
+> Убедитесь, что выбранный класс hello класс запуска OWIN, а не стандартный класс C#. Проверить, проверки, если вы видите `[assembly: OwinStartup(typeof({NameSpace}.Startup))]` выше hello пространства имен.
 
 
-1. Добавьте в `Startup.cs` ссылки *OWIN* и *Microsoft.IdentityModel*.
+1. Добавить *OWIN* и *Microsoft.IdentityModel* ссылается слишком`Startup.cs`:
 
 ```csharp
 using Microsoft.Owin;
@@ -77,27 +77,27 @@ using Microsoft.Owin.Security.Notifications;
 <!-- Workaround for Docs conversion bug -->
 <ol start="2">
 <li>
-Вставьте в класс запуска приведенный ниже код.
+Замените класс запуска hello код ниже:
 </li>
 </ol>
 
 ```csharp
 public class Startup
 {        
-    // The Client ID is used by the application to uniquely identify itself to Azure AD.
+    // hello Client ID is used by hello application toouniquely identify itself tooAzure AD.
     string clientId = System.Configuration.ConfigurationManager.AppSettings["ClientId"];
 
-    // RedirectUri is the URL where the user will be redirected to after they sign in.
+    // RedirectUri is hello URL where hello user will be redirected tooafter they sign in.
     string redirectUri = System.Configuration.ConfigurationManager.AppSettings["RedirectUri"];
 
-    // Tenant is the tenant ID (e.g. contoso.onmicrosoft.com, or 'common' for multi-tenant)
+    // Tenant is hello tenant ID (e.g. contoso.onmicrosoft.com, or 'common' for multi-tenant)
     static string tenant = System.Configuration.ConfigurationManager.AppSettings["Tenant"];
 
-    // Authority is the URL for authority, composed by Azure Active Directory v2 endpoint and the tenant name (e.g. https://login.microsoftonline.com/contoso.onmicrosoft.com/v2.0)
+    // Authority is hello URL for authority, composed by Azure Active Directory v2 endpoint and hello tenant name (e.g. https://login.microsoftonline.com/contoso.onmicrosoft.com/v2.0)
     string authority = String.Format(System.Globalization.CultureInfo.InvariantCulture, System.Configuration.ConfigurationManager.AppSettings["Authority"], tenant);
 
     /// <summary>
-    /// Configure OWIN to use OpenIdConnect 
+    /// Configure OWIN toouse OpenIdConnect 
     /// </summary>
     /// <param name="app"></param>
     public void Configuration(IAppBuilder app)
@@ -108,20 +108,20 @@ public class Startup
             app.UseOpenIdConnectAuthentication(
             new OpenIdConnectAuthenticationOptions
             {
-                // Sets the ClientId, authority, RedirectUri as obtained from web.config
+                // Sets hello ClientId, authority, RedirectUri as obtained from web.config
                 ClientId = clientId,
                 Authority = authority,
                 RedirectUri = redirectUri,
-                // PostLogoutRedirectUri is the page that users will be redirected to after sign-out. In this case, it is using the home page
+                // PostLogoutRedirectUri is hello page that users will be redirected tooafter sign-out. In this case, it is using hello home page
                 PostLogoutRedirectUri = redirectUri,
                 Scope = OpenIdConnectScopes.OpenIdProfile,
-                // ResponseType is set to request the id_token - which contains basic information about the signed-in user
+                // ResponseType is set toorequest hello id_token - which contains basic information about hello signed-in user
                 ResponseType = OpenIdConnectResponseTypes.IdToken,
-                // ValidateIssuer set to false to allow personal and work accounts from any organization to sign in to your application
-                // To only allow users from a single organizations, set ValidateIssuer to true and 'tenant' setting in web.config to the tenant name
-                // To allow users from only a list of specific organizations, set ValidateIssuer to true and use ValidIssuers parameter 
+                // ValidateIssuer set toofalse tooallow personal and work accounts from any organization toosign in tooyour application
+                // tooonly allow users from a single organizations, set ValidateIssuer tootrue and 'tenant' setting in web.config toohello tenant name
+                // tooallow users from only a list of specific organizations, set ValidateIssuer tootrue and use ValidIssuers parameter 
                 TokenValidationParameters = new System.IdentityModel.Tokens.TokenValidationParameters() { ValidateIssuer = false },
-                // OpenIdConnectAuthenticationNotifications configures OWIN to send notification of failed authentications to OnAuthenticationFailed method
+                // OpenIdConnectAuthenticationNotifications configures OWIN toosend notification of failed authentications tooOnAuthenticationFailed method
                 Notifications = new OpenIdConnectAuthenticationNotifications
                 {
                     AuthenticationFailed = OnAuthenticationFailed
@@ -131,7 +131,7 @@ public class Startup
     }
 
     /// <summary>
-    /// Handle failed authentication requests by redirecting the user to the home page with an error in the query string
+    /// Handle failed authentication requests by redirecting hello user toohello home page with an error in hello query string
     /// </summary>
     /// <param name="context"></param>
     /// <returns></returns>
@@ -147,6 +147,6 @@ public class Startup
 <!--start-collapse-->
 > ### <a name="more-information"></a>Дополнительные сведения
 
-> Параметры, указанные в *OpenIDConnectAuthenticationOptions*, будут служить координатами приложения для взаимодействия с Azure AD. Так как промежуточный слой OpenID Connect использует файлы cookie в фоновом режиме, вам также необходимо настроить проверку подлинности для этих файлов, как показано в коде выше. Значение *ValidateIssuer* сообщает OpenIdConnect не ограничивать доступ для определенной организации.
+> Здравствуйте, параметры, указываемые в *OpenIDConnectAuthenticationOptions* служат в качестве координат для hello toocommunicate приложений с Azure AD. Поскольку hello OpenID Connect по промежуточного слоя использует файлы cookie в фоновом режиме hello, необходимо также tooset копирование файла cookie проверки подлинности как код hello выше. Hello *ValidateIssuer* значение сообщает OpenIdConnect toonot ограничить доступ tooone конкретной организации.
 <!--end-collapse-->
 

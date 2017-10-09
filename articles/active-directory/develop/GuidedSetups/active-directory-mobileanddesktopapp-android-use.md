@@ -1,5 +1,5 @@
 ---
-title: "Приступая к работе с Azure AD версии 2 для Android. Использование | Документация Майкрософт"
+title: "aaaAzure AD v2 Android Приступая к работе - Используйте | Документы Microsoft"
 description: "Получение маркера доступа для приложения Android и вызов API Microsoft Graph или API, которые требуют маркер доступа, из конечной точки Azure Active Directory версии 2."
 services: active-directory
 documentationcenter: dev-center-name
@@ -15,16 +15,16 @@ ms.workload: identity
 ms.date: 05/09/2017
 ms.author: andret
 ms.custom: aaddev
-ms.openlocfilehash: 7963a07a2b9d529e89302f32e5ffd56c51687ffa
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 4480d89eb7638fe7d588c8cebd2b1e3c9d4c6e3f
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-## <a name="use-the-microsoft-authentication-library-msal-to-get-a-token-for-the-microsoft-graph-api"></a>Использование библиотеки проверки подлинности Майкрософт для получения маркера для API Microsoft Graph
+## <a name="use-hello-microsoft-authentication-library-msal-tooget-a-token-for-hello-microsoft-graph-api"></a>Использование библиотеки проверки подлинности Microsoft (MSAL) hello tooget маркер для hello Microsoft Graph API
 
 1.  Откройте `MainActivity` (выберите `app` > `java` > `{domain}.{appname}`).
-2.  Добавьте приведенные ниже определения import:
+2.  Добавьте следующие импорты hello:
 
 ```java
 import android.app.Activity;
@@ -46,14 +46,14 @@ import com.microsoft.identity.client.*;
 <!-- Workaround for Docs conversion bug -->
 <ol start="3">
 <li>
-Замените класс `MainActivity` следующим:
+Замените hello `MainActivity` класса ниже:
 </li>
 </ol>
 
 ```java
 public class MainActivity extends AppCompatActivity {
 
-    final static String CLIENT_ID = "[Enter the application Id here]";
+    final static String CLIENT_ID = "[Enter hello application Id here]";
     final static String SCOPES [] = {"https://graph.microsoft.com/User.Read"};
     final static String MSGRAPH_URL = "https://graph.microsoft.com/v1.0/me";
 
@@ -94,7 +94,7 @@ public class MainActivity extends AppCompatActivity {
                     CLIENT_ID);
         }
 
-  /* Attempt to get a user and acquireTokenSilent
+  /* Attempt tooget a user and acquireTokenSilent
    * If this fails we do an interactive request
    */
         List<User> users = null;
@@ -125,8 +125,8 @@ public class MainActivity extends AppCompatActivity {
 // App callbacks for MSAL
 // ======================
 // getActivity() - returns activity so we can acquireToken within a callback
-// getAuthSilentCallback() - callback defined to handle acquireTokenSilent() case
-// getAuthInteractiveCallback() - callback defined to handle acquireToken() case
+// getAuthSilentCallback() - callback defined toohandle acquireTokenSilent() case
+// getAuthInteractiveCallback() - callback defined toohandle acquireToken() case
 //
 
     public Activity getActivity() {
@@ -134,8 +134,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /* Callback method for acquireTokenSilent calls 
-     * Looks if tokens are in the cache (refreshes if necessary and if we don't forceRefresh)
-     * else errors that we need to do an interactive request.
+     * Looks if tokens are in hello cache (refreshes if necessary and if we don't forceRefresh)
+     * else errors that we need toodo an interactive request.
      */
     private AuthenticationCallback getAuthSilentCallback() {
         return new AuthenticationCallback() {
@@ -144,25 +144,25 @@ public class MainActivity extends AppCompatActivity {
             /* Successfully got a token, call Graph now */
                 Log.d(TAG, "Successfully authenticated");
 
-            /* Store the authResult */
+            /* Store hello authResult */
                 authResult = authenticationResult;
 
             /* call graph */
                 callGraphAPI();
 
-            /* update the UI to post call Graph state */
+            /* update hello UI toopost call Graph state */
                 updateSuccessUI();
             }
 
             @Override
             public void onError(MsalException exception) {
-            /* Failed to acquireToken */
+            /* Failed tooacquireToken */
                 Log.d(TAG, "Authentication failed: " + exception.toString());
 
                 if (exception instanceof MsalClientException) {
                 /* Exception inside MSAL, more info inside MsalError.java */
                 } else if (exception instanceof MsalServiceException) {
-                /* Exception when communicating with the STS, likely config issue */
+                /* Exception when communicating with hello STS, likely config issue */
                 } else if (exception instanceof MsalUiRequiredException) {
                 /* Tokens expired or no session, retry with interactive */
                 }
@@ -170,15 +170,15 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onCancel() {
-            /* User canceled the authentication */
+            /* User canceled hello authentication */
                 Log.d(TAG, "User cancelled login.");
             }
         };
     }
 
 
-    /* Callback used for interactive request.  If succeeds we use the access
-         * token to call the Microsoft Graph. Does not check cache
+    /* Callback used for interactive request.  If succeeds we use hello access
+         * token toocall hello Microsoft Graph. Does not check cache
          */
     private AuthenticationCallback getAuthInteractiveCallback() {
         return new AuthenticationCallback() {
@@ -188,37 +188,37 @@ public class MainActivity extends AppCompatActivity {
                 Log.d(TAG, "Successfully authenticated");
                 Log.d(TAG, "ID Token: " + authenticationResult.getIdToken());
 
-            /* Store the auth result */
+            /* Store hello auth result */
                 authResult = authenticationResult;
 
             /* call Graph */
                 callGraphAPI();
 
-            /* update the UI to post call Graph state */
+            /* update hello UI toopost call Graph state */
                 updateSuccessUI();
             }
 
             @Override
             public void onError(MsalException exception) {
-            /* Failed to acquireToken */
+            /* Failed tooacquireToken */
                 Log.d(TAG, "Authentication failed: " + exception.toString());
 
                 if (exception instanceof MsalClientException) {
                 /* Exception inside MSAL, more info inside MsalError.java */
                 } else if (exception instanceof MsalServiceException) {
-                /* Exception when communicating with the STS, likely config issue */
+                /* Exception when communicating with hello STS, likely config issue */
                 }
             }
 
             @Override
             public void onCancel() {
-            /* User canceled the authentication */
+            /* User canceled hello authentication */
                 Log.d(TAG, "User cancelled login.");
             }
         };
     }
 
-    /* Set the UI for successful token acquisition data */
+    /* Set hello UI for successful token acquisition data */
     private void updateSuccessUI() {
         callGraphButton.setVisibility(View.INVISIBLE);
         signOutButton.setVisibility(View.VISIBLE);
@@ -228,14 +228,14 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.graphData).setVisibility(View.VISIBLE);
     }
 
-    /* Use MSAL to acquireToken for the end-user
+    /* Use MSAL tooacquireToken for hello end-user
      * Callback will call Graph api w/ access token & update UI
      */
     private void onCallGraphClicked() {
         sampleApp.acquireToken(getActivity(), SCOPES, getAuthInteractiveCallback());
     }
 
-    /* Handles the redirect from the System Browser */
+    /* Handles hello redirect from hello System Browser */
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         sampleApp.handleInteractiveRequestRedirect(requestCode, resultCode, data);
@@ -246,25 +246,25 @@ public class MainActivity extends AppCompatActivity {
 <!--start-collapse-->
 ### <a name="more-information"></a>Дополнительные сведения
 #### <a name="getting-a-user-token-interactive"></a>Интерактивное получение маркера пользователя
-При вызове метода `AcquireTokenAsync` появится окно, в котором пользователю предлагается выполнить вход. Приложениям обычно требуется, чтобы пользователь выполнял вход интерактивно при первом доступе к защищенному ресурсу или при сбое автоматической операции для получения маркера (например, срок действия пароля пользователя истек).
+Вызов hello `AcquireTokenAsync` toosign пользователя в hello результаты метода в окне запроса. Приложения обычно требуют toosign пользователя в интерактивном режиме hello первый раз, они должны tooaccess защищенному ресурсу или при tooacquire операции в фоновом режиме, может произойти сбой маркера (например hello пользователя срок действия пароля истек).
 
 #### <a name="getting-a-user-token-silently"></a>Автоматическое получение маркера пользователя
-`AcquireTokenSilentAsync` обрабатывает получение и обновление маркера без участия пользователя. После того как `AcquireTokenAsync` будет выполнен в первый раз, обычно используется метод `AcquireTokenSilentAsync`, чтобы получить маркеры для доступа к защищенным ресурсам для последующих вызовов (например, автоматическое выполнение запросов или обновлений маркеров).
-В конечном счете в `AcquireTokenSilentAsync` произойдет сбой, например в случае выхода пользователя из системы или смены пароля на другом устройстве. Когда MSAL обнаруживает, что эту проблему можно решить, запросив интерактивное действие, возникает `MsalUiRequiredException`. Приложение может обработать это исключение двумя способами:
+`AcquireTokenSilentAsync` обрабатывает получение и обновление маркера без участия пользователя. После `AcquireTokenAsync` выполняется для hello первый раз `AcquireTokenSilentAsync` tooobtain токены hello распространенным методом tooaccess защищенные ресурсы для последующих вызовов — как вызовы toorequest или обновить маркеры выполняются без вмешательства пользователя.
+Со временем `AcquireTokenSilentAsync` завершится ошибкой, — например hello пользователя выполнен выход или изменил свой пароль на другом устройстве. Когда MSAL обнаруживает, что hello проблему можно устранить путем интерактивного вмешательства, в `MsalUiRequiredException`. Приложение может обработать это исключение двумя способами:
 
-1.  Вызвать `AcquireTokenAsync` немедленно, в результате чего пользователю будет предложено выполнить вход. Этот шаблон обычно используется в интерактивных приложениях, где пользователю недоступно автономное содержимое. Пример, созданный в ходе пошаговой настройки, использует этот шаблон. Вы можете увидеть его в действии при первом запуске примера: так как ни один пользователь еще не использовал это приложение, `PublicClientApp.Users.FirstOrDefault` будет содержать значение NULL и будет выдано исключение `MsalUiRequiredException`. Код в примере обработает исключение, вызвав `AcquireTokenAsync`, в результате чего пользователю будет предложено войти.
-2.  Приложения также могут визуально уведомить пользователя, что требуется интерактивный вход, чтобы пользователь мог выбрать подходящее время для входа или приложение могло повторить метод `AcquireTokenSilentAsync` ​​позднее. Обычно это применимо для тех случаев, когда пользователь может использовать другие функции приложения, на которые это не влияет, например, когда в приложении есть автономное содержимое. В этом случае пользователь может решить, когда он хочет войти, чтобы получить доступ к защищенному ресурсу или обновить устаревшие данные, или ваше приложение может решить повторить `AcquireTokenSilentAsync` при восстановлении сети ​​после временной недоступности.
+1.  Звонок от `AcquireTokenAsync` немедленно, в результате запроса пользователя hello в toosign. Этот шаблон обычно используется в веб-приложений там, где отсутствует не автономного содержимого в приложение hello для пользователя hello. Hello образец созданные эта интерактивная программа установки использует этот шаблон: его можно просматривать в действие hello первый раз, когда выполняется образец hello: так как пользователь не использовали приложения hello `PublicClientApp.Users.FirstOrDefault` будет содержать значение null и `MsalUiRequiredException` будет создано исключение. Здравствуйте код в образце hello, а затем обрабатывает hello исключения путем вызова `AcquireTokenAsync` приведет к подтверждения пользователя hello в toosign.
+2.  Приложения также может сделать пользователь toohello визуальный индикатор, интерактивный вход не требуется, поэтому hello пользователь может выбрать toosign нужное время hello в или приложение hello перезапустит `AcquireTokenSilentAsync` позднее. Обычно это используется hello пользователя может tooaccess функциональных возможностей приложения hello без была прервана — например, отсутствуют автономного содержимого в приложение hello. В этом случае hello пользователь мог решать при хочет toosign в tooaccess hello защищенных ресурсов, toorefresh hello устаревшую информацию или приложения может решить tooretry `AcquireTokenSilentAsync` при восстановлении сети после станет временно недоступной.
 <!--end-collapse-->
 
-## <a name="call-the-microsoft-graph-api-using-the-token-you-just-obtained"></a>Вызов API Microsoft Graph с помощью полученного маркера
-1.  Добавьте следующие методы в класс `MainActivity`:
+## <a name="call-hello-microsoft-graph-api-using-hello-token-you-just-obtained"></a>Вызвать API Microsoft Graph hello hello токен, который был получен с помощью
+1.  Добавьте следующие методы в hello hello `MainActivity` класса:
 
 ```java
-/* Use Volley to make an HTTP request to the /me endpoint from MS Graph using an access token */
+/* Use Volley toomake an HTTP request toohello /me endpoint from MS Graph using an access token */
 private void callGraphAPI() {
-    Log.d(TAG, "Starting volley request to graph");
+    Log.d(TAG, "Starting volley request toograph");
 
-    /* Make sure we have a token to send to graph */
+    /* Make sure we have a token toosend toograph */
     if (authResult.getAccessToken() == null) {return;}
 
     RequestQueue queue = Volley.newRequestQueue(this);
@@ -273,13 +273,13 @@ private void callGraphAPI() {
     try {
         parameters.put("key", "value");
     } catch (Exception e) {
-        Log.d(TAG, "Failed to put parameters: " + e.toString());
+        Log.d(TAG, "Failed tooput parameters: " + e.toString());
     }
     JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, MSGRAPH_URL,
             parameters,new Response.Listener<JSONObject>() {
         @Override
         public void onResponse(JSONObject response) {
-            /* Successfully called graph, process data and send to UI */
+            /* Successfully called graph, process data and send tooUI */
             Log.d(TAG, "Response: " + response.toString());
 
             updateGraphUI(response);
@@ -298,7 +298,7 @@ private void callGraphAPI() {
         }
     };
 
-    Log.d(TAG, "Adding HTTP GET to Queue, Request: " + request.toString());
+    Log.d(TAG, "Adding HTTP GET tooQueue, Request: " + request.toString());
 
     request.setRetryPolicy(new DefaultRetryPolicy(
             3000,
@@ -307,7 +307,7 @@ private void callGraphAPI() {
     queue.add(request);
 }
 
-/* Sets the Graph response */
+/* Sets hello Graph response */
 private void updateGraphUI(JSONObject graphResponse) {
     TextView graphText = (TextView) findViewById(R.id.graphData);
     graphText.setText(graphResponse.toString());
@@ -316,20 +316,20 @@ private void updateGraphUI(JSONObject graphResponse) {
 <!--start-collapse-->
 ### <a name="more-information-about-making-a-rest-call-against-a-protected-api"></a>Дополнительные сведения о вызове REST через защищенный API
 
-В этом примере приложение `callGraphAPI` вызывает `getAccessToken`, а затем делает запрос HTTP `GET` к ресурсу, который требует маркер, и возвращает содержимое. Этот метод добавляет полученный маркер в *заголовок авторизации HTTP*. В этом примере ресурс — это конечная точка *me* API Microsoft Graph, которая отображает сведения о профиле пользователя.
+В этом образце приложения `callGraphAPI` вызовы `getAccessToken` и затем делает HTTP `GET` запроса к ресурсу, который требуется маркер и возвращает содержимое hello. Этот метод добавляет маркер hello получена в hello *заголовок авторизации HTTP*. Для этого образца hello ресурсов — hello Microsoft Graph API *мне* конечной точки — которого отображаются сведения о профиле пользователя hello.
 <!--end-collapse-->
 
 ## <a name="setup-sign-out"></a>Настройка выхода
 
-1.  Добавьте следующие методы в класс `MainActivity`:
+1.  Добавьте следующие методы в hello hello `MainActivity` класса:
 
 ```java
-/* Clears a user's tokens from the cache.
- * Logically similar to "sign out" but only signs out of this app.
+/* Clears a user's tokens from hello cache.
+ * Logically similar too"sign out" but only signs out of this app.
  */
 private void onSignOutClicked() {
 
-    /* Attempt to get a user and remove their cookies from cache */
+    /* Attempt tooget a user and remove their cookies from cache */
     List<User> users = null;
 
     try {
@@ -363,7 +363,7 @@ private void onSignOutClicked() {
     }
 }
 
-/* Set the UI for signed-out user */
+/* Set hello UI for signed-out user */
 private void updateSignedOutUI() {
     callGraphButton.setVisibility(View.VISIBLE);
     signOutButton.setVisibility(View.INVISIBLE);
@@ -375,6 +375,6 @@ private void updateSignedOutUI() {
 <!--start-collapse-->
 ### <a name="more-information"></a>Дополнительные сведения
 
-`onSignOutClicked` удаляет пользователя из кэша пользователей MSAL. Это фактически заставит MSAL забыть текущего пользователя, поэтому будущий запрос на получение маркера будет успешным только в том случае, если он будет выполнен интерактивно.
-Несмотря на то что приложение в этом примере поддерживает одного пользователя, MSAL поддерживает сценарии, где можно войти в несколько учетных записей одновременно, например приложение электронной почты, где у пользователя есть несколько учетных записей.
+`onSignOutClicked`выше удаляет hello пользователя из кэша MSAL пользователя — фактически сведения о MSAL tooforget hello текущего пользователя, tooacquire будущих запроса маркера будет успешным, только если он станет toobe интерактивный.
+Несмотря на то, что приложение hello в этом образце поддерживает один пользователь, MSAL поддерживает сценарии, где может быть несколько учетных записей, выполнившего вход в hello одновременно — пример — приложение электронной почты которых у пользователя есть несколько учетных записей.
 <!--end-collapse-->

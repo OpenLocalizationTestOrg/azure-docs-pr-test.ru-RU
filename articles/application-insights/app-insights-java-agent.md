@@ -1,5 +1,5 @@
 ---
-title: "Мониторинг производительности веб-приложений Java в Azure Application Insights | Документация Майкрософт"
+title: "aaaPerformance наблюдения для веб-приложений Java в Azure Application Insights | Документы Microsoft"
 description: "Расширенный мониторинг производительности и использования веб-сайта Java с помощью Application Insights."
 services: application-insights
 documentationcenter: java
@@ -13,41 +13,41 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/24/2016
 ms.author: bwren
-ms.openlocfilehash: 4e56998382610ad3d7224e6a8de5aee5419ebe43
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: bf3983e3b4a16e72bc606b6468a757288d05ebaa
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="monitor-dependencies-exceptions-and-execution-times-in-java-web-apps"></a>Отслеживание зависимостей, исключений и времени выполнения в веб-приложениях Java
 
 
-[Инструментирование веб-приложения Java с помощью Application Insights][java] позволяет получать более подробную информацию без изменения кода, используя для этого агент для Java.
+Если у вас есть [инструментированы веб-приложения Java с помощью Application Insights][java], можно использовать hello агента Java tooget более глубокого понимания, без необходимости изменения кода:
 
-* **Зависимости** — данные о вызовах других компонентов в вашем приложении, включая:
+* **Зависимости:** данные о вызовы, сделанные tooother компонентов, включая приложения:
   * **вызовы REST** через HttpClient, OkHttp и RestTemplate (Spring);
-  * **Redis** через клиент Jedis. Если вызов выполняется дольше 10 с, агент также получает аргументы вызова.
-  * **[Вызовы JDBC](http://docs.oracle.com/javase/7/docs/technotes/guides/jdbc/)** — MySQL, SQL Server, PostgreSQL, SQLite, Oracle DB или Apache Derby DB. Поддерживаются вызовы "executeBatch". Если для MySQL и PostgreSQL вызов выполняется дольше 10 с, агент сообщает о плане запроса.
+  * **Redis** вызовов, выполненных с помощью клиента Jedis hello. Если вызов hello занимает больше времени, чем десятках, hello агент также извлечет hello аргументы вызова.
+  * **[Вызовы JDBC](http://docs.oracle.com/javase/7/docs/technotes/guides/jdbc/)** — MySQL, SQL Server, PostgreSQL, SQLite, Oracle DB или Apache Derby DB. Поддерживаются вызовы "executeBatch". MySQL и PostgreSQL Если вызов hello занимает больше времени, чем десятках, hello агента сообщает hello плана запроса.
 * **Перехваченные исключения:** данные об исключениях, обработанных вашим кодом.
-* **Время выполнения метода:** данные о времени, которое потребовалось для выполнения определенных методов.
+* **Время выполнения метода:** данные о hello время принимает tooexecute определенных методов.
 
-Чтобы использовать агент для Java, его необходимо установить на сервере. Веб-приложения необходимо инструментировать [пакетом SDK для Java Application Insights][java]. 
+агент Java toouse hello, его установить на сервере. Веб-приложения должны быть встроены hello [пакет SDK для Java Application Insights][java]. 
 
-## <a name="install-the-application-insights-agent-for-java"></a>Установка агента Application Insights для Java
-1. [Скачайте агент](https://aka.ms/aijavasdk) на компьютер с сервером Java.
-2. Измените скрипт запуска сервера приложений, добавив следующую виртуальную машину Java:
+## <a name="install-hello-application-insights-agent-for-java"></a>Установка агента hello Application Insights для Java
+1. На компьютере hello на котором запущен сервер Java [загрузить агент hello](https://aka.ms/aijavasdk).
+2. Измените сценарий запуска сервера приложения hello и добавьте hello, следуя виртуальной машины Java:
    
-    `javaagent:`*полный путь к файлу агента JAR*
+    `javaagent:`*Полный путь агента toohello JAR-файл*
    
     Например, в Tomcat на компьютере Linux:
    
-    `export JAVA_OPTS="$JAVA_OPTS -javaagent:<full path to agent JAR file>"`
+    `export JAVA_OPTS="$JAVA_OPTS -javaagent:<full path tooagent JAR file>"`
 3. Перезапустите сервер приложений.
 
-## <a name="configure-the-agent"></a>Настройка агента
-Создайте файл с именем `AI-Agent.xml` и поместите его в ту же папку, где находится JAR-файл агента.
+## <a name="configure-hello-agent"></a>Настройка агента hello
+Создайте файл с именем `AI-Agent.xml` и поместить его в hello же папке, что агент hello JAR-файл.
 
-Настройка содержимого XML-файла. Измените приведенный ниже пример, включив необходимые функции или убрав ненужные.
+Задайте содержимое hello hello XML-файла. Измените следующие tooinclude пример hello или удалите компоненты hello.
 
 ```XML
 
@@ -74,7 +74,7 @@ ms.lasthandoff: 08/18/2017
                reportExecutionTime="true"
                />
 
-           <!-- Report on the particular signature
+           <!-- Report on hello particular signature
                 void methodTwo(String, int) -->
            <Method name="methodTwo"
               reportExecutionTime="true"
@@ -86,14 +86,14 @@ ms.lasthandoff: 08/18/2017
 
 ```
 
-Необходимо включить прием отчетов и контроль времени выполнения отдельных методов.
+У вас есть tooenable отчеты исключение и метод расписание для отдельных методов.
 
 По умолчанию `reportExecutionTime` имеет значение true, а `reportCaughtExceptions` — значение false.
 
-## <a name="view-the-data"></a>Просмотр данных
-В ресурсе Application Insights сводные данные по удаленным зависимостям и времени выполнения методов отображаются в [элементе "Производительность"][metrics].
+## <a name="view-hello-data"></a>Просмотр данных hello
+В hello ресурс Application Insights, отображается агрегированных удаленного времени выполнения зависимостей и метод [под hello производительности плитку][metrics].
 
-Для поиска отдельных экземпляров отчетов по зависимостям, исключениям и методам откройте [Поиск][diagnostic].
+Откройте toosearch для отдельных экземпляров зависимостей, исключение и метод отчеты, [поиска][diagnostic].
 
 [Дополнительные сведения о диагностировании проблем зависимостей](app-insights-asp-net-dependencies.md#diagnosis).
 

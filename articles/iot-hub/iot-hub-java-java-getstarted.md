@@ -1,6 +1,6 @@
 ---
-title: "Приступая к работе с Центром Интернета вещей Azure (Java) | Документация Майкрософт"
-description: "Узнайте, как отправлять сообщения из устройства на облако в Центр Интернета вещей Azure с помощью пакетов SDK Интернета вещей для Java. Создайте виртуальное устройство и приложения службы для регистрации устройства, отправки сообщений и чтения сообщений из Центра Интернета вещей."
+title: "aaaGet работы с Azure IoT Hub (Java) | Документы Microsoft"
+description: "Узнайте, как toosend устройства в облако сообщений tooAzure центр IoT с помощью IoT пакеты SDK для Java. Создать имитированное устройство и службы приложений tooregister устройства, отправлять сообщения и чтения сообщений из центра IoT."
 services: iot-hub
 documentationcenter: java
 author: dominicbetts
@@ -15,50 +15,50 @@ ms.workload: na
 ms.date: 06/29/2017
 ms.author: dobett
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 707356a49970bcd76a55ee1b8a6fbddf6a6ba390
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: ac954f0522b46ed2a5b4a819bc611c13be0b9a9e
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="connect-your-device-to-your-iot-hub-using-java"></a>Подключение устройства к Центру Интернета вещей с помощью Java
+# <a name="connect-your-device-tooyour-iot-hub-using-java"></a>Подключиться с помощью Java концентратор IoT tooyour устройства
 [!INCLUDE [iot-hub-selector-get-started](../../includes/iot-hub-selector-get-started.md)]
 
-В конце этого руководства у вас будет три консольных приложения Java:
+В конце этого учебника hello у вас есть три консольные приложения Java:
 
-* **create-device-identity** — создает удостоверение устройства и соответствующий ключ безопасности для подключения к приложению устройства;
-* **read-d2c-messages** — отображает данные телеметрии, отправляемые приложением устройства;
-* **simulated-device** — подключается к Центру Интернета вещей с созданным ранее удостоверением устройства и отправляет сообщения телеметрии с частотой один раз в секунду по протоколу MQTT.
+* **Создание устройства идентификаторов**, которая создает удостоверения устройства и связана защита ключа tooconnect приложение устройства.
+* **чтение d2c сообщений**, которая отображает hello телеметрии, отправленные приложение устройства.
+* **имитируемые устройства**, который подключается центра IoT tooyour с идентификатором hello устройства, созданный ранее и будет отправлять данные телеметрии каждый второй с помощью протокола MQTT "hello".
 
 > [!NOTE]
-> Статья о [пакетах SDK для Центра Интернета вещей Azure][lnk-hub-sdks] содержит сведения о средствах, которые можно использовать при создании приложений для мобильных устройств и разработке серверной части решения.
+> статья Hello [пакеты SDK Azure IoT] [ lnk-hub-sdks] предоставляет сведения о hello Azure IoT пакетов SDK, которые можно использовать toobuild toorun обоих приложений на устройствах и серверной части вашего решения.
 
-Для работы с этим учебником требуется:
+toocomplete этого учебника требуется hello следующие:
 
-* Последняя версия [пакета SDK для Java SE 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) 
+* Здравствуйте, последняя версия [Java SE Development Kit 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) 
 * [Maven 3](https://maven.apache.org/install.html) 
 * Активная учетная запись Azure. Если ее нет, можно создать [бесплатную учетную запись][lnk-free-trial] всего за несколько минут.
 
 [!INCLUDE [iot-hub-get-started-create-hub](../../includes/iot-hub-get-started-create-hub.md)]
 
-Наконец, запишите значение поля **Первичный ключ**. После этого щелкните **Конечные точки** и встроенную конечную точку **События**. В колонке **Свойства** запишите адрес значений полей **Event Hub-compatible name** (Имя, совместимое с концентратором событий) и **Event Hub-compatible endpoint** (Конечная точка, совместимая с концентратором событий). Эти три значения понадобятся при создании приложения **read-d2c-messages**.
+В качестве последнего шага, запишите hello **первичного ключа** значение. Нажмите кнопку **конечные точки** и hello **события** встроенные конечной точки. На hello **свойства** колонке запомните hello **концентратора событий-совместимое имя** и hello **конечной точки концентратора событий в совместимом** адрес. Эти три значения понадобятся при создании приложения **read-d2c-messages**.
 
 ![Колонка "Сообщения" Центра Интернета вещей на портале Azure][6]
 
-Теперь Центр Интернета вещей создан. Вы создали все необходимое для работы с этим руководством: имя узла, строку подключения и первичный ключ Центра Интернета вещей, а также имя и конечную точку, совместимые с концентратором событий.
+Теперь Центр Интернета вещей создан. У вас есть hello центра IoT имя узла, центр IoT строку подключения, IoT Hub первичный ключ, имя совместимое концентратора событий и концентратора событий-совместимой конечной точки необходимо toocomplete этого учебника.
 
 ## <a name="create-a-device-identity"></a>Создание удостоверения устройства
-В этом разделе объясняется, как написать консольное приложение Java, которое создает удостоверение устройства в реестре удостоверений в Центре Интернета вещей. Устройство может подключиться к Центру Интернета вещей, только если в реестре удостоверений есть соответствующая запись. Дополнительные сведения см. в разделе, посвященном **реестру удостоверений**, в [руководстве разработчика по Центру Интернета вещей Azure][lnk-devguide-identity]. При запуске этого консольного приложения создается уникальный идентификатор устройства и ключ, с помощью которых выполняется идентификация во время отправки сообщений из устройства в облако для Центра Интернета вещей.
+В этом разделе создайте консольное приложение Java, которое создает удостоверение устройства в реестре hello identity в вашего центра IoT. Устройство не удается подключиться tooIoT концентратора, если оно не имеет запись в реестре удостоверений hello. Дополнительные сведения см. в разделе hello **реестра удостоверений** раздел hello [руководстве для разработчиков центра IoT][lnk-devguide-identity]. При запуске это консольное приложение, он создает уникальный идентификатор устройства и ключ, что при отправке устройства в облако, устройство может использовать tooidentify самого сообщения tooIoT концентратора.
 
-1. Создайте пустую папку с именем iot-java-get-started. В папке iot-java-get-started создайте проект Maven с именем **create-device-identity**, выполнив в командной строке следующую команду. Обратите внимание, что это одна длинная команда.
+1. Создайте пустую папку с именем iot-java-get-started. В папке iot-java-get-started hello создайте Maven проект с именем **создать устройство идентификаторов** с помощью hello следующую команду в командной строке. Обратите внимание, что это одна длинная команда.
 
     ```cmd/sh
     mvn archetype:generate -DgroupId=com.mycompany.app -DartifactId=create-device-identity -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
     ```
 
-2. В командной строке перейдите к папке create-device-identity.
+2. В командной строке перейдите папку toohello создать устройство идентификаторов.
 
-3. Откройте в текстовом редакторе файл pom.xml из папки create-device-identity и добавьте приведенные ниже зависимости в узел **dependency** . Эта зависимость позволяет использовать в приложении пакет iot-service-client:
+3. В текстовом редакторе, откройте файл pom.xml hello в папке создайте устройств удостоверений hello и добавьте следующие зависимости toohello hello **зависимости** узла. Эта зависимость позволяет вам toouse hello клиента для службы iot пакета в приложении:
 
     ```xml
     <dependency>
@@ -69,13 +69,13 @@ ms.lasthandoff: 08/29/2017
     ```
 
     > [!NOTE]
-    > Наличие последней версии пакета **iot-service-client** можно проверить с помощью [поиска Maven][lnk-maven-service-search].
+    > Вы можете проверить наличие hello последнюю версию **клиента для службы iot** с помощью [поиска Maven][lnk-maven-service-search].
 
-4. Сохраните и закройте файл pom.xml.
+4. Сохраните и закройте файл pom.xml hello.
 
-5. Откройте в текстовом редакторе файл create-device-identity\src\main\java\com\mycompany\app\App.jav.
+5. В текстовом редакторе откройте файл create-device-identity\src\main\java\com\mycompany\app\App.java hello.
 
-6. Добавьте в файл следующие инструкции **import** .
+6. Добавьте следующее hello **импорта** toohello файл инструкций:
 
     ```java
     import com.microsoft.azure.sdk.iot.service.exceptions.IotHubException;
@@ -86,7 +86,7 @@ ms.lasthandoff: 08/29/2017
     import java.net.URISyntaxException;
     ```
 
-7. Добавьте следующие переменные уровня класса в класс **App**, заменив **{yourhubconnectionstring}** значениями, записанными ранее.
+7. Добавьте следующие переменные уровня класса toohello hello **приложения** класса, заменив **{yourhubconnectionstring}** с hello значение на указанное выше:
 
     ```java
     private static final String connectionString = "{yourhubconnectionstring}";
@@ -94,13 +94,13 @@ ms.lasthandoff: 08/29/2017
     ```
 [!INCLUDE [iot-hub-pii-note-naming-device](../../includes/iot-hub-pii-note-naming-device.md)]
 
-8. Измените подпись метода **main** , чтобы включить исключения, указанные ниже.
+8. Измените сигнатуру hello объекта hello **основной** tooinclude метод hello исключения следующим образом:
 
     ```java
     public static void main( String[] args ) throws IOException, URISyntaxException, Exception
     ```
 
-9. Добавьте в текст метода **main** код, приведенный ниже. Этот код создает устройство с именем *javadevice* в реестре удостоверений Центра Интернета вещей, если оно еще не создано. Затем он отобразит идентификатор устройства и ключ, которые понадобятся вам позже:
+9. Добавьте следующий код как текст hello hello hello **основной** метод. Этот код создает устройство с именем *javadevice* в реестре удостоверений Центра Интернета вещей, если оно еще не создано. Затем отображается идентификатор устройства hello и ключ, которые понадобятся позднее:
 
     ```java
     RegistryManager registryManager = RegistryManager.createFromConnectionString(connectionString);
@@ -112,7 +112,7 @@ RegistryManager registryManager = RegistryManager.createFromConnectionString(con
     try {
       device = registryManager.addDevice(device);
     } catch (IotHubException iote) {
-      // If the device already exists.
+      // If hello device already exists.
       try {
         device = registryManager.getDevice(deviceId);
       } catch (IotHubException iotf) {
@@ -130,7 +130,7 @@ RegistryManager registryManager = RegistryManager.createFromConnectionString(con
     try {
       device = registryManager.addDevice(device);
     } catch (IotHubException iote) {
-      // If the device already exists.
+      // If hello device already exists.
       try {
         device = registryManager.getDevice(deviceId);
       } catch (IotHubException iotf) {
@@ -144,41 +144,41 @@ RegistryManager registryManager = RegistryManager.createFromConnectionString(con
     System.out.println("Device key: " + device.getPrimaryKey());
     ```
 
-10. Сохраните и закройте файл App.java.
+10. Сохраните и закройте файл App.java hello.
 
-11. Чтобы создать приложение **create-device-identity** с помощью Maven, выполните в командной строке в папке create-device-identity следующую команду:
+11. toobuild hello **создать устройство идентификаторов** приложения с помощью Maven, выполните следующую команду в командной строке hello в папке создайте устройств удостоверений hello hello:
 
     ```cmd/sh
     mvn clean package -DskipTests
     ```
 
-12. Чтобы выполнить приложение **create-device-identity** с помощью Maven, выполните в командной строке в папке create-device-identity следующую команду.
+12. toorun hello **создать устройство идентификаторов** приложения с помощью Maven, выполните следующую команду в командной строке hello в папке создайте устройств удостоверений hello hello:
 
     ```cmd/sh
     mvn exec:java -Dexec.mainClass="com.mycompany.app.App"
     ```
 
-13. Запишите значения полей **Идентификатор устройства** и **Device key** (Ключ устройства). Эти значения понадобятся вам позже, когда вы будете создавать приложение, которое подключается к Центру Интернета вещей от имени устройства.
+13. Запишите hello **идентификатор устройства** и **ключ устройства**. Эти значения должны позже при создании приложения, которое подключается tooIoT концентратора как устройство.
 
 > [!NOTE]
-> В реестре удостоверений в Центре Интернета вещей хранятся только идентификаторы устройств, необходимые для безопасного доступа к Центру Интернета вещей. В этом реестре хранятся идентификаторы и ключи устройств, которые используются в качестве учетных данных безопасности, и флажок включения или выключения, который позволяет вам отключить доступ для отдельного устройства. Если в приложении необходимо хранить другие метаданные для конкретного устройства, следует использовать хранилище конкретного приложения. Дополнительные сведения см. в [руководстве для разработчиков Центра Интернета вещей][lnk-devguide-identity].
+> Hello реестра удостоверений центра IoT хранится только toohello устройства удостоверения tooenable безопасного доступа центра IoT. Он сохраняет идентификаторы и ключи toouse устройства как учетные данные безопасности и включение или отключение флага, что toodisable доступа можно использовать для отдельных устройств. Если ваше приложение должно toostore другие метаданные для конкретного устройства, его следует использовать хранилище конкретного приложения. Дополнительные сведения см. в разделе hello [руководстве для разработчиков центра IoT][lnk-devguide-identity].
 
 ## <a name="receive-device-to-cloud-messages"></a>Получение сообщений с устройства в облако
 
-В этом разделе вы создадите консольное приложение Java, которое считывает сообщения, передаваемые с устройства в облако из Центра Интернета вещей. Центр Интернета вещей предоставляет совместимую с [концентраторами событий][lnk-event-hubs-overview] конечную точку для считывания сообщений, передаваемых с устройства в облако. Для простоты в этом руководстве создается базовый модуль чтения, который не подходит для развертывания с высокой пропускной способностью. В руководстве по [обработке сообщений, передаваемых с устройства в облако][lnk-process-d2c-tutorial], показано, как обрабатывать такие сообщения в больших количествах. В руководстве по [началу работы с концентраторами событий][lnk-eventhubs-tutorial] приведены дополнительные сведения о том, как обрабатываются сообщения из концентраторов событий. Это руководство применимо к конечным точкам Центра Интернета вещей, совместимым с концентраторами событий.
+В этом разделе вы создадите консольное приложение Java, которое считывает сообщения, передаваемые с устройства в облако из Центра Интернета вещей. Центр IoT предоставляет [концентратора событий][lnk-event-hubs-overview]-совместимую конечную точку tooenable вам сообщения tooread устройства в облако. простые действия tookeep, данный учебник создает основные средства чтения, не подходит для развертывания высокой пропускной способностью. Hello [обрабатывать сообщения из устройства в облако] [ lnk-process-d2c-tutorial] учебнике показано, как сообщения tooprocess устройства в облако в масштабе. Hello [Приступая к работе с концентраторами событий] [ lnk-eventhubs-tutorial] учебника содержатся дополнительные сведения о предоставлении tooprocess сообщений из концентраторов событий и определяется применимо toohello конечными точками события концентратора IoT Hub совместимой.
 
 > [!NOTE]
-> Совместимая с концентраторами событий конечная точка для чтения сообщений, отправляемых с устройства в облако, всегда использует протокол AMQP.
+> Hello концентратора событий-совместимой конечной точки для чтения сообщения из устройства в облако, всегда использует протокол AMQP hello.
 
-1. В папке iot-java-get-started, созданной в разделе *Создание удостоверения устройства*, создайте проект Maven с именем **read-d2c-messages**, выполнив в командной строке следующую команду. Обратите внимание, что это одна длинная команда.
+1. В папке iot-java-get-started hello, созданные в hello *создать удостоверение устройства* статьи, создайте проект с именем Maven **чтение d2c сообщений** hello следующую команду в командной строке с помощью. Обратите внимание, что это одна длинная команда.
 
     ```cmd/sh
     mvn archetype:generate -DgroupId=com.mycompany.app -DartifactId=read-d2c-messages -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
     ```
 
-2. В командной строке перейдите к папке read-d2c-messages.
+2. В командной строке перейдите toohello чтение d2c сообщений папки.
 
-3. Откройте в текстовом редакторе файл pom.xml из папки read-d2c-messages и добавьте зависимости, приведенные ниже, в узел **dependency** . Эта зависимость позволяет использовать пакет eventhubs-client в приложении, чтобы считывать данные с конечной точки, совместимой с концентраторами событий.
+3. В текстовом редакторе, откройте файл pom.xml hello в папке чтения d2c – сообщений hello и добавьте следующие зависимости toohello hello **зависимости** узла. Эта зависимость позволяет пакет клиента eventhubs toouse hello в tooread вашего приложения из конечной точки концентратора событий-совместимой hello:
 
     ```xml
     <dependency> 
@@ -188,11 +188,11 @@ RegistryManager registryManager = RegistryManager.createFromConnectionString(con
     </dependency>
     ```
 
-4. Сохраните и закройте файл pom.xml.
+4. Сохраните и закройте файл pom.xml hello.
 
-5. Откройте в текстовом редакторе файл read-d2c-messages\src\main\java\com\mycompany\app\App.java.
+5. В текстовом редакторе откройте файл read-d2c-messages\src\main\java\com\mycompany\app\App.java hello.
 
-6. Добавьте в файл следующие инструкции **import** .
+6. Добавьте следующее hello **импорта** toohello файл инструкций:
 
     ```java
     import java.io.IOException;
@@ -204,13 +204,13 @@ RegistryManager registryManager = RegistryManager.createFromConnectionString(con
     import java.util.function.*;
     ```
 
-7. Добавьте приведенную ниже переменную уровня класса в класс **App** . Замените значения **{youriothubkey}**, **{youreventhubcompatibleendpoint}** и **{youreventhubcompatiblename}** значениями, записанными ранее.
+7. Добавьте следующие toohello переменной уровня класса hello **приложения** класса. Замените **{youriothubkey}**, **{youreventhubcompatibleendpoint}**, и **{youreventhubcompatiblename}** со значениями hello, записанное ранее:
 
     ```java
     private static String connStr = "Endpoint={youreventhubcompatibleendpoint};EntityPath={youreventhubcompatiblename};SharedAccessKeyName=iothubowner;SharedAccessKey={youriothubkey}";
     ```
 
-8. Добавьте приведенный ниже метод **receiveMessages** в класс **App**. Этот метод создает экземпляр **EventHubClient**, чтобы подключиться к конечной точке, совместимой с концентраторами событий, а затем асинхронно создает экземпляр **PartitionReceiver** для чтения из секции концентратора событий. Он выполняет непрерывную циклическую обработку, выводя сведения о сообщении, пока приложение не завершит работу.
+8. Добавьте следующее hello **receiveMessages** toohello метод **приложения** класса. Этот метод создает **EventHubClient** экземпляр конечной точки tooconnect toohello совместимое концентратора событий и асинхронно создает **PartitionReceiver** tooread экземпляр из концентратора событий секции. Он постоянно циклы и выводит сведения о сообщении hello до завершения приложение hello.
 
     ```java
     // Create a receiver on a partition.
@@ -219,7 +219,7 @@ RegistryManager registryManager = RegistryManager.createFromConnectionString(con
       try {
         client = EventHubClient.createFromConnectionStringSync(connStr);
       } catch (Exception e) {
-        System.out.println("Failed to create client: " + e.getMessage());
+        System.out.println("Failed toocreate client: " + e.getMessage());
         System.exit(1);
       }
       try {
@@ -251,33 +251,33 @@ RegistryManager registryManager = RegistryManager.createFromConnectionString(con
                   System.out.println(String.format("Partition: %s, ReceivedBatch Size: %s", partitionId, batchSize));
                 }
               } catch (Exception e) {
-                System.out.println("Failed to receive messages: " + e.getMessage());
+                System.out.println("Failed tooreceive messages: " + e.getMessage());
               }
             }
           });
         } catch (Exception e) {
-          System.out.println("Failed to create receiver: " + e.getMessage());
+          System.out.println("Failed toocreate receiver: " + e.getMessage());
       }
       return client;
     }
     ```
 
    > [!NOTE]
-   > Этот метод использует фильтр во время создания получателя, чтобы получатель читал только сообщения, отправленные в Центр Интернета вещей после запуска получателя. Этот метод удобно использовать в тестовой среде для просмотра текущего набора сообщений. В рабочей среде код должен обеспечивать обработку всех сообщений. Дополнительные сведения см. в руководстве по [обработке сообщений Центра Интернета вещей, отправляемых с устройства в облако, с помощью .NET][lnk-process-d2c-tutorial].
+   > Этот метод использует фильтр при создании приемника hello, чтобы hello приемник считывает только сообщения, отправленные tooIoT концентратора после hello получатель начинает выполнение. Этот метод полезен в тестовой среде, чтобы можно было видеть текущий набор сообщений hello. В рабочей среде кода следует убедитесь в том, что обработке всех сообщений hello - Дополнительные сведения см. в разделе hello [как tooprocess сообщения из устройства в облако центра IoT] [ lnk-process-d2c-tutorial] учебника.
 
-9. Измените подпись метода **main** , чтобы включить исключения, указанные ниже.
+9. Измените сигнатуру hello объекта hello **основной** tooinclude метод hello исключения следующим образом:
 
     ```java
     public static void main( String[] args ) throws IOException
     ```
 
-10. В метод **main** в классе **App** добавьте приведенный ниже код. Этот код создает два экземпляра, **EventHubClient** и **PartitionReceiver**, позволяя закрыть приложение, когда обработка сообщений будет завершена.
+10. Добавьте следующий код toohello hello **основной** метод в hello **приложения** класса. Этот код создает два hello **EventHubClient** и **PartitionReceiver** экземпляров и включает приложение hello tooclose после завершения обработки сообщений:
 
     ```java
     // Create receivers for partitions 0 and 1.
     EventHubClient client0 = receiveMessages("0");
     EventHubClient client1 = receiveMessages("1");
-    System.out.println("Press ENTER to exit.");
+    System.out.println("Press ENTER tooexit.");
     System.in.read();
     try {
       client0.closeSync();
@@ -289,28 +289,28 @@ RegistryManager registryManager = RegistryManager.createFromConnectionString(con
     ```
 
     > [!NOTE]
-    > Предполагается, что вы создали Центр Интернета вещей на уровне F1 (Бесплатный). Бесплатный Центр Интернета вещей содержит два раздела с именами "0" и "1".
+    > Данный код предполагает, что вы создали концентратор IoT hello F1 (бесплатно) уровня. Бесплатный Центр Интернета вещей содержит два раздела с именами "0" и "1".
 
-11. Сохраните и закройте файл App.java.
+11. Сохраните и закройте файл App.java hello.
 
-12. Чтобы создать приложение **read-d2c-messages** с помощью Maven, выполните в командной строке в папке read-d2c-messages следующую команду:
+12. toobuild hello **чтение d2c сообщений** приложения с помощью Maven, выполните следующую команду в командной строке hello в папке чтения d2c сообщения hello hello:
 
     ```cmd/sh
     mvn clean package -DskipTests
     ```
 
 ## <a name="create-a-device-app"></a>Создание приложения устройства
-В этом разделе вы создаете консольное приложение Java, которое имитирует устройство, отправляющее сообщения с устройства в облако в Центре Интернета вещей.
+В этом разделе создайте консольное приложение Java, которое имитирует устройство, которое отправляет центр IoT tooan сообщения из устройства в облако.
 
-1. В папке iot-java-get-started, созданной в разделе *Создание удостоверения устройства*, создайте проект Maven с именем **simulated-device**, выполнив в командной строке следующую команду. Обратите внимание, что это одна длинная команда.
+1. В папке iot-java-get-started hello, созданные в hello *создать удостоверение устройства* статьи, создайте проект с именем Maven **имитируемые устройства** hello следующую команду в командной строке с помощью. Обратите внимание, что это одна длинная команда.
 
     ```cmd/sh
     mvn archetype:generate -DgroupId=com.mycompany.app -DartifactId=simulated-device -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
     ```
 
-2. В командной строке перейдите к папке simulated-device.
+2. В командной строке перейдите папку toohello имитируемые устройства.
 
-3. Откройте в текстовом редакторе файл pom.xml из папки simulated-device и добавьте приведенные ниже зависимости в узел **dependency** . Эта зависимость позволит вам использовать в приложении пакет iothub-java-client для обмена данными с Центром Интернета вещей и сериализации объектов Java в JSON.
+3. В текстовом редакторе, откройте файл pom.xml hello в папке имитируемые устройства hello и добавьте следующие зависимости toohello hello **зависимости** узла. Эта зависимость позволяет вам toouse hello центром IOT java-пакет клиента по toocommunicate вашего приложения с центр IoT и tooserialize tooJSON объектов Java:
 
     ```xml
     <dependency>
@@ -326,13 +326,13 @@ RegistryManager registryManager = RegistryManager.createFromConnectionString(con
     ```
 
     > [!NOTE]
-    > Наличие последней версии пакета **iot-device-client** можно проверить с помощью [поиска Maven][lnk-maven-device-search].
+    > Вы можете проверить наличие hello последнюю версию **клиента для устройства iot** с помощью [поиска Maven][lnk-maven-device-search].
 
-4. Сохраните и закройте файл pom.xml.
+4. Сохраните и закройте файл pom.xml hello.
 
-5. Откройте в текстовом редакторе файл simulated-device\src\main\java\com\mycompany\app\App.java.
+5. В текстовом редакторе откройте файл simulated-device\src\main\java\com\mycompany\app\App.java hello.
 
-6. Добавьте в файл следующие инструкции **import** .
+6. Добавьте следующее hello **импорта** toohello файл инструкций:
 
     ```java
     import com.microsoft.azure.sdk.iot.device.*;
@@ -345,7 +345,7 @@ RegistryManager registryManager = RegistryManager.createFromConnectionString(con
     import java.util.concurrent.ExecutorService;
     ```
 
-7. Добавьте в класс **App** . Замените значение **{youriothubname}** именем Центра Интернета вещей, а **{yourdevicekey}** — значением ключа устройства, сформированным при работе с разделом *Создание удостоверения устройства*.
+7. Добавьте следующие переменные уровня класса toohello hello **приложения** класса. Замена **{youriothubname}** на название концентратора IoT и **{yourdevicekey}** со значением ключа устройства hello созданный hello *создать удостоверение устройства* раздела:
 
     ```java
     private static String connString = "HostName={youriothubname}.azure-devices.net;DeviceId=myFirstJavaDevice;SharedAccessKey={yourdevicekey}";
@@ -354,9 +354,9 @@ RegistryManager registryManager = RegistryManager.createFromConnectionString(con
     private static DeviceClient client;
     ```
    
-    При создании экземпляра объекта **DeviceClient** в этом примере приложения используется переменная **protocol**. Для взаимодействия с Центром Интернета вещей можно использовать протокол MQTT, AMQP или HTTP.
+    Этот пример приложения использует hello **протокола** переменной, когда он создает **DeviceClient** объекта. Можно использовать либо toocommunicate hello MQTT, AMQP или HTTP-протокол с центром IoT.
 
-8. Чтобы указать данные телеметрии, которые устройство отправляет в Центр Интернета вещей, добавьте в класс **App** следующий вложенный класс **TelemetryDataPoint**.
+8. Добавьте следующее hello вложенные **TelemetryDataPoint** класс внутри hello **приложения** устройство отправляет центр IoT tooyour данные телеметрии hello toospecify класса:
 
     ```java
     private static class TelemetryDataPoint {
@@ -370,12 +370,12 @@ RegistryManager registryManager = RegistryManager.createFromConnectionString(con
       }
     }
     ```
-9. Чтобы отобразить состояние подтверждения, возвращаемое Центром Интернета вещей при обработке сообщения с устройства приложения, добавьте в класс **App** приведенный ниже вложенный класс **EventCallback**. Этот метод также уведомляет основной поток в приложении о том, что сообщение обработано.
+9. Добавьте следующее hello вложенные **EventCallback** класс внутри hello **приложения** класс hello toodisplay подтверждения состояния, hello центра IoT возвращает при обработке сообщения из устройства приложение hello. Этот метод также сообщает о hello основного потока в приложение hello после обработки сообщения hello:
    
     ```java
     private static class EventCallback implements IotHubEventCallback {
       public void execute(IotHubStatusCode status, Object context) {
-        System.out.println("IoT Hub responded to message with status: " + status.name());
+        System.out.println("IoT Hub responded toomessage with status: " + status.name());
    
         if (context != null) {
           synchronized (context) {
@@ -386,7 +386,7 @@ RegistryManager registryManager = RegistryManager.createFromConnectionString(con
     }
     ```
 
-10. Добавьте приведенный ниже вложенный класс **MessageSender** в класс **App**. Метод **run** в этом классе создает пример данных телеметрии для отправки в Центр Интернета вещей и ожидает подтверждения перед отправкой следующего сообщения:
+10. Добавьте следующее hello вложенные **MessageSender** класс внутри hello **приложения** класса. Hello **запуска** метода в данном классе создает образец данных телеметрии toosend tooyour IoT hub и ожидает подтверждения перед отправкой hello следующее сообщение:
 
     ```java
     private static class MessageSender implements Runnable {
@@ -426,9 +426,9 @@ RegistryManager registryManager = RegistryManager.createFromConnectionString(con
     }
     ```
 
-    Этот метод отправляет новое сообщение с устройства в облако через одну секунду после того, как Центр Интернета вещей подтверждает получение предыдущего сообщения. Сообщение содержит объект сериализации JSON с идентификатором устройства и случайные числа, что позволяет имитировать датчик температуры и влажности.
+    Этот метод отправляет новое сообщение устройства в облако одной секунды после центра IoT hello подтверждает предыдущее сообщение hello. приветственное сообщение содержит объект сериализации JSON с hello deviceId и случайным образом toosimulate номера датчика температуры и влажности датчика.
 
-11. Замените метод **main** следующим кодом, который создает поток для отправки сообщений с устройства в облако в Центре Интернета вещей.
+11. Замените hello **основной** метод с hello, следующий код, создающий концентратор IoT tooyour поток toosend сообщения из устройства в облако:
 
     ```java
     public static void main( String[] args ) throws IOException, URISyntaxException {
@@ -440,58 +440,58 @@ RegistryManager registryManager = RegistryManager.createFromConnectionString(con
       ExecutorService executor = Executors.newFixedThreadPool(1);
       executor.execute(sender);
     
-      System.out.println("Press ENTER to exit.");
+      System.out.println("Press ENTER tooexit.");
       System.in.read();
       executor.shutdownNow();
       client.closeNow();
     }
     ```
 
-12. Сохраните и закройте файл App.java.
+12. Сохраните и закройте файл App.java hello.
 
-13. Чтобы создать приложение **simulated-device** с помощью Maven, выполните в командной строке в папке simulated-device следующую команду:
+13. toobuild hello **имитируемые устройства** приложения с помощью Maven, выполните следующую команду в командной строке hello в папке имитируемые устройства hello hello:
 
     ```cmd/sh
     mvn clean package -DskipTests
     ```
 
 > [!NOTE]
-> Для простоты в этом руководстве не реализуются политики повтора. В рабочем коде следует реализовать политики повторных попыток (например, с экспоненциальной задержкой), как указано в статье [Обработка временного сбоя][lnk-transient-faults] на сайте MSDN.
+> простые действия tookeep, этот учебник не реализует никакую политику повтора. В рабочем коде следует реализовать политики повтора (например экспоненциальную отсрочку), описанным в статье MSDN hello [обработка временных сбоев][lnk-transient-faults].
 
-## <a name="run-the-apps"></a>Запуск приложений
+## <a name="run-hello-apps"></a>Запускайте приложения hello
 
-Теперь все готово к запуску приложений.
+Теперь вы находитесь toorun готовности приложения hello.
 
-1. Чтобы начать мониторинг первой секции в Центре Интернета вещей, в командной строке в папке read-d2c выполните следующую команду:
+1. В командной строке в папке d2c чтения hello выполните следующие команды toobegin мониторинг hello первую секцию в концентратор IoT hello:
 
     ```cmd/sh
     mvn exec:java -Dexec.mainClass="com.mycompany.app.App"
     ```
 
-    ![Приложение службы Центра Интернета вещей на языке Java для мониторинга сообщений, отправляемых с устройства в облако][7]
+    ![Центр IoT Java службы приложения toomonitor устройства в облако сообщений][7]
 
-2. В командной строке в папке simulated-device выполните следующую команду, чтобы начать отправку данных телеметрии в Центр Интернета вещей:
+2. В командной строке в папке hello имитируемые устройства выполните hello, следующая команда toobegin отправки центра IoT tooyour данных телеметрии:
 
     ```cmd/sh
     mvn exec:java -Dexec.mainClass="com.mycompany.app.App" 
     ```
 
-    ![Приложение устройства Центра Интернета вещей на языке Java для отправки сообщений с устройства в облако][8]
+    ![Сообщения из устройства в облако toosend приложения центра IoT Java устройства][8]
 
-3. На плитке **Использование** на [портале Azure][lnk-portal] отображается количество сообщений, отправленных в Центр Интернета вещей.
+3. Hello **использование** плитки в hello [портал Azure] [ lnk-portal] показано hello число сообщений, отправляемых toohello центр IoT:
 
-    ![Плитка "Использование" на портале Azure, отображающая количество сообщений, отправленных в Центр Интернета вещей][43]
+    ![Azure портала использование плитки, показывающего количество сообщений, отправляемых tooIoT концентратора][43]
 
 ## <a name="next-steps"></a>Дальнейшие действия
-В этом руководстве мы настроили новый Центр Интернета вещей на портале Azure и создали удостоверение устройства в реестре удостоверений Центра Интернета вещей. Это удостоверение позволяет приложению устройства отправлять в Центр Интернета вещей сообщения, передаваемые из устройства в облако. Кроме того, мы создали приложение, которое отображает сообщения, полученные Центром Интернета вещей.
+В этом учебнике настроен центр IoT в hello портал Azure и затем создать удостоверение устройства в реестре удостоверений центра IoT hello. Вы использовали устройства удостоверения tooenable hello устройства приложения toosend сообщения из устройства в облако toohello центр IoT. Также было создано приложение, которое отображает hello сообщений, полученных центра IoT hello.
 
-Чтобы продолжить знакомство с Центром Интернета вещей и изучить другие сценарии Интернета вещей, см. следующие ресурсы:
+Приступая к работе toocontinue центр IoT и tooexplore других сценариев IoT просмотреть:
 
 * [Подключение устройства к Azure IoT][lnk-connect-device]
 * [How to get started with device management (Node)][lnk-device-management] (Начало работы с управлением устройствами (Node))
 * [Explore Azure IoT Edge architecture on Linux][lnk-iot-edge] (Приступая к работе с архитектурой Azure IoT Edge в Linux)
 
-Сведения о том, как расширить решение для Интернета вещей и обрабатывать сообщения, отправляемые с устройства в облако в большом количестве, см. [здесь][lnk-process-d2c-tutorial].
+toolearn tooextend сообщений в масштабе, IoT решение и процесс устройства в облако. в статье hello [обрабатывать сообщения из устройства в облако] [ lnk-process-d2c-tutorial] учебника.
 [!INCLUDE [iot-hub-get-started-next-steps](../../includes/iot-hub-get-started-next-steps.md)]
 
 <!-- Images. -->

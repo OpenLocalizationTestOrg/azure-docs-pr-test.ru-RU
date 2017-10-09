@@ -1,6 +1,6 @@
 ---
-title: "Использование Hadoop Pig с помощью REST в HDInsight — Azure | Документы Майкрософт"
-description: "Узнайте, как с помощью REST выполнять задания Pig Latin в кластере Hadoop в Azure HDInsight."
+title: "aaaUse Hadoop Pig с REST в HDInsight - Azure | Документы Microsoft"
+description: "Узнайте, как кластер задания toouse REST toorun латиница Pig в Hadoop в Azure HDInsight."
 services: hdinsight
 documentationcenter: 
 author: Blackmist
@@ -16,27 +16,27 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 07/31/2017
 ms.author: larryfr
-ms.openlocfilehash: a86864a779b0de1c6d5669cfbba0f3e1a27f1ff1
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 760139e3caad9103d8c9d34e7f548d476014b5ae
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="run-pig-jobs-with-hadoop-on-hdinsight-by-using-rest"></a>Выполнение заданий Pig с помощью REST с использованием Hadoop в HDInsight
 
 [!INCLUDE [pig-selector](../../includes/hdinsight-selector-use-pig.md)]
 
-Узнайте, как выполнять задания Pig Latin с помощью запросов REST к кластеру Azure HDInsight. Curl используется для демонстрации возможностей взаимодействия с HDInsight с помощью REST API WebHCat.
+Узнайте, как toorun Pig латиница заданий, делая кластера Azure HDInsight tooan запросов REST. Перелистывание — используется toodemonstrate взаимодействие с HDInsight с помощью API-интерфейса REST WebHCat hello.
 
 > [!NOTE]
-> Если вы уже знаете, как использовать серверы Hadoop на платформе Linux, но не знакомы с HDInsight, ознакомьтесь со статьей [Советы по использованию HDInsight на платформе Linux](hdinsight-hadoop-linux-information.md).
+> Если вы уже знакомы с использованием серверов под управлением Linux Hadoop, но являются новый tooHDInsight, см. раздел [советы HDInsight под управлением Linux](hdinsight-hadoop-linux-information.md).
 
 ## <a id="prereq"></a>Предварительные требования
 
 * Кластер Azure HDInsight (Hadoop в HDInsight) (на платформе Linux или Windows).
 
   > [!IMPORTANT]
-  > Linux — это единственная операционная система, используемая для работы с HDInsight 3.4 или более поздних версий. Дополнительные сведения см. в разделе [Приближается дата прекращения сопровождения HDI версии 3.3](hdinsight-component-versioning.md#hdinsight-windows-retirement).
+  > Linux — hello только операционную систему, используемую в HDInsight версии 3.4 или более поздней. Дополнительные сведения см. в разделе [Приближается дата прекращения сопровождения HDI версии 3.3](hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
 * [Curl](http://curl.haxx.se/)
 
@@ -45,74 +45,74 @@ ms.lasthandoff: 08/03/2017
 ## <a id="curl"></a>Выполнение заданий Pig с помощью Curl
 
 > [!NOTE]
-> REST API защищается с помощью [обычной проверки подлинности](http://en.wikipedia.org/wiki/Basic_access_authentication). Чтобы обеспечить безопасную отправку учетных данных на сервер, запросы всегда следует отправлять с помощью протокола HTTPS.
+> Hello API-интерфейса REST является защищен с помощью [базовая проверка подлинности доступа](http://en.wikipedia.org/wiki/Basic_access_authentication). Всегда выполнять запросы, используя свои учетные данные безопасно отправляются серверу toohello tooensure безопасного HTTP (HTTPS).
 >
-> При использовании команд, описанных в этом разделе, замените `USERNAME` на имя пользователя для выполнения проверки подлинности в кластере, а `PASSWORD` — на пароль учетной записи пользователя. Замените `CLUSTERNAME` именем кластера.
+> При использовании команд hello в этом разделе, замените `USERNAME` tooauthenticate toohello hello пользователя кластера и заменить `PASSWORD` hello пароль для учетной записи пользователя hello. Замените `CLUSTERNAME` с hello имя кластера.
 >
 
 
-1. Используйте следующую команду в командной строке, чтобы проверить возможность подключения к кластеру HDInsight:
+1. Из командной строки используйте следующие команды tooverify, возможность подключения кластера HDInsight tooyour hello:
 
     ```bash
     curl -u USERNAME:PASSWORD -G https://CLUSTERNAME.azurehdinsight.net/templeton/v1/status
     ```
 
-    Вы получите следующий ответ JSON:
+    Должно появиться после ответа JSON hello.
 
         {"status":"ok","version":"v1"}
 
-    Ниже приведены параметры, используемые в этой команде:
+    Ниже приведены параметры Hello, использованный в этой команде.
 
-    * **-u**— имя пользователя и пароль, используемый для аутентификации запроса.
+    * **-u**: hello имя пользователя и пароль используются tooauthenticate hello запроса
     * **-G** — указывает, что этот запрос является запросом GET.
 
-     Начало URL-адреса **https://CLUSTERNAME.azurehdinsight.net/templeton/v1** одинаковое для всех запросов. Путь **/status** указывает, что по запросу серверу должно быть возвращено состояние WebHCat (другое название — Templeton).
+     Здравствуйте, начало hello URL-адрес, **https://CLUSTERNAME.azurehdinsight.net/templeton/v1**, hello одинаково для всех запросов. путь Hello **параметр/Status**, указывает, этот запрос hello состояние hello tooreturn WebHCat (также известный как Templeton) для сервера hello.
 
-2. Чтобы отправить задание Pig Latin в кластер, используйте следующий код:
+2. Используйте следующий код toosubmit кластера toohello задания Pig латиница hello.
 
     ```bash
     curl -u USERNAME:PASSWORD -d user.name=USERNAME -d execute="LOGS=LOAD+'/example/data/sample.log';LEVELS=foreach+LOGS+generate+REGEX_EXTRACT($0,'(TRACE|DEBUG|INFO|WARN|ERROR|FATAL)',1)+as+LOGLEVEL;FILTEREDLEVELS=FILTER+LEVELS+by+LOGLEVEL+is+not+null;GROUPEDLEVELS=GROUP+FILTEREDLEVELS+by+LOGLEVEL;FREQUENCIES=foreach+GROUPEDLEVELS+generate+group+as+LOGLEVEL,COUNT(FILTEREDLEVELS.LOGLEVEL)+as+count;RESULT=order+FREQUENCIES+by+COUNT+desc;DUMP+RESULT;" -d statusdir="/example/pigcurl" https://CLUSTERNAME.azurehdinsight.net/templeton/v1/pig
     ```
 
-    Ниже приведены параметры, используемые в этой команде:
+    Ниже приведены параметры Hello, использованный в этой команде.
 
-    * **-d** — так как `-G` не используется, в запросе по умолчанию используется метод POST. `-d` задает значения данных, отправляемые в запросе.
+    * **-d**: поскольку `-G` не используется, hello запроса по умолчанию используется метод POST toohello. `-d`Указывает hello значения данных, отправляемых с запросом hello.
 
-    * **user.name**— пользователь, выполняющий команду.
-    * **execute**— оператор Pig Latin, который необходимо выполнить.
-    * **statusdir** — каталог, в который будет записано состояние этого задания.
+    * **User.Name**: hello пользователь, выполняющий команду hello
+    * **выполнение**: hello tooexecute инструкций Латинская Pig
+    * **statusdir**: hello, hello состояния для этого задания является записи в каталог
 
     > [!NOTE]
-    > Обратите внимание, что при использовании Curl пробелы в операторах Pig Latin заменяются знаком `+`.
+    > Обратите внимание, что пробелы hello в инструкциях латиница Pig заменяются hello `+` символов при использовании с Curl.
 
-    Эта команда должна возвращать идентификатор задания, который может использоваться для проверки состояния задания. Пример:
+    Эта команда должна возвращать идентификатора задания, который может быть используется toocheck hello состояние задания hello, например:
 
         {"id":"job_1415651640909_0026"}
 
-3. Чтобы проверить состояние задания, используйте следующую команду.
+3. состояние hello toocheck задания hello, hello используйте следующую команду
 
      ```bash
     curl -G -u USERNAME:PASSWORD -d user.name=USERNAME https://CLUSTERNAME.azurehdinsight.net/templeton/v1/jobs/JOBID | jq .status.state
     ```
 
-     Замените `JOBID` значением, возвращенным на предыдущем шаге. Например, если возвращено значение `{"id":"job_1415651640909_0026"}`, то `JOBID` равно `job_1415651640909_0026`.
+     Замените `JOBID` с hello значение, возвращенное в предыдущем шаге hello. Например, если hello, возвращают значение было `{"id":"job_1415651640909_0026"}`, затем `JOBID` — `job_1415651640909_0026`.
 
-    Если задание завершено, оно будет в состоянии **SUCCEEDED** (Успешно).
+    Если задание hello завершена, он имеет состояние hello **успешно**.
 
     > [!NOTE]
-    > Этот запрос Curl возвращает документ JSON с информацией о задании. При этом jq используется только для получения значения состояния.
+    > Этот запрос перелистывание возвращает документ JavaScript Object Notation (JSON) с сведения о задании hello и jq tooretrieve используется только hello значение состояния.
 
 ## <a id="results"></a>Просмотр результатов
 
-Когда состояние задания изменится на **SUCCEEDED**, вы можете получить результаты задания. Параметр `statusdir`, передаваемый с помощью запроса, содержит расположение выходного файла. В данном случае это `/example/pigcurl`.
+При изменении состояния hello hello задания слишком**успешно**, можно получить результаты задания hello hello. Hello `statusdir` параметр, передаваемый с запросом hello содержит расположение hello hello выходного файла; в данном случае `/example/pigcurl`.
 
-В качестве хранилища данных по умолчанию HDInsight может использовать хранилище Azure или Azure Data Lake Store. Существуют различные способы получения данных в зависимости от их используемого типа. Дополнительные сведения см. в разделе о хранилище в документе [Linux-based HDInsight information](hdinsight-hadoop-linux-information.md#hdfs-azure-storage-and-data-lake-store) (Сведения о HDInsight на базе Linux).
+HDInsight можно использовать в качестве хранилища данных по умолчанию hello хранилища Azure или хранилища Озера данных Azure. Существуют различные способы tooget hello данных, в зависимости от того, какой из них использовать. Дополнительные сведения см. раздел хранилища hello hello [HDInsight под управлением Linux сведения](hdinsight-hadoop-linux-information.md#hdfs-azure-storage-and-data-lake-store) документа.
 
 ## <a id="summary"></a>Сводка
 
-Как показано в этом документе, для запуска, мониторинга и просмотра результатов выполнения заданий Pig в кластере HDInsight можно использовать необработанные HTTP-запросы.
+Как показано в этом документе, можно использовать необработанные toorun запроса HTTP, монитор и просмотреть результаты hello задания Pig в кластере HDInsight.
 
-Дополнительные сведения об интерфейсе REST, используемом в этой статье, см. в [справочнике по WebHCat](https://cwiki.apache.org/confluence/display/Hive/WebHCat+Reference).
+Дополнительные сведения о hello интерфейс REST, используемые в этой статье в разделе hello [WebHCat ссылка](https://cwiki.apache.org/confluence/display/Hive/WebHCat+Reference).
 
 ## <a id="nextsteps"></a>Дальнейшие действия
 

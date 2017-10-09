@@ -1,6 +1,6 @@
 ---
-title: "Повторное развертывание виртуальных машин Linux в Azure | Документация Майкрософт"
-description: "Повторное развертывание виртуальных машин Linux в Azure для устранения проблем подключения по протоколу SSH."
+title: "aaaRedeploy виртуальных машин Linux в Azure | Документы Microsoft"
+description: "Как проблемы tooredeploy виртуальных машин Linux в Azure toomitigate SSH-подключения."
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: iainfoulds
@@ -14,37 +14,37 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/23/2017
 ms.author: iainfou
-ms.openlocfilehash: 7a8653a82775e718c38f65f246d997ba61f99d58
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 9adfd1b11f262d362133366b2bba5e69c70c9b82
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="redeploy-linux-virtual-machine-to-new-azure-node"></a>Повторное развертывание виртуальной машины Linux на новом узле Azure
-Если у вас возникли сложности при устранении неполадок подключения SSH или получения доступа к приложению на виртуальной машине Linux в Azure, можно попробовать повторно развернуть виртуальную машину. При повторном развертывании виртуальная машина перемещается на новый узел в рамках инфраструктуры Azure, где она повторно включается. При этом сохраняются все параметры конфигурации и связанные ресурсы. В этой статье показано, как повторно развернуть виртуальную машину с помощью интерфейса командной строки Azure или портала Azure.
+# <a name="redeploy-linux-virtual-machine-toonew-azure-node"></a>Повторное развертывание виртуальной машины Linux toonew узла Azure
+Если сталкиваются с трудностями, устранение неполадок SSH или приложений доступа к tooa Linux виртуальной машины (VM) в Azure, повторное развертывание hello виртуальной Машины может помочь. При повторном развертывании виртуальной Машины, перемещает hello ВМ tooa новый узел в рамках hello инфраструктуры Azure и затем включаются. При этом сохраняются все параметры конфигурации и связанные ресурсы. В этой статье показано, как tooredeploy в виртуальную Машину с помощью Azure CLI или hello портал Azure.
 
 > [!NOTE]
-> После развертывания временный диск будет удален, а связанные с виртуальным сетевым интерфейсом динамические IP-адреса будут обновлены. 
+> После повторного развертывания виртуальной Машины, теряется временный диск hello и обновляются динамические IP-адреса, связанные с виртуального сетевого интерфейса. 
 
-Можно повторно развернуть виртуальную машину с помощью одного из приведенных способов. Необходимо выбрать один из вариантов для повторного развертывания виртуальной машины:
+Можно повторно развернуть ВМ с помощью одного из следующих вариантов hello. Требуется только один параметр tooredeploy toochoose ВМ:
 
 - [Azure CLI 2.0](#azure-cli-20)
 - [Azure CLI 1.0](#azure-cli-10)
 - [Портал Azure](#using-azure-portal)
 
-## <a name="use-the-azure-cli-20"></a>Использование Azure CLI 2.0
-Установите последнюю версию [Azure CLI 2.0](/cli/azure/install-az-cli2) и войдите в систему с учетной записью Azure, выполнив команду [az login](/cli/azure/#login).
+## <a name="use-hello-azure-cli-20"></a>Использовать hello Azure CLI 2.0
+Последняя версия hello установки [Azure CLI 2.0](/cli/azure/install-az-cli2) и войти в систему с учетной записью Azure tooan [входа az](/cli/azure/#login).
 
-Повторно разверните виртуальную машину, выполнив команду [az vm redeploy](/cli/azure/vm#redeploy). В следующем примере повторно развертывается виртуальная машина с именем *myVM*, входящая в группу ресурсов с именем *myResourceGroup*:
+Повторно разверните виртуальную машину, выполнив команду [az vm redeploy](/cli/azure/vm#redeploy). Следующий пример повторно развертывает Hello hello виртуальной Машины с именем *myVM* в группе ресурсов hello с именем *myResourceGroup*:
 
 ```azurecli
 az vm redeploy --resource-group myResourceGroup --name myVM 
 ```
 
-## <a name="use-the-azure-cli-10"></a>Использование Azure CLI 1.0
-Установите [последнюю версию Azure CLI 1.0](../../cli-install-nodejs.md), войдите в систему с учетной записью Azure и убедитесь, что используется режим Resource Manager (`azure config mode arm`).
+## <a name="use-hello-azure-cli-10"></a>Использовать hello Azure CLI 1.0
+Установка hello [последние Azure CLI 1.0](../../cli-install-nodejs.md), войдите в учетную запись Azure tooan и убедитесь, что вы находитесь в режиме диспетчера ресурсов (`azure config mode arm`).
 
-В следующем примере повторно развертывается виртуальная машина с именем *myVM*, входящая в группу ресурсов с именем *myResourceGroup*:
+Следующий пример повторно развертывает Hello hello виртуальной Машины с именем *myVM* в группе ресурсов hello с именем *myResourceGroup*:
 
 ```azurecli
 azure vm redeploy --resource-group myResourceGroup --vm-name myVM 
@@ -53,5 +53,5 @@ azure vm redeploy --resource-group myResourceGroup --vm-name myVM
 [!INCLUDE [virtual-machines-common-redeploy-to-new-node](../../../includes/virtual-machines-common-redeploy-to-new-node.md)]
 
 ## <a name="next-steps"></a>Дальнейшие действия
-При проблемах с подключением к виртуальной машине ознакомьтесь со статьями [Устранение неполадок SSH-подключения к виртуальной машине Azure](troubleshoot-ssh-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) и [Подробное описание устранения неполадок SSH](detailed-troubleshoot-ssh-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). При проблемах с доступом к приложению, выполняющемуся в виртуальной машине, ознакомьтесь со статьей [Устранение неполадок доступа к приложению, выполняющемуся в виртуальной машине Azure](troubleshoot-app-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Если возникли проблемы с подключением tooyour виртуальной Машины, можно найти справку на [Устранение неполадок соединений по протоколу SSH](troubleshoot-ssh-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) или [подробные шаги по устранению неполадок SSH](detailed-troubleshoot-ssh-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). При проблемах с доступом к приложению, выполняющемуся в виртуальной машине, ознакомьтесь со статьей [Устранение неполадок доступа к приложению, выполняющемуся в виртуальной машине Azure](troubleshoot-app-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 

@@ -1,6 +1,6 @@
 ---
-title: "Привязка SSL-сертификатов с помощью PowerShell"
-description: "Узнайте, как привязать SSL-сертификаты к веб-приложению с помощью PowerShell."
+title: "Сертификаты aaaSSL привязки с помощью PowerShell"
+description: "Узнайте, как toobind SSL-сертификатов tooyour веб-приложения с помощью PowerShell."
 services: app-service\web
 documentationcenter: 
 author: ahmedelnably
@@ -14,61 +14,61 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/13/2016
 ms.author: aelnably
-ms.openlocfilehash: a1fcc618fb0c68778e39cc227368a60b008f9401
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 82f0e7c796da99ab50f69f3638ef64d55a94fc8e
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-app-service-ssl-certificate-binding-using-powershell"></a>Привязка SSL-сертификатов службы приложений Azure с помощью PowerShell
-В выпуске Microsoft Azure PowerShell версии 1.1.0 был добавлен новый командлет, позволяющий привязывать существующие или новые SSL-сертификаты к существующему веб-приложению.
+С выпуском Microsoft Azure PowerShell версии 1.1.0, добавлен новый командлет hello, будет получен hello пользователя hello возможность toobind существующего или нового SSL сертификаты tooan существующее веб-приложение.
 
 [!INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
 
-Дополнительные сведения об использовании командлетов Azure PowerShell на основе Azure Resource Manager для управления веб-приложениями см. [здесь](app-service-web-app-azure-resource-manager-powershell.md).
+toolearn об использовании диспетчера ресурсов Azure на основе toomanage командлеты Azure PowerShell возврат веб-приложений [диспетчера ресурсов Azure на основе команд PowerShell для веб-приложения Azure](app-service-web-app-azure-resource-manager-powershell.md)
 
 ## <a name="uploading-and-binding-a-new-ssl-certificate"></a>Передача и привязка нового SSL-сертификата
-Сценарий: пользователь хочет привязать SSL-сертификат к одному из своих веб-приложений.
+Сценарий: hello пользователь предпочитает toobind tooone сертификат SSL, его веб-приложений.
 
-Зная имя группы ресурсов, в которую входит веб-приложение, имя веб-приложения, путь к PFX-файлу сертификата на компьютере пользователя, пароль к сертификату и пользовательское имя узла, можно создать привязку SSL-подключения с помощью следующей команды PowerShell:
+Имя группы ресурсов hello, содержащий hello веб-приложения, имя веб-приложения hello, hello путь к файлу сертификата PFX-файл на компьютере пользователя hello hello пароль для сертификата hello и hello пользовательское имя узла, мы можем hello, следуя toocreate команду PowerShell, Привязка SSL.
 
     New-AzureRmWebAppSSLBinding -ResourceGroupName myresourcegroup -WebAppName mytestapp -CertificateFilePath PathToPfxFile -CertificatePassword PlainTextPwd -Name www.contoso.com
 
-Обратите внимание, что перед добавлением привязки SSL для веб-приложения необходимо настроить имя узла (пользовательский домен). Если имя узла не настроено, то при запуске командлета New-AzureRmWebAppSSLBinding будет выдана ошибка "Имя узла не существует". Имя узла можно добавить непосредственно с портала или с помощью Azure PowerShell. Настроить имя узла перед запуском командлета New-AzureRmWebAppSSLBinding можно с помощью следующего фрагмента PowerShell.   
+Обратите внимание, что перед добавлением веб-приложении tooa привязки SSL, необходимо иметь имя узла (пользовательский домен) уже настроен. Если имя узла hello не настроен, то вы получите ошибку при выполнении New AzureRmWebAppSSLBinding «hostname» не существует. Имя узла можно добавлять непосредственно из портала hello или с помощью Azure PowerShell. Hello следующий фрагмент команды PowerShell может быть имя узла hello tooconfigure перед запуском создать AzureRmWebAppSSLBinding.   
 
     $webApp = Get-AzureRmWebApp -Name mytestapp -ResourceGroupName myresourcegroup  
     $hostNames = $webApp.HostNames  
     $HostNames.Add("www.contoso.com")  
     Set-AzureRmWebApp -Name mytestapp -ResourceGroupName myresourcegroup -HostNames $HostNames   
 
-Важно понимать, что командлет Set-AzureRmWebApp перезаписывает имена узлов для веб-приложения. Таким образом, в приведенном выше фрагменте PowerShell производится добавление имен узлов для веб-приложения в существующий список.  
+Очень важно, hello командлет Set-AzureRmWebApp toounderstand перезаписи hello имена узлов для веб-приложения hello. Поэтому hello выше фрагмент команды PowerShell добавления существующего списка toohello приветствия имен узлов для веб-приложения hello.  
 
 ## <a name="uploading-and-binding-an-existing-ssl-certificate"></a>Передача и привязка существующего SSL-сертификата
-Сценарий: пользователь хочет привязать загруженный ранее SSL-сертификат к одному из своих веб-приложений.
+Сценарий: hello пользователь предпочитает toobind ранее отправленные tooone сертификат SSL, его веб-приложений.
 
-Получить список сертификатов, уже загруженных в определенную группу ресурсов, можно с помощью следующей команды:
+Мы можем получить список сертификатов hello уже отправленного tooa определенной группы ресурсов, используя следующую команду hello
 
     Get-AzureRmWebAppCertificate -ResourceGroupName myresourcegroup
 
-Обратите внимание, что сертификаты являются локальными и относятся в определенному расположению и группе ресурсов, так что в случае, если выбранное веб-приложение и необходимый сертификат находятся в разных расположениях и группах ресурсов, сертификат необходимо передать заново. 
+Обратите внимание, что hello сертификаты — локальный tooa конкретного расположения и группе ресурсов hello пользователю необходимо toore — отправка сертификата hello Если hello настроить веб-приложение находится в другом месте и групп ресурсов, другие, который hello требуется сертификат 
 
-Зная имя группы ресурсов, в которую входит веб-приложение, имя веб-приложения, отпечаток сертификата и пользовательское имя узла, можно создать привязку SSL-подключения с помощью следующей команды PowerShell:
+Зная hello имя группы ресурсов, содержащий веб-приложения hello, имя веб-приложения hello, hello отпечаток сертификата и hello пользовательское имя узла, hello, следующая команда toocreate PowerShell можно использовать эту привязку SSL:
 
     New-AzureRmWebAppSSLBinding -ResourceGroupName myresourcegroup -WebAppName mytestapp -Thumbprint <certificate thumbprint> -Name www.contoso.com
 
 ## <a name="deleting-an-existing-ssl-binding"></a>Удаление существующей привязки SSL-подключения
-Сценарий: пользователь хочет удалить существующую привязку SSL-подключения.
+Сценарий: hello пользователь предпочитает toodelete существующую привязку SSL.
 
-Зная имя группы ресурсов, в которую входит веб-приложение, имя веб-приложения и пользовательское имя узла, можно удалить соответствующую привязку SSL-подключения с помощью следующей команды PowerShell:
+Имя группы ресурсов hello, который содержит веб-приложения hello, зная hello имя веб-приложения и hello пользовательское имя узла, hello, следующая команда tooremove PowerShell можно использовать эту привязку SSL:
 
     Remove-AzureRmWebAppSSLBinding -ResourceGroupName myresourcegroup -WebAppName mytestapp -Name www.contoso.com
 
-Обратите внимание: если удаляемая привязка SSL-подключения является последней привязкой, использующей сертификат в указанном расположении, по умолчанию этот сертификат удаляется; для сохранения сертификата используйте параметр DeleteCertificate.
+Обратите внимание, что если hello удалить привязку SSL был hello последнего привязки с помощью этого сертификата в этом расположении сертификатом по умолчанию hello будут удалены, пользователь hello tookeep hello сертификата он можно воспользоваться hello DeleteCertificate параметр tookeep hello сертификата
 
     Remove-AzureRmWebAppSSLBinding -ResourceGroupName myresourcegroup -WebAppName mytestapp -Name www.contoso.com -DeleteCertificate $false
 
 ### <a name="references"></a>Ссылки
 * [Команды Azure PowerShell на основе Azure Resource Manager для веб-приложений Azure](app-service-web-app-azure-resource-manager-powershell.md)
-* [Введение в среду службы приложения](app-service-app-service-environment-intro.md)
+* [Введение tooApp среды службы](app-service-app-service-environment-intro.md)
 * [Использование Azure PowerShell с диспетчером ресурсов Azure](../powershell-azure-resource-manager.md)
 

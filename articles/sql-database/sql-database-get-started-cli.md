@@ -1,6 +1,6 @@
 ---
 title: "Azure CLI: создание базы данных SQL | Документация Майкрософт"
-description: "Узнайте, как создать логический сервер базы данных SQL, правила брандмауэра на уровне сервера и базы данных с помощью Azure CLI."
+description: "Узнайте, как toocreate логический сервер базы данных SQL, правила брандмауэра уровня сервера и баз данных с помощью hello Azure CLI."
 keywords: "руководство по базам данных SQL, создание базы данных SQL"
 services: sql-database
 documentationcenter: 
@@ -16,52 +16,52 @@ ms.devlang: azurecli
 ms.topic: hero-article
 ms.date: 04/17/2017
 ms.author: carlrab
-ms.openlocfilehash: a735f7e6aa65ac36dc4e5a49c5a9a834be43d71a
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 9b1ffb17eabeb70a000ff0c997128832b07aa4fd
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="create-a-single-azure-sql-database-using-the-azure-cli"></a>Создание отдельной базы данных SQL Azure с помощью Azure CLI
+# <a name="create-a-single-azure-sql-database-using-hello-azure-cli"></a>Создание одной базы данных Azure SQL с помощью hello Azure CLI
 
-Azure CLI используется для создания ресурсов Azure и управления ими из командной строки или с помощью скриптов. В этом руководстве подробно объясняется, как с помощью Azure CLI развернуть базу данных SQL Azure в [группе ресурсов Azure](../azure-resource-manager/resource-group-overview.md) на [логическом сервере базы данных Azure SQL](sql-database-features.md).
+Hello Azure CLI — используется toocreate и управления ресурсами Azure hello командной строке или в сценариях. Это руководство сведений о toodeploy hello Azure CLI с помощью базы данных Azure SQL в [группы ресурсов Azure](../azure-resource-manager/resource-group-overview.md) в [логический сервер базы данных SQL Azure](sql-database-features.md).
 
-Если у вас еще нет подписки Azure, [создайте бесплатную учетную запись Azure](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) , прежде чем начинать работу.
+Если у вас еще нет подписки Azure, [создайте бесплатную учетную запись Azure](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), прежде чем начинать работу.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Если вы решили установить и использовать CLI локально, для выполнения инструкций в этом руководстве потребуется Azure CLI 2.0.4 или более поздней версии. Чтобы узнать версию, выполните команду `az --version`. Если вам необходимо выполнить установку или обновление, см. статью [Установка Azure CLI 2.0]( /cli/azure/install-azure-cli). 
+Если выбрать tooinstall и использовать hello CLI локально, в этом разделе требуется управлением hello Azure CLI версия 2.0.4 или более поздней версии. Запустите `az --version` версии toofind hello. Если требуется tooinstall или обновления, см. раздел [установить CLI Azure 2.0]( /cli/azure/install-azure-cli). 
 
 ## <a name="define-variables"></a>Определение переменных
 
-Определите переменные для использования в скриптах этого руководства.
+Определите переменные для использования в сценариях hello в этом кратком руководстве.
 
 ```azurecli-interactive
-# The data center and resource name for your resources
+# hello data center and resource name for your resources
 export resourcegroupname = myResourceGroup
 export location = westeurope
-# The logical server name: Use a random value or replace with your own value (do not capitalize)
+# hello logical server name: Use a random value or replace with your own value (do not capitalize)
 export servername = server-$RANDOM
 # Set an admin login and password for your database
 export adminlogin = ServerAdmin
 export password = ChangeYourAdminPassword1
-# The ip address range that you want to allow to access your DB
+# hello ip address range that you want tooallow tooaccess your DB
 export startip = "0.0.0.0"
 export endip = "0.0.0.0"
-# The database name
+# hello database name
 export databasename = mySampleDatabase
 ```
 
 ## <a name="create-a-resource-group"></a>Создание группы ресурсов
 
-Создайте [группу ресурсов Azure](../azure-resource-manager/resource-group-overview.md) с помощью команды [az group create](/cli/azure/group#create). Группа ресурсов — это логический контейнер, в котором ресурсы Azure развертываются и администрируются как группа. В следующем примере создается группа ресурсов с именем `myResourceGroup` в расположении `westeurope`.
+Создание [группы ресурсов Azure](../azure-resource-manager/resource-group-overview.md) с помощью hello [Создание группы az](/cli/azure/group#create) команды. Группа ресурсов — это логический контейнер, в котором ресурсы Azure развертываются и администрируются как группа. Hello следующий пример создает группу ресурсов с именем `myResourceGroup` в hello `westeurope` расположение.
 
 ```azurecli-interactive
 az group create --name $resourcegroupname --location $location
 ```
 ## <a name="create-a-logical-server"></a>Создание логического сервера
 
-Создайте [логический сервер базы данных SQL Azure ](sql-database-features.md) с помощью команды [az sql server create](/cli/azure/sql/server#create). Логический сервер содержит группу баз данных, которыми можно управлять как группой. В примере ниже показано создание сервера со случайным именем в группе ресурсов с именем администратора `ServerAdmin` и паролем `ChangeYourAdminPassword1`. Замените эти предопределенные значения по своему усмотрению.
+Создание [логический сервер базы данных SQL Azure](sql-database-features.md) с помощью hello [az sql server создавать](/cli/azure/sql/server#create) команды. Логический сервер содержит группу баз данных, которыми можно управлять как группой. Hello следующий пример создает произвольным именем сервера в группе ресурсов с именем входа администратора с именем `ServerAdmin` и паролем `ChangeYourAdminPassword1`. Замените эти предопределенные значения по своему усмотрению.
 
 ```azurecli-interactive
 az sql server create --name $servername --resource-group $resourcegroupname --location $location \
@@ -70,7 +70,7 @@ az sql server create --name $servername --resource-group $resourcegroupname --lo
 
 ## <a name="configure-a-server-firewall-rule"></a>Настройка правил брандмауэра сервера
 
-Создайте [правило брандмауэра на уровне сервера базы данных Azure SQL](sql-database-firewall-configure.md) с помощью команды [az sql server firewall create](/cli/azure/sql/server/firewall-rule#create). Правило брандмауэра на уровне сервера позволяет внешним приложениям, таким как SQL Server Management Studio или программе sqlcmd, подключаться к базе данных SQL через брандмауэр службы базы данных SQL. В следующем примере брандмауэр открыт только для других ресурсов Azure. Чтобы включить возможность внешнего подключения, измените IP-адрес на соответствующий адрес своей среды. Чтобы открыть все IP-адреса, используйте 0.0.0.0 как начальный IP-адрес, а 255.255.255.255 — как конечный.  
+Создание [правила брандмауэра уровня сервера базы данных SQL Azure](sql-database-firewall-configure.md) с помощью hello [создать брандмауэр сервера sql az](/cli/azure/sql/server/firewall-rule#create) команды. Правила брандмауэра уровня сервера позволяет внешнему приложению, например SQL Server Management Studio или hello SQLCMD программа tooconnect tooa SQL базы данных через брандмауэр службы hello базы данных SQL. В следующем примере hello брандмауэр hello открыт только для других ресурсов Azure. tooenable возможности внешнего подключения, изменение hello tooan соответствующий адрес для вашей среды. tooopen всех IP-адресов, использовать в качестве hello, начальный IP-адрес и 255.255.255.255 как hello конечный адрес 0.0.0.0.  
 
 ```azurecli-interactive
 az sql server firewall-rule create --resource-group $resourcegroupname --server $servername \
@@ -78,12 +78,12 @@ az sql server firewall-rule create --resource-group $resourcegroupname --server 
 ```
 
 > [!NOTE]
-> База данных SQL обменивается данными через порт 1433. Если вы пытаетесь подключиться из корпоративной сети, исходящий трафик через порт 1433 может быть запрещен сетевым брандмауэром. В таком случае вы не сможете подключиться к серверу базы данных SQL Azure. Для этого ваш ИТ-отдел должен открыть порт 1433.
+> База данных SQL обменивается данными через порт 1433. Если вы пытаетесь tooconnect из корпоративной сети, исходящий трафик через порт 1433 может оказаться невозможным брандмауэром вашей сети. В этом случае нельзя сервера базы данных SQL Azure может tooconnect tooyour Если ИТ-отдел открывает порт 1433.
 >
 
-## <a name="create-a-database-in-the-server-with-sample-data"></a>Создание базы данных на сервере с образцами данных
+## <a name="create-a-database-in-hello-server-with-sample-data"></a>Создайте базу данных сервера hello с образцами данных
 
-Создайте на сервере базу данных с [уровнем производительности S0](sql-database-service-tiers.md) с помощью команды [az sql db create](/cli/azure/sql/db#create). В следующем примере создается база данных с именем `mySampleDatabase`, в которую загружается образец данных AdventureWorksLT. При необходимости замените эти предопределенные значения (другие краткие руководства в этой коллекции созданы на основе этого документа).
+Создание базы данных с [уровень производительности не ниже S0](sql-database-service-tiers.md) в hello server с помощью hello [создание баз данных SQL Server az](/cli/azure/sql/db#create) команды. Hello следующий пример создает базу данных с именем `mySampleDatabase` и загружает hello AdventureWorksLT образец данных в эту базу данных. В случае необходимости заменить эти предопределенные значения (другие краткие в этой сборке коллекции на hello значения в этом кратком руководстве).
 
 ```azurecli-interactive
 az sql db create --resource-group $resourcegroupname --server $servername \
@@ -95,7 +95,7 @@ az sql db create --resource-group $resourcegroupname --server $servername \
 Другие краткие руководства в этой коллекции созданы на основе этого документа. 
 
 > [!TIP]
-> Если вы планируете продолжать работу с этими краткими руководствами, не удаляйте созданные ресурсы. Если вы не планируете продолжать работу, удалите все созданные ресурсы, выполнив на портале Azure следующие действия.
+> Если планируется toocontinue toowork с последующей краткие, не очистки hello ресурсы, созданные в этом быстрого запускаются. Если вы не планируете toocontinue, используйте следующие шаги toodelete все ресурсы, которые созданы в этом кратком руководстве в hello портал Azure hello.
 >
 
 ```azurecli-interactive

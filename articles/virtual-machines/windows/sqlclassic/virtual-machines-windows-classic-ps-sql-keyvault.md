@@ -1,6 +1,6 @@
 ---
-title: "Интеграция Key Vault с SQL Server на виртуальных машинах Windows в Azure (классическая модель) | Документация Майкрософт"
-description: "Узнайте, как автоматизировать настройку шифрования SQL Server для использования с хранилищем ключей Azure. В этой статье описываются способы использования интеграции хранилища ключей Azure с виртуальными машинами SQL Server, созданными в классической модели развертывания."
+title: "aaaIntegrate хранилища ключей с SQL Server на виртуальных машинах Windows в Azure (классические) | Документы Microsoft"
+description: "Узнайте, как tooautomate hello конфигурация шифрования SQL Server для использования с хранилищем ключей Azure. В этом разделе объясняется, как создать toouse интеграция хранилища ключей Azure с SQL Server виртуальными машинами в hello классической модели развертывания."
 services: virtual-machines-windows
 documentationcenter: 
 author: rothja
@@ -16,11 +16,11 @@ ms.workload: iaas-sql-server
 ms.date: 02/17/2017
 ms.author: jroth
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2a9ac5763bb934bd0646e47c3936f7bdd0d603b1
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 54664875b76dac7271d5a9f00b3f41fdc9c08491
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="configure-azure-key-vault-integration-for-sql-server-on-azure-virtual-machines-classic"></a>Настройка интеграции хранилища ключей Azure для SQL Server на виртуальных машинах Azure (классическая модель)
 > [!div class="op_single_selector"]
@@ -30,39 +30,39 @@ ms.lasthandoff: 07/11/2017
 > 
 
 ## <a name="overview"></a>Обзор
-Существует несколько функций шифрования SQL Server, например [прозрачное шифрование данных (TDE)](https://msdn.microsoft.com/library/bb934049.aspx), [шифрование на уровне столбцов (CLE)](https://msdn.microsoft.com/library/ms173744.aspx) и [шифрование резервной копии](https://msdn.microsoft.com/library/dn449489.aspx). Эти формы шифрования требуют хранить используемые для шифрования ключи и управлять ими. Хранилище ключей Azure (AKV) предназначено для повышения безопасности и управления этими ключами в расположении высокой надежности и безопасности. [Соединитель SQL Server](http://www.microsoft.com/download/details.aspx?id=45344) позволяет SQL Server использовать эти ключи из хранилища ключей Azure.
+Существует несколько функций шифрования SQL Server, например [прозрачное шифрование данных (TDE)](https://msdn.microsoft.com/library/bb934049.aspx), [шифрование на уровне столбцов (CLE)](https://msdn.microsoft.com/library/ms173744.aspx) и [шифрование резервной копии](https://msdn.microsoft.com/library/dn449489.aspx). Эти формы шифрования требуют toomanage и хранения hello криптографических ключей, который используется для шифрования. Hello службы хранилища ключей Azure (AKV) — спроектированный tooimprove hello безопасности и управления из этих ключей в расположении высокой надежности и безопасности. Hello [соединителя SQL Server](http://www.microsoft.com/download/details.aspx?id=45344) позволяет SQL Server toouse эти ключи из хранилища ключей Azure.
 
 > [!IMPORTANT] 
-> В Azure предлагаются две модели развертывания для создания ресурсов и работы с ними: [модель диспетчера ресурсов и классическая модель](../../../azure-resource-manager/resource-manager-deployment-model.md). В этой статье рассматривается использование классической модели развертывания. Для большинства новых развертываний Майкрософт рекомендует использовать модель диспетчера ресурсов.
+> В Azure предлагаются две модели развертывания для создания ресурсов и работы с ними: [модель диспетчера ресурсов и классическая модель](../../../azure-resource-manager/resource-manager-deployment-model.md). В этой статье описан с помощью hello классической модели развертывания. Корпорация Майкрософт рекомендует наиболее новые развертывания модели hello диспетчера ресурсов.
 
-Если вы используете SQL Server с локальными машинами, выполните [шаги для доступа к хранилищу ключей Azure с локальной виртуальной машины SQL Server](https://msdn.microsoft.com/library/dn198405.aspx). Однако в случае SQL Server на виртуальных машинах Azure можно сэкономить время, воспользовавшись функцией *интеграции хранилища ключей Azure* . С помощью нескольких командлетов Azure PowerShell для включения этой функции можно автоматизировать настройки, необходимые виртуальной машине SQL для доступа к вашему хранилищу ключей.
+Если вы используете SQL Server с локальными компьютерами, [действия можно выполнить tooaccess хранилище ключей Azure с локального компьютера SQL Server](https://msdn.microsoft.com/library/dn198405.aspx). Но для SQL Server в виртуальных машинах Azure, вы можете сэкономить время с помощью hello *интеграция хранилища ключей Azure* компонентов. С несколько tooenable командлеты Azure PowerShell эту функцию, можно автоматизировать hello хранилища ключей конфигурации, необходимые для tooaccess SQL виртуальной Машины.
 
-Если эта функция включена, она автоматически устанавливает соединитель SQL Server, настраивает поставщик расширенного управления ключами для доступа к хранилищу ключей Azure и создает учетные данные, которые позволяют получить доступ к вашему хранилищу. Если вы изучили шаги в ранее упомянутой документации для локального компьютера, то увидели, что эта функция автоматизирует шаги 2 и 3. Единственное, что останется сделать вручную, — создать хранилище ключей и ключи. Далее вся настройка виртуальной машины SQL выполняется автоматически. После завершения установки этой функции можно выполнять инструкции T-SQL, чтобы начать шифрование базы данных или резервное копирование как обычно.
+Если эта функция включена, автоматически устанавливает hello соединителя SQL Server, настраивает tooaccess поставщика расширенного управления Ключами hello хранилище ключей Azure и создает tooallow hello учетных данных вы tooaccess вашего хранилища. Если был рассмотрен hello инструкциям hello упомянутых выше локальной документации, вы увидите, что эта функция автоматизирует шаги 2 и 3. Единственное Hello по-прежнему необходимо toodo вручную — хранилище ключей toocreate hello и ключи. После этого выполняется автоматически hello всю настройку ВМ SQL. После завершения программы установки эту функцию можно выполнить toobegin инструкции T-SQL, шифрование баз данных или резервного копирования, как обычно.
 
 [!INCLUDE [AKV Integration Prepare](../../../../includes/virtual-machines-sql-server-akv-prepare.md)]
 
 ## <a name="configure-akv-integration"></a>Настройка интеграции AKV
-Используйте PowerShell для настройки интеграции хранилища ключей Azure. В следующих разделах приведены общие сведения о требуемых параметрах, а также пример сценария PowerShell.
+С помощью PowerShell tooconfigure интеграция хранилища ключей Azure. Привет, в следующих разделах предоставляют обзор hello необходимые параметры, а затем образец скрипта PowerShell.
 
-### <a name="install-the-sql-server-iaas-extension"></a>Установка расширения IaaS для SQL Server
-Сначала [установите расширение IaaS для SQL Server](../classic/sql-server-agent-extension.md).
+### <a name="install-hello-sql-server-iaas-extension"></a>Установка расширения SQL Server IaaS hello
+Во-первых, [установки расширения SQL Server IaaS hello](../classic/sql-server-agent-extension.md).
 
-### <a name="understand-the-input-parameters"></a>Описание входных параметров
-В следующей таблице перечислены параметры, необходимые для выполнения сценария PowerShell в следующем разделе.
+### <a name="understand-hello-input-parameters"></a>Понимать hello входные параметры
+Hello следующие параметры hello списки таблицы требуется сценарий PowerShell toorun hello в следующем разделе hello.
 
 | Параметр | Описание | Пример |
 | --- | --- | --- |
-| **$akvURL** |**URL-адрес хранилища ключей** |https://contosokeyvault.vault.azure.net/ |
+| **$akvURL** |**URL-адрес хранилища ключей Hello** |https://contosokeyvault.vault.azure.net/ |
 | **$spName** |**Имя субъекта-службы** |fde2b411-33d5-4e11-af04eb07b669ccf2 |
 | **$spSecret** |**Секрет субъекта-службы** |9VTJSQwzlFepD8XODnzy8n2V01Jd8dAjwm/azF1XDKM= |
-| **$credName** |**Учетное имя**: интеграция AKV создает учетные данные в рамках SQL Server, позволяя виртуальной машине иметь доступ к хранилищу ключей. Выберите имя для этих учетных данных. |mycred1 |
-| **$vmName** |**Имя виртуальной машины**: имя ранее созданной виртуальной машины с SQL. |myvmname |
-| **$serviceName** |**Имя службы**: имя облачной службы, связанной с виртуальной машиной с SQL. |mycloudservicename |
+| **$credName** |**Имя учетных данных**: интеграция с хранилищем ключей AZURE создает учетные данные в SQL Server, позволяя hello ВМ toohave доступа toohello хранилища ключей. Выберите имя для этих учетных данных. |mycred1 |
+| **$vmName** |**Имя виртуальной машины**: hello имя ранее созданной виртуальной Машины SQL. |myvmname |
+| **$serviceName** |**Имя службы**: hello имя облачной службы, связанный с hello SQL виртуальной Машины. |mycloudservicename |
 
 ### <a name="enable-akv-integration-with-powershell"></a>Включение интеграции AKV с помощью PowerShell
-Командлет **New-AzureVMSqlServerKeyVaultCredentialConfig** создает объект конфигурации для интеграции хранилища ключей Azure. **Set-AzureVMSqlServerExtension** настраивает эту интеграцию с помощью параметра **KeyVaultCredentialSettings**. Ниже показано, как использовать эти команды.
+Hello **New AzureVMSqlServerKeyVaultCredentialConfig** командлет создает объект конфигурации для функции hello интеграция хранилища ключей Azure. Hello **набор AzureVMSqlServerExtension** настраивает такая интеграция с hello **KeyVaultCredentialSettings** параметра. Здравствуйте, следующие шаги Показать как toouse этих команд.
 
-1. В Azure PowerShell сначала настройте входные параметры, указав необходимые значения, как описано в предыдущих разделах этой статьи. Следующий сценарий является примером.
+1. В Azure PowerShell сначала настройте входные параметры hello особые значения как описано в предыдущих подразделах этого раздела hello. Hello следующий сценарий — пример.
    
         $akvURL = "https://contosokeyvault.vault.azure.net/"
         $spName = "fde2b411-33d5-4e11-af04eb07b669ccf2"
@@ -70,13 +70,13 @@ ms.lasthandoff: 07/11/2017
         $credName = "mycred1"
         $vmName = "myvmname"
         $serviceName = "mycloudservicename"
-2. Выполните следующий сценарий для настройки и включения интеграции AKV.
+2. Затем используйте следующие hello скрипт tooconfigure и обеспечить интеграцию с хранилищем ключей AZURE.
    
         $secureakv =  $spSecret | ConvertTo-SecureString -AsPlainText -Force
         $akvs = New-AzureVMSqlServerKeyVaultCredentialConfig -Enable -CredentialName $credname -AzureKeyVaultUrl $akvURL -ServicePrincipalName $spName -ServicePrincipalSecret $secureakv
         Get-AzureVM -ServiceName $serviceName -Name $vmName | Set-AzureVMSqlServerExtension -KeyVaultCredentialSettings $akvs | Update-AzureVM
 
-Расширение агента SQL IaaS обновит виртуальную машину SQL до этой новой конфигурации.
+Hello расширения SQL IaaS агента будут обновлены hello виртуальной Машине SQL новая конфигурация.
 
 [!INCLUDE [AKV Integration Next Steps](../../../../includes/virtual-machines-sql-server-akv-next-steps.md)]
 

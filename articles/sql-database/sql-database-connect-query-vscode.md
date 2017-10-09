@@ -1,8 +1,8 @@
 ---
 title: "VS Code: подключение и запрос данных в базе данных SQL Azure | Документация Майкрософт"
-description: "Сведения о подключении к базе данных SQL в Azure с помощью Visual Studio Code и выполнении инструкций Transact-SQL (T-SQL) для запроса и изменения данных."
+description: "Узнайте, как tooconnect tooSQL базы данных в Azure с помощью кода Visual Studio. Выполните инструкции Transact-SQL (T-SQL) tooquery и изменения данных."
 metacanonical: 
-keywords: "подключение к базе данных SQL"
+keywords: "подключение базы данных toosql"
 services: sql-database
 documentationcenter: 
 author: CarlRabeler
@@ -17,30 +17,30 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 06/20/2017
 ms.author: carlrab
-ms.openlocfilehash: 4076b1e7ab3a70009217a1deff72da4bff0dc871
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: ed8bdbfc3271b463a21cde5ff6b5f05fd0ff51d1
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="azure-sql-database-use-visual-studio-code-to-connect-and-query-data"></a>База данных SQL Azure: подключение и запрос данных с помощью Visual Studio Code
+# <a name="azure-sql-database-use-visual-studio-code-tooconnect-and-query-data"></a>База данных SQL Azure: Использование Visual Studio Code tooconnect и запроса данных
 
-[Visual Studio Code](https://code.visualstudio.com/docs) — это графический редактор кода для Linux, macOS и Windows, поддерживающий различные расширения, включая [расширение mssql](https://aka.ms/mssql-marketplace), для выполнения запросов к Microsoft SQL Server, базе данных SQL Azure и хранилищу данных SQL. В этом кратком руководстве показано, как, используя Visual Studio Code, подключиться к базе данных SQL Azure, а затем с помощью инструкций Transact-SQL выполнить запрос, вставку, обновление и удаление данных в базе данных.
+[Код Visual Studio](https://code.visualstudio.com/docs) — это код графический редактор для Linux, macOS, и Windows, которые поддерживает расширения, включая hello [mssql расширения](https://aka.ms/mssql-marketplace) для выполнения запросов Microsoft SQL Server, базы данных SQL Azure и хранилище данных SQL. В этом кратком руководстве показано, как базы данных Azure SQL tooan tooconnect toouse кода Visual Studio, а затем tooquery инструкций используйте Transact-SQL, вставки, обновления и удаления данных в базе данных hello.
 
 ## <a name="prerequisites"></a>Предварительные требования
 
-Начальной точкой в руководстве являются ресурсы, созданные в одном из этих кратких руководств:
+В этом кратком руководстве в качестве отправной точки ресурсов hello создана в одном из этих краткие используется:
 
 - [Создание базы данных с помощью портала](sql-database-get-started-portal.md)
 - [Создание базы данных SQL Azure и отправка к ней запросов с помощью Azure CLI](sql-database-get-started-cli.md)
 - [Создание базы данных с помощью PowerShell](sql-database-get-started-powershell.md)
 
-Сначала установите последнюю версию[Visual Studio Code](https://code.visualstudio.com/Download) и загрузите [расширение mssql](https://aka.ms/mssql-marketplace). Руководство по установке расширения mssql см. в разделе [об установке VS Code](https://docs.microsoft.com/sql/linux/sql-server-linux-develop-use-vscode#install-vs-code) и на странице [расширения mssql для Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-mssql.mssql). 
+Прежде чем начать, убедитесь, что установлен hello новейшую версию [кода Visual Studio](https://code.visualstudio.com/Download) и загружаются hello [mssql расширение](https://aka.ms/mssql-marketplace). Руководство по установке для расширения mssql hello, в разделе [установки VS Code](https://docs.microsoft.com/sql/linux/sql-server-linux-develop-use-vscode#install-vs-code) и в разделе [mssql для Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-mssql.mssql). 
 
 ## <a name="configure-vs-code"></a>Настройка кода VS 
 
 ### <a name="mac-os"></a>**Mac OS**
-Для macOS необходимо установить OpenSSL. Это предварительное требование для платформы .NET Core, используемой для расширения mssql. Откройте терминал и введите следующие команды для установки **brew** и **OpenSSL**. 
+MacOS необходимо tooinstall OpenSSL, являющийся необходимого компонента для DotNet Core этого расширения mssql использует. Откройте терминала и введите следующие команды tooinstall hello **brew** и **OpenSSL**. 
 
 ```bash
 ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
@@ -61,64 +61,64 @@ ln -s /usr/local/opt/openssl/lib/libssl.1.0.0.dylib /usr/local/lib/
 
 ## <a name="sql-server-connection-information"></a>Сведения о подключении SQL Server
 
-Получите сведения о подключении, необходимые для подключения к базе данных SQL Azure. Вам понадобится следующее: полное имя сервера, имя базы данных и сведения для входа.
+Получите базу данных Azure SQL toohello tooconnect в сведения, необходимые подключения hello. Необходимо будет hello полное имя сервера, имя базы данных и сведения об имени входа в следующих процедурах hello.
 
-1. Войдите на [портал Azure](https://portal.azure.com/).
-2. В меню слева выберите **Базы данных SQL** и на странице **Базы данных SQL** щелкните имя своей базы данных. 
-3. На странице **Обзор** базы данных просмотрите полное имя сервера, как показано на следующем рисунке. Вы можете навести указатель мыши на имя сервера, чтобы отобразился пункт **Щелкните, чтобы скопировать**.
+1. Войдите в toohello [портал Azure](https://portal.azure.com/).
+2. Выберите **баз данных SQL** hello левом меню и выберите базу данных на hello **баз данных SQL** страницы. 
+3. На hello **Обзор** страницу для базы данных, просмотрите hello полное доменное имя сервера, как показано в hello после изображения. Можно навести на toobring имя сервера hello копирование hello **щелкните toocopy** параметр.
 
    ![Сведения о подключении](./media/sql-database-connect-query-dotnet/server-name.png) 
 
-4. Если вы забыли данные для входа на сервер базы данных SQL Azure, перейдите к соответствующей странице, чтобы просмотреть имя администратора сервера и при необходимости сбросить пароль. 
+4. Если вы забыли hello учетные данные для сервера базы данных SQL Azure, перейдите toohello базы данных SQL server страницы tooview hello server с именем admin и, при необходимости сбросить пароль hello. 
 
-## <a name="set-language-mode-to-sql"></a>Выбор режима языка SQL
+## <a name="set-language-mode-toosql"></a>Режим tooSQL набор языка
 
-В Visual Studio Code укажите для режима языка значение **SQL**, чтобы активировать команды mssql и T-SQL IntelliSense.
+Набор hello языка режим слишком**SQL** в командах mssql tooenable кода Visual Studio и T-SQL IntelliSense.
 
 1. Откройте новое окно Visual Studio Code. 
 
-2. В правом нижнем углу строки состояния щелкните **Обычный текст**.
-3. В открывшемся раскрывающемся меню **Выберите языковой режим** введите **SQL** и нажмите клавишу **ВВОД**, чтобы установить языковой режим SQL. 
+2. Нажмите кнопку **обычный текст** в нижнем правом углу hello hello строки состояния.
+3. В hello **режим выбора языка** раскрывающееся меню, которое открывается, тип **SQL**и нажмите клавишу **ввод** tooset hello языка режим tooSQL. 
 
    ![Языковой режим SQL](./media/sql-database-connect-query-vscode/vscode-language-mode.png)
 
-## <a name="connect-to-your-database"></a>Подключение к базе данных
+## <a name="connect-tooyour-database"></a>Подключение базы данных tooyour
 
-С помощью Visual Studio Code подключитесь к серверу базы данных SQL Azure.
+С помощью Visual Studio Code tooestablish сервером базы данных SQL Azure tooyour соединения.
 
 > [!IMPORTANT]
-> Прежде чем продолжить, приготовьте сервер, базу данных и учетные данные. Если при вводе данных профиля подключения переключиться с Visual Studio Code, понадобится начать создание профиля подключения заново.
+> Прежде чем продолжить, приготовьте сервер, базу данных и учетные данные. После началом ввода данных профиля подключения hello, при изменении фокуса ввода из кода Visual Studio, вы сможете toorestart Создание профиля подключения hello.
 >
 
-1. В VS Code нажмите клавиши **CTRL+SHIFT+P** (или **F1**), чтобы открыть палитру команд.
+1. В VS Code нажмите **CTRL + SHIFT + P** (или **F1**) tooopen hello палитры команд.
 
 2. Введите **sqlcon** и нажмите клавишу **ВВОД**.
 
-3. Нажмите клавишу **ВВОД**, чтобы выбрать **Create Connection Profile** (Создать профиль подключения). Для экземпляра SQL Server будет создан профиль подключения.
+3. Нажмите клавишу **ввод** tooselect **создать профиль подключения**. Для экземпляра SQL Server будет создан профиль подключения.
 
-4. Следуйте инструкциям на экране, чтобы указать свойства для нового профиля подключения. Укажите все значения и нажмите клавишу **ВВОД** для продолжения. 
+4. Соблюдают hello приглашения toospecify hello подключения для нового профиля подключения hello. После ввода каждого значения, нажмите клавишу **ввод** toocontinue. 
 
    | Настройка       | Рекомендуемое значение | Описание |
    | ------------ | ------------------ | ------------------------------------------------- | 
-   | **Имя сервера | Полное имя сервера | Имя должно быть примерно таким: **mynewserver20170313.database.windows.net**. |
-   | **Database name** (Имя базы данных) | mySampleDatabase | Имя базы данных, к которой устанавливается подключение. |
-   | **Аутентификация** | Имя для входа в SQL| В рамках работы с этим руководством мы настроили только один тип проверки подлинности — проверку подлинности SQL. |
-   | **Имя пользователя** | Учетная запись администратора сервера | Это учетная запись, указанная при создании сервера. |
-   | **Password (SQL Login)** (Пароль для входа в SQL) | Пароль учетной записи администратора сервера | Это пароль, указанный при создании сервера. |
-   | **Save Password?** (Сохранить пароль?) | "Да" или "Нет" | Выберите "Да", если вы не хотите вводить пароль каждый раз. |
+   | **Имя сервера | Hello полное имя сервера | Hello имя должно быть примерно следующим образом: **mynewserver20170313.database.windows.net**. |
+   | **Database name** (Имя базы данных) | mySampleDatabase | Имя Hello tooconnect toowhich hello базы данных. |
+   | **Аутентификация** | Имя для входа в SQL| Проверка подлинности SQL — тип hello только проверку подлинности, который мы указали в этом учебнике. |
+   | **Имя пользователя** | Учетная запись администратора сервера Hello | Это учетная запись hello, указанный при создании сервера hello. |
+   | **Password (SQL Login)** (Пароль для входа в SQL) | Hello пароль для учетной записи администратора сервера | Это hello пароль, указанный при создании сервера hello. |
+   | **Save Password?** (Сохранить пароль?) | "Да" или "Нет" | Если не требуется пароль hello tooenter каждый раз, нажмите кнопку "Да". |
    | **Укажите имя для этого профиля** | Имя профиля, например **mySampleDatabase**. | Сохраненное имя профиля повышает скорость подключения при последующих входах. | 
 
-5. Нажмите клавишу **ESC**, чтобы закрыть сообщение с информацией о том, что профиль создан и подключен.
+5. Нажмите клавишу hello **ESC** ключа tooclose hello информационное сообщение, информирующее о том, что профиль hello создается и подключены.
 
-6. Проверьте состояние подключения в строке состояния.
+6. Проверки подключения в строке состояния hello.
 
    ![Состояние подключения](./media/sql-database-connect-query-vscode/vscode-connection-status.png)
 
 ## <a name="query-data"></a>Запрос данных
 
-Используйте следующий код, чтобы запросить 20 основных продуктов из категории с помощью инструкции [SELECT](https://msdn.microsoft.com/library/ms189499.aspx) Transact-SQL.
+Используйте hello следующий код tooquery для hello 20 основных продуктов по категориям, используя hello [ВЫБЕРИТЕ](https://msdn.microsoft.com/library/ms189499.aspx) инструкции Transact-SQL.
 
-1. В окне **редактора** введите в пустое окно запроса следующий запрос:
+1. В hello **редактор** окне приветствия при следующем запросе в hello пустое окно запроса введите:
 
    ```sql
    SELECT pc.Name as CategoryName, p.name as ProductName
@@ -127,15 +127,15 @@ ln -s /usr/local/opt/openssl/lib/libssl.1.0.0.dylib /usr/local/lib/
    ON pc.productcategoryid = p.productcategoryid;
    ```
 
-2. Нажмите клавиши **CTRL+SHIFT+E**, чтобы получить данные из таблиц Product и ProductCategory.
+2. Нажмите клавишу **CTRL + SHIFT + E** tooretrieve данные из таблицы Product и ProductCategory hello.
 
     ![Запрос](./media/sql-database-connect-query-vscode/query.png)
 
 ## <a name="insert-data"></a>Добавление данных
 
-Используйте указанный ниже код, чтобы вставить новый продукт в таблицу SalesLT.Product с помощью инструкции [INSERT](https://msdn.microsoft.com/library/ms174335.aspx) Transact-SQL.
+Используйте следующие hello кода tooinsert новый продукт SalesLT.Product таблицу hello hello [вставить](https://msdn.microsoft.com/library/ms174335.aspx) инструкции Transact-SQL.
 
-1. В окне **редактора** удалите предыдущий запрос и введите следующий:
+1. В hello **редактор** , удалите предыдущий запрос hello и введите приветствия при следующем запросе:
 
    ```sql
    INSERT INTO [SalesLT].[Product]
@@ -157,13 +157,13 @@ ln -s /usr/local/opt/openssl/lib/libssl.1.0.0.dylib /usr/local/lib/
            ,GETDATE() );
    ```
 
-2. Нажмите клавиши **CTRL+SHIFT+E**, чтобы вставить новую строку в таблицу Product.
+2. Нажмите клавишу **CTRL + SHIFT + E** tooinsert новую строку в таблице Product hello.
 
 ## <a name="update-data"></a>Обновление данных
 
-Используйте следующий код, чтобы обновить новый продукт, добавленный ранее, с помощью инструкции [UPDATE](https://msdn.microsoft.com/library/ms177523.aspx) Transact-SQL.
+Используйте hello следующий код tooupdate hello новым продуктом, добавленный ранее с помощью hello [обновление](https://msdn.microsoft.com/library/ms177523.aspx) инструкции Transact-SQL.
 
-1.  В окне **редактора** удалите предыдущий запрос и введите следующий:
+1.  В hello **редактор** , удалите предыдущий запрос hello и введите приветствия при следующем запросе:
 
    ```sql
    UPDATE [SalesLT].[Product]
@@ -171,22 +171,22 @@ ln -s /usr/local/opt/openssl/lib/libssl.1.0.0.dylib /usr/local/lib/
    WHERE Name = 'myNewProduct';
    ```
 
-2. Нажмите клавиши **CTRL+SHIFT+E**, чтобы обновить указанную строку в таблице Product.
+2. Нажмите клавишу **CTRL + SHIFT + E** tooupdate hello указанной строки в таблице Product hello.
 
 ## <a name="delete-data"></a>Удаление данных
 
-Используйте следующий код, чтобы удалить новый продукт, добавленный ранее, с помощью инструкции [DELETE](https://msdn.microsoft.com/library/ms189835.aspx) Transact-SQL.
+Используйте hello следующий код toodelete hello новым продуктом, добавленный ранее с помощью hello [удалить](https://msdn.microsoft.com/library/ms189835.aspx) инструкции Transact-SQL.
 
-1. В окне **редактора** удалите предыдущий запрос и введите следующий:
+1. В hello **редактор** , удалите предыдущий запрос hello и введите приветствия при следующем запросе:
 
    ```sql
    DELETE FROM [SalesLT].[Product]
    WHERE Name = 'myNewProduct';
    ```
 
-2. Нажмите клавиши **CTRL+SHIFT+E**, чтобы удалить указанную строку из таблицы Product.
+2. Нажмите клавишу **CTRL + SHIFT + E** toodelete hello указанной строки в таблице Product hello.
 
 ## <a name="next-steps"></a>Дальнейшие действия
 
-- Дополнительные сведения о подключении к базе данных SQL с помощью SQL Server Management Studio и выполнении запроса к ней см. [здесь](sql-database-connect-query-ssms.md).
+- tooconnect и запрос с помощью SQL Server Management Studio, в разделе [подключение и запрос с помощью SSMS](sql-database-connect-query-ssms.md).
 - Статью из журнала MSDN, посвященную использованию кода Visual Studio, можно просмотреть в записи блога о [создании базы данных IDE с помощью расширения MSSQL](https://msdn.microsoft.com/magazine/mt809115).

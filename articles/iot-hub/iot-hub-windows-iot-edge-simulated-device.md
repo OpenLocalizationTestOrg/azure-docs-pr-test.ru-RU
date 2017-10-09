@@ -1,6 +1,6 @@
 ---
-title: "Имитация устройства с помощью Edge Интернета вещей Azure (Windows) | Документация Майкрософт"
-description: "Сведения об использовании Edge Интернета вещей Azure в Windows для создания имитации устройства, отправляющего данные телеметрии через шлюз Интернета вещей Azure в Центр Интернета вещей."
+title: "aaaSimulate устройства Azure IoT границу (Windows) | Документы Microsoft"
+description: "Как toouse Azure IoT Edge в Windows toocreate имитированное устройство, отправляет данные телеметрии через Центр IoT Azure IoT пограничного шлюза tooan."
 services: iot-hub
 documentationcenter: 
 author: chipalost
@@ -14,44 +14,44 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/09/2017
 ms.author: andbuc
-ms.openlocfilehash: e7eb2931993daf3f0aecbd4a43d27ebd5adc10b0
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: ddbe85eb956e9934e80e2e80e09f77b24cf54856
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="use-azure-iot-edge-to-send-device-to-cloud-messages-with-a-simulated-device-windows"></a>Отправка сообщений с устройства в облако с помощью имитации устройства (Windows) с использованием Edge Интернета вещей Azure
+# <a name="use-azure-iot-edge-toosend-device-to-cloud-messages-with-a-simulated-device-windows"></a>Использовать сообщения из устройства в облако Azure IoT Edge toosend с имитированное устройство (Windows)
 
 [!INCLUDE [iot-hub-iot-edge-simulated-selector](../../includes/iot-hub-iot-edge-simulated-selector.md)]
 
 [!INCLUDE [iot-hub-iot-edge-install-build-windows](../../includes/iot-hub-iot-edge-install-build-windows.md)]
 
-## <a name="how-to-run-the-sample"></a>Запуск примера
+## <a name="how-toorun-hello-sample"></a>Как toorun hello образца
 
-Скрипт **build.cmd** создает выходные данные в папке **build** локальной копии репозитория **iot-edge**. Выходные данные содержат четыре модуля IoT Edge, которые используются в данном примере.
+Hello **build.cmd** сценарий создает выходные данные в hello **построения** папки в локальной копии hello **iot edge** репозитория. Этот выход включает в себя четыре края IoT модули hello используемый в этом примере.
 
-Сценарий сборки помещает:
+Здравствуйте местах скрипт построения:
 
-* **logger.dll** в папку **build\\modules\\logger\\Debug**;
-* **iothub.dll** в папку **build\\modules\\iothub\\Debug**;
-* **identity\_map.dll** в папку **build\\modules\\identitymap\\Debug**;
-* **simulated\_device.dll** в папку **build\\modules\\simulated\_device\\Debug**.
+* **Logger.dll** в hello **построения\\модули\\средства ведения журнала\\отладки** папки.
+* **iothub.dll** в hello **построения\\модули\\центром IOT\\отладки** папки.
+* **Удостоверение\_map.dll** в hello **построения\\модули\\identitymap\\отладки** папки.
+* **Имитация\_device.dll** в hello **построения\\модули\\имитацию\_устройства\\отладки** папки.
 
-Используйте эти пути для настройки значений **module path**, как указано в приведенном ниже файле параметров JSON.
+Эти пути можно использовать для hello **путь к модулю** значения, как показано в hello следующие параметры файл JSON:
 
-Процесс simulated\_device\_cloud\_upload\_sample принимает путь к JSON-файлу конфигурации в качестве аргумента командной строки. Следующий пример файла JSON предоставляется в репозитории SDK в расположении **samples\\simulated\_device\_cloud\_upload\_sample\\src\\simulated\_device\_cloud\_upload\_sample\_win.json**. Этот файл конфигурации работает так, как если бы вы не модифицировали сценарий сборки, чтобы разместить модули IoT Edge или образцы исполняемых файлов в местах, отличных от настроек по умолчанию.
+Hello имитировать\_устройства\_облака\_отправить\_занимает образец файла конфигурации JSON tooa путь hello аргумент командной строки. Hello следующий файл JSON приведены в репозиторий SDK hello в **образцы\\имитацию\_устройства\_облака\_отправить\_пример\\src\\ Имитация\_устройства\_облака\_отправить\_пример\_win.json**. Это работает файл конфигурации, если только не изменить hello построения hello tooplace сценария IoT Edge модули или образец исполняемые файлы в нестандартные расположения.
 
 > [!NOTE]
-> Пути к модулям зависят от каталога, в котором находится файл simulated\_device\_cloud\_upload\_sample.exe. Образец файла конфигурации JSON по умолчанию используется для записи в deviceCloudUploadGatewaylog.log в вашей текущей рабочей папке.
+> Hello модуля, пути toohello относительный каталог, где имитируемые hello\_устройства\_облака\_отправить\_sample.exe находится. Образец Hello JSON файла конфигурации по умолчанию toowriting too'deviceCloudUploadGatewaylog.log "в текущий рабочий каталог.
 
-В текстовом редакторе откройте файл **samples\\simulated\_device\_cloud\_upload\_sample\\src\\simulated\_device\_cloud\_upload\_win.json** в локальной копии репозитория **iot-edge**. Этот файл настраивает модули Edge Интернета вещей в примере шлюза:
+В текстовом редакторе откройте файл hello **образцы\\имитацию\_устройства\_облака\_отправить\_пример\\src\\имитацию\_устройства \_облака\_отправить\_win.json** в локальной копии hello **iot edge** репозитория. Этот файл настраивает модули IoT Edge hello в пример hello шлюза:
 
-* Модуль **IoTHub** подключается к центру IoT. Его необходимо настроить для отправки данных в центр IoT. В частности, укажите в качестве значения **IoTHubName** имя своего Центра Интернета вещей, а в качестве значения **IoTHubSuffix** — **azure-devices.net**. Для параметра **Transport** задайте одно из следующих значений: **HTTP**, **AMQP** или **MQTT**. В настоящее время только **HTTP** использует одно TCP-подключение для всех сообщений с устройства. Если задать значение **AMQP** или **MQTT**, то шлюз будет поддерживать отдельное TCP-подключение к Центру Интернета вещей для каждого устройства.
-* Модуль **mapping** сопоставляет MAC-адреса имитаций устройств с идентификаторами устройств Центра Интернета вещей. Убедитесь в том, что значения **deviceId** совпадают с идентификаторами двух устройств, добавленных в Центр Интернета вещей, а значения **deviceKey** содержат ключи этих двух устройств.
-* Модули **BLE1** и **BLE2** — это имитации устройств. Обратите внимание, что MAC-адреса модулей совпадают с адресами в модуле **mapping**.
-* Модуль **Logger** регистрирует активность вашего шлюза в файл.
-* Значения **путей модуля** в следующем примере зависят от каталога, в котором находится файл simulated\_device\_cloud\_upload\_sample.exe.
-* Массив **links** в нижней части JSON-файла подключает модули **BLE1** и **BLE2** к модулю **mapping**, а модуль **mapping** — к модулю **IoTHub**. Это также гарантирует, что все сообщения будут зарегистрированы модулем **Logger** .
+* Hello **центром IOT** модуль подключается tooyour центр IoT. Можно настроить центр IoT tooyour toosend данных. В частности, набор hello **IoTHubName** toohello имя вашего центра IoT и задать hello **IoTHubSuffix** значение слишком**azure devices.net**. Набор hello **транспорта** tooone значение из: **HTTP**, **AMQP**, или **MQTT**. В настоящее время только **HTTP** использует одно TCP-подключение для всех сообщений с устройства. Если значение hello слишком**AMQP**, или **MQTT**, hello шлюз поддерживает отдельные TCP подключения tooIoT концентратора для каждого устройства.
+* Hello **сопоставления** модуль сопоставляет hello MAC-адресов идентификатор устройства центра IoT tooyour имитации устройства. Убедитесь, что **deviceId** значения соответствия hello идентификаторы hello два устройства, вы добавили tooyour центр IoT и что hello **deviceKey** значения содержат ключи hello двух устройств.
+* Hello **BLE1** и **BLE2** модули являются hello имитируемые устройства. Обратите внимание на то, как модуль hello MAC-адреса соответствующих hello адресам hello **сопоставления** модуля.
+* Hello **средства ведения журнала** модуль регистрирует файл tooa действия шлюза.
+* Hello **путь к модулю** значения, отображаемые в следующий пример hello, toohello относительный каталог, где имитируемые hello\_устройства\_облака\_отправить\_sample.exe находится.
+* Hello **ссылки** массива внизу hello hello JSON-файл подключается hello **BLE1** и **BLE2** toohello модули **сопоставления** модуль и hello **сопоставления** toohello модуль **центром IOT** модуля. Это также гарантирует, что все сообщения регистрируются по hello **средства ведения журнала** модуля.
 
 ```json
 {
@@ -138,17 +138,17 @@ ms.lasthandoff: 07/11/2017
 }
 ```
 
-Сохраните все изменения, внесенные в файл конфигурации.
+Сохранить hello изменения, сделанные toohello файла конфигурации.
 
-Запуск примера
+Образец hello toorun:
 
-1. В командной строке перейдите в папку **build** в локальной копии репозитория **iot-edge**.
-2. Выполните следующую команду:
+1. В командной строке перейдите toohello **построения** папки в локальной копии hello **iot edge** репозитория.
+2. Выполните следующую команду hello.
    
     ```cmd
     samples\simulated_device_cloud_upload\Debug\simulated_device_cloud_upload_sample.exe ..\samples\simulated_device_cloud_upload\src\simulated_device_cloud_upload_win.json
     ```
-3. Для мониторинга сообщений, получаемых Центром Интернета вещей из шлюза, можно использовать такие средства, как [обозреватель устройств][lnk-device-explorer] или [iothub-explorer][lnk-iothub-explorer]. Например, используя средство iothub-explorer, вы можете отслеживать сообщения, отправляемые с устройства в облако с помощью следующей команды:
+3. Можно использовать hello [обозреватель устройств] [ lnk-device-explorer] или [explorer центром IOT] [ lnk-iothub-explorer] средства toomonitor сообщений hello, назначенных hello центра IoT шлюз. Например с помощью обозревателя с центром IOT можно отслеживать сообщения устройства в облако, с помощью hello следующую команду:
 
     ```cmd
     iothub-explorer monitor-events --login "HostName={Your iot hub name}.azure-devices.net;SharedAccessKeyName=iothubowner;SharedAccessKey={Your IoT Hub key}"
@@ -156,15 +156,15 @@ ms.lasthandoff: 07/11/2017
 
 ## <a name="next-steps"></a>Дальнейшие действия
 
-Чтобы подробнее изучить возможности IoT Edge и поэкспериментировать с примерами кода, см. следующие руководства и ресурсы для разработчиков.
+toogain более глубоким пониманием IoT Edge и поэкспериментировать с некоторые примеры кода, посетите следующие hello разработчика учебники и ресурсы:
 
 * [Отправка сообщений с устройства в облако с помощью физического устройства (Linux) с использованием Edge Интернета вещей Azure][lnk-physical-device]
 * [Azure IoT Edge][lnk-iot-edge] (Edge Интернета вещей Azure).
 
-Для дальнейшего изучения возможностей центра IoT см. следующие статьи:
+Изучение возможностей hello центра IoT toofurther см. в разделе:
 
 * [Руководство разработчика для Центра Интернета вещей][lnk-devguide]
-* [Комплексная защита в Интернете вещей][lnk-securing]
+* [Защита вашего решения IoT из hello основание,][lnk-securing]
 
 <!-- Links -->
 [lnk-iot-edge]: https://github.com/Azure/iot-edge/

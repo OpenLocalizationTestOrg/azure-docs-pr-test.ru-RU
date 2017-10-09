@@ -1,5 +1,5 @@
 ---
-title: "Примеры Node.js для Azure Cosmos DB | Документация Майкрософт"
+title: "Примеры aaaNode.js для Azure Cosmos DB | Документы Microsoft"
 description: "Примеры Node.js на сайте GitHub, позволяющие выполнять общие задачи в Azure Cosmos DB, в том числе операции CRUD."
 keywords: "Примеры Node.js"
 services: cosmos-db
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/23/2017
 ms.author: moderakh
-ms.openlocfilehash: 602615c2434b7ab11ec55f2427c76cf1730b1379
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 55c8ebb9ff425aeeaa49fd0738649d33556a1635
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-cosmos-db-nodejs-examples"></a>Примеры Node.js для Azure Cosmos DB
 > [!div class="op_single_selector"]
@@ -30,25 +30,25 @@ ms.lasthandoff: 07/11/2017
 > 
 > 
 
-Примеры решений, которые выполняют операции CRUD и другие распространенные операции с ресурсами Azure Cosmos DB, содержатся в разделе [azure-documentdb-nodejs](https://github.com/Azure/azure-documentdb-node/tree/master/samples) репозитория GitHub. Эта статья содержит:
+Примеров решений, которые выполняют операции CRUD и других общих операций на Azure Cosmos DB ресурсы включаются в hello [azure-documentdb-nodejs](https://github.com/Azure/azure-documentdb-node/tree/master/samples) репозитории GitHub. Эта статья содержит:
 
-* Ссылки на задачи в каждом из примеров файлов проектов Node.js.
-* Ссылки на соответствующие справочные материалы по API.
+* Файлы проекта ссылки toohello задачи в каждом примере hello Node.js.
+* Toohello ссылки, связанные с API справочные материалы.
 
 **Предварительные требования**
 
-1. Для использования этих примеров Node.js требуется учетная запись Azure.
-   * Вы можете [открыть учетную запись Azure бесплатно](https://azure.microsoft.com/pricing/free-trial/)— вы получаете кредиты, которые можно использовать для опробования платных служб Azure, и даже после использования кредитов вы сохраняете учетную запись и возможность использовать бесплатные службы Azure, такие как веб-сайты. С вашей кредитной карты не будет взиматься плата, если вы явно не измените параметры и не попросите снимать плату.
+1. Эти примеры Node.js необходимые toouse учетная запись Azure.
+   * Вы можете [открыть учетную запись Azure бесплатно](https://azure.microsoft.com/pricing/free-trial/): вы получаете кредиты можно использовать tootry out платных служб Azure и даже после того, они используются до можно защитить учетную запись hello и используйте освободить служб Azure, таких как веб-сайтов. Вашей кредитной карты не взимается, пока вы явным образом изменения параметров и попросите toobe взимается плата.
      * Вы можете [активировать преимущества подписчика Visual Studio](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)— каждый месяц ваша подписка Visual Studio предоставляет вам кредиты, которые можно использовать для оплаты служб Azure.
-2. Вам также необходим [пакет SDK для Node.js](documentdb-sdk-node.md).
+2. Необходимо также hello [пакет SDK для Node.js](documentdb-sdk-node.md).
    
    > [!NOTE]
-   > Каждый пример является самодостаточным, он устанавливается самостоятельно и выполняет необходимую очистку после удаления. Поэтому примеры выполняют множественные вызовы метода [DocumentClient.createCollection](http://azure.github.io/azure-documentdb-node/DocumentClient.html#createCollection). Каждый раз, когда это происходит, вам будет выставляться счет за 1 час использования каждого уровня производительности создаваемой коллекции.
+   > Каждый пример является самодостаточным, он устанавливается самостоятельно и выполняет необходимую очистку после удаления. Таким образом, образцы hello выдать несколькими вызовами слишком[DocumentClient.createCollection](http://azure.github.io/azure-documentdb-node/DocumentClient.html#createCollection). Каждый раз, когда это делается вашей подписки будет записана в течение часа использования каждого уровня производительности hello создаваемой коллекции hello.
    > 
    > 
 
 ## <a name="database-examples"></a>Примеры баз данных
-С помощью файла [app.js](https://github.com/Azure/azure-documentdb-node/blob/master/samples/DatabaseManagement/app.js) в проекте [DatabaseManagement](https://github.com/Azure/azure-documentdb-node/tree/master/samples/DatabaseManagement) вы узнаете, как выполнять следующие задачи.
+Hello [в файле app.js](https://github.com/Azure/azure-documentdb-node/blob/master/samples/DatabaseManagement/app.js) файл hello [DatabaseManagement](https://github.com/Azure/azure-documentdb-node/tree/master/samples/DatabaseManagement) проекта, показывающий, как hello tooperform следующие задачи.
 
 | Задача | Справочник по API |
 | --- | --- |
@@ -59,7 +59,7 @@ ms.lasthandoff: 07/11/2017
 | [Удаление базы данных](https://github.com/Azure/azure-documentdb-node/blob/ef53e5f6707a5dc45920fb6ad54d9c7e008a6c18/samples/DocumentDB.Samples.DatabaseManagement/app.js#L133-L144) |[DocumentClient.deleteDatabase](http://azure.github.io/azure-documentdb-node/DocumentClient.html#deleteDatabase) |
 
 ## <a name="collection-examples"></a>Примеры коллекций
-С помощью файла [app.js](https://github.com/Azure/azure-documentdb-node/blob/master/samples/CollectionManagement/app.js) в проекте [CollectionManagement](https://github.com/Azure/azure-documentdb-node/tree/master/samples/CollectionManagement) вы узнаете, как выполнять следующие задачи.
+Hello [в файле app.js](https://github.com/Azure/azure-documentdb-node/blob/master/samples/CollectionManagement/app.js) файл hello [CollectionManagement](https://github.com/Azure/azure-documentdb-node/tree/master/samples/CollectionManagement) проекта, показывающий, как hello tooperform следующие задачи.
 
 | Задача | Справочник по API |
 | --- | --- |
@@ -72,12 +72,12 @@ ms.lasthandoff: 07/11/2017
 | [Удаление коллекции](https://github.com/Azure/azure-documentdb-node/blob/ef53e5f6707a5dc45920fb6ad54d9c7e008a6c18/samples/DocumentDB.Samples.CollectionManagement/app.js#L204-L215) |[DocumentClient.deleteCollection](http://azure.github.io/azure-documentdb-node/DocumentClient.html#deleteCollection) |
 
 ## <a name="document-examples"></a>Примеры документов
-С помощью файла [app.js](https://github.com/Azure/azure-documentdb-node/blob/master/samples/DocumentManagement/app.js) в проекте [DocumentManagement](https://github.com/Azure/azure-documentdb-node/tree/master/samples/DocumentManagement) вы узнаете, как выполнять следующие задачи.
+Hello [в файле app.js](https://github.com/Azure/azure-documentdb-node/blob/master/samples/DocumentManagement/app.js) файл hello [DocumentManagement](https://github.com/Azure/azure-documentdb-node/tree/master/samples/DocumentManagement) проекта, показывающий, как hello tooperform следующие задачи.
 
 | Задача | Справочник по API |
 | --- | --- |
 | [Создание документов](https://github.com/Azure/azure-documentdb-node/blob/ef53e5f6707a5dc45920fb6ad54d9c7e008a6c18/samples/DocumentDB.Samples.DocumentManagement/app.js#L153-L177) |[DocumentClient.createDocument](http://azure.github.io/azure-documentdb-node/DocumentClient.html#createDocument) |
-| [Чтение потока документа для коллекции](https://github.com/Azure/azure-documentdb-node/blob/ef53e5f6707a5dc45920fb6ad54d9c7e008a6c18/samples/DocumentDB.Samples.DocumentManagement/app.js#L179-L189) |[DocumentClient.readDocument](http://azure.github.io/azure-documentdb-node/DocumentClient.html#readDocument) |
+| [Чтение документа hello веб-канала для коллекции](https://github.com/Azure/azure-documentdb-node/blob/ef53e5f6707a5dc45920fb6ad54d9c7e008a6c18/samples/DocumentDB.Samples.DocumentManagement/app.js#L179-L189) |[DocumentClient.readDocument](http://azure.github.io/azure-documentdb-node/DocumentClient.html#readDocument) |
 | [Чтение документа по идентификатору](https://github.com/Azure/azure-documentdb-node/blob/ef53e5f6707a5dc45920fb6ad54d9c7e008a6c18/samples/DocumentDB.Samples.DocumentManagement/app.js#L191-L201) |[DocumentClient.readDocument](http://azure.github.io/azure-documentdb-node/DocumentClient.html#readDocument) |
 | [Чтение документа только в том случае, если он был изменен](https://github.com/Azure/azure-documentdb-node/blob/0778eadea7abb2af41e8c22a239dc872c584f421/samples/DocumentManagement/app.js#L79-L107) |[DocumentClient.readDocument](http://azure.github.io/azure-documentdb-node/DocumentClient.html#readDocument)<br/>[RequestOptions.accessCondition](http://azure.github.io/azure-documentdb-node/global.html#RequestOptions) |
 | [Запрос документов](https://github.com/Azure/azure-documentdb-node/blob/ef53e5f6707a5dc45920fb6ad54d9c7e008a6c18/samples/DocumentDB.Samples.DocumentManagement/app.js#L82-L110) |[DocumentClient.queryDocuments](http://azure.github.io/azure-documentdb-node/DocumentClient.html#queryDocuments) |
@@ -86,13 +86,13 @@ ms.lasthandoff: 07/11/2017
 | [Удаление документа](https://github.com/Azure/azure-documentdb-node/blob/ef53e5f6707a5dc45920fb6ad54d9c7e008a6c18/samples/DocumentDB.Samples.DocumentManagement/app.js#L122-L133) |[DocumentClient.deleteDocument](http://azure.github.io/azure-documentdb-node/DocumentClient.html#deleteDocument) |
 
 ## <a name="indexing-examples"></a>Примеры индексирования
-С помощью файла [app.js](https://github.com/Azure/azure-documentdb-node/blob/master/samples/IndexManagement/app.js) в проекте [IndexManagement](https://github.com/Azure/azure-documentdb-node/tree/master/samples/IndexManagement) вы узнаете, как выполнять следующие задачи.
+Hello [в файле app.js](https://github.com/Azure/azure-documentdb-node/blob/master/samples/IndexManagement/app.js) файл hello [IndexManagement](https://github.com/Azure/azure-documentdb-node/tree/master/samples/IndexManagement) проекта, показывающий, как hello tooperform следующие задачи.
 
 | Задача | Справочник по API |
 | --- | --- |
 | [Создание коллекции с индексированием по умолчанию](https://github.com/Azure/azure-documentdb-node/blob/ef53e5f6707a5dc45920fb6ad54d9c7e008a6c18/samples/DocumentDB.Samples.IndexManagement/app.js#L657-L701) |[DocumentClient.createCollection](http://azure.github.io/azure-documentdb-node/DocumentClient.html#createCollection) |
 | [Индексирование определенного документа вручную](https://github.com/Azure/azure-documentdb-node/blob/ef53e5f6707a5dc45920fb6ad54d9c7e008a6c18/samples/DocumentDB.Samples.IndexManagement/app.js#L185-L238) |[RequestOptions.indexingDirective: 'include'](http://azure.github.io/azure-documentdb-node/global.html#RequestOptions) |
-| [Исключение определенного документа из индекса вручную](https://github.com/Azure/azure-documentdb-node/blob/ef53e5f6707a5dc45920fb6ad54d9c7e008a6c18/samples/DocumentDB.Samples.IndexManagement/app.js#L120-L183) |[RequestOptions.indexingDirective: 'exclude'](http://azure.github.io/azure-documentdb-node/global.html#RequestOptions) |
+| [Вручную исключения конкретный документ из индексирования hello](https://github.com/Azure/azure-documentdb-node/blob/ef53e5f6707a5dc45920fb6ad54d9c7e008a6c18/samples/DocumentDB.Samples.IndexManagement/app.js#L120-L183) |[RequestOptions.indexingDirective: 'exclude'](http://azure.github.io/azure-documentdb-node/global.html#RequestOptions) |
 | [Использование отложенного индексирования для массового импорта или чтения больших коллекций](https://github.com/Azure/azure-documentdb-node/blob/ef53e5f6707a5dc45920fb6ad54d9c7e008a6c18/samples/DocumentDB.Samples.IndexManagement/app.js#L240-L269) |[IndexingMode.Lazy](http://azure.github.io/azure-documentdb-node/global.html#IndexingMode) |
 | [Включение указанных путей документов в индексирование](https://github.com/Azure/azure-documentdb-node/blob/ef53e5f6707a5dc45920fb6ad54d9c7e008a6c18/samples/DocumentDB.Samples.IndexManagement/app.js#L433-L444) |[IndexingPolicy.IncludedPaths](http://azure.github.io/azure-documentdb-node/global.html#IndexingPolicy) |
 | [Исключение указанных путей из индексирования](https://github.com/Azure/azure-documentdb-node/blob/ef53e5f6707a5dc45920fb6ad54d9c7e008a6c18/samples/DocumentDB.Samples.IndexManagement/app.js#L427-L450) |[IndexingPolicy.ExcludedPath](http://azure.github.io/azure-documentdb-node/global.html#IndexingPolicy) |
@@ -103,7 +103,7 @@ ms.lasthandoff: 07/11/2017
 Дополнительные сведения об индексации Azure Cosmos DB см. в [этой статье](indexing-policies.md).
 
 ## <a name="server-side-programming-examples"></a>Примеры программирования на стороне сервера
-С помощью файла [app.js](https://github.com/Azure/azure-documentdb-node/blob/master/samples/ServerSideScripts/app.js) в проекте [ServerSideScripts](https://github.com/Azure/azure-documentdb-node/tree/master/samples/ServerSideScripts) вы узнаете, как выполнять следующие задачи.
+Hello [в файле app.js](https://github.com/Azure/azure-documentdb-node/blob/master/samples/ServerSideScripts/app.js) файл hello [ServerSideScripts](https://github.com/Azure/azure-documentdb-node/tree/master/samples/ServerSideScripts) проекта, показывающий, как hello tooperform следующие задачи.
 
 | Задача | Справочник по API |
 | --- | --- |
@@ -113,7 +113,7 @@ ms.lasthandoff: 07/11/2017
 Дополнительные сведения о программировании на стороне сервера в Azure Cosmos DB, в том числе о хранимых процедурах, триггерах баз данных и определяемых пользователем функциях, см. в [этой статье](programming.md).
 
 ## <a name="partitioning-examples"></a>Примеры секционирования
-С помощью файла [app.js](https://github.com/Azure/azure-documentdb-node/blob/master/samples/Partitioning/app.js) в проекте [Partitioning](https://github.com/Azure/azure-documentdb-node/tree/master/samples/Partitioning) вы узнаете, как выполнять следующие задачи.
+Hello [в файле app.js](https://github.com/Azure/azure-documentdb-node/blob/master/samples/Partitioning/app.js) файл hello [секционирование](https://github.com/Azure/azure-documentdb-node/tree/master/samples/Partitioning) проекта, показывающий, как hello tooperform следующие задачи.
 
 | Задача | Справочник по API |
 | --- | --- |

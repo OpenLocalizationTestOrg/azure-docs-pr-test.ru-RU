@@ -1,6 +1,6 @@
 ---
 title: "Хранилища Azure стека: Различия и рекомендации"
-description: "Сведения о различиях между стек хранилища Azure и хранилища Azure, а также рекомендации по развертыванию Azure стека."
+description: "Понять hello различия между Azure стека и хранилищем Azure, а также рекомендации по развертыванию Azure стека."
 services: azure-stack
 documentationcenter: 
 author: xiaofmao
@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 06/22/2017
 ms.author: xiaofmao
-ms.openlocfilehash: beb2d26afb8ddc5e85b1828c71de5cbd9e678fe1
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: a1f8e2180b046b835c89fd658e2dbaff004b8786
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-stack-storage-differences-and-considerations"></a>Хранилища Azure стека: Различия и рекомендации
-Хранилище Azure стек — это набор облачных служб хранилища в Microsoft Azure стека. Стек хранилища, Azure предоставляет большого двоичного объекта, таблицы, очереди и функции управления учетную запись с Azure согласованную семантику.
+Хранилище Azure стека — hello набор облачных служб хранилища в Microsoft Azure стека. Стек хранилища, Azure предоставляет большого двоичного объекта, таблицы, очереди и функции управления учетную запись с Azure согласованную семантику.
 
-В этой статье перечислены известные различия стек хранилища Azure из хранилища Azure. Он также содержатся другие вопросы, которые следует учитывать при развертывании Azure стека. Дополнительные сведения о высокоуровневых различия между стек Azure и Azure см. в разделе [основные вопросы](azure-stack-considerations.md) раздела.
+В этой статье перечислены известные различия стек хранилища Azure из хранилища Azure hello. Он также содержит сведения о tookeep другие вопросы в виду при развертывании Azure стека. toolearn об отличиях высокого уровня стека Azure и Azure, в разделе hello [основные вопросы](azure-stack-considerations.md) раздела.
 
 ## <a name="cheat-sheet-storage-differences"></a>Памятка: различия хранилища
 
@@ -44,11 +44,11 @@ ms.lasthandoff: 08/03/2017
 
 ### <a name="metrics"></a>Метрики
 Кроме того, существуют некоторые различия с метриками хранилища:
-* Данные транзакций в метрик хранилища не различает пропускной способности внутренней или внешней сети.
-* Данные транзакций в метрик хранилища не включают виртуальным машинам доступ к подключенные диски.
+* данные транзакций Hello в метрик хранилища не различает пропускной способности внутренней или внешней сети.
+* данные транзакций Hello в метрик хранилища не включают диски подключены toohello доступа виртуальной машины.
 
 ## <a name="api-version"></a>Версия API
-Стек хранилища Azure поддерживает следующие версии:
+Стек хранилища Azure поддерживаются следующие версии Hello:
 
 * Службы данных Azure хранилища: [версия 2015-04-05 REST API](https://docs.microsoft.com/en-us/rest/api/storageservices/Version-2015-04-05?redirectedfrom=MSDN)
 * Службы управления Azure хранилища: [2015-05-01-preview 2015-06-15 и 2016-01-01](https://docs.microsoft.com/en-us/rest/api/storagerp/?redirectedfrom=MSDN) 
@@ -56,5 +56,5 @@ ms.lasthandoff: 08/03/2017
 ## <a name="next-steps"></a>Дальнейшие действия
 
 * [Начало работы со средствами разработки стек хранилища Azure](azure-stack-storage-dev.md)
-* [Введение в хранилище Azure стека](azure-stack-storage-overview.md)
+* [Введение tooAzure стек хранилища](azure-stack-storage-overview.md)
 

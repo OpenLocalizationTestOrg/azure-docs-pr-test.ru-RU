@@ -1,6 +1,6 @@
 ---
-title: "Добавление новых пользователей в Azure Active Directory | Документация Майкрософт"
-description: "Узнайте, как добавлять новых пользователей или изменять сведения о них в Azure Active Directory."
+title: "aaaAdd tooAzure новых пользователей Active Directory | Документы Microsoft"
+description: "Объясняет, как tooadd новых пользователей или изменение сведений о пользователе в Azure Active Directory."
 services: active-directory
 documentationcenter: 
 author: curtand
@@ -15,38 +15,38 @@ ms.topic: article
 ms.date: 06/27/2017
 ms.author: curtand;jeffsta
 ms.reviewer: jeffsta
-ms.openlocfilehash: bfe0c556d94d50207a23d2e3984371fb602e9406
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: c4a156ea31b81202bb0d0ac224afbfc3f1785532
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="add-new-users-to-azure-active-directory"></a>Добавление новых пользователей в Azure Active Directory
+# <a name="add-new-users-tooazure-active-directory"></a>Добавить новый tooAzure пользователей Active Directory
 > [!div class="op_single_selector"]
 > * [Портал Azure](active-directory-users-create-azure-portal.md)
 > * [классическом портале Azure](active-directory-create-users.md)
 >
 >
 
-В этой статье объясняется, как добавить новых пользователей организации в Azure Active Directory (Azure AD). 
+В этой статье объясняется, как tooadd новых пользователей в вашей организации в hello Azure Active Directory (Azure AD). 
 
-1. Войдите на [портал Azure](https://portal.azure.com) с помощью учетной записи глобального администратора каталога.
-2. Выберите **Больше служб**, введите **Пользователи и группы** в текстовое поле, а затем нажмите клавишу **ВВОД**.
+1. Войдите в toohello [портал Azure](https://portal.azure.com) с помощью учетной записи глобального администратора каталога hello.
+2. Выберите **дополнительные службы**, введите **пользователей и групп** в hello текстовое поле, а затем выберите **ввод**.
 
    ![Открытие пользователей и групп](./media/active-directory-users-create-azure-portal/create-users-user-management.png)
-3. В колонке **Пользователи и группы** выберите **Все пользователи** и щелкните **Добавить**.
+3. На hello **пользователей и групп** колонки, выберите **всех пользователей**, а затем выберите **добавить**.
 
-   ![Выбор команды "Добавить"](./media/active-directory-users-create-azure-portal/create-users-add-command.png)
-4. Введите сведения о пользователе в соответствующих полях, например **Имя** и **Имя пользователя**. Частью имени имя пользователя, представляющей собой доменное имя, должно быть доменное имя по умолчанию, foo.onmicrosoft.com, или проверенное доменное имя, не являющееся федеративным, например contoso.com.
-5. Скопируйте или иным способом запишите созданный пароль пользователя, чтобы после завершения этого процесса его можно было предоставить пользователю.
-6. При необходимости можно заполнить сведения, открыв колонку **Профиль**, **Группы** или **Роль каталога** для пользователя. Дополнительные сведения о ролях пользователей и администраторов см. в статье [Назначение ролей администратора в Azure Active Directory](active-directory-assign-admin-roles.md).
-7. В колонке **Пользователь** щелкните **Создать**.
-8. Безопасным способом передайте созданный пароль новому пользователю, чтобы он мог войти в систему.
+   ![При выборе команды Добавить hello](./media/active-directory-users-create-azure-portal/create-users-add-command.png)
+4. Введите сведения для пользователя hello, таких как **имя** и **имя пользователя**. Hello часть имени домена hello имя пользователя должно быть имя домена «foo.onmicrosoft.com» имени домена по умолчанию hello или имя проверенного домена без поддержки федерации, например «contoso.com».
+5. Копирование или в противном случае Примечание hello создать пароль пользователя, таким образом, чтобы можно предоставить его toohello пользователя после завершения этого процесса.
+6. При необходимости можно открыть и заполните сведения hello в hello **профиль** колонки, hello **группы** колонке или hello **роли каталога** колонку для пользователя hello. Дополнительные сведения о ролях пользователей и администраторов см. в статье [Назначение ролей администратора в Azure AD](active-directory-assign-admin-roles.md).
+7. На hello **пользователя** колонке выберите **создать**.
+8. Безопасно распространите hello созданный пароль toohello нового пользователя, чтобы hello пользователь сможет войти в.
 
 ### <a name="next-steps"></a>Дальнейшие действия
 * [Добавление внешнего пользователя](active-directory-users-create-external-azure-portal.md)
-* [Сброс пароля пользователя на новом портале Azure](active-directory-users-reset-password-azure-portal.md)
+* [Сброс пароля пользователя в новый портал Azure hello](active-directory-users-reset-password-azure-portal.md)
 * [Изменение сведений о работе пользователя](active-directory-users-work-info-azure-portal.md)
 * [Управление профилями пользователей](active-directory-users-profile-azure-portal.md)
 * [Удаление пользователя из Azure AD](active-directory-users-delete-user-azure-portal.md)
-* [Назначение пользователей в предварительной версии Azure AD](active-directory-users-assign-role-azure-portal.md)
+* [Назначьте роль tooa пользователя в Azure AD](active-directory-users-assign-role-azure-portal.md)

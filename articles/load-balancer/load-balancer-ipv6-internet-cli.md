@@ -1,6 +1,6 @@
 ---
-title: "Создание подсистемы балансировки нагрузки для Интернета с поддержкой IPv6 с помощью интерфейса командной строки Azure | Документация Майкрософт"
-description: "Узнайте, как создать балансировщик нагрузки для Интернета с поддержкой IPv6 в Azure Resource Manager с помощью Azure CLI."
+title: "Подсистема балансировки нагрузки aaaCreate с выходом в Интернет с IPv6 - Azure CLI | Документы Microsoft"
+description: "Узнайте, как toocreate Интернета с выходом подсистемы балансировки нагрузки с IPv6 с помощью диспетчера ресурсов Azure hello Azure CLI"
 services: load-balancer
 documentationcenter: na
 author: kumudd
@@ -15,55 +15,55 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/23/2017
 ms.author: kumud
-ms.openlocfilehash: efb4771800c42df544c3cc37d1d164045fdcaf3e
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 7ff75ac90d74a74e3d0c27672b36fbd955a086a3
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="create-an-internet-facing-load-balancer-with-ipv6-in-azure-resource-manager-using-the-azure-cli"></a>Создание балансировщика нагрузки для Интернета с поддержкой IPv6 в Azure Resource Manager с помощью Azure CLI
+# <a name="create-an-internet-facing-load-balancer-with-ipv6-in-azure-resource-manager-using-hello-azure-cli"></a>Создание подсистемы балансировки нагрузки с IPv6 в диспетчере ресурсов Azure с помощью hello Azure CLI с выходом в Интернет
 
 > [!div class="op_single_selector"]
 > * [PowerShell](load-balancer-ipv6-internet-ps.md)
 > * [Интерфейс командной строки Azure](load-balancer-ipv6-internet-cli.md)
 > * [Шаблон](load-balancer-ipv6-internet-template.md)
 
-Azure Load Balancer является балансировщиком нагрузки 4-го уровня (TCP, UDP). Балансировщик нагрузки обеспечивает высокий уровень доступности, распределяя входящий трафик между работоспособными экземплярами службы в облачных службах или виртуальных машинах, определенных в наборе балансировщика нагрузки. Azure Load Balancer может также представить данные службы на нескольких портах, нескольких IP-адресах или обоими этими способами.
+Azure Load Balancer является балансировщиком нагрузки 4-го уровня (TCP, UDP). Подсистема балансировки нагрузки Hello обеспечивает высокую доступность путем распределения входящего трафика между экземплярами службы работоспособности в облачных службах или виртуальных машин в набор балансировки нагрузки. Azure Load Balancer может также представить данные службы на нескольких портах, нескольких IP-адресах или обоими этими способами.
 
 ## <a name="example-deployment-scenario"></a>Пример сценария развертывания
 
-На следующей схеме показано решение балансировки нагрузки, которое развертывается в этой статье с помощью примера шаблона.
+Hello следующей схеме показано решение по балансировке нагрузки hello развертываемого с помощью шаблона пример hello, описанных в этой статье.
 
 ![Сценарий использования балансировщика нагрузки](./media/load-balancer-ipv6-internet-cli/lb-ipv6-scenario-cli.png)
 
-В этом сценарии вы создадите следующие ресурсы Azure:
+В этом случае будут созданы следующие ресурсы Azure hello:
 
 * две виртуальные машины;
 * виртуальный сетевой интерфейс для каждой виртуальной машины с назначенными IPv4 и IPv6-адресами;
 * балансировщик нагрузки для Интернета с общедоступными IPv4- и IPv6-адресами;
-* группу доступности, которая содержит две виртуальные машины;
-* два правила балансировки нагрузки для сопоставления общедоступных виртуальных IP-адресов с частными конечными точками.
+* Группа доступности toothat содержит hello две виртуальные машины
+* два загрузить балансировки правила toomap hello открытые виртуальные IP-адреса toohello закрытый конечные точки
 
-## <a name="deploying-the-solution-using-the-azure-cli"></a>Развертывание решения с помощью интерфейса командной строки Azure (Azure CLI)
+## <a name="deploying-hello-solution-using-hello-azure-cli"></a>Развертывание решения hello, с помощью hello Azure CLI
 
-Ниже описана процедура создания балансировщика нагрузки для Интернета с помощью Azure Resource Manager и интерфейса командной строки. Azure Resource Manager позволяет по отдельности создавать и настраивать ресурсы, после чего на их основе создается единый ресурс.
+Привет, следующие шаги показывают, как с помощью диспетчера ресурсов Azure с CLI подсистемы балансировки нагрузки, toocreate из Интернета. С помощью диспетчера ресурсов Azure каждый ресурс создается и настроить отдельно и затем поместить toocreate ресурса.
 
-Чтобы развернуть балансировщик нагрузки, необходимо создать и настроить следующие объекты:
+toodeploy подсистемы балансировки нагрузки, создания и настройки hello следующие объекты:
 
 * Конфигурация интерфейсных IP-адресов. Содержит общедоступные IP-адреса для входящего сетевого трафика.
-* Пул внутренних адресов. Содержит сетевые интерфейсы (сетевые карты) для получения виртуальными машинами трафика от балансировщика нагрузки.
-* Правила балансировки нагрузки. Содержат правила сопоставления общего порта в балансировщике нагрузки с портом в пуле внутренних адресов.
-* Правила NAT для входящего трафика. Содержат правила сопоставления общего порта в балансировщике нагрузки с портом на конкретной виртуальной машине в пуле внутренних адресов.
-* Пробы. Содержат пробы работоспособности, с помощью которых можно проверить доступность экземпляров виртуальных машин в пуле внутренних адресов.
+* Пул адресов серверной части - содержит сетевых интерфейсов (NIC) для hello виртуальные машины tooreceive сетевой трафик от подсистемы балансировки нагрузки hello.
+* Правила балансировки нагрузки — содержит правила сопоставления открытый порт hello tooport подсистемы балансировки нагрузки в пул адресов серверной части hello.
+* Правила NAT для входящих подключений — содержит правила, сопоставление порта открытый порт tooa подсистемы балансировки нагрузки hello для конкретной виртуальной машины в пул адресов серверной части hello.
+* Проверяет — содержит доступность toocheck проверки, используемые работоспособности экземпляров виртуальных машин в пул адресов серверной части hello.
 
 Дополнительные сведения см. в статье [Поддержка диспетчера ресурсов Azure для подсистемы балансировки нагрузки](load-balancer-arm.md).
 
-## <a name="set-up-your-cli-environment-to-use-azure-resource-manager"></a>Настройка среды интерфейса командной строки для использования Azure Resource Manager
+## <a name="set-up-your-cli-environment-toouse-azure-resource-manager"></a>Настройка вашей toouse среды интерфейс командной строки диспетчера ресурсов Azure
 
-В этом примере программы командной строки выполняются в командном окне PowerShell. Мы не используем командлеты Azure PowerShell, но применяем возможности сценариев PowerShell для улучшения удобства чтения и повторного использования.
+В этом примере мы запущены средства CLI hello в окне команд PowerShell. Командлеты Azure PowerShell hello не используются, но мы используем PowerShell сценариев возможности tooimprove удобочитаемость и повторного использования.
 
-1. Если вы еще не пользовались Azure CLI, ознакомьтесь со статьей [Установка и настройка CLI Azure](../cli-install-nodejs.md) и следуйте инструкциям вплоть до выбора учетной записи Azure и подписки.
-2. Выполните команду **azure config mode** , чтобы переключиться в режим Resource Manager.
+1. Если ранее не пользовались Azure CLI, см. раздел [Установка и настройка hello Azure CLI](../cli-install-nodejs.md) и следуйте инструкциям hello toohello точку, где выбирается учетная запись Azure и подписки.
+2. Запустите hello **azure конфигурации режима** режим Manager tooResource tooswitch команд.
 
     ```azurecli
     azure config mode arm
@@ -73,7 +73,7 @@ Azure Load Balancer является балансировщиком нагруз
 
         info:    New mode is arm
 
-3. Войдите в Azure и получите список подписок.
+3. Войдите в tooAzure и получить список подписок.
 
     ```azurecli
     azure login
@@ -85,9 +85,9 @@ Azure Load Balancer является балансировщиком нагруз
     azure account list
     ```
 
-    Выберите подписку, которая будет использоваться. Запишите идентификатор подписки для использования на следующем шаге.
+    Выберите подписку hello toouse. Запишите идентификатор hello подписки для следующего шага hello.
 
-4. Настройте переменные PowerShell для использования с командами интерфейса командной строки.
+4. Настройка переменных PowerShell для использования с командами CLI hello.
 
     ```powershell
     $subscriptionid = "########-####-####-####-############"  # enter subscription id
@@ -130,16 +130,16 @@ Azure Load Balancer является балансировщиком нагруз
     $subnet2 = azure network vnet subnet create --resource-group $rgname --name $subnet2Name --address-prefix $subnet2Prefix --vnet-name $vnetName
     ```
 
-## <a name="create-public-ip-addresses-for-the-front-end-pool"></a>Создание общедоступных IP-адресов для интерфейсного пула
+## <a name="create-public-ip-addresses-for-hello-front-end-pool"></a>Создание общих IP-адресов для пула переднего плана hello
 
-1. Настройте переменные PowerShell.
+1. Настройка переменных PowerShell hello
 
     ```powershell
     $publicIpv4Name = "myIPv4Vip"
     $publicIpv6Name = "myIPv6Vip"
     ```
 
-2. Создайте общедоступный IP-адрес для интерфейсного пула IP-адресов.
+2. Создайте открытый пул IP-адресов hello интерфейсный IP.
 
     ```azurecli
     $publicipV4 = azure network public-ip create --resource-group $rgname --name $publicIpv4Name --location $location --ip-version IPv4 --allocation-method Dynamic --domain-name-label $dnsLabel
@@ -147,14 +147,14 @@ Azure Load Balancer является балансировщиком нагруз
     ```
 
     > [!IMPORTANT]
-    > Балансировщик нагрузки использует метку домена общедоступного IP-адреса в качестве своего полного доменного имени (FQDN). В этом заключается отличие от классического развертывания, при котором в качестве полного доменного имени балансировщика нагрузки используется имя облачной службы.
-    > В этом примере используется полное доменное имя *contoso09152016.southcentralus.cloudapp.azure.com*.
+    > Hello балансировки нагрузки использует метку домена hello hello общедоступный IP-адрес в качестве его полное доменное имя. Это изменение по сравнению с классической развертывания с использованием имени облачной службы hello как hello балансировки нагрузки полное доменное имя.
+    > В этом примере hello полное доменное имя — *contoso09152016.southcentralus.cloudapp.azure.com*.
 
 ## <a name="create-front-end-and-back-end-pools"></a>Создание интерфейсного и внутреннего пулов
 
-В этом примере создается интерфейсный пул IP-адресов, который принимает входящий сетевой трафик в балансировщик нагрузки, а также внутренний пул IP-адресов, куда интерфейсный пул отправляет сетевой трафик с балансировкой нагрузки.
+Этот пример создает hello переднего плана пула IP-адресов, получающий hello входящего сетевого трафика в подсистеме балансировки нагрузки hello и hello серверной части пула IP-адресов где переднего плана пула hello отправляет hello балансировки нагрузки сетевого трафика.
 
-1. Настройте переменные PowerShell.
+1. Настройка переменных PowerShell hello
 
     ```powershell
     $frontendV4Name = "FrontendVipIPv4"
@@ -163,7 +163,7 @@ Azure Load Balancer является балансировщиком нагруз
     $backendAddressPoolV6Name = "BackendPoolIPv6"
     ```
 
-2. Создайте пул интерфейсных IP-адресов, связывающий общедоступный IP-адрес, созданный на предыдущем этапе, и балансировщик нагрузки.
+2. Создайте пул IP переднего плана, связывание hello общедоступный IP-адрес создан в предыдущем шаге hello и Подсистема балансировки нагрузки hello.
 
     ```azurecli
     $frontendV4 = azure network lb frontend-ip create --resource-group $rgname --name $frontendV4Name --public-ip-name $publicIpv4Name --lb-name $lbName
@@ -172,18 +172,18 @@ Azure Load Balancer является балансировщиком нагруз
     $backendAddressPoolV6 = azure network lb address-pool create --resource-group $rgname --name $backendAddressPoolV6Name --lb-name $lbName
     ```
 
-## <a name="create-the-probe-nat-rules-and-lb-rules"></a>Создание пробы, правил NAT и правил балансировки нагрузки
+## <a name="create-hello-probe-nat-rules-and-lb-rules"></a>Создание hello пробы, правил NAT и правила балансировки Нагрузки
 
-В этом примере создаются следующие элементы:
+В этом примере создается hello следующих элементов:
 
-* правило пробы для проверки подключения к TCP-порту 80;
-* правило NAT, которое направляет весь входящий трафик с порта 3389 на порт 3389 для RDP<sup>1</sup>;
-* правило NAT, которое направляет весь входящий трафик с порта 3391 на порт 3389 для RDP<sup>1</sup>;
-* правило балансировщика нагрузки, которое балансирует весь входящий трафик на порту 80, перенаправляя трафик на порт 80 других адресов во внутреннем пуле;
+* toocheck правила проверки для подключения к tooTCP порта 80
+* преобразование сетевых адресов правила tootranslate весь входящий трафик на порт 3389 tooport 3389 для протокола удаленного рабочего СТОЛА<sup>1</sup>
+* преобразование сетевых адресов правила tootranslate весь входящий трафик на tooport 3391 порт 3389 для протокола удаленного рабочего СТОЛА<sup>1</sup>
+* toobalance правило балансировки нагрузки весь входящий трафик на порт 80 tooport 80 на hello адресов серверной части пула hello.
 
-<sup>1</sup> Правила NAT сопоставлены с конкретным экземпляром виртуальной машины, находящимся в зоне действия балансировщика нагрузки. Сетевой трафик, поступающий на порт 3389, отправляется на определенную виртуальную машину и порт, которые связанны с правилом NAT. Для правила NAT необходимо указать протокол (UDP или TCP). Нельзя назначить оба протокола одному и тому же порту.
+<sup>1</sup> NAT правила, связанные tooa конкретного экземпляра виртуальной машины за подсистемой балансировки нагрузки hello. Hello сетевой трафик, поступающий на порт 3389 отправляется toohello отдельную виртуальную машину и порт, связанный с правилом NAT hello. Для правила NAT необходимо указать протокол (UDP или TCP). Оба эти протокола не может быть назначен toohello тот же порт.
 
-1. Настройте переменные PowerShell.
+1. Настройка переменных PowerShell hello
 
     ```powershell
     $probeV4V6Name = "ProbeForIPv4AndIPv6"
@@ -193,22 +193,22 @@ Azure Load Balancer является балансировщиком нагруз
     $lbRule1V6Name = "LBRuleForIPv6-Port80"
     ```
 
-2. Создать пробу.
+2. Создать пробу hello
 
-    В следующем примере создается проба TCP, которая каждые 15 секунд проверяет подключение к внутреннему TCP-порту 80. После двух последовательных неудавшихся подключений она пометит внутренний ресурс как недоступный.
+    Hello следующий пример создает проверки зонда TCP для подключения к конечным tooback TCP-порт 80 каждые 15 секунд. Он помечает hello внутренний ресурс недоступен после двух последовательных сбоев.
 
     ```azurecli
     $probeV4V6 = azure network lb probe create --resource-group $rgname --name $probeV4V6Name --protocol tcp --port 80 --interval 15 --count 2 --lb-name $lbName
     ```
 
-3. Создайте правила NAT для входящего трафика, позволяющие RDP-подключения к внутренним ресурсам.
+3. Создание правила для входящих подключений NAT, поддерживающих соединения протокола удаленного рабочего СТОЛА toohello серверным ресурсам
 
     ```azurecli
     $inboundNatRuleRdp1 = azure network lb inbound-nat-rule create --resource-group $rgname --name $natRule1V4Name --frontend-ip-name $frontendV4Name --protocol Tcp --frontend-port 3389 --backend-port 3389 --lb-name $lbName
     $inboundNatRuleRdp2 = azure network lb inbound-nat-rule create --resource-group $rgname --name $natRule2V4Name --frontend-ip-name $frontendV4Name --protocol Tcp --frontend-port 3391 --backend-port 3389 --lb-name $lbName
     ```
 
-4. Создайте правила балансировщика нагрузки, которые отправляют трафик на разные внутренние порты в зависимости от того, какой интерфейс получил запрос.
+4. Создание правил, которые отправлять трафик порты внутренней toodifferent в зависимости от того, какой запрос hello полученных переднего плана подсистемы балансировки нагрузки
 
     ```azurecli
     $lbruleIPv4 = azure network lb rule create --resource-group $rgname --name $lbRule1V4Name --frontend-ip-name $frontendV4Name --backend-address-pool-name $backendAddressPoolV4Name --probe-name $probeV4V6Name --protocol Tcp --frontend-port 80 --backend-port 80 --lb-name $lbName
@@ -224,7 +224,7 @@ Azure Load Balancer является балансировщиком нагруз
     Ожидаемые выходные данные:
 
         info:    Executing command network lb show
-        info:    Looking up the load balancer "myIPv4IPv6Lb"
+        info:    Looking up hello load balancer "myIPv4IPv6Lb"
         data:    Id                              : /subscriptions/########-####-####-####-############/resourceGroups/pscontosorg1southctrlus09152016/providers/Microsoft.Network/loadBalancers/myIPv4IPv6Lb
         data:    Name                            : myIPv4IPv6Lb
         data:    Type                            : Microsoft.Network/loadBalancers
@@ -263,9 +263,9 @@ Azure Load Balancer является балансировщиком нагруз
 
 ## <a name="create-nics"></a>Создание сетевых адаптеров
 
-Создайте сетевые карты и свяжите их с правилами NAT, правилами балансировщика нагрузки и пробами.
+Создать сетевые адаптеры и связать их tooNAT правила, правила подсистемы балансировки нагрузки и зонды.
 
-1. Настройте переменные PowerShell.
+1. Настройка переменных PowerShell hello
 
     ```powershell
     $nic1Name = "myIPv4IPv6Nic1"
@@ -288,11 +288,11 @@ Azure Load Balancer является балансировщиком нагруз
     $nic2IPv6 = azure network nic ip-config create --resource-group $rgname --name "IPv6IPConfig" --private-ip-version "IPv6" --lb-address-pool-ids $backendAddressPoolV6Id --nic-name $nic2Name
     ```
 
-## <a name="create-the-back-end-vm-resources-and-attach-each-nic"></a>Создание внутренних ресурсов виртуальных машин и присоединение каждой сетевой карты
+## <a name="create-hello-back-end-vm-resources-and-attach-each-nic"></a>Создать ресурсы виртуальной Машины сервера hello и присоединить каждый сетевой Адаптер
 
-Чтобы создать виртуальные машины, необходима учетная запись хранения. Для балансировки нагрузки виртуальные машины должны входить в группу доступности. Дополнительные сведения о создании виртуальных машин см. в статье [Создание виртуальной машины в Azure с помощью PowerShell](../virtual-machines/virtual-machines-windows-ps-create.md?toc=%2fazure%2fload-balancer%2ftoc.json).
+toocreate виртуальные машины, необходимо иметь учетную запись хранилища. Для балансировки нагрузки, hello виртуальные машины должны toobe члены группы доступности. Дополнительные сведения о создании виртуальных машин см. в статье [Создание виртуальной машины в Azure с помощью PowerShell](../virtual-machines/virtual-machines-windows-ps-create.md?toc=%2fazure%2fload-balancer%2ftoc.json).
 
-1. Настройте переменные PowerShell.
+1. Настройка переменных PowerShell hello
 
     ```powershell
     $storageAccountName = "ps08092016v6sa0"
@@ -311,23 +311,23 @@ Azure Load Balancer является балансировщиком нагруз
     ```
 
     > [!WARNING]
-    > В этом примере для виртуальных машин используются имя пользователя и пароль в виде открытого текста. При использовании учетных данных в незашифрованном виде следует принять соответствующие меры предосторожности. Более безопасный способ обработки учетных данных в PowerShell приводится в описании командлета [Get-Credential](https://technet.microsoft.com/library/hh849815.aspx) .
+    > В этом примере используется hello имя пользователя и пароль для виртуальных машин hello в виде открытого текста. При с помощью учетные данные в hello снимите следует принять соответствующие меры. Это более безопасный способ обработки учетных данных в PowerShell, в разделе hello [Get-Credential](https://technet.microsoft.com/library/hh849815.aspx) командлета.
 
-2. Создайте учетную запись хранения и группу доступности.
+2. Создание учетной записи и доступности набора hello хранилища
 
-    При создании виртуальных машин можно использовать существующую учетную запись хранения. Следующая команда создает учетную запись хранения:
+    Вы можете использовать существующую учетную запись хранилища при создании hello виртуальных машин. Привет, следующая команда создает новую учетную запись хранения.
 
     ```azurecli
     $storageAcc = azure storage account create $storageAccountName --resource-group $rgName --location $location --sku-name "LRS" --kind "Storage"
     ```
 
-    Теперь создайте группу доступности.
+    Создайте группу доступности hello.
 
     ```azurecli
     $availabilitySet = azure availset create --name $availabilitySetName --resource-group $rgName --location $location
     ```
 
-3. Создайте виртуальные машины со связанными сетевыми картами.
+3. Создание виртуальных машин hello с сетевыми адаптерами связанные hello
 
     ```azurecli
     $vm1 = azure vm create --resource-group $rgname --location $location --availset-name $availabilitySetName --name $vm1Name --nic-id $nic1Id --os-disk-vhd $osDisk1Uri --os-type "Windows" --admin-username $vmUserName --admin-password $mySecurePassword --vm-size "Standard_A1" --image-urn $imageurn --storage-account-name $storageAccountName --disable-bginfo-extension

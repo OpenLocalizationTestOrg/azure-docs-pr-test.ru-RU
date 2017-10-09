@@ -1,5 +1,5 @@
 ---
-title: "Создание оповещения журнала действий с помощью шаблона Resource Manager | Документация Майкрософт"
+title: "оповещение журнала активности с помощью шаблона диспетчера ресурсов aaaCreate | Документы Microsoft"
 description: "Получение уведомлений при создании ресурсов в Azure."
 author: anirudhcavale
 manager: orenr
@@ -14,23 +14,23 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/06/2017
 ms.author: ancav
-ms.openlocfilehash: 92076c7fe1f867919b7e02abf79cf0fb74fb7eb4
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 0fb8aa037b9dce54ce35498622770955f2341bc2
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-an-activity-log-alert-with-a-resource-manager-template"></a>Создание оповещения журнала действий с помощью шаблона Resource Manager
-В этой статье показано, как можно использовать [шаблон Azure Resource Manager](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-authoring-templates) для настройки оповещений журнала действий. С помощью шаблонов можно легко настроить большое количество предупреждений, которые активируются по определенным условиям события журнала действий в рамках автоматического развертывания.
+В этой статье показано, как toouse [шаблона Azure Resource Manager](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-authoring-templates) tooconfigure предупреждения журнала действий. С помощью шаблонов можно легко настроить большое количество предупреждений, которые активируются по определенным условиям события журнала действий в рамках автоматического развертывания.
 
-Основными шагами являются:
+Основные этапы Hello
 
-1. Создайте шаблон в виде JSON-файла, который описывает создание оповещения журнала действий.
+1. Создание шаблона в формате JSON, описывающий, как действие hello toocreate входа предупреждение.
 
-2. Разверните шаблон, используя [любой метод развертывания](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy).
+2. Развертывание с помощью шаблона hello [любой метод развертывания](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy).
 
 ## <a name="resource-manager-template-for-an-activity-log-alert"></a>Шаблон Resource Manager для оповещения журнала действий
-Чтобы создать оповещение журнала действий с помощью шаблона Resource Manager, создайте ресурс типа `microsoft.insights/activityLogAlerts`. Затем следует заполнить все связанные свойства. Вот шаблон, создающий оповещение журнала действий.
+toocreate оповещение журнал действий с помощью шаблона диспетчера ресурсов, создать ресурс типа hello `microsoft.insights/activityLogAlerts`. Затем следует заполнить все связанные свойства. Вот шаблон, создающий оповещение журнала действий.
 
 ```json
 {
@@ -40,20 +40,20 @@ ms.lasthandoff: 08/29/2017
     "activityLogAlertName": {
       "type": "string",
       "metadata": {
-        "description": "Unique name (within the Resource Group) for the Activity log alert."
+        "description": "Unique name (within hello Resource Group) for hello Activity log alert."
       }
     },
     "activityLogAlertEnabled": {
       "type": "bool",
       "defaultValue": true,
       "metadata": {
-        "description": "Indicates whether or not the alert is enabled."
+        "description": "Indicates whether or not hello alert is enabled."
       }
     },
     "actionGroupResourceId": {
       "type": "string",
       "metadata": {
-        "description": "Resource Id for the Action group."
+        "description": "Resource Id for hello Action group."
       }
     }
   },
@@ -102,6 +102,6 @@ ms.lasthandoff: 08/29/2017
 
 ## <a name="next-steps"></a>Дальнейшие действия
 - Узнайте больше об [оповещениях](monitoring-overview-alerts.md).
-- Узнайте, как добавить [группы действий с помощью шаблона Resource Manager](monitoring-create-action-group-with-resource-manager-template.md).
-- Узнайте, как [создать оповещение журнала действий, чтобы отслеживать все операции системы автомасштабирования в своей подписке](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-alert).
-- Узнайте, как [создать оповещение журнала действий, чтобы отслеживать все ошибки автомасштабирования в своей подписке](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-failed-alert).
+- Узнайте, как tooadd [группы действий с помощью шаблона диспетчера ресурсов](monitoring-create-action-group-with-resource-manager-template.md).
+- Узнайте, каким образом слишком[создания предупреждения toomonitor журнала действий всех операций автомасштабирования обработчика по подписке](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-alert).
+- Узнайте, каким образом слишком[создания предупреждения toomonitor журнала действий все операции масштабирования в/scale out Сбой автоматического масштабирования для одной подписки](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-failed-alert).

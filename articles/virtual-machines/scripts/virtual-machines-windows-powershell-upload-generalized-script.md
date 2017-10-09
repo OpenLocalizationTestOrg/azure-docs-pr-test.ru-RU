@@ -1,6 +1,6 @@
 ---
-title: "Пример сценария PowerShell \"Отправка универсального VHD в Azure\" | Документы Майкрософт"
-description: "Пример сценария PowerShell для отправки универсального виртуального жесткого диска (VHD) в Azure и создания виртуальной машины с помощью модели развертывания Azure Resource Manager и управляемых дисков."
+title: "aaaUpload обобщенный tooAzure VHD образец скрипта PowerShell | Документы Microsoft"
+description: "Образец сценария tooupload обобщенный tooAzure виртуального жесткого диска и создайте новую ВМ с помощью модели развертывания диспетчера ресурсов hello и дисков, управляемых PowerShell."
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: cynthn
@@ -16,15 +16,15 @@ ms.workload: infrastructure
 ms.date: 05/18/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: cd3d87bb4384971e28d3330cd5c1a3d351129036
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 72b4ff09eb7a6ba1604b9d5cbac51e60eded7545
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="sample-script-to-upload-a-vhd-to-azure-and-create-a-new-vm"></a>Пример сценария для отправки VHD в Azure и создания виртуальной машины
+# <a name="sample-script-tooupload-a-vhd-tooazure-and-create-a-new-vm"></a>Пример сценария tooupload tooAzure виртуального жесткого диска и создание новой виртуальной Машины
 
-Этот сценарий принимает локальный VHD-файл из универсальной виртуальной машины и отправляет его в Azure, создает образ управляемого диска и использует его для создания виртуальной машины.
+Этот сценарий принимает локального VHD-файл с универсальной ВМ и передает его tooAzure, создает образ диска управляемых и использует toocreate hello новой виртуальной Машины.
 
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh.md)]
 
@@ -33,7 +33,7 @@ ms.lasthandoff: 07/11/2017
 ## <a name="sample-script"></a>Пример скрипта
 
 ```powershell
-# Provide values for the variables
+# Provide values for hello variables
 $resourceGroup = 'myResourceGroup'
 $location = 'EastUS'
 $storageaccount = 'mystorageaccount'
@@ -54,12 +54,12 @@ $vmName = 'myVM'
 $computerName = 'myComputerName'
 $vmSize = 'Standard_DS1_v2'
 
-# Get the username and password to be used for the administrators account on the VM. 
-# This is used when connecting to the VM using RDP.
+# Get hello username and password toobe used for hello administrators account on hello VM. 
+# This is used when connecting toohello VM using RDP.
 
 $cred = Get-Credential
 
-# Upload the VHD
+# Upload hello VHD
 New-AzureRmResourceGroup -Name $resourceGroup -Location $location
 New-AzureRmStorageAccount -ResourceGroupName $resourceGroup -Name $storageAccount -Location $location `
     -SkuName $storageType -Kind "Storage"
@@ -67,15 +67,15 @@ $urlOfUploadedImageVhd = ('https://' + $storageaccount + '.blob.core.windows.net
 Add-AzureRmVhd -ResourceGroupName $resourceGroup -Destination $urlOfUploadedImageVhd `
     -LocalFilePath $localPath
 
-# Note: Uploading the VHD may take awhile!
+# Note: Uploading hello VHD may take awhile!
 
-# Create a managed image from the uploaded VHD 
+# Create a managed image from hello uploaded VHD 
 $imageConfig = New-AzureRmImageConfig -Location $location
 $imageConfig = Set-AzureRmImageOsDisk -Image $imageConfig -OsType Windows -OsState Generalized `
     -BlobUri $urlOfUploadedImageVhd
 $image = New-AzureRmImage -ImageName $imageName -ResourceGroupName $resourceGroup -Image $imageConfig
  
-# Create the networking resources
+# Create hello networking resources
 $singleSubnet = New-AzureRmVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.0.0/24
 $vnet = New-AzureRmVirtualNetwork -Name $vnetName -ResourceGroupName $resourceGroup -Location $location `
     -AddressPrefix 10.0.0.0/16 -Subnet $singleSubnet
@@ -90,22 +90,22 @@ $nsg = New-AzureRmNetworkSecurityGroup -ResourceGroupName $resourceGroup -Locati
     -Name $nsgName -SecurityRules $rdpRule
 $vnet = Get-AzureRmVirtualNetwork -ResourceGroupName $resourceGroup -Name $vnetName
 
-# Start building the VM configuration
+# Start building hello VM configuration
 $vm = New-AzureRmVMConfig -VMName $vmName -VMSize $vmSize
 
-# Set the VM image as source image for the new VM
+# Set hello VM image as source image for hello new VM
 $vm = Set-AzureRmVMSourceImage -VM $vm -Id $image.Id
 
-# Finish the VM configuration and add the NIC.
+# Finish hello VM configuration and add hello NIC.
 $vm = Set-AzureRmVMOSDisk -VM $vm  -DiskSizeInGB $diskSizeGB -CreateOption FromImage -Caching ReadWrite
 $vm = Set-AzureRmVMOperatingSystem -VM $vm -Windows -ComputerName $computerName -Credential $cred `
     -ProvisionVMAgent -EnableAutoUpdate
 $vm = Add-AzureRmVMNetworkInterface -VM $vm -Id $nic.Id
 
-# Create the VM
+# Create hello VM
 New-AzureRmVM -VM $vm -ResourceGroupName $resourceGroup -Location $location
 
-# Verify that the VM was created
+# Verify that hello VM was created
 $vmList = Get-AzureRmVM -ResourceGroupName $resourceGroup
 $vmList.Name
 
@@ -118,7 +118,7 @@ $vmList.Name
 
 ## <a name="clean-up-deployment"></a>Очистка развертывания 
 
-Выполните следующую команду, чтобы удалить группу ресурсов, виртуальную машину и все связанные с ней ресурсы.
+Выполните следующие команды tooremove hello группы ресурсов, виртуальная машина и все связанные ресурсы hello.
 
 ```powershell
 Remove-AzureRmResourceGroup -Name $resourceGroup
@@ -126,33 +126,33 @@ Remove-AzureRmResourceGroup -Name $resourceGroup
 
 ## <a name="script-explanation"></a>Описание скрипта
 
-Чтобы создать развертывание, скрипт использует следующие команды. Для каждого элемента в таблице приведены ссылки на документацию по команде.
+Этот скрипт использует следующие команды toocreate hello развертывания hello. Каждый элемент в таблице hello связывает toocommand документацию.
 
 | Команда                                                                                                             | Примечания                                                                                                                                                                                |
 |---------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup)                           | Создает группу ресурсов, в которой хранятся все ресурсы.                                                                                                                          |
 | [New-AzureRmStorageAccount](/powershell/module/azurerm.resources/new-azurermstorageaccount)                         | Создание учетной записи хранения.                                                                                                                                                           |
-| [Add-AzureRmVhd](/powershell/module/azurerm.resources/add-azurermvhd)                                               | Передает виртуальный жесткий диск из локальной виртуальной машины в большой двоичный объект в облачной учетной записи хранения в Azure.                                                                       |
+| [Add-AzureRmVhd](/powershell/module/azurerm.resources/add-azurermvhd)                                               | Отправка виртуального жесткого диска из локальной виртуальной машины tooa большого двоичного объекта в учетная запись облачного хранилища в Azure.                                                                       |
 | [New-AzureRmImageConfig](/powershell/module/azurerm.resources/new-azurermimageconfig)                               | Создает настраиваемый объект образа.                                                                                                                                                 |
-| [Set-AzureRmImageOsDisk](/powershell/module/azurerm.resources/set-azurermimageosdisk)                               | Задает свойства диска операционной системы для объекта образа.                                                                                                                        |
+| [Set-AzureRmImageOsDisk](/powershell/module/azurerm.resources/set-azurermimageosdisk)                               | Задает свойства диска операционной системы hello объект image.                                                                                                                        |
 | [New-AzureRmImage](/powershell/module/azurerm.resources/new-azurermimage)                                           | Создает образ.                                                                                                                                                                 |
-| [New-AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.resources/new-azurermvirtualnetworksubnetconfig) | Создает конфигурацию подсети. Эта конфигурация используется в процессе создания виртуальной сети.                                                                                |
+| [New-AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.resources/new-azurermvirtualnetworksubnetconfig) | Создает конфигурацию подсети. Эта конфигурация используется с hello процесс создания виртуальной сети.                                                                                |
 | [New-AzureRmVirtualNetwork](/powershell/module/azurerm.resources/new-azurermvirtualnetwork)                         | Создает виртуальную сеть.                                                                                                                                                           |
 | [New-AzureRmPublicIpAddress](/powershell/module/azurerm.resources/new-azurermpublicipaddress)                       | Создает общедоступный IP-адрес.                                                                                                                                                         |
 | [New-AzureRmNetworkInterface](/powershell/module/azurerm.resources/new-azurermnetworkinterface)                     | Создает сетевой интерфейс.                                                                                                                                                         |
-| [New-AzureRmNetworkSecurityRuleConfig](/powershell/module/azurerm.resources/new-azurermnetworksecurityruleconfig)   | Создает конфигурацию правил группы безопасности сети. Эта конфигурация используется для создания правила NSG при создании этой NSG.                                                       |
+| [New-AzureRmNetworkSecurityRuleConfig](/powershell/module/azurerm.resources/new-azurermnetworksecurityruleconfig)   | Создает конфигурацию правил группы безопасности сети. Такая настройка является toocreate используется правило NSG при создании hello NSG.                                                       |
 | [New-AzureRmNetworkSecurityGroup](/powershell/module/azurerm.resources/new-azurermnetworksecuritygroup)             | Создает группу безопасности сети.                                                                                                                                                    |
 | [Get-AzureRmVirtualNetwork](/powershell/module/azurerm.resources/get-azurermvirtualnetwork)                         | Получает виртуальную сеть в группе ресурсов.                                                                                                                                          |
-| [New-AzureRmVMConfig](/powershell/module/azurerm.resources/new-azurermvmconfig)                                     | Создает конфигурацию виртуальной машины. Эта конфигурация включает в себя такие сведения, как имя виртуальной машины, операционную систему и учетные данные администратора. Данная конфигурации используется при создании виртуальной машины. |
+| [New-AzureRmVMConfig](/powershell/module/azurerm.resources/new-azurermvmconfig)                                     | Создает конфигурацию виртуальной машины. Эта конфигурация включает в себя такие сведения, как имя виртуальной машины, операционную систему и учетные данные администратора. Конфигурация Hello используется во время создания виртуальной Машины. |
 | [Set-AzureRmVMSourceImage](/powershell/module/azurerm.resources/set-azurermvmsourceimage)                           | Указывает образ для виртуальной машины.                                                                                                                                            |
-| [Set-AzureRmVMOSDisk](/powershell/module/azurerm.resources/set-azurermvmosdisk)                                     | Задает свойства диска операционной системы для виртуальной машины.                                                                                                                      |
-| [Set-AzureRmVMOperatingSystem](/powershell/module/azurerm.resources/set-azurermvmoperatingsystem)                   | Задает свойства диска операционной системы для виртуальной машины.                                                                                                                      |
-| [Add-AzureRmVMNetworkInterface](/powershell/module/azurerm.resources/add-azurermvmnetworkinterface)                 | Добавляет сетевой интерфейс для виртуальной машины.                                                                                                                                       |
+| [Set-AzureRmVMOSDisk](/powershell/module/azurerm.resources/set-azurermvmosdisk)                                     | Задает свойства диска hello операционной системы на виртуальной машине.                                                                                                                      |
+| [Set-AzureRmVMOperatingSystem](/powershell/module/azurerm.resources/set-azurermvmoperatingsystem)                   | Задает свойства диска hello операционной системы на виртуальной машине.                                                                                                                      |
+| [Add-AzureRmVMNetworkInterface](/powershell/module/azurerm.resources/add-azurermvmnetworkinterface)                 | Добавляет сетевой интерфейс tooa виртуальную машину.                                                                                                                                       |
 | [New-AzureRmVM](/powershell/module/azurerm.resources/new-azurermvm)                                                 | Создайте виртуальную машину.                                                                                                                                                            |
 | [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup)                     | Удаляет группу ресурсов и все ресурсы, содержащиеся в ней.                                                                                                                         |
 
 ## <a name="next-steps"></a>Дальнейшие действия
 
-Дополнительные сведения о модуле Azure PowerShell см. в [документации по Azure PowerShell](/powershell/azure/overview).
+Дополнительные сведения о hello модуля Azure PowerShell см. в разделе [документация по Azure PowerShell](/powershell/azure/overview).
 
-Дополнительные примеры сценариев PowerShell для виртуальных машин представлены в [документации по виртуальным машинам Azure под управлением Windows](../windows/powershell-samples.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Примеры сценариев PowerShell дополнительную виртуальную машину можно найти в hello [документации виртуальной Машины Windows Azure](../windows/powershell-samples.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).

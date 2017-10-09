@@ -1,6 +1,6 @@
 ---
-title: "Руководство по приложениям Магазина Windows с потоковой передачей Smooth Streaming | Документация Майкрософт"
-description: "Сведения об использовании служб мультимедиа Azure для создания приложения для магазина Windows на C# с управляющим элементом XML MediaElement для воспроизведения контента Smooth Stream"
+title: "Учебник приложения магазина Windows потоковой передачи aaaSmooth | Документы Microsoft"
+description: "Узнайте, как toocreate toouse служб мультимедиа Azure приложения для магазина Windows на C# с XML MediaElement tooplayback Smooth Stream содержимого элемента управления."
 services: media-services
 documentationcenter: 
 author: juliako
@@ -14,29 +14,29 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/11/2017
 ms.author: juliako
-ms.openlocfilehash: c9bb3b1915543fea3561cb309f55c4e8a74ded6d
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: b02aa2c7f68fe22a23ea846d72fdd23bfba2b19c
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-build-a-smooth-streaming-windows-store-application"></a>Создание приложения для магазина Windows с бесперебойной потоковой передачей
+# <a name="how-toobuild-a-smooth-streaming-windows-store-application"></a>Как tooBuild приложения Smooth Streaming Windows Store
 
-Клиентский пакет SDK для бесперебойной потоковой передачи для Windows 8 позволяет разработчикам создавать приложения для магазина Windows, способные воспроизводить контент по требованию и в режиме реального времени с бесперебойной потоковой передачей. Помимо основных функций воспроизведения контента с бесперебойной потоковой передачей этот пакет SDK также предоставляет богатые возможности, такие как защита Microsoft PlayReady, ограничение уровня качества, Live DVR, переключение потока аудио, прослушивание событий ошибок и обновления состояния (например, изменения уровня качества) и т. д. Дополнительные сведения о поддерживаемых возможностях см. в [заметках к выпуску](http://www.iis.net/learn/media/smooth-streaming/smooth-streaming-client-sdk-for-windows-8-release-notes). Дополнительные сведения см. на странице, посвященной [Player Framework для Windows 8](http://playerframework.codeplex.com/). 
+Hello Smooth Streaming клиента SDK для Windows 8 позволяет приложениям магазина Windows toobuild разработчики, которые могут играть по требованию и динамического содержимого Smooth Streaming. В дополнение к этому toohello основные воспроизведения Smooth Streaming содержимое hello SDK также предоставляет богатые возможности, как Microsoft PlayReady protection, ограничение на уровни качества, Live DVR аудиопотока переключения, Ожидание обновления состояния (например, изменения уровня качества ) и событий ошибок и т. д. Функции hello поддерживается Дополнительные сведения см. в разделе hello [заметки о выпуске](http://www.iis.net/learn/media/smooth-streaming/smooth-streaming-client-sdk-for-windows-8-release-notes). Дополнительные сведения см. на странице, посвященной [Player Framework для Windows 8](http://playerframework.codeplex.com/). 
 
 Этот учебный курс состоит из четырех занятий:
 
 1. Создание базового приложения магазина с бесперебойной потоковой передачей
-2. Добавление ползунка для управления ходом воспроизведения мультимедиа
+2. Добавить ползунок hello tooControl Media хода выполнения
 3. Выбор потоков для бесперебойной потоковой передачи
 4. Выбор дорожек для бесперебойной потоковой передачи
 
 ## <a name="prerequisites"></a>Предварительные требования
 * Windows 8 (32-разрядная или 64-разрядная). Можно получить [оценку Windows 8 Enterprise](http://msdn.microsoft.com/evalcenter/jj554510.aspx) из MSDN.
-* Visual Studio 2012 или Visual Studio Express 2012 (либо более поздней версии). Пробную версию можно получить [здесь](http://www.microsoft.com/visualstudio/11/downloads).
+* Visual Studio 2012 или Visual Studio Express 2012 (либо более поздней версии). Можно получить пробную версию hello из [здесь](http://www.microsoft.com/visualstudio/11/downloads).
 * [Клиентский пакет SDK для бесперебойной потоковой передачи Microsoft для Windows 8](http://visualstudiogallery.msdn.microsoft.com/04423d13-3b3e-4741-a01c-1ae29e84fea6?SRC=Homehttp://visualstudiogallery.msdn.microsoft.com/04423d13-3b3e-4741-a01c-1ae29e84fea6?SRC=Home)
 
-Готовое решение для каждого урока можно загрузить из раздела образцов кода для разработчиков MSDN (коллекция кодов): 
+решение Hello завершена для всех занятий можно загрузить из примеров кода MSDN для разработчиков (Галерея кода): 
 
 * [Урок 1.](http://code.msdn.microsoft.com/Smooth-Streaming-Client-0bb1471f) Простой мультимедиапроигрыватель для Windows 8 с потоковой передачей Smooth Streaming. 
 * [Урок 2.](http://code.msdn.microsoft.com/A-simple-Windows-8-Smooth-ee98f63a) Простой мультимедиапроигрыватель для Windows 8 с потоковой передачей Smooth Streaming и элементом управления «Ползунок». 
@@ -45,22 +45,22 @@ ms.lasthandoff: 08/29/2017
 
 ## <a name="lesson-1-create-a-basic-smooth-streaming-store-application"></a>Урок 1. Создание базового приложения для магазина с бесперебойной потоковой передачей
 
-На этом занятии предстоит создать приложение для магазина Windows с элементом управления MediaElement для воспроизведения контента с бесперебойной потоковой передачей.  Работающее приложение имеет следующий вид:
+На этом занятии вы создадите приложения для магазина Windows с помощью элемента управления MediaElement tooplay Smooth потока содержимого.  запущенное приложение Hello выглядит следующим образом.
 
 ![Пример приложения для магазина Windows с бесперебойной потоковой передачей][PlayerApplication]
 
-Дополнительные сведения о разработке приложений Магазина Windows см. в разделе, посвященном [разработке потрясающих приложений для Windows 8](http://msdn.microsoft.com/windows/apps/br229512.aspx). Это занятие содержит следующие процедуры:
+Дополнительные сведения о разработке приложений Магазина Windows см. в разделе, посвященном [разработке потрясающих приложений для Windows 8](http://msdn.microsoft.com/windows/apps/br229512.aspx). Это занятие содержит hello следующих процедур.
 
 1. Создание проекта для магазина Windows
-2. Проектирование пользовательского интерфейса (XAML)
-3. Изменение кода в файле
-4. Компиляция и тестирование приложения
+2. Разработка пользовательского интерфейса hello (XAML)
+3. Измените файл с выделенным кодом hello
+4. Компиляции и тестирования приложения hello
 
-**Создание проекта приложения Магазина Windows**
+**toocreate проекта магазина Windows**
 
 1. Запустите Visual Studio 2012 или более поздней версии.
-2. В меню **Файл** выберите команду **Создать**, а затем — **Проект**.
-3. В диалоговом окне "Новый проект" введите или выберите следующие значения:
+2. Из hello **ФАЙЛ** меню, нажмите кнопку **New**, а затем нажмите кнопку **проекта**.
+3. В диалоговом окне нового проекта hello типа или выберите hello следующие значения:
 
 | Имя | Значение |
 | --- | --- |
@@ -73,10 +73,10 @@ ms.lasthandoff: 08/29/2017
 
 1. Нажмите кнопку **ОК**.
 
-**Добавление ссылки на пакет SDK клиента Smooth Streaming**
+**tooadd ссылки toohello Smooth Streaming Client SDK**
 
 1. В обозревателе решений щелкните правой кнопкой мыши **SSPlayer**, а затем выберите команду **Добавить ссылку**.
-2. Введите или выберите следующие значения:
+2. Введите или выберите hello следующие значения:
 
 | Имя | Значение |
 | --- | --- |
@@ -85,12 +85,12 @@ ms.lasthandoff: 08/29/2017
 
 1. Нажмите кнопку **ОК**. 
 
-После добавления ссылок необходимо выбрать целевую платформу (x64 x86), добавление ссылок будет действовать не для всех конфигураций платформы ЦП.  Для таких добавленных ссылок в обозревателе решений будет выведен желтый значок предупреждения.
+После добавления ссылки на hello, необходимо выбрать hello целевой платформы (x64 или x86), добавления ссылок не будет работать для конфигурации платформы любой ЦП.  Для таких добавленных ссылок в обозревателе решений будет выведен желтый значок предупреждения.
 
-**Создание пользовательского интерфейса проигрывателя**
+**toodesign hello проигрывателя пользовательского интерфейса**
 
-1. В обозревателе решений дважды щелкните **MainPage.xaml** , чтобы открыть его в режиме конструктора.
-2. Найдите теги **&lt;Grid&gt;** и **&lt;/Grid&gt;** в XAML-файле и вставьте между ними код ниже:
+1. В обозревателе решений дважды щелкните **MainPage.xaml** tooopen его в конструктор hello просмотра.
+2. Найдите hello  **&lt;сетки&gt;**  и  **&lt;/Grid&gt;**  теги hello XAML-файл, и следующие hello вставить код между тегами hello двух:
 
          <Grid.RowDefinitions>
 
@@ -135,27 +135,27 @@ ms.lasthandoff: 08/29/2017
             <TextBox x:Name="txtStatus" FontSize="10" Width="700" VerticalAlignment="Center"/>
          </StackPanel>
    
-   Элемент управления MediaElement используется для воспроизведения мультимедиа. Для управления мультимедиа в следующем уроке будет использоваться ползунок с именем sliderProgress.
-3. Нажмите клавиши **CTRL+S** , чтобы сохранить файл.
+   Hello управления MediaElement — используется tooplayback мультимедиа. элемент управления "ползунок" Hello, с именем sliderProgress будет использоваться идет hello Далее занятия toocontrol hello носителя.
+3. Нажмите клавишу **CTRL + S** toosave hello файла.
 
-Элемент управления MediaElement поддерживает бесперебойную потоковую передачу контента без дополнительной настройки. Чтобы включить поддержку бесперебойной потоковой передачи, необходимо зарегистрировать обработчик потока байтов для бесперебойной потоковой передачи по расширению файла и MIME-типу.  Для регистрации используется метод MediaExtensionManager.RegisterByteStremHandler в пространстве имен Windows.Media.
+Hello управления MediaElement не поддерживает Smooth Streaming содержимого out-of-box. Поддержка Smooth Streaming tooenable hello, необходимо зарегистрировать обработчик hello потока байтов в Smooth Streaming, расширение имени файла и тип MIME.  tooregister, используйте метод MediaExtensionManager.RegisterByteStremHandler hello пространства имен Windows.Media hello.
 
-В этом XAML-файле некоторые обработчики событий связаны с элементами управления.  Такие обработчики событий необходимо определить.
+В этом файле XAML некоторые обработчики событий связаны с элементами управления hello.  Такие обработчики событий необходимо определить.
 
-**Изменение файла кода программной части**
+**файл с выделенным кодом toomodify hello**
 
 1. В обозревателе решений щелкните правой кнопкой мыши файл **MainPage.xaml** и выберите команду **Просмотреть код**.
-2. Добавьте следующую инструкцию using в начало файла:
+2. В начале hello hello файла, добавьте следующее hello с помощью инструкции:
    
         using Windows.Media;
-3. В начале класса **MainPage** добавьте следующие члены данных:
+3. В начале hello hello **MainPage** добавьте hello после элемента данных:
    
          private MediaExtensionManager extensions = new MediaExtensionManager();
-4. В конце конструктора **MainPage** добавьте следующие две строки:
+4. В конце hello hello **MainPage** конструктор, добавить hello, следующие две строки:
    
         extensions.RegisterByteStreamHandler("Microsoft.Media.AdaptiveStreaming.SmoothByteStreamHandler", ".ism", "text/xml");
         extensions.RegisterByteStreamHandler("Microsoft.Media.AdaptiveStreaming.SmoothByteStreamHandler", ".ism", "application/vnd.ms-sstr+xml");
-5. Добавьте в конце класса **MainPage** следующий код:
+5. В конце hello hello **MainPage** класса, вставьте hello, следующий код:
    
          # region UI Button Click Events
          private void btnPlay_Click(object sender, RoutedEventArgs e)
@@ -182,7 +182,7 @@ ms.lasthandoff: 08/29/2017
          }
          else
          {
-             txtStatus.Text = "Click the Play button to play the media source.";
+             txtStatus.Text = "Click hello Play button tooplay hello media source.";
          }
          }
          private void btnStop_Click(object sender, RoutedEventArgs e)
@@ -194,68 +194,68 @@ ms.lasthandoff: 08/29/2017
          private void sliderProgress_PointerPressed(object sender, PointerRoutedEventArgs e)
          {
 
-         txtStatus.Text = "Seek to position " + sliderProgress.Value;
+         txtStatus.Text = "Seek tooposition " + sliderProgress.Value;
          mediaElement.Position = new TimeSpan(0, 0, (int)(sliderProgress.Value));
          }
          # endregion
 
-Здесь определяется обработчик события sliderProgress_PointerPressed.  Для его запуска требуется выполнить ряд дополнительных действий, которые будут рассматриваться на следующем уроке этого учебного курса.
-6. Нажмите клавиши **CTRL+S** , чтобы сохранить файл.
+Здесь определяется обработчик события sliderProgress_PointerPressed Hello.  Существуют дополнительные tooget toodo works его работы, который будет рассматриваться в hello следующем занятии этого учебника.
+6. Нажмите клавишу **CTRL + S** toosave hello файла.
 
-Готовый код файла должен выглядеть следующим образом:
+Hello готовой hello файл кода программной части должен выглядеть следующим образом:
 
 ![Просмотр кода в Visual Studio для приложения для магазина Windows с бесперебойной потоковой передачей][CodeViewPic]
 
-**Компиляция и тестирование приложения**
+**toocompile и тестирования приложения hello**
 
-1. В меню **СБОРКА** выберите **Диспетчер конфигураций**.
-2. Измените параметр **Платформа активного решения** в соответствии с вашей платформой разработки.
-3. Нажмите клавишу **F6** для компиляции проекта. 
-4. Нажмите клавишу **F5** для запуска приложения.
-5. В верхней части приложения можно выбрать URL-адрес бесперебойной потоковой передачи по умолчанию или ввести другой. 
-6. Щелкните **Задать источник**. Так как по умолчанию включен параметр **Автовоспроизведение** , мультимедиа должно воспроизводиться автоматически.  Управление мультимедиа ведется с помощью кнопок **Воспроизвести**, **Пауза** и **Остановить**.  Громкость звука выбирается вертикальным ползунком.  Однако горизонтальный ползунок для управления воспроизведением мультимедиа пока не реализован полностью. 
+1. Из hello **ПОСТРОЕНИЯ** меню, нажмите кнопку **Configuration Manager**.
+2. Изменение **Активная платформа решения** toomatch платформу разработки.
+3. Нажмите клавишу **F6** toocompile hello проекта. 
+4. Нажмите клавишу **F5** toorun приложения hello.
+5. Вверху hello приложения hello можно использовать значение по умолчанию hello Smooth Streaming URL-адрес или введите его. 
+6. Щелкните **Задать источник**. Поскольку **автовоспроизведения** включена по умолчанию hello должны автоматического воспроизведения мультимедиа.  Можно управлять hello мультимедиа с помощью hello **воспроизведение**, **Пауза** и **остановить** кнопки.  Можно управлять с помощью ползунка вертикальной hello том носителя hello.  Однако hello горизонтальный ползунок для управления media выполняется еще не реализован полностью приветствия. 
 
-Вы завершили урок 1.  В этом уроке с помощью элемента управления MediaElement воспроизводится контент с бесперебойной потоковой передачей.  На следующем занятии будет добавлен ползунок, который позволит управлять воспроизведением такого контента.
+Вы завершили урок 1.  На этом занятии используйте tooplayback управления MediaElement содержимое Smooth Streaming.  Hello следующем занятии вы добавите элемент ползунок toocontrol hello ход выполнения hello содержимое Smooth Streaming.
 
-## <a name="lesson-2-add-a-slider-bar-to-control-the-media-progress"></a>Урок 2. Добавление ползунка для управления ходом воспроизведения мультимедиа
+## <a name="lesson-2-add-a-slider-bar-toocontrol-hello-media-progress"></a>Занятие 2: Добавление ползунок hello tooControl Media хода выполнения
 
-На занятии 1 было создано приложение для магазина Windows с элементом управления XAML MediaElement для воспроизведения контента мультимедиа с бесперебойной потоковой передачей.  Этот элемент изначально имеет такие функции, как начало, останов и приостановка воспроизведения.  На этом занятии в приложение будет добавлен еще один элемент управления — ползунок.
+На занятии 1 вы создали приложения для магазина Windows с tooplayback управления MediaElement XAML контента Smooth Streaming.  Этот элемент изначально имеет такие функции, как начало, останов и приостановка воспроизведения.  На этом занятии вы добавите приложение toohello панель элемента управления "ползунок".
 
-В этом учебном курсе для обновления положения ползунка на основе текущего положения элемента управления MediaElement будет использоваться таймер.  При воспроизведении контента в режиме реального времени также требуется обновлять время начала и окончания ползунка.  Для обработки лучше использовать событие обновления адаптивного источника.
+В этом учебнике мы будем использовать таймер tooupdate hello положение ползунка на основе текущего положения hello hello управления MediaElement.  ползунок Hello время начала и окончания также необходимость toobe обновляется в случае содержимого в реальном времени.  Это можно лучше обрабатывать в событии обновления hello адаптивной источника.
 
-Источники мультимедиа — это объекты, которые создают данные мультимедиа.  Средство выбора источника принимает URL-адрес или поток байтов и создает соответствующий источник мультимедиа для этого контента.  Средство выбора источника является стандартным способом для создания источников мультимедиа в приложениях. 
+Источники мультимедиа — это объекты, которые создают данные мультимедиа.  Hello источника принимает поток URL-адрес или байт и создает соответствующий носитель hello источником этого содержимого.  Сопоставитель Hello источника — hello стандартный способ источников мультимедиа toocreate приложения hello. 
 
-Это занятие содержит следующие процедуры:
+Это занятие содержит hello следующих процедур.
 
-1. Регистрация обработчика бесперебойной потоковой передачи 
-2. Добавление обработчиков событий уровня диспетчера адаптивных источников.
-3. Добавление обработчиков событий уровня адаптивного источника.
+1. Зарегистрируйте обработчик Smooth Streaming hello 
+2. Добавьте обработчики событий уровня manager адаптивной источника hello
+3. Добавление обработчиков событий уровня адаптивной источника hello
 4. Добавление обработчиков событий MediaElement
 5. Добавление кода, связанного с ползунком
-6. Компиляция и тестирование приложения
+6. Компиляции и тестирования приложения hello
 
-**Регистрация обработчика байтового потока Smooth Streaming и передача набора свойств propertyset**
+**tooregister hello потока байтов в Smooth Streaming обработчика и передайте hello propertyset**
 
 1. В обозревателе решений щелкните правой кнопкой мыши файл **MainPage.xaml** и выберите команду **Просмотреть код**.
-2. Добавьте следующую инструкцию using в начало файла:
+2. В начале файла hello hello, добавьте следующее hello с помощью инструкции:
 
         using Microsoft.Media.AdaptiveStreaming;
-3. В начале класса MainPage добавьте следующие члены данных:
+3. В начале hello hello класса MainPage, добавьте hello следующие элементы данных:
 
          private Windows.Foundation.Collections.PropertySet propertySet = new Windows.Foundation.Collections.PropertySet();             
          private IAdaptiveSourceManager adaptiveSourceManager;
-4. В конструкторе **MainPage** добавьте следующий код после строки **this.Initialize Components();** и строк кода регистрации, добавленных на предыдущем занятии:
+4. Внутри hello **MainPage** конструктора, добавьте следующий код после hello hello **это. Инициализация Components();**  строки и строки кода регистрации hello, написанных на предыдущем занятии hello:
 
-        // Gets the default instance of AdaptiveSourceManager which manages Smooth 
+        // Gets hello default instance of AdaptiveSourceManager which manages Smooth 
         //Streaming media sources.
         adaptiveSourceManager = AdaptiveSourceManager.GetDefault();
-        // Sets property key value to AdaptiveSourceManager default instance.
+        // Sets property key value tooAdaptiveSourceManager default instance.
         // {A5CE1DE8-1D00-427B-ACEF-FB9A3C93DE2D}" must be hardcoded.
         propertySet["{A5CE1DE8-1D00-427B-ACEF-FB9A3C93DE2D}"] = adaptiveSourceManager;
-5. В конструкторе **MainPage** измените два метода RegisterByteStreamHandler для добавления следующих параметров:
+5. Внутри hello **MainPage** конструктор, д изменение hello tooadd методы RegisterByteStreamHandler hello двух параметров:
 
          // Registers Smooth Streaming byte-stream handler for ".ism" extension and, 
-         // "text/xml" and "application/vnd.ms-ss" mime-types and pass the propertyset. 
+         // "text/xml" and "application/vnd.ms-ss" mime-types and pass hello propertyset. 
          // http://*.ism/manifest URI resources will be resolved by Byte-stream handler.
          extensions.RegisterByteStreamHandler(
 
@@ -269,15 +269,15 @@ ms.lasthandoff: 08/29/2017
             ".ism", 
             "application/vnd.ms-sstr+xml", 
          propertySet);
-6. Нажмите клавиши **CTRL+S** , чтобы сохранить файл.
+6. Нажмите клавишу **CTRL + S** toosave hello файла.
 
-**Добавление обработчиков событий уровня диспетчера адаптивных источников**
+**tooadd hello адаптивной источника диспетчера событий уровня обработчика**
 
 1. В обозревателе решений щелкните правой кнопкой мыши файл **MainPage.xaml** и выберите команду **Просмотреть код**.
-2. В классе **MainPage** добавьте следующий член данных:
+2. Внутри hello **MainPage** добавьте hello после элемента данных:
    
      private AdaptiveSource adaptiveSource = null;
-3. В конце класса **MainPage** добавьте следующий обработчик событий:
+3. В конце hello hello **MainPage** добавьте следующий обработчик событий hello:
    
          # region Adaptive Source Manager Level Events
          private void mediaElement_AdaptiveSourceOpened(AdaptiveSource sender, AdaptiveSourceOpenedEventArgs args)
@@ -287,19 +287,19 @@ ms.lasthandoff: 08/29/2017
          }
 
          # endregion Adaptive Source Manager Level Events
-4. В конце конструктора **MainPage** добавьте следующую строку для подписки на событие открытия адаптивного источника:
+4. В конце hello hello **MainPage** конструктор, добавить следующие строки toosubscribe toohello адаптивной исходного открытые события hello:
    
          adaptiveSourceManager.AdaptiveSourceOpenedEvent += 
            new AdaptiveSourceOpenedEventHandler(mediaElement_AdaptiveSourceOpened);
-5. Нажмите клавиши **CTRL+S** , чтобы сохранить файл.
+5. Нажмите клавишу **CTRL + S** toosave hello файла.
 
-**Добавление обработчиков событий уровня адаптивного источника**
+**обработчики событий уровня tooadd адаптивной источника**
 
 1. В обозревателе решений щелкните правой кнопкой мыши файл **MainPage.xaml** и выберите команду **Просмотреть код**.
-2. В классе **MainPage** добавьте следующий член данных:
+2. Внутри hello **MainPage** добавьте hello после элемента данных:
    
      private AdaptiveSourceStatusUpdatedEventArgs adaptiveSourceStatusUpdate;   private Manifest manifestObject;
-3. В конце класса **MainPage** добавьте следующие обработчики событий:
+3. В конце hello hello **MainPage** добавьте следующие обработчики событий hello:
 
          # region Adaptive Source Level Events
          private void mediaElement_ManifestReady(AdaptiveSource sender, ManifestReadyEventArgs args)
@@ -322,7 +322,7 @@ ms.lasthandoff: 08/29/2017
          }
 
          # endregion Adaptive Source Level Events
-4. В конце метода **mediaElement AdaptiveSourceOpened** добавьте следующий код, чтобы подписаться на события:
+4. В конце hello hello **mediaElement AdaptiveSourceOpened** метод, добавьте следующий код для событий toohello toosubscribe hello:
    
          adaptiveSource.ManifestReadyEvent +=
 
@@ -333,14 +333,14 @@ ms.lasthandoff: 08/29/2017
          adaptiveSource.AdaptiveSourceFailedEvent += 
 
             mediaElement_AdaptiveSourceFailed;
-5. Нажмите клавиши **CTRL+S** , чтобы сохранить файл.
+5. Нажмите клавишу **CTRL + S** toosave hello файла.
 
-Эти же события доступны на уровне диспетчера адаптивных источников, который может использоваться для обработки функций, общих для всех элементов мультимедиа в приложении. Каждый адаптивный источник имеет свои собственные события, и все события AdaptiveSource будут передаваться каскадом в диспетчер AdaptiveSourceManager.
+Здравствуйте, того же события, доступные на адаптивной диспетчера уровень источника, который может использоваться для обработки Общие элементы мультимедиа tooall функциональности в приложение hello. Каждый адаптивный источник имеет свои собственные события, и все события AdaptiveSource будут передаваться каскадом в диспетчер AdaptiveSourceManager.
 
-**Добавление обработчиков событий MediaElement**
+**обработчики событий для элемента мультимедиа tooadd**
 
 1. В обозревателе решений щелкните правой кнопкой мыши файл **MainPage.xaml** и выберите команду **Просмотреть код**.
-2. В конце класса **MainPage** добавьте следующие обработчики событий:
+2. В конце hello hello **MainPage** добавьте следующие обработчики событий hello:
 
          # region Media Element Event Handlers
          private void MediaOpened(object sender, RoutedEventArgs e)
@@ -362,29 +362,29 @@ ms.lasthandoff: 08/29/2017
          }
 
          # endregion Media Element Event Handlers
-3. В конце конструктора **MainPage** добавьте следующий код для подписки на события:
+3. В конце hello hello **MainPage** конструктора, добавьте следующий код для событий toohello toosubscript hello:
 
          mediaElement.MediaOpened += MediaOpened;
          mediaElement.MediaEnded += MediaEnded;
          mediaElement.MediaFailed += MediaFailed;
-4. Нажмите клавиши **CTRL+S** , чтобы сохранить файл.
+4. Нажмите клавишу **CTRL + S** toosave hello файла.
 
-**Добавление кода, связанного с ползунком**
+**ползунок tooadd связанный код**
 
 1. В обозревателе решений щелкните правой кнопкой мыши файл **MainPage.xaml** и выберите команду **Просмотреть код**.
-2. Добавьте следующую инструкцию using в начало файла:
+2. В начале файла hello hello, добавьте следующее hello с помощью инструкции:
       
         using Windows.UI.Core;
-3. В классе **MainPage** добавьте следующий член данных:
+3. Внутри hello **MainPage** добавьте следующие члены данных hello:
    
          public static CoreDispatcher _dispatcher;
          private DispatcherTimer sliderPositionUpdateDispatcher;
-4. В конце конструктора **MainPage** добавьте следующий код:
+4. В конце hello hello **MainPage** конструктор, добавить hello, следующий код:
    
          _dispatcher = Window.Current.Dispatcher;
          PointerEventHandler pointerpressedhandler = new PointerEventHandler(sliderProgress_PointerPressed);
          sliderProgress.AddHandler(Control.PointerPressedEvent, pointerpressedhandler, true);    
-5. Добавьте в конце класса **MainPage** следующий код:
+5. В конце hello hello **MainPage** добавьте hello, следующий код:
 
          # region sliderMediaPlayer
          private double SliderFrequency(TimeSpan timevalue)
@@ -469,7 +469,7 @@ ms.lasthandoff: 08/29/2017
          # endregion sliderMediaPlayer
       
 >[!NOTE]
->CoreDispatcher используется для внесения изменений в поток пользовательского интерфейса из других потоков. В случае возникновения узких мест в потоке-отправителе разработчик может использовать отправитель, предоставленный элементом пользовательского интерфейса, который планируется обновить.  Например:
+>CoreDispatcher — используется toomake изменения потока toohello пользовательского интерфейса из потока без пользовательского интерфейса. В случае узкое место в поток dispatcher разработчика можно выбрать диспетчер toouse элементом пользовательского интерфейса при условии, что он планирует tooupdate.  Например:
    
          await sliderProgress.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => { TimeSpan 
 
@@ -477,38 +477,38 @@ ms.lasthandoff: 08/29/2017
          double absvalue  = (int)Math.Round(timespan.TotalSeconds, MidpointRounding.AwayFromZero); 
 
          sliderProgress.Maximum = absvalue; }); 
-6. В конце метода **mediaElement_AdaptiveSourceStatusUpdated** добавьте следующий код:
+6. В конце hello hello **mediaElement_AdaptiveSourceStatusUpdated** метод, добавить hello, следующий код:
 
          setSliderStartTime(args.StartTime);
          setSliderEndTime(args.EndTime);
-7. В конце метода **MediaOpened** добавьте следующий код:
+7. В конце hello hello **MediaOpened** метод, добавить hello, следующий код:
 
          sliderProgress.StepFrequency = SliderFrequency(mediaElement.NaturalDuration.TimeSpan);
          sliderProgress.Width = mediaElement.Width;
          setupTimer();
-8. Нажмите клавиши **CTRL+S** , чтобы сохранить файл.
+8. Нажмите клавишу **CTRL + S** toosave hello файла.
 
-**Компиляция и тестирование приложения**
+**toocompile и тестирования приложения hello**
 
-1. Нажмите клавишу **F6** для компиляции проекта. 
-2. Нажмите клавишу **F5** для запуска приложения.
-3. В верхней части приложения можно выбрать URL-адрес бесперебойной потоковой передачи по умолчанию или ввести другой. 
+1. Нажмите клавишу **F6** toocompile hello проекта. 
+2. Нажмите клавишу **F5** toorun приложения hello.
+3. Вверху hello приложения hello можно использовать значение по умолчанию hello Smooth Streaming URL-адрес или введите его. 
 4. Щелкните **Задать источник**. 
-5. Протестируйте работу ползунка.
+5. Ползунок hello теста.
 
-Вы завершили урок 2.  В этом уроке в приложение был добавлен ползунок. 
+Вы завершили урок 2.  На этом занятии вы добавили tooapplication ползунок. 
 
 ## <a name="lesson-3-select-smooth-streaming-streams"></a>Урок 3. Выбор потоков для бесперебойной потоковой передачи
-Бесперебойная потоковая передача способна передавать контент с аудиодорожками на нескольких языках, которые могут быть выбраны просматривающими.  На этом занятии предстоит включить средства просмотра для выбора потоков. Это занятие содержит следующие процедуры:
+Smooth Streaming — поддержкой toostream содержимого с помощью нескольких языков звуковые файлы, доступны для выбора путем просмотра hello.  На этом занятии вы включите потоки tooselect средства просмотра. Это занятие содержит hello следующих процедур.
 
-1. Изменение XAML-файла
-2. Изменение кода файла behand
-3. Компиляция и тестирование приложения
+1. Измените файл XAML hello
+2. Измените файл behand кода hello
+3. Компиляции и тестирования приложения hello
 
-**Изменение XAML-файла**
+**toomodify hello XAML-файла**
 
 1. В обозревателе решений щелкните правой кнопкой мыши файл **MainPage.xaml** и выберите команду **Конструктор представлений**.
-2. Найдите &lt;Grid.RowDefinitions&gt; и измените RowDefinitions следующим образом:
+2. Найдите &lt;Grid.RowDefinitions&gt;и изменение hello RowDefinitions, поэтому они выглядит следующим образом:
    
          <Grid.RowDefinitions>            
             <RowDefinition Height="20"/>
@@ -517,7 +517,7 @@ ms.lasthandoff: 08/29/2017
             <RowDefinition Height="80"/>
             <RowDefinition Height="50"/>
          </Grid.RowDefinitions>
-3. Внутри тегов &lt;Grid&gt;&lt;/Grid&gt; добавьте следующий код, чтобы определить элемент управления типа "поле со списком", который позволит пользователям просматривать список доступных потоков и выбирать нужные:
+3. Внутри hello &lt;сетки&gt;&lt;/Grid&gt; тегов, добавьте следующий hello кода toodefine элемент управления listbox, чтобы пользователи могли видеть список доступных потоков hello и выберите потоки:
 
          <Grid Name="gridStreamAndBitrateSelection" Grid.Row="3">
             <Grid.RowDefinitions>
@@ -542,12 +542,12 @@ ms.lasthandoff: 08/29/2017
                 </ListBox>
             </StackPanel>
          </Grid>
-4. Нажмите клавишу **CTRL+S** , чтобы сохранить изменения.
+4. Нажмите клавишу **CTRL + S** toosave hello изменения.
 
-**Изменение файла кода программной части**
+**файл с выделенным кодом toomodify hello**
 
 1. В обозревателе решений щелкните правой кнопкой мыши файл **MainPage.xaml** и выберите команду **Просмотреть код**.
-2. В пространстве имен SSPlayer добавьте следующий новый класс:
+2. В пределах пространства имен SSPlayer hello добавьте новый класс:
    
         #region class Stream
    
@@ -574,7 +574,7 @@ ms.lasthandoff: 08/29/2017
                 get { return isCheckedValue; }
                 set
                 {
-                    // mMke the video stream always checked.
+                    // mMke hello video stream always checked.
                     if (stream.Type == MediaStreamType.Video)
                     {
                         isCheckedValue = true;
@@ -593,21 +593,21 @@ ms.lasthandoff: 08/29/2017
             }
         }
         #endregion class Stream
-3. В начале класса MainPage добавьте следующие определения переменных:
+3. В начале hello hello класса MainPage, добавьте hello после определения переменной:
    
          private List<Stream> availableStreams;
          private List<Stream> availableAudioStreams;
          private List<Stream> availableTextStreams;
          private List<Stream> availableVideoStreams;
-4. Добавьте в класс MainPage следующую область:
+4. В пределах hello класса MainPage добавьте hello следующие области:
    
         #region stream selection
         ///<summary>
-        ///Functionality to select streams from IManifestStream available streams
+        ///Functionality tooselect streams from IManifestStream available streams
         /// </summary>
    
-        // This function is called from the mediaElement_ManifestReady event handler 
-        // to retrieve the streams and populate them to the local data members.
+        // This function is called from hello mediaElement_ManifestReady event handler 
+        // tooretrieve hello streams and populate them toohello local data members.
         public void getStreams(Manifest manifestObject)
         {
             availableStreams = new List<Stream>();
@@ -622,7 +622,7 @@ ms.lasthandoff: 08/29/2017
                     Stream newStream = new Stream(manifestObject.AvailableStreams[i]);
                     newStream.isChecked = false;
    
-                    //populate the stream lists based on the types
+                    //populate hello stream lists based on hello types
                     availableStreams.Add(newStream);
    
                     switch (newStream.ManifestStream.Type)
@@ -638,7 +638,7 @@ ms.lasthandoff: 08/29/2017
                             break;
                     }
    
-                    // Select the default selected streams from the manifest.
+                    // Select hello default selected streams from hello manifest.
                     for (int j = 0; j<manifestObject.SelectedStreams.Count; j++)
                     {
                         string selectedStreamName = manifestObject.SelectedStreams[j].Name;
@@ -656,12 +656,12 @@ ms.lasthandoff: 08/29/2017
             }
         }
    
-        // This function set the list box ItemSource
+        // This function set hello list box ItemSource
         private async void refreshAvailableStreamsListBoxItemSource()
         {
             try
             {
-                //update the stream check box list on the UI
+                //update hello stream check box list on hello UI
                 await _dispatcher.RunAsync(CoreDispatcherPriority.Normal, ()
                     => { lbAvailableStreams.ItemsSource = availableStreams; });
             }
@@ -687,7 +687,7 @@ ms.lasthandoff: 08/29/2017
                 }
             }
    
-            // Select the frist video stream from the list if no video stream is selected
+            // Select hello frist video stream from hello list if no video stream is selected
             if (!isOneVideoSelected)
             {
                 availableVideoStreams[0].isChecked = true;
@@ -701,11 +701,11 @@ ms.lasthandoff: 08/29/2017
                 {
                     selectedStreams.Add(availableAudioStreams[j].ManifestStream);
                     isOneAudioSelected = true;
-                    txtStatus.Text = "The audio stream is changed to " + availableAudioStreams[j].ManifestStream.Name;
+                    txtStatus.Text = "hello audio stream is changed too" + availableAudioStreams[j].ManifestStream.Name;
                 }
             }
    
-            // Select the frist audio stream from the list if no audio steam is selected.
+            // Select hello frist audio stream from hello list if no audio steam is selected.
             if (!isOneAudioSelected)
             {
                 availableAudioStreams[0].isChecked = true;
@@ -736,46 +736,46 @@ ms.lasthandoff: 08/29/2017
             }
         }
         #endregion stream selection
-5. Найдите метод mediaElement_ManifestReady, измените следующий код в конце функции:
+5. Найдите метод mediaElement_ManifestReady hello, добавьте следующий код в конце hello функции hello hello:
    
         getStreams(manifestObject);
         refreshAvailableStreamsListBoxItemSource();
    
-    Таким образом, если манифест MediaElement готов, код получает список доступных потоков и заполняет поле со списком пользовательского интерфейса этими значениями.
-6. В классе MainPage найдите область событий щелчка кнопок пользовательского интерфейса и добавьте следующее определение функции:
+    Поэтому при готовности манифест MediaElement кода hello Получает список доступных потоков hello и заполняет hello пользовательского интерфейса списка со списком hello.
+6. Внутри hello класса MainPage, найдите кнопками ИП hello выберите регион события, а затем добавьте следующие определения функции hello:
    
         private void btnChangeStream_Click(object sender, RoutedEventArgs e)
         {
             List<IManifestStream> selectedStreams = new List<IManifestStream>();
    
-            // Create a list of the selected streams
+            // Create a list of hello selected streams
             createSelectedStreamsList(selectedStreams);
    
-            // Change streams on the presentation
+            // Change streams on hello presentation
             changeStreams(selectedStreams);
         }
 
-**Компиляция и тестирование приложения**
+**toocompile и тестирования приложения hello**
 
-1. Нажмите клавишу **F6** для компиляции проекта. 
-2. Нажмите клавишу **F5** для запуска приложения.
-3. В верхней части приложения можно выбрать URL-адрес бесперебойной потоковой передачи по умолчанию или ввести другой. 
+1. Нажмите клавишу **F6** toocompile hello проекта. 
+2. Нажмите клавишу **F5** toorun приложения hello.
+3. Вверху hello приложения hello можно использовать значение по умолчанию hello Smooth Streaming URL-адрес или введите его. 
 4. Щелкните **Задать источник**. 
-5. Язык по умолчанию — audio_eng. Попробуйте переключиться между audio_eng и audio_es. Каждый раз при выборе нового потока необходимо нажать кнопку "Отправить".
+5. язык по умолчанию Hello — audio_eng. Попробуйте tooswitch между audio_eng и audio_es. При каждом, выберите новый поток, необходимо нажать кнопку Submit hello.
 
-Вы завершили урок 3.  В этом уроке были добавлены функциональные возможности для выбора потоков.
+Вы завершили урок 3.  На этом занятии добавьте потоки toochoose функции hello.
 
 ## <a name="lesson-4-select-smooth-streaming-tracks"></a>Урок 4. Выбор дорожек для бесперебойной потоковой передачи
-Представление бесперебойной потоковой передачи может содержать несколько видеофайлов, зашифрованных с разными уровнями качества (скоростью) и разрешениями. На этом занятии предстоит включить возможность выбора потоков для пользователей. Это занятие содержит следующие процедуры:
+Представление бесперебойной потоковой передачи может содержать несколько видеофайлов, зашифрованных с разными уровнями качества (скоростью) и разрешениями. На этом занятии вы включите отслеживает tooselect пользователей. Это занятие содержит hello следующих процедур.
 
-1. Изменение XAML-файла
-2. Изменение кода файла behand
-3. Компиляция и тестирование приложения
+1. Измените файл XAML hello
+2. Измените файл behand кода hello
+3. Компиляции и тестирования приложения hello
 
-**Изменение XAML-файла**
+**toomodify hello XAML-файла**
 
 1. В обозревателе решений щелкните правой кнопкой мыши файл **MainPage.xaml** и выберите команду **Конструктор представлений**.
-2. Найдите тег &lt;Grid&gt; с именем **gridStreamAndBitrateSelection** и добавьте следующий код в конце этого тега:
+2. Найдите hello &lt;сетки&gt; тег с именем hello **gridStreamAndBitrateSelection**, добавьте следующий код в конце hello тег hello hello:
    
          <StackPanel Name="spBitRateSelection" Grid.Row="1" Grid.Column="1">
          <StackPanel Orientation="Horizontal">
@@ -791,12 +791,12 @@ ms.lasthandoff: 08/29/2017
              </ListBox.ItemTemplate>
          </ListBox>
          </StackPanel>
-3. Нажмите клавиши **CTRL+S** , чтобы сохранить изменения
+3. Нажмите клавишу **CTRL + S** toosave, он изменяет
 
-**Изменение файла кода программной части**
+**файл с выделенным кодом toomodify hello**
 
 1. В обозревателе решений щелкните правой кнопкой мыши файл **MainPage.xaml** и выберите команду **Просмотреть код**.
-2. В пространстве имен SSPlayer добавьте следующий новый класс:
+2. В пределах пространства имен SSPlayer hello добавьте новый класс:
    
         #region class Track
         public class Track
@@ -834,17 +834,17 @@ ms.lasthandoff: 08/29/2017
             //public Track() { }
         }
         #endregion class Track
-3. В начале класса MainPage добавьте следующие определения переменных:
+3. В начале hello hello класса MainPage, добавьте hello после определения переменной:
    
         private List<Track> availableTracks;
-4. Добавьте в класс MainPage следующую область:
+4. В пределах hello класса MainPage добавьте hello следующие области:
    
         #region track selection
         /// <summary>
-        /// Functionality to select video streams
+        /// Functionality tooselect video streams
         /// </summary>
    
-        /// This Function gets the tracks for the selected video stream
+        /// This Function gets hello tracks for hello selected video stream
         public void getTracks(Manifest manifestObject)
         {
             availableTracks = new List<Track>();
@@ -878,7 +878,7 @@ ms.lasthandoff: 08/29/2017
             }
         }
    
-        // This function gets the video stream that is playing
+        // This function gets hello video stream that is playing
         private IManifestStream getVideoStream()
         {
             IManifestStream videoStream = null;
@@ -893,12 +893,12 @@ ms.lasthandoff: 08/29/2017
             return videoStream;
         }
    
-        // This function set the UI list box control ItemSource
+        // This function set hello UI list box control ItemSource
         private async void refreshAvailableTracksListBoxItemSource()
         {
             try
             {
-                // Update the track check box list on the UI 
+                // Update hello track check box list on hello UI 
                 await _dispatcher.RunAsync(CoreDispatcherPriority.Normal, ()
                     => { lbAvailableVideoTracks.ItemsSource = availableTracks; });
             }
@@ -908,7 +908,7 @@ ms.lasthandoff: 08/29/2017
             }        
         }
    
-        // This function creates a list of the selected tracks.
+        // This function creates a list of hello selected tracks.
         private void createSelectedTracksList(List<IManifestTrack> selectedTracks)
         {
             // Create a list of selected tracks
@@ -921,7 +921,7 @@ ms.lasthandoff: 08/29/2017
             }
         }
    
-        // This function selects the tracks based on user selection 
+        // This function selects hello tracks based on user selection 
         private void changeTracks(List<IManifestTrack> selectedTracks)
         {
             IManifestStream videoStream = getVideoStream();
@@ -935,32 +935,32 @@ ms.lasthandoff: 08/29/2017
             }
         }
         #endregion track selection
-5. Найдите метод mediaElement_ManifestReady, измените следующий код в конце функции:
+5. Найдите метод mediaElement_ManifestReady hello, добавьте следующий код в конце hello функции hello hello:
    
          getTracks(manifestObject);
          refreshAvailableTracksListBoxItemSource();
-6. В классе MainPage найдите область событий щелчка кнопок пользовательского интерфейса и добавьте следующее определение функции:
+6. Внутри hello класса MainPage, найдите кнопками ИП hello выберите регион события, а затем добавьте следующие определения функции hello:
    
          private void btnChangeStream_Click(object sender, RoutedEventArgs e)
          {
             List<IManifestStream> selectedStreams = new List<IManifestStream>();
 
-            // Create a list of the selected streams
+            // Create a list of hello selected streams
             createSelectedStreamsList(selectedStreams);
 
-            // Change streams on the presentation
+            // Change streams on hello presentation
             changeStreams(selectedStreams);
          }
 
-**Компиляция и тестирование приложения**
+**toocompile и тестирования приложения hello**
 
-1. Нажмите клавишу **F6** для компиляции проекта. 
-2. Нажмите клавишу **F5** для запуска приложения.
-3. В верхней части приложения можно выбрать URL-адрес бесперебойной потоковой передачи по умолчанию или ввести другой. 
+1. Нажмите клавишу **F6** toocompile hello проекта. 
+2. Нажмите клавишу **F5** toorun приложения hello.
+3. Вверху hello приложения hello можно использовать значение по умолчанию hello Smooth Streaming URL-адрес или введите его. 
 4. Щелкните **Задать источник**. 
-5. По умолчанию выбраны все дорожки потока видеоданных. Чтобы поэкспериментировать со скоростью, выберите минимально возможную скорость, а затем — максимально возможную. После каждого изменения необходимо нажать кнопку "Отправить".  Вы увидите, как изменилось качество видеоизображения.
+5. По умолчанию выбираются все записи hello hello видеопотока. tooexperiment hello бит скорость изменения, можно выберите hello низкий битрейт доступны, а затем выберите hello наибольший скорость доступны. После каждого изменения необходимо нажать кнопку "Отправить".  Можно заметить изменения качества видео hello.
 
-Вы завершили урок 4.  В этом уроке были добавлены функциональные возможности для выбора дорожек.
+Вы завершили урок 4.  На этом занятии добавьте отслеживает toochoose функции hello.
 
 ## <a name="media-services-learning-paths"></a>Схемы обучения работе со службами мультимедиа
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
@@ -969,7 +969,7 @@ ms.lasthandoff: 08/29/2017
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
 ## <a name="other-resources"></a>Другие ресурсы:
-* [Создание приложения для Windows 8 с потоковой передачей Smooth Streaming на JavaScript с расширенными возможностями](http://blogs.iis.net/cenkd/archive/2012/08/10/how-to-build-a-smooth-streaming-windows-8-javascript-application-with-advanced-features.aspx)
+* [Как toobuild приложении Smooth Streaming Windows 8 на языке JavaScript с помощью дополнительных возможностей](http://blogs.iis.net/cenkd/archive/2012/08/10/how-to-build-a-smooth-streaming-windows-8-javascript-application-with-advanced-features.aspx)
 * [Технический обзор Smooth Streaming](http://www.iis.net/learn/media/on-demand-smooth-streaming/smooth-streaming-technical-overview)
 
 [PlayerApplication]: ./media/media-services-build-smooth-streaming-apps/SSClientWin8-1.png

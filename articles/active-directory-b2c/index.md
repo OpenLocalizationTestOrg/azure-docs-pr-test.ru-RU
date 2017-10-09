@@ -1,6 +1,6 @@
 ---
-title: "Документация по Azure Active Directory B2C. Руководства и справочник по API | Документация Майкрософт"
-description: "Узнайте, как развернуть комплексную систему управления удостоверениями пользователей в облаке. В справочной документации показано, как защитить веб-приложения и мобильные приложения, предназначенные для прямого взаимодействия с пользователями."
+title: "aaaAzure Active Directory B2C документация. учебники, справочник по API | Документы Microsoft"
+description: "Дополнительные сведения об облачных toodeploy комплексное потребителя удостоверений в hello. Документация показано как tooprotect потребительском веб- и мобильных приложений."
 services: active-directory-b2c
 author: carolz
 manager: carolz
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: 2bb7fe165fc88df62a2b12ccf666da0a7965d43b
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: f9f6939d4d5bbe49533cad037a9085ce3da63155
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/19/2017
+ms.lasthandoff: 10/06/2017
 ---
 #<a name="active-directory-b2c-documentation"></a>Документация по Active Directory B2C
 
-Узнайте, как создать и настроить комплексную систему управления удостоверениями пользователей в облаке с помощью Active Directory B2C. В руководствах, справочниках и другой документации показано, как защитить веб-приложения и мобильные приложения, предназначенные для прямого взаимодействия с пользователями, с помощью безопасного входа.
+Узнайте, как tooset и управление ею потребителя комплексное управление удостоверениями в hello облако с помощью Active Directory B2C. Учебники, ссылки и другую документацию показано, как tooprotect потребителя веб- и мобильных приложений с помощью безопасности входа в систему.
 
 <ul class="panelContent cardsFTitle">
     <li>

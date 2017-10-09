@@ -1,12 +1,12 @@
 ---
-title: "Использование шлюза Интернета вещей для подключения устройства к Центру Интернета вещей Azure | Документация Майкрософт"
-description: "Узнайте, как использовать Intel NUC в качестве шлюза Интернета вещей для подключения TI SensorTag и отправлять данные датчиков в Центр Интернета вещей Azure в облаке."
+title: "aaaUse tooconnect шлюза IoT tooAzure устройства центра IoT | Документы Microsoft"
+description: "Дополнительные сведения об облачных toouse NUC Intel как tooconnect шлюза IoT TI SensorTag и датчик отправки данных tooAzure центр IoT в hello."
 services: iot-hub
 documentationcenter: 
 author: shizn
 manager: timlt
 tags: 
-keywords: "шлюз Интернета вещей для подключения устройства к облаку"
+keywords: "шлюз IOT подключаться toocloud устройства"
 ms.assetid: cb851648-018c-4a7e-860f-b62ed3b493a5
 ms.service: iot-hub
 ms.devlang: c
@@ -15,34 +15,34 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/25/2017
 ms.author: xshi
-ms.openlocfilehash: 4fb77ed0241d15338c2574fd22828507c3e40cb3
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 418af34bf29992d46b76ae59ef548744808664c3
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="use-iot-gateway-to-connect-things-to-the-cloud---sensortag-to-azure-iot-hub"></a>Использование шлюза Интернета вещей для подключения объектов к облаку (подключение SensorTag к Центру Интернета вещей Azure)
+# <a name="use-iot-gateway-tooconnect-things-toohello-cloud---sensortag-tooazure-iot-hub"></a>Использование облачного toohello действия tooconnect шлюза IoT - SensorTag tooAzure центра IoT
 
 > [!NOTE]
-> Перед началом работы с руководством убедитесь, что вы завершили [настройку Intel NUC в качестве шлюза Интернета вещей](iot-hub-gateway-kit-c-lesson1-set-up-nuc.md). Из учебника [Настройка Intel NUC в качестве шлюза Интернета вещей](iot-hub-gateway-kit-c-lesson1-set-up-nuc.md) вы узнали, как настроить устройство Intel NUC таким образом.
+> Перед началом работы с руководством убедитесь, что вы завершили [настройку Intel NUC в качестве шлюза Интернета вещей](iot-hub-gateway-kit-c-lesson1-set-up-nuc.md). В [Настройка NUC Intel виде шлюза IoT](iot-hub-gateway-kit-c-lesson1-set-up-nuc.md), настроить устройство Intel NUC hello как шлюз IoT.
 
 ## <a name="what-you-will-learn"></a>Новые знания
 
-Вы научитесь использовать шлюз Интернета вещей для подключения устройства Texas Instruments SensorTag (CC2650STK) к Центру Интернета вещей Azure. Шлюз Центра Интернета вещей отправляет данные о температуре и влажности, собранные с устройства SensorTag, в Центр Интернета вещей Azure.
+Вы узнаете, как toouse tooconnect шлюза IoT SensorTag инструментов Техас (CC2650STK) tooAzure центр IoT. шлюз IoT Hello отправляет температуры и влажности собранные данные hello SensorTag tooAzure центр IoT.
 
 ## <a name="what-you-will-do"></a>Выполняемая задача
 
-- Создайте центр IoT.
-- Зарегистрируйте устройство в Центре Интернета вещей для SensorTag.
-- Включите подключение между шлюзом Интернета вещей и SensorTag.
-- Запустите пример приложения BLE для отправки данных SensorTag в Центр Интернета вещей.
+- Создайте Центр Интернета вещей.
+- Регистрация устройства в центр IoT hello для hello SensorTag.
+- Включите hello подключение между шлюзом IoT hello и hello SensorTag.
+- Запустите ЛЮЧИТЬ образец приложения toosend SensorTag данные tooyour центр IoT.
 
 ## <a name="what-you-need"></a>Необходимые элементы
 
 - Пройден учебник [Настройка Intel NUC в качестве шлюза Интернета вещей](iot-hub-gateway-kit-c-lesson1-set-up-nuc.md), в котором рассказывается, как настроить устройство Intel NUC в качестве шлюза Интернета вещей.
 - * Активная подписка Azure. Если ее нет, можно создать [бесплатную пробную учетную запись Azure](https://azure.microsoft.com/free/) всего за несколько минут.
 - Клиент SSH, который выполняется на главном компьютере. В Windows рекомендуется использовать PuTTY. Клиент SSH изначально входит в состав ОС Linux и Mac OS.
-- IP-адрес, имя пользователя и пароль для доступа к шлюзу из клиента SSH.
+- Hello IP-адрес и hello имя пользователя и пароль tooaccess hello шлюза из клиента SSH hello.
 - Подключение к Интернету.
 
 [!INCLUDE [iot-hub-get-started-create-hub-and-device](../../includes/iot-hub-get-started-create-hub-and-device.md)]
@@ -50,38 +50,38 @@ ms.lasthandoff: 08/03/2017
 > [!NOTE]
 > Здесь следует зарегистрировать новое устройство для SensorTag.
 
-## <a name="enable-the-connection-between-the-iot-gateway-and-the-sensortag"></a>Включение подключения между шлюзом Интернета вещей и SensorTag
+## <a name="enable-hello-connection-between-hello-iot-gateway-and-hello-sensortag"></a>Включить hello подключение между шлюзом IoT hello и hello SensorTag
 
-В этом разделе описывается выполнение следующих задач:
+В этом разделе выполните следующие задачи hello.
 
-- Получите MAC-адрес SensorTag для подключения Bluetooth.
-- Инициируйте подключение Bluetooth из шлюза Интернета вещей к SensorTag.
+- Получение hello MAC-адрес hello SensorTag для подключения Bluetooth.
+- Инициируйте подключение Bluetooth из hello IoT шлюза toohello SensorTag.
 
-### <a name="get-the-mac-address-of-the-sensortag-for-bluetooth-connection"></a>Получение MAC-адреса SensorTag для подключения Bluetooth
+### <a name="get-hello-mac-address-of-hello-sensortag-for-bluetooth-connection"></a>Получить hello MAC-адрес hello SensorTag для подключение Bluetooth
 
-1. На главном компьютере запустите клиент SSH и установите подключение к шлюзу Интернета вещей.
-1. Разблокируйте Bluetooth, выполнив следующую команду:
+1. На главном компьютере hello запустите клиент SSH hello и шлюз IoT toohello подключения.
+1. Разблокируйте Bluetooth, выполнив следующую команду hello:
 
    ```bash
    sudo rfkill unblock bluetooth
    ```
 
-1. Запустите службу Bluetooth на шлюзе Интернета вещей и войдите в оболочку Bluetooth для настройки Bluetooth, выполнив следующие команды:
+1. Запустите службу hello Bluetooth на шлюз IoT hello и введите tooconfigure оболочки Bluetooth, hello Bluetooth, выполнив следующие команды:
 
    ```bash
    sudo systemctl start bluetooth
    bluetoothctl
    ```
 
-1. Включите питание на контроллере Bluetooth, выполнив следующую команду в оболочке Bluetooth:
+1. Питания на контроллере Bluetooth hello, запустив hello следующую команду в hello оболочки Bluetooth:
 
    ```bash
    power on
    ```
 
-   ![Включение питания на контроллере Bluetooth в шлюзе Интернета вещей с помощью bluetoothctl](./media/iot-hub-iot-gateway-connect-device-to-cloud/8_power-on-bluetooth-controller-at-bluetooth-shell-bluetoothctl.png)
+   ![питания на контроллере Bluetooth hello в шлюзе hello IoT с bluetoothctl](./media/iot-hub-iot-gateway-connect-device-to-cloud/8_power-on-bluetooth-controller-at-bluetooth-shell-bluetoothctl.png)
 
-1. Начните поиск находящихся поблизости устройств Bluetooth, выполнив следующую команду:
+1. Начните поиск ближайших устройствами Bluetooth, выполнив следующую команду hello:
 
    ```bash
    scan on
@@ -89,9 +89,9 @@ ms.lasthandoff: 08/03/2017
 
    ![Поиск находящихся поблизости устройств Bluetooth с помощью bluetoothctl](./media/iot-hub-iot-gateway-connect-device-to-cloud/9_start-scan-nearby-bluetooth-devices-at-bluetooth-shell-bluetoothctl.png)
 
-1. Нажмите кнопку связывания на SensorTag. На SensorTag начнет мигать зеленый индикатор.
-1. В оболочке Bluetooth должно отобразиться найденное устройство SensorTag. Запишите MAC-адрес устройства SensorTag. В данном примере MAC-адрес устройства SensorTag — `24:71:89:C0:7F:82`.
-1. Выключите поиск, выполнив следующую команду:
+1. Нажмите клавишу связывание кнопки на hello SensorTag hello. Hello зеленый ИНДИКАТОР на мигает SensorTag hello.
+1. В hello оболочки Bluetooth вы увидите найден SensorTag приветствия. Запишите hello hello SensorTag MAC-адрес. В этом примере — hello MAC-адрес hello SensorTag `24:71:89:C0:7F:82`.
+1. Отключите проверку hello, выполнив следующую команду hello:
 
    ```bash
    scan off
@@ -99,70 +99,70 @@ ms.lasthandoff: 08/03/2017
 
    ![Остановка поиска находящихся поблизости устройств Bluetooth с помощью bluetoothctl](./media/iot-hub-iot-gateway-connect-device-to-cloud/10_stop-scanning-nearby-bluetooth-devices-at-bluetooth-shell-bluetoothctl.png)
 
-### <a name="initiate-a-bluetooth-connection-from-the-iot-gateway-to-the-sensortag"></a>Инициализация подключения Bluetooth к SensorTag из шлюза Интернета вещей
+### <a name="initiate-a-bluetooth-connection-from-hello-iot-gateway-toohello-sensortag"></a>Инициировать подключение Bluetooth из hello IoT шлюза toohello SensorTag
 
-1. Подключитесь к SensorTag с помощью следующей команды:
+1. Подключитесь toohello SensorTag, выполнив следующую команду hello:
 
    ```bash
    connect <MAC address>
    ```
 
-   ![Подключение к SensorTag с помощью bluetoothctl](./media/iot-hub-iot-gateway-connect-device-to-cloud/11_connect-to-sensortag-at-bluetooth-shell-bluetoothctl.png)
+   ![Связь с bluetoothctl toohello SensorTag](./media/iot-hub-iot-gateway-connect-device-to-cloud/11_connect-to-sensortag-at-bluetooth-shell-bluetoothctl.png)
 
-1. Отключитесь от SensorTag и выйдите из оболочки Bluetooth с помощью следующей команды:
+1. Отключитесь от hello SensorTag и выйти из оболочки Bluetooth hello, запустив hello, следующие команды:
 
    ```bash
    disconnect
    exit
    ```
 
-   ![Отключение от SensorTag с помощью bluetoothctl](./media/iot-hub-iot-gateway-connect-device-to-cloud/12_disconnect-from-sensortag-at-bluetooth-shell-bluetoothctl.png)
+   ![Отключение от hello SensorTag с bluetoothctl](./media/iot-hub-iot-gateway-connect-device-to-cloud/12_disconnect-from-sensortag-at-bluetooth-shell-bluetoothctl.png)
 
-Вы успешно включили подключение между SensorTag и шлюзом Интернета вещей.
+Hello подключению hello SensorTag hello IoT шлюза успешно активирован.
 
-## <a name="run-a-ble-sample-application-to-send-sensortag-data-to-your-iot-hub"></a>Запуск примера приложения BLE для отправки данных SensorTag в Центр Интернета вещей
+## <a name="run-a-ble-sample-application-toosend-sensortag-data-tooyour-iot-hub"></a>Запустите ЛЮЧИТЬ образец приложения toosend SensorTag данные tooyour центра IoT
 
-Пример приложения для подключения по Bluetooth с низким энергопотреблением (BLE) предоставляется в Azure IoT Edge. Этот пример приложения собирает данные, поступающие через подключение BLE, и отправляет их в центр Интернета вещей. Для запуска примера приложения необходимо выполнить следующие действия:
+энергии низкий Bluetooth (Разрешить) пример приложения Hello обеспечивается Azure IoT Edge. Пример приложения Hello собирает данные от ЛЮЧИТЬ подключения и отправки центра IoT tooyou данных hello. Пример приложения hello toorun, необходимо:
 
-1. настроить пример приложения;
-1. запустить его на шлюзе Интернета вещей.
+1. Настройте пример приложения hello.
+1. Запустите образец приложения hello в шлюзе IoT hello.
 
-### <a name="configure-the-sample-application"></a>Настройка примера приложения
+### <a name="configure-hello-sample-application"></a>Настройка образца приложения hello
 
-1. Перейдите в папку примера приложения, выполнив следующую команду:
+1. Go toohello папки образца приложения hello, выполнив следующую команду hello:
 
    ```bash
    cd /usr/share/azureiotgatewaysdk/samples/ble_gateway
    ```
 
-1. Откройте файл конфигурации, выполнив такую команду:
+1. Откройте файл конфигурации hello, выполнив следующую команду hello:
 
    ```bash
    vi ble_gateway.json
    ```
 
-1. В файле конфигурации задайте такие значения:
+1. В файле конфигурации hello заполните hello следующие значения:
 
-   **IoTHubName** — имя Центра Интернета вещей.
+   **IoTHubName**: hello имя вашего центра IoT.
 
-   **IoTHubSuffix** — получение IoTHubSuffix из первичного ключа в записанной ранее строке подключения устройства. Убедитесь, что вы используете первичный ключ из строки подключения устройства, а не из строки подключения Центра Интернета вещей. Первичный ключ строки подключения устройства указывается в формате `HostName=IOTHUBNAME.IOTHUBSUFFIX;DeviceId=DEVICEID;SharedAccessKey=SHAREDACCESSKEY`.
+   **IoTHubSuffix**: получение IoTHubSuffix из hello первичного ключа строки подключения устройства hello, отмеченный вниз. Убедитесь, что получить первичный ключ строки подключения устройств hello hello, не hello первичного ключа в строке подключения концентратора IoT. первичный ключ строки подключения устройств hello Hello указано в формате hello `HostName=IOTHUBNAME.IOTHUBSUFFIX;DeviceId=DEVICEID;SharedAccessKey=SHAREDACCESSKEY`.
 
-   **Transport** По умолчанию используется значение `amqp`. Это значение указывает протокол во время транспортировки. Оно может быть равным `http`, `amqp` или `mqtt`.
+   **Транспорт**: hello значение по умолчанию — `amqp`. Это значение показывает hello протокола во время transpotation. Оно может быть равным `http`, `amqp` или `mqtt`.
 
-   **macAddress** MAC-адрес SensorTag, который вы записали ранее.
+   **macAddress**: hello MAC-адрес hello SensorTag, отмеченный вниз.
 
-   **deviceID** Идентификатор устройства, которое вы создали в Центре Интернета вещей.
+   **deviceID**: идентификатор hello устройства, созданный в концентратор IoT.
 
-   **deviceKey** Первичный ключ строки подключения устройства.
+   **deviceKey**: hello первичного ключа строки подключения устройств hello.
 
-   ![Заполнение файла конфигурации примера приложения BLE](./media/iot-hub-iot-gateway-connect-device-to-cloud/13_edit-config-file-of-ble-sample.png)
+   ![Файл конфигурации завершения hello ЛЮЧИТЬ пример приложения hello](./media/iot-hub-iot-gateway-connect-device-to-cloud/13_edit-config-file-of-ble-sample.png)
 
-1. Нажмите клавишу `ESC` и введите `:wq`, чтобы сохранить файл.
+1. Нажмите клавишу `ESC` и тип `:wq` toosave hello файла.
 
-### <a name="run-the-sample-application"></a>Запуск примера приложения
+### <a name="run-hello-sample-application"></a>Запустить образец приложения hello
 
-1. Убедитесь, что устройство SensorTag включено.
-1. Выполните следующую команду:
+1. Убедитесь, что включено SensorTag приветствия.
+1. Выполните следующую команду hello.
 
    ```bash
    ./ble_gateway ble_gateway.json

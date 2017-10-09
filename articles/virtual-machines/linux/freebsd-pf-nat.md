@@ -1,6 +1,6 @@
 ---
-title: "Создание брандмауэра в Azure с помощью PF FreeBSD | Документация Майкрософт"
-description: "Узнайте о том, как развернуть брандмауэр NAT с использованием PF FreeBSD в Azure."
+title: "Фильтр пакетов aaaUse FreeBSD toocreate брандмауэра в Azure | Документы Microsoft"
+description: "Узнайте, как toodeploy NAT брандмауэра с помощью элемента FreeBSD PF в Azure."
 services: virtual-machines-linux
 documentationcenter: 
 author: KylieLiang
@@ -15,32 +15,32 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/20/2017
 ms.author: kyliel
-ms.openlocfilehash: cd777291a1321eabf4efe0d7b9b101f932d9398b
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 3d3a5dde2ca03ba6fc384581c786f5eb746e6d92
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-use-freebsds-packet-filter-to-create-a-secure-firewall-in-azure"></a>Создание защищенного брандмауэра в Azure с использованием PF FreeBSD
-В этой статье рассматривается использование фильтра пакетов FreeBSD для развертывания брандмауэра для NAT с помощью шаблона Azure Resource Manager для общего сценария веб-сервера.
+# <a name="how-toouse-freebsds-packet-filter-toocreate-a-secure-firewall-in-azure"></a>Как фильтр пакетов toouse FreeBSD toocreate безопасный брандмауэр в Azure
+В этой статье описаны как toodeploy брандмауэра NAT с помощью фильтра FreeBSD Packer через шаблона Azure Resource Manager для общих веб-сервере сценарий.
 
 ## <a name="what-is-pf"></a>Что такое PF?
-PF — это лицензированный (по лицензии BSD) фильтр пакетов с отслеживанием состояния, а также основной элемент программного обеспечения для брандмауэра. Фильтр пакетов получил широкое распространение, так как он обладает рядом преимуществ по сравнению с другими доступными брандмауэрами. Возможность преобразования сетевых адресов (NAT) внедрена в PF с самого начала. Затем за счет интеграции платформы ALTQ и реализации возможности ее настройки в конфигурации в PF были интегрированы планировщик пакетов и активное управление очередями. В PF были добавлены такие функции, как pfsync и CARP — для отработки отказа и обеспечения избыточности, authpf — для аутентификации сеанса и ftp-proxy — чтобы упростить проверку FTP-протокола в брандмауэре. Короче говоря, PF — это брандмауэр с расширенными возможностями. 
+PF — это лицензированный (по лицензии BSD) фильтр пакетов с отслеживанием состояния, а также основной элемент программного обеспечения для брандмауэра. Фильтр пакетов получил широкое распространение, так как он обладает рядом преимуществ по сравнению с другими доступными брандмауэрами. Преобразование сетевых адресов (NAT) находится в общей папки с момента первого дня, а затем планировщик пакетов и активной очереди управления были включены в PF, благодаря интеграции hello ALTQ и сделав его можно настроить через PF элемента конфигурации. Функции, например pfsync и CARP для перехода на другой ресурс и избыточности, authpf для сеанса проверки подлинности и ftp прокси tooease полезных hello сложно протокол FTP, также расширена PF. Короче говоря, PF — это брандмауэр с расширенными возможностями. 
 
 ## <a name="get-started"></a>Начало работы
-Если вы хотите настроить безопасный брандмауэр в облаке для веб-серверов, тогда самое время начать. Чтобы настроить топологию сети, можно также применить сценарии, используемые в шаблоне Azure Resource Manager.
-Шаблон Azure Resource Manager позволяет настроить виртуальную машину FreeBSD, выполняющую преобразование сетевых адресов (NAT) или перенаправление с помощью PF, а также две виртуальные машины FreeBSD с установленным и настроенным веб-сервером Nginx. Кроме преобразования сетевых адресов для исходящего трафика двух веб-серверов, виртуальная машина, выполняющая преобразование сетевых адресов или перенаправление, перехватывает HTTP-запросы и методом циклического перебора перенаправляет их к двум веб-серверам. Виртуальная сеть использует закрытое пространство IP-адресов 10.0.0.2/24 без поддержки маршрутизации. Параметры шаблона можно изменить. Шаблон Azure Resource Manager также определяет таблицу маршрутов для всей виртуальной сети, которая является набором отдельных маршрутов, используемым для переопределения маршрутов Azure по умолчанию на основе конечного IP-адреса. 
+Если вы заинтересованы в настройке безопасный брандмауэр в облаке hello для веб-серверов, а затем давайте начнем. Можно также применить hello скриптов, используемых в этой tooset шаблона диспетчера ресурсов Azure копирование топологии сети.
+Настройка виртуальной машины FreeBSD шаблона Azure Resource Manager Hello, выполняющего /redirection NAT с помощью PF и две виртуальные машины FreeBSD с веб-сервер Nginx hello установлен и настроен. В дополнение к этому tooperforming NAT для двух веб-серверов hello входящего трафика, hello NAT или перенаправление виртуальной машины перехватывает HTTP-запросы и перенаправлять их toohello два веб-сервера в режиме циклического перебора. Hello виртуальной сети использует hello закрытый немаршрутизируемый IP адрес места 10.0.0.2/24 и можно изменить параметры hello hello шаблона. шаблон диспетчера ресурсов Azure Hello также определяет таблицы маршрутов для всей виртуальной сети, которая представляет собой набор отдельных маршрутов используется toooverride Azure по умолчанию маршрутов, зависимости IP-адрес назначения hello hello. 
 
 ![pf_topology](./media/freebsd-pf-nat/pf_topology.jpg)
     
 ### <a name="deploy-through-azure-cli"></a>Развертывание с помощью Azure CLI
-Вам нужно установить последнюю версию [Azure CLI 2.0](/cli/azure/install-az-cli2) и войти в учетную запись Azure, выполнив команду [az login](/cli/azure/#login). Создайте группу ресурсов с помощью команды [az group create](/cli/azure/group#create). В примере ниже создается имя группы ресурсов `myResourceGroup` в расположении `West US`.
+Hello требуется последняя версия [Azure CLI 2.0](/cli/azure/install-az-cli2) установлен и войти в систему с учетной записью Azure tooan [входа az](/cli/azure/#login). Создайте группу ресурсов с помощью команды [az group create](/cli/azure/group#create). Hello следующий пример создает имя группы ресурсов `myResourceGroup` в hello `West US` расположение.
 
 ```azurecli
 az group create --name myResourceGroup --location westus
 ```
 
-Далее разверните шаблон [pf-freebsd-setup](https://github.com/Azure/azure-quickstart-templates/tree/master/pf-freebsd-setup), используя команду [az group deployment create](/cli/azure/group/deployment#create). Скачайте файл [azuredeploy.parameters.json](https://github.com/Azure/azure-quickstart-templates/blob/master/pf-freebsd-setup/azuredeploy.parameters.json), путь к которому тот же, и определите значения ресурсов, например `adminPassword`, `networkPrefix` и `domainNamePrefix`. 
+Затем разверните шаблон hello [pf freebsd программа установки](https://github.com/Azure/azure-quickstart-templates/tree/master/pf-freebsd-setup) с [создания развертывания группы az](/cli/azure/group/deployment#create). Загрузить [azuredeploy.parameters.json](https://github.com/Azure/azure-quickstart-templates/blob/master/pf-freebsd-setup/azuredeploy.parameters.json) в разделе hello же пути и определять собственные значения ресурсов, такие как `adminPassword`, `networkPrefix`, и `domainNamePrefix`. 
 
 ```azurecli
 az group deployment create --resource-group myResourceGroup --name myDeploymentName \
@@ -48,15 +48,15 @@ az group deployment create --resource-group myResourceGroup --name myDeploymentN
     --parameters '@azuredeploy.parameters.json' --verbose
 ```
 
-По истечении пять минут отобразится сообщение `"provisioningState": "Succeeded"`. Затем вы можете подключиться к внешней виртуальной машине (NAT) по протоколу SSH или получить доступ к веб-серверу Nginx в браузере по общедоступному IP-адресу либо полному доменному имени виртуальной машины (NAT). В примере ниже указаны полное доменное имя и общедоступный IP-адрес, назначенные внешней виртуальной машине (NAT) в группе ресурсов `myResourceGroup`. 
+После около пяти минут, вы получите сведения hello `"provisioningState": "Succeeded"`. Затем вы можете ssh переднего плана toohello виртуальной Машины (NAT) или получить доступ к веб-сервер Nginx в браузере, используя hello общедоступный IP-адрес или полное доменное имя сервера переднего плана hello виртуальной Машины (NAT). Hello следующий пример выводит полное доменное имя и общедоступный IP-адрес, назначенный переднего плана toohello виртуальной Машины (NAT) в hello `myResourceGroup` группы ресурсов. 
 
 ```azurecli
 az network public-ip list --resource-group myResourceGroup
 ```
     
 ## <a name="next-steps"></a>Дальнейшие действия
-Если вы хотите настроить NAT в Azure, используя бесплатное и эффективное средство с открытым кодом, PF отлично подходит для этого. Шаблон [pf-freebsd-setup](https://github.com/Azure/azure-quickstart-templates/tree/master/pf-freebsd-setup) позволит всего за пять минут настроить брандмауэр NAT с балансировкой нагрузки методом циклического перебора с помощью PF FreeBSD в Azure для общего сценария веб-сервера. 
+Вы хотите tooset копирование NAT в Azure? используя бесплатное и эффективное средство с открытым кодом, PF отлично подходит для этого. С помощью шаблона hello [pf freebsd программа установки](https://github.com/Azure/azure-quickstart-templates/tree/master/pf-freebsd-setup), достаточно tooset пять минут брандмауэра NAT с циклическим балансировки с помощью элемента FreeBSD PF в Azure для общих веб-сервере сценарий. 
 
-Дополнительные сведения о предложениях FreeBSD в Azure см. в статье [Введение в FreeBSD в Azure](freebsd-intro-on-azure.md).
+Если требуется поддержка hello toolearn FreeBSD в Azure, см. слишком[tooFreeBSD введение в Azure](freebsd-intro-on-azure.md).
 
-Дополнительные сведения о PF см. в [руководстве FreeBSD](https://www.freebsd.org/doc/handbook/firewalls-pf.html) или в [руководстве пользователя PF](https://www.freebsd.org/doc/handbook/firewalls-pf.html).
+Дополнительные сведения о PF tooknow следует ссылаться слишком[по Intel FreeBSD](https://www.freebsd.org/doc/handbook/firewalls-pf.html) или [PF-руководство пользователя](https://www.freebsd.org/doc/handbook/firewalls-pf.html).

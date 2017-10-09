@@ -1,5 +1,5 @@
 ---
-title: "Библиотеки управления служебной шины Azure | Документация Майкрософт"
+title: "библиотеки управления Service Bus aaaAzure | Документы Microsoft"
 description: "Управление пространствами имен служебной шины и сущностями обмена сообщениями из .NET."
 services: service-bus-messaging
 documentationcenter: na
@@ -14,15 +14,15 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: sethm
-ms.openlocfilehash: 1db00dc1f91e8976b622030450445babbe547ad8
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 9e4ad91f22815ca0838e6e4647a3606109b2b441
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="service-bus-management-libraries"></a>Библиотеки управления служебной шины
 
-Библиотеки управления служебной шины Azure могут динамически подготавливать пространства имен и сущности служебной шины. Это дает возможность реализовывать сложные развертывания и сценарии обмена сообщениями и позволяет программно определять, какие сущности следует подготовить. В настоящее время эти библиотеки доступны для .NET.
+библиотеки управления Hello Azure Service Bus можно динамически подготавливать пространства имен служебной шины и сущностей. Это позволяет сложных развертываний и сценариев обмена сообщениями, а также позволяет определить, какие сущности tooprovision tooprogrammatically. В настоящее время эти библиотеки доступны для .NET.
 
 ## <a name="supported-functionality"></a>Поддерживаемые функции
 
@@ -33,26 +33,26 @@ ms.lasthandoff: 08/03/2017
 
 ## <a name="prerequisites"></a>Предварительные требования
 
-Чтобы приступить к работе с библиотеками управления служебной шины, нужно пройти аутентификацию в службе Azure Active Directory (AAD). AAD требует аутентификации в качестве субъекта-службы, предоставляющего доступ к вашим ресурсам Azure. Сведения о создании субъекта-службы см. в одной из приведенных ниже статей:  
+tooget работы с использованием библиотеки управления Service Bus hello, вы должны проверить подлинность hello службы Azure Active Directory (AAD). AAD требует проверки подлинности как участника-службы, который предоставляет доступ tooyour ресурсов Azure. Сведения о создании субъекта-службы см. в одной из приведенных ниже статей:  
 
-* [Создание приложения Active Directory и субъекта-службы с доступом к ресурсам с помощью портала](/azure/azure-resource-manager/resource-group-create-service-principal-portal)
-* [Использование Azure PowerShell для создания субъекта-службы и доступа к ресурсам](/azure/azure-resource-manager/resource-group-authenticate-service-principal)
-* [Использование интерфейса командной строки Azure для создания субъекта-службы и доступа к ресурсам](/azure/azure-resource-manager/resource-group-authenticate-service-principal-cli)
+* [Использовать приложение Active Directory Azure портала toocreate hello и участника-службы, могут обращаться к ресурсам](/azure/azure-resource-manager/resource-group-create-service-principal-portal)
+* [Использование Azure PowerShell toocreate ресурсов tooaccess участника службы](/azure/azure-resource-manager/resource-group-authenticate-service-principal)
+* [Используйте основной tooaccess ресурсов службы toocreate Azure CLI](/azure/azure-resource-manager/resource-group-authenticate-service-principal-cli)
 
-В этих руководствах вы получите `AppId` (идентификатор клиента), `TenantId` и `ClientSecret` (ключ аутентификации), которые используются библиотеками управления для аутентификации. Необходимо иметь разрешения роли **Владелец** для группы ресурсов, которую вы хотите использовать.
+Эти учебники предоставляют `AppId` (идентификатор клиента), `TenantId`, и `ClientSecret` (ключ проверки подлинности), каждый из которых используются для проверки подлинности управления библиотеками hello. Необходимо иметь **владельца** разрешения для группы ресурсов hello, над которым необходимо toorun.
 
 ## <a name="programming-pattern"></a>Шаблон программирования
 
-Шаблон обработки любого ресурса служебной шины соответствует общему протоколу.
+Здравствуйте, toomanipulate шаблон общего протокола соответствует любой ресурс служебной шины:
 
-1. Получение маркера из Azure Active Directory с помощью библиотеки **Microsoft.IdentityModel.Clients.ActiveDirectory**.
+1. Получение токена от Azure Active Directory с помощью hello **Microsoft.IdentityModel.Clients.ActiveDirectory** библиотеки.
    ```csharp
    var context = new AuthenticationContext($"https://login.microsoftonline.com/{tenantId}");
 
    var result = await context.AcquireTokenAsync("https://management.core.windows.net/", new ClientCredential(clientId, clientSecret));
    ```
 
-1. Создание объекта `ServiceBusManagementClient`.
+1. Создать hello `ServiceBusManagementClient` объекта.
 
    ```csharp
    var creds = new TokenCredentials(token);
@@ -62,7 +62,7 @@ ms.lasthandoff: 08/03/2017
    };
    ```
 
-1. Присвоение параметрам `CreateOrUpdate` указанных значений.
+1. Набор hello `CreateOrUpdate` tooyour параметры указанные значения.
 
    ```csharp
    var queueParams = new QueueCreateOrUpdateParameters()
@@ -72,7 +72,7 @@ ms.lasthandoff: 08/03/2017
    };
    ```
 
-1. Выполнение вызова.
+1. Hello вызова Execute.
 
    ```csharp
    await sbClient.Queues.CreateOrUpdateAsync(resourceGroupName, namespaceName, QueueName, queueParams);

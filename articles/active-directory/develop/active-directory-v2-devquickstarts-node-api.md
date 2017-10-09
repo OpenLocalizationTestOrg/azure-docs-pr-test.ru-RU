@@ -1,6 +1,6 @@
 ---
-title: "Защита веб-API Azure Active Directory v2.0 с помощью Node.js | Документы Майкрософт"
-description: "Узнайте, как создать веб-API .NET Node.js, принимающий маркеры доступа личных учетных записей Майкрософт, а также рабочих и учебных учетных записей."
+title: "aaaSecure веб-API Azure Active Directory версии 2.0 с помощью Node.js | Документы Microsoft"
+description: "Узнайте, как toobuild Node.js веб-API, который принимает токены из личную учетную запись Майкрософт и рабочих или учебных учетных записей."
 services: active-directory
 documentationcenter: nodejs
 author: navyasric
@@ -15,56 +15,56 @@ ms.topic: article
 ms.date: 05/13/2017
 ms.author: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 94e945a52b9df7c495de1611baa08083357670c9
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 219e324cca11e107186b7e5f995589b9260af8a7
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="secure-a-web-api-by-using-nodejs"></a>Защита веб-API с помощью Node.js
 > [!NOTE]
-> Не все сценарии и компоненты Azure Active Directory поддерживаются конечной точкой версии 2.0. Чтобы определить, стоит ли вам использовать конечную точку версии 2.0 или 1.0, ознакомьтесь с [ограничениями версии 2.0](active-directory-v2-limitations.md).
+> Не все сценарии Azure Active Directory и возможности работы с конечной точкой v2.0 hello. toodetermine необходимость использования hello v2.0 конечная точка либо hello v1.0, узнайте, как [ограничения v2.0](active-directory-v2-limitations.md).
 > 
 > 
 
-При использовании конечной точки Azure Active Directory (Azure AD) версии 2.0 можно использовать маркеры доступа [OAuth 2.0](active-directory-v2-protocols.md) для защиты веб-API. С помощью маркеров доступа OAuth 2.0 пользователи с личными учетными записями Майкрософт и рабочими или учебными учетными записями могут безопасно обращаться в вашему веб-API.
+При использовании endpoint v2.0 hello Azure Active Directory (Azure AD), можно использовать [OAuth 2.0](active-directory-v2-protocols.md) маркеры доступа tooprotect веб-API. С помощью маркеров доступа OAuth 2.0 пользователи с личными учетными записями Майкрософт и рабочими или учебными учетными записями могут безопасно обращаться в вашему веб-API.
 
-*Passport* — промежуточный слой проверки подлинности для Node.js. Он отличается гибкой модульной структурой, которая позволяет сравнительно незаметно размещать его в любом приложении на основе Express или веб-приложении Restify. В Passport полный набор стратегий поддерживает процесс проверки подлинности с помощью имени пользователя и пароля, Facebook, Twitter и проч. Мы разработали стратегию для Azure AD. В этой статье описывается установка модуля и последующее добавление подключаемого модуля `passport-azure-ad` Azure AD.
+*Passport* — промежуточный слой проверки подлинности для Node.js. Он отличается гибкой модульной структурой, которая позволяет сравнительно незаметно размещать его в любом приложении на основе Express или веб-приложении Restify. В Passport полный набор стратегий поддерживает процесс проверки подлинности с помощью имени пользователя и пароля, Facebook, Twitter и проч. Мы разработали стратегию для Azure AD. В этой статье рассказывается как tooinstall hello модуля, а затем добавьте hello Azure AD `passport-azure-ad` подключаемого модуля.
 
 ## <a name="download"></a>Загрузить
-Код в этом учебнике размещен на портале [GitHub](https://github.com/AzureADQuickStarts/AppModelv2-WebAPI-nodejs). Для выполнения действий в этом руководстве вы можете [скачать заготовку приложения как ZIP-файл](https://github.com/AzureADQuickStarts/AppModelv2-WebAPI-nodejs/archive/skeleton.zip) или клонировать структуру:
+поддерживается Hello кода для этого учебника [на GitHub](https://github.com/AzureADQuickStarts/AppModelv2-WebAPI-nodejs). toofollow hello учебник, вы можете [загрузить приложение hello основу как ZIP-файл](https://github.com/AzureADQuickStarts/AppModelv2-WebAPI-nodejs/archive/skeleton.zip), или основу hello клона:
 
 ```git clone --branch skeleton https://github.com/AzureADQuickStarts/AppModelv2-WebAPI-nodejs.git```
 
-Можно также воспользоваться готовым приложением в конце этого руководства.
+Можно также получить приложение hello завершено в конце hello этого учебника.
 
 ## <a name="1-register-an-app"></a>Шаг 1. Регистрация приложения
-Создайте приложение на странице [apps.dev.microsoft.com](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList) или выполните [эти подробные указания](active-directory-v2-app-registration.md), чтобы зарегистрировать приложение. Не забудьте выполнить следующие действия.
+Создайте новое приложение на [apps.dev.microsoft.com](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList), или выполните [эти подробные шаги](active-directory-v2-app-registration.md) tooregister приложения. Не забудьте выполнить следующие действия.
 
-* Скопируйте **идентификатор приложения**, назначенный приложению. Он потребуется для работы с этим руководством.
-* Добавьте для приложения **мобильную** платформу.
-* Скопируйте значение **URI перенаправления** с портала. Необходимо использовать значение URI по умолчанию — `urn:ietf:wg:oauth:2.0:oob`.
+* Копировать hello **идентификатор приложения** назначенный tooyour приложения. Он потребуется для работы с этим руководством.
+* Добавить hello **Mobile** платформы для приложения.
+* Копировать hello **URI перенаправления** из портала hello. Необходимо использовать значение по умолчанию URI hello `urn:ietf:wg:oauth:2.0:oob`.
 
 ## <a name="2-install-nodejs"></a>Шаг 2. Установка Node.js
-Чтобы использовать пример для этого руководства, необходимо [установить Node.js](http://nodejs.org).
+Образец hello toouse для этого учебника, необходимо [установки Node.js](http://nodejs.org).
 
 ## <a name="3-install-mongodb"></a>Шаг 3. Установка MongoDB
-Чтобы успешно использовать этот пример, необходимо [установить MongoDB](http://www.mongodb.org). В этом примере MongoDB используется, чтобы интерфейс REST API устойчиво работал с несколькими экземплярами сервера.
+toosuccessfully использование этого образца, необходимо [установить MongoDB](http://www.mongodb.org). В этом образце используется MongoDB toomake постоянные REST API по экземплярам сервера.
 
 > [!NOTE]
-> В этой статье предполагается, что вы используете установку по умолчанию и конечные точки сервера для MongoDB: mongodb://localhost.
+> В этой статье предполагается, что конечные точки установки и сервером по умолчанию hello используется для MongoDB: mongodb://localhost.
 > 
 > 
 
-## <a name="4-install-the-restify-modules-in-your-web-api"></a>Шаг 4. Установка модулей Restify для веб-API
-Мы используем Resitfy для построения интерфейса REST API. Restify — это минималистичная и гибкая платформа для приложений Node.j, созданная на основе Express. Restify имеет широкий набор функций, которые можно использовать для создания интерфейсов REST API поверх Connect.
+## <a name="4-install-hello-restify-modules-in-your-web-api"></a>4: install hello restify модулей в веб-API
+Мы используем Resitfy toobuild нашем API REST. Restify — это минималистичная и гибкая платформа для приложений Node.j, созданная на основе Express. Restify имеет широкий набор функций, которые можно использовать API-интерфейс REST на основе Connect toobuild.
 
 ### <a name="install-restify"></a>Установка Restify
-1.  В командной строке смените каталог на **azuread**.
+1.  В командной строке измените каталог hello слишком**azuread**:
 
     `cd azuread`
 
-    Если каталог **azuread** не существует, создайте его.
+    Если hello **azuread** каталог не существует, создайте его:
 
     `mkdir azuread`
 
@@ -72,7 +72,7 @@ ms.lasthandoff: 07/11/2017
 
     `npm install restify`
 
-    Выходные данные этой команды должны выглядеть следующим образом:
+    Hello выходные данные этой команды должен выглядеть следующим образом:
 
     ```
     restify@2.6.1 node_modules/restify
@@ -98,9 +98,9 @@ ms.lasthandoff: 07/11/2017
     ```
 
 #### <a name="did-you-get-an-error"></a>Вы получили сообщение об ошибке?
-В некоторых операционных системах при использовании команды `npm` может появиться сообщение: `Error: EPERM, chmod '/usr/local/bin/..'`. Оно сопровождается запросом на использование учетной записи с правами администратора. В этом случае необходимо с помощью команды `sudo` запустить `npm` с более высоким уровнем привилегий.
+В некоторых операционных системах при использовании hello `npm` команда, может появиться это сообщение: `Error: EPERM, chmod '/usr/local/bin/..'`. Ошибка Hello сопровождается запроса, попробуйте выполнить выполняющейся hello учетной записи с правами администратора. В этом случае команда hello `sudo` toorun `npm` на более высоком уровне привилегий.
 
-#### <a name="did-you-get-an-error-related-to-dtrace"></a>Вы получили сообщение об ошибке, которая относится к DTrace?
+#### <a name="did-you-get-an-error-related-toodtrace"></a>Было возникнет ошибка, связанная tooDTrace?
 При установке Restify может появиться следующее сообщение:
 
 ```Shell
@@ -120,17 +120,17 @@ gyp ERR! not ok
 npm WARN optional dep failed, continuing dtrace-provider@0.2.8
 ```
 
-Restify предоставляет мощный механизм для трассировки вызовов REST с помощью DTrace. Однако во многих операционных системах DTrace отсутствует. Это сообщение об ошибке можно игнорировать.
+Restify имеет tootrace мощный механизм, с помощью DTrace вызовы REST. Однако во многих операционных системах DTrace отсутствует. Это сообщение об ошибке можно игнорировать.
 
 
 ## <a name="5-install-passportjs-in-your-web-api"></a>Шаг 5. Установка Passport.js для веб-интерфейса API
-1.  В командной строке смените каталог на **azuread**.
+1.  В командной строке hello изменить каталог hello слишком**azuread**.
 
 2.  Установите Passport.js.
 
     `npm install passport`
 
-    Выходные данные этой команды должны выглядеть следующим образом:
+    Hello выходные данные команды hello должен выглядеть следующим образом:
 
     ```
      passport@0.1.17 node_modules\passport
@@ -138,23 +138,23 @@ Restify предоставляет мощный механизм для трас
     └── pkginfo@0.2.3
     ```
 
-## <a name="6-add-passport-azure-ad-to-your-web-api"></a>Шаг 6. Добавление Passport-Azure-AD в веб-API
-Затем добавьте стратегию OAuth с помощью passport-azuread. `passport-azuread` — это набор стратегий, который устанавливает подключение Azure AD к Passport. В этом примере REST API мы будем использовать эту стратегию для токенов носителя.
+## <a name="6-add-passport-azure-ad-tooyour-web-api"></a>6: Добавление веб-API tooyour passport azure ad
+Добавьте hello OAuth стратегии, с помощью passport azuread. `passport-azuread` — это набор стратегий, который устанавливает подключение Azure AD к Passport. В этом примере REST API мы будем использовать эту стратегию для токенов носителя.
 
 > [!NOTE]
-> Платформа OAuth 2.0 позволяет выдавать маркеры любого известного типа, но в большинстве случаев используются маркеры только нескольких типов. Маркер-носитель обычно используется для защиты конечных точек. Это самый распространенный тип выдаваемых маркеров в OAuth 2.0. Во многих реализациях OAuth 2.0 предполагается, что маркер-носитель — это единственный тип выданного токена.
+> Платформа OAuth 2.0 позволяет выдавать маркеры любого известного типа, но в большинстве случаев используются маркеры только нескольких типов. Токены носителя, часто используемые tooprotect конечных точек. Токены носителя — тип hello наиболее широко выданного маркера в OAuth 2.0. Многие реализации OAuth 2.0 предполагают, что токены носителя являются единственным типом маркера, выданного hello.
 > 
 > 
 
-1.  В командной строке смените каталог на **azuread**.
+1.  В командной строке измените каталог hello слишком**azuread**.
 
     `cd azuread`
 
-2.  Установите модуль Passport.js `passport-azure-ad`.
+2.  Установка hello Passport.js `passport-azure-ad` модуля:
 
     `npm install passport-azure-ad`
 
-    Выходные данные этой команды должны выглядеть следующим образом:
+    Hello выходные данные команды hello должен выглядеть следующим образом:
 
     ```
     passport-azure-ad@1.0.0 node_modules/passport-azure-ad
@@ -171,25 +171,25 @@ Restify предоставляет мощный механизм для трас
     └── xml2js@0.4.9 (sax@0.6.1, xmlbuilder@2.6.4)
     ```
 
-## <a name="7-add-mongodb-modules-to-your-web-api"></a>Шаг 7. Добавление модулей MongoDB в веб-интерфейс API
+## <a name="7-add-mongodb-modules-tooyour-web-api"></a>7: Добавление MongoDB модули tooyour веб-API
 В этом примере мы используем MongoDB в качестве хранилища данных. 
 
-1.  Установите Mongoose, широко используемый подключаемый модуль для управления моделями и схемами. 
+1.  Установить Mongoose, широко используемый подключаемый модуль, toomanage моделей и схем: 
 
     `npm install mongoose`
 
-2.  Установите драйвер базы данных для MongoDB (который также называется MongoDB).
+2.  Установите hello драйвер базы данных MongoDB, которая также называется MongoDB.
 
     `npm install mongodb`
 
 ## <a name="8-install-additional-modules"></a>Шаг 8. Установка дополнительных модулей
-Установите остальные необходимые модули.
+Установите hello оставшихся необходимые модули.
 
-1.  В командной строке смените каталог на **azuread**.
+1.  В командной строке измените каталог hello слишком**azuread**:
 
     `cd azuread`
 
-2.  Введите следующие команды. Они используются для установки следующих модулей в каталоге node_modules:
+2.  Введите следующие команды hello. Hello команды устанавливают следующие модули в папке node_modules hello:
 
     *   `npm install crypto`
     *   `npm install assert-plus`
@@ -212,13 +212,13 @@ Restify предоставляет мощный механизм для трас
     *   `npm update`
 
 ## <a name="9-create-a-serverjs-file-for-your-dependencies"></a>Шаг 9. Создание файла Server.js для зависимостей
-Основная часть функций для сервера веб-API реализована в файле Server.js. Добавьте в этот файл основную часть своего кода. В производственных целях можно разделить функционал на небольшие файлы, такие как отдельные маршруты и контроллеры. В этой статье мы используем Server.js.
+Файл Server.js содержит hello большую часть функций hello API веб-сервера. Добавьте большая часть файла с кодом toothis. Для производственных целей рефакторинг функции hello разбиваются на меньшие файлы как для отдельных маршрутов и контроллеров. В этой статье мы используем Server.js.
 
-1.  В командной строке смените каталог на **azuread**.
+1.  В командной строке измените каталог hello слишком**azuread**:
 
     `cd azuread`
 
-2.  С помощью редактора по своему усмотрению создайте файл server.js. Добавьте в файл следующие данные:
+2.  С помощью редактора по своему усмотрению создайте файл server.js. Добавьте следующие сведения toohello файл hello:
 
     ```Javascript
     'use strict';
@@ -235,24 +235,24 @@ Restify предоставляет мощный механизм для трас
     var OIDCBearerStrategy = require('passport-azure-ad').OIDCStrategy;
     ```
 
-3.  Сохраните файл. Вы вернетесь к нему позже.
+3.  Сохраните файл hello. Скоро будет возвращать tooit.
 
-## <a name="10-create-a-config-file-to-store-your-azure-ad-settings"></a>Шаг 10. Создание файла конфигурации для сохранения параметров Azure AD
-Данный фрагмент кода передает параметры конфигурации с вашего портала Azure AD в файл Passport.js. Эти значения конфигурации были созданы, когда вы добавляли веб-API на портал, выполняя первую часть этого руководства. Мы объясним, какие значения нужно указать для этих параметров в скопированном фрагменте кода.
+## <a name="10-create-a-config-file-toostore-your-azure-ad-settings"></a>10: создать файл конфигурации toostore параметры Azure AD
+Этот файл код передает hello параметры конфигурации из вашего tooPassport.js портала Azure AD. Эти значения конфигурации, созданный при добавлении API toohello hello веб-портала в начале статьи hello hello. После копирования кода hello объясняется, какие tooput hello значениями этих параметров.
 
-1.  В командной строке смените каталог на **azuread**.
+1.  В командной строке измените каталог hello слишком**azuread**:
 
     `cd azuread`
 
-2.  В редакторе создайте файл Config.js. Добавьте следующие данные:
+2.  В редакторе создайте файл Config.js. Добавьте hello следующую информацию:
 
     ```Javascript
-    // Don't commit this file to your public repos. This config is for first-run.
+    // Don't commit this file tooyour public repos. This config is for first-run.
     exports.creds = {
     mongoose_auth_local: 'mongodb://localhost/tasklist', // Your Mongo auth URI goes here.
     issuer: 'https://sts.windows.net/**<your application id>**/',
     audience: '<your redirect URI>',
-    identityMetadata: 'https://login.microsoftonline.com/common/.well-known/openid-configuration' // For Microsoft, you should never need to change this.
+    identityMetadata: 'https://login.microsoftonline.com/common/.well-known/openid-configuration' // For Microsoft, you should never need toochange this.
     };
 
     ```
@@ -261,39 +261,39 @@ Restify предоставляет мощный механизм для трас
 
 ### <a name="required-values"></a>Обязательные значения
 
-*   **IdentityMetadata**. Здесь модуль `passport-azure-ad` будет искать данные конфигурации для поставщика удостоверений (IDP), а также ключи для проверки маркеров JWT. Если вы используете Azure AD, возможно, эти данные изменять не нужно.
+*   **IdentityMetadata**: это место, куда `passport-azure-ad` ищет данные конфигурации для hello поставщика удостоверений (IDP) и ключи toovalidate hello hello веб-маркеры JSON (JWT). При использовании Azure AD, скорее всего, не следует toochange это.
 
-*   **audience**— это универсальный код ресурса (URI) перенаправления с портала.
+*   **аудитория**: на URI перенаправления из портала hello.
 
 > [!NOTE]
-> Рекомендуется часто менять ключи. Убедитесь, что вы всегда извлекаете данные из URL-адреса openid_keys и что приложение имеет доступ к Интернету.
+> Рекомендуется часто менять ключи. Убедитесь, что всегда извлекаются из URL-адреса «openid_keys» hello, и приложение hello можно открыть hello Интернета.
 > 
 > 
 
-## <a name="11-add-the-configuration-to-your-serverjs-file"></a>Шаг 11. Добавление конфигурации в файл Server.js
-Приложение должно считывать значения из только что созданного файла конфигурации. Добавьте в приложение файл с расширением .config в качестве требуемого ресурса. Задайте глобальным переменным значения из файла Config.js.
+## <a name="11-add-hello-configuration-tooyour-serverjs-file"></a>11: добавить файл Server.js tooyour конфигурации hello
+Приложению tooread hello значения из файла конфигурации hello, которую вы только что создали. Добавьте файл .config hello из требуемых ресурсов в приложении. Задать toothose hello глобальные переменные, которые находятся в Config.js.
 
-1.  В командной строке смените каталог на **azuread**.
+1.  В командной строке hello изменить каталог hello слишком**azuread**:
 
     `cd azuread`
 
-2.  В редакторе откройте файл Server.js. Добавьте следующие данные:
+2.  В редакторе откройте файл Server.js. Добавьте hello следующую информацию:
 
     ```Javascript
     var config = require('./config');
     ```
 
-3.  Добавьте новый раздел в Server.js.
+3.  Добавьте новый tooServer.js раздела:
 
     ```Javascript
-    // Pass these options in to the ODICBearerStrategy.
+    // Pass these options in toohello ODICBearerStrategy.
     var options = {
-    // The URL of the metadata document for your app. Put the keys for token validation from the URL found in the jwks_uri tag in the metadata.
+    // hello URL of hello metadata document for your app. Put hello keys for token validation from hello URL found in hello jwks_uri tag in hello metadata.
     identityMetadata: config.creds.identityMetadata,
     issuer: config.creds.issuer,
     audience: config.creds.audience
     };
-    // Array to hold signed-in users and the current signed-in user (owner).
+    // Array toohold signed-in users and hello current signed-in user (owner).
     var users = [];
     var owner = null;
     // Your logger
@@ -302,68 +302,68 @@ Restify предоставляет мощный механизм для трас
     });
     ```
 
-## <a name="12-add-the-mongodb-model-and-schema-information-by-using-mongoose"></a>Шаг 12. Добавление сведений о модели и схеме MongoDB с помощью Mongoose
+## <a name="12-add-hello-mongodb-model-and-schema-information-by-using-mongoose"></a>12: Добавление hello MongoDB модели и данные схемы с помощью Mongoose
 Затем подключите эти три файла в службе REST API.
 
-В этой статье мы используем MongoDB для хранения наших задач. Этот вопрос обсуждается на *шаге 4*.
+В этой статье мы используем MongoDB toostore нашей задачи. Этот вопрос обсуждается на *шаге 4*.
 
-В файле Config.js, созданном на шаге 11, база данных называется *tasklist*. Это вы указали в конце URL-адреса подключения mongoose_auth_local. Не нужно заранее создавать эту базу данных в MongoDB. База данных создается при первом запуске серверного приложения (при условии, что база данных еще не существует).
+В файле Config.js hello, созданный на шаге 11, базы данных называется *tasklist*. Это было поместить в конце hello URL-адрес подключения mongoose_auth_local. Не нужно toocreate базы данных, заранее в MongoDB. Hello база данных создается на hello сначала выполнения приложения сервера (при условии, что hello базы данных еще не существует).
 
-Вы указали серверу, какую базу данных MongoDB следует использовать. Далее необходимо написать дополнительный код для создания модели и схемы для задач сервера.
+Hello server рассказали какие toouse базы данных MongoDB. Далее необходимо toowrite некоторые модели hello toocreate дополнительного кода и схемы для вашего сервера задач.
 
-### <a name="the-model"></a>Модель
-Модель схемы очень проста. При необходимости ее можно расширить. 
+### <a name="hello-model"></a>модель Hello
+модель схемы Hello является очень простым. При необходимости ее можно расширить. 
 
-Модель схемы имеет следующие значения:
+модель схемы Hello может принимать следующие значения:
 
-*   **Имя**. Кому назначено это задание. Это **строковое** значение.
-*   **Задача**. Имя задачи. Это **строковое** значение.
-*   **Дата**. Дата ожидаемого выполнения задачи. Это значение **datetime**.
-*   **Завершено**. Статус завершения задачи. Это **логическое** значение.
+*   **Имя**. Задача назначенного toohello Hello человека. Это **строковое** значение.
+*   **Задача**. Hello имя задачи «hello». Это **строковое** значение.
+*   **Дата**. Hello Дата выполнения этой задачи hello. Это значение **datetime**.
+*   **Завершено**. Является ли hello задача завершена. Это **логическое** значение.
 
-### <a name="create-the-schema-in-the-code"></a>Создание схемы в коде
-1.  В командной строке смените каталог на **azuread**.
+### <a name="create-hello-schema-in-hello-code"></a>Создание схемы hello в коде hello
+1.  В командной строке измените каталог hello слишком**azuread**:
 
     `cd azuread`
 
-2.  В редакторе откройте файл Server.js. Под записью конфигурации добавьте следующие сведения:
+2.  В редакторе откройте файл Server.js. Запись конфигурации hello добавьте hello следующую информацию:
 
     ```Javascript
     // MongoDB setup.
     // Set up some configuration.
     var serverPort = process.env.PORT || 8080;
     var serverURI = (process.env.PORT) ? config.creds.mongoose_auth_mongohq : config.creds.mongoose_auth_local;
-    // Connect to MongoDB.
+    // Connect tooMongoDB.
     global.db = mongoose.connect(serverURI);
     var Schema = mongoose.Schema;
     log.info('MongoDB Schema loaded');
     ```
 
-Этот код подключается к серверу MongoDB. Он также возвращает объект схемы.
+Он подключает toohello MongoDB сервера. Он также возвращает объект схемы.
 
-#### <a name="using-the-schema-create-your-model-in-the-code"></a>С помощью схемы создайте модель в коде
-После предыдущего кода добавьте следующий код:
+#### <a name="using-hello-schema-create-your-model-in-hello-code"></a>С помощью схемы hello, создайте модели в коде hello
+Hello предшествующий код добавьте hello, следующий код:
 
 ```Javascript
-// Create a basic schema to store your tasks and users.
+// Create a basic schema toostore your tasks and users.
 var TaskSchema = new Schema({
 owner: String,
 task: String,
 completed: Boolean,
 date: Date
 });
-// Use the schema to register a model.
+// Use hello schema tooregister a model.
 mongoose.model('Task', TaskSchema);
 var Task = mongoose.model('Task');
 ```
 
-Как видно из кода, сначала вы создаете схему данных. Затем создайте объект модели. Используйте объект модели для хранения данных в коде при определении **маршрутов**.
+Как можно видеть из кода hello, сначала создать схему. Затем создайте объект модели. Используйте hello модели объекта toostore данных по всему hello кода при определении вашей **маршруты**.
 
 ## <a name="13-add-your-routes-for-your-task-rest-api-server"></a>Шаг 13. Добавление маршрутов для сервера REST API задачи
-Теперь модель базы данных готова к использованию. Добавьте маршруты, которые будут использоваться для сервера REST API.
+Теперь, когда toowork модели базы данных с добавьте hello маршруты, который будет использоваться для сервера API-интерфейса REST.
 
 ### <a name="about-routes-in-restify"></a>О маршрутах в Restify
-Маршруты в Restify действуют точно так же, как и при использовании стека Express. Вы определяете маршруты с помощью идентификатора URI, который, как предполагается, будут вызывать клиентские приложения. Как правило, свои маршруты вы определяете в отдельном файле. В этом руководстве мы помещаем маршруты в файл Server.js. Для систем в рабочей среде мы рекомендуем вынести их в отдельный файл.
+Маршруты в restify рабочих точно hello так же, как при использовании hello стека, экспресс-выпуск. Определения маршрутов с помощью hello URI, что предполагается toocall приложения hello клиента. Как правило, свои маршруты вы определяете в отдельном файле. В этом руководстве мы помещаем маршруты в файл Server.js. Для систем в рабочей среде мы рекомендуем вынести их в отдельный файл.
 
 Типичный шаблон для маршрута Restify выглядит следующим образом:
 
@@ -372,23 +372,23 @@ function createObject(req, res, next) {
 // Do work on object.
 _object.name = req.params.object; // Passed value is in req.params under object.
 ///...
-return next(); // Keep the server going.
+return next(); // Keep hello server going.
 }
 ....
 server.post('/service/:add/:object', createObject); // calls createObject on routes that match this.
 ```
 
 
-Это шаблон на самом базовом уровне. В Restify (как и в Express) доступны очень мощные функциональные возможности, например для определения типов приложений и выполнения сложной маршрутизации между несколькими конечными точками.
+Это шаблон hello на самом базовом уровне hello. Restify (и Express) предоставляет гораздо более глубокую функциональные возможности, как типы приложений toodefine возможность hello и сложные маршрутизации между разными конечными точками.
 
-#### <a name="add-default-routes-to-your-server"></a>Добавление на сервер маршрутов по умолчанию
-Добавьте маршруты для базовых операций CRUD (**создание**, **извлечение**, **обновление** и **удаление** данных).
+#### <a name="add-default-routes-tooyour-server"></a>Добавление сервера tooyour маршруты по умолчанию
+Добавить базовый CRUD маршруты hello: **создания**, **получить**, **обновление**, и **удалить**.
 
-1.  В командной строке смените каталог на **azuread**.
+1.  В командной строке измените каталог hello слишком**azuread**:
 
     `cd azuread`
 
-2.  В редакторе откройте файл Server.js. Добавьте следующие сведения под записями о базе данных, которые вы добавили ранее:
+2.  В редакторе откройте файл Server.js. Ниже записи в базе данных hello ранее сделанные, добавить hello следующую информацию:
 
     ```Javascript
     /**
@@ -397,11 +397,11 @@ server.post('/service/:add/:object', createObject); // calls createObject on rou
     */
     // Create a task.
     function createTask(req, res, next) {
-    // Resitify currently has a bug that doesn't allow you to set default headers.
-    // These headers comply with CORS, and allow you to use MongoDB Server as your response to any origin.
+    // Resitify currently has a bug that doesn't allow you tooset default headers.
+    // These headers comply with CORS, and allow you toouse MongoDB Server as your response tooany origin.
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "X-Requested-With");
-    // Create a new task model, fill it, and save it to MongoDB.
+    // Create a new task model, fill it, and save it tooMongoDB.
     var _task = new Task();
     if (!req.params.task) {
     req.log.warn({
@@ -415,7 +415,7 @@ server.post('/service/:add/:object', createObject); // calls createObject on rou
     _task.date = new Date();
     _task.save(function(err) {
     if (err) {
-    req.log.warn(err, 'createTask: unable to save');
+    req.log.warn(err, 'createTask: unable toosave');
     next(err);
     } else {
     res.send(201, _task);
@@ -431,7 +431,7 @@ server.post('/service/:add/:object', createObject); // calls createObject on rou
     }, function(err) {
     if (err) {
     req.log.warn(err,
-    'removeTask: unable to delete %s',
+    'removeTask: unable toodelete %s',
     req.params.task);
     next(err);
     } else {
@@ -454,7 +454,7 @@ server.post('/service/:add/:object', createObject); // calls createObject on rou
     owner: owner
     }, function(err, data) {
     if (err) {
-    req.log.warn(err, 'get: unable to read %s', owner);
+    req.log.warn(err, 'get: unable tooread %s', owner);
     next(err);
     return;
     }
@@ -462,10 +462,10 @@ server.post('/service/:add/:object', createObject); // calls createObject on rou
     });
     return next();
     }
-    /// Returns the list of TODOs that were loaded.
+    /// Returns hello list of TODOs that were loaded.
     function listTasks(req, res, next) {
-    // Resitify currently has a bug that doesn't allow you to set default headers.
-    // These headers comply with CORS, and allow us to use MongoDB Server as our response to any origin.
+    // Resitify currently has a bug that doesn't allow you tooset default headers.
+    // These headers comply with CORS, and allow us toouse MongoDB Server as our response tooany origin.
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "X-Requested-With");
     log.info("listTasks was called for: ", owner);
@@ -478,7 +478,7 @@ server.post('/service/:add/:object', createObject); // calls createObject on rou
     log.info(data);
     }
     if (!data.length) {
-    log.warn(err, "There are no tasks in the database. Add one!");
+    log.warn(err, "There are no tasks in hello database. Add one!");
     }
     if (!owner) {
     log.warn(err, "You did not pass an owner when listing tasks.");
@@ -490,13 +490,13 @@ server.post('/service/:add/:object', createObject); // calls createObject on rou
     }
     ```
 
-### <a name="add-error-handling-for-the-routes"></a>Добавление обработки ошибок для маршрутов
-Добавьте процедуру для обработки ошибок, чтобы сообщать клиенту о возникающих проблемах.
+### <a name="add-error-handling-for-hello-routes"></a>Добавьте обработку ошибок для маршрутов hello
+Добавьте некоторые обработку ошибок, могут взаимодействовать задней toohello клиента о проблеме hello, которыми вы столкнулись.
 
-Добавьте следующий код после кода, который вы уже написали:
+Добавьте следующий код ниже кода hello, который уже написаны hello:
 
 ```Javascript
-///--- Errors for communicating something more information back to the client.
+///--- Errors for communicating something more information back toohello client.
 function MissingTaskError() {
 restify.RestError.call(this, {
 statusCode: 409,
@@ -533,9 +533,9 @@ util.inherits(TaskNotFoundError, restify.RestError);
 
 
 ## <a name="14-create-your-server"></a>Шаг 14. Создание сервера
-Осталось только добавить экземпляр сервера. Экземпляр сервера управляет вызовами.
+Здравствуйте последнего самое toodo является tooadd свой экземпляр сервера. экземпляр сервера Hello управляет вызовов.
 
-Restify (и Express) предлагают эффективные возможности настройки, которые можно использовать на сервере REST API. В этом руководстве используется базовая процедура настройки.
+Restify (и Express) предлагают эффективные возможности настройки, которые можно использовать на сервере REST API. В этом учебнике мы используем hello наиболее базовой установки.
 
 ```Javascript
 /**
@@ -553,7 +553,7 @@ server.pre(restify.pre.sanitizePath());
 server.pre(restify.pre.userAgentConnection());
 // Set a per-request Bunyan logger (with requestid filled in).
 server.use(restify.requestLogger());
-// Allow 5 requests/second by IP address, and burst to 10.
+// Allow 5 requests/second by IP address, and burst too10.
 server.use(restify.throttle({
 burst: 10,
 rate: 5,
@@ -568,15 +568,15 @@ server.use(restify.bodyParser({
 mapParams: true
 }));
 ```
-## <a name="15-add-the-routes-without-authentication-for-now"></a>Шаг 15. Добавление маршрутов (в настоящее время без аутентификации)
+## <a name="15-add-hello-routes-without-authentication-for-now"></a>15: добавить маршруты hello (без проверки подлинности, сейчас)
 ```Javascript
-/// Use CRUD to add the real handlers.
+/// Use CRUD tooadd hello real handlers.
 /**
 /*
 /* Each of these handlers is protected by your Open ID Connect Bearer strategy. Invoke 'oidc-bearer'
-/* in the pasport.authenticate() method. Because REST is stateless, set 'session: false'. You 
-/* don't need to maintain session state. You can experiment with removing API protection.
-/* To do this, remove the passport.authenticate() method:
+/* in hello pasport.authenticate() method. Because REST is stateless, set 'session: false'. You 
+/* don't need toomaintain session state. You can experiment with removing API protection.
+/* toodo this, remove hello passport.authenticate() method:
 /*
 /* server.get('/tasks', listTasks);
 /*
@@ -612,28 +612,28 @@ server.listen(serverPort, function() {
 var consoleMessage = '\n Microsoft Azure Active Directory Tutorial';
 consoleMessage += '\n +++++++++++++++++++++++++++++++++++++++++++++++++++++';
 consoleMessage += '\n %s server is listening at %s';
-consoleMessage += '\n Open your browser to %s/tasks\n';
+consoleMessage += '\n Open your browser too%s/tasks\n';
 consoleMessage += '+++++++++++++++++++++++++++++++++++++++++++++++++++++ \n';
-consoleMessage += '\n !!! why not try a $curl -isS %s | json to get some ideas? \n';
+consoleMessage += '\n !!! why not try a $curl -isS %s | json tooget some ideas? \n';
 consoleMessage += '+++++++++++++++++++++++++++++++++++++++++++++++++++++ \n\n';
 });
 ```
-## <a name="16-run-the-server"></a>Шаг 16. Запуск сервера
-Перед добавлением функции проверки подлинности рекомендуется проверить сервер.
+## <a name="16-run-hello-server"></a>16: запускать сервер hello
+Это tootest рекомендуется перед добавлением проверки подлинности сервера.
 
-Проще всего это сделать с помощью curl из командной строки. Для этого требуется простая служебная программа, которую можно использовать для анализа выходных данных в формате JSON. 
+Самый простой способ tootest Hello сервера — с помощью перелистывание в командной строке. toodo, требуется простой программы, можно использовать tooparse результаты как JSON. 
 
-1.  Установите средство JSON, которое используется в следующих примерах:
+1.  Установите средство JSON hello, мы используем hello следующие примеры:
 
     `$npm install -g jsontool`
 
-    Это обеспечивает глобальную установку средства JSON.
+    При этом устанавливаются средства JSON hello глобально.
 
 2.  Убедитесь, что ваш экземпляр MongoDB работает.
 
     `$sudo mongod`
 
-3.  Измените каталог на **azuread** и запустите curl:
+3.  Измените каталог hello слишком**azuread**, а затем запустите перелистывание:
 
     `$ cd azuread`
     `$ node server.js`
@@ -657,11 +657,11 @@ consoleMessage += '+++++++++++++++++++++++++++++++++++++++++++++++++++++ \n\n';
     ]
     ```
 
-4.  Добавьте задачу:
+4.  tooadd задачи:
 
     `$ curl -isS -X POST http://127.0.0.1:8888/tasks/brandon/Hello`
 
-    Ответ должен быть следующим:
+    Hello ответа должно быть:
 
     ```Shell
     HTTP/1.1 201 Created
@@ -678,21 +678,21 @@ consoleMessage += '+++++++++++++++++++++++++++++++++++++++++++++++++++++ \n\n';
 
     `$ curl -isS http://127.0.0.1:8080/tasks/brandon/`
 
-Если все эти команды выполняются без ошибок, можно приступать к добавлению OAuth на сервер REST API.
+Если все эти команды выполняются без ошибок, не требуется сервер готов tooadd OAuth toohello REST API.
 
 *Теперь у вас есть сервер REST API с MongoDB!*
 
-## <a name="17-add-authentication-to-your-rest-api-server"></a>Шаг 17. Добавление функции проверки подлинности на сервер REST API
-Теперь, когда у вас есть работающий REST API, настройте его для использования с Azure AD.
+## <a name="17-add-authentication-tooyour-rest-api-server"></a>17: Добавление сервера API-интерфейса REST tooyour проверки подлинности
+Теперь, когда выполнение API REST, он настраивается toouse его с Azure AD.
 
-В командной строке смените каталог на **azuread**.
+В командной строке измените каталог hello слишком**azuread**:
 
 `cd azuread`
 
-### <a name="use-the-oidcbearerstrategy-thats-included-with-passport-azure-ad"></a>Использование стратегии OIDCBearerStrategy, включенной в passport-azure-ad
+### <a name="use-hello-oidcbearerstrategy-thats-included-with-passport-azure-ad"></a>Использовать oidcbearerstrategy hello, предоставляемую с passport azure ad
 На данный момент вы создали стандартный сервер REST TODO без какой-либо авторизации. Теперь добавьте проверку подлинности.
 
-Сначала укажите, что вы хотите использовать Passport. Сделайте это сразу после конфигурации сервера.
+Во-первых требуется укажите toouse Passport. Сделайте это сразу после конфигурации сервера.
 
 ```Javascript
 // Start using Passport.js.
@@ -702,21 +702,21 @@ server.use(passport.session()); // Provides session support
 ```
 
 > [!TIP]
-> При написании интерфейсов API рекомендуется всегда связывать данные с уникальными параметрами маркера, которые пользователь не сможет подделать. Когда сервер сохраняет элементы списка дел (TODO), он делает это на основании идентификатора подписки пользователя в маркере (вызываемого с помощью token.sub). token.sub указывается в поле owner (владелец). Благодаря этому только владелец сможет получить доступ к своим элементам списка дел (TODO). Никто другой не может получить доступ к элементам списка дел (TODO), которые были введены. В API владелец не раскрывается. Внешний пользователь может запросить элементы списка дел (TODO) других пользователей, даже если они прошли проверку подлинности.
+> При написании API-интерфейсы, это toosomething данных отличается от маркера hello, hello пользователя подменить приветствия ссылку tooalways рекомендуется. Когда этот сервер сохраняет элементы TODO, она сохраняет их на основе идентификатора подписки пользователя hello в маркере hello (называемые через token.sub). В поле «владелец» hello, поместите hello token.sub. Это гарантирует доступность TODOs hello пользователя только данный пользователь. Никто не может получить доступ к TODOs hello, которые были введены. Нет отсутствие проблем в hello API для «владелец». Внешний пользователь может запросить элементы списка дел (TODO) других пользователей, даже если они прошли проверку подлинности.
 > 
 > 
 
-Теперь используйте стратегию Open ID Connect Bearer, включенную в состав `passport-azure-ad`. Вставьте это после добавленного ранее:
+Затем с помощью стратегии носителя подключения откройте Идентификатором hello, входящий в состав `passport-azure-ad`. Вставьте это после добавленного ранее:
 
 ```Javascript
 /**
 /*
-/* Calling the OIDCBearerStrategy and managing users.
+/* Calling hello OIDCBearerStrategy and managing users.
 /*
-/* Because of the Passport pattern, you need to manage users and info tokens
-/* with a FindorCreate() method. The method must be provided by the implementor.
-/* In the following code, you autoregister any user and implement a FindById().
-/* It's a good idea to do something more advanced.
+/* Because of hello Passport pattern, you need toomanage users and info tokens
+/* with a FindorCreate() method. hello method must be provided by hello implementor.
+/* In hello following code, you autoregister any user and implement a FindById().
+/* It's a good idea toodo something more advanced.
 **/
 var findById = function(id, fn) {
 for (var i = 0, len = users.length; i < len; i++) {
@@ -730,8 +730,8 @@ return fn(null, null);
 };
 var oidcStrategy = new OIDCBearerStrategy(options,
 function(token, done) {
-log.info('verifying the user');
-log.info(token, 'was the token retrieved');
+log.info('verifying hello user');
+log.info(token, 'was hello token retrieved');
 findById(token.sub, function(err, user) {
 if (err) {
 return done(err);
@@ -751,15 +751,15 @@ return done(null, user, token);
 passport.use(oidcStrategy);
 ```
 
-Для Passport свойственно аналогичное поведение для всех стратегий (Twitter, Facebook и т. д.). Все авторы стратегии придерживаются этого шаблона. Передайте стратегию `function()`, которая использует маркер и значение `done` в качестве параметров. Стратегия возвращается после того, как выполнит всю свою работу. Сохраните данные пользователя и маркер, чтобы не задавать их в следующий раз повторно.
+Для Passport свойственно аналогичное поведение для всех стратегий (Twitter, Facebook и т. д.). Все записи стратегии придерживаться toohello шаблон. Передайте hello стратегии `function()` , использует токен и `done` в качестве параметров. Стратегия Hello возвращается после его свою работу. Пользователь hello хранилища и образа hello маркер tooask для него требуется еще раз.
 
 > [!IMPORTANT]
-> Приведенный выше код принимает любого пользователя, который может пройти проверку подлинности на сервере. Это называется автоматической регистрацией. На рабочих серверах не нужно разрешать другим пользователям входить без выбранной вами регистрации. Это обычное поведение в приложениях для потребителей. Приложение можно зарегистрировать в Facebook, но потребуется ввести дополнительные сведения. Если в этом руководстве вы не использовали программу командной строки, сообщение электронной почты можно извлечь из возвращаемого объекта маркера. Затем вы можете попросить пользователя ввести дополнительные сведения. Так как это всего лишь тестовый сервер, просто добавьте пользователей в базу данных в памяти.
+> Hello выше код принимает любой пользователь, который может проверить подлинность сервера tooyour. Это называется автоматической регистрацией. На рабочем сервере не стоит toolet любой пользователь без необходимости их пройти процесс регистрации, выборе. Обычно это является шаблон hello в потребительские приложения. приложение Hello может разрешить tooregister с Facebook, но затем вас просят tooenter дополнительных сведений. Если с помощью программы командной строки не были в этом учебнике, можно извлечь из hello объекта маркера, который возвращается hello электронной почты. Затем задайте себе вопрос: hello пользователя tooenter Дополнительные сведения. Так как на тестовом сервере, можно добавить пользователя hello непосредственно toohello в памяти базы данных.
 > 
 > 
 
 ### <a name="protect-endpoints"></a>Защита конечных точек
-Для защиты конечных точек необходимо указать вызов **passport.authenticate()** с протоколом, который вы хотите использовать.
+Защита конечных точек, указав hello **passport.authenticate()** вызов с протоколом hello, которые должны toouse.
 
 Вы можете изменить маршрут в коде сервера для более продвинутого использования:
 
@@ -800,13 +800,13 @@ next();
 ```
 
 ## <a name="18-run-your-server-application-again"></a>Шаг 18. Повторный запуск серверного приложения
-Снова воспользуйтесь curl, чтобы определить, активирована ли защита OAuth 2.0 применительно к конечным точкам. Сделайте это до запуска любого клиентского пакета SDK для этой конечной точки. Возвращаемые заголовки должны содержать сведения о правильной работе функции проверки подлинности.
+Используйте curl снова toosee при наличии защиты OAuth 2.0 для конечных точек. Сделайте это до запуска любого клиентского пакета SDK для этой конечной точки. заголовки Hello вернул должен сообщить, правильно ли работает проверки подлинности.
 
 1.  Убедитесь, что ваш экземпляр MongoDB работает.
 
     `$sudo mongod`
 
-2.  Измените каталог на **azuread**, а затем используйте curl:
+2.  Изменить toohello **azuread** каталога, а затем используйте curl:
 
     `$ cd azuread`
 
@@ -824,18 +824,18 @@ next();
     Transfer-Encoding: chunked
     ```
 
-Ответ 401 указывает, что уровень Passport пытается перенаправить нас к конечной точке авторизации. Это именно то, что нам нужно.
+Ответ 401 указывает уровень Passport hello пытается tooredirect toohello конечную точку авторизации, что именно вы хотите.
 
 *Теперь у вас есть служба REST API, использующая OAuth 2.0!*
 
-Вы уже сделали с этим сервером все, что можно реализовать без использования клиента, совместимого с OAuth 2.0. Для работы с клиентом необходимо изучить дополнительное руководство.
+Вы уже сделали с этим сервером все, что можно реализовать без использования клиента, совместимого с OAuth 2.0. Для этого потребуется tooreview дополнительных учебника.
 
 ## <a name="next-steps"></a>Дальнейшие действия
-Полный пример (без ваших значений конфигурации) можно загрузить в виде [ZIP-архива](https://github.com/AzureADQuickStarts/AppModelv2-WebAPI-nodejs/archive/complete.zip). Кроме того, его можно клонировать из GitHub:
+Справочник по образец hello завершена (без настройки) предоставляется как [ZIP-файл](https://github.com/AzureADQuickStarts/AppModelv2-WebAPI-nodejs/archive/complete.zip). Кроме того, его можно клонировать из GitHub:
 
 ```git clone --branch complete https://github.com/AzureADQuickStarts/AppModelv2-WebAPI-nodejs.git```
 
-Теперь можно перейти к более сложным темам. Вы можете попытаться [защитить веб-приложение Node.js с помощью конечной точки версии 2.0](active-directory-v2-devquickstarts-node-web.md).
+Теперь можно переместить на toomore дополнительные разделы. Может потребоваться tootry [защитить веб-приложение Node.js с помощью конечной точки v2.0 hello](active-directory-v2-devquickstarts-node-web.md).
 
 Ниже приведены некоторые дополнительные ресурсы.
 
@@ -843,5 +843,5 @@ next();
 * [Тег StackOverflow "azure-active-directory"](http://stackoverflow.com/questions/tagged/azure-active-directory)
 
 ### <a name="get-security-updates-for-our-products"></a>Получение обновлений системы безопасности для наших продуктов
-Мы рекомендуем вам зарегистрироваться для получения уведомлений о нарушениях безопасности. Это можно сделать, подписавшись на уведомления безопасности консультационных служб на странице [технического центра безопасности](https://technet.microsoft.com/security/dd252948).
+Мы рекомендуем toosign копирование toobe уведомлений при внесении угрозы безопасности. На hello [выпуске](https://technet.microsoft.com/security/dd252948) страницы, подписаться на оповещения tooSecurity рекомендации.
 

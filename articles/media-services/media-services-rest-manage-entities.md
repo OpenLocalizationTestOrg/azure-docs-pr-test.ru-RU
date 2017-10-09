@@ -1,6 +1,6 @@
 ---
-title: "Управление сущностями служб мультимедиа с помощью REST | Документация Майкрософт"
-description: "Сведения о том, как управлять сущностями служб мультимедиа с помощью REST API."
+title: "aaaManaging сущностей служб мультимедиа с REST | Документы Microsoft"
+description: "Узнайте, как службы мультимедиа toomanage сущности с REST API."
 author: juliako
 manager: cfowler
 editor: 
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/10/2017
 ms.author: juliako
-ms.openlocfilehash: a336907b605da962f835b8057ac6071f480cd85e
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: bcdc5288e422ebc4e6f682a97da4e925ce237a79
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="managing-media-services-entities-with-rest"></a>Управление сущностями служб мультимедиа с помощью REST 
 > [!div class="op_single_selector"]
@@ -27,28 +27,28 @@ ms.lasthandoff: 08/29/2017
 > 
 > 
 
-Службы мультимедиа Microsoft Azure — это служба на основе REST, построенная на базе OData 3. Вы можете добавлять, запрашивать, обновлять и удалять сущности, как и в любой другой службе OData. Исключения будут выделены, когда это понадобится. Дополнительные сведения об OData см. в [документации по протоколу Open Data Protocol](http://www.odata.org/documentation/).
+Службы мультимедиа Microsoft Azure — это служба на основе REST, построенная на базе OData 3. Можно добавить запрос, обновления и удаления сущностей во многом hello же способом, что и на любой другой службе OData. Исключения будут выделены, когда это понадобится. Дополнительные сведения об OData см. в [документации по протоколу Open Data Protocol](http://www.odata.org/documentation/).
 
-В этой статье показано, как управлять сущностями служб мультимедиа с помощью REST.
+В этом разделе показано, как toomanage сущностей служб мультимедиа Azure с REST.
 
 >[!NOTE]
-> Начиная с 1 апреля 2017 г. все записи задания в вашей учетной записи и связанные с ней записи задач старше 90 дней будут автоматически удалены, даже если общее число записей не превышает значение максимальной квоты. Например, 1 апреля 2017 г. будет автоматически удалена любая запись задания в вашей учетной записи, созданная ранее 31 декабря 2016 г. Если необходимо архивировать данные задания или задачи, то можно использовать код, описанный в этой статье.
+> Начиная с 1 апреля 2017 г., записи любого задания в вашей учетной записи старше 90 дней автоматически удаляется, а также связанные с ней записи задачи, даже если hello общее количество записей ниже максимальная квота hello. Например, 1 апреля 2017 г. будет автоматически удалена любая запись задания в вашей учетной записи, созданная ранее 31 декабря 2016 г. Если вам нужна информация задания или задачи tooarchive hello, можно использовать код hello, описанные в этом разделе.
 
 ## <a name="considerations"></a>Рекомендации  
 
 При доступе к сущностям в службах мультимедиа необходимо задать определенные поля и значения заголовков в HTTP-запросах. Дополнительную информацию см. в статье [Обзор интерфейса REST API служб мультимедиа](media-services-rest-how-to-use.md).
 
-## <a name="connect-to-media-services"></a>Подключение к службам мультимедиа
+## <a name="connect-toomedia-services"></a>Подключение служб tooMedia
 
-Сведения о подключении к API AMS см. в разделе [Доступ к API служб мультимедиа Azure с помощью аутентификации Azure AD](media-services-use-aad-auth-to-access-ams-api.md). 
+Сведения о tooconnect toohello AMS API, в статье [hello доступа к API служб мультимедиа Azure с проверкой подлинности Azure AD](media-services-use-aad-auth-to-access-ams-api.md). 
 
 >[!NOTE]
->После успешного подключения к https://media.windows.net вы получите ошибку 301 (перенаправление), в которой будет указан другой URI служб мультимедиа. Используйте для последующих вызовов новый URI.
+>После успешного подключения toohttps://media.windows.net, будет получено перенаправление 301 указывающее другой URI служб Media Services. Необходимо внести toohello последующих вызовов новый URI.
 
 ## <a name="adding-entities"></a>Добавление сущностей
-Каждая сущность в службах мультимедиа добавляется в набор сущностей, например активы (Assets), посредством запроса HTTP POST.
+Каждая сущность в службах мультимедиа добавляется tooan набора сущностей, таких как активы, через запрос POST HTTP.
 
-В следующем примере показано, как создать AccessPolicy.
+Следующий пример показывает как Hello toocreate AccessPolicy.
 
     POST https://media.windows.net/API/AccessPolicies HTTP/1.1
     Content-Type: application/json;odata=verbose
@@ -65,7 +65,7 @@ ms.lasthandoff: 08/29/2017
 
 ## <a name="querying-entities"></a>Запрашивание сущностей
 Запрашивание и перечисление сущностей выполняется просто. Для этого используется только запрос HTTP GET и необязательные операции OData.
-В следующем примере извлекается список всех сущностей MediaProcessor.
+Hello следующий пример извлекает список всех объектов mediaprocessor.
 
     GET https://media.windows.net/API/MediaProcessors HTTP/1.1
     Content-Type: application/json;odata=verbose
@@ -76,7 +76,7 @@ ms.lasthandoff: 08/29/2017
     Authorization: Bearer http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=youraccountname&urn%3aSubscriptionId=2f84471d-b1ae-4e75-aa09-010f0fc0cf5b&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&Audience=urn%3aWindowsAzureMediaServices&ExpiresOn=1337078831&Issuer=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&HMACSHA256=suFkxhvPWxQVMjOYelOJfYEWkyTWJCBc02pF0N7NghI%3d
     Host: media.windows.net
 
-Кроме того, вы можете получить конкретную сущность или все наборы сущностей, связанные с определенной сущностью, как в приведенных ниже примерах.
+Можно также получить определенный объект или все наборы сущностей, связанные с определенной сущности, такие как в следующих примерах hello:
 
     GET https://media.windows.net/API/JobTemplates('nb:jtid:UUID:e81192f5-576f-b247-b781-70a790c20e7c') HTTP/1.1
     Content-Type: application/json;odata=verbose
@@ -96,7 +96,7 @@ ms.lasthandoff: 08/29/2017
     Authorization: Bearer http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=youraccountname&urn%3aSubscriptionId=2f84471d-b1ae-4e75-aa09-010f0fc0cf5b&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&Audience=urn%3aWindowsAzureMediaServices&ExpiresOn=1336907474&Issuer=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&HMACSHA256=OpuY0CeTylqFFcFaP4pKUVGesT4PGx4CP55zDf2zXnc%3d
     Host: media.windows.net
 
-Следующий пример возвращает только свойство State всех сущностей Jobs.
+Hello следующий пример возвращает hello свойству состояния всех заданий.
 
     GET https://media.windows.net/API/Jobs?$select=State HTTP/1.1
     Content-Type: application/json;odata=verbose
@@ -107,7 +107,7 @@ ms.lasthandoff: 08/29/2017
     Authorization: Bearer http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=youraccountname&urn%3aSubscriptionId=2f84471d-b1ae-4e75-aa09-010f0fc0cf5b&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&Audience=urn%3aWindowsAzureMediaServices&ExpiresOn=1337078831&Issuer=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&HMACSHA256=suFkxhvPWxQVMjOYelOJfYEWkyTWJCBc02pF0N7NghI%3d
     Host: media.windows.net
 
-В следующем примере возвращаются все объекты JobTemplate с именем "SampleTemplate".
+Hello следующий пример возвращает все объекты Jobtemplate с именем hello «SampleTemplate».
 
     GET https://media.windows.net/API/JobTemplates?$filter=startswith(Name,%20'SampleTemplate') HTTP/1.1
     Content-Type: application/json;odata=verbose
@@ -119,14 +119,14 @@ ms.lasthandoff: 08/29/2017
     Host: media.windows.net
 
 > [!NOTE]
-> Операция $expand не поддерживается в службах мультимедиа, так же как и неподдерживаемые методы LINQ, описанные в разделе "Рекомендации по LINQ (службы WCF Data Services)".
+> Hello $expand операция не поддерживается в службах мультимедиа также hello неподдерживаемые методы LINQ, описанных в рекомендации по LINQ (службы данных WCF).
 > 
 > 
 
 ## <a name="enumerating-through-large-collections-of-entities"></a>Перечисление больших коллекций сущностей
-При запросе сущностей существует ограничение в 1000 сущностей, возвращаемых за один раз, так как в открытой версии 2 REST количество результатов запросов ограничено 1000. Используйте **skip** и **top** для перебора больших коллекций объектов. 
+При запросе сущности, имеется ограничение в 1000 сущностей, возвращаемых одновременно, так как открытые v2 REST ограничивает результаты too1000 результаты запроса. Используйте **пропустить** и **верхней** tooenumerate через hello большое количество сущностей. 
 
-В следующем примере показано, как с помощью ссылок **skip** и **top** пропустить первые 2000 заданий и получить следующую 1000 заданий.  
+Следующий пример показывает как Hello toouse **пропустить** и **верхней** tooskip hello сначала 2000 заданий и get hello рядом 1000 заданий.  
 
     GET https://media.windows.net/api/Jobs()?$skip=2000&$top=1000 HTTP/1.1
     Content-Type: application/json;odata=verbose
@@ -138,9 +138,9 @@ ms.lasthandoff: 08/29/2017
     Host: media.windows.net
 
 ## <a name="updating-entities"></a>Обновление сущностей
-В зависимости от типа сущности и состояния, в котором она находится, можно обновить свойства этой сущности с помощью HTTP-запросов PATCH, PUT или MERGE. Дополнительные сведения об этих операциях см. [здесь](https://msdn.microsoft.com/library/dd541276.aspx).
+В зависимости от типа сущности hello и состояние hello, что он находится в можно обновить свойства с помощью обновления, PUT или MERGE HTTP. Дополнительные сведения об этих операциях см. [здесь](https://msdn.microsoft.com/library/dd541276.aspx).
 
-В следующем примере кода показано, как обновить свойство Name сущности Asset.
+Привет, в следующем примере кода показано, как tooupdate hello свойство Name объекта Asset.
 
     MERGE https://media.windows.net/API/Assets('nb:cid:UUID:80782407-3f87-4e60-a43e-5e4454232f60') HTTP/1.1
     Content-Type: application/json;odata=verbose
@@ -156,9 +156,9 @@ ms.lasthandoff: 08/29/2017
     {"Name" : "NewName" }
 
 ## <a name="deleting-entities"></a>Удаление сущностей
-Сущности в службах мультимедиа можно удалить с помощью запроса HTTP DELETE. В зависимости от сущности порядок, в котором удаляются сущности, может быть важным. Например, чтобы удалить сущность наподобие Asset, нужно перед этим отозвать (или удалить) все указатели (Locator), которые ссылаются на эту сущность.
+Сущности в службах мультимедиа можно удалить с помощью запроса HTTP DELETE. В зависимости от сущности hello hello порядок, в котором можно удалить сущности могут быть важны. Например, сущности, такие как средства требуется отозвать (или удалить) все Локаторы, которые ссылаются на данный объект Asset перед удалением hello активов.
 
-В приведенном ниже примере показан способ удаления сущности Locator (указатель), которая использовалась для отправки файла в хранилище больших двоичных объектов.
+Следующий пример показывает как Hello toodelete указателя, который был используется tooupload файла в хранилище больших двоичных объектов.
 
     DELETE https://media.windows.net/API/Locators('nb:lid:UUID:76dcc8e8-4230-463d-97b0-ce25c41b5c8d') HTTP/1.1
     Content-Type: application/json;odata=verbose

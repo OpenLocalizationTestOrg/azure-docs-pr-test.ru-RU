@@ -1,6 +1,6 @@
 ---
-title: "Привязки Cosmos DB в Функциях Azure | Документация Майкрософт"
-description: "Узнайте, как использовать привязки Azure Cosmos DB в Функциях Azure."
+title: "привязки функции Cosmos DB aaaAzure | Документы Microsoft"
+description: "Понять, как привязки toouse Azure Cosmos DB в функциях Azure."
 services: functions
 documentationcenter: na
 author: christopheranderson
@@ -16,48 +16,48 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 04/18/2016
 ms.author: glenga
-ms.openlocfilehash: de95b0591eb95e76dbb7ba2382e9e14e1f66cda1
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 76b89e8296db1dd28dff9528903b1f6a28f55232
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-functions-cosmos-db-bindings"></a>Привязки Cosmos DB в Функциях Azure
 [!INCLUDE [functions-selector-bindings](../../includes/functions-selector-bindings.md)]
 
-В этой статье объясняется, как настроить и запрограммировать привязки Azure Cosmos DB в Функциях Azure. Функции Azure поддерживают входные и выходные привязки для Cosmos DB.
+В этой статье объясняется, как привязки Azure Cosmos DB tooconfigure и код в функциях Azure. Функции Azure поддерживают входные и выходные привязки для Cosmos DB.
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
-Дополнительные сведения о Cosmos DB см. в статьях [Знакомство с DocumentDB: база данных NoSQL JSON](../documentdb/documentdb-introduction.md) и [Руководство по NoSQL. Создание консольного приложения DocumentDB на языке C#](../documentdb/documentdb-get-started.md).
+Дополнительные сведения о Cosmos DB см. в разделе [tooCosmos введение DB](../documentdb/documentdb-introduction.md) и [построение консольного приложения Cosmos DB](../documentdb/documentdb-get-started.md).
 
 <a id="docdbinput"></a>
 
 ## <a name="documentdb-api-input-binding"></a>Входная привязка API DocumentDB
-Входная привязка API DocumentDB получает документ Cosmos DB и передает его именованному входному параметру функции. Идентификатор документа можно определить по триггеру, который вызывает функцию. 
+Hello входной привязки DocumentDB API извлекает Cosmos DB документ и передает его toohello с именем входного параметра функции hello. можно определить идентификатор документа Hello на основании hello триггер, который вызывает функции hello. 
 
-Входная привязка API DocumentDB имеет следующие свойства в *function.json*:
+Hello DocumentDB API входной привязки имеет следующие свойства в hello *function.json*:
 
-- `name` — имя идентификатора, используемого в коде функции для документа.
-- `type` — для этого свойства нужно задать значение "documentdb".
-- `databaseName` — база данных, содержащая документ.
-- `collectionName` — коллекция, содержащая документ.
-- `id` — идентификатор документа, который нужно получить. Это свойство поддерживает параметры привязки; см. раздел [Привязка к пользовательским входным свойствам в выражении привязки](functions-triggers-bindings.md#bind-to-custom-input-properties-in-a-binding-expression) статьи [Основные понятия триггеров и привязок в Функциях Azure](functions-triggers-bindings.md).
-- `sqlQuery` — SQL-запрос к Cosmos DB, используемый для извлечения нескольких документов. Запрос поддерживает привязки времени выполнения. Например: `SELECT * FROM c where c.departmentId = {departmentId}`
-- `connection` — имя параметра приложения, содержащего строку подключения к Cosmos DB.
-- `direction` — для этого свойства нужно задать значение `"in"`.
+- `name`: Идентификатор имя, используемое в код функции для hello документа
+- `type`: необходимо задать слишком «documentdb»
+- `databaseName`: hello базы данных, содержащей документ hello
+- `collectionName`: hello коллекцию, содержащую hello документа
+- `id`: hello идентификатор hello tooretrieve документа. Это свойство поддерживает параметры привязки; в разделе [привязки входных свойств toocustom в выражение привязки](functions-triggers-bindings.md#bind-to-custom-input-properties-in-a-binding-expression) в статье hello [триггеры функций Azure и основные понятия привязки](functions-triggers-bindings.md).
+- `sqlQuery` — SQL-запрос к Cosmos DB, используемый для извлечения нескольких документов. запрос Hello поддерживает привязки исполняющей среды. Например: `SELECT * FROM c where c.departmentId = {departmentId}`
+- `connection`: hello имя параметра приложения hello, содержащий строки подключения Cosmos DB
+- `direction`: необходимо задать слишком`"in"`.
 
-Свойства `id` и `sqlQuery` невозможно указать одновременно. Если не задано ни `id`, ни `sqlQuery`, извлекается вся коллекция.
+Здравствуйте, свойства `id` и `sqlQuery` невозможно указать одновременно. Если ни одна из `id` , ни `sqlQuery` имеет значение, hello всего извлекается коллекция.
 
 ## <a name="using-a-documentdb-api-input-binding"></a>Использование входной привязки API DocumentDB
 
-* В функциях C# и F# любые изменения, внесенные во входной документ посредством именованных входных параметров, сохраняются автоматически после успешного выхода из функции. 
-* В функциях JavaScript изменения не обрабатываются автоматически при выходе из функции. Для внесения изменений используйте `context.bindings.<documentName>In` и `context.bindings.<documentName>Out`. См. [пример JavaScript](#injavascript).
+* В C# и F # функции при выходе из функции hello, успешно, все изменения, внесенные toohello входного документа через именованный входных параметров, автоматически сохраняется. 
+* В функциях JavaScript изменения не обрабатываются автоматически при выходе из функции. Вместо этого используйте `context.bindings.<documentName>In` и `context.bindings.<documentName>Out` toomake обновлений. В разделе hello [пример JavaScript](#injavascript).
 
 <a name="inputsample"></a>
 
 ## <a name="input-sample-for-single-document"></a>Пример входной привязки для отдельного документа
-Предположим, что у вас есть следующая входная привязка API DocumentDB в массиве `bindings` файла function.json:
+Предположим, что имеется следующее hello DocumentDB API входной привязки в hello `bindings` массив function.json:
 
 ```json
 {
@@ -71,7 +71,7 @@ ms.lasthandoff: 08/29/2017
 }
 ```
 
-Чтобы обновить текстовое значение документа, см. пример для конкретного языка, использующий эту входную привязку.
+См. пример hello зависящие от языка, который использует этот входной привязки tooupdate hello документа текстовое значение.
 
 * [C#](#incsharp)
 * [F#](#infsharp)
@@ -98,7 +98,7 @@ let Run(myQueueItem: string, inputDocument: obj) =
   inputDocument?text <- "This has changed."
 ```
 
-В этом примере нужен файл `project.json`, указывающий зависимости NuGet `FSharp.Interop.Dynamic` и `Dynamitey`:
+Для этого образца необходимо `project.json` файл, задающий hello `FSharp.Interop.Dynamic` и `Dynamitey` зависимостей NuGet:
 
 ```json
 {
@@ -113,7 +113,7 @@ let Run(myQueueItem: string, inputDocument: obj) =
 }
 ```
 
-Чтобы добавить файл `project.json`, см. раздел [об управлении пакетом F#](functions-reference-fsharp.md#package).
+tooadd `project.json` файла см. в разделе [пакета управления F #](functions-reference-fsharp.md#package).
 
 <a name="injavascript"></a>
 
@@ -130,9 +130,9 @@ module.exports = function (context) {
 
 ## <a name="input-sample-with-multiple-documents"></a>Пример входной привязки с несколькими документами
 
-Предположим, что нужно извлечь несколько документов, указанных SQL-запросом, используя триггер очереди для настройки параметров запроса. 
+Предположим, что вы хотите tooretrieve несколько документов, указанный в запросе SQL с помощью параметров очереди триггера toocustomize hello запроса. 
 
-В этом примере триггер очереди предоставляет параметр `departmentId`. Сообщение очереди `{ "departmentId" : "Finance" }` возвращает все записи для финансового отдела. Используйте в *function.json* следующий код:
+В этом примере hello очереди триггера предоставляет параметр `departmentId`. Сообщение из очереди `{ "departmentId" : "Finance" }` возвратит все записи для hello финансового отдела. Используйте следующие hello в *function.json*:
 
 ```
 {
@@ -177,30 +177,30 @@ module.exports = function (context, input) {
 ```
 
 ## <a id="docdboutput"></a>Выходная привязка API DocumentDB
-Выходная привязка API DocumentDB позволяет записать новый документ в Azure Cosmos DB. Он содержит следующие свойства в *function.json*:
+привязка позволяет вам создавать новую базу данных Azure Cosmos DB документа tooan вывода Hello DocumentDB API. Он имеет следующие свойства в hello *function.json*:
 
-- `name` — идентификатор, используемый в коде функции для нового документа.
-- `type` — для этого свойства нужно задать значение `"documentdb"`.
-- `databaseName` — база данных, содержащая коллекцию, в которой будет создан документ.
-- `collectionName` — коллекция, в которой будет создан документ.
-- `createIfNotExists` — логическое значение, указывающее, будет ли создана коллекция при ее отсутствии. Значение по умолчанию — *false*. Это вызвано тем, что коллекции создаются с использованием зарезервированной пропускной способности, с которой связаны ценовые требования. Дополнительные сведения см. на [странице цен](https://azure.microsoft.com/pricing/details/documentdb/).
-- `connection` — имя параметра приложения, содержащего строку подключения к Cosmos DB.
-- `direction` — для этого свойства нужно задать значение `"out"`.
+- `name`: Идентификатор, используемый в коде функция для нового документа hello
+- `type`: необходимо задать слишком`"documentdb"`
+- `databaseName`: hello базы данных, содержащей коллекцию hello, где будет создан новый документ hello.
+- `collectionName`: hello коллекции, где будет создан новый документ hello.
+- `createIfNotExists`: Логическое значение tooindicate ли будет создана коллекция hello, если он не существует. по умолчанию Hello — *false*. Здравствуйте, поэтому для этой новой наборы создаются с зарезервированной пропускной способностью, имеющая цены последствия. Для получения дополнительных сведений посетите hello [странице цен](https://azure.microsoft.com/pricing/details/documentdb/).
+- `connection`: hello имя параметра приложения hello, содержащий строки подключения Cosmos DB
+- `direction`: необходимо задать слишком`"out"`
 
 ## <a name="using-a-documentdb-api-output-binding"></a>Использование выходной привязки API DocumentDB
-В этом разделе показано, как использовать выходную привязку API DocumentDB в коде функции.
+В этом разделе показано, как toouse вывода привязки в коде функция DocumentDB API.
 
-При записи в выходном параметре функции в базе данных по умолчанию создается документ, для которого автоматически создается GUID в качестве идентификатора документа. Идентификатор выходного документа можно определить, указав свойство JSON `id` в выходном параметре. 
+При написании toohello выходного параметра в функции, по умолчанию новый документ создается в базе данных, с автоматически созданным GUID, как hello документов идентификатор. Можно указать идентификатор hello документ выходной документ, указав hello `id` свойства JSON в hello выходной параметр. 
 
 >[!Note]  
->Если указать идентификатор существующего документа, он перезаписывается новым выходным документом. 
+>При указании ID hello существующего документа заменяется hello новый выходной документ. 
 
-Для вывода в несколько документов можно также выполнить привязку к `ICollector<T>` или `IAsyncCollector<T>`, где `T` — любой из поддерживаемых типов.
+toooutput несколько документов, можно также привязать слишком`ICollector<T>` или `IAsyncCollector<T>` где `T` является одним из типов hello поддерживается.
 
 <a name="outputsample"></a>
 
 ## <a name="documentdb-api-output-binding-sample"></a>Пример выходной привязки API DocumentDB
-Предположим, что у вас есть следующая выходная привязка API DocumentDB в массиве `bindings` файла function.json:
+Предположим, что имеется следующее hello DocumentDB API вывода привязки в hello `bindings` массив function.json:
 
 ```json
 {
@@ -214,7 +214,7 @@ module.exports = function (context, input) {
 }
 ```
 
-Кроме того, у вас есть входная привязка очереди для очереди, которая получает JSON в следующем формате:
+И у вас есть привязка входной очереди для очереди, получающего hello следующая формата JSON:
 
 ```json
 {
@@ -224,7 +224,7 @@ module.exports = function (context, input) {
 }
 ```
 
-При этом вам нужно создать документы Cosmos DB в следующем формате для каждой записи:
+И вы хотите toocreate Cosmos DB документы в кодировке для каждой записи hello:
 
 ```json
 {
@@ -235,7 +235,7 @@ module.exports = function (context, input) {
 }
 ```
 
-Чтобы добавить документы в базу данных, см. пример для конкретного языка, использующий эту выходную привязку.
+См. пример hello зависящие от языка, который использует этот выходной привязки tooadd документы tooyour базы данных.
 
 * [C#](#outcsharp)
 * [F#](#outfsharp)
@@ -292,7 +292,7 @@ let Run(myQueueItem: string, employeeDocument: byref<obj>, log: TraceWriter) =
       address = employee?address }
 ```
 
-В этом примере нужен файл `project.json`, указывающий зависимости NuGet `FSharp.Interop.Dynamic` и `Dynamitey`:
+Для этого образца необходимо `project.json` файл, задающий hello `FSharp.Interop.Dynamic` и `Dynamitey` зависимостей NuGet:
 
 ```json
 {
@@ -307,7 +307,7 @@ let Run(myQueueItem: string, employeeDocument: byref<obj>, log: TraceWriter) =
 }
 ```
 
-Чтобы добавить файл `project.json`, см. раздел [об управлении пакетом F#](functions-reference-fsharp.md#package).
+tooadd `project.json` файла см. в разделе [пакета управления F #](functions-reference-fsharp.md#package).
 
 <a name="outjavascript"></a>
 

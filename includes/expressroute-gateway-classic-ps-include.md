@@ -1,26 +1,26 @@
-Прежде чем приступить к работе над следующими задачами, необходимо создать виртуальную сеть и подсеть шлюза. Дополнительные сведения см. в статье [Настройка виртуальной сети с помощью классического портала](../articles/expressroute/expressroute-howto-vnet-portal-classic.md).   
+Необходимо создать виртуальную сеть и подсеть шлюза во-первых, прежде чем приступать к hello следующие задачи. См. в статье hello [Настройка виртуальной сети с помощью классического портала hello](../articles/expressroute/expressroute-howto-vnet-portal-classic.md) для получения дополнительной информации.   
 
 ## <a name="add-a-gateway"></a>Добавление шлюза
-Используйте следующую команду, чтобы создать шлюз. Не забудьте подставить собственные значения.
+Команда hello ниже toocreate шлюз. Быть toosubstitute убедиться, что все значения для себя.
 
     New-AzureVirtualNetworkGateway -VNetName "MyAzureVNET" -GatewayName "ERGateway" -GatewayType Dedicated -GatewaySKU  Standard
 
-## <a name="verify-the-gateway-was-created"></a>Проверка создания шлюза
-Используйте следующую команду, чтобы проверить, был ли создан шлюз. Эта команда также получает идентификатор шлюза, который нужен для других операций.
+## <a name="verify-hello-gateway-was-created"></a>Убедитесь, что был создан шлюз hello
+Используйте команду hello ниже tooverify, hello шлюза был создан. Эта команда также получает идентификатор hello шлюза, который требуется для других операций.
 
     Get-AzureVirtualNetworkGateway
 
 ## <a name="resize-a-gateway"></a>Изменение размера шлюза
-Существует несколько [номеров SKU шлюзов](../articles/expressroute/expressroute-about-virtual-network-gateways.md). Чтобы изменить SKU шлюза в любое время, можно использовать следующую команду.
+Существует несколько [номеров SKU шлюзов](../articles/expressroute/expressroute-about-virtual-network-gateways.md). Можно использовать hello, следующая команда toochange hello номер SKU шлюза в любое время.
 
 > [!IMPORTANT]
-> Эта команда не работает для шлюза UltraPerformance. Чтобы заменить шлюз на UltraPerformance, сначала удалите существующий шлюз ExpressRoute, а затем создайте шлюз UltraPerformance. Чтобы заменить шлюз UltraPerformance обычным шлюзом, сначала удалите шлюз UltraPerformance, а затем создайте новый шлюз. 
+> Эта команда не работает для шлюза UltraPerformance. toochange tooan UltraPerformance шлюз шлюз, сначала удалите существующий шлюз ExpressRoute hello и создайте новый шлюз UltraPerformance. удалите шлюз с шлюзом UltraPerformance toodowngrade hello UltraPerformance шлюза, а затем создайте новый шлюз. 
 > 
 > 
 
     Resize-AzureVirtualNetworkGateway -GatewayId <Gateway ID> -GatewaySKU HighPerformance
 
 ## <a name="remove-a-gateway"></a>Удаление шлюза
-Используйте следующую команду, чтобы удалить шлюз.
+Команда hello ниже tooremove шлюза
 
     Remove-AzureVirtualNetworkGateway -GatewayId <Gateway ID>

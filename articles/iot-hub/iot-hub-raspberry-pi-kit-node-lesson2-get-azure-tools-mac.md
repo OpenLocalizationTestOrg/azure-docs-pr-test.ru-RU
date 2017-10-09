@@ -1,6 +1,6 @@
 ---
-title: "Подключение Raspberry Pi (Node) к Azure IoT. Урок 2. Получение инструментов (Ubuntu) | Документация Майкрософт"
-description: "Установите Python и интерфейс командной строки Azure (Azure CLI) на компьютер под управлением macOS."
+title: "Подключения Raspberry Pi (узел) tooAzure IoT — Lesson 2: средства (Ubuntu) | Документы Microsoft"
+description: "Установите Python и hello Azure командной строки (CLI Azure) на macOS."
 services: iot-hub
 documentationcenter: 
 author: shizn
@@ -17,11 +17,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/21/2017
 ms.author: xshi
-ms.openlocfilehash: 12a8c5b20724e747f3799960a0bd39b82d7fa6b5
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 3f35fae53a360a758bc8f61ed2063f7e2f2dc067
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="get-azure-tools-macos-1010"></a>Получение инструментов Azure (macOS 10.10)
 > [!div class="op_single_selector"]
@@ -30,49 +30,49 @@ ms.lasthandoff: 07/11/2017
 > * [macOS 10.10](iot-hub-raspberry-pi-kit-node-lesson2-get-azure-tools-mac.md)
 
 ## <a name="what-you-will-do"></a>Выполняемая задача
-Установка интерфейса командной строки Azure (Azure CLI). Если возникнут какие-либо проблемы, то решения можно найти на [странице со сведениями об устранении неполадок](iot-hub-raspberry-pi-kit-node-troubleshooting.md).
+Установите hello Azure командной строки (CLI Azure). Если у вас возникнут проблемы, искать решения на hello [страницу устранения неполадок](iot-hub-raspberry-pi-kit-node-troubleshooting.md).
 
 ## <a name="what-you-will-learn"></a>Новые знания
 В этой статье вы узнаете следующее:
-* Как установить Azure CLI.
-* Как добавить подгруппу команд интерфейса командной строки Azure для Интернета вещей.
+* Как tooinstall Azure CLI.
+* Как tooadd IoT подгруппой hello Azure CLI.
 
 ## <a name="what-you-need"></a>Необходимые элементы
 * Компьютер под управлением Mac с подключением к Интернету.
 * Активная подписка Azure. Если у вас нет учетной записи Azure, можно создать [бесплатную учетную запись Azure](http://azure.microsoft.com/pricing/free-trial/) всего за несколько минут.
 
 ## <a name="install-python"></a>Установка Python
-Несмотря на то, что macOS поставляется уже с установленной версией Python 2.7, рекомендуется установить Python через Homebrew. См. статью [Installing Python on Mac OS X](http://docs.python-guide.org/en/latest/starting/install/osx/) (Установка Python на Mac OS X).
+Несмотря на то, что macOS поставляется с Python 2.7 стандартной hello, рекомендуется установить Python через Homebrew. См. статью [Installing Python on Mac OS X](http://docs.python-guide.org/en/latest/starting/install/osx/) (Установка Python на Mac OS X).
 
-Установите Python и pip, выполнив следующую команду:
+Установите Python и pip, выполнив следующую команду hello:
 
 ```bash
 brew install python
 ```
 
-## <a name="install-the-azure-cli"></a>Установка Azure CLI
-Azure CLI — это кроссплатформенное средство для работы с командной строкой. С его помощью можно подготавливать ресурсы для Azure и управлять ими непосредственно в командной строке. 
+## <a name="install-hello-azure-cli"></a>Установка hello Azure CLI
+Hello Azure CLI обеспечивает многоплатформенного командной строки для Azure. Работа непосредственно из вашего tooprovision командной строки и управления ресурсами. 
 
-Чтобы установить последнюю версию Azure CLI, выполните следующие действия:
+tooinstall Здравствуйте последнюю Azure CLI, выполните следующие действия:
 
-1. Выполните следующие команды в окне терминала. Установка интерфейса командной строки Azure может занять около пяти минут.
+1. Выполните следующие команды в окне терминала hello. Может потребоваться пять минут tooinstall hello Azure CLI.
 
    ```bash
    pip install --upgrade azure-cli
    pip install --upgrade azure-cli-iot
    ```
-2. Выполните следующую команду, чтобы проверить установку:
+2. Проверка установки hello, выполнив следующую команду hello:
 
    ```bash
    az iot -h
    ```
 
-Если установка прошла успешно, отобразятся следующие сведения.
+Вы увидите следующее hello выходных данных, если hello успешно установлен.
 
 ![Выходные данные, указывающие на успешное выполнение](media/iot-hub-raspberry-pi-lessons/lesson2/az_iot_help_osx.png)
 
 ## <a name="summary"></a>Сводка
-Вы установили интерфейс командной строки Azure. Перейдите к следующей задаче: создайте Центр Интернета вещей Azure и удостоверение устройства с помощью интерфейса командной строки Azure.
+После установки hello Azure CLI. Следующая задача — toocreate Azure IoT идентификаторов концентратора и устройств с помощью hello Azure CLI.
 
 ## <a name="next-steps"></a>Дальнейшие действия
 [Создание Центра Интернета вещей и регистрация Raspberry Pi 3](iot-hub-raspberry-pi-kit-node-lesson2-prepare-azure-iot-hub.md)

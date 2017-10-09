@@ -1,6 +1,6 @@
 ---
-title: "Создание кластеров HDInsight, использующих Data Lake Store, с помощью PowerShell | Документация Майкрософт"
-description: "Создание и использование кластеров HDInsight, использующих Azure Data Lake Store, с помощью Azure PowerShell."
+title: "aaaCreate HDInsight кластер хранилища Озера данных хранения по умолчанию с помощью PowerShell | Документы Microsoft"
+description: "Использовать toocreate Azure PowerShell и использовать кластеров HDInsight в хранилище Озера данных Azure"
 services: data-lake-store,hdinsight
 documentationcenter: 
 author: nitinme
@@ -14,50 +14,50 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 05/08/2017
 ms.author: nitinme
-ms.openlocfilehash: 77eb83b80312eca401e6f60d57ed6a5668ea442e
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: a5c0ad416da6ad9bd07204af2ebb6b7470916085
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-hdinsight-clusters-with-data-lake-store-as-default-storage-by-using-powershell"></a>Создание кластеров HDInsight, использующих Data Lake Store, с помощью PowerShell
 > [!div class="op_single_selector"]
-> * [Использование портала Azure](data-lake-store-hdinsight-hadoop-use-portal.md)
+> * [Использовать hello портал Azure](data-lake-store-hdinsight-hadoop-use-portal.md)
 > * [Использование PowerShell (для хранилища по умолчанию)](data-lake-store-hdinsight-hadoop-use-powershell-for-default-storage.md)
 > * [Использование PowerShell (для дополнительного хранилища)](data-lake-store-hdinsight-hadoop-use-powershell.md)
 > * [Использование Resource Manager](data-lake-store-hdinsight-hadoop-use-resource-manager-template.md)
 
-Узнайте, как с помощью Azure PowerShell настроить кластер Azure HDInsight, использующий Azure Data Lake Store в качестве хранилища по молчанию. Инструкции по созданию кластера HDInsight, использующего Data Lake Store в качестве дополнительного хранилища, см. в статье [Создание кластера HDInsight с Data Lake Store (как дополнительное хранилище) с помощью Azure PowerShell](data-lake-store-hdinsight-hadoop-use-powershell.md).
+Узнайте, как кластеры tooconfigure toouse Azure PowerShell Azure HDInsight с хранилища Озера данных Azure, как хранилище по умолчанию. Инструкции по созданию кластера HDInsight, использующего Data Lake Store в качестве дополнительного хранилища, см. в статье [Создание кластера HDInsight с Data Lake Store (как дополнительное хранилище) с помощью Azure PowerShell](data-lake-store-hdinsight-hadoop-use-powershell.md).
 
 Ниже приведены некоторые важные сведения об использовании HDInsight с Data Lake Store.
 
-* Возможность создавать кластеры HDInsight, использующие Data Lake Store в качестве хранилища по умолчанию, поддерживается для HDInsight версий 3.5 и 3.6.
+* кластеры HDInsight toocreate параметр Hello с доступом хранилища Озера tooData хранения по умолчанию доступна для HDInsight версии 3.5 и 3.6.
 
-* Возможность создавать кластеры HDInsight, использующие Data Lake Store в качестве хранилища по умолчанию, *не поддерживается* для кластеров HDInsight уровня "Премиум".
+* кластеры HDInsight с toocreate параметр Hello получить доступ к хранилищу Озера tooData как хранилищем по умолчанию *недоступно* для кластеров HDInsight Premium.
 
-Чтобы настроить HDInsight для работы с Data Lake Store с помощью PowerShell, следуйте инструкциям в следующих пяти разделах.
+tooconfigure toowork HDInsight в хранилище Озера данных с помощью PowerShell, следуйте инструкциям hello в разделах следующие пять hello.
 
 ## <a name="prerequisites"></a>Предварительные требования
-Прежде чем приступить к изучению этого руководства, убедитесь, что выполнены следующие требования.
+Прежде чем начать работу с учебником, убедитесь, что выполнены следующие требования к hello:
 
-* **Подписка на Azure**. Перейдите на сайт [бесплатной пробной версии Azure](https://azure.microsoft.com/pricing/free-trial/).
-* **Azure PowerShell 1.0 или более поздняя версия**. Инструкции см. в статье [Приступая к работе с командлетами Azure PowerShell](/powershell/azure/overview).
-* **Пакет средств разработки программного обеспечения для Windows (пакет SDK)**. Инструкции по установке пакета Windows SDK приведены на странице [Загружаемые файлы и инструменты для Windows 10](https://dev.windows.com/en-us/downloads). Пакет SDK используется для создания сертификата безопасности.
-* **Субъект-служба Azure Active Directory**. В этом руководстве описывается создание субъекта-службы в Azure Active Directory (Azure AD). Чтобы создать субъект-службу, необходимо быть администратором Azure AD. Если вы являетесь администратором, то можете пропустить это предварительное требование и продолжить работу с руководством.
+* **Подписка Azure**: перейти слишком[получить бесплатная пробная версия](https://azure.microsoft.com/pricing/free-trial/).
+* **Azure PowerShell 1.0 или более поздней**: в разделе [как tooinstall и настройте PowerShell](/powershell/azure/overview).
+* **Пакет средств разработки программного обеспечения (SDK)**: tooinstall Windows SDK, перейдите в слишком[загружает и средств для Windows 10](https://dev.windows.com/en-us/downloads). Hello SDK — toocreate используется сертификат безопасности.
+* **Субъекту-службе Azure Active Directory**: в данном учебнике как toocreate участника службы в Azure Active Directory (Azure AD). Однако toocreate участника службы, необходимо быть администратором Azure AD. Если вы являетесь администратором, можно пропустить это предварительное условие и продолжить работу с учебником hello.
 
     >[!NOTE]
-    >Создать субъект-службу может только администратор Azure AD. Администратор Azure AD должен сначала создать субъект-службу, после чего вы сможете создать кластер HDInsight, использующий Data Lake Store. При создании субъекта-службы необходимо использовать сертификат, как описано в разделе [Создание субъекта-службы с использованием сертификата](../azure-resource-manager/resource-group-authenticate-service-principal.md#create-service-principal-with-certificate-from-certificate-authority).
+    >Создать субъект-службу может только администратор Azure AD. Администратор Azure AD должен сначала создать субъект-службу, после чего вы сможете создать кластер HDInsight, использующий Data Lake Store. Hello участника-службы должны создаваться с помощью сертификата, как описано в [создании участника службы с сертификатом](../azure-resource-manager/resource-group-authenticate-service-principal.md#create-service-principal-with-certificate-from-certificate-authority).
     >
 
 ## <a name="create-a-data-lake-store-account"></a>Создание учетной записи хранения озера данных
-Чтобы создать учетную запись Data Lake Store, выполните следующее.
+toocreate учетную запись хранилища Озера данных hello следующие:
 
-1. На своем компьютере откройте окно PowerShell и введите приведенные ниже фрагменты кода. Когда будет предложено выполнить вход, войдите как один администраторов или владельцев из подписки. 
+1. С рабочего стола откройте окно PowerShell, а затем введите ниже фрагменты hello. Когда вы будете запрашиваемые toosign в знак в качестве одного из администраторов подписки hello или владельцы. 
 
-        # Sign in to your Azure account
+        # Sign in tooyour Azure account
         Login-AzureRmAccount
 
-        # List all the subscriptions associated to your account
+        # List all hello subscriptions associated tooyour account
         Get-AzureRmSubscription
 
         # Select a subscription
@@ -67,7 +67,7 @@ ms.lasthandoff: 07/11/2017
         Register-AzureRmResourceProvider -ProviderNamespace "Microsoft.DataLakeStore"
 
     > [!NOTE]
-    > Если вы регистрируете поставщик ресурсов Data Lake Store и видите сообщение об ошибке `Register-AzureRmResourceProvider : InvalidResourceNamespace: The resource namespace 'Microsoft.DataLakeStore' is invalid`, возможно, ваша подписка не добавлена в список разрешений для Data Lake Store. Чтобы использовать подписку Azure для общедоступной предварительной версии Data Lake Store, следуйте инструкциям в разделе [Начало работы с хранилищем озера данных Azure с помощью портала Azure](data-lake-store-get-started-portal.md).
+    > Если регистрация поставщика ресурсов хранилища Озера данных hello и получать сообщение об ошибке слишком`Register-AzureRmResourceProvider : InvalidResourceNamespace: hello resource namespace 'Microsoft.DataLakeStore' is invalid`, подписки не может быть входят для хранилища Озера данных. tooenable подписки Azure hello хранилища Озера данных общедоступной предварительной версии, следуйте инструкциям hello [Приступая к работе с хранилища Озера данных Azure с помощью портала Azure hello](data-lake-store-get-started-portal.md).
     >
 
 2. Учетная запись Data Lake Store связывается с группой ресурсов Azure. Для начала создайте группу ресурсов.
@@ -83,12 +83,12 @@ ms.lasthandoff: 07/11/2017
         Tags              :
         ResourceId        : /subscriptions/<subscription-id>/resourceGroups/hdiadlgrp
 
-3. Создайте учетную запись Data Lake Store. Имя этой учетной записи должно содержать только строчные буквы и цифры.
+3. Создайте учетную запись Data Lake Store. Hello учетной записи, имя должно содержать только строчные буквы и цифры.
 
         $dataLakeStoreName = "<your new Data Lake Store name>"
         New-AzureRmDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $dataLakeStoreName -Location "East US 2"
 
-    Вы должны увидеть подобные выходные данные:
+    Вы должны увидеть результаты hello следующим образом:
 
         ...
         ProvisioningState           : Succeeded
@@ -105,44 +105,44 @@ ms.lasthandoff: 07/11/2017
         Location                    : East US 2
         Tags                        : {}
 
-4. При использовании Data Lake Store в качестве хранилища по умолчанию необходимо указать путь к корневой папке, в которую будут скопированы связанные с кластером файлы в процессе создания кластера. Используйте приведенные ниже командлеты, чтобы создать корневую папку (в следующем фрагменте это **/clusters/hdiadlcluster**).
+4. Использование хранилища Озера данных хранения по умолчанию требует вы toospecify корневой путь toowhich hello кластера файлы скопированы во время создания кластера. корневой путь, который является toocreate **/кластеры/hdiadlcluster** в фрагменте hello, используйте следующие командлеты hello:
 
         $myrootdir = "/"
         New-AzureRmDataLakeStoreItem -Folder -AccountName $dataLakeStoreName -Path $myrootdir/clusters/hdiadlcluster
 
 
-## <a name="set-up-authentication-for-role-based-access-to-data-lake-store"></a>настройка проверки подлинности для доступа к хранилищу озера данных на основе ролей;
-Каждая подписка Azure связана с сущностью Azure AD. Пользователи и службы, обращающиеся к ресурсам подписки через портал Azure или API Azure Resource Manager, сначала должны пройти аутентификацию в Azure AD. Доступ к подпискам и службам Azure предоставляется путем назначения соответствующей роли для ресурса Azure. В случае служб субъект-служба идентифицирует службу в Azure AD.
+## <a name="set-up-authentication-for-role-based-access-toodata-lake-store"></a>Настройка проверки подлинности на основе ролей доступ к хранилищу Озера tooData
+Каждая подписка Azure связана с сущностью Azure AD. Пользователей и служб, доступ к ресурсам подписки с помощью hello портал Azure или hello API диспетчера ресурсов Azure должны сначала пройти проверку подлинности в Azure AD. Доступ предоставляется tooAzure подписками и службами путем назначения им hello соответствующей роли на ресурс Azure. Для служб субъекта-службы идентифицирует службу hello в Azure AD.
 
-В этом разделе показано, как предоставить службе приложения, например HDInsight, доступ к ресурсу Azure (учетной записи Data Lake Store, созданной ранее). Для этого следует создать субъект-службу для приложения и назначить ему роли с помощью PowerShell.
+В этом разделе показано, как службы toogrant приложения, такие как HDInsight, tooan доступ ресурсов Azure (hello ранее созданной учетной записи хранилища Озера данных). Осуществляется путем создания службы основного приложения hello и назначение ролей tooit через PowerShell.
 
-Чтобы настроить аутентификацию Active Directory для Azure Data Lake, необходимо выполнить инструкции, приведенные в двух следующих разделах.
+tooset проверку подлинности Active Directory для Озера данных Azure, выполнять задачи hello в следующих двух разделах hello.
 
 ### <a name="create-a-self-signed-certificate"></a>Создание самозаверяющего сертификата
-Прежде чем выполнять дальнейшие действия, описанные в этом разделе, убедитесь, что на вашем компьютере установлен [пакет SDK Windows](https://dev.windows.com/en-us/downloads). Вам также необходимо создать каталог, например *C:\mycertdir*, для создания сертификата.
+Убедитесь, что у вас есть [пакета Windows SDK](https://dev.windows.com/en-us/downloads) установлен перед продолжением hello шаги в этом разделе. Необходимо также создать каталог, например *C:\mycertdir*, в котором можно создать сертификат hello.
 
-1. В окне PowerShell перейдите в расположение, где установлен пакет Windows SDK (обычно это *C:\Program Files (x86)\Windows Kits\10\bin\x86*), и с помощью служебной программы [MakeCert][makecert] создайте самозаверяющий сертификат и закрытый ключ. Используйте следующие команды:
+1. Из окна PowerShell hello, go toohello расположение, где установлен пакет SDK для Windows (как правило, *\Windows Kits\10\bin\x86 C:\Program Files (x86)*) и использовать hello [MakeCert] [ makecert] toocreate программа самозаверяющий сертификат и закрытый ключ. Используйте hello, следующие команды:
 
         $certificateFileDir = "<my certificate directory>"
         cd $certificateFileDir
 
         makecert -sv mykey.pvk -n "cn=HDI-ADL-SP" CertFile.cer -r -len 2048
 
-    Вам будет предложено ввести пароль для закрытого ключа. После успешного выполнения команды в указанном каталоге сертификатов должны появиться файлы **CertFile.cer** и **mykey.pvk**.
-2. С помощью служебной программы [Pvk2Pfx][pvk2pfx] преобразуйте созданные программой MakeCert PVK- и CER-файлы в PFX-файл. Выполните следующую команду:
+    Появится запрос tooenter hello пароль для закрытого ключа. После успешного выполнения команды hello, вы увидите **CertFile.cer** и **mykey.pvk** в указанный каталог hello сертификата.
+2. Используйте hello [Pvk2Pfx] [ pvk2pfx] .pvk hello tooconvert программы или CER-файлы, MakeCert созданный tooa PFX-файл. Выполните следующую команду hello.
 
         pvk2pfx -pvk mykey.pvk -spc CertFile.cer -pfx CertFile.pfx -po <password>
 
-    При появлении соответствующего запроса введите указанный ранее пароль для закрытого ключа. Значение, указываемое для параметра **-po**, — это пароль, связанный с PFX-файлом. После успешного выполнения команды в указанном каталоге сертификата также должен появиться файл **CertFile.pfx**.
+    Когда вам будет предложено ввести hello пароль закрытого ключа, указанный ранее. значение, указываемое для hello Hello **-po** параметр является hello пароль, связанный с hello PFX-файл. После успешного завершения команды hello, вы также увидите **CertFile.pfx** в указанный каталог hello сертификата.
 
 ### <a name="create-an-azure-ad-and-a-service-principal"></a>Создание приложения Azure AD и субъекта-службы
-Следуя инструкциям в этом разделе, вы создадите субъект-службу для приложения Azure Active Directory, назначите роль субъекту-службе и пройдете аутентификацию в качестве субъекта-службы, используя сертификат. Чтобы создать приложение в Azure AD, выполните следующие команды.
+В этом разделе Создание субъекта-службы для приложения Azure AD, назначение роли участника службы toohello и проверять подлинность как у участника-службы hello, предоставляя сертификат. toocreate hello, следующие команды запуска приложения в Azure AD:
 
-1. В окне консоли PowerShell вставьте из буфера обмена следующие командлеты. Обязательно укажите для свойства **-DisplayName** уникальное значение. Значения свойств **-HomePage** b **-IdentiferUris** — это заполнители, которые не проверяются.
+1. Вставьте следующие командлеты в окне консоли PowerShell hello hello. Убедитесь, что это значение hello, укажите для hello **- DisplayName** свойство является уникальным. Здравствуйте, значения для **- Домашняя страница** и **- IdentiferUris** значения заполнителя, а не проверяются.
 
         $certificateFilePath = "$certificateFileDir\CertFile.pfx"
 
-        $password = Read-Host –Prompt "Enter the password" # This is the password you specified for the .pfx file
+        $password = Read-Host –Prompt "Enter hello password" # This is hello password you specified for hello .pfx file
 
         $certificatePFX = New-Object System.Security.Cryptography.X509Certificates.X509Certificate2($certificateFilePath, $password)
 
@@ -159,26 +159,26 @@ ms.lasthandoff: 07/11/2017
             -EndDate $certificatePFX.NotAfter
 
         $applicationId = $application.ApplicationId
-2. С помощью идентификатора приложения создайте субъект-службу.
+2. Создание участника службы с помощью идентификатора приложения hello.
 
         $servicePrincipal = New-AzureRmADServicePrincipal -ApplicationId $applicationId
 
         $objectId = $servicePrincipal.Id
-3. Предоставьте субъекту-службе доступ к корневой папке Data Lake Store и всем папкам в ранее указанном корневом пути. Выполните приведенные ниже командлеты.
+3. Предоставьте корневой папки хранилища Озера данных toohello hello службы доступа и папкам hello в hello корневой путь, указанный ранее. Используйте следующие командлеты hello.
 
         Set-AzureRmDataLakeStoreItemAclEntry -AccountName $dataLakeStoreName -Path / -AceType User -Id $objectId -Permissions All
         Set-AzureRmDataLakeStoreItemAclEntry -AccountName $dataLakeStoreName -Path /clusters -AceType User -Id $objectId -Permissions All
         Set-AzureRmDataLakeStoreItemAclEntry -AccountName $dataLakeStoreName -Path /clusters/hdiadlcluster -AceType User -Id $objectId -Permissions All
 
-## <a name="create-an-hdinsight-linux-cluster-with-data-lake-store-as-the-default-storage"></a>Создание кластера HDInsight на платформе Linux, использующего Data Lake Store в качестве хранилища по умолчанию
+## <a name="create-an-hdinsight-linux-cluster-with-data-lake-store-as-hello-default-storage"></a>Создание кластера HDInsight Linux с хранилища Озера данных хранения по умолчанию hello
 
-Следуя инструкциям в этом разделе, вы создадите кластер HDInsight Hadoop на платформе Linux, использующий Data Lake Store в качестве хранилища по умолчанию. При использовании этого выпуска кластер HDInsight и Data Lake Store должны находиться в одном расположении.
+В этом разделе создается кластер HDInsight Hadoop Linux с хранилища Озера данных хранения по умолчанию hello. В этом выпуске hello кластер HDInsight и хранилище Озера данных должна находиться в hello местоположения.
 
-1. Получите идентификатор клиента для подписки и сохраните его для последующего использования.
+1. Получить идентификатор клиента подписки hello и сохраните ее toouse позже.
 
         $tenantID = (Get-AzureRmContext).Tenant.TenantId
 
-2. Создайте кластер HDInsight с помощью приведенных ниже командлетов.
+2. Создание кластера HDInsight hello с помощью hello следующие командлеты:
 
         # Set these variables
 
@@ -186,7 +186,7 @@ ms.lasthandoff: 07/11/2017
         $storageAccountName = $dataLakeStoreName                       # Data Lake Store account name
         $storageRootPath = "<Storage root path you specified earlier>" # E.g. /clusters/hdiadlcluster
         $clusterName = "<unique cluster name>"
-        $clusterNodes = <ClusterSizeInNodes>            # The number of nodes in the HDInsight cluster
+        $clusterNodes = <ClusterSizeInNodes>            # hello number of nodes in hello HDInsight cluster
         $httpCredentials = Get-Credential
         $sshCredentials = Get-Credential
 
@@ -208,20 +208,20 @@ ms.lasthandoff: 07/11/2017
                -CertificateFilePath $certificateFilePath `
                -CertificatePassword $password
 
-    После успешного выполнения командлетов должны отобразиться сведения о кластере.
+    После успешного завершения hello командлета вы увидите выход, содержащий сведения о кластере hello.
 
-## <a name="run-test-jobs-on-the-hdinsight-cluster-to-use-data-lake-store"></a>Выполнение тестовых заданий в кластере HDInsight для использования Data Lake Store
-После настройки кластера HDInsight выполните в нем тестовые задания, чтобы проверить, может ли он использовать Data Lake Store. Для этого выполните пример задания Hive, чтобы создать таблицу, использующую демонстрационные данные, которые уже доступны в Data Lake Store в расположении *<cluster root>/example/data/sample.log*.
+## <a name="run-test-jobs-on-hello-hdinsight-cluster-toouse-data-lake-store"></a>Запуск тестовых заданий в toouse кластера HDInsight hello хранилища Озера данных
+После настройки кластера HDInsight можно запускать задания теста для его tooensure его доступность хранилища Озера данных. Таким образом, toodo запуска toocreate задания Hive образец таблицы, использующей hello образец данных, уже доступный в хранилище Озера данных  *<cluster root>/example/data/sample.log*.
 
-Следуя инструкциям в этом разделе, вы подключитесь по протоколу Secure Shell (SSH) к созданному кластеру HDInsight на платформе Linux и выполните пример запроса Hive.
+В этом разделе в hello кластера hdinsight под Linux, созданного подключения Secure Shell (SSH) и запустите образец запроса Hive.
 
-* Если вы используете клиент Windows для подключения к кластеру по протоколу SSH, ознакомьтесь со статьей [Использование SSH с HDInsight (Hadoop) в PuTTY на базе Windows](../hdinsight/hdinsight-hadoop-linux-use-ssh-windows.md).
-* Если вы используете клиент Linux для подключения к кластеру по SSH, ознакомьтесь со статьей [Использование SSH с HDInsight (Hadoop) на платформе Windows, Linux, Unix или OS X](../hdinsight/hdinsight-hadoop-linux-use-ssh-unix.md).
+* Если вы используете Windows клиент toomake SSH-подключения в кластер hello, см. раздел [использование SSH с Linux-based Hadoop в HDInsight из Windows](../hdinsight/hdinsight-hadoop-linux-use-ssh-windows.md).
+* При использовании toomake клиента Linux SSH-подключения в кластер hello. в разделе [использование SSH с Linux-based Hadoop в HDInsight в Linux](../hdinsight/hdinsight-hadoop-linux-use-ssh-unix.md).
 
-1. Установив подключение, запустите интерфейс командной строки Hive, выполнив в командной строке следующую команду.
+1. После внесения hello соединения, запустите hello Hive командной строки (CLI) с помощью hello следующую команду:
 
         hive
-2. Используя интерфейс командной строки, введите приведенные ниже инструкции, чтобы создать таблицу **vehicles** с помощью демонстрационных данных в Data Lake Store.
+2. Следующие инструкции toocreate новую таблицу с именем tooenter hello используйте hello CLI **автомобилей** с помощью hello образец данных в хранилище Озера данных:
 
         DROP TABLE log4jLogs;
         CREATE EXTERNAL TABLE log4jLogs (t1 string, t2 string, t3 string, t4 string, t5 string, t6 string, t7 string)
@@ -229,28 +229,28 @@ ms.lasthandoff: 07/11/2017
         STORED AS TEXTFILE LOCATION 'adl:///example/data/';
         SELECT t4 AS sev, COUNT(*) AS count FROM log4jLogs WHERE t4 = '[ERROR]' AND INPUT__FILE__NAME LIKE '%.log' GROUP BY t4;
 
-    Результаты запроса появятся в консоли SSH.
+    Вы увидите выходные данные запроса hello hello SSH консоли.
 
     >[!NOTE]
-    >Путь к демонстрационным данных в приведенной выше команде CREATE TABLE — `adl:///example/data/`, где `adl:///` является корнем кластера. Используя пример корня кластера, указанный в этом руководстве, получаем команду `adl://hdiadlstore.azuredatalakestore.net/clusters/hdiadlcluster`. Можно использовать более короткий вариант пути или указать полный путь к корню кластера.
+    >Hello путь toohello образцов данных в hello предшествующий команда CREATE TABLE является `adl:///example/data/`, где `adl:///` корневой кластер hello. Следующий пример hello корневого кластера hello, указанный в этом учебнике, является команда hello `adl://hdiadlstore.azuredatalakestore.net/clusters/hdiadlcluster`. Можно использовать краткого варианта hello или предоставить корневого кластера toohello полный путь hello.
     >
 
 ## <a name="access-data-lake-store-by-using-hdfs-commands"></a>Доступ к Data Lake Store с помощью команд HDFS
-Настроив кластер HDInsight для работы с Data Lake Store, можно использовать для доступа к хранилищу команды оболочки HDFS (распределенная файловая система Hadoop).
+После настройки хранилища Озера данных toouse кластера HDInsight hello, можно использовать системы распределенных файла Hadoop (HDFS) оболочки команды tooaccess hello хранилища.
 
-Следуя инструкциям в этом разделе, вы подключитесь по протоколу SSH к созданному кластеру HDInsight на платформе Linux и выполните команды HDFS.
+В этом разделе сделать SSH-подключения в hello кластера hdinsight под Linux, созданного и выполните команды HDFS hello.
 
-* Если вы используете клиент Windows для подключения к кластеру по протоколу SSH, ознакомьтесь со статьей [Использование SSH с HDInsight (Hadoop) в PuTTY на базе Windows](../hdinsight/hdinsight-hadoop-linux-use-ssh-windows.md).
-* Если вы используете клиент Linux для подключения к кластеру по SSH, ознакомьтесь со статьей [Использование SSH с HDInsight (Hadoop) на платформе Windows, Linux, Unix или OS X](../hdinsight/hdinsight-hadoop-linux-use-ssh-unix.md).
+* Если вы используете Windows клиент toomake SSH-подключения в кластер hello, см. раздел [использование SSH с Linux-based Hadoop в HDInsight из Windows](../hdinsight/hdinsight-hadoop-linux-use-ssh-windows.md).
+* При использовании toomake клиента Linux SSH-подключения в кластер hello. в разделе [использование SSH с Linux-based Hadoop в HDInsight в Linux](../hdinsight/hdinsight-hadoop-linux-use-ssh-unix.md).
 
-Когда подключение будет установлено, выведите список файлов в Data Lake Store, используя приведенную ниже команду файловой системы HDFS.
+После внесения hello подключения список файлов hello в хранилище Озера данных с помощью hello, следующая команда системы файла HDFS.
 
     hdfs dfs -ls adl:///
 
-С помощью команды `hdfs dfs -put` вы можете передать несколько файлов в Data Lake Store, а затем с помощью команды `hdfs dfs -ls` проверить, успешно ли они передались.
+Можно также использовать hello `hdfs dfs -put` команды tooupload хранилища Озера tooData некоторые файлы, а затем используйте `hdfs dfs -ls` tooverify ли hello файлы были успешно отправлены.
 
 ## <a name="see-also"></a>См. также
-* [Создание кластера HDInsight с хранилищем озера данных с помощью портала Azure](data-lake-store-hdinsight-hadoop-use-portal.md)
+* [Портал Azure: создайте toouse кластера HDInsight хранилища Озера данных](data-lake-store-hdinsight-hadoop-use-portal.md)
 
 [makecert]: https://msdn.microsoft.com/library/windows/desktop/ff548309(v=vs.85).aspx
 [pvk2pfx]: https://msdn.microsoft.com/library/windows/desktop/ff550672(v=vs.85).aspx

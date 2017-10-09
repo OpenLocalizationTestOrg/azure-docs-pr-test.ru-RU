@@ -1,6 +1,6 @@
 ---
-title: "Подключение Sparkfun ESP8266 Thing Dev к Центру Интернета вещей Azure | Документация Майкрософт"
-description: "Узнайте, как настроить и подключить плату Sparkfun ESP8266 Thing Dev к Центру Интернета вещей Azure и передавать с нее данные в облако Azure."
+title: "toocloud aaaESP8266 - tooAzure подключения Dev самое Sparkfun ESP8266 центр IoT | Документы Microsoft"
+description: "Узнайте, как toosetup и подключите toosend данных toohello Azure облачной платформы разработки самое ESP8266 Sparkfun tooAzure центр IoT для него в этом учебнике."
 services: iot-hub
 documentationcenter: 
 author: shizn
@@ -15,13 +15,13 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/16/2017
 ms.author: xshi
-ms.openlocfilehash: 557f0cdf375b345e0dbe0526f5a5bd3c050dec38
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 19b249df23b6df516634853521c6d532f51014da
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="connect-sparkfun-esp8266-thing-dev-to-azure-iot-hub-in-the-cloud"></a>Подключение Sparkfun ESP8266 Thing Dev к Центру Интернета вещей в облаке Azure
+# <a name="connect-sparkfun-esp8266-thing-dev-tooazure-iot-hub-in-hello-cloud"></a>Подключение Dev самое ESP8266 Sparkfun tooAzure центр IoT в облаке hello
 
 [!INCLUDE [iot-hub-get-started-device-selector](../../includes/iot-hub-get-started-device-selector.md)]
 
@@ -29,36 +29,36 @@ ms.lasthandoff: 08/18/2017
 
 ## <a name="what-you-will-do"></a>Выполняемая задача
 
-Подключение Sparkfun ESP8266 Thing Dev к создаваемому Центру Интернета вещей. Затем запустим пример приложения на ESP8266, чтобы собрать данные о температуре и влажности, зафиксированные датчиком DHT22. И наконец, отправим данные датчика в Центр Интернета вещей.
+Подключите центра IoT tooan Sparkfun ESP8266 самое разработки, вы создадите. Запустите образец приложения ESP8266 toocollect температуры и влажности данных с использованием DHT22 датчиков. Наконец отправьте центра IoT tooyour данных датчика hello.
 
 > [!NOTE]
-> При использовании других плат ESP8266 вы по-прежнему можете выполнить эти действия, чтобы подключиться к Центру Интернета вещей. В зависимости от используемой платы ESP8266 вам может потребоваться изменить параметр `LED_PIN`. Например, при использовании ESP8266 от AI-Thinker вы можете изменить его значение с `0` на `2`. Нет начального набора? Щелкните [здесь](http://azure.com/iotstarterkits).
+> При использовании других плат ESP8266 все равно можно выполнять эти действия tooconnect его tooyour центр IoT. В зависимости от hello ESP8266 Доска вы используете, может потребоваться tooreconfigure hello `LED_PIN`. Например, при использовании ESP8266 из AI-Thinker, можно изменить его из `0` слишком`2`. Нет начального набора? Щелкните [здесь](http://azure.com/iotstarterkits).
 
 ## <a name="what-you-will-learn"></a>Новые знания
 
-* Как создать Центр Интернета вещей и зарегистрировать устройство Thing Dev.
-* Как подключить Thing Dev к датчику и компьютеру.
-* Как собирать данные датчиков, запустив пример приложения на Thing Dev.
-* Как отправить данные датчиков в Центр Интернета вещей.
+* Как toocreate центр IoT и регистрация устройства для всего устройствам.
+* Как tooconnect самое разработки с датчика hello и на компьютере.
+* Как toocollect датчиков, выполнив пример приложения на самое устройствам.
+* Как toosend hello центра IoT tooyour данных датчика.
 
 ## <a name="what-you-will-need"></a>Необходимые условия
 
-![Элементы, необходимые в рамках руководства](media/iot-hub-sparkfun-thing-dev-get-started/2_parts-needed-for-the-tutorial.png)
+![Детали, необходимые для работы с руководством hello](media/iot-hub-sparkfun-thing-dev-get-started/2_parts-needed-for-the-tutorial.png)
 
-Чтобы выполнить эту операцию, вам понадобятся следующие элементы из начального набора Thing Dev:
+toocomplete этой операции требуется hello следующую частей из начального набора разработки вещь:
 
-* плата Sparkfun ESP8266 Thing Dev;
-* кабель micro-USB (тип A).
+* Здравствуйте, плата Sparkfun ESP8266 самое разработки.
+* Micro USB tooType USB-кабель.
 
-Кроме того, вам понадобятся следующие элементы среды разработки:
+Следующие hello также необходим для среды разработки.
 
 * Активная подписка Azure. Если ее нет, можно создать [бесплатную пробную учетную запись Azure](https://azure.microsoft.com/free/) всего за несколько минут.
 * ПК или компьютер Mac под управлением Windows или Ubuntu;
-* Беспроводная сеть, к которой будет подключаться ESP8266 Sparkfun Thing Dev.
-* подключение к Интернету для скачивания средства настройки;
-* [Arduino IDE](https://www.arduino.cc/en/main/software) версии 1.6.8 или более поздней (более ранние версии несовместимы с библиотекой Центра Интернета вещей Azure).
+* Беспроводной сети для разработки самое ESP8266 Sparkfun tooconnect для.
+* Средство настройки hello toodownload подключения Интернета.
+* [Интегрированная среда разработки Arduino](https://www.arduino.cc/en/main/software) версии 1.6.8 (или более поздней версии), более ранних версий не будет работать с hello AzureIoT библиотеки.
 
-Ниже приведены необязательные элементы, используемые в случае отсутствия датчика. Вы также можете использовать симулированные данные датчика.
+Hello следующие элементы являются необязательными случаю, когда не датчика. Также имеется возможность использовать имитацию датчиков hello.
 
 * Датчик температуры и влажности Adafruit DHT22.
 * Монтажная плата.
@@ -66,15 +66,15 @@ ms.lasthandoff: 08/18/2017
 
 [!INCLUDE [iot-hub-get-started-create-hub-and-device](../../includes/iot-hub-get-started-create-hub-and-device.md)]
 
-## <a name="connect-esp8266-thing-dev-with-the-sensor-and-your-computer"></a>Подключение ESP8266 Thing Dev к датчику и компьютеру
+## <a name="connect-esp8266-thing-dev-with-hello-sensor-and-your-computer"></a>Связь ESP8266 самое разработки с датчика hello и компьютера
 
-### <a name="connect-a-dht22-temperature-and-humidity-sensor-to-esp8266-thing-dev"></a>Подключение датчика температуры и влажности DHT22 к ESP8266 Thing Dev
+### <a name="connect-a-dht22-temperature-and-humidity-sensor-tooesp8266-thing-dev"></a>Датчик температуры и влажности DHT22 подключения tooESP8266 самое разработки
 
-Чтобы установить подключение, используйте монтажную плату и оптоволоконный кабель с разъемами на обоих концах, как показано ниже. Если у вас нет датчика, пропустите этот раздел, так как вместо него вы можете использовать симулированные данные.
+Используйте hello breadboard и перемычки проводов toomake hello соединения следующим образом. Если у вас нет датчика, пропустите этот раздел, так как вместо него вы можете использовать симулированные данные.
 
 ![Справочные материалы по подключению](media/iot-hub-sparkfun-thing-dev-get-started/15_connections_on_breadboard.png)
 
-Чтобы подключить датчик, используйте следующие кабели:
+Для датчика ПИН-коды мы будем использовать следующие привязки hello:
 
 | Начало (датчик)           | Конец (плата)           | Цвет кабеля   |
 | -----------------------  | ---------------------- | ------------: |
@@ -89,83 +89,83 @@ ms.lasthandoff: 08/18/2017
 
 ![Подключение dht22 к ESP8266 Thing Dev](media/iot-hub-sparkfun-thing-dev-get-started/8_connect-dht22-thing-dev.png)
 
-### <a name="connect-sparkfun-esp8266-thing-dev-to-your-computer"></a>Подключение Sparkfun ESP8266 Thing Dev к компьютеру
+### <a name="connect-sparkfun-esp8266-thing-dev-tooyour-computer"></a>Подключите компьютер разработки самое ESP8266 Sparkfun tooyour
 
-Чтобы подключить Sparkfun ESP8266 Thing Dev к своему компьютеру, используйте кабель Micro-USB — USB типа A, как показано ниже.
+Используйте hello Micro USB tooType USB кабель tooconnect разработки самое ESP8266 Sparkfun tooyour компьютера следующим образом.
 
-![Подключение Feather HUZZAH к компьютеру](media/iot-hub-sparkfun-thing-dev-get-started/9_connect-thing-dev-computer.png)
+![Подключите компьютер tooyour huzzah Растушевка](media/iot-hub-sparkfun-thing-dev-get-started/9_connect-thing-dev-computer.png)
 
 ### <a name="add-serial-port-permissions--ubuntu-only"></a>Добавление разрешений для последовательного порта (только в Ubuntu)
 
-Если вы используете Ubuntu, предоставьте непривилегированному пользователю разрешения для работы с USB-портом, к которому подключена Sparkfun ESP8266 Thing Dev. Чтобы добавить разрешения для работы с последовательным портом, сделайте следующее:
+Если вы используете Ubuntu, убедитесь, что обычный пользователь имеет разрешения toooperate hello на hello USB порта из Sparkfun ESP8266 самое устройствам. разрешения tooadd последовательного порта для обычного пользователя, выполните следующие действия.
 
-1. В окне терминала выполните следующие команды:
+1. Выполните следующие команды в терминал hello.
 
    ```bash
    ls -l /dev/ttyUSB*
    ls -l /dev/ttyACM*
    ```
 
-   Вы получите выходные данные одного из следующих типов:
+   При получении одного из hello следующие выходные данные:
 
    * crw-rw---- 1 root uucp xxxxxxxx
    * crw-rw---- 1 root dialout xxxxxxxx
 
-   В выходных данных обратите внимание на параметр `uucp` или `dialout`. Это имя владельца группы USB-порта.
+   Обратите внимание, в выходных данных hello, `uucp` или `dialout` , представляющим hello группы владельца имя hello USB-порту.
 
-1. Добавьте пользователя в группу, выполнив следующую команду:
+1. Добавление группы toohello hello пользователей, выполнив следующую команду hello:
 
    ```bash
    sudo usermod -a -G <group-owner-name> <username>
    ```
 
-   `<group-owner-name>` — это имя владельца группы, полученное на предыдущем этапе. `<username>` — это имя пользователя Ubuntu.
+   `<group-owner-name>`— Имя владельца группы hello, полученную на предыдущем шаге hello. `<username>` — это имя пользователя Ubuntu.
 
-1. Чтобы изменения вступили в силу, выйдите из системы Ubuntu и войдите в нее снова.
+1. Выйдите из Ubuntu и снова войти в нем для hello изменение tootake эффекта.
 
-## <a name="collect-sensor-data-and-send-it-to-your-iot-hub"></a>Сбор данных датчиков и их отправка в Центр Интернета вещей
+## <a name="collect-sensor-data-and-send-it-tooyour-iot-hub"></a>Собирать данные датчиков и отправлять их tooyour центра IoT
 
-В этом разделе вы развернете и запустите пример приложения на плате Sparkfun ESP8266 Thing Dev. Пример приложения включает и отключает светодиодный индикатор на плате Sparkfun ESP8266 Thing Dev, а также отправляет в Центр Интернета вещей данные о температуре и влажности, собранные с датчика DHT22.
+В этом разделе вы развернете и запустите пример приложения на плате Sparkfun ESP8266 Thing Dev. Пример приложения Hello мигает hello Светодиод Sparkfun ESP8266 самое разработки и отправляет hello температуры и влажности собранные данные датчика tooyour hello DHT22 центр IoT.
 
-### <a name="get-the-sample-application-from-github"></a>Получение примера приложения из GitHub
+### <a name="get-hello-sample-application-from-github"></a>Получение образца приложения hello из GitHub
 
-Пример приложения находится на сайте GitHub. Клонируйте репозиторий, содержащий пример приложения с GitHub. Чтобы клонировать пример репозитория, сделайте следующее:
+Пример приложения Hello находится на GitHub. Клонирование репозитория образец hello, который содержит пример приложения hello из GitHub. репозиторий образец hello tooclone, выполните следующие действия:
 
 1. Откройте окно командной строки или терминала.
-1. Перейдите к папке, в которую необходимо сохранить пример приложения.
-1. Выполните следующую команду:
+1. Go tooa папку hello образец приложения toobe хранятся.
+1. Выполните следующую команду hello.
 
    ```bash
    git clone https://github.com/Azure-Samples/iot-hub-SparkFun-ThingDev-client-app.git
    ```
 
-Установите пакет для Sparkfun ESP8266 Thing Dev с помощью Arduino IDE:
+Установка пакета hello для разработки самое ESP8266 Sparkfun в интегрированной среде разработки Arduino:
 
-1. Откройте папку, где хранится пример приложения.
-1. Откройте файл app.ino в папке приложения в Arduino IDE.
+1. Откройте папку hello, где хранится пример приложения hello.
+1. Откройте файл app.ino hello в папке приложения hello Arduino интегрированной среды разработки.
 
-   ![Открытие примера приложения в Arduino IDE](media/iot-hub-sparkfun-thing-dev-get-started/10_arduino-ide-open-sample-app.png)
+   ![Откройте пример приложения hello в интегрированной среде разработки arduino](media/iot-hub-sparkfun-thing-dev-get-started/10_arduino-ide-open-sample-app.png)
 
-1. В Arduino IDE щелкните **Файл** > **Настройки**.
-1. В диалоговом окне **Настройки** щелкните значок рядом с текстовым полем **Дополнительные ссылки для менеджера плат**.
-1. Во всплывающем окне введите приведенный ниже URL-адрес и нажмите кнопку **ОК**.
+1. В hello Arduino IDE, щелкните **файл** > **предпочтения**.
+1. В hello **предпочтения** диалоговое окно, нажмите кнопку Далее toohello hello значок **дополнительные URL-адреса диспетчера досок** текстовое поле.
+1. Во всплывающем окне приветствия, введите URL-адреса hello и нажмите кнопку **ОК**.
 
    `http://arduino.esp8266.com/stable/package_esp8266com_index.json`
 
-   ![Указание URL-адреса пакета в Arduino IDE](media/iot-hub-sparkfun-thing-dev-get-started/11_arduino-ide-package-url.png)
+   ![tooa точки URL-адреса пакета в интегрированной среде разработки arduino](media/iot-hub-sparkfun-thing-dev-get-started/11_arduino-ide-package-url.png)
 
-1. В диалоговом окне **Настройки** нажмите кнопку **ОК**.
+1. В hello **предпочтения** диалоговое окно, нажмите кнопку **ОК**.
 1. Щелкните **Инструменты** > **Платы** > **Менеджер плат**, а затем выполните поиск по esp8266.
    Должен быть установлен пакет ESP8266 версии 2.2.0 или более поздней.
 
-   ![Завершение установки пакета ESP8266](media/iot-hub-sparkfun-thing-dev-get-started/12_arduino-ide-esp8266-installed.png)
+   ![установлен пакет esp8266 Hello](media/iot-hub-sparkfun-thing-dev-get-started/12_arduino-ide-esp8266-installed.png)
 
 1. Щелкните **Инструменты** > **Платы** > **Sparkfun ESP8266 Thing Dev**.
 
 ### <a name="install-necessary-libraries"></a>Установка необходимых библиотек
 
-1. В Arduino IDE щелкните **Скетч** > **Подключить библиотеку** > **Управлять библиотеками**.
-1. Выполните поиск приведенных ниже имен библиотек по очереди. Для каждой найденной библиотеки нажмите кнопку **Установить**.
+1. В hello Arduino IDE, щелкните **схематической** > **включают библиотеки** > **Управление библиотеками**.
+1. Поиск hello следующие имена библиотек по одному. Для каждого из библиотеки hello, можно найти, установите **установить**.
    * `AzureIoTHub`
    * `AzureIoTUtility`
    * `AzureIoTProtocol_MQTT`
@@ -175,24 +175,24 @@ ms.lasthandoff: 08/18/2017
 
 ### <a name="dont-have-a-real-dht22-sensor"></a>У вас нет датчика DHT22?
 
-Если у вас нет датчика DHT22, пример приложения может смоделировать данные о температуре и влажности. Чтобы включить использование смоделированных данных в примере приложения, сделайте следующее:
+Пример приложения Hello можно смоделировать температуры и влажности данных на случай реальные датчика DHT22 не нужно. tooenable hello образец приложения toouse моделирования данных, выполните следующие действия.
 
-1. Откройте файл `config.h` в папке `app`.
-1. Найдите приведенную ниже строку кода и измените значение `false` на `true`.
+1. Откройте hello `config.h` файла в hello `app` папки.
+1. Найдите следующие строки кода hello и измените значение hello из `false` слишком`true`:
    ```c
    define SIMULATED_DATA true
    ```
-   ![Настройка использования смоделированных данных в примере приложения](media/iot-hub-sparkfun-thing-dev-get-started/13_arduino-ide-configure-app-use-simulated-data.png)
+   ![Настройка приложения toouse имитируемые hello примеров данных](media/iot-hub-sparkfun-thing-dev-get-started/13_arduino-ide-configure-app-use-simulated-data.png)
    
 1. Сохраните изменения с помощью `Control-s`.
 
-### <a name="deploy-the-sample-application-to-sparkfun-esp8266-thing-dev"></a>Развертывание примера приложения на Sparkfun ESP8266 Thing Dev
+### <a name="deploy-hello-sample-application-toosparkfun-esp8266-thing-dev"></a>Развертывание hello образец приложения tooSparkfun ESP8266 самое разработки
 
-1. В Arduino IDE щелкните **Tool** > **Port** (Средства > Порт), а затем выберите последовательный порт для Sparkfun ESP8266 Thing Dev.
-1. Чтобы создать и развернуть пример приложения на Sparkfun ESP8266 Thing Dev, щелкните **Sketch** > **Upload** (Скетч > Загрузка).
+1. В hello Arduino IDE, щелкните **средство** > **порт**и нажмите кнопку hello последовательного порта для устройствам Sparkfun ESP8266 вещь.
+1. Нажмите кнопку **схематической** > **отправить** toobuild и развернуть tooSparkfun приложения образец hello устройствам ESP8266 вещь.
 
 > [!Note]
-> Если вы используете macOS, то во время передачи данных могут отображаться следующие сообщения. `warning: espcomm_sync failed`,`error: espcomm_open failed`. Откройте окно терминала выполните приведенные ниже действия, чтобы устранить эту проблему.
+> При использовании macOS, вероятно, могут быть hello следующие сообщения во время передачи данных. `warning: espcomm_sync failed`,`error: espcomm_open failed`. Откройте окно ternimal и Готово ниже toosolve действия этой проблемы.
 > ```bash
 > cd /System/Library/Extensions/IOUSBFamily.kext/Contents/PlugIns
 > sudo mv AppleUSBFTDI.kext AppleUSBFTDI.disabled
@@ -201,28 +201,28 @@ ms.lasthandoff: 08/18/2017
 
 ### <a name="enter-your-credentials"></a>Ввод учетных данных
 
-После завершения загрузки введите учетные данные следующим образом:
+После успешного завершения передачи hello, выполните шаги tooenter hello учетные данные.
 
-1. В Arduino IDE щелкните **Инструменты** > **Монитор последовательного порта**.
-1. В окне монитора последовательного порта обратите внимание на два раскрывающихся списка в нижнем правом углу.
-1. В раскрывающемся списке слева выберите **No line ending** (Ничего не добавлять к отправляемой строке).
-1. В раскрывающемся списке справа выберите **115200 baud** (115200 бод).
-1. При появлении запроса в поле ввода, расположенном в верхней части окна монитора последовательного порта, введете приведенные ниже сведения, а затем нажмите кнопку **Отправить**.
+1. В hello Arduino IDE, щелкните **средства** > **последовательного монитор**.
+1. В окне приветствия последовательного монитора Обратите внимание, hello двух раскрывающихся списках на hello нижнем правом углу.
+1. Выберите **без завершения строк** для hello левом раскрывающемся списке.
+1. Выберите **115200 бод** для hello правого раскрывающегося списка.
+1. В hello входной расположенный вверху hello hello последовательного «монитор» введите следующую информацию в ответ на запрос tooprovide hello их, а затем нажмите кнопку **отправки**.
    * Идентификатор SSID для подключения Wi-Fi.
    * Пароль Wi-Fi.
    * Строка подключения к устройству.
 
 > [!Note]
-> Учетные данные хранятся в памяти EEPROM платы Sparkfun ESP8266 Thing Dev. Если вы нажмете кнопку сброса на плате Sparkfun ESP8266 Thing Dev, в примере приложения отобразится сообщение с запросом на удаление информации. Чтобы удалить информацию, нажмите клавишу `Y`. После этого отобразится запрос на повторный ввод данных.
+> Hello учетные данные хранятся в hello EEPROM из Sparkfun ESP8266 самое устройствам. При нажатии кнопки сброса hello на hello Dev самое ESP8266 Sparkfun плата пример приложения hello запрашивает Если интересующий вас tooerase hello. Введите `Y` удалены сведения hello toohave и предлагают tooprovide hello их еще раз.
 
-### <a name="verify-the-sample-application-is-running-successfully"></a>Проверка работоспособности примера приложения
+### <a name="verify-hello-sample-application-is-running-successfully"></a>Убедитесь, что успешно выполняется пример приложения hello
 
-Если в окне монитора последовательного порта отобразились приведенные ниже выходные данные, а на плате Sparkfun ESP8266 Thing Dev мигает светодиодный индикатор, значит пример приложения запущен успешно.
+Если вы видите hello следующие выходные данные из окна последовательной монитор hello и hello мигающий Индикатор на ESP8266 самое Sparkfun разработки, пример приложения hello выполняется успешно.
 
 ![Окончательные выходные данные в Arduino IDE](media/iot-hub-sparkfun-thing-dev-get-started/14_arduino-ide-final-output.png)
 
 ## <a name="next-steps"></a>Дальнейшие действия
 
-Вы успешно подключили плату Sparkfun ESP8266 Thing Dev к Центру Интернета вещей и отправили данные, полученные от датчика. 
+Успешно подключен концентратор IoT tooyour Sparkfun ESP8266 самое разработки и отправки центра IoT tooyour данных датчика захвачен hello. 
 
 [!INCLUDE [iot-hub-get-started-next-steps](../../includes/iot-hub-get-started-next-steps.md)]

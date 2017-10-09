@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/10/2017
 ms.author: spelluru
-ms.openlocfilehash: 30c7cd1ba455d7b1bc93d76e7ee79455bb52aae9
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 52f72da54cdd80691e09d7453bf6730454c4089e
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="tutorial-create-a-pipeline-with-copy-activity-using-net-api"></a>Руководство. Создание конвейера с действием копирования с помощью API .NET
 > [!div class="op_single_selector"]
@@ -31,104 +31,104 @@ ms.lasthandoff: 08/03/2017
 > * [ИНТЕРФЕЙС REST API](data-factory-copy-activity-tutorial-using-rest-api.md)
 > * [API .NET](data-factory-copy-activity-tutorial-using-dotnet-api.md)
 
-В этом руководстве показано, как создать фабрику данных c конвейером, который копирует данные из хранилища BLOB-объектов Azure в базу данных SQL Azure, с помощью [.NET API](https://portal.azure.com). Если вы еще не работали с фабрикой данных Azure, перед выполнением действий, описанных в этом руководстве, ознакомьтесь со статьей [Введение в фабрику данных Azure](data-factory-introduction.md).   
+В этой статье вы узнаете, как toouse [.NET API](https://portal.azure.com) toocreate фабрики данных с конвейером, который копирует данные из базы данных Azure SQL tooan хранилища BLOB-объектов Azure. Если новый tooAzure фабрики данных, прочтите hello [tooAzure введение фабрики данных](data-factory-introduction.md) статьи, прежде чем выполнять задания этого учебника.   
 
-В этом руководстве описывается создание конвейера с одним действием — действием копирования. Действие копирования копирует данные из поддерживаемого хранилища данных в поддерживаемое хранилище данных-приемник. Список хранилищ данных, которые поддерживаются в качестве источников и приемников, см. в разделе [Поддерживаемые хранилища данных и форматы](data-factory-data-movement-activities.md#supported-data-stores-and-formats). Это действие выполняется с помощью глобально доступной службы, обеспечивающей безопасное, надежное и масштабируемое копирование данных между разными хранилищами. Дополнительные сведения о действии копирования см. в статье [Перемещение данных с помощью действия копирования](data-factory-data-movement-activities.md).
+В этом руководстве описывается создание конвейера с одним действием — действием копирования. Действие копирования Hello копирует данные из поддерживаемых хранилища tooa поддерживаемых приемник данных хранилищ данных. Список хранилищ данных, которые поддерживаются в качестве источников и приемников, см. в разделе [Поддерживаемые хранилища данных и форматы](data-factory-data-movement-activities.md#supported-data-stores-and-formats). Действие Hello выключен глобально доступной можно копировать данные между различными хранилищами данных в виде безопасные, надежные и масштабируемые службы. Дополнительные сведения о действии копирования hello см. в разделе [действия перемещения данных](data-factory-data-movement-activities.md).
 
-Конвейер может содержать сразу несколько действий. Два действия можно объединить в цепочку (выполнить одно действие вслед за другим), настроив выходной набор данных одного действия как входной набор данных другого действия. Дополнительные сведения см. в разделе [Несколько действий в конвейере](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline). 
+Конвейер может содержать сразу несколько действий. Кроме того, можно соединить в цепочку двух действий (Запуск одного действия другому), hello входной набор данных, из hello других действий, включив hello выходной набор данных из одного действия. Дополнительные сведения см. в разделе [Несколько действий в конвейере](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline). 
 
 > [!NOTE] 
 > Полную документацию по .NET API для Data Factory см. в [Справочник по .NET API фабрики данных](/dotnet/api/index?view=azuremgmtdatafactories-4.12.1).
 > 
-> В этом руководстве конвейер данных копирует данные из исходного хранилища данных в целевое. Инструкции по преобразованию данных с помощью фабрики данных Azure см. в [руководстве по созданию конвейера для преобразования данных с помощью кластера Hadoop](data-factory-build-your-first-pipeline.md).
+> конвейер данных Hello в этом учебнике копирует данные из источника данных хранилища tooa целевое хранилище данных. Учебник о том, как tootransform данных, с помощью фабрики данных Azure, в разделе [учебника: построение конвейера анализа tootransform использование кластера Hadoop](data-factory-build-your-first-pipeline.md).
 
 ## <a name="prerequisites"></a>Предварительные требования
-* Ознакомьтесь с [обзором руководства](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) и выполните **предварительные требования** .
+* Выполните [учебника Обзор и необходимые](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) tooget Обзор учебника hello и завершения hello **необходимого компонента** действия.
 * Visual Studio 2012, 2013 или 2015
 * Скачайте и установите пакет [Azure .NET SDK](http://azure.microsoft.com/downloads/)
-* Azure PowerShell. Далее, чтобы установить Azure PowerShell на локальном компьютере, следуйте указаниям в разделе [Установка и настройка Azure PowerShell](../powershell-install-configure.md) . С помощью Azure PowerShell вы создадите приложение Azure Active Directory.
+* Azure PowerShell. Следуйте инструкциям в разделе [как tooinstall и настройка Azure PowerShell](../powershell-install-configure.md) статью tooinstall Azure PowerShell на компьютере. Можно использовать Azure PowerShell toocreate приложение Azure Active Directory.
 
 ### <a name="create-an-application-in-azure-active-directory"></a>Создание приложения в Azure Active Directory
-Вы создадите приложение Azure Active Directory и субъект-службу для приложения, а затем назначите роль **Участник Data Factory** .
+Создать приложение Azure Active Directory, создать участника-службы для приложения hello и назначьте его toohello **участника фабрики данных** роли.
 
 1. Запустите **PowerShell**.
-2. Выполните следующую команду и введите имя пользователя и пароль, которые используются для входа на портал Azure.
+2. Запустите следующую команду hello и введите hello имя пользователя и пароль, использовать toosign в toohello портал Azure.
 
     ```PowerShell
     Login-AzureRmAccount
     ```
-3. Выполните следующую команду, чтобы просмотреть все подписки для этой учетной записи.
+3. Запустите следующие команды tooview hello все hello подписки для этой учетной записи.
 
     ```PowerShell
     Get-AzureRmSubscription
     ```
-4. Выполните следующую команду, чтобы выбрать подписку, с которой вы собираетесь работать. Замените **&lt;NameOfAzureSubscription**&gt; именем своей подписки Azure.
+4. Следующая команда tooselect hello подписки на toowork с выполнения hello. Замените  **&lt;NameOfAzureSubscription** &gt; с именем hello подписки Azure.
 
     ```PowerShell
     Get-AzureRmSubscription -SubscriptionName <NameOfAzureSubscription> | Set-AzureRmContext
     ```
 
    > [!IMPORTANT]
-   > Запишите значения **SubscriptionId** и **TenantId**, указанные в выходных данных этой команды.
+   > Запишите **SubscriptionId** и **TenantId** hello в выходных данных этой команды.
 
-5. Создайте группу ресурсов Azure с именем **ADFTutorialResourceGroup** , выполнив следующую команду в PowerShell.
+5. Создание группы ресурсов Azure с именем **ADFTutorialResourceGroup** , выполнив следующую команду в hello PowerShell hello.
 
     ```PowerShell
     New-AzureRmResourceGroup -Name ADFTutorialResourceGroup  -Location "West US"
     ```
 
-    Если группа ресурсов уже есть, укажите, требуется или не требуется ее обновить (Y или N соответственно).
+    Если группа ресурсов hello уже существует, укажите ли tooupdate его (Y) или сохранить его как (N).
 
-    Если вы используете другую группу ресурсов, укажите ее имя вместо ADFTutorialResourceGroup.
+    Если вы используете другой группе ресурсов, в этом учебнике требуется имя hello toouse вместо ADFTutorialResourceGroup группы ресурсов.
 6. Создайте приложение Azure Active Directory.
 
     ```PowerShell
     $azureAdApplication = New-AzureRmADApplication -DisplayName "ADFCopyTutotiralApp" -HomePage "https://www.contoso.org" -IdentifierUris "https://www.adfcopytutorialapp.org/example" -Password "Pass@word1"
     ```
 
-    Если возникнет следующая ошибка, укажите другой URL-адрес и запустите команду еще раз.
+    Если появляется следующая ошибка hello, укажите другой URL-адрес и снова выполните команду hello.
     
     ```PowerShell
-    Another object with the same value for property identifierUris already exists.
+    Another object with hello same value for property identifierUris already exists.
     ```
-7. Создайте субъект-службу AD.
+7. Создайте участника-службы AD hello.
 
     ```PowerShell
     New-AzureRmADServicePrincipal -ApplicationId $azureAdApplication.ApplicationId
     ```
-8. Назначьте субъекту-службе роль **Участник Data Factory** .
+8. Добавление участника toohello службы **участника фабрики данных** роли.
 
     ```PowerShell
     New-AzureRmRoleAssignment -RoleDefinitionName "Data Factory Contributor" -ServicePrincipalName $azureAdApplication.ApplicationId.Guid
     ```
-9. Получите идентификатор приложения.
+9. Получить идентификатор приложения hello.
 
     ```PowerShell
     $azureAdApplication 
     ```
-    Запишите идентификатор приложения (applicationID) из выходных данных.
+    Запишите идентификатор приложения hello (applicationID) hello в выходных данных.
 
 Вы должны получить следующие четыре значения:
 
 * Tenant ID
 * Идентификатор подписки
 * Идентификатор приложения
-* пароль (указан в первой команде).
+* Пароль (в первой команде hello)
 
 ## <a name="walkthrough"></a>Пошаговое руководство
 1. С помощью Visual Studio 2012, 2013 или 2015 создайте консольное приложение C# .NET.
    1. Запустите **Visual Studio** 2012, 2013 или 2015.
-   2. Щелкните **Файл**, наведите указатель мыши на пункт **Создать** и щелкните **Проект**.
+   2. Нажмите кнопку **файл**, слишком точки**New**и нажмите кнопку **проекта**.
    3. Разверните раздел **Шаблоны** и выберите **Visual C#**. В этом пошаговом руководстве используется C#, но можно использовать любой язык .NET.
-   4. Выберите **Консольное приложение** в списке типов проектов справа.
-   5. В качестве имени введите **DataFactoryAPITestApp** .
-   6. В качестве расположения укажите **C:\ADFGetStarted**.
-   7. Нажмите кнопку **ОК** , чтобы создать проект.
-2. Щелкните **Инструменты**, наведите указатель мыши на **Диспетчер пакетов NuGet** и щелкните **Консоль диспетчера пакетов**.
-3. В **консоли диспетчера пакетов** выполните следующие действия.
-   1. Выполните следующую команду, чтобы установить пакет фабрики данных: `Install-Package Microsoft.Azure.Management.DataFactories`
-   2. Выполните следующую команду, чтобы установить пакет Azure Active Directory (используйте Active Directory API в коде): `Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory -Version 2.19.208020213`
-4. Добавьте следующий раздел **appSetttings** в файл **App.config**. Эти параметры используются вспомогательным методом **GetAuthorizationHeader**.
+   4. Выберите **консольное приложение** hello списке типов проекта на hello вправо.
+   5. Введите **DataFactoryAPITestApp** для hello имя.
+   6. Выберите **C:\ADFGetStarted** для hello расположение.
+   7. Нажмите кнопку **ОК** toocreate hello проекта.
+2. Нажмите кнопку **средства**, слишком точки**диспетчера пакетов NuGet**и нажмите кнопку **консоль диспетчера пакетов**.
+3. В hello **консоль диспетчера пакетов**, hello следующие действия:
+   1. Выполните hello, следующая команда tooinstall фабрики данных пакета.`Install-Package Microsoft.Azure.Management.DataFactories`
+   2. Выполните hello, следующая команда tooinstall Azure Active Directory пакет (использовать Active Directory API в коде hello).`Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory -Version 2.19.208020213`
+4. Добавьте следующее hello **appSetttings** toohello раздел **App.config** файла. Эти параметры используются hello вспомогательный метод: **GetAuthorizationHeader**.
 
     Замените значения **&lt;Application ID&gt;**, **&lt;Password&gt;**, **&lt;Subscription ID&gt;** и **&lt;tenant ID&gt;** собственными значениями.
 
@@ -141,14 +141,14 @@ ms.lasthandoff: 08/03/2017
             <add key="WindowsManagementUri" value="https://management.core.windows.net/" />
 
             <add key="ApplicationId" value="your application ID" />
-            <add key="Password" value="Password you used while creating the AAD application" />
+            <add key="Password" value="Password you used while creating hello AAD application" />
             <add key="SubscriptionId" value= "Subscription ID" />
             <add key="ActiveDirectoryTenantId" value="Tenant ID" />
         </appSettings>
     </configuration>
     ```
 
-5. Добавьте следующие операторы **using** в файл исходного кода (Program.cs) в проекте.
+5. Добавьте следующее hello **с помощью** toohello инструкций исходный файл (Program.cs) в проекте hello.
 
     ```csharp
     using System.Configuration;
@@ -165,7 +165,7 @@ ms.lasthandoff: 08/03/2017
 
     ```
 
-6. Добавьте в метод **Main** приведенный ниже код, который создает экземпляр класса **DataPipelineManagementClient**. Этот объект используется не только для создания фабрики данных, связанной службы, входных и выходных наборов данных, а также конвейера, но и для отслеживания срезов набора данных при выполнении.
+6. Добавьте следующий код, который создает экземпляр hello **DataPipelineManagementClient** toohello класса **Main** метод. Этот объект toocreate используется фабрики данных, связанной службы, входные и выходные наборы данных и конвейера. Вы также использовать срезы toomonitor этот объект набора данных во время выполнения.
 
     ```csharp
     // create data factory management client
@@ -182,11 +182,11 @@ ms.lasthandoff: 08/03/2017
     ```
 
    > [!IMPORTANT]
-   > Замените значение **resourceGroupName** именем своей группы ресурсов Azure.
+   > Замените значение hello **resourceGroupName** с именем hello группы ресурсов Azure.
    >
-   > Измените имя фабрики данных (dataFactoryName) на уникальное. чтобы оно было глобально уникальным. Ознакомьтесь с разделом [Фабрика данных — правила именования](data-factory-naming-rules.md) , чтобы узнать о правилах именования артефактов фабрики данных.
+   > Обновите hello данных фабрики (с именем dataFactoryName) toobe уникальное имя. Имя фабрики данных hello должно быть глобально уникальным. Ознакомьтесь со статьей [Фабрика данных Azure — правила именования](data-factory-naming-rules.md) , чтобы узнать о правилах именования артефактов фабрики данных.
 
-7. Добавьте следующий код, создающий **фабрику данных**, в метод **Main**.
+7. Добавьте следующий код, создающий hello **фабрики данных** toohello **Main** метод.
 
     ```csharp
     // create a data factory
@@ -204,8 +204,8 @@ ms.lasthandoff: 08/03/2017
     );
     ```
 
-    Фабрика данных может иметь один или несколько конвейеров. Конвейер может содержать одно или несколько действий. Это может быть, например, действие копирования данных из исходного хранилища в целевое или действие HDInsight Hive для выполнения скрипта Hive, преобразующего входные данные в выходные данные продукта. Начнем с создания фабрики данных.
-8. Добавьте следующий код, который создает **связанную службу хранилища Azure**, в метод **Main**.
+    Фабрика данных может иметь один или несколько конвейеров. Конвейер может содержать одно или несколько действий. Например toocopy действие копирования данных из целевое хранилище данных источника tooa и toorun действие Hive в HDInsight tootransform скрипт Hive входных данных tooproduct выходных данных. Давайте начнем с создания фабрики данных hello на этом шаге.
+8. Добавьте следующий код, создающий hello **связанная служба хранилища Azure** toohello **Main** метод.
 
    > [!IMPORTANT]
    > Замените значения **storageaccountname** и **accountkey** именем и ключом вашей учетной записи хранения Azure.
@@ -228,12 +228,12 @@ ms.lasthandoff: 08/03/2017
     );
     ```
 
-    Связанная служба в фабрике данных связывает хранилища данных и службы вычислений с фабрикой данных. В этом руководстве не используются службы вычислений, например Azure HDInsight или Azure Data Lake Analytics. Вы используете два хранилища данных — служба хранилища Azure (источник) и база данных SQL Azure (конечное хранилище). 
+    Создания связанных служб в toolink фабрики данных, хранит и вычислений фабрики данных toohello службы данных. В этом руководстве не используются службы вычислений, например Azure HDInsight или Azure Data Lake Analytics. Вы используете два хранилища данных — служба хранилища Azure (источник) и база данных SQL Azure (конечное хранилище). 
 
     Поэтому нужно создать две связанные службы: служба хранилища Azure с именем AzureStorageLinkedService и база данных SQL Azure с именем AzureSqlLinkedService.  
 
-    Связанная служба хранилища Azure связывает учетную запись хранения Azure с фабрикой данных. В этой учетной записи хранения вы создали контейнер и отправили в нее данные в ходе выполнения предварительных [требований](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
-9. Добавьте следующий код, который создает **связанную службу SQL Azure**, в метод **Main**.
+    Hello AzureStorageLinkedService связывает фабрику данных toohello учетной записи хранилища Azure. Эта учетная запись хранения является hello один в котором можно создать контейнер и загруженные данные hello в рамках [необходимых компонентов](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
+9. Добавьте следующий код, создающий hello **связанная служба Azure SQL** toohello **Main** метод.
 
    > [!IMPORTANT]
    > Укажите вместо **servername**, **databasename**, **username** и **password** имя своего сервера Azure SQL Server, имя базы данных, имя пользователя и пароль.
@@ -256,8 +256,8 @@ ms.lasthandoff: 08/03/2017
     );
     ```
 
-    Связанная служба SQL Azure связывает базу данных SQL Azure с фабрикой данных. В этой базе данных хранятся данные, скопированные из хранилища BLOB-объектов. Вы создали пустую таблицу в этой базе данных в ходе выполнения [предварительных требований](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
-10. Добавьте следующий код, создающий **входные и выходные наборы данных**, в метод **Main**.
+    AzureSqlLinkedService связывает фабрику данных toohello базы данных Azure SQL. Hello данные, копируемые из хранилища больших двоичных объектов hello хранится в этой базе данных. Создана таблица emp hello в этой базе данных как часть [необходимых компонентов](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
+10. Добавьте следующий код, создающий hello **наборы входных и выходных данных** toohello **Main** метод.
 
     ```csharp
     // create input and output datasets
@@ -333,16 +333,16 @@ ms.lasthandoff: 08/03/2017
         });
     ```
     
-    На предыдущем шаге вы создали связанные службы, связывающие учетную запись хранения Azure и базу данных SQL Azure с фабрикой данных. На этом этапе вы определите два набора данных (InputDataset и OutputDataset), представляющие входные и выходные данные в хранилищах данных, на которые ссылаются службы AzureStorageLinkedService и AzureSqlLinkedService соответственно.
+    В предыдущем шаге hello создать связанные службы toolink вашей учетной записи хранилища Azure и фабрику данных tooyour базы данных Azure SQL. На этом шаге можно определить два набора данных с именем InputDataset и OutputDataset, представляющие входные данные и выходные данные, которые хранятся в хранилищах данных hello, на которые ссылается AzureStorageLinkedService и AzureSqlLinkedService соответственно.
 
-    Связанная служба хранилища Azure указывает строку подключения, которую фабрика данных использует во время выполнения, чтобы подключиться к учетной записи хранения Azure. А входной набор данных больших двоичных объектов (InputDataset) определяет контейнер и папку с входными данными.  
+    Hello связанной службой хранилища Azure задает строку подключения hello, который использует служба фабрики данных во время выполнения tooconnect tooyour учетной записи хранилища Azure. И hello входного BLOB-объекта dataset (InputDataset) указывает контейнер hello и hello папку, содержащую hello входных данных.  
 
-    Аналогичным образом связанная служба базы данных SQL Azure указывает строку подключения, которую служба фабрики данных использует во время выполнения, чтобы подключиться к базе данных SQL Azure. А выходной набор данных таблицы SQL (OututDataset) определяет таблицу в базе данных, в которую копируются данные из хранилища BLOB-объектов.
+    Аналогичным образом hello связана база данных SQL Azure службы указывает hello строку подключения, использующее служба фабрики данных в базе данных Azure SQL tooyour tooconnect время выполнения. И hello выходной набор данных таблицы SQL (OututDataset) указывает таблицу hello в hello базы данных toowhich hello и копирования данных из хранилища больших двоичных объектов hello.
 
-    На этом этапе вы создадите набор данных с именем InputDataset. Он указывает на файл большого двоичного объекта (emp.txt) в корневой папке контейнера больших двоичных объектов в службе хранилища Azure, которая представлена связанной службой AzureStorageLinkedService. Если не указать значение fileName (или пропустить его), данные из всех больших двоичных объектов в папке входных данных копируются в целевое расположение. В этом руководстве вы укажете значение параметра fileName.    
+    На этом шаге создается набор данных с именем InputDataset, который указывает файл tooa больших двоичных объектов (emp.txt) в корневой папке hello контейнер больших двоичных объектов (adftutorial) в hello представленный hello AzureStorageLinkedService связанной службы хранилища Azure. Если не указать значение для имени файла hello (или пропустить его), данные из всех больших двоичных объектов в папке входной hello, скопированный toohello назначения. В этом учебнике укажите значение для имени файла hello.    
 
-    На этом этапе мы создадим выходной набор данных с именем **OutputDataset**. Этот набор данных указывает на таблицу SQL в базе данных SQL Azure (представлена значением **AzureSqlLinkedService**).
-11. Добавьте следующий код, который **создает и активирует конвейер**, в метод **Main**. На этом этапе вы создадите конвейер с **действием копирования**, которое использует **InputDataset** в качестве входных данных и **OutputDataset** в качестве выходных.
+    На этом этапе мы создадим выходной набор данных с именем **OutputDataset**. Этот набор данных указывает tooa SQL таблицы в базе данных Azure SQL hello, представленного **AzureSqlLinkedService**.
+11. Добавьте hello следующий код, чтобы **создает и активирует конвейера** toohello **Main** метод. На этом этапе вы создадите конвейер с **действием копирования**, которое использует **InputDataset** в качестве входных данных и **OutputDataset** в качестве выходных.
 
     ```csharp
     // create a pipeline
@@ -361,7 +361,7 @@ ms.lasthandoff: 08/03/2017
                 {
                     Description = "Demo Pipeline for data transfer between blobs",
 
-                    // Initial value for pipeline's active period. With this, you won't need to set slice status
+                    // Initial value for pipeline's active period. With this, you won't need tooset slice status
                     Start = PipelineActivePeriodStartTime,
                     End = PipelineActivePeriodEndTime,
 
@@ -399,14 +399,14 @@ ms.lasthandoff: 08/03/2017
         });
     ```
 
-    Обратите внимание на следующие моменты.
+    Обратите внимание hello после точки.
    
-    - В разделе действий доступно только одно действие, параметр **type** которого имеет значение **Copy**. Дополнительные сведения о действии копирования см. в статье [Перемещение данных с помощью действия копирования](data-factory-data-movement-activities.md). В решениях фабрики данных можно также использовать [действия преобразования данных](data-factory-data-transformation-activities.md).
-    - Для этого действия параметру input присвоено значение **InputDataset**, а параметру output — значение **OutputDataset**. 
-    - В разделе **typeProperties** в качестве типа источника указано **BlobSource**, а в качестве типа приемника — **SqlSink**. Список хранилищ данных, поддерживаемых действием копирования в качестве источников и приемников, см. в разделе [Поддерживаемые хранилища данных и форматы](data-factory-data-movement-activities.md#supported-data-stores-and-formats). Чтобы узнать, как использовать конкретное хранилище данных в качестве источника или приемника, щелкните ссылку в таблице.  
+    - В разделе "действия" hello, имеется только одно действие, **тип** задано слишком**копирования**. Дополнительные сведения о действии копирования hello см. в разделе [действия перемещения данных](data-factory-data-movement-activities.md). В решениях фабрики данных можно также использовать [действия преобразования данных](data-factory-data-transformation-activities.md).
+    - Входных данных для действия hello установлено слишком**InputDataset** и вывода для hello действия установлено слишком**OutputDataset**. 
+    - В hello **typeProperties** разделе **BlobSource** указан в качестве типа источника hello и **SqlSink** указан как тип приемника hello. Перечень хранилищ данных, поддерживаемые действием копирования hello как источники и приемники см. в разделе [поддерживается хранилищ данных](data-factory-data-movement-activities.md#supported-data-stores-and-formats). как сохранить toouse конкретных поддерживаемые данные в качестве источника и приемника, toolearn по ссылке hello в таблице hello.  
    
-    Сейчас на основе этого набора настраивается расписание. В этом руководстве выходной набор данных создает срез раз в час. Для конвейера настроено время начала и время окончания с разницей в сутки. Таким образом, конвейер создает 24 среза для выходного набора данных.
-12. Добавьте следующий код в метод **Main** , чтобы получить состояние среза данных выходного набора данных. Существует только срез, ожидаемый в этом образце.
+    В настоящее время выходной набор данных — того, какие диски hello расписания. В этом учебнике выходной набор данных является настроенным tooproduce срез один раз в час. конвейер Hello содержит время начала и время окончания, которые однажды друг от друга, что составляет 24 часа. Таким образом 24 фрагменты выходной набор данных создают hello конвейера.
+12. Добавьте следующий код toohello hello **Main** метод tooget hello состояние срез данных hello выходной набор данных. Существует только срез, ожидаемый в этом образце.
 
     ```csharp
     // Pulling status within a timeout threshold
@@ -415,8 +415,8 @@ ms.lasthandoff: 08/03/2017
 
     while (DateTime.Now - start < TimeSpan.FromMinutes(5) && !done)
     {
-        Console.WriteLine("Pulling the slice status");        
-        // wait before the next status check
+        Console.WriteLine("Pulling hello slice status");        
+        // wait before hello next status check
         Thread.Sleep(1000 * 12);
 
         var datalistResponse = client.DataSlices.List(resourceGroupName, dataFactoryName, Dataset_Destination,
@@ -442,13 +442,13 @@ ms.lasthandoff: 08/03/2017
     }
     ```
 
-13. Добавьте в метод **Main** следующий код, чтобы получить сведения о выполнении для среза данных.
+13. Добавьте приведенные ниже сведения tooget запустите код для фрагмента данных toohello hello **Main** метод.
 
     ```csharp
     Console.WriteLine("Getting run details of a data slice");
 
-    // give it a few minutes for the output slice to be ready
-    Console.WriteLine("\nGive it a few minutes for the output slice to be ready and press any key.");
+    // give it a few minutes for hello output slice toobe ready
+    Console.WriteLine("\nGive it a few minutes for hello output slice toobe ready and press any key.");
     Console.ReadKey();
 
     var datasliceRunListResponse = client.DataSliceRuns.List(
@@ -472,14 +472,14 @@ ms.lasthandoff: 08/03/2017
         Console.WriteLine("ErrorMessage: \t{0}", run.ErrorMessage);
     }
 
-    Console.WriteLine("\nPress any key to exit.");
+    Console.WriteLine("\nPress any key tooexit.");
     Console.ReadKey();
     ```
 
-14. Добавьте следующий вспомогательный метод, используемый методом **Main**, в класс **Program**.
+14. Добавьте следующий вспомогательный метод, используемый hello hello **Main** toohello метод **программы** класса.
 
     > [!NOTE] 
-    > При копировании и вставке следующего кода убедитесь, что скопированный код находится на том же уровне, что и метод Main.
+    > При копировании и вставке hello после кода, убедитесь в том, что hello скопированный код находится во hello же уровня как hello метода Main.
 
     ```csharp
     public static async Task<string> GetAuthorizationHeader()
@@ -495,31 +495,31 @@ ms.lasthandoff: 08/03/2017
         if (result != null)
             return result.AccessToken;
 
-        throw new InvalidOperationException("Failed to acquire token");
+        throw new InvalidOperationException("Failed tooacquire token");
     }
     ```
 
-15. В обозревателе решений разверните проект (DataFactoryAPITestApp), щелкните правой кнопкой мыши **Ссылки**, а затем выберите **Добавить ссылку**. Установите флажок для сборки **System.Configuration**. Затем нажмите кнопку **ОК**.
-16. Постройте консольное приложение. В меню щелкните **Собрать** и выберите **Собрать решение**.
-17. Убедитесь, что в контейнере **adftutorial** в хранилище BLOB-объектов Azure есть как минимум один файл. В противном случае создайте в блокноте файл **Emp.txt** со следующим содержимым, а затем отправьте его в контейнер adftutorial.
+15. В hello в обозревателе решений разверните проект hello (DataFactoryAPITestApp), щелкните правой кнопкой мыши **ссылки**и нажмите кнопку **добавить ссылку**. Установите флажок для сборки **System.Configuration**. Затем нажмите кнопку **ОК**.
+16. Построение консольного приложения hello. Нажмите кнопку **построения** на hello меню и выберите пункт **построить решение**.
+17. Убедитесь, что установлен хотя бы один файл в hello **adftutorial** контейнера в хранилище BLOB-объектов Azure. Если нет, создайте **Emp.txt** после содержимого hello-файл в Блокноте и отправьте его toohello adftutorial контейнера.
 
     ```
     John, Doe
     Jane, Doe
     ```
-18. Запустите пример, щелкнув **Отладка** -> **Начать отладку** в меню. При появлении сообщения **Getting run details of a data slice** (Получение сведений о выполнении для среза данных) подождите несколько минут и нажмите клавишу **ВВОД**.
-19. Перейдите на портал Azure и убедитесь, что фабрика данных **APITutorialFactory** создана с использованием следующих артефактов:
+18. Запуск образца hello, щелкнув **отладки** -> **начать отладку** в меню "hello". При появлении hello **начало выполнения сведения о срез данных**, подождите несколько минут и нажмите клавишу **ввод**.
+19. Используйте hello Azure портала tooverify этой фабрики данных hello **APITutorialFactory** создается с hello следующие артефакты:
    * Связанная служба: **LinkedService_AzureStorage**.
    * Набор данных: **InputDataset** и **OutputDataset**.
    * Конвейер: **PipelineBlobSample**
-20. Убедитесь, что в таблице **emp** в указанной базе данных Azure SQL созданы две записи сотрудников.
+20. Убедитесь, что записи сотрудников hello два создаются в hello **emp** указана таблица в hello базы данных Azure SQL.
 
 ## <a name="next-steps"></a>Дальнейшие действия
 Полную документацию по .NET API для Data Factory см. в [Справочник по .NET API фабрики данных](/dotnet/api/index?view=azuremgmtdatafactories-4.12.1).
 
-В этом руководстве в ходе операции копирования вы использовали хранилище BLOB-объектов Azure как исходное хранилище данных, а базу данных SQL Azure — как целевое хранилище данных. В следующей таблице приведен список хранилищ данных, которые поддерживаются в качестве источников и целевых расположений для действия копирования. 
+В этом руководстве в ходе операции копирования вы использовали хранилище BLOB-объектов Azure как исходное хранилище данных, а базу данных SQL Azure — как целевое хранилище данных. Hello следующей таблице приведен список хранилищ данных, поддерживаемые действием копирования hello как источники и назначения: 
 
 [!INCLUDE [data-factory-supported-data-stores](../../includes/data-factory-supported-data-stores.md)]
 
-Чтобы получить дополнительные сведения о том, как скопировать данные в хранилище данных или из него, щелкните ссылку для хранилища данных в таблице.
+toolearn о том, как хранилище данных toocopy из данных, щелкните ссылку hello hello хранилища данных в таблице hello.
 

@@ -1,6 +1,6 @@
 ---
-title: "Сбор журналов непосредственно из процесса службы Azure Service Fabric | Microsoft Azure"
-description: "Описывает, как приложения Service Fabric могут отправлять журналы непосредственно в центральное расположение, например Azure Application Insights или Elasticsearch, не полагаясь на агент системы диагностики Azure."
+title: "журналы aaaCollect непосредственно из Azure Service Fabric с процессом службы | Microsoft Azure"
+description: "Описание приложения могут отправлять журналы, напрямую tooa централизованно, например Azure Application Insights или Elasticsearch, не полагаясь на агент диагностики Azure Service Fabric."
 services: service-fabric
 documentationcenter: .net
 author: karolz-ms
@@ -15,63 +15,63 @@ ms.workload: NA
 ms.date: 01/18/2017
 ms.author: karolz
 redirect_url: /azure/service-fabric/service-fabric-diagnostics-event-aggregation-eventflow
-ms.openlocfilehash: b7d2541928f4248750417a77d99033c8b4354dcc
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: d0681a2a6aaa76028d7cb469c31c006f24bbe954
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="collect-logs-directly-from-an-azure-service-fabric-service-process"></a>Сбор журналов непосредственно из процесса службы Azure Service Fabric
 ## <a name="in-process-log-collection"></a>Внутрипроцессный сбор журналов
-Сбор журналов приложений с помощью [расширения системы диагностики Azure](service-fabric-diagnostics-how-to-setup-wad.md) — хороший вариант для служб **Azure Service Fabric**, если набор источников и мест назначения журналов невелик и редко меняется, а источники и места назначения легко сопоставимы. В противном случае можно настроить службы для отправки своих журналов в центральное расположение. Этот процесс называется **внутрипроцессным сбором журналов** и имеет несколько потенциальных преимуществ.
+Сбор приложения журналов с помощью [расширения системы диагностики Azure](service-fabric-diagnostics-how-to-setup-wad.md) — это хороший вариант для **Azure Service Fabric** служб при небольших, набор hello журнала источники и назначения не изменяет часто и существует представляет собой простой сопоставление hello источников и их назначения. Если нет, то альтернативой является toohave служб и отправлять свои журналы непосредственно tooa центрального расположения. Этот процесс называется **внутрипроцессным сбором журналов** и имеет несколько потенциальных преимуществ.
 
 * *Простая настройка и развертывание.*
 
-    * Конфигурация сбора диагностических данных является лишь частью конфигурации службы. Ее легко сохранять "синхронизированной" с остальной частью приложения.
+    * Конфигурация Hello сбора диагностических данных — просто частью конфигурации службы hello. Это легко tooalways оставить его «синхронизировано» с hello остальной части приложения hello.
     * Настройка каждого приложения или службы также является несложной задачей.
-        * Сбор журналов на основе агента обычно требует отдельного развертывания и настройки агента диагностики. Как правило, это прибавляет работы администратору и может являться источником ошибок. Часто на виртуальной машине (узле) существует только один экземпляр агента, и конфигурация агента совместно используется всеми приложениями и службами, запущенными на этом узле. 
+        * Сбор данных журнала на основе агентов обычно требуется отдельное развертывание и конфигурация диагностики агента hello, лишние административную задачу и потенциальный источник ошибок. Часто имеется только один экземпляр агента hello допускается на каждую виртуальную машину (узел) и конфигурация агента hello является общим для всех приложений и служб, работающих на этом узле. 
 
 * *Гибкость*
    
-    * Приложение может отправлять данные куда угодно при наличии клиентской библиотеки, поддерживающей систему хранения целевых данных. При необходимости можно добавлять новые расположения.
+    * Hello приложение может отправлять данные hello везде, где он должен toogo, при условии, что имеется клиентская библиотека, которая поддерживает hello целевые системы хранения данных. При необходимости можно добавлять новые расположения.
     * Можно реализовать сложные правила сбора, фильтрации и статистической обработки данных.
-    * Сбор журналов на основе агента часто ограничивается приемниками данных, которые поддерживает агент. Некоторые агенты являются расширяемыми.
+    * Сбор данных журнала на основе агентов часто ограничивается hello данных приемников, которые поддерживает агент hello. Некоторые агенты являются расширяемыми.
 
-* *Доступ к внутренним данным приложения и контексту*
+* *Доступ к данным приложения toointernal и контекстом*
    
-    * В подсистему диагностики, которая работает внутри процесса приложения или службы, можно легко добавить трассировку с помощью контекстной информации.
-    * В случае сбора журналов на основе агента данные должны отправляться в агент с помощью механизма межпроцессного взаимодействия, например трассировки событий Windows. Однако при таком механизме могут возникнуть дополнительные ограничения.
+    * Hello диагностики подсистемы, выполняющиеся внутри процесса hello приложения или службы можно легко дополнить hello трассировок с помощью контекстных сведений.
+    * Сбор журналов на основе агентов, hello данные необходимо отправить агента tooan через механизм межпроцессного взаимодействия например трассировки событий Windows. Однако при таком механизме могут возникнуть дополнительные ограничения.
 
-Преимущества обоих методов сбора можно объединить. Это действительно может оказаться наилучшим решением для многих приложений. Сбор на основе агента — логичное решение для сбора журналов, связанных со всем кластером и отдельными его узлами. Он гораздо надежнее, чем внутрипроцессный сбор журналов, и лучше подходит для диагностики проблем и сбоев при запуске службы. Кроме того, если в кластере Service Fabric запущено много служб, каждая из них выполняет собственный внутрипроцессный сбор журналов, что приведет к многочисленным исходящим подключениям из кластера. Большое количество исходящих подключений нагружает как подсистему сети, так и место назначения журналов, что увеличивает затраты. Агент (например, агент [**системы диагностики Azure**](../cloud-services/cloud-services-dotnet-diagnostics.md)) может собирать данные от нескольких служб и отправлять все данные через небольшое число подключений, повышая производительность. 
+Это возможно toocombine и выгода от обоих методов сбора. На самом деле бывает hello наилучшим решением для многих приложений. Коллекция на основе агента — это естественное решение для сбора журналов связанные toohello весь кластер и отдельных узлах кластера. Это намного более надежным способом, чем сбор журналов в процессе, toodiagnose проблемы при запуске службы и сбоев. Кроме того многие службы, выполняющиеся внутри кластера Service Fabric, каждая служба, выполнив собственную коллекцию для внутрипроцессного журнала приведет многочисленные исходящие подключения из кластера hello. Большое количество исходящих подключений — сложная задача, для подсистемы сети hello и место назначения журналов hello. Агент (например, агент [**системы диагностики Azure**](../cloud-services/cloud-services-dotnet-diagnostics.md)) может собирать данные от нескольких служб и отправлять все данные через небольшое число подключений, повышая производительность. 
 
-В этой статье показано, как настроить внутрипроцессный сбор журналов с помощью [**библиотеки с открытым кодом EventFlow**](https://github.com/Azure/diagnostics-eventflow). Для этой цели можно использовать и другие библиотеки, но EventFlow имеет преимущество, так как она была разработана специально для внутрипроцессного сбора журналов и поддержки служб Service Fabric. Мы используем [**Azure Application Insights**](https://azure.microsoft.com/services/application-insights/) в качестве места назначения журналов. Можно также использовать [**концентраторы событий**](https://azure.microsoft.com/services/event-hubs/) или [**Elasticsearch**](https://www.elastic.co/products/elasticsearch). Это лишь вопрос установки соответствующего пакета NuGet и настройки назначения в файле конфигурации EventFlow. Дополнительные сведения о местах назначения журналов, отличных от Application Insights, см. в [документации по EventFlow](https://github.com/Azure/diagnostics-eventflow).
+В этой статье показано, как tooset в процесс входа в коллекцию с помощью [ **EventFlow открытая библиотека**](https://github.com/Azure/diagnostics-eventflow). Другие библиотеки могут использоваться для hello же цели, но EventFlow имеет преимущество hello была разработана специально для внутрипроцессного журнала сбора и toosupport служб Service Fabric. Мы используем [ **Azure Application Insights** ](https://azure.microsoft.com/services/application-insights/) как место назначения журналов hello. Можно также использовать [**концентраторы событий**](https://azure.microsoft.com/services/event-hubs/) или [**Elasticsearch**](https://www.elastic.co/products/elasticsearch). Это просто вопрос установки соответствующего пакета NuGet и Настройка назначения «hello» в файле конфигурации EventFlow hello. Дополнительные сведения о местах назначения журналов, отличных от Application Insights, см. в [документации по EventFlow](https://github.com/Azure/diagnostics-eventflow).
 
-## <a name="adding-eventflow-library-to-a-service-fabric-service-project"></a>Добавление библиотеки EventFlow в проект службы Service Fabric
-Двоичные файлы EventFlow предоставляются как набор пакетов NuGet. Чтобы добавить библиотеку EventFlow в проект службы Service Fabric, щелкните его правой кнопкой мыши в обозревателе решений и выберите "Управление пакетами NuGet". Перейдите на вкладку "Обзор" и найдите `Diagnostics.EventFlow`.
+## <a name="adding-eventflow-library-tooa-service-fabric-service-project"></a>Добавление проекта служб Service Fabric tooa библиотеки EventFlow
+Двоичные файлы EventFlow предоставляются как набор пакетов NuGet. tooadd EventFlow проект службы tooa Service Fabric, щелкните правой кнопкой мыши проект hello в hello обозреватель решений и выберите «Управление NuGet пакетов». Перейдите на вкладку toohello «Просмотр» и выполните поиск «`Diagnostics.EventFlow`»:
 
 ![Пакеты NuGet EventFlow в диспетчере пакетов NuGet Visual Studio][1]
 
-Служба, в которой размещается EventFlow, должна содержать соответствующие пакеты в зависимости от источника и назначения журналов приложений. Добавьте приведенные ниже пакеты. 
+EventFlow, где размещается служба Hello должна включать соответствующие пакеты, в зависимости от hello источника и назначения для журналов приложения hello. Добавьте hello следующие пакеты: 
 
 * `Microsoft.Diagnostics.EventFlow.Inputs.EventSource` 
-    * (Для сбора данных из класса EventSource службы и стандартных классов EventSource, например *Microsoft-ServiceFabric-Services* и *Microsoft-ServiceFabric-Actors*.)
+    * (toocapture данных из класса EventSource hello службы и из стандартной EventSources, такие как *Майкрософт ServiceFabric* и *Microsoft ServiceFabric субъекты*)
 * `Microsoft.Diagnostics.EventFlow.Outputs.ApplicationInsights` 
-    * (Мы собираемся отправлять журналы в ресурс Azure Application Insights.)  
+    * (мы будем toosend hello журналы tooan Azure Application Insights ресурсов)  
 * `Microsoft.Diagnostics.EventFlow.ServiceFabric` 
-    * (Позволяет инициализировать конвейер EventFlow из конфигурации службы Service Fabric и сообщать о всех проблемах отправки диагностических данных в виде отчетов о работоспособности Service Fabric.)
+    * (включает инициализацию конвейера EventFlow hello из конфигурации службы Service Fabric и сообщает обо всех проблемах с Отправка диагностических данных в виде отчетов о работоспособности Service Fabric)
 
 > [!NOTE]
-> Для пакета `Microsoft.Diagnostics.EventFlow.Inputs.EventSource` требуется, чтобы в проекте службы использовалась платформа .NET Framework 4.6 или более поздняя версия. Обязательно задайте соответствующую целевую платформу в свойствах проекта, прежде чем устанавливать этот пакет. 
+> `Microsoft.Diagnostics.EventFlow.Inputs.EventSource`пакет требует tootarget проекта hello службы .NET Framework 4.6 или более поздней версии. Убедитесь, что значение hello соответствующие требуемой версии .NET framework в свойствах проекта перед установкой данного пакета. 
 
-После установки всех пакетов следующим шагом является настройка и включение EventFlow в службе.
+После того как все hello пакеты установлены, hello следующим шагом является tooconfigure и включите EventFlow hello службы.
 
 ## <a name="configuring-and-enabling-log-collection"></a>Настройка и включение сбора журналов
-Конвейер EventFlow, отвечающий за отправку журналов, создается на основе спецификации, хранящейся в файле конфигурации. Пакет `Microsoft.Diagnostics.EventFlow.ServiceFabric` устанавливает начальный файл конфигурации EventFlow в паку решения `PackageRoot\Config`. Это файл `eventFlowConfig.json`. Данный файл конфигурации нужно изменить, чтобы собирать данные из класса службы по умолчанию `EventSource` и отправлять их в службу Application Insights.
+EventFlow конвейера, отвечающего за отправку журналов hello создается на основе спецификации, хранящейся в файле конфигурации. Пакет `Microsoft.Diagnostics.EventFlow.ServiceFabric` устанавливает начальный файл конфигурации EventFlow в паку решения `PackageRoot\Config`. Имя файла Hello `eventFlowConfig.json`. Этот файл конфигурации требует изменения toobe toocapture данные от служб по умолчанию hello `EventSource` класса и отправить службе аналитики tooApplication данных.
 
 > [!NOTE]
-> Мы предполагаем, что вы уже работали со службой **Azure Application Insights** и у вас есть ресурс Application Insights, который планируется использовать для мониторинга службы Service Fabric. Если вам требуются дополнительные сведения, ознакомьтесь с разделом [Создание ресурса Application Insights](../application-insights/app-insights-create-new-resource.md).
+> Мы предполагаем, что вы знакомы с **Azure Application Insights** службы, а также наличие ресурс Application Insights, планирование toouse toomonitor службе Service Fabric. Если вам требуются дополнительные сведения, ознакомьтесь с разделом [Создание ресурса Application Insights](../application-insights/app-insights-create-new-resource.md).
 
-Откройте файл `eventFlowConfig.json` в редакторе и измените его содержимое, как показано ниже. Обязательно замените имя ServiceEventSource и ключ инструментирования Application Insights в соответствии с комментариями. 
+Привет открыть `eventFlowConfig.json` в редактор hello и измените его содержимое, как показано ниже. Убедитесь, что tooreplace hello ServiceEventSource имя и ключ инструментирования Application Insights в соответствии с toocomments. 
 
 ```json
 {
@@ -81,7 +81,7 @@ ms.lasthandoff: 07/11/2017
       "sources": [
         { "providerName": "Microsoft-ServiceFabric-Services" },
         { "providerName": "Microsoft-ServiceFabric-Actors" },
-        // (replace the following value with your service's ServiceEventSource name)
+        // (replace hello following value with your service's ServiceEventSource name)
         { "providerName": "your-service-EventSource-name" }
       ]
     }
@@ -95,7 +95,7 @@ ms.lasthandoff: 07/11/2017
   "outputs": [
     {
       "type": "ApplicationInsights",
-      // (replace the following value with your AI resource's instrumentation key)
+      // (replace hello following value with your AI resource's instrumentation key)
       "instrumentationKey": "00000000-0000-0000-0000-000000000000"
     }
   ],
@@ -104,7 +104,7 @@ ms.lasthandoff: 07/11/2017
 ```
 
 > [!NOTE]
-> Имя ServiceEventSource службы — это значение свойства Name в `EventSourceAttribute`, которое применяется к классу ServiceEventSource. Все это указывается в файле `ServiceEventSource.cs`, который является частью кода службы. Например, в приведенном ниже фрагменте кода именем ServiceEventSource является *MyCompany Application1-Stateless1*.
+> Hello ServiceEventSource службы называется hello значение свойства Name hello hello `EventSourceAttribute` применения toohello ServiceEventSource класса. Он будет указан в hello `ServiceEventSource.cs` файл, который является частью службы кода hello. Например, в hello следующий код фрагмент кода hello hello ServiceEventSource имеет имя *MyCompany Application1-Stateless1*:
 > ```csharp
 > [EventSource(Name = "MyCompany-Application1-Stateless1")]
 > internal sealed class ServiceEventSource : EventSource
@@ -113,9 +113,9 @@ ms.lasthandoff: 07/11/2017
 >} 
 > ```
 
-Обратите внимание, что файл `eventFlowConfig.json` входит в пакет конфигурации службы. Изменения в этот файл могут вноситься только полными обновлениями или обновлениями конфигурации службы, которые проходят проверку работоспособности обновлений Service Fabric и автоматически откатываются в случае сбоя. Дополнительные сведения см. в разделе [Обновление приложения Service Fabric](service-fabric-application-upgrade.md).
+Обратите внимание, что файл `eventFlowConfig.json` входит в пакет конфигурации службы. Файл toothis изменения могут быть включены в full или конфигурации — только для обновления службы hello, тема tooService обновление проверки работоспособности и автоматического отката при наличии сбоя обновления. Дополнительные сведения см. в разделе [Обновление приложения Service Fabric](service-fabric-application-upgrade.md).
 
-Завершающим шагом является создание экземпляра конвейера EventFlow в коде запуска службы, расположенном в файле `Program.cs`. В следующем примере изменения, связанные с EventFlow, помечены комментариями, которые начинаются с `****`.
+Последний шаг Hello — tooinstantiate EventFlow конвейера в код запуска службы, расположенных в `Program.cs` файла. В hello помечены следующие дополнения связанных EventFlow пример с комментариями, начиная с `****`:
 
 ```csharp
 using System;
@@ -132,7 +132,7 @@ namespace Stateless1
     internal static class Program
     {
         /// <summary>
-        /// This is the entry point of the service host process.
+        /// This is hello entry point of hello service host process.
         /// </summary>
         private static void Main()
         {
@@ -161,10 +161,10 @@ namespace Stateless1
 }
 ```
 
-Имя, переданное в качестве параметра в метод `CreatePipeline` класса `ServiceFabricDiagnosticsPipelineFactory`, — это имя *сущности работоспособности*, представляющей конвейер EventFlow для сбора журналов. Это имя используется в том случае, если EventFlow обнаруживает ошибку и сообщает о ней через подсистему работоспособности Service Fabric.
+Имя Hello передается как параметр hello hello `CreatePipeline` метод hello `ServiceFabricDiagnosticsPipelineFactory` — имя hello hello *сущности работоспособности* представляющий hello EventFlow журнала коллекции конвейера. Это имя используется в том случае, если обнаруживает EventFlow и ошибок и сообщает об этом через hello подсистемы работоспособности Service Fabric.
 
 ## <a name="verification"></a>Проверка
-Запустите службу и просмотрите окно выходных данных отладки в Visual Studio. После запуска службы вы должны увидеть подтверждения того, что она отправляет записи телеметрии Application Insights. Откройте веб-браузер и перейдите к своему ресурсу Application Insights. Откройте вкладку "Поиск" (в верхней части колонки "Обзор", используемой по умолчанию). После небольшой задержки ваши трассировки должны начать появляться на портале Application Insights.
+Запустите службу и понаблюдайте за hello отладки окна вывода в Visual Studio. После запуска службы hello должна появиться свидетельство, что служба отправляет записи «Телеметрию Application Insights». Откройте веб-браузер и перейдите последовательно выберите tooyour ресурс Application Insights. Откройте вкладку «Поиск» (вверху hello колонка «Обзор» по умолчанию hello). После небольшой задержки должна появиться данные трассировок на портале Application Insights hello:
 
 ![Журналы из Service Fabric на портале Application Insights][2]
 

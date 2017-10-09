@@ -1,6 +1,6 @@
 ---
-title: "Добавление или изменение сведений о работе пользователя в Azure Active Directory | Документы Майкрософт"
-description: "В этом разделе описывается, как добавить номера телефонов, названия отделов и другие сведения о работе пользователя в Azure Active Directory."
+title: "aaaAdd или изменить рабочие сведения для пользователя в Azure Active Directory | Документы Microsoft"
+description: "Описание порядка использования tooadd телефонные номера, отдел имена и другие сведения для пользователя в Azure Active Directory"
 services: active-directory
 documentationcenter: 
 author: curtand
@@ -15,32 +15,32 @@ ms.topic: article
 ms.date: 06/27/2017
 ms.author: curtand;jeffsta
 ms.reviewer: jeffsta
-ms.openlocfilehash: 9f4031da7c6dfbd329d14c52f3a569084edacf20
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 53e645b2017cefd9ebf6d724526f462122739950
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="add-or-change-work-information-for-a-user-in-azure-active-directory"></a>Добавление или изменение сведений о работе пользователя в Azure Active Directory
-В этой статье описывается, как в Azure Active Directory (Azure AD) добавить или изменить сведения о работе, например номера телефонов или названия отделов, для пользователя. Сведения о добавлении новых пользователей в организации см. в статье [Добавление пользователей из других каталогов или организаций-партнеров в предварительной версии Azure Active Directory](active-directory-users-create-external-azure-portal.md).
+В этой статье объясняется, как имена tooadd или изменение рабочих такие сведения, номера телефонов или подразделение для пользователя в Azure Active Directory (Azure AD). Сведения о добавлении новых пользователей в организации см. в разделе [добавлять новых пользователей tooAzure Active Directory](active-directory-users-create-external-azure-portal.md).
 
-## <a name="to-change-work-information"></a>Изменение сведений о работе
-1. Войдите на [портал Azure](https://portal.azure.com) с помощью учетной записи глобального администратора каталога.
-2. Выберите **Больше служб**, введите **Пользователи и группы** в текстовое поле, а затем нажмите клавишу **ВВОД**.
+## <a name="toochange-work-information"></a>сведения о рабочем toochange
+1. Войдите в toohello [портал Azure](https://portal.azure.com) с помощью учетной записи глобального администратора каталога hello.
+2. Выберите **дополнительные службы**, введите **пользователей и групп** в hello текстовое поле, а затем выберите **ввод**.
 
    ![Открытие страницы "Управление пользователями"](./media/active-directory-users-work-info-azure-portal/create-users-user-management.png)
-3. В колонке **Пользователи и группы** выберите **Пользователи**.
+3. На hello **пользователей и групп** колонке выберите **пользователей**.
 
-   ![Открытие колонки "Пользователи"](./media/active-directory-users-work-info-azure-portal/create-users-open-users-blade.png)
-4. В колонке **Пользователи и группы — Пользователи** выберите пользователя из списка.
-5. В колонке для выбранного пользователя щелкните **Сведения о работе**.
+   ![Открытие колонка "пользователи" hello](./media/active-directory-users-work-info-azure-portal/create-users-open-users-blade.png)
+4. На hello **пользователей и групп — пользователей** колонке выберите пользователя из списка hello.
+5. В колонке hello для выбранного пользователя hello, выберите **сведения о работе**.
 
     ![Открытие сведений о работе](./media/active-directory-users-work-info-azure-portal/active-directory-create-users-work-info.png)
-6. Добавьте или измените сведения о работе. На панели команд щелкните **Сохранить**.
+6. Добавить или изменить сведения о рабочем hello. Выберите на панели команд hello, **Сохранить**.
 
 ## <a name="next-steps"></a>Дальнейшие действия
-* [Добавление новых пользователей в Azure Active Directory](active-directory-users-create-azure-portal.md)
-* [Сброс пароля пользователя в Azure Active Directory](active-directory-users-reset-password-azure-portal.md)
-* [Назначение пользователю ролей администратора в Azure Active Directory](active-directory-users-assign-role-azure-portal.md)
+* [Добавить новый tooAzure пользователей Active Directory](active-directory-users-create-azure-portal.md)
+* [Сброс пароля hello для пользователя в Azure Active Directory](active-directory-users-reset-password-azure-portal.md)
+* [Назначить пользователя роли tooadministrator в Azure Active Directory](active-directory-users-assign-role-azure-portal.md)
 * [Добавление или изменение данных профиля пользователя в Azure Active Directory](active-directory-users-profile-azure-portal.md)
 * [Удаление пользователя из каталога в Azure Active Directory](active-directory-users-delete-user-azure-portal.md)

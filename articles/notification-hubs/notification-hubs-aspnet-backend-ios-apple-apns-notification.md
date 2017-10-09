@@ -1,6 +1,6 @@
 ---
-title: "Уведомление пользователей iOS через центры уведомлений с помощью серверной части .NET"
-description: "Узнайте, как отправлять push-уведомления пользователям в Azure. Примеры кода написаны на Objective-C с использованием API .NET для серверной части."
+title: "aaaAzure пользователям уведомления концентраторов уведомлений для iOS с помощью серверного приложения .NET"
+description: "Узнайте, как toosend push-уведомления toousers в Azure. Примеры кода, написанного на языке C цель и hello .NET API для внутреннего hello."
 documentationcenter: ios
 author: ysxu
 manager: erikre
@@ -14,68 +14,68 @@ ms.devlang: objective-c
 ms.topic: article
 ms.date: 10/03/2016
 ms.author: yuaxu
-ms.openlocfilehash: 0fa7a886e1ecb0a90b6aebc1dbf9ef0c6ce1acf1
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 56aed5b04d2d985b3f0e50c58991607f07b61248
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-notification-hubs-notify-users-for-ios-with-net-backend"></a>Уведомление пользователей iOS через центры уведомлений с помощью серверной части .NET
 [!INCLUDE [notification-hubs-selector-aspnet-backend-notify-users](../../includes/notification-hubs-selector-aspnet-backend-notify-users.md)]
 
 ## <a name="overview"></a>Обзор
-Поддержка push-уведомлений в Azure позволяет получить доступ к простой в использовании, многоплатформенной и масштабируемой инфраструктуре для отправки push-уведомлений, которая значительно упрощает реализацию push-уведомлений как для индивидуальных пользователей, так и для корпоративных приложений для мобильных платформ. В этом учебнике показано, как использовать концентраторы уведомлений Azure для отправки push-уведомлений пользователю определенного приложения на конкретном устройстве. Серверная часть ASP.NET WebAPI используется для проверки подлинности клиентов и создания уведомлений, как показано в разделе руководства [Управление регистрацией из серверной части](notification-hubs-push-notification-registration-management.md#registration-management-from-a-backend).
+Поддержка уведомлений Push в Azure позволяет tooaccess к использованию, многоплатформенных и масштабируемых push-инфраструктуру, которая значительно упрощает реализацию hello push-уведомлений для индивидуальных пользователей и корпоративных приложений для мобильных устройств платформы. Этот учебник показывает, как toosend toouse концентраторов уведомлений Azure push-уведомления tooa определенное приложение пользователя на конкретном устройстве. Серверной части ASP.NET WebAPI — используется tooauthenticate клиентов и уведомления toogenerate, как показано в раздел руководства hello [регистрации из серверной части приложения](notification-hubs-push-notification-registration-management.md#registration-management-from-a-backend).
 
 > [!NOTE]
-> В этом учебнике подразумевается, что вы создали и настроили центр уведомлений, как описано в руководстве [Приступая к работе с центрами уведомлений (iOS)](notification-hubs-ios-apple-push-notification-apns-get-started.md). Это руководство также необходимо изучить перед переходом к руководству [Безопасные push-уведомления для концентраторов уведомлений Azure](notification-hubs-aspnet-backend-ios-push-apple-apns-secure-notification.md).
-> Если вы хотите использовать мобильные приложения в качестве внутренней службы, см. статью [Добавление push-уведомлений в приложение iOS](../app-service-mobile/app-service-mobile-ios-get-started-push.md).
+> В этом учебнике подразумевается, что вы создали и настроили центр уведомлений, как описано в руководстве [Приступая к работе с центрами уведомлений (iOS)](notification-hubs-ios-apple-push-notification-apns-get-started.md). Этот учебник содержит также hello готовности toohello [Secure Push (iOS)](notification-hubs-aspnet-backend-ios-push-apple-apns-secure-notification.md) учебника.
+> Если toouse мобильные приложения как безопасности внутренней службы, см. hello [мобильных приложений Приступая к работе с Push](../app-service-mobile/app-service-mobile-ios-get-started-push.md).
 > 
 > 
 
 [!INCLUDE [notification-hubs-aspnet-backend-notifyusers](../../includes/notification-hubs-aspnet-backend-notifyusers.md)]
 
 ## <a name="modify-your-ios-app"></a>Изменение приложения iOS
-1. Откройте в одностраничном режиме просмотра приложение, которое вы создали с помощью руководства [Приступая к работе с центрами уведомлений (iOS)](notification-hubs-ios-apple-push-notification-apns-get-started.md) .
+1. Просмотр приложения на одной странице Привет открыть созданный hello [Приступая к работе с концентраторами уведомлений (iOS)](notification-hubs-ios-apple-push-notification-apns-get-started.md) учебника.
    
    > [!NOTE]
-   > В этом разделе подразумевается, что вы настроили свой проект, указав пустое имя организации. Если вы этого не сделали, вам нужно будет добавлять имя своей организации перед всеми именами классов.
+   > В этом разделе подразумевается, что вы настроили свой проект, указав пустое имя организации. В противном случае вам потребуется tooprepend вашей организации tooall имя класса имена.
    > 
    > 
-2. В своем Main.storyboard добавьте компоненты из библиотеки объектов, показанные на снимке экрана.
+2. В вашей Main.storyboard добавьте hello компонентов показано на снимке экрана приветствия ниже из библиотеки hello объекта.
    
     ![][1]
    
-   * **Имя пользователя**: текстовое поле UITextField с замещающим текстом *Enter Username*, расположенное под меткой отправки результатов, справа, слева и сверху ограниченное полями.
-   * **Пароль**: текстовое поле UITextField с замещающим текстом *Enter Password*, расположенное под текстовым полем имени пользователя, справа, слева и сверху ограниченное полями. Отметьте параметр **Защищенный ввод текста** в инспекторе атрибутов в разделе *Символ вывода*.
-   * **Вход**: кнопка UIButton с меткой, которая расположена под текстовым полем пароля. Снимите флажок **Включить** в инспекторе атрибутов в разделе *Управление содержимым*.
-   * **WNS**: метка и переключатель для включения отправки уведомлений службы уведомлений Windows, если она установлена на концентраторе. См. руководство [Начало работы с центрами уведомлений для приложений универсальной платформы Windows](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md).
-   * **GCM**: метка и переключатель для включения отправки уведомлений в службу Google Cloud Messaging, если она установлена в концентраторе. См. руководство [Отправка push-уведомлений в приложения Android с помощью центров уведомлений Azure](notification-hubs-android-push-notification-google-gcm-get-started.md).
-   * **APNS**: метка и переключатель для включения отправки уведомлений в службу уведомлений платформы Apple Platform Notification Service.
-   * **Имя получателя**: текстовое поле UITextField с замещающим текстом *Введите имя получателя*, расположенное непосредственно под меткой GCM, справа, слева и сверху ограниченное полями.
+   * **Имя пользователя**: UITextField с текст заполнителя *введите имя пользователя*, непосредственно под hello отправлять результаты метку и ограниченного toohello влево и правой границы и под hello отправить результаты метки.
+   * **Пароль**: UITextField с текст заполнителя *ввод пароля*, немедленно ниже hello текстовое поле имени пользователя и ограниченного toohello слева и справа поля и под текстовое поле имени пользователя hello. Проверьте hello **Secure ввод текста** в диалоговом окне инспектора атрибут hello в разделе *возвращать ключ*.
+   * **Войдите в**: UIButton с меткой сразу под hello пароль текстовое поле и снимите флажок hello **включено** в диалоговом окне инспектора атрибуты hello в разделе *содержимое элемента управления*
+   * **WNS**: метка и отправка tooenable коммутатора hello уведомления службы уведомлений Windows, если он установлен и настроен на концентраторе hello. В разделе hello [Приступая к работе Windows](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md) учебника.
+   * **GCM**: метки и отправка tooenable коммутатора hello Cloud Messaging tooGoogle уведомления, если он установлен и настроен на концентраторе hello. См. руководство [Отправка push-уведомлений в приложения Android с помощью центров уведомлений Azure](notification-hubs-android-push-notification-google-gcm-get-started.md).
+   * **APNS**: Label и отправка tooenable коммутатора hello toohello уведомления службы уведомлений Apple платформы.
+   * **Recipent Username**: UITextField с замещающий текст *получателя тег имени пользователя*, сразу под hello GCM метки и ограниченного toohello левого, правого поля и под hello GCM метки.
 
-    Подробнее о добавлении некоторых компонентов см. в руководстве [Отправка push-уведомлений с помощью центров уведомлений Azure в iOS](notification-hubs-ios-apple-push-notification-apns-get-started.md).
+    Некоторые компоненты были добавлены в hello [Приступая к работе с концентраторами уведомлений (iOS)](notification-hubs-ios-apple-push-notification-apns-get-started.md) учебника.
 
-1. **Ctrl** , перетащите компоненты из представления в файл ViewController.h и добавьте эти новые элементы.
+1. **CTRL** перетащите из компонентов hello в представлении tooViewController.h hello и добавить эти новые выходы.
    
         @property (weak, nonatomic) IBOutlet UITextField *UsernameField;
         @property (weak, nonatomic) IBOutlet UITextField *PasswordField;
         @property (weak, nonatomic) IBOutlet UITextField *RecipientField;
         @property (weak, nonatomic) IBOutlet UITextField *NotificationField;
    
-        // Used to enable the buttons on the UI
+        // Used tooenable hello buttons on hello UI
         @property (weak, nonatomic) IBOutlet UIButton *LogInButton;
         @property (weak, nonatomic) IBOutlet UIButton *SendNotificationButton;
    
-        // Used to enabled sending notifications across platforms
+        // Used tooenabled sending notifications across platforms
         @property (weak, nonatomic) IBOutlet UISwitch *WNSSwitch;
         @property (weak, nonatomic) IBOutlet UISwitch *GCMSwitch;
         @property (weak, nonatomic) IBOutlet UISwitch *APNSSwitch;
    
         - (IBAction)LogInAction:(id)sender;
-2. В ViewController.h добавьте `#define` после операторов импорта. Замените заполнитель *<Enter Your Backend Endpoint>\>* URL-адресом назначения, который использовался для развертывания серверной части приложения в предыдущем разделе. Например, *http://you_backend.azurewebsites.net*.
+2. В ViewController.h, добавьте следующее hello `#define` под инструкциях импорта. Замена hello *< Введите ваш конечную точку серверной части\>*  заполнитель hello использовать toodeploy внутренний сервер приложений в предыдущем разделе hello URL-адрес назначения. Например, *http://you_backend.azurewebsites.net*.
    
         #define BACKEND_ENDPOINT @"<Enter Your Backend Endpoint>"
-3. В проекте создайте класс **Cocoa Touch class** с именем **RegisterClient** для взаимодействия с серверной частью ASP.NET. Создайте класс, наследующий `NSObject`. Затем добавьте следующий код в раздел RegisterClient.h:
+3. В проекте, создайте новый **Cocoa Touch класс** с именем **RegisterClient** toointerface с hello серверной части ASP.NET был создан. Создание hello класс, наследующий от `NSObject`. Затем добавьте следующий код в hello RegisterClient.h hello.
    
         @interface RegisterClient : NSObject
    
@@ -87,7 +87,7 @@ ms.lasthandoff: 07/11/2017
         -(instancetype) initWithEndpoint:(NSString*)Endpoint;
    
         @end
-4. В RegisterClient.m обновите раздел `@interface` .
+4. В hello RegisterClient.m обновления hello `@interface` раздела:
    
         @interface RegisterClient ()
    
@@ -102,7 +102,7 @@ ms.lasthandoff: 07/11/2017
                     tags:(NSSet*)tags andCompletion:(void(^)(NSURLResponse*, NSError*))completion;
    
         @end
-5. Замените раздел `@implementation` RegisterClient.m следующим кодом.
+5. Замените hello `@implementation` раздела hello RegisterClient.m с hello, следующий код.
 
         @implementation RegisterClient
 
@@ -261,32 +261,32 @@ ms.lasthandoff: 07/11/2017
 
         @end
 
-    В коде, указанном выше, реализуется логика, описываемая в статье [Регистрация из серверной части приложения](notification-hubs-push-notification-registration-management.md#registration-management-from-a-backend) , при этом используется NSURLSession для выполнения вызовов REST в серверную часть приложения, и NSUserDefaults для локального сохранения идентификатора registrationId, возвращаемого концентратором уведомлений.
+    Приведенный выше код Hello реализует логику hello и объясняются в руководстве по hello [регистрации из внутренний сервер приложений](notification-hubs-push-notification-registration-management.md#registration-management-from-a-backend) с помощью NSURLSession tooperform REST вызывает tooyour внутреннего сервера приложения, а также NSUserDefaults toolocally хранилище hello registrationId возвращенных hello концентратора уведомлений.
 
-    Обратите внимание, что для нормальной работы этого класса должно быть правильно задано свойство **authorizationHeader** . Это свойство может быть установлено классом **ViewController** после выполнения входа.
+    Обратите внимание, что для этого класса требуется его свойство **authorizationHeader** toobe правильно настроенной toowork заказа. Это свойство задается hello **ViewController** класса после входа hello.
 
-1. В ViewController.h добавьте оператор `#import` для RegisterClient.h. Затем добавьте объявление для токена устройства и ссылку на экземпляр `RegisterClient` в разделе `@interface`.
+1. В ViewController.h добавьте оператор `#import` для RegisterClient.h. Затем добавьте объявление для hello маркер устройства и ссылаться на tooa `RegisterClient` экземпляра в hello `@interface` раздела:
    
         #import "RegisterClient.h"
    
         @property (strong, nonatomic) NSData* deviceToken;
         @property (strong, nonatomic) RegisterClient* registerClient;
-2. Добавьте в ViewController.m объявление частного метода в разделе `@interface` .
+2. В ViewController.m, добавьте объявление закрытого метода в hello `@interface` раздела:
    
         @interface ViewController () <UITextFieldDelegate, NSURLConnectionDataDelegate, NSXMLParserDelegate>
    
-        // create the Authorization header to perform Basic authentication with your app back-end
+        // create hello Authorization header tooperform Basic authentication with your app back-end
         -(void) createAndSetAuthenticationHeaderWithUsername:(NSString*)username
                         AndPassword:(NSString*)password;
    
         @end
 
 > [!NOTE]
-> Этот фрагмент не является безопасной схемой проверки подлинности. Следует заменить реализацию **createAndSetAuthenticationHeaderWithUsername:AndPassword:** своим собственным механизмом проверки подлинности, формирующим маркер проверки подлинности, используемый классом клиента register, например OAuth, Active Directory.
+> Hello следующий фрагмент не схему проверки подлинности, следует заменить hello реализация hello **createAndSetAuthenticationHeaderWithUsername:AndPassword:** с вашей механизм проверки подлинности При этом создается toobe токена проверки подлинности, занятая hello register класса клиента, например OAuth Active Directory.
 > 
 > 
 
-1. Затем в разделе `@implementation` ViewController.m добавьте приведенный ниже код, который задает токен и заголовок проверки подлинности устройства.
+1. Затем в hello `@implementation` раздел ViewController.m добавьте следующий код, который добавляет реализации hello параметр hello устройства маркера и проверки подлинности заголовка hello.
    
         -(void) setDeviceToken: (NSData*) deviceToken
         {
@@ -311,8 +311,8 @@ ms.lasthandoff: 07/11/2017
             return YES;
         }
    
-    Обратите внимание, как при задании токена устройства активируется кнопка входа. Это происходит по той причине, что контроллер представления, являясь частью действия входа, регистрирует push-уведомления в серверной части приложения. Таким образом, действие «Вход» должно быть недоступно, пока токен устройства не будет настроен должным образом. Можно разъединить вход и push-регистрацию, если первая операция выполняется раньше второй.
-2. Чтобы в ViewController.m реализовать метод действия для кнопки **Вход** и метод отправки сообщений уведомления с помощью серверной части ASP.NET, используйте следующие фрагменты кода.
+    Обратите внимание на то, как маркер устройства hello параметр делает hello кнопку входа. Это так, как в рамках действия входа hello регистрирует контроллер представление hello push-уведомления с внутреннего сервера приложения hello. Таким образом нам не нужно войти toobe действия доступны пока hello маркер устройства был правильно настроен. Чтобы отделить журнал hello в регистрации push hello до тех пор, пока бывшая hello производится перед выполнением последний hello.
+2. В ViewController.m, используйте следующий метод действия hello tooimplement фрагменты для hello вашей **входа в** кнопки и метод toosend hello уведомлений сообщения с помощью hello серверной части ASP.NET.
    
        - (IBAction) LogInAction: отправителя (id) {/ / создать заголовок проверки подлинности и установите его в клиент регистра NSString * имя пользователя = self. UsernameField.text;   Пароль NSString * = self. PasswordField.text;
    
@@ -322,15 +322,15 @@ ms.lasthandoff: 07/11/2017
 
         - (void)SendNotificationASPNETBackend:(NSString*)pns UsernameTag:(NSString*)usernameTag            Message:(NSString*)message {    NSURLSession* session = [NSURLSession        sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate:nil        delegateQueue:nil];
 
-            Передайте тег pns и имя пользователя в качестве параметров URL-адрес REST серверной части ASP.NET NSURL * requestURL = [NSURL URLWithString: [NSString stringWithFormat:@"%@/api/notifications? pns = % @& to_tag = % @», BACKEND_ENDPOINT pns, usernameTag]];
+            Передавать hello тег pns и имя пользователя в качестве параметров с toohello ASP.NET hello REST URL-адрес внутреннего NSURL * requestURL = [NSURL URLWithString: [NSString stringWithFormat:@"%@/api/notifications? pns = % @& to_tag = % @», BACKEND_ENDPOINT pns, usernameTag]];
 
             Запрос NSMutableURLRequest * = [NSMutableURLRequest requestWithURL:requestURL];    [запрос setHTTPMethod:@"POST»];
 
-            Получить макетов authenticationheader от клиента регистра NSString * authorizationHeaderValue = [NSString stringWithFormat:@"Basic % @», self.registerClient.authenticationHeader];    [запрос setValue:authorizationHeaderValue forHTTPHeaderField:@"Authorization»];
+            Получать hello макетов authenticationheader от клиента регистра hello NSString * authorizationHeaderValue = [NSString stringWithFormat:@"Basic % @», self.registerClient.authenticationHeader];    [запрос setValue:authorizationHeaderValue forHTTPHeaderField:@"Authorization»];
 
-            Добавьте текст сообщения уведомления [запрос setValue:@"application/json;charset=utf-8» forHTTPHeaderField:@"Content-Type»];    [запросить setHTTPBody: [сообщений dataUsingEncoding:NSUTF8StringEncoding]];
+            Добавьте текст сообщения уведомления hello [запрос setValue:@"application/json;charset=utf-8» forHTTPHeaderField:@"Content-Type»];    [запросить setHTTPBody: [сообщений dataUsingEncoding:NSUTF8StringEncoding]];
 
-            Выполнить API-интерфейса REST отправить уведомление на dataTask NSURLSessionDataTask серверной части ASP.NET * = [сеанса dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError  *Ошибка) {NSHTTPURLResponse* httpResponse = (NSHTTPURLResponse*) ответа;        Если (ошибка || httpResponse.statusCode! = 200) {NSString* состояние = [stringWithFormat:@"Error NSString состояние для % @: % d\nError: %@\n», pns, httpResponse.statusCode, ошибка];            dispatch_async(dispatch_get_main_queue(), ^ {/ / добавление текста, поскольку все вызовы 3 PNS также могут иметь информацию, представление [self.sendResults setText:[self.sendResults.text stringByAppendingString:status]];            });            NSLog(status);        }
+            Выполнение hello отправка уведомлений API-интерфейса REST на hello ASP.NET серверной NSURLSessionDataTask * dataTask = [сеанса dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError  *Ошибка) {NSHTTPURLResponse* httpResponse = (NSHTTPURLResponse*) ответа;        Если (ошибка || httpResponse.statusCode! = 200) {NSString* состояние = [stringWithFormat:@"Error NSString состояние для % @: % d\nError: %@\n», pns, httpResponse.statusCode, ошибка];            dispatch_async(dispatch_get_main_queue(), ^ {/ / добавление текста, так как все вызовы 3 PNS также могут быть tooview сведения [self.sendResults setText:[self.sendResults.text stringByAppendingString:status]];            });            NSLog(status);        }
 
                 if (data != NULL)
                 {
@@ -341,7 +341,7 @@ ms.lasthandoff: 07/11/2017
             }];    [dataTask resume]; }
 
 
-1. Обновите действие для кнопки **Отправить уведомление** для использования серверной части ASP.NET и отправки любой PNS, разрешенной коммутатором.
+1. Обновить действие hello для hello **отправить уведомление** кнопку серверной части ASP.NET hello toouse и отправлять tooany PNS, включаемые к коммутатору.
 
         - (IBAction)SendNotificationMessage:(id)sender
         {
@@ -368,15 +368,15 @@ ms.lasthandoff: 07/11/2017
 
 
 
-1. В функции **ViewDidLoad**введите следующий код, чтобы создать экземпляр RegisterClient и задать делегат для текстовых полей.
+1. В функции **ViewDidLoad**, добавьте следующий экземпляром RegisterClient tooinstantiate hello hello и задайте hello делегат для текстового поля.
    
        self.UsernameField.delegate = self;
        self.PasswordField.delegate = self;
        self.RecipientField.delegate = self;
        self.registerClient = [[RegisterClient alloc] initWithEndpoint:BACKEND_ENDPOINT];
-2. Теперь удалите в **AppDelegate.m** все содержимое метода **application:didRegisterForPushNotificationWithDeviceToken:** и замените его следующим содержимым, чтобы контроллер представления содержал последний токен устройства, полученный из элементов APN:
+2. Теперь в **AppDelegate.m**, удалите все содержимое hello hello метода **приложения: didRegisterForPushNotificationWithDeviceToken:** и заменить ее именем hello, убедитесь, что следующие toomake, Здравствуйте, представление контроллер содержит маркер устройства последнюю hello, полученные из APNs.
    
-       // Add import to the top of the file
+       // Add import toohello top of hello file
        #import "ViewController.h"
    
        - (void)application:(UIApplication *)application
@@ -385,23 +385,23 @@ ms.lasthandoff: 07/11/2017
            ViewController* rvc = (ViewController*) self.window.rootViewController;
            rvc.deviceToken = deviceToken;
        }
-3. Наконец, убедитесь, что в **AppDelegate.m**есть следующий метод:
+3. Finally в **AppDelegate.m**, убедитесь, что у вас есть hello следующий метод:
    
        - (void)application:(UIApplication *)application didReceiveRemoteNotification: (NSDictionary *)userInfo {
            NSLog(@"%@", userInfo);
            [self MessageBox:@"Notification" message:[[userInfo objectForKey:@"aps"] valueForKey:@"alert"]];
        }
 
-## <a name="test-the-application"></a>Тестирование приложения
-1. В XCode запустите приложение на физическом устройстве под управлением iOS (push-уведомления не будут работать в симуляторе).
-2. В пользовательском интерфейсе приложения iOS введите имя пользователя и пароль. Это может быть любая строка, но имя и пароль должны быть одинаковыми. Затем нажмите кнопку **Log In**(Войти).
+## <a name="test-hello-application"></a>Hello тестового приложения
+1. В XCode запустите приложение hello на устройстве физических операций ввода-вывода (push-уведомлений не будет работать в симуляторе hello).
+2. В приложении iOS hello пользовательского интерфейса введите имя пользователя и пароль. Это может быть любой строкой, но они оба должны быть hello же строковое значение. Затем нажмите кнопку **Log In**(Войти).
    
     ![][2]
 3. Должно отобразиться всплывающее окно с сообщением об успешной регистрации. Нажмите кнопку **ОК**.
    
     ![][3]
-4. В текстовом поле*Тег имени получателя* введите тег имени получателя, используемый при регистрации с другого устройства.
-5. Введите сообщение уведомления и нажмите кнопку **Отправить уведомление**.  Сообщения уведомления могут получать только устройства с зарегистрированным тегом имени получателя.  Сообщения отправляются только таким пользователям.
+4. В hello **тег username получателя* текста введите используется вместе с регистрацией hello с другого устройства тег имени пользователя hello.
+5. Введите сообщение уведомления и нажмите кнопку **Отправить уведомление**.  Только устройства hello имеет регистрации с тегом имя получателя пользователя hello сообщение hello уведомления.  Он отправляется только toothose пользователей.
    
     ![][4]
 

@@ -1,6 +1,6 @@
 ---
-title: "Поддерживаемые службы и схемы в журналах диагностики Azure | Документация Майкрософт"
-description: "Узнайте о поддерживаемых схемах служб и событий для журналов диагностики Azure."
+title: "aaaAzure схемы и диагностические журналы поддерживается службы | Документы Microsoft"
+description: "Определите hello поддержка службы и схема событий журналы диагностики Azure."
 author: johnkemnetz
 manager: orenr
 editor: 
@@ -14,18 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/21/2017
 ms.author: johnkem
-ms.openlocfilehash: aa4fa6e0310b2725005dfa34e3225c89fb4282d6
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: a3cbf5267e1bd0dc257f4fb4f42c323644046a6a
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="supported-services-schemas-and-categories-for-azure-diagnostic-logs"></a>Поддерживаемые службы, схемы и категории для журналов диагностики Azure
 
-[Журналы диагностики ресурсов Azure](monitoring-overview-of-diagnostic-logs.md) — это журналы, созданные ресурсом Azure, описывающие работу данного ресурса. Эти журналы создаются для конкретного типа ресурсов. В этой статье представлены поддерживаемые службы и схема событий для событий, созданных в каждой службе. В эту статью также включен полный список доступных категорий журналов для каждого типа ресурсов.
+[Журналы диагностики Azure ресурсов](monitoring-overview-of-diagnostic-logs.md) журналов, создаваемых ресурсы Azure, описывающие операцию hello этого ресурса. Эти журналы создаются для конкретного типа ресурсов. В этой статье представлены hello набор поддерживаемых схемы службы и событий для событий, создаваемых каждой службы. В эту статью также включен полный список доступных категорий журналов для каждого типа ресурсов.
 
 ## <a name="supported-services-and-schemas-for-resource-diagnostic-logs"></a>Поддерживаемые службы и схемы для журналов диагностики ресурсов
-Схема для журналов диагностики ресурсов зависит от типа ресурса и категории журнала.   
+Hello схемы для журналов диагностики ресурсов зависит от категории hello ресурсов и журнала.   
 
 | служба | Схемы и документы |
 | --- | --- |
@@ -52,12 +52,12 @@ ms.lasthandoff: 08/29/2017
 ## <a name="supported-log-categories-per-resource-type"></a>Поддерживаемые категории журнала для каждого типа ресурса
 |Тип ресурса|Категория|Отображаемое имя категории|
 |---|---|---|
-|Microsoft.ApiManagement/service|GatewayLogs|Журналы, относящихся к шлюзу ApiManagement.|
+|Microsoft.ApiManagement/service|GatewayLogs|Журналы, связанные с tooApiManagement шлюза|
 |Microsoft.Automation/automationAccounts|JobLogs|Журналы заданий|
 |Microsoft.Automation/automationAccounts|JobStreams|Потоки заданий|
 |Microsoft.Automation/automationAccounts|DscNodeStatus|Состояние узла DSC.|
 |Microsoft.Batch/batchAccounts|ServiceLog|Журналы служб|
-|Microsoft.Cdn/profiles/endpoints|CoreAnalytics|Возвращает метрики конечной точки, например пропускную способность, исходящий трафик и т. д.|
+|Microsoft.Cdn/profiles/endpoints|CoreAnalytics|Возвращает метрику hello hello конечной точки, например, пропускной способности, исходящие данные, и т. д.|
 |Microsoft.CustomerInsights/hubs|AuditEvents|AuditEvents|
 |Microsoft.DataLakeAnalytics/accounts|Аудит|Журналы аудита|
 |Microsoft.DataLakeAnalytics/accounts|Запросы|Журналы запросов|
@@ -89,6 +89,6 @@ ms.lasthandoff: 08/29/2017
 ## <a name="next-steps"></a>Дальнейшие действия
 
 * [Сбор и использование данных журнала из ресурсов Azure](monitoring-overview-of-diagnostic-logs.md)
-* [Потоковая передача журналов диагностики Azure в **концентраторы событий**](monitoring-stream-diagnostic-logs-to-event-hubs.md)
-* [Создание или обновление диагностического параметра](https://msdn.microsoft.com/library/azure/dn931931.aspx)
+* [Поток ресурсов журналы диагностики слишком**концентраторов событий**](monitoring-stream-diagnostic-logs-to-event-hubs.md)
+* [Изменение параметров диагностики ресурсов, с помощью API REST Azure монитор hello](https://msdn.microsoft.com/library/azure/dn931931.aspx)
 * [Сбор журналов и метрик для служб Azure для использования в Log Analytics](../log-analytics/log-analytics-azure-storage.md)

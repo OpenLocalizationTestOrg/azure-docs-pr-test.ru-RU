@@ -1,5 +1,5 @@
 ---
-title: "Привязки внешних файлов в Функциях Azure (предварительная версия) | Документация Майкрософт"
+title: "aaaAzure функции внешний файл привязки (Предварительная версия) | Документы Microsoft"
 description: "Использование привязок внешних файлов в Функциях Azure"
 services: functions
 documentationcenter: 
@@ -14,16 +14,16 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 04/12/2017
 ms.author: alkarche
-ms.openlocfilehash: 2082e4e9b23271be93f3e3ab43997c3243238da8
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 583d9c0b871dc68a79614749ba6ac6711fa820fa
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-functions-external-file-bindings-preview"></a>Привязки внешних файлов в Функциях Azure (предварительная версия)
-В этой статье показано, как управлять файлами различных поставщиков SaaS (например, OneDrive, Dropbox) внутри функции, использующей встроенные привязки. Функции Azure поддерживают привязки триггера, а также входные и выходные привязки для внешних файлов.
+В этой статье показано, как toomanipulate файлов из разных SaaS поставщиков (например, OneDrive, Dropbox) внутри функции использованием встроенных привязок. Функции Azure поддерживают привязки триггера, а также входные и выходные привязки для внешних файлов.
 
-Привязка создает подключения API к поставщикам SaaS или использует существующие подключения API из группы ресурсов приложения-функции.
+Эта привязка создает подключений API tooSaaS поставщиков или использует существующие подключения API из группы ресурсов в приложении функции.
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
@@ -44,21 +44,21 @@ ms.lasthandoff: 08/18/2017
 
 ## <a name="external-file-trigger-binding"></a>Привязка триггера внешнего файла
 
-Триггер внешнего файла Azure позволяет отслеживать удаленную папку и выполнять код функции при обнаружении изменений.
+Hello Azure внешнего файла триггер позволяет отслеживать удаленную папку и запуск кода функции при обнаружении изменений.
 
-Триггер внешнего файла использует следующий объект JSON в массиве `bindings` файла function.json.
+используются следующие объекты JSON в hello hello триггером внешнего файла Hello `bindings` массив function.json
 
 ```json
 {
   "type": "apiHubFileTrigger",
   "name": "<Name of input parameter in function signature>",
   "direction": "in",
-  "path": "<folder to monitor, and optionally a name pattern - see below>",
+  "path": "<folder toomonitor, and optionally a name pattern - see below>",
   "connection": "<name of external file connection - see above>"
 }
 ```
 <!---
-See one of the following subheadings for more information:
+See one of hello following subheadings for more information:
 
 * [Name patterns](#pattern)
 * [File receipts](#receipts)
@@ -68,14 +68,14 @@ See one of the following subheadings for more information:
 <a name="pattern"></a>
 
 ### <a name="name-patterns"></a>Шаблоны имен
-Шаблон имени файла можно указать в свойстве `path`. Указанная папка должна существовать в поставщике SaaS.
+Можно указать шаблон имени файла в hello `path` свойство. ссылка на папку Hello должен существовать в поставщик SaaS hello.
 Примеры:
 
 ```json
 "path": "input/original-{name}",
 ```
 
-При использовании этого пути будет выполняться поиск файла с именем *original-File1.txt* в папке *input*. В этом примере переменная `name` в коде функции получит значение `File1.txt`.
+Этот путь может найти файл с именем *исходный File1.txt* в hello *ввода* папки, а значение hello hello `name` переменной в коде функция будет `File1.txt`.
 
 Другой пример:
 
@@ -83,49 +83,49 @@ See one of the following subheadings for more information:
 "path": "input/{filename}.{fileextension}",
 ```
 
-При использовании этого пути также будет выполняться поиск с именем *original-File1.txt*, но в код функции будут переданы другие переменные: `filename` и `fileextension` со значениями *original-File1* и *txt* соответственно.
+Этот путь также найти файл с именем *исходный File1.txt*и значение hello hello `filename` и `fileextension` переменных в коде функция будет *исходной файл1* и  *txt*.
 
-Тип файлов можно ограничить, используя фиксированное значение для расширения файла. Например:
+Тип файла hello файлов можно ограничить с помощью фиксированное значение для расширения файла hello. Например:
 
 ```json
 "path": "samples/{name}.png",
 ```
 
-В этом случае функцию активируют только файлы в формате *PNG* в папке *samples*.
+В этом случае только *.png* файлы в hello *образцы* функции hello папку триггера.
 
-Фигурные скобки используются в качестве специальных символов в шаблонах имен. Чтобы использовать в именах файлов фигурные скобки, нужно добавить две фигурные скобки вместо одной.
+Фигурные скобки используются в качестве специальных символов в шаблонах имен. toospecify имена файлов, имеющих фигурные скобки в имени hello, hello двойные фигурные скобки.
 Например:
 
 ```json
 "path": "images/{{20140101}}-{name}",
 ```
 
-При использовании этого пути будет выполняться поиск файла с именем *{20140101}-soundfile.mp3* в папке *images*, а для переменной `name` в коде функции будет задано значение *soundfile.mp3*.
+Этот путь может найти файл с именем *{20140101}-soundfile.mp3* в hello *изображения* папки и hello `name` бы значение переменной в коде функции hello *soundfile.mp3*.
 
 <a name="receipts"></a>
 
 <!--- ### File receipts
-The Azure Functions runtime makes sure that no external file trigger function gets called more than once for the same new or updated file.
-It does so by maintaining *file receipts* to determine if a given file version has been processed.
+hello Azure Functions runtime makes sure that no external file trigger function gets called more than once for hello same new or updated file.
+It does so by maintaining *file receipts* toodetermine if a given file version has been processed.
 
-File receipts are stored in a folder named *azure-webjobs-hosts* in the Azure storage account for your function app
-(specified by the `AzureWebJobsStorage` app setting). A file receipt has the following information:
+File receipts are stored in a folder named *azure-webjobs-hosts* in hello Azure storage account for your function app
+(specified by hello `AzureWebJobsStorage` app setting). A file receipt has hello following information:
 
-* The triggered function ("*&lt;function app name>*.Functions.*&lt;function name>*", for example: "functionsf74b96f7.Functions.CopyFile")
-* The folder name
-* The file type ("BlockFile" or "PageFile")
-* The file name
-* The ETag (a file version identifier, for example: "0x8D1DC6E70A277EF")
+* hello triggered function ("*&lt;function app name>*.Functions.*&lt;function name>*", for example: "functionsf74b96f7.Functions.CopyFile")
+* hello folder name
+* hello file type ("BlockFile" or "PageFile")
+* hello file name
+* hello ETag (a file version identifier, for example: "0x8D1DC6E70A277EF")
 
-To force reprocessing of a file, delete the file receipt for that file from the *azure-webjobs-hosts* folder manually.
+tooforce reprocessing of a file, delete hello file receipt for that file from hello *azure-webjobs-hosts* folder manually.
 --->
 <a name="poison"></a>
 
 ### <a name="handling-poison-files"></a>Обработка подозрительных файлов
-При сбое функции триггера внешнего файла по умолчанию Функции Azure выполняют ее для заданного файла еще 5 раз (включая первую попытку).
-В случае сбоя после 5 попыток запуска Функции добавляют сообщение в очередь службы хранилища с именем *webjobs-apihubtrigger-poison*. Сообщением очереди для подозрительных файлов является объект JSON, содержащий следующие свойства:
+Когда функция триггера внешнего файла завершается сбоем, функции Azure повторяет этой функции too5 времени по умолчанию (включая первой попытки hello) для данного файла.
+Добавляет при сбое на все 5 попыток функции с именем хранилища очереди сообщений tooa *веб-заданий apihubtrigger обработки подозрительных сообщений*. приветственное сообщение очереди подозрительных файлов является объект JSON, содержащий hello следующие свойства:
 
-* FunctionId (идентификатор функции в формате *&lt;имя_приложения-функции>*.Functions.*&lt;имя_функции>*);
+* Идентификатор FunctionId (в формате hello  *&lt;функция имя приложения >*. Функции.  *&lt;имя функции >*)
 * FileType
 * FolderName
 * FileName
@@ -135,16 +135,16 @@ To force reprocessing of a file, delete the file receipt for that file from the 
 <a name="triggerusage"></a>
 
 ## <a name="trigger-usage"></a>Использование триггера
-В функциях C# можно выполнить привязку к данным входного файла, используя именованный параметр в сигнатуре функции, например `<T> <name>`,
-где `T` — это тип данных, в который требуется десериализировать данные, а `paramName` — это имя, указанное в [JSON триггера](#trigger). В функциях Node.js доступ к данным входного файла можно получить, используя `context.bindings.<name>`.
+В C# функции, привязать toohello входной файл данных с помощью именованного параметра в подписи функции, например `<T> <name>`.
+Где `T` имеет тип данных hello нужных данных toodeserialize hello в, и `paramName` — hello имя, указанное в [триггера JSON](#trigger). В функции Node.js, доступ к hello входной файл данных с помощью `context.bindings.<name>`.
 
-Файл можно десериализировать в один из следующих типов:
+можно выполнить десериализацию файла Hello в любые hello следующие типы:
 
 * Любой [объект](https://msdn.microsoft.com/library/system.object.aspx) используется для сериализованных данных JSON файла.
-  Если объявить пользовательский входной тип (например, `FooType`), Функции Azure попытаются десериализировать данные JSON в указанный тип.
+  Если объявить пользовательский тип входных данных (например `FooType`), функции Azure пытается данных JSON toodeserialize hello в указанный тип.
 * Строка - используется для текстовых данных файла.
 
-В функциях C# также можно выполнить привязку к любому из следующих типов. Среда выполнения Функций попытается десериализировать данные файла, используя этот тип:
+В C# функции можно также привязать tooany из hello следующие типы и среды выполнения функции hello предпринимает попытку десериализовать hello файл данных с помощью этого типа:
 
 * `string`
 * `byte[]`
@@ -153,7 +153,7 @@ To force reprocessing of a file, delete the file receipt for that file from the 
 * `TextReader`
 
 ## <a name="trigger-sample"></a>Пример триггера
-Предположим, что у вас есть следующий файл function.json, определяющий триггер внешнего файла:
+Предположим, что имеется следующая function.json hello, который определяет триггер внешнего файла:
 
 ```json
 {
@@ -170,7 +170,7 @@ To force reprocessing of a file, delete the file receipt for that file from the 
 }
 ```
 
-Ознакомьтесь с примером для конкретного языка, регистрирующим содержимое каждого файла, который добавляется в отслеживаемую папку.
+См. Образец hello конкретного языка, записывает содержимое каждого файла, который добавляется в папку отслеживаемых toohello hello.
 
 * [C#](#triggercsharp)
 * [Node.js](#triggernodejs)
@@ -208,9 +208,9 @@ module.exports = function(context) {
 <a name="input"></a>
 
 ## <a name="external-file-input-binding"></a>Входная привязка внешнего файла
-Входная привязка внешнего файла Azure позволяет использовать файл из внешней папки в функции.
+Привязка ввода Hello Azure внешнего файла позволяет toouse файл из внешней папки в функции.
 
-Входные данные внешнего файла для функции используют следующий объект JSON в массиве `bindings` файла function.json:
+Hello внешнего файла ввода tooa функция использует следующие объекты JSON в hello hello `bindings` массив function.json:
 
 ```json
 {
@@ -222,23 +222,23 @@ module.exports = function(context) {
 },
 ```
 
-Обратите внимание на следующее.
+Обратите внимание hello следующие:
 
-* Значение `path` должно содержать имя папки и имя файла. Например, если в вашей функции есть [триггер очереди](functions-bindings-storage-queue.md), можно использовать `"path": "samples-workitems/{queueTrigger}"`, чтобы указать на файл в папке `samples-workitems` с именем, которое соответствует имени файла, определенного в сообщении триггера.   
+* `path`должен содержать имя папки hello и имя файла hello. Например, если у вас есть [очереди триггера](functions-bindings-storage-queue.md) в функции, можно использовать `"path": "samples-workitems/{queueTrigger}"` toopoint tooa файла в hello `samples-workitems` папки с именем, совпадающим с именем hello файл, указанный в сообщении hello триггера.   
 
 <a name="inputusage"></a>
 
 ## <a name="input-usage"></a>Использование входной привязки
-В функциях C# можно выполнить привязку к данным входного файла, используя именованный параметр в сигнатуре функции, например `<T> <name>`,
-где `T` — это тип данных, в который требуется десериализировать данные, а `paramName` — это имя, указанное во [входной привязке](#input). В функциях Node.js доступ к данным входного файла можно получить, используя `context.bindings.<name>`.
+В C# функции, привязать toohello входной файл данных с помощью именованного параметра в подписи функции, например `<T> <name>`.
+Где `T` имеет тип данных hello нужных данных toodeserialize hello в, и `paramName` — hello имя, указанное в [входной привязки](#input). В функции Node.js, доступ к hello входной файл данных с помощью `context.bindings.<name>`.
 
-Файл можно десериализировать в один из следующих типов:
+можно выполнить десериализацию файла Hello в любые hello следующие типы:
 
 * Любой [объект](https://msdn.microsoft.com/library/system.object.aspx) используется для сериализованных данных JSON файла.
-  Если объявить пользовательский входной тип (например, `InputType`), Функции Azure попытаются десериализировать данные JSON в указанный тип.
+  Если объявить пользовательский тип входных данных (например `InputType`), функции Azure пытается данных JSON toodeserialize hello в указанный тип.
 * Строка - используется для текстовых данных файла.
 
-В функциях C# также можно выполнить привязку к любому из следующих типов. Среда выполнения Функций попытается десериализировать данные файла, используя этот тип:
+В C# функции можно также привязать tooany из hello следующие типы и среды выполнения функции hello предпринимает попытку десериализовать hello файл данных с помощью этого типа:
 
 * `string`
 * `byte[]`
@@ -250,9 +250,9 @@ module.exports = function(context) {
 <a name="output"></a>
 
 ## <a name="external-file-output-binding"></a>Выходная привязка внешнего файла
-Выходная привязка внешнего файла Azure позволяет записывать файлы во внешнюю папку в функции.
+Hello Azure внешний файл вывода привязка позволяет toowrite tooan внешних папку с файлами в функции.
 
-Выходные данные внешнего файла для функции используют следующий объект JSON в массиве `bindings` файла function.json:
+выходные данные для функции используются следующие объекты JSON в hello hello внешнего файла Hello `bindings` массив function.json:
 
 ```json
 {
@@ -264,22 +264,22 @@ module.exports = function(context) {
 }
 ```
 
-Обратите внимание на следующее.
+Обратите внимание hello следующие:
 
-* Значение `path` должно содержать имя папки и имя файла, в который выполняется запись. Например, если в вашей функции есть [триггер очереди](functions-bindings-storage-queue.md), можно использовать `"path": "samples-workitems/{queueTrigger}"`, чтобы указать на файл в папке `samples-workitems` с именем, которое соответствует имени файла, определенного в сообщении триггера.   
+* `path`должен содержать имя папки hello и hello toowrite имя файла для. Например, если у вас есть [очереди триггера](functions-bindings-storage-queue.md) в функции, можно использовать `"path": "samples-workitems/{queueTrigger}"` toopoint tooa файла в hello `samples-workitems` папки с именем, совпадающим с именем hello файл, указанный в сообщении hello триггера.   
 
 <a name="outputusage"></a>
 
 ## <a name="output-usage"></a>Использование выходной привязки
-В функциях C# можно выполнить привязку к выходному файлу, используя именованный параметр `out` в сигнатуре функции, например `out <T> <name>`, где `T` — это тип данных, в который нужно сериализовать данные, а `paramName` — это имя, указанное в [выходной привязке](#output). В функциях Node.js доступ к выходному файлу можно получить, используя `context.bindings.<name>`.
+В C# функции, можно привязать toohello выходной файл с помощью hello с именем `out` параметра в подписи функции, такие как `out <T> <name>`, где `T` имеет тип данных hello нужных данных tooserialize hello в, и `paramName` является hello имя указанный в [привязка для вывода](#output). В функции Node.js, доступ к hello выходной файл с помощью `context.bindings.<name>`.
 
-Запись в выходной файл можно выполнить, используя любой из следующих типов:
+Можно написать toohello выходной файл с помощью любого hello следующие типы:
 
 * Любой [объект](https://msdn.microsoft.com/library/system.object.aspx) используется для сериализации JSON.
-  Если объявить пользовательский выходной тип (например, `out OutputType paramName`), Функции Azure попытаются сериализовать объект в JSON. Если при выходе из функции выходной параметр имеет значение null, среда выполнения Функций создает файл в качестве пустого объекта.
-* Строка - (`out string paramName`) используется для текстовых данных файла. Среда выполнения Функций создает файл, только если при выходе из функции для параметра строки не задано значение null.
+  При объявлении типа настраиваемые выходные данные (например `out OutputType paramName`), функции Azure пытается tooserialize объекта в JSON. Если hello выходной параметр имеет значение null, при выходе из функции hello, среда выполнения функции hello создает файл как объект null.
+* Строка - (`out string paramName`) используется для текстовых данных файла. Среда выполнения функции Hello создает файл только в том случае, если параметр строки не равно null, при выходе из функции hello.
 
-В функциях C# можно выполнить вывод одного из следующих типов:
+В C# функции также могут выводиться tooany из hello следующие типы:
 
 * `TextWriter`
 * `Stream`
@@ -293,7 +293,7 @@ module.exports = function(context) {
 <a name="sample"></a>
 
 ## <a name="input--output-sample"></a>Пример входных и выходных данных
-Предположим, у вас есть следующий файл function.json, определяющий [триггер очереди службы хранилища](functions-bindings-storage-queue.md), а также входные и выходные данные внешнего файла:
+Предположим, что имеется следующая function.json hello, определяющий [хранилища очереди триггера](functions-bindings-storage-queue.md)внешнего файла ввода и вывода во внешний файл:
 
 ```json
 {
@@ -324,7 +324,7 @@ module.exports = function(context) {
 }
 ```
 
-Ознакомьтесь с примером для конкретного языка, копирующим входной файл в выходной.
+См. пример hello зависящие от языка, который копирует hello входной файл toohello выходного файла.
 
 * [C#](#incsharp)
 * [Node.js](#innodejs)

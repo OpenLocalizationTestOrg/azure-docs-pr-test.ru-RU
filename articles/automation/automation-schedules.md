@@ -1,6 +1,6 @@
 ---
-title: "Расписания в службе автоматизации Azure | Документация Майкрософт"
-description: "Расписания службы автоматизации используются для планирования автоматического выполнения модулей Runbook в службе автоматизации Azure. Рассматривается создание расписания, которое позволяет автоматически запускать модуль Runbook однократно или несколько раз в определенное время, а также управление этим расписанием."
+title: "aaaSchedules в службе автоматизации Azure | Документы Microsoft"
+description: "Расписания автоматизации, используемые tooschedule Runbook в автоматизации Azure toostart автоматически. Описывает способ toocreate управления графиком в, чтобы он автоматически запустить runbook на определенный момент времени или по повторяющемуся расписанию."
 services: automation
 documentationcenter: 
 author: MGoedtel
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/13/2016
 ms.author: magoedte
-ms.openlocfilehash: 140bea93c4563666e8cfdf356eaf87500c1aca8e
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 888a5d15fd3442a2b8ab18dd8b0eb4ab9ad0c0d7
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="scheduling-a-runbook-in-azure-automation"></a>Создание расписания для Runbook в службе автоматизации Azure
-Чтобы запускать модуль Runbook в определенное время с помощью расписания в службе автоматизации Azure, его необходимо привязать к одному или нескольким расписаниям. На классическом портале Azure вы можете настроить расписание для однократного, ежечасного или ежедневного выполнения модулей Runbook. На портале Azure также можно запланировать выполнение еженедельно, ежемесячно, в конкретные дни недели, месяца или в определенный день месяца.  Один модуль Runbook может быть связан с несколькими расписаниями, и одно расписание может иметь несколько привязанных модулей Runbook.
+tooschedule runbook в автоматизации Azure toostart в указанное время, свяжите его tooone или более расписаний. Расписание может быть настроенный tooeither запустить один раз или каждый час повторения или ежедневное расписание для Runbook в hello классический портал Azure и для модулей Runbook в hello портал Azure можно также запланировать их для еженедельно, ежемесячно, определенные дни недели hello или дней hello месяц или определенный день месяца hello.  Runbook может быть toomultiple связанного расписания и одним расписанием можно связать несколько модулей Runbook tooit.
 
 > [!NOTE]
 > В настоящее время расписания не поддерживают конфигурации Azure Automation DSC.
@@ -29,7 +29,7 @@ ms.lasthandoff: 07/11/2017
 > 
 
 ## <a name="windows-powershell-cmdlets"></a>Командлеты Windows PowerShell
-Командлеты, представленные в следующей таблице, используются для создания расписаний и управления ими с помощью Windows PowerShell в службе автоматизации Azure. Они входят в состав [модуля Azure PowerShell](/powershell/azure/overview).
+командлеты Hello в следующей таблице hello, используемые toocreate расписаний и управление ими с помощью Windows PowerShell в службе автоматизации Azure. Они поставляются как часть hello [модуля Azure PowerShell](/powershell/azure/overview).
 
 | Командлеты | Описание |
 |:--- |:--- |
@@ -37,7 +37,7 @@ ms.lasthandoff: 07/11/2017
 | [Get-AzureRmAutomationSchedule](/powershell/module/azurerm.automation/get-azurermautomationschedule) |Получает расписание. |
 | [New-AzureRmAutomationSchedule](/powershell/module/azurerm.automation/new-azurermautomationschedule) |Создает новое расписание. |
 | [Remove-AzureRmAutomationSchedule](/powershell/module/azurerm.automation/remove-azurermautomationschedule) |Удаляет расписание. |
-| [Set-AzureRmAutomationSchedule](/powershell/module/azurerm.automation/set-azurermautomationschedule) |Задает свойства для существующего расписания. |
+| [Set-AzureRmAutomationSchedule](/powershell/module/azurerm.automation/set-azurermautomationschedule) |Задает свойства hello для существующего расписания. |
 | [Get-AzureRmAutomationScheduledRunbook](/powershell/module/azurerm.automation/set-azurermautomationscheduledrunbook) |Получает расписание модулей Runbook. |
 | [Register-AzureRmAutomationScheduledRunbook](/powershell/module/azurerm.automation/register-azurermautomationscheduledrunbook) |Связывает Runbook с расписанием. |
 | [Unregister-AzureRmAutomationScheduledRunbook](/powershell/module/azurerm.automation/unregister-azurermautomationscheduledrunbook) |Отменяет связь Runbook с расписанием. |
@@ -45,38 +45,38 @@ ms.lasthandoff: 07/11/2017
 | [Get-AzureAutomationSchedule](/powershell/module/azure/get-azureautomationschedule?view=azuresmps-3.7.0) |Получает расписание. |
 | [New-AzureAutomationSchedule](/powershell/module/azure/new-azureautomationschedule?view=azuresmps-3.7.0) |Создает новое расписание. |
 | [Remove-AzureAutomationSchedule](/powershell/module/azure/remove-azureautomationschedule?view=azuresmps-3.7.0) |Удаляет расписание. |
-| [Set-AzureAutomationSchedule](/powershell/module/azure/set-azureautomationschedule?view=azuresmps-3.7.0) |Задает свойства для существующего расписания. |
+| [Set-AzureAutomationSchedule](/powershell/module/azure/set-azureautomationschedule?view=azuresmps-3.7.0) |Задает свойства hello для существующего расписания. |
 | [Get-AzureAutomationScheduledRunbook](/powershell/module/azure/get-azureautomationscheduledrunbook?view=azuresmps-3.7.0) |Получает расписание модулей Runbook. |
 | [Register-AzureAutomationScheduledRunbook](/powershell/module/azure/register-azureautomationscheduledrunbook?view=azuresmps-3.7.0) |Связывает Runbook с расписанием. |
 | [Unregister-AzureAutomationScheduledRunbook](/powershell/module/azure/unregister-azureautomationscheduledrunbook?view=azuresmps-3.7.0) |Отменяет связь Runbook с расписанием. |
 
 ## <a name="creating-a-schedule"></a>Создание расписания
-Новое расписание для модулей Runbook вы можете создать на портале Azure, на классическом портале Azure или с помощью Windows PowerShell. Также расписание можно создать при связывании Runbook с расписанием с помощью портала Azure или классического портала Azure.
+Можно создать новое расписание для Runbook в hello портал Azure hello классического портала или с помощью Windows PowerShell. Также имеется возможность hello создания нового расписания при связывании расписания tooa runbook с помощью hello классический Azure или портал Azure.
 
 > [!NOTE]
-> При запуске нового запланированного задания служба автоматизации Azure будет использовать модули последней версии в вашей учетной записи службы автоматизации.  Чтобы избежать влияния на модули Runbook и автоматизируемые ими процессы, необходимо сначала проверить все модули Runbook, которые имеют связанные расписания, используя учетную запись автоматизации, предназначенную для тестирования.  Это позволит обеспечить правильную работу запланированных модулей Runbook, а если нет, то вы сможете устранить неполадки и применить все необходимые изменения, прежде чем переносить обновленную версию модуля Runbook в рабочую среду.  
->  Учетная запись автоматизации не получит новые версии модулей автоматически, если их не обновить вручную, выбрав параметр [Обновить модули Azure](automation-update-azure-modules.md) в колонке **Модули**. 
+> Службы автоматизации Azure будет использовать последнюю модули hello в вашей учетной записи автоматизации при запуске нового запланированного задания.  модули Runbook и hello, влияющие на tooavoid процессов они автоматизации, сначала следует проверить все модули Runbook, связанные расписания с помощью учетной записи автоматизации, предназначенный для тестирования.  Это позволит убедиться в запланированных модулей Runbook продолжить toowork правильно, а если нет, можно дополнительно Устранение неполадок и применить все изменения требуется до миграции tooproduction hello обновить версии runbook.  
+>  Ваша учетная запись автоматизации не предоставляется автоматически всех новых версий модулей, если вы обновили их вручную, выбрав hello [модули Azure обновления](automation-update-azure-modules.md) параметр из hello **модули** колонку. 
 >  
 
-### <a name="to-create-a-new-schedule-in-the-azure-portal"></a>Создание нового расписания на портале Azure
-1. На портале Azure из учетной записи службы автоматизации щелкните элемент **Ресурсы**, чтобы открыть колонку **Ресурсы**.
-2. Щелкните элемент **Расписания**, чтобы открыть колонку **Расписания**.
-3. Щелкните **Добавить расписание** в верхней части этой колонки.
-4. В колонке **Новое расписание** введите **имя** и при желании **описание** нового расписания.
-5. Выберите режим выполнения расписания: **Однократно** или **Повторение**.  Если вы выбрали режим **Однократно**, то укажите **время начала** и нажмите кнопку **Создать**.  Если вы выбрали режим **Повторение**, то укажите **время начала** и частоту повторений для модуля Runbook: каждый **час**, **день**, **неделю** или **месяц**.  Если в этом раскрывающемся списке вы выбрали **неделю** или **месяц**, то в колонке появится элемент **Recurrence option** (Параметры периодичности). Щелкнув его, вы откроете колонку **Recurrence option** (Параметры периодичности). Здесь вы сможете выбрать день недели, если ранее выбрали параметр **неделя**.  Если же выбрать параметр **месяц**, то здесь можно выбрать **дни недели** или конкретные дни месяца из календаря, а также указать, будет ли модуль выполняться в последний день месяца. Завершив настройку, нажмите кнопку **OK**.   
+### <a name="toocreate-a-new-schedule-in-hello-azure-portal"></a>toocreate новое расписание в hello портал Azure
+1. Hello портала Azure из учетной записи автоматизации щелкните hello **активы** плитки приветствия tooopen **активы** колонку.
+2. Щелкните hello **расписания** плитки приветствия tooopen **расписания** колонку.
+3. Нажмите кнопку **Добавить расписание** hello верхней части колонки hello.
+4. На hello **новое расписание** колонке введите **имя** и при необходимости **описание** для hello новое расписание.
+5. Выбрать hello расписание будет выполняться один раз или по расписанию повторяющегося путем выбора **один раз** или **повторения**.  Если вы выбрали режим **Однократно**, то укажите **время начала** и нажмите кнопку **Создать**.  При выборе **повторения**, укажите **время начала** и частоту hello частоту hello runbook toorepeat - по **час**, **день**, **недели**, или **месяц**.  При выборе **недели** или **месяц** из раскрывающегося списка hello, hello **режим повторения** появится в колонке hello и после выбора, hello **повторения параметр** откроется колонка и hello день недели, можно выбрать, если вы выбрали **недели**.  Если вы выбрали **месяц**, вы можете выбрать **дни недели** или конкретные дни месяца hello в hello календаря и наконец, необходимо toorun ее на hello последний день месяца hello, или нет, а затем нажмите кнопку **ОК** .   
 
-### <a name="to-create-a-new-schedule-in-the-azure-classic-portal"></a>Создание нового расписания на классическом портале Azure
-1. На классическом портале Azure щелкните "Служба автоматизации", а затем выберите имя учетной записи службы автоматизации.
-2. Выберите вкладку **Средства** .
-3. Нажмите кнопку **Добавить параметр**в нижней части окна.
+### <a name="toocreate-a-new-schedule-in-hello-azure-classic-portal"></a>toocreate новое расписание в hello классический портал Azure
+1. В hello классический портал Azure выберите автоматизации, а затем выберите имя учетной записи автоматизации hello.
+2. Выберите hello **активы** вкладки.
+3. Hello нижней части окна hello, нажмите кнопку **добавить параметр**.
 4. Щелкните **Добавить расписание**.
-5. Введите **имя** и при желании **описание** нового расписания. Расписание может выполняться **однократно**, **ежечасно**, **ежедневно**, **еженедельно** или **ежемесячно**.
-6. Укажите **Время начала** и другие параметры в зависимости от типа выбранного расписания.
+5. Введите значение **имя** и при необходимости **описание** для новых schedule.your hello расписание запуска **один раз**, **почасовой**, **Ежедневно**, **еженедельно**, или **ежемесячные**.
+6. Укажите **время начала** и другие параметры в зависимости от типа выбранного расписания hello.
 
-### <a name="to-create-a-new-schedule-with-windows-powershell"></a>Создание расписания с помощью Windows PowerShell
-В службе автоматизации Azure вы можете использовать командлет [New-AzureAutomationSchedule](/powershell/module/azure/new-azureautomationschedule?view=azuresmps-3.7.0), чтобы создать новое расписание для классических модулей Runbook, или командлет [New-AzureRmAutomationSchedule](/powershell/module/azurerm.automation/new-azurermautomationschedule), чтобы создать расписание для модулей Runbook на портале Azure. Укажите для расписания время начала и частоту выполнения.
+### <a name="toocreate-a-new-schedule-with-windows-powershell"></a>toocreate новое расписание с помощью Windows PowerShell
+Можно использовать hello [New-AzureAutomationSchedule](/powershell/module/azure/new-azureautomationschedule?view=azuresmps-3.7.0) toocreate командлет новое расписание в службе автоматизации Azure для классического Runbook или [New AzureRmAutomationSchedule](/powershell/module/azurerm.automation/new-azurermautomationschedule) командлета для модулей Runbook в hello Azure портал. Необходимо указать время начала hello hello расписание и частота hello, оно должно выполняться.
 
-Приведенные ниже примеры команд демонстрируют, как с помощью командлета Azure Resource Manager создать расписание для запуска модуля в 15-й и 30-й день каждого месяца.
+Hello следующем образце команд Показать как toocreate расписание для hello 15 и 30-й день каждого месяца, с помощью командлета диспетчера ресурсов Azure.
 
     $automationAccountName = "MyAutomationAccount"
     $scheduleName = "Sample-MonthlyDaysOfMonthSchedule"
@@ -84,34 +84,34 @@ ms.lasthandoff: 07/11/2017
     $scheduleName -StartTime "7/01/2016 15:30:00" -MonthInterval 1 `
     -DaysOfMonth Fifteenth,Thirtieth -ResourceGroupName "ResourceGroup01"
 
-Приведенные ниже примеры команд демонстрируют, как с помощью командлета управления службами Azure создать новое расписание, которое будет запускаться каждый день в 15:30 начиная с 20 января 2015 г.
+Следующие примеры команд Hello Показать, как toocreate новое расписание, которое будет выполняться каждый день в 3:30 запуск на 20 января 2015 г. с помощью командлета управления службами Azure.
 
     $automationAccountName = "MyAutomationAccount"
     $scheduleName = "Sample-DailySchedule"
     New-AzureAutomationSchedule –AutomationAccountName $automationAccountName –Name `
     $scheduleName –StartTime "1/20/2016 15:30:00" –DayInterval 1
 
-## <a name="linking-a-schedule-to-a-runbook"></a>Связывание расписания с модулем Runbook
-Один модуль Runbook может быть связан с несколькими расписаниями, и одно расписание может иметь несколько привязанных модулей Runbook. Если Runbook имеет параметры, для них можно указать значения. Необходимо предоставить значения для всех обязательных параметров, а также значения для необязательных параметров.  Значения будут применяться каждый раз при запуске модуля Runbook с помощью расписания.  Один и тот же модуль Runbook можно привязать к другому расписанию и указать другие значения параметров.
+## <a name="linking-a-schedule-tooa-runbook"></a>Связывание расписания tooa runbook
+Runbook может быть toomultiple связанного расписания и одним расписанием можно связать несколько модулей Runbook tooit. Если Runbook имеет параметры, для них можно указать значения. Необходимо предоставить значения для всех обязательных параметров, а также значения для необязательных параметров.  Эти значения будут использованы каждый раз при запуске hello runbook, это расписание.  Можно присоединить Привет одному расписанию tooanother runbook и указать различные значения параметров.
 
-### <a name="to-link-a-schedule-to-a-runbook-with-the-azure-portal"></a>Связывание расписания с модулем Runbook с помощью портала Azure
-1. На портале Azure из учетной записи службы автоматизации щелкните элемент **Модули Runbook**, чтобы открыть колонку **Модули Runbook**.
-2. Щелкните имя одного модуля Runbook для привязки к расписанию.
-3. Если модуль Runbook сейчас не связан с расписанием, вы сможете создать новое расписание или связать модуль с существующим расписанием.  
-4. Если модуль Runbook имеет параметры, следует выбрать действие **Изменить параметры запуска (по умолчанию: Azure)**, чтобы открыть колонку **Параметры**, где вы сможете ввести нужные данные.  
+### <a name="toolink-a-schedule-tooa-runbook-with-hello-azure-portal"></a>toolink runbook tooa расписание с hello портал Azure
+1. Hello портала Azure из учетной записи автоматизации щелкните hello **Runbooks** hello tooopen плитки **модулей Runbook** колонку.
+2. Щелкните имя hello runbook tooschedule hello.
+3. Если hello runbook не связанных в данный момент tooa расписания, будет быть toocreate параметр hello заданного расписания или ссылку tooan существующего расписания.  
+4. Если hello runbook имеет параметры, можно выбрать параметр hello **изменить параметры запуска (по умолчанию: Azure)** и hello **параметры** колонке представлены для ввода сведений hello соответствующим образом.  
 
-### <a name="to-link-a-schedule-to-a-runbook-with-the-azure-classic-portal"></a>Связывание расписания с модулем Runbook с помощью классического портала Azure
-1. На классическом портале Azure щелкните **Служба автоматизации**, а затем — имя учетной записи службы автоматизации.
-2. Выберите вкладку **Модули Runbook** .
-3. Щелкните имя одного модуля Runbook для привязки к расписанию.
-4. Перейдите на вкладку **Расписание** .
-5. Если модуль Runbook в настоящее время не связан с расписанием, будет предоставлена возможность выбрать **ссылку на новое расписание** или **ссылку на существующее расписание**.  Если модуль в настоящее время связан с расписанием, щелкните **Ссылки** в нижней части окна для доступа к этим параметрам.
-6. Если модуль Runbook имеет параметры, их необходимо будет заполнить.  
+### <a name="toolink-a-schedule-tooa-runbook-with-hello-azure-classic-portal"></a>toolink runbook tooa расписание с hello классический портал Azure
+1. В hello классический портал Azure, выберите **автоматизации** и щелкните имя учетной записи автоматизации hello.
+2. Выберите hello **Runbooks** вкладки.
+3. Щелкните имя hello runbook tooschedule hello.
+4. Нажмите кнопку hello **расписание** вкладки.
+5. Если hello runbook не связанных в данный момент tooa расписания, то вам будет предоставлена возможность hello слишком**связать tooa новое расписание** или **tooan расписание существующие связи**.  Если hello runbook связанных в данный момент tooa расписание, нажмите кнопку **ссылку** на hello нижней части окна tooaccess hello эти параметры.
+6. Если hello runbook имеет параметры, будет приглашение их значения.  
 
-### <a name="to-link-a-schedule-to-a-runbook-with-windows-powershell"></a>Связывание расписания с модулем Runbook с помощью Windows PowerShell
-Вы можете использовать командлет [Register-AzureAutomationScheduledRunbook](http://msdn.microsoft.com/library/azure/dn690265.aspx), чтобы связать расписание с классическим модулем Runbook, или командлет [Register-AzureRmAutomationScheduledRunbook](/powershell/module/azurerm.automation/register-azurermautomationscheduledrunbook) для модулей Runbook на портале Azure.  С помощью параметра "Параметры" можно указать значения параметров для модуля Runbook. Дополнительные сведения об указании значений параметров см. в разделе [Запуск модуля Runbook в службе автоматизации Azure](automation-starting-a-runbook.md).
+### <a name="toolink-a-schedule-tooa-runbook-with-windows-powershell"></a>toolink runbook tooa расписания с помощью Windows PowerShell
+Можно использовать hello [Register-AzureAutomationScheduledRunbook](http://msdn.microsoft.com/library/azure/dn690265.aspx) toolink runbook классический tooa расписание или [AzureRmAutomationScheduledRunbook регистра](/powershell/module/azurerm.automation/register-azurermautomationscheduledrunbook) командлета для модулей Runbook в hello портал Azure.  Можно указать значения для параметров hello runbook с параметром параметры hello. Дополнительные сведения об указании значений параметров см. в разделе [Запуск модуля Runbook в службе автоматизации Azure](automation-starting-a-runbook.md).
 
-Приведенные ниже примеры команд демонстрируют, как связать расписание с модулем Runbook, используя командлет управления службами Azure с параметрами.
+Hello следующем образце команд Показать как toolink runbook tooa расписание, с помощью командлета Azure Resource Manager с параметрами.
 
     $automationAccountName = "MyAutomationAccount"
     $runbookName = "Test-Runbook"
@@ -120,7 +120,7 @@ ms.lasthandoff: 07/11/2017
     Register-AzureRmAutomationScheduledRunbook –AutomationAccountName $automationAccountName `
     –Name $runbookName –ScheduleName $scheduleName –Parameters $params `
     -ResourceGroupName "ResourceGroup01"
-Приведенные ниже примеры команд демонстрируют, как связать расписание, используя командлет управления службами Azure с параметрами.
+Hello следующем образце команд Показать как toolink с помощью командлета управления службами Azure с параметрами расписания.
 
     $automationAccountName = "MyAutomationAccount"
     $runbookName = "Test-Runbook"
@@ -130,33 +130,33 @@ ms.lasthandoff: 07/11/2017
     –Name $runbookName –ScheduleName $scheduleName –Parameters $params
 
 ## <a name="disabling-a-schedule"></a>Отключение расписания
-Если расписание отключено, модули Runbook, связанные с ним, больше не будут запускаться по такому расписанию. Можно отключить расписание вручную или указать срок действия при создании периодических расписаний. При достижении срока действия расписания будут отключены.
+При отключении расписания, все модули Runbook, связанные tooit больше не будут работать по этому расписанию. Можно отключить расписание вручную или указать срок действия при создании периодических расписаний. По истечении времени истечения срока действия hello hello расписания будут отключены.
 
-### <a name="to-disable-a-schedule-from-the-azure-portal"></a>Отключение расписания на портале Azure
-1. На портале Azure из учетной записи службы автоматизации щелкните элемент **Ресурсы**, чтобы открыть колонку **Ресурсы**.
-2. Щелкните элемент **Расписания**, чтобы открыть колонку **Расписания**.
-3. Щелкните имя расписания и откройте колонку со сведениями о нем.
-4. Задайте значение **Нет** для параметра **Включено**.
+### <a name="toodisable-a-schedule-from-hello-azure-portal"></a>toodisable расписания из hello портал Azure
+1. Hello портала Azure из учетной записи автоматизации щелкните hello **активы** плитки приветствия tooopen **активы** колонку.
+2. Щелкните hello **расписания** плитки приветствия tooopen **расписания** колонку.
+3. Щелкните имя hello стоечный модуль подробности расписания tooopen hello.
+4. Изменение **включено** слишком**нет**.
 
-### <a name="to-disable-a-schedule-from-the-azure-classic-portal"></a>Отключение расписание на классическом портале Azure
-Отключить расписание на классическом портале Azure можно на странице "Сведения о расписании" для соответствующего расписания.
+### <a name="toodisable-a-schedule-from-hello-azure-classic-portal"></a>toodisable расписания из hello классический портал Azure
+Вы можете отключить расписания на классический портал Azure на странице Подробности расписания hello для расписания hello hello.
 
-1. На классическом портале Azure щелкните "Служба автоматизации", а затем — имя учетной записи службы автоматизации.
-2. Перейдите на вкладку "Средства".
-3. Щелкните имя расписания и откройте страницу со сведениями о нем.
-4. Задайте значение **Нет** для параметра **Включено**.
+1. В hello классический портал Azure выберите автоматизации и нажмите кнопку hello имя учетной записи автоматизации.
+2. Перейдите на вкладку активы hello.
+3. Щелкните страницу сведений о hello имя tooopen расписания.
+4. Изменение **включено** слишком**нет**.
 
-### <a name="to-disable-a-schedule-with-windows-powershell"></a>Отключение расписания с помощью Windows PowerShell
-В службе автоматизации Azure вы можете использовать командлет [Set-AzureAutomationSchedule](http://msdn.microsoft.com/library/azure/dn690270.aspx), чтобы изменить свойства существующего расписания для классического модуля Runbook, или командлет [Set-AzureRmAutomationSchedule](/powershell/module/azurerm.automation/set-azurermautomationschedule), чтобы изменить расписание для модулей Runbook на портале Azure. Чтобы отключить расписание, задайте значение **False** для параметра **IsEnabled**.
+### <a name="toodisable-a-schedule-with-windows-powershell"></a>toodisable расписания с помощью Windows PowerShell
+Можно использовать hello [Set-AzureAutomationSchedule](http://msdn.microsoft.com/library/azure/dn690270.aspx) командлет toochange hello свойства существующего расписания для классического runbook или [AzureRmAutomationSchedule набор](/powershell/module/azurerm.automation/set-azurermautomationschedule) командлета для модулей Runbook в hello Azure портал. toodisable hello план, укажите **false** для hello **IsEnabled** параметра.
 
-Приведенные ниже примеры команд демонстрируют, как отключить расписание для Runbook, используя командлет Azure Resource Manager.
+Hello следующем образце команд Показать как toodisable расписание для runbook, с помощью командлета диспетчера ресурсов Azure.
 
     $automationAccountName = "MyAutomationAccount"
     $scheduleName = "Sample-MonthlyDaysOfMonthSchedule"
     Set-AzureRmAutomationSchedule –AutomationAccountName $automationAccountName `
     –Name $scheduleName –IsEnabled $false -ResourceGroupName "ResourceGroup01"
 
-Приведенные ниже примеры команд демонстрируют, как отключить расписание, используя командлет управления службами Azure.
+Hello следующие примеры команд показывают, как toodisable расписанию с помощью hello командлет управления службами Azure.
 
     $automationAccountName = "MyAutomationAccount"
     $scheduleName = "Sample-DailySchedule"
@@ -164,5 +164,5 @@ ms.lasthandoff: 07/11/2017
     –Name $scheduleName –IsEnabled $false
 
 ## <a name="next-steps"></a>Дальнейшие действия
-* Сведения о том, как начать работу с модулями Runbook в службе автоматизации Azure, см. в статье [Запуск модуля Runbook в службе автоматизации Azure](automation-starting-a-runbook.md). 
+* tooget к работе с модулями Runbook в автоматизации Azure в разделе [запуск Runbook в автоматизации Azure](automation-starting-a-runbook.md) 
 

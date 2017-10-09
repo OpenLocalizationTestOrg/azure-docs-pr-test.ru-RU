@@ -1,6 +1,6 @@
 ---
-title: "Браузеры и устройства, поддерживаемые порталом Azure | Документация Майкрософт"
-description: "Описание браузеров и устройств, поддерживаемых порталом Azure."
+title: "aaaSupported браузерах и устройствах для портала Azure | Документы Microsoft"
+description: "Описывает hello браузерах и устройствах, на какие hello Azure портала будет работать."
 services: 
 documentationcenter: 
 author: flanakin
@@ -16,20 +16,20 @@ ms.topic: article
 ms.date: 06/28/2017
 ms.author: micflan
 ms.custom: accessibility
-ms.openlocfilehash: f8718e240eaefb47b18b6098be083e335ccbc89d
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 1adac737e062803e67d4b820738bb0fcd21c81b0
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="supported-browsers-and-devices-for-the-azure-portal"></a>Браузеры и устройства, поддерживаемые порталом Azure
-[Портал Azure](https://portal.azure.com) можно запустить на всех современных настольных и планшетных устройствах, а также во всех браузерах.
+# <a name="supported-browsers-and-devices-for-hello-azure-portal"></a>Поддерживаемых браузерах и устройствах для hello портал Azure
+Можно запустить hello [портал Azure](https://portal.azure.com) на рабочем столе все современные, планшетных устройств и браузеров.
 
 ### <a name="supported-devices"></a>Поддерживаемые устройства
-Портал Azure отлично работает на современных компьютерах, компьютерах Mac и планшетных устройствах. Если вам нужно управлять ресурсами Azure с мобильного устройства, попробуйте приложение Azure, которое доступно в предварительной версии для iPhone и Android. Дополнительные сведения см. в записи блога [Introducing the Azure app public preview](https://azure.microsoft.com/blog/azure-app-preview/) (Общие сведения об общедоступной предварительной версии приложения Azure).
+Hello портал Azure отлично работает на современных ПК, компьютеры MAC и планшетных ПК. Если вам требуется toomanage ресурсам Azure с мобильного устройства, попробуйте hello приложения Azure, которая доступна для просмотра на iPhone и Android. Дополнительные сведения см. в статье блога hello [общедоступной предварительной версии Azure приложение hello Введение](https://azure.microsoft.com/blog/azure-app-preview/).
 
 ### <a name="supported-browsers"></a>Поддерживаемые браузеры
-Мы советуем использовать самые последние браузеры, совместимые с вашей с операционной системой. Поддерживаются следующие браузеры:
+Корпорация Майкрософт рекомендует использовать обозреватель самые последние hello, совместимый с операционной системой. поддерживаются следующие браузеры Hello:
 
 * Microsoft Edge (последняя версия);
 * Internet Explorer 11;

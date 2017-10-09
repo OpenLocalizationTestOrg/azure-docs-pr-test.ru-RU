@@ -1,5 +1,5 @@
 ---
-title: "Параметры портов API ретранслятора Azure | Документация Майкрософт"
+title: "параметры порта ретрансляции aaaAzure | Документы Microsoft"
 description: "Сведения о значениях портов ретранслятора Azure."
 services: service-bus-relay
 documentationcenter: na
@@ -14,18 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/03/2017
 ms.author: sethm
-ms.openlocfilehash: 5906495c565dad583e74a43b2e5eed57e0c68df1
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: e66785f786ee241c974d250f9ec29dfcc1fdc3fe
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-relay-port-settings"></a>Параметры порта ретрансляции Azure
 
-В таблице ниже описаны необходимые значения параметров портов для ретранслятора Azure.
+Hello следующей таблице описаны hello Обязательная конфигурация значений портов для ретрансляции Azure.
 
 ## <a name="hybrid-connections"></a>через гибридные подключения
-Гибридные подключения используют протокол WebSockets в качестве базового транспортного механизма, который использует только протокол **HTTPS**. 
+Гибридные подключения использует в качестве базового транспортного механизма, который использует hello WebSockets **HTTPS** только. 
 
 ## <a name="wcf-relays"></a>Ретрансляторы WCF
   
@@ -49,6 +49,6 @@ ms.lasthandoff: 07/11/2017
 |[Класс WS2007HttpRelayBinding](/dotnet/api/microsoft.servicebus.ws2007httprelaybinding) (служба)|Можно использовать|9351/HTTP|
 
 ## <a name="next-steps"></a>Дальнейшие действия
-Дополнительные сведения о ретрансляторе Azure доступны по следующим ссылкам:
+toolearn Дополнительные сведения о ретрансляции Azure в следующих статьях:
 * [Что такое ретранслятор Azure?](relay-what-is-it.md)
 * [Вопросы и ответы по ретранслятору](relay-faq.md)

@@ -1,5 +1,5 @@
 ---
-title: "Сценарий обработки исключений и ведения журнала ошибок с помощью Azure Logic Apps | Документация Майкрософт"
+title: "aaaException обработка & сценарий ведения журнала ошибок - приложения логики Azure | Документы Microsoft"
 description: "В этой статье описывается реальный вариант использования расширенной обработки исключений и ведения журнала ошибок для Azure Logic Apps."
 keywords: 
 services: logic-apps
@@ -16,51 +16,51 @@ ms.topic: article
 ms.custom: H1Hack27Feb2017
 ms.date: 07/29/2016
 ms.author: LADocs; b-hoedid
-ms.openlocfilehash: 044de27c75da93c95609110d2b73336c42f746fe
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: e893a7b652254dca7b8a82398e8afd571f6ccd25
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="scenario-exception-handling-and-error-logging-for-logic-apps"></a>Сценарий обработки исключений и ведения журнала ошибок для приложений логики
 
-В этом сценарии описано, как улучшить поддержку для обработки исключений в приложении логики. Мы использовали пример из реальной жизни, который можно считать ответом на вопрос "Поддерживает ли Azure Logic Apps обработку исключений и ошибок?".
+В этом сценарии описывается, как можно расширить обработку логики приложения toobetter поддержки исключений. Мы используем практическом использовании вариантов tooanswer hello вопрос: «Приложения логики Azure поддерживает обработка ошибок и исключений?»
 
 > [!NOTE]
-> В текущей схеме Azure Logic Apps предоставляется стандартный шаблон для ответов на действия. В этот шаблон входят внутренние проверки и обработка сообщений об ошибках, возвращаемых из приложения API.
+> Hello текущая схема приложения логики Azure предоставляет стандартный шаблон для ответов действия. В этот шаблон входят внутренние проверки и обработка сообщений об ошибках, возвращаемых из приложения API.
 
 ## <a name="scenario-and-use-case-overview"></a>Обзор сценария и варианта использование
 
-Ниже приводится история, которая лежит в основе варианта использования для данного сценария. 
+Здесь-истории hello hello вариант использования для этого сценария: 
 
-Известная медицинская организация поручила нам разработать решение на базе Azure, которое позволит создать портал для пациентов с использованием Microsoft Dynamics CRM Online. Также им нужно передавать информацию о приемах между порталом пациентов на базе Dynamics CRM Online и системой Salesforce. Для передачи информации о пациентах необходимо использовать стандарт [HL7 FHIR](http://www.hl7.org/implement/standards/fhir/) .
+Хорошо известных здравоохранения организации, которая участвует нам toodevelop решения Azure, которые создают пациента портала с помощью Microsoft Dynamics CRM Online. Они нужны toosend встречи записи Dynamics CRM Online пациента портала hello и Salesforce. Спросили toouse hello [HL7 FHIR](http://www.hl7.org/implement/standards/fhir/) стандарт для всех пациентов.
 
-Проект включает два основных требования:  
+Hello проекте имеется два основных требования:  
 
-* метод ведения журнала записей, отправленных с онлайн-портала Dynamics CRM Online;
-* механизм для просмотра всех ошибок, возникающих в рамках рабочего процесса.
+* Метод toolog записей отправленных hello Dynamics CRM Online портала
+* Tooview способом любые ошибки, возникшие в рамках рабочего процесса hello
 
 > [!TIP]
-> Подробное видео об этом проекте можно посмотреть на сайте [Integration User Group](http://www.integrationusergroup.com/logic-apps-support-error-handling/ "Integration User Group").
+> Видео высокого уровня о данном проекте см. в разделе [группы пользователей интеграции](http://www.integrationusergroup.com/logic-apps-support-error-handling/ "группы пользователей интеграции").
 
-## <a name="how-we-solved-the-problem"></a>Решение проблемы
+## <a name="how-we-solved-hello-problem"></a>Как мы решена проблема hello
 
-В качестве репозитория для записей журнала и ошибок мы выбрали [Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/ "Azure Cosmos DB") (Cosmos DB означает, что записями этой базы данных являются документы). В Azure Logic Apps используется стандартный шаблон для всех ответов, поэтому нам не пришлось создавать настраиваемую схему. Чтобы **добавлять** и **запрашивать** записи журнала и записи об ошибках, можно было создать приложение API. В нем мы могли определить схему выполнения каждой из этих операций.  
+Мы выбрали [Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/ "Azure Cosmos DB") как хранилище hello журнала ошибок записи и (Cosmos DB ссылается toorecords как документы). Поскольку приложения логики Azure имеет стандартный шаблон для всех ответов, мы не toocreate пользовательской схемы. Можно было бы создать приложения API слишком**вставить** и **запроса** для записи ошибок и журнала. Также мы можем определить схему для каждого приложения hello API.  
 
-Но существовало еще одно требование: автоматическое удаление записей через определенное время. Cosmos DB поддерживает свойство [Срок жизни](https://azure.microsoft.com/blog/documentdb-now-supports-time-to-live-ttl/ "Срок жизни") (TTL), которое позволяет определить значение **Срок жизни** для каждой записи или всей коллекции. Эта возможность избавляет от необходимости вручную удалять записи из Cosmos DB.
+Другим требованием был toopurge записей после определенной даты. Cosmos DB имеет свойство с именем [время tooLive](https://azure.microsoft.com/blog/documentdb-now-supports-time-to-live-ttl/ "время tooLive") (TTL), который позволил нам tooset **tooLive время** значение для каждой записи или коллекции. Эта возможность устраняется hello необходимость toomanually удаления записей в базу данных, Cosmos.
 
 > [!IMPORTANT]
-> Для работы с этим руководством необходимо создать базу данных Cosmos DB и две коллекции ("Ведение журнала" и "Ошибки").
+> toocomplete этого учебника требуется toocreate Cosmos DB базы данных и две коллекции (Ведение журнала и ошибки).
 
-## <a name="create-the-logic-app"></a>Создание приложения логики
+## <a name="create-hello-logic-app"></a>Создание приложения hello логики
 
-Прежде всего необходимо создать приложение логики и открыть его в конструкторе приложений логики. В этом примере мы используем родительское и дочерние приложения логики. Предположим, мы уже создали родительское приложение, а теперь создаем одно дочернее приложение логики.
+Hello первым шагом является toocreate hello логику приложения и приложение hello открыть в конструкторе логики приложения. В этом примере мы используем родительское и дочерние приложения логики. Предположим, что мы уже создали родительского hello и будет toocreate один дочерний логику приложения.
 
-Так как нам нужен журнал записей, отправляемых из Dynamics CRM Online, мы начнем с верхнего уровня. Родительское приложение логики активирует дочернее, поэтому нам нужен триггер **запроса**.
+Так как мы будем toolog записи hello, поступающих из Dynamics CRM Online, давайте начнем вверху hello. Мы воспользуемся **запроса** триггер, так как логика приложения hello родительского триггеры этого дочернего элемента.
 
 ### <a name="logic-app-trigger"></a>Триггер приложения логики
 
-Мы используем триггер **запроса**, как показано в следующем примере:
+Мы используем **запроса** триггера, как показано в следующий пример hello:
 
 ```` json
 "triggers": {
@@ -100,14 +100,14 @@ ms.lasthandoff: 07/11/2017
 
 ## <a name="steps"></a>Действия
 
-Необходимо записать в журнал источник (запрос) записи пациента, полученный с портала Dynamics CRM Online.
+Мы необходимо войти в источник hello (запрос) пациентов hello из портала Dynamics CRM Online hello.
 
 1. Необходимо получить новую запись о приеме с портала Dynamics CRM Online.
 
-   Триггер, полученный из CRM, содержит следующие сведения: **идентификатор пациента CRM**, **тип записи**, **состояние записи — новая или обновленная** (логическое значение) и **идентификатор Salesforce**. Параметр **SalesforceId** (идентификатор Salesforce) может иметь значение NULL, так как он используется только для обновлений.
-   Для получения записи CRM используются параметры **PatientID** (идентификатор пациента) и **Тип записи** службы CRM.
+   триггер Hello, поступающих от CRM предоставляет hello **CRM PatentId**, **тип записи**, **создать или обновить запись** (новой или обновление логическое значение), и  **SalesforceId**. Hello **SalesforceId** может иметь значение null, так как оно используется только для обновления.
+   Мы получаем hello CRM записи с помощью hello CRM **PatientID** и hello **тип записи**.
 
-2. Далее необходимо добавить операцию **InsertLogEntry** для приложения API DocumentDB, как показано ниже в конструкторе приложений логики.
+2. Теперь нам нужны tooadd нашего приложения DocumentDB API **InsertLogEntry** операции, как показано здесь в конструктор логику приложения.
 
    **Добавление записи журнала**
 
@@ -124,15 +124,15 @@ ms.lasthandoff: 07/11/2017
 ## <a name="logic-app-source-code"></a>Исходный код приложения логики
 
 > [!NOTE]
-> Приведенные ниже фрагменты кода используется только в качестве примера. Так как в этом руководстве используется пример из реальной жизни, который уже реализован в рабочей среде, значения свойств **исходного узла**, связанные с планированием приемов, могут не отображаться. 
+> Следующие примеры Hello — это только примеры. Так как этот учебник основывается на реализацию теперь в рабочей среде, hello значение **исходный узел** могут отображаться свойства, связанные tooscheduling встречи. > 
 
 ### <a name="logging"></a>Ведение журналов
 
-В следующем примере кода приложения логики показано, как обрабатывать ведение журналов.
+Следующий код логики приложения Hello образце показано, как toohandle ведения журнала.
 
 #### <a name="log-entry"></a>Запись в журнале
 
-Вот исходный код приложения логики для добавления записи в журнал:
+Ниже приведен исходный код приложения hello логику для вставки записи журнала.
 
 ``` json
 "InsertLogEntry": {
@@ -160,7 +160,7 @@ ms.lasthandoff: 07/11/2017
 
 #### <a name="log-request"></a>Запрос к журналу
 
-Вот сообщение с запросом к журналу, переданное в приложение API:
+Вот hello журнала запрос сообщения toohello приложения API.
 
 ``` json
     {
@@ -180,7 +180,7 @@ ms.lasthandoff: 07/11/2017
 
 #### <a name="log-response"></a>Ответ журнала
 
-Вот сообщение с ответом из журнала, полученное из приложения API:
+Вот hello журнала ответное сообщение от приложения hello API.
 
 ``` json
 {
@@ -214,15 +214,15 @@ ms.lasthandoff: 07/11/2017
 
 ```
 
-Теперь давайте рассмотрим действия по обработке ошибок.
+Теперь рассмотрим шаги обработки ошибок, hello.
 
 ### <a name="error-handling"></a>Обработка ошибок
 
-В следующем примере кода приложения логики показано, как можно реализовать обработку ошибок.
+Hello следующий образец кода логики приложения показано, как можно реализовать обработку ошибок.
 
 #### <a name="create-error-record"></a>Создание записи об ошибке
 
-Вот исходный код приложения логики, который используется для создания записи об ошибке:
+Ниже приведен исходный код приложения hello логику для создания записи об ошибке.
 
 ``` json
 "actions": {
@@ -269,7 +269,7 @@ ms.lasthandoff: 07/11/2017
         "isError": true,
         "crmId": "6b115f6d-a7ee-e511-80f5-3863bb2eb2d0",
         "patientId": "6b115f6d-a7ee-e511-80f5-3863bb2eb2d0",
-        "message": "Salesforce failed to complete task: Message: duplicate value found: Account_ID_MED__c duplicates value on record with id: 001U000001c83gK",
+        "message": "Salesforce failed toocomplete task: Message: duplicate value found: Account_ID_MED__c duplicates value on record with id: 001U000001c83gK",
         "providerId": "",
         "severity": 4,
         "salesforceId": "",
@@ -307,7 +307,7 @@ ms.lasthandoff: 07/11/2017
         "action": "New_Patient",
         "salesforceId": "",
         "update": false,
-        "body": "CRM failed to complete task: Message: duplicate value found: CRM_HUB_ID__c duplicates value on record with id: 001U000001c83gK",
+        "body": "CRM failed toocomplete task: Message: duplicate value found: CRM_HUB_ID__c duplicates value on record with id: 001U000001c83gK",
         "source": "{/"Account_Class_vod__c/":/"PRAC/",/"Account_Status_MED__c/":/"I/",/"CRM_HUB_ID__c/":/"6b115f6d-a7ee-e511-80f5-3863bb2eb2d0/",/"Credentials_vod__c/":/"DO - Degree level is DO/",/"DTC_ID_MED__c/":/"/",/"Fax/":/"/",/"FirstName/":/"A/",/"Gender_vod__c/":/"/",/"IMS_ID__c/":/"/",/"LastName/":/"BAILEY/",/"MterID_mp__c/":/"/",/"Medicis_ID_MED__c/":/"851588/",/"Middle_vod__c/":/"/",/"NPI_vod__c/":/"/",/"PDRP_MED__c/":false,/"PersonDoNotCall/":false,/"PersonEmail/":/"/",/"PersonHasOptedOutOfEmail/":false,/"PersonHasOptedOutOfFax/":false,/"PersonMobilePhone/":/"/",/"Phone/":/"/",/"Practicing_Specialty__c/":/"FM - FAMILY MEDICINE/",/"Primary_City__c/":/"/",/"Primary_State__c/":/"/",/"Primary_Street_Line2__c/":/"/",/"Primary_Street__c/":/"/",/"Primary_Zip__c/":/"/",/"RecordTypeId/":/"012U0000000JaPWIA0/",/"Request_Date__c/":/"2016-06-10T22:31:55.9647467Z/",/"XXXXXXX/":/"/",/"Specialty_1_vod__c/":/"/",/"Suffix_vod__c/":/"/",/"Website/":/"/"}",
         "code": 400,
         "errors": null,
@@ -340,7 +340,7 @@ ms.lasthandoff: 07/11/2017
     },
     "body": {
         "status": 400,
-        "message": "Salesforce failed to complete task: Message: duplicate value found: Account_ID_MED__c duplicates value on record with id: 001U000001c83gK",
+        "message": "Salesforce failed toocomplete task: Message: duplicate value found: Account_ID_MED__c duplicates value on record with id: 001U000001c83gK",
         "source": "Salesforce.Common",
         "errors": []
     }
@@ -348,11 +348,11 @@ ms.lasthandoff: 07/11/2017
 
 ```
 
-### <a name="return-the-response-back-to-parent-logic-app"></a>Возвращение ответа в родительское приложение логики
+### <a name="return-hello-response-back-tooparent-logic-app"></a>Возвращаемый ответ назад tooparent логику приложение hello
 
-После получения ответа его можно вернуть в родительское приложение логики.
+После получения ответа hello можно передать hello ответ назад toohello родительского логику приложения.
 
-#### <a name="return-success-response-to-parent-logic-app"></a>Возвращение успешного ответа в родительское приложение логики
+#### <a name="return-success-response-tooparent-logic-app"></a>Возвращает успех ответа tooparent логику приложения
 
 ``` json
 "SuccessResponse": {
@@ -374,7 +374,7 @@ ms.lasthandoff: 07/11/2017
 }
 ```
 
-#### <a name="return-error-response-to-parent-logic-app"></a>Возвращение ответа на ошибку в родительское приложение логики
+#### <a name="return-error-response-tooparent-logic-app"></a>Ошибка возврата ответа tooparent логику приложения
 
 ``` json
 "ErrorResponse": {
@@ -404,12 +404,12 @@ ms.lasthandoff: 07/11/2017
 
 ### <a name="error-management-portal"></a>Портал управления ошибками
 
-Чтобы просмотреть ошибки, полученные из Cosmos DB, можно создать веб-приложение MVC, в котором будут отображаться соответствующие записи об ошибках. В текущую версию приложения входят операции **List**, **Details**, **Edit** и **Delete**.
+tooview hello ошибки, можно создать MVC web app toodisplay hello записи об ошибках из Cosmos DB. Hello **списка**, **сведения**, **изменить**, и **удалить** операций, включенных в текущей версии hello.
 
 > [!NOTE]
-> Операция Edit: Cosmos DB заменяет весь документ. Записи в представлении списка (**List**) и в подробном представлении (**Detail**) приведены в качестве примера. Это не фактические записи о приемах пациентов.
+> Изменить операцию: Cosmos DB заменяет hello весь документ. Здравствуйте, записи на hello **списка** и **сведений** представления — это только примеры. Это не фактические записи о приемах пациентов.
 
-Ниже приведены примеры сведений о приложении MVC, созданные с помощью описанного выше метода.
+Ниже приведены примеры из нашего приложения MVC сведения, ранее созданными hello описанный подход.
 
 #### <a name="error-management-list"></a>Список для управления ошибками
 ![Список ошибок](media/logic-apps-scenario-error-and-exception-handling/errorlist.png)
@@ -419,7 +419,7 @@ ms.lasthandoff: 07/11/2017
 
 ### <a name="log-management-portal"></a>Портал управления журналами
 
-Для просмотра журналов мы также создали веб-приложение MVC. Ниже приведены примеры сведений о приложении MVC, созданные с помощью описанного выше метода.
+журналы tooview hello, также был создан веб-приложение MVC. Ниже приведены примеры из нашего приложения MVC сведения, ранее созданными hello описанный подход.
 
 #### <a name="sample-log-detail-view"></a>Просмотр подробных сведений об ошибке из журнала
 ![Просмотр сведений о записи журнала](media/logic-apps-scenario-error-and-exception-handling/samplelogdetail.png)
@@ -434,14 +434,14 @@ ms.lasthandoff: 07/11/2017
 * **LogController** добавляет запись журнала (документ) в коллекцию DocumentDB.
 
 > [!TIP]
-> Оба контроллера используют операции `async Task<dynamic>`, что позволяет выполнять операции в среде выполнения, а значит, мы сможем создать схему DocumentDB в тексте операции. 
+> Использовать оба контроллера `async Task<dynamic>` операции, tooresolve операции во время выполнения, чтобы мы могли создавать hello схемы DocumentDB в тексте hello hello операции. 
 > 
 
-Каждому документу в DocumentDB необходимо присвоить уникальный идентификатор. Мы используем идентификатор `PatientId` , к которому добавляем метку времени, преобразованную в значение в формате Unix (значение с двойной точностью). Чтобы удалить дробное значение, мы обрежем метку времени.
+Каждому документу в DocumentDB необходимо присвоить уникальный идентификатор. Мы используем `PatientId` и добавление отметка времени, преобразуется в значение отметки времени Unix tooa (double). Мы усечь дробное значение tooremove значение hello hello.
 
-Исходный код API контроллера ошибок доступен [в репозитории GitHub](https://github.com/HEDIDIN/LogicAppsExceptionManagementApi/blob/master/Logic App Exception Management API/Controllers/ErrorController.cs).
+Можно просмотреть исходный код hello нашей ошибка контроллера API [из GitHub](https://github.com/HEDIDIN/LogicAppsExceptionManagementApi/blob/master/Logic App Exception Management API/Controllers/ErrorController.cs).
 
-Для вызова API из приложения логики используется следующий синтаксис:
+Мы называем hello API из логики приложения с помощью hello, используя синтаксис:
 
 ``` json
  "actions": {
@@ -474,17 +474,17 @@ ms.lasthandoff: 07/11/2017
  }
 ```
 
-Выражение в примере кода выше проверяет, не имеет ли параметр *Create_NewPatientRecord* значение **Failed**.
+Здравствуйте, выражение в hello предшествующий код примера проверяет наличие hello *Create_NewPatientRecord* состояние **сбой**.
 
 ## <a name="summary"></a>Сводка
 
 * В приложении логики можно легко реализовать ведение журнала и обработку ошибок.
-* DocumentDB можно использовать в качестве репозитория для хранения записей журнала и записей об ошибках (документов).
-* С помощью веб-приложения MVC можно создать портал, на котором будут отображаться записи журналов и записи об ошибках.
+* DocumentDB можно использовать как хранилище hello записей журнала и ошибки (документов).
+* Можно использовать toocreate MVC журнала портала toodisplay и ошибочные записи.
 
 ### <a name="source-code"></a>Исходный код
 
-Исходный код для приложения API, используемого для управления исключениями приложений логики, доступен в [репозитории GitHub](https://github.com/HEDIDIN/LogicAppsExceptionManagementApi "API управления исключениями приложений логики").
+Hello исходный код для управления исключениями Logic Apps API приложения hello доступен в этом [репозитории GitHub](https://github.com/HEDIDIN/LogicAppsExceptionManagementApi "API управления исключение логику приложения").
 
 ## <a name="next-steps"></a>Дальнейшие действия
 

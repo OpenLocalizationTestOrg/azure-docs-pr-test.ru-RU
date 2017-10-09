@@ -1,6 +1,6 @@
 ---
-title: "Руководство по работе с PolyBase в хранилище данных SQL | Документация Майкрософт"
-description: "Узнайте, что такое средство PolyBase и как его использовать в сценариях работы с хранилищем данных."
+title: "aaaPolyBase в учебнике хранилища данных SQL | Документы Microsoft"
+description: "Сведения о возможностях PolyBase и как toouse его для сценариев хранилища данных."
 services: sql-data-warehouse
 documentationcenter: NA
 author: ckarst
@@ -15,11 +15,11 @@ ms.workload: data-services
 ms.custom: loading
 ms.date: 03/01/2017
 ms.author: cakarst;barbkess
-ms.openlocfilehash: 1a26fe127448f794bbad11043aa3c8770bc2ac8c
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 3e680ec407c1d920dd59ea922b82c9208b5e9a84
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="load-data-with-polybase-in-sql-data-warehouse"></a>Загрузка данных в хранилище данных SQL с помощью PolyBase
 > [!div class="op_single_selector"]
@@ -30,32 +30,32 @@ ms.lasthandoff: 08/29/2017
 > 
 > 
 
-В этом руководстве показано, как загрузить данные в хранилище данных SQL с помощью AzCopy и PolyBase. Изучив руководство, вы будете знать:
+В этом учебнике показано как tooload данных в хранилище данных SQL с помощью AzCopy и PolyBase. Изучив руководство, вы будете знать:
 
-* как использовать AzCopy для копирования данных в хранилище больших двоичных объектов;
-* как создавать объекты базы данных для определения данных;
-* как выполнять запросы T-SQL для загрузки данных.
+* Использовать хранилище больших двоичных объектов tooAzure данных toocopy AzCopy
+* Создание объектов базы данных toodefine hello данных
+* Запускайте данных hello tooload запрос T-SQL
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Loading-data-with-PolyBase-in-Azure-SQL-Data-Warehouse/player]
 > 
 > 
 
 ## <a name="prerequisites"></a>Предварительные требования
-Для выполнения этих действий необходимо иметь следующее.
+требуется toostep этого учебника
 
 * База данных хранилища данных SQL.
 * Учетная запись хранилища Azure типа Standard-LRS (локально избыточное хранилище уровня «Стандартный»), Standard-GRS (геоизбыточное хранилище уровня «Стандартный») или Standard-RAGRS (геоизбыточное хранилище с доступом для чтения уровня «Стандартный»).
-* Служебная программа командной строки AzCopy. Скачайте и установите [последнюю версию AzCopy][latest version of AzCopy], которая входит в состав средств службы хранилища Microsoft Azure.
+* Служебная программа командной строки AzCopy. Загрузите и установите hello [последнюю версию AzCopy] [ latest version of AzCopy] который устанавливается вместе с hello инструментов хранилища Microsoft Azure.
   
     ![Средства хранилища Azure](./media/sql-data-warehouse-get-started-load-with-polybase/install-azcopy.png)
 
-## <a name="step-1-add-sample-data-to-azure-blob-storage"></a>Шаг 1. Добавление данных в хранилище больших двоичных объектов Azure
-Чтобы загрузить данные, нам нужно сначала поместить демонстрационные данные в хранилище BLOB-объектов Azure. На этом шаге мы заполним демонстрационными данными большой двоичный объект хранилища Azure. Затем с помощью PolyBase мы загрузим эти данные в базу данных хранилища данных SQL.
+## <a name="step-1-add-sample-data-tooazure-blob-storage"></a>Шаг 1: Добавьте хранилище больших двоичных объектов tooAzure образца данных
+В данные о заказах tooload мы должны tooput некоторые демонстрационные данные в хранилище больших двоичных объектов. На этом шаге мы заполним демонстрационными данными большой двоичный объект хранилища Azure. Более поздней версии мы будем использовать PolyBase tooload следующий образец данных в базу данных хранилища данных SQL.
 
 ### <a name="a-prepare-a-sample-text-file"></a>О. Подготовка примера текстового файла
-Создайте пример текстового файла следующим образом.
+tooprepare пример текстового файла:
 
-1. Откройте Блокнот и скопируйте следующие строки данных в новый файл. Сохраните файл в локальный каталог с именем %temp%\DimDate2.txt.
+1. Откройте Блокнот и скопируйте hello следующие строки данных в новый файл. Сохранение этого локального каталога temp tooyour % temp%\DimDate2.txt.
 
 ```
 20150301,1,3
@@ -73,11 +73,11 @@ ms.lasthandoff: 08/29/2017
 ```
 
 ### <a name="b-find-your-blob-service-endpoint"></a>B. Поиск адреса конечной точки службы BLOB-объектов
-Найдите конечную точку службы BLOB-объектов следующим образом.
+toofind конечной точки службы BLOB-объектов:
 
-1. На портале Azure выберите **Обзор** > **Учетные записи хранения**.
-2. Щелкните учетную запись хранения, которую хотите использовать.
-3. В колонке учетной записи хранения выберите «BLOB-объекты».
+1. Hello портала Azure выберите **Обзор** > **учетные записи хранения**.
+2. Выберите учетную запись хранилища hello, требуется toouse.
+3. В колонке hello учетной записи хранилища щелкните больших двоичных объектов
    
     ![Выбор BLOB-объектов](./media/sql-data-warehouse-get-started-load-with-polybase/click-blobs.png)
 4. Сохраните URL-адрес конечной точки службы BLOB-объектов.
@@ -85,67 +85,67 @@ ms.lasthandoff: 08/29/2017
     ![Конечная точка службы BLOB-объектов](./media/sql-data-warehouse-get-started-load-with-polybase/blob-service.png)
 
 ### <a name="c-find-your-azure-storage-key"></a>C. Поиск ключа к хранилищу данных Azure
-Найдите ключ к хранилищу данных Azure следующим образом.
+toofind ключа хранилища Azure:
 
-1. На портале Azure выберите **Обзор** > **Учетные записи хранения**.
-2. Щелкните учетную запись хранения, которую вы хотите использовать.
+1. Hello портал Azure, выберите **Обзор** > **учетные записи хранения**.
+2. Щелкните hello, требуется toouse учетной записи хранилища.
 3. Выберите **Все параметры** > **Ключи доступа**.
-4. Скопируйте один из ключей доступа в буфер обмена.
+4. Щелкните поле toocopy hello копирования, один из буфера обмена toohello ключи доступа.
    
     ![Копирование ключа к хранилищу данных Azure](./media/sql-data-warehouse-get-started-load-with-polybase/access-key.png)
 
-### <a name="d-copy-the-sample-file-to-azure-blob-storage"></a>D. Копирование примера файла в хранилище BLOB-объектов Azure
-Скопируйте сохраненные данные в хранилище BLOB-объектов Azure следующим образом.
+### <a name="d-copy-hello-sample-file-tooazure-blob-storage"></a>D. Скопируйте хранилища больших двоичных объектов tooAzure файла образца hello
+toocopy tooAzure больших двоичных объектов хранилища данных:
 
-1. Откройте командную строку и перейдите в каталог, в котором установлена программа AzCopy. Эта команда выполняет переход в каталог установки, который по умолчанию используется на 64-разрядной версии Windows.
+1. Откройте командную строку и изменении каталога установки AzCopy toohello каталоги. Эта команда изменяет toohello каталог установки по умолчанию на клиенте Windows x 64.
    
     ```
     cd /d "%ProgramFiles(x86)%\Microsoft SDKs\Azure\AzCopy"
     ```
-2. Выполните следующую команду, чтобы передать файл: Укажите URL-адрес конечной точки службы BLOB-объектов вместо <blob service endpoint URL> и ключ учетной записи хранения Azure вместо <azure_storage_account_key>.
+2. Выполните следующие команды tooupload hello файл hello. Укажите URL-адрес конечной точки службы BLOB-объектов вместо <blob service endpoint URL> и ключ учетной записи хранения Azure вместо <azure_storage_account_key>.
    
     ```
     .\AzCopy.exe /Source:C:\Temp\ /Dest:<blob service endpoint URL> /datacontainer/datedimension/ /DestKey:<azure_storage_account_key> /Pattern:DimDate2.txt
     ```
 
-См. также статью [Приступая к работе со служебной программой командной строки AzCopy][Getting Started with the AzCopy Command-Line Utility].
+См. также [Приступая к работе с hello служебной программы командной строки AzCopy][Getting Started with hello AzCopy Command-Line Utility].
 
 ### <a name="e-explore-your-blob-storage-container"></a>E. Просмотр содержимого контейнера хранилища BLOB-объектов
-Проверьте загрузку файла в хранилище BLOB-объектов следующим образом.
+файл hello toosee загруженный tooblob хранилища:
 
-1. Вернитесь к колонке службы BLOB-объектов.
+1. Вы можете вернуться колонке службы tooyour больших двоичных объектов.
 2. В разделе «Контейнеры» дважды щелкните **datacontainer**.
-3. Щелкните папку **datedimension**, где хранятся ваши данные, и найдите там загруженный файл **DimDate2.txt**.
-4. Чтобы просмотреть его свойства, щелкните **DimDate2.txt**.
-5. Обратите внимание, что в колонке свойств BLOB-объекта есть возможность загрузки и удаления файла.
+3. tooexplore данных tooyour hello контура, щелкните папку hello **datedimension** и вы увидите загруженный файл **DimDate2.txt**.
+4. Нажмите кнопку Свойства tooview **DimDate2.txt**.
+5. Обратите внимание, что в колонке свойства большого двоичного объекта hello, можно загрузить или удалить файл hello.
    
     ![Просмотр хранилища BLOB-объектов Azure](./media/sql-data-warehouse-get-started-load-with-polybase/view-blob.png)
 
-## <a name="step-2-create-an-external-table-for-the-sample-data"></a>Шаг 2. Создание внешней таблицы для демонстрационных данных
-В этом разделе мы создадим внешнюю таблицу, которая определяет демонстрационные данные.
+## <a name="step-2-create-an-external-table-for-hello-sample-data"></a>Шаг 2: Создание внешней таблицы для hello образца данных
+В этом разделе мы создать внешнюю таблицу, которая определяет hello образцов данных.
 
-PolyBase использует внешние таблицы для доступа к данным в хранилище BLOB-объектов. Поскольку данные хранятся не в хранилище данных SQL, PolyBase выполняет проверку подлинности для доступа к внешним данным с помощью учетных данных, заданных для базы данных.
+PolyBase использует внешние таблицы tooaccess данные в хранилище больших двоичных объектов. Поскольку hello данные не хранятся в хранилище данных SQL, PolyBase обрабатывает внешние данные toohello проверки подлинности с помощью учетных данных области базы данных.
 
-На этом шаге нашего примера мы выполним несколько инструкций Transact-SQL для создания внешней таблицы.
+пример Hello в этот шаг использует эти toocreate инструкций Transact-SQL внешней таблицы.
 
-* [Create Master Key (Transact-SQL)][Create Master Key (Transact-SQL)]: шифрование секрета учетных данных, заданных для базы данных.
-* [Create Database Scoped Credential (Transact-SQL)][Create Database Scoped Credential (Transact-SQL)]: предоставление сведений для аутентификации учетной записи хранения Azure.
-* [Create External Data Source (Transact-SQL)][Create External Data Source (Transact-SQL)]: определение расположения хранилища BLOB-объектов Azure.
-* [Create External File Format (Transact-SQL)][Create External File Format (Transact-SQL)]: определение формата данных.
-* [Create External Table (Transact-SQL)][Create External Table (Transact-SQL)]: определение таблицы и расположения данных.
+* [Создайте главный ключ (Transact-SQL)] [ Create Master Key (Transact-SQL)] учетные данные области секрет hello tooencrypt базы данных.
+* [Создание базы данных учетных данных (Transact-SQL)] [ Create Database Scoped Credential (Transact-SQL)] toospecify сведения для проверки подлинности для вашей учетной записи хранилища Azure.
+* [Создание внешнего источника данных (Transact-SQL)] [ Create External Data Source (Transact-SQL)] toospecify hello расположение хранилища BLOB-объектов Azure.
+* [Создайте формат внешнего файла (Transact-SQL)] [ Create External File Format (Transact-SQL)] toospecify hello формат данных.
+* [Создайте внешнюю таблицу (Transact-SQL)] [ Create External Table (Transact-SQL)] toospecify определение таблицы hello и расположение hello данных.
 
-Выполните этот запрос к вашей базе данных хранилища данных SQL. В схеме dbo будет создана внешняя таблица с именем DimDate2External, которая указывает на файл с демонстрационными данными DimDate2.txt в хранилище BLOB-объектов Azure.
+Выполните этот запрос к вашей базе данных хранилища данных SQL. Оно создает внешнюю таблицу с именем DimDate2External в схеме dbo hello, которая указывает toohello DimDate2.txt образец данных в хранилище больших двоичных объектов hello.
 
 ```sql
 -- A: Create a master key.
 -- Only necessary if one does not already exist.
--- Required to encrypt the credential secret in the next step.
+-- Required tooencrypt hello credential secret in hello next step.
 
 CREATE MASTER KEY;
 
 
 -- B: Create a database scoped credential
--- IDENTITY: Provide any string, it is not used for authentication to Azure storage.
+-- IDENTITY: Provide any string, it is not used for authentication tooAzure storage.
 -- SECRET: Provide your Azure storage account key.
 
 
@@ -157,9 +157,9 @@ WITH
 
 
 -- C: Create an external data source
--- TYPE: HADOOP - PolyBase uses Hadoop APIs to access data in Azure blob storage.
+-- TYPE: HADOOP - PolyBase uses Hadoop APIs tooaccess data in Azure blob storage.
 -- LOCATION: Provide Azure storage account name and blob container name.
--- CREDENTIAL: Provide the credential created in the previous step.
+-- CREDENTIAL: Provide hello credential created in hello previous step.
 
 CREATE EXTERNAL DATA SOURCE AzureStorage
 WITH (
@@ -181,10 +181,10 @@ WITH (
 );
 
 
--- E: Create the external table
--- Specify column names and data types. This needs to match the data in the sample file.
--- LOCATION: Specify path to file or directory that contains the data (relative to the blob container).
--- To point to all files under the blob container, use LOCATION='.'
+-- E: Create hello external table
+-- Specify column names and data types. This needs toomatch hello data in hello sample file.
+-- LOCATION: Specify path toofile or directory that contains hello data (relative toohello blob container).
+-- toopoint tooall files under hello blob container, use LOCATION='.'
 
 CREATE EXTERNAL TABLE dbo.DimDate2External (
     DateId INT NOT NULL,
@@ -198,25 +198,25 @@ WITH (
 );
 
 
--- Run a query on the external table
+-- Run a query on hello external table
 
 SELECT count(*) FROM dbo.DimDate2External;
 
 ```
 
 
-В обозревателе объектов SQL Server в Visual Studio можно просмотреть формат внешнего файла, внешний источник данных и таблицу DimDate2External.
+В обозревателе объектов SQL Server в Visual Studio вы увидите формата внешнего файла hello, внешний источник данных и таблиц DimDate2External hello.
 
 ![Просмотр внешней таблицы](./media/sql-data-warehouse-get-started-load-with-polybase/external-table.png)
 
 ## <a name="step-3-load-data-into-sql-data-warehouse"></a>Шаг 3. Загрузка данных в хранилище данных SQL
-После создания внешней таблицы вы можете загрузить данные в новую таблицу или вставить в уже существующую.
+После создания hello внешней таблицы можно загрузить данные hello в новую таблицу или вставить его в существующую таблицу.
 
-* Чтобы загрузить данные в новую таблицу, выполните инструкцию [CREATE TABLE AS SELECT (Transact-SQL)][CREATE TABLE AS SELECT (Transact-SQL)]. В новую таблицу будут включены столбцы с именами, указанными в запросе. Типы данных столбцов будут соответствовать типам данных в определении внешней таблицы.
-* Чтобы загрузить данные в существующую таблицу, выполните инструкцию [INSERT...SELECT (Transact-SQL)][INSERT...SELECT (Transact-SQL)].
+* tooload hello данных в новую таблицу, выполнить hello [CREATE TABLE AS SELECT (Transact-SQL)] [ CREATE TABLE AS SELECT (Transact-SQL)] инструкции. Hello новая таблица будет иметь hello столбцы с именем в запросе hello. типы данных Hello hello столбцов будет соответствовать типам данных hello в определении внешней таблицы hello.
+* tooload hello данных в существующую таблицу, используйте hello [INSERT... SELECT (Transact-SQL)] [ INSERT...SELECT (Transact-SQL)] инструкции.
 
 ```sql
--- Load the data from Azure blob storage to SQL Data Warehouse
+-- Load hello data from Azure blob storage tooSQL Data Warehouse
 
 CREATE TABLE dbo.DimDate2
 WITH
@@ -229,9 +229,9 @@ SELECT * FROM [dbo].[DimDate2External];
 ```
 
 ## <a name="step-4-create-statistics-on-your-newly-loaded-data"></a>Шаг 4. Создание статистики для только что загруженных данных
-Хранилище данных SQL не создает и не обновляет статистику автоматически. Поэтому после первой загрузки нужно создать статистику для каждого столбца каждой таблицы, чтобы обеспечить высокую производительность. Также важно обновлять статистику после существенных изменений данных.
+Хранилище данных SQL не создает и не обновляет статистику автоматически. Таким образом tooachieve высокую производительность запросов, очень важно, сначала загрузите toocreate статистику для каждого столбца в каждой таблице после hello. Это также важно tooupdate статистику после значительных изменений в данных hello.
 
-Этот пример создает статистику по отдельным столбцам для новой таблицы DimDate2.
+Этот пример создает статистику по отдельным столбцам для новых таблиц DimDate2 hello.
 
 ```sql
 CREATE STATISTICS [DateId] on [DimDate2] ([DateId]);
@@ -239,10 +239,10 @@ CREATE STATISTICS [CalendarQuarter] on [DimDate2] ([CalendarQuarter]);
 CREATE STATISTICS [FiscalQuarter] on [DimDate2] ([FiscalQuarter]);
 ```
 
-Дополнительные сведения см. в статье [Управление статистикой таблиц в хранилище данных SQL][Statistics].  
+toolearn более, в разделе [статистики][Statistics].  
 
 ## <a name="next-steps"></a>Дальнейшие действия
-При разработке решений на основе PolyBase будет полезно изучить [руководство по PolyBase][PolyBase guide].
+В разделе hello [руководство по PolyBase] [ PolyBase guide] для получения дополнительных сведений, которые следует знать при разработке решения, использующего PolyBase.
 
 <!--Image references-->
 
@@ -252,7 +252,7 @@ CREATE STATISTICS [FiscalQuarter] on [DimDate2] ([FiscalQuarter]);
 [Load data with bcp]: ./sql-data-warehouse-load-with-bcp.md
 [Statistics]: ./sql-data-warehouse-tables-statistics.md
 [PolyBase guide]: ./sql-data-warehouse-load-polybase-guide.md
-[Getting Started with the AzCopy Command-Line Utility]:../storage/common/storage-use-azcopy.md
+[Getting Started with hello AzCopy Command-Line Utility]:../storage/common/storage-use-azcopy.md
 [latest version of AzCopy]:../storage/common/storage-use-azcopy.md
 
 <!--External references-->

@@ -1,6 +1,6 @@
 ---
-title: "Как использовать очереди служебной шины с помощью PHP | Документация Майкрософт"
-description: "Узнайте, как использовать очереди служебной шины в Azure. Примеры кода написаны на PHP."
+title: "Помещает в очередь aaaHow toouse служебной шины с PHP | Документы Microsoft"
+description: "Узнайте, как очереди toouse Service Bus в Azure. Примеры кода написаны на PHP."
 services: service-bus-messaging
 documentationcenter: php
 author: sethmanheim
@@ -14,42 +14,42 @@ ms.devlang: PHP
 ms.topic: article
 ms.date: 08/10/2017
 ms.author: sethm
-ms.openlocfilehash: 3514812f7f087582035dad5d9a4d620652aa4da9
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 8cf233176029b679d172eaf713632087beca5e4e
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-use-service-bus-queues-with-php"></a>Как использовать очереди служебной шины с PHP
+# <a name="how-toouse-service-bus-queues-with-php"></a>Как очереди toouse служебной шины с PHP
 [!INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]
 
-В этом руководстве показано, как использовать очереди служебной шины. Примеры написаны на PHP и используют [пакет Azure SDK для PHP](../php-download-sdk.md). Здесь описаны такие сценарии, как **создание очередей**, **отправка и получение сообщений**, а также **удаление очередей**.
+В этом руководстве показано, как toouse очереди Service Bus. Hello примеры написаны на PHP и использовать hello [пакет Azure SDK для PHP](../php-download-sdk.md). Hello сценарии включают **создание очередей**, **отправки и получения сообщений**, и **удаление очередей**.
 
 [!INCLUDE [howto-service-bus-queues](../../includes/howto-service-bus-queues.md)]
 
 ## <a name="create-a-php-application"></a>Создание приложения PHP
-Для создания приложения PHP, которое получает доступ к службе BLOB-объектов Azure, достаточно сослаться на классы в [пакете SDK Azure для PHP](../php-download-sdk.md) непосредственно из кода. Для создания приложения можно использовать любые средства разработки или Блокнот.
+Здравствуйте, используется только для создания приложения PHP, которое обращается к службе BLOB-объектов Azure hello hello ссылки на классы в hello [пакет Azure SDK для PHP](../php-download-sdk.md) из кода. Можно использовать любой toocreate средства разработки приложения или «Блокнот».
 
 > [!NOTE]
-> В установленном пакете PHP должно быть установлено и включено [расширение OpenSSL](http://php.net/openssl).
+> Установку PHP также должен иметь hello [OpenSSL расширения](http://php.net/openssl) установлен и включен.
 > 
 > 
 
 В этом руководстве будут использоваться компоненты службы, которые могут быть вызваны локально или в коде из приложения PHP, работающем в веб-роли Azure, рабочей роли или на веб-сайте Azure.
 
-## <a name="get-the-azure-client-libraries"></a>Получение клиентских библиотек Azure
+## <a name="get-hello-azure-client-libraries"></a>Получить hello клиентских библиотек Azure
 [!INCLUDE [get-client-libraries](../../includes/get-client-libraries.md)]
 
-## <a name="configure-your-application-to-use-service-bus"></a>Настройка приложения для использования служебной шины
-Чтобы использовать интерфейсы API очередей служебной шины, необходимо следующее:
+## <a name="configure-your-application-toouse-service-bus"></a>Настройка вашего приложения toouse Service Bus
+очередь Service Bus hello toouse API-интерфейсы, hello следующие:
 
-1. Ссылка на файл автозагрузчика с использованием оператора [require_once][require_once].
+1. Файл автозагрузчика hello ссылка, с помощью hello [require_once] [ require_once] инструкции.
 2. Ссылка на любые классы, которые могут использоваться.
 
-В следующем примере показано, как включить файл автозагрузчика и добавить ссылку на класс `ServicesBuilder`.
+Hello следующем примере показано, как tooinclude hello автозагрузчика файла и ссылку hello `ServicesBuilder` класса.
 
 > [!NOTE]
-> В этом примере (и других примерах в этой статье) предполагается, что установлены клиентские библиотеки PHP для Azure с помощью Composer. При установке библиотек вручную или в качестве пакета PEAR необходимо использовать ссылку на файл автозагрузчика **WindowsAzure.php**.
+> В этом примере (и другие примеры в этой статье) предполагается, что вы установили hello PHP клиентские библиотеки для Azure через редактор. При установке библиотеки hello вручную или в виде пакета ГРУШИ необходимо сослаться на hello **WindowsAzure.php** автозагрузчика файла.
 > 
 > 
 
@@ -58,25 +58,25 @@ require_once 'vendor/autoload.php';
 use WindowsAzure\Common\ServicesBuilder;
 ```
 
-В приведенных ниже примерах всегда будет отображаться оператор `require_once`, однако ссылки будут приводиться только на классы, которые необходимы для выполнения этого примера.
+В ниже примерах hello, hello `require_once` всегда будут отображаться инструкции, но указываются только классы hello, необходимые для tooexecute пример hello.
 
 ## <a name="set-up-a-service-bus-connection"></a>Настройка подключения к Service Bus
-Для создания клиента служебной шины необходимо сначала сформировать правильную строку подключения в следующем формате:
+tooinstantiate клиента служебной шины, сначала нужно допустимую строку соединения в следующем формате:
 
 ```
 Endpoint=[yourEndpoint];SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=[Primary Key]
 ```
 
-где `Endpoint` обычно имеет формат `[yourNamespace].servicebus.windows.net`.
+Где `Endpoint` обычно имеет формат hello `[yourNamespace].servicebus.windows.net`.
 
-Для создания клиента службы Azure необходимо использовать класс `ServicesBuilder`. Вы можете:
+toocreate любого клиента службы Azure, необходимо использовать hello `ServicesBuilder` класса. Вы можете:
 
-* Передать строку подключения напрямую или
-* использовать **CloudConfigurationManager (CCM)** для проверки нескольких внешних источников на наличие строки подключения:
+* Передайте hello подключения tooit строки напрямую.
+* использовать hello **CloudConfigurationManager (CCM)** toocheck нескольких внешних источников для hello строки подключения:
   * По умолчанию предоставляется поддержка одного внешнего источника — переменных среды.
-  * Можно добавить новые источники, расширив класс `ConnectionStringSource`.
+  * Можно добавлять новые источники, расширяя hello `ConnectionStringSource` класса
 
-В приведенных здесь примерах строка подключения передается напрямую.
+Приведенные ниже примеры hello hello строка подключения передается напрямую.
 
 ```php
 require_once 'vendor/autoload.php';
@@ -89,9 +89,9 @@ $serviceBusRestProxy = ServicesBuilder::getInstance()->createServiceBusService($
 ```
 
 ## <a name="create-a-queue"></a>Создание очереди
-Операции управления очередями служебной шины можно выполнять с помощью класса `ServiceBusRestProxy`. Объект `ServiceBusRestProxy` создается посредством фабричного метода `ServicesBuilder::createServiceBusService` с соответствующей строкой подключения, инкапсулирующей в себе разрешения маркера на управление им.
+Вы можете выполнять операции управления для очереди Service Bus через hello `ServiceBusRestProxy` класса. Объект `ServiceBusRestProxy` через hello создается объект `ServicesBuilder::createServiceBusService` фабричный метод со строкой соединения, соответствующую, инкапсулирующий hello маркера разрешения toomanage его.
 
-В приведенном ниже примере показано, как создать экземпляр `ServiceBusRestProxy` и вызвать метод `ServiceBusRestProxy->createQueue` для создания очереди `myqueue` в пространстве имен службы `MySBNamespace`.
+Следующий пример показывает как Hello tooinstantiate `ServiceBusRestProxy` и вызвать `ServiceBusRestProxy->createQueue` toocreate очередь с именем `myqueue` в `MySBNamespace` пространства имен службы:
 
 ```php
 require_once 'vendor/autoload.php';
@@ -120,12 +120,12 @@ catch(ServiceException $e){
 ```
 
 > [!NOTE]
-> Можно использовать метод `listQueues` для объектов `ServiceBusRestProxy`, чтобы проверить, существует ли уже очередь с указанным именем в пространстве имен.
+> Можно использовать hello `listQueues` метод `ServiceBusRestProxy` объектов toocheck, если очередь с указанным именем уже существует в пространстве имен.
 > 
 > 
 
-## <a name="send-messages-to-a-queue"></a>Отправка сообщений в очередь
-Чтобы отправить сообщение в очередь служебной шины, в приложении вызывается метод `ServiceBusRestProxy->sendQueueMessage`. В следующем примере кода показано, как отправить сообщение в очередь `myqueue`, созданную ранее в пространстве имен службы `MySBNamespace`.
+## <a name="send-messages-tooa-queue"></a>Отправка сообщений в очереди tooa
+toosend очередью сообщений tooa Service Bus, приложение вызывает hello `ServiceBusRestProxy->sendQueueMessage` метод. Здравствуйте, как следующий код показывает toosend toohello сообщение `myqueue` очереди, созданной ранее в `MySBNamespace` пространства имен службы.
 
 ```php
 require_once 'vendor/autoload.php';
@@ -155,19 +155,19 @@ catch(ServiceException $e){
 }
 ```
 
-Сообщения, отправляемые в очереди служебной шины и получаемые из них, представляют собой экземпляры класса [BrokeredMessage][BrokeredMessage]. У объектов [BrokeredMessage][BrokeredMessage] есть набор стандартных методов и свойств, используемый для хранения настраиваемых свойств приложения, и текст из произвольных данных приложения.
+Сообщения, отправленного слишком (и, полученных от) очереди шины обслуживания являются экземплярами hello [BrokeredMessage] [ BrokeredMessage] класса. [BrokeredMessage] [ BrokeredMessage] объекты имеют ряд стандартных методов и свойств, используемых toohold пользовательские свойства для конкретного приложения и текст из произвольных данных приложения.
 
-Очереди служебной шины поддерживают максимальный размер сообщения 256 КБ для [уровня "Стандартный"](service-bus-premium-messaging.md) и 1 МБ для [уровня Premium](service-bus-premium-messaging.md). Максимальный размер заголовка, который содержит стандартные и настраиваемые свойства приложения, — 64 КБ. Ограничения на количество сообщений в очереди нет, но есть максимальный общий размер сообщений, содержащихся в очереди. Максимальный размер очереди ограничен 5 ГБ.
+Очереди шины обслуживания поддерживает максимальный размер сообщения 256 КБ в hello [стандартного уровня](service-bus-premium-messaging.md) и 1 МБ в hello [уровня Premium](service-bus-premium-messaging.md). Hello заголовок, который включает hello standard и свойства пользовательского приложения, может иметь максимальный размер 64 КБ. Нет ограничений на число hello сообщения помещаются в очередь, но отсутствует ограничение на общий размер сообщений hello, хранящиеся в очереди hello. Максимальный размер очереди ограничен 5 ГБ.
 
 ## <a name="receive-messages-from-a-queue"></a>Получение сообщений из очереди
 
-Наилучшим способом получать сообщения из очереди является использование метода `ServiceBusRestProxy->receiveQueueMessage`. Сообщения можно получать в двух различных режимах: [*ReceiveAndDelete*](/dotnet/api/microsoft.servicebus.messaging.receivemode.receiveanddelete) и [*PeekLock*](/dotnet/api/microsoft.servicebus.messaging.receivemode.peeklock). Значение по умолчанию — **PeekLock**.
+Hello лучшим способом tooreceive сообщений из очереди — toouse `ServiceBusRestProxy->receiveQueueMessage` метод. Сообщения можно получать в двух различных режимах: [*ReceiveAndDelete*](/dotnet/api/microsoft.servicebus.messaging.receivemode.receiveanddelete) и [*PeekLock*](/dotnet/api/microsoft.servicebus.messaging.receivemode.peeklock). **PeekLock** по умолчанию hello.
 
-В режиме [ReceiveAndDelete](/dotnet/api/microsoft.servicebus.messaging.receivemode.receiveanddelete) получение является одиночной операцией. Это значит, что когда служебная шина получает запрос на чтение для сообщения в очереди, это сообщение помечается как использованное и возвращается в приложение. Режим [ReceiveAndDelete](/dotnet/api/microsoft.servicebus.messaging.receivemode.receiveanddelete) представляет собой самую простую модель, которая лучше всего работает в ситуациях, когда приложение может не обрабатывать сообщение при сбое. Чтобы это понять, рассмотрим сценарий, в котором объект-получатель выдает запрос на получение и выходит из строя до его обработки. Поскольку служебная шина помечает сообщение как использованное, то когда после своего перезапуска приложение снова начнет обрабатывать сообщения, оно пропустит сообщение, использованное до сбоя.
+При использовании [ReceiveAndDelete](/dotnet/api/microsoft.servicebus.messaging.receivemode.receiveanddelete) режиме получение является единовременной операцией; то есть, когда Service Bus получает запросы на чтение для сообщения в очереди, он помечает приветственное сообщение как полученное и возвращает его toohello приложения. [ReceiveAndDelete](/dotnet/api/microsoft.servicebus.messaging.receivemode.receiveanddelete) режим — самая простая модель hello и лучше всего подходит для сценариев, в которых приложение может не обрабатывать сообщение hello в случае сбоя. toounderstand это, рассмотрим сценарий, в какие неполадки потребителя hello hello получают запрос и затем ломается до его обработки. Поскольку приветственное сообщение как полученное, затем при hello запустится и начинает получать сообщения снова будет помеченных Service Bus, оно пропустит сообщение hello, потребляет предыдущих toohello аварийного завершения.
 
-В используемом по умолчанию режиме [PeekLock](/dotnet/api/microsoft.servicebus.messaging.receivemode.peeklock) процесс получения становится двухэтапной операцией, что позволяет поддерживать приложения, не устойчивые к пропуску сообщений. Получив запрос, Service Bus находит следующее сообщение, блокирует его, чтобы другие получатели не могли его принять, а затем возвращает его приложению. Когда приложение завершает обработку сообщения (или сохраняет его для будущей обработки), оно завершает второй этап процесса получения, вызывая метод `ServiceBusRestProxy->deleteMessage` для полученного сообщения. Когда служебная шина обнаруживает вызов метода `deleteMessage`, она помечает сообщение как использованное и удаляет его из очереди.
+По умолчанию hello [PeekLock](/dotnet/api/microsoft.servicebus.messaging.receivemode.peeklock) режим, получает сообщение становится операции два этапа, что делает его возможных toosupport приложений, которые не удается обработать отсутствующие сообщения. Service Bus, получив запрос, он выполняет поиск следующего сообщения toobe hello потребляет, блокирует его tooprevent других потребителей получать и возвращает его toohello приложения. После того, как приложение hello завершает обработку сообщения hello (или хранит его для будущей обработки), его выполнить hello второго этапа hello процесс получения, передавая сообщение hello получено слишком`ServiceBusRestProxy->deleteMessage`. Когда Service Bus обнаруживает hello `deleteMessage` вызов, он пометить приветственное сообщение как полученное и удалите его из очереди hello.
 
-В следующем примере показывается, как получать и обрабатывать сообщения с помощью режима [PeekLock](/dotnet/api/microsoft.servicebus.messaging.receivemode.peeklock) (используется по умолчанию).
+Следующий пример показывает как Hello tooreceive и обрабатывать сообщения с помощью [PeekLock](/dotnet/api/microsoft.servicebus.messaging.receivemode.peeklock) режиме (режим по умолчанию hello).
 
 ```php
 require_once 'vendor/autoload.php';
@@ -180,7 +180,7 @@ use WindowsAzure\ServiceBus\Models\ReceiveMessageOptions;
 $serviceBusRestProxy = ServicesBuilder::getInstance()->createServiceBusService($connectionString);
 
 try    {
-    // Set the receive mode to PeekLock (default is ReceiveAndDelete).
+    // Set hello receive mode tooPeekLock (default is ReceiveAndDelete).
     $options = new ReceiveMessageOptions();
     $options->setPeekLock();
 
@@ -207,18 +207,18 @@ catch(ServiceException $e){
 }
 ```
 
-## <a name="how-to-handle-application-crashes-and-unreadable-messages"></a>Как обрабатывать сбои приложения и нечитаемые сообщения
+## <a name="how-toohandle-application-crashes-and-unreadable-messages"></a>Как происходит сбой toohandle приложения и может быть прочитан сообщений
 
-служебная шина предоставляет функции, помогающие корректно выполнить восстановление после ошибок в приложении или трудностей, возникших при обработке сообщения. Если приложение-получатель по каким-либо причинам не может обработать сообщение, то оно может вызвать метод `unlockMessage` для полученного сообщения (вместо метода `deleteMessage`). После этого служебная шина разблокирует сообщение в очереди и сделает его доступным для приема тем же приложением или другим приложением.
+Шина обслуживания предоставляет toohelp функциональные возможности, которые корректного восстановления после ошибок в приложении или затруднений при обработке сообщения. Если приложение получатель не может tooprocess сообщение hello для какой-либо причине, то он может вызвать hello `unlockMessage` метод для получения приветственное сообщение (вместо hello `deleteMessage` метода). Это будет вызвать Service Bus toounlock приветственное сообщение в очередь hello и сделать ее доступной toobe получили еще раз, либо путем hello же потреблять приложение или другое приложение потребителя.
 
-Кроме того, с сообщением, заблокированным в очереди, связано время ожидания. Если приложение не сможет обработать сообщение в течение времени ожидания (например, при сбое приложения), служебная шина разблокирует сообщение автоматически и сделает его доступным для приема.
+Также существует время ожидания, связанные с сообщением, заблокировать в течение hello очереди, и при сбое приложения hello tooprocess приветственное сообщение, прежде чем hello срок блокировки (например, если приложение hello терпит сбой), разблокируйте Service Bus приветственное сообщение автоматически и сделать ее доступной toobe получили еще раз.
 
-Если сбой приложения происходит после обработки сообщения, но перед отправкой запроса `deleteMessage`, то это сообщение повторно доставляется в приложение после его перезапуска. Часто такой подход называют *Обработать хотя бы один раз*, т. е. каждое сообщение будет обрабатываться по крайней мере один раз, но в некоторых случаях это же сообщение может быть доставлено повторно. Если повторная обработка недопустима, рекомендуется добавить в приложение дополнительную логику для обработки повторной доставки сообщений. Часто это достигается с помощью метода `getMessageId` сообщения, который остается постоянным для различных попыток доставки.
+В hello событие, которое hello приложение аварийно завершает работу после обработки сообщения hello, но перед hello `deleteMessage` выдается запрос, то при перезапуске приветственное сообщение будет повторно доставлены toohello приложения. Это часто называется *как минимум один раз* обработки; то есть каждое сообщение обрабатывается хотя бы один раз, но в некоторых ситуациях hello же сообщение может доставляться. Если сценарий hello не допускает обработку дубликатов, а затем добавление дополнительного рекомендуется логика tooapplications toohandle повторной доставке сообщений. Это можно сделать с помощью hello `getMessageId` метод приветственное сообщение, остается постоянным на протяжении всех попыток доставки.
 
 ## <a name="next-steps"></a>Дальнейшие действия
-Вы ознакомились с основами использования очередей служебной шины. Дополнительные сведения см. в статье [Очереди, разделы и подписки служебной шины][Queues, topics, and subscriptions].
+Теперь, когда вы узнали основы hello очереди шины обслуживания, в разделе [очереди, разделы и подписки] [ Queues, topics, and subscriptions] для получения дополнительной информации.
 
-Дополнительные сведения также доступны в [Центре разработчика PHP](https://azure.microsoft.com/develop/php/).
+Для получения дополнительной информации посетите также hello [Центр разработчика PHP](https://azure.microsoft.com/develop/php/).
 
 [BrokeredMessage]: /dotnet/api/microsoft.servicebus.messaging.brokeredmessage
 [Queues, topics, and subscriptions]: service-bus-queues-topics-subscriptions.md

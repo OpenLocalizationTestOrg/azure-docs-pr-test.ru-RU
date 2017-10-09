@@ -1,6 +1,6 @@
 ---
-title: "Управление учетными данными в клиентской библиотеке эластичной базы данных | Документация Майкрософт"
-description: "Как установить правильный уровень учетных данных (от администратора до доступа только для чтения) для приложений эластичных баз данных."
+title: "учетные данные aaaManaging в клиентской библиотеке эластичной базы данных hello | Документы Microsoft"
+description: "Как tooset hello необходимого уровня учетные данные администратора, предназначенным только для tooread для эластичной базы данных приложений"
 services: sql-database
 documentationcenter: 
 manager: jhubbard
@@ -15,23 +15,23 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/24/2016
 ms.author: ddove
-ms.openlocfilehash: 46908be2846062a0520d21e06db3091a4d711b0b
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 218783ca2a07e3c0a4b089aa92634f32c41386e6
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="credentials-used-to-access-the-elastic-database-client-library"></a>Учетные данные для доступа к клиентской библиотеке эластичной базы данных
-[Клиентская библиотека эластичной базы данных](http://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/) использует три различных типа учетных данных для доступа к [диспетчеру карты сегментов](sql-database-elastic-scale-shard-map-management.md). В зависимости от выполняемых задач используйте учетные данные с максимально низким уровнем доступа.
+# <a name="credentials-used-tooaccess-hello-elastic-database-client-library"></a>Учетные данные, используемые tooaccess hello эластичной базы данных клиентской библиотеки
+Hello [клиентской библиотеке эластичной базы данных](http://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/) использует три типа учетных данных hello tooaccess [диспетчера карты сегментов](sql-database-elastic-scale-shard-map-management.md). В зависимости от необходимости hello используйте hello учетных данных с уровнем hello наименьший возможный уровень доступа.
 
-* **Учетные данные управления** предназначены для создания диспетчера карты сегментов или операций с ним. (См. [глоссарий](sql-database-elastic-scale-glossary.md).) 
-* **Учетные данные для доступа**: обеспечивают доступ к существующему диспетчеру карт сегментов для получения сведений о сегментах.
-* **Учетные данные подключения**: предназначены для подключения к сегментам. 
+* **Учетные данные управления** предназначены для создания диспетчера карты сегментов или операций с ним. (В разделе hello [Глоссарий](sql-database-elastic-scale-glossary.md).) 
+* **Доступ к учетным данным**: tooaccess существующего сегмента сопоставления диспетчера tooobtain сведений о сегментов.
+* **Учетные данные для подключения**: tooconnect tooshards. 
 
 См. также статью [Проверка подлинности и авторизация в базе данных SQL: предоставление доступа](sql-database-manage-logins.md). 
 
 ## <a name="about-management-credentials"></a>Об учетных данных управления
-Учетные данные управления используются для создания объекта [**ShardMapManager**](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.aspx) в приложениях, работающих с картами сегментов. (Например, см. статьи [Добавление сегмента с использованием средств эластичной базы данных](sql-database-elastic-scale-add-a-shard.md) и [Маршрутизация, зависящая от данных](sql-database-elastic-scale-data-dependent-routing.md).) Пользователь клиентской библиотеки эластичного масштабирования создает пользователей и имена для входа SQL и проверяет, имеют ли они разрешения на чтение и запись для базы данных глобальной карты сегментов, а также для всех баз данных сегментов. Эти учетные данные используются для обновления глобальной карты сегментов и локальных карт сегментов при внесении изменений в карты. Например, используйте учетные данные управления для создания объекта диспетчера карты сегментов с помощью [**GetSqlShardMapManager**](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.getsqlshardmapmanager.aspx): 
+Учетные данные управления, используемые toocreate [ **ShardMapManager** ](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.aspx) объекта для приложений, которые позволяют управлять карт сегментов. (Например, в разделе [Добавление сегментов, с помощью средств эластичной базы данных](sql-database-elastic-scale-add-a-shard.md) и [управляемой данными маршрутизацией](sql-database-elastic-scale-data-dependent-routing.md)) пользователя hello клиентской библиотеки гибкого масштабирования hello создает hello SQL пользователей и имена входа SQL и гарантирует, что каждый предоставлено hello разрешения чтения и записи на глобальные сегментов hello сопоставление базы данных и все базы данных для сегмента также. Эти учетные данные, используется toomaintain карты глобального сегментов hello и hello локального сегментов карты при выполнении изменения карты сегментов toohello. Например, использовать hello управления учетными данными toocreate hello сегментов карты объект диспетчера (с помощью [ **GetSqlShardMapManager**](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.getsqlshardmapmanager.aspx): 
 
     // Obtain a shard map manager. 
     ShardMapManager shardMapManager = ShardMapManagerFactory.GetSqlShardMapManager( 
@@ -39,14 +39,14 @@ ms.lasthandoff: 07/11/2017
             ShardMapManagerLoadPolicy.Lazy 
     ); 
 
-Переменная **smmAdminConnectionString** — это строка подключения с учетными данными управления. Идентификатор пользователя и пароль предоставляют доступ на чтение и запись как к базе данных сопоставления сегментов, так и к отдельным сегментам. Строка подключения для управления также содержит имя сервера и имя базы данных для идентификации базы данных глобальной карты сегментов. Вот типичная строка подключения, используемая в таком случае:
+переменная приветствия **smmAdminConnectionString** представляет собой строку соединения, который содержит учетные данные управления hello. Hello идентификатор пользователя и пароль обеспечивает чтение и запись tooboth сегментов карты базы данных access и отдельные сегменты. Строка соединения управления Hello также включает hello имя и базы данных имя tooidentify hello глобального сегментов карты базы данных сервера. Вот типичная строка подключения, используемая в таком случае:
 
      "Server=<yourserver>.database.windows.net;Database=<yourdatabase>;User ID=<yourmgmtusername>;Password=<yourmgmtpassword>;Trusted_Connection=False;Encrypt=True;Connection Timeout=30;” 
 
-Не используйте значения в виде «username@server» — вместо этого используйте значение «username».  Это обусловлено тем, что учетные данные должны действовать для базы данных диспетчера карт сегментов и отдельных сегментов, которые могут находиться на разных серверах.
+Не следует использовать значения в форме hello «username@server» — вместо этого используйте значение «username» hello.  Это так, как учетные данные должны работать от базы данных диспетчера карты сегментов hello и отдельные сегменты, которые могут находиться на разных серверах.
 
 ## <a name="access-credentials"></a>Учетные данные для доступа
-При создании диспетчера карт сегментов в приложении, которое не администрирует эти карты сегментов, используйте учетные данные, дающие разрешения только на чтение глобальной карты сегментов. Данные, полученные из глобальной карты сегментов под этими учетными данными, используются для [зависящей от данных маршрутизации](sql-database-elastic-scale-data-dependent-routing.md) и для заполнения кэша карт сегментов на клиенте. Учетные данные передаются через тот же шаблон вызова **GetSqlShardMapManager** , как показано выше: 
+При создании диспетчера карты сегментов в приложении, которое нельзя управлять карт сегментов, используйте учетные данные, имеющие разрешения только для чтения на карте сегментов глобального hello. Hello информации, полученной от карты глобального сегментов hello в эти учетные данные используются для [маршрутизации в зависимости от данных](sql-database-elastic-scale-data-dependent-routing.md) и toopopulate hello сегментов сопоставить кэш на клиенте hello. Hello учетные данные предоставляются через hello же call шаблон слишком**GetSqlShardMapManager** как показано выше: 
 
     // Obtain shard map manager. 
     ShardMapManager shardMapManager = ShardMapManagerFactory.GetSqlShardMapManager( 
@@ -54,21 +54,21 @@ ms.lasthandoff: 07/11/2017
             ShardMapManagerLoadPolicy.Lazy
     );  
 
-Обратите внимание на использование **smmReadOnlyConnectionString**. Для такого доступа применяются другие учетные данные от имени пользователей, **не являющихся администраторами**. Эти учетные данные не должны давать разрешения на запись в глобальную карту сегментов. 
+Обратите внимание на использование hello hello **smmReadOnlyConnectionString** tooreflect hello использования разных учетных данных для такой доступ от имени **без прав администратора** пользователей: эти учетные данные не нужно обеспечивать записи разрешения на карте сегментов глобального hello. 
 
 ## <a name="connection-credentials"></a>Учетные данные подключения
-При использовании метода [**OpenConnectionForKey**](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap.openconnectionforkey.aspx) для доступа к сегменту, связанному с ключом сегментирования, необходимы дополнительные учетные данные. Эти учетные данные должны предоставлять разрешения на доступ только для чтения к таблицам локальных карт сегментов, размещенным в сегменте. Это необходимо для выполнения проверки подключения для маршрутизации на основе данных в сегменте. Этот фрагмент кода разрешает доступ к данным в контексте зависящей от данных маршрутизации. 
+Дополнительные учетные данные необходимы при использовании hello [ **OpenConnectionForKey** ](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap.openconnectionforkey.aspx) tooaccess метод сегментов, связанное с ключом сегментирования. Эти учетные данные должны tooprovide разрешения для доступа только для чтения toohello локального сегментов карты таблиц на сегментов hello. Это необходимые tooperform проверки подключения для маршрутизации в зависимости от данных на hello сегментов. Этот фрагмент кода разрешает доступ к данным в контексте hello управляемой данными маршрутизацией: 
 
     using (SqlConnection conn = rangeMap.OpenConnectionForKey<int>( 
     targetWarehouse, smmUserConnectionString, ConnectionOptions.Validate)) 
 
-В этом примере **smmUserConnectionString** содержит строку подключения для учетных данных пользователя. В базах данных SQL Azure обычно используется такая строка подключения для учетных данных пользователя: 
+В этом примере **smmUserConnectionString** содержит hello строку подключения для hello учетные данные пользователя. В базах данных SQL Azure обычно используется такая строка подключения для учетных данных пользователя: 
 
     "User ID=<yourusername>; Password=<youruserpassword>; Trusted_Connection=False; Encrypt=True; Connection Timeout=30;”  
 
-С помощью учетных данных администратора, значения не в виде «username@server». Вместо этого используйте просто «имя_пользователя@сервер».  Кроме того, обратите внимание, что строка подключения не содержит имя сервера и имя базы данных. Их нет, потому что вызов **OpenConnectionForKey** автоматически перенаправит подключение в нужный сегмент на основе ключа. Таким образом, имя сервера и имя базы данных не указываются. 
+С помощью учетных данных администратора hello значений не в виде hello «username@server». Вместо этого используйте просто «имя_пользователя@сервер».  Также Обратите внимание, что hello строка подключения не содержит имя сервера и имя базы данных. Причина этого заключается в hello **OpenConnectionForKey** вызова автоматически перенаправит hello подключения toohello правильный сегментов на основе hello ключа. Таким образом, имя базы данных hello и имя сервера не указаны. 
 
-## <a name="see-also"></a>Дополнительные материалы
+## <a name="see-also"></a>См. также
 [Управление базами данных и именами входа в Базе данных SQL Azure](sql-database-manage-logins.md)
 
 [Защита Базы данных SQL](sql-database-security-overview.md)

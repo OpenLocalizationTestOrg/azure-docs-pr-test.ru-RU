@@ -1,6 +1,6 @@
 ---
-title: "Планирование заданий с помощью Центра Интернета вещей Azure (Node) | Документация Майкрософт"
-description: "Планирование заданий с помощью Центра Интернета вещей Azure для вызова прямого метода на нескольких устройствах. Используйте пакеты SDK для Центра Интернета вещей Azure для Node.js, чтобы реализовать приложения имитации устройства и приложение службы, на которых будет выполнено задание."
+title: "aaaSchedule заданий с центром IoT Azure (узел) | Документы Microsoft"
+description: "Как tooschedule центр IoT Azure заданий tooinvoke прямой метод на нескольких устройствах. Использовать hello Azure IoT пакетов SDK для Node.js tooimplement hello имитируемые приложения для устройств и задание службы toorun приложения hello."
 services: iot-hub
 documentationcenter: .net
 author: juanjperez
@@ -14,43 +14,43 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/30/2016
 ms.author: juanpere
-ms.openlocfilehash: 42e594dc6a8a8be619b5652bf8e44cf883650489
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: be293362447fbcddaa3433b66f208f22545fe0c2
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="schedule-and-broadcast-jobs-node"></a>Планирование и трансляция заданий (Node)
 
 [!INCLUDE [iot-hub-selector-schedule-jobs](../../includes/iot-hub-selector-schedule-jobs.md)]
 
-Центр Интернета вещей Azure — это полностью управляемая служба, которая позволяет внутреннему приложению создавать и отслеживать задания, осуществляющие планирование и обновление миллионов устройств.  Задания можно использовать для следующих действий:
+Центр IoT Azure является полностью управляемой службы, которая позволяет toocreate серверной части приложения и задания отслеживания, планировать и обновлять миллионов устройств.  Задания можно использовать для hello, следующие действия:
 
 * Обновление требуемых свойств
 * Обновление тегов
 * Вызов прямых методов
 
-По сути, задание включает одно из этих действий, отслеживая ход его выполнения на наборе устройств (определяется запросом двойника устройства).  Например, с помощью задания внутреннее приложение может вызывать метод перезагрузки на 10 000 устройств, определенных запросом двойника устройства и запланированных в будущем.  Затем это приложение может отследить ход выполнения задания по мере получения и выполнения метода Reboot на каждом из этих устройств.
+По существу задание включает один из этих действий и отслеживает hello ход выполнения для набора устройств, в которой определяется запросом двойных устройства.  Например приложение серверной части можно использовать tooinvoke задания метод перезагрузки на 10 000 устройств, указанных запросом двойных устройства и по расписанию время в будущем.  Это приложение можно отслеживать ход выполнения, как каждая из этих устройств получают hello перезагрузки метод execute.
 
 Дополнительные сведения о каждой из этих возможностей см. в следующих статьях:
 
-* Двойники устройств и свойства: [Приступая к работе с двойниками устройств (предварительная версия)][lnk-get-started-twin] и [Руководство. Настройка устройств с помощью требуемых свойств (предварительная версия)][lnk-twin-props].
+* Двойных устройства и свойства: [Приступая к работе с устройством близнецы] [ lnk-get-started-twin] и [учебника: как свойства двойных toouse устройства][lnk-twin-props]
 * Прямые методы: [Вызов прямого метода на устройстве (предварительная версия)][lnk-dev-methods] и [Руководство. Использование прямых методов][lnk-c2d-methods].
 
 В этом учебнике описаны следующие процедуры.
 
-* Создание приложения имитации устройства с прямым методом, который позволяет выполнить действие **lockDoor** путем вызова из серверной части решения.
-* Создание консольного приложения Node.js, которое с помощью задания вызывает в приложении имитации устройства прямой метод **lockDoor** и обновляет требуемые свойства с помощью задания устройства.
+* Создать приложение имитированное устройство, которое имеет прямой метод, который позволяет **lockDoor** которого может быть вызван hello решения серверной части.
+* Создайте консольное приложение Node.js, hello вызовов **lockDoor** прямой метод в приложение hello имитированное устройство с помощью задания и обновления hello требуемого свойства с помощью задания устройства.
 
-По завершении работы с этим руководством у вас будет два консольных приложения Node.js:
+В конце этого учебника hello у вас есть два Node.js консольные приложения:
 
-**simDevice.js**, которое подключается к Центру Интернета вещей с удостоверением устройства и получает прямой метод **lockDoor**.
+**simDevice.js**, который соединяет центр IoT tooyour с hello удостоверения устройства и получает **lockDoor** прямой метод.
 
-**scheduleJobService.js**, которое вызывает прямой метод в приложении для имитации устройства и обновляет требуемые свойства двойника устройства с помощью задания.
+**scheduleJobService.js**, которого вызывает метод с прямой hello имитированное устройство приложения и обновления hello устройства в двойных нужными свойствами при помощи задания.
 
-Для работы с этим учебником требуется:
+toocomplete этого учебника требуется hello следующие:
 
-* Node.js версии 0.12.x или более поздней. <br/>  В статье [Prepare your development environment][lnk-dev-setup] (Подготовка среды разработки) описывается, как установить Node.js для работы с этим учебником в ОС Windows или Linux.
+* Node.js версии 0.12.x или более поздней. <br/>  [Подготовка среды разработки] [ lnk-dev-setup] описывает способ tooinstall Node.js для этого учебника в Windows или Linux.
 * Активная учетная запись Azure. Если ее нет, можно создать [бесплатную учетную запись][lnk-free-trial] всего за несколько минут.
 
 [!INCLUDE [iot-hub-get-started-create-hub](../../includes/iot-hub-get-started-create-hub.md)]
@@ -58,20 +58,20 @@ ms.lasthandoff: 08/03/2017
 [!INCLUDE [iot-hub-get-started-create-device-identity](../../includes/iot-hub-get-started-create-device-identity.md)]
 
 ## <a name="create-a-simulated-device-app"></a>Создание приложения виртуального устройства
-В этом разделе вы создадите консольное приложение Node.js, которое отвечает на прямой метод, вызываемый из облака. Этот метод запускает перезагрузку имитации устройства и использует сообщаемые свойства для определения устройств и времени их последней перезагрузки в запросах двойников устройства.
+В этом разделе создайте консольное приложение Node.js, которое отвечает tooa прямой метод, вызываемый hello облака, активизирующий перезагрузка имитации устройства и использует hello выводятся свойства tooenable устройствами двойных запросы tooidentify устройства и когда они последней перезагрузки.
 
-1. Создайте пустую папку с именем **simDevice**.  В папке **simDevice** создайте файл package.json, используя следующую команду в командной строке.  Примите значения по умолчанию:
+1. Создайте пустую папку с именем **simDevice**.  В hello **simDevice** папки, создайте файл package.json, используя следующую команду в командной строке hello.  Примите все значения по умолчанию hello:
    
     ```
     npm init
     ```
-2. В командной строке в папке **simDevice** выполните следующую команду, чтобы установить пакет SDK для устройств **azure-iot-device** и пакет **azure-iot-device-mqtt**.
+2. В командной строке в hello **simDevice** папку, следующая команда tooinstall hello hello **azure iot устройства** пакета SDK для устройства и **azure iot устройства mqtt** пакет:
    
     ```
     npm install azure-iot-device azure-iot-device-mqtt --save
     ```
-3. В текстовом редакторе создайте файл **simDevice.js** в папке **simDevice**.
-4. Добавьте следующие инструкции require в начало файла **simDevice.js**:
+3. В текстовом редакторе создайте новый **simDevice.js** файла в hello **simDevice** папки.
+4. Добавьте следующие hello «требовать» операторы в начале hello hello **simDevice.js** файла:
    
     ```
     'use strict';
@@ -79,63 +79,63 @@ ms.lasthandoff: 08/03/2017
     var Client = require('azure-iot-device').Client;
     var Protocol = require('azure-iot-device-mqtt').Mqtt;
     ```
-5. Добавьте переменную **connectionString**, чтобы создать с ее помощью экземпляр **клиента**.  
+5. Добавить **connectionString** переменной и использовать его toocreate **клиента** экземпляра.  
    
     ```
     var connectionString = 'HostName={youriothostname};DeviceId={yourdeviceid};SharedAccessKey={yourdevicekey}';
     var client = Client.fromConnectionString(connectionString, Protocol);
     ```
-6. Добавьте следующую функцию для обработки метода **lockDoor**.
+6. Добавить следующие функции hello toohandle hello **lockDoor** метод.
    
     ```
     var onLockDoor = function(request, response) {
    
-        // Respond the cloud app for the direct method
+        // Respond hello cloud app for hello direct method
         response.send(200, function(err) {
             if (!err) {
                 console.error('An error occured when sending a method response:\n' + err.toString());
             } else {
-                console.log('Response to method \'' + request.methodName + '\' sent successfully.');
+                console.log('Response toomethod \'' + request.methodName + '\' sent successfully.');
             }
         });
    
         console.log('Locking Door!');
     };
     ```
-7. Добавьте следующий код для регистрации обработчика для метода **lockDoor**.
+7. Добавьте следующий код обработчика hello tooregister для hello hello **lockDoor** метод.
    
     ```
     client.open(function(err) {
         if (err) {
-            console.error('Could not connect to IotHub client.');
+            console.error('Could not connect tooIotHub client.');
         }  else {
-            console.log('Client connected to IoT Hub. Register handler for lockDoor direct method.');
+            console.log('Client connected tooIoT Hub. Register handler for lockDoor direct method.');
             client.onDeviceMethod('lockDoor', onLockDoor);
         }
     });
     ```
-8. Сохраните и закройте файл **simDevice.js**.
+8. Сохраните и закройте hello **simDevice.js** файла.
 
 > [!NOTE]
-> Для простоты в этом руководстве не реализуются политики повтора. В рабочем коде следует реализовать политики повторных попыток (например, с экспоненциальной задержкой), как указано в статье [Обработка временного сбоя][lnk-transient-faults] на сайте MSDN.
+> простые действия tookeep, этот учебник не реализует никакую политику повтора. В рабочем коде следует реализовать политики повтора (например экспоненциальную отсрочку), описанным в статье MSDN hello [обработка временных сбоев][lnk-transient-faults].
 > 
 > 
 
 ## <a name="schedule-jobs-for-calling-a-direct-method-and-updating-a-device-twins-properties"></a>Планирование заданий для вызова прямого метода и обновления свойств двойника устройства
-В этом разделе создается консольное приложение Node.js, которое инициирует удаленное действие **lockDoor** на устройстве с помощью прямого метода и обновляет свойства двойника устройства.
+В этом разделе создайте консольное приложение Node.js, который инициирует удаленный **lockDoor** на устройстве с помощью прямой метод и обновление hello устройства двойных его свойств.
 
-1. Создайте пустую папку с именем **scheduleJobService**.  В папке **scheduleJobService** создайте файл package.json, используя следующую команду в командной строке.  Примите значения по умолчанию:
+1. Создайте пустую папку с именем **scheduleJobService**.  В hello **scheduleJobService** папки, создайте файл package.json, используя следующую команду в командной строке hello.  Примите все значения по умолчанию hello:
    
     ```
     npm init
     ```
-2. В командной строке в папке **scheduleJobService** выполните следующую команду, чтобы установить пакет SDK для устройств **azure-iothub** и пакет **azure-iot-device-mqtt**.
+2. В командной строке в hello **scheduleJobService** папку, следующая команда tooinstall hello hello **центром IOT azure** пакета SDK для устройства и **azure-iot устройства mqtt**пакета:
    
     ```
     npm install azure-iothub uuid --save
     ```
-3. В текстовом редакторе создайте файл **scheduleJobService.js** в папке **scheduleJobService**.
-4. Добавьте следующие инструкции require в начале файла **dmpatterns_gscheduleJobServiceetstarted_service.js**:
+3. В текстовом редакторе создайте новый **scheduleJobService.js** файла в hello **scheduleJobService** папки.
+4. Добавьте следующие hello «требовать» операторы в начале hello hello **dmpatterns_gscheduleJobServiceetstarted_service.js** файла:
    
     ```
     'use strict';
@@ -143,7 +143,7 @@ ms.lasthandoff: 08/03/2017
     var uuid = require('uuid');
     var JobClient = require('azure-iothub').JobClient;
     ```
-5. Добавьте следующие объявления переменных и замените значения заполнителей:
+5. Добавьте следующие объявления переменных hello и замените значения заполнителей hello.
    
     ```
     var connectionString = '{iothubconnectionstring}';
@@ -152,7 +152,7 @@ ms.lasthandoff: 08/03/2017
     var maxExecutionTimeInSeconds =  3600;
     var jobClient = JobClient.fromConnectionString(connectionString);
     ```
-6. Добавьте следующую функцию, которая будет использоваться для отслеживания процесса выполнения задания:
+6. Добавьте следующие функции, которая будет использоваться toomonitor hello выполнение задания hello hello:
    
     ```
     function monitorJob (jobId, callback) {
@@ -171,13 +171,13 @@ ms.lasthandoff: 08/03/2017
         }, 5000);
     }
     ```
-7. Добавьте следующий код, чтобы запланировать задание, которое вызывает метод устройства:
+7. Добавьте следующие задания hello tooschedule код, вызывающий метод устройства hello hello:
    
     ```
     var methodParams = {
         methodName: 'lockDoor',
         payload: null,
-        responseTimeoutInSeconds: 15 // Timeout after 15 seconds if device is unable to process method
+        responseTimeoutInSeconds: 15 // Timeout after 15 seconds if device is unable tooprocess method
     };
    
     var methodJobId = uuid.v4();
@@ -201,7 +201,7 @@ ms.lasthandoff: 08/03/2017
         }
     });
     ```
-8. Добавьте следующий код, чтобы запланировать задание, которое обновляет двойник устройства:
+8. Добавьте следующий код tooschedule hello задания tooupdate hello устройства двойных hello:
    
     ```
     var twinPatch = {
@@ -234,31 +234,31 @@ ms.lasthandoff: 08/03/2017
         }
     });
     ```
-9. Сохраните и закройте файл **scheduleJobService.js**.
+9. Сохраните и закройте hello **scheduleJobService.js** файла.
 
-## <a name="run-the-applications"></a>Запуск приложений
-Теперь все готово к запуску приложений.
+## <a name="run-hello-applications"></a>Запускать приложения hello
+Теперь вы находитесь toorun готовности приложения hello.
 
-1. В командной строке в папке **simDevice** выполните следующую команду, чтобы начать прослушивание прямого метода перезагрузки:
+1. В командной строке hello в hello **simDevice** папки, запустите следующие команды toobegin прослушивание прямой метод перезагрузки hello hello.
    
     ```
     node simDevice.js
     ```
-2. В командной строке в папке **scheduleJobService** выполните следующую команду, чтобы активировать задачи для блокировки дверей и обновления двойника.
+2. В командной строке hello в hello **scheduleJobService** папку, следующая команда tootrigger hello задания toolock hello дверцы и обновление hello двойных hello
    
     ```
     node scheduleJobService.js
     ```
-3. В консоли отобразится ответ устройства на прямой метод.
+3. Появиться hello устройства toohello прямой метод ответа в консоли hello.
 
 ## <a name="next-steps"></a>Дальнейшие действия
-В этом учебнике описано использование задания для планирования прямого метода на устройстве и обновления свойств двойника устройства.
+В этом учебнике используется задание tooschedule прямой метод tooa устройства и hello обновление свойств устройства двойных hello.
 
-Чтобы продолжить знакомство с Центром Интернета вещей и шаблонами управления устройствами, такими как удаленное обновление встроенного ПО, см. следующие материалы:
+Приступая к работе с центр IoT и шаблонов управления устройства, такие как удаленное через обновление встроенного по воздуху hello, toocontinue см.:
 
-[Учебник. Обновление встроенного ПО][lnk-fwupdate]
+[Учебник: Как toodo встроенное по обновить][lnk-fwupdate]
 
-Чтобы продолжить знакомство с Центром Интернета вещей, см. сведения в статье [Приступая к работе с архитектурой Edge Интернета вещей в Linux][lnk-iot-edge].
+Приступая к работе с центром IoT toocontinue в разделе [Приступая к работе с Azure IoT Edge][lnk-iot-edge].
 
 [lnk-get-started-twin]: iot-hub-node-node-twin-getstarted.md
 [lnk-twin-props]: iot-hub-node-node-twin-how-to-configure.md

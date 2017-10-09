@@ -1,5 +1,5 @@
 ---
-title: "Агрегирование событий Azure Service Fabric c помощью EventFlow | Документы Майкрософт"
+title: "Статистическая обработка событий Service Fabric с EventFlow aaaAzure | Документы Microsoft"
 description: "Ознакомьтесь со сведениями об агрегировании и сборе событий с использованием EventFlow для мониторинга и диагностики кластеров Azure Service Fabric."
 services: service-fabric
 documentationcenter: .net
@@ -14,37 +14,37 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/30/2017
 ms.author: dekapur
-ms.openlocfilehash: 90d26a77b749e70de3a7d910f15820653e2ef39b
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: c0141d3ed72d835139250af3589e298fd22d8f89
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="event-aggregation-and-collection-using-eventflow"></a>Агрегирование и сбор событий с помощью EventFlow
 
-[EventFlow службы диагностики Microsoft](https://github.com/Azure/diagnostics-eventflow) позволяет направлять события от узла к одному или нескольким целевым объектам для мониторинга. Так как это решение включается в проект службы как пакет NuGet, код и конфигурация EventFlow перемещаются вместе со службой, устраняя необходимость отдельной настройки каждого узла для системы диагностики Azure, которую мы обсуждали выше. EventFlow выполняется внутри процесса службы и напрямую подключается к настроенным потокам вывода. Прямое подключение позволяет использовать EventFlow для служб, развернутых в Azure, с помощью контейнера или в локальной среде. Соблюдайте осторожность при выполнении EventFlow в сценариях с высокой плотностью, например в контейнере, так как каждый конвейер EventFlow создает внешнее соединение. Если вы разместите несколько процессов, то получите несколько исходящих подключений. Об этом можно не беспокоиться при использовании приложений Service Fabric, так как все реплики `ServiceType` выполняются в одном процессе, что ограничивает число исходящих подключений. EventFlow также поддерживает фильтрацию событий, то есть позволяет отправлять только события, соответствующие указанному фильтру.
+[EventFlow диагностики Microsoft](https://github.com/Azure/diagnostics-eventflow) может направлять события tooone узел или несколько назначений мониторинга. Так как он включен в виде пакета NuGet в проекте службы, EventFlow код и конфигурация перемещаются вместе hello службы, что исключает проблемы с конфигурацией отдельным узлам hello сказано о службе диагностики Azure. EventFlow выполняется внутри одного процесса службы и выходы настроены toohello подключается напрямую. Из-за прямого подключения hello EventFlow работает в Azure, контейнер и развертывания службы в локальной среде. Соблюдайте осторожность при выполнении EventFlow в сценариях с высокой плотностью, например в контейнере, так как каждый конвейер EventFlow создает внешнее соединение. Если вы разместите несколько процессов, то получите несколько исходящих подключений. Это не столько значения для приложения Service Fabric, так как все реплики `ServiceType` запуска в hello же процесс, а это ограничивает hello число исходящих подключений. EventFlow также предлагает фильтрацию событий, так что отправляются только события hello, которые соответствуют заданному фильтру hello.
 
 ## <a name="setting-up-eventflow"></a>Настройка EventFlow
 
-Двоичные файлы EventFlow предоставляются как набор пакетов NuGet. Чтобы добавить библиотеку EventFlow в проект службы Service Fabric, щелкните его правой кнопкой мыши в обозревателе решений и выберите "Управление пакетами NuGet". Перейдите на вкладку "Обзор" и найдите `Diagnostics.EventFlow`.
+Двоичные файлы EventFlow предоставляются как набор пакетов NuGet. tooadd EventFlow проект службы tooa Service Fabric, щелкните правой кнопкой мыши проект hello в hello обозреватель решений и выберите «Управление NuGet пакетов». Перейдите на вкладку toohello «Просмотр» и выполните поиск «`Diagnostics.EventFlow`»:
 
 ![Пакеты NuGet EventFlow в диспетчере пакетов NuGet Visual Studio](./media/service-fabric-diagnostics-event-aggregation-eventflow/eventflow-nuget.png)
 
-Появится список различных пакетов, которые помечены как "Входные данные" и "Выходные данные". EventFlow поддерживает различные регистраторы и анализаторы журналов. Служба, в которой размещается EventFlow, должна содержать соответствующие пакеты в зависимости от источника и назначения журналов приложений. Помимо основного пакета ServiceFabric, также требуется настроить по крайней мере один ввод и один вывод. Например, можно добавить следующие пакеты для отправки событий EventSource в Application Insights:
+Появится список различных пакетов, которые помечены как "Входные данные" и "Выходные данные". EventFlow поддерживает различные регистраторы и анализаторы журналов. EventFlow, где размещается служба Hello должна включать соответствующие пакеты, в зависимости от hello источника и назначения для журналов приложения hello. В дополнение к этому toohello ServiceFabric базовый пакет, также потребуется по крайней мере один вход и выход, которые настроены. В примере можно добавить следующие пакеты toosent EventSource события tooApplication аналитики hello:
 
-* `Microsoft.Diagnostics.EventFlow.Input.EventSource` для сбора данных из класса EventSource службы и стандартных классов EventSource, например *Microsoft-ServiceFabric-Services* и *Microsoft-ServiceFabric-Actors*
-* `Microsoft.Diagnostics.EventFlow.Output.ApplicationInsights` (мы собираемся отправлять журналы в ресурс Azure Application Insights)
-* `Microsoft.Diagnostics.EventFlow.ServiceFabric` (позволяет инициализировать конвейер EventFlow из конфигурации службы Service Fabric и сообщать о всех проблемах отправки диагностических данных в виде отчетов о работоспособности Service Fabric)
+* `Microsoft.Diagnostics.EventFlow.Input.EventSource`toocapture данных из класса EventSource hello службы и из стандартной EventSources, такие как *Майкрософт ServiceFabric* и *Microsoft ServiceFabric субъекты*)
+* `Microsoft.Diagnostics.EventFlow.Output.ApplicationInsights`(мы будем toosend hello журналы tooan Azure Application Insights ресурсов)
+* `Microsoft.Diagnostics.EventFlow.ServiceFabric`(включает инициализацию конвейера EventFlow hello из конфигурации службы Service Fabric и сообщает обо всех проблемах с Отправка диагностических данных в виде отчетов о работоспособности Service Fabric)
 
 >[!NOTE]
->Для пакета `Microsoft.Diagnostics.EventFlow.Input.EventSource` требуется, чтобы в проекте службы использовалась платформа .NET Framework 4.6 или более поздняя версия. Обязательно задайте соответствующую целевую платформу в свойствах проекта, прежде чем устанавливать этот пакет.
+>`Microsoft.Diagnostics.EventFlow.Input.EventSource`пакет требует tootarget проекта hello службы .NET Framework 4.6 или более поздней версии. Убедитесь, что значение hello соответствующие требуемой версии .NET framework в свойствах проекта перед установкой данного пакета.
 
-После установки всех пакетов следующим шагом является настройка и включение EventFlow в службе.
+После того как все hello пакеты установлены, hello следующим шагом является tooconfigure и включите EventFlow hello службы.
 
 ## <a name="configuring-and-enabling-log-collection"></a>Настройка и включение сбора журналов
-Конвейер EventFlow, отвечающий за отправку журналов, создается на основе спецификации, хранящейся в файле конфигурации. Пакет `Microsoft.Diagnostics.EventFlow.ServiceFabric` устанавливает начальный файл конфигурации EventFlow в паку решения `PackageRoot\Config` с именем `eventFlowConfig.json`. Этот файл конфигурации нужно изменить, чтобы собирать данные из класса `EventSource` службы по умолчанию, а также другие входные данные, которые вы хотите настроить, и отправлять их в соответствующее место.
+конвейер EventFlow Hello, отвечающего за отправку журналов hello создается на основе спецификации, хранящейся в файле конфигурации. Hello `Microsoft.Diagnostics.EventFlow.ServiceFabric` пакет устанавливает файл начальной конфигурации EventFlow под `PackageRoot\Config` папку решения, с именем `eventFlowConfig.json`. Этот файл конфигурации требует изменения toobe toocapture данные от служб по умолчанию hello `EventSource` класс и любые другие входные данные должны tooconfigure и отправки данных toohello соответствующее место.
 
-Вот пример файла *eventFlowConfig.json* на основе упомянутых выше пакетов NuGet:
+Ниже приведен пример *eventFlowConfig.json* зависимости пакетов NuGet hello, упомянутых выше:
 ```json
 {
   "inputs": [
@@ -53,7 +53,7 @@ ms.lasthandoff: 07/11/2017
       "sources": [
         { "providerName": "Microsoft-ServiceFabric-Services" },
         { "providerName": "Microsoft-ServiceFabric-Actors" },
-        // (replace the following value with your service's ServiceEventSource name)
+        // (replace hello following value with your service's ServiceEventSource name)
         { "providerName": "your-service-EventSource-name" }
       ]
     }
@@ -67,7 +67,7 @@ ms.lasthandoff: 07/11/2017
   "outputs": [
     {
       "type": "ApplicationInsights",
-      // (replace the following value with your AI resource's instrumentation key)
+      // (replace hello following value with your AI resource's instrumentation key)
       "instrumentationKey": "00000000-0000-0000-0000-000000000000"
     }
   ],
@@ -75,7 +75,7 @@ ms.lasthandoff: 07/11/2017
 }
 ```
 
-Имя ServiceEventSource службы — это значение свойства Name в `EventSourceAttribute`, которое применяется к классу ServiceEventSource. Все это указывается в файле `ServiceEventSource.cs`, который является частью кода службы. Например, в приведенном ниже фрагменте кода именем ServiceEventSource является *MyCompany Application1-Stateless1*.
+Hello ServiceEventSource службы называется hello значение свойства Name hello hello `EventSourceAttribute` применения toohello ServiceEventSource класса. Он будет указан в hello `ServiceEventSource.cs` файл, который является частью службы кода hello. Например, в hello следующий код фрагмент кода hello hello ServiceEventSource имеет имя *MyCompany Application1-Stateless1*:
 
 ```csharp
 [EventSource(Name = "MyCompany-Application1-Stateless1")]
@@ -85,11 +85,11 @@ internal sealed class ServiceEventSource : EventSource
 }
 ```
 
-Обратите внимание, что файл `eventFlowConfig.json` входит в пакет конфигурации службы. Изменения в этот файл могут вноситься только полными обновлениями или обновлениями конфигурации службы, которые проходят проверку работоспособности обновлений Service Fabric и автоматически откатываются в случае сбоя. Дополнительные сведения см. в разделе [Обновление приложения Service Fabric](service-fabric-application-upgrade.md).
+Обратите внимание, что файл `eventFlowConfig.json` входит в пакет конфигурации службы. Файл toothis изменения могут быть включены в full или конфигурации — только для обновления службы hello, тема tooService обновление проверки работоспособности и автоматического отката при наличии сбоя обновления. Дополнительные сведения см. в разделе [Обновление приложения Service Fabric](service-fabric-application-upgrade.md).
 
-Раздел *filters* конфигурации позволяет произвести дополнительную настройку данных, которые будут передаваться по конвейеру EventFlow на вывод, включив или исключив определенную информацию либо изменив структуру данных событий. Дополнительные сведения о фильтрации см. в разделе [Фильтры EventFlow](https://github.com/Azure/diagnostics-eventflow#filters).
+Hello *фильтры* раздел конфигурации hello позволяет toofurther собственные данные hello, toogo переход через hello EventFlow конвейера toohello выходов, позволяя toodrop включать определенные данные или изменить hello Структура данных о событиях hello. Дополнительные сведения о фильтрации см. в разделе [Фильтры EventFlow](https://github.com/Azure/diagnostics-eventflow#filters).
 
-Завершающим шагом является создание экземпляра конвейера EventFlow в коде запуска службы, расположенном в файле `Program.cs`.
+Последний шаг Hello — tooinstantiate EventFlow конвейера в код запуска службы, расположенных в `Program.cs` файла:
 
 ```csharp
 using System;
@@ -106,7 +106,7 @@ namespace Stateless1
     internal static class Program
     {
         /// <summary>
-        /// This is the entry point of the service host process.
+        /// This is hello entry point of hello service host process.
         /// </summary>
         private static void Main()
         {
@@ -134,21 +134,21 @@ namespace Stateless1
 }
 ```
 
-Имя, переданное в качестве параметра в метод `CreatePipeline` класса `ServiceFabricDiagnosticsPipelineFactory`, — это имя *сущности работоспособности*, представляющей конвейер EventFlow для сбора журналов. Это имя используется в том случае, если EventFlow обнаруживает ошибку и сообщает о ней через подсистему работоспособности Service Fabric.
+Имя Hello передается как параметр hello hello `CreatePipeline` метод hello `ServiceFabricDiagnosticsPipelineFactory` — имя hello hello *сущности работоспособности* представляющий hello EventFlow журнала коллекции конвейера. Это имя используется в том случае, если обнаруживает EventFlow и ошибок и сообщает об этом через hello подсистемы работоспособности Service Fabric.
 
-### <a name="using-service-fabric-settings-and-application-parameters-to-in-eventflowconfig"></a>Использование параметров Service Fabric и параметров приложений в eventFlowConfig
+### <a name="using-service-fabric-settings-and-application-parameters-tooin-eventflowconfig"></a>С помощью настройки структуры службы и eventFlowConfig tooin параметров приложения
 
-EventFlow поддерживает использование параметров Service Fabric и параметров приложений для настройки параметров EventFlow. На параметры Service Fabric можно ссылаться с помощью специального синтаксиса для значений:
+EventFlow поддерживает, с помощью Service Fabric и неверные параметры tooconfigure EventFlow параметры приложений. Можно ссылаться с помощью этого синтаксиса для значений структуры параметров tooService:
 
 ```json
 servicefabric:/<section-name>/<setting-name>
 ``` 
 
-`<section-name>` — это имя раздела конфигурации Service Fabric, а `<setting-name>` — это параметр конфигурации, предоставляющий значение, которое будет использоваться для настройки параметра EventFlow. Дополнительные сведения см. в статье [Поддержка параметров Service Fabric и параметров приложений](https://github.com/Azure/diagnostics-eventflow#support-for-service-fabric-settings-and-application-parameters).
+`<section-name>`— Имя hello hello Service Fabric раздел конфигурации, и `<setting-name>` Установка конфигурации hello, предоставляя hello значение, которое будет использоваться tooconfigure EventFlow параметр. Дополнительные сведения о том, как tooread toodo, перейдите слишком[поддержку настройки структуры службы и параметры приложения](https://github.com/Azure/diagnostics-eventflow#support-for-service-fabric-settings-and-application-parameters).
 
 ## <a name="verification"></a>Проверка
 
-Запустите службу и просмотрите окно выходных данных отладки в Visual Studio. После запуска службы вы должны увидеть подтверждение того, что она отправляет записи в настроенное расположение вывода. Перейдите в платформу анализа и визуализации событий и убедитесь в том, что журналы начали отображаться (это может занять несколько минут).
+Запустите службу и понаблюдайте за hello отладки окна вывода в Visual Studio. После запуска службы hello должна появиться свидетельство, которое отправляет службе записи toohello выходных данных, который вы настроили. Перейдите событие tooyour анализа и визуализации платформы и убедитесь, что журналы запустили tooshow вверх (может потребоваться несколько минут).
 
 ## <a name="next-steps"></a>Дальнейшие действия
 

@@ -1,6 +1,6 @@
 ---
-title: "Внедрение отчета в Azure Power BI Embedded | Документация Майкрософт"
-description: "Узнайте, как внедрить отчет Azure Power BI Embedded в приложение."
+title: "aaaEmbed отчета в Azure Power BI Embedded | Документы Microsoft"
+description: "Узнайте, как tooembed к отчету, находящемуся в Power BI Embedded в приложение."
 services: power-bi-embedded
 documentationcenter: 
 author: guyinacube
@@ -15,31 +15,31 @@ ms.tgt_pltfrm: NA
 ms.workload: powerbi
 ms.date: 03/11/2017
 ms.author: asaxton
-ms.openlocfilehash: 3d865af2418c9c557c861a379766a125d75cebf1
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: f25344bbd0b9c092ef19da04d0b455d453b426a4
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="embed-a-report-in-power-bi-embedded"></a>Внедрение отчета в Power BI Embedded
 
-Узнайте, как внедрить отчет Azure Power BI Embedded в приложение.
+Узнайте, как tooembed к отчету, находящемуся в Power BI Embedded в приложение.
 
-В этой статье мы рассмотрим, как внедрить в приложение отчет. Предполагается, что у вас уже есть отчет, который находится в рабочей области в коллекции рабочих областей. Если вы еще не выполнили этот шаг, то см. статью [Начало работы с Microsoft Power BI Embedded](power-bi-embedded-get-started.md).
+Мы рассмотрим, каким образом tooactually внедрения отчета в приложение. Предполагается, что у вас уже есть отчет, который находится в рабочей области в коллекции рабочих областей. Если вы еще не выполнили этот шаг, то см. статью [Начало работы с Microsoft Power BI Embedded](power-bi-embedded-get-started.md).
 
-Можно воспользоваться пакетом SDK для .NET (C#) или Node.js, параллельно с JavaScript, чтобы быстро интегрировать в свое приложение службу Power BI Embedded. 
+Можно использовать hello .NET (C#) или пакет SDK для Node.js, а также JavaScript, tooeasily сборки приложения с Power BI Embedded. 
 
-## <a name="using-the-access-keys-to-use-rest-apis"></a>Использование ключей доступа для интерфейсов REST API
+## <a name="using-hello-access-keys-toouse-rest-apis"></a>С помощью toouse ключи доступа hello API-интерфейс REST
 
-Чтобы вызвать REST API, можно передать ключ доступа, который получается на портале Azure для заданной коллекции рабочих областей. Дополнительные сведения см. в статье [Начало работы с Microsoft Power BI Embedded](power-bi-embedded-get-started.md).
+В порядке toocall hello REST API можно передать hello ключ доступа, который можно получить из hello портал Azure для коллекции данную рабочую область. Дополнительные сведения см. в статье [Начало работы с Microsoft Power BI Embedded](power-bi-embedded-get-started.md).
 
 ## <a name="get-a-report-id"></a>Получение идентификатора отчета
 
-Каждый маркер доступа основан на отчете. Необходимо получить данный идентификатор для отчета, который требуется внедрить. Это можно сделать на основе вызовов к интерфейсу REST API [Get Reports](https://msdn.microsoft.com/library/azure/mt711510.aspx) (Получить отчеты). В результате будут возвращены идентификатор отчета и URL-адрес внедрения. Это можно сделать с помощью пакета SDK Power BI для .NET или прямого вызова REST API.
+Каждый маркер доступа основан на отчете. Указанный идентификатор отчета для отчета hello, что требуется tooembed hello tooget потребуется. Это можно сделать на основе на вызовы toohello [Получение отчетов](https://msdn.microsoft.com/library/azure/mt711510.aspx) API-интерфейса REST. Возвращает идентификатор и hello внедрить URL-адрес отчета hello. Это можно сделать с помощью Power BI .NET SDK hello или прямой вызов API-интерфейса REST hello.
 
-### <a name="using-the-power-bi-net-sdk"></a>Использование пакета SDK Power BI для .NET
+### <a name="using-hello-power-bi-net-sdk"></a>С помощью пакета SDK для .NET Power BI hello
 
-При использовании пакета SDK для .NET необходимо создать учетные данные маркера, основанные на ключе доступа, который можно получить на портале Azure. Для этого необходимо установить [пакет NuGet для API Power BI](https://www.nuget.org/profiles/powerbi).
+При использовании hello .NET SDK, необходимо будет toocreate маркеров учетных данных, основанной на ключ доступа hello, получаемых из hello портал Azure. Для этого необходимо установить hello [пакет NuGet интерфейса API Power BI](https://www.nuget.org/profiles/powerbi).
 
 **Установка пакета NuGet**
 
@@ -59,10 +59,10 @@ client.BaseUri = new Uri(https://api.powerbi.com);
 
 var reports = (IList<Report>)client.Reports.GetReports(workspaceCollectionName, workspaceId).Value;
 
-// Select the report that you want to work with from the collection of reports.
+// Select hello report that you want toowork with from hello collection of reports.
 ```
 
-### <a name="calling-the-rest-api-directly"></a>Прямой вызов REST API
+### <a name="calling-hello-rest-api-directly"></a>Непосредственно hello вызова интерфейса API REST
 
 ```
 System.Net.WebRequest request = System.Net.WebRequest.Create("https://api.powerbi.com/v1.0/collections/{collectionName}/workspaces/{workspaceId}/Reports") as System.Net.HttpWebRequest;
@@ -75,7 +75,7 @@ using (var response = request.GetResponse() as System.Net.HttpWebResponse)
 {
     using (var reader = new System.IO.StreamReader(response.GetResponseStream()))
     {
-        // Work with JSON response to get the report you want to work with.
+        // Work with JSON response tooget hello report you want toowork with.
     }
 
 }
@@ -83,11 +83,11 @@ using (var response = request.GetResponse() as System.Net.HttpWebResponse)
 
 ## <a name="create-an-access-token"></a>Создание маркера доступа
 
-Power BI Embedded использует маркеры внедрения, которые являются подписанными веб-маркерами JSON (JSON Web Token) с поддержкой HMAC. Маркеры подписываются с помощью ключа доступа из коллекции рабочих областей Azure Power BI Embedded. По умолчанию маркеры внедрения используются для предоставления доступа к отчету с правами только для чтения, чтобы внедрить его в приложение. Маркеры внедрения выдаются для конкретного отчета и должны быть связаны с URL-адресом внедрения.
+Power BI Embedded использует маркеры внедрения, которые являются подписанными веб-маркерами JSON (JSON Web Token) с поддержкой HMAC. Hello токены подписываются с ключом доступа hello Azure Power BI Embedded коллекции рабочей области. Внедряйте маркеры, по умолчанию, являются используется tooprovide чтения доступ только к tooembed tooa отчета в приложение. Маркеры внедрения выдаются для конкретного отчета и должны быть связаны с URL-адресом внедрения.
 
-Маркеры доступа должны создаваться на сервере, так как ключи доступа используются для подписания или шифрования маркеров. Дополнительные сведения о создании маркера доступа см. в статье [Аутентификация и авторизация в Power BI Embedded](power-bi-embedded-app-token-flow.md). Вы также можете ознакомиться с методом [CreateReportEmbedToken](https://docs.microsoft.com/dotnet/api/microsoft.powerbi.security.powerbitoken?redirectedfrom=MSDN#methods_). Здесь приведен пример с использованием пакета SDK для Power BI (.NET).
+Маркеры доступа должны создаваться на сервере hello как ключи доступа hello используется toosign на шифрование токенов hello. Сведения о том, как toocreate маркер доступа в разделе [аутентификации и авторизации с Power BI Embedded](power-bi-embedded-app-token-flow.md). Можно также просмотреть hello [CreateReportEmbedToken](https://docs.microsoft.com/dotnet/api/microsoft.powerbi.security.powerbitoken?redirectedfrom=MSDN#methods_) метод. Ниже приведен пример этого она будет выглядеть подобно использованию hello .NET SDK для Power BI.
 
-Будет использоваться ранее полученный идентификатор отчета. После создания маркера внедрения воспользуйтесь ключом доступа для создания маркера, который вы сможете использовать в javascript. Для *класса PowerBIToken* необходимо установить [пакет NuGet для Power BI (Core)](https://www.nuget.org/packages/Microsoft.PowerBI.Core/).
+Идентификатор используется при hello отчетов, полученный ранее. После внедрения hello создается маркер, будет использоваться hello маркер hello доступа toogenerate ключа, который можно использовать с точки зрения hello javascript. Hello *класса PowerBIToken* необходимо установить hello [NuGut основного пакета для Power BI](https://www.nuget.org/packages/Microsoft.PowerBI.Core/).
 
 **Установка пакета NuGet**
 
@@ -106,16 +106,16 @@ embedToken = PowerBIToken.CreateReportEmbedToken(workspaceCollectionName, worksp
 var token = embedToken.Generate("{access key}");
 ```
 
-### <a name="adding-permission-scopes-to-embed-tokens"></a>Добавление областей разрешений в маркеры внедрения
+### <a name="adding-permission-scopes-tooembed-tokens"></a>Добавление токенов tooembed разрешение области
 
-При использовании маркеров внедрения может потребоваться ограничить использование ресурсов, к которым предоставляется доступ. Для этого можно создать маркер с заданной областью разрешений. Дополнительные сведения см. в разделе [Области](power-bi-embedded-app-token-flow.md#scopes).
+При использовании маркеров внедрения, вы можете toorestrict использование hello ресурсы, которые обеспечивают доступ к. Для этого можно создать маркер с заданной областью разрешений. Дополнительные сведения см. в разделе [Области](power-bi-embedded-app-token-flow.md#scopes).
 
 ## <a name="embed-using-javascript"></a>Внедрение с помощью JavaScript
 
-Когда у вас уже есть маркер доступа и идентификатор отчета, можно внедрить отчет с помощью JavaScript. Для этого необходимо установить [пакет NuGet для Power BI (JavaScript)](https://www.nuget.org/packages/Microsoft.PowerBI.JavaScript/). Параметр embedUrl будет иметь значение https://embedded.powerbi.com/appTokenReportEmbed.
+После получения маркера доступа hello и идентификатор hello отчета, мы внедрить hello отчетов с использованием JavaScript. Для этого необходимо установить hello nuget [пакета Power BI JavaScript](https://www.nuget.org/packages/Microsoft.PowerBI.JavaScript/). URL-адрес внедрения Hello станет https://embedded.powerbi.com/appTokenReportEmbed.
 
 > [!NOTE]
-> Чтобы протестировать функциональные возможности, можно использовать [пример внедрения отчета JavaScript](https://microsoft.github.io/PowerBI-JavaScript/demo/). В нем также приводятся примеры кода для различных операций, которые доступны.
+> Можно использовать hello [пример внедрения отчета JavaScript](https://microsoft.github.io/PowerBI-JavaScript/demo/) tootest функциональные возможности. Также приводятся примеры кода для hello различных операций, которые доступны.
 
 **Установка пакета NuGet**
 
@@ -140,9 +140,9 @@ var $reportContainer = $('#reportContainer');
 var report = powerbi.embed($reportContainer.get(0), embedConfiguration);
 ```
 
-### <a name="set-the-size-of-embedded-elements"></a>Выбор размера внедряемых элементов
+### <a name="set-hello-size-of-embedded-elements"></a>Задать размер hello внедренные элементы
 
-Отчет будет автоматически внедрен, исходя из размера его контейнера. Чтобы переопределить заданный по умолчанию размер внедряемых элементов, просто добавьте атрибут класса CSS или встроенные стили для ширины и высоты.
+Hello отчета автоматически внедряются в зависимости от размера hello его контейнера. размер по умолчанию hello toooverride hello внедряет просто добавить класс атрибута или встроенные стили CSS для ширины и высоты.
 
 ## <a name="see-also"></a>См. также
 
@@ -155,4 +155,4 @@ var report = powerbi.embed($reportContainer.get(0), embedConfiguration);
 [Пакет NuGet для Power BI (Core)](https://www.nuget.org/packages/Microsoft.PowerBI.Core/)  
 [Репозиторий PowerBI-CSharp на сайте GitHub](https://github.com/Microsoft/PowerBI-CSharp)  
 [Репозиторий PowerBI-Node на сайте GitHub](https://github.com/Microsoft/PowerBI-Node)  
-У вас имеются и другие вопросы? [Попробуйте задать их в сообществе Power BI](http://community.powerbi.com/)
+У вас имеются и другие вопросы? [Повторите hello сообщества Power BI](http://community.powerbi.com/)

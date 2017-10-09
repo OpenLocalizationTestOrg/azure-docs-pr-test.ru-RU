@@ -1,6 +1,6 @@
 ---
-title: "Сетка событий Azure: безопасность и проверка подлинности"
-description: "В статье описываются сетка событий Azure и ее основные понятия."
+title: "aaaAzure сетки событий безопасности и проверки подлинности"
+description: "В статье описываются служба \"Сетка событий Azure\" и ее основные понятия."
 services: event-grid
 author: banisadr
 manager: timlt
@@ -8,11 +8,11 @@ ms.service: event-grid
 ms.topic: article
 ms.date: 08/14/2017
 ms.author: babanisa
-ms.openlocfilehash: b6e1c7587c0b47d04862b4850741aaa3b7d191a8
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 74f692c7e3a30856c3a80cbbfe82a26bf4c1c9b5
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="event-grid-security-and-authentication"></a>Сетка событий: безопасность и проверка подлинности 
 
@@ -24,47 +24,47 @@ ms.lasthandoff: 08/29/2017
 
 ## <a name="webhook-event-delivery"></a>Доставка событий веб-перехватчика
 
-Веб-перехватчики — это один из многих способов получения событий в режиме реального времени из сетки событий Azure.
+Веб-перехватчиков являются одним из многих событий tooreceive способами, в режиме реального времени из сетки событий Azure.
 
-Каждый раз, когда имеется новое событие, готовое к доставке, сетка событий отправляет в веб-перехватчик HTTP-запрос, в теле которого находится событие.
+Каждый раз, имеется новое событие готовности toobe доставки, сетка события отправляет запрос HTTP с tooyour веб-перехватчик с событием hello в тексте hello.
 
-При регистрации собственной конечной точки веб-перехватчика с сеткой событий он отправляет запрос POST с кодом простой проверки для подтверждения владения конечной точкой. В ответ приложение должно вернуть код проверки. Сетка событий не доставляет события на конечные точки веб-перехватчика, которые не прошли проверку.
+При регистрации конечной точки веб-перехватчик с сеткой событий, она отправляет запрос POST с кодом простую проверку права собственности конечной точки tooprove заказа. Приложение должно toorespond, возвращая код проверки назад hello. Событие сетки не доставляет события tooWebHook конечных точек, которые не прошли проверку hello.
  
 ### <a name="validation-details"></a>Сведения о проверке:
 
-* Во время создания или обновления подписки на событие сетка событий публикует на целевой конечной точке событие "SubscriptionValidationEvent".
-* В качестве заголовка событие содержит значение "Event-Type: Validation".
-* Текст события имеет ту же схему, что и другие события сетки событий.
-* В данных события содержится свойство ValidationCode со строкой, сгенерированной случайным образом (например, ValidationCode: acb13…).
+* Во время hello подписки события создания или обновления сетки событий сообщений конечной точки целевого toohello события «SubscriptionValidationEvent».
+* Hello событие содержит заголовок значение «Тип события: проверка».
+* текст Hello событий имеет hello одной схеме с другими событиями сетки событий.
+* данные события Hello включают свойство «ValidationCode» со строкой случайным, например ValidationCode: acb13…).
 
-Чтобы подтвердить владение конечной точкой, возвращается код проверки (например, validation_response: acb13…).
+В владение конечной точки tooprove заказа, echo пример кода проверки назад hello» ValidationResponse: acb13...».
 
-Наконец, необходимо отметить, что сетка событий Azure поддерживает только конечные точки веб-перехватчиков HTTPS.
+Наконец это важно toonote сетки событий Azure поддерживает только конечные точки веб-перехватчика HTTPS.
 ## <a name="event-subscription"></a>Подписка на события
 
-Чтобы подписаться на событие, необходимо иметь разрешение **Microsoft.EventGrid/EventSubscriptions/Write** для требуемого ресурса. Это разрешение необходимо, так как вы записываете новую подписку в области действия ресурса. Требуемый ресурс зависит от того, оформляется ли подписка на системный или пользовательский раздел. В этом разделе описываются оба типа подписки.
+событие tooan toosubscribe, должно иметь hello **Microsoft.EventGrid/EventSubscriptions/Write** ресурсов требуется разрешение на hello. Это разрешение требуется использовать, поскольку при написании новую подписку можно в области hello hello ресурса. Hello требуемый ресурс зависит от подписка раздела системы tooa или пользовательский раздел. В этом разделе описываются оба типа подписки.
 
 ### <a name="system-topics-azure-service-publishers"></a>Системные разделы (издатели служб Azure)
 
-Для системных разделов необходимо разрешение на запись новой подписки на события в области действия ресурса, публикующего событие. Ресурс имеет следующий формат: `/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/{resource-provider}/{resource-type}/{resource-name}`
+Разделы, системы необходимо разрешение toowrite новой подписки на события в области видимости hello публикации события hello hello ресурсов. Hello ресурса hello выглядит следующим образом:`/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/{resource-provider}/{resource-type}/{resource-name}`
 
-Например, чтобы подписаться на событие в учетной записи хранения с именем **myacct**, требуется разрешение Microsoft.EventGrid/EventSubscriptions/Write для следующего ресурса: `/subscriptions/####/resourceGroups/testrg/providers/Microsoft.Storage/storageAccounts/myacct`
+Например, событие toosubscribe tooan на учетную запись хранения с именем **myacct**, требуется разрешение Microsoft.EventGrid/EventSubscriptions/Write hello на:`/subscriptions/####/resourceGroups/testrg/providers/Microsoft.Storage/storageAccounts/myacct`
 
 ### <a name="custom-topics"></a>Пользовательские разделы
 
-Для пользовательских разделов необходимо разрешение на запись новой подписки на события в области действия сетки событий. Ресурс имеет следующий формат: `/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.EventGrid/topics/{topic-name}`
+Настраиваемые разделы необходимо разрешение toowrite новой подписки на события в области видимости hello hello сетки события раздела. Hello ресурса hello выглядит следующим образом:`/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.EventGrid/topics/{topic-name}`
 
-Например, чтобы подписаться на пользовательский раздел с именем **mytopic**, требуется разрешение Microsoft.EventGrid/EventSubscriptions/Write для следующего ресурса: `/subscriptions/####/resourceGroups/testrg/providers/Microsoft.EventGrid/topics/mytopic`
+Например, toosubscribe tooa пользовательский раздел с именем **mytopic**, требуется разрешение Microsoft.EventGrid/EventSubscriptions/Write hello на:`/subscriptions/####/resourceGroups/testrg/providers/Microsoft.EventGrid/topics/mytopic`
 
 ## <a name="topic-publishing"></a>Публикация разделов
 
 Для разделов используется либо подписанный URL-адрес (SAS), либо проверка подлинности с использованием ключа. Рекомендуется использовать SAS, но проверка подлинности с использованием ключа обеспечивает простое программирование, а также совместима со множеством существующих издателей веб-перехватчиков. 
 
-Значение проверки подлинности следует включить в заголовок HTTP. Для SAS в качестве значения заголовка используйте **aeg-sas-token**. Для подлинности с использованием ключа в качестве значения заголовка следует использовать **aeg-sas-key**.
+Значение проверки подлинности hello включаются в заголовок HTTP hello. SAS, используйте **aeg маркер sas** для hello значение заголовка. Для проверки подлинности с ключом, используйте **aeg ключ sas** для hello значение заголовка.
 
 ### <a name="key-authentication"></a>Проверка подлинности с использованием ключа
 
-Проверка подлинности с использованием ключа — самая простая форма проверки подлинности. Используйте следующий формат: `aeg-sas-key: <your key>`
+Проверка подлинности с ключом является hello простая форма проверки подлинности. Используйте формат hello:`aeg-sas-key: <your key>`
 
 Например, для передачи ключа можно использовать следующую команду: 
 
@@ -74,11 +74,11 @@ aeg-sas-key: VXbGWce53249Mt8wuotr0GPmyJ/nDT4hgdEj9DpBeRr38arnnm5OFg==
 
 ### <a name="sas-tokens"></a>Маркеры SAS
 
-Маркеры SAS для сетки события включают ресурс, срок его действия и подпись. Маркер SAS имеет следующий формат: `r={resource}&e={expiration}&s={signature}`.
+Маркеры SAS для сетки события включают ресурсов hello, срок его действия и подписи. Hello маркер SAS hello имеет формат: `r={resource}&e={expiration}&s={signature}`.
 
-Ресурс — это путь для раздела, в который вы отправляете события. Вот пример допустимого пути к ресурсу: `https://<yourtopic>.<region>.eventgrid.azure.net/eventGrid/api/events`
+Hello ресурсов — hello путь для hello разделе toowhich можно отправлять события. Вот пример допустимого пути к ресурсу: `https://<yourtopic>.<region>.eventgrid.azure.net/eventGrid/api/events`
 
-Вы создаете подпись на основе ключа.
+Вы создаете ключ подписи hello.
 
 Например, допустимое значение **aeg-sas-token** выглядит следующим образом:
 
@@ -86,7 +86,7 @@ aeg-sas-key: VXbGWce53249Mt8wuotr0GPmyJ/nDT4hgdEj9DpBeRr38arnnm5OFg==
 aeg-sas-token: r=https%3a%2f%2fmytopic.eventgrid.azure.net%2feventGrid%2fapi%2fevent&e=6%2f15%2f2017+6%3a20%3a15+PM&s=a4oNHpRZygINC%2fBPjdDLOrc6THPy3tDcGHw1zP4OajQ%3d
 ``` 
 
-В следующем примере создается маркер SAS для использования с сеткой событий:
+Следующий пример Hello создает маркер SAS для использования с сеткой событий:
 
 ```cs
 static string BuildSharedAccessSignature(string resource, DateTime expirationUtc, string key)
@@ -112,11 +112,11 @@ static string BuildSharedAccessSignature(string resource, DateTime expirationUtc
 
 ## <a name="management-access-control"></a>Контроль доступа к управлению
 
-Сетка событий Azure позволяет контролировать уровень доступа, предоставленного разным пользователям для выполнения различных операций управления, таких как создание списка подписок на события, создание новых подписок и генерирование ключей. Для этих целей сетка событий использует проверку доступа на основе ролей Azure (RBAC).
+Azure сетки событий позволяет вам toocontrol hello уровень доступа, предоставленный toodifferent пользователей toodo различные операции управления, такие как список подписки на события, создавать новые и формирования ключей. Для этих целей сетка событий использует проверку доступа на основе ролей Azure (RBAC).
 
 ### <a name="operation-types"></a>Типы операций
 
-Сетка событий Azure поддерживает следующие действия:
+Сетка событий Azure поддерживает hello, следующие действия:
 
 * Microsoft.EventGrid/*/read 
 * Microsoft.EventGrid/*/write 
@@ -125,15 +125,15 @@ static string BuildSharedAccessSignature(string resource, DateTime expirationUtc
 * Microsoft.EventGrid/topics/listKeys/action 
 * Microsoft.EventGrid/topics/regenerateKey/action
 
-Последние три операции возвращают потенциально секретную информацию, которая отфильтровывается из обычных операций чтения. Это наилучший способ ограничить доступ к этим операциям. Настраиваемые роли можно создавать с помощью [Azure PowerShell](../active-directory/role-based-access-control-manage-access-powershell.md), [интерфейса командной строки (CLI) Azure](../active-directory/role-based-access-control-manage-access-azure-cli.md) и интерфейса [REST API](../active-directory/role-based-access-control-manage-access-rest.md).
+Здравствуйте, последние три операции возврата потенциально секретные сведения которой возвращает отфильтрованы из обычных операций чтения. Рекомендуется для вас операции toothese toorestrict доступа. Можно создать настраиваемые роли с помощью [Azure PowerShell](../active-directory/role-based-access-control-manage-access-powershell.md), [Azure интерфейс командной строки (CLI)](../active-directory/role-based-access-control-manage-access-azure-cli.md)и hello [API-интерфейса REST](../active-directory/role-based-access-control-manage-access-rest.md).
 
 ### <a name="enforcing-role-based-access-check-rbac"></a>Применение проверки доступа на основе ролей (RBAC)
 
-Чтобы принудительно применить RBAC для разных пользователей, выполните следующие действия:
+Используйте следующие шаги tooenforce RBAC для разных пользователей hello.
 
 #### <a name="create-a-custom-role-definition-file-json"></a>Создание файла определения пользовательской роли (.json)
 
-Вот пример определений роли сетки событий, которые позволяют пользователям выполнять разные действия.
+Здесь представлены Hello определения ролей сетки событий образца, дающие пользователям различные наборы tooperform действий.
 
 **EventGridReadOnlyRole.json**: разрешено только чтение.
 ```json
@@ -196,18 +196,18 @@ static string BuildSharedAccessSignature(string resource, DateTime expirationUtc
 } 
 ```
 
-#### <a name="install-and-login-to-azure-cli"></a>Установка интерфейса командной строки Azure и вход в него
+#### <a name="install-and-login-tooazure-cli"></a>Установка и входа tooAzure CLI
 
-* Интерфейс командной строки Azure версии 0.8.8 или более поздней. Чтобы установить последнюю версию и связать ее со своей подпиской Azure, см. статью [Установка Azure CLI](../cli-install-nodejs.md).
-* Azure Resource Manager в Azure CLI. Дополнительные сведения см. в статье [Управление ресурсами и группами ресурсов Azure с помощью интерфейса командной строки Azure](../xplat-cli-azure-resource-manager.md).
+* Интерфейс командной строки Azure версии 0.8.8 или более поздней. последнюю версию tooinstall hello и связывание его с подпиской Azure. в разделе [Установка и настройка hello Azure CLI](../cli-install-nodejs.md).
+* Azure Resource Manager в Azure CLI. Go слишком[использование hello Azure CLI с hello диспетчера ресурсов](../xplat-cli-azure-resource-manager.md) для получения дополнительных сведений.
 
 #### <a name="create-a-custom-role"></a>Создание настраиваемой роли
 
-Чтобы создать настраиваемую роль, используйте следующую команду:
+Используйте toocreate пользовательской роли:
 
     azure role create --inputfile <file path>
 
-#### <a name="assign-the-role-to-a-user"></a>Назначение роли пользователю
+#### <a name="assign-hello-role-tooa-user"></a>Назначить пользователя tooa роли hello
 
 
     azure role assignment create --signInName  <user email address> --roleName "<name of role>" --resourceGroup <resource group name>
@@ -215,4 +215,4 @@ static string BuildSharedAccessSignature(string resource, DateTime expirationUtc
 
 ## <a name="next-steps"></a>Дальнейшие действия
 
-* Общие сведения о сетке событий см. в статье [Сведения о сетке событий](overview.md)
+* Введение tooEvent сетки. в разделе [о сетки событий](overview.md)

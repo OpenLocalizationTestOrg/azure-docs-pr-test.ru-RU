@@ -1,6 +1,6 @@
 ---
-title: "Руководство по созданию службы данных для Marketplace | Документация Майкрософт"
-description: "Подробные инструкции по созданию, сертификации и развертыванию службы данных для продажи в Azure Marketplace."
+title: "aaaGuide toocreating службы данных для hello Marketplace | Документы Microsoft"
+description: "Подробные инструкции, как toocreate, сертификации и развертывать службу данных для приобретения на hello Azure Marketplace."
 services: marketplace-publishing
 documentationcenter: 
 author: HannibalSII
@@ -14,20 +14,20 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/26/2016
 ms.author: hascipio; avikova
-ms.openlocfilehash: 2ab624941fc385f14b62bb5d743927f157955845
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 8917a43959834d15f70866297f98d24bb83e217f
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="examples-of-mapping-an-existing-web-service-to-odata-through-csdls"></a>Примеры сопоставления существующей веб-службы OData через CSDL
+# <a name="examples-of-mapping-an-existing-web-service-tooodata-through-csdls"></a>Примеры сопоставления существующей веб-службы tooOData через CSDLs
 > [!IMPORTANT]
-> **В настоящее время мы больше не подключаем новые издатели служб данных. Новые службы данных не будут утверждены для добавления в список.** Дополнительные сведения о публикации бизнес-приложения SaaS на AppSource см. [здесь](https://appsource.microsoft.com/partners). Дополнительные сведения о публикации приложений IaaS или службы разработчика в Azure Marketplace см. [здесь](https://azure.microsoft.com/marketplace/programs/certified/).
+> **В настоящее время мы больше не подключаем новые издатели служб данных. Новые службы данных не будут утверждены для добавления в список.** Если у вас есть бизнес-приложений SaaS хотелось бы toopublish Дополнительные сведения можно найти на AppSource [здесь](https://appsource.microsoft.com/partners). Если у вас есть приложениях IaaS или разработчик службы вы бы как toopublish в Azure Marketplace можно найти дополнительные сведения о [здесь](https://azure.microsoft.com/marketplace/programs/certified/).
 > 
 > 
 
 ## <a name="example-functionimport-for-raw-data-returned-using-post"></a>Пример: FunctionImport для "необработанных" данных, возвращаемых с помощью "POST"
-Используйте "POST" для необработанных данных, чтобы создать новый подчиненный элемент и вернуть определенный сервером URL-адрес (расположение) или обновить часть подчиненного элемента по определенному сервером URL-адресу.  Где подчиненный элемент — поток, т. е. неструктурированный, например текстовый файл.  Имейте в виду, что "POST" не идемпотентен без местоположения.
+Использовать новый подчиненный toocreate POST необработанные данные и возвращает свой сервер URL(location) tooupdate часть hello подчиненного сервера hello определенная или URL-адрес.  Где hello подчиненный объект — потока, т. е. неструктурированных ex. например текстовый файл.  Имейте в виду, что "POST" не идемпотентен без местоположения.
 
         <!--  No EntitySet or EntityType nodes required for Raw output-->
         <FunctionImport Name="AddUsageEvent" ReturnType="Raw(text/plain)" d:EncodeParameterValues="true" d:AllowedHttpMethods="POST" d:BaseUri="http://services.organization.net/MyServicePath?name={name}&amp;AccountKey=22AC643">
@@ -45,7 +45,7 @@ ms.lasthandoff: 07/11/2017
         </FunctionImport>
 
 ## <a name="example-functionimport-using-delete"></a>Пример: FunctionImport с помощью "DELETE"
-Используйте "DELETE" для удаления указанного URI.
+Используйте tooremove удалить указанный универсальный код Ресурса.
 
         <EntitySet Name="DeleteUsageFileEntitySet" EntityType="MyOffer.DeleteUsageFileEntity" />
         <FunctionImport Name="DeleteUsageFile" EntitySet="DeleteUsageFileEntitySet" ReturnType="Collection(MyOffer.DeleteUsageFileEntity)"  d:AllowedHttpMethods="DELETE" d:EncodeParameterValues="true” d:BaseUri=”http://services.organization.net/MyServicePath?name={name}&amp;AccountKey=22AC643" >
@@ -66,7 +66,7 @@ ms.lasthandoff: 07/11/2017
         </EntityType>
 
 ## <a name="example-functionimport-using-post"></a>Пример: FunctionImport с помощью "POST"
-Используйте "POST" для необработанных данных, чтобы создать новый подчиненный элемент и вернуть определенный сервером URL-адрес (расположение) или обновить часть подчиненного элемента по определенному сервером URL-адресу.  Где подчиненный элемент — структура. Имейте в виду, что "POST" не идемпотентен без местоположения.
+Использовать новый подчиненный toocreate POST необработанные данные и возвращает свой сервер URL(location) tooupdate часть hello подчиненного сервера hello определенная или URL-адрес.  Где hello подчиненный объект — это структура. Имейте в виду, что "POST" не идемпотентен без местоположения.
 
         <EntitySet Name="CreateANewModelEntitySet2" EntityType=" MyOffer.CreateANewModelEntity2" />
         <FunctionImport Name="CreateModel" EntitySet="CreateANewModelEntitySet2" ReturnType="Collection(MyOffer.CreateANewModelEntity2)" d:EncodeParameterValues="true" d:AllowedHttpMethods="POST" d:BaseUri=”http://services.organization.net/MyServicePath?name={name}&amp;AccountKey=22AC643">
@@ -84,7 +84,7 @@ ms.lasthandoff: 07/11/2017
         </FunctionImport>
 
 ## <a name="example-functionimport-using-put"></a>Пример: FunctionImport с помощью "PUT"
-Используйте "PUT", чтобы создать новый подчиненный элемент или обновить весь подчиненный элемент по определенному сервером URL-адресу.  Когда подчиненный элемент — это структура, метод PUT обладает свойством идемпотентности, поэтому несколько вхождений дадут одно состояние, т. е. x = 5.  "PUT" следует использовать с полным содержимым указанного ресурса.
+Использовать новый подчиненный PUT toocreate или tooupdate hello всей подчиненный объект на сервере определен URL-адрес.  Где hello подчиненный объект — это структура, PUT является идемпотентной, поэтому несколько вхождений приведет к hello же состояние, т. е. т. е. x = 5.  PUT должен использоваться с hello hello указано полное содержимое ресурса.
 
         <EntitySet Name="UpdateAnExistingModelEntitySet" EntityType="MyOffer.UpdateAnExistingModelEntity" />
         <FunctionImport Name="UpdateModel" EntitySet="UpdateAnExistingModelEntitySet" ReturnType="Collection(MyOffer.UpdateAnExistingModelEntity)" d:EncodeParameterValues="true" d:AllowedHttpMethods="PUT" d:BaseUri=”http://services.organization.net/MyServicePath?name={name}&amp;AccountKey=22AC643">
@@ -106,7 +106,7 @@ ms.lasthandoff: 07/11/2017
 
 
 ## <a name="example-functionimport-for-raw-data-returned-using-put"></a>Пример: FunctionImport для "необработанных" данных, возвращаемых с помощью "PUT"
-Используйте "PUT" для необработанных данных, чтобы создать новый подчиненный элемент или обновить весь подчиненный элемент по определенному сервером URL-адресу.  Где подчиненный элемент — поток, т. е. неструктурированный, например текстовый файл.  Метод PUT обладает свойством идемпотентности, поэтому несколько вхождений дадут одно состояние, т. е. x = 5.  "PUT" следует использовать с полным содержимым указанного ресурса.
+Использовать новый подчиненный ПОМЕСТИТЬ необработанных данных toocreate или tooupdate hello всей подчиненный объект на сервере определенных URL-адрес.  Где hello подчиненный объект — потока, т. е. неструктурированных ex. например текстовый файл.  PUT является идемпотентным, поэтому несколько вхождений приведет к hello же состояние, т. е. т. е. x = 5.  PUT должен использоваться с hello hello указано полное содержимое ресурса.
 
         <!--  No EntitySet or EntityType nodes required for Raw output-->
         <FunctionImport Name="CancelBuild” ReturnType="Raw(text/plain)" d:AllowedHttpMethods="PUT" d:EncodeParameterValues="true" d:BaseUri=” http://services.organization.net/MyServicePath?name={name}&amp;AccountKey=22AC643">
@@ -125,7 +125,7 @@ ms.lasthandoff: 07/11/2017
 
 
 ## <a name="example-functionimport-for-raw-data-returned-using-get"></a>Пример: FunctionImport для "необработанных" данных, возвращаемых с помощью "GET"
-Используйте "GET" для необработанных данных, чтобы вернуть неструктурированный подчиненный элемент.
+Используйте получить необработанные данные tooreturn подчиненный, неструктурированных, т. е. текст.
 
         <!--  No EntitySet or EntityType nodes required for Raw output-->
         <FunctionImport Name="GetModelUsageFile" ReturnType="Raw(text/plain)" d:EncodeParameterValues="true" d:AllowedHttpMethods="GET" d:BaseUri="https://cmla.cloudapp.net/api2/model/builder/build?buildId={buildId}&amp;apiVersion={apiVersion}">
@@ -144,7 +144,7 @@ ms.lasthandoff: 07/11/2017
         </FunctionImport>
 
 ## <a name="example-functionimport-for-paging-through-returned-data"></a>Пример: FunctionImport для "разбиения на страницы" возвращаемых данных
-Реализуйте разбиение по страницам RESTful для ваших данных вместе с GET.  Разбиение по страницам по умолчанию равно 100 строкам данных на каждой странице.
+Реализуйте разбиение по страницам RESTful для ваших данных вместе с GET.  Разбиение на страницы по умолчанию имеет значение too100 строку на каждую страницу данных.
 
         <EntitySet Name=”CropEntitySet" EntityType="MyOffer.CropEntity" />
         <FunctionImport    Name="GetCropReport" EntitySet="CropEntitySet” ReturnType="Collection(MyOffer.CropEntity)" d:EmitSelfLink="false" d:EncodeParameterValues="true" d:Paging="SkipTake" d:MaxPageSize="100" d:BaseUri="http://api.mydata.org/Crop? report={report}&amp;series={series}&amp;start={$skip}&amp;size=100">
@@ -159,7 +159,7 @@ ms.lasthandoff: 07/11/2017
         </FunctionImport>
 
 ## <a name="see-also"></a>См. также
-* Если вы хотите понять процесс и смысл сопоставления OData, см. статью [Сопоставление существующей веб-службы и OData с помощью CSDL](marketplace-publishing-data-service-creation-odata-mapping.md), где приводятся определения, структуры и инструкции.
-* Если вы заинтересованы в изучении и понимании конкретных узлов и их параметров, в статье [Узлы сопоставления службы данных OData](marketplace-publishing-data-service-creation-odata-mapping-nodes.md) вы найдете определения и объяснения, примеры и контекст вариантов использования.
-* Чтобы вернуться к указанному пути для публикации службы данных в Azure Marketplace, см. [руководство по публикации службы данных](marketplace-publishing-data-service-creation.md).
+* Если вы заинтересованы в общее представление о hello общий процесс сопоставления OData и цели, эта статья [данных службы OData сопоставления](marketplace-publishing-data-service-creation-odata-mapping.md) tooreview определений, структуры и инструкции.
+* Если вы заинтересованы в обучении и основные сведения о hello конкретных узлов и их параметров, эта статья [узлы сопоставление данных службы OData](marketplace-publishing-data-service-creation-odata-mapping-nodes.md) для определения и объяснения, примеры и контекст вариантов использования.
+* Указанный путь для публикации toohello службы данных Azure Marketplace, эта статья toohello tooreturn [руководство по публикации службы данных](marketplace-publishing-data-service-creation.md).
 

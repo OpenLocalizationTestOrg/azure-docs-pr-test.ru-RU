@@ -1,6 +1,6 @@
 ---
-title: "Веб-канал изменений для ресурсов HL7 FHIR в Azure Cosmos DB | Документация Майкрософт"
-description: "Сведения о настройке уведомлений об изменениях в медицинских картах пациентов в системе HL7 FHIR с помощью Azure Logic Apps, Azure Cosmos DB и служебной шины."
+title: "веб-канал для ресурсов HL7 FHIR - Azure Cosmos DB aaaChange | Документы Microsoft"
+description: "Узнайте, как tooset копирование изменить уведомления для HL7 FHIR здравоохранения пациентов с помощью приложения логики Azure Azure Cosmos DB и Service Bus."
 keywords: HL7 FHIR
 services: cosmos-db
 author: hedidin
@@ -15,78 +15,78 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/08/2017
 ms.author: b-hoedid
-ms.openlocfilehash: d2b50c0b6864af41fb9cfa051721c432772b228d
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: d2809bf5c6d8c193c49438d20684c56caea646bb
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="notifying-patients-of-hl7-fhir-health-care-record-changes-using-logic-apps-and-azure-cosmos-db"></a>Уведомление пациентов об изменениях в медицинских картах HL7 FHIR с помощью Logic Apps и Azure Cosmos DB
 
-Недавно специалист MVP по Azure Ховард Эдидин (Howard Edidin) получил запрос от медицинской организации, которая решила добавить новые функциональные возможности на свой портал для пациентов. Ей нужно было отправлять пациентам уведомления об изменениях в медицинских картах, а также предоставить пациентам возможность подписаться на такие уведомления. 
+Недавно Azure Edidin Говард MVP подключился здравоохранения организации, которая нужна tooadd новые функциональные возможности tootheir пациента портала. Они нужны toopatients toosend уведомлений при их записи работоспособности была обновлена, и они нужны пациентов toobe может toosubscribe toothese обновлений. 
 
-Эта статья содержит пошаговое описание процесса, позволившего создать для этой организации веб-канал изменений с помощью Azure Cosmos DB, Logic Apps и служебной шины. 
+В этой статье рассматриваются hello изменение канала уведомлений решения, созданного для этой организации здравоохранения, с помощью Azure Cosmos DB, Logic Apps и Service Bus. 
 
 ## <a name="project-requirements"></a>Проектные требования
 - Поставщики отправляют документы в формате XML, соответствующие архитектуре HL7 для консолидированных клинических документов (C-CDA). Документы C-CDA могут включать практически любые типы клинических документов, в том числе клинические (семейные истории болезни, журналы вакцинации и т. п.), административные, операционные и финансовые. 
-- Документы C-CDA преобразуются в [ресурсы HL7 FHIR](http://hl7.org/fhir/2017Jan/resourcelist.html) в формате JSON.
+- Документы C CDA преобразуются слишком[FHIR ресурсы HL7](http://hl7.org/fhir/2017Jan/resourcelist.html) в формате JSON.
 - Преобразованные документы ресурсов FHIR отправляются по электронной почте в формате JSON.
 
 ## <a name="solution-workflow"></a>Рабочий процесс решения 
 
-На высоком уровне этот проект включал следующие этапы рабочего процесса. 
-1. Преобразование документов C-CDA в ресурсы FHIR.
+На высоком уровне hello проекту требуется hello действий рабочего процесса: 
+1. Преобразуйте ресурсы tooFHIR C CDA документов.
 2. Регулярный опрос триггеров для выявления измененных ресурсов FHIR. 
-2. Вызов пользовательского приложения FhirNotificationApi для подключения к Azure Cosmos DB и получения новых и измененных документов.
-3. Сохранение ответа в очереди служебной шины.
-4. Опрос очереди служебной шины для отслеживания новых сообщений.
-5. Отправка пациентам уведомлений по электронной почте.
+2. Вызов пользовательского приложения, FhirNotificationApi, tooconnect tooAzure Cosmos DB и запросов для новых или измененных документов.
+3. Сохраните очереди Service Bus tootoohello hello ответов.
+4. Опрос для новых сообщений в очереди Service Bus hello.
+5. Отправьте по электронной почте уведомления toopatients.
 
 ## <a name="solution-architecture"></a>Архитектура решения
-Для выполнения перечисленных выше требований и создания полного рабочего процесса в это решение потребовалось включить три приложения логики, перечисленные ниже.
-1. **Приложение HL7-FHIR-Mapping** получает документ HL7 C-CDA, преобразует его в ресурс FHIR, а затем сохраняет в Azure Cosmos DB.
-2. **Приложение EHR** запрашивает репозиторий FHIR в Azure Cosmos DB и сохраняет ответ в очередь служебной шины. Это приложение логики использует [приложение API](#api-app) для получения новых и измененных документов.
-3. **Приложение для обработки уведомлений** отправляет по электронной почте уведомление, в текст которого включает документы ресурсов FHIR.
+Это решение требует трех hello toomeet Logic Apps выше требования и рабочий процесс завершения hello решения. Ниже перечислены три логику приложения Hello
+1. **Приложение HL7 FHIR сопоставления**: Получает документ HL7 C-CDA hello, преобразует их toohello FHIR ресурсов, а затем сохраняет его tooAzure Cosmos DB.
+2. **Приложение EHR**: запрос hello Azure Cosmos DB FHIR репозитория и сохраняет очереди Service Bus tooa ответов hello. Это приложение логики использует [приложения API](#api-app) tooretrieve новые и измененные документы.
+3. **Процесс уведомления приложения**: отправляет уведомление по электронной почте с документами ресурсов FHIR hello в тексте hello.
 
-![Три приложения логики, используемые в этом решении HL7 FHIR](./media/change-feed-hl7-fhir-logic-apps/health-care-solution-hl7-fhir.png)
+![Приложения Hello трех логики, используемый в этом решении здравоохранения HL7 FHIR](./media/change-feed-hl7-fhir-logic-apps/health-care-solution-hl7-fhir.png)
 
 
 
-### <a name="azure-services-used-in-the-solution"></a>Службы Azure, используемые в решении
+### <a name="azure-services-used-in-hello-solution"></a>Используемые в решении hello служб Azure
 
 #### <a name="azure-cosmos-db-documentdb-api"></a>API DocumentDB в Azure Cosmos DB
-Azure Cosmos DB выполняет роль репозитория для ресурсов FHIR, как показано на следующем рисунке.
+Azure Cosmos DB — репозиторий hello hello FHIR ресурсов, как показано в hello следующий рисунок.
 
-![Учетная запись Azure Cosmos DB, используемая в этом руководстве по HL7 FHIR](./media/change-feed-hl7-fhir-logic-apps/account.png)
+![Учетная запись Azure Cosmos DB Hello, используемая в этом учебнике здравоохранения HL7 FHIR](./media/change-feed-hl7-fhir-logic-apps/account.png)
 
-#### <a name="logic-apps"></a>Приложения логики
-Приложения логики обрабатывают рабочий процесс. На следующих снимках экрана показаны приложения логики, созданные для этого решения. 
-
-
-1. **Приложение HL7-FHIR-Mapping** получает документ HL7 C-CDA и преобразует его в ресурс FHIR с помощью пакета интеграции Enterprise для Logic Apps. Пакет интеграции Enterprise обрабатывает сопоставление C-CDA с ресурсами FHIR.
-
-    ![Приложение логики для получения медицинских карт HL7 FHIR](./media/change-feed-hl7-fhir-logic-apps/hl7-fhir-logic-apps-json-transform.png)
+#### <a name="logic-apps"></a>Logic Apps
+Приложения логики обработки hello рабочего процесса. Hello следующих снимках экрана показано hello логики приложений, созданных для этого решения. 
 
 
-2. **Приложение EHR** отправляет запросы в репозиторий FHIR в Azure Cosmos DB и сохраняет ответ в очередь служебной шины. Ниже приводится код приложения GetNewOrModifiedFHIRDocuments.
+1. **Приложение HL7 FHIR сопоставления**: получить документ HL7 C-CDA hello и преобразовать его tooan FHIR ресурсов с использованием hello пакет интеграции Enterprise для логики приложений. Пакет интеграции Enterprise Hello обрабатывает сопоставление из hello ресурсов tooFHIR C CDA hello.
 
-    ![Приложение логики, используемое для запросов к Azure Cosmos DB](./media/change-feed-hl7-fhir-logic-apps/hl7-fhir-logic-apps-api-app.png)
+    ![Логика приложения Hello используется tooreceive HL7 FHIR медицинских записей](./media/change-feed-hl7-fhir-logic-apps/hl7-fhir-logic-apps-json-transform.png)
 
-3. **Приложение для обработки уведомлений** отправляет по электронной почте уведомление, в текст которого включает документы ресурсов FHIR.
 
-    ![Приложение логики, отправляющее пациенту сообщение электронной почты, текст которого содержит ресурсы HL7 FHIR](./media/change-feed-hl7-fhir-logic-apps/hl7-fhir-logic-apps-send-email.png)
+2. **Приложение EHR**: запроса hello Azure Cosmos DB FHIR репозиторий и сохраните tooa ответа hello Service Bus в очередь. Hello для приложения hello GetNewOrModifiedFHIRDocuments приведен ниже.
 
-#### <a name="service-bus"></a>Service Bus
-На следующем рисунке показана очередь пациентов. Значение свойства Tag используется для создания темы сообщения электронной почты.
+    ![tooquery Hello использовать приложения логики Azure Cosmos DB](./media/change-feed-hl7-fhir-logic-apps/hl7-fhir-logic-apps-api-app.png)
 
-![Очередь служебной шины, используемая в этом руководстве по HL7 FHIR](./media/change-feed-hl7-fhir-logic-apps/hl7-fhir-service-bus-queue.png)
+3. **Процесс уведомления приложения**: отправить уведомление по электронной почте с документами ресурсов FHIR hello в тексте hello.
+
+    ![Hello логики приложения, отправляющие пациента письма с ресурсом HL7 FHIR hello в тексте hello](./media/change-feed-hl7-fhir-logic-apps/hl7-fhir-logic-apps-send-email.png)
+
+#### <a name="service-bus"></a>Служебная шина
+Следующий рисунок показывает hello пациентов очереди Hello. Hello значению свойства Tag используется тема сообщения hello.
+
+![Hello очередь Service Bus, используемые в этом учебнике HL7 FHIR](./media/change-feed-hl7-fhir-logic-apps/hl7-fhir-service-bus-queue.png)
 
 <a id="api-app"></a>
 
 #### <a name="api-app"></a>Приложение API
-Приложение API подключается к Azure Cosmos DB и запрашивает наличие новых или измененных документов FHIR по типу ресурса. Это приложение содержит один контроллер **FhirNotificationApi** с одной операцией **GetNewOrModifiedFhirDocuments** (см. раздел об [исходном коде для приложения API](#api-app-source)).
+Приложения API подключается tooAzure Cosmos DB и запросов для новых или измененных документов FHIR от типа ресурса. Это приложение содержит один контроллер **FhirNotificationApi** с одной операцией **GetNewOrModifiedFhirDocuments** (см. раздел об [исходном коде для приложения API](#api-app-source)).
 
-Мы используем класс [`CreateDocumentChangeFeedQuery`](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.createdocumentchangefeedquery.aspx) из API-интерфейса .NET для DocumentDB в Azure Cosmos DB. Дополнительные сведения см. в статье [Работа с поддержкой веб-канала изменений в Azure DocumentDB](change-feed.md). 
+Мы используем hello [ `CreateDocumentChangeFeedQuery` ](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.createdocumentchangefeedquery.aspx) класс из hello Azure Cosmos DB DocumentDB .NET API. Дополнительные сведения см. в разделе hello [изменение веб-канала статьи](change-feed.md). 
 
 ##### <a name="getnewormodifiedfhirdocuments-operation"></a>Операция GetNewOrModifiedFhirDocuments
 
@@ -103,7 +103,7 @@ Azure Cosmos DB выполняет роль репозитория для рес
 
 <a id="api-app-source"></a>
 
-**Исходный код приложения API**
+**Источник для приложение hello API**
 
 ```C#
 
@@ -127,8 +127,8 @@ Azure Cosmos DB выполняет роль репозитория для рес
         public class FhirResourceTypeController : ApiController
         {
             /// <summary>
-            ///     Gets the new or modified FHIR documents from Last Run Date 
-            ///     or create date of the collection
+            ///     Gets hello new or modified FHIR documents from Last Run Date 
+            ///     or create date of hello collection
             /// </summary>
             /// <param name="databaseId"></param>
             /// <param name="collectionId"></param>
@@ -208,27 +208,27 @@ Azure Cosmos DB выполняет роль репозитория для рес
     
 ```
 
-### <a name="testing-the-fhirnotificationapi"></a>Тестирование FhirNotificationApi 
+### <a name="testing-hello-fhirnotificationapi"></a>Приветствие FhirNotificationApi тестирования 
 
-На следующем рисунке показано, как использовалось приложение Swagger для тестирования [FhirNotificationApi](#api-app-source).
+Hello на рисунке показано, каким образом было hello используется tootootest swagger [FhirNotificationApi](#api-app-source).
 
-![Файл Swagger, используемый для тестирования приложения API](./media/change-feed-hl7-fhir-logic-apps/hl7-fhir-testing-app.png)
+![файл Swagger Hello использовать приложение API tootest hello](./media/change-feed-hl7-fhir-logic-apps/hl7-fhir-testing-app.png)
 
 
 ### <a name="azure-portal-dashboard"></a>Панель мониторинга портала Azure
 
-На следующем рисунке показаны все службы Azure, используемые в этом решении, которые работают на портале Azure.
+Следующие изображения Hello показывает все hello служб Azure для этого решения, работающих в hello портал Azure.
 
-![Портал Azure с информацией обо всех службах, используемых в этом руководстве по HL7 FHIR](./media/change-feed-hl7-fhir-logic-apps/hl7-fhir-portal.png)
+![портал Azure, показывающий все службы hello, используемые в этом учебнике HL7 FHIR Hello](./media/change-feed-hl7-fhir-logic-apps/hl7-fhir-portal.png)
 
 
 ## <a name="summary"></a>Сводка
 
-- Вы узнали, что в Azure Cosmos DB есть встроенная поддержка уведомлений о новых или измененных документах, и научились легко ее применять. 
+- Вы узнали, что Azure Cosmos DB имеет собственный поддержки для получения уведомлений о новых или изменена документы и как просто можно toouse. 
 - Используя приложения логики, вы можете создавать рабочие процессы даже без написания кода.
-- Также вы узнали, как использовать очереди служебной шины Azure для обработки распространения документов HL7 FHIR.
+- С помощью распространения hello toohandle очереди шины обслуживания Azure для hello HL7 FHIR документов.
 
 ## <a name="next-steps"></a>Дальнейшие действия
-Дополнительные сведения о базе данных Azure Cosmos DB см. на [ее главной странице](https://azure.microsoft.com/services/cosmos-db/). Подробную информацию о приложениях логики см. [здесь](https://azure.microsoft.com/services/logic-apps/).
+Дополнительные сведения о базе данных Azure Cosmos см. в разделе hello [Домашняя страница Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/). Подробную информацию о приложениях логики см. [здесь](https://azure.microsoft.com/services/logic-apps/).
 
 

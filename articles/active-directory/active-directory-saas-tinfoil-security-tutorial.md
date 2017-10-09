@@ -1,6 +1,6 @@
 ---
 title: "Руководство по интеграции Azure Active Directory с TINFOIL SECURITY | Документация Майкрософт"
-description: "Узнайте, как настроить единый вход Azure Active Directory в TINFOIL SECURITY."
+description: "Узнайте, как tooconfigure единый вход между Azure Active Directory и TINFOIL SECURITY."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,105 +14,105 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/20/2017
 ms.author: jeedes
-ms.openlocfilehash: 614e4de3335574f4b56c7d641af4fcfafdb17d12
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 1a3fa9880d9e026c2d6d6548188df2269ff69139
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tinfoil-security"></a>Руководство по интеграции Azure Active Directory с TINFOIL SECURITY
 
-В этом руководстве описано, как интегрировать TINFOIL SECURITY с Azure Active Directory (Azure AD).
+В этом учебнике вы узнаете, как toointegrate TINFOIL SECURITY с Azure Active Directory (Azure AD).
 
-Интеграция TINFOIL SECURITY с Azure AD имеет следующие преимущества:
+Интеграция TINFOIL SECURITY с Azure AD предоставляет hello следующие преимущества:
 
-- С помощью Azure AD вы можете контролировать, у кого есть доступ к приложению TINFOIL SECURITY.
-- Вы можете включить автоматический вход пользователей в TINFOIL SECURITY (единый вход) с помощью учетной записи Azure AD.
-- Вы можете управлять учетными записями централизованно — через портал Azure.
+- Можно управлять в Azure AD, имеющего доступ tooTINFOIL безопасности
+- Можно включить на пользователей tooautomatically get вошедшего tooTINFOIL безопасности (Single Sign-On) с помощью своих учетных записей Azure AD
+- Можно управлять учетными записями в одном централизованном месте - hello портал Azure
 
-Подробнее узнать об интеграции приложений SaaS с Azure AD можно в разделе [Что такое доступ к приложениям и единый вход с помощью Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Если tooknow Дополнительные сведения об интеграции приложений SaaS в Azure AD, см. [доступ к приложению и единый вход в Azure Active Directory](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Предварительные требования
 
-Чтобы настроить интеграцию Azure AD с приложением TINFOIL SECURITY, вам потребуется:
+tooconfigure интеграция Azure AD с TINFOIL SECURITY требуется hello следующих элементов:
 
 - подписка Azure AD;
 - подписка TINFOIL SECURITY с поддержкой единого входа.
 
 > [!NOTE]
-> Мы не рекомендуем использовать рабочую среду для проверки действий в этом учебнике.
+> в этом учебнике шаги tootest hello, не рекомендуется в рабочей среде.
 
-При проверке действий в этом учебнике соблюдайте следующие рекомендации:
+tootest hello шаги в этом учебнике, необходимо следовать приведенным ниже рекомендациям:
 
 - Не используйте рабочую среду без необходимости.
 - Если у вас нет пробной среды Azure AD, вы можете [получить пробную версию на один месяц](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Описание сценария
-В рамках этого руководства проводится проверка единого входа Azure AD в тестовой среде. Сценарий, описанный в этом учебнике, состоит из двух основных блоков:
+В рамках этого руководства проводится проверка единого входа Azure AD в тестовой среде. Hello сценарий, описанный в этом учебнике состоит из двух основных компонентов:
 
-1. Добавление TINFOIL SECURITY из коллекции.
+1. Добавление TINFOIL SECURITY из коллекции hello
 2. Настройка и проверка единого входа в Azure AD
 
-## <a name="add-tinfoil-security-from-the-gallery"></a>Добавление TINFOIL SECURITY из коллекции
-Чтобы настроить интеграцию TINFOIL SECURITY с Azure AD, вам нужно добавить TINFOIL SECURITY из коллекции в список управляемых приложений SaaS.
+## <a name="add-tinfoil-security-from-hello-gallery"></a>Добавление TINFOIL SECURITY из коллекции hello
+tooconfigure hello интеграции TINFOIL SECURITY в Azure AD, вы должны tooadd TINFOIL SECURITY из списка tooyour коллекции hello управляемых приложений SaaS.
 
-**Чтобы добавить TINFOIL SECURITY из коллекции, сделайте следующее.**
+**tooadd TINFOIL SECURITY из галереи hello, выполните следующие шаги hello.**
 
-1. На **[портале Azure](https://portal.azure.com)** в области навигации слева щелкните значок **Azure Active Directory**. 
+1. В hello  **[портал Azure](https://portal.azure.com)**на левой навигационной панели hello, нажмите кнопку **Azure Active Directory** значок. 
 
     ![Active Directory][1]
 
-2. Перейдите к разделу **Корпоративные приложения**. Затем выберите **Все приложения**.
+2. Перейдите в слишком**корпоративных приложений**. Затем перейдите слишком**все приложения**.
 
     ![Приложения][2]
     
-3. Чтобы добавить новое приложение, в верхней части диалогового окна нажмите кнопку **Создать приложение**.
+3. tooadd новое приложение, нажмите кнопку **новое приложение** кнопку в верхней части hello диалогового окна.
 
     ![Приложения][3]
 
-4. В поле поиска введите **TINFOIL SECURITY**, выберите **TINFOIL SECURITY** на панели результатов и нажмите кнопку **Добавить**, чтобы добавить это приложение.
+4. Введите в поле поиска hello **TINFOIL SECURITY**выберите **TINFOIL SECURITY** из панели результатов щелкните **добавить** кнопку tooadd приложения hello.
 
     ![Добавление TINFOIL SECURITY из коллекции](./media/active-directory-saas-tinfoil-security-tutorial/tutorial_tinfoil-security_addfromgallery.png)
 
 ##  <a name="configure-and-test-azure-ad-single-sign-on"></a>Настройка и проверка единого входа в Azure AD
 В этом разделе описана настройка и проверка единого входа Azure AD в TINFOIL SECURITY с использованием тестового пользователя Britta Simon.
 
-Чтобы единый вход работал, Azure AD необходима информация о том, какой пользователь в TINFOIL SECURITY соответствует пользователю в Azure AD. Иными словами, необходимо установить связь между пользователем Azure AD и соответствующим пользователем в TINFOIL SECURITY.
+Для единого входа toowork Azure AD необходима tooknow пользователя аналог hello в TINFOIL SECURITY — tooa пользователя в Azure AD. Другими словами связи между пользователя Azure AD и связанных пользователей hello в TINFOIL SECURITY должен установить toobe.
 
-Чтобы установить эту связь, назначьте **имя пользователя** в Azure AD в качестве значения **имени пользователя** в TINFOIL SECURITY.
+В TINFOIL SECURITY, присвойте значение hello hello **имя пользователя** в Azure AD в качестве значения hello hello **Username** tooestablish hello связи.
 
-Чтобы настроить и проверить единый вход Azure AD в TINFOIL SECURITY, выполните следующие действия.
+tooconfigure и теста Azure AD единого входа с TINFOIL SECURITY, требуются следующие стандартные блоки hello toocomplete:
 
-1. **[Настройка единого входа Azure AD](#configure-azure-ad-single-sign-on)** необходима, чтобы пользователи могли использовать эту функцию.
-2. **[Создание тестового пользователя Azure AD](#create-an-azure-ad-test-user)** требуется для проверки работы единого входа Azure AD от имени пользователя Britta Simon.
-3. **[Создание тестового пользователя TINFOIL SECURITY](#create-a-tinfoil-security-test-user)** требуется для того, чтобы в TINFOIL SECURITY существовал пользователь Britta Simon, связанный с одноименным пользователем в Azure AD.
-4. **[Назначение тестового пользователя Azure AD](#assign-the-azure-ad-test-user)** необходимо, чтобы позволить Britta Simon использовать единый вход Azure AD.
-5. **[Проверка единого входа](#test-single-sign-on)** необходима, чтобы убедиться в корректной работе конфигурации.
+1. **[Настройка Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)**  -tooenable вашей toouse пользователи этой функции.
+2. **[Создание тестового пользователя Azure AD](#create-an-azure-ad-test-user)**  -tootest Azure AD единого входа с Саймон Britta.
+3. **[Создание тестового пользователя TINFOIL SECURITY](#create-a-tinfoil-security-test-user)**  -toohave аналог Саймон Britta в TINFOIL SECURITY, представление связанных toohello Azure AD пользователя.
+4. **[Назначить hello Azure AD тестового пользователя](#assign-the-azure-ad-test-user)**  -tooenable Britta Simon toouse Azure AD единым входом.
+5. **[Тестирование единого входа](#test-single-sign-on)**  -tooverify ли hello works конфигурации.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Настройка единого входа Azure AD
 
-В этом разделе описано, как включить единый вход Azure AD на портале Azure и настроить его в приложении TINFOIL SECURITY.
+В этом разделе включения Azure AD единым входом в портал Azure hello и настройки единого входа в приложении TINFOIL SECURITY.
 
-**Чтобы настроить единый вход Azure AD в TINFOIL SECURITY, сделайте следующее.**
+**tooconfigure Azure AD единого входа с TINFOIL SECURITY, выполните следующие шаги hello.**
 
-1. На портале Azure на странице интеграции с приложением **TINFOIL SECURITY** щелкните **Единый вход**.
+1. В hello в hello портала Azure **TINFOIL SECURITY** странице интеграции приложения щелкните **единого входа**.
 
     ![Настройка единого входа][4]
 
-2. В диалоговом окне **Единый вход** в разделе **Режим** выберите **Вход на основе SAML**, чтобы включить функцию единого входа.
+2. На hello **единого входа** диалогового окна выберите **режим** как **входа на базе SAML** tooenable единого входа.
  
     ![Вход на основе SAML](./media/active-directory-saas-tinfoil-security-tutorial/tutorial_tinfoil-security_samlbase.png)
 
-3. В разделе **Домены и URL-адреса приложения TINFOIL SECURITY** не нужно выполнять никаких действий, так как это приложение предварительно интегрировано с Azure.
+3. На hello **TINFOIL безопасности домена и URL-адреса** статьи, hello пользователь не имеет tooperform все меры как приложение hello уже заранее интегрировано с Azure.
 
     ![Настройка единого входа](./media/active-directory-saas-tinfoil-security-tutorial/tutorial_tinfoil-security_url.png)
 
 
-4. В разделе **Сертификат подписи SAML** скопируйте значение **Отпечаток**.
+4. На hello **сертификат подписи SAML** раздел, hello копирования **ОТПЕЧАТОК** значение.
 
     ![Раздел "Сертификат подписи SAML"](./media/active-directory-saas-tinfoil-security-tutorial/tutorial_tinfoil-security_certificate.png) 
 
-5. Чтобы добавить обязательные сопоставления атрибутов, выполните следующие действия.
+5. сопоставления атрибутов hello необходимые tooadd, выполните hello следующие шаги.
     
     ![Атрибуты](./media/active-directory-saas-tinfoil-security-tutorial/tutorial_tinfoil-security_attribute1.png "Атрибуты")
     
@@ -126,23 +126,23 @@ ms.lasthandoff: 08/03/2017
     
     ![Добавление атрибута](./media/active-directory-saas-tinfoil-security-tutorial/tutorial_tinfoil-security_addatt.png "Атрибуты")
     
-    b. В текстовом поле **Имя атрибута** введите **accountid**.
+    b. В hello **имя атрибута** введите **accountid**.
     
-    c. В текстовое поле **Значение атрибута** следует вставить идентификатор учетной записи, который вы получите позже при работе с этим руководством.
+    c. В hello **значение атрибута** текстовое значение идентификатора учетной записи hello вставить которого вы получите позднее hello учебника.
     
-    г) Нажмите кнопку **ОК**.    
+    d. Нажмите кнопку **ОК**.    
 
 6. Нажмите кнопку **Сохранить** .
 
     ![Кнопка "Сохранить"](./media/active-directory-saas-tinfoil-security-tutorial/tutorial_general_400.png)
 
-7. В разделе **Конфигурация TINFOIL SECURITY** щелкните **Настроить TINFOIL SECURITY**, чтобы открыть окно **Настройка единого входа**. Скопируйте **URL-адрес службы единого входа SAML** из раздела **Краткий справочник**.
+7. На hello **конфигурация безопасности TINFOIL** щелкните **Настройка TINFOIL SECURITY** tooopen **Настройка входа** окна. Копировать hello **SAML единого входа URL-адрес службы** из hello **краткий справочник.**
 
     ![Конфигурация TINFOIL SECURITY](./media/active-directory-saas-tinfoil-security-tutorial/tutorial_tinfoil-security_configure.png) 
 
 8. В другом окне веб-браузера войдите на свой корпоративный веб-сайт TINFOIL SECURITY в качестве администратора.
 
-9. На панели инструментов в верхней части экрана щелкните **Моя учетная запись**.
+9. Щелкните hello панели инструментов в верхней части hello **Моя учетная запись**.
    
     ![Панель мониторинга](./media/active-directory-saas-tinfoil-security-tutorial/ic798971.png "Панель мониторинга")
 
@@ -150,7 +150,7 @@ ms.lasthandoff: 08/03/2017
    
     ![Безопасность](./media/active-directory-saas-tinfoil-security-tutorial/ic798972.png "Безопасность")
 
-11. На странице настроек **Единый вход** выполните следующие действия.
+11. На hello **Single Sign-On** конфигурации выполните следующие шаги hello:
    
     ![Единый вход](./media/active-directory-saas-tinfoil-security-tutorial/ic798973.png "Единый вход")
    
@@ -158,81 +158,81 @@ ms.lasthandoff: 08/03/2017
    
     b. Щелкните **Настроить вручную**.
    
-    c. В текстовое поле **SAML Post URL** (URL-адрес POST SAML) вставьте значение **SAML Single Sign-On Service URL** (URL-адрес службы единого входа SAML), скопированное на портале Azure.
+    c. В **URL-адрес Post для SAML** текстовое значение hello вставить **SAML единого входа URL-адрес службы** скопирован из портала Azure
    
-    г) В текстовое поле **SAML Certificate Fingerprint** (Отпечаток сертификата SAML) вставьте значение **Отпечаток**, скопированное в разделе **Сертификат подписи SAML**.
+    d. В **отпечаток сертификата SAML** текстовое значение hello вставить **отпечаток** скопирован из **сертификат подписи SAML** раздела.
   
-    д. Скопируйте значение **Your Account ID** (Ваш идентификатор учетной записи) и вставьте его в текстовое поле **Значение атрибута** в разделе **Добавление атрибута** на портале Azure.
+    д. Копировать **свой идентификатор учетной записи** значение и вставьте значение hello в **значение атрибута** текстовое поле под **Добавление атрибута** раздела на портале Azure.
    
     f. Щелкните **Сохранить**.
 
 > [!TIP]
-> Краткую версию этих инструкций теперь можно также прочитать на [портале Azure](https://portal.azure.com) во время настройки приложения.  После добавления этого приложения из раздела **Active Directory > Корпоративные приложения** просто выберите вкладку **Единый вход** и откройте встроенную документацию через раздел **Настройка** в нижней части страницы. Дополнительные сведения о встроенной документации см. в разделе [Встроенная документация Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985).
+> Вы сможете прочитать четкими версии этих инструкций внутри hello [портал Azure](https://portal.azure.com), а вы настраиваете приложение hello!  После добавления этого приложения из hello **Active Directory > корпоративных приложений** просто щелкните hello **Single Sign-On** вкладку и доступа hello внедренных документации с помощью hello  **Конфигурация** раздела внизу hello. Вы можете прочитать больше о документации embedded функции hello здесь: [документации внедренных Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
 ### <a name="create-an-azure-ad-test-user"></a>Создание тестового пользователя Azure AD
-Цель этого раздела — создать на портале Azure тестового пользователя с именем Britta Simon.
+Цель этого раздела Hello — toocreate тестового пользователя в hello вызывается Саймон Britta портал Azure.
 
 ![Создание пользователя Azure AD][100]
 
-**Чтобы создать тестового пользователя в Azure AD, выполните следующие действия:**
+**toocreate тестового пользователя в Azure AD, выполните следующие шаги hello.**
 
-1. На **портале Azure** в области навигации слева щелкните значок **Azure Active Directory**.
+1. В hello **портал Azure**, на левой панели навигации hello, нажмите кнопку **Azure Active Directory** значок.
 
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-tinfoil-security-tutorial/create_aaduser_01.png) 
 
-2. Чтобы отобразить список пользователей, перейдите в раздел **Пользователи и группы** и щелкните **Все пользователи**.
+2. hello toodisplay список пользователей, перейдите в слишком**пользователей и групп** и нажмите кнопку **всех пользователей**.
     
     ![Выберите "Пользователи и группы" > "Все пользователи". ](./media/active-directory-saas-tinfoil-security-tutorial/create_aaduser_02.png) 
 
-3. Чтобы открыть диалоговое окно **Пользователь**, в верхней части диалогового окна щелкните **Добавить**.
+3. tooopen hello **пользователя** диалоговое окно, нажмите кнопку **добавить** в верхней части hello диалогового окна "hello".
  
     ![Пользователь](./media/active-directory-saas-tinfoil-security-tutorial/create_aaduser_03.png) 
 
-4. На странице диалогового окна **Пользователь** выполните следующие действия.
+4. На hello **пользователя** диалогового окна выполните следующие шаги hello:
  
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-tinfoil-security-tutorial/create_aaduser_04.png) 
 
-    а. В текстовом поле **Имя** введите **BrittaSimon**.
+    а. В hello **имя** введите **BrittaSimon**.
 
-    b. В текстовом поле **Имя пользователя** введите **адрес электронной почты** учетной записи BrittaSimon.
+    b. В hello **имя пользователя** в текстовое поле типа hello **адрес электронной почты** из BrittaSimon.
 
-    c. Выберите **Показать пароль** и запишите значение поля **Пароль**.
+    c. Выберите **Показать пароль** и запишите значение hello hello **пароль**.
 
     d. Щелкните **Создать**.
  
 ### <a name="create-a-tinfoil-security-test-user"></a>Создание тестового пользователя TINFOIL SECURITY
 
-Чтобы пользователи Azure AD могли выполнить вход в TINFOIL SECURITY, они должны быть подготовлены для TINFOIL SECURITY. В случае TINFOIL SECURITY подготовка выполняется вручную.
+В порядке tooenable toolog пользователей Azure AD в TINFOIL SECURITY их необходимо подготовить в TINFOIL SECURITY. В случае TINFOIL SECURITY hello Подготовка выполняется вручную.
 
-**Чтобы подготовить пользователя, выполните следующие действия.**
+**tooget пользователь подготовлен, выполните следующие шаги hello.**
 
-1. Если пользователь является частью учетной записи Enterprise, то для создания учетной записи пользователя необходимо обратиться к [группе поддержки TINFOIL SECURITY](https://www.tinfoilsecurity.com/contact).
+1. Hello пользователь входит в учетной записи предприятия, требуется слишком[обратитесь в службу поддержки TINFOIL SECURITY hello](https://www.tinfoilsecurity.com/contact) tooget hello Создание учетной записи пользователя.
 
-2. Если пользователь является обычным пользователем SaaS TINFOIL SECURITY, то он может добавить участника совместной работы на любой из своих сайтов. Это активирует процесс, который отправит приглашение по указанному электронному адресу для создания учетной записи пользователя TINFOIL SECURITY.
+2. Если пользователь hello обычный пользователь TINFOIL SECURITY SaaS, hello пользователя можно добавить участника совместной работы tooany сайтов hello пользователя. Этот триггеры toosend процесс, указанный toohello приглашение по электронной почте toocreate новой учетной записи безопасности TINFOIL SECURITY.
 
 > [!NOTE]
-> Вы можете использовать любые другие инструменты создания учетных записей пользователя TINFOIL SECURITY или API, предоставляемые TINFOIL SECURITY для подготовки учетных записей пользователя Azure Active Directory.
+> Можно использовать любые другие TINFOIL SECURITY пользователя средства создания учетных записей или API, предоставленные TINFOIL SECURITY tooprovision учетных записей пользователей Azure AD.
 > 
 > 
 
-### <a name="assign-the-azure-ad-test-user"></a>Назначение тестового пользователя Azure AD
+### <a name="assign-hello-azure-ad-test-user"></a>Назначить hello Azure AD тестового пользователя
 
-В этом разделе описано, как разрешить пользователю Britta Simon использовать единый вход Azure, предоставив этому пользователю доступ к TINFOIL SECURITY.
+В этом разделе включите toouse Britta Simon Azure единого входа путем предоставления доступа tooTINFOIL безопасности.
 
 ![Назначение пользователя][200] 
 
-**Чтобы назначить пользователя Britta Simon в TINFOIL SECURITY, выполните следующие действия.**
+**tooassign tooTINFOIL Britta Simon безопасности, выполните hello следующие шаги.**
 
-1. На портале Azure откройте представление приложений, перейдите к представлению каталога, а затем выберите **Корпоративные приложения** и щелкните **Все приложения**.
+1. В hello портал Azure, откройте представление приложения hello, а затем перейдите toohello представления каталога и перейти слишком**корпоративных приложений** щелкните **все приложения**.
 
     ![Назначение пользователя][201] 
 
-2. Из списка приложений выберите **TINFOIL SECURITY**.
+2. В списке приложений hello выберите **TINFOIL SECURITY**.
 
     ![Выбор TINFOIL SECURITY](./media/active-directory-saas-tinfoil-security-tutorial/tutorial_tinfoil-security_app.png) 
 
-3. В меню слева выберите **Пользователи и группы**.
+3. В меню слева hello hello выберите **пользователей и групп**.
 
     ![Назначение пользователя][202] 
 
@@ -240,7 +240,7 @@ ms.lasthandoff: 08/03/2017
 
     ![Назначение пользователя][203]
 
-5. В диалоговом окне **Пользователи и группы** в списке пользователей выберите **Britta Simon**.
+5. На **пользователей и групп** диалогового окна выберите **Britta Simon** в список пользователей hello.
 
 6. В диалоговом окне **Пользователи и группы** нажмите кнопку **Выбрать**.
 
@@ -248,13 +248,13 @@ ms.lasthandoff: 08/03/2017
     
 ### <a name="test-single-sign-on"></a>Проверка единого входа
 
-В этом разделе описано, как проверить конфигурацию единого входа Azure AD с помощью панели доступа.
+В этом разделе тестирования конфигурации Azure AD единого входа с помощью панели доступа hello.
 
-Щелкнув элемент "TINFOIL SECURITY" на панели доступа, вы автоматически войдете в приложение TINFOIL SECURITY. Дополнительные сведения о панели доступа см. в статье [Общие сведения о панели доступа](active-directory-saas-access-panel-introduction.md).
+При выборе плитки TINFOIL SECURITY hello в hello панели доступа, вы должны получить приложение автоматически вошедшего tooyour TINFOIL SECURITY. Дополнительные сведения о панели доступа hello см. в разделе [toohello введение панели доступа](active-directory-saas-access-panel-introduction.md).
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
-* [Список учебников по интеграции приложений SaaS с Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Список учебников по tooIntegrate приложений SaaS в Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Что такое доступ к приложениям и единый вход с помощью Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 

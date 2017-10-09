@@ -1,6 +1,6 @@
 ---
-title: "Ввод моделей машинного обучения, созданных с помощью Spark, в эксплуатацию | Документация Майкрософт"
-description: "Сведения об отправке и оценке моделей обучения, сохраненных в хранилище BLOB-объектов Azure, с помощью Python."
+title: "aaaOperationalize Spark построенных моделей машинного обучения | Документы Microsoft"
+description: "Tooload оценка обучения моделей хранением и в хранилище больших двоичных объектов Azure (WASB) с Python."
 services: machine-learning
 documentationcenter: 
 author: bradsev
@@ -14,64 +14,64 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/15/2017
 ms.author: deguhath;bradsev;gokuma
-ms.openlocfilehash: 00fec675bed0137473f7e3c5ddfe9c3c0e8344c6
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: c5fadcb13257b94dcb28a522be454f6e03dfa991
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="operationalize-spark-built-machine-learning-models"></a>Ввод моделей машинного обучения, созданных с помощью Spark, в эксплуатацию
 [!INCLUDE [machine-learning-spark-modeling](../../includes/machine-learning-spark-modeling.md)]
 
-В этой статье показано, как ввести сохраненные модели машинного обучения в эксплуатацию с помощью Python в кластерах HDInsight Spark. Кроме того, здесь описывается, как загрузить модели машинного обучения, созданные с помощью Spark MLlib и сохраненные в хранилище BLOB-объектов Azure, а также как оценить их с помощью наборов данных, которые сохранены в этом же хранилище. Здесь также описано, как выполнить предварительную подготовку входных данных, преобразовать признаки с помощью функций индексирования и кодирования в наборе средств MLlib и как создать объекты данных с помеченной вершиной, которые можно использовать в качестве входных данных для оценки при помощи моделей машинного обучения. Для оценки будут использоваться такие модели, как линейная регрессия, логистическая регрессия, случайные леса и градиентный бустинг деревьев.
+В этом разделе показано, как toooperationalize сохраненного модели машинного обучения (ML) с помощью Python на HDInsight Spark кластеров. Здесь описываются процедуры tooload машинного обучения моделей, построенных с использованием Spark MLlib и хранятся в хранилище больших двоичных объектов Azure (WASB) и tooscore их с наборами данных, также сохраненные в WASB. Он показывает процессами toopre hello входных данных, компонентов преобразования с использованием hello индексирования и кодировка функции в набор средств MLlib hello и как toocreate объекта с меткой точки данных, который можно использовать в качестве входных данных для оценки с моделями hello машинного Обучения. Hello модели, используемые для оценки включают линейной регрессии, логистической регрессии, моделей случайные леса и градиента повышение приоритета моделей дерева.
 
 ## <a name="spark-clusters-and-jupyter-notebooks"></a>Кластеры Spark и записные книжки Jupyter
-Действия по настройке и код, используемые для ввода модели машинного обучения в эксплуатацию в рамках этого руководства, можно выполнять как в кластере HDInsight Spark 1.6, так и в кластере Spark 2.0. В записных книжках Jupyter также содержится код для выполнения этих процедур.
+Шаги настройки и toooperationalize кода hello модель машинного Обучения предоставляются в этом пошаговом руководстве по использованию кластер HDInsight Spark 1.6, а также кластер Spark 2.0. Hello код для этих процедур также предоставляется в записные книжки Jupyter.
 
 ### <a name="notebook-for-spark-16"></a>Записная книжка для Spark 1.6
-Записная книжка Jupyter [pySpark-machine-learning-data-science-spark-model-consumption.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark1.6/pySpark-machine-learning-data-science-spark-model-consumption.ipynb) показывает, как применять сохраненную модель в кластерах HDInsight с помощью Python. 
+Hello [pySpark-machine-learning-data-science-spark-model-consumption.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark1.6/pySpark-machine-learning-data-science-spark-model-consumption.ipynb) книжке Jupyter показано, как toooperationalize сохраненную модель с помощью Python в HDInsight кластеров. 
 
 ### <a name="notebook-for-spark-20"></a>Записная книжка для Spark 2.0
-Чтобы изменить записную книжку Jupyter для Spark 1.6 для использования в кластере HDInsight Spark 2.0, замените файл кода Python [этим файлом](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/Python/Spark2.0_ConsumeRFCV_NYCReg.py). Этот код показывает, как использовать модели, созданные в Spark 2.0.
+книжке Jupyter hello toomodify для toouse Spark 1.6 с кластером HDInsight Spark 2.0 заменить файл кода hello Python с [этот файл](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/Python/Spark2.0_ConsumeRFCV_NYCReg.py). Этот код показывает способ создания модели tooconsume hello в Spark 2.0.
 
 
 ## <a name="prerequisites"></a>Предварительные требования
 
-1. Для работы с этим пошаговым руководством требуется учетная запись Azure и кластер Spark 1.6 или Spark 2.0 HDInsight. См. статью [Общие сведения об обработке и анализе данных с помощью платформы Spark в Azure HDInsight](machine-learning-data-science-spark-overview.md) для получения инструкций по выполнению этих требований. В этой статье также содержится описание используемых здесь данных о поездках в такси по Нью-Йорку за 2013 г., и инструкции по выполнению кода из записной книжки Jupyter в кластере Spark. 
-2. Вам также необходимо создать модели машинного обучения, которые будут оцениваться. Для этого выполните действия, описанные в статье [Исследование и моделирование данных с помощью Spark](machine-learning-data-science-spark-data-exploration-modeling.md) (для кластера Spark 1.6 или записных книжек Spark 2.0). 
-3. Записные книжки Spark 2.0 используют для задачи классификации дополнительный набор данных — известное расписание вылетов авиакомпании за 2011 и 2012 гг. Описание записных книжек и ссылки на них вы можете найти в файле [Readme.md](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Readme.md) для репозитория GitHub с записными книжками. Более того, код здесь и в связанных записных книжках является универсальным и должен работать в любом кластере Spark. Действия по настройке кластера и управлению им могут немного отличаться от приведенных здесь, если вы не используете HDInsight Spark. 
+1. Вам потребуется учетная запись Azure и Spark 1.6 (или Spark 2.0) кластер HDInsight toocomplete в данном пошаговом руководстве. В разделе hello [Обзор для обработки и анализа данных с помощью Spark на Azure HDInsight](machine-learning-data-science-spark-overview.md) инструкции о том, как toosatisfy эти требования. Этот раздел также содержит описание hello такси 2013 NYC данные, используемые здесь и инструкции о том, как код tooexecute из записной книжке Jupyter на кластере Spark hello. 
+2. Необходимо также создать hello моделей машинного обучения toobe здесь рассчитаны с одновременной ликвидации hello [данных и моделирование с Spark](machine-learning-data-science-spark-data-exploration-modeling.md) раздел для кластера Spark 1.6 hello или ноутбуки hello Spark 2.0. 
+3. портативные компьютеры Hello Spark 2.0 использовать дополнительный набор данных для задачи классификации hello, hello хорошо известных авиакомпании на время отправления набор данных на основе 2011 г. и 2012. Описание toothem hello записных книжек и ссылки, представлено в hello [Readme.md](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Readme.md) для репозитория GitHub hello, содержащий их. Кроме того код hello здесь и в записных книжках hello связаны является универсальным и должен работать на любой кластер Spark. Если вы не используете HDInsight Spark, настройку и управление ими действия hello кластера может быть немного отличается от показанной здесь. 
 
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
-## <a name="setup-storage-locations-libraries-and-the-preset-spark-context"></a>Настройка места хранения, библиотек и предустановленного контекста Spark
-Spark может использовать хранилище BLOB-объектов Azure (WASB) для считывания и записи данных. Таким образом, данные из хранилища можно обрабатывать с помощью Spark и сохранять полученные данные в этом же хранилище.
+## <a name="setup-storage-locations-libraries-and-hello-preset-spark-context"></a>Программа установки: hello, библиотеки и расположения хранилища конфигурации Spark контекста
+Spark — может tooan tooread и записи больших двоичных объектов хранилища Azure (WASB). Поэтому любые существующие данные, хранящиеся в ней могут быть обработаны с помощью Spark и hello результаты хранимых в WASB.
 
-Чтобы сохранить модели или файлы в хранилище BLOB-объектов, необходимо указать путь соответствующим образом. Контейнер по умолчанию, присоединенный к кластеру Spark, можно указать с помощью пути, который начинается с *"wasb//"*. В следующем примере кода задается расположение данных, которые необходимо считать, и путь для каталога хранилища модели, где сохраняются выходные данные модели: 
+toosave модели или файлов в WASB, hello путь должен toobe указано правильно. Hello кластера Spark toohello присоединенного контейнера по умолчанию можно обращаться, используя путь, начиная с: *«wasb / /»*. Hello следующий код задает расположение hello чтения toobe данных hello и hello hello модели хранения каталога toowhich hello модели выходных данных будет сохранен. 
 
 ### <a name="set-directory-paths-for-storage-locations-in-wasb"></a>Настройка путей каталога к месту хранения в хранилище BLOB-объектов
 Модели сохраняются в следующем расположении: wasb:///user/remoteuser/NYCTaxi/Models. Если этот путь задан неправильно, загрузить модели для оценки не удастся.
 
-Результаты оценки сохраняются в следующем расположении: wasb:///user/remoteuser/NYCTaxi/ScoredResults. Если путь задан неправильно, сохранить результаты в эту папку не удастся.   
+Hello оцененные результаты были сохранены в: «wasb: / / / пользователя/remoteuser/NYCTaxi/ScoredResults». Если путь toofolder hello является неверной, результаты не сохраняются в этой папке.   
 
 > [!NOTE]
-> Путь к расположению файлов можно скопировать из выходных данных, полученных после выполнения последнего фрагмента кода записной книжки **machine-learning-data-science-spark-data-exploration-modeling.ipynb** , и вставить в заполнители в этом коде.   
+> пути к расположению файла Hello можно скопировать и вставить в заполнители hello в этом коде из вывода hello hello последнюю ячейку hello **machine-learning-data-science-spark-data-exploration-modeling.ipynb** ноутбука.   
 > 
 > 
 
-Ниже приведен код для настройки путей к каталогам: 
+Вот путей к каталогам tooset кода hello. 
 
-    # LOCATION OF DATA TO BE SCORED (TEST DATA)
+    # LOCATION OF DATA tooBE SCORED (TEST DATA)
     taxi_test_file_loc = "wasb://mllibwalkthroughs@cdspsparksamples.blob.core.windows.net/Data/NYCTaxi/JoinedTaxiTripFare.Point1Pct.Test.tsv";
 
-    # SET THE MODEL STORAGE DIRECTORY PATH 
-    # NOTE THE LAST BACKSLASH IN THIS PATH IS NEEDED
+    # SET hello MODEL STORAGE DIRECTORY PATH 
+    # NOTE hello LAST BACKSLASH IN THIS PATH IS NEEDED
     modelDir = "wasb:///user/remoteuser/NYCTaxi/Models/" 
 
     # SET SCORDED RESULT DIRECTORY PATH
-    # NOTE THE LAST BACKSLASH IN THIS PATH IS NEEDED
+    # NOTE hello LAST BACKSLASH IN THIS PATH IS NEEDED
     scoredResultDir = "wasb:///user/remoteuser/NYCTaxi/ScoredResults/"; 
 
-    # FILE LOCATIONS FOR THE MODELS TO BE SCORED
+    # FILE LOCATIONS FOR hello MODELS tooBE SCORED
     logisticRegFileLoc = modelDir + "LogisticRegressionWithLBFGS_2016-04-1817_40_35.796789"
     linearRegFileLoc = modelDir + "LinearRegressionWithSGD_2016-04-1817_44_00.993832"
     randomForestClassificationFileLoc = modelDir + "RandomForestClassification_2016-04-1817_42_58.899412"
@@ -88,7 +88,7 @@ Spark может использовать хранилище BLOB-объекто
 datetime.datetime(2016, 4, 25, 23, 56, 19, 229403)
 
 ### <a name="import-libraries"></a>Импорт библиотек
-Чтобы импортировать библиотеки и настроить контекст Spark, используйте следующий код:
+Spark в контексте, а затем импортируйте необходимые библиотеки после кода hello
 
     #IMPORT LIBRARIES
     import pyspark
@@ -107,23 +107,23 @@ datetime.datetime(2016, 4, 25, 23, 56, 19, 229403)
 
 
 ### <a name="preset-spark-context-and-pyspark-magics"></a>Предустановленный контекст Spark и волшебные команды PySpark
-Ядра PySpark, входящие в состав записных книжек Jupyter, имеют предустановленный контекст. Поэтому перед началом работы с разрабатываемым приложением вам не нужно явно задавать контексты Spark или Hive. Эти контексты доступны вам по умолчанию, а именно:
+Hello PySpark ядер, предоставляемых с записные книжки Jupyter имеют предустановленных контекста. Поэтому необязательно tooset hello Spark или куст контекстов явно перед началом работы с приложением hello, которое вы разрабатываете. Эти контексты доступны вам по умолчанию, а именно:
 
 * sc для Spark; 
 * sqlContext для Hive.
 
-Ядро PySpark предоставляет несколько "волшебных команд". Это специальные команды, которые можно вызывать с %%. В этих примерах кода используются две подобные команды.
+Hello ядра PySpark предоставляет некоторые предопределенные «magics», которые являются специальные команды, которые можно вызвать с %%. В этих примерах кода используются две подобные команды.
 
-* **%%local** Указывает, что код в последующих строках будет выполнен локально. В качестве кода должен быть указан корректный код Python.
+* **%% локального** указанного кода hello в последующих строках выполняется локально. В качестве кода должен быть указан корректный код Python.
 * **%%sql -o <variable name>** 
-* Выполняет запрос Hive к sqlContext. Если передан параметр -o, результат запроса сохраняется в контексте %%local Python в качестве таблицы данных Pandas.
+* Выполняет запрос Hive в отношении hello sqlContext. Если передается параметр -o hello, hello результат запроса hello сохраняется в hello %% локального контекста Python как Pandas кадр данных.
 
-Дополнительные сведения о ядрах для записных книжек Jupyter и предустановленных "волшебных командах", которые они предоставляют, см. в статье [Ядра, доступные для использования записными книжками Jupyter с кластерами Apache Spark в HDInsight на платформе Linux](../hdinsight/hdinsight-apache-spark-jupyter-notebook-kernels.md).
+Для Дополнительные сведения о ядра hello записные книжки Jupyter и предопределенные hello «magics», они предоставляют, в разделе [кластеры ядер, доступных для записные книжки Jupyter с HDInsight Spark Linux в HDInsight](../hdinsight/hdinsight-apache-spark-jupyter-notebook-kernels.md).
 
 ## <a name="ingest-data-and-create-a-cleaned-data-frame"></a>Прием данных и создание очищенного фрейма данных
-В этом разделе содержится код, предназначенный для выполнения задач приема данных, которые нужно смоделировать. С помощью этого кода можно считать файлы в формате TCV (выборку с примерно 0,1 % исходного набора данных о поездках в такси по Нью-Йорку и тарифами), форматировать данные, а затем создавать очищенные фреймы данных.
+В этом разделе содержится код hello для ряда задач требуется tooingest hello данных toobe оцененных. Чтения в соединяемых 0,1% образец hello такси маршрута и тариф авиакомпании файла (хранятся в формате .tsv) hello формат данных, а затем создает кадр очистки данных.
 
-Файлы с данными о поездках в такси по Нью-Йорку и тарифах были объединены с помощью процедуры, описанной в статье [Процесс обработки и анализа данных группы на практике: использование кластеров HDInsight Hadoop](machine-learning-data-science-process-hive-walkthrough.md) .
+Hello такси маршрута и тариф авиакомпании файлы были соединены на основе на процедуру hello в: [hello командного процесса обработки и анализа данных в действие: с использованием кластеров HDInsight Hadoop](machine-learning-data-science-process-hive-walkthrough.md) раздела.
 
     # INGEST DATA AND CREATE A CLEANED DATA FRAME
 
@@ -133,7 +133,7 @@ datetime.datetime(2016, 4, 25, 23, 56, 19, 229403)
     # IMPORT FILE FROM PUBLIC BLOB
     taxi_test_file = sc.textFile(taxi_test_file_loc)
 
-    # GET SCHEMA OF THE FILE FROM HEADER
+    # GET SCHEMA OF hello FILE FROM HEADER
     taxi_header = taxi_test_file.filter(lambda l: "medallion" in l)
 
     # PARSE FIELDS AND CONVERT DATA TYPE FOR SOME FIELDS
@@ -142,7 +142,7 @@ datetime.datetime(2016, 4, 25, 23, 56, 19, 229403)
                             float(p[11]),float(p[12]),p[13],p[14],p[15],p[16],p[17],p[18],float(p[19]),
                             float(p[20]),float(p[21]),float(p[22]),float(p[23]),float(p[24]),int(p[25]),int(p[26])))
 
-    # GET SCHEMA OF THE FILE FROM HEADER
+    # GET SCHEMA OF hello FILE FROM HEADER
     schema_string = taxi_test_file.first()
     fields = [StructField(field_name, StringType(), True) for field_name in schema_string.split('\t')]
     fields[7].dataType = IntegerType() #Pickup hour
@@ -178,24 +178,24 @@ datetime.datetime(2016, 4, 25, 23, 56, 19, 229403)
     # REGISTER DATA-FRAME AS A TEMP-TABLE IN SQL-CONTEXT
     taxi_df_test_cleaned.registerTempTable("taxi_test")
 
-    # PRINT HOW MUCH TIME IT TOOK TO RUN THE CELL
+    # PRINT HOW MUCH TIME IT TOOK tooRUN hello CELL
     timeend = datetime.datetime.now()
     timedelta = round((timeend-timestart).total_seconds(), 2) 
-    print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
+    print "Time taken tooexecute above cell: " + str(timedelta) + " seconds"; 
 
 **ВЫХОДНЫЕ ДАННЫЕ:**
 
-Время на выполнение кода выше: 46,37 с.
+Время, затраченное tooexecute над ячейкой: 46.37 секунд
 
 ## <a name="prepare-data-for-scoring-in-spark"></a>Подготовка данных для оценки в Spark
-В этом разделе описано, как индексировать, кодировать и масштабировать категориальные признаки, чтобы подготовить их для использования в контролируемых алгоритмах обучения MLlib для моделей классификации и регрессии.
+В этом разделе описывается, как tooindex, кодирования и масштабировать категориальных признаков tooprepare их для использования в алгоритмах обучения MLlib защищено для классификации и регрессии.
 
 ### <a name="feature-transformation-index-and-encode-categorical-features-for-input-into-models-for-scoring"></a>Преобразование признаков. Индексирование и кодирование категориальных признаков для получения входных данных для оцениваемых моделей
-В этом разделе описано, как проиндексировать категориальные данные с помощью `StringIndexer` и закодировать признаки с помощью `OneHotEncoder`, чтобы получить входные данные для моделей.
+В этом разделе показано, как tooindex категориальные данные с помощью `StringIndexer` и кодирование функций с `OneHotEncoder` ввода в модели hello.
 
-С помощью функции [StringIndexer](http://spark.apache.org/docs/latest/ml-features.html#stringindexer) столбец меток строкового типа кодируется как столбец с индексами меток. При этом индексы упорядочиваются по частоте меток. 
+Hello [StringIndexer](http://spark.apache.org/docs/latest/ml-features.html#stringindexer) кодирует строковый столбец метки столбца tooa метки индексов. индексы Hello упорядочиваются по частот метки. 
 
-[OneHotEncoder](http://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html#sklearn.preprocessing.OneHotEncoder) сопоставляет столбец с индексами меток со столбцом двоичных векторов как минимум с одним отдельным значением. Благодаря этой кодировке алгоритмы, для которых требуются признаки со значениями (например, логистическая регрессия), можно применять к категориальным признакам.
+Hello [OneHotEncoder](http://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html#sklearn.preprocessing.OneHotEncoder) сопоставляет столбец метки столбца tooa индексы двоичных векторов, с максимум один значение single. Эта кодировка позволяет алгоритмы, которые ожидают непрерывного табличное значение функции, такие как логистическая Регрессия toobe применения toocategorical функции.
 
     #INDEX AND ONE-HOT ENCODE CATEGORICAL FEATURES
 
@@ -224,7 +224,7 @@ datetime.datetime(2016, 4, 25, 23, 56, 19, 229403)
 
     # INDEX AND ONE-HOT ENCODING
     stringIndexer = StringIndexer(inputCol="vendor_id", outputCol="vendorIndex")
-    model = stringIndexer.fit(taxi_df_test_with_newFeatures) # Input data-frame is the cleaned one from above
+    model = stringIndexer.fit(taxi_df_test_with_newFeatures) # Input data-frame is hello cleaned one from above
     indexed = model.transform(taxi_df_test_with_newFeatures)
     encoder = OneHotEncoder(dropLast=False, inputCol="vendorIndex", outputCol="vendorVec")
     encoded1 = encoder.transform(indexed)
@@ -250,19 +250,19 @@ datetime.datetime(2016, 4, 25, 23, 56, 19, 229403)
     encoder = OneHotEncoder(dropLast=False, inputCol="TrafficTimeBinsIndex", outputCol="TrafficTimeBinsVec")
     encodedFinal = encoder.transform(indexed)
 
-    # PRINT HOW MUCH TIME IT TOOK TO RUN THE CELL
+    # PRINT HOW MUCH TIME IT TOOK tooRUN hello CELL
     timeend = datetime.datetime.now()
     timedelta = round((timeend-timestart).total_seconds(), 2) 
-    print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
+    print "Time taken tooexecute above cell: " + str(timedelta) + " seconds"; 
 
 **ВЫХОДНЫЕ ДАННЫЕ:**
 
-Время на выполнение кода выше: 5,37 с.
+Время, затраченное tooexecute над ячейкой: 5.37 секунд
 
 ### <a name="create-rdd-objects-with-feature-arrays-for-input-into-models"></a>Создание объектов устойчивого распределенного набора данных с массивами признаков для получения входных данных для моделей
-С помощью кода в этом разделе можно индексировать категориальные текстовые данные в объекты устойчивого распределенного набора данных, а затем выполнить их прямое кодирование. После этого данные можно использовать для обучения и проверки модели логистической регрессии MLlib и моделей с применением дерева. Проиндексированные данные хранятся в объектах [устойчивого распределенного набора данных](http://spark.apache.org/docs/latest/api/java/org/apache/spark/rdd/RDD.html). Это базовая абстракция Spark. Объект устойчивого распределенного набора данных — это неизменяемая, секционированная коллекция элементов, которыми можно одновременно управлять с помощью Spark.
+Этот раздел содержит код, который показывает, как категориальные текстовые данные tooindex как RDD объекта и горячей один зашифровать их, поэтому ее можно использовать tootrain и тестирования MLlib логистической регрессии и модели на основе дерева. Hello индексированных данных хранится в [устойчивым распределенного набора данных (RDD)](http://spark.apache.org/docs/latest/api/java/org/apache/spark/rdd/RDD.html) объектов. Это базовая абстракция hello в Spark. Объект устойчивого распределенного набора данных — это неизменяемая, секционированная коллекция элементов, которыми можно одновременно управлять с помощью Spark.
 
-Здесь также содержится код, в котором показано, как масштабировать данные с помощью функции MLlib `StandardScalar` для использования в моделях линейной регрессии с применением метода стохастического градиента. Этот алгоритм широко используется для обучения других моделей машинного обучения. [StandardScaler](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.feature.StandardScaler) используется для масштабирования признаков до единичной дисперсии. Масштабирование признаков (или нормализация данных) гарантирует, что для признаков с широко распределенными значениями не задано высокое значение веса в целевой функции. 
+Он также содержит код, который показывает, как hello tooscale данных с помощью `StandardScalar` MLlib, предоставляемые для использования в линейной регрессии с вероятностный градиентный спуск (SGD), популярный алгоритм для обучения широкий спектр моделей машинного обучения. Hello [StandardScaler](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.feature.StandardScaler) — разница toounit функции hello используется tooscale. Масштабирование функции, также известные как нормализация данных гарантирует, что функции широко распределенные значениями не учитывая чрезмерного весить в целевой функции hello. 
 
     # CREATE RDD OBJECTS WITH FEATURE ARRAYS FOR INPUT INTO MODELS
 
@@ -324,17 +324,17 @@ datetime.datetime(2016, 4, 25, 23, 56, 19, 229403)
     oneHotTESTreg.cache();
     oneHotTESTregScaled.cache();
 
-    # PRINT HOW MUCH TIME IT TOOK TO RUN THE CELL
+    # PRINT HOW MUCH TIME IT TOOK tooRUN hello CELL
     timeend = datetime.datetime.now()
     timedelta = round((timeend-timestart).total_seconds(), 2) 
-    print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
+    print "Time taken tooexecute above cell: " + str(timedelta) + " seconds"; 
 
 **ВЫХОДНЫЕ ДАННЫЕ:**
 
-Время на выполнение кода выше: 11,72 с.
+Время, затраченное tooexecute над ячейкой: 11.72 секунд
 
-## <a name="score-with-the-logistic-regression-model-and-save-output-to-blob"></a>Оценка с использованием модели логистической регрессии и сохранение выходных данных в хранилище BLOB-объектов
-С помощью кода, описанного в этом разделе, можно выполнить следующие задачи: загрузить модель логистической регрессии, сохраненную в хранилище BLOB-объектов Azure, использовать ее, чтобы спрогнозировать, будут ли оставлены чаевые за поездку в такси, оценить ее с помощью стандартных показателей классификации, а затем сохранить полученные результаты в это хранилище и отобразить их. Результаты оценки будут сохранены в объектах устойчивого распределенного набора данных. 
+## <a name="score-with-hello-logistic-regression-model-and-save-output-tooblob"></a>Hello модели логистической регрессии для создания рейтингов и сохранить tooblob выходных данных
+Hello кода в этом разделе показано, как tooload модели логистической регрессии, сохраненного в Azure хранилище больших двоичных объектов и использовать toopredict, оплачивается ли подсказка в такси обработки, оценка его с метриками стандартные классификации, а затем сохраните и tooblob hello результатов построения хранилище. Привет, оцененные результаты хранятся в объектах RDD. 
 
     # SCORE AND EVALUATE LOGISTIC REGRESSION MODEL
 
@@ -348,26 +348,26 @@ datetime.datetime(2016, 4, 25, 23, 56, 19, 229403)
     savedModel = LogisticRegressionModel.load(sc, logisticRegFileLoc)
     predictions = oneHotTESTbinary.map(lambda features: (float(savedModel.predict(features))))
 
-    ## SAVE SCORED RESULTS (RDD) TO BLOB
+    ## SAVE SCORED RESULTS (RDD) tooBLOB
     datestamp = unicode(datetime.datetime.now()).replace(' ','').replace(':','_');
     logisticregressionfilename = "LogisticRegressionWithLBFGS_" + datestamp + ".txt";
     dirfilename = scoredResultDir + logisticregressionfilename;
     predictions.saveAsTextFile(dirfilename)
 
 
-    # PRINT HOW MUCH TIME IT TOOK TO RUN THE CELL
+    # PRINT HOW MUCH TIME IT TOOK tooRUN hello CELL
     timeend = datetime.datetime.now()
     timedelta = round((timeend-timestart).total_seconds(), 2) 
-    print "Time taken to execute above cell: " + str(timedelta) + " seconds";
+    print "Time taken tooexecute above cell: " + str(timedelta) + " seconds";
 
 **ВЫХОДНЫЕ ДАННЫЕ:**
 
-Время на выполнение кода выше: 19,22 с.
+Время, затраченное tooexecute над ячейкой: 19.22 секунд
 
 ## <a name="score-a-linear-regression-model"></a>Оценка модели линейной регрессии
-Чтобы спрогнозировать сумму чаевых, мы с помощью функции [LinearRegressionWithSGD](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.regression.LinearRegressionWithSGD) обучили модель линейной регрессии, в которой для оптимизации применяется метод стохастического градиента. 
+Мы использовали [LinearRegressionWithSGD](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.regression.LinearRegressionWithSGD) tootrain модель линейной регрессии, используя вероятностный градиентный спуск (SGD) для оптимизации toopredict hello объем совет платная. 
 
-С помощью кода, описанного в этом разделе, можно загрузить модель линейной регрессии из хранилища BLOB-объектов Azure, оценить ее с помощью масштабированных переменных, а затем сохранить результаты в большом двоичном объекте.
+Hello кода в этом разделе показано, как оценка с помощью переменных масштабированный tooload модель линейной регрессии из хранилища BLOB-объектов Azure, а затем сохраните hello результаты назад toohello blob.
 
     #SCORE LINEAR REGRESSION MODEL
 
@@ -387,20 +387,20 @@ datetime.datetime(2016, 4, 25, 23, 56, 19, 229403)
     dirfilename = scoredResultDir + linearregressionfilename;
     predictions.saveAsTextFile(dirfilename)
 
-    # PRINT HOW MUCH TIME IT TOOK TO RUN THE CELL
+    # PRINT HOW MUCH TIME IT TOOK tooRUN hello CELL
     timeend = datetime.datetime.now()
     timedelta = round((timeend-timestart).total_seconds(), 2) 
-    print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
+    print "Time taken tooexecute above cell: " + str(timedelta) + " seconds"; 
 
 
 **ВЫХОДНЫЕ ДАННЫЕ:**
 
-Время на выполнение кода выше: 16,63 с.
+Время, затраченное tooexecute над ячейкой: 16.63 секунд
 
 ## <a name="score-classification-and-regression-random-forest-models"></a>Оценка моделей классификации и регрессии с применением алгоритма случайного леса
-С помощью кода, описанного в этом разделе, можно загрузить сохраненные в хранилище BLOB-объектов Azure модели классификации и регрессии с применением алгоритма случайного леса, оценить их эффективность с помощью стандартных показателей классификации и регрессии, а затем сохранить результаты в том же хранилище.
+кода Hello в этом разделе показано, как tooload hello сохраняет классификации и случайного леса модели регрессии в хранилище BLOB-объектов Azure оценки их производительности с помощью стандартных классификатора и регрессии меры, а затем сохраните hello результаты назад tooblob хранилища.
 
-[Случайные леса](http://spark.apache.org/docs/latest/mllib-ensembles.html#Random-Forests) — это совокупности деревьев принятия решений.  Такие совокупности минимизируют необходимость в переобучении. С помощью этого алгоритма можно обрабатывать категориальные признаки, расширять модель для выполнения задач мультиклассовой классификации, а также определять нелинейные зависимости и взаимодействия признаков. Этот метод не требуют масштабирования признаков. Случайные леса — одна из самых эффективных моделей машинного обучения для задач классификации и регрессии.
+[Случайные леса](http://spark.apache.org/docs/latest/mllib-ensembles.html#Random-Forests) — это совокупности деревьев принятия решений.  Они объединяют многих решений деревьев tooreduce hello риск переобучения. Случайные леса могут обрабатывать категориальных признаков расширения toohello мультиклассовой классификации параметр, не требуется возможность масштабирования и являются может toocapture нелинейности и возможностей взаимодействия. Случайные леса принадлежат hello наиболее успешных моделей машинного обучения для классификации и регрессии.
 
 [spark.mllib](http://spark.apache.org/mllib/) предусматривает использование метода случайного леса в моделях двоичной, мультиклассовой классификации и регрессии с применением как непрерывных, так и категориальных признаков. 
 
@@ -413,7 +413,7 @@ datetime.datetime(2016, 4, 25, 23, 56, 19, 229403)
     from pyspark.mllib.tree import RandomForest, RandomForestModel
 
 
-    # CLASSIFICATION: LOAD SAVED MODEL, SCORE AND SAVE RESULTS BACK TO BLOB
+    # CLASSIFICATION: LOAD SAVED MODEL, SCORE AND SAVE RESULTS BACK tooBLOB
     savedModel = RandomForestModel.load(sc, randomForestClassificationFileLoc)
     predictions = savedModel.predict(indexedTESTbinary)
 
@@ -424,7 +424,7 @@ datetime.datetime(2016, 4, 25, 23, 56, 19, 229403)
     predictions.saveAsTextFile(dirfilename)
 
 
-    # REGRESSION: LOAD SAVED MODEL, SCORE AND SAVE RESULTS BACK TO BLOB
+    # REGRESSION: LOAD SAVED MODEL, SCORE AND SAVE RESULTS BACK tooBLOB
     savedModel = RandomForestModel.load(sc, randomForestRegFileLoc)
     predictions = savedModel.predict(indexedTESTreg)
 
@@ -434,21 +434,21 @@ datetime.datetime(2016, 4, 25, 23, 56, 19, 229403)
     dirfilename = scoredResultDir + rfregressionfilename;
     predictions.saveAsTextFile(dirfilename)
 
-    # PRINT HOW MUCH TIME IT TOOK TO RUN THE CELL
+    # PRINT HOW MUCH TIME IT TOOK tooRUN hello CELL
     timeend = datetime.datetime.now()
     timedelta = round((timeend-timestart).total_seconds(), 2) 
-    print "Time taken to execute above cell: " + str(timedelta) + " seconds";
+    print "Time taken tooexecute above cell: " + str(timedelta) + " seconds";
 
 **ВЫХОДНЫЕ ДАННЫЕ:**
 
-Время на выполнение кода выше: 31,07 с.
+Время, затраченное tooexecute над ячейкой: 31.07 секунд
 
 ## <a name="score-classification-and-regression-gradient-boosting-tree-models"></a>Оценка моделей классификации и регрессии с применением метода градиентного бустинга деревьев
-С помощью кода, описанного в этом разделе, можно загрузить сохраненные в хранилище BLOB-объектов Azure модели классификации и регрессии с применением метода градиентного бустинга деревьев, оценить их эффективность с помощью стандартных показателей классификации и регрессии, а затем сохранить результаты в том же хранилище. 
+Hello кода в этом разделе описывается, как tooload классификации и регрессии градиента моделей дерева повышение приоритета из хранилища BLOB-объектов Azure, оценки их производительности с помощью стандартных классификатора и меры регрессии и сохраните hello результаты назад tooblob хранилища. 
 
 **spark.mllib** предусматривает использование метода деревьев с градиентным бустингом (GBT) в моделях двоичной классификации и регрессии с применением как непрерывных, так и категориальных признаков. 
 
-[Деревья с градиентным бустингом](http://spark.apache.org/docs/latest/ml-classification-regression.html#gradient-boosted-trees-gbts) — это совокупности деревьев принятия решений. Этот метод предусматривает итеративное обучение деревьев принятия решений, что позволяет свести потери к минимуму. С его помощью можно обрабатывать категориальные признаки, а также определять нелинейные зависимости и взаимодействия признаков. Этот метод не требует масштабирования признаков. Кроме того, его можно использовать для создания модели мультиклассовой классификации.
+[Деревья с градиентным бустингом](http://spark.apache.org/docs/latest/ml-classification-regression.html#gradient-boosted-trees-gbts) — это совокупности деревьев принятия решений. Решение GBTs обучение итеративного дерева toominimize функции потерь. GBTs может обрабатывать категориальных признаков не требуется возможность масштабирования и являются может toocapture нелинейности и возможностей взаимодействия. Кроме того, его можно использовать для создания модели мультиклассовой классификации.
 
     # SCORE GRADIENT BOOSTING TREE MODELS FOR CLASSIFICATION AND REGRESSION
 
@@ -458,9 +458,9 @@ datetime.datetime(2016, 4, 25, 23, 56, 19, 229403)
     #IMPORT MLLIB LIBRARIES
     from pyspark.mllib.tree import GradientBoostedTrees, GradientBoostedTreesModel
 
-    # CLASSIFICATION: LOAD SAVED MODEL, SCORE AND SAVE RESULTS BACK TO BLOB
+    # CLASSIFICATION: LOAD SAVED MODEL, SCORE AND SAVE RESULTS BACK tooBLOB
 
-    #LOAD AND SCORE THE MODEL
+    #LOAD AND SCORE hello MODEL
     savedModel = GradientBoostedTreesModel.load(sc, BoostedTreeClassificationFileLoc)
     predictions = savedModel.predict(indexedTESTbinary)
 
@@ -471,7 +471,7 @@ datetime.datetime(2016, 4, 25, 23, 56, 19, 229403)
     predictions.saveAsTextFile(dirfilename)
 
 
-    # REGRESSION: LOAD SAVED MODEL, SCORE AND SAVE RESULTS BACK TO BLOB
+    # REGRESSION: LOAD SAVED MODEL, SCORE AND SAVE RESULTS BACK tooBLOB
 
     # LOAD AND SCORE MODEL 
     savedModel = GradientBoostedTreesModel.load(sc, BoostedTreeRegressionFileLoc)
@@ -484,14 +484,14 @@ datetime.datetime(2016, 4, 25, 23, 56, 19, 229403)
     predictions.saveAsTextFile(dirfilename)
 
 
-    # PRINT HOW MUCH TIME IT TOOK TO RUN THE CELL
+    # PRINT HOW MUCH TIME IT TOOK tooRUN hello CELL
     timeend = datetime.datetime.now()
     timedelta = round((timeend-timestart).total_seconds(), 2) 
-    print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
+    print "Time taken tooexecute above cell: " + str(timedelta) + " seconds"; 
 
 **ВЫХОДНЫЕ ДАННЫЕ:**
 
-Время на выполнение кода выше: 14,6 с.
+Время, затраченное tooexecute над ячейкой: 14.6 секунд
 
 ## <a name="clean-up-objects-from-memory-and-print-scored-file-locations"></a>Очистка объектов из памяти и вывод расположений оцененных файлов
     # UNPERSIST OBJECTS CACHED IN MEMORY
@@ -503,7 +503,7 @@ datetime.datetime(2016, 4, 25, 23, 56, 19, 229403)
     oneHotTESTregScaled.unpersist();
 
 
-    # PRINT OUT PATH TO SCORED OUTPUT FILES
+    # PRINT OUT PATH tooSCORED OUTPUT FILES
     print "logisticRegFileLoc: " + logisticregressionfilename;
     print "linearRegFileLoc: " + linearregressionfilename;
     print "randomForestClassificationFileLoc: " + rfclassificationfilename;
@@ -527,38 +527,38 @@ BoostedTreeClassificationFileLoc: GradientBoostingTreeClassification_2016-05-031
 BoostedTreeRegressionFileLoc: GradientBoostingTreeRegression_2016-05-0317_23_56.860740.txt
 
 ## <a name="consume-spark-models-through-a-web-interface"></a>Использование моделей Spark через веб-интерфейс
-В кластере Spark реализован механизм, который позволяет отправлять пакетные задания или интерактивные запросы удаленно через интерфейс REST с помощью компонента Livy. Livy включен по умолчанию в кластере Spark в HDInsight. Дополнительные сведения о Livy см. в статье [Удаленная отправка заданий Spark в кластер Apache Spark в HDInsight с помощью Livy](../hdinsight/hdinsight-apache-spark-livy-rest-interface.md). 
+Spark обеспечивает механизм tooremotely отправки пакетных заданий или интерактивной обработки запросов через REST взаимодействовать с компонентом, называется Livy. Livy включен по умолчанию в кластере Spark в HDInsight. Дополнительные сведения о Livy см. в статье [Удаленная отправка заданий Spark в кластер Apache Spark в HDInsight с помощью Livy](../hdinsight/hdinsight-apache-spark-livy-rest-interface.md). 
 
-Вы можете использовать Livy, чтобы удаленно отправить запрос на выполнение пакетного задания оценки файла, сохраненного в большом двоичном объекте Azure, а затем записать результаты в другой большой двоичный объект. Чтобы сделать это, необходимо загрузить сценарий Python из   
-репозитория [GitHub](https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/Spark/Python/ConsumeGBNYCReg.py) в большой двоичный объект кластера Spark. Используйте **Microsoft Azure Storage Explorer** или **AzCopy**, чтобы скопировать сценарий в большой двоичный объект кластера. В нашем случае мы загрузили скрипт в ***wasb:///example/python/ConsumeGBNYCReg.py***.   
+Можно использовать Livy tooremotely отправить задание по пакетной оценок файл, который хранится в BLOB-объекта Azure, а затем записывает большой двоичный объект tooanother результаты hello. toodo, отправьте hello сценарий Python из  
+[GitHub](https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/Spark/Python/ConsumeGBNYCReg.py) toohello большого двоичного объекта из кластера Spark hello. Можно использовать средства, подобного **обозреватель хранилищ Microsoft Azure** или **AzCopy** toocopy hello сценария toohello кластера blob. В нашем случае мы загружен скрипт hello слишком***wasb:///example/python/ConsumeGBNYCReg.py***.   
 
 > [!NOTE]
-> Необходимые ключи доступа можно найти на портале для учетной записи хранения, связанной с кластером Spark. 
+> Здравствуйте, клавиши доступа, вы должны можно найти на портале hello для учетной записи хранения hello, связанные с кластера Spark hello. 
 > 
 > 
 
-После загрузки скрипт будет выполнен в кластере Spark в распределенном контексте. Он загрузит модель и запустит прогнозирование на основе входных файлов в зависимости от модели.  
+После отправки toothis расположение внутри кластера Spark hello в контексте распределенных запуска этого сценария. Он загружает модель hello и запускает прогнозы на входные файлы на основе модели hello.  
 
-Этот скрипт можно вызвать удаленно, выполнив простой запрос HTTPS или REST в Livy.  Ниже приведен пример команды Curl, с помощью которой можно создать запрос HTTP для удаленного вызова скрипта Python. Параметры CLUSTERLOGIN, CLUSTERPASSWORD, CLUSTERNAME следует заменить соответствующими значениями для используемого кластера Spark.
+Этот скрипт можно вызвать удаленно, выполнив простой запрос HTTPS или REST в Livy.  Вот перелистывание команда tooconstruct hello HTTP запроса tooinvoke hello сценарий Python удаленно. Замените CLUSTERLOGIN, CLUSTERPASSWORD, ИМЯ_КЛАСТЕРА hello соответствующие значения для кластера Spark.
 
-    # CURL COMMAND TO INVOKE PYTHON SCRIPT WITH HTTP REQUEST
+    # CURL COMMAND tooINVOKE PYTHON SCRIPT WITH HTTP REQUEST
 
     curl -k --user "CLUSTERLOGIN:CLUSTERPASSWORD" -X POST --data "{\"file\": \"wasb:///example/python/ConsumeGBNYCReg.py\"}" -H "Content-Type: application/json" https://CLUSTERNAME.azurehdinsight.net/livy/batches
 
-Чтобы вызвать задание Spark через Livy, необходимо выполнить простой вызов HTTP с обычной проверкой подлинности. В удаленной системе для этого можно использовать любой язык.   
+Можно использовать любой язык на задание hello удаленной системе tooinvoke hello Spark через Livy путем вызова простой HTTPS с обычной проверкой подлинности.   
 
 > [!NOTE]
-> При выполнении вызова HTTP удобнее использовать библиотеку запросов для Python, но она не установлена по умолчанию в функциях Azure. Поэтому вместо нее используются старые библиотеки HTTP.   
+> Было бы библиотеки Python запросы hello удобный toouse при выполнении данного вызова HTTP, но сейчас не установлена по умолчанию в функциях Azure. Поэтому вместо нее используются старые библиотеки HTTP.   
 > 
 > 
 
-Ниже приведен пример кода Python для вызова HTTP.
+Ниже приведен код Python hello для вызова hello HTTP.
 
     #MAKE AN HTTPS CALL ON LIVY. 
 
     import os
 
-    # OLDER HTTP LIBRARIES USED HERE INSTEAD OF THE REQUEST LIBRARY AS THEY ARE AVAILBLE BY DEFAULT
+    # OLDER HTTP LIBRARIES USED HERE INSTEAD OF hello REQUEST LIBRARY AS THEY ARE AVAILBLE BY DEFAULT
     import httplib, urllib, base64
 
     # REPLACE VALUE WITH ONES FOR YOUR SPARK CLUSTER
@@ -571,21 +571,21 @@ BoostedTreeRegressionFileLoc: GradientBoostingTreeRegression_2016-05-0317_23_56.
     auth = base64.encodestring('%s:%s' % (username, password)).replace('\n', '')
     headers = {'Content-Type': 'application/json', 'Authorization': 'Basic %s' % auth}
 
-    # SPECIFY THE PYTHON SCRIPT TO RUN ON THE SPARK CLUSTER
-    # IN THE FILE PARAMETER OF THE JSON POST REQUEST BODY
+    # SPECIFY hello PYTHON SCRIPT tooRUN ON hello SPARK CLUSTER
+    # IN hello FILE PARAMETER OF hello JSON POST REQUEST BODY
     r=conn.request("POST", '/livy/batches', '{"file": "wasb:///example/python/ConsumeGBNYCReg.py"}', headers )
     response = conn.getresponse().read()
     print(response)
     conn.close()
 
 
-Чтобы отправить запрос на выполнение задания Spark для оценки большого двоичного объекта на основе событий (например, активации, создания или обновления большого двоичного объекта), можно добавить этот код Python в [Функции Azure](https://azure.microsoft.com/documentation/services/functions/). 
+Можно также добавить этот код Python слишком[функции Azure](https://azure.microsoft.com/documentation/services/functions/) tootrigger отправки задания Spark, которая оценивает большого двоичного объекта на основе различных событий как таймер, создания или обновления большого двоичного объекта. 
 
-Если вы не хотите работать с кодом, используйте [приложения логики Azure](https://azure.microsoft.com/documentation/services/app-service/logic/), чтобы вызвать пакетную оценку Spark. Для этого определите действие HTTP в **конструкторе приложений логики** и настройте соответствующие параметры. 
+Взаимодействие с произвольным клиентом кода, используйте hello [приложения логики Azure](https://azure.microsoft.com/documentation/services/app-service/logic/) оценки за счет определения действия HTTP для hello пакета Spark hello tooinvoke **логику приложения конструктор** и задание его параметров. 
 
 * На портале Azure создайте приложение логики, выбрав **+Создать** -> **Интернет+мобильные устройства** -> **Приложение логики**. 
-* Введите имя приложения логики и план служб приложений, чтобы открыть **конструктор приложений логики**.
-* Выберите действие HTTP и введите параметры, показанные на рисунке ниже.
+* toobring копирование hello **логику приложения конструктор**, введите имя hello hello логику приложения и план служб приложений.
+* Выберите действие HTTP и введите hello параметров, приведенных в следующий рисунок hello:
 
 ![Конструктор Logic Apps](./media/machine-learning-data-science-spark-model-consumption/spark-logica-app-client.png)
 

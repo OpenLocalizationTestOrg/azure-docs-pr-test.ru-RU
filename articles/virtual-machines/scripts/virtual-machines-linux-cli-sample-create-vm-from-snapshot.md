@@ -1,5 +1,5 @@
 ---
-title: "Пример скрипта Azure CLI. Создание виртуальной машины из моментального снимка | Документация Майкрософт"
+title: "Пример сценария CLI - aaaAzure создания виртуальной Машины из моментального снимка | Документы Microsoft"
 description: "Создание виртуальной машины из моментального снимка с помощью скрипта Azure CLI."
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -16,11 +16,11 @@ ms.workload: infrastructure
 ms.date: 05/10/2017
 ms.author: ramankum
 ms.custom: mvc
-ms.openlocfilehash: 6e47c3baebd5b68ec29d55c43dc00ae7665c81f2
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: ddc95289dcb8a0ca7c7854d969983f96b8f4613f
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-a-virtual-machine-from-a-snapshot-with-cli"></a>Создание виртуальной машины из моментального снимка с помощью интерфейса командной строки
 
@@ -32,11 +32,11 @@ ms.lasthandoff: 07/11/2017
 
 ## <a name="sample-script"></a>Пример скрипта
 
-[!code-azurecli-interactive[main](../../../cli_scripts/virtual-machine/create-vm-from-snapshot/create-vm-from-snapshot.sh "Создание виртуальной машины из моментального снимка")]
+[!code-azurecli-interactive[main](../../../cli_scripts/virtual-machine/create-vm-from-snapshot/create-vm-from-snapshot.sh "Create VM from snapshot")]
 
 ## <a name="clean-up-deployment"></a>Очистка развертывания 
 
-Выполните следующую команду, чтобы удалить группу ресурсов, виртуальную машину и все связанные с ней ресурсы.
+Выполните следующие команды tooremove hello группы ресурсов, виртуальная машина и все связанные ресурсы hello.
 
 ```azurecli-interactive 
 az group delete --name myResourceGroup
@@ -44,16 +44,16 @@ az group delete --name myResourceGroup
 
 ## <a name="script-explanation"></a>Описание скрипта
 
-Для создания управляемого диска, виртуальной машины и всех связанных ресурсов этот скрипт использует указанные ниже команды. Для каждой команды в таблице приведены ссылки на соответствующую документацию.
+Этот скрипт использует hello, следующие команды toocreate управляемой дисковой виртуальной машины, и все связанные ресурсы. Каждая команда в таблице hello связывает toocommand документацию.
 
 | Команда | Примечания |
 |---|---|
-| [az snapshot show](https://docs.microsoft.com/cli/azure/snapshot#show) | Возвращает моментальный снимок на основе имени моментального снимка и группы ресурсов. Для создания управляемого диска используется свойство идентификатора возвращаемого объекта.  |
+| [az snapshot show](https://docs.microsoft.com/cli/azure/snapshot#show) | Возвращает моментальный снимок на основе имени моментального снимка и группы ресурсов. Свойство идентификатора hello, возвращаемый объект — используется toocreate управляемого диска.  |
 | [az disk create](https://docs.microsoft.com/cli/azure/disk#create) | Создает управляемые диски из моментального снимка на основе идентификатора моментального снимка, имени диска, типа хранилища и размера.  |
 | [az vm create](https://docs.microsoft.com/cli/azure/vm#create) | Создает виртуальную машину с помощью управляемого диска ОС. |
 
 ## <a name="next-steps"></a>Дальнейшие действия
 
-Дополнительные сведения об Azure CLI см. в [документации по Azure CLI](https://docs.microsoft.com/cli/azure/overview).
+Дополнительные сведения о hello Azure CLI см. в разделе [документации Azure CLI](https://docs.microsoft.com/cli/azure/overview).
 
-Дополнительные примеры скриптов интерфейса командной строки для виртуальных машин см. в [документации по виртуальным машинам Azure под управлением Linux](../linux/cli-samples.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Примеры сценариев CLI дополнительную виртуальную машину можно найти в hello [документации виртуальной Машине Linux Azure](../linux/cli-samples.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).

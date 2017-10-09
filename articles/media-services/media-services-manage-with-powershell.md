@@ -1,6 +1,6 @@
 ---
-title: "Управление учетными записями служб мультимедиа Azure с помощью PowerShell"
-description: "Узнайте, как управлять учетными записями служб мультимедиа Azure с помощью командлетов PowerShell."
+title: "aaaManage учетные записи служб мультимедиа Azure с помощью PowerShell"
+description: "Узнайте, как учетные записи служб мультимедиа Azure toomanage с помощью командлетов PowerShell."
 author: Juliako
 manager: erikre
 editor: 
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/03/2016
 ms.author: juliako
-ms.openlocfilehash: 3d999d9e27844bc0164cc3572522b9ec022118a1
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: e8f97bb2393343e45fabf9c437b4fc09f2525dc2
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="manage-azure-media-services-accounts-with-powershell"></a>Управление учетными записями служб мультимедиа Azure с помощью PowerShell
 > [!div class="op_single_selector"]
@@ -27,12 +27,12 @@ ms.lasthandoff: 07/11/2017
 > * [REST](https://docs.microsoft.com/rest/api/media/mediaservice)
 > 
 > [!NOTE]
-> Для создания учетной записи служб мультимедиа Azure необходима учетная запись Azure. Если ее нет, можно создать бесплатную пробную учетную запись всего за несколько минут. Дополнительные сведения см. в разделе <a href="http://www.windowsazure.com/pricing/free-trial/?WT.mc_id=A8A8397B5" target="_blank">Бесплатная пробная версия Azure</a>.
+> toocreate toobe доступ учетной записи служб мультимедиа Azure, необходимо иметь учетную запись Azure. Если ее нет, можно создать бесплатную пробную учетную запись всего за несколько минут. Дополнительные сведения см. в разделе <a href="http://www.windowsazure.com/pricing/free-trial/?WT.mc_id=A8A8397B5" target="_blank">Бесплатная пробная версия Azure</a>.
 > 
 > 
 
 ## <a name="overview"></a>Обзор
-В этой статье перечислены командлеты Azure PowerShell для служб мультимедиа Azure (AMS), доступные в инфраструктуре Azure Resource Manager. Командлеты существуют в пространстве имен **Microsoft.Azure.Commands.Media** .
+В этой статье перечислены hello командлетов Azure PowerShell для служб мультимедиа Azure (AMS) в framework hello диспетчера ресурсов Azure. Существуют командлеты Hello в hello **Microsoft.Azure.Commands.Media** пространства имен.
 
 ## <a name="versions"></a>Версии
 **ApiVersion**: от 01.10.2015.
@@ -52,7 +52,7 @@ ms.lasthandoff: 07/11/2017
 ### <a name="parameters"></a>Параметры
 **-ResourceGroupName &lt;String&gt;**
 
-Указывает имя группы ресурсов, к которой принадлежит эта служба мультимедиа.
+Указывает имя hello toowhich группы ресурсов hello, к которому относится эта служба мультимедиа.
 
 | Псевдонимы | Нет |
 | --- | --- |
@@ -64,7 +64,7 @@ ms.lasthandoff: 07/11/2017
 
 **-AccountName &lt;String&gt;**
 
-Указывает имя этой службы мультимедиа.
+Указывает имя службы мультимедиа hello hello.
 
 | Псевдонимы | Name (Имя) |
 | --- | --- |
@@ -76,7 +76,7 @@ ms.lasthandoff: 07/11/2017
 
 **-Location &lt;String&gt;**
 
-Указывает расположение ресурсов для этой службы мультимедиа.
+Указывает расположение ресурса hello hello службы мультимедиа.
 
 | Псевдонимы | Нет |
 | --- | --- |
@@ -88,10 +88,10 @@ ms.lasthandoff: 07/11/2017
 
 **-StorageAccountId &lt;String&gt;**
 
-Указывает основную учетную запись хранения, связанную с этой службой мультимедиа.
+Указывает учетную запись основного хранилища, связанный с hello службы мультимедиа.
 
-* Поддерживаются только новые учетные записи хранения (созданные с помощью API Resource Manager).
-* Учетная запись хранения должна существовать и находиться в том же расположении, что и служба мультимедиа.
+* Новая учетная запись хранилища (созданная с параметром hello API диспетчера ресурсов) поддерживается только.
+* Hello учетная запись хранения должна существовать и имеет hello того же расположения, службы мультимедиа hello.
 
 | Псевдонимы | Нет |
 | --- | --- |
@@ -104,10 +104,10 @@ ms.lasthandoff: 07/11/2017
 
 **-StorageAccounts &lt;PSStorageAccount\[\]&gt;**
 
-Указывает учетные записи хранения, связанные с этой службой мультимедиа.
+Задает учетные записи хранения, связанный с hello службы мультимедиа.
 
-* Поддерживаются только новые учетные записи хранения (созданные с помощью API Resource Manager).
-* Учетная запись хранения должна существовать и находиться в том же расположении, что и служба мультимедиа.
+* Новая учетная запись хранилища (созданная с параметром hello API диспетчера ресурсов) поддерживается только.
+* Hello учетная запись хранения должна существовать и имеет hello того же расположения, службы мультимедиа hello.
 * Можно указать только одну основную учетную запись хранения.
 
 | Псевдонимы | Нет |
@@ -121,7 +121,7 @@ ms.lasthandoff: 07/11/2017
 
 **-Tags &lt;Hashtable&gt;**
 
-Указывает хэш-таблицу тегов, которые связаны с этой службой мультимедиа.
+Указывает хэш-таблицу hello теги, связанные с hello службы мультимедиа.
 
 * Пример: @{«tag1 «=» значение1»;» tag2» =: значение2»}
 
@@ -135,13 +135,13 @@ ms.lasthandoff: 07/11/2017
 
 **&lt;CommandParameters&gt;**
 
-Этот командлет поддерживает общие параметры: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction и -WarningVariable.
+Этот командлет поддерживает общие параметры hello:-Debug, - ErrorAction, - ErrorVariable, - InformationAction, - InformationVariable, - OutVariable,-OutBuffer, - PipelineVariable, - Verbose, - WarningAction и - WarningVariable.
 
 ### <a name="inputs"></a>Входные данные
-Тип входных данных определяет тип объектов, которые можно передавать в командлет.
+Hello входным типом является тип hello hello объекты, можно передать по конвейеру командлету toohello.
 
-### <a name="outputs"></a>Выходные данные
-Тип выходных данных определяет тип объектов, которые будет выдавать командлет.
+### <a name="outputs"></a>outputs
+Тип выходных данных Hello — выдает hello типы объектов hello hello командлета.
 
 ## <a name="set-azurermmediaservice"></a>Set-AzureRmMediaService
 Обновляет службу мультимедиа.
@@ -152,7 +152,7 @@ ms.lasthandoff: 07/11/2017
 ### <a name="parameters"></a>Параметры
 **-ResourceGroupName &lt;String&gt;**
 
-Указывает имя группы ресурсов, к которой принадлежит эта служба мультимедиа.
+Указывает имя hello toowhich группы ресурсов hello, к которому относится эта служба мультимедиа.
 
 | Псевдонимы | Нет |
 | --- | --- |
@@ -164,7 +164,7 @@ ms.lasthandoff: 07/11/2017
 
 **-AccountName &lt;String&gt;**
 
-Указывает имя этой службы мультимедиа.
+Указывает имя службы мультимедиа hello hello.
 
 | Псевдонимы | Name (Имя) |
 | --- | --- |
@@ -176,10 +176,10 @@ ms.lasthandoff: 07/11/2017
 
 **-StorageAccounts &lt;PSStorageAccount\[\]&gt;**
 
-Указывает учетные записи хранения, связанные с этой службой мультимедиа.
+Задает учетные записи хранения, связанный с hello службы мультимедиа.
 
-* Поддерживаются только новые учетные записи хранения (созданные с помощью API Resource Manager).
-* Учетная запись хранения должна существовать и находиться в том же расположении, что и служба мультимедиа.
+* Новая учетная запись хранилища (созданная с параметром hello API диспетчера ресурсов) поддерживается только.
+* Hello учетная запись хранения должна существовать и имеет hello того же расположения, службы мультимедиа hello.
 * Можно указать только одну основную учетную запись хранения.
 
 | Псевдонимы | Нет |
@@ -193,9 +193,9 @@ ms.lasthandoff: 07/11/2017
 
 **-Tags &lt;Hashtable&gt;**
 
-Указывает хэш-таблицу тегов, которые связаны с этой службой мультимедиа.
+Указывает хэш-таблицу hello теги, связанные с этой службы мультимедиа.
 
-* Теги, которые связаны со службой мультимедиа, заменяются значением, указанным пользователем.
+* значение, указанное клиентом hello заменяются Hello теги, связанные с hello службы мультимедиа.
 
 | Псевдонимы | Нет |
 | --- | --- |
@@ -207,13 +207,13 @@ ms.lasthandoff: 07/11/2017
 
 **&lt;CommandParameters&gt;**
 
-Этот командлет поддерживает общие параметры: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction и -WarningVariable.
+Этот командлет поддерживает общие параметры hello:-Debug, - ErrorAction, - ErrorVariable, - InformationAction, - InformationVariable, - OutVariable,-OutBuffer, - PipelineVariable, - Verbose, - WarningAction и - WarningVariable.
 
 ### <a name="inputs"></a>Входные данные
-Тип входных данных определяет тип объектов, которые можно передавать в командлет.
+Hello входным типом является тип hello hello объекты, можно передать по конвейеру командлету toohello.
 
-### <a name="outputs"></a>Выходные данные
-Тип выходных данных определяет тип объектов, которые будет выдавать командлет.
+### <a name="outputs"></a>outputs
+Тип выходных данных Hello — выдает hello типы объектов hello hello командлета.
 
 ## <a name="remove-azurermmediaservice"></a>Remove-AzureRmMediaService
 Удаляет службу мультимедиа.
@@ -224,7 +224,7 @@ ms.lasthandoff: 07/11/2017
 ### <a name="parameters"></a>Параметры
 **-ResourceGroupName &lt;String&gt;**
 
-Указывает имя группы ресурсов, к которой принадлежит эта служба мультимедиа.
+Указывает имя hello toowhich группы ресурсов hello, к которому относится эта служба мультимедиа.
 
 | Псевдонимы | Нет |
 | --- | --- |
@@ -236,7 +236,7 @@ ms.lasthandoff: 07/11/2017
 
 **-AccountName &lt;String&gt;**
 
-Указывает имя этой службы мультимедиа.
+Указывает имя службы мультимедиа hello hello.
 
 | Псевдонимы | Нет |
 | --- | --- |
@@ -248,13 +248,13 @@ ms.lasthandoff: 07/11/2017
 
 **&lt;CommandParameters&gt;**
 
-Этот командлет поддерживает общие параметры: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction и -WarningVariable.
+Этот командлет поддерживает общие параметры hello:-Debug, - ErrorAction, - ErrorVariable, - InformationAction, - InformationVariable, - OutVariable,-OutBuffer, - PipelineVariable, - Verbose, - WarningAction и - WarningVariable.
 
 ### <a name="inputs"></a>Входные данные
-Тип входных данных определяет тип объектов, которые можно передавать в командлет.
+Hello входным типом является тип hello hello объекты, можно передать по конвейеру командлету toohello.
 
-### <a name="outputs"></a>Выходные данные
-Тип выходных данных определяет тип объектов, которые будет выдавать командлет.
+### <a name="outputs"></a>outputs
+Тип выходных данных Hello — выдает hello типы объектов hello hello командлета.
 
 ## <a name="get-azurermmediaservice"></a>Get-AzureRmMediaService
 Получает все службы мультимедиа в группе ресурсов или службу мультимедиа с заданным именем.
@@ -271,7 +271,7 @@ ms.lasthandoff: 07/11/2017
 ### <a name="parameters"></a>Параметры
 **-ResourceGroupName &lt;String&gt;**
 
-Указывает имя группы ресурсов, к которой принадлежит эта служба мультимедиа.
+Указывает имя hello toowhich группы ресурсов hello, к которому относится эта служба мультимедиа.
 
 | Псевдонимы | Нет |
 | --- | --- |
@@ -285,7 +285,7 @@ ms.lasthandoff: 07/11/2017
 
 **-AccountName &lt;String&gt;**
 
-Указывает имя этой службы мультимедиа.
+Указывает имя службы мультимедиа hello hello.
 
 | Псевдонимы | Нет |
 | --- | --- |
@@ -298,13 +298,13 @@ ms.lasthandoff: 07/11/2017
 
 **&lt;CommandParameters&gt;**
 
-Этот командлет поддерживает общие параметры: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction и -WarningVariable.
+Этот командлет поддерживает общие параметры hello:-Debug, - ErrorAction, - ErrorVariable, - InformationAction, - InformationVariable, - OutVariable,-OutBuffer, - PipelineVariable, - Verbose, - WarningAction и - WarningVariable.
 
 ### <a name="inputs"></a>Входные данные
-Тип входных данных определяет тип объектов, которые можно передавать в командлет.
+Hello входным типом является тип hello hello объекты, можно передать по конвейеру командлету toohello.
 
-### <a name="outputs"></a>Выходные данные
-Тип выходных данных определяет тип объектов, которые будет выдавать командлет.
+### <a name="outputs"></a>outputs
+Тип выходных данных Hello — выдает hello типы объектов hello hello командлета.
 
 ## <a name="get-azurermmediaservicekeys"></a>Get-AzureRmMediaServiceKeys
 Возвращает ключи службы мультимедиа.
@@ -315,7 +315,7 @@ ms.lasthandoff: 07/11/2017
 ### <a name="parameters"></a>Параметры
 **-ResourceGroupName &lt;String&gt;**
 
-Указывает имя группы ресурсов, к которой принадлежит эта служба мультимедиа.
+Указывает имя hello toowhich группы ресурсов hello, к которому относится эта служба мультимедиа.
 
 | Псевдонимы | Нет |
 | --- | --- |
@@ -327,7 +327,7 @@ ms.lasthandoff: 07/11/2017
 
 **-AccountName &lt;String&gt;**
 
-Указывает имя этой службы мультимедиа.
+Указывает имя службы мультимедиа hello hello.
 
 | Псевдонимы | Нет |
 | --- | --- |
@@ -339,13 +339,13 @@ ms.lasthandoff: 07/11/2017
 
 **&lt;CommandParameters&gt;**
 
-Этот командлет поддерживает общие параметры: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction и -WarningVariable.
+Этот командлет поддерживает общие параметры hello:-Debug, - ErrorAction, - ErrorVariable, - InformationAction, - InformationVariable, - OutVariable,-OutBuffer, - PipelineVariable, - Verbose, - WarningAction и - WarningVariable.
 
 ### <a name="inputs"></a>Входные данные
-Тип входных данных определяет тип объектов, которые можно передавать в командлет.
+Hello входным типом является тип hello hello объекты, можно передать по конвейеру командлету toohello.
 
-### <a name="outputs"></a>Выходные данные
-Тип выходных данных определяет тип объектов, которые будет выдавать командлет.
+### <a name="outputs"></a>outputs
+Тип выходных данных Hello — выдает hello типы объектов hello hello командлета.
 
 ## <a name="set-azurermmediaservicekey"></a>Set-AzureRmMediaServiceKey
 Повторно создает первичный или вторичный ключ службы мультимедиа.
@@ -356,7 +356,7 @@ ms.lasthandoff: 07/11/2017
 ### <a name="parameters"></a>Параметры
 **-ResourceGroupName &lt;String&gt;**
 
-Указывает имя группы ресурсов, к которой принадлежит эта служба мультимедиа.
+Указывает имя hello toowhich группы ресурсов hello, к которому относится эта служба мультимедиа.
 
 | Псевдонимы | Нет |
 | --- | --- |
@@ -368,7 +368,7 @@ ms.lasthandoff: 07/11/2017
 
 **-AccountName &lt;String&gt;**
 
-Указывает имя этой службы мультимедиа.
+Указывает имя службы мультимедиа hello hello.
 
 | Псевдонимы | Нет |
 | --- | --- |
@@ -380,7 +380,7 @@ ms.lasthandoff: 07/11/2017
 
 **-KeyType &lt;KeyType&gt;**
 
-Указывает тип ключа этой службы мультимедиа.
+Задает тип ключа hello hello службы мультимедиа.
 
 * Первичный или вторичный
 
@@ -394,16 +394,16 @@ ms.lasthandoff: 07/11/2017
 
 **&lt;CommandParameters&gt;**
 
-Этот командлет поддерживает общие параметры: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction и -WarningVariable.
+Этот командлет поддерживает общие параметры hello:-Debug, - ErrorAction, - ErrorVariable, - InformationAction, - InformationVariable, - OutVariable,-OutBuffer, - PipelineVariable, - Verbose, - WarningAction и - WarningVariable.
 
 ### <a name="inputs"></a>Входные данные
-Тип входных данных определяет тип объектов, которые можно передавать в командлет.
+Hello входным типом является тип hello hello объекты, можно передать по конвейеру командлету toothe.
 
-### <a name="outputs"></a>Выходные данные
-Тип выходных данных определяет тип объектов, которые будет выдавать командлет.
+### <a name="outputs"></a>outputs
+Тип выходных данных Hello — выдает hello типы объектов hello hello командлета.
 
 ## <a name="sync-azurermmediaservicestoragekeys"></a>Sync-AzureRmMediaServiceStorageKeys
-Синхронизирует ключи учетной записи хранения, которая связана с этой службой мультимедиа.
+Синхронизация ключей учетной записи хранения для учетной записи хранения, связанный с hello службы мультимедиа.
 
 ### <a name="syntax"></a>Синтаксис
     Sync-AzureRmMediaServiceStorageKeys [-ResourceGroupName] <string> [-MediaServiceAccountName] <string>    [-StorageAccountId] <string>  [<CommonParameters>]
@@ -411,7 +411,7 @@ ms.lasthandoff: 07/11/2017
 ### <a name="parameters"></a>Параметры
 **-ResourceGroupName &lt;String&gt;**
 
-Указывает имя группы ресурсов, к которой принадлежит эта служба мультимедиа.
+Указывает имя hello toowhich группы ресурсов hello, к которому относится эта служба мультимедиа.
 
 | Псевдонимы | Нет |
 | --- | --- |
@@ -423,7 +423,7 @@ ms.lasthandoff: 07/11/2017
 
 **-AccountName &lt;String&gt;**
 
-Указывает имя этой службы мультимедиа.
+Указывает имя службы мультимедиа hello hello.
 
 | Псевдонимы | Нет |
 | --- | --- |
@@ -435,7 +435,7 @@ ms.lasthandoff: 07/11/2017
 
 **-StorageAccountId &lt;String&gt;**
 
-Указывает учетную запись хранения, связанную с этой службой мультимедиа.
+Указывает учетную запись хранилища hello, связанные с hello службы мультимедиа.
 
 | Псевдонимы | Идентификатор |
 | --- | --- |
@@ -447,13 +447,13 @@ ms.lasthandoff: 07/11/2017
 
 **&lt;CommandParameters&gt;**
 
-Этот командлет поддерживает общие параметры: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction и -WarningVariable.
+Этот командлет поддерживает общие параметры hello:-Debug, - ErrorAction, - ErrorVariable, - InformationAction, - InformationVariable, - OutVariable,-OutBuffer, - PipelineVariable, - Verbose, - WarningAction и - WarningVariable.
 
 ### <a name="inputs"></a>Входные данные
-Тип входных данных определяет тип объектов, которые можно передавать в командлет.
+Hello входным типом является тип hello hello объекты, можно передать по конвейеру командлету toohello.
 
-### <a name="outputs"></a>Выходные данные
-Тип выходных данных определяет тип объектов, которые будет выдавать командлет.
+### <a name="outputs"></a>outputs
+Тип выходных данных Hello — выдает hello типы объектов hello hello командлета.
 
 ## <a name="next-step"></a>Дальнейшие действия
 Изучите схемы обучения для служб мультимедиа.

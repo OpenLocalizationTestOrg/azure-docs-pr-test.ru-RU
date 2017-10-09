@@ -1,6 +1,6 @@
 ---
-title: "Выполнение заданий Sqoop с помощью .NET и HDInsight в Azure | Документы Майкрософт"
-description: "Узнайте, как использовать пакет SDK HDInsight для .NET, чтобы выполнять импорт и экспорт Sqoop между кластером HDInsight и базой данных SQL Azure."
+title: "aaaRun Sqoop заданий с помощью .NET и HDInsight — Azure | Документы Microsoft"
+description: "Узнайте, как toorun HDInsight .NET SDK toouse Sqoop Импорт и экспорт между кластера Hadoop и базой данных Azure SQL."
 keywords: "задание sqoop"
 editor: cgronlun
 manager: jhubbard
@@ -17,37 +17,37 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/25/2017
 ms.author: jgao
-ms.openlocfilehash: c95641fc6d20e2911e007d1974b9e2c2398b3133
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: afa0a78ba5e5d89c04ba7be4b58dd24aea4f39ec
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="run-sqoop-jobs-using-net-sdk-for-hadoop-in-hdinsight"></a>Выполнение заданий Sqoop с помощью пакета SDK для .NET для Hadoop в HDInsight
 [!INCLUDE [sqoop-selector](../../includes/hdinsight-selector-use-sqoop.md)]
 
-Узнайте, как использовать пакет SDK HDInsight для .NET для выполнения заданий Sqoop, осуществляющих импорт и экспорт между кластером HDInsight и базой данных SQL Azure или базой данных SQL Server.
+Узнайте, как toorun HDInsight .NET SDK toouse Sqoop заданий в HDInsight tooimport и экспорт между кластер HDInsight и база данных Azure SQL или база данных SQL Server.
 
 > [!NOTE]
-> Действия, описанные в этой статье, можно использовать для кластера HDInsight под управлением Windows или Linux. Однако эти действия можно выполнять только из клиента Windows. Используйте выбор вкладок в верхней части этой статьи, чтобы выбрать другие методы.
+> в этой статье инструкциям Hello может использоваться с либо Windows или Linux HDInsight кластера; Однако эти действия, будет работать только с клиента Windows. Используйте выбора вкладки hello на hello верхней части этой статьи toochoose других методов.
 > 
 > 
 
 ### <a name="prerequisites"></a>Предварительные требования
-Перед началом работы с этим руководством необходимо иметь следующее:
+Прежде чем начать работу с учебником, необходимо иметь hello следующих элементов:
 
 * **Кластер Hadoop в HDInsight**. Ознакомьтесь с разделом [Создание кластера и базы данных SQL](hdinsight-use-sqoop.md#create-cluster-and-sql-database).
 
 ## <a name="use-sqoop-on-hdinsight-clusters-using-net-sdk"></a>Использование Sqoop в кластерах HDInsight с помощью пакета SDK для .NET
-Пакет SDK для HDInsight .NET содержит клиентские библиотеки .NET, которые упрощают работу с кластерами HDInsight из .NET. В этом разделе вы создадите консольное приложение C# для экспорта hivesampletable в созданную ранее таблицу базы данных SQL.
+Hello HDInsight .NET SDK предоставляет клиентские библиотеки .NET, что делает его проще toowork с кластерами HDInsight из .NET. В этом разделе создайте таблицы C# консольного приложения tooexport hello hivesampletable toohello базы данных SQL, созданный ранее в этом учебнике.
 
 ## <a name="submit-a-sqoop-job"></a>Отправка задания Sqoop
 
 1. Создайте в Visual Studio консольное приложение C#.
-2. В Консоли диспетчера пакетов Visual Studio выполните следующую команду Nuget, чтобы импортировать пакет:
+2. Запустите следующий пакет hello tooimport команды Nuget hello из hello консоль диспетчера пакетов Visual Studio.
    
         Install-Package Microsoft.Azure.Management.HDInsight.Job
-3. Используйте следующий код в файле Program.cs.
+3. Используйте следующий код в файле Program.cs hello hello.
    
         using System.Collections.Generic;
         using Microsoft.Azure.Management.HDInsight.Job;
@@ -67,14 +67,14 @@ ms.lasthandoff: 07/11/2017
    
                 static void Main(string[] args)
                 {
-                    System.Console.WriteLine("The application is running ...");
+                    System.Console.WriteLine("hello application is running ...");
    
                     var clusterCredentials = new BasicAuthenticationCloudCredentials { Username = ExistingClusterUsername, Password = ExistingClusterPassword };
                     _hdiJobManagementClient = new HDInsightJobManagementClient(ExistingClusterUri, clusterCredentials);
    
                     SubmitSqoopJob();
    
-                    System.Console.WriteLine("Press ENTER to continue ...");
+                    System.Console.WriteLine("Press ENTER toocontinue ...");
                     System.Console.ReadLine();
                 }
    
@@ -101,25 +101,25 @@ ms.lasthandoff: 07/11/2017
                         Command = "export --connect " + connectionString + " --table " + tableName + "_mobile --export-dir " + exportDir + "_mobile --fields-terminated-by \\t -m 1"
                     };
    
-                    System.Console.WriteLine("Submitting the Sqoop job to the cluster...");
+                    System.Console.WriteLine("Submitting hello Sqoop job toohello cluster...");
                     var response = _hdiJobManagementClient.JobManagement.SubmitSqoopJob(parameters);
-                    System.Console.WriteLine("Validating that the response is as expected...");
+                    System.Console.WriteLine("Validating that hello response is as expected...");
                     System.Console.WriteLine("Response status code is " + response.StatusCode);
-                    System.Console.WriteLine("Validating the response object...");
+                    System.Console.WriteLine("Validating hello response object...");
                     System.Console.WriteLine("JobId is " + response.JobSubmissionJsonResponse.Id);
                 }
             }
         }
-4. Нажмите клавишу **F5** для запуска программы. 
+4. Нажмите клавишу **F5** toorun hello программы. 
 
 ## <a name="limitations"></a>Ограничения
-* Массовый экспорт: при использовании HDInsight на основе Linux соединитель Sqoop, применяемый для экспорта данных в Microsoft SQL Server или базу данных SQL Azure, пока не поддерживает операции массовой вставки.
-* Пакетная обработка: при использовании HDInsight на основе Linux, когда для вставок применяется параметр `-batch`, Sqoop выполняет несколько вставок вместо пакетной обработки операций вставки.
+* Для массового экспорта — под управлением Linux с HDInsight, hello Sqoop соединитель, используемый tooexport данных tooMicrosoft SQL Server или база данных SQL Azure в настоящее время не поддерживает операции массовой вставки.
+* Пакетное выполнение — с hdinsight под управлением Linux, при использовании hello `-batch` переход при выполнении вставки, Sqoop выполняет вставку нескольких вместо Пакетная обработка операций вставки hello.
 
 ## <a name="next-steps"></a>Дальнейшие действия
-Теперь вы узнали, как использовать Sqoop. Дополнительные сведения см. на следующих ресурсах:
+Теперь вы узнали, как toouse Sqoop. toolearn более, см.:
 
 * [Использование Oozie с HDInsight](hdinsight-use-oozie.md): используйте действие Sqoop в рабочем процессе Oozie.
-* [Анализ данных о задержке рейсов с помощью HDInsight](hdinsight-analyze-flight-delay-data.md): используйте Hive для анализа данных о задержке рейсов, а затем используйте Sqoop для экспорта данных в базу данных SQL Azure.
-* [Передача данных в HDInsight](hdinsight-upload-data.md): узнайте о других способах отправки данных в HDInsight и хранилище больших двоичных объектов Azure.
+* [Анализ данных задержки рейсов, с помощью HDInsight](hdinsight-analyze-flight-delay-data.md): используйте Hive рейса tooanalyze задержка данных, а затем использовать базы данных Azure SQL tooan Sqoop tooexport данных.
+* [Отправка данных tooHDInsight](hdinsight-upload-data.md): найти другие методы для отправки данных tooHDInsight/Azure BLOB-объекта хранилища.
 

@@ -1,6 +1,6 @@
 ---
-title: "Устранение неполадок с YARN с помощью Azure HDInsight | Документация Майкрософт"
-description: "Получите ответы на распространенные вопросы о работе с Apache Hadoop YARN и Azure HDInsight."
+title: "aaaTroubleshoot YARN с помощью Azure HDInsight | Документы Microsoft"
+description: "Ответы toocommon вопросов о работе с Apache Hadoop YARN и Azure HDInsight."
 keywords: "Azure HDInsight, YARN, вопросы и ответы, руководство по устранению неполадок, часто задаваемые вопросы"
 services: Azure HDInsight
 documentationcenter: na
@@ -15,55 +15,55 @@ ms.devlang: na
 ms.topic: article
 ms.date: 7/7/2017
 ms.author: arijitt
-ms.openlocfilehash: 63f2d88ad59661b7fbcffd0aaeb94c58d40bdb73
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 800d9738cb27e05a64db470ee58565af3b85aa99
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="troubleshoot-yarn-by-using-azure-hdinsight"></a>Устранение неполадок с YARN с помощью Azure HDInsight
 
-Ознакомьтесь с основными проблемами и их разрешением при работе с полезными данными Apache Hadoop YARN в Apache Ambari.
+Дополнительные сведения о hello основные проблемы и способы их устранения при работе с полезными данными Apache Hadoop YARN Apache Ambari.
 
 ## <a name="how-do-i-create-a-new-yarn-queue-on-a-cluster"></a>Как создать очередь YARN в кластере?
 
 
 ### <a name="resolution-steps"></a>Способы устранения 
 
-Чтобы создать очередь YARN и выполнить балансировку выделения емкости для всех очередей, выполните следующие шаги с помощью Ambari. 
+Используйте hello следующих действий в Ambari toocreate новую очередь YARN и затем сбалансировать выделение емкости hello среди всех очередей hello. 
 
-В этом примере емкость двух имеющихся очередей (**default** и **thriftsvr**) изменяется с 50 % на 25 %, что позволяет обеспечить для новой очереди (spark) емкость 50 %.
+В этом примере два существующих очередей (**по умолчанию** и **thriftsvr**) и изменяются из 50% мощности too25% емкости, что дает hello новой очереди (spark) 50% емкости.
 | Очередь | Capacity | Максимальная емкость |
 | --- | --- | --- | --- |
 | по умолчанию | 25 % | 50 % |
 | thrftsvr | 25 % | 50 % |
 | spark | 50 % | 50 % |
 
-1. Выберите значок **просмотров Ambari**, а затем выберите шаблон сетки. После этого выберите **диспетчер очереди YARN**.
+1. Выберите hello **Ambari представления** значок и выберите hello сетка-шаблон. После этого выберите **диспетчер очереди YARN**.
 
-    ![Выбор значка просмотров Ambari](media/hdinsight-troubleshoot-yarn/create-queue-1.png)
-2. Выберите очередь **по умолчанию**.
+    ![Выберите значок представления Ambari hello](media/hdinsight-troubleshoot-yarn/create-queue-1.png)
+2. Выберите hello **по умолчанию** очереди.
 
-    ![Выбор очереди default](media/hdinsight-troubleshoot-yarn/create-queue-2.png)
-3. Для очереди **default** измените **емкость** с 50 % на 25 %. Для очереди **thriftsvr** измените **емкость** на 25 %.
+    ![Выберите очередь по умолчанию hello](media/hdinsight-troubleshoot-yarn/create-queue-2.png)
+3. Для hello **по умолчанию** очередь, измените hello **емкость** из too25 50% %. Для hello **thriftsvr** очередь, измените hello **емкость** too25%.
 
-    ![Изменение емкости до 25 % для очередей default и thriftsvr](media/hdinsight-troubleshoot-yarn/create-queue-3.png)
-4. Нажмите кнопку **Add Queue** (Добавить очередь), чтобы создать очередь.
+    ![Изменить % too25 hello емкости для очередей и thriftsvr по умолчанию hello](media/hdinsight-troubleshoot-yarn/create-queue-3.png)
+4. Выберите новую очередь toocreate **добавить очередь**.
 
     ![Выбор кнопки Add Queue (Добавить очередь)](media/hdinsight-troubleshoot-yarn/create-queue-4.png)
 
-5. Присвойте имя новой очереди.
+5. Имя новой очереди hello.
 
-    ![Имя Spark для новой очереди](media/hdinsight-troubleshoot-yarn/create-queue-5.png)  
+    ![Имя очереди hello Spark](media/hdinsight-troubleshoot-yarn/create-queue-5.png)  
 
-6. Оставьте значение **емкости** 50 %, а затем выберите кнопку **Действия**.
+6. Оставьте hello **емкость** значения на 50% и затем выберите hello **действия** кнопки.
 
-    ![Выбор кнопки "Действия"](media/hdinsight-troubleshoot-yarn/create-queue-6.png)  
+    ![Нажмите кнопку "hello действия"](media/hdinsight-troubleshoot-yarn/create-queue-6.png)  
 7. Выберите команду **Save and Refresh Queues** (Сохранить и обновить очереди).
 
     ![Выбор Save and Refresh Queues (Сохранить и обновить очереди)](media/hdinsight-troubleshoot-yarn/create-queue-7.png)  
 
-После применения эти изменения сразу же появятся на пользовательском интерфейсе планировщика YARN.
+Эти изменения, отображаются сразу же при hello YARN интерфейса планировщика заданий.
 
 ### <a name="additional-reading"></a>Дополнительные материалы
 
@@ -75,14 +75,14 @@ ms.lasthandoff: 08/29/2017
 
 ### <a name="resolution-steps"></a>Способы устранения 
 
-1. Подключитесь к кластеру HDInsight с помощью клиента Secure Shell (SSH). Подробные сведения см. в разделе [Дополнительные материалы](#additional-reading-2).
+1. Подключите кластер HDInsight toohello с помощью клиента Secure Shell (SSH). Подробные сведения см. в разделе [Дополнительные материалы](#additional-reading-2).
 
-2. Чтобы получить список всех идентификаторов текущих выполняемых приложений YARN, выполните следующую команду:
+2. toolist все hello идентификаторов приложения hello YARN приложений, запущенных в данный момент, выполните следующую команду hello:
 
     ```apache
     yarn top
     ```
-    Идентификаторы перечислены в столбце **APPLICATIONID**. Вы можете скачать журналы из столбца **APPLICATIONID**.
+    Hello идентификаторы перечислены в hello **APPLICATIONID** столбца. Вы можете загрузить журналы из hello **APPLICATIONID** столбца.
 
     ```apache
     YARN top - 18:00:07, up 19d, 0:14, 0 active users, queue(s): root
@@ -97,7 +97,7 @@ ms.lasthandoff: 08/29/2017
      application_1490377567345_0006 hive            spark  thriftsvr       1       0       1       0      1G      0G    1628430    2442645  10.00   18:20:20 Thrift JDBC/ODBC Server
     ```
 
-3. Чтобы скачать журналы для всех основных контейнеров приложения YARN, выполните следующую команду:
+3. toodownload YARN контейнера журналы для всех шаблонов приложения, используйте hello следующую команду:
    
     ```apache
     yarn logs -applicationIdn logs -applicationId <application_id> -am ALL > amlogs.txt
@@ -105,7 +105,7 @@ ms.lasthandoff: 08/29/2017
 
     Будет создан файл журнала с именем amlogs.txt. 
 
-4. Чтобы скачать журналы только для последнего основного контейнера приложения YARN, выполните следующую команду:
+4. журналы контейнера YARN toodownload для только hello последние приложения базы данных master, используйте hello следующую команду:
 
     ```apache
     yarn logs -applicationIdn logs -applicationId <application_id> -am -1 > latestamlogs.txt
@@ -113,7 +113,7 @@ ms.lasthandoff: 08/29/2017
 
     Будет создан файл журнала с именем latestamlogs.txt. 
 
-4. Чтобы скачать журналы для первых двух основных контейнеров приложения YARN, выполните следующую команду:
+4. журналы контейнера YARN toodownload для первого шаблонов два приложения hello, используйте hello следующую команду:
 
     ```apache
     yarn logs -applicationIdn logs -applicationId <application_id> -am 1,2 > first2amlogs.txt 
@@ -121,7 +121,7 @@ ms.lasthandoff: 08/29/2017
 
     Будет создан файл журнала с именем first2amlogs.txt. 
 
-5. Чтобы скачать все журналы контейнеров приложения YARN, выполните следующую команду:
+5. использовать все журналы YARN контейнера, toodownload hello следующую команду:
 
     ```apache
     yarn logs -applicationIdn logs -applicationId <application_id> > logs.txt
@@ -129,7 +129,7 @@ ms.lasthandoff: 08/29/2017
 
     Будет создан файл журнала с именем logs.txt. 
 
-6. Чтобы скачать журнал контейнера YARN для определенного контейнера, выполните следующую команду:
+6. toodownload hello YARN журнал контейнер для конкретного контейнера, hello используйте следующую команду:
 
     ```apache
     yarn logs -applicationIdn logs -applicationId <application_id> -containerId <container_id> > containerlogs.txt 
@@ -139,7 +139,7 @@ ms.lasthandoff: 08/29/2017
 
 ### <a name="additional-reading-2"></a>Дополнительные материалы
 
-- [Подключение к HDInsight (Hadoop) с помощью SSH](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-hadoop-linux-use-ssh-unix)
+- [Подключиться с помощью SSH tooHDInsight (Hadoop)](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-hadoop-linux-use-ssh-unix)
 - [APACHE HADOOP YARN — CONCEPTS AND APPLICATIONS](https://hortonworks.com/blog/apache-hadoop-yarn-concepts-and-applications/) (Apache Hadoop YARN: приложения и основные понятия)
 
 

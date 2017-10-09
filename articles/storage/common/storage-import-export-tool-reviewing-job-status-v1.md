@@ -1,6 +1,6 @@
 ---
-title: "Просмотр состояния задания инструмента импорта и экспорта Azure версии 1 | Документация Майкрософт"
-description: "Узнайте, как использовать файлы журнала, созданные при запуске задания импорта или экспорта, для просмотра состояния задания импорта и экспорта."
+title: "состояние задания импорта и экспорта Azure - v1 aaaReviewing | Документы Microsoft"
+description: "Узнайте, как файлы журналов hello toouse, созданные при hello импорта или экспорта задания был запущен toosee hello состояние задания импорта и экспорта hello."
 author: muralikk
 manager: syadav
 editor: tysonn
@@ -14,29 +14,29 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2017
 ms.author: muralikk
-ms.openlocfilehash: bdb30bc28c36ab9e969efc8be3b87b97e4027b39
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 363731ede4751124a714b4ce96852e0b8c4dbca4
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="reviewing-azure-importexport-job-status-with-copy-log-files"></a>Просмотр состояния задания импорта и экспорта Azure с помощью файлов журнала копирования
-При обработке дисков, связанных с заданием импорта или экспорта, служба импорта и экспорта Microsoft Azure записывает файлы журнала копирования в учетную запись хранения, в которую импортируются большие двоичные объекты или из которой они экспортируются. Файл журнала содержит подробные сведения о состоянии каждого импортируемого или экспортируемого файла. При запросе состояния завершенного задания возвращается URL-адрес для каждого файла журнала копирования. Дополнительные сведения см. [здесь](/rest/api/storageservices/Get-Job3).  
+Когда hello службы импорта и экспорта Microsoft Azure обрабатывает диски, связанные с заданием импорта или экспорта, она записывает учетной записи копии журнала файлов toohello хранения tooor откуда Импорт или экспорт больших двоичных объектов. Hello файл журнала содержит подробное состояние каждого файла, который был импортирован или экспортирован. файл журнала копирования tooeach URL-адрес Hello возвращается при запросе hello состояние завершенного задания; в разделе [получения задания](/rest/api/storageservices/Get-Job3) для получения дополнительной информации.  
 
 ## <a name="example-urls"></a>Примеры URL-адресов
 
-Ниже приведены примеры URL-адресов файлов журнала копирования для задания импорта с двумя дисками.  
+Hello ниже приведены примеры URL-адресов для копирования файлов журнала для задания импорта с двумя дисками.  
   
  `http://myaccount.blob.core.windows.net/ImportExportStatesPath/waies/myjob_9WM35C2V_20130921-034307-902_error.xml`  
   
  `http://myaccount.blob.core.windows.net/ImportExportStatesPath/waies/myjob_9WM45A6Q_20130921-042122-021_error.xml`  
   
- Дополнительные сведения о формате журналов копирования и полный список кодов состояний см. в статье [Формат файла журнала службы импорта и экспорта Azure](../storage-import-export-file-format-log.md).  
+ В разделе [службы импорта и экспорта формат файла журнала](../storage-import-export-file-format-log.md) hello формата журналов копирования и полный список кодов состояния hello.  
   
 ## <a name="next-steps"></a>Дальнейшие действия
  
- * [Настройка средства импорта и экспорта Azure](storage-import-export-tool-setup-v1.md)   
+ * [Установка hello средство импорта и экспорта Azure](storage-import-export-tool-setup-v1.md)   
  * [Подготовка жестких дисков для задания импорта](../storage-import-export-tool-preparing-hard-drives-import-v1.md)   
  * [Подготовка задания импорта](../storage-import-export-tool-repairing-an-import-job-v1.md)   
  * [Подготовка задания экспорта](../storage-import-export-tool-repairing-an-export-job-v1.md)   
- * [Устранение неполадок со средством импорта и экспорта Azure](storage-import-export-tool-troubleshooting-v1.md)
+ * [Устранение неполадок средства импорта и экспорта Azure hello](storage-import-export-tool-troubleshooting-v1.md)

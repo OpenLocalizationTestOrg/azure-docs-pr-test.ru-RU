@@ -1,6 +1,6 @@
 ---
-title: "Включение метрик хранилища на портале Azure | Документация Майкрософт"
-description: "Как включить метрики хранилища для служб больших двоичных объектов, очередей, таблиц и файлов."
+title: "метрики хранилища aaaEnabling в hello портал Azure | Документы Microsoft"
+description: "Как tooenable метрик хранилища для hello служб больших двоичных объектов, очередей, таблицы и файла"
 services: storage
 documentationcenter: 
 author: robinsh
@@ -14,68 +14,68 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/03/2017
 ms.author: robinsh
-ms.openlocfilehash: 4d6065597a41372ea6d320ab318b0c71d6a48b2a
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 4c990371e08a6586d935b0535149eabd4960cfaa
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="enabling-storage-metrics-and-viewing-metrics-data"></a>Включение метрик хранилища и просмотр данных метрик
 [!INCLUDE [storage-selector-portal-enable-and-view-metrics](../../includes/storage-selector-portal-enable-and-view-metrics.md)]
 
 ## <a name="overview"></a>Обзор
-Метрики хранилища включаются по умолчанию при создании учетной записи хранения. Вы можете нас троить мониторинг с помощью [классического портала Azure](https://manage.windowsazure.com), Windows PowerShell или программно с помощью API службы хранилища.
+Метрики хранилища включаются по умолчанию при создании учетной записи хранения. Вы можете настроить отслеживание с помощью либо hello [классический портал Azure](https://manage.windowsazure.com), Windows PowerShell или программно через API-Интерфейс хранилища.
 
-При включении метрик хранилища необходимо выбрать период хранения данных. Он определяет длительность хранения метрик службой хранилища и размер оплаты пространства, необходимого для их хранения. Как правило, следует использовать менее длительный период хранения для минутных метрик, нежели для часовых метрик, так как минутные метрики требуют значительно большего пространства. Следует выбрать такой период хранения, чтобы было достаточно времени на анализ данных и скачивание метрик, которые требуется сохранить локально для анализа или составления отчета. Помните, что за скачивание данных метрик из учетной записи хранения также взимается плата.
+При включении метрик хранилища необходимо выбрать период хранения для данных hello: этот период определяет срок хранения hello служба поддерживает метрики hello и расходов для hello пространство необходимые toostore их. Как правило следует использовать короткий срок хранения для ежеминутных метрик, нежели для часовых метрик из-за hello Требую значительно большего пространства для минутных метрик. Таким образом, чтобы иметь достаточно времени tooanalyze hello данных и загрузку метрик, нужно tookeep локально для анализа или составления следует выбрать период хранения. Помните, что за скачивание данных метрик из учетной записи хранения также взимается плата.
 
-## <a name="how-to-enable-storage-metrics-using-the-azure-classic-portal"></a>Как включить метрики хранилища с помощью классического портала Azure
-На [классическом портале Azure](https://manage.windowsazure.com)управление метриками хранилища осуществляется на странице "Настройка" для определенной учетной записи хранения. Для выполнения мониторинга можно задать уровень и период хранения (в днях) для каждого большого двоичного объекта, таблицы и очереди. В каждом из случаев используется один из следующих уровней:
+## <a name="how-tooenable-storage-metrics-using-hello-azure-classic-portal"></a>Как с помощью метрик хранилища tooenable hello классический портал Azure
+В hello [классический портал Azure](https://manage.windowsazure.com), используйте страницу "Настройка" hello для toocontrol учетной записи хранения метрик хранилища. Для выполнения мониторинга можно задать уровень и период хранения (в днях) для каждого большого двоичного объекта, таблицы и очереди. В каждом случае hello уровень является одним из следующих hello:
 
 * "Выключено" — сбор метрик не осуществляется.
-* Минимальный — метрики хранилища собирают базовый набор таких метрик, как исходящие и входящие данные, доступность, задержка и процент успешных операций, который агрегируется для служб BLOB-объектов, таблиц и очередей.
-* "Подробный" — осуществляется сбор полного набора метрик, включая метрики для каждой операции API хранилища, а также метрик уровня службы. Подробные метрики позволяют осуществлять более тщательный анализ проблем, возникающих во время работы приложений.
+* Минимум — Осуществляется сбор базового набора метрик, таких как исходящие и входящие данные, доступность, задержка и процент успешных операций, который агрегируется для служб больших двоичных объектов, таблиц и очередей hello.
+* Подробный — Полный набор метрик, включая собирает метрики хранилища Здравствуйте одинаковых метрик для каждого хранилища API-операции, кроме toohello уровня обслуживания метрики. Подробные метрики позволяют осуществлять более тщательный анализ проблем, возникающих во время работы приложений.
 
-Обратите внимание, что в настоящее время классический портал Azure не позволяет настраивать минутные метрики в учетной записи хранения. Их необходимо включить с помощью PowerShell или программно.
+Обратите внимание, что hello классический портал Azure не поддерживает в настоящее время tooconfigure минутные показатели вашей учетной записи хранилища; необходимо включить ежеминутные метрики с помощью PowerShell или программно.
 
-## <a name="how-to-enable-storage-metrics-using-powershell"></a>Как включить метрики хранилища с помощью PowerShell
-Чтобы настроить метрики хранилища для учетной записи хранения, можно использовать PowerShell на локальном компьютере, выполнив командлет Azure PowerShell Get-AzureStorageServiceMetricsProperty для получения текущих настроек и командлет Set-AzureStorageServiceMetricsProperty для их изменения.
+## <a name="how-tooenable-storage-metrics-using-powershell"></a>Как tooenable метрик хранилища, с помощью PowerShell
+Можно использовать PowerShell на ваш локальный компьютер tooconfigure метрик хранилища в вашей учетной записи хранилища с помощью hello Azure PowerShell командлет Get-AzureStorageServiceMetricsProperty tooretrieve hello текущие параметры и hello командлета SET-AzureStorageServiceMetricsProperty toochange hello текущие параметры.
 
-Командлеты, позволяющие управлять метриками хранилища, имеют следующие параметры.
+Hello командлеты, позволяющие управлять метриками хранилища используйте hello следующие параметры:
 
 * Возможными значениями MetricsType являются Hour и Minute.
 * Возможными значениями ServiceType являются Blob, Queue и Table.
-* Возможными значениями MetricsLevel являются None (эквивалентно значению "Выключено" на классическом портале Azure), Service (эквивалентно значению "Минимальный" на классическом портале Azure) и ServiceAndApi (эквивалентно значению "Подробный" на классическом портале Azure).
+* Возможными значениями MetricsLevel являются None (эквивалент tooOff в hello классический портал Azure), служба (эквивалент tooMinimal в hello классический портал Azure) и ServiceAndApi (эквивалент tooVerbose в hello классический портал Azure).
 
-Например, следующая команда выключает минутные метрики для службы BLOB-объектов в учетной записи хранения по умолчанию с установкой пятидневного периода хранения:
+Например, hello следующая команда включает минуту метрики для службы BLOB-объектов hello в вашей учетной записи хранения по умолчанию с периодом хранения hello значение toofive дней:
 
 ```powershell
 Set-AzureStorageServiceMetricsProperty -MetricsType Minute -ServiceType Blob -MetricsLevel ServiceAndApi  -RetentionDays 5
 ```
-Следующая команда получает текущий уровень часовых метрик и длительность периода хранения в днях для службы BLOB-объектов в учетной записи хранения по умолчанию:
+Hello следующая команда извлекает hello текущего почасовых метрик уровня и хранения дней для hello BLOB-объектов в учетной записи по умолчанию:
 
 ```powershell
 Get-AzureStorageServiceMetricsProperty -MetricsType Hour -ServiceType Blob
 ```
-Дополнительные сведения о настройке командлетов Azure PowerShell для работы с подпиской Azure и о выборе учетной записи хранения по умолчанию см. в разделе [Установка и настройка Azure PowerShell](/powershell/azure/overview).
+Сведения о toowork tooconfigure hello Azure PowerShell командлеты с подпиской Azure и как tooselect hello хранилища по умолчанию учетной записи toouse см: [как tooinstall и настройка Azure PowerShell](/powershell/azure/overview).
 
-## <a name="how-to-enable-storage-metrics-programmatically"></a>Как программно включить метрики хранилища
-В следующем фрагменте кода C# показано, как включить метрики и ведение журнала для службы BLOB-объектов с помощью клиентской библиотеки хранилища для .NET.
+## <a name="how-tooenable-storage-metrics-programmatically"></a>Как tooenable метрик хранилища программным способом
+Привет, следующий фрагмент кода C# показано, как tooenable метрик и ведения журнала для службы BLOB-объектов hello с помощью hello клиентской библиотеки хранилища для .NET.
 
 ```csharp
-//Parse the connection string for the storage account.
+//Parse hello connection string for hello storage account.
 const string ConnectionString = "DefaultEndpointsProtocol=https;AccountName=account-name;AccountKey=account-key";
 CloudStorageAccount storageAccount = CloudStorageAccount.Parse(ConnectionString);
 
-// Create service client for credentialed access to the Blob service.
+// Create service client for credentialed access toohello Blob service.
 CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
 
-// Enable Storage Analytics logging and set retention policy to 10 days. 
+// Enable Storage Analytics logging and set retention policy too10 days. 
 ServiceProperties properties = new ServiceProperties();
 properties.Logging.LoggingOperations = LoggingOperations.All;
 properties.Logging.RetentionDays = 10;
 properties.Logging.Version = "1.0";
 
-// Configure service properties for metrics. Both metrics and logging must be set at the same time.
+// Configure service properties for metrics. Both metrics and logging must be set at hello same time.
 properties.HourMetrics.MetricsLevel = MetricsLevel.ServiceAndApi;
 properties.HourMetrics.RetentionDays = 10;
 properties.HourMetrics.Version = "1.0";
@@ -84,22 +84,22 @@ properties.MinuteMetrics.MetricsLevel = MetricsLevel.ServiceAndApi;
 properties.MinuteMetrics.RetentionDays = 10;
 properties.MinuteMetrics.Version = "1.0";
 
-// Set the default service version to be used for anonymous requests.
+// Set hello default service version toobe used for anonymous requests.
 properties.DefaultServiceVersion = "2015-04-05";
 
-// Set the service properties.
+// Set hello service properties.
 blobClient.SetServiceProperties(properties);
 ```
 
 ## <a name="viewing-storage-metrics"></a>Просмотр метрик хранилища
-После настройки метрик хранилища для мониторинга учетной записи хранения метрики записываются в набор известных таблиц в учетной записи хранения. Просматривать часовые метрики по мере их появления на диаграмме можно на странице "Монитор" учетной записи хранения на классическом портале Azure. На этой странице классического портала Azure можно:
+После настройки метрик хранилища toomonitor вашей учетной записи хранилища, метрик hello записывается в набор известных таблиц в учетной записи хранилища. Страница приветствия монитора можно использовать для вашей учетной записи на классический портал Azure tooview hello часовых метрик hello как только они становятся доступными на диаграмме. На этой странице в hello классический портал Azure вы можете:
 
-* Выбирать метрики для отображения на диаграмме (набор доступных метрик зависит от того, какой тип мониторинга службы выбран на странице "Настройка": подробный или минимальный).
-* Выбирать интервал времени для метрик, отображаемых на диаграмме.
-* Выбирать абсолютную или относительную шкалу для построения метрик.
-* Настраивать оповещения по электронной почте, чтобы получать уведомления при достижении определенного значения конкретной метрики.
+* Выберите, какие tooplot метрик на диаграмме hello (hello набор доступных метрик зависит от выбранного того, какой наблюдение за службой hello на страницу "Настройка" hello).
+* Выберите диапазон времени hello для hello метрик, отображаемых на диаграмме hello.
+* Выберите toouse абсолютный или относительный масштаб tooplot hello метрик.
+* Настройка toonotify оповещений по электронной почте при определенных метрика достигает определенного значения.
 
-Чтобы скачивать метрики для длительного хранения или анализа в локальной среде, необходимо использовать соответствующий инструмент или написать код для чтения таблиц. Необходимо скачать минутные метрики для анализа. Таблицы не отображаются, если в учетной записи хранения выведены все таблицы. Однако к ним можно обращаться напрямую по имени. Многие сторонние инструменты обзора хранилищ поддерживают эти таблицы и позволяют просматривать их непосредственно (см. список доступных инструментов в записи блога [Обозреватели службы хранилища Microsoft Azure](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/03/11/windows-azure-storage-explorers-2014.aspx)).
+Если необходимо toodownload hello метрики для долгосрочного хранения или tooanalyze их локально, будет необходимо toouse средство или написать код tooread hello таблиц. Необходимо загрузить минутные метрики hello для анализа. Hello таблицы не отображаются, если список всех таблиц hello в вашей учетной записи хранилища, но они будут доступны непосредственно по имени. Многие средства обзора хранилища сторонних учитывать эти таблицы и позволяют tooview их напрямую (см. hello блога [обозреватели хранилища Microsoft Azure](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/03/11/windows-azure-storage-explorers-2014.aspx) список доступных средств).
 
 ### <a name="hourly-metrics"></a>Часовые метрики
 * $MetricsHourPrimaryTransactionsBlob
@@ -114,7 +114,7 @@ blobClient.SetServiceProperties(properties);
 ### <a name="capacity"></a>Емкость
 * $MetricsCapacityBlob
 
-Подробные сведения о схемах для этих таблиц см. в разделе [Схема таблицы метрик аналитики хранилища](https://msdn.microsoft.com/library/azure/hh343264.aspx). В примере строк ниже отражена только часть доступных столбцов, однако он иллюстрирует некоторые важные возможности сохранения метрик с помощью метрик хранилища:
+Для этих таблиц можно найти подробные сведения о схемах hello [схема таблицы метрик аналитики хранилища](https://msdn.microsoft.com/library/azure/hh343264.aspx). Hello примере строк ниже показывают только подмножество доступных столбцов hello, но иллюстрируют некоторые важные функции hello способ метрик хранилища сохраняет эти показатели:
 
 | PartitionKey | RowKey | Timestamp | TotalRequests | TotalBillableRequests | TotalIngress | TotalEgress | Доступность | AverageE2ELatency | AverageServerLatency | PercentSuccess |
 | --- |:---:| ---:| --- | --- | --- | --- | --- | --- | --- | --- |
@@ -123,41 +123,41 @@ blobClient.SetServiceProperties(properties);
 | 20140522T1100 |user;QueryEntity |2014-05-22T11:01:16.7650250Z |1 |1 |538 |633 |100 |3 |3 |100 |
 | 20140522T1100 |user;UpdateEntity |2014-05-22T11:01:16.7650250Z |1 |1 |771 |217 |100 |9 |6 |100 |
 
-В этом примере данных минутной метрики для ключа раздела используется время с минутным разрешением. Ключ строки определяет тип данных, которые хранятся в строке, и состоит из двух фрагментов данных — типа доступа и типа запроса:
+В этом примере данных минутной метрики для ключа раздела hello используется hello время с минутным разрешением. Hello ключ строки определяет тип информации, хранящейся в строке приветствия hello и состоит из двух фрагментов информации, типом доступа hello и тип запроса hello:
 
-* Типом доступа является либо user, либо system, где user означает все запросы пользователей к службе хранилища, а system означает запросы, выполненные с помощью аналитики хранилища.
-* Типом запроса является либо all, в случае чего это строка сводки, либо он определяет конкретный API, например QueryEntity или UpdateEntity.
+* Тип доступа Hello — пользователя или системы, где пользователь относится tooall пользователь запросов toohello хранилища службы, а система — toorequests, выполненные средством аналитики хранилища.
+* Тип запроса Hello — в этом случае это строка сводки, либо он определяет hello определенный интерфейс API, например QueryEntity или UpdateEntity.
 
-В примере данных выше показаны все записи за одну минуту (начиная с 11:00). Таким образом, если сложить количество запросов QueryEntities, количество запросов QueryEntity и количество запросов UpdateEntity, в сумме получится семь, и эта сумма отображается в строке user:All. Аналогичным образом можно определить среднюю сквозную задержку 104.4286 в строке user:All, вычислив ((143,8 * 5) + 3 + 9)/7.
+пример Hello данных передачи, которые все hello записывает за одну минуту (начиная с 11:00 по тихоокеанскому времени), поэтому hello число QueryEntities запросов, а также hello число QueryEntity запросов, а также hello число запросов UpdateEntity сложить tooseven, которой является hello Общее показан на Строка Hello user: All. Аналогичным образом, можно создать производные hello среднее конца в конец задержку 104.4286 в строке приветствия user: All, вычисляя ((143.8 * 5) + 3 + 9) / 7.
 
-Рекомендуется настроить оповещения на странице "Монитор" классического портала Azure, чтобы автоматически получать уведомления от метрик хранилища в случае внесения важных изменений в поведение служб хранилища. Если данные метрик скачиваются в формате с разделителями через обозреватель хранилища, их можно анализировать с помощью Microsoft Excel. Список доступных инструментов обозревателя хранилища см. в записи блога [Обозреватели службы хранилища Microsoft Azure](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/03/11/windows-azure-storage-explorers-2014.aspx).
+Настройка оповещений в hello классический портал Azure на странице приветствия монитора рекомендуется, чтобы метрик хранилища может автоматически уведомлять все важные изменения в поведении hello устройств хранения. Если вы используете toodownload средства обозревателя хранилища данные метрик в формате с разделителями, можно использовать Microsoft Excel tooanalyze hello данных. См. hello блога [обозреватели хранилища Microsoft Azure](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/03/11/windows-azure-storage-explorers-2014.aspx) список доступных средств обзора хранилища.
 
 ## <a name="accessing-metrics-data-programmatically"></a>Программный доступ к данным метрик
-В следующем списке показан пример кода на C#, в котором реализован доступ к минутным метрикам для диапазона минут с отображением результатов в окне консоли. В данном случае используется библиотека хранилища Azure версии 4, включающая класс CloudAnalyticsClient, упрощающий доступ к таблицам метрик в хранилище.
+Hello ниже приведен пример кода C#, обращается к hello минутным метрикам для диапазона минут и отображает результаты hello в окне консоли. Она использует hello библиотека хранилища Azure версии 4, включающая hello CloudAnalyticsClient класс, который упрощает доступ к таблицам метрик hello в хранилище.
 
 ```csharp
 private static void PrintMinuteMetrics(CloudAnalyticsClient analyticsClient, DateTimeOffset startDateTime, DateTimeOffset endDateTime)
 {
-    // Convert the dates to the format used in the PartitionKey
+    // Convert hello dates toohello format used in hello PartitionKey
     var start = startDateTime.ToUniversalTime().ToString("yyyyMMdd'T'HHmm");
     var end = endDateTime.ToUniversalTime().ToString("yyyyMMdd'T'HHmm");
 
     var services = Enum.GetValues(typeof(StorageService));
     foreach (StorageService service in services)
     {
-        Console.WriteLine("Minute Metrics for Service {0} from {1} to {2} UTC", service, start, end);
+        Console.WriteLine("Minute Metrics for Service {0} from {1} too{2} UTC", service, start, end);
         var metricsQuery = analyticsClient.CreateMinuteMetricsQuery(service, StorageLocation.Primary);
         var t = analyticsClient.GetMinuteMetricsTable(service);
         var opContext = new OperationContext();
         var query =
           from entity in metricsQuery
-          // Note, you can't filter using the entity properties Time, AccessType, or TransactionType
-          // because they are calculated fields in the MetricsEntity class.
-          // The PartitionKey identifies the DataTime of the metrics.
+          // Note, you can't filter using hello entity properties Time, AccessType, or TransactionType
+          // because they are calculated fields in hello MetricsEntity class.
+          // hello PartitionKey identifies hello DataTime of hello metrics.
           where entity.PartitionKey.CompareTo(start) >= 0 && entity.PartitionKey.CompareTo(end) <= 0 
         select entity;
 
-        // Filter on "user" transactions after fetching the metrics from Table Storage.
+        // Filter on "user" transactions after fetching hello metrics from Table Storage.
         // (StartsWith is not supported using LINQ with Azure table storage)
         var results = query.ToList().Where(m => m.RowKey.StartsWith("user"));
         var resultString = results.Aggregate(new StringBuilder(), (builder, metrics) => builder.AppendLine(MetricsString(metrics, opContext))).ToString();
@@ -178,15 +178,15 @@ private static string MetricsString(MetricsEntity entity, OperationContext opCon
 ```
 
 ## <a name="what-charges-do-you-incur-when-you-enable-storage-metrics"></a>Какова стоимость включения метрик хранилища?
-За запросы записи на создание сущностей таблиц для метрик взимается плата в соответствии со стандартными тарифами, применимыми ко всем операциям службы хранилища Azure.
+Напишите запросы сущностей таблицы toocreate для метрик взимается плата в операции хранилища Azure применимо tooall стандартные тарифы hello.
 
-К запросам на чтение и удаление, формируемым клиентом в отношении данных метрик, также применяются стандартные тарифы. Если вы настроили политику хранения данных, за удаление старых данных метрик хранилищем Azure плата не взимается. Однако при удалении данных аналитики с учетной записи будет взиматься плата за операции удаления.
+Чтение и удаление запросов по toometrics данных клиента, также применяются стандартные тарифы. Если вы настроили политику хранения данных, за удаление старых данных метрик хранилищем Azure плата не взимается. Однако при удалении данных аналитики, учетной записи взимается для операций delete hello.
 
-За пространство, занимаемое таблицами метрик, также взимается плата. Оценить объем пространства, используемый для хранения данных метрик, можно следующим образом:
+Hello мощность, используемая hello таблицах метрик, также тарифицируется: можно использовать следующие tooestimate hello объем пространства, используемый для хранения данных метрик hello:
 
-* Если за каждый час служба использует каждый API в каждой службе, то каждый час в таблицах транзакций метрик сохраняется примерно 148 КБ данных, если сводка охватывает уровень службы и уровень API.
-* Если за каждый час служба использует каждый API в каждой службе, то каждый час в таблицах транзакций метрик сохраняется примерно 12 КБ данных, если сводка охватывает только уровень службы.
-* В таблице емкости больших двоичных объектов ежедневно добавляются две строки (если пользователь выбрал использование журналов). При этом размер этой таблицы ежедневно увеличивается примерно на 300 байтов.
+* Если каждый час служба использует каждый API в каждой службе, примерно 148 КБ данных сохраняется каждый час в таблицах транзакций метрик hello при включении службы и уровне API сводки.
+* Если каждый час служба использует каждый API в каждой службе, примерно 12 КБ данных сохраняется каждый час в таблицах транзакций метрик hello при наличии только уровень службы сводки.
+* Hello таблице емкости BLOB-объектов имеет две строки, добавленные в день (если пользователь выбрал использование журналов): это означает, что каждый день hello размер этой таблицы увеличивается на копирование tooapproximately 300 байт.
 
 ## <a name="next-steps"></a>Дальнейшие действия:
 [Включение ведения журнала аналитики и доступа к данным журнала хранилища](https://msdn.microsoft.com/library/dn782840.aspx)

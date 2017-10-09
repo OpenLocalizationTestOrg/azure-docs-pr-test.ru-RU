@@ -1,6 +1,6 @@
 ---
-title: "Обработка файлов мультимедиа с помощью технологии Hyperlapse служб мультимедиа Azure | Документация Майкрософт"
-description: "Azure Media Hyperlapse создает плавное замедленное видео от первого лица или содержимое, характерное для экшн-камер. В этом разделе показано, как использовать индексатор мультимедийных данных."
+title: "aaaHyperlapse файлов мультимедиа с помощью Azure Media Hyperlapse | Документы Microsoft"
+description: "Azure Media Hyperlapse создает плавное замедленное видео от первого лица или содержимое, характерное для экшн-камер. В этом разделе показано, как toouse индексатора мультимедиа."
 services: media-services
 documentationcenter: 
 author: asolanki
@@ -14,37 +14,37 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/02/2017
 ms.author: adsolank
-ms.openlocfilehash: 02f634c2af04b6b372642ab0e6a17a5d29f16450
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 85bb07206d0ca2f5b2fd0767e6ed4904195d3ab6
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="hyperlapse-media-files-with-azure-media-hyperlapse"></a>Файлы мультимедиа Hyperlapse с Azure Media Hyperlapse
-Azure Media Hyperlapse представляет собой обработчик мультимедиа, создающий плавное замедленное видео от первого лица или содержимое, характерное для экшн-камер.  Microsoft Hyperlapse для служб мультимедиа Azure, облачный аналог [настольной системы Hyperlapse Pro и телефонной системы Hyperlapse Mobile от Microsoft Research](http://aka.ms/hyperlapse), использует обширные возможности масштабирования платформы обработки мультимедиа служб мультимедиа Azure, чтобы реализовать горизонтальное масштабирование и параллелизовать массовую обработку Hyperlapse.
+Azure Media Hyperlapse представляет собой обработчик мультимедиа, создающий плавное замедленное видео от первого лица или содержимое, характерное для экшн-камер.  Здравствуйте того же уровня на основе облака, слишком[Microsoft Research рабочего стола Hyperlapse Pro и телефону Hyperlapse Mobile](http://aka.ms/hyperlapse), Hyperlapse Microsoft для служб мультимедиа Azure использует hello массовым масштабированием hello служб мультимедиа Azure Media Обработка toohorizontally платформы масштабировать и параллельного выполнения массового обработка Hyperlapse.
 
 > [!IMPORTANT]
-> Продукт Microsoft Hyperlapse оптимально подходит для работы с содержимым от первого лица с перемещающейся камерой.  Хотя материал с неподвижной камеры может обрабатываться, производительность и качество обработчика мультимедиа Azure Media Hyperlapse не позволяет гарантировать работу с другими типами содержимого.  Чтобы получить дополнительные сведения о Microsoft Hyperlapse для служб мультимедиа Azure и увидеть некоторые видеоматериалы с примерами, ознакомьтесь с [вводной записью блога](http://aka.ms/azurehyperlapseblog) из общедоступной предварительной версии.
+> Microsoft Hyperlapse — спроектированный toowork наиболее содержимое первого лица с помощью перемещения камеры.  Несмотря на то, что по-прежнему могут работать по-прежнему видеокамер, hello производительность и качество hello обработчика мультимедиа Azure Media Hyperlapse не может быть гарантирована для других типов содержимого.  toolearn Дополнительные сведения о Hyperlapse Microsoft для служб мультимедиа Azure и разделе некоторые видео с примерами, ознакомьтесь с hello [вводные блога](http://aka.ms/azurehyperlapseblog) из общедоступной предварительной версии hello.
 > 
 > 
 
-Задание Azure Media Hyperlapse принимает в качестве входных данных файлы ресурсов MP4, MOV или WMV вместе с файлом конфигурации, который определяет, какие кадры видео должны быть замедлены и на какой скорости (например, первые 10 000 кадров на скорости 2x).  Результатом является стабилизированное и замедленное представление входного видео.
+Azure Media Hyperlapse задания принимает в качестве входных данных файла ресурса MP4, MOV или WMV вместе с файл конфигурации, который определяет, какие кадры видео должно быть промежуток времени и скорость toowhat (например первый 10 000 кадры 2 x).  Hello выводится представление hello входное видео в стабилизации и промежуток времени.
 
-Последние новости о Azure Media Hyperlapse см. в [блогах служб мультимедиа](https://azure.microsoft.com/blog/topics/media-services/).
+Последние обновления Azure Media Hyperlapse hello, в разделе [блоги служб мультимедиа](https://azure.microsoft.com/blog/topics/media-services/).
 
 ## <a name="hyperlapse-an-asset"></a>Использование Hyperlapse для обработки ресурса-контейнера
-Сначала необходимо загрузить требуемый входной файл для служб мультимедиа Azure.  Дополнительные сведения об основных понятиях, связанных с загрузкой содержимого и управлением им, см. в статье [об управлении содержимым](media-services-portal-vod-get-started.md).
+Сначала необходимо будет tooupload вашей tooAzure входной файл служб мультимедиа.  Дополнительные сведения о toolearn hello понятиями, связанными с отправка и управление содержимым, чтение hello [управления содержимым статьи](media-services-portal-vod-get-started.md).
 
 ### <a id="configuration"></a>Предустановка конфигурации для Hyperlapse
-После помещения содержимого в учетную запись служб мультимедиа необходимо создать предустановку вашей конфигурации.  В следующей таблице описаны поля, задаваемые пользователем:
+Как только контента в учетную запись служб мультимедиа, необходимо будет tooconstruct предварительно заданную конфигурацию.  Hello в следующей таблице описываются hello определяемые пользователем поля:
 
 | Поле | Описание |
 | --- | --- |
-| StartFrame |Кадр, с которого должна начинаться обработка Microsoft Hyperlapse. |
-| NumFrames |Число обрабатываемых кадров. |
-| Speed |Коэффициент ускорения входного видео. |
+| StartFrame |кадр Hello, после которого hello Microsoft Hyperlapse должна начинаться обработка. |
+| NumFrames |Hello число кадров tooprocess |
+| Speed |Коэффициент Hello какие toospeed hello входного видео. |
 
-Ниже приведен пример соответствующего файла конфигурации для XML и JSON:
+Hello ниже приведен пример файла конфигурации соответствует стандартам XML и JSON:
 
 **Предустановка XML:**
 
@@ -74,14 +74,14 @@ Azure Media Hyperlapse представляет собой обработчик 
         }
     }
 
-### <a id="sample_code"></a> Microsoft Hyperlapse с пакетом AMS .NET SDK
-Следующий метод передает файл мультимедиа как ресурс и создает задание с помощью обработчика мультимедиа Azure Media Hyperlapse.
+### <a id="sample_code"></a>Microsoft Hyperlapse с hello AMS .NET SDK
+Hello следующий метод отправляет файл мультимедиа в виде актива и создает задание с hello обработчика мультимедиа Azure Media Hyperlapse.
 
 > [!NOTE]
-> Для работы этого кода в области с именем "context" уже должен находиться CloudMediaContext.  Дополнительные сведения об этом см. в [статье об управлении содержимым](media-services-dotnet-get-started.md).
+> В области с именем hello «контекст» для этого кода toowork необходимо иметь CloudMediaContext.  Дополнительные сведения об этом, чтения hello toolearn [управления содержимым статьи](media-services-dotnet-get-started.md).
 > 
 > [!NOTE]
-> Строковый аргумент "hyperConfig" должен быть соответствующей предустановкой конфигурации для JSON или XML, как описано выше.
+> Hello строковый аргумент «hyperConfig» является ожидаемым toobe конфигурации согласованность конфигурации в JSON или XML, как описано выше.
 > 
 > 
 
@@ -148,7 +148,7 @@ Azure Media Hyperlapse представляет собой обработчик 
                                                  CancellationToken.None);
             progressJobTask.Wait();
 
-            // If job state is Error, the event handling
+            // If job state is Error, hello event handling
             // method for job progress should log errors.  Here we check
             // for error state and exit if needed.
             if (job.State == JobState.Error)

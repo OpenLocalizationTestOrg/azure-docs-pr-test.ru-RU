@@ -1,5 +1,5 @@
 ---
-title: "Руководство по Службе контейнеров Azure: масштабирование приложения | Документация Майкрософт"
+title: "Учебник контейнера службы aaaAzure - масштаб приложения | Документы Microsoft"
 description: "Руководство по Службе контейнеров Azure: масштабирование приложения"
 services: container-service
 documentationcenter: 
@@ -17,34 +17,34 @@ ms.workload: na
 ms.date: 07/25/2017
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 62e70e34d06f5220734ff85c70a0c9b475f9579b
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 29571eef0fd91bd6b40f00d8c018539f320179bf
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="scale-kubernetes-pods-and-kubernetes-infrastructure"></a>Масштабирование pod и инфраструктуры Kubernetes
 
-Если вы выполнили инструкции в руководствах, то у вас имеется работающий кластер Kubernetes в Службе контейнеров Azure и вы развернули в нем приложение Vote Azure. 
+Если вы смотрел hello учебники, имеется действующее Kubernetes кластера в службе контейнера Azure, и вы развернули приложение Azure голосования hello. 
 
-В этом руководстве (часть 5 из 7) описывается масштабирование pod, содержащихся в приложении, и их автомасштабирование. Вы также узнаете, как масштабировать количество узлов агентов виртуальной машины Azure, чтобы менять емкость кластера для размещения рабочих нагрузок. Вам предстоят следующие задачи:
+В этом учебнике, часть 5, 7, горизонтальное масштабирование hello модулей в приложение hello и повторите pod автоматического масштабирования. Вы также узнаете, как количество hello tooscale toochange узлы агента ВМ Azure hello кластера емкость для размещения рабочих нагрузок. Вам предстоят следующие задачи:
 
 > [!div class="checklist"]
 > * масштабирование pod Kubernetes вручную;
-> * настройка автомасштабирования pod, в которых выполняется интерфейсная часть приложения;
-> * масштабирование узлов агентов Kubernetes в Azure.
+> * Настройка модулей автомасштабирования выполнение внешнего интерфейса приложения hello
+> * Масштабирование узлы Azure агентов Kubernetes hello
 
-В последующих руководствах выполняется обновление приложения Vote Azure, а также настройка Operations Management Suite для отслеживания кластера Kubernetes.
+В последующих учебники hello Azure голос приложение обновляется, и Operations Management Suite настроили кластер Kubernetes toomonitor hello.
 
 ## <a name="before-you-begin"></a>Перед началом работы
 
-В предыдущих руководствах приложение было упаковано в образ контейнера, этот образ был передан в реестр контейнеров Azure и был создан кластер Kubernetes. Затем приложение было запущено в кластере Kubernetes. Если вы не выполнили эти действия, то можете ознакомиться со статьей [Создание образов контейнеров для использования со службой контейнеров Azure](./container-service-tutorial-kubernetes-prepare-app.md). 
+В предыдущих учебниках приложение было упаковано в образ контейнера, tooAzure реестра контейнера и создания кластера Kubernetes загружены этот образ. приложение Hello затем была запущена на кластере Kubernetes hello. Если вы не были выполнены следующие действия и хотите toofollow вдоль, возвращают toohello [учебник 1 – Создание образов контейнеров](./container-service-tutorial-kubernetes-prepare-app.md). 
 
 Для этого руководства как минимум необходим кластер Kubernetes с выполняющимся приложением.
 
 ## <a name="manually-scale-pods"></a>Масштабирование pod вручную
 
-К настоящему моменту было развернуто по отдельной реплике внешнего приложения Vote Azure и экземпляра Redis. Чтобы проверить это, выполните команду [kubectl get](https://kubernetes.io/docs/user-guide/kubectl/v1.6/#get).
+До сих hello Azure голос переднего плана и экземпляр Redis были развернуты, каждый с одной реплики. tooverify, запустите hello [kubectl получить](https://kubernetes.io/docs/user-guide/kubectl/v1.6/#get) команды.
 
 ```azurecli-interactive
 kubectl get pods
@@ -58,13 +58,13 @@ azure-vote-back-2549686872-4d2r5   1/1       Running   0          31m
 azure-vote-front-848767080-tf34m   1/1       Running   0          31m
 ```
 
-Вручную измените число pod в развертывании `azure-vote-front`, выполнив команду [kubectl scale](https://kubernetes.io/docs/user-guide/kubectl/v1.6/#scale). В этом примере их число увеличивается до 5.
+Вручную измените hello количество модулей в hello `azure-vote-front` развертывания с помощью hello [kubectl шкалы](https://kubernetes.io/docs/user-guide/kubectl/v1.6/#scale) команды. В этом примере увеличивается число too5 hello.
 
 ```azurecli-interactive
 kubectl scale --replicas=5 deployment/azure-vote-front
 ```
 
-Выполните команду [kubectl get pods](https://kubernetes.io/docs/user-guide/kubectl/v1.6/#get), чтобы убедиться, что Kubernetes создает новые pod. Дополнительные pod будут запущены примерно через минуту.
+Запустите [kubectl получить модулей](https://kubernetes.io/docs/user-guide/kubectl/v1.6/#get) tooverify, Kubernetes создает hello модулей. Прошествии минуты под управлением hello дополнительных модулей:
 
 ```azurecli-interactive
 kubectl get pods
@@ -84,9 +84,9 @@ azure-vote-front-3309479140-qphz8   1/1       Running   0          3m
 
 ## <a name="autoscale-pods"></a>Автомасштабирование pod
 
-Kubernetes поддерживает [горизонтальное автомасштабирование pod](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/) для изменения числа pod в развертывании в зависимости от использования ЦП или других выбранных метрик. 
+Поддерживает Kubernetes [автоматическое масштабирование горизонтальной pod](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/) tooadjust hello число модулей в развертывании в зависимости от загрузки ЦП или другой выбор метрик. 
 
-Чтобы использовать инструмент автомасштабирования, для ваших pod необходимо определить запросы и лимиты ресурсов ЦП. В развертывании `azure-vote-front` каждый контейнер внешнего приложения запрашивает 0,25 ресурсов ЦП с лимитом в 0,5 ресурсов ЦП. Параметры имеют следующий вид.
+toouse hello autoscaler, ваш модулей должен иметь ЦП запросы и заданных пределов. В hello `azure-vote-front` развертывания, Процессор запросов 0,25 контейнера переднего плана, ограничение на число 0,5 hello ЦП. Параметры Hello иметь вид:
 
 ```YAML
 resources:
@@ -96,14 +96,14 @@ resources:
      cpu: 500m
 ```
 
-В следующем примере используется команда [kubectl autoscale](https://kubernetes.io/docs/user-guide/kubectl/v1.6/#autoscale) для автомасштабирования числа модулей в развертывании `azure-vote-front`. Если использование ЦП превышает 50 %, то инструмент автомасштабирования увеличивает число pod максимум до 10.
+Hello следующий пример использует hello [автомасштабирования kubectl](https://kubernetes.io/docs/user-guide/kubectl/v1.6/#autoscale) команды tooautoscale hello число модулей в hello `azure-vote-front` развертывания. Здесь Если загрузка ЦП превышает 50%, hello autoscaler увеличивает hello модулей tooa более 10.
 
 
 ```azurecli-interactive
 kubectl autoscale deployment azure-vote-front --cpu-percent=50 --min=3 --max=10
 ```
 
-Выполните следующую команду, чтобы просмотреть состояние инструмента автомасштабирования.
+состояние hello toosee autoscaler hello, запустите hello следующую команду:
 
 ```azurecli-interactive
 kubectl get hpa
@@ -116,19 +116,19 @@ NAME               REFERENCE                     TARGETS    MINPODS   MAXPODS   
 azure-vote-front   Deployment/azure-vote-front   0% / 50%   3         10        3          2m
 ```
 
-Через несколько минут минимальной нагрузки на приложение Vote Azure число реплик pod автоматически уменьшится до 3.
+Через несколько минут с минимальной нагрузкой на приложение hello Azure голос число hello pod реплик, которые автоматически уменьшается too3.
 
-## <a name="scale-the-agents"></a>Масштабирование агентов
+## <a name="scale-hello-agents"></a>Агенты hello шкалы
 
-Если вы создали кластер Kubernetes с помощью команд по умолчанию в предыдущем руководстве, то у него три узла агентов. Если вы планируете увеличение или уменьшение рабочих нагрузок контейнеров в кластере, то можете соответствующим образом изменить число агентов вручную. Выполните команду [az acs scale](/cli/azure/acs#scale), указав количество агентов с помощью параметра `--new-agent-count`.
+Если вы создали Kubernetes кластер с помощью команды по умолчанию в предыдущем учебнике hello, он имеет три узла агента. При планировании большее или меньшее количество рабочих нагрузок контейнера в кластере hello число агентов можно настроить вручную. Используйте hello [масштабировать acs az](/cli/azure/acs#scale) команду и укажите номер hello агентов hello `--new-agent-count` параметра.
 
-В следующем примере в кластере Kubernetes *myK8sCluster* число узлов агентов увеличивается до 4. Для выполнения этой команды требуется несколько минут.
+Hello следующем примере увеличивается число hello агента too4 узлов в кластере Kubernetes hello с именем *myK8sCluster*. Команда Hello занимает несколько минут toocomplete.
 
 ```azurecli-interactive
 az acs scale --resource-group=myResourceGroup --name=myK8SCluster --new-agent-count 4
 ```
 
-Выходные данные команды содержат число узлов агентов в значении `agentPoolProfiles:count`.
+Hello выходные данные команды отображаются номер hello агента узлы в значение hello `agentPoolProfiles:count`:
 
 ```azurecli
 {
@@ -151,10 +151,10 @@ az acs scale --resource-group=myResourceGroup --name=myK8SCluster --new-agent-co
 
 > [!div class="checklist"]
 > * масштабирование pod Kubernetes вручную;
-> * настройка автомасштабирования pod, в которых выполняется интерфейсная часть приложения;
-> * масштабирование узлов агентов Kubernetes в Azure.
+> * Настройка модулей автомасштабирования выполнение внешнего интерфейса приложения hello
+> * Масштабирование узлы Azure агентов Kubernetes hello
 
-Перейдите к следующему руководству, чтобы узнать об обновлении приложения в Kubernetes.
+Переместить следующий учебник toolearn toohello об обновлении приложения в Kubernetes.
 
 > [!div class="nextstepaction"]
 > [Обновление приложения в Kubernetes](./container-service-tutorial-kubernetes-app-update.md)

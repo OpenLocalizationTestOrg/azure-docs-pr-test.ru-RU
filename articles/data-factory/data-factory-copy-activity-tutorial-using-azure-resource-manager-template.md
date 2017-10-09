@@ -1,6 +1,6 @@
 ---
 title: "Руководство. Создание конвейера с помощью шаблона Resource Manager | Документация Майкрософт"
-description: "Работая с этим руководством, вы создадите конвейер фабрики данных Azure с помощью шаблона Azure Resource Manager. Этот конвейер копирует данные из хранилища BLOB-объектов Azure в базу данных SQL Azure."
+description: "Работая с этим руководством, вы создадите конвейер фабрики данных Azure с помощью шаблона Azure Resource Manager. В этом конвейере копирует данные из базы данных Azure SQL tooan хранилища BLOB-объектов Azure."
 services: data-factory
 documentationcenter: 
 author: spelluru
@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/10/2017
 ms.author: spelluru
-ms.openlocfilehash: 8a155213ed17e516a5c46abbe3d8a2bcc52268ed
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 1c7567cb0423f7ce3e0cab2d77a4d861b70eb56b
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="tutorial-use-azure-resource-manager-template-to-create-a-data-factory-pipeline-to-copy-data"></a>Руководство по созданию конвейера фабрики данных для копирования данных с использованием шаблона Azure Resource Manager 
+# <a name="tutorial-use-azure-resource-manager-template-toocreate-a-data-factory-pipeline-toocopy-data"></a>Учебник: Использование диспетчера ресурсов Azure шаблона toocreate toocopy данных конвейера фабрики данных 
 > [!div class="op_single_selector"]
 > * [Обзор и предварительные требования](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [Мастер копирования](data-factory-copy-data-wizard-tutorial.md)
@@ -33,39 +33,39 @@ ms.lasthandoff: 08/03/2017
 > 
 > 
 
-В этом руководстве показано, как создать фабрику данных Azure с использованием шаблона Azure Resource Manager. В этом руководстве конвейер данных копирует данные из исходного хранилища данных в целевое. Он не преобразовывает входные данные в выходные. Инструкции по преобразованию данных с помощью фабрики данных Azure см. в [руководстве по созданию конвейера для преобразования данных с помощью кластера Hadoop](data-factory-build-your-first-pipeline.md).
+В этом учебнике показано как toouse toocreate шаблона диспетчера ресурсов Azure фабрикой данных Azure. конвейер данных Hello в этом учебнике копирует данные из источника данных хранилища tooa целевое хранилище данных. Он не выполняет преобразование входных данных tooproduce выходных данных. Учебник о том, как tootransform данных, с помощью фабрики данных Azure, в разделе [учебника: построение конвейера анализа tootransform использование кластера Hadoop](data-factory-build-your-first-pipeline.md).
 
-В этом руководстве описывается создание конвейера с одним действием — действием копирования. Действие копирования копирует данные из поддерживаемого хранилища данных в поддерживаемое хранилище данных-приемник. Список хранилищ данных, которые поддерживаются в качестве источников и приемников, см. в разделе [Поддерживаемые хранилища данных и форматы](data-factory-data-movement-activities.md#supported-data-stores-and-formats). Это действие выполняется с помощью глобально доступной службы, обеспечивающей безопасное, надежное и масштабируемое копирование данных между разными хранилищами. Дополнительные сведения о действии копирования см. в статье [Перемещение данных с помощью действия копирования](data-factory-data-movement-activities.md).
+В этом руководстве описывается создание конвейера с одним действием — действием копирования. Действие копирования Hello копирует данные из поддерживаемых хранилища tooa поддерживаемых приемник данных хранилищ данных. Список хранилищ данных, которые поддерживаются в качестве источников и приемников, см. в разделе [Поддерживаемые хранилища данных и форматы](data-factory-data-movement-activities.md#supported-data-stores-and-formats). Действие Hello выключен глобально доступной можно копировать данные между различными хранилищами данных в виде безопасные, надежные и масштабируемые службы. Дополнительные сведения о действии копирования hello см. в разделе [действия перемещения данных](data-factory-data-movement-activities.md).
 
-Конвейер может содержать сразу несколько действий. Два действия можно объединить в цепочку (выполнить одно действие вслед за другим), настроив выходной набор данных одного действия как входной набор данных другого действия. Дополнительные сведения см. в разделе [Несколько действий в конвейере](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline). 
+Конвейер может содержать сразу несколько действий. Кроме того, можно соединить в цепочку двух действий (Запуск одного действия другому), hello входной набор данных, из hello других действий, включив hello выходной набор данных из одного действия. Дополнительные сведения см. в разделе [Несколько действий в конвейере](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline). 
 
 > [!NOTE] 
-> В этом руководстве конвейер данных копирует данные из исходного хранилища данных в целевое. Инструкции по преобразованию данных с помощью фабрики данных Azure см. в [руководстве по созданию конвейера для преобразования данных с помощью кластера Hadoop](data-factory-build-your-first-pipeline.md). 
+> конвейер данных Hello в этом учебнике копирует данные из источника данных хранилища tooa целевое хранилище данных. Учебник о том, как tootransform данных, с помощью фабрики данных Azure, в разделе [учебника: построение конвейера анализа tootransform использование кластера Hadoop](data-factory-build-your-first-pipeline.md). 
 
 ## <a name="prerequisites"></a>Предварительные требования
-* Прочтите [обзор руководства](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) и выполните **предварительные требования**.
-* Чтобы установить последнюю версию Azure PowerShell на локальном компьютере, следуйте инструкциям в статье [Установка и настройка Azure PowerShell](/powershell/azure/overview) . В этом руководстве PowerShell используется для развертывания сущностей фабрики данных. 
-* Сведения о шаблонах Azure Resource Manager см. в [этой статье](../azure-resource-manager/resource-group-authoring-templates.md) (необязательно).
+* Выполните [учебника Обзор и необходимые компоненты](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) и завершения hello **необходимого компонента** действия.
+* Следуйте инструкциям в разделе [как tooinstall и настройка Azure PowerShell](/powershell/azure/overview) статьи tooinstall последнюю версию Azure PowerShell на компьютере. В этом учебнике используйте PowerShell toodeploy фабрики данных сущности. 
+* (необязательно) В разделе [разработки шаблоны Azure Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md) toolearn шаблоны диспетчера ресурсов Azure.
 
 ## <a name="in-this-tutorial"></a>В этом учебнике рассматриваются следующие темы:
-В этом руководстве вы создадите фабрику данных со следующими сущностями.
+В этом учебнике создается фабрики данных с hello, следуя фабрики данных сущности:
 
 | Сущность | Описание |
 | --- | --- |
-| Связанная служба хранения Azure |Связывает учетную запись хранения Azure с фабрикой данных. Служба хранилища Azure — источник данных, а база данных SQL Azure — приемник данных для действия копирования, рассматриваемого в руководстве. Эта сущность указывает учетную запись хранения, содержащую входные данные для действия копирования. |
-| Связанная служба базы данных SQL Azure |Связывает базу данных SQL Azure с фабрикой данных. Эта сущность указывает базу данных SQL Azure, содержащую выходные данные для действия копирования. |
-| Входной набор данных BLOB-объекта Azure |Относится к связанной службе хранилища Azure. Связанная служба указывает на учетную запись хранения Azure, а набор данных большого двоичного объекта Azure указывает имя контейнера, папки и файла в хранилище, содержащем входные данные. |
-| Выходной набор данных SQL Azure |Относится к связанной службе SQL Azure. Связанная служба SQL Azure указывает на сервер SQL Azure, а набор данных SQL Azure указывает имя таблицы, содержащей выходные данные. |
-| Конвейер данных |Конвейер содержит одно действие копирования, которое принимает в качестве входных данных набор данных большого двоичного объекта Azure, а в качестве выходных данных — набор данных SQL Azure. Действие копирования копирует данные из большого двоичного объекта Azure в таблицу в базе данных SQL Azure. |
+| Связанная служба хранения Azure |Связывает фабрику данных toohello учетной записи хранилища Azure. Хранилище Azure — hello хранилище данных источника и базы данных Azure SQL является хранилищем данных приемник hello для действия копирования hello в учебнике hello. Он указывает hello учетной записи хранилища, содержащий hello входные данные для действия копирования hello. |
+| Связанная служба базы данных SQL Azure |Связывает фабрику данных toohello базы данных Azure SQL. Он указывает hello базы данных Azure SQL, содержащий hello выходные данные для действия копирования hello. |
+| Входной набор данных BLOB-объекта Azure |Ссылается toohello связанной службой хранилища Azure. Hello связанной службы ссылается tooan учетную запись хранилища Azure и набор данных больших двоичных объектов Azure hello указывает контейнер hello, папки и имя файла в хранилище hello, содержащий hello входных данных. |
+| Выходной набор данных SQL Azure |Ссылается toohello связанной службой Azure SQL. Hello связанной службой Azure SQL ссылается tooan Azure SQL server и набора данных Azure SQL hello указывает имя hello hello таблица, содержащая hello выходных данных. |
+| Конвейер данных |конвейер Hello содержит одно действие введите копию, которая принимает набор данных BLOB-объектов Azure hello в качестве входных данных и hello набор данных Azure SQL в качестве выходных данных. Действие копирования Hello копирует данные из таблицы в базе данных Azure SQL hello tooa BLOB-объектов Azure. |
 
 Фабрика данных может иметь один или несколько конвейеров. Конвейер может содержать одно или несколько действий. Есть два типа действий: [действия перемещения данных](data-factory-data-movement-activities.md) и [действия преобразования данных](data-factory-data-transformation-activities.md). В этом руководстве описывается создание конвейера с одним действием (действием копирования).
 
-![Копирование большого двоичного объекта Azure в базу данных SQL Azure](media/data-factory-copy-activity-tutorial-using-azure-resource-manager-template/CopyBlob2SqlDiagram.png) 
+![Копирование больших двоичных объектов Azure tooAzure базы данных SQL](media/data-factory-copy-activity-tutorial-using-azure-resource-manager-template/CopyBlob2SqlDiagram.png) 
 
-В следующем разделе содержится полный шаблон Resource Manager для определения сущностей фабрики данных. Таким образом, вы сможете быстро изучить это руководство и протестировать шаблон. Дополнительные сведения о том, как определяется каждая сущность фабрики данных, см. в разделе [Сущности фабрики данных в шаблоне](#data-factory-entities-in-the-template).
+Hello следующий раздел содержит hello завершения шаблона диспетчера ресурсов для определения сущностей фабрики данных, позволяющие быстро выполнять через шаблон hello hello учебник и тестирования. toounderstand определение каждой сущности фабрики данных. в разделе [фабрики данных сущности в шаблоне hello](#data-factory-entities-in-the-template) раздела.
 
 ## <a name="data-factory-json-template"></a>Шаблон JSON фабрики данных
-Шаблон Resource Manager верхнего уровня для определения фабрики данных выглядит следующим образом: 
+— Hello верхнего уровня шаблона диспетчера ресурсов для определения фабрики данных: 
 
 ```json
 {
@@ -91,22 +91,22 @@ ms.lasthandoff: 08/03/2017
     ]
 }
 ```
-Создайте в папке **C:\ADFGetStarted** файл JSON с именем **ADFCopyTutorialARM.json** со следующим содержимым:
+Создайте JSON-файл с именем **ADFCopyTutorialARM.json** в **C:\ADFGetStarted** папка с hello после содержимого:
 
 ```json
 {
     "contentVersion": "1.0.0.0",
     "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
     "parameters": {
-      "storageAccountName": { "type": "string", "metadata": { "description": "Name of the Azure storage account that contains the data to be copied." } },
-      "storageAccountKey": { "type": "securestring", "metadata": { "description": "Key for the Azure storage account." } },
-      "sourceBlobContainer": { "type": "string", "metadata": { "description": "Name of the blob container in the Azure Storage account." } },
-      "sourceBlobName": { "type": "string", "metadata": { "description": "Name of the blob in the container that has the data to be copied to Azure SQL Database table" } },
-      "sqlServerName": { "type": "string", "metadata": { "description": "Name of the Azure SQL Server that will hold the output/copied data." } },
-      "databaseName": { "type": "string", "metadata": { "description": "Name of the Azure SQL Database in the Azure SQL server." } },
-      "sqlServerUserName": { "type": "string", "metadata": { "description": "Name of the user that has access to the Azure SQL server." } },
-      "sqlServerPassword": { "type": "securestring", "metadata": { "description": "Password for the user." } },
-      "targetSQLTable": { "type": "string", "metadata": { "description": "Table in the Azure SQL Database that will hold the copied data." } 
+      "storageAccountName": { "type": "string", "metadata": { "description": "Name of hello Azure storage account that contains hello data toobe copied." } },
+      "storageAccountKey": { "type": "securestring", "metadata": { "description": "Key for hello Azure storage account." } },
+      "sourceBlobContainer": { "type": "string", "metadata": { "description": "Name of hello blob container in hello Azure Storage account." } },
+      "sourceBlobName": { "type": "string", "metadata": { "description": "Name of hello blob in hello container that has hello data toobe copied tooAzure SQL Database table" } },
+      "sqlServerName": { "type": "string", "metadata": { "description": "Name of hello Azure SQL Server that will hold hello output/copied data." } },
+      "databaseName": { "type": "string", "metadata": { "description": "Name of hello Azure SQL Database in hello Azure SQL server." } },
+      "sqlServerUserName": { "type": "string", "metadata": { "description": "Name of hello user that has access toohello Azure SQL server." } },
+      "sqlServerPassword": { "type": "securestring", "metadata": { "description": "Password for hello user." } },
+      "targetSQLTable": { "type": "string", "metadata": { "description": "Table in hello Azure SQL Database that will hold hello copied data." } 
       } 
     },
     "variables": {
@@ -235,7 +235,7 @@ ms.lasthandoff: 08/03/2017
               "activities": [
                 {
                   "name": "CopyFromAzureBlobToAzureSQL",
-                  "description": "Copy data frm Azure blob to Azure SQL",
+                  "description": "Copy data frm Azure blob tooAzure SQL",
                   "type": "Copy",
                   "inputs": [
                     {
@@ -279,7 +279,7 @@ ms.lasthandoff: 08/03/2017
 ```
 
 ## <a name="parameters-json"></a>JSON-файл параметров
-Создайте JSON-файл с именем **ADFCopyTutorialARM-Parameters.json**, содержащий параметры для шаблона Azure Resource Manager. 
+Создайте JSON-файл с именем **ADFCopyTutorialARM Parameters.json** , содержащий параметры для шаблона Azure Resource Manager hello. 
 
 > [!IMPORTANT]
 > Укажите значения имени и ключа вашей учетной записи хранения Azure для параметров storageAccountName и storageAccountKey.  
@@ -291,44 +291,44 @@ ms.lasthandoff: 08/03/2017
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
     "contentVersion": "1.0.0.0",
     "parameters": { 
-        "storageAccountName": { "value": "<Name of the Azure storage account>"    },
+        "storageAccountName": { "value": "<Name of hello Azure storage account>"    },
         "storageAccountKey": {
-            "value": "<Key for the Azure storage account>"
+            "value": "<Key for hello Azure storage account>"
         },
         "sourceBlobContainer": { "value": "adftutorial" },
         "sourceBlobName": { "value": "emp.txt" },
-        "sqlServerName": { "value": "<Name of the Azure SQL server>" },
-        "databaseName": { "value": "<Name of the Azure SQL database>" },
-        "sqlServerUserName": { "value": "<Name of the user who has access to the Azure SQL database>" },
-        "sqlServerPassword": { "value": "<password for the user>" },
+        "sqlServerName": { "value": "<Name of hello Azure SQL server>" },
+        "databaseName": { "value": "<Name of hello Azure SQL database>" },
+        "sqlServerUserName": { "value": "<Name of hello user who has access toohello Azure SQL database>" },
+        "sqlServerPassword": { "value": "<password for hello user>" },
         "targetSQLTable": { "value": "emp" }
     }
 }
 ```
 
 > [!IMPORTANT]
-> Можно создать отдельные JSON-файлы параметров для сред разработки, тестирования и рабочей среды, которые можно использовать с одним и тем же шаблоном JSON фабрики данных. Скрипт PowerShell позволяет автоматизировать развертывание сущностей фабрики данных в этих средах.  
+> Возможно, файлы JSON отдельный параметр для разработки, тестирования и рабочих средах, которые можно использовать с hello того же шаблона JSON фабрики данных. Скрипт PowerShell позволяет автоматизировать развертывание сущностей фабрики данных в этих средах.  
 > 
 > 
 
 ## <a name="create-data-factory"></a>Создание фабрики данных
-1. Запустите **Azure PowerShell** и выполните следующие команды:
-   * Выполните следующую команду и введите имя пользователя и пароль, которые используются для входа на портал Azure.
+1. Запуск **Azure PowerShell** и выполнения hello следующую команду:
+   * Запустите следующую команду hello и введите hello имя пользователя и пароль, использовать toosign в toohello портал Azure.
    
     ```PowerShell
     Login-AzureRmAccount    
     ```  
-   * Выполните следующую команду, чтобы просмотреть все подписки для этой учетной записи.
+   * Запустите следующие команды tooview hello все hello подписки для этой учетной записи.
    
     ```PowerShell
     Get-AzureRmSubscription
     ```   
-   * Выполните следующую команду, чтобы выбрать подписку, с которой вы собираетесь работать.
+   * Следующая команда tooselect hello подписки на toowork с выполнения hello.
     
     ```PowerShell
     Get-AzureRmSubscription -SubscriptionName <SUBSCRIPTION NAME> | Set-AzureRmContext
     ```    
-2. Чтобы развернуть сущности фабрики данных с помощью шаблона Resource Manager, созданного на шаге 1, выполните следующую команду.
+2. Запустите hello, следующая команда toodeploy фабрики данных сущностей с помощью шаблона диспетчера ресурсов hello, созданный на шаге 1.
 
     ```PowerShell   
     New-AzureRmResourceGroupDeployment -Name MyARMDeployment -ResourceGroupName ADFTutorialResourceGroup -TemplateFile C:\ADFGetStarted\ADFCopyTutorialARM.json -TemplateParameterFile C:\ADFGetStarted\ADFCopyTutorialARM-Parameters.json
@@ -336,27 +336,27 @@ ms.lasthandoff: 08/03/2017
 
 ## <a name="monitor-pipeline"></a>Отслеживание конвейера
 
-1. Войдите на [портал Azure](https://portal.azure.com), используя свою учетную запись Azure.
-2. Щелкните **Фабрики данных** в меню слева или выберите **Больше служб** и щелкните **Фабрики данных** в категории **АНАЛИТИКА**.
+1. Войдите в toohello [портал Azure](https://portal.azure.com) с помощью учетной записи Azure.
+2. Нажмите кнопку **фабрик данных** hello левого меню (или) щелкните **дополнительные службы** и нажмите кнопку **фабрик данных** под **АНАЛИТИКИ + АНАЛИТИКА** Категория.
    
     ![Меню "Фабрики данных"](media/data-factory-copy-activity-tutorial-using-azure-resource-manager-template/data-factories-menu.png)
-3. На странице **Фабрики данных** найдите свою фабрику данных (AzureBlobToAzureSQLDatabaseDF). 
+3. В hello **фабрик данных** страницы, искать и находить фабрики данных (AzureBlobToAzureSQLDatabaseDF). 
    
     ![Поиск фабрики данных](media/data-factory-copy-activity-tutorial-using-azure-resource-manager-template/search-for-data-factory.png)  
-4. Щелкните свою фабрику данных Azure. После этого откроется домашняя страница фабрики данных.
+4. Щелкните свою фабрику данных Azure. Вы увидите страницу домашней hello для фабрики данных hello.
    
     ![Домашняя страница фабрики данных](media/data-factory-copy-activity-tutorial-using-azure-resource-manager-template/data-factory-home-page.png)  
-6. Следуйте инструкциям из раздела [Отслеживание конвейера](data-factory-copy-activity-tutorial-using-azure-portal.md#monitor-pipeline) для мониторинга конвейера и баз данных, созданных при работе с этим руководством. Сейчас Visual Studio не поддерживает мониторинг конвейеров фабрики данных.
-7. Когда срез будет в состоянии **Готово**, проверьте, были ли скопированы данные в таблицу **emp** в базе данных SQL Azure.
+6. Следуйте инструкциям из [отслеживать наборы данных и конвейера](data-factory-copy-activity-tutorial-using-azure-portal.md#monitor-pipeline) toomonitor hello конвейера и наборы данных создан в этом учебнике. Сейчас Visual Studio не поддерживает мониторинг конвейеров фабрики данных.
+7. Когда срез будет hello **готовности** состоянии, убедитесь, что данные hello скопированный toohello **emp** таблицы в базе данных Azure SQL hello.
 
 
-Дополнительные сведения о том, как использовать колонки на портале Azure для мониторинга конвейера и наборов данных, созданных с помощью этого руководства, см.в [этой статье](data-factory-monitor-manage-pipelines.md).
+Дополнительные сведения о как toouse Azure портала колонках toomonitor конвейера и наборы данных вы создали в этом учебнике см. в разделе [отслеживать наборы данных и конвейера](data-factory-monitor-manage-pipelines.md) .
 
-Дополнительные сведения о том, как использовать приложение по мониторингу и управлению для мониторинга конвейеров данных, см. в [этой статье](data-factory-monitor-manage-app.md).
+Дополнительные сведения о том, как toouse hello отслеживать состо & Управление приложения toomonitor данные конвейеров см. в разделе [монитора и управлять ими с помощью мониторинга приложения конвейеров фабрики данных Azure](data-factory-monitor-manage-app.md).
 
-## <a name="data-factory-entities-in-the-template"></a>Сущности фабрики данных в шаблоне
+## <a name="data-factory-entities-in-hello-template"></a>Фабрика сущностями данных в шаблоне hello
 ### <a name="define-data-factory"></a>Определение фабрики данных
-Фабрику данных следует определить в шаблоне Resource Manager, как показано в следующем примере:  
+Фабрика данных определить в шаблоне hello диспетчера ресурсов, как показано в следующих образец hello:  
 
 ```json
 "resources": [
@@ -368,16 +368,16 @@ ms.lasthandoff: 08/03/2017
 }
 ```
 
-Параметр dataFactoryName определяется следующим образом: 
+с именем dataFactoryName Hello определяются следующим образом. 
 
 ```json
 "dataFactoryName": "[concat('AzureBlobToAzureSQLDatabaseDF', uniqueString(resourceGroup().id))]"
 ```
 
-Это уникальная строка благодаря идентификатору группы ресурсов.  
+Это уникальная строка, на основе идентификатора hello ресурсов группы.  
 
 ### <a name="defining-data-factory-entities"></a>Определение сущностей фабрики данных
-В шаблоне JSON определены следующие сущности фабрики данных: 
+Hello следующие сущности фабрики данных определены в шаблоне hello JSON: 
 
 1. [Связанная служба хранения Azure](#azure-storage-linked-service)
 2. [Связанная служба SQL Azure](#azure-sql-database-linked-service)
@@ -386,7 +386,7 @@ ms.lasthandoff: 08/03/2017
 5. [Конвейер данных с действием копирования](#data-pipeline)
 
 #### <a name="azure-storage-linked-service"></a>Связанная служба хранения Azure
-Связанная служба хранилища Azure связывает учетную запись хранения Azure с фабрикой данных. Вы создали контейнер и отправили данные в эту учетную запись хранения в ходе выполнения предварительных [требований](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md). В этом разделе вы укажете имя и ключ вашей учетной записи хранения Azure. Дополнительные сведения о свойствах JSON для определения связанной службы хранилища Azure см. в разделе [Связанная служба хранилища Azure](data-factory-azure-blob-connector.md#azure-storage-linked-service). 
+Hello AzureStorageLinkedService связывает фабрику данных toohello учетной записи хранилища Azure. Создан контейнер и загруженные в рамках учетной записи хранения данных toothis [необходимых компонентов](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md). Укажите имя hello и ключ учетной записи хранилища Azure в этом разделе. В разделе [связанная служба хранилища Azure](data-factory-azure-blob-connector.md#azure-storage-linked-service) подробные сведения о JSON свойства, используемые toodefine связанная служба хранилища Azure. 
 
 ```json
 {
@@ -406,10 +406,10 @@ ms.lasthandoff: 08/03/2017
 }
 ```
 
-Для connectionString используются параметры storageAccountName и storageAccountKey. Значения для этих параметров передаются с помощью файла конфигурации. В этом определении также используются переменные azureStroageLinkedService и dataFactoryName, заданные в шаблоне. 
+Hello connectionString используются параметры storageAccountName и storageAccountKey hello. Hello значения для этих параметров, передаваемых с помощью файла конфигурации. Определение Hello также использует переменные: azureStroageLinkedService и с именем dataFactoryName, определенные в шаблоне hello. 
 
 #### <a name="azure-sql-database-linked-service"></a>Связанная служба базы данных SQL Azure
-Связанная служба SQL Azure связывает базу данных SQL Azure с фабрикой данных. В этой базе данных хранятся данные, скопированные из хранилища BLOB-объектов. Вы создали пустую таблицу в этой базе данных в ходе выполнения [предварительных требований](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md). В этом разделе вы укажете имя сервера SQL Azure, имя базы данных, имя пользователя и пароль. Дополнительные сведения о свойствах JSON для определения связанной службы SQL Azure см. в разделе [Связанная служба SQL Azure](data-factory-azure-sql-connector.md#linked-service-properties).  
+AzureSqlLinkedService связывает фабрику данных toohello базы данных Azure SQL. Hello данные, копируемые из хранилища больших двоичных объектов hello хранится в этой базе данных. Создана таблица emp hello в этой базе данных как часть [необходимых компонентов](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md). Укажите имя сервера Azure SQL hello, имя базы данных, имя пользователя и пароль пользователя в этом разделе. В разделе [связанная служба Azure SQL](data-factory-azure-sql-connector.md#linked-service-properties) подробные сведения о JSON свойства, используемые toodefine связанная служба SQL Azure.  
 
 ```json
 {
@@ -429,10 +429,10 @@ ms.lasthandoff: 08/03/2017
 }
 ```
 
-Для connectionString используются параметры sqlServerName, databaseName, sqlServerUserName и sqlServerPassword, значения которых передаются с помощью файла конфигурации. В определении также используются переменные azureSqlLinkedServiceName dataFactoryName из шаблона.
+Hello connectionString использует sqlServerName, имя базы данных, sqlServerUserName и sqlServerPassword параметров, значения которого передаются с помощью файла конфигурации. Hello определение также использует следующие переменные из шаблона hello hello: azureSqlLinkedServiceName с именем dataFactoryName.
 
 #### <a name="azure-blob-dataset"></a>Набор данных большого двоичного объекта Azure
-Связанная служба хранилища Azure указывает строку подключения, которую фабрика данных использует во время выполнения, чтобы подключиться к учетной записи хранения Azure. В определении набора данных большого двоичного объекта Azure укажите имена контейнера больших двоичных объектов, папки и файла, содержащего входные данные. Подробные сведения о свойствах JSON, которые используются для определения набора данных большого двоичного объекта Azure, см. в разделе [Свойства типа "Набор данных большого двоичного объекта Azure"](data-factory-azure-blob-connector.md#dataset-properties). 
+Hello связанной службой хранилища Azure задает строку подключения hello, который использует служба фабрики данных во время выполнения tooconnect tooyour учетной записи хранилища Azure. В определении набора данных BLOB-объектов Azure укажите имена контейнер больших двоичных объектов, папки и файла, содержащего входные данные hello. В разделе [свойства набора данных больших двоичных объектов Azure](data-factory-azure-blob-connector.md#dataset-properties) для получения сведений об toodefine JSON свойства, используемые набором данных больших двоичных объектов Azure. 
 
 ```json
 {
@@ -474,7 +474,7 @@ ms.lasthandoff: 08/03/2017
 ```
 
 #### <a name="azure-sql-dataset"></a>Набор данных SQL Azure
-В этом разделе нужно указать имя таблицы в базе данных SQL Azure, содержащей скопированные данные из хранилища BLOB-объектов Azure. Подробные сведения о свойствах JSON, которые используются для определения набора данных SQL Azure, см. в разделе [Свойства типа "Набор данных SQL Azure"](data-factory-azure-sql-connector.md#dataset-properties). 
+Укажите имя hello hello таблицы в базе данных Azure SQL hello, содержащий hello скопировать данные из хранилища больших двоичных объектов Azure hello. В разделе [свойства набора данных Azure SQL](data-factory-azure-sql-connector.md#dataset-properties) для получения сведений об toodefine JSON свойства, используемые набором данных Azure SQL. 
 
 ```json
 {
@@ -510,7 +510,7 @@ ms.lasthandoff: 08/03/2017
 ```
 
 #### <a name="data-pipeline"></a>Конвейер данных
-Здесь вы определите конвейер, копирующий данные из набора данных большого двоичного объекта Azure в набор данных SQL Azure. В разделе [Конвейер JSON](data-factory-create-pipelines.md#pipeline-json) описаны элементы JSON, используемые для определения конвейера в этом примере. 
+Определяется конвейера, который копирует данные из набора данных Azure SQL toohello hello Azure BLOB-объекта dataset. В разделе [конвейера JSON](data-factory-create-pipelines.md#pipeline-json) описания toodefine элементы, используемые JSON конвейера в этом примере. 
 
 ```json
 {
@@ -528,7 +528,7 @@ ms.lasthandoff: 08/03/2017
           "activities": [
         {
               "name": "CopyFromAzureBlobToAzureSQL",
-              "description": "Copy data frm Azure blob to Azure SQL",
+              "description": "Copy data frm Azure blob tooAzure SQL",
               "type": "Copy",
               "inputs": [
             {
@@ -567,8 +567,8 @@ ms.lasthandoff: 08/03/2017
 }
 ```
 
-## <a name="reuse-the-template"></a>Повторное использование шаблона
-В этом руководстве описывается создание шаблона для определения сущностей фабрики данных, а также шаблона, передающего значения для параметров. Конвейер копирует данные из учетной записи хранения Azure в базу данных SQL Azure, указанную с помощью параметров. Чтобы использовать один шаблон для развертывания сущностей фабрики данных в разных средах, нужно создать файл параметров для каждой среды и использовать его при развертывании в определенной среде.     
+## <a name="reuse-hello-template"></a>Повторное использование шаблона hello
+В учебнике hello вы создали шаблон для определения сущностей фабрики данных и для передачи значений для параметров шаблона. конвейер Hello копирует данные из базы Azure SQL tooan учетной записи хранилища Azure, указанного с помощью параметров. toouse Здравствуйте средах toodifferent того же шаблона toodeploy фабрики данных сущности, создать файл параметров для каждой среды и использовать его при развертывании среды toothat.     
 
 Пример:  
 
@@ -582,13 +582,13 @@ New-AzureRmResourceGroupDeployment -Name MyARMDeployment -ResourceGroupName ADFT
 New-AzureRmResourceGroupDeployment -Name MyARMDeployment -ResourceGroupName ADFTutorialResourceGroup -TemplateFile ADFCopyTutorialARM.json -TemplateParameterFile ADFCopyTutorialARM-Parameters-Production.json
 ```
 
-Обратите внимание, что первая команда использует файл параметров для среды разработки, вторая — для среды тестирования, а третья — для рабочей среды.  
+Обратите внимание, что hello первая команда использует параметр файла для среды разработки hello, второй hello тестовой среды и hello третий один hello производственную среду.  
 
-Шаблон можно снова использовать для выполнения повторяющихся задач. Например, вам нужно создать несколько фабрик данных с одним или несколькими конвейерами, которые реализуют одинаковую логику, но при этом каждая фабрика данных использует разные учетные записи хранения и базы данных SQL. В этом сценарии для создания фабрик данных используется один шаблон в той же среде (разработки, тестирования или рабочей) с различными файлами параметров.   
+Также можно повторно использовать шаблон tooperform hello повторяющиеся задачи. Например, необходимо toocreate множество фабрик данных с одним или более конвейеры, реализующих hello таким же логику, но Каждая фабрика данных использует учетные записи хранилища и базы данных SQL. В этом сценарии используется hello того же шаблона в hello в одной среде (разработки, тестирования или рабочей), с другой параметр файлы toocreate фабрик данных.   
 
 ## <a name="next-steps"></a>Дальнейшие действия
-В этом руководстве в ходе операции копирования вы использовали хранилище BLOB-объектов Azure как исходное хранилище данных, а базу данных SQL Azure — как целевое хранилище данных. В следующей таблице приведен список хранилищ данных, которые поддерживаются в качестве источников и целевых расположений для действия копирования. 
+В этом руководстве в ходе операции копирования вы использовали хранилище BLOB-объектов Azure как исходное хранилище данных, а базу данных SQL Azure — как целевое хранилище данных. Hello следующей таблице приведен список хранилищ данных, поддерживаемые действием копирования hello как источники и назначения: 
 
 [!INCLUDE [data-factory-supported-data-stores](../../includes/data-factory-supported-data-stores.md)]
 
-Чтобы получить дополнительные сведения о том, как скопировать данные в хранилище данных или из него, щелкните ссылку для хранилища данных в таблице.
+toolearn о том, как хранилище данных toocopy из данных, щелкните ссылку hello hello хранилища данных в таблице hello.

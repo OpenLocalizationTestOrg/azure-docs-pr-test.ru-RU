@@ -1,6 +1,6 @@
 ---
-title: "Управление кластерами Hadoop в HDInsight с помощью PowerShell — Azure | Документы Майкрософт"
-description: "Узнайте, как осуществлять управление кластерами Hadoop в HDInsight с использованием Azure PowerShell."
+title: "кластеры aaaManage Hadoop в HDInsight с помощью PowerShell, Azure | Документы Microsoft"
+description: "Узнайте, как tooperform административные задачи для hello кластеров Hadoop в HDInsight с помощью Azure PowerShell."
 services: hdinsight
 editor: cgronlun
 manager: jhubbard
@@ -16,20 +16,20 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/25/2017
 ms.author: jgao
-ms.openlocfilehash: c47dabd7c4aa4ba0be08c419989e536711f03677
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 3df082d752fa8c703db82a54b82b740290af6729
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="manage-hadoop-clusters-in-hdinsight-by-using-azure-powershell"></a>Управление кластерами Hadoop в HDInsight с помощью Azure PowerShell
 [!INCLUDE [selector](../../includes/hdinsight-portal-management-selector.md)]
 
-Azure PowerShell — это полнофункциональная среда сценариев, которую можно использовать для контроля и автоматизации развертывания и управления вашей рабочей нагрузкой в Azure. В этой статье вы узнаете, как управлять кластерами Hadoop в Azure HDInsight с помощью локальной консоли Azure PowerShell, используя Windows PowerShell. Список командлетов HDInsight PowerShell см. в [справочнике по командлетам HDInsight][hdinsight-powershell-reference].
+Azure PowerShell — это мощная среда сценариев, можно использовать toocontrol и автоматизации развертывания hello и управления ими рабочих нагрузок в Azure. В этой статье вы узнаете, как использовать toomanage кластеров Hadoop в Azure HDInsight с помощью локальной консоли Azure PowerShell через hello оболочки Windows PowerShell. Список hello hello командлеты HDInsight PowerShell см. в разделе [Справочник по командлетам HDInsight][hdinsight-powershell-reference].
 
 **Предварительные требования**
 
-Перед началом работы с этой статьей необходимо иметь следующее:
+Прежде чем приступать к этой статье, необходимо иметь следующие hello:
 
 * **Подписка Azure**. Ознакомьтесь с [бесплатной пробной версией Azure](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
 
@@ -38,85 +38,85 @@ Azure PowerShell — это полнофункциональная среда с
 
 Если вы установили Azure PowerShell версии 0.9x, то перед установкой новой версии ее необходимо удалить.
 
-Проверка версии установленной оболочки PowerShell:
+toocheck hello hello версии PowerShell:
 
     Get-Module *azure*
 
-Для удаления старой версии запустите "Программы и компоненты" в панели управления.
+старая версия hello toouninstall, запустить программы и компоненты панели управления hello.
 
 ## <a name="create-clusters"></a>Создание кластеров
 Ознакомьтесь с разделом [Создание кластеров под управлением Linux в HDInsight с помощью Azure PowerShell](hdinsight-hadoop-create-linux-clusters-azure-powershell.md)
 
 ## <a name="list-clusters"></a>Получение списка кластеров
-Чтобы получить список всех кластеров в текущей подписке, используйте следующую команду:
+Используйте следующие команды toolist hello всех кластеров в текущей подписке hello:
 
     Get-AzureRmHDInsightCluster
 
 ## <a name="show-cluster"></a>Отображение кластеров
-Чтобы отобразить сведения о конкретном кластере в текущей подписке, используйте следующую команду:
+Используйте приведенные ниже сведения tooshow команду к конкретному кластеру в текущей подписке hello hello.
 
     Get-AzureRmHDInsightCluster -ClusterName <Cluster Name>
 
 ## <a name="delete-clusters"></a>Удаление кластеров
-Используйте следующую команду для удаления кластера:
+Используйте следующие команды toodelete кластера hello:
 
     Remove-AzureRmHDInsightCluster -ClusterName <Cluster Name>
 
-Можно также удалить кластер, удалив группу ресурсов, которая содержит этот кластер. Обратите внимание, это приведет к удалению всех ресурсов в группе, включая учетную запись хранения по умолчанию.
+Можно также удалить кластер, удалив hello группы ресурсов, содержащий hello кластера. Обратите внимание, это приведет к удалению всех ресурсов группы hello, включая учетную запись хранения по умолчанию hello hello.
 
     Remove-AzureRmResourceGroup -Name <Resource Group Name>
 
 ## <a name="scale-clusters"></a>Масштабирование кластеров
-Масштабирование кластера позволяет изменить количество рабочих узлов в кластере, который работает под управлением Azure HDInsight. При этом не требуется повторно создавать кластер.
+масштабирование функции кластера Hello позволяет toochange hello число рабочих узлов в кластере, который выполняется в Azure HDInsight без необходимости toore-создать кластер hello.
 
 > [!NOTE]
-> Поддерживаются только кластеры HDInsight версии 3.1.3 или более поздней. Если вы не знаете версию кластера, см. страницу «Свойства».  См. раздел [Отображение кластеров](hdinsight-administer-use-portal-linux.md#list-and-show-clusters).
+> Поддерживаются только кластеры HDInsight версии 3.1.3 или более поздней. Если вы не знаете hello версии кластера, можно проверить свойства страницы приветствия.  См. раздел [Отображение кластеров](hdinsight-administer-use-portal-linux.md#list-and-show-clusters).
 >
 >
 
-Ниже представлены возможности, связанные с изменением количества узлов данных в кластере каждого типа, поддерживаемого в HDInsight.
+Hello последствия изменения hello количество узлов данных для каждого типа поддерживаемых HDInsight кластера:
 
 * Hadoop
 
-    Вы можете легко увеличить количество рабочих узлов в работающем кластере Hadoop. Это не помешает обработке заданий в состоянии ожидания и выполнения. В ходе выполнения операции можно также отправлять новые задания. Сбои операции масштабирования обрабатываются корректно, поэтому кластер всегда пребывает в функциональном состоянии.
+    Можно легко увеличить hello число рабочих узлов в кластере Hadoop, на котором выполняется без ущерба для все ожидающие или выполняемые задания. Также можно отправлять новые задания, hello операции во время выполнения. Ошибки в операции масштабирования обрабатываются правильно, чтобы hello кластер всегда оставался в рабочем состоянии.
 
-    Если уменьшить масштаб кластера Hadoop, сократив количество узлов данных, некоторые службы в нем будут перезапущены. Это приведет к сбою всех выполняющихся и ожидающих заданий при завершении операции масштабирования. Однако после завершения операции вы можете повторно отправить задания.
+    Когда кластер Hadoop уменьшено за счет уменьшения hello количество узлов данных, некоторые службы hello в кластере hello перезапускаются. В результате все выполняющиеся и ожидающие задания toofail окончании hello hello операцию масштабирования. Можно Однако повторно отправить задания hello после завершения операции hello.
 * HBase
 
-    Вы можете с легкостью добавлять и удалять узлы данных в работающем кластере HBase. Балансировка региональных серверов выполняется автоматически в течение нескольких минут после завершения операции масштабирования. Но их также можно сбалансировать вручную, выполнив вход в головной узел кластера и выполнив следующие команды в окне командной строки:
+    Можно легко добавить или удалить узлы tooyour HBase кластера при выполнении. Региональные серверы распределяются автоматически через несколько минут после завершения hello операция масштабирования. Тем не менее можно также вручную сбалансировать региональные серверы hello войдите в систему в toohello головному узлу кластера, и выполнение hello, следующие команды из окна командной строки:
 
         >pushd %HBASE_HOME%\bin
         >hbase shell
         >balancer
 * Storm
 
-    Вы можете с легкостью добавлять и удалять узлы данных в работающем кластере Storm. Но после успешного завершения операции масштабирования потребуется повторная балансировка топологии.
+    Можно легко добавить или удалить кластер Storm tooyour узлы данных при выполнении. Однако после успешного завершения hello операция масштабирования потребуется toorebalance hello топологии.
 
     Повторную балансировку можно выполнить двумя способами:
 
   * с помощью веб-интерфейса Storm;
   * с помощью программы командной строки.
 
-    Дополнительные сведения см. в [документации по Apache Storm](http://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html).
+    См. toohello [документации Apache Storm](http://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html) для получения дополнительных сведений.
 
-    В кластере HDInsight доступен веб-интерфейс Storm.
+    в кластере HDInsight hello доступен Hello Storm пользовательского веб-интерфейса:
 
     ![HDInsight, storm, масштабирование, перераспределение](./media/hdinsight-administer-use-management-portal/hdinsight.portal.scale.cluster.png)
 
-    Ниже приведен пример использования команды CLI для повторной балансировки топологии Storm:
+    Ниже приведен пример как toouse hello CLI команды toorebalance hello Storm топологии:
 
-        ## Reconfigure the topology "mytopology" to use 5 worker processes,
-        ## the spout "blue-spout" to use 3 executors, and
-        ## the bolt "yellow-bolt" to use 10 executors
+        ## Reconfigure hello topology "mytopology" toouse 5 worker processes,
+        ## hello spout "blue-spout" toouse 3 executors, and
+        ## hello bolt "yellow-bolt" toouse 10 executors
         $ storm rebalance mytopology -n 5 -e blue-spout=3 -e yellow-bolt=10
 
-Чтобы изменить размер кластера Hadoop с помощью Azure PowerShell, выполните следующую команду с клиентского компьютера:
+hello toochange размер кластера Hadoop с помощью Azure PowerShell, запустите следующую команду с клиентского компьютера hello:
 
     Set-AzureRmHDInsightClusterSize -ClusterName <Cluster Name> -TargetInstanceCount <NewSize>
 
 
 ## <a name="grantrevoke-access"></a>Предоставление и отмена доступа
-В кластерах HDInsight имеются следующие веб-службы HTTP (все эти службы имеют конечные точки RESTful):
+Кластеры HDInsight имеют hello следующие веб-службы HTTP (все эти службы имеют RESTful конечные точки):
 
 * ODBC
 * JDBC
@@ -124,37 +124,37 @@ Azure PowerShell — это полнофункциональная среда с
 * Oozie
 * Templeton
 
-По умолчанию эти службы предоставляются для доступа. Вы можете отменить или предоставить доступ. Для отмены:
+По умолчанию эти службы предоставляются для доступа. Вы можете revoke или предоставления доступа hello. toorevoke:
 
     Revoke-AzureRmHDInsightHttpServicesAccess -ClusterName <Cluster Name>
 
-Для предоставления:
+toogrant:
 
     $clusterName = "<HDInsight Cluster Name>"
 
     # Credential option 1
     $hadoopUserName = "admin"
-    $hadoopUserPassword = "<Enter the Password>"
+    $hadoopUserPassword = "<Enter hello Password>"
     $hadoopUserPW = ConvertTo-SecureString -String $hadoopUserPassword -AsPlainText -Force
     $credential = New-Object System.Management.Automation.PSCredential($hadoopUserName,$hadoopUserPW)
 
     # Credential option 2
-    #$credential = Get-Credential -Message "Enter the HTTP username and password:" -UserName "admin"
+    #$credential = Get-Credential -Message "Enter hello HTTP username and password:" -UserName "admin"
 
     Grant-AzureRmHDInsightHttpServicesAccess -ClusterName $clusterName -HttpCredential $credential
 
 > [!NOTE]
-> Предоставляя или отменяя доступ, вы сбрасываете имя пользователя и пароль кластера.
+> Предоставление или Отмена доступа hello, восстановится hello кластера имя и пароль пользователя.
 >
 >
 
-Это также можно сделать через портал. Ознакомьтесь с разделом [Администрирование HDInsight с помощью портала Azure][hdinsight-admin-portal].
+Это можно сделать через портал hello. В разделе [Здравствуйте, администрировать HDInsight с помощью портала Azure][hdinsight-admin-portal].
 
 ## <a name="update-http-user-credentials"></a>Обновление учетных данных пользователя HTTP
-Эта процедура аналогична [предоставлению или запрету доступа HTTP](#grant/revoke-access). Если кластеру был предоставлен доступ по протоколу HTTP, необходимо сначала отменить его.  После этого предоставьте доступ с новыми учетными данными пользователя HTTP.
+Это же hello процедуры как [доступа для предоставления или отзыва HTTP](#grant/revoke-access). Если кластер hello было предоставлено hello доступа по протоколу HTTP, то необходимо отозвать.  А затем предоставить доступ hello с новыми учетными данными пользователя HTTP.
 
-## <a name="find-the-default-storage-account"></a>Поиск учетной записи хранения по умолчанию
-В следующем сценарии Powershell показано получение имени учетной записи хранения по умолчанию и ключа учетной записи хранения по умолчанию для кластера.
+## <a name="find-hello-default-storage-account"></a>Найти учетную запись хранения по умолчанию hello
+Следующий сценарий Powershell Hello демонстрируется tooget hello имя учетной записи хранения по умолчанию и hello ключ учетной записи хранения по умолчанию для кластера.
 
     $clusterName = "<HDInsight Cluster Name>"
 
@@ -165,8 +165,8 @@ Azure PowerShell — это полнофункциональная среда с
     $defaultStorageAccountKey = (Get-AzureRmStorageAccountKey -ResourceGroupName $resourceGroupName -Name $defaultStorageAccountName)[0].Value
     $defaultStorageAccountContext = New-AzureStorageContext -StorageAccountName $defaultStorageAccountName -StorageAccountKey $defaultStorageAccountKey
 
-## <a name="find-the-resource-group"></a>Поиск группы ресурсов
-В режиме Resource Manager каждый кластер HDInsight относится к группе ресурсов Azure.  Поиск группы ресурсов:
+## <a name="find-hello-resource-group"></a>Найти группу ресурсов hello
+В режиме hello диспетчера ресурсов каждый кластер HDInsight принадлежит tooan группы ресурсов Azure.  Группа ресурсов hello toofind:
 
     $clusterName = "<HDInsight Cluster Name>"
 
@@ -175,35 +175,35 @@ Azure PowerShell — это полнофункциональная среда с
 
 
 ## <a name="submit-jobs"></a>Отправка заданий
-**Отправка заданий MapReduce**
+**задания MapReduce toosubmit**
 
 См. статью [Выполнение примеров Hadoop MapReduce в HDInsight на базе Windows](hdinsight-run-samples.md).
 
-**Отправка заданий Hive**
+**задания Hive toosubmit**
 
 См. статью [Выполнение запросов Hive с помощью PowerShell](hdinsight-hadoop-use-hive-powershell.md).
 
-**Отправка заданий Pig**
+**задания Pig toosubmit**
 
 См. статью [Выполнение заданий Pig с помощью PowerShell](hdinsight-hadoop-use-pig-powershell.md).
 
-**Отправка заданий Sqoop**
+**toosubmit Sqoop заданий**
 
 См. статью [Использование Sqoop с Hadoop в HDInsight](hdinsight-use-sqoop.md).
 
-**Отправка заданий Oozie**
+**toosubmit Oozie заданий**
 
-См. статью [Использование Oozie с Hadoop для определения и выполнения рабочего процесса в HDInsight](hdinsight-use-oozie.md).
+В разделе [Oozie использования с Hadoop toodefine и выполнения рабочего процесса в HDInsight](hdinsight-use-oozie.md).
 
-## <a name="upload-data-to-azure-blob-storage"></a>Отправка данных в хранилище BLOB-объектов Azure
-Ознакомьтесь со статьей [Отправка данных в HDInsight][hdinsight-upload-data].
+## <a name="upload-data-tooazure-blob-storage"></a>Отправка больших двоичных объектов хранилища данных tooAzure
+В разделе [отправить данные tooHDInsight][hdinsight-upload-data].
 
 ## <a name="see-also"></a>См. также
 * [Справочная документация по командлетам HDInsight][hdinsight-powershell-reference]
-* [Администрирование HDInsight с помощью портала Azure][hdinsight-admin-portal]
+* [Администрирование с помощью hello портал Azure HDInsight][hdinsight-admin-portal]
 * [Администрирование HDInsight с помощью интерфейса командной строки][hdinsight-admin-cli]
 * [Создание кластеров Hadoop в HDInsight][hdinsight-provision]
-* [Отправка данных в HDInsight][hdinsight-upload-data]
+* [Отправка данных tooHDInsight][hdinsight-upload-data]
 * [Отправка заданий Hadoop в HDInsight][hdinsight-submit-jobs]
 * [Руководство по Hadoop. Начало работы с Hadoop в HDInsight на платформе Linux][hdinsight-get-started]
 

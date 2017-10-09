@@ -1,5 +1,5 @@
 ---
-title: "Обзор Azure Automation DSC | Документация Майкрософт"
+title: "Общие сведения о DSC автоматизации aaaAzure | Документы Microsoft"
 description: "Обзор DSC службы автоматизации Azure, условий использования и известных проблем"
 services: automation
 documentationcenter: dev-center-name
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: powershell
 ms.workload: TBD
 ms.date: 06/15/2017
 ms.author: eslesar
-ms.openlocfilehash: 468321fa6863d78bc0d179fbe5c2ed6195040d50
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 5b8e5104c7b5bed848c015ac26a8b7d1f5b24de9
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-automation-dsc-overview"></a>Обзор DSC службы автоматизации Azure
 
-Azure Automation DSC — это служба Azure, которая позволяет создавать и компилировать [конфигурации](https://msdn.microsoft.com/powershell/dsc/configurations) Desired State Configuration (DSC) PowerShell, управлять ими, импортировать [ресурсы DSC](https://msdn.microsoft.com/powershell/dsc/resources), а также назначать конфигурации целевым узлам, и все это в облаке.
+Azure Automation DSC — это служба Azure, который позволяет вам toowrite, управления и компиляции конфигурации требуемого состояния (DSC) PowerShell [конфигурации](https://msdn.microsoft.com/powershell/dsc/configurations), Импорт [ресурсов DSC](https://msdn.microsoft.com/powershell/dsc/resources)и назначение узлы tootarget конфигураций в облаке hello.
 
 ## <a name="why-use-azure-automation-dsc"></a>Преимущества Azure Automation DSC
 
@@ -30,39 +30,39 @@ Azure Automation DSC обеспечивает ряд преимуществ по
 
 ### <a name="built-in-pull-server"></a>Встроенный опрашивающий сервер
 
-Служба автоматизации Azure предоставляет [опрашивающий сервер DSC](https://msdn.microsoft.com/en-us/powershell/dsc/pullserver), чтобы целевые узлы могли автоматически получать конфигурации, переходить в требуемое состояние и сообщать о готовности.
-Встроенный опрашивающий сервер в службе автоматизации Azure избавляет от необходимости устанавливать и обслуживать собственный опрашивающий сервер.
-Служба автоматизации Azure может работать с виртуальными и физическими машинами под управлением Windows или Linux, размещенными в облаке или локально.
+Служба автоматизации Azure обеспечивает [опрашивающего сервера DSC](https://msdn.microsoft.com/en-us/powershell/dsc/pullserver) , чтобы целевые узлы автоматически получать конфигураций, соответствуют toohello требуемого состояния и выдавать отчеты об их соответствии.
+Hello встроенных опрашивающего сервера в службе автоматизации Azure устраняет необходимость tooset hello вверх и ведение опрашивающего сервера.
+Служба автоматизации Azure можно выбрать целевую виртуальных или физических Windows или Linux машин, в облаке hello или локальной.
 
 ### <a name="management-of-all-your-dsc-artifacts"></a>Управление всеми артефактами DSC
 
-Azure Automation DSC обеспечивает тот же слой управления для [Desired State Configuration PowerShell](https://msdn.microsoft.com/powershell/dsc/overview), что и служба автоматизации Azure предлагает для сценариев PowerShell.
+Переводит Azure Automation DSC hello же уровень управления слишком[настройки требуемого состояния PowerShell](https://msdn.microsoft.com/powershell/dsc/overview) как автоматизации Azure предоставляет для создания сценариев PowerShell.
 
-Вы можете управлять всеми конфигурациями, ресурсами и целевыми узлами DSC с помощью портала Azure или PowerShell.
+Из hello портал Azure или из PowerShell можно управлять все вашей DSC конфигураций, ресурсов и целевой узлы.
 
-![Снимок экрана колонки службы автоматизации Azure](./media/automation-dsc-overview/azure-automation-blade.png)
+![Снимок экрана: колонка hello автоматизации Azure](./media/automation-dsc-overview/azure-automation-blade.png)
 
 ### <a name="import-reporting-data-into-log-analytics"></a>Импорт данных отчетов в Log Analytics
 
-Узлы, которые управляются с помощью Azure Automation DSC, отправляют на встроенный опрашивающий сервер подробные отчеты с данными о состоянии.
-В Azure Automation DSC можно настроить отправку этих данных в рабочую область Log Analytics в Microsoft Operations Management Suite (OMS).
-Сведения об отправке данных о состоянии DSC в рабочую область Log Analytics см. в статье [Пересылка данных отчетов Azure Automation DSC в OMS Log Analytics](automation-dsc-diagnostics.md).
+Узлы, которые управляются с помощью DSC службы автоматизации Azure отправить подробное состояние данных toohello Встроенные запросу сервера отчетов.
+Эта рабочая область данных tooyour анализа журналов Microsoft Operations Management Suite (OMS) можно настроить toosend DSC службы автоматизации Azure.
+tooyour данных состояния toosend DSC рабочей областью аналитики журналов, в статье toolearn [вперед DSC службы автоматизации Azure reporting tooOMS данных аналитики журналов](automation-dsc-diagnostics.md).
 
 ## <a name="introduction-video"></a>Видео: общие сведения
 
-Предпочитаете смотреть, а не читать? Посмотрите следующий видеоролик, выпущенный в мае 2015 г., когда впервые было объявлено о создании службы Azure Automation DSC.
+Предпочитаете просмотра tooreading? Рассмотрим следующие видео от мая 2015 г., при первом объявлении Azure Automation DSC hello.
 
 >[!NOTE]
->Несмотря на то, что основные концепции и жизненный цикл, о которых рассказывается в этом видеоролике, по-прежнему актуальны, с момента записи этого видеоролика Azure Automation DSC сделала большой шаг вперед.
->Теперь она стала общедоступной, оснащена более функциональным пользовательским интерфейсом на портале Azure и поддерживает множество дополнительных возможностей.
+>Хотя правильность hello основные понятия и жизненный цикл, рассматриваемые в этом видео, Azure Automation DSC изменилась во многом так, как это видео было записано.
+>Теперь стал общедоступным, имеет гораздо более сложные пользовательский Интерфейс в hello портал Azure и поддерживает множество дополнительных возможностей.
 
 > [!VIDEO https://channel9.msdn.com/Events/Ignite/2015/BRK3467/player]
 
 ## <a name="next-steps"></a>Дальнейшие действия
 
-* Сведения о развертывании узлов для управления с помощью Azure Automation DSC см. в статье [Подключение компьютеров для управления с помощью Azure Automation DSC](automation-dsc-onboarding.md).
-* Чтобы начать работу с Azure Automation DSC, см. статью [Приступая к работе с Azure Automation DSC](automation-dsc-getting-started.md).
-* Сведения о компиляции конфигураций DSC, которые затем можно назначить целевым узлам, см. в статье [Компиляция конфигураций в Azure Automation DSC](automation-dsc-compile.md).
+* toolearn toobe tooonboard узлов управляются с помощью Azure Automation DSC. в разделе [адаптации машин для управления с помощью DSC службы автоматизации Azure](automation-dsc-onboarding.md)
+* tooget к работе с Azure Automation DSC. в разделе [Приступая к работе с Azure Automation DSC](automation-dsc-getting-started.md)
+* разделе toolearn о компиляции конфигурации DSC, в котором можно задать их узлы tootarget [компиляции конфигурации в DSC службы автоматизации Azure](automation-dsc-compile.md)
 * Справочник по командлетам PowerShell для Azure Automation DSC приводится в статье [Azure​RM.​Automation](/powershell/module/azurerm.automation/#automation).
 * Сведения о ценах см. на [странице с ценами на Azure Automation DSC](https://azure.microsoft.com/pricing/details/automation/).
-* Пример использования Azure Automation DSC в конвейере непрерывного развертывания см. в разделе [непрерывного развертывания IaaS виртуальных машин с помощью DSC службы автоматизации Azure и Chocolatey](automation-dsc-cd-chocolatey.md)
+* см. пример использования в конвейере непрерывного развертывания Azure Automation DSC toosee [tooIaaS непрерывного развертывания виртуальных машин с помощью DSC службы автоматизации Azure и Chocolatey](automation-dsc-cd-chocolatey.md)

@@ -1,6 +1,6 @@
 ---
-title: "Добавление диска в виртуальную машину Linux с помощью Azure CLI | Документация Майкрософт"
-description: "Узнайте, как добавить постоянный диск в виртуальную машину Linux с помощью Azure CLI 1.0 и Azure CLI 2.0."
+title: "Здравствуйте, aaaAdd ВМ tooLinux диска с помощью Azure CLI | Документы Microsoft"
+description: "Узнайте tooadd tooyour дисков для долгосрочного хранения виртуальных Машин Linux с hello Azure CLI 1.0 и 2.0."
 keywords: "виртуальная машина Linux, добавление диска ресурсов"
 services: virtual-machines-linux
 documentationcenter: 
@@ -17,26 +17,26 @@ ms.devlang: azurecli
 ms.date: 02/02/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 185dd276cd79cb7053605d651e8ecdc7fd1e7636
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 0dc5236be62d96b70dd47a7f621f626a037e22aa
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="add-a-disk-to-a-linux-vm"></a>Добавление диска к виртуальной машине Linux
-Из этой статьи вы узнаете, как добавить в виртуальную машину постоянный диск, на котором можно хранить данные. Эти данные сохранятся даже после повторной подготовки виртуальной машины (например, в ходе обслуживания или изменения размера). 
+# <a name="add-a-disk-tooa-linux-vm"></a>Добавить диск tooa ВМ Linux
+В этой статье показано tooattach a постоянного места на диске tooyour виртуальной Машины, чтобы их можно сохранить данные — даже если ВМ выполняется повторная Подготовка из-за toomaintenance или изменения размера. 
 
 ## <a name="quick-commands"></a>Быстрые команды
-В следующем примере к виртуальной машине `myVM` в группе ресурсов `myResourceGroup` подключается диск на `50` ГБ:
+Следующий пример присоединяет Hello `50`toohello ГБ диска виртуальной Машины с именем `myVM` в группе ресурсов hello с именем `myResourceGroup`:
 
-Использование управляемых дисков:
+toouse управляемый дисков.
 
 ```azurecli
 az vm disk attach -g myResourceGroup --vm-name myVM --disk myDataDisk \
   --new --size-gb 50
 ```
 
-Использование неуправляемых дисков:
+неуправляемые toouse диски:
 
 ```azurecli
 az vm unmanaged-disk attach -g myResourceGroup -n myUnmanagedDisk --vm-name myVM \
@@ -45,12 +45,12 @@ az vm unmanaged-disk attach -g myResourceGroup -n myUnmanagedDisk --vm-name myVM
 
 ## <a name="attach-a-managed-disk"></a>Подключение управляемого диска
 
-Используя Управляемые диски, вы сможете сосредоточиться на виртуальных машинах и дисках, не беспокоясь об учетных записях хранения Azure. Вы можете быстро создать и подключить управляемый диск к виртуальной машине, используя одну и ту же группу ресурсов Azure, или создать диски в любом количестве, а затем подключить их.
+С помощью управляемых дисков можно toofocus на виртуальные машины и их диски, не беспокоясь об учетных записях хранения Azure. Можно быстро создать и присоединить управляемого диска виртуальной Машины с помощью tooa hello одной группе ресурсов Azure, или можно создать любое количество дисков, а затем подключите их.
 
 
-### <a name="attach-a-new-disk-to-a-vm"></a>Подключение нового диска к виртуальной машине
+### <a name="attach-a-new-disk-tooa-vm"></a>Подключите новый tooa диска виртуальной Машины
 
-Если вам просто нужен новый диск в виртуальной машине, можно использовать команду `az vm disk attach`.
+Если необходимо просто нового диска на виртуальной Машине, можно использовать hello `az vm disk attach` команды.
 
 ```azurecli
 az vm disk attach -g myResourceGroup --vm-name myVM --disk myDataDisk \
@@ -59,15 +59,15 @@ az vm disk attach -g myResourceGroup --vm-name myVM --disk myDataDisk \
 
 ### <a name="attach-an-existing-disk"></a>Подключение существующего диска 
 
-Во многих случаях подключаются созданные диски. Сначала нужно найти идентификатор диска и передать его в команду `az vm disk attach`. В следующем примере используется диск, созданный с помощью команды `az disk create -g myResourceGroup -n myDataDisk --size-gb 50`.
+Во многих случаях подключаются созданные диски. Сначала найти диска с идентификатором hello и затем передать этот toohello `az vm disk attach` команды. Hello следующий пример использует дисков, созданных с помощью `az disk create -g myResourceGroup -n myDataDisk --size-gb 50`.
 
 ```azurecli
-# find the disk id
+# find hello disk id
 diskId=$(az disk show -g myResourceGroup -n myDataDisk --query 'id' -o tsv)
 az vm disk attach -g myResourceGroup --vm-name myVM --disk $diskId
 ```
 
-Результат выглядит примерно следующим образом (для форматирования результатов можно использовать параметр `-o table` для любой команды):
+Hello выходные данные выглядят примерно hello следующим образом (можно использовать hello `-o table` параметр вывода tooany команды tooformat hello в):
 
 ```json
 {
@@ -97,20 +97,20 @@ az vm disk attach -g myResourceGroup --vm-name myVM --disk $diskId
 
 ## <a name="attach-an-unmanaged-disk"></a>Подключение неуправляемого диска
 
-Вы можете очень быстро подключить новый диск, если у вас не вызывает проблем создание диска в той же учетной записи хранения, которая используется для виртуальной машины. Чтобы создать и присоединить новый диск (ГБ) для своей виртуальной машины, введите `azure vm disk attach-new`. Если учетная запись хранения не определяется явным образом, любой создаваемый диск помещается в ту же учетную запись хранения, что и диск операционной системы. В следующем примере к виртуальной машине `myVM` в группе ресурсов `myResourceGroup` подключается диск на `50` ГБ:
+Подключение нового диска занимает мало времени, если создание диска в hello же учетной записи хранилища виртуальной Машины. Тип `azure vm disk attach-new` toocreate и присоединить новый диск ГБ для виртуальной Машины. Если учетной записи хранилища не определить явным образом, любой созданный диск помещается в hello же учетной записи хранилища, где находится на диске операционной системы. Следующий пример присоединяет Hello `50`toohello ГБ диска виртуальной Машины с именем `myVM` в группе ресурсов hello с именем `myResourceGroup`:
 
 ```azurecli
 az vm unmanaged-disk attach -g myResourceGroup -n myUnmanagedDisk --vm-name myVM \
   --new --size-gb 50
 ```
 
-## <a name="connect-to-the-linux-vm-to-mount-the-new-disk"></a>Подключение к виртуальной машине Linux для подключения нового диска
+## <a name="connect-toohello-linux-vm-toomount-hello-new-disk"></a>Подключение нового диска ВМ Linux toomount hello toohello
 > [!NOTE]
-> В этом разделе для подключения к виртуальной машине используются имена пользователей и пароли. Чтобы использовать пары открытых и закрытых ключей для взаимодействия с виртуальной машиной, см. статью [об использовании ключей SSH для Linux в Azure](mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). 
+> В этом разделе подключается tooa виртуальной Машины с использованием имен пользователей и паролей. toouse toocommunicate пары открытого и закрытого ключей с ВМ, в разделе [как tooUse SSH с Linux в Azure](mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). 
 > 
 > 
 
-Чтобы разбить диск на разделы, отформатировать и подключить его к виртуальной машине Linux, к ВМ Azure нужно подключиться по протоколу SSH. Если вы не знакомы с подключением по протоколу **ssh**, команда имеет вид `ssh <username>@<FQDNofAzureVM> -p <the ssh port>`. В конечном итоге она выглядит вот так:
+Требуется tooSSH в toopartition вашей виртуальной Машине Azure, форматирования и подключить новый диск, чтобы ВМ Linux можно было использовать. Если вы не знакомы с подключением с **ssh**, hello команда принимает форму hello `ssh <username>@<FQDNofAzureVM> -p <hello ssh port>`и выглядит hello следующим образом:
 
 ```bash
 ssh ops@mypublicdns.westus.cloudapp.azure.com -p 22
@@ -119,12 +119,12 @@ ssh ops@mypublicdns.westus.cloudapp.azure.com -p 22
 Выходные данные
 
 ```bash
-The authenticity of host 'mypublicdns.westus.cloudapp.azure.com (191.239.51.1)' can't be established.
+hello authenticity of host 'mypublicdns.westus.cloudapp.azure.com (191.239.51.1)' can't be established.
 ECDSA key fingerprint is bx:xx:xx:xx:xx:xx:xx:xx:xx:x:x:x:x:x:x:xx.
-Are you sure you want to continue connecting (yes/no)? yes
-Warning: Permanently added 'mypublicdns.westus.cloudapp.azure.com,191.239.51.1' (ECDSA) to the list of known hosts.
+Are you sure you want toocontinue connecting (yes/no)? yes
+Warning: Permanently added 'mypublicdns.westus.cloudapp.azure.com,191.239.51.1' (ECDSA) toohello list of known hosts.
 ops@mypublicdns.westus.cloudapp.azure.com's password:
-Welcome to Ubuntu 14.04.2 LTS (GNU/Linux 3.16.0-37-generic x86_64)
+Welcome tooUbuntu 14.04.2 LTS (GNU/Linux 3.16.0-37-generic x86_64)
 
 * Documentation:  https://help.ubuntu.com/
 
@@ -142,17 +142,17 @@ Get cloud support with Ubuntu Advantage Cloud Guest:
 0 packages can be updated.
 0 updates are security updates.
 
-The programs included with the Ubuntu system are free software;
-the exact distribution terms for each program are described in the
+hello programs included with hello Ubuntu system are free software;
+hello exact distribution terms for each program are described in the
 individual files in /usr/share/doc/*/copyright.
 
-Ubuntu comes with ABSOLUTELY NO WARRANTY, to the extent permitted by
+Ubuntu comes with ABSOLUTELY NO WARRANTY, toohello extent permitted by
 applicable law.
 
 ops@myVM:~$
 ```
 
-После того как вы подключились к своей виртуальной машине, вы можете присоединить диск.  Сначала найдите диск, используя `dmesg | grep SCSI` (для обнаружения нового диска можно использовать и другой способ). В этом случае отобразится примерно следующее:
+Теперь, когда вы подключены tooyour ВМ, вы будете готовы tooattach диска.  Сначала найти hello диск с использованием `dmesg | grep SCSI` (метод hello использовать toodiscover могут различаться на новый диск). В этом случае отобразится примерно следующее:
 
 ```bash
 dmesg | grep SCSI
@@ -168,7 +168,7 @@ dmesg | grep SCSI
 [ 1828.162306] sd 5:0:0:0: [sdc] Attached SCSI disk
 ```
 
-а в контексте этого раздела диск `sdc` является именно тем диском, который мы ищем. Теперь разобьем диск с помощью `sudo fdisk /dev/sdc`, предположив, что в нашем случае был диск `sdc`, установим его как основной диск в разделе 1 и примем остальные значения по умолчанию.
+и в случае hello этого раздела hello `sdc` диск является hello, нам нужно. Создать разделы на диске hello сейчас с `sudo fdisk /dev/sdc` — при условии, что в вашей вариантов hello диск был `sdc`и сделать его основной диск на секции 1 и примите другие значения по умолчанию hello.
 
 ```bash
 sudo fdisk /dev/sdc
@@ -179,8 +179,8 @@ sudo fdisk /dev/sdc
 ```bash
 Device contains neither a valid DOS partition table, nor Sun, SGI or OSF disklabel
 Building a new DOS disklabel with disk identifier 0x2a59b123.
-Changes will remain in memory only, until you decide to write them.
-After that, of course, the previous content won't be recoverable.
+Changes will remain in memory only, until you decide toowrite them.
+After that, of course, hello previous content won't be recoverable.
 
 Warning: invalid flag 0x0000 of partition table 4 will be corrected by w(rite)
 
@@ -196,7 +196,7 @@ Last sector, +sectors or +size{K,M,G} (2048-10485759, default 10485759):
 Using default value 10485759
 ```
 
-Создайте раздел, введя в командной строке `p` :
+Создание раздела hello, введя `p` в строке приветствия:
 
 ```bash
 Command (m for help): p
@@ -212,13 +212,13 @@ Disk identifier: 0x2a59b123
 /dev/sdc1            2048    10485759     5241856   83  Linux
 
 Command (m for help): w
-The partition table has been altered!
+hello partition table has been altered!
 
-Calling ioctl() to re-read partition table.
+Calling ioctl() toore-read partition table.
 Syncing disks.
 ```
 
-Запишите файловую систему на раздел с помощью команды **mkfs** , указав тип вашей файловой системы и имя устройства. В этом разделе мы будем использовать указанные `ext4` и `/dev/sdc1`:
+И записи файловой системы toohello раздела с помощью hello **mkfs** команду, указав имя файловой системы типа и hello устройства. В этом разделе мы будем использовать указанные `ext4` и `/dev/sdc1`:
 
 ```bash
 sudo mkfs -t ext4 /dev/sdc1
@@ -235,7 +235,7 @@ Block size=4096 (log=2)
 Fragment size=4096 (log=2)
 Stride=0 blocks, Stripe width=0 blocks
 327680 inodes, 1310464 blocks
-65523 blocks (5.00%) reserved for the super user
+65523 blocks (5.00%) reserved for hello super user
 First data block=0
 Maximum filesystem blocks=1342177280
 40 block groups
@@ -249,19 +249,19 @@ Creating journal (32768 blocks): done
 Writing superblocks and filesystem accounting information: done
 ```
 
-Теперь создадим каталог для подключения файловой системы, используя `mkdir`:
+Теперь создадим каталог toomount hello файл системы с помощью `mkdir`:
 
 ```bash
 sudo mkdir /datadrive
 ```
 
-А для подключения каталога используйте `mount`:
+И подключить hello каталога с использованием `mount`:
 
 ```bash
 sudo mount /dev/sdc1 /datadrive
 ```
 
-Теперь диск данных готов для использования как `/datadrive`.
+Hello диск данных становится готова toouse как `/datadrive`.
 
 ```bash
 ls
@@ -274,13 +274,13 @@ bin   datadrive  etc   initrd.img  lib64       media  opt   root  sbin  sys  usr
 boot  dev        home  lib         lost+found  mnt    proc  run   srv   tmp  var
 ```
 
-Чтобы обеспечить автоматическое повторное подключение диска после перезагрузки, его необходимо добавить в файл /etc/fstab. Кроме того, для ссылки на диск настоятельно рекомендуется использовать в файле /etc/fstab идентификатор UUID (глобальный уникальный идентификатор), а не просто имя устройства (например, `/dev/sdc1`). Если операционная система обнаруживает ошибку диска во время загрузки, использование UUID позволяет избежать подключения ошибочного диска в это расположение. Остальные диски с данными затем получают те же идентификаторы устройств. Чтобы найти UUID нового диска, используйте программу **blkid** :
+tooensure hello диск будет подключена снова автоматически, после перезагрузки, он должен быть добавлен файл/etc/fstab toohello. Кроме того, настоятельно рекомендуется, hello UUID (глобально уникальный идентификатор) используется в/etc/fstab toorefer toohello диска вместо просто hello имя устройства (такие как `/dev/sdc1`). Если hello ОС обнаружении ошибки во время загрузки, с помощью hello UUID позволяет избежать hello неправильной диска, подключенного tooa заданное место. Остальные диски с данными затем получают те же идентификаторы устройств. toofind hello UUID hello новый диск, используйте hello **блок идентификатором blkid** программы:
 
 ```bash
 sudo -i blkid
 ```
 
-Результат будет выглядеть примерно так:
+Hello выходные данные выглядят аналогично toohello следующее:
 
 ```bash
 /dev/sda1: UUID="11111111-1b1b-1c1c-1d1d-1e1e1e1e1e1e" TYPE="ext4"
@@ -289,38 +289,38 @@ sudo -i blkid
 ```
 
 > [!NOTE]
-> Некорректное изменение файла **/etc/fstab** может привести к невозможности загрузить систему. Если у вас есть сомнения, см. инструкции по правильному изменению этого файла в документации дистрибутива. Также рекомендуется перед внесением изменений создать резервную копию файла /etc/fstab.
+> Неправильное редактирование hello **/etc/fstab** файла может привести к невозможности загрузки системы. Если нет уверенности, сведения о этот файл, как изменять tooproperly см toohello распространения документации. Также рекомендуется, прежде чем изменять создается резервная копия файл/etc/fstab hello.
 > 
 > 
 
-Затем откройте файл **/etc/fstab** в текстовом редакторе:
+Затем откройте hello **/etc/fstab** файл в текстовом редакторе:
 
 ```bash
 sudo vi /etc/fstab
 ```
 
-В этом примере мы используем значение UUID для нового устройства **/dev/sdc1**, созданного на предыдущих шагах, и точку подключения **/datadrive**. Добавьте следующую строку в конец файла **/etc/fstab** :
+В этом примере мы используем значение hello UUID для hello новый **/dev/sdc1** устройства, который был создан в предыдущих шагах hello и hello монтирования **/datadrive**. Добавьте следующие строки toohello конец hello hello **/etc/fstab** файла:
 
 ```bash
 UUID=33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e   /datadrive   ext4   defaults,nofail   1   2
 ```
 
 > [!NOTE]
-> Если вы позднее удалите диск данных без редактирования файла fstab, виртуальная машина может не загрузиться. Большинство дистрибутивов содержат `nofail` или `nobootwait` параметры fstab. Эти параметры позволяют системе загружаться, даже если диск не подключится во время загрузки. Дополнительные сведения об этих параметрах см. в документации дистрибутива.
+> Позже удалении диска данных без необходимости редактирования fstab может привести к tooboot toofail hello виртуальной Машины. Большинством дистрибутивов предоставляют либо hello `nofail` и/или `nobootwait` fstab параметры. Эти параметры позволяют tooboot системы даже в случае сбоя диска hello toomount во время загрузки. Дополнительные сведения об этих параметрах см. в документации дистрибутива.
 > 
-> Параметр **nofail** обеспечивает запуск виртуальной машины даже в том случае, если файловая система повреждена или отсутствует диск во время загрузки. Без этого параметра может возникнуть ситуация, описанная в записи блога [Cannot SSH to Linux VM due to FSTAB errors](https://blogs.msdn.microsoft.com/linuxonazure/2016/07/21/cannot-ssh-to-linux-vm-after-adding-data-disk-to-etcfstab-and-rebooting/) (Не удается подключиться к виртуальной машине Linux по протоколу SSH из-за ошибок FSTAB).
+> Hello **nofail** параметр гарантирует, что hello, Виртуальная машина, даже если hello файловой системы повреждены или hello диск не существует во время загрузки. Без этого параметра могут возникнуть поведение, как описано в [нельзя SSH tooLinux виртуальной Машины из-за ошибки tooFSTAB](https://blogs.msdn.microsoft.com/linuxonazure/2016/07/21/cannot-ssh-to-linux-vm-after-adding-data-disk-to-etcfstab-and-rebooting/)
 
 ### <a name="trimunmap-support-for-linux-in-azure"></a>Поддержка операций TRIM и UNMAP для Linux в Azure
-Некоторые ядра Linux поддерживают операции TRIM и UNMAP для отмены неиспользуемых блоков на диске. Это особенно удобно использовать в хранилище уровня "Стандартный", чтобы сообщать Azure о том, что удаленные страницы больше не действительны и могут быть удалены. Это позволит сократить затраты, если вы создаете большие файлы, а затем удаляете их.
+Некоторые версии Linux ядра поддержки TRIM и отмене СОПОСТАВЛЕНИЯ операций toodiscard неиспользуемые блоки на диске hello. Это полезно в tooinform стандартное хранилище Azure, которая удалена страницы становятся недействительными и может быть удален. Это позволит сократить затраты, если вы создаете большие файлы, а затем удаляете их.
 
-Существует два способа включить поддержку операций TRIM в виртуальной машине Linux. Как обычно, обратитесь к документации дистрибутива, чтобы выбрать рекомендуемый метод.
+Существует два способа tooenable TRIM поддержки в ВМ Linux. Как обычно см. на распределение hello рекомендованный подход:
 
-* Используйте параметр подключения `discard` в `/etc/fstab`. Ниже приведен пример.
+* Используйте hello `discard` подключить параметр в `/etc/fstab`, например:
 
     ```bash
     UUID=33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e   /datadrive   ext4   defaults,discard   1   2
     ```
-* В некоторых случаях параметр `discard` может негативно влиять на производительность. Кроме того, вы можете вручную выполнить команду `fstrim` из командной строки или добавить ее в crontab для регулярного выполнения.
+* В некоторых случаях hello `discard` параметра может негативно сказаться на производительности. Кроме того, можно запустить hello `fstrim` вручную команды из командной строки hello, или добавьте его tooyour crontab toorun регулярно:
   
     **Ubuntu**
   
@@ -340,7 +340,7 @@ UUID=33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e   /datadrive   ext4   defaults,nofail 
 [!INCLUDE [virtual-machines-linux-lunzero](../../../includes/virtual-machines-linux-lunzero.md)]
 
 ## <a name="next-steps"></a>Дальнейшие действия
-* Помните, для того чтобы после перезапуска виртуальная машина получила доступ к новому диску, информацию о нем необходимо прописать в файле [fstab](http://en.wikipedia.org/wiki/Fstab) .
-* Ознакомьтесь с рекомендациями по [оптимизации производительности виртуальной машины Linux](optimization.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) , чтобы правильно настроить виртуальную машину Linux.
+* Помните, что новый диск не доступные toohello ВМ Если будет перезагружен, если только не используется, tooyour сведения [fstab](http://en.wikipedia.org/wiki/Fstab) файла.
+* ВМ Linux tooensure настроен неправильно, просмотрите hello [оптимизации производительности компьютера Linux](optimization.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) рекомендации.
 * Увеличьте емкость хранилища, добавив дополнительные диски, и [настройте RAID](configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) для повышения производительности.
 

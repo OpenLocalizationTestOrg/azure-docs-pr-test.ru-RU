@@ -1,5 +1,5 @@
 ---
-title: "Библиотеки управления концентраторов событий Azure | Документация Майкрософт"
+title: "библиотеки управления концентраторов событий aaaAzure | Документы Microsoft"
 description: "Управление пространствами имен и сущностями концентраторов событий из .NET"
 services: event-hubs
 cloud: na
@@ -14,15 +14,15 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/15/2017
 ms.author: sethm
-ms.openlocfilehash: 0d659cb860a6c98342b548212820efe046decfcc
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: b7db0077f6f31397ae46e926c3c28630a157824c
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="event-hubs-management-libraries"></a>Библиотеки управления концентраторов событий
 
-Библиотеки управления концентраторов событий могут динамически подготавливать пространства имен и сущности концентраторов событий. Это дает возможность реализовывать сложные развертывания и сценарии обмена сообщениями, позволяя программно определять, какие сущности следует подготовить. В настоящее время эти библиотеки доступны для .NET.
+библиотеки управления Hello концентраторов событий можно динамически подготавливать концентраторов событий пространств имен и сущностей. Благодаря этому сложных развертываний и сценариев обмена сообщениями, чтобы программно определить, какие tooprovision сущностей. В настоящее время эти библиотеки доступны для .NET.
 
 ## <a name="supported-functionality"></a>Поддерживаемые функции
 
@@ -32,19 +32,19 @@ ms.lasthandoff: 08/18/2017
 
 ## <a name="prerequisites"></a>Предварительные требования
 
-Чтобы приступить к работе с библиотеками управления концентраторов событий, нужно пройти аутентификацию в Azure Active Directory (AAD). AAD требует аутентификации в качестве субъекта-службы, предоставляющего доступ к вашим ресурсам Azure. Сведения о создании субъекта-службы см. в одной из приведенных ниже статей:  
+tooget работы с использованием библиотеки управления hello концентраторов событий, необходимо проверить подлинность с помощью Azure Active Directory (AAD). AAD требует проверки подлинности как участника-службы, который предоставляет доступ tooyour ресурсов Azure. Сведения о создании субъекта-службы см. в одной из приведенных ниже статей:  
 
-* [Создание приложения Active Directory и субъекта-службы с доступом к ресурсам с помощью портала](../azure-resource-manager/resource-group-create-service-principal-portal.md)
-* [Использование Azure PowerShell для создания субъекта-службы и доступа к ресурсам](../azure-resource-manager/resource-group-authenticate-service-principal.md)
-* [Использование интерфейса командной строки Azure для создания субъекта-службы и доступа к ресурсам](../azure-resource-manager/resource-group-authenticate-service-principal-cli.md)
+* [Использовать приложение Active Directory Azure портала toocreate hello и участника-службы, могут обращаться к ресурсам](../azure-resource-manager/resource-group-create-service-principal-portal.md)
+* [Использование Azure PowerShell toocreate ресурсов tooaccess участника службы](../azure-resource-manager/resource-group-authenticate-service-principal.md)
+* [Используйте основной tooaccess ресурсов службы toocreate Azure CLI](../azure-resource-manager/resource-group-authenticate-service-principal-cli.md)
 
-В этих руководствах вы получите `AppId` (идентификатор клиента), `TenantId` и `ClientSecret` (ключ аутентификации), которые используются библиотеками управления для аутентификации. Необходимо иметь разрешения роли **Владелец** для группы ресурсов, которую вы хотите использовать.
+Эти учебники предоставляют `AppId` (идентификатор клиента), `TenantId`, и `ClientSecret` (ключ проверки подлинности), каждый из которых используются для проверки подлинности управления библиотеками hello. Необходимо иметь **владельца** разрешения для группы ресурсов hello, на котором будет toorun.
 
 ## <a name="programming-pattern"></a>Шаблон программирования
 
-Шаблон обработки любого ресурса концентраторов событий придерживается общего протокола.
+Здравствуйте, шаблон toomanipulate любой ресурс концентраторов событий соответствует общего протокола:
 
-1. Получение токена из AAD с использованием библиотеки `Microsoft.IdentityModel.Clients.ActiveDirectory`.
+1. Получение токена от AAD с помощью hello `Microsoft.IdentityModel.Clients.ActiveDirectory` библиотеки.
     ```csharp
     var context = new AuthenticationContext($"https://login.microsoftonline.com/{tenantId}");
 
@@ -54,7 +54,7 @@ ms.lasthandoff: 08/18/2017
     );
     ```
 
-1. Создание объекта `EventHubManagementClient`.
+1. Создать hello `EventHubManagementClient` объекта.
     ```csharp
     var creds = new TokenCredentials(token);
     var ehClient = new EventHubManagementClient(creds)
@@ -63,7 +63,7 @@ ms.lasthandoff: 08/18/2017
     };
     ```
 
-1. Присвоение параметрам `CreateOrUpdate` указанных значений.
+1. Набор hello `CreateOrUpdate` tooyour параметры указанные значения.
     ```csharp
     var ehParams = new EventHubCreateOrUpdateParameters()
     {
@@ -71,7 +71,7 @@ ms.lasthandoff: 08/18/2017
     };
     ```
 
-1. Выполнение вызова.
+1. Hello вызова Execute.
     ```csharp
     await ehClient.EventHubs.CreateOrUpdateAsync(resourceGroupName, namespaceName, EventHubName, ehParams);
     ```

@@ -1,6 +1,6 @@
 ---
-title: "Максимальная польза от Azure Application Insights | Документация Майкрософт"
-description: "Начав работу с Application Insights, ознакомьтесь с этим списком доступных функций."
+title: "эффективность работы с Azure Application Insights aaaGet | Документы Microsoft"
+description: "После Приступая к работе с помощью Application Insights, ниже приведена сводка функций hello изучения."
 services: application-insights
 documentationcenter: .net
 author: CFreemanwa
@@ -13,19 +13,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/03/2017
 ms.author: bwren
-ms.openlocfilehash: 127fd6e3012bdb0788ed23ae5e8921df651d863b
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 2023728afcf5aa5ecab8b957c8517d4872668765
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="more-telemetry-from-application-insights"></a>Дополнительные данные телеметрии из Application Insights
-После [добавления Application Insights в код ASP.NET](app-insights-asp-net.md)можно сделать еще кое-что, чтобы получать дополнительные данные телеметрии. 
+После того как вы [добавили Application Insights tooyour ASP.NET код](app-insights-asp-net.md), существует несколько вы можете делать tooget даже дополнительные телеметрии. 
 
 | Действие | Что вы получаете|
 |---|---|
-|(Серверы IIS) [Установите монитор состояния](http://go.microsoft.com/fwlink/?LinkId=506648) на каждом компьютере-сервере.<br/>(Веб-приложения Azure) На панели управления Azure веб-приложения откройте колонку Application Insights.| [**Счетчики производительности**](app-insights-performance-counters.md).<br/>[**Исключения**](app-insights-asp-net-exceptions.md) — подробные трассировки стека.<br/>[**Зависимости**](app-insights-asp-net-dependencies.md).|
-|[Добавьте фрагмент JavaScript в свои веб-страницы](app-insights-javascript.md)|[Производительность страниц](app-insights-web-track-usage.md), исключения браузера, производительность вызовов AJAX. Пользовательская телеметрия на стороне клиента.|
+|(Серверы IIS) [Установите монитор состояния](http://go.microsoft.com/fwlink/?LinkId=506648) на каждом компьютере-сервере.<br/>(Веб-приложениях azure) Панели hello Azure управления для веб-приложения hello откройте колонку hello Application Insights.| [**Счетчики производительности**](app-insights-performance-counters.md).<br/>[**Исключения**](app-insights-asp-net-exceptions.md) — подробные трассировки стека.<br/>[**Зависимости**](app-insights-asp-net-dependencies.md).|
+|[Добавить hello JavaScript фрагмент tooyour веб-страницы](app-insights-javascript.md)|[Производительность страниц](app-insights-web-track-usage.md), исключения браузера, производительность вызовов AJAX. Пользовательская телеметрия на стороне клиента.|
 |[Создайте веб-тесты на доступность](app-insights-monitor-web-app-availability.md)|Получение оповещений, когда сайт становится недоступным|
 |Убедитесь, что MSBuild создает [файл BuildInfo.config](https://msdn.microsoft.com/library/dn449058.aspx)|[Создание заметок к диаграммам метрик](https://blogs.msdn.microsoft.com/visualstudioalm/2013/11/14/implementing-deployment-markers-in-application-insights/)
 |[Напишите собственные события и систему телеметрии](app-insights-api-custom-events-metrics.md)|Учет бизнес-событий и метрик, отслеживание подробных сведений об использовании и многое другое|

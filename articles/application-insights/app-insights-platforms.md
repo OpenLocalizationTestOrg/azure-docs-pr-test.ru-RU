@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/01/2016
 ms.author: bwren
-ms.openlocfilehash: 8bdaf9592ed29371ecfe8e9e5d2f8da9ac1795bb
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 14b363c934a018ce72be97d1a0b74a6c2210656e
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="developer-analytics-languages-platforms-and-integrations"></a>Аналитические средства для разработчиков: языки, платформы, интеграция
 Ниже перечислены известные нам реализации [Application Insights](app-insights-overview.md) , в том числе реализации от сторонних производителей.
@@ -82,4 +82,4 @@ ms.lasthandoff: 08/18/2017
 * [Анализ потока](app-insights-export-power-bi.md)
 
 ## <a name="projects"></a> Создание собственного пакета SDK
-Если для языка или платформы, которые вы используете, не существует пакета SDK, возможно, вы захотите создать его. Просмотрите код существующих пакетов SDK, перечисленных в описании [проекта пакета SDK для Application Insights на GitHub](https://github.com/Microsoft/AppInsights-Home).
+Если не существует, но пакет SDK для языков или платформ, например хотелось бы toobuild один? Взгляните на код hello hello существующие пакеты SDK, перечисленные в hello [пакет SDK Application Insights проекта на GitHub](https://github.com/Microsoft/AppInsights-Home).

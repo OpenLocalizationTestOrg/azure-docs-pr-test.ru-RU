@@ -1,5 +1,5 @@
 ---
-title: "Привязка внешних таблиц в Функциях Azure (предварительная версия) | Документация Майкрософт"
+title: "Привязка внешней таблицы функции aaaAzure (Предварительная версия) | Документы Microsoft"
 description: "Использование привязок внешних таблиц в Функциях Azure"
 services: functions
 documentationcenter: 
@@ -14,22 +14,22 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 04/12/2017
 ms.author: alkarche
-ms.openlocfilehash: 716438e5ea490f6716999813112305499dbe61a8
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: bf19d7d377232edc91087d5f4110602bb82c67ef
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-functions-external-table-binding-preview"></a>Привязка внешних таблиц в Функциях Azure (предварительная версия)
-В этой статье показано, как управлять табличными данными для поставщиков SaaS (например, Sharepoint, Dynamics) внутри функции со встроенными привязками. Функции Azure поддерживают входные и выходные привязки для внешних таблиц.
+В этой статье показано, как toomanipulate табличных данных для поставщиков SaaS (например, Sharepoint, Dynamics) внутри функции со встроенными привязками. Функции Azure поддерживают входные и выходные привязки для внешних таблиц.
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
 ## <a name="api-connections"></a>Подключения API
 
-Привязки таблиц используют внешние подключения API для проверки подлинности у сторонних поставщиков SaaS. 
+Привязки таблицы использовать внешние tooauthenticate подключений API с помощью сторонних поставщиков SaaS. 
 
-При назначении привязки можно создать новое подключение API или использовать существующее подключение API в той же группе ресурсов.
+При назначении привязки можно создать новое соединение API или использовать существующее соединение API в пределах hello одну группу ресурсов
 
 ### <a name="supported-api-connections-tables"></a>Поддерживаемые подключения API (таблица)
 
@@ -62,14 +62,14 @@ ms.lasthandoff: 07/11/2017
 1. Сценарий `Experimental`  >  Шаблон `ExternalTable-CSharp` > Создать новое подключение `External Table connection` 
  ![Выбор шаблона входных данных для таблицы](./media/functions-bindings-storage-table/create-template-table.jpg)
 1. Выберите поставщика SaaS > Выберите или создайте подключение ![Настройка подключения SaaS](./media/functions-bindings-storage-table/authorize-API-connection.jpg)
-1. Выберите подключение API > Создайте функцию ![Создание табличной функции](./media/functions-bindings-storage-table/table-template-options.jpg)
+1. Выберите подключение к API > создать функции hello ![создать табличную функцию](./media/functions-bindings-storage-table/table-template-options.jpg)
 1. Выберите `Integrate` > `External Table`
-    1. Настройте подключение так, чтобы использовать в нем целевую таблицу. Эти параметры варьируются у разных поставщиков SaaS. Они описаны ниже в разделе [Параметры источника данных](#datasourcesettings).
+    1. Настройка подключения toouse hello целевой таблицы. Эти параметры варьируются у разных поставщиков SaaS. Они описаны ниже в разделе [Параметры источника данных](#datasourcesettings).
 ![Настройка таблицы](./media/functions-bindings-storage-table/configure-API-connection.jpg)
 
 ## <a name="usage"></a>Использование
 
-В этом примере мы установим подключение к таблице Contact со столбцами Id, LastName и FirstName. В коде перечислены сущности таблицы Contact, а также записаны имена и фамилии.
+В этом примере подключается tooa таблицу с именем «Contact» столбцами Id, FirstName и LastName. Код Hello перечислены сущности контакта hello в таблице hello и журналы hello имена и фамилии.
 
 ### <a name="bindings"></a>Привязки
 ```json
@@ -95,9 +95,9 @@ ms.lasthandoff: 07/11/2017
 ```
 Параметр `entityId` должен быть пустым для привязок таблиц.
 
-`ConnectionAppSettingsKey` определяет параметр приложения, в котором хранится строка подключения API. Параметр приложения создается автоматически при добавлении подключения API в интерфейсе интеграции.
+`ConnectionAppSettingsKey`Определяет параметр приложения hello, который хранит строку соединения hello API. Hello параметр приложения создается автоматически при добавлении API соединения в hello интеграции пользовательского интерфейса.
 
-Табличный соединитель предоставляет наборы данных, и каждый набор данных содержит таблицы. По умолчанию задано имя набора данных default. Ниже перечислены заголовки для набора данных и таблицы у различных поставщиков SaaS.
+Табличный соединитель предоставляет наборы данных, и каждый набор данных содержит таблицы. Имя набора данных по умолчанию hello Hello — «default». Ниже перечислены названия Hello для набора данных и таблицы в различных поставщиков SaaS.
 
 |Соединитель|Выборка|Таблица|
 |:-----|:---|:---| 
@@ -107,7 +107,7 @@ ms.lasthandoff: 07/11/2017
 |**Excel**|Файл Excel|Лист 
 
 <!--
-See the language-specific sample that copies the input file to the output file.
+See hello language-specific sample that copies hello input file toohello output file.
 
 * [C#](#incsharp)
 * [Node.js](#innodejs)
@@ -125,7 +125,7 @@ using System;
 using Microsoft.Azure.ApiHub;
 
 //Variable name must match column type
-//Variable type is dynamically bound to the incoming data
+//Variable type is dynamically bound toohello incoming data
 public class Contact
 {
     public string Id { get; set; }
@@ -135,7 +135,7 @@ public class Contact
 
 public static async Task Run(string input, ITable<Contact> table, TraceWriter log)
 {
-    //Iterate over every value in the source table
+    //Iterate over every value in hello source table
     ContinuationToken continuationToken = null;
     do
     {   
@@ -172,7 +172,7 @@ module.exports = function(context) {
 
 ### <a name="sql-server"></a>SQL Server
 
-Скрипт для создания и заполнения таблицы Contact приведен ниже. Имя dataSetName — default.
+Здравствуйте toocreate скрипта и заполнения таблицы Contact hello меньше. Имя dataSetName — default.
 
 ```sql
 CREATE TABLE Contact
@@ -192,7 +192,7 @@ GO
 ```
 
 ### <a name="google-sheets"></a>Таблицы Google
-В Документах Google создайте таблицу с листом `Contact`. Соединитель не может использовать отображаемое имя листа. В качестве dataSetName необходимо использовать внутреннее имя (выделено полужирным шрифтом), например: `docs.google.com/spreadsheets/d/`**`1UIz545JF_cx6Chm_5HpSPVOenU4DZh4bDxbFgJOSMz0`**. Добавьте имена столбцов `Id`, `LastName`, `FirstName` в первую строку, а затем заполните данные в последующих строках.
+В Документах Google создайте таблицу с листом `Contact`. Соединитель Hello нельзя использовать отображаемое имя листа hello. внутреннее имя Hello (полужирным шрифтом) должен использовать в качестве dataSetName, например toobe: `docs.google.com/spreadsheets/d/`  **`1UIz545JF_cx6Chm_5HpSPVOenU4DZh4bDxbFgJOSMz0`**  добавить имена столбцов hello `Id`, `LastName`, `FirstName` toohello сначала строку, а затем заполнить данные на последующие строки.
 
 ### <a name="salesforce"></a>Salesforce
 Имя dataSetName — default.

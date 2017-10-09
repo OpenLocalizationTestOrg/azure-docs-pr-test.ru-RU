@@ -1,6 +1,6 @@
 ---
 title: "Azure AD Connect: автоматическое обновление | Документация Майкрософт"
-description: "В этом разделе описывается встроенная функция автоматического обновления в Azure AD Connect."
+description: "В этом разделе описываются hello встроенные функции автоматического обновления в Azure AD Connect sync."
 services: active-directory
 documentationcenter: 
 author: AndKjell
@@ -14,88 +14,88 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/13/2017
 ms.author: billmath
-ms.openlocfilehash: 15dcfff0a5b10eb0565b450664406ba3f4a8de10
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 70d15eb3adf7758d8a43d278157daa504e059a98
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-ad-connect-automatic-upgrade"></a>Azure AD Connect: автоматическое обновление
 Эта функция появилась в сборке 1.1.105.0 (выпущенной в феврале 2016 года).
 
 ## <a name="overview"></a>Обзор
-С функцией **автоматического обновления** контроль за обновлением установки Azure AD Connect максимально упростился. Эта функция по умолчанию включена для быстрой установки и обновления DirSync. При выпуске новой версии установка обновляется автоматически.
+Убедившись, что установки Azure AD Connect находится в нажатом состоянии toodate упрощено с hello **автоматическое обновление** компонентов. Эта функция по умолчанию включена для быстрой установки и обновления DirSync. При выпуске новой версии установка обновляется автоматически.
 
-Автоматическое обновление по умолчанию включено в следующих случаях:
+Автоматическое обновление включено по умолчанию для следующего hello:
 
 * Экспресс-установка параметров и обновление DirSync.
 * Использование SQL Express LocalDB (всегда используется при экспресс-установке). DirSync с SQL Express также использует LocalDB.
-* Учетной записью AD является учетная запись MSOL_ по умолчанию, создаваемая при экспресс-установке и обновлении DirSync.
-* В метавселенной меньше 100 000 объектов.
+* Hello учетной записи AD — hello по умолчанию MSOL_ учетная запись, создаваемая экспресс-параметры и DirSync.
+* Наличие не более 100 000 объектов в метавселенной hello.
 
-Текущее состояние автоматического обновления можно узнать с помощью командлета PowerShell `Get-ADSyncAutoUpgrade`. Возможны следующие состояния:
+Текущее состояние Hello автоматического обновления можно просмотреть с помощью командлета PowerShell hello `Get-ADSyncAutoUpgrade`. Он имеет hello следующие состояния:
 
 | Состояние | Комментарий |
 | --- | --- |
 | Включено |Автоматическое обновление включено. |
-| Приостановлено |Устанавливается только системой. Система больше не может получать автоматические обновления. |
+| Приостановлено |Задайте системой hello. Hello система перестает подходящих tooreceive автоматические обновления. |
 | Отключено |Автоматическое обновление отключено. |
 
-Переключаться между состояниями **Включено** и **Отключено** позволяет командлет `Set-ADSyncAutoUpgrade`. Состояние **Приостановлено**может устанавливаться только системой.
+Переключаться между состояниями **Включено** и **Отключено** позволяет командлет `Set-ADSyncAutoUpgrade`. Только для hello системы следует установить состояние hello **Suspended**.
 
-В качестве инфраструктуры обновлений при автоматическом обновлении используется Azure AD Connect Health. Чтобы работало автоматическое обновление, откройте в прокси-сервере URL-адреса для **Azure AD Connect Health** , указанные в статье [URL-адреса и диапазоны IP-адресов Office 365](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2).
+Автоматическое обновление с помощью Azure AD Connect Health для hello обновления инфраструктуры. Для автоматического обновления toowork, убедитесь, что вы открыли hello URL-адреса прокси-сервера, для **Azure AD Connect Health** задокументированного в [Office 365 URL-адреса и IP-адресов](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2).
 
-Если на сервере запущен пользовательский интерфейс **диспетчера службы синхронизации** , обновление будет отложено до тех пор, пока он не будет закрыт.
+Если hello **диспетчер службы синхронизации** пользовательского интерфейса выполняется на сервере hello, то hello обновления приостанавливается, пока не закрыт hello пользовательского интерфейса.
 
 ## <a name="troubleshooting"></a>Устранение неполадок
-Если установка Connect не обновляется автоматически, выполните следующие действия, чтобы узнать, в чем может быть проблема.
+Если установку Connect не обновиться должным образом, выполните эти действия toofind, что может быть не так.
 
-Во-первых, не следует ожидать попыток автоматического обновления в первый день выпуска новой версии. Попытки обновления выполняются в случайном порядке намеренно, поэтому не стоит беспокоиться, если обновление установки не начинается немедленно.
+Во-первых не стоит ожидать hello попытка автоматического обновления toobe hello первый день выпуска новой версии. Попытки обновления выполняются в случайном порядке намеренно, поэтому не стоит беспокоиться, если обновление установки не начинается немедленно.
 
-Если вы считаете, что возникла проблема, сначала запустите `Get-ADSyncAutoUpgrade` , чтобы убедиться, что автоматическое обновление включено.
+Если вы считаете, что-то не обладает правами, сначала запустите `Get-ADSyncAutoUpgrade` tooensure автоматическое обновление включено.
 
-Затем убедитесь, что вы открыли нужные URL-адреса на прокси-сервере или в брандмауэре. Автоматическое обновление использует Azure AD Connect Health, как описано в [обзоре](#overview). При использовании прокси-сервера убедитесь, что служба Health настроена для работы с [прокси-сервером](../connect-health/active-directory-aadconnect-health-agent-install.md#configure-azure-ad-connect-health-agents-to-use-http-proxy). Кроме того, проверьте [подключение Health](../connect-health/active-directory-aadconnect-health-agent-install.md#test-connectivity-to-azure-ad-connect-health-service) к Azure AD.
+Затем убедитесь, что вы открыли hello требуется URL-адреса в прокси-сервера или брандмауэра. Автоматическое обновление используется Azure AD Connect Health, как описано в hello [Обзор](#overview). При использовании прокси-сервер, убедитесь, что работоспособности было настроенных toouse [прокси-сервера](../connect-health/active-directory-aadconnect-health-agent-install.md#configure-azure-ad-connect-health-agents-to-use-http-proxy). Также протестировать hello [работоспособности подключения](../connect-health/active-directory-aadconnect-health-agent-install.md#test-connectivity-to-azure-ad-connect-health-service) tooAzure AD.
 
-После проверки подключения к Azure AD можно изучить журналы событий. Запустите средство просмотра событий и найдите журнал событий **Приложение** . Добавьте фильтр журнала событий для источника **Azure AD Connect Upgrade** и диапазона идентификаторов событий **300-399**.  
+С tooAzure подключения hello AD проверен это время toolook в журналы событий hello. Запустите средство просмотра событий hello и просмотрите hello **приложения** eventlog. Добавить фильтр журнала событий для источника hello **Azure AD подключения обновление** и диапазон идентификаторов событий hello **300 399**.  
 ![Фильтр журнала событий для автоматического обновления](./media/active-directory-aadconnect-feature-automatic-upgrade/eventlogfilter.png)  
 
-Откроется список журналов событий, связанных с состоянием автоматического обновления.  
+Теперь можно увидеть hello журналы событий, связанных с состоянием hello для автоматического обновления.  
 ![Фильтр журнала событий для автоматического обновления](./media/active-directory-aadconnect-feature-automatic-upgrade/eventlogresult.png)  
 
-Итоговый код содержит префикс и общие сведения о состоянии.
+Код результата Hello имеет префикс Общие сведения о состоянии hello.
 
 | Префикс итогового кода | Description (Описание) |
 | --- | --- |
-| Успешно |Установка успешно обновлена. |
-| UpgradeAborted |Временное состояние привело к остановке обновления. Будет выполнена повторная попытка установки, и ожидается, что она будет успешной. |
-| UpgradeNotSupported |Конфигурация системы блокирует автоматическое обновление. Будет выполнена повторная попытка для проверки изменения состояния, однако ожидается, что систему потребуется обновить вручную. |
+| Успешно |Hello установки был успешно обновлен. |
+| UpgradeAborted |Это временное условие остановить обновление hello. Повторит попытку и hello ожидается его успешном завершении позже. |
+| UpgradeNotSupported |система Hello содержит конфигурацию, которая блокирует hello системы из автоматически обновляется. Он будет предпринята повторная попытка выполнения toosee, если изменение состояния hello, но hello ожидается, что hello системы должны быть обновлены вручную. |
 
-Ниже приведен список наиболее распространенных сообщений. В списке приведены не все сообщения, однако сообщение о результате должно явно указывать на проблему.
+Ниже приведен список наиболее распространенных сообщений hello, находить. Он не включает все, но результат приветственное сообщение должно быть снимите флажок с какой проблемой hello.
 
 | Сообщение о результате | Description (Описание) |
 | --- | --- |
 | **UpgradeAborted** | |
-| UpgradeAbortedCouldNotSetUpgradeMarker |Не удалось сделать запись в реестре. |
-| UpgradeAbortedInsufficientDatabasePermissions |Встроенная группа администраторов не имеет разрешений в базе данных. Для решения этой проблемы необходимо установить обновление до новейшей версии Azure AD Connect вручную. |
-| UpgradeAbortedInsufficientDiskSpace |Недостаточно дискового пространства для поддержки обновления. |
-| UpgradeAbortedSecurityGroupsNotPresent |Не удалось найти и разрешить все группы безопасности, используемые модулем синхронизации. |
-| UpgradeAbortedServiceCanNotBeStarted |Не удалось запустить **синхронизацию Microsoft Azure AD** для службы NT. |
-| UpgradeAbortedServiceCanNotBeStopped |Не удалось остановить **синхронизацию Microsoft Azure AD** для службы NT. |
-| UpgradeAbortedServiceIsNotRunning |**Синхронизация Microsoft Azure AD** для службы NT не выполняется. |
-| UpgradeAbortedSyncCycleDisabled |Параметр SyncCycle в [планировщике](active-directory-aadconnectsync-feature-scheduler.md) был отключен. |
-| UpgradeAbortedSyncExeInUse |На сервере открыт [пользовательский интерфейс Synchronization Service Manager](active-directory-aadconnectsync-service-manager-ui.md) . |
-| UpgradeAbortedSyncOrConfigurationInProgress |Выполняется мастер установки, или синхронизация была запланирована вне планировщика. |
+| UpgradeAbortedCouldNotSetUpgradeMarker |Не удалось записать toohello реестра. |
+| UpgradeAbortedInsufficientDatabasePermissions |Группа администраторов Hello не имеет базы данных toohello разрешения. Вручную обновите последнюю версию Azure AD Connect tooaddress toohello эту проблему. |
+| UpgradeAbortedInsufficientDiskSpace |Нет места недостаточно диск toosupport обновления. |
+| UpgradeAbortedSecurityGroupsNotPresent |Не удалось найти и устранить все группы безопасности, используемый обработчиком синхронизации hello. |
+| UpgradeAbortedServiceCanNotBeStarted |Hello службы NT **Microsoft Azure AD Sync** сбой toostart. |
+| UpgradeAbortedServiceCanNotBeStopped |Hello службы NT **Microsoft Azure AD Sync** сбой toostop. |
+| UpgradeAbortedServiceIsNotRunning |Hello службы NT **Microsoft Azure AD Sync** не запущена. |
+| UpgradeAbortedSyncCycleDisabled |Здравствуйте, параметр SyncCycle в hello [планировщика](active-directory-aadconnectsync-feature-scheduler.md) был отключен. |
+| UpgradeAbortedSyncExeInUse |Hello [диспетчер службы синхронизации пользовательского интерфейса](active-directory-aadconnectsync-service-manager-ui.md) открыт на сервере hello. |
+| UpgradeAbortedSyncOrConfigurationInProgress |запущен мастер установки Hello или синхронизации было запланировано за пределами hello планировщика. |
 | **UpgradeNotSupported** | |
-| UpgradeNotSupportedCustomizedSyncRules |Пользователь добавил собственные правила в конфигурацию. |
-| UpgradeNotSupportedDeviceWritebackEnabled |Включена функция [обратной записи устройства](active-directory-aadconnect-feature-device-writeback.md) . |
-| UpgradeNotSupportedGroupWritebackEnabled |Включена функция [обратной записи групп](active-directory-aadconnect-feature-preview.md#group-writeback) . |
-| UpgradeNotSupportedInvalidPersistedState |Установка не является экспресс-установкой параметров или обновлением DirSync. |
-| UpgradeNotSupportedMetaverseSizeExceeeded |В метавселенной больше 100 000 объектов. |
-| UpgradeNotSupportedMultiForestSetup |Выполняется подключение к нескольким лесам. Экспресс-установка подключается только к одному лесу. |
+| UpgradeNotSupportedCustomizedSyncRules |Вы добавили конфигурацию toohello настраиваемые правила. |
+| UpgradeNotSupportedDeviceWritebackEnabled |Вы включили hello [обратной записи устройства](active-directory-aadconnect-feature-device-writeback.md) компонентов. |
+| UpgradeNotSupportedGroupWritebackEnabled |Вы включили hello [обратной записи групп](active-directory-aadconnect-feature-preview.md#group-writeback) компонентов. |
+| UpgradeNotSupportedInvalidPersistedState |Установка Hello не является экспресс-параметры или обновление DirSync. |
+| UpgradeNotSupportedMetaverseSizeExceeeded |У вас есть более чем 100 000 объектов в метавселенной hello. |
+| UpgradeNotSupportedMultiForestSetup |При подключении toomore чем одном лесе. Экспресс-установку только подключается tooone леса. |
 | UpgradeNotSupportedNonLocalDbInstall |Вы не используете базу данных SQL Server Express LocalDB. |
-| UpgradeNotSupportedNonMsolAccount |[Учетная запись соединителя AD](active-directory-aadconnect-accounts-permissions.md#active-directory-account) больше не является учетной записью MSOL_ по умолчанию. |
-| UpgradeNotSupportedStagingModeEnabled |Сервер настроен для работы в [промежуточном режиме](active-directory-aadconnectsync-operations.md#staging-mode). |
-| UpgradeNotSupportedUserWritebackEnabled |Включена функция [обратной записи пользователей](active-directory-aadconnect-feature-preview.md#user-writeback) . |
+| UpgradeNotSupportedNonMsolAccount |Hello [учетной записи соединителя AD](active-directory-aadconnect-accounts-permissions.md#active-directory-account) больше не учетная запись MSOL_ по умолчанию hello. |
+| UpgradeNotSupportedStagingModeEnabled |Hello server задается toobe в [промежуточный режим](active-directory-aadconnectsync-operations.md#staging-mode). |
+| UpgradeNotSupportedUserWritebackEnabled |Вы включили hello [обратной записи пользователей](active-directory-aadconnect-feature-preview.md#user-writeback) компонентов. |
 
 ## <a name="next-steps"></a>Дальнейшие действия
 Узнайте больше об [интеграции локальных удостоверений с Azure Active Directory](active-directory-aadconnect.md).

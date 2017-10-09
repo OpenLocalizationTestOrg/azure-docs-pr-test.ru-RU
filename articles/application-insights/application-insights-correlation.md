@@ -1,5 +1,5 @@
 ---
-title: "Корреляция данных телеметрии Azure Application Insights | Документация Майкрософт"
+title: "aaaAzure корреляции телеметрии аналитики приложений | Документы Microsoft"
 description: "Корреляция данных телеметрии Application Insights"
 services: application-insights
 documentationcenter: .net
@@ -12,36 +12,36 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 04/25/2017
 ms.author: bwren
-ms.openlocfilehash: 747c00842f4df9c7fbd816c99771ba8a267106a4
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 3ed8c589d237cac5daceac939ca893b7d81a2967
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Корреляция данных телеметрии в Application Insights
 
-В мире микрослужб для каждой логической операции требуется выполнение действий в различных компонентах службы. Служба [Application Insights](app-insights-overview.md) может отдельно отслеживать каждый из этих компонентов. Компонент веб-приложения взаимодействует с компонентом поставщика проверки подлинности для проверки учетных данных пользователя и компонентом API для получения данных для визуализации. Компонент API в свою очередь может запрашивать данные из других служб и использовать компоненты поставщика кэша, а также уведомлять компонент выставления счетов об этом вызове. Application Insights поддерживает распределенную корреляцию данных телеметрии. Это позволяет определить, какой компонент отвечает за сбой или снижение производительности.
+В Здравствуй, мир micro службы каждой логической операции требует работу с разными компонентами службы hello. Служба [Application Insights](app-insights-overview.md) может отдельно отслеживать каждый из этих компонентов. Hello веб-приложения компонента взаимодействует с учетными данными пользователя toovalidate компонент поставщика проверки подлинности и с данными tooget hello API компонентов для визуализации. компонент API Hello в свою очередь можно запрашивать данные из других служб и использовать компоненты поставщика кэша и уведомить hello выставления счетов компонентом, об этом вызове. Application Insights поддерживает распределенную корреляцию данных телеметрии. Она позволяет toodetect, какой компонент отвечает за сбоями или снижения производительности.
 
-В этой статье описывается модель данных, используемая службой Application Insights для корреляции данных телеметрии, отправляемых несколькими компонентами. Рассматриваются методы и протоколы распространения контекста. Здесь также рассматривается реализация принципов корреляции на разных языках и платформах.
+В этой статье описываются hello использует модель, toocorrelate телеметрии Application Insights отправлены в нескольких компонентах. Рассматриваются методы распространения контекста hello и протоколов. Она также охватывает hello реализации концепций корреляции hello на разных языках и платформах.
 
 ## <a name="telemetry-correlation-data-model"></a>Модель корреляции данных телеметрии
 
-Application Insights определяет [модель данных](application-insights-data-model.md) для распределенной корреляции данных телеметрии. Для связывания данных телеметрии с логической операцией у каждого элемента телеметрии есть поле контекста `operation_Id`. Этот идентификатор совместно используется каждым элементом телеметрии в распределенной трассировке. Поэтому даже в случае потери телеметрии из одного уровня вы по-прежнему можете связывать данные телеметрии, сообщаемые другими компонентами.
+Application Insights определяет [модель данных](application-insights-data-model.md) для распределенной корреляции данных телеметрии. tooassociate телеметрии с логической операции hello, каждый элемент телеметрии имеет поле контекста с именем `operation_Id`. Этот идентификатор совместно используется каждый элемент данных телеметрии в трассировке распределенных hello. Поэтому даже в случае потери телеметрии из одного уровня вы по-прежнему можете связывать данные телеметрии, сообщаемые другими компонентами.
 
-Распределенная логическая операция обычно состоит из набора меньших операций — запросов, обрабатываемых одним из компонентов. Эти операции определяются [телеметрией запросов](application-insights-data-model-request-telemetry.md). Каждый элемент телеметрии запросов имеет собственный уникальный `id`, который его глобально идентифицирует. И для всех данных телеметрии (трассировок, исключений и др.), связанных с этим запросом, следует задать значение `operation_parentId` для `id` запроса.
+Распределенные логической операции обычно состоит из набора операций меньше - запросов, обрабатываемых одним из компонентов hello. Эти операции определяются [телеметрией запросов](application-insights-data-model-request-telemetry.md). Каждый элемент телеметрии запросов имеет собственный уникальный `id`, который его глобально идентифицирует. И все данные телеметрии - трассировок, исключения, связанного с этим запросом и т.д. необходимо задать hello `operation_parentId` toohello значение hello запроса `id`.
 
-Каждая исходящая операция, такая как вызов HTTP к другому компоненту, представлена [телеметрией зависимостей](application-insights-data-model-dependency-telemetry.md). Телеметрия зависимостей также определяет собственный `id`, который является глобально уникальным. Телеметрия запросов, инициированная этим вызовом зависимостей, использует его в качестве `operation_parentId`.
+Каждый исходящий операции, например, http вызов tooanother компонента, представленного объектом [телеметрии зависимости](application-insights-data-model-dependency-telemetry.md). Телеметрия зависимостей также определяет собственный `id`, который является глобально уникальным. Телеметрия запросов, инициированная этим вызовом зависимостей, использует его в качестве `operation_parentId`.
 
-Можно создать представление распределенной логической операции, используя `operation_Id`, `operation_parentId` и `request.id` с `dependency.id`. Эти поля также определяют причинно-следственную связь вызовов телеметрии.
+Можно создать представление hello использования распределенной логической операции `operation_Id`, `operation_parentId`, и `request.id` с `dependency.id`. Эти поля также определять порядок причинно-следственных связей hello вызовов телеметрии.
 
-В среде микрослужб трассировки компонентов могут отправляться в разные хранилища. Каждый компонент может иметь свой собственный ключ инструментирования в Application Insights. Чтобы получить данные телеметрии для логической операции, необходимо запросить данные из каждого хранилища. Если число хранилищ очень велико, то необходимо дать указание, где продолжить поиск.
+В среде служб micro трассировки из компонентов может перейти в различных хранилищах toohello. Каждый компонент может иметь свой собственный ключ инструментирования в Application Insights. tooget данные телеметрии для логическую операцию hello, требуются tooquery данные из каждого хранилища. При огромное число систем хранения данных необходимо toohave подсказку о том, где toolook Далее.
 
-Модель данных Application Insights определяет два поля (`request.source` и `dependency.target`) для решения этой проблемы. Первое поле определяет компонент, который инициировал запрос зависимости, а второе — компонент, который вернул ответ вызова зависимостей.
+Application Insights, модели анализа данных определяет два поля toosolve этой проблемы: `request.source` и `dependency.target`. Первое поле Hello определяет hello компонент, который инициировал запрос hello зависимостей, а hello второй определяет какой компонент вернул ответ hello вызова зависимостей hello.
 
 
 ## <a name="example"></a>Пример
 
-Давайте рассмотрим пример приложения STOCK PRICES (Стоимость акций), в котором показывается текущая рыночная стоимость акций. При этом используется внешний интерфейс API, называемый STOCKS API (API акций). В приложении STOCK PRICES есть страница `Stock page`, которая открывается в браузере клиента с помощью `GET /Home/Stock`. Приложение запрашивает STOCK API с помощью HTTP-вызова `GET /api/stock/value`.
+Рассмотрим пример приложения STOCK цен, показывающая hello текущего рыночной цены акций, с помощью внешнего API hello вызывается API биржевые СВОДКИ. Hello ЦЕНЫ АКЦИЙ приложения имеет страницу `Stock page` открываемые hello клиента веб-браузера с помощью `GET /Home/Stock`. запросы приложения Hello hello STOCK API с помощью вызова HTTP `GET /api/stock/value`.
 
 Вы можете проанализировать итоговые данные телеметрии, выполнив запрос:
 
@@ -51,7 +51,7 @@ Application Insights определяет [модель данных](applicatio
 | project timestamp, itemType, name, id, operation_ParentId, operation_Id
 ```
 
-Обратите внимание, что в представлении результата все элементы телеметрии используют корневой `operation_Id`. При вызове AJAX, осуществляемом со страницы, телеметрии зависимостей назначается новый уникальный идентификатор `qJSXU`, а в качестве `operation_ParentId` используется идентификатор pageView. В свою очередь запрос сервера использует идентификатор AJAX в качестве `operation_ParentId`, и т. д.
+В примечании представление hello результат, что все данные телеметрии элементы обычно имеют корневой hello `operation_Id`. При вызове метода ajax сделанных страница hello — новый уникальный идентификатор `qJSXU` телеметрия зависимостей назначенный toohello и идентификатор элемента pageView используется как `operation_ParentId`. В свою очередь запрос сервера использует идентификатор AJAX в качестве `operation_ParentId`, и т. д.
 
 | itemType   | name                      | id           | operation_ParentId | operation_Id |
 |------------|---------------------------|--------------|--------------------|--------------|
@@ -60,28 +60,28 @@ Application Insights определяет [модель данных](applicatio
 | запрос    | GET Home/Stock            | KqKwlrSt9PA= | qJSXU              | STYz         |
 | dependency | GET /api/stock/value      | bBrf2L7mm2g= | KqKwlrSt9PA=       | STYz         |
 
-Теперь, когда к внешней службе осуществлен вызов `GET /api/stock/value`, необходимо узнать идентификатор этого сервера. Поэтому можно соответствующим образом задать поле `dependency.target`. Если внешняя служба не поддерживает мониторинг, то в качестве `target` задается имя узла службы, например `stock-prices-api.com`. Однако если для идентификации этой службы возвращается предопределенный заголовок HTTP, то `target` содержит удостоверение службы, которое позволяет Application Insights создать распределенную трассировку, запросив телеметрию из этой службы. 
+Теперь, когда hello вызовов `GET /api/stock/value` внесенные tooan внешней службы требуется удостоверение hello tooknow этого сервера. Поэтому можно соответствующим образом задать поле `dependency.target`. Если внешняя служба hello не поддерживает мониторинг - `target` задается имя узла toohello hello службы как `stock-prices-api.com`. Однако если этой службы определяет себя, возвращая предварительно определенный заголовок HTTP - `target` содержит удостоверение службы hello, позволяющий toobuild распределенных трассировки Application Insights, запрашивая данные телеметрии из этой службы. 
 
 ## <a name="correlation-headers"></a>Заголовки корреляции
 
-Мы работаем над созданием предложения RFC для [протокола HTTP корреляции](https://github.com/lmolkova/correlation/blob/master/http_protocol_proposal_v1.md). Это предложение определяет два заголовка:
+Мы работаем над предложение RFC для hello [корреляции протокол HTTP](https://github.com/lmolkova/correlation/blob/master/http_protocol_proposal_v1.md). Это предложение определяет два заголовка:
 
-- `Request-Id` содержит глобальный уникальный идентификатор вызова.
-- `Correlation-Context` содержит коллекцию пар "имя-значение" свойств распределенной трассировки.
+- `Request-Id`выполнение hello глобально уникальный идентификатор вызова hello
+- `Correlation-Context`-выполнение hello имя пары коллекции значение свойства трассировки распределенного hello
 
-Стандарт также определяет две схемы создания `Request-Id` — неструктурированная и иерархическая. В неструктурированной схеме для коллекции `Correlation-Context` определяется хорошо известный ключ `Id`.
+Стандартная Hello также определяет две схемы из `Request-Id` поколения - плоской и иерархической. Схема неструктурированного hello, производится с известным `Id` ключ, определенный для hello `Correlation-Context` коллекции.
 
-Служба Application Insights определяет [расширение](https://github.com/lmolkova/correlation/blob/master/http_protocol_proposal_v2.md) для протокола HTTP корреляции. Она использует пары "имя-значение" `Request-Context` для распространения коллекции свойств, используемых непосредственным вызывающим или вызываемым. Пакет SDK для Application Insights использует этот заголовок, чтобы задать значения полей `dependency.target` и `request.source`.
+Application Insights определяет hello [расширения](https://github.com/lmolkova/correlation/blob/master/http_protocol_proposal_v2.md) для корреляции hello протокол HTTP. Она использует `Request-Context` имя пары "значение" hello toopropagate коллекцию свойств, используемых hello непосредственного вызывающего или вызываемого объекта. Пакет SDK для Application Insights использует этот заголовок tooset `dependency.target` и `request.source` поля.
 
 ## <a name="open-tracing-and-application-insights"></a>OpenTracing и Application Insights
 
 Модели данных [OpenTracing](http://opentracing.io/) и Application Insights выглядят следующим образом: 
 
-- `request` и `pageView` сопоставляются со **Span** с помощью `span.kind = server`;
-- `dependency` сопоставляется со **Span** с помощью `span.kind = client`;
-- `id` элементов `request` и `dependency` сопоставляется со **Span.Id**;
-- `operation_Id` сопоставляется с **TraceId**;
-- `operation_ParentId` сопоставляется с **Reference** типа `ChileOf`.
+- `request`, `pageView` сопоставляет слишком**диапазон** с`span.kind = server`
+- `dependency`Сопоставляет слишком**диапазон** с`span.kind = client`
+- `id`из `request` и `dependency` сопоставляет слишком**Span.Id**
+- `operation_Id`Сопоставляет слишком**числовое обозначение TraceId**
+- `operation_ParentId`Сопоставляет слишком**ссылки** типа`ChileOf`
 
 В [этой статье](application-insights-data-model.md) представлены типы данных и модель данных для Application Insights.
 
@@ -90,23 +90,23 @@ Application Insights определяет [модель данных](applicatio
 
 ## <a name="telemetry-correlation-in-net"></a>Корреляция данных телеметрии в .NET
 
-Со временем в .NET было определено несколько способов корреляции данных телеметрии и журналов диагностики. `System.Diagnostics.CorrelationManager` позволяет отслеживать свойства [LogicalOperationStack и ActivityId](https://msdn.microsoft.com/library/system.diagnostics.correlationmanager.aspx). `System.Diagnostics.Tracing.EventSource` и трассировка событий Windows определяют метод [SetCurrentThreadActivityId](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource.setcurrentthreadactivityid.aspx). `ILogger` использует [области журналов](https://docs.microsoft.com/aspnet/core/fundamentals/logging#log-scopes). WCF и HTTP подключают распространение "текущего" контекста.
+Со временем .NET определено несколько способов toocorrelate телеметрии и диагностики журналы. Отсутствует `System.Diagnostics.CorrelationManager` разрешение tootrack [LogicalOperationStack и ActivityId](https://msdn.microsoft.com/library/system.diagnostics.correlationmanager.aspx). `System.Diagnostics.Tracing.EventSource`и Windows ETW определить метод hello [SetCurrentThreadActivityId](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource.setcurrentthreadactivityid.aspx). `ILogger` использует [области журналов](https://docs.microsoft.com/aspnet/core/fundamentals/logging#log-scopes). WCF и HTTP подключают распространение "текущего" контекста.
 
-Однако эти методы не обеспечивали поддержку автоматической распределенной трассировки. `DiagnosticsSource` — это способ обеспечить поддержку автоматической корреляции между компьютерами. Библиотеки .NET поддерживают DiagnosticsSource и разрешают автоматическое распространение контекста корреляции между компьютерами, используя транспортный протокол, например HTTP.
+Однако эти методы не обеспечивали поддержку автоматической распределенной трассировки. `DiagnosticsSource`выполняется toosupport способом автоматически кросс-машины корреляции. Библиотеки .NET поддержки диагностики источников и разрешить автоматическое межкомпьютерные распространение hello корреляции контекста через hello транспортного протокола, например http.
 
-В [руководстве пользователя по классу Activity](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/ActivityUserGuide.md) представлены общие сведения об отслеживании действий в DiagnosticsSource. 
+Hello [руководство tooActivities](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/ActivityUserGuide.md) в диагностике источника объясняет основы hello отслеживание действий. 
 
-ASP.NET Core 2.0 поддерживает извлечение заголовков HTTP и запуск нового действия (Activity). 
+ASP.NET Core 2.0 поддерживает извлечение заголовков Http и запуск нового действия "hello". 
 
-`System.Net.HttpClient`, начиная с версии `<fill in>`, поддерживает автоматическое внедрение заголовков HTTP корреляции и отслеживание вызова HTTP как действия.
+`System.Net.HttpClient`начальной версии `<fill in>` поддерживает автоматическое внедрение hello корреляции заголовки Http и отслеживания hello вызовов http как действие.
 
-Для ASP.NET Classic доступен новый HTTP-модуль [Microsoft.AspNet.TelemetryCorrelation](https://www.nuget.org/packages/Microsoft.AspNet.TelemetryCorrelation/). Этот модуль реализует корреляцию данных телеметрии с помощью DiagnosticsSource. Он запускает действие, исходя их заголовков входящего запроса. Он также сопоставляет данные телеметрии из разных этапов обработки запроса. Даже если каждый этап обработки IIS выполняется в разных потоках управления.
+Новый модуль Http [Microsoft.AspNet.TelemetryCorrelation](https://www.nuget.org/packages/Microsoft.AspNet.TelemetryCorrelation/) для hello классический ASP.NET. Этот модуль реализует корреляцию данных телеметрии с помощью DiagnosticsSource. Он запускает действие, исходя их заголовков входящего запроса. Он также сопоставляет телеметрии из hello разные этапы обработки запроса. Даже в тех случаях, hello при запуске каждого из этапов обработки IIS в потоках различных управление.
 
-Пакет SDK для Application Insights, начиная с версии `2.4.0-beta1`, использует DiagnosticsSource и Activity для сбора данных телеметрии и их связывания с текущим действием. 
+Начальной версии пакета SDK аналитики приложений `2.4.0-beta1` использует телеметрии toocollect DiagnosticsSource и активности и связать его с текущим действием hello. 
 
 ## <a name="next-steps"></a>Дальнейшие действия
 
 - [API Application Insights для пользовательских событий и метрик](app-insights-api-custom-events-metrics.md)
 - Подключите все компоненты своей микрослужбы с помощью Application Insights. Ознакомьтесь со сведениями о [поддерживаемых платформах](app-insights-platforms.md).
 - В [этой статье](application-insights-data-model.md) представлены типы данных и модель данных для Application Insights.
-- Узнайте, как [расширять и фильтровать данные телеметрии](app-insights-api-filtering-sampling.md).
+- Узнайте, каким образом слишком[расширения и фильтровать данные телеметрии](app-insights-api-filtering-sampling.md).

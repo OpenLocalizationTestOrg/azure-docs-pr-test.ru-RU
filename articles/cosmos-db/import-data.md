@@ -1,7 +1,7 @@
 ---
-title: "Средство миграции базы данных для Azure Cosmos DB | Документация Майкрософт"
-description: "Из этой статьи вы узнаете, как использовать открытые средства миграции данных Azure Cosmos DB для импорта данных в Azure Cosmos DB из различных источников, включая MongoDB, SQL Server, хранилище таблиц, Amazon DynamoDB, файлы CSV и JSON. Преобразование CSV в JSON."
-keywords: "csv в json, средства миграции базы данных, преобразование csv в json"
+title: "Средство миграции aaaDatabase для Azure Cosmos DB | Документы Microsoft"
+description: "Узнайте, каким образом toouse hello открыть tooAzure tooimport данных данных миграции источника Azure Cosmos DB средства Cosmos DB из различных источников, включая файлы, MongoDB, SQL Server, хранилище таблицы, Amazon DynamoDB, CSV и JSON. Преобразование tooJSON CSV."
+keywords: "toojson CSV, инструменты миграции баз данных, преобразование csv toojson"
 services: cosmos-db
 author: andrewhoh
 manager: jhubbard
@@ -16,34 +16,34 @@ ms.topic: article
 ms.date: 06/06/2017
 ms.author: anhoh
 ms.custom: mvc
-ms.openlocfilehash: 23a4a82dbdb611f4da90562af936fca28da9b24d
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 997648a31602d854db75bb6ce4e2ecff36fc1069
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-import-data-into-azure-cosmos-db-for-the-documentdb-api"></a>Как импортировать данные в Azure Cosmos DB для API DocumentDB
+# <a name="how-tooimport-data-into-azure-cosmos-db-for-hello-documentdb-api"></a>Как tooimport данных в базе данных Azure Cosmos для hello DocumentDB API?
 
-В этом руководстве приведены инструкции по использованию Azure Cosmos DB: средства миграции данных API DocumentDB, которое может импортировать данные из разных источников, включая файлы JSON и CSV-файлы, SQL, MongoDB, Хранилище таблиц Azure, коллекции Amazon DynamoDB и API DocumentDB в Azure Cosmos DB для использования с Azure Cosmos DB и API DocumentDB. Средство миграции данных можно также использовать при миграции из односекционной коллекции в многосекционную для API DocumentDB.
+В этом учебнике содержатся инструкции по использованию hello Azure Cosmos DB: инструмент переноса данных API DocumentDB, который можно импортировать данные из различных источников, включая файлы JSON, CSV файлы SQL, MongoDB, хранилище таблиц Azure, Amazon DynamoDB и Azure Cosmos DB DocumentDB Коллекций API в коллекции для использования с Azure Cosmos DB и hello DocumentDB API. также можно использовать средство переноса данных Hello, при миграции из коллекции несколькими разделами коллекции tooa одну секцию для hello DocumentDB API.
 
-Это средство работает только при импорте данных в Azure Cosmos DB для использования с API DocumentDB. Импорт данных для использования с API таблицы или API Graph сейчас не поддерживается. 
+Средство переноса данных Hello работает только в том случае, если импорт данных в базу данных Cosmos Azure для использования с hello DocumentDB API. Импорт данных для использования с hello API таблиц или Graph API в настоящее время не поддерживается. 
 
-Чтобы импортировать данные для использования с API MongoDB, ознакомьтесь со статьей [Перенос данных в DocumentDB с помощью mongoimport и mongorestore](mongodb-migrate.md).
+tooimport данных для использования с hello MongoDB API. в статье [Azure Cosmos DB: как toomigrate данные для hello MongoDB API?](mongodb-migrate.md).
 
-В рамках этого руководства рассматриваются следующие задачи:
+В этом учебнике hello следующие задачи:
 
 > [!div class="checklist"]
-> * установка средства миграции данных;
+> * Установка средства переноса данных hello
 > * импорт данных из разных источников данных;
-> * экспорт данных из Azure Cosmos DB в JSON.
+> * Экспорт из Azure Cosmos DB tooJSON
 
 ## <a id="Prerequisites"></a>Предварительные требования
-Перед выполнением инструкций, приведенных в этой статье, следует убедиться, что установлены следующие компоненты:
+Перед выполнением инструкции hello в этой статье, убедитесь, что установлены следующие компоненты hello:
 
 * [Microsoft .NET Framework 4.51](https://www.microsoft.com/download/developer-tools.aspx) или более поздняя версия.
 
-## <a id="Overviewl"></a>Обзор средства миграции данных
-Средство миграции данных — это решение с открытым исходным кодом, которое импортирует данные в Azure Cosmos DB из различных источников, таких как:
+## <a id="Overviewl"></a>Обзор средства переноса данных hello
+Средство переноса данных Hello — это решение открытым исходным кодом, которое импортирует данные tooAzure Cosmos DB из разнообразных источников, включая:
 
 * файлы JSON;
 * MongoDB
@@ -54,17 +54,17 @@ ms.lasthandoff: 07/11/2017
 * HBase
 * коллекции Azure Cosmos DB.
 
-Хотя средство импорта предоставляет графический интерфейс пользователя (dtui.exe), им также можно управлять из командной строки (dt.exe). К слову, существует параметр для вывода соответствующей команды после настройки импорта в пользовательском интерфейсе. Табличный источник данных (например, SQL Server или CSV-файлы) можно преобразовать так, чтобы создать иерархические связи (вложенные документы) во время импорта. Читайте дальше, чтобы узнать о доступных источниках, примерах команд для импорта из каждого источника, возможных целевых объектах и просмотре результатов импорта.
+Хотя средство импорта hello включает графический интерфейс пользователя (dtui.exe), его также можно управлять из командной строки hello (dt.exe). На самом деле присутствует команда hello связанный параметр toooutput после настройки импорта через hello пользовательского интерфейса. Табличный источник данных (например, SQL Server или CSV-файлы) можно преобразовать так, чтобы создать иерархические связи (вложенные документы) во время импорта. Сохраните чтения toolearn больше о параметрах источника, образец tooimport командные строки из каждого источника, target-параметры и при просмотре Импорт результатов.
 
-## <a id="Install"></a>Установка средства миграции данных
-Исходный код средства миграции доступен на портале GitHub в [этом репозитории](https://github.com/azure/azure-documentdb-datamigrationtool), а скомпилированная версия доступна в [Центре загрузки Майкрософт](http://www.microsoft.com/downloads/details.aspx?FamilyID=cda7703a-2774-4c07-adcc-ad02ddc1a44d). Вы можете скомпилировать решение или просто скачать и извлечь скомпилированную версию в каталог по своему усмотрению. Затем запустите:
+## <a id="Install"></a>Установка средства миграции данных hello
+Hello миграции средство исходный код доступен на GitHub в [этот репозиторий](https://github.com/azure/azure-documentdb-datamigrationtool) и скомпилированная версия доступна в [центра загрузки Майкрософт](http://www.microsoft.com/downloads/details.aspx?FamilyID=cda7703a-2774-4c07-adcc-ad02ddc1a44d). Может либо компиляции решения hello, или просто загрузите и извлеките hello скомпилированная версия tooa каталога по своему усмотрению. Затем запустите:
 
-* **Dtui.exe**— версия средства с графическим интерфейсом;
-* **Dt.exe**— версия средства с командной строкой.
+* **Dtui.exe**: графический интерфейс версия средства hello
+* **DT.exe**: версией hello инструмента командной строки
 
 ## <a name="import-data"></a>Импорт данных
 
-После установки средства вы можете импортировать данные. Поддерживаются такие типы данных и виды импорта:
+После установки средство hello, это время tooimport данных. Тип данных действительно tooimport?
 
 * [файлы JSON](#JSON);
 * [MongoDB](#MongoDB)
@@ -80,12 +80,12 @@ ms.lasthandoff: 07/11/2017
 * [последовательный импорт записей Azure Cosmos DB](#DocumentDSeqTarget).
 
 
-## <a id="JSON"></a>Импорт JSON-файлов
-Параметр импорта файлов JSON позволяет импортировать файлы JSON с одним или несколькими документами или файлы JSON, каждый из которых содержит массив документов JSON. Во время добавления папок, содержащих JSON-файлы для импорта, вы можете выполнить рекурсивный поиск файлов во вложенных папках.
+## <a id="JSON"></a>tooimport JSON-файлов
+Hello параметр импортера исходный файл JSON можно tooimport один или более одного документа JSON-файлов или массив JSON документов, содержащих файлы JSON. При добавлении папки, содержащие файлы tooimport JSON, предусмотрена возможность hello рекурсивный поиск файлов во вложенных папках.
 
 ![Снимок экрана: параметры исходного файла JSON — средства миграции базы данных](./media/import-data/jsonsource.png)
 
-Ниже приведены некоторые примеры команд для импорта файлов JSON.
+Ниже приведены некоторые файлы JSON tooimport образцы командной строки.
 
     #Import a single JSON file
     dt.exe /s:JsonFile /s.Files:.\Sessions.json /t:CosmosDBBulk /t.ConnectionString:"AccountEndpoint=<CosmosDB Endpoint>;AccountKey=<CosmosDB Key>;Database=<CosmosDB Database>;" /t.Collection:Sessions /t.CollectionThroughput:2500
@@ -99,81 +99,81 @@ ms.lasthandoff: 07/11/2017
     #Import a directory (single), directory (recursive), and individual JSON files
     dt.exe /s:JsonFile /s.Files:C:\Tweets\*.*;C:\LargeDocs\**\*.*;C:\TESessions\Session48172.json;C:\TESessions\Session48173.json;C:\TESessions\Session48174.json;C:\TESessions\Session48175.json;C:\TESessions\Session48177.json /t:CosmosDBBulk /t.ConnectionString:"AccountEndpoint=<CosmosDB Endpoint>;AccountKey=<CosmosDB Key>;Database=<CosmosDB Database>;" /t.Collection:subs /t.CollectionThroughput:2500
 
-    #Import a single JSON file and partition the data across 4 collections
+    #Import a single JSON file and partition hello data across 4 collections
     dt.exe /s:JsonFile /s.Files:D:\\CompanyData\\Companies.json /t:CosmosDBBulk /t.ConnectionString:"AccountEndpoint=<CosmosDB Endpoint>;AccountKey=<CosmosDB Key>;Database=<CosmosDB Database>;" /t.Collection:comp[1-4] /t.PartitionKey:name /t.CollectionThroughput:2500
 
-## <a id="MongoDB"></a>Импорт из MongoDB
+## <a id="MongoDB"></a>tooimport из MongoDB
 
 > [!IMPORTANT]
-> При импорте в учетную запись Azure Cosmos DB с поддержкой MongoDB выполните эти [инструкции](mongodb-migrate.md).
+> При импорте учетной записи Azure Cosmos DB tooan с поддержкой MongoDB, выполните следующие [инструкции](mongodb-migrate.md).
 > 
 > 
 
-Параметр импорта из MongoDB позволяет импортировать данные из отдельной коллекции MongoDB, фильтровать документы с помощью запроса, а также изменять структуру документа с помощью проекции.  
+Hello MongoDB источника импорта параметр позволяет вам tooimport из отдельных MongoDB коллекции и при необходимости отфильтруйте документы с помощью запроса или изменить структуру документа hello с помощью проекции.  
 
 ![Снимок экрана параметров источника MongoDB](./media/import-data/mongodbsource.png)
 
-Строка подключения представляется в стандартном формате MongoDB:
+в стандартном формате MongoDB hello указана строка подключения Hello:
 
     mongodb://<dbuser>:<dbpassword>@<host>:<port>/<database>
 
 > [!NOTE]
-> Используйте команду Verify, чтобы проверить доступ к экземпляру MongoDB, указанному в строке подключения.
+> Команда используйте hello проверьте tooensure, hello MongoDB экземпляр, указанный в поле Строка hello подключения может осуществляться.
 > 
 > 
 
-Введите имя коллекции, из которой будут импортированы данные. При необходимости можно указать или предоставить файл для запроса (например {pop: {$gt:5000}}) и проекцию (например {loc:0}) для фильтрации и обработки и импортируемых данных.
+Введите имя hello hello коллекции, из которого будут импортированы данные. Можно при необходимости укажите или указать файл для запроса (например {pop: {$gt: 5000}}) или проекции (например {loc:0}) tooboth фильтра и форма hello данных toobe импортированы.
 
-Ниже приведены некоторые примеры команд для импорта данных из MongoDB.
+Ниже приведены некоторые tooimport образцы командной строки из MongoDB.
 
     #Import all documents from a MongoDB collection
     dt.exe /s:MongoDB /s.ConnectionString:mongodb://<dbuser>:<dbpassword>@<host>:<port>/<database> /s.Collection:zips /t:CosmosDBBulk /t.ConnectionString:"AccountEndpoint=<CosmosDB Endpoint>;AccountKey=<CosmosDB Key>;Database=<CosmosDB Database>;" /t.Collection:BulkZips /t.IdField:_id /t.CollectionThroughput:2500
 
-    #Import documents from a MongoDB collection which match the query and exclude the loc field
+    #Import documents from a MongoDB collection which match hello query and exclude hello loc field
     dt.exe /s:MongoDB /s.ConnectionString:mongodb://<dbuser>:<dbpassword>@<host>:<port>/<database> /s.Collection:zips /s.Query:{pop:{$gt:50000}} /s.Projection:{loc:0} /t:CosmosDBBulk /t.ConnectionString:"AccountEndpoint=<CosmosDB Endpoint>;AccountKey=<CosmosDB Key>;Database=<CosmosDB Database>;" /t.Collection:BulkZipsTransform /t.IdField:_id/t.CollectionThroughput:2500
 
-## <a id="MongoDBExport"></a>Импорт файлов экспорта MongoDB
+## <a id="MongoDBExport"></a>файлы экспорта MongoDB tooimport
 
 > [!IMPORTANT]
-> При импорте в учетную запись Azure Cosmos DB с поддержкой MongoDB выполните эти [инструкции](mongodb-migrate.md).
+> При импорте учетной записи Azure Cosmos DB tooan с поддержкой MongoDB, выполните следующие [инструкции](mongodb-migrate.md).
 > 
 > 
 
-Параметр импорта JSON-файлов экспорта MongoDB позволяет импортировать файлы JSON, созданные с помощью служебной программы mongoexport.  
+Hello MongoDB JSON файл источника импорта экспорте позволяет tooimport одного или нескольких файлов JSON, полученных из служебной программы mongoexport hello.  
 
 ![Снимок экрана параметров экспорта MongoDB](./media/import-data/mongodbexportsource.png)
 
-При добавлении папок, содержащих JSON-файлы экспорта MongoDB, вы можете выполнить рекурсивный поиск файлов во вложенных папках.
+При добавлении папки, содержащие файлы JSON MongoDB экспорта для импорта, предусмотрена возможность hello рекурсивный поиск файлов во вложенных папках.
 
-Ниже приведен пример команды для импорта данных из JSON-файлов экспорта MongoDB.
+Ниже приведен tooimport пример командной строки из экспорта MongoDB JSON-файлов.
 
     dt.exe /s:MongoDBExport /s.Files:D:\mongoemployees.json /t:CosmosDBBulk /t.ConnectionString:"AccountEndpoint=<CosmosDB Endpoint>;AccountKey=<CosmosDB Key>;Database=<CosmosDB Database>;" /t.Collection:employees /t.IdField:_id /t.Dates:Epoch /t.CollectionThroughput:2500
 
-## <a id="SQL"></a>Импорт из SQL Server
-Параметр импорта из источника SQL позволяет импортировать данные из отдельной базы данных SQL Server и фильтровать записи для импорта с помощью запроса. Кроме того, можно изменить структуру документа, указав разделитель вложения (подробнее об этом чуть позже).  
+## <a id="SQL"></a>tooimport из SQL Server
+Hello параметра импорта источника SQL дает tooimport из отдельной базы данных SQL Server и при необходимости отфильтруйте toobe записей hello, импортированные с помощью запроса. Кроме того можно изменить структуру документа hello, указав разделитель вложения (Подробнее об этом позже).  
 
 ![Снимок экрана: параметры источника SQL — средства миграции базы данных](./media/import-data/sqlexportsource.png)
 
-Формат строки подключения — это стандартный формат строки подключения SQL.
+Hello формат строки соединения hello является hello standard SQL соединения строки.
 
 > [!NOTE]
-> Используйте команду Verify, чтобы проверить доступ к экземпляру SQL Server, указанному в строке подключения.
+> Команда используйте hello проверьте tooensure, экземпляр SQL Server, указанной в поле Строка подключения hello hello возможен.
 > 
 > 
 
-Свойство разделителя вложения используется для создания иерархических связей (вложенных документов) во время импорта. Рассмотрим следующий запрос SQL:
+вложенные свойства разделителя Hello — иерархические связи используется toocreate (вложенные документы) во время импорта. Рассмотрим следующий SQL-запрос hello.
 
 *select CAST(BusinessEntityID AS varchar) as Id, Name, AddressType as [Address.AddressType], AddressLine1 as [Address.AddressLine1], City as [Address.Location.City], StateProvinceName as [Address.Location.StateProvinceName], PostalCode as [Address.PostalCode], CountryRegionName as [Address.CountryRegionName] from Sales.vStoreWithAddresses WHERE AddressType='Main Office'*
 
-Он возвращает следующие результаты (показаны частичные результаты):
+Выдаются следующие результаты (разделяемый) hello:
 
 ![Снимок экрана: результаты запроса SQL](./media/import-data/sqlqueryresults.png)
 
-Обратите внимание на псевдонимы, например Address.AddressType и Address.Location.StateProvinceName. Если указать разделитель вложения ".", средство импорта создает вложенные документы Address и Address.Location во время импорта. Ниже приведен пример полученного документа в Azure Cosmos DB.
+Обратите внимание, псевдонимы hello, такие как Address.AddressType и Address.Location.StateProvinceName. Указав разделитель вложения из '.', средство импорта hello создает адрес и импортировать Address.Location вложенные документы во время hello. Ниже приведен пример полученного документа в Azure Cosmos DB.
 
 *{ "id": "956", "Name": "Finer Sales and Service", "Address": { "AddressType": "Main Office", "AddressLine1": "#500-75 O'Connor Street", "Location": { "City": "Ottawa", "StateProvinceName": "Ontario" }, "PostalCode": "K4B 1S2", "CountryRegionName": "Canada" } }*
 
-Ниже приведены некоторые примеры команд для импорта данных из SQL Server:
+Ниже приведены некоторые tooimport образцы командной строки из SQL Server.
 
     #Import records from SQL which match a query
     dt.exe /s:SQL /s.ConnectionString:"Data Source=<server>;Initial Catalog=AdventureWorks;User Id=advworks;Password=<password>;" /s.Query:"select CAST(BusinessEntityID AS varchar) as Id, * from Sales.vStoreWithAddresses WHERE AddressType='Main Office'" /t:CosmosDBBulk /t.ConnectionString:" AccountEndpoint=<CosmosDB Endpoint>;AccountKey=<CosmosDB Key>;Database=<CosmosDB Database>;" /t.Collection:Stores /t.IdField:Id /t.CollectionThroughput:2500
@@ -181,199 +181,199 @@ ms.lasthandoff: 07/11/2017
     #Import records from sql which match a query and create hierarchical relationships
     dt.exe /s:SQL /s.ConnectionString:"Data Source=<server>;Initial Catalog=AdventureWorks;User Id=advworks;Password=<password>;" /s.Query:"select CAST(BusinessEntityID AS varchar) as Id, Name, AddressType as [Address.AddressType], AddressLine1 as [Address.AddressLine1], City as [Address.Location.City], StateProvinceName as [Address.Location.StateProvinceName], PostalCode as [Address.PostalCode], CountryRegionName as [Address.CountryRegionName] from Sales.vStoreWithAddresses WHERE AddressType='Main Office'" /s.NestingSeparator:. /t:CosmosDBBulk /t.ConnectionString:" AccountEndpoint=<CosmosDB Endpoint>;AccountKey=<CosmosDB Key>;Database=<CosmosDB Database>;" /t.Collection:StoresSub /t.IdField:Id /t.CollectionThroughput:2500
 
-## <a id="CSV"></a>Импорт CSV-файлов и преобразование CSV в JSON
-Параметр импорта из CSV-файла позволяет импортировать один или несколько CSV-файлов. Во время добавления папок, содержащих CSV-файлы для импорта, вы можете выполнить рекурсивный поиск файлов во вложенных папках.
+## <a id="CSV"></a>CSV-файлы tooimport и convert CSV tooJSON
+Hello параметр импортера исходного файла CSV позволяет вам tooimport один или несколько файлов CSV. При добавлении папки, содержащие CSV-файлы для импорта, предусмотрена возможность hello рекурсивный поиск файлов во вложенных папках.
 
-![Снимок экрана: параметры источника CSV — преобразование CSV в JSON](media/import-data/csvsource.png)
+![Параметры источника экрана CSV - CSV tooJSON](media/import-data/csvsource.png)
 
-Как и для источника SQL, свойство разделителя вложения можно использовать для создания иерархических связей (вложенных документов) во время импорта. Рассмотрим следующую строку заголовков и строки данных CSV:
+Аналогичные toohello SQL, вложенные свойства разделителя hello возможно, источник иерархические связи используется toocreate (вложенные документы) во время импорта. Рассмотрим hello строку заголовка CSV-файла и строк данных.
 
-![Снимок экрана: примеры записей CSV — преобразование CSV в JSON](./media/import-data/csvsample.png)
+![Снимок экрана CSV образец записи - CSV tooJSON](./media/import-data/csvsample.png)
 
-Обратите внимание на псевдонимы, например DomainInfo.Domain_Name и RedirectInfo.Redirecting. Если указать разделитель вложения ".", средство импорта создает вложенные документы DomainInfo и RedirectInfo во время импорта. Ниже приведен пример полученного документа в Azure Cosmos DB.
+Обратите внимание, псевдонимы hello, такие как DomainInfo.Domain_Name и RedirectInfo.Redirecting. Указав разделитель вложения из '.', средство импорта hello создаст DomainInfo и импортировать RedirectInfo вложенные документы во время hello. Ниже приведен пример полученного документа в Azure Cosmos DB.
 
-*{ "DomainInfo": { "Domain_Name": "ACUS.GOV", "Domain_Name_Address": "http://www.ACUS.GOV" }, "Federal Agency": "Administrative Conference of the United States", "RedirectInfo": { "Redirecting": "0", "Redirect_Destination": "" }, "id": "9cc565c5-ebcd-1c03-ebd3-cc3e2ecd814d" }*
+*{«DomainInfo»: {«Имя_домена»: «ACUS.GOV», «Domain_Name_Address»: «http://www. ACUS.GOV»}, «Федеральным агентство»: «Административные конференции; hello United States», «RedirectInfo»: {«Перенаправление»: «0», «Redirect_Destination»: «»}, «id»: «9cc565c5-ebcd-1c03-ebd3-cc3e2ecd814d»}*
 
-Средство импорта попытается определить сведения о типе для значений, которые не заключены в кавычки и находятся в CSV-файлах (значения, заключенные в кавычки, считаются строками).  Типы определяются в таком порядке: номер, дата и время, логическое значение.  
+Средство импорта Hello попытается tooinfer сведения о типе значений без кавычек в CSV-файлы (заключенные в кавычки значения всегда обрабатываются как строки).  Типы различаются по hello следующий порядок: номер, datetime, boolean.  
 
-Следует отметить еще кое-что об импорте CSV-файлов.
+Существует два toonote вещей о импорта CSV.
 
-1. По умолчанию значения, не заключенные в кавычки, очищаются от табуляции и пробелов, а значения, заключенные в кавычки, остаются в нетронутом виде. Вы можете переопределить это поведение, установив флажок «Обрезать значения, заключенные в кавычки» или воспользовавшись параметром командной строки /s.TrimQuoted.
-2. По умолчанию объект null, не заключенный в кавычки, считается значением null. Вы можете переопределить это поведение (то есть сделать так, чтобы объект null, не заключенный в кавычки, считался строкой null). Для этого установите флажок «Считать объект NULL, не заключенный в кавычки, строкой» или настройте параметр командной строки /s.NoUnquotedNulls.
+1. По умолчанию значения, не заключенные в кавычки, очищаются от табуляции и пробелов, а значения, заключенные в кавычки, остаются в нетронутом виде. Это поведение можно переопределить с приветствия Trim значения флажок hello /s.TrimQuoted параметр командной строки или в кавычках.
+2. По умолчанию объект null, не заключенный в кавычки, считается значением null. Это поведение можно переопределить (т. е. обрабатывают без кавычек значение null как строка «null») с hello интерпретирует NULL как строка флажок hello /s.NoUnquotedNulls параметр командной строки или без кавычек.
 
 Далее показан пример команды для импорта CSV:
 
     dt.exe /s:CsvFile /s.Files:.\Employees.csv /t:CosmosDBBulk /t.ConnectionString:"AccountEndpoint=<CosmosDB Endpoint>;AccountKey=<CosmosDB Key>;Database=<CosmosDB Database>;" /t.Collection:Employees /t.IdField:EntityID /t.CollectionThroughput:2500
 
-## <a id="AzureTableSource"></a>Импорт из хранилища таблиц Azure
-Параметр импорта из табличного хранилища Azure позволяет импортировать данные из отдельной таблицы хранилища Azure и фильтровать сущности таблицы для импорта при необходимости. Обратите внимание, что вы не можете использовать средство миграции данных для импорта данных службы хранилища таблиц Azure в Azure Cosmos DB для использования с API таблицы. Сейчас поддерживается только импорт в Azure Cosmos DB для использования с API DocumentDB.
+## <a id="AzureTableSource"></a>tooimport из хранилища таблиц Azure
+Hello параметра импорта источника хранилища таблиц Azure позволяет вам tooimport из отдельной таблицы хранилища таблиц Azure и при необходимости отфильтруйте hello таблицы сущности toobe импортированы. Обратите внимание, нельзя использовать данные хранилища Azure Table tooimport средство hello переноса данных в базу данных Cosmos Azure для использования с hello API таблиц. В настоящее время поддерживается только импорт tooAzure Cosmos DB для использования с hello DocumentDB API.
 
 ![Снимок экрана: параметры источника табличного хранилища Azure](./media/import-data/azuretablesource.png)
 
-Для строки подключения табличного хранилища Azure используется следующий формат:
+Hello объекта hello строки подключения к хранилищу таблиц Azure выглядит следующим образом:
 
     DefaultEndpointsProtocol=<protocol>;AccountName=<Account Name>;AccountKey=<Account Key>;
 
 > [!NOTE]
-> Используйте команду Verify, чтобы проверить доступ к экземпляру табличного хранилища Azure, указанному в строке подключения.
+> Команда используйте hello проверьте tooensure, hello экземпляра хранилища Azure таблицы, указанной в поле Строка подключения hello возможен.
 > 
 > 
 
-Введите имя таблицы Azure, из которой будут импортированы данные. При необходимости можно указать [фильтра](https://msdn.microsoft.com/library/azure/ff683669.aspx).
+Введите имя hello hello Azure таблицы, из которого будут импортированы данные. При необходимости можно указать [фильтра](https://msdn.microsoft.com/library/azure/ff683669.aspx).
 
-Параметр импорта из табличного хранилища Azure предоставляет следующие дополнительные параметры:
+Hello параметра импорта источника хранилища таблиц Azure имеет hello следующие дополнительные параметры:
 
 1. Включить внутренние поля
    1. All — включить все внутренние поля (PartitionKey, RowKey и Timestamp)
    2. None — исключить все внутренние поля
-   3. RowKey — включить только поле RowKey
+   3. RowKey - содержать только поля RowKey hello
 2. Выбор столбцов
-   1. Фильтры табличного хранилища Azure не поддерживают проекции. Если вы хотите импортировать только определенные свойства сущности таблицы Azure, их необходимо добавить в список "Выбор столбцов". Все другие свойства сущностей будут игнорироваться.
+   1. Фильтры табличного хранилища Azure не поддерживают проекции. Если требуется, чтобы свойства сущности определенных таблиц Azure tooonly импорта, их можно добавьте список toohello Выбор столбцов. Все другие свойства сущностей будут игнорироваться.
 
-Ниже приведен пример команды для импорта данных из табличного хранилища Azure.
+Ниже приведен tooimport пример командной строки из хранилища Azure Table.
 
     dt.exe /s:AzureTable /s.ConnectionString:"DefaultEndpointsProtocol=https;AccountName=<Account Name>;AccountKey=<Account Key>" /s.Table:metrics /s.InternalFields:All /s.Filter:"PartitionKey eq 'Partition1' and RowKey gt '00001'" /s.Projection:ObjectCount;ObjectSize  /t:CosmosDBBulk /t.ConnectionString:" AccountEndpoint=<CosmosDB Endpoint>;AccountKey=<CosmosDB Key>;Database=<CosmosDB Database>;" /t.Collection:metrics /t.CollectionThroughput:2500
 
-## <a id="DynamoDBSource"></a>Импорт из Amazon DynamoDB
-Параметр импортера источника Amazon DynamoDB позволяет выполнять импорт из отдельной таблицы Amazon DynamoDB и при необходимости фильтровать сущности для импорта. Чтобы максимально упростить настройку импорта, представлено несколько шаблонов.
+## <a id="DynamoDBSource"></a>tooimport из Amazon DynamoDB
+Hello Amazon DynamoDB источника импорта параметр дает tooimport из отдельной таблицы Amazon DynamoDB и при необходимости отфильтруйте toobe сущностей hello импортированы. Чтобы максимально упростить настройку импорта, представлено несколько шаблонов.
 
 ![Снимок экрана: параметры источника DynamoDB Amazon — средства миграции базы данных](./media/import-data/dynamodbsource1.png)
 
 ![Снимок экрана: параметры источника DynamoDB Amazon — средства миграции базы данных](./media/import-data/dynamodbsource2.png)
 
-Формат строки подключения Amazon DynamoDB выглядит следующим образом:
+Hello из строки подключения Amazon DynamoDB hello выглядит следующим образом:
 
     ServiceURL=<Service Address>;AccessKey=<Access Key>;SecretKey=<Secret Key>;
 
 > [!NOTE]
-> Используйте команду Verify, чтобы проверить доступ к экземпляру Amazon DynamoDB, указанному в строке подключения.
+> Команда используйте hello проверьте tooensure, hello экземпляр Amazon DynamoDB, указанный в поле Строка подключения hello возможен.
 > 
 > 
 
-Ниже приведен пример команды для импорта данных из Amazon DynamoDB:
+Ниже приведен tooimport пример командной строки из Amazon DynamoDB.
 
     dt.exe /s:DynamoDB /s.ConnectionString:ServiceURL=https://dynamodb.us-east-1.amazonaws.com;AccessKey=<accessKey>;SecretKey=<secretKey> /s.Request:"{   """TableName""": """ProductCatalog""" }" /t:DocumentDBBulk /t.ConnectionString:"AccountEndpoint=<Azure Cosmos DB Endpoint>;AccountKey=<Azure Cosmos DB Key>;Database=<Azure Cosmos DB Database>;" /t.Collection:catalogCollection /t.CollectionThroughput:2500
 
-## <a id="BlobImport"></a>Импорт файлов из хранилища BLOB-объектов Azure
-JSON-файл, файл экспорта MongoDB и параметры импорта источника файла CSV позволяют импортировать из хранилища больших двоичных объектов Azure один или несколько файлов. Чтобы выбрать файлы для импорта, просто предоставьте регулярное выражение после указания URL-адреса или ключа учетной записи для контейнера больших двоичных объектов.
+## <a id="BlobImport"></a>tooimport файлы из хранилища больших двоичных объектов Azure
+Hello JSON-файл, файл экспорта MongoDB и параметры импорта исходного файла CSV позволяют tooimport один или несколько файлов из хранилища больших двоичных объектов Azure. После указания URL-адрес контейнера больших двоичных объектов и ключ учетной записи, достаточно просто укажите tooimport файлов hello tooselect регулярного выражения.
 
 ![Снимок экрана: параметры исходного файла больших двоичных объектов](./media/import-data/blobsource.png)
 
-Ниже приведен пример команды для импорта JSON-файлов из хранилища больших двоичных объектов Azure:
+Вот файлы JSON tooimport пример командной строки из хранилища больших двоичных объектов Azure.
 
     dt.exe /s:JsonFile /s.Files:"blobs://<account key>@account.blob.core.windows.net:443/importcontainer/.*" /t:CosmosDBBulk /t.ConnectionString:"AccountEndpoint=<CosmosDB Endpoint>;AccountKey=<CosmosDB Key>;Database=<CosmosDB Database>;" /t.Collection:doctest
 
-## <a id="DocumentDBSource"></a>Импорт из коллекции API Azure DocumentDB в Cosmos DB
-Параметр импортера источников Azure Cosmos DB позволяет импортировать данные из коллекций Azure Cosmos DB и, если нужно, фильтровать документы с помощью запроса.  
+## <a id="DocumentDBSource"></a>tooimport из коллекции Azure Cosmos DB DocumentDB API
+Hello Azure Cosmos DB источника импорта параметр дает tooimport данные из одной или нескольких коллекциях Azure Cosmos DB и при необходимости отфильтруйте документы с помощью запроса.  
 
 ![Снимок экрана: параметры источника Azure Cosmos DB](./media/import-data/documentdbsource.png)
 
-Для строки подключения Azure Cosmos DB используется следующий формат:
+Hello объекта hello Azure Cosmos DB строка подключения выглядит следующим образом:
 
     AccountEndpoint=<CosmosDB Endpoint>;AccountKey=<CosmosDB Key>;Database=<CosmosDB Database>;
 
-Строку подключения учетной записи Azure Cosmos DB можно получить из колонки "Ключи" на портале Azure, как описано в статье об [управлении учетной записью Azure Cosmos DB](manage-account.md), однако в строку подключения необходимо добавить имя базы данных в следующем формате:
+Строка подключения учетной записи Azure Cosmos DB Hello могут быть получены из колонке ключи hello hello портал Azure, как описано в [как toomanage учетную запись Azure Cosmos DB](manage-account.md), однако имя hello hello базы данных должно toohello toobe добавляется Строка подключения в hello следующий формат:
 
     Database=<CosmosDB Database>;
 
 > [!NOTE]
-> Используйте команду Verify, чтобы проверить доступ к экземпляру Azure Cosmos DB, указанному в строке подключения.
+> Команда используйте hello проверьте tooensure, hello Azure Cosmos DB экземпляр, указанный в поле Строка hello подключения может осуществляться.
 > 
 > 
 
-Чтобы импортировать данные из одной коллекции Azure Cosmos DB, введите ее имя. Чтобы выполнить импорт из нескольких коллекций Azure Cosmos DB, введите регулярное выражение, соответствующее имени одной коллекции либо именам нескольких (например, collection01 | collection02 | collection03). При необходимости можно указать или предоставить файл для запроса для фильтрации и обработки и импортируемых данных.
+tooimport из одной коллекции Azure Cosmos DB, введите имя hello hello коллекции, из которого будут импортированы данные. tooimport из нескольких коллекций Azure Cosmos DB предоставляют toomatch регулярное выражение одно или несколько имен коллекции (например collection01 | collection02 | collection03). При необходимости может указать, или указать файл для фильтра запросов tooboth и toobe данных hello импортировать фигуры.
 
 > [!NOTE]
-> Так как в поле коллекции можно вводить регулярные выражения, то, если вы импортируете данные из одной коллекции, имя которой содержит символы регулярного выражения, их нужно экранировать соответствующим образом.
+> Так как поле коллекции hello принимает регулярные выражения при импорте из одной коллекции, имя которого содержит знаки регулярного выражения, затем эти знаки необходимо экранировать соответствующим образом.
 > 
 > 
 
-Параметр импорта Azure Cosmos DB предоставляет следующие дополнительные параметры:
+Hello Azure Cosmos DB источника импорта параметр имеет hello следующие дополнительные параметры:
 
-1. Include Internal Fields (Включить внутренние поля). Указывает, следует ли включать системные свойства документа Azure Cosmos DB в экспорт (например, _rid, _ts).
-2. Number of Retries on Failure (Число повторных попыток в случае сбоя). Указывает количество повторных попыток подключения к Azure Cosmos DB при временном сбое (например, прерывания сетевого подключения).
-3. Retry Interval (Интервал повтора). Указывает время ожидания между повторными попытками подключения к Azure Cosmos DB при временном сбое (например, прерывания сетевого подключения).
-4. Connection Mode (Режим подключения). Указывает режим подключения для Azure Cosmos DB. Доступны варианты: DirectTcp, DirectHttps и Gateway. Режимы прямого подключения быстрее, а режим шлюза более удобен для брандмауэра, так как использует только порт 443.
+1. Включить внутренние поля: Задает ли свойства системы tooinclude Azure Cosmos DB документа в hello экспорта (например _rid, _ts).
+2. Число повторных попыток в случае неудачи: задает hello число tooretry hello tooAzure подключения Cosmos DB в случае временного сбоя (например прерывания подключений сети).
+3. Интервал повтора: Указывает, сколько времени toowait между повторная попытка подключения hello tooAzure Cosmos DB в случае временного сбоя (например прерывания подключений сети).
+4. Режим подключения: Указывает режим toouse hello соединения с Azure Cosmos DB. доступны следующие возможности Hello: DirectTcp, DirectHttps и шлюз. режимы Hello прямое подключение являются быстрее, а режим hello шлюза — понятное дополнительные брандмауэра, как только он использует порт 443.
 
 ![Снимок экрана: дополнительные параметры источника Azure Cosmos DB](./media/import-data/documentdbsourceoptions.png)
 
 > [!TIP]
-> Средство импорта по умолчанию использует режим подключения DirectTcp. При возникновении проблем с брандмауэром перейдите на режим шлюза, так как он использует только порт 443.
+> Hello импортировать режим tooconnection значения по умолчанию средство DirectTcp. При возникновении неполадок брандмауэра режима tooconnection шлюза, для его выполнения требуется только порт 443.
 > 
 > 
 
-Ниже приведены некоторые примеры команд для импорта данных из Azure Cosmos DB.
+Ниже приведены некоторые tooimport образцы командной строки из базы данных Azure Cosmos.
 
-    #Migrate data from one Azure Cosmos DB collection to another Azure Cosmos DB collections
+    #Migrate data from one Azure Cosmos DB collection tooanother Azure Cosmos DB collections
     dt.exe /s:CosmosDB /s.ConnectionString:"AccountEndpoint=<CosmosDB Endpoint>;AccountKey=<CosmosDB Key>;Database=<CosmosDB Database>;" /s.Collection:TEColl /t:CosmosDBBulk /t.ConnectionString:" AccountEndpoint=<CosmosDB Endpoint>;AccountKey=<CosmosDB Key>;Database=<CosmosDB Database>;" /t.Collection:TESessions /t.CollectionThroughput:2500
 
-    #Migrate data from multiple Azure Cosmos DB collections to a single Azure Cosmos DB collection
+    #Migrate data from multiple Azure Cosmos DB collections tooa single Azure Cosmos DB collection
     dt.exe /s:CosmosDB /s.ConnectionString:"AccountEndpoint=<CosmosDB Endpoint>;AccountKey=<CosmosDB Key>;Database=<CosmosDB Database>;" /s.Collection:comp1|comp2|comp3|comp4 /t:CosmosDBBulk /t.ConnectionString:"AccountEndpoint=<CosmosDB Endpoint>;AccountKey=<CosmosDB Key>;Database=<CosmosDB Database>;" /t.Collection:singleCollection /t.CollectionThroughput:2500
 
-    #Export an Azure Cosmos DB collection to a JSON file
+    #Export an Azure Cosmos DB collection tooa JSON file
     dt.exe /s:CosmosDB /s.ConnectionString:"AccountEndpoint=<CosmosDB Endpoint>;AccountKey=<CosmosDB Key>;Database=<CosmosDB Database>;" /s.Collection:StoresSub /t:JsonFile /t.File:StoresExport.json /t.Overwrite /t.CollectionThroughput:2500
 
 > [!TIP]
-> Средство импорта данных Azure Cosmos DB также поддерживает импорт данных из [эмулятора Azure Cosmos DB](local-emulator.md). При импорте данных из локального эмулятора задайте следующую конечную точку: `https://localhost:<port>`. 
+> Средство импорта Azure Cosmos DB данных Hello также поддерживает импорт данных из hello [DB эмулятор Azure Cosmos](local-emulator.md). При импорте данных из локального эмулятора, задать конечную точку hello слишком`https://localhost:<port>`. 
 > 
 > 
 
-## <a id="HBaseSource"></a>Импорт из HBase
-Параметр импортера источника HBase позволяет импортировать данные из таблицы HBase и фильтровать данные при необходимости. Чтобы максимально упростить настройку импорта, представлено несколько шаблонов.
+## <a id="HBaseSource"></a>tooimport из HBase
+Hello HBase источника импорта параметр дает tooimport данных из таблицы HBase и при необходимости отфильтруйте данные hello. Чтобы максимально упростить настройку импорта, представлено несколько шаблонов.
 
 ![Снимок экрана: параметры источника HBase](./media/import-data/hbasesource1.png)
 
 ![Снимок экрана: параметры источника HBase](./media/import-data/hbasesource2.png)
 
-Формат строки подключения HBase Stargate выглядит следующим образом:
+имеет формат Hello hello строка подключения HBase Stargate:
 
     ServiceURL=<server-address>;Username=<username>;Password=<password>
 
 > [!NOTE]
-> Используйте команду Verify, чтобы проверить доступ к экземпляру HBase, указанному в строке подключения.
+> Команда используйте hello проверьте tooensure, hello HBase экземпляр, указанный в поле Строка hello подключения может осуществляться.
 > 
 > 
 
-Ниже приведен пример команды для импорта данных из HBase:
+Ниже приведен tooimport пример командной строки из HBase:
 
     dt.exe /s:HBase /s.ConnectionString:ServiceURL=<server-address>;Username=<username>;Password=<password> /s.Table:Contacts /t:CosmosDBBulk /t.ConnectionString:"AccountEndpoint=<CosmosDB Endpoint>;AccountKey=<CosmosDB Key>;Database=<CosmosDB Database>;" /t.Collection:hbaseimport
 
-## <a id="DocumentDBBulkTarget"></a>Импорта в API DocumentDB (массовый импорт)
-Средство массового импорта Azure Cosmos DB позволяет импортировать данные из любого доступного источника, используя хранимую процедуру Azure Cosmos DB для повышения эффективности. Это средство поддерживает импорт в односекционную коллекцию Azure Cosmos DB, а также сегментированный импорт, в рамках которого данные распределяются по нескольким односекционным коллекциям Azure Cosmos DB. Дополнительные сведения о секционировании данных см. в статье о [секционировании и масштабировании в Azure Cosmos DB](partition-data.md). Кроме того, это средство создает, выполняет и удаляет хранимые процедуры из целевых коллекций.  
+## <a id="DocumentDBBulkTarget"></a>tooimport toohello API DocumentDB (массового импорта)
+Hello Azure Cosmos DB массового импорта позволяет tooimport из любой из параметров hello доступный источник, с помощью Azure DB Cosmos хранимые процедуры для повышения эффективности. Средство Hello поддерживает коллекцию Azure Cosmos DB секционированную одним tooone импорта, а также сегментированных импорта, при котором данные секционируются в различных коллекциях секционированную одним Azure Cosmos DB. Дополнительные сведения о секционировании данных см. в статье о [секционировании и масштабировании в Azure Cosmos DB](partition-data.md). Hello средство создания, выполнения и удалите hello хранимой процедуры из коллекций целевой hello.  
 
 ![Снимок экрана: параметры массового импорта Azure Cosmos DB](./media/import-data/documentdbbulk.png)
 
-Для строки подключения Azure Cosmos DB используется следующий формат:
+Hello объекта hello Azure Cosmos DB строка подключения выглядит следующим образом:
 
     AccountEndpoint=<CosmosDB Endpoint>;AccountKey=<CosmosDB Key>;Database=<CosmosDB Database>;
 
-Строку подключения учетной записи Azure Cosmos DB можно получить из колонки "Ключи" на портале Azure, как описано в статье об [управлении учетной записью Azure Cosmos DB](manage-account.md), однако в строку подключения необходимо добавить имя базы данных в следующем формате:
+Строка подключения учетной записи Azure Cosmos DB Hello могут быть получены из колонке ключи hello hello портал Azure, как описано в [как toomanage учетную запись Azure Cosmos DB](manage-account.md), однако имя hello hello базы данных должно toohello toobe добавляется Строка подключения в hello следующий формат:
 
     Database=<CosmosDB Database>;
 
 > [!NOTE]
-> Используйте команду Verify, чтобы проверить доступ к экземпляру Azure Cosmos DB, указанному в строке подключения.
+> Команда используйте hello проверьте tooensure, hello Azure Cosmos DB экземпляр, указанный в поле Строка hello подключения может осуществляться.
 > 
 > 
 
-Чтобы импортировать данные в одну коллекцию, укажите имя этой коллекции и нажмите кнопку «Добавить». Чтобы импортировать данные в несколько коллекций, укажите имя каждой коллекции отдельно или, чтобы указать несколько коллекций, воспользуйтесь таким синтаксисом: *префикс_коллекции*[начальный индекс - конечный индекс]. Когда вы указываете несколько коллекций с помощью приведенного выше синтаксиса, учитывайте следующие факторы.
+tooimport tooa один коллекцию, введите имя hello hello toowhich коллекции данных будут импортированы и нажмите кнопку "Добавить" hello ". коллекции toomultiple tooimport, введите имя каждой коллекции отдельно или используйте следующий синтаксис toospecify hello несколько коллекций: *collection_prefix*[начальный индекс - конечный индекс]. При указании нескольких коллекций hello упомянутой выше синтаксис, учитывайте следующие hello.
 
-1. Поддерживаются только шаблоны имени диапазона целых чисел. Например, если указать [0–3], будут указаны такие коллекции: collection0, collection1, collection2, collection3.
+1. Поддерживаются только шаблоны имени диапазона целых чисел. Например, указав коллекцию [0-3] сформирует hello следующие коллекции: collection0 collection1 collection2 collection3.
 2. Вы можете использовать сокращенный синтаксис: если ввести collection[3], будет отображен тот же набор коллекций, что и на этапе 1.
 3. Вы можете указать несколько подстановок. Например, коллекция [0–1] [0–9] создаст 20 имен коллекций с нулем в начале (collection01… 02… 03).
 
-Указав имена коллекций, выберите нужную пропускную способность коллекций (от 400 до 10 000 ЕЗ). Для повышения производительности выберите большее значение. Дополнительные сведения об уровнях производительности в Azure Cosmos DB см. в [этой статье](performance-levels.md).
+Как только hello коллекции имена были заданы, выберите hello необходимой пропускной способности hello коллекций (400 RUs too10, 000 RUs). Для повышения производительности выберите большее значение. Дополнительные сведения об уровнях производительности в Azure Cosmos DB см. в [этой статье](performance-levels.md).
 
 > [!NOTE]
-> Параметр пропускной способности применяется только для создания коллекции. Если указанная коллекция уже существует, ее пропускная способность не будет изменена.
+> параметр пропускную способность производительности Hello применяется только toocollection создания. Если указан hello коллекция уже существует, ее пропускная способность останутся без изменений.
 > 
 > 
 
-Если нужно импортировать данные в несколько коллекций, средство импорта поддерживает сегментирование на основе хэша. Укажите в этом сценарии свойство документа, которое нужно использовать в качестве ключа секции (если не указать ключ секции, сегментирование документов по целевым коллекциям будет происходить произвольным образом).
+При импорте toomultiple коллекций, средство импорта hello поддерживает сегментирования на основе хэша. В этом случае укажите hello свойство документа, нужно toouse как hello ключ секционирования (если ключ раздела оставлено пустым, документы будут иметь сегментированных случайным образом в коллекциях целевой hello).
 
-При необходимости можно указать, какое поле источника импорта следует использовать в качестве свойства идентификатора документа Azure Cosmos DB во время импорта (обратите внимание, что если документы не содержат это свойство, средство импорта создаст GUID для свойства идентификатора).
+При необходимости указать, какие поля в источнике импорта hello следует использовать в качестве hello Azure Cosmos DB свойство идентификатора документа во время импорта hello (Обратите внимание, что если это свойство не содержат документы, то средство импорта hello создаст GUID как значение свойства идентификатора hello).
 
-Во время импорта доступны ряд дополнительных параметров. Во-первых, хотя средство и предоставляет хранимую процедуру массового импорта по умолчанию (BulkInsert.js), вы можете указать собственную хранимую процедуру:
+Во время импорта доступны ряд дополнительных параметров. Во-первых при этом включает средство hello по умолчанию массового импорта хранимой процедуры (BulkInsert.js), вы можете toospecify импорта хранимой процедуры:
 
  ![Снимок экрана: параметр хранимой процедуры массового импорта Azure Cosmos DB](./media/import-data/bulkinsertsp.png)
 
@@ -385,57 +385,57 @@ JSON-файл, файл экспорта MongoDB и параметры импо�
 * Эпоха: сохраняется как век числовое значение эпохи.
 * Оба: сохраняются строковое значение и числовое значение эпохи. Этот параметр создает вложенный документ, например "date_joined": { "Value": "2013-10-21T21:17:25.2410000Z", "Epoch": 1382390245 }
 
-Средство массового импорта Azure Cosmos DB предоставляет следующие дополнительные параметры:
+Hello Azure Cosmos DB массового импорта имеет hello следующие дополнительные расширенные параметры:
 
-1. "Размер пакета": по умолчанию средство использует размер пакета 50.  При импорте больших документов рекомендуется уменьшить размер пакета. И наоборот, при импорте небольших документов рекомендуется увеличить размер пакета.
-2. "Максимальный размер скрипта (в байтах)": по умолчанию средство использует максимальный размер скрипта, равный 512 КБ.
-3. "Отключить автоматическое создание идентификатора": если каждый импортируемый документ содержит поле идентификатора, то выбор этого параметра может повысить производительность. Документы без поля уникального идентификатора не будут импортированы.
-4. "Обновление существующих документов": по умолчанию средство не заменяет существующие документы с конфликтами идентификаторов. При выборе этого параметра существующие документы с совпадающими идентификаторами будут перезаписываться. Эта функция пригодится для плановых миграций, которые используются для обновления существующих документов.
-5. Number of Retries on Failure (Число повторных попыток в случае сбоя). Указывает количество повторных попыток подключения к Azure Cosmos DB при временном сбое (например, прерывания сетевого подключения).
-6. Retry Interval (Интервал повтора). Указывает время ожидания между повторными попытками подключения к Azure Cosmos DB при временном сбое (например, прерывания сетевого подключения).
-7. Connection Mode (Режим подключения). Указывает режим подключения для Azure Cosmos DB. Доступны варианты: DirectTcp, DirectHttps и Gateway. Режимы прямого подключения быстрее, а режим шлюза более удобен для брандмауэра, так как использует только порт 443.
+1. Размер пакета: hello средство значения по умолчанию tooa размер пакета равным 50.  Если импортировать toobe документы hello большие, понижать hello размер пакета. И наоборот Если импортировать toobe документы hello малы, рекомендуется обрабатывать hello размер пакета.
+2. Сценарий максимальный размер (байт): hello средство по умолчанию используется размер max скрипта tooa 512 КБ
+3. Отключить автоматическое создание идентификатора: Если каждый toobe документа импорта содержит поля id, затем при выборе этого параметра может повысить производительность. Документы без поля уникального идентификатора не будут импортированы.
+4. Обновление существующие документы: hello средство toonot значения по умолчанию, заменив существующие документы конфликтов идентификаторов. При выборе этого параметра существующие документы с совпадающими идентификаторами будут перезаписываться. Эта функция пригодится для плановых миграций, которые используются для обновления существующих документов.
+5. Число повторных попыток в случае неудачи: задает hello число tooretry hello tooAzure подключения Cosmos DB в случае временного сбоя (например прерывания подключений сети).
+6. Интервал повтора: Указывает, сколько времени toowait между повторная попытка подключения hello tooAzure Cosmos DB в случае временного сбоя (например прерывания подключений сети).
+7. Режим подключения: Указывает режим toouse hello соединения с Azure Cosmos DB. доступны следующие возможности Hello: DirectTcp, DirectHttps и шлюз. режимы Hello прямое подключение являются быстрее, а режим hello шлюза — понятное дополнительные брандмауэра, как только он использует порт 443.
 
 ![Снимок экрана: дополнительные параметры массового импорта Azure Cosmos DB](./media/import-data/docdbbulkoptions.png)
 
 > [!TIP]
-> Средство импорта по умолчанию использует режим подключения DirectTcp. При возникновении проблем с брандмауэром перейдите на режим шлюза, так как он использует только порт 443.
+> Hello импортировать режим tooconnection значения по умолчанию средство DirectTcp. При возникновении неполадок брандмауэра режима tooconnection шлюза, для его выполнения требуется только порт 443.
 > 
 > 
 
-## <a id="DocumentDBSeqTarget"></a>Импорт в API DocumentDB (последовательный импорт записей)
-Средство последовательного импорта записей Azure Cosmos DB позволяет импортировать данные из любых доступных источников по одной записи. Этот параметр можно выбрать при импорте в существующую коллекцию, для которой достигнута квота хранимых процедур. Это средство поддерживает импорт в отдельную (односекционную или многосекционную) коллекцию Azure Cosmos DB, а также сегментированный импорт, в рамках которого данные распределяются по нескольким односекционным и (или) многосекционным коллекциям Azure Cosmos DB. Дополнительные сведения о секционировании данных см. в статье о [секционировании и масштабировании в Azure Cosmos DB](partition-data.md).
+## <a id="DocumentDBSeqTarget"></a>tooimport toohello API DocumentDB (Импорт последовательной записи)
+Hello Azure Cosmos DB последовательной записи импорта позволяет tooimport из hello доступные исходные параметры на основе по одной записи. Можно выбрать этот параметр, если вы импортируете tooan существующую коллекцию, достигнута квота хранимых процедур. поддерживает импорт Hello средство tooa одиночными коллекции Azure Cosmos DB (одной секции и несколькими секции), а также сегментированных импорта, при котором данные секционируются в различных коллекциях Azure Cosmos DB одной секции и/или несколько секций. Дополнительные сведения о секционировании данных см. в статье о [секционировании и масштабировании в Azure Cosmos DB](partition-data.md).
 
 ![Снимок экрана: параметры последовательного импорта записей Azure Cosmos DB](./media/import-data/documentdbsequential.png)
 
-Для строки подключения Azure Cosmos DB используется следующий формат:
+Hello объекта hello Azure Cosmos DB строка подключения выглядит следующим образом:
 
     AccountEndpoint=<CosmosDB Endpoint>;AccountKey=<CosmosDB Key>;Database=<CosmosDB Database>;
 
-Строку подключения учетной записи Azure Cosmos DB можно получить из колонки "Ключи" на портале Azure, как описано в статье об [управлении учетной записью Azure Cosmos DB](manage-account.md), однако в строку подключения необходимо добавить имя базы данных в следующем формате:
+Строка подключения учетной записи Azure Cosmos DB Hello могут быть получены из колонке ключи hello hello портал Azure, как описано в [как toomanage учетную запись Azure Cosmos DB](manage-account.md), однако имя hello hello базы данных должно toohello toobe добавляется Строка подключения в hello следующий формат:
 
     Database=<Azure Cosmos DB Database>;
 
 > [!NOTE]
-> Используйте команду Verify, чтобы проверить доступ к экземпляру Azure Cosmos DB, указанному в строке подключения.
+> Команда используйте hello проверьте tooensure, hello Azure Cosmos DB экземпляр, указанный в поле Строка hello подключения может осуществляться.
 > 
 > 
 
-Чтобы импортировать данные в одну коллекцию, укажите имя этой коллекции и нажмите кнопку «Добавить». Чтобы импортировать данные в несколько коллекций, укажите имя каждой коллекции отдельно или, чтобы указать несколько коллекций, воспользуйтесь таким синтаксисом: *префикс_коллекции*[начальный индекс - конечный индекс]. Когда вы указываете несколько коллекций с помощью приведенного выше синтаксиса, учитывайте следующие факторы.
+tooimport tooa один коллекцию, введите имя hello hello toowhich коллекции данных будут импортированы и нажмите кнопку "Добавить" hello ". коллекции toomultiple tooimport, введите имя каждой коллекции отдельно или используйте следующий синтаксис toospecify hello несколько коллекций: *collection_prefix*[начальный индекс - конечный индекс]. При указании нескольких коллекций hello упомянутой выше синтаксис, учитывайте следующие hello.
 
-1. Поддерживаются только шаблоны имени диапазона целых чисел. Например, если указать [0–3], будут указаны такие коллекции: collection0, collection1, collection2, collection3.
+1. Поддерживаются только шаблоны имени диапазона целых чисел. Например, указав коллекцию [0-3] сформирует hello следующие коллекции: collection0 collection1 collection2 collection3.
 2. Вы можете использовать сокращенный синтаксис: если ввести collection[3], будет отображен тот же набор коллекций, что и на этапе 1.
 3. Вы можете указать несколько подстановок. Например, коллекция [0–1] [0–9] создаст 20 имен коллекций с нулем в начале (collection01… 02… 03).
 
-Указав имена коллекций, выберите нужную пропускную способность коллекций (от 400 до 250 000 ЕЗ). Для повышения производительности выберите большее значение. Дополнительные сведения об уровнях производительности в Azure Cosmos DB см. в [этой статье](performance-levels.md). Для любой операции импорта в коллекции с пропускной способностью выше 10 000 ЕЗ потребуется ключ секции. Если требуется пропускная способность более 250 000 ЕЗ, вам потребуется отправить запрос на портале, чтобы увеличить ограничения учетной записи.
+Как только hello коллекции имена были заданы, выберите hello необходимой пропускной способности hello коллекций (400 RUs too250, 000 RUs). Для повышения производительности выберите большее значение. Дополнительные сведения об уровнях производительности в Azure Cosmos DB см. в [этой статье](performance-levels.md). Любой импортировать toocollections с пропускной способностью > 10 000 RUs потребуется ключ раздела. При выборе более 250 RUs toohave потребуется toofile запрос портала toohave hello, увеличивается вашей учетной записи.
 
 > [!NOTE]
-> Параметр пропускной способности применяется только для создания коллекции. Если указанная коллекция уже существует, ее пропускная способность не будет изменена.
+> пропускная способность приветствия применяется только toocollection создания. Если указан hello коллекция уже существует, ее пропускная способность останутся без изменений.
 > 
 > 
 
-Если нужно импортировать данные в несколько коллекций, средство импорта поддерживает сегментирование на основе хэша. Укажите в этом сценарии свойство документа, которое нужно использовать в качестве ключа секции (если не указать ключ секции, сегментирование документов по целевым коллекциям будет происходить произвольным образом).
+При импорте toomultiple коллекций, средство импорта hello поддерживает сегментирования на основе хэша. В этом случае укажите hello свойство документа, нужно toouse как hello ключ секционирования (если ключ раздела оставлено пустым, документы будут иметь сегментированных случайным образом в коллекциях целевой hello).
 
-При необходимости можно указать, какое поле источника импорта следует использовать в качестве свойства идентификатора документа Azure Cosmos DB во время импорта (обратите внимание, что если документы не содержат это свойство, средство импорта создаст GUID для свойства идентификатора).
+При необходимости указать, какие поля в источнике импорта hello следует использовать в качестве hello Azure Cosmos DB свойство идентификатора документа во время импорта hello (Обратите внимание, что если это свойство не содержат документы, то средство импорта hello создаст GUID как значение свойства идентификатора hello).
 
 Во время импорта доступны ряд дополнительных параметров. При импорте типов даты (например, из SQL Server или MongoDB) можно выбрать три параметра импорта:
 
@@ -445,30 +445,30 @@ JSON-файл, файл экспорта MongoDB и параметры импо�
 * Эпоха: сохраняется как век числовое значение эпохи.
 * Оба: сохраняются строковое значение и числовое значение эпохи. Этот параметр создает вложенный документ, например "date_joined": { "Value": "2013-10-21T21:17:25.2410000Z", "Epoch": 1382390245 }
 
-Средство последовательного импорта записей Azure Cosmos DB предоставляет следующие дополнительные параметры:
+Hello Azure Cosmos DB - импортера последовательной записи имеет hello следующие дополнительные расширенные параметры:
 
-1. "Количество параллельных запросов": по умолчанию средство использует 2 параллельных запроса. При импорте небольших документов рекомендуется увеличить число параллельных запросов. Обратите внимание, что если задать слишком большое число, производительность импорта может снизиться.
-2. "Отключить автоматическое создание идентификатора": если каждый импортируемый документ содержит поле идентификатора, то выбор этого параметра может повысить производительность. Документы без поля уникального идентификатора не будут импортированы.
-3. "Обновление существующих документов": по умолчанию средство не заменяет существующие документы с конфликтами идентификаторов. При выборе этого параметра существующие документы с совпадающими идентификаторами будут перезаписываться. Эта функция пригодится для плановых миграций, которые используются для обновления существующих документов.
-4. Number of Retries on Failure (Число повторных попыток в случае сбоя). Указывает количество повторных попыток подключения к Azure Cosmos DB при временном сбое (например, прерывания сетевого подключения).
-5. Retry Interval (Интервал повтора). Указывает время ожидания между повторными попытками подключения к Azure Cosmos DB при временном сбое (например, прерывания сетевого подключения).
-6. Connection Mode (Режим подключения). Указывает режим подключения для Azure Cosmos DB. Доступны варианты: DirectTcp, DirectHttps и Gateway. Режимы прямого подключения быстрее, а режим шлюза более удобен для брандмауэра, так как использует только порт 443.
+1. Количество параллельных запросов: hello инструмент по умолчанию too2 параллельных запросов. Если импортировать toobe документы hello малы, рекомендуется обрабатывать hello число параллельных запросов. Обратите внимание, что если это число возникает слишком часто, hello импорта возможно возникновение регулирования.
+2. Отключить автоматическое создание идентификатора: Если каждый toobe документа импорта содержит поля id, затем при выборе этого параметра может повысить производительность. Документы без поля уникального идентификатора не будут импортированы.
+3. Обновление существующие документы: hello средство toonot значения по умолчанию, заменив существующие документы конфликтов идентификаторов. При выборе этого параметра существующие документы с совпадающими идентификаторами будут перезаписываться. Эта функция пригодится для плановых миграций, которые используются для обновления существующих документов.
+4. Число повторных попыток в случае неудачи: задает hello число tooretry hello tooAzure подключения Cosmos DB в случае временного сбоя (например прерывания подключений сети).
+5. Интервал повтора: Указывает, сколько времени toowait между повторная попытка подключения hello tooAzure Cosmos DB в случае временного сбоя (например прерывания подключений сети).
+6. Режим подключения: Указывает режим toouse hello соединения с Azure Cosmos DB. доступны следующие возможности Hello: DirectTcp, DirectHttps и шлюз. режимы Hello прямое подключение являются быстрее, а режим hello шлюза — понятное дополнительные брандмауэра, как только он использует порт 443.
 
 ![Снимок экрана: дополнительные параметры последовательного импорта записей Azure Cosmos DB](./media/import-data/documentdbsequentialoptions.png)
 
 > [!TIP]
-> Средство импорта по умолчанию использует режим подключения DirectTcp. При возникновении проблем с брандмауэром перейдите на режим шлюза, так как он использует только порт 443.
+> Hello импортировать режим tooconnection значения по умолчанию средство DirectTcp. При возникновении неполадок брандмауэра режима tooconnection шлюза, для его выполнения требуется только порт 443.
 > 
 > 
 
 ## <a id="IndexingPolicy"></a>Указание политики индексирования при создании коллекций Azure Cosmos DB
-Если вы разрешили средству миграции создавать коллекции во время импорта, можно указать политику индексирования коллекций. В разделе дополнительных параметров массового импорта Azure Cosmos DB и параметров последовательной записи Azure Cosmos DB перейдите в раздел "Политика индексации".
+Когда во время импорта коллекций toocreate средства позволяют hello миграции, можно указать политику индексации hello hello коллекций. В hello Дополнительные параметры раздела hello Azure Cosmos DB массового импорта и параметры Azure Cosmos DB последовательной записи перейдите на раздел toohello политики индексирования.
 
 ![Снимок экрана: дополнительные параметры политики индексации Azure Cosmos DB](./media/import-data/indexingpolicy1.png)
 
-С помощью дополнительного параметра политики индексации можно выбрать файл политики индексации, вручную ввести политику индексации или выбрать из набора шаблонов по умолчанию (щелкнув правой кнопкой в текстовом поле политики индексации).
+С помощью hello индексирования политики расширенный параметр, вы можно выберите файл политики индексирования, вручную введите политикой индексирования или выбрать один из шаблонов по умолчанию (щелкнув правой hello индексирования политики текстовое поле).
 
-Шаблоны политик, предоставляемые средством:
+Hello политики предоставляет средство hello содержит:
 
 * По умолчанию. Эта политика лучше всего подходит при выполнении запросов равенства строк и использовании предложения ORDER BY, диапазона и запросов равенства для чисел. Эта политика имеет более низкий индекс служебных данных хранилища, чем "Диапазон".
 * Диапазон. Эта политика лучше всего подходит при использовании предложения ORDER BY, диапазона и запросов равенства на числах и строках. Эта политика имеет более высокий индекс служебных данных хранилища, чем "По умолчанию" или "Хэш".
@@ -476,21 +476,21 @@ JSON-файл, файл экспорта MongoDB и параметры импо�
 ![Снимок экрана: дополнительные параметры политики индексации Azure Cosmos DB](./media/import-data/indexingpolicy2.png)
 
 > [!NOTE]
-> Если не указать политику индексации, будет применена политика по умолчанию. Дополнительные сведения о политиках индексации Azure Cosmos DB см. в [этой статье](indexing-policies.md).
+> Если политика индексирования не указан, будут применены политика по умолчанию hello. Дополнительные сведения о политиках индексации Azure Cosmos DB см. в [этой статье](indexing-policies.md).
 > 
 > 
 
-## <a name="export-to-json-file"></a>Экспорт в файл JSON
-Средство экспорта JSON Azure Cosmos DB позволяет экспортировать любые доступные источники в JSON-файл, содержащий массив документов JSON. Средство автоматически выполняет экспорт или же вы можете просмотреть результирующую команду миграции и выполнить ее самостоятельно. Результирующий JSON-файл может храниться локально или в хранилище больших двоичных объектов Azure.
+## <a name="export-toojson-file"></a>Файл экспорта tooJSON
+Программа экспорта Hello Azure Cosmos DB JSON позволяет tooexport любой hello доступные исходные параметры tooa JSON-файл, содержащий массив документов JSON. Hello средство будет обрабатывать hello экспорта для вас, или можно выбрать команды tooview hello полученный миграции и выполните команду hello, самостоятельно. Hello полученный файл JSON может храниться локально или в хранилище больших двоичных объектов Azure.
 
 ![Снимок экрана: параметры экспорта в локальный файл Azure Cosmos DB JSON](./media/import-data/jsontarget.png)
 
 ![Снимок экрана: параметр экспорта в хранилище BLOB-объектов Azure Cosmos DB JSON](./media/import-data/jsontarget2.png)
 
-При необходимости можно настроить результирующий JSON, что приведет к увеличению размера полученного документа, но при этом содержимое станет более удобным для чтения.
+При необходимости вы можете tooprettify hello, возникающие в JSON, что увеличивает размер hello hello итоговый документ во время внесения hello содержимое более удобной для чтения.
 
     Standard JSON export
-    [{"id":"Sample","Title":"About Paris","Language":{"Name":"English"},"Author":{"Name":"Don","Location":{"City":"Paris","Country":"France"}},"Content":"Don's document in Azure Cosmos DB is a valid JSON document as defined by the JSON spec.","PageViews":10000,"Topics":[{"Title":"History of Paris"},{"Title":"Places to see in Paris"}]}]
+    [{"id":"Sample","Title":"About Paris","Language":{"Name":"English"},"Author":{"Name":"Don","Location":{"City":"Paris","Country":"France"}},"Content":"Don's document in Azure Cosmos DB is a valid JSON document as defined by hello JSON spec.","PageViews":10000,"Topics":[{"Title":"History of Paris"},{"Title":"Places toosee in Paris"}]}]
 
     Prettified JSON export
     [
@@ -507,52 +507,52 @@ JSON-файл, файл экспорта MongoDB и параметры импо�
         "Country": "France"
       }
     },
-    "Content": "Don's document in Azure Cosmos DB is a valid JSON document as defined by the JSON spec.",
+    "Content": "Don's document in Azure Cosmos DB is a valid JSON document as defined by hello JSON spec.",
     "PageViews": 10000,
     "Topics": [
       {
         "Title": "History of Paris"
       },
       {
-        "Title": "Places to see in Paris"
+        "Title": "Places toosee in Paris"
       }
     ]
     }]
 
 ## <a name="advanced-configuration"></a>Расширенная конфигурация
-На экране расширенной конфигурации укажите расположение файла журнала, в который нужно записывать сообщения об ошибках. К этой странице применяются такие правила.
+На экране настройки дополнительных hello укажите расположение hello hello журнала файла toowhich хотелось бы записываются ошибки. Hello следующие правила применяются toothis страницы.
 
-1. Если имя файла не указано, все сообщения об ошибках возвращаются на страницу результатов.
-2. Если указано имя файла, но не указан каталог, то файл будет создан (или перезаписан) в текущем каталоге среды.
-3. Если выбрать существующий файл, то файл будет перезаписан. Добавить его нельзя.
+1. Если имя файла не указано, все ошибки будет возвращаться на странице результатов hello.
+2. Если имя файла указано без каталога, затем hello файла будет быть создан (или перезаписан) в текущем каталоге среды hello.
+3. Если выбрать существующий файл, а затем hello файл будет перезаписан, нет возможности добавления.
 
-Затем укажите, какие сообщение об ошибках необходимо регистрировать в журнале — все, критические или никакие. И, наконец, решите, как часто будет обновляться сообщение о переносе данных на экране.
+Затем выберите ли все toolog критического или сообщения об ошибке. Наконец решите, как часто hello на экране передачи сообщений будет обновляться ход его выполнения.
 
     ![Screenshot of Advanced configuration screen](./media/import-data/AdvancedConfiguration.png)
 
 ## <a name="confirm-import-settings-and-view-command-line"></a>Подтверждение параметров импорта и просмотр командной строки
-1. Указав сведения об источнике и конечном объекте и настроив расширенную конфигурацию, просмотрите сводку миграции и, если нужно, просмотрите или скопируйте получившуюся команду миграции (копирование команды полезно для автоматизации операций импорта).
+1. После указания сведений об источнике информации о целевой и расширенной конфигурации, изучите Сводка по миграции hello и, при необходимости, представление или копирования hello, возникающие в команды миграции (копирование hello команда является полезным tooautomate операций импорта).
    
     ![Снимок экрана: окно сводки](./media/import-data/summary.png)
    
     ![Снимок экрана: окно сводки](./media/import-data/summarycommand.png)
-2. После проверки источника и назначения нажмите кнопку **Импорт**. Затраченное время, число передаваемых объектов и сведения об ошибках (если вы не указали имя файла при настройке расширенной конфигурации) обновляются в процессе импорта. После завершения вы можете экспортировать результаты (например, для обработки ошибок импорта).
+2. После проверки источника и назначения нажмите кнопку **Импорт**. как в процессе импорта hello обновит Hello затраченное время, число переданных и сведения о сбое (если не указать имя файла в расширенной конфигурации hello). После завершения можно экспортировать результаты hello (например toodeal сбоев импорта).
    
     ![Снимок экрана: параметры экспорта в Azure Cosmos DB JSON](./media/import-data/viewresults.png)
-3. Можно также запустить новую операцию импорта, сохранив существующие параметры (например, строку подключения, источник и назначение и т. д.) или сбросить все значения.
+3. Можно также запустить новый импорт хранение hello существующих параметров (например, выбор сведения, источник и целевой строки подключения, т. д.) или сброс всех значений.
    
     ![Снимок экрана: параметры экспорта в Azure Cosmos DB JSON](./media/import-data/newimport.png)
 
 ## <a name="next-steps"></a>Дальнейшие действия
 
-В этом руководстве вы выполнили следующее:
+В этом учебнике вы сделали hello следующее:
 
 > [!div class="checklist"]
-> * установка средства миграции данных;
+> * Установить средство переноса данных hello
 > * импорт данных из разных источников данных;
-> * экспорт данных из Azure Cosmos DB в JSON.
+> * Экспортированный из Azure Cosmos DB tooJSON
 
-Теперь вы можете перейти к следующему руководству, из которого вы узнаете, как запрашивать данные с помощью Azure Cosmos DB. 
+Теперь можно продолжить toohello следующее руководство и узнайте, как tooquery данных с помощью Azure Cosmos DB. 
 
 > [!div class="nextstepaction"]
->[Как выполнять запросы с помощью SQL в базе данных Azure Cosmos DB](../cosmos-db/tutorial-query-documentdb.md)
+>[Как tooquery данных?](../cosmos-db/tutorial-query-documentdb.md)

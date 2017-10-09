@@ -1,4 +1,4 @@
-Полная серия статей поможет вам понять все аспекты проектирования и создать собственную инфраструктуру приложения в Azure:
+полный ряд Hello рекомендации помогает понять все hello различные вопросы проектирования для построения нашей инфраструктуру приложения в Azure:
 
 * [Рекомендации по подпискам и учетным записям Azure](../articles/virtual-machines/linux/infrastructure-subscription-accounts-guidelines.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * [Рекомендации по именованию для инфраструктуры Azure](../articles/virtual-machines/linux/infrastructure-naming-guidelines.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)

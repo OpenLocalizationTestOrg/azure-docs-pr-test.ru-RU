@@ -1,6 +1,6 @@
 ---
-title: "Устранение неполадок с заданиями Azure Data Lake Analytics с помощью портала Azure | Документация Майкрософт"
-description: "Узнайте, как использовать портал Azure для устранения неполадок с заданиями аналитики озера данных. "
+title: "задания aaaTroubleshoot аналитики Озера данных Azure, с помощью портала Azure | Документы Microsoft"
+description: "Узнайте, как toouse hello задания аналитики Озера данных tootroubleshoot портала Azure. "
 services: data-lake-analytics
 documentationcenter: 
 author: saveenr
@@ -14,20 +14,20 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 12/05/2016
 ms.author: edmaca
-ms.openlocfilehash: b9c7453cc0a94f70d0098ed83e5f127832065a62
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: e810d56bab8f1a8254721ec9906bb6a4508dc22a
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="troubleshoot-azure-data-lake-analytics-jobs-using-azure-portal"></a>Устранение неполадок с заданиями аналитики озера данных Azure с помощью портала Azure
-Узнайте, как использовать портал Azure для устранения неполадок с заданиями аналитики озера данных.
+Узнайте, как toouse hello задания аналитики Озера данных tootroubleshoot портала Azure.
 
-При прохождении этого учебника вы смоделируете проблему с отсутствующим исходным файлом и устраните ее с помощью портала Azure.
+В этом учебнике будет настроить проблемы отсутствующего файла источника и использовать hello портала Azure tootroubleshoot hello проблему.
 
 ## <a name="submit-a-data-lake-analytics-job"></a>Отправка задания аналитики озера данных
 
-Отправьте следующее задание U-SQL:
+Отправьте hello после задания U-SQL:
 
 ```
 @searchlog =
@@ -42,38 +42,38 @@ ms.lasthandoff: 07/11/2017
    USING Extractors.Tsv();
 
 OUTPUT @searchlog   
-   TO "/output/SearchLog-from-adls.csv"
+   too"/output/SearchLog-from-adls.csv"
    USING Outputters.Csv();
 ```
     
-В сценарии определен исходный файл **/Samples/Data/SearchLog.tsv1**, а должен быть **/Samples/Data/SearchLog.tsv**.
+Hello является исходным файлом, определенных в скрипте hello **/Samples/Data/SearchLog.tsv1**, где она должна быть **/Samples/Data/SearchLog.tsv**.
 
 
-## <a name="troubleshoot-the-job"></a>Устранение неполадок задания
+## <a name="troubleshoot-hello-job"></a>Диагностика заданий hello
 
-**Просмотр всех заданий**
+**toosee все hello заданий**
 
-1. На портале Azure щелкните **Microsoft Azure** в левом верхнем углу.
-2. Щелкните элемент с именем вашей учетной записи аналитики озера данных.  Сводные данные задания отображаются на элементе **Управление заданиями** .
+1. Hello портал Azure, щелкните **Microsoft Azure** в верхнем левом углу hello.
+2. Щелкните плитку hello имя вашей учетной записи аналитики Озера данных.  Сводка по заданию Hello отображается на hello **управление заданиями** плитки.
 
     ![Аналитика озера данных Azure: управление заданиями](./media/data-lake-analytics-monitor-and-troubleshoot-tutorial/data-lake-analytics-job-management.png)
 
-    Элемент управления заданиями позволяет взглянуть на состояние заданий. Обратите внимание, что здесь имеется задание, завершившееся сбоем.
-3. Щелкните элемент **Управление заданиями** для просмотра заданий. Задания делятся на три категории: **Выполняется**, **В очереди** и **Завершено**. Задание, завершившееся сбоем, будет отображено в разделе **Завершено** . Оно должно быть первым в списке. При наличии большого числа заданий можно щелкнуть **Фильтр** , чтобы упростить их поиск.
+    Задание Hello управления позволяет быстро hello состояние задания. Обратите внимание, что здесь имеется задание, завершившееся сбоем.
+3. Нажмите кнопку hello **управление заданиями** плитки toosee hello заданий. задания Hello разделены на **под управлением**, **в очереди**, и **завершено**. Вы увидите сбоя задания в hello **завершено** раздела. Это должен быть первый в списке hello. Если у вас много заданий, можно щелкнуть **фильтра** toohelp вы toolocate заданий.
 
     ![Аналитика озера данных Azure: фильтрация заданий](./media/data-lake-analytics-monitor-and-troubleshoot-tutorial/data-lake-analytics-filter-jobs.png)
-4. Щелкните невыполненное задание из списка, чтобы открыть сведения о задании в новой колонке:
+4. Щелкните hello невыполненного задания с hello tooopen список hello сведений о задании в Новая колонка:
 
     ![Аналитика озера данных Azure: невыполненное задание](./media/data-lake-analytics-monitor-and-troubleshoot-tutorial/data-lake-analytics-failed-job.png)
 
-    Обратите внимание на кнопку **Отправить повторно** . После устранения проблемы можно отправить задание повторно.
-5. Щелкните выделенную часть на предыдущем снимке экрана, чтобы открыть сведения об ошибке.  Отобразится примерно следующий текст:
+    Обратите внимание hello **повторно отправить** кнопки. После устранения проблемы hello, можно повторно отправить задания hello.
+5. Щелкните выделенную часть из hello предыдущего экрана tooopen hello сведения об ошибке.  Отобразится примерно следующий текст:
 
     ![Аналитика озера данных Azure: сведения о невыполненном задании](./media/data-lake-analytics-monitor-and-troubleshoot-tutorial/data-lake-analytics-failed-job-details.png)
 
-    В нем сообщается, что исходная папка не найдена.
+    Оно сообщает, что исходная папка hello не найден.
 6. Щелкните **Дублировать скрипт**.
-7. Измените путь **FROM** на:
+7. Обновление hello **FROM** toohello следующие пути:
 
     /Samples/Data/SearchLog.tsv
 8. Щелкните **Отправить задание**.

@@ -1,6 +1,6 @@
 ---
-title: "Приступая к работе с Центрами уведомлений Azure для приложений Kindle | Документация Майкрософт"
-description: "Из этого учебника вы узнаете, как использовать Центры уведомлений Azure для отправки push-уведомлений в приложение Kindle."
+title: "aaaGet работы с концентраторами уведомлений Azure для Kindle приложений | Документы Microsoft"
+description: "В этом учебнике вы узнаете, как концентраторы уведомлений Azure toosend toouse push-уведомления tooa электронная версия приложения."
 services: notification-hubs
 documentationcenter: 
 author: ysxu
@@ -14,56 +14,56 @@ ms.devlang: Java
 ms.topic: hero-article
 ms.date: 06/29/2016
 ms.author: yuaxu
-ms.openlocfilehash: 7206f152ed7270abc62536a9ee164f7227833bcc
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 7c28d64372cd2d90bab9cd9bf818d333f3478f7b
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="get-started-with-notification-hubs-for-kindle-apps"></a>Приступая к работе с Центрами уведомлений для приложений Kindle
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
 
 ## <a name="overview"></a>Обзор
-В этом учебнике показано, как использовать Центры уведомлений Azure для отправки push-уведомлений в приложение Kindle.
+Этот учебник показывает, как концентраторы уведомлений Azure toosend toouse push-уведомления tooa электронная версия приложения.
 Вы создаете пустое приложение Kindle, которое получает push-уведомления с помощью Amazon Device Messaging (ADM).
 
 ## <a name="prerequisites"></a>Предварительные требования
-Для работы с данным учебником требуется следующее:
+Этот учебник требует hello следующее:
 
-* Скачайте пакет SDK Android (предполагается, что вы будете использовать Eclipse) с <a href="http://go.microsoft.com/fwlink/?LinkId=389797">сайта Android</a>.
-* Следуйте указаниям, приведенным в статье <a href="https://developer.amazon.com/appsandservices/resources/development-tools/ide-tools/tech-docs/01-setting-up-your-development-environment">Настройка среды разработки</a>, для настройки среды разработки для Kindle.
+* Получение hello пакета SDK для Android (предполагается, что используется Eclipse) из hello <a href="http://go.microsoft.com/fwlink/?LinkId=389797">Android сайта</a>.
+* Следуйте указаниям hello <a href="https://developer.amazon.com/appsandservices/resources/development-tools/ide-tools/tech-docs/01-setting-up-your-development-environment">параметр вверх разработки среды</a> tooset среды разработки для Kindle.
 
-## <a name="add-a-new-app-to-the-developer-portal"></a>Добавление нового приложения на портал разработчика
-1. Для начала создайте приложение на [портале разработчика Amazon].
+## <a name="add-a-new-app-toohello-developer-portal"></a>Добавить новый портал для разработчиков приложений toohello
+1. Во-первых, создайте приложение в hello [портала для разработчиков Amazon].
    
     ![][0]
-2. Скопируйте **ключ приложения**.
+2. Копировать hello **ключ приложения**.
    
     ![][1]
-3. На портале щелкните название вашего приложения, затем перейдите на вкладку **Device Messaging** .
+3. На портале hello, щелкните имя приложения hello и нажмите кнопку hello **обмена сообщениями на устройстве** вкладки.
    
     ![][2]
 4. Щелкните **Создать новый профиль безопасности**, затем создайте профиль безопасности (например, **Профиль безопасности TestAdm**). Нажмите кнопку **Сохранить**.
    
     ![][3]
-5. Щелкните **Профили безопасности** для просмотра только что созданного профиля. Скопируйте значения **Код клиента** и **Секрет клиента** для последующего использования.
+5. Нажмите кнопку **профили безопасности** tooview hello безопасности профиль, который вы только что создали. Копировать hello **идентификатор клиента** и **секрет клиента** значения для последующего использования.
    
     ![][4]
 
 ## <a name="create-an-api-key"></a>Создание ключа API
 1. Откройте окно командной строки с правами администратора.
-2. Перейдите в папку пакета Android SDK.
-3. Введите следующую команду:
+2. Перейдите в папку toohello пакета SDK для Android.
+3. Введите следующую команду hello:
    
         keytool -list -v -alias androiddebugkey -keystore ./debug.keystore
    
     ![][5]
-4. Для пароля **keystore** введите **android**.
-5. Скопируйте отпечаток **MD5** .
-6. Вернувшись на портал разработчика, на вкладке **Обмен сообщениями** щелкните **Android/Kindle**, введите имя пакета для вашего приложения (например, **com.sample.notificationhubtest**) и значение **MD5**, а затем щелкните **Создать ключ API**.
+4. Для hello **keystore** пароль, введите **android**.
+5. Копировать hello **MD5** отпечатков пальцев.
+6. Обратно на портале разработчика hello, hello **обмен сообщениями** щелкните **Android/Kindle** и введите имя hello hello пакета приложения (например, **com.sample.notificationhubtest**) и hello **MD5** значение, а затем нажмите кнопку **создать ключ API**.
 
-## <a name="add-credentials-to-the-hub"></a>Добавление учетных данных для центра
-На портале добавьте секрет клиента и код клиента на вкладку **Настройка** центра уведомлений.
+## <a name="add-credentials-toohello-hub"></a>Добавить концентратор toohello учетные данные
+В портал hello добавьте hello клиента секрета и клиент идентификатор toohello **Настройка** вкладку центра уведомлений.
 
 ## <a name="set-up-your-application"></a>Настройка приложения
 > [!NOTE]
@@ -71,20 +71,20 @@ ms.lasthandoff: 07/11/2017
 > 
 > 
 
-Добавьте библиотеки ADM в проект Eclipse.
+Добавьте проект библиотеки tooyour Eclipse для hello ADM.
 
-1. Чтобы получить библиотеку ADM, [загрузите пакет SDK]. Распакуйте ZIP-файл пакета SDK.
-2. В Eclipse щелкните правой кнопкой мыши по проекту и выберите **Свойства**. Выберите **путь построения Java** в левой части экрана и выберите ** библиотеки ** вверху вкладку. Щелкните **Add External Jar** (Добавить внешний JAR-файл) и выберите файл `\SDK\Android\DeviceMessaging\lib\amazon-device-messaging-*.jar` из каталога, в который вы распаковали пакет SDK Amazon.
-3. Загрузите пакет NotificationHubs Android SDK (ссылка).
-4. Извлеките содержимое пакета, а затем перетащите файл `notification-hubs-sdk.jar` в папку `libs` в Eclipse.
+1. Библиотека ADM hello tooobtain, [загрузить hello SDK]. Извлеките ZIP-файл пакета SDK для hello.
+2. В Eclipse щелкните правой кнопкой мыши по проекту и выберите **Свойства**. Выберите **путь построения Java** hello слева и выберите hello ** библиотеки ** вкладку вверху hello. Нажмите кнопку **добавить внешний Jar**и выберите hello файл `\SDK\Android\DeviceMessaging\lib\amazon-device-messaging-*.jar` из каталога hello извлечен hello Amazon SDK.
+3. Загрузите hello NotificationHubs пакета SDK для Android (ссылка).
+4. Распакуйте пакет hello, а затем перетащите файл hello `notification-hubs-sdk.jar` в hello `libs` папки в Eclipse.
 
-Изменение манифеста приложения для поддержки ADM
+Измените ADM манифеста toosupport вашего приложения.
 
-1. Добавьте пространство имен Amazon в корневом элементе манифеста.
+1. Добавьте пространство имен Amazon hello в hello корневого манифеста элемента:
 
         xmlns:amazon="http://schemas.amazon.com/apk/res/android"
 
-1. Добавьте разрешения в качестве первого элемента в элементе манифеста. Вместо **[YOUR PACKAGE NAME]** укажите пакет, который вы используете для создания приложения.
+1. Добавьте разрешения в качестве hello первый элемент в элементе манифеста hello. Замена **[ПАКЕТА имя]** с hello пакета используется toocreate приложения.
    
         <permission
          android:name="[YOUR PACKAGE NAME].permission.RECEIVE_ADM_MESSAGE"
@@ -94,13 +94,13 @@ ms.lasthandoff: 07/11/2017
    
         <uses-permission android:name="[YOUR PACKAGE NAME].permission.RECEIVE_ADM_MESSAGE" />
    
-        <!-- This permission allows your app access to receive push notifications
+        <!-- This permission allows your app access tooreceive push notifications
         from ADM. -->
         <uses-permission android:name="com.amazon.device.messaging.permission.RECEIVE" />
    
-        <!-- ADM uses WAKE_LOCK to keep the processor from sleeping when a message is received. -->
+        <!-- ADM uses WAKE_LOCK tookeep hello processor from sleeping when a message is received. -->
         <uses-permission android:name="android.permission.WAKE_LOCK" />
-2. Вставьте приведенный ниже элемент в качестве первого потомка элемента приложения. Не забудьте заменить **[YOUR SERVICE NAME]** именем обработчика сообщений ADM, который будет создан в следующем разделе (включая пакет), а **[YOUR PACKAGE NAME]** именем пакета, с помощью которого создается приложение.
+2. Вставьте следующий элемент как первый дочерний элемент приложения hello hello hello. Помните, toosubstitute **[имя службы]** с именем hello ADM обработчика сообщений, которые создаются в следующем разделе hello (включая пакет hello) и замените **[ПАКЕТА имя]** с hello Имя пакета, в котором для создания приложения.
    
         <amazon:enable-feature
               android:name="com.amazon.device.messaging"
@@ -115,21 +115,21 @@ ms.lasthandoff: 07/11/2017
             <!-- This permission ensures that only ADM can send your app registration broadcasts. -->
             android:permission="com.amazon.device.messaging.permission.SEND" >
    
-            <!-- To interact with ADM, your app must listen for the following intents. -->
+            <!-- toointeract with ADM, your app must listen for hello following intents. -->
             <intent-filter>
           <action android:name="com.amazon.device.messaging.intent.REGISTRATION" />
           <action android:name="com.amazon.device.messaging.intent.RECEIVE" />
    
-          <!-- Replace the name in the category tag with your app's package name. -->
+          <!-- Replace hello name in hello category tag with your app's package name. -->
           <category android:name="[YOUR PACKAGE NAME]" />
             </intent-filter>
         </receiver>
 
 ## <a name="create-your-adm-message-handler"></a>Создание обработчика сообщений ADM
-1. Создайте новый класс с наследованием от `com.amazon.device.messaging.ADMMessageHandlerBase` и назовите его `MyADMMessageHandler`, как показано на следующем рисунке.
+1. Создайте новый класс, наследующий от `com.amazon.device.messaging.ADMMessageHandlerBase` и назовите его `MyADMMessageHandler`, как показано в следующий рисунок hello:
    
     ![][6]
-2. Добавьте следующие операторы `import` :
+2. Добавьте следующее hello `import` инструкции:
    
         import android.app.NotificationManager;
         import android.app.PendingIntent;
@@ -138,7 +138,7 @@ ms.lasthandoff: 07/11/2017
         import android.support.v4.app.NotificationCompat;
         import com.amazon.device.messaging.ADMMessageReceiver;
         import com.microsoft.windowsazure.messaging.NotificationHub
-3. Добавьте в созданный класс приведенный ниже код. Не забудьте подставить имя центра и строку подключения (listen).
+3. Добавьте следующий код в созданный класс hello hello. Запомните toosubstitute hello концентратора имя и строку соединения (прослушивания):
    
         public static final int NOTIFICATION_ID = 1;
         private NotificationManager mNotificationManager;
@@ -184,28 +184,28 @@ ms.lasthandoff: 07/11/2017
              mBuilder.setContentIntent(contentIntent);
              mNotificationManager.notify(NOTIFICATION_ID, mBuilder.build());
         }
-4. Добавьте в метод `OnMessage()` следующий код:
+4. Добавьте следующий код toohello hello `OnMessage()` метод:
    
         String nhMessage = intent.getExtras().getString("msg");
         sendNotification(nhMessage);
-5. Добавьте в метод `OnRegistered` следующий код:
+5. Добавьте следующий код toohello hello `OnRegistered` метод:
    
             try {
         getNotificationHub(getApplicationContext()).register(registrationId);
             } catch (Exception e) {
         Log.e("[your package name]", "Fail onRegister: " + e.getMessage(), e);
             }
-6. Добавьте в метод `OnUnregistered` следующий код:
+6. Добавьте следующий код toohello hello `OnUnregistered` метод:
    
          try {
              getNotificationHub(getApplicationContext()).unregister();
          } catch (Exception e) {
              Log.e("[your package name]", "Fail onUnregister: " + e.getMessage(), e);
          }
-7. Затем в методе `MainActivity` добавьте следующую инструкцию import:
+7. В hello `MainActivity` метод, добавьте следующие инструкции import hello:
    
         import com.amazon.device.messaging.ADM;
-8. В конец метода `OnCreate` добавьте следующий код:
+8. Добавьте следующий код в конце hello hello hello `OnCreate` метод:
    
         final ADM adm = new ADM(this);
         if (adm.getRegistrationId() == null)
@@ -225,24 +225,24 @@ ms.lasthandoff: 07/11/2017
                }.execute(null, null, null);
         }
 
-## <a name="add-your-api-key-to-your-app"></a>Добавление ключа API в приложение
-1. В Eclipse создайте новый файл с именем **api_key.txt** в активах каталога проекта.
-2. Откройте файл и скопируйте ключ API, созданный на портале разработчика Amazon.
+## <a name="add-your-api-key-tooyour-app"></a>Добавить приложение tooyour ключа API
+1. В Eclipse, создайте новый файл с именем **api_key.txt** в ресурсах hello каталог проекта.
+2. Привет открыть файл и скопируйте hello API ключ, который был создан в портале для разработчиков Amazon hello.
 
-## <a name="run-the-app"></a>Запуск приложения
-1. Запустите эмулятор.
-2. В эмуляторе сверху щелкните **Параметры**, затем **Моя учетная запись** и зарегистрируйтесь с использованием действующей учетной записи Amazon.
-3. В Eclipse запустите приложение.
+## <a name="run-hello-app"></a>Выполните приложение hello
+1. Запустите эмулятор hello.
+2. В эмуляторе hello проведите сверху hello и нажмите кнопку **параметры**, а затем нажмите кнопку **моей учетной записи** и зарегистрировать с помощью действительной учетной записи Amazon.
+3. В Eclipse запустите приложение hello.
 
 > [!NOTE]
-> Если возникает проблема, проверьте время эмулятора (или устройства). Значение времени должно быть точным. Для изменения времени эмулятора Kindle выполните следующую команду из каталога средств для платформы Android SDK:
+> Если возникнут проблемы, проверьте время hello эмулятор hello (или устройства). значение времени Hello должно быть точным. время hello toochange hello электронная версия эмулятора, можно запустить следующую команду из каталога средства платформы Android SDK hello:
 > 
 > 
 
         adb shell  date -s "yyyymmdd.hhmmss"
 
 ## <a name="send-a-message"></a>Отправка сообщения
-Чтобы отправить сообщение с помощью .NET, используйте следующий код:
+toosend сообщения с помощью .NET:
 
         static void Main(string[] args)
         {
@@ -254,8 +254,8 @@ ms.lasthandoff: 07/11/2017
 ![][7]
 
 <!-- URLs. -->
-[портале разработчика Amazon]: https://developer.amazon.com/home.html
-[загрузите пакет SDK]: https://developer.amazon.com/public/resources/development-tools/sdk
+[портала для разработчиков Amazon]: https://developer.amazon.com/home.html
+[загрузить hello SDK]: https://developer.amazon.com/public/resources/development-tools/sdk
 
 [0]: ./media/notification-hubs-kindle-get-started/notification-hub-kindle-portal1.png
 [1]: ./media/notification-hubs-kindle-get-started/notification-hub-kindle-portal2.png

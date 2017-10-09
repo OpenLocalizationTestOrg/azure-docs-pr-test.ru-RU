@@ -1,6 +1,6 @@
 ---
-title: "Создание виртуальных машин Windows и управление ими с помощью модуля Azure PowerShell | Документация Майкрософт"
-description: "Руководство по созданию виртуальных машин Windows и управлению ими с помощью модуля Azure PowerShell."
+title: "aaaCreate и управление виртуальными машинами Windows с hello модуля Azure PowerShell | Документы Microsoft"
+description: "Учебник — Создание и управление виртуальными машинами Windows с hello модуля Azure PowerShell"
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: neilpeterson
@@ -16,40 +16,40 @@ ms.workload: infrastructure
 ms.date: 05/02/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: ec1bb7834beb66dc28dd5b1db764bd358243292c
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 20adcb673ef4de683e6ad82d048a9625a1dc838c
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="create-and-manage-windows-vms-with-the-azure-powershell-module"></a>Создание виртуальных машин Windows и управление ими с помощью модуля Azure PowerShell
+# <a name="create-and-manage-windows-vms-with-hello-azure-powershell-module"></a>Создание и управление виртуальными машинами Windows с hello модуля Azure PowerShell
 
 Виртуальные машины Azure предоставляют полностью настраиваемую и гибкую вычислительную среду. В этом руководстве рассматриваются основные элементы развертывания виртуальной машины Azure, например выбор ее размера, образа и ее развертывание. Вы узнаете, как выполнять следующие задачи:
 
 > [!div class="checklist"]
-> * Создание виртуальной машины и подключение к ней
+> * Создать и присоединить tooa виртуальной Машины
 > * Выбор и использование образов виртуальных машин
 > * Просмотр и использование определенных размеров виртуальных машин
 > * Изменение размера виртуальной машины
 > * Просмотр виртуальной машины и оценка ее состояния
 
-Для работы с этим руководством требуется модуль Azure PowerShell версии не ниже 3.6. Чтобы узнать версию, выполните команду ` Get-Module -ListAvailable AzureRM`. Если вам необходимо выполнить обновление, ознакомьтесь со статьей, посвященной [установке модуля Azure PowerShell](/powershell/azure/install-azurerm-ps).
+Этот учебник требует hello Azure PowerShell модуль версии 3.6 или более поздней версии. Запустите ` Get-Module -ListAvailable AzureRM` версии toofind hello. Получить tooupgrade [установите Azure PowerShell модуль](/powershell/azure/install-azurerm-ps).
 
 ## <a name="create-resource-group"></a>Создать группу ресурсов
 
-Создайте группу ресурсов с помощью команды [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup). 
+Создание группы ресурсов с hello [New AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) команды. 
 
-Группа ресурсов Azure является логическим контейнером, в котором происходит развертывание ресурсов Azure и управление ими. Группу ресурсов следует создавать до виртуальной машины. В этом примере создается группа ресурсов с именем *myResourceGroupVM* в регионе *EastUS*. 
+Группа ресурсов Azure является логическим контейнером, в котором происходит развертывание ресурсов Azure и управление ими. Группу ресурсов следует создавать до виртуальной машины. В этом примере имя группы ресурсов *myResourceGroupVM* создается в hello *EastUS* области. 
 
 ```powershell
 New-AzureRmResourceGroup -ResourceGroupName myResourceGroupVM -Location EastUS
 ```
 
-Группа ресурсов указывается при создании или изменении виртуальной машины, что показывается в этом руководстве.
+Группа ресурсов Hello указывается при создании или изменении виртуальных Машин, который можно увидеть на протяжении этого учебника.
 
 ## <a name="create-virtual-machine"></a>Создание виртуальной машины
 
-Виртуальная машина должна быть подключена к виртуальной сети. Взаимодействие с виртуальной машиной осуществляется через сетевой адаптер, к которому привязан общедоступный IP-адрес.
+Виртуальная машина должна быть tooa подключенной виртуальной сети. Взаимодействовать с виртуальной машиной hello, используя общедоступный IP-адрес через сетевой адаптер.
 
 ### <a name="create-virtual-network"></a>Создание виртуальной сети
 
@@ -98,9 +98,9 @@ $nic = New-AzureRmNetworkInterface `
 
 ### <a name="create-network-security-group"></a>Создание группы безопасности сети
 
-[Группа безопасности сети](../../virtual-network/virtual-networks-nsg.md) Azure управляет входящим и исходящим трафиком одной или нескольких виртуальных машин. Правила группы безопасности сети разрешают или запрещают передачу сетевого трафика на определенный порт или диапазон портов. Эти правила также могут включать префикс адреса источника, чтобы на виртуальную машину передавался только трафик от определенного источника. Для доступа к веб-серверу IIS, который вы устанавливаете, необходимо добавить правило группы безопасности сети для входящего трафика.
+[Группа безопасности сети](../../virtual-network/virtual-networks-nsg.md) Azure управляет входящим и исходящим трафиком одной или нескольких виртуальных машин. Правила группы безопасности сети разрешают или запрещают передачу сетевого трафика на определенный порт или диапазон портов. Эти правила также могут включать префикс адреса источника, чтобы на виртуальную машину передавался только трафик от определенного источника. tooaccess hello IIS веб-сервер, установке, необходимо добавить правило для входящего трафика NSG.
 
-Чтобы создать его, используйте командлет [Add-AzureRmNetworkSecurityRuleConfig](/powershell/module/azurerm.network/add-azurermnetworksecurityruleconfig). Следующий пример создает правило NSG *myNSGRule*, которое открывает порт *3389* для виртуальной машины.
+использовать toocreate входящее правило NSG [AzureRmNetworkSecurityRuleConfig добавить](/powershell/module/azurerm.network/add-azurermnetworksecurityruleconfig). Hello следующий пример создает NSG правило с именем *myNSGRule* , открывает порт *3389* для hello виртуальной машины:
 
 ```powershell
 $nsgRule = New-AzureRmNetworkSecurityRuleConfig `
@@ -115,7 +115,7 @@ $nsgRule = New-AzureRmNetworkSecurityRuleConfig `
   -Access Allow
 ```
 
-Создайте группу безопасности сети *myNSGRule* с помощью командлета [New-AzureRmNetworkSecurityGroup](/powershell/module/azurerm.network/new-azurermnetworksecuritygroup).
+Создание с помощью NSG hello *myNSGRule* с [New AzureRmNetworkSecurityGroup](/powershell/module/azurerm.network/new-azurermnetworksecuritygroup):
 
 ```powershell
 $nsg = New-AzureRmNetworkSecurityGroup `
@@ -125,7 +125,7 @@ $nsg = New-AzureRmNetworkSecurityGroup `
     -SecurityRules $nsgRule
 ```
 
-Добавьте группу безопасности сети в подсеть виртуальной сети с помощью командлета [Set-AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/set-azurermvirtualnetworksubnetconfig):
+Добавить подсеть toohello NSG hello в hello виртуальной сети с [AzureRmVirtualNetworkSubnetConfig набор](/powershell/module/azurerm.network/set-azurermvirtualnetworksubnetconfig):
 
 ```powershell
 Set-AzureRmVirtualNetworkSubnetConfig `
@@ -135,7 +135,7 @@ Set-AzureRmVirtualNetworkSubnetConfig `
     -AddressPrefix 192.168.1.0/24
 ```
 
-Обновите виртуальную сеть, используя командлет [Set-AzureRmVirtualNetwork](/powershell/module/azurerm.network/set-azurermvirtualnetwork):
+Обновление hello виртуальную сеть с [AzureRmVirtualNetwork набор](/powershell/module/azurerm.network/set-azurermvirtualnetwork):
 
 ```powershell
 Set-AzureRmVirtualNetwork -VirtualNetwork $vnet
@@ -143,21 +143,21 @@ Set-AzureRmVirtualNetwork -VirtualNetwork $vnet
 
 ### <a name="create-virtual-machine"></a>Создание виртуальной машины
 
-При создании виртуальной машины доступно несколько вариантов, таких как образ операционной системы, определение размера диска и учетные данные администратора. В этом примере создается виртуальная машина *myVM*, на которой выполняется последняя версия Windows Server 2016 Datacenter.
+При создании виртуальной машины доступно несколько вариантов, таких как образ операционной системы, определение размера диска и учетные данные администратора. В этом примере создается виртуальная машина с именем *myVM* выполнение hello последнюю версию Windows Server 2016 Datacenter.
 
-Настройте на виртуальной машине имя пользователя и пароль для учетной записи администратора с помощью командлета [Get-Credential](https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.security/Get-Credential):
+Укажите имя пользователя hello и пароль для учетной записи администратора hello на виртуальной машине hello [Get-Credential](https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.security/Get-Credential):
 
 ```powershell
 $cred = Get-Credential
 ```
 
-Создайте начальную конфигурацию виртуальной машины с помощью командлета [New-AzureRmVMConfig](/powershell/module/azurerm.compute/new-azurermvmconfig):
+Создание начальной настройки hello для hello виртуальной машины с [New AzureRmVMConfig](/powershell/module/azurerm.compute/new-azurermvmconfig):
 
 ```powershell
 $vm = New-AzureRmVMConfig -VMName myVM -VMSize Standard_D1
 ```
 
-Добавьте сведения об операционной системе в конфигурацию виртуальной машины с помощью командлета [Set-AzureRmVMOperatingSystem](/powershell/module/azurerm.compute/set-azurermvmoperatingsystem):
+Добавить конфигурацию виртуальной машины toohello сведения операционной системы hello с [AzureRmVMOperatingSystem набор](/powershell/module/azurerm.compute/set-azurermvmoperatingsystem):
 
 ```powershell
 $vm = Set-AzureRmVMOperatingSystem `
@@ -168,7 +168,7 @@ $vm = Set-AzureRmVMOperatingSystem `
     -ProvisionVMAgent -EnableAutoUpdate
 ```
 
-Добавьте сведения об образе в конфигурацию виртуальной машины с помощью командлета [Set-AzureRmVMSourceImage](/powershell/module/azurerm.compute/set-azurermvmsourceimage):
+Добавить конфигурацию виртуальной машины toohello сведения изображения hello с [AzureRmVMSourceImage набор](/powershell/module/azurerm.compute/set-azurermvmsourceimage):
 
 ```powershell
 $vm = Set-AzureRmVMSourceImage `
@@ -179,7 +179,7 @@ $vm = Set-AzureRmVMSourceImage `
     -Version latest
 ```
 
-Добавьте сведения о настройках диска операционной системы в конфигурацию виртуальной машины с помощью командлета [Set-AzureRmVMOSDisk](/powershell/module/azurerm.compute/set-azurermvmosdisk):
+Добавить hello операционной системы диска параметры toohello конфигурация виртуальной машины с [AzureRmVMOSDisk набор](/powershell/module/azurerm.compute/set-azurermvmosdisk):
 
 ```powershell
 $vm = Set-AzureRmVMOSDisk `
@@ -190,29 +190,29 @@ $vm = Set-AzureRmVMOSDisk `
     -Caching ReadWrite
 ```
 
-Добавьте ранее созданный сетевой адаптер в конфигурацию виртуальной машины с помощью командлета [Add-AzureRmVMNetworkInterface](/powershell/module/azurerm.compute/add-azurermvmnetworkinterface):
+Добавить hello сетевого интерфейса, созданный ранее toohello конфигурация виртуальной машины с [AzureRmVMNetworkInterface добавить](/powershell/module/azurerm.compute/add-azurermvmnetworkinterface):
 
 ```powershell
 $vm = Add-AzureRmVMNetworkInterface -VM $vm -Id $nic.Id
 ```
 
-Создайте виртуальную машину с помощью командлета [New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm).
+Создание виртуальной машины hello с [New AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm).
 
 ```powershell
 New-AzureRmVM -ResourceGroupName myResourceGroupVM -Location EastUS -VM $vm
 ```
 
-## <a name="connect-to-vm"></a>Подключение к виртуальной машине
+## <a name="connect-toovm"></a>Подключение tooVM
 
-После завершения развертывания создайте подключение к удаленному рабочему столу виртуальной машины.
+После завершения развертывания hello создания удаленного рабочего стола с виртуальной машиной hello.
 
-Выполните приведенные ниже команды, чтобы получить общедоступный IP-адрес виртуальной машины. Запишите этот IP-адрес. Он потребуется, чтобы подключиться к виртуальной машине в браузере и проверить возможность подключения к Интернету на следующем этапе.
+Выполните следующие команды tooreturn hello общедоступный IP-адрес виртуальной машины hello hello. Запишите этот IP-адрес для подключения tooit с вашего браузера tootest соединения через сеть на следующем шаге.
 
 ```powershell
 Get-AzureRmPublicIpAddress -ResourceGroupName myResourceGroupVM  | Select IpAddress
 ```
 
-Используйте следующую команду для создания сеанса удаленного рабочего стола с виртуальной машиной. Замените IP-адрес значением *publicIPAddress* виртуальной машины. При появлении запроса введите учетные данные, использованные при создании виртуальной машины.
+Используйте hello следующая команда toocreate сеанс удаленного рабочего стола с виртуальной машиной hello. Замените hello hello IP-адрес *publicIPAddress* вашей виртуальной машины. При появлении запроса введите hello учетные данные, используемые при создании виртуальной машины hello.
 
 ```powershell
 mstsc /v:<publicIpAddress>
@@ -220,15 +220,15 @@ mstsc /v:<publicIpAddress>
 
 ## <a name="understand-vm-images"></a>Описание образов виртуальных машин
 
-Azure Marketplace содержит множество образов виртуальных машин, которые можно использовать для создания виртуальной машины. На предыдущих шагах виртуальная машина создавалась с помощью образа Windows Server 2016-Datacenter. На этом шаге модуль PowerShell используется для поиска других образов Windows на сайте Marketplace, которые можно также использовать для создания виртуальных машин. Этот процесс состоит из поиска издателя, предложения и имени образа (SKU). 
+Hello Azure marketplace включает много образы виртуальных машин, которые можно использовать toocreate новой виртуальной машины. В предыдущих шагах hello виртуальная машина создана с помощью образа Windows Server 2016 — Datacenter hello. На этом этапе модуль PowerShell hello — магазин hello toosearch используется для других образов Windows, которые можно также в качестве базы для новых виртуальных машин. Этот процесс состоит из поиск hello издателя, предложения и имя образа hello (конфигурация). 
 
-Используйте команду [Get-AzureRmVMImagePublisher](/powershell/module/azurerm.compute/get-azurermvmimagepublisher), чтобы получить список издателей образов.  
+Используйте hello [Get AzureRmVMImagePublisher](/powershell/module/azurerm.compute/get-azurermvmimagepublisher) tooreturn команда список издателей изображения.  
 
 ```powersehll
 Get-AzureRmVMImagePublisher -Location "EastUS"
 ```
 
-Используйте команду [Get-AzureRmVMImageOffer](/powershell/module/azurerm.compute/get-azurermvmimageoffer), чтобы получить список предложений образов. С помощью этой команды возвращается список, отфильтрованный по указанному издателю. 
+Используйте hello [Get AzureRmVMImageOffer](/powershell/module/azurerm.compute/get-azurermvmimageoffer) tooreturn список предложений изображения. С помощью этой команды hello вернуть список будет отфильтрован по указанным издателем hello. 
 
 ```powershell
 Get-AzureRmVMImageOffer -Location "EastUS" -PublisherName "MicrosoftWindowsServer"
@@ -242,7 +242,7 @@ WindowsServer     MicrosoftWindowsServer EastUS
 WindowsServer-HUB MicrosoftWindowsServer EastUS   
 ```
 
-Команда [Get-AzureRmVMImageSku](/powershell/module/azurerm.compute/get-azurermvmimagesku) отфильтрует список по имени издателя и названию предложения, отобразив список имен образов.
+Hello [Get AzureRmVMImageSku](/powershell/module/azurerm.compute/get-azurermvmimagesku) команды используется затем для фильтрации tooreturn имя издателя и предложение hello списка имен образов.
 
 ```powershell
 Get-AzureRmVMImageSku -Location "EastUS" -PublisherName "MicrosoftWindowsServer" -Offer "WindowsServer"
@@ -263,7 +263,7 @@ Skus                            Offer         PublisherName          Location
 2016-Nano-Server                WindowsServer MicrosoftWindowsServer EastUS
 ```
 
-Эти сведения можно использовать для развертывания виртуальной машины на основе конкретного образа. В этом примере задается имя образа для объекта виртуальной машины. Полные инструкции по развертыванию приведены в предыдущих примерах в этом руководстве.
+Эти сведения можно использовать toodeploy виртуальной Машины с помощью специального образа. В этом примере задает имя образа hello hello объекта виртуальной Машины. См. в этом учебнике шаги завершения развертывания toohello предыдущих примерах.
 
 ```powershell
 $vm = Set-AzureRmVMSourceImage `
@@ -276,17 +276,17 @@ $vm = Set-AzureRmVMSourceImage `
 
 ## <a name="understand-vm-sizes"></a>Описание размеров виртуальных машин
 
-Размер виртуальной машины определяет количество выделяемых ей вычислительных ресурсов, таких как ЦП, GPU и память. Виртуальные машины нужно создавать с размером, подходящим для ожидаемой рабочей нагрузки. При увеличении рабочей нагрузки размер существующей виртуальной машины может быть изменен.
+Размер виртуальной машины определяет hello объем вычислительных ресурсов, таких как ЦП, графического Процессора и памяти, сделанные доступными toohello виртуальной машины. Виртуальные машины должны toobe создана с размером соответствующего для hello ожидать рабочей нагрузки. При увеличении рабочей нагрузки размер существующей виртуальной машины может быть изменен.
 
 ### <a name="vm-sizes"></a>Размеры виртуальных машин
 
-В приведенной ниже таблицы указаны категории размеров и примеры использования.  
+в следующей таблице Hello относит размеры вариантов использования.  
 
 | Тип                     | Размеры           |    Описание       |
 |--------------------------|-------------------|------------------------------------------------------------------------------------------------------------------------------------|
-| Универсальные         |DSv2, Dv2, DS, D, Av2, A0–A7| Сбалансированное соотношение ресурсов ЦП и памяти. Идеально подходят для разработки и тестирования малых и средних приложений и решений для обработки данных.  |
+| Универсальные         |DSv2, Dv2, DS, D, Av2, A0–A7| Сбалансированное соотношение ресурсов ЦП и памяти. Идеально подходит для разработки и тестирования и малого toomedium приложениям и данным решения.  |
 | Оптимизированные для вычислений      | Fs, F             | Высокое соотношение ресурсов ЦП и памяти. Подходят для приложений со средним объемом трафика, сетевых устройств и пакетных процессов.        |
-| Оптимизированные для памяти       | GS, G, DSv2, DS, Dv2, D   | Высокое соотношение ресурсов памяти и числа ядер. Отлично подходят для реляционных баз данных, кэша среднего и большого объема, а также выполняющейся в памяти аналитики.                 |
+| Оптимизированные для памяти       | GS, G, DSv2, DS, Dv2, D   | Высокое соотношение ресурсов памяти и числа ядер. Идеально подходит для реляционных баз данных, кэши средний toolarge и аналитики в памяти.                 |
 | Оптимизированные для хранилища       | Ls                | Высокая пропускная способность дисков и количество операций ввода-вывода. Идеальный вариант для работы с большими данными, а также с базами данных SQL и NoSQL.                                                         |
 | Графический процессор           | NV, NC            | Специализированные виртуальные машины, предназначенные для ресурсоемкой отрисовки изображений и редактирования видео.       |
 | Высокопроизводительные | H, A8–A11          | Виртуальные машины с самыми мощными ЦП, для которых можно настроить сетевые интерфейсы с высокой пропускной способностью (RDMA). 
@@ -294,7 +294,7 @@ $vm = Set-AzureRmVMSourceImage `
 
 ### <a name="find-available-vm-sizes"></a>Поиск всех доступных размеров виртуальных машин
 
-Чтобы просмотреть список доступных размеров виртуальных машин в определенном регионе, используйте команду [Get-AzureRmVMSize](/powershell/module/azurerm.compute/get-azurermvmsize).
+toosee список виртуальных Машин размеров, доступных в определенном регионе, используйте hello [Get AzureRmVMSize](/powershell/module/azurerm.compute/get-azurermvmsize) команды.
 
 ```powershell
 Get-AzureRmVMSize -Location EastUS
@@ -302,15 +302,15 @@ Get-AzureRmVMSize -Location EastUS
 
 ## <a name="resize-a-vm"></a>Изменение размера виртуальной машины
 
-После развертывания виртуальной машины ее размер можно изменить, чтобы увеличить или уменьшить выделенные ей ресурсы.
+После развертывания виртуальной Машины, ее можно изменять размер tooincrease или уменьшить выделения ресурсов.
 
-Перед изменением размера виртуальной машины проверьте, доступен ли желаемый размер в текущем кластере виртуальных машин. Команда [Get-AzureRmVMSize](/powershell/module/azurerm.compute/get-azurermvmsize) возвращает список размеров. 
+Перед изменением размера виртуальной Машины, проверьте hello желаемый размер доступен на hello текущего кластера виртуальных Машин. Hello [Get AzureRmVMSize](/powershell/module/azurerm.compute/get-azurermvmsize) команда возвращает список размеров. 
 
 ```powershell
 Get-AzureRmVMSize -ResourceGroupName myResourceGroupVM -VMName myVM 
 ```
 
-Если желаемый размер доступен, то размер виртуальной машины можно изменить во включенном состоянии, однако виртуальную машину нужно будет перезагрузить.
+При желании hello, что он доступен hello виртуальной Машины могут быть изменены из состояния включении, однако он не будет перезагружен во время операции hello.
 
 ```powershell
 $vm = Get-AzureRmVM -ResourceGroupName myResourceGroupVM  -VMName myVM 
@@ -318,7 +318,7 @@ $vm.HardwareProfile.VmSize = "Standard_D4"
 Update-AzureRmVM -VM $vm -ResourceGroupName myResourceGroupVM 
 ```
 
-Если желаемый размер в текущем кластере недоступен, то перед изменением размера виртуальную машину нужно освободить. Обратите внимание на то, что после повторного включения виртуальной машины все данные на временном диске будут удалены, а общедоступный IP-адрес изменится, если только не используется статический IP-адрес. 
+Если hello желаемый размер находится не на hello текущего кластера, hello ВМ потребностей, может произойти toobe освобождена до hello операцию изменения размера. Обратите внимание, что при hello виртуальная машина не будет включено обратно, удаляются все данные на диске временный hello и изменяйте hello общедоступный IP-адрес, если используется статический IP-адрес. 
 
 ```powershell
 Stop-AzureRmVM -ResourceGroupName myResourceGroupVM -Name "myVM" -Force
@@ -330,23 +330,23 @@ Start-AzureRmVM -ResourceGroupName myResourceGroupVM  -Name $vm.name
 
 ## <a name="vm-power-states"></a>Состояния включенной виртуальной машины
 
-Включенная виртуальная машина Azure может находиться в одном из многих состояний. Это состояние отражает текущее состояние виртуальной машины с точки зрения гипервизора. 
+Включенная виртуальная машина Azure может находиться в одном из многих состояний. Это состояние представляет текущее состояние hello hello виртуальной Машины с точки зрения hello hello низкоуровневой оболочки. 
 
 ### <a name="power-states"></a>Состояния включения
 
 | Состояние включения | Описание
 |----|----|
-| Starting | Указывает, что виртуальная машина запущена. |
-| Выполнение | Указывает, что виртуальная машина работает. |
-| Остановка | Указывает, что виртуальная машина останавливается. | 
-| Остановлено | Указывает, что виртуальная машина остановлена. Обратите внимание, что за виртуальные машины в остановленном состоянии по-прежнему взимается плата за вычислительные операции.  |
-| Отмена выделения | Указывает, что виртуальная машина освобождается. |
-| Освобождено | Указывает, что виртуальная машина полностью удалена из гипервизора, но по-прежнему доступна в плоскости управления. За виртуальные машины в освобожденном состоянии не взимается плата за вычислительные операции. |
-| - | Указывает, что состояние включенной виртуальной машины неизвестно. |
+| Starting | Указывает, что hello виртуальная машина запускается. |
+| Выполнение | Указывает, что выполняется hello виртуальной машины. |
+| Остановка | Указывает, что выполняется остановка виртуальной машины hello. | 
+| Остановлено | Указывает, что этот hello виртуальная машина остановлена. Обратите внимание, что виртуальные машины в состоянии остановки hello взиматься плата за вычислительные операции.  |
+| Отмена выделения | Указывает, что выполняется освобождение hello виртуальной машины. |
+| Освобождено | Указывает, что для этой виртуальной машине hello полностью удалены из hello низкоуровневой оболочки, но по-прежнему доступны в плоскости управления hello. Виртуальные машины в состоянии освобождена hello не взимается вычислений. |
+| - | Указывает на неизвестное состояние электропитания hello hello виртуальной машины. |
 
 ### <a name="find-power-state"></a>Поиск состояние включения
 
-Чтобы получить состояние конкретной виртуальной машины, используйте команду [Get-AzureRmVM](/powershell/module/azurerm.compute/get-azurermvm). Необходимо указать допустимое имя виртуальной машины и группы ресурсов. 
+состояние конкретной виртуальной Машины, используйте hello hello tooretrieve [Get AzureRmVM](/powershell/module/azurerm.compute/get-azurermvm) команды. Быть toospecify убедиться, что допустимое имя для виртуальной машины и группе ресурсов. 
 
 ```powershell
 Get-AzureRmVM `
@@ -365,7 +365,7 @@ PowerState/running
 
 ## <a name="management-tasks"></a>Задачи управления
 
-В течение жизненного цикла виртуальной машины можно выполнять задачи управления, такие как запуск, остановка или удаление виртуальной машины. Кроме того, можно создавать скрипты для автоматизации повторяющихся или сложных задач. С помощью Azure PowerShell можно выполнять множество распространенных задач управления в командной строке или в скриптах.
+Во время жизненного цикла hello виртуальной машины может понадобиться toorun задачи управления, такие как запуск, остановка или удаление виртуальной машины. Кроме того вы можете toocreate сценариев tooautomate повторяющихся или сложных задач. С помощью Azure PowerShell, многие часто встречающиеся задачи управления можно запускать из командной строки hello, или в скриптах.
 
 ### <a name="stop-virtual-machine"></a>Прекращение работы виртуальной машины
 
@@ -375,7 +375,7 @@ PowerState/running
 Stop-AzureRmVM -ResourceGroupName myResourceGroupVM -Name "myVM" -Force
 ```
 
-Если вы хотите сохранить виртуальную машину в подготовленном состоянии, задайте параметр -StayProvisioned.
+Tookeep hello виртуальной машины в подготовленное состояние, используйте параметр - StayProvisioned hello.
 
 ### <a name="start-virtual-machine"></a>Запуск виртуальной машины
 
@@ -396,13 +396,13 @@ Remove-AzureRmResourceGroup -Name myResourceGroupVM -Force
 В рамках этого руководства вы изучили основы создания виртуальной машины и управления ею. Вы узнали, как выполнять следующие задачи:
 
 > [!div class="checklist"]
-> * Создание виртуальной машины и подключение к ней
+> * Создать и присоединить tooa виртуальной Машины
 > * Выбор и использование образов виртуальных машин
 > * Просмотр и использование определенных размеров виртуальных машин
 > * Изменение размера виртуальной машины
 > * Просмотр виртуальной машины и оценка ее состояния
 
-Перейдите к следующему руководству, чтобы узнать о дисках виртуальных машин.  
+Переместить следующий учебник toolearn toohello о дисках виртуальных Машин.  
 
 > [!div class="nextstepaction"]
 > [Управление дисками Azure с помощью Azure CLI](./tutorial-manage-data-disk.md)

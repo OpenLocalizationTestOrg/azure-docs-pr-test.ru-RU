@@ -1,6 +1,6 @@
 ---
-title: "Настройка хранилища для репликации Hyper-V (с System Center VMM) в Azure с помощью Azure Site Recovery | Документация Майкрософт"
-description: "В этой статье кратко описаны шаги по настройке хранилища для репликации из Hyper-V (с VMM) в Azure с помощью Azure Site Recovery."
+title: "aaaSet копирование хранилища для Hyper-V tooAzure репликации (с System Center VMM), с помощью Azure Site Recovery | Документы Microsoft"
+description: "Собраны действия hello требуется tooset копии хранилища для Hyper-V tooAzure репликации (с помощью VMM), с помощью Azure Site Recovery"
 services: site-recovery
 documentationcenter: 
 author: rayne-wiselman
@@ -14,18 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 07/23/2017
 ms.author: raynew
-ms.openlocfilehash: af453ec27ba15ad8c59cf9f544584ad18dc0f74a
-ms.sourcegitcommit: 422efcbac5b6b68295064bd545132fcc98349d01
+ms.openlocfilehash: f2c90f3c8b0a48db1e57fefd9829d29cffff8d43
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="step-7-set-up-a-vault-for-hyper-v-replication"></a>Шаг 7. Настройка хранилища для репликации Hyper-V
 
-В этой статье описано, как настроить хранилище и указать, что именно необходимо реплицировать из локальной среды в Azure, используя службу [Azure Site Recovery](site-recovery-overview.md) на портале Azure.
+В этой статье описывается настройка хранилища tooset и укажите, какие действия tooreplicate из папки в локальной среде, с помощью hello tooAzure [Azure Site Recovery](site-recovery-overview.md) в hello портал Azure.
 
 
-Комментарии или вопросы можно добавить в конце этой статьи или на [форуме по службам восстановления Azure](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr).
+Учет комментарии и вопросы hello нижней части этой статьи, или на hello [форум по службам восстановления Azure](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr).
 
 ## <a name="create-a-recovery-services-vault"></a>Создание хранилища служб восстановления
 
@@ -35,11 +35,11 @@ ms.lasthandoff: 07/29/2017
 
 ## <a name="select-a-protection-goal"></a>Выбор целевого объекта защиты
 
-Выберите целевые объекты и место для репликации.
+Выберите объект tooreplicate, и когда необходимо tooreplicate для.
 
 1. Щелкните **Хранилища служб восстановления** > хранилище.
-2. В меню ресурсов щелкните **Site Recovery** > **Подготовка инфраструктуры** > **Цель защиты**.
-3. На странице **Protection goal** (Цель защиты) выберите **To Azure** (В Azure) > **Yes, with Hyper-V** (Да, с помощью Hyper-V). Выберите **Да**, чтобы подтвердить использование VMM. 
+2. В hello ресурсов меню, щелкните **Site Recovery** > **Подготовка инфраструктуры** > **цель защиты**.
+3. В **цель защиты**выберите **tooAzure** > **Да, с помощью Hyper-V**. Выберите **Да** вы tooconfirm nusing VMM. 
 
      ![Выбор цели](./media/vmm-to-azure-walkthrough-create-vault/choose-goals.png)
 
@@ -47,4 +47,4 @@ ms.lasthandoff: 07/29/2017
 
 ## <a name="next-steps"></a>Дальнейшие действия
 
-Перейдите к разделу [Шаг 8. Настройка исходной и целевой среды для репликации физического сервера в Azure](vmm-to-azure-walkthrough-source-target.md).
+Go слишком[Step 8: Настройка исходного и конечного](vmm-to-azure-walkthrough-source-target.md)

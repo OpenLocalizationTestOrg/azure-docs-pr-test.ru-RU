@@ -1,6 +1,6 @@
 ---
-title: "Требования Azure AD и Active Directory для Azure RemoteApp | Документация Майкрософт"
-description: "Узнайте, как настроить Active Directory для работы с Azure RemoteApp."
+title: "aaaAzure AD + требования Active Directory для Azure RemoteApp | Документы Microsoft"
+description: "Узнайте, как tooset копирование toowork Active Directory с Azure RemoteApp."
 services: remoteapp
 documentationcenter: 
 author: msmbaldwin
@@ -13,37 +13,37 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/26/2017
 ms.author: mbaldwin
-ms.openlocfilehash: 78008a032faa93795cc02b720d68a0c6f5f16e9a
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: c1c4a7ad6fb96ec4d479fdc231f03d81b58b2b71
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-ad--active-directory-requirements-for-azure-remoteapp"></a>Требования Azure AD + Active Directory для Azure RemoteApp
 > [!IMPORTANT]
-> Мы выводим службу Azure RemoteApp из эксплуатации 31 августа 2017 года. Дополнительные сведения см. в [объявлении](https://go.microsoft.com/fwlink/?linkid=821148).
+> Мы выводим службу Azure RemoteApp из эксплуатации 31 августа 2017 года. Чтение hello [объявления](https://go.microsoft.com/fwlink/?linkid=821148) подробные сведения.
 > 
 > 
 
-Для гибридной коллекции Azure RemoteApp или для облачной коллекции, которую необходимо включить в федерацию, используя AD Connect, вам потребуется выполнить следующие действия.
+Для вашей коллекции Azure RemoteApp гибридного или облачной коллекции, которые должны toofederate, с помощью AD Connect необходимо следующее toodo hello.
 
 ### <a name="connect-azure-ad-and-active-directory"></a>Подключите Azure AD и Active Directory
-Для подключения к клиенту Azure AD и вашей локальной среде Active Directory используйте AD Connect. Подключение двух каталогов можно выполнить всего за [4 щелчка](https://blogs.technet.microsoft.com/enterprisemobility/2014/08/04/connecting-ad-and-azure-ad-only-4-clicks-with-azure-ad-connect/) .
+Если требуется tooconnect вашего клиента Azure AD и вашей локальной среде Active Directory, используйте AD Connect. Он будет открыт только [4 щелчков](https://blogs.technet.microsoft.com/enterprisemobility/2014/08/04/connecting-ad-and-azure-ad-only-4-clicks-with-azure-ad-connect/) tooconnect hello двух каталогов.
 
 Примечание. Для гибридных коллекций требуется синхронизация службы каталогов.
 
 ### <a name="make-sure-your-domaincom-match"></a>Проверка соответствия @domain.com
-Перед началом работы убедитесь, что имя участника-пользователя для локального леса соответствует суффиксу домена Azure AD. 
+Перед началом работы убедитесь, что hello имени участника-пользователя для вашей локальной совпадений леса hello суффикс домена Azure AD. 
 
-После настройки доменного суффикса имени участника-пользователя в Azure AD все пользователи, выполняющие вход в Azure RemoteApp, будут входить в систему как user@<the suffix you set up>. Убедитесь, что пользователи также могут входить с помощью аналогичного имени user@suffix в локальный домен. В некоторых случаях можно настроить одно доменное имя в Azure AD несмотря на то, что локально для пользователя указан другой суффикс домена. В этом случае пользователи не будет возможность подключения к компьютерам, подключенным к домену, или ресурсам через Azure RemoteApp.
+После настройки hello суффикс домена UPN в Azure AD, все пользователи, входящие в Azure RemoteApp будет войдите в систему как «пользователь @<hello suffix you set up>.» Убедитесь, что пользователи могут также войти hello же user@suffix в локальном домене hello. В некоторых случаях можно задать одно доменное имя в Azure AD с указанием разных доменный суффикс для hello пользователя в локальной среде. В этом случае пользователи не будет возможности tooconnect tooany к домену компьютеры или ресурсы с помощью Azure RemoteApp.
 
-Например, если вы настроили доменный суффикс своего имени участника-пользователя в AAD как contoso.com, однако некоторые пользователи из локальной сети или домена приложения настроены для входа в систему с помощью @contoso.uk, то они не смогут корректно войти в коллекцию ARA. Для выполнения входа в систему имена участников-пользователей в AAD и AD должны совпадать.
+Например, если настройка вашей суффикс домена UPN в Azure Active Directory как contoso.com, но некоторым пользователям на локальном или AD не настроенный toolog с @contoso.uk, то эти пользователи не смогут использовать toocorrectly может войти в коллекцию ARA hello. Пользователям должно быть имя участника-пользователя в AAD и AD hello одинаково для возможных toobe входа hello»
 
 ### <a name="create-objects-for-azure-remoteapp"></a>Создайте объекты для Azure RemoteApp
-Кроме того, необходимо создать следующие локальные объекты Active Directory:
+Необходимо также toocreate hello следующие объекты в локальной среде Active Directory:
 
-* Учетная запись службы для предоставления доступа к доменным ресурсам программ RemoteApp путем соединения конечных точек RDSH с локальным доменом.
-* Подразделение для хранения объектов машин RemoteApp. Использовать подразделение рекомендуется (но не требуется) для изолирования учетных записей и политик, которые будут использоваться с RemoteApp.
+* Учетная запись tooprovide доступа toodomain ресурсов службы для программ удаленных приложений RemoteApp, соединяя RDSH конечных точек toohello локальному домену.
+* Организационное подразделение (OU) toocontain RemoteApp объектов компьютера. Hello Подразделения используются учетные записи hello tooisolate рекомендуется (но не обязательно) и политик, которые будут использоваться с RemoteApp.
 
-При создании коллекции RemoteApp требуются оба этих объекта, поэтому сначала выполните указанные действия.
+Нужны оба этих объектов при создании коллекции RemoteApp, поэтому возвратят toodo убедиться, что следующие действия.
 

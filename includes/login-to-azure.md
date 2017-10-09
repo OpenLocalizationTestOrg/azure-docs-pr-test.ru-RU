@@ -1,6 +1,6 @@
-## <a name="log-in-to-azure"></a>Вход в Azure
+## <a name="log-in-tooazure"></a>Войдите в tooAzure
 
-Используйте Azure CLIдля создания ресурсов, необходимых для размещения вашего приложения в Azure. Если команды Azure CLI выполняются в оболочке Cloud Shell, вы уже выполнили вход. Для выполнения команд Azure CLI в локальной среде войдите в подписку Azure с помощью команды [az login](/cli/azure/#login) и следуйте инструкциям на экране.
+Вы будете использовать приложение hello Azure CLI toocreate hello ресурсы, необходимые toohost в Azure. При выполнении команды Azure CLI в hello оболочки облака вы выполнили вход. команды Azure CLI toorun локально, войдите в tooyour подписки Azure с hello [входа az](/cli/azure/#login) команды и выполните hello на экране инструкциям.
 
 ```azurecli
 az login

@@ -1,5 +1,5 @@
 ---
-title: "Azure Cosmos DB. Примеры Python для API DocumentDB | Документация Майкрософт"
+title: "Примеры Python aaaDocumentDB API Azure Cosmos DB | Документы Microsoft"
 description: "Примеры Python на сайте GitHub, позволяющие выполнять общие задачи в Azure Cosmos DB, в том числе операции CRUD."
 keywords: "Примеры Python"
 services: cosmos-db
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/24/2016
 ms.author: moderakh
-ms.openlocfilehash: d1577eeeb8fe8007394431ce70a1c7a6ee61776b
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: d8f240782b0997f2d32b68d310dc6f4ff6cb36d0
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-cosmos-db-python-examples"></a>Примеры Python для Azure Cosmos DB
 > [!div class="op_single_selector"]
@@ -30,25 +30,25 @@ ms.lasthandoff: 07/11/2017
 > 
 > 
 
-Примеры решений, которые выполняют операции CRUD и другие распространенные операции с ресурсами Azure Cosmos DB, содержатся в разделе [azure-documentdb-python](https://github.com/Azure/azure-documentdb-python/tree/master/samples) репозитория GitHub. Эта статья содержит:
+Примеров решений, которые выполняют операции CRUD и других общих операций на Azure Cosmos DB ресурсы включаются в hello [azure documentdb-python](https://github.com/Azure/azure-documentdb-python/tree/master/samples) репозитории GitHub. Эта статья содержит:
 
-* Ссылки на задачи в каждом из примеров файлов проектов Python. 
-* Ссылки на соответствующие справочные материалы по API.
+* Файлы проекта ссылки toohello задачи в каждом примере hello Python. 
+* Toohello ссылки, связанные с API справочные материалы.
 
 **Предварительные требования**
 
-1. Для использования этих примеров Python требуется учетная запись Azure.
-   * Вы можете [открыть учетную запись Azure бесплатно](https://azure.microsoft.com/pricing/free-trial/)— вы получаете кредиты, которые можно использовать для опробования платных служб Azure, и даже после использования кредитов вы сохраняете учетную запись и возможность использовать бесплатные службы Azure, такие как веб-сайты. С вашей кредитной карты не будет взиматься плата, если вы явно не измените параметры и не попросите снимать плату.
+1. Эти примеры Python необходимые toouse учетная запись Azure.
+   * Вы можете [открыть учетную запись Azure бесплатно](https://azure.microsoft.com/pricing/free-trial/): вы получаете кредиты можно использовать tootry out платных служб Azure и даже после того, они используются до можно защитить учетную запись hello и используйте освободить служб Azure, таких как веб-сайтов. Вашей кредитной карты не взимается, пока вы явным образом изменения параметров и попросите toobe взимается плата.
      * Вы можете [активировать преимущества подписчика Visual Studio](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)— каждый месяц ваша подписка Visual Studio предоставляет вам кредиты, которые можно использовать для оплаты служб Azure.
-2. Вам также необходим [пакет SDK для Python](documentdb-sdk-python.md). 
+2. Необходимо также hello [Python SDK](documentdb-sdk-python.md). 
    
    > [!NOTE]
-   > Каждый пример является самодостаточным, он устанавливается самостоятельно и выполняет необходимую очистку после удаления. Поэтому примеры выполняют множественные вызовы метода [document_client.CreateCollection](http://azure.github.io/azure-documentdb-python/api/pydocumentdb.document_client.html). Каждый раз, когда это происходит, вам будет выставляться счет за 1 час использования каждого уровня производительности создаваемой коллекции. 
+   > Каждый пример является самодостаточным, он устанавливается самостоятельно и выполняет необходимую очистку после удаления. Таким образом, образцы hello выдать несколькими вызовами слишком[document_client. CreateCollection](http://azure.github.io/azure-documentdb-python/api/pydocumentdb.document_client.html). Каждый раз, когда это делается вашей подписки будет записана в течение часа использования каждого уровня производительности hello создаваемой коллекции hello. 
    > 
    > 
 
 ## <a name="database-examples"></a>Примеры баз данных
-С помощью файла [Program.py](https://github.com/Azure/azure-documentdb-python/tree/master/samples/DatabaseManagement/Program.py) в проекте [DatabaseManagement](https://github.com/Azure/azure-documentdb-python/tree/master/samples/DatabaseManagement) вы узнаете, как выполнять следующие задачи.
+Hello [Program.py](https://github.com/Azure/azure-documentdb-python/tree/master/samples/DatabaseManagement/Program.py) файл hello [DatabaseManagement](https://github.com/Azure/azure-documentdb-python/tree/master/samples/DatabaseManagement) проекта, показывающий, как hello tooperform следующие задачи.
 
 | Задача | Справочник по API |
 | --- | --- |
@@ -59,7 +59,7 @@ ms.lasthandoff: 07/11/2017
 | [Удаление базы данных](https://github.com/Azure/azure-documentdb-python/blob/d78170214467e3ab71ace1a7400f5a7fa5a7b5b0/samples/DatabaseManagement/Program.py#L113-L126) |[document_client.DeleteDatabase](http://azure.github.io/azure-documentdb-python/api/pydocumentdb.document_client.html) |
 
 ## <a name="collection-examples"></a>Примеры коллекций
-С помощью файла [Program.py](https://github.com/Azure/azure-documentdb-python/tree/master/samples/CollectionManagement/Program.py) в проекте [CollectionManagement](https://github.com/Azure/azure-documentdb-python/tree/master/samples/CollectionManagement) вы узнаете, как выполнять следующие задачи.
+Hello [Program.py](https://github.com/Azure/azure-documentdb-python/tree/master/samples/CollectionManagement/Program.py) файл hello [CollectionManagement](https://github.com/Azure/azure-documentdb-python/tree/master/samples/CollectionManagement) проекта, показывающий, как hello tooperform следующие задачи.
 
 | Задача | Справочник по API |
 | --- | --- |

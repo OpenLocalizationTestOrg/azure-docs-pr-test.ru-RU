@@ -1,5 +1,5 @@
 ---
-title: "Развертывание кластера контейнера Docker с помощью Azure CLI | Документация Майкрософт"
+title: "aaaDeploy кластер контейнера Docker - Azure CLI | Документы Microsoft"
 description: "Развертывание решений Kubernetes, DC/OS или Docker Swarm в службе контейнеров Azure с помощью Azure CLI 2.0"
 services: container-service
 documentationcenter: 
@@ -17,36 +17,36 @@ ms.workload: na
 ms.date: 03/01/2017
 ms.author: saudas
 ms.custom: H1Hack27Feb2017, mvc
-ms.openlocfilehash: ecac5c255735b588ebb512b183e8a8bbbdcc905f
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: cdfa4ce69de343dcc7070bc2c58b5132c4062084
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="deploy-a-docker-container-hosting-solution-using-the-azure-cli-20"></a>Развертывание решения для размещения контейнера Docker с помощью Azure CLI 2.0
+# <a name="deploy-a-docker-container-hosting-solution-using-hello-azure-cli-20"></a>Развертывания с помощью Azure CLI 2.0 hello решения по размещению контейнера Docker
 
-Чтобы создать кластер и управлять им в Службе контейнеров Azure, используйте команды `az acs` в Azure CLI 2.0. Вы также можете развернуть кластер Службы контейнеров Azure с помощью [портала Azure](container-service-deployment.md) или с помощью интерфейсов API Службы контейнеров Azure.
+Используйте hello `az acs` команды в toocreate hello Azure CLI 2.0 кластеров и управление ими в службе контейнера Azure. Можно также развернуть кластер контейнера службы Azure с помощью hello [портал Azure](container-service-deployment.md) или hello API-интерфейсы службы контейнера Azure.
 
-Чтобы получить справку по командам `az acs`, добавьте параметр `-h` в любую команду. Например, `az acs create -h`.
+Для получения справки по `az acs` команд, передайте hello `-h` параметр tooany команды. Например, `az acs create -h`.
 
 
 
 ## <a name="prerequisites"></a>Предварительные требования
-Чтобы создать кластер Службы контейнеров Azure с помощью Azure CLI 2.0, необходимо следующее:
+toocreate кластера контейнера службы Azure с помощью hello Azure CLI 2.0, необходимо:
 * учетная запись Azure ([получите бесплатную пробную версию](https://azure.microsoft.com/pricing/free-trial/));
-* установленный и настроенный [Azure CLI 2.0](/cli/azure/install-az-cli2).
+* установки и настройки hello [Azure CLI 2.0](/cli/azure/install-az-cli2)
 
 ## <a name="get-started"></a>Начало работы 
-### <a name="log-in-to-your-account"></a>Вход в учетную запись
+### <a name="log-in-tooyour-account"></a>Войдите в учетную запись tooyour
 ```azurecli
 az login 
 ```
 
-Следуйте указаниям, чтобы выполнить вход в интерактивном режиме. Другие способы входа см. в статье [Get started with Azure CLI 2.0](/cli/azure/get-started-with-az-cli2) (Приступая к работе с Azure CLI 2.0).
+Выполните hello toolog запросы в интерактивном режиме. Другие методы toolog в, в разделе [Приступая к работе с Azure CLI 2.0](/cli/azure/get-started-with-az-cli2).
 
 ### <a name="set-your-azure-subscription"></a>Настройка подписки Azure
 
-При наличии нескольких подписок Azure укажите подписку по умолчанию. Например:
+Если у вас есть несколько подписок Azure, установите подписку по умолчанию hello. Например:
 
 ```
 az account set --subscription "f66xxxxx-xxxx-xxxx-xxx-zgxxxx33cha5"
@@ -59,44 +59,44 @@ az account set --subscription "f66xxxxx-xxxx-xxxx-xxx-zgxxxx33cha5"
 ```azurecli
 az group create -n acsrg1 -l "westus"
 ```
-Результат аналогичен приведенному ниже:
+Выходные данные выглядят аналогично toohello следующее:
 
 ![Создание группы ресурсов](./media/container-service-create-acs-cluster-cli/rg-create.png)
 
 
 ## <a name="create-an-azure-container-service-cluster"></a>Создание кластера Службы контейнеров Azure
 
-Чтобы создать кластер, используйте команду `az acs create`.
-Имя кластера и имя группы ресурсов, созданной на предыдущем шаге, являются обязательными. 
+toocreate кластер, используйте `az acs create`.
+Имя кластера hello и hello hello группы ресурсов, созданных в предыдущем шаге hello — обязательные параметры. 
 
-Для других входных данных устанавливаются значения по умолчанию (см. снимок экрана), если они не переопределены с помощью соответствующих параметров. Например, для orchestrator по умолчанию установлено значение DC/OS. Если префикс DNS-имени не указан, он будет создан на основе имени кластера.
+Другие входные данные, установите toodefault значения (см. следующий экран приветствия) Если не переопределены с помощью их соответствующими параметрами. Например по умолчанию tooDC/OS задается hello orchestrator. И если не указано, создается на имя кластера hello основе префикса имени DNS.
 
 ![Использование az acs create](./media/container-service-create-acs-cluster-cli/create-help.png)
 
 
 ### <a name="quick-acs-create-using-defaults"></a>Быстрое выполнение `acs create` с использованием значений по умолчанию
-Если у вас есть файл открытого ключа RSA (SSH) `id_rsa.pub` в расположении по умолчанию (или вы его создали для [OS X и Linux](../../virtual-machines/linux/mac-create-ssh-keys.md) или [Windows](../../virtual-machines/linux/ssh-from-windows.md)), используйте приведенную ниже команду.
+При наличии файла открытого ключа SSH-RSA `id_rsa.pub` в расположении по умолчанию hello (или создана для [OS X и Linux](../../virtual-machines/linux/mac-create-ssh-keys.md) или [Windows](../../virtual-machines/linux/ssh-from-windows.md)), используйте команду hello следующим образом:
 
 ```azurecli
 az acs create -n acs-cluster -g acsrg1 -d applink789
 ```
-Если у вас нет открытого ключа SSH, используйте вторую команду. Эта команда с переключателем `--generate-ssh-keys` создается автоматически.
+Если у вас нет открытого ключа SSH, используйте вторую команду. Эта команда с hello `--generate-ssh-keys` коммутатора создаст ее.
 
 ```azurecli
 az acs create -n acs-cluster -g acsrg1 -d applink789 --generate-ssh-keys
 ```
 
-После введения команды подождите около 10 минут, пока будет создан кластер. Выходные данные команды содержат полные доменные имена (FQDN) главных узлов и узлов агентов и команду SSH для подключения к первому главному узлу. Ниже приведены сокращенные выходные данные.
+После выполнения команды hello, подождите около 10 минут для создания toobe кластера hello. выходные данные команды Hello включает полные доменные имена (FQDN) главного hello и узлы агентов и SSH команда tooconnect toohello первый образец. Ниже приведены сокращенные выходные данные.
 
 ![Изображение создания ACS](./media/container-service-create-acs-cluster-cli/cluster-create.png)
 
 > [!TIP]
-> В статье [Обработчик Службы контейнеров Microsoft Azure. Пошаговое руководство по использованию Kubernetes](../kubernetes/container-service-kubernetes-walkthrough.md) показано, как использовать `az acs create` со значениями по умолчанию для создания кластера Kubernetes.
+> Hello [Пошаговое руководство Kubernetes](../kubernetes/container-service-kubernetes-walkthrough.md) показано, как toouse `az acs create` с toocreate значения по умолчанию Kubernetes кластера.
 >
 
 ## <a name="manage-acs-clusters"></a>Управление кластерами ACS
 
-Для управления кластером используйте дополнительные команды `az acs`. Ниже приведены некоторые примеры.
+Использование дополнительных `az acs` команды toomanage кластера. Ниже приведены некоторые примеры.
 
 ### <a name="list-clusters-under-a-subscription"></a>Получение списка кластеров в рамках подписки
 
@@ -122,8 +122,8 @@ az acs show -g acsrg1 -n acs-cluster --output list
 ![acs show](./media/container-service-create-acs-cluster-cli/acs-show.png)
 
 
-### <a name="scale-the-cluster"></a>Масштабирование кластера
-Увеличение и уменьшение масштабирования узлов агента разрешено. Параметр `new-agent-count` представляет собой новое количество агентов в кластере ACS.
+### <a name="scale-hello-cluster"></a>Масштаб hello кластера
+Увеличение и уменьшение масштабирования узлов агента разрешено. Здравствуйте, параметр `new-agent-count` hello новое число агентов в кластере hello ACS.
 
 ```azurecli
 az acs scale -g acsrg1 -n acs-cluster --new-agent-count 4
@@ -135,12 +135,12 @@ az acs scale -g acsrg1 -n acs-cluster --new-agent-count 4
 ```azurecli
 az acs delete -g acsrg1 -n acs-cluster 
 ```
-Эта команда не удаляет все ресурсы (сеть и хранилище), созданные вместе со службой контейнеров. Чтобы легко удалить все ресурсы, рекомендуется развертывать каждый кластер в отдельной группе ресурсов. Если кластер больше не используется, группу ресурсов можно удалить.
+Эта команда удаляет все ресурсы (сеть и хранилище), созданные при создании контейнера службы hello. toodelete все ресурсы легко, рекомендуется развертывание каждого кластера в группу различных ресурсов. Затем удалите группу ресурсов hello при hello кластер больше не требуется.
 
 ## <a name="next-steps"></a>Дальнейшие действия
 Теперь, когда у вас есть работающий кластер, выберите ссылки ниже, чтобы узнать о возможностях подключения и управления.
 
-* [Подключение к кластеру службы контейнеров Azure](../container-service-connect.md)
+* [Подключите кластер tooan контейнера службы Azure](../container-service-connect.md)
 * [Работа со службой контейнеров Azure и DC/OS](container-service-mesos-marathon-rest.md)
 * [Работа со службой контейнеров Azure и Docker Swarm](container-service-docker-swarm.md)
 * [Работа со службой контейнеров Azure и Kubernetes](../kubernetes/container-service-kubernetes-walkthrough.md)

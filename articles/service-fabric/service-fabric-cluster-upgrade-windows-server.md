@@ -1,6 +1,6 @@
 ---
-title: "Обновление автономного кластера Azure Service Fabric в Windows Server | Документы Майкрософт"
-description: "Обновление кода и (или) конфигурации Azure Service Fabric, под управлением которой работает автономный кластер Service Fabric, включая изменение режима обновления кластера."
+title: "aaaUpgrade автономного Azure Service Fabric кластера в Windows Server | Документы Microsoft"
+description: "Обновление Azure Service Fabric кода hello и/или конфигурацию, которая запускает кластера Service Fabric автономный, включая настройку hello режим обновления кластера."
 services: service-fabric
 documentationcenter: .net
 author: dkkapur
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/30/2017
 ms.author: dekapur
-ms.openlocfilehash: ac40775ca62362a32184207857a0b965a798e135
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 5132795e544b6f0185accedbf5092dcaafd66df0
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="upgrade-your-standalone-azure-service-fabric-on-windows-server-cluster"></a>Обновление автономной службы Azure Service Fabric в кластере Windows Server
 > [!div class="op_single_selector"]
@@ -27,39 +27,39 @@ ms.lasthandoff: 08/18/2017
 >
 >
 
-Для любой современной системы возможность обновления является ключом к долговременному успеху вашего продукта. Кластер Azure Service Fabric — это ресурс, владельцем которого вы являетесь. В этой статье описывается, как настроить в кластере выполнение только поддерживаемых версий кода и конфигураций Service Fabric.
+Для любой современной системе возможность tooupgrade hello — долгосрочный успех toohello ключа продукта. Кластер Azure Service Fabric — это ресурс, владельцем которого вы являетесь. Этой статье описывается, как сделать убедиться, что данный кластер hello всегда выполняется поддерживаемые версии кода структуры службы и конфигураций.
 
-## <a name="control-the-service-fabric-version-that-runs-on-your-cluster"></a>Управление версией Service Fabric в кластере
-Чтобы настроить кластер для скачивания обновлений Service Fabric после того, как корпорация Майкрософт выпускает новую версию, присвойте параметру кластера **fabricClusterAutoupgradeEnabled** значение true. Чтобы выбрать поддерживаемую версию Service Fabric для кластера, присвойте параметру кластера **fabricClusterAutoupgradeEnabled** значение false.
+## <a name="control-hello-service-fabric-version-that-runs-on-your-cluster"></a>Элемент управления hello Service Fabric версии, работающей в кластере
+tooset Service Fabric, когда корпорация Майкрософт выпускает новую версию набора hello обновляет вашего кластера toodownload **fabricClusterAutoupgradeEnabled** tootrue конфигурации кластера. поддерживаемая версия Service Fabric, которые должны toobe вашего кластера на набор hello tooselect **fabricClusterAutoupgradeEnabled** toofalse конфигурации кластера.
 
 > [!NOTE]
-> Кластер должен всегда работать под управлением поддерживаемой версии Service Fabric. Когда корпорация Майкрософт объявляет о выпуске новой версии Service Fabric, для предыдущей версии определяется срок завершения жизненного цикла. Этот срок составляет по меньшей мере 60 дней с даты объявления. О доступности новых выпусков сообщается в [блоге группы разработчиков Service Fabric](https://blogs.msdn.microsoft.com/azureservicefabric/), после чего вы можете их использовать.
+> Кластер должен всегда работать под управлением поддерживаемой версии Service Fabric. Когда корпорация Майкрософт объявляет о выпуске новой версии Service Fabric hello, предыдущей версии hello помечена для окончания поддержки после менее 60 дней с даты hello объявления «hello». Новые выпуски, объявляются [в блоге группы Service Fabric hello](https://blogs.msdn.microsoft.com/azureservicefabric/). Новый выпуск Hello — доступные toochoose на данный момент.
 >
 >
 
-Кластер можно обновить до новой версии, только если используется конфигурация узла с настройками рабочей среды, где каждый узел Service Fabric выделяется для отдельного физического или виртуального устройства. Если несколько узлов Service Fabric выполняется на отдельном физическом компьютере или виртуальной машине в кластере разработки, то нужно удалить такой кластер и создать его заново с использованием новой версии.
+Новая версия toohello кластера можно обновить только в том случае, если вы используете стиль рабочей конфигурации узла, где каждый узел Service Fabric выделяется на отдельной физической или виртуальной машины. При наличии кластеру разработки, где более чем одним узлом Service Fabric — на отдельной физической или виртуальной машине, необходимо повторно создать кластер hello hello новой версии.
 
-Обновить кластер до последней или поддерживаемой версии Service Fabric можно с помощью двух разных рабочих процессов. Один используется для кластеров с возможностью подключения для автоматического скачивания последней версии. Другой рабочий процесс используется для кластеров без возможности подключения для автоматического скачивания последней версии.
+Последнюю версию toohello кластера или поддерживаемая версия Service Fabric, можно обновить два различных рабочих процессов. Кластеры с подключением toodownload hello последнюю версию автоматически — одного рабочего процесса. Hello другой рабочий процесс — для кластеров, у которых нет подключения к toodownload hello последнюю версию, Service Fabric.
 
-### <a name="upgrade-clusters-that-have-connectivity-to-download-the-latest-code-and-configuration"></a>Обновление кластеров с возможностью подключения для скачивания последней версии кода и конфигурации
-Выполните следующие действия, чтобы обновить кластер до поддерживаемой, если у него есть возможность подключения к сайту [http://download.microsoft.com](http://download.microsoft.com) через Интернет.
+### <a name="upgrade-clusters-that-have-connectivity-toodownload-hello-latest-code-and-configuration"></a>Обновление кластеров, которые имеют подключения toodownload hello последнюю кода и конфигурации
+Использовать эти действия tooupgrade версии tooa поддерживается кластера, если узлы кластера подключен к Интернету слишком[http://download.microsoft.com](http://download.microsoft.com).
 
-Для кластеров с возможностью подключения к [http://download.microsoft.com](http://download.microsoft.com) корпорация Майкрософт рекомендует периодически проверять наличие новых версий Service Fabric.
+Кластеры с подключением слишком[http://download.microsoft.com](http://download.microsoft.com), корпорация Майкрософт периодически проверяет доступность hello новые версии Service Fabric.
 
-Когда выходит новая версия Service Fabric, пакет скачивается в кластер и начинается подготовка к обновлению. Наряду с информированием клиентов о доступности новой версии система выдает явное предупреждение о состоянии работоспособности кластера следующего содержания:
+Если доступна новая версия Service Fabric, hello пакет будет загружен локально toohello кластера и Подготовка к обновлению. Кроме того клиент hello tooinform этой новой версии, hello система выводит предупреждение работоспособности явную кластера, аналогичные toohello следующие:
 
-"Поддержка текущей версии кластера [номер версии] заканчивается [дата]".
+«hello поддержка кластера версии [номер версии] заканчивается на [дата].»
 
-После запуска последней версии кластера это предупреждение исчезнет.
+После запуска кластера hello последнюю версию hello hello предупреждение исчезнет.
 
 #### <a name="cluster-upgrade-workflow"></a>Рабочий процесс обновления кластера
-Как только вы увидите предупреждение о работоспособности кластера, сделайте следующее.
+После появления предупреждения работоспособности кластера hello hello следующие:
 
-1. Подключитесь к кластеру с любой виртуальной машины, на которой есть доступ администратора ко всем ВМ, перечисленным в качестве узлов в файле конфигурации кластера. Компьютер, на котором выполняется этот сценарий, может и не входить в кластер.
+1. Подключите кластер toohello с любого компьютера, которая содержит компьютеры hello tooall доступа администратора, указываются в виде узлов в кластере hello. машина Hello, этот сценарий выполняется на имеет toobe частью кластера hello.
 
     ```powershell
 
-    ###### connect to the secure cluster using certs
+    ###### connect toohello secure cluster using certs
     $ClusterName= "mysecurecluster.something.com:19000"
     $CertThumbprint= "70EF5E22ADB649799DA3C8B6A6BF7FG2D630F8F3"
     Connect-serviceFabricCluster -ConnectionEndpoint $ClusterName -KeepAliveIntervalInSec 10 `
@@ -71,18 +71,18 @@ ms.lasthandoff: 08/18/2017
         -StoreName My
     ```
 
-2. Получите список версий Service Fabric, до которых можно выполнить обновление.
+2. Получите список hello Service Fabric версий, которые можно обновить до.
 
     ```powershell
 
-    ###### Get the list of available Service Fabric versions
+    ###### Get hello list of available Service Fabric versions
     Get-ServiceFabricRegisteredClusterCodeVersion
     ```
 
-    Должен отобразиться результат следующего вида.
+    Вы должны получить аналогичные toothis выходные данные:
 
     ![Получение версий Service Fabric][getfabversions]
-3. Запустите обновление кластера до доступной версии с помощью команды PowerShell [Start-ServiceFabricClusterUpgrade](https://msdn.microsoft.com/library/mt125872.aspx).
+3. Запуска версии доступны обновления tooan кластера с помощью [ServiceFabricClusterUpgrade начала](https://msdn.microsoft.com/library/mt125872.aspx) PowerShell cmd.
 
     ```Powershell
 
@@ -93,45 +93,45 @@ ms.lasthandoff: 08/18/2017
     Start-ServiceFabricClusterUpgrade -Code -CodePackageVersion 5.3.301.9590 -Monitored -FailureAction Rollback
 
     ```
-   За ходом обновления можно следить в Service Fabric Explorer. Также можно выполнить следующую команду Windows PowerShell:
+   toomonitor hello ход выполнения обновления hello, можно использовать обозреватель Service Fabric или выполнения hello следующую команду Windows PowerShell.
 
     ```powershell
 
     Get-ServiceFabricClusterUpgrade
     ```
 
-    Если требования политик работоспособности кластера не реализуются, выполняется откат обновления. О том, как указать пользовательские политики работоспособности для команды **Start-ServiceFabricClusterUpgrade**, можно узнать в [соответствующей документации](https://msdn.microsoft.com/library/mt125872.aspx).
+    Если политики работоспособности кластера hello не выполняются, выполняется откат обновления hello. toospecify работоспособности пользовательских политик для hello **начала ServiceFabricClusterUpgrade** см. в разделе документации по [ServiceFabricClusterUpgrade начала](https://msdn.microsoft.com/library/mt125872.aspx).
 
-Устранив проблемы, которые привели к откату, запустите обновление снова, выполнив уже описанные действия.
+После устранения проблемы hello, приводящие к отката hello инициировать попытку обновления hello, следующие hello же действия как описано выше.
 
-### <a name="upgrade-clusters-that-have-uno-connectivityu-to-download-the-latest-code-and-configuration"></a>Обновление кластеров <U>без возможности подключения</u> для скачивания последней версии кода и конфигурации
-Выполните следующие действия, чтобы обновить до поддерживаемой версии кластер без возможности подключения к сайту [http://download.microsoft.com](http://download.microsoft.com) через Интернет.
+### <a name="upgrade-clusters-that-have-uno-connectivityu-toodownload-hello-latest-code-and-configuration"></a>Обновление кластеров, которые имеют <U>без подключения к</u> toodownload hello последнюю кода и конфигурации
+Использовать эти действия tooupgrade версии tooa поддерживается кластера, если узлы кластера не подключен к Интернету слишком[http://download.microsoft.com](http://download.microsoft.com).
 
 > [!NOTE]
-> Если вы используете кластер без подключения к Интернету, то потребуется отслеживать блог команды разработчиков Service Fabric, чтобы узнавать о новых выпусках. Система не будет показывать предупреждение о работоспособности кластера, чтобы оповещать вас о новом выпуске.  
+> При запуске кластера, не подключенной toohello Интернет имеется toolearn toomonitor hello Service Fabric team блог о новом выпуске. система Hello не содержит tooalert предупреждение работоспособности кластера вы нового выпуска.  
 >
 >
 
 #### <a name="auto-provisioning-vs-manual-provisioning"></a>Автоматическая подготовка и подготовка вручную
-Чтобы включить автоматические операции скачивания и регистрации для получения последней версии кода, настройте службу обновления Service Fabric. См. инструкции Tools\ServiceFabricUpdateService.zip\Readme_InstructionsAndHowTos.txt, доступные в [изолированном пакете](service-fabric-cluster-standalone-package-contents.md).
-Для выполнения операций вручную сделайте следующее.
+Автоматическая загрузка tooenable и регистрацию для последней версии кода hello, настройте служба Service Fabric обновления. См. toohello Tools\ServiceFabricUpdateService.zip\Readme_InstructionsAndHowTos.txt внутри hello [изолированный пакет](service-fabric-cluster-standalone-package-contents.md) инструкции.
+Для ручной процесс следуйте приведенным ниже инструкциям hello.
 
-Прежде чем начать обновление конфигурации, измените конфигурацию кластера, присвоив следующему свойству значение false.
+Измените следующие свойства toofalse, прежде чем начать обновление конфигурации вашей tooset hello кластера конфигурации.
 
         "fabricClusterAutoupgradeEnabled": false,
 
-См. дополнительные сведения об использовании командлета [Start-ServiceFabricClusterConfigurationUpgrade](https://msdn.microsoft.com/en-us/library/mt788302.aspx). Обязательно обновите параметр clusterConfigurationVersion в JSON, прежде чем запускать обновление конфигурации.
+См. слишком[ServiceFabricClusterConfigurationUpgrade начала PS cmd ](https://msdn.microsoft.com/en-us/library/mt788302.aspx) сведения об использовании. Убедитесь, что tooupdate «clusterConfigurationVersion» в JSON перед началом обновления конфигурации hello.
 
 ```powershell
 
-    Start-ServiceFabricClusterConfigurationUpgrade -ClusterConfigPath <Path to Configuration File>
+    Start-ServiceFabricClusterConfigurationUpgrade -ClusterConfigPath <Path tooConfiguration File>
 
 ```
 
 #### <a name="cluster-upgrade-workflow"></a>Рабочий процесс обновления кластера
 
-1. Выполните командлет Get-ServiceFabricClusterUpgrade из одного из узлов в кластере и запишите значение TargetCodeVersion.
-2. Выполните следующую команду с компьютера, подключенного к Интернету, чтобы получить список всех версий, совместимых с обновлением, для текущей версии и скачайте соответствующий пакет с помощью связанных ссылок для загрузки.
+1. Запустите Get-ServiceFabricClusterUpgrade в одном из узлов hello в кластере hello и отметьте hello TargetCodeVersion.
+2. Выполнения hello следующие данные из подключенного машина internet toolist все обновления совместимые версии с текущей версией hello и загрузите соответствующий пакет из ссылки для загрузки связанного hello hello.
 
     ```powershell
 
@@ -139,31 +139,31 @@ ms.lasthandoff: 08/18/2017
     Get-ServiceFabricRuntimeUpgradeVersion -BaseVersion <TargetCodeVersion as noted in Step 1> 
     ```
 
-3. Подключитесь к кластеру с любой виртуальной машины, на которой есть доступ администратора ко всем ВМ, перечисленным в качестве узлов в файле конфигурации кластера. Виртуальная машина, на которой выполняется этот скрипт, может и не входить в кластер.
+3. Подключите кластер toohello с любого компьютера, которая содержит компьютеры hello tooall доступа администратора, указываются в виде узлов в кластере hello. Нет машины Hello, этот сценарий выполняется на toobe частью кластера hello
 
     ```powershell
 
-   ###### Get the list of available Service Fabric versions
-    Copy-ServiceFabricClusterPackage -Code -CodePackagePath <name of the .cab file including the path to it> -ImageStoreConnectionString "fabric:ImageStore"
+   ###### Get hello list of available Service Fabric versions
+    Copy-ServiceFabricClusterPackage -Code -CodePackagePath <name of hello .cab file including hello path tooit> -ImageStoreConnectionString "fabric:ImageStore"
 
    ###### Here is a filled-out example
     Copy-ServiceFabricClusterPackage -Code -CodePackagePath .\MicrosoftAzureServiceFabric.5.3.301.9590.cab -ImageStoreConnectionString "fabric:ImageStore"
 
     ```
-4. Скопируйте скачанный пакет в хранилище образов кластера.
+4. Скопируйте пакет hello загружаются в хранилище образов кластера hello.
 
-5. Зарегистрируйте скопированный пакет.
+5. Регистрация пакета копируются hello.
 
     ```powershell
 
-    ###### Get the list of available Service Fabric versions
-    Register-ServiceFabricClusterPackage -Code -CodePackagePath <name of the .cab file>
+    ###### Get hello list of available Service Fabric versions
+    Register-ServiceFabricClusterPackage -Code -CodePackagePath <name of hello .cab file>
 
     ###### Here is a filled-out example
     Register-ServiceFabricClusterPackage -Code -CodePackagePath MicrosoftAzureServiceFabric.5.3.301.9590.cab
 
      ```
-6. Запустите обновление кластера до доступной версии.
+6. Запуска версии доступны обновления tooan кластера.
 
     ```Powershell
 
@@ -173,56 +173,56 @@ ms.lasthandoff: 08/18/2017
     Start-ServiceFabricClusterUpgrade -Code -CodePackageVersion 5.3.301.9590 -Monitored -FailureAction Rollback
 
     ```
-   За ходом обновления можно следить в Service Fabric Explorer. Можно также выполнить следующую команду PowerShell.
+   Можно отслеживать ход выполнения обновления hello на Service Fabric Explorer hello, или можно выполнить следующую команду PowerShell hello.
 
     ```powershell
 
     Get-ServiceFabricClusterUpgrade
     ```
 
-    Если требования политик работоспособности кластера не реализуются, выполняется откат обновления. О том, как указать пользовательские политики работоспособности для команды **Start-ServiceFabricClusterUpgrade**, можно узнать в [соответствующей документации](https://msdn.microsoft.com/library/mt125872.aspx).
+    Если политики работоспособности кластера hello не выполняются, выполняется откат обновления hello. toospecify работоспособности пользовательских политик для hello **начала ServiceFabricClusterUpgrade** см. в разделе документации hello [ServiceFabricClusterUpgrade начала](https://msdn.microsoft.com/library/mt125872.aspx).
 
-Устранив проблемы, которые привели к откату, запустите обновление снова, выполнив уже описанные действия.
+После устранения проблемы hello, приводящие к отката hello инициировать попытку обновления hello, следующие hello же действия как описано выше.
 
 
-## <a name="upgrade-the-cluster-configuration"></a>Обновление конфигурации кластера
-Прежде чем начинать обновление конфигурации, можно протестировать новый JSON-файл конфигурации кластера, выполнив сценарий Powershell в изолированном пакете.
+## <a name="upgrade-hello-cluster-configuration"></a>Обновление конфигурации кластера hello
+Прежде чем начать обновление конфигурации hello, путем выполнения сценария powershell hello в hello изолированный пакет можно проверить новый json конфигурации кластера.
 
 ```powershell
 
-    TestConfiguration.ps1 -ClusterConfigFilePath <Path to the new Configuration File> -OldClusterConfigFilePath <Path to the old Configuration File>
+    TestConfiguration.ps1 -ClusterConfigFilePath <Path toohello new Configuration File> -OldClusterConfigFilePath <Path toohello old Configuration File>
 
 ```
 или
 
 ```powershell
 
-    TestConfiguration.ps1 -ClusterConfigFilePath <Path to the new Configuration File> -OldClusterConfigFilePath <Path to the old Configuration File> -FabricRuntimePackagePath <Path to the .cab file which you want to test the configuration against>
+    TestConfiguration.ps1 -ClusterConfigFilePath <Path toohello new Configuration File> -OldClusterConfigFilePath <Path toohello old Configuration File> -FabricRuntimePackagePath <Path toohello .cab file which you want tootest hello configuration against>
 
 ```
 
-Некоторые конфигурации невозможно обновить, например конечные точки, имена кластеров, IP-адреса узлов и т. д. Таким образом мы протестируем новый JSON-файл конфигурации кластера, используя старый файл. При наличии каких-либо проблем в окне Powershell отобразятся сведения об ошибках.
+Некоторые конфигурации невозможно обновить, например конечные точки, имена кластеров, IP-адреса узлов и т. д. Это тестирования hello нового кластера конфигурации json для старого hello и приводят к ошибкам в окне Powershell hello при наличии любые проблемы.
 
-Чтобы обновить конфигурацию кластера, выполните команду **Start-ServiceFabricClusterConfigurationUpgrade**. Обновление конфигурации обрабатывает домен обновления.
+Обновление конфигурации кластера tooupgrade hello, запустите **ServiceFabricClusterConfigurationUpgrade начала**. Обработанные домен обновления, домен обновления — обновление конфигурации Hello.
 
 ```powershell
 
-    Start-ServiceFabricClusterConfigurationUpgrade -ClusterConfigPath <Path to Configuration File>
+    Start-ServiceFabricClusterConfigurationUpgrade -ClusterConfigPath <Path tooConfiguration File>
 
 ```
 
 ### <a name="cluster-certificate-config-upgrade"></a>Обновление конфигурации сертификата кластера  
-Сертификат кластера используется для аутентификации между узлами кластера, поэтому смену сертификата следует выполнять с особой осторожностью, так как из-за сбоя заблокируется связь между узлами кластера.  
+Кластер сертификат используется для проверки подлинности между узлами кластера, поэтому перезапись сертификатов hello следует выполнять в внимательно из-за сбоя заблокирует hello связи между узлами кластера.  
 Технически поддерживаются три варианта:  
 
-1. Единое обновление сертификата. Путь обновления: ''сертификат А (основной) -> сертификат B (основной) -> сертификат C (основной) ->...''.   
-2. Двойное обновление сертификата. Путь обновления ''сертификат А (основной) -> сертификат А (основной) и В (дополнительный) -> сертификат В (основной) -> сертификат В (основной) и С (дополнительный) -> сертификат C (основной)->…''.
+1. Обновление одного сертификата: hello вариант предусматривает обновление "сертификат (основной) -> B сертификата (основной) -> C сертификата (основной) ->...".   
+2. Double обновление сертификата: hello вариант предусматривает обновление "-> (основной) сертификата сертификата (основной) и B (дополнительный) -> B сертификата (основной) -> B сертификата (основной) и C (дополнительный) -> C сертификата (основной) ->...".
 3. Тип обновления сертификатов: сертификат на основе отпечатка <-> сертификаты на основе конфигурации CommonName. Например, отпечаток сертификата A (основной) и отпечаток B (дополнительный) -> CommonName сертификата C.
 
 
 ## <a name="next-steps"></a>Дальнейшие действия
-* Узнайте, как настроить некоторые [параметры кластера Service Fabric](service-fabric-cluster-fabric-settings.md).
-* Ознакомьтесь с концепцией [масштабирования кластера](service-fabric-cluster-scale-up-down.md).
+* Узнайте, как toocustomize некоторые [параметры кластера Service Fabric](service-fabric-cluster-fabric-settings.md).
+* Узнайте, каким образом слишком[масштабирования кластера](service-fabric-cluster-scale-up-down.md).
 * Узнайте об [обновлениях приложений](service-fabric-application-upgrade.md).
 
 <!--Image references-->

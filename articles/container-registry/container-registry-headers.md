@@ -1,6 +1,6 @@
 ---
-title: "Репозитории реестра контейнеров Azure | Документация Майкрософт"
-description: "Использование репозиториев реестра контейнеров Azure для образов Docker"
+title: "aaaAzure контейнер реестра репозиториев | Документы Microsoft"
+description: "Как toouse репозиториями реестра контейнера Azure для Docker images"
 services: container-registry
 documentationcenter: 
 author: cristy
@@ -13,32 +13,32 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/22/2017
 ms.author: cristyg
-ms.openlocfilehash: dd4feff057269ed7106990bb63eed7fcffa2dbec
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 06172a63465838a78a607f268da116d8158789ee
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-container-registry-repositories"></a>Репозитории реестра контейнеров Azure
 
-Реестры контейнеров Azure совместимы со множеством служб и оркестраторов. Для упрощения отслеживания исходных служб и агентов, из которых используется ACR, мы начали использовать поле заголовка Docker в файле Docker.config.
+Реестры контейнеров Azure совместимы со множеством служб и оркестраторов. toomake его проще tootrack hello источника служб и агентов, из которых используется контроля доступа, мы начали использовать поле заголовка hello Docker в файле Docker.config hello.
 
 
 
-## <a name="viewing-repositories-in-the-portal"></a>Просмотр репозиториев на портале
+## <a name="viewing-repositories-in-hello-portal"></a>Просмотр репозитории в hello портала
 
-Заголовки ACR имеют следующий формат.
+заголовки ACR Hello выполните формат hello.
 ```
 X-Meta-Source-Client: <cloud>/<service>/<optionalservicename>
 ```
 
 * Cloud: Azure, Azure Stack или другие облака для конкретной государственной организации или страны. Хотя в настоящее время Azure Stack и облака государственных организаций не поддерживаются, этот параметр позволяет будущую поддержку.
-* Service: имя службы.
-* Optionalservicename: необязательный параметр для служб с подчиненными службами или для указания номера SKU (пример: веб-приложения соответствуют Azure/app-service/web-apps).
+* Службы: имя hello службы.
+* Optionalservicename: необязательный параметр для служб с subservices или toospecify SKU (пример: соответствуют веб-приложений с Azure и приложения службы или веб приложениями).
 
-Партнерским службам и оркестраторам рекомендуется использовать специальные значения заголовков для помощи в нашей телеметрии. Пользователи также могут изменять значение, переданное в заголовке, если возникнет такая необходимость.
+Услуги партнера и orchestrators, рекомендуется toouse toohelp значения определенного заголовка с нашей телеметрии. Пользователи также могут изменять значение hello передавать toohello заголовка в том случае, если такая необходимость.
 
-Ниже приведены значения, которые партнерам рекомендуется использовать для заполнения поля "X-Meta-Source-Client".
+Ниже приведены значения Hello, мы хотим ACR партнеров toouse toopopulate hello «X-Meta-источник-клиент» поля.
 
 | Имя службы              | Заголовок                                |
 | ------------------------- | ------------------------------------- |
@@ -57,4 +57,4 @@ X-Meta-Source-Client: <cloud>/<service>/<optionalservicename>
 
 
 ## <a name="next-steps"></a>Дальнейшие действия
-[Дополнительные сведения о реестрах, поддерживаемых службах и оркестраторах](container-registry-intro.md)
+[Дополнительные сведения о реестрами и hello поддерживается служб и orchestrators](container-registry-intro.md)

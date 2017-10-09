@@ -1,6 +1,6 @@
 ---
-title: "Вход в веб-приложение Node.js версии 2.0 в Azure Active Directory | Документация Майкрософт"
-description: "Сведения о создании веб-приложения Node js, которое поддерживает вход пользователей в систему с помощью личной учетной записи Майкрософт, а также рабочей или учебной учетной записи."
+title: "v2.0 Active Directory aaaAzure Node.js web app вход | Документы Microsoft"
+description: "Узнайте, как toobuild Node.js веб-приложение, которое выполняет вход пользователя, используя личную учетную запись Майкрософт и рабочую или учебную учетную запись."
 services: active-directory
 documentationcenter: nodejs
 author: navyasric
@@ -15,42 +15,42 @@ ms.topic: article
 ms.date: 05/13/2017
 ms.author: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 6d49c742f72440e22830915c90de009d9188db2a
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: f8ce6e2b841c215cb14e82bcf444fe849634cc88
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="add-sign-in-to-a-nodejs-web-app"></a>Добавление функции входа в веб-приложение Node.js
+# <a name="add-sign-in-tooa-nodejs-web-app"></a>Добавить веб-приложение Node.js tooa входа
 
 > [!NOTE]
-> Не все сценарии и компоненты Azure Active Directory поддерживают конечную точку версии 2.0. Чтобы определить, стоит ли вам использовать конечную точку версии 2.0 или 1.0, ознакомьтесь с [ограничениями версии 2.0](active-directory-v2-limitations.md).
+> Не все сценарии Azure Active Directory и возможности работы с конечной точкой v2.0 hello. toodetermine необходимость использования hello v2.0 конечная точка либо hello v1.0, узнайте, как [ограничения v2.0](active-directory-v2-limitations.md).
 > 
 
-В рамках этого руководства мы используем Passport, чтобы выполнить следующие задачи:
+В этом учебнике мы используем hello toodo Passport следующие задачи:
 
-* Вход пользователей в веб-приложение с помощью Azure Active Directory (Azure AD) и конечной точки версии 2.0.
-* Отображение информации о пользователе.
-* Выход пользователя из приложения.
+* В веб-приложении вход hello пользователя с помощью Azure Active Directory (Azure AD) и hello v2.0 конечной точки.
+* Отображение сведений о пользователе hello.
+* Знак hello выход пользователя из приложения hello.
 
-**Passport** — промежуточный слой проверки подлинности для Node.js. Он отличается гибкой модульной структурой, которая позволяет сравнительно незаметно размещать его в любом приложении на основе Express или веб-приложении Restify. В Passport полный набор стратегий поддерживает процесс проверки подлинности с помощью имени пользователя и пароля, Facebook, Twitter и проч. Мы разработали стратегию для Azure AD. В этой статье описывается установка модуля и последующее добавление подключаемого модуля `passport-azure-ad` Azure AD.
+**Passport** — промежуточный слой проверки подлинности для Node.js. Он отличается гибкой модульной структурой, которая позволяет сравнительно незаметно размещать его в любом приложении на основе Express или веб-приложении Restify. В Passport полный набор стратегий поддерживает процесс проверки подлинности с помощью имени пользователя и пароля, Facebook, Twitter и проч. Мы разработали стратегию для Azure AD. В этой статье рассказывается как tooinstall hello модуля, а затем добавьте hello Azure AD `passport-azure-ad` подключаемого модуля.
 
 ## <a name="download"></a>Загрузить
-Код в этом учебнике размещен на портале [GitHub](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-nodejs). Для выполнения действий в этом руководстве вы можете [скачать заготовку приложения как ZIP-файл](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-nodejs/archive/skeleton.zip) или клонировать структуру:
+поддерживается Hello кода для этого учебника [на GitHub](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-nodejs). toofollow hello учебник, вы можете [загрузить приложение hello основу как ZIP-файл](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-nodejs/archive/skeleton.zip) или основу hello клона:
 
 ```git clone --branch skeleton https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-nodejs.git```
 
-Вы также можете воспользоваться готовым приложением в конце этого руководства.
+Можно также получить приложение hello завершено в конце hello этого учебника.
 
 ## <a name="1-register-an-app"></a>Шаг 1. Регистрация приложения
-Создайте приложение на странице [apps.dev.microsoft.com](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList) или выполните [эти подробные указания](active-directory-v2-app-registration.md), чтобы зарегистрировать приложение. Не забудьте выполнить следующие действия.
+Создайте новое приложение на [apps.dev.microsoft.com](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList), или выполните [эти подробные шаги](active-directory-v2-app-registration.md) tooregister приложения. Не забудьте выполнить следующие действия.
 
-* Скопируйте **идентификатор приложения**, назначенный приложению. Он потребуется для работы с этим руководством.
-* Добавьте **веб-платформу** для своего приложения.
-* Скопируйте значение **URI перенаправления** с портала. Необходимо использовать значение URI по умолчанию — `urn:ietf:wg:oauth:2.0:oob`.
+* Копировать hello **идентификатор приложения** назначенный tooyour приложения. Он потребуется для работы с этим руководством.
+* Добавить hello **Web** платформы для приложения.
+* Копировать hello **URI перенаправления** из портала hello. Необходимо использовать значение по умолчанию URI hello `urn:ietf:wg:oauth:2.0:oob`.
 
-## <a name="2-add-prerequisities-to-your-directory"></a>Шаг 2. Добавление необходимых компонентов в ваш каталог
-В окне командной строки замените каталоги, чтобы перейти к корневой папке, если вы еще этого не сделали. Выполните следующие команды:
+## <a name="2-add-prerequisities-tooyour-directory"></a>2: добавьте каталог tooyour соответствия предварительным условиям
+В командной строке измените каталоги toogo tooyour корневую папку, если вы еще не существует. Выполните следующие команды hello.
 
 * `npm install express`
 * `npm install ejs`
@@ -65,22 +65,22 @@ ms.lasthandoff: 07/11/2017
 * `npm install express-session`
 * `npm install cookie-parser`
 
-Кроме этого, в схему быстрого запуска мы включили `passport-azure-ad`.
+Кроме того, мы используем `passport-azure-ad` в основу hello объекта hello краткое руководство:
 
 * `npm install passport-azure-ad`
 
-Эта команда устанавливает библиотеки, используемые `passport-azure-ad`.
+При этом устанавливаются библиотеки hello, `passport-azure-ad` использует.
 
-## <a name="3-set-up-your-app-to-use-the-passport-node-js-strategy"></a>Шаг 3. Настройка в приложении использования стратегии Passport-Node.js
-Настройте промежуточный слой Express, чтобы использовать протокол проверки подлинности OpenID Connect. Passport также будет использоваться для выдачи запросов входа и выхода, управления сеансом пользователя и получения сведений о пользователе.
+## <a name="3-set-up-your-app-toouse-hello-passport-node-js-strategy"></a>3: Настройка стратегии приложения hello toouse passport узел js
+Настройка hello Express по промежуточного слоя toouse hello протокол проверки подлинности OpenID Connect. Использовать запросы tooissue входа и выхода службы Passport, управлять hello пользовательского сеанса и получения сведений о пользователе hello, среди прочего.
 
-1.  Откройте файл config.js в корневой папке проекта. В разделе `exports.creds` введите значения конфигурации приложения.
+1.  В корневой hello hello проекта откройте файл Config.js hello. В hello `exports.creds` введите значения конфигурации приложения.
   
-  * `clientID`: **идентификатор приложения**, который портал Azure назначил вашему приложению.
-  * `returnURL`: **универсальный код ресурса (URI) перенаправления**, который вы указали на портале.
-  * `clientSecret`: секрет, созданный на портале.
+  * `clientID`: hello **идентификатор приложения** , имеет назначенный tooyour приложения hello портал Azure.
+  * `returnURL`: hello **URI перенаправления** , введенное на портале hello.
+  * `clientSecret`: hello секрет, который был создан в портале hello.
 
-2.  Откройте файл app.js в корневой папке проекта. Чтобы вызвать стратегию OIDCStrategy, поставляемую с `passport-azure-ad`, добавьте следующий вызов:
+2.  В корневой hello hello проекта откройте файл в файле App.js hello. stratey OIDCStrategy tooinvoke hello, который поставляется вместе с `passport-azure-ad`, добавьте следующий вызовом hello:
 
   ```JavaScript
   var OIDCStrategy = require('passport-azure-ad').OIDCStrategy;
@@ -91,12 +91,12 @@ ms.lasthandoff: 07/11/2017
   });
   ```
 
-3.  Чтобы обработать запросы на вход, используйте указанную стратегию:
+3.  toohandle запросов входа в систему, используйте только ссылка на стратегию hello:
 
   ```JavaScript
-  // Use the OIDCStrategy within Passport (section 2)
+  // Use hello OIDCStrategy within Passport (section 2)
   //
-  //   Strategies in Passport require a `validate` function. The function accepts
+  //   Strategies in Passport require a `validate` function. hello function accepts
   //   credentials (in this case, an OpenID identifier), and invokes a callback
   //   with a user object.
   passport.use( new OIDCStrategy({
@@ -131,23 +131,23 @@ ms.lasthandoff: 07/11/2017
   ));
   ```
 
-Для Passport свойственно аналогичное поведение для всех стратегий (Twitter, Facebook и т. д.). Все авторы стратегии придерживаются этого шаблона. Передайте стратегию `function()`, которая использует маркер и значение `done` в качестве параметров. Стратегия возвращается после того, как выполнит всю свою работу. Сохраните данные пользователя и маркер, чтобы не задавать их в следующий раз повторно.
+Для Passport свойственно аналогичное поведение для всех стратегий (Twitter, Facebook и т. д.). Все записи стратегии придерживаться toohello шаблон. Передайте hello стратегии `function()` , использует токен и `done` в качестве параметров. Стратегия Hello возвращается после его свою работу. Пользователь hello хранилища и образа hello маркер tooask для него требуется еще раз.
 
   > [!IMPORTANT]
-  > Приведенный выше код принимает любого пользователя, который может пройти проверку подлинности на сервере. Это называется автоматической регистрацией. На рабочих серверах не нужно разрешать другим пользователям выполнять операции входа без прохождения процесса регистрации, который вы сочтете приемлемым. Это обычное поведение в приложениях для потребителей. Приложение можно зарегистрировать в Facebook, но потребуется ввести дополнительные сведения. Если в этом руководстве вы не использовали программу командной строки, сообщение электронной почты можно извлечь из возвращаемого объекта маркера. Затем вы можете попросить пользователя ввести дополнительные сведения. Так как это всего лишь тестовый сервер, просто добавьте пользователей в базу данных в памяти.
+  > Hello выше код принимает любой пользователь, который может проверить подлинность сервера tooyour. Это называется автоматической регистрацией. На рабочем сервере не стоит toolet любой пользователь без необходимости их пройти процесс регистрации, выборе. Обычно это hello шаблон, который вы видите в потребительские приложения. приложение Hello может разрешить tooregister с Facebook, но затем вас просят tooenter дополнительных сведений. Если с помощью программы командной строки не были в этом учебнике, можно извлечь из hello объекта маркера, который возвращается hello электронной почты. Затем задайте себе вопрос: hello пользователя tooenter Дополнительные сведения. Так как на тестовом сервере, можно добавить пользователя hello непосредственно toohello в памяти базы данных.
   > 
   > 
 
-4.  Добавьте методы, которые позволяют отслеживать пользователей, выполнивших вход, в соответствии с требованиями Passport. Сюда относится сериализация и десериализация информации о пользователе:
+4.  Добавьте методы hello используется отслеживание tookeep пользователей, которые выполнили вход, как требует Passport. Сюда входят сериализацию и десериализацию сведений о пользователе hello:
 
   ```JavaScript
 
   // Passport session setup (section 2)
 
-  //   To support persistent login sessions, Passport needs to be able to
-  //   serialize users into, and deserialize users out of, the session. Typically,
-  //   this is as simple as storing the user ID when serializing, and finding
-  //   the user by ID when deserializing.
+  //   toosupport persistent login sessions, Passport needs toobe able to
+  //   serialize users into, and deserialize users out of, hello session. Typically,
+  //   this is as simple as storing hello user ID when serializing, and finding
+  //   hello user by ID when deserializing.
   passport.serializeUser(function(user, done) {
     done(null, user.email);
   });
@@ -158,7 +158,7 @@ ms.lasthandoff: 07/11/2017
     });
   });
 
-  // Array to hold signed-in users
+  // Array toohold signed-in users
   var users = [];
 
   var findByEmail = function(email, fn) {
@@ -173,7 +173,7 @@ ms.lasthandoff: 07/11/2017
   };
   ```
 
-5.  Добавьте код для загрузки ядра Express. Здесь мы используем шаблон по умолчанию /views и /routes, предоставляемый Express.
+5.  Добавьте код hello, загружает модуль экспресс-выпуск hello. Использовать /views по умолчанию hello и предоставляет шаблон /routes, Express:
 
   ```JavaScript
 
@@ -189,7 +189,7 @@ ms.lasthandoff: 07/11/2017
     app.use(cookieParser());
     app.use(expressSession({ secret: 'keyboard cat', resave: true, saveUninitialized: false }));
     app.use(bodyParser.urlencoded({ extended : true }));
-    // Initialize Passport!  Also use passport.session() middleware, to support
+    // Initialize Passport!  Also use passport.session() middleware, toosupport
     // persistent login sessions (recommended).
     app.use(passport.initialize());
     app.use(passport.session());
@@ -199,31 +199,31 @@ ms.lasthandoff: 07/11/2017
 
   ```
 
-6.  Добавьте маршруты POST, которые будут передавать фактические запросы на вход в ядро `passport-azure-ad`:
+6.  Добавить hello POST направляет, передайте hello фактических запросов toohello `passport-azure-ad` ядра:
 
   ```JavaScript
 
   // Auth routes (section 3)
 
   // GET /auth/openid
-  //   Use passport.authenticate() as route middleware to authenticate the
-  //   request. The first step in OpenID authentication involves redirecting
-  //   the user to the user's OpenID provider. After authenticating, the OpenID
-  //   provider redirects the user back to this application at
+  //   Use passport.authenticate() as route middleware tooauthenticate the
+  //   request. hello first step in OpenID authentication involves redirecting
+  //   hello user toohello user's OpenID provider. After authenticating, hello OpenID
+  //   provider redirects hello user back toothis application at
   //   /auth/openid/return.
 
   app.get('/auth/openid',
     passport.authenticate('azuread-openidconnect', { failureRedirect: '/login' }),
     function(req, res) {
-      log.info('Authentication was called in the sample');
+      log.info('Authentication was called in hello sample');
       res.redirect('/');
     });
 
   // GET /auth/openid/return
-  //   Use passport.authenticate() as route middleware to authenticate the
-  //   request. If authentication fails, the user is redirected back to the
-  //   sign-in page. Otherwise, the primary route function is called.
-  //   In this example, it redirects the user to the home page.
+  //   Use passport.authenticate() as route middleware tooauthenticate the
+  //   request. If authentication fails, hello user is redirected back toothe
+  //   sign-in page. Otherwise, hello primary route function is called.
+  //   In this example, it redirects hello user toohello home page.
   app.get('/auth/openid/return',
     passport.authenticate('azuread-openidconnect', { failureRedirect: '/login' }),
     function(req, res) {
@@ -232,10 +232,10 @@ ms.lasthandoff: 07/11/2017
     });
 
   // POST /auth/openid/return
-  //   Use passport.authenticate() as route middleware to authenticate the
-  //   request. If authentication fails, the user is redirected back to the
-  //   sign-in page. Otherwise, the primary route function is called. 
-  //   In this example, it redirects the user to the home page.
+  //   Use passport.authenticate() as route middleware tooauthenticate the
+  //   request. If authentication fails, hello user is redirected back toothe
+  //   sign-in page. Otherwise, hello primary route function is called. 
+  //   In this example, it redirects hello user toohello home page.
 
   app.post('/auth/openid/return',
     passport.authenticate('azuread-openidconnect', { failureRedirect: '/login' }),
@@ -245,10 +245,10 @@ ms.lasthandoff: 07/11/2017
     });
   ```
 
-## <a name="4-use-passport-to-issue-sign-in-and-sign-out-requests-to-azure-ad"></a>Шаг 4. Использование Passport для выдачи запросов на вход и выход в Azure AD
-Теперь приложение правильно настроено для взаимодействия с конечной точкой версии 2.0 с использованием протокола проверки подлинности OpenID Connect. Стратегия `passport-azure-ad` берет на себя создание сообщений проверки подлинности, проверку маркеров из Azure AD и поддержку сеансов пользователя. Осталось предоставить пользователям возможности входа и выхода, а также собрать дополнительную информацию о вошедших в систему пользователях.
+## <a name="4-use-passport-tooissue-sign-in-and-sign-out-requests-tooazure-ad"></a>4: используйте Passport tooissue входа и выхода запрашивает tooAzure AD
+Приложение теперь имеет toocommunicate с конечной точкой hello v2.0 с помощью протокола проверки подлинности OpenID Connect hello. Hello `passport-azure-ad` стратегии берет на себя все сведения hello отправляемого сообщения проверки подлинности, проверки токенов из Azure AD и поддержания сеанса пользователя hello. ALL, которая остается toodo является toogive пользователей toosign способом в и знак ожидания и toogather Дополнительные сведения о hello пользователю, вошедшему в систему.
 
-1.  Добавьте в файл app.js метод **по умолчанию**, а также методы **входа**, **учетной записи** и **выхода**.
+1.  Добавить hello **по умолчанию**, **входа**, **учетной записи**, и **выхода** методы tooyour в файле App.js файла:
 
   ```JavaScript
 
@@ -265,7 +265,7 @@ ms.lasthandoff: 07/11/2017
   app.get('/login',
     passport.authenticate('azuread-openidconnect', { failureRedirect: '/login' }),
     function(req, res) {
-      log.info('Login was called in the sample');
+      log.info('Login was called in hello sample');
       res.redirect('/');
   });
 
@@ -276,22 +276,22 @@ ms.lasthandoff: 07/11/2017
 
   ```
 
-  Дополнительные сведения:
+  Ниже приведены сведения о hello.
     
-    * Маршрут `/` выполняет перенаправление в представление index.ejs. Он передает сведения о пользователе в запросе (если он существует).
-    * Маршрут `/account` сначала *позволяет пройти проверку подлинности* (реализация выполняется в примере кода ниже). Затем он передает сведения о пользователе в запросе. Таким образом вы можете получить больше сведений о пользователе.
-    * Маршрут `/login` вызывает структуру проверки подлинности `azuread-openidconnect` из `passport-azuread`. Если вызов завершается ошибкой, пользователь перенаправляется обратно на страницу `/login`.
-    * Маршрут `/logout` вызывает представление logout.ejs (и маршрут). Это приводит к очистке файлов cookie, а затем он перенаправляет пользователя обратно к представлению index.ejs.
+    * Hello `/` toohello index.ejs представление перенаправляет маршрута. Он передает hello пользователя в запросе hello (если он существует).
+    * Hello `/account` сначала *гарантирует, что Вы авторизованы* (реализации, в hello после кода). Затем он передает hello пользователя в запросе hello. Это, чтобы получить дополнительные сведения о пользователе hello.
+    * Hello `/login` маршрутизацию вызовов к `azuread-openidconnect` проверки подлинности из `passport-azuread`. Если, не удается, он перенаправляет пользователя hello обратно слишком`/login`.
+    * Hello `/logout` маршрута вызывает hello logout.ejs Просмотр (и маршрутизации). Это приведет к очистке файлы cookie, а затем возвращает hello задней tooindex.ejs пользователя.
 
-2.  Добавьте метод **EnsureAuthenticated**, использованный ранее в `/account`:
+2.  Добавить hello **EnsureAuthenticated** метод, который использовался ранее в `/account`:
 
   ```JavaScript
 
-  // Route middleware to ensure the user is authenticated (section 4)
+  // Route middleware tooensure hello user is authenticated (section 4)
 
-  //   Use this route middleware on any resource that needs to be protected. If
-  //   the request is authenticated (typically via a persistent login session),
-  //   the request proceeds. Otherwise, the user is redirected to the
+  //   Use this route middleware on any resource that needs toobe protected. If
+  //   hello request is authenticated (typically via a persistent login session),
+  //   hello request proceeds. Otherwise, hello user is redirected toothe
   //   sign-in page.
   function ensureAuthenticated(req, res, next) {
     if (req.isAuthenticated()) { return next(); }
@@ -300,7 +300,7 @@ ms.lasthandoff: 07/11/2017
 
   ```
 
-3.  В файле app.js создайте сервер:
+3.  В файле App.js создайте hello server:
 
   ```JavaScript
 
@@ -309,10 +309,10 @@ ms.lasthandoff: 07/11/2017
   ```
 
 
-## <a name="5-create-the-views-and-routes-in-express-that-you-show-your-user-on-the-website"></a>Шаг 5. Создание представлений и маршрутов в Express для отображения пользователя на веб-сайте
-Добавьте маршруты и представления, отображающие сведения для пользователя. Маршруты и представления также обрабатывают созданные маршруты `/logout` и `/login`.
+## <a name="5-create-hello-views-and-routes-in-express-that-you-show-your-user-on-hello-website"></a>5: создавать представления hello и маршруты в экспресс-выпуск, что показывает пользователя на веб-сайте hello
+Добавьте маршруты hello и представления, отображающие сведения toohello пользователя. маршруты Hello и представлений также обрабатывать hello `/logout` и `/login` маршруты, которые были созданы.
 
-1. Создайте маршрут `/routes/index.js` в корневом каталоге.
+1. В корневом каталоге hello, создать hello `/routes/index.js` маршрута.
 
   ```JavaScript
 
@@ -325,7 +325,7 @@ ms.lasthandoff: 07/11/2017
   };
   ```
 
-2.  Создайте маршрут `/routes/user.js` в корневом каталоге.
+2.  В корневом каталоге hello, создать hello `/routes/user.js` маршрута.
 
   ```JavaScript
 
@@ -338,9 +338,9 @@ ms.lasthandoff: 07/11/2017
   };
   ```
 
-  Маршруты `/routes/index.js` и `/routes/user.js` являются простыми маршрутами, которые передают запрос в представления, включая пользователя, если он существует.
+  `/routes/index.js`и `/routes/user.js` простой маршруты, которые передают представлений tooyour hello запросов, включая hello пользователя, если он имеется.
 
-3.  Создайте представление `/views/index.ejs` в корневом каталоге. Эта страница вызывает методы **входа** и **выхода**. Вам также необходимо использовать представление `/views/index.ejs`, чтобы записать сведения об учетной записи. Вы можете использовать условное выражение `if (!user)`, так как сведения о пользователе, передаваемые в запросе, свидетельствуют о том, что он вошел в систему.
+3.  В корневом каталоге hello, создать hello `/views/index.ejs` представления. Эта страница вызывает методы **входа** и **выхода**. Можно также использовать hello `/views/index.ejs` просмотра toocapture сведения об учетной записи. Можно использовать условные hello `if (!user)` имени пользователя hello, передаваемых через запрос hello. свидетельствуют о том, что он вошел в систему.
 
   ```JavaScript
   <% if (!user) { %>
@@ -353,7 +353,7 @@ ms.lasthandoff: 07/11/2017
   <% } %>
   ```
 
-4.  Создайте представление `/views/account.ejs` в корневом каталоге. Представление `/views/account.ejs` позволяет просмотреть дополнительные сведения, которые `passport-azuread` помещает в запрос пользователя.
+4.  В корневом каталоге hello, создать hello `/views/account.ejs` представления. Hello `/views/account.ejs` представление позволяет tooview дополнительной информацией, `passport-azuread` помещает в запросе пользователя hello.
 
   ```Javascript
   <% if (!user) { %>
@@ -372,7 +372,7 @@ ms.lasthandoff: 07/11/2017
   <% } %>
   ```
 
-5.  Добавьте макет. Создайте представление `/views/layout.ejs` в корневом каталоге.
+5.  Добавьте макет. В корневом каталоге hello, создать hello `/views/layout.ejs` представления.
 
   ```HTML
 
@@ -399,20 +399,20 @@ ms.lasthandoff: 07/11/2017
   </html>
   ```
 
-6.  Чтобы создать и запустить приложение, запустите `node app.js`. Затем перейдите сюда: `http://localhost:3000`.
+6.  toobuild и запустить приложение, запустите `node app.js`. Перейдите слишком`http://localhost:3000`.
 
-7.  Войдите с помощью личной учетной записи Майкрософт либо рабочей или учебной учетной записи. Обратите внимание, что удостоверение пользователя отображается в списке /account. 
+7.  Войдите с помощью личной учетной записи Майкрософт либо рабочей или учебной учетной записи. Обратите внимание, что удостоверение пользователя hello в списке hello/Account. 
 
 Теперь у вас есть веб-приложение, защищенное с помощью стандартных протоколов. Вы можете выполнить проверку подлинности пользователей в приложении с помощью личных, рабочих или учебных учетных записей.
 
 ## <a name="next-steps"></a>Дальнейшие действия
-Полный пример (без ваших значений конфигурации) можно загрузить в виде [ZIP-архива](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-nodejs/archive/complete.zip). Кроме того, его можно клонировать из GitHub:
+Справочник по образец hello завершена (без настройки) предоставляется как [ZIP-файл](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-nodejs/archive/complete.zip). Кроме того, его можно клонировать из GitHub:
 
 ```git clone --branch complete https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-nodejs.git```
 
-Теперь можно перейти к более сложным темам. Вы можете попробовать следующее:
+Затем можно переместить на toomore дополнительные разделы. Может потребоваться tootry:
 
-[Защита веб-API с помощью Node.js](active-directory-v2-devquickstarts-node-api.md)
+[Безопасность веб-API Node.js с помощью конечной точки v2.0 hello](active-directory-v2-devquickstarts-node-api.md)
 
 Ниже приведены некоторые дополнительные ресурсы.
 
@@ -420,5 +420,5 @@ ms.lasthandoff: 07/11/2017
 * [Тег StackOverflow "azure-active-directory"](http://stackoverflow.com/questions/tagged/azure-active-directory)
 
 ### <a name="get-security-updates-for-our-products"></a>Получение обновлений системы безопасности для наших продуктов
-Мы рекомендуем вам зарегистрироваться для получения уведомлений о нарушениях безопасности. Это можно сделать, подписавшись на уведомления безопасности консультационных служб на странице [технического центра безопасности](https://technet.microsoft.com/security/dd252948).
+Мы рекомендуем toosign копирование toobe уведомлений при внесении угрозы безопасности. На hello [выпуске](https://technet.microsoft.com/security/dd252948) страницы, подписаться на оповещения tooSecurity рекомендации.
 

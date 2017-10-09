@@ -1,6 +1,6 @@
 ---
-title: "Сбор оповещений Nagios и Zabbix в OMS Log Analytics | Документы Майкрософт"
-description: "Nagios и Zabbix — средства мониторинга с открытым исходным кодом. Оповещения от этих средств мониторинга можно собирать в Log Analytics для анализа вместе с оповещениями из других источников.  В этой статье описано, как настроить сбор оповещений из этих средств в агенте OMS для Linux."
+title: "оповещения Nagios и Zabbix aaaCollect в аналитику журнала OMS | Документы Microsoft"
+description: "Nagios и Zabbix — средства мониторинга с открытым исходным кодом. Можно собирать оповещения, с помощью этих средств в службе анализа журналов в порядке tooanalyze их вместе с предупреждениями из других источников.  В этой статье описывается, как tooconfigure hello агента OMS для Linux toocollect оповещений из этих систем."
 services: log-analytics
 documentationcenter: 
 author: mgoedtel
@@ -14,29 +14,29 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/04/2017
 ms.author: magoedte
-ms.openlocfilehash: 0b64c32e1031e704d50aab0b38eaea41e27d134b
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 23e2252e4fed8bc87baec063694a8472ca84220d
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="collect-alerts-from-nagios-and-zabbix-in-log-analytics-from-oms-agent-for-linux"></a>Сбор оповещений Nagios и Zabbix из агента OMS для Linux в Log Analytics 
-[Nagios](https://www.nagios.org/) и [Zabbix](http://www.zabbix.com/) — средства мониторинга с открытым исходным кодом.  Оповещения от этих средств мониторинга можно собирать в Log Analytics для анализа вместе с [оповещениями из других источников](log-analytics-alerts.md).  В этой статье описано, как настроить сбор оповещений из этих средств в агенте OMS для Linux.
+[Nagios](https://www.nagios.org/) и [Zabbix](http://www.zabbix.com/) — средства мониторинга с открытым исходным кодом.  Можно собирать оповещения, с помощью этих средств в службе анализа журналов в порядке tooanalyze их вместе с [предупреждениями из других источников](log-analytics-alerts.md).  В этой статье описывается, как tooconfigure hello агента OMS для Linux toocollect оповещений из этих систем.
  
 ## <a name="configure-alert-collection"></a>Настройка сбора оповещений
 
 ### <a name="configuring-nagios-alert-collection"></a>Настройка сбора оповещений Nagios
-Для настройки сбора оповещений на сервере Nagios выполните следующие действия.
+Выполните следующие действия на предупреждения toocollect сервера Nagios hello hello.
 
-1. Предоставьте пользователю **omsagent** разрешение на чтение для файла журнала Nagios (`/var/log/nagios/nagios.log`). Если файл nagios.log принадлежит группе `nagios`, можно добавить пользователя **omsagent** в группу **nagios**. 
+1. Предоставление пользовательских hello **omsagent** файла журнала Nagios toohello доступ для чтения (т. е. `/var/log/nagios/nagios.log`). При условии, что файл nagios.log hello принадлежит группе hello `nagios`, можно добавить пользователя hello **omsagent** toohello **nagios** группы. 
 
     sudo usermod -a -G nagios omsagent
 
-2.  Измените файл конфигурации (`/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.conf`). Для этого введите следующие записи в незакомментированном виде:  
+2.  Изменение файла конфигурации hello в (`/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.conf`). Убедитесь, что присутствуют и не закомментированы следующие записи hello:  
 
         <source>  
           type tail  
-          #Update path to point to your nagios.log  
+          #Update path toopoint tooyour nagios.log  
           path /var/log/nagios/nagios.log  
           format none  
           tag oms.nagios  
@@ -46,18 +46,18 @@ ms.lasthandoff: 07/11/2017
           type filter_nagios_log  
         </filter>  
 
-3. Перезапустите управляющую программу omsagent
+3. Перезапустите управляющую программу omsagent hello
 
     ```
     sudo sh /opt/microsoft/omsagent/bin/service_control restart
     ```
 
 ### <a name="configuring-zabbix-alert-collection"></a>Настройка сбора оповещений Zabbix
-Для сбора оповещений сервера Zabbix необходимо указать имя пользователя и пароль в формате *открытого текста*. Это не идеальное решение, но мы рекомендуем создать отдельного пользователя и предоставить ему разрешения только для мониторинга.
+toocollect предупреждения с сервера Zabbix, требуются toospecify пользователя и пароль в *открытый текст*. Это не идеальное решение, но рекомендуется создать пользователя hello и предоставить onlu toomonitor разрешения.
 
-Для настройки сбора оповещений на сервере Nagios выполните следующие действия.
+Выполните следующие действия на предупреждения toocollect сервера Nagios hello hello.
 
-1. Измените файл конфигурации (`/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.conf`). Убедитесь, что в файле есть следующие параметры и что они не закомментированы.  Измените имя пользователя и пароль на соответствующие значения для вашей среды Zabbix.
+1. Изменение файла конфигурации hello в (`/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.conf`). Убедитесь, что присутствуют и не закомментированы следующие записи hello.  Изменить hello пользователя имя и пароль toovalues Zabbix среды.
 
         <source>
          type zabbix_alerts
@@ -68,7 +68,7 @@ ms.lasthandoff: 07/11/2017
          zabbix_password zabbix
         </source>
 
-2. Перезапустите управляющую программу omsagent
+2. Перезапустите управляющую программу omsagent hello
 
     sudo sh /opt/microsoft/omsagent/bin/service_control restart
 
@@ -78,39 +78,39 @@ ms.lasthandoff: 07/11/2017
 
 ### <a name="nagios-alert-records"></a>Записи оповещений Nagios
 
-Для записей оповещений Nagios параметр **Type** (тип) имеет значение **Alert** (оповещение), а параметр **SourceSystem** (источник) — значение **Nagios**.  У них есть свойства, приведенные в таблице ниже.
+Для записей оповещений Nagios параметр **Type** (тип) имеет значение **Alert** (оповещение), а параметр **SourceSystem** (источник) — значение **Nagios**.  Они имеют свойства hello в hello в следующей таблице.
 
 | Свойство | Описание |
 |:--- |:--- |
 | Тип |*Предупреждение* |
 | SourceSystem |*Nagios* |
-| AlertName |Имя оповещения. |
-| AlertDescription | Описание оповещения. |
-| AlertState | Состояние службы или узла.<br><br>ОК<br>ПРЕДУПРЕЖДЕНИЕ<br>РАБОТАЕТ<br>СБОЙ |
-| HostName | Имя узла, который создал оповещение. |
-| PriorityNumber | Приоритет оповещения. |
-| StateType | Тип состояния оповещения.<br><br>SOFT — проблема, которая не проверялась повторно.<br>HARD — проблема, которая проверялась повторно заданное число раз.  |
-| TimeGenerated |Дата и время создания оповещения. |
+| AlertName |Имя предупреждения hello. |
+| AlertDescription | Описание предупреждения hello. |
+| AlertState | Состояние узла или службы hello.<br><br>ОК<br>ПРЕДУПРЕЖДЕНИЕ<br>РАБОТАЕТ<br>СБОЙ |
+| HostName | Имя узла hello, создавшего предупреждение hello. |
+| PriorityNumber | Уровень приоритета предупреждения hello. |
+| StateType | Тип состояния предупреждения hello Hello.<br><br>SOFT — проблема, которая не проверялась повторно.<br>HARD — проблема, которая проверялась повторно заданное число раз.  |
+| TimeGenerated |Создания предупреждения hello даты и времени. |
 
 
 ### <a name="zabbix-alert-records"></a>Записи оповещений Zabbix
-Для записей оповещений Nagios параметр **Type** (тип) имеет значение **Alert** (оповещение), а параметр **SourceSystem** (источник) — значение **Zabbix**.  У них есть свойства, приведенные в таблице ниже.
+Для записей оповещений Nagios параметр **Type** (тип) имеет значение **Alert** (оповещение), а параметр **SourceSystem** (источник) — значение **Zabbix**.  Они имеют свойства hello в hello в следующей таблице.
 
 | Свойство | Описание |
 |:--- |:--- |
 | Тип |*Предупреждение* |
 | SourceSystem |*Zabbix* |
-| AlertName | Имя оповещения. |
-| AlertPriority | Серьезность оповещения.<br><br>не определен<br>информационный.<br>Предупреждение<br>average<br>высокий<br>очень высокий  |
-| AlertState | Состояние оповещения.<br><br>0 — актуальное состояние.<br>1 — состояние неизвестно.  |
-| AlertTypeNumber | Указывает, может ли оповещение создавать несколько событий, связанных с проблемой.<br><br>0 — актуальное состояние.<br>1 — состояние неизвестно.    |
+| AlertName | Имя предупреждения hello. |
+| AlertPriority | Серьезность предупреждения hello.<br><br>не определен<br>информационный.<br>Предупреждение<br>average<br>высокий<br>очень высокий  |
+| AlertState | Состояние предупреждения hello.<br><br>0 — состояние — копирование toodate.<br>1 — состояние неизвестно.  |
+| AlertTypeNumber | Указывает, может ли оповещение создавать несколько событий, связанных с проблемой.<br><br>0 — состояние — копирование toodate.<br>1 — состояние неизвестно.    |
 | Комментарии | Дополнительные комментарии для оповещения. |
-| HostName | Имя узла, который создал оповещение. |
-| PriorityNumber | Значение, указывающее уровень серьезности оповещения.<br><br>0 — не определен<br>1 — информация<br>2 — предупреждение<br>3 — средний<br>4 — высокий<br>5 — очень высокий |
-| TimeGenerated |Дата и время создания оповещения. |
-| TimeLastModified |Дата и время последнего изменения состояния оповещения. |
+| HostName | Имя узла hello, создавшего предупреждение hello. |
+| PriorityNumber | Значение, указывающее серьезность оповещения hello.<br><br>0 — не определен<br>1 — информация<br>2 — предупреждение<br>3 — средний<br>4 — высокий<br>5 — очень высокий |
+| TimeGenerated |Создания предупреждения hello даты и времени. |
+| TimeLastModified |Дата и время hello состояние оповещения hello последнего изменения. |
 
 
 ## <a name="next-steps"></a>Дальнейшие действия
 * Ознакомьтесь с дополнительными сведениями об [оповещениях](log-analytics-alerts.md) в Log Analytics.
-* Узнайте больше об [операциях поиска по журналу](log-analytics-log-searches.md) , которые можно применять для анализа данных, собираемых из источников данных и решений. 
+* Дополнительные сведения о [входа выполняет](log-analytics-log-searches.md) tooanalyze hello данные, собранные из источников данных и решений. 

@@ -1,6 +1,6 @@
 ---
-title: "Как управлять хранилищем файлов Azure с помощью PowerShell | Документация Майкрософт"
-description: "Узнайте, как использовать PowerShell для управления хранилищем файлов Azure."
+title: "aaaHow toouse PowerShell toomanage хранилища Azure File | Документы Microsoft"
+description: "Узнайте хранилища Azure File toomanage toouse PowerShell."
 services: storage
 documentationcenter: 
 author: RenaShahMSFT
@@ -14,29 +14,29 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 05/27/2017
 ms.author: renash
-ms.openlocfilehash: 148375b156c4ae1aa4bf203d215f7ed607a71b89
-ms.sourcegitcommit: 422efcbac5b6b68295064bd545132fcc98349d01
+ms.openlocfilehash: 0e30e8796cf8bbf5f9249b26179d5e0f9077c8fe
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-use-powershell-to-manage-azure-file-storage"></a>Как использовать PowerShell для управления хранилищем файлов Azure
-Вы можете использовать Azure PowerShell для создания общих папок и управления ими.
+# <a name="how-toouse-powershell-toomanage-azure-file-storage"></a>Как toomanage toouse PowerShell хранилища Azure File
+Можно использовать toocreate Azure PowerShell и управлять общими папками.
 
-## <a name="install-the-powershell-cmdlets-for-azure-storage"></a>Установите командлеты PowerShell для хранилища Azure
-Для подготовки к использованию PowerShell загрузите и установите командлеты Azure PowerShell. Инструкции по установке см. в статье [Установка и настройка Azure PowerShell](/powershell/azureps-cmdlets-docs).
+## <a name="install-hello-powershell-cmdlets-for-azure-storage"></a>Установка командлетов PowerShell hello для хранилища Azure
+tooprepare toouse PowerShell, загрузить и установить командлеты Azure PowerShell hello. В разделе [как tooinstall и настройка Azure PowerShell](/powershell/azureps-cmdlets-docs) для hello установить точку и инструкции по установке.
 
 > [!NOTE]
-> Рекомендуется загрузить и установить или обновить версию модуля Azure PowerShell.
+> Рекомендуется загрузить и установить или обновить toohello последнюю версию модуля Azure PowerShell.
 > 
 > 
 
-Откройте окно Azure PowerShell. Для этого нажмите кнопку **Запустить** и введите **Windows PowerShell**. Окно PowerShell выполнит загрузку модуля Azure PowerShell.
+Откройте окно Azure PowerShell. Для этого нажмите кнопку **Запустить** и введите **Windows PowerShell**. окно PowerShell Hello загружает hello модуля Azure Powershell.
 
 ## <a name="create-a-context-for-your-storage-account-and-key"></a>Создание объекта контекста и ключа для учетной записи хранения
-Создайте объект контекста учетной записи хранения. Контекст включает имя учетной записи хранения и ключ. Инструкции по копированию ключа учетной записи с [портала Azure](https://portal.azure.com) см. в разделе [Просмотр и копирование ключей доступа к хранилищу](storage-create-storage-account.md#view-and-copy-storage-access-keys).
+Создайте hello контекста учетной записи хранилища. контекст Hello инкапсулирует hello ключ учетной записи хранения имени и учетной записи. Инструкции по копированию ключ учетной записи из hello [портал Azure](https://portal.azure.com), в разделе [представление и скопируйте ключи доступа к хранилищу](storage-create-storage-account.md#view-and-copy-storage-access-keys).
 
-В следующем примере вместо `storage-account-name` и `storage-account-key` используйте имя и ключ своей учетной записи хранения.
+Замените `storage-account-name` и `storage-account-key` с помощью имени учетной записи хранилища и ключ в следующий пример hello.
 
 ```powershell
 # create a context for account and key
@@ -44,7 +44,7 @@ $ctx=New-AzureStorageContext storage-account-name storage-account-key
 ```
 
 ## <a name="create-a-new-file-share"></a>Создание нового ресурса совместно используемых файлов
-Создайте новый файловый ресурс с именем `logs`.
+Создание нового ресурса hello, с именем `logs`.
 
 ```powershell
 # create a new share
@@ -54,44 +54,44 @@ $s = New-AzureStorageShare logs -Context $ctx
 У вас появится новый общий ресурс в хранилище файлов. Далее мы добавим каталог и файл.
 
 > [!IMPORTANT]
-> Имя общей папки должно состоять из символов в нижнем регистре. Дополнительные сведения о присвоении имен общим папкам и файлам см. в статье [Naming and Referencing Shares, Directories, Files, and Metadata](https://msdn.microsoft.com/library/azure/dn167011.aspx) (Именование общих ресурсов, каталогов, файлов и метаданных и ссылка на них).
+> Hello имя файлового ресурса общего доступа должны указываться прописными буквами. Дополнительные сведения о присвоении имен общим папкам и файлам см. в статье [Naming and Referencing Shares, Directories, Files, and Metadata](https://msdn.microsoft.com/library/azure/dn167011.aspx) (Именование общих ресурсов, каталогов, файлов и метаданных и ссылка на них).
 > 
 > 
 
-## <a name="create-a-directory-in-the-file-share"></a>Создание каталога в ресурсе совместно используемых файлов
-Создайте каталог в ресурсе совместно используемых файлов. В данном примере используется каталог с именем `CustomLogs`:
+## <a name="create-a-directory-in-hello-file-share"></a>Создайте каталог в общей папке hello
+Создайте каталог в общей папке hello. В следующем примере hello, hello каталог `CustomLogs`.
 
 ```powershell
-# create a directory in the share
+# create a directory in hello share
 New-AzureStorageDirectory -Share $s -Path CustomLogs
 ```
 
-## <a name="upload-a-local-file-to-the-directory"></a>Отправка локального файла в каталог
-Затем загрузите локальный файл в хранилище файлов. В данном примере файл передается из `C:\temp\Log1.txt`. Отредактируйте путь к файлу, чтобы он соответствовал пути к существующему файлу на локальном компьютере:
+## <a name="upload-a-local-file-toohello-directory"></a>Отправка toohello каталог локального файла
+Теперь отправьте toohello каталог локального файла. Hello следующий пример отправляет файл из `C:\temp\Log1.txt`. Измените путь к файлу hello, которое указывает допустимый файл tooa на локальном компьютере.
 
 ```powershell
-# upload a local file to the new directory
+# upload a local file toohello new directory
 Set-AzureStorageFileContent -Share $s -Source C:\temp\Log1.txt -Path CustomLogs
 ```
 
-## <a name="list-the-files-in-the-directory"></a>Просмотр списка файлов в каталоге
-Чтобы просмотреть файлы в каталоге, можно вывести список файлов. Эта команда возвращает файлы и подкаталоги (если таковые имеются) в каталоге CustomLogs.
+## <a name="list-hello-files-in-hello-directory"></a>Список файлов в каталоге hello, hello
+toosee hello файл в каталоге hello, можно составить список всех файлов каталога hello. Эта команда возвращает hello файлы и подкаталоги (если таковые имеются) в каталоге CustomLogs hello.
 
 ```powershell
-# list files in the new directory
+# list files in hello new directory
 Get-AzureStorageFile -Share $s -Path CustomLogs | Get-AzureStorageFile
 ```
 
-Get-AzureStorageFile возвращает список файлов и каталогов в каталоге, в который отправлен объект. Get-AzureStorageFile -Share $s возвращает список файлов и каталогов в корневой папке. Чтобы получить список файлов в подкаталоге, необходимо передать подкаталог команде Get-AzureStorageFile. Как это работает: первая часть команды возвращает экземпляр каталога подкаталога CustomLogs. Затем этот экземпляр передается команде Get-AzureStorageFile, которая возвращает файлы и каталоги в CustomLogs.
+Get-AzureStorageFile возвращает список файлов и каталогов в каталоге, в который отправлен объект. «Get-AzureStorageFile-совместное использование $s» возвращает список файлов и каталогов в корневой каталог hello. tooget список файлов в подкаталоге, у вас есть hello подкаталог toopass tooGet-AzureStorageFile. При этом произойдет — первая часть команды hello канала toohello hello возвращает экземпляр directory hello подкаталог CustomLogs. Затем, передается в Get-AzureStorageFile, который возвращает hello файлов и каталогов в CustomLogs.
 
 ## <a name="copy-files"></a>Копирование файлов
-Начиная с версии 0.9.7 Azure PowerShell, можно скопировать файл в другой файл, файл в большой двоичный объект или BLOB-объект в файл. Ниже показано, как выполнить копирование с помощью командлетов PowerShell.
+Начиная с версии 0.9.7 Azure PowerShell, можно скопировать файл tooanother, большой двоичный объект файла tooa или tooa файла большого двоичного объекта. Ниже показано как tooperform их копирования операции с помощью командлетов PowerShell.
 
 ```powershell
-# copy a file to the new directory
+# copy a file toohello new directory
 Start-AzureStorageFileCopy -SrcShareName srcshare -SrcFilePath srcdir/hello.txt -DestShareName destshare -DestFilePath destdir/hellocopy.txt -Context $srcCtx -DestContext $destCtx
 
-# copy a blob to a file directory
+# copy a blob tooa file directory
 Start-AzureStorageFileCopy -SrcContainerName srcctn -SrcBlobName hello2.txt -DestShareName hello -DestFilePath hellodir/hello2copy.txt -DestContext $ctx -Context $ctx
 ```
 ## <a name="next-steps"></a>Дальнейшие действия

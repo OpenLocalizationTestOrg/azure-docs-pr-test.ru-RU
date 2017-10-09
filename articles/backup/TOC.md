@@ -14,26 +14,26 @@
 ### Установка и обновление
 #### [Подготовка рабочих нагрузок сервера резервного копирования Azure на портале Azure](backup-azure-microsoft-azure-backup.md)
 #### [Подготовка рабочих нагрузок сервера резервного копирования Azure на классическом портале](backup-azure-microsoft-azure-backup-classic.md)
-#### [Добавление хранилища на сервер резервного копирования Azure](backup-mabs-add-storage.md)
-#### [Обновление сервера резервного копирования Azure до версии 2](backup-mabs-upgrade-to-v2.md)
+#### [Добавление хранилища tooAzure резервное копирование сервера](backup-mabs-add-storage.md)
+#### [Обновление toov.2 Azure резервное копирование сервера](backup-mabs-upgrade-to-v2.md)
 #### [Автоматическая установка сервера резервного копирования Azure](backup-mabs-unattended-install.md)
 ### Защита рабочих нагрузок
-#### [Резервное копирование сервера VMware с помощью сервера резервного копирования Azure](backup-azure-backup-server-vmware.md)
-#### [Резервное копирование Exchange Server с помощью сервера резервного копирования Azure](backup-azure-exchange-mabs.md)
-#### [Резервное копирование фермы SharePoint с помощью сервера резервного копирования Azure](backup-azure-backup-sharepoint-mabs.md)
-#### [Резервное копирование баз данных SQL Server с помощью сервера резервного копирования Azure](backup-azure-sql-mabs.md)
+#### [Использовать tooback резервное копирование сервера Azure сервер VMware](backup-azure-backup-server-vmware.md)
+#### [Используйте резервное копирование Azure tooback копирование Exchange](backup-azure-exchange-mabs.md)
+#### [Используйте резервное копирование Azure tooback копирование фермы SharePoint](backup-azure-backup-sharepoint-mabs.md)
+#### [Используйте резервное копирование Azure tooback копирование SQL](backup-azure-sql-mabs.md)
 #### [Защита состояния системы и восстановление исходного состояния системы](backup-mabs-system-state-and-bmr.md)
 ### [Восстановление данных с сервера Azure Backup Server](backup-azure-alternate-dpm-server.md)
 
 ## Виртуальные машины Azure
-### Подготовка виртуальной машины
+### Подготовка виртуальной Машины hello
 #### [Подготовка виртуальных машин, развернутых с помощью Resource Manager](backup-azure-arm-vms-prepare.md)
 #### [Согласованное с приложениями резервное копирование виртуальных машин Linux](backup-azure-linux-app-consistent.md)
 #### [Подготовка виртуальных машин Azure](backup-azure-vms-prepare.md)
 ### Планирование среды
 #### [Планирование инфраструктуры резервного копирования виртуальных машин](backup-azure-vms-introduction.md)
 ### Резервное копирование виртуальных машин
-#### [Резервное копирование виртуальных машин Azure в хранилище служб восстановления](backup-azure-arm-vms.md)
+#### [Резервное копирование виртуальных машин Azure в хранилище служб восстановления tooa](backup-azure-arm-vms.md)
 #### [Резервное копирование зашифрованных виртуальных машин](backup-azure-vms-encryption.md)
 #### [Архивация виртуальных машин Azure](backup-azure-vms.md)
 ### Контроль и мониторинг виртуальных машин
@@ -55,10 +55,10 @@
 ## Data Protection Manager
 ### [Подготовка рабочих нагрузок DPM на портале Azure](backup-azure-dpm-introduction.md)
 ### [Подготовка рабочих нагрузок DPM на классическом портале](backup-azure-dpm-introduction-classic.md)
-### [Резервное копирование Exchange Server с помощью System Center DPM](backup-azure-backup-exchange-server.md)
-### [Восстановление данных на альтернативный сервер DPM](backup-azure-alternate-dpm-server.md)
-### [Резервное копирование рабочих нагрузок SQL Server с помощью DPM](backup-azure-backup-sql.md)
-### [Резервное копирование фермы SharePoint с помощью DPM](backup-azure-backup-sharepoint.md)
+### [Используйте System Center DPM tooback сервер Exchange Server](backup-azure-backup-exchange-server.md)
+### [Восстановление данных tooan альтернативном сервере DPM](backup-azure-alternate-dpm-server.md)
+### [Использовать tooback DPM копирование рабочих нагрузок SQL Server](backup-azure-backup-sql.md)
+### [Использовать DPM tooback копирование фермы SharePoint](backup-azure-backup-sharepoint.md)
 
 ## Использование PowerShell
 ### [Виртуальные машины Azure на портале Azure](backup-azure-vms-automation.md)
@@ -77,23 +77,23 @@
 ## Windows Server
 ### [Резервное копирование файлов и папок Windows Server](backup-configure-vault.md)
 ### [Состояние резервного копирования системы Windows Server](backup-azure-system-state.md)
-### [Восстановление файлов из Azure в Windows Server](backup-azure-restore-windows-server.md)
+### [Восстановление файлов из Azure tooWindows сервера](backup-azure-restore-windows-server.md)
 ### [Состояние восстановления системы Windows Server](backup-azure-restore-system-state.md)
 ### [Управление хранилищами служб восстановления и их мониторинг](backup-azure-manage-windows-server.md)
-### Резервное копирование и восстановление с помощью классического портала
-#### [Windows Server: использование классической модели развертывания](backup-configure-vault-classic.md)
-#### [Управление хранилищами службы архивации с помощью классической модели развертывания](backup-azure-manage-windows-server-classic.md)
-#### [Восстановление файлов на Windows Server с использованием классической модели развертывания](backup-azure-restore-windows-server-classic.md)
+### Резервное копирование и восстановление с помощью классического портала hello
+#### [Windows Server с помощью hello классической модели развертывания](backup-configure-vault-classic.md)
+#### [Управление хранилищами резервного копирования, с помощью hello классической модели развертывания](backup-azure-manage-windows-server-classic.md)
+#### [Восстановить файлы tooa Windows Server с помощью hello классической модели развертывания](backup-azure-restore-windows-server-classic.md)
 
 ## Хранилище служб восстановления
 ### [Обзор хранилищ служб восстановления](backup-azure-recovery-services-vault-overview.md)
-### [Обновление резервного хранилища до хранилища служб восстановления](backup-azure-upgrade-backup-to-recovery-services.md)
+### [Обновление служб хранилища tooRecovery хранилища архивации](backup-azure-upgrade-backup-to-recovery-services.md)
 ### [Удаление хранилища служб восстановления](backup-azure-delete-vault.md)
 
 ## Устранение неполадок
 ### [Неполадки с резервным копированием виртуальных машин Azure на портале Azure](backup-azure-vms-troubleshoot.md)
 ### [Неполадки с резервным копированием виртуальных машин Azure на классическом портале](backup-azure-vms-troubleshoot-classic.md)
-### [Ошибка резервного копирования виртуальной машины Azure: "Не удалось запросить состояние моментального снимка в агенте ВМ. Истекло время ожидания для подзадачи моментального снимка ВМ"](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md)
+### [Сбой резервного копирования Azure VM: не удалось связаться с агентом ВМ hello для моментального снимка состояния — истекло время ожидания подзадачи моментального снимка ВМ](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md)
 ### [Медленное резервное копирование файлов и папок в службе архивации Azure](backup-azure-troubleshoot-slow-backup-performance-issue.md)
 ### [Устранение неполадок Сервера резервного копирования Azure](backup-azure-mabs-troubleshoot.md)
 

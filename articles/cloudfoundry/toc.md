@@ -2,7 +2,7 @@
 # Быстрое начало работы
 ## [Шаблон Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/pivotal.pivotal-cloud-foundry)
 # Учебники
-## [Развертывание приложений CF в Azure](/azure/virtual-machines/linux/cloudfoundry-deploy-your-first-app)
+## [Развертывание приложения CF tooAzure](/azure/virtual-machines/linux/cloudfoundry-deploy-your-first-app)
 ## [Cloud Foundry в Azure](/azure/virtual-machines/linux/cloudfoundry-get-started)
 # Ресурсы
 ## [Стратегия развития Azure](https://azure.microsoft.com/roadmap/)

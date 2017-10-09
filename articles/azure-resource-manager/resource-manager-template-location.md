@@ -1,6 +1,6 @@
 ---
-title: "Определение расположения ресурса Azure в шаблоне | Документация Майкрософт"
-description: "Определение расположения ресурса в шаблоне Azure Resource Manager"
+title: "расположение ресурса aaaAzure в шаблоне | Документы Microsoft"
+description: "Показано, как tooset расположение ресурса в шаблоне диспетчера ресурсов Azure"
 services: azure-resource-manager
 documentationcenter: 
 author: tfitzmac
@@ -14,26 +14,26 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/03/2017
 ms.author: tomfitz
-ms.openlocfilehash: 73e50a593c41e841dcaf184abb895406ff5001e9
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: f2ad6ca6ac5f34484a2e5e57dd8d67c77dacc41a
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="set-resource-location-in-azure-resource-manager-templates"></a>Определение расположения ресурса в шаблонах Azure Resource Manager
-При развертывании шаблона вам нужно указать расположение для каждого ресурса. В этой статье описано, как определить расположения, доступные в рамках вашей подписки для каждого типа ресурсов.
+При развертывании шаблона вам нужно указать расположение для каждого ресурса. В этом разделе показано, как тип расположения toodetermine hello, доступных tooyour подписки для каждого ресурса.
 
 ## <a name="determine-supported-locations"></a>Определение поддерживаемых расположений
 
-Полный список поддерживаемых расположений для каждого типа ресурсов см. в таблице [Доступность продуктов по регионам](https://azure.microsoft.com/regions/services/). Тем не менее подписка может не предусматривать доступ ко всем расположениям в этом списке. Чтобы просмотреть список расположений, доступных для вашей подписки, используйте Azure PowerShell или командную строку Azure. 
+Полный список поддерживаемых расположений для каждого типа ресурсов см. в таблице [Доступность продуктов по регионам](https://azure.microsoft.com/regions/services/). Тем не менее ваша подписка может имеет доступ tooall hello расположения в этом списке. Особый список расположений, которые являются подписки доступны tooyour toosee использовать Azure PowerShell или Azure CLI. 
 
-В следующем примере список расположений для типа ресурса `Microsoft.Web\sites` отображается с помощью PowerShell:
+Hello следующий пример использует PowerShell tooget hello расположения для hello `Microsoft.Web\sites` тип ресурса:
 
 ```powershell
 ((Get-AzureRmResourceProvider -ProviderNamespace Microsoft.Web).ResourceTypes | Where-Object ResourceTypeName -eq sites).Locations
 ```
 
-В следующем примере список расположений для типа ресурса `Microsoft.Web\sites` отображается с помощью Azure CLI 2.0.
+Hello следующий пример использует Azure CLI 2.0 tooget hello расположения для hello `Microsoft.Web\sites` тип ресурса:
 
 ```azurecli
 az provider show -n Microsoft.Web --query "resourceTypes[?resourceType=='sites'].locations"
@@ -41,9 +41,9 @@ az provider show -n Microsoft.Web --query "resourceTypes[?resourceType=='sites']
 
 ## <a name="set-location-in-template"></a>Определение расположения в шаблоне
 
-Определив поддерживаемые расположения для ресурсов, необходимо указать нужное расположение в шаблоне. Самый простой способ задать это значение — это создать группу ресурсов в расположении, которое поддерживает типы ресурсов, а затем указать для каждого расположения `[resourceGroup().location]`. Можно развернуть шаблон в группы ресурсов в разных расположениях, но при этом не изменять параметры или значения в шаблоне. 
+После определения местоположения hello поддерживается для ваших ресурсов, необходимо tooset это расположение в шаблоне. Здравствуйте, наиболее простым способом tooset, это значение равно toocreate, группа ресурсов в расположении, которое поддерживает типы ресурсов hello и задать для каждого местоположения слишком`[resourceGroup().location]`. Повторное развертывание групп tooresource шаблонов hello в разных местах и не изменяют любые значения в шаблоне hello или параметры. 
 
-В следующем примере показана учетная запись хранения, которая развертывается в том же расположении, что и группа ресурсов:
+Hello пример учетной записи хранилища, развернутых toohello местоположения hello группа ресурсов:
 
 ```json
 {
@@ -72,7 +72,7 @@ az provider show -n Microsoft.Web --query "resourceTypes[?resourceType=='sites']
 }
 ```
 
-Если необходимо жестко определить расположение в шаблоне, укажите имя одного из поддерживаемых регионов. В следующем примере показано учетная запись хранения, которая всегда развертывается в Северо-центральном регионе США:
+Если вам требуется toohardcode hello расположение в шаблон, укажите имя hello одной из областей hello поддерживается. Следующий пример Hello показаны учетной записи хранилища, который всегда развернуты tooNorth центральной части США:
 
 ```json
 {
@@ -99,5 +99,5 @@ az provider show -n Microsoft.Web --query "resourceTypes[?resourceType=='sites']
 ```
 
 ## <a name="next-steps"></a>Дальнейшие действия
-* См. дополнительные рекомендации по [созданию шаблонов Azure Resource Manager](resource-manager-template-best-practices.md).
+* Рекомендации о том, как toocreate шаблонов, см. раздел [советы и рекомендации по созданию шаблонов диспетчера ресурсов Azure](resource-manager-template-best-practices.md).
 

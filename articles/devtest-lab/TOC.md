@@ -11,7 +11,7 @@
 ## [Создание первой виртуальной машины](devtest-lab-create-first-vm.md)
 ## [Определение начальных политик](devtest-lab-get-started-with-lab-policies.md)
 
-# Практические руководства
+# Как tooguides
 ## Использование виртуальных машин в лаборатории
 ### [Создание виртуальных машин](devtest-lab-add-vm.md)
 ### [Создание запрашиваемой виртуальной машины](devtest-lab-add-claimable-vm.md)
@@ -20,7 +20,7 @@
 ## Использование сред в лаборатории
 ### [Создание среды](devtest-lab-create-environment-from-arm.md)
 
-## Безопасный доступ к Labs
+## Безопасный доступ tooLabs
 ### [Добавление владельцев и пользователей лаборатории](devtest-lab-add-devtest-user.md)
 ### [Настройка разрешений с помощью пользовательских ролей](devtest-lab-grant-user-permissions-to-specific-lab-policies.md)
 
@@ -33,7 +33,7 @@
 
 ## Управление пользовательскими образами
 ### [Создание пользовательского образа из виртуальной машины](devtest-lab-create-custom-image-from-vm-using-portal.md)
-### [Создание пользовательского образа виртуального жесткого диска с помощью портала Azure](devtest-lab-create-template.md)
+### [Создание пользовательского образа из VHD с помощью портала Azure hello](devtest-lab-create-template.md)
 ### [Создание пользовательского образа виртуального жесткого диска с помощью PowerShell](devtest-lab-create-custom-image-from-vhd-using-powershell.md)
 ### [Передача VHD-файла с помощью AzCopy](devtest-lab-upload-vhd-using-azcopy.md)
 ### [Передача VHD-файла с помощью PowerShell](devtest-lab-upload-vhd-using-powershell.md)

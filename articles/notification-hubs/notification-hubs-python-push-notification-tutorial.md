@@ -1,6 +1,6 @@
 ---
-title: "Использование концентраторов уведомлений с Python"
-description: "Узнайте, как использовать центры уведомлений Azure из серверной части Python."
+title: "aaaHow toouse концентраторов уведомлений с Python"
+description: "Узнайте, как toouse концентраторов уведомлений Azure из внутренней Python."
 services: notification-hubs
 documentationcenter: 
 author: ysxu
@@ -14,19 +14,19 @@ ms.devlang: php
 ms.topic: article
 ms.date: 06/29/2016
 ms.author: yuaxu
-ms.openlocfilehash: 9ceedb9940759427fc8cec74a1307e42472563a6
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 21d5aaf7fc24c9936fac8e0a8de640c66c51ab0a
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-use-notification-hubs-from-python"></a>Использование концентраторов уведомлений с Python
+# <a name="how-toouse-notification-hubs-from-python"></a>Как toouse концентраторов уведомлений с Python
 [!INCLUDE [notification-hubs-backend-how-to-selector](../../includes/notification-hubs-backend-how-to-selector.md)]
 
-Вы можете обращаться ко всем функциям центров уведомлений из серверной части Java, PHP, Python или Ruby, используя интерфейс REST в соответствии с описанием в разделе MSDN [Интерфейсы API REST концентраторов уведомлений](http://msdn.microsoft.com/library/dn223264.aspx).
+Все функции концентраторов уведомлений можно получить из внутренней Java и PHP и Python и Ruby с помощью интерфейса REST концентратора уведомлений hello, как описано в разделе MSDN hello [интерфейсы API REST концентраторов уведомлений](http://msdn.microsoft.com/library/dn223264.aspx).
 
 > [!NOTE]
-> Это образец эталонной реализации для отправки уведомлений в Python, который не является официально поддерживаемым пакетом SDK концентраторов уведомлений Python.
+> Это образец реализации реализации hello отправляет уведомление в Python и не является hello официально поддерживается пакет SDK для Python концентратора уведомлений.
 > 
 > Этот образец написан с помощью Python 3.4.
 > 
@@ -35,42 +35,42 @@ ms.lasthandoff: 07/11/2017
 В этой статье описывается:
 
 * Построение клиента REST для функций концентраторов уведомлений на языке Python.
-* Отправка уведомлений с помощью интерфейса API REST концентратора уведомления Python. 
-* Получение дампа запросов и ответов HTTP REST для отладки и образовательных целей. 
+* Отправьте уведомления, используя toohello интерфейса API REST концентратора уведомления для hello Python. 
+* Отладка/образовательных целях получения дампа hello HTTP REST запросов и ответов. 
 
-Можно воспользоваться указаниями в разделе [Приступая к работе с центрами уведомлений](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md) для выбранной мобильной платформы, которая реализует серверную часть на языке Python.
+Можно выполнить hello [учебника запущенную Get](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md) для вашей платформы мобильных устройств по выбору, реализация hello серверную часть в Python.
 
 > [!NOTE]
-> Область действия образца ограничена отправкой уведомлений. Образец не выполняет функции управления регистрацией.
+> Hello образец hello относится только ограниченный toosend уведомления и он не выполняет любой управления регистрацией.
 > 
 > 
 
 ## <a name="client-interface"></a>Интерфейс клиента
-Интерфейс основного клиента предоставляет те же методы, что и [пакет SDK центров уведомлений для .NET](http://msdn.microsoft.com/library/jj933431.aspx). Это позволяет напрямую переводить все учебники и примеры, доступные на этом сайте в настоящий момент и пополняемые интернет-сообществом.
+Hello основного клиентского интерфейса предоставляет hello же методы, доступные в hello [.NET SDK концентраторы уведомлений](http://msdn.microsoft.com/library/jj933431.aspx). Это позволит вам toodirectly перевести все hello учебники и образцы, доступных в настоящее время этот сайт и предоставленного сообществом hello на hello Интернета.
 
-Полный код доступен в [примере оболочки REST Python].
+Можно найти все доступные в hello кода hello [образца программы-оболочки Python REST].
 
-Например, чтобы создать клиента, необходимо выполнить следующие действия.
+Например toocreate клиента:
 
     isDebug = True
     hub = NotificationHub("myConnectionString", "myNotificationHubName", isDebug)
 
-Чтобы отправить всплывающее уведомление Windows:
+toosend Windows всплывающих уведомлений:
 
     wns_payload = """<toast><visual><binding template=\"ToastText01\"><text id=\"1\">Hello world!</text></binding></visual></toast>"""
     hub.send_windows_notification(wns_payload)
 
 ## <a name="implementation"></a>Реализация
-Если вы еще этого не делали, выполните шаги, описанные в [Приступая к работе с центрами уведомлений] , до последнего раздела, в котором вам нужно реализовать серверную часть.
+Если вы еще не сделали, выполните наши [учебника запущенную Get] вверх toohello последний раздел, при наличии tooimplement hello серверной части.
 
-Подробные сведения о реализации полноценной оболочки REST можно найти в [MSDN](http://msdn.microsoft.com/library/dn530746.aspx). В этом разделе описана реализация основных действий на языке Python, необходимых для доступа к конечным точкам концентраторов уведомлений REST и отправки уведомлений.
+Здравствуйте, все сведения tooimplement полный оболочки REST можно найти на [MSDN](http://msdn.microsoft.com/library/dn530746.aspx). В этом разделе будут описаны реализация Python hello hello основных шагов требуется tooaccess конечные точки REST концентраторов уведомлений и отправки уведомлений
 
-1. Анализ строки подключения
-2. Создайте маркер проверки подлинности
+1. Синтаксический анализ строки соединения hello
+2. Создание маркера авторизации hello
 3. Отправка уведомления с помощью HTTP REST API
 
-### <a name="parse-the-connection-string"></a>Анализ строки подключения
-Ниже показан основной класс, реализующий клиента, конструктор которого выполняет анализ строки подключения:
+### <a name="parse-hello-connection-string"></a>Синтаксический анализ строки соединения hello
+Вот hello основной класс, реализация клиента hello, конструктор которого выполняет синтаксический анализ строки подключения hello.
 
     class NotificationHub:
         API_VERSION = "?api-version=2013-10"
@@ -95,8 +95,8 @@ ms.lasthandoff: 07/11/2017
 
 
 ### <a name="create-security-token"></a>Создание маркера безопасности
-Подробные сведения о создании токенов безопасности можно найти [здесь](http://msdn.microsoft.com/library/dn495627.aspx).
-Для создания маркера на основе универсального кода ресурса (URI) текущего запроса и учетных данных, извлеченных из строки подключения, необходимо добавить следующие методы в класс **NotificationHub** .
+доступны Hello сведения для создания маркера безопасности hello [здесь](http://msdn.microsoft.com/library/dn495627.aspx).
+Hello следующие методы имеют добавлены toobe toohello **концентратора уведомлений** класса toocreate hello токены на hello URI текущего запроса hello и hello учетные данные, извлеченные из строки подключения hello.
 
     @staticmethod
     def get_expiry():
@@ -134,7 +134,7 @@ ms.lasthandoff: 07/11/2017
             if not any(x in notification_format for x in valid_formats):
                 raise Exception(
                     "Invalid Notification format. " +
-                    "Must be one of the following - 'template', 'apple', 'gcm', 'windows', 'windowsphone', 'adm', 'baidu'")
+                    "Must be one of hello following - 'template', 'apple', 'gcm', 'windows', 'windowsphone', 'adm', 'baidu'")
 
             self.format = notification_format
             self.payload = payload
@@ -147,9 +147,9 @@ ms.lasthandoff: 07/11/2017
 
 Этот класс представляет собой контейнер для собственного текста уведомления либо набор свойств (в случае шаблонного уведомления), а также набор заголовков, содержащих свойства формата (собственная платформа или шаблон) и специальные свойства платформы (например, свойство срока действия Apple и заголовки WNS).
 
-Обратитесь к [Документации по REST API для концентраторов уведомлений](http://msdn.microsoft.com/library/dn495827.aspx) и изучите форматы специализированных платформ уведомлений, чтобы узнать обо всех доступных параметрах.
+См. toohello [документации по API-интерфейс REST концентраторов уведомлений](http://msdn.microsoft.com/library/dn495827.aspx) и hello форматы уведомлений платформы для всех hello доступные параметры.
 
-Имея в распоряжении этот класс, можно создавать методы отправки уведомлений внутри класса **NotificationHub** .
+Теперь с помощью этого класса можно написать методы уведомления внутри hello hello отправки **концентратора уведомлений** класса.
 
     def make_http_request(self, url, payload, headers):
         parsed_url = urllib.parse.urlparse(url)
@@ -157,7 +157,7 @@ ms.lasthandoff: 07/11/2017
 
         if self.Debug > 0:
             connection.set_debuglevel(self.Debug)
-            # adding this querystring parameter gets detailed information about the PNS send notification outcome
+            # adding this querystring parameter gets detailed information about hello PNS send notification outcome
             url += self.DEBUG_SEND
             print("--- REQUEST ---")
             print("URI: " + url)
@@ -205,11 +205,11 @@ ms.lasthandoff: 07/11/2017
         else:
             tag_list = tag_or_tag_expression
 
-        # add the tags/tag expressions to the headers collection
+        # add hello tags/tag expressions toohello headers collection
         if tag_list != "":
             headers.update({'ServiceBusNotification-Tags': tag_list})
 
-        # add any custom headers to the headers collection that the user may have added
+        # add any custom headers toohello headers collection that hello user may have added
         if notification.headers is not None:
             headers.update(notification.headers)
 
@@ -257,23 +257,23 @@ ms.lasthandoff: 07/11/2017
         nh = Notification("template", properties)
         self.send_notification(nh, tags)
 
-Указанные выше методы отправляют запрос HTTP POST в конечную точку "/messages" концентратора уведомлений, с надлежащим телом и заголовками для отправки уведомления.
+Hello выше методы отправки HTTP POST запроса toohello /messages конечной точки с телом правильный hello и заголовки toosend hello уведомления центра уведомлений.
 
-### <a name="using-debug-property-to-enable-detailed-logging"></a>Включение подробного ведения журнала с помощью свойства отладки
-Если включить свойство отладки при инициализации концентратора уведомлений, в журнал будут записаны подробные сведения о дампе запроса и ответа HTTP, а также детальные выходные данные об отправке уведомлений. Недавно мы добавили такое свойство — [свойство TestSend центров уведомлений](http://msdn.microsoft.com/library/microsoft.servicebus.notifications.notificationhubclient.enabletestsend.aspx) , которое возвращает подробные сведения о результатах отправки уведомлений. Чтобы его использовать, выполните инициализацию следующим образом:
+### <a name="using-debug-property-tooenable-detailed-logging"></a>С помощью свойства tooenable отладки подробные журналы
+Включение отладки свойства во время инициализации hello концентратор уведомлений будет записи подробное ведение журнала сведений о hello HTTP запроса и ответа дампа, а также подробные сообщения уведомления отправить результат. Недавно мы добавили это свойство с именем [TestSend концентраторы уведомлений свойство](http://msdn.microsoft.com/library/microsoft.servicebus.notifications.notificationhubclient.enabletestsend.aspx) которого возвращает подробные сведения о hello отправки уведомлений. toouse его - инициализировать с помощью следующих hello:
 
     hub = NotificationHub("myConnectionString", "myNotificationHubName", isDebug)
 
-В результате к URL-адресу типа HTTP запроса на отправку для концентратора уведомлений прикрепляется строка запроса "test". 
+Hello уведомление концентратора отправить запрос HTTP URL-адрес в результате пополняется с querystring «test». 
 
-## <a name="complete-tutorial"></a>Завершение работы с учебником
-Теперь вы можете завершить работу с учебником по началу работы, отправив уведомление из серверной части Python.
+## <a name="complete-tutorial"></a>Учебник завершения hello
+Теперь можно завершить учебника приступить к работе hello путем отправки уведомления hello из внутренней Python.
 
-Инициализируйте клиент концентратора уведомлений (замените строку подключения и имя концентратора в соответствии с инструкциями в [Приступая к работе с центрами уведомлений]):
+Инициализировать концентраторы уведомлений клиента (замените имя концентратора и строка соединения hello, как описано в hello [учебника запущенную Get]):
 
     hub = NotificationHub("myConnectionString", "myNotificationHubName")
 
-Затем добавьте код отправки, определяемый целевой мобильной платформой. В этом примере добавлены методы более высокого уровня, чтобы включить отправку уведомлений для определенной платформы, например send_windows_notification (для Windows), send_apple_notification (для Apple) и т. д. 
+Затем добавьте код отправки hello в зависимости от целевой платформы мобильных устройств. В этом примере также добавляет выше tooenable методы уровня отправки уведомлений на основе платформы hello например send_windows_notification для windows; send_apple_notification (для apple) и т. д. 
 
 ### <a name="windows-store-and-windows-phone-81-non-silverlight"></a>Магазин Windows и Windows Phone 8.1 (без Silverlight)
     wns_payload = """<toast><visual><binding template=\"ToastText01\"><text id=\"1\">Test</text></binding></visual></toast>"""
@@ -322,33 +322,33 @@ ms.lasthandoff: 07/11/2017
 
 ## <a name="examples"></a>Примеры:
 ### <a name="enabling-debug-property"></a>Включение свойства отладки
-Если включить флаг отладки во время инициализации центра уведомлений (NotificationHub), вы увидите подробный дамп HTTP-запроса и HTTP-ответа наряду с данными NotificationOutcome, которые указывают, какие именно заголовки HTTP переданы в запросе и какой HTTP-ответ был получен от центра уведомлений: ![][1]
+При включении флаг отладки во время инициализации hello концентратора уведомлений, то вы увидите подробные дампа запросов и ответов HTTP, а также NotificationOutcome следующего вида hello, где можно понять, какие заголовки HTTP, передаются в запрос hello и какие HTTP получен отклик от hello концентратора уведомлений:![][1]
 
 Вы увидите подробный результат концентратора уведомлений, например сведения о том, 
 
-* когда сообщение успешно отправлено в службу push-уведомлений. 
+* Когда сообщение hello успешной отправки toohello службы Push-уведомлений. 
   
-        <Outcome>The Notification was successfully sent to the Push Notification System</Outcome>
-* Если какое-либо push-уведомление не достигло адресата, отобразится следующий ответ (указывающий, что, вероятнее всего, регистрации для доставки уведомлений не были найдены из-за несоответствующих тегов).
+        <Outcome>hello Notification was successfully sent toohello Push Notification System</Outcome>
+* При наличии не найдены цели для push-уведомления, то скорее всего будет ниже toosee hello в ответ hello (который указывает на наличие регистраций найден toodeliver hello уведомления, скорее всего, так как некоторые hello регистраций несоответствие тегов)
   
         '<NotificationOutcome xmlns="http://schemas.microsoft.com/netservices/2010/10/servicebus/connect" xmlns:i="http://www.w3.org/2001/XMLSchema-instance"><Success>0</Success><Failure>0</Failure><Results i:nil="true"/></NotificationOutcome>'
 
-### <a name="broadcast-toast-notification-to-windows"></a>Рассылка всплывающих уведомлений для Windows
-Обратите внимание на заголовки, которые отправляются при рассылке всплывающих уведомлений клиенту Windows. 
+### <a name="broadcast-toast-notification-toowindows"></a>Всплывающие уведомления tooWindows широковещательных пакетов
+Обратите внимание, hello заголовки, которые отправляются out при отправке клиент tooWindows широковещательных всплывающих уведомлений. 
 
     hub.send_windows_notification(wns_payload)
 
 ![][2]
 
 ### <a name="send-notification-specifying-a-tag-or-tag-expression"></a>Отправка уведомления с указанием тега (или регулярного выражения)
-Обратите внимание на заголовок Tags HTTP, который будет добавлен к запросу HTTP (в приведенном ниже примере мы отправляем уведомление только для регистраций с полезными данными "sports").
+Обратите внимание hello HTTP теги заголовок, который будет добавлен и toohello HTTP-запроса (в следующем примере hello, мы отправляете hello уведомления только tooregistrations с полезными данными «Спорт»)
 
     hub.send_windows_notification(wns_payload, "sports")
 
 ![][3]
 
 ### <a name="send-notification-specifying-multiple-tags"></a>Отправка уведомления с указанием нескольких тегов
-Обратите внимание на изменения заголовка Tags HTTP при отправке нескольких тегов. 
+Обратите внимание на то, как заголовок HTTP теги hello изменяется при отправке несколько тегов. 
 
     tags = {'sports', 'politics'}
     hub.send_windows_notification(wns_payload, tags)
@@ -356,14 +356,14 @@ ms.lasthandoff: 07/11/2017
 ![][4]
 
 ### <a name="templated-notification"></a>Шаблон уведомления
-Обратите внимание, что происходит изменение заголовка Format HTTP и текст полезных данных отправляется в составе запроса HTTP.
+Обратите внимание, что hello изменения формата HTTP-заголовка и полезных данных текст hello отправляется как часть текста hello HTTP-запроса.
 
 **Сторона клиента — зарегистрированный шаблон**
 
         var template =
                         @"<toast><visual><binding template=""ToastText01""><text id=""1"">$(greeting_en)</text></binding></visual></toast>";
 
-**Серверная сторона — отправка полезных данных**
+**Серверный - Отправка hello полезных данных**
 
         template_payload = {'greeting_en': 'Hello', 'greeting_fr': 'Salut'}
         hub.send_template_notification(template_payload)
@@ -371,17 +371,17 @@ ms.lasthandoff: 07/11/2017
 ![][5]
 
 ## <a name="next-steps"></a>Дальнейшие действия
-В этой статье рассмотрено создание простого клиента Python REST для центров уведомлений. На данном этапе можно сделать следующее.
+В этом разделе мы показали, как toocreate простой Python REST клиента для концентраторов уведомлений. На данном этапе можно сделать следующее.
 
-* Скачать полный [примере оболочки REST Python], содержащий весь используемый выше код.
-* Продолжить изучение функции тегов в центрах уведомлений с помощью [учебника по передаче экстренных новостей]
-* Продолжить изучение функции шаблонов центров уведомлений в учебнике [по передаче локализованных экстренных новостей]
+* Hello полной загрузки [образца программы-оболочки Python REST], который содержит весь код hello выше.
+* Продолжить изучение теги в hello функции концентраторов уведомлений [учебника последние новости]
+* Продолжить изучение компонентов шаблоны концентраторов уведомлений в hello [учебника локализация новостей]
 
 <!-- URLs -->
-[примере оболочки REST Python]: https://github.com/Azure/azure-notificationhubs-samples/tree/master/notificationhubs-rest-python
-[Приступая к работе с центрами уведомлений]: http://azure.microsoft.com/documentation/articles/notification-hubs-windows-store-dotnet-get-started/
-[учебника по передаче экстренных новостей]: http://azure.microsoft.com/documentation/articles/notification-hubs-windows-store-dotnet-send-breaking-news/
-[по передаче локализованных экстренных новостей]: http://azure.microsoft.com/documentation/articles/notification-hubs-windows-store-dotnet-send-localized-breaking-news/
+[образца программы-оболочки Python REST]: https://github.com/Azure/azure-notificationhubs-samples/tree/master/notificationhubs-rest-python
+[учебника запущенную Get]: http://azure.microsoft.com/documentation/articles/notification-hubs-windows-store-dotnet-get-started/
+[учебника последние новости]: http://azure.microsoft.com/documentation/articles/notification-hubs-windows-store-dotnet-send-breaking-news/
+[учебника локализация новостей]: http://azure.microsoft.com/documentation/articles/notification-hubs-windows-store-dotnet-send-localized-breaking-news/
 
 <!-- Images. -->
 [1]: ./media/notification-hubs-python-backend-how-to/DetailedLoggingInfo.png

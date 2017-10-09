@@ -1,6 +1,6 @@
 ---
-title: "Развертывание LAMP на виртуальной машине Linux в Azure | Документация Майкрософт"
-description: "Узнайте, как установить стек LAMP на виртуальную машину Linux в Azure."
+title: "aaaDeploy LAMP на виртуальной машине Linux в Azure | Документы Microsoft"
+description: "Узнайте, как tooinstall hello LAMP стека на виртуальной Машине Linux в Azure"
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: jluk
@@ -15,19 +15,19 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 2/21/2017
 ms.author: juluk
-ms.openlocfilehash: ad69876bfbeba5f948a81e5c48c659fdf2265ae2
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 42d887bb9f78becc02505e336be25fdaaf78df70
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="deploy-lamp-stack-on-azure"></a>Развертывание стека LAMP в Azure
-Эта статья содержит указания по развертыванию веб-сервера Apache, MySQL и PHP (стека LAMP) в Azure. Требуются учетная запись Azure (можно [получить бесплатную пробную версию](https://azure.microsoft.com/pricing/free-trial/)) и [CLI Azure 2.0](https://docs.microsoft.com/en-us/cli/azure/install-az-cli2). Эти действия можно также выполнить с помощью [Azure CLI 1.0](create-lamp-stack-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+В этой статье рассматриваются как toodeploy Apache веб-сервера, MySQL и PHP (стек LAMP hello) в Azure. Необходима учетная запись Azure ([получить бесплатную пробную версию](https://azure.microsoft.com/pricing/free-trial/)) и hello [Azure CLI 2.0](https://docs.microsoft.com/en-us/cli/azure/install-az-cli2). Можно также выполнить следующие действия с hello [Azure CLI 1.0](create-lamp-stack-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
 ## <a name="quick-command-summary"></a>Краткая сводка по командам
 
-1. Сохраните на локальном компьютере [файл azuredeploy.parameters.json](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/lamp-app/azuredeploy.parameters.json) и измените его, указав свои параметры.
-2. Выполните следующие две команды, чтобы создать группу ресурсов, а затем развернуть шаблон.
+1. Сохранить и продолжить изменение hello [azuredeploy.parameters.json файл](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/lamp-app/azuredeploy.parameters.json) tooyour предпочтения на локальном компьютере.
+2. Выполните следующие две команды toocreate hello группу ресурсов и затем развернуть шаблон.
 
 ```azurecli
 az group create -l westus -n myResourceGroup
@@ -37,7 +37,7 @@ az group deployment create -g myResourceGroup \
 ```
 
 ### <a name="deploy-lamp-on-existing-vm"></a>Развертывание LAMP на существующей виртуальной машине
-Следующие команды обновляют пакеты, а затем устанавливают Apache, MySQL и PHP.
+Hello следующие команды пакеты обновления, а затем устанавливает Apache, PHP и MySQL:
 
 ```bash
 sudo apt-get update
@@ -46,16 +46,16 @@ sudo apt-get install apache2 mysql-server php5 php5-mysql
 
 ## <a name="deploy-lamp-on-new-vm-walkthrough"></a>Пошаговое руководство по развертыванию LAMP на новой виртуальной машине
 
-1. С помощью команды [az group create](/cli/azure/group#create) создайте группу ресурсов для новой виртуальной машины.
+1. Создание группы ресурсов с [Создание группы az](/cli/azure/group#create) toocontain hello новой виртуальной Машины:
 
 ```azurecli
 az group create -l westus -n myResourceGroup
 ```
-Чтобы создать саму виртуальную машину, можно использовать готовый шаблон Azure Resource Manager [с сайта GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/lamp-app).
+toocreate Здравствуйте самой ВМ, уже написанный найден шаблон диспетчера ресурсов Azure можно использовать [здесь на GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/lamp-app).
 
-2. Сохраните [файл azuredeploy.parameters.json](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/lamp-app/azuredeploy.parameters.json) на локальном компьютере.
-3. Измените **файл azuredeploy.parameters.json**, указав свои входные параметры.
-4. Разверните шаблон с помощью команды [az group deployment create], указав скачанный JSON-файл.
+2. Сохранить hello [azuredeploy.parameters.json файл](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/lamp-app/azuredeploy.parameters.json) tooyour локального компьютера.
+3. Изменить hello **azuredeploy.parameters.json** tooyour файл предпочитаемый входных данных.
+4. Развертывание шаблона hello с [создание развертывания группы az] ссылается hello загрузили файл json:
 
 ```azurecli
 az group deployment create -g myResourceGroup \
@@ -63,7 +63,7 @@ az group deployment create -g myResourceGroup \
     --parameters @filepathToParameters.json
 ```
 
-Вы должны увидеть результат, аналогичный приведенному ниже.
+Hello вывода будет примерно toohello следующий пример:
 
 ```json
 {
@@ -86,17 +86,17 @@ az group deployment create -g myResourceGroup \
 }
 ```
 
-Вы создали виртуальную машину Linux с установленным стеком LAMP. При желании можно проверить установку, перейдя к разделу [Проверка успешности установки LAMP](#verify-lamp-successfully-installed).
+Вы создали виртуальную машину Linux с установленным стеком LAMP. При желании можно проверить hello установки посредством перехода вниз слишком[проверьте ЛАМПОЧКА успешно установлен](#verify-lamp-successfully-installed).
 
 ## <a name="deploy-lamp-on-existing-vm-walkthrough"></a>Пошаговое руководство по развертыванию LAMP на существующей виртуальной машине
-Если вам нужна помощь с созданием виртуальной машины Linux, то вы можете перейти [сюда](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-quick-create-cli), чтобы узнать, как создать виртуальную машину Linux. Далее требуется подключится по протоколу SSH к виртуальной машине Linux. Если вам нужна помощь с созданием ключа SSH, то вы можете перейти [сюда](mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json), чтобы узнать, как создать ключ SSH в Linux или Mac.
+Если требуется помощь для создания виртуальной Машины Linux можно head [здесь toolearn как toocreate ВМ Linux](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-quick-create-cli). Далее необходимо tooSSH в hello виртуальной Машины с Linux. Если вам нужна помощь с созданием SSH-ключ, можно head [здесь toolearn как toocreate ключа SSH в Linux или Mac](mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 Если у вас же имеется ключ SSH, продолжайте процедуру и, используя командную строку, подключитесь по протоколу SSH к виртуальной машине Linux с помощью команды `ssh azureuser@mypublicdns.westus.cloudapp.azure.com`.
 
-Теперь, когда вы работаете на своей виртуальной машине Linux, мы можем рассмотреть установку стека LAMP на дистрибутивы на основе Debian. Конкретные команды могут отличаться для других дистрибутивов Linux.
+Теперь, когда вы работаете в ВМ Linux, мы пошаговую установку стек LAMP hello на основе Debian распределения. конкретные команды Hello могут отличаться в других дистрибутивах Linux.
 
 #### <a name="installing-on-debianubuntu"></a>Установка на Debian или Ubuntu
-Необходимо установить следующие пакеты: `apache2`, `mysql-server`, `php5` и `php5-mysql`. Их можно установить, перетащив вручную или воспользовавшись Tasksel.
-Перед установкой требуется скачать и обновить списки пакетов.
+Требуются следующие пакеты, установленные hello: `apache2`, `mysql-server`, `php5`, и `php5-mysql`. Их можно установить, перетащив вручную или воспользовавшись Tasksel.
+Перед установкой требуется toodownload и обновление списков пакета.
 
 ```bash
 sudo apt-get update
@@ -117,26 +117,26 @@ sudo apt-get install tasksel
 sudo tasksel install lamp-server
 ```
 
-После выполнения одной из приведенных выше команд вам будет предложено установить эти пакеты и некоторые другие зависимости. Нажмите клавишу Y, а затем клавишу ВВОД, чтобы продолжить, и следуйте остальным указаниям по установке административного пароля для MySQL. Это позволит установить минимальный набор расширений PHP, необходимый для использования PHP с MySQL. 
+После выполнения любого из предыдущих параметров hello, будет иметь запрашиваемые tooinstall эти пакеты и другие зависимости. tooset пароль администратора для MySQL, нажмите «y», а затем toocontinue «Ввод» и следуйте каких-либо других запросов. Этот процесс устанавливает hello минимальные необходимые PHP необходимые расширения toouse PHP MySQL. 
 
 ![][1]
 
-Выполните следующую команду, чтобы увидеть другие расширения PHP, доступные как пакеты:
+Выполните следующие команды toosee hello другие расширения PHP, которые доступны в виде пакетов.
 
 ```bash
 apt-cache search php5
 ```
 
 #### <a name="create-infophp-document"></a>Создание документа info.php
-Теперь можно проверить версию установленных компонентов Apache, MySQL и PHP из командной строки, введя `apache2 -v`, `mysql -v` или `php -v`.
+Теперь должен быть доступ toocheck версии Apache, PHP и MySQL имеется через командную строку hello, введя `apache2 -v`, `mysql -v`, или `php -v`.
 
-Если вы хотите расширить тестирование, то можете создать страницу кратких сведений о PHP для просмотра в браузере. Создайте файл в текстовом редакторе Nano с помощью следующей команды.
+Если вы бы как tootest Далее, можно создать быстрый tooview страницы сведения о PHP в браузере. Создайте файл в текстовом редакторе Nano с помощью следующей команды.
 
 ```bash
 sudo nano /var/www/html/info.php
 ```
 
-В текстовом редакторе Nano GNU добавьте следующие строки.
+В текстовом редакторе GNU Nano hello добавьте hello следующие строки:
 
 ```php
 <?php
@@ -144,7 +144,7 @@ phpinfo();
 ?>
 ```
 
-Сохраните файл и закройте текстовый редактор.
+Сохраните и закройте редактор текста hello.
 
 Перезапустите Apache с помощью следующей команды, чтобы все новые установленные компоненты вступили в действие.
 
@@ -153,18 +153,18 @@ sudo service apache2 restart
 ```
 
 ## <a name="verify-lamp-successfully-installed"></a>Проверка успешности установки LAMP
-Теперь можно просмотреть созданную страницу сведений о PHP. Откройте браузер и перейдите по адресу http://youruniqueDNS/info.php. Она должна выглядеть, как показано ниже.
+Теперь можно проверить hello PHP info созданная страница, открыв браузер и переходит в toohttp://youruniqueDNS/info.php. Он должен выглядеть примерно toothis изображения.
 
 ![][2]
 
-Можно проверить установленный экземпляр Apache, просмотрев страницу по умолчанию Apache2 Ubuntu. Для этого перейдите по ссылке http://youruniqueDNS/. Вы должны увидеть результат, аналогичный приведенному ниже.
+Apache установки можно проверить, просмотрев hello страница по умолчанию Apache2 Ubuntu последовательно выбрав tooyou http://youruniqueDNS/. Hello вывода будет примерно toohello следующий пример:
 
 ![][3]
 
 Поздравляем! Вы установили стек LAMP на виртуальную машину Azure.
 
 ## <a name="next-steps"></a>Дальнейшие действия
-Ознакомьтесь с документацией Ubuntu по стеку LAMP.
+Проверьте hello документации Ubuntu стек LAMP hello.
 
 * [https://help.ubuntu.com/community/ApacheMySQLPHP](https://help.ubuntu.com/community/ApacheMySQLPHP)
 

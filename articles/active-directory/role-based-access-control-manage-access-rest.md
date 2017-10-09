@@ -1,6 +1,6 @@
 ---
-title: "Управление доступом на основе ролей с помощью REST в Azure AD | Документация Майкрософт"
-description: "Управление доступом на основе ролей с помощью интерфейса REST API"
+title: "Управление доступом на основе aaaRole с REST - Azure AD | Документы Microsoft"
+description: "Управление доступом на основе ролей с hello REST API"
 services: active-directory
 documentationcenter: na
 author: andredm7
@@ -14,41 +14,41 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/16/2017
 ms.author: andredm
-ms.openlocfilehash: a5c19fd87ce1ae3e199bf1dfc8cf82f5653baac2
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: ccd402fd4fe4583288076cac23753dd067694681
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="manage-role-based-access-control-with-the-rest-api"></a>Управление доступом на основе ролей с помощью REST API
+# <a name="manage-role-based-access-control-with-hello-rest-api"></a>Управление на основе ролей управления доступом с помощью API-интерфейса REST hello
 > [!div class="op_single_selector"]
 > * [PowerShell](role-based-access-control-manage-access-powershell.md)
 > * [Интерфейс командной строки Azure](role-based-access-control-manage-access-azure-cli.md)
-> * [ИНТЕРФЕЙС REST API](role-based-access-control-manage-access-rest.md)
+> * [REST API](role-based-access-control-manage-access-rest.md)
 
-Функция управления доступом на основе ролей (RBAC) на портале Azure и в API Azure Resource Manager помогает очень точно управлять доступом к подписке и ресурсам. С ее помощью вы можете предоставлять доступ пользователям, группам и субъектам-службам Active Directory, назначая им роли с определенной областью.
+На основе ролей управления доступом (RBAC) в hello портал Azure и API диспетчера ресурсов Azure помогает управлять доступа tooyour подписка и ресурсы на уровне детально. С помощью этой функции можно предоставить доступ для пользователей, группы или субъекты-службы Active Directory путем назначения некоторых ролей toothem на определенную область.
 
 ## <a name="list-all-role-assignments"></a>Вывод списка всех назначений ролей
-Здесь описывается вывод списка всех назначений ролей в указанной области и внутренних областях.
+Все назначения ролей hello в указанный hello списки области и subscopes.
 
-Чтобы вывести список назначений ролей, требуется доступ к операции `Microsoft.Authorization/roleAssignments/read` в этой области. Доступ к этой операции предоставляется всем встроенным ролям. Дополнительные сведения о назначениях ролей и управлении доступом к ресурсам Azure см. в статье [Использование назначений ролей для управления доступом к ресурсам в подписке Azure](role-based-access-control-configure.md).
+toolist назначения ролей, необходимо иметь доступ слишком`Microsoft.Authorization/roleAssignments/read` операцию в область hello. Все встроенные роли hello предоставляются toothis операции доступа. Дополнительные сведения о назначениях ролей и управлении доступом к ресурсам Azure см. в статье [Использование назначений ролей для управления доступом к ресурсам в подписке Azure](role-based-access-control-configure.md).
 
 ### <a name="request"></a>Запрос
-Используйте метод **GET** со следующим универсальным кодом ресурса (URI).
+Используйте hello **получить** метод с hello, следующий URI:
 
     https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleAssignments?api-version={api-version}&$filter={filter}
 
-Чтобы настроить запрос, замените следующий текст в URI указанными значениями.
+В рамках hello URI создайте hello после замены toocustomize запрос:
 
-1. Замените *{scope}* областью, для которой требуется вывести список назначений ролей. В следующих примерах показано, как указать область для различных уровней:
+1. Замените *{scope}* с областью видимости hello, для которого вы хотите toolist hello назначения ролей. Привет, следующие примеры показывают, как toospecify hello области для различных уровней:
 
    * Subscription: /subscriptions/{ИД_подписки}  
    * Группа ресурсов: /subscriptions/{ИД_подписки}/resourceGroups/myresourcegroup1  
    * Ресурс: /subscriptions/{ИД_подписки}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1  
 2. Замените *{api-version}* значением 2015-07-01.
-3. Замените *{filter}* условием, по которому требуется отфильтровать список назначений ролей.
+3. Замените *{filter}* с условием hello обратиться в список назначения роли hello toofilter tooapply:
 
-   * Вывод списка назначений ролей только для определенной области без учета внутренних областей: `atScope()`    
+   * Список назначений ролей для hello только указаны области, не включая hello назначений ролей на subscopes:`atScope()`    
    * Вывод списка назначений ролей для определенного пользователя, группы или приложения: `principalId%20eq%20'{objectId of user, group, or service principal}'`  
    * Вывод списка назначений ролей для определенного пользователя, включая роли, унаследованные от групп | `assignedTo('{objectId of user}')`
 
@@ -79,23 +79,23 @@ ms.lasthandoff: 08/29/2017
 ```
 
 ## <a name="get-information-about-a-role-assignment"></a>Получение сведений о назначении роли
-Здесь описывается получение сведений о назначении роли, указанной с помощью идентификатора.
+Возвращает сведения о назначении одной роли, указанной идентификатором назначения роли hello.
 
-Чтобы получить сведения о назначении роли, требуется доступ к операции `Microsoft.Authorization/roleAssignments/read`. Доступ к этой операции предоставляется всем встроенным ролям. Дополнительные сведения о назначениях ролей и управлении доступом к ресурсам Azure см. в статье [Использование назначений ролей для управления доступом к ресурсам в подписке Azure](role-based-access-control-configure.md).
+tooget сведения о назначении роли, необходимо иметь доступ слишком`Microsoft.Authorization/roleAssignments/read` операции. Все встроенные роли hello предоставляются toothis операции доступа. Дополнительные сведения о назначениях ролей и управлении доступом к ресурсам Azure см. в статье [Использование назначений ролей для управления доступом к ресурсам в подписке Azure](role-based-access-control-configure.md).
 
 ### <a name="request"></a>Запрос
-Используйте метод **GET** со следующим универсальным кодом ресурса (URI).
+Используйте hello **получить** метод с hello, следующий URI:
 
     https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleAssignments/{role-assignment-id}?api-version={api-version}
 
-Чтобы настроить запрос, замените следующий текст в URI указанными значениями.
+В рамках hello URI создайте hello после замены toocustomize запрос:
 
-1. Замените *{scope}* областью, для которой требуется вывести список назначений ролей. В следующих примерах показано, как указать область для различных уровней:
+1. Замените *{scope}* с областью видимости hello, для которого вы хотите toolist hello назначения ролей. Привет, следующие примеры показывают, как toospecify hello области для различных уровней:
 
    * Subscription: /subscriptions/{ИД_подписки}  
    * Группа ресурсов: /subscriptions/{ИД_подписки}/resourceGroups/myresourcegroup1  
    * Ресурс: /subscriptions/{ИД_подписки}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1  
-2. Замените *{role-assignment-id}* идентификатором GUID для назначения роли.
+2. Замените *{идентификатор роли назначения}* с идентификатором GUID hello hello назначение ролей.
 3. Замените *{api-version}* значением 2015-07-01.
 
 ### <a name="response"></a>Ответ
@@ -120,26 +120,26 @@ ms.lasthandoff: 08/29/2017
 ```
 
 ## <a name="create-a-role-assignment"></a>Создание назначения роли
-Здесь описывается создание назначения роли в указанной области для определенного субъекта, назначающего роль.
+Создание роли назначения на hello указан области для hello указанного участника предоставление hello указанной роли.
 
-Чтобы создать назначение роли, требуется доступ к операции `Microsoft.Authorization/roleAssignments/write`. Из встроенных ролей эту операцию могут выполнять только *владелец* и *администратор доступа пользователей*. Дополнительные сведения о назначениях ролей и управлении доступом к ресурсам Azure см. в статье [Использование назначений ролей для управления доступом к ресурсам в подписке Azure](role-based-access-control-configure.md).
+toocreate назначение ролей, необходимо иметь доступ слишком`Microsoft.Authorization/roleAssignments/write` операции. Hello встроенных ролей, только *владельца* и *администратор доступа пользователя* предоставляются toothis операции доступа. Дополнительные сведения о назначениях ролей и управлении доступом к ресурсам Azure см. в статье [Использование назначений ролей для управления доступом к ресурсам в подписке Azure](role-based-access-control-configure.md).
 
 ### <a name="request"></a>Запрос
-Используйте метод **PUT** со следующим универсальным кодом ресурса (URI).
+Используйте hello **ПОМЕСТИТЬ** метод с hello, следующий URI:
 
     https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleAssignments/{role-assignment-id}?api-version={api-version}
 
-Чтобы настроить запрос, замените следующий текст в URI указанными значениями.
+В рамках hello URI создайте hello после замены toocustomize запрос:
 
-1. Замените *{scope}* областью, для которой требуется создать назначения ролей. При создании назначения роли в родительской области все дочерние области также его наследуют. В следующих примерах показано, как указать область для различных уровней:
+1. Замените *{scope}* с областью видимости hello, с которой вы хотите toocreate hello назначения ролей. При создании назначения ролей в родительской области, все дочерние области наследуют hello же назначение ролей. Привет, следующие примеры показывают, как toospecify hello области для различных уровней:
 
    * Subscription: /subscriptions/{ИД_подписки}  
    * Группа ресурсов: /subscriptions/{ИД_подписки}/resourceGroups/myresourcegroup1   
    * Ресурс: /subscriptions/{ИД_подписки}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1  
-2. Замените *{role-assignment-id}* новым идентификатором GUID, который станет GUID нового назначения роли.
+2. Замените *{идентификатор роли назначения}* нового идентификатора GUID, которая становится идентификатор GUID hello hello создать назначение ролей.
 3. Замените *{api-version}* значением 2015-07-01.
 
-В тексте запроса введите значения в следующем формате:
+Для текста запроса hello укажите значения hello в hello следующий формат:
 
 ```
 {
@@ -153,8 +153,8 @@ ms.lasthandoff: 08/29/2017
 
 | Имя элемента | Обязательно | Тип | Описание |
 | --- | --- | --- | --- |
-| roleDefinitionId |Да |Строка |Идентификатор роли. Он указывается в формате `{scope}/providers/Microsoft.Authorization/roleDefinitions/{role-definition-id-guid}` |
-| principalId |Да |Строка |ObjectId субъекта Azure AD (пользователя, группы или субъекта-службы), которому назначается роль. |
+| roleDefinitionId |Да |Строка |Идентификатор Hello hello роли. Hello идентификатора hello выглядит следующим образом:`{scope}/providers/Microsoft.Authorization/roleDefinitions/{role-definition-id-guid}` |
+| principalId |Да |Строка |objectId hello Azure AD участника (пользователя, группы или субъекта-службы) назначена роль toowhich hello. |
 
 ### <a name="response"></a>Ответ
 Код состояния: 201.
@@ -178,23 +178,23 @@ ms.lasthandoff: 08/29/2017
 ```
 
 ## <a name="delete-a-role-assignment"></a>Удаление назначения ролей
-Здесь описывается удаление назначения роли в указанной области.
+Удалить назначение роли в hello указана область.
 
-Чтобы удалить назначение роли, требуется доступ к операции `Microsoft.Authorization/roleAssignments/delete`. Из встроенных ролей эту операцию могут выполнять только *владелец* и *администратор доступа пользователей*. Дополнительные сведения о назначениях ролей и управлении доступом к ресурсам Azure см. в статье [Использование назначений ролей для управления доступом к ресурсам в подписке Azure](role-based-access-control-configure.md).
+toodelete назначение ролей, необходимо иметь доступ toohello `Microsoft.Authorization/roleAssignments/delete` операции. Hello встроенных ролей, только *владельца* и *администратор доступа пользователя* предоставляются toothis операции доступа. Дополнительные сведения о назначениях ролей и управлении доступом к ресурсам Azure см. в статье [Использование назначений ролей для управления доступом к ресурсам в подписке Azure](role-based-access-control-configure.md).
 
 ### <a name="request"></a>Запрос
-Используйте метод **DELETE** со следующим универсальным кодом ресурса (URI).
+Используйте hello **удалить** метод с hello, следующий URI:
 
     https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleAssignments/{role-assignment-id}?api-version={api-version}
 
-Чтобы настроить запрос, замените следующий текст в URI указанными значениями.
+В рамках hello URI создайте hello после замены toocustomize запрос:
 
-1. Замените *{scope}* областью, для которой требуется создать назначения ролей. В следующих примерах показано, как указать область для различных уровней:
+1. Замените *{scope}* с областью видимости hello, с которой вы хотите toocreate hello назначения ролей. Привет, следующие примеры показывают, как toospecify hello области для различных уровней:
 
    * Subscription: /subscriptions/{ИД_подписки}  
    * Группа ресурсов: /subscriptions/{ИД_подписки}/resourceGroups/myresourcegroup1  
    * Ресурс: /subscriptions/{ИД_подписки}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1  
-2. Замените *{role-assignment-id}* идентификатором GUID для назначения роли.
+2. Замените *{идентификатор роли назначения}* с идентификатором назначения роли hello GUID.
 3. Замените *{api-version}* значением 2015-07-01.
 
 ### <a name="response"></a>Ответ
@@ -219,27 +219,27 @@ ms.lasthandoff: 08/29/2017
 ```
 
 ## <a name="list-all-roles"></a>Вывод списка всех ролей
-Здесь описывается вывод списка всех ролей, которые доступны для назначения в указанной области.
+Список всех ролей hello, доступных для назначения на указанный hello области.
 
-Для вывода списка ролей требуется доступ к операции `Microsoft.Authorization/roleDefinitions/read` в этой области. Доступ к этой операции предоставляется всем встроенным ролям. Дополнительные сведения о назначениях ролей и управлении доступом к ресурсам Azure см. в статье [Использование назначений ролей для управления доступом к ресурсам в подписке Azure](role-based-access-control-configure.md).
+toolist ролей, необходимо иметь доступ слишком`Microsoft.Authorization/roleDefinitions/read` операцию в область hello. Все встроенные роли hello предоставляются toothis операции доступа. Дополнительные сведения о назначениях ролей и управлении доступом к ресурсам Azure см. в статье [Использование назначений ролей для управления доступом к ресурсам в подписке Azure](role-based-access-control-configure.md).
 
 ### <a name="request"></a>Запрос
-Используйте метод **GET** со следующим универсальным кодом ресурса (URI).
+Используйте hello **получить** метод с hello, следующий URI:
 
     https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleDefinitions?api-version={api-version}&$filter={filter}
 
-Чтобы настроить запрос, замените следующий текст в URI указанными значениями.
+В рамках hello URI создайте hello после замены toocustomize запрос:
 
-1. Замените *{scope}* областью, для которой требуется вывести список ролей. В следующих примерах показано, как указать область для различных уровней:
+1. Замените *{scope}* с областью видимости hello, для которого вы хотите toolist hello ролей. Привет, следующие примеры показывают, как toospecify hello области для различных уровней:
 
    * Subscription: /subscriptions/{ИД_подписки}  
    * Группа ресурсов: /subscriptions/{ИД_подписки}/resourceGroups/myresourcegroup1  
    * Ресурс: /subscriptions/{ИД_подписки}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1  
 2. Замените *{api-version}* значением 2015-07-01.
-3. Замените *{filter}* условием, по которому требуется отфильтровать список ролей.
+3. Замените *{filter}* с условием hello, что вы хотите tooapply toofilter hello список ролей:
 
-   * Вывод списка ролей, доступных для назначения в указанной области и любой из ее дочерних областей: `atScopeAndBelow()`
-   * Поиск с помощью точного отображаемого имени роли: `roleName%20eq%20'{role-display-name}'` Используйте точное отображаемое имя роли в формате URL-адреса. Например, `$filter=roleName%20eq%20'Virtual%20Machine%20Contributor'` |
+   * Список ролей, доступных для назначения на hello указаны области, а также все ее дочерние области:`atScopeAndBelow()`
+   * Поиск с помощью точного отображаемого имени роли: `roleName%20eq%20'{role-display-name}'` Используйте форму URL-кодированием hello hello точное отображаемое имя роли hello. Например, `$filter=roleName%20eq%20'Virtual%20Machine%20Contributor'` |
 
 ### <a name="response"></a>Ответ
 Код состояния: 200.
@@ -251,7 +251,7 @@ ms.lasthandoff: 08/29/2017
       "properties": {
         "roleName": "Virtual Machine Contributor",
         "type": "BuiltInRole",
-        "description": "Lets you manage virtual machines, but not access to them, and not the virtual network or storage account they\u2019re connected to.",
+        "description": "Lets you manage virtual machines, but not access toothem, and not hello virtual network or storage account they\u2019re connected to.",
         "assignableScopes": [
           "/"
         ],
@@ -302,23 +302,23 @@ ms.lasthandoff: 08/29/2017
 ```
 
 ## <a name="get-information-about-a-role"></a>Получение сведений о роли
-Здесь описывается получение сведений о роли, указанной с помощью идентификатора определения роли. Чтобы получить сведения о роли с помощью ее отображаемого имени, ознакомьтесь с разделом [Вывод списка всех ролей](role-based-access-control-manage-access-rest.md#list-all-roles).
+Возвращает сведения об одной роли, заданные hello идентификатор определения роли. tooget сведения об одной роли с помощью его отображаемое имя. в разделе [списка всех ролей](role-based-access-control-manage-access-rest.md#list-all-roles).
 
-Чтобы получить сведения о роли, требуется доступ к операции `Microsoft.Authorization/roleDefinitions/read`. Доступ к этой операции предоставляется всем встроенным ролям. Дополнительные сведения о назначениях ролей и управлении доступом к ресурсам Azure см. в статье [Использование назначений ролей для управления доступом к ресурсам в подписке Azure](role-based-access-control-configure.md).
+tooget сведения о роли, необходимо иметь доступ слишком`Microsoft.Authorization/roleDefinitions/read` операции. Все встроенные роли hello предоставляются toothis операции доступа. Дополнительные сведения о назначениях ролей и управлении доступом к ресурсам Azure см. в статье [Использование назначений ролей для управления доступом к ресурсам в подписке Azure](role-based-access-control-configure.md).
 
 ### <a name="request"></a>Запрос
-Используйте метод **GET** со следующим универсальным кодом ресурса (URI).
+Используйте hello **получить** метод с hello, следующий URI:
 
     https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleDefinitions/{role-definition-id}?api-version={api-version}
 
-Чтобы настроить запрос, замените следующий текст в URI указанными значениями.
+В рамках hello URI создайте hello после замены toocustomize запрос:
 
-1. Замените *{scope}* областью, для которой требуется вывести список назначений ролей. В следующих примерах показано, как указать область для различных уровней:
+1. Замените *{scope}* с областью видимости hello, для которого вы хотите toolist hello назначения ролей. Привет, следующие примеры показывают, как toospecify hello области для различных уровней:
 
    * Subscription: /subscriptions/{ИД_подписки}  
    * Группа ресурсов: /subscriptions/{ИД_подписки}/resourceGroups/myresourcegroup1  
    * Ресурс: /subscriptions/{ИД_подписки}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1  
-2. Замените *{role-definition-id}* идентификатором GUID для определения роли.
+2. Замените *{role-definition-id}* с идентификатором GUID hello hello определения роли.
 3. Замените *{api-version}* значением 2015-07-01.
 
 ### <a name="response"></a>Ответ
@@ -331,7 +331,7 @@ ms.lasthandoff: 08/29/2017
       "properties": {
         "roleName": "Virtual Machine Contributor",
         "type": "BuiltInRole",
-        "description": "Lets you manage virtual machines, but not access to them, and not the virtual network or storage account they\u2019re connected to.",
+        "description": "Lets you manage virtual machines, but not access toothem, and not hello virtual network or storage account they\u2019re connected to.",
         "assignableScopes": [
           "/"
         ],
@@ -384,24 +384,24 @@ ms.lasthandoff: 08/29/2017
 ## <a name="create-a-custom-role"></a>Создание настраиваемой роли
 Здесь описывается создание настраиваемой роли.
 
-Чтобы создать настраиваемую роль, требуется доступ к операции `Microsoft.Authorization/roleDefinitions/write` во всех областях `AssignableScopes`. Из встроенных ролей эту операцию могут выполнять только *владелец* и *администратор доступа пользователей*. Дополнительные сведения о назначениях ролей и управлении доступом к ресурсам Azure см. в статье [Использование назначений ролей для управления доступом к ресурсам в подписке Azure](role-based-access-control-configure.md).
+toocreate пользовательской роли, необходимо иметь доступ слишком`Microsoft.Authorization/roleDefinitions/write` операцию для всех hello `AssignableScopes`. Hello встроенных ролей, только *владельца* и *администратор доступа пользователя* предоставляются toothis операции доступа. Дополнительные сведения о назначениях ролей и управлении доступом к ресурсам Azure см. в статье [Использование назначений ролей для управления доступом к ресурсам в подписке Azure](role-based-access-control-configure.md).
 
 ### <a name="request"></a>Запрос
-Используйте метод **PUT** со следующим универсальным кодом ресурса (URI).
+Используйте hello **ПОМЕСТИТЬ** метод с hello, следующий URI:
 
     https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleDefinitions/{role-definition-id}?api-version={api-version}
 
-Чтобы настроить запрос, замените следующий текст в URI указанными значениями.
+В рамках hello URI создайте hello после замены toocustomize запрос:
 
-1. Замените *{scope}* первой областью *AssignableScope* для настраиваемой роли. В следующих примерах показано, как указать область для различных уровней.
+1. Замените *{scope}* с hello первый *AssignableScope* hello пользовательские роли. Привет, следующие примеры показывают, как toospecify hello области для различных уровней.
 
    * Subscription: /subscriptions/{ИД_подписки}  
    * Группа ресурсов: /subscriptions/{ИД_подписки}/resourceGroups/myresourcegroup1  
    * Ресурс: /subscriptions/{ИД_подписки}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1  
-2. Замените *{role-definition-id}* новым идентификатором GUID, который станет GUID новой настраиваемой роли.
+2. Замените *{role-definition-id}* нового идентификатора GUID, которая становится hello идентификатор GUID для новой настраиваемой роли hello.
 3. Замените *{api-version}* значением 2015-07-01.
 
-В тексте запроса введите значения в следующем формате:
+Для текста запроса hello укажите значения hello в hello следующий формат:
 
 ```
 {
@@ -436,13 +436,13 @@ ms.lasthandoff: 08/29/2017
 
 | Имя элемента | Обязательно | Тип | Описание |
 | --- | --- | --- | --- |
-| name |Да |Строка |Идентификатор GUID настраиваемой роли. |
-| properties.roleName |Да |Строка |Отображаемое имя настраиваемой роли. Не может быть более 128 символов в длину. |
-| properties.description |Нет |Строка |Описание настраиваемой роли. Не может быть более 1024 символов в длину. |
-| properties.type |Да |Строка |Укажите значение CustomRole. |
-| properties.permissions.actions |Да |String[] |Массив строк действий, определяющих операции, к которым предоставляет доступ настраиваемая роль. |
-| properties.permissions.notActions |Нет |String[] |Массив строк действий, определяющих операции, исключаемые из списка операций, к которым предоставляет доступ настраиваемая роль. |
-| properties.assignableScopes |Да |String[] |Массив областей, в которых можно использовать настраиваемую роль. |
+| name |Да |Строка |Идентификатор GUID пользовательской роли hello. |
+| properties.roleName |Да |Строка |Отображаемое имя пользовательской роли hello. Не может быть более 128 символов в длину. |
+| properties.description |Нет |Строка |Описание hello пользовательской роли. Не может быть более 1024 символов в длину. |
+| properties.type |Да |Строка |Значение слишком «CustomRole». |
+| properties.permissions.actions |Да |String[] |Массив действий строк, указав hello операции, предоставляемые пользовательской роли hello. |
+| properties.permissions.notActions |Нет |String[] |Массив строк действий, указав hello tooexclude операций из операции hello, предоставленные hello пользовательской роли. |
+| properties.assignableScopes |Да |String[] |Массив областей, в какие hello используются пользовательские роли. |
 
 ### <a name="response"></a>Ответ
 Код состояния: 201.
@@ -487,24 +487,24 @@ ms.lasthandoff: 08/29/2017
 ## <a name="update-a-custom-role"></a>Обновление настраиваемой роли
 Здесь описывается изменение настраиваемой роли.
 
-Чтобы изменить настраиваемую роль, требуется доступ к операции `Microsoft.Authorization/roleDefinitions/write` во всех областях `AssignableScopes`. Из встроенных ролей эту операцию могут выполнять только *владелец* и *администратор доступа пользователей*. Дополнительные сведения о назначениях ролей и управлении доступом к ресурсам Azure см. в статье [Использование назначений ролей для управления доступом к ресурсам в подписке Azure](role-based-access-control-configure.md).
+toomodify пользовательской роли, необходимо иметь доступ слишком`Microsoft.Authorization/roleDefinitions/write` операцию для всех hello `AssignableScopes`. Hello встроенных ролей, только *владельца* и *администратор доступа пользователя* предоставляются toothis операции доступа. Дополнительные сведения о назначениях ролей и управлении доступом к ресурсам Azure см. в статье [Использование назначений ролей для управления доступом к ресурсам в подписке Azure](role-based-access-control-configure.md).
 
 ### <a name="request"></a>Запрос
-Используйте метод **PUT** со следующим универсальным кодом ресурса (URI).
+Используйте hello **ПОМЕСТИТЬ** метод с hello, следующий URI:
 
     https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleDefinitions/{role-definition-id}?api-version={api-version}
 
-Чтобы настроить запрос, замените следующий текст в URI указанными значениями.
+В рамках hello URI создайте hello после замены toocustomize запрос:
 
-1. Замените *{scope}* первой областью *AssignableScope* для настраиваемой роли. В следующих примерах показано, как указать область для различных уровней:
+1. Замените *{scope}* с hello первый *AssignableScope* hello пользовательские роли. Привет, следующие примеры показывают, как toospecify hello области для различных уровней:
 
    * Subscription: /subscriptions/{ИД_подписки}  
    * Группа ресурсов: /subscriptions/{ИД_подписки}/resourceGroups/myresourcegroup1  
    * Ресурс: /subscriptions/{ИД_подписки}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1  
-2. Замените *{role-definition-id}* идентификатором GUID настраиваемой роли.
+2. Замените *{role-definition-id}* с идентификатором GUID hello hello пользовательской роли.
 3. Замените *{api-version}* значением 2015-07-01.
 
-В тексте запроса введите значения в следующем формате:
+Для текста запроса hello укажите значения hello в hello следующий формат:
 
 ```
 {
@@ -539,13 +539,13 @@ ms.lasthandoff: 08/29/2017
 
 | Имя элемента | Обязательно | Тип | Описание |
 | --- | --- | --- | --- |
-| name |Да |Строка |Идентификатор GUID настраиваемой роли. |
-| properties.roleName |Да |Строка |Отображаемое имя обновленной настраиваемой роли. |
-| properties.description |Нет |Строка |Описание обновленной настраиваемой роли. |
-| properties.type |Да |Строка |Укажите значение CustomRole. |
-| properties.permissions.actions |Да |String[] |Массив строк действий, определяющих операции, к которым предоставляет доступ обновленная настраиваемая роль. |
-| properties.permissions.notActions |Нет |String[] |Массив строк действий, определяющих операции, исключаемых из списка операций, к которым предоставляет доступ обновленная настраиваемая роль. |
-| properties.assignableScopes |Да |String[] |Массив областей, в которых можно использовать обновленную настраиваемую роль. |
+| name |Да |Строка |Идентификатор GUID пользовательской роли hello. |
+| properties.roleName |Да |Строка |Отображаемое имя hello обновление пользовательской роли. |
+| properties.description |Нет |Строка |Описание hello обновить пользовательской роли. |
+| properties.type |Да |Строка |Значение слишком «CustomRole». |
+| properties.permissions.actions |Да |String[] |Массив строк действий, указав hello операций toowhich hello обновить пользовательскую роль предоставляет доступ. |
+| properties.permissions.notActions |Нет |String[] |Массив действий строк, указав tooexclude операций hello от операций hello какие hello обновлены предоставляет пользовательской роли. |
+| properties.assignableScopes |Да |String[] |Массив областей, в какие hello можно использовать обновленный пользовательской роли. |
 
 ### <a name="response"></a>Ответ
 Код состояния: 201.
@@ -590,21 +590,21 @@ ms.lasthandoff: 08/29/2017
 ## <a name="delete-a-custom-role"></a>Удаление настраиваемой роли
 Здесь описывается удаление настраиваемой роли.
 
-Чтобы удалить настраиваемую роль, требуется доступ к операции `Microsoft.Authorization/roleDefinitions/delete` во всех областях `AssignableScopes`. Из встроенных ролей эту операцию могут выполнять только *владелец* и *администратор доступа пользователей*. Дополнительные сведения о назначениях ролей и управлении доступом к ресурсам Azure см. в статье [Использование назначений ролей для управления доступом к ресурсам в подписке Azure](role-based-access-control-configure.md).
+toodelete пользовательской роли, необходимо иметь доступ слишком`Microsoft.Authorization/roleDefinitions/delete` операцию для всех hello `AssignableScopes`. Hello встроенных ролей, только *владельца* и *администратор доступа пользователя* предоставляются toothis операции доступа. Дополнительные сведения о назначениях ролей и управлении доступом к ресурсам Azure см. в статье [Использование назначений ролей для управления доступом к ресурсам в подписке Azure](role-based-access-control-configure.md).
 
 ### <a name="request"></a>Запрос
-Используйте метод **DELETE** со следующим универсальным кодом ресурса (URI).
+Используйте hello **удалить** метод с hello, следующий URI:
 
     https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleDefinitions/{role-definition-id}?api-version={api-version}
 
-Чтобы настроить запрос, замените следующий текст в URI указанными значениями.
+В рамках hello URI создайте hello после замены toocustomize запрос:
 
-1. Замените *{scope}* областью, в которой требуется удалить определение роли. В следующих примерах показано, как указать область для различных уровней:
+1. Замените *{scope}* с областью видимости hello, с которой вы хотите определения роли toodelete hello. Привет, следующие примеры показывают, как toospecify hello области для различных уровней:
 
    * Subscription: /subscriptions/{ИД_подписки}  
    * Группа ресурсов: /subscriptions/{ИД_подписки}/resourceGroups/myresourcegroup1  
    * Ресурс: /subscriptions/{ИД_подписки}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1  
-2. Замените *{role-definition-id}* идентификатором GUID для определения настраиваемой роли.
+2. Замените *{role-definition-id}* с идентификатором hello GUID роли определение пользовательской роли hello.
 3. Замените *{api-version}* значением 2015-07-01.
 
 ### <a name="response"></a>Ответ

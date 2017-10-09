@@ -1,6 +1,6 @@
 ---
-title: "Развертывание шаблона Azure с помощью токена SAS и Azure CLI | Документы Майкрософт"
-description: "Используйте Azure Resource Manager и Azure CLI для развертывания ресурсов в Azure из шаблона, защищенного с помощью токена SAS."
+title: "шаблон Azure с маркер SAS и Azure CLI aaaDeploy | Документы Microsoft"
+description: "Используйте диспетчер ресурсов Azure и Azure CLI tooAzure toodeploy ресурсы из шаблона, который защищен с маркер SAS."
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -14,26 +14,26 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/31/2017
 ms.author: tomfitz
-ms.openlocfilehash: 22387aadd8f53a65efb76a29a9403c46a2c25954
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 59c64616d6e1f5e456d88a72854d0ed99e1bdc0d
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="deploy-private-resource-manager-template-with-sas-token-and-azure-cli"></a>Развертывание частного шаблона Resource Manager с использованием токена SAS и Azure CLI
 
-Если шаблон находится в учетной записи хранения, то во время развертывания можно ограничить доступ к шаблону и предоставить маркер подписанного URL-адреса (SAS). В этом разделе объясняется, как использовать Azure PowerShell с шаблонами Resource Manager для предоставления токена SAS во время развертывания. 
+Если шаблон находится в учетной записи хранилища, вы можете ограничить доступ toohello шаблон и предоставить маркер подписи общего доступа во время развертывания. В этом разделе объясняется, как toouse Azure PowerShell с помощью шаблонов диспетчера ресурсов tooprovide маркер SAS во время развертывания. 
 
-## <a name="add-private-template-to-storage-account"></a>Добавление частного шаблона в учетную запись хранения
+## <a name="add-private-template-toostorage-account"></a>Добавьте учетную запись toostorage закрытый шаблона
 
-Шаблоны можно добавить в учетную запись хранения и создать ссылки на них во время развертывания с помощью маркера SAS.
+Можно добавить учетную запись хранилища tooa шаблоны и связывать toothem во время развертывания с помощью токена SAS.
 
 > [!IMPORTANT]
-> Если выполнить приведенные ниже действия, то большой двоичный объект, содержащий шаблон, будет доступен только владельцу учетной записи. Тем не менее, если создать маркер SAS для этого большого двоичного объекта, то он будет доступен любому пользователю, обладающему этим универсальным кодом ресурса (URI). Если другой пользователь перехватит этот универсальный код ресурса (URI), то сможет получить доступ к шаблону. Применение маркера SAS — хороший способ ограничить доступ к своим шаблонам, но не следует указывать конфиденциальные данные, например пароли, непосредственно в шаблоне.
+> Перечисленные ниже действия hello, hello BLOB-объект, содержащий шаблон hello является владельцем учетной записи доступны tooonly hello. Тем не менее при создании маркера SAS для большого двоичного объекта hello hello большой двоичный объект является доступного tooanyone с URI. Если другой пользователь перехватывает hello URI, этот пользователь — шаблон может tooaccess hello. С помощью маркера SAS является удобным способом ограничения доступа tooyour шаблоны, но не следует включать конфиденциальные данные, такие как пароли непосредственно в шаблоне hello.
 > 
 > 
 
-Приведенный ниже пример позволяет настроить контейнер учетной записи хранения и передать шаблон:
+Hello следующий пример устанавливает контейнер частного хранилища учетной записи и отправка шаблона:
    
 ```azurecli
 az group create --name "ManageGroup" --location "South Central US"
@@ -59,7 +59,7 @@ az storage blob upload \
 ```
 
 ### <a name="provide-sas-token-during-deployment"></a>Предоставление маркера SAS во время развертывания
-Чтобы развернуть частный шаблон в учетной записи хранения, создайте маркер SAS и добавьте его в универсальный код ресурса (URI) для шаблона. Задайте срок действия, достаточный для выполнения развертывания.
+toodeploy закрытый шаблона в учетную запись хранилища, создать токен SAS и включите его в hello URI для шаблона hello. Задайте tooallow время истечения срока действия hello достаточно времени toocomplete hello развертывания.
    
 ```azurecli
 expiretime=$(date -u -d '30 minutes' +%Y-%m-%dT%H:%MZ)
@@ -85,7 +85,7 @@ az group deployment create --resource-group ExampleGroup --template-uri $url?$to
 Пример использования маркера SAS со связанными шаблонами см. в статье [Использование связанных шаблонов в Azure Resource Manager](resource-group-linked-templates.md).
 
 ## <a name="next-steps"></a>Дальнейшие действия
-* Вводные сведения о развертывании шаблонов см. в статье [Развертывание ресурсов с использованием шаблонов Resource Manager и Azure PowerShell](resource-group-template-deploy-cli.md).
+* Шаблоны toodeploying введение в разделе [развертывания ресурсов с помощью шаблонов диспетчера ресурсов и Azure PowerShell](resource-group-template-deploy-cli.md).
 * Полный пример сценария, развертывающего шаблон, см. в статье [Сценарий для развертывания шаблона Resource Manager](resource-manager-samples-cli-deploy.md).
-* Сведения об определении параметров в шаблоне см. в разделе [Создание шаблонов](resource-group-authoring-templates.md#parameters).
-* Руководство по использованию Resource Manager для эффективного управления подписками в организациях см [Azure enterprise scaffold - prescriptive subscription governance](resource-manager-subscription-governance.md) (Шаблон Azure для организаций. Рекомендуемая система управления подпиской).
+* toodefine параметры в шаблоне, в разделе [разработки шаблонов](resource-group-authoring-templates.md#parameters).
+* Для получения рекомендаций по как предприятия могут использовать диспетчер ресурсов tooeffectively управление подписками см. в разделе [корпоративные функции формирования шаблонов - управление конкретные подписки](resource-manager-subscription-governance.md).

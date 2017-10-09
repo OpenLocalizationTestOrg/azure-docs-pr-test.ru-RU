@@ -1,6 +1,6 @@
 ---
-title: "Добавление соединителя Facebook в приложения логики | Документация Майкрософт"
-description: "Обзор соединителя Facebook с параметрами интерфейса API REST"
+title: "Соединитель Facebook aaaAdd hello в приложениях для логики | Документы Microsoft"
+description: "Обзор соединителя Facebook hello с параметрами REST API"
 services: 
 documentationcenter: 
 author: MandiOhlinger
@@ -15,34 +15,34 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/07/2016
 ms.author: mandia; ladocs
-ms.openlocfilehash: e10a30ccef3e81cb3d7749696453d82b8958d076
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 962c6ed5d36e465de9d485d50e5c6dca6d44f470
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="get-started-with-the-facebook-connector"></a>Начало работы с соединителем Facebook
-Подключение к Facebook позволяет оставлять публикации в хронике, получать канал страниц и выполнять другие действия. С помощью Facebook можно:
+# <a name="get-started-with-hello-facebook-connector"></a>Приступая к работе с соединитель Facebook hello
+Подключения tooFacebook и учет tooa временной шкалы, страницы веб-канала и другие. С помощью Facebook можно:
 
-* формировать бизнес-процессы на основе данных, получаемых из Facebook; 
+* Создать поток вашего бизнеса, на основе данных hello, получаемых от Facebook. 
 * использовать триггер при получении новой публикации;
-* использовать действия, оставляющие публикации в хронике, получающие канал страниц и выполняющие другие действия. Эти действия получают ответ и делают выходные данные доступными для использования другими действиями. Например, можно настроить трансляцию всех публикаций, которые появляются в хронике, в Twitter. 
+* Используйте действия, которые блога шкалы tooyour получить страницы веб-канала и многое другое. Эти действия получить ответ и внесите hello выходные данные для других действий. Например если имеется запись на шкале времени, можно использовать, post и принудительно отправить его веб-канал Twitter tooyour. 
 
 Для начала можно создать приложение логики, как описано [здесь](../logic-apps/logic-apps-create-a-logic-app.md).
 
-## <a name="create-a-connection-to-facebook"></a>Создание подключения к Facebook
-При добавлении соединителя в приложения логики эти приложения необходимо авторизовать для подключения к Facebook.
+## <a name="create-a-connection-toofacebook"></a>Создание tooFacebook подключения
+При добавлении этого соединителя tooyour логику приложения, необходимо авторизовать tooyour tooconnect логику приложения Facebook.
 
-1. Вход в учетную запись Facebook
-2. Выберите **Авторизовать**и разрешите приложениям логики подключаться к Facebook и использовать его. 
+1. Войдите в tooyour учетную запись Facebook
+2. Выберите **авторизовать**и разрешить вашей tooconnect логику приложения и использовать ваш Facebook. 
 
-> [!INCLUDE [Steps to create a connection to Facebook](../../includes/connectors-create-api-facebook.md)]
+> [!INCLUDE [Steps toocreate a connection tooFacebook](../../includes/connectors-create-api-facebook.md)]
 > 
 
 
 ## <a name="connector-specific-details"></a>Сведения о соединителях
 
-Информацию о существующих ограничениях, а также о триггерах и действиях, определенных в Swagger, см. в статье со [сведениями о соединителях](/connectors/facebook/).
+Просмотреть все триггеры и действия, определенные в hello swagger и любые пределы в hello см. также [сведений о соединителе](/connectors/facebook/).
 
 ## <a name="more-connectors"></a>Дополнительные сведения о соединителях
-Вы можете вернуться к [списку интерфейсов API](apis-list.md).
+Вернитесь к предыдущему окну toohello [API-интерфейсы списка](apis-list.md).

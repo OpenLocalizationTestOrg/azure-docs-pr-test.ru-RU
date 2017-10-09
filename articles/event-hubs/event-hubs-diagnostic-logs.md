@@ -1,6 +1,6 @@
 ---
-title: "Журналы диагностики концентраторов событий Azure | Документация Майкрософт"
-description: "Узнайте, как настроить журналы диагностики для концентраторов событий в Azure."
+title: "журналы диагностики концентраторов событий aaaAzure | Документы Microsoft"
+description: "Узнайте, как tooset копирование журналов диагностики для концентраторов событий в Azure."
 keywords: 
 documentationcenter: 
 services: event-hubs
@@ -15,26 +15,26 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 06/27/2017
 ms.author: sethm;babanisa
-ms.openlocfilehash: 09bc62f4918635419d74ef3ae400a41d4ce58b5a
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: d2054e2e444e715e5077fe2608fe1e009e6c1d84
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="event-hubs-diagnostic-logs"></a>Журналы диагностики концентраторов событий
 
 Для концентраторов событий Azure можно просмотреть журналы двух типов.
-* **[Журналы действий](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md)**. Эти журналы содержат сведения об операциях, выполняемых с заданием. Данные журналы всегда включены.
-* **[Журналы диагностики](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md)**. Вы можете настроить журналы диагностики, чтобы получать более подробные сведения обо всем, что происходит с заданием. Журналы диагностики охватывают действия с момента создания задания до его удаления, включая обновления и действия, которые происходят во время выполнения задания.
+* **[Журналы действий](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md)**. Эти журналы содержат сведения об операциях, выполняемых с заданием. журналы Hello всегда включен.
+* **[Журналы диагностики](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md)**. Вы можете настроить журналы диагностики, чтобы получать более подробные сведения обо всем, что происходит с заданием. Действия титульных журналы диагностики с момента создания задания hello до удаления задания hello, включая обновления и действия, которые могут возникнуть при выполнении задания hello hello.
 
 ## <a name="turn-on-diagnostic-logs"></a>Включение журналов диагностики
-По умолчанию журналы диагностики отключены. Включение журналов диагностики
+По умолчанию журналы диагностики отключены. журналы диагностики tooenable:
 
-1.  На [портале Azure](https://portal.azure.com) в разделе **Мониторинг и управление** щелкните **Журналы диагностики**.
+1.  В hello [портал Azure](https://portal.azure.com)в разделе **мониторинг + управления**, нажмите кнопку **журналы диагностики**.
 
-    ![Перемещение к колонке журналов диагностики](./media/event-hubs-diagnostic-logs/image1.png)
+    ![журналы toodiagnostic колонке навигации](./media/event-hubs-diagnostic-logs/image1.png)
 
-2.  Выберите ресурс, который необходимо отслеживать.
+2.  Щелкните ресурс hello требуется toomonitor.
 
 3.  Щелкните **Включить диагностику**.
 
@@ -42,32 +42,32 @@ ms.lasthandoff: 07/11/2017
 
 4.  Для параметра **Состояние** щелкните **Вкл**.
 
-    ![Изменение состояния журналов диагностики](./media/event-hubs-diagnostic-logs/image3.png)
+    ![Изменение состояния hello журналов диагностики](./media/event-hubs-diagnostic-logs/image3.png)
 
-5.  Настройте нужную цель для архивирования, например учетную запись хранения, концентратор событий или Azure Log Analytics.
+5.  Набор hello архив целевой объекты; например учетная запись хранения, концентратора событий или анализа журналов Azure.
 
-6.  Сохраните новые параметры диагностики.
+6.  Сохраните новые параметры диагностики hello.
 
-Новые параметры вступят в силу в течение 10 минут. После этого журналы появятся в настроенной цели для архивирования на вкладке **Журналы диагностики**.
+Новые параметры вступят в силу в течение 10 минут. После этого журналы отображаются на конечном архивных hello настроен на hello **журналы диагностики** колонку.
 
-Дополнительные сведения о настройке системы диагностики доступны в [обзоре журналов диагностики Azure](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md).
+Дополнительные сведения о настройке диагностики см. в разделе hello [Обзор Azure журналам диагностики](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md).
 
 ## <a name="diagnostic-logs-categories"></a>Категории журналов диагностики
 Концентраторы событий записывают журналы диагностики двух категорий.
 
-* **ArchiveLogs**: журналы, связанные с архивами концентраторов событий, в частности, с ошибками архива.
-* **OperationalLogs**: сведения о том, что происходит во время операций концентраторов событий, в частности, тип операции, включая создание концентратора событий, используемые ресурсы, а также состояние операции.
+* **ArchiveLogs**: журналы, связанные с архивами tooEvent концентраторы, в частности, регистрирует ошибки, связанные tooarchive.
+* **OperationalLogs**: сведения о выполняемых во время операций концентраторов событий, в частности, hello тип операции, включая создание концентратора событий, использование ресурсов и состояние операции hello hello.
 
 ## <a name="diagnostic-logs-schema"></a>Схема журналов диагностики
-Все журналы хранятся в формате JSON (нотация объектов JavaScript). Каждая запись содержит строковые поля, использующие формат, описанный в следующих разделах.
+Все журналы хранятся в формате JSON (нотация объектов JavaScript). Каждая запись содержит поля строки, используйте формат hello, описанные в следующих разделах hello.
 
 ### <a name="archive-logs-schema"></a>Схема архивных журналов
 
-Строки JSON архивных журналов содержат элементы, перечисленные в следующей таблице.
+Строки JSON архив журнала включать элементы, перечисленные в следующей таблице hello:
 
 Имя | Описание
 ------- | -------
-TaskName | Описание задачи, завершившейся сбоем.
+TaskName | Описание задачи hello, завершившегося ошибкой.
 ActivityId | Внутренний идентификатор, используемый для отслеживания.
 trackingId | Внутренний идентификатор, используемый для отслеживания.
 resourceId | Идентификатор ресурса Azure Resource Manager.
@@ -80,7 +80,7 @@ durationInSeconds | Продолжительность сбоя.
 Message | Сообщение об ошибке.
 category | ArchiveLogs
 
-Ниже приведен пример строки JSON журнала архивирования.
+Hello следующий код является примером журнал архива строки JSON:
 
 ```json
 {
@@ -94,18 +94,18 @@ category | ArchiveLogs
      "startTime": "9/22/2016 5:11:21 AM",
      "failures": 3,
      "durationInSeconds": 360,
-     "message": "Microsoft.WindowsAzure.Storage.StorageException: The remote server returned an error: (404) Not Found. ---> System.Net.WebException: The remote server returned an error: (404) Not Found.\r\n   at Microsoft.WindowsAzure.Storage.Shared.Protocol.HttpResponseParsers.ProcessExpectedStatusCodeNoException[T](HttpStatusCode expectedStatusCode, HttpStatusCode actualStatusCode, T retVal, StorageCommandBase`1 cmd, Exception ex)\r\n   at Microsoft.WindowsAzure.Storage.Blob.CloudBlockBlob.<PutBlockImpl>b__3e(RESTCommand`1 cmd, HttpWebResponse resp, Exception ex, OperationContext ctx)\r\n   at Microsoft.WindowsAzure.Storage.Core.Executor.Executor.EndGetResponse[T](IAsyncResult getResponseResult)\r\n   --- End of inner exception stack trace ---\r\n   at Microsoft.WindowsAzure.Storage.Core.Util.StorageAsyncResult`1.End()\r\n   at Microsoft.WindowsAzure.Storage.Core.Util.AsyncExtensions.<>c__DisplayClass4.<CreateCallbackVoid>b__3(IAsyncResult ar)\r\n--- End of stack trace from previous location where exception was thrown ---\r\n   at System.",
+     "message": "Microsoft.WindowsAzure.Storage.StorageException: hello remote server returned an error: (404) Not Found. ---> System.Net.WebException: hello remote server returned an error: (404) Not Found.\r\n   at Microsoft.WindowsAzure.Storage.Shared.Protocol.HttpResponseParsers.ProcessExpectedStatusCodeNoException[T](HttpStatusCode expectedStatusCode, HttpStatusCode actualStatusCode, T retVal, StorageCommandBase`1 cmd, Exception ex)\r\n   at Microsoft.WindowsAzure.Storage.Blob.CloudBlockBlob.<PutBlockImpl>b__3e(RESTCommand`1 cmd, HttpWebResponse resp, Exception ex, OperationContext ctx)\r\n   at Microsoft.WindowsAzure.Storage.Core.Executor.Executor.EndGetResponse[T](IAsyncResult getResponseResult)\r\n   --- End of inner exception stack trace ---\r\n   at Microsoft.WindowsAzure.Storage.Core.Util.StorageAsyncResult`1.End()\r\n   at Microsoft.WindowsAzure.Storage.Core.Util.AsyncExtensions.<>c__DisplayClass4.<CreateCallbackVoid>b__3(IAsyncResult ar)\r\n--- End of stack trace from previous location where exception was thrown ---\r\n   at System.",
      "category": "ArchiveLogs"
 }
 ```
 
 ### <a name="operational-logs-schema"></a>Схема операционных журналов
 
-Строки JSON операционного журнала содержат элементы, перечисленные в приведенной ниже таблице.
+Операционный журнал JSON строки включать элементы, перечисленные в следующей таблице hello:
 
 Имя | Описание
 ------- | -------
-ActivityId | Внутренний идентификатор, используемый для отслеживания.
+ActivityId | Внутренний идентификатор, используемый tootrack цели.
 EventName | Имя операции.  
 resourceId | Идентификатор ресурса Azure Resource Manager.
 SubscriptionId | Идентификатор подписки.
@@ -115,7 +115,7 @@ Status | Состояние операции.
 Caller | Объект, вызвавший операцию (портал Azure или клиент управления).
 category | OperationalLogs
 
-Ниже приведен пример строки JSON операционного журнала.
+Hello ниже приведен пример строки JSON Операционный журнал:
 
 ```json
 Example:
@@ -133,6 +133,6 @@ Example:
 ```
 
 ## <a name="next-steps"></a>Дальнейшие действия
-* [Что такое концентраторы событий Azure?](event-hubs-what-is-event-hubs.md)
+* [Введение tooEvent концентраторы](event-hubs-what-is-event-hubs.md)
 * [Общие сведения об API концентраторов событий](event-hubs-api-overview.md)
 * [Начало работы с концентраторами событий](event-hubs-csharp-ephcs-getstarted.md)

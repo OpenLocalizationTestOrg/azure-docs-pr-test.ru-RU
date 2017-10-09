@@ -1,6 +1,6 @@
 ---
-title: "Аутентификация на основе сертификата в Azure Active Directory на устройстве iOS | Документация Майкрософт"
-description: "Узнайте о поддерживаемых сценариях и требованиях к настройке аутентификации на основе сертификата в решениях на устройствах iOS."
+title: "aaaAzure на основе сертификатов проверки подлинности Active Directory на iOS | Документы Microsoft"
+description: "Дополнительные сведения о сценариях поддерживается hello и hello требования к настройке проверки подлинности на основе сертификата в решениях с устройствами iOS"
 services: active-directory
 author: MarkusVi
 documentationcenter: na
@@ -14,22 +14,22 @@ ms.workload: identity
 ms.date: 08/24/2017
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: c781f3f054fad5c5092fed5058c932fd4e97cf35
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 4486ff5239c2897b3bc187053f31d74807430301
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-active-directory-certificate-based-authentication-on-ios"></a>Аутентификация на основе сертификата в Azure Active Directory на устройстве iOS
 
-Аутентификация на основе сертификата (CBA) позволяет Azure Active Directory выполнять аутентификацию с помощью сертификата клиента на устройстве Windows, Android или iOS при подключении учетной записи Exchange Online к: 
+Проверку подлинности на основе сертификатов (CBA) обеспечивает проверку подлинности Azure Active Directory с помощью сертификата клиента на устройстве Windows, Android или iOS при подключении учетную Exchange online с toobe: 
 
 * мобильным приложениям Office, таким как Microsoft Outlook и Microsoft Word;   
 * клиентам Exchange ActiveSync (EAS). 
 
-Настройка данной функции избавляет от необходимости ввода имени пользователя и пароля в определенных почтовых клиентах и приложениях Microsoft Office на мобильных устройствах. 
+Эта настройка устраняет необходимость hello tooenter имя пользователя и пароль к нему в определенных почты и приложения Microsoft Office на мобильных устройствах. 
 
-В этой статье приведены требования и поддерживаемые сценарии для настройки CBA на устройстве iOS (Android) для пользователей клиентов в тарифных планах Office 365 корпоративный, бизнес, для образования, для государственных организаций США, Китая и Германии.
+В этом разделе приведены с hello требований и сценариев hello поддерживается настройка CBA на устройстве iOS(Android) для пользователей клиентов в Office 365 Enterprise, Business, образование, правительства США, Китае, и Германии планов.
 
 В тарифных планах Office 365 US Government Defense и Federal доступна предварительная версия этой функции.
 
@@ -53,40 +53,40 @@ ms.lasthandoff: 08/29/2017
 
 ## <a name="requirements"></a>Требования 
 
-Устройство должно иметь операционную систему iOS 9 и более поздней версии. 
+Hello ОС устройства должен иметь версию iOS 9 и более поздних версий 
 
 Необходимо настроить сервер федерации.  
 
 Для приложений Office на iOS требуется Microsoft Authenticator.  
 
-Чтобы служба Azure Active Directory могла отзывать сертификат клиента, маркер AD FS должен иметь следующие утверждения:  
+Для Azure Active Directory toorevoke сертификат клиента маркер hello служб федерации Active Directory должен иметь hello следующих утверждений:  
 
 * `http://schemas.microsoft.com/ws/2008/06/identity/claims/<serialnumber>`  
-  (серийный номер сертификата клиента); 
+  (hello серийный номер сертификата клиента hello) 
 * `http://schemas.microsoft.com/2012/12/certificatecontext/field/<issuer>`  
-  (строка для издателя сертификата клиента). 
+  (строка hello для hello издателя сертификата клиента hello) 
 
-Azure Active Directory добавляет эти утверждения в маркер обновления, если они доступны в маркере AD FS (или любом другом токене SAML). Когда требуется проверить маркер обновления, эта информация используется для проверки отзыва. 
+Azure Active Directory добавляет маркер обновления toohello эти утверждения, если они доступны в маркере ADFS hello (или любой другой маркер SAML). Когда токен обновления hello должен проверить toobe, информация, которая используется toocheck hello отзыва. 
 
-Рекомендуется обновить страницы ошибок AD FS следующими сведениями:
+Рекомендуется следует обновить страницы ошибок ADFS hello hello следующее:
 
-* требованием установки Microsoft Authenticator для iOS;
-* инструкциями о получении сертификата пользователя. 
+* Hello требование для установки средства проверки подлинности Microsoft hello на iOS
+* Инструкции о том, как tooget сертификат пользователя. 
 
-Дополнительные сведения см. в разделе [Настройка страниц входа AD FS](https://technet.microsoft.com/library/dn280950.aspx).
+Дополнительные сведения см. в разделе [настройка страниц hello AD FS Sign-in](https://technet.microsoft.com/library/dn280950.aspx).
 
-Некоторые приложения Office (с поддержкой современной проверки подлинности) отправляют в Azure AD запрос с текстом *prompt=login*. По умолчанию Azure AD преобразует этот текст в запросе к службам AD FS в текст *wauth=usernamepassworduri* (запрашивает у AD FS выполнение проверки подлинности с помощью имени пользователя и пароля) и *wfresh=0* (запрашивает у AD FS игнорировать состояние единого входа и выполнять проверку подлинности заново). Чтобы включить проверку подлинности на основе сертификатов для этих приложений, необходимо изменить поведение Azure AD по умолчанию. Просто задайте для параметра *PromptLoginBehavior* в настройках федеративного домена значение *Отключено*. Для выполнения этой задачи можно использовать командлет [MSOLDomainFederationSettings](/powershell/module/msonline/set-msoldomainfederationsettings?view=azureadps-1.0):
+Некоторые приложения Office (с включена современная проверка подлинности) отправлять "*prompt = имя входа*" tooAzure AD в свой запрос. По умолчанию, Azure AD преобразует это в tooADFS hello запроса слишком "*wauth = usernamepassworduri*" (запрашивает auth U и P toodo ADFS) и "*wfresh = 0*" (запрашивает состояние единого входа tooignore служб федерации Active Directory и сделать дополнительной проверки подлинности) . Если вы хотите tooenable на основе сертификатов проверки подлинности для этих приложений, необходимо toomodify hello по умолчанию Azure AD. Просто набор hello "*PromptLoginBehavior*" в параметрах федеративного домена слишком "*отключено*". Можно использовать hello [MSOLDomainFederationSettings](/powershell/module/msonline/set-msoldomainfederationsettings?view=azureadps-1.0) tooperform командлет этой задачи:
 
 `Set-MSOLDomainFederationSettings -domainname <domain> -PromptLoginBehavior Disabled`
   
 
 ## <a name="exchange-activesync-clients-support"></a>Поддержка клиентов Exchange ActiveSync
-В iOS версии 9 и выше поддерживается собственный почтовый клиент iOS. Чтобы определить, поддерживается ли эта функция во всех остальных приложениях Exchange ActiveSync, обратитесь к разработчику приложения.  
+IOS 9 или более поздней версии поддерживается почтовый клиент hello машинным кодом iOS. Все остальные приложения Exchange ActiveSync toodetermine Если эта возможность поддерживается, обратитесь в службу разработчика приложения.  
 
 
 ## <a name="next-steps"></a>Дальнейшие действия
 
-Чтобы настроить аутентификацию на основе сертификата в своей среде, ознакомьтесь с инструкциями в статье [Get started with certificate-based authentication in Azure Active Directory](active-directory-certificate-based-authentication-get-started.md) (Приступая к работе с аутентификацией на основе сертификата в Azure Active Directory).
+Если требуется проверка подлинности на основе tooconfigure в вашей среде, см. раздел [приступить к работе с проверкой подлинности на основе сертификатов в Android](active-directory-certificate-based-authentication-get-started.md) инструкции.
 
 
 <!--Image references-->

@@ -1,5 +1,5 @@
 ---
-title: "Руководство по использованию ретранслятора WCF служебной шины Azure | Документация Майкрософт"
+title: "Учебник ретрансляции WCF Service Bus aaaAzure | Документы Microsoft"
 description: "Создание службы и клиентского приложения служебной шины с помощью ретранслятора WCF."
 services: service-bus-relay
 documentationcenter: na
@@ -14,63 +14,63 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/02/2017
 ms.author: sethm
-ms.openlocfilehash: 5347bf85cad32b59677369d51a1f36529aef6662
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 78cd52ef51e9fcfcda2f13ec54bde3af50d76476
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-wcf-relay-tutorial"></a>Руководство по ретранслятору WCF Azure
 
-В этом руководстве описывается создание простого клиентского приложения ретранслятора WCF и службы ретрансляции WCF с помощью ретранслятора Azure. Аналогичное руководство по [обмену сообщениями в служебной шине](../service-bus-messaging/service-bus-messaging-overview.md#brokered-messaging) представлено в статье [Начало работы с очередями служебной шины](../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md).
+В данном учебнике как toobuild простой WCF ретрансляции клиентского приложения и службы с помощью Azure ретрансляции. Аналогичное руководство по [обмену сообщениями в служебной шине](../service-bus-messaging/service-bus-messaging-overview.md#brokered-messaging) представлено в статье [Начало работы с очередями служебной шины](../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md).
 
-Выполнив задания в этом руководстве, вы получите представление о том, как создать клиентское приложение ретранслятора WCF и службу ретрансляции WCF. Как и в WCF, под службой понимается конструкция, которая предоставляет одну или несколько конечных точек, каждая из которых предоставляет одну или несколько операций службы. Конечная точка службы задает адрес, по которому можно найти службу, привязку, содержащую сведения, которые клиент должен передавать службе, а также контракт, определяющий функциональность, предоставляемую службой клиентам. Основное отличие между WCF и ретранслятором WCF состоит в том, что в последнем конечная точка размещается в облаке, а не на локальном компьютере.
+Прохождение этого учебника дает представление о hello шаги, необходимые toocreate приложении клиента и службы ретрансляции WCF. Как и в WCF, под службой понимается конструкция, которая предоставляет одну или несколько конечных точек, каждая из которых предоставляет одну или несколько операций службы. Hello конечную точку службы определяет адрес, где можно найти службу hello, привязка, которая содержит сведения hello, клиент должен связаться с hello службы и контракт, определяющий hello функциональные возможности, предоставляемые клиентами tooits hello службы. Hello основное различие между WCF и ретрансляции WCF — в облаке hello, а не на локальном компьютере, предоставленный этой конечной точке hello.
 
-Проработав это руководство, вы создадите рабочую службу и клиент, который сможет вызывать операции службы. В первом разделе мы рассмотрим процесс настройки учетной записи. В последующих разделах описывается определение службы, использующей контракт, способы реализации службы и настройка службы с помощью кода. В них также описывается размещение и запуск службы. Создаваемая служба является резидентной, то есть и клиент, и служба выполняются на одном компьютере. Вы можете настроить службу с помощью кода или файла конфигурации.
+После работы через последовательность hello разделов в этом учебнике будет иметь запущенной службы и клиента, который можно вызвать операции hello hello службы. Hello первой статье описывается, как tooset учетную запись. Hello Далее описывается, как toodefine службы, использует контракт, как tooimplement hello службы и как tooconfigure hello службы в коде. В них также рассматриваются как toohost и запустите службу hello. Hello созданная служба является резидентной и hello клиент и служба работают на hello того же компьютера. Можно настроить службу hello с помощью кода или файла конфигурации.
 
-В заключительных трех действиях описывается создание клиентского приложения, его настройка, а также создание и запуск клиента с доступом к функциональности хоста.
+Hello заключительные три действия описывают, как toocreate клиентского приложения, настройте клиентское приложение hello и создать и использовать клиент, который можно получить доступ к функциональности hello hello узла.
 
 ## <a name="prerequisites"></a>Предварительные требования
 
-Для работы с этим учебником требуется:
+toocomplete этого учебника вам потребуется hello следующие:
 
 * [Microsoft Visual Studio 2015 или более поздней версии](http://visualstudio.com). В этом учебнике используется Visual Studio 2017.
 * Активная учетная запись Azure. Если ее нет, можно создать бесплатную учетную запись всего за несколько минут. Дополнительные сведения см. в разделе [Бесплатная пробная версия Azure](https://azure.microsoft.com/free/).
 
 ## <a name="create-a-service-namespace"></a>Создание пространства имен службы
 
-Сначала необходимо создать пространство имен и получить ключ [подписанного URL-адреса (SAS)](../service-bus-messaging/service-bus-sas.md). Пространство имен определяет границы каждого приложения, предоставляемого через службу ретрансляции. Ключ SAS автоматически создается системой при создании пространства имен службы. Сочетание пространства имен и ключа SAS образует учетные данные, на основе которых Azure осуществляет аутентификацию доступа к приложению. Выполните [эти инструкции](relay-create-namespace-portal.md), чтобы создать пространство имен ретранслятора.
+Hello первым шагом является toocreate пространства имен и tooobtain [подписи общего доступа (SAS)](../service-bus-messaging/service-bus-sas.md) ключа. Пространство имен предоставляет границу для каждого приложения, предоставляемые через службу ретрансляции hello. Ключ SAS автоматически создается системой hello при создании пространства имен службы. Hello сочетание пространства имен службы и ключ SAS содержит учетные данные hello Azure tooauthenticate доступа tooan приложения. Выполните hello [инструкциям](relay-create-namespace-portal.md) toocreate имен ретрансляции.
 
 ## <a name="define-a-wcf-service-contract"></a>Определение контракта службы WCF
 
-Контракт службы указывает, какие операции поддерживает служба (в контексте веб-служб под операциями понимаются методы и функции). Контракты создаются путем определения интерфейса C++, C# или Visual Basic. Каждый метод в интерфейсе соответствует определенной операции службы. К каждому интерфейсу должен быть применен атрибут [ServiceContractAttribute](https://msdn.microsoft.com/library/system.servicemodel.servicecontractattribute.aspx), а к каждой операции— атрибут [OperationContractAttribute](https://msdn.microsoft.com/library/system.servicemodel.operationcontractattribute.aspx). Если у метода в интерфейсе с атрибутом [ServiceContractAttribute](https://msdn.microsoft.com/library/system.servicemodel.servicecontractattribute.aspx) нет атрибута [OperationContractAttribute](https://msdn.microsoft.com/library/system.servicemodel.operationcontractattribute.aspx), то он не предоставляется. Код для выполнения задач приведен в примерах после описания последовательности действий. Подробное обсуждение контрактов и служб см. в статье [Разработка и реализация служб](https://msdn.microsoft.com/library/ms729746.aspx) в документации по WCF.
+контракт службы Hello указывает, какие службы поддерживает hello операций (hello термины веб-служб для методов или функций). Контракты создаются путем определения интерфейса C++, C# или Visual Basic. Каждый метод в интерфейсе hello соответствует tooa определенной операции службы. Каждый интерфейс должен иметь hello [ServiceContractAttribute](https://msdn.microsoft.com/library/system.servicemodel.servicecontractattribute.aspx) tooit применен атрибут, и каждая операция должна иметь hello [OperationContractAttribute](https://msdn.microsoft.com/library/system.servicemodel.operationcontractattribute.aspx) tooit применен атрибут. Если метод в интерфейсе, имеющем hello [ServiceContractAttribute](https://msdn.microsoft.com/library/system.servicemodel.servicecontractattribute.aspx) атрибут не имеет hello [OperationContractAttribute](https://msdn.microsoft.com/library/system.servicemodel.operationcontractattribute.aspx) атрибута, метод не предоставляется. Hello код для выполнения этих задач приведен в примере hello, после процедуры hello. Более полное обсуждение контрактов и служб в разделе [проектирование и реализация служб](https://msdn.microsoft.com/library/ms729746.aspx) в документации по WCF hello.
 
 ### <a name="create-a-relay-contract-with-an-interface"></a>Создание контракта ретранслятора с помощью интерфейса
 
-1. Откройте Visual Studio с правами администратора, щелкнув правой кнопкой мыши имя программы в меню **Пуск** и выбрав пункт **Запуск от имени администратора**.
-2. Создайте новый проект консольного приложения. В меню **Файл** выберите **Создать**, а затем — **Проект**. В диалоговом окне **Новый проект** нажмите кнопку **Visual C#** (если **Visual C#** не отображается, откройте список **Другие языки**). Выберите шаблон **Консольное приложение (.NET Framework)** и назовите его **EchoService**. Нажмите кнопку **ОК** , чтобы создать проект.
+1. Откройте Visual Studio с правами администратора, щелкнув правой кнопкой мыши программу hello в hello **запустить** , выберите в меню **Запуск от имени администратора**.
+2. Создайте новый проект консольного приложения. Нажмите кнопку hello **файл** и выбрать пункт **New**, нажмите кнопку **проекта**. В hello **новый проект** диалоговое окно, нажмите кнопку **Visual C#** (если **Visual C#** не отображается, найдите его в разделе **другие языки**). Нажмите кнопку hello **консольного приложения (.NET Framework)** шаблона и назовите его **EchoService**. Нажмите кнопку **ОК** toocreate hello проекта.
 
     ![][2]
 
-3. Установка пакета NuGet для служебной шины. Этот пакет автоматически добавляет ссылки на библиотеки служебной шины, а также элемент WCF **System.ServiceModel**. [System.ServiceModel](https://msdn.microsoft.com/library/system.servicemodel.aspx) — это пространство имен, которое предоставляет программный доступ к основным функциям WCF. Служебная шина использует множество объектов и атрибутов WCF для определения контрактов службы.
+3. Установите пакет шины обслуживания NuGet hello. Этот пакет автоматически добавляет ссылки на библиотеки служебной шины toohello, а также hello WCF **System.ServiceModel**. [System.ServiceModel](https://msdn.microsoft.com/library/system.servicemodel.aspx) hello пространство имен, которое позволяет tooprogrammatically доступа hello основные компоненты служб WCF. Шина обслуживания использует множество объектов hello и атрибутов контрактов службы WCF toodefine.
 
-    В обозревателе решений щелкните правой кнопкой мыши проект и выберите пункт **Управление пакетами NuGet**. Щелкните вкладку **Обзор** и выполните поиск `Microsoft Azure Service Bus`. Убедитесь, что имя проекта указано в поле **Версии**. Щелкните **Установить**и примите условия использования.
+    В обозревателе решений щелкните правой кнопкой мыши проект hello и нажмите кнопку **управление пакетами NuGet...** . Нажмите кнопку hello **Обзор** вкладку, а затем поиск `Microsoft Azure Service Bus`. Убедитесь, что имя проекта hello в hello **версии** поле. Нажмите кнопку **установить**и примите условия использования hello.
 
     ![][3]
-4. В обозревателе решений дважды щелкните файл Program.cs, чтобы открыть его в редакторе.
-5. Добавьте в начало файла следующие операторы using:
+4. В обозревателе решений дважды щелкните tooopen файл Program.cs hello, откройте его в редакторе hello, если его еще нет.
+5. Добавьте hello следующие операторы using в начало hello hello файла:
 
     ```csharp
     using System.ServiceModel;
     using Microsoft.ServiceBus;
     ```
-6. Замените имя пространства имен по умолчанию (**EchoService**) именем **Microsoft.ServiceBus.Samples**.
+6. Изменить имя пространства имен hello с его имя по умолчанию **EchoService** слишком**Microsoft.ServiceBus.Samples**.
 
    > [!IMPORTANT]
-   > В этом руководстве используется пространство имен C# **Microsoft.ServiceBus.Samples**. Оно относится к управляемому типу на основе контракта и используется в файле конфигурации на этапе [настройки клиента WCF](#configure-the-wcf-client). Для компиляции примера можно указать любое пространство имен. Однако при этом потребуется соответствующим образом изменить пространства имен контракта и службы в файле конфигурации приложения. В файле App.config должно быть указано то же самое пространство имен, что и в файлах C#.
+   > В этом учебнике используется пространство имен hello C# **Microsoft.ServiceBus.Samples**, это пространство имен hello hello на основе контракта управляемого типа, который используется в файле конфигурации hello в hello [клиента WCF hello Настройка](#configure-the-wcf-client) шаг. Можно задать любое пространство имен, необходимые при выполнении сборки этого примера; Однако hello Учебник не будет работать, если вы измените hello пространства имен контракта hello и службы соответственно, в файле конфигурации приложения hello. приветствия имен, указанное в hello App.config, файл должен быть таким же hello hello пространства имен, указанные в файлах C#.
    >
    >
-7. Сразу после объявления пространства имен `Microsoft.ServiceBus.Samples`, но внутри этого пространства, определите новый интерфейс `IEchoContract` и примените к нему атрибут `ServiceContractAttribute` со значением `http://samples.microsoft.com/ServiceModel/Relay/`. Значение пространства имен отличается от пространства имен, которое используется во всей области кода. Оно используется в качестве уникального идентификатора данного контракта. Явное указание пространства позволяет предотвратить добавление значение пространства имен по умолчанию к имени контракта. Вставьте приведенный ниже фрагмент кода после объявления пространства имен.
+7. Непосредственно после hello `Microsoft.ServiceBus.Samples` объявление пространства имен, но в пространстве имен hello, определите новый интерфейс с именем `IEchoContract` и применить hello `ServiceContractAttribute` интерфейс toohello атрибут со значением пространства имен `http://samples.microsoft.com/ServiceModel/Relay/`. Значение пространства имен Hello отличается от hello пространства имен, используемого во всей области действия своего кода hello. Вместо этого значение hello пространства имен используется как уникальный идентификатор для данного контракта. Явное указание пространства имен hello запрещает значение пространства имен по умолчанию hello toohello имя контракта. Вставьте следующий код после объявления пространства имен hello hello:
 
     ```csharp
     [ServiceContract(Name = "IEchoContract", Namespace = "http://samples.microsoft.com/ServiceModel/Relay/")]
@@ -80,27 +80,27 @@ ms.lasthandoff: 07/11/2017
     ```
 
    > [!NOTE]
-   > Как правило, пространство имен контракта службы содержит схему именования, которая включает сведения о версии. Включение сведений о версии в пространство имен контракта службы позволяет службам выносить значительные изменения в новый контракт службы с новым пространством имен и предоставлять к нему доступ через новую конечную точку. Таким образом, клиенты могут продолжать использовать старый контракт службы без обновлений. Сведения о версии могут включать дату и номер сборки. Дополнительные сведения см. в статье [Управление версиями службы](http://go.microsoft.com/fwlink/?LinkID=180498). Схема именования пространства имен контракта службы, используемая в этом учебнике, не включает сведения о версии.
+   > Как правило пространство имен контракта службы hello содержит схему именования, которая содержит сведения о версии. Включая сведения о версии в пространство имен контракта службы hello включает службы tooisolate значительные изменения, определяя новый контракт службы с новым пространством имен и предоставляя его в новую конечную точку. Таким образом клиенты можно продолжить без необходимости обновить toobe toouse hello старый контракт службы. Сведения о версии могут включать дату и номер сборки. Дополнительные сведения см. в статье [Управление версиями службы](http://go.microsoft.com/fwlink/?LinkID=180498). Для целей этого учебника hello схему пространства имен контракта службы hello именования hello не содержит сведений о версии.
    >
    >
-8. В интерфейсе `IEchoContract` объявите метод для отдельной операции, которую контракт `IEchoContract` предоставляет в интерфейсе. Затем примените атрибут `OperationContractAttribute` к методу, который требуется предоставить как часть общедоступного контракта ретранслятора WCF, следующим образом:
+8. В рамках hello `IEchoContract` интерфейсом, объявите метод для отдельной операции hello hello `IEchoContract` предоставляет контракт в hello интерфейс и применение hello `OperationContractAttribute` метод toohello атрибут, который вы хотите tooexpose как часть hello открытые ретрансляции WCF контракт, как показано ниже:
 
     ```csharp
     [OperationContract]
     string Echo(string text);
     ```
-9. Сразу после определения интерфейса `IEchoContract` объявите канал, наследующий от интерфейсов `IEchoContract` и `IClientChannel`, как показано здесь:
+9. Непосредственно после hello `IEchoContract` определение интерфейса, объявите канал, который наследует от обоих `IEchoContract` и также toohello `IClientChannel` интерфейс, как показано ниже:
 
     ```csharp
     public interface IEchoChannel : IEchoContract, IClientChannel { }
     ```
 
-    Канал представляет собой объект WCF, посредством которого служба и клиент обмениваются информацией. Далее мы напишем код канала для обмена данными между двумя приложениями.
-10. В меню **Сборка** выберите **Собрать решение** или нажмите сочетание клавиш **CTRL+SHIFT+B**, чтобы проверить правильность выполнения действий.
+    Канал представляет hello объекта WCF, через который hello служба и клиент обмениваются tooeach сведения о других. Более поздней версии вы напишете код для hello сведения tooecho канал между двумя приложениями hello.
+10. Из hello **построения** меню, нажмите кнопку **построить решение** или нажмите клавишу **Ctrl + Shift + B** tooconfirm hello правильность выполненной работы до сих.
 
 ### <a name="example"></a>Пример
 
-Ниже приведен код базового интерфейса, определяющего контракт ретранслятора WCF.
+Hello после кода показан базовый интерфейс, определяющий контракт ретрансляции WCF.
 
 ```csharp
 using System;
@@ -126,13 +126,13 @@ namespace Microsoft.ServiceBus.Samples
 }
 ```
 
-Теперь, когда интерфейс создан, можно его реализовать.
+Теперь, когда hello интерфейс создан, можно реализовать интерфейс hello.
 
-## <a name="implement-the-wcf-contract"></a>Реализация контракта WCF
+## <a name="implement-hello-wcf-contract"></a>Реализация контракта WCF hello
 
-Прежде чем создавать ретранслятор Azure, необходимо создать контракт, который определяется с помощью интерфейса. Сведения о создании интерфейса см. в описании предыдущего шага. Следующим шагом является реализация интерфейса. Она предполагает создание класса с именем `EchoService`, который реализует пользовательский интерфейс `IEchoContract`. После реализации интерфейса необходимо настроить его с помощью файла конфигурации App.config. Файл конфигурации содержит сведения, необходимые для приложения, такие как имя службы, имя контракта и тип протокола, используемого для взаимодействия с службой ретрансляции. Код для выполнения этих задач приведен в примере после описания последовательности выполнения действий. Общие сведения о реализации контракта службы см. в статье [Реализация контрактов служб](https://msdn.microsoft.com/library/ms733764.aspx) в документации WCF.
+Создание ретрансляции Azure требуется сначала создать контракт hello, который определен с помощью интерфейса. Дополнительные сведения о создании интерфейса hello см. предыдущий шаг hello. Hello следующим шагом является интерфейс tooimplement hello. Это предполагает создание класса с именем `EchoService` , реализующий hello определяемых пользователем `IEchoContract` интерфейса. После реализации интерфейса hello, необходимо настроить интерфейс hello, с помощью файла конфигурации App.config. Hello файл конфигурации содержит сведения, необходимые для приложения hello, например имя службы hello hello, hello hello контракта и тип протокола, используемые toocommunicate со службой ретрансляции hello hello. Hello код для выполнения этих задач приведен в примере hello, после процедуры hello. Более общие сведения о как tooimplement службы контракта, в разделе [реализация контрактов службы](https://msdn.microsoft.com/library/ms733764.aspx) в документации по WCF hello.
 
-1. Создайте новый класс с именем `EchoService` сразу после определения интерфейса `IEchoContract`. Класс `EchoService` реализует интерфейс `IEchoContract`.
+1. Создайте новый класс с именем `EchoService` непосредственно после определения hello hello `IEchoContract` интерфейса. Hello `EchoService` класс реализует hello `IEchoContract` интерфейса.
 
     ```csharp
     class EchoService : IEchoContract
@@ -140,8 +140,8 @@ namespace Microsoft.ServiceBus.Samples
     }
     ```
 
-    Как и в случае с другими реализациями интерфейсов, определение можно реализовать в другом файле. В этом учебнике реализация включается в тот же файл, что и определение интерфейса и метод `Main`.
-2. Примените атрибут [ServiceBehaviorAttribute](https://msdn.microsoft.com/library/system.servicemodel.servicebehaviorattribute.aspx) к интерфейсу `IEchoContract`. Атрибут определяет имя службы и пространство имен. После этого класс `EchoService` будет выглядеть так:
+    Определение hello схожие реализации интерфейса tooother, можно реализовать в другой файл. Однако в этом учебнике реализация hello расположена в тот же файл определения интерфейса hello и hello hello `Main` метод.
+2. Применить hello [ServiceBehaviorAttribute](https://msdn.microsoft.com/library/system.servicemodel.servicebehaviorattribute.aspx) атрибута toohello `IEchoContract` интерфейса. атрибут Hello указывает имя службы hello и пространства имен. После этого hello `EchoService` класс имеет следующий вид:
 
     ```csharp
     [ServiceBehavior(Name = "EchoService", Namespace = "http://samples.microsoft.com/ServiceModel/Relay/")]
@@ -149,7 +149,7 @@ namespace Microsoft.ServiceBus.Samples
     {
     }
     ```
-3. Реализуйте метод `Echo`, определенный в интерфейсе `IEchoContract`, в классе `EchoService`.
+3. Реализуйте hello `Echo` метода, определенного в hello `IEchoContract` интерфейса в hello `EchoService` класса.
 
     ```csharp
     public string Echo(string text)
@@ -158,14 +158,14 @@ namespace Microsoft.ServiceBus.Samples
         return text;
     }
     ```
-4. В меню **Сборка** выберите команду **Собрать решение**, чтобы проверить правильность выполнения действий.
+4. Нажмите кнопку **построения**, нажмите кнопку **построить решение** tooconfirm hello точности своей работы.
 
-### <a name="define-the-configuration-for-the-service-host"></a>Определение конфигурации узла службы
+### <a name="define-hello-configuration-for-hello-service-host"></a>Определение конфигурации hello для узла службы hello
 
-1. Файл конфигурации аналогичен файлу конфигурации WCF. Он содержит имя службы, конечную точку (то есть расположение, которое ретранслятор Azure предоставляет клиентам и узлам для взаимодействия) и привязку (тип протокола, используемый для связи). Основное отличие заключается в том, что настроенная конечная точка службы ссылается на привязку [NetTcpRelayBinding](/dotnet/api/microsoft.servicebus.nettcprelaybinding), которая не является частью платформы .NET Framework. [NetTcpRelayBinding](/dotnet/api/microsoft.servicebus.nettcprelaybinding) — это одна из привязок, определяемых службой.
-2. В **обозревателе решений** дважды щелкните файл App.config, чтобы открыть его в редакторе Visual Studio.
-3. В элементе `<appSettings>` замените местозаполнители именем пространства имен службы и ключом SAS, скопированным на предыдущем шаге.
-4. Добавьте элемент `<services>` внутри тегов `<system.serviceModel>`. В отдельном файле конфигурации можно определить несколько приложений ретранслятора. Однако в данном учебнике определяется только одно приложение.
+1. файл конфигурации Hello — очень похожих файлов конфигурации WCF tooa. Он включает имя службы hello, конечной точки (расположение hello, ретрансляции Azure предоставляет клиентам и узлам toocommunicate друг с другом) и hello привязку (тип протокола, используемые toocommunicate hello). Hello основное отличие состоит в том, что эта конечная точка службы, настроенные ссылается tooa [NetTcpRelayBinding](/dotnet/api/microsoft.servicebus.nettcprelaybinding) привязки, который не является частью .NET Framework hello. [NetTcpRelayBinding](/dotnet/api/microsoft.servicebus.nettcprelaybinding) одна из привязок hello определены службой hello.
+2. В **обозревателе решений**, tooopen файл App.config hello дважды щелкните его в редакторе Visual Studio hello.
+3. В hello `<appSettings>` элемента, замените заполнители hello hello имя пространства имен службы и hello ключ SAS, скопированный на предыдущем шаге.
+4. В рамках hello `<system.serviceModel>` добавление тегов, `<services>` элемент. В отдельном файле конфигурации можно определить несколько приложений ретранслятора. Однако в данном учебнике определяется только одно приложение.
 
     ```xml
     <?xmlversion="1.0"encoding="utf-8"?>
@@ -177,24 +177,24 @@ namespace Microsoft.ServiceBus.Samples
       </system.serviceModel>
     </configuration>
     ```
-5. Добавьте элемент `<service>` в элемент `<services>` для определения имени службы.
+5. В рамках hello `<services>` элемента, добавьте `<service>` элемент toodefine hello имя службы hello.
 
     ```xml
     <service name="Microsoft.ServiceBus.Samples.EchoService">
     </service>
     ```
-6. Внутри элемента `<service>` определите расположение контракта конечной точки, а также тип привязки для нее.
+6. В рамках hello `<service>` элемента, определение расположения hello hello контракта конечной точки, а также hello тип привязки для конечной точки hello.
 
     ```xml
     <endpoint contract="Microsoft.ServiceBus.Samples.IEchoContract" binding="netTcpRelayBinding"/>
     ```
 
-    Конечная точка определяет расположение, в котором клиент будет искать хост-приложение. Результаты этого шага потребуются позднее для создания универсального кода ресурса (URI), который предоставляет полный доступ к узлу через ретранслятор Azure. Привязка объявляет, что для обмена данными со службой ретрансляции используется протокол TCP.
-7. В меню **Сборка** выберите команду **Собрать решение**, чтобы проверить правильность выполнения действий.
+    Hello конечная точка определяет, где hello клиент будет искать ведущее приложение hello. Позже hello учебнике этот шаг toocreate URI, который полностью предоставляет узел hello посредством Azure ретрансляции. Привязка Hello указывает, что мы используем TCP как hello протокола toocommunicate со службой ретрансляции hello.
+7. Из hello **построения** меню, нажмите кнопку **построить решение** tooconfirm hello точности своей работы.
 
 ### <a name="example"></a>Пример
 
-Следующий код показывает реализацию контракта службы.
+Hello следующем примере кода показана реализация hello hello контракт службы.
 
 ```csharp
 [ServiceBehavior(Name = "EchoService", Namespace = "http://samples.microsoft.com/ServiceModel/Relay/")]
@@ -209,7 +209,7 @@ namespace Microsoft.ServiceBus.Samples
     }
 ```
 
-Следующий код показывает базовый формат файла App.config, связанного с хостом службы.
+Hello следующий код показывает hello стандартный формат файла App.config hello, связанный с узлом службы hello.
 
 ```xml
 <?xml version="1.0" encoding="utf-8" ?>
@@ -230,13 +230,13 @@ namespace Microsoft.ServiceBus.Samples
 </configuration>
 ```
 
-## <a name="host-and-run-a-basic-web-service-to-register-with-the-relay-service"></a>Размещение и запуск базовой веб-службы для регистрации в службе ретрансляции
+## <a name="host-and-run-a-basic-web-service-tooregister-with-hello-relay-service"></a>Размещение и запуск tooregister простой службы со службой ретрансляции hello
 
-В этом разделе описывается запуск службы ретрансляции Azure.
+В этом разделе описывается, как toorun Azure ретрансляции службы.
 
-### <a name="create-the-relay-credentials"></a>Создание учетных данных ретранслятора
+### <a name="create-hello-relay-credentials"></a>Создать учетные данные для ретрансляции hello
 
-1. Создайте в `Main()` две переменные для хранения пространства имен и ключа SAS, которые считываются из окна консоли.
+1. В `Main()`, создайте две переменные в пространстве имен hello какие toostore и ключ SAS, считываемых из окна консоли hello hello.
 
     ```csharp
     Console.Write("Your Service Namespace: ");
@@ -245,56 +245,56 @@ namespace Microsoft.ServiceBus.Samples
     string sasKey = Console.ReadLine();
     ```
 
-    Ключ SAS потребуется позже для доступа к проекту. Пространство имен передается в качестве параметра в `CreateServiceUri` для создания универсального кода ресурса (URI) службы.
-2. Используя объект [TransportClientEndpointBehavior](/dotnet/api/microsoft.servicebus.transportclientendpointbehavior), объявите, что в качестве учетных данных будет использоваться ключ SAS. Добавьте следующий код сразу после кода, добавленного на предыдущем шаге:
+    ключ SAS Hello будет tooaccess используется более поздней версии проекта. пространство имен Hello передается как параметр слишком`CreateServiceUri` toocreate URI службы.
+2. С помощью [TransportClientEndpointBehavior](/dotnet/api/microsoft.servicebus.transportclientendpointbehavior) объекта, объявите, что вы будете использовать ключ SAS как hello тип учетных данных. Добавьте следующий код непосредственно после hello код, добавленный в последнем шаге hello hello.
 
     ```csharp
     TransportClientEndpointBehavior sasCredential = new TransportClientEndpointBehavior();
     sasCredential.TokenProvider = TokenProvider.CreateSharedAccessSignatureTokenProvider("RootManageSharedAccessKey", sasKey);
     ```
 
-### <a name="create-a-base-address-for-the-service"></a>Создание базового адреса для службы
+### <a name="create-a-base-address-for-hello-service"></a>Создайте базовый адрес службы hello
 
-Создайте экземпляр `Uri` для базового адреса службы после кода, добавленного на предыдущем шаге. Этот универсальный код ресурса (URI) указывает схему, пространство имен и путь к интерфейсу службы служебной шины.
+После кода hello, добавленный в последнем шаге hello, создайте `Uri` экземпляр hello базового адреса службы hello. Этот URI указывает схему Service Bus hello, пространство имен hello и hello путь интерфейса службы hello.
 
 ```csharp
 Uri address = ServiceBusEnvironment.CreateServiceUri("sb", serviceNamespace, "EchoService");
 ```
 
-SB — это сокращение, используемое для схемы служебной шины; оно указывает, что используется протокол TCP. Этот протокол также задан в файле конфигурации с помощью привязки [NetTcpRelayBinding](https://msdn.microsoft.com/library/microsoft.servicebus.nettcprelaybinding.aspx).
+«sb»-это сокращение для схемы Service Bus hello и указывает, что мы используем hello протокол TCP. Это также ранее определено в файле конфигурации hello, когда [NetTcpRelayBinding](https://msdn.microsoft.com/library/microsoft.servicebus.nettcprelaybinding.aspx) был указан как hello привязки.
 
-В этом учебнике используется универсальный код ресурса (URI) `sb://putServiceNamespaceHere.windows.net/EchoService`.
+В этом учебнике hello URI является `sb://putServiceNamespaceHere.windows.net/EchoService`.
 
-### <a name="create-and-configure-the-service-host"></a>Создание и настройка узла службы
+### <a name="create-and-configure-hello-service-host"></a>Создание и настройка узла службы hello
 
-1. Установите режим подключения `AutoDetect`.
+1. Установить режим подключения hello слишком`AutoDetect`.
 
     ```csharp
     ServiceBusEnvironment.SystemConnectivity.Mode = ConnectivityMode.AutoDetect;
     ```
 
-    Режим подключения описывает протокол, используемый службой для связи со службой ретрансляции (HTTP или TCP). Если используется значение по умолчанию (`AutoDetect`), то служба пытается подключиться к ретранслятору Azure по протоколу TCP, если он доступен, и по протоколу HTTP, если TCP недоступен. Обратите внимание, что этот параметр не влияет на протокол, который задается в службе для обмена данными с клиентами. Этот протокол определяется используемой привязкой. Например, служба может использовать привязку [BasicHttpRelayBinding](https://msdn.microsoft.com/library/microsoft.servicebus.basichttprelaybinding.aspx), которая указывает, что ее конечная точка связывается с клиентами по протоколу HTTP. Для той же службы можно задать привязку **ConnectivityMode.AutoDetect**, чтобы обмен данными с ретранслятором Azure осуществлялся по протоколу TCP.
-2. Создайте хост службы с помощью универсального кода ресурса (URI), созданного на предыдущем шаге.
+    режим подключения Hello описывает hello протокола hello использует toocommunicate со службой ретрансляции hello; HTTP или TCP. Использование параметра по умолчанию hello `AutoDetect`, hello служба пытается tooconnect tooAzure ретрансляции через TCP, если он доступен и HTTP, если TCP недоступен. Обратите внимание, что это отличается от службы hello протокола hello указывает для связи с клиентами. Этот протокол определяется hello привязку, используемую. Например, служба может использовать hello [BasicHttpRelayBinding](https://msdn.microsoft.com/library/microsoft.servicebus.basichttprelaybinding.aspx) привязки, который указывает, что ее конечная точка связывается с клиентами по протоколу HTTP. Что же службе может указать **ConnectivityMode.AutoDetect** , чтобы служба hello взаимодействует с Azure ретрансляции по протоколу TCP.
+2. Создайте узел службы hello, используя приветствия URI созданного ранее в этом разделе.
 
     ```csharp
     ServiceHost host = new ServiceHost(typeof(EchoService), address);
     ```
 
-    Хост службы представляет собой объект WCF, который создает экземпляры службы. На этом шаге нужно передать тип службы, который требуется создать (тип `EchoService`), и адрес, по которому служба должна быть доступна.
-3. В начале файла Program.cs добавьте ссылки на [System.ServiceModel.Description](https://msdn.microsoft.com/library/system.servicemodel.description.aspx) и [Microsoft.ServiceBus.Description](/dotnet/api/microsoft.servicebus.description).
+    узел службы Hello: hello объекта WCF, создающий экземпляр службы hello. Здесь можно передать его тип hello службы требуется toocreate ( `EchoService` типа) и также toohello адрес, по которому требуется служба tooexpose hello.
+3. Вверху hello hello файла Program.cs добавьте ссылки на слишком[System.ServiceModel.Description](https://msdn.microsoft.com/library/system.servicemodel.description.aspx) и [Microsoft.ServiceBus.Description](/dotnet/api/microsoft.servicebus.description).
 
     ```csharp
     using System.ServiceModel.Description;
     using Microsoft.ServiceBus.Description;
     ```
-4. Включите в `Main()` общий доступ к конечной точке.
+4. В `Main()`, настройте hello конечной точки tooenable общего доступа.
 
     ```csharp
     IEndpointBehavior serviceRegistrySettings = new ServiceRegistrySettings(DiscoveryType.Public);
     ```
 
-    Этот шаг информирует службу ретрансляции о том, что ваше приложение общедоступно и может быть обнаружено в результате изучения веб-канала ATOM для вашего проекта. Если для **DiscoveryType** задано значение **private**, клиент все равно может получить доступ к службе. Однако она не будет отображаться в результатах поиска в пространстве имен ретранслятора. Клиенту потребуется знать путь к конечной точке.
-5. Примените учетные данные службы к конечным точкам службы, определенным в файле App.config.
+    Это действие позволяет сообщить hello служба ретрансляции, что приложения могут быть найдены публично изучив hello веб-канал ATOM для проекта. Если задать **DiscoveryType** слишком**закрытый**, клиент по-прежнему будет службы может tooaccess hello. Тем не менее служба hello не будет отображаться, когда он выполняет поиск пространства имен ретрансляции hello. Вместо этого клиент hello будет иметь путь конечной точки tooknow hello заранее.
+5. Применить toohello конечные точки, определенные в файле App.config hello, учетные данные службы hello:
 
     ```csharp
     foreach (ServiceEndpoint endpoint in host.Description.Endpoints)
@@ -304,32 +304,32 @@ SB — это сокращение, используемое для схемы 
     }
     ```
 
-    Как говорилось на предыдущем шаге, в файле конфигурации можно определить несколько служб и конечных точек. Если вы это сделали, код пройдет по всему файлу конфигурации и найдет все конечные точки, к которым следует применить учетные данные. В этом учебнике в файле конфигурации задана только одна конечная точка.
+    Как уже говорилось в предыдущем шаге hello, удалось объявлен несколько служб и конечных точек в файле конфигурации hello. Если у вас есть, передается этот код в файле конфигурации hello и поиска для каждой конечной точки toowhich его следует применять свои учетные данные. Однако в этом учебнике hello файл конфигурации имеет только одну конечную точку.
 
-### <a name="open-the-service-host"></a>Открытие узла службы
+### <a name="open-hello-service-host"></a>Привет открыть узел службы
 
-1. Откройте службу.
+1. Откройте службу hello.
 
     ```csharp
     host.Open();
     ```
-2. Сообщите пользователю о том, что служба работает, и объясните, как ее отключить.
+2. Уведомить пользователя hello, hello служба запущена и объясняется, как tooshut работу службы hello.
 
     ```csharp
     Console.WriteLine("Service address: " + address);
-    Console.WriteLine("Press [Enter] to exit");
+    Console.WriteLine("Press [Enter] tooexit");
     Console.ReadLine();
     ```
-3. После завершения закройте узел службы.
+3. После завершения закройте узел службы hello.
 
     ```csharp
     host.Close();
     ```
-4. Скомпилируйте проект, нажав клавиши **CTRL+SHIFT+B**.
+4. Нажмите клавишу **Ctrl + Shift + B** toobuild hello проекта.
 
 ### <a name="example"></a>Пример
 
-Готовый код службы должен выглядеть так, как показано ниже. Он включает в себя контракт и реализацию службы, созданные в предыдущих шагах учебника. Служба размещается в консольном приложении.
+Готовый код службы должен выглядеть так, как показано ниже. Код Hello включает hello контракт и реализацию службы из предыдущих шагов в учебнике hello и узлы hello службы в консольном приложении.
 
 ```csharp
 using System;
@@ -371,61 +371,61 @@ namespace Microsoft.ServiceBus.Samples
             Console.Write("Your SAS key: ");
             string sasKey = Console.ReadLine();
 
-           // Create the credentials object for the endpoint.
+           // Create hello credentials object for hello endpoint.
             TransportClientEndpointBehavior sasCredential = new TransportClientEndpointBehavior();
             sasCredential.TokenProvider = TokenProvider.CreateSharedAccessSignatureTokenProvider("RootManageSharedAccessKey", sasKey);
 
-            // Create the service URI based on the service namespace.
+            // Create hello service URI based on hello service namespace.
             Uri address = ServiceBusEnvironment.CreateServiceUri("sb", serviceNamespace, "EchoService");
 
-            // Create the service host reading the configuration.
+            // Create hello service host reading hello configuration.
             ServiceHost host = new ServiceHost(typeof(EchoService), address);
 
-            // Create the ServiceRegistrySettings behavior for the endpoint.
+            // Create hello ServiceRegistrySettings behavior for hello endpoint.
             IEndpointBehavior serviceRegistrySettings = new ServiceRegistrySettings(DiscoveryType.Public);
 
-            // Add the Relay credentials to all endpoints specified in configuration.
+            // Add hello Relay credentials tooall endpoints specified in configuration.
             foreach (ServiceEndpoint endpoint in host.Description.Endpoints)
             {
                 endpoint.Behaviors.Add(serviceRegistrySettings);
                 endpoint.Behaviors.Add(sasCredential);
             }
 
-            // Open the service.
+            // Open hello service.
             host.Open();
 
             Console.WriteLine("Service address: " + address);
-            Console.WriteLine("Press [Enter] to exit");
+            Console.WriteLine("Press [Enter] tooexit");
             Console.ReadLine();
 
-            // Close the service.
+            // Close hello service.
             host.Close();
         }
     }
 }
 ```
 
-## <a name="create-a-wcf-client-for-the-service-contract"></a>Создание клиента WCF для контракта службы
+## <a name="create-a-wcf-client-for-hello-service-contract"></a>Создание клиента WCF для контракта службы hello
 
-На этом шаге вы создадите клиентское приложение и определите контракт службы, который будет реализован на следующих шагах. Обратите внимание, что многие шаги повторяют действия по созданию службы: определение контракта, изменение файла App.config, использование учетных данных для подключения к службе ретрансляции и т. д. Код для выполнения этих задач приведен в примере после описания последовательности выполнения действий.
+Следующий шаг Hello toocreate клиентское приложение и определить hello контракт службы, которая будет создана на последующих этапах. Обратите внимание, что многие из этих шагов похожие шаги hello использовать toocreate службы: определение контракта, изменение App.config текстовый файл, с помощью службы ретранслятора toohello tooconnect учетные данные и т. д. Hello код для выполнения этих задач приведен в примере hello, после процедуры hello.
 
-1. Создайте в текущем решении Visual Studio новый проект для клиента. Для этого выполните следующие действия.
+1. Создайте новый проект в текущем решении Visual Studio hello для hello клиента, выполнив hello ниже:
 
-   1. В обозревателе решений щелкните правой кнопкой мыши решение (не проект), которое содержит службу, и нажмите кнопку **Добавить**. Выберите **Создать проект**.
-   2. В диалоговом окне **Добавление нового проекта** выберите **Visual C#** (если элемент **Visual C#** не отображается, откройте список **Другие языки**). Выберите шаблон **Консольное приложение (.NET Framework)** и назовите его **EchoClient**.
+   1. В обозревателе решений в решение, содержащее службу hello hello, щелкните правой кнопкой мыши hello текущего решения (не проект hello) и нажмите кнопку **добавить**. Выберите **Создать проект**.
+   2. В hello **Добавление нового проекта** диалоговое окно, нажмите кнопку **Visual C#** (если **Visual C#** не отображается, найдите его в разделе **другие языки**) выберите hello **Консольного приложения (.NET Framework)** шаблона и назовите его **EchoClient**.
    3. Нажмите кнопку **ОК**.
       <br />
-2. В обозревателе решений дважды щелкните файл Program.cs в проекте **EchoClient**, чтобы открыть его в редакторе, если он еще не открыт.
-3. Измените имя пространства имен с `EchoClient` (имя по умолчанию) на `Microsoft.ServiceBus.Samples`.
-4. Установите [пакет NuGet для служебной шины](https://www.nuget.org/packages/WindowsAzure.ServiceBus). В обозревателе решений щелкните правой кнопкой мыши проект **EchoClient** и выберите **Управление пакетами NuGet**. Щелкните вкладку **Обзор** и выполните поиск `Microsoft Azure Service Bus`. Щелкните **Установить**и примите условия использования.
+2. В обозревателе решений дважды щелкните файл Program.cs hello в hello **EchoClient** проекта tooopen, откройте его в редакторе hello, если его еще нет.
+3. Изменить имя пространства имен hello с его имя по умолчанию `EchoClient` слишком`Microsoft.ServiceBus.Samples`.
+4. Установка hello [пакет шины обслуживания NuGet](https://www.nuget.org/packages/WindowsAzure.ServiceBus): в обозревателе решений щелкните правой кнопкой мыши hello **EchoClient** проекта, а затем нажмите кнопку **управление пакетами NuGet**. Нажмите кнопку hello **Обзор** вкладку, а затем поиск `Microsoft Azure Service Bus`. Нажмите кнопку **установить**и примите условия использования hello.
 
     ![][3]
-5. Добавьте в файл Program.cs инструкцию `using` для пространства имен [System.ServiceModel](https://msdn.microsoft.com/library/system.servicemodel.aspx).
+5. Добавить `using` инструкции для hello [System.ServiceModel](https://msdn.microsoft.com/library/system.servicemodel.aspx) пространства имен в файл Program.cs hello.
 
     ```csharp
     using System.ServiceModel;
     ```
-6. Добавьте определение контракта службы в пространство имен, как показано в следующем примере. Обратите внимание, что это определение идентично определению в проекте **Service**. Этот код следует добавить в верхнюю часть пространства имен `Microsoft.ServiceBus.Samples`.
+6. Добавьте hello определения toohello пространства имен контракта службы, как показано в следующий пример hello. Обратите внимание, что это определение идентичные toohello определение, используемое в hello **службы** проекта. Этот код следует добавить вверху hello hello `Microsoft.ServiceBus.Samples` пространства имен.
 
     ```csharp
     [ServiceContract(Name = "IEchoContract", Namespace = "http://samples.microsoft.com/ServiceModel/Relay/")]
@@ -437,11 +437,11 @@ namespace Microsoft.ServiceBus.Samples
 
     public interface IEchoChannel : IEchoContract, IClientChannel { }
     ```
-7. Чтобы построить клиент, нажмите клавиши **CTRL+SHIFT+B**.
+7. Нажмите клавишу **Ctrl + Shift + B** toobuild hello клиента.
 
 ### <a name="example"></a>Пример
 
-В следующем коде показано текущее состояние файла Program.cs в проекте **EchoClient**.
+Hello следующий код показывает текущее состояние файла Program.cs hello hello в hello **EchoClient** проекта.
 
 ```csharp
 using System;
@@ -470,13 +470,13 @@ namespace Microsoft.ServiceBus.Samples
 }
 ```
 
-## <a name="configure-the-wcf-client"></a>Настройка клиента WCF
+## <a name="configure-hello-wcf-client"></a>Настройка клиента WCF hello
 
-На этом шаге вы создадите файл конфигурации App.config для базового клиентского приложения, которое обращается к службе, созданной ранее в этом учебнике. Файл App.config определяет контракт, привязку и имя конечной точки. Код для выполнения этих задач приведен в примере после описания последовательности выполнения действий.
+На этом шаге создается файл App.config для простом клиентском приложении, которое обращается к службе hello, созданной ранее в этом учебнике. Этот файл App.config определяет hello контракта, привязки и имя конечной точки hello. Hello код для выполнения этих задач приведен в примере hello, после процедуры hello.
 
-1. В обозревателе решений в проекте **EchoClient** дважды щелкните **App.config**, чтобы открыть файл в редакторе Visual Studio.
-2. В элементе `<appSettings>` замените местозаполнители именем пространства имен службы и ключом SAS, скопированным на предыдущем шаге.
-3. Добавьте элемент `<client>` в элемент system.serviceModel.
+1. В обозревателе решений в hello **EchoClient** проекта, дважды щелкните **App.config** tooopen hello файл в редакторе Visual Studio hello.
+2. В hello `<appSettings>` элемента, замените заполнители hello hello имя пространства имен службы и hello ключ SAS, скопированный на предыдущем шаге.
+3. В элементе управления system.serviceModel hello, добавьте `<client>` элемента.
 
     ```xml
     <?xmlversion="1.0"encoding="utf-8"?>
@@ -489,7 +489,7 @@ namespace Microsoft.ServiceBus.Samples
     ```
 
     На этом шаге вы объявляете, что определяете клиентское приложение WCF.
-4. Определите имя, контракт и тип привязки для конечной точки в элементе `client`.
+4. В рамках hello `client` элемент, определите hello имя контракта и тип привязки для конечной точки hello.
 
     ```xml
     <endpoint name="RelayEndpoint"
@@ -497,12 +497,12 @@ namespace Microsoft.ServiceBus.Samples
                     binding="netTcpRelayBinding"/>
     ```
 
-    Это действие определяет имя конечной точки, контракт, определенный в службе, а также использование клиентским приложением протокола TCP для взаимодействия с ретранслятором Azure. На следующем шаге имя конечной точки используется для связывания ее конфигурации с универсальным кодом ресурса (URI) службы.
+    Этот шаг определяет имя hello hello конечной точки, hello контракт, определенный в службу hello и hello факт, что hello клиентское приложение использует TCP toocommunicate с Azure ретрансляции. Hello имя конечной точки используется в hello следующий шаг toolink конфигурацию конечной точки URI службы hello.
 5. В меню **Файл** выберите **Сохранить все**.
 
 ## <a name="example"></a>Пример
 
-В следующем коде показан файл App.config для клиента Echo.
+Hello код отображает hello файл App.config для клиента Echo hello.
 
 ```xml
 <?xml version="1.0" encoding="utf-8" ?>
@@ -523,26 +523,26 @@ namespace Microsoft.ServiceBus.Samples
 </configuration>
 ```
 
-## <a name="implement-the-wcf-client"></a>Реализация клиента WCF
-На этом шаге вы реализуете базовое клиентское приложение, которое обращается к службе, которую вы создали ранее в этом учебнике. Для доступа к ретранслятору Azure клиент выполняет многие операции, аналогичные операциям, выполняемым службой:
+## <a name="implement-hello-wcf-client"></a>Реализуйте клиент WCF hello
+На этом шаге вы реализовать простом клиентском приложении, которое обращается к службе hello, созданный ранее в этом учебнике. Аналогичную службу toohello hello клиент выполняет множество таких hello же операции tooaccess ретрансляции Azure:
 
-1. Задает режим подключения.
-2. Создает универсальный код ресурса (URI) расположения хоста службы.
-3. Определяет учетные данные для безопасного доступа.
-4. Применяет учетные данные к подключению.
-5. Открывает подключение.
-6. Выполняет специфические задачи приложения.
-7. Закрывает подключение.
+1. Задает режим подключения hello.
+2. Создает URI расположения узла службы hello hello.
+3. Определяет учетные данные безопасности hello.
+4. Применяет подключение toohello hello учетные данные.
+5. Открывает соединение hello.
+6. Выполняет задачи, связанные с приложение hello.
+7. Закрывает соединение hello.
 
-Однако одно из основных различий заключается в том, что клиентское приложение использует для подключения к службе ретрансляции канал, а служба — вызов **ServiceHost**. Код для выполнения этих задач приведен в примере после описания последовательности выполнения действий.
+Одно из основных различий hello то, что hello клиентское приложение использует службу ретрансляции toohello tooconnect канала, в то время как hello служба использует вызов слишком**ServiceHost**. Hello код для выполнения этих задач приведен в примере hello, после процедуры hello.
 
 ### <a name="implement-a-client-application"></a>Реализация клиентского приложения
-1. Установите режим подключения **AutoDetect**. Добавьте следующий код в метод `Main()` приложения **EchoClient**.
+1. Установить режим подключения hello слишком**Автообнаружение**. Добавьте следующий код внутри hello hello `Main()` метод hello **EchoClient** приложения.
 
     ```csharp
     ServiceBusEnvironment.SystemConnectivity.Mode = ConnectivityMode.AutoDetect;
     ```
-2. Определите переменные для хранения значений пространства имен службы и ключа SAS, которые считываются из консоли.
+2. Определите переменные toohold hello значения для пространства имен службы hello и ключ SAS, считываемых с консоли hello.
 
     ```csharp
     Console.Write("Your Service Namespace: ");
@@ -550,39 +550,39 @@ namespace Microsoft.ServiceBus.Samples
     Console.Write("Your SAS Key: ");
     string sasKey = Console.ReadLine();
     ```
-3. Создайте универсальный код ресурса (URI), определяющий расположение узла в проекте ретранслятора.
+3. Создайте hello URI, определяющий расположение узла hello hello в проекте ретрансляции.
 
     ```csharp
     Uri serviceUri = ServiceBusEnvironment.CreateServiceUri("sb", serviceNamespace, "EchoService");
     ```
-4. Создайте объект учетных данных для конечной точки пространства имен службы.
+4. Создайте hello объекта учетных данных для конечной точки пространства имен службы.
 
     ```csharp
     TransportClientEndpointBehavior sasCredential = new TransportClientEndpointBehavior();
     sasCredential.TokenProvider = TokenProvider.CreateSharedAccessSignatureTokenProvider("RootManageSharedAccessKey", sasKey);
     ```
-5. Создайте фабрику каналов, загружающую конфигурацию, описанную в файле App.config.
+5. Создайте фабрику каналов hello, загружает конфигурацию hello, описанных в файле App.config hello.
 
     ```csharp
     ChannelFactory<IEchoChannel> channelFactory = new ChannelFactory<IEchoChannel>("RelayEndpoint", new EndpointAddress(serviceUri));
     ```
 
-    Фабрика каналов — это объект WCF, который создает канал взаимодействия между службой и клиентскими приложениями.
-6. Примените учетные данные.
+    Фабрику каналов является объектом WCF, который создает канал, через который взаимодействия служб и клиентских приложений hello.
+6. Примените учетные данные hello.
 
     ```csharp
     channelFactory.Endpoint.Behaviors.Add(sasCredential);
     ```
-7. Создайте и откройте канал к службе.
+7. Создайте и откройте hello канала toohello службы.
 
     ```csharp
     IEchoChannel channel = channelFactory.CreateChannel();
     channel.Open();
     ```
-8. Напишите простой пользовательский интерфейс и функциональность для Echo.
+8. Запись hello основной пользовательский интерфейс и функциональные возможности для hello echo.
 
     ```csharp
-    Console.WriteLine("Enter text to echo (or [Enter] to exit):");
+    Console.WriteLine("Enter text tooecho (or [Enter] tooexit):");
     string input = Console.ReadLine();
     while (input != String.Empty)
     {
@@ -598,8 +598,8 @@ namespace Microsoft.ServiceBus.Samples
     }
     ```
 
-    Обратите внимание, что в качестве прокси для службы в этом коде используется экземпляр объекта канала.
-9. Закройте канал и фабрику.
+    Обратите внимание, что hello код использует экземпляр hello hello объекта канала как прокси для службы hello.
+9. Закройте канал hello и закрыть hello фабрики.
 
     ```csharp
     channel.Close();
@@ -608,7 +608,7 @@ namespace Microsoft.ServiceBus.Samples
 
 ## <a name="example"></a>Пример
 
-Готовый код должен выглядеть так, как показано ниже. В нем создается клиентское приложение, вызываются операции службы и клиент закрывается после завершения вызова операции.
+Отображается как toocreate клиентского приложения, как toocall hello операции службы hello и как tooclose hello клиента после операции hello вызвать завершения завершенного код должен выглядеть следующим образом.
 
 ```csharp
 using System;
@@ -652,7 +652,7 @@ namespace Microsoft.ServiceBus.Samples
             IEchoChannel channel = channelFactory.CreateChannel();
             channel.Open();
 
-            Console.WriteLine("Enter text to echo (or [Enter] to exit):");
+            Console.WriteLine("Enter text tooecho (or [Enter] tooexit):");
             string input = Console.ReadLine();
             while (input != String.Empty)
             {
@@ -675,52 +675,52 @@ namespace Microsoft.ServiceBus.Samples
 }
 ```
 
-## <a name="run-the-applications"></a>Запуск приложений
+## <a name="run-hello-applications"></a>Запускать приложения hello
 
-1. Чтобы построить решение, нажмите клавиши **CTRL+SHIFT+B**. Будут скомпилированы клиентский проект и проект службы, созданный на предыдущих этапах.
-2. Прежде чем запустить клиентское приложение, убедитесь, что приложение службы работает. В Visual Studio в обозревателе решений щелкните правой кнопкой мыши решение **EchoService** и выберите пункт **Свойства**.
-3. В диалоговом окне свойств решения выберите **Запускаемый проект** и нажмите кнопку **Несколько запускаемых проектов**. Убедитесь, что проект **EchoService** отображается первым в списке.
-4. В поле **Действие** для проектов **EchoService** и **EchoClient** выберите значение **Запуск**.
+1. Нажмите клавишу **Ctrl + Shift + B** toobuild hello решения. При этом строится hello клиентский проект и проект службы hello, созданный на предыдущих этапах hello.
+2. Перед запущенному hello клиентскому приложению необходимо убедитесь, что приложение hello-служба запущена. В обозревателе решений в Visual Studio, щелкните правой кнопкой мыши hello **EchoService** решение, нажмите кнопку **свойства**.
+3. В диалоговое окно «Свойства» для hello решение, нажмите кнопку **запускаемый проект**, нажмите кнопку hello **несколько запускаемых проектов** кнопки. Убедитесь, что **EchoService** отображается первым в списке hello.
+4. Набор hello **действия** поле для обоих hello **EchoService** и **EchoClient** проекты слишком**запустить**.
 
     ![][5]
-5. Щелкните **Зависимости проектов**. В поле **Проекты** выберите **EchoClient**. Убедитесь, что в поле **Зависит от** указано значение **EchoService**.
+5. Щелкните **Зависимости проектов**. В hello **проекты** выберите **EchoClient**. В hello **зависит от** убедитесь, что **EchoService** проверяется.
 
     ![][6]
-6. Нажмите кнопку **ОК**, чтобы закрыть диалоговое окно **Свойства**.
-7. Нажмите клавишу **F5**, чтобы запустить оба проекта.
-8. Откроются два окна консоли с предложением указать пространство имен. Сначала нужно запустить службу, поэтому в окне консоли **EchoService** введите пространство имен и нажмите клавишу **ВВОД**.
-9. Далее появится запрос на ввод ключа SAS. Введите ключ SAS и нажмите клавишу ВВОД.
+6. Нажмите кнопку **ОК** toodismiss hello **свойства** диалогового окна.
+7. Нажмите клавишу **F5** toorun обоих проектов.
+8. В обоих окнах консоли откройте и указать имя пространства имен hello. Hello служба должна запускаться сначала, поэтому в hello **EchoService** окна консоли введите пространство имен hello и нажмите клавишу **ввод**.
+9. Далее появится запрос на ввод ключа SAS. Введите ключ SAS hello и нажмите клавишу ВВОД.
 
-    В окне консоли вы увидите примерно следующее. Обратите внимание, что здесь приведены лишь примеры возможных значений.
+    Ниже приведен пример выходных данных из окна консоли hello. Обратите внимание, что значения hello приведены здесь пример исключительно в целях.
 
     `Your Service Namespace: myNamespace` `Your SAS Key: <SAS key value>`
 
-    Приложение службы выведет в окне консоли адрес, который оно прослушивает (см. следующий пример).
+    приложение службы Hello печатает toohello окна консоли hello адрес, который он прослушивает, как видно в следующий пример hello.
 
-    `Service address: sb://mynamespace.servicebus.windows.net/EchoService/` `Press [Enter] to exit`
-10. В окне консоли **EchoClient** введите данные, которые использовались для приложения службы. Выполните приведенные выше инструкции, чтобы ввести те же значения пространства имен службы и ключа SAS для клиентского приложения.
-11. После ввода значений клиент открывает канал к службе и предлагает ввести некоторый текст, как показано в следующем примере.
+    `Service address: sb://mynamespace.servicebus.windows.net/EchoService/` `Press [Enter] tooexit`
+10. В hello **EchoClient** окно консоли, введите hello же сведения, введенные ранее для приложения службы hello. Выполните hello предыдущего действия tooenter hello одинаковое пространство имен службы и SAS ключевые значения для клиентского приложения hello.
+11. После ввода значений, клиент hello открывает канал toohello службы и предлагает вам tooenter текст, как показано в следующий пример выходных данных консоли hello.
 
-    `Enter text to echo (or [Enter] to exit):`
+    `Enter text tooecho (or [Enter] tooexit):`
 
-    Введите текст для отправки в приложение службы и нажмите клавишу ВВОД. Этот текст отправляется службе посредством операции службы Echo и отображается в окне консоли службы, как показано ниже.
+    Введите некоторые приложения службы toohello toosend текст и нажмите клавишу ВВОД. Этот текст отправляется службе toohello через hello эхо-повтор операции службы, отображается в окне консоли службы hello как hello следующий пример выходных данных.
 
     `Echoing: My sample text`
 
-    Результат операции `Echo` (исходный текст) возвращается в клиентское приложение и отображается в окне консоли. Вы увидите примерно следующее.
+    клиентское приложение Hello получает возвращаемое значение hello hello `Echo` операцию, которая является исходный текст hello и печатает его в окно консоли tooits. Hello ниже приведен пример выходных данных в окне консоли клиента hello.
 
     `Server echoed: My sample text`
-12. Вы можете отправить еще несколько текстовых сообщений от клиента к службе. Закончив, нажмите клавишу ВВОД в окнах консоли клиента и службы, чтобы завершить работу приложений.
+12. Можно продолжить отправлять текстовые сообщения от службы toohello hello клиента таким образом. Когда закончите, нажмите клавишу ВВОД в hello клиента и службы консоли windows tooend обоих приложений.
 
 ## <a name="next-steps"></a>Дальнейшие действия
 
-В этом учебнике мы рассмотрели создание клиентского приложения ретранслятора Azure и службы ретрансляции Azure с использованием возможностей ретранслятора WCF служебной шины. Аналогичное руководство по [обмену сообщениями в служебной шине](../service-bus-messaging/service-bus-messaging-overview.md#brokered-messaging) представлено в статье [Начало работы с очередями служебной шины](../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md).
+Этого учебника было показано, как toobuild клиентского приложения Azure ретрансляции и службы с помощью hello возможности ретрансляции WCF Service Bus. Аналогичное руководство по [обмену сообщениями в служебной шине](../service-bus-messaging/service-bus-messaging-overview.md#brokered-messaging) представлено в статье [Начало работы с очередями служебной шины](../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md).
 
-Дополнительные сведения о ретрансляторе Azure см. в следующих разделах:
+toolearn Дополнительные сведения о ретрансляции Azure см. следующие разделы hello.
 
 * [Обзор архитектуры служебной шины Azure](../service-bus-messaging/service-bus-fundamentals-hybrid-solutions.md#relays)
 * [Что такое ретранслятор Azure?](relay-what-is-it.md)
-* [Как использовать ретранслятор WCF служебной шины с .NET](relay-wcf-dotnet-get-started.md)
+* [Как службу в .NET Framework посредника toouse hello WCF](relay-wcf-dotnet-get-started.md)
 
 [Azure classic portal]: http://manage.windowsazure.com
 

@@ -1,6 +1,6 @@
 ---
-title: "Создание доступной в Интернете подсистемы балансировки нагрузки с помощью Azure CLI | Документация Майкрософт"
-description: "Узнайте, как создать балансировщик нагрузки для Интернета в диспетчере ресурсов с помощью интерфейса командной строки Azure."
+title: "Подсистема балансировки - нагрузки на aaaCreate из Интернета, Azure CLI | Документы Microsoft"
+description: "Узнайте, как toocreate с выходом подсистемы балансировки нагрузки Интернета с помощью диспетчера ресурсов hello Azure CLI"
 services: load-balancer
 documentationcenter: na
 author: kumudd
@@ -15,13 +15,13 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/23/2017
 ms.author: kumud
-ms.openlocfilehash: 3b1780033cbc8aa3e108a213a4d2bfd0332fd7d7
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: cadb5edb3b4a4e2f0813109d027eaafdc7ef7303
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="creating-an-internet-load-balancer-using-the-azure-cli"></a>Создание балансировщика нагрузки для Интернета с помощью Azure CLI
+# <a name="creating-an-internet-load-balancer-using-hello-azure-cli"></a>Создание Интернет подсистемы балансировки нагрузки, с помощью hello Azure CLI
 
 > [!div class="op_single_selector"]
 > * [Портал](../load-balancer/load-balancer-get-started-internet-portal.md)
@@ -33,28 +33,28 @@ ms.lasthandoff: 07/11/2017
 
 [!INCLUDE [azure-arm-classic-important-include](../../includes/azure-arm-classic-important-include.md)]
 
-В этой статье описывается модель развертывания с использованием менеджера ресурсов. Вы также можете [узнать, как создать балансировщик нагрузки для Интернета, используя классическое развертывание](load-balancer-get-started-internet-classic-portal.md)
+В этой статье рассматриваются hello модели развертывания диспетчера ресурсов. Вы также можете [Узнайте, как с помощью классического развертывания подсистемы балансировки нагрузки, toocreate из Интернета](load-balancer-get-started-internet-classic-portal.md)
 
 [!INCLUDE [load-balancer-get-started-internet-scenario-include.md](../../includes/load-balancer-get-started-internet-scenario-include.md)]
 
-## <a name="deploying-the-solution-using-the-azure-cli"></a>Развертывание решения с помощью интерфейса командной строки Azure (Azure CLI)
+## <a name="deploying-hello-solution-using-hello-azure-cli"></a>Развертывание решения hello, с помощью hello Azure CLI
 
-Ниже описана процедура создания балансировщика нагрузки для Интернета с помощью Azure Resource Manager и интерфейса командной строки. Azure Resource Manager позволяет по отдельности создавать и настраивать ресурсы, после чего на их основе создается единый ресурс.
+Привет, следующие шаги показывают, как с помощью диспетчера ресурсов Azure с CLI подсистемы балансировки нагрузки, toocreate из Интернета. С помощью диспетчера ресурсов Azure создается и настраивается по отдельности каждого ресурса, затем объединить toocreate ресурса.
 
-Чтобы развернуть балансировщик нагрузки, необходимо создать и настроить следующие объекты.
+Необходимо создать и настроить hello следующие объекты toodeploy подсистемы балансировки нагрузки:
 
 * Конфигурация интерфейсных IP-адресов. Содержит общедоступные IP-адреса для входящего сетевого трафика.
-* Пул внутренних адресов. Содержит сетевые интерфейсы (сетевые карты) для получения виртуальными машинами трафика от балансировщика нагрузки.
-* Правила балансировки нагрузки. Содержат правила сопоставления общего порта в балансировщике нагрузки с портом в пуле внутренних адресов.
-* Правила NAT для входящего трафика. Содержат правила сопоставления общего порта в балансировщике нагрузки с портом на конкретной виртуальной машине в пуле внутренних адресов.
-* Пробы. Содержат пробы работоспособности, с помощью которых можно проверить доступность экземпляров виртуальных машин в пуле внутренних адресов.
+* Пул адресов серверной части - содержит сетевых интерфейсов (NIC) для hello виртуальные машины tooreceive сетевой трафик от подсистемы балансировки нагрузки hello.
+* Правила балансировки нагрузки — содержит правила сопоставления открытый порт hello tooport подсистемы балансировки нагрузки в пул адресов серверной части hello.
+* Правила NAT для входящих подключений — содержит правила, сопоставление порта открытый порт tooa подсистемы балансировки нагрузки hello для конкретной виртуальной машины в пул адресов серверной части hello.
+* Проверяет — содержит доступность toocheck проверки, используемые работоспособности экземпляров виртуальных машин в пул адресов серверной части hello.
 
 Дополнительные сведения см. в статье о [поддержке Azure Resource Manage для подсистемы балансировки нагрузки](load-balancer-arm.md).
 
-## <a name="set-up-cli-to-use-resource-manager"></a>Настройка интерфейса командной строки для использования Resource Manager
+## <a name="set-up-cli-toouse-resource-manager"></a>Настройка toouse интерфейс командной строки диспетчера ресурсов
 
-1. Если вы еще не пользовались Azure CLI, ознакомьтесь со статьей [Установка и настройка CLI Azure](../cli-install-nodejs.md) и следуйте инструкциям вплоть до выбора учетной записи Azure и подписки.
-2. Выполните команду **azure config mode** , чтобы переключиться в режим диспетчера ресурсов, как показано ниже.
+1. Если ранее не пользовались Azure CLI, см. раздел [Установка и настройка hello Azure CLI](../cli-install-nodejs.md) и следуйте инструкциям hello toohello точку, где выбирается учетная запись Azure и подписки.
+2. Запустите hello **azure конфигурации режима** tooswitch tooResource Manager режим команд, как показано ниже.
 
     ```azurecli
         azure config mode arm
@@ -64,9 +64,9 @@ ms.lasthandoff: 07/11/2017
 
         info:    New mode is arm
 
-## <a name="create-a-virtual-network-and-a-public-ip-address-for-the-front-end-ip-pool"></a>Создание виртуальной сети и общедоступного IP-адреса для пула IP-адресов клиентской части
+## <a name="create-a-virtual-network-and-a-public-ip-address-for-hello-front-end-ip-pool"></a>Создайте виртуальную сеть и общедоступный IP-адрес пула IP-интерфейса hello
 
-1. Создайте виртуальную сеть *NRPVnet* в регионе "Восток США" с помощью группы ресурсов *NRPRG*.
+1. Создание виртуальной сети (VNet) с именем *NRPVnet* Восток США там hello группу ресурсов с именем *NRPRG*.
 
     ```azurecli
         azure network vnet create NRPRG NRPVnet eastUS -a 10.0.0.0/16
@@ -78,34 +78,34 @@ ms.lasthandoff: 07/11/2017
         azure network vnet subnet create NRPRG NRPVnet NRPVnetSubnet -a 10.0.0.0/24
     ```
 
-2. Создайте общедоступный IP-адрес *NRPPublicIP*, который будет использоваться пулом интерфейсных IP-адресов, с DNS-именем *loadbalancernrp.eastus.cloudapp.azure.com*. В команде ниже используется статическое выделение и время ожидания при простое 4 минуты.
+2. Создать общедоступный IP-адрес с именем *NRPPublicIP* toobe, используемый пулом IP-интерфейса с именем DNS *loadbalancernrp.eastus.cloudapp.azure.com*. hello ниже используется тип статического выделения hello и тайм-аут простоя 4 минуты.
 
     ```azurecli
         azure network public-ip create -g NRPRG -n NRPPublicIP -l eastus -d loadbalancernrp -a static -i 4
     ```
 
    > [!IMPORTANT]
-   > Балансировщик нагрузки будет использовать метку домена общедоступного IP-адреса в качестве своего полного доменного имени (FQDN). В этом заключается отличие от классического развертывания, при котором в качестве полного доменного имени балансировщика нагрузки используется облачная служба.
-   > В этом примере используется полное доменное имя *loadbalancernrp.eastus.cloudapp.azure.com*.
+   > Hello балансировки нагрузки будет использовать метку hello общедоступный IP-адрес домена hello по полным доменным ИМЕНЕМ. Это изменение по сравнению с классической развертывания с использованием hello облачной службы как hello балансировки нагрузки полное доменное имя (FQDN).
+   > В этом примере hello полное доменное имя — *loadbalancernrp.eastus.cloudapp.azure.com*.
 
 ## <a name="create-a-load-balancer"></a>Создание балансировщика нагрузки
 
-Приведенная ниже команда создает балансировщик нагрузки *NRPlb* в группе ресурсов *NRPRG*, размещенной в регионе Azure *Восточная часть США*.
+Hello следующая команда создает подсистемы балансировки нагрузки с именем *NRPlb* в hello *NRPRG* группы ресурсов в hello *Восток США* расположение Azure.
 
     ```azurecli
     azure network lb create NRPRG NRPlb eastus
     ```
 
 ## <a name="create-a-front-end-ip-pool-and-a-backend-address-pool"></a>Создание пула интерфейсных IP-адресов и пула внутренних адресов
-В этом примере показано, как создать пул интерфейсных IP-адресов, который будет принимать входящий сетевой трафик для балансировщика нагрузки, а также пул внутренних IP-адресов, который будет отправлять сетевой трафик с балансировкой нагрузки.
+В этом примере демонстрируется toocreate hello переднего плана пула IP-адресов, получающий hello входящего сетевого трафика на hello подсистемы балансировки нагрузки и hello внутреннего пула IP-адресов, где переднего плана пула hello отправляет hello балансировки нагрузки сетевого трафика.
 
-1. Создайте пул интерфейсных IP-адресов, связывающий общедоступный IP-адрес, созданный на предыдущем этапе, и балансировщик нагрузки.
+1. Создайте пул IP переднего плана, связывание hello общедоступный IP-адрес создан в предыдущем шаге hello и Подсистема балансировки нагрузки hello.
 
     ```azurecli
         azure network lb frontend-ip create nrpRG NRPlb NRPfrontendpool -i nrppublicip
     ```
 
-2. Настройте пул внутренних адресов для приема входящего трафика из пула интерфейсных IP-адресов.
+2. Настройте пул адресов серверной части используется tooreceive входящего трафика из пула IP-интерфейса hello.
 
     ```azurecli
         azure network lb address-pool create NRPRG NRPlb NRPbackendpool
@@ -113,16 +113,16 @@ ms.lasthandoff: 07/11/2017
 
 ## <a name="create-lb-rules-nat-rules-and-probe"></a>Создание правил балансировки нагрузки, правил NAT и пробы
 
-В этом примере создаются следующие элементы:
+В этом примере создается hello следующих элементов.
 
-* правило NAT, которое направляет весь входящий трафик с порта 21 на порт 22<sup>1</sup>;
-* правило NAT, которое направляет весь входящий трафик с порта 23 на порт 22;
-* правило балансировщика нагрузки, которое балансирует весь входящий трафик на порту 80, перенаправляя трафик на порт 80 других адресов во внутреннем пуле;
-* правило пробы, согласно которому будет проверяться состояние работоспособности на странице *HealthProbe.aspx*.
+* правило NAT для tootranslate весь входящий трафик на порт 21 tooport 22<sup>1</sup>
+* правило NAT для tootranslate весь входящий трафик на порт 23 tooport 22
+* toobalance правило балансировки нагрузки весь входящий трафик на порт 80 tooport 80 на hello адресов серверной части пула hello.
+* состояние проверки правила toocheck hello работоспособности на страницу с именем *HealthProbe.aspx*.
 
-<sup>1</sup> Правила NAT сопоставлены с конкретным экземпляром виртуальной машины, находящимся в зоне действия балансировщика нагрузки. Сетевой трафик, поступающий на порт 21, отправляется в определенную виртуальную машину на порту 22, связанным с этим правилом NAT. Для правила NAT необходимо указать протокол (UDP или TCP). Нельзя назначить оба протокола одному и тому же порту.
+<sup>1</sup> NAT правила, связанные tooa конкретного экземпляра виртуальной машины за подсистемой балансировки нагрузки hello. Hello сетевой трафик, поступающий на порт 21 отправляется tooa отдельную виртуальную машину на порт, связанный с этим правилом NAT 22. Для правила NAT необходимо указать протокол (UDP или TCP). Оба эти протокола не может быть назначен toohello тот же порт.
 
-1. Создайте правила NAT.
+1. Создание правил NAT hello.
 
     ```azurecli
         azure network lb inbound-nat-rule create --resource-group nrprg --lb-name nrplb --name ssh1 --protocol tcp --frontend-port 21 --backend-port 22
@@ -150,8 +150,8 @@ ms.lasthandoff: 07/11/2017
     Ожидаемые выходные данные:
 
         info:    Executing command network lb show
-        + Looking up the load balancer "nrplb"
-        + Looking up the public ip "NRPPublicIP"
+        + Looking up hello load balancer "nrplb"
+        + Looking up hello public ip "NRPPublicIP"
         data:    Id                              : /subscriptions/####################################/resourceGroups/nrprg/providers/Microsoft.Network/loadBalancers/nrplb
         data:    Name                            : nrplb
         data:    Type                            : Microsoft.Network/loadBalancers
@@ -210,9 +210,9 @@ ms.lasthandoff: 07/11/2017
 
 ## <a name="create-nics"></a>Создание сетевых адаптеров
 
-Вам необходимо создать сетевые адаптеры (или изменить существующие) и связать их с правилами NAT, правилами балансировщика нагрузки и пробами.
+Необходима toocreate сетевые адаптеры (или изменить существующие) и связать их tooNAT правила, правила подсистемы балансировки нагрузки и зонды.
 
-1. Создайте сетевую карту *lb-nic1-be* и свяжите ее с правилом NAT *rdp1*, а также с пулом внутренних адресов *NRPbackendpool*.
+1. Создайте сетевую КАРТУ с именем *быть балансировки нагрузки сетевого адаптера 1*и связать его с hello *rdp1* NAT правило и hello *NRPbackendpool* пул адресов серверной части.
 
     ```azurecli
         azure network nic create --resource-group nrprg --name lb-nic1-be --subnet-name nrpvnetsubnet --subnet-vnet-name nrpvnet --lb-address-pool-ids "/subscriptions/####################################/resourceGroups/nrprg/providers/Microsoft.Network/loadBalancers/nrplb/backendAddressPools/NRPbackendpool" --lb-inbound-nat-rule-ids "/subscriptions/####################################/resourceGroups/nrprg/providers/Microsoft.Network/loadBalancers/nrplb/inboundNatRules/rdp1" eastus
@@ -221,10 +221,10 @@ ms.lasthandoff: 07/11/2017
     Ожидаемые выходные данные:
 
         info:    Executing command network nic create
-        + Looking up the network interface "lb-nic1-be"
-        + Looking up the subnet "nrpvnetsubnet"
+        + Looking up hello network interface "lb-nic1-be"
+        + Looking up hello subnet "nrpvnetsubnet"
         + Creating network interface "lb-nic1-be"
-        + Looking up the network interface "lb-nic1-be"
+        + Looking up hello network interface "lb-nic1-be"
         data:    Id                              : /subscriptions/####################################/resourceGroups/nrprg/providers/Microsoft.Network/networkInterfaces/lb-nic1-be
         data:    Name                            : lb-nic1-be
         data:    Type                            : Microsoft.Network/networkInterfaces
@@ -244,60 +244,60 @@ ms.lasthandoff: 07/11/2017
         data:
         info:    network nic create command OK
 
-2. Создайте сетевую карту *lb-nic2-be* и свяжите ее с правилом NAT *rdp2*, а также с пулом внутренних адресов *NRPbackendpool*.
+2. Создайте сетевую КАРТУ с именем *балансировки нагрузки nic2 быть*и связать его с hello *rdp2* NAT правило и hello *NRPbackendpool* пул адресов серверной части.
 
     ```azurecli
         azure network nic create --resource-group nrprg --name lb-nic2-be --subnet-name nrpvnetsubnet --subnet-vnet-name nrpvnet --lb-address-pool-ids "/subscriptions/####################################/resourceGroups/nrprg/providers/Microsoft.Network/loadBalancers/nrplb/backendAddressPools/NRPbackendpool" --lb-inbound-nat-rule-ids "/subscriptions/####################################/resourceGroups/nrprg/providers/Microsoft.Network/loadBalancers/nrplb/inboundNatRules/rdp2" eastus
     ```
 
-3. Создайте виртуальную машину *web1* и свяжите ее с сетевым адаптером *lb-nic1-be*. Учетная запись хранения *web1nrp* была создана перед выполнением следующей команды.
+3. Создание виртуальной машины (VM) с именем *web1*и связать его с сетевого Адаптера с именем hello *быть балансировки нагрузки сетевого адаптера 1*. Вызывается учетной записи хранилища *web1nrp* была создана перед выполнением команды hello ниже.
 
     ```azurecli
         azure vm create --resource-group nrprg --name web1 --location eastus --vnet-name nrpvnet --vnet-subnet-name nrpvnetsubnet --nic-name lb-nic1-be --availset-name nrp-avset --storage-account-name web1nrp --os-type Windows --image-urn MicrosoftWindowsServer:WindowsServer:2012-R2-Datacenter:4.0.20150825
     ```
 
     > [!IMPORTANT]
-    > Виртуальные машины в балансировщике нагрузки должны находиться в одной группе доступности. Создайте группу доступности с помощью команды `azure availset create` .
+    > Виртуальные машины в toobe необходимость подсистемы балансировки нагрузки, в hello одной группе доступности. Используйте `azure availset create` toocreate набор доступности.
 
-    Должен быть получен результат, аналогичный приведенному ниже:
+    Hello выходные данные должны быть примерно toohello следующее:
 
         info:    Executing command vm create
-        + Looking up the VM "web1"
+        + Looking up hello VM "web1"
         Enter username: azureuser
         Enter password for azureuser: *********
         Confirm password: *********
-        info:    Using the VM Size "Standard_A1"
-        info:    The [OS, Data] Disk or image configuration requires storage account
-        + Looking up the storage account web1nrp
-        + Looking up the availability set "nrp-avset"
+        info:    Using hello VM Size "Standard_A1"
+        info:    hello [OS, Data] Disk or image configuration requires storage account
+        + Looking up hello storage account web1nrp
+        + Looking up hello availability set "nrp-avset"
         info:    Found an Availability set "nrp-avset"
-        + Looking up the NIC "lb-nic1-be"
+        + Looking up hello NIC "lb-nic1-be"
         info:    Found an existing NIC "lb-nic1-be"
-        info:    Found an IP configuration with virtual network subnet id "/subscriptions/####################################/resourceGroups/NRPRG/providers/Microsoft.Network/virtualNetworks/NRPVnet/subnets/NRPVnetSubnet" in the NIC "lb-nic1-be"
+        info:    Found an IP configuration with virtual network subnet id "/subscriptions/####################################/resourceGroups/NRPRG/providers/Microsoft.Network/virtualNetworks/NRPVnet/subnets/NRPVnetSubnet" in hello NIC "lb-nic1-be"
         info:    This is a NIC without publicIP configured
         + Creating VM "web1"
         info:    vm create command OK
 
     > [!NOTE]
-    > Информационное сообщение **В этой сетевой карте не настроен параметр publicIP** является ожидаемым, так как сетевая карта, созданная для балансировщика нагрузки, будет подключаться к Интернету через общедоступный IP-адрес балансировщика нагрузки.
+    > Информационное сообщение Hello **это сетевой Адаптер без общедоступный IP-адрес настроен** ожидается с момента создания hello сетевой Адаптер для подключения tooInternet hello нагрузки балансировки общедоступный IP-адрес с помощью подсистемы балансировки нагрузки hello.
 
-    Так как сетевой адаптер *lb-nic1-be* связан с правилом NAT *rdp1*, вы можете подключиться к виртуальной машине *web1* с помощью RDP через порт 3441 в балансировщике нагрузки.
+    С момента hello *быть балансировки нагрузки сетевого адаптера 1* сетевой Адаптер связан с hello *rdp1* правила NAT, можно подключить слишком*web1* с помощью протокола удаленного рабочего СТОЛА через порт 3441 в подсистеме балансировки нагрузки hello.
 
-4. Создайте виртуальную машину *web2* и свяжите ее с сетевым адаптером *lb-nic2-be*. Учетная запись хранения *web1nrp* была создана перед выполнением следующей команды.
+4. Создание виртуальной машины (VM) с именем *web2*и связать его с сетевого Адаптера с именем hello *балансировки нагрузки nic2 быть*. Вызывается учетной записи хранилища *web1nrp* была создана перед выполнением команды hello ниже.
 
     ```azurecli
         azure vm create --resource-group nrprg --name web2 --location eastus --vnet-name nrpvnet --vnet-subnet-name nrpvnetsubnet --nic-name lb-nic2-be --availset-name nrp-avset --storage-account-name web2nrp --os-type Windows --image-urn MicrosoftWindowsServer:WindowsServer:2012-R2-Datacenter:4.0.20150825
     ```
 
 ## <a name="update-an-existing-load-balancer"></a>Обновление существующего балансировщика нагрузки
-Вы можете добавить правила, ссылающиеся на существующий балансировщик нагрузки. В следующем примере новое правило балансировщика нагрузки добавляется в существующий балансировщик нагрузки **NRPlb**
+Вы можете добавить правила, ссылающиеся на существующий балансировщик нагрузки. В следующем примере hello новое правило балансировки нагрузки добавляется существующей подсистемы балансировки нагрузки tooan **NRPlb**
 
 ```azurecli
 azure network lb rule create --resource-group nrprg --lb-name nrplb --name lbrule2 --protocol tcp --frontend-port 8080 --backend-port 8051 --frontend-ip-name frontendnrppool --backend-address-pool-name NRPbackendpool
 ```
 
 ## <a name="delete-a-load-balancer"></a>Удаление балансировщика нагрузки
-Чтобы удалить балансировщик нагрузки, используйте следующую команду.
+Используйте hello, следующая команда tooremove подсистемы балансировки нагрузки:
 
 ```azurecli
 azure network lb delete --resource-group nrprg --name nrplb

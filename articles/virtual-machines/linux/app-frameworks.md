@@ -1,6 +1,6 @@
 ---
-title: "Развертывание платформ приложений на виртуальных машинах Linux в Azure | Документация Майкрософт"
-description: "Вы можете создавать популярные платформы приложений на виртуальных машинах Linux, используя шаблоны Azure Resource Manager для установки Active Directory, Docker и многих других ресурсов."
+title: "aaaDeploy платформы приложений на виртуальных машинах Linux в Azure | Документы Microsoft"
+description: "Создайте популярных платформ приложений на виртуальных машинах Linux, используя tooinstall шаблонов диспетчера ресурсов Azure Active Directory, Docker и многое другое."
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: squillace
@@ -16,15 +16,15 @@ ms.workload: infrastructure
 ms.date: 05/19/2017
 ms.author: rasquill
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c5d0d064c0afc4a9a5cb802fce66e219d23dc1ca
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 5e3e2d65639680e09d83d50be69d8fe2d86e3bda
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="deploy-popular-application-frameworks-on-linux-using-azure-resource-manager-templates"></a>Развертывание популярных платформ приложений в Linux с помощью шаблонов Azure Resource Manager
 
-Для задуманного функционирования рабочих нагрузок обычно требуется много ресурсов. Шаблоны диспетчера ресурсов Azure позволяют не только определять, каким образом настроены приложения, но и развертывать ресурсы для поддержки настроенных приложений. В этой статье представлены наиболее популярные шаблоны в коллекции и сведения об их развертывании с помощью портала Azure, интерфейса командной строки Azure или среды PowerShell.
+Рабочие нагрузки обычно требуется много toofunction ресурсы в соответствии с toodesign. Шаблоны позволяют вам toonot только диспетчер ресурсов Azure определяют, как настроены приложений, но также как hello ресурсы развертываются toosupport настройки приложения. В этой статье приведены наиболее популярные шаблоны toohello в галерее hello и предоставляет сведения по использованию hello портал Azure, Azure CLI или PowerShell toodeploy их.
 
 [!INCLUDE [virtual-machines-common-app-frameworks](../../../includes/virtual-machines-common-app-frameworks.md)]
 

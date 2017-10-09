@@ -2,25 +2,25 @@
 
 Создайте новый файл JavaScript с именем `listener.js`.
 
-### <a name="add-the-relay-npm-package"></a>Добавление пакета ретранслятора NPM
+### <a name="add-hello-relay-npm-package"></a>Добавление пакета NPM ретрансляции hello
 
 Запустите `npm install hyco-ws` из командной строки NPM в папке проекта.
 
-### <a name="write-some-code-to-receive-messages"></a>Написание кода для получения сообщений
+### <a name="write-some-code-tooreceive-messages"></a>Написать код tooreceive сообщений
 
-1. Добавьте следующую константу в верхнюю часть файла `listener.js`.
+1. Добавьте следующие константы toohello вверху hello hello `listener.js` файла.
    
     ```js
     const WebSocket = require('hyco-ws');
     ```
-2. Добавьте следующие константы в файл `listener.js` для сведений о гибридном подключении. Замените заполнители в скобках значениями, которые получены при создании гибридного подключения.
+2. Добавьте следующие константы toohello hello `listener.js` hello гибридного подключения сведения в файле. Замените заполнители hello в квадратных скобках со значениями hello, полученными при создании hello гибридного подключения.
    
-   1. `const ns` — пространство имен ретранслятора. Необходимо использовать полное имя пространства имен, например `{namespace}.servicebus.windows.net`.
-   2. `const path` — имя гибридного подключения.
-   3. `const keyrule` — имя ключа SAS.
-   4. `const key` — значение ключа SAS.
+   1. `const ns`-hello ретрансляции пространства имен. Быть полным именем пространства имен, что toouse hello; например `{namespace}.servicebus.windows.net`.
+   2. `const path`-Имя hello hello гибридного подключения.
+   3. `const keyrule`-hello имя ключа SAS hello.
+   4. `const key`-hello значение ключа SAS.
 
-3. Добавьте в файл `listener.js` следующий код:
+3. Добавьте следующий код toohello hello `listener.js` файла:
    
     ```js
     var wss = WebSocket.createRelayedServer(

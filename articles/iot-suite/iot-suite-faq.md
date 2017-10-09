@@ -1,5 +1,5 @@
 ---
-title: "Часто задаваемые вопросы по Azure IoT Suite | Документация Майкрософт"
+title: "aaaAzure IoT Suite часто задаваемые вопросы | Документы Microsoft"
 description: "Часто задаваемые вопросы об IoT Suite"
 services: 
 suite: iot-suite
@@ -15,72 +15,72 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/15/2017
 ms.author: corywink
-ms.openlocfilehash: 85867fb8d18377637b3aa848555831a8d9b53512
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: cb39e24af6d1ce2afea554285512d05b2d7c721e
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="frequently-asked-questions-for-iot-suite"></a>Часто задаваемые вопросы об IoT Suite
 
-Дополнительные сведения см. также в статье [Часто задаваемые вопросы о предварительно настроенном решении для подключенной фабрики IoT Suite](iot-suite-faq-cf.md).
+См. также определенного подключенного фабрики hello [часто задаваемые вопросы о](iot-suite-faq-cf.md).
 
-### <a name="where-can-i-find-the-source-code-for-the-preconfigured-solutions"></a>Где можно найти исходный код для предварительно настроенных решений?
+### <a name="where-can-i-find-hello-source-code-for-hello-preconfigured-solutions"></a>Где найти hello исходного кода для hello предварительно настроенных решений?
 
-Исходный код хранится в следующих репозиториях GitHub:
+Hello исходный код хранится в hello, следуя репозиториях GitHub:
 * [Предварительно настроенное решение для удаленного мониторинга][lnk-remote-monitoring-github]
 * [Предварительно настроенное решение по диагностическому обслуживанию][lnk-predictive-maintenance-github]
 * [Предварительно настроенное решение для подключенной фабрики](https://github.com/Azure/azure-iot-connected-factory)
 
-### <a name="how-do-i-update-to-the-latest-version-of-the-remote-monitoring-preconfigured-solution-that-uses-the-iot-hub-device-management-features"></a>Как обновить до последней версии предварительно настроенное решение удаленного мониторинга, которое использует функции управления устройствами Центра Интернета вещей?
+### <a name="how-do-i-update-toohello-latest-version-of-hello-remote-monitoring-preconfigured-solution-that-uses-hello-iot-hub-device-management-features"></a>Как обновить toohello последнюю версию решения удаленного мониторинга предварительно настроенных hello hello, использует функциональные возможности управления устройствами центра IoT?
 
-* При развертывании предварительно настроенного решения с сайта https://www.azureiotsuite.com/ всегда развертывается новый экземпляр последней его версии.
-* При развертывании предварительно настроенного решения с помощью командной строки можно обновить существующее развертывание, добавив новый код. См. сведения о [развертывании в облаке][lnk-cloud-deployment] в [репозитории][lnk-remote-monitoring-github] GitHub.
+* При развертывании предварительно настроенных решений с сайта https://www.azureiotsuite.com/ hello всегда развертывает новый экземпляр hello последнюю версию решения hello.
+* При развертывании предварительно настроенных решений с помощью командной строки hello, можно обновить существующее развертывание с нового кода. В разделе [облако развертывания] [ lnk-cloud-deployment] в hello GitHub [репозитория][lnk-remote-monitoring-github].
 
-### <a name="how-can-i-add-support-for-a-new-device-method-to-the-remote-monitoring-preconfigured-solution"></a>Как добавить поддержку нового метода устройства в предварительно настроенное решение для удаленного мониторинга?
+### <a name="how-can-i-add-support-for-a-new-device-method-toohello-remote-monitoring-preconfigured-solution"></a>Как добавить поддержку нового устройства метод toohello удаленное наблюдение предварительно настроенных решений?
 
-См. сведения в разделе [Добавление в симулятор поддержки для нового метода][lnk-add-method] статьи [Настройка предварительно настроенного решения][lnk-customize].
+В разделе hello [добавить поддержку нового симулятор toohello метод] [ lnk-add-method] в hello [настроить предварительно настроенных решений] [ lnk-customize] статьи.
 
-### <a name="the-simulated-device-is-ignoring-my-desired-property-changes-why"></a>Почему виртуальное устройство игнорирует изменения требуемых свойств?
-В предварительно настроенном решении для мониторинга код виртуального устройства использует только требуемые свойства **Desired.Config.TemperatureMeanValue** и **Desired.Config.TelemetryInterval**, чтобы обновить сообщаемые свойства. Все прочие запросы на изменение требуемых свойств игнорируются.
+### <a name="hello-simulated-device-is-ignoring-my-desired-property-changes-why"></a>имитированное устройство Hello игнорирует изменения нужное свойство, почему?
+В hello удаленный мониторинг предварительно настроенное решение, код hello имитируемые устройства использует только hello **Desired.Config.TemperatureMeanValue** и **Desired.Config.TelemetryInterval** требуемого свойства tooupdate hello сообщил свойства. Все прочие запросы на изменение требуемых свойств игнорируются.
 
-### <a name="my-device-does-not-appear-in-the-list-of-devices-in-the-solution-dashboard-why"></a>Почему устройство не отображается в списке устройств на панели мониторинга решения?
+### <a name="my-device-does-not-appear-in-hello-list-of-devices-in-hello-solution-dashboard-why"></a>Устройство не отображается в hello список устройств на панели мониторинга решения hello, почему?
 
-Для возврата списка устройств на панели мониторинга решения используется запрос. В настоящее время запрос не может возвращать более 10 000 устройств. Попробуйте ограничить условие поиска для запроса.
+Hello список устройств на панели мониторинга hello решение использует список hello tooreturn запрос устройств. В настоящее время запрос не может возвращать более 10 000 устройств. Попробуйте сделать более строгим hello критериев поиска для запроса.
 
-### <a name="whats-the-difference-between-deleting-a-resource-group-in-the-azure-portal-and-clicking-delete-on-a-preconfigured-solution-in-azureiotsuitecom"></a>В чем разница между удалением группы ресурсов на портале Azure и нажатием кнопки "Удалить" в предварительно настроенном решении на сайте azureiotsuite.com?
+### <a name="whats-hello-difference-between-deleting-a-resource-group-in-hello-azure-portal-and-clicking-delete-on-a-preconfigured-solution-in-azureiotsuitecom"></a>Что такое hello различие между при удалении группы ресурсов в Azure, портала и затем выбрав удаление предварительно настроенного решения в azureiotsuite.com hello
 
-* Если удалить предварительно настроенное решение на сайте [azureiotsuite.com][lnk-azureiotsuite], будут удалены все ресурсы, подготовленные при создании этого решения. Если вы добавляли в группу ресурсов дополнительные ресурсы, они также будут удалены. 
-* Если удалить группу ресурсов на [портале Azure][lnk-azure-portal], будут удалены ресурсы в этой группе. Вам также придется удалить приложение Azure Active Directory, связанное с предварительно настроенным решением, на[ классическом портале Azure][lnk-classic-portal].
+* При удалении hello предварительно настроенное решение в [azureiotsuite.com][lnk-azureiotsuite], удалить все ресурсы hello, заданные при создании hello предварительно настроенных решений. Если вы добавили группы ресурсов toohello дополнительные ресурсы, эти ресурсы также будут удалены. 
+* Если удалить группу ресурсов hello в hello [портал Azure][lnk-azure-portal], необходимо удалить только hello ресурсов в этой группе ресурсов. Необходимо также toodelete hello Azure Active Directory приложение, связанное с hello предварительно настроенное решение в hello [классический портал Azure][lnk-classic-portal].
 
 ### <a name="how-many-iot-hub-instances-can-i-provision-in-a-subscription"></a>Сколько экземпляров центров IoT можно подготовить в рамках одной подписки?
 
-По умолчанию [в рамках одной подписки можно подготовить 10 экземпляров Центра Интернета вещей][link-azuresublimits]. Можно создать [запрос в службу поддержки Azure][link-azuresupportticket], чтобы увеличить этот лимит. Так как каждое предварительно настроенное решение подготавливает новый Центр Интернета вещей, в рамках одной подписки можно подготовить до 10 таких решений. 
+По умолчанию [в рамках одной подписки можно подготовить 10 экземпляров Центра Интернета вещей][link-azuresublimits]. Можно создать [обращение в службу поддержки Azure] [ link-azuresupportticket] tooraise это ограничение. В результате после каждой предварительно настроенных решений подготавливает центр IoT, вы можете только подготовки вверх too10 предварительно настроенных решений по данной подписке. 
 
 ### <a name="how-many-azure-cosmos-db-instances-can-i-provision-in-a-subscription"></a>Сколько экземпляров Azure Cosmos DB можно подготовить в рамках одной подписки?
 
-Пятьдесят. Вы можете направить [запрос в службу поддержки Azure][link-azuresupportticket], чтобы увеличить это количество, но по умолчанию в рамках одной подписки можно подготовить только 50 экземпляров Cosmos DB. 
+Пятьдесят. Можно создать [обращение в службу поддержки Azure] [ link-azuresupportticket] tooraise это ограничение, но по умолчанию можно указать только 50 экземпляров Cosmos DB на подписку. 
 
 ### <a name="how-many-free-bing-maps-apis-can-i-provision-in-a-subscription"></a>Сколько бесплатных API-интерфейсов Карт Bing можно подготовить в рамках одной подписки?
 
-Два. В рамках подписки Azure можно создать только две карты Bing уровня 1 с внутренними транзакциями для корпоративных планов. Решение для удаленного мониторинга по умолчанию подготавливается с помощью плана уровня 1 с внутренними транзакциями. Иными словами, используя одну подписку, в которую не вносились изменения, вы можете подготовить не более двух решений для удаленного мониторинга.
+Два. В рамках подписки Azure можно создать только две карты Bing уровня 1 с внутренними транзакциями для корпоративных планов. решение для удаленного мониторинга Hello настраивается по умолчанию с планом hello внутренние транзакции уровня 1. В результате могут только подготавливать tootwo удаленный мониторинг решений в подписке без изменений.
 
 ### <a name="i-have-a-remote-monitoring-solution-deployment-with-a-static-map-how-do-i-add-an-interactive-bing-map"></a>У меня есть развернутое решение для удаленного мониторинга со статической картой. Как мне добавить интерактивную карту Bing?
 
 1. Получите на [портале Azure][lnk-azure-portal] ключ QueryKey API для Карт Bing для предприятий: 
    
-   1. На [портале Azure][lnk-azure-portal] перейдите в группу ресурсов с учетной записью API для Карт Bing для предприятий.
+   1. Перейдите toohello группы ресурсов, где находится ваш API службы Bing Maps для предприятия в hello [портал Azure][lnk-azure-portal].
    2. Щелкните **Все параметры** и **Управление ключами**. 
-   3. Вы увидите два ключа: **MasterKey** и **QueryKey**. Скопируйте значение ключа **QueryKey**.
+   3. Вы увидите два ключа: **MasterKey** и **QueryKey**. Скопируйте значение hello для **QueryKey**.
       
       > [!NOTE]
-      > У вас нет учетной записи Bing Maps API for Enterprise? Создайте ее на [портале Azure][lnk-azure-portal], щелкнув "+ Создать". Затем найдите API для Карт Bing для предприятий и следуйте подсказкам по созданию.
+      > У вас нет учетной записи Bing Maps API for Enterprise? Создайте его в hello [портал Azure] [ lnk-azure-portal] , щелкнув + новый поиск Bing Maps API для выпусков Enterprise и выполните запрос toocreate.
       > 
       > 
-2. Разверните последний фрагмент кода из архива [Azure-IoT-Remote-Monitoring][lnk-remote-monitoring-github].
-3. Запустите развертывание (локально или в облаке) в соответствии с руководством по развертыванию, которое находится в папке /docs/ репозитория. 
-4. Запустив развертывание (локально или в облаке), найдите в корневой папке файл *.user.config, созданный во время развертывания. Откройте этот файл в текстовом редакторе. 
-5. Измените следующую строку, чтобы включить скопированное из ключа **QueryKey** значение: 
+2. Подтягивают последнюю кода hello из hello [Azure IoT-удаленного-мониторинга][lnk-remote-monitoring-github].
+3. Запустите локальное или облачные развертывания следующие рекомендации hello развертывания из командной строки в папке /docs/ hello в репозитории hello. 
+4. После запуска локальной или облачной развертывания, проверьте в корневой папке для hello *. файл user.config, созданный во время развертывания. Откройте этот файл в текстовом редакторе. 
+5. Изменение hello следующая строка hello значение tooinclude, скопированный из вашего **QueryKey**: 
    
    `<setting name="MapApiQueryKey" value="" />`
 
@@ -98,11 +98,11 @@ ms.lasthandoff: 08/29/2017
 
 ### <a name="next-steps"></a>Дальнейшие действия
 
-Вы также можете ознакомиться с другими функциями и возможностями предварительно настроенных решений IoT Suite.
+Можно также изучить некоторые hello и другие возможности hello IoT Suite предварительно настроенных решений:
 
 * [Обзор предварительно настроенного решения прогнозируемого обслуживания][lnk-predictive-overview]
 * [Начало работы с предварительно настроенным решением для подключенной фабрики](iot-suite-connected-factory-overview.md)
-* [Все аспекты безопасности Интернета вещей][lnk-security-groundup]
+* [Основание безопасности IoT из hello,][lnk-security-groundup]
 
 [lnk-predictive-overview]: iot-suite-predictive-overview.md
 [lnk-security-groundup]: securing-iot-ground-up.md

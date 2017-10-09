@@ -1,6 +1,6 @@
 ---
-title: "Расширенные политики службы управления API Azure | Документация Майкрософт"
-description: "Сведения о расширенных политиках, доступных для использования в службе управления API Azure."
+title: "Дополнительные политики управления API aaaAzure | Документы Microsoft"
+description: "Дополнительные сведения о hello Дополнительные политики, доступные для использования в службе управления API Azure."
 services: api-management
 documentationcenter: 
 author: vladvino
@@ -14,78 +14,78 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-ms.openlocfilehash: 0c65ac74316421a0258f01143baa25ffecb5be3b
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 8245e7a4c9d432b7b4d362192e357829fcabad55
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="api-management-advanced-policies"></a>Расширенные политики в службе управления API
-В этой статье рассматриваются приведенные ниже политики управления API. Дополнительные сведения о добавлении и настройке политик см. в статье о [политиках в управлении API](http://go.microsoft.com/fwlink/?LinkID=398186).  
+Здесь вы найдете ссылку для hello следующих политиках управления интерфейсами API. Дополнительные сведения о добавлении и настройке политик см. в статье о [политиках в управлении API](http://go.microsoft.com/fwlink/?LinkID=398186).  
   
 ##  <a name="AdvancedPolicies"></a> Расширенные политики  
   
--   [Управление потоками](api-management-advanced-policies.md#choose) — условно применяет правила политики на основе результатов вычисления логических [выражений](api-management-policy-expressions.md).  
+-   [Поток управления](api-management-advanced-policies.md#choose) — условно применяет операторы политики на основе результатов вычисления логических hello hello [выражений](api-management-policy-expressions.md).  
   
--   [Перенаправляющий запрос](#ForwardRequest) — перенаправляет запрос в серверную службу.
+-   [Прямой запрос](#ForwardRequest) -пересылает hello запроса toohello внутренней службы.
 
--   [Ограничения параллелизма](#LimitConcurrency) не позволяет, чтобы заключенные политики одновременно выполнялись запросами, количество которых выше указанного.
+-   [Ограничения параллелизма](#LimitConcurrency) -предотвращает заключены политики из более чем hello указанное число запросов во время выполнения.
   
--   [Регистрация в концентраторе событий](#log-to-eventhub) — отправляет сообщения в концентратор событий, который указан сущностью Logger. 
+-   [Журнал tooEvent концентратора](#log-to-eventhub) -отправляет сообщения в hello указан формат tooan концентратора событий определяются сущности средства ведения журнала. 
 
--   [Макетирование ответа](#mock-response) — прекращает выполнение конвейера и возвращает макетированный ответ непосредственно вызывающему объекту.
+-   [Макета ответа](#mock-response) -прерываний конвейера выполнения и возвращает ответ на сгенерированные непосредственно toohello вызывающего объекта.
   
--   [Повторить](#Retry) — повторяет выполнение инструкций встраиваемой политики, если не выполнено условие и до тех пор пока оно не будет выполнено. Выполнение будет повторяться через определенные промежутки времени и до указанного количества повторных попыток.  
+-   [Повторите](#Retry) -повторных попыток выполнения hello заключены операторы политики, если и пока не будет выполнено условие hello. Выполнение будет сквозные hello определенные промежутки времени и копирование toohello указанное число повторных попыток.  
   
--   [Возврат ответа](#ReturnResponse) — прекращает выполнение конвейера и возвращает указанный ответ непосредственно вызывающему объекту. 
+-   [Вернуть ответ](#ReturnResponse) -конвейера прерывания выполнения и возвращает hello указанного ответа непосредственно toohello вызывающего объекта. 
   
--   [Отправка одностороннего запроса](#SendOneWayRequest) — отправляет запрос на указанный URL-адрес и не ожидает ответа.  
+-   [Отправка запроса на один из способов](#SendOneWayRequest) -отправляет toohello запроса указан URL-адрес без ожидания ответа.  
   
--   [Отправка запроса](#SendRequest) — отправляет запрос на указанный URL-адрес.  
+-   [Отправка запроса](#SendRequest) -отправляет toohello запроса указан URL-адрес.  
 
--   [Установка прокси-сервера HTTP](#SetHttpProxy) — позволяет маршрутизировать перенаправленные запросы через прокси-сервер HTTP.  
+-   [Задайте прокси-сервер HTTP](#SetHttpProxy) -позволяет tooroute пересылать запросы через прокси-сервер HTTP.  
 
--   [Установка метода запроса](#SetRequestMethod) — позволяет изменить метод HTTP для запроса.  
+-   [Установка метода запроса](#SetRequestMethod) -позволяет toochange метод hello HTTP для запроса.  
   
--   [Установка кода состояния](#SetStatus) — меняет код состояния HTTP на указанное значение.  
+-   [Задать код состояния](#SetStatus) -toohello код состояния hello HTTP изменения заданного значения.  
   
 -   [Задание переменной](api-management-advanced-policies.md#set-variable) — сохраняет значение в именованной переменной [контекста](api-management-policy-expressions.md#ContextVariables) для последующего использования.  
 
--   [Трассировка](#Trace) — добавляет строку в выходные данные [инспектора API](https://azure.microsoft.com/en-us/documentation/articles/api-management-howto-api-inspector/).  
+-   [Трассировки](#Trace) -добавляет строку в hello [инспектора API](https://azure.microsoft.com/en-us/documentation/articles/api-management-howto-api-inspector/) выходных данных.  
   
--   [Ожидание](#Wait) — ожидает завершения вложенных политик [отправки запроса](api-management-advanced-policies.md#SendRequest), [получения значения из кэша](api-management-caching-policies.md#GetFromCacheByKey) или [управления потоком](api-management-advanced-policies.md#choose) перед продолжением.  
+-   [Подождите](#Wait) -ожидает заключены [запрос на отправку](api-management-advanced-policies.md#SendRequest), [получить значение из кэша](api-management-caching-policies.md#GetFromCacheByKey), или [поток управления](api-management-advanced-policies.md#choose) toocomplete политики, прежде чем продолжить.  
   
 ##  <a name="choose"></a> Управление потоками  
- Политика `choose` применяет правила встраиваемой политики на основании результата вычисления логических выражений, подобных if-then-else или конструкции switch в языке программирования.  
+ Hello `choose` политики применяются встраиваемые правила, операторы в зависимости от результата вычисления логических выражений, аналогичные tooan if-then-else или коммутатор hello конструкции в языке программирования.  
   
 ###  <a name="ChoosePolicyStatement"></a> Правило политики  
   
 ```xml  
 <choose>   
     <when condition="Boolean expression | Boolean constant">   
-        <!— one or more policy statements to be applied if the above condition is true  -->  
+        <!— one or more policy statements toobe applied if hello above condition is true  -->  
     </when>   
     <when condition="Boolean expression | Boolean constant">   
-        <!— one or more policy statements to be applied if the above condition is true  -->  
+        <!— one or more policy statements toobe applied if hello above condition is true  -->  
     </when>   
     <otherwise>   
-        <!— one or more policy statements to be applied if none of the above conditions are true  -->  
+        <!— one or more policy statements toobe applied if none of hello above conditions are true  -->  
 </otherwise>   
 </choose>  
 ```  
   
- Политика потока управления должна содержать по крайней мере один элемент `<when/>`. Элемент `<otherwise/>` необязательный. Условия в элементах `<when/>` вычисляются в порядке их расположения в политике. Будут применены правила политики, включенные в первом элементе `<when/>` с атрибутом условия `true`. Политики, включенные в элементе `<otherwise/>` (если он имеется), будут применены, если все атрибуты условий элемента `<when/>` имеют значение `false`.  
+ Hello политика потока управления должен содержать по крайней мере один `<when/>` элемента. Hello `<otherwise/>` элемент является необязательным. Условия в `<when/>` элементы оцениваются в порядке их следования в политике hello. Правила политики, включенные в hello сначала `<when/>` элемент с атрибутом условия, равным `true` будут применены. Политики, заключенный в hello `<otherwise/>` элемент, если он имеется, будут применяться, если все из hello `<when/>` являются атрибуты условий для элемента `false`.  
   
 ### <a name="examples"></a>Примеры  
   
 ####  <a name="ChooseExample"></a> Пример  
- В следующем примере демонстрируется политика [set-variable](api-management-advanced-policies.md#set-variable) и две политики управления потоками.  
+ Hello ниже приведен пример [set-variable](api-management-advanced-policies.md#set-variable) политики и две политики потока управления.  
   
- Политика задания переменной находится в разделе inbound и создает логическую переменную [контекста](api-management-policy-expressions.md#ContextVariables) `isMobile`, которой присваивается значение true, если заголовок запроса `User-Agent` содержит текст `iPad` или `iPhone`.  
+ политика задания переменной в Hello находится в разделе "Входящие" Здравствуйте и создает `isMobile` логическое [контекста](api-management-policy-expressions.md#ContextVariables) переменной, которая имеет значение tootrue, если hello `User-Agent` заголовок запроса содержит текст hello `iPad` или `iPhone`.  
   
- Первая политика управления потоками также находится в разделе inbound и условно применяет одну из двух политик [установки параметра строки запроса](api-management-transformation-policies.md#SetQueryStringParameter) в зависимости от значения переменной контекста `isMobile`.  
+ Первая политика потока управления Hello также находится в разделе "Входящие" Здравствуйте и определяет условное применение одной из двух [параметра строки запроса](api-management-transformation-policies.md#SetQueryStringParameter) политики в зависимости от значения hello hello `isMobile` переменной контекста.  
   
- Вторая политика управления потоками находится в разделе outbound и условно применяет политику [преобразования XML в JSON](api-management-transformation-policies.md#ConvertXMLtoJSON), если переменная `isMobile` имеет значение `true`.  
+ Hello Вторая политика потока управления находится в разделе "Исходящие" hello и условно применяет hello [tooJSON преобразование XML](api-management-transformation-policies.md#ConvertXMLtoJSON) политики при `isMobile` задано слишком`true`.  
   
 ```xml  
 <policies>  
@@ -117,10 +117,10 @@ ms.lasthandoff: 08/29/2017
 ```  
   
 #### <a name="example"></a>Пример  
- В этом примере показано, как выполнить фильтрацию содержимого путем удаления элементов данных из ответа, полученного из внутренней службы при использовании продукта `Starter`. Пример настройки и использования этой политики см. в видео [Cloud Cover Episode 177: More API Management Features with Vlad Vinogradsky](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/) (Cloud Cover, эпизод 177: возможности управления API с Владом Виноградским) с отметки времени 34:30. Начните с отметки времени 31:50, чтобы узнать общие сведения о [прогнозном API Dark Sky](https://developer.forecast.io/), используемом для этого примера.  
+ В этом примере показано, как tooperform фильтрация содержимого, удалив элементы данных из ответа hello получил от службы внутренних hello при использовании hello `Starter` продукта. Демонстрацию настройке и использовании этой политики см. в разделе [177 серии охватывают облачные: более возможности API управления с помощью Влад Vinogradsky](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/) и too34:30 Перемотка вперед. Начинаются с 31:50 toosee Обзор [hello темной API прогноз Sky](https://developer.forecast.io/) для этой демонстрации.  
   
 ```xml  
-<!-- Copy this snippet into the outbound section to remove a number of data elements from the response received from the backend service based on the name of the api product -->  
+<!-- Copy this snippet into hello outbound section tooremove a number of data elements from hello response received from hello backend service based on hello name of hello api product -->  
 <choose>  
   <when condition="@(context.Response.StatusCode == 200 && context.Product.Name.Equals("Starter"))">  
     <set-body>@{  
@@ -140,27 +140,27 @@ ms.lasthandoff: 08/29/2017
 |Элемент|Описание|Обязательно|  
 |-------------|-----------------|--------------|  
 |choose|Корневой элемент.|Да|  
-|when|Условие для применения в частях `if` или `ifelse` политики `choose`. Если политика `choose` имеет несколько разделов `when`, они вычисляются последовательно. Когда `condition` элемента when принимает значение `true`, никакие последующие условия `when` не вычисляются.|Да|  
-|otherwise|Содержит фрагмент кода политики, который используется в том случае, если ни одно из условий `when` не принимает значение `true`.|Нет|  
+|when|Здравствуйте, toouse условие для hello `if` или `ifelse` части hello `choose` политики. Если hello `choose` политика содержит несколько `when` разделы, они вычисляются последовательно. Здравствуйте, один раз `condition` when элемент оценивается как слишком`true`, последующие `when` оценки условий.|Да|  
+|otherwise|Содержит фрагмент toobe hello политики, используется, если ни один из hello `when` условия соблюдаются слишком`true`.|Нет|  
   
 ### <a name="attributes"></a>Атрибуты  
   
 |Атрибут|Описание|Обязательно|  
 |---------------|-----------------|--------------|  
-|condition="Логическое выражение &#124; Логическая константа"|Логическое выражение или константа, которую необходимо вычислить, когда вычисляется правило политики, содержащей `when`.|Да|  
+|condition="Логическое выражение &#124; Логическая константа"|Логическое выражение или константа tooevaluated при Здравствуйте, содержащий Hello `when` вычисляется правила политики.|Да|  
   
 ###  <a name="ChooseUsage"></a> Использование  
- Эта политика может использоваться в следующих [разделах](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) и [областях](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
+ Эта политика может использоваться в следующие политики hello [разделы](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) и [областей](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
   
 -   **Разделы политики:** inbound, outbound, backend, on-error.  
   
 -   **Области политики:** все области.  
   
 ##  <a name="ForwardRequest"></a> Перенаправляющий запрос  
- Политика `forward-request` перенаправляет входящий запрос во внутреннюю службу, указанную в [контексте](api-management-policy-expressions.md#ContextVariables) запроса. URL-адрес внутренней службы, заданный в [параметрах](https://azure.microsoft.com/documentation/articles/api-management-howto-create-apis/#configure-api-settings) API, может быть изменен с помощью политики [задания внутренней службы](api-management-transformation-policies.md).  
+ Hello `forward-request` политика направляет hello входящего запроса toohello серверной службе указанный в запросе hello [контекста](api-management-policy-expressions.md#ContextVariables). Hello URL-адрес внутренней службы задается в hello API [параметры](https://azure.microsoft.com/documentation/articles/api-management-howto-create-apis/#configure-api-settings) и может быть изменено с помощью hello [задать серверной службы](api-management-transformation-policies.md) политики.  
   
 > [!NOTE]
->  Удаление этой политики приводит к тому, что запрос не перенаправляется во внутреннюю службу и политики в разделе outbound вычисляются сразу после успешного завершения обработки политик в разделе inbound.  
+>  Удаление результатов этой политики в запросе hello не направляются toohello серверной службы hello политики и в разделе "Исходящие" hello вычисляются сразу после успешного завершения hello политик hello в hello входящих раздела.  
   
 ### <a name="policy-statement"></a>Правило политики  
   
@@ -171,7 +171,7 @@ ms.lasthandoff: 08/29/2017
 ### <a name="examples"></a>Примеры  
   
 #### <a name="example"></a>Пример  
- Следующая политика уровня API перенаправляет все запросы к внутренней службе с интервалом времени ожидания 60 секунд.  
+ Hello следующую политику уровня API направляет все запросы toohello серверной службы с интервалом 60 секунд времени ожидания.  
   
 ```xml  
 <!-- api level -->  
@@ -190,7 +190,7 @@ ms.lasthandoff: 08/29/2017
 ```  
   
 #### <a name="example"></a>Пример  
- Эта политика уровня операций использует элемент `base`, чтобы наследовать внутреннюю политику от родительской области уровня API.  
+ Этот уровень политики операция использует hello `base` элемент tooinherit hello серверной политики из hello родительской API уровня области.  
   
 ```xml  
 <!-- operation level -->  
@@ -209,7 +209,7 @@ ms.lasthandoff: 08/29/2017
 ```  
   
 #### <a name="example"></a>Пример  
- Эта политика уровня операций явным образом перенаправляет все запросы во внутреннюю службу с временем ожидания 120 секунд и не наследует родительскую политику уровня API.  
+ Эта политика уровня операции явным образом направляет все запросы toohello серверной службы с временем ожидания 120 и не наследует родительский hello API уровня политики.  
   
 ```xml  
 <!-- operation level -->  
@@ -219,7 +219,7 @@ ms.lasthandoff: 08/29/2017
     </inbound>  
     <backend>  
         <forward-request timeout="120"/>   
-        <!-- effective policy. note the absence of <base/> -->  
+        <!-- effective policy. note hello absence of <base/> -->  
     </backend>  
     <outbound>  
         <base/>          
@@ -229,7 +229,7 @@ ms.lasthandoff: 08/29/2017
 ```  
   
 #### <a name="example"></a>Пример  
- Эта политика уровня операций не перенаправляет запросы во внутреннюю службу.  
+ Этот уровень политики операции не перенаправляет запросы toohello внутренней службы.  
   
 ```xml  
 <!-- operation level -->  
@@ -238,7 +238,7 @@ ms.lasthandoff: 08/29/2017
         <base/>  
     </inbound>  
     <backend>  
-        <!-- no forwarding to backend -->  
+        <!-- no forwarding toobackend -->  
     </backend>  
     <outbound>  
         <base/>          
@@ -257,18 +257,18 @@ ms.lasthandoff: 08/29/2017
   
 |Атрибут|Описание|Обязательно|значение по умолчанию|  
 |---------------|-----------------|--------------|-------------|  
-|timeout="целое число"|Интервал времени ожидания в секундах до того, как вызов, адресованный внутренней службе, завершится сбоем.|Нет|Время ожидания отсутствует|  
-|follow-redirects="true &#124; false"|Указывает, что происходит с перенаправлениями от внутренней службы: шлюз выполняет их или они возвращаются вызывающему объекту.|Нет|нет|  
+|timeout="целое число"|Hello интервал времени ожидания в секундах перед сбоем hello вызовов toohello внутренней службы.|Нет|Время ожидания отсутствует|  
+|follow-redirects="true &#124; false"|Указывает, следуют hello шлюза или возвращаемый вызывающий объект toohello перенаправлений с серверной службе hello.|Нет|нет|  
   
 ### <a name="usage"></a>Использование  
- Эта политика может использоваться в следующих [разделах](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) и [областях](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
+ Эта политика может использоваться в следующие политики hello [разделы](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) и [областей](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
   
 -   **Разделы политики:** backend.  
   
 -   **Области политики:** все области.  
   
 ##  <a name="LimitConcurrency"></a> Ограничение параллелизма  
- Политика `limit-concurrency` не позволяет, чтобы заключенные политики одновременно выполнялись запросами, количество которых выше указанного. Если превышено пороговое значение, новые запросы добавляются в очередь, пока не будет достигнута максимальная ее длина. Когда очередь заполнится, новые запросы немедленно завершатся ошибкой.
+ Hello `limit-concurrency` политика запрещает заключенными политики выполнения более чем hello заданного количества запросов в определенный момент времени. После превышения порогового значения hello, новые запросы добавляются tooa очереди, пока не удастся hello максимум длины очереди. Когда очередь заполнится, новые запросы немедленно завершатся ошибкой.
   
 ###  <a name="LimitConcurrencyStatement"></a> Правило политики  
   
@@ -281,7 +281,7 @@ ms.lasthandoff: 08/29/2017
 ### <a name="examples"></a>Примеры  
   
 ####  <a name="ChooseExample"></a> Пример  
- Ниже приведен пример, как ограничить число запросов, пересылаемых в серверную часть, на основе значения переменной контекста.
+ Hello следующем примере показано, как toolimit число запросов, пересылаемые tooa серверной части, на основе значения hello переменной контекста.
  
 ```xml  
 <policies>
@@ -305,35 +305,35 @@ ms.lasthandoff: 08/29/2017
   
 |Атрибут|Описание|Обязательно|значение по умолчанию|  
 |---------------|-----------------|--------------|--------------|  
-|key|Строка. Допустимое выражение. Задает область параллелизма. Используется несколькими политиками.|Да|Недоступно|  
-|max-count|Целое число. Указывает максимальное количество запросов для ввода политики.|Да|Недоступно|  
-|timeout|Целое число. Допустимое выражение. Указывает количество секунд, которые запрос ожидает для входа в область, прежде чем произойдет ошибка "403 — слишком много запросов".|Нет|Infinity|  
-|max-queue-length|Целое число. Допустимое выражение. Указывает максимальную длину очереди. При попытке получить доступ к этой политике входящие запросы немедленно завершатся ошибкой "403 — слишком много запросов" сразу после заполнения очереди.|Нет|Infinity|  
+|key|Строка. Допустимое выражение. Указывает область hello параллелизма. Используется несколькими политиками.|Да|Недоступно|  
+|max-count|Целое число. Указывает максимальное число запросов, разрешенных политикой tooenter hello.|Да|Недоступно|  
+|timeout|Целое число. Допустимое выражение. Указывает количество секунд, запрос будет ожидать tooenter области до появления в hello «403 слишком много запросов»|Нет|Infinity|  
+|max-queue-length|Целое число. Допустимое выражение. Указывает hello максимум длины очереди. Входящие запросы попытки tooenter эта политика будет остановлен с «403 слишком много запросов» немедленно при исчерпании hello очереди.|Нет|Infinity|  
   
 ###  <a name="ChooseUsage"></a> Использование  
- Эта политика может использоваться в следующих [разделах](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) и [областях](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
+ Эта политика может использоваться в следующие политики hello [разделы](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) и [областей](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
   
 -   **Разделы политики:** inbound, outbound, backend, on-error.  
   
 -   **Области политики:** все области.  
 
-##  <a name="log-to-eventhub"></a> Регистрация в концентраторе событий  
- Политика `log-to-eventhub` отправляет сообщения в определенном формате концентратору событий, который указан сущностью Logger. Как и предполагает ее имя, эта политика используется для сохранения контекстных сведений выбранного запроса или ответа для сетевого или автономного анализа.  
+##  <a name="log-to-eventhub"></a>Журнал tooEvent концентратора  
+ Hello `log-to-eventhub` политики отправляет сообщения в hello указан формат tooan концентратора событий, определяемые сущности средства ведения журнала. Как и предполагает его имя, hello политика используется для сохранения выбранного запроса или ответа сведения о контексте для анализа сети или вне сети.  
   
 > [!NOTE]
->  Пошаговое руководство по настройке концентратора событий и ведению журнала событий см. в статье [Как регистрировать события в концентраторах событий Azure в службе управления Azure API](https://azure.microsoft.com/documentation/articles/api-management-howto-log-event-hubs/).  
+>  Пошаговое руководство по настройке концентратора событий и ведение журнала событий, в разделе [как события управления API toolog концентраторов событий Azure с](https://azure.microsoft.com/documentation/articles/api-management-howto-log-event-hubs/).  
   
 ### <a name="policy-statement"></a>Правило политики  
   
 ```xml  
-<log-to-eventhub logger-id="id of the logger entity" partition-id="index of the partition where messages are sent" partition-key="value used for partition assignment">  
-  Expression returning a string to be logged  
+<log-to-eventhub logger-id="id of hello logger entity" partition-id="index of hello partition where messages are sent" partition-key="value used for partition assignment">  
+  Expression returning a string toobe logged  
 </log-to-eventhub>  
   
 ```  
   
 ### <a name="example"></a>Пример  
- Любую строку можно использовать как значение для регистрации в концентраторе событий. В этом примере дата и время, имя службы развертывания, идентификатор запроса, IP-адрес и имя операции для всех входящих вызовов записываются в средство ведения журналов в концентраторе событий, зарегистрированное с помощью идентификатора `contoso-logger`.  
+ Любая строка может использоваться как toobe значение hello в концентраторы событий в журнал. В этом примере hello даты и времени, имя развертывания службы, код запроса, IP-адрес и имя операции для всех входящих звонков, средства ведения журнала зарегистрирована hello концентратора событий регистрируется toohello `contoso-logger` идентификатор.  
   
 ```xml  
 <policies>  
@@ -351,25 +351,25 @@ ms.lasthandoff: 08/29/2017
   
 |Элемент|Описание|Обязательно|  
 |-------------|-----------------|--------------|  
-|log-to-eventhub|Корневой элемент. Значение этого элемента — это строка, которая будет зарегистрирована в концентраторе событий.|Да|  
+|log-to-eventhub|Корневой элемент. Hello значение этого элемента — концентратора событий tooyour toolog строку hello.|Да|  
   
 ### <a name="attributes"></a>Атрибуты  
   
 |Атрибут|Описание|Обязательно|  
 |---------------|-----------------|--------------|  
-|logger-id|Идентификатор средства ведения журнала, зарегистрированного в службе управления API.|Да|  
-|partition-id|Указывает индекс раздела, куда должны отправляться сообщения.|необязательный параметр. Этот атрибут не может использоваться, если используется `partition-key`.|  
-|partition-key|Указывает значение, используемое для назначения секции при отправке сообщений.|необязательный параметр. Этот атрибут не может использоваться, если используется `partition-id`.|  
+|logger-id|Идентификатор Hello hello средства ведения журнала зарегистрированные в службе управления API.|Да|  
+|partition-id|Указывает индекс hello hello раздела, куда должны отправляться сообщения.|необязательный параметр. Этот атрибут не может использоваться, если используется `partition-key`.|  
+|partition-key|Задает значение hello, используемое для назначения раздела при отправке сообщений.|необязательный параметр. Этот атрибут не может использоваться, если используется `partition-id`.|  
   
 ### <a name="usage"></a>Использование  
- Эта политика может использоваться в следующих [разделах](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) и [областях](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
+ Эта политика может использоваться в следующие политики hello [разделы](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) и [областей](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
   
 -   **Разделы политики:** inbound, outbound, backend, on-error.  
   
 -   **Области политики:** все области.  
 
 ##  <a name="mock-response"></a> Макетирование ответа  
-Политика `mock-response`, как следует из имени, используется для макетирования интерфейсов API и операций. Она прекращает выполнение конвейера и возвращает макетированный ответ вызывающему объекту. Эта политика всегда пытается вернуть ответы наивысшего качества. При возможности, она предпочитает примеры содержимого ответа. Она создает примеры ответов из схем, если схемы указаны, а примеры — нет. Если не найдены ни примеры, ни схемы, возвращаются ответы без содержимого.
+Hello `mock-response`, как имя hello подразумевает, — использовать toomock интерфейсы API и операции. Он прерывает выполнение обычный конвейер и возвращает вызывающему объекту toohello макеты ответа. политика Hello всегда пытается tooreturn отклики наилучшее качество. При возможности, она предпочитает примеры содержимого ответа. Она создает примеры ответов из схем, если схемы указаны, а примеры — нет. Если не найдены ни примеры, ни схемы, возвращаются ответы без содержимого.
   
 ### <a name="policy-statement"></a>Правило политики  
   
@@ -382,11 +382,11 @@ ms.lasthandoff: 08/29/2017
   
 ```xml  
 <!-- Returns 200 OK status code. Content is based on an example or schema, if provided for this 
-status code. First found content type is used. If no example or schema is found, the content is empty. -->
+status code. First found content type is used. If no example or schema is found, hello content is empty. -->
 <mock-response/>
 
 <!-- Returns 200 OK status code. Content is based on an example or schema, if provided for this 
-status code and media type. If no example or schema found, the content is empty. -->
+status code and media type. If no example or schema found, hello content is empty. -->
 <mock-response status-code='200' content-type='application/json'/>  
 ```  
   
@@ -400,18 +400,18 @@ status code and media type. If no example or schema found, the content is empty.
   
 |Атрибут|Описание|Обязательно|значение по умолчанию|  
 |---------------|-----------------|--------------|--------------|  
-|status-code|Указывает код состояния ответа и позволяет выбрать соответствующий пример или схему.|Нет|200|  
-|content-type|Указывает значение заголовка ответа `Content-Type` и позволяет выбрать соответствующий пример или схему.|Нет|None|  
+|status-code|Указывает код состояния ответа и соответствующий пример используется tooselect или схемы.|Нет|200|  
+|content-type|Указывает `Content-Type` значение заголовка ответа и соответствующий пример используется tooselect или схемы.|Нет|None|  
   
 ### <a name="usage"></a>Использование  
- Эта политика может использоваться в следующих [разделах](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) и [областях](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
+ Эта политика может использоваться в следующие политики hello [разделы](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) и [областей](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
   
 -   **Разделы политики:** inbound, outbound, on-error.  
   
 -   **Области политики:** все области.
 
 ##  <a name="Retry"></a> Повтор  
- Политика `retry` выполняет свои дочерние политики один раз и затем повторяет их выполнение до тех пор, пока параметр `condition` попыток не примет значение `false` или параметр `count` попыток не будет исчерпан.  
+ Hello `retry` политики один раз выполняет свои дочерние политики, а затем повторяет их выполнение до попытки hello `condition` становится `false` или повторите `count` израсходована.  
   
 ### <a name="policy-statement"></a>Правило политики  
   
@@ -430,7 +430,7 @@ status code and media type. If no example or schema found, the content is empty.
 ```  
   
 ### <a name="example"></a>Пример  
- В следующем примере перенаправление запроса повторяется до 10 раз, следуя экспоненциальному алгоритму повторения. Так как `first-fast-retry` имеет значение false, все попытки повтора выполняются в соответствии с экспоненциальным алгоритмом повторения.  
+ Копирование tooten раз, используя алгоритм повторения экспоненциального следующий пример запроса forewarding повторяется в hello. Поскольку `first-fast-retry` задано toofalse, все повторных попыток, алгоритм повторного exponsntial toohello субъекта.  
   
 ```xml  
   
@@ -457,26 +457,26 @@ status code and media type. If no example or schema found, the content is empty.
 |Атрибут|Описание|Обязательно|значение по умолчанию|  
 |---------------|-----------------|--------------|-------------|  
 |condition|Логический литерал или [выражение](api-management-policy-expressions.md), указывающее, что нужно сделать: прекратить повторные попытки (`false`) или продолжить (`true`).|Да|Недоступно|  
-|count|Положительное число, определяющее максимальное число повторных попыток.|Да|Недоступно|  
-|interval|Положительное значение в секундах, определяющее интервал ожидания между повторными попытками.|Да|Недоступно|  
-|max-interval|Положительное значение в секундах, определяющее максимальный интервал ожидания между повторными попытками. Оно используется для реализации экспоненциального алгоритма повторения.|Нет|Недоступно|  
-|delta|Положительное значение в секундах, определяющее увеличение интервала ожидания. Используется для реализации линейного и экспоненциального алгоритмов повторения.|Нет|Недоступно|  
-|first-fast-retry|Если присвоено значение `true`, первая попытка повтора выполняется немедленно.|Нет|`false`|  
+|count|Положительное число, указывающее максимальное число повторных попыток tooattempt hello.|Да|Недоступно|  
+|interval|Положительное число, в секундах, указав hello интервал ожидания между попытками повтора hello.|Да|Недоступно|  
+|max-interval|Положительное число, в секундах, указав hello интервал ожидания между попытками повтора hello. Это используется tooimplement алгоритм экспоненциального повторных попыток.|Нет|Недоступно|  
+|delta|Положительное число, в секундах, указав приращения интервал ожидания hello. Это алгоритмы линейной и экспоненциальный повторных попыток используется tooimplement hello.|Нет|Недоступно|  
+|first-fast-retry|Если задать слишком `true` , первой попытки повтора hello вступает в силу немедленно.|Нет|`false`|  
   
 > [!NOTE]
->  Если указан только параметр `interval`, попытки выполняются с **фиксированным** интервалом.  
->  Если указаны параметры `interval` и `delta`, применяется **линейный** алгоритм повторения, где время ожидания между повторениями вычисляется согласно формуле `interval + (count - 1)*delta`.  
->  Если указаны параметры `interval`, `max-interval` и `delta`, применяется **экспоненциальный** алгоритм повторения, где время ожидания между повторениями растет экспоненциально от значения `interval` до значения `max-interval` согласно формуле `min(interval + (2^count - 1) * random(delta * 0.8, delta * 1.2), max-interval)`.  
+>  Если только hello `interval` указано, **фиксированной** выполняются интервал повторных попыток.  
+>  Если только hello `interval` и `delta` указаны, **линейной** используется алгоритм интервал повторения, где время ожидания между повторными попытками вычисляемые соответствующим hello следующую формулу - `interval + (count - 1)*delta`.  
+>  Здравствуйте, когда `interval`, `max-interval` и `delta` указаны, **экспоненциального** применяется алгоритм интервал повторения, где hello время ожидания между повторными попытками hello растут по экспоненте значению hello `interval`значение toohello `max-interval` toohello ниже в соответствии с forumula - `min(interval + (2^count - 1) * random(delta * 0.8, delta * 1.2), max-interval)`.  
   
 ### <a name="usage"></a>Использование  
- Эта политика может использоваться в следующих [разделах](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) и [областях](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) политики. Обратите внимание, что эта политика наследует ограничения использования дочерних политик.  
+ Эта политика может использоваться в следующие политики hello [разделы](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) и [областей](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) . Обратите внимание, что эта политика наследует ограничения использования дочерних политик.  
   
 -   **Разделы политики:** inbound, outbound, backend, on-error.  
   
 -   **Области политики:** все области.  
   
 ##  <a name="ReturnResponse"></a> Возврат ответа  
- Политика `return-response` прерывает выполнение конвейера и возвращает вызывающему объекту ответ по умолчанию или настраиваемый ответ. По умолчанию возвращается код `200 OK` без текста. Можно указать настраиваемый ответ с помощью переменной контекста или правил политики. Если указаны оба, ответ, содержащийся в переменной контекста, изменяется правилами политики перед возвращением вызывающему объекту.  
+ Hello `return-response` политики прерывает выполнение конвейера и возвращает пользовательский ответ toohello вызывающего или по умолчанию. По умолчанию возвращается код `200 OK` без текста. Можно указать настраиваемый ответ с помощью переменной контекста или правил политики. Если указаны оба hello содержащихся в переменной контекста hello изменении ответа посредством инструкции политики hello перед возвращением toohello вызывающего объекта.  
   
 ### <a name="policy-statement"></a>Правило политики  
   
@@ -514,17 +514,17 @@ status code and media type. If no example or schema found, the content is empty.
   
 |Атрибут|Описание|Обязательно|  
 |---------------|-----------------|--------------|  
-|response-variable-name|Имя переменной контекста, на которую ссылается, например, вышестоящая политика [send-request](api-management-advanced-policies.md#SendRequest) и которая содержит объект `Response`.|необязательный параметр.|  
+|response-variable-name|Hello переменной контекста hello ссылка на имя, например, вышестоящим [запрос на отправку](api-management-advanced-policies.md#SendRequest) политики и содержащий `Response` объекта|необязательный параметр.|  
   
 ### <a name="usage"></a>Использование  
- Эта политика может использоваться в следующих [разделах](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) и [областях](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
+ Эта политика может использоваться в следующие политики hello [разделы](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) и [областей](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
   
 -   **Разделы политики:** inbound, outbound, backend, on-error.  
   
 -   **Области политики:** все области.  
   
 ##  <a name="SendOneWayRequest"></a> Отправка одностороннего запроса  
- Политика `send-one-way-request` отправляет запрос на указанный URL-адрес и не ожидает ответа.  
+ Hello `send-one-way-request` политики отправляет hello предоставленный toohello URL-адрес указан без ожидания ответа.  
   
 ### <a name="policy-statement"></a>Правило политики  
   
@@ -539,7 +539,7 @@ status code and media type. If no example or schema found, the content is empty.
 ```  
   
 ### <a name="example"></a>Пример  
- В этом примере политики демонстрируется использование политики `send-one-way-request` для отправки сообщения в чат Slack, если код HTTP-ответа больше или равен 500. Дополнительные сведения об этом примере см. в статье [Использование внешних служб из службы управления API Azure](https://azure.microsoft.com/documentation/articles/api-management-sample-send-request/).  
+ Эта политика образец показывает пример использования hello `send-one-way-request` toosend политики сообщение tooa резерв чата Если hello код ответа HTTP больше или равно too500. Дополнительные сведения об этом образце см. в разделе [с помощью внешних служб из hello службы управления API Azure](https://azure.microsoft.com/documentation/articles/api-management-sample-send-request/).  
   
 ```xml  
 <choose>  
@@ -572,28 +572,28 @@ status code and media type. If no example or schema found, the content is empty.
 |Элемент|Описание|Обязательно|  
 |-------------|-----------------|--------------|  
 |send-one-way-request|Корневой элемент.|Да|  
-|url|URL-адрес запроса.|Нет, если mode=copy. В противном случае да.|  
-|метод|Метод HTTP, используемый для запроса.|Нет, если mode=copy. В противном случае да.|  
+|url|URL-адрес Hello hello запроса.|Нет, если mode=copy. В противном случае да.|  
+|метод|Здравствуйте, метод HTTP для запроса hello.|Нет, если mode=copy. В противном случае да.|  
 |Верхний колонтитул|Заголовок запроса. Используйте несколько элементов заголовка для нескольких заголовков запросов.|Нет|  
-|текст|Текст запроса.|Нет|  
+|текст|текст запроса Hello.|Нет|  
   
 ### <a name="attributes"></a>Атрибуты  
   
 |Атрибут|Описание|Обязательно|значение по умолчанию|  
 |---------------|-----------------|--------------|-------------|  
-|mode="строка"|Определяет, является ли это новым запросом или копией текущего запроса. В исходящем режиме mode=copy не инициализирует текст запроса.|Нет|Создать|  
-|name|Указывает имя заголовка, которое должно быть установлено.|Да|Недоступно|  
-|exists-action|Указывает действие, которое должно быть выполнено, когда заголовок уже задан. Атрибут должен иметь одно из следующих значений:<br /><br /> override — заменяет значение имеющегося заголовка;<br />skip — не заменяет значение имеющегося заголовка;<br />append — добавляет значение к значению имеющегося заголовка;<br />delete — удаляет заголовок из запроса.<br /><br /> Если установлено значение `override`, перечисление нескольких записей с одним и тем же именем будет приводить к тому, что заголовок будет устанавливаться в соответствии со всеми записями (будут перечисляться несколько раз). В результате будут установлены только перечисленные значения.|Нет|override|  
+|mode="строка"|Определяет, является ли новый запрос или копию hello текущего запроса. В режиме исходящие режим = копирования не инициализирует hello текст запроса.|Нет|Создать|  
+|name|Указывает имя набора toobe заголовок hello hello.|Да|Недоступно|  
+|exists-action|Задает tootake какие действия при hello заголовок уже задан. Этот атрибут должен иметь одно из последующих значений hello.<br /><br /> -Переопределите - значение hello заменяет существующий заголовок hello.<br />-skip — не заменяет существующее значение заголовка hello.<br />-Добавить - добавляет значение существующего заголовка hello значение toohello.<br />-delete — удаляет hello заголовок из запроса hello.<br /><br /> Если задано слишком`override` перечислении нескольких записей с hello одинаковые имена, результаты в заголовке hello, соответствующим tooall записей о наборах (которые будут указаны несколько раз); в результате hello устанавливается только значения из списка.|Нет|override|  
   
 ### <a name="usage"></a>Использование  
- Эта политика может использоваться в следующих [разделах](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) и [областях](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
+ Эта политика может использоваться в следующие политики hello [разделы](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) и [областей](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
   
 -   **Разделы политики:** inbound, outbound, backend, on-error.  
   
 -   **Области политики:** все области.  
   
 ##  <a name="SendRequest"></a> Отправка запроса  
- Политика `send-request` отправляет запрос по указанному URL-адресу с задержкой, не превышающей заданное значение времени ожидания.  
+ Hello `send-request` политики отправляет toohello указан URL-адрес, больше не ожидания не hello задавать значение времени ожидания запроса указано hello.  
   
 ### <a name="policy-statement"></a>Правило политики  
   
@@ -609,14 +609,14 @@ status code and media type. If no example or schema found, the content is empty.
 ```  
   
 ### <a name="example"></a>Пример  
- В этом примере показан один из способов проверки маркера ссылки на сервере авторизации. Дополнительные сведения об этом примере см. в статье [Использование внешних служб из службы управления API Azure](https://azure.microsoft.com/documentation/articles/api-management-sample-send-request/).  
+ Этот пример одним из способов tooverify маркер ссылки с сервера авторизации. Дополнительные сведения об этом образце см. в разделе [с помощью внешних служб из hello службы управления API Azure](https://azure.microsoft.com/documentation/articles/api-management-sample-send-request/).  
   
 ```xml  
 <inbound>  
   <!-- Extract Token from Authorization header parameter -->  
   <set-variable name="token" value="@(context.Request.Headers.GetValueOrDefault("Authorization","scheme param").Split(' ').Last())" />  
   
-  <!-- Send request to Token Server to validate token (see RFC 7662) -->  
+  <!-- Send request tooToken Server toovalidate token (see RFC 7662) -->  
   <send-request mode="new" response-variable-name="tokenstate" timeout="20" ignore-error="true">  
     <set-url>https://microsoft-apiappec990ad4c76641c6aea22f566efc5a4e.azurewebsites.net/introspection</set-url>  
     <set-method>POST</set-method>  
@@ -651,31 +651,31 @@ status code and media type. If no example or schema found, the content is empty.
 |Элемент|Описание|Обязательно|  
 |-------------|-----------------|--------------|  
 |send-request|Корневой элемент.|Да|  
-|url|URL-адрес запроса.|Нет, если mode=copy. В противном случае да.|  
-|метод|Метод HTTP, используемый для запроса.|Нет, если mode=copy. В противном случае да.|  
+|url|URL-адрес Hello hello запроса.|Нет, если mode=copy. В противном случае да.|  
+|метод|Здравствуйте, метод HTTP для запроса hello.|Нет, если mode=copy. В противном случае да.|  
 |Верхний колонтитул|Заголовок запроса. Используйте несколько элементов заголовка для нескольких заголовков запросов.|Нет|  
-|текст|Текст запроса.|Нет|  
+|текст|текст запроса Hello.|Нет|  
   
 ### <a name="attributes"></a>Атрибуты  
   
 |Атрибут|Описание|Обязательно|значение по умолчанию|  
 |---------------|-----------------|--------------|-------------|  
-|mode="строка"|Определяет, является ли это новым запросом или копией текущего запроса. В исходящем режиме mode=copy не инициализирует текст запроса.|Нет|Создать|  
+|mode="строка"|Определяет, является ли новый запрос или копию hello текущего запроса. В режиме исходящие режим = копирования не инициализирует hello текст запроса.|Нет|Создать|  
 |response-variable-name="строка"|Если не указано, используется `context.Response`.|Нет|Недоступно|  
-|timeout="целое число"|Интервал времени ожидания в секундах до того, как вызов, адресованный URL-адресу, завершится сбоем.|Нет|60|  
-|ignore-error|Если получено значение true и запрос завершился ошибкой:<br /><br /> если response-variable-name указано, он будет содержать значение null;<br />если response-variable-name не указано, контекст запроса не будет обновлен.|Нет|нет|  
-|name|Указывает имя заголовка, которое должно быть установлено.|Да|Недоступно|  
-|exists-action|Указывает действие, которое должно быть выполнено, когда заголовок уже задан. Атрибут должен иметь одно из следующих значений:<br /><br /> override — заменяет значение имеющегося заголовка;<br />skip — не заменяет значение имеющегося заголовка;<br />append — добавляет значение к значению имеющегося заголовка;<br />delete — удаляет заголовок из запроса.<br /><br /> Если установлено значение `override`, перечисление нескольких записей с одним и тем же именем будет приводить к тому, что заголовок будет устанавливаться в соответствии со всеми записями (будут перечисляться несколько раз). В результате будут установлены только перечисленные значения.|Нет|override|  
+|timeout="целое число"|Hello интервал времени ожидания в секундах перед вызовом hello toohello URL-адрес завершается ошибкой.|Нет|60|  
+|ignore-error|Если значение true, а hello запрос приведет к ошибке:<br /><br /> если response-variable-name указано, он будет содержать значение null;<br />если response-variable-name не указано, контекст запроса не будет обновлен.|Нет|нет|  
+|name|Указывает имя набора toobe заголовок hello hello.|Да|Недоступно|  
+|exists-action|Задает tootake какие действия при hello заголовок уже задан. Этот атрибут должен иметь одно из последующих значений hello.<br /><br /> -Переопределите - значение hello заменяет существующий заголовок hello.<br />-skip — не заменяет существующее значение заголовка hello.<br />-Добавить - добавляет значение существующего заголовка hello значение toohello.<br />-delete — удаляет hello заголовок из запроса hello.<br /><br /> Если задано слишком`override` перечислении нескольких записей с hello одинаковые имена, результаты в заголовке hello, соответствующим tooall записей о наборах (которые будут указаны несколько раз); в результате hello устанавливается только значения из списка.|Нет|override|  
   
 ### <a name="usage"></a>Использование  
- Эта политика может использоваться в следующих [разделах](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) и [областях](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
+ Эта политика может использоваться в следующие политики hello [разделы](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) и [областей](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
   
 -   **Разделы политики:** inbound, outbound, backend, on-error.  
   
 -   **Области политики:** все области.  
   
 ##  <a name="SetHttpProxy"></a> Установка прокси-сервера HTTP  
- Политика `proxy` позволяет маршрутизировать запросы, перенаправленные в серверную часть, через прокси-сервер HTTP. Между шлюзом и прокси-сервером поддерживается только протокол HTTP (не HTTPS). Используются только базовая проверка подлинности и проверка подлинности NTLM.
+ Hello `proxy` политика позволяет tooroute toobackends пересылки запросов через прокси-сервер HTTP. Между шлюзом hello и прокси-сервера hello поддерживается только HTTP (не HTTPS). Используются только базовая проверка подлинности и проверка подлинности NTLM.
   
 ### <a name="policy-statement"></a>Правило политики  
   
@@ -685,7 +685,7 @@ status code and media type. If no example or schema found, the content is empty.
 ```  
   
 ### <a name="example"></a>Пример  
-Обратите внимание на использование [свойства](api-management-howto-properties.md) в качестве значений имени пользователя и пароля, чтобы избегать хранения конфиденциальных сведений в документе политики.  
+Обратите внимание на использование hello [свойства](api-management-howto-properties.md) как значения hello имя пользователя и пароль tooavoid, хранение конфиденциальных сведений в документе политики hello.  
   
 ```xml  
 <proxy url="http://192.168.1.1:8080" username={{username}} password={{password}} />
@@ -702,19 +702,19 @@ status code and media type. If no example or schema found, the content is empty.
   
 |Атрибут|Описание|Обязательно|значение по умолчанию|  
 |---------------|-----------------|--------------|-------------|  
-|url="string"|URL-адрес прокси-сервера в виде http://host:port.|Да|Недоступно|  
-|username="string"|Имя пользователя, которое следует использовать для проверки подлинности на прокси-сервере.|Нет|Недоступно|  
-|password="string"|Пароль, который следует использовать для проверки подлинности на прокси-сервере.|Нет|Недоступно|  
+|url="string"|URL-адрес прокси-сервера в виде hello. http://Host: Port.|Да|Недоступно|  
+|username="string"|Toobe имя пользователя, используемый для проверки подлинности с прокси-сервером hello.|Нет|Недоступно|  
+|password="string"|Toobe пароль, используемый для проверки подлинности с прокси-сервером hello.|Нет|Недоступно|  
 
 ### <a name="usage"></a>Использование  
- Эта политика может использоваться в следующих [разделах](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) и [областях](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
+ Эта политика может использоваться в следующие политики hello [разделы](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) и [областей](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
   
 -   **Разделы политики:** inbound.  
   
 -   **Области политики:** все области.  
 
 ##  <a name="SetRequestMethod"></a> Задание метода запроса  
- Политика `set-method` позволяет изменить метод HTTP-запроса для запроса.  
+ Hello `set-method` политика позволяет toochange метод запроса hello HTTP для запроса.  
   
 ### <a name="policy-statement"></a>Правило политики  
   
@@ -724,7 +724,7 @@ status code and media type. If no example or schema found, the content is empty.
 ```  
   
 ### <a name="example"></a>Пример  
- В этом примере политики демонстрируется использование политики `set-method` для отправки сообщения в чат Slack, если код HTTP-ответа больше или равен 500. Дополнительные сведения об этом примере см. в статье [Использование внешних служб из службы управления API Azure](https://azure.microsoft.com/documentation/articles/api-management-sample-send-request/).  
+ Пример политики, которая использует hello `set-method` политики показан пример отправки сообщения tooa резерв чата, если hello код ответа HTTP больше или равно too500. Дополнительные сведения об этом образце см. в разделе [с помощью внешних служб из hello службы управления API Azure](https://azure.microsoft.com/documentation/articles/api-management-sample-send-request/).  
   
 ```xml  
 <choose>  
@@ -756,17 +756,17 @@ status code and media type. If no example or schema found, the content is empty.
   
 |Элемент|Описание|Обязательно|  
 |-------------|-----------------|--------------|  
-|set-method|Корневой элемент. Значение элемента задает метод HTTP.|Да|  
+|set-method|Корневой элемент. значение Hello элемента hello задает метод HTTP hello.|Да|  
   
 ### <a name="usage"></a>Использование  
- Эта политика может использоваться в следующих [разделах](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) и [областях](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
+ Эта политика может использоваться в следующие политики hello [разделы](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) и [областей](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
   
 -   **Разделы политики:** inbound, on-error.  
   
 -   **Области политики:** все области.  
   
 ##  <a name="SetStatus"></a> Задание кода состояния  
- Политика `set-status` меняет код состояния HTTP на указанное значение.  
+ Hello `set-status` политики наборов hello HTTP состояние кода toohello заданное значение.  
   
 ### <a name="policy-statement"></a>Правило политики  
   
@@ -776,7 +776,7 @@ status code and media type. If no example or schema found, the content is empty.
 ```  
   
 ### <a name="example"></a>Пример  
- В этом примере показано, как вернуть ответ 401, если маркер проверки подлинности является недопустимым. Дополнительные сведения см. в статье [Использование внешних служб из службы управления API Azure](https://azure.microsoft.com/documentation/articles/api-management-sample-send-request/).  
+ В этом примере показано, как tooreturn ответ 401, если маркер авторизации hello является недопустимым. Дополнительные сведения см. в разделе [с помощью внешних служб из hello службы управления API Azure](https://azure.microsoft.com/documentation/articles/api-management-sample-send-request/)  
   
 ```xml  
 <choose>  
@@ -802,18 +802,18 @@ status code and media type. If no example or schema found, the content is empty.
   
 |Атрибут|Описание|Обязательно|значение по умолчанию|  
 |---------------|-----------------|--------------|-------------|  
-|code="целое число"|Код состояния HTTP для возврата.|Да|Недоступно|  
-|reason="строка"|Описание причины для возврата кода состояния.|Да|Недоступно|  
+|code="целое число"|tooreturn код состояния Hello HTTP.|Да|Недоступно|  
+|reason="строка"|Описание hello причину для возврата hello код состояния.|Да|Недоступно|  
   
 ### <a name="usage"></a>Использование  
- Эта политика может использоваться в следующих [разделах](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) и [областях](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
+ Эта политика может использоваться в следующие политики hello [разделы](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) и [областей](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
   
 -   **Разделы политики:** outbound, backend, on-error.  
   
 -   **Области политики:** все области.  
 
 ##  <a name="set-variable"></a> Задание переменной  
- Политика `set-variable` объявляет [переменную](api-management-policy-expressions.md#ContextVariables) контекста и присваивает ей значение, заданное с помощью [выражение](api-management-policy-expressions.md) или строкового литерала. Если выражение содержит литерал, он будет преобразован в строку и будет иметь тип значения `System.String`.  
+ Hello `set-variable` объявляет политики [контекста](api-management-policy-expressions.md#ContextVariables) переменной и присвоение ей значения, указанного с помощью [выражение](api-management-policy-expressions.md) или строковым литералом. Если hello выражение содержит литерал, он будет преобразован тип string и hello tooa hello значения будет `System.String`.  
   
 ###  <a name="set-variablePolicyStatement"></a> Правило политики  
   
@@ -822,7 +822,7 @@ status code and media type. If no example or schema found, the content is empty.
 ```  
   
 ###  <a name="set-variableExample"></a> Пример  
- В следующем примере демонстрируется политика задания переменной в разделе inbound. Политика задания переменной создает логическую переменную [контекста](api-management-policy-expressions.md#ContextVariables) `isMobile`, которой присваивается значение true, если заголовок запроса `User-Agent` содержит текст `iPad` или `iPhone`.  
+ Hello ниже приведен пример политика задания переменной в hello входящих раздела. Эта политика задания переменной создает `isMobile` логическое [контекста](api-management-policy-expressions.md#ContextVariables) переменной, которая имеет значение tootrue, если hello `User-Agent` заголовок запроса содержит текст hello `iPad` или `iPhone`.  
   
 ```xml  
 <set-variable name="IsMobile" value="@(context.Request.Headers["User-Agent"].Contains("iPad") || context.Request.Headers["User-Agent"].Contains("iPhone"))" />  
@@ -838,18 +838,18 @@ status code and media type. If no example or schema found, the content is empty.
   
 |Атрибут|Описание|Обязательно|  
 |---------------|-----------------|--------------|  
-|name|Имя переменной.|Да|  
-|значение|Значение переменной. Это может быть выражение или литеральное значение.|Да|  
+|name|Имя переменной hello Hello.|Да|  
+|value|значение переменной hello Hello. Это может быть выражение или литеральное значение.|Да|  
   
 ### <a name="usage"></a>Использование  
- Эта политика может использоваться в следующих [разделах](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) и [областях](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
+ Эта политика может использоваться в следующие политики hello [разделы](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) и [областей](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
   
 -   **Разделы политики:** inbound, outbound, backend, on-error.  
   
 -   **Области политики:** все области.  
   
 ###  <a name="set-variableAllowedTypes"></a> Допустимые типы  
- Выражения, используемые в политике `set-variable`, должны возвращать один из следующих основных типов.  
+ Выражения, используемые в hello `set-variable` политики должен возвращать hello следующие базовые типы.  
   
 -   System.Boolean  
   
@@ -914,7 +914,7 @@ status code and media type. If no example or schema found, the content is empty.
 -   System.DateTime?  
 
 ##  <a name="Trace"></a> Трассировка  
- Политика `trace` добавляет строку в выходные данные [инспектора API](https://azure.microsoft.com/en-us/documentation/articles/api-management-howto-api-inspector/). Политика будет выполняться, только если инициирована трассировка, т. е. заголовок запроса `Ocp-Apim-Trace` присутствует и имеет значение `true`, а заголовок запроса `Ocp-Apim-Subscription-Key` присутствует и содержит допустимый ключ, связанный с учетной записью администратора.  
+ Hello `trace` политики добавляет строку в hello [инспектора API](https://azure.microsoft.com/en-us/documentation/articles/api-management-howto-api-inspector/) выходных данных. Hello политики будет выполняться только если трассировка инициируется, т. е. `Ocp-Apim-Trace` заголовок запроса представить и задать слишком`true` и `Ocp-Apim-Subscription-Key` заголовок запроса присутствует и имеет допустимый ключ, связанный с учетной записью администратора hello.  
   
 ### <a name="policy-statement"></a>Правило политики  
   
@@ -936,17 +936,17 @@ status code and media type. If no example or schema found, the content is empty.
   
 |Атрибут|Описание|Обязательно|значение по умолчанию|  
 |---------------|-----------------|--------------|-------------|  
-|источник|Строковый литерал, понятный средству просмотра трассировки и указывающий источник сообщения.|Да|Недоступно|  
+|источник|Строка литерала может применяться toohello trace viewer и указав источник приветственное сообщение hello.|Да|Недоступно|  
   
 ### <a name="usage"></a>Использование  
- Эта политика может использоваться в следующих [разделах](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) и [областях](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) политики.  
+ Эта политика может использоваться в следующие политики hello [разделы](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) и [областей](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) .  
   
 -   **Разделы политики:** inbound, outbound, backend, on-error.  
   
 -   **Области политики:** все области.  
   
 ##  <a name="Wait"></a> Ожидание  
- Политика `wait` параллельно выполняет свои непосредственные дочерние политики и ожидает выполнения всех или одной из них, прежде чем будет завершена. Политика ожидания может иметь в качестве непосредственных дочерних следующие политики: [Отправка запроса](api-management-advanced-policies.md#SendRequest), [Получение значения из кэша](api-management-caching-policies.md#GetFromCacheByKey) и [Управление потоками](api-management-advanced-policies.md#choose).  
+ Hello `wait` политики выполняет его непосредственных дочерних политик в параллельном режиме и ожидает либо все, либо один из его непосредственных дочерних политик toocomplete, до ее завершения. Hello политики ожидания могут иметь в качестве его непосредственных дочерних политик [запрос на отправку](api-management-advanced-policies.md#SendRequest), [получить значение из кэша](api-management-caching-policies.md#GetFromCacheByKey), и [поток управления](api-management-advanced-policies.md#choose) политики.  
   
 ### <a name="policy-statement"></a>Правило политики  
   
@@ -959,7 +959,7 @@ status code and media type. If no example or schema found, the content is empty.
 ```  
   
 ### <a name="example"></a>Пример  
- В следующем примере две политики `choose` являются непосредственными дочерними политиками политики `wait`. Каждая из этих политик `choose` выполняется в параллельном режиме. Каждая политика `choose` пытается извлечь кэшированное значение. В случае промаха кэша для получения значения вызывается внутренняя служба. В этом примере политика `wait` не завершается, пока не завершатся все ее непосредственные дочерние политики, так как атрибут `for` имеет значение `all`.   В этом примере переменные контекста (`execute-branch-one`, `value-one`, `execute-branch-two` и `value-two`) объявляются вне области этого примера политики.  
+ В следующий пример hello есть два `choose` политик в качестве непосредственных дочерних политики hello `wait` политики. Каждая из этих политик `choose` выполняется в параллельном режиме. Каждый `choose` политики пытается tooretrieve кэшированное значение. В случае пропуска кэша серверная служба называется значением tooprovide hello. В этом примере hello `wait` политики для завершения всех ее непосредственных дочерних политик завершить, так как hello `for` атрибута задано слишком`all`.   В этот примере hello контекста переменных (`execute-branch-one`, `value-one`, `execute-branch-two`, и `value-two`) объявлены вне области hello этот пример политики.  
   
 ```xml  
 <wait for="all">  
@@ -1003,10 +1003,10 @@ status code and media type. If no example or schema found, the content is empty.
   
 |Атрибут|Описание|Обязательно|значение по умолчанию|  
 |---------------|-----------------|--------------|-------------|  
-|for|Определяет, ожидает ли политика `wait` завершения всех непосредственных дочерних политик или только одной. Допустимые значения:<br /><br /> —-    `all`: ожидание завершения всех непосредственных дочерних политик;<br />— any: ожидание завершения любой непосредственной дочерней политики. После завершения первой непосредственной дочерней политики политика `wait` завершается и прерывает выполнение других непосредственных дочерних политик.|Нет|все|  
+|for|Определяет, является ли hello `wait` политики ожидает все toobe политики непосредственных дочерних завершена или только один. Допустимые значения:<br /><br /> -   `all`-ожидания для всех toocomplete непосредственных дочерних политик<br />-любое - ожидания любой toocomplete политики непосредственных дочерних. После завершения первой политики непосредственных дочерних hello hello `wait` политики завершается, и любые другие политики непосредственных дочерних выполнение завершается.|Нет|все|  
   
 ### <a name="usage"></a>Использование  
- Эта политика может использоваться в следующих [разделах](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) и [областях](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
+ Эта политика может использоваться в следующие политики hello [разделы](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) и [областей](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
   
 -   **Разделы политики:** inbound, outbound, backend.  
   

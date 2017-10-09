@@ -1,6 +1,6 @@
 ---
-title: "Шаблоны и сценарии использования Azure Service Fabric | Документация Майкрософт"
-description: "Практические рекомендации по применению проверенных шаблонов (с возможностью повторного использования) для проектирования, разработки и эксплуатации микрослужб в Service Fabric."
+title: "aaaAzure Service Fabric шаблонов и сценариев | Документы Microsoft"
+description: "Рекомендации и проверенные toodesign повторно используемых шаблонов разработки и работы вашей микрослужбами на Service Fabric."
 services: service-fabric
 documentationcenter: .net
 author: rwike77
@@ -14,24 +14,24 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/16/2017
 ms.author: ryanwi
-ms.openlocfilehash: fb2fa495758433e357722427b1c162420935955d
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 3811420eb53d9a49e490dd2e2e5319d8dea5629c
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="service-fabric-patterns-and-scenarios"></a>Шаблоны и сценарии использования Service Fabric
-Если вам требуется создать крупномасштабные микрослужбы с помощью Azure Service Fabric, воспользуйтесь опытом специалистов, которые разработали и создали эту платформу как услугу (PaaS). Начните с правильной архитектуры, а затем узнайте, как оптимизировать ресурсы для приложения. Курс [Service Fabric Patterns and Practices](https://mva.microsoft.com/en-US/training-courses/service-fabric-patterns-and-practices-16925?l=mudwqISGD_6005167344) (Шаблоны Service Fabric и практические рекомендации) содержит ответы на самые распространенные вопросы, задаваемые реальными пользователями о сценариях использования и областях применения Service Fabric.
+Если вы рассматриваете возможность создания крупномасштабных микрослужбами, с помощью Azure Service Fabric, сведения из hello специалисты, которые разрабатываются и создаются эта платформа как услуга (PaaS). Приступая к работе с правильной архитектуры и затем Узнайте, как toooptimize ресурсы для приложения. Hello [Service Fabric шаблоны и методики](https://mva.microsoft.com/en-US/training-courses/service-fabric-patterns-and-practices-16925?l=mudwqISGD_6005167344) курс содержит ответы на вопросы hello, наиболее часто задаваемые реальных клиентами о Service Fabric сценариев и области приложения.
  
-Узнайте, как проектировать, разрабатывать и эксплуатировать микрослужбы в Service Fabric, применяя рекомендации и проверенные шаблоны с возможностью повторного использования. Получите общие сведения о Service Fabric, а затем подробнее изучите разделы, посвященные оптимизации и безопасности кластера, переносу устаревших приложений, масштабированию в Интернете вещей, размещению игровых ядер и другим темам. Рассмотрите процесс непрерывной доставки для различных рабочих нагрузок, а также узнайте полезные сведения о контейнерах и поддержке Linux. 
+Узнайте, как toodesign, разработки и эксплуатации вашей микрослужбами на Service Fabric, с использованием рекомендаций и проверенные, многократно используемых шаблонов. Получите общие сведения о Service Fabric, а затем подробнее изучите разделы, посвященные оптимизации и безопасности кластера, переносу устаревших приложений, масштабированию в Интернете вещей, размещению игровых ядер и другим темам. Посмотрите на непрерывной поставки для различных рабочих нагрузок и даже получить hello сведения о поддержке Linux и контейнеры. 
 
 ## <a name="introduction"></a>Введение
-Рекомендации и общие сведения о выборе между платформой как услугой (PaaS) и инфраструктурой как услугой (IaaS). Ознакомьтесь со следующими проверенными принципами проектирования приложений.
+Рекомендации и общие сведения о выборе между платформой как услугой (PaaS) и инфраструктурой как услугой (IaaS). Получение сведений о hello на следующие принципы разработки проверенные приложений.
 
 <table><tr><th>Видео</th><th>В формате PowerPoint</th></tr>
 <tr><td><a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/service-fabric-patterns-and-practices-16925?l=N2KwbbSGD_6405167344">
 <img src="./media/service-fabric-patterns-and-scenarios/intro.png" WIDTH="360" HEIGHT="244">
-</a></td><td><a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/service-fabric-patterns-and-practices-16925?l=mudwqISGD_6005167344">Общие сведения о Service Fabric</a></td></tr>
+</a></td><td><a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/service-fabric-patterns-and-practices-16925?l=mudwqISGD_6005167344">Введение tooService структуры</a></td></tr>
 </table>
 
 ## <a name="cluster-planning-and-management"></a>Планирование кластера и управление им
@@ -53,7 +53,7 @@ ms.lasthandoff: 07/11/2017
 </table>
 
 ## <a name="iot"></a>Интернет вещей
-Ознакомьтесь с возможностями Интернета вещей в контексте Azure Service Fabric, включая конвейер Интернета вещей Azure, мультитенантность и масштабирование в Интернете вещей.
+Изучите hello Интернета вещей (IoT) в контексте hello Azure Service Fabric, включая hello Azure IoT конвейера, поддержки нескольких клиентов и IoT в масштабе.
 
 <table><tr><th>Видео</th><th>В формате PowerPoint</th></tr>
 <tr><td><a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/service-fabric-patterns-and-practices-16925?l=naFUVeSGD_1505167344">
@@ -80,7 +80,7 @@ ms.lasthandoff: 07/11/2017
 </table>
 
 ## <a name="migration"></a>Миграция
-Сведения о переносе из облачной службы и о переносе устаревших приложений.
+Дополнительные сведения о миграции из облачной службы, кроме toomigration прежних версий приложений.
 
 <table><tr><th>Видео</th><th>В формате PowerPoint</th></tr>
 <tr><td><a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/service-fabric-patterns-and-practices-16925?l=hd1cMgSGD_5605167344">
@@ -89,7 +89,7 @@ ms.lasthandoff: 07/11/2017
 </table>
 
 ## <a name="containers-and-linux-support"></a>Контейнеры и поддержка Linux
-Получите ответ на вопрос "Зачем нужны контейнеры?" Сведения о предварительных версиях функций контейнеров Windows, поддержки Linux и оркестрации контейнеров Linux. Узнайте, как выполнить перенос приложений .NET Core на Linux.
+Получить вопрос toohello ответов hello, «почему контейнеры?» Дополнительные сведения о предварительной версии hello для контейнеров Windows, Linux поддерживает и orchestration контейнеров Linux. Кроме того, узнайте, как приложения tooLinux toomigrate .NET Core.
 
 <table><tr><th>Видео</th><th>В формате PowerPoint</th></tr>
 <tr><td><a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/service-fabric-patterns-and-practices-16925?l=V1ERJhSGD_305167344">
@@ -98,4 +98,4 @@ ms.lasthandoff: 07/11/2017
 </table>
 
 ## <a name="next-steps"></a>Дальнейшие действия
-Теперь, когда вы изучили шаблоны и сценарии использования Service Fabric, узнайте больше о [создании кластеров и управлении ими](service-fabric-deploy-anywhere.md), [переносе приложений облачных служб в Service Fabric](service-fabric-cloud-services-migration-worker-role-stateless-service.md), [настройке непрерывной доставки](service-fabric-set-up-continuous-integration.md) и [развертывании контейнеров](service-fabric-containers-overview.md).
+Теперь, когда вы узнали о Service Fabric шаблонов и сценариев, Дополнительные сведения о том, как слишком[создания кластеров и управление ими](service-fabric-deploy-anywhere.md), [перенос облачных служб приложений tooService структуры](service-fabric-cloud-services-migration-worker-role-stateless-service.md), [Настройка непрерывной поставки](service-fabric-set-up-continuous-integration.md), и [развернуть контейнеры](service-fabric-containers-overview.md).

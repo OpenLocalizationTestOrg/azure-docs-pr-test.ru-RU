@@ -1,6 +1,6 @@
 ---
-title: "Элемент пользовательского интерфейса MultiStorageAccountCombo управляемого приложения Azure | Документация Майкрософт"
-description: "Сведения об элементе пользовательского интерфейса Microsoft.Storage.MultiStorageAccountCombo для управляемых приложений Azure"
+title: "элемент управляемого пользовательского интерфейса приложения MultiStorageAccountCombo aaaAzure | Документы Microsoft"
+description: "Описывает hello элемент пользовательского интерфейса Microsoft.Storage.MultiStorageAccountCombo для управляемых приложений Azure"
 services: azure-resource-manager
 documentationcenter: na
 author: tabrezm
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/12/2017
 ms.author: tabrezm;tomfitz
-ms.openlocfilehash: 27843b116d949899e4eae65f342324f77ebca70b
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 765be145b61c3dbf0a035a7a00aa18eee464a3eb
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="microsoftstoragemultistorageaccountcombo-ui-element"></a>Элемент пользовательского интерфейса Microsoft.Storage.MultiStorageAccountCombo
 Группа элементов управления для создания нескольких учетных записей хранения с именами, которые начинаются с общего префикса. Этот элемент используется при [создании управляемого приложения Azure](managed-application-publishing.md).
@@ -52,12 +52,12 @@ ms.lasthandoff: 07/11/2017
 ```
 
 ## <a name="remarks"></a>Примечания
-- Значение для `defaultValue.prefix` объединяется с одним или несколькими целыми числами для создания последовательности имен учетных записей хранения. Например, если для параметра `defaultValue.prefix` задано значение **foobar**, а для параметра `count` задано значение **2**, тогда создаются имена учетной записи хранения **foobar1** и **foobar2**. Созданные имена учетных записей хранения автоматически проверяются на уникальность.
-- Имена учетных записей хранения формируются лексикографически на основе `count`. Например, если для параметра `count` задано значение 10, тогда имена учетных записей хранения будут заканчиваться на двухзначное число (01, 02, 03 и т. д.).
-- Значением по умолчанию для параметра `defaultValue.prefix` является **null**, а для параметра `defaultValue.type` — **Premium_LRS**.
+- Здравствуйте, значение для `defaultValue.prefix` сцепляется с одной или более целых чисел toogenerate hello последовательность имена учетной записи хранения. Например, если для параметра `defaultValue.prefix` задано значение **foobar**, а для параметра `count` задано значение **2**, тогда создаются имена учетной записи хранения **foobar1** и **foobar2**. Созданные имена учетных записей хранения автоматически проверяются на уникальность.
+- имена учетной записи хранения Hello создаются на основе лексикографически `count`. Например если `count` равно 10, то имена учетной записи хранения hello заканчиваться 2-значное целое число (01, 02, 03, и т. д.).
+- Здравствуйте, значение по умолчанию для `defaultValue.prefix` — **null**и для `defaultValue.type` — **Premium_LRS**.
 - Любой тип, не указанный в `constraints.allowedTypes`, скрыт, а любой тип, не указанный в `constraints.excludedTypes`, отображается.
 Параметры `constraints.allowedTypes` и `constraints.excludedTypes` являются необязательными. При этом их нельзя использовать одновременно.
-- Кроме создания имен учетных записей хранения, параметр `count` используется, чтобы задать соответствующее число для элемента. Он поддерживает статическое значение, например **2**, или динамическое значение из другого элемента, например `[steps('step1').storageAccountCount]`. Значение по умолчанию — **1**.
+- В именах учетных записей хранилища toogenerating сложения `count` имеет соответствующий коэффициент для элемента hello используется tooset. Он поддерживает статическое значение, например **2**, или динамическое значение из другого элемента, например `[steps('step1').storageAccountCount]`. значение по умолчанию Hello — **1**.
 
 ## <a name="sample-output"></a>Пример выходных данных
 ```json
@@ -70,6 +70,6 @@ ms.lasthandoff: 07/11/2017
 ```
 
 ## <a name="next-steps"></a>Дальнейшие действия
-* Общие сведения об управляемых приложениях Azure см. в [этой статье](managed-application-overview.md).
-* Общие сведения о создании определений пользовательского интерфейса см. в статье [Начало работы с CreateUiDefinition](managed-application-createuidefinition-overview.md).
+* Введение toomanaged приложений, в разделе [Обзор управляемого приложения Azure](managed-application-overview.md).
+* Для определения пользовательского интерфейса toocreating Общие сведения см. в разделе [Приступая к работе с CreateUiDefinition](managed-application-createuidefinition-overview.md).
 * Дополнительные сведения об общих свойствах элементов пользовательского интерфейса см. в статье [Элементы CreateUiDefinition](managed-application-createuidefinition-elements.md).

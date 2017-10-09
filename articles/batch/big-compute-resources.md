@@ -1,6 +1,6 @@
 ---
-title: "Ресурсы для пакетных и высокопроизводительных вычислений (HPC) в облаке Azure | Документация Майкрософт"
-description: "В этой статье приведены технические ресурсы, которые помогут вам выполнять крупномасштабные параллельные, пакетные и высокопроизводительные вычисления (HPC) в Azure."
+title: "aaaResources для пакет и HPC в облаке Azure hello | Документы Microsoft"
+description: "Список toohelp технических ресурсов запуске вашего крупномасштабных параллельных, пакета и высокопроизводительных вычислительных систем (HPC) рабочих нагрузок в Azure."
 services: batch, cloud-services, virtual-machines
 documentationcenter: 
 author: dlepow
@@ -14,23 +14,23 @@ ms.tgt_pltfrm: NA
 ms.workload: big-compute
 ms.date: 03/17/2017
 ms.author: danlep
-ms.openlocfilehash: 18be9f503b57117a7e8f5f0a4e9c93614cc7755b
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: ab8ba24678bd7ec090306b501d29ca63c4fb83ee
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="big-compute-in-azure-technical-resources-for-batch-and-high-performance-computing"></a>Большие вычисления в Azure: технические ресурсы для пакетных и высокопроизводительных вычислений
-Это руководство по техническим ресурсам, которые помогут вам выполнять крупномасштабные параллельные, пакетные и высокопроизводительные вычисления (HPC) в Azure. Перенесите свои текущие пакетные рабочие нагрузки или рабочие нагрузки HPC в облако Azure или создайте новые решения для больших вычислений с помощью набора служб Azure.
+Это toohelp ресурсов tootechnical руководства, запустите вашей крупномасштабных параллельных, раздел и высокопроизводительных вычислительных систем (HPC) рабочих нагрузок в Azure. Расширить существующий пакетных файлах или toohello рабочих нагрузок HPC облако Azure или создания новых решений для больших вычислений с помощью служб Azure из диапазона.
 
 ## <a name="solutions-options"></a>Варианты решений
-Узнайте, какие решения для больших вычислений существуют в Azure, и выберите вариант, который подходит для рабочих нагрузок и потребностей вашей организации.
+Дополнительные сведения о параметрах больших вычислений в Azure и выбрать правильный подход hello для рабочей нагрузки и бизнес-требованиям.
 
 * [Пакетные и высокопроизводительные вычислительные решения](batch-hpc-solutions.md)
-* [Большие вычисления в облаке с помощью Azure и HPC (видео)](https://azure.microsoft.com/documentation/videos/teched-europe-2014-big-compute-in-the-cloud-with-high-performance-computing-on-azure/)
+* [Видео: Большие вычисления в облаке hello с Azure и HPC](https://azure.microsoft.com/documentation/videos/teched-europe-2014-big-compute-in-the-cloud-with-high-performance-computing-on-azure/)
 
 ## <a name="azure-batch"></a>Пакетная служба Azure
-[Пакетная служба](https://azure.microsoft.com/services/batch/) — это платформа как услуга, которая позволяет легко переводить приложения Linux и Windows в облако и выполнять задания без настройки кластера или планировщика и управления ими. С помощью пакета SDK вы можете интегрировать клиентские приложения в Пакетную службу Azure, используя различные языки, размещать данные в Azure и создавать конвейеры выполнения заданий.
+[Пакет](https://azure.microsoft.com/services/batch/) — это службы платформы, который позволяет легко включить toocloud приложений Linux и Windows и выполнения задания без настройку и управление заданиями и кластером планировщика. Использовать hello SDK toointegrate клиентских приложений с использованием пакета Azure через разные языки, tooAzure рабочей области данных и построения конвейеров выполнения задания.
 
 * [Документация](https://azure.microsoft.com/documentation/services/batch/)
 * Справочник по API [.NET](https://msdn.microsoft.com/library/azure/mt348682.aspx), [Python](http://azure-sdk-for-python.readthedocs.io/latest/), [Node.js](http://azure.github.io/azure-sdk-for-node/azure-batch/latest/), [Java](http://azure.github.io/azure-sdk-for-java/) и [REST](https://msdn.microsoft.com/library/azure/dn820158.aspx)
@@ -40,7 +40,7 @@ ms.lasthandoff: 08/03/2017
 * [Видеоролики о Пакетной службе](https://azure.microsoft.com/documentation/videos/index/?services=batch)
 
 ## <a name="hpc-cluster-solutions"></a>Кластерные решения HPC
-Разверните или расширьте свой существующий кластер HPC под управлением Windows или Linux в службу Azure и выполняйте ресурсоемкие вычислительные рабочие нагрузки в облаке.  
+Развернуть или расширить вашей существующей Windows или Linux HPC кластера tooAzure toorun вашей интенсивных вычислительных рабочих нагрузок.  
 
 ### <a name="microsoft-hpc-pack"></a>Пакет Microsoft HPC
 HPC Pack — это бесплатное решение HPC корпорации Майкрософт, созданное на основе технологий Microsoft Azure и Windows Server и поддерживающее рабочие нагрузки HPC как в Windows, так и в Linux.  
@@ -49,12 +49,12 @@ HPC Pack — это бесплатное решение HPC корпораци
 * [Загрузить пакет HPC 2012 R2 с обновлением 3](https://www.microsoft.com/download/details.aspx?id=49922)
 * [Документация](https://technet.microsoft.com/library/jj899572.aspx)
 * Варианты кластера пакета HPC в Azure: под управлением [Linux](../virtual-machines/linux/hpcpack-cluster-options.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) и [Windows](../virtual-machines/windows/hpcpack-cluster-options.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) 
-* [Ускорение в рабочие экземпляры Azure с помощью пакета HPC](https://technet.microsoft.com/library/gg481749.aspx)
-* [Ускорение в пакетную службу Azure с помощью пакета HPC](https://technet.microsoft.com/library/mt612877.aspx)
+* [Повышение tooAzure рабочих экземпляров с помощью пакета HPC](https://technet.microsoft.com/library/gg481749.aspx)
+* [Повышение tooAzure пакета с помощью пакета HPC](https://technet.microsoft.com/library/mt612877.aspx)
 * [Форумы по Windows HPC](https://social.microsoft.com/Forums/home?category=windowshpc)
 
 ### <a name="linux-and-oss-cluster-solutions"></a>Кластерные решения Linux и OSS
-Используйте эти шаблоны Azure для развертывания кластеров HPC под управлением Linux.
+Используйте эти toodeploy шаблоны Azure кластеров Linux HPC.
 
 * [Шаблон развертывания кластера SLURM](https://azure.microsoft.com/documentation/templates/slurm/) и [запись блога](http://blogs.technet.com/b/windowshpc/archive/2015/06/06/deploy-a-slurm-cluster-on-azure.aspx)
 * [Шаблон Spin up a Torque cluster](https://azure.microsoft.com/documentation/templates/torque-cluster/)
@@ -69,23 +69,23 @@ HPC Pack — это бесплатное решение HPC корпораци
 
 
 ## <a name="microsoft-mpi"></a>Microsoft MPI
-[Microsoft MPI](https://msdn.microsoft.com/library/bb524831.aspx) (MS-MPI) — это реализация стандарта MPI (Message Passing Interface — интерфейс передачи сообщений) от Майкрософт, предназначенная для разработки и запуска параллельных приложений на платформе Windows.
+[Microsoft MPI](https://msdn.microsoft.com/library/bb524831.aspx) (MS-MPI) является реализацией Майкрософт интерфейса передачи сообщений, стандартные для разработки и выполнения параллельных приложений на платформе Windows hello hello.
 
 * [Скачать MS-MPI](http://go.microsoft.com/FWLink/p/?LinkID=389556)
 * [Справочник по MS-MPI](https://msdn.microsoft.com/library/dn473458.aspx)
 * [Форум по MPI](https://social.microsoft.com/Forums/en-us/home?forum=windowshpcmpi)
 
 ## <a name="compute-intensive-instances"></a>Экземпляры для ресурсоемких вычислений
-В Azure доступны [разные размеры виртуальных машин](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json), включая экземпляры [для ресурсоемких вычислений серии H](../virtual-machines/windows/sizes-hpc.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json), поддерживающие подключение к внутренней сети RDMA для выполнения рабочих нагрузок HPC в Linux и Windows. 
+Azure предлагает [размеров диапазона виртуальных Машин](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json), в том числе [серии с большим объемом вычислений H](../virtual-machines/windows/sizes-hpc.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) экземпляры можно подключаться tooa серверной сети RDMA, toorun рабочих нагрузок Windows HPC и Linux. 
 
-* [Настройка кластера Linux RDMA для выполнения приложений MPI](../virtual-machines/linux/classic/rdma-cluster.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)
-* [Настройка кластера RDMA в Windows с помощью пакета HPC для запуска приложений MPI](../virtual-machines/windows/classic/hpcpack-rdma-cluster.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
+* [Настройка приложений MPI Linux RDMA toorun кластера](../virtual-machines/linux/classic/rdma-cluster.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)
+* [Настройка кластера Windows RDMA с помощью приложений MPI toorun пакета Microsoft HPC](../virtual-machines/windows/classic/hpcpack-rdma-cluster.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
 
 Для рабочих нагрузок, интенсивно использующих GPU, ознакомьтесь с [размерами NC и NV](https://azure.microsoft.com/blog/azure-n-series-general-availability-on-december-1/).
 
 ## <a name="samples-and-demos"></a>Примеры и образцы
 * [Примеры кода для пакетной службы Azure на C# и Python](https://github.com/Azure/azure-batch-samples)
-* Набор средств [Batch Shipyard](https://azure.github.io/batch-shipyard/) для удобного развертывания пакетных рабочих нагрузок Docker в пакетную службу Azure
+* [Пакетное Shipyard](https://azure.github.io/batch-shipyard/) toolkit для более удобного развертывания пакета стиль Dockerized рабочих нагрузок tooAzure пакета
 * Пакет R [doAzureParallel](http://www.github.com/Azure/doAzureParallel), созданный на основе пакетной службы Azure.
 * [Пробная установка сервера SUSE Linux Enterprise Server для HPC](https://azure.microsoft.com/marketplace/partners/suse/suselinuxenterpriseserver12optimizedforhighperformancecompute/)
 
@@ -119,6 +119,6 @@ HPC Pack — это бесплатное решение HPC корпораци
 * [UberCloud](https://simulation.azure.com/casestudies/Team-182-ABB-UC-Final.pdf)
 
 ## <a name="next-steps"></a>Дальнейшие действия
-* Последние объявления см. в [блоге группы Microsoft HPC и пакетной службы](http://blogs.technet.com/b/windowshpc/), а также в [блоге Azure](https://azure.microsoft.com/blog/tag/hpc/).
-* Следите также за лентой [новостей о пакетной службе](https://azure.microsoft.com/updates/?service=batch) или подпишитесь на [RSS-канал](https://azure.microsoft.com/updates/feed/?service=batch).
+* Последние объявления hello, в разделе hello [блог группы Microsoft HPC и пакетная служба](http://blogs.technet.com/b/windowshpc/) и hello [блог Azure](https://azure.microsoft.com/blog/tag/hpc/).
+* См. также [новые возможности в пакете](https://azure.microsoft.com/updates/?service=batch) или подписки toohello [RSS-канал](https://azure.microsoft.com/updates/feed/?service=batch).
 

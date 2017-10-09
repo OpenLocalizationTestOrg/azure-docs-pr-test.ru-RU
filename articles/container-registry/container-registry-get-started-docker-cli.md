@@ -1,6 +1,6 @@
 ---
-title: "Отправка образа Docker в частный реестр Azure | Документация Майкрософт"
-description: "Отправка образов Docker в частный реестр контейнеров в Azure и их получение с помощью интерфейса командной строки Docker"
+title: "tooprivate образа Docker aaaPush реестра Azure | Документы Microsoft"
+description: "По запросу и принудительные Docker реестра закрытый контейнер tooa образы в Azure с помощью hello Docker CLI"
 services: container-registry
 documentationcenter: 
 author: stevelas
@@ -17,102 +17,102 @@ ms.workload: na
 ms.date: 03/24/2017
 ms.author: stevelas
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 07d4d72e94eda02e8594dfddb0e911eb0e63012d
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: a81a6f4bfcb23642a89ac7631348d40e2f4911a8
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="push-your-first-image-to-a-private-docker-container-registry-using-the-docker-cli"></a>Отправка первого образа в частный реестр контейнеров Docker с помощью интерфейса командной строки Docker
-В реестре контейнеров Azure хранятся частные образы контейнеров [Docker](http://hub.docker.com), а также осуществляется управление ими (подобно тому, как в [Docker Hub](https://hub.docker.com/) хранятся общедоступные образы Docker). [Интерфейс командной строки Docker](https://docs.docker.com/engine/reference/commandline/cli/) (Docker CLI) позволяет [входить](https://docs.docker.com/engine/reference/commandline/login/) в реестр контейнеров, а также выполнять [отправку](https://docs.docker.com/engine/reference/commandline/push/), [получение](https://docs.docker.com/engine/reference/commandline/pull/) и другие операции.
+# <a name="push-your-first-image-tooa-private-docker-container-registry-using-hello-docker-cli"></a>Первый изображения tooa закрытый Docker контейнер реестра hello Docker CLI с помощью принудительной отправки
+В реестре контейнер Azure хранит данные и управляет закрытый [Docker](http://hub.docker.com) образы контейнеров, аналогичные toohello способом [Docker Hub](https://hub.docker.com/) хранит общедоступные образы Docker. Использовать hello [интерфейс командной строки Docker](https://docs.docker.com/engine/reference/commandline/cli/) (Docker CLI) для [входа](https://docs.docker.com/engine/reference/commandline/login/), [принудительной](https://docs.docker.com/engine/reference/commandline/push/), [запросу](https://docs.docker.com/engine/reference/commandline/pull/)и других операций в контейнер реестр.
 
-Общие сведения и основные понятия см. в статье [Общие сведения о службе реестра контейнеров Azure](container-registry-intro.md).
+Дополнительные сведения и основные понятия в разделе [Здравствуйте, Обзор](container-registry-intro.md)
 
 
 
 ## <a name="prerequisites"></a>Предварительные требования
-* **Реестр контейнеров Azure.** Создайте реестр контейнеров в своей подписке Azure. Это можно сделать на [портале Azure](container-registry-get-started-portal.md) или с помощью [Azure CLI 2.0](container-registry-get-started-azure-cli.md).
-* **Интерфейс командной строки Docker.** Установите [подсистему Docker](https://docs.docker.com/engine/installation/), чтобы настроить локальный компьютер в качестве узла Docker и получить доступ к командам интерфейса командной строки Docker.
+* **Реестр контейнеров Azure.** Создайте реестр контейнеров в своей подписке Azure. Например, использовать hello [портал Azure](container-registry-get-started-portal.md) или hello [Azure CLI 2.0](container-registry-get-started-azure-cli.md).
+* **Docker CLI** -tooset ваш локальный компьютер как узла и доступа к hello Docker CLI команды Docker, установите [подсистемы Docker](https://docs.docker.com/engine/installation/).
 
-## <a name="log-in-to-a-registry"></a>Вход в раздел реестра
-Выполните команду `docker login`, чтобы войти в реестр контейнеров с помощью [учетных данных реестра](container-registry-authentication.md).
+## <a name="log-in-tooa-registry"></a>Войдите в реестре tooa
+Запустите `docker login` toolog в реестре контейнеров tooyour с вашей [учетные данные реестра](container-registry-authentication.md).
 
-Следующая команда передает идентификатор и пароль [субъекта-службы](../active-directory/active-directory-application-objects.md) Azure Active Directory. Например, назначение субъекта-службы для реестра позволяет автоматизировать некоторые сценарии.
+Hello следующий пример hello ID и пароль передаются из Azure Active Directory [участника-службы](../active-directory/active-directory-application-objects.md). Например которые были назначены реестр службы основной tooyour сценария автоматизации.
 
 ```
 docker login myregistry.azurecr.io -u xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -p myPassword
 ```
 
 > [!TIP]
-> Укажите полное доменное имя реестра (все знаки в нижнем регистре). В нашем примере поисковый запрос будет выглядеть так: `myregistry.azurecr.io`.
+> Создать убедиться, что toospecify hello реестра полное имя (прописными буквами). В нашем примере поисковый запрос будет выглядеть так: `myregistry.azurecr.io`.
 
-## <a name="steps-to-pull-and-push-an-image"></a>Отправка и получение образов
-Следующий пример позволяет скачать образ Nginx из общедоступного реестра Docker Hub, поместить его в частный реестр контейнеров Azure, отправить его в свой реестр, а затем снова извлечь.
+## <a name="steps-toopull-and-push-an-image"></a>Toopull действия и отправка изображения
+Hello выполнить пример, что загрузка hello Nginx изображения из реестра Docker Hub, открытого с hello, теги в реестр закрытый контейнер Azure, отправляющий ее tooyour реестра, а затем извлекает его еще раз.
 
-**1. Получите официальный образ Docker для Nginx.**
+**1. Официальный образа Docker hello по запросу для Nginx**
 
-Сначала общедоступный образ Nginx нужно отправить на локальный компьютер.
+Сначала по запросу hello открытый Nginx tooyour локального компьютера-образца.
 
 ```
 docker pull nginx
 ```
-**2. Запустите контейнер Nginx.**
+**2. Запустите контейнер Nginx hello**
 
-Следующая команда запускает локальный контейнер Nginx в интерактивном режиме (для отображения выходных данных) и прослушивает порт 8080. После остановки запущенный контейнер удаляется.
+Hello следующая команда запускает hello локального Nginx контейнера интерактивно через порт 8080, позволяя toosee вывод Nginx. Удаляет контейнер после остановки запускается hello.
 
 ```
 docker run -it --rm -p 8080:80 nginx
 ```
 
-Перейдите по адресу [http://localhost:8080](http://localhost:8080), чтобы просмотреть запущенный контейнер. Появится экран, аналогичный показанному ниже.
+Обзор слишком[http://localhost: 8080](http://localhost:8080) tooview hello контейнер запускается. Вы увидите примерно toohello экрана, выполнив одно.
 
 ![Nginx на локальном компьютере](./media/container-registry-get-started-docker-cli/nginx.png)
 
-Чтобы остановить запущенный контейнер, нажмите клавиши [CTRL]+[C].
+toostop Здравствуйте запущенного контейнера, нажмите клавишу [CTRL] + [C].
 
-**3. Создайте псевдоним образа в реестре.**
+**3. Создайте псевдоним hello изображения в реестре**
 
-Следующая команда создает псевдоним образа с полным путем к вашему реестру. Чтобы избежать беспорядка в корне реестра, эта команда указывает пространство имен `samples`.
+Hello следующая команда создает псевдоним изображения hello с реестра tooyour полный путь. В этом примере указывается hello `samples` перегруженность hello корень реестра hello tooavoid пространства имен.
 
 ```
 docker tag nginx myregistry.azurecr.io/samples/nginx
 ```  
 
-**4. Отправьте образ в реестр.**
+**4. Изображение tooyour принудительной hello реестра**
 
 ```
 docker push myregistry.azurecr.io/samples/nginx
 ```
 
-**5. Получите образ из реестра.**
+**5. Изображение hello запросу из системного реестра**
 
 ```
 docker pull myregistry.azurecr.io/samples/nginx
 ```
 
-**6. Запустите контейнер Nginx из реестра.**
+**6. Запустите контейнер Nginx hello из системного реестра**
 
 ```
 docker run -it --rm -p 8080:80 myregistry.azurecr.io/samples/nginx
 ```
 
-Перейдите по адресу [http://localhost:8080](http://localhost:8080), чтобы просмотреть запущенный контейнер.
+Обзор слишком[http://localhost: 8080](http://localhost:8080) tooview hello контейнер запускается.
 
-Чтобы остановить запущенный контейнер, нажмите клавиши [CTRL]+[C].
+toostop Здравствуйте запущенного контейнера, нажмите клавишу [CTRL] + [C].
 
-**7. (Необязательно) Удалите образ**
+**7. (Необязательно) Удаление образа hello**
 
 ```
 docker rmi myregistry.azurecr.io/samples/nginx
 ```
 
 ##<a name="concurrent-limits"></a>Ограничения на параллельную обработку
-В некоторых случаях параллельное выполнение вызовов может привести к ошибкам. В следующей таблице описаны ограничения на число одновременных вызовов для операций "Принудительная отправка" (PULL) "Извлечение" (PUSH) в реестре контейнера Azure:
+В некоторых случаях параллельное выполнение вызовов может привести к ошибкам. в следующей таблице Hello содержит hello ограничения количества одновременных вызовов «Push» и «Pull» операции на контейнер Azure реестра:
 
 | Операция  | Ограничение                                  |
 | ---------- | -------------------------------------- |
-| PULL       | До 10 параллельных операций принудительной отправки на реестр. |
-| PUSH       | До 5 параллельных операций извлечения на реестр. |
+| PULL       | Копирование too10 параллельных запрашивает в реестре |
+| PUSH       | Копирование too5 параллельных помещает в реестре |
 
 ## <a name="next-steps"></a>Дальнейшие действия
-Теперь, когда вы знаете основы, можно приступать к использованию реестра. Например, разверните образы контейнера в кластер [службы контейнеров Azure](https://azure.microsoft.com/documentation/services/container-service/).
+Теперь, вы знаете основы hello, все готово toostart, с помощью реестра! Например, начать развертывание контейнера изображений tooan [контейнера службы Azure](https://azure.microsoft.com/documentation/services/container-service/) кластера.

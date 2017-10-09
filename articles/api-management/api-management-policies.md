@@ -1,6 +1,6 @@
 ---
-title: "Политики в службе управления API Azure | Документация Майкрософт"
-description: "Сведения о политиках, доступных для использования в службе управления API Azure."
+title: "политики управления API aaaAzure | Документы Microsoft"
+description: "Дополнительные сведения о политиках hello, доступные для использования в службе управления API Azure."
 services: api-management
 documentationcenter: 
 author: miaojiang
@@ -14,18 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-ms.openlocfilehash: 485dc3a87a81dc67f5144596a30d498293d6b76a
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 1c468ff37d73359f1dd694b91e20c2ca04f8934e
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="api-management-policies"></a>Политики управления API
-В этом разделе рассматриваются приведенные ниже политики управления API. Дополнительные сведения о добавлении и настройке политик см. в статье о [политиках в управлении API](api-management-howto-policies.md).  
+Этот раздел предоставляет справку для следующих политиках управления интерфейсами API hello. Дополнительные сведения о добавлении и настройке политик см. в статье о [политиках в управлении API](api-management-howto-policies.md).  
   
- Политики представляют собой одну из эффективных функций системы, позволяющих издателю изменять поведение интерфейса API путем его настройки. Политика — это коллекция операторов, которые выполняются последовательно по запросу интерфейса API или при получении из него ответа. К часто используемым операторам относятся преобразование формата из XML в JSON, а также ограничение скорости вызовов, позволяющее ограничивать количество входящих вызовов от разработчика. Также существует много готовых политик.  
+ Политики — это мощная возможность системы hello, разрешить издателю hello поведение hello toochange hello API через конфигурацию. Политики представляют собой набор инструкций, которые выполняются последовательно, по запросу hello или ответу API-интерфейса. Среди наиболее популярных инструкций вспомнить преобразование формата XML tooJSON и toorestrict hello объема входящих вызовов от разработчика ограничение частоты вызовов. Стандартной hello доступны многие дополнительные политики.  
   
- Выражения политики можно использовать в качестве значений атрибутов или текстовых значений в любой политике управления API, если в ней не указано иное. Некоторые политики (включая [управление последовательностью](api-management-advanced-policies.md#choose) и [настройку переменной](api-management-advanced-policies.md#set-variable)) основаны на выражениях политики. Дополнительную информацию см. в документации по [расширенным политикам](api-management-advanced-policies.md#AdvancedPolicies) и [выражениям политики](api-management-policy-expressions.md).  
+ Выражения политики может использоваться как значения атрибутов или текстовыми значениями в любой hello политиках управления интерфейсами API, если политика hello не указывает иное. Некоторые политики, такие как hello [поток управления](api-management-advanced-policies.md#choose) и [переменным](api-management-advanced-policies.md#set-variable) политики основаны на выражениях политики. Дополнительную информацию см. в документации по [расширенным политикам](api-management-advanced-policies.md#AdvancedPolicies) и [выражениям политики](api-management-policy-expressions.md).  
   
 ##  <a name="ProxyPolicies"></a> Политики  
   
@@ -39,37 +39,37 @@ ms.lasthandoff: 07/11/2017
   
     -   [Ограничение IP-адресов вызывающих объектов](api-management-access-restriction-policies.md#RestrictCallerIPs) – фильтрует (разрешает или запрещает) вызовы с конкретных IP-адресов и/или диапазонов адресов.  
   
-    -   [Задание квоты использования по подписке](api-management-access-restriction-policies.md#SetUsageQuota) — позволяет принудительно устанавливать возобновляемую или действующую в течение срока службы квоту на число вызовов и (или) квоту пропускной способности для каждой подписки.  
+    -   [Задание квоты использования по подписке](api-management-access-restriction-policies.md#SetUsageQuota) -позволяет tooenforce задание продлеваемой или бессрочной квоты объема вызовов или полосы пропускания, для каждой подписки.  
   
-    -   [Задание квоты использования по ключу](api-management-access-restriction-policies.md#SetUsageQuotaByKey) — позволяет принудительно устанавливать возобновляемую или действующую в течение срока службы квоту на число вызовов и (или) квоту пропускной способности для каждого ключа.  
+    -   [Задание квоты использования ключом](api-management-access-restriction-policies.md#SetUsageQuotaByKey) -позволяет tooenforce задание продлеваемой или бессрочной квоты объема вызовов или полосы пропускания, на основе каждого ключа.  
   
     -   [Проверка JWT](api-management-access-restriction-policies.md#ValidateJWT) – обеспечивает принудительное задание и проверку JWT, извлеченного из заданного заголовка HTTP или параметра запроса.  
   
 -   [Расширенные политики](api-management-advanced-policies.md#AdvancedPolicies)  
   
-    -   [Поток управления](api-management-advanced-policies.md#choose) — условно применяет правила политики на основе вычисления логических выражений.  
+    -   [Поток управления](api-management-advanced-policies.md#choose) — условно применяет операторы политики на основании оценки hello логических выражений.  
   
-    -   [Перенаправляющий запрос](api-management-advanced-policies.md#ForwardRequest) — перенаправляет запрос в серверную службу.  
+    -   [Прямой запрос](api-management-advanced-policies.md#ForwardRequest) -пересылает hello запроса toohello внутренней службы.  
   
-    -   [Регистрация в концентраторе событий](api-management-advanced-policies.md#log-to-eventhub) — отправляет сообщения в определенном формате объекту, который указан средством ведения журнала.  
+    -   [Журнал tooEvent концентратора](api-management-advanced-policies.md#log-to-eventhub) -отправляет сообщения hello указанный формат tooa сообщение целевому определяются сущности средства ведения журнала.  
   
-    -   [Повторить](api-management-advanced-policies.md#Retry) — повторяет выполнение инструкций встраиваемой политики, если не выполнено условие и до тех пор пока оно не будет выполнено. Выполнение будет повторяться через определенные промежутки времени и до указанного количества повторных попыток.  
+    -   [Повторите](api-management-advanced-policies.md#Retry) -повторных попыток выполнения hello заключены операторы политики, если и пока не будет выполнено условие hello. Выполнение будет сквозные hello определенные промежутки времени и копирование toohello указанное число повторных попыток.  
   
-    -   [Возврат ответа](api-management-advanced-policies.md#ReturnResponse) — прекращает выполнение конвейера и возвращает указанный ответ непосредственно вызывающему объекту.  
+    -   [Вернуть ответ](api-management-advanced-policies.md#ReturnResponse) -конвейера прерывания выполнения и возвращает hello указанного ответа непосредственно toohello вызывающего объекта.  
   
-    -   [Отправка одностороннего запроса](api-management-advanced-policies.md#SendOneWayRequest) — отправляет запрос на указанный URL-адрес и не ожидает ответа.  
+    -   [Отправка запроса на один из способов](api-management-advanced-policies.md#SendOneWayRequest) -отправляет toohello запроса указан URL-адрес без ожидания ответа.  
   
-    -   [Отправка запроса](api-management-advanced-policies.md#SendRequest) — отправляет запрос на указанный URL-адрес.  
+    -   [Отправка запроса](api-management-advanced-policies.md#SendRequest) -отправляет toohello запроса указан URL-адрес.  
   
     -   [Задание переменной](api-management-advanced-policies.md#set-variable) — сохраняет значение в именованной переменной контекста для последующего использования.  
   
-    -   [Установка метода запроса](api-management-advanced-policies.md#SetRequestMethod) — позволяет изменить метод HTTP для запроса.  
+    -   [Установка метода запроса](api-management-advanced-policies.md#SetRequestMethod) -позволяет toochange метод hello HTTP для запроса.  
   
-    -   [Установка кода состояния](api-management-advanced-policies.md#SetStatus) — меняет код состояния HTTP на указанное значение.  
+    -   [Задать код состояния](api-management-advanced-policies.md#SetStatus) -toohello код состояния hello HTTP изменения заданного значения.  
   
-    -   [Трассировка](api-management-advanced-policies.md#Trace) — добавляет строку в выходные данные [инспектора API](https://azure.microsoft.com/en-us/documentation/articles/api-management-howto-api-inspector/).  
+    -   [Трассировки](api-management-advanced-policies.md#Trace) -добавляет строку в hello [инспектора API](https://azure.microsoft.com/en-us/documentation/articles/api-management-howto-api-inspector/) выходных данных.  
   
-    -   [Ожидание](api-management-advanced-policies.md#Wait) — ожидает завершения вложенных политик [запроса отправки](api-management-advanced-policies.md#SendRequest), [получения значения из кэша](api-management-caching-policies.md#GetFromCacheByKey) или [управления потоком](api-management-advanced-policies.md#choose) перед продолжением.  
+    -   [Подождите](api-management-advanced-policies.md#Wait) -ожидает заключены [запрос на отправку](api-management-advanced-policies.md#SendRequest), [получить значение из кэша](api-management-caching-policies.md#GetFromCacheByKey), или [поток управления](api-management-advanced-policies.md#choose) toocomplete политики, прежде чем продолжить.  
   
 -   [Политики аутентификации](api-management-authentication-policies.md#AuthenticationPolicies)  
   
@@ -81,43 +81,43 @@ ms.lasthandoff: 07/11/2017
   
     -   [Получение из кэша](api-management-caching-policies.md#GetFromCache) – выполнение операции поиска в кэше и возврат допустимого кэшированного ответа при его наличии.  
   
-    -   [Сохранение в кэше](api-management-caching-policies.md#StoreToCache) – помещение в кэш ответа в соответствии с заданной конфигурацией управления кэшем.  
+    -   [Хранить toocache](api-management-caching-policies.md#StoreToCache) -кэши ответа в соответствии с toohello указана конфигурация управления кэша.  
   
     -   [Получение значения из кэша](api-management-caching-policies.md#GetFromCacheByKey) — получение кэшированного элемента по ключу.  
   
-    -   [Сохранение значения в кэше](api-management-caching-policies.md#StoreToCacheByKey) — сохранение элемента в кэше по ключу.  
+    -   [Сохраните значение в кэше](api-management-caching-policies.md#StoreToCacheByKey) -хранения элемента в кэше hello по ключу.  
   
-    -   [Удалить значение из кэша](api-management-caching-policies.md#RemoveCacheByKey) — удаление элемента в кэше по ключу.  
+    -   [Удалить значение из кэша](api-management-caching-policies.md#RemoveCacheByKey) -удалить элемент из кэша hello по ключу.  
   
 -   [Кроссдоменные политики](api-management-cross-domain-policies.md#CrossDomainPolicies)  
   
-    -   [Разрешение кросс-доменных вызовов](api-management-cross-domain-policies.md#AllowCrossDomainCalls) – делает API доступным из клиентов на основе браузеров Adobe Flash и Microsoft Silverlight.  
+    -   [Разрешить междоменные вызовы](api-management-cross-domain-policies.md#AllowCrossDomainCalls) -становится доступным hello API из клиентов Adobe Flash и Microsoft Silverlight на основе браузера.  
   
-    -   [CORS](api-management-cross-domain-policies.md#CORS) – добавляет поддержку общего доступа к ресурсам независимо от источника (CORS) для операции или API, чтобы разрешить кросс-доменные вызовы от клиентов на основе браузера.  
+    -   [CORS](api-management-cross-domain-policies.md#CORS) -добавляет ресурсов независимо от источника (CORS) для управления доступом поддерживает операцию tooan или API tooallow междоменные вызовы из браузерных клиентов.  
   
-    -   [JSONP](api-management-cross-domain-policies.md#JSONP) – добавляет поддержку JSON с заполнением (JSONP) для операции или API, чтобы разрешить кросс-доменные вызовы из браузерных клиентов JavaScript.  
+    -   [JSONP](api-management-cross-domain-policies.md#JSONP) - добавляет JSON с заполнением (JSONP) поддержка tooan операции или API tooallow междоменные вызовы из браузерных клиентов JavaScript.  
   
 -   [Политики преобразования](api-management-transformation-policies.md#TransformationPolicies)  
   
-    -   [Преобразование JSON в XML](api-management-transformation-policies.md#ConvertJSONtoXML) – преобразует текст запроса или ответа в формате JSON в формат XML.  
+    -   [Преобразование JSON tooXML](api-management-transformation-policies.md#ConvertJSONtoXML) - преобразует запрос или текст ответа от JSON tooXML.  
   
-    -   [Преобразование XML в JSON](api-management-transformation-policies.md#ConvertXMLtoJSON) – преобразует текст запроса или ответа в формате XML в формат JSON.  
+    -   [Преобразование XML tooJSON](api-management-transformation-policies.md#ConvertXMLtoJSON) - преобразует запрос, или из XML tooJSON текст ответа.  
   
     -   [Поиск и замена строки в тексте](api-management-transformation-policies.md#Findandreplacestringinbody) – отыскивает подстроку запроса или ответа и заменяет ее на другую подстроку.  
   
-    -   [Маскировка URL-адресов в содержимом](api-management-transformation-policies.md#MaskURLSContent) — перезаписывает (маскирует) ссылки в тексте ответа так, чтобы каждая из них указывала на эквивалентную ссылку через шлюз.  
+    -   [Маскировать URL-адреса в содержимом](api-management-transformation-policies.md#MaskURLSContent) -загрузочную запись (маскировка) ссылок в ответ hello текста, чтобы они указывали toohello равнозначными ссылками через шлюз hello.  
   
-    -   [Задание внутренней службы](api-management-transformation-policies.md#SetBackendService) – изменяет внутреннюю службу для входящего запроса.  
+    -   [Задать серверной службе](api-management-transformation-policies.md#SetBackendService) -изменяет hello серверную службу для входящего запроса.  
   
-    -   [Задание текста](api-management-transformation-policies.md#SetBody) – задает текст сообщения для входящих и исходящих запросов.  
+    -   [Задайте текст](api-management-transformation-policies.md#SetBody) -задает текст сообщения hello для входящих и исходящих запросов.  
   
-    -   [Установка HTTP-заголовка](api-management-transformation-policies.md#SetHTTPheader) -– назначает значение существующему заголовку ответа и/или запроса или добавляет новый заголовок ответа и/или запроса.  
+    -   [Задание заголовка HTTP](api-management-transformation-policies.md#SetHTTPheader) - назначает значение tooan существующего ответа и/или заголовка запроса или Добавление нового заголовка ответа и/или запроса.  
   
     -   [Настройка параметра строки запроса](api-management-transformation-policies.md#SetQueryStringParameter) - добавляет, заменяет значение или удаляет параметр строки запроса.  
   
-    -   [Перезапись URL-адреса](api-management-transformation-policies.md#RewriteURL) – преобразует URL-адрес запроса из его общедоступной формы в форму, ожидаемую веб-службой.  
+    -   [Замена URL-адреса](api-management-transformation-policies.md#RewriteURL) -преобразование URL-АДРЕСЕ запроса из общеупотребительной формы формы toohello ожидаемый hello веб-службы.  
   
-    -   [Преобразование XML с помощью XSLT](api-management-transformation-policies.md#XSLTransform) — применяет преобразование данных в формате XSL в формат XML в тексте запроса или ответа.  
+    -   [Преобразования XML с помощью XSLT](api-management-transformation-policies.md#XSLTransform) -применяется tooXML преобразование XSL в тексте запроса или ответа hello.  
   
 ## <a name="next-steps"></a>Дальнейшие действия
 Дополнительные сведения о работе с политиками см. в статье со справочными материалами по [политикам в службе управления API](api-management-howto-policies.md).  

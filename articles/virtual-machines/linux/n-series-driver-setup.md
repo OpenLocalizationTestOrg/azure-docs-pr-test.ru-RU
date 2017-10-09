@@ -1,6 +1,6 @@
 ---
-title: "Установка драйвера серии N для Linux | Документация Майкрософт"
-description: "Как установить драйверы NVIDIA GPU для виртуальных машин серии N под управлением Linux в Azure"
+title: "N-й серии aaaAzure установки драйвера для Linux | Документы Microsoft"
+description: "Как tooset драйверы GPU, NVIDIA для N-й серии виртуальных машин под управлением Linux в Azure"
 services: virtual-machines-linux
 documentationcenter: 
 author: dlepow
@@ -16,15 +16,15 @@ ms.workload: infrastructure-services
 ms.date: 07/25/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: bdeb4d5ca1d9ff4d7dfd0961690412dd7530572a
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 7db1b3859f9075c6d9f0319f39418946ea08743f
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="install-nvidia-gpu-drivers-on-n-series-vms-running-linux"></a>Установка драйверов GPU NVIDIA на виртуальные машины серии N под управлением Linux
 
-Чтобы воспользоваться преимуществами возможностей GPU виртуальных машин Azure серии N под управлением Linux, необходимо установить графические драйверы NVIDIA. В этой статье приводятся действия по установке драйверов после развертывания виртуальных машин серии N. Сведения об установке драйверов также доступны для [виртуальных машин Windows](../windows/n-series-driver-setup.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+преимущества tootake работы GPU hello Azure N-й серии виртуальных машин под управлением Linux, установите поддерживаемые NVIDIA графические драйверы. В этой статье приводятся действия по установке драйверов после развертывания виртуальных машин серии N. Сведения об установке драйверов также доступны для [виртуальных машин Windows](../windows/n-series-driver-setup.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
 
 Характеристики виртуальных машин серии N, сведения о дисках и объеме памяти см. в статье [Размеры виртуальных машин Linux, оптимизированных для GPU](sizes-gpu.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). 
@@ -35,11 +35,11 @@ ms.lasthandoff: 08/03/2017
 
 ## <a name="install-grid-drivers-for-nv-vms"></a>Установка драйверов GRID для виртуальных машин NV
 
-Чтобы установить драйверы NVIDIA GRID на виртуальных машинах NV, подключитесь по протоколу SSH к каждой виртуальной машине и выполните действия, необходимые для дистрибутива Linux. 
+драйверы tooinstall NVIDIA СЕТКИ на виртуальных машинах NV, сделать tooeach подключения SSH виртуальной Машины и выполните действия hello для дистрибутива Linux. 
 
 ### <a name="ubuntu-1604-lts"></a>Ubuntu 16.04 LTS
 
-1. Выполните команду `lspci`. Убедитесь, что карта или карты NVIDIA M60 отображаются как устройства PCI.
+1. Запустите hello `lspci` команды. Убедитесь, что hello NVIDIA M60 карты или карты отображаются как устройства PCI.
 
 2. Установите обновления.
 
@@ -52,7 +52,7 @@ ms.lasthandoff: 08/03/2017
 
   sudo apt-get install build-essential ubuntu-desktop -y
   ```
-3. Отключите драйвер ядра Nouveau, который несовместим с драйвером NVIDIA. (На виртуальных машинах NV используйте только драйвер NVIDIA.) Чтобы сделать это, создайте в `/etc/modprobe.d ` файл с именем `nouveau.conf` со следующим содержимым:
+3. Отключение драйвера ядра Nouveau hello, которая несовместима с драйвером NVIDIA hello. (Только используйте драйвер NVIDIA hello на виртуальных машинах NV). toodo это, создайте файл в `/etc/modprobe.d `с именем `nouveau.conf` с hello после содержимого:
 
   ```
   blacklist nouveau
@@ -61,13 +61,13 @@ ms.lasthandoff: 08/03/2017
   ```
 
 
-4. Перезагрузите виртуальную машину и подключитесь повторно. Выйдите из X-сервера:
+4. Перезагрузите компьютер hello виртуальной Машины и повторного подключения. Выйдите из X-сервера:
 
   ```bash
   sudo systemctl stop lightdm.service
   ```
 
-5. Загрузите и установите драйвер GRID.
+5. Загрузите и установите драйвер hello СЕТКИ.
 
   ```bash
   wget -O NVIDIA-Linux-x86_64-367.106-grid.run https://go.microsoft.com/fwlink/?linkid=849941  
@@ -77,26 +77,26 @@ ms.lasthandoff: 08/03/2017
   sudo ./NVIDIA-Linux-x86_64-367.106-grid.run
   ``` 
 
-6. Когда появится запрос на запуск служебной программы nvidia-xconfig для обновления файла конфигурации X, выберите **Да**.
+6. В ответ на запрос, следует ли toorun hello nvidia xconfig программа tooupdate X файла конфигурации, выберите **Да**.
 
-7. После завершения установки скопируйте /etc/nvidia/gridd.conf.template в новый файл gridd.conf в расположении /etc/nvidia/.
+7. После завершения установки, скопируйте gridd.conf tooa новый /etc/nvidia/gridd.conf.template файл в расположение/etc/nvidia /
 
   ```bash
   sudo cp /etc/nvidia/gridd.conf.template /etc/nvidia/gridd.conf
   ```
 
-8. Добавьте следующую строку в файл `/etc/nvidia/gridd.conf`:
+8. Добавьте hello слишком следующие`/etc/nvidia/gridd.conf`:
  
   ```
   IgnoreSP=TRUE
   ```
-9. Перезапустите виртуальную машину и приступите к проверке установки.
+9. Перезагрузите компьютер hello виртуальной Машины и продолжить установку tooverify hello.
 
 
 ### <a name="centos-based-73-or-red-hat-enterprise-linux-73"></a>CentOS 7.3 или Red Hat Enterprise Linux 7.3
 
 
-1. Обновите ядро и DKMS.
+1. Обновление ядра hello и DKMS.
  
   ```bash  
   sudo yum update
@@ -108,7 +108,7 @@ ms.lasthandoff: 08/03/2017
   sudo yum install dkms
   ```
 
-2. Отключите драйвер ядра Nouveau, который несовместим с драйвером NVIDIA. (На виртуальных машинах NV используйте только драйвер NVIDIA.) Чтобы сделать это, создайте в `/etc/modprobe.d ` файл с именем `nouveau.conf` со следующим содержимым:
+2. Отключение драйвера ядра Nouveau hello, которая несовместима с драйвером NVIDIA hello. (Только используйте драйвер NVIDIA hello на виртуальных машинах NV). toodo это, создайте файл в `/etc/modprobe.d `с именем `nouveau.conf` с hello после содержимого:
 
   ```
   blacklist nouveau
@@ -116,7 +116,7 @@ ms.lasthandoff: 08/03/2017
   blacklist lbm-nouveau
   ```
  
-3. Перезагрузите виртуальную машину, повторно подключитесь и установите последнюю версию служб интеграции Linux для Hyper-v.
+3. Перезагрузите hello ВМ, повторно подключиться и установите последнюю версию служб интеграции Linux для Hyper-V: hello
  
   ```bash
   wget http://download.microsoft.com/download/6/8/F/68FE11B8-FAA4-4F8D-8C7D-74DA7F2CFC8C/lis-rpms-4.2.2-2.tar.gz
@@ -130,9 +130,9 @@ ms.lasthandoff: 08/03/2017
   sudo reboot
   ```
  
-4. Повторно подключитесь к виртуальной машине и выполните команду `lspci`. Убедитесь, что карта или карты NVIDIA M60 отображаются как устройства PCI.
+4. Подключите toohello виртуальной Машины и выполнить hello `lspci` команды. Убедитесь, что hello NVIDIA M60 карты или карты отображаются как устройства PCI.
  
-5. Загрузите и установите драйвер GRID.
+5. Загрузите и установите драйвер hello СЕТКИ.
 
   ```bash
   wget -O NVIDIA-Linux-x86_64-367.106-grid.run https://go.microsoft.com/fwlink/?linkid=849941  
@@ -141,33 +141,33 @@ ms.lasthandoff: 08/03/2017
 
   sudo ./NVIDIA-Linux-x86_64-367.106-grid.run
   ``` 
-6. Когда появится запрос на запуск служебной программы nvidia-xconfig для обновления файла конфигурации X, выберите **Да**.
+6. В ответ на запрос, следует ли toorun hello nvidia xconfig программа tooupdate X файла конфигурации, выберите **Да**.
 
-7. После завершения установки скопируйте /etc/nvidia/gridd.conf.template в новый файл gridd.conf в расположении /etc/nvidia/.
+7. После завершения установки, скопируйте gridd.conf tooa новый /etc/nvidia/gridd.conf.template файл в расположение/etc/nvidia /
   
   ```bash
   sudo cp /etc/nvidia/gridd.conf.template /etc/nvidia/gridd.conf
   ```
   
-8. Добавьте следующую строку в файл `/etc/nvidia/gridd.conf`:
+8. Добавьте hello слишком следующие`/etc/nvidia/gridd.conf`:
  
   ```
   IgnoreSP=TRUE
   ```
-9. Перезапустите виртуальную машину и приступите к проверке установки.
+9. Перезагрузите компьютер hello виртуальной Машины и продолжить установку tooverify hello.
 
 ### <a name="verify-driver-installation"></a>Проверка установки драйверов
 
 
-Чтобы запросить состояние устройства GPU, установите SSH-подключение к виртуальной машине и запустите служебную программу командной строки [nvidia smi](https://developer.nvidia.com/nvidia-system-management-interface), установленную вместе с драйвером. 
+tooquery hello состояния устройств GPU, SSH toohello ВМ и выполнения hello [nvidia smi](https://developer.nvidia.com/nvidia-system-management-interface) программа устанавливается вместе с драйвером hello. 
 
-Отобразятся выходные данные, аналогичные приведенным ниже.
+Появится примерно toohello следующие выходные данные:
 
 ![Состояние устройства NVIDIA](./media/n-series-driver-setup/smi-nv.png)
  
 
 ### <a name="x11-server"></a>Сервер X11
-Если вам требуется сервер X11 для удаленных подключений к виртуальной машине NV, рекомендуется использовать [x11vnc](http://www.karlrunge.com/x11vnc/), так как он поддерживает аппаратное ускорение графики. BusID устройства M60 необходимо вручную добавить в файл xconfig (`etc/X11/xorg.conf` в Ubuntu 16.04 LTS, `/etc/X11/XF86config` в CentOS 7.3 или Red Hat Enterprise Server 7.3). Добавьте раздел `"Device"`, аналогичный приведенному ниже.
+Если вам требуется X11 сервера для удаленных подключений tooan ВМ NV [x11vnc](http://www.karlrunge.com/x11vnc/) рекомендуется, так как она допускает аппаратное ускорение графики. Hello BusID hello M60 устройства необходимо вручную добавить файл xconfig toohello (`etc/X11/xorg.conf` на Ubuntu 16.04 LTS, `/etc/X11/XF86config` на CentOS 7.3 или Red Hat Enterprise Server 7.3). Добавить `"Device"` статьи аналогичные toohello следующее:
  
 ```
 Section "Device"
@@ -179,21 +179,21 @@ Section "Device"
 EndSection
 ```
  
-Чтобы использовать это устройство, обновите раздел `"Screen"`.
+Кроме того, обновить ваш `"Screen"` статьи toouse это устройство.
  
-BusID можно найти, выполнив
+Hello BusID можно найти, выполнив
 
 ```bash
 /usr/bin/nvidia-smi --query-gpu=pci.bus_id --format=csv | tail -1 | cut -d ':' -f 1
 ```
  
-BusID может измениться, если виртуальная машина будет перераспределена или перезагружена. Для обновления BusID в конфигурации X11 при перезагрузке виртуальной машины можно использовать скрипт. Например:
+Hello BusID можно изменить, если виртуальная машина получает перераспределить или перезагрузки. Таким образом вы можете toouse hello tooupdate сценарий BusID в конфигурации hello X11 при перезагрузке виртуальной Машины. Например:
 
 ```bash 
 #!/bin/bash
 BUSID=$((16#`/usr/bin/nvidia-smi --query-gpu=pci.bus_id --format=csv | tail -1 | cut -d ':' -f 1`))
 
-if grep -Fxq "${BUSID}" /etc/X11/XF86Config; then     echo "BUSID is matching"; else   echo "BUSID changed to ${BUSID}" && sed -i '/BusID/c\    BusID          \"PCI:0@'${BUSID}':0:0:0\"' /etc/X11/XF86Config; fi
+if grep -Fxq "${BUSID}" /etc/X11/XF86Config; then     echo "BUSID is matching"; else   echo "BUSID changed too${BUSID}" && sed -i '/BusID/c\    BusID          \"PCI:0@'${BUSID}':0:0:0\"' /etc/X11/XF86Config; fi
 ```
 
 Этот файл можно вызывать с правами привилегированного пользователя во время загрузки, создав для него запись в `/etc/rc.d/rc3.d`.
@@ -201,21 +201,21 @@ if grep -Fxq "${BUSID}" /etc/X11/XF86Config; then     echo "BUSID is matching"; 
 
 ## <a name="install-cuda-drivers-for-nc-vms"></a>Установка драйверов CUDA для виртуальных машин серии NC
 
-Ниже приведены инструкции по установке драйверов NVIDIA из набора средств NVIDIA CUDA Toolkit 8.0 на виртуальные машины NC под управлением Linux. 
+Вот драйверы NVIDIA tooinstall действия на виртуальных машинах Linux NC из hello NVIDIA CUDA Toolkit 8.0. 
 
-Разработчики на языках C и C++ могут дополнительно установить полный набор средств для создания приложений, использующих ускорение на GPU. Дополнительные сведения см. в [руководстве по установке CUDA](http://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html).
+Разработчикам C и C++ можно также установить hello полный набор средств toobuild ускорением GPU приложений. Дополнительные сведения см. в разделе hello [руководство по установке CUDA](http://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html).
 
 
 > [!NOTE]
-> Предоставленные в статье ссылки для скачивания драйверов CUDA актуальны на момент ее публикации. Последние версии драйверов CUDA можно получить на веб-сайте [NVIDIA](http://www.nvidia.com/).
+> Предоставленные в статье ссылки для скачивания драйверов CUDA актуальны на момент ее публикации. Последние версии драйверов CUDA hello, на сайте hello [NVIDIA](http://www.nvidia.com/) веб-сайта.
 >
 
-Чтобы установить набор средств CUDA, установите SSH-подключение к каждой виртуальной машине. Убедитесь, что в системе есть графический процессор с архитектурой CUDA, выполнив следующую команду:
+tooinstall CUDA Toolkit сделать tooeach подключения SSH виртуальной Машины. tooverify, hello система имеет поддержкой CUDA GPU, запустите следующую команду hello.
 
 ```bash
 lspci | grep -i NVIDIA
 ```
-Вы увидите данные, похожие на следующий пример (для адаптера NVIDIA Tesla K80):
+Вы увидите примерно toohello вывода следующий пример (показывающее плату NVIDIA Tesla K80):
 
 ![результаты выполнения команды lspci](./media/n-series-driver-setup/lspci.png)
 
@@ -223,7 +223,7 @@ lspci | grep -i NVIDIA
 
 ### <a name="ubuntu-1604-lts"></a>Ubuntu 16.04 LTS
 
-1. Скачайте и установите драйверы CUDA.
+1. Загрузите и установите драйвер CUDA hello.
   ```bash
   CUDA_REPO_PKG=cuda-repo-ubuntu1604_8.0.61-1_amd64.deb
 
@@ -239,15 +239,15 @@ lspci | grep -i NVIDIA
 
   ```
 
-  Установка может занять несколько минут.
+  Hello установка может занять несколько минут.
 
-2. Чтобы дополнительно установить полный набор средств CUDA, введите следующую команду.
+2. toooptionally установки hello завершения CUDA набор средств, тип:
 
   ```bash
   sudo apt-get install cuda
   ```
 
-3. Перезапустите виртуальную машину и приступите к проверке установки.
+3. Перезагрузите компьютер hello виртуальной Машины и продолжить установку tooverify hello.
 
 ### <a name="centos-based-73-or-red-hat-enterprise-linux-73"></a>CentOS 7.3 или Red Hat Enterprise Linux 7.3
 
@@ -258,10 +258,10 @@ lspci | grep -i NVIDIA
 
   sudo reboot
   ```
-2. Подключитесь к виртуальной машине и установите последнюю версию Linux Integration Services для Hyper-V.
+2. Подключите toohello ВМ и установить hello последнюю версию служб интеграции Linux для Hyper-V.
 
   > [!IMPORTANT]
-  > Если вы установили на виртуальную машину NC24r образ HPC на основе CentOS, перейдите к шагу 3. Поскольку драйверы Azure RDMA и службы интеграции Linux предварительно установлены в образ, служба интеграции Linux не обновляется и обновления ядра отключены по умолчанию.
+  > При установке образа на основе CentOS HPC на Виртуальной машине NC24r пропустите tooStep 3. Поскольку драйверы Azure RDMA и службы интеграции Linux предварительно установлен в образе hello, LIS не обновляются и обновлений ядра отключены по умолчанию.
   >
 
   ```bash
@@ -276,7 +276,7 @@ lspci | grep -i NVIDIA
   sudo reboot
   ```
  
-3. Повторно подключитесь к виртуальной машине и продолжите установку с помощью следующих команд:
+3. Переподключение toohello ВМ и продолжите установку hello, следующие команды:
 
   ```bash
   sudo yum install kernel-devel
@@ -296,23 +296,23 @@ lspci | grep -i NVIDIA
   sudo yum install cuda-drivers
   ```
 
-  Установка может занять несколько минут. 
+  Hello установка может занять несколько минут. 
 
-4. Чтобы дополнительно установить полный набор средств CUDA, введите следующую команду.
+4. toooptionally установки hello завершения CUDA набор средств, тип:
 
   ```bash
   sudo yum install cuda
   ```
 
-5. Перезапустите виртуальную машину и приступите к проверке установки.
+5. Перезагрузите компьютер hello виртуальной Машины и продолжить установку tooverify hello.
 
 
 ### <a name="verify-driver-installation"></a>Проверка установки драйверов
 
 
-Чтобы запросить состояние устройства GPU, установите SSH-подключение к виртуальной машине и запустите служебную программу командной строки [nvidia smi](https://developer.nvidia.com/nvidia-system-management-interface), установленную вместе с драйвером. 
+tooquery hello состояния устройств GPU, SSH toohello ВМ и выполнения hello [nvidia smi](https://developer.nvidia.com/nvidia-system-management-interface) программа устанавливается вместе с драйвером hello. 
 
-Отобразятся выходные данные, аналогичные приведенным ниже.
+Появится примерно toohello следующие выходные данные:
 
 ![Состояние устройства NVIDIA](./media/n-series-driver-setup/smi.png)
 
@@ -348,14 +348,14 @@ sudo reboot
 
 ## <a name="troubleshooting"></a>Устранение неполадок
 
-* Может возникать известная проблема, связанная с работой драйверов CUDA на виртуальных машинах Azure серии N под управлением ядра Linux версии 4.4.0-75 на Ubuntu 16.04 LTS. Если вы обновляете более раннюю версию ядра, обновите ее как минимум до версии 4.4.0-77. 
+* Имеется известная проблема с драйверами CUDA на ОС Linux ядра hello 4.4.0-75 Ubuntu 16.04 LTS виртуальных машинах Azure N-й серии. При обновлении с более ранней версии ядра обновление tooat наименьших 4.4.0-77 версию ядра. 
 
 
 
 ## <a name="next-steps"></a>Дальнейшие действия
 
-* Дополнительные сведения о графических процессорах NVIDIA в виртуальных машинах серии N см. в следующих разделах:
+* Дополнительные сведения о графических процессоров NVIDIA hello hello N-й серии виртуальных машин см.:
     * [NVIDIA Tesla K80](http://www.nvidia.com/object/tesla-k80.html) (для виртуальных машин Azure серии NC);
     * [NVIDIA Tesla M60](http://www.nvidia.com/object/tesla-m60.html) (для виртуальных машин Azure серии NV).
 
-* Чтобы записать образ виртуальной машины Linux с установленными драйверами NVIDIA, см. статью [Как подготовить к работе и записать образ виртуальной машины Linux](capture-image.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+* образ ВМ Linux с вашей установленные драйверы NVIDIA toocapture. в разделе [как toogeneralize и записать виртуальную машину Linux](capture-image.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).

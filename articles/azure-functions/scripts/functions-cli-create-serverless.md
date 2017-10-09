@@ -1,5 +1,5 @@
 ---
-title: "Пример сценария Azure CLI. Создание приложения-функции для выполнения без сервера | Документация Майкрософт"
+title: "aaaAzure образец скрипта CLI - создать приложение функции для выполнения без сервера | Документы Microsoft"
 description: "Пример сценария Azure CLI для создания приложения-функции для выполнения без сервера."
 services: functions
 documentationcenter: functions
@@ -16,33 +16,33 @@ ms.workload: web
 ms.date: 04/11/2017
 ms.author: cfowler
 ms.custom: mvc
-ms.openlocfilehash: 37046967bd5ab0d797d1c66690db7200fb4805e2
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 7ec872b642e50827896a73a9e43bcc87233e15c2
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-a-function-app-for-serverless-execution"></a>Создание приложения-функции для выполнения без сервера
 
-Этот пример сценария создает приложение-функцию Azure, которое является контейнером для ваших функций. Приложение-функция создается с помощью [плана потребления](../functions-scale.md#consumption-plan), который идеально подходит для рабочих нагрузок, выполняемых на основе событий без использования сервера.
+Этот пример сценария создает приложение-функцию Azure, которое является контейнером для ваших функций. Hello функции создания приложения с помощью hello [плана потребления](../functions-scale.md#consumption-plan), которые идеально подходят для рабочих нагрузок без сервера с событиями.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Если вы решили установить и использовать интерфейс командной строки локально, для работы с этим руководством вам понадобится Azure CLI 2.0 или более поздней версии. Чтобы узнать версию, выполните команду `az --version`. Если вам необходимо выполнить установку или обновление, см. статью [Установка Azure CLI 2.0]( /cli/azure/install-azure-cli). 
+Если выбрать tooinstall и использовать hello CLI локально, в этом разделе требуется под управлением hello Azure CLI версии 2.0 или более поздней версии. Запустите `az --version` версии toofind hello. Если требуется tooinstall или обновления, см. раздел [установить CLI Azure 2.0]( /cli/azure/install-azure-cli). 
 
 ## <a name="sample-script"></a>Пример скрипта
 
-Этот скрипт создает приложение-функцию Azure с помощью [плана потребления](../functions-scale.md#consumption-plan).
+Этот скрипт создает функцию Azure приложения с помощью hello [плана потребления](../functions-scale.md#consumption-plan).
 
-[!code-azurecli-interactive[main](../../../cli_scripts/azure-functions/create-function-app-consumption/create-function-app-consumption.sh "Создание функции Azure на основе плана потребления")]
+[!code-azurecli-interactive[main](../../../cli_scripts/azure-functions/create-function-app-consumption/create-function-app-consumption.sh "Create an Azure Function on a consumption plan")]
 
 [!INCLUDE [cli-script-clean-up](../../../includes/cli-script-clean-up.md)]
 
 ## <a name="script-explanation"></a>Описание скрипта
 
-Для каждой команды в таблице приведены ссылки на соответствующую документацию. Этот сценарий использует следующие команды:
+Каждая команда в таблице hello связывает toocommand документацию. Этот скрипт использует hello, следующие команды:
 
 | Команда | Примечания |
 |---|---|
@@ -52,6 +52,6 @@ ms.lasthandoff: 07/11/2017
 
 ## <a name="next-steps"></a>Дальнейшие действия
 
-Дополнительные сведения об Azure CLI см. в [документации по Azure CLI](https://docs.microsoft.com/cli/azure/overview).
+Дополнительные сведения о hello Azure CLI см. в разделе [документации Azure CLI](https://docs.microsoft.com/cli/azure/overview).
 
-Дополнительные примеры сценариев Azure CLI для Функций Azure см. в [документации по Функциям Azure](../functions-cli-samples.md).
+Дополнительные примеры сценариев, использующих функции Azure CLI можно найти в hello [документации Azure функции](../functions-cli-samples.md).

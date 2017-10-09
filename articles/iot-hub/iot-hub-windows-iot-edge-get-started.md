@@ -1,6 +1,6 @@
 ---
-title: "Приступая к работе с Edge Интернета вещей Azure (Windows) | Документация Майкрософт"
-description: "Узнайте, как создать шлюз Edge Интернета вещей Azure на компьютере Windows, а также ознакомьтесь с основными понятиями Edge Интернета вещей Azure, такими как модули и JSON-файлы конфигурации."
+title: "aaaGet работы с Azure IoT Edge (Windows) | Документы Microsoft"
+description: "Как toobuild шлюз Azure IoT Edge в Windows компьютер и изучите основные понятия в Azure IoT Edge, например модули и файлы конфигурации JSON."
 services: iot-hub
 documentationcenter: 
 author: chipalost
@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 06/07/2017
 ms.author: andbuc
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5db39bab8e31a8e7026b34e72b4614b0f6f57772
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 5dd13cbfc02eeb55d9f2dbffca5021f2624acf14
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="explore-azure-iot-edge-architecture-on-windows"></a>Приступая к работе с архитектурой Edge Интернета вещей в Windows
 
@@ -27,16 +27,16 @@ ms.lasthandoff: 07/11/2017
 
 [!INCLUDE [iot-hub-iot-edge-install-build-windows](../../includes/iot-hub-iot-edge-install-build-windows.md)]
 
-## <a name="how-to-run-the-sample"></a>Запуск примера
+## <a name="how-toorun-hello-sample"></a>Как toorun hello образца
 
-Скрипт **build.cmd** создает выходные данные в папке **build** локальной копии репозитория **iot-edge**. Выходные данные содержат два модуля Edge Интернета вещей, которые используются в данном примере.
+Hello **build.cmd** сценарий создает выходные данные в hello **построения** папки в локальной копии hello **iot edge** репозитория. Этот выход включает hello используемый в этом примере два модуля IoT Edge.
 
-Сценарий сборки размещает **logger.dll** в папках **build\\modules\\logger\\Debug** и **hello\_world.dll** in the **build\\modules\\hello_world\\Debug**. Используйте эти пути для настройки значений **module path**, как указано в приведенном ниже файле параметров JSON.
+Здравствуйте местах скрипт построения **logger.dll** в hello **построения\\модули\\средства ведения журнала\\отладки** папки и **hello\_world.dll**  в hello **построения\\модули\\hello_world\\отладки** папки. Эти пути можно использовать для hello **путь к модулю** значения, как показано в следующий файл параметров JSON hello.
 
-Процесс hello\_world\_sample принимает путь к JSON-файлу конфигурации в качестве аргумента командной строки. Приведенный ниже пример JSON-файла размещен в репозитории пакетов SDK по пути **samples\\hello\_world\\src\\hello\_world\_win.json**. Этот файл конфигурации работает так, как если бы вы не модифицировали сценарий сборки, чтобы разместить модули IoT Edge или образцы исполняемых файлов в местах, отличных от настроек по умолчанию.
+Hello hello\_world\_занимает образец файла конфигурации JSON tooa путь hello аргумент командной строки. Hello следующий файл JSON приведены в репозиторий SDK hello в **образцы\\hello\_world\\src\\hello\_world\_win.json**. Это работает файл конфигурации, если только не изменить hello построения hello tooplace сценария IoT Edge модули или образец исполняемые файлы в нестандартные расположения.
 
 > [!NOTE]
-> Пути к модулям зависят от каталога, в котором находится файл hello\_world\_sample.exe. По умолчанию пример JSON-файла конфигурации предусматривает запись файла log.txt в текущем рабочем каталоге.
+> пути поиска модуля Hello, toohello относительный каталог, если hello hello\_world\_sample.exe находится. Образец Hello значения по умолчанию toowriting файл «log.txt» JSON конфигурации в текущий рабочий каталог.
 
 ```json
 {
@@ -71,9 +71,9 @@ ms.lasthandoff: 07/11/2017
 }
 ```
 
-1. Перейдите в папку **build** в корневой папке вашей локальной копии репозитория **iot-edge**.
+1. Перейдите toohello **построения** папок в корне hello ваша локальная копия hello **iot edge** репозитория.
 
-1. Выполните следующую команду:
+1. Выполните следующую команду hello.
 
     ```cmd
     samples\hello_world\Debug\hello_world_sample.exe ..\samples\hello_world\src\hello_world_win.json

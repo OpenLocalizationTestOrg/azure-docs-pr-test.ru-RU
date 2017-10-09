@@ -1,6 +1,6 @@
 ---
-title: "Часто задаваемые вопросы о виртуальных машинах Linux в Azure | Документация Майкрософт"
-description: "В этой статье содержатся ответы на некоторые распространенные вопросы о виртуальных машинах Linux, созданных с помощью модели Resource Manager."
+title: "вопросы и ответы для виртуальных машин Linux в Azure aaaFrequently | Документы Microsoft"
+description: "Предоставляет ответы toosome hello часто задаваемых вопросов о виртуальных машинах Linux, созданных с помощью модели hello диспетчера ресурсов."
 services: virtual-machines-linux
 documentationcenter: 
 author: cynthn
@@ -15,50 +15,50 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2017
 ms.author: cynthn
-ms.openlocfilehash: 0e06d21bd0b6ef807f38e41dcd50c9cd715607a3
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 0afd08123dddc408851065c46deedc3146dbec20
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="frequently-asked-question-about-linux-virtual-machines"></a>Часто задаваемые вопросы по виртуальным машинам Linux
-В этой статье содержатся ответы на некоторые распространенные вопросы о виртуальных машинах Linux, созданных в Azure посредством модели развертывания с помощью Resource Manager. Версия этой статьи для Windows — [Часто задаваемые вопросы по виртуальным машинам Windows](../windows/faq.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+В этой статье рассматриваются некоторые распространенные вопросы о виртуальных машин Linux, созданных в Azure с помощью модели развертывания диспетчера ресурсов hello. Версию Windows hello в этом разделе см. в разделе [часто задаваемые вопросы о виртуальных машинах](../windows/faq.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 
 ## <a name="what-can-i-run-on-an-azure-vm"></a>Что можно запускать на виртуальной машине Azure?
 Все подписчики могут запускать на виртуальной машине Azure серверное программное обеспечение. Дополнительные сведения см. в статье [Linux в Azure — рекомендованные дистрибутивы](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
 ## <a name="how-much-storage-can-i-use-with-a-virtual-machine"></a>Какой объем памяти можно использовать с виртуальной машиной?
-Каждый диск данных может иметь объем до 1 ТБ. Количество дисков данных, которое можно использовать, зависит от размера виртуальной машины. Дополнительную информацию см. в статье [Размеры виртуальных машин](sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Каждый диск данных может быть вверх too1 ТБ. Hello количество дисков данных, которые можно использовать зависит от размера hello hello виртуальной машины. Дополнительную информацию см. в статье [Размеры виртуальных машин](sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
-Учетная запись хранения Azure предоставляет хранилище для диска операционной системы и любых дисков данных. Каждый из этих дисков представляет собой VHD-файл, хранящийся как страничный BLOB-объект. Информацию о ценах см. в статье [Информация о ценах на хранилища](https://azure.microsoft.com/pricing/details/storage/).
+Учетная запись хранилища Azure предоставляет хранилище для диска операционной системы hello и диски с данными. Каждый из этих дисков представляет собой VHD-файл, хранящийся как страничный BLOB-объект. Информацию о ценах см. в статье [Информация о ценах на хранилища](https://azure.microsoft.com/pricing/details/storage/).
 
 ## <a name="how-can-i-access-my-virtual-machine"></a>Как получить доступ к своей виртуальной машине?
-Установите удаленное подключение для входа на виртуальную машину с помощью Secure Shell (SSH). Ознакомьтесь с инструкциями по подключению [из Windows](ssh-from-windows.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) или [Linux и Mac](mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). По умолчанию SSH поддерживает не более 10 параллельных подключений. Число доступных параллельных подключений можно увеличить, изменив файл конфигурации.
+Установите подключение к удаленному toolog на toohello виртуальную машину, используя Secure Shell (SSH). В разделе hello инструкции о том, как tooconnect [из Windows](ssh-from-windows.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) или [из Mac и Linux](mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). По умолчанию SSH поддерживает не более 10 параллельных подключений. Это число можно увеличить, изменив файл конфигурации hello.
 
 Если возникают проблемы, ознакомьтесь со статьей об [устранении неполадок с подключением Secure Shell (SSH)](troubleshoot-ssh-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
-## <a name="can-i-use-the-temporary-disk-devsdb1-to-store-data"></a>Можно ли использовать временный диск (/dev/sdb1) для хранения данных?
-Не используйте временный диск (/dev/sdb1) для хранения данных. Он обеспечивает лишь временное хранение. Вы рискуете потерять данные, которые невозможно будет восстановить.
+## <a name="can-i-use-hello-temporary-disk-devsdb1-toostore-data"></a>Можно использовать (/ dev/sdb1) toostore hello временный диск данных?
+Не следует использовать (/ dev/sdb1) toostore hello временный диск данных. Он обеспечивает лишь временное хранение. Вы рискуете потерять данные, которые невозможно будет восстановить.
 
 ## <a name="can-i-copy-or-clone-an-existing-azure-vm"></a>Можно ли копировать или клонировать существующую виртуальную машину Azure?
-Да. Указания доступны в статье [Создание копии виртуальной машины Linux, работающей в Azure](copy-vm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Да. Инструкции см. в разделе [как toocreate копию виртуальной машины Linux в hello модели развертывания диспетчера ресурсов](copy-vm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
 ## <a name="why-am-i-not-seeing-canada-central-and-canada-east-regions-through-azure-resource-manager"></a>Почему в Azure Resource Manager не отображаются регионы центральной и восточной Канады?
-При создании виртуальных машин в существующих подписках Azure эти два новых региона не регистрируются автоматически. Регистрация осуществляется автоматически при развертывании виртуальной машины на портале Azure в любом другом регионе с помощью Azure Resource Manager. После развертывания виртуальной машины в любом другом регионе Azure новые регионы станут доступными для последующих виртуальных машин.
+две новые области Hello центра Канады и Восточная Канада автоматически не зарегистрированы для создания виртуальной машины для существующих подписок Azure. Эта регистрация выполняется автоматически при развертывании виртуальной машины с помощью hello Azure портала tooany другой области, с помощью диспетчера ресурсов Azure. После виртуальной машины не развернутой tooany другой регион Azure hello новые области должны быть доступны для последующих виртуальных машин.
 
-## <a name="can-i-add-a-nic-to-my-vm-after-its-created"></a>Создав виртуальную машину, могу я добавить к ней сетевой адаптер?
-Да, теперь это возможно. Сначала виртуальную машину нужно остановить и отменить ее распределение. Затем можно добавить или удалить сетевую карту (за исключением последней сетевой карты на виртуальной машине). 
+## <a name="can-i-add-a-nic-toomy-vm-after-its-created"></a>Можно добавить toomy сетевого Адаптера виртуальной Машины после ее создания?
+Да, теперь это возможно. Первый toobe потребностей Hello ВМ остановлена освобождена. Затем можно добавить или удалить сетевой Адаптер (если он не является последней сетевой Адаптер для виртуальной Машины hello hello). 
 
 ## <a name="are-there-any-computer-name-requirements"></a>Есть ли какие-либо требования к имени компьютера?
-Да. Длина имени компьютера не должна превышать 64 знака. Дополнительные сведения об именовании ресурсов см. в [правилах и ограничениях соглашений об именовании](/architecture/best-practices/naming-conventions#naming-rules-and-restrictions?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Да. Имя компьютера Hello может быть более 64 символов. Дополнительные сведения об именовании ресурсов см. в [правилах и ограничениях соглашений об именовании](/architecture/best-practices/naming-conventions#naming-rules-and-restrictions?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
 ## <a name="are-there-any-resource-group-name-requirements"></a>Есть ли какие-либо требования к имени группы ресурсов?
-Да. Длина имени группы ресурсов не должна превышать 90 знаков. Дополнительные сведения о группах ресурсов см. в [правилах и ограничениях соглашений об именовании](/architecture/best-practices/naming-conventions#naming-rules-and-restrictions?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Да. Имя группы ресурсов Hello может быть более 90 символов в длину. Дополнительные сведения о группах ресурсов см. в [правилах и ограничениях соглашений об именовании](/architecture/best-practices/naming-conventions#naming-rules-and-restrictions?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
-## <a name="what-are-the-username-requirements-when-creating-a-vm"></a>Какие требования к имени пользователя при создании виртуальной машины?
+## <a name="what-are-hello-username-requirements-when-creating-a-vm"></a>Каковы требования к имени пользователя hello, при создании виртуальной Машины?
 Длина имени пользователя должно быть от 1 до 64 знаков.
 
-Не допускаются следующие имена пользователей:
+Hello следующие имена пользователей не разрешены:
 
 <table>
     <tr>
@@ -88,15 +88,15 @@ ms.lasthandoff: 08/18/2017
 </table>
 
 
-## <a name="what-are-the-password-requirements-when-creating-a-vm"></a>Какие требования к паролю при создании виртуальной машины?
-Длина пароля должна быть от 6 до 72 знаков. Также должны удовлетворяться 3 из следующих 4 требований сложности:
+## <a name="what-are-hello-password-requirements-when-creating-a-vm"></a>Каковы требования к паролю hello при создании виртуальной Машины?
+Пароли необходимо 6 72 символов и удовлетворять 3 из следующих 4 требованиям сложности hello:
 
 * используются строчные знаки;
 * используются прописные знаки;
 * используется цифра;
 * используется специальный знак (регулярное выражение [\W_]).
 
-Не допускаются следующие пароли:
+Hello следующие пароли не допускаются:
 
 <table>
     <tr>

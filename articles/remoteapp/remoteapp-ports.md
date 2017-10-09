@@ -1,6 +1,6 @@
 ---
-title: "Список портов и URL-адресов для разрешения доступа к развернутым Azure RemoteApp в виртуальной сети клиента | Документация Майкрософт"
-description: "Узнайте, какие порты и URL-адреса необходимо настроить для связи через Azure RemoteApp."
+title: "aaaList из toowhitelist URL-адреса и порты для Azure RemoteApp развернуты в виртуальной сети клиента | Документы Microsoft"
+description: "Узнайте, какие порты и URL-адреса, вам потребуется tooconfigure для связи через Azure RemoteApp."
 services: remoteapp
 documentationcenter: 
 author: mghosh1616
@@ -13,21 +13,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/26/2017
 ms.author: mbaldwin
-ms.openlocfilehash: c17ff8d5441ca92f7b893edb541a1e9730c2a847
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 039866f7b64ac763ca833d66031ade3def1d3543
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="list-of-ports-and-urls-to-permit-access-for-azure-remoteapp-deployed-in-customer-virtual-network"></a>Список портов и URL-адресов для обеспечения доступа к развернутым Azure RemoteApp в виртуальной сети клиента
+# <a name="list-of-ports-and-urls-toopermit-access-for-azure-remoteapp-deployed-in-customer-virtual-network"></a>Список URL-адреса и порты доступа toopermit для Azure RemoteApp развернуты в виртуальной сети клиента
 > [!IMPORTANT]
-> Мы выводим службу Azure RemoteApp из эксплуатации 31 августа 2017 года. Дополнительные сведения см. в [объявлении](https://go.microsoft.com/fwlink/?linkid=821148).
+> Мы выводим службу Azure RemoteApp из эксплуатации 31 августа 2017 года. Чтение hello [объявления](https://go.microsoft.com/fwlink/?linkid=821148) подробные сведения.
 > 
 > 
 
-Если вы развертываете облачную или гибридную коллекцию Azure RemoteApp в виртуальной сети (VNET), просмотрите приведенную ниже информацию о портах. Дополнительные сведения о виртуальных сетях см. в статье [Обзор виртуальной сети](../virtual-network/virtual-networks-overview.md). Если вы создали группу безопасности сети (NSG), ограничивающую трафик к ресурсам вашей виртуальной сети в коллекции, убедитесь, что приведенные ниже порты доступны и открыты посредством политик безопасности виртуальной сети. Дополнительные сведения о группах безопасности сети см. в разделе [Группа безопасности сети (NSG)](../virtual-network/virtual-networks-nsg.md).
+При развертывании коллекцию Azure RemoteApp облачной или гибридной в виртуальной сети (VNET), просмотрите следующие сведения о порте hello. Дополнительные сведения о виртуальных сетях см. в статье [Обзор виртуальной сети](../virtual-network/virtual-networks-overview.md). При создании ограничения трафика toohello виртуальных сетевых ресурсов в вашей коллекции группы безопасности сети (NSG), убедитесь, что следующие порты hello доступна и разрешенных в соответствии с политиками безопасности hello hello виртуальной сети. Дополнительные сведения о группах безопасности сети см. в разделе [Группа безопасности сети (NSG)](../virtual-network/virtual-networks-nsg.md).
 
-## <a name="azure-remoteapp-subnet-needs-access-to-these-endpoints-and-urls"></a>Подсети Azure RemoteApp требуется доступ к этим конечным точкам и URL-адресам:
+## <a name="azure-remoteapp-subnet-needs-access-toothese-endpoints-and-urls"></a>Azure RemoteApp подсеть должна включать конечные точки доступа toothese и URL-адреса:
 * *.servicebus.windows.net
 * *.servicebus.net
 * https://*.remoteapp.windowsazure.com  
@@ -37,11 +37,11 @@ ms.lasthandoff: 07/11/2017
 * Исходящие: TCP: TCP: 443, 9351, 9352, 10101-10175. 
 * Необязательно — UDP: 10201-10275  
 
-## <a name="azure-remoteapp-clients-need-access-to-these-endpoints-and-urls"></a>Клиентам Azure RemoteApp требуется доступ к этим конечным точкам и URL-адресам:
-Под клиентами подразумеваются настольные системы, устройства и т. д., которые люди используют для подключения к приложениям, развернутым в коллекции Azure RemoteApp.
+## <a name="azure-remoteapp-clients-need-access-toothese-endpoints-and-urls"></a>Azure RemoteApp клиенты должны получить доступ к URL-адреса и конечные точки toothese:
+Клиентами, которые я имею в виду hello настольных компьютеров, устройств и т.д. людей, используйте tooconnect toohello приложения развернуты в hello коллекции Azure RemoteApp.
 
 * https://telemetry.remoteapp.windowsazure.com  
-* https://*.remoteapp.windowsazure.com (необязательные UDP-порты для этого адреса) 
+* https://*.RemoteApp.windowsazure.com (hello дополнительные порты UDP, для этого адреса) 
 * https://login.windows.net  
 * https://login.microsoftonline.com  
 * https://www.remoteapp.windowsazure.com 

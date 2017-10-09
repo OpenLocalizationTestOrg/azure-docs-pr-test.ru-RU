@@ -1,6 +1,6 @@
 ---
-title: "Настройка приложения прокси приложения для использования PingAccess | Документы Майкрософт"
-description: "Сведения об использовании PingAccess для предоставления преимуществ прокси приложения в приложениях, использующих проверку подлинности на основе заголовков."
+title: "aaaHow tooconfigure toouse приложения прокси приложения PingAccess | Документы Microsoft"
+description: "Узнайте, как toouse PingAccess tooextend hello преимущества tooapplications прокси-сервера приложений с помощью проверки подлинности на основе заголовка"
 services: active-directory
 documentationcenter: 
 author: ajamess
@@ -13,19 +13,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.openlocfilehash: a9da67373465cebbdbecae5c8fb8bd0a0ee3c171
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: fa4c9747b7bf5a135425be270e4f7eadf95248fa
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-configure-an-application-proxy-application-to-use-pingaccess"></a>Настройка приложения прокси приложения для использования PingAccess
+# <a name="how-tooconfigure-an-application-proxy-application-toouse-pingaccess"></a>Как tooconfigure toouse приложения прокси приложения PingAccess
 
-Наше сотрудничество с PingAccess позволило предоставить преимущества прокси приложения в приложениях, использующих проверку подлинности на основе заголовков. Если ваши приложения не используют заголовки, см. нашу [документацию по единому входу](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-sso-using-kcd) для получения сведений о других возможностях.
+Наше сотрудничество с PingAccess теперь позволяет преимущества hello tooextend tooapplications прокси-сервера приложений с помощью проверки подлинности на основе заголовка. Если ваши приложения не используют заголовки, см. нашу [документацию по единому входу](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-sso-using-kcd) для получения сведений о других возможностях.
 
 ## <a name="overview-of-steps-and-recommended-documents"></a>Обзор шагов и рекомендуемые документы
 
-Чтобы настроить приложение для использования PingAccess, нужно выполнить четыре шага:
+tooconfigure приложение с PingAccess, состоит из четырех этапов:
 
 1.  Настройка соединителей прокси приложения
 

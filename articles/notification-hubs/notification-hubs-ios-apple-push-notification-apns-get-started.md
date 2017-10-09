@@ -1,6 +1,6 @@
 ---
-title: "Отправка push-уведомлений в приложения iOS с помощью Центров уведомлений Azure | Документация Майкрософт"
-description: "Из этого руководства вы узнаете, как отправлять push-уведомления в приложения iOS с помощью центров уведомлений Azure."
+title: "tooiOS уведомления aaaSending принудительной с концентраторами уведомлений Azure | Документы Microsoft"
+description: "В этом учебнике вы узнаете, как toosend toouse концентраторов уведомлений Azure push-уведомления tooan операций ввода-вывода приложения."
 services: notification-hubs
 documentationcenter: ios
 keywords: "push-уведомление, push-уведомления, push-уведомления node.js, push-уведомления ios"
@@ -15,40 +15,40 @@ ms.devlang: objective-c
 ms.topic: hero-article
 ms.date: 10/03/2016
 ms.author: yuaxu
-ms.openlocfilehash: ab0777f859e80afcd61e371056b44d018c7b7ab9
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: d8bb47fee4c229b3ed2a7a4dbff25a56a7a7d009
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="sending-push-notifications-to-ios-with-azure-notification-hubs"></a>Отправка push-уведомлений с помощью центров уведомлений Azure в iOS
+# <a name="sending-push-notifications-tooios-with-azure-notification-hubs"></a>Отправка push tooiOS уведомлений с концентраторами уведомлений Azure
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
 
 ## <a name="overview"></a>Обзор
 > [!NOTE]
-> Для работы с этим учебником необходима активная учетная запись Azure. Если ее нет, можно создать бесплатную пробную учетную запись всего за несколько минут. Дополнительные сведения см. в разделе [Бесплатная пробная версия Azure](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdocumentation%2Farticles%2Fnotification-hubs-ios-get-started).
+> toocomplete этого учебника необходимо иметь активную учетную запись Azure. Если ее нет, можно создать бесплатную пробную учетную запись всего за несколько минут. Дополнительные сведения см. в разделе [Бесплатная пробная версия Azure](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdocumentation%2Farticles%2Fnotification-hubs-ios-get-started).
 > 
 > 
 
-В этом учебнике показано, как использовать Центры уведомлений Azure для отправки push-уведомлений в приложение на платформе iOS. Вы создадите пустое приложение iOS, получающее push-уведомления с помощью [службы push-уведомлений Apple (APNs)](https://developer.apple.com/library/ios/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/Chapters/ApplePushService.html). 
+Этот учебник показывает, как toosend toouse концентраторов уведомлений Azure push-уведомлений приложения iOS tooan. Вы создадите пустого приложения iOS, получающий push-уведомления с помощью hello [службы Push-уведомления Apple (APN)](https://developer.apple.com/library/ios/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/Chapters/ApplePushService.html). 
 
-По завершении вы сможете рассылать push-уведомления на все устройства, где запущено ваше приложение, с помощью центра уведомлений.
+После завершения вы будете иметь доступ toouse вашей toobroadcast концентратора уведомлений push-уведомления tooall hello устройств под управлением приложения.
 
 ## <a name="before-you-begin"></a>Перед началом работы
 [!INCLUDE [notification-hubs-hero-slug](../../includes/notification-hubs-hero-slug.md)]
 
-Полный код для этого учебника можно найти на портале [GitHub](https://github.com/Azure/azure-notificationhubs-samples/tree/master/iOS/GetStartedNH/GetStarted). 
+код завершения Hello в этом учебнике можно найти [на GitHub](https://github.com/Azure/azure-notificationhubs-samples/tree/master/iOS/GetStartedNH/GetStarted). 
 
 ## <a name="prerequisites"></a>Предварительные требования
-Для работы с данным учебником требуется следующее:
+Этот учебник требует hello следующее:
 
-* [пакет SDK для мобильных служб для iOS версии 1.2.4]
+* [мобильных служб iOS SDK версии 1.2.4]
 * последняя версия [Xcode]
 * устройство с iOS 8 (или более поздней версии);
 * [программе для разработчиков на платформе Apple](https://developer.apple.com/programs/) .
   
   > [!NOTE]
-  > В соответствии с требованиями к настройкам push-уведомлений необходимо развернуть push-уведомления и протестировать их на физическом устройстве под управлением iOS (iPhone или iPad), а не в эмуляторе iOS.
+  > Из-за требования к конфигурации для push-уведомлений необходимо развернуть и проверить push-уведомления на устройстве физических операций ввода-вывода (iPhone и iPad) вместо симулятор iOS hello.
   > 
   > 
 
@@ -57,7 +57,7 @@ ms.lasthandoff: 07/11/2017
 [!INCLUDE [Notification Hubs Enable Apple Push Notifications](../../includes/notification-hubs-enable-apple-push-notifications.md)]
 
 ## <a name="configure-your-notification-hub-for-ios-push-notifications"></a>Настройка push-уведомлений iOS в центре уведомлений 
-В этом разделе приведены пошаговые инструкции по созданию нового центра уведомлений и настройке проверки подлинности с помощью службы APNS, использующей раннее созданный вами сертификат push-уведомлений (файл с расширением **P12** ). Если вы хотите использовать уже созданный центр уведомлений, перейдите к шагу 5.
+В этом подразделе содержатся описано создание нового концентратора уведомлений и настройка проверки подлинности с помощью hello APNS **.p12** созданный сертификат push. Если вы хотите toouse концентратор уведомлений, который уже создан, можно пропустить toostep 5.
 
 [!INCLUDE [notification-hubs-portal-create-new-hub](../../includes/notification-hubs-portal-create-new-hub.md)]
 
@@ -65,53 +65,53 @@ ms.lasthandoff: 07/11/2017
 
 <li>
 
-<p>В колонке <b>Параметры</b> нажмите кнопку <b>Службы уведомлений</b>, а затем выберите <b>Apple (APNS)</b>. Щелкните <b>Отправить сертификат</b> и выберите файл <b>P12</b>, экспортированный ранее. Кроме того, необходимо указать правильный пароль.</p>
+<p>Нажмите кнопку hello <b>служб Notification Services</b> кнопку в hello <b>параметры</b> колонке выберите <b>Apple (APN)</b>. Щелкните <b>передать сертификат</b> и выберите hello <b>.p12</b> файл, экспортированный ранее. Убедитесь, что также указать правильный пароль hello.</p>
 
-<p>Выберите режим <b>песочницы</b>, так как это необходимо для разработки. Используйте <b>рабочую среду</b>, только если push-уведомления нужно отправлять пользователям, выполнившим покупку приложения в магазине.</p>
+<p>Убедитесь, что tooselect <b>"песочницы"</b> режиме, так как это для разработки приложений. Использовать только hello <b>рабочей</b> Если toosend принудительной уведомления toousers купившего приложения из магазина hello.</p>
 </li>
 </ol>
 &emsp;&emsp;&emsp;&emsp;![Настройка APNS на портале Azure](./media/notification-hubs-ios-get-started/notification-hubs-apple-config.png)
 
 &emsp;&emsp;&emsp;&emsp;![Настройка сертификации APNS на портале Azure](./media/notification-hubs-ios-get-started/notification-hubs-apple-config-cert.png)
 
-Центр уведомлений теперь подключен к службе APNS, и у вас есть строки подключения, с помощью которых вы сможете зарегистрировать свое приложение и отправлять push-уведомления.
+Концентратор уведомлений теперь настроенные toowork в APNS, и вы tooregister строки подключения hello приложения и отправки push-уведомлений.
 
-## <a name="connect-your-ios-app-to-notification-hubs"></a>Подключение приложения iOS к центрам уведомлений
-1. В XCode создайте новый проект iOS и выберите шаблон **Single View Application** (Приложение с одним представлением).
+## <a name="connect-your-ios-app-toonotification-hubs"></a>Подключение к tooNotification приложения iOS концентраторы
+1. В Xcode, создайте новый проект iOS и выберите hello **одним приложением представление** шаблона.
    
     ![Xcode — приложение с одним представлением][8]
     
-2. Во время настройки параметров нового проекта используйте те же **имя продукта** и **идентификатор организации**, используемые при указании идентификатора пакета на портале разработчиков Apple.
+2. При установке hello параметров для нового проекта, убедитесь, что toouse hello же **название продукта** и **идентификатор организации** , которые использовались при установленные ранее ИД набора hello hello разработчиков Apple портал.
    
     ![Xcode — параметры проекта][11]
     
-3. В разделе **Targets** (Цели) щелкните имя проекта, выберите вкладку **Build Settings** (Параметры сборки) и разверните элемент **Code Signing Identity** (Идентификатор подписи кода), а затем в разделе **Debug** (Отладка) укажите идентификатор подписи кода. Переключите параметр **Levels** (Уровни) со значения **Basic** (Базовые) на значение **All** (Все), а для параметра **Provisioning Profile** (Профиль подготовки) укажите ранее созданный профиль подготовки.
+3. В разделе **цели**, щелкните имя проекта, hello **параметры построения** и разверните **удостоверения подписывания кода**и затем в разделе **отладки**, установить вашу личность подписи кода. Переключить **уровни** из **основные** слишком**все**и задайте **профиль подготовки** toohello подготовительного профиля, который вы создали ранее .
    
-    Если новый профиль подготовки, созданный в Xcode, не отображается, обновите профили для идентификатора подписи. В строке меню щелкните **Xcode** выберите **Preferences** (Настройки), откройте вкладку **Account** (Учетная запись), нажмите кнопку **View Details** (Просмотреть сведения), щелкните свой идентификатор подписи, а затем нажмите кнопку Refresh (Обновить) в нижнем правом углу.
+    Если вы не видите hello новый профиль подготовки, вы создали в Xcode, обновите профили hello удостоверение подписывания. Нажмите кнопку **Xcode** hello меню, нажмите кнопку **предпочтения**, щелкните hello **учетной записи** щелкните hello **Просмотр сведений о** , выберите элемент к удостоверение подписывания, а затем нажмите кнопку обновления hello в нижнем правом углу hello.
    
     ![Xcode — профиль подготовки][9]
-4. Загрузите [пакет SDK для мобильных служб для iOS версии 1.2.4] и распакуйте архив. В XCode щелкните проект правой кнопкой мыши и выберите параметр **Add Files to** (Добавить файлы в), чтобы добавить папку **WindowsAzureMessaging.framework** в проект XCode. Выберите **Copy items if needed** (Копировать элементы при необходимости), а затем щелкните **Add** (Добавить).
+4. Загрузите hello [мобильных служб iOS SDK версии 1.2.4] и распакуйте файл hello. В Xcode, щелкните правой кнопкой мыши проект и нажмите кнопку hello **добавить файлы для** hello параметр tooadd **WindowsAzureMessaging.framework** проекту Xcode tooyour папки. Выберите **Copy items if needed** (Копировать элементы при необходимости), а затем щелкните **Add** (Добавить).
    
    > [!NOTE]
-   > Пакет SDK для концентраторов уведомлений в настоящее время не поддерживает Bitcode в Xcode 7.  В разделе **Build Options** (Параметры сборки) вашего проекта необходимо задать для параметра **Enable Bitcode** (Включить Bitcode) значение **No** (Нет).
+   > концентраторы уведомлений Hello SDK не поддерживает bitcode в Xcode 7.  Необходимо задать **включить Bitcode** слишком**нет** в hello **параметры сборки** для проекта.
    > 
    > 
    
     ![Распаковка пакета SDK Azure][10]
-5. Добавьте новый файл заголовка в проект с именем `HubInfo.h`. Этот файл будет содержать константы для центра уведомлений.  Добавьте следующие определения и замените буквенные заполнители строк *именем центра* и значением *DefaultListenSharedAccessSignature*, записанным ранее.
+5. Добавить новый заголовок tooyour проект файл с именем `HubInfo.h`. Этот файл будет содержать hello константы для центра уведомлений.  Добавьте следующие определения hello и замените hello строка литерала местозаполнителей вашей *имя концентратора* и hello *DefaultListenSharedAccessSignature* записанные ранее.
    
         #ifndef HubInfo_h
         #define HubInfo_h
    
-            #define HUBNAME @"<Enter the name of your hub>"
+            #define HUBNAME @"<Enter hello name of your hub>"
             #define HUBLISTENACCESS @"<Enter your DefaultListenSharedAccess connection string"
    
         #endif /* HubInfo_h */
-6. Откройте файл `AppDelegate.h` и добавьте следующие директивы импорта:
+6. Откройте ваш `AppDelegate.h` файла добавьте следующие директивы импорта hello:
    
          #import <WindowsAzureMessaging/WindowsAzureMessaging.h> 
          #import "HubInfo.h"
-7. В файле `AppDelegate.m file` добавьте приведенный ниже код в метод `didFinishLaunchingWithOptions` в зависимости от используемой версии iOS. Этот код регистрирует маркер вашего устройства в APNs.
+7. В вашей `AppDelegate.m file`, добавьте следующий код в hello hello `didFinishLaunchingWithOptions` метода, основанного на версии iOS. Этот код регистрирует маркер вашего устройства в APNs.
    
     Для iOS 8:
    
@@ -121,10 +121,10 @@ ms.lasthandoff: 07/11/2017
         [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
         [[UIApplication sharedApplication] registerForRemoteNotifications];
    
-    Для более ранних версий:
+    Для too8 предыдущих версий iOS:
    
          [[UIApplication sharedApplication] registerForRemoteNotificationTypes: UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound];
-8. В том же файле добавьте следующие методы. Этот код подключается к центру уведомлений, используя сведения о соединении, указанные в проекте HubInfo.h. Затем он передает маркер устройства в центр уведомлений, чтобы центр мог отправлять уведомления:
+8. В hello того же файла, добавьте следующие методы hello. Он подключает toohello концентратор уведомлений, используя сведения о соединении hello, указанной в HubInfo.h. Затем он предоставляет концентратора уведомлений маркера toohello hello устройства, чтобы hello концентратора уведомлений можно отправлять уведомления:
    
         - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *) deviceToken {
             SBNotificationHub* hub = [[SBNotificationHub alloc] initWithConnectionString:HUBLISTENACCESS
@@ -146,40 +146,40 @@ ms.lasthandoff: 07/11/2017
                 cancelButtonTitle:@"OK" otherButtonTitles: nil];
             [alert show];
         }
-9. В том же файле добавьте следующий метод для отображения **UIAlert** , если уведомление получено, когда приложение активно:
+9. В hello того же файла, добавьте следующий метод toodisplay hello **UIAlert** Если hello уведомление получено во время активного приложение hello:
 
         - (void)application:(UIApplication *)application didReceiveRemoteNotification: (NSDictionary *)userInfo {
             NSLog(@"%@", userInfo);
             [self MessageBox:@"Notification" message:[[userInfo objectForKey:@"aps"] valueForKey:@"alert"]];
         }
 
-1. Выполните сборку приложения и запустите его на устройстве, чтобы убедиться в отсутствии сбоев.
+1. Постройте и запустите приложение hello на tooverify вашего устройства, не сбоя.
 
 ## <a name="send-test-push-notifications"></a>Отправка тестовых push-уведомлений
-Чтобы проверить получение push-уведомлений в приложении, отправьте push-уведомление на [портала Azure] с помощью раздела **Устранение неполадок** в колонке центра (используйте параметр *Тестовая отправка* ).
+Можно проверить получение уведомлений в приложение, отправляя push-уведомлений в hello [портала Azure] через hello **Устранение неполадок** раздел в колонке hello концентратора (использовать hello *Тестовая отправка* параметр).
 
 ![Портал Azure — тестовая отправка][30]
 
 [!INCLUDE [notification-hubs-sending-notifications-from-the-portal](../../includes/notification-hubs-sending-notifications-from-the-portal.md)]
 
-## <a name="optional-send-push-notifications-from-the-app"></a>(Необязательно) Отправка push-уведомлений из приложения
+## <a name="optional-send-push-notifications-from-hello-app"></a>(Необязательно) Отправлять push-уведомления из приложения hello
 > [!IMPORTANT]
-> Этот пример с отправкой уведомлений из клиентского приложения приводится только в целях обучения. Так как в клиентском приложении требуется наличие `DefaultFullSharedAccessSignature` , пользователь может получить доступ к концентратору уведомлений для отправки несанкционированных уведомлений вашим клиентам.
+> В этом примере отправки уведомлений из клиентского приложения hello предоставляется только в целях обучения. Так как для этого потребуется hello `DefaultFullSharedAccessSignature` toobe на клиентское приложение hello, он предоставляет, пользователь может получить уведомления toosend несанкционированный доступ клиентов tooyour риск toohello концентратора уведомлений.
 > 
 > 
 
-Если вы хотите отправлять push-уведомления из приложения, в этом разделе приведен пример того, как это сделать с помощью интерфейса REST.
+Следует toosend push-уведомления в приложения в этом разделе приведен пример того, как toodo это с помощью интерфейса REST "hello".
 
-1. В XCode откройте файл `Main.storyboard` и добавьте следующие компоненты пользовательского интерфейса из библиотеки объектов, чтобы разрешить пользователю отправлять push-уведомления в приложении.
+1. Откройте в Xcode, `Main.storyboard` и добавьте следующие компоненты пользовательского интерфейса из hello объекта библиотеки tooallow hello пользователя toosend push-уведомлений в приложение hello hello:
    
-   * Метка без текста. Она будет использоваться для сообщения об ошибках во время отправки уведомлений. Свойству **Lines** (Строки) присвойте значение **0**. Это позволит автоматически ограничить размер правого и левого полей, а также верхней части представления.
-   * Введите в текстовое поле с текстом **Placeholder** (Заполнитель) значение **Enter Notification Message** (Ввести сообщение уведомления). Ограничьте поле сразу под меткой, как показано ниже. Установите контроллер представлений в качестве выходного делегата.
-   * Кнопка **Send Notification** (Отправить уведомление) закреплена сразу под текстовым полем, горизонтально по центру.
+   * Метка без текста. Он будет иметь ошибки используется tooreport в отправке уведомлений. Hello **строки** свойство должно быть установлено слишком**0** , будет автоматически подогнана право ограниченного toohello и левого полей и hello верхней части представления hello.
+   * Текстовое поле с **заполнитель** текст задан слишком**введите сообщение уведомления**. Ограничить hello поле непосредственно под hello метки, как показано ниже. Установите в качестве делегата розетки hello hello View Controller.
+   * Кнопка под названием **отправить уведомление** ограниченного под hello текстовое поле и в середине hello.
      
-     Представление будет выглядеть следующим образом:
+     представление Hello должен выглядеть следующим образом:
      
      ![Конструктор Xcode][32]
-2. [Добавьте выходы](https://developer.apple.com/library/ios/recipes/xcode_help-IB_connections/chapters/CreatingOutlet.html) для метки и текстового поля, которые связаны с представлением, и обновите определение `interface`, добавив в него поддержку `UITextFieldDelegate` и `NSXMLParserDelegate`. Добавьте три нижеуказанных объявления свойств для обеспечения вызова API REST и синтаксического анализа ответа.
+2. [Добавить торговцам](https://developer.apple.com/library/ios/recipes/xcode_help-IB_connections/chapters/CreatingOutlet.html) hello подпись и текстовое поле с подключением просмотра и обновление вашей `interface` toosupport определения `UITextFieldDelegate` и `NSXMLParserDelegate`. Добавьте три свойства объявления hello показано ниже toohelp поддержки вызов API-интерфейса REST hello и анализе ответа hello.
    
     Ваш файл ViewController.h должен выглядеть следующим образом:
    
@@ -190,7 +190,7 @@ ms.lasthandoff: 07/11/2017
             NSXMLParser *xmlParser;
         }
    
-        // Make sure these outlets are connected to your UI by ctrl+dragging
+        // Make sure these outlets are connected tooyour UI by ctrl+dragging
         @property (weak, nonatomic) IBOutlet UITextField *notificationMessage;
         @property (weak, nonatomic) IBOutlet UILabel *sendResults;
    
@@ -198,15 +198,15 @@ ms.lasthandoff: 07/11/2017
         @property (copy, nonatomic) NSString *currentElement;
    
         @end
-3. Откройте файл `HubInfo.h` и добавьте следующие константы, которые будут использоваться для отправки уведомлений в центр. Замените буквенную строку заполнителя фактической строкой подключения *DefaultFullSharedAccessSignature* .
+3. Откройте `HubInfo.h` и добавьте следующие константы, которые будут использоваться для отправки уведомлений tooyour концентратора hello. Замените hello заполнитель строковый литерал реальный *DefaultFullSharedAccessSignature* строку подключения.
    
         #define API_VERSION @"?api-version=2015-01"
         #define HUBFULLACCESS @"<Enter Your DefaultFullSharedAccess Connection string>"
-4. Добавьте следующие инструкции `#import` в файл `ViewController.h`.
+4. Добавьте следующее hello `#import` tooyour инструкций `ViewController.h` файла.
    
         #import <CommonCrypto/CommonHMAC.h>
         #import "HubInfo.h"
-5. В файле `ViewController.m` добавьте следующий код в раздел реализации интерфейса. Этот код будет анализировать строку подключения *DefaultFullSharedAccessSignature*. Как уже упоминалось в [справочнике по REST API](http://msdn.microsoft.com/library/azure/dn495627.aspx), проанализированная информация будет использоваться при создании маркера SAS для заголовка запроса **авторизации**.
+5. В `ViewController.m` добавить после реализации интерфейса toohello кода hello. Этот код будет анализировать строку подключения *DefaultFullSharedAccessSignature*. Как упоминалось в hello [Справочник по REST API](http://msdn.microsoft.com/library/azure/dn495627.aspx), этот проанализированный сведения будут использоваться toogenerate маркер SaS для hello **авторизации** заголовка запроса.
    
         NSString *HubEndpoint;
         NSString *HubSasKeyName;
@@ -241,7 +241,7 @@ ms.lasthandoff: 07/11/2017
                 }
             }
         }
-6. В файле `ViewController.m` обновите метод `viewDidLoad`, чтобы проанализировать строку подключения при загрузке представления. Кроме того, добавьте в раздел реализации интерфейса служебные методы, показанные ниже.  
+6. В `ViewController.m`, обновление hello `viewDidLoad` строка подключения tooparse hello метод при загрузке представления hello. Также добавьте hello служебные методы, показанный ниже, toohello реализацию интерфейса.  
 
         - (void)viewDidLoad
         {
@@ -267,7 +267,7 @@ ms.lasthandoff: 07/11/2017
 
 
 
-1. В файле `ViewController.m`добавьте в раздел реализации интерфейса следующий код, чтобы создать маркер авторизации SAS, который будет указан в заголовке **запроса авторизации** , как оговорено в [справочнике по REST API](http://msdn.microsoft.com/library/azure/dn495627.aspx).
+1. В `ViewController.m`, добавьте следующий код toohello интерфейса реализации toogenerate hello авторизации маркер SaS, предоставляемого hello hello **авторизации** заголовок, как упоминалось в hello [API-интерфейса REST Справочник по](http://msdn.microsoft.com/library/azure/dn495627.aspx).
    
         -(NSString*) generateSasToken:(NSString*)uri
         {
@@ -288,7 +288,7 @@ ms.lasthandoff: 07/11/2017
                 UInt64 expires = trunc(expiresOnDate);
                 NSString* toSign = [NSString stringWithFormat:@"%@\n%qu", targetUri, expires];
    
-                // Get an hmac_sha1 Mac instance and initialize with the signing key
+                // Get an hmac_sha1 Mac instance and initialize with hello signing key
                 const char *cKey  = [HubSasKeyValue cStringUsingEncoding:NSUTF8StringEncoding];
                 const char *cData = [toSign cStringUsingEncoding:NSUTF8StringEncoding];
                 unsigned char cHMAC[CC_SHA256_DIGEST_LENGTH];
@@ -314,7 +314,7 @@ ms.lasthandoff: 07/11/2017
    
             return token;
         }
-2. Удерживая нажатой клавишу CTRL, проведите от кнопки **Send Notification** (Отправить уведомление) к файлу `ViewController.m`, чтобы добавить действие **SendNotificationMessage** для события **Touch Down**. Обновите метод с помощью следующего кода, чтобы отправить уведомление с помощью интерфейса REST API.
+2. Здравствуйте, клавишу CTRL при перетаскивании из **отправить уведомление** кнопку слишком`ViewController.m` tooadd действие с именем **SendNotificationMessage** для hello **Touch вниз** событий. Метод обновления с hello, следующий код toosend hello уведомления с помощью API-интерфейса REST hello.
    
         - (IBAction)SendNotificationMessage:(id)sender
         {
@@ -328,18 +328,18 @@ ms.lasthandoff: 07/11/2017
                              sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]
                              delegate:nil delegateQueue:nil];
    
-            // Apple Notification format of the notification message
+            // Apple Notification format of hello notification message
             NSString *json = [NSString stringWithFormat:@"{\"aps\":{\"alert\":\"%@\"}}",
                                 self.notificationMessage.text];
    
-            // Construct the message's REST endpoint
+            // Construct hello message's REST endpoint
             NSURL* url = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@/messages/%@", HubEndpoint,
                                                 HUBNAME, API_VERSION]];
    
-            // Generate the token to be used in the authorization header
+            // Generate hello token toobe used in hello authorization header
             NSString* authorizationToken = [self generateSasToken:[url absoluteString]];
    
-            //Create the request to add the APNs notification message to the hub
+            //Create hello request tooadd hello APNs notification message toohello hub
             NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
             [request setHTTPMethod:@"POST"];
             [request setValue:@"application/json;charset=utf-8" forHTTPHeaderField:@"Content-Type"];
@@ -347,13 +347,13 @@ ms.lasthandoff: 07/11/2017
             // Signify Apple notification format
             [request setValue:@"apple" forHTTPHeaderField:@"ServiceBusNotification-Format"];
    
-            //Authenticate the notification message POST request with the SaS token
+            //Authenticate hello notification message POST request with hello SaS token
             [request setValue:authorizationToken forHTTPHeaderField:@"Authorization"];
    
-            //Add the notification message body
+            //Add hello notification message body
             [request setHTTPBody:[json dataUsingEncoding:NSUTF8StringEncoding]];
    
-            // Send the REST request
+            // Send hello REST request
             NSURLSessionDataTask* dataTask = [session dataTaskWithRequest:request
                 completionHandler:^(NSData *data, NSURLResponse *response, NSError *error)
             {
@@ -371,7 +371,7 @@ ms.lasthandoff: 07/11/2017
             }];
             [dataTask resume];
         }
-3. В `ViewController.m`добавьте следующий метод делегата, чтобы обеспечить закрытие клавиатуры для текстового поля. Удерживая клавишу CONTROL, проведите от текстового поля к значку контроллера представления в конструкторе интерфейса, чтобы задать контроллер представления в качестве делегата выхода.
+3. В `ViewController.m`, добавить следующие toosupport метод делегата, закрытие hello клавиатуры для текстового поля hello hello. CTRL + перетащите значок hello текстовое поле toohello View Controller в hello интерфейса конструктора tooset hello Просмотр контроллера как hello выхода делегата.
    
         //===[ Implement UITextFieldDelegate methods ]===
    
@@ -380,7 +380,7 @@ ms.lasthandoff: 07/11/2017
             [textField resignFirstResponder];
             return YES;
         }
-4. В файле `ViewController.m` добавьте следующие методы делегата для поддержки анализа ответа с помощью `NSXMLParser`.
+4. В `ViewController.m`, добавьте следующее hello делегировать методы toosupport анализа hello ответа с помощью `NSXMLParser`.
    
        //===[ Implement NSXMLParserDelegate methods ]===
    
@@ -410,38 +410,38 @@ ms.lasthandoff: 07/11/2017
    
        -(void)parserDidEndDocument:(NSXMLParser *)parser
        {
-           // Set the status label text on the UI thread
+           // Set hello status label text on hello UI thread
            dispatch_async(dispatch_get_main_queue(),
            ^{
                [self.sendResults setText:self.statusResult];
            });
        }
-5. Выполните сборку проекта и убедитесь в отсутствии ошибок.
+5. Постройте проект hello и убедитесь, что отсутствуют ошибки.
 
 > [!NOTE]
-> Если в XCode7 возникла ошибка сборки, связанная с поддержкой Bitcode, выберите в XCode **Build Settings** (Параметры сборки) > **Enable Bitcode (ENABLE_BITCODE)** (Включить Bitcode (ENABLE_BITCODE) и установите значение **No** (Нет). Пакет SDK для центров уведомлений в настоящее время не поддерживает bitcode. 
+> Если возникли ошибка сборки в Xcode7 о поддержке bitcode, следует изменить hello **параметры построения** > **включить Bitcode (ENABLE_BITCODE)** слишком**нет** в Xcode. Hello SDK концентраторов уведомлений в настоящее время не поддерживает bitcode. 
 > 
 > 
 
-Все возможные виды полезных данных уведомлений можно найти в [руководстве по программированию локальных уведомлений и push-уведомлений]Apple.
+Можно найти все полезные данные уведомления возможных hello hello Apple [локальный и Push-уведомлений руководство по программированию на].
 
 ## <a name="checking-if-your-app-can-receive-push-notifications"></a>Проверка того, может ли ваше приложение получать push-уведомления
-Для тестирования push-уведомлений в iOS необходимо развернуть приложение на физическом устройстве под управлением iOS. Отправка push-уведомлений Apple через эмулятор iOS невозможна.
+tootest push-уведомления на iOS, необходимо развернуть устройство физических операций ввода-вывода tooa приложения hello. Не удается отправить push-уведомлений Apple с помощью симулятора iOS hello.
 
-1. Запустите приложение и убедитесь, что оно успешно зарегистрировано, а затем нажмите кнопку **ОК**.
+1. Запустите приложение hello и убедитесь, что регистрация выполняется успешно и нажмите клавишу **ОК**.
    
     ![Проверка регистрации push-уведомления приложения iOS][33]
-2. Тестовое push-уведомление можно отправить с [портала Azure], как описано выше. Если вы добавили код для отправки push-уведомления в приложение, коснитесь текстового поля и введите сообщение уведомления. Затем нажмите клавишу **Send** (Отправить) на клавиатуре или кнопку **Send Notification** (Отправить уведомление) в представлении, чтобы отправить уведомление.
+2. Можно отправить тестовое push-уведомление от hello [портала Azure], как описано выше. Если вы добавили код для отправки push-уведомлений в приложение hello, коснитесь внутри tooenter поле текст hello сообщение уведомления. Нажмите клавишу hello **отправки** кнопку на клавиатуре hello или hello **отправить уведомление** кнопку в приветственное сообщение hello представление toosend уведомления.
    
     ![Проверка отправки push-уведомления приложения iOS][34]
-3. Push-уведомление будет отправлено на все устройства, зарегистрированные для получения уведомлений от того или иного центра уведомлений.
+3. Hello push-уведомление отправляется tooall устройства, зарегистрированные tooreceive hello уведомления от hello конкретного концентратора уведомлений.
    
     ![Проверка получения push-уведомления приложения iOS][35]
 
 ## <a name="next-steps"></a>Дальнейшие действия
-В этом простом примере мы отправили push-уведомления на все зарегистрированные устройства iOS. В качестве следующего шага вашего обучения мы рекомендуем изучить руководство [Уведомление пользователей iOS через Центры уведомлений Azure с помощью серверной части .NET]. В нем приведены сведения о создании серверной части для отправки push-уведомлений с помощью тегов. 
+В этом простом примере вы широковещательной рассылки push уведомления tooall устройства iOS, зарегистрированных. Мы советуем использовать на следующем шаге в продолжении toohello обучением [уведомления концентраторы уведомления пользователей Azure для iOS с серверной части .NET] руководство, в котором будет пошаговое описание создания push toosend внутренних уведомлений с помощью тегов. 
 
-Дополнительные сведения о разделении пользователей по группам интересов см. в статье [Использование концентраторов уведомлений для передачи экстренных новостей]. 
+Если требуется toosegment пользователи, группы интересов, можно дополнительно переместить на toohello [toosend использования концентраторов уведомлений, новости] учебника. 
 
 Общие сведения о Центрах уведомлений см. [здесь].
 
@@ -464,7 +464,7 @@ ms.lasthandoff: 07/11/2017
 
 
 <!-- URLs. -->
-[пакет SDK для мобильных служб для iOS версии 1.2.4]: http://aka.ms/kymw2g
+[мобильных служб iOS SDK версии 1.2.4]: http://aka.ms/kymw2g
 [Mobile Services iOS SDK]: http://go.microsoft.com/fwLink/?LinkID=266533
 [Submit an app page]: http://go.microsoft.com/fwlink/p/?LinkID=266582
 [My Applications]: http://go.microsoft.com/fwlink/p/?LinkId=262039
@@ -477,8 +477,8 @@ ms.lasthandoff: 07/11/2017
 [iOS Provisioning Portal]: http://go.microsoft.com/fwlink/p/?LinkId=272456
 
 [Get started with push notifications in Mobile Services]: ../mobile-services-javascript-backend-ios-get-started-push.md
-[Уведомление пользователей iOS через Центры уведомлений Azure с помощью серверной части .NET]: notification-hubs-aspnet-backend-ios-apple-apns-notification.md
-[Использование концентраторов уведомлений для передачи экстренных новостей]: notification-hubs-ios-xplat-segmented-apns-push-notification.md
+[уведомления концентраторы уведомления пользователей Azure для iOS с серверной части .NET]: notification-hubs-aspnet-backend-ios-apple-apns-notification.md
+[toosend использования концентраторов уведомлений, новости]: notification-hubs-ios-xplat-segmented-apns-push-notification.md
 
-[руководстве по программированию локальных уведомлений и push-уведомлений]: http://developer.apple.com/library/mac/#documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/Chapters/ApplePushService.html#//apple_ref/doc/uid/TP40008194-CH100-SW1
+[локальный и Push-уведомлений руководство по программированию на]: http://developer.apple.com/library/mac/#documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/Chapters/ApplePushService.html#//apple_ref/doc/uid/TP40008194-CH100-SW1
 [портала Azure]: https://portal.azure.com

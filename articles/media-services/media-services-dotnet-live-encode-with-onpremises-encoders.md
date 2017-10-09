@@ -1,6 +1,6 @@
 ---
-title: "Как вести потоковую трансляцию с помощью локальных кодировщиков и .NET | Документация Майкрософт"
-description: "В этой статье показано, как использовать .NET для кодирования в реальном времени с помощью локальных кодировщиков."
+title: "aaaHow tooperform потоковой трансляции с помощью локальных кодировщиков, с помощью .NET | Документы Microsoft"
+description: "В этом разделе показано как live toouse .NET tooperform кодировки с локальных кодировщиков."
 services: media-services
 documentationcenter: 
 author: Juliako
@@ -14,13 +14,13 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: cenkdin;juliako
-ms.openlocfilehash: 3ef6065f5b9e05e0ea5716548699943a2c877bc4
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 332582c9f925f8b9270929b3fa8140fce010bbf9
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-perform-live-streaming-with-on-premises-encoders-using-net"></a>Как вести потоковую трансляцию с помощью локальных кодировщиков и .NET
+# <a name="how-tooperform-live-streaming-with-on-premises-encoders-using-net"></a>Как tooperform динамической трансляцией с локальных кодировщиков, с помощью .NET
 > [!div class="op_single_selector"]
 > * [Портал](media-services-portal-live-passthrough-get-started.md)
 > * [.NET](media-services-dotnet-live-encode-with-onpremises-encoders.md)
@@ -28,46 +28,46 @@ ms.lasthandoff: 08/29/2017
 > 
 > 
 
-В этом учебнике рассматривается создание **канала** , настроенного для сквозной доставки, с помощью пакета SDK для .NET служб мультимедиа Azure. 
+Этот учебник поможет вам выполнить этапы hello использования hello Azure Media Services .NET SDK toocreate **канала** , настроенного для сквозной доставки. 
 
 ## <a name="prerequisites"></a>Предварительные требования
-Ниже перечислены необходимые условия для выполнения действий, описанных в этом учебнике.
+Здесь представлены Hello необходимые toocomplete hello учебника:
 
 * Учетная запись Azure.
-* Учетная запись служб мультимедиа.    Инструкции по созданию учетной записи служб мультимедиа см. в статье [Создание учетной записи служб мультимедиа Azure с помощью портала Azure](media-services-portal-create-account.md).
+* Учетная запись служб мультимедиа.    toocreate учетную запись служб носителей в разделе [как учетную запись служб мультимедиа tooCreate](media-services-portal-create-account.md).
 * Настройка среды разработки. Дополнительные сведения см. в статье [Настройка среды](media-services-set-up-computer.md).
 * Веб-камера, например [кодировщик Telestream Wirecast](http://www.telestream.net/wirecast/overview.htm).
 
-Рекомендуется ознакомиться со следующими разделами.
+Рекомендуемые tooreview hello следующие статьи:
 
 * [Поддержка протокола RTMP службами мультимедиа Azure и динамические кодировщики](https://azure.microsoft.com/blog/2014/09/18/azure-media-services-rtmp-support-and-live-encoders/)
 * [Потоковая трансляция с помощью локальных кодировщиков, создающих потоки с разными скоростями](media-services-live-streaming-with-onprem-encoders.md)
 
 ## <a name="create-and-configure-a-visual-studio-project"></a>Создание и настройка проекта Visual Studio
 
-Настройте среду разработки и укажите в файле app.config сведения о подключении, как описано в статье [Разработка служб мультимедиа с помощью .NET](media-services-dotnet-how-to-use.md). 
+Настройка среды разработки и заполнить hello файл app.config с данными подключения, как описано в [разработки служб мультимедиа с помощью .NET](media-services-dotnet-how-to-use.md). 
 
 ## <a name="example"></a>Пример
-В следующем примере кода показано, как выполнить приведенные ниже задачи.
+Hello в следующем примере кода показано, как hello tooachieve следующие задачи:
 
-* Подключение к службам мультимедиа
+* Подключение служб tooMedia
 * Создание канала
-* Обновление канала
-* Получение входной конечной точки канала. Локальному динамическому кодировщику необходимо предоставить входную конечную точку. Динамический кодировщик преобразует сигналы от камеры в потоки, которые отправляются на входную конечную точку канала (точку приема).
-* Получение конечной точки предварительного просмотра канала
+* Обновление канала hello
+* Получение входной конечной точки канала hello. Конечная точка ввода Hello должны быть предоставлены toohello локального динамического кодировщика. Hello динамический кодировщик преобразует сигналы из toostreams hello камеры, отправленных toohello канала входных данных (приема) конечной точки.
+* Получить конечную точку предварительного просмотра канала hello
 * Создание и запуск программы
-* Создание указателя, необходимого для доступа к программе
+* Создание указателя, необходимости tooaccess hello программы
 * Создание и запуск StreamingEndpoint
-* Обновление конечной точки потоковой передачи
+* Обновление конечной точки потоковой передачи hello
 * Завершение работы ресурсов
 
 >[!IMPORTANT]
->Убедитесь, что конечная точка потоковой передачи, из которой нужно передавать содержимое потоком, находится в состоянии **Выполняется**. 
+>Убедитесь, что hello, из которого нужно toostream содержимое конечной точки потоковой передачи в hello **под управлением** состояния. 
     
 >[!NOTE]
->Действует ограничение в 1 000 000 записей для разных политик AMS (например, для политики Locator или ContentKeyAuthorizationPolicy). Следует указывать один и тот же идентификатор политики, если вы используете те же дни, разрешения доступа и т. д. Например, политики для указателей, которые должны оставаться на месте в течение длительного времени (не политики передачи). Чтобы узнать больше, ознакомьтесь с [этим](media-services-dotnet-manage-entities.md#limit-access-policies) разделом.
+>Действует ограничение в 1 000 000 записей для разных политик AMS (например, для политики Locator или ContentKeyAuthorizationPolicy). Следует использовать hello же идентификатор политики, если вы используете всегда hello же дни / доступа разрешения, например, политики для указатели, которые являются предполагаемого tooremain на месте в течение длительного времени (без передачи политики). Чтобы узнать больше, ознакомьтесь с [этим](media-services-dotnet-manage-entities.md#limit-access-policies) разделом.
 
-Сведения о настройке динамического кодировщика см. в записи блога [Azure Media Services RTMP Support and Live Encoders](https://azure.microsoft.com/blog/2014/09/18/azure-media-services-rtmp-support-and-live-encoders/) Поддержка протокола RTMP службами мультимедиа Azure и динамические кодировщики.
+Дополнительные сведения о разделе tooconfigure динамический кодировщик [поддержка RTMP служб мультимедиа Azure и динамические кодировщики](https://azure.microsoft.com/blog/2014/09/18/azure-media-services-rtmp-support-and-live-encoders/).
 
     using System;
     using System.Collections.Generic;
@@ -86,7 +86,7 @@ ms.lasthandoff: 08/29/2017
         private const string AssetlName = "asset001";
         private const string ProgramlName = "program001";
 
-        // Read values from the App.config file.
+        // Read values from hello App.config file.
         private static readonly string _AADTenantDomain =
         ConfigurationManager.AppSettings["AADTenantDomain"];
         private static readonly string _RESTAPIEndpoint =
@@ -103,11 +103,11 @@ ms.lasthandoff: 08/29/2017
 
             IChannel channel = CreateAndStartChannel();
 
-            // Set the Live Encoder to point to the channel's input endpoint:
+            // Set hello Live Encoder toopoint toohello channel's input endpoint:
             string ingestUrl = channel.Input.Endpoints.FirstOrDefault().Url.ToString();
 
-            // Use the previewEndpoint to preview and verify
-            // that the input from the encoder is actually reaching the Channel.
+            // Use hello previewEndpoint toopreview and verify
+            // that hello input from hello encoder is actually reaching hello Channel.
             string previewEndpoint = channel.Preview.Endpoints.FirstOrDefault().Url.ToString();
 
             IProgram program = CreateAndStartProgram(channel);
@@ -120,7 +120,7 @@ ms.lasthandoff: 08/29/2017
 
         public static IChannel CreateAndStartChannel()
         {
-            //If you want to change the Smooth fragments to HLS segment ratio, you would set the ChannelCreationOptions’s Output property.
+            //If you want toochange hello Smooth fragments tooHLS segment ratio, you would set hello ChannelCreationOptions’s Output property.
 
             IChannel channel = _context.Channels.Create(
             new ChannelCreationOptions
@@ -130,7 +130,7 @@ ms.lasthandoff: 08/29/2017
             Preview = CreateChannelPreview()
             });
 
-            //Starting and stopping Channels can take some time to execute. To determine the state of operations after calling Start or Stop, query the IChannel.State .
+            //Starting and stopping Channels can take some time tooexecute. toodetermine hello state of operations after calling Start or Stop, query hello IChannel.State .
 
             channel.Start();
 
@@ -150,7 +150,7 @@ ms.lasthandoff: 08/29/2017
                     {
                     Name = "TestChannelInput001",
                     // Setting 0.0.0.0 for Address and 0 for SubnetPrefixLength
-                    // will allow access to IP addresses.
+                    // will allow access tooIP addresses.
                     Address = IPAddress.Parse("0.0.0.0"),
                     SubnetPrefixLength = 0
                     }
@@ -171,7 +171,7 @@ ms.lasthandoff: 08/29/2017
                     {
                     Name = "TestChannelPreview001",
                     // Setting 0.0.0.0 for Address and 0 for SubnetPrefixLength
-                    // will allow access to IP addresses.
+                    // will allow access tooIP addresses.
                     Address = IPAddress.Parse("0.0.0.0"),
                     SubnetPrefixLength = 0
                     }
@@ -213,7 +213,7 @@ ms.lasthandoff: 08/29/2017
         {
             IAsset asset = _context.Assets.Create(AssetlName, AssetCreationOptions.None);
 
-            // Create a Program on the Channel. You can have multiple Programs that overlap or are sequential;
+            // Create a Program on hello Channel. You can have multiple Programs that overlap or are sequential;
             // however each Program must have a unique name within your Media Services account.
             IProgram program = channel.Programs.Create(ProgramlName, TimeSpan.FromHours(3), asset.Id);
             program.Start();

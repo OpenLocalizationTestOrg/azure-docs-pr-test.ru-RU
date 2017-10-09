@@ -1,6 +1,6 @@
 ---
-title: "Управление Azure Data Lake Analytics с помощью пакета SDK Azure для Java | Документация Майкрософт"
-description: "Разработка приложений с использованием пакета SDK для Java для аналитики озера данных Azure"
+title: "Аналитика Озера данных Azure, с помощью пакета SDK для Java Azure aaaManage | Документы Microsoft"
+description: "Использовать приложения toodevelop SDK для Java аналитика Озера данных Azure"
 services: data-lake-analytics
 documentationcenter: 
 author: matt1883
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 06/18/2017
 ms.author: saveenr
-ms.openlocfilehash: 8a0c1c7aab89f3bb62d0eb9f42e8ac65309d617e
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 79e5fa1bacd5fd65072a1c3c480482a8e51d94b6
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="manage--azure-data-lake-analytics-using-java-sdk"></a>Управление Azure Data Lake Analytics с помощью пакета SDK для Java
 
@@ -26,17 +26,17 @@ ms.lasthandoff: 08/03/2017
 
 ## <a name="prerequisites"></a>Предварительные требования
 * **Пакет средств разработки для Java (JDK) 8** (с использованием Java версии 1.8).
-* **IntelliJ** или другая подходящая среда разработки Java. В инструкциях в этом документе используется IntelliJ.
-* Создайте приложение Azure Active Directory (AAD) и получите его **идентификатор клиента**, **код клиента** и **ключ**. Дополнительные сведения о приложениях AAD и указания о том, как получить идентификатор клиента, см. в статье [Создание приложения Active Directory и субъекта-службы с помощью портала](../azure-resource-manager/resource-group-create-service-principal-portal.md). Когда будут созданы приложение и ключ, URI ответа и ключ также будут доступны на портале.
+* **IntelliJ** или другая подходящая среда разработки Java. Hello инструкциях в этом документе используется IntelliJ.
+* Создайте приложение Azure Active Directory (AAD) и получите его **идентификатор клиента**, **код клиента** и **ключ**. Дополнительные сведения о приложениях AAD и инструкции о том, как tooget идентификатора клиента см. в разделе [Active Directory, создать приложение и участника службы с помощью портала](../azure-resource-manager/resource-group-create-service-principal-portal.md). Hello ответа Reply URI и ключ можно получить на портал hello после создания приложения hello и ключом, создаваемым.
 
 ## <a name="authenticating-using-azure-active-directory"></a>Проверка подлинности с помощью Azure Active Directory
 
-Ниже приведен фрагмент кода для **неинтерактивной** аутентификации, в ходе которой приложение указывает собственные учетные данные.
+Здравствуйте, код в следующем фрагменте кода приводится код для **неинтерактивной** проверки подлинности, где приложение hello предоставляет свои собственные учетные данные.
 
 ## <a name="create-a-java-application"></a>Создание приложения Java
-1. Откройте IntelliJ и создайте проект Java с помощью шаблона **приложения командной строки**.
-2. Щелкните правой кнопкой мыши проект в левой части экрана и выберите пункт **Add Framework Support**(Добавить поддержку платформы). Выберите **Maven** и нажмите кнопку **ОК**.
-3. Откройте только что созданный файл **pom.xml** и добавьте следующий фрагмент текста между тегами **\<version>** и **\<project>**:
+1. Откройте IntelliJ и создайте проект Java, с помощью hello **приложения командной строки** шаблона.
+2. Правой кнопкой мыши проект hello hello левой части экрана и нажмите кнопку **добавьте поддержка Framework**. Выберите **Maven** и нажмите кнопку **ОК**.
+3. Откройте hello вновь созданные **«pom.xml»** и добавьте следующий фрагмент текста между hello hello  **\</Version >** тег и hello  **\< /project >** тег:
 
 ```
 <repositories>
@@ -89,9 +89,9 @@ ms.lasthandoff: 08/03/2017
 </dependencies>
 ```
 
-Последовательно выберите пункты **Файл > Параметры > Сборка > Выполнение > Развертывание**. Выберите **Средства сборки > Maven > Импорт**. Затем установите флажок **Import Maven projects automatically**(Импортировать проекты Maven автоматически).
+Go слишком**файл > Параметры > сборки > выполнения > развертывания**. Выберите **Средства сборки > Maven > Импорт**. Затем установите флажок **Import Maven projects automatically**(Импортировать проекты Maven автоматически).
 
-Откройте файл `Main.java` и замените существующий блок кода следующим фрагментом кода.
+Откройте `Main.java` и замените hello существующий код блока с hello следующий фрагмент кода:
 
 ```
 package com.company;
@@ -175,10 +175,10 @@ public class Main {
         WaitForNewline("File created.", "Submitting a job.");
 
         // ----------------------------------------
-        // Submit a job to Data Lake Analytics
+        // Submit a job tooData Lake Analytics
         // ----------------------------------------
 
-string script = "@input =  EXTRACT Data string FROM \"/input1.csv\" USING Extractors.Csv(); OUTPUT @input TO @\"/output1.csv\" USING Outputters.Csv();", "testJob";
+string script = "@input =  EXTRACT Data string FROM \"/input1.csv\" USING Extractors.Csv(); OUTPUT @input too@\"/output1.csv\" USING Outputters.Csv();", "testJob";
         UUID jobId = SubmitJobByScript(script);
         WaitForNewline("Job submitted.", "Getting job status.");
 
@@ -201,13 +201,13 @@ string script = "@input =  EXTRACT Data string FROM \"/input1.csv\" USING Extrac
 }
 ```
 
-Укажите значения для параметров, вызываемых во фрагменте кода:
+Укажите hello значения для параметров, вызванной в фрагменте кода hello:
 * `localFolderPath`
 * `_adlaAccountName`
 * `_adlsAccountName`
 * `_resourceGroupName`
 
-Замените заполнители для:
+Замените заполнители hello для:
 * `CLIENT-ID`,
 * `CLIENT-SECRET`,
 * `TENANT-ID`
@@ -239,7 +239,7 @@ public static void WaitForNewline(String reason, String nextAction)
     if (nextAction == null)
         nextAction = "";
 
-    System.out.println(reason + "\r\nPress ENTER to continue...");
+    System.out.println(reason + "\r\nPress ENTER toocontinue...");
     try{System.in.read();}
     catch(Exception e){}
 
@@ -379,6 +379,6 @@ public static String GetJobStatus(UUID jobId) throws IOException, CloudException
 
 ## <a name="next-steps"></a>Дальнейшие действия
 
-* Сведения о языке U-SQL см. в статье [Учебник. Приступая к работе с языком U-SQL для аналитики озера данных Azure](data-lake-analytics-u-sql-get-started.md) и в [справочнике по языку U-SQL](http://go.microsoft.com/fwlink/?LinkId=691348).
+* toolearn U-SQL, в разделе [Приступая к работе с Azure аналитика Озера данных U-SQL языка](data-lake-analytics-u-sql-get-started.md), и [Справочник по языку U SQL](http://go.microsoft.com/fwlink/?LinkId=691348).
 * Задачи управления описываются в руководстве по [управлению Azure Data Lake Analytics с помощью портала Azure](data-lake-analytics-manage-use-portal.md).
-* Общие сведения об Azure Data Lake Analytics см. в [этой статье](data-lake-analytics-overview.md).
+* в разделе tooget содержится обзор аналитики Озера данных, [Обзор аналитики Озера данных Azure](data-lake-analytics-overview.md).

@@ -1,5 +1,5 @@
 ---
-title: "Виртуальные сети и виртуальные машины Windows в Azure | Документы Майкрософт"
+title: "aaaAzure виртуальных сетей и виртуальных машин Windows | Документы Microsoft"
 description: "Руководство по управлению виртуальными сетями Azure и виртуальными машинами Windows с помощью Azure PowerShell"
 services: virtual-machines-windows
 documentationcenter: virtual-machines
@@ -16,11 +16,11 @@ ms.workload: infrastructure
 ms.date: 05/02/2017
 ms.author: davidmu
 ms.custom: mvc
-ms.openlocfilehash: c71c07f8ecd123a7e27848ba5043d46e315fcf03
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: ed77d9d5873e849fcb2aaf15e41899d7ad8c781a
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="manage-azure-virtual-networks-and-windows-virtual-machines-with-azure-powershell"></a>Управление виртуальными сетями Azure и виртуальными машинами Windows с помощью Azure PowerShell
 
@@ -32,19 +32,19 @@ ms.lasthandoff: 08/03/2017
 > * Управление сетевым трафиком с помощью групп безопасности сети
 > * Просмотр правил трафика в действии
 
-Для работы с этим руководством требуется модуль Azure PowerShell версии не ниже 3.6. Чтобы узнать версию, выполните команду ` Get-Module -ListAvailable AzureRM`. Если вам необходимо выполнить обновление, ознакомьтесь со статьей, посвященной [установке модуля Azure PowerShell](/powershell/azure/install-azurerm-ps).
+Этот учебник требует hello Azure PowerShell модуль версии 3.6 или более поздней версии. Запустите ` Get-Module -ListAvailable AzureRM` версии toofind hello. Получить tooupgrade [установите Azure PowerShell модуль](/powershell/azure/install-azurerm-ps).
 
 ## <a name="create-vnet"></a>Создание виртуальной сети
 
-Виртуальная сеть — это представление вашей собственной сети в облаке. Это логическая изоляция облака Azure, выделенного для вашей подписки. В виртуальной сети находятся подсети, правила для их взаимодействия и подключения от виртуальных машин к подсетям.
+Виртуальная сеть — это представление сети в облаке hello. Виртуальная сеть является логической изоляции hello подписки tooyour выделенное облако Azure. В виртуальной сети найти подсетей правила подсети toothose подключения и подключения из подсети toohello hello виртуальных машин.
 
-Прежде чем создавать другие ресурсы Azure, нужно создать группу ресурсов с помощью командлета [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup). Следующий пример позволяет создать группу ресурсов *myRGNetwork* в расположении *EastUS*.
+Перед созданием другие ресурсы Azure, необходимо toocreate группу ресурсов с [New AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup). Hello следующий пример создает группу ресурсов с именем *myRGNetwork* в hello *EastUS* расположение:
 
 ```powershell
 New-AzureRmResourceGroup -ResourceGroupName myRGNetwork -Location EastUS
 ```
 
-Подсеть является дочерним ресурсом виртуальной сети, который помогает определить сегменты адресных пространств в пределах блока CIDR на основе префиксов IP-адресов. Сетевые карты можно добавлять в подсети и подключать к виртуальным машинам, обеспечивая сетевые подключения для различных рабочих нагрузок.
+Подсеть является дочерним ресурсом виртуальной сети, который помогает определить сегменты адресных пространств в пределах блока CIDR на основе префиксов IP-адресов. Сетевые адаптеры могут добавляться toosubnets и подключенных tooVMs, предоставляя возможность подключения к для различных рабочих нагрузок.
 
 Создайте подсеть с помощью командлета [New-AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/new-azurermvirtualnetworksubnetconfig).
 
@@ -67,7 +67,7 @@ $vnet = New-AzureRmVirtualNetwork `
 
 ## <a name="create-front-end-vm"></a>Создание интерфейсной виртуальной машины
 
-Для взаимодействия в виртуальной сети виртуальной машине требуется виртуальная сетевая карта. Доступ к *myFrontendVM* осуществляется через Интернет, поэтому также необходим общедоступный IP-адрес. 
+Для виртуальной Машины toocommunicate, в виртуальной сети он должен виртуального сетевого интерфейса (NIC). Hello *myFrontendVM* осуществляется из hello Интернета, поэтому он также требуется общедоступный IP-адрес. 
 
 Создайте общедоступный IP-адрес с помощью командлета [New-AzureRmPublicIpAddress](/powershell/module/azurerm.network/new-azurermpublicipaddress):
 
@@ -91,13 +91,13 @@ $frontendNic = New-AzureRmNetworkInterface `
   -PublicIpAddressId $pip.Id
 ```
 
-Настройте на виртуальной машине имя пользователя и пароль для учетной записи администратора с помощью командлета [Get-Credential](https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.security/Get-Credential):
+Укажите имя пользователя hello и пароль для учетной записи администратора hello hello виртуальной Машины с [Get-Credential](https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.security/Get-Credential):
 
 ```powershell
 $cred = Get-Credential
 ```
 
-Создайте виртуальные машины с помощью командлетов [New-AzureRmVMConfig](/powershell/module/azurerm.compute/new-azurermvmconfig), [Set-AzureRmVMOperatingSystem](/powershell/module/azurerm.compute/set-azurermvmoperatingsystem), [Set-AzureRmVMSourceImage](/powershell/module/azurerm.compute/set-azurermvmsourceimage), [Set-AzureRmVMOSDisk](/powershell/module/azurerm.compute/set-azurermvmosdisk), [Add-AzureRmVMNetworkInterface](/powershell/module/azurerm.compute/add-azurermvmnetworkinterface) и [New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm). 
+Создание виртуальных машин hello с [New AzureRmVMConfig](/powershell/module/azurerm.compute/new-azurermvmconfig), [набор AzureRmVMOperatingSystem](/powershell/module/azurerm.compute/set-azurermvmoperatingsystem), [AzureRmVMSourceImage набор](/powershell/module/azurerm.compute/set-azurermvmsourceimage), [Set-AzureRmVMOSDisk](/powershell/module/azurerm.compute/set-azurermvmosdisk), [Добавить AzureRmVMNetworkInterface](/powershell/module/azurerm.compute/add-azurermvmnetworkinterface), и [новый AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm). 
 
 ```powershell
 $frontendVM = New-AzureRmVMConfig `
@@ -133,9 +133,9 @@ New-AzureRmVM `
 
 ## <a name="install-web-server"></a>Установка веб-сервера
 
-Установить службы IIS на *myFrontendVM* можно с помощью сеанса удаленного рабочего стола. Вам нужно получить общедоступный IP-адрес виртуальной машины для доступа к ней.
+Установить службы IIS на *myFrontendVM* можно с помощью сеанса удаленного рабочего стола. Требуется tooget hello общедоступный IP-адрес виртуальной Машины tooaccess hello его.
 
-Получить общедоступный IP-адрес *myFrontendVM* можно с помощью командлета [Get-AzureRmPublicIPAddress](/powershell/module/azurerm.network/get-azurermpublicipaddress). Следующий пример позволяет получить IP-адрес для созданного ранее *myPublicIPAddress*.
+Можно получить hello общедоступный IP-адрес *myFrontendVM* с [Get AzureRmPublicIPAddress](/powershell/module/azurerm.network/get-azurermpublicipaddress). Hello следующий пример извлекает hello IP-адрес для *myPublicIPAddress* созданную ранее:
 
 ```powershell
 Get-AzureRmPublicIPAddress `
@@ -145,31 +145,31 @@ Get-AzureRmPublicIPAddress `
 
 Запишите этот IP-адрес, чтобы использовать его в последующих шагах.
 
-Используйте приведенную ниже команду для создания сеанса удаленного рабочего стола с *myFrontendVM*. Замените *<publicIPAddress>* записанным ранее адресом. При появлении запроса введите учетные данные, использованные при создании виртуальной машины.
+Используйте hello следующая команда toocreate сеанс удаленного рабочего стола с *myFrontendVM*. Замените  *<publicIPAddress>*  с адресом hello, ранее сохраненным. При появлении запроса введите hello учетные данные, используемые при создании hello виртуальной Машины.
 
 ```
 mstsc /v:<publicIpAddress>
 ``` 
 
-После входа на *myFrontendVM* вы можете установить IIS и включить локальное правило брандмауэра, разрешающее веб-трафик, с помощью одной строки кода PowerShell. Откройте командную строку PowerShell и выполните следующую команду:
+Теперь, когда был выполнен вход слишком*myFrontendVM*, можно использовать одну строку PowerShell tooinstall IIS и включить hello локальном брандмауэре правило tooallow веб-трафика. Откройте командную строку PowerShell и выполните следующую команду hello:
 
-Используйте командлет [Install-WindowsFeature](https://technet.microsoft.com/itpro/powershell/windows/servermanager/install-windowsfeature) для запуска расширения настраиваемых сценариев, которое устанавливает веб-сервер IIS:
+Используйте [Install-WindowsFeature](https://technet.microsoft.com/itpro/powershell/windows/servermanager/install-windowsfeature) toorun hello настраиваемое расширение сценария, устанавливающий веб-сервер IIS hello:
 
 ```powershell
 Install-WindowsFeature -name Web-Server -IncludeManagementTools
 ```
 
-Теперь вы можете использовать общедоступный IP-адрес для перехода к виртуальной машине и просмотра сайта IIS.
+Теперь можно использовать hello открытый IP адрес toobrowse toohello ВМ toosee hello узла IIS.
 
 ![Сайт IIS по умолчанию](./media/tutorial-virtual-network/iis.png)
 
 ## <a name="manage-internal-traffic"></a>Управление внутренним трафиком
 
-Группа безопасности сети (NSG) содержит перечень правил безопасности, которые разрешают или запрещают передачу сетевого трафика к ресурсам, подключенным к виртуальной сети. Группы безопасности сети можно сопоставить с подсетями или отдельными сетевыми картами, подключенными к виртуальным машинам. Открытие или закрытие доступа к виртуальным машинам осуществляется с помощью правил NSG. При создании *myFrontendVM* входящий порт 3389 автоматически был открыт для RDP-подключений.
+Группа безопасности сети (NSG) содержит список правил безопасности, которые разрешают или запрещают tooa tooresources подключен сетевой трафик виртуальной сети. Nsg может быть связан toosubnets или tooVMs присоединенного отдельные сетевые адаптеры. Выполняется открытие или закрытие tooVMs доступа к портам с помощью правила NSG. При создании *myFrontendVM* входящий порт 3389 автоматически был открыт для RDP-подключений.
 
-С помощью группы безопасности сети можно настроить взаимодействие внутри виртуальных машин. В этом разделе вы узнаете, как создать в сети дополнительную подсеть и назначить ей группу безопасности сети, чтобы разрешить подключение из *myFrontendVM* к *myBackendVM* через порт 1433. После этого подсеть назначается виртуальной машине при ее создании.
+С помощью группы безопасности сети можно настроить взаимодействие внутри виртуальных машин. В этом разделе вы узнаете, как toocreate дополнительные подсети в hello сети и назначить соединение из NSG tooit tooallow *myFrontendVM* слишком*myBackendVM* через порт 1433. подсети Hello назначается toohello виртуальной Машины при ее создании.
 
-Можно ограничить внутренний трафик для *myBackendVM* и разрешить только трафик из *myFrontendVM*, создав NSG для внутренней подсети. Следующий пример создает правило NSG *myBackendNSGRule* с помощью командлета [New-AzureRmNetworkSecurityRuleConfig](/powershell/module/azurerm.network/new-azurermnetworksecurityruleconfig).
+Можно ограничить внутренний трафик слишком*myBackendVM* только от *myFrontendVM* путем создания NSG для hello внутренней подсети. Hello следующий пример создает NSG правило с именем *myBackendNSGRule* с [New AzureRmNetworkSecurityRuleConfig](/powershell/module/azurerm.network/new-azurermnetworksecurityruleconfig):
 
 ```powershell
 $nsgBackendRule = New-AzureRmNetworkSecurityRuleConfig `
@@ -195,7 +195,7 @@ $nsgBackend = New-AzureRmNetworkSecurityGroup `
 ```
 ## <a name="add-back-end-subnet"></a>Добавление внутренней подсети
 
-Добавьте *myBackEndSubnet* в *myVNet* с помощью командлета [Add-AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/add-azurermvirtualnetworksubnetconfig).
+Добавить *myBackEndSubnet* слишком*myVNet* с [AzureRmVirtualNetworkSubnetConfig добавить](/powershell/module/azurerm.network/add-azurermvirtualnetworksubnetconfig):
 
 ```powershell
 Add-AzureRmVirtualNetworkSubnetConfig `
@@ -211,7 +211,7 @@ $vnet = Get-AzureRmVirtualNetwork `
 
 ## <a name="create-back-end-vm"></a>Создание внутренней виртуальной машины
 
-Внутреннюю виртуальную машину проще всего создать с помощью образа SQL Server. В этом учебнике лишь создается виртуальная машина с сервером базы данных, и не приводятся сведения о доступе к базе данных.
+Hello простым способом toocreate hello внутренней виртуальной Машины можно с помощью образа SQL Server. Этот учебник только создает hello виртуальной Машины с сервером базы данных hello, но не предоставляет сведения о доступе к базе данных hello.
 
 Создайте *myBackendNic*.
 
@@ -223,7 +223,7 @@ $backendNic = New-AzureRmNetworkInterface `
   -SubnetId $vnet.Subnets[1].Id
 ```
 
-Настройте на виртуальной машине имя пользователя и пароль для учетной записи администратора с помощью командлета Get-Credential:
+Задайте hello имя пользователя и пароль для учетной записи администратора hello hello виртуальной Машины с помощью Get-Credential.
 
 ```powershell
 $cred = Get-Credential
@@ -263,11 +263,11 @@ New-AzureRmVM `
   -VM $backendVM
 ```
 
-В рассматриваемом образе система SQL Server установлена, однако в данном руководстве она не используется. Она показывает, как можно настроить виртуальную машину для обработки веб-трафика, а также для обработки операций управления базой данных.
+Hello изображение, используемое установлен SQL Server, но не используется в этом учебнике. Это включается tooshow вы Настройка веб-трафик toohandle ВМ и управление виртуальными Машинами toohandle базы данных.
 
 ## <a name="next-steps"></a>Дальнейшие действия
 
-В этом руководстве вы создали и защитили сети Azure с точки зрения виртуальных машин. 
+В этом учебнике создается и защищенных сетей Azure как связанные toovirtual машины. 
 
 > [!div class="checklist"]
 > * Создать виртуальную сеть
@@ -275,7 +275,7 @@ New-AzureRmVM `
 > * Управление сетевым трафиком с помощью групп безопасности сети
 > * Просмотр правил трафика в действии
 
-Перейдите к следующему руководству, чтобы узнать о мониторинге защиты данных на виртуальных машинах с помощью службы архивации Azure. .
+Переместить следующий учебник toolearn toohello о наблюдении за обеспечение безопасности данных на виртуальных машинах с помощью резервного копирования Azure. .
 
 > [!div class="nextstepaction"]
 > [Архивация виртуальных машин Windows в Azure](./tutorial-backup-vms.md)

@@ -1,0 +1,1 @@
+![шаблоны и рекомендации](media/guidance-pnp-include/pnp-logo.png)

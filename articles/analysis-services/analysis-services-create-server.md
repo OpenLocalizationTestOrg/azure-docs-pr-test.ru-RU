@@ -1,6 +1,6 @@
 ---
-title: "Создание сервера Analysis Services в Azure | Документация Майкрософт"
-description: "Узнайте, как создать экземпляр сервера служб Analysis Services в Azure."
+title: "aaaCreate серверу служб Analysis Services в Azure | Документы Microsoft"
+description: "Узнайте, как экземпляр toocreate серверу служб Analysis Services в Azure."
 services: analysis-services
 documentationcenter: 
 author: minewiskan
@@ -15,48 +15,48 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 08/15/2017
 ms.author: owend
-ms.openlocfilehash: 95b367e7cd74405088190c1fe19cf92990759d90
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 3668f659039f79f3dd71498d1066e8682bf33228
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-an-azure-analysis-services-server-in-azure-portal"></a>Создание сервера Azure Analysis Services на портале Azure
 В этой статье приведено пошаговое руководство по созданию ресурса сервера служб Analysis Services в подписке Azure.
 
 ## <a name="before-you-begin"></a>Перед началом работы
-Для работы с этим кратким руководством вам понадобится:
+toocomplete краткого руководства, необходимо:
 
-* **Подписка Azure**: откройте ссылку на [бесплатную пробную версию Azure](https://azure.microsoft.com/offers/ms-azr-0044p/), чтобы создать учетную запись.
-* **Azure Active Directory**: ваша подписка должна быть связана с клиентом Azure Active Directory. И необходимо войти в Azure с учетной записью в этом Azure Active Directory. Учетные записи Майкрософт не поддерживаются. Дополнительные сведения см. в руководстве по [аутентификации и настройке пользовательских разрешений](analysis-services-manage-users.md).
+* **Подписка Azure**: посетите [бесплатная пробная версия](https://azure.microsoft.com/offers/ms-azr-0044p/) toocreate учетную запись.
+* **Azure Active Directory**: ваша подписка должна быть связана с клиентом Azure Active Directory. И требуется toobe вход tooAzure с учетной записью в Azure Active Directory. Учетные записи Майкрософт не поддерживаются. toolearn более, в разделе [проверки подлинности и пользовательские разрешения](analysis-services-manage-users.md).
 * **Группа ресурсов**: используйте уже имеющуюся группу ресурсов или [создайте новую](../azure-resource-manager/resource-group-overview.md).
 
 > [!NOTE]
-> При создании сервера вам могут выставляться счета за новую службу. Дополнительные сведения см. в разделе [цен на службы Analysis Services](https://azure.microsoft.com/pricing/details/analysis-services/).
+> При создании сервера вам могут выставляться счета за новую службу. toolearn более, в разделе [цены служб Analysis Services](https://azure.microsoft.com/pricing/details/analysis-services/).
 > 
 > 
 
-## <a name="to-create-a-server-in-azure-portal"></a>Создание сервера на портале Azure
-1. Войдите на [портал Azure](https://portal.azure.com).  
+## <a name="toocreate-a-server-in-azure-portal"></a>toocreate сервера на портале Azure
+1. Войдите в toohello [портал Azure](https://portal.azure.com).  
 2. Щелкните **+ Создать** > **Данные и аналитика** > **Службы Analysis Services**.
-3. В колонке **Службы Analysis Services** заполните обязательные поля и нажмите кнопку **Создать**.
+3. В hello **служб Analysis Services** колонки, заполните поля требуется hello и нажмите клавишу **создать**.
    
     ![Создание сервера](./media/analysis-services-create-server/aas-create-server-blade.png)
    
-   * **Имя сервера**: введите уникальное имя, используемое для обращения к серверу.
-   * **Подписка**: выберите подписку, в рамках которой выставляются счета за сервер.
-   * **Группа ресурсов**: это контейнеры, которые помогают управлять коллекцией ресурсов Azure. Дополнительные сведения см. в описании [групп ресурсов](../azure-resource-manager/resource-group-overview.md).
-   * **Расположение**: в этом расположении центра обработки данных Azure размещается сервер. Выберите расположение, ближайшее к крупнейшей имеющейся базе пользователей.
-   * **Ценовая категория**: выберите ценовую категорию. Поддерживаются табличные модели размером до 400 ГБ. Дополнительные сведения см. в разделе [цен на службы Azure Analysis Services](https://azure.microsoft.com/pricing/details/analysis-services/).
+   * **Имя сервера**: Введите уникальное имя, используемое tooreference hello сервер.
+   * **Подписки**: выберите подписку hello выставляет счет этого сервера для.
+   * **Группа ресурсов**: эти контейнеры являются спроектированный toohelp управлять коллекцией ресурсов Azure. toolearn более, в разделе [групп ресурсов](../azure-resource-manager/resource-group-overview.md).
+   * **Расположение**: узлы расположение центра обработки данных Azure этот hello server. Выберите расположение, ближайшее к крупнейшей имеющейся базе пользователей.
+   * **Ценовая категория**: выберите ценовую категорию. Поддерживаются табличные модели too400 Гбайт. toolearn более, в разделе [ценообразования Azure Analysis Services](https://azure.microsoft.com/pricing/details/analysis-services/).
 4. Щелкните **Создать**.
 
-Создание обычно занимает меньше минуты, чаще всего несколько секунд. Если был выбран параметр **Add to Portal** (Добавить на портал), перейдите на портал, чтобы просмотреть новый сервер. Или перейдите по адресу **Больше служб** > **Службы Analysis Services**, чтобы проверить, готов ли ваш сервер.
+Создание обычно занимает меньше минуты, чаще всего несколько секунд. Если вы выбрали **добавить tooPortal**, перейти на новый сервер портала toosee tooyour. Или перейдите слишком**дополнительные службы** > **служб Analysis Services** toosee, если сервер готов.
 
  ![Панель мониторинга](./media/analysis-services-create-server/aas-create-server-dashboard.png)
 
 
 ## <a name="next-steps"></a>Дальнейшие действия
-После создания сервера вы можете [развернуть на нем модель](analysis-services-deploy.md) с помощью SSDT или SSMS.
+После создания сервера, вы можете [развернуть модель](analysis-services-deploy.md) tooit посредством SSDT или с помощью среды SSMS.
 
-Если модель, развертываемая на сервере, подключается к локальным источникам данных, необходимо будет установить [локальный шлюз данных](analysis-services-gateway.md) на одном из компьютеров в вашей сети.
+При развертывании сервера tooyour модель подключается tooon локальные источники данных, необходимо tooinstall [локального шлюза данных](analysis-services-gateway.md) на компьютере в сети.
 

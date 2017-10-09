@@ -1,5 +1,5 @@
 ---
-title: "Создание отчета из набора данных в Azure Power BI Embedded | Документация Майкрософт"
+title: "новый отчет из набора данных в Azure Power BI Embedded aaaCreate | Документы Microsoft"
 description: "Отчеты Power BI Embedded теперь можно создавать из набора данных в собственном приложении."
 services: power-bi-embedded
 documentationcenter: 
@@ -15,29 +15,29 @@ ms.tgt_pltfrm: NA
 ms.workload: powerbi
 ms.date: 03/11/2017
 ms.author: asaxton
-ms.openlocfilehash: 457f53aa76059dbb2faed6b264102f1f59b9918a
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 41a0a52e4c833313f495bb5ff14749203fef9b41
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-a-new-report-from-a-dataset-in-power-bi-embedded"></a>Создание отчета из набора данных в Power BI Embedded
 
 Отчеты Power BI Embedded теперь можно создавать из набора данных в собственном приложении. 
 
-Метод проверки подлинности аналогичен методу при внедрении запроса. Он основан на маркерах доступа, относящихся к конкретному набору данных. Маркеры, используемые для PowerBI.com, выдаются Azure Active Directory (AAD), а маркеры Power BI Embedded — самой службой.
+Hello метод проверки подлинности аналогичен внедрить toothat отчета. Он основан на токены доступа, определенных tooa набора данных. Маркеры, используемые для PowerBI.com, выдаются Azure Active Directory (AAD), а маркеры Power BI Embedded — самой службой.
 
-При создании внедренного отчета выдаваемые маркеры предназначены для конкретного набора данных. Маркеры должны быть связаны с URL-адресом внедрения в том же элементе, чтобы каждый имел свой уникальный маркер. Чтобы создать внедренный отчет, в маркере доступа необходимо предоставить области *Dataset.Read и Workspace.Report.Create*.
+При hello createing внедренный отчет, маркеры, выпущенные предназначены для конкретного набора данных. Токены должны быть связаны с hello внедрить URL-адрес на hello же tooensure элемент имеет уникальный токен. Чтобы toocreate отчет внедренный *Dataset.Read и Workspace.Report.Create* области должно быть указано в маркере доступа hello.
 
-## <a name="create-access-token-needed-to-create-new-report"></a>Создание маркера доступа, необходимого для создания отчета
+## <a name="create-access-token-needed-toocreate-new-report"></a>Создать новый отчет access token необходимые toocreate
 
-Power BI Embedded использует маркеры внедрения, которые являются подписанными веб-маркерами JSON (JSON Web Token) с поддержкой HMAC. Маркеры подписываются с помощью ключа доступа из коллекции рабочих областей Azure Power BI Embedded. По умолчанию маркеры внедрения используются для предоставления доступа к отчету с правами только для чтения, чтобы внедрить его в приложение. Маркеры внедрения выдаются для конкретного отчета и должны быть связаны с URL-адресом внедрения.
+Power BI Embedded использует маркеры внедрения, которые являются подписанными веб-маркерами JSON (JSON Web Token) с поддержкой HMAC. Hello токены подписываются с ключом доступа hello Azure Power BI Embedded коллекции рабочей области. Внедряйте маркеры, по умолчанию, являются используется tooprovide чтения доступ только к tooembed tooa отчета в приложение. Маркеры внедрения выдаются для конкретного отчета и должны быть связаны с URL-адресом внедрения.
 
-Маркеры доступа должны создаваться на сервере, так как ключи доступа используются для подписания или шифрования маркеров. Дополнительные сведения о создании маркера доступа см. в статье [Аутентификация и авторизация в Power BI Embedded](power-bi-embedded-app-token-flow.md). Вы также можете ознакомиться с методом [CreateReportEmbedToken](https://docs.microsoft.com/dotnet/api/microsoft.powerbi.security.powerbitoken?redirectedfrom=MSDN#methods_). Здесь приведен пример с использованием пакета SDK для Power BI (.NET).
+Маркеры доступа должны создаваться на сервере hello как ключи доступа hello используется toosign на шифрование токенов hello. Сведения о том, как toocreate маркер доступа в разделе [аутентификации и авторизации с Power BI Embedded](power-bi-embedded-app-token-flow.md). Можно также просмотреть hello [CreateReportEmbedToken](https://docs.microsoft.com/dotnet/api/microsoft.powerbi.security.powerbitoken?redirectedfrom=MSDN#methods_) метод. Ниже приведен пример этого она будет выглядеть подобно использованию hello .NET SDK для Power BI.
 
-В этом примере у нас есть идентификатор набора данных, на основе которого требуется создать отчет. Необходимо также добавить области *Dataset.Read и Workspace.Report.Create*.
+В этом примере у нас есть нашей идентификатор набора данных, мы хотим toocreat hello новый отчет на. Также нужны областей hello tooadd для *Dataset.Read и Workspace.Report.Create*.
 
-Для *класса PowerBIToken* необходимо установить [пакет NuGet для Power BI (Core)](https://www.nuget.org/packages/Microsoft.PowerBI.Core/).
+Hello *класса PowerBIToken* необходимо установить hello [NuGut основного пакета для Power BI](https://www.nuget.org/packages/Microsoft.PowerBI.Core/).
 
 **Установка пакета NuGet**
 
@@ -59,10 +59,10 @@ var token = embedToken.Generate("{access key}");
 
 ## <a name="create-a-new-blank-report"></a>Создание пустого отчета
 
-Чтобы создать отчет, необходимо предоставить конфигурацию создания. В нее входят маркер доступа, embedURL и datasetID, на основе которых требуется создать отчет. Для этого необходимо установить [пакет NuGet для Power BI (JavaScript)](https://www.nuget.org/packages/Microsoft.PowerBI.JavaScript/). Параметр embedUrl будет иметь значение https://embedded.powerbi.com/appTokenReportEmbed.
+В порядке toocreate нового отчета, создайте hello конфигурации необходимо указать. Оно должно включать токен доступа hello, URL-адрес внедрения hello и hello datasetID, мы хотим toocreate hello отчет. Для этого необходимо установить hello nuget [пакета Power BI JavaScript](https://www.nuget.org/packages/Microsoft.PowerBI.JavaScript/). URL-адрес внедрения Hello станет https://embedded.powerbi.com/appTokenReportEmbed.
 
 > [!NOTE]
-> Чтобы протестировать функциональные возможности, можно использовать [пример внедрения отчета JavaScript](https://microsoft.github.io/PowerBI-JavaScript/demo/). В нем также приводятся примеры кода для различных операций, которые доступны.
+> Можно использовать hello [пример внедрения отчета JavaScript](https://microsoft.github.io/PowerBI-JavaScript/demo/) tootest функциональные возможности. Также приводятся примеры кода для hello различных операций, которые доступны.
 
 **Установка пакета NuGet**
 
@@ -81,23 +81,23 @@ var embedCreateConfiguration = {
         datasetId: '5dac7a4a-4452-46b3-99f6-a25915e0fe55',
     };
     
-    // Grab the reference to the div HTML element that will host the report
+    // Grab hello reference toohello div HTML element that will host hello report
     var reportContainer = $('#reportContainer')[0];
 
     // Create report
     var report = powerbi.createReport(reportContainer, embedCreateConfiguration);
 ```
 
-Вызов *powerbi.createReport()* приведет к тому, что пустой холст в режиме правки отобразится в элементе *div*.
+Вызов *powerbi.createReport()* сделает пустой холст в режиме редактирования отображаются внутри hello *div* элемента.
 
 ![](media/power-bi-embedded-create-report-from-dataset/pbi-embedded-create-new-report.png)
 
 ## <a name="save-new-reports"></a>Сохранение новых отчетов
 
-Отчет фактически не будет создан, пока вы не вызовите операцию **Сохранить как**. Это можно сделать, используя меню "Файл" или JavaScript.
+отчет Hello не фактически будет создан до вызова hello **сохранение** операции. Это можно сделать, используя меню "Файл" или JavaScript.
 
 ```
- // Get a reference to the embedded report.
+ // Get a reference toohello embedded report.
     report = powerbi.get(reportContainer);
     
     var saveAsParameters = {
@@ -109,13 +109,13 @@ var embedCreateConfiguration = {
 ```
 
 > [!IMPORTANT]
-> Отчет создается только после вызова операции **Сохранить как**. После сохранения на холсте по-прежнему будет отображаться набор данных в режиме правки, а не отчет. Необходимо перезагрузить новый отчет так же, как любой другой отчет.
+> Отчет создается только после вызова операции **Сохранить как**. После сохранения изменений, hello холст по-прежнему отображаться в отчете изменить режим и не hello hello набора данных. Необходимо будет tooreload hello нового отчета так же, как любой другой отчет.
 
 ![](media/power-bi-embedded-create-report-from-dataset/pbi-embedded-save-new-report.png)
 
-## <a name="load-the-new-report"></a>Загрузка нового отчета
+## <a name="load-hello-new-report"></a>Загрузить новый отчет hello
 
-Для взаимодействия с новым отчетом необходимо внедрить его таким же образом, как приложение внедряет обычный отчет. Таким образом, специально для нового отчета должен быть выдан новый маркер, а затем вызван метод embed.
+В порядке toointeract с hello нового отчета необходимо tooembed его так же, как приложение hello внедряет обычного отчетов, а именно, новый маркер должен быть выдан для нового отчета hello приветствия, а затем вызов hello внедрить метод.
 
 ```
 <div id="reportContainer"></div>
@@ -126,16 +126,16 @@ var embedConfiguration = {
         reportId: '5dac7a4a-4452-46b3-99f6-a25915e0fe54',
     };
     
-    // Grab the reference to the div HTML element that will host the report
+    // Grab hello reference toohello div HTML element that will host hello report
     var reportContainer = $('#reportContainer')[0];
 
     // Embed report
     var report = powerbi.embed(reportContainer, embedConfiguration);
 ```
 
-## <a name="automate-save-and-load-of-a-new-report-using-the-saved-event"></a>Автоматизация сохранения и загрузки нового отчета с помощью "сохраненного" события
+## <a name="automate-save-and-load-of-a-new-report-using-hello-saved-event"></a>Автоматизация сохранения и загрузки нового отчета с помощью события «сохранить» hello
 
-Чтобы автоматизировать процесс "Сохранить как", а затем загрузить новый отчет, можно воспользоваться "сохраненным" событием. Это событие срабатывает, когда операция сохранения завершена и возвращает объект JSON, содержащий новый идентификатор reportId, имя отчета, старый идентификатор reportId (если он был), а также сведения об операции ("Сохранить как" или "Сохранить").
+В процессе hello tooautomate заказа «Сохранить как» и затем загрузив hello новый отчет, чтобы использовать hello события «сохранить». Это событие вызывается после завершения hello операции сохранения и возвращает объект Json, содержащий новый reportId hello, имя отчета, старый reportId hello (если таковое имело) и если hello была saveAs или сохранить.
 
 ```
 {
@@ -146,7 +146,7 @@ var embedConfiguration = {
 }
 ```
 
-Для автоматизации процесса дождитесь передачи "сохраненного" события, возьмите из него новый идентификатор reportId, создайте маркер и внедрите новый отчет с этим маркером.
+процесс hello tooAutomate может прослушивать события «сохранить» hello, выполните новый reportId hello, создать новый маркер hello и внедрение hello нового отчета с ним.
 
 ```
 <div id="reportContainer"></div>
@@ -157,7 +157,7 @@ var embedCreateConfiguration = {
         datasetId: '5dac7a4a-4452-46b3-99f6-a25915e0fe55',
     };
     
-    // Grab the reference to the div HTML element that will host the report
+    // Grab hello reference toohello div HTML element that will host hello report
     var reportContainer = $('#reportContainer')[0];
 
     // Create report
@@ -171,14 +171,14 @@ var embedCreateConfiguration = {
     // SaveAs report
     report.saveAs(saveAsParameters);
 
-    // report.on will add an event handler which prints to Log window.
+    // report.on will add an event handler which prints tooLog window.
     report.on("saved", function(event) {
         
          // get new Token
          var newReportId =  event.detail.reportObjectId;
 
-        // create new Token. This is a function that the application should provide
-        var newToken = createAccessToken(newReportId,scopes /*provide the wanted scopes*/);
+        // create new Token. This is a function that hello application should provide
+        var newToken = createAccessToken(newReportId,scopes /*provide hello wanted scopes*/);
         
         
     var embedConfiguration = {
@@ -205,4 +205,4 @@ var embedCreateConfiguration = {
 [Пример внедрения JavaScript](https://microsoft.github.io/PowerBI-JavaScript/demo/)  
 [Пакет NuGet для Power BI (Core)](https://www.nuget.org/packages/Microsoft.PowerBI.Core/)  
 [Пакет NuGet для Power BI (JavaScript)](https://www.nuget.org/packages/Microsoft.PowerBI.JavaScript/)  
-У вас имеются и другие вопросы? [Попробуйте задать их в сообществе Power BI](http://community.powerbi.com/)
+У вас имеются и другие вопросы? [Повторите hello сообщества Power BI](http://community.powerbi.com/)

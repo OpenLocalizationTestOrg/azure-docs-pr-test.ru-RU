@@ -1,6 +1,6 @@
 ---
-title: "Создание модуля Azure IoT Edge с помощью C# | Документация Майкрософт"
-description: "В этом руководстве показано, как с помощью последних пакетов NuGet для Azure IoT Edge, Visual Studio Code и C# написать модуль преобразователя данных BLE."
+title: "aaaCreate модуль Edge IoT Azure с помощью C# | Документы Microsoft"
+description: "Этот учебник демонстрирует, как отключить данных преобразователь модуля с помощью toowrite hello последние пакеты Azure IoT Edge NuGet кода Visual Studio и C#."
 services: iot-hub
 author: jeffreyCline
 manager: timlt
@@ -12,32 +12,32 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/28/2017
 ms.author: jcline
-ms.openlocfilehash: 7175ffc8de2c043593d61143b402484d33e4a8cc
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: b104609c05d1613e21acc7d7bed547f311179151
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-an-azure-iot-edge-module-with-cx23"></a>Создание модуля Azure IoT Edge с помощью C&#x23;
 
-В этом руководстве показано, как создать модуль для `Azure IoT Edge` с помощью `Visual Studio Code` и `C#`.
+Этот учебник демонстрирует способ toocreate какой-либо модуль для `Azure IoT Edge` с помощью `Visual Studio Code` и `C#`.
 
-В этом руководстве приводятся пошаговые инструкции по настройке среды и написанию модуля преобразователя данных [BLE](https://en.wikipedia.org/wiki/Bluetooth_Low_Energy) с помощью последних пакетов `Azure IoT Edge NuGet`. 
+В этом учебнике мы будем рассматривать настройки среды и как toowrite [ЛЮЧИТЬ](https://en.wikipedia.org/wiki/Bluetooth_Low_Energy) модуля преобразователя данных с помощью последней hello `Azure IoT Edge NuGet` пакетов. 
 
 >[!NOTE]
-В этом руководстве используется пакет `.NET Core SDK`, который поддерживает кроссплатформенную совместимость. Приведенные ниже инструкции написаны на основе операционной системы `Windows 10`. Некоторые команды в этом руководстве могут отличаться в зависимости от используемой `development environment`. 
+Этот учебник использует hello `.NET Core SDK`, который поддерживает кросс платформенной совместимости. Hello следующий учебник записывается с помощью hello `Windows 10` операционной системы. Некоторые команды hello в этом учебнике может отличаться в зависимости от вашей `development environment`. 
 
 ## <a name="prerequisites"></a>Предварительные требования
 
-В этом разделе настраивается среда для разработки модуля `Azure IoT Edge`. Данные настройки действительны для следующих операционных систем: **64-разрядная версия Windows** и **64-разрядная версия Linux (Ubuntu/Debian 8)**.
+В этом разделе настраивается среда для разработки модуля `Azure IoT Edge`. Оно применяется tooboth **64-разрядной версии Windows** и **64-разрядных Linux (8 Ubuntu/Debian)** операционных систем.
 
-Требуется следующее ПО:
+Привет, следуя программного обеспечения не требуется:
 
 - [клиент Git](https://git-scm.com/downloads);
 - [Базовый пакет SDK для .NET](https://www.microsoft.com/net/core#windowscmd)
 - [Visual Studio Code](https://code.visualstudio.com/)
 
-Для данного примера не требуется клонирование репозитория, хотя все рассматриваемые в этом руководстве примеры кода находятся в следующем репозитории:
+Tooclone hello репозитория для данного образца не требуется, однако все hello пример кода, рассматриваемые в этом учебнике расположен в следующих репозитория hello:
 
 - `git clone https://github.com/Azure-Samples/iot-edge-samples.git`.
 - `cd iot-edge-samples/dotnetcore/simulated_ble`
@@ -45,24 +45,24 @@ ms.lasthandoff: 08/03/2017
 ## <a name="getting-started"></a>Приступая к работе
 
 1. Установите `.NET Core SDK`.
-2. Установите `Visual Studio Code`и `C# extension` из Marketplace для Visual Studio Code.
+2. Установка `Visual Studio Code` и hello `C# extension` из Visual Studio Marketplace кода hello.
 
-Просмотрите это [краткое видеоруководство](https://channel9.msdn.com/Blogs/dotnet/Get-started-VSCode-Csharp-NET-Core-Windows) о том, как приступить к работе с `Visual Studio Code` и `.NET Core SDK`.
+Просмотр этой [краткий учебник видео](https://channel9.msdn.com/Blogs/dotnet/Get-started-VSCode-Csharp-NET-Core-Windows) о том, как tooget приступить к работе с помощью `Visual Studio Code` и hello `.NET Core SDK`.
 
-## <a name="creating-the-azure-iot-edge-converter-module"></a>Создание модуля преобразователя Azure IoT Edge
+## <a name="creating-hello-azure-iot-edge-converter-module"></a>Создание модуля преобразователя hello Azure IoT Edge
 
 1. Инициализируйте новый проект C# библиотеки классов `.NET Core`:
     - Откройте командную строку (`Windows + R` -> `cmd` -> `enter`).
-    - Перейдите к папке, в которой хотите создать проект `C#`.
+    - Перейдите в папку toohello, куда toocreate hello `C#` проекта.
     - Введите **dotnet new classlib -o IoTEdgeConverterModule -f netstandard1.3**. 
     - Эта команда создает в каталоге проектов пустой класс с именем `Class1.cs`.
-2. Перейдите к папке, в которой мы только что создали проект библиотеки классов. Для этого введите команду **cd IoTEdgeConverterModule**.
-3. Откройте проект в `Visual Studio Code`, введя команду **code .**.
-4. После открытия проекта в `Visual Studio Code` щелкните **IoTEdgeConverterModule.csproj**, чтобы открыть файл, как показано на следующем изображении:
+2. Перейдите в папку toohello, где только что созданный проект библиотеки классов hello, введя **cd IoTEdgeConverterModule**.
+3. Привет открыть проект в `Visual Studio Code` , введя **кода.**.
+4. После открытия проекта hello в `Visual Studio Code`, щелкните hello **IoTEdgeConverterModule.csproj** tooopen hello файла, как показано в hello после изображения:
 
     ![Окно редактирования Visual Studio Code](media/iot-hub-iot-edge-create-module/vscode-edit-csproj.png)
 
-5. Вставьте большой двоичный объект `XML` из приведенного ниже фрагмента кода между закрывающими тегами `PropertyGroup` и `Project` (шестая строка на предыдущем изображении) и сохраните файл, нажав сочетание клавиш `Ctrl` + `S`.
+5. Вставка hello `XML` большого двоичного объекта в следующий фрагмент кода между закрывающей hello hello `PropertyGroup` теги и hello закрытие `Project` тега; строка шесть hello предшествующий изображение и сохраните файл hello, нажав клавишу `Ctrl`  +  `S`.
 
    ```xml
      <ItemGroup>
@@ -72,29 +72,29 @@ ms.lasthandoff: 08/03/2017
      </ItemGroup> 
    ```
 
-6. После сохранения файла `.csproj` в `Visual Studio Code` должен отобразиться запрос в виде диалогового окна `unresolved dependencies`, как показано на следующем изображении: 
+6. После сохранения hello `.csproj` файл `Visual Studio Code` должна вывести запрос с `unresolved dependencies` диалогового окна, как показано в hello после изображения: 
 
     ![Диалоговое окно восстановления зависимостей Visual Studio Code](media/iot-hub-iot-edge-create-module/vscode-restore.png)
 
-    a) Нажмите кнопку `Restore`, чтобы восстановить все ссылки в файле `.csproj` проекта, включая добавленные нами `PackageReferences`. 
+    ) нажмите кнопку `Restore` toorestore все hello ссылок в проектах hello `.csproj` файла, включая hello `PackageReferences` добавлена. 
 
-    b) `Visual Studio Code` автоматически создает файл `project.assets.json` в папке `obj` проекта. Этот файл содержит сведения о зависимостях проекта, которые позволяют ускорить последующие операции восстановления.
+    (б) `Visual Studio Code` автоматически создает hello `project.assets.json` файла в проектах `obj` папки. Этот файл содержит сведения о проекте зависимости toomake последующие операции восстановления быстрее.
  
     >[!NOTE]
     `.NET Core Tools` теперь основаны на MSBuild. Это означает, что вместо файла `project.json` создается файл `.csproj` проекта.
 
-    - Если `Visual Studio Code` не отображает запрос, то это не проблема, так как эти действия можно выполнить вручную. Откройте окно интегрированного терминала `Visual Studio Code`, нажав сочетание клавиш `Ctrl` + `backtick`. Либо воспользуйтесь меню `View` -> `Integrated Terminal`.
-    - В окне `Integrated Terminal` введите команду **dotnet restore**.
+    - Если `Visual Studio Code` не отображает запрос, то это не проблема, так как эти действия можно выполнить вручную. Откройте hello `Visual Studio Code` интеграции окно терминала, нажав клавишу hello `Ctrl`  +  `backtick` ключей или с помощью меню hello `View`  ->  `Integrated Terminal`.
+    - В hello `Integrated Terminal` тип окна **восстановления dotnet**.
     
-7. Переименуйте файл `Class1.cs` в `BleConverterModule.cs`. 
+7. Переименование hello `Class1.cs` файла слишком`BleConverterModule.cs`. 
 
-    a) Чтобы переименовать файл, сначала щелкните файл, а затем нажмите клавишу `F2`.
+    ) файл hello toorename сначала щелкните на файле hello нажмите клавишу hello `F2` ключа.
     
-    b) Введите новое имя **BleConverterModule**, как показано на следующем изображении:
+    b) введите новое имя hello **BleConverterModule**, как показано в hello после изображения:
 
     ![Переименование класса в Visual Studio Code](media/iot-hub-iot-edge-create-module/vscode-rename.png)
 
-8. Замените существующий код в файле `BleConverterModule.cs`, скопировав и вставив следующий фрагмент кода в файл `BleConverterModule.cs`.
+8. Замените существующий код hello в hello `BleConverterModule.cs` файл путем копирования и вставки hello, следующий фрагмент кода в ваш `BleConverterModule.cs` файла.
 
    ```csharp
    using System;
@@ -151,13 +151,13 @@ ms.lasthandoff: 08/03/2017
    }
    ```
 
-9. Сохраните файл, нажав сочетание клавиш `Ctrl` + `S`.
+9. Сохраните файл hello, нажав клавишу `Ctrl`  +  `S`.
 
-10. Создайте файл с именем `Untitled-1`, нажав сочетание клавиш `Ctrl` + `N`, как показано на следующем изображении:
+10. Создайте новый файл с именем `Untitled-1` , нажав клавишу hello `Ctrl`  +  `N` ключи, как показано в hello после изображения:
 
     ![Новый файл Visual Studio Code](media/iot-hub-iot-edge-create-module/vscode-new-file.png)
 
-11. Чтобы десериализировать объект `JSON`, который мы получаем с имитации устройства `BLE`, скопируйте следующий код в окно редактора кода файла `Untitled-1`. 
+11. toodeserialize hello `JSON` объекта, которые мы получаем от hello имитировать `BLE` устройства, следующий код в hello hello копирования `Untitled-1` окне редактора кода в файл. 
 
    ```csharp
    using System;
@@ -173,14 +173,14 @@ ms.lasthandoff: 08/03/2017
    }
    ```
 
-12. Сохраните файл как `BleData.cs`, нажав сочетание клавиш `Ctrl` + `Shift` + `S`.
-    - В диалоговом окне "Сохранить как" в раскрывающемся меню `Save as Type` выберите `C# (*.cs;*.csx)`, как показано на следующем изображении:
+12. Сохраните файл как файл hello `BleData.cs` , нажав клавишу `Ctrl`  +  `Shift`  +  `S` ключей.
+    - На hello Сохранить как диалоговое окно, в hello `Save as Type` раскрывающееся меню, выберите `C# (*.cs;*.csx)` в hello после изображения:
 
     ![Диалоговое окно "Сохранить как" Visual Studio Code](media/iot-hub-iot-edge-create-module/vscode-save-as.png)
 
-13. Создайте файл с именем `Untitled-1`, нажав сочетание клавиш `Ctrl` + `N`.
+13. Создайте новый файл с именем `Untitled-1` , нажав клавишу hello `Ctrl`  +  `N` ключей.
 
-14. Скопируйте следующий фрагмент кода и вставьте его в файл `Untitled-1`. Этот класс является модулем `Azure IoT Edge`, который мы используем для вывода данных, получаемых от модуля `BleConverterModule`.
+14. Скопируйте и вставьте следующий фрагмент кода в hello hello `Untitled-1` файла. Этот класс является `Azure IoT Edge` модуль, который мы используем данные toooutput hello, полученных от наших `BleConverterModule`.
 
    ```csharp
    using System;
@@ -233,12 +233,12 @@ ms.lasthandoff: 08/03/2017
    }
    ```
 
-15. Сохраните файл как `DotNetPrinterModule.cs`, нажав сочетание клавиш `Ctrl` + `Shift` + `S`.
-    - В диалоговом окне "Сохранить как" в раскрывающемся меню `Save as Type` выберите `C# (*.cs;*.csx)`.
+15. Сохраните файл как файл hello `DotNetPrinterModule.cs` , нажав клавишу `Ctrl`  +  `Shift`  +  `S`.
+    - На hello Сохранить как диалоговое окно, в hello `Save as Type` раскрывающееся меню, выберите `C# (*.cs;*.csx)`.
 
-16. Создайте файл с именем `Untitled-1`, нажав сочетание клавиш `Ctrl` + `N`.
+16. Создайте новый файл с именем `Untitled-1` , нажав клавишу hello `Ctrl`  +  `N` ключей.
 
-17. Чтобы десериализировать объект `JSON`, который мы получаем от модуля `BleConverterModule`, скопируйте следующий фрагмент кода и вставьте его в файл `Untitled-1`. 
+17. toodeserialize hello `JSON` объектов, которые мы получаем от hello `BleConverterModule`, копировать и вставить hello следующий фрагмент кода hello `Untitled-1` файла. 
 
    ```csharp
    using System;
@@ -260,12 +260,12 @@ ms.lasthandoff: 08/03/2017
    }
    ```
 
-18. Сохраните файл как `BleConverterData.cs`, нажав сочетание клавиш `Ctrl` + `Shift` + `S`.
-    - В диалоговом окне "Сохранить как" в раскрывающемся меню `Save as Type` выберите `C# (*.cs;*.csx)`.
+18. Сохраните файл как файл hello `BleConverterData.cs` , нажав клавишу `Ctrl`  +  `Shift`  +  `S`.
+    - На hello Сохранить как диалоговое окно, в hello `Save as Type` раскрывающееся меню, выберите `C# (*.cs;*.csx)`.
 
-19. Создайте файл с именем `Untitled-1`, нажав сочетание клавиш `Ctrl` + `N`.
+19. Создайте новый файл с именем `Untitled-1` , нажав клавишу hello `Ctrl`  +  `N` ключей.
 
-20. Скопируйте следующий фрагмент кода и вставьте его в файл `Untitled-1`.
+20. Скопируйте и вставьте следующий фрагмент кода в hello hello `Untitled-1` файла.
 
    ```json
    {
@@ -328,10 +328,10 @@ ms.lasthandoff: 08/03/2017
    }
    ```
 
-21. Сохраните файл как `gw-config.json`, нажав сочетание клавиш `Ctrl` + `Shift` + `S`.
-    - В диалоговом окне "Сохранить как" в раскрывающемся меню `Save as Type` выберите `JSON (*.json;*.bowerrc;*.jshintrc;*.jscsrc;*.eslintrc;*.babelrc;*webmanifest)`.
+21. Сохраните файл как файл hello `gw-config.json` , нажав клавишу `Ctrl`  +  `Shift`  +  `S`.
+    - На hello Сохранить как диалоговое окно, в hello `Save as Type` раскрывающееся меню, выберите `JSON (*.json;*.bowerrc;*.jshintrc;*.jscsrc;*.eslintrc;*.babelrc;*webmanifest)`.
 
-22. Чтобы файл конфигурации можно было скопировать в выходной каталог, обновите файл `IoTEdgeConverterModule.csproj`, вставив в него следующий большой двоичный объект XML:
+22. копирование tooenable toohello файл конфигурации hello выходного каталога, обновления hello `IoTEdgeConverterModule.csproj` с hello после двоичных данных XML:
 
    ```xml
      <ItemGroup>
@@ -339,13 +339,13 @@ ms.lasthandoff: 08/03/2017
      </ItemGroup>
    ```
     
-   - Обновленный файл `IoTEdgeConverterModule.csproj` должен выглядеть так:
+   - Обновить Hello `IoTEdgeConverterModule.csproj` следует выглядят hello следующие изображения:
 
     ![Обновленный CSPROJ-файл Visual Studio Code](media/iot-hub-iot-edge-create-module/vscode-update-csproj.png)
 
-23. Создайте файл с именем `Untitled-1`, нажав сочетание клавиш `Ctrl` + `N`.
+23. Создайте новый файл с именем `Untitled-1` , нажав клавишу hello `Ctrl`  +  `N` ключей.
 
-24. Скопируйте следующий фрагмент кода и вставьте его в файл `Untitled-1`.
+24. Скопируйте и вставьте следующий фрагмент кода в hello hello `Untitled-1` файла.
 
    ```powershell
    Copy-Item -Path $env:userprofile\.nuget\packages\microsoft.azure.devices.gateway.native.windows.x64\1.1.3\runtimes\win-x64\native\* -Destination .\bin\Debug\netstandard1.3
@@ -357,32 +357,32 @@ ms.lasthandoff: 08/03/2017
    Copy-Item -Path $env:userprofile\.nuget\packages\system.collections.specialized\4.3.0\lib\netstandard1.3\* -Destination .\bin\Debug\netstandard1.3
    ```
 
-25. Сохраните файл как `binplace.ps1`, нажав сочетание клавиш `Ctrl` + `Shift` + `S`.
-    - В диалоговом окне "Сохранить как" в раскрывающемся меню `Save as Type` выберите `PowerShell (*.ps1;*.psm1;*.psd1;*.pssc;*.psrc)`.
+25. Сохраните файл как файл hello `binplace.ps1` , нажав клавишу `Ctrl`  +  `Shift`  +  `S`.
+    - На hello Сохранить как диалоговое окно, в hello `Save as Type` раскрывающееся меню, выберите `PowerShell (*.ps1;*.psm1;*.psd1;*.pssc;*.psrc)`.
 
-26. Выполните сборку проекта, нажав сочетание клавиш `Ctrl` + `Shift` + `B`. При первом выполнении сборки проекта в `Visual Studio Code` отобразится запрос в виде диалогового окна `No build task defined.`, как показано на следующем изображении:
+26. Выполните построение проекта hello, нажав клавишу hello `Ctrl`  +  `Shift`  +  `B` ключей. При построении проекта hello для hello первый раз `Visual Studio Code` , предлагающее hello `No build task defined.` диалогового окна, как показано в hello после изображения:
 
     ![Диалоговое окно задачи сборки Visual Studio Code](media/iot-hub-iot-edge-create-module/vscode-build-task.png)
 
-    a) Нажмите кнопку `Configure Build Task`.
+    ) щелкните hello `Configure Build Task` кнопки.
 
-    b) В раскрывающегося меню `Select a Task Runner` диалогового окна выберите `.NET Core`, как показано на следующем изображении: 
+    (б) в hello `Select a Task Runner` раскрывающегося меню диалогового окна. Выберите `.NET Core` как видно в hello после изображения: 
 
     ![Диалоговое окно выбора задачи Visual Studio Code](media/iot-hub-iot-edge-create-module/vscode-build-task-runner.png)
 
-    c) Если щелкнуть элемент `.NET Core`, то в каталоге `.vscode` будет создан файл `tasks.json`, который затем откроется в окне `code editor`. Нет необходимости изменять этот файл. Просто закройте вкладку.
+    по щелчку c) hello `.NET Core` hello создает элемент `tasks.json` файла в вашей `.vscode` каталога и открывает файл в hello Здравствуйте, `code editor` окна. Нет этого файла hello закрыть вкладку toomodify нет необходимости.
 
-27.  Откройте окно интегрированного терминала `Visual Studio Code`, нажав сочетание клавиш `Ctrl` + `backtick` или с помощью меню `View` -> `Integrated Terminal`, и введите в командной строке `PowerShell` команду **.\binplace.ps1**. Эта команда копирует все зависимости в выходной каталог.
+27.  Откройте hello `Visual Studio Code` интеграции окно терминала, нажав клавишу hello `Ctrl`  +  `backtick` ключей или с помощью меню hello `View`  ->  `Integrated Terminal` и тип **.\binplace.ps1**в hello `PowerShell` командной строки. Эта команда копирует все наши зависимости toohello выходной каталог.
 
-28. Перейдите в выходной каталог проекта в окне `Integrated Terminal`, введя команду **cd .\bin\Debug\netstandard1.3**.
+28. Перейдите в выходной каталог проекты toohello hello `Integrated Terminal` окна, введя **cd.\bin\Debug\netstandard1.3**.
 
-29. Запустите пример проекта, введя команду **.\gw.exe gw-config.json** в окно командной строки `Integrated Terminal`. 
-    - Если вы четко следовали инструкциям, приведенным в этом руководстве, то у вас должен запуститься пример проекта `Azure IoT Edge BLE Data Converter Module`, как показано на следующем изображении:
+29. Запустите проект образец hello, введя **. \gw.exe gw-config.json** в hello `Integrated Terminal` строке окна. 
+    - Если вы следовали hello шаги в этом учебнике точно, вы должны выполняться hello `Azure IoT Edge BLE Data Converter Module` образец проекта, как показано в hello после изображения:
     
         ![Пример имитации устройства, запущенный в Visual Studio Code](media/iot-hub-iot-edge-create-module/vscode-run.png)
     
-    - Чтобы завершить работу приложения, нажмите клавишу `<Enter>`.
+    - Приложение hello tooterminate, нажмите клавишу hello `<Enter>` ключа.
 
 >[!IMPORTANT]
-Не рекомендуется использовать сочетание клавиш `Ctrl` + `C` для завершения работы приложения шлюза `IoT Edge` (то есть **gw.exe**). Это действие может вызвать аварийное завершение процесса.
+Не рекомендуется toouse `Ctrl`  +  `C` tooterminate hello `IoT Edge` шлюза приложений (то есть **gw.exe**). Это действие может привести к тому, tooterminate hello процесса аварийно.
 

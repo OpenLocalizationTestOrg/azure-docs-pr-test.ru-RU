@@ -1,6 +1,6 @@
 ---
-title: "Масштабирование обработки мультимедийных данных путем добавления единиц кодирования в Azure | Документация Майкрософт"
-description: "Информация о добавлении единиц кодирования с помощью .NET"
+title: "обработки путем добавления единицы кодирования — Azure media aaaScale |  Документы Microsoft"
+description: "Узнайте, как единицы кодирования tooadd toohow в .NET Framework"
 services: media-services
 documentationcenter: 
 author: juliako
@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/09/2017
 ms.author: juliako;milangada;
-ms.openlocfilehash: 72a8729d22a9e76c8076d7a3347619a2163e4f09
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: b9f71a6487c5d136319a38a1598d60edfaa81b9e
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-scale-encoding-with-net-sdk"></a>Масштабирование кодирования с помощью пакета SDK для .NET
+# <a name="how-tooscale-encoding-with-net-sdk"></a>Как tooscale кодирование с помощью пакета SDK для .NET
 > [!div class="op_single_selector"]
 > * [Портал](media-services-portal-scale-media-processing.md)
 > * [.NET](media-services-dotnet-encoding-units.md)
@@ -32,14 +32,14 @@ ms.lasthandoff: 08/29/2017
 
 ## <a name="overview"></a>Обзор
 > [!IMPORTANT]
-> Обязательно ознакомьтесь с этим [обзором](media-services-scale-media-processing-overview.md) , чтобы получить дополнительные сведения о масштабировании обработки мультимедиа.
+> Убедитесь, что hello tooreview [Обзор](media-services-scale-media-processing-overview.md) tooget разделе Дополнительные сведения о масштабировании раздела с мультимедиа.
 > 
 > 
 
-Чтобы изменить тип зарезервированных единиц и число зарезервированных единиц кодирования с помощью пакета SDK для .NET, сделайте следующее:
+toochange hello зарезервированные единицы типа и hello количество зарезервированные единицы кодирования с помощью пакета SDK .NET, hello следующие:
 
     IEncodingReservedUnit encodingS1ReservedUnit = _context.EncodingReservedUnits.FirstOrDefault();
-    encodingS1ReservedUnit.ReservedUnitType = ReservedUnitType.Basic; // Corresponds to S1
+    encodingS1ReservedUnit.ReservedUnitType = ReservedUnitType.Basic; // Corresponds tooS1
     encodingS1ReservedUnit.Update();
     Console.WriteLine("Reserved Unit Type: {0}", encodingS1ReservedUnit.ReservedUnitType);
 
@@ -49,20 +49,20 @@ ms.lasthandoff: 08/29/2017
     Console.WriteLine("Number of reserved units: {0}", encodingS1ReservedUnit.CurrentReservedUnits);
 
 ## <a name="opening-a-support-ticket"></a>Открытие запроса в службу поддержки
-По умолчанию каждая учетная запись служб мультимедиа может масштабироваться до 25 зарезервированных единиц кодирования и 5 зарезервированных единиц потоковой передачи по требованию. Вы можете запросить более высокий предел, открыв запрос в службу поддержки.
+По умолчанию каждая учетная запись служб мультимедиа можно масштабировать tooup too25 кодирования и 5 по требованию зарезервированные элементы потоковой передачи. Вы можете запросить более высокий предел, открыв запрос в службу поддержки.
 
 ### <a name="open-a-support-ticket"></a>Открытие запроса в службу поддержки
-Чтобы открыть запрос в службу поддержки, выполните следующее:
+обращение в службу поддержки tooopen hello следующие:
 
-1. Щелкните [Получить поддержку](https://manage.windowsazure.com/?getsupport=true). Если вы не выполнили вход, будет предложено ввести учетные данные.
+1. Щелкните [Получить поддержку](https://manage.windowsazure.com/?getsupport=true). Если вы не вошли в, будет иметь tooenter запрашиваемые учетные данные.
 2. Выберите свою подписку.
 3. В группе типа поддержки выберите "Техническая".
 4. Щелкните "Создать запрос в службу поддержки".
-5. Выберите "Службы мультимедиа Azure" в списке продуктов, представленных на следующей странице.
+5. Выберите «Службы мультимедиа Azure» в список продуктов hello приведены на следующей странице приветствия.
 6. Выберите соответствующее значение в поле "Тип проблемы".
 7. Нажмите кнопку "Продолжить".
 8. Следуйте указаниям на следующей странице, а затем введите сведения о проблеме.
-9. Нажмите кнопку "Отправить" для создания запроса в службу поддержки.
+9. Нажмите кнопку Отправить запрос tooopen hello.
 
 ## <a name="media-services-learning-paths"></a>Схемы обучения работе со службами мультимедиа
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]

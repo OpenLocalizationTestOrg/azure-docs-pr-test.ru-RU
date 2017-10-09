@@ -1,6 +1,6 @@
 ---
-title: "Проверка возможности подключения с помощью службы \"Наблюдатель за сетями Azure\" в PowerShell | Документация Майкрософт"
-description: "На этой странице объясняется, как проверить возможность подключения с помощью службы \"Наблюдатель за сетями\" в PowerShell"
+title: "подключение aaaCheck с Наблюдатель сети Azure — PowerShell | Документы Microsoft"
+description: "На этой странице объясняется способ подключения к tootest с Наблюдатель сети с помощью PowerShell"
 services: network-watcher
 documentationcenter: na
 author: georgewallace
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/11/2017
 ms.author: gwallace
-ms.openlocfilehash: a8f936cd23838759dc30b04688d3c6544e4895cc
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 4bcb90a72f178445c38b7bd7fc5054c5d0c200bb
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="check-connectivity-with-azure-network-watcher-using-powershell"></a>Проверка возможности подключения с помощью службы "Наблюдатель за сетями Azure" в PowerShell
 
@@ -27,37 +27,37 @@ ms.lasthandoff: 08/18/2017
 > - [CLI 2.0](network-watcher-connectivity-cli.md)
 > - [Azure REST API](network-watcher-connectivity-rest.md)
 
-Узнайте, как проверить возможность прямого подключения TCP между виртуальной машиной и определенной конечной точкой.
+Узнайте, как можно установить toouse tooverify подключения, если прямое подключение TCP от tooa виртуальной машины, заданный конечной точки.
 
 ## <a name="before-you-begin"></a>Перед началом работы
 
-В данной статье предполагается, что у вас есть следующие ресурсы:
+В этой статье предполагается, что hello следующие ресурсы:
 
-* экземпляр службы "Наблюдатель за сетями" в регионе, в котором нужно проверить возможность подключения;
+* Экземпляр Наблюдатель сети в регионе hello нужно toocheck подключения.
 
-* виртуальные машины, возможность подключения к которым необходимо проверить.
+* Виртуальные машины toocheck подключение.
 
 [!INCLUDE [network-watcher-preview](../../includes/network-watcher-public-preview-notice.md)]
 
 > [!IMPORTANT]
-> Для проверки возможности подключения требуется расширение виртуальной машины `AzureNetworkWatcherExtension`. Информацию об установке расширения для виртуальной машины Windows см. в статье [Расширение виртуальной машины агента Наблюдателя за сетями для Windows](../virtual-machines/windows/extensions-nwa.md), а для виртуальной машины Linux — в статье [Расширение виртуальной машины агента Наблюдателя за сетями для Linux](../virtual-machines/linux/extensions-nwa.md).
+> Для проверки возможности подключения требуется расширение виртуальной машины `AzureNetworkWatcherExtension`. Установка расширения hello на виртуальной Машине Windows на сайте [расширение виртуальной машины агента Наблюдатель сети Azure для Windows](../virtual-machines/windows/extensions-nwa.md) и виртуальной Машине Linux см. по адресу [расширение виртуальной машины агента Наблюдатель сети Azure для Linux](../virtual-machines/linux/extensions-nwa.md).
 
-## <a name="register-the-preview-capability"></a>Регистрация возможностей предварительной версии
+## <a name="register-hello-preview-capability"></a>Регистрация возможностей предварительного просмотра hello
 
-Возможность подключения сейчас поддерживается в общедоступной предварительной версии. Для использования этой функции компонент необходимо зарегистрировать. Для этого выполните следующие командлеты PowerShell.
+Подключение в данный момент общедоступной предварительной версии, toouse эту функцию, он должен toobe зарегистрирован. toodo, выполнения hello следующий пример PowerShell:
 
 ```powershell
 Register-AzureRmProviderFeature -FeatureName AllowNetworkWatcherConnectivityCheck  -ProviderNamespace Microsoft.Network
 Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Network
 ```
 
-Чтобы проверить, была ли регистрация успешно завершена, выполните приведенный ниже командлет PowerShell.
+tooverify hello регистрация прошла успешно, запустите следующий пример скрипта Powershell hello:
 
 ```powershell
 Get-AzureRmProviderFeature -FeatureName AllowNetworkWatcherConnectivityCheck  -ProviderNamespace  Microsoft.Network
 ```
 
-Если компонент был правильно зарегистрирован, выходные данные должны выглядеть следующим образом.
+Если функции hello был правильно зарегистрирован, hello выходных данных должно совпадать hello следующее:
 
 ```
 FeatureName         ProviderName      RegistrationState
@@ -65,9 +65,9 @@ FeatureName         ProviderName      RegistrationState
 AllowNetworkWatcherConnectivityCheck  Microsoft.Network Registered
 ```
 
-## <a name="check-connectivity-to-a-virtual-machine"></a>Проверка возможности подключения к виртуальной машине
+## <a name="check-connectivity-tooa-virtual-machine"></a>Проверьте подключение tooa виртуальной машины
 
-В этом примере проверяется возможность подключения к целевой виртуальной машине через порт 80.
+В этом примере проверяется подключение tooa целевой виртуальной машине через порт 80.
 
 ### <a name="example"></a>Пример
 
@@ -89,7 +89,7 @@ Test-AzureRmNetworkWatcherConnectivity -NetworkWatcher $networkWatcher -SourceId
 
 ### <a name="response"></a>Ответ
 
-Следующий ответ взят из предыдущего примера.  В этом ответе параметр `ConnectionStatus` имеет значение **Unreachable** (Недоступно). Как видите, все отправленные пробы завершились неудачей. Попытка подключения завершилась сбоем в виртуальном модуле из-за пользовательского правила `NetworkSecurityRule` с именем **UserRule_Port80**, настроенного на блокировку входящего трафика на порту 80. Эти сведения можно использовать для анализа проблем с подключением.
+После ответа Hello — из предыдущего примера hello.  В данном ответе hello `ConnectionStatus` — **недостижимо**. Вы увидите, что все hello Сбой отправки проб. не удалось выполнить подключение Hello hello виртуального устройства из-за tooa настроенного пользователем `NetworkSecurityRule` с именем **UserRule_Port80**, настроен tooblock входящий трафик через порт 80. Эти сведения можно использовать tooresearch проблем с подключением.
 
 ```
 ConnectionStatus : Unreachable
@@ -162,7 +162,7 @@ Hops             : [
 
 ## <a name="validate-routing-issues"></a>Проверка проблем с маршрутизацией
 
-В этом примере проверяется возможность подключения между виртуальной машиной и удаленной конечной точкой.
+пример Hello проверяет подключение между виртуальной машиной и удаленной конечной точки.
 
 ### <a name="example"></a>Пример
 
@@ -182,7 +182,7 @@ Test-AzureRmNetworkWatcherConnectivity -NetworkWatcher $networkWatcher -SourceId
 
 ### <a name="response"></a>Ответ
 
-В следующем примере состояние `ConnectionStatus` отображается как **Unreachable** (Недоступно). В блоке `Hops` в разделе `Issues` видно, что трафик заблокирован из-за `UserDefinedRoute`. 
+В следующем примере hello, hello `ConnectionStatus` отображается как **недостижимо**. В hello `Hops` сведения, можно увидеть в разделе `Issues` трафика hello заблокирована из-за tooa `UserDefinedRoute`. 
 
 ```
 ConnectionStatus : Unreachable
@@ -227,7 +227,7 @@ Hops             : [
 
 ## <a name="check-website-latency"></a>Проверка задержки веб-сайта
 
-В следующем примере проверяется возможность подключения к веб-сайту.
+Hello следующий пример проверяет веб-сайт tooa hello подключения.
 
 ### <a name="example"></a>Пример
 
@@ -247,7 +247,7 @@ Test-AzureRmNetworkWatcherConnectivity -NetworkWatcher $networkWatcher -SourceId
 
 ### <a name="response"></a>Ответ
 
-В следующем ответе видно, что параметр `ConnectionStatus` отображается со значением **Reachable** (Достижимо). Когда подключение будет установлено, отобразятся значения задержки.
+В следующих ответа hello, вы увидите hello `ConnectionStatus` показано, как **доступный**. Когда подключение будет установлено, отобразятся значения задержки.
 
 ```
 ConnectionStatus : Reachable
@@ -278,9 +278,9 @@ Hops             : [
                    ]
 ```
 
-## <a name="check-connectivity-to-a-storage-endpoint"></a>Проверка возможности подключения к конечной точке хранилища
+## <a name="check-connectivity-tooa-storage-endpoint"></a>Проверьте подключение tooa конечную точку
 
-В следующем примере проверяется возможность подключения между виртуальной машиной и учетной записью хранилища BLOB-объектов.
+Следующий пример Hello тестирует подключение hello из виртуальной машины учетной записи хранения tooa блога.
 
 ### <a name="example"></a>Пример
 
@@ -300,7 +300,7 @@ Test-AzureRmNetworkWatcherConnectivity -NetworkWatcher $networkWatcher -SourceId
 
 ### <a name="response"></a>Ответ
 
-JSON-код ниже — это пример ответа на предыдущий командлет. Так как назначение доступно, для свойства `ConnectionStatus` отображается значение **Reachable** (Доступно).  Также отображаются сведения о числе прыжков, необходимых для доступа к BLOB-объекту в хранилище, а также о задержке.
+Hello следующий json-hello пример ответа из предыдущих командлета hello. Здравствуйте, как назначение hello доступен, `ConnectionStatus` показано, как свойство **доступный**.  Предоставляются hello детали hello число прыжков необходимые tooreach hello хранилища больших двоичных объектов и задержки.
 
 ```
 ConnectionStatus : Reachable
@@ -335,7 +335,7 @@ Hops             : [
 
 Сведения о состоянии (разрешен или запрещен) входящего и исходящего трафика виртуальной машины см. в статье, посвященной [проверке потока IP-адресов](network-watcher-check-ip-flow-verify-portal.md).
 
-Если трафик блокируется, чего не должно быть, см. статью [Управление группами безопасности сети с помощью портала](../virtual-network/virtual-network-manage-nsg-arm-portal.md). В ней содержатся сведения об отслеживании группы безопасности сети и определенных правил безопасности.
+Если трафик блокируется, и его не следует, см. раздел [Управление группами безопасности сети](../virtual-network/virtual-network-manage-nsg-arm-portal.md) tootrack вниз hello правила сетевой безопасности группы и безопасности, определенных.
 
 <!-- Image references -->
 

@@ -1,6 +1,6 @@
 ---
-title: "Что входит в образы шаблонов Azure RemoteApp? | Документация Майкрософт"
-description: "Узнайте об образах шаблона, которые поставляются с Azure RemoteApp."
+title: "aaaWhat находится в образах шаблона hello Azure RemoteApp? | Документация Майкрософт"
+description: "Дополнительные сведения об образах шаблона hello, входящий в состав Azure RemoteApp."
 services: remoteapp
 documentationcenter: 
 author: msmbaldwin
@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 04/26/2017
 ms.author: mbaldwin
-ms.openlocfilehash: 9cd4e1a16a7c42bd00d9e543d7b62b72e9de3fc8
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: ea012cec8dc581a8bd4a5a138ce302de19d5c6af
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="what-is-in-the-azure-remoteapp-template-images"></a>Что входит в образы шаблонов Azure RemoteApp?
+# <a name="what-is-in-hello-azure-remoteapp-template-images"></a>Что такое hello образы шаблонов Azure RemoteApp?
 > [!IMPORTANT]
-> Мы выводим службу Azure RemoteApp из эксплуатации 31 августа 2017 года. Дополнительные сведения см. в [объявлении](https://go.microsoft.com/fwlink/?linkid=821148).
+> Мы выводим службу Azure RemoteApp из эксплуатации 31 августа 2017 года. Чтение hello [объявления](https://go.microsoft.com/fwlink/?linkid=821148) подробные сведения.
 > 
 > 
 
@@ -32,16 +32,16 @@ ms.lasthandoff: 07/11/2017
 * Microsoft Office 2013 профессиональный плюс (только пробная версия)
 
 > [!IMPORTANT]
-> Подписки Azure RemoteApp предоставляют доступ к программному обеспечению в образах, за исключением выпуска "Office 365 профессиональный плюс", требующего отдельной подписки, и выпуска Office 2013, который нельзя использовать в рабочей среде. Это означает, что вы можете представлять программы или приложения на образах шаблона своим пользователям для общего доступа. Например, если создать коллекцию, которая использует образ Windows Server 2012 R2, можно опубликовать System Center Endpoint Protection, чтобы пользователи могли получить к нему доступ через RemoteApp.
+> Подписки Azure RemoteApp предоставляет вам доступ к программному обеспечению toohello в образах hello, за исключением hello Office 365 профессиональный плюс, требующий отдельной подписки, и Office 2013, который не может использоваться в производственной среде. Это означает, что могут обмениваться hello программ или приложений на образы шаблонов hello с пользователями. Например при создании коллекции, использующего образ Windows Server 2012 R2 hello, System Center Endpoint Protection можно опубликовать для пользователей tooaccess через RemoteApp.
 > 
-> Дополнительные сведения см. в [статье о лицензировании RemoteApp](remoteapp-licensing.md). Сведения о лицензировании Office см. в статье [Использование Office с Azure RemoteApp](remoteapp-o365.md).
+> Извлечение hello [сведения о лицензировании удаленных приложений RemoteApp](remoteapp-licensing.md) для получения дополнительной информации. И [Office с помощью Azure RemoteApp.](remoteapp-o365.md) для hello сведения о лицензировании Office.
 > 
 > 
 
 Ниже описывает содержимое каждого образа.
 
-## <a name="windows-server-2012-r2--the-vanilla-image"></a>Windows Server 2012 R2 (стандартный образ)
-Этот образ основан на операционной системе Microsoft Windows Server 2012 R2 для центров обработки данных, и в нем установлены следующие роли и функции, обеспечивающие соответствие требованиям образов шаблонов Azure RemoteApp:
+## <a name="windows-server-2012-r2--hello-vanilla-image"></a>Windows Server 2012 R2 («hello соответствующего ванили образ»)
+Этот образ основан на операционной системе Microsoft Windows Server 2012 R2 Datacenter и имеет hello установлены следующие роли и компоненты toomeet hello требованиям к образам шаблона Azure RemoteApp:
 
 * .NET Framework 4.5, 3.5.1, 3.5
 * Возможности рабочего стола
@@ -52,7 +52,7 @@ ms.lasthandoff: 07/11/2017
 * Windows PowerShell ISE
 * Поддержка WoW64
 
-В этом образе уже установлены следующие приложения:
+Этот образ также имеет следующие приложения, установленные hello:
 
 * Adobe Flash Player
 * Microsoft Silverlight
@@ -60,23 +60,23 @@ ms.lasthandoff: 07/11/2017
 * Проигрыватель Windows Media (Microsoft)
 
 ## <a name="microsoft-office-365-proplus-subscription-required"></a>Microsoft Office 365 профессиональный плюс (необходима подписка)
-Приложение Office 365 пользуется наибольшим спросом, поэтому мы создали для него "специальный" образ.
+Office 365 hello наиболее запрошенное приложение, поэтому мы создали «custom» образ для вас toowork с.
 
-Этот образ является расширенной версией стандартного образа, и в нем, помимо компонентов образа Windows Server 2012 R2, установлены следующие компоненты Microsoft Office 365 профессиональный плюс:
+Этот образ является расширением соответствующего ванили изображения hello и hello следующие компоненты Microsoft Office 365 профессиональный плюс; установлен в дополнение к этому toohello компонентами, описанными в образ Windows Server 2012 R2 hello:
 
 * Access
 * Excel
 * Lync
 * OneNote
-* OneDrive для бизнеса (обратите внимание, что использование агента синхронизации не поддерживается в Azure RemoteApp)
+* OneDrive для бизнеса (Обратите внимание, что агент синхронизации hello не поддерживается для использования с Azure RemoteApp)
 * Outlook
 * PowerPoint
 * Word
 * Средства проверки правописания Microsoft Office
 
-В образ также входят Visio Pro и Project Pro.
+изображение Hello также Visio Pro и Pro проекта.
 
-Также установлены следующие приложения.
+И hello приложений, а также следующие:
 
 * SQL Native Client
 * Драйвер ODBC
@@ -86,20 +86,20 @@ ms.lasthandoff: 07/11/2017
 * PowerQuery
 * PowerMap
 
-Полный набор функций приложений Office 365 профессиональный плюс доступен только пользователям плана Office 365 профессиональный плюс. Дополнительные сведения о планах подписки на Office 365 см. в статье [Параметры планов Office 365](http://technet.microsoft.com/library/office-365-plan-options.aspx). У вас еще остались вопросы? Ознакомьтесь со сведениями об [Office 365 + RemoteApp](remoteapp-o365.md). Ознакомьтесь также с новой статьей [Как использовать подписку Office 365 с удаленным приложением Azure RemoteApp](remoteapp-officesubscription.md).
+Полный набор функций приложений Office 365 профессиональный плюс доступен только пользователям плана Office 365 профессиональный плюс. Дополнительные сведения о подписке Office 365 hello планов в разделе [планы службы Office 365](http://technet.microsoft.com/library/office-365-plan-options.aspx). У вас еще остались вопросы? Извлечение hello [Office 365 + RemoteApp](remoteapp-o365.md) сведения. Прочитайте статью hello [как toouse подписки Office 365 в Azure RemoteApp](remoteapp-officesubscription.md).
 
-Обратите внимание, что для каждого продукта (Office 365 профессиональный плюс, Visio Pro и Project Pro) требуются отдельные лицензии.
+Обратите внимание, что Office 365 профессиональный плюс toolicense Visio Pro и проект Pro отдельно - все их собственной лицензии.
 
 ## <a name="microsoft-office-2013-professional-plus-trial-only"></a>Microsoft Office 2013 профессиональный плюс (только пробная версия)
-Во время пробного периода вы можете тестировать службу с помощью образа Office 2013.
+Во время hello бесплатного пробного периода можно протестировать службу hello с изображением hello Office 2013.
 
-Этот образ является расширенной версией стандартного образа, и в нем, помимо компонентов образа Windows Server 2012 R2, установлены следующие компоненты Microsoft Office 2013 профессиональный плюс:
+Этот образ является расширением соответствующего ванили изображения hello и hello следующие компоненты Microsoft Office 2013 профессиональный плюс установлен в дополнение к этому toohello компонентами, описанными в образ Windows Server 2012 R2 hello:
 
 * Access
 * Excel
 * Lync
 * OneNote
-* OneDrive для бизнеса (обратите внимание, что использование агента синхронизации не поддерживается в Azure RemoteApp)
+* OneDrive для бизнеса (Обратите внимание, что агент синхронизации hello не поддерживается для использования с Azure RemoteApp)
 * Outlook
 * PowerPoint
 * Project
@@ -108,7 +108,7 @@ ms.lasthandoff: 07/11/2017
 * Средства проверки правописания Microsoft Office
 
 > [!IMPORTANT]
-> **Юридическая информация**. Этот образ не включает в себя лицензию Microsoft Office и *не может использоваться в производственных целях*. Образ Office 2013 профессиональный плюс предназначен исключительно для пробного использования. Если вам нужно использовать приложения Office в Azure RemoteApp в рабочей среде, используйте образ Office 365 профессиональный плюс. Дополнительные сведения о лицензировании Office см. в статье [Использование Office с Azure RemoteApp](remoteapp-o365.md).
+> **Юридическая информация**. Этот образ не включает в себя лицензию Microsoft Office и *не может использоваться в производственных целях*. изображение Office 2013 профессиональный плюс Hello предназначено только для пробного использования. Следует toouse приложений Office в Azure RemoteApp для рабочей среды необходимо toouse hello Office 365 профессиональный плюс изображения. Дополнительные сведения о лицензировании Office см. в статье [Использование Office с Azure RemoteApp](remoteapp-o365.md).
 > 
 > 
 

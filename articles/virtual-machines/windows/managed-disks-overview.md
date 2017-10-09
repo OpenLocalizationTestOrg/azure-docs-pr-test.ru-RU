@@ -1,6 +1,6 @@
 ---
-title: "Обзор службы \"Управляемые диски\" Azure уровней \"Премиум\" и \"Стандартный\" для виртуальных машин Windows | Документация Майкрософт"
-description: "Обзор службы \"Управляемые диски\" Azure, которая отвечают за управление учетными записями хранения, используемыми для виртуальных машин Azure на платформе Windows."
+title: "aaaAzure Premium и Standard управляемых дисков Обзор для виртуальных машин Windows | Документы Microsoft"
+description: "Общие сведения об управляемых дисков Azure, которая обрабатывает учетные записи хранения hello автоматически при использовании виртуальных машин Windows Azure"
 services: virtual-machines-windows
 documentationcenter: na
 author: iainfoulds
@@ -14,10 +14,10 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/15/2017
 ms.author: iainfou
-ms.openlocfilehash: be046ce45bff4ee547fbc737382d32f14fc8298a
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 02621c5debfda49d398624c9a0a84a573078d3d4
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 [!INCLUDE [virtual-machines-managed-disks-overview.md](../../../includes/virtual-machines-managed-disks-overview.md)]

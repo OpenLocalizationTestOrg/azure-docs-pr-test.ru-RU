@@ -1,6 +1,6 @@
 ---
-title: "Отправка запросов в индекс службы поиска Azure с помощью REST API | Документация Майкрософт"
-description: "В службе поиска Azure можно создавать поисковые запросы и с помощью параметров поиска фильтровать, сортировать и уточнять результаты."
+title: "AAA» запроса индекса (API REST - службы поиска Azure) | Документы Microsoft»"
+description: "Построить запрос поиска в поиске Azure и использовать параметры сортировки и toofilter поиска результатов поиска."
 services: search
 documentationcenter: 
 manager: jhubbard
@@ -13,13 +13,13 @@ ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.date: 01/12/2017
 ms.author: ashmaka
-ms.openlocfilehash: 49062bec233ad35cd457f9665fa94c1855343582
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 2f12238b8f4b045f536489cfc8766fb68307bbe2
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="query-your-azure-search-index-using-the-rest-api"></a>Отправка запросов в индекс службы поиска Azure с помощью REST API
+# <a name="query-your-azure-search-index-using-hello-rest-api"></a>Запросить индекс поиска Azure с помощью API-интерфейса REST hello
 > [!div class="op_single_selector"]
 >
 > * [Обзор](search-query-overview.md)
@@ -29,37 +29,37 @@ ms.lasthandoff: 08/03/2017
 >
 >
 
-В этой статье мы расскажем, как создать запрос к индексу с помощью [REST API службы поиска Azure](https://docs.microsoft.com/rest/api/searchservice/).
+В этой статье показано, как hello индекса с помощью tooquery [REST API поиска Azure](https://docs.microsoft.com/rest/api/searchservice/).
 
 Прежде чем приступать к выполнению инструкций из этого руководства, необходимо [создать индекс службы поиска Azure](search-what-is-an-index.md) и [заполнить его данными](search-what-is-data-import.md). Общие сведения см. в статье [Как работает полнотекстовый поиск в службе поиска Azure](search-lucene-query-architecture.md).
 
 ## <a name="identify-your-azure-search-services-query-api-key"></a>Определение ключа API запроса службы поиска Azure
-Ключевым компонентом каждой операции поиска с REST API службы поиска Azure является *ключ API* , созданный для службы, которую вы подготовили. Если есть действительный ключ, для каждого запроса устанавливаются отношения доверия между приложением, которое отправляет запрос, и службой, которая его обрабатывает.
+Ключевым компонентом каждой операции поиска для hello REST API поиска Azure является hello *ключ api* , созданном для службы hello подготовке. Наличие действительного ключа позволяет установить отношения доверия, для каждого запроса, между Отправка запроса hello hello приложения и службы hello, обрабатывает его.
 
-1. Чтобы найти ключи API своей службы, войдите на [портал Azure](https://portal.azure.com/).
-2. Перейдите к колонке службы поиска Azure.
-3. Щелкните значок "Ключи".
+1. toofind ключи api службы, вы сможете войти toohello [портал Azure](https://portal.azure.com/)
+2. Перейдите в колонку службы поиска Azure tooyour
+3. Щелкните значок «Ключи» hello
 
 Ваша служба получит *ключи администратора* и *ключи запросов*.
 
-* Первичные и вторичные *ключи администратора* предоставляют полный доступ ко всем операциям, включая возможность управлять службой, создавать и удалять индексы, индексаторы и источники данных. Ключей два, поэтому вы можете и дальше использовать вторичный ключ, если решите повторно создать первичный ключ, и наоборот.
-* *Ключи запросов* предоставляют только разрешение на чтение индексов и документов; обычно они добавляются в клиентские приложения, которые создают запросы на поиск.
+* Первичная и Вторичная *ключей администратора* предоставить полные права tooall операций, включая toomanage hello hello возможности службы, создания и удаления индексов, индексаторов и источников данных. Существует два ключа, чтобы продолжить toouse hello вторичный ключ в случае tooregenerate hello первичного ключа и наоборот.
+* Ваш *запрос ключей* предоставить доступ только для чтения tooindexes и документы и представляют собой tooclient обычно распределенного приложения, издающие запросы поиска.
 
-Для отправки запросов в индекс можно использовать один из ключей запросов. Для запросов можно использовать также ключи администратора, но в коде приложения следует использовать ключ запроса, так как этот вариант лучше соответствует [принципу предоставления минимальных прав](https://en.wikipedia.org/wiki/Principle_of_least_privilege).
+Запросы к индексу целях hello можно использовать один из ключей запроса. Ключи администратора также может использоваться для запросов, но ключ запроса следует использовать в коде приложения, как это лучше отвечает hello [принципа наименьших прав доступа](https://en.wikipedia.org/wiki/Principle_of_least_privilege).
 
 ## <a name="formulate-your-query"></a>Формулировка запроса
-Существует два способа [поиска в индексе с помощью REST API](https://docs.microsoft.com/rest/api/searchservice/Search-Documents). Один из них — отправка HTTP-запроса POST с текстом, содержащим объект JSON, в котором определены параметры запроса. Другой способ — отправка HTTP-запроса GET, содержащего URL-адрес, в котором определены параметры запроса. Обратите внимание, что в запросе POST предусмотрены [менее жесткие ограничения](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) на размер параметров запроса, чем в запросе GET. Поэтому мы рекомендуем использовать запрос POST, за исключением особых случаев, когда удобнее использовать запрос GET.
+Существует два способа слишком[поиска индекса с помощью API-интерфейса REST hello](https://docs.microsoft.com/rest/api/searchservice/Search-Documents). Один из способов — tooissue запрос HTTP POST, где определяются параметры запроса в объект JSON в теле запроса hello. Hello другим способом является tooissue запрос HTTP GET, где определяются параметры запроса в URL-адрес запроса hello. POST имеет несколько [ослаблены ограничения](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) на размер hello параметров запроса от GET. Поэтому мы рекомендуем использовать запрос POST, за исключением особых случаев, когда удобнее использовать запрос GET.
 
-Как для POST, так и для GET в URL-адресе запроса необходимо указать *имя службы*, *имя индекса*, а также правильную *версию API* (текущая версия API на момент публикации этого документа — `2016-09-01`). Если вы используете запрос GET, его параметры указываются в *строке запроса* в конце URL-адреса. Ниже приведен формат URL-адреса.
+Для POST и GET требуются tooprovide вашей *имя службы*, *имя индекса*и соответствующие hello *версия API* (hello текущая версия API — `2016-09-01` во время hello публикации в этом документе) URL-адрес запроса hello. GET, hello *строку запроса* hello конец hello URL-адреса является вам необходимо указать параметры запроса hello. Ниже приведена hello формат URL-адреса:
 
     https://[service name].search.windows.net/indexes/[index name]/docs?[query string]&api-version=2016-09-01
 
-Формат для POST такой же, но в параметрах в строке запроса указывается только версия API.
+Hello формате для БЛОГА Здравствуйте, таким же, но с только api-version в hello параметры строки запроса.
 
 #### <a name="example-queries"></a>Примеры запросов
 Вот несколько примеров запросов к индексу с именем hotels. Эти запросы отображаются в формате GET и POST.
 
-Здесь выполняется поиск термина budget по всему индексу и возвращается только поле `hotelName`.
+Поиск hello термин «бюджет» Привет всем индексом и возвращать только hello `hotelName` поля:
 
 ```
 GET https://[service name].search.windows.net/indexes/hotels/docs?search=budget&$select=hotelName&api-version=2016-09-01
@@ -71,7 +71,7 @@ POST https://[service name].search.windows.net/indexes/hotels/docs/search?api-ve
 }
 ```
 
-Примените фильтр к индексу, чтобы найти гостиницы с номерами дешевле 150 долларов США за ночь, и получите значения `hotelId` и `description`.
+Применить фильтр toohello индекс toofind гостиницы дешевле, чем 150 за ночь и вернуться hello `hotelId` и `description`:
 
 ```
 GET https://[service name].search.windows.net/indexes/hotels/docs?search=*&$filter=baseRate lt 150&$select=hotelId,description&api-version=2016-09-01
@@ -84,7 +84,7 @@ POST https://[service name].search.windows.net/indexes/hotels/docs/search?api-ve
 }
 ```
 
-Здесь выполняются поиск по всему индексу и сортировка по полю `lastRenovationDate` в порядке убывания, выбираются два первых результата и отображаются только значения `hotelName` и `lastRenovationDate`.
+Всего индекса поиска hello, упорядочение по определенному полю (`lastRenovationDate`) по убыванию, принимают результаты двух верхних hello и Показать только `hotelName` и `lastRenovationDate`:
 
 ```
 GET https://[service name].search.windows.net/indexes/hotels/docs?search=*&$top=2&$orderby=lastRenovationDate desc&$select=hotelName,lastRenovationDate&api-version=2016-09-01
@@ -104,11 +104,11 @@ POST https://[service name].search.windows.net/indexes/hotels/docs/search?api-ve
 #### <a name="request-and-request-headers"></a>Запрос и заголовки запроса
 Необходимо определить два заголовка запроса для GET или три — для POST:
 
-1. В заголовке `api-key` должно быть задано значение ключа запроса, определенное на шаге 1 выше. Хотя в качестве заголовка `api-key` подходит и ключ администратора, рекомендуется использовать ключ запроса, так как он предоставляет доступ к индексам и документам только с правами на чтение.
-2. В заголовке `Accept` должно быть задано значение `application/json`.
-3. Только для запросов POST: в заголовке `Content-Type` тоже должно быть задано значение `application/json`.
+1. Hello `api-key` заголовка должно быть установлено toohello ключа запроса, определенные в действии я выше. Можно также использовать ключ администратора как hello `api-key` заголовок, но рекомендуется использовать ключ запроса, так как он только предоставляет tooindexes доступ только для чтения и документы.
+2. Hello `Accept` заголовка должно быть установлено слишком`application/json`.
+3. POST, hello `Content-Type` заголовок также должен быть установлен слишком`application/json`.
 
-Ниже приведен HTTP-запрос GET для поиска по индексу hotels с использованием REST API службы поиска Azure и простого запроса, который ищет термин motel.
+Ниже приведена HTTP GET запроса toosearch hello «гостиницы» индекса при помощи hello REST API поиска Azure, с помощью простой запрос, который выполняет поиск hello термин «motel»:
 
 ```
 GET https://[service name].search.windows.net/indexes/hotels/docs?search=motel&api-version=2016-09-01
@@ -116,7 +116,7 @@ Accept: application/json
 api-key: [query key]
 ```
 
-Вот тот же пример запроса, но на этот раз используется HTTP-запрос POST:
+Вот hello же пример запроса, в настоящее время с помощью HTTP POST:
 
 ```
 POST https://[service name].search.windows.net/indexes/hotels/docs/search?api-version=2016-09-01
@@ -129,7 +129,7 @@ api-key: [query key]
 }
 ```
 
-При успешном выполнении запроса возвращается код состояния `200 OK` , а результаты поиска возвращаются в формате JSON. Вот так выглядят результаты приведенного выше запроса при условии, что индекс hotels заполнен примерами данных из статьи [Импорт данных в службе поиска Azure с помощью REST API](search-import-data-rest-api.md) (код JSON отформатирован для наглядности).
+Код состояния запроса успешный запрос приведет к `200 OK` и hello результаты поиска возвращаются в виде JSON в теле ответа hello. Вот какие hello результаты для hello выше запрос, как будет выглядеть, при условии, что индекс гостиницы «hello» заполняется данными образец hello в [Здравствуйте, импорт данных в поиске Azure с помощью API-интерфейса REST](search-import-data-rest-api.md) (Обратите внимание, что hello JSON был отформатирован для ясности).
 
 ```JSON
 {
@@ -162,4 +162,4 @@ api-key: [query key]
 }
 ```
 
-Дополнительные сведения см. в статье [Поиск документов (REST API службы поиска Azure)](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) в разделе "Ответ". Дополнительные сведения о других кодах состояния HTTP, которые могут быть возвращены в случае сбоя, см. в статье [Коды состояния HTTP (поиск в Azure)](https://docs.microsoft.com/rest/api/searchservice/HTTP-status-codes).
+toolearn, посетите раздел «Ответ» hello [поиск документов](https://docs.microsoft.com/rest/api/searchservice/Search-Documents). Дополнительные сведения о других кодах состояния HTTP, которые могут быть возвращены в случае сбоя, см. в статье [Коды состояния HTTP (поиск Azure)](https://docs.microsoft.com/rest/api/searchservice/HTTP-status-codes).

@@ -1,5 +1,5 @@
 ---
-title: "Примеры Azure PowerShell. Служба приложений | Документация Майкрософт"
+title: "aaaAzure примеры PowerShell — службы приложений | Документы Microsoft"
 description: "Примеры Azure PowerShell для службы приложений."
 services: app-service
 documentationcenter: app-service
@@ -16,15 +16,15 @@ ms.workload: app-service
 ms.date: 03/08/2017
 ms.author: cfowler
 ms.custom: mvc
-ms.openlocfilehash: 3254fdd57cfcd170f22374c1e3b058e6081d8e8e
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: b7b4a030364f797195522c56fbae5b7f530d4d1b
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-powershell-samples"></a>Примеры сценариев Azure PowerShell.
 
-В следующей таблице приведены ссылки на сценарии bash, созданные с помощью Azure PowerShell.
+Hello следующей таблице представлены ссылки toobash сценариев, созданных с использованием hello Azure PowerShell.
 
 | | |
 |-|-|
@@ -33,16 +33,16 @@ ms.lasthandoff: 07/11/2017
 | [Создание веб-приложения с непрерывным развертыванием из GitHub](./scripts/app-service-powershell-continuous-deployment-github.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Создает веб-приложение Azure, непрерывно развертывающее код из GitHub. |
 | [Создание веб-приложения и развертывание кода с помощью протокола FTP](./scripts/app-service-powershell-deploy-ftp.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Создает веб-приложение Azure и передает файлы из локального каталога с помощью протокола FTP. |
 | [Создание веб-приложения и развертывание кода из локального репозитория Git](./scripts/app-service-powershell-deploy-local-git.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Создает веб-приложение Azure и настраивает отправку кода из локального репозитория Git. |
-| [Создание веб-приложения и развертывание кода в промежуточной среде](./scripts/app-service-powershell-deploy-staging-environment.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Создает веб-приложение Azure со слотом развертывания для изменений промежуточного кода. |
+| [Создание веб-приложения и развертывание кода tooa промежуточной среде](./scripts/app-service-powershell-deploy-staging-environment.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Создает веб-приложение Azure со слотом развертывания для изменений промежуточного кода. |
 |**Настройка приложения**||
-| [Сопоставление пользовательского домена с веб-приложением](./scripts/app-service-powershell-configure-custom-domain.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Создает веб-приложение Azure и сопоставляет c ним имя пользовательского домена. |
-| [Привязка пользовательского SSL-сертификата к веб-приложению](./scripts/app-service-powershell-configure-ssl-certificate.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Создает веб-приложение Azure и привязывает к нему SSL-сертификат имени личного домена. |
+| [Карта пользовательского домена tooa веб-приложения](./scripts/app-service-powershell-configure-custom-domain.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Создает веб-приложение Azure и сопоставляет tooit имя пользовательского домена. |
+| [Привязка пользовательских веб-приложения tooa SSL сертификата](./scripts/app-service-powershell-configure-ssl-certificate.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Создает веб-приложение Azure и привязывает hello SSL-сертификат tooit имя пользовательского домена. |
 |**Масштабирование приложения**||
 | [Масштабирование веб-приложения вручную](./scripts/app-service-powershell-scale-manual.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Создает веб-приложение Azure и масштабирует его по двум экземплярам. |
 | [Глобальное масштабирование веб-приложения с помощью высокодоступной архитектуры](./scripts/app-service-powershell-scale-high-availability.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Создает два веб-приложения Azure в двух разных географических регионах и делает их доступными через одну конечную точку с помощью диспетчера трафика Azure. |
-|**Подключение приложения к ресурсам**||
-| [Подключение веб-приложения к базе данных SQL](./scripts/app-service-powershell-connect-to-sql.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Создает веб-приложение Azure и базу данных SQL, а затем добавляет строку подключения базы данных к параметрам приложения. |
-| [Подключение веб-приложения к учетной записи хранения](./scripts/app-service-powershell-connect-to-storage.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Создает веб-приложение Azure и учетную запись хранения, а затем добавляет строку подключения хранилища к параметрам приложения. |
+|**Подключение приложения tooresources**||
+| [Подключение web app tooa базы данных SQL](./scripts/app-service-powershell-connect-to-sql.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Создает веб-приложение Azure и базы данных SQL, а затем добавляет параметры приложения toohello строки подключения hello базы данных. |
+| [Подключение приложения web tooa учетной записи хранилища](./scripts/app-service-powershell-connect-to-storage.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Создает веб-приложение Azure и учетной записи хранилища, а затем добавляет параметры приложения toohello строки подключения хранилища hello. |
 |**Мониторинг приложения**||
-| [Мониторинг веб-приложения с помощью журналов веб-сервера](./scripts/app-service-powershell-monitor.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Создает веб-приложение Azure, включает ведение журналов и скачивает их на локальный компьютер. |
+| [Мониторинг веб-приложения с помощью журналов веб-сервера](./scripts/app-service-powershell-monitor.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Создает веб-приложение Azure, ведение журнала для него и загружает hello журналы tooyour локального компьютера. |
 | | |

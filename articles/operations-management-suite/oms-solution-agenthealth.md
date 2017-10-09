@@ -1,6 +1,6 @@
 ---
-title: "Решение для мониторинга работоспособности агентов в OMS | Документация Майкрософт"
-description: "Эта статья поможет вам понять, как использовать это решение для отслеживания работоспособности агентов, которые отправляют отчеты непосредственно в OMS или System Center Operations Manager."
+title: "Работоспособность решения в OMS aaaAgent | Документы Microsoft"
+description: "Эта статья является предполагаемым toohelp понять, как toouse toomonitor это решение hello работоспособности агентов непосредственно reporting tooOMS или System Center Operations Manager."
 services: operations-management-suite
 documentationcenter: 
 author: MGoedtel
@@ -14,65 +14,65 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/17/2017
 ms.author: magoedte
-ms.openlocfilehash: b810e37e393ddab55500f636b72450789285a4f0
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 071b14b4ab7af6680ae458eaa331246755c5bb56
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 #  <a name="agent-health-solution-in-oms"></a>Решение для мониторинга работоспособности агентов в OMS
-Решение для мониторинга работоспособности агентов в OMS помогает выявлять среди всех агентов, отправляющих отчеты непосредственно в OMS или подключенную к OMS группу управления System Center Operations Manager, агенты, которые не отвечают на запросы и которые отправляют оперативные данные.  Вы также можете отслеживать число развернутых агентов и их географическое распределение, а также выполнять другие запросы, чтобы знать о распределении агентов, развернутых в Azure, других облачных средах или в локальной среде.    
+Hello агента работоспособности решения в OMS позволяет понять, для всех агентов hello отчетов непосредственно рабочей области OMS toohello или tooOMS подключено групп управления System Center Operations Manager, являющиеся отвечать на запросы и отправка рабочих данных.  Вы можно также хранить список развертывается количество агентов, где они распределены географически и выполнять другие осведомленности toomaintain запросы распределения hello агентов, развернутых в Azure, других облачных средах или в локальной.    
 
 ## <a name="prerequisites"></a>Предварительные требования
-Перед развертыванием этого решения убедитесь, что у вас есть поддерживаемые [агенты Windows](../log-analytics/log-analytics-windows-agents.md), которые отправляют отчеты в рабочую область OMS или [группу управления Operations Manager](../log-analytics/log-analytics-om-agents.md), интегрированную с вашей рабочей областью OMS.    
+Прежде чем развертывать это решение, убедитесь в настоящее время установлена поддерживаемая [агентов Windows](../log-analytics/log-analytics-windows-agents.md) отчетов рабочей области OMS toohello или reporting tooan [группы управления Operations Manager](../log-analytics/log-analytics-om-agents.md) интеграции с вашей Рабочая область OMS.    
 
 ## <a name="solution-components"></a>Компоненты решения
-Это решение состоит из следующих ресурсов, добавленных в вашу рабочую область, и подключенных напрямую агентов или подключенной группы управления Operations Manager.
+Это решение состоит из следующих ресурсов, которые добавляются в рабочей области tooyour и непосредственно подключенные агенты или Operations Manager подключенной группы управления hello.
 
 ### <a name="management-packs"></a>Пакеты управления
-Если группа управления System Center Operations Manager подключена к рабочей области OMS, в Operations Manager будут установлены следующие пакеты.  После добавления этого решения пакеты управления также будут установлены на компьютерах с Windows, подключенных напрямую. Управление и настройка здесь не требуются.
+Если группе управления System Center Operations Manager подключенной tooan рабочей области OMS, hello следующие пакеты управления в Operations Manager установлено.  После добавления этого решения пакеты управления также будут установлены на компьютерах с Windows, подключенных напрямую. Нет ничего tooconfigure или управляемые с помощью этих пакетов управления.
 
 * Пакет аналитики канала Direct оценки работоспособности помощника Microsoft System Center (Microsoft.IntelligencePacks.HealthAssessmentDirect)
 * Пакет аналитики канала сервера оценки работоспособности помощника Microsoft System Center (Microsoft.IntelligencePacks.HealthAssessmentViaServer).  
 
-Дополнительные сведения об обновлении пакетов управления для решений см. в статье [Подключение Operations Manager к Log Analytics](../log-analytics/log-analytics-om-agents.md).
+Дополнительные сведения об обновлении пакетов управления решения см. в разделе [tooLog подключение Operations Manager Analytics](../log-analytics/log-analytics-om-agents.md).
 
 ## <a name="configuration"></a>Конфигурация
-Добавьте решение для мониторинга работоспособности агентов в рабочую область OMS, как описано в статье [Добавление решений для управления Azure Log Analytics в рабочую область](../log-analytics/log-analytics-add-solutions.md). Дополнительная настройка не требуется.
+Добавить hello агента работоспособности решения tooyour рабочую область OMS hello процесс описывается в [добавить решения](../log-analytics/log-analytics-add-solutions.md). Дополнительная настройка не требуется.
 
 
 ## <a name="data-collection"></a>Сбор данных
 ### <a name="supported-agents"></a>Поддерживаемые агенты
-В следующей таблице описаны подключенные источники, которые поддерживаются этим решением.
+Привет, в следующей таблице описываются hello подключенных источников, которые поддерживаются в этом решении.
 
 | Подключенный источник | Поддерживаются | Описание |
 | --- | --- | --- |
 | Агенты Windows | Да | События пульса собираются от прямых агентов Windows.|
-| Группа управления System Center Operations Manager | Да | События пульса собираются с агентов, предоставляющих отчеты группам управления, каждые 60 секунд, а затем перенаправляются в Log Analytics. Прямое подключение агентов Operations Manager к Log Analytics не требуется. Данные событий пульса перенаправляются из группы управления в репозиторий Log Analytics.|
+| Группа управления System Center Operations Manager | Да | События пульса собираются из агентов группам управления toohello отчетов каждые 60 секунд и затем передается tooLog Analytics. Прямое подключение от tooLog агенты Operations Manager Analytics не требуется. Периодический сигнал событий данные будут отправлены из службы анализа журналов toohello репозитория для hello управления группы.|
 
-## <a name="using-the-solution"></a>Использование решения
-При добавлении решения в рабочую область OMS на панель мониторинга OMS добавляется плитка **Работоспособность агентов**. На ней отображается общее число агентов и число агентов, не отвечающих на запросы за последние 24 часа.<br><br> ![Плитка решения "Работоспособность агентов" на панели мониторинга](./media/oms-solution-agenthealth/agenthealth-solution-tile-homepage.png)
+## <a name="using-hello-solution"></a>С помощью решения hello
+При добавлении рабочая область OMS hello решения tooyour hello **агента работоспособности** плитки будут добавлены tooyour мониторинга OMS. Она отражает hello общее число агентов и количество hello не отвечает агентов в hello последние 24 часа.<br><br> ![Плитка решения "Работоспособность агентов" на панели мониторинга](./media/oms-solution-agenthealth/agenthealth-solution-tile-homepage.png)
 
-Щелкните плитку **Работоспособность агентов**, чтобы открыть панель мониторинга **Работоспособность агентов**.  Панель мониторинга содержит столбцы, перечисленные в приведенной ниже таблице. Каждый столбец содержит по десять основных событий, соответствующих таким указанным критериям, как диапазон времени. Можно выполнить поиск по журналам, чтобы отобразить весь список. Для этого щелкните элемент **Показать все** в правой нижней части каждого столбца или заголовок этого столбца.
+Щелкните hello **агента работоспособности** плитки приветствия tooopen **агента работоспособности** панели мониторинга.  панель мониторинга Hello, включает столбцы hello hello в следующей таблице. Каждый столбец перечислены события верхнего десять hello по количеству, соответствующие что столбца критерии для hello указанный диапазон времени. Можно выполнить поиск журнала, который предоставляет hello весь список, выбрав **все** hello справа внизу каждого столбца или щелкните заголовок столбца hello.
 
 | столбец | Описание |
 |--------|-------------|
 | Число агентов по времени | Тенденция изменения числа агентов в течение семи дней для агентов Linux и Windows.|
-| Число агентов, не отвечающих на запросы | Список агентов, которые не отправили пакеты пульса за последние 24 часа.|
+| Число агентов, не отвечающих на запросы | Список агентов, которые еще не отправлены периодический сигнал в hello за последние 24 часа.|
 | Распределение по типам ОС | Число агентов Windows и Linux в вашей среде.|
-| Распределение по версиям агентов | Другие версии агентов, установленные в вашей среде, и их число.|
-| Распределение по категориям агентов | Различные категории агентов, отправляющих события пульса: прямые агенты, агенты OpsMgr и сервер управления OpsMgr.|
-| Распределение по группам управления | Разные группы управления SCOM в вашей среде.|
-| Географическое расположение агентов | Разные страны, в которых находятся ваши агенты, и общее число агентов, установленных в каждой стране.|
-| Число установленных шлюзов | Число серверов, на которых установлен шлюз OMS, и список этих серверов.|
+| Распределение по версиям агентов | Секция версий другой агент hello, установленных в вашей среде и количество для каждого из них.|
+| Распределение по категориям агентов | Секции hello различных категорий агентов, отправляющих события пульса: прямой агентов, агенты OpsMgr или hello сервер управления Operations Manager.|
+| Распределение по группам управления | Секция hello различные группы управления SCOM в вашей среде.|
+| Географическое расположение агентов | Секция hello разных стран, где имеется агентов и общее число hello число агентов, которые были установлены в каждой стране.|
+| Число установленных шлюзов | Hello количество серверов, которые имеют hello установлен шлюз OMS и список этих серверов.|
 
 ![Пример панели мониторинга "Работоспособность агентов"](./media/oms-solution-agenthealth/agenthealth-solution-dashboard.png)  
 
 ## <a name="log-analytics-records"></a>Записи Log Analytics
-Решение создает один тип записи в репозитории OMS.  
+Hello решение создает один тип записи в репозиторий OMS hello.  
 
 ### <a name="heartbeat-records"></a>Записи пульсов
-Создается запись с типом **Пульс**.  У этих записей есть свойства, приведенные в таблице ниже.  
+Создается запись с типом **Пульс**.  Эти записи имеют свойства hello в hello в следующей таблице.  
 
 | Свойство | Описание |
 | --- | --- |
@@ -85,25 +85,25 @@ ms.lasthandoff: 08/03/2017
 | Версия | Версия агента OMS или агента Operations Manager.|
 | SCAgentChannel | Значение — *Прямой* и (или) *SCManagementServer*.|
 | IsGatewayInstalled | Если шлюз OMS установлен, этот параметр имеет значение *true*, в противном случае — значение *false*.|
-| ComputerIP | IP-адрес компьютера.|
+| ComputerIP | IP-адрес компьютера hello.|
 | RemoteIPCountry | Географическое расположение, в котором развернут компьютер.|
 | ManagementGroupName | Имя группы управления Operations Manager.|
 | SourceComputerId | Уникальный идентификатор компьютера.|
 | RemoteIPLongitude | Долгота географического расположения компьютера.|
 | RemoteIPLatitude | Широта географического расположения компьютера.|
 
-Каждый агент, отправляющий отчеты на сервер управления Operations Manager, будет отправлять два пакета пульса, а значение свойства SCAgentChannel будет включать оба (**Прямой** и **SCManagementServer**) в зависимости от того, какие источники данных и решения Log Analytics включены в вашей подписке OMS. Если вы помните, данные из этих решений отправляются непосредственно с сервера управления Operations Manager в веб-службу OMS или непосредственно с агента в веб-службу OMS, что зависит от объема данных, собранных с агента. Для событий пульса со значением **SCManagementServer** значением ComputerIP является IP-адрес сервера управления, так как он фактически передает данные.  Для пульсов со значением **Прямой** для параметра SCAgentChannel ComputerIP — это общедоступный IP-адрес агента.  
+Каждый агент отчетов tooan сервера управления Operations Manager отправит две Периодические сигналы, а значение свойства SCAgentChannel будет включать оба **прямой** и **SCManagementServer** в зависимости от того, что Журнал аналитика источники данных и решений, которые вы выбрали в вашей подписке OMS. Если вы вспомните данных из решений, отправляются непосредственно из Operations Manager management server toohello OMS веб-службы, либо из-за hello объем данных, собранных на агенте hello отправляются непосредственно из hello агента tooOMS веб-службы. Для подтверждения события, имеющие значение hello **SCManagementServer**, hello ComputerIP значение — IP-адрес hello hello сервера управления, так как он фактически передаются данные hello.  Для периодических сигналов, устанавливаемый SCAgentChannel слишком**прямой**, это hello общедоступный IP-адрес агента hello.  
 
 ## <a name="sample-log-searches"></a>Пример поисков журналов
-Следующая таблица содержит примеры поисков по журналу для получения записей, собранных этим решением.
+Hello ниже приводится пример запросов поиска журналов для записей, собранные это решение.
 
 | Запрос | Описание |
 | --- | --- |
 | Type=Heartbeat &#124; distinct Computer |Общее число агентов |
-| Type=Heartbeat &#124; measure max(TimeGenerated) as LastCall by Computer &#124; where LastCall < NOW-24HOURS |Число агентов, не отвечающих на запросы за последние 24 часа |
-| Type=Heartbeat &#124; measure max(TimeGenerated) as LastCall by Computer &#124; where LastCall < NOW-15MINUTES |Число агентов, не отвечающих на запросы за последние 15 минут |
-| Type=Heartbeat TimeGenerated>NOW-24HOURS Computer IN {Type=Heartbeat TimeGenerated>NOW-24HOURS &#124; distinct Computer} &#124; measure max(TimeGenerated) as LastCall by Computer |Подключенные компьютеры (за последние 24 часа) |
-| Type=Heartbeat TimeGenerated>NOW-24HOURS Computer NOT IN {Type=Heartbeat TimeGenerated>NOW-30MINUTES &#124; distinct Computer} &#124; measure max(TimeGenerated) as LastCall by Computer |Общее число автономных агентов за последние 30 минут (за последние 24 часа) |
+| Type=Heartbeat &#124; measure max(TimeGenerated) as LastCall by Computer &#124; where LastCall < NOW-24HOURS |Количество агентов отвечать на запросы в hello последние 24 часа |
+| Type=Heartbeat &#124; measure max(TimeGenerated) as LastCall by Computer &#124; where LastCall < NOW-15MINUTES |Количество агентов отвечать на запросы в hello последние 15 минут. |
+| Type=Heartbeat TimeGenerated>NOW-24HOURS Computer IN {Type=Heartbeat TimeGenerated>NOW-24HOURS &#124; distinct Computer} &#124; measure max(TimeGenerated) as LastCall by Computer |Компьютеры в сети (в hello последние 24 часа) |
+| Type=Heartbeat TimeGenerated>NOW-24HOURS Computer NOT IN {Type=Heartbeat TimeGenerated>NOW-30MINUTES &#124; distinct Computer} &#124; measure max(TimeGenerated) as LastCall by Computer |Общее агенты вне сети в последние 30 минут (hello последние 24 часа) |
 | Type=Heartbeat &#124; measure countdistinct(Computer) by OSType |Получение тенденции изменения числа агентов за промежуток времени по типу ОС|
 | Type=Heartbeat&#124;measure countdistinct(Computer) by OSType |Распределение по типам ОС |
 | Type=Heartbeat&#124;measure countdistinct(Computer) by Version |Распределение по версиям агентов |
@@ -114,15 +114,15 @@ ms.lasthandoff: 08/03/2017
 
 
 >[!NOTE]
-> Если для рабочей области обновлен [язык запросов Log Analytics](../log-analytics/log-analytics-log-search-upgrade.md), указанные выше запросы будут изменены следующим образом.
+> Если рабочую область был обновленного toohello [языка запросов новый журнал аналитики](../log-analytics/log-analytics-log-search-upgrade.md), то hello выше запросы будут изменены следующие toohello.
 >
 >| Запрос | Описание |
 |:---|:---|
 | Heartbeat &#124; distinct Computer |Общее число агентов |
-| Heartbeat &#124; summarize LastCall = max(TimeGenerated) by Computer &#124; where LastCall < ago(24h) |Число агентов, не отвечающих на запросы за последние 24 часа |
-| Heartbeat &#124; summarize LastCall = max(TimeGenerated) by Computer &#124; where LastCall < ago(15m) |Число агентов, не отвечающих на запросы за последние 15 минут |
-| Heartbeat &#124; where TimeGenerated > ago(24h) and Computer in ((Heartbeat &#124; where TimeGenerated > ago(24h) &#124; distinct Computer)) &#124; summarize LastCall = max(TimeGenerated) by Computer |Подключенные компьютеры (за последние 24 часа) |
-| Heartbeat &#124; where TimeGenerated > ago(24h) and Computer !in ((Heartbeat &#124; where TimeGenerated > ago(30m) &#124; distinct Computer)) &#124; summarize LastCall = max(TimeGenerated) by Computer |Общее число автономных агентов за последние 30 минут (за последние 24 часа) |
+| Heartbeat &#124; summarize LastCall = max(TimeGenerated) by Computer &#124; where LastCall < ago(24h) |Количество агентов отвечать на запросы в hello последние 24 часа |
+| Heartbeat &#124; summarize LastCall = max(TimeGenerated) by Computer &#124; where LastCall < ago(15m) |Количество агентов отвечать на запросы в hello последние 15 минут. |
+| Heartbeat &#124; where TimeGenerated > ago(24h) and Computer in ((Heartbeat &#124; where TimeGenerated > ago(24h) &#124; distinct Computer)) &#124; summarize LastCall = max(TimeGenerated) by Computer |Компьютеры в сети (в hello последние 24 часа) |
+| Heartbeat &#124; where TimeGenerated > ago(24h) and Computer !in ((Heartbeat &#124; where TimeGenerated > ago(30m) &#124; distinct Computer)) &#124; summarize LastCall = max(TimeGenerated) by Computer |Общее агенты вне сети в последние 30 минут (hello последние 24 часа) |
 | Heartbeat &#124; summarize AggregatedValue = dcount(Computer) by OSType |Получение тенденции изменения числа агентов за промежуток времени по типу ОС|
 | Heartbeat &#124; summarize AggregatedValue = dcount(Computer) by OSType |Распределение по типам ОС |
 | Heartbeat &#124; summarize AggregatedValue = dcount(Computer) by Version |Распределение по версиям агентов |

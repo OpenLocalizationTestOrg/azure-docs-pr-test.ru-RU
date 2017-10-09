@@ -1,6 +1,6 @@
 ---
-title: "Триггеры и привязки служебной шины в Функциях Azure | Документация Майкрософт"
-description: "Узнайте, как использовать триггеры и привязки служебной шины Azure в функциях Azure."
+title: "aaaAzure функций Service Bus триггеры и привязки | Документы Microsoft"
+description: "Понять, как триггеры toouse Azure Service Bus и привязки в функциях Azure."
 services: functions
 documentationcenter: na
 author: christopheranderson
@@ -16,16 +16,16 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 04/01/2017
 ms.author: glenga
-ms.openlocfilehash: b3ee306cd37ebf88dc9369ccc2dc6c670557fd5a
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: dff9e89bd3840b8c11f91cae41e13502afc7aa60
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-functions-service-bus-bindings"></a>Привязки служебной шины в Функциях Azure
 [!INCLUDE [functions-selector-bindings](../../includes/functions-selector-bindings.md)]
 
-В этой статье рассматривается настройка привязок служебной шины Azure в Функциях Azure, а также работа с ними. 
+В этой статье объясняется, как tooconfigure и работать с Azure Service Bus привязок в функциях Azure. 
 
 Функции Azure поддерживают привязки триггера и выходные привязки для очередей и разделов служебной шины.
 
@@ -34,18 +34,18 @@ ms.lasthandoff: 08/29/2017
 <a name="trigger"></a>
 
 ## <a name="service-bus-trigger"></a>Триггер служебной шины
-Используйте триггер служебной шины для ответа на сообщения из очереди или раздела служебной шины. 
+Используйте toomessages toorespond hello Service Bus триггера из очереди служебной шины или раздела. 
 
-Триггеры очередей и разделов служебной шины определяются с помощью следующих объектов JSON в массиве `bindings` function.json:
+Hello триггеров очередей и разделов Service Bus определяются следующие объекты JSON в hello hello `bindings` массив function.json:
 
 * Триггер *очереди*:
 
     ```json
     {
         "name" : "<Name of input parameter in function signature>",
-        "queueName" : "<Name of the queue>",
+        "queueName" : "<Name of hello queue>",
         "connection" : "<Name of app setting that has your queue's connection string - see below>",
-        "accessRights" : "<Access rights for the connection string - see below>",
+        "accessRights" : "<Access rights for hello connection string - see below>",
         "type" : "serviceBusTrigger",
         "direction" : "in"
     }
@@ -56,48 +56,48 @@ ms.lasthandoff: 08/29/2017
     ```json
     {
         "name" : "<Name of input parameter in function signature>",
-        "topicName" : "<Name of the topic>",
-        "subscriptionName" : "<Name of the subscription>",
+        "topicName" : "<Name of hello topic>",
+        "subscriptionName" : "<Name of hello subscription>",
         "connection" : "<Name of app setting that has your topic's connection string - see below>",
-        "accessRights" : "<Access rights for the connection string - see below>",
+        "accessRights" : "<Access rights for hello connection string - see below>",
         "type" : "serviceBusTrigger",
         "direction" : "in"
     }
     ```
 
-Обратите внимание на следующее.
+Обратите внимание hello следующие:
 
-* Для `connection` [создайте в приложении-функции параметр приложения](functions-how-to-use-azure-function-app-settings.md), содержащий строку подключения к пространству имен служебной шины, а затем укажите имя этого параметра в свойстве `connection` для триггера. Чтобы получить строку подключения, следуйте инструкциям, указанным в разделе [Получение учетных данных управления](../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md#obtain-the-management-credentials).
-  Строка подключения указывается для пространства имен служебной шины, и она не должна ограничиваться определенной очередью или разделом.
-  Если оставить свойство `connection` пустым, триггер предполагает, что в параметре приложения `AzureWebJobsServiceBus` указывается строка подключения служебной шины по умолчанию.
-* Для свойства `accessRights` возможны такие значения, как `manage` и `listen`. Значение по умолчанию — `manage`. Это означает, что у свойства `connection` есть разрешение на **управление**. При использовании строки подключения без разрешения на **управление**, задайте для свойства `accessRights` значение `listen`. В противном случае выполнение операций, для которых требуются права на управление, в среде выполнения Функций Azure может завершиться ошибкой.
+* Для `connection`, [создаются Настройка приложения в приложении функции](functions-how-to-use-azure-function-app-settings.md) , который содержит пространство имен служебной шины tooyour строку hello соединения, затем укажите имя параметра приложения hello hello в hello `connection` свойство в триггер. Получить строку подключения hello hello выполните действия, показанные на [получить учетные данные управления hello](../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md#obtain-the-management-credentials).
+  Строка подключения Hello должна иметь для пространства имен Service Bus, не ограниченной tooa определенной очереди или раздела.
+  Если оставить `connection` пустой, триггер hello предполагается, что строка подключения шины обслуживания по умолчанию указан в параметр приложения `AzureWebJobsServiceBus`.
+* Для свойства `accessRights` возможны такие значения, как `manage` и `listen`. по умолчанию Hello — `manage`, указывающая, что hello `connection` имеет hello **управление** разрешение. При использовании строки подключения, которая не поддерживает hello **управление** набор разрешений, `accessRights` слишком`listen`. В противном случае среда выполнения может произойти сбой при toodo операций, требующих функций hello управление правами.
 
 ## <a name="trigger-behavior"></a>Поведение триггера
-* **Однопоточная обработка**. По умолчанию в среде выполнения Функций одновременно обрабатываются несколько сообщений очереди. Чтобы среда выполнения обрабатывала в любой момент времени только одно сообщение очереди или раздела, для свойства `serviceBus.maxConcurrentCalls` в файле *host.json* нужно задать значение 1. 
+* **Однопоточную** — по умолчанию процессы среды выполнения функции hello, несколько сообщений параллельно. задать toodirect hello среды выполнения tooprocess только одного очередь или раздел сообщения одновременно, `serviceBus.maxConcurrentCalls` too1 в *host.json*. 
   Сведения о файле *host.json* см. в разделе [Структура папок](functions-reference.md#folder-structure) и статье [host.json](https://github .com/Azure/azure-webjobs-sdk-script/wiki/host.json).
 * **Обработка подозрительных сообщений.** В служебной шине выполняется собственная обработка подозрительных сообщений, которую нельзя контролировать или настраивать с помощью конфигурации или кода Функций Azure. 
-* **Поведение PeekLock.** Среда выполнения Функций получает сообщение в [режиме `PeekLock`](../service-bus-messaging/service-bus-performance-improvements.md#receive-mode) и вызывает для сообщения метод `Complete`, если функция выполнена успешно, или метод `Abandon` в случае сбоя. 
-  Если функция выполняется дольше времени ожидания `PeekLock` , блокировка возобновляется автоматически.
+* **Поведение PeekLock** -среда выполнения функции hello получает сообщение в [ `PeekLock` режим](../service-bus-messaging/service-bus-performance-improvements.md#receive-mode) и вызывает метод `Complete` на приветственное сообщение, если функции hello завершается успешно, или вызовы `Abandon` Если hello функция завершается с ошибкой. 
+  Если функции hello выполняется дольше, чем hello `PeekLock` время ожидания блокировки hello автоматически обновляется.
 
 <a name="triggerusage"></a>
 
 ## <a name="trigger-usage"></a>Использование триггера
-В этом разделе показано, как использовать триггер служебной шины в коде функции. 
+В этом разделе показано, как toouse Service Bus триггер в коде функции. 
 
-В языке C# и F# сообщение триггера служебной шины можно десериализировать в один из следующих входных типов:
+В C# и F # триггер Service Bus приветственное сообщение может быть десериализованный tooany hello следующие типы входных:
 
 * `string` используется для строковых сообщений.
 * `byte[]` используется для двоичных данных.
 * Любой [объект](https://msdn.microsoft.com/library/system.object.aspx) используется для сериализованных данных JSON.
-  Если объявить пользовательский тип входных данных (например, `CustomType`), Функции Azure попытаются десериализировать данные JSON в указанный тип.
-* `BrokeredMessage` предоставляет десериализированное сообщение с методом [BrokeredMessage.GetBody<T>()](https://msdn.microsoft.com/library/hh144211.aspx).
+  Если пользовательский тип входных данных, объявите например `CustomType`, функции Azure пытается данных JSON toodeserialize hello в указанный тип.
+* `BrokeredMessage`-предоставляет вам hello десериализовать сообщение hello [BrokeredMessage.GetBody<T>()](https://msdn.microsoft.com/library/hh144211.aspx) метод.
 
-В Node.js сообщение триггера служебной шины передается в функцию в качестве строки или объекта JSON.
+В Node.js триггер Service Bus приветственное сообщение передается в функцию hello как строку или объект JSON.
 
 <a name="triggersample"></a>
 
 ## <a name="trigger-sample"></a>Пример триггера
-Предположим, что у вас есть следующий файл function.json:
+Предположим, что имеется следующая function.json hello:
 
 ```json
 {
@@ -114,7 +114,7 @@ ms.lasthandoff: 08/29/2017
 }
 ```
 
-Ознакомьтесь с примером для конкретного языка, обрабатывающим сообщение очереди служебной шины.
+См. пример hello зависящие от языка, который обрабатывает сообщение очереди Service Bus.
 
 * [C#](#triggercsharp)
 * [F#](#triggerfsharp)
@@ -154,16 +154,16 @@ module.exports = function(context, myQueueItem) {
 <a name="output"></a>
 
 ## <a name="service-bus-output-binding"></a>Выходная привязка служебной шины
-Выходные данные очереди и раздела служебной шины для функции используют следующие объекты JSON в массиве `bindings` файла function.json:
+выходные данные очередей и разделов Service Bus для функции Hello используйте следующие объекты JSON в hello hello `bindings` массив function.json:
 
 * Выходные данные *очереди*:
 
     ```json
     {
         "name" : "<Name of output parameter in function signature>",
-        "queueName" : "<Name of the queue>",
+        "queueName" : "<Name of hello queue>",
         "connection" : "<Name of app setting that has your queue's connection string - see below>",
-        "accessRights" : "<Access rights for the connection string - see below>",
+        "accessRights" : "<Access rights for hello connection string - see below>",
         "type" : "serviceBus",
         "direction" : "out"
     }
@@ -173,41 +173,41 @@ module.exports = function(context, myQueueItem) {
     ```json
     {
         "name" : "<Name of output parameter in function signature>",
-        "topicName" : "<Name of the topic>",
-        "subscriptionName" : "<Name of the subscription>",
+        "topicName" : "<Name of hello topic>",
+        "subscriptionName" : "<Name of hello subscription>",
         "connection" : "<Name of app setting that has your topic's connection string - see below>",
-        "accessRights" : "<Access rights for the connection string - see below>",
+        "accessRights" : "<Access rights for hello connection string - see below>",
         "type" : "serviceBus",
         "direction" : "out"
     }
     ```
 
-Обратите внимание на следующее.
+Обратите внимание hello следующие:
 
-* Для `connection` [создайте в приложении-функции параметр приложения](functions-how-to-use-azure-function-app-settings.md), содержащий строку подключения к пространству имен служебной шины, а затем укажите имя этого параметра в свойстве `connection` для выходной привязки. Чтобы получить строку подключения, следуйте инструкциям, указанным в разделе [Получение учетных данных управления](../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md#obtain-the-management-credentials).
-  Строка подключения указывается для пространства имен служебной шины, и она не должна ограничиваться определенной очередью или разделом.
-  Если оставить параметр `connection` пустым, выходная привязка предполагает, что в параметре приложения `AzureWebJobsServiceBus` указывается строка подключения служебной шины по умолчанию.
-* Для свойства `accessRights` возможны такие значения, как `manage` и `listen`. Значение по умолчанию — `manage`. Это означает, что у свойства `connection` есть разрешение на **управление**. При использовании строки подключения без разрешения на **управление**, задайте для свойства `accessRights` значение `listen`. В противном случае выполнение операций, для которых требуются права на управление, в среде выполнения Функций Azure может завершиться ошибкой.
+* Для `connection`, [создаются Настройка приложения в приложении функции](functions-how-to-use-azure-function-app-settings.md) , который содержит пространство имен служебной шины tooyour строку hello соединения, затем укажите имя параметра приложения hello hello в hello `connection` свойство в качестве выходных данных привязка. Получить строку подключения hello hello выполните действия, показанные на [получить учетные данные управления hello](../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md#obtain-the-management-credentials).
+  Строка подключения Hello должна иметь для пространства имен Service Bus, не ограниченной tooa определенной очереди или раздела.
+  Если оставить `connection` пустой, hello привязка для вывода предполагается, что строка подключения шины обслуживания по умолчанию указан в параметр приложения `AzureWebJobsServiceBus`.
+* Для свойства `accessRights` возможны такие значения, как `manage` и `listen`. по умолчанию Hello — `manage`, указывающая, что hello `connection` имеет hello **управление** разрешение. При использовании строки подключения, которая не поддерживает hello **управление** набор разрешений, `accessRights` слишком`listen`. В противном случае среда выполнения может произойти сбой при toodo операций, требующих функций hello управление правами.
 
 <a name="outputusage"></a>
 
 ## <a name="output-usage"></a>Использование выходной привязки
-В языке C# и F# Функции Azure могут создать сообщение очереди служебной шины из следующих типов:
+В C# и F # функции Azure можно создать сообщение очереди служебной шины из любого hello следующие типы:
 
 * Любой [объект](https://msdn.microsoft.com/library/system.object.aspx). Определение параметра выглядит так: `out T paramName` (C#).
-  Функции десериализируют объект в сообщение JSON. Если при выходе из функции выходное значение равно null, Функции создают сообщение с пустым объектом.
-* `string`. Определение параметра выглядит так: `out string paraName` (C#). Если при выходе из функции значение параметра не равно null, Функции создают сообщение.
-* `byte[]`. Определение параметра выглядит так: `out byte[] paraName` (C#). Если при выходе из функции значение параметра не равно null, Функции создают сообщение.
-* `BrokeredMessage`. Определение параметра выглядит так: `out BrokeredMessage paraName` (C#). Если при выходе из функции значение параметра не равно null, Функции создают сообщение.
+  Функции десериализует hello объекта в сообщение JSON. Если при выходе из функции hello hello выходное значение равно null, функции создает приветственное сообщение с пустым объектом.
+* `string`. Определение параметра выглядит так: `out string paraName` (C#). Если значение параметра hello отлично от null, при выходе из функции hello, функции создает сообщение.
+* `byte[]`. Определение параметра выглядит так: `out byte[] paraName` (C#). Если значение параметра hello отлично от null, при выходе из функции hello, функции создает сообщение.
+* `BrokeredMessage`. Определение параметра выглядит так: `out BrokeredMessage paraName` (C#). Если значение параметра hello отлично от null, при выходе из функции hello, функции создает сообщение.
 
-Чтобы создать несколько сообщений в функции C#, можно использовать `ICollector<T>` или `IAsyncCollector<T>`. Сообщение создается при вызове метода `Add` .
+Чтобы создать несколько сообщений в функции C#, можно использовать `ICollector<T>` или `IAsyncCollector<T>`. Сообщение создается при вызове hello `Add` метод.
 
-В Node.js для `context.binding.<paramName>` можно назначить строку, массив байтов или объект Javascript (десериализируется в JSON).
+В Node.js, можно назначить строку, байтовый массив или объект Javascript (десериализовать в JSON) слишком`context.binding.<paramName>`.
 
 <a name="outputsample"></a>
 
 ## <a name="output-sample"></a>Пример выходной привязки
-Предположим, что у вас есть следующий файл function.json, определяющий выходные данные очереди служебной шины:
+Предположим, что имеется следующая function.json hello, определяющий выходной очереди служебной шины:
 
 ```json
 {
@@ -231,7 +231,7 @@ module.exports = function(context, myQueueItem) {
 }
 ```
 
-Ознакомьтесь с примером для конкретного языка, отправляющим сообщение в очередь служебной шины.
+См. Образец hello конкретного языка, отправляет в очередь сообщение toohello служебной шины.
 
 * [C#](#outcsharp)
 * [F#](#outfsharp)
@@ -250,7 +250,7 @@ public static void Run(TimerInfo myTimer, TraceWriter log, out string outputSbQu
 }
 ```
 
-Создание нескольких сообщений:
+Или toocreate несколько сообщений:
 
 ```cs
 public static void Run(TimerInfo myTimer, TraceWriter log, ICollector<string> outputSbQueue)
@@ -286,7 +286,7 @@ module.exports = function (context, myTimer) {
 };
 ```
 
-Создание нескольких сообщений:
+Или toocreate несколько сообщений:
 
 ```javascript
 module.exports = function (context, myTimer) {

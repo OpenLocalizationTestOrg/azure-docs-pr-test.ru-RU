@@ -1,6 +1,6 @@
 ---
-title: "Создание приложения Служб мобильного взаимодействия Azure | Документация Майкрософт"
-description: "В этой статье описано, как создать новую коллекцию приложений Служб мобильного взаимодействия в Azure и приступить к управлению приложениями с помощью портала Служб мобильного взаимодействия."
+title: "Приложение Azure Mobile Engagement aaaCreate | Документы Microsoft"
+description: "Описывает, каким образом toocreate новую коллекцию Mobile Engagement приложения в Azure и управление на приложения с начала hello порталу мобильного охвата."
 services: mobile-engagement
 documentationcenter: 
 author: piyushjo
@@ -14,37 +14,37 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 10/10/2016
 ms.author: piyushjo
-ms.openlocfilehash: 47c1e122f6f38654cd63bb59e50e68803f76c83d
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 4da27e626dacfb6fcfbcb87458c37ea75689a33b
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-an-azure-mobile-engagement-app"></a>Создание приложения Служб мобильного взаимодействия Azure
-В этой статье показано, как с помощью метода **Быстрое создание** создать новое приложение **Служб мобильного взаимодействия Azure**. В статье также показано, как перейти на портал **Служб мобильного взаимодействия**, чтобы начать мониторинг приложений и управление ими. 
+В этой статье показано, как toouse hello **быстрое создание** toocreate метод новый **Azure Mobile Engagement** приложения. Hello статьи также показано как toonavigate tooyour **мобильного охвата** портала в порядке toostart отслеживания и управления ими приложения. 
 
-Обратите внимание, что вам потребуется добавить минимальный набор базовой интеграции, чтобы иметь возможность собирать данные для приложения и отправлять push-уведомления. Полную документацию по интеграции можно найти в разделе [Интеграция Служб мобильного взаимодействия](mobile-engagement-windows-store-integrate-engagement.md).
+Обратите внимание, что минимальный набор «основные интеграция» необходимо добавить в порядке toobe может toocollect данных приложения и отправки извещающих уведомлений. Hello полной интеграции документацию можно найти в hello [интеграции мобильного охвата](mobile-engagement-windows-store-integrate-engagement.md).
 
 > [!IMPORTANT]
-> Для работы с любым руководством по Службам мобильного взаимодействия Azure необходима активная учетная запись Azure. Если ее нет, можно создать бесплатную пробную учетную запись всего за несколько минут. Дополнительные сведения см. в разделе <a href="http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fwww.windowsazure.com%2Fen-us%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started%2F" target="_blank">Бесплатная пробная версия Azure</a>.
+> toocomplete любой Azure Mobile Engagement учебника, необходимо иметь активную учетную запись Azure. Если ее нет, можно создать бесплатную пробную учетную запись всего за несколько минут. Дополнительные сведения см. в разделе <a href="http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fwww.windowsazure.com%2Fen-us%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started%2F" target="_blank">Бесплатная пробная версия Azure</a>.
 > 
 > 
 
 ## <a name="setup-mobile-engagement-for-your-mobile-app-in-azure"></a>Настройка Служб мобильного взаимодействия для мобильного приложения в Azure
 [!INCLUDE [Create Mobile Engagement App in Portal](../../includes/mobile-engagement-create-app-in-portal-new.md)]
 
-## <a name="navigate-to-your-mobile-engagement-portal"></a>Перейдите на портал Служб мобильного взаимодействия
-Чтобы начать мониторинг приложения и управление им, перейдите на портал Служб мобильного взаимодействия. Для этого нажмите кнопку **Engagement portal** (Портал взаимодействия) на верхней панели.
+## <a name="navigate-tooyour-mobile-engagement-portal"></a>Перейдите на портал мобильного охвата tooyour
+toostart отслеживания и управления ими приложения, перейдите tooyour порталу мобильного охвата, нажав кнопку hello **порталу охвата** кнопку в верхней панели hello.
 
-После входа на портал Служб мобильного взаимодействия вы можете анализировать и создавать сегменты, управлять ими, привлекать пользователей и выполнять другие действия.    
+После входа в портал мобильного охвата hello, можно анализировать, создавать и управлять сегментов, направляться toohello пользователей и т. д.:    
 
 * [Наблюдение за работой приложения в режиме реального времени](mobile-engagement-user-interface-monitor.md)
 * [Анализ журналов данных о приложении](mobile-engagement-user-interface-analytics.md)
-* [Создание сегментов пользователей и управление ими для выявления закономерностей](mobile-engagement-user-interface-segments.md)
-* [Охват пользователей приложения с помощью push-уведомлений](mobile-engagement-user-interface-reach.md)
+* [Создание и управление ими сегментов пользователей tooidentify закономерностей.](mobile-engagement-user-interface-segments.md)
+* [Направляться toohello пользователей приложения с push-уведомлений](mobile-engagement-user-interface-reach.md)
 
 ## <a name="see-also"></a>См. также
 [Определение стратегии Служб мобильного взаимодействия](mobile-engagement-define-your-mobile-engagement-strategy.md)
 
-[Приступая к работе со Службами мобильного взаимодействия Azure](mobile-engagement-windows-store-dotnet-get-started.md) (в верхней части страницы можно выбрать другие мобильные платформы).
+[Приступая к работе с Azure Mobile Engagement](mobile-engagement-windows-store-dotnet-get-started.md) (можно выбрать мобильных платформ в начале hello hello страницы).
 

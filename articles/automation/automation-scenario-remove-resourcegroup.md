@@ -1,6 +1,6 @@
 ---
-title: "Автоматизация удаления групп ресурсов | Документация Майкрософт"
-description: "Сценарий службы автоматизации Azure с использованием рабочего процесса PowerShell предусматривает удаление всех групп ресурсов в подписке с помощью модулей Runbook."
+title: "Удаление группы ресурсов aaaAutomate | Документы Microsoft"
+description: "Версия рабочего процесса PowerShell сценария автоматизации Azure, включая модули Runbook tooremove группы всех ресурсов в вашей подписке."
 services: automation
 documentationcenter: 
 author: MGoedtel
@@ -14,56 +14,56 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/26/2016
 ms.author: magoedte
-ms.openlocfilehash: 6aa3897d44b146483204d43e026d3d158c3e13b6
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: d7ff8064842385d57b0eebdf7b263150c958255f
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-automation-scenario---automate-removal-of-resource-groups"></a>Сценарий службы автоматизации Azure: автоматизация удаления групп ресурсов
-Многие клиенты создают несколько групп ресурсов. Одни можно использовать для управления рабочими приложениями, а другие — в качестве промежуточных сред или сред разработки и тестирования. Но автоматизация развертывания этих ресурсов и возможность удалить группу ресурсов с помощью нажатия кнопки — это две разных задачи. С помощью службы автоматизации Azure можно упростить эту распространенную задачу управления. Это будет полезно, если вы работаете с подпиской Azure, для которой настроена предельная сумма расходов, например в рамках предложения для участников MSDN или программы Microsoft Partner Network Cloud Essentials.
+Многие клиенты создают несколько групп ресурсов. Одни можно использовать для управления рабочими приложениями, а другие — в качестве промежуточных сред или сред разработки и тестирования. Автоматизировать развертывание hello эти ресурсы — это одно, но может toodecommission группу ресурсов одним щелчком кнопки «hello», будет другой. С помощью службы автоматизации Azure можно упростить эту распространенную задачу управления. Это полезно, если вы работаете с подпиской Azure, предельная через предложение для участников как MSDN или hello программы Microsoft Partner Network Cloud Essentials.
 
-В этом сценарии используется модуль Runbook PowerShell, который предназначен для удаления из подписки одной или нескольких выбранных групп ресурсов. Для модуля Runbook по умолчанию настроено тестирование перед выполнением дальнейших действий. Это позволяет предотвратить случайное удаление группы ресурсов.   
+Этот сценарий основан на модуле runbook PowerShell и является спроектированный tooremove одну или несколько групп ресурсов, определяющие из подписки. Hello по умолчанию hello runbook, tootest, прежде чем продолжить. Это гарантирует, что не удалить случайно hello группы ресурсов, прежде чем вы будете готовы toocomplete этой процедуры.   
 
-## <a name="getting-the-scenario"></a>Получение сценария
-В этом сценарии используется модуль Runbook PowerShell, который можно скачать из [коллекции PowerShell](https://www.powershellgallery.com/packages/Remove-ResourceGroup/1.0/DisplayScript). Его также можно импортировать непосредственно из [коллекции Runbook](automation-runbook-gallery.md) на портале Azure.<br><br>
+## <a name="getting-hello-scenario"></a>Начало сценария hello
+Этот сценарий состоит из runbook PowerShell, который можно загрузить из hello [коллекции PowerShell](https://www.powershellgallery.com/packages/Remove-ResourceGroup/1.0/DisplayScript). Можно также импортировать его непосредственно из hello [коллекции модулей Runbook](automation-runbook-gallery.md) в hello портал Azure.<br><br>
 
 | Модуль Runbook | Описание |
 | --- | --- |
-| Remove-ResourceGroup |Удаляет из подписки одну или несколько групп ресурсов Azure вместе со связанными ресурсами. |
+| Remove-ResourceGroup |Удаляет один или несколько групп ресурсов Azure и связанные ресурсы из подписки hello. |
 
 <br>
-Для этого модуля Runbook определены следующие входные параметры.
+для этого модуля runbook определяются Hello следующие входные параметры.
 
 | Параметр | Описание |
 | --- | --- |
-| NameFilter (обязательный) |Определяет имя фильтра для ограничения групп ресурсов, которые будут удалены. Можно передать несколько значений, указав их через запятую.<br>Фильтр не учитывает регистр, возвращая все группы ресурсов, которые содержат строку. |
-| PreviewMode (необязательный) |Выполняет модуль Runbook, чтобы узнать, какие группы ресурсов будут удалены.<br>Значение по умолчанию **true** используется, чтобы избежать случайного удаления одной или нескольких групп ресурсов, переданных в модуль Runbook. |
+| NameFilter (обязательный) |Указывает имя фильтра toolimit hello групп ресурсов, которые будут при удалении. Можно передать несколько значений, указав их через запятую.<br>Hello фильтр не учитывает регистр и будет соответствовать любой группы ресурсов, которая содержит строку hello. |
+| PreviewMode (необязательный) |Выполняет toosee runbook hello групп ресурсов, которые будут удалены, но не выполняет никаких действий.<br>по умолчанию Hello — **true** toohelp избежать случайного удаления одного или нескольких групп ресурсов, переданным toohello runbook. |
 
 ## <a name="install-and-configure-this-scenario"></a>Установка и настройка сценария
 ### <a name="prerequisites"></a>Предварительные требования
-Этот модуль Runbook выполняет проверку подлинности с помощью [учетной записи запуска от имени Azure](automation-sec-configure-azure-runas-account.md).    
+Этот модуль runbook выполняет проверку подлинности с помощью hello [учетная запись запуска от имени Azure](automation-sec-configure-azure-runas-account.md).    
 
-### <a name="install-and-publish-the-runbooks"></a>Установка и публикация модулей Runbook
-Скачав модули Runbook, вы можете импортировать их с помощью процедуры, описанной в статье [Создание или импорт модуля Runbook в службе автоматизации Azure](automation-creating-importing-runbook.md#importing-a-runbook-from-a-file-into-azure-automation). Опубликуйте модуль Runbook после импорта в учетную запись службы автоматизации.
+### <a name="install-and-publish-hello-runbooks"></a>Установка и публикации Runbook hello
+После загрузки hello runbook, его можно импортировать с помощью процедуры hello в [импорта runbook процедуры](automation-creating-importing-runbook.md#importing-a-runbook-from-a-file-into-azure-automation). Опубликуйте hello runbook после его успешного импорта в вашу учетную запись автоматизации.
 
-## <a name="using-the-runbook"></a>Использование модуля Runbook
-Ниже описывается, как выполнить модуль Runbook, а также приводятся сведения о том, как этот модуль работает. В этом примере мы только протестируем модуль Runbook без удаления группы ресурсов.  
+## <a name="using-hello-runbook"></a>С помощью hello runbook
+Hello ниже поможет hello выполнение этого runbook и помогут ознакомиться с ее работе. Будет только тестироваться hello runbook в этом примере фактически не удаление группы ресурсов hello.  
 
-1. На портале Azure откройте свою учетную запись службы автоматизации и щелкните **Модули Runbook**.
-2. Выберите модуль Runbook **Remove-ResourceGroup** и нажмите кнопку **Запустить**.
-3. При запуске модуля Runbook открывается колонка **Запуск Runbook**, где можно настроить параметры. Укажите имена групп ресурсов в подписке, которые можно протестировать и которые могут быть без последствий удалены.<br> ![Параметры модуля Remove-ResouceGroup](media/automation-scenario-remove-resourcegroup/remove-resourcegroup-input-parameters.png)
+1. Откройте учетную запись автоматизации hello портал Azure и щелкните **Runbooks**.
+2. Выберите hello **удаление ResourceGroup** runbook и нажмите кнопку **запустить**.
+3. При запуске hello runbook hello **запустить Runbook** открывает колонку и можно настроить параметры hello. Введите имена hello групп ресурсов в подписке можно использовать для тестирования и вызовет вреда, если случайно удален.<br> ![Параметры модуля Remove-ResouceGroup](media/automation-scenario-remove-resourcegroup/remove-resourcegroup-input-parameters.png)
 
    > [!NOTE]
-   > Чтобы избежать случайного удаления выбранных групп ресурсов, необходимо присвоить для параметра **Previewmode** значение **true**.  **Учтите**, что модуль Runbook не удаляет группу ресурсов, содержащую учетную запись службы автоматизации, которая отвечает за выполнение этого модуля Runbook.  
+   > Убедитесь, что **Previewmode** задано слишком**true** tooavoid удаление hello выбранные группы ресурсов.  **Примечание** этот runbook не удалит hello группы ресурсов, содержащий hello учетной записи автоматизации, на котором выполняется этот runbook.  
    >
    >
-4. Настроив значения всех параметров, нажмите кнопку **ОК**. Модуль Runbook будет помещен в очередь для выполнения.  
+4. После настройки все значения параметров hello установите **ОК**, и hello runbook будут помещены в очередь для выполнения.  
 
-Сведения о задании Runbook **Remove-ResourceGroup** можно просмотреть на портале Azure, щелкнув плитку **Задания** этого модуля Runbook. Помимо общей информации о задании, в сводке будут перечислены входные параметры, поток вывода, а также все возникшие исключения.<br> ![Состояние задания модуля Runbook Remove-ResourceGroup](media/automation-scenario-remove-resourcegroup/remove-resourcegroup-runbook-job-status.png).
+Подробности hello tooview hello **удаление ResourceGroup** задания runbook в hello портал Azure, выберите **заданий** в hello runbook. Hello задания сводки Вывод hello входных параметров и вывода hello потока Кроме toogeneral сведения о задании hello и любые исключения, которые возникают.<br> ![Состояние задания модуля Runbook Remove-ResourceGroup](media/automation-scenario-remove-resourcegroup/remove-resourcegroup-runbook-job-status.png).
 
-**Сводка по заданию** содержит сообщения из потоков вывода, предупреждений и ошибок. Щелкните **Вывод**, чтобы просмотреть подробные сведения о результатах выполнения модуля Runbook.<br> ![Выходные данные модуля Runbook Remove-ResourceGroup](media/automation-scenario-remove-resourcegroup/remove-resourcegroup-runbook-job-output.png)
+Hello **Сводка заданий** включает в себя сообщения из hello потоков вывода, предупреждения и ошибки. Выберите **вывода** tooview подробные результаты из выполнения runbook hello.<br> ![Выходные данные модуля Runbook Remove-ResourceGroup](media/automation-scenario-remove-resourcegroup/remove-resourcegroup-runbook-job-output.png)
 
 ## <a name="next-steps"></a>Дальнейшие действия
-* Инструкции по созданию модулей Runbook см. в статье [Создание или импорт модуля Runbook в службе автоматизации Azure](automation-creating-importing-runbook.md).
-* Сведения о том, как начать работу с модулями Runbook рабочих процессов PowerShell, см. в статье [Первый Runbook рабочего процесса PowerShell](automation-first-runbook-textual.md).
+* tooget к созданию собственного модуля runbook в разделе [Создание или импорт модуля runbook в автоматизации Azure](automation-creating-importing-runbook.md).
+* tooget к работе с модулями Runbook рабочего процесса PowerShell, в разделе [Мой первый runbook рабочего процесса PowerShell](automation-first-runbook-textual.md).

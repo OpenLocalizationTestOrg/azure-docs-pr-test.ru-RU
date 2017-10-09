@@ -1,6 +1,6 @@
 ---
-title: "Расширенные сценарии с использованием Azure MFA и VPN сторонних поставщиков"
-description: "Пошаговые руководства по настройке Azure MFA для интеграции с устройствами Cisco, Citrix и Juniper."
+title: "сценарии aaaAdvanced с многофакторной проверки Подлинности Azure и виртуальные частные сети сторонних разработчиков"
+description: "Конфигурация пошаговые руководства по toointegrate многофакторной проверки Подлинности Azure с Cisco, Citrix и Juniper."
 services: multi-factor-authentication
 documentationcenter: 
 author: kgremban
@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/13/2017
 ms.author: kgremban
-ms.openlocfilehash: afdd80585889ecd9248399094e918fde611468cb
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: e23960ca4977cc01271f99fa2bec70449e9acfff
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="advanced-scenarios-with-azure-multi-factor-authentication-and-third-party-vpn-solutions"></a>Расширенные сценарии с использованием Многофакторной идентификации Azure и VPN-решений сторонних поставщиков
-Многофакторную идентификацию Azure можно использовать для быстрого подключения к широкому спектру VPN-решений сторонних поставщиков. Эта статья посвящена применению устройств VPN Cisco® ASA, Citrix NetScaler SSL, а также Juniper Networks Secure Access/Pulse Secure Connect Secure SSL. Мы разработали руководства по настройке для этих трех распространенных устройств, но сервер Многофакторной идентификации можно интегрировать с большинством систем, использующих для доступа в AD FS технологии RADIUS, LDAP, IIS или аутентификацию на основе утверждений. Дополнительные сведения см. в разделе [Дополнительные конфигурации сервера Azure Multi-Factor Authentication](multi-factor-authentication-get-started-server.md#next-steps).
+Azure Multi-factor Authentication может использоваться tooseamlessly подключиться с помощью различных решений VPN сторонних разработчиков. В этой статье описываются на устройство Cisco® ASA VPN, Citrix NetScaler SSL VPN-устройства и hello Juniper сетей безопасного доступа/Pulse Secure подключения защиты SSL VPN-устройством. Мы создали tooaddress руководства по конфигурации эти три общие устройства, но можно интегрировать многофакторную проверку подлинности сервера с большинством систем, использующих RADIUS, LDAP, IIS или проверки подлинности на основе утверждений tooAD FS. Дополнительные сведения см. в разделе [Дополнительные конфигурации сервера Azure Multi-Factor Authentication](multi-factor-authentication-get-started-server.md#next-steps).
 
 ## <a name="cisco-asa-vpn-appliance-and-azure-multi-factor-authentication"></a>Устройство VPN Cisco ASA и многофакторная проверка подлинности Azure
-Многофакторная идентификация Azure интегрируется с устройством VPN Cisco® ASA, обеспечивая дополнительную защиту учетных данных VPN Cisco AnyConnect® и доступа к порталу.  Для этой цели можно использовать протокол LDAP или RADIUS.  Щелкните одну из следующих ссылок и загрузите подробную пошаговую инструкцию по настройке.
+Azure Multi-factor Authentication интегрируется с вашей ASA® Cisco VPN устройства tooprovide дополнительную безопасность VPN Cisco AnyConnect® имена входа и доступа к порталу.  Это можно сделать с помощью либо hello протокол LDAP или RADIUS.  Выберите один из hello следующая конфигурация подробные пошаговые hello toodownload направляющих.
 
 | Руководство по настройке | Описание |
 | --- | --- |
@@ -32,7 +32,7 @@ ms.lasthandoff: 07/11/2017
 | [Настройка Cisco ASA с конфигурацией Anyconnect VPN и многофакторной проверки подлинности Azure для RADIUS](http://download.microsoft.com/download/4/5/7/4579C1CF-35B0-4FBE-8A1A-B49CB2CC0382/Cisco_ASA_Azure_MFA_RADIUS.docx) | Интеграция устройства VPN Cisco ASA с Azure MFA с помощью RADIUS |
 
 ## <a name="citrix-netscaler-ssl-vpn-and-azure-multi-factor-authentication"></a>VPN Citrix NetScaler SSL и многофакторная проверка подлинности Azure
-Многофакторная идентификация Azure интегрируется с устройством VPN Citrix NetScaler SSL, обеспечивая дополнительную защиту учетных данных VPN Citrix NetScaler SSL и доступа к порталу.  Для этой цели можно использовать протокол LDAP или RADIUS.  Щелкните одну из следующих ссылок и загрузите подробную пошаговую инструкцию по настройке.
+Azure Multi-factor Authentication интегрируется с Citrix NetScaler SSL VPN устройства tooprovide дополнительной безопасности для имен входа для Citrix NetScaler SSL VPN и доступа к порталу.  Это можно сделать с помощью либо hello протокол LDAP или RADIUS.  Выберите один из hello следующая конфигурация подробные пошаговые hello toodownload направляющих.
 
 | Руководство по настройке | Описание |
 | --- | --- |
@@ -40,7 +40,7 @@ ms.lasthandoff: 07/11/2017
 | [Настройка VPN Citrix NetScaler SSL и многофакторной проверки подлинности Azure для RADIUS](http://download.microsoft.com/download/1/A/4/1A482764-4A63-45C2-A5EC-2B673ACCDD12/Citrix_NS_Azure_MFA_RADIUS.docx) | Интеграция устройства VPN Citrix NetScaler SSL с Azure MFA с помощью RADIUS |
 
 ## <a name="juniperpulse-secure-ssl-vpn-appliance-and-azure-multi-factor-authentication"></a>Устройство VPN Juniper/Pulse Secure SSL и многофакторная проверка подлинности Azure
-Многофакторная идентификация Azure интегрируется с устройством VPN Juniper/Pulse Secure SSL, обеспечивая дополнительную защиту учетных данных VPN Juniper/Pulse Secure SSL и доступа к порталу.  Для этой цели можно использовать протокол LDAP или RADIUS.  Щелкните одну из следующих ссылок и загрузите подробную пошаговую инструкцию по настройке.
+Azure Multi-factor Authentication интегрируется с Juniper/Pulse Secure SSL VPN устройства tooprovide дополнительной безопасности для имен входа Juniper/Pulse Secure SSL VPN и доступа к порталу.  Это можно сделать с помощью либо hello протокол LDAP или RADIUS.  Выберите один из hello следующая конфигурация подробные пошаговые hello toodownload направляющих.
 
 | Руководство по настройке | Описание |
 | --- | --- |
@@ -49,6 +49,6 @@ ms.lasthandoff: 07/11/2017
 
 ## <a name="next-steps"></a>Дальнейшие действия
 
-- [Внедрение расширения NPS для Многофакторной идентификации Azure в существующую инфраструктуру аутентификации.](multi-factor-authentication-nps-extension.md)
+- [Расширить существующую инфраструктуру проверки подлинности с hello NPS расширения для многофакторной проверки подлинности Azure](multi-factor-authentication-nps-extension.md)
 
 - [Настройка параметров Многофакторной идентификации Azure.](multi-factor-authentication-whats-next.md)

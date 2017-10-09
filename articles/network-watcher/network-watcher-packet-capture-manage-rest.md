@@ -1,6 +1,6 @@
 ---
-title: "Управление записью пакетов с помощью Наблюдателя за сетями Azure (REST API) | Документация Майкрософт"
-description: "На этой странице объясняется, как управлять функцией записи пакетов Наблюдателя за сетями с помощью REST API."
+title: "снимки aaaManage пакетов с Наблюдатель сети Azure — REST API | Документы Microsoft"
+description: "На этой странице объясняется, как toomanage hello функция записи пакетов Наблюдатель сети с помощью Azure REST API"
 services: network-watcher
 documentationcenter: na
 author: georgewallace
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: gwallace
-ms.openlocfilehash: 49ec20802a252258d8493eb26510270b925e851a
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 7a531fbe796e85e94961bd192d171defb299be05
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="manage-packet-captures-with-azure-network-watcher-using-azure-rest-api"></a>Управление записью пакетов с помощью Наблюдателя за сетями Azure и Azure REST API
 
@@ -29,26 +29,26 @@ ms.lasthandoff: 08/29/2017
 > - [CLI 2.0](network-watcher-packet-capture-manage-cli.md)
 > - [Azure REST API](network-watcher-packet-capture-manage-rest.md)
 
-Возможность записи пакетов Наблюдателя за сетями позволяет создавать сеансы записи для отслеживания входящего и исходящего трафика виртуальной машины. Для сеанса записи предоставляются фильтры, которые позволяют убедиться, что записывается только требуемый трафик. Записи пакетов помогают выявить аномалии в работе сети по факту или заранее. Они также помогают выполнять сбор сетевой статистики, получать сведения о сетевых вторжениях, выполнять отладку передачи данных между клиентом и сервером и многое другое. Так как запись пакетов активируется удаленно, ее не нужно запускать вручную. К тому же она сразу выполняется на требуемой виртуальной машине, что также позволяет сэкономить ценное время.
+Захват пакетов Наблюдатель сети позволяет tooand toocreate отслеживания сеансов tootrack трафик от виртуальной машины. Можно записать только трафик hello нужные фильтры предоставляются для tooensure сеанс отслеживания hello. Захват пакетов помогает аномалий toodiagnose сети как реактивный, так и заранее. Другим пользователям включать сбор статистики сети, получение сведений о сети вторжений, toodebug клиент сервер, связи и многое другое. Из-за захват пакетов может tooremotely триггера, эта возможность облегчает нагрузку hello выполнения захват пакетов на нужный машины hello, чтобы экономить время и вручную.
 
-В этой статье вы ознакомитесь с разными задачами управления, доступными в настоящее время для записи пакетов.
+В этой статье описывается hello задачи управления, которые в настоящее время доступны для получения пакетов.
 
 - [**Получение записи пакета**](#get-a-packet-capture)
 - [**Вывод списка всех записей пакетов**](#list-all-packet-captures)
-- [**Запрос состояния записи пакета**](#query-packet-capture-status)
+- [**Состояние запроса hello захват пакетов**](#query-packet-capture-status)
 - [**Запуск записи пакета**](#start-packet-capture)
 - [**Прекращение записи пакета**](#stop-packet-capture)
 - [**Удаление записи пакета**](#delete-packet-capture)
 
 ## <a name="before-you-begin"></a>Перед началом работы
 
-В этом сценарии вызывается REST API Наблюдателя за сетями для запуска проверки IP-потока. Чтобы вызвать REST API при помощи PowerShell, потребуется ARMClient. Пакет ARMClient можно скачать на сайте [Chocolatey](https://chocolatey.org/packages/ARMClient).
+В этом случае вызывать toorun API-интерфейса Rest Наблюдатель сети hello IP потока проверки. ARMclient — используется toocall hello REST API с помощью PowerShell. Пакет ARMClient можно скачать на сайте [Chocolatey](https://chocolatey.org/packages/ARMClient).
 
-В этом сценарии предполагается, что вы создали Наблюдатель за сетями в соответствии с инструкциями в статье [Create a Network Watcher](network-watcher-create.md) (Создание Наблюдателя за сетями).
+Этот сценарий предполагает уже были выполнены шаги hello в [создать Наблюдатель сети](network-watcher-create.md) toocreate Наблюдатель сети.
 
-> Для записи пакетов необходимо расширение виртуальной машины `AzureNetworkWatcherExtension`. Информацию об установке расширения для виртуальной машины Windows см. в статье [Расширение виртуальной машины агента Наблюдателя за сетями для Windows](../virtual-machines/windows/extensions-nwa.md), а для виртуальной машины Linux — в статье [Расширение виртуальной машины агента Наблюдателя за сетями для Linux](../virtual-machines/linux/extensions-nwa.md).
+> Для записи пакетов необходимо расширение виртуальной машины `AzureNetworkWatcherExtension`. Установка расширения hello на виртуальной Машине Windows на сайте [расширение виртуальной машины агента Наблюдатель сети Azure для Windows](../virtual-machines/windows/extensions-nwa.md) и виртуальной Машине Linux см. по адресу [расширение виртуальной машины агента Наблюдатель сети Azure для Linux](../virtual-machines/linux/extensions-nwa.md).
 
-## <a name="log-in-with-armclient"></a>выполните вход с помощью ARMClient;
+## <a name="log-in-with-armclient"></a>Вход с помощью ARMClient
 
 ```PowerShell
 armclient login
@@ -56,12 +56,12 @@ armclient login
 
 ## <a name="retrieve-a-virtual-machine"></a>Получение виртуальной машины
 
-Выполните следующий сценарий, чтобы получить сведения о виртуальной машине. Эти сведения необходимы для запуска записи пакетов.
+Запустите следующий сценарий tooreturn hello виртуальной машины. Эти сведения необходимы для запуска записи пакетов.
 
-В приведенном ниже коде нужно указать переменные.
+Hello следующий код должен переменных:
 
-- **subscriptionId** — идентификатор подписки. Его можно получить с помощью командлета **Get-AzureRMSubscription**.
-- **resourceGroupName** — имя группы ресурсов, в которой содержатся виртуальные машины.
+- **subscriptionId** -идентификатор подписки hello также можно получить с помощью hello **Get AzureRMSubscription** командлета.
+- **resourceGroupName** — hello имя группы ресурсов, содержащем виртуальные машины.
 
 ```powershell
 $subscriptionId = "<subscription id>"
@@ -70,7 +70,7 @@ $resourceGroupName = "<resource group name>"
 armclient get https://management.azure.com/subscriptions/${subscriptionId}/ResourceGroups/${resourceGroupName}/providers/Microsoft.Compute/virtualMachines?api-version=2015-05-01-preview
 ```
 
-Идентификатор виртуальной машины из приведенных выходных данных используется в следующем примере.
+Из hello следующие выходные данные, идентификатор hello hello виртуальной машины используется в следующем примере hello.
 
 ```json
 ...
@@ -88,7 +88,7 @@ armclient get https://management.azure.com/subscriptions/${subscriptionId}/Resou
 
 ## <a name="get-a-packet-capture"></a>Получение записи пакета
 
-В следующем примере возвращается состояние отдельной записи пакета.
+Hello следующий пример возвращает состояние отслеживания однократная hello
 
 ```powershell
 $subscriptionId = "<subscription id>"
@@ -97,7 +97,7 @@ $networkWatcherName = "NetworkWatcher_westcentralus"
 armclient post "https://management.azure.com/subscriptions/${subscriptionId}/ResourceGroups/${resourceGroupName}/providers/Microsoft.Network/networkWatchers/${networkWatcherName}/packetCaptures/${packetCaptureName}/querystatus?api-version=2016-12-01"
 ```
 
-Ниже приведены примеры типичных ответов, которые возвращаются при запросе состояния записи пакета.
+Hello следующие ответы приведены примеры типичных ответа, возвращаемые при запросе hello состояние отслеживания пакетов.
 
 ```json
 {
@@ -122,7 +122,7 @@ armclient post "https://management.azure.com/subscriptions/${subscriptionId}/Res
 
 ## <a name="list-all-packet-captures"></a>Вывод списка всех записей пакетов
 
-Следующий пример возвращает все сеансы записи пакетов в регионе.
+Здравствуй, следующий пример возвращает все сеансы регистрации пакетов в области.
 
 ```powershell
 $subscriptionId = "<subscription id>"
@@ -131,7 +131,7 @@ $networkWatcherName = "NetworkWatcher_westcentralus"
 armclient get "https://management.azure.com/subscriptions/${subscriptionId}/ResourceGroups/${resourceGroupName}/providers/Microsoft.Network/networkWatchers/${networkWatcherName}/packetCaptures?api-version=2016-12-01"
 ```
 
-Ниже приведен пример типичного ответа, возвращаемого при получении всех записей пакетов.
+Hello следующий ответ — захватывает пример типичных ответ возвращается, если получение всех пакетов
 
 ```json
 {
@@ -196,7 +196,7 @@ ture_17_23_15_364.cap",
 
 ## <a name="query-packet-capture-status"></a>Запрос состояния записи пакета
 
-Следующий пример возвращает все сеансы записи пакетов в регионе.
+Здравствуй, следующий пример возвращает все сеансы регистрации пакетов в области.
 
 ```powershell
 $subscriptionId = "<subscription id>"
@@ -206,7 +206,7 @@ $packetCaptureName = "TestPacketCapture5"
 armclient get "https://management.azure.com/subscriptions/${subscriptionId}/ResourceGroups/${resourceGroupName}/providers/Microsoft.Network/networkWatchers/${networkWatcherName}/packetCaptures/${packetCaptureName}/querystatus?api-version=2016-12-01"
 ```
 
-Ниже приведен пример типичного ответа, который возвращается при запросе состояния записи пакета.
+Hello следующий ответ приведен пример ответа обычно, возвращаемый при опросе hello состояние отслеживания пакетов.
 
 ```json
 {
@@ -220,7 +220,7 @@ armclient get "https://management.azure.com/subscriptions/${subscriptionId}/Reso
 
 ## <a name="start-packet-capture"></a>Запуск записи пакета
 
-В следующем примере создается запись пакета на виртуальной машине.  Он параметризован таким образом, чтобы обеспечить гибкость при создании примера.
+Следующий пример Hello создает захват пакетов на виртуальной машине.  пример Hello является параметризованный tooallow для гибкость при создании примера.
 
 ```powershell
 $subscriptionId = '<subscription id>'
@@ -272,7 +272,7 @@ armclient PUT "https://management.azure.com/subscriptions/${subscriptionId}/Reso
 
 ## <a name="stop-packet-capture"></a>Прекращение записи пакета
 
-В следующем примере останавливается запись пакета на виртуальной машине.  Он параметризован таким образом, чтобы обеспечить гибкость при создании примера.
+Следующий пример Hello останавливает захват пакетов на виртуальной машине.  пример Hello является параметризованный tooallow для гибкость при создании примера.
 
 ```powershell
 $subscriptionId = '<subscription id>'
@@ -284,7 +284,7 @@ armclient post "https://management.azure.com/subscriptions/${subscriptionId}/Res
 
 ## <a name="delete-packet-capture"></a>Удаление записи пакета
 
-В следующем примере удаляется запись пакета на виртуальной машине.  Он параметризован таким образом, чтобы обеспечить гибкость при создании примера.
+Следующий пример Hello удаляет захват пакетов на виртуальной машине.  пример Hello является параметризованный tooallow для гибкость при создании примера.
 
 ```powershell
 $subscriptionId = '<subscription id>'
@@ -296,13 +296,13 @@ armclient delete "https://management.azure.com/subscriptions/${subscriptionId}/R
 ```
 
 > [!NOTE]
-> При удалении записи пакета файл в учетной записи хранения не удаляется.
+> Удаление захват пакетов не удаляет файл hello в учетной записи хранения hello
 
 ## <a name="next-steps"></a>Дальнейшие действия
 
-Инструкции по скачиванию файлов из учетных записей хранения Azure см. в статье [Приступая к работе с хранилищем BLOB-объектов Azure с помощью .NET](../storage/blobs/storage-dotnet-how-to-use-blobs.md). Кроме того, можно использовать такое средство, как Storage Explorer. Дополнительные сведения о Storage Explorer можно найти по следующей ссылке: [Storage Explorer](http://storageexplorer.com/).
+Инструкции по загрузке файлов из учетных записей хранилища azure, см. в разделе слишком[приступить к работе с хранилищем больших двоичных объектов Azure с помощью .NET](../storage/blobs/storage-dotnet-how-to-use-blobs.md). Кроме того, можно использовать такое средство, как Storage Explorer. Дополнительные сведения об обозревателе хранилища можно найти по ссылке hello здесь: [обозреватель хранилищ](http://storageexplorer.com/)
 
-Узнайте, как автоматизировать запись пакетов, используя оповещения на виртуальной машине, в статье [Использование записи пакетов для упреждающего мониторинга сети с помощью Функций Azure](network-watcher-alert-triggered-packet-capture.md).
+Узнайте, как снимки tooautomate пакетов с оповещениями виртуальной машины, просмотрев [создать получения оповещений триггеру пакетов](network-watcher-alert-triggered-packet-capture.md)
 
 
 

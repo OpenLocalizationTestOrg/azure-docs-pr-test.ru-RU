@@ -1,6 +1,6 @@
 ---
-title: "Настройка хранилища для репликации физического сервера в Azure с помощью Azure Site Recovery | Документация Майкрософт"
-description: "В этой статье кратко описаны шаги настройки хранилища для репликации из физических серверов в Azure с помощью Azure Site Recovery."
+title: "aaaSet копирование хранилища для tooAzure репликации физического сервера с помощью Azure Site Recovery | Документы Microsoft"
+description: "Собраны действия hello необходимо tooset копирование tooAzure физических серверов tooreplicate хранилище, с помощью Azure Site Recovery"
 services: site-recovery
 documentationcenter: 
 author: rayne-wiselman
@@ -14,19 +14,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/27/2017
 ms.author: raynew
-ms.openlocfilehash: deb5ad0495edc969b374795eeb2698326dd4ff4d
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 988928e3ece31116823f132cc39223fe44443468
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="step-6-set-up-a-vault-for-physical-server-replication-to-azure"></a>Шаг 6. Настройка хранилища для репликации физического сервера в Azure
+# <a name="step-6-set-up-a-vault-for-physical-server-replication-tooazure"></a>Шаг 6: Настройка хранилища для репликации tooAzure физического сервера
 
 
-В этой статье описывается настройка хранилища. Вы создадите хранилище и укажете, что именно необходимо реплицировать из локальной среды в Azure, используя службу [Azure Site Recovery](site-recovery-overview.md) на портале Azure.
+В этой статье описывается как tooset копии хранилища. Создание хранилища hello и укажите, какие действия tooreplicate из вашего tooAzure расположения в локальной среде, с помощью hello [Azure Site Recovery](site-recovery-overview.md) в hello портал Azure.
 
 
-Комментарии или вопросы можно добавить в конце этой статьи или на [форуме по службам восстановления Azure](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr).
+Учет комментарии и вопросы hello нижней части этой статьи, или на hello [форум по службам восстановления Azure](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr).
 
 
 
@@ -37,13 +37,13 @@ ms.lasthandoff: 07/11/2017
 
 ## <a name="select-a-protection-goal"></a>Выбор целевого объекта защиты
 
-Выберите целевые объекты и место для репликации.
+Выберите объект tooreplicate, и когда необходимо tooreplicate для.
 
 1. Щелкните **Хранилища служб восстановления** > хранилище.
-2. В меню ресурсов щелкните **Site Recovery** > **Подготовка инфраструктуры** > **Цель защиты**.
-3. На странице **Цель защиты** выберите **To Azure** (В Azure) > **Без виртуализации или иное**.
+2. В hello ресурсов меню, щелкните **Site Recovery** > **Подготовка инфраструктуры** > **цель защиты**.
+3. В **цель защиты**выберите **tooAzure** > **не виртуализированных, другие**.
 
 
 ## <a name="next-steps"></a>Дальнейшие действия
 
-Перейдите к статье [Шаг 7. Настройка исходной и целевой среды для репликации физического сервера в Azure](physical-walkthrough-source-target.md).
+Go слишком[шаг 7: Настройка исходного и конечного](physical-walkthrough-source-target.md)

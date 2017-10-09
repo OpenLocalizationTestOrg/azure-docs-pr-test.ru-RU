@@ -1,6 +1,6 @@
 ---
-title: "Дополнительные возможности управления доступом с помощью групп | Документация Майкрософт"
-description: "Расширенные указания по управлению группами безопасности и использованию этих групп для управления доступом к ресурсу."
+title: "aaaNext действия для управления доступом с помощью групп | Документы Microsoft"
+description: "Как расширенный-руководства по управлению группами безопасности и как toouse эти группы доступа toomanage tooa ресурсов."
 services: active-directory
 documentationcenter: 
 author: curtand
@@ -15,38 +15,38 @@ ms.topic: article
 ms.date: 07/25/2017
 ms.author: curtand
 ms.custom: oldportal;it-pro;
-ms.openlocfilehash: 82fbeb379e90add09f7c569111053f6e9b1bc9c5
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 4fd55f893290fac3551a130f29bd12709cf551e6
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="managing-owners-for-a-group"></a>Управление владельцами группы
-После того как владелец ресурса предоставил доступ к ресурсу группе Azure Active Directory, управление членством в группе осуществляется владельцем группы. Владелец ресурса фактически делегирует владельцу группы разрешение предоставлять пользователям доступ к ресурсу.
+Уже присвоенное владельцем ресурса группы ресурсов tooan Azure AD для доступа к tooa hello членства группы hello управляется hello владелец группы. владелец ресурса Hello фактически передает hello разрешение tooassign пользователей toohello toohello владелец ресурса группы hello.
 
 > [!IMPORTANT]
-> Для управления службой Azure AD мы рекомендуем использовать [Центр администрирования Azure AD](https://aad.portal.azure.com) на портале Azure, а не классический портал Azure, который упоминается в этой статье. 
+> Корпорация Майкрософт рекомендует управлять Azure AD, используя hello [Центр администрирования Azure AD](https://aad.portal.azure.com) в hello портал Azure, вместо использования hello классический портал Azure, в этой статье. 
 
 ## <a name="assigning-group-ownership"></a>Назначение владельца группы
-**Добавление владельца в группу**
+**tooadd tooa владельца группы**
 
-1. На [классическом портале Azure](https://manage.windowsazure.com)щелкните **Active Directory**, а затем откройте каталог своей организации.
-2. Откройте вкладку **Группы** , а затем группу, в которую нужно добавить владельцев.
+1. В hello [классический портал Azure](https://manage.windowsazure.com)выберите **Active Directory**, а затем откройте каталог вашей организации.
+2. Выберите hello **группы** вкладки и группы последовательно откройте hello tooadd владельцам.
 3. Щелкните **Добавить владельцев**.
-4. На странице **Добавление владельцев** выберите пользователя, которого нужно добавить в качестве владельца этой группы, и убедитесь в том, что его имя появилось в области **Выбранные**.
+4. На hello **добавить владельцев** страницу, выберите hello пользователь должен быть tooadd hello владельца этой группы и убедитесь, что это имя добавлено toohello **выбранные** области.
 
-**Удаление владельца из группы**
+**tooremove владельца из группы**
 
-1. На [классическом портале Azure](https://manage.windowsazure.com)щелкните **Active Directory**, а затем откройте каталог своей организации.
-2. Откройте вкладку **Группы** , а затем группу, из которой нужно удалить владельца.
-3. Откройте вкладку **Владельцы** .
-4. Выберите владельца, которого нужно удалить из группы, а затем щелкните **Удалить**.
+1. В hello [классический портал Azure](https://manage.windowsazure.com)выберите **Active Directory**, а затем откройте каталог вашей организации.
+2. Выберите hello **группы** табуляции, а затем откройте hello группу, которой необходимо tooremove владельца.
+3. Выберите hello **владельцев** вкладки.
+4. Выберите hello владелец должен tooremove из этой группы, а затем выберите **удалить**.
 
 ## <a name="additional-information"></a>Дополнительная информация
 В следующих статьях содержатся дополнительные сведения об Azure Active Directory.
 
-* [Управление доступом к ресурсам с помощью групп Azure Active Directory](active-directory-manage-groups.md)
-* [Azure Active Directory cmdlets for configuring group settings](active-directory-accessmanagement-groups-settings-cmdlets.md)
+* [Управление tooresources доступ с помощью групп Azure Active Directory](active-directory-manage-groups.md)
+* [Настройка параметров групп с помощью командлетов Azure Active Directory](active-directory-accessmanagement-groups-settings-cmdlets.md)
 * [Указатель статьей по управлению приложениями в Azure Active Directory](active-directory-apps-index.md)
 * [Что такое Microsoft Azure Active Directory](active-directory-whatis.md)
 * [Интеграция локальных удостоверений с Azure Active Directory](active-directory-aadconnect.md)

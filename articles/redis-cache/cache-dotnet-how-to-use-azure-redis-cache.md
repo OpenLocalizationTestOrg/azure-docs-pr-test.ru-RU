@@ -1,6 +1,6 @@
 ---
-title: "Как использовать кэш Redis для Azure | Документация Майкрософт"
-description: "Узнайте, как повысить производительность приложений Azure с помощью кэша Redis для Azure."
+title: "aaaHow tooUse кэша Redis для Azure | Документы Microsoft"
+description: "Узнайте, как tooimprove hello производительности приложений Azure с помощью кэша Azure Redis"
 services: redis-cache,app-service
 documentationcenter: 
 author: steved0x
@@ -14,13 +14,13 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 07/27/2017
 ms.author: sdanie
-ms.openlocfilehash: 3dfc026490093523446650c510dbebdd660e8b6b
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 763d70c10972eec9a1885969e8da5bf1c4084727
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-use-azure-redis-cache"></a>Как использовать кэш Redis для Azure
+# <a name="how-toouse-azure-redis-cache"></a>Как tooUse Redis для Azure кэша
 > [!div class="op_single_selector"]
 > * [.NET](cache-dotnet-how-to-use-azure-redis-cache.md)
 > * [ASP.NET](cache-web-app-howto.md)
@@ -30,83 +30,83 @@ ms.lasthandoff: 08/03/2017
 > 
 > 
 
-В этом руководстве объясняется, как приступить к использованию **кэша Redis для Azure**. Кэш Redis для Microsoft Azure основывается на популярном продукте с открытым кодом — кэше Redis. Он дает доступ к защищенному выделенному кэшу Redis, управляемому Майкрософт. Кэш, созданный с использованием кэша Azure Redis, доступен из любого приложения в Microsoft Azure.
+В этом руководстве показано, как tooget запущена с помощью **кэш Azure Redis**. Кэш Redis Microsoft Azure основан на hello открытым исходным кодом кэша Redis. Он предоставляет доступ к tooa безопасного выделенному кэшу Redis, управляемый корпорацией Майкрософт. Кэш, созданный с использованием кэша Azure Redis, доступен из любого приложения в Microsoft Azure.
 
-Доступны указанные ниже уровни кэша Redis для Microsoft Azure.
+Кэш Microsoft Azure Redis доступна hello следующие уровни:
 
-* **Basic** — один узел. Множество размеров вплоть до 53 ГБ.
-* **Стандартный** — два узла: основной и реплика. Множество размеров вплоть до 53 ГБ. СОГЛАШЕНИЕ ОБ УРОВНЕ ОБСЛУЖИВАНИЯ 99,9 %.
-* **Премиум** — два узла (основной и реплика), включающие до 10 сегментов. Несколько размеров: от 6 ГБ до 530 ГБ. Все функции уровня "Стандартный", а также дополнительные функции, включая поддержку [кластера Redis](cache-how-to-premium-clustering.md), [сохраняемости Redis](cache-how-to-premium-persistence.md) и [виртуальной сети Azure](cache-how-to-premium-vnet.md). СОГЛАШЕНИЕ ОБ УРОВНЕ ОБСЛУЖИВАНИЯ 99,9 %.
+* **Basic** — один узел. Несколько размеров too53 Гбайт.
+* **Стандартный** — два узла: основной и реплика. Несколько размеров too53 Гбайт. СОГЛАШЕНИЕ ОБ УРОВНЕ ОБСЛУЖИВАНИЯ 99,9 %.
+* **Premium** — двумя узлами первичный/реплика с вверх too10 сегментов. Несколько размеров от 6 ГБ too530 ГБ. Все функции уровня "Стандартный", а также дополнительные функции, включая поддержку [кластера Redis](cache-how-to-premium-clustering.md), [сохраняемости Redis](cache-how-to-premium-persistence.md) и [виртуальной сети Azure](cache-how-to-premium-vnet.md). СОГЛАШЕНИЕ ОБ УРОВНЕ ОБСЛУЖИВАНИЯ 99,9 %.
 
 Каждый уровень отличается доступными возможностями и ценой. Дополнительные сведения о ценах на кэш см. на [этой странице][Cache Pricing Details].
 
-В этом руководстве показано, как использовать клиент [StackExchange.Redis][StackExchange.Redis] с помощью кода C\#. Рассматриваемые сценарии включают **создание и настройку кэша**, **настройку клиентов кэша**, а также **добавление объектов в кэш и их удаление**. Дополнительные сведения об использовании кэша Redis для Azure см. в разделе [Дальнейшие действия][Next Steps]. Пошаговое руководство по созданию веб-приложения MVC ASP.NET с помощью кэша Redis см. в статье [Как создать веб-приложение с использованием кэша Redis](cache-web-app-howto.md).
+В этом руководстве показано, как toouse hello [StackExchange.Redis] [ StackExchange.Redis] клиента с помощью C\# кода. Hello сценарии включают **создания и настройки кэша**, **настройке клиентов кэша**, и **добавления и удаления объектов из кэша hello**. Дополнительные сведения об использовании кэша Redis для Azure см. в разделе [Дальнейшие действия][Next Steps]. Пошаговый учебник построения ASP.NET MVC, веб-приложения в кэш Redis см. в разделе [как веб-приложения в кэш Redis toocreate](cache-web-app-howto.md).
 
 <a name="getting-started-cache-service"></a>
 
 ## <a name="get-started-with-azure-redis-cache"></a>Начало работы с кэшем Redis для Azure
-Начать работу с кэшем Azure Redis просто. Чтобы приступить к работе, подготовьте и настройте кэш. Затем следует настроить клиенты кэша, чтобы они могли обращаться к кэшу. Когда клиенты кэша настроены, с ними можно работать.
+Начать работу с кэшем Azure Redis просто. tooget к работе, можно подготовить и настройте кэш. Далее следует настроить клиенты кэша hello для доступа к кэшем hello. После настройки клиентов кэша hello можно начать работу с ними.
 
-* [Создание кэша][Create the cache]
-* [Настройка клиентов кэша][Configure the cache clients]
+* [Создание кэша hello][Create hello cache]
+* [Настройка клиентов кэша hello][Configure hello cache clients]
 
 <a name="create-cache"></a>
 
 ## <a name="create-a-cache"></a>Создание кэша
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-create.md)]
 
-### <a name="to-access-your-cache-after-its-created"></a>Доступ к кэшу после его создания
+### <a name="tooaccess-your-cache-after-its-created"></a>tooaccess кэша после его создания
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-browse.md)]
 
-Дополнительные сведения о настройке кэша см. в статье [Настройка кэша Redis для Azure](cache-configure.md).
+Дополнительные сведения о настройке кэша см. в разделе [как tooconfigure кэш Azure Redis](cache-configure.md).
 
 <a name="NuGet"></a>
 
-## <a name="configure-the-cache-clients"></a>Настройка клиентов кэша
+## <a name="configure-hello-cache-clients"></a>Настройка клиентов кэша hello
 [!INCLUDE [redis-cache-configure](../../includes/redis-cache-configure-stackexchange-redis-nuget.md)]
 
-После настройки проекта клиента для кэширования можно использовать методы, описанные в следующих разделах, для работы с кэшем.
+Когда клиентский проект настроен для кэширования, можно использовать hello методик, описанных в следующих разделах для работы с кэшем hello.
 
 <a name="working-with-caches"></a>
 
 ## <a name="working-with-caches"></a>Работа с кэшами
-Действия, приведенные в этом разделе, описывают способы выполнения типовых задач при работе с кэшем.
+Hello в этом разделе описывается, как tooperform распространенные задачи с кэшем.
 
-* [Подключение к кэшу][Connect to the cache]
-* [Добавление в кэш объектов и их извлечение][Add and retrieve objects from the cache]
-* [Работа с объектами .NET в кэше](#work-with-net-objects-in-the-cache)
+* [Подключение toohello кэша][Connect toohello cache]
+* [Добавление и извлечение объектов из кэша hello][Add and retrieve objects from hello cache]
+* [Работа с объектами .NET в кэше hello](#work-with-net-objects-in-the-cache)
 
 <a name="connect-to-cache"></a>
 
-## <a name="connect-to-the-cache"></a>Подключение к кэшу
-Чтобы программно работать с кэшем, требуется ссылка на кэш. Добавьте следующий код вверху любого файла, из которого будет использоваться клиент StackExchange.Redis для доступа к кэшу Redis для Azure.
+## <a name="connect-toohello-cache"></a>Подключение toohello кэша
+tooprogrammatically работы с кэшем, требуется ссылка toohello кэша. Добавьте следующие toohello начало любого файла, из которого требуется toouse hello StackExchange.Redis клиента tooaccess кэш Azure Redis hello.
 
     using StackExchange.Redis;
 
 > [!NOTE]
-> Клиенту StackExchange.Redis необходима среда .NET Framework 4 или выше.
+> Hello клиента StackExchange.Redis требуется платформа .NET Framework 4 или более поздней версии.
 > 
 > 
 
-Подключение к кэшу Redis для Azure выполняется с помощью класса `ConnectionMultiplexer` . Этот класс предназначен для общего использования и повторного использования клиентским приложением и не нуждается в создании нового экземпляра для каждой отдельной операции. 
+Здравствуйте подключения toohello кэша Redis для Azure управляется hello `ConnectionMultiplexer` класса. Этот класс должны быть общими и в клиентском приложении многократно и не обязательно toobe создан для каждой операции. 
 
-Для подключения к кэшу Redis для Azure и получения экземпляра подключенного класса `ConnectionMultiplexer` вызовите статический метод `Connect` и передайте ему конечную точку кэша и ключ. Используйте в качестве параметра пароля ключ, созданный на портале Azure.
+tooconnect tooan кэша Redis для Azure и возвращаться подключенного экземпляра `ConnectionMultiplexer`, hello вызов статических `Connect` метод и передайте его в hello кэшировать конечную точку и ключ. Используйте ключ hello, созданные из hello портал управления Azure как параметр password hello.
 
     ConnectionMultiplexer connection = ConnectionMultiplexer.Connect("contoso5.redis.cache.windows.net,abortConnect=false,ssl=true,password=...");
 
 > [!IMPORTANT]
-> Внимание! Никогда не храните учетные данные в исходном коде. Для сохранения простоты примера они показаны в исходном коде. Сведения о том, как хранить учетные данные, см. в статье [How Application Strings and Connection Strings Work][How Application Strings and Connection Strings Work] (Принципы работы строк приложений и подключения).
+> Внимание! Никогда не храните учетные данные в исходном коде. tookeep этот простой пример, я отображения их в исходном коде hello. В разделе [как строки приложения и строк соединения работает] [ How Application Strings and Connection Strings Work] сведения о том, как toostore учетные данные.
 > 
 > 
 
-Если вам не требуется SSL, задайте значение `ssl=false` или пропустите параметр `ssl`.
+Если вы не хотите toouse SSL, установите `ssl=false` или пропустите hello `ssl` параметра.
 
 > [!NOTE]
-> Для новых кэшей не SSL порт по умолчанию запрещен. Инструкции по включению портов, не использующих протокол SSL, см. в разделе [Порты доступа](cache-configure.md#access-ports).
+> Hello не SSL-порт отключен по умолчанию для нового кэша. Инструкции по включению hello не SSL-порт. в разделе [порты доступа](cache-configure.md#access-ports).
 > 
 > 
 
-Один из способов совместного использования экземпляра `ConnectionMultiplexer` в приложении предполагает наличие статического свойства, которое возвращает подключенный экземпляр (как в приведенном ниже примере). Этот подход помогает потокобезопасно инициализировать только отдельный подключенный экземпляр `ConnectionMultiplexer`. В этих примерах для параметра `abortConnect` задано значение False. Это означает, что вызов завершается успешно, даже если подключение к кэшу Redis для Azure не установлено. Одна из ключевых особенностей `ConnectionMultiplexer` заключается в том, что этот параметр автоматически восстанавливает соединение с кэшем, когда устраняется проблема с сетью или другие проблемы.
+Один из подходов toosharing `ConnectionMultiplexer` toohave статическое свойство, которое возвращает подключенный экземпляр, аналогичные toohello следующий пример является экземпляр приложения. Такой подход обеспечивает tooinitialize потокобезопасным способом только одного подключенного `ConnectionMultiplexer` экземпляра. В этих примерах `abortConnect` является набор toofalse, это означает, что hello вызов завершается успешно, даже если не будет установлено подключение toohello кэша Redis для Azure. Одна важная особенность `ConnectionMultiplexer` — что автоматически восстанавливается подключение toohello кэша после hello проблемы в сети или по другим причинам не будут разрешены.
 
     private static Lazy<ConnectionMultiplexer> lazyConnection = new Lazy<ConnectionMultiplexer>(() =>
     {
@@ -125,50 +125,50 @@ ms.lasthandoff: 08/03/2017
 
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-access-keys.md)]
 
-Создав подключение, верните ссылку на базу данных кэша Redis с помощью метода `ConnectionMultiplexer.GetDatabase` . Объект, возвращенный из метода `GetDatabase`, – это упрощенный передаваемый объект, не требующий сохранения.
+После установления соединения hello вернуть базу данных кэша redis ссылки toohello, вызывающему Привет `ConnectionMultiplexer.GetDatabase` метод. Hello объект, возвращенный hello `GetDatabase` метод является облегченным сквозным объектом и не обязательно toobe хранятся.
 
-    // Connection refers to a property that returns a ConnectionMultiplexer
-    // as shown in the previous example.
+    // Connection refers tooa property that returns a ConnectionMultiplexer
+    // as shown in hello previous example.
     IDatabase cache = Connection.GetDatabase();
 
-    // Perform cache operations using the cache object...
-    // Simple put of integral data types into the cache
+    // Perform cache operations using hello cache object...
+    // Simple put of integral data types into hello cache
     cache.StringSet("key1", "value");
     cache.StringSet("key2", 25);
 
-    // Simple get of data types from the cache
+    // Simple get of data types from hello cache
     string key1 = cache.StringGet("key1");
     int key2 = (int)cache.StringGet("key2");
 
-Кэши Redis для Azure могут использовать до 16 баз данных (их количество можно указать), чтобы обеспечить логическое разделение данных в кэше Redis. Дополнительные сведения см. в разделах [What are Redis databases?](cache-configure.md#default-redis-server-configuration) (Что такое базы данных Redis) и [Конфигурация сервера Redis по умолчанию](cache-faq.md#what-are-redis-databases).
+Кэшах Azure Redis имеется определенное количество баз данных (по умолчанию 16), которые могут быть toologically используется отдельный hello данных в кэше Redis. Дополнительные сведения см. в разделах [What are Redis databases?](cache-configure.md#default-redis-server-configuration) (Что такое базы данных Redis) и [Конфигурация сервера Redis по умолчанию](cache-faq.md#what-are-redis-databases).
 
-Теперь нам известно, как соединяться с экземпляром кэша Redis для Azure и возвращать ссылку на базу данных кэша, поэтому давайте посмотрим, как работать с кэшем.
+Теперь, когда вы знаете, как экземпляр кэша Azure Redis tooan tooconnect и возврат toohello ссылки кэша базы данных, давайте взглянем на работе с кэшем hello.
 
 <a name="add-object"></a>
 
-## <a name="add-and-retrieve-objects-from-the-cache"></a>Добавление в кэш объектов и их извлечение
-Элементы можно хранить в кэше и извлекать из него с помощью методов `StringSet` и `StringGet`.
+## <a name="add-and-retrieve-objects-from-hello-cache"></a>Добавление и извлечение объектов из кэша hello
+Элементы можно хранятся в и извлекаются из кэша с использованием hello `StringSet` и `StringGet` методы.
 
     // If key1 exists, it is overwritten.
     cache.StringSet("key1", "value1");
 
     string value = cache.StringGet("key1");
 
-Redis хранит большинство данных в строках Redis, но эти строки могут содержать данные многих типов, включая сериализованные двоичные данные, которые можно использовать при сохранении объектов .NET в кэше.
+Redis хранилищ, большинство данных в виде строки Redis, а эти строки может содержать несколько типов данных, включая сериализованные двоичные данные, которые можно использовать при сохранении .NET объектов в кэше hello.
 
-Если объект существует, вызов метода `StringGet` возвращает его. В противном случае возвращается значение `null`. Если возвращается `null`, то можно извлечь значение из желаемого источника данных и сохранить его в кэше для последующего использования. Это называется шаблоном "кэш на стороне".
+При вызове `StringGet`, hello объект существует, возвращается, и если оно отсутствует, `null` возвращается. Если `null` возвращается, можно получить значение hello из hello необходимый источник данных и сохранить его в кэше hello для последующего использования. Этот шаблон использования называется hello отдельно от кэша шаблоном.
 
     string value = cache.StringGet("key1");
     if (value == null)
     {
-        // The item keyed by "key1" is not in the cache. Obtain
-        // it from the desired data source and add it to the cache.
+        // hello item keyed by "key1" is not in hello cache. Obtain
+        // it from hello desired data source and add it toohello cache.
         value = GetValueFromDataSource();
 
         cache.StringSet("key1", value);
     }
 
-Можно также использовать `RedisValue`, как показано в следующем примере. `RedisValue` содержит неявные операторы для работы с целочисленными типами данных и могут быть полезны, если `null` — ожидаемое значение кэшированного элемента.
+Можно также использовать `RedisValue`, как показано в следующий пример hello. `RedisValue` содержит неявные операторы для работы с целочисленными типами данных и могут быть полезны, если `null` — ожидаемое значение кэшированного элемента.
 
 
     RedisValue value = cache.StringGet("key1");
@@ -179,14 +179,14 @@ Redis хранит большинство данных в строках Redis, 
     }
 
 
-Чтобы указать срок действия объекта в кэше, используйте параметр `TimeSpan` метода `StringSet`.
+срок годности hello toospecify элемента в кэше hello, используйте hello `TimeSpan` параметр `StringSet`.
 
     cache.StringSet("key1", "value1", TimeSpan.FromMinutes(90));
 
-## <a name="work-with-net-objects-in-the-cache"></a>Работа с объектами .NET в кэше
-Кэш Redis для Azure может кэшировать объекты .NET и примитивные типы данных, но прежде чем объект .NET можно будет сохранить в кэше, он должен быть сериализован. За сериализацию объекта .NET отвечает разработчик приложения, что дает ему свободу в выборе сериализатора.
+## <a name="work-with-net-objects-in-hello-cache"></a>Работа с объектами .NET в кэше hello
+Кэш Redis для Azure может кэшировать объекты .NET и примитивные типы данных, но прежде чем объект .NET можно будет сохранить в кэше, он должен быть сериализован. Этой сериализации объекта .NET hello отвечает разработчик приложения hello и обеспечивает гибкость hello разработчика по выбору hello hello сериализатор.
 
-Простой способ сериализации объектов — использовать методы сериализации `JsonConvert` в [Newtonsoft.Json.NET](https://www.nuget.org/packages/Newtonsoft.Json/8.0.1-beta1) и выполнять сериализацию в нотацию JSON и из нее. В следующем примере показано получение и задание экземпляра объекта `Employee` .
+Один простой способ tooserialize объектов — toouse hello `JsonConvert` методы сериализации в [Newtonsoft.Json.NET](https://www.nuget.org/packages/Newtonsoft.Json/8.0.1-beta1) и сериализации tooand из JSON. Hello пример get и set, с помощью `Employee` экземпляр объекта.
 
     class Employee
     {
@@ -200,7 +200,7 @@ Redis хранит большинство данных в строках Redis, 
         }
     }
 
-    // Store to cache
+    // Store toocache
     cache.StringSet("e25", JsonConvert.SerializeObject(new Employee(25, "Clayton Gragg")));
 
     // Retrieve from cache
@@ -209,36 +209,36 @@ Redis хранит большинство данных в строках Redis, 
 <a name="next-steps"></a>
 
 ## <a name="next-steps"></a>Дальнейшие действия
-Теперь, когда вы ознакомились с основными сведениями, используйте следующие ссылки для получения дополнительных сведений о кэше Redis для Azure.
+Теперь, когда вы узнали основы hello, выполните следующие дополнительные сведения о кэше Redis для Azure toolearn ссылки.
 
-* Ознакомьтесь с информацией о поставщиках ASP.NET для кэша Redis для Azure.
+* Проверьте hello поставщики ASP.NET для кэша Redis для Azure.
   * [Поставщик состояний сеансов Redis для Azure](cache-aspnet-session-state-provider.md)
   * [Поставщик кэша вывода ASP.NET для кэша Redis для Azure](cache-aspnet-output-cache-provider.md)
-* [Включите диагностику кэша](cache-how-to-monitor.md#enable-cache-diagnostics), чтобы можно было [наблюдать](cache-how-to-monitor.md) за работоспособностью кэша. Вы можете просмотреть метрики на портале Azure. Кроме того, их можно [скачать и просмотреть](https://github.com/rustd/RedisSamples/tree/master/CustomMonitoring) с помощью привычных вам инструментов.
-* Ознакомьтесь с [документацией по клиенту кэша StackExchange.Redis][StackExchange.Redis cache client documentation].
+* [Включить диагностику кэша](cache-how-to-monitor.md#enable-cache-diagnostics) так, чтобы [монитор](cache-how-to-monitor.md) hello работоспособности кэша. Можно просмотреть метрики в hello портал Azure и вы также можете hello [Загрузите и прочтите](https://github.com/rustd/RedisSamples/tree/master/CustomMonitoring) их с помощью средств hello по своему усмотрению.
+* Извлечение hello [документации по клиенту кэша StackExchange.Redis][StackExchange.Redis cache client documentation].
   * Доступ к кэшу Redis для Azure можно получить из многих клиентов Redis и языков разработки. Дополнительные сведения см. на странице [http://redis.io/clients][http://redis.io/clients].
 * Кэш Redis для Azure можно также использовать со сторонними службами и средствами, например с Redsmin и Redis Desktop Manager.
-  * Дополнительные сведения о Redsmin см. в статье [How to connect Azure Redis Cache to Redsmin][How to retrieve an Azure Redis connection string and use it with Redsmin] (Как подключить кэш Redis для Azure к Redsmin).
+  * Дополнительные сведения о Redsmin см. в разделе [как tooretrieve подключение к redis для Azure — строку и использовать его с Redsmin][How tooretrieve an Azure Redis connection string and use it with Redsmin].
   * Вы можете открыть и проверить свои данные в кэше Redis для Azure с помощью графического пользовательского интерфейса [RedisDesktopManager](https://github.com/uglide/RedisDesktopManager).
-* Ознакомьтесь с документацией по [Redis][redis]: прочитайте [статью о типах данных Redis][redis data types] и [пятнадцатиминутное введение в типы данных Redis][a fifteen minute introduction to Redis data types].
+* В разделе hello [redis] [ redis] документации и сведения о [типы данных redis] [ redis data types] и [введение пятнадцать минут типы данных tooRedis][a fifteen minute introduction tooRedis data types].
 
 <!-- INTRA-TOPIC LINKS -->
 [Next Steps]: #next-steps
-[Introduction to Azure Redis Cache (Video)]: #video
+[Introduction tooAzure Redis Cache (Video)]: #video
 [What is Azure Redis Cache?]: #what-is
 [Create an Azure Cache]: #create-cache
 [Which type of caching is right for me?]: #choosing-cache
-[Prepare Your Visual Studio Project to Use Azure Caching]: #prepare-vs
-[Configure Your Application to Use Caching]: #configure-app
+[Prepare Your Visual Studio Project tooUse Azure Caching]: #prepare-vs
+[Configure Your Application tooUse Caching]: #configure-app
 [Get Started with Azure Redis Cache]: #getting-started-cache-service
-[Create the cache]: #create-cache
-[Configure the cache]: #enable-caching
-[Configure the cache clients]: #NuGet
+[Create hello cache]: #create-cache
+[Configure hello cache]: #enable-caching
+[Configure hello cache clients]: #NuGet
 [Working with Caches]: #working-with-caches
-[Connect to the cache]: #connect-to-cache
-[Add and retrieve objects from the cache]: #add-object
-[Specify the expiration of an object in the cache]: #specify-expiration
-[Store ASP.NET session state in the cache]: #store-session
+[Connect toohello cache]: #connect-to-cache
+[Add and retrieve objects from hello cache]: #add-object
+[Specify hello expiration of an object in hello cache]: #specify-expiration
+[Store ASP.NET session state in hello cache]: #store-session
 
 
 <!-- IMAGES -->
@@ -267,7 +267,7 @@ Redis хранит большинство данных в строках Redis, 
 <!-- LINKS -->
 [http://redis.io/clients]: http://redis.io/clients
 [Develop in other languages for Azure Redis Cache]: http://msdn.microsoft.com/library/azure/dn690470.aspx
-[How to retrieve an Azure Redis connection string and use it with Redsmin]: https://redsmin.uservoice.com/knowledgebase/articles/485711-how-to-connect-redsmin-to-azure-redis-cache
+[How tooretrieve an Azure Redis connection string and use it with Redsmin]: https://redsmin.uservoice.com/knowledgebase/articles/485711-how-to-connect-redsmin-to-azure-redis-cache
 [Azure Redis Session State Provider]: http://go.microsoft.com/fwlink/?LinkId=398249
 [How to: Configure a Cache Client Programmatically]: http://msdn.microsoft.com/library/windowsazure/gg618003.aspx
 [Session State Provider for Azure Cache]: http://go.microsoft.com/fwlink/?LinkId=320835
@@ -276,16 +276,16 @@ Redis хранит большинство данных в строках Redis, 
 [Azure Shared Caching]: http://msdn.microsoft.com/library/windowsazure/gg278356.aspx
 [Team Blog]: http://blogs.msdn.com/b/windowsazure/
 [Azure Caching]: http://www.microsoft.com/showcase/Search.aspx?phrase=azure+caching
-[How to Configure Virtual Machine Sizes]: http://go.microsoft.com/fwlink/?LinkId=164387
+[How tooConfigure Virtual Machine Sizes]: http://go.microsoft.com/fwlink/?LinkId=164387
 [Azure Caching Capacity Planning Considerations]: http://go.microsoft.com/fwlink/?LinkId=320167
 [Azure Caching]: http://go.microsoft.com/fwlink/?LinkId=252658
-[How to: Set the Cacheability of an ASP.NET Page Declaratively]: http://msdn.microsoft.com/library/zd1ysf1y.aspx
+[How to: Set hello Cacheability of an ASP.NET Page Declaratively]: http://msdn.microsoft.com/library/zd1ysf1y.aspx
 [How to: Set a Page's Cacheability Programmatically]: http://msdn.microsoft.com/library/z852zf6b.aspx
 [Configure a cache in Azure Redis Cache]: http://msdn.microsoft.com/library/azure/dn793612.aspx
 
 [StackExchange.Redis configuration model]: https://stackexchange.github.io/StackExchange.Redis/Configuration
 
-[Work with .NET objects in the cache]: http://msdn.microsoft.com/library/dn690521.aspx#Objects
+[Work with .NET objects in hello cache]: http://msdn.microsoft.com/library/dn690521.aspx#Objects
 
 
 [NuGet Package Manager Installation]: http://go.microsoft.com/fwlink/?LinkId=240311
@@ -295,16 +295,16 @@ Redis хранит большинство данных в строках Redis, 
 [Overview of Azure Redis Cache]: http://go.microsoft.com/fwlink/?LinkId=320830
 [Azure Redis Cache]: http://go.microsoft.com/fwlink/?LinkId=398247
 
-[Migrate to Azure Redis Cache]: http://go.microsoft.com/fwlink/?LinkId=317347
+[Migrate tooAzure Redis Cache]: http://go.microsoft.com/fwlink/?LinkId=317347
 [Azure Redis Cache Samples]: http://go.microsoft.com/fwlink/?LinkId=320840
-[Using Resource groups to manage your Azure resources]: ../azure-resource-manager/resource-group-overview.md
+[Using Resource groups toomanage your Azure resources]: ../azure-resource-manager/resource-group-overview.md
 
 [StackExchange.Redis]: http://github.com/StackExchange/StackExchange.Redis
 [StackExchange.Redis cache client documentation]: http://github.com/StackExchange/StackExchange.Redis#documentation
 
 [Redis]: http://redis.io/documentation
 [Redis data types]: http://redis.io/topics/data-types
-[a fifteen minute introduction to Redis data types]: http://redis.io/topics/data-types-intro
+[a fifteen minute introduction tooRedis data types]: http://redis.io/topics/data-types-intro
 
 [How Application Strings and Connection Strings Work]: http://azure.microsoft.com/blog/2013/07/17/windows-azure-web-sites-how-application-strings-and-connection-strings-work/
 

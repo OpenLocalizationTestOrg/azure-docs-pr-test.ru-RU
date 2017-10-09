@@ -1,6 +1,6 @@
 ---
-title: "Использование черновика со Службой контейнеров Azure и реестром контейнеров Azure | Документация Майкрософт"
-description: "Создайте кластер ACS Kubernetes и реестр контейнеров Azure, чтобы создать свое первое приложение в Azure с помощью черновика."
+title: "aaaUse черновик с контейнера службы Azure и Azure контейнер реестра | Документы Microsoft"
+description: "Создание кластера служб ACS Kubernetes и toocreate реестра контейнера Azure первого приложения в Azure с черновик."
 services: container-service
 documentationcenter: 
 author: squillace
@@ -16,23 +16,23 @@ ms.workload: na
 ms.date: 05/31/2017
 ms.author: rasquill
 ms.custom: mvc
-ms.openlocfilehash: e7e3ea461145571753a1a6d768b52118dcbfb507
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: f5e21cda01e5e8452bf86a5c8fa458904d89f451
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="use-draft-with-azure-container-service-and-azure-container-registry-to-build-and-deploy-an-application-to-kubernetes"></a>Использование черновика со Службой контейнеров Azure и реестром контейнеров Azure для создания и развертывания приложения в Kubernetes
+# <a name="use-draft-with-azure-container-service-and-azure-container-registry-toobuild-and-deploy-an-application-tookubernetes"></a>Использовать черновик с toobuild контейнера службы Azure и Azure контейнер реестра и развертывать приложения tooKubernetes
 
-[Черновик](https://aka.ms/draft) — новое средство с открытым исходным кодом, которое упрощает разработку приложений на основе контейнера и их развертывание в кластерах Kubernetes. Чтобы использовать черновик, особые знания Docker и Kubernetes или их установка не требуются. Использование таких средств, как черновик, позволит вам и вашей команде сосредоточиться на создании приложения с помощью Kubernetes, не вникая в инфраструктуру.
+[Черновик](https://aka.ms/draft) новое средство открытым исходным кодом, которое делает его легко toodevelop контейнера-приложениям и разверните tooKubernetes кластеры без знания многое о Docker и Kubernetes--или даже их установки. С помощью таких средств, как черновик позволяют вам и группам фокус ввода Создание приложения hello с Kubernetes, не обращая tooinfrastructure столько внимания.
 
-Вы можете использовать черновик с любым реестром образов Docker и любым кластером Kubernetes, а также использовать его локально. В рамках этого руководства вы узнаете, как использовать службу ACS с Kubernetes, запись ACR и Azure DNS, чтобы создать динамичный конвейер разработки CI/CD с помощью черновика.
+Вы можете использовать черновик с любым реестром образов Docker и любым кластером Kubernetes, а также использовать его локально. В этом учебнике показано, как toouse ACS с toocreate Kubernetes, контроля доступа и Azure DNS конвейера с помощью черновик динамической разработчик CI или компакт-диска.
 
 
 ## <a name="create-an-azure-container-registry"></a>Создание реестра контейнеров Azure
-Вы можете легко [создать реестр контейнеров Azure](../../container-registry/container-registry-get-started-azure-cli.md). Для этого вам нужно выполнить следующее:
+Вы можете легко [создать новый контейнер реестра Azure](../../container-registry/container-registry-get-started-azure-cli.md), но действий hello следующим образом:
 
-1. Создайте группу ресурсов Azure, чтобы управлять реестром ACR и кластером Kubernetes в ACS.
+1. Создайте кластер ACR реестра и hello Kubernetes toomanage группы ресурсов Azure в ACS.
       ```azurecli
       az group create --name draft --location eastus
       ```
@@ -45,18 +45,18 @@ ms.lasthandoff: 08/18/2017
 
 ## <a name="create-an-azure-container-service-with-kubernetes"></a>Создание службы контейнеров Azure с помощью Kubernetes
 
-Теперь вы готовы использовать команду [az acs create](/cli/azure/acs#create), чтобы создать кластер ACS, используя Kubernetes в качестве значения `--orchestrator-type`.
+Теперь вы готовы toouse [создать acs az](/cli/azure/acs#create) toocreate ACS кластер, использующий Kubernetes как hello `--orchestrator-type` значение.
 ```azurecli
 az acs create --resource-group draft --name draft-kube-acs --dns-prefix draft-cluster --orchestrator-type kubernetes
 ```
 
 > [!NOTE]
-> Так как Kubernetes не является типом оркестратора по умолчанию, вам необходимо использовать переключатель `--orchestrator-type kubernetes`.
+> Так как Kubernetes не типом orchestrator по умолчанию hello, убедитесь, что вы используете hello `--orchestrator-type kubernetes` переключения.
 
-В случае успешного выполнения процедуры результат будет выглядеть примерно так:
+Вывод Hello при успешном выполнении выглядит примерно следующие toohello.
 
 ```json
-waiting for AAD role to propagate.done
+waiting for AAD role toopropagate.done
 {
   "id": "/subscriptions/<guid>/resourceGroups/draft/providers/Microsoft.Resources/deployments/azurecli14904.93snip09",
   "name": "azurecli1496227204.9323909",
@@ -99,13 +99,13 @@ waiting for AAD role to propagate.done
 }
 ```
 
-Теперь, когда у вас есть кластер, вы можете импортировать учетные данные с помощью команды [az acs kubernetes get-credentials](/cli/azure/acs/kubernetes#get-credentials). Теперь у вас есть локальный файл конфигурации для кластера, который нужен Helm и черновику для выполнения работы.
+Теперь, когда имеется кластер hello учетные данные можно импортировать с помощью hello [az kubernetes get-учетные данные acs](/cli/azure/acs/kubernetes#get-credentials) команды. Теперь имеется файл локальной конфигурации для кластера, являющийся какие Helm и черновик должны tooget поставленных задач.
 
 ## <a name="install-and-configure-draft"></a>Установка и настройка черновика
-Инструкции по установке черновика находятся в [репозитории черновика](https://github.com/Azure/draft/blob/master/docs/install.md). Они относительно просты, но требуют определенной настройки, так как от [Helm](https://aka.ms/helm) зависит создание и развертывание чарта Helm в кластере Kubernetes.
+инструкции по установке Hello для черновик находятся в hello [репозитория Черновик](https://github.com/Azure/draft/blob/master/docs/install.md). Они относительно просты, но требуют некоторые конфигурации, так как он зависит от [Helm](https://aka.ms/helm) toocreate и развернуть диаграмму Helm в кластер Kubernetes hello.
 
 1. [Скачайте и установите Helm](https://aka.ms/helm#install).
-2. Используйте Helm для поиска и установки `stable/traefik` и входящий контроллер, чтобы разрешить входящие запросы для сборок.
+2. Используйте toosearch Helm для и установите `stable/traefik`и входящих контроллера tooenable входящие запросы для сборок.
     ```bash
     $ helm search traefik
     NAME            VERSION DESCRIPTION
@@ -113,7 +113,7 @@ waiting for AAD role to propagate.done
 
     $ helm install stable/traefik --name ingress
     ```
-    Теперь настройте контрольное значение для контроллера `ingress`, чтобы сохранить значение внешнего IP-адреса после развертывания. Этот IP-адрес будет [сопоставлен с доменом развертывания](#wire-up-deployment-domain) в следующем разделе.
+    Теперь задать Контрольное значение для hello `ingress` контроллера toocapture hello внешнего IP значение при его развертывании. Этот IP-адрес будет hello один [сопоставления домена развертывания tooyour](#wire-up-deployment-domain) в следующем разделе hello.
 
     ```bash
     kubectl get svc -w
@@ -122,13 +122,13 @@ waiting for AAD role to propagate.done
     kubernetes                    10.0.0.1       <none>          443/TCP                      7h
     ```
 
-    В этом случае внешний IP-адрес для домена развертывания — `13.64.108.240`. Теперь вы можете сопоставить свой домен с этим IP-адресом.
+    В этом случае hello внешний IP-адрес развертывания домен hello `13.64.108.240`. Теперь вы можете сопоставить на IP-адрес домена toothat.
 
 ## <a name="wire-up-deployment-domain"></a>Подключение домена развертывания
 
-Черновик создает выпуск для каждого чарта Helm, который он создает, в каждом приложении, над которым вы работаете. Каждый выпуск получает автоматически сформированное имя, которое используется черновиком в качестве _поддомена_ поверх _корневого домена развертывания_, которым вы управляете. (В этом примере в качестве домена развертывания мы используем `squillace.io`.) Чтобы включить этот режим поддомена, вы должны создать запись А для `'*'` в записях DNS для домена развертывания, чтобы каждый автоматически сформированный поддомен направлялся во входящий контроллер кластера Kubernetes.
+Черновик создает выпуск для каждого чарта Helm, который он создает, в каждом приложении, над которым вы работаете. Каждый из них возвращает сформированное имя, которое используется черновик как _поддомен_ поверх hello корневой _домена развертывания_ , можно управлять. (В этом примере мы используем `squillace.io` как hello развертывания домен.) tooenable такое поведение дочернего домена, необходимо создать запись A для `'*'` записи DNS для домена развертывания, чтобы автоматически созданный каждого дочернего домена является перенаправленное toohello Kubernetes контроллер входящих кластера.
 
-Поставщики домена самостоятельно назначают DNS-серверы. Чтобы [делегировать назначение имен серверов домена службе Azure DNS](../../dns/dns-delegate-domain-azure-dns.md), сделайте следующее:
+Поставщиком домена имеет свои собственные способом tooassign DNS-серверы; слишком[tooAzure nameservers вашего домена DNS делегировать](../../dns/dns-delegate-domain-azure-dns.md), принимают hello следующие шаги:
 
 1. Создайте группу ресурсов для зоны.
     ```azurecli
@@ -146,7 +146,7 @@ waiting for AAD role to propagate.done
     ```
 
 2. Создайте зону DNS для домена.
-Используйте команду [az network dns zone create](/cli/azure/network/dns/zone#create), чтобы получить имена серверов для делегирования элемента управления DNS службе Azure DNS для домена.
+Используйте hello [создание зоны dns сети az](/cli/azure/network/dns/zone#create) команда tooobtain hello nameservers toodelegate DNS управления tooAzure DNS для домена.
     ```azurecli
     az network dns zone create --resource-group squillace.io --name squillace.io
     {
@@ -167,12 +167,12 @@ waiting for AAD role to propagate.done
       "type": "Microsoft.Network/dnszones"
     }
     ```
-3. Добавьте полученные DNS-серверы поставщику домена для домена развертывания, чтобы использовать Azure DNS для повторного указания домена.
-4. Создайте запись набора записей A для домена развертывания, сопоставленного с IP-адресом `ingress` на шаге 2 в разделе выше.
+3. Добавьте hello DNS-серверы, которые заданы поставщика toohello домена для домена развертывания, который позволяет вам toouse Azure DNS toorepoint домена необходимо.
+4. Создайте запись A набор записей для вашего развертывания домена сопоставление toohello `ingress` IP-адрес из предыдущего раздела hello шаг 2.
     ```azurecli
     az network dns record-set a add-record --ipv4-address 13.64.108.240 --record-set-name '*' -g squillace.io -z squillace.io
     ```
-Результат будет выглядеть примерно так:
+выходные данные Hello выглядит примерно так:
     ```json
     {
       "arecords": [
@@ -190,12 +190,12 @@ waiting for AAD role to propagate.done
     }
     ```
 
-5. Настройте черновик, чтобы использовать реестр и создать поддомены для каждого чарта Helm, который он создает. Чтобы настроить черновик, вам потребуется следующее:
+5. Настройка toouse черновик реестра и создайте дочерние домены для каждой диаграммы Helm созданные им. tooconfigure черновик, необходимо:
   - имя реестра контейнеров Azure (в этом примере — `draft`);
   - раздел реестра или пароль, полученный из `az acr credential show -n <registry name> --output tsv --query "passwords[0].value"`;
-  - корневой домен развертывания, который вы настроили для сопоставления с входящим внешним IP-адресом Kubernetes (в этом примере — `squillace.io`).
+  - Развертывание Hello корневого домена, что вы настроили toomap toohello Kubernetes входящих внешний IP-адрес (здесь `squillace.io`)
 
-  Вызовите `draft init`, и процесс настройки запросит значения, приведенные выше. При первом запуске процесс будет выглядеть приблизительно так:
+  Вызовите `draft init` и процесса настройки hello запрашивает hello значений, приведенных выше. Hello процесс кажется, что-то hello следующие hello первый раз при запуске.
  ```bash
     $ draft init
     Creating pack ruby...
@@ -208,7 +208,7 @@ waiting for AAD role to propagate.done
     Creating pack golang...
     $DRAFT_HOME has been configured at /Users/ralphsquillace/.draft.
 
-    In order to install Draft, we need a bit more information...
+    In order tooinstall Draft, we need a bit more information...
 
     1. Enter your Docker registry URL (e.g. docker.io, quay.io, myregistry.azurecr.io): draft.azurecr.io
     2. Enter your username: draft
@@ -219,19 +219,19 @@ waiting for AAD role to propagate.done
     Happy Sailing!
     ```
 
-Теперь все готово для развертывания приложения.
+Теперь вы готовы toodeploy приложения.
 
 
 ## <a name="build-and-deploy-an-application"></a>Сборка и развертывание приложения
 
-В репозитории черновика находятся [шесть простых примеров приложений](https://github.com/Azure/draft/tree/master/examples). Клонируйте репозиторий и используйте [пример на языке Python](https://github.com/Azure/draft/tree/master/examples/python). Измените каталог examples/Python и введите `draft create`, чтобы создать приложение. Результат должен выглядеть примерно так:
+В репозитории черновик hello, [шесть простой пример приложения](https://github.com/Azure/draft/tree/master/examples). Клонировать репозиторий hello и используем hello [примере Python](https://github.com/Azure/draft/tree/master/examples/python). Изменения в каталог hello примеры и Python, а тип `draft create` toobuild приложения hello. Оно должно иметь вид следующий пример hello.
 ```bash
 $ draft create
 --> Python app detected
---> Ready to sail
+--> Ready toosail
 ```
 
-Выходные данные будут содержать файл Dockerfile и чарт Helm. Чтобы выполнить сборку и развертывание, введите `draft up`. Результат будет обширным, но начальные выходные данные будут выглядеть примерно так:
+Вывод Hello включает файл Dockerfile и Helm диаграммы. toobuild и развертывания, просто введите `draft up`. выходные данные Hello слишком большой, но начинается как следующий пример hello.
 ```bash
 $ draft up
 --> Building Dockerfile
@@ -245,24 +245,24 @@ ea8a37f15161: Pulling fs layer
 <snip>
 ```
 
-Конечные выходные данные должны выглядеть примерно так:
+Когда и успешно заканчивается на что-нибудь подобное toohello следующий пример.
 ```bash
 ab68189731eb: Pushed
 53c0ab0341bee12d01be3d3c192fbd63562af7f1: digest: sha256:bb0450ec37acf67ed461c1512ef21f58a500ff9326ce3ec623ce1e4427df9765 size: 2841
---> Deploying to Kubernetes
+--> Deploying tooKubernetes
 --> Status: DEPLOYED
 --> Notes:
 
-  http://gangly-bronco.squillace.io to access your application
+  http://gangly-bronco.squillace.io tooaccess your application
 
 Watching local files for changes...
 ```
 
-С любым именем чарта вы можете использовать `curl http://gangly-bronco.squillace.io`, чтобы получить ответ `Hello World!`.
+Все, что указано имя на диаграмме, теперь можно `curl http://gangly-bronco.squillace.io` tooreceive hello ответ, `Hello World!`.
 
 ## <a name="next-steps"></a>Дальнейшие действия
 
-Теперь, когда у вас есть кластер ACS Kubernetes, вы можете использовать [реестр контейнеров Azure](../../container-registry/container-registry-intro.md), чтобы создать больше различных развертываний этого сценария. Например, вы можете создать набор записей DNS домена draft._basedomain.toplevel_, с помощью которого можно отключать функции важного поддомена для определенных развертываний ACS.
+Теперь, когда кластер ACS Kubernetes можно изучить с помощью [реестра контейнера Azure](../../container-registry/container-registry-intro.md) toocreate дополнительные и различных развертывания этого сценария. Например, вы можете создать набор записей DNS домена draft._basedomain.toplevel_, с помощью которого можно отключать функции важного поддомена для определенных развертываний ACS.
 
 
 

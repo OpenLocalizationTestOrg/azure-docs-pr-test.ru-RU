@@ -1,6 +1,6 @@
 ---
-title: "Использование соединителя SharePoint Server в приложениях логики | Документация Майкрософт"
-description: "Как приступить к использованию соединителя SharePoint Server в приложениях логики."
+title: "hello aaaUse SharePoint Server Connector в приложениях для логики | Документы Microsoft"
+description: "Начало работы с использованием hello hello SharePoint Server Connector в свои приложения логики"
 services: logic-apps
 documentationcenter: 
 author: MandiOhlinger
@@ -15,46 +15,46 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/18/2016
 ms.author: mandia; ladocs
-ms.openlocfilehash: 0f3274816e279a1aa57febaa2f8294914900799a
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 3b814f42611e4971ff5c94ae3b021829217911dc
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="get-started-with-the-sharepoint-connector"></a>Приступая к работе с соединителем SharePoint
-Подключение SharePoint позволяет работать со списками в SharePoint.
+# <a name="get-started-with-hello-sharepoint-connector"></a>Приступая к работе с SharePoint соединителя hello
+Hello соединителя SharePoint предоставляет способ toowork со списками на сайте SharePoint.
 
 Для начала создайте приложение логики, как описано [здесь](../logic-apps/logic-apps-create-a-logic-app.md).
 
-## <a name="create-a-connection-to-sharepoint"></a>Создание подключения к SharePoint
-Чтобы использовать соединитель SharePoint, сначала нужно создать **подключение** , а затем указать данные для следующих свойств: 
+## <a name="create-a-connection-toosharepoint"></a>Создание tooSharePoint подключения
+toouse Здравствуйте соединителя SharePoint, сначала создайте **подключения** затем укажите подробности hello для этих свойств: 
 
 | Свойство | Обязательно | Description (Описание) |
 | --- | --- | --- |
 | Маркер |Да |Указание учетных данных SharePoint |
 
-Для подключения к **SharePoint** необходимо предоставить свое удостоверение (имя пользователя и пароль, учетные данные смарт-карты и т. п.). После прохождения проверки подлинности вы сможете использовать соединитель SharePoint в приложении логики. 
+tooconnect слишком**SharePoint**, введите ваш tooSharePoint удостоверение (имя пользователя и пароль, учетные данные смарт-карт и т. д.). Вы прошел проверку подлинности, откройте соединитель SharePoint toouse hello в логике приложения. 
 
-В конструкторе приложения логики выполните следующие действия, чтобы войти в SharePoint для создания подключения **connection** , которое будет использоваться в приложении логики.
+В конструкторе hello логики приложения, выполните эти шаги toosign в SharePoint toocreate hello соединение **подключения** для использования в приложении логики:
 
-1. В поле поиска введите SharePoint и дождитесь возвращения всех записей с текстом SharePoint в имени.   
+1. Введите в поле поиска hello SharePoint и дождитесь tooreturn hello поиск всех записей с SharePoint, в имени hello:   
    ![Настройка SharePoint][1]  
 2. Выберите **SharePoint - When a file is created** (SharePoint — при создании файла).   
-3. Выберите **Sign in to SharePoint** (Вход в SharePoint).   
+3. Выберите **входа tooSharePoint**:   
    ![Настройка SharePoint][2]    
-4. Укажите учетные данные SharePoint, чтобы войти и пройти аутентификацию в SharePoint.   
+4. Укажите ваш toosign учетные данные SharePoint в tooauthenticate с SharePoint   
    ![Настройка SharePoint][3]     
-5. После успешной аутентификации вы перейдете к своему приложению логики, чтобы завершить его, настроив параметры в диалоговом окне **При создании файла** SharePoint.          
+5. После завершения проверки подлинности hello вы будете перенаправленный tooyour логику приложения toocomplete его путем настройки SharePoint **при создании файла** диалогового окна.          
    ![Настройка SharePoint][4]  
-6. Затем можно будет добавить другие триггеры и действия, необходимые для завершения приложения логики.   
-7. Сохраните результаты работы, выбрав **Сохранить** в строке меню вверху.  
+6. Затем можно добавить другие триггеры и действия, необходимые toocomplete логику приложения.   
+7. Сохранить результаты работы, выбрав **Сохранить** hello меню выше.  
 
 ## <a name="connector-specific-details"></a>Сведения о соединителях
 
-Информацию о существующих ограничениях, а также о триггерах и действиях, определенных в Swagger, см. в статье со [сведениями о соединителях](/connectors/sharepoint/).
+Просмотреть все триггеры и действия, определенные в hello swagger и любые пределы в hello см. также [сведений о соединителе](/connectors/sharepoint/).
 
 ## <a name="more-connectors"></a>Дополнительные сведения о соединителях
-Вы можете вернуться к [списку интерфейсов API](apis-list.md).
+Вернитесь к предыдущему окну toohello [API-интерфейсы списка](apis-list.md).
 
 [1]: ../../includes/media/connectors-create-api-sharepointonline/connectionconfig1.png  
 [2]: ../../includes/media/connectors-create-api-sharepointonline/connectionconfig2.png 

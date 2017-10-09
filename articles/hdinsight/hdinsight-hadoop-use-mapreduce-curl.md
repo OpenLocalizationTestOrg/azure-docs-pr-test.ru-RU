@@ -1,6 +1,6 @@
 ---
-title: "Использование MapReduce и Curl с Hadoop в HDInsight — Azure | Документы Майкрософт"
-description: "Информация об удаленном выполнении заданий MapReduce с помощью Curl с использованием Hadoop в HDInsight."
+title: "aaaUse MapReduce и Curl на Hadoop в HDInsight - Azure | Документы Microsoft"
+description: "Узнайте, как tooremotely запуска задания MapReduce с Hadoop в HDInsight с помощью Перелистывание."
 services: hdinsight
 documentationcenter: 
 author: Blackmist
@@ -16,18 +16,18 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 07/12/2017
 ms.author: larryfr
-ms.openlocfilehash: 8238bb829df95dcb8c99c0b7fff53c627a56f47c
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 16920205bacf9699f88090568099e0508a172b3b
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="run-mapreduce-jobs-with-hadoop-on-hdinsight-using-rest"></a>Выполнение заданий MapReduce с помощью REST в Hadoop в HDInsight
 
-Узнайте, как с помощью REST API WebHCat выполнять задания MapReduce в Hadoop в кластере HDInsight. Curl используется для демонстрации возможностей взаимодействия с HDInsight с помощью необработанных HTTP-запросов для выполнения заданий MapReduce, их мониторинга и получения их результатов.
+Узнайте, как toouse hello WebHCat REST API toorun MapReduce заданий на Hadoop в кластере HDInsight. Перелистывание — используется toodemonstrate о взаимодействии с HDInsight с помощью необработанных задания MapReduce toorun запросов HTTP.
 
 > [!NOTE]
-> Если вы уже знакомы с использованием серверов Hadoop на платформе Linux, но не знакомы с HDInsight, ознакомьтесь с документом [Сведения об использовании HDInsight в Linux](hdinsight-hadoop-linux-information.md).
+> Если вы уже знакомы с использованием серверов под управлением Linux Hadoop, но существует новый tooHDInsight, см. раздел hello [необходимые tooknow о под управлением Linux Hadoop в HDInsight](hdinsight-hadoop-linux-information.md) документа.
 
 
 ## <a id="prereq"></a>Предварительные требования
@@ -39,64 +39,64 @@ ms.lasthandoff: 08/29/2017
 ## <a id="curl"></a>Выполнение заданий MapReduce с помощью Curl
 
 > [!NOTE]
-> При использовании Curl или любых других средств связи REST с WebHCat нужно проводить аутентификацию запросов с помощью пароля и имени пользователя администратора кластера HDInsight. Имя кластера необходимо использовать в составе универсального кода ресурса (URI), используемого для отправки запросов на сервер.
+> При использовании с WebHCat перелистывания или любые другие связи REST должен пройти проверку подлинности запросы hello, указав имя пользователя администратора кластера HDInsight hello и пароль. Имя кластера hello необходимо использовать как часть URI, который является сервером toohello запросы hello используется toosend hello.
 >
-> В командах, описанных в этом разделе, **USERNAME** нужно заменить именем пользователя для аутентификации в кластере, а **PASSWORD** — паролем учетной записи пользователя. Замените **CLUSTERNAME** именем кластера.
+> Hello команды в этом разделе, замените **USERNAME** с кластером toohello tooauthenticate hello пользователя, и **пароль** hello пароль для учетной записи пользователя hello. Замените **CLUSTERNAME** с hello имя кластера.
 >
-> API-интерфейс REST защищается с помощью [обычной проверки подлинности доступа](http://en.wikipedia.org/wiki/Basic_access_authentication). Чтобы обеспечить безопасную отправку учетных данных на сервер, все запросы следует отправлять с помощью протокола HTTPS.
+> Hello REST API обеспечивается с помощью [базовая проверка подлинности доступа](http://en.wikipedia.org/wiki/Basic_access_authentication). Всегда должны выполнять запросы, используя свои учетные данные безопасно отправляются серверу toohello tooensure HTTPS.
 
 
-1. Используйте следующую команду в командной строке, чтобы проверить возможность подключения к кластеру HDInsight:
+1. Из командной строки используйте следующие команды tooverify, возможность подключения кластера HDInsight tooyour hello:
 
     ```bash
     curl -u USERNAME:PASSWORD -G https://CLUSTERNAME.azurehdinsight.net/templeton/v1/status
     ```
 
-    Вы должны получить ответ, аналогичный показанному ниже фрагменту JSON.
+    Должно появиться примерно toohello ответа, следуя JSON.
 
         {"status":"ok","version":"v1"}
 
-    Ниже приведены параметры, используемые в этой команде:
+    Ниже приведены параметры Hello, использованный в этой команде.
 
-   * **-u**: имя пользователя и пароль, используемые для аутентификации запроса.
+   * **-u**: указывает hello имя пользователя и пароль используются tooauthenticate hello запроса
    * **-G**: указывает, что это запрос GET.
 
-     Начало URI **https://CLUSTERNAME.azurehdinsight.net/templeton/v1** одинаковое для всех запросов.
+     Здравствуйте, начало hello URI, **https://CLUSTERNAME.azurehdinsight.net/templeton/v1**, hello одинаково для всех запросов.
 
-2. Чтобы отправить задание MapReduce, используйте следующую команду:
+2. toosubmit задание MapReduce hello используйте следующую команду:
 
     ```bash
     curl -u USERNAME:PASSWORD -d user.name=USERNAME -d jar=/example/jars/hadoop-mapreduce-examples.jar -d class=wordcount -d arg=/example/data/gutenberg/davinci.txt -d arg=/example/data/CurlOut https://CLUSTERNAME.azurehdinsight.net/templeton/v1/mapreduce/jar
     ```
 
-    Конец универсального кода ресурса (/mapreduce/jar) сообщает WebHCat, что этот запрос запускает задание MapReduce из класса в JAR-файле. Ниже приведены параметры, используемые в этой команде:
+    конец Hello hello URI (/ mapreduce и jar) сообщает WebHCat, этот запрос запускает задание MapReduce из класса в jar-файл. Ниже приведены параметры Hello, использованный в этой команде.
 
-   * **-d**: `-G` не используется, поэтому в запросе по умолчанию используется метод POST. `-d` задает значения данных, отправляемые в запросе.
-    * **user.name**: пользователь, выполняющий команду.
-    * **jar**: расположение JAR-файла, содержащего класс для запуска.
-    * **class**: класс, содержащий логику MapReduce.
-    * **arg**: аргументы, передаваемые в задание MapReduce. В данном случае это входной текстовый файл и каталог, который используется для вывода.
+   * **-d**: `-G` не используется, поэтому hello запроса по умолчанию используется метод POST toohello. `-d`Указывает hello значения данных, отправляемых с запросом hello.
+    * **User.Name**: hello пользователь, выполняющий команду hello
+    * **JAR**: hello расположение hello jar-файл, содержащий класс toobe выполнялись
+    * **Класс**: hello класса, содержащего логику MapReduce hello
+    * **arg**: hello аргументы toobe передан toohello задания MapReduce. В этом случае hello входной текстовый файл и hello каталог, которые используются для вывода hello
 
-     Эта команда должна возвращать идентификатор задания, который может использоваться для проверки состояния задания:
+     Эта команда должна возвращать идентификатора задания, который может быть состояние hello используется toocheck hello задания:
 
        {"id":"job_1415651640909_0026"}
 
-3. Чтобы проверить состояние задания, используйте следующую команду.
+3. состояние hello toocheck задания hello, hello используйте следующую команду:
 
     ```bash
     curl -G -u USERNAME:PASSWORD -d user.name=USERNAME https://CLUSTERNAME.azurehdinsight.net/templeton/v1/jobs/JOBID | jq .status.state
     ```
 
-    Замените **JOBID** значением, возвращенным на предыдущем шаге. Например, если возвращено значение `{"id":"job_1415651640909_0026"}`, то JOBID будет `job_1415651640909_0026`.
+    Замените hello **JOBID** с hello значение, возвращенное в предыдущем шаге hello. Например, если hello, возвращают значение было `{"id":"job_1415651640909_0026"}`, затем hello JOBID бы `job_1415651640909_0026`.
 
-    Если задание завершено, то возвращается состояние `SUCCEEDED`.
+    При задании hello hello состояние возвращается `SUCCEEDED`.
 
    > [!NOTE]
-   > Этот запрос Curl возвращает документ JSON с информацией о задании. При этом jq используется только для получения значения состояния.
+   > Этот запрос перелистывание возвращает документ JSON с сведения о задании hello. Используется Jq tooretrieve только hello значение состояния.
 
-4. После изменения состояния задания на `SUCCEEDED` результаты задания можно получить из хранилища BLOB-объектов Azure. Параметр `statusdir`, передаваемый в запросе, содержит расположение выходного файла. В данном случае это `/example/curl`. Этот адрес задает каталог `/example/curl` для сохранения выходных данных задания, который размещен в хранилище по умолчанию для кластера.
+4. При изменении состояния hello hello задания слишком`SUCCEEDED`, можно получить результаты задания hello hello из хранилища больших двоичных объектов Azure. Hello `statusdir` параметр, передаваемый с запросом hello содержит расположение hello hello выходного файла. В этом примере — расположение hello `/example/curl`. Этот адрес сохраняет hello выходные данные задания hello в хранилище по умолчанию hello кластеров в `/example/curl`.
 
-Вы можете вывести список этих файлов и скачать их с помощью [Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli). Дополнительные сведения о работе с большими двоичными объектами с помощью Azure CLI см. в документе [Использование Azure CLI 2.0 со службой хранилища Azure](../storage/common/storage-azure-cli.md#create-and-manage-blobs).
+Можно перечислить и загрузить эти файлы с помощью hello [Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli). Дополнительные сведения о работе с большими двоичными объектами из hello Azure CLI см. в разделе hello [использование hello Azure CLI 2.0 со службой хранилища Azure](../storage/common/storage-azure-cli.md#create-and-manage-blobs) документа.
 
 ## <a id="nextsteps"></a>Дальнейшие действия
 
@@ -109,4 +109,4 @@ ms.lasthandoff: 08/29/2017
 * [Использование Hive с Hadoop в HDInsight](hdinsight-use-hive.md)
 * [Использование Pig с Hadoop в HDInsight](hdinsight-use-pig.md)
 
-Дополнительные сведения об интерфейсе REST, используемом в этой статье, см. в [справочнике по WebHCat](https://cwiki.apache.org/confluence/display/Hive/WebHCat+Reference).
+Дополнительные сведения о hello интерфейс REST, который используется в этой статье в разделе hello [WebHCat ссылка](https://cwiki.apache.org/confluence/display/Hive/WebHCat+Reference).

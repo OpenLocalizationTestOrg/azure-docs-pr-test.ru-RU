@@ -1,8 +1,8 @@
 ---
-title: "Использование Azure PowerShell для включения диагностики на виртуальной машине Windows | Документация Майкрософт"
+title: "aaaUse диагностики tooenable Azure PowerShell на виртуальной Машине Windows | Документы Microsoft"
 services: virtual-machines-windows
 documentationcenter: 
-description: "Описание процедуры включения системы диагностики Azure на виртуальной машине под управлением Windows с помощью PowerShell."
+description: "Узнайте, как tooenable PowerShell toouse диагностики Azure в виртуальной машине под управлением Windows"
 author: sbtron
 manager: timlt
 editor: 
@@ -14,21 +14,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/15/2015
 ms.author: saurabh
-ms.openlocfilehash: d0be4a712657edfc516c5f32e66519f5d9486728
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: e945f0de154b5ba600f845f0d577b48e2254573b
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="use-powershell-to-enable-azure-diagnostics-in-a-virtual-machine-running-windows"></a>Включение системы диагностики Azure на виртуальной машине под управлением Windows с помощью PowerShell
+# <a name="use-powershell-tooenable-azure-diagnostics-in-a-virtual-machine-running-windows"></a>Использовать диагностику Azure tooenable PowerShell на виртуальной машине под управлением Windows
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
 
-Система диагностики Azure позволяет выполнять сбор диагностических данных в развернутом приложении. Для сбора диагностических данных, таких как журналы приложений или счетчики производительности, на виртуальной машине Azure под управлением Windows можно использовать расширение диагностики. В этой статье описано, как включить расширения диагностики для виртуальной машины с помощью Windows PowerShell. Сведения о компонентах, которые потребуются для выполнения инструкций в этой статье, см. в статье [Установка и настройка Azure PowerShell](/powershell/azure/overview).
+Система диагностики Azure — возможность hello в Azure, которая включает hello сбор диагностических данных с развернутым приложением. Можно использовать hello диагностики расширения toocollect диагностических данных как журналы приложения или счетчики производительности из виртуальной машины Azure (ВМ) под управлением Windows. В этой статье описывается, как Windows PowerShell tooenable toouse hello расширения диагностики для виртуальной Машины. В разделе [как tooinstall и настройка Azure PowerShell](/powershell/azure/overview) для hello предварительных требований для этой статьи.
 
-## <a name="enable-the-diagnostics-extension-if-you-use-the-resource-manager-deployment-model"></a>Включения расширения диагностики при использовании модели развертывания диспетчера ресурсов
-Вы можете включить расширение диагностики при создании виртуальной машины Windows, используя модель развертывания диспетчера ресурсов Azure. Для этого в шаблон диспетчера ресурсов нужно добавить конфигурацию расширения. Дополнительные сведения см. в статье [Создание виртуальной машины Windows с мониторингом и диагностикой с использованием шаблона диспетчера ресурсов Azure](extensions-diagnostics-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+## <a name="enable-hello-diagnostics-extension-if-you-use-hello-resource-manager-deployment-model"></a>Включить расширение диагностики hello при использовании модели развертывания диспетчера ресурсов hello
+При создании ВМ Windows с помощью модели развертывания диспетчера ресурсов Azure hello путем добавления шаблона диспетчера ресурсов toohello конфигурации расширения hello можно включить расширение диагностики hello. В разделе [Создание виртуальной машины Windows с помощью мониторинга и диагностики с помощью шаблона Azure Resource Manager hello](extensions-diagnostics-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
-Чтобы включить расширение диагностики на уже существующей виртуальной машине, созданной с помощью модели развертывания диспетчера ресурсов, можно использовать командлет PowerShell [Set-AzureRMVMDiagnosticsExtension](/powershell/module/azurerm.compute/set-azurermvmdiagnosticsextension) , как показано ниже.
+расширение диагностики tooenable hello в существующей виртуальной Машины, которая была создана с помощью модели развертывания диспетчера ресурсов hello, можно использовать hello [AzureRMVMDiagnosticsExtension набор](/powershell/module/azurerm.compute/set-azurermvmdiagnosticsextension) командлета PowerShell, как показано ниже.
 
     $vm_resourcegroup = "myvmresourcegroup"
     $vm_name = "myvm"
@@ -37,58 +37,58 @@ ms.lasthandoff: 07/11/2017
     Set-AzureRmVMDiagnosticsExtension -ResourceGroupName $vm_resourcegroup -VMName $vm_name -DiagnosticsConfigurationPath $diagnosticsconfig_path
 
 
-*$diagnosticsconfig_path* — это путь к файлу с конфигурацией диагностики в формате XML, как показано в [примере](#sample-diagnostics-configuration) ниже.  
+*$diagnosticsconfig_path* — hello путь toohello файл, содержащий конфигурацию диагностики hello в формате XML, как описано в hello [пример](#sample-diagnostics-configuration) ниже.  
 
-Если файл конфигурации диагностики содержит элемент **StorageAccount** с именем учетной записи хранения, сценарий *Set-AzureRMVMDiagnosticsExtension* автоматически настраивает для расширения диагностики отправку диагностических данных в эту учетную запись. Для этого учетная запись хранения должна входить в ту же подписку, что и виртуальная машина.
+Если файл конфигурации диагностики hello указывает **StorageAccount** элемент с именем учетной записи хранилища, затем hello *AzureRMVMDiagnosticsExtension набор* hello будет автоматически задан сценарий расширение toosend диагностических данных toothat учетная запись хранения диагностики. Для этого toowork учетной записи хранилища hello должен toobe в hello той же подписке, как hello виртуальной Машины.
 
-Если в конфигурации диагностики нет элемента **StorageAccount** , в командлет необходимо передать параметр *StorageAccountName* . Если параметр *StorageAccountName* указан, командлет использует учетную запись хранения, указанную в этом параметре, а не в файле конфигурации диагностики.
+Если не **StorageAccount** был указан в конфигурации диагностики hello, то вы должны toopass в hello *StorageAccountName* параметра toohello командлета. Если hello *StorageAccountName* параметр указан, то hello командлет будет всегда использовать учетную запись хранения hello, указанный в параметре hello и не hello, указанный в файле конфигурации диагностики hello.
 
-Если учетная запись хранения диагностики и виртуальная машина относятся к разным подпискам, то в командлет необходимо явно передать параметры *StorageAccountName* и *StorageAccountKey*. Параметр *StorageAccountKey* не требуется, если учетная запись хранения диагностики входит в ту же подписку, так как при включении расширения диагностики командлет автоматически запрашивает и устанавливает значение ключа. Если же учетная запись хранения диагностики входит в другую подписку, командлет не сможет получить ключ автоматически, а значит, его необходимо явно указать с помощью параметра *StorageAccountKey* .  
+Если учетная запись хранения — в другой подписке из hello виртуальной Машины, потребуется tooexplicitly диагностики hello проходит hello *StorageAccountName* и *StorageAccountKey* toohello командлет параметры. Hello *StorageAccountKey* параметр не требуется, если учетной записи хранения диагностики hello hello одной подписке, как командлет hello автоматически можно запрашивать и устанавливать значение ключа hello, при включении расширения диагностики hello. Однако если hello учетная запись хранения диагностики — в другой подписке, а затем hello командлет может быть ключ hello tooget может автоматически и требуется tooexplicitly укажите ключ hello через hello *StorageAccountKey* параметр.  
 
     Set-AzureRmVMDiagnosticsExtension -ResourceGroupName $vm_resourcegroup -VMName $vm_name -DiagnosticsConfigurationPath $diagnosticsconfig_path -StorageAccountName $diagnosticsstorage_name -StorageAccountKey $diagnosticsstorage_key
 
-После включения расширения диагностики на виртуальной машине получить текущие параметры можно с помощью командлета [Get-AzureRMVmDiagnosticsExtension](/powershell/module/azurerm.compute/get-azurermvmdiagnosticsextension) .
+После включения расширения диагностики hello на виртуальной Машине hello текущие настройки можно получить с помощью hello [Get AzureRMVmDiagnosticsExtension](/powershell/module/azurerm.compute/get-azurermvmdiagnosticsextension) командлета.
 
     Get-AzureRmVMDiagnosticsExtension -ResourceGroupName $vm_resourcegroup -VMName $vm_name
 
-Командлет возвращает значение *PublicSettings*, содержащее конфигурацию диагностики. Поддерживаются два типа конфигурации: WadCfg и xmlCfg. WadCfg — это конфигурации JSON, а xmlCfg — это конфигурация XML в кодировке Base64. Чтобы прочитать XML-файл, его необходимо декодировать.
+Hello командлет возвращает *PublicSettings*, который содержит конфигурацию диагностики hello. Поддерживаются два типа конфигурации: WadCfg и xmlCfg. WadCfg — это конфигурации JSON, а xmlCfg — это конфигурация XML в кодировке Base64. tooread Здравствуйте XML, необходимо toodecode его.
 
     $publicsettings = (Get-AzureRmVMDiagnosticsExtension -ResourceGroupName $vm_resourcegroup -VMName $vm_name).PublicSettings
     $encodedconfig = (ConvertFrom-Json -InputObject $publicsettings).xmlCfg
     $xmlconfig = [System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String($encodedconfig))
     Write-Host $xmlconfig
 
-Для удаления расширения диагностики с виртуальной машины вы можете использовать командлет [Remove-AzureRMVmDiagnosticsExtension](/powershell/module/azurerm.compute/remove-azurermvmdiagnosticsextension) .  
+Hello [AzureRMVmDiagnosticsExtension удаление](/powershell/module/azurerm.compute/remove-azurermvmdiagnosticsextension) командлет может быть расширения диагностики используется tooremove hello из hello виртуальной Машины.  
 
-## <a name="enable-the-diagnostics-extension-if-you-use-the-classic-deployment-model"></a>Включения расширения диагностики при использовании классической модели развертывания
-Включить расширение диагностики на виртуальной машине, созданной на основе классической модели развертывания, можно с помощью командлета [Set-AzureVMDiagnosticsExtension](/powershell/module/azure/set-azurevmdiagnosticsextension) . В следующем примере показано, как создать новую виртуальную машину, используя классическую модель развертывания при включенном расширении диагностики.
+## <a name="enable-hello-diagnostics-extension-if-you-use-hello-classic-deployment-model"></a>Включить расширение диагностики hello при использовании hello классической модели развертывания
+Можно использовать hello [AzureVMDiagnosticsExtension набор](/powershell/module/azure/set-azurevmdiagnosticsextension) tooenable командлет расширения диагностики в ВМ, созданный с помощью hello классической модели развертывания. Hello следующем примере показано, как toocreate новой виртуальной Машины через hello классической модели развертывания с расширением диагностики hello включена.
 
     $VM = New-AzureVMConfig -Name $VM -InstanceSize Small -ImageName $VMImage
     $VM = Add-AzureProvisioningConfig -VM $VM -AdminUsername $Username -Password $Password -Windows
     $VM = Set-AzureVMDiagnosticsExtension -DiagnosticsConfigurationPath $Config_Path -VM $VM -StorageContext $Storage_Context
     New-AzureVM -Location $Location -ServiceName $Service_Name -VM $VM
 
-Чтобы включить расширение диагностики на существующей виртуальной машине, созданной с помощью классической модели развертывания, сначала используйте командлет [Get-AzureVM](/powershell/module/azure/get-azurevm) , который позволит получить конфигурацию виртуальной машины. Затем обновите конфигурацию виртуальной машины, чтобы активировать расширение диагностики, с помощью командлета [Set-AzureVMDiagnosticsExtension](/powershell/module/azure/set-azurevmdiagnosticsextension) . И, наконец, примените обновленную конфигурацию к виртуальной машине с помощью командлета [Update-AzureVM](/powershell/module/azure/update-azurevm).
+расширение диагностики tooenable hello в существующей виртуальной Машины, который был создан при помощи hello классической модели развертывания, hello первого использования [Get-AzureVM](/powershell/module/azure/get-azurevm) конфигурацию виртуальной Машины hello tooget командлета. Обновите модуль диагностики hello tooinclude configuration hello виртуальной Машины с помощью hello [AzureVMDiagnosticsExtension набор](/powershell/module/azure/set-azurevmdiagnosticsextension) командлета. Наконец, примените toohello hello обновить конфигурацию виртуальной Машины с помощью [Update-AzureVM](/powershell/module/azure/update-azurevm).
 
     $VM = Get-AzureVM -ServiceName $Service_Name -Name $VM_Name
     $VM_Update = Set-AzureVMDiagnosticsExtension -DiagnosticsConfigurationPath $Config_Path -VM $VM -StorageContext $Storage_Context
     Update-AzureVM -ServiceName $Service_Name -Name $VM_Name -VM $VM_Update.VM
 
 ## <a name="sample-diagnostics-configuration"></a>Пример конфигурации диагностики
-Представленный ниже XML-код можно использовать для открытой конфигурации диагностики с применением описанных выше сценариев. Конфигурация в данном примере передает в учетную запись хранения диагностических данных различные счетчики производительности вместе с ошибками из журналов приложений, событий безопасности и системных каналов в Windows, а также из журналов инфраструктуры диагностики.
+Здравствуйте, следующий XML-код можно использовать для настройки общих hello диагностики с hello выше сценариев. Этот пример конфигурации будут перенесены из системы диагностики hello различных производительности счетчики toohello учетная запись хранения диагностики, вместе с ошибок приложения hello, безопасности и система каналов в журналы событий Windows hello и любые ошибки журналы инфраструктуры.
 
-Конфигурацию необходимо обновить, чтобы включить в нее следующее:
+Hello конфигурации необходимы следующие hello обновленные tooinclude toobe:
 
-* Атрибут *resourceID* элемента **Metrics** необходимо обновить, указав идентификатор ресурса для виртуальной машины.
+* Hello *resourceID* атрибут hello **метрики** элемент должен toobe обновляется hello ресурс с Идентификатором hello виртуальной Машины.
   
-  * Идентификатор ресурса может иметь следующий формат: "/subscriptions/{*идентификатор подписки, в которую входит виртуальная машина*}/resourceGroups/{*имя группы ресурсов виртуальной машины*}/providers/Microsoft.Compute/virtualMachines/{*имя виртуальной машины*}".
-  * Например, если подписка, в которую входит виртуальная машина, имеет идентификатор **11111111-1111-1111-1111-111111111111**, группа ресурсов называется **MyResourceGroup**, а виртуальная машина — **MyWindowsVM**, то атрибут *resourceID* будет выглядеть следующим образом:
+  * Здравствуйте, используя следующий шаблон hello можно сконструировать идентификатор ресурса: «/ subscriptions / {*идентификатор подписки для подписки hello с hello ВМ*} /resourceGroups/ {*имя hello группа ресурсов для виртуальной Машиныhello*} / providers/Microsoft.Compute/virtualMachines/ {*hello имя виртуальной Машины*}».
+  * Например, если hello идентификатор подписки для подписки hello, где hello ВМ работает — **11111111-1111-1111-1111-111111111111**, hello имя группы ресурсов для группы ресурсов hello **MyResourceGroup**, а hello имя виртуальной Машины — **MyWindowsVM**, затем hello значение *resourceID* будет:
     
       ```
       <Metrics resourceId="/subscriptions/11111111-1111-1111-1111-111111111111/resourceGroups/MyResourceGroup/providers/Microsoft.Compute/virtualMachines/MyWindowsVM" >
       ```
-  * Дополнительные сведения о генерировании метрик на основе счетчиков производительности и конфигурации метрик см. в статье, посвященной [таблице метрик диагностики Azure в хранилище](extensions-diagnostics-template.md#wadmetrics-tables-in-storage).
-* Элемент **StorageAccount** необходимо обновить, указав диагностическое имя учетной записи хранения.
+  * Дополнительные сведения о том, как показатели, созданный на основе hello счетчики производительности и показатели конфигурации см. в разделе [таблице показателей диагностики Azure в хранилище](extensions-diagnostics-template.md#wadmetrics-tables-in-storage).
+* Hello **StorageAccount** элемент должен toobe обновляется hello имя учетной записи хранения диагностики hello.
   
     ```
     <?xml version="1.0" encoding="utf-8"?>
@@ -179,7 +179,7 @@ ms.lasthandoff: 07/11/2017
             <annotation displayName="Disk free space (MB)" locale="en-us"/>
           </PerformanceCounterConfiguration>
         </PerformanceCounters>
-        <Metrics resourceId="(Update with resource ID for the VM)" >
+        <Metrics resourceId="(Update with resource ID for hello VM)" >
             <MetricAggregation scheduledTransferPeriod="PT1H"/>
             <MetricAggregation scheduledTransferPeriod="PT1M"/>
         </Metrics>
@@ -195,6 +195,6 @@ ms.lasthandoff: 07/11/2017
     ```
 
 ## <a name="next-steps"></a>Дальнейшие действия
-* Дополнительные рекомендации по использованию системы диагностики Azure и других методов для устранения неполадок см. в статье [Включение системы диагностики Azure в облачных службах Azure](../../cloud-services/cloud-services-dotnet-diagnostics.md).
-* Пояснение различных параметров XML-конфигураций для расширения диагностики см. в статье, посвященной [схеме конфигураций диагностики](https://msdn.microsoft.com/library/azure/mt634524.aspx).
+* Дополнительные рекомендации по использованию возможностей диагностики Azure hello и других проблем tootroubleshoot методы. в разделе [включение диагностики в облачных службах Azure и виртуальные машины](../../cloud-services/cloud-services-dotnet-diagnostics.md).
+* [Схема конфигурации диагностики](https://msdn.microsoft.com/library/azure/mt634524.aspx) объясняет различные конфигурации XML параметры для расширения диагностики hello hello.
 

@@ -1,9 +1,9 @@
 
 
 ## <a name="applications"></a>Приложения
-В следующей таблице перечислены некоторые из самых популярных шаблонов платформ приложений. Выберите шаблон, чтобы получить больше сведений. Просмотрите шаблон на GitHub или разверните его непосредственно через портал Azure.
+Привет, в следующей таблице перечислены некоторые hello наиболее популярных приложений framework шаблоны. Выберите toosee шаблона Дополнительные сведения, Просмотр шаблона hello в GitHub, или развернуть напрямую с помощью портала Azure hello.
 
-| Приложение | Подробнее | Просмотрите шаблон | Разверните его |
+| Приложение | Подробнее | Просмотр шаблона hello | Разверните его |
 |:--- |:---:|:---:|:---:|
 | Active Directory |[Галерея](https://azure.microsoft.com/documentation/templates/active-directory-new-domain-ha-2-dc/) |[GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/active-directory-new-domain-ha-2-dc) |<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Factive-directory-new-domain-ha-2-dc%2Fazuredeploy.json" target="_blank"><img src="http://azuredeploy.net/deploybutton.png"/></a> |
 | Apache |[Галерея](https://azure.microsoft.com/documentation/templates/apache2-on-ubuntu-vm/) |[GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/apache2-on-ubuntu-vm) |<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fapache2-on-ubuntu-vm%2Fazuredeploy.json" target="_blank"><img src="http://azuredeploy.net/deploybutton.png"/></a> |
@@ -23,13 +23,13 @@
 | WordPress |[Галерея](https://azure.microsoft.com/documentation/templates/wordpress-single-vm-ubuntu/) |[GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/wordpress-single-vm-ubuntu) |<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fwordpress-single-vm-ubuntu%2Fazuredeploy.json" target="_blank"><img src="http://azuredeploy.net/deploybutton.png"/></a> |
 | ZooKeeper |[Галерея](https://azure.microsoft.com/documentation/templates/zookeeper-cluster-ubuntu-vm/) |[GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/zookeeper-cluster-ubuntu-vm) |<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fzookeeper-cluster-ubuntu-vm%2Fazuredeploy.json" target="_blank"><img src="http://azuredeploy.net/deploybutton.png"/></a> |
 
-Наряду с этими шаблонами, можно также выполнять поиск по [коллекции шаблонов](https://azure.microsoft.com/documentation/templates/).
+Кроме шаблонов toothese можно выполнять поиск по hello [галереи шаблонов](https://azure.microsoft.com/documentation/templates/).
 
 
 ## <a name="azure-cli-20"></a>Azure CLI 2.0
-Для выполнения этих шагов требуется Azure CLI версии 2.0.4 или более поздней. Чтобы узнать версию, выполните команду `az --version`. Если вам необходимо выполнить обновление, см. статью [Установка Azure CLI 2.0]( /cli/azure/install-azure-cli).
+Эти шаги требуют hello Azure CLI версия 2.0.4 или более поздней версии. Запустите `az --version` версии toofind hello. Получить tooupgrade [установить CLI Azure 2.0]( /cli/azure/install-azure-cli).
 
-Сначала создайте группу ресурсов с помощью команды [az group create](/cli/azure/group#create). Затем создайте развертывание из шаблона, выполнив команду [az group deployment create](/cli/azure/group/deployment#create). Укажите полный URI для шаблона с помощью параметра `--template-uri` и остальных необходимых параметров шаблона в `--parameters` следующим образом:
+Сначала создайте группу ресурсов с помощью команды [az group create](/cli/azure/group#create). Затем создайте развертывание из шаблона, выполнив команду [az group deployment create](/cli/azure/group/deployment#create). Предоставить hello полный URI tooyour шаблона hello `--template-uri` параметр и все обязательные параметры шаблона в `--parameters` следующим образом:
 
 ```azurecli
 az group create --name myResourceGroup --location eastus
@@ -38,13 +38,13 @@ az group deployment create --resource-group myResourceGroup \
     --parameters '{"sshKeyData": {"value": "ssh-rsa AAAAB3N{snip}B9eIgoZ"}}'
 ```
 
-В зависимости от шаблона для развертывания в Azure может потребоваться некоторое время.
+В зависимости от шаблона hello она может занять некоторое время для ресурсов Azure toodeploy hello.
 
 
 ## <a name="azure-powershell"></a>Azure PowerShell
-Для выполнения этих шагов требуется модуль Azure PowerShell версии 3.6 или более поздней. Чтобы узнать версию, выполните команду `Get-Module -ListAvailable AzureRM`. Если вам необходимо выполнить обновление, см. статью [об установке модуля Azure PowerShell](/powershell/azure/install-azurerm-ps).
+Эти шаги требуют hello Azure PowerShell модуль версии 3.6 или более поздней версии. Запустите `Get-Module -ListAvailable AzureRM` версии toofind hello. Получить tooupgrade [установите Azure PowerShell модуль](/powershell/azure/install-azurerm-ps).
 
-Сначала создайте группу ресурсов с помощью командлета [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup). Затем создайте развертывание из шаблона с помощью командлета [New-AzureRmResourceGroupDeployment](/powershell/module/azurerm.resources/new-azurermresourcegroupdeployment). Укажите полный URI для своего шаблона с помощью параметра `-TemplateURI` следующим образом:
+Сначала создайте группу ресурсов с помощью командлета [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup). Затем создайте развертывание из шаблона с помощью командлета [New-AzureRmResourceGroupDeployment](/powershell/module/azurerm.resources/new-azurermresourcegroupdeployment). Предоставить hello полный URI tooyour шаблона hello `-TemplateURI` параметр следующим образом:
 
 ```powershell
 New-AzureRmResourceGroup -Name "myResourceGroup" -Location "EastUS"
@@ -52,10 +52,10 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName "myResourceGroup" `
      -TemplateUri "https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/{template-name}/azuredeploy.json"
 ```
 
-При выполнении команды [New-AzureRMResourceGroupDeployment](/powershell/module/azurerm.resources/new-azurermresourcegroupdeployment) может появиться запрос на ввод значений для параметров шаблона. В зависимости от шаблона для развертывания в Azure может потребоваться некоторое время.
+При запуске hello [New AzureRmResourceGroupDeployment](/powershell/module/azurerm.resources/new-azurermresourcegroupdeployment) может быть tooenter запрашиваемые значения для параметров hello в шаблоне hello. В зависимости от шаблона hello она может занять некоторое время для ресурсов Azure toodeploy hello.
 
 
 ## <a name="next-steps"></a>Дальнейшие действия
-Ознакомьтесь со всеми шаблонами в вашем распоряжении на сайте [GitHub](https://github.com/Azure/azure-quickstart-templates).
+Обнаружение всех шаблонов hello в вашем распоряжении на [GitHub](https://github.com/Azure/azure-quickstart-templates).
 
 Узнайте больше о [диспетчере ресурсов Azure](../articles/resource-group-template-deploy.md).

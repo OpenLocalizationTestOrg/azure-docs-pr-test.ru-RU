@@ -1,6 +1,6 @@
 ---
-title: "Справочник разработчика JavaScript для Функций Azure | Документация Майкрософт"
-description: "Узнайте, как разрабатывать функции с помощью JavaScript."
+title: "Справочник разработчика aaaJavaScript для функций Azure | Документы Microsoft"
+description: "Понять, как toodevelop функционирует с использованием JavaScript."
 services: functions
 documentationcenter: na
 author: christopheranderson
@@ -16,11 +16,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 05/25/2017
 ms.author: glenga
-ms.openlocfilehash: 7ea81ed47f391fbce1432c2b11ac176ab6c04ae0
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 6220b42f965b6ee2463341aaf270836623fdf7fa
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Руководство разработчика JavaScript для Функций Azure
 > [!div class="op_single_selector"]
@@ -30,17 +30,17 @@ ms.lasthandoff: 08/29/2017
 > 
 > 
 
-Интерфейс JavaScript для Azure Functions позволяет легко экспортировать функцию, которая передается в качестве объекта `context`, для взаимодействия со средой выполнения, а также для получения и отправки данных с помощью привязок.
+Здравствуйте взаимодействие JavaScript для функций Azure позволяет легко tooexport функции, которая передается в качестве `context` объекта для взаимодействия со средой выполнения hello и для получения и отправки данных с помощью привязки.
 
-В этой статье предполагается, что вы уже прочли [справочник разработчика по Функциям Azure](functions-reference.md).
+В этой статье предполагается, что вы прочитали hello [Справочник разработчика Azure функции](functions-reference.md).
 
 ## <a name="exporting-a-function"></a>Экспорт функции
-Все функции JavaScript должны экспортировать одну `function` с помощью `module.exports`, чтобы среда выполнения могла найти эту функцию и запустить ее. Эта функция должна всегда включать объект `context` .
+Все функции JavaScript необходимо экспортировать один `function` через `module.exports` для среды выполнения hello toofind функции hello и запустите его. Эта функция должна всегда включать объект `context` .
 
 ```javascript
 // You must include a context, but other arguments are optional
 module.exports = function(context) {
-    // Additional inputs can be accessed by the arguments property
+    // Additional inputs can be accessed by hello arguments property
     if(arguments.length === 4) {
         context.log('This function has 4 inputs');
     }
@@ -51,16 +51,16 @@ module.exports = function(context, myTrigger, myInput, myOtherInput) {
 };
 ```
 
-Привязки `direction === "in"` передаются как аргументы функции, то есть вы можете использовать [`arguments`](https://msdn.microsoft.com/library/87dw3w1k.aspx) для динамической обработки новых входных данных (например, используя `arguments.length` для итерации всех входных данных). Эта возможность удобна, когда у вас есть только триггер без дополнительных входных данных, так как к данным триггера можно обращаться напрямую, без ссылки на объект `context`.
+Привязки `direction === "in"` передаются как аргументы функции, которая означает, что можно использовать [ `arguments` ](https://msdn.microsoft.com/library/87dw3w1k.aspx) toodynamically обрабатывать новые входные данные (например, с помощью `arguments.length` tooiterate через все входные данные). Эта возможность удобна, когда у вас есть только триггер без дополнительных входных данных, так как к данным триггера можно обращаться напрямую, без ссылки на объект `context`.
 
-Аргументы всегда передаются в функцию в порядке их появления в файле *function.json*, даже если они не указаны в инструкциях экспорта. Например, если у вас есть функция `function(context, a, b)` и вы изменяете ее на `function(context, a)`, то значение `b` все равно можно получить в коде функции с помощью `arguments[3]`.
+всегда Hello аргументы передаются функции toohello в порядке hello, в котором они расположены в *function.json*, даже если не указать их в операторе экспортов. Например, если у вас есть `function(context, a, b)` и измените его слишком`function(context, a)`, можно получить значение hello `b` в коде функции с помощью ссылки слишком`arguments[3]`.
 
-Все привязки, независимо от направления, также передаются в объекте `context` (см. указанный ниже скрипт). 
+Все привязки, независимо от направления, также передаются на hello `context` (см. раздел hello, выполнив сценарий). 
 
 ## <a name="context-object"></a>Объект context
-Среда выполнения использует объект `context` для передачи данных в функцию и из нее, а также для взаимодействия со средой выполнения.
+Hello среда выполнения использует `context` tooand данные toopass объекта из функции и toolet взаимодействовать со средой выполнения hello.
 
-Объект context всегда является первым параметром функции, и его надо указывать всегда, так как он содержит методы, необходимые для правильного использования среды выполнения, такие как `context.done` и `context.log`. Для этого объекта можно указать любое имя (например, `ctx` или `c`).
+Hello объекта контекста всегда tooa функции первого параметра hello и должен быть включен, так как он содержит методы, такие как `context.done` и `context.log`, которой не требуется toouse hello выполнения правильно. Можно присвоить имя hello объекта будет угодно (например, `ctx` или `c`).
 
 ```javascript
 // You must include a context, but other arguments are optional
@@ -74,7 +74,7 @@ module.exports = function(context) {
 ```
 context.bindings
 ```
-Возвращает именованный объект, который содержит все входные и выходные данные. Например, следующее определение привязки в *function.json* позволяет вам получить доступ к содержимому очереди с помощью объекта `context.bindings.myInput`. 
+Возвращает именованный объект, который содержит все входные и выходные данные. Здравствуйте, например, следующая определение привязки в вашей *function.json* позволяет выполнять доступ к hello содержимое очереди hello из hello `context.bindings.myInput` объекта. 
 
 ```json
 {
@@ -86,7 +86,7 @@ context.bindings
 ```
 
 ```javascript
-// myInput contains the input data, which may have properties such as "name"
+// myInput contains hello input data, which may have properties such as "name"
 var author = context.bindings.myInput.name;
 // Similarly, you can set your output data
 context.bindings.myOutput = { 
@@ -99,17 +99,17 @@ context.bindings.myOutput = {
 context.done([err],[propertyBag])
 ```
 
-Информирует среду выполнения о завершении выполнения кода. Необходимо вызвать метод `context.done`, или в противном случае среда выполнения не узнает, что функция завершена, и время ожидания выполнения истечет. 
+Информирует выполнения hello, завершения вашего кода. Необходимо вызвать метод `context.done`, или else среды выполнения hello никогда не знает, что функции завершена, и выполнения hello выдаст ошибку времени ожидания. 
 
-Метод `context.done` позволяет передавать в среду выполнения пользовательское сообщение об ошибке, а также контейнер свойств, которые перезапишут свойства объекта `context.bindings`.
+Hello `context.done` метод позволяет toopass резервное toohello пользовательской ошибки среды выполнения и контейнер свойств, свойств, которые перезаписывают hello свойства hello `context.bindings` объекта.
 
 ```javascript
-// Even though we set myOutput to have:
+// Even though we set myOutput toohave:
 //  -> text: hello world, number: 123
 context.bindings.myOutput = { text: 'hello world', number: 123 };
-// If we pass an object to the done function...
+// If we pass an object toohello done function...
 context.done(null, { myOutput: { text: 'hello there, world', noNumber: true }});
-// the done method will overwrite the myOutput binding to be: 
+// hello done method will overwrite hello myOutput binding toobe: 
 //  -> text: hello there, world, noNumber: true
 ```
 
@@ -118,26 +118,26 @@ context.done(null, { myOutput: { text: 'hello there, world', noNumber: true }});
 ```
 context.log(message)
 ```
-Этот метод позволяет делать записи в потоковые журналы консоли на уровне трассировки по умолчанию. В `context.log` доступны дополнительные методы ведения журнала, позволяющие выполнять запись в журнал консоли на других уровнях трассировки:
+Позволяет журналов toohello потоковой передачи toowrite консоли на уровне трассировки по умолчанию hello. На `context.log`, дополнительные записи в журнал методы доступны, позволяют писать toohello журнала консоли на других уровнях трассировки:
 
 
 | Метод                 | Описание                                |
 | ---------------------- | ------------------------------------------ |
-| **error(_message_)**   | Записывает сообщение в журнал на уровне ошибок или более низком.   |
-| **warn(_message_)**    | Записывает сообщение в журнал на уровне предупреждений или более низком. |
-| **info(_message_)**    | Записывает сообщение в журнал на уровне сведений или более низком.    |
-| **verbose(_message_)** | Записывает сообщение в журнал на уровне детализации.           |
+| **error(_message_)**   | Записывает tooerror уровень ведения журнала или ниже.   |
+| **warn(_message_)**    | Записывает toowarning уровень ведения журнала или ниже. |
+| **info(_message_)**    | Записывает tooinfo уровень ведения журнала или ниже.    |
+| **verbose(_message_)** | Записывает tooverbose уровня ведения журнала.           |
 
-Следующий пример записывает в консоль на уровне трассировки "предупреждения":
+Hello следующий пример записывает toohello консоли на уровне трассировки hello предупреждений:
 
 ```javascript
 context.log.warn("Something has happened."); 
 ```
-Вы можете задать пороговое значение уровня трассировки для ведения журнала в файле host.json или отключить эту функцию.  Дополнительные сведения о том, как делать записи в журнал, см. в следующем разделе.
+Можно задать порог hello уровень трассировки для ведения журнала в файле host.json hello, или отключите его.  Дополнительные сведения о как журналы toowrite toohello hello следующем разделе.
 
 ## <a name="binding-data-type"></a>Тип данных привязки
 
-Чтобы определить тип данных для входной привязки, используйте свойство `dataType` в определении привязки. Например, чтобы прочитать содержимое HTTP-запроса в двоичном формате, используйте тип `binary`:
+toodefine для привязки ввода, тип данных hello использовать hello `dataType` свойство в определении hello привязки. Например, tooread hello содержимого HTTP-запроса в двоичном формате, используйте тип hello `binary`:
 
 ```json
 {
@@ -150,48 +150,48 @@ context.log.warn("Something has happened.");
 
 Другие варианты для `dataType` — `stream` и `string`.
 
-## <a name="writing-trace-output-to-the-console"></a>Вывод выходных данных трассировки на консоль 
+## <a name="writing-trace-output-toohello-console"></a>Консоль toohello выходные данные трассировки записи 
 
-В Azure Functions воспользуйтесь методами `context.log` для записи выходных данных трассировки в консоль. На этом этапе для записи в консоль нельзя использовать метод `console.log`.
+В функциях, используйте hello `context.log` консоли toohello выходные данные трассировки toowrite методы. На этом этапе нельзя использовать `console.log` toowrite toohello консоли.
 
-При вызове `context.log()` ваше сообщение записывается в консоль на уровне трассировки по умолчанию — уровень _сведений_. Следующий код записывает на консоль на уровне трассировки "сведения":
+При вызове `context.log()`, сообщение записывается toohello консоли на уровень трассировки по умолчанию hello, являющийся hello _сведения_ уровень трассировки. Hello следующий код записывает toohello консоли на уровне трассировки hello сведения:
 
 ```javascript
 context.log({hello: 'world'});  
 ```
 
-Предыдущий код аналогичен следующему:
+Hello выше код является эквивалентные toohello следующий код:
 
 ```javascript
 context.log.info({hello: 'world'});  
 ```
 
-Следующий код записывает на консоль на уровне трассировки "ошибки":
+Hello следующий код записывает toohello консоли на уровне ошибки hello:
 
 ```javascript
 context.log.error("An error has occurred.");  
 ```
 
-Так как _уровень ошибок_ является наивысшим уровнем трасировки, эта трассировка записывается в выходные данные на всех уровнях трассировки при условии, что ведение журнала включено.  
+Поскольку _ошибка_ hello наибольший трассировка уровня, это происходит запись трассировки toohello вывода на всех уровнях трассировки при условии, что включено ведение журнала.  
 
 
-Все методы `context.log` поддерживают тот же формат параметров, что и метод Node.js [util.format](https://nodejs.org/api/util.html#util_util_format_format). Просмотрите следующий код, который выполняет запись в консоль, используя уровень трассировки по умолчанию:
+Все `context.log` методы поддерживают hello совпадает с форматом параметра, поддерживаемый hello Node.js [util.format метод](https://nodejs.org/api/util.html#util_util_format_format). Рассмотрим следующий код, который записывает toohello консоли, используя уровень трассировки по умолчанию hello hello.
 
 ```javascript
 context.log('Node.js HTTP trigger function processed a request. RequestUri=' + req.originalUrl);
 context.log('Request Headers = ' + JSON.stringify(req.headers));
 ```
 
-Этот же код можно записать в таком формате:
+Вы также можете же код в кодировке hello hello записи:
 
 ```javascript
 context.log('Node.js HTTP trigger function processed a request. RequestUri=%s', req.originalUrl);
 context.log('Request Headers = ', JSON.stringify(req.headers));
 ```
 
-### <a name="configure-the-trace-level-for-console-logging"></a>Настройка уровня трассировки для ведения журнала консоли
+### <a name="configure-hello-trace-level-for-console-logging"></a>Настройка hello уровня трассировки для ведения журнала консоли
 
-В Функциях Azure можно определить пороговое значение уровня трассировки для записи в консоль, чтобы легко контролировать, как трассировки записываются в консоль из ваших функций. Чтобы задать пороговое значение для всех трассировок, которые записываются в консоль, используйте свойство `tracing.consoleLevel` в файле host.json. Этот параметр применяется ко всем функциям в приложении-функции. В следующем примере задается пороговое значение трассировки, чтобы включить подробное ведение журнала:
+Функции можно определить уровень трассировки hello пороговое значение для записи toohello консоли, что делает его легко toocontrol hello способ трассировки записываются toohello консоли из функций. Пороговое значение hello tooset для всех трассировок, записанных toohello консоли используйте hello `tracing.consoleLevel` свойство в файле host.json hello. Этот параметр применяется tooall функций в вашем приложении функции. Hello следующий пример устанавливает hello пороговое значение tooenable подробное ведение журнала трассировки.
 
 ```json
 { 
@@ -201,58 +201,58 @@ context.log('Request Headers = ', JSON.stringify(req.headers));
 }  
 ```
 
-Значения **consoleLevel** соответствуют именам методов в `context.log`. Чтобы отключить ведение журнала трассировки в консоли, задайте для параметра **consoleLevel** значение _off_. Дополнительные сведения о файле host.json см. [в этом разделе](https://github.com/Azure/azure-webjobs-sdk-script/wiki/host.json).
+Значения **consoleLevel** соответствуют имена toohello hello `context.log` методы. задать все трассировки, ведения журнала консоли toohello toodisable **consoleLevel** too_off_. Дополнительные сведения о файле host.json hello см. в разделе hello [host.json справочном разделе](https://github.com/Azure/azure-webjobs-sdk-script/wiki/host.json).
 
 ## <a name="http-triggers-and-bindings"></a>Триггеры и привязки HTTP
 
-Триггеры HTTP и webhook, а также привязки вывода HTTP используют объекты запроса и ответа для обмена сообщениями HTTP.  
+HTTP и веб-перехватчика триггеры HTTP вывода и использовать привязки запроса и ответа объекты toorepresent hello HTTP системы обмена сообщениями.  
 
 ### <a name="request-object"></a>Объект запроса
 
-Объект `request` имеет следующие свойства.
+Hello `request` объект имеет hello следующие свойства:
 
 | Свойство      | Описание                                                    |
 | ------------- | -------------------------------------------------------------- |
-| _body_        | Объект, содержащий текст запроса.               |
-| _headers_     | Объект, содержащий заголовок запроса.                   |
-| _method_      | Метод HTTP, используемый для запроса.                                |
-| _originalUrl_ | URL-адрес запроса.                                        |
-| _params_      | Объект, содержащий параметры маршрутизации запроса. |
-| _query_       | Объект, содержащий параметры запроса.                  |
-| _rawBody_     | Текст сообщения в виде строки.                           |
+| _body_        | Объект, содержащий текст hello hello запроса.               |
+| _headers_     | Объект, содержащий заголовки запроса hello.                   |
+| _method_      | Здравствуйте, метод HTTP запроса hello.                                |
+| _originalUrl_ | URL-адрес Hello hello запроса.                                        |
+| _params_      | Объект, содержащий параметры маршрутизации hello hello запроса. |
+| _query_       | Объект, содержащий параметры запроса hello.                  |
+| _rawBody_     | текст Hello приветственное сообщение как строку.                           |
 
 
 ### <a name="response-object"></a>Объект ответа
 
-Объект `response` имеет следующие свойства.
+Hello `response` объект имеет hello следующие свойства:
 
 | Свойство  | Описание                                               |
 | --------- | --------------------------------------------------------- |
-| _body_    | Объект, содержащий текст ответа.         |
-| _headers_ | Объект, содержащий заголовок ответа.             |
-| _isRaw_   | Указывает, что форматирование пропускается для ответа.    |
-| _состояние_  | Код состояния HTTP ответа.                     |
+| _body_    | Объект, содержащий текст hello hello ответа.         |
+| _headers_ | Объект, содержащий заголовки ответа hello.             |
+| _isRaw_   | Указывает, что форматирование пропущена для hello ответа.    |
+| _состояние_  | Здравствуйте, код состояния HTTP ответа hello.                     |
 
-### <a name="accessing-the-request-and-response"></a>Доступ к запросу и ответу 
+### <a name="accessing-hello-request-and-response"></a>Доступ к hello запросов и ответов 
 
-При работе с триггерами HTTP вы можете получить доступ к объектам запроса и ответа HTTP одним из 3 способов:
+При работе с триггерами HTTP, вы можете использовать hello HTTP объекты запроса и ответа в любом из трех способов:
 
-+ С помощью именованных входных и выходных привязок. В этом случае триггер и привязки HTTP работают как любая другая привязка. В следующем примере объект ответа задается с помощью именованной привязки `response`: 
++ Из hello с именем входа и выхода привязок. Таким образом триггер HTTP hello и привязки hello же, как любые другие привязки. Hello следующий пример задает hello объекта ответа с помощью именованного `response` привязки: 
 
     ```javascript
     context.bindings.response = { status: 201, body: "Insert succeeded." };
     ```
 
-+ От свойств `req` и `res` объекта `context`. В этом случае можно использовать обычный шаблон доступа к данным HTTP из объекта context вместо полного шаблона `context.bindings.name`. Следующий пример демонстрирует доступ к объектам `req` и `res` в `context`:
++ Из `req` и `res` свойства hello `context` объекта. Таким образом, данные tooaccess HTTP обычный шаблон hello объекта контекста hello, можно использовать вместо полного hello toouse `context.bindings.name` шаблон. Следующий пример показывает как Hello tooaccess hello `req` и `res` объектов на hello `context`:
 
     ```javascript
-    // You can access your http request off the context ...
+    // You can access your http request off hello context ...
     if(context.req.body.emoji === ':pizza:') context.log('Yay!');
     // and also set your http response
     context.res = { status: 202, body: 'You successfully ordered more coffee!' }; 
     ```
 
-+ Путем вызова `context.done()`. Специальный тип привязки HTTP возвращает ответ, передавшийся методу `context.done()`. Следующая привязка вывода HTTP определяет параметр вывода `$return`:
++ Путем вызова `context.done()`. Специальный вид привязку HTTP возвращает hello ответ, который передается toohello `context.done()` метод. Hello, выполнив HTTP вывода привязка определяет `$return` выходной параметр:
 
     ```json
     {
@@ -261,7 +261,7 @@ context.log('Request Headers = ', JSON.stringify(req.headers));
       "name": "$return"
     }
     ``` 
-    Эта привязка вывода ожидает предоставления ответа при вызове `done()` следующим образом:
+    Привязка для вывода предполагается, что вы toosupply hello ответа при вызове `done()`, как показано ниже:
 
     ```javascript
      // Define a valid response object.
@@ -270,24 +270,24 @@ context.log('Request Headers = ', JSON.stringify(req.headers));
     ```  
 
 ## <a name="node-version-and-package-management"></a>Управление версиями и пакетами Node
-Версия Node сейчас зафиксирована в значении `6.5.0`. Мы работаем над тем, чтобы добавить поддержку дополнительных версий и настройки для этих версий.
+версия узла Hello заблокирован на `6.5.0`. Мы работаем над тем, чтобы добавить поддержку дополнительных версий и настройки для этих версий.
 
-Следующие шаги позволяют включить пакеты в приложение-функцию: 
+Hello следующие шаги позволяют включить пакеты в приложения функции: 
 
-1. Перейдите на сайт `https://<function_app_name>.scm.azurewebsites.net`.
+1. Go слишком`https://<function_app_name>.scm.azurewebsites.net`.
 
 2. Щелкните **Debug Console** (Консоль отладки)  > **CMD**.
 
-3. Перейдите к `D:\home\site\wwwroot`, а затем перетащите файл package.json в папку **wwwroot** в верхней части страницы.  
-    Существуют другие способы передачи файлов в приложение-функцию. Дополнительные сведения см. в разделе [Как обновить файлы приложения-функции](functions-reference.md#fileupdate). 
+3. Go слишком`D:\home\site\wwwroot`и затем перетащите файл вашей package.json toohello **wwwroot** папку в верхней части страницы приветствия hello.  
+    Также можно передать файлы tooyour функции приложения по-другому. Дополнительные сведения см. в разделе [как tooupdate функция файлов приложения](functions-reference.md#fileupdate). 
 
-4. После загрузки файла package.json запустите команду `npm install` в **консоли удаленного выполнения Kudu**.  
-    В результате этого действия будут загружены пакеты, указанные в файле package.json, и перезапущено приложение-функция.
+4. После передачи файла package.json hello запустите hello `npm install` в hello **консоли удаленного выполнения Kudu**.  
+    Это действие загружает пакеты hello, указанный в файле package.json hello и перезапускает приложение функции hello.
 
-После установки необходимых пакетов их необходимо импортировать в функцию, вызвав `require('packagename')`, как это показано в следующем примере:
+После hello необходимые пакеты установлены, импорте tooyour функции путем вызова `require('packagename')`, как показано в следующий пример hello:
 
 ```javascript
-// Import the underscore.js library
+// Import hello underscore.js library
 var _ = require('underscore');
 var version = process.version; // version === 'v6.5.0'
 
@@ -297,10 +297,10 @@ module.exports = function(context) {
         .where(context.bindings.myInput.names, {first: 'Carla'});
 ```
 
-Следует определить файл `package.json` в корне вашего приложения-функции. После этого все функции в приложении будут совместно использовать одни и те же кэшированные пакеты, что обеспечивает наилучшую производительность. При возникновении конфликтов версий их можно разрешить, добавив файл `package.json` в папку определенной функции.  
+Следует определить `package.json` файла в корне hello функции приложения. Определение hello файл разрешает все функции в папке приложения hello hello же кэшированные пакеты, что дает hello наилучшей производительности. Если возникает конфликт версий, можно разрешить ее, добавив `package.json` файл в папке hello конкретной функции.  
 
 ## <a name="environment-variables"></a>Переменные среды
-Чтобы получить значение переменной среды или значение параметра приложения, используйте `process.env`, как показано в следующем примере кода.
+tooget переменной среды или значение параметра приложения, используйте `process.env`, как показано в следующем примере кода hello:
 
 ```javascript
 module.exports = function (context, myTimer) {
@@ -320,17 +320,17 @@ function GetEnvironmentVariable(name)
 ```
 ## <a name="considerations-for-javascript-functions"></a>Рекомендации для функций JavaScript
 
-При работе с функциями JavaScript следует помнить о рекомендациях, приведенных в двух следующих разделах.
+При работе с функции JavaScript, помните о hello рекомендации в следующих двух разделах hello.
 
 ### <a name="choose-single-core-app-service-plans"></a>Выбор одноядерных планов службы приложений
 
-При создании приложения-функции, которое использует план службы приложения, мы советуем выбирать план для одного ядра вместо плана для нескольких ядер. Сейчас Функции Azure намного эффективнее выполняют функции JavaScript на одноядерных виртуальных машинах. Использование более крупных виртуальных машин не приводит к ожидаемому улучшению производительности. При необходимости вы можете вручную добавить дополнительные экземпляры одноядерных виртуальных машин или включить автоматическое масштабирование. Дополнительные сведения см. в статье [Масштабирование числа экземпляров вручную или автоматически](../monitoring-and-diagnostics/insights-how-to-scale.md?toc=%2fazure%2fapp-service-web%2ftoc.json).    
+При создании функции приложения, в котором используется hello план служб приложений, рекомендуется выбрать план одним ядром, а не план с несколькими ядрами. В настоящее время функции выполняется функции JavaScript более эффективно на виртуальных машинах одноядерный и с использованием большего размера виртуальных машин не дает hello ожидаемого улучшения производительности. При необходимости вы можете вручную добавить дополнительные экземпляры одноядерных виртуальных машин или включить автоматическое масштабирование. Дополнительные сведения см. в статье [Масштабирование числа экземпляров вручную или автоматически](../monitoring-and-diagnostics/insights-how-to-scale.md?toc=%2fazure%2fapp-service-web%2ftoc.json).    
 
 ### <a name="typescript-and-coffeescript-support"></a>Поддержка TypeScript и CoffeeScript
-Так как прямой поддержки автоматической компиляции TypeScript и CoffeeScript в среде выполнения сейчас нет, соответствующую обработку необходимо осуществлять вне среды выполнения во время развертывания. 
+Поскольку Прямая поддержка еще не существует для компиляции автоматически TypeScript или CoffeeScript через hello среды выполнения, такая поддержка должен toobe обрабатывается вне среды hello во время развертывания. 
 
 ## <a name="next-steps"></a>Дальнейшие действия
-Для получения дополнительных сведений см. следующие ресурсы:
+Дополнительные сведения см. в разделе hello следующие ресурсы:
 
 * [Рекомендации по функциям Azure](functions-best-practices.md)
 * [Справочник разработчика по функциям Azure](functions-reference.md)

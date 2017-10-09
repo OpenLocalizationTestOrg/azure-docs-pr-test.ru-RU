@@ -1,6 +1,6 @@
 ---
-title: "Развертывание веб-приложения с использованием MSDeploy, имени узла и SSL-сертификата"
-description: "Использование шаблона диспетчера ресурсов Azure для развертывания веб-приложения с помощью MSDeploy и настройки пользовательского имени узла и SSL-сертификата"
+title: "aaaDeploy использование MSDeploy с узла и ssl-сертификат веб-приложения"
+description: "Использовать веб-приложения с помощью MSDeploy и настройка пользовательское имя узла и SSL-сертификат toodeploy шаблона диспетчера ресурсов Azure"
 services: app-service\web
 manager: erikre
 documentationcenter: 
@@ -13,30 +13,30 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/31/2016
 ms.author: jodehavi
-ms.openlocfilehash: a0e944d0d74ecb72a919538d54db330cbbdeef64
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: ac13f4a7d14ae182e8e7ced5adff30491422d1e4
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="deploy-a-web-app-with-msdeploy-custom-hostname-and-ssl-certificate"></a>Развертывание веб-приложения с использованием MSDeploy, пользовательского имени узла и SSL-сертификата
-Это руководство по созданию сквозного развертывания веб-приложения Azure, использованию MSDeploy, а также по добавлению пользовательского имени узла и SSL-сертификата в шаблон ARM.
+В этом руководстве описывается создание конца в конец развертывания для веб-приложение Azure, используя MSDeploy, а также добавляет пользовательское имя узла и шаблон ARM toohello сертификат SSL.
 
 Дополнительные сведения о создании шаблонов см. в статье [Создание шаблонов Azure Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md).
 
 ### <a name="create-sample-application"></a>Создание примера приложения
-Здесь описывается развертывание веб-приложения ASP.NET. Первым шагом является создание простого веб-приложения. (Можно также воспользоваться уже существующим приложением. В таком случае этот шаг можно пропустить.)
+Здесь описывается развертывание веб-приложения ASP.NET. Hello первым шагом является toocreate простого веб-приложения (или можно выбрать toouse существующего - в противном случае этот шаг можно пропустить).
 
-Откройте Visual Studio 2015 и последовательно выберите «Файл» > «Создать проект». В появившемся диалоговом окне щелкните «Интернет» > «Веб-приложение ASP.NET». В разделе «Шаблоны» щелкните «Интернет» и выберите «Шаблон MVC». Установите для параметра *Change authentication type* (Изменить тип проверки подлинности) значение *Без проверки подлинности*. Таким образом мы максимально упростим пример приложения.
+Откройте Visual Studio 2015 и последовательно выберите «Файл» > «Создать проект». В диалоговом окне приветствия, появившемся выберите Web > веб-приложения ASP.NET. В списке шаблонов выберите Web и щелкните шаблон MVC hello. Выберите *изменить тип проверки подлинности* слишком*без проверки подлинности*. Это просто toomake hello образец приложения как можно более простыми.
 
-Теперь у вас есть базовое веб-приложение ASP.NET, которое можно использовать при развертывании.
+На этом этапе вы получите основные ASP.Net web app готов toouse как часть процесса развертывания.
 
 ### <a name="create-msdeploy-package"></a>Создание пакета MSDeploy
-Следующий шаг — создание пакета для развертывания веб-приложения в Azure. Чтобы сделать это, сохраните проект и запустите в командной строке следующую команду:
+Следующим шагом является toocreate hello пакета toodeploy hello web app tooAzure. toodo, сохранить проект и запустите из командной строки hello hello следующее:
 
     msbuild yourwebapp.csproj /t:Package /p:PackageLocation="path\to\package.zip"
 
-В результате в папке PackageLocation появится ZIP-пакет. Теперь приложение готово к развертыванию. Для этого лишь нужно создать шаблон диспетчера ресурсов Azure.
+Это будет создан ZIP-пакет в папке PackageLocation hello. Hello приложения готов к работе теперь toobe развертывания, который теперь можно построить toodo шаблона диспетчера ресурсов Azure.
 
 ### <a name="create-arm-template"></a>Создание шаблона ARM
 Начнем с базового шаблона ARM, который позволит создать веб-приложение и план размещения. (Обратите внимание, что для краткости параметры и переменные опущены.)
@@ -75,7 +75,7 @@ ms.lasthandoff: 08/29/2017
         }
     }
 
-Далее нужно изменить ресурс веб-приложения, чтобы можно было использовать вложенный ресурс MSDeploy. Это позволит создать ссылку на созданный ранее пакет и дать диспетчеру ресурсов Azure команду использовать MSDeploy для развертывания пакета в веб-приложении Azure. Ниже показан ресурс Microsoft.Web/sites с вложенным ресурсом MSDeploy.
+Далее необходимо tootake toomodify hello web app ресурсов вложенных ресурсов MSDeploy. Это будет разрешить вы tooreference hello пакет, созданный ранее и сообщите пакета диспетчера ресурсов Azure toouse MSDeploy toodeploy hello toohello веб-приложения Azure. Hello ниже показан hello Microsoft.Web/sites ресурс с вложенными hello MSDeploy ресурсов:
 
     {
         "name": "[variables('webAppName')]",
@@ -117,13 +117,13 @@ ms.lasthandoff: 08/29/2017
         ]
     }
 
-Заметьте, что ресурс MSDeploy принял свойство **packageUri** , которое определяется следующим образом:
+Теперь можно заметить, что hello MSDeploy ресурсов принимает **packageUri** свойство, которое определяется следующим образом:
 
     "packageUri": "[concat(parameters('_artifactsLocation'), '/', parameters('webDeployPackageFolder'), '/', parameters('webDeployPackageFileName'), parameters('_artifactsLocationSasToken'))]"
 
-Свойство **packageUri** принимает универсальный код ресурса (URI) учетной записи хранения, который указывает на учетную запись хранения, куда будет загружен ZIP-пакет. При развертывании шаблона диспетчер ресурсов Azure задействует [подписанный URL-адрес](../storage/common/storage-dotnet-shared-access-signature-part-1.md) , чтобы загрузить пакет из учетной записи хранения локально. Это происходит автоматически благодаря скрипту PowerShell, который загружает пакет и вызывает API управления Azure, чтобы создать необходимые ключи и передать их в шаблон в качестве параметров (*_artifactsLocation* и *_artifactsLocationSasToken*). Потребуется определить параметры папки и имени файла, куда загружается пакет, внутри контейнера хранилища.
+Это **packageUri** принимает hello uri учетной записи хранилища, который учетную запись хранилища toohello, где нужно будет загрузить zip вашего пакета для точек. Hello Azure Resource Manager будет использовать [подписей общего доступа](../storage/common/storage-dotnet-shared-access-signature-part-1.md) пакета hello toopull вниз локально из учетной записи хранения hello при развертывании шаблона hello. Этот процесс будет автоматизирован через сценарий PowerShell, отправить пакет hello и вызывает hello toocreate ключа, hello API управления Azure и передавать их в шаблоне hello в качестве параметров (*_artifactsLocation* и *_artifactsLocationSasToken*). Вам потребуется toodefine параметры для папки hello, а пакет hello filename — контейнер хранилища отправленного toounder hello.
 
-Затем нужно добавить еще один вложенный ресурс, чтобы настроить привязки имени узла для использования личного домена. Сначала вам нужно убедиться, что у вас есть собственное имя узла, и предоставить его Azure для подтверждения. Дополнительные сведения см. в статье [Настройка личного доменного имени для службы приложений Azure](app-service-web-tutorial-custom-domain.md). Когда это будет сделано, в раздел Microsoft.Web/sites шаблона можно добавить следующее:
+Затем следует записать tooadd в другой вложенный ресурсов toosetup hello имя узла привязки tooleverage пользовательского домена. Будет первой необходимости tooensure владельцем hello hostname и настроить toobe протестирован Azure принадлежит вам — см. [настроить пользовательское доменное имя в службе приложений Azure](app-service-web-tutorial-custom-domain.md). После этого можно добавить следующий шаблон tooyour в разделе "hello Microsoft.Web/sites ресурсов" hello.
 
     {
         "apiVersion": "2015-08-01",
@@ -139,7 +139,7 @@ ms.lasthandoff: 08/29/2017
         }
     }
 
-Наконец, необходимо добавить еще один высокоуровневый ресурс — Microsoft.Web/certificates. Этот ресурс будет содержать SSL-сертификат и находиться на том же уровне, что и веб-приложение и план размещения.
+Наконец необходимо tooadd другой ресурс верхнего уровня, Microsoft.Web/certificates. Этот ресурс будет содержать SSL-сертификата, будут существовать на приветствия же уровня в качестве веб-приложения и размещения плана.
 
     {
         "name": "[parameters('certificateName')]",
@@ -152,25 +152,25 @@ ms.lasthandoff: 08/29/2017
         }
     }
 
-Для настройки этого ресурса нужен действительный SSL-сертификат. Как только у вас будет такой сертификат, следует извлечь байты в формате PFX в качестве строки base64. Как один из вариантов, это можно сделать, выполнив следующую команду PowerShell:
+Вам потребуется toohave действительного сертификата SSL в порядке tooset этого ресурса. После этого действительный сертификат необходимо tooextract hello pfx байтов как строка base64. Один из вариантов tooextract это hello toouse следующую команду PowerShell:
 
     $fileContentBytes = get-content 'C:\path\to\cert.pfx' -Encoding Byte
 
     [System.Convert]::ToBase64String($fileContentBytes) | Out-File 'pfx-bytes.txt'
 
-Полученный результат можно передать в качестве параметра в шаблон ARM для развертывания.
+Затем можно передать таким как шаблон развертывания параметра tooyour ARM.
 
-Теперь шаблон ARM готов.
+На этом этапе hello ARM шаблон готов.
 
 ### <a name="deploy-template"></a>Развертывание шаблона
-Последний шаг — соединить все компоненты для создания сквозного развертывания. Чтобы упростить развертывание, можно воспользоваться скриптом PowerShell **Deploy-AzureResourceGroup.ps1**, который добавляется при создании проекта группы ресурсов Azure в Visual Studio. Он позволяет загрузить все артефакты, необходимые для шаблона. Для этого заранее необходимо создать требуемую учетную запись хранения. Для примера в этой статье используется общая учетная запись хранения, в которую будет загружен ZIP-пакет. Сценарий загрузит пакет в учетную запись хранения с помощью AzCopy. Как только вы передадите расположение папки с артефактами, сценарий автоматически загрузит все файлы из этого каталога в указанный контейнер хранилища. После вызова метода Deploy-AzureResourceGroup.ps1 нужно обновить привязки SSL, чтобы сопоставить пользовательское имя узла с использованием SSL-сертификата.
+Здравствуйте, последние действия имеют toopiece этот все вместе в развертывание полной начала до конца. toomake развертывания проще, можно использовать hello **Deploy-AzureResourceGroup.ps1** сценарий PowerShell, которое добавляется при создании проекта группы ресурсов Azure в Visual Studio toohelp с артефакты, необходимые на загрузку шаблон Hello. Он требует toohave создал учетную запись хранилища, требуется toouse заранее. В этом примере я создал учетную запись общего хранилища для отправки toobe package.zip hello. Hello скрипт будет использовать учетную запись хранения toohello пакета в hello tooupload AzCopy. Передается в расположении папки артефактов и hello сценарий будет автоматически загружать все файлы в этой toohello каталог с именем контейнера хранилища. После вызова Deploy-AzureResourceGroup.ps1 toothen обновление hello SSL привязок toomap hello пользовательское имя узла с SSL-сертификат.
 
-В следующем сценарии PowerShell показано выполнение полного развертывания с использованием вызова Deploy-AzureResourceGroup.ps1:
+полное развертывание вызывающему Привет развернуть hello Hello, следуя PowerShell показано-AzureResourceGroup.ps1:
 
     #Set resource group name
     $rgName = "Name-of-resource-group"
 
-    #call deploy-azureresourcegroup script to deploy web app
+    #call deploy-azureresourcegroup script toodeploy web app
 
     .\Deploy-AzureResourceGroup.ps1 -ResourceGroupLocation "East US" `
                                     -ResourceGroupName $rgName `
@@ -181,7 +181,7 @@ ms.lasthandoff: 08/29/2017
                                     -TemplateParametersFile "web-app-deploy-parameters.json" `
                                     -ArtifactStagingDirectory "C:\path\to\packagefolder\"
 
-    #update web app to bind ssl certificate to hostname. This has to be done after creation above.
+    #update web app toobind ssl certificate toohostname. This has toobe done after creation above.
 
     $cert = Get-PfxCertificate -FilePath C:\path\to\certificate.pfx
 
@@ -195,5 +195,5 @@ ms.lasthandoff: 08/29/2017
 
     Set-AzureRmResource -ApiVersion 2014-11-01 -Name nameofwebsite -ResourceGroupName $rgName -ResourceType Microsoft.Web/sites -PropertyObject $props
 
-Теперь приложение развернуто, и вы можете перейти к нему по адресу https://www.yourcustomdomain.com.
+На этом этапе приложения должны были развернуты, и должен быть tooit может toobrowse через https://www.yourcustomdomain.com
 

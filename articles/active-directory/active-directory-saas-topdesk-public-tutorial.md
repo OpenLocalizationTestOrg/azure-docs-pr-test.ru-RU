@@ -1,6 +1,6 @@
 ---
 title: "Руководство. Интеграция Azure Active Directory с TOPdesk - Public | Документация Майкрософт"
-description: "Узнайте, как настроить единый вход между Azure Active Directory и TOPdesk - Public."
+description: "Узнайте, как tooconfigure единый вход между Azure Active Directory и общедоступной версии TOPdesk."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,124 +14,124 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/25/2017
 ms.author: jeedes
-ms.openlocfilehash: f21fe0b363776974108ff460060e4c15a51a58a3
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: ef0dd06157ecc3b33814590039f5cbae64e8c916
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-topdesk---public"></a>Учебник. Интеграция Azure Active Directory с TOPdesk - Public
 
-В этом руководстве описано, как интегрировать TOPdesk - Public с Azure Active Directory (Azure AD).
+В этом учебнике вы узнаете, как toointegrate TOPdesk - Public с Azure Active Directory (Azure AD).
 
-Интеграция Azure AD с приложением TOPdesk - Public обеспечивает следующие преимущества.
+Интеграция TOPdesk - Public с Azure AD предоставляет hello следующие преимущества:
 
-- C помощью Azure AD вы можете контролировать доступ к TOPdesk - Public.
-- Вы можете включить автоматический вход пользователей в TOPdesk - Public (единый вход) с применением учетной записи Azure AD.
-- Вы можете управлять учетными записями централизованно — на портале Azure.
+- Можно управлять в Azure AD, имеющего tooTOPdesk доступа - открытый.
+- Можно включить на пользователей tooautomatically get вошедшего tooTOPdesk - Public (Single Sign-On) с помощью своих учетных записей Azure AD.
+- Вы можете управлять учетными записями в одном централизованном месте - hello портал Azure.
 
-Подробнее узнать об интеграции приложений SaaS с Azure AD можно в разделе [Что такое доступ к приложениям и единый вход с помощью Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Если tooknow Дополнительные сведения об интеграции приложений SaaS в Azure AD, см. [доступ к приложению и единый вход в Azure Active Directory](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Предварительные требования
 
-Чтобы настроить интеграцию Azure AD с TOPdesk - Public, вам потребуется следующее:
+Интеграция Azure AD с версией TOPdesk - tooconfigure общим, требуется hello следующих элементов:
 
 - подписка Azure AD;
 - Подписка TOPdesk — Public с поддержкой единого входа.
 
 > [!NOTE]
-> Мы не рекомендуем использовать рабочую среду для проверки действий в этом учебнике.
+> в этом учебнике шаги tootest hello, не рекомендуется в рабочей среде.
 
-При проверке действий в этом учебнике соблюдайте следующие рекомендации:
+tootest hello шаги в этом учебнике, необходимо следовать приведенным ниже рекомендациям:
 
 - Не используйте рабочую среду без необходимости.
 - Если у вас нет пробной среды Azure AD, вы можете [получить пробную версию на один месяц](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Описание сценария
-В рамках этого руководства проводится проверка единого входа Azure AD в тестовой среде. Сценарий, описанный в этом учебнике, состоит из двух основных блоков:
+В рамках этого руководства проводится проверка единого входа Azure AD в тестовой среде. Hello сценарий, описанный в этом учебнике состоит из двух основных компонентов:
 
-1. Добавление TOPdesk - Public из коллекции
+1. Добавление TOPdesk - Public из галереи hello
 2. Настройка и проверка единого входа в Azure AD
 
-## <a name="adding-topdesk---public-from-the-gallery"></a>Добавление TOPdesk - Public из коллекции
-Чтобы настроить интеграцию TOPdesk - Public с Azure AD, необходимо добавить TOPdesk - Public из коллекции в список управляемых приложений SaaS.
+## <a name="adding-topdesk---public-from-hello-gallery"></a>Добавление TOPdesk - Public из галереи hello
+Интеграция hello tooconfigure общедоступной в Azure AD версии TOPdesk требуется tooadd TOPdesk - Public из списка tooyour коллекции hello управляемых приложений SaaS.
 
-**Чтобы добавить TOPdesk - Public из коллекции, выполните следующие действия.**
+**tooadd TOPdesk - Public из галереи hello, выполните следующие шаги hello.**
 
-1. На **[портале Azure](https://portal.azure.com)** в области навигации слева щелкните значок **Azure Active Directory**. 
+1. В hello  **[портал Azure](https://portal.azure.com)**на левой навигационной панели hello, нажмите кнопку **Azure Active Directory** значок. 
 
-    ![Кнопка "Azure Active Directory"][1]
+    ![Кнопка Hello Azure Active Directory][1]
 
-2. Перейдите к разделу **Корпоративные приложения**. Затем выберите **Все приложения**.
+2. Перейдите в слишком**корпоративных приложений**. Затем перейдите слишком**все приложения**.
 
-    ![Колонка "Корпоративные приложения"][2]
+    ![Hello корпоративных приложений колонку][2]
     
-3. Чтобы добавить новое приложение, в верхней части диалогового окна нажмите кнопку **Создать приложение**.
+3. tooadd новое приложение, нажмите кнопку **новое приложение** кнопку в верхней части hello диалогового окна.
 
-    ![Кнопка "Новое приложение"][3]
+    ![Кнопка нового приложения Hello][3]
 
-4. В поле поиска введите **TOPdesk - Public**, выберите **TOPdesk - Public** на панели результатов и нажмите кнопку **Добавить**, чтобы добавить это приложение.
+4. Введите в поле поиска hello **общедоступной версии TOPdesk**выберите **общедоступной версии TOPdesk** из панели результатов щелкните **добавить** кнопку tooadd приложения hello.
 
-    ![TOPdesk - Public в списке результатов](./media/active-directory-saas-topdesk-public-tutorial/tutorial_topdesk-public_addfromgallery.png)
+    ![TOPdesk - Public в списке результатов hello](./media/active-directory-saas-topdesk-public-tutorial/tutorial_topdesk-public_addfromgallery.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Настройка и проверка единого входа в Azure AD
 
 В этом разделе описана настройка и проверка единого входа Azure AD в TOPdesk - Public с использованием тестового пользователя Britta Simon.
 
-Для работы единого входа в Azure AD необходимо знать, какой пользователь в TOPdesk - Public соответствует пользователю в Azure AD. Иными словами, необходимо установить связь между пользователем Azure AD и соответствующим пользователем в TOPdesk - Public.
+Для единого входа toowork Azure AD необходима tooknow, какой пользователь hello аналога в TOPdesk - Public tooa пользователя в Azure AD. Другими словами связи между пользователя Azure AD и связанных пользователей hello в TOPdesk - Public должен установить toobe.
 
-Чтобы установить эту связь, назначьте **имя пользователя** в Azure AD в качестве значения **имени пользователя** в TOPdesk - Public.
+В версии TOPdesk - Public, назначить значение hello hello **имя пользователя** в Azure AD в качестве значения hello hello **Username** tooestablish hello связи.
 
-Чтобы настроить и проверить единый вход Azure AD в TOPdesk - Public, вам потребуется выполнить действия в следующих стандартных блоках.
+tooconfigure и протестировать Azure AD единого входа с общедоступной версии TOPdesk, требуются следующие стандартные блоки hello toocomplete:
 
-1. **[Настройка единого входа Azure AD](#configure-azure-ad-single-sign-on)** необходима, чтобы пользователи могли использовать эту функцию.
-2. **[Создание тестового пользователя Azure AD](#create-an-azure-ad-test-user)** требуется для проверки работы единого входа Azure AD от имени пользователя Britta Simon.
-3. **[Создание тестового пользователя TOPdesk - Public](#create-a-topdesk---public-test-user)** требуется для того, чтобы в TOPdesk - Public существовал пользователь Britta Simon, связанный с одноименным пользователем в Azure AD.
-4. **[Назначение тестового пользователя Azure AD](#assign-the-azure-ad-test-user)** необходимо, чтобы позволить Britta Simon использовать единый вход Azure AD.
-5. **[Проверка единого входа](#test-single-sign-on)** необходима, чтобы убедиться в корректной работе конфигурации.
+1. **[Настройка Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)**  -tooenable вашей toouse пользователи этой функции.
+2. **[Создание тестового пользователя Azure AD](#create-an-azure-ad-test-user)**  -tootest Azure AD единого входа с Саймон Britta.
+3. **[Создание TOPdesk — открытый тестового пользователя](#create-a-topdesk---public-test-user)**  - toohave аналог Саймон Britta в TOPdesk - Public, представление связанных toohello Azure AD пользователя.
+4. **[Назначить hello Azure AD тестового пользователя](#assign-the-azure-ad-test-user)**  -tooenable Britta Simon toouse Azure AD единым входом.
+5. **[Тестирование единого входа](#test-single-sign-on)**  -tooverify ли hello works конфигурации.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Настройка единого входа Azure AD
 
-В этом разделе мы включим на портале Azure единый вход Azure AD и настроим его в приложении TOPdesk - Public.
+В этом разделе вы включите Azure AD единым входом в портал Azure hello и настроить единый вход в ваш общедоступную версию TOPdesk.
 
-**Чтобы настроить единый вход Azure AD в TOPdesk - Public, выполните следующие действия.**
+**tooconfigure Azure AD единого входа с версией TOPdesk - открытым, выполните следующие шаги hello:**
 
-1. На портале Azure на странице интеграции с приложением **TOPdesk - Public** щелкните **Единый вход**.
+1. В hello в hello портала Azure **общедоступной версии TOPdesk** странице интеграции приложения щелкните **единого входа**.
 
     ![Ссылка "Настройка единого входа"][4]
 
-2. В диалоговом окне **Единый вход** в разделе **Режим** выберите **Вход на основе SAML**, чтобы включить функцию единого входа.
+2. На hello **единого входа** диалогового окна выберите **режим** как **входа на базе SAML** tooenable единого входа.
  
     ![Диалоговое окно "Единый вход"](./media/active-directory-saas-topdesk-public-tutorial/tutorial_topdesk-public_samlbase.png)
 
-3. В разделе **Домены и URL-адреса приложения TOPdesk - Public** сделайте следующее:
+3. На hello **TOPdesk — общедоступный домен и URL-адреса** выполните следующие шаги hello:
 
     ![Сведения о домене и URL-адресах единого входа для приложения TOPdesk - Public](./media/active-directory-saas-topdesk-public-tutorial/tutorial_topdesk-public_url.png)
 
-    а. В текстовом поле **URL-адрес для входа** введите URL-адрес в следующем формате: `https://<companyname>.topdesk.net`
+    а. В hello **URL-адрес входа** текстовом поле введите URL-адрес, используя следующий шаблон hello:`https://<companyname>.topdesk.net`
     
-    b. В текстовом поле **Идентификатор** введите URL-адрес в следующем формате: `https://<companyname>.topdesk.net/tas/public/login/verify`
+    b. В hello **идентификатор** текстовом поле введите URL-адрес, используя следующий шаблон hello:`https://<companyname>.topdesk.net/tas/public/login/verify`
 
-    c. В текстовом поле **URL-адрес ответа** введите URL-адрес в следующем формате: `https://<companyname>.topdesk.net/tas/public/login/saml`.
+    c. В hello **URL-адрес ответа** текстовом поле введите URL-адрес, используя следующий шаблон hello:`https://<companyname>.topdesk.net/tas/public/login/saml`
      
     > [!NOTE] 
-    > Эти значения приведены в качестве примера. Замените их фактическими значениями идентификатора, URL-адреса ответа и URL-адреса входа. URL-адрес ответа поясняется далее в этом руководстве. Чтобы получить эти данные, обратитесь в [службу поддержки клиентов TOPdesk - Public](https://help.topdesk.com/saas/enterprise/user/).  
+    > Эти значения приведены в качестве примера. Обновить значения hello фактический идентификатор, URL-адрес ответа и URL-адрес входа. URL-адрес ответа поясняется далее в этом руководстве. Обратитесь к [TOPdesk - группа поддержки открытого клиента](https://help.topdesk.com/saas/enterprise/user/) tooget эти значения.  
 
-4. В разделе **Сертификат подписи SAML** щелкните **Metadata XML** (Метаданные XML) и сохраните файл метаданных на компьютере.
+4. На hello **сертификат подписи SAML** щелкните **метаданные в формате XML** и затем сохраните файл метаданных hello на вашем компьютере.
 
-    ![Ссылка для скачивания сертификата](./media/active-directory-saas-topdesk-public-tutorial/tutorial_topdesk-public_certificate.png) 
+    ![ссылку для скачивания сертификата Hello](./media/active-directory-saas-topdesk-public-tutorial/tutorial_topdesk-public_certificate.png) 
 
 5. Нажмите кнопку **Сохранить** .
 
     ![Кнопка "Сохранить" в окне настройки единого входа](./media/active-directory-saas-topdesk-public-tutorial/tutorial_general_400.png)
     
-6. В разделе **Конфигурация TOPdesk - Public** щелкните **Настройка TOPdesk - Public**, чтобы открыть окно **Настройка входа**. Скопируйте **URL-адрес выхода, идентификатор сущности SAML и URL-адрес службы единого входа SAML**  из раздела **Краткий справочник**.
+6. На hello **TOPdesk - открытой конфигурации** щелкните **Настройка общедоступной версии TOPdesk** tooopen **Настройка входа** окна. Копировать hello **URL-адрес выхода, идентификатор сущности SAML и SAML единого входа URL-адрес службы** из hello **краткий справочник.**
 
     ![Конфигурация TOPdesk - Public](./media/active-directory-saas-topdesk-public-tutorial/tutorial_topdesk-public_configure.png) 
 
-7. Выполните вход на веб-сайт **TOPdesk — Public** компании в качестве администратора.
+7. Войдите на tooyour **общедоступной версии TOPdesk** сайт компании от имени администратора.
 
-8. В меню **TOPdesk** выберите пункт **Settings** (Параметры).
+8. В hello **TOPdesk** меню, нажмите кнопку **параметры**.
    
     ![Параметры](./media/active-directory-saas-topdesk-public-tutorial/ic790598.png "Параметры")
 
@@ -139,141 +139,141 @@ ms.lasthandoff: 08/03/2017
    
     ![Параметры входа](./media/active-directory-saas-topdesk-public-tutorial/ic790599.png "Параметры входа")
 
-10. Разверните меню **Login Settings** (Параметры входа), а затем выберите **General** (Общие).
+10. Разверните hello **параметры входа** меню, а затем нажмите **Общие**.
    
     ![Общие](./media/active-directory-saas-topdesk-public-tutorial/ic790600.png "Общие")
 
-11. В разделе **Public** (Общедоступные) для конфигурации **SAML login** (Вход SAML) выполните следующие действия.
+11. В hello **открытый** раздел hello **входа SAML** конфигурации выполните следующие шаги hello:
    
     ![Технические параметры](./media/active-directory-saas-topdesk-public-tutorial/ic790601.png "Технические параметры")
    
-    а. Нажмите кнопку **Скачать** , чтобы скачать общедоступный файл метаданных, а затем сохраните его локально на компьютере.
+    а. Нажмите кнопку **загрузки** toodownload hello общедоступный файл метаданных, а затем сохраните его локально на компьютере.
    
-    b. Откройте скачанный файл метаданных и определите местоположение узла **AssertionConsumerService**.
+    b. Откройте файл метаданных загружаются hello, а затем найдите hello **AssertionConsumerService** узла.
 
     ![AssertionConsumerService](./media/active-directory-saas-topdesk-public-tutorial/ic790619.png "AssertionConsumerService")
    
-    c. Скопируйте значение **AssertionConsumerService**, вставьте это значение в текстовое поле **URL-адрес ответа** в разделе **Домен и URL-адреса TOPdesk - Public**.      
+    c. Копировать hello **AssertionConsumerService** значений, вставьте это значение в hello **URL-адрес ответа** текстовое поле в **TOPdesk — общедоступный домен и URL-адреса** раздела.      
    
-12. Чтобы создать файл сертификата, выполните следующие действия:
+12. toocreate файлом сертификата, выполните следующие шаги hello.
     
     ![Сертификат](./media/active-directory-saas-topdesk-public-tutorial/ic790606.png "Сертификат")
     
-    а. Откройте скачанный файл метаданных на портале Azure.
+    а. Откройте hello скачать файл метаданных на портал Azure.
     
-    b. Разверните узел **RoleDescriptor**, содержащий **xsi:type** со значением **fed:ApplicationServiceType**.
+    b. Разверните hello **RoleDescriptor** узла, имеющего **xsi: Type** из **fed: ApplicationServiceType**.
     
-    c. Скопируйте значение узла **X509Certificate** .
+    c. Скопируйте значение hello hello **X509Certificate** узла.
     
-    d. Сохраните скопированное значение узла **X509Certificate** локально в файл на компьютере.
+    d. Сохранить hello копируются **X509Certificate** значение на локальном компьютере в файле.
 
-13. В разделе **Public** (Общедоступные) щелкните **Add** (Добавить).
+13. В hello **открытый** щелкните **добавить**.
     
     ![Вход SAML](./media/active-directory-saas-topdesk-public-tutorial/ic790625.png "Вход SAML")
 
-14. На странице диалогового окна **Помощник настройки SAML** сделайте следующее:
+14. На hello **помощник по настройке SAML** диалогового окна выполните следующие шаги hello:
     
     ![Помощник по настройке SAML](./media/active-directory-saas-topdesk-public-tutorial/ic790608.png "Помощник по настройке SAML")
     
-    а. Чтобы отправить скачанный файл метаданных через портал Azure, напротив пункта **Federation Metadata** (Метаданные федерации) нажмите кнопку **Browse** (Обзор).
+    а. tooupload загруженных метаданных файла из портала Azure в разделе **метаданные федерации**, нажмите кнопку **Обзор**.
 
-    b. Чтобы отправить файл сертификата, напротив пункта **Certificate (RSA)** (Сертификат (RSA)) нажмите кнопку **Browse** (Обзор).
+    b. файл сертификата, в разделе tooupload **сертификат (RSA)**, нажмите кнопку **Обзор**.
 
-    c. Чтобы отправить файл с логотипом, полученный от службы поддержки TOPdesk, напротив пункта **Logo icon** (Значок логотипа) нажмите кнопку **Browse** (Обзор).
+    c. Файл эмблемы hello tooupload, полученного от поддержки topdesk hello в разделе **значок логотипа**, нажмите кнопку **Обзор**.
 
-    d. В текстовое поле **Атрибут имени пользователя** введите значение `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`.
+    d. В hello **атрибут имени пользователя** введите `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`.
 
-    д. В текстовом поле **Отображаемое имя** введите имя конфигурации.
+    д. В hello **отображаемое имя** текстовом поле введите имя для конфигурации.
 
-    Е. Щелкните **Сохранить**.
+    f. Щелкните **Сохранить**.
 
 > [!TIP]
-> Краткую версию этих инструкций теперь можно также прочитать на [портале Azure](https://portal.azure.com) во время настройки приложения.  После добавления этого приложения из раздела **Active Directory > Корпоративные приложения** просто выберите вкладку **Единый вход** и откройте встроенную документацию через раздел **Настройка** в нижней части страницы. Дополнительные сведения о встроенной документации см. в разделе [Встроенная документация Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985).
+> Вы сможете прочитать четкими версии этих инструкций внутри hello [портал Azure](https://portal.azure.com), а вы настраиваете приложение hello!  После добавления этого приложения из hello **Active Directory > корпоративных приложений** просто щелкните hello **Single Sign-On** вкладку и доступа hello внедренных документации с помощью hello  **Конфигурация** раздела внизу hello. Вы можете прочитать больше о документации embedded функции hello здесь: [документации внедренных Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
 
 ### <a name="create-an-azure-ad-test-user"></a>Создание тестового пользователя Azure AD
 
-Цель этого раздела — создать на портале Azure тестового пользователя с именем Britta Simon.
+Цель этого раздела Hello — toocreate тестового пользователя в hello вызывается Саймон Britta портал Azure.
 
    ![Создание тестового пользователя Azure AD][100]
 
-**Чтобы создать тестового пользователя в Azure AD, выполните следующие действия:**
+**toocreate тестового пользователя в Azure AD, выполните следующие шаги hello.**
 
-1. На портале Azure в области слева нажмите кнопку **Azure Active Directory**.
+1. В hello hello левой панели портала Azure щелкните hello **Azure Active Directory** кнопки.
 
-    ![Кнопка "Azure Active Directory"](./media/active-directory-saas-topdesk-public-tutorial/create_aaduser_01.png)
+    ![Кнопка Hello Azure Active Directory](./media/active-directory-saas-topdesk-public-tutorial/create_aaduser_01.png)
 
-2. Чтобы открыть список пользователей, перейдите в раздел **Пользователи и группы** и щелкните **Все пользователи**.
+2. слишком go toodisplay hello список пользователей,**пользователей и групп**, а затем нажмите кнопку **всех пользователей**.
 
-    ![Ссылки "Пользователи и группы" и "Все пользователи"](./media/active-directory-saas-topdesk-public-tutorial/create_aaduser_02.png)
+    ![Здравствуйте, «Пользователи и группы» и «Все пользователи» ссылки](./media/active-directory-saas-topdesk-public-tutorial/create_aaduser_02.png)
 
-3. Чтобы открыть диалоговое окно **Пользователь**, в верхней части диалогового окна **Все пользователи** щелкните **Добавить**.
+3. tooopen hello **пользователя** диалоговое окно, нажмите кнопку **добавить** вверху hello hello **всех пользователей** диалоговое окно.
 
-    ![Кнопка "Добавить"](./media/active-directory-saas-topdesk-public-tutorial/create_aaduser_03.png)
+    ![Кнопка "Добавить" Hello](./media/active-directory-saas-topdesk-public-tutorial/create_aaduser_03.png)
 
-4. В диалоговом окне **Пользователь** сделайте следующее.
+4. В hello **пользователя** диалогового окна выполните следующие шаги hello:
 
-    ![Диалоговое окно "Пользователь"](./media/active-directory-saas-topdesk-public-tutorial/create_aaduser_04.png)
+    ![диалоговое окно приветствия пользователя](./media/active-directory-saas-topdesk-public-tutorial/create_aaduser_04.png)
 
-    а. В поле **Имя** введите **BrittaSimon**.
+    а. В hello **имя** введите **BrittaSimon**.
 
-    b. В поле **Имя пользователя** введите адрес электронной почты для пользователя Britta Simon.
+    b. В hello **имя пользователя** поле типа hello адрес электронной почты пользователя Саймон Britta.
 
-    c. Установите флажок **Показать пароль** и запишите значение, которое отображается в поле **Пароль**.
+    c. Выберите hello **Показать пароль** флажок и запишите значение hello, отображаемый в hello **пароль** поле.
 
-    г) Щелкните **Создать**.
+    d. Щелкните **Создать**.
  
 ### <a name="create-a-topdesk---public-test-user"></a>Создание тестового пользователя TOPdesk - Public
 
-Чтобы пользователи Azure AD могли выполнять вход в систему TOPdesk — Public, они должны быть подготовлены для нее.  
-В случае TOPdesk — Public подготовка пользователей осуществляется вручную.
+В порядке tooenable Azure AD пользователи toolog в версии TOPdesk - открытым, их необходимо подготовить в общедоступной версии TOPdesk.  
+В случае, когда hello TOPdesk - Public Подготовка пользователей осуществляется вручную.
 
-### <a name="to-configure-user-provisioning-perform-the-following-steps"></a>Чтобы настроить подготовку учетных записей пользователей, выполните следующие действия.
-1. Выполните вход на веб-сайт **TOPdesk — Public** своей компании в качестве администратора.
+### <a name="tooconfigure-user-provisioning-perform-hello-following-steps"></a>tooconfigure подготовки пользователей, выполните следующие шаги hello.
+1. Войдите на tooyour **общедоступной версии TOPdesk** сайт компании от имени администратора.
 
-2. В меню в верхней части страницы щелкните **TOPdesk \> New \> Support Files \> Person** ("TOPdesk" > "Создать" > "Файлы поддержки" > "Пользователь").
+2. В меню в верхней части hello hello выберите **TOPdesk \> New \> файлы поддержки \> лицо**.
    
     ![Пользователь](./media/active-directory-saas-topdesk-public-tutorial/ic790628.png "Пользователь")
 
-3. В диалоговом окне "Новый пользователь" выполните следующие действия:
+3. В диалоговом окне Новый пользователь hello выполните следующие шаги hello.
    
     ![Новый пользователь](./media/active-directory-saas-topdesk-public-tutorial/ic790629.png "Новый пользователь")
    
-    а. Перейдите на вкладку "Общее".
+    а. Щелкните вкладку Общие hello.
 
-    b. В текстовое поле **Last Name** (Фамилия) введите фамилию пользователя, например Simon.
+    b. В hello **Фамилия** текстовом поле введите фамилию пользователя hello как Simon
  
-    c. Выберите **Веб-сайт** для этой учетной записи.
+    c. Выберите **сайта** hello учетной записи.
  
     d. Щелкните **Сохранить**.
 
 > [!NOTE]
-> Для подготовки учетных записей Azure AD вы можете использовать любые другие инструменты или API-интерфейсы создания пользователей, предоставляемые TOPdesk — Public.
+> Можно использовать другие TOPdesk — открытый инструменты создания учетных записей или API-интерфейсы, предоставляемые версией TOPdesk - учетных записей пользователей открытый tooprovision Azure AD.
 
-### <a name="assign-the-azure-ad-test-user"></a>Назначение тестового пользователя Azure AD
+### <a name="assign-hello-azure-ad-test-user"></a>Назначить hello Azure AD тестового пользователя
 
-В этом разделе описано, как разрешить пользователю Britta Simon использовать единый вход Azure, предоставив этому пользователю доступ к TOPdesk - Public.
+В этом разделе включите toouse Britta Simon Azure единого входа путем предоставления tooTOPdesk доступа - открытый.
 
-![Назначение роли пользователя][200] 
+![Назначение пользователям ролей hello][200] 
 
-**Чтобы назначить пользователя Britta Simon приложению TOPdesk - Public, выполните следующие действия:**
+**tooassign tooTOPdesk Britta Simon - открытым, выполните следующие шаги hello:**
 
-1. На портале Azure откройте представление приложений, перейдите к представлению каталога, а затем выберите **Корпоративные приложения** и щелкните **Все приложения**.
+1. В hello портал Azure, откройте представление приложения hello, а затем перейдите toohello представления каталога и перейти слишком**корпоративных приложений** щелкните **все приложения**.
 
     ![Назначение пользователя][201] 
 
-2. В списке приложений выберите **TOPdesk - Public**.
+2. В списке приложений hello выберите **общедоступной версии TOPdesk**.
 
-    ![Ссылка на TOPdesk - Public в списке "Приложения"](./media/active-directory-saas-topdesk-public-tutorial/tutorial_topdesk-public_app.png)  
+    ![Hello версии TOPdesk - Public ссылку в список приложений hello](./media/active-directory-saas-topdesk-public-tutorial/tutorial_topdesk-public_app.png)  
 
-3. В меню слева выберите **Пользователи и группы**.
+3. В меню слева hello hello выберите **пользователей и групп**.
 
-    ![Ссылка "Пользователи и группы"][202]
+    ![Hello ссылку «Пользователи и группы»][202]
 
 4. Нажмите кнопку **Добавить**. Затем в диалоговом окне **Добавление назначения** выберите **Пользователи и группы**.
 
-    ![Область "Добавление назначения"][203]
+    ![область назначения, добавьте Hello][203]
 
-5. В диалоговом окне **Пользователи и группы** в списке пользователей выберите **Britta Simon**.
+5. На **пользователей и групп** диалогового окна выберите **Britta Simon** в список пользователей hello.
 
 6. В диалоговом окне **Пользователи и группы** нажмите кнопку **Выбрать**.
 
@@ -281,14 +281,14 @@ ms.lasthandoff: 08/03/2017
     
 ### <a name="test-single-sign-on"></a>Проверка единого входа
 
-В этом разделе описано, как проверить конфигурацию единого входа Azure AD с помощью панели доступа.
+В этом разделе тестирования конфигурации Azure AD единого входа с помощью панели доступа hello.
 
-Щелкнув элемент TOPdesk - Public на панели доступа, вы автоматически войдете в приложение TOPdesk - Public.
-Дополнительные сведения о панели доступа см. в статье [Общие сведения о панели доступа](active-directory-saas-access-panel-introduction.md). 
+При нажатии кнопки hello TOPdesk - Public плитки в панели доступа hello, вы должны получить автоматически вошедшего tooyour TOPdesk - открытые приложения.
+Дополнительные сведения о панели доступа см. в разделе [toohello введение панели доступа](active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
-* [Список учебников по интеграции приложений SaaS с Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Список учебников по tooIntegrate приложений SaaS в Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Что такое доступ к приложениям и единый вход с помощью Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 <!--Image references-->

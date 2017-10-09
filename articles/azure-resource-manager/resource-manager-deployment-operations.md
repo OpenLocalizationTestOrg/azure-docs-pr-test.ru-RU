@@ -1,6 +1,6 @@
 ---
-title: "Операции развертывания с помощью Azure Resource Manager | Документация Майкрософт"
-description: "Сведения о просмотре операций развертывания Azure Resource Manager с помощью портала, PowerShell, Azure CLI и REST API."
+title: "aaaDeployment операции с помощью диспетчера ресурсов Azure | Документы Microsoft"
+description: "Описывает, каким образом hello tooview операции развертывания диспетчера ресурсов Azure с портала, Azure CLI, PowerShell и API-интерфейса REST."
 services: azure-resource-manager,virtual-machines
 documentationcenter: 
 tags: top-support-issue
@@ -15,65 +15,65 @@ ms.tgt_pltfrm: vm-multiple
 ms.workload: infrastructure
 ms.date: 01/13/2017
 ms.author: tomfitz
-ms.openlocfilehash: fb6b3b357fd1f66184e480115a9c863ba31ac193
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: ba4823ca73caca83dfc07c99d736344ef8b7b54d
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="view-deployment-operations-with-azure-resource-manager"></a>Просмотр операций развертывания с помощью Azure Resource Manager
 
 
-Вы можете просматривать операции развертывания на портале Azure. Чаще всего необходимость просмотреть операции возникает, если во время развертывания произошла ошибка. Таким образом, эта статья посвящена просмотру операций, которые завершились с ошибкой. Портал Azure предоставляет интерфейс, который позволяет легко находить ошибки и определять возможные действия по их устранению.
+Можно просматривать операции hello для развертывания через портал Azure hello. Возможно, вы всего его интересуют hello операциями просмотра, при получении ошибки во время развертывания, в этой статье основное внимание уделяется Просмотр операций, которые не удалось. Hello портал предоставляет интерфейс, который позволяет tooeasily поиска hello ошибок и определить возможные исправления.
 
 [!INCLUDE [resource-manager-troubleshoot-introduction](../../includes/resource-manager-troubleshoot-introduction.md)]
 
 ## <a name="portal"></a>Microsoft Azure
-Для просмотра операций развертывания выполните следующие действия:
+операции развертывания hello toosee, hello используйте следующие шаги:
 
-1. Для группы ресурсов, участвующих в развертывании, обратите внимание на состояние последнего развертывания. Можно выбрать этот статус, чтобы получить дополнительные сведения.
+1. Для группы ресурсов hello участвующих в развертывании hello Обратите внимание, состояние последнего развертывания hello hello. Вы можете выбрать этот статус tooget Дополнительные сведения см.
    
     ![состояние развертывания](./media/resource-manager-deployment-operations/deployment-status.png)
-2. Вы увидите историю последних развертываний. Выберите развертывание, которое завершилось неудачно.
+2. Вы увидите hello История развертывания. Выберите развертывание hello, завершившегося ошибкой.
    
     ![состояние развертывания](./media/resource-manager-deployment-operations/select-deployment.png)
-3. Щелкните ссылку, чтобы просмотреть сведения о причине сбоя развертывания. На рисунке ниже видно, что сбой произошел, потому что DNS-запись не является уникальной.  
+3. Выберите toosee ссылку hello Здравствуйте, о том, почему не удалось выполнить развертывание. На рисунке hello ниже hello DNS-запись не является уникальным.  
    
     ![просмотр неудачного развертывания](./media/resource-manager-deployment-operations/view-error.png)
    
-    Описания в этом сообщении об ошибке должно быть достаточно, чтобы приступить к устранению неполадки. Однако если вы хотите узнать, какие задачи выполнены, вы можете просмотреть операции, как описано ниже.
-4. Все операции развертывания отображаются в колонке **Развертывание**. Чтобы просмотреть сведения о конкретной операции, выберите ее.
+    Это сообщение об ошибке должно быть достаточно для устранения неполадок toobegin. Тем не менее если требуются дополнительные сведения о том, какие были выполнены задачи, можно просмотреть hello операций, как показано hello следующие шаги.
+4. Можно просмотреть все операции развертывания hello в hello **развертывания** колонку. Выберите любой операции toosee Дополнительные сведения см.
    
     ![просмотр операций](./media/resource-manager-deployment-operations/view-operations.png)
    
-    На рисунке выше видно, что созданы учетная запись хранения, виртуальная сеть и группа доступности. Операция создания общедоступного IP-адреса завершилась сбоем, а попытки создать другие ресурсы не были предприняты.
-5. Чтобы просмотреть события развертывания, щелкните **События**.
+    В этом случае можно увидеть, были успешно созданы hello учетной записи хранилища, виртуальной сети и группа доступности. не удалось Hello общедоступный IP-адрес и другие ресурсы, не была предпринята.
+5. Можно просмотреть события для hello развертывания, выбрав **события**.
    
     ![просмотр событий](./media/resource-manager-deployment-operations/view-events.png)
-6. В открывшемся окне отобразятся все события развертывания. Чтобы просмотреть дополнительные сведения о конкретном событии, выберите его. Также обратите внимание на идентификаторы корреляции. Это значение может быть полезным при работе с технической поддержкой для устранения проблемы развертывания.
+6. Просмотреть все события hello hello развертывания и выбрать любые дополнительные сведения. Обратите внимание, слишком hello идентификаторы корреляции. Это значение может быть полезно при работе с tootroubleshoot технической поддержки развертывания.
    
     ![просмотр событий](./media/resource-manager-deployment-operations/see-all-events.png)
 
 ## <a name="powershell"></a>PowerShell
-1. Общее состояние развернутой службы можно получить с помощью команды **Get-AzureRmResourceGroupDeployment** . 
+1. Общее состояние развертывания, используйте hello hello tooget **Get AzureRmResourceGroupDeployment** команды. 
 
   ```powershell
   Get-AzureRmResourceGroupDeployment -ResourceGroupName ExampleGroup
   ```
 
-   Вы можете отфильтровать результаты, чтобы отобразить только те развертывания, которые завершились сбоем.
+   Или можно фильтровать результаты hello для развертывания, на которых произошел сбой.
 
   ```powershell
   Get-AzureRmResourceGroupDeployment -ResourceGroupName ExampleGroup | Where-Object ProvisioningState -eq Failed
   ```
    
-2. Каждое развертывание включает в себя несколько операций. Каждая операция представляет шаг в процессе развертывания. Чтобы определить, что пошло не так при развертывании, обычно требуется просмотреть сведения об операциях развертывания. Состояние операций можно просмотреть с помощью команды **Get AzureRmResourceGroupDeploymentOperation**.
+2. Каждое развертывание включает в себя несколько операций. Каждая операция представляет шаг в процессе развертывания hello. toodiscover, что будут пошло не так с развертыванием, обычно требуется toosee сведения об операциях развертывания hello. Вы можете просматривать состояние hello hello операций с **Get AzureRmResourceGroupDeploymentOperation**.
 
   ```powershell 
   Get-AzureRmResourceGroupDeploymentOperation -ResourceGroupName ExampleGroup -DeploymentName vmDeployment
   ```
 
-    Эта команда возвращает несколько операций, каждая из которых представлена в следующем формате:
+    Возвращающий несколько операций с каждой из них hello следующий формат:
 
   ```powershell
   Id             : /subscriptions/{guid}/resourceGroups/ExampleGroup/providers/Microsoft.Resources/deployments/Microsoft.Template/operations/A3EB2DA598E0A780
@@ -85,13 +85,13 @@ ms.lasthandoff: 07/11/2017
                    serviceRequestId:0196828d-8559-4bf6-b6b8-8b9057cb0e23...}
   ```
 
-3. Чтобы получить дополнительные сведения о завершившихся сбоем операциях, получите свойства для операций с состоянием **Failed** .
+3. tooget Дополнительные сведения о неудачных операций извлечения свойств hello для операций с **сбой** состояния.
 
   ```powershell
   (Get-AzureRmResourceGroupDeploymentOperation -DeploymentName Microsoft.Template -ResourceGroupName ExampleGroup).Properties | Where-Object ProvisioningState -eq Failed
   ```
    
-    В результате будут возвращены все завершившиеся сбоем операции. Каждая из них будет представлена в следующем формате:
+    Который возвращает все hello неудачных операций с каждым из них в hello следующий формат:
 
   ```powershell
   provisioningOperation : Create
@@ -107,8 +107,8 @@ ms.lasthandoff: 07/11/2017
                           resourceType=Microsoft.Network/publicIPAddresses; resourceName=myPublicIP}
   ```
 
-    Обратите внимание на значения serviceRequestId и trackingId операции. serviceRequestId может быть полезным при работе с технической поддержкой для устранения проблемы развертывания. trackingId понадобится вам на следующем шаге, чтобы рассмотреть конкретную операцию.
-4. Чтобы получить сообщение о состоянии конкретной завершившейся сбоем операции, используйте следующую команду:
+    Обратите внимание hello serviceRequestId и trackingId hello для операции hello. Hello serviceRequestId может быть полезно при работе с tootroubleshoot технической поддержки развертывания. Будет использоваться hello trackingId в toofocus следующий шаг hello на определенной операции.
+4. tooget hello сообщение о состоянии определенного операцию, завершившуюся hello используйте следующую команду:
 
   ```powershell
   ((Get-AzureRmResourceGroupDeploymentOperation -DeploymentName Microsoft.Template -ResourceGroupName ExampleGroup).Properties | Where-Object trackingId -eq f4ed72f8-4203-43dc-958a-15d041e8c233).StatusMessage.error
@@ -121,9 +121,9 @@ ms.lasthandoff: 07/11/2017
   ----           -------                                                                        -------
   DnsRecordInUse DNS record dns.westus.cloudapp.azure.com is already used by another public IP. {}
   ```
-4. Каждая операция развертывания в Azure включает в себя содержимое запроса и ответа. Содержимое запроса — это данные, отправляемые в Azure во время развертывания (например, создание виртуальной машины, диск операционной системы и другие ресурсы). Содержимое ответа — это данные, отправляемые Azure из запроса на развертывание. Во время развертывания можно воспользоваться параметром **DeploymentDebugLogLevel**, чтобы указать необходимость сохранения запроса или ответа в журнале. 
+4. Каждая операция развертывания в Azure включает в себя содержимое запроса и ответа. Hello содержимое запроса является то, что вы отправили tooAzure во время развертывания (например, создания виртуальной Машины, диск операционной системы и другие ресурсы). Содержимое ответа Hello — Azure отправляются обратно из запроса на развертывание. Во время развертывания, можно использовать **DeploymentDebugLogLevel** toospecify регистр, hello запросов и ответов, сохраняются в журнале hello. 
 
-  Получить эту информацию из журнала и сохранить ее локально можно с помощью следующих команд PowerShell:
+  Получить эту информацию из журнала hello и сохраните его локально, используя следующие команды PowerShell hello:
 
   ```powershell
   (Get-AzureRmResourceGroupDeploymentOperation -DeploymentName "TestDeployment" -ResourceGroupName "Test-RG").Properties.request | ConvertTo-Json |  Out-File -FilePath <PathToFile>
@@ -133,13 +133,13 @@ ms.lasthandoff: 07/11/2017
 
 ## <a name="azure-cli"></a>Инфраструктура CLI Azure
 
-1. Общее состояние развернутой службы можно получить с помощью команды **azure group deployment show** .
+1. Получить hello общее состояние развертывания с hello **Показать развертывания azure группы** команды.
 
   ```azurecli
   azure group deployment show --resource-group ExampleGroup --name ExampleDeployment --json
   ```
   
-  Одно из возвращаемых значений — **correlationId**. Это значение используется для отслеживания связанных событий и может быть полезно при взаимодействии со службой технической поддержки для устранения проблемы развертывания.
+  Одно из значения, возвращаемые hello — hello **correlationId**. Это значение используется события, связанные с tootrack и может быть полезно Если работу с tootroubleshoot технической поддержки развертывания.
 
   ```azurecli
   "properties": {
@@ -147,7 +147,7 @@ ms.lasthandoff: 07/11/2017
     "correlationId": "4002062a-a506-4b5e-aaba-4147036b771a",
   ```
 
-2. Чтобы просмотреть операции развертывания, используйте следующую команду:
+2. операции hello toosee для развертывания, используйте:
 
   ```azurecli
   azure group deployment operation list --resource-group ExampleGroup --name ExampleDeployment --json
@@ -155,13 +155,13 @@ ms.lasthandoff: 07/11/2017
 
 ## <a name="rest"></a>REST
 
-1. Получите сведения о развертывании с помощью операции [получения сведений о развертывании шаблона](https://docs.microsoft.com/rest/api/resources/deployments#Deployments_Get).
+1. Получение сведений о развертывании с hello [получения сведений о шаблоне-развертывании](https://docs.microsoft.com/rest/api/resources/deployments#Deployments_Get) операции.
 
   ```http
   GET https://management.azure.com/subscriptions/{subscription-id}/resourcegroups/{resource-group-name}/providers/microsoft.resources/deployments/{deployment-name}?api-version={api-version}
   ```
 
-    В ответе обратите особое внимание на элементы **provisioningState**, **correlationId** и **error**. **correlationId** используется для отслеживания связанных событий и может быть полезен при взаимодействии со службой технической поддержки для устранения проблемы развертывания.
+    В ответ hello, обратите внимание, в частности hello **provisioningState**, **correlationId**, и **ошибка** элементов. Hello **correlationId** используется события, связанные с tootrack и может быть полезно Если работу с tootroubleshoot технической поддержки развертывания.
 
   ```json
   { 
@@ -178,13 +178,13 @@ ms.lasthandoff: 07/11/2017
   }
   ```
 
-2. Получите сведения об операциях развертывания с помощью операции [вывода списка всех операций развертывания шаблона](https://docs.microsoft.com/rest/api/resources/deployments#Deployments_List). 
+2. Получение сведений об операции развертывания с hello [все операции развертывания шаблона списка](https://docs.microsoft.com/rest/api/resources/deployments#Deployments_List) операции. 
 
   ```http
   GET https://management.azure.com/subscriptions/{subscription-id}/resourcegroups/{resource-group-name}/providers/microsoft.resources/deployments/{deployment-name}/operations?$skiptoken={skiptoken}&api-version={api-version}
   ```
    
-    Ответ будет содержать сведения о запросе и (или) ответе, в зависимости от того, что было указано в свойстве **debugSetting** во время развертывания.
+    Hello ответ включает запросов и ответов сведения с учетом указанный hello **debugSetting** свойства во время развертывания.
 
   ```json
   {
@@ -213,7 +213,7 @@ ms.lasthandoff: 07/11/2017
 
 
 ## <a name="next-steps"></a>Дальнейшие действия
-* Сведения об устранении некоторых ошибок развертывания см. в статье об [устранении распространенных ошибок при развертывании ресурсов в Azure с помощью Azure Resource Manager](resource-manager-common-deployment-errors.md).
-* Дополнительные сведения об использовании журналов действий для мониторинга других типов действий см. в статье [Операции аудита с помощью диспетчера ресурсов](resource-group-audit.md).
-* Чтобы проверить развернутую службу перед ее выполнением, ознакомьтесь со статьей [Развертывание ресурсов с использованием шаблонов Resource Manager и Azure PowerShell](resource-group-template-deploy.md).
+* Получить справку по разрешению ошибок конкретного развертывания. в разделе [устранения распространенных ошибок при развертывании tooAzure ресурсы с помощью диспетчера ресурсов Azure](resource-manager-common-deployment-errors.md).
+* toolearn об использовании действия hello журналы toomonitor других типов действий см. в разделе [toomanage Azure о журналах действий представление ресурсов](resource-group-audit.md).
+* toovalidate развертывания перед выполнением, в разделе [развертывания группы ресурсов с помощью шаблона Azure Resource Manager](resource-group-template-deploy.md).
 

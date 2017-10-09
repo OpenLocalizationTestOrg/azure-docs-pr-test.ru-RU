@@ -1,6 +1,6 @@
 ---
-title: "Добавление соединителя Поиска Bing в приложения логики | Документация Майкрософт"
-description: "Обзор соединителя Поиска Bing с параметрами интерфейса API REST"
+title: "приложения логики соединителя поиск Bing hello aaaAdd | Документы Microsoft"
+description: "Обзор соединителя поиск Bing hello с параметрами REST API"
 services: 
 suite: 
 documentationcenter: 
@@ -16,24 +16,24 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/07/2016
 ms.author: mandia; ladocs
-ms.openlocfilehash: 863a15d716161bfa9d3e041174504b73a2956e8d
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 839b7d85367d1fdc63b91dcfe3166e177f10eaf1
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="get-started-with-the-bing-search-connector"></a>Начало работы с соединителем Поиска Bing
-Подключение к Поиску Bing позволяет искать новости, видео и многое другое. С Поиском Bing можно: 
+# <a name="get-started-with-hello-bing-search-connector"></a>Начало работы с соединителем hello поиска Bing
+Подключение tooBing новостей toosearch поиска, поиска видео и многое другое. С Поиском Bing можно: 
 
-* формировать бизнес-процессы на основе данных, получаемых в результате поиска; 
-* использовать действия для поиска изображений, новостей и многого другого. Эти действия получают ответ и делают выходные данные доступными для использования другими действиями. Например, можно найти видеоролик, а затем с помощью Twitter опубликовать его в веб-канале Twitter.
+* Построение вашего бизнеса потока на основании hello данных, получаемых из условий поиска. 
+* Использование действия toosearch изображений, поиска hello новости и многое другое. Эти действия получить ответ и внесите hello выходные данные для других действий. Например можно найти видео и затем использовать Twitter toopost, tooa видео, веб-канал Twitter.
 
 Для начала можно создать приложение логики, как описано [здесь](../logic-apps/logic-apps-create-a-logic-app.md).
 
 ## <a name="connector-specific-details"></a>Сведения о соединителях
 
-Информацию о существующих ограничениях, а также о триггерах и действиях, определенных в Swagger, см. в статье со [сведениями о соединителях](/connectors/bingsearch/).
+Просмотреть все триггеры и действия, определенные в hello swagger и любые пределы в hello см. также [сведений о соединителе](/connectors/bingsearch/).
 
 ## <a name="more-connectors"></a>Дополнительные сведения о соединителях
-Вы можете вернуться к [списку интерфейсов API](apis-list.md).
+Вернитесь к предыдущему окну toohello [API-интерфейсы списка](apis-list.md).
 

@@ -1,6 +1,6 @@
 ---
-title: "Создание ключей содержимого с помощью REST | Документация Майкрософт"
-description: "Узнайте, как создавать ключи содержимого, которые обеспечивают безопасный доступ к ресурсам."
+title: "aaaCreate ключей контента с REST | Документы Microsoft"
+description: "Узнайте, как toocreate содержимого ключи, которые обеспечивают безопасный доступ к tooAssets."
 services: media-services
 documentationcenter: 
 author: Juliako
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/10/2017
 ms.author: juliako
-ms.openlocfilehash: ece09277d26fafb7c0eebf62730031c4dc01bfe0
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: cb3b74bdb72c43ab5b375c0376b6704f4a93bb8b
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-content-keys-with-rest"></a>Создание ключей содержимого с помощью REST
 > [!div class="op_single_selector"]
@@ -27,26 +27,26 @@ ms.lasthandoff: 08/29/2017
 > 
 > 
 
-Службы мультимедиа позволяют создавать новые ресурсы и доставлять зашифрованные ресурсы. **ContentKey** обеспечивает безопасный доступ к вашим **ресурсам-контейнерам**. 
+Media Services позволяет toocreate новый и доставка зашифрованные активы. Объект **ContentKey** обеспечивает безопасный доступ tooyour **активов**s. 
 
-При создании нового ресурса-контейнера (например, перед [передачей файлов](media-services-rest-upload-files.md)) можно указать следующие параметры шифрования: **StorageEncrypted**, **CommonEncryptionProtected** или **EnvelopeEncryptionProtected**. 
+При создании нового средства (например, прежде чем [передачи файлов](media-services-rest-upload-files.md)), можно указать следующие параметры шифрования hello: **StorageEncrypted**, **CommonEncryptionProtected**, или **EnvelopeEncryptionProtected**. 
 
-При доставке ресурсов-контейнеров в клиенты можно [настроить динамическое шифрование таких ресурсов](media-services-rest-configure-asset-delivery-policy.md), используя один из двух следующих типов шифрования: **DynamicEnvelopeEncryption** или **DynamicCommonEncryption**.
+После доставки активов tooyour клиентов, вы можете [настройки для средств toobe динамически зашифрованные](media-services-rest-configure-asset-delivery-policy.md) с одним hello, следующие два шифрования: **DynamicEnvelopeEncryption** или  **DynamicCommonEncryption**.
 
-Зашифрованные ресурсы-контейнеры должны быть связаны с сущностями **ContentKey**. В этой статье описано, как создать ключ содержимого.
+Зашифрованные активы имеют связанные с toobe **ContentKey**s. В этой статье описывается как toocreate ключа содержимого.
 
-Ниже приведены общие шаги создания ключей содержимого, которые нужно связать с ресурсами, подлежащими шифрованию. 
+Hello ниже приведены общие шаги для создания ключей контента будет связана с основные средства toobe зашифрованы. 
 
 1. Создайте случайный 16-разрядный ключ AES (для общего и конвертного шифрования) или 32-разрядного ключа AES (для шифрования в хранилище). 
    
-    Это будет ключ содержимого для ресурса, то есть для всех файлов, связанных с этим ресурсом, при расшифровке будет использоваться один и тот же ключ содержимого. 
-2. Вызовите методы [GetProtectionKeyId](https://docs.microsoft.com/rest/api/media/operations/rest-api-functions#getprotectionkeyid) и [GetProtectionKey](https://msdn.microsoft.com/library/azure/jj683097.aspx#getprotectionkey), чтобы получить правильный сертификат X.509, который должен использоваться для шифрования ключа содержимого.
-3. Зашифруйте ключ содержимого с помощью открытого ключа сертификата X.509. 
+    Это будет hello ключ содержимого для ресурса, что означает все файлы, связанные с этим ресурсом будет необходимо toouse hello один ключ содержимого во время расшифровки. 
+2. Вызовите hello [GetProtectionKeyId](https://docs.microsoft.com/rest/api/media/operations/rest-api-functions#getprotectionkeyid) и [GetProtectionKey](https://msdn.microsoft.com/library/azure/jj683097.aspx#getprotectionkey) tooget методы hello правильный сертификат X.509, который должен быть используется tooencrypt ключа содержимого.
+3. Шифрование ключа содержимого с помощью открытого ключа сертификата X.509 hello hello. 
    
-   Пакет SDK служб мультимедиа для .NET использует при выполнении шифрования RSA с OAEP.  Примером может служить [функция EncryptSymmetricKeyData](https://github.com/Azure/azure-sdk-for-media-services/blob/dev/src/net/Client/Common/Common.FileEncryption/EncryptionUtils.cs).
-4. Создайте значение контрольной суммы (на основе алгоритма вычисления контрольной суммы ключа AES для PlayReady), которая вычисляется по идентификатору ключа и ключу содержимого. Дополнительную информацию см. в разделе "Алгоритм вычисления контрольной суммы ключа AES для PlayReady" [здесь](http://www.microsoft.com/playready/documents/).
+   Пакет SDK .NET служб мультимедиа использует алгоритм RSA с OAEP при выполнении шифрования hello.  Можно видеть пример в hello [EncryptSymmetricKeyData функция](https://github.com/Azure/azure-sdk-for-media-services/blob/dev/src/net/Client/Common/Common.FileEncryption/EncryptionUtils.cs).
+4. Создайте значение контрольной суммы (на основании hello алгоритма контрольной суммы ключа PlayReady AES) вычисляются с использованием идентификатора ключа hello и ключа содержимого. Дополнительные сведения см. в разделе находятся hello раздел «Алгоритм контрольной суммы ключа AES PlayReady» документа объект заголовка PlayReady hello [здесь](http://www.microsoft.com/playready/documents/).
    
-   В следующем примере .NET контрольная сумма вычисляется с помощью части "GUID" идентификатора ключа и незащищенного ключа содержимого.
+   Hello ниже приведен пример .NET, которая вычисляет контрольную сумму hello, с помощью hello GUID части идентификатора ключа hello и hello снимите ключа содержимого.
 
          public static string CalculateChecksum(byte[] contentKey, Guid keyId)
          {
@@ -65,24 +65,24 @@ ms.lasthandoff: 08/29/2017
             Array.Copy(array, array2, 8);
             return Convert.ToBase64String(array2);
          }
-5. Создайте ключ содержимого, используя значения **EncryptedContentKey** (преобразуется в строку с кодировкой base64), **ProtectionKeyId**, **ProtectionKeyType**, **ContentKeyType** и **Checksum**, полученные на предыдущих шагах.
-6. Свяжите сущность **ContentKey** с сущностью **Asset** с помощью операции $links.
+5. Создание ключа контента hello с hello **EncryptedContentKey** (преобразовать строку в кодировке toobase64), **ProtectionKeyId**, **ProtectionKeyType**,  **ContentKeyType**, и **контрольной суммы** значений, получаемых в предыдущих шагах.
+6. Свяжите hello **ContentKey** сущность с вашей **активов** сущности посредством операции hello $links.
 
-Обратите внимание, что в этом разделе не рассматривается, как сгенерировать ключ AES, зашифровать его и вычислить контрольную сумму. 
+Обратите внимание, что в этом разделе не показывают, как зашифровать ключ hello toogenerate ключ AES и вычисления контрольной суммы hello. 
 
 >[!NOTE]
 
 >При доступе к сущностям в службах мультимедиа необходимо задать определенные поля и значения заголовков в HTTP-запросах. Дополнительную информацию см. в статье [Обзор интерфейса REST API служб мультимедиа](media-services-rest-how-to-use.md).
 
-## <a name="connect-to-media-services"></a>Подключение к службам мультимедиа
+## <a name="connect-toomedia-services"></a>Подключение служб tooMedia
 
-Сведения о подключении к API AMS см. в разделе [Доступ к API служб мультимедиа Azure с помощью аутентификации Azure AD](media-services-use-aad-auth-to-access-ams-api.md). 
+Сведения о tooconnect toohello AMS API, в статье [hello доступа к API служб мультимедиа Azure с проверкой подлинности Azure AD](media-services-use-aad-auth-to-access-ams-api.md). 
 
 >[!NOTE]
->После успешного подключения к https://media.windows.net вы получите ошибку 301 (перенаправление), в которой будет указан другой URI служб мультимедиа. Используйте для последующих вызовов новый URI.
+>После успешного подключения toohttps://media.windows.net, будет получено перенаправление 301 указывающее другой URI служб Media Services. Необходимо внести toohello последующих вызовов новый URI.
 
-## <a name="retrieve-the-protectionkeyid"></a>Получение ProtectionKeyId
-В следующем примере показано, как получить ProtectionKeyId (отпечаток сертификата) для сертификата, который необходимо использовать при шифровании ключа содержимого. Выполните этот шаг, чтобы проверить наличие соответствующего сертификата на компьютере.
+## <a name="retrieve-hello-protectionkeyid"></a>Получить hello ProtectionKeyId
+Hello в следующем примере показано, как tooretrieve hello ProtectionKeyId, отпечаток сертификата, для hello сертификат, который необходимо использовать при шифровании ключа содержимого. Выполните этот шаг toomake, что уже имеется hello соответствующий сертификат на компьютере.
 
 Запрос:
 
@@ -113,8 +113,8 @@ ms.lasthandoff: 08/29/2017
 
     {"odata.metadata":"https://wamsbayclus001rest-hs.cloudapp.net/api/$metadata#Edm.String","value":"7D9BB04D9D0A4A24800CADBFEF232689E048F69C"}
 
-## <a name="retrieve-the-protectionkey-for-the-protectionkeyid"></a>Получение ProtectionKey для ProtectionKeyId
-В следующем примере показано, как получить сертификат X.509, используя значение ProtectionKeyId, полученное на предыдущем шаге.
+## <a name="retrieve-hello-protectionkey-for-hello-protectionkeyid"></a>Получить hello ProtectionKey для hello ProtectionKeyId
+Hello следующем примере показано, как сертификат X.509 hello tooretrieve, с помощью значения ProtectionKeyId hello полученный в предыдущем шаге hello.
 
 Запрос:
 
@@ -149,17 +149,17 @@ ms.lasthandoff: 08/29/2017
     {"odata.metadata":"https://wamsbayclus001rest-hs.cloudapp.net/api/$metadata#Edm.String",
     "value":"MIIDSTCCAjGgAwIBAgIQqf92wku/HLJGCbMAU8GEnDANBgkqhkiG9w0BAQQFADAuMSwwKgYDVQQDEyN3YW1zYmx1cmVnMDAxZW5jcnlwdGFsbHNlY3JldHMtY2VydDAeFw0xMjA1MjkwNzAwMDBaFw0zMjA1MjkwNzAwMDBaMC4xLDAqBgNVBAMTI3dhbXNibHVyZWcwMDFlbmNyeXB0YWxsc2VjcmV0cy1jZXJ0MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAzR0SEbXefvUjb9wCUfkEiKtGQ5Gc328qFPrhMjSo+YHe0AVviZ9YaxPPb0m1AaaRV4dqWpST2+JtDhLOmGpWmmA60tbATJDdmRzKi2eYAyhhE76MgJgL3myCQLP42jDusWXWSMabui3/tMDQs+zfi1sJ4Ch/lm5EvksYsu6o8sCv29VRwxfDLJPBy2NlbV4GbWz5Qxp2tAmHoROnfaRhwp6WIbquk69tEtu2U50CpPN2goLAqx2PpXAqA+prxCZYGTHqfmFJEKtZHhizVBTFPGS3ncfnQC9QIEwFbPw6E5PO5yNaB68radWsp5uvDg33G1i8IT39GstMW6zaaG7cNQIDAQABo2MwYTBfBgNVHQEEWDBWgBCOGT2hPhsvQioZimw8M+jOoTAwLjEsMCoGA1UEAxMjd2Ftc2JsdXJlZzAwMWVuY3J5cHRhbGxzZWNyZXRzLWNlcnSCEKn/dsJLvxyyRgmzAFPBhJwwDQYJKoZIhvcNAQEEBQADggEBABcrQPma2ekNS3Wc5wGXL/aHyQaQRwFGymnUJ+VR8jVUZaC/U/f6lR98eTlwycjVwRL7D15BfClGEHw66QdHejaViJCjbEIJJ3p2c9fzBKhjLhzB3VVNiLIaH6RSI1bMPd2eddSCqhDIn3VBN605GcYXMzhYp+YA6g9+YMNeS1b+LxX3fqixMQIxSHOLFZ1G/H2xfNawv0VikH3djNui3EKT1w/8aRkUv/AAV0b3rYkP/jA1I0CPn0XFk7STYoiJ3gJoKq9EMXhit+Iwfz0sMkfhWG12/XO+TAWqsK1ZxEjuC9OzrY7pFnNxs4Mu4S8iinehduSpY+9mDd3dHynNwT4="}
 
-## <a name="create-the-contentkey"></a>Создание ContentKey
-После получения сертификата X.509 и использования его открытого ключа для шифрования ключа содержимого создайте сущность **ContentKey** и задайте для нее соответствующие свойства.
+## <a name="create-hello-contentkey"></a>Создать hello ContentKey
+После получения сертификата X.509 hello и использовать его открытого ключа tooencrypt ключа содержимого создайте **ContentKey** сущности и установите его свойство значений соответствующим образом.
 
-Одно из значений, которые необходимо задать при создания ключа содержимого — это тип. Выберите одно из следующих значений.
+Одно из значений hello, необходимо задать при создания содержимого, что ключ имеет тип hello hello. Выберите один из hello следующие значения.
 
     public enum ContentKeyType
     {
         /// <summary>
         /// Specifies a content key for common encryption.
         /// </summary>
-        /// <remarks>This is the default value.</remarks>
+        /// <remarks>This is hello default value.</remarks>
         CommonEncryption = 0,
 
         /// <summary>
@@ -179,7 +179,7 @@ ms.lasthandoff: 08/29/2017
     }
 
 
-В следующем примере показано, как создать **ContentKey**, когда для параметра **ContentKeyType** задано шифрование в хранилище (значение 1), а для параметра **ProtectionKeyType** — значение 0, указывающее на то, что идентификатор ключа защиты является отпечатком сертификата X.509.  
+Следующий пример показывает как Hello toocreate **ContentKey** с **ContentKeyType** для шифрования хранилища («1») и hello **ProtectionKeyType** значение слишком «0» tooindicate, hello идентификатор ключа защиты является отпечатком сертификата X.509 hello.  
 
 Запрос
 
@@ -229,8 +229,8 @@ ms.lasthandoff: 08/29/2017
     "ProtectionKeyType":0,
     "Checksum":"calculated checksum"}
 
-## <a name="associate-the-contentkey-with-an-asset"></a>Связывание сущности ContentKey с сущностью Asset
-После создания сущности ContentKey свяжите ее с сущностью Asset, используя операцию $links, как показано в следующем примере:
+## <a name="associate-hello-contentkey-with-an-asset"></a>Связать с активом hello ContentKey
+После создания hello ContentKey, свяжите его с ресурсом, используя операцию hello $links, как показано в следующий пример hello:
 
 Запрос:
 

@@ -1,6 +1,6 @@
 ---
-title: "Добавление push-уведомлений в приложение iOS с помощью мобильных приложений Azure"
-description: "Узнайте, как использовать мобильные приложения Azure для отправки push-уведомлений в приложение iOS."
+title: "aaaAdd tooiOS Push-уведомлений приложения с помощью мобильных приложений Azure"
+description: "Узнайте, как toosend toouse мобильных приложений Azure push-уведомлений приложения iOS tooyour."
 services: app-service\mobile
 documentationcenter: ios
 manager: syntaxc4
@@ -14,21 +14,21 @@ ms.devlang: objective-c
 ms.topic: article
 ms.date: 10/10/2016
 ms.author: glenga
-ms.openlocfilehash: 08a8c35b89386bd0dbe7bba406a6985a5a0d7eb8
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 11588c56bc8987a71257dbad4fcdebf1b3209b1b
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="add-push-notifications-to-your-ios-app"></a>Добавление push-уведомлений в приложение iOS
+# <a name="add-push-notifications-tooyour-ios-app"></a>Добавление приложения iOS tooyour Push-уведомления
 [!INCLUDE [app-service-mobile-selector-get-started-push](../../includes/app-service-mobile-selector-get-started-push.md)]
 
 ## <a name="overview"></a>Обзор
-В этом руководстве мы добавим push-уведомления в проект [быстрому запуску iOS], чтобы при каждом добавлении новой записи на устройство отправлялось push-уведомление.
+В этом учебнике добавить push уведомления toohello [iOS быстрый запуск] проекта, чтобы каждый раз при вставке записи push-уведомление отправляется toohello устройства.
 
-Если вы не используете скачанный проект сервера, вам потребуется добавить пакет расширений для push-уведомлений. Дополнительные сведения о пакетах расширений для сервера см. в статье [Работа с пакетом SDK для внутреннего сервера .NET для мобильных приложений Azure](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md).
+Если вы не используете hello загружен проект быстрый запуск сервера, будет необходимо hello пакета расширения уведомлений push. В разделе [работать с сервера базы данных hello .NET SDK для мобильных приложений Azure](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md) для получения дополнительной информации.
 
-[Симулятор iOS не поддерживает push-уведомления](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/iOS_Simulator_Guide/TestingontheiOSSimulator.html). Требуется физическое устройство iOS и [участие в программе для разработчиков на платформе Apple](https://developer.apple.com/programs/ios/).
+Hello [симулятор iOS не поддерживает push-уведомления](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/iOS_Simulator_Guide/TestingontheiOSSimulator.html). Требуется физическое устройство iOS и [участие в программе для разработчиков на платформе Apple](https://developer.apple.com/programs/ios/).
 
 ## <a name="configure-hub"></a>Настройка центра уведомлений
 [!INCLUDE [app-service-mobile-configure-notification-hub](../../includes/app-service-mobile-configure-notification-hub.md)]
@@ -36,24 +36,24 @@ ms.lasthandoff: 08/03/2017
 ## <a id="register"></a>Регистрация приложения для работы с push-уведомлениями
 [!INCLUDE [Enable Apple Push Notifications](../../includes/enable-apple-push-notifications.md)]
 
-## <a name="configure-azure-to-send-push-notifications"></a>Настройка Azure для отправки push-уведомлений
+## <a name="configure-azure-toosend-push-notifications"></a>Настройка Azure toosend push-уведомлений
 [!INCLUDE [app-service-mobile-apns-configure-push](../../includes/app-service-mobile-apns-configure-push.md)]
 
-## <a id="update-server"></a>Обновление серверной части для отправки push-уведомлений
+## <a id="update-server"></a>Обновление серверной части toosend push-уведомлений
 [!INCLUDE [app-service-mobile-dotnet-backend-configure-push-apns](../../includes/app-service-mobile-dotnet-backend-configure-push-apns.md)]
 
-## <a id="add-push"></a>Добавление push-уведомлений в приложение
+## <a id="add-push"></a>Добавление push tooapp уведомления
 [!INCLUDE [app-service-mobile-add-push-notifications-to-ios-app.md](../../includes/app-service-mobile-add-push-notifications-to-ios-app.md)]
 
 ## <a id="test"></a>Тестирование push-уведомлений
 [!INCLUDE [Test Push Notifications in App](../../includes/test-push-notifications-in-app.md)]
 
 ## <a id="more"></a>Дополнительные сведения
-* Шаблоны обеспечивают гибкость при отправке push-уведомлений локально и между различными платформами. [Использование клиентской библиотеки iOS для мобильных приложений Azure](app-service-mobile-ios-how-to-use-client-library.md#templates) описано, как регистрировать шаблоны.
+* Шаблоны обеспечивают гибкость toosend кросс платформенных Push-уведомлений, а также локализованные Push-уведомлений. [Как tooUse iOS клиентскую библиотеку для мобильных приложений Azure](app-service-mobile-ios-how-to-use-client-library.md#templates) показано, как шаблоны tooregister.
 
 <!-- Anchors.  -->
 
 <!-- Images. -->
 
 <!-- URLs. -->
-[быстрому запуску iOS]: app-service-mobile-ios-get-started.md
+[iOS быстрый запуск]: app-service-mobile-ios-get-started.md

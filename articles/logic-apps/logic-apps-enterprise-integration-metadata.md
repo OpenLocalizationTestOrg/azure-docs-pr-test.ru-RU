@@ -1,5 +1,5 @@
 ---
-title: "Управление метаданными артефактов учетной записи интеграции в Azure Logic Apps | Документация Майкрософт"
+title: "Интеграция aaaManage учетной записи метаданных артефакта - приложения логики Azure | Документы Microsoft"
 description: "Узнайте, как добавлять и извлекать метаданные артефактов учетных записей интеграции для Azure Logic Apps."
 author: padmavc
 manager: anneta
@@ -15,23 +15,23 @@ ms.topic: article
 ms.custom: H1Hack27Feb2017
 ms.date: 11/21/2016
 ms.author: LADocs; padmavc
-ms.openlocfilehash: 28bb8296ddd820ec5aa9793dc0928b4b1e67bf6f
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 8de71bffa9f9975d5409716b2208fa6c3a9545d8
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="manage-artifact-metadata-in-integration-accounts-for-logic-apps"></a>Управление метаданными артефактов в учетных записях интеграции для приложений логики
 
-Вы можете определять пользовательские метаданные для артефактов в учетных записях интеграции и извлекать эти метаданные в среде выполнения приложений логики. Например, можно указать метаданные для артефактов (партнеры, соглашения, схемы, сопоставления и др.) и сохранить все метаданные с помощью пар "ключ — значение". В настоящее время артефакты не могут создавать метаданные через пользовательский интерфейс, но вы можете использовать для этого интерфейсы REST API. Чтобы добавить метаданные при создании или выборе партнера, соглашения или схемы на портале Azure, выберите **Редактирование в качестве JSON**. Чтобы извлечь метаданные артефактов в приложениях логики, можно использовать функцию "Поиск артефакта учетной записи интеграции".
+Вы можете определять пользовательские метаданные для артефактов в учетных записях интеграции и извлекать эти метаданные в среде выполнения приложений логики. Например, можно указать метаданные для артефактов (партнеры, соглашения, схемы, сопоставления и др.) и сохранить все метаданные с помощью пар "ключ — значение". В настоящее время артефактов не может создать метаданные через пользовательский Интерфейс, но можно использовать API-интерфейс REST toocreate метаданных. Выберите tooadd метаданных при создании или выберите в hello Azure портал партнера, соглашения или схемы **изменить как JSON**. tooretrieve артефактов метаданных в логику приложения, можно использовать средство просмотра артефакта учетной записи интеграции hello.
 
-## <a name="add-metadata-to-artifacts-in-integration-accounts"></a>Добавление метаданных в артефакты учетных записей интеграции
+## <a name="add-metadata-tooartifacts-in-integration-accounts"></a>Добавить метаданные tooartifacts в учетные записи службы интеграции
 
 1. Создайте [учетную запись интеграции](logic-apps-enterprise-integration-create-integration-account.md).
 
-2. Добавьте в учетную запись интеграции артефакт, такой как [партнер](logic-apps-enterprise-integration-partners.md#how-to-create-a-partner), [соглашение](logic-apps-enterprise-integration-agreements.md#how-to-create-agreements) или [схема](logic-apps-enterprise-integration-schemas.md).
+2. Добавьте учетную запись интеграции tooyour артефакта, например, [партнера](logic-apps-enterprise-integration-partners.md#how-to-create-a-partner), [соглашение](logic-apps-enterprise-integration-agreements.md#how-to-create-agreements), или [схемы](logic-apps-enterprise-integration-schemas.md).
 
-3.  Выберите артефакт, затем выберите **Редактирование в качестве JSON** и введите сведения о метаданных.
+3.  Выберите артефакт hello, выберите **изменить как JSON**и введите сведения о метаданных.
 
     ![Ввод метаданных](media/logic-apps-enterprise-integration-metadata/image1.png)
 
@@ -39,15 +39,15 @@ ms.lasthandoff: 07/11/2017
 
 1. Создайте [приложение логики](logic-apps-create-a-logic-app.md).
 
-2. Затем [свяжите приложение логики с учетной записью интеграции](logic-apps-enterprise-integration-create-integration-account.md#link-an-integration-account-to-a-logic-app). 
+2. Создание [ссылку из вашей учетной записи интеграции логики приложения tooyour](logic-apps-enterprise-integration-create-integration-account.md#link-an-integration-account-to-a-logic-app). 
 
-3. В конструкторе приложений логики добавьте в свое приложение логики триггер (*Запрос* или *HTTP*).
+3. В конструкторе логики приложения, добавить триггер как *запроса* или *HTTP* tooyour логику приложения.
 
 4.  Выберите **Следующий шаг** > **Добавить действие**. Выполните поиск по слову *интеграции*, чтобы найти и выбрать **Учетная запись интеграции > Поиск артефакта учетной записи интеграции**.
 
     ![Выбор функции "Поиск артефакта учетной записи интеграции"](media/logic-apps-enterprise-integration-metadata/image2.png)
 
-5. Выберите **Типа артефакта** и укажите **Имя артефакта**.
+5. Выберите hello **тип артефакта**и укажите hello **имя артефакта**.
 
     ![Выбор типа артефакта и указание имени артефакта](media/logic-apps-enterprise-integration-metadata/image3.png)
 
@@ -59,9 +59,9 @@ ms.lasthandoff: 07/11/2017
 
 1. В приложении логики добавьте триггер, действие **Учетная запись интеграции > Поиск артефакта учетной записи интеграции** для партнера, а затем — **HTTP**.
 
-    ![Добавление в приложение логики триггера, поиска артефакта и HTTP](media/logic-apps-enterprise-integration-metadata/image4.png)
+    ![Добавление триггера, артефакта подстановки и приложения логики tooyour «HTTP»](media/logic-apps-enterprise-integration-metadata/image4.png)
 
-2. Чтобы получить универсальный код ресурса (URI), перейдите в представление кода своего приложения логики. Определение приложения логики должно выглядеть примерно как в этом примере:
+2. hello tooretrieve URI, последовательно tooCode представление логики приложения. Определение приложения логики должно выглядеть примерно как в этом примере:
 
     ![Поиск](media/logic-apps-enterprise-integration-metadata/image5.png)
 

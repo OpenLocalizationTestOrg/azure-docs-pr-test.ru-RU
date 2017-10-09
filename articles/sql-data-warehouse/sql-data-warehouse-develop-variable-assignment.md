@@ -1,5 +1,5 @@
 ---
-title: "Назначение переменных в хранилище данных SQL | Документация Майкрософт"
+title: "переменные aaaAssign в хранилище данных SQL | Документы Microsoft"
 description: "Советы по присваиванию значений переменных Transact-SQL в хранилище данных SQL Azure для разработки решений."
 services: sql-data-warehouse
 documentationcenter: NA
@@ -15,26 +15,26 @@ ms.workload: data-services
 ms.custom: t-sql
 ms.date: 10/31/2016
 ms.author: jrj;barbkess
-ms.openlocfilehash: 045d5148cd3f12dac63c961ccf7c953d355ed725
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 9de48739bb0af80ff2a117704b31512c680f78d1
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="assign-variables-in-sql-data-warehouse"></a>Назначение переменных в хранилище данных SQL
-Переменные в хранилище данных SQL задаются с помощью инструкции `DECLARE` или инструкции `SET`.
+Переменные в хранилище данных SQL задаются с использованием hello `DECLARE` инструкции или hello `SET` инструкции.
 
-Ниже перечислены допустимые способы задания значения переменной:
+Все следующие hello не вполне допустимые способы tooset значение переменной:
 
 ## <a name="setting-variables-with-declare"></a>Задание переменных с помощью DECLARE
-Инициализация переменных с помощью DECLARE — один из наиболее гибких способов задать значение переменной в хранилище данных SQL.
+Инициализация переменных с DECLARE является одним из наиболее гибкий tooset способов hello значение переменной в хранилище данных SQL.
 
 ```sql
 DECLARE @v  int = 0
 ;
 ```
 
-С помощью DECLARE можно задать одновременно несколько переменных. Использовать `SELECT` или `UPDATE` для этого нельзя:
+Также можно использовать более одной переменной DECLARE tooset одновременно. Нельзя использовать `SELECT` или `UPDATE` toodo это:
 
 ```sql
 DECLARE @v  INT = (SELECT TOP 1 c_customer_sk FROM Customer where c_last_name = 'Smith')
@@ -42,7 +42,7 @@ DECLARE @v  INT = (SELECT TOP 1 c_customer_sk FROM Customer where c_last_name = 
 ;
 ```
 
-Нельзя инициализировать и использовать переменную в одной и той же инструкции DECLARE. Чтобы проиллюстрировать это, ниже приведен **недопустимый** пример, так как @p1 инициализируется и используется в одной и той же инструкции DECLARE. Это приведет к ошибке.
+Не удается инициализировать и использовать переменную в hello же инструкции DECLARE. tooillustrate hello точке hello приведенном ниже примере показан **не** допускается в качестве @p1 и инициализируется и используется в hello же инструкции DECLARE. Это приведет к ошибке.
 
 ```sql
 DECLARE @p1 int = 0
@@ -53,7 +53,7 @@ DECLARE @p1 int = 0
 ## <a name="setting-values-with-set"></a>Задание значений с помощью SET
 SET — это очень распространенный метод задания одной переменной.
 
-Ниже приведены примеры допустимого задания переменной с помощью SET:
+Все примеры hello ниже показаны допустимые способы задания переменной с НАБОРОМ:
 
 ```sql
 SET     @v = (Select max(database_id) from sys.databases);

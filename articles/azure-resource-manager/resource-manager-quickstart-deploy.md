@@ -1,6 +1,6 @@
 ---
-title: "Развертывание ресурсов в Azure | Документация Майкрософт"
-description: "Использование Azure PowerShell или Azure CLI для развертывания ресурсов в Azure. Эти ресурсы определяются в шаблоне Resource Manager."
+title: "ресурсы tooAzure aaaDeploy | Документы Microsoft"
+description: "С помощью Azure PowerShell или Azure CLI tooAzure toodeploy ресурсов. Hello ресурсы определяются в шаблоне диспетчера ресурсов."
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -14,37 +14,37 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/16/2017
 ms.author: tomfitz
-ms.openlocfilehash: 19d5ec337a18b1a159de05ed611b2ccd0c15c592
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 0cd3f8ad45af1fb85c78899b56f6807d00b859f5
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="deploy-resources-to-azure"></a>Развертывание ресурсов в Azure
+# <a name="deploy-resources-tooazure"></a>Развертывание tooAzure ресурсы
 
-В этом разделе показано, как развернуть ресурсы в подписке Azure. Можно использовать Azure PowerShell или Azure CLI, чтобы развернуть шаблон Resource Manager, определяющий инфраструктуру для решения.
+В этом разделе показано, как ресурсы toodeploy tooyour подписки Azure. Можно использовать Azure PowerShell или Azure CLI toodeploy шаблона диспетчера ресурсов, который определяет hello инфраструктуры для вашего решения.
 
-Введение в основные понятия Azure Resource Manager см. в статье [Общие сведения о диспетчере ресурсов Azure](resource-group-overview.md).
+Введение tooconcepts для диспетчера ресурсов. в разделе [Обзор диспетчера ресурсов Azure](resource-group-overview.md).
 
 ## <a name="steps-for-deployment"></a>Этапы развертывания
 
-В этом разделе предполагается, что вы развертываете [пример шаблона хранилища](#example-storage-template). Можно использовать другой шаблон, но передаваемые для него параметры будут отличаться от показанных в этом разделе.
+В этом разделе предполагается развертывании hello [пример шаблона хранения](#example-storage-template) в этом разделе. Можно использовать другой шаблон, но hello переданных параметров отличаются от отображаемых в этом разделе.
 
-Ниже приведены общие действия по развертыванию созданного шаблона.
+После создания шаблона, указаны hello общие шаги по развертыванию ваш шаблон.
 
-1. Вход в учетную запись
-2. Выберите используемую подписку (только если у вас их несколько и требуется выбрать подписку, не используемую по умолчанию).
+1. Войдите в учетную запись tooyour
+2. Выберите toouse подписки hello (необходимо, только если у вас несколько подписок, и требуется toouse, который не подписки по умолчанию hello)
 3. Создание группы ресурсов
-4. Развертывание шаблона
+4. Развертывание шаблона hello
 5. Проверка состояния развертывания
 
-В разделах ниже показано, как выполнить эти действия с помощью [PowerShell](#powershell) или [Azure CLI](#azure-cli).
+Hello следующих разделах показано, как tooperform те шагов, при [PowerShell](#powershell) или [Azure CLI](#azure-cli).
 
 ## <a name="powershell"></a>PowerShell
 
-1. Чтобы установить Azure PowerShell, ознакомьтесь с разделом [Get started with Azure PowerShell cmdlets](/powershell/azure/overview) (Приступая к работе с командлетами Azure PowerShell).
+1. tooinstall Azure PowerShell, в разделе [приступить к работе с помощью командлетов Azure PowerShell](/powershell/azure/overview).
 
-2. Чтобы быстро приступить к развертыванию, используйте следующие командлеты.
+2. tooquickly начало работы по развертыванию, выполните следующие командлеты hello.
 
   ```powershell
   Login-AzureRmAccount
@@ -54,13 +54,13 @@ ms.lasthandoff: 07/11/2017
   New-AzureRmResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName ExampleGroup -TemplateFile c:\MyTemplates\azuredeploy.json 
   ```
 
-  Командлет `Set-AzureRmContext` требуется только в том случае, если вы хотите использовать подписку, отличную от вашей подписки по умолчанию. Чтобы просмотреть все подписки и их идентификаторы, используйте следующий командлет.
+  Hello `Set-AzureRmContext` командлета требуется только в том случае, если требуется toouse подписки, отличные от вашей подписки по умолчанию. toosee все подписки и идентификаторов, используйте:
 
   ```powershell
   Get-AzureRmSubscription
   ```
 
-3. Развертывание может занять несколько минут. По завершении появится сообщение следующего вида.
+3. Hello развертывания может занять несколько минут toocomplete. По завершении появится сообщение следующего вида.
 
   ```powershell
   DeploymentName          : ExampleDeployment
@@ -70,14 +70,14 @@ ms.lasthandoff: 07/11/2017
   ...
   ```
 
-4. Чтобы убедиться, что группа ресурсов и учетная запись хранения были развернуты в вашей подписке, введите следующую команду.
+4. toosee, учетной записи группы и хранения ресурсов, которые были развернуты tooyour подписки, используйте:
 
   ```powershell
   Get-AzureRmResourceGroup -Name ExampleGroup
   Find-AzureRmResource -ResourceGroupNameEquals ExampleGroup
   ```
 
-5. Параметры шаблона можно указать в качестве параметров PowerShell при развертывании шаблона. Предыдущий пример не содержал каких-либо параметров шаблона, поэтому в нем использовались значения по умолчанию, заданные в шаблоне. Чтобы развернуть еще одну учетную запись хранения и указать значения параметров для префикса имени хранилища и номера SKU учетной записи хранения, используйте приведенный ниже командлет.
+5. Параметры шаблона можно указать в качестве параметров PowerShell при развертывании шаблона. Hello предыдущий пример не включали никакие параметры шаблона, поэтому используются значения по умолчанию hello в шаблоне hello. toodeploy еще одно хранилище учетную запись, а также указать значения параметров для hello префикс имени хранилища и учетной записи хранилища hello SKU, используйте:
 
   ```powershell
   New-AzureRmResourceGroupDeployment -Name ExampleDeployment2 -ResourceGroupName ExampleGroup -TemplateFile c:\MyTemplates\azuredeploy.json -storageNamePrefix "contoso" -storageSKU "Standard_GRS"
@@ -87,9 +87,9 @@ ms.lasthandoff: 07/11/2017
 
 ## <a name="azure-cli"></a>Инфраструктура CLI Azure
 
-1. Чтобы установить Azure CLI, ознакомьтесь с разделом [Install Azure CLI 2.0](/cli/azure/install-az-cli2) (Установка Azure CLI 2.0).
+1. tooinstall Azure CLI см. в разделе [установить CLI Azure 2.0](/cli/azure/install-az-cli2).
 
-2. Чтобы быстро приступить к выполнению развертывания, воспользуйтесь следующими командами:
+2. tooquickly начало работы по развертыванию, выполните следующие команды hello.
 
   ```azurecli
   az login
@@ -99,26 +99,26 @@ ms.lasthandoff: 07/11/2017
   az group deployment create --name ExampleDeployment --resource-group ExampleGroup --template-file c:\MyTemplates\azuredeploy.json
   ```
 
-  Выполнять команду `az account set` требуется только в том случае, если вы хотите использовать подписку, отличную от вашей подписки по умолчанию. Чтобы просмотреть все подписки и их идентификаторы, используйте следующий командлет.
+  Hello `az account set` команды необходим только в том случае, если требуется toouse подписки, отличные от вашей подписки по умолчанию. toosee все подписки и идентификаторов, используйте:
 
   ```azurecli
   az account list
   ```
 
-3. Развертывание может занять несколько минут. По завершении появится сообщение следующего вида.
+3. Hello развертывания может занять несколько минут toocomplete. По завершении появится сообщение следующего вида.
 
   ```azurecli
   "provisioningState": "Succeeded",
   ```
 
-4. Чтобы убедиться, что группа ресурсов и учетная запись хранения были развернуты в вашей подписке, введите следующую команду.
+4. toosee, учетной записи группы и хранения ресурсов, которые были развернуты tooyour подписки, используйте:
 
   ```azurecli
   az group show --name ExampleGroup
   az resource list --resource-group ExampleGroup
   ```
 
-5. Параметры шаблона можно указать в качестве параметров PowerShell при развертывании шаблона. Предыдущий пример не содержал каких-либо параметров шаблона, поэтому в нем использовались значения по умолчанию, заданные в шаблоне. Чтобы развернуть еще одну учетную запись хранения и указать значения параметров для префикса имени хранилища и номера SKU учетной записи хранения, используйте приведенный ниже командлет.
+5. Параметры шаблона можно указать в качестве параметров PowerShell при развертывании шаблона. Hello предыдущий пример не включали никакие параметры шаблона, поэтому используются значения по умолчанию hello в шаблоне hello. toodeploy еще одно хранилище учетную запись, а также указать значения параметров для hello префикс имени хранилища и учетной записи хранилища hello SKU, используйте:
 
   ```azurecli
   az group deployment create --name ExampleDeployment2 --resource-group ExampleGroup --template-file c:\MyTemplates\azuredeploy.json --parameters '{"storageNamePrefix":{"value":"contoso"},"storageSKU":{"value":"Standard_GRS"}}'
@@ -128,7 +128,7 @@ ms.lasthandoff: 07/11/2017
 
 ## <a name="example-storage-template"></a>Пример шаблона хранилища
 
-Используйте приведенный пример шаблона для развертывания учетной записи хранение в своей подписке.
+Используйте следующий пример шаблона toodeploy подписки tooyour учетной записи хранилища hello.
 
 ```json
 {
@@ -140,7 +140,7 @@ ms.lasthandoff: 07/11/2017
       "maxLength": 11,
       "defaultValue": "storage",
       "metadata": {
-        "description": "The value to use for starting the storage account name."
+        "description": "hello value toouse for starting hello storage account name."
       }
     },
     "storageSKU": {
@@ -154,7 +154,7 @@ ms.lasthandoff: 07/11/2017
       ],
       "defaultValue": "Standard_LRS",
       "metadata": {
-        "description": "The type of replication to use for the storage account."
+        "description": "hello type of replication toouse for hello storage account."
       }
     }
   },
@@ -182,8 +182,8 @@ ms.lasthandoff: 07/11/2017
 
 ## <a name="next-steps"></a>Дальнейшие действия
 
-* Дополнительные сведения о развертывании шаблонов с помощью PowerShell см. в статье [Развертывание ресурсов с использованием шаблонов Resource Manager и Azure PowerShell](/azure/azure-resource-manager/resource-group-template-deploy).
-* Дополнительные сведения о развертывании шаблонов с помощью Azure CLI см. в статье [Развертывание ресурсов с использованием шаблонов Resource Manager и Azure CLI](/azure/azure-resource-manager/resource-group-template-deploy-cli).
+* Подробные сведения об использовании шаблонов toodeploy PowerShell см. в разделе [развертывания ресурсов с помощью шаблонов диспетчера ресурсов и Azure PowerShell](/azure/azure-resource-manager/resource-group-template-deploy).
+* Подробные сведения об использовании шаблонов toodeploy Azure CLI. в разделе [развертывания ресурсов с помощью шаблонов диспетчера ресурсов и Azure CLI](/azure/azure-resource-manager/resource-group-template-deploy-cli).
 
 
 

@@ -1,6 +1,6 @@
 ---
-title: "Пример сценария Azure PowerShell. Подключение веб-приложения к базе данных SQL | Документация Майкрософт"
-description: "Пример сценария Azure PowerShell для подключения веб-приложения к базе данных SQL."
+title: "Образец скрипта PowerShell - aaaAzure подключения базы данных SQL web app tooa | Документы Microsoft"
+description: "Сценарий Azure PowerShell пример — подключить приложение веб-tooa база данных SQL"
 services: app-service\web
 documentationcenter: 
 author: syntaxc4
@@ -16,25 +16,25 @@ ms.workload: web
 ms.date: 03/20/2017
 ms.author: cfowler
 ms.custom: mvc
-ms.openlocfilehash: 5312bf6b81d1cc48490b71c3f77323cca23e1559
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 8f80b940378d020cbcaec2c1bbc28bae1a3ef35a
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="connect-a-web-app-to-a-sql-database"></a>Подключение веб-приложения к базе данных SQL
+# <a name="connect-a-web-app-tooa-sql-database"></a>Подключение приложения веб-tooa база данных SQL
 
-В этой статье вы узнаете, как создать базу данных SQL и веб-приложение Azure. Затем вы свяжете базу данных SQL с веб-приложением, используя параметры приложения.
+В этом сценарии вы узнаете, как toocreate базы данных Azure SQL и Azure веб-приложения. Затем будет связан hello SQL базы данных toohello веб-приложения с помощью параметров приложения.
 
-При необходимости установите Azure PowerShell с помощью инструкции, приведенной в [руководстве Azure PowerShell](/powershell/azure/overview), а затем выполните команду `Login-AzureRmAccount`, чтобы создать подключение к Azure.
+При необходимости установите Azure PowerShell с помощью инструкции hello, найденные в hello hello [руководство по Azure PowerShell](/powershell/azure/overview), а затем запустите `Login-AzureRmAccount` toocreate соединения с Azure.
 
 ## <a name="sample-script"></a>Пример скрипта
 
-[!code-powershell[main](../../../powershell_scripts/app-service/connect-to-sql/connect-to-sql.ps1?highlight=13 "Подключение веб-приложения к базе данных SQL")]
+[!code-powershell[main](../../../powershell_scripts/app-service/connect-to-sql/connect-to-sql.ps1?highlight=13 "Connect a web app tooa SQL database")]
 
 ## <a name="clean-up-deployment"></a>Очистка развертывания 
 
-Выполнив пример сценария, вы можете удалить группу ресурсов, веб-приложение и все связанные ресурсы, используя следующую команду.
+После выполнения сценария образец hello hello, следующая команда может быть группа ресурсов используется tooremove hello, веб-приложения и все связанные ресурсы.
 
 ```powershell
 Remove-AzureRmResourceGroup -Name myResourceGroup -Force
@@ -42,7 +42,7 @@ Remove-AzureRmResourceGroup -Name myResourceGroup -Force
 
 ## <a name="script-explanation"></a>Описание скрипта
 
-Этот скрипт использует следующие команды. Для каждой команды в таблице приведены ссылки на соответствующую документацию.
+Этот скрипт использует hello, следующие команды. Каждая команда в таблице hello связывает toocommand документацию.
 
 | Команда | Примечания |
 |---|---|
@@ -56,6 +56,6 @@ Remove-AzureRmResourceGroup -Name myResourceGroup -Force
 
 ## <a name="next-steps"></a>Дальнейшие действия
 
-Дополнительные сведения о модуле Azure PowerShell см. в [документации по Azure PowerShell](/powershell/azure/overview).
+Дополнительные сведения о hello модуля Azure PowerShell см. в разделе [документация по Azure PowerShell](/powershell/azure/overview).
 
-Дополнительные примеры сценариев Azure PowerShell для веб-приложений службы приложений Azure доступны [здесь](../app-service-powershell-samples.md).
+Дополнительные примеры Azure Powershell для веб-приложениях службы приложений Azure можно найти в hello [примеры Azure PowerShell](../app-service-powershell-samples.md).

@@ -1,6 +1,6 @@
 ---
-title: "Обработка больших наборов данных с использованием фабрики данных и пакетной службы | Документация Майкрософт"
-description: "Содержит описание процесса обработки больших объемов данных в конвейере фабрики данных Azure с использованием возможности параллельной обработки пакетной службы Azure."
+title: "aaaProcess крупномасштабных наборы данных, с помощью фабрики данных и пакет | Документы Microsoft"
+description: "Описывает, как конвейер tooprocess огромное количество данных в фабрике данных Azure с помощью возможности параллельной обработки пакетной службы Azure."
 services: data-factory
 documentationcenter: 
 author: spelluru
@@ -14,124 +14,124 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/19/2017
 ms.author: spelluru
-ms.openlocfilehash: 9defbf7a6a515740fa3b3cb1c67a2f5f9d9baa01
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 6788f02de555d2e9d6588cc990a39043866d7e97
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="process-large-scale-datasets-using-data-factory-and-batch"></a>Обработка больших наборов данных с помощью фабрики данных и пакетной службы
-В этой статье описывается архитектура простого решения, которое автоматически и по расписанию перемещает и обрабатывает большие наборы данных. Здесь также предоставлено полное пошаговое руководство по реализации решения с помощью фабрики данных Azure и пакетной службы Azure.
+В этой статье описывается архитектура простого решения, которое автоматически и по расписанию перемещает и обрабатывает большие наборы данных. Он также предоставляет решение hello tooimplement Пошаговое руководство с начала до конца, с помощью фабрики данных Azure и пакета Azure.
 
-Эта статья длиннее обычной статьи, так как в ней содержится пошаговое руководство для всего примера решения. Если вы впервые используете пакетную службу и фабрику данных, здесь вы можете узнать об этих службах и их совместном использовании. Если вы немного знакомы с этими службами и проектируете решение, то можете сосредоточиться только на [разделе об архитектуре](#architecture-of-sample-solution). Если вы разрабатываете прототип или решение, то можете попытаться выполнить пошаговые инструкции из приведенного [руководства](#implementation-of-sample-solution). Мы приветствуем ваши комментарии об этой статье и использовании ее содержимого.
+Эта статья длиннее обычной статьи, так как в ней содержится пошаговое руководство для всего примера решения. Если новый tooBatch и фабрики данных можно узнать об этих службах и о том, как они работают вместе. Если вы знаете, какое-либо службы hello и проектирование/архитектуры решения, вам может сосредоточиться только на hello [архитектура](#architecture-of-sample-solution) статье hello и если вы разрабатываете прототип или решения, вы также можете tootry out Пошаговые инструкции в hello [Пошаговое руководство](#implementation-of-sample-solution). Мы приветствуем ваши комментарии об этой статье и использовании ее содержимого.
 
-Сначала давайте рассмотрим, как фабрика данных и пакетная служба могут быть полезны для обработки больших наборов данных в облаке.     
+Во-первых давайте взглянем на как фабрику данных и пакет служб может помочь с обработкой больших наборов данных в облаке hello.     
 
 ## <a name="why-azure-batch"></a>Сведения о пакетной службе Azure
-Пакетная служба Azure позволяет эффективно запускать приложения, выполняющие крупномасштабные параллельные вычислительные задания с высокой производительностью, в облаке. Это служба платформы, которая планирует запуск ресурсоемких вычислительных задач в управляемой коллекции виртуальных машин и автоматически масштабирует вычислительные ресурсы в соответствии с требованиями задания.
+Пакет Azure позволяет приложениям крупномасштабных параллельных и высокопроизводительных вычислительных систем (HPC) toorun эффективно работает в облаке hello. Она является службой платформы, которая планирует toorun работы с большим объемом вычислений в управляемой коллекции виртуальных машин и может автоматически масштабирование вычислительных потребностей hello toomeet ресурсы заданий.
 
-С помощью пакетной службы вы можете определять вычислительные ресурсы Azure, необходимые для выполнения приложений в параллельном режиме и в нужном масштабе. Вы можете выполнять задания по запросу или по расписанию. При этом вам не нужно вручную создавать и настраивать кластер высокопроизводительных вычислений (HPC), отдельные виртуальные машины, виртуальные сети или сложную инфраструктуру планировщика задач и заданий, а также управлять всеми этими ресурсами.
+С hello пакетная служба можно определить tooexecute Azure вычислительные ресурсы приложения в параллельном режиме, а в масштабе. Можно запустить по требованию или по расписанию заданий и нет необходимости toomanually создания, настройки и управления кластера HPC, отдельных виртуальных машин, виртуальных сетей или сложных заданий и инфраструктуре планирования задач.
 
-Если вы не знакомы с пакетной службой Azure, изучите приведенные ниже статьи. Это поможет вам понять архитектуру и схему реализации решения, описанного в этой статье.   
+См. следующие статьи, если вы не знакомы с пакетной службы Azure, он помогает обеспечивать понимание архитектуры и внедрению hello hello решения, описанные в этой статье hello.   
 
 * [Основные сведения о пакетной службе Azure](../batch/batch-technical-overview.md)
 * [Обзор функций пакетной службы](../batch/batch-api-basics.md)
 
-Чтобы получить дополнительные сведения о пакетной службе Azure, ознакомьтесь со [схемой обучения по пакетной службе Azure](https://azure.microsoft.com/documentation/learning-paths/batch/) (необязательно).
+(необязательно) toolearn Дополнительные сведения о пакетной службы Azure, в разделе hello [план обучения для пакетной службы Azure](https://azure.microsoft.com/documentation/learning-paths/batch/).
 
 ## <a name="why-azure-data-factory"></a>Сведения о фабрике данных Azure
-Фабрика данных представляет собой облачную службу интеграции информации, которая организует и автоматизирует перемещение и преобразование данных. Фабрика данных позволяет создавать управляемые конвейеры данных, которые перемещают данные из локальных и облачных хранилищ данных в централизованное хранилище (например, в хранилище BLOB-объектов Azure), а также обрабатывают и преобразовывают данные с помощью служб, таких как Azure HDInsight и Машинное обучение Azure. Вы можете планировать запуск конвейеров данных по расписанию (ежечасно, ежедневно, еженедельно и т. д.), отслеживать их состояние и управлять ими, чтобы обнаруживать проблемы и принимать меры.
+Фабрика данных — службы интеграции облачных данных, которая координирует и автоматизирует процессы hello перемещения и преобразования данных. С помощью hello служба фабрики данных, можно создать управляемые данные конвейеры, перемещения данных из локальных и облачных данных сохраняет tooa централизованное хранилище данных (например: хранилища больших двоичных объектов) и процесс или преобразования данных с помощью служб, таких как Azure HDInsight и Azure Машинное обучение. Можно также планировать toorun конвейеры данных в мониторе и запланированных способом (ежечасно, ежедневно, еженедельно, т. д.) и управлять ими в tooidentify Обзор проблемы и предпринять действия.
 
-Если вы не знакомы с фабрикой данных Azure, просмотрите приведенные ниже статьи. Это поможет понять архитектуру и реализацию решения, описанного в этой статье.  
+См. следующие статьи, если вы не знакомы с фабрикой данных Azure, он помогает обеспечивать понимание архитектуры и внедрению hello hello решения, описанные в этой статье hello.  
 
 * [Общие сведения о службе фабрики данных Azure](data-factory-introduction.md)
 * [Построение конвейера данных](data-factory-build-your-first-pipeline.md)   
 
-Чтобы получить дополнительные сведения о фабрике данных Azure, ознакомьтесь со [схемой обучения по фабрике данных Azure](https://azure.microsoft.com/documentation/learning-paths/data-factory/) (необязательно).
+(необязательно) toolearn Дополнительные сведения о фабрики данных Azure, в разделе hello [план обучения для фабрики данных Azure](https://azure.microsoft.com/documentation/learning-paths/data-factory/).
 
 ## <a name="data-factory-and-batch-together"></a>Совместное использование фабрики данных и пакетной службы
-Фабрика данных включает в себя встроенные действия, например действие копирования, позволяющее копировать или перемещать данные из исходного хранилища данных в целевое, и действие HIVE, позволяющее обрабатывать данные с использованием кластеров Hadoop (HDInsight) в Azure. Список поддерживаемых действий преобразования см. в [этой статье](data-factory-data-transformation-activities.md).
+Фабрика данных включает встроенные действия, такие как действие копирования toocopy или перемещения данных из источника данных хранить tooa целевое хранилище данных и данные tooprocess действие Hive, с использованием кластеров Hadoop (HDInsight) в Azure. Список поддерживаемых действий преобразования см. в [этой статье](data-factory-data-transformation-activities.md).
 
-Благодаря этой службе вы можете также создавать настраиваемые действия .NET для перемещения или обработки данных с помощью собственной логики, а также выполнять эти действия в кластере Azure HDInsight или в пуле виртуальных машин пакетной службы Azure. При использовании пакетной службы Azure можно настроить автоматическое масштабирование пула (добавление или удаление виртуальных машин в зависимости от рабочей нагрузки) по предоставленной формуле.     
+Также позволяет вам toocreate пользовательских действий .NET toomove или процесс данных с помощью собственной логики и выполните эти действия для кластера Azure HDInsight или пула виртуальных машин. При использовании пакета Azure можно настроить hello пула tooauto масштабирование (Добавление или удаление виртуальных машин на основе рабочей нагрузки hello) на основе формулы, указываемые.     
 
 ## <a name="architecture-of-sample-solution"></a>Архитектура примера решения
-Несмотря на то, что архитектура, описанная в этой статье, предназначена для простого решения, она подходит для таких сложных сценариев, как моделирование рисков по финансовым услугам, обработка и отрисовка изображений и геномный анализ.
+Несмотря на то, что архитектура hello, описанных в этой статье предназначен для простого решения, это применимо toocomplex сценариев, таких как рисков или моделирование финансовых служб, обработка изображений и подготовки к просмотру и генома анализа.
 
-На схеме показано, как фабрика данных управляет перемещением и обработкой данных и как пакетная служба Azure параллельно обрабатывает данные. Скачайте и распечатайте схему для удобства (в формате 297 x 420 мм или А3): [Управление данными и высокопроизводительными вычислениями с помощью пакетной службы и фабрики данных Azure](http://go.microsoft.com/fwlink/?LinkId=717686).
+Hello диаграмме 1) как фабрика данных управляет перемещение данных и обработки и (2) как пакетной службы Azure обрабатывает hello данных параллельных способом. Загрузка и Здравствуй, мир схемы для простоты обращения (11 x 17 дюймов. или А3): [Управление данными и высокопроизводительными вычислениями с помощью пакетной службы и фабрики данных Azure](http://go.microsoft.com/fwlink/?LinkId=717686).
 
 [![Схема обработки данных большого объема](./media/data-factory-data-processing-using-batch/image1.png)](http://go.microsoft.com/fwlink/?LinkId=717686)
 
-Ниже приведен список основных этапов процесса. Решение содержит код и указания по созданию комплексного решения.
+Hello ниже приведены основные этапы процесса hello hello. Hello решение включает в себя код и объяснения toobuild hello решения начала до конца.
 
-1. **Настройка пула вычислительных узлов (виртуальные машины) для пакетной службы Azure**. Можно указать количество узлов и размер каждого из них.
+1. **Настройка пула вычислительных узлов (виртуальные машины) для пакетной службы Azure**. Можно указать hello числом узлов и размер каждого узла.
 2. **Создание экземпляра фабрики данных Azure** , для которого настраиваются сущности, представляющие хранилище BLOB-объектов, службу вычислений пакетной службы Azure, входные и выходные данные, а также рабочий процесс и конвейер с действиями, позволяющими перемещать и преобразовывать данные.
-3. **Создание настраиваемого действия .NET в конвейере фабрики данных**. Действие является пользовательским кодом, который выполняется в пуле пакетной службы Azure.
+3. **Создание настраиваемого действия .NET в конвейере данных фабрики hello**. Действие Hello-пользовательского кода, выполняемого на hello пула.
 4. **Сохранение больших объемов входных данных в виде больших двоичных объектов в службе хранилища Azure**. Данные при этом разделяются на логические срезы (обычно по времени).
-5. **Фабрика данных копирует данные, которые параллельно обрабатываются** и передаются в дополнительное расположение.
-6. **Фабрика данных запускает настраиваемое действие с помощью пула, выделенного пакетной службой**. Действия в фабрике данных могут выполняться параллельно. В каждом действии обрабатывается один срез данных. Результаты сохраняются в службе хранилища Azure.
-7. **Фабрика данных перемещает окончательные результаты в третье расположение**для распространения с помощью приложения или дальнейшей обработки с помощью других инструментов.
+5. **Фабрика данных копирует данные, которые обрабатываются параллельно** toohello вторичное расположение.
+6. **Фабрики данных выполняется с помощью пула hello, выделенной с помощью пакета пользовательское действие hello**. Действия в фабрике данных могут выполняться параллельно. В каждом действии обрабатывается один срез данных. Hello результаты хранятся в хранилище Azure.
+7. **Фабрика данных перемещает hello окончательные результаты tooa третье расположение**, либо для распространения приложения, либо для дальнейшей обработки другими средствами.
 
 ## <a name="implementation-of-sample-solution"></a>Реализация примера решения
-Пример решения намеренно простой, чтобы продемонстрировать совместное использование фабрики данных и пакетной службы для обработки наборов данных. Решение просто вычисляет количество вхождений условия поиска (Microsoft) во входных файлах, упорядоченных по временным рядам. Количество выводится в выходные файлы.
+Образец Hello решения намеренно простые и является tooshow вы как toouse фабрику данных и пакета вместе tooprocess наборов данных. решение Hello просто подсчитывает hello число вхождений условие поиска («Microsoft») во входных файлах, организованных во временных рядах. Он выводит файлы toooutput число hello.
 
-**Время**. Если вы знакомы с основами использования Azure, фабрики данных и пакетной службы, а также выполнили предварительные требования, перечисленные ниже, создание решения должно занять 1–2 часа.
+**Время**: Если вы знакомы с основами Azure, фабрике данных и пакет и иметь завершенного hello предварительные требования, перечисленные ниже, по нашим оценкам, это решение принимает toocomplete 1 – 2 часов.
 
 ### <a name="prerequisites"></a>Предварительные требования
 #### <a name="azure-subscription"></a>Подписка Azure.
 Если у вас нет подписки Azure, то всего за несколько минут можно создать бесплатную пробную учетную запись. Узнайте больше о [бесплатной пробной версии](https://azure.microsoft.com/pricing/free-trial/).
 
 #### <a name="azure-storage-account"></a>Учетная запись хранения Azure.
-Учетная запись хранения Azure используется в этом учебнике для хранения данных. Если у вас нет учетной записи хранения Azure, ознакомьтесь с разделом [Создание учетной записи хранения](../storage/common/storage-create-storage-account.md#create-a-storage-account). В примере решения используется хранилище BLOB-объектов.
+Использовать учетную запись хранилища Azure для хранения данных hello в этом учебнике. Если у вас нет учетной записи хранения Azure, ознакомьтесь с разделом [Создание учетной записи хранения](../storage/common/storage-create-storage-account.md#create-a-storage-account). Образец Hello решения используется хранилище больших двоичных объектов.
 
 #### <a name="azure-batch-account"></a>Учетная запись пакетной службы Azure
-Создание учетной записи пакетной службы Azure на [портале Azure](http://manage.windowsazure.com/). Ознакомьтесь со статьей [Создание учетной записи пакетной службы Azure и управление ею](../batch/batch-account-create-portal.md). Запишите ключ и имя учетной записи пакетной службы Azure. Для создания учетной записи пакетной службы Azure можно также воспользоваться командлетом [New-AzureRmBatchAccount](https://msdn.microsoft.com/library/mt603749.aspx). Подробные инструкции по использованию этого командлета см. в статье [Приступая к работе с командлетами PowerShell пакетной службы Azure](../batch/batch-powershell-cmdlets-get-started.md).
+Создать учетную запись пакетной службы Azure с помощью hello [портал Azure](http://manage.windowsazure.com/). Ознакомьтесь со статьей [Создание учетной записи пакетной службы Azure и управление ею](../batch/batch-account-create-portal.md). Обратите внимание, hello пакетной службы Azure имя и ключ учетной записи учетную запись. Можно также использовать [New AzureRmBatchAccount](https://msdn.microsoft.com/library/mt603749.aspx) toocreate командлет учетной записи пакетной службы Azure. Подробные инструкции по использованию этого командлета см. в статье [Приступая к работе с командлетами PowerShell пакетной службы Azure](../batch/batch-powershell-cmdlets-get-started.md).
 
-В примере решения используется пакетная служба Azure (косвенно, через конвейер фабрики данных Azure) для параллельной обработки данных в пуле вычислительных узлов (управляемой коллекции виртуальных машин).
+Образец Hello решения использует данные tooprocess пакетной службы Azure (косвенно с помощью конвейера фабрики данных Azure) в виде параллельных в пуле вычислительных узлов (управляемой коллекции виртуальных машин).
 
 #### <a name="azure-batch-pool-of-virtual-machines-vms"></a>Пул виртуальных машин пакетной службы Azure
 Создайте **пул пакетной службы Azure** с как минимум 2 вычислительными узлами.
 
-1. На [портале Azure](https://portal.azure.com) щелкните **Обзор** в меню слева и выберите **Уч. записи пакетной службы**.
-2. Выберите свою учетную запись пакетной службы Azure, чтобы открыть колонку **Учетная запись пакетной службы** .
+1. В hello [портал Azure](https://portal.azure.com), нажмите кнопку **Обзор** в hello в левом меню и нажмите кнопку **учетные записи пакетного**.
+2. Выберите ваш hello tooopen учетной записи пакетной службы Azure **пакетной учетной записи** колонку.
 3. Щелкните элемент **Пулы** .
-4. В колонке **Пулы** нажмите кнопку "Добавить" на панели инструментов, чтобы добавить пул.
-   1. Введите идентификатор для пула (**идентификатор пула**). Сохраните **идентификатор пула**. Он понадобится при создании решения фабрики данных.
-   2. В качестве параметра семейства операционных систем укажите **Windows Server 2012 R2** .
+4. В hello **пулы** колонке нажмите кнопку Добавить на панель инструментов hello tooadd пул.
+   1. Введите идентификатор пула hello (**идентификатор пула**). Примечание hello **идентификатор пула hello**; необходимо при создании решения hello фабрики данных.
+   2. Укажите **Windows Server 2012 R2** для приветствия семейство операционных систем.
    3. Выберите **Ценовая категория для узлов**.
-   4. Для параметра **Выделенный целевой объект** укажите значение **2**.
-   5. Для параметра **Максимальное число заданий на узел** укажите значение **2**.
-   6. Нажмите кнопку **ОК** , чтобы создать пул.
+   4. Введите **2** как значение для hello **выделенной целевой** параметр.
+   5. Введите **2** как значение для hello **Max задач на каждом узле** параметр.
+   6. Нажмите кнопку **ОК** toocreate hello пула.
 
-#### <a name="azure-storage-explorer"></a>Обозреватель хранилищ Azure
-[Azure Storage Explorer 6 (инструмент)](https://azurestorageexplorer.codeplex.com/) или [CloudXplorer](http://clumsyleaf.com/products/cloudxplorer) (от ClumsyLeaf Software). Эти инструменты предназначены для проверки и изменения данных в проектах службы хранилища Azure, включая журналы облачных приложений.
+#### <a name="azure-storage-explorer"></a>обозреватель хранилищ Azure
+[Azure Storage Explorer 6 (инструмент)](https://azurestorageexplorer.codeplex.com/) или [CloudXplorer](http://clumsyleaf.com/products/cloudxplorer) (от ClumsyLeaf Software). Используйте эти средства для проверки и изменения данных hello в проектах хранилища Azure, включая hello журналы приложений, размещенных в облаке.
 
 1. Создайте контейнер **mycontainer** с закрытым доступом (без анонимного доступа).
-2. При использовании **CloudXplorer**создавайте папки и подпапки со следующей структурой:
+2. Если вы используете **CloudXplorer**, создавать папки и подпапки с hello следующие структуры:
 
    ![](./media/data-factory-data-processing-using-batch/image3.png)
 
-   `Inputfolder`и `outputfolder` — это папки верхнего уровня в `mycontainer`. `inputfolder` содержит вложенные папки с метками даты и времени (ГГГГ-ММ-ДД-ЧЧ).
+   `Inputfolder`и `outputfolder` — это папки верхнего уровня в `mycontainer`. Hello `inputfolder` содержит подпапки с метки даты и времени (гггг-мм-дд-ЧЧ).
 
-   При использовании **Azure Storage Explorer** на следующем шаге необходимо передать файлы с именами `inputfolder/2015-11-16-00/file.txt`, `inputfolder/2015-11-16-01/file.txt` и т. д. На этом шаге автоматически будут созданы папки.
-3. Создайте на компьютере текстовый файл **file.txt** с содержимым, в котором есть ключевое слово **Microsoft**. Например, test custom activity Microsoft test custom activity Microsoft.
-4. Отправьте файл в следующие входные папки хранилища BLOB-объектов Azure.
+   Если вы используете **обозреватель хранилищ Azure**, в следующем шаге hello необходимы tooupload файлы с именами: `inputfolder/2015-11-16-00/file.txt`, `inputfolder/2015-11-16-01/file.txt` и т. д. Этот шаг автоматически создаются папки hello.
+3. Создайте текстовый файл **файла file.txt** на компьютере с содержимым, которое содержит ключевое слово hello **Microsoft**. Например, test custom activity Microsoft test custom activity Microsoft.
+4. Отправьте файл toohello hello, после ввода папок в хранилище больших двоичных объектов.
 
    ![](./media/data-factory-data-processing-using-batch/image4.png)
 
-   При использовании **Azure Storage Explorer** передайте файл **file.txt** в контейнер **mycontainer**. На панели инструментов щелкните **Копировать**, чтобы создать копию большого двоичного объекта. В диалоговом окне **Копирование большого двоичного объекта** измените **имя целевого большого двоичного объекта** на `inputfolder/2015-11-16-00/file.txt`. Повторите этот шаг, чтобы создать `inputfolder/2015-11-16-01/file.txt`, `inputfolder/2015-11-16-02/file.txt`, `inputfolder/2015-11-16-03/file.txt`, `inputfolder/2015-11-16-04/file.txt` и т. д. Это действие автоматически создает данные папки.
-5. Создайте другой контейнер с именем: `customactivitycontainer`. В этот контейнер передается ZIP-файл настраиваемого действия.
+   Если вы используете **обозреватель хранилищ Azure**, отправьте файл hello **файла file.txt** слишком**mycontainer**. Нажмите кнопку **копирования** на toocreate инструментов hello копию hello большого двоичного объекта. В hello **копирования BLOB-объекта** диалоговое окно, изменение hello **имя BLOB-объекта назначения** слишком`inputfolder/2015-11-16-00/file.txt`. Повторите этот шаг toocreate `inputfolder/2015-11-16-01/file.txt`, `inputfolder/2015-11-16-02/file.txt`, `inputfolder/2015-11-16-03/file.txt`, `inputfolder/2015-11-16-04/file.txt` и т. д. Это действие автоматически создает папки hello.
+5. Создайте другой контейнер с именем: `customactivitycontainer`. Необходимо отправить контейнер toothis hello пользовательское действие ZIP-файла.
 
 #### <a name="visual-studio"></a>Visual Studio
-Установите Microsoft Visual Studio 2012 или более поздней версии, чтобы создать настраиваемое действие пакетной службы, которое будет использоваться в решении фабрики данных.
+Установите Microsoft Visual Studio 2012 или более поздней версии toocreate hello пользовательского пакета действие toobe используется в hello решения фабрики данных.
 
-### <a name="high-level-steps-to-create-the-solution"></a>Пошаговое создание решения
-1. Создайте настраиваемое действие, содержащее логику обработки данных.
-2. Создайте фабрику данных Azure, которая использует настраиваемое действие:
+### <a name="high-level-steps-toocreate-hello-solution"></a>Пошаговые инструкции по toocreate hello решения
+1. Создание пользовательского действия, содержащего логику обработки данных hello.
+2. Создайте фабрикой данных Azure, который использует пользовательское действие hello:
 
-### <a name="create-the-custom-activity"></a>Создание пользовательского действия
-Настраиваемое действие фабрики данных составляет основу этого примера решения. Для выполнения этого действия в решении используется пакетная служба Azure. Общие сведения о разработке настраиваемых действий и их использовании в конвейере фабрики данных Azure см. в статье [Использование настраиваемых действий в конвейере фабрики данных Azure](data-factory-use-custom-activities.md).
+### <a name="create-hello-custom-activity"></a>Создание настраиваемого действия hello
+Фабрика данных пользовательское действие Hello — основа hello в этом образце решения. Образец Hello решения использует пакетной службы Azure toorun hello пользовательского действия. В разделе [использовать настраиваемые действия в конвейере фабрики данных Azure](data-factory-use-custom-activities.md) для hello основные сведения toodevelop настраиваемые действия и использовать их в фабрике данных Azure конвейеров.
 
-Чтобы создать настраиваемое действие .NET, которое можно использовать в конвейере фабрики данных Azure, необходимо создать проект **библиотеки классов .NET** с классом, который реализует интерфейс **IDotNetActivity**. У этого интерфейса только один метод — **Execute**. Подпись метода выглядит следующим образом:
+toocreate .NET пользовательского действия, которое можно использовать в конвейере фабрики данных Azure необходимо toocreate **библиотеки классов .NET** проекта с классом, который реализует **IDotNetActivity** интерфейса. У этого интерфейса только один метод — **Execute**. Вот hello сигнатура метода hello.
 
 ```csharp
 public IDictionary<string, string> Execute(
@@ -141,38 +141,38 @@ public IDictionary<string, string> Execute(
             IActivityLogger logger)
 ```
 
-У этого метода есть несколько ключевых компонентов, с которыми нужно разобраться.
+метод Hello имеет несколько ключевых компонентов, необходимо toounderstand.
 
-* Метод принимает четыре параметра:
+* метод Hello принимает четыре параметра:
 
-  1. **linkedServices** — это перечисляемый список связанных служб, которые связывают источники входных и выходных данных (например, хранилище BLOB-объектов Azure) с фабрикой данных. В этом примере присутствует только одна связанная служба (служба хранилища Azure), которая используется для входных и выходных данных.
-  2. **наборы данных**. это перечисляемый список наборов данных. Этот параметр можно использовать для получения расположений и схем, которые определяются входными и выходными наборами данных.
-  3. **activity** — этот параметр представляет текущую вычислительную сущность (в этом примере — пакетную службу Azure).
-  4. **logger** — средство ведения журнала позволяет записывать комментарии отладки, которые отображаются в виде пользовательского журнала для конвейера.
-* Этот метод возвращает словарь, который можно будет использовать для создания цепочки из настраиваемых действий в будущем. Эта функция еще не реализована, поэтому из метода просто возвращается пустой словарь.
+  1. **linkedServices** — Перечислимый список связанных служб, связывающих источники данных ввода вывода (например: хранилища больших двоичных объектов) toohello фабрики данных. В этом примере присутствует только одна связанная служба (служба хранилища Azure), которая используется для входных и выходных данных.
+  2. **наборы данных**. это перечисляемый список наборов данных. Можно использовать этот параметр tooget hello расположения и схем, определенных путем наборов входных и выходных данных.
+  3. **activity** — Этот параметр представляет hello текущей вычислений сущности - в этом случае пакетной службы Azure.
+  4. **logger** — Hello средства ведения журнала позволяет создавать комментарии отладки поверхности, как «User» журнала для hello hello конвейера.
+* метод Hello возвращает словарь, который может быть настраиваемых действий используется toochain друг с другом в будущем hello. Эта функция еще не реализован, чтобы возвращаемые пустой словарь из метода hello.
 
-#### <a name="procedure-create-the-custom-activity"></a>Процедура. Создание настраиваемого действия
+#### <a name="procedure-create-hello-custom-activity"></a>Процедура: Создание настраиваемого действия hello
 1. Создайте проект библиотеки классов .NET в Visual Studio:
 
    1. Запустите **Visual Studio 2012,** /**Visual Studio 2013 или Visual Studio 2015**.
-   2. Щелкните **Файл**, наведите указатель мыши на пункт **Создать** и щелкните **Проект**.
-   3. Разверните раздел **Шаблоны** и выберите **Visual C#\#**. В этом руководстве используется язык C\#, но для создания настраиваемого действия вы можете использовать любой язык .NET.
-   4. Выберите тип **Библиотека классов** из списка типов проектов справа.
-   5. В поле **Имя** введите **MyDotNetActivity**.
-   6. В поле **Расположение\\ выберите** C:**ADF**. Создайте папку **ADF** , если она не существует.
-   7. Нажмите кнопку **ОК** , чтобы создать проект.
-2. Щелкните **Инструменты**, наведите указатель мыши на **Диспетчер пакетов NuGet** и щелкните **Консоль диспетчера пакетов**.
-3. В **консоли диспетчера пакетов** выполните следующую команду, чтобы импортировать пакет **Microsoft.Azure.Management.DataFactories**.
+   2. Нажмите кнопку **файл**, слишком точки**New**и нажмите кнопку **проекта**.
+   3. Разверните раздел **Шаблоны** и выберите **Visual C#\#**. В этом пошаговом руководстве используется C\#, но можно использовать любой .NET языка toodevelop hello пользовательского действия.
+   4. Выберите **библиотеки классов** hello списке типов проекта на hello вправо.
+   5. Введите **MyDotNetActivity** для hello **имя**.
+   6. Выберите **C:\\ADF** для hello **расположение**. Создайте папку hello **ADF** , если он не существует.
+   7. Нажмите кнопку **ОК** toocreate hello проекта.
+2. Нажмите кнопку **средства**, слишком точки**диспетчера пакетов NuGet**и нажмите кнопку **консоль диспетчера пакетов**.
+3. В hello **консоль диспетчера пакетов**, выполните следующие команды tooimport hello **Microsoft.Azure.Management.DataFactories**.
 
     ```powershell
     Install-Package Microsoft.Azure.Management.DataFactories
     ```
-4. Импортируйте пакет NuGet для **службы хранилища Azure** в проект. Он нужен, так как в данном примере используется API хранилища BLOB-объектов.
+4. Импорт hello **хранилища Azure** пакета NuGet в проекте toohello. Этот пакет необходимо так, как использовать API-Интерфейс хранилища больших двоичных объектов hello в этом образце.
 
     ```powershell
     Install-Package Azure.Storage
     ```
-5. Добавьте следующие директивы с **using** в исходный файл в проекте.
+5. Добавьте следующее hello **с помощью** директивы toohello исходный файл в проекте hello.
 
     ```csharp
     using System.IO;
@@ -186,22 +186,22 @@ public IDictionary<string, string> Execute(
     using Microsoft.WindowsAzure.Storage;
     using Microsoft.WindowsAzure.Storage.Blob;
     ```
-6. Измените имя **пространства имен** на **MyDotNetActivityNS**.
+6. Изменение имени hello объекта hello **имен** слишком**MyDotNetActivityNS**.
 
     ```csharp
     namespace MyDotNetActivityNS
     ```
-7. Измените имя класса на **MyDotNetActivity** и извлеките класс из интерфейса **IDotNetActivity**, как показано ниже.
+7. Изменение имени hello класса hello слишком**MyDotNetActivity** и производными hello **IDotNetActivity** интерфейс, как показано ниже.
 
     ```csharp
     public class MyDotNetActivity : IDotNetActivity
     ```
-8. Реализуйте (добавьте) метод **Execute** интерфейса **IDotNetActivity** для класса **MyDotNetActivity** и скопируйте следующий пример кода в этот метод. Объяснение логики, используемой в этом методе, см. в разделе [Метод Execute](#execute-method).
+8. Реализуйте (Добавить) hello **Execute** метод hello **IDotNetActivity** интерфейс toohello **MyDotNetActivity** hello класса и скопируйте следующий образец кода toohello метода. В разделе hello [выполнить метод](#execute-method) чтобы пояснения для hello логику, используемую в этом методе.
 
     ```csharp
     /// <summary>
-    /// Execute method is the only method of IDotNetActivity interface you must implement.
-    /// In this sample, the method invokes the Calculate method to perform the core logic.  
+    /// Execute method is hello only method of IDotNetActivity interface you must implement.
+    /// In this sample, hello method invokes hello Calculate method tooperform hello core logic.  
     /// </summary>
     public IDictionary<string, string> Execute(
        IEnumerable<LinkedService> linkedServices,
@@ -218,7 +218,7 @@ public IDictionary<string, string> Execute(
        foreach (LinkedService ls in linkedServices)
            logger.Write("linkedService.Name {0}", ls.Name);
     
-       // using First method instead of Single since we are using the same
+       // using First method instead of Single since we are using hello same
        // Azure Storage linked service for input and output.
        inputLinkedService = linkedServices.First(
            linkedService =>
@@ -226,18 +226,18 @@ public IDictionary<string, string> Execute(
            inputDataset.Properties.LinkedServiceName).Properties.TypeProperties
            as AzureStorageLinkedService;
     
-       string connectionString = inputLinkedService.ConnectionString; // To create an input storage client.
+       string connectionString = inputLinkedService.ConnectionString; // toocreate an input storage client.
        string folderPath = GetFolderPath(inputDataset);
        string output = string.Empty; // for use later.
     
-       // create storage client for input. Pass the connection string.
+       // create storage client for input. Pass hello connection string.
        CloudStorageAccount inputStorageAccount = CloudStorageAccount.Parse(connectionString);
        CloudBlobClient inputClient = inputStorageAccount.CreateCloudBlobClient();
     
-       // initialize the continuation token before using it in the do-while loop.
+       // initialize hello continuation token before using it in hello do-while loop.
        BlobContinuationToken continuationToken = null;
        do
-       {   // get the list of input blobs from the input storage client object.
+       {   // get hello list of input blobs from hello input storage client object.
            BlobResultSegment blobList = inputClient.ListBlobsSegmented(folderPath,
                                     true,
                                     BlobListingDetails.Metadata,
@@ -246,43 +246,43 @@ public IDictionary<string, string> Execute(
                                     null,
                                     null);
     
-           // Calculate method returns the number of occurrences of
-           // the search term (“Microsoft”) in each blob associated
-           // with the data slice.
+           // Calculate method returns hello number of occurrences of
+           // hello search term (“Microsoft”) in each blob associated
+           // with hello data slice.
            //
-           // definition of the method is shown in the next step.
+           // definition of hello method is shown in hello next step.
            output = Calculate(blobList, logger, folderPath, ref continuationToken, "Microsoft");
     
        } while (continuationToken != null);
     
-       // get the output dataset using the name of the dataset matched to a name in the Activity output collection.
+       // get hello output dataset using hello name of hello dataset matched tooa name in hello Activity output collection.
        Dataset outputDataset = datasets.Single(dataset => dataset.Name == activity.Outputs.Single().Name);
     
        folderPath = GetFolderPath(outputDataset);
     
-       logger.Write("Writing blob to the folder: {0}", folderPath);
+       logger.Write("Writing blob toohello folder: {0}", folderPath);
     
-       // create a storage object for the output blob.
+       // create a storage object for hello output blob.
        CloudStorageAccount outputStorageAccount = CloudStorageAccount.Parse(connectionString);
-       // write the name of the file.
+       // write hello name of hello file.
        Uri outputBlobUri = new Uri(outputStorageAccount.BlobEndpoint, folderPath + "/" + GetFileName(outputDataset));
     
        logger.Write("output blob URI: {0}", outputBlobUri.ToString());
-       // create a blob and upload the output text.
+       // create a blob and upload hello output text.
        CloudBlockBlob outputBlob = new CloudBlockBlob(outputBlobUri, outputStorageAccount.Credentials);
-       logger.Write("Writing {0} to the output blob", output);
+       logger.Write("Writing {0} toohello output blob", output);
        outputBlob.UploadText(output);
     
-       // The dictionary can be used to chain custom activities together in the future.
+       // hello dictionary can be used toochain custom activities together in hello future.
        // This feature is not implemented yet, so just return an empty dictionary.
        return new Dictionary<string, string>();
     }
     ```
-9. Добавьте в класс следующие вспомогательные методы. Их вызывает метод **Execute** . Самое главное, метод **Calculate** изолирует код, который выполняет итерацию каждого большого двоичного объекта.
+9. Добавьте следующий вспомогательный класс toohello методы hello. Эти методы вызываются hello **Execute** метод. Здравствуйте, самое главное, **Calculate** метод изолирует hello код, выполняющий перебор элементов каждого большого двоичного объекта.
 
     ```csharp
     /// <summary>
-    /// Gets the folderPath value from the input/output dataset.
+    /// Gets hello folderPath value from hello input/output dataset.
     /// </summary>
     private static string GetFolderPath(Dataset dataArtifact)
     {
@@ -301,7 +301,7 @@ public IDictionary<string, string> Execute(
     }
     
     /// <summary>
-    /// Gets the fileName value from the input/output dataset.
+    /// Gets hello fileName value from hello input/output dataset.
     /// </summary>
     
     private static string GetFileName(Dataset dataArtifact)
@@ -321,8 +321,8 @@ public IDictionary<string, string> Execute(
     }
     
     /// <summary>
-    /// Iterates through each blob (file) in the folder, counts the number of instances of search term in the file,
-    /// and prepares the output text that is written to the output blob.
+    /// Iterates through each blob (file) in hello folder, counts hello number of instances of search term in hello file,
+    /// and prepares hello output text that is written toohello output blob.
     /// </summary>
     
     public static string Calculate(BlobResultSegment Bresult, IActivityLogger logger, string folderPath, ref BlobContinuationToken token, string searchTerm)
@@ -341,13 +341,13 @@ public IDictionary<string, string> Execute(
                                 where word.ToLowerInvariant() == searchTerm.ToLowerInvariant()
                                 select word;
                int wordCount = matchQuery.Count();
-               output += string.Format("{0} occurrences(s) of the search term \"{1}\" were found in the file {2}.\r\n", wordCount, searchTerm, inputBlob.Name);
+               output += string.Format("{0} occurrences(s) of hello search term \"{1}\" were found in hello file {2}.\r\n", wordCount, searchTerm, inputBlob.Name);
            }
        }
        return output;
     }
     ```
-    Метод **GetFolderPath** возвращает путь к папке, на которую указывает набор данных, а метод **GetFileName** — имя большого двоичного объекта или файла, на который указывает набор данных.
+    Hello **GetFolderPath** метод возвращает папку toohello hello, hello tooand точки набора данных hello **GetFileName** метод возвращает имя hello hello большого двоичного объекта или файла, который hello указывает набор данных.
 
     ```csharp
 
@@ -360,26 +360,26 @@ public IDictionary<string, string> Execute(
             "folderPath": "mycontainer/inputfolder/{Year}-{Month}-{Day}-{Hour}",
     ```
 
-    Метод **Calculate** вычисляет количество экземпляров ключевого слова **Microsoft** во входных файлах (в больших двоичных объектах в папке). Условие поиска (Microsoft) жестко задано в коде.
+    Hello **Calculate** метод вычисляет hello число экземпляров ключевое слово **Microsoft** во входных файлах hello (большие двоичные объекты в папке hello). условие поиска Hello («Microsoft») жестко закодирована в коде hello.
 
-1. Скомпилируйте проект. В меню щелкните **Построить** и **Построить решение**.
-2. Запустите **проводник Windows** и перейдите к папке **bin\\debug** или **bin\\release** в зависимости от типа сборки.
-3. Создайте ZIP-файл **MyDotNetActivity.zip**, который содержит все двоичные файлы из папки **\\bin\\Debug**. Можно также добавить файл MyDotNetActivity.**pdb**, чтобы в случае сбоя получить дополнительные сведения, например номер строки в исходном коде, вызвавшей ошибку.
+1. Скомпилируйте проект hello. Нажмите кнопку **построения** из hello меню и выберите пункт **построить решение**.
+2. Запустите **Проводник**и перейдите в слишком**bin\\отладки** или **bin\\выпуска** папку, в зависимости от типа hello сборки.
+3. Создать ZIP-файл **MyDotNetActivity.zip** , содержащий все двоичные файлы hello в hello  **\\bin\\отладки** папки. Вы можете tooinclude hello MyDotNetActivity. **pdb** так, чтобы получить дополнительные сведения, такие как номер строки в исходном коде hello, вызвавшего проблему hello, когда происходит сбой.
 
    ![](./media/data-factory-data-processing-using-batch/image5.png)
-4. Передайте архив **MyDotNetActivity.zip** в качестве большого двоичного объекта в контейнер больших двоичных объектов `customactivitycontainer` в хранилище BLOB-объектов Azure (используется связанной службой **StorageLinkedService** в **ADFTutorialDataFactor**). Если контейнер `customactivitycontainer` еще не существует, создайте его.
+4. Отправка **MyDotNetActivity.zip** как контейнер больших двоичных объектов blob toohello: `customactivitycontainer` в hello Azure хранилище больших двоичных объектов, hello **StorageLinkedService** связанная служба в hello  **ADFTutorialDataFactory** использует. Создание контейнера больших двоичных объектов hello `customactivitycontainer` , если он еще не существует.
 
 #### <a name="execute-method"></a>Метод Execute
-В этом разделе содержатся дополнительные сведения и примечания о коде в методе Execute.
+Этот раздел содержит дополнительные сведения и заметки о hello код в метод Execute hello.
 
-1. Элементы для выполнения итерации входной коллекции находятся в пространстве имен [Microsoft.WindowsAzure.Storage.Blob](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.storage.blob.aspx). Для итерации коллекции больших двоичных объектов необходимо использовать класс **BlobContinuationToken**. В сущности, необходимо использовать цикл do-while и маркер в качестве механизма для выхода из цикла. Дополнительные сведения см. в статье [Использование хранилища BLOB-объектов из .NET](../storage/blobs/storage-dotnet-how-to-use-blobs.md). Базовый цикл выглядит так:
+1. члены Hello для прохода по коллекции входных hello находятся в hello [Microsoft.WindowsAzure.Storage.Blob](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.storage.blob.aspx) пространства имен. Прохода по коллекции hello больших двоичных объектов, необходимо использовать hello **BlobContinuationToken** класса. По сути, необходимо использовать оператор do-во время цикла с маркером hello в качестве механизма hello для выхода из цикла hello. Дополнительные сведения см. в разделе [как toouse хранилища BLOB-объектов из .NET](../storage/blobs/storage-dotnet-how-to-use-blobs.md). Базовый цикл выглядит так:
 
     ```csharp
-    // Initialize the continuation token.
+    // Initialize hello continuation token.
     BlobContinuationToken continuationToken = null;
     do
     {
-    // Get the list of input blobs from the input storage client object.
+    // Get hello list of input blobs from hello input storage client object.
     BlobResultSegment blobList = inputClient.ListBlobsSegmented(folderPath,
     
                          true,
@@ -395,60 +395,60 @@ public IDictionary<string, string> Execute(
     } while (continuationToken != null);
 
     ```
-   Дополнительные сведения см. в документации по методу [ListBlobsSegmented](https://msdn.microsoft.com/library/jj717596.aspx).
-2. Код для работы с набором больших двоичных объектов логически находится в цикле do-while. В методе **Execute** цикл do-while передает список больших двоичных объектов в метод **Calculate**. Этот метод возвращает строковую переменную с именем **output** , которая является результатом итерации всех больших двоичных объектов в сегменте.
+   См. в документации hello для hello [ListBlobsSegmented](https://msdn.microsoft.com/library/jj717596.aspx) метод подробные сведения.
+2. Hello для работы по hello набор больших двоичных объектов логически переходит в hello делать код-цикла while. В hello **Execute** метод, выполните hello-а цикл передает hello список больших двоичных объектов с именем метода tooa **Calculate**. метод Hello возвращает строковую переменную с именем **вывода** итерацию все большие двоичные объекты hello в сегменте hello, hello результат.
 
-   Он возвращает число вхождений условия поиска (**Microsoft**) в большом двоичном объекте, переданном в метод **Calculate**.
+   Он возвращает hello число вхождений hello условие поиска (**Microsoft**) в большом двоичном объекте hello передан toohello **Calculate** метод.
 
     ```csharp
-    output += string.Format("{0} occurrences of the search term \"{1}\" were found in the file {2}.\r\n", wordCount, searchTerm, inputBlob.Name);
+    output += string.Format("{0} occurrences of hello search term \"{1}\" were found in hello file {2}.\r\n", wordCount, searchTerm, inputBlob.Name);
     ```
-3. После завершения работы метода **Calculate** его результаты записываются в новый большой двоичный объект. Следовательно, для каждого обработанного набора больших двоичных объектов можно записать новый большой двоичный объект с результатами. Чтобы записать новый большой двоичный объект, сначала найдите выходной набор данных.
+3. Здравствуйте, один раз **Calculate** метод проделал рабочих hello, оно должно быть написано tooa новый большой двоичный объект. Поэтому для каждого набора больших двоичных объектов, обработанных новый большой двоичный объект может иметь с результатами hello. новый большой двоичный объект toowrite tooa, первый поиска hello выходной набор данных.
 
     ```csharp
-    // Get the output dataset using the name of the dataset matched to a name in the Activity output collection.
+    // Get hello output dataset using hello name of hello dataset matched tooa name in hello Activity output collection.
     Dataset outputDataset = datasets.Single(dataset => dataset.Name == activity.Outputs.Single().Name);
     ```
-4. Код также вызывает вспомогательный метод **GetFolderPath** , чтобы получить путь к папке (имя контейнера хранилища).
+4. Привет код также вызывает вспомогательный метод: **GetFolderPath** путь к папке hello tooretrieve (имя контейнера хранилища hello).
 
     ```csharp
     folderPath = GetFolderPath(outputDataset);
     ```
-   Метод **GetFolderPath** приводит объект DataSet к AzureBlobDataSet со свойством FolderPath.
+   Hello **GetFolderPath** приведения hello объекта DataSet tooan AzureBlobDataSet, который имеет свойство с именем FolderPath.
 
     ```csharp
     AzureBlobDataset blobDataset = dataArtifact.Properties.TypeProperties as AzureBlobDataset;
     
     return blobDataset.FolderPath;
     ```
-5. Код вызывает метод **GetFileName** , чтобы получить имя файла (имя большого двоичного объекта). Используемый код аналогичен приведенному выше коду, используемому для получения пути к папке.
+5. hello вызовы кода Hello **GetFileName** метод tooretrieve hello имя файла (blob). Код Hello-аналогичные toohello выше путь к папке hello tooget кода.
 
     ```csharp
     AzureBlobDataset blobDataset = dataArtifact.Properties.TypeProperties as AzureBlobDataset;
     
     return blobDataset.FileName;
     ```
-6. Чтобы записать имя файла, создается объект универсального кода ресурса (URI). Для возврата имени контейнера в конструкторе URI используется свойство **BlobEndpoint** . Для создания URI выходного большого двоичного объекта сочетаются путь к папке и имя файла.  
+6. Имя файла hello Hello записывается, создав объект URI. конструктор URI Hello использует hello **BlobEndpoint** имя контейнера hello tooreturn свойства. путь и имя папки Hello добавляются tooconstruct hello вывода URI большого двоичного объекта.  
 
     ```csharp
-    // Write the name of the file.
+    // Write hello name of hello file.
     Uri outputBlobUri = new Uri(outputStorageAccount.BlobEndpoint, folderPath + "/" + GetFileName(outputDataset));
     ```
-7. Имя файла записано, и теперь можно записать выводимую строку из метода **Calculate** в новый большой двоичный объект:
+7. будет записана Hello имя файла hello и теперь можно написать hello выходной строки из hello **Calculate** новый большой двоичный объект метод tooa:
 
     ```csharp
-    // Create a blob and upload the output text.
+    // Create a blob and upload hello output text.
     CloudBlockBlob outputBlob = new CloudBlockBlob(outputBlobUri, outputStorageAccount.Credentials);
-    logger.Write("Writing {0} to the output blob", output);
+    logger.Write("Writing {0} toohello output blob", output);
     outputBlob.UploadText(output);
     ```
 
-### <a name="create-the-data-factory"></a>Создание фабрики данных
-В разделе [Создание настраиваемого действия](#create-the-custom-activity) вы создали настраиваемое действие и отправили ZIP-файл с двоичными файлами и PDB-файлом в контейнер больших двоичных объектов Azure. В этом разделе вы создадите **фабрику данных** Azure с **конвейером**, использующим **настраиваемое действие**.
+### <a name="create-hello-data-factory"></a>Создание фабрики данных hello
+В hello [создать пользовательское действие hello](#create-the-custom-activity) вы создали настраиваемых действий и hello загруженный ZIP-файл с двоичные файлы и hello PDB файла tooan контейнера больших двоичных объектов. В этом разделе создайте Azure **фабрики данных** с **конвейера** , использующий hello **пользовательское действие**.
 
-Входной набор данных для пользовательского действия представляет собой большие двоичные объекты (файлы) во входной папке (`mycontainer\\inputfolder`) в хранилище BLOB-объектов. Выходной набор данных для пользовательского действия представляет собой выходные большие двоичные объекты в папке выходных данных (`mycontainer\\outputfolder`) в хранилище BLOB-объектов.
+Здравствуйте входного набора данных для пользовательское действие hello представляет hello большие двоичные объекты (файлы) в папке входной hello (`mycontainer\\inputfolder`) в хранилище больших двоичных объектов. Hello выходной набор данных для hello действие представляет hello выходных данных BLOB-объектов в выходной папке hello (`mycontainer\\outputfolder`) в хранилище больших двоичных объектов.
 
-Перенесите в папки входных данных один или несколько файлов.
+Удалите один или несколько файлов в папках входной hello:
 
 ```
 mycontainer -\> inputfolder
@@ -459,97 +459,97 @@ mycontainer -\> inputfolder
     2015-11-16-04
 ```
 
-Например, перенесите один файл (file.txt) со следующим содержимым в каждую папку.
+Например удалите один файл (file.txt) с hello, следуя содержимое в каждую из папки hello.
 
 ```
 test custom activity Microsoft test custom activity Microsoft
 ```
 
-Каждая входная папка соответствует одному срезу в фабрике данных Azure, даже если она содержит 2 файла или более. При обработке каждого среза конвейером пользовательское действие выполняет итерацию всех больших двоичных объектов во входной папке для этого среза.
+Каждая папка входных данных соответствует tooa среза в фабрике данных Azure, даже если папка hello имеет 2 или более файлов. При обработке каждого среза конвейером hello пользовательское действие hello выполняет итерацию всех больших двоичных объектов hello в hello папка входных данных для этого среза.
 
-Отображаются пять выходных файлов с одинаковым содержимым. Например, выходной файл, полученный в ходе обработки файла в папке 2015-11-16-00, включает в себя следующее содержимое.
+Вы увидите, что пять выходных файлов с hello же содержимого. Например выходной файл hello не может обрабатывать файл hello в папке hello 2015-11-16-00 имеет hello после содержимого:
 
 ```
-2 occurrences(s) of the search term "Microsoft" were found in the file inputfolder/2015-11-16-00/file.txt.
+2 occurrences(s) of hello search term "Microsoft" were found in hello file inputfolder/2015-11-16-00/file.txt.
 ```
 
-Если в папку входных данных перенести несколько файлов (file.txt, file2.txt, file3.txt) с одинаковым содержимым, то в выходном файле будет следующее содержимое. В этом примере каждая папка (2015-11-16-00 и т. д.) соответствует одному срезу, несмотря на то, что она содержит несколько входных файлов.
+Если удалить несколько файлов (file.txt, file2.txt, file3.txt) с hello же toohello входной папки содержимого см. в разделе hello после содержимого в выходной файл для hello. Каждая папка (2015-11-16-00, т. д.) соответствует tooa среза в этом образце, даже если папка hello имеет несколько входных файлов.
 
 ```csharp
-2 occurrences(s) of the search term "Microsoft" were found in the file inputfolder/2015-11-16-00/file.txt.
-2 occurrences(s) of the search term "Microsoft" were found in the file inputfolder/2015-11-16-00/file2.txt.
-2 occurrences(s) of the search term "Microsoft" were found in the file inputfolder/2015-11-16-00/file3.txt.
+2 occurrences(s) of hello search term "Microsoft" were found in hello file inputfolder/2015-11-16-00/file.txt.
+2 occurrences(s) of hello search term "Microsoft" were found in hello file inputfolder/2015-11-16-00/file2.txt.
+2 occurrences(s) of hello search term "Microsoft" were found in hello file inputfolder/2015-11-16-00/file3.txt.
 ```
 
-Теперь во входном файле появилось три строки, по одной на каждый входной файл (большой двоичный объект) в папке, связанный со срезом (2015-11-16-00).
+Hello выходной файл имеет три строк, по одной на каждый входной файл (blob) в папке hello, связанные с hello среза (2015-11-16-00).
 
-Такая задача создается для каждого запуска действия. В этом примере в конвейере есть только одно действие. При обработке среза конвейером в пакетной службе Azure выполняется настраиваемое действие для обработки среза. Так как имеется 5 срезов (каждому срезу может соответствовать несколько больших двоичных объектов или файлов), в пакетной службе Azure создано 5 задач. При запуске задачи в пакетной службе фактически выполняется настраиваемое действие.
+Такая задача создается для каждого запуска действия. В этом примере имеется только одно действие в конвейере hello. Если срез обрабатывается конвейером hello, пользовательское действие hello работает на срез hello tooprocess пакетной службы Azure. Так как имеется 5 срезов (каждому срезу может соответствовать несколько больших двоичных объектов или файлов), в пакетной службе Azure создано 5 задач. Это фактически hello настраиваемое действие, которое выполняется при запуске задачи в пакете.
 
-В следующем пошаговом руководстве содержатся дополнительные сведения.
+Привет, пошаговое руководство содержит дополнительные сведения.
 
-#### <a name="step-1-create-the-data-factory"></a>Шаг 1. Создание фабрики данных
-1. Войдите на [портал Azure](https://portal.azure.com/) и сделайте следующее.
+#### <a name="step-1-create-hello-data-factory"></a>Шаг 1: Создание фабрики данных hello
+1. После входа в toohello [портал Azure](https://portal.azure.com/), hello следующие действия:
 
-   1. В меню слева нажмите кнопку **Создать** .
-   2. В колонке **Создание** щелкните **Данные и аналитика**.
-   3. Щелкните **Фабрика данных** в колонке **Аналитика данных**.
-2. В колонке **Создание фабрики данных** в поле "Имя" введите **CustomActivityFactory**. Имя фабрики данных Azure должно быть глобально уникальным. Если возникнет ошибка **Имя фабрики данных CustomActivityFactory недоступно**, измените имя этой фабрики данных (например, на **ваше_имяCustomActivityFactory**) и попробуйте создать ее снова.
+   1. Нажмите кнопку **NEW** hello левом меню.
+   2. Нажмите кнопку **данные + аналитика** в hello **New** колонку.
+   3. Нажмите кнопку **фабрики данных** на hello **анализа данных** колонку.
+2. В hello **новую фабрику данных** колонке введите **CustomActivityFactory** для hello имя. Имя фабрики данных Azure hello Hello должно быть глобально уникальным. При получении ошибки hello: **имя фабрики данных «CustomActivityFactory» недоступен**, измените имя hello hello фабрики данных (например, **yournameCustomActivityFactory**) и попробуйте создать еще раз.
 3. Щелкните **Имя группы ресурсов**, чтобы выбрать имеющуюся группу ресурсов, или создайте группу ресурсов.
-4. Убедитесь, что используется именно та подписка и регион, в которых необходимо создать фабрику данных.
-5. В колонке **Создание фабрики данных** нажмите кнопку **Создать**.
-6. Созданная фабрика данных появится на **панели мониторинга** портала Azure.
-7. Ее содержимое отобразится на соответствующей странице.
+4. Убедитесь, что вы используете hello правильные подписки и региона, место hello данных фабрики toobe создан.
+5. Нажмите кнопку **создать** на hello **новую фабрику данных** колонку.
+6. Вы видите hello фабрики данных, создаваемого в hello **мониторинга** из hello портал Azure.
+7. После успешного создания фабрики данных hello, отображается страница фабрики данных hello, в котором отображается содержимое фабрики данных hello hello.
 
    ![](./media/data-factory-data-processing-using-batch/image6.png)
 
 #### <a name="step-2-create-linked-services"></a>Шаг 2. Создание связанных служб
-Связанные службы связывают хранилища данных или службы вычислений с фабрикой данных Azure. На этом этапе учетная запись **хранения Azure** и учетная запись **пакетной службы Azure** будут связаны с фабрикой данных.
+Связанные службы связывание хранилищ данных или фабрики данных Azure tooan службы вычислений. На этом шаге связать ваш **хранилища Azure** учетной записи и **пакетной службы Azure** фабрики данных tooyour учетной записи.
 
 #### <a name="create-azure-storage-linked-service"></a>Создание связанной службы хранения Azure
-1. В колонке **Фабрика данных** для **CustomActivityFactory** щелкните элемент **Создание и развертывание**. Отобразится редактор фабрики данных.
-2. На панели команд щелкните **Создание хранилища данных** и выберите **Служба хранилища Azure**. В редакторе отобразится сценарий JSON для создания связанной службы хранилища Azure.
+1. Щелкните hello **автор и развернуть** плитки приветствия **ФАБРИКИ данных** колонке **CustomActivityFactory**. Вы увидите hello редактор фабрики данных.
+2. Нажмите кнопку **новое хранилище данных** hello панели команд и выберите **хранилища Azure.** Вы увидите hello скрипта JSON для создания хранилища Azure связанная служба в редакторе hello.
 
    ![](./media/data-factory-data-processing-using-batch/image7.png)
 
-3. Замените **account name** именем своей учетной записи хранения Azure, а **account key** — ключом доступа к ней. Сведения о получении ключа доступа к хранилищу см. в разделах о [просмотре, копировании и повторном создании ключей доступа к хранилищу](../storage/common/storage-create-storage-account.md#manage-your-storage-account).
+3. Замените **имя учетной записи** с именем hello вашей учетной записи хранилища Azure и **ключ учетной записи** с ключом доступа hello hello учетной записи хранилища Azure. toolearn tooget хранилищем доступом ключа, см. в разделе [ключи доступа Просмотр, копирование и повторное создание хранилища](../storage/common/storage-create-storage-account.md#manage-your-storage-account).
 
-4. Чтобы развернуть эту службу, нажмите кнопку **Развернуть** на панели команд.
+4. Нажмите кнопку **развернуть** на панели toodeploy hello связаны службы hello команд.
 
    ![](./media/data-factory-data-processing-using-batch/image8.png)
 
 #### <a name="create-azure-batch-linked-service"></a>Создание связанной пакетной службы Azure
-На этом шаге вы создаете связанную службу для учетной записи **пакетной службы Azure**, в которой будет выполняться настраиваемое действие фабрики данных.
+На этом шаге создания связанной службы для вашего **пакетной службы Azure** учетной записи, используемые toorun hello фабрики данных пользовательского действия.
 
-1. Щелкните **Новое вычисление** в командной строке и выберите **Пакетная служба Azure**. В редакторе отобразится сценарий JSON для создания связанной пакетной службы Azure.
-2. В сценарии JSON выполните следующее:
+1. Нажмите кнопку **новые вычислительные** hello панели команд и выберите **пакетной службы Azure.** Вы увидите hello скрипта JSON для создания пакета Azure связанная служба в редакторе hello.
+2. В hello скрипта JSON:
 
-   1. Замените **account name** именем учетной записи пакетной службы Azure.
-   2. Замените **access key** ключом доступа к учетной записи пакетной службы Azure.
-   3. Введите идентификатор пула для свойства **poolName** **.** Для этого свойства можно задать имя пула или идентификатор пула.
-   4. Введите URI пакета для свойства JSON **batchUri** .
+   1. Замените **имя учетной записи** с именем hello учетной записи пакетной службы Azure.
+   2. Замените **ключ доступа** с ключом доступа hello hello учетной записи пакетной службы.
+   3. Введите идентификатор hello пула hello hello **poolName** свойства**.** Для этого свойства можно задать имя пула или идентификатор пула.
+   4. Введите раздел hello URI для hello **batchUri** свойства JSON.
 
       > [!IMPORTANT]
-      > **URL-адрес** из **колонки учетной записи пакетной службы Azure** имеет следующий формат: \<имя_учетной_записи\>.\<регион\>.batch.azure.com. В свойстве **batchUri** в JSON требуется **удалить заполнитель accountname** в URL-адресе. Пример: `"batchUri": "https://eastus.batch.azure.com"`.
+      > Hello **URL-адрес** из hello **колонке учетной записи пакетной службы Azure** в hello следующий формат: \<accountname\>.\< область\>. batch.azure.com. Для hello **batchUri** свойство в hello JSON необходимо слишком**удалить «accountname».** с URL-адреса hello. Пример: `"batchUri": "https://eastus.batch.azure.com"`.
       >
       >
 
       ![](./media/data-factory-data-processing-using-batch/image9.png)
 
-      Для свойства **poolName** можно также указать идентификатор пула вместо его имени.
+      Для hello **poolName** свойства, можно также указать идентификатор hello пула hello вместо имени hello hello пула.
 
       > [!NOTE]
-      > Служба фабрики данных не поддерживает параметр по требованию для пакетной службы Azure, как для HDInsight. Пул пакетной службы Azure можно использовать только в фабрике данных Azure.
+      > Hello служба фабрики данных не поддерживает параметр по требованию для пакетной службы Azure, как для HDInsight. Пул пакетной службы Azure можно использовать только в фабрике данных Azure.
       >
       >
-   5. В качестве параметра семейства операционных систем укажите **StorageLinkedService** for the **linkedServiceName** . Эта связанная служба была создана на предыдущем шаге. Это хранилище используется в качестве промежуточной области для файлов и журналов.
-3. Чтобы развернуть эту службу, нажмите кнопку **Развернуть** на панели команд.
+   5. Укажите **StorageLinkedService** для hello **linkedServiceName** свойство. Эта связанная служба, созданный на предыдущем шаге hello. Это хранилище используется в качестве промежуточной области для файлов и журналов.
+3. Нажмите кнопку **развернуть** на панели toodeploy hello связаны службы hello команд.
 
 #### <a name="step-3-create-datasets"></a>Шаг 3. Создание наборов данных
-На этом шаге вы создадите наборы данных, которые представляют входные и выходные данные.
+На этом шаге создания наборов данных toorepresent входных и выходных данных.
 
 #### <a name="create-input-dataset"></a>Создание входного набора данных
-1. В **редакторе** фабрики данных нажмите на панели инструментов кнопку **Новый набор данных** и выберите в раскрывающемся меню пункт **Хранилище BLOB-объектов Azure**.
-2. Замените код JSON в правой области на следующий фрагмент кода JSON:
+1. В hello **редактор** hello фабрики данных, щелкните **новый набор данных** кнопки на панели инструментов hello и щелкните **хранилища больших двоичных объектов Azure** hello раскрывающегося меню.
+2. Замените hello JSON в правой области hello hello, следующий фрагмент JSON:
 
     ```json
     {
@@ -607,11 +607,11 @@ test custom activity Microsoft test custom activity Microsoft
     }
     ```
 
-    Позже в этом пошаговом руководстве вы создадите конвейер со временем начала 2015-11-16T00:00:00Z и временем окончания 2015-11-16T05:00:00Z. Данные будут создаваться **почасово**, поэтому мы получим 5 входных и выходных срезов (между **00**:00:00 -\> **05**:00:00).
+    Позже в этом пошаговом руководстве вы создадите конвейер со временем начала 2015-11-16T00:00:00Z и временем окончания 2015-11-16T05:00:00Z. Это данные, запланированных tooproduce **каждый час**, поэтому 5 срезов ввода вывода (между **00**: 00:00 -\> **05**: 00:00).
 
-    Для параметров **frequency** и **interval** входного набора данных установлены значения **Hour** и **1**. Это означает, что входной срез данных будет создаваться каждый час.
+    Hello **частоты** и **интервал** для hello входного набора данных задается слишком**час** и **1**, что означает, что hello ввода фрагмент доступен Каждый час.
 
-    Это значения времени начала для каждого среза, представленные системной переменной **SliceStart** в приведенном выше фрагменте кода JSON.
+    Ниже приведены временем начала hello для каждого сегмента, представленными в **SliceStart** системной переменной в hello выше фрагменте кода JSON.
 
     | **Срез** | **Время начала**          |
     |-----------|-------------------------|
@@ -621,7 +621,7 @@ test custom activity Microsoft test custom activity Microsoft
     | 4.         | 2015-11-16T**03**:00:00 |
     | 5         | 2015-11-16T**04**:00:00 |
 
-    Значение параметра **folderPath** вычисляется с использованием года, месяца, дня и часа значения времени начала среза (**SliceStart**). Именно так входная папка сопоставляется со срезом.
+    Hello **folderPath** вычисляется с помощью hello года, месяца, дня и часа часть время начала среза hello (**SliceStart**). Таким образом Вот как папка входных данных — сопоставленных tooa срез.
 
     | **Срез** | **Время начала**          | **Входная папка**  |
     |-----------|-------------------------|-------------------|
@@ -631,13 +631,13 @@ test custom activity Microsoft test custom activity Microsoft
     | 4.         | 2015-11-16T**03**:00:00 | 2015-11-16-**03** |
     | 5         | 2015-11-16T**04**:00:00 | 2015-11-16-**04** |
 
-1. На панели инструментов щелкните **Развернуть**, чтобы создать и развернуть таблицу **InputDataset**.
+1. Нажмите кнопку **развернуть** hello toocreate инструментов и развернуть hello **InputDataset** таблицы.
 
 #### <a name="create-output-dataset"></a>Создание выходного набора данных
-На этом шаге создается еще один набор данных типа AzureBlob для представления выходных данных.
+На этом шаге создается другой набор данных типа AzureBlob toorepresent hello выходных данных.
 
-1. В **редакторе** фабрики данных нажмите на панели инструментов кнопку **Новый набор данных** и выберите в раскрывающемся меню пункт **Хранилище BLOB-объектов Azure**.
-2. Замените код JSON в правой области на следующий фрагмент кода JSON:
+1. В hello **редактор** hello фабрики данных, щелкните **новый набор данных** кнопки на панели инструментов hello и щелкните **хранилища больших двоичных объектов Azure** hello раскрывающегося меню.
+2. Замените hello JSON в правой области hello hello, следующий фрагмент JSON:
 
     ```json
     {
@@ -667,7 +667,7 @@ test custom activity Microsoft test custom activity Microsoft
     }
     ```
 
-    Для каждого входного среза данных создается выходной большой двоичный объект или файл. Ниже в таблице приведены имена, которые даются выходным файлам для каждого среза. Все выходные файлы создаются в одной папке выходных данных: `mycontainer\\outputfolder`.
+    Для каждого входного среза данных создается выходной большой двоичный объект или файл. Ниже в таблице приведены имена, которые даются выходным файлам для каждого среза. Все hello выходные файлы создаются в одной папке выходных данных: `mycontainer\\outputfolder`.
 
     | **Срез** | **Время начала**          | **Выходной файл**       |
     |-----------|-------------------------|-----------------------|
@@ -677,20 +677,20 @@ test custom activity Microsoft test custom activity Microsoft
     | 4.         | 2015-11-16T**03**:00:00 | 2015-11-16-**03.txt** |
     | 5         | 2015-11-16T**04**:00:00 | 2015-11-16-**04.txt** |
 
-    Помните, что все файлы во входной папке (например, 2015-11-16-00) являются частью среза со значениями времени начала (2015-11-16-00). Во время обработки этого среза пользовательское действие сканирует каждый файл и создает строку в выходном файле с количеством вхождений условия поиска (Microsoft). Если в папке 2015-11-16-00 есть три файла, то в выходном файле 2015-11-16-00.txt будет три строки.
+    Помните, что все hello файлы в папке ввода (например: 2015-11-16-00) являются частью фрагмента с временем начала hello: 2015-11-16-00. При обработке этого среза пользовательское действие hello просматривает каждый файл и создает строку в выходной файл hello с hello число вхождений условие поиска («Microsoft»). Если имеется три файла в папке hello 2015-11-16-00, существует три строки в выходной файл для hello: 2015-11-16-00.txt.
 
-1. На панели инструментов щелкните **Развернуть**, чтобы создать и развернуть **OutputDataset**.
+1. Нажмите кнопку **развернуть** hello toocreate инструментов и развернуть hello **OutputDataset**.
 
-#### <a name="step-4-create-and-run-the-pipeline-with-custom-activity"></a>Шаг 4. Создание и запуск конвейера с настраиваемым действием
-На этом шаге создается конвейер с одним настраиваемым действием, созданным ранее.
+#### <a name="step-4-create-and-run-hello-pipeline-with-custom-activity"></a>Шаг 4: Создание и запуск конвейера hello с помощью настраиваемых действий
+На этом шаге создания конвейера от одного действия, пользовательское действие hello, созданную ранее.
 
 > [!IMPORTANT]
-> Если файл **file.txt** не отправлен в папки входных данных в контейнере больших двоичных объектов, сделайте это, прежде чем создавать конвейер. В JSON конвейера для свойства **IsPaused** задано значение false, поэтому конвейер запустится сразу по прошествии даты, указанной в параметре **start**.
+> Если вы еще не загрузили hello **файла file.txt** tooinput папки в контейнер больших двоичных объектов hello, сделать это перед созданием конвейера hello. Hello **isPaused** свойству toofalse hello конвейера JSON, поэтому конвейера hello немедленно выполняется как hello **запустить** дата находится в прошлом hello.
 >
 >
 
-1. В редакторе фабрики данных, нажмите кнопку **Создать конвейер** на панели команд. Если команда не отображается, нажмите кнопку **... (многоточие)**, чтобы отобразить ее.
-2. Замените сценарий JSON в правой области приведенным ниже.
+1. В hello редактор фабрики данных, нажмите кнопку **новый конвейер** на панели команд hello. Если команда hello не отображается, нажмите кнопку **... (Многоточие)**  toosee его.
+2. Замените hello JSON в правой области hello hello следующий скрипт JSON:
 
     ```json
     {
@@ -735,101 +735,101 @@ test custom activity Microsoft test custom activity Microsoft
       }
     }
     ```
-   Обратите внимание на следующие моменты.
+   Обратите внимание hello после точки.
 
-   * В конвейере содержится одно действие типа **DotNetActivity**.
-   * В **AssemblyName** задано имя библиотеки DLL **MyDotNetActivity.dll**.
-   * В **EntryPoint** — **MyDotNetActivityNS.MyDotNetActivity**. По сути, это фрагмент кода \<пространство_имен\>.\<имя_класса\>.
-   * Для параметра **PackageLinkedService** задано значение **StorageLinkedService**, которое указывает на хранилище BLOB-объектов, содержащее ZIP-файл настраиваемого действия. Если для входных и выходных файлов и ZIP-файла настраиваемого действия используются разные учетные записи хранения Azure, то необходимо создать другую связанную службу хранилища Azure. В этой статье предполагается использование одной и той же учетной записи хранения Azure.
-   * Для **PackageFile** установлено значение **customactivitycontainer/MyDotNetActivity.zip**. Используется формат \<контейнер_для_zip-файла\>/\<имя_zip-файла.zip\>.
-   * Настраиваемое действие принимает **InputDataset** в качестве входных данных и **OutputDataset** — в качестве выходных данных.
-   * Свойство **linkedServiceName** настраиваемого действия указывает на **AzureBatchLinkedService**, которое сообщает фабрике данных Azure, что необходимо запустить настраиваемое действие в пакетной службе Azure.
-   * Обратите внимание на параметр **concurrency**. Если используется значение по умолчанию, т. е. 1, то даже если в пуле пакетной службы Azure есть 2 или несколько вычислительных узлов, срезы обрабатываются по очереди. Таким образом игнорируется возможность параллельной обработки пакетной службы Azure. Если задать для параметра **concurrency** большее значение, например 2, это означает, что одновременно могут обрабатываться два среза (соответствующие двум задачам в пакетной службе Azure). В этом случае используются обе виртуальные машины в пуле пакетной службы Azure. Исходя из этого, укажите соответствующее значение для свойства concurrency.
-   * По умолчанию на виртуальной машине в любой момент времени будет выполняться только одна задача (один срез). Так происходит, потому что по умолчанию для параметра **Maximum tasks per VM** (Максимальное количество задач на виртуальную машину) задано значение 1 для пула пакетной службы Azure. В ходе выполнения необходимых требований создан пул и для этого свойства задано значение 2. Поэтому на виртуальной машине могут выполняться два среза фабрики данных одновременно.
+   * Имеется только одно действие в конвейере hello и типа: **DotNetActivity**.
+   * **AssemblyName** задано имя toohello hello DLL: **MyDotNetActivity.dll**.
+   * **EntryPoint** задано слишком**MyDotNetActivityNS.MyDotNetActivity**. По сути, это фрагмент кода \<пространство_имен\>.\<имя_класса\>.
+   * **PackageLinkedService** задано слишком**StorageLinkedService** , который указывает хранилище больших двоичных объектов toohello, содержащий ZIP-файл пользовательское действие hello. При использовании различных учетных записей хранилища Azure для файлов ввода вывода и ZIP-файл пользовательское действие hello, у вас есть toocreate другого хранилища Azure связанной службы. В этой статье предполагается, что вы используете hello учетную запись хранилища Azure.
+   * **PackageFile** задано слишком**customactivitycontainer/MyDotNetActivity.zip**. Он имеет формат hello: \<containerforthezip\>/\<nameofthezip.zip\>.
+   * пользовательское действие Hello принимает **InputDataset** в качестве входного и **OutputDataset** в качестве выходных данных.
+   * Hello **linkedServiceName** свойство пользовательское действие hello указывает toohello **AzureBatchLinkedService**, который сообщает фабрики данных Azure, пользовательское действие hello должен toorun на пакетной службы Azure.
+   * Hello **параллелизма** параметр важен. При использовании значения по умолчанию hello, равное 1, даже если у вас есть 2 или вычислительные узлы в пуле пакетной службы Azure hello, срезы hello обрабатываются одна за другой. Таким образом вы не пользуетесь преимуществами возможности параллельной обработки hello пакетной службы Azure. Если задать **параллелизма** tooa чем выше значение, например 2, это означает, что срезы (соответствует tootwo задач в пакетной службы Azure) могут одновременно обрабатываться в hello же время, в этом случае обе виртуальные машины hello в hello пула используются пакетной службы Azure. Таким образом свойства hello параллелизма соответствующим образом.
+   * По умолчанию на виртуальной машине в любой момент времени будет выполняться только одна задача (один срез). Hello причина том, что по умолчанию hello **максимально задачи на виртуальную Машину** задано too1 для пула пакетной службы Azure. В рамках предварительных требований, созданный пул с этой too2 набор свойств, двумя фрагменты фабрики данных может выполняться на виртуальной Машине в hello то же время.
 
-    -   Для свойства **isPaused** по умолчанию установлено значение false. В этом примере конвейер запускается незамедлительно, потому что срезы приходятся на прошлое. Для этого свойства можно задать значение true, чтобы приостановить работу конвейера. Чтобы перезапустить его, нужно снова установить значение false.
+    -   **isPaused** свойству toofalse по умолчанию. конвейер Hello немедленно выполняется в этом примере, поскольку запуска среза hello в прошлом hello. Можно задать это свойство tootrue toopause hello конвейера и задайте для него toorestart toofalse назад.
 
-    -   Разница между временем **начала** и временем **окончания** составляет пять часов, а срезы создаются каждый час. Таким образом конвейер создает пять срезов.
+    -   Hello **запустить** время и **окончания** значения времени приведены пять часов друг от друга и фрагменты создаются каждый час, поэтому пять фрагменты, созданные с помощью конвейера hello.
 
-1. Чтобы развернуть конвейер, нажмите кнопку **Развернуть** на панели команд.
+1. Нажмите кнопку **развернуть** на панели toodeploy hello конвейера hello команд.
 
-#### <a name="step-5-test-the-pipeline"></a>Шаг 5. Тестирование конвейера
-На этом шаге вы протестируете конвейер. Для этого файлы будут перенесены в папки входных данных. Сначала перенесем один файл в одну входную папку.
+#### <a name="step-5-test-hello-pipeline"></a>Шаг 5: Тестирование hello конвейера
+На этом шаге теста hello конвейера путем перемещения файлов в папки входной hello. Начнем с конвейером тестирования hello с одного файла в одну папку ввода.
 
-1. На портале Azure в колонке "Фабрика данных" щелкните **Схема**.
+1. В колонке фабрики данных hello в hello портала Azure щелкните **схема**.
 
    ![](./media/data-factory-data-processing-using-batch/image10.png)
-2. В представлении схемы дважды щелкните входной набор данных **InputDataset**.
+2. В представлении диаграммы hello, дважды щелкните набор входных данных: **InputDataset**.
 
    ![](./media/data-factory-data-processing-using-batch/image11.png)
-3. Должна появиться колонка **InputDataset** со всеми пятью срезами. Обратите внимание на значения в столбцах **Время начала среза** и **Время окончания среза** для каждого среза.
+3. Вы увидите hello **InputDataset** колонка с все пять срезы готова. Обратите внимание hello **время НАЧАЛА СРЕЗА** и **время окончания СРЕЗА** для каждого среза.
 
    ![](./media/data-factory-data-processing-using-batch/image12.png)
-4. Теперь в **представлении схемы** щелкните **OutputDataset**.
-5. Если срезы уже созданы, вы увидите пять выходных срезов данных в состоянии готовности.
+4. В hello **представление диаграммы**, нажмите кнопку **OutputDataset**.
+5. Вы увидите, hello пять срезы выходных данных находятся в состоянии готовности hello, если они уже были созданы.
 
    ![](./media/data-factory-data-processing-using-batch/image13.png)
-6. На портале Azure просмотрите **задачи**, связанные со **срезами**, а также сведения о том, на какой виртуальной машине выполнялся каждый срез. Дополнительные сведения см. в разделе [Интеграция фабрики данных и пакетной службы](#data-factory-and-batch-integration).
-7. Выходные файлы должны появиться в папке `outputfolder` контейнера `mycontainer` в хранилище BLOB-объектов Azure.
+6. Используйте Azure портала tooview hello **задачи** связанные с hello **фрагменты** и увидеть, какие виртуальной Машины выполнялось каждый фрагмент. Дополнительные сведения см. в разделе [Интеграция фабрики данных и пакетной службы](#data-factory-and-batch-integration).
+7. Вы увидите выходные файлы hello в hello `outputfolder` из `mycontainer` в Azure хранилище больших двоичных объектов.
 
    ![](./media/data-factory-data-processing-using-batch/image15.png)
 
-   Должно появиться пять выходных файлов, по одному на каждый входной срез. В каждом из выходных файлов должно быть содержимое, аналогичное приведенному ниже.
+   Должно появиться пять выходных файлов, по одному на каждый входной срез. Каждый из hello выходной файл должен иметь содержимого аналогичные toohello следующие выходные данные:
 
     ```
-    2 occurrences(s) of the search term "Microsoft" were found in the file inputfolder/2015-11-16-00/file.txt.
+    2 occurrences(s) of hello search term "Microsoft" were found in hello file inputfolder/2015-11-16-00/file.txt.
     ```
-   На следующей схеме показано сопоставление срезов данных фабрики и задач в пакетной службе Azure. В этом примере срез запускался всего один раз.
+   Hello следующей схеме показано сопоставление tootasks в пакете Azure фрагменты hello фабрики данных. В этом примере срез запускался всего один раз.
 
    ![](./media/data-factory-data-processing-using-batch/image16.png)
-8. Теперь давайте попробуем использовать несколько файлов в папке. Создайте файлы **file2.txt**, **file3.txt**, **file4.txt** и **file5.txt** с тем же содержимым, что и в файле file.txt в папке **2015-11-06-01**.
-9. В папке выходных данных **удалите** выходной файл **2015-11-16-01.txt**.
-10. Теперь в колонке **OutputDataset** щелкните правой кнопкой мыши срез, для которого в столбце **Время начала среза** задано значение **11/16/2015 01:00:00 AM**, и выберите пункт **Запустить** для повторного выполнения и обработки среза. Теперь в срезе пять файлов вместо одного.
+8. Теперь давайте попробуем использовать несколько файлов в папке. Создание файлов: **file2.txt**, **file3.txt**, **file4.txt**, и **file5.txt** с hello же содержимого, как и file.txt в папке hello: **2015-11-06-01**.
+9. В выходной папке hello **удаление** hello выходной файл: **2015-11-16-01.txt**.
+10. Теперь в hello **OutputDataset** колонка, щелкните правой кнопкой мыши срез hello с **время НАЧАЛА СРЕЗА** значение слишком**11/16/2015 01:00:00 AM**и нажмите кнопку **запуска**toorerun или повторно-process hello среза. Теперь hello фрагмент содержит пять файлов вместо одного файла.
 
     ![](./media/data-factory-data-processing-using-batch/image17.png)
-11. Когда после запуска среза его состояние изменится на **Готов**, проверьте содержимое в выходном файле для этого среза (**2015-11-16-01.txt**) в папке `outputfolder` контейнера `mycontainer` в хранилище BLOB-объектов. В выходном файле каждому файлу среза должна соответствовать одна строка.
+11. После запуска среза hello и она находится в состоянии **готовности**, проверьте содержимое hello в hello выходной файл для этого среза (**2015-11-16-01.txt**) в hello `outputfolder` из `mycontainer` в хранилище BLOB-объектов. Строку для каждого файла фрагмента hello следует.
 
     ```
-    2 occurrences(s) of the search term "Microsoft" were found in the file inputfolder/2015-11-16-01/file.txt.
-    2 occurrences(s) of the search term "Microsoft" were found in the file inputfolder/2015-11-16-01/file2.txt.
-    2 occurrences(s) of the search term "Microsoft" were found in the file inputfolder/2015-11-16-01/file3.txt.
-    2 occurrences(s) of the search term "Microsoft" were found in the file inputfolder/2015-11-16-01/file4.txt.
-    2 occurrences(s) of the search term "Microsoft" were found in the file inputfolder/2015-11-16-01/file5.txt.
+    2 occurrences(s) of hello search term "Microsoft" were found in hello file inputfolder/2015-11-16-01/file.txt.
+    2 occurrences(s) of hello search term "Microsoft" were found in hello file inputfolder/2015-11-16-01/file2.txt.
+    2 occurrences(s) of hello search term "Microsoft" were found in hello file inputfolder/2015-11-16-01/file3.txt.
+    2 occurrences(s) of hello search term "Microsoft" were found in hello file inputfolder/2015-11-16-01/file4.txt.
+    2 occurrences(s) of hello search term "Microsoft" were found in hello file inputfolder/2015-11-16-01/file5.txt.
     ```
 
 > [!NOTE]
-> Если не удалить выходной файл 2015-11-16-01.txt перед использованием пяти входных файлов, появится одна строка из предыдущего запуска среза и пять строк из текущего. По умолчанию содержимое добавляется в выходной файл, если он уже существует.
+> Если не был удален hello выходной файл 2015-11-16-01.txt перед попыткой с пять входных файлов, можно увидеть, одну строку от предыдущего фрагмента hello запуска и пять строк из текущего среза hello запуска. По умолчанию hello содержимого — присоединенных toooutput файл, если он уже существует.
 >
 >
 
 #### <a name="data-factory-and-batch-integration"></a>Интеграция фабрики данных и пакетной службы
-Служба фабрики данных создает в пакетной службе Azure задание с именем `adf-poolname:job-xxx`.
+Служба фабрики данных Hello создает задание в пакетной службы Azure с именем hello: `adf-poolname:job-xxx`.
 
 ![Фабрика данных Azure — задания пакетной службы](media/data-factory-data-processing-using-batch/data-factory-batch-jobs.png)
 
-Для каждого запуска действия среза в задании создается задача. При наличии 10 срезов, готовых к обработке, в рамках этого задания создаются 10 задач. Если в пуле доступны несколько вычислительных узлов, можно обрабатывать параллельно сразу несколько срезов. Если для максимального количества задач на вычислительный узел установлено значение > 1, можно также выполнять сразу несколько срезов в одном цикле вычислений.
+Задачи в задании hello создается для каждого фрагмента запуска действия. При наличии 10 готов toobe фрагменты обработки, 10 задачи создаются в задании hello. Может иметь более одного фрагмента выполняется параллельно, если имеется несколько вычислительных узлов в пуле hello. Если максимальное число задач hello в вычислений слишком набор узлов > 1, может быть больше, чем один срез, работающих на hello же вычислений.
 
-В этом примере имеется пять срезов, что соответствует пяти задачам в пакетной службе Azure. Так как для свойства **concurrency** задано значение **5** в JSON конвейера в фабрике данных Azure, а для параметра **Maximum tasks per VM** (Максимальное число задач на виртуальную машину) — **2** в пуле пакетной службы Azure с **2** виртуальными машинами, задачи будут выполняться очень быстро (просмотрите время начала и завершения задач).
+В этом примере имеется пять срезов, что соответствует пяти задачам в пакетной службе Azure. С hello **параллелизма** значение слишком**5** в hello конвейера JSON в фабрике данных Azure и **максимально задачи на виртуальную Машину** значение слишком**2** в пакете Azure пул с **2** ВМ, hello задачи выполняется быстро (проверьте время начала и окончания для задач).
 
-На портале просмотрите задание пакетной службы и его задачи, связанные со **срезами** , а также сведения о том, на какой виртуальной машине выполнялся каждый срез.
+Используйте hello портала tooview hello пакетного задания и его задачи, связанные с hello **фрагменты** и увидеть, какие виртуальной Машины выполнялось каждый фрагмент.
 
 ![Фабрика данных Azure — задачи задания пакетной службы](media/data-factory-data-processing-using-batch/data-factory-batch-job-tasks.png)
 
-### <a name="debug-the-pipeline"></a>Выполнение отладки конвейера
+### <a name="debug-hello-pipeline"></a>Отладка hello конвейера
 Отладка состоит из нескольких базовых методов:
 
-1. Если для входного среза данных не установлено значение **Готово**, убедитесь, что структура входной папки правильная и что в ней существует файл file.txt.
+1. Если входной срез hello не задано слишком**готовности**, убедитесь, что папка входных данных структуры hello указано правильно и file.txt существует в папках входной hello.
 
    ![](./media/data-factory-data-processing-using-batch/image3.png)
-2. В методе **Execute** настраиваемого действия используйте объект **IActivityLogger**, чтобы записывать в журнал сведения, которые помогут устранить неполадки. Сообщения, записанные в журнал, сохраняются в файле user\_0.log.
+2. В hello **Execute** метод настраиваемого действия, используйте hello **IActivityLogger** toolog сведения об объекте, которая позволяет выполнять устранение неполадок. Hello в журнал сообщения отображаются в hello пользователя\_0. файла журнала.
 
-   В колонке **OutputDataset** щелкните срез, чтобы открыть для него колонку **Срез данных**. Для этого среза будет указано значение **Запуски операции** . Должно выполняться лишь одно действие. Если в командной строке щелкнуть **Запуск** , можно запустить другое действие для этого среза.
+   В hello **OutputDataset** колонка, щелкните hello срез toosee hello **СРЕЗ данных** колонку для этого среза. Для этого среза будет указано значение **Запуски операции** . Должна появиться при выполнении среза hello одного действия. Если щелкнуть **запуска** hello панели команд, вы можете запустить другое действие запуска для hello того же фрагмента.
 
-   Если щелкнуть выполняемое действие, появится колонка **Подробности о выполнении операции** со списком файлов журнала. Записанные в журнал сообщения можно просмотреть в файле **user\_0.log**. Если возникнет ошибка, действие будет выполнено три раза, так как для количества повторных попыток в JSON-файле конвейера или действия задано значение 3. Если щелкнуть выполняемое действие, отобразятся файлы журнала, которые можно использовать для устранения ошибки.
+   При нажатии кнопки при выполнении действия hello, вы видите hello **сведения о выполнении действия** колонка со списком файлов журнала. Вы видите сообщения в журнале в hello **пользователя\_журнала 0.** файла. При возникновении ошибки, так как число повторных попыток hello задано too3 hello конвейера или действия JSON см запуске три действия. При нажатии кнопки при выполнении действия hello, вы видите что tootroubleshoot hello ошибки можно просмотреть файлы журнала hello.
 
    ![](./media/data-factory-data-processing-using-batch/image18.png)
 
-   В списке файлов журнала щелкните **user-0.log**. На панели справа отображаются результаты использования метода **IActivityLogger.Write** .
+   В списке hello файлов журнала щелкните hello **0.log пользователя**. В правой панели hello являются hello результатов с помощью hello **IActivityLogger.Write** метод.
 
    ![](./media/data-factory-data-processing-using-batch/image19.png)
 
@@ -844,32 +844,32 @@ test custom activity Microsoft test custom activity Microsoft
     
     Trace\_T\_D\_12/6/2015 1:43:38 AM\_T\_D\_\_T\_D\_Information\_T\_D\_0\_T\_D\_Activity e3817da0-d843-4c5c-85c6-40ba7424dce2 finished successfully
     ```
-3. Добавьте **PDB-файл** в ZIP-файл, чтобы в случае возникновения ошибки сведения об ошибке содержали, например, информацию о **стеке вызовов**.
-4. Все файлы в ZIP-файле для пользовательского действия должны находиться на **верхнем уровне** без вложенных папок.
+3. Включить hello **PDB** файлов в ZIP-файле hello таким образом, что сведения об ошибке hello сведения например **стека вызовов** при возникновении ошибки.
+4. Все файлы в ZIP-файле hello hello, пользовательское действие hello должен быть в hello **верхнего уровня** с без вложенных папок.
 
    ![](./media/data-factory-data-processing-using-batch/image20.png)
-5. Убедитесь, что для параметров **assemblyName** (MyDotNetActivity.dll), **entryPoint**(MyDotNetActivityNS.MyDotNetActivity), **packageFile** (customactivitycontainer/MyDotNetActivity.zip) и **packageLinkedService** (должен указывать на хранилище BLOB-объектов Azure, содержащее ZIP-файл) установлены правильные значения.
-6. Если ошибки устранены и необходимо повторно обработать срез, в колонке **OutputDataset** щелкните срез правой кнопкой мыши и выберите пункт **Запуск**.
+5. Убедитесь, что hello **assemblyName** (MyDotNetActivity.dll) **entryPoint** (MyDotNetActivityNS.MyDotNetActivity) **packageFile** (customactivitycontainer / MyDotNetActivity.zip) и **packageLinkedService** (следует точка toohello Azure хранилище больших двоичных объектов, содержащий hello ZIP-файл) значения toocorrect.
+6. Исправления ошибок и хотите hello срез tooreprocess щелкните правой кнопкой мыши срез hello в hello **OutputDataset** колонку и нажмите кнопку **запуска**.
 
    ![](./media/data-factory-data-processing-using-batch/image21.png)
 
    > [!NOTE]
-   > В хранилище BLOB-объектов Azure появится **контейнер** с именем `adfjobs`. Этот контейнер не удаляется автоматически, но его можно безопасно удалить после завершения тестирования решения. Аналогичным образом решение фабрики данных создает **задание** пакетной службы Azure с именем `adf-\<pool ID/name\>:job-0000000001`. При необходимости после выполнения тестирования решения это задание можно удалить.
+   > В хранилище BLOB-объектов Azure появится **контейнер** с именем `adfjobs`. Этот контейнер не удаляется автоматически, но ее можно безопасно удалить после завершения тестирования решения hello. Аналогичным образом hello решения фабрики данных создает пакет Azure **задания** с именем: `adf-\<pool ID/name\>:job-0000000001`. После выполнения тестов hello решение при необходимости можно удалить это задание.
    >
    >
-7. Настраиваемое действие не использует файл **app.config** из пакета. Поэтому, если код считывает какие-либо строки подключения из файла конфигурации, это не сработает во время выполнения. При использовании пакетной службы Azure рекомендуется хранить все секреты в **хранилище ключей Azure**. Кроме того, следует использовать субъект-службу на основе сертификата для защиты хранилища ключей и переместить сертификат в пул пакетной службы Azure. В этом случае пользовательское действие .NET в среде выполнения сможет использовать секреты из хранилища ключей. Это универсальное решение, которое можно использовать для любых типов секрета, а не только строк подключения.
+7. пользовательское действие Hello не использует hello **app.config** файл из пакета. Таким образом Если код считывает все строки подключения из файла конфигурации hello, он не работает во время выполнения. Здравствуйте, рекомендуется при использовании пакета Azure, toohold все секреты в **Azure KeyVault**, используйте keyvault hello tooprotect участника службы на основе сертификатов и распространять hello пула tooAzure сертификат. Здравствуйте настраиваемых действий .NET, то можно получить доступ к секретные данные из hello KeyVault во время выполнения. Это решение универсальные и масштабируется tooany тип секретного кода, а не только строку подключения.
 
-    Существует и более простое (но не самое лучшее) решение: можно создать **связанную службу SQL Azure** с параметрами строки подключения, набор данных, использующий связанную службу, и привязать его как фиктивный набор входных данных к настраиваемому действию .NET. После этого вы сможете получить доступ к строке подключения связанной службы из кода пользовательского действия — в среде выполнения она должна работать нормально.  
+    Отсутствует простой обходной путь (но не рекомендуется): можно создать **связанная служба Azure SQL** параметры строки соединения, создать набор данных, использует hello связанной службы и цепочки hello dataset в виде пустой входного набора данных toohello настраиваемых действий .NET. После этого можно доступа hello связаны строки подключения службы в коде пользовательское действие hello и он должен корректно работать во время выполнения.  
 
-#### <a name="extend-the-sample"></a>Расширение примера
-Для получения дополнительных сведений о функциях фабрики данных Azure и пакетной службы Azure этот пример можно расширить. Например, чтобы обрабатывать срезы с использованием другого диапазона времени, выполните следующее.
+#### <a name="extend-hello-sample"></a>Расширение образца hello
+Можно расширить этот пример toolearn Дополнительные сведения о функции фабрики данных Azure и пакета Azure. Например срезы tooprocess в другой диапазон дат, hello следующие шаги:
 
-1. Добавьте в папку `inputfolder` подпапки 2015-11-16-05, 2015-11-16-06, 201-11-16-07, 2011-11-16-08, 2015-11-16-09 и поместите в них входные файлы. Измените время окончания для конвейера с `2015-11-16T05:00:00Z` на `2015-11-16T10:00:00Z`. В **представлении схемы** дважды щелкните **InputDataset** и убедитесь, что для входных срезов отображается состояние "Готово". Дважды щелкните **OuptutDataset** , чтобы просмотреть состояние выходных срезов. Если отображается состояние "Готово", проверьте выходные файлы в выходной папке.
-2. Укажите для параметра **concurrency** большее или меньшее значение, чтобы понять, как это влияет на производительность решения, особенно на обработку в пакетной службе Azure. (Дополнительные сведения о параметре **concurrency** см. в разделе "Шаг 4. Создание и запуск конвейера".)
-3. Создайте пул с большим или меньшим значением для параметра **Maximum tasks per VM** (Максимальное число задач на виртуальную машину). Чтобы воспользоваться созданным пулом, обновите связанную службу пакетной службы Azure в решении фабрики данных. (Дополнительные сведения о параметре **Maximum tasks per VM** (Максимальное число задач на виртуальную машину) см. в разделе "Шаг 4. Создание и запуск конвейера".)
-4. Создайте пул пакетной службы Azure с использованием функции **автомасштабирования** . Автоматическое масштабирование вычислительных узлов в пуле пакетной службы Azure представляет собой динамическую настройку вычислительной мощности, используемой вашим приложением. 
+1. Добавьте следующие вложенные папки в hello hello `inputfolder`: 2015-11-16-05 2015-11-16-06 201-11-16-07, 2011-11-16-08, 2015-11-16-09 и поместите входные файлы в этих папках. Изменить hello время окончания для конвейера hello из `2015-11-16T05:00:00Z` слишком`2015-11-16T10:00:00Z`. В hello **представление диаграммы**, дважды щелкните hello **InputDataset**и убедитесь, что готовы входные срезы hello. Дважды щелкните **OuptutDataset** toosee состояние hello срезы выходных данных. Если они находятся в состоянии готовности, проверьте папку вывода hello hello выходные файлы.
+2. Увеличение или уменьшение hello **параллелизма** параметр toounderstand о том, как она влияет на производительность hello решения, особенно hello обработки, которое происходит в пакетной службы Azure. (См. шаг 4: Создание и запуск конвейера hello для получения дополнительных сведений об hello **параллелизма** параметр.)
+3. Создайте пул с большим или меньшим значением для параметра **Maximum tasks per VM** (Максимальное число задач на виртуальную машину). toouse hello новый созданный пул, hello обновления связанной пакетной службы Azure в решении hello фабрики данных. (См. шаг 4: Создание и запуск конвейера hello для получения дополнительных сведений об hello **максимально задачи на виртуальную Машину** параметр.)
+4. Создайте пул пакетной службы Azure с использованием функции **автомасштабирования** . Автоматическое масштабирование вычислительных узлов в пуле пакетной службы Azure — hello динамическую настройку вычислительной мощности, используемую приложением. 
 
-    Приведенный пример формулы обеспечивает следующее поведение: при создании пул изначально содержит одну виртуальную машину. Метрика $PendingTasks определяет количество задач в состоянии выполнения и активном состоянии (в очереди).  Формула находит среднее число ожидающих выполнения задач за последние 180 секунд и соответствующим образом задает значение TargetDedicated. Благодаря этому значение TargetDedicated никогда не превысит 25 виртуальных машин. Таким образом, по мере поступления новых задач пул автоматически увеличивается, а по мере их завершения виртуальные машины высвобождаются по одной, и функция автоматического масштабирования уменьшает пул. Значения startingNumberOfVMs и maxNumberofVMs можно настроить в соответствии со своими потребностями.
+    Образец формулы Hello позволяет достичь следующих поведение hello: при создании пула hello, он начинается с 1 виртуальной Машины. Метрика $PendingTasks определяет hello число задач в запущена + active (в очереди) состояние.  Hello формула находит hello среднее число ожидающих задач в hello последние 180 секунд и соответствующим образом задает параметром TargetDedicated. Благодаря этому значение TargetDedicated никогда не превысит 25 виртуальных машин. Таким образом как отправлены новые задачи, пул автоматически увеличивается и как задачи завершаются, виртуальные машины становятся свободного один за другим и автоматическое масштабирование hello уменьшается этих виртуальных машин. startingNumberOfVMs и maxNumberofVMs могут быть скорректированное tooyour потребностей.
  
     Формула автоматического масштабирования:
 
@@ -883,28 +883,28 @@ test custom activity Microsoft test custom activity Microsoft
 
    Дополнительные сведения см. в статье [Автоматическое масштабирование вычислительных узлов в пуле пакетной службы Azure](../batch/batch-automatic-scaling.md).
 
-   Если в пуле используется [autoScaleEvaluationInterval](https://msdn.microsoft.com/library/azure/dn820173.aspx)(значение по умолчанию), пакетной службе может потребоваться 15–30 минут на подготовку виртуальной машины перед выполнением настраиваемого действия.  Если пул использует другое значение autoScaleEvaluationInterval, пакетная служба может затрачивать autoScaleEvaluationInterval плюс 10 минут.
-5. В примере решения метод **Execute** вызывает метод **Calculate**, который обрабатывает входной срез данных для создания выходного среза данных. Можно написать собственный метод для обработки входных данных и заменить вызов метода Calculate в методе Execute его вызовом.
+   Если пул hello используется по умолчанию hello [autoScaleEvaluationInterval](https://msdn.microsoft.com/library/azure/dn820173.aspx), hello пакетная служба может занять 15-30 минут tooprepare hello виртуальной Машины перед запуском пользовательское действие hello.  Если пул hello использует разные autoScaleEvaluationInterval, hello пакетная служба может получить autoScaleEvaluationInterval + 10 минут.
+5. В решении образец hello hello **Execute** метод вызывает hello **Calculate** метода, который обрабатывает входные данные срез tooproduce срез данных выходные данные. Можно написать собственный метод tooprocess входные данные и замените вызов метода Calculate hello в методе Execute hello tooyour вызова метода.
 
-### <a name="next-steps-consume-the-data"></a>Дальнейшие действия. Использование данных
-После обработки данных их можно использовать в интерактивных инструментах, например в **Microsoft Power BI**. Ниже приведены ссылки на статьи, в которых представлены общие сведения о Power BI и информация о том, как использовать это средство в Azure.
+### <a name="next-steps-consume-hello-data"></a>Дальнейшие действия: использовать данные hello
+После обработки данных их можно использовать в интерактивных инструментах, например в **Microsoft Power BI**. Ниже приведены ссылки toohelp понять Power BI и как toouse его в Azure:
 
 * [Изучение набора данных в Power BI](https://powerbi.microsoft.com/documentation/powerbi-service-get-data/)
-* [Начало работы с Power BI Desktop](https://powerbi.microsoft.com/documentation/powerbi-desktop-getting-started/)
+* [Приступая к работе с Power BI Desktop hello](https://powerbi.microsoft.com/documentation/powerbi-desktop-getting-started/)
 * [Обновление данных в Power BI](https://powerbi.microsoft.com/documentation/powerbi-refresh-data/)
 * [Общая информация об Azure и Power BI](https://powerbi.microsoft.com/documentation/powerbi-azure-and-power-bi/)
 
 ## <a name="references"></a>Ссылки
 * [Фабрика данных Azure](https://azure.microsoft.com/documentation/services/data-factory/)
 
-  * [Введение в службу фабрики данных Azure](data-factory-introduction.md)
+  * [Введение tooAzure служба фабрики данных](data-factory-introduction.md)
   * [Начало работы с фабрикой данных Azure](data-factory-build-your-first-pipeline.md)
   * [Использование настраиваемых действий в конвейере фабрики данных Azure](data-factory-use-custom-activities.md)
 * [Пакетная служба Azure](https://azure.microsoft.com/documentation/services/batch/)
 
   * [Основные сведения о пакетной службе Azure](../batch/batch-technical-overview.md)
   * [Обзор функций пакетной службы Azure](../batch/batch-api-basics.md)
-  * [Создание учетной записи пакетной службы Azure на портале Azure и управление ею](../batch/batch-account-create-portal.md)
+  * [Создание и управление учетной записью пакетной службы Azure в hello портал Azure](../batch/batch-account-create-portal.md)
   * [Начало работы с библиотекой Пакетной службы Azure для .NET](../batch/batch-dotnet-get-started.md)
 
 [batch-explorer]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/BatchExplorer

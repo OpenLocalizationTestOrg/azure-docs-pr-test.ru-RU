@@ -1,6 +1,6 @@
 ---
-title: "Пример сценария Azure CLI. Копирование (перемещение) управляемых дисков в ту же или другую подписку | Microsoft Docs"
-description: "Пример сценария Azure CLI. Копирование (перемещение) управляемых дисков в ту же или другую подписку"
+title: "aaaAzure образец скрипта CLI - toosame диски или другой подписке управляемых копии (перемещения) | Документы Microsoft"
+description: "Azure CLI образец скрипта - toosame дисков управляемых копии (перемещения) или другой подписке"
 services: virtual-machines-linux
 documentationcenter: storage
 author: ramankumarlive
@@ -15,15 +15,15 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 05/19/2017
 ms.author: ramankum
-ms.openlocfilehash: dcf92babf84872ffbbba81127952f8422104c723
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: b1fa207bd6e05d7094be08855e7823e3b7686013
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="copy-managed-disks-to-same-or-different-subscription-with-cli"></a>Копирование управляемых дисков в ту же или другую подписку с помощью интерфейса командной строки
+# <a name="copy-managed-disks-toosame-or-different-subscription-with-cli"></a>Скопируйте toosame управляемых дисков или другую подписку с CLI
 
-Этот сценарий копирует управляемый диск в ту же или другую подписку в одном регионе. 
+Этот скрипт копирует toosame управляемого диска или другую подписку, но в hello же области. 
 
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
@@ -32,22 +32,22 @@ ms.lasthandoff: 08/29/2017
 
 ## <a name="sample-script"></a>Пример скрипта
 
-[!code-azurecli[main](../../../cli_scripts/virtual-machine/copy-managed-disks-to-same-or-different-subscription/copy-managed-disks-to-same-or-different-subscription.sh "Копирование управляемого диска")]
+[!code-azurecli[main](../../../cli_scripts/virtual-machine/copy-managed-disks-to-same-or-different-subscription/copy-managed-disks-to-same-or-different-subscription.sh "Copy managed disk")]
 
 
 ## <a name="script-explanation"></a>Описание скрипта
 
-Этот сценарий использует приведенные ниже команды для создания управляемого диска в целевой подписке с помощью идентификатора исходного управляемого диска. Для каждой команды в таблице приведены ссылки на соответствующую документацию.
+Этот скрипт использует следующую команды toocreate нового управляемого диска в hello целевой подписки с помощью hello идентификатор источника hello управляемого диска. Каждая команда в таблице hello связывает toocommand документацию.
 
 | Команда | Примечания |
 |---|---|
-| [az disk show](https://docs.microsoft.com/cli/azure/disk#show) | Получает все свойства управляемого диска, используя имя и свойства группы ресурсов управляемого диска. Свойство идентификатора используется для копирования управляемого диска в другую подписку.  |
-| [az disk create](https://docs.microsoft.com/cli/azure/disk#create) | Копирует управляемый диск путем создания нового управляемого диска в другой подписке, используя идентификатор и имя родительского управляемого диска.  |
+| [az disk show](https://docs.microsoft.com/cli/azure/disk#show) | Возвращает все свойства hello управляемого диска с помощью hello имя ресурса группы свойств и hello управляемого диска. Идентификатор свойства — используется toocopy hello управляемого диска toodifferent подписка.  |
+| [az disk create](https://docs.microsoft.com/cli/azure/disk#create) | Копирует управляемого диска путем создания нового управляемого диска в другую подписку, используя идентификатор и имя родительского hello управляемого диска.  |
 
 ## <a name="next-steps"></a>Дальнейшие действия
 
 [Создание виртуальной машины на основе управляемого диска](./virtual-machines-linux-cli-sample-create-vm-from-managed-os-disks.md?toc=%2fpowershell%2fmodule%2ftoc.json)
 
-Дополнительные сведения об Azure CLI см. в [документации по Azure CLI](https://docs.microsoft.com/cli/azure/overview).
+Дополнительные сведения о hello Azure CLI см. в разделе [документации Azure CLI](https://docs.microsoft.com/cli/azure/overview).
 
-Дополнительные примеры сценариев интерфейса командной строки для виртуальных машин и управляемых дисков см. в [документации по виртуальным машинам Azure под управлением Linux](../../app-service-web/app-service-cli-samples.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Установить дополнительную виртуальную машину и управляемых дисков CLI образцы скриптов можно найти в hello [документации виртуальной Машине Linux Azure](../../app-service-web/app-service-cli-samples.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).

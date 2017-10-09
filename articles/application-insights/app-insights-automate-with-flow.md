@@ -1,6 +1,6 @@
 ---
-title: "Автоматизация процессов Azure Application Insights с помощью Microsoft Flow"
-description: "Узнайте, как можно использовать Microsoft Flow для быстрой автоматизации повторяющихся процессов с помощью соединителя Application Insights."
+title: "aaaAutomate аналитики приложения Azure обрабатывает с потоком Microsoft"
+description: "Дополнительные сведения об использовании Microsoft Flow tooquickly автоматизации повторяющихся процессов с помощью соединителя hello Application Insights."
 services: application-insights
 documentationcenter: 
 author: CFreemanwa
@@ -12,33 +12,33 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/25/2017
 ms.author: bwren
-ms.openlocfilehash: 510f4f284bbd0dbe4171896899f7ade7dee19e39
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: b34488a6b8b8b0a6add960a67f1426cbbbc13552
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="automate-azure-application-insights-processes-with-the-connector-for-microsoft-flow"></a>Автоматизация процессов Azure Application Insights с помощью соединителя для Microsoft Flow
+# <a name="automate-azure-application-insights-processes-with-hello-connector-for-microsoft-flow"></a>Автоматизации процессов Azure Application Insights с соединителем hello для Microsoft Flow
 
-Постоянно выполняете одинаковые запросы к данным телеметрии, чтобы проверить, что ваша служба работает правильно? Хотите автоматизировать эти запросы для поиска тенденций и аномалий и создавать на их основе собственные рабочие процессы? Соединитель Application Insights (предварительная версия) для Microsoft Flow — это то, что вам нужно.
+Как найти самостоятельно повторяющемся выполнении hello же запросы на вашей toocheck данные телеметрии, что служба работает правильно? Вид tooautomate эти запросы используются для поиска тренды и аномалии, а затем построить собственные рабочие процессы вокруг них? Соединитель Hello аналитики приложений Azure (Предварительная версия) для Microsoft Flow — hello правильное средство для следующих целей.
 
-Благодаря этой интеграции можно автоматизировать множество процессов, не написав ни строчки кода. После создания последовательности с помощью действия Application Insights будет автоматически запущен запрос Application Insights Analytics. 
+Благодаря этой интеграции можно автоматизировать множество процессов, не написав ни строчки кода. После создания потока с помощью Application Insights действие, hello потока автоматически запускает запрос аналитики аналитики приложений. 
 
-Вы также можете добавить дополнительные действия. Служба Flow предоставляет сотни действий. Например, вы можете использовать Microsoft Flow, чтобы автоматически отправить уведомление по электронной почте или создать ошибку в Visual Studio Team Services. Вы также можете воспользоваться одним из нескольких [шаблонов](https://ms.flow.microsoft.com/en-us/connectors/shared_applicationinsights/?slug=azure-application-insights), доступных для соединителя для Microsoft Flow. С помощью этих шаблонов можно ускорить процесс создания последовательности. 
+Вы также можете добавить дополнительные действия. Служба Flow предоставляет сотни действий. Например можно использовать Microsoft Flow tooautomatically отправки уведомления по электронной почте или создание ошибки в Visual Studio Team Services. Можно также использовать один из hello многие [шаблоны](https://ms.flow.microsoft.com/en-us/connectors/shared_applicationinsights/?slug=azure-application-insights) , доступных для hello соединитель для потока корпорации Майкрософт. Эти шаблоны ускорить процесс создания потока hello. 
 
-<!--The Application Insights connector also works with [Azure Power Apps](https://powerapps.microsoft.com/en-us/) and [Azure Logic Apps](https://azure.microsoft.com/services/logic-apps/?v=17.23h). --> 
+<!--hello Application Insights connector also works with [Azure Power Apps](https://powerapps.microsoft.com/en-us/) and [Azure Logic Apps](https://azure.microsoft.com/services/logic-apps/?v=17.23h). --> 
 
 ## <a name="create-a-flow-for-application-insights"></a>Создание последовательности для Application Insights
 
-В этом руководстве вы узнаете, как создать последовательность, использующую алгоритм автоматической кластеризации Analytics, для группирования атрибутов данных для веб-приложения. Отправка результатов по электронной почте — это лишь один из примеров того, как можно совместно использовать Microsoft Flow и Application Insights Analytics. 
+В этом учебнике вы узнаете, как toocreate поток, который использует hello Analytics кластера автоматически алгоритм toogroup атрибуты в hello данных для веб-приложения. поток Hello автоматически отправляет результаты hello по электронной почте, лишь один пример того, как можно использовать Microsoft Flow и аналитика аналитики приложений друг с другом. 
 
 ### <a name="step-1-create-a-flow"></a>Шаг 1. Создание последовательности
-1. Войдите в службу [Microsoft Flow](http://flow.microsoft.com) и выберите **Мои последовательности**.
+1. Вход слишком[Microsoft Flow](http://flow.microsoft.com)и выберите **Мои потоки**.
 2. Щелкните **Create a flow from blank** (Создать последовательность с нуля).
 
 ### <a name="step-2-create-a-trigger-for-your-flow"></a>Шаг 2. Создание триггера для последовательности
 1. Выберите **Расписание**, а затем **Расписание — повторение**.
-2. В поле **Частота** выберите **День**, а в поле **Интервал** введите **1**.
+2. В hello **частоты** выберите **день**и в hello **интервал** введите **1**.
 
     ![Диалоговое окно триггера Microsoft Flow](./media/app-insights-automate-with-flow/flow1.png)
 
@@ -50,22 +50,22 @@ ms.lasthandoff: 08/18/2017
 
     ![Окно запуска запроса Analytics](./media/app-insights-automate-with-flow/flow2.png)
 
-### <a name="step-4-connect-to-an-application-insights-resource"></a>Шаг 4. Подключение к ресурсу Application Insights
+### <a name="step-4-connect-tooan-application-insights-resource"></a>Шаг 4: Подключение tooan ресурс Application Insights
 
-Чтобы выполнить этот шаг, необходим идентификатор приложения и ключ API для ресурса. Их можно получить на портале Azure, как показано ниже.
+toocomplete этот шаг требуется для вашего ресурса идентификатора приложения и ключ API. Их можно восстановить из hello портал Azure, как показано в hello, следующая схема:
 
-![Идентификатор приложения на портале Azure](./media/app-insights-automate-with-flow/appid.png) 
+![Идентификатор приложения в hello портал Azure](./media/app-insights-automate-with-flow/appid.png) 
 
-- Укажите имя подключения, а также идентификатор приложения и ключ API.
+- Введите имя для соединения, вместе с hello приложения идентификатор и ключ API.
 
     ![Окно подключения Microsoft Flow](./media/app-insights-automate-with-flow/flow3.png)
 
-### <a name="step-5-specify-the-analytics-query-and-chart-type"></a>Шаг 5. Указание запроса Analytics и типа диаграммы
-В этом примере выбираются невыполненные запросы за последний день. Они сопоставляются с исключениями, которые возникли в рамках операции. Analytics сопоставляет их на основе идентификатора operation_Id. Затем запрос разделяет результаты с помощью алгоритма автоматической кластеризации. 
+### <a name="step-5-specify-hello-analytics-query-and-chart-type"></a>Шаг 5: Укажите hello аналитический запрос и тип диаграммы
+Следующий пример запроса выбирает hello сбой запросов в последний день hello и сопоставляет их с исключения, которые возникают в ходе операции hello. Аналитика сопоставляет их на основе идентификатора operation_Id hello. Затем запрос Hello сегменты hello результаты с помощью алгоритма autocluster hello. 
 
-При создании собственных запросов убедитесь, что они работают должным образом в Analytics, прежде чем добавить их в последовательность.
+При создании собственных запросов, убедитесь, что они работают надлежащим образом в Analytics перед его добавлением tooyour потока.
 
-- Добавьте следующий запрос Analytics и выберите тип диаграммы "Таблица HTML". 
+- Добавьте hello в следующем запросе аналитика и выберите тип диаграммы таблицы HTML hello. 
 
     ```
     requests
@@ -80,7 +80,7 @@ ms.lasthandoff: 08/18/2017
     
     ![Окно настройки запроса Analytics](./media/app-insights-automate-with-flow/flow4.png)
 
-### <a name="step-6-configure-the-flow-to-send-email"></a>Шаг 6. Настройка последовательности для отправки электронной почты
+### <a name="step-6-configure-hello-flow-toosend-email"></a>Шаг 6: Настройка электронной почты toosend потока hello
 
 1. Выберите поле **+Новый шаг**, а затем щелкните **Добавить действие**.
 2. Выполните поиск по запросу **Office 365 Outlook**.
@@ -88,36 +88,36 @@ ms.lasthandoff: 08/18/2017
 
     ![Окно выбора Office 365 Outlook](./media/app-insights-automate-with-flow/flow2b.png)
 
-4. В окне **Отправка сообщения электронной почты** выполните следующие действия:
+4. В hello **отправить сообщение электронной почты** окне hello следующие:
 
-   а. Введите адрес электронной почты получателя.
+   а. Введите адрес электронной почты получателя hello hello.
 
-   b. Введите тему сообщения.
+   b. Введите тему сообщения hello.
 
-   c. Щелкните в любом месте в поле **Текст**, затем в открывшемся справа меню динамического содержимого выберите **Текст**.
+   c. Щелкните в любом месте hello **текст** и меню hello динамического содержимого, открывающееся hello справа выберите **текст**.
 
-   г) Щелкните **Показать дополнительные параметры**.
+   d. Щелкните **Показать дополнительные параметры**.
 
     ![Конфигурация Office 365 Outlook](./media/app-insights-automate-with-flow/flow5.png)
 
-5. В меню динамического содержимого выполните следующее.
+5. В меню hello динамического содержимого hello следующие:
 
     а. Выберите **Имя вложения**.
 
     b. Выберите **Содержимое вложения**.
     
-    c. В поле **Является HTML** выберите значение **Да**.
+    c. В hello **HTML-** выберите **Да**.
 
     ![Экран настройки сообщения электронной почты Office 365](./media/app-insights-automate-with-flow/flow7.png)
 
 ### <a name="step-7-save-and-test-your-flow"></a>Шаг 7. Сохранение и тестирование последовательности
-- В поле **Имя последовательности** добавьте имя последовательности и нажмите кнопку **Создать последовательность**.
+- В hello **имя потока** , добавьте имя для вашего потока и нажмите кнопку **создания потока**.
 
     ![Окно создания последовательности](./media/app-insights-automate-with-flow/flow8.png)
 
-Вы можете подождать, пока триггер запустит действие, или немедленно запустить последовательность, [запустив триггер по запросу](https://flow.microsoft.com/blog/run-now-and-six-more-services/).
+Можно подождать hello триггер toorun это действие или hello потока можно запустить немедленно по [выполнения триггера hello по требованию](https://flow.microsoft.com/blog/run-now-and-six-more-services/).
 
-При выполнении последовательности получатели, указанные в списке рассылки, получат сообщение электронной почты, которое выглядит следующим образом:
+При запуске потока hello hello получатели, заданные в списка по электронной почте hello получать сообщения электронной почты, который выглядит как следующий hello:
 
 ![Пример электронного сообщения](./media/app-insights-automate-with-flow/flow9.png)
 

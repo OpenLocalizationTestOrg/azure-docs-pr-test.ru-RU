@@ -1,6 +1,6 @@
 ---
-title: "Подключение приложения к виртуальной сети с помощью PowerShell"
-description: "Инструкции по подключению виртуальных сетей и работы с ними с помощью PowerShell"
+title: "aaaConnect виртуальной сети tooyour приложения с помощью PowerShell"
+description: "Инструкции о способах tooconnect tooand работы с виртуальными сетями с помощью PowerShell"
 services: app-service
 documentationcenter: 
 author: ccompy
@@ -14,49 +14,49 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/29/2016
 ms.author: ccompy
-ms.openlocfilehash: 6fae6a6c162fa326161d2b47a259b3151d6e3dd0
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: c9d0fa99d02cab7b2c7211a1b2f7b7d0cd27ee8e
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="connect-your-app-to-your-virtual-network-by-using-powershell"></a>Подключение приложения к виртуальной сети с помощью PowerShell
+# <a name="connect-your-app-tooyour-virtual-network-by-using-powershell"></a>Подключение виртуальной сети tooyour приложения с помощью PowerShell
 ## <a name="overview"></a>Обзор
-В службе приложений Azure приложение (веб-приложение, мобильное приложение или приложение API) можно подключить к виртуальной сети Azure в подписке. Эта функция называется интеграцией с виртуальной сетью. Функцию интеграции с виртуальной сетью не следует путать с функцией среды службы приложений, которая позволяет запустить экземпляр службы приложений Azure в виртуальной сети.
+В службе приложений Azure, можно подключить ваше приложение (веб, мобильных или API) tooan виртуальной сети (VNet) Azure в вашей подписке. Эта функция называется интеграцией с виртуальной сетью. Функция интеграции виртуальной сети Hello не следует путать с функцией hello среды службы приложений, позволяющую toorun экземпляр службы приложений Azure в виртуальной сети.
 
-Для функции интеграции с виртуальной сетью предусмотрен пользовательский интерфейс на новом портале, который можно использовать для выполнения интеграции с виртуальными сетями, развертываемыми с помощью классической модели развертывания или модели развертывания Azure Resource Manager. Дополнительные сведения об этой функции см. в статье [Интеграция приложения с виртуальной сетью Azure](web-sites-integrate-with-vnet.md).
+Функция интеграции виртуальной сети Hello имеет пользовательский интерфейс (UI) в новый портал hello toointegrate можно использовать с виртуальными сетями, которые развертываются с помощью модели развертывания диспетчера ресурсов Azure hello либо hello классической модели развертывания. Дополнительные сведения о функции hello toolearn см [интегрировать приложения с помощью виртуальной сети Azure](web-sites-integrate-with-vnet.md).
 
-Эта статья посвящена не использованию пользовательского интерфейса, а включению интеграции с помощью PowerShell. Так как команды для разных моделей развертывания отличаются, в этой статье есть отдельные разделы для каждой модели.  
+Эта статья является не о как toouse hello пользовательского интерфейса, но вместо о том, как tooenable интеграции с помощью PowerShell. Поскольку отличаются hello команды для каждой модели развертывания, в этой статье имеется раздел для каждой модели развертывания.  
 
 Прежде чем продолжить работу с этой статьей, убедитесь, что:
 
-* установлена последняя версия пакета SDK для Azure PowerShell. Ее можно установить с помощью установщика веб-платформы.
+* Здравствуйте, который установлен последний пакет SDK Azure PowerShell. Это можно установить с hello установщика веб-платформы.
 * У вас есть приложение в службе приложений Azure, работающее в системе SKU класса "Стандартный" или "Премиум".
 
 ## <a name="classic-virtual-networks"></a>Классические виртуальные сети
-В этом разделе описываются три задачи для виртуальных сетей, в которых используется классическая модель развертывания:
+В этом разделе объясняется три задачи для виртуальных сетей, использующих hello классической модели развертывания.
 
-1. подключение приложения к ранее созданной виртуальной сети, в которой есть шлюз и которая настроена для подключения типа "точка — сеть";
+1. Подключение приложения tooa ранее существовавших виртуальной сети, шлюз и настроенной для подключения точки сайтами.
 2. обновление сведений об интеграции с виртуальной сетью для приложения;
 3. отключение приложения от виртуальной сети.
 
-### <a name="connect-an-app-to-a-classic-vnet"></a>Подключение приложения к классической виртуальной сети
-Чтобы подключить приложение к виртуальной сети, выполните три шага:
+### <a name="connect-an-app-tooa-classic-vnet"></a>Подключение приложения tooa классической виртуальной сети
+tooconnect приложения tooa виртуальной сетью, выполните следующие три действия.
 
-1. Объявите веб-приложению о том, что оно будет присоединено к конкретной виртуальной сети. Приложение создаст сертификат, который будет передан виртуальной сети для подключения типа "точка — сеть".
-2. Отправьте сертификат веб-приложения в виртуальную сеть, а затем получите URI пакета VPN для подключения типа "точка — сеть".
-3. Обновите подключение веб-приложений к виртуальной сети с помощью URI пакета для подключения типа "точка — сеть".
+1. Объявите toohello веб-приложения, что он будет присоединение к конкретной виртуальной сети. приложение Hello создаст сертификат, который получит toohello виртуальной сети для подключения точки сайтами.
+2. Отправка hello web app сертификат toohello виртуальной сети, а затем извлечь hello точка сеть VPN пакет URI.
+3. Обновите подключение виртуальной сети hello веб-приложения с URI пакета точки сайтами hello.
 
-Первый и третий шаги можно полностью реализовать в качестве скриптов, но для второго шага необходимо выполнить однократное действие на портале или получить доступ для выполнения действий **PUT** и **PATCH** в конечной точке Azure Resource Manager виртуальной сети. (чтобы включить его, обратитесь в службу поддержки Azure). Перед выполнением действий убедитесь, что у вас есть классическая виртуальная сеть со включенным подключением типа "точка — сеть" и развернутым шлюзом. Для создания шлюза и включения подключения "точка — сеть" выполните на портале действия, описанные в статье [Настройка VPN-подключения типа "точка — сеть" к виртуальной сети с помощью классического портала][createvpngateway].
+Hello первый и третий шаги можно использовать в сценариях, но второй шаг hello требует однократное действие вручную через портал hello или tooperform доступа **ПОМЕСТИТЬ** или **PATCH** действия hello виртуальной сети Конечная точка диспетчера ресурсов Azure. Обратитесь в службу поддержки Azure toohave это включена. Перед выполнением действий убедитесь, что у вас есть классическая виртуальная сеть со включенным подключением типа "точка — сеть" и развернутым шлюзом. toocreate hello шлюза и включить точки сайтами подключения, необходимо toouse hello портала, описанную в [создание VPN-шлюза][createvpngateway].
 
-Классическая виртуальная сеть должна находиться в той же подписке, что и план службы приложений, содержащий приложение, с которым выполняется интеграция.
+Hello классической виртуальной сети должен toobe в hello той же подписке, службе приложений план содержит приложение hello, который интегрируется с.
 
 ##### <a name="set-up-azure-powershell-sdk"></a>Настройка пакета SDK для Azure PowerShell
 Откройте окно PowerShell и настройте учетную запись и подписку Azure, используя следующую команду:
 
     Login-AzureRmAccount
 
-При выполнении этой команды появится запрос на ввод учетных данных Azure. После входа в систему используйте одну из команд ниже, чтобы выбрать необходимую подписку. Убедитесь, что вы используете именно ту подписку, в которой находятся виртуальная сеть и план службы приложений.
+Этой команды откроется запрос tooget учетные данные Azure. После входа в воспользуйтесь одним из следующих команд tooselect hello подписки, которые должны toouse hello. Убедитесь, что вы используете подписки hello, виртуальную сеть и план служб приложений в.
 
     Select-AzureRmSubscription –SubscriptionName [WebAppSubscriptionName]
 
@@ -65,9 +65,9 @@ ms.lasthandoff: 08/03/2017
     Select-AzureRmSubscription –SubscriptionId [WebAppSubscriptionId]
 
 ##### <a name="variables-used-in-this-article"></a>Переменные, используемые в этой статье
-Чтобы упростить команды, мы запишем необходимую конфигурацию в переменную PowerShell **$Configuration** .
+команды toosimplify, мы установим **$Configuration** переменной PowerShell с определенной конфигурацией hello.
 
-Установите эту переменную в PowerShell со следующими параметрами:
+Задайте переменную следующим образом в PowerShell с hello следующие параметры:
 
     $Configuration = @{}
     $Configuration.WebAppResourceGroup = "[Your web app resource group]"
@@ -76,15 +76,15 @@ ms.lasthandoff: 08/03/2017
     $Configuration.VnetResourceGroup = "[Your vnet resource group]"
     $Configuration.VnetName = "[Your vnet name]"
 
-Расположение приложения необходимо указывать без пробелов, например westus для западной части США.
+расположение приложения Hello должно быть расположение hello без пробелов. например westus для западной части США.
 
     $Configuration.WebAppLocation = "[Your web app Location]"
 
-Следующий элемент представляет собой расположение будущего сертификата. Этот путь должен быть доступным для записи на локальном компьютере. Обязательно укажите ".cer" в конце.
+Следующий элемент Hello —, где должен быть записан hello сертификата. Этот путь должен быть доступным для записи на локальном компьютере. Убедитесь, что tooinclude CER-файл в конце hello.
 
     $Configuration.GeneratedCertificatePath = "[C:\Path\To\Certificate.cer]"
 
-Для просмотра установленной переменной введите **$Configuration**.
+toosee можно задать тип **$Configuration**.
 
     > $Configuration
 
@@ -98,33 +98,33 @@ ms.lasthandoff: 08/03/2017
     WebAppName                     vnetintdemoapp
     WebAppLocation                 centralus
 
-В остальной части раздела предполагается, что вы создали переменную описанным способом.
+Hello оставшейся части этого раздела предполагается, что переменная, созданная, как описано выше.
 
-##### <a name="declare-the-virtual-network-to-the-app"></a>Объявление виртуальной сети для приложения
-При помощи команды ниже сообщите приложению, что оно будет использовать указанную виртуальную сеть. При выполнении этой команды приложение создаст необходимые сертификаты:
+##### <a name="declare-hello-virtual-network-toohello-app"></a>Объявите toohello приложение hello виртуальной сети
+Используйте hello следующая команда приложение hello tootell, что он будет использоваться этой конкретной виртуальной сети. Это приведет к toogenerate приложения hello необходимые сертификаты:
 
     $vnet = New-AzureRmResource -Name "$($Configuration.WebAppName)/$($Configuration.VnetName)" -ResourceGroupName $Configuration.WebAppResourceGroup -ResourceType "Microsoft.Web/sites/virtualNetworkConnections" -PropertyObject @{"VnetResourceId" = "/subscriptions/$($Configuration.VnetSubscriptionId)/resourceGroups/$($Configuration.VnetResourceGroup)/providers/Microsoft.ClassicNetwork/virtualNetworks/$($Configuration.VnetName)"} -Location $Configuration.WebAppLocation -ApiVersion 2015-07-01
 
-Если команда выполнится успешно, **$vnet** будет содержать переменную **Properties**. Переменная **Properties** должна содержать отпечаток и данные сертификата.
+Если команда выполнится успешно, **$vnet** будет содержать переменную **Properties**. Hello **свойства** переменной должен содержать оба сертификата отпечаток и hello данные сертификата.
 
-##### <a name="upload-the-web-app-certificate-to-the-virtual-network"></a>Отправка сертификата веб-приложения в виртуальную сеть
-Для каждого сочетания виртуальной сети и подписки необходимо выполнить однократное действие вручную. То есть при подключении приложений в подписке A к виртуальной сети A это действие нужно выполнить только один раз независимо от того, сколько приложений вы настраиваете. При добавлении нового приложения в другую виртуальную сеть вам понадобится сделать это снова. Это связано с тем, что набор сертификатов создается на уровне подписки в службе приложений Azure и один раз для каждой виртуальной сети, к которой будут подключаться приложения.
+##### <a name="upload-hello-web-app-certificate-toohello-virtual-network"></a>Отправка hello web app сертификат toohello виртуальной сети
+Для каждого сочетания виртуальной сети и подписки необходимо выполнить однократное действие вручную. То есть при подключении приложения в подписке A tooVirtual сети A необходимо будет toodo этот шаг только один раз, независимо от того, сколько приложений можно настроить. При добавлении новой виртуальной сети tooanother приложения toodo потребуется снова. Hello причиной этого является набор сертификатов, созданный на уровне подписки в службе приложений Azure, что набор hello формируется один раз для каждой виртуальной сети, к которому будут подключаться приложения hello.
 
-Если вы выполнили эти действия или выполнили интеграцию с той же виртуальной сетью с помощью портала, сертификаты уже будут настроены.
+Hello сертификаты будут уже заданы Если выполнены эти действия или интегрируется с hello же виртуальной сети с помощью портала hello.
 
-Сначала необходимо создать CER-файл. Затем необходимо отправить CER-файл в виртуальную сеть. Чтобы создать CER-файл с помощью вызова API на предыдущем шаге, выполните следующие команды.
+Hello первым шагом является toogenerate hello CER-файл. второй шаг Hello — tooupload hello .cer файл tooyour виртуальной сети. toogenerate hello CER-файл из вызова hello API в hello предыдущих шага, выполните следующие команды hello.
 
     $certBytes = [System.Convert]::FromBase64String($vnet.Properties.certBlob)
     [System.IO.File]::WriteAllBytes("$($Configuration.GeneratedCertificatePath)", $certBytes)
 
-Сертификат будет находиться в расположении, которое задано с помощью параметра **$Configuration.GeneratedCertificatePath** .
+Hello сертификат будет находится в папке hello, **$Configuration.GeneratedCertificatePath** указывает.
 
-Чтобы отправить сертификат вручную, на [портале Azure][azureportal] выберите **Browse Virtual Network (classic)** (Обзор виртуальных сетей (классических)) > **VPN-подключения** > **Точка-сеть** > **Управление сертификатами**. Здесь можно отправить сертификат.
+сертификат hello tooupload вручную, используйте hello [портал Azure] [ azureportal] и **Обзор виртуальной сети (классические)** > **VPN-подключений**  >  **Точки сайтами** > **Управление сертификатами**. Здесь можно отправить сертификат.
 
-##### <a name="get-the-point-to-site-package"></a>Получение пакета "точка — сеть"
-Следующий шаг при настройке подключения веб-приложения к виртуальной сети — получение пакета "точка — сеть" и его указание в веб-приложении.
+##### <a name="get-hello-point-to-site-package"></a>Получение пакета hello точка сеть
+Hello следующим шагом в настройке подключения к виртуальной сети на веб-приложения является пакетом точки сайтами tooget hello и предоставить ему tooyour веб-приложения.
 
-Сохраните следующий шаблон в файл с именем GetNetworkPackageUri.json в произвольном каталоге на вашем компьютере, например C:\Azure\Templates\GetNetworkPackageUri.json.
+Сохраните hello следующий файл шаблона tooa вызывается GetNetworkPackageUri.json где-либо на компьютере, например, C:\Azure\Templates\GetNetworkPackageUri.json.
 
     {
         "$schema": "http://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json#",
@@ -160,41 +160,41 @@ ms.lasthandoff: 08/03/2017
     certThumbprint = $vnet.Properties.certThumbprint ;
     "networkName" = $Configuration.VnetName }
 
-Вызовите сценарий:
+Вызов скрипта hello:
 
     $output = New-AzureRmResourceGroupDeployment -Name unused -ResourceGroupName $Configuration.VnetResourceGroup -TemplateParameterObject $parameters -TemplateFile C:\PATH\TO\GetNetworkPackageUri.json
 
 
-Переменная **$output.Outputs.packageUri** будет содержать URI пакета, который передастся веб-приложению.
+переменная приветствия **$output. Outputs.packageUri** теперь будет содержать toobe URI пакета hello, учитывая tooyour веб-приложения.
 
-##### <a name="upload-the-point-to-site-package-to-your-app"></a>Отправка пакета "точка-сеть" в приложение
-Последним шагом является отправка пакета в приложение. Для этого просто выполните следующую команду:
+##### <a name="upload-hello-point-to-site-package-tooyour-app"></a>Отправка tooyour приложения hello пакета точка сеть
+последним шагом Hello является приложение hello tooprovide с этим пакетом. Просто выполните hello следующей команды:
 
     $vnet = New-AzureRmResource -Name "$($Configuration.WebAppName)/$($Configuration.VnetName)/primary" -ResourceGroupName $Configuration.WebAppResourceGroup -ResourceType "Microsoft.Web/sites/virtualNetworkConnections/gateways" -ApiVersion 2015-07-01 -PropertyObject @{"VnetName" = $Configuration.VnetName ; "VpnPackageUri" = $($output.Outputs.packageUri).Value } -Location $Configuration.WebAppLocation
 
-Если появится сообщение о перезаписи существующего ресурса, обязательно подтвердите перезапись.
+Если сообщение с запросом tooconfirm перезаписи существующего ресурса, убедитесь, что tooallow его.
 
-После успешного выполнения этой команды приложение будет подключено к виртуальной сети. Чтобы убедиться в этом, перейдите к консоли приложения и введите следующую команду:
+После успешного выполнения этой команды, приложение должно быть toohello подключенной виртуальной сети. в случае успешного выполнения tooconfirm перейдите tooyour консольного приложения и введите ниже hello:
 
     SET WEBSITE_
 
-Если вы видите переменную среды WEBSITE_VNETNAME со значением, соответствующим имени целевой виртуальной сети, это означает, что все конфигурации успешно установлены.
+Если переменной среды WEBSITE_VNETNAME со значением, совпадающим с именем hello hello целевой виртуальной сети, все конфигурации успешно выполнено.
 
 ### <a name="update-classic-vnet-integration-information"></a>Обновление сведений об интеграции с классической виртуальной сетью
-Чтобы обновить или повторно синхронизировать данные, просто повторите действия, выполненные при первоначальной настройке интеграции. К этим действиям относятся:
+tooupdate или повторной синхронизации информации, просто повторите действия hello, которая использовалась при создании hello интеграции на первом месте hello. К этим действиям относятся:
 
 1. Определение данных конфигурации.
-2. Объявление виртуальной сети для приложения.
-3. Получение пакета "точка — сеть".
-4. Отправка пакета "точка — сеть" в приложение.
+2. Объявите toohello приложение hello виртуальной сети.
+3. Получение пакета точки сайтами hello.
+4. Отправьте приложение tooyour hello точки сайтами пакета.
 
 ### <a name="disconnect-your-app-from-a-classic-vnet"></a>Отключение приложения от классической виртуальной сети
-Для отключения приложения вам понадобятся данные конфигурации, которые использовались при интеграции с виртуальной сетью. После получения этих данных достаточно выполнить команду ниже, чтобы отключить приложение от виртуальной сети.
+приложение hello toodisconnect, необходимо hello сведения о конфигурации, который был задан во время интеграции виртуальной сети. Используя эту информацию, нет нажмите одну команду toodisconnect приложения из виртуальной сети.
 
     $vnet = Remove-AzureRmResource -Name "$($Configuration.WebAppName)/$($Configuration.VnetName)" -ResourceGroupName $Configuration.WebAppResourceGroup -ResourceType "Microsoft.Web/sites/virtualNetworkConnections" -ApiVersion 2015-07-01
 
 ## <a name="resource-manager-virtual-networks"></a>Виртуальные сети Resource Manager
-У виртуальных сетей Resource Manager есть интерфейсы API Azure Resource Manager, которые упрощают некоторые процессы по сравнению с классическими виртуальными сетями. У нас есть скрипт, который поможет вам выполнить следующие задачи:
+У виртуальных сетей Resource Manager есть интерфейсы API Azure Resource Manager, которые упрощают некоторые процессы по сравнению с классическими виртуальными сетями. У нас есть скрипт, который поможет вам выполнить hello следующие задачи:
 
 * создать виртуальную сеть Resource Manager и интегрировать свое приложение с ней;
 * создать шлюз, настроить подключение "точка — сеть" в созданной ранее виртуальной сети Resource Manager, а затем интегрировать свое приложение с ней;
@@ -202,7 +202,7 @@ ms.lasthandoff: 08/03/2017
 * отключение приложения от виртуальной сети.
 
 ### <a name="resource-manager-vnet-app-service-integration-script"></a>Скрипт для интеграции службы приложений для виртуальной сети Resource Manager
-Скопируйте приведенный ниже скрипт и сохраните его в файл. Если вы не хотите использовать скрипт, изучите его, чтобы узнать, как выполнить настройку для виртуальной сети Resource Manager.
+Скопируйте hello следующий скрипт и сохраните его файл tooa. Если вы не хотите toouse hello скрипт, вы свободного toolearn от него toosee как tooset всех компонентов с помощью диспетчера ресурсов для виртуальной сети.
 
     function ReadHostWithDefault($message, $default)
     {
@@ -262,10 +262,10 @@ ms.lasthandoff: 08/03/2017
         $pip = New-AzureRmPublicIpAddress -Name $vnetIpName -ResourceGroupName $resourceGroupName -Location $location -AllocationMethod Dynamic
         $ipconf = New-AzureRmVirtualNetworkGatewayIpConfig -Name $vnetIpConfigName -Subnet $subnet -PublicIpAddress $pip
 
-        Write-Host "Adding a root certificate to this VNET"
+        Write-Host "Adding a root certificate toothis VNET"
         $root = New-AzureRmVpnClientRootCertificate -Name "AppServiceCertificate.cer" -PublicCertData $certificateData
 
-        Write-Host "Creating Azure VNET Gateway. This may take up to an hour."
+        Write-Host "Creating Azure VNET Gateway. This may take up tooan hour."
         New-AzureRmVirtualNetworkGateway -Name $vnetGatewayName -ResourceGroupName $resourceGroupName -Location $location -IpConfigurations $ipconf -GatewayType Vpn -VpnType RouteBased -EnableBgp $false -GatewaySku Basic -VpnClientAddressPool $vnetPointToSiteAddressSpace -VpnClientRootCertificates $root
     }
 
@@ -290,7 +290,7 @@ ms.lasthandoff: 08/03/2017
         while($changeRequested -eq 0)
         {
             Write-Host
-            Write-Host "Currently, I will create a VNET with the following settings:"
+            Write-Host "Currently, I will create a VNET with hello following settings:"
             Write-Host
             Write-Host "Virtual Network Name: $vnetName"
             Write-Host "Resource Group Name:  $resourceGroupName"
@@ -301,7 +301,7 @@ ms.lasthandoff: 08/03/2017
             Write-Host "Gateway Address Space:$vnetGatewayAddressSpace"
             Write-Host "Point-To-Site Address Space:  $vnetPointToSiteAddressSpace"
             Write-Host
-            $changeRequested = PromptYesNo "" "Do you wish to change these settings?" 1
+            $changeRequested = PromptYesNo "" "Do you wish toochange these settings?" 1
 
             if($changeRequested -eq 0)
             {
@@ -318,15 +318,15 @@ ms.lasthandoff: 08/03/2017
 
         $ErrorActionPreference = "Stop";
 
-        # We create the virtual network and add it here. The way this works is:
-        # 1) Add the VNET association to the App. This allows the App to generate certificates, etc. for the VNET.
-        # 2) Create the VNET and VNET gateway, add the certificates, create the public IP, etc., required for the gateway
-        # 3) Get the VPN package from the gateway and pass it back to the App.
+        # We create hello virtual network and add it here. hello way this works is:
+        # 1) Add hello VNET association toohello App. This allows hello App toogenerate certificates, etc. for hello VNET.
+        # 2) Create hello VNET and VNET gateway, add hello certificates, create hello public IP, etc., required for hello gateway
+        # 3) Get hello VPN package from hello gateway and pass it back toohello App.
 
         $webApp = Get-AzureRmResource -ResourceName $webAppName -ResourceType "Microsoft.Web/sites" -ApiVersion 2015-08-01 -ResourceGroupName $webAppResourceGroup
         $location = $webApp.Location
 
-        Write-Host "Creating App association to VNET"
+        Write-Host "Creating App association tooVNET"
         $propertiesObject = @{
          "vnetResourceId" = "/subscriptions/$($subscriptionId)/resourceGroups/$($resourceGroupName)/providers/Microsoft.Network/virtualNetworks/$($vnetName)"
         }
@@ -336,16 +336,16 @@ ms.lasthandoff: 08/03/2017
 
         CreateVnetGateway $resourceGroupName $vnetName $vnetIpName $location $vnetIpConfigName $vnetGatewayName $virtualNetwork.Properties.CertBlob $vnetPointToSiteAddressSpace
 
-        Write-Host "Retrieving VPN Package and supplying to App"
+        Write-Host "Retrieving VPN Package and supplying tooApp"
         $packageUri = Get-AzureRmVpnClientPackage -ResourceGroupName $resourceGroupName -VirtualNetworkGatewayName $vnetGatewayName -ProcessorArchitecture Amd64
         
-        # $packageUri may contain literal double-quotes at the start and the end of the URL
+        # $packageUri may contain literal double-quotes at hello start and hello end of hello URL
         if($packageUri.Length -gt 0 -and $packageUri.Substring(0, 1) -eq '"' -and $packageUri.Substring($packageUri.Length - 1, 1) -eq '"')
         {
             $packageUri = $packageUri.Substring(1, $packageUri.Length - 2)
         }
 
-        # Put the VPN client configuration package onto the App
+        # Put hello VPN client configuration package onto hello App
         $PropertiesObject = @{
         "vnetName" = $VirtualNetworkName; "vpnPackageUri" = $packageUri
         }
@@ -359,7 +359,7 @@ ms.lasthandoff: 08/03/2017
     {
         $ErrorActionPreference = "Stop";
 
-        # At this point, the gateway should be able to be joined to an App, but may require some minor tweaking. We will declare to the App now to use this VNET
+        # At this point, hello gateway should be able toobe joined tooan App, but may require some minor tweaking. We will declare toohello App now toouse this VNET
         Write-Host "Getting App information"
         $webApp = Get-AzureRmResource -ResourceName $webAppName -ResourceType "Microsoft.Web/sites" -ApiVersion 2015-08-01 -ResourceGroupName $resourceGroupName
         $location = $webApp.Location
@@ -368,7 +368,7 @@ ms.lasthandoff: 08/03/2017
         $currentVnet = $webAppConfig.Properties.VnetName
         if($currentVnet -ne $null -and $currentVnet -ne "")
         {
-            Write-Host "Currently connected to VNET $currentVnet"
+            Write-Host "Currently connected tooVNET $currentVnet"
         }
 
         # Display existing vnets
@@ -380,23 +380,23 @@ ms.lasthandoff: 08/03/2017
         }
 
         Write-Host
-        $vnet = PromptCustom "Select a VNET to integrate with" $vnets $vnetNames
+        $vnet = PromptCustom "Select a VNET toointegrate with" $vnets $vnetNames
 
-        # We need to check if this VNET is able to be joined to a App, based on following criteria
+        # We need toocheck if this VNET is able toobe joined tooa App, based on following criteria
             # If there is no gateway, we can create one.
             # If there is a gateway:
                 # It must be of type Vpn
                 # It must be of VpnType RouteBased
-                # If it doesn't have the right certificate, we will need to add it.
-                # If it doesn't have a point-to-site range, we will need to add it.
+                # If it doesn't have hello right certificate, we will need tooadd it.
+                # If it doesn't have a point-to-site range, we will need tooadd it.
 
         $gatewaySubnet = $vnet.Subnets | Where-Object { $_.Name -eq "GatewaySubnet" }
 
         if($gatewaySubnet -eq $null -or $gatewaySubnet.IpConfigurations -eq $null -or $gatewaySubnet.IpConfigurations.Count -eq 0)
         {
             $ErrorActionPreference = "Continue";
-            # There is no gateway. We need to create one.
-            Write-Host "This Virtual Network has no gateway. I will need to create one."
+            # There is no gateway. We need toocreate one.
+            Write-Host "This Virtual Network has no gateway. I will need toocreate one."
 
             $vnetName = $vnet.Name
             $vnetGatewayName="$($vnetName)-gateway"
@@ -410,7 +410,7 @@ ms.lasthandoff: 08/03/2017
 
             $changeRequested = 0
 
-            Write-Host "Your VNET is in the address space $($vnet.AddressSpace.AddressPrefixes), with the following Subnets:"
+            Write-Host "Your VNET is in hello address space $($vnet.AddressSpace.AddressPrefixes), with hello following Subnets:"
             foreach($subnet in $vnet.Subnets)
             {
                 Write-Host "$($subnet.Name): $($subnet.AddressPrefix)"
@@ -421,7 +421,7 @@ ms.lasthandoff: 08/03/2017
             while($changeRequested -eq 0)
             {
                 Write-Host
-                Write-Host "Currently, I will create a VNET gateway with the following settings:"
+                Write-Host "Currently, I will create a VNET gateway with hello following settings:"
                 Write-Host
                 Write-Host "Virtual Network Name: $vnetName"
                 Write-Host "Resource Group Name:  $($vnet.ResourceGroupName)"
@@ -432,7 +432,7 @@ ms.lasthandoff: 08/03/2017
                 Write-Host "Gateway Address Space:$vnetGatewayAddressSpace"
                 Write-Host "Point-To-Site Address Space:  $vnetPointToSiteAddressSpace"
                 Write-Host
-                $changeRequested = PromptYesNo "" "Do you wish to change these settings?" 1
+                $changeRequested = PromptYesNo "" "Do you wish toochange these settings?" 1
 
                 if($changeRequested -eq 0)
                 {
@@ -446,14 +446,14 @@ ms.lasthandoff: 08/03/2017
 
             $ErrorActionPreference = "Stop";
 
-            Write-Host "Creating App association to VNET"
+            Write-Host "Creating App association tooVNET"
             $propertiesObject = @{
              "vnetResourceId" = "/subscriptions/$($subscriptionId)/resourceGroups/$($vnet.ResourceGroupName)/providers/Microsoft.Network/virtualNetworks/$($vnetName)"
             }
 
             $virtualNetwork = New-AzureRmResource -Location $location -Properties $PropertiesObject -ResourceName "$($webAppName)/$($vnet.Name)" -ResourceType "Microsoft.Web/sites/virtualNetworkConnections" -ApiVersion 2015-08-01 -ResourceGroupName $resourceGroupName -Force
 
-            # If there is no gateway subnet, we need to create one.
+            # If there is no gateway subnet, we need toocreate one.
             if($gatewaySubnet -eq $null)
             {
                 $gatewaySubnet = New-AzureRmVirtualNetworkSubnetConfig -Name "GatewaySubnet" -AddressPrefix $vnetGatewayAddressSpace
@@ -476,13 +476,13 @@ ms.lasthandoff: 08/03/2017
             # validate gateway types, etc.
             if($gateway.GatewayType -ne "Vpn")
             {
-                Write-Error "This gateway is not of the Vpn type. It cannot be joined to an App."
+                Write-Error "This gateway is not of hello Vpn type. It cannot be joined tooan App."
                 return
             }
 
             if($gateway.VpnType -ne "RouteBased")
             {
-                Write-Error "This gateways Vpn type is not RouteBased. It cannot be joined to an App."
+                Write-Error "This gateways Vpn type is not RouteBased. It cannot be joined tooan App."
                 return
             }
 
@@ -493,14 +493,14 @@ ms.lasthandoff: 08/03/2017
                 Set-AzureRmVirtualNetworkGatewayVpnClientConfig -VirtualNetworkGateway $gateway.Name -VpnClientAddressPool $pointToSiteAddress
             }
 
-            Write-Host "Creating App association to VNET"
+            Write-Host "Creating App association tooVNET"
             $propertiesObject = @{
              "vnetResourceId" = "/subscriptions/$($subscriptionId)/resourceGroups/$($vnet.ResourceGroupName)/providers/Microsoft.Network/virtualNetworks/$($vnet.Name)"
             }
 
             $virtualNetwork = New-AzureRmResource -Location $location -Properties $PropertiesObject -ResourceName "$($webAppName)/$($vnet.Name)" -ResourceType "Microsoft.Web/sites/virtualNetworkConnections" -ApiVersion 2015-08-01 -ResourceGroupName $resourceGroupName -Force
 
-            # We need to check if the certificate here exists in the gateway.
+            # We need toocheck if hello certificate here exists in hello gateway.
             $certificates = $gateway.VpnClientConfiguration.VpnClientRootCertificates
 
             $certFound = $false
@@ -520,17 +520,17 @@ ms.lasthandoff: 08/03/2017
             }
         }
 
-        # Now finish joining by getting the VPN package and giving it to the App
-        Write-Host "Retrieving VPN Package and supplying to App"
+        # Now finish joining by getting hello VPN package and giving it toohello App
+        Write-Host "Retrieving VPN Package and supplying tooApp"
         $packageUri = Get-AzureRmVpnClientPackage -ResourceGroupName $vnet.ResourceGroupName -VirtualNetworkGatewayName $gateway.Name -ProcessorArchitecture Amd64
         
-        # $packageUri may contain literal double-quotes at the start and the end of the URL
+        # $packageUri may contain literal double-quotes at hello start and hello end of hello URL
         if($packageUri.Length -gt 0 -and $packageUri.Substring(0, 1) -eq '"' -and $packageUri.Substring($packageUri.Length - 1, 1) -eq '"')
         {
             $packageUri = $packageUri.Substring(1, $packageUri.Length - 2)
         }
 
-        # Put the VPN client configuration package onto the App
+        # Put hello VPN client configuration package onto hello App
         $PropertiesObject = @{
         "vnetName" = $vnet.Name; "vpnPackageUri" = $packageUri
         }
@@ -546,13 +546,13 @@ ms.lasthandoff: 08/03/2017
         $currentVnet = $webAppConfig.Properties.VnetName
         if($currentVnet -ne $null -and $currentVnet -ne "")
         {
-            Write-Host "Currently connected to VNET $currentVnet"
+            Write-Host "Currently connected tooVNET $currentVnet"
 
             Remove-AzureRmResource -ResourceName "$($webAppName)/$($currentVnet)" -ResourceType "Microsoft.Web/sites/virtualNetworkConnections" -ApiVersion 2015-08-01 -ResourceGroupName $resourceGroupName
         }
             else
         {
-            Write-Host "Not connected to a VNET."
+            Write-Host "Not connected tooa VNET."
         }
     }
 
@@ -566,7 +566,7 @@ ms.lasthandoff: 08/03/2017
 
     if($subs.Length -eq 0)
     {
-        Write-Error "No subscriptions bound to this account."
+        Write-Error "No subscriptions bound toothis account."
         return
     }
 
@@ -589,13 +589,13 @@ ms.lasthandoff: 08/03/2017
 
     Select-AzureRmSubscription -SubscriptionId $subscriptionId
 
-    $resourceGroup = Read-Host "Please enter the Resource Group of your App"
+    $resourceGroup = Read-Host "Please enter hello Resource Group of your App"
 
-    $appName = Read-Host "Please enter the Name of your App"
+    $appName = Read-Host "Please enter hello Name of your App"
 
-    $options = @("Add a NEW Virtual Network to an App", "Add an EXISTING Virtual Network to an App", "Remove a Virtual Network from an App");
+    $options = @("Add a NEW Virtual Network tooan App", "Add an EXISTING Virtual Network tooan App", "Remove a Virtual Network from an App");
     $optionValues = @(0, 1, 2)
-    $option = PromptCustom "What do you want to do?" $optionValues $options
+    $option = PromptCustom "What do you want toodo?" $optionValues $options
 
     if($option -eq 0)
     {
@@ -610,7 +610,7 @@ ms.lasthandoff: 08/03/2017
         RemoveVnet $subscriptionId $resourceGroup $appName
     }
 
-Сохраните копию сценария. В этой статье он называется V2VnetAllinOne.ps1, но можно использовать другое имя. Для этого сценария не нужно указывать никаких аргументов. Просто запустите его. Сначала сценарий попросит вас выполнить вход в систему. После входа сценарий отображает сведения о вашей учетной записи и список подписок. Не считая запроса на ввод учетных данных, первоначальный запуск скрипта выглядит следующим образом:
+Сохраните копию скрипта hello. В этой статье он называется V2VnetAllinOne.ps1, но можно использовать другое имя. Для этого сценария не нужно указывать никаких аргументов. Просто запустите его. Hello первое, что скрипт hello будет выполнять является toosign в запрос. После входа в скрипт hello получает сведения о вашей учетной записи и возвращает список подписок. Не считая hello запрос учетных данных, выполнения начального сценария hello выглядит следующим образом:
 
     PS C:\Users\ccompy\Documents\VNET> .\V2VnetAllInOne.ps1
     Please Login
@@ -631,18 +631,18 @@ ms.lasthandoff: 08/03/2017
 
     Учетная запись      : ccompy@microsoft.com Среда  : AzureCloud Подписка : 2d4c99a4-57f9-4d5e-a0a1-0034c52db59d Клиент       : 722278f-fef1-499f-91ab-2323d011db47
 
-    Введите группу ресурсов своего приложения: hcdemo-rg Введите имя своего приложения: v2vnetpowershell Дальнейшие действия
+    Введите группу ресурсов приложения hello: hcdemo rg введите имя приложения hello: v2vnetpowershell что вам требуется toodo?
 
-    1) Добавление НОВОЙ виртуальной сети в приложение
-    2) Добавление ИМЕЮЩЕЙСЯ виртуальной сети в приложение
+    1) Добавить новую виртуальную сеть tooan приложения
+    2) Добавление СУЩЕСТВУЮЩЕЙ виртуальной сети tooan приложения
     3) Удаление виртуальной сети из приложения
 
-В остальной части раздела описываются все три варианта.
+Hello оставшейся части этого раздела описана каждая из этих трех параметров.
 
 ### <a name="create-a-resource-manager-vnet-and-integrate-with-it"></a>Создание виртуальной сети Resource Manager и интеграция с ней
-Чтобы создать новую виртуальную сеть, которая использует модель развертывания Resource Manager, и интегрировать ее с вашим приложением, выберите вариант **1) Добавить к приложению НОВУЮ виртуальную сеть**. После этого вам будет предложено указать имя виртуальной сети. В этом случае, как видно в следующих параметрах, используется имя v2pshell.
+Выберите новую виртуальную сеть, использует hello модели развертывания диспетчера ресурсов и интегрировать его с вашим приложением toocreate **1) добавьте новую виртуальную сеть tooan приложения**. Это предложит ввести имя hello hello виртуальной сети. В моем случае как видно в hello следующие параметры, я использовал имя hello, v2pshell.
 
-Скрипт сообщает сведения о создаваемой виртуальной сети. При желании можно изменить любой из параметров. При выполнении этого примера созданная виртуальная сеть имеет следующие параметры:
+сценарий Hello подробно описывает hello hello виртуальной сети, которая находится в процессе создания. Если я хочу ли изменения любых значений hello. При выполнении этого примера я создал виртуальной сети, которая имеет hello следующие параметры:
 
     Virtual Network Name:         v2pshell
     Resource Group Name:          hcdemo-rg
@@ -653,19 +653,19 @@ ms.lasthandoff: 08/03/2017
     Gateway Address Space:        10.5.0.0/16
     Point-To-Site Address Space:  172.16.0.0/12
 
-    Do you wish to change these settings?
+    Do you wish toochange these settings?
     [Y] Yes  [N] No  [?] Help (default is "N"):
 
-Если требуется изменить какой-то параметр, нажмите клавишу **Y** и внесите необходимые изменения. После изменения всех параметров виртуальной сети нажмите клавишу **N** или ВВОД при появлении запроса на изменение параметров. После этого скрипт будет сообщать вам о некоторых выполняемых действиях вплоть до создания шлюза виртуальной сети. Создание шлюза может занять до одного часа. Хотя на этом шаге нет индикатора выполнения, по завершении создания шлюза вы получите соответствующее сообщение.
+Toochange любых значений hello, введите **Y** и внесите изменения hello. Когда будет удовлетворен hello параметры виртуальной сети, введите **N** или просто нажмите клавишу ВВОД, ответ на запрос об изменении параметров hello. Отсюда до ее завершения, скрипт hello сообщает некоторые ею "буквами" i ", выполнив до начала шлюз виртуальной сети toocreate hello. Этот шаг может занять час tooan. Отсутствует на этом этапе не индикатор хода выполнения, но сценарий hello позволит узнать, был ли создан шлюз hello.
 
-После выполнения скрипта на экране появится сообщение **Завершено**. На этом этапе у вас есть виртуальная сеть Resource Manager с выбранными вами именем и параметрами. Эта новая виртуальная сеть также будет интегрирована с приложением.
+По завершении сценария hello укажет **завершен**. На этом этапе будет создана диспетчера ресурсов виртуальной сети, которая имеет имя hello и выбранные параметры. Эта новая виртуальная сеть также будет интегрирована с приложением.
 
 ### <a name="integrate-your-app-with-a-preexisting-resource-manager-vnet"></a>Интеграция приложения с созданной ранее виртуальной сетью Resource Manager
-Если при интеграции с созданной ранее виртуальной сетью указать виртуальную сеть Resource Manager, у которой нет шлюза или для которой не настроено подключение "точка — сеть", то скрипт настроит их. Если они уже настроены, скрипт сразу перейдет к интеграции приложения. Чтобы запустить этот процесс, просто выберите вариант **2) Добавить к приложению СУЩЕСТВУЮЩУЮ виртуальную сеть**.
+При интегрируете с существующие ранее виртуальной сети, если диспетчер ресурсов виртуальной сети, у которого нет шлюза или подключение точка сеть, hello скрипт будет настроить это подключение. Если hello виртуальная сеть уже тем элементам, Настройка, скрипт hello переходит toohello прямой интеграцией приложений. toostart этот процесс, просто выберите **2) добавьте СУЩЕСТВУЮЩУЮ виртуальную сеть tooan приложения**.
 
-Этот вариант можно использовать только в том случае, если у вас есть созданная ранее виртуальная сеть Resource Manager, которая находится в той же подписке, что приложение. После выбора варианта появится список виртуальных сетей Resource Manager.   
+Этот параметр работает только в том случае, если имеется уже существующий диспетчер ресурсов виртуальной сети, которая находится в hello той же подписке, ваше приложение. После выбора параметра hello, появится список виртуальных сетей диспетчера ресурсов.   
 
-    Select a VNET to integrate with
+    Select a VNET toointegrate with
 
     1) v2demonetwork
     2) v2pshell
@@ -675,14 +675,14 @@ ms.lasthandoff: 08/03/2017
 
     Выберите вариант: 5
 
-Просто выберите виртуальную сеть, с которой нужно выполнить интеграцию. Если у вас уже есть шлюз с настроенным подключением "точка — сеть", то скрипт просто интегрирует ваше приложение с виртуальной сетью. Если у вас нет шлюза, потребуется указать подсеть шлюза. Подсеть шлюза должна находиться в адресном пространстве виртуальной сети и не может находиться ни в какой другой подсети. При выполнении этого шага для виртуальной сети без шлюза вы получите следующий результат:
+Просто выберите hello виртуальную сеть, которую вы хотите toointegrate с. При наличии шлюза с подключением точки сайтами включена hello скрипт просто интегрировать приложения виртуальной сети. Если у вас шлюз, необходимо будет подсеть шлюза toospecify hello. Подсеть шлюза должна находиться в адресном пространстве виртуальной сети и не может находиться ни в какой другой подсети. При выполнении этого шага для виртуальной сети без шлюза вы получите следующий результат:
 
-    This Virtual Network has no gateway. I will need to create one.
-    Your VNET is in the address space 172.16.0.0/16, with the following Subnets:
+    This Virtual Network has no gateway. I will need toocreate one.
+    Your VNET is in hello address space 172.16.0.0/16, with hello following Subnets:
     default: 172.16.0.0/24
     Please choose a GatewaySubnet address space: 172.16.1.0/26
 
-В этом примере создан шлюз виртуальной сети со следующими параметрами:
+В этом примере создан шлюз виртуальной сети, имеющий hello следующие параметры:
 
     Virtual Network Name:         v2pshell2
     Resource Group Name:          vnetdemo-rg
@@ -693,24 +693,24 @@ ms.lasthandoff: 08/03/2017
     Gateway Address Space:        172.16.1.0/26
     Point-To-Site Address Space:  172.16.0.0/12
 
-    Do you wish to change these settings?
+    Do you wish toochange these settings?
     [Y] Yes  [N] No  [?] Help (default is "N"):
-    Creating App association to VNET
+    Creating App association tooVNET
 
-При необходимости эти параметры можно изменить. Если такой необходимости нет, нажмите клавишу ВВОД, чтобы скрипт создал шлюз и подключил приложение к виртуальной сети. При этом на создание шлюза все равно требуется около часа. После выполнения всех действий скрипт выдаст сообщение **Завершено**.
+Если требуется toochange любой из этих параметров, это можно сделать. В противном случае нажмите клавишу ВВОД и создаст шлюза и присоединить виртуальную сеть tooyour приложения hello скрипта. время создания шлюза Hello по-прежнему один час, однако, поэтому убедитесь, что, следует учитывать. По окончании все, что скрипт hello укажет **завершен**.
 
 ### <a name="disconnect-your-app-from-a-resource-manager-vnet"></a>Отключение приложения от виртуальной сети Resource Manager
-При отключении приложения от виртуальной сети не происходит отключение шлюза или подключения "точка — сеть". В конце концов, их можно использовать и для других целей. Они также не отключаются от других приложений, кроме указанных вами. Чтобы выполнить это действие, выберите вариант **3) Удалить виртуальную сеть из приложения**. При выборе этого варианта вы увидите следующее:
+Отключение приложение от виртуальной сети не остановить работу шлюза hello и отключить подключение точка сеть. В конце концов, их можно использовать и для других целей. Он также не отключить его от других приложений, отличный от hello, который вы указали. tooperform это действие, выберите **3) удалить виртуальную сеть из приложения**. При выборе этого варианта вы увидите следующее:
 
-    Currently connected to VNET v2pshell
+    Currently connected tooVNET v2pshell
 
     Confirm
-    Are you sure you want to delete the following resource:
+    Are you sure you want toodelete hello following resource:
     /subscriptions/edcc99a4-b7f9-4b5e-a9a1-3034c51db496/resourceGroups/hcdemo-rg/providers/Microsoft.Web/sites/v2vnetpowers
     hell/virtualNetworkConnections/v2pshell
     [Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"):
 
-Несмотря на то, что в скрипте говорится об удалении, виртуальная сеть не будет удалена. Он удаляет только интеграцию. После подтверждения действия команда будет выполнена довольно быстро, а после ее завершения вы увидите сообщение **True** .
+Несмотря на то, что скрипт hello говорит delete, не удаляя hello виртуальной сети. Он лишь удаляет hello интеграции. Убедившись, что это желаемый toodo, команда hello обрабатывается довольно быстро и сообщает, **True** после его завершения.
 
 <!--Links-->
 [createvpngateway]: http://azure.microsoft.com/documentation/articles/vpn-gateway-point-to-site-create/

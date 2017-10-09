@@ -1,6 +1,6 @@
 ---
 title: "Требования к данным для самостоятельного сброса пароля Azure AD | Документация Майкрософт"
-description: "Требования к данным для самостоятельного сброса пароля Azure AD и информация о том, как их выполнить"
+description: "Сброс данных требования для самостоятельного пароля Azure AD и как toosatisfy их"
 services: active-directory
 keywords: 
 documentationcenter: 
@@ -16,24 +16,24 @@ ms.topic: article
 ms.date: 07/17/2017
 ms.author: joflore
 ms.custom: it-pro
-ms.openlocfilehash: 2d1afd2d1265b371e0d311ed70fffbc55874b0a7
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: b68a1d7914dcd0bb4509d0e94914dc4309f4463a
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="deploy-password-reset-without-requiring-end-user-registration"></a>Развертывание сброса пароля без регистрации пользователя
 
-Для развертывания функции самостоятельного сброса пароля нужно указать данные аутентификации. Хотя в некоторых организациях пользователи вводят свои данные аутентификации самостоятельно, в других используется синхронизация существующих данных в Active Directory. Если правильно отформатировать данные в локальном каталоге и настроить [Azure AD Connect, используя стандартные параметры](./connect/active-directory-aadconnect-get-started-express.md), эти данные становятся доступным для Azure AD и функции самостоятельного сброса паролей без участия пользователя.
+Развертывание самостоятельного сброса пароля (SSPR) требуется наличие toobe данных проверки подлинности. В некоторых организациях есть их пользователям вводить свои данные проверки подлинности самостоятельно, но многие организации предпочитают toosynchronize с существующие данные в Active Directory. Если имеются правильно отформатированные данные в ваш локальный каталог и настроить [Azure AD Connect, используя стандартные параметры](./connect/active-directory-aadconnect-get-started-express.md), что данных становится доступной tooAzure AD и SSPR, без необходимости участия пользователя.
 
-Для правильной работы все номера телефонов должны быть в формате "+код страны – номер телефона". Например: +1 4255551234.
+Все телефонные номера должен быть в формате hello + CountryCode PhoneNumber пример: 4255551234 + 1 toowork должным образом.
 
 > [!NOTE]
-> Функция сброса пароля не поддерживает добавочные номера. Даже добавочные номера в формате +1 4255551234X12345 будут удаляться.
+> Функция сброса пароля не поддерживает добавочные номера. Даже в формате 12345 hello 4255551234 + 1 X расширения будут удалены перед установкой hello.
 
 ## <a name="fields-populated"></a>Заполненные поля
 
-Если вы используете параметры по умолчанию, в Azure AD Connect выполняются следующие сопоставления.
+Сопоставление производится, если используются параметры по умолчанию hello в Azure AD Connect hello следующие.
 
 | Локальная служба AD | Azure AD | Контактные данные проверки подлинности Azure AD |
 | --- | --- | --- |
@@ -43,21 +43,21 @@ ms.lasthandoff: 08/03/2017
 
 ## <a name="security-questions-and-answers"></a>Контрольные вопросы и ответы на них
 
-Контрольные вопросы и ответы на них надежно хранятся в клиенте Azure AD. Эти данные доступны пользователям только на [портале регистрации SSPR](https://aka.ms/ssprsetup). Администраторы не могут видеть или изменять содержимое вопросов и ответов других пользователей.
+Вопросы и ответы, надежно сохранены в клиенте Azure AD и являются только доступный toousers через hello [портал регистрации SSPR](https://aka.ms/ssprsetup). Администраторы не может просматривать или изменять содержимое hello другим пользователям вопросов и ответов.
 
 ### <a name="what-happens-when-a-user-registers"></a>Что происходит, когда пользователь проходит регистрацию?
 
-Когда пользователь регистрируется, на странице регистрации будут заполнены следующие поля:
+Когда пользователь регистрирует, страница регистрации hello задает hello следующие поля:
 
 * Телефон для проверки подлинности
 * Адрес электронной почты для проверки подлинности
 * Контрольные вопросы и ответы на них
 
-Если вы указали значения для полей **Мобильный телефон** или **Запасной адрес электронной почты**, пользователи могут использовать их для сброса паролей, даже если они еще не прошли регистрацию в службе. Кроме того, эти значения будут отображаться для пользователей при первой регистрации, и они смогут изменить их при необходимости. После успешной регистрации эти значения будут храниться в полях **Телефон для проверки подлинности** и **Адрес электронной почты для проверки подлинности** (их нельзя будет изменить).
+При указании значения для **мобильный телефон** или **запасной адрес электронной почты**, пользователи могут сразу же использовать эти значения tooreset свои пароли, даже если они еще не зарегистрированы для службы hello. Кроме того пользователи см. Эти значения при регистрации для hello впервые и при желании измените их. После успешной регистрации, эти значения будут сохраняться в hello **телефон для аутентификации** и **электронной почты для проверки подлинности** соответственно.
 
 ## <a name="set-and-read-authentication-data-using-powershell"></a>Установка и считывание данных аутентификации с помощью PowerShell
 
-С помощью PowerShell можно заполнить следующие поля
+Hello следующие поля можно задать с помощью PowerShell
 
 * Запасной адрес электронной почты
 * Мобильный телефон
@@ -65,7 +65,7 @@ ms.lasthandoff: 08/03/2017
 
 ### <a name="using-powershell-v1"></a>Использование PowerShell V1
 
-Чтобы начать работу, необходимо [скачать и установить модуль Azure AD PowerShell](https://msdn.microsoft.com/library/azure/jj151815.aspx#bkmk_installmodule). После его установки вы можете выполнить следующие процедуры по настройке каждого поля.
+tooget работы, необходимо слишком[Загрузите и установите модуль Azure AD PowerShell hello](https://msdn.microsoft.com/library/azure/jj151815.aspx#bkmk_installmodule). После его установки, вы можете использовать hello описанных ниже tooconfigure каждого поля.
 
 #### <a name="set-authentication-data-with-powershell-v1"></a>Настройка данных аутентификации с помощью PowerShell V1
 
@@ -91,7 +91,7 @@ Get-MsolUser -UserPrincipalName user@domain.com | select PhoneNumber
 Get-MsolUser | select DisplayName,UserPrincipalName,AlternateEmailAddresses,MobilePhone,PhoneNumber | Format-Table
 ```
 
-#### <a name="authentication-phone-and-authentication-email-can-only-be-read-using-powershell-v1-using-the-commands-that-follow"></a>Телефон и адрес электронной почты для аутентификации можно прочитать только с помощью следующих команд PowerShell V1:
+#### <a name="authentication-phone-and-authentication-email-can-only-be-read-using-powershell-v1-using-hello-commands-that-follow"></a>Телефон для аутентификации и электронной почты для проверки подлинности могут быть прочитаны только с помощью Powershell V1 hello с помощью команды ниже
 
 ```
 Connect-MsolService
@@ -101,9 +101,9 @@ Get-MsolUser -UserPrincipalName user@domain.com | select -Expand StrongAuthentic
 
 ### <a name="using-powershell-v2"></a>Использование PowerShell V2
 
-Чтобы начать работу, необходимо [скачать и установить модуль Azure AD PowerShell V2](https://github.com/Azure/azure-docs-powershell-azuread/blob/master/Azure%20AD%20Cmdlets/AzureAD/index.md). После его установки вы можете выполнить следующие процедуры по настройке каждого поля.
+tooget работы, необходимо слишком[загрузить и установить модуль PowerShell Azure AD V2 hello](https://github.com/Azure/azure-docs-powershell-azuread/blob/master/Azure%20AD%20Cmdlets/AzureAD/index.md). После его установки, вы можете использовать hello описанных ниже tooconfigure каждого поля.
 
-Чтобы быстро установить одну из последних версий PowerShell, поддерживающую Install-Module, выполните приведенные ниже команды (первая строка просто проверяет наличие PowerShell).
+tooinstall быстро из последних версий PowerShell, поддерживающие Install-Module, выполняемых команд (первая строка hello просто проверяет toosee Если уже установлена):
 
 ```
 Get-Module AzureADPreview
@@ -137,14 +137,14 @@ Get-AzureADUser | select DisplayName,UserPrincipalName,otherMails,Mobile,Telepho
 
 ## <a name="next-steps"></a>Дальнейшие действия
 
-Дополнительные сведения о сбросе пароля с помощью Azure AD см. в следующих источниках:
+Привет, следующие ссылки предоставляют дополнительную информацию об пароль с помощью Azure AD
 
 * [**Быстрое начало работы с самостоятельным сбросом пароля в Azure AD**](active-directory-passwords-getting-started.md). Запуск и выполнение службы самостоятельного управления паролями Azure AD. 
-* [**Licensing requirements for Azure AD self-service password reset**](active-directory-passwords-licensing.md) (Требования к лицензированию самостоятельного сброса пароля в Azure AD). Сведения о настройке лицензирования Azure AD.
-* [**Развертывание функции сброса паролей для пользователей**](active-directory-passwords-best-practices.md). Рекомендации по планированию и развертыванию SSPR для пользователей.
-* [**Настройка компонентов управления паролями в соответствии с требованиями организации**](active-directory-passwords-customize.md). Сведения о настройке интерфейса и параметров использования SSPR для организации.
+* [**Licensing requirements for Azure AD self-service password reset**](active-directory-passwords-licensing.md) (Требования к лицензированию самостоятельного сброса пароля в Azure AD). Сведения о настройке лицензирования Azure AD.
+* [**Развертывание** ](active-directory-passwords-best-practices.md) -планирование и развертывание SSPR tooyour пользователей с помощью hello рекомендации по следующему адресу
+* [**Настройка** ](active-directory-passwords-customize.md) -настроить hello внешний вид и поведение hello SSPR взаимодействие с вашей компании.
 * [**Политики и ограничения для паролей в Azure Active Directory**](active-directory-passwords-policy.md). Общие сведения и информация об установке политик паролей Azure AD.
 * [**Reporting options for Azure AD password management**](active-directory-passwords-reporting.md) (Параметры отчетов для управления паролями Azure AD). Определяйте, кто и когда использовал функцию SSPR.
-* [**Как работает управление паролями в Azure Active Directory**](active-directory-passwords-how-it-works.md). Сведения о принципе работы управления паролями.
-* [**Вопросы и ответы об управлении паролями**](active-directory-passwords-faq.md). Как? Почему? Что? Где? Кто? Когда? Здесь приведены ответы на интересующие вас вопросы.
-* [**Устранение неполадок, связанных с управлением паролями**](active-directory-passwords-troubleshoot.md). Сведения об устранении распространенных проблем с SSPR.
+* [**Технические глубокое погружение** ](active-directory-passwords-how-it-works.md) -перейдите за занавесом toounderstand hello принцип работы
+* [**Вопросы и ответы об управлении паролями**](active-directory-passwords-faq.md). Как? Почему? Что? Где? Кто? Когда? -Ответы tooquestions требуется, чтобы tooask
+* [**Устранение неполадок** ](active-directory-passwords-troubleshoot.md) -Узнайте, как tooresolve распространенные проблемы, мы увидим с SSPR

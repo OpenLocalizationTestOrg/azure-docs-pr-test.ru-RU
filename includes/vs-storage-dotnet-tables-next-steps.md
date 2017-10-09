@@ -1,9 +1,9 @@
-Вы изучили основные сведения о хранилище таблиц Azure. Дополнительные сведения о более сложных задачах по использованию хранилища можно найти по следующим ссылкам.
+Теперь, когда вы узнали основы hello хранилище таблиц Azure, выполните эти ссылки toolearn о более сложных задач хранилища.
 
-* Полную информацию о доступных API см. в справочной документации по службе таблиц в справочнике по [клиентской библиотеке хранилища Azure для .NET](http://go.microsoft.com/fwlink/?LinkID=390731).
-* Чтобы узнать, как упростить код, предназначенный для работы со службой хранилища Azure, ознакомьтесь с разделом [Информация о пакете SDK веб-заданий](../articles/app-service-web/websites-dotnet-webjobs-sdk.md)
-* Просмотрите дополнительные руководства, чтобы изучить дополнительные возможности хранения данных в Azure.
-  * Для работы с большими двоичными объектами службы хранилища Azure см. статью [Приступая к работе с хранилищем BLOB-объектов Azure с помощью .NET](../articles/storage/blobs/storage-dotnet-how-to-use-blobs.md).
-  * Для работы с очередями службы хранилища Azure см. статью [Приступая к работе с хранилищем очередей Azure с помощью .NET](../articles/storage/queues/storage-dotnet-how-to-use-queues.md).
-  * Для хранения реляционных данных см. статью [Подключение к базе данных SQL с помощью .NET (C#)](../articles/sql-database/sql-database-develop-dotnet-simple.md).
+* Просмотр справочной документации hello службы таблиц в hello [клиентская библиотека хранилища Azure для .NET](http://go.microsoft.com/fwlink/?LinkID=390731) ссылку для получения подробной информации о доступных API-интерфейсы.
+* toolearn об кода hello toosimplify записи toowork со службой хранилища Azure, извлечь [возможности hello Azure SDK веб-заданий](../articles/app-service-web/websites-dotnet-webjobs-sdk.md)
+* Просмотрите дополнительные toolearn функция руководства о дополнительных параметрах для хранения данных в Azure.
+  * toowork с BLOB-объектов хранилища Azure в разделе [начало работы с хранилищем больших двоичных объектов Azure с помощью .NET](../articles/storage/blobs/storage-dotnet-how-to-use-blobs.md).
+  * toowork с очереди хранилища Azure, [приступить к работе с хранилищем очередей Azure, с помощью .NET](../articles/storage/queues/storage-dotnet-how-to-use-queues.md).
+  * toostore реляционных данных, в разделе [подключения tooSQL базы данных с помощью .NET (C#)](../articles/sql-database/sql-database-develop-dotnet-simple.md).
 

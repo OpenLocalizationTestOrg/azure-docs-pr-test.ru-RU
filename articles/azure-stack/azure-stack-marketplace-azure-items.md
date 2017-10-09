@@ -1,5 +1,5 @@
 ---
-title: "Элементы Azure marketplace, доступные для стека Azure | Документы Microsoft"
+title: "элементы marketplace aaaAzure, доступные для стека Azure | Документы Microsoft"
 description: "Эти элементы Azure marektplace можно использовать в Azure стека."
 services: azure-stack
 documentationcenter: 
@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 8/11/2017
 ms.author: erikje
-ms.openlocfilehash: aec0c8a7d5d0c219e5550e0a8aa9ecfa936ab051
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 829e15e7051b3f10d212aeee29f269d3a32dbd3f
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-marketplace-items-available-for-azure-stack"></a>Элементы Azure marketplace, доступные для стек Azure
 
-Стека Microsoft Azure поддерживает следующие элементы Azure marketplace.
+Стека Microsoft Azure поддерживает следующие элементы Azure marketplace hello:
 
 |  | Имя элемента. | Описание | Издатель |
 | --- | --- | --- | --- |
@@ -34,13 +34,13 @@ ms.lasthandoff: 08/18/2017
 | ![](media/azure-stack-marketplace-azure-items/sql.png) | [SQL Server 2016 Express с пакетом обновления 1 на Windows Server 2016](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/Microsoft.FreeLicenseSQLServer2016SP1ExpressWindowsServer2016?tab=Overview) | Экспресс-версия SQL Server 2016 SP1 | Microsoft |
 | ![](media/azure-stack-marketplace-azure-items/sql.png) | [SQL Server 2016 SP1 Enterprise на Windows Server 2016](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/Microsoft.SQL2016SP1-WS2016?tab=Overview) | База данных платформа для интеллектуальной, критически важных приложений. | Microsoft |
 | ![](media/azure-stack-marketplace-azure-items/activemq.png) | [ActiveMQ](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/bitnami.activemq?tab=Overview) | Откройте источник брокер обмена сообщениями в Java. | Bitnami |
-| ![](media/azure-stack-marketplace-azure-items/akeneo.png) | [Akeneo](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/bitnami.akeneo?tab=Overview) | Мощная PIM предназначенный для упрощения процесса управления. | Bitnami |
+| ![](media/azure-stack-marketplace-azure-items/akeneo.png) | [Akeneo](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/bitnami.akeneo?tab=Overview) | Мощная PIM предназначены toosimplify процессы управления. | Bitnami |
 | ![](media/azure-stack-marketplace-azure-items/alfrescocommunity.png) | [Alfresco сообщества](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/bitnami.alfrescocommunity?tab=Overview) | ECM система управления просто документами. | Bitnami |
 | ![](media/azure-stack-marketplace-azure-items/apachesolr.png) | [Apache Solr](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/bitnami.apachesolr?tab=Overview) | Платформа поиска enterprise надежного открытым исходным кодом. | Bitnami |
 | ![](media/azure-stack-marketplace-azure-items/canvaslms.png) | [Canvas LMS](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/bitnami.canvaslms?tab=Overview) | Откройте источник, системе управления обучением. | Bitnami |
 | ![](media/azure-stack-marketplace-azure-items/cassandra.png) | [Cassandra](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/bitnami.cassandra?tab=Overview) | Масштабируемая откройте базы данных-источника с высоким уровнем доступности. | Bitnami |
 | ![](media/azure-stack-marketplace-azure-items/civicrm.png) | [CiviCRM](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/bitnami.civicrm?tab=Overview) | Простая связь веб-система управления. | Bitnami |
-| ![](media/azure-stack-marketplace-azure-items/cmsmadesimple.png) | [Просто система управления Содержимым](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/bitnami.cmsmadesimple?tab=Overview) | Простой и быстрый способ создания и управления веб-сайта. | Bitnami |
+| ![](media/azure-stack-marketplace-azure-items/cmsmadesimple.png) | [Просто система управления Содержимым](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/bitnami.cmsmadesimple?tab=Overview) | Быстро и легко toocreate и управлять веб-сайта. | Bitnami |
 | ![](media/azure-stack-marketplace-azure-items/codiad.png) | [Codiad](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/bitnami.codiad?tab=Overview) | Откройте источник облака интегрированной среды разработки с минимальными объемами требуемой памяти. | Bitnami |
 | ![](media/azure-stack-marketplace-azure-items/concrete5.png) | [Concrete5](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/bitnami.concrete5?tab=Overview) | Легко разверните веб-приложений, веб-сайтов, хранилищ и форумов. | Bitnami |
 | ![](media/azure-stack-marketplace-azure-items/coppermine.png) | [Coppermine](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/bitnami.coppermine?tab=Overview) | Многоцелевой полнофункциональных веб-коллекции. | Bitnami |
@@ -59,7 +59,7 @@ ms.lasthandoff: 08/18/2017
 | ![](media/azure-stack-marketplace-azure-items/exoplatform.png) | [eXo платформы](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/bitnami.exoplatform?tab=Overview) | Откройте источник социальных программное обеспечение, разработанное для предприятий. | Bitnami |
 | ![](media/azure-stack-marketplace-azure-items/fatfreecrm.png) | [FAT свободного CRM](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/bitnami.fatfreecrm?tab=Overview) | Ruby с открытым исходным кодом на основе направляющие CRM. | Bitnami |
 | ![](media/azure-stack-marketplace-azure-items/bitnami.png) | [GitLab Community Edition](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/bitnami.gitlab?tab=Overview) | Быстрый защищенный программное обеспечение управления Git. | Bitnami |
-| ![](media/azure-stack-marketplace-azure-items/ghost.png) | [Фантомные](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/bitnami.ghost?tab=Overview) | Платформа, выделенных для публикации. | Bitnami |
+| ![](media/azure-stack-marketplace-azure-items/ghost.png) | [Фантомные](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/bitnami.ghost?tab=Overview) | Toopublishing выделенного платформы. | Bitnami |
 | ![](media/azure-stack-marketplace-azure-items/hadoop.png) | [Hadoop](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/bitnami.hadoop?tab=Overview) | Платформа для надежные, масштабируемые и распределенных вычислений. | Bitnami |
 | ![](media/azure-stack-marketplace-azure-items/hhvm.png) | [HHVM](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/bitnami.hhvmstack?tab=Overview) | Среда разработки полностью интегрированы и готов к запуску. | Bitnami |
 | ![](media/azure-stack-marketplace-azure-items/hordegroupwarewebmail.png) | [Копите Groupware Webmail](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/bitnami.hordegroupwarewebmail?tab=Overview) | Бесплатно, набор готова, на основе браузера обмен данными предприятия. | Bitnami |
@@ -68,7 +68,7 @@ ms.lasthandoff: 08/18/2017
 | ![](media/azure-stack-marketplace-azure-items/joomla.png) | [Joomla!](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/bitnami.joomla?tab=Overview) | Создает понятное CMS для простой веб-сайта. | Bitnami |
 | ![](media/azure-stack-marketplace-azure-items/jruby.png) | [JRuby](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/bitnami.jrubystack?tab=Overview) | Реализация высокой производительности Java Ruby. | Bitnami |
 | ![](media/azure-stack-marketplace-azure-items/kafka.png) | [Kafka](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/bitnami.kafka?tab=Overview) | Мощный распределенные системы обмена сообщениями публикации подписки. | Bitnami |
-| ![](media/azure-stack-marketplace-azure-items/lamp.png) | [ЛАМПОЧКА](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/bitnami.lampstack?tab=Overview) | Полностью интегрированной и все готово для запуска среды разработки. | Bitnami |
+| ![](media/azure-stack-marketplace-azure-items/lamp.png) | [ЛАМПОЧКА](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/bitnami.lampstack?tab=Overview) | Среда разработки toorun полностью интегрированной и готова. | Bitnami |
 | ![](media/azure-stack-marketplace-azure-items/lapp.png) | [LAPP](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/bitnami.lappstack?tab=Overview) | Завершите PHP, PostgreSQL и Apache среды разработки. | Bitnami |
 | ![](media/azure-stack-marketplace-azure-items/letschat.png) | [Давайте чат](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/bitnami.letschat?tab=Overview) | Откройте исходное приложение постоянно обмена сообщениями. | Bitnami |
 | ![](media/azure-stack-marketplace-azure-items/limesurvey.png) | [LimeSurvey](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/bitnami.limesurvey?tab=Overview) | Система управления опроса вопросов и ответов. | Bitnami |
@@ -86,7 +86,7 @@ ms.lasthandoff: 08/18/2017
 | ![](media/azure-stack-marketplace-azure-items/moodle.png) | [Moodle](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/bitnami.moodle?tab=Overview) | Действующие CMS предназначены для обучения Интернет-сообществ. | Bitnami |
 | ![](media/azure-stack-marketplace-azure-items/multicraft.png) | [Multicraft](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/bitnami.multicraft?tab=Overview) | Minecraft серверное решение и «управление». | Bitnami |
 | ![](media/azure-stack-marketplace-azure-items/mybb.png) | [MyBB](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/bitnami.mybb?tab=Overview) | Программное обеспечение форум свободного с открытым исходным кодом. | Bitnami |
-| ![](media/azure-stack-marketplace-azure-items/mysql.png) | [MySQL](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/bitnami.mysql?tab=Overview) | Самые популярные системы базы данных. | Bitnami |
+| ![](media/azure-stack-marketplace-azure-items/mysql.png) | [MySQL](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/bitnami.mysql?tab=Overview) | Hello наиболее популярных системы базы данных. | Bitnami |
 | ![](media/azure-stack-marketplace-azure-items/nginx.png) | [Nginx](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/bitnami.nginxstack?tab=Overview) | Полноценную PHP, MySQL и Nginx среду разработки. | Bitnami |
 | ![](media/azure-stack-marketplace-azure-items/nodejs.png) | [node.js](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/bitnami.nodejs?tab=Overview) | Откройте среду источника, написанных на языке Javascript для создания простой. | Bitnami |
 | ![](media/azure-stack-marketplace-azure-items/odoo.png) | [Odoo](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/bitnami.odoo?tab=Overview) | Система ERP и CRM, эффективно подключается бизнес-процессов. | Bitnami |
@@ -119,7 +119,7 @@ ms.lasthandoff: 08/18/2017
 | ![](media/azure-stack-marketplace-azure-items/ruby.png) | [Ruby](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/bitnami.rubystack?tab=Overview) | Среда разработки для использования для Ruby на направляющие. | Bitnami |
 | ![](media/azure-stack-marketplace-azure-items/seopanel.png) | [Панель оптимизации поисковой системы](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/bitnami.seopanel?tab=Overview) | Откройте приложение для управления SEO источник для отслеживания нескольких web. | Bitnami |
 | ![](media/azure-stack-marketplace-azure-items/shopware.png) | [Shopware](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/bitnami.shopware?tab=Overview) | Откройте источник электронной коммерции платформы. | Bitnami |
-| ![](media/azure-stack-marketplace-azure-items/simplemachinesforum.png) | [Форум по простой машинами](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/bitnami.simplemachinesforum?tab=Overview) | Простой форум программное обеспечение для создания собственных Интернет-сообщество. | Bitnami |
+| ![](media/azure-stack-marketplace-azure-items/simplemachinesforum.png) | [Форум по простой машинами](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/bitnami.simplemachinesforum?tab=Overview) | Простой форум программного обеспечения toobuild собственный Интернет-сообщество. | Bitnami |
 | ![](media/azure-stack-marketplace-azure-items/spree.png) | [Spree](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/bitnami.spree?tab=Overview) | Платформа электронной коммерции для использования. | Bitnami |
 | ![](media/azure-stack-marketplace-azure-items/subversion.png) | [Subversion](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/bitnami.subversion?tab=Overview) | Откройте источник системы управления версиями. | Bitnami |
 | ![](media/azure-stack-marketplace-azure-items/sugarcrm.png) | [SugarCRM](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/bitnami.sugarcrm?tab=Overview) | Решение по управлению гибкие клиента связи. | Bitnami |
@@ -132,10 +132,10 @@ ms.lasthandoff: 08/18/2017
 | ![](media/azure-stack-marketplace-azure-items/weblate.png) | [Weblate](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/bitnami.weblate?tab=Overview) | Система управления веб-трансляции. | Bitnami |
 | ![](media/azure-stack-marketplace-azure-items/webmailprophp.png) | [WebMail Pro PHP](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/bitnami.webmailpro?tab=Overview) | Система webmail с корпоративными компонентами. | Bitnami |
 | ![](media/azure-stack-marketplace-azure-items/wildfly.png) | [WildFly](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/bitnami.wildfly?tab=Overview) | Сервер приложений, включающий Apache, WildFly, MySQL и Java. | Bitnami |
-| ![](media/azure-stack-marketplace-azure-items/wordpress.png) | [WordPress](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/bitnami.wordpress?tab=Overview) | Наиболее популярные и готов к использованию CMS. | Bitnami |
+| ![](media/azure-stack-marketplace-azure-items/wordpress.png) | [WordPress](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/bitnami.wordpress?tab=Overview) | Hello наиболее популярных и готов к использованию CMS. | Bitnami |
 | ![](media/azure-stack-marketplace-azure-items/x2enginesalescrm.png) | [X2Engine продаж CRM](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/bitnami.x2enginesalescrm?tab=Overview) | Приложение службы Compact отдела маркетинга, продаж и клиента. | Bitnami |
 | ![](media/azure-stack-marketplace-azure-items/zurmo.png) | [Zurmo](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/bitnami.zurmo?tab=Overview) | Откройте системы CRM источника: Mobile, социальных и Gamified. | Bitnami |
-| ![](media/azure-stack-marketplace-azure-items/debian8.png) | [Debian 8» детском» с backports ядра](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/credativ.Debian8backports?tab=Overview) | Debian GNU/Linux является одним из наиболее распространенных дистрибутивов Linux. | credativ |
+| ![](media/azure-stack-marketplace-azure-items/debian8.png) | [Debian 8» детском» с backports ядра](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/credativ.Debian8backports?tab=Overview) | Debian GNU/Linux является одним из наиболее популярных дистрибутивы Linux hello. | credativ |
 | ![](media/azure-stack-marketplace-azure-items/kemp.png) | [Коммутатор содержимое ADC подсистемы балансировки нагрузки loadMaster](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/kemptech.vlm-azure?tab=Overview) | Подсистема балансировки нагрузки уровня 4-7 приложения доставки контроллера (ADC), параметр содержимого и диспетчера трафика. | KEMP Technologies, Inc. |
 | ![](media/azure-stack-marketplace-azure-items/roguewave.png) | [На основе centOS 6,9](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/RogueWave.CentOSbased69?tab=Overview) | Этот дистрибутив Linux основан на CentOS и предусмотрена по Rogue Wave. | Программное обеспечение Wave незаконных (прежнее название — OpenLogic)  |
 | ![](media/azure-stack-marketplace-azure-items/roguewave.png) | [На основе centOS 7.3](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/RogueWave.CentOSbased73?tab=Overview) | Этот дистрибутив Linux основан на CentOS и предусмотрена по Rogue Wave. | Программное обеспечение Wave незаконных (прежнее название — OpenLogic) |

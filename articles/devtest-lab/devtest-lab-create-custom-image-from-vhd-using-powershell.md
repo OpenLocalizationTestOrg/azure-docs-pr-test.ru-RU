@@ -1,5 +1,5 @@
 ---
-title: "Создание пользовательского образа Azure DevTest Labs из VHD-файла с помощью PowerShell | Документация Майкрософт"
+title: "aaaCreate Azure DevTest Labs образ из VHD-файла с помощью PowerShell | Документы Microsoft"
 description: "Автоматизация создания пользовательского образа в Azure DevTest Labs из VHD-файла с помощью PowerShell"
 services: devtest-lab,virtual-machines
 documentationcenter: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/10/2017
 ms.author: tarcher
-ms.openlocfilehash: a4729f70aae80a13233fbe96a5d8a56c0c9d01d3
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 39b4005fa46cdf86cf0800ca376128134bcfb650
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-a-custom-image-from-a-vhd-file-using-powershell"></a>Создание пользовательского образа из VHD-файла с помощью PowerShell
 
@@ -30,22 +30,22 @@ ms.lasthandoff: 07/11/2017
 
 ## <a name="step-by-step-instructions"></a>Пошаговые инструкции
 
-Чтобы создать пользовательский образ из VHD-файла с помощью PowerShell, сделайте следующее:
+Hello следующие шаги содержат пошаговые инструкции по созданию настраиваемого образа из VHD-файла с помощью PowerShell:
 
-1. В командной строке PowerShell войдите в учетную запись Azure, вызвав командлет **Login-AzureRmAccount**.  
+1. В командной строке PowerShell, войдите в tooyour учетная запись Azure с hello после вызова toohello **AzureRmAccount входа** командлета.  
     
     ```PowerShell
     Login-AzureRmAccount
     ```
 
-1.  Выберите необходимую подписку Azure, вызвав командлет **Select-AzureRmSubscription**. Замените заполнитель для переменной **$subscriptionId** на идентификатор действующей подписки Azure. 
+1.  Выберите hello требуемого подписки Azure, вызывающему Привет **AzureRmSubscription выберите** командлета. Замените следующие заполнитель для hello hello **$subscriptionId** переменных с идентификатором действительной подписки Azure. 
 
     ```PowerShell
     $subscriptionId = '<Specify your subscription ID here>'
     Select-AzureRmSubscription -SubscriptionId $subscriptionId
     ```
 
-1.  Получите объект лаборатории, вызвав командлет **Get AzureRmResource**. Замените заполнители для переменных **$labRg** и **$labName** на соответствующие значения для своей среды. 
+1.  Получить hello лабораторного объекта, вызывающего hello **Get-AzureRmResource** командлета. Замените следующие местозаполнители для hello hello **$labRg** и **$labName** переменных с hello соответствующие значения для вашей среды. 
 
     ```PowerShell
     $labRg = '<Specify your lab resource group name here>'
@@ -53,62 +53,62 @@ ms.lasthandoff: 07/11/2017
     $lab = Get-AzureRmResource -ResourceId ('/subscriptions/' + $subscriptionId + '/resourceGroups/' + $labRg + '/providers/Microsoft.DevTestLab/labs/' + $labName)
     ```
  
-1.  Получите значения учетной записи хранения лаборатории и ключа этой учетной записи из объекта лаборатории. 
+1.  Получите учетную запись хранения лаборатории hello и учетную запись хранения лаборатории значения ключа из hello лабораторного объекта. 
 
     ```PowerShell
     $labStorageAccount = Get-AzureRmResource -ResourceId $lab.Properties.defaultStorageAccount 
     $labStorageAccountKey = (Get-AzureRmStorageAccountKey -ResourceGroupName $labStorageAccount.ResourceGroupName -Name $labStorageAccount.ResourceName)[0].Value
     ```
 
-1.  Замените заполнитель для переменной **$vhdUri** на URI своего VHD-файла. URI VHD-файла можно получить в колонке учетной записи хранилища BLOB-объектов на портале Azure.
+1.  Замените следующие заполнитель для hello hello **$vhdUri** переменных с hello URI tooyour загружен файл виртуального жесткого диска. URI hello VHD-файл можно получить из колонки BLOB-объектов учетной записи хранилища hello в hello портал Azure.
 
     ```PowerShell
-    $vhdUri = '<Specify the VHD URI here>'
+    $vhdUri = '<Specify hello VHD URI here>'
     ```
 
-1.  Создайте пользовательский образ, используя командлет **New-AzureRmResourceGroupDeployment**. Замените следующие заполнители для переменных **$customImageName** и **$customImageDescription** на значимые имена для своей среды.
+1.  Создание образа с помощью hello hello **New AzureRmResourceGroupDeployment** командлета. Замените следующие местозаполнители для hello hello **$customImageName** и **$customImageDescription** toomeaningful имена переменных среды.
 
     ```PowerShell
-    $customImageName = '<Specify the custom image name>'
-    $customImageDescription = '<Specify the custom image description>'
+    $customImageName = '<Specify hello custom image name>'
+    $customImageDescription = '<Specify hello custom image description>'
 
     $parameters = @{existingLabName="$($lab.Name)"; existingVhdUri=$vhdUri; imageOsType='windows'; isVhdSysPrepped=$false; imageName=$customImageName; imageDescription=$customImageDescription}
 
     New-AzureRmResourceGroupDeployment -ResourceGroupName $lab.ResourceGroupName -Name CreateCustomImage -TemplateUri 'https://raw.githubusercontent.com/Azure/azure-devtestlab/master/Samples/201-dtl-create-customimage-from-vhd/azuredeploy.json' -TemplateParameterObject $parameters
     ```
 
-## <a name="powershell-script-to-create-a-custom-image-from-a-vhd-file"></a>Создание пользовательского образа из VHD-файла с помощью сценария PowerShell
+## <a name="powershell-script-toocreate-a-custom-image-from-a-vhd-file"></a>Сценарий PowerShell toocreate пользовательского образа из VHD-файла
 
-Следующий сценарий PowerShell позволяет создать пользовательский образ из VHD-файла. Замените заполнители, выделенные угловыми скобками, на необходимые значения. 
+Hello следующий сценарий PowerShell можно использовать toocreate пользовательского образа из VHD-файл. Замените заполнители hello (начиная и заканчивая угловые скобки) с соответствующими значениями hello вашим потребностям. 
 
 ```PowerShell
-# Log in to your Azure account.  
+# Log in tooyour Azure account.  
 Login-AzureRmAccount
 
-# Select the desired Azure subscription. 
+# Select hello desired Azure subscription. 
 $subscriptionId = '<Specify your subscription ID here>'
 Select-AzureRmSubscription -SubscriptionId $subscriptionId
 
-# Get the lab object.
+# Get hello lab object.
 $labRg = '<Specify your lab resource group name here>'
 $labName = '<Specify your lab name here>'
 $lab = Get-AzureRmResource -ResourceId ('/subscriptions/' + $subscriptionId + '/resourceGroups/' + $labRg + '/providers/Microsoft.DevTestLab/labs/' + $labName)
 
-# Get the lab storage account and lab storage account key values.
+# Get hello lab storage account and lab storage account key values.
 $labStorageAccount = Get-AzureRmResource -ResourceId $lab.Properties.defaultStorageAccount 
 $labStorageAccountKey = (Get-AzureRmStorageAccountKey -ResourceGroupName $labStorageAccount.ResourceGroupName -Name $labStorageAccount.ResourceName)[0].Value
 
-# Set the URI of the VHD file.  
-$vhdUri = '<Specify the VHD URI here>'
+# Set hello URI of hello VHD file.  
+$vhdUri = '<Specify hello VHD URI here>'
 
-# Set the custom image name and description values.
-$customImageName = '<Specify the custom image name>'
-$customImageDescription = '<Specify the custom image description>'
+# Set hello custom image name and description values.
+$customImageName = '<Specify hello custom image name>'
+$customImageDescription = '<Specify hello custom image description>'
 
-# Set up the parameters object.
+# Set up hello parameters object.
 $parameters = @{existingLabName="$($lab.Name)"; existingVhdUri=$vhdUri; imageOsType='windows'; isVhdSysPrepped=$false; imageName=$customImageName; imageDescription=$customImageDescription}
 
-# Create the custom image. 
+# Create hello custom image. 
 New-AzureRmResourceGroupDeployment -ResourceGroupName $lab.ResourceGroupName -Name CreateCustomImage -TemplateUri 'https://raw.githubusercontent.com/Azure/azure-devtestlab/master/Samples/201-dtl-create-customimage-from-vhd/azuredeploy.json' -TemplateParameterObject $parameters
 ```
 
@@ -119,4 +119,4 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName $lab.ResourceGroupName -Na
 
 ##<a name="next-steps"></a>Дальнейшие действия
 
-- [Добавление виртуальной машины с артефактами в лабораторию в Azure DevTest Labs](./devtest-lab-add-vm-with-artifacts.md)
+- [Добавление виртуальных Машин лаборатории tooyour](./devtest-lab-add-vm-with-artifacts.md)

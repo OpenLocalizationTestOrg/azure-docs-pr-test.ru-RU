@@ -1,5 +1,5 @@
 ---
-title: "О размерах образов виртуальных машин Linux в Azure | Документация Майкрософт"
+title: "aaaAbout, образы виртуальных Машин Linux в Azure | Документы Microsoft"
 description: "Узнайте, как используются образы Linux для виртуальных машин в Azure."
 services: virtual-machines-linux
 documentationcenter: 
@@ -15,22 +15,22 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/21/2016
 ms.author: cynthn
-ms.openlocfilehash: 187642db18806f4034dcecf4c25b5c71028fdfe3
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: f03078cd4c2700782b74452324c964357288b7ec
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="about-images-for-linux-virtual-machines"></a>Об образах виртуальных машин Linux
 > [!IMPORTANT]
-> В Azure предлагаются две модели развертывания для создания ресурсов и работы с ними: [модель диспетчера ресурсов и классическая модель](../../../resource-manager-deployment-model.md). В этой статье рассматривается использование классической модели развертывания. Для большинства новых развертываний Майкрософт рекомендует использовать модель диспетчера ресурсов. Дополнительные сведения об образах, использующих модель Resource Manager, см. [здесь](../cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+> В Azure предлагаются две модели развертывания для создания ресурсов и работы с ними: [модель диспетчера ресурсов и классическая модель](../../../resource-manager-deployment-model.md). В этой статье описан с помощью hello классической модели развертывания. Корпорация Майкрософт рекомендует наиболее новые развертывания модели hello диспетчера ресурсов. Сведения об изображениях, с помощью диспетчера ресурсов модели hello. в разделе [здесь](../cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
 [!INCLUDE [virtual-machines-common-classic-about-images](../../../../includes/virtual-machines-common-classic-about-images.md)]
 
 ## <a name="working-with-images"></a>Работа с образами
-Для управления образами, доступными по вашей подписке Azure, вы можете использовать интерфейс командной строки Azure (Azure CLI) для Mac, Linux и Windows. Вы также можете решить некоторые задачи на портале Azure, однако командная строка предоставляет больше возможностей.
+Hello Azure интерфейс командной строки (CLI) можно использовать для Mac, Linux и Windows toomanage hello изображения доступен tooyour подписки Azure. Hello портал Azure можно использовать для выполнения некоторых задач изображения, но hello командной строки предоставляет дополнительные возможности.
 
-Примеры использования этих инструментов приведены в разделе [Основные команды Azure CLI в Linux и Mac](../cli-manage.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Примеры использования средства hello см. в разделе [Common Azure CLI команды на Mac и Linux](../cli-manage.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
 ## <a name="next-steps"></a>Дальнейшие действия
 Вы можете [передать собственный образ](create-upload-vhd.md).

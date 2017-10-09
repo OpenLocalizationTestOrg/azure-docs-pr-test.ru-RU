@@ -6,9 +6,9 @@
 
 # Начало работы
 ## [Требования к подписке](subscription-requirements.md)
-## [Приступая к работе с порталом](../active-directory-privileged-identity-management-getting-started.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
-## [Мастер защиты](../active-directory-privileged-identity-management-security-wizard.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
-## [Предоставление доступа к PIM](../active-directory-privileged-identity-management-how-to-give-access-to-pim.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
+## [Приступая к работе с портала hello](../active-directory-privileged-identity-management-getting-started.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
+## [Мастер безопасности Hello](../active-directory-privileged-identity-management-security-wizard.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
+## [Предоставьте доступ tooPIM](../active-directory-privileged-identity-management-how-to-give-access-to-pim.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
 
 # Практическое руководство
 ## Использование PIM
@@ -21,7 +21,7 @@
 ### [Завершение проверки доступа](../active-directory-privileged-identity-management-how-to-complete-review.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
 ### [Настройка оповещений](../active-directory-privileged-identity-management-how-to-configure-security-alerts.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
 ### [Требование прохождения MFA](../active-directory-privileged-identity-management-how-to-require-mfa.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
-### [Использование журнала аудита](../active-directory-privileged-identity-management-how-to-use-audit-log.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
+### [Использование журнала аудита hello](../active-directory-privileged-identity-management-how-to-use-audit-log.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
 
 # Справочные материалы
 ## [Примеры кода](https://azure.microsoft.com/en-us/resources/samples/?service=active-directory)

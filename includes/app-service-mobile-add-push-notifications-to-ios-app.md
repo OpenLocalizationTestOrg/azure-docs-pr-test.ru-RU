@@ -1,16 +1,16 @@
 
 **Objective-C**:
 
-1. В **QSAppDelegate.m** импортируйте пакет SDK для iOS и **QSTodoService.h**:
+1. В **QSAppDelegate.m**, импортируйте пакет SDK для iOS hello и **QSTodoService.h**:
    
         #import <MicrosoftAzureMobile/MicrosoftAzureMobile.h>
         #import "QSTodoService.h"
-2. В коде `didFinishLaunchingWithOptions` в **QSAppDelegate.m** вставьте следующие строки прямо перед `return YES;`:
+2. В `didFinishLaunchingWithOptions` в **QSAppDelegate.m**, следующие hello вставки строки, перед началом `return YES;`:
    
         UIUserNotificationSettings* notificationSettings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert | UIUserNotificationTypeBadge | UIUserNotificationTypeSound categories:nil];
         [[UIApplication sharedApplication] registerUserNotificationSettings:notificationSettings];
         [[UIApplication sharedApplication] registerForRemoteNotifications];
-3. В **QSAppDelegate.m**добавьте приведенные ниже методы обработчика. Ваше приложение теперь обновлено для поддержки push-уведомлений. 
+3. В **QSAppDelegate.m**, добавьте следующие методы обработчика hello. Приложение сейчас обновленные toosupport push-уведомлений. 
    
         // Registration with APNs is successful
         - (void)application:(UIApplication *)application
@@ -26,13 +26,13 @@
             }];
         }
    
-        // Handle any failure to register
+        // Handle any failure tooregister
         - (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:
         (NSError *)error {
-            NSLog(@"Failed to register for remote notifications: %@", error);
+            NSLog(@"Failed tooregister for remote notifications: %@", error);
         }
    
-        // Use userInfo in the payload to display an alert.
+        // Use userInfo in hello payload toodisplay an alert.
         - (void)application:(UIApplication *)application
               didReceiveRemoteNotification:(NSDictionary *)userInfo {
             NSLog(@"%@", userInfo);
@@ -79,15 +79,15 @@
 
 **Swift**:
 
-1. Добавьте файл **ClientManager.swift** со следующим содержимым. Замените *%AppUrl%* на URL-адрес внутреннего сервера мобильных приложений Azure.
+1. Добавьте файл **ClientManager.swift** с hello после содержимого. Замените *% AppUrl %* hello URL-адрес внутреннего сервера приложения Azure Mobile hello.
    
         class ClientManager {
             static let sharedClient = MSClient(applicationURLString: "%AppUrl%")
         }
-2. В **ToDoTableViewController.swift** замените строку `let client`, которая инициализирует `MSClient`, на следующую:
+2. В **ToDoTableViewController.swift**, замените hello `let client` строки, которая инициализирует `MSClient` со следующей строки:
    
         let client = ClientManager.sharedClient
-3. В **AppDelegate.swift** замените текст `func application` на следующий:
+3. В **AppDelegate.swift**, замените текст hello `func application` следующим образом:
    
         func application(application: UIApplication,
           didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
@@ -97,7 +97,7 @@
            application.registerForRemoteNotifications()
            return true
         }
-4. В **QSAppDelegate.m**добавьте приведенные ниже методы обработчика. Ваше приложение теперь обновлено для поддержки push-уведомлений.
+4. В **AppDelegate.swift**, добавьте следующие методы обработчика hello. Приложение сейчас обновленные toosupport push-уведомлений.
    
         func application(application: UIApplication,
            didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
@@ -108,7 +108,7 @@
    
         func application(application: UIApplication,
            didFailToRegisterForRemoteNotificationsWithError error: NSError) {
-            print("Failed to register for remote notifications: ", error.description)
+            print("Failed tooregister for remote notifications: ", error.description)
         }
    
         func application(application: UIApplication,
@@ -119,11 +119,11 @@
             let apsNotification = userInfo["aps"] as? NSDictionary
             let apsString       = apsNotification?["alert"] as? String
    
-            let alert = UIAlertController(title: "Alert", message: apsString, preferredStyle: .Alert)
-            let okAction = UIAlertAction(title: "OK", style: .Default) { _ in
+            let alert = UIAlertController(title: aaa"Alert", message: apsString, preferredStyle: .Alert)
+            let okAction = UIAlertAction(title: aaa"OK", style: .Default) { _ in
                 print("OK")
             }
-            let cancelAction = UIAlertAction(title: "Cancel", style: .Default) { _ in
+            let cancelAction = UIAlertAction(title: aaa"Cancel", style: .Default) { _ in
                 print("Cancel")
             }
    

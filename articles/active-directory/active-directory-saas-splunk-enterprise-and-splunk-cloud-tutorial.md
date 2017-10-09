@@ -1,6 +1,6 @@
 ---
 title: "Руководство. Интеграция Azure Active Directory с приложениями Splunk Enterprise и Splunk Cloud | Документация Майкрософт"
-description: "Узнайте, как настроить единый вход Azure Active Directory в Splunk Enterprise и Splunk Cloud."
+description: "Узнайте, как tooconfigure единый вход между Azure Active Directory и корпоративный Splunk и Splunk облака."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,37 +13,37 @@ ms.devlang: na
 ms.topic: article
 ms.date: 3/09/2017
 ms.author: jeedes
-ms.openlocfilehash: b78e9b7161207a74880e912241d5e965b353d1c5
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 9bb6817cb31dce684cd9cc1c567fa3efc8906ad6
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-splunk-enterprise-and-splunk-cloud"></a>Руководство. Интеграция Azure Active Directory с приложениями Splunk Enterprise и Splunk Cloud
 
-В этом руководстве описано, как интегрировать Splunk Enterprise и Splunk Cloud с Azure Active Directory (Azure AD).
+В этом учебнике вы узнаете, как toointegrate Splunk предприятия и Splunk в облаке в Azure Active Directory (Azure AD).
 
-Интеграция Splunk Enterprise и Splunk Cloud с Azure AD обеспечивает следующие преимущества:
+Интеграция с Azure AD Splunk предприятия и в облаке Splunk предоставляет hello следующие преимущества:
 
-- С помощью Azure AD можно контролировать доступ к Splunk Enterprise и Splunk Cloud.
-- Вы можете включить автоматический вход пользователей в Splunk Enterprise и Splunk Cloud (единый вход) с учетной записью Azure AD.
-- Вы можете управлять учетными записями централизованно — через классический портал Azure.
+- Можно управлять в Azure AD, который имеет доступ tooSplunk предприятия и Splunk в облаке
+- Вы можете включить учетные записи Azure AD вашей пользователей tooautomatically get вошедшего tooSplunk предприятия и в облаке Splunk единого входа (SSO)
+- Можно управлять учетными записями в одном централизованном месте - hello классический портал Azure
 
-Подробнее узнать об интеграции приложений SaaS с Azure AD можно в статье [Что такое доступ к приложениям и единый вход с помощью Azure Active Directory?](active-directory-appssoaccess-whatis.md).
+Если tooknow Дополнительные сведения об интеграции приложений SaaS в Azure AD, см. [доступ к приложению и единый вход в Azure Active Directory](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Предварительные требования
 
-Чтобы настроить интеграцию Azure AD с приложениями Splunk Enterprise и Splunk Cloud, вам потребуется следующее:
+tooconfigure интеграция Azure AD с Splunk предприятия и Splunk в облаке необходимо hello следующих элементов:
 
 - подписка Azure AD;
 - подписка Splunk Enterprise или Splunk Cloud с поддержкой единого входа.
 
 
 >[!NOTE]
->Мы не рекомендуем использовать рабочую среду для проверки действий в этом учебнике.
+>в этом учебнике шаги tootest hello, не рекомендуется в рабочей среде.
 >
 
-При проверке действий в этом учебнике соблюдайте следующие рекомендации:
+tootest hello шаги в этом учебнике, необходимо следовать приведенным ниже рекомендациям:
 
 - Не следует использовать рабочую среду при отсутствии необходимости.
 - Если у вас нет пробной среды Azure AD, вы можете [получить пробную версию на один месяц](https://azure.microsoft.com/pricing/free-trial/).
@@ -52,186 +52,186 @@ ms.lasthandoff: 07/11/2017
 ## <a name="scenario-description"></a>Описание сценария
 В рамках этого руководства проводится проверка единого входа Azure AD в тестовой среде.
 
-Сценарий, описанный в этом учебнике, состоит из двух основных блоков:
+Hello сценарий, описанный в этом учебнике состоит из двух основных компонентов:
 
-1. Добавление Splunk Enterprise и Splunk Cloud из коллекции
+1. Добавление Splunk предприятия и в облаке Splunk из галереи hello
 2. Настройка и проверка единого входа Azure AD.
 
 
-## <a name="add-splunk-enterprise-and-splunk-cloud-from-the-gallery"></a>Добавление Splunk Enterprise и Splunk Cloud из коллекции
-Чтобы настроить интеграцию Splunk Enterprise и Splunk Cloud с Azure AD, необходимо добавить Splunk Enterprise и Splunk Cloud из коллекции в список управляемых приложений SaaS.
+## <a name="add-splunk-enterprise-and-splunk-cloud-from-hello-gallery"></a>Добавление Splunk предприятия и в облаке Splunk из коллекции hello
+tooconfigure hello интеграции Splunk предприятия и Splunk в облаке в Azure AD, необходимо tooadd Splunk предприятия и Splunk облако из списка tooyour hello коллекции из управляемых приложений SaaS.
 
-**Чтобы добавить Splunk Enterprise и Splunk Cloud из коллекции, выполните следующие действия.**
+**tooadd Splunk предприятия и в облаке Splunk из галереи hello, выполните следующие шаги hello.**
 
-1. На **классическом портале Azure**в области навигации слева щелкните **Active Directory**.
+1. В hello **классический портал Azure**, на левой панели навигации hello, нажмите кнопку **Active Directory**.
 
     ![Active Directory][1]
 
-2. Из списка **Каталог** выберите каталог, для которого нужно включить интеграцию каталогов.
+2. Из hello **каталога** список, выберите hello каталога, для которого требуется Интеграция каталогов tooenable.
 
-3. Чтобы открыть представление приложений, в представлении каталога нажмите **Приложения** в верхнем меню.
+3. Щелкните представление приложения hello tooopen в представлении каталога hello **приложений** в верхнем меню hello.
 
     ![Приложения][2]
 
-4. В нижней части страницы нажмите кнопку **Добавить** .
+4. Нажмите кнопку **добавить** hello нижней части страницы приветствия.
 
     ![Приложения][3]
 
-5. В диалоговом окне **Что необходимо сделать?** щелкните **Добавить приложение из коллекции**.
+5. На hello **что вам требуется toodo** диалоговое окно, нажмите кнопку **добавить приложение из коллекции hello**.
 
     ![Приложения][4]
 
-6. В поле поиска введите **Splunk Enterprise или Splunk Cloud**.
+6. Введите в поле поиска hello **Splunk Enterprise или облака Splunk**.
 
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-splunk-enterprise-and-splunk-cloud-tutorial/tutorial_splunk_01.png)
 
-7. В области результатов выберите **Splunk Enterprise и Splunk Cloud**, а затем нажмите кнопку **Завершить**, чтобы добавить приложение.
+7. В области результатов hello выберите **Splunk предприятия и в облаке Splunk**и нажмите кнопку **завершить** tooadd приложения hello.
 
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-splunk-enterprise-and-splunk-cloud-tutorial/tutorial_splunk_02.png)
 
 ##  <a name="configure-and-test-azure-ad-single-sign-on"></a>Настройка и проверка единого входа в Azure AD
 В этом разделе описывается настройка и проверка единого входа Azure AD в Splunk Enterprise и Splunk Cloud с использованием тестового пользователя Britta Simon.
 
-Для работы единого входа в Azure AD необходимо указать, какой пользователь в Splunk Enterprise и Splunk Cloud соответствует пользователю в Azure AD. Иными словами, необходимо установить связь между пользователем Azure AD и соответствующим пользователем в Splunk Enterprise и Splunk Cloud.
+Для единого входа toowork Azure AD необходима tooknow пользователь аналог какие hello в Splunk предприятия и в облаке Splunk является tooa в Azure AD. Другими словами связи между пользователя Azure AD и связанных пользователей hello в Splunk предприятия и в облаке Splunk должен установить toobe.
 
-Чтобы установить эту связь, следует назначить **имя пользователя** в Azure AD в качестве значения **имени пользователя** в Splunk Enterprise и Splunk Cloud.
+Эта связь связь устанавливается путем назначения hello значение hello **имя пользователя** в Azure AD в качестве значения hello hello **Username** в Splunk предприятия и Splunk в облаке.
 
-Чтобы настроить и проверить единый вход Azure AD в Splunk Enterprise и Splunk Cloud, вам потребуется выполнить действия в следующих стандартных блоках:
+tooconfigure и теста Azure AD единого входа с Splunk предприятия и Splunk в облаке, требуются следующие стандартные блоки hello toocomplete:
 
-1. **[Настройка единого входа Azure AD](#configuring-azure-ad-single-sign-on)** необходима, чтобы пользователи могли использовать эту функцию.
-2. **[Создание тестового пользователя Azure AD](#creating-an-azure-ad-test-user)** требуется для проверки работы единого входа Azure AD от имени пользователя Britta Simon.
-3. **[Создание тестового пользователя Splunk Enterprise и Splunk Cloud](#creating-a-splunk-enterprise-and-splunk-cloud-test-user)** требуется для создания пользователя Britta Simon в Splunk Enterprise и Splunk Cloud, связанного с соответствующим представлением в Azure AD.
-4. **[Назначение тестового пользователя Azure AD](#assigning-the-azure-ad-test-user)** необходимо, чтобы позволить Britta Simon использовать единый вход в Azure AD.
-5. **[Проверка единого входа](#testing-single-sign-on)** необходима, чтобы убедиться в корректной работе конфигурации.
+1. **[Настройка Azure AD единого входа](#configuring-azure-ad-single-sign-on)**  -tooenable вашей toouse пользователи этой функции.
+2. **[Создание тестового пользователя Azure AD](#creating-an-azure-ad-test-user)**  -tootest Azure AD единого входа с Саймон Britta.
+3. **[Создание тестового пользователя Splunk предприятия и в облаке Splunk](#creating-a-splunk-enterprise-and-splunk-cloud-test-user)**  -toohave аналог Саймон Britta Splunk предприятия и Splunk облако, которое является представлением ей связанного toohello Azure AD.
+4. **[Назначение hello Azure AD тестового пользователя](#assigning-the-azure-ad-test-user)**  -tooenable Britta Simon toouse Azure AD единым входом.
+5. **[Тестирование единого входа](#testing-single-sign-on)**  -tooverify ли hello works конфигурации.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Настройка единого входа Azure AD
 
-В этом разделе описано, как включить единый вход Azure AD на классическом портале и настроить единый вход в приложении Splunk Enterprise и Splunk Cloud.
+В этом разделе Включить единый вход Azure AD в классическом портале hello и Настройка единого входа в приложении предприятия Splunk и Splunk в облаке.
 
 
-**Чтобы настроить единый вход Azure AD в Splunk Enterprise и Splunk Cloud, выполните следующие действия.**
+**tooconfigure Azure AD единого входа с Splunk предприятия и Splunk в облаке, выполните следующие шаги hello.**
 
-1. На странице интеграции с приложениями **Splunk Enterprise и Splunk Cloud** классического портала щелкните **Настройка единого входа**, чтобы открыть диалоговое окно **Настройка единого входа**.
+1. Классическом портале hello на hello **Splunk предприятия и в облаке Splunk** странице интеграции приложения щелкните **настроить единый вход** tooopen hello **настройки единого входа** диалогового окна.
      
     ![Настройка единого входа][6] 
 
-2. На странице **Как пользователи должны входить в Splunk Enterprise и Splunk Cloud** выберите **Единый вход Azure AD** и нажмите кнопку **Далее**.
+2. На hello **как toosign пользователей на tooSplunk предприятия и облако Splunk** выберите **Azure AD Single Sign-On**, а затем нажмите кнопку **Далее**.
 
     ![Настройка единого входа](./media/active-directory-saas-splunk-enterprise-and-splunk-cloud-tutorial/tutorial_splunk_03.png) 
 
-3. В диалоговом окне на странице **Настройка параметров приложения** выполните следующие действия.
+3. На hello **Настройка параметров приложения** диалогового окна выполните следующие шаги hello:
 
     ![Настройка единого входа](./media/active-directory-saas-splunk-enterprise-and-splunk-cloud-tutorial/tutorial_splunk_04.png) 
-  1. В текстовом поле **URL-адрес входа** введите URL-адрес, с помощью которого пользователи входят в приложение Splunk Enterprise и Splunk Cloud, в следующем формате: `https://<splunkserverUrl>/en-US/app/launcher/home`
-  2. В текстовом поле **Идентификатор** введите URL-адрес сервера Splunk Server.
-  3. В текстовом поле **URL-адрес ответа** введите URL-адрес в следующем формате: `https://<splunkserver>/saml/acs`
+  1. В hello **на URL-адрес входа** текстовом поле введите URL-адрес hello используется вашим пользователям на toosign tooyour Splunk предприятия и Splunk облачного приложения, используя следующий шаблон hello:`https://<splunkserverUrl>/en-US/app/launcher/home`
+  2. В hello **идентификатор** текстовом поле введите URL-адрес hello Splunk сервера.
+  3. В hello **URL-адрес ответа** текстовом поле введите URL-адрес hello с hello следующий шаблон:`https://<splunkserver>/saml/acs`
   4. Щелкните **Далее**.
  
-4. На странице **Настройка единого входа в Splunk Enterprise и Splunk Cloud** сделайте следующее.
+4. На hello **настроить единый вход в Splunk предприятия и в облаке Splunk** выполните следующие шаги hello:
 
     ![Настройка единого входа](./media/active-directory-saas-splunk-enterprise-and-splunk-cloud-tutorial/tutorial_splunk_05.png)
-  1. Нажмите **Загрузить метаданные**и сохраните файл на свой компьютер.
+  1. Нажмите кнопку **загрузить метаданные**, а затем сохраните файл hello на вашем компьютере.
   2. Щелкните **Далее**.
 
-5. Чтобы настроить единый вход для своего приложения, обратитесь в службу поддержки Splunk Enterprise и Splunk Cloud и укажите следующие сведения:
+5. tooget единого входа, настроенному для вашего приложения, обратитесь к Splunk Enterprise и группа поддержки Splunk облака и укажите их hello следующее:
 
-    * Скачанный файл с **метаданными федерации**.
-6. На классическом портале подтвердите конфигурацию единого входа и нажмите кнопку **Далее**.
+    * загружаются Hello **federaton метаданных**
+6. Hello классического портала выберите Подтверждение настройки единого входа hello и нажмите кнопку **Далее**.
     
-    ![единого входа Azure AD][10]
+    ![Единый вход в Azure AD][10]
 
-7. На странице **Подтверждение единого входа** нажмите кнопку **Завершить**.  
+7. На hello **единого входа для подтверждения** щелкните **завершить**.  
  
-    ![единого входа Azure AD][11]
+    ![Единый вход в Azure AD][11]
 
 ### <a name="create-an-azure-ad-test-user"></a>Создание тестового пользователя Azure AD
-В этом разделе описано, как создать на классическом портале тестового пользователя с именем Britta Simon.
+В этом разделе создайте тестового пользователя вызывается Саймон Britta классическом портале hello.
 
 ![Создание пользователя Azure AD][20]
 
-**Чтобы создать тестового пользователя в Azure AD, выполните следующие действия:**
+**toocreate тестового пользователя в Azure AD, выполните следующие шаги hello.**
 
-1. На **классическом портале Azure** в области навигации слева щелкните **Active Directory**.
+1. В hello **классический портал Azure**, на левой панели навигации hello, нажмите кнопку **Active Directory**.
 
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-splunk-enterprise-and-splunk-cloud-tutorial/create_aaduser_09.png) 
 
-2. Из списка **Каталог** выберите каталог, для которого нужно включить интеграцию каталогов.
+2. Из hello **каталога** список, выберите hello каталога, для которого требуется Интеграция каталогов tooenable.
 
-3. Чтобы отобразить список пользователей, в меню вверху выберите **Пользователи**.
+3. Щелкните toodisplay hello список пользователей, выберите в меню в верхней части экрана приветствия hello **пользователей**.
 
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-splunk-enterprise-and-splunk-cloud-tutorial/create_aaduser_03.png) 
 
-4. Чтобы открыть диалоговое окно **Добавление пользователя**, на панели инструментов внизу нажмите кнопку **Добавить пользователя**.
+4. tooopen hello **добавить пользователя** щелкните диалоговое окно в нижней hello инструментов hello **добавить пользователя**.
 
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-splunk-enterprise-and-splunk-cloud-tutorial/create_aaduser_04.png) 
 
-5. На странице диалогового окна **Тип учетной записи пользователя** выполните следующие действия.
+5. На hello **сообщите нам об этом пользователе** диалогового окна выполните следующие шаги hello:
 
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-splunk-enterprise-and-splunk-cloud-tutorial/create_aaduser_05.png) 
   1. В поле «Тип пользователя» выберите значение «Новый пользователь в вашей организации».
-  2. В текстовом поле **Имя пользователя** введите **BrittaSimon**.
+  2. В имени пользователя hello **textbox**, тип **BrittaSimon**.
   3. Щелкните **Далее**.
 
-6.  На странице диалогового окна **Профиль пользователя** выполните следующие действия.
+6.  На hello **профиля пользователя** диалогового окна выполните следующие шаги hello:
   
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-splunk-enterprise-and-splunk-cloud-tutorial/create_aaduser_06.png) 
-  1. В текстовом поле **Имя** введите **Britta**.  
-  2. В текстовом поле **Фамилия** введите **Simon**.
-  3. В текстовом поле **Отображаемое имя** введите **Britta Simon**.
-  4. В списке **Роль** выберите **Пользователь**.
+  1. В hello **имя** введите **Britta**.  
+  2. В hello **Фамилия** текстовое поле, тип, **Simon**.
+  3. В hello **отображаемое имя** введите **Britta Simon**.
+  4. В hello **роли** выберите **пользователя**.
   5. Щелкните **Далее**.
 
-7. На странице диалогового окна **Получить временный пароль** нажмите кнопку **Создать**.
+7. На hello **получение временного пароля** странице диалогового окна щелкните **создания**.
 
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-splunk-enterprise-and-splunk-cloud-tutorial/create_aaduser_07.png) 
 
-8. На странице диалогового окна **Получить временный пароль** выполните следующие действия.
+8. На hello **получение временного пароля** диалогового окна выполните следующие шаги hello:
 
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-splunk-enterprise-and-splunk-cloud-tutorial/create_aaduser_08.png) 
-  1. Запишите значение поля **Новый пароль**.
+  1. Запишите значение hello hello **новый пароль**.
   2. Нажмите **Завершено**.   
 
 ### <a name="create-a-splunk-enterprise-and-splunk-cloud-test-user"></a>Создание тестового пользователя Splunk Enterprise и Splunk Cloud
 
-В этом разделе описано, как создать пользователя Britta Simon в Splunk Enterprise и Splunk Cloud. Чтобы добавить пользователей в Splunk Enterprise и Splunk Cloud, обратитесь в службу поддержки платформы Splunk Enterprise и Splunk Cloud.
+В этом разделе описано, как создать пользователя Britta Simon в Splunk Enterprise и Splunk Cloud. Обратитесь Splunk предприятия и в облаке Splunk поддержки команды tooadd hello пользователей hello Splunk предприятия и Splunk облачной платформы.
 
 
-### <a name="assign-the-azure-ad-test-user"></a>Назначение тестового пользователя Azure AD
+### <a name="assign-hello-azure-ad-test-user"></a>Назначить hello Azure AD тестового пользователя
 
-В этом разделе описано, как разрешить пользователю Britta Simon использовать единый вход Azure, предоставив ей доступ к Splunk Enterprise и Splunk Cloud.
+В этом разделе включите Саймон Britta toouse SSOy Azure предоставление своего предприятия tooSplunk доступа и Splunk в облаке.
 
 ![Назначение пользователя][200] 
 
-**Чтобы назначить Britta Simon в Splunk Enterprise и Splunk Cloud, выполните следующие действия.**
+**tooassign Britta Simon tooSplunk предприятия и облака Splunk выполняют hello следующие шаги:**
 
-1. Чтобы открыть представление приложений, в представлении каталога на классическом портале щелкните **Приложения** в верхнем меню.
+1. Hello классического портала щелкните представление приложения hello tooopen в представлении каталога hello **приложений** в верхнем меню hello.
 
     ![Назначение пользователя][201] 
 
-2. В списке приложений выберите **Splunk Enterprise и Splunk Cloud**.
+2. В списке приложений hello выберите **Splunk предприятия и в облаке Splunk**.
 
     ![Настройка единого входа](./media/active-directory-saas-splunk-enterprise-and-splunk-cloud-tutorial/tutorial_splunk_50.png) 
 
-3. В меню в верхней части страницы щелкните **Пользователи**.
+3. В меню в верхней части hello hello выберите **пользователей**.
 
     ![Назначение пользователя][203]
 
-4. В списке пользователей выберите **Britta Simon**.
+4. В списке пользователей hello выберите **Britta Simon**.
 
-5. На панели инструментов внизу щелкните **Назначить**.
+5. В нижней hello hello инструментов, нажмите кнопку **назначить**.
 
     ![Назначение пользователя][205]
 
 ### <a name="test-single-sign-on"></a>Проверка единого входа
 
-В этом разделе описано, как проверить конфигурацию единого входа Azure AD с помощью панели доступа.
+В этом разделе тестирования вашей SSOonfiguration Azure AD, с помощью панели доступа hello.
 
-Щелкнув плитку Splunk Enterprise и Splunk Cloud на панели доступа, вы автоматически войдете в приложение Splunk Enterprise и Splunk Cloud.
+При нажатии кнопки hello Splunk предприятия и облака Splunk плитки в панели доступа hello, вы должны получить автоматически вошедшего tooyour Splunk предприятия и Splunk облачных приложений.
 
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
-* [Список учебников по интеграции приложений SaaS с Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Список учебников по tooIntegrate приложений SaaS в Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Что такое доступ к приложениям и единый вход с помощью Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 

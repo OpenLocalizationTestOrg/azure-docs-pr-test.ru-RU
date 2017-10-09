@@ -1,6 +1,6 @@
 ---
-title: "Политики междоменного доступа в службе управления API Azure | Документация Майкрософт"
-description: "Сведения о политиках междоменного доступа, доступных для использования в службе управления API Azure."
+title: "aaaAzure API управления политики взаимодействия доменов | Документы Microsoft"
+description: "Дополнительные сведения о hello политики взаимодействия доменов можно использовать в службе управления API Azure."
 services: api-management
 documentationcenter: 
 author: miaojiang
@@ -14,31 +14,31 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-ms.openlocfilehash: ddca9e35b44a21294abbb5eaa4418bcdb85494cf
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: dd5ebfd65b92ebd0c1f589a2bac669a3928d40b3
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="api-management-cross-domain-policies"></a>API Management cross domain policies (Междоменные политики службы управления API).
-В этой статье рассматриваются приведенные ниже политики управления API. Дополнительные сведения о добавлении и настройке политик см. в статье о [политиках в управлении API](http://go.microsoft.com/fwlink/?LinkID=398186).  
+Здесь вы найдете ссылку для hello следующих политиках управления интерфейсами API. Дополнительные сведения о добавлении и настройке политик см. в статье о [политиках в управлении API](http://go.microsoft.com/fwlink/?LinkID=398186).  
   
 ##  <a name="CrossDomainPolicies"></a> Политики междоменного доступа  
   
--   [Разрешение кросс-доменных вызовов](api-management-cross-domain-policies.md#AllowCrossDomainCalls) – делает API доступным из клиентов на основе браузеров Adobe Flash и Microsoft Silverlight.  
+-   [Разрешить междоменные вызовы](api-management-cross-domain-policies.md#AllowCrossDomainCalls) -становится доступным hello API из клиентов Adobe Flash и Microsoft Silverlight на основе браузера.  
   
--   [CORS](api-management-cross-domain-policies.md#CORS) – добавляет поддержку общего доступа к ресурсам независимо от источника (CORS) для операции или API, чтобы разрешить кросс-доменные вызовы от клиентов на основе браузера.  
+-   [CORS](api-management-cross-domain-policies.md#CORS) -добавляет ресурсов независимо от источника (CORS) для управления доступом поддерживает операцию tooan или API tooallow междоменные вызовы из браузерных клиентов.  
   
--   [JSONP](api-management-cross-domain-policies.md#JSONP) – добавляет поддержку JSON с заполнением (JSONP) для операции или API, чтобы разрешить кросс-доменные вызовы из браузерных клиентов JavaScript.  
+-   [JSONP](api-management-cross-domain-policies.md#JSONP) - добавляет JSON с заполнением (JSONP) поддержка tooan операции или API tooallow междоменные вызовы из браузерных клиентов JavaScript.  
   
 ##  <a name="AllowCrossDomainCalls"></a> Разрешение междоменных вызовов  
- Используйте политику `cross-domain`, чтобы разрешить доступ к API из браузерных клиентов на базе Adobe Flash и Microsoft Silverlight.  
+ Используйте hello `cross-domain` hello toomake политики API, доступную с клиентов Adobe Flash и Microsoft Silverlight на основе браузера.  
   
 ### <a name="policy-statement"></a>Правило политики  
   
 ```xml  
 <cross-domain>  
-   <!-Policy configuration is in the Adobe cross-domain policy file format,   
+   <!-Policy configuration is in hello Adobe cross-domain policy file format,   
       see http://www.adobe.com/devnet/articles/crossdomain_policy_file_spec.html-->  
 </cross-domain>  
 ```  
@@ -57,19 +57,19 @@ ms.lasthandoff: 07/11/2017
   
 |Имя|Описание|Обязательно|  
 |----------|-----------------|--------------|  
-|cross-domain|Корневой элемент. Дочерние элементы должны соответствовать [спецификации Adobe для файлов политики междоменного доступа](http://www.adobe.com/devnet/articles/crossdomain_policy_file_spec.html).|Да|  
+|cross-domain|Корневой элемент. Дочерние элементы должны соответствовать toohello [спецификация файла междоменной политики Adobe](http://www.adobe.com/devnet/articles/crossdomain_policy_file_spec.html).|Да|  
   
 ### <a name="usage"></a>Использование  
- Эта политика может использоваться в следующих [разделах](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) и [областях](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
+ Эта политика может использоваться в следующие политики hello [разделы](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) и [областей](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
   
 -   **Разделы политики:** inbound.  
   
 -   **Области политики:** global.  
   
 ##  <a name="CORS"></a> CORS  
- Политика `cors` добавляет поддержку общего доступа к ресурсам независимо от источника (CORS) для операции или API, чтобы разрешить междоменные вызовы из браузерных клиентов.  
+ Hello `cors` политики добавляет ресурсов независимо от источника (CORS) для управления доступом поддерживает операцию tooan или API tooallow междоменные вызовы из браузерных клиентов.  
   
- CORS позволяет браузеру и серверу взаимодействовать друг с другом и определять, разрешать конкретные запросы независимо от источника или нет (то есть, вызовы XMLHttpRequests, отправляемые из кода JavaScript на веб-странице в другие домены). Это обеспечивает большую гибкость, чем просто разрешение запросов из одного источника, и более высокую защищенность, чем разрешение всех запросов независимо от источника.  
+ CORS позволяет браузеру и toointeract сервера и определения запросов независимо от наличия определенного tooallow независимо от источника (т. е. вызовы XMLHttpRequests из кода JavaScript на веб-странице tooother домены). Это обеспечивает большую гибкость, чем просто разрешение запросов из одного источника, и более высокую защищенность, чем разрешение всех запросов независимо от источника.  
   
 ### <a name="policy-statement"></a>Правило политики  
   
@@ -91,7 +91,7 @@ ms.lasthandoff: 07/11/2017
 ```  
   
 ### <a name="example"></a>Пример  
- В этом примере показано, как обеспечить поддержку предварительных запросов, например с пользовательскими заголовками или методами, отличными от GET и POST. Для поддержки пользовательских заголовков и дополнительных команд HTTP используйте разделы `allowed-methods` и `allowed-headers`, как показано в следующем примере.  
+ В этом примере показано, как запрашивает предварительных toosupport, например с пользовательскими заголовками, и методы, отличные от GET и POST. toosupport пользовательских заголовков и дополнительных команд HTTP используйте hello `allowed-methods` и `allowed-headers` разделов, как показано в следующий пример hello.  
   
 ```xml  
 <cors allow-credentials="true">  
@@ -128,30 +128,30 @@ ms.lasthandoff: 07/11/2017
 |Имя|Описание|Обязательно|значение по умолчанию|  
 |----------|-----------------|--------------|-------------|  
 |cors|Корневой элемент.|Да|Недоступно|  
-|allowed-origins|Содержит элементы `origin`, описывающие разрешенные источники для междоменных запросов. `allowed-origins` может содержать один элемент `origin` со значением `*`, если нужно разрешить любые источники, либо один или несколько элементов `origin`, содержащих URI источников.|Да|Недоступно|  
-|origin|В качестве значений допускается `*`, которое разрешает любые источники, или URI конкретного источника. URI-адрес должен включать схему, узел и порт.|Да|Если в URI не указан порт, используется порт 80 для HTTP и порт 443 для HTTPS.|  
-|allowed-methods|Этот элемент является обязательным, если разрешены методы, отличные от GET или POST. Содержит элементы `method`, перечисляющие поддерживаемые HTTP-команды.|Нет|Если этот раздел отсутствует, поддерживаются методы GET и POST.|  
-|метод|Задает команду HTTP.|Если раздел `allowed-methods` присутствует, в нем обязательно должен быть по крайней мере один элемент `method`.|Недоступно|  
-|allowed-headers|Этот элемент содержит элементы `header`, указывающие имена заголовков, которые могут быть включены в запрос.|Нет|Недоступно|  
-|expose-headers|Этот элемент содержит элементы `header`, указывающие имена заголовков, которые будут доступны клиенту.|Нет|Недоступно|  
-|Верхний колонтитул|Задает имя заголовка.|Если присутствует раздел `allowed-headers` или `expose-headers`, в нем обязательно должен быть по крайней мере один элемент `header`.|Недоступно|  
+|allowed-origins|Содержит `origin` элементы, описывающие hello допускается источники для междоменных запросах. `allowed-origins`может содержать один `origin` элемент, который задает `*` tooallow любые источники, одного или нескольких `origin` элементов, содержащих URI.|Да|Недоступно|  
+|origin|Hello значение может быть либо `*` tooallow все источники, или URI, указывающий один источник. Hello URI должен включать схему, узел и порт.|Да|Если hello порт указан в URI, используется порт 80 для HTTP и порт 443 для HTTPS используется.|  
+|allowed-methods|Этот элемент является обязательным, если разрешены методы, отличные от GET или POST. Содержит `method` элементы, которые задают hello поддерживается HTTP-команды.|Нет|Если этот раздел отсутствует, поддерживаются методы GET и POST.|  
+|метод|Задает команду HTTP.|По крайней мере один `method` элемент является обязательным, если hello `allowed-methods` раздел присутствует.|Недоступно|  
+|allowed-headers|Этот элемент содержит `header` элементы, указывающие имена заголовков hello, которые могут быть включены в запрос hello.|Нет|Недоступно|  
+|expose-headers|Этот элемент содержит `header` элементы, указывающие имена hello заголовки, которые будут доступны hello клиента.|Нет|Недоступно|  
+|Верхний колонтитул|Задает имя заголовка.|По крайней мере один `header` элемент является обязательным в `allowed-headers` или `expose-headers` при наличии раздела hello.|Недоступно|  
   
 ### <a name="attributes"></a>Атрибуты  
   
 |Имя|Описание|Обязательно|значение по умолчанию|  
 |----------|-----------------|--------------|-------------|  
-|allow-credentials|Заголовок `Access-Control-Allow-Credentials` в ответе на предварительный запрос получит значение, указанное в этом атрибуте. Этот заголовок определяет, может ли клиент передавать в междоменных запросах учетные данные.|Нет|нет|  
-|preflight-result-max-age|Заголовок `Access-Control-Max-Age` в ответе на предварительный запрос получит значение, указанное в этом атрибуте. Этот заголовок определяет, может ли клиент кэшировать ответы на предварительные запросы.|Нет|0|  
+|allow-credentials|Hello `Access-Control-Allow-Credentials` заголовок в hello предварительный ответ будет toohello значение этого атрибута и влияют на hello клиента возможность toosubmit и учетные данные в междоменных запросах.|Нет|нет|  
+|preflight-result-max-age|Hello `Access-Control-Max-Age` заголовок в hello предварительный ответ будет toohello значение этого атрибута и влияют на агент пользователя hello возможность toocache предварительный ответ.|Нет|0|  
   
 ### <a name="usage"></a>Использование  
- Эта политика может использоваться в следующих [разделах](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) и [областях](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
+ Эта политика может использоваться в следующие политики hello [разделы](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) и [областей](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
   
 -   **Разделы политики:** inbound.  
   
 -   **Области политики:** API, operation.  
   
 ##  <a name="JSONP"></a> JSONP  
- Политика `jsonp` добавляет поддержку JSON с заполнением (JSONP) для операции или API, чтобы разрешить междоменные вызовы из браузерных клиентов на основе JavaScript. JSONP — это метод, который используется в программах JavaScript для запроса данных из сервера в другом домене. JSONP обходит ограничение, принудительно устанавливаемое большинством веб-браузеров, когда доступ к веб-страницам должен выполняться в том же домене.  
+ Hello `jsonp` политики добавляет заполнение операция tooan поддержки (JSONP) или API tooallow междоменные вызовы из браузерных клиентов JavaScript. JSONP — это метод, используемый в данных toorequest программы JavaScript на сервере в другом домене. JSONP позволяет обойти ограничение hello, большинство веб-браузеров, где доступ tooweb страницы должны принадлежать hello того же домена.  
   
 ### <a name="policy-statement"></a>Правило политики  
   
@@ -165,9 +165,9 @@ ms.lasthandoff: 07/11/2017
 <jsonp callback-parameter-name="cb" />  
 ```  
   
- Если метод вызывается без параметра обратного вызова ?cb=XXX, будет возвращаться простой JSON (без оболочки для вызовов функции).  
+ При вызове метода hello без hello параметр обратного вызова? cb = XXX, возвращается обычный JSON (без оболочки вызова функции).  
   
- Если добавить к запросу параметр обратного вызова `?cb=XXX`, возвращается результат JSONP, заключающий в исходные результаты JSON функцию обратного вызова, например, `XYZ('<json result goes here>');`  
+ Если добавляется параметр обратного вызова hello `?cb=XXX` он вернет результат JSONP, упаковки hello исходные результаты JSON вокруг hello функции обратного вызова, как`XYZ('<json result goes here>');`  
   
 ### <a name="elements"></a>Элементы  
   
@@ -179,10 +179,10 @@ ms.lasthandoff: 07/11/2017
   
 |Имя|Описание|Обязательно|значение по умолчанию|  
 |----------|-----------------|--------------|-------------|  
-|callback-parameter-name|Кросс-доменный вызов функции JavaScript, в качестве префикса в котором присутствует полное имя домена, в котором находится функция.|Да|Недоступно|  
+|callback-parameter-name|Hello вызову функции JavaScript между доменами с префиксом hello полное доменное имя, где hello находится функция.|Да|Недоступно|  
   
 ### <a name="usage"></a>Использование  
- Эта политика может использоваться в следующих [разделах](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) и [областях](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
+ Эта политика может использоваться в следующие политики hello [разделы](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) и [областей](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
   
 -   **Разделы политики:** outbound.  
   

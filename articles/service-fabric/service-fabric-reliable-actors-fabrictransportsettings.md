@@ -1,5 +1,5 @@
 ---
-title: "Изменение параметров FabricTransport в микрослужбах Azure | Документация Майкрософт"
+title: "Параметры FabricTransport aaaChange в Azure микрослужбами | Документы Microsoft"
 description: "Узнайте, как настроить параметры связи субъекта Azure Service Fabric."
 services: Service-Fabric
 documentationcenter: .net
@@ -14,26 +14,26 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/20/2017
 ms.author: suchiagicha
-ms.openlocfilehash: 75bdd4644f4ccc583271b9169c50a375e2cd6629
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: e312b475407eb95a435b93d80c0f2e9618b9ea1f
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="configure-fabrictransport-settings-for-reliable-actors"></a>Настройка параметров FabricTransport для Reliable Actors
 
-Ниже приведены параметры, которые можно настраивать.
+Ниже приведены параметры hello, которые можно настроить.
 - C#: [FabricTransportRemotingSettings](
 https://docs.microsoft.com/en-us/java/api/microsoft.servicefabric.services.remoting.fabrictransport._fabric_transport_remoting_settings)
 - Java: [FabricTransportRemotingSettings](https://docs.microsoft.com/java/api/microsoft.servicefabric.services.remoting.fabrictransport._fabric_transport_remoting_settings).
 
-Конфигурацию FabricTransport по умолчанию можно изменить одним из следующих способов.
+Конфигурация по умолчанию hello FabricTransport можно изменить следующими способами.
 
 ## <a name="assembly-attribute"></a>Атрибут сборки
 
-Атрибут [FabricTransportActorRemotingProvider](https://docs.microsoft.com/en-us/dotnet/api/microsoft.servicefabric.actors.remoting.fabrictransport.fabrictransportactorremotingproviderattribute?redirectedfrom=MSDN#microsoft_servicefabric_actors_remoting_fabrictransport_fabrictransportactorremotingproviderattribute) необходимо применить в клиенте субъекта и в сборках службы субъектов.
+Hello [FabricTransportActorRemotingProvider](https://docs.microsoft.com/en-us/dotnet/api/microsoft.servicefabric.actors.remoting.fabrictransport.fabrictransportactorremotingproviderattribute?redirectedfrom=MSDN#microsoft_servicefabric_actors_remoting_fabrictransport_fabrictransportactorremotingproviderattribute) toobe применения hello субъекта клиента и субъект службы сборок необходимо, чтобы атрибут.
 
-В следующем примере показано, как изменить значение по умолчанию параметра OperationTimeout в конфигурации FabricTransport.
+Hello в следующем примере показано, как toochange hello FabricTransport OperationTimeout параметров по умолчанию:
 
   ```csharp
     using Microsoft.ServiceFabric.Actors.Remoting.FabricTransport;
@@ -49,11 +49,11 @@ https://docs.microsoft.com/en-us/java/api/microsoft.servicefabric.services.remot
 
 ## <a name="config-package"></a>Пакет конфигурации
 
-Для изменения конфигурации по умолчанию можно использовать [пакет конфигурации](service-fabric-application-model.md).
+Можно использовать [пакет конфигурации](service-fabric-application-model.md) toomodify конфигурация по умолчанию hello.
 
-### <a name="configure-fabrictransport-settings-for-the-actor-service"></a>Настройка параметров FabricTransport для службы субъектов
+### <a name="configure-fabrictransport-settings-for-hello-actor-service"></a>Настройка параметров FabricTransport для службы субъекта hello
 
-Добавьте раздел TransportSettings в файл settings.xml.
+Добавьте раздел TransportSettings в файле settings.xml hello.
 
 По умолчанию код субъекта для параметра SectionName выглядит следующим образом: &lt;имя_субъекта&gt;TransportSettings. Если соответствующее значение не найдено, выполняется поиск значения TransportSettings.
 
@@ -72,9 +72,9 @@ https://docs.microsoft.com/en-us/java/api/microsoft.servicefabric.services.remot
    </Section>
   ```
 
-### <a name="configure-fabrictransport-settings-for-the-actor-client-assembly"></a>Настройка параметров FabricTransport для сборки службы субъектов
+### <a name="configure-fabrictransport-settings-for-hello-actor-client-assembly"></a>Настройка параметров FabricTransport для клиентской сборки hello субъекта
 
-Если клиент не выполняется как часть службы, можно создать файл &lt;имя_EXE-файла_клиента&gt;.settings.xml в том же каталоге, в котором находится EXE-файл клиента. Затем добавьте раздел TransportSettings в этом файле. Для параметра SectionName задайте значение TransportSettings.
+Hello клиента не выполняется как часть службы, можно создать «&lt;клиента имя EXE-файла&gt;. settings.xml» файл hello таким же расположении, что и файл .exe hello клиента. Затем добавьте раздел TransportSettings в этом файле. Для параметра SectionName задайте значение TransportSettings.
 
   ```xml
   <?xml version="1.0" encoding="utf-8"?>
@@ -96,7 +96,7 @@ https://docs.microsoft.com/en-us/java/api/microsoft.servicefabric.services.remot
 
   * Настройка параметров FabricTransport для защиты клиента и службы субъекта с помощью дополнительного сертификата.
   Добавить данные дополнительного сертификата можно, добавив параметр CertificateFindValuebySecondary.
-  Ниже приведен пример TransportSettings для прослушивателя.
+  Ниже приведен пример hello для hello TransportSettings прослушивателя.
 
     ```xml
     <Section Name="TransportSettings">
@@ -110,7 +110,7 @@ https://docs.microsoft.com/en-us/java/api/microsoft.servicefabric.services.remot
     <Parameter Name="CertificateProtectionLevel" Value="EncryptAndSign" />
     </Section>
      ```
-     Ниже приведен пример TransportSettings для клиента.
+     Ниже приведен пример hello для hello TransportSettings клиента.
 
     ```xml
    <Section Name="TransportSettings">
@@ -125,8 +125,8 @@ https://docs.microsoft.com/en-us/java/api/microsoft.servicefabric.services.remot
     </Section>
      ```
     * Настройка параметров FabricTransport для защиты службы или клиента субъекта с помощью имени субъекта.
-    Пользователь должен предоставить findType в качестве FindBySubjectName. Добавьте значения CertificateIssuerThumbprints и CertificateRemoteCommonNames.
-  Ниже приведен пример TransportSettings для прослушивателя.
+    FindType tooprovide потребностей пользователя как FindBySubjectName, добавьте значения CertificateIssuerThumbprints и CertificateRemoteCommonNames.
+  Ниже приведен пример hello для hello TransportSettings прослушивателя.
 
      ```xml
     <Section Name="TransportSettings">
@@ -140,7 +140,7 @@ https://docs.microsoft.com/en-us/java/api/microsoft.servicefabric.services.remot
     <Parameter Name="CertificateProtectionLevel" Value="EncryptAndSign" />
     </Section>
     ```
-  Ниже приведен пример TransportSettings для клиента.
+  Ниже приведен пример hello для hello TransportSettings клиента.
 
     ```xml
      <Section Name="TransportSettings">

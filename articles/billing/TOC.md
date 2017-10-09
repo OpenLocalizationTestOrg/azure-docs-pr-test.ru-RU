@@ -1,6 +1,6 @@
 # Приступая к работе
 ## [Предотвращение непредвиденных расходов](billing-getting-started.md)
-## [Доступ к данным для выставления счетов](billing-manage-access.md)
+## [Предоставление доступа к toobilling](billing-manage-access.md)
 ## [Регистрация с помощью учетной записи Office 365](billing-use-existing-office-365-account-azure-subscription.md)
 ## [Оформление подписки на Office 365 с помощью учетной записи Azure](billing-use-existing-azure-account-for-office-365-subscription.md)
 ## [Ограничения и квоты](../azure-subscription-service-limits.md?toc=/azure/billing/TOC.json)

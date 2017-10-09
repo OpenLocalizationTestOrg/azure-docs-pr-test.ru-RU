@@ -1,6 +1,6 @@
 ---
-title: "Перемещение данных в хранилище BLOB-объектов Azure и из него с помощью Python | Документация Майкрософт"
-description: "Перемещение данных в хранилище больших двоичных объектов Azure и из него с помощью Python"
+title: "aaaMove tooand данных из хранилища больших двоичных объектов с помощью Python | Документы Microsoft"
+description: "Tooand перемещения данных из хранилища больших двоичных объектов с помощью Python"
 services: machine-learning,storage
 documentationcenter: 
 author: bradsev
@@ -14,60 +14,60 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/24/2017
 ms.author: bradsev
-ms.openlocfilehash: 0eea1ff8e4f4c1d108445e1a1250b6fa8ff48910
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: c2be9600e0d6cb05bcf4109a8d554db522704ecb
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="move-data-to-and-from-azure-blob-storage-using-python"></a>Перемещение данных в хранилище BLOB-объектов Azure и из него с помощью Python
-В этой статье описывается получение списка, отправка и скачивание больших двоичных объектов с помощью API Python. API на языке Python, предоставляемый с пакетом SDK для Azure, обеспечивает следующие возможности:
+# <a name="move-data-tooand-from-azure-blob-storage-using-python"></a>Tooand перемещения данных из хранилища больших двоичных объектов с помощью Python
+В этом разделе описывается toolist, отправка и загрузка больших двоичных объектов с помощью Python API hello. Hello Python API, предоставляемые в Azure SDK вы можете:
 
 * Создание контейнера
 * Отправка BLOB-объекта в контейнер
 * Скачивание больших двоичных объектов
-* Перечисление BLOB-объектов в контейнере
+* Перечисление hello больших двоичных объектов в контейнере
 * Удаление большого двоичного объекта
 
-Дополнительные сведения об использовании Python API см. в статье [Использование хранилища BLOB-объектов Azure из Python](../storage/blobs/storage-python-how-to-use-blob-storage.md).
+Дополнительные сведения об использовании hello Python API см. в разделе [как tooUse hello службы хранилища больших двоичных объектов из Python](../storage/blobs/storage-python-how-to-use-blob-storage.md).
 
 [!INCLUDE [blob-storage-tool-selector](../../includes/machine-learning-blob-storage-tool-selector.md)]
 
 > [!NOTE]
-> Если используется виртуальная машина, созданная с помощью скриптов, предоставленных [виртуальными машинами для обработки и анализа данных в Azure](machine-learning-data-science-virtual-machines.md), то программа AzCopy уже установлена на виртуальной машине.
+> При использовании виртуальной Машины, которая была настроена с помощью сценариев hello, предоставляемые [обработки и анализа данных в виртуальных машинах в Azure](machine-learning-data-science-virtual-machines.md), а затем AzCopy уже установлены на hello виртуальной Машины.
 > 
 > [!NOTE]
-> Полное описание базовых принципов использования хранилища BLOB-объектов Azure см. в статьях [Приступая к работе с хранилищем BLOB-объектов Azure с помощью .NET](../storage/blobs/storage-dotnet-how-to-use-blobs.md) и [Основные понятия службы BLOB-объектов](https://msdn.microsoft.com/library/azure/dd179376.aspx).
+> Хранилище больших двоичных объектов tooAzure подробное введение, см. в разделе слишком[основы больших двоичных объектов Azure](../storage/blobs/storage-dotnet-how-to-use-blobs.md) и слишком[больших двоичных объектов Azure](https://msdn.microsoft.com/library/azure/dd179376.aspx).
 > 
 > 
 
 ## <a name="prerequisites"></a>Предварительные требования
-Для выполнения указаний в этом документе у вас должна быть подписка Azure, учетная запись хранения и соответствующий ключ к хранилищу данных для этой учетной записи. Чтобы отправлять и скачивать данные, необходимо знать имя учетной записи хранения Azure и ее ключ.
+В этом документе предполагается, что подписка Azure, учетная запись хранения и hello соответствующий ключ хранилища для этой учетной записи. Чтобы отправлять и скачивать данные, необходимо знать имя учетной записи хранения Azure и ее ключ.
 
-* Сведения о настройке подписки Azure см. на странице [Создайте бесплатную учетную запись Azure уже сегодня](https://azure.microsoft.com/pricing/free-trial/).
+* tooset копирование подписку Azure, см. [бесплатной пробной версии один месяц](https://azure.microsoft.com/pricing/free-trial/).
 * Инструкции по созданию учетной записи хранения и получению сведений об учетной записи и ключах см. в статье [Об учетных записях хранения Azure](../storage/common/storage-create-storage-account.md).
 
-## <a name="upload-data-to-blob"></a>Отправка данных в большой двоичный объект
-Добавьте следующий фрагмент кода в начало любого кода Python, из которого планируется получать доступ к службе хранилища Azure программным способом:
+## <a name="upload-data-tooblob"></a>Отправка данных tooBlob
+Добавьте следующий фрагмент кода hello верхней части любого кода Python, в котором вы хотите tooprogrammatically доступа хранилища Azure hello:
 
     from azure.storage.blob import BlobService
 
-Объект **BlobService** позволяет работать с контейнерами и BLOB-объектами. Следующий код создает объект BlobService, используя имя и ключ учетной записи хранения. Замените имя учетной записи и ее ключ фактическими значениями.
+Hello **BlobService** объектов позволяет работать с контейнерами и BLOB-объектов. Привет, следующий код создает объект BlobService, используя hello ключ учетной записи хранения имени и учетной записи. Замените имя учетной записи и ее ключ фактическими значениями.
 
     blob_service = BlobService(account_name="<your_account_name>", account_key="<your_account_key>")
 
-Используйте следующие методы для отправки данных в большой двоичный объект:
+Используйте следующие методы tooupload данных tooa blob hello.
 
-1. put\_block\_blob\_from\_path (отправка содержимого файла из указанного пути).
-2. put\_block_blob\_from\_file (отправка содержимого открытого файла или потока).
+1. Поместите\_блок\_большого двоичного объекта\_из\_пути (загружает содержимое файла из указанного пути hello hello)
+2. Поместите\_block_blob\_из\_файла (загружает содержимое hello из уже открытого файла или потока)
 3. put\_block\_blob\_from\_bytes (отправка массива байтов).
-4. put\_block\_blob\_from\_text (отправка указанного текстового значения с использованием указанной кодировки).
+4. Поместите\_блок\_больших двоичных объектов\_из\_текст (передает указанный hello указанное текстовое значение, с помощью hello кодирование)
 
-Следующий пример кода отправляет локальный файл в контейнер:
+Следующий пример кода Hello отправляет контейнер tooa локальный файл:
 
     blob_service.put_block_blob_from_path("<your_container_name>", "<your_blob_name>", "<your_local_file_name>")
 
-Следующий пример кода отправляет все файлы (за исключением каталогов) в локальном каталоге в хранилище больших двоичных объектов:
+Hello следующий код передает все hello файлы (за исключением каталоги) в хранилище локального каталога tooblob:
 
     from azure.storage.blob import BlobService
     from os import listdir
@@ -80,7 +80,7 @@ ms.lasthandoff: 08/29/2017
     LOCAL_DIRECT = "<your_local_directory>"        
 
     blob_service = BlobService(account_name=ACCOUNT_NAME, account_key=ACCOUNT_KEY)
-    # find all files in the LOCAL_DIRECT (excluding directory)
+    # find all files in hello LOCAL_DIRECT (excluding directory)
     local_file_list = [f for f in listdir(LOCAL_DIRECT) if isfile(join(LOCAL_DIRECT, f))]
 
     file_num = len(local_file_list)
@@ -90,24 +90,24 @@ ms.lasthandoff: 08/29/2017
         try:
             blob_service.put_block_blob_from_path(CONTAINER_NAME, blob_name, local_file)
         except:
-            print "something wrong happened when uploading the data %s"%blob_name
+            print "something wrong happened when uploading hello data %s"%blob_name
 
 
 ## <a name="download-data-from-blob"></a>Скачивание данных из большого двоичного объекта
-Чтобы скачать данные из большого двоичного объекта, используйте следующие методы:
+Используйте следующие методы toodownload данные из большого двоичного объекта hello.
 
 1. get\_blob\_to\_path.
 2. get\_blob\_to\_file.
 3. get\_blob\_to\_bytes.
 4. get\_blob\_to\_text.
 
-Это методы, которые выполняют необходимое фрагментирование данных, если их размер превышает 64 МБ.
+Эти методы, выполняющие hello необходимые фрагментации hello размер данных hello превышает 64 МБ.
 
-Следующий пример кода скачивает содержимое большого двоичного объекта в контейнере в локальный файл:
+Hello следующий код загружает hello содержимое большого двоичного объекта в локальном файле tooa контейнера:
 
     blob_service.get_blob_to_path("<your_container_name>", "<your_blob_name>", "<your_local_file_name>")
 
-Следующий пример кода скачивает все большие двоичные объекты в контейнере. Он использует метод list\_blobs для получения списка больших двоичных объектов, доступных в контейнере, и скачивает их в локальный каталог.
+Hello следующий код загружает все большие двоичные объекты из контейнера. Он использует список\_большие двоичные объекты tooget hello список доступных большие двоичные объекты в контейнере hello и загружает их tooa локальный каталог.
 
     from azure.storage.blob import BlobService
     from os.path import join
@@ -127,4 +127,4 @@ ms.lasthandoff: 08/29/2017
         try:
             blob_service.get_blob_to_path(CONTAINER_NAME, blob.name, local_file)
         except:
-            print "something wrong happened when downloading the data %s"%blob.name
+            print "something wrong happened when downloading hello data %s"%blob.name

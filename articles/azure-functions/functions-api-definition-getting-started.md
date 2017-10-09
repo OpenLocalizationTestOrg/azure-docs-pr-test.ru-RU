@@ -1,5 +1,5 @@
 ---
-title: "Приступая к работе с метаданными OpenAPI в Функциях Azure | Документация Майкрософт"
+title: "aaaGetting работы с метаданными OpenAPI в функциях Azure | Документы Microsoft"
 description: "Приступая к работе со средством поддержки OpenAPI в Функциях Azure"
 services: functions
 documentationcenter: 
@@ -14,47 +14,47 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 03/23/2017
 ms.author: alkarche
-ms.openlocfilehash: 9b861aacf31e17866293732dc2323f56014c1877
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: fee3464c9a0a11b6d3891ccd0e9c5343d6bedcad
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="creating-openapi-20-swagger-metadata-for-a-function-app-preview"></a>Создание метаданных OpenAPI 2.0 (Swagger) для приложения-функции (предварительная версия)
 
-В этом документе описан пошаговый процесс создания определения OpenAPI для простого интерфейса API, размещенного в Функциях Azure.
+Этот документ поможет выполнить шаг за шагом hello создания определение OpenAPI для простой API, размещенных в Azure функции.
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
 ### <a name="what-is-openapi-swagger"></a>Общие сведения об OpenAPI (Swagger)
-[Метаданные Swagger](http://swagger.io/) — это файл, который определяет функциональные возможности и режимы работы интерфейса API и позволяет другому программному обеспечению использовать функцию размещения REST API. Такие предложения Майкрософт, как PowerApps и [приложения API](https://docs.microsoft.com/azure/app-service-api/app-service-api-dotnet-get-started#a-idcodegena-generate-client-code-for-the-data-tier), а также сторонние инструменты для разработчиков, например [Postman](https://www.getpostman.com/docs/importing_swagger) и [многие другие пакеты](http://swagger.io/tools/), позволяют использовать API с помощью определения Swagger.
+[Метаданные swagger](http://swagger.io/) — это файл, который определяет функциональность hello и режимы API позволяет функцию размещение toobe REST API, используемые широкий спектр другого программного обеспечения. Предложения корпорации Майкрософт, например PowerApps и [приложения API](https://docs.microsoft.com/azure/app-service-api/app-service-api-dotnet-get-started#a-idcodegena-generate-client-code-for-the-data-tier), а также средства, такие как сторонние разработчики [почтальон](https://www.getpostman.com/docs/importing_swagger) и [многие дополнительные пакеты](http://swagger.io/tools/) все позволяют вашей toobe API, затраченное с Определение swagger.
 
 ## <a name="prepare-function"></a>Создание функции с простым интерфейсом API
-  Чтобы создать определение OpenAPI, сначала необходимо создать функцию с простым интерфейсом API. Если интерфейс API уже размещен в приложении-функции, можете перейти непосредственно к следующему разделу.
+  toocreate определение OpenAPI, необходимо сначала toocreate функцию с простой API. При наличии API, размещенным в приложении функции прямой toohello Далее раздел можно пропустить
 1. Создайте новое приложение-функцию.
     1. Перейдите на [портал Azure](https://portal.azure.com) > `+ New` и найдите "Приложение-функция".
 1. Создайте новую функцию "Триггер HTTP" в новом приложении-функции.
     1. Функция заранее заполняется кодом, определяющим очень простой интерфейс REST API.
-    1. Любая строка, переданная функции в качестве параметра запроса или в самом запросе, возвращается в виде "Hello {ввод}".
-1. Перейдите на вкладку `Integrate` новой функции "Триггер HTTP".
-    1. Переведите переключатель `Allowed HTTP methods` в положение `Selected methods`.
+    1. Все строки, переданной toohello функции, как параметр запроса или в тексте hello возвращается как «Hello {ввода}»
+1. Go toohello `Integrate` вкладка этой новой функции триггера HTTP
+    1. Переключить `Allowed HTTP methods` слишком`Selected methods`
     1. В `Selected HTTP methods` снимите флажки рядом со всеми командами, за исключением POST.
     ![Выбор методов HTTP](./media/functions-api-definition-getting-started/selectedHTTPmethods.png)
     1. Сделав это, вы упростите определение API в дальнейшем.
 
 ## <a name="enable"></a>Включение поддержки определения API
-1. Перейдите к `your function name`  >  `Platform Features`  >  `API Definition` 
- ![вкладка "Определение"](./media/functions-api-definition-getting-started/definitiontab.png)
-1. Задайте для `API Definition Source` значение `Function (preview)`.
-    1. Выполнив это действие, вы включите набор параметров OpenAPI для приложения-функции, в том числе конечную точку для размещения файла OpenAPI из домена приложения-функции, встроенную копию [редактора OpenAPI](http://editor.swagger.io) и генератор кратких определений.
+1. Перейдите в слишком`your function name` > `Platform Features` > `API Definition`
+![вкладка "Определение"](./media/functions-api-definition-getting-started/definitiontab.png)
+1. Задать `API Definition Source` слишком`Function (preview)`
+    1. Этот шаг включает набор параметров OpenAPI функции приложения, включая toohost конечной точки в файл OpenAPI из домена функции приложения, создается копия встроенного hello [OpenAPI редактор](http://editor.swagger.io)и генератор определение краткого руководства.
 ![Включенное определение](./media/functions-api-definition-getting-started/enabledefinition.png)
 
 ## <a name="create-definition"></a>Создание определения API на основе шаблона
 1. Щелкните `Generate API Definition template`.
-    1. На этом этапе выполняется проверка приложения-функции на наличие функций "Триггер HTTP", а данные, полученные в файле functions.json, используются для создания документа OpenAPI.
-1. Добавьте объект операции в `paths: /api/yourfunctionroute post:`.
-    1. Краткий документ OpenAPI представляет собой структуру полного документа OpenAPI. Чтобы превратить его в полное определение OpenAPI, например в объекты операций и шаблоны ответа, потребуются дополнительные метаданные.
-    1. В приведенном ниже примере объекта операции заполнен раздел produces/consumes, указан объект parameter и объект response.
+    1. Этот шаг просматривает приложения функции для функций триггер HTTP и использует сведения hello в functions.json toogenerate документ OpenAPI.
+1. Добавить объект операции слишком`paths: /api/yourfunctionroute post:`
+    1. Hello краткое руководство OpenAPI документ является контуром полный документ OpenAPI. Требуются дополнительные метаданные toobe полное определение OpenAPI, такие как объекты операций и шаблонов ответа.
+    1. Создает и использует раздел, объект параметра и объект ответа ниже объекта операции Образец Hello имеет заливкой.
     
     ```yaml
       post:
@@ -88,36 +88,36 @@ ms.lasthandoff: 08/29/2017
     > [!NOTE]
     >  x-ms-summary содержит имя, отображаемое в Logic Apps, Flow и PowerApps.
     >
-    > Дополнительные сведения см. в статье [Customize your Swagger definition for PowerApps](https://powerapps.microsoft.com/tutorials/customapi-how-to-swagger/) (Настройка определения Swagger для PowerApps).
+    > Извлечение [настроить определение Swagger для PowerApps](https://powerapps.microsoft.com/tutorials/customapi-how-to-swagger/) toolearn дополнительные.
 
-1. Щелкните `save` для сохранения изменений. ![Добавление определения шаблона](./media/functions-api-definition-getting-started/addingtemplate.png)
+1. Нажмите кнопку `save` toosave изменения ![Добавление определения шаблона](./media/functions-api-definition-getting-started/addingtemplate.png)
 
 ## <a name="use-definition"></a>Использование определения API
-1. Скопируйте адрес `API definition URL` и вставьте его в новой вкладке браузера, чтобы просмотреть необработанный документ OpenAPI.
-1. Документ OpenAPI можно импортировать в различные инструменты для тестирования и интеграции с использованием этого URL-адреса.
-    1. Многие ресурсы Azure могут автоматически импортировать ваш документ OpenAPI, используя URL-адрес определения API, сохраненный в параметрах приложения-функции. В случае источника определения API `Function` этот URL-адрес обновляется автоматически.
+1. Копия вашего `API definition URL` и вставьте его в новый tooview вкладку браузера необработанные OpenAPI документа.
+1. Вы можете импортировать ваш номер tooany OpenAPI документа средств для тестирования и интеграция с использованием этого URL-адреса.
+    1. Многие ресурсы Azure являются импорта может tooautomatically OpenAPI документа с помощью hello API определения URL-адрес, сохраненный в параметрах функции приложения. В составе приветствия `Function` API определения источника, корпорация Майкрософт автоматически обновлять этот URL-адрес.
 
 
-## <a name="test-definition"></a>Использование пользовательского интерфейса Swagger для тестирования определения API
-В представление пользовательского интерфейса редактора внедренных определений API встроены инструменты тестирования. Добавьте ключ API, а затем нажмите кнопку `Try this operation` под каждым методом. Инструмент будет использовать определение API для форматирования запросов, а успешное получение ответов будет указывать на правильность определения.
+## <a name="test-definition"></a>С помощью пользовательского интерфейса Swagger tootest hello определение API
+Средства построения в представлении toohello пользовательского интерфейса редактора определения API hello внедренным тестируете. Добавьте ключ API, а затем использовать hello `Try this operation` кнопку под каждого метода. Hello средство будет использовать определение API tooformat hello запросов и ответов успешно указывает правильность вашего определения.
 
 ### <a name="steps"></a>Шаги:
 
 1. Скопируйте ключ API функции.
-    1. Ключ API можно найти в функции триггера HTTP под `function name` > `Keys` > `Function Keys` 
+    1. ключ Hello API можно найти в функции триггера HTTP в `function name` > `Keys` > `Function Keys` 
    ![сочетания клавиш](./media/functions-api-definition-getting-started/functionkey.png)
-1. Перейдите на страницу `API Definition`.
-    1. Щелкните `Authenticate` и добавьте ключ API функции в расположенный сверху объект безопасности.
+1. Перейдите toohello `API Definition` страницы.
+    1. Нажмите кнопку `Authenticate` и добавьте объект безопасности ключа toohello функции API вверху hello.
   ![Ключ OpenAPI](./media/functions-api-definition-getting-started/definitionTest auth.png)
 1. Выберите `/api/yourfunctionroute` > `POST`.
-1. Щелкните `Try it out` и введите имя теста.
+1. Нажмите кнопку `Try it out` и введите имя tootest
 1. В разделе `Pretty`
 ![API Definition test](./media/functions-api-definition-getting-started/definitionTest.png) (Тест определения API) должен отобразиться результат "УСПЕШНО".
 
 ## <a name="next-steps"></a>Дальнейшие действия
 * [Обзор определения OpenAPI в Функциях](functions-api-definition.md)
-  * Дополнительные сведения о поддержке OpenAPI см. в полной документации.
+  * Ознакомиться с полной документацией hello Дополнительные сведения о поддержке OpenAPI.
 * [Справочник разработчика по функциям Azure](functions-reference.md)  
   * Справочник программиста по созданию функций, а также определению триггеров и привязок.
 * [Репозиторий GitHub для Функций Azure](https://github.com/Azure/Azure-Functions/)
-  * Ознакомьтесь со сведениями о Функциях в GitHub и оставьте свои отзывы о предварительной версии средства поддержки определений API. Добавьте на GitHub сведения обо всех проблемах, которые необходимо устранить.
+  * Посетите toogive GitHub функции hello нам отзывы о обзор поддержки определения hello API. Сделайте вопрос GitHub для любого элемента хотелось бы toosee обновлены.

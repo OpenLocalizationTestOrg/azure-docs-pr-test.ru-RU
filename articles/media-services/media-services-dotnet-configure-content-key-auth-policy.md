@@ -1,6 +1,6 @@
 ---
-title: "Настройка политики авторизации ключей содержимого с помощью пакета SDK служб мультимедиа для .NET | Документация Майкрософт"
-description: "Узнайте, как настроить политику авторизации для ключа содержимого с помощью пакета SDK для .NET служб мультимедиа."
+title: "с помощью Media Services .NET SDK политики авторизации ключа контента aaaConfigure | Документы Microsoft"
+description: "Узнайте, как tooconfigure политику авторизации для ключа контента с помощью пакета SDK .NET служб мультимедиа."
 services: media-services
 documentationcenter: 
 author: Mingfeiy
@@ -14,27 +14,27 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/09/2017
 ms.author: juliako;mingfeiy
-ms.openlocfilehash: 75dd9107dca215a0b31db3d44bada69210fe9ac6
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: cfcbc5da9819bcec8b163fef183988a8beff9ed2
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="dynamic-encryption-configure-content-key-authorization-policy"></a>Динамическое шифрование: настройка политики авторизации ключа содержимого
 [!INCLUDE [media-services-selector-content-key-auth-policy](../../includes/media-services-selector-content-key-auth-policy.md)]
 
 ## <a name="overview"></a>Обзор
-Службы мультимедиа Microsoft Azure позволяют защищать потоковое содержимое MPEG-DASH, Smooth Streaming и HTTP Live Streaming (HLS) с помощью стандарта AES (использующего 128-разрядные ключи шифрования) или технологии [Microsoft PlayReady DRM](https://www.microsoft.com/playready/overview/). AMS позволяет также передавать потоки MPEG DASH с шифрованием Widevine DRM. PlayReady и Widewine шифруются согласно спецификации общего шифрования (ISO/IEC 23001-7 CENC).
+Службы мультимедиа Microsoft Azure позволяет toodeliver MPEG-DASH, Smooth Streaming и HTTP-Live-Streaming (HLS) потоки, защищенных с помощью Advanced Encryption Standard (AES) (с помощью 128-битные ключи шифрования) или [Microsoft PlayReady DRM](https://www.microsoft.com/playready/overview/). AMS также позволяет вам toodeliver ТИРЕ потоки зашифрован Widevine DRM. PlayReady и Widevine шифруются на hello спецификации общее шифрование (CENC ISO/IEC 23001-7).
 
-Кроме того, службы мультимедиа включают в себя **службы доставки ключей и лицензий** , с помощью которых клиенты могут получать ключи AES либо лицензии PlayReady или Widevine для воспроизведения зашифрованного содержимого.
+Службы мультимедиа также предоставляют **служба доставки ключа/лицензий** из которых клиенты могут получить ключи AES или PlayReady или Widevine лицензий tooplay hello зашифрованное содержимое.
 
-Если вы хотите, чтобы службы мультимедиа зашифровали ресурс-контейнер, свяжите ключ шифрования (**CommonEncryption** или **EnvelopeEncryption**) с этим ресурсом (как описано [здесь](media-services-dotnet-create-contentkey.md)) и настройте политики авторизации для ключа (следуя инструкциям в этой статье).
+Если требуется для служб мультимедиа tooencrypt актива, необходимо tooassociate ключ шифрования (**CommonEncryption** или **EnvelopeEncryption**) с активом hello (как описано [здесь](media-services-dotnet-create-contentkey.md)) а также настроить политики авторизации для ключа hello (как описано в этой статье).
 
-Когда поток запрашивается проигрывателем, службы мультимедиа используют указанный ключ для динамического шифрования содержимого с помощью AES или DRM. Чтобы расшифровать поток, проигрыватель запросит ключ у службы доставки ключей. Чтобы определить, есть ли у пользователя право на получение ключа, служба оценивает политики авторизации, заданные для ключа.
+Когда проигрыватель запрашивает поток, службы мультимедиа используют указанный hello toodynamically ключа шифрования контента с помощью шифрования AES или DRM. поток toodecrypt hello, hello проигрыватель будет запрашивать ключ hello из службы доставки ключей hello. toodecide ли он hello авторизованных tooget hello ключ, hello служба оценивает политики авторизации hello, заданные для ключа hello.
 
-Службы мультимедиа поддерживают несколько способов аутентификации пользователей, которые запрашивают ключи. Для политики авторизации ключа содержимого можно задать одно или несколько ограничений: **открытая** авторизация или авторизация с помощью **маркера**. При ограничении по маркеру к политике должен прилагаться маркер, выданный службой маркеров безопасности (STS). Службы мультимедиа поддерживают маркеры в формате **простого веб-маркера** ([SWT](https://msdn.microsoft.com/library/gg185950.aspx#BKMK_2)) и формате **JSON Web Token** ([JWT](https://msdn.microsoft.com/library/gg185950.aspx#BKMK_3)).
+Службы мультимедиа поддерживают несколько способов аутентификации пользователей, которые запрашивают ключи. Hello политики авторизации ключа контента может иметь одно или несколько ограничений авторизации: **откройте** или **маркера** ограниченного использования программ. политика с ограничением токенов Hello должны сопровождаться маркера, выданного по токенов безопасности службы (STS). Службы мультимедиа поддерживают только токены в hello **токенов SWT** ([SWT](https://msdn.microsoft.com/library/gg185950.aspx#BKMK_2)) формат и **веб-маркера JSON** ([JWT](https://msdn.microsoft.com/library/gg185950.aspx#BKMK_3)) формате.
 
-Службы мультимедиа не предоставляют службы маркеров безопасности. Для выдачи маркеров можно создать пользовательскую службу STS или использовать службу Microsoft Azure ACS. Чтобы создать маркер, подписанный указанным ключом, и получить утверждения, указанные в конфигурации ограничения по маркерам, должна быть настроена служба маркеров безопасности (как описано в этой статье). Служба доставки ключей служб мультимедиа возвращает клиенту ключ шифрования, если маркер является допустимым и утверждения маркера соответствуют утверждениям, настроенным для ключа содержимого.
+Службы мультимедиа не предоставляют службы маркеров безопасности. Можно создать настраиваемую STS или использовать токены tooissue Microsoft Azure ACS. Hello STS должна быть настроенный toocreate токен, подписанным с указанным ключом hello и выдающими утверждения, указанные в конфигурации ограничения токенов hello (как описано в этой статье). Hello служба доставки ключей Media Services возвратит клиент toohello ключа шифрования hello Если hello маркер является допустимым и hello утверждения маркера hello соответствуют настроенным для ключа контента hello.
 
 Дополнительную информацию см. в разделе
 
@@ -42,22 +42,22 @@ ms.lasthandoff: 08/29/2017
 
 [Интегрируйте приложение на основе OWIN MVC служб мультимедиа Azure с Azure Active Directory и ограничьте доставку ключей содержимого на основе утверждений JWT](http://www.gtrifonov.com/2015/01/24/mvc-owin-azure-media-services-ad-integration/).
 
-[Используйте Azure ACS для выдачи токенов](http://mingfeiy.com/acs-with-key-services).
+[Использовать токены Azure ACS tooissue](http://mingfeiy.com/acs-with-key-services).
 
 ### <a name="some-considerations-apply"></a>Важные особенности
-* При создании учетной записи AMS в нее добавляется конечная точка потоковой передачи **по умолчанию** в состоянии **Остановлена**. Чтобы начать потоковую передачу содержимого и воспользоваться динамической упаковкой и динамическим шифрованием, конечная точка потоковой передачи должна находиться в состоянии **Выполняется**. 
+* При создании учетной записи AMS **по умолчанию** конечной точки потоковой передачи в hello добавлена учетная запись tooyour **остановлена** состояния. toostart вашего содержимого и примите преимуществами динамической упаковки и динамического шифрования, потоковой передачи конечной точки потоковой передачи имеет toobe в hello **под управлением** состояния. 
 * Ресурс должен содержать набор MP4-файлов или файлов Smooth Streaming с переменной скоростью. Дополнительные сведения см. в статье о [кодировании ресурсов](media-services-encode-asset.md).
 * Отправляйте и кодируйте ресурсы с помощью параметра **AssetCreationOptions.StorageEncrypted** .
-* Если вы планируете использовать несколько ключей содержимого, для которых требуется одинаковая конфигурация политики, настоятельно рекомендуется создать единую политику авторизации и повторно использовать ее с несколькими ключами содержимого.
-* Служба доставки ключей кэширует политику ContentKeyAuthorizationPolicy и связанные с ней объекты (параметры и ограничения политики) за 15 минут.  Если создать политику ContentKeyAuthorizationPolicy и задать для нее ограничение "по маркеру", а затем протестировать ее, то последующее обновление для использования ограничения "открытая" займет примерно 15 минут.
+* Если планируется toohave нескольких ключей контента, требующих hello же конфигурации политики, это настоятельно рекомендуется toocreate одну политику авторизации и использовать ее с несколькими ключами контента.
+* Hello служба доставки ключей кэширует ContentKeyAuthorizationPolicy и связанные объекты (параметры политики и ограничения) в течение 15 минут.  Если создать политику ContentKeyAuthorizationPolicy и укажите toouse ограничения «Token», а затем проверить его, а затем обновить политику hello слишком «открыть» ограниченного использования программ, займет примерно 15 минут, прежде чем hello политики коммутаторы toohello версию «Open» политики hello.
 * При добавлении или обновлении политики доставки ресурсов необходимо удалить существующий указатель (если он есть) и создать новый.
 * В настоящее время невозможно шифровать последовательно скачиваемые данные.
 
 ## <a name="aes-128-dynamic-encryption"></a>Динамическое шифрование AES-128
 ### <a name="open-restriction"></a>Ограничение "открытая"
-Ограничение открытого типа означает, что система будет доставлять ключ всем, кто его запросит. Это ограничение подходит для тестирования.
+Ограничение Open означает, что система hello будет предоставлять tooanyone ключа hello, выполняющий запрос ключа. Это ограничение подходит для тестирования.
 
-В следующем примере создается политика авторизации типа "открытая", которая затем добавляется в ключ содержимого.
+Следующий пример Hello создается политика открытой авторизации и добавляет его ключ содержимого toohello.
 
     static public void AddOpenAuthorizationPolicy(IContentKey contentKey)
     {
@@ -89,17 +89,17 @@ ms.lasthandoff: 08/29/2017
 
         policy.Options.Add(policyOption);
 
-        // Add ContentKeyAutorizationPolicy to ContentKey
+        // Add ContentKeyAutorizationPolicy tooContentKey
         contentKey.AuthorizationPolicyId = policy.Id;
         IContentKey updatedKey = contentKey.UpdateAsync().Result;
-        Console.WriteLine("Adding Key to Asset: Key ID is " + updatedKey.Id);
+        Console.WriteLine("Adding Key tooAsset: Key ID is " + updatedKey.Id);
     }
 
 
 ### <a name="token-restriction"></a>Ограничение "по маркеру"
-В этом разделе рассказывается о том, как создать политику авторизации ключа содержимого и связать ее с ключом содержимого. Политика авторизации определяет, какие требования авторизации должны быть удовлетворены, чтобы у пользователя было право на получения ключа (например, должен ли список ключей проверки содержать ключ, с помощью которого был подписан маркер).
+В этом разделе описывается политика авторизации ключа и связать его с помощью ключа содержимого hello toocreate контента. Политика авторизации Hello описывает, какие требования проверки подлинности должно быть toodetermine будут выполнены, если пользователь hello является авторизованным tooreceive hello ключ (например, список «ключ проверки» hello содержит ключ hello был подписан этот токен hello).
 
-Чтобы настроить параметр ограничения маркера, необходимо использовать XML для описания требований к авторизации маркера. XML-файл конфигурации ограничений по маркеру должен соответствовать следующей схеме XML.
+Параметр ограничения маркеров tooconfigure hello, необходимо toouse XML toodescribe hello токен требования к проверке подлинности. Hello XML конфигурации ограничений токенов должен соответствовать toohello следующие XML-схемы.
 
 #### <a id="schema"></a>Схема ограничения «по токену»
     <?xml version="1.0" encoding="utf-8"?>
@@ -149,10 +149,10 @@ ms.lasthandoff: 08/29/2017
       <xs:element name="SymmetricVerificationKey" nillable="true" type="tns:SymmetricVerificationKey" />
     </xs:schema>
 
-При настройке политики ограничения по **маркеру** необходимо задать такие параметры, как **основной ключ проверки**, **издатель** и **аудитория**. **Основной ключ проверки** содержит ключ, которым подписан маркер, а **издатель** — это служба маркеров безопасности, которая выдает маркер. **Аудитория** (иногда называется **областью**) описывает назначение маркера или ресурс, доступ к которому обеспечивает маркер. Служба доставки ключей служб мультимедиа проверяет, соответствуют ли эти значения в маркере значениям в шаблоне. 
+При настройке hello **маркера** ограниченной политики, необходимо указать hello основной ** проверки ключ ** **издателя** и **аудитории** параметров. Hello ** основной ключ проверки ** содержит ключ hello, hello токена был подписан, **издателя** является службой маркеров безопасности hello этот токен hello проблемы. Hello **аудитории** (иногда называется **область**) описывает намерение hello токен hello или ресурса hello hello токен разрешает доступ. Hello служба доставки ключей Media Services проверяет, эти значения в токене hello соответствуют значениям hello в шаблоне hello. 
 
-При использовании **пакета SDK служб мультимедиа для .NET** можно использовать класс **TokenRestrictionTemplate** для создания токена ограничения.
-В следующем примере создается политика авторизации с ограничением "по маркеру". В этом примере клиенту нужно будет предоставить маркер, в котором содержатся: ключ подписывания (VerificationKey), поставщик маркера и требуемые утверждения.
+При использовании **пакета SDK служб мультимедиа для .NET**, можно использовать hello **TokenRestrictionTemplate** токена ограничения класса toogenerate hello.
+Следующий пример Hello создает политику авторизации с ограничением токенов. В этом примере hello клиент должен будет toopresent маркер, содержащий: подписывания ключа (VerificationKey), поставщика маркера и необходимых утверждений.
 
     public static string AddTokenRestrictedAuthorizationPolicy(IContentKey contentKey)
     {
@@ -186,10 +186,10 @@ ms.lasthandoff: 08/29/2017
 
         policy.Options.Add(policyOption);
 
-        // Add ContentKeyAutorizationPolicy to ContentKey
+        // Add ContentKeyAutorizationPolicy tooContentKey
         contentKey.AuthorizationPolicyId = policy.Id;
         IContentKey updatedKey = contentKey.UpdateAsync().Result;
-        Console.WriteLine("Adding Key to Asset: Key ID is " + updatedKey.Id);
+        Console.WriteLine("Adding Key tooAsset: Key ID is " + updatedKey.Id);
 
         return tokenTemplateString;
     }
@@ -209,36 +209,36 @@ ms.lasthandoff: 08/29/2017
     }
 
 #### <a id="test"></a>Тестовый токен
-Чтобы получить маркер тестирования на основе маркера ограничения, который использовался для политики авторизации ключа, сделайте следующее.
+tooget тестовый токен на основании hello ограничения токенов, которое использовалось для политики авторизации ключа hello, hello следующие.
 
     // Deserializes a string containing an Xml representation of a TokenRestrictionTemplate
     // back into a TokenRestrictionTemplate class instance.
     TokenRestrictionTemplate tokenTemplate =
         TokenRestrictionTemplateSerializer.Deserialize(tokenTemplateString);
 
-    // Generate a test token based on the the data in the given TokenRestrictionTemplate.
-    // Note, you need to pass the key id Guid because we specified 
-    // TokenClaim.ContentKeyIdentifierClaim in during the creation of TokenRestrictionTemplate.
+    // Generate a test token based on hello hello data in hello given TokenRestrictionTemplate.
+    // Note, you need toopass hello key id Guid because we specified 
+    // TokenClaim.ContentKeyIdentifierClaim in during hello creation of TokenRestrictionTemplate.
     Guid rawkey = EncryptionUtils.GetKeyIdAsGuid(key.Id);
 
-    //The GenerateTestToken method returns the token without the word “Bearer” in front
-    //so you have to add it in front of the token string. 
+    //hello GenerateTestToken method returns hello token without hello word “Bearer” in front
+    //so you have tooadd it in front of hello token string. 
     string testToken = TokenRestrictionTemplateSerializer.GenerateTestToken(tokenTemplate, null, rawkey);
-    Console.WriteLine("The authorization token is:\nBearer {0}", testToken);
+    Console.WriteLine("hello authorization token is:\nBearer {0}", testToken);
     Console.WriteLine();
 
 
 ## <a name="playready-dynamic-encryption"></a>Динамическое шифрование на основе PlayReady
-Службы мультимедиа позволяют настраивать права и ограничения, которые должны применяться в среде выполнения PlayReady DRM при попытке пользователя воспроизвести защищенное содержимое. 
+Службы мультимедиа позволяют tooconfigure hello права и ограничения, что требуется для hello tooenforce среда выполнения PlayReady DRM при попытке пользователя tooplay контент, защищенный обратно. 
 
-При защите содержимого с помощью PlayReady, среди прочего, в политике авторизации необходимо указать XML-строку, определяющую [шаблон лицензии PlayReady](media-services-playready-license-template-overview.md). Классы **PlayReadyLicenseResponseTemplate** и **PlayReadyLicenseTemplate** в пакет SDK служб мультимедиа для .NET помогут определить шаблон лицензии PlayReady.
+При защите контента с помощью PlayReady, одно из действий hello необходимо toospecify в политике авторизации является XML-строку, определяющий hello [шаблон лицензии PlayReady](media-services-playready-license-template-overview.md). В пакет SDK служб мультимедиа для .NET, hello **PlayReadyLicenseResponseTemplate** и **PlayReadyLicenseTemplate** классов, помогающая определить hello шаблон лицензии PlayReady.
 
-[В этой статье](media-services-protect-with-drm.md) описывается шифрование содержимого с помощью **PlayReady** и **Widevine**.
+[В этом разделе](media-services-protect-with-drm.md) показано, как tooencrypt контента с **PlayReady** и **Widevine**.
 
 ### <a name="open-restriction"></a>Ограничение "открытая"
-Ограничение открытого типа означает, что система будет доставлять ключ всем, кто его запросит. Это ограничение подходит для тестирования.
+Ограничение Open означает, что система hello будет предоставлять tooanyone ключа hello, выполняющий запрос ключа. Это ограничение подходит для тестирования.
 
-В следующем примере создается политика авторизации типа "открытая", которая затем добавляется в ключ содержимого.
+Следующий пример Hello создается политика открытой авторизации и добавляет его ключ содержимого toohello.
 
     static public void AddOpenAuthorizationPolicy(IContentKey contentKey)
     {
@@ -272,13 +272,13 @@ ms.lasthandoff: 08/29/2017
 
         contentKeyAuthorizationPolicy.Options.Add(policyOption);
 
-        // Associate the content key authorization policy with the content key.
+        // Associate hello content key authorization policy with hello content key.
         contentKey.AuthorizationPolicyId = contentKeyAuthorizationPolicy.Id;
         contentKey = contentKey.UpdateAsync().Result;
     }
 
 ### <a name="token-restriction"></a>Ограничение "по маркеру"
-Чтобы настроить параметр ограничения маркера, необходимо использовать XML для описания требований к авторизации маркера. XML-файл конфигурации ограничений по токену должен соответствовать схеме XML, показанной в [этом](#schema) разделе.
+Параметр ограничения маркеров tooconfigure hello, необходимо toouse XML toodescribe hello токен требования к проверке подлинности. Hello XML конфигурации ограничений токенов должен соответствовать toohello схемы XML, показанный на [это](#schema) раздела.
 
     public static string AddTokenRestrictedAuthorizationPolicy(IContentKey contentKey)
     {
@@ -313,10 +313,10 @@ ms.lasthandoff: 08/29/2017
 
         policy.Options.Add(policyOption);
 
-        // Add ContentKeyAutorizationPolicy to ContentKey
+        // Add ContentKeyAutorizationPolicy tooContentKey
         contentKeyAuthorizationPolicy.Options.Add(policyOption);
 
-        // Associate the content key authorization policy with the content key
+        // Associate hello content key authorization policy with hello content key
         contentKey.AuthorizationPolicyId = contentKeyAuthorizationPolicy.Id;
         contentKey = contentKey.UpdateAsync().Result;
 
@@ -341,42 +341,42 @@ ms.lasthandoff: 08/29/2017
 
     static private string ConfigurePlayReadyLicenseTemplate()
     {
-        // The following code configures PlayReady License Template using .NET classes
-        // and returns the XML string.
+        // hello following code configures PlayReady License Template using .NET classes
+        // and returns hello XML string.
 
-        //The PlayReadyLicenseResponseTemplate class represents the template for the response sent back to the end user. 
-        //It contains a field for a custom data string between the license server and the application 
+        //hello PlayReadyLicenseResponseTemplate class represents hello template for hello response sent back toohello end user. 
+        //It contains a field for a custom data string between hello license server and hello application 
         //(may be useful for custom app logic) as well as a list of one or more license templates.
         PlayReadyLicenseResponseTemplate responseTemplate = new PlayReadyLicenseResponseTemplate();
 
-        // The PlayReadyLicenseTemplate class represents a license template for creating PlayReady licenses
-        // to be returned to the end users. 
-        //It contains the data on the content key in the license and any rights or restrictions to be 
-        //enforced by the PlayReady DRM runtime when using the content key.
+        // hello PlayReadyLicenseTemplate class represents a license template for creating PlayReady licenses
+        // toobe returned toohello end users. 
+        //It contains hello data on hello content key in hello license and any rights or restrictions toobe 
+        //enforced by hello PlayReady DRM runtime when using hello content key.
         PlayReadyLicenseTemplate licenseTemplate = new PlayReadyLicenseTemplate();
-        //Configure whether the license is persistent (saved in persistent storage on the client) 
-        //or non-persistent (only held in memory while the player is using the license).  
+        //Configure whether hello license is persistent (saved in persistent storage on hello client) 
+        //or non-persistent (only held in memory while hello player is using hello license).  
         licenseTemplate.LicenseType = PlayReadyLicenseType.Nonpersistent;
 
-        // AllowTestDevices controls whether test devices can use the license or not.  
-        // If true, the MinimumSecurityLevel property of the license
-        // is set to 150.  If false (the default), the MinimumSecurityLevel property of the license is set to 2000.
+        // AllowTestDevices controls whether test devices can use hello license or not.  
+        // If true, hello MinimumSecurityLevel property of hello license
+        // is set too150.  If false (hello default), hello MinimumSecurityLevel property of hello license is set too2000.
         licenseTemplate.AllowTestDevices = true;
 
 
-        // You can also configure the Play Right in the PlayReady license by using the PlayReadyPlayRight class. 
-        // It grants the user the ability to playback the content subject to the zero or more restrictions 
-        // configured in the license and on the PlayRight itself (for playback specific policy). 
-        // Much of the policy on the PlayRight has to do with output restrictions 
-        // which control the types of outputs that the content can be played over and 
+        // You can also configure hello Play Right in hello PlayReady license by using hello PlayReadyPlayRight class. 
+        // It grants hello user hello ability tooplayback hello content subject toohello zero or more restrictions 
+        // configured in hello license and on hello PlayRight itself (for playback specific policy). 
+        // Much of hello policy on hello PlayRight has toodo with output restrictions 
+        // which control hello types of outputs that hello content can be played over and 
         // any restrictions that must be put in place when using a given output.
-        // For example, if the DigitalVideoOnlyContentRestriction is enabled, 
-        //then the DRM runtime will only allow the video to be displayed over digital outputs 
-        //(analog video outputs won’t be allowed to pass the content).
+        // For example, if hello DigitalVideoOnlyContentRestriction is enabled, 
+        //then hello DRM runtime will only allow hello video toobe displayed over digital outputs 
+        //(analog video outputs won’t be allowed toopass hello content).
 
-        //IMPORTANT: These types of restrictions can be very powerful but can also affect the consumer experience. 
-        // If the output protections are configured too restrictive, 
-        // the content might be unplayable on some clients. For more information, see the PlayReady Compliance Rules document.
+        //IMPORTANT: These types of restrictions can be very powerful but can also affect hello consumer experience. 
+        // If hello output protections are configured too restrictive, 
+        // hello content might be unplayable on some clients. For more information, see hello PlayReady Compliance Rules document.
 
         // For example:
         //licenseTemplate.PlayRight.AgcAndColorStripeRestriction = new AgcAndColorStripeRestriction(1);
@@ -387,7 +387,7 @@ ms.lasthandoff: 08/29/2017
     }
 
 
-Для получения тестового токена на основе токена ограничения, который использовался для политики авторизации ключа, см. [этот](#test) раздел. 
+Тестовый токен на основе hello токена ограничения, используемый для см. политику авторизации ключа hello tooget [это](#test) раздела. 
 
 ## <a id="types"></a>Типы, используемые при определении ContentKeyAuthorizationPolicy
 ### <a id="ContentKeyRestrictionType"></a>ContentKeyRestrictionType
@@ -424,5 +424,5 @@ ms.lasthandoff: 08/29/2017
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
 ## <a name="next-step"></a>Дальнейшие действия
-Теперь, после настройки политики авторизации ключа содержимого, перейдите к разделу [Как настроить политику доставки ресурсов](media-services-dotnet-configure-asset-delivery-policy.md) .
+Настройки политики авторизации ключа содержимого go toohello [как политики доставки активов tooconfigure](media-services-dotnet-configure-asset-delivery-policy.md) раздела.
 

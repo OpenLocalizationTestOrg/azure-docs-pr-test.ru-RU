@@ -1,5 +1,5 @@
 ---
-title: "Изучение журналов трассировки Java в Azure Application Insights | Документация Майкрософт"
+title: "aaaExplore Java трассировки журналов в Azure Application Insights | Документы Microsoft"
 description: "Поиск данных трассировки Log4J или Logback в Application Insights"
 services: application-insights
 documentationcenter: java
@@ -13,29 +13,29 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/12/2016
 ms.author: bwren
-ms.openlocfilehash: 5baba3deaf58a1a24995c60381592a9c2ffefd81
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: e5f8e8c67e57753ba7574b97aa96dbb41db00ce1
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="explore-java-trace-logs-in-application-insights"></a>Просмотр журналов трассировки Java в Application Insights
-Если вы используете Logback или Log4J (версия 1.2 или 2.0) для трассировки, можно настроить автоматическую пересылку журналов в Application Insights, где вы сможете их изучить.
+Если вы используете Logback или Log4J (версия 1.2 или 2.0) для трассировки, что журналы трассировки отправляются автоматически tooApplication аналитики, где вы можете анализировать и поиск на них.
 
-## <a name="install-the-java-sdk"></a>Установка пакета SDK для Java
+## <a name="install-hello-java-sdk"></a>Установка пакета SDK для Java hello
 
 Установите пакет [SDK Application Insights для Java][java], если это еще не сделано.
 
-(Если не нужно отслеживать HTTP-запросы, можно опустить большую часть XML-файла конфигурации, но необходимо по крайней мере добавить элемент `InstrumentationKey`. Кроме того, следует вызвать метод `new TelemetryClient()` для инициализации пакета SDK.)
+(Если вы не хотите tootrack HTTP-запросов, можно опустить большинство hello XML-файл конфигурации, но необходимо включить по крайней мере hello `InstrumentationKey` элемента. Вам также следует вызвать `new TelemetryClient()` tooinitialize hello SDK.)
 
 
-## <a name="add-logging-libraries-to-your-project"></a>Добавление в проект библиотеки ведения журналов
-*Выберите подходящий метод для проекта.*
+## <a name="add-logging-libraries-tooyour-project"></a>Добавление проекта tooyour библиотеки ведения журнала
+*Выберите подходящий способ hello для проекта.*
 
 #### <a name="if-youre-using-maven"></a>Если вы используете Maven...
-Если проект уже настроен для сборки с использованием Maven, добавьте один из следующих фрагментов кода в файл pom.xml.
+Если проект уже настроен toouse Maven для сборки, слияние одного следующие фрагменты кода в файл pom.xml hello.
 
-Затем обновите зависимости проекта, чтобы загрузить двоичные файлы.
+Зависимости проекта hello, hello tooget двоичных файлов, загруженных обновите.
 
 *Logback*
 
@@ -77,9 +77,9 @@ ms.lasthandoff: 08/18/2017
 ```
 
 #### <a name="if-youre-using-gradle"></a>Если вы используете Gradle...
-Если проект уже настроен для сборки с использованием Gradle, добавьте одну из следующих строк в группу `dependencies` в файле build.gradle.
+Если проект уже настроен toouse Gradle для сборки, добавьте один из следующих строк toohello hello `dependencies` в файл build.gradle:
 
-Затем обновите зависимости проекта, чтобы загрузить двоичные файлы.
+Зависимости проекта hello, hello tooget двоичных файлов, загруженных обновите.
 
 **Logback**
 
@@ -101,7 +101,7 @@ ms.lasthandoff: 08/18/2017
 ```
 
 #### <a name="otherwise-"></a>В противном случае...
-Загрузите и извлеките соответствующий аппендер, а затем добавьте подходящую библиотеку в проект:
+Загрузите и извлеките соответствующие аппендера hello, а затем добавьте hello соответствующую библиотеку tooyour проекта:
 
 | Средство ведения журнала | Загрузить | Библиотека |
 | --- | --- | --- |
@@ -109,8 +109,8 @@ ms.lasthandoff: 08/18/2017
 | Log4J версии 2.0 |[Пакет SDK с аппендером Log4J версии 2.0](https://aka.ms/qypznq) |applicationinsights-logging-log4j2 |
 | Log4J версии 1.2 |[Пакет SDK с аппендером Log4J версии 1.2](https://aka.ms/ky9cbo) |applicationinsights-logging-log4j1_2 |
 
-## <a name="add-the-appender-to-your-logging-framework"></a>Добавление аппендера в платформу ведения журнала
-Чтобы начать трассировку, добавьте соответствующий фрагмент кода в файл конфигурации Log4J или Logback: 
+## <a name="add-hello-appender-tooyour-logging-framework"></a>Добавление ведения журнала tooyour аппендера платформы hello
+toostart начало трассировки, слияния hello соответствующего фрагмента кода toohello Log4J или Logback файла конфигурации: 
 
 *Logback*
 
@@ -153,12 +153,12 @@ ms.lasthandoff: 08/18/2017
     </root>
 ```
 
-К аппендерам Application Insights может обращаться любое сконфигурированное средство ведения журнала, а не только корневое средство ведения журнала (как показано в примерах выше).
+Hello добавители Application Insights можно ссылаться по любой настроенное средство ведения журнала, а не обязательно по hello корневой средство ведения журнала (как показано в примерах кода hello выше).
 
-## <a name="explore-your-traces-in-the-application-insights-portal"></a>Просмотр данных трассировки на портале Application Insights
-После настройки проекта для передачи данных трассировки в Application Insights можно выполнять поиск и просмотр этих данных на портале Application Insights в колонке [Поиск][diagnostic].
+## <a name="explore-your-traces-in-hello-application-insights-portal"></a>Изучать данные трассировок на портале Application Insights hello
+Теперь, когда вы настроили ваш проект toosend отслеживает tooApplication аналитики, можно просматривать и искать эти данные трассировки в hello портале Application Insights hello [поиска] [ diagnostic] колонку.
 
-![На портале Application Insights откройте колонку "Поиск".](./media/app-insights-java-trace-logs/10-diagnostics.png)
+![На портале Application Insights hello откройте раздел поиска](./media/app-insights-java-trace-logs/10-diagnostics.png)
 
 ## <a name="next-steps"></a>Дальнейшие действия
 [Поиск по журналу диагностики][diagnostic]

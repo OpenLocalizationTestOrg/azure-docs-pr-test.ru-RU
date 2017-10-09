@@ -1,6 +1,6 @@
 ---
-title: "Отправка событий в концентраторы событий Azure с помощью C | Документация Майкрософт"
-description: "Отправка событий в концентраторы событий Azure с помощью C"
+title: "tooAzure aaaSend событий концентраторов событий с помощью C | Документы Microsoft"
+description: "Отправлять события tooAzure концентраторов событий, с помощью C"
 services: event-hubs
 documentationcenter: 
 author: sethmanheim
@@ -14,37 +14,37 @@ ms.devlang: csharp
 ms.topic: article
 ms.date: 08/15/2017
 ms.author: sethm
-ms.openlocfilehash: a615ee39b6c3731cc7df366e9fabeed5219a71b4
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: bb53300c070debb4a3658a38df9d3966f08e81ae
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="send-events-to-azure-event-hubs-using-c"></a>Отправка событий в концентраторы событий Azure с помощью C
+# <a name="send-events-tooazure-event-hubs-using-c"></a>Отправлять события tooAzure концентраторов событий, с помощью C
 
 ## <a name="introduction"></a>Введение
-Концентраторы событий — это высокомасштабируемая система, способная принимать миллионы событий в секунду, благодаря которой приложения могут обрабатывать и анализировать большие объемы данных от подключенных устройств и приложений. После сбора данных в концентраторах событий их можно преобразовать и сохранить с помощью любого поставщика аналитики в реальном времени или в кластере хранилища.
+Концентраторы событий — это система высокой степенью масштабирования приема, можно принять миллионов событий в секунду, включение tooprocess приложения и анализировать hello значительные объемы данных, создаваемых подключенных устройств и приложений. После сбора данных в концентраторах событий их можно преобразовать и сохранить с помощью любого поставщика аналитики в реальном времени или в кластере хранилища.
 
-Дополнительные сведения см. в [обзоре концентраторов событий][Event Hubs overview].
+Дополнительные сведения см. в разделе hello [Обзор концентраторов событий] [Обзор концентраторов событий].
 
-В этом руководстве вы узнаете, как отправлять события в концентратор событий с помощью консольного приложения на языке C. Для получения событий выберите соответствующий язык в оглавлении слева.
+В этом учебнике вы узнаете, как toosend события tooan события концентратора с помощью консольного приложения в событиях C. tooreceive hello соответствующие принимающей в выберите язык hello левой оглавление.
 
-Для работы с этим учебником необходимо следующее.
+toocomplete этого учебника вам потребуется hello следующие:
 
-* Среда разработки C. В этом учебнике предполагается, что применяется стек gcc на виртуальной машине Azure Linux с Ubuntu 14.04.
+* Среда разработки C. В этом учебнике предполагается hello gcc стека на виртуальной Машине Linux Azure с Ubuntu 14.04.
 * [Microsoft Visual Studio](https://www.visualstudio.com/).
 * Активная учетная запись Azure. Если ее нет, можно создать бесплатную пробную учетную запись всего за несколько минут. Дополнительные сведения см. в разделе [Бесплатная пробная версия Azure](https://azure.microsoft.com/pricing/free-trial/).
 
-## <a name="send-messages-to-event-hubs"></a>Отправка сообщений в центры событий
-В этом разделе мы напишем на языке C приложение для отправки событий в концентратор событий. В коде используется библиотека Proton AMQP из [проекта Apache Qpid](http://qpid.apache.org/). Эта процедура аналогична использованию очередей и разделов служебной шины с AMQP на C, как показано [здесь](https://code.msdn.microsoft.com/Using-Apache-Qpid-Proton-C-afd76504). Дополнительную информацию см. в [документации по Qpid Proton](http://qpid.apache.org/proton/index.html).
+## <a name="send-messages-tooevent-hubs"></a>Отправка сообщений tooEvent концентраторы
+В этом разделе мы записи концентратора событий tooyour C приложения toosend события. Hello код использует библиотеку Proton AMQP hello из hello [проекта Apache Qpid](http://qpid.apache.org/). Это является аналогом toousing Service Bus очереди и разделы с помощью AMQP от C, как показано [здесь](https://code.msdn.microsoft.com/Using-Apache-Qpid-Proton-C-afd76504). Дополнительную информацию см. в [документации по Qpid Proton](http://qpid.apache.org/proton/index.html).
 
-1. Чтобы установить Qpid Proton, следуйте инструкциям для своей среды на [странице Qpid AMQP Messenger](https://qpid.apache.org/proton/messenger.html).
-2. Для компиляции библиотеки Proton установите следующие пакеты.
+1. Из hello [Qpid AMQP Messenger страницу](https://qpid.apache.org/proton/messenger.html), следуйте инструкциям hello tooinstall Qpid Proton, в зависимости от среды.
+2. toocompile hello библиотеки Proton, установите hello следующие пакеты:
    
     ```shell
     sudo apt-get install build-essential cmake uuid-dev openssl libssl-dev
     ```
-3. Скачайте [библиотеку Qpid Proton](http://qpid.apache.org/proton/index.html) и извлеките ее, например:
+3. Загрузите hello [Qpid Proton библиотеки](http://qpid.apache.org/proton/index.html)и извлеките его, например:
    
     ```shell
     wget http://archive.apache.org/dist/qpid/proton/0.7/qpid-proton-0.7.tar.gz
@@ -59,7 +59,7 @@ ms.lasthandoff: 08/18/2017
     cmake -DCMAKE_INSTALL_PREFIX=/usr ..
     sudo make install
     ```
-5. В рабочем каталоге создайте новый файл с именем **sender.c** со следующим кодом. Не забудьте заменить значения имени концентратора событий и имени пространства имен. Также необходимо заменить версию ключа **SendRule** , закодированную как URL-адрес, созданную ранее. Выполнить кодировку как URL-адрес можно [здесь](http://www.w3schools.com/tags/ref_urlencode.asp).
+5. В рабочий каталог, создайте новый файл с именем **sender.c** с hello, следующий код. Не забывайте toosubstitute hello значение для имени концентратора событий и пространства имен. Кроме того, необходимо заменить URL-закодированной версией hello ключа для hello **SendRule** созданного ранее. Выполнить кодировку как URL-адрес можно [здесь](http://www.w3schools.com/tags/ref_urlencode.asp).
    
     ```c
     #include "proton/message.h"
@@ -121,7 +121,7 @@ ms.lasthandoff: 08/18/2017
     }
    
     int main(int argc, char** argv) {
-        printf("Press Ctrl-C to stop the sender process\n");
+        printf("Press Ctrl-C toostop hello sender process\n");
    
         pn_messenger_t *messenger = pn_messenger(NULL);
         pn_messenger_set_outgoing_window(messenger, 1);
@@ -140,18 +140,18 @@ ms.lasthandoff: 08/18/2017
         return 0;
     }
     ```
-6. Скомпилируйте файл при условии **gcc**:
+6. Скомпилируйте файл hello, при условии, что **gcc**:
    
     ```
     gcc sender.c -o sender -lqpid-proton
     ```
 
     > [!NOTE]
-    > В приведенном выше коде окно отправки, равное 1, используется для скорейшей принудительной отправки сообщений. Обычно приложение предпримет попытку сгруппировать сообщения для увеличения пропускной способности. Информацию об использовании библиотеки Qpid Proton в этой и других средах, а также на платформах, для которых предоставляются привязки (сейчас это Perl, PHP, Python и Ruby), см. на [странице Qpid AMQP Messenger](https://qpid.apache.org/proton/messenger.html).
+    > В этом коде мы используем исходящих окна 1 сообщение hello tooforce ожидания как можно быстрее. В общем случае приложения следует проверить пропускную способность tooincrease сообщения toobatch. . В разделе hello [Qpid AMQP Messenger страницы](https://qpid.apache.org/proton/messenger.html) сведения о как toouse hello Qpid Proton библиотеки в этом и других средах, а также от платформы, для которых предоставляются привязки (в настоящее время Perl, PHP, Python и Ruby).
 
 
 ## <a name="next-steps"></a>Дальнейшие действия
-Дополнительные сведения о концентраторах событий см. в следующих источниках:
+На сайте ссылкам hello, изучите более подробную концентраторов событий:
 
 * [Обзор концентраторов событий](event-hubs-what-is-event-hubs.md
 )

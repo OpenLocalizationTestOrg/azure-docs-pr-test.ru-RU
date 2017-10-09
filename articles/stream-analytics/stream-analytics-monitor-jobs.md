@@ -1,6 +1,6 @@
 ---
-title: "Отслеживание заданий Stream Analytics программным способом | Документация Майкрософт"
-description: "Узнайте, как отслеживать задания Stream Analytics, созданные с помощью API REST, пакета SDK для Azure или PowerShell."
+title: "отслеживание заданий aaaProgrammatically в Stream Analytics | Документы Microsoft"
+description: "Узнайте, как tooprogrammatically мониторинг заданий Stream Analytics, созданные с помощью API-интерфейс REST, пакет Azure SDK или PowerShell."
 keywords: "монитор .net, монитор заданий, мониторинг приложения"
 services: stream-analytics
 documentationcenter: 
@@ -15,35 +15,35 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 04/20/2017
 ms.author: jeffstok
-ms.openlocfilehash: 0d39e77316a03a705586af3ba970a7be1208ec85
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 44a9c29c2161ee81ea76ece4646a8691bf5d5b48
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="programmatically-create-a-stream-analytics-job-monitor"></a>Создание монитора заданий Stream Analytics программным способом
 
-В этой статье рассказывается, как включить функцию отслеживания задания Stream Analytics. Отслеживание заданий Stream Analytics, созданных с помощью интерфейсов API REST, пакета SDK для Azure и оболочки PowerShell, по умолчанию отключено. Вы можете вручную включить отслеживание на портале Azure. Для этого перейдите на страницу "Отслеживание" задания и нажмите кнопку "Включить". Этот процесс также можно автоматизировать, выполнив описанные в этой статье действия. Данные отслеживания будут отображаться в области метрики на портале Azure для задания Stream Analytics.
+В этой статье показано, как мониторинг tooenable для задания Stream Analytics. Отслеживание заданий Stream Analytics, созданных с помощью интерфейсов API REST, пакета SDK для Azure и оболочки PowerShell, по умолчанию отключено. Вы можете вручную включить его в hello портал Azure, перейдите на страницу toohello задания монитора и щелкнув hello включить кнопку или этот процесс можно автоматизировать с помощью инструкции hello в этой статье. Hello данные мониторинга будут отображаться в области метрики hello hello портал Azure для задания Stream Analytics.
 
 ## <a name="prerequisites"></a>Предварительные требования
 
-Перед началом работы необходимо иметь следующее:
+Перед началом этого процесса необходимо иметь следующие hello.
 
 * Visual Studio 2017 или Visual Studio 2015.
 * Скачанный и установленный [пакет SDK Azure для .NET](https://azure.microsoft.com/downloads/).
-* Существующее задание Stream Analytics, отслеживание которого нужно включить.
+* Задание Stream Analytics, требуется toohave мониторинг включен
 
 ## <a name="create-a-project"></a>Создание проекта
 
 1. Создайте консольное приложение Visual Studio C# .NET.
-2. В консоли диспетчера пакетов выполните следующие команды, чтобы установить пакеты NuGet. Первый — пакет SDK для .NET для управления Azure Stream Analytics. Второй — пакет SDK для Azure Monitor, который будет использоваться для включения отслеживания. Последний — клиент Azure Active Directory, который будет использоваться для проверки подлинности.
+2. В hello консоль диспетчера пакетов hello выполнения следующих команд пакеты NuGet tooinstall hello. Hello сначала он hello Azure Stream Analytics управления .NET SDK. Hello второй раз — hello Azure SDK монитор, который будет использоваться tooenable наблюдения. Hello последнего он hello Azure Active Directory клиента, который будет использоваться для проверки подлинности.
    
    ```
    Install-Package Microsoft.Azure.Management.StreamAnalytics
    Install-Package Microsoft.Azure.Insights -Pre
    Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory
    ```
-3. Добавьте следующий раздел appSettings в файл App.config.
+3. Добавьте следующий файл App.config toohello раздела appSettings hello.
    
    ```
    <appSettings>
@@ -60,12 +60,12 @@ ms.lasthandoff: 08/29/2017
      <add key="ActiveDirectoryTenantId" value="YOUR TENANT ID" />
    </appSettings>
    ```
-   Замените значения *SubscriptionId* и *ActiveDirectoryTenantId* идентификаторами подписки Azure и клиента. Вы можете получить эти значения, запустив следующий командлет Azure PowerShell:
+   Замените значения *SubscriptionId* и *ActiveDirectoryTenantId* идентификаторами подписки Azure и клиента. Эти значения можно получить, выполнив следующий командлет PowerShell hello:
    
    ```
    Get-AzureAccount
    ```
-4. Добавьте следующие инструкции с оператором using в исходный файл (Program.cs) в проекте.
+4. Добавьте следующее hello с помощью инструкций toohello исходный файл (Program.cs) в проекте hello.
    
    ```
      using System;
@@ -114,12 +114,12 @@ ms.lasthandoff: 08/29/2017
                  return result.AccessToken;
              }
    
-             throw new InvalidOperationException("Failed to acquire token");
+             throw new InvalidOperationException("Failed tooacquire token");
      }
 
 ## <a name="create-management-clients"></a>Создание клиентов управления
 
-С помощью следующего кода можно настроить необходимые переменные и клиенты управления.
+Hello следующий код будет настроить необходимые переменные hello и управления клиентами.
 
     string resourceGroupName = "<YOUR AZURE RESOURCE GROUP NAME>";
     string streamAnalyticsJobName = "<YOUR STREAM ANALYTICS JOB NAME>";
@@ -141,16 +141,16 @@ ms.lasthandoff: 08/29/2017
 
 ## <a name="enable-monitoring-for-an-existing-stream-analytics-job"></a>Включение отслеживания существующего задания Stream Analytics
 
-С помощью следующего кода можно включить отслеживание **имеющегося** задания Stream Analytics. В первой части кода в службу Stream Analytics отправляется запрос GET, что позволяет получить сведения о конкретном задании Stream Analytics. Во второй части кода, где запрос PUT отправляется в службу Insights для включения отслеживания задания Stream Analytics, свойство *Id* (полученное в результате выполнения запроса GET) используется в качестве параметра метода Put.
+Hello следующий код включает наблюдение для **существующие** задания Stream Analytics. Первая часть кода hello Hello выполняет запрос GET для hello Stream Analytics службы tooretrieve сведения о конкретном задании Stream Analytics hello. Она использует hello *идентификатор* свойство (извлечены из запроса на получение hello) в качестве параметра для метода Put в hello hello вторая часть кода hello, который отправляет запрос PUT toohello аналитики службы tooenable наблюдение за hello Stream Analytics задание.
 
 >[!WARNING]
->Если ранее вы включили функцию отслеживания для другого задания Stream Analytics либо на портале Azure, либо программным способом с помощью указанного ниже кода, **мы рекомендуем использовать ту же учетную запись хранения, которую вы использовали для включения функции отслеживания.**
+>Если было включено наблюдение за другое задание Stream Analytics, помощи hello портал Azure или программным способом через hello ниже кода, **рекомендуется предоставлять hello же имя учетной записи хранилища, используемый при вы ранее включен мониторинг.**
 > 
-> Учетная запись хранения связана с регионом, в котором вы создали свое задание Stream Analytics, а не с самим заданием.
+> Учетная запись хранения Hello — область связанного toohello, создать задание Stream Analytics, в частности не само задание toohello.
 > 
-> Все задания Stream Analytics (и все остальные ресурсы Azure) в этом регионе совместно используют эту учетную запись хранения для хранения данных отслеживания. Если указать другую учетную запись хранения, это может привести к непредвиденным побочным эффектам при отслеживании других заданий Stream Analytics или других ресурсов Azure.
+> Stream Analytics, все задания (и все ресурсы Azure) в этом же регионе совместно используют этот toostore учетной записи хранилища, наблюдение за данными. Если указать другую учетную запись хранения, она может привести к непредвиденные побочные эффекты hello мониторинг заданий Stream Analytics или другим ресурсам Azure.
 > 
-> Имя учетной записи хранения, используемой для замены `<YOUR STORAGE ACCOUNT NAME>` в следующем коде, должно представлять собой учетную запись хранения, которая входит в ту же подписку, что и задание Stream Analytics, для которого вы включаете функцию отслеживания.
+> используется tooreplace имя учетной записи хранения Hello `<YOUR STORAGE ACCOUNT NAME>` hello, следующий код должен быть учетную запись хранилища в hello той же подписке, hello задания Stream Analytics, назначенный для мониторинга.
 > 
 > 
 
@@ -179,7 +179,7 @@ ms.lasthandoff: 08/29/2017
 
 ## <a name="next-steps"></a>Дальнейшие действия
 
-* [Введение в Azure Stream Analytics](stream-analytics-introduction.md)
+* [Введение tooAzure Stream Analytics](stream-analytics-introduction.md)
 * [Приступая к работе с Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md)
 * [Масштабирование заданий в службе Azure Stream Analytics](stream-analytics-scale-jobs.md)
 * [Справочник по языку запросов Azure Stream Analytics](https://msdn.microsoft.com/library/azure/dn834998.aspx)

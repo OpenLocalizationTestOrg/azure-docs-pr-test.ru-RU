@@ -89,7 +89,7 @@
 ### Учебники
 #### [PolyBase;](sql-data-warehouse-get-started-load-with-polybase.md)
 
-### Практические руководства
+### Как tooguides
 #### [Пример данных](sql-data-warehouse-load-sample-databases.md)
 #### [Хранилище озера данных Azure](sql-data-warehouse-load-from-azure-data-lake-store.md)
 #### [BCP](sql-data-warehouse-load-with-bcp.md)
@@ -106,7 +106,7 @@
 ### [Перенос схемы](sql-data-warehouse-migrate-schema.md)
 ### [Перенос кода](sql-data-warehouse-migrate-code.md)
 ### [Перенос данных](sql-data-warehouse-migrate-data.md)
-### [Переход на использование хранилища класса Premium](sql-data-warehouse-migrate-to-premium-storage.md)
+### [Миграция хранилища toopremium](sql-data-warehouse-migrate-to-premium-storage.md)
 
 ## Управление вычислительными ресурсами
 

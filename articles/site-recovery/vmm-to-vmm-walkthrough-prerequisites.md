@@ -1,6 +1,6 @@
 ---
-title: "Просмотр предварительных требований для репликации Hyper-V на дополнительный сайт VMM с использованием Azure Site Recovery | Документация Майкрософт"
-description: "Здесь описываются предварительные требования для репликации виртуальных машин Hyper-V на дополнительный сайт VMM с помощью Azure Site Recovery."
+title: "Необходимые условия hello aaaReview для Hyper-V репликации tooa вторичный сайт VMM с помощью Azure Site Recovery | Документы Microsoft"
+description: "Описание предварительных требований hello для репликации виртуальных машин Hyper-V tooa вторичный сайт VMM с помощью Azure Site Recovery."
 services: site-recovery
 documentationcenter: 
 author: rayne-wiselman
@@ -14,32 +14,32 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/30/2017
 ms.author: raynew
-ms.openlocfilehash: 7897a30bf1774609ca8e6037dabcd5fbf4151271
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 1bd945fdda36c3cce5d159209abbd3c98a7e3682
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="step-2-review-the-prerequisites-and-limitations-for-hyper-v-vm-replication-to-a-secondary-vmm-site"></a>Шаг 2. Просмотр предварительных требований и ограничений для репликации виртуальных машин Hyper-V на дополнительный сайт VMM
+# <a name="step-2-review-hello-prerequisites-and-limitations-for-hyper-v-vm-replication-tooa-secondary-vmm-site"></a>Шаг 2: Просмотрите hello предварительные требования и ограничения для виртуальных Машин Hyper-V репликации tooa вторичного сайта, VMM
 
 
-Ознакомившись с [архитектурой сценария](vmm-to-vmm-walkthrough-architecture.md), прочтите эту статью, чтобы убедиться, что вы понимаете предварительные условия для развертывания при репликации локальных виртуальных машин Hyper-V, управляемых в облаках System Center Virtual Machine Manager (VMM), на дополнительный сайт с помощью [Azure Site Recovery](site-recovery-overview.md) на портале Azure.
+После знакомства hello [архитектура сценария](vmm-to-vmm-walkthrough-architecture.md), чтение этой статьи toomake изучить предварительные требования для развертывания hello, при репликации в локальной среде Hyper-V виртуальных машин (ВМ) управляемого кода в System Center виртуальный Облаков Machine Manager (VMM), tooa вторичного сайта с помощью [Azure Site Recovery](site-recovery-overview.md) в hello портал Azure.
 
-Любые комментарии, которые возникнут после прочтения этой статьи, можно добавить в конце этой страницы или на [форуме по службам восстановления Azure](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr).
+После считывания в этой статье, отправлять любые комментарии, внизу hello, или на hello [форум по службам восстановления Azure](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr).
 
 
 ## <a name="prerequisites-and-limitations"></a>Предварительные требования и ограничения
 
 **Требование** | **Дополнительные сведения**
 --- | ---
-**Таблицы Azure** | [Подписка Microsoft Azure](http://azure.microsoft.com/).<br/><br/> Начните с [бесплатной пробной версии](https://azure.microsoft.com/pricing/free-trial/).<br/><br/> [дополнительными сведениями](https://azure.microsoft.com/pricing/details/site-recovery/) о ценах на использование Site Recovery.<br/><br/> Сведения о поддерживаемых регионах для Site Recovery см. в разделе "Географическая доступность" на странице [цен на службу Azure Site Recovery](https://azure.microsoft.com/pricing/details/site-recovery/).
-**Серверы VMM** | Мы рекомендуем использовать два сервера VMM — один на основном сайте и один на дополнительном.<br/><br/> Поддерживается репликация между облаками на одном сервере VMM.<br/><br/> На серверах VMM должен выполняться как минимум System Center 2012 с пакетом обновления 1 (SP1) с последними обновлениями.<br/><br/> Серверам VMM нужен доступ к Интернету.
-**Облака VMM** | Для каждого сервера VMM должно быть настроено одно или несколько облаков, и для каждого облака должен быть задан профиль емкости Hyper-V. <br/><br/>Облака должны содержать одну или несколько групп узлов VMM.<br/><br/> Если у вас только один сервер VMM, к нему должны быть подключены по меньшей мере два облака, которые будут выполнять роль основного и дополнительного сайтов.
-**Hyper-V** | Серверы Hyper-V должны работать под управлением Windows Server 2012 (или более поздних версий), на них должна быть настроена роль Hyper-V и установлены все последние обновления.<br/><br/> Сервер Hyper-V должен содержать одну или несколько виртуальных машин.<br/><br/>  Серверы узлов Hyper-V должны быть размещены в первичном и вторичном облаках VMM.<br/><br/> Если Hyper-V выполняется в кластере на платформе Windows Server 2012 R2, установите [обновление 2961977](https://support.microsoft.com/kb/2961977).<br/><br/> Если Hyper-V выполняется в кластере на платформе Windows Server 2012, учтите, что брокер кластера не создается автоматически при использовании кластера на основе статических IP-адресов. Брокер кластера необходимо настроить вручную. [Подробная информация](http://social.technet.microsoft.com/wiki/contents/articles/18792.configure-replica-broker-role-cluster-to-cluster-replication.aspx).<br/><br/> Серверам Hyper-V необходим доступ к Интернету.
+**Таблицы Azure** | [Подписка Microsoft Azure](http://azure.microsoft.com/).<br/><br/> Начните с [бесплатной пробной версии](https://azure.microsoft.com/pricing/free-trial/).<br/><br/> [дополнительными сведениями](https://azure.microsoft.com/pricing/details/site-recovery/) о ценах на использование Site Recovery.<br/><br/> Проверьте областей hello поддерживается для восстановления сайта в группе географическая доступность в [сведения о ценах Azure Site Recovery](https://azure.microsoft.com/pricing/details/site-recovery/).
+**Серверы VMM** | Мы рекомендуем иметь двух серверов VMM, в первичном сайте hello и по одному в hello получателей.<br/><br/> Поддерживается репликация между облаками на одном сервере VMM.<br/><br/> Серверы VMM должен работать под управлением System Center 2012 SP1 с последними обновлениями hello.<br/><br/> Серверам VMM нужен доступ к Интернету.
+**Облака VMM** | Каждый сервер VMM, должна иметь на одно или несколько облаков, а все облака должен иметь набор профилей hello емкости Hyper-V. <br/><br/>Облака должны содержать одну или несколько групп узлов VMM.<br/><br/> Если имеется только один сервер VMM, он должен, по крайней мере два облака, tooact как первичный и вторичный.
+**Hyper-V** | Серверы Hyper-V должны работать под управлением Windows Server 2012 с ролью Hyper-V hello и иметь hello установлены последние обновления.<br/><br/> Сервер Hyper-V должен содержать одну или несколько виртуальных машин.<br/><br/>  Серверы узла Hyper-V должны находиться в группах узлов в hello Первичное и вторичное облака VMM.<br/><br/> Если Hyper-V выполняется в кластере на платформе Windows Server 2012 R2, установите [обновление 2961977](https://support.microsoft.com/kb/2961977).<br/><br/> Если Hyper-V выполняется в кластере на платформе Windows Server 2012, учтите, что брокер кластера не создается автоматически при использовании кластера на основе статических IP-адресов. Вручную настройте брокер кластера hello. [Подробная информация](http://social.technet.microsoft.com/wiki/contents/articles/18792.configure-replica-broker-role-cluster-to-cluster-replication.aspx).<br/><br/> Серверам Hyper-V необходим доступ к Интернету.
 
 
 
 
 ## <a name="next-steps"></a>Дальнейшие действия
 
-Перейдите к статье [Шаг 3. Планирование сетей для репликации виртуальной машины Hyper-V на дополнительный сайт VMM](vmm-to-vmm-walkthrough-network.md).
+Go слишком[Step 3: Планирование сети](vmm-to-vmm-walkthrough-network.md).

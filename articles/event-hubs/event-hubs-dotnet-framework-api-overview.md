@@ -1,6 +1,6 @@
 ---
-title: "Обзор интерфейсов API концентраторов событий Azure для платформы .NET Framework | Документация Майкрософт"
-description: "Сводные сведения о некоторых ключевых клиентских API концентраторов событий для .NET Framework."
+title: "aaaOverview из API-интерфейсов Azure событий концентраторов .NET Framework hello | Документы Microsoft"
+description: "Сводка некоторых hello ключа платформы .NET концентраторов событий интерфейсов API клиента."
 services: event-hubs
 documentationcenter: na
 author: sethmanheim
@@ -14,23 +14,23 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/15/2017
 ms.author: sethm
-ms.openlocfilehash: bc525e7ca8b21e9e5f1e36b3152d71420b041700
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: b0e12e43f91b025d7aa4ca03e664b9ff31b04097
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="event-hubs-net-framework-api-overview"></a>Обзор API концентраторов событий для платформы .NET Framework
-В этой статье перечислены некоторые ключевые клиентские API концентраторов событий для .NET Framework. Существуют две категории: API управления и API среды выполнения. API среды выполнения состоят из всех операций, необходимых для отправки и получения сообщения. Операции управления позволяют управлять состоянием сущности концентраторов событий путем создания, обновления и удаления сущностей.
+В этой статье приведена сводка hello ключа клиентских API в платформе .NET концентраторов событий. Существуют две категории: API управления и API среды выполнения. API-интерфейсы времени выполнения состоят из всех требуемых операций toosend и сообщение об ошибке. Операции управления позволяют toomanage состоянием сущностей концентратора событий посредством создания, обновления и удаления сущностей.
 
-Сценарии мониторинга распространяются как на управление, так и на среду выполнения. Подробную справочную документацию по API .NET см. в руководстве по [служебной шине .NET](/dotnet/api/microsoft.servicebus.messaging) и [API EventProcessorHost](/dotnet/api/microsoft.azure.eventhubs.processor).
+Сценарии мониторинга распространяются как на управление, так и на среду выполнения. Подробную справочную документацию по hello API-интерфейсы .NET см. в разделе hello [.NET служебной шины](/dotnet/api/microsoft.servicebus.messaging) и [EventProcessorHost API](/dotnet/api/microsoft.azure.eventhubs.processor) ссылки.
 
 ## <a name="management-apis"></a>API управления
-Для выполнения указанных ниже операций управления требуется разрешение на **управление** пространством имен концентраторов событий.
+tooperform hello после операций управления, необходимо иметь **управление** разрешения на пространство имен hello концентраторов событий:
 
 ### <a name="create"></a>Создание
 ```csharp
-// Create the event hub
+// Create hello event hub
 var ehd = new EventHubDescription(eventHubName);
 ehd.PartitionCount = SampleManager.numPartitions;
 await namespaceManager.CreateEventHubAsync(ehd);
@@ -62,7 +62,7 @@ var eventHubClient = EventHubClient.Create("Event Hub name");
 
 ### <a name="publish-message"></a>Публикация сообщения
 ```csharp
-// Create the device/temperature metric
+// Create hello device/temperature metric
 var info = new MetricEvent() { DeviceId = random.Next(SampleManager.NumDevices), Temperature = random.Next(100) };
 var data = new EventData(new byte[10]); // Byte array
 var data = new EventData(Stream); // Stream 
@@ -80,10 +80,10 @@ await client.SendAsync(data);
 
 ### <a name="create-consumer"></a>Создание потребителя
 ```csharp
-// Create the Event Hubs client
+// Create hello Event Hubs client
 var eventHubClient = EventHubClient.Create(EventHubName);
 
-// Get the default consumer group
+// Get hello default consumer group
 var defaultConsumerGroup = eventHubClient.GetDefaultConsumerGroup();
 
 // All messages
@@ -109,11 +109,11 @@ msg = UnicodeEncoding.UTF8.GetString(info);
 ```
 
 ## <a name="event-processor-host-apis"></a>Интерфейсы API узла обработчика событий
-Эти API обеспечивают отказоустойчивость рабочих процессов, которые могут стать недоступными, и распределяют секции между всеми имеющимися исполнителями.
+Эти API обеспечивают отказоустойчивость tooworker процессов, которые могут стать недоступными, распространив секций среди всех имеющихся работников.
 
 ```csharp
-// Checkpointing is done within the SimpleEventProcessor and on a per-consumerGroup per-partition basis, workers resume from where they last left off.
-// Use the EventData.Offset value for checkpointing yourself, this value is unique per partition.
+// Checkpointing is done within hello SimpleEventProcessor and on a per-consumerGroup per-partition basis, workers resume from where they last left off.
+// Use hello EventData.Offset value for checkpointing yourself, this value is unique per partition.
 
 var eventHubConnectionString = System.Configuration.ConfigurationManager.AppSettings["Microsoft.ServiceBus.ConnectionString"];
 var blobConnectionString = System.Configuration.ConfigurationManager.AppSettings["AzureStorageConnectionString"]; // Required for checkpoint/state
@@ -122,11 +122,11 @@ var eventHubDescription = new EventHubDescription(EventHubName);
 var host = new EventProcessorHost(WorkerName, EventHubName, defaultConsumerGroup.GroupName, eventHubConnectionString, blobConnectionString);
 await host.RegisterEventProcessorAsync<SimpleEventProcessor>();
 
-// To close
+// tooclose
 await host.UnregisterEventProcessorAsync();
 ```
 
-Интерфейс [IEventProcessor](/dotnet/api/microsoft.servicebus.messaging.ieventprocessor) определяется следующим образом.
+Hello [IEventProcessor](/dotnet/api/microsoft.servicebus.messaging.ieventprocessor) интерфейс определяется следующим образом:
 
 ```csharp
 public class SimpleEventProcessor : IEventProcessor
@@ -169,12 +169,12 @@ public class SimpleEventProcessor : IEventProcessor
 ```
 
 ## <a name="next-steps"></a>Дальнейшие действия
-Дополнительные сведения о сценариях концентраторов событий см. в разделах, ссылки на которые указаны ниже.
+toolearn Дополнительные сведения о сценариях концентраторов событий в следующих статьях:
 
 * [Что такое концентраторы событий Azure?](event-hubs-what-is-event-hubs.md)
 * [Руководство по программированию концентраторов событий](event-hubs-programming-guide.md)
 
-Ссылки на API-интерфейсы .NET:
+Здесь приведены ссылки .NET API Hello.
 
 * [Microsoft.ServiceBus.Messaging](/dotnet/api/microsoft.servicebus.messaging)
 * [Microsoft.Azure.EventHubs.EventProcessorHost](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost)

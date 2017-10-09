@@ -1,6 +1,6 @@
 ---
-title: "API сборщика данных HTTP в Log Analytics | Документация Майкрософт"
-description: "API сборщика данных HTTP в Log Analytics можно использовать для добавления данных POST JSON в репозиторий Log Analytics из любого клиента, который может вызывать REST API. В этой статье описывается, как использовать API, и приводятся примеры публикации данных с использованием разных языков программирования."
+title: "API-Интерфейс сборщика данных HTTP Analytics aaaLog | Документы Microsoft"
+description: "Можно использовать hello API сборщика данных HTTP аналитики журналов tooadd POST JSON данных toohello анализа журналов репозиторий из любого клиента, который можно вызвать hello REST API. В этой статье описывается toouse hello API и содержит примеры toopublish данных с использованием различных языков программирования."
 services: log-analytics
 documentationcenter: 
 author: bwren
@@ -14,19 +14,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
 ms.author: bwren
-ms.openlocfilehash: b0c45ff8c1d4c9d35fbb3c8839b38a20df277055
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: c2921082831c49da764d946ac9c4fab975a38185
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="send-data-to-log-analytics-with-the-http-data-collector-api"></a>Отправка данных Log Analytics с помощью API сборщика данных HTTP
-В этой статье показано, как с помощью API сборщика данных HTTP отправить данные в Log Analytics из клиента REST API.  Здесь также описано, как отформатировать данные, собранные сценарием или приложением, добавить их в запрос и авторизовать этот запрос в Log Analytics.  В этой статье приведены примеры для PowerShell, C# и Python.
+# <a name="send-data-toolog-analytics-with-hello-http-data-collector-api"></a>Отправка данных tooLog аналитика с hello HTTP API-Интерфейс сборщика данных
+В этой статье показано, как toouse hello tooLog данных API-Интерфейс сборщика данных HTTP toosend Analytics из клиента REST API.  Он описывает, как tooformat данными, собранными сценарий или приложение, включить его в запросе и иметь этот запрос авторизован службой аналитики журналов.  В этой статье приведены примеры для PowerShell, C# и Python.
 
 ## <a name="concepts"></a>Основные понятия
-API сборщика данных HTTP можно использовать, чтобы отправить данные в Log Analytics из любого клиента, который может вызвать REST API.  Это может быть модуль runbook в службе автоматизации Azure, который собирает данные по управлению из Azure или другого облака, или любая другая система управления, использующая Log Analytics для консолидации и анализа данных.
+Можно использовать toosend данных API-Интерфейс сборщика данных HTTP hello tooLog Analytics из любого клиента, который может вызывать API-интерфейса REST.  Это может быть runbook в автоматизации Azure, которая собирает управления данные из Azure или другой облака или он может быть системой альтернативного управления, которая использует tooconsolidate анализа журналов и анализа данных.
 
-Все данные в репозитории Log Analytics хранятся как запись определенного типа.  Чтобы отправить данные в API сборщика данных HTTP, их необходимо отформатировать как несколько записей в формате JSON.  При отправке данных в репозитории для каждой записи в запрошенных полезных данных создается отдельная запись.
+Все данные в репозитории hello анализа журналов хранятся как запись с записей типа.  Формат вашего toohello toosend данных HTTP API-Интерфейс сборщика данных нескольких записей в формате JSON.  При отправке данных hello отдельную запись создается в репозитории hello для каждой записи в полезных данных запроса hello.
 
 
 ![Обзор сборщика данных HTTP](media/log-analytics-data-collector-api/overview.png)
@@ -34,7 +34,7 @@ API сборщика данных HTTP можно использовать, чт
 
 
 ## <a name="create-a-request"></a>Создание запроса
-Чтобы использовать API сборщика данных HTTP, необходимо создать запрос POST, содержащий данные для отправки в нотацию объектов JavaScript (JSON).  В следующих трех таблицах перечислены обязательные атрибуты для каждого запроса. Более подробное описание каждого из атрибутов приводится далее в этой статье.
+API сборщик данных toouse hello HTTP, создайте запрос POST, включающий toosend данных hello в JavaScript Object Notation (JSON).  Здравствуйте, атрибуты hello списка следующих трех таблиц, необходимых для каждого запроса. Описаны более подробно далее в статье hello каждого атрибута.
 
 ### <a name="request-uri"></a>URI запроса
 | Атрибут | Свойство |
@@ -46,30 +46,30 @@ API сборщика данных HTTP можно использовать, чт
 ### <a name="request-uri-parameters"></a>Параметры URI запроса
 | Параметр | Описание |
 |:--- |:--- |
-| CustomerID |Уникальный идентификатор для рабочей области Microsoft Operations Management Suite. |
-| Ресурс |Имя ресурса API: /api/logs. |
-| Версия API |Версия API для использования с этим запросом. В настоящее время это версия 2016-04-01. |
+| CustomerID |Уникальный идентификатор Hello для рабочей области Microsoft Operations Management Suite hello. |
+| Ресурс |Имя ресурса Hello API: / api/logs. |
+| Версия API |версия Hello toouse hello API с этим запросом. В настоящее время это версия 2016-04-01. |
 
 ### <a name="request-headers"></a>Заголовки запросов
 | Заголовок | Описание |
 |:--- |:--- |
-| Авторизация |Подпись авторизации. Далее в этой статье вы найдете сведения о том, как создать заголовок HMAC-SHA256. |
-| Log-Type |Укажите тип записи для отправляемых данных. Сейчас для указания типа журнала можно использовать только буквы. Цифры и специальные символы не поддерживаются. |
-| x-ms-date |Дата обработки запроса в формате RFC 1123. |
-| time-generated-field |Имя поля данных, содержащее метку времени элемента данных. Если вы укажете здесь поле, его содержимое будет использоваться как значение параметра **TimeGenerated**. Если это поле не указано, по умолчанию для **TimeGenerated** будет использоваться время приема сообщения. Содержимое поля сообщения должно соответствовать формату ISO 8601: YYYY-MM-DDThh:mm:ssZ. |
+| Авторизация |подпись авторизации Hello. Далее в статье hello вы найдете сведения о том, как заголовок toocreate HMAC-SHA256. |
+| Log-Type |Укажите тип записи hello hello отправляемых данных. В настоящее время тип журнала hello поддерживает только текстовые символы. Цифры и специальные символы не поддерживаются. |
+| x-ms-date |Дата Hello обработки этого запроса hello, в формате RFC 1123. |
+| time-generated-field |Имя поля данных hello, содержащей timestamp hello элемента данных hello Hello. Если вы укажете здесь поле, его содержимое будет использоваться как значение параметра **TimeGenerated**. Если это поле не указано, по умолчанию для Здравствуйте, **TimeGenerated** — время hello, hello полученный является сообщение. содержимое поля сообщения hello Hello следовать hello ISO 8601 формат гггг-мм-: Ssz. |
 
 ## <a name="authorization"></a>Авторизация
-Любой запрос к API сборщика данных HTTP в Log Analytics должен включать заголовок авторизации. Чтобы проверить подлинность запроса, необходимо подписать запрос с помощью первичного или вторичного ключа для рабочей области, выполняющей запрос. Затем следует передать подпись как часть запроса.   
+Любой запрос toohello API сборщика данных HTTP аналитики журналов должен включать заголовок авторизации. tooauthenticate запроса, необходимо подписать запрос hello с hello первичный или вторичный ключ hello hello рабочей области, которая делает запрос hello. Затем передайте подпись в составе запроса hello.   
 
-Вот формат заголовка авторизации:
+Вот hello формат для заголовка авторизации hello.
 
 ```
 Authorization: SharedKey <WorkspaceID>:<Signature>
 ```
 
-*WorkspaceID* — это уникальный идентификатор для рабочей области Operations Management Suite. *Signature* — это [код проверки подлинности сообщения на основе хэша (HMAC)](https://msdn.microsoft.com/library/system.security.cryptography.hmacsha256.aspx), созданный из запроса и вычисленный с помощью [алгоритма SHA256](https://msdn.microsoft.com/library/system.security.cryptography.sha256.aspx). Затем его можно закодировать с помощью кодировки Base64.
+*ИД рабочей области* — уникальный идентификатор рабочей области Operations Management Suite hello hello. *Подпись* — [хэш-проверки подлинности сообщения код (HMAC)](https://msdn.microsoft.com/library/system.security.cryptography.hmacsha256.aspx) , создается из запроса hello и затем вычисляется с помощью hello [алгоритм SHA256](https://msdn.microsoft.com/library/system.security.cryptography.sha256.aspx). Затем его можно закодировать с помощью кодировки Base64.
 
-Используйте этот формат для кодирования строки подписи **SharedKey**:
+Используйте этот формат tooencode hello **SharedKey** строки подписи:
 
 ```
 StringToSign = VERB + "\n" +
@@ -85,16 +85,16 @@ StringToSign = VERB + "\n" +
 POST\n1024\napplication/json\nx-ms-date:Mon, 04 Apr 2016 08:00:00 GMT\n/api/logs
 ```
 
-При наличии строки подписи закодируйте ее с помощью алгоритма HMAC-SHA256 в строке в кодировке UTF-8, а затем закодируйте результат в Base64. Используйте следующий формат:
+При наличии строки подписи hello, кодировать их с помощью hello алгоритм HMAC-SHA256 на hello строку в кодировке UTF-8 и затем кодирует hello результат в Base64. Используйте следующий формат:
 
 ```
 Signature=Base64(HMAC-SHA256(UTF8(StringToSign)))
 ```
 
-Примеры в следующих разделах содержат образец кода, с помощью которого вы сможете создать заголовок авторизации.
+Примеры Hello в следующих разделах hello имеют toohelp кода образца, создайте заголовок авторизации.
 
 ## <a name="request-body"></a>Тело запроса
-Текст сообщения должен иметь формат JSON. Он должен содержать одну или несколько записей с парами имени и значения свойств в следующем формате:
+тело Hello приветственное сообщение должно быть в формате JSON. Она должна включать один или несколько записей с пар имен и значений свойств hello в следующем формате:
 
 ```
 {
@@ -105,7 +105,7 @@ Signature=Base64(HMAC-SHA256(UTF8(StringToSign)))
 }
 ```
 
-Вы можете сгруппировать в одном запросе несколько записей, используя следующий формат. Все записи должны принадлежать к одному типу.
+Позволяет выполнять пакетные несколько записей вместе в одном запросе с помощью hello следующая формата. Все записи hello должно быть hello таким же типом записи.
 
 ```
 {
@@ -123,11 +123,11 @@ Signature=Base64(HMAC-SHA256(UTF8(StringToSign)))
 ```
 
 ## <a name="record-type-and-properties"></a>Тип и свойства записи
-При отправке данных через API сборщика данных HTTP в Log Analytics определяется тип пользовательской записи. В настоящее время нельзя записывать данные в записи существующих типов, созданные с помощью других типов данных и решений. Log Analytics считывает входящие данные, а затем создает свойства, которые соответствуют типам данных вводимых значений.
+Определить тип пользовательских записей, при передаче данных с помощью hello API сборщика данных HTTP аналитики журналов. В настоящее время не удается записать данные tooexisting типы записей, которые были созданы в другие типы данных и решениях. Служба аналитики журналов считывает hello входящих данных, а затем создает свойства, которые соответствуют типам данных hello значений Привет вводимых.
 
-Каждый запрос к API Log Analytics должен содержать заголовок **Log-Type** с именем типа записей. Суффикс **_CL** автоматически добавляется к вводимому имени, чтобы пользовательский журнал отличался от журналов других типов. Например, если ввести имя **MyNewRecordType**, Log Analytics создаст запись с типом **MyNewRecordType_CL**. Это помогает избежать конфликтов между именами типов, создаваемыми пользователями, и готовыми именами существующих или будущих решений Microsoft.
+Каждый запрос toohello, необходимо включить API аналитики журналов **тип журнала** заголовок с именем hello hello типа записи. суффикс Hello **_CL** — имя автоматически добавленных toohello введите toodistinguish его из других журналов типы как пользовательского журнала. Например, если ввести имя hello **MyNewRecordType**, аналитика журналов создается запись с типом hello **MyNewRecordType_CL**. Это помогает избежать конфликтов между именами типов, создаваемыми пользователями, и готовыми именами существующих или будущих решений Microsoft.
 
-Чтобы определить тип данных свойства, Log Analytics добавляет суффикс к имени свойства. Если свойство содержит значение NULL, свойство не включается в эту запись. В таблице ниже перечислены типы данных свойства и соответствующие суффиксы.
+Тип данных свойства tooidentify, аналитика журналов добавляет суффикс toohello имя свойства. Если свойство содержит значение null, свойство hello не включено в этой записи. В этой таблице перечислены тип данных свойства hello и соответствующего суффикса.
 
 | Тип данных свойства | Суффикс |
 |:--- |:--- |
@@ -137,75 +137,75 @@ Signature=Base64(HMAC-SHA256(UTF8(StringToSign)))
 | Дата и время |_t |
 | GUID |_g |
 
-Тип данных, который Log Analytics использует для каждого свойства, зависит от того, существует ли тип записи для новой записи.
+Hello тип данных, который использует служба аналитики журналов для каждого свойства зависит от типа записи hello для новой записи hello, существуют ли уже.
 
-* Если тип записи не существует, Log Analytics создает новый тип. Log Analytics использует определение типа JSON для указания типа данных для каждого свойства новой записи.
-* Если тип записи не существует, Log Analytics пытается создать новую запись на основе существующих свойств. Если тип данных для свойства в новой записи не соответствует существующему типу и не может быть преобразован в него или если запись включает свойство, которое не существует, Log Analytics создает новое свойство с соответствующим суффиксом.
+* Если тип записи hello не существует, аналитика журналов создает новую. Служба аналитики журналов использует hello JSON вывод toodetermine hello тип данных для каждого свойства для новой записи hello.
+* Если существует тип записи hello, аналитика журналов попыток toocreate новой записи на основе существующих свойств. Если hello тип данных для свойства в новой записи hello не соответствуют и не может быть преобразованный toohello существующий тип или если hello запись содержит свойство, которое не существует, аналитика журналов создает новое свойство с соответствующей суффикс hello.
 
 Например, при отправке следующих данных создается запись с тремя свойствами: **number_d**, **boolean_b** и **string_s**:
 
 ![Пример записи 1](media/log-analytics-data-collector-api/record-01.png)
 
-Если отправить следующую запись со всеми значениями в строковом формате, свойства не изменятся. Эти значения можно преобразовать в существующие типы данных:
+Если введен этот следующей записи со всеми значениями в строковом формате hello свойства не будут изменяться. Эти значения могут быть tooexisting преобразованные типы данных:
 
 ![Пример записи 2](media/log-analytics-data-collector-api/record-02.png)
 
-Но если отправить следующую запись, Log Analytics создаст новые свойства **boolean_d** и **string_d**. Преобразовать эти значения нельзя:
+Но при внесении следующего Отправка анализа журналов приведет hello новые свойства **boolean_d** и **string_d**. Преобразовать эти значения нельзя:
 
 ![Пример записи 3](media/log-analytics-data-collector-api/record-03.png)
 
-Если затем будет отправлена следующая запись, прежде чем будет создан тип записи, Log Analytics создаст запись с тремя свойствами: **number_s**, **boolean_s** и **string_s**. В этой записи каждое начальное значение форматируется как строка:
+Если введен hello следующие записи, перед созданием тип записи hello анализа журналов создать запись с тремя свойствами **указанного**, **boolean_s**, и **string_s**. В этой операции каждый начальные значения hello форматируется как строка:
 
 ![Пример записи 4](media/log-analytics-data-collector-api/record-04.png)
 
 ## <a name="data-limits"></a>Ограничения данных
-Существуют ограничения на данные, публикуемые в API сбора данных Log Analytics.
+Существуют некоторые ограничения вокруг hello данные, отправленные toohello сбора данных аналитики журналов API.
 
-* Не более 30 МБ на публикацию для API сбора данных Log Analytics. Это ограничение размера для одной публикации. Если данные одной публикации превышают 30 МБ, необходимо разделить данные на меньшие фрагменты и отправить их параллельно.
-* Не более 32 КБ для значений полей. Если значение поля превышает 32 КБ, данные будут усечены.
+* Не более 30 МБ на tooLog post Analytics API-Интерфейс сборщика данных. Это ограничение размера для одной публикации. Если hello данных из одной записи, размер которой превышает 30 МБ, следует разбить hello фрагментами данных вверх toosmaller размера, а затем отправить их одновременно.
+* Не более 32 КБ для значений полей. Если значение поля hello превышает 32 КБ, hello данные будут усечены.
 * Рекомендуемое максимальное количество полей для данного типа — 50. Это ограничение введено для удобства поиска и использования.  
 
 ## <a name="return-codes"></a>Коды возврата
-Код состояния HTTP 200 означает, что запрос получен для обработки. Такой результат означает, что операция завершена успешно.
+Код состояния HTTP 200 Hello означает, что для обработки был получен этот запрос hello. Это означает, что hello, операция выполнена успешно.
 
-В этой таблице представлен полный набор кодов состояний, которые может возвращать служба:
+В этой таблице перечислены hello полный набор кодов состояний, которые могут возвращать hello службы.
 
 | Код | Состояние | Код ошибки | Описание |
 |:--- |:--- |:--- |:--- |
-| 200 |ОК | |Запрос был успешно принят. |
-| 400 |Недопустимый запрос |InactiveCustomer |Рабочая область закрыта. |
-| 400 |Недопустимый запрос |InvalidApiVersion |Указанная версия API не распознана службой. |
-| 400 |Недопустимый запрос |InvalidCustomerId |Указан недопустимый идентификатор рабочей области. |
-| 400 |Недопустимый запрос |InvalidDataFormat |Отправлены недопустимые данные JSON. Текст ответа может содержать дополнительные сведения о том, как устранить ошибку. |
-| 400 |Недопустимый запрос |InvalidLogType |Указанный тип журнала содержит специальные символы или цифры. |
-| 400 |Недопустимый запрос |MissingApiVersion |Версия API не указана. |
-| 400 |Недопустимый запрос |MissingContentType |Тип содержимого не указан. |
-| 400 |Недопустимый запрос |MissingLogType |Обязательное значение типа журнала не указано. |
-| 400 |Недопустимый запрос |UnsupportedContentType |Для типа содержимого не было задано значение **application/json**. |
-| 403 |Запрещено |InvalidAuthorization |Службе не удалось проверить подлинность запроса. Проверьте правильность идентификатора и ключа подключения рабочей области. |
-| 404 |Не найдено | | Указан неправильный URL-адрес либо запрос слишком большой. |
-| 429 |Слишком много запросов | | В службу поступает слишком большой объем данных из вашей учетной записи. Повторите запрос позже. |
-| 500 |Внутренняя ошибка сервера |UnspecifiedError |Служба обнаружила внутреннюю ошибку. Повторите запрос. |
-| 503 |Служба недоступна |ServiceUnavailable |Служба сейчас недоступна для получения запросов. Повторите запрос. |
+| 200 |ОК | |успешно принят запрос Hello. |
+| 400 |Недопустимый запрос |InactiveCustomer |Рабочая область Hello был закрыт. |
+| 400 |Недопустимый запрос |InvalidApiVersion |Hello API версии, указанной службой hello не распознана. |
+| 400 |Недопустимый запрос |InvalidCustomerId |указан недопустимый ИД рабочей области Hello. |
+| 400 |Недопустимый запрос |InvalidDataFormat |Отправлены недопустимые данные JSON. текст Hello ответа может содержать дополнительные сведения о как tooresolve hello ошибки. |
+| 400 |Недопустимый запрос |InvalidLogType |Тип журнала Hello указан автономной специальные символы и цифры. |
+| 400 |Недопустимый запрос |MissingApiVersion |версия API Hello не был указан. |
+| 400 |Недопустимый запрос |MissingContentType |Тип содержимого Hello не был указан. |
+| 400 |Недопустимый запрос |MissingLogType |Hello требуется значение тип журнала не был указан. |
+| 400 |Недопустимый запрос |UnsupportedContentType |Тип содержимого Hello не было задано слишком**приложение/json**. |
+| 403 |Запрещено |InvalidAuthorization |Hello службы не удалось выполнить запрос tooauthenticate hello. Проверьте ключ рабочей области, hello идентификатор и подключения являются допустимыми. |
+| 404 |Не найдено | | Возможно, неверно указан URL-адрес hello или hello запроса слишком велик. |
+| 429 |Слишком много запросов | | Hello служба столкнулась с большим объемом данных из вашей учетной записи. Повторите попытку запроса hello позже. |
+| 500 |Внутренняя ошибка сервера |UnspecifiedError |Внутренняя ошибка службы Hello. Запрос hello. Повторите попытку. |
+| 503 |Служба недоступна |ServiceUnavailable |Служба Hello в настоящее время является недоступным tooreceive запросов. Повторите запрос. |
 
 ## <a name="query-data"></a>Запрос данных
-Для запроса данных, отправленных посредством API сборщика данных HTTP в Log Analytics, найдите записи с **типом**, равным указанному вами значению **LogType**, к которому добавлен суффикс**_CL**. Например, если вы использовали значение **MyCustomLog**, будут возвращены все записи, содержащие текст **Type=MyCustomLog_CL**.
+tooquery данные, зафиксированные hello API сборщика данных HTTP аналитики журналов, поиска записей в режиме **тип** , равно toohello **LogType** с добавлением указанным вами значением **_CL**. Например, если вы использовали значение **MyCustomLog**, будут возвращены все записи, содержащие текст **Type=MyCustomLog_CL**.
 
 >[!NOTE]
-> Если ваша рабочая область переведена на [язык запросов Log Analytics](log-analytics-log-search-upgrade.md), приведенный выше запрос будет изменен следующим образом.
+> Если обновленный toohello рабочей области [языка запросов новый журнал аналитики](log-analytics-log-search-upgrade.md), то hello выше запрос изменится toohello следующее.
 
 > `MyCustomLog_CL`
 
 ## <a name="sample-requests"></a>Примеры запросов
-В следующих разделах вы найдете примеры отправки данных в API сборщика данных HTTP в Log Analytics с использованием разных языков программирования.
+В следующих разделах hello, вы найдете примеры данных toosubmit toohello API сборщика данных HTTP аналитики журналов с помощью различных языков программирования.
 
-Для каждого примера выполните следующие действия, чтобы задать переменные в заголовке авторизации:
+Для каждого образца выполните указанные ниже действия tooset hello переменных для заголовка авторизации hello:
 
-1. На портале Operations Management Suite выберите плитку **Параметры**, а затем перейдите на вкладку **Подключенные источники**.
-2. Справа от **идентификатора рабочей области** щелкните значок копирования и вставьте идентификатор как значение переменной **CustomerID**.
-3. Справа от **первичного ключа** щелкните значок копирования и вставьте идентификатор как значение переменной **SharedKey**.
+1. На портале Operations Management Suite hello, выберите hello **параметры** плитку, а затем выберите hello **подключенные источники** вкладки.
+2. toohello справа от **идентификатор рабочей области**, выберите значок копирования hello, а затем вставьте идентификатор hello в качестве значения hello hello **Customer ID** переменной.
+3. toohello справа от **первичного ключа**, выберите значок копирования hello, а затем вставьте идентификатор hello в качестве значения hello hello **Shared Key** переменной.
 
-Также можно изменить переменные для типа журнала и данных JSON.
+Кроме того можно изменить hello переменных типа hello журнала и данных JSON.
 
 ### <a name="powershell-sample"></a>Пример для PowerShell
 ```
@@ -215,14 +215,14 @@ $CustomerId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
 # Replace with your Primary Key
 $SharedKey = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
 
-# Specify the name of the record type that you'll be creating
+# Specify hello name of hello record type that you'll be creating
 $LogType = "MyRecordType"
 
-# Specify a field with the created time for the records
+# Specify a field with hello created time for hello records
 $TimeStampField = "DateValue"
 
 
-# Create two records with the same set of properties to create
+# Create two records with hello same set of properties toocreate
 $json = @"
 [{  "StringValue": "MyString1",
     "NumberValue": 42,
@@ -238,7 +238,7 @@ $json = @"
 }]
 "@
 
-# Create the function to create the authorization signature
+# Create hello function toocreate hello authorization signature
 Function Build-Signature ($customerId, $sharedKey, $date, $contentLength, $method, $contentType, $resource)
 {
     $xHeaders = "x-ms-date:" + $date
@@ -256,7 +256,7 @@ Function Build-Signature ($customerId, $sharedKey, $date, $contentLength, $metho
 }
 
 
-# Create the function to create and post the request
+# Create hello function toocreate and post hello request
 Function Post-OMSData($customerId, $sharedKey, $body, $logType)
 {
     $method = "POST"
@@ -287,7 +287,7 @@ Function Post-OMSData($customerId, $sharedKey, $body, $logType)
 
 }
 
-# Submit the data to the API endpoint
+# Submit hello data toohello API endpoint
 Post-OMSData -customerId $customerId -sharedKey $sharedKey -body ([System.Text.Encoding]::UTF8.GetBytes($json)) -logType $logType  
 ```
 
@@ -308,21 +308,21 @@ namespace OIAPIExample
         // An example JSON object, with key/value pairs
         static string json = @"[{""DemoField1"":""DemoValue1"",""DemoField2"":""DemoValue2""},{""DemoField3"":""DemoValue3"",""DemoField4"":""DemoValue4""}]";
 
-        // Update customerId to your Operations Management Suite workspace ID
+        // Update customerId tooyour Operations Management Suite workspace ID
         static string customerId = "xxxxxxxx-xxx-xxx-xxx-xxxxxxxxxxxx";
 
-        // For sharedKey, use either the primary or the secondary Connected Sources client authentication key   
+        // For sharedKey, use either hello primary or hello secondary Connected Sources client authentication key   
         static string sharedKey = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx";
 
-        // LogName is name of the event type that is being submitted to Log Analytics
+        // LogName is name of hello event type that is being submitted tooLog Analytics
         static string LogName = "DemoExample";
 
-        // You can use an optional field to specify the timestamp from the data. If the time field is not specified, Log Analytics assumes the time is the message ingestion time
+        // You can use an optional field toospecify hello timestamp from hello data. If hello time field is not specified, Log Analytics assumes hello time is hello message ingestion time
         static string TimeStampField = "";
 
         static void Main()
         {
-            // Create a hash for the API signature
+            // Create a hash for hello API signature
             var datestring = DateTime.UtcNow.ToString("r");
             string stringToHash = "POST\n" + json.Length + "\napplication/json\n" + "x-ms-date:" + datestring + "\n/api/logs";
             string hashedString = BuildSignature(stringToHash, sharedKey);
@@ -331,7 +331,7 @@ namespace OIAPIExample
             PostData(signature, datestring, json);
         }
 
-        // Build the API signature
+        // Build hello API signature
         public static string BuildSignature(string message, string secret)
         {
             var encoding = new System.Text.ASCIIEncoding();
@@ -344,7 +344,7 @@ namespace OIAPIExample
             }
         }
 
-        // Send a request to the POST API endpoint
+        // Send a request toohello POST API endpoint
         public static void PostData(string signature, string date, string json)
         {
             try
@@ -385,13 +385,13 @@ import hashlib
 import hmac
 import base64
 
-# Update the customer ID to your Operations Management Suite workspace ID
+# Update hello customer ID tooyour Operations Management Suite workspace ID
 customer_id = 'xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
 
-# For the shared key, use either the primary or the secondary Connected Sources client authentication key   
+# For hello shared key, use either hello primary or hello secondary Connected Sources client authentication key   
 shared_key = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
 
-# The log type is the name of the event that is being submitted
+# hello log type is hello name of hello event that is being submitted
 log_type = 'WebMonitorTest'
 
 # An example JSON web monitor object
@@ -423,7 +423,7 @@ body = json.dumps(json_data)
 ######Functions######  
 #####################
 
-# Build the API signature
+# Build hello API signature
 def build_signature(customer_id, shared_key, date, content_length, method, content_type, resource):
     x_headers = 'x-ms-date:' + date
     string_to_hash = method + "\n" + str(content_length) + "\n" + content_type + "\n" + x_headers + "\n" + resource
@@ -433,7 +433,7 @@ def build_signature(customer_id, shared_key, date, content_length, method, conte
     authorization = "SharedKey {}:{}".format(customer_id,encoded_hash)
     return authorization
 
-# Build and send a request to the POST API
+# Build and send a request toohello POST API
 def post_data(customer_id, shared_key, body, log_type):
     method = 'POST'
     content_type = 'application/json'
@@ -460,4 +460,4 @@ post_data(customer_id, shared_key, body, log_type)
 ```
 
 ## <a name="next-steps"></a>Дальнейшие действия
-- Чтобы получить данные из репозитория Log Analytics, используйте [API поиска по журналам](log-analytics-log-search-api.md).
+- Используйте hello [API поиска журналов](log-analytics-log-search-api.md) tooretrieve данными из репозитория анализа журналов hello.

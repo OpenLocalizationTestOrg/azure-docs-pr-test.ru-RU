@@ -1,6 +1,6 @@
 ---
-title: "Изменение идентификатора клиента хранилища ключей после перемещения подписки | Документация Майкрософт"
-description: "Узнайте, как изменить идентификатор клиента хранилища ключей после перемещения подписки в другой клиент."
+title: "ИД клиента hello хранилища ключей aaaChange после перемещения подписки | Документы Microsoft"
+description: "Дополнительные сведения, перемещение другой клиент tooa ИД клиента hello tooswitch для хранилища ключей после подписки"
 services: key-vault
 documentationcenter: 
 author: amitbapat
@@ -14,21 +14,21 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 01/07/2017
 ms.author: ambapat
-ms.openlocfilehash: 2f007dd4f877b48003cddcefa5f4321049853361
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 4d0607208c61c57959439d2d0bd8feade4141fee
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="change-a-key-vault-tenant-id-after-a-subscription-move"></a>Изменение идентификатора клиента хранилища ключей после перемещения подписки
-### <a name="q-my-subscription-was-moved-from-tenant-a-to-tenant-b-how-do-i-change-the-tenant-id-for-my-existing-key-vault-and-set-correct-acls-for-principals-in-tenant-b"></a>В. Моя подписка перемещена из клиента А в клиент Б. Как изменить идентификатор клиента имеющегося хранилища ключей и настроить правильные списки ACL для субъектов в клиенте Б?
-При создании хранилища ключей в подписке оно автоматически привязывается к идентификатору клиента Azure Active Directory по умолчанию для этой подписки. Все записи политики доступа также привязываются к этому идентификатору клиента. При перемещении подписки Azure из клиента A в клиент Б существующие хранилища ключей недоступны для субъектов (пользователей и приложений) в клиенте Б. Вот как устранить эту проблему.
+### <a name="q-my-subscription-was-moved-from-tenant-a-tootenant-b-how-do-i-change-hello-tenant-id-for-my-existing-key-vault-and-set-correct-acls-for-principals-in-tenant-b"></a>Вопрос. у моего подписки был перемещен из клиента A tootenant б. Как изменить hello ИД клиента для моей существующего хранилища ключей и установленным правильные списки управления доступом для участников в клиенте B?
+При создании нового ключа хранилища в подписке, это идентификатор клиента Azure Active Directory автоматически равноценных toohello по умолчанию для этой подписки. Все операции политики доступа также являются идентификатора равноценных toothis клиента. При перемещении вашей подписке Azure из клиента tootenant B, ваш существующий ключ, который они недоступны для хранилищ Здравствуйте субъекты (пользователи и приложения) в toofix клиента б. эту проблему, необходимо:
 
-* Измените идентификатор клиента, связанный со всеми существующими хранилищами ключей в этой подписке, для клиента Б.
+* Измените идентификатор клиента hello, связанный с все существующие хранилища ключей в этой подписке tootenant б.
 * Удалите все существующие записи политики доступа.
 * Добавьте новые записи политики доступа, связанные с клиентом Б.
 
-Например, при наличии хранилища ключей myvault в подписке, которая была перенесена из клиента A в клиент Б, необходимо изменить идентификатор клиента для этого хранилища ключей и удалить старые политики доступа.
+Например, при наличии хранилища ключей «myvault» в подписке, которая была перенесена в клиента A tootenant B, здесь как toochange hello идентификатор клиента для этого ключа хранилища и удалить старые политики доступа.
 
 <pre>
 $Select-AzureRmSubscription -SubscriptionId YourSubscriptionID
@@ -39,10 +39,10 @@ $vault.Properties.AccessPolicies = @()
 Set-AzureRmResource -ResourceId $vaultResourceId -Properties $vault.Properties
 </pre>
 
-Так как это хранилище находилось в клиенте A перед перемещением, исходное значение **$vault.Properties.TenantId** является клиентом А, в то время как значение **(Get-AzureRmContext).Tenant.TenantId** — это клиент Б.
+За это хранилище в клиенте A перед перемещением hello hello исходное значение **$vault. Properties.TenantId** -A клиента while **(Get-AzureRmContext). Tenant.TenantId** клиента б.
 
-Теперь, когда хранилище связано с правильным идентификатором клиента и старые записи политики доступа удалены, можно настроить новые записи политики доступа с помощью командлета [Set-AzureRmKeyVaultAccessPolicy](https://msdn.microsoft.com/library/mt603625.aspx).
+Теперь, когда ваше хранилище связано с Идентификатором hello правильный клиента и удаляются старые записи политики доступа, задать новый доступ записи политики с [Set-AzureRmKeyVaultAccessPolicy](https://msdn.microsoft.com/library/mt603625.aspx).
 
 ## <a name="next-steps"></a>Дальнейшие действия
-Если у вас возникли вопросы о хранилище ключей Azure, посетите [форумы хранилища ключей Azure](https://social.msdn.microsoft.com/forums/azure/home?forum=AzureKeyVault)
+Если у вас есть вопросы о хранилище ключей Azure, посетите hello [форумы хранилище ключей Azure](https://social.msdn.microsoft.com/forums/azure/home?forum=AzureKeyVault).
 

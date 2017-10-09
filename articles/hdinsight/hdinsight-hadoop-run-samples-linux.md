@@ -1,6 +1,6 @@
 ---
-title: "Выполнение примеров Hadoop MapReduce в HDInsight — Azure | Документы Майкрософт"
-description: "Начало работы с образцами MapReduce в файлах JAR, включенных в HDInsight. Для подключения к кластеру используйте SSH, после чего используйте команду Hadoop для запуска примеров заданий."
+title: "Примеры aaaRun Hadoop MapReduce в HDInsight - Azure | Документы Microsoft"
+description: "Начало работы с образцами MapReduce в файлах JAR, включенных в HDInsight. Использование кластера toohello tooconnect SSH, а затем использовать hello Hadoop команда toorun образец задания."
 keywords: "пример jar-файла hadoop,примеры jar-файлов hadoop,примеры hadoop mapreduce,примеры mapreduce"
 services: hdinsight
 documentationcenter: 
@@ -17,120 +17,120 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/26/2017
 ms.author: larryfr
-ms.openlocfilehash: 447c07f869ff9a2a2a00089248be98e6729d6dc4
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 7a16bbd51eb17570fcaa3b1e0f5990fa889c106a
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="run-the-mapreduce-examples-included-in-hdinsight"></a>Выполнение примеров MapReduce, включенных в HDInsight
+# <a name="run-hello-mapreduce-examples-included-in-hdinsight"></a>Запустить примеры hello MapReduce, включенные в HDInsight
 
 [!INCLUDE [samples-selector](../../includes/hdinsight-run-samples-selector.md)]
 
-Узнайте, как выполнять примеры MapReduce, входящие в состав Hadoop в HDInsight.
+Узнайте, как включенные примеры MapReduce hello toorun с Hadoop в HDInsight.
 
 ## <a name="prerequisites"></a>Предварительные требования
 
 * **Кластер HDInsight**. См. статью [Руководство по Hadoop. Приступая к работе с Hadoop в HDInsight](hdinsight-hadoop-linux-tutorial-get-started.md).
 
     > [!IMPORTANT]
-    > Linux — единственная операционная система, используемая для работы с HDInsight 3.4 или более поздней версии. Дополнительные сведения см. в разделе [Приближается дата прекращения сопровождения HDI версии 3.3](hdinsight-component-versioning.md#hdinsight-windows-retirement).
+    > Linux — hello только операционную систему, используемую в HDInsight версии 3.4 или более поздней. Дополнительные сведения см. в разделе [Приближается дата прекращения сопровождения HDI версии 3.3](hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
 * **SSH-клиент**. Дополнительные сведения см. в статье [Подключение к HDInsight (Hadoop) с помощью SSH](hdinsight-hadoop-linux-use-ssh-unix.md).
 
-## <a name="the-mapreduce-examples"></a>Примеры MapReduce
+## <a name="hello-mapreduce-examples"></a>Примеры MapReduce Hello
 
-**Расположение**: примеры расположены в кластере HDInsight в `/usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar`.
+**Расположение**: hello образцы расположены на hello в кластер HDInsight `/usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar`.
 
-**Содержимое**. В архиве содержатся следующие примеры:
+**Содержимое**: hello следующие образцы находятся в этом архиве:
 
-* `aggregatewordcount`: программа MapReduce для подсчета слов во входных файлах с использованием статистических выражений.
-* `aggregatewordhist`: программа MapReduce для создания гистограммы слов из входных файлов с использованием статистических выражений.
-* `bbp`: программа MapReduce для вычисления знаков числа π с использованием формулы Бэйли-Боруэйна-Плаффа.
-* `dbcount`: пример задания для подсчета журналов просмотра страниц, сохраненных в базе данных.
-* `distbbp`: программа MapReduce для вычисления знаков числа π с использованием формулы ББП.
-* `grep`: программа MapReduce для подсчета вхождений регулярного выражения во входных данных.
+* `aggregatewordcount`: Статистического выражения на основе программу mapreduce, которая подсчитывает слова hello во входных файлах hello.
+* `aggregatewordhist`: Статистического выражения на основе программу mapreduce, которая вычисляет гистограмму hello слова hello во входных файлах hello.
+* `bbp`: Mapreduce программа, использующая п-в Бейли-Borwein-Plouffe toocompute точные цифры числа пи.
+* `dbcount`: Задание пример, который подсчитывает hello pageview журналов, хранящихся в базе данных.
+* `distbbp`: Mapreduce программа, использующая точное bits BBP тип формулы toocompute пи.
+* `grep`: Mapreduce программу, которая подсчитывает hello соответствует регулярного выражения во входном файле hello.
 * `join`: задание для объединения сортированных наборов данных одного размера.
 * `multifilewc`: задание для подсчета слов в нескольких файлах.
-* `pentomino`: программа MapReduce для укладки фигур с целью поиска решений при игре в пентамино.
+* `pentomino`: Mapreduce плитки размещение программы toofind решения toopentomino проблем.
 * `pi`: программа MapReduce для расчета числа π по методу квази-Монте-Карло.
 * `randomtextwriter`: программа MapReduce для записи 10 ГБ случайных текстовых данных на узел.
 * `randomwriter`: программа MapReduce для записи 10 ГБ случайных данных на узел.
-* `secondarysort`: пример определения вторичной сортировки для этапа редукции.
-* `sort`: программа MapReduce для сортировки случайных данных.
+* `secondarysort`: Пример определения toohello дополнительной сортировки уменьшить этап.
+* `sort`: Mapreduce программа, которая сортирует данные hello, записываемых модулем записи случайных hello.
 * `sudoku`: программа решения судоку.
-* `teragen`: создание данных для программы TeraSort.
-* `terasort`: выполнение программы TeraSort.
+* `teragen`: Создать данные для hello terasort.
+* `terasort`: Запустите hello terasort.
 * `teravalidate`: проверка результатов выполнения программы TeraSort.
-* `wordcount`: программа MapReduce для подсчета слов во входных файлах.
-* `wordmean`: программа MapReduce для подсчета средней длины слов во входных файлах.
-* `wordmedian`: программа MapReduce для подсчета средней длины слов по Смиту во входных файлах.
-* `wordstandarddeviation`: программа MapReduce для подсчета стандартного отклонения в длинах слов во входных файлах.
+* `wordcount`: Mapreduce программа, которая подсчитывает слова hello во входных файлах hello.
+* `wordmean`: Mapreduce программа, которая подсчитывает hello среднюю длину слова hello во входных файлах hello.
+* `wordmedian`: Mapreduce программа, которая подсчитывает hello медианы длина слова hello во входных файлах hello.
+* `wordstandarddeviation`: Mapreduce программа, которая подсчитывает стандартное отклонение hello hello длины слова hello во входных файлах hello.
 
-**Исходный код**: исходный код этих примеров расположен в кластере HDInsight в `/usr/hdp/2.2.4.9-1/hadoop/src/hadoop-mapreduce-project/hadoop-mapreduce-examples`.
+**Исходный код**: исходный код этих образцов включен в кластер HDInsight на hello `/usr/hdp/2.2.4.9-1/hadoop/src/hadoop-mapreduce-project/hadoop-mapreduce-examples`.
 
 > [!NOTE]
-> `2.2.4.9-1` в пути соответствует версии платформы данных Hortonworks Data Platform для кластера HDInsight, которая может отличаться для вашего кластера.
+> Hello `2.2.4.9-1` в hello путь — версия hello hello платформы Hortonworks Data Platform для кластера HDInsight hello и может быть разным для кластера.
 
-## <a name="run-the-wordcount-example"></a>Запуск примера для подсчета слов
+## <a name="run-hello-wordcount-example"></a>Выполнить пример счетчика слов hello
 
-1. Подключитесь к HDInsight с помощью протокола SSH. Дополнительные сведения см. в статье [Использование SSH с Hadoop на основе Linux в HDInsight из Linux, Unix или OS X](hdinsight-hadoop-linux-use-ssh-unix.md).
+1. Подключиться с помощью SSH tooHDInsight. Дополнительные сведения см. в статье [Использование SSH с Hadoop на основе Linux в HDInsight из Linux, Unix или OS X](hdinsight-hadoop-linux-use-ssh-unix.md).
 
-2. В командной строке `username@#######:~$` введите следующую команду, чтобы вывести список примеров:
+2. Из hello `username@#######:~$` запрос, используйте следующие примеры hello toolist команд hello:
 
     ```bash
     yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar
     ```
 
-    Эта команда создает список примеров из предыдущего раздела данного документа.
+    Эта команда создает список hello образец hello в предыдущем разделе этого документа.
 
-3. Чтобы получить справку по конкретному примеру, используйте следующую команду: В данном случае запускается пример **wordcount**.
+3. Используйте hello следующая команда tooget справки по определенной выборке. В этом случае hello **wordcount** образца:
 
     ```bash
     yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar wordcount
     ```
 
-    Отобразится следующее сообщение.
+    Появляется после сообщения hello:
 
         Usage: wordcount <in> [<in>...] <out>
 
-    Это сообщение означает, что можно указать несколько входных путей для исходных документов. Окончательный путь — это место, где сохраняются выходные данные (число слов в исходных документах).
+    Это сообщение означает, что вы можете задать несколько путей ввода hello исходные документы. конечный путь Hello здесь хранятся hello вывода (число слов в документах источника hello).
 
-4. Для подсчета всех слов в книге «Записи Леонардо да Винчи», которая поставляется с кластером и служит примером исходных данных, используйте следующую команду:
+4. Используйте следующие toocount hello все слова в hello портативные компьютеры из Леонардо да Винчи, которой будут предоставлены кластера в качестве данных выборки:
 
     ```bash
     yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar wordcount /example/data/gutenberg/davinci.txt /example/data/davinciwordcount
     ```
 
-    Для этого задания считываются входные данные из файла `/example/data/gutenberg/davinci.txt`. Выходные данные для этого примера сохраняются в `/example/data/davinciwordcount`. Оба пути расположены в хранилище по умолчанию для кластера, а не в локальной файловой системе.
+    Для этого задания считываются входные данные из файла `/example/data/gutenberg/davinci.txt`. Выходные данные для этого примера сохраняются в `/example/data/davinciwordcount`. Оба пути находились в хранилище по умолчанию hello кластер, не hello локальной файловой системе.
 
    > [!NOTE]
-   > Как сказано в справке по примеру wordcount, вы также можете указать несколько входных файлов. Например, команда `hadoop jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar wordcount /example/data/gutenberg/davinci.txt /example/data/gutenberg/ulysses.txt /example/data/twowordcount` позволит подсчитать слова в файлах davinci.txt и ulysses.txt.
+   > Как уже отмечалось в справке hello для образца wordcount hello, можно также указать несколько входных файлов. Например, команда `hadoop jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar wordcount /example/data/gutenberg/davinci.txt /example/data/gutenberg/ulysses.txt /example/data/twowordcount` позволит подсчитать слова в файлах davinci.txt и ulysses.txt.
 
-5. По завершении задания воспользуйтесь следующей командой, чтобы просмотреть результат:
+5. После завершения задания hello, используйте следующие выходные данные команды tooview hello hello:
 
     ```bash
     hdfs dfs -cat /example/data/davinciwordcount/*
     ```
 
-    Эта команда сцепляет все выходные файлы, созданные заданием. Она отображает выходные данные в консоли. Результат будет аналогичен приведенному ниже:
+    Эта команда объединяет все hello выходные файлы, созданные задания hello. Он отображает hello вывода toohello консоли. Hello выходных данных аналогичные toohello следующий текст:
 
         zum     1
         zur     1
         zwanzig 1
         zweite  1
 
-    Каждая строка соответствует одному слову и частоте его появления в исходных данных.
+    Каждая строка представляет слова и сколько раз она произошла в hello входные данные.
 
-## <a name="the-sudoku-example"></a>Пример судоку
+## <a name="hello-sudoku-example"></a>Пример Судоку Hello
 
-[Судоку](https://en.wikipedia.org/wiki/Sudoku) — это логическая головоломка, которая состоит из девяти полей размером 3 x 3 клетки. Некоторые ячейки в клетках содержат числа, остальные ячейки пустые. Задача заключается в поиске чисел для пустых ячеек. С помощью указанной выше ссылки можно получить дополнительные сведения о головоломке, однако целью этого примера является поиск значений для пустых ячеек. Таким образом, на входе программы должен быть файл в следующем формате.
+[Судоку](https://en.wikipedia.org/wiki/Sudoku) — это логическая головоломка, которая состоит из девяти полей размером 3 x 3 клетки. Некоторые ячейки в сетке hello есть цифры, тогда как другие пусты, а задача hello — toosolve пустым ячейкам hello. предыдущая ссылка Hello содержит дополнительные сведения о головоломки hello, но цель этого образца hello toosolve пустым ячейкам hello. Поэтому наши входных данных должен быть файлом в кодировке hello:
 
 * Девять строк и девять столбцов
 * Каждый столбец может содержать число или знак `?` (означает пустую ячейку).
 * Ячейки разделяются пробелами
 
-Следующая задача — составление головоломки судоку, по правилам которой не допускается использование одного и того же числа в строке или столбце. В хранилище кластера HDInsight есть соответствующий пример. Он находится в `/usr/hdp/*/hadoop/src/hadoop-mapreduce-project/hadoop-mapreduce-examples/src/main/java/org/apache/hadoop/examples/dancing/puzzle1.dta` и содержит приведенный ниже текст.
+Нет определенных tooconstruct способом головоломки Судоку; Невозможно повторно число в столбце или строке. Кластер HDInsight hello, правильно ли построено приводится пример. Он находится в `/usr/hdp/*/hadoop/src/hadoop-mapreduce-project/hadoop-mapreduce-examples/src/main/java/org/apache/hadoop/examples/dancing/puzzle1.dta` и содержит hello следующий текст:
 
     8 5 ? 3 9 ? ? ? ?
     ? ? 2 ? ? ? ? ? ?
@@ -142,13 +142,13 @@ ms.lasthandoff: 08/18/2017
     ? ? ? ? ? ? 2 ? ?
     ? ? ? ? 4 5 ? 7 8
 
-Чтобы обработать эти данные в примере судоку, используйте следующую команду.
+Используйте эту проблему пример hello примере Судоку toorun hello следующую команду:
 
 ```bash
 yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar sudoku /usr/hdp/*/hadoop/src/hadoop-mapreduce-project/hadoop-mapreduce-examples/src/main/java/org/apache/hadoop/examples/dancing/puzzle1.dta
 ```
 
-Полученный текст должен выглядеть следующим образом.
+Hello результаты отображаются как toohello следующий текст:
 
     8 5 1 3 9 2 6 4 7
     4 3 2 6 7 8 1 9 5
@@ -162,53 +162,53 @@ yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar 
 
 ## <a name="pi--example"></a>Пример "Пи" (π)
 
-В примере «Пи» используется статистический метод (квази-Монте-Карло) оценки значения числа пи. Точки в произвольном порядке помещаются внутри единичного квадрата. В квадрат также вписан круг. Вероятность того, что точки попадут в круг, равна площади круга, π/4. Значение числа π можно оценить по формуле 4R. R — это отношение количества точек, находящихся внутри круга, к общему количеству точек, находящихся внутри квадрата. Чем больше выборка используемых точек, тем точнее оценка.
+Образец Hello pi использует статистические (реализация Монте Carlo) метод tooestimate hello число пи. Точки в произвольном порядке помещаются внутри единичного квадрата. квадрат Hello также содержит круг. Hello вероятность точек hello подпадающих hello круг, равно toohello области hello circle pi/4. на основе значения hello 4R можно оценить Hello число пи. R — отношение hello hello количество точек, которые находятся внутри hello круг toohello общего количества точек, расположенных внутри квадратных hello. Hello большего образец hello точек, используемых, является hello лучшую оценку hello.
 
-Для запуска примера используйте следующую команду. Для оценки числа π в команде используется 16 карт с 10 000 000 примерами в каждой.
+Использование этого образца hello, выполнив команду toorun. Эта команда использует 16 maps с 10 000 000 образцы tooestimate hello число пи:
 
 ```bash
 yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar pi 16 10000000
 ```
 
-Команда должна возвращать значение наподобие **3,14159155000000000000**. Для справки, первые 10 знаков числа пи: 3,1415926535.
+Hello значение, возвращаемое этой командой аналогично слишком**3.14159155000000000000**. Для ссылок hello первые 10 десятичных разрядов числа пи являются 3.1415926535.
 
 ## <a name="10-gb-greysort-example"></a>Пример Greysort для 10 ГБ данных
 
-GraySort — это измерение производительности сортировки. Его показателем служит скорость (ТБ/мин), достигаемая при сортировке очень больших объемов данных, обычно не менее 100 ТБ.
+GraySort — это измерение производительности сортировки. Hello метрика скорость сортировки hello (ТБ в минуту), достигается при сортировке больших объемов данных, обычно 100 ТБ минимальное.
 
-В этом примере используется небольшой объем данных, 10 ГБ, чтобы можно было выполнить сортировку достаточно быстро. Используются приложения MapReduce, разработанные Оуэном О'Мэлли (Owen O'Malley) и Аруном Мёрти (Arun Murthy). Эти приложения победили в 2009 году на конкурсе приложений сортировки общего назначения (daytona) для больших объемов данных, показав скорость 0,578 ТБ/мин (100 ТБ за 173 минуты). Дополнительные сведения об этом и других измерениях производительности сортировки см. на веб-сайте [Sortbenchmark](http://sortbenchmark.org/).
+В этом примере используется небольшой объем данных, 10 ГБ, чтобы можно было выполнить сортировку достаточно быстро. Она использует hello MapReduce приложения, разработанные с Owen O'Malley и Arun Murthy. Эти приложения hello годовой общего назначения («daytona») терабайт сортировки тестирования выигрыш в 2009 г., с частотой 0.578 ТБ/мин (100 ТБ 173 минут). Дополнительные сведения об этом и других сортировки тестов производительности см. в разделе hello [Sortbenchmark](http://sortbenchmark.org/) сайта.
 
 В этом примере используются три набора программ MapReduce.
 
-* **TeraGen**: программа MapReduce, которая создает строки с данными для последующей сортировки.
+* **TeraGen**: программу MapReduce, которая приводит к возникновению ряда данных toosort
 
-* **TeraSort**: производит выборку входных данных и использует MapReduce для сортировки данных в общем порядке.
+* **TeraSort**: образцы hello входных данных и использует данные hello toosort MapReduce в сумма заказа
 
-    TeraSort представляет собой стандартную сортировку MapReduce, за исключением настраиваемого разделителя. В разделителе используется отсортированный список выборки ключей N-1, определяющий диапазон ключей для каждой функции reduce. В частности, все ключи, подобные этому примеру [i-1] <= key < sample[i] отправляются для сокращения i. Этот разделитель гарантирует, что выходные данные сокращения i будут меньше, чем выходные данные i+1.
+    TeraSort представляет собой стандартную сортировку MapReduce, за исключением настраиваемого разделителя. разделитель Hello использует отсортированный список ключей выборки n-1, определяющие hello диапазона ключей для каждого редукции. В частности, все ключи такого, образец [i-1] < = ключ < образец [i] отправляются tooreduce я. Этот разделитель гарантии, что выходные данные hello уменьшить i, меньше, чем выходные данные hello уменьшить i + 1.
 
-* **TeraValidate**: программа MapReduce, которая проверяет глобальную сортировку выходных данных.
+* **TeraValidate**: глобально сортируется программу MapReduce, которая проверяет hello выходного файла
 
-    В выходном каталоге создается одна функция map для каждого файла, и каждая функция map гарантирует, что каждый ключ будет меньше или равен предыдущему. Функция map создает записи первого и последнего ключей каждого файла. Функция reduce гарантирует, что первый ключ файла i больше последнего ключа файла i-1. Все проблемы указываются в выходных данных этапа редукции вместе с неотсортированными ключами.
+    Он создает одно сопоставление каждого файла в выходной каталог hello, и каждая карта гарантирует, что каждый ключ меньше или равно toohello предыдущий. Функция сопоставления Hello сначала создает записи hello и последний ключи каждого файла. Hello reduce-функция гарантирует, что hello первый ключ файла i больше, чем последний ключ файла i-1 hello. Проблемы выводятся как выход hello уменьшение этапе hello ключей, которые выходят за пределы.
 
-Для создания данных, сортировки и проверки выходных данных используйте следующую команду:
+Используйте hello следующие шаги данных toogenerate сортировки, а затем проверять hello выходные данные:
 
-1. Создайте 10 ГБ данных, которые сохранятся в хранилище по умолчанию кластера HDInsight в `/example/data/10GB-sort-input`.
+1. Создать 10 ГБ данных, которая является хранилищем по умолчанию кластер HDInsight хранимых toohello на `/example/data/10GB-sort-input`:
 
     ```bash
     yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar teragen -Dmapred.map.tasks=50 100000000 /example/data/10GB-sort-input
     ```
 
-    Ключ `-Dmapred.map.tasks` говорит Hadoop о том, сколько задач сопоставления будет использоваться в этом задании. Последние два параметра означают, что задание создаст 10 ГБ данных и сохранит их в `/example/data/10GB-sort-input`.
+    Hello `-Dmapred.map.tasks` сообщает, сколько toouse карты задач для этого задания Hadoop. Hello две последних параметра означают, что задание toocreate hello 10 ГБ данных и toostore его в параметре `/example/data/10GB-sort-input`.
 
-2. Выполните следующую команду, чтобы отсортировать данные:
+2. Используйте следующие команды toosort hello данные hello.
 
     ```bash
     yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar terasort -Dmapred.map.tasks=50 -Dmapred.reduce.tasks=25 /example/data/10GB-sort-input /example/data/10GB-sort-output
     ```
 
-    Ключ `-Dmapred.reduce.tasks` говорит Hadoop о том, сколько задач сокращения будет использоваться в этом задании. Последние два параметра соответствуют путям расположения входных и выходных данных.
+    Hello `-Dmapred.reduce.tasks` Hadoop сообщает, сколько уменьшить toouse задачи для задания hello. Параметры Hello две последних просто hello ввода и вывода ячейки данных.
 
-3. Используйте следующую команду, чтобы просмотреть отсортированные данные:
+3. Используйте следующие созданные hello сортировать данные hello toovalidate hello.
 
     ```bash
     yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar teravalidate -Dmapred.map.tasks=50 -Dmapred.reduce.tasks=25 /example/data/10GB-sort-output /example/data/10GB-sort-validate
@@ -216,7 +216,7 @@ GraySort — это измерение производительности со
 
 ## <a name="next-steps"></a>Дальнейшие действия
 
-В данной статье рассмотрено выполнение примеров, поставляемых с кластерами HDInsight под управлением Linux. Учебники по использованию Pig, Hive и MapReduce в службе HDInsight см. в следующих статьях.
+Из этой статьи вы узнали, как образцы hello toorun входящий в состав hello кластеры HDInsight под управлением Linux. Руководства об использовании с HDInsight Pig, Hive и MapReduce см hello следующие вопросы:
 
 * [Использование Pig с Hadoop в HDInsight][hdinsight-use-pig]
 * [Использование Hive с Hadoop в HDInsight][hdinsight-use-hive]

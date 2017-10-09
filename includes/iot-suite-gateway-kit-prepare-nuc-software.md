@@ -1,43 +1,43 @@
 ## <a name="build-iot-edge"></a>Создание Edge Интернета вещей
 
-В этом руководстве используются пользовательские модули Edge Интернета вещей для связи с предварительно настроенным решением для удаленного мониторинга. Поэтому модули Edge Интернета вещей нужно создать на основе исходного пользовательского кода. В следующих разделах описывается, как установить Edge Интернета вещей и создать пользовательский модуль Edge Интернета вещей.
+В этом учебнике используется пользовательских toocommunicate IoT Edge модулей с удаленного мониторинга предварительно настроенных решений hello. Поэтому необходимо toobuild hello IoT Edge модули из пользовательского кода. Привет, в следующих разделах описаны hello как tooinstall IoT края и построения настраиваемого модуля IoT Edge.
 
 ### <a name="install-iot-edge"></a>Установка Edge Интернета вещей
 
-Далее представлены сведения о том, как установить предварительно скомпилированное программное обеспечение Edge Интернета вещей на Intel NUC:
+Hello следующие шаги описывают как tooinstall hello предварительная компиляция IoT Edge программного обеспечения на hello Intel NUC.
 
-1. Настройте необходимые репозитории Smart Package, выполнив в Intel NUC следующие команды:
+1. Настройте репозиториев hello требуется смарт-пакета, выполнив следующие команды на hello Intel NUC hello.
 
     ```bash
     smart channel --add IoT_Cloud type=rpm-md name="IoT_Cloud" baseurl=http://iotdk.intel.com/repos/iot-cloud/wrlinux7/rcpl13/ -y
     smart channel --add WR_Repo type=rpm-md baseurl=https://distro.windriver.com/release/idp-3-xt/public_feeds/WR-IDP-3-XT-Intel-Baytrail-public-repo/RCPL13/corei7_64/
     ```
 
-    Введите `y`, получив от команды запрос **Include this channel?** (Включить этот канал?).
+    Введите `y` при hello предлагает слишком**включить этот канал?**.
 
-1. Обновите Smart Package Manager, выполнив следующую команду:
+1. Обновление диспетчера hello смарт-пакетов, выполнив следующую команду hello:
 
     ```bash
     smart update
     ```
 
-1. Установите пакет Edge Интернета вещей Azure, выполнив следующую команду:
+1. Установка пакета Azure IoT Edge hello, выполнив следующую команду hello:
 
     ```bash
     smart config --set rpm-check-signatures=false
     smart install packagegroup-cloud-azure -y
     ```
 
-1. Проверьте установку, запустив пример Hello World. Этот пример записывает сообщение Hello World в файл log.txt каждые пять секунд. Запустите пример Hello World, выполнив следующие команды:
+1. Проверка установки hello путем выполнения образца hello «Hello world». В этом образце записывает файл log.txT toohello hello world сообщения каждые пять секунд. Hello следующие команды запускают hello Образец «Hello world»:
 
     ```bash
     cd /usr/share/azureiotgatewaysdk/samples/hello_world/
     ./hello_world hello_world.json
     ```
 
-    При остановке примера игнорируйте все сообщения **Недопустимый аргумент**.
+    Пропускать **недопустимый аргумент** сообщений при остановке образец hello.
 
-    Вы можете просмотреть содержимое файла журнала, выполнив следующую команду:
+    Используйте следующие команды tooview hello содержимое файла журнала hello hello.
 
     ```bash
     cat log.txt | more
@@ -45,4 +45,4 @@
 
 ### <a name="troubleshooting"></a>Устранение неполадок
 
-Перезагрузите Intel NUC, если отображается сообщение об ошибке No package provides util-linux-dev (Нет пакета, предоставляющего util-linux-dev).
+При получении ошибки hello» не пакет предоставляет util-linux-dev», попробуйте перезагрузить hello Intel NUC.

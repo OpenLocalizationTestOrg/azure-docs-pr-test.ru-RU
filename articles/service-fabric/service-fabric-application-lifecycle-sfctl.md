@@ -1,6 +1,6 @@
 ---
-title: "Управление приложениями Azure Service Fabric с помощью интерфейса командной строки Azure Service Fabric"
-description: "Узнайте, как развертывать приложения в кластере Azure Service Fabric и удалять их из него с помощью интерфейса командной строки Azure Service Fabric."
+title: "приложения Azure Service Fabric aaaManage, использующие Azure Service Fabric CLI"
+description: "Узнайте, как toodeploy и удаление приложений с Azure Service Fabric кластера с помощью Azure Service Fabric CLI"
 services: service-fabric
 author: samedder
 manager: timlt
@@ -8,78 +8,78 @@ ms.service: service-fabric
 ms.topic: article
 ms.date: 08/22/2017
 ms.author: edwardsa
-ms.openlocfilehash: c3a2eb3e6e54f952ef963bb2a0292d9ad7b53bc5
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: d9f98cee1d70f71a2aab68ff556956619910e4fb
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="manage-an-azure-service-fabric-application-by-using-azure-service-fabric-cli"></a>Управление приложением Azure Service Fabric с помощью интерфейса командной строки Azure Service Fabric
 
-Узнайте, как создавать и удалять приложения, выполняющиеся в кластере Azure Service Fabric.
+Узнайте, как toocreate и удаление приложений, работающих в кластере Azure Service Fabric.
 
 ## <a name="prerequisites"></a>Предварительные требования
 
 * Установите интерфейс командной строки Service Fabric и выберите кластер Service Fabric. Дополнительные сведения см. в статье [Azure Service Fabric command line](service-fabric-cli.md) (Интерфейс командной строки Azure Service Fabric).
 
-* Также требуется готовый к развертыванию пакет приложения Service Fabric. Дополнительные сведения о том, как создавать и упаковывать приложения, представлены в [документации по модели приложения Service Fabric](service-fabric-application-model.md).
+* У Service Fabric приложения пакет готов toobe развертывания. Дополнительные сведения о том, как tooauthor и пакет приложения, узнайте, как hello [модель приложения Service Fabric](service-fabric-application-model.md).
 
 ## <a name="overview"></a>Обзор
 
-Чтобы развернуть новое приложение, выполните указанные ниже действия.
+toodeploy нового приложения, выполните следующие действия.
 
-1. Отправьте пакет приложения в хранилище образов Service Fabric.
+1. Отправка образа хранилища Service Fabric toohello пакета приложений.
 2. Подготовьте тип приложения.
 3. Укажите приложение и создайте его.
 4. Укажите службы и создайте их.
 
-Чтобы удалить существующее приложение, выполните следующие действия.
+tooremove существующего приложения, выполните следующие действия.
 
-1. Удалите приложение.
-2. Отмените подготовку связанного типа приложения.
-3. Удалите содержимое из хранилища образов.
+1. Удаление приложения hello.
+2. Отключение hello связанный тип приложения.
+3. Удаляет содержимое хранилища hello изображения.
 
 ## <a name="deploy-a-new-application"></a>Развертывание нового приложения
 
-Чтобы развернуть новое приложение, выполните указанные ниже действия.
+toodeploy нового приложения, завершения hello следующие задачи:
 
-### <a name="upload-a-new-application-package-to-the-image-store"></a>Передача нового пакета приложения в хранилище образов
+### <a name="upload-a-new-application-package-toohello-image-store"></a>Отправить новый образ хранилище toohello приложения пакета
 
-Прежде чем создавать приложение, необходимо отправить пакет приложения в хранилище образов Service Fabric.
+Прежде чем создавать приложения, отправьте изображение хранилище Service Fabric toohello hello приложения пакета.
 
-Предположим, что пакет приложения существует в каталоге `app_package_dir`. Чтобы отправить каталог, выполните следующие команды:
+Например, если пакет приложения hello `app_package_dir` directory hello используйте следующие команды tooupload hello каталога:
 
 ```azurecli
 sfctl application upload --path ~/app_package_dir
 ```
 
-Для больших пакетов приложений вы можете указать параметр `--show-progress`, чтобы отобразить ход передачи.
+Для больших пакетов приложений, вы можете указать hello `--show-progress` параметр toodisplay hello ход выполнения передачи hello.
 
-### <a name="provision-the-application-type"></a>Подготовка типа приложения
+### <a name="provision-hello-application-type"></a>Тип приложения hello подготовки
 
-По завершении отправки необходимо подготовить приложение. Чтобы подготовить приложение, выполните следующую команду:
+После завершения передачи hello подготовить приложение hello. приложение hello tooprovision, hello используйте следующую команду:
 
 ```azurecli
 sfctl application provision --application-type-build-path app_package_dir
 ```
 
-Параметр `application-type-build-path` должен совпадать с именем каталога, содержащего пакет приложения, который был отправлен ранее.
+Здравствуйте, значение для `application-type-build-path` — имя hello hello каталога, где загруженный пакет приложения.
 
 ### <a name="create-an-application-from-an-application-type"></a>Создание приложения из типа приложения
 
-После подготовки приложения можно присвоить ему имя и создать приложение, выполнив следующую команду:
+После их инициализации приложения hello, используйте следующие команды tooname hello и создания приложения:
 
 ```azurecli
 sfctl application create --app-name fabric:/TestApp --app-type TestAppType --app-version 1.0
 ```
 
-`app-name` — это имя, которое получит экземпляр приложения. Другие параметры можно найти с помощью манифеста приложения, который был подготовлен ранее.
+`app-name`— Имя hello, что требуется toouse для экземпляра приложения hello. Другие параметры можно найти с помощью манифеста приложения, который был подготовлен ранее.
 
-Имя приложения должно начинаться с префикса `fabric:/`.
+Имя приложения Hello должно начинаться с префикса hello `fabric:/`.
 
-### <a name="create-services-for-the-new-application"></a>Создание служб для нового приложения
+### <a name="create-services-for-hello-new-application"></a>Создание служб для нового приложения hello
 
-После создания приложения из него можно создавать службы. В этом примере мы создадим из приложения службу без отслеживания состояния. Службы, которые можно создать из приложения, определены в манифесте службы внутри подготовленного ранее пакета приложения.
+После создания приложения можно создайте службы из приложения hello. В следующем примере hello создадим новый без отслеживания состояния службы из нашего приложения. Hello служб, которые можно создать из приложения, определенные в манифест службы в пакет предварительно подготовленные приложения hello.
 
 ```azurecli
 sfctl service create --app-id TestApp --name fabric:/TestApp/TestSvc --service-type TestServiceType \
@@ -88,14 +88,14 @@ sfctl service create --app-id TestApp --name fabric:/TestApp/TestSvc --service-t
 
 ## <a name="verify-application-deployment-and-health"></a>Проверка развертывания и работоспособности приложения
 
-Чтобы убедиться, что все находится в работоспособном состоянии, выполните приведенные ниже команды.
+tooverify все, что находится в работоспособном состоянии, выполните следующие команды работоспособности hello.
 
 ```azurecli
 sfctl application list
 sfctl service list --application-id TestApp
 ```
 
-Чтобы проверить, что служба работоспособна, выполните аналогичные команды, чтобы получить сведения о работоспособности службы и приложения.
+tooverify, что служба hello находится в работоспособном состоянии, используйте аналогичные команды tooretrieve hello работоспособности hello службы и приложения:
 
 ```azurecli
 sfctl application health --application-id TestApp
@@ -106,62 +106,62 @@ sfctl service health --service-id TestApp/TestSvc
 
 ## <a name="remove-an-existing-application"></a>Удаление имеющегося приложения
 
-Чтобы удалить приложение, выполните указанные ниже действия.
+tooremove приложения, завершения hello следующие задачи:
 
-### <a name="delete-the-application"></a>Удаление приложения
+### <a name="delete-hello-application"></a>Удаление приложения hello
 
-Удалите приложение, выполнив следующую команду:
+приложение hello toodelete, hello используйте следующую команду:
 
 ```azurecli
 sfctl application delete --application-id TestEdApp
 ```
 
-### <a name="unprovision-the-application-type"></a>Отмена подготовки типа приложения
+### <a name="unprovision-hello-application-type"></a>Отменить подготовку типа приложения hello
 
-После удаления приложения можно также отменить подготовку типа приложения (если он больше не требуется). Для этого выполните следующую команду:
+После удаления приложения hello, можно отменить подготовку типа приложения hello, если оно больше не требуется. Тип приложения hello toounprovision, hello используйте следующую команду:
 
 ```azurecli
 sfctl application unprovision --application-type-name TestAppTye --application-type-version 1.0
 ```
 
-Имя и версия типа должны соответствовать имени и версии в манифесте приложения, который был подготовлен ранее.
+версия по имени и типа тип Hello должна соответствовать hello имени и версии в манифесте предварительно подготовленные приложения hello.
 
-### <a name="delete-the-application-package"></a>Удаление пакета приложения
+### <a name="delete-hello-application-package"></a>Удалить пакет приложения hello
 
-После того как подготовка типа приложения была отменена, пакет приложения можно удалить из хранилища образов (если он больше не требуется). Удалите пакеты приложения, чтобы освободить место на диске. 
+После отменил инициализацию типа приложения hello, можно удалить пакет приложения hello из хранилища образов hello, если оно больше не требуется. Удалите пакеты приложения, чтобы освободить место на диске. 
 
-Чтобы удалить пакет приложения из хранилища образов, выполните следующую команду:
+пакет приложения hello toodelete из хранилища образов hello, hello используйте следующую команду:
 
 ```azurecli
 sfctl store delete --content-path app_package_dir
 ```
 
-Параметр `content-path` должен совпадать с именем каталога, загруженного при создании приложения.
+`content-path`должно быть именем hello hello каталога, который загружен при создании приложения hello.
 
 ## <a name="upgrade-application"></a>Обновление приложения
 
-После создания приложения можно повторить тот же набор шагов, чтобы подготовить вторую версию приложения. Затем с помощью функции обновления приложения Service Fabric можно перейти к использованию второй версии приложения. Дополнительные сведения см. в документации по [обновлению приложения Service Fabric](service-fabric-application-upgrade.md).
+После создания приложения, можно повторить hello одинаковый набор шагов tooprovision второй версии приложения. После этого обновления приложения Service Fabric может перевести toorunning hello вторая версия приложения hello. Дополнительные сведения см. в разделе документации hello на [обновления приложения Service Fabric](service-fabric-application-upgrade.md).
 
-Чтобы выполнить обновление, необходимо сначала подготовить следующую версию приложения, используя ту же команду, что и раньше.
+tooperform обновления первого подготовки hello следующей версии приложения с помощью hello как раньше hello же команды:
 
 ```azurecli
 sfctl application upload --path ~/app_package_dir_2
 sfctl application provision --application-type-build-path app_package_dir_2
 ```
 
-Затем рекомендуется выполнить отслеживаемое автоматическое обновление. Запустите обновление, выполнив следующую команду.
+Рекомендации и tooperform отслеживаемых автоматического обновления, запустите обновление hello, выполнив следующую команду hello:
 
 ```azurecli
 sfctl application upgrade --app-id TestApp --app-version 2.0.0 --parameters "{\"test\":\"value\"}" --mode Monitored
 ```
 
-Обновления переопределяют существующие параметры вне зависимости от способа их задания. При необходимости параметры приложения можно передать как аргументы команды обновления. Параметры приложения должны быть закодированы в виде объекта JSON.
+Обновления переопределяют существующие параметры вне зависимости от способа их задания. Параметры приложения должен передаваться как аргументы команды обновления toohello, при необходимости. Параметры приложения должны быть закодированы в виде объекта JSON.
 
-Чтобы получить какие-либо указанные ранее параметры, можно использовать команду `sfctl application info`.
+указанные параметры tooretrieve, вы можете использовать hello `sfctl application info` команды.
 
-Если выполняется обновление приложения, его состояние можно получить с помощью команды `sfctl application upgrade-status`.
+Если выполняется обновление приложения, hello состояние может быть получен с помощью `sfctl application upgrade-status` команды.
 
-Наконец, если идет обновление и его необходимо отменить, можно использовать команду `sfctl application upgrade-rollback`, чтобы выполнить откат обновления.
+Наконец, если обновление выполняется и должен toobe отменено, можно использовать hello `sfctl application upgrade-rollback` tooroll обратно hello обновления.
 
 ## <a name="next-steps"></a>Дальнейшие действия
 

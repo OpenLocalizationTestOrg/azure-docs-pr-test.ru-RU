@@ -1,6 +1,6 @@
 ---
-title: "Создание функции, которая выполняется по расписанию, в Azure | Документация Майкрософт"
-description: "Узнайте, как создать в Azure функцию, которая выполняется по определенному расписанию."
+title: "функция, которая выполняется по расписанию в Azure aaaCreate | Документы Microsoft"
+description: "Узнайте, как toocreate функции в Azure, которая выполняется на основе определяемому вами расписанию."
 services: functions
 documentationcenter: na
 author: ggailey777
@@ -16,23 +16,23 @@ ms.workload: na
 ms.date: 05/31/2017
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: 03cc5e71e8eb20002cf58e713fc0fc92a9129874
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 793b06a65a154466dfd4c121bcc88082227cd597
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-a-function-in-azure-that-is-triggered-by-a-timer"></a>Создание в Azure функции, активируемой по таймеру
 
-Узнайте, как создать функцию, которая выполняется на основе определенного расписания с помощь Функций Azure.
+Узнайте, как toocreate функции Azure toouse функцию, которая выполняется на основе определяемому вами расписанию.
 
-![Создание приложения-функции на портале Azure](./media/functions-create-scheduled-function/function-app-in-portal-editor.png)
+![Создание функции приложения в hello портал Azure](./media/functions-create-scheduled-function/function-app-in-portal-editor.png)
 
 ## <a name="prerequisites"></a>Предварительные требования
 
-Для работы с этим руководством:
+toocomplete этого учебника:
 
-+ Если у вас еще нет подписки Azure, [создайте бесплатную учетную запись Azure](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) , прежде чем начинать работу.
++ Если у вас еще нет подписки Azure, [создайте бесплатную учетную запись Azure](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), прежде чем начинать работу.
 
 [!INCLUDE [functions-portal-favorite-function-apps](../../includes/functions-portal-favorite-function-apps.md)]
 
@@ -42,40 +42,40 @@ ms.lasthandoff: 08/29/2017
 
 ![Приложение-функция успешно создана.](./media/functions-create-first-azure-function/function-app-create-success.png)
 
-Затем создайте функцию в новом приложении-функции.
+Создайте функцию в приложение новые функции hello.
 
 <a name="create-function"></a>
 
 ## <a name="create-a-timer-triggered-function"></a>Создание функции, активируемой по таймеру
 
-1. Разверните приложение-функцию и нажмите кнопку **+** рядом с элементом **Функции**. Если это первая функция в приложении-функции, выберите **Пользовательская функция**. Откроется полный набор шаблонов функций.
+1. Разверните приложения функции и щелкните hello  **+**  рядом слишком**функции**. Если это первая функция hello в приложении функции, выберите **пользовательские функции**. Откроется hello полный набор шаблонов функций.
 
-    ![Страница быстрого начала работы с функциями на портале Azure](./media/functions-create-scheduled-function/add-first-function.png)
+    ![Страница быстрого запуска функции в hello портал Azure](./media/functions-create-scheduled-function/add-first-function.png)
 
-2. Выберите шаблон **TimerTrigger** для нужного языка. Затем используйте настройки, указанные в таблице.
+2. Выберите hello **TimerTrigger** шаблона для нужный язык. Затем используйте hello параметры, как указано в таблице hello:
 
-    ![Создайте функцию, активируемую по таймеру, на портале Azure.](./media/functions-create-scheduled-function/functions-create-timer-trigger.png)
+    ![Создайте функцию таймер запускается в hello портал Azure.](./media/functions-create-scheduled-function/functions-create-timer-trigger.png)
 
     | Настройка | Рекомендуемое значение | Описание |
     |---|---|---|
-    | **Имя функции** | TimerTriggerCSharp1 | Определяет имя функции, активируемой по таймеру. |
-    | **[Расписание](http://en.wikipedia.org/wiki/Cron#CRON_expression)** | 0 \*/1 \* \* \* \* | [Выражение CRON](http://en.wikipedia.org/wiki/Cron#CRON_expression) с шестью полями, в котором запланировано ежеминутное выполнение функции. |
+    | **Имя функции** | TimerTriggerCSharp1 | Определяет имя hello этой функции запуска таймера. |
+    | **[Расписание](http://en.wikipedia.org/wiki/Cron#CRON_expression)** | 0 \*/1 \* \* \* \* | Шесть полей [выражение CRON](http://en.wikipedia.org/wiki/Cron#CRON_expression) , планирует вашей toorun функция каждую минуту. |
 
 2. Щелкните **Создать**. Будет создана функция на выбранном вами языке, которая будет выполняться каждую минуту.
 
-3. Проверьте выполнение, просмотрев записанные в журналах сведения трассировки.
+3. Проверьте выполнение, просмотр сведений трассировки записываются журналы toohello.
 
-    ![Средство просмотра журналов Функций на портале Azure.](./media/functions-create-scheduled-function/functions-timer-trigger-view-logs2.png)
+    ![Функции просмотра журнала в hello портал Azure.](./media/functions-create-scheduled-function/functions-timer-trigger-view-logs2.png)
 
-Теперь вы можете изменить расписание функции, чтобы она выполнялась реже, например раз в час. 
+Теперь можно изменить расписание функции hello, чтобы он запускался реже, например один раз в час. 
 
-## <a name="update-the-timer-schedule"></a>Обновление расписания таймера
+## <a name="update-hello-timer-schedule"></a>Обновить расписание таймера hello
 
-1. Разверните вашу функцию и щелкните **Интеграция**. Здесь вы определяете входные и выходные привязки для вашей функции, а также задаете расписание. 
+1. Разверните вашу функцию и щелкните **Интеграция**. Это где определение входных данных и вывода привязки функции, а также задать расписание hello. 
 
 2. Введите в поле **Расписания** новое значение `0 0 */1 * * *`, а затем щелкните **Сохранить**.  
 
-![Обновление расписания таймера функций на портале Azure](./media/functions-create-scheduled-function/functions-timer-trigger-change-schedule.png)
+![Функции Обновить расписание таймера в hello портал Azure.](./media/functions-create-scheduled-function/functions-timer-trigger-change-schedule.png)
 
 Теперь функция будет выполняться раз в час. 
 

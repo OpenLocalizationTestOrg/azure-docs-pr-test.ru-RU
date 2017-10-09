@@ -1,6 +1,6 @@
 ---
-title: "Настройка Application Insights в Azure с помощью PowerShell | Документация Майкрософт"
-description: "Автоматизируйте настройку системы диагностики Azure для передачи данных в Application Insights."
+title: "toosetup aaaUsing PowerShell Application Insights в Azure | Документы Microsoft"
+description: "Автоматизируйте настройку диагностики Azure toopipe tooApplication аналитики."
 services: application-insights
 documentationcenter: .net
 author: sbtron
@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/17/2015
 ms.author: bwren
-ms.openlocfilehash: 3b6da89cc33cda713b483a2af3cbb493a03d6bec
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: c48a5d8eb23df162522860935af876063aaa6976
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="using-powershell-to-set-up-application-insights-for-an-azure-web-app"></a>Настройка Application Insights для веб-приложения Azure с помощью PowerShell
-[Microsoft Azure](https://azure.com) можно [настроить для отправки данных системы диагностики Azure](app-insights-azure-diagnostics.md) в [Azure Application Insights](app-insights-overview.md). Данные диагностики связаны с облачными службами Azure и виртуальными машинами Azure. Они дополняют данные телеметрии, отправляемые из приложения с помощью пакета SDK Application Insights. В рамках автоматизации создания новых ресурсов в Azure вы можете настроить диагностику с помощью PowerShell.
+# <a name="using-powershell-tooset-up-application-insights-for-an-azure-web-app"></a>С помощью PowerShell tooset копирование Application Insights для веб-приложение Azure
+[Microsoft Azure](https://azure.com) может быть [настроили систему диагностики Azure toosend](app-insights-azure-diagnostics.md) слишком[Azure Application Insights](app-insights-overview.md). Диагностика Hello связаны tooAzure облачных служб и виртуальных машинах Azure. Они дополняют hello данные телеметрии, отправляемого из приложения hello, с помощью пакета SDK Application Insights hello. В рамках автоматизации hello процесс создания новых ресурсов в Azure, можно настроить диагностику с помощью PowerShell.
 
 ## <a name="azure-template"></a>Шаблон Azure
-Если веб-приложение работает в Azure и вы создаете ресурсы с помощью шаблона Azure Resource Manager, можно настроить Application Insights, добавив следующий код в узел ресурсов:
+Если hello веб-приложения в Azure и создать ресурсы с помощью шаблона Azure Resource Manager, можно настроить путем добавления этого узла toohello ресурсы Application Insights:
 
     {
       resources: [
@@ -42,11 +42,11 @@ ms.lasthandoff: 08/18/2017
        ]
      } 
 
-* `nameOfAIAppResource` — имя ресурса Application Insights.
-* `myWebAppName` — идентификатор веб-приложения.
+* `nameOfAIAppResource`-Имя ресурса Application Insights hello
+* `myWebAppName`— Идентификатор hello hello веб-приложения
 
 ## <a name="enable-diagnostics-extension-as-part-of-deploying-a-cloud-service"></a>Включение расширения диагностики как части развертывания облачной службы
-Параметр `ExtensionConfiguration` командлета `New-AzureDeployment` принимает массив значений для конфигурации диагностики. Их можно создать с помощью командлета `New-AzureServiceDiagnosticsExtensionConfig` . Например:
+Hello `New-AzureDeployment` содержит параметр `ExtensionConfiguration`, который принимает массив конфигурации диагностики. Эти компоненты можно создать с помощью hello `New-AzureServiceDiagnosticsExtensionConfig` командлета. Например:
 
 ```ps
 
@@ -123,9 +123,9 @@ ms.lasthandoff: 08/18/2017
     Remove-AzureServiceDiagnosticsExtension -ServiceName "MyService"
 ```
 
-Если расширение диагностики было включено с помощью командлета `Set-AzureServiceDiagnosticsExtension` или `New-AzureServiceDiagnosticsExtensionConfig` без параметра Role, вы можете удалить расширение с помощью командлета `Remove-AzureServiceDiagnosticsExtension` без параметра Role. Если параметр Role использовался при включении расширения, он также должен применяться и при его удалении.
+Если включен с помощью расширения диагностики hello `Set-AzureServiceDiagnosticsExtension` или `New-AzureServiceDiagnosticsExtensionConfig` без параметра роли hello, затем можно удалить с помощью расширения hello `Remove-AzureServiceDiagnosticsExtension` без параметра роли hello. Если параметр hello роль была использована при включении расширения hello затем он должен также использоваться при удалении расширения hello.
 
-Удаление расширения диагностики из каждой отдельной роли
+Модуль диагностики hello tooremove из каждого отдельного роли:
 
 ```ps
 
@@ -133,8 +133,8 @@ ms.lasthandoff: 08/18/2017
 ```
 
 
-## <a name="see-also"></a>Дополнительные материалы
+## <a name="see-also"></a>См. также
 * [Мониторинг приложений облачных служб Azure с помощью Application Insights](app-insights-cloudservices.md)
-* [Отправка данных системы диагностики Azure в Application Insights](app-insights-azure-diagnostics.md)
+* [Отправить аналитики tooApplication диагностики Azure](app-insights-azure-diagnostics.md)
 * [Use PowerShell to set alerts in Application Insights](app-insights-powershell-alerts.md)
 

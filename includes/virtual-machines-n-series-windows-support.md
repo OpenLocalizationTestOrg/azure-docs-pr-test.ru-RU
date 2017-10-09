@@ -15,5 +15,5 @@
 | Windows Server 2012 R2 | [376.84](http://us.download.nvidia.com/Windows/Quadro_Certified/376.84/376.84-tesla-desktop-winserver2008-2012r2-64bit-international-whql.exe) (EXE-файл) |
 
 > [!NOTE]
-> Ссылки для скачивания драйверов Tesla актуальны на момент публикации. Последние версии драйверов можно получить на веб-сайте [NVIDIA](http://www.nvidia.com/).
+> Ссылки для скачивания драйверов Tesla актуальны на момент публикации. Для hello последние версии драйверов, посетите hello [NVIDIA](http://www.nvidia.com/) веб-сайта.
 >

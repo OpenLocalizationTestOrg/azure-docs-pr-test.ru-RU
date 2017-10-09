@@ -1,8 +1,8 @@
 ## <a name="create-a-resource-group"></a>Создание группы ресурсов
 
-Создайте группу ресурсов с помощью команды [az group create](/cli/azure/group#create). Группа ресурсов Azure является логическим контейнером, в котором происходит развертывание ресурсов Azure и управление ими. 
+Создание группы ресурсов с hello [Создание группы az](/cli/azure/group#create) команды. Группа ресурсов Azure является логическим контейнером, в котором происходит развертывание ресурсов Azure и управление ими. 
 
-В следующем примере создается группа ресурсов с именем *myResourceGroup* в расположении *eastus*.
+Hello следующий пример создает группу ресурсов с именем *myResourceGroup* в hello *eastus* расположение.
 
 ```azurecli-interactive 
 az group create --name myResourceGroup --location eastus
@@ -10,9 +10,9 @@ az group create --name myResourceGroup --location eastus
 
 ## <a name="create-a-virtual-machine"></a>Создание виртуальной машины
 
-Создайте виртуальную машину с помощью команды [az vm create](/cli/azure/vm#create). 
+Создайте виртуальную Машину с hello [создания виртуальной машины az](/cli/azure/vm#create) команды. 
 
-В следующем примере создаются виртуальная машина *myVM* и ключи SSH, если они не существуют в расположении ключей по умолчанию. Чтобы использовать определенный набор ключей, используйте параметр `--ssh-key-value`.  
+Hello следующий пример создает Виртуальную машину с именем *myVM* и создает ключи SSH, если они еще не существуют в ключевое расположение по умолчанию. toouse конкретный набор ключей, используйте hello `--ssh-key-value` параметр.  
 
 ```azurecli-interactive 
 az vm create \
@@ -23,7 +23,7 @@ az vm create \
     --generate-ssh-keys
 ```
 
-После создания виртуальной машины в Azure CLI отображается информация следующего вида. Запишите значение `publicIpAddress`. Этот адрес используется для доступа к виртуальной машине.
+При создании виртуальной Машины hello hello Azure CLI показано toohello аналогичные сведения, следующий пример. Запишите hello `publicIpAddress`. Этот адрес будет hello используется tooaccess виртуальной Машины.
 
 ```azurecli-interactive 
 {
@@ -42,7 +42,7 @@ az vm create \
 
 ## <a name="open-port-80-for-web-traffic"></a>Открытие порта 80 для веб-трафика 
 
-По умолчанию виртуальные машины Linux, развернутые в Azure, поддерживают только SSH-подключения. Так как эта виртуальная машина будет использоваться в качестве веб-сервера, необходимо открыть порт 80 через Интернет. Выполните команду [az vm open-port](/cli/azure/vm#open-port), чтобы открыть нужный порт.  
+По умолчанию виртуальные машины Linux, развернутые в Azure, поддерживают только SSH-подключения. Поскольку эта виртуальная машина будет toobe веб-сервер, вам потребуется tooopen порту 80 из hello Интернета. Используйте hello [az виртуальной машины откройте порт-](/cli/azure/vm#open-port) команда tooopen hello требуемого порта.  
  
 ```azurecli-interactive 
 az vm open-port --port 80 --resource-group myResourceGroup --name myVM
@@ -50,14 +50,14 @@ az vm open-port --port 80 --resource-group myResourceGroup --name myVM
 ## <a name="ssh-into-your-vm"></a>SSH-подключение к виртуальной машине
 
 
-Если вы не знаете общедоступный IP-адрес виртуальной машины, используйте команду [az network public-ip list](/cli/azure/network/public-ip#list):
+Если вы еще не знаете Здравствуйте общедоступный IP-адрес виртуальной машины, запуска hello [список открытый ip-сетей az](/cli/azure/network/public-ip#list) команды:
 
 
 ```azurecli-interactive
 az network public-ip list --resource-group myResourceGroup --query [].ipAddress
 ```
 
-Используйте следующую команду для создания сеанса SSH с виртуальной машиной. Укажите правильный общедоступный IP-адрес виртуальной машины. В этом примере это IP-адрес *40.68.254.142*.
+Используйте hello следующая команда toocreate сеанс SSH с виртуальной машиной hello. Замените hello открытый IP-адрес виртуальной машины. В этом примере hello IP-адрес — *40.68.254.142*.
 
 ```bash
 ssh azureuser@40.68.254.142

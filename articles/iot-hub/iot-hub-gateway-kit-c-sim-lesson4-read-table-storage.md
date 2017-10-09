@@ -1,6 +1,6 @@
 ---
 title: "Приступая к работе с имитацией устройства и шлюзом Azure IoT. Урок 4. Хранилище таблиц | Документация Майкрософт"
-description: "Сохраняйте сообщения из Intel NUC в Центр Интернета вещей, записывайте их в Хранилище таблиц Azure, а затем читайте их из облака."
+description: "Сохранять сообщения из центра IoT tooyour Intel NUC, записывать их в хранилище таблиц tooAzure и затем прочитать их из облака hello."
 services: iot-hub
 documentationcenter: 
 author: shizn
@@ -17,36 +17,36 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/21/2017
 ms.author: xshi
-ms.openlocfilehash: de5fae794c195132e2a487c0095845c756aa28e3
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 43e299d63bbbe10d4d867af25e700c3a7cc07c53
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="read-messages-persisted-in-azure-table-storage"></a>Чтение сообщений, сохраненных в Хранилище таблиц Azure
 
 ## <a name="what-you-will-do"></a>Выполняемая задача
 
-- Запуск примера приложения шлюза для шлюза, который отправляет сообщения в Центр Интернета вещей.
-- Запустите пример кода на главном компьютере для чтения сообщений в Хранилище таблиц Azure.
+- Запустите образец приложения hello шлюза на шлюзе, отправляет сообщения tooyour IoT hub.
+- Выполнение образца кода на узле компьютер tooread сообщения в хранилище таблиц Azure.
 
-Если возникнут какие-либо проблемы, то решения можно найти на [странице со сведениями об устранении неполадок](iot-hub-gateway-kit-c-sim-troubleshooting.md).
+Если у вас возникнут проблемы, искать решения на hello [страницу устранения неполадок](iot-hub-gateway-kit-c-sim-troubleshooting.md).
 
 ## <a name="what-you-will-learn"></a>Новые знания
 
-Использование инструмента Gulp для чтения сообщений в Хранилище таблиц Azure.
+Как toouse hello gulp средство toorun образец кода tooread сообщений hello в хранилище таблиц Azure.
 
 ## <a name="what-you-need"></a>Необходимые элементы
 
-Вы успешно выполнили следующие задачи:
+Будет иметь успешно hello следующие задания:
 
-- [Создание приложения-функции Azure и учетной записи хранения Azure](iot-hub-gateway-kit-c-sim-lesson4-deploy-resource-manager-template.md)
-- [Запуск примера приложения шлюза](iot-hub-gateway-kit-c-sim-lesson3-configure-simulated-device-app.md)
+- [Создать приложение Azure функции hello и учетной записи хранилища Azure hello](iot-hub-gateway-kit-c-sim-lesson4-deploy-resource-manager-template.md).
+- [Запустить образец приложения hello шлюза](iot-hub-gateway-kit-c-sim-lesson3-configure-simulated-device-app.md).
 - [Чтение сообщений из Центра Интернета вещей](iot-hub-gateway-kit-c-sim-lesson3-read-messages-from-hub.md)
 
 ## <a name="get-your-azure-storage-connection-strings"></a>Получение строк подключения службы хранилища Azure
 
-Раньше в ходе этого урока вы успешно создали учетную запись хранения Azure. Чтобы получить строку подключения учетной записи хранения Azure, выполните следующие команды:
+Раньше в ходе этого урока вы успешно создали учетную запись хранения Azure. Строка подключения tooget hello учетной записи хранилища Azure hello, запуска hello, следующие команды:
 
 * Выведите список всех учетных записей хранения.
 
@@ -60,13 +60,13 @@ az storage account list -g iot-gateway --query [].name
 az storage account show-connection-string -g iot-gateway -n {storage name}
 ```
 
-Используйте `iot-gateway` в качестве значения `{resource group name}`, если в уроке 2 значение не изменялось.
+Используйте `iot-gateway` в качестве значения hello `{resource group name}` Если вы не изменили значение hello в занятии 2.
 
-## <a name="configure-the-device-connection"></a>Настройка подключения устройства
+## <a name="configure-hello-device-connection"></a>Настройка подключения устройства hello
 
-Обновите файл `config-azure.json`, чтобы пример кода, который выполняется на главном компьютере, смог читать сообщения в Хранилище таблиц Azure. Чтобы настроить подключение устройства, выполните следующие действия.
+Обновление hello `config-azure.json` так, чтобы hello образец кода, который выполняется на главном компьютере hello можно прочитать сообщение в хранилище таблиц Azure. tooconfigure Здравствуйте подключения устройства, выполните следующие действия:
 
-1. Откройте файл конфигурации устройства `config-azure.json`, выполнив следующие команды:
+1. Файл конфигурации устройства Привет открыть `config-azure.json` , выполнив следующие команды hello:
 
    ```bash
    # For Windows command prompt
@@ -77,26 +77,26 @@ az storage account show-connection-string -g iot-gateway -n {storage name}
 
    ![Конфигурация](media/iot-hub-gateway-kit-lessons/lesson4/config_azure.png)
 
-2. Замените `[Azure storage connection string]` полученной строкой подключения к службе хранилища Azure.
+2. Замените `[Azure storage connection string]` с hello строка подключения хранилища Azure, который был получен.
 
    `[IoT hub connection string]` уже должна быть заменена в разделе [Чтение сообщений из Центра Интернета вещей Azure](iot-hub-gateway-kit-c-sim-lesson3-read-messages-from-hub.md) в уроке 3.
 
 ## <a name="read-messages-in-your-azure-table-storage"></a>Чтение сообщений в Хранилище таблиц Azure
 
-Запустите пример приложения шлюза и прочтите сообщения Хранилища таблиц Azure, выполнив следующую команду:
+Запустить образец приложения hello шлюза и чтения сообщений хранилища таблиц Azure, hello следующую команду:
 
 ```bash
 gulp run --table-storage
 ```
 
-Ваш Центр Интернета вещей активирует приложение-функцию Azure, чтобы сохранить сообщение в Хранилище таблиц Azure при поступлении нового сообщения.
-Команда `gulp run` запускает пример приложения шлюза, который отправляет сообщения в Центр Интернета вещей. С помощью параметра `table-storage` она также создает дочерний процесс для получения сохраненного сообщения в Хранилище таблиц Azure.
+Сообщение toosave приложения Azure функция инициирует ваш центр IoT в хранилище таблиц Azure при поступлении нового сообщения.
+Hello `gulp run` команда выполняет шлюза образец приложения, который отправляет сообщения tooyour IoT hub. С `table-storage` параметра, оно также создает hello tooreceive дочерних процесса, сохраненные сообщения в хранилище таблиц Azure.
 
-Все отправленные и полученные сообщения мгновенно появляются в том же окне консоли на главном компьютере. Экземпляр примера приложения прекращает свое действие автоматически через 40 секунд.
+сообщения приветствия, отправки и получения всех отображаемых мгновенно на hello же консоли окна в hello хост-компьютера. экземпляр приложения Образец Hello нарушит автоматически в 40 секунд.
 
    ![чтение Gulp](media/iot-hub-gateway-kit-lessons/lesson4/gulp_run_read_table_simudev.png)
 
 
 ## <a name="summary"></a>Сводка
 
-Вы запустили пример кода для чтения сообщений в Хранилище таблиц Azure, сохраненных приложением-функцией Azure.
+После выполнения сообщений hello tooread кода образца hello в хранилище таблиц Azure сохранен приложением Azure функции.

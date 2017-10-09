@@ -1,7 +1,7 @@
 ## <a name="obtain-an-azure-resource-manager-token"></a>Получение маркера Azure Resource Manager
-Все задачи, выполняемые с ресурсами с помощью диспетчера ресурсов Azure, должны пройти проверку подлинности Azure Active Directory. В примере ниже демонстрируется проверка подлинности с использованием пароля (другие способы см. в [справочнике по Azure REST API][lnk-authenticate-arm]).
+Azure Active Directory должны пройти проверку подлинности всех hello задач, выполняемых с ресурсами с помощью диспетчера ресурсов Azure hello. Hello приведенном примере пароль проверки подлинности, см. в других подходов [запросы проверки подлинности Azure Resource Manager][lnk-authenticate-arm].
 
-1. Добавьте в метод **Main** в файле Program.cs приведенный ниже код, позволяющий получить из системы Azure AD маркер с помощью идентификатора приложения и пароля.
+1. Добавьте следующий код toohello hello **Main** метод в Program.cs tooretrieve токена из Azure AD, используя идентификатор приложения hello и пароль.
    
     ```
     var authContext = new AuthenticationContext(string.Format  
@@ -12,18 +12,18 @@
    
     if (token == null)
     {
-      Console.WriteLine("Failed to obtain the token");
+      Console.WriteLine("Failed tooobtain hello token");
       return;
     }
     ```
-2. Создайте объект **ResourceManagementClient**, который использует полученный маркер, добавив следующий код в конец метода **Main**:
+2. Создание **ResourceManagementClient** объекта hello, использует маркер, добавив после окончания toohello кода hello hello **Main** метод:
    
     ```
     var creds = new TokenCredentials(token.AccessToken);
     var client = new ResourceManagementClient(creds);
     client.SubscriptionId = subscriptionId;
     ```
-3. Создайте группу ресурсов, которую будете использовать, или получите ссылку на нее:
+3. Создайте или получите ссылку на группу ресурсов hello, которую вы используете:
    
     ```
     var rgResponse = client.ResourceGroups.CreateOrUpdate(rgName,

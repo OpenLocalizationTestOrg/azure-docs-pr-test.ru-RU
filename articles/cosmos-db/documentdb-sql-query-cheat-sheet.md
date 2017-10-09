@@ -1,6 +1,6 @@
 ---
-title: "Памятка по SQL-запросам Azure Cosmos DB (PDF-файл) | Документация Майкрософт"
-description: "Доступный для печати PDF-файл памятки по SQL-запросам, который поможет использовать синтаксис SQL в Azure Cosmos DB для выполнения запросов к документам JSON в базе данных — краткий справочник по SQL"
+title: "aaaAzure Cosmos DB SQL памятку PDF | Документы Microsoft"
+description: "Печатаемые SQL Памятка PDF-ФАЙЛ, дает возможность использовать документы JSON tooquery синтаксис SQL Azure Cosmos DB в своей базе данных — краткий справочник SQL"
 keywords: "памятка по SQL, PDF-файл памятки по SQL, памятка по SQL-запросам"
 services: cosmos-db
 documentationcenter: 
@@ -15,31 +15,31 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/05/2017
 ms.author: mimig
-ms.openlocfilehash: cd314049a536ad4a95e243eac26aa044c90c8164
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 4f0e822602874a6487927f3940af6bf71df05f7a
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-cosmos-db-documentdb-api-sql-query-cheat-sheet-pdf"></a>Azure Cosmos DB. Памятка по SQL-запросам API DocumentDB в формате PDF
-**Памятка по SQL-запросам API DocumentDB Azure Cosmos DB** помогает быстро создавать запросы для данных API DocumentDB, так как в удобном для печати справочном листе в формате PDF отображаются общие запросы, ключевые слова, встроенные функции и операторы базы данных. 
+Hello **Azure Cosmos DB: DocumentDB API SQL запроса Памятка** помогает быстро запросы записи данных DocumentDB API в легко tooprint PDF отображается запросы к базе данных, ключевые слова, встроенные функции и операторы Справочный лист. 
 
-Cosmos DB поддерживает реляционные, иерархические и пространственные запросы документов JSON с использованием [SQL](documentdb-sql-query.md) без указания схемы или вторичных индексов. Кроме стандартных ключевых слов и операторов ANSI-SQL, Cosmos DB поддерживает определяемые пользователем функции (UDF) JavaScript, операторы JavaScript и множество встроенных функций.
+Cosmos DB поддерживает реляционные, иерархические и пространственные запросы документов JSON с использованием [SQL](documentdb-sql-query.md) без указания схемы или вторичных индексов. В операторы и ключевые слова сложения toohello стандартные ANSI SQL Cosmos DB поддерживает JavaScript определяемые пользователем функции (UDF), операторы JavaScript и множество встроенных функций.
 
-## <a name="download-the-cosmos-db-sql-query-cheat-sheet-pdf"></a>Скачивание PDF-файла памятки по SQL-запросам Cosmos DB
-Скачайте памятку по SQL-запросам и используйте ее в качестве краткого справочника, чтобы быстрее создавать запросы. В PDF-файле памятки по SQL-запросам приводятся общие запросы, используемые для получения данных из двух примеров документов JSON. Чтобы держать памятку по SQL-запросам под рукой, напечатайте ее на одной стороне листа в формате Letter (8,5 x 11 дюймов, или 21,59 x 27,94 см).
+## <a name="download-hello-cosmos-db-sql-query-cheat-sheet-pdf"></a>Скачать hello Cosmos DB SQL запроса памятку PDF
+Напишите запросы быстрее, загрузив памятку запроса SQL hello и использовать ее в качестве краткого справочника. Hello SQL памятку PDF отображаются общие данные tooretrieve запросы, используемые на двух примеров документов JSON. tookeep его ближайших, можно напечатать hello односторонние SQL запроса памятку в размер страницы letter (8,5 х 11 дюймов)..
 
-**Памятку можно скачать по следующей ссылке: [Памятка по Microsoft Azure Cosmos DB SQL](http://go.microsoft.com/fwlink/?LinkId=623215)**.
+**Скачать hello SQL памятку здесь: [памятку базы данных SQL Microsoft Azure Cosmos](http://go.microsoft.com/fwlink/?LinkId=623215)**
 
-![Памятка SQL-запросов Cosmos DB: краткий PDF-справочник по синтаксису SQL, поддерживаемому Cosmos DB — памятка по SQL, памятка по SQL в формате PDF, краткий справочник по SQL][cheat-sheet]
+![Azure Cosmos DB SQL запроса памятку: краткий справочник toohello синтаксиса SQL поддерживается Azure Cosmos DB - памятку SQL, SQL памятку PDF, краткий справочник SQL][cheat-sheet]
 
 [cheat-sheet]: ./media/documentdb-sql-query-cheat-sheet/microsoft-documentdb-sql-query-cheat-sheet-v4.png
 
 
 ## <a name="more-help-with-writing-sql-queries"></a>Дополнительная справка по созданию SQL-запросов
-* Подробное описание параметров запросов, доступных в DocumentDB, см. в статье [SQL-запросы и синтаксис SQL в Cosmos DB](documentdb-sql-query.md).
-* Связанную справочную документацию см. в разделе [Справочник по синтаксису SQL-запросов API DocumentDB в Azure Cosmos DB](https://msdn.microsoft.com/library/azure/dn782250.aspx).
+* Подробное описание параметров hello запросов, доступных в Cosmos DB, в разделе [DB Cosmos запроса](documentdb-sql-query.md).
+* Для связанных hello справочную документацию см. в разделе [Azure Cosmos DB DocumentDB API: Справочник по синтаксису SQL](https://msdn.microsoft.com/library/azure/dn782250.aspx).
 
 ## <a name="release-notes"></a>Заметки о выпуске
-Обновлено 29.07.2016 г.
+Обновление 7/29/2016 tooinclude TOP.
 

@@ -1,6 +1,6 @@
 ---
-title: "Настройка телеметрии служб мультимедиа Azure с использованием REST | Документация Майкрософт"
-description: "В этой статье показано, как использовать данные телеметрии служб мультимедиа Azure с помощью REST API."
+title: "aaaConfiguring телеметрии REST служб мультимедиа Azure | Документы Microsoft"
+description: "В этой статье показано, как toouse hello телеметрии служб мультимедиа Azure с помощью REST API..."
 services: media-services
 documentationcenter: 
 author: Juliako
@@ -14,36 +14,36 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/09/2017
 ms.author: juliako
-ms.openlocfilehash: 7d785c6eb9a9e16ae4853cded3c7c142080c7a09
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: d0b6798c49be756fcebecf2e1e6ea497edd27cf0
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="configuring-azure-media-services-telemetry-with-rest"></a>Настройка телеметрии служб мультимедиа Azure с использованием REST
 
-В этом разделе описываются общие действия по настройке телеметрии служб мультимедиа Azure (AMS) с помощью REST API. 
+В этом разделе описаны общие шаги, которые можно выполнять при настройке телеметрии hello служб мультимедиа Azure (AMS), с помощью API-интерфейса REST. 
 
 >[!NOTE]
->Подробнее о том, что такое телеметрия AMS и как ее использовать, описывается в этом[обзоре](media-services-telemetry-overview.md).
+>Для hello подробное объяснение того, что является AMS телеметрии и как tooconsume, разделе hello [Обзор](media-services-telemetry-overview.md) раздела.
 
-Ниже приведены действия, описанные в этом разделе:
+Hello шаги, описанные в этом разделе:
 
-- Получение учетной записи хранения, связанной с учетной записью служб мультимедиа.
-- Получение конечных точек уведомления.
+- Получение учетной записи хранилища hello, связанный с учетной записью служб мультимедиа
+- Получение конечных точек уведомления hello
 - Создание конечной точки уведомления для мониторинга. 
 
-    Чтобы создать конечную точку уведомления, укажите в EndPointType значение AzureTable (2), а в endPontAddress — таблицу хранилища (например, https://telemetryvalidationstore.table.core.windows.net).
+    toocreate конечной точки уведомления, установите tooAzureTable EndPointType hello (2) и endPontAddress набор toohello таблицу службы хранилища (например, https://telemetryvalidationstore.table.core.windows.net/).
   
-- Получение конфигураций мониторинга
+- Получение настроек мониторинга hello
 
-    Создайте параметры конфигурации мониторинга служб, которые требуется отслеживать. Разрешено не более одного параметра конфигурации мониторинга. 
+    Создание параметров конфигурации мониторинга для hello служб, которые хотите toomonitor. Разрешено не более одного параметра конфигурации мониторинга. 
 
 - Добавление конфигурации мониторинга
 
 
  
-## <a name="get-the-storage-account-associated-with-a-media-services-account"></a>Получение учетной записи хранения, связанной с учетной записью служб мультимедиа
+## <a name="get-hello-storage-account-associated-with-a-media-services-account"></a>Получить учетную запись хранилища hello, связанный с учетной записью служб мультимедиа
 
 ###<a name="request"></a>Запрос
 
@@ -71,7 +71,7 @@ ms.lasthandoff: 08/29/2017
     
     {"d":{"results":[{"__metadata":{"id":"https://wamsbnp1clus001rest-hs.cloudapp.net/api/StorageAccounts('telemetryvalidationstore')","uri":"https://wamsbnp1clus001rest-hs.cloudapp.net/api/StorageAccounts('telemetryvalidationstore')","type":"Microsoft.Cloud.Media.Vod.Rest.Data.Models.StorageAccount"},"Name":"telemetryvalidationstore","IsDefault":true,"BytesUsed":null}]}}
 
-## <a name="get-the-notification-endpoints"></a>Получение конечных точек уведомления
+## <a name="get-hello-notification-endpoints"></a>Получение конечных точек уведомлений hello
 
 ###<a name="request"></a>Запрос
 
@@ -125,7 +125,7 @@ ms.lasthandoff: 08/29/2017
     }
 
 >[!NOTE]
->Не забудьте изменить значение https://telemetryvalidationstore.table.core.windows.net в соответствии со своей учетной записью хранения.
+>Не забывайте toochange hello «https://telemetryvalidationstore.table.core.windows.net» tooyour хранилища учетных записей.
 
 ###<a name="response"></a>Ответ
 
@@ -146,7 +146,7 @@ ms.lasthandoff: 08/29/2017
     
     {"d":{"__metadata":{"id":"https://wamsbnp1clus001rest-hs.cloudapp.net/api/NotificationEndPoints('nb%3Anepid%3AUUID%3A76bb4faf-ea29-4815-840a-9a8e20102fc4')","uri":"https://wamsbnp1clus001rest-hs.cloudapp.net/api/NotificationEndPoints('nb%3Anepid%3AUUID%3A76bb4faf-ea29-4815-840a-9a8e20102fc4')","type":"Microsoft.Cloud.Media.Vod.Rest.Data.Models.NotificationEndPoint"},"Id":"nb:nepid:UUID:76bb4faf-ea29-4815-840a-9a8e20102fc4","Name":"monitoring","Created":"\/Date(1449033042667)\/","EndPointAddress":"https://telemetryvalidationstore.table.core.windows.net/","EndPointType":2}}
  
-## <a name="get-the-monitoring-configurations"></a>Получение конфигураций мониторинга
+## <a name="get-hello-monitoring-configurations"></a>Получение настроек мониторинга hello
 
 ### <a name="request"></a>Запрос
 

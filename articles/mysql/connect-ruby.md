@@ -1,6 +1,6 @@
 ---
-title: "Подключение к базе данных Azure для MySQL с помощью Ruby | Документация Майкрософт"
-description: "В этом кратком руководстве представлены примеры кода Ruby, которые можно использовать для подключения к базе данных Azure для MySQL и запроса данных из нее."
+title: "Подключение tooAzure базы данных MySQL, используя Ruby | Документы Microsoft"
+description: "Это краткое руководство несколько примеров, Ruby кода можно использовать tooconnect и запроса данных из базы данных Azure для MySQL."
 services: mysql
 author: jasonwhowell
 ms.author: jasonh
@@ -11,68 +11,68 @@ ms.custom: mvc
 ms.devlang: ruby
 ms.topic: hero-article
 ms.date: 07/13/2017
-ms.openlocfilehash: e54f1dccbae060c52f48bfeb277c045b99a91715
-ms.sourcegitcommit: 422efcbac5b6b68295064bd545132fcc98349d01
+ms.openlocfilehash: ff0880dcc24e96f467c9092bc663ce3dc4c2637a
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="azure-database-for-mysql-use-ruby-to-connect-and-query-data"></a>База данных Azure для MySQL: подключение и запрос данных с помощью Ruby
-В этом кратком руководстве объясняется, как подключиться к базе данных Azure для MySQL с помощью приложения [Ruby](https://www.ruby-lang.org) и пакета [Mysql2](https://rubygems.org/gems/mysql2) на платформе Windows, Ubuntu Linux и Mac. Здесь также показано, как использовать инструкции SQL для запроса, вставки, обновления и удаления данных в базе данных. В этой статье предполагается, что у вас уже есть опыт разработки на Ruby, но вы только начали работу с базой данных Azure для MySQL.
+# <a name="azure-database-for-mysql-use-ruby-tooconnect-and-query-data"></a>База данных Azure для MySQL: используйте Ruby tooconnect и запроса данных
+Краткого руководства показано, как tooconnect tooan Azure этой базы данных MySQL с помощью [Ruby](https://www.ruby-lang.org) приложения и hello [mysql2](https://rubygems.org/gems/mysql2) gem из платформ Mac, Ubuntu Linux и Windows. Показано, как tooquery инструкций SQL toouse, вставка, обновление и удаление данных в базе данных hello. В этой статье предполагается, что вы знакомы с разработки, используя Ruby, но, чтобы новый tooworking с базой данных Azure для MySQL.
 
 ## <a name="prerequisites"></a>Предварительные требования
-В качестве отправной точки в этом кратком руководстве используются ресурсы, созданные в соответствии со следующими материалами:
+Это краткое руководство использует ресурсы hello, созданные в любой из этих руководствах по в качестве отправной точки.
 - [Create an Azure Database for MySQL server using Azure portal](./quickstart-create-mysql-server-database-using-azure-portal.md) (Создание сервера базы данных Azure для MySQL с помощью портала Azure)
 - [Create an Azure Database for MySQL server using Azure CLI](./quickstart-create-mysql-server-database-using-azure-cli.md) (Создание базы данных Azure для сервера MySQL с помощью Azure CLI)
 
 ## <a name="install-ruby"></a>Установка Ruby
-Установите Ruby, Gem и библиотеку MySQL2 на своем компьютере. 
+Установите на компьютере Ruby, Gem и библиотека MySQL2 hello. 
 
 ### <a name="windows"></a>Windows
-1. Скачайте и установите [Ruby](http://rubyinstaller.org/downloads/) версии 2.3.
-2. Запустите новую командную строку (cmd) из меню "Пуск".
-3. Перейдите в каталог Ruby версии 2.3. `cd c:\Ruby23-x64\bin`
-4. Выполните команду `ruby -v`, чтобы узнать установленную версию Ruby.
-5. Выполните команду `gem -v`, чтобы узнать установленную версию Gem.
-6. Создайте модуль Mysql2 для Ruby с помощью Gem, выполнив команду `gem install mysql2`.
+1. Загрузить и установить версию hello 2.3 [Ruby](http://rubyinstaller.org/downloads/).
+2. Из меню "Пуск" hello, запустите новую командную строку (cmd).
+3. Перейдите в каталог в hello Ruby каталог для версии 2.3. `cd c:\Ruby23-x64\bin`
+4. Тест hello Ruby установки, выполнив команду hello `ruby -v` установленной версии toosee hello.
+5. Проверьте установку Gem hello, выполнив команду hello `gem -v` установленной версии toosee hello.
+6. Построить hello Mysql2 модуль для Ruby, с помощью Gem, выполнив команду hello `gem install mysql2`.
 
 ### <a name="macos"></a>MacOS
-1. Установите Ruby с помощью Homebrew, выполнив команду `brew install ruby`. Дополнительные параметры установки см. в [документации по установке](https://www.ruby-lang.org/en/documentation/installation/#homebrew) Ruby.
-2. Выполните команду `ruby -v`, чтобы узнать установленную версию Ruby.
-3. Выполните команду `gem -v`, чтобы узнать установленную версию Gem.
-4. Создайте модуль Mysql2 для Ruby с помощью Gem, выполнив команду `gem install mysql2`.
+1. Установка с помощью Homebrew, выполнив команду hello Ruby `brew install ruby`. Дополнительные параметры установки см. в разделе hello Ruby [документацию по установке](https://www.ruby-lang.org/en/documentation/installation/#homebrew).
+2. Тест hello Ruby установки, выполнив команду hello `ruby -v` установленной версии toosee hello.
+3. Проверьте установку Gem hello, выполнив команду hello `gem -v` установленной версии toosee hello.
+4. Построить hello Mysql2 модуль для Ruby, с помощью Gem, выполнив команду hello `gem install mysql2`.
 
 ### <a name="linux-ubuntu"></a>Linux (Ubuntu)
-1. Установите Ruby, выполнив команду `sudo apt-get install ruby-full`. Дополнительные параметры установки см. в [документации по установке](https://www.ruby-lang.org/en/documentation/installation/) Ruby.
-2. Выполните команду `ruby -v`, чтобы узнать установленную версию Ruby.
-3. Установите последние обновления для Gem, выполнив команду `sudo gem update --system`.
-4. Выполните команду `gem -v`, чтобы узнать установленную версию Gem.
-5. Установите gcc, make и другие инструменты сборки, выполнив команду `sudo apt-get install build-essential`.
-6. Установите библиотеки разработчика клиента MySQL, выполнив команду `sudo apt-get install libmysqlclient-dev`.
-7. Создайте модуль Mysql2 для Ruby с помощью Gem, выполнив команду `sudo gem install mysql2`.
+1. Установите Ruby, выполнив команду hello `sudo apt-get install ruby-full`. Дополнительные параметры установки см. в разделе hello Ruby [документацию по установке](https://www.ruby-lang.org/en/documentation/installation/).
+2. Тест hello Ruby установки, выполнив команду hello `ruby -v` установленной версии toosee hello.
+3. Установите последние обновления hello для Gem, выполнив команду hello `sudo gem update --system`.
+4. Проверьте установку Gem hello, выполнив команду hello `gem -v` установленной версии toosee hello.
+5. Установите hello gcc, того же типа и других средств построения, выполнив команду hello `sudo apt-get install build-essential`.
+6. Установите клиентские библиотеки developer Привет MySQL, выполнив команду hello `sudo apt-get install libmysqlclient-dev`.
+7. Построить hello mysql2 модуль для Ruby, с помощью Gem, выполнив команду hello `sudo gem install mysql2`.
 
 ## <a name="get-connection-information"></a>Получение сведений о подключении
-Получите сведения о подключении, необходимые для подключения к базе данных Azure.для MySQL. Вам потребуется полное имя сервера и учетные данные для входа.
+Получите toohello tooconnect базы данных Azure для hello подключения сведения, необходимые для MySQL. Необходимо hello server полное имя и учетные данные входа.
 
-1. Войдите на [портал Azure](https://portal.azure.com/).
-2. В меню слева на портале Azure щелкните **Все ресурсы** и выполните поиск по имени созданного сервера, например **myserver4demo**.
-3. Щелкните имя сервера **myserver4demo**.
-4. Откройте страницу **свойств** сервера. Запишите значения **имени сервера** и **имени для входа администратора сервера**.
+1. Войдите в toohello [портал Azure](https://portal.azure.com/).
+2. Hello левого меню на портале Azure, щелкните **все ресурсы** и выполните поиск сервера hello, можно creased, такие как **myserver4demo**.
+3. Щелкните имя сервера hello **myserver4demo**.
+4. Выберите hello server **свойства** страницы. Запишите hello **имя сервера** и **имя входа администратора сервера**.
  ![Имя входа для администратора сервера в базе данных Azure для MySQL](./media/connect-ruby/1_server-properties-name-login.png)
-5. Если вы забыли данные для входа на сервер, перейдите на страницу **Обзор**, чтобы просмотреть имя администратора сервера и при необходимости сбросить пароль.
+5. Если вы забыли учетные данные входа сервера, перейдите toohello **Обзор** страница hello tooview: имя пользователя администратора сервера и, при необходимости переустановить пароль hello.
 
 ## <a name="run-ruby-code"></a>Выполнение кода Ruby 
-1. Вставьте код Ruby из раздела ниже в текстовые файлы и сохраните файлы в папке проекта с расширением файла .rb, например `C:\rubymysql\createtable.rb` или `/home/username/rubymysql/createtable.rb`.
-2. Чтобы выполнить код, запустите командную строку или оболочку Bash. Перейдите в папку проекта `cd rubymysql`.
-3. Введите команду Ruby, за которой следует имя файла, например `ruby createtable.rb`, чтобы запустить приложение.
-4. В операционной системе Windows, если приложение Ruby не указано в переменной среды PATH, может потребоваться указать полный путь, чтобы запустить приложение Node, например `"c:\Ruby23-x64\bin\ruby.exe" createtable.rb`
+1. Вставьте hello Ruby кода из разделов hello ниже в текстовых файлов и сохранения файлов hello в проект папку с .rb расширение файла, например `C:\rubymysql\createtable.rb` или `/home/username/rubymysql/createtable.rb`.
+2. toorun hello кода, запустите командную строку hello или bash оболочки. Перейдите в папку проекта `cd rubymysql`.
+3. Затем введите команду hello ruby следуют hello имя файла, например `ruby createtable.rb` toorun приложения hello.
+4. На hello ОС Windows Если приложение hello ruby не находится в переменную среды path так, может потребоваться toouse hello полный путь toolaunch hello узел приложения, такие как`"c:\Ruby23-x64\bin\ruby.exe" createtable.rb`
 
 ## <a name="connect-and-create-a-table"></a>Подключение и создание таблицы
-Используйте приведенный ниже код для подключения и создайте таблицу с помощью инструкции SQL **CREATE TABLE**. Добавьте строки в таблицу, применив инструкцию SQL **INSERT INTO**.
+Используйте следующие hello кода tooconnect и создание таблицы с помощью **CREATE TABLE** инструкции SQL, за которым следует **INSERT INTO** строк tooadd инструкций SQL в таблицу hello.
 
-Код использует класс [mysql2::client](http://www.rubydoc.info/gems/mysql2/0.4.8) и метод .new(), чтобы подключиться к базе данных Azure для MySQL. Затем он вызывает метод [query()](http://www.rubydoc.info/gems/mysql2/0.4.8#Usage) несколько раз для выполнения команд DROP, CREATE TABLE и INSERT INTO. После этого вызывается метод [close()](http://www.rubydoc.info/gems/mysql2/0.4.8/Mysql2/Client#close-instance_method), чтобы разорвать подключение перед завершением работы.
+использует код Hello [mysql2::client](http://www.rubydoc.info/gems/mysql2/0.4.8) класса .new() метод tooconnect tooAzure базы данных для MySQL. Затем он вызывает метод [query()](http://www.rubydoc.info/gems/mysql2/0.4.8#Usage) несколько раз toorun hello, CREATE TABLE, команд DROP и INSERT INTO. Затем он вызывает метод [close()](http://www.rubydoc.info/gems/mysql2/0.4.8/Mysql2/Client#close-instance_method) tooclose hello соединения перед завершением работы.
 
-Замените строки `host`, `database`, `username` и `password` собственными значениями. 
+Замените hello `host`, `database`, `username`, и `password` строки собственными значениями. 
 ```ruby
 require 'mysql2'
 
@@ -85,7 +85,7 @@ begin
 
     # Initialize connection object.
     client = Mysql2::Client.new(:host => host, :username => username, :database => database, :password => password)
-    puts 'Successfully created connection to database.'
+    puts 'Successfully created connection toodatabase.'
 
     # Drop previous table of same name if one exists
     client.query('DROP TABLE IF EXISTS inventory;')
@@ -113,11 +113,11 @@ end
 ```
 
 ## <a name="read-data"></a>Считывание данных
-Используйте указанный ниже код с инструкцией SQL **SELECT** для подключения и чтения данных. 
+Используйте следующие hello кода tooconnect и чтения данных с помощью hello **ВЫБЕРИТЕ** инструкции SQL. 
 
-Код использует класс [mysql2::client](http://www.rubydoc.info/gems/mysql2/0.4.8) и метод .new(), чтобы подключиться к базе данных Azure для MySQL. Затем он вызывает метод [query()](http://www.rubydoc.info/gems/mysql2/0.4.8#Usage) для выполнения команды SELECT. После этого вызывается метод [close()](http://www.rubydoc.info/gems/mysql2/0.4.8/Mysql2/Client#close-instance_method), чтобы разорвать подключение перед завершением работы.
+использует код Hello [mysql2::client](http://www.rubydoc.info/gems/mysql2/0.4.8) класса .new() метод tooconnect tooAzure базы данных для MySQL. Затем он вызывает метод [query()](http://www.rubydoc.info/gems/mysql2/0.4.8#Usage) команд SELECT toorun hello. Затем он вызывает метод [close()](http://www.rubydoc.info/gems/mysql2/0.4.8/Mysql2/Client#close-instance_method) tooclose hello соединения перед завершением работы.
 
-Замените строки `host`, `database`, `username` и `password` собственными значениями. 
+Замените hello `host`, `database`, `username`, и `password` строки собственными значениями. 
 
 ```ruby
 require 'mysql2'
@@ -131,7 +131,7 @@ begin
 
     # Initialize connection object.
     client = Mysql2::Client.new(:host => host, :username => username, :database => database, :password => password)
-    puts 'Successfully created connection to database.'
+    puts 'Successfully created connection toodatabase.'
 
     # Read data
     resultSet = client.query('SELECT * from inventory;')
@@ -152,11 +152,11 @@ end
 ```
 
 ## <a name="update-data"></a>Обновление данных
-Используйте указанный ниже код с инструкцией SQL **UPDATE** для подключения и обновления данных.
+Используйте следующие hello кода tooconnect и обновления данных с помощью hello **обновление** инструкции SQL.
 
-Код использует класс [mysql2::client](http://www.rubydoc.info/gems/mysql2/0.4.8) и метод .new(), чтобы подключиться к базе данных Azure для MySQL. Затем он вызывает метод [query()](http://www.rubydoc.info/gems/mysql2/0.4.8#Usage) для выполнения команды UPDATE. После этого вызывается метод [close()](http://www.rubydoc.info/gems/mysql2/0.4.8/Mysql2/Client#close-instance_method), чтобы разорвать подключение перед завершением работы.
+использует код Hello [mysql2::client](http://www.rubydoc.info/gems/mysql2/0.4.8) класса .new() метод tooconnect tooAzure базы данных для MySQL. Затем он вызывает метод [query()](http://www.rubydoc.info/gems/mysql2/0.4.8#Usage) команд UPDATE toorun hello. Затем он вызывает метод [close()](http://www.rubydoc.info/gems/mysql2/0.4.8/Mysql2/Client#close-instance_method) tooclose hello соединения перед завершением работы.
 
-Замените строки `host`, `database`, `username` и `password` собственными значениями. 
+Замените hello `host`, `database`, `username`, и `password` строки собственными значениями. 
 
 ```ruby
 require 'mysql2'
@@ -170,7 +170,7 @@ begin
 
     # Initialize connection object.
     client = Mysql2::Client.new(:host => host, :username => username, :database => database, :password => password)
-    puts 'Successfully created connection to database.'
+    puts 'Successfully created connection toodatabase.'
 
     # Update data
    client.query('UPDATE inventory SET quantity = %d WHERE name = %s;' % [200, '\'banana\''])
@@ -189,11 +189,11 @@ end
 
 
 ## <a name="delete-data"></a>Удаление данных
-Используйте указанный ниже код с инструкцией SQL **DELETE** для подключения и чтения данных. 
+Используйте следующие hello кода tooconnect и чтения данных с помощью hello **удалить** инструкции SQL. 
 
-Код использует класс [mysql2::client](http://www.rubydoc.info/gems/mysql2/0.4.8) и метод .new(), чтобы подключиться к базе данных Azure для MySQL. Затем он вызывает метод [query()](http://www.rubydoc.info/gems/mysql2/0.4.8#Usage) для выполнения команды DELETE. После этого вызывается метод [close()](http://www.rubydoc.info/gems/mysql2/0.4.8/Mysql2/Client#close-instance_method), чтобы разорвать подключение перед завершением работы.
+использует код Hello [mysql2::client](http://www.rubydoc.info/gems/mysql2/0.4.8) класса .new() метод tooconnect tooAzure базы данных для MySQL. Затем он вызывает метод [query()](http://www.rubydoc.info/gems/mysql2/0.4.8#Usage) команд DELETE toorun hello. Затем он вызывает метод [close()](http://www.rubydoc.info/gems/mysql2/0.4.8/Mysql2/Client#close-instance_method) tooclose hello соединения перед завершением работы.
 
-Замените строки `host`, `database`, `username` и `password` собственными значениями. 
+Замените hello `host`, `database`, `username`, и `password` строки собственными значениями. 
 
 ```ruby
 require 'mysql2'
@@ -207,7 +207,7 @@ begin
 
     # Initialize connection object.
     client = Mysql2::Client.new(:host => host, :username => username, :database => database, :password => password)
-    puts 'Successfully created connection to database.'
+    puts 'Successfully created connection toodatabase.'
 
     # Delete data
     resultSet = client.query('DELETE FROM inventory WHERE name = %s;' % ['\'orange\''])

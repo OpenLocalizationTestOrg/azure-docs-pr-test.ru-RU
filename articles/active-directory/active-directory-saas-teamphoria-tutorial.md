@@ -1,6 +1,6 @@
 ---
 title: "Руководство по интеграции Azure Active Directory с Teamphoria | Документация Майкрософт"
-description: "Узнайте, как настроить единый вход Azure Active Directory в Teamphoria."
+description: "Узнайте, как tooconfigure единый вход между Azure Active Directory и Teamphoria."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,117 +13,117 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/07/2017
 ms.author: jeedes
-ms.openlocfilehash: 2a35efb04d7fe22abc6894c149caf090666ce016
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: f32be9742b76f7fe464036dadc108c62e4a787a7
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-teamphoria"></a>Руководство по интеграции Azure Active Directory с Teamphoria
 
-В этом руководстве описано, как интегрировать приложение Teamphoria с Azure Active Directory (Azure AD).
+В этом учебнике вы узнаете, как toointegrate Teamphoria с Azure Active Directory (Azure AD).
 
-Интеграция Azure AD с приложением Teamphoria обеспечивает следующие преимущества.
+Интеграция с Azure AD Teamphoria предоставляет hello следующие преимущества:
 
-- С помощью Azure AD вы можете контролировать доступ к Teamphoria.
-- Вы можете включить автоматический вход пользователей в Teamphoria (единый вход) с применением учетной записи Azure AD.
-- Вы можете управлять учетными записями централизованно — через портал управления Azure.
+- Можно управлять в Azure AD, имеющего доступ tooTeamphoria
+- Можно включить на пользователей tooautomatically get вошедшего tooTeamphoria (Single Sign-On) с помощью своих учетных записей Azure AD
+- Можно управлять учетными записями в одном централизованном месте - hello портал управления Azure
 
-Подробнее узнать об интеграции приложений SaaS с Azure AD можно в статье [Что такое доступ к приложениям и единый вход с помощью Azure Active Directory?](active-directory-appssoaccess-whatis.md).
+Если tooknow Дополнительные сведения об интеграции приложений SaaS в Azure AD, см. [доступ к приложению и единый вход в Azure Active Directory](active-directory-appssoaccess-whatis.md).
 
 <!--## Overview
 
-To enable single sign-on with Teamphoria, it must be configured to use Azure Active Directory as an identity provider. This guide provides information and tips on how to perform this configuration in Teamphoria.
+tooenable single sign-on with Teamphoria, it must be configured toouse Azure Active Directory as an identity provider. This guide provides information and tips on how tooperform this configuration in Teamphoria.
 
 >[!Note]: 
->This embedded guide is brand new in the new Azure portal, and we’d love to hear your thoughts. Use the Feedback ? button at the top of the portal to provide feedback. The older guide for using the [Azure classic portal](https://manage.windowsazure.com) to configure this application can be found [here](https://github.com/Azure/AzureAD-App-Docs/blob/master/articles/en-us/_/sso_configure.md).-->
+>This embedded guide is brand new in hello new Azure portal, and we’d love toohear your thoughts. Use hello Feedback ? button at hello top of hello portal tooprovide feedback. hello older guide for using hello [Azure classic portal](https://manage.windowsazure.com) tooconfigure this application can be found [here](https://github.com/Azure/AzureAD-App-Docs/blob/master/articles/en-us/_/sso_configure.md).-->
 
 
 ## <a name="prerequisites"></a>Предварительные требования
 
-Чтобы настроить интеграцию Azure AD с Teamphoria, вам потребуется:
+tooconfigure интеграция Azure AD с Teamphoria требуется hello следующих элементов:
 
 - подписка Azure AD;
 - подписка Teamphoria с активированной функцией единого входа.
 
 > [!NOTE]
-> Мы не рекомендуем использовать рабочую среду для проверки действий в этом учебнике.
+> в этом учебнике шаги tootest hello, не рекомендуется в рабочей среде.
 
-При проверке действий в этом учебнике соблюдайте следующие рекомендации:
+tootest hello шаги в этом учебнике, необходимо следовать приведенным ниже рекомендациям:
 
 - Не следует использовать рабочую среду при отсутствии необходимости.
 - Если у вас нет пробной среды Azure AD, вы можете получить пробную версию на один месяц по [этой ссылке](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Описание сценария
-В рамках этого руководства проводится проверка единого входа Azure AD в тестовой среде. Сценарий, описанный в этом учебнике, состоит из двух основных блоков:
+В рамках этого руководства проводится проверка единого входа Azure AD в тестовой среде. Hello сценарий, описанный в этом учебнике состоит из двух основных компонентов:
 
-1. Добавление Teamphoria из коллекции
+1. Добавление Teamphoria из галереи hello
 2. Настройка и проверка единого входа в Azure AD
 
-## <a name="adding-teamphoria-from-the-gallery"></a>Добавление Teamphoria из коллекции
-Чтобы настроить интеграцию Teamphoria с Azure AD, необходимо добавить Teamphoria из коллекции в список управляемых приложений SaaS.
+## <a name="adding-teamphoria-from-hello-gallery"></a>Добавление Teamphoria из галереи hello
+tooconfigure hello интеграции Teamphoria в Azure AD, вы должны tooadd Teamphoria из списка tooyour коллекции hello управляемых приложений SaaS.
 
-**Чтобы добавить Teamphoria из коллекции, сделайте следующее:**
+**tooadd Teamphoria из галереи hello, выполните следующие шаги hello.**
 
-1. На **[портале управления Azure](https://portal.azure.com)** в левой области навигации нажмите значок **Azure Active Directory**. 
+1. В hello  **[портала управления Azure](https://portal.azure.com)**на левой навигационной панели hello, нажмите кнопку **Azure Active Directory** значок. 
 
     ![Active Directory][1]
 
-2. Перейдите к разделу **Корпоративные приложения**. Затем выберите **Все приложения**.
+2. Перейдите в слишком**корпоративных приложений**. Затем перейдите слишком**все приложения**.
 
     ![Приложения][2]
     
-3. Нажмите кнопку **Добавить** в верхней части диалогового окна.
+3. Нажмите кнопку **добавить** кнопку в верхней части hello диалогового окна "hello".
 
     ![Приложения][3]
 
-4. В поле поиска введите **Teamphoria**.
+4. Введите в поле поиска hello **Teamphoria**.
 
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-teamphoria-tutorial/tutorial_teamphoria_search.png)
 
-5. На панели результатов выберите **Teamphoria** и нажмите кнопку **Добавить**, чтобы добавить приложение.
+5. В панели результатов hello выберите **Teamphoria**и нажмите кнопку **добавить** кнопку tooadd приложения hello.
 
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-teamphoria-tutorial/tutorial_teamphoria_addfromgallery.png)
 
 ##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Настройка и проверка единого входа в Azure AD
 В этом разделе описана настройка и проверка единого входа Azure AD в Teamphoria с использованием тестового пользователя Britta Simon.
 
-Чтобы единый вход работал, в Azure AD необходимо указать, какой пользователь в Teamphoria соответствует пользователю в Azure AD. Иными словами, необходимо установить связь между пользователем в Azure AD и соответствующим пользователем в Teamphoria.
+Для единого входа toowork Azure AD необходима tooknow пользователь аналог какие hello в Teamphoria является tooa в Azure AD. Другими словами связи между пользователя Azure AD и связанных пользователей hello в Teamphoria должен установить toobe.
 
-Чтобы установить эту связь, следует назначить **имя пользователя** в Azure AD в качестве значения **имени пользователя** в Teamphoria.
+Эта связь связь устанавливается путем назначения hello значение hello **имя пользователя** в Azure AD в качестве значения hello hello **Username** в Teamphoria.
 
-Чтобы настроить и проверить единый вход Azure AD в Teamphoria, вам потребуется выполнить действия в следующих стандартных блоках:
+tooconfigure и теста Azure AD единого входа с Teamphoria, требуются следующие стандартные блоки hello toocomplete:
 
-1. **[Настройка единого входа в Azure AD](#configuring-azure-ad-single-sign-on)** необходима, чтобы пользователи могли использовать эту функцию.
-2. **[Создание тестового пользователя Azure AD](#creating-an-azure-ad-test-user)** требуется для проверки работы единого входа Azure AD от имени пользователя Britta Simon.
-3. **[Создание тестового пользователя Teamphoria](#creating-a-teamphoria-test-user)** требуется для создания пользователя Britta Simon в Teamphoria, связанного с соответствующим пользователем в Azure AD.
-4. **[Назначение тестового пользователя Azure AD](#assigning-the-azure-ad-test-user)** необходимо, чтобы позволить Britta Simon использовать единый вход Azure AD.
-5. **[Testing Single Sign-On](#testing-single-sign-on)** необходима, чтобы убедиться в корректной работе конфигурации.
+1. **[Настройка Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**  -tooenable вашей toouse пользователи этой функции.
+2. **[Создание тестового пользователя Azure AD](#creating-an-azure-ad-test-user)**  -tootest Azure AD единого входа с Саймон Britta.
+3. **[Создание тестового пользователя Teamphoria](#creating-a-teamphoria-test-user)**  -toohave аналог Саймон Britta в Teamphoria, представление связанных toohello Azure AD ей.
+4. **[Назначение hello Azure AD тестового пользователя](#assigning-the-azure-ad-test-user)**  -tooenable Britta Simon toouse Azure AD единым входом.
+5. **[Тестирование единого входа](#testing-single-sign-on)**  -tooverify ли hello works конфигурации.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Настройка единого входа в Azure AD
 
-В данном разделе описано, как включить единый вход Azure AD на портале управления Azure, а также как его настроить в приложении Teamphoria.
+В этом разделе включения Azure AD единым входом в портал управления Azure hello и настройки единого входа в приложении Teamphoria.
 
-**Чтобы настроить единый вход Azure AD в Teamphoria, сделайте следующее:**
+**tooconfigure Azure AD единого входа с Teamphoria, выполните следующие шаги hello.**
 
-1. На портале управления Azure на странице интеграции с приложением **Teamphoria** щелкните **Единый вход**.
+1. На портале управления Azure hello на hello **Teamphoria** странице интеграции приложения щелкните **единого входа**.
 
     ![Настройка единого входа][4]
 
-2. В диалоговом окне **Единый вход** в разделе **Режим** выберите **Вход на основе SAML**, чтобы включить функцию единого входа.
+2. На hello **единого входа** диалогового окна, как **режим** выберите **входа на базе SAML** tooenable единого входа.
  
     ![Настройка единого входа](./media/active-directory-saas-teamphoria-tutorial/tutorial_teamphoria_samlbase.png)
 
-3. В разделе **Домены и URL-адреса приложения Teamphoria** сделайте следующее.
+3. На hello **URL-адреса и домена Teamphoria** выполните следующие шаги hello:
 
     ![Настройка единого входа](./media/active-directory-saas-teamphoria-tutorial/tutorial_teamphoria_url.png)
 
-    А. В текстовом поле **URL-адрес для входа** введите URL-адрес в следующем формате: `https://<sub-domain>.teamphoria.com/login`.    
+    а. В hello **URL-адрес входа** textbox hello введите URL-адрес, используя следующий шаблон hello:`https://<sub-domain>.teamphoria.com/login`  
 
     > [!NOTE] 
-    > Обратите внимание, что значения, указанные выше, используются в качестве примера. Их необходимо заменить фактическим URL-адресом входа. Чтобы получить его, обратитесь в [службу поддержки клиентов Teamphoria](https://www.teamphoria.com/). 
+    > Обратите внимание на то, что они не hello реальные значения. Имеется tooupdate эти значения с hello фактический URL-адрес входа. Обратитесь к [группа поддержки клиента Teamphoria](https://www.teamphoria.com/) tooget hello входа URL-адрес. 
 
-4. В разделе **Сертификат подписи SAML** щелкните **(Base64)**, а затем сохраните файл сертификата на компьютере.
+4. На hello **сертификат подписи SAML** щелкните **сертификата (Base64)** и сохраните hello сертификата на компьютере.
 
     ![Настройка единого входа](./media/active-directory-saas-teamphoria-tutorial/tutorial_teamphoria_certificate.png) 
 
@@ -131,91 +131,91 @@ To enable single sign-on with Teamphoria, it must be configured to use Azure Act
 
     ![Настройка единого входа](./media/active-directory-saas-teamphoria-tutorial/tutorial_general_400.png)
 
-6. В разделе **Настройка Teamphoria** щелкните **Настройка Teamphoria**, чтобы открыть окно **Настройка единого входа**. Скопируйте **URL-адрес службы единого входа SAML** из раздела **Краткий справочник**.
+6. На hello **конфигурации Teamphoria** щелкните **Настройка Teamphoria** tooopen **Настройка входа** окна. Копировать hello **SAML единого входа URL-адрес службы** из hello **краткий справочник.**
 
     ![Настройка единого входа](./media/active-directory-saas-teamphoria-tutorial/tutorial_teamphoria_configure.png) 
 
-7. Для настройки единого входа в **Teamphoria** войдите в приложение Teamphoria с правами администратора.
+7. tooconfigure единого входа на **Teamphoria** стороны, приложения Teamphoria tooyour входа в систему с правами администратора.
 
-8. Перейдите к пункту **Параметры администратора** в левой панели инструментов и в области вкладки настройки щелкните **Единый вход**, чтобы открыть окно настройки единого входа.
+8. Go слишком**параметры АДМИНИСТРИРОВАНИЯ** параметр в левой панели инструментов hello и постоянно hello hello, настройте нажмите на **ЕДИНОГО входа** tooopen hello SSO конфигурации окна.
 
     ![Настройка единого входа](./media/active-directory-saas-teamphoria-tutorial/admin_sso_configure.png)
 
-9. Щелкните параметр **ADD NEW IDENTITY PROVIDER** (Добавить нового поставщика удостоверений) в верхнем правом углу, чтобы открыть форму для добавления параметров единого входа.
+9. Щелкните **Добавление ПОСТАВЩИКА УДОСТОВЕРЕНИЙ** параметр в форме hello tooopen hello правом верхнем углу для добавления параметров hello для единого входа.
 
     ![Настройка единого входа](./media/active-directory-saas-teamphoria-tutorial/add_new_identity_provider.png)
 
-10. Введите сведения в полях, как описано ниже.
+10. Введите сведения о hello в полях hello, как описано ниже-
 
     ![Настройка единого входа](./media/active-directory-saas-teamphoria-tutorial/Teamphoria_sso_save.png)
 
-    А. **Отображаемое имя.** Введите отображаемое имя подключаемого модуля на странице администрирования.
+    а. **ОТОБРАЖАЕМОЕ имя** : hello отображаемое имя подключаемого модуля hello на странице администрирования hello.
 
-    b. **BUTTON NAME** (Имя кнопки). Имя вкладки, которая будет отображаться на странице входа при едином входе.
+    b. **ИМЯ кнопки** : hello имя вкладки hello, которая будет отображаться на странице входа hello для ведения журнала во единого входа.
 
-    c. **Сертификат.** Откройте сертификат, скачанный ранее, на портале Azure в блокноте, скопируйте его содержимое и вставьте в поле.
+    c. **СЕРТИФИКАТ** : Привет открыть сертификата загружен ранее из hello портал Azure в блокноте, скопируйте содержимое hello hello же и вставьте его в поле hello.
 
-    d. **Точка входа.** Вставьте **URL-адрес службы единого входа SAML**, скопированный ранней на портале Azure.
+    d. **ТОЧКА входа** : hello вставить **SAML единого входа URL-адрес службы** копируются ранней формы hello портал Azure.
 
-    д. Установите переключатель в положение **Вкл.** и нажмите кнопку **Сохранить**.   
+    д. Переключение hello параметр слишком**ON** и выберите команду **Сохранить**. 
 
 <!--### Next steps
 
-To ensure users can sign-in to Teamphoria after it has been configured to use Azure Active Directory, review the following tasks and topics:
+tooensure users can sign-in tooTeamphoria after it has been configured toouse Azure Active Directory, review hello following tasks and topics:
 
-- User accounts must be pre-provisioned into Teamphoria prior to sign-in. To set this up, see Provisioning.
+- User accounts must be pre-provisioned into Teamphoria prior toosign-in. tooset this up, see Provisioning.
  
-- Users must be assigned access to Teamphoria in Azure AD to sign-in. To assign users, see Users.
+- Users must be assigned access tooTeamphoria in Azure AD toosign-in. tooassign users, see Users.
  
-- To configure access polices for Teamphoria users, see Access Policies.
+- tooconfigure access polices for Teamphoria users, see Access Policies.
  
-- For additional information on deploying single sign-on to users, see [this article](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-appssoaccess-whatis#deploying-azure-ad-integrated-applications-to-users).-->
+- For additional information on deploying single sign-on toousers, see [this article](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-appssoaccess-whatis#deploying-azure-ad-integrated-applications-to-users).-->
 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Создание тестового пользователя Azure AD
-Цель этого раздела — создать на портале управления Azure тестового пользователя с именем Britta Simon.
+Цель этого раздела Hello — toocreate тестового пользователя на портале управления Azure hello, вызывается Саймон Britta.
 
 ![Создание пользователя Azure AD][100]
 
-**Чтобы создать тестового пользователя в Azure AD, выполните следующие действия:**
+**toocreate тестового пользователя в Azure AD, выполните следующие шаги hello.**
 
-1. На **портале управления Azure** в области навигации слева щелкните значок **Azure Active Directory**.
+1. В hello **портал управления Azure**, на левой панели навигации hello, нажмите кнопку **Azure Active Directory** значок.
 
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-teamphoria-tutorial/create_aaduser_01.png) 
 
-2. Перейдите в раздел **Пользователи и группы** и щелкните **Все пользователи**, чтобы отобразить список пользователей.
+2. Go слишком**пользователей и групп** и нажмите кнопку **всех пользователей** toodisplay hello список пользователей.
     
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-teamphoria-tutorial/create_aaduser_02.png) 
 
-3. В верхней части диалогового окна щелкните **Добавить**, чтобы открыть диалоговое окно **Пользователь**.
+3. Вверху hello диалоговое окно приветствия щелкните **добавить** tooopen hello **пользователя** диалогового окна.
  
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-teamphoria-tutorial/create_aaduser_03.png) 
 
-4. На странице диалогового окна **Пользователь** выполните следующие действия.
+4. На hello **пользователя** диалогового окна выполните следующие шаги hello:
  
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-teamphoria-tutorial/create_aaduser_04.png) 
 
-    а. В текстовом поле **Имя** введите **BrittaSimon**.
+    а. В hello **имя** введите **BrittaSimon**.
 
-    b. В текстовом поле **Имя пользователя** введите **адрес электронной почты** учетной записи BrittaSimon.
+    b. В hello **имя пользователя** в текстовое поле типа hello **адрес электронной почты** из BrittaSimon.
 
-    c. Выберите **Показать пароль** и запишите значение поля **Пароль**.
+    c. Выберите **Показать пароль** и запишите значение hello hello **пароль**.
 
     d. Щелкните **Создать**.
  
 ### <a name="creating-a-teamphoria-test-user"></a>Создание тестового пользователя Teamphoria
 
-Чтобы пользователи Azure AD могли выполнить вход в Teamphoria, они должны быть подготовлены в Teamphoria. В случае с Teamphoria подготовка выполняется вручную.
+В порядке tooenable toolog пользователей Azure AD в Teamphoria их необходимо подготовить в Teamphoria. В случае Teamphoria hello Подготовка выполняется вручную.
 
-**Чтобы подготовить учетные записи пользователей, выполните следующие действия.**
+**tooprovision учетных записей пользователей, выполните следующие действия hello:**
 
-1. Войдите на веб-сайт Teamphoria вашей компании в качестве администратора.
+1. Войдите в систему tooyour Teamphoria сайт компании как администратор.
 
-2. Щелкните **параметры администратора** на левой панели и на вкладке **Управление** щелкните **Пользователи**, чтобы открыть страницу администрирования для пользователей.
+2. Щелкните **АДМИНИСТРАТОРА** параметры на левой панели инструментов hello и внутри hello **УПРАВЛЕНИЕ** вкладке щелкните на **пользователей** страницу администрирования hello tooopen для пользователей.
 
     ![Добавление сотрудника](./media/active-directory-saas-teamphoria-tutorial/admin_manage_users.png)
 
-3. Щелкните **MANUAL INVITE** (Пригласить вручную).
+3. Щелкните hello **ПРИГЛАСИТЬ вручную** параметр.
 
     ![Приглашение пользователей](./media/active-directory-saas-teamphoria-tutorial/admin_manage_add_users.png)  
 
@@ -223,31 +223,31 @@ To ensure users can sign-in to Teamphoria after it has been configured to use Az
     
     ![Приглашение пользователей](./media/active-directory-saas-teamphoria-tutorial/manual_user_invite.png)  
 
-    а. В текстовом поле **Адрес электронной почты** находится **электронный адрес** пользователя Britta Simon.
+    а. В hello **адрес электронной почты** текстовом hello **адрес электронной почты** из BrittaSimon.
 
-    b. В текстовом поле **Имя** введите **Britta**.
+    b. В hello **имя** введите **Britta**.
 
-    c. В текстовом поле **Фамилия** введите **Simon**.
+    c. В hello **ФАМИЛИЯ** введите **Simon**.
 
-    d. Нажмите кнопку **INVITE 1 USER** (Пригласить одного пользователя). Пользователь должен принять приглашение, чтобы его создали в системе.
+    d. Нажмите кнопку **INVITE 1 USER** (Пригласить одного пользователя). Пользователь должен tooget приглашение hello tooaccept, созданные в системе hello.
 
-### <a name="assigning-the-azure-ad-test-user"></a>Назначение тестового пользователя Azure AD
+### <a name="assigning-hello-azure-ad-test-user"></a>Назначение hello Azure AD тестового пользователя
 
-В этом разделе описано, как предоставить пользователю Britta Simon доступ к Teamphoria, чтобы он мог использовать единый вход Azure.
+В этом разделе включите toouse Britta Simon Azure единого входа путем предоставления ее tooTeamphoria доступа.
 
 ![Назначение пользователя][200] 
 
-**Чтобы назначить пользователя Britta Simon в Teamphoria, сделайте следующее:**
+**tooassign tooTeamphoria Britta Simon выполните следующие шаги hello.**
 
-1. На портале управления Azure откройте представление приложений, перейдите к представлению каталога, а затем выберите **Корпоративные приложения** и щелкните **Все приложения**.
+1. На портале управления Azure hello, открыть представление приложения hello, а затем перейдите toohello представления каталога и перейти слишком**корпоративных приложений** щелкните **все приложения**.
 
     ![Назначение пользователя][201] 
 
-2. Из списка приложений выберите **Teamphoria**.
+2. В списке приложений hello выберите **Teamphoria**.
 
     ![Настройка единого входа](./media/active-directory-saas-teamphoria-tutorial/tutorial_teamphoria_app.png) 
 
-3. В меню слева выберите **Пользователи и группы**.
+3. В меню слева hello hello выберите **пользователей и групп**.
 
     ![Назначение пользователя][202] 
 
@@ -255,7 +255,7 @@ To ensure users can sign-in to Teamphoria after it has been configured to use Az
 
     ![Назначение пользователя][203]
 
-5. В диалоговом окне **Пользователи и группы** в списке пользователей выберите **Britta Simon**.
+5. На **пользователей и групп** диалогового окна выберите **Britta Simon** в список пользователей hello.
 
 6. В диалоговом окне **Пользователи и группы** нажмите кнопку **Выбрать**.
 
@@ -263,13 +263,13 @@ To ensure users can sign-in to Teamphoria after it has been configured to use Az
     
 ### <a name="testing-single-sign-on"></a>Проверка единого входа
 
-В этом разделе описано, как проверить конфигурацию единого входа Azure AD с помощью панели доступа.
+В этом разделе тестирования конфигурации Azure AD единого входа с помощью панели доступа hello.
 
 Если вы хотите проверить параметры единого входа, откройте панель доступа. Дополнительные сведения о панели доступа можно найти в статье [Общие сведения о панели доступа](https://msdn.microsoft.com/library/dn308586). 
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
-* [Список учебников по интеграции приложений SaaS с Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Список учебников по tooIntegrate приложений SaaS в Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Что такое доступ к приложениям и единый вход с помощью Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 

@@ -1,6 +1,6 @@
 ---
-title: "Начало работы с Hadoop и Hive в Azure HDInsight | Документация Майкрософт"
-description: "Узнайте, как создать кластеры HDInsight и запросить данные с помощью Hive."
+title: "aaaGet к Hadoop и Hive в Azure HDInsight | Документы Microsoft"
+description: "Узнайте, как кластеры toocreate HDInsight и запроса данных с Hive."
 keywords: "начало работы с hadoop, hadoop под управлением linux, краткое руководство по hadoop, начало работы с hive, краткое руководство по hive"
 services: hdinsight
 documentationcenter: 
@@ -17,73 +17,73 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 08/23/2017
 ms.author: jgao
-ms.openlocfilehash: fd9e6dcea6524f55c1bd06da35f02be5670bf95f
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 3d96d78121200ebda3626dd2c3885e3ddacd546d
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="hadoop-tutorial-get-started-using-hadoop-in-hdinsight"></a>Руководство по Hadoop. Приступая к работе с Hadoop в HDInsight
 
-Узнайте, как создавать кластеры [Hadoop](http://hadoop.apache.org/) в HDInsight и запускать задания Hive в HDInsight. [Apache Hive](https://hive.apache.org/) — это самый популярный компонент экосистемы Hadoop. В настоящее время в HDInsight доступно [семь типов кластеров](hdinsight-hadoop-introduction.md#overview). Каждый тип кластера поддерживает свой набор компонентов. Все типы кластеров поддерживают инфраструктуру Hive. Дополнительные сведения о поддерживаемых компонентах в HDInsight см. в статье [Что представляют собой различные компоненты Hadoop, доступные в HDInsight?](hdinsight-component-versioning.md)  
+Узнайте, как toocreate [Hadoop](http://hadoop.apache.org/) кластеров HDInsight и способ задания toorun Hive в HDInsight. [Apache Hive](https://hive.apache.org/) — наиболее популярных компонент hello в экосистеме Hadoop hello. В настоящее время в HDInsight доступно [семь типов кластеров](hdinsight-hadoop-introduction.md#overview). Каждый тип кластера поддерживает свой набор компонентов. Все типы кластеров поддерживают инфраструктуру Hive. Список поддерживаемых компонентов в HDInsight см. в разделе [новые возможности версии кластера Hadoop hello, предоставляемые HDInsight?](hdinsight-component-versioning.md)  
 
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
 ## <a name="prerequisites"></a>Предварительные требования
 Для работы с этим руководством вам потребуется:
 
-* **Подписка Azure**: чтобы создать бесплатную пробную учетную запись (на один месяц), перейдите по адресу [azure.microsoft.com/free](https://azure.microsoft.com/free).
+* **Подписка Azure**: toocreate свободного один месяц пробную учетную запись, Обзор слишком[azure.microsoft.com/free](https://azure.microsoft.com/free).
 
 ## <a name="create-cluster"></a>Создание кластера
 
-Большинство заданий Hadoop — пакетные. Вы создаете кластер, выполняете несколько заданий, а затем удаляете его. В этом разделе вы создадите в HDInsight кластер Hadoop, используя [шаблон Azure Resource Manager](../azure-resource-manager/resource-group-template-deploy.md). Знакомство с шаблонами Resource Manager не является обязательным для работы с этим руководством. Сведения о других способах создания кластеров, а также о свойствах, используемых в этом руководстве, см. в статье [Создание кластеров Hadoop под управлением Linux в HDInsight](hdinsight-hadoop-provision-linux-clusters.md). Воспользуйтесь селектором в верхней части страницы, чтобы выбрать параметры создания кластера.
+Большинство заданий Hadoop — пакетные. Создание кластера, выполнение некоторых заданий и затем удалить кластер hello. В этом разделе вы создадите в HDInsight кластер Hadoop, используя [шаблон Azure Resource Manager](../azure-resource-manager/resource-group-template-deploy.md). Знакомство с шаблонами Resource Manager не является обязательным для работы с этим руководством. Для других методов создания кластера и общие сведения о свойствах hello, используемые в этом учебнике, см. [HDInsight, создания кластеров](hdinsight-hadoop-provision-linux-clusters.md). Используйте hello выбора над hello toochoose страницы приветствия варианты создания кластера.
 
-Используемый в этом руководстве шаблон Resource Manager расположен на портале [GitHub](https://azure.microsoft.com/resources/templates/101-hdinsight-linux-ssh-password/). 
+Hello шаблона диспетчера ресурсов, используемые в этом учебнике находится в [GitHub](https://azure.microsoft.com/resources/templates/101-hdinsight-linux-ssh-password/). 
 
-1. Щелкните следующее изображение, чтобы войти в Azure и открыть шаблон Resource Manager на портале Azure. 
+1. Щелкните hello toosign образа в tooAzure и откройте hello шаблона диспетчера ресурсов в hello портал Azure. 
    
-    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-linux-ssh-password%2Fazuredeploy.json" target="_blank"><img src="./media/hdinsight-hadoop-linux-tutorial-get-started/deploy-to-azure.png" alt="Deploy to Azure"></a>
-2. Введите или выберите следующие значения:
+    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-linux-ssh-password%2Fazuredeploy.json" target="_blank"><img src="./media/hdinsight-hadoop-linux-tutorial-get-started/deploy-to-azure.png" alt="Deploy tooAzure"></a>
+2. Введите или выберите hello следующие значения:
    
-    ![Шаблон Resource Manager для начала работы с HDInsight под управлением Linux на портале](./media/hdinsight-hadoop-linux-tutorial-get-started/hdinsight-linux-get-started-arm-template-on-portal.png "Развертывание кластера Hadoop в HDInsight с помощью портала Azure и шаблона диспетчера группы ресурсов")
+    ![Начало HDInsight Linux работы шаблона диспетчера ресурсов на портале](./media/hdinsight-hadoop-linux-tutorial-get-started/hdinsight-linux-get-started-arm-template-on-portal.png "hello кластера Hadoop развертывание в HDInsigut с помощью портала Azure и шаблона диспетчера ресурсов группы").
    
     * **Подписка**. Выберите подписку Azure.
-    * **Группа ресурсов.** Создайте группу ресурсов Azure или выберите имеющуюся.  Группа ресурсов — это контейнер компонентов Azure.  В этом случае группа ресурсов содержит кластер HDInsight и зависимую учетную запись службы хранилища Azure. 
-    * **Расположение.** Выберите расположение Azure для создания кластера.  Выберите ближайшее к себе расположение для повышения производительности. 
+    * **Группа ресурсов.** Создайте группу ресурсов Azure или выберите имеющуюся.  Группа ресурсов — это контейнер компонентов Azure.  В этом случае группа ресурсов hello содержит кластер HDInsight hello и hello зависимых учетную запись хранилища Azure. 
+    * **Расположение**: выберите расположение Azure место toocreate кластера.  Выберите расположение ближе tooyou для повышения производительности. 
     * **Тип кластера**. Для работы с этим руководством выберите **Hadoop**.
-    * **Имя кластера**: введите имя кластера Hadoop.
-    * **Имя для входа и пароль кластера**: имя для входа по умолчанию — **admin**.
-    * **Имя пользователя SSH и пароль**: по умолчанию используется имя **sshuser**.  Это имя можно изменить. 
+    * **Имя кластера**: Введите имя для кластера Hadoop hello.
+    * **Имя входа и пароль кластера**: имя для входа по умолчанию hello **администратора**.
+    * **SSH имя пользователя и пароль**: имя пользователя по умолчанию hello **sshuser**.  Это имя можно изменить. 
      
-    Некоторые свойства жестко заданы в шаблоне.  Эти значения можно настроить из шаблона.
+    Некоторые свойства были жестко задано в шаблоне hello.  Вы можете настроить эти значения на основе шаблона hello.
 
-    * **Расположение.** Кластер и зависимая учетная запись хранения используют то же расположение, что и группа ресурсов.
+    * **Расположение**: hello расположение кластера hello и hello ресурс учетной записи службы хранилища зависимых hello местоположения hello группы ресурсов.
     * **Версия кластера**: 3.5.
     * **Тип ОС**: Linux.
     * **Количество рабочих узлов**: 2.
 
-     У каждого кластера есть зависимость [учетной записи хранения Azure](hdinsight-hadoop-use-blob-storage.md) или [учетной записи Azure Data Lake](hdinsight-hadoop-use-data-lake-store.md). Она называется учетной записью хранения по умолчанию. Кластер HDInsight должен находиться в том же регионе Azure, что и его учетная запись хранения, используемая по умолчанию. Удаление кластеров не приведет к удалению учетной записи хранения. 
+     У каждого кластера есть зависимость [учетной записи хранения Azure](hdinsight-hadoop-use-blob-storage.md) или [учетной записи Azure Data Lake](hdinsight-hadoop-use-data-lake-store.md). Она называется учетной записи хранения по умолчанию hello. Кластер HDInsight и ее учетную запись хранения по умолчанию должна быть размещена в hello же регионе Azure. Удаление кластеров не приводит к удалению учетной записи хранилища hello. 
      
      Дополнительные сведения об этих свойствах см. в инструкциях по [созданию кластеров Hadoop в HDInsight](hdinsight-hadoop-provision-linux-clusters.md).
 
-3. Установите флажок **Я принимаю указанные выше условия** и **Закрепить на панели мониторинга** и нажмите кнопку **Приобрести**. На панели мониторинга портала появится новый элемент под названием **Deploying Template deployment** (Развертывание для развертывания шаблона). Процесс создания кластера занимает около 20 минут. После создания кластера заголовок элемента меняется на имя группы ресурсов, которое вы указали. Кроме того, на портале группа ресурсов автоматически откроется в новой колонке. Отобразятся кластер и хранилище по умолчанию.
+3. Выберите **я принимаю условия, указанных выше, toohello** и **toodashboard ПИН-код**, а затем нажмите кнопку **покупки**. Вы увидите новую плитку под названием **развертывание шаблона-развертывания** на панели мониторинга портала hello. Это занимает около toocreate около 20 минут кластера. После создания кластера hello заголовок hello hello плитки используется измененные toohello ресурсов группы с указанным именем. И группа ресурсов hello автоматически откроется портал hello в Новая колонка. Вы увидите кластера hello и хранения по умолчанию hello в списке.
    
     ![Группа ресурсов при начале работы с HDInsight под управлением Linux](./media/hdinsight-hadoop-linux-tutorial-get-started/hdinsight-linux-get-started-resource-group.png "Группа ресурсов кластера Azure HDInsight")
 
-4. Щелкните имя кластера, чтобы открыть его в колонке.
+4. Щелкните hello имя tooopen hello кластера в новый колонку.
 
    ![Параметры кластера при начале работы с HDInsight под управлением Linux](./media/hdinsight-hadoop-linux-tutorial-get-started/hdinsight-linux-get-started-cluster-settings.png "Свойства кластера HDInsight")
 
 
 ## <a name="run-hive-queries"></a>Выполнение запросов Hive
-[Apache Hive](hdinsight-use-hive.md) — это самый популярный компонент службы HDInsight. Существует множество способов выполнения заданий Hive в HDInsight. В этом руководстве используется представление Hive Ambari на портале. Другие способы отправки заданий Hive описаны в статье [Использование Hive в HDInsight](hdinsight-use-hive.md).
+[Apache Hive](hdinsight-use-hive.md) — hello наиболее популярных компонент, используемый в HDInsight. Существует множество способов toorun задания Hive в HDInsight. В этом учебнике используется hello представление Ambari Hive с портала hello. Другие способы отправки заданий Hive описаны в статье [Использование Hive в HDInsight](hdinsight-use-hive.md).
 
-1. Щелкните **Панель мониторинга кластера** и **Панель мониторинга кластера HDInsight**, как показано на предыдущем снимке экрана.  Чтобы открыть Ambari, можно также перейти по ссылке **https://&lt;ClusterName>.azurehdinsight.net**, где &lt;ClusterName> — это кластер, созданный в предыдущем разделе.
-2. Введите имя пользователя Hadoop и пароль, указанные в предыдущем разделе. Имя пользователя по умолчанию — **admin**.
-3. Откройте **представление Hive** , как показано на снимке экрана ниже:
+1. Из предыдущего снимка экрана приветствия щелкните **мониторинга кластера**, а затем нажмите кнопку **мониторинга кластера HDInsight**.  Можно также просмотреть слишком **https://&lt;Имя_кластера >. azurehdinsight.net**, где &lt;Имя_кластера > — hello кластер, созданный в предыдущей tooopen раздел Ambari hello.
+2. Введите hello Hadoop пользователя и пароль, указанный в предыдущем разделе hello. имя пользователя по умолчанию Hello **администратора**.
+3. Откройте **Hive представление** как показано на следующий снимок экрана приветствия:
    
     ![Выбор представления Ambari](./media/hdinsight-hadoop-linux-tutorial-get-started/selecthiveview.png "Меню представления Hive в HDInsight")
-4. На странице в разделе **Редактор запросов** вставьте в рабочий лист следующие инструкции HiveQL:
+4. В hello **редактора запросов** раздел страницы приветствия, hello вставьте следующие инструкции HiveQL лист hello:
    
         SHOW TABLES;
    
@@ -91,65 +91,65 @@ ms.lasthandoff: 08/29/2017
    > Для Hive требуется точка с запятой.       
    > 
    > 
-5. Нажмите **Execute (Выполнить)**. Под окном редактора запросов появится раздел **Query Process Results** (Результаты обработки запроса), содержащий сведения о выполнении задания. 
+5. Нажмите **Execute (Выполнить)**. Объект **результаты процесса запроса** раздел должен отображаются под hello редактора запросов и отобразить сведения о задании hello. 
    
-    Когда запрос будет выполнен, в разделе с **результатами обработки запроса** появятся результаты операции. Вы увидите одну таблицу с именем **hivesampletable**. Этот пример таблицы Hive входит в состав всех кластеров HDInsight.
+    После завершения запроса hello, hello **результаты процесса запроса** раздел отображает hello результаты операции hello. Вы увидите одну таблицу с именем **hivesampletable**. Этот образец таблицы Hive поставляется с всех кластеров HDInsight hello.
    
     ![Представление Hive в HDInsight](./media/hdinsight-hadoop-linux-tutorial-get-started/hiveview.png "Редактор запросов представления Hive в HDInsight")
-6. Повторите шаги 4 и 5 и выполните следующий запрос.
+6. Повторите шаги 4 и следующем запросе hello toorun шаг 5:
    
         SELECT * FROM hivesampletable;
    
    > [!TIP]
-   > Обратите внимание на раскрывающийся список **Сохранить результаты**, расположенный в разделе **Query Process Results** (Результаты обработки запроса) слева вверху. Этот список можно использовать для скачивания или сохранения результатов в хранилище HDInsight в формате CSV-файла.
+   > Примечание hello **сохранить результаты** раскрывающийся список в hello верхнего левого угла hello **результаты процесса запроса** статьи; использовать этот результаты hello tooeither загрузки или сохранить tooHDInsight хранилища в CSV-файл.
    > 
    > 
-7. Щелкните **журнал** для получения списка заданий.
+7. Нажмите кнопку **журнал** tooget список заданий hello.
 
-Когда задание Hive будет завершено, вы сможете [экспортировать результаты в базу данных SQL Azure или базу данных SQL Server](hdinsight-use-sqoop-mac-linux.md) либо [визуализировать их с помощью Excel](hdinsight-connect-excel-power-query.md). Дополнительные сведения об использовании Hive в HDInsight см. в статье [Использование Hive и HiveQL с Hadoop в HDInsight для анализа примера файла Apache log4j](hdinsight-use-hive.md).
+После завершения задания Hive можно [экспортировать базу данных SQL tooAzure результатов hello или базы данных SQL Server](hdinsight-use-sqoop-mac-linux.md), вы также можете [визуализировать результаты hello, с помощью Excel](hdinsight-connect-excel-power-query.md). Дополнительные сведения об использовании Hive в HDInsight см. в разделе [используйте Hive и HiveQL на Hadoop в HDInsight tooanalyze Apache log4j образец файла](hdinsight-use-hive.md).
 
-## <a name="clean-up-the-tutorial"></a>Очистка учебника
-После завершения работы с этим руководством кластер можно удалить. В случае с HDInsight ваши данные хранятся в службе хранилища Azure, что позволяет безопасно удалить неиспользуемый кластер. Плата за кластеры HDInsight взимается, даже когда они не используются. Поскольку стоимость кластера во много раз превышает стоимость хранилища, экономически целесообразно удалять неиспользуемые кластеры. 
+## <a name="clean-up-hello-tutorial"></a>Очистка hello учебника
+После завершения учебника hello, вы можете toodelete hello кластера. В случае с HDInsight ваши данные хранятся в службе хранилища Azure, что позволяет безопасно удалить неиспользуемый кластер. Плата за кластеры HDInsight взимается, даже когда они не используются. Поскольку плата hello для кластера hello много раз больше, чем hello плата за хранилище, экономически выгодно toodelete кластеры, когда они не используются. 
 
 > [!NOTE]
-> С помощью [фабрики данных Azure](hdinsight-hadoop-create-linux-clusters-adf.md) можно создать кластеры HDInsight по требованию, а также настроить параметр TimeToLive, чтобы автоматически удалять кластеры. 
+> С помощью [фабрики данных Azure](hdinsight-hadoop-create-linux-clusters-adf.md), можно создать кластеры HDInsight по требованию, а также настроить TimeToLive параметр слишком кластеров hello автоматического удаления. 
 > 
 > 
 
-**Удаление кластера и/или учетной записи хранения по умолчанию**
+**toodelete hello кластера и/или hello по умолчанию учетная запись хранения**
 
-1. Войдите на [портал Azure](https://portal.azure.com).
-2. На панели мониторинга щелкните элемент с именем группы ресурсов, с помощью которой вы создали кластер.
-3. Щелкните **Удалить** в колонке ресурсов, чтобы удалить группу ресурсов, которая содержит кластер и учетную запись хранения по умолчанию. Или щелкните имя кластера в элементе **Ресурсы** и щелкните **Удалить** в колонке кластера. Обратите внимание, что удаление группы ресурсов приводит к удалению учетной записи хранения. Если вы хотите сохранить учетную запись хранения, удалите только кластер.
+1. Войдите в toohello [портал Azure](https://portal.azure.com).
+2. Из панели мониторинга портала hello щелкните плитку hello с именем группы ресурсов hello, которая использовалась при создании кластера hello.
+3. Нажмите кнопку **удаление** hello колонке toodelete hello группу ресурсов, содержащий hello кластера и учетной записи хранения по умолчанию hello, или щелкните имя кластера hello на hello **ресурсов** плитку, а затем нажмите кнопку **Удалить** колонке hello кластера. Удаление группы ресурсов hello Примечание Удаляет учетную запись хранения hello. Учетная запись хранения tookeep hello, выберите toodelete только hello кластера.
 
 ## <a name="troubleshoot"></a>Устранение неполадок
 
 Если при создании кластеров HDInsight возникли проблемы, см. раздел [Создание кластеров](hdinsight-administer-use-portal-linux.md#create-clusters).
 
 ## <a name="next-steps"></a>Дальнейшие действия
-В этом руководстве вы узнали, как с помощью шаблона Resource Manager создать кластер HDInsight под управлением Linux и как выполнять базовые запросы Hive.
+В этом учебнике вы изучили toocreate HDInsight под управлением Linux кластера с помощью шаблона диспетчера ресурсов, а также и tooperform простых запросов Hive.
 
-Дополнительные сведения об анализе данных с помощью HDInsight см. в следующих статьях.
+toolearn Дополнительные сведения об анализе данных с HDInsight, см. следующие статьи hello.
 
-* Дополнительные сведения об использовании Hive с HDInsight, включая выполнение запросов Hive из Visual Studio, см. в статье [Использование Hive с HDInsight][hdinsight-use-hive].
-* Дополнительные сведения о Pig, языке, который используется для преобразования данных, см. в статье [Использование Pig с HDInsight][hdinsight-use-pig].
-* Дополнительные сведения о MapReduce, способе записи программ, которые обрабатывают данные в Hadoop, см. в статье [Использование MapReduce с HDInsight][hdinsight-use-mapreduce].
-* Дополнительные сведения об анализе данных в HDInsight с помощью средств HDInsight для Visual Studio см. в статье [Приступая к работе с инструментами Hadoop в Visual Studio для HDInsight для выполнения запроса Hive](hdinsight-hadoop-visual-studio-tools-get-started.md).
+* toolearn Подробнее об использовании Hive с HDInsight, включая как tooperform Hive запросы из Visual Studio, в разделе [используйте Hive с HDInsight][hdinsight-use-hive].
+* использовать язык toolearn о Pig tootransform данных см. в разделе [использование Pig с HDInsight][hdinsight-use-pig].
+* в разделе toolearn о MapReduce программы toowrite способом обработки данных в Hadoop, [используйте MapReduce с HDInsight][hdinsight-use-mapreduce].
+* в разделе toolearn об использовании hello средства HDInsight для Visual Studio tooanalyze данных на HDInsight, [приступить к работе со средствами Visual Studio Hadoop для HDInsight](hdinsight-hadoop-visual-studio-tools-get-started.md).
 
-Если вы готовы приступить к работе с собственными данными и хотите узнать больше о том, как HDInsight сохраняет данные или как получать данные в HDInsight, см. следующие статьи:
+Если вы будете готовы toostart при работе с собственными данными и требуются дополнительные сведения о tooknow как HDInsight хранит данные, а также какие данные tooget в HDInsight, см. ниже hello:
 
 * Сведения о том, как HDInsight использует службу хранилища Azure, см. в статье [Использование HDFS-совместимой службы хранилища с Hadoop в HDInsight](hdinsight-hadoop-use-blob-storage.md).
-* Сведения об отправке данных в HDInsight см. в статье [Отправка данных в HDInsight][hdinsight-upload-data].
+* Сведения о том, как tooHDInsight tooupload данных, в разделе [отправить данные tooHDInsight][hdinsight-upload-data].
 
-Дополнительные сведения о создании кластера HDInsight и управлении этим кластером см. в следующих статьях:
+При желании toolearn Дополнительные сведения о создании и управлении кластер HDInsight см. ниже hello:
 
-* Сведения об управлении кластером HDInsight под управлением Linux см. в статье [Управление кластерами HDInsight с помощью веб-интерфейса Ambari](hdinsight-hadoop-manage-ambari.md).
-* Дополнительные сведения о параметрах, которые можно выбрать при создании кластера HDInsight, см. в статье [Создание кластеров Hadoop под управлением Linux в HDInsight](hdinsight-hadoop-provision-linux-clusters.md).
-* Если вы уже знакомы с Linux и Hadoop, но хотите узнать об особенностях Hadoop в HDInsight, см. статью [Сведения об использовании HDInsight в Linux](hdinsight-hadoop-linux-information.md). Эта статья содержит следующую информацию:
+* toolearn об управлении кластера HDInsight под управлением Linux, в разделе [управления HDInsight кластеры, использующие Ambari](hdinsight-hadoop-manage-ambari.md).
+* toolearn больше о параметрах hello, можно выбрать при создании кластера HDInsight, в разделе [Создание HDInsight в Linux с использованием пользовательских параметров](hdinsight-hadoop-provision-linux-clusters.md).
+* Если вы знакомы с Linux и Hadoop, но хотите tooknow подробные сведения о Hadoop в hello HDInsight, см. раздел [работу с HDInsight в Linux](hdinsight-hadoop-linux-information.md). Эта статья содержит следующую информацию:
   
-  * URL-адреса для служб, размещенных в кластере, например Ambari и WebHCat;
-  * расположение файлов Hadoop и примеры в локальной файловой системе;
-  * использование хранилища Azure (WASB) вместо HDFS в качестве хранилища данных по умолчанию.
+  * URL-адреса для служб, размещенных в кластере hello, например, Ambari и WebHCat
+  * Hello расположение файлов Hadoop и примеры hello локальной файловой системе
+  * Hello использование служб Azure хранилища (WASB) вместо HDFS в качестве хранилища данных по умолчанию hello
 
 [1]: ../HDInsight/hdinsight-hadoop-visual-studio-tools-get-started.md
 

@@ -1,6 +1,6 @@
 ---
-title: "Приступая к работе со службой DNS Azure с помощью Azure CLI 2.0 | Документация Майкрософт"
-description: "Узнайте, как создать зону и запись DNS в службе DNS Azure. Это пошаговое руководство описывает создание первых зоны и записи DNS, а также управление ими с помощью интерфейса командной строки Azure CLI 2.0."
+title: "aaaGet работы с Azure DNS, с помощью Azure CLI 2.0 | Документы Microsoft"
+description: "Узнайте, как toocreate DNS зоны и записи в Azure DNS. Это toocreate Пошаговое руководство и управлять первый DNS-зоны и записи с помощью Azure CLI 2.0 hello."
 services: dns
 documentationcenter: na
 author: jtuliani
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/10/2017
 ms.author: jonatul
-ms.openlocfilehash: 6958d61b29961f59cb22f62bec55f2d467e7e7cb
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 8a894941e9910d5cc35394a1be9dbca9792613f2
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="get-started-with-azure-dns-using-azure-cli-20"></a>Начало работы со службой DNS Azure с помощью Azure CLI 2.0
 
@@ -29,15 +29,15 @@ ms.lasthandoff: 07/11/2017
 > * [Azure CLI 1.0](dns-getstarted-cli-nodejs.md)
 > * [Azure CLI 2.0](dns-getstarted-cli.md)
 
-В этой статье описано, как создать первую зону DNS и первую запись DNS, используя кроссплатформенный интерфейс командной строки Azure CLI 2.0, доступный для Windows, Mac и Linux. Эти действия также можно выполнить с помощью портала Azure или Azure PowerShell.
+В этой статье поможет выполнить шаги toocreate hello вашей первой зоны DNS и записи с помощью hello Azure CLI кросс платформенных 2.0, которая доступна для Windows, Mac и Linux. Также можно выполнить следующие действия с помощью hello портал Azure или Azure PowerShell.
 
-Зона DNS используется для размещения DNS-записей определенного домена. Чтобы разместить свой домен в Azure DNS, необходимо создать зону DNS для этого доменного имени. Каждая запись DNS для вашего домена создается внутри этой зоны DNS. Наконец, чтобы опубликовать зону DNS в Интернете, необходимо настроить серверы доменных имен для домена. Каждый из этих шагов описан ниже.
+Зоны DNS-записей DNS используется toohost hello для определенного домена. toostart размещение домена в Azure DNS необходимо toocreate зону DNS для этого имени домена. Каждая запись DNS для вашего домена создается внутри этой зоны DNS. Наконец, toopublish toohello Интернета, зоны DNS-сервера требуется tooconfigure hello имя серверов для домена hello. Каждый из этих шагов описан ниже.
 
-При выполнении этих инструкций предполагается, что вы уже установили Azure CLI 2.0 и выполнили вход. Чтобы получить справку, см. статью [Как управлять зонами DNS в службе DNS Azure с помощью Azure CLI 2.0](dns-operations-dnszones-cli.md).
+Эти инструкции предполагают, вы уже установили и вход выполнен tooAzure CLI 2.0. Справочные сведения см. в разделе [как toomanage DNS-зоны с помощью Azure CLI 2.0](dns-operations-dnszones-cli.md).
 
-## <a name="create-the-resource-group"></a>Создание группы ресурсов
+## <a name="create-hello-resource-group"></a>Создать группу ресурсов hello
 
-Перед созданием зоны DNS создается группа ресурсов, которая будет включать эту зону DNS. Ниже показана команда для создания группы ресурсов.
+Перед созданием hello зоны DNS, зоны DNS hello toocontain создания группы ресурсов. Hello ниже показана команда hello.
 
 ```azurecli
 az group create --name MyResourceGroup --location "West US"
@@ -45,9 +45,9 @@ az group create --name MyResourceGroup --location "West US"
 
 ## <a name="create-a-dns-zone"></a>Создание зоны DNS
 
-Зона DNS создается с помощью команды `az network dns zone create`. Чтобы просмотреть справку для этой команды, введите `az network dns zone create -h`.
+Зоны DNS создается с помощью hello `az network dns zone create` команды. toosee справку для этой команды, введите `az network dns zone create -h`.
 
-В следующем примере будет создана зона DNS *contoso.com* в группе ресурсов *MyResourceGroup*. Пример можно использовать для создания зоны DNS, заменив соответствующие значения собственными.
+Hello следующий пример создает зоны DNS, которая называется *contoso.com* в группе ресурсов hello *MyResourceGroup*. Используйте toocreate пример hello зону DNS, подставив собственные значения hello.
 
 ```azurecli
 az network dns zone create -g MyResourceGroup -n contoso.com
@@ -56,20 +56,20 @@ az network dns zone create -g MyResourceGroup -n contoso.com
 
 ## <a name="create-a-dns-record"></a>Создание записи DNS
 
-Чтобы создать запись DNS, используйте команду `az network dns record-set [record type] add-record`. Чтобы получить справку, например по записям типа A, см. `azure network dns record-set A add-record -h`.
+запись DNS toocreate использовать hello `az network dns record-set [record type] add-record` команды. Чтобы получить справку, например по записям типа A, см. `azure network dns record-set A add-record -h`.
 
-В следующем примере создается запись с относительным именем www в зоне DNS contoso.com, в группе ресурсов MyResourceGroup. Полное доменное имя набора записей — www.contoso.com. Используется тип записи A с IP-адресом 1.2.3.4 и сроком жизни по умолчанию 3600 секунд (1 час).
+Hello в примере создается запись с hello относительное имя «www» в зону DNS «contoso.com» в группе ресурсов «MyResourceGroup» hello. Hello полное имя набора записей hello — «www.contoso.com». Тип записи Hello — «A» с IP-адресом «1.2.3.4», и используется значение по умолчанию срок ЖИЗНИ 3600 секунд (1 час).
 
 ```azurecli
 az network dns record-set a add-record -g MyResourceGroup -z contoso.com -n www -a 1.2.3.4
 ```
 
-Сведения о других типах записей, наборах записей с несколькими записями, других значениях срока жизни, а также об изменении существующих записей см. в статье [Управление записями и наборами записей DNS в Azure DNS с помощью Azure CLI 2.0](dns-operations-recordsets-cli.md).
+Для других типов записей для наборов записей с более одной записи для альтернативных значений срока ЖИЗНИ и toomodify существующие записи, в разделе [Управление DNS-записи и с помощью наборов записей hello Azure CLI 2.0](dns-operations-recordsets-cli.md).
 
 
 ## <a name="view-records"></a>Просмотр записей
 
-Чтобы просмотреть список записей DNS в зоне, используйте следующую команду:
+toolist hello DNS-записи в зоне, используйте:
 
 ```azurecli
 az network dns record-set list -g MyResourceGroup -z contoso.com
@@ -78,9 +78,9 @@ az network dns record-set list -g MyResourceGroup -z contoso.com
 
 ## <a name="update-name-servers"></a>Обновление серверов доменных имен
 
-Когда вы убедитесь, что зона и записи DNS настроены правильно, необходимо настроить доменное имя для использования серверов доменных имен службы DNS Azure. Это позволит другим пользователям в Интернете находить ваши записи DNS.
+Как только будут выполнены, что DNS-зоны и записи были настроены правильно, необходимо tooconfigure домена имя toouse hello Azure DNS-серверами. Это позволяет другим пользователям на hello Internet toofind DNS-записей.
 
-Для получения списка серверов доменных имен для определенной зоны используется команда `az network dns zone show`. Чтобы просмотреть имена серверов доменных имен, используйте выходные данные JSON, как показано в следующем примере:
+Hello серверы имен для зоны определяются hello `az network dns zone show` команды. имена серверов имя toosee hello, используйте выходных данных, JSON, как показано в следующий пример hello.
 
 ```azurecli
 az network dns zone show -g MyResourceGroup -n contoso.com -o json
@@ -104,11 +104,11 @@ az network dns zone show -g MyResourceGroup -n contoso.com -o json
 }
 ```
 
-Эти серверы доменных имен необходимо настроить с помощью регистратора доменных имен (у которого было приобретено доменное имя). Регистратор предложит вам вариант настройки серверов доменных имен для домена. Дополнительные сведения см. в статье [Делегирование домена в Azure DNS](dns-domain-delegation.md).
+Эти серверы имен должны быть настроены с помощью регистратора доменных имен hello (которого вы приобрели hello доменное имя). Регистратор предлагают tooset параметр hello hello серверов имя домена hello. Дополнительные сведения см. в разделе [делегировать tooAzure вашего домена DNS](dns-domain-delegation.md).
 
 ## <a name="delete-all-resources"></a>Удаление всех ресурсов
  
-Чтобы удалить все ресурсы, созданные при работе с этой статьей, сделайте следующее:
+toodelete все ресурсы созданы в этой статье hello выполните следующий шаг:
 
 ```azurecli
 az group delete --name MyResourceGroup
@@ -116,8 +116,8 @@ az group delete --name MyResourceGroup
 
 ## <a name="next-steps"></a>Дальнейшие действия
 
-Дополнительные сведения о службе DNS Azure см. в статье [Обзор Azure DNS](dns-overview.md).
+toolearn Дополнительные сведения о Azure DNS в разделе [Обзор Azure DNS](dns-overview.md).
 
-Дополнительные сведения об управлении зонами DNS в службе DNS Azure см. в статье [Как управлять зонами DNS в службе DNS Azure с помощью Azure CLI 2.0](dns-operations-dnszones-cli.md).
+toolearn Дополнительные сведения об управлении зонами DNS в Azure DNS, в разделе [зоны DNS, управление в Azure DNS, с помощью Azure CLI 2.0](dns-operations-dnszones-cli.md).
 
-Дополнительные сведения об управлении записями DNS в службе DNS Azure см. в статье [Управление записями и наборами записей DNS в Azure DNS с помощью Azure CLI 2.0](dns-operations-recordsets-cli.md).
+toolearn Дополнительные сведения об управлении DNS-записи в Azure DNS, в разделе [Управление DNS-записи и записи задает в Azure DNS, с помощью Azure CLI 2.0](dns-operations-recordsets-cli.md).

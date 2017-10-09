@@ -1,6 +1,6 @@
 ---
 title: "Azure AD Connect: устранение ошибок синхронизации | Документация Майкрософт"
-description: "В этой статье объясняется, как устранить ошибки, возникшие во время синхронизации с Azure AD Connect."
+description: "Объясняет, как tootroubleshoot ошибки, возникающие во время синхронизации с Azure AD Connect."
 services: active-directory
 documentationcenter: 
 author: karavar
@@ -14,39 +14,39 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/17/2017
 ms.author: billmath
-ms.openlocfilehash: 5a319de69c4e142414ab8f2be980a6576acbf8bb
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: af262dfe95d686e34697454c0dfe8b4a6d8693c0
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="troubleshooting-errors-during-synchronization"></a>Устранение ошибок синхронизации
-При синхронизации данных удостоверений Windows Server Active Directory (AD DS) с Azure Active Directory (Azure AD) могут возникать ошибки. В этой статье предоставляются общие сведения о различных типах ошибок синхронизации, некоторые возможные сценарии возникновения этих ошибок, а также возможные способы их устранения. Здесь содержатся сведения о распространенных типах ошибок, возможно, рассматриваются не все возможные ошибки.
+При синхронизации данных удостоверений из Windows Server Active Directory (AD DS) tooAzure Active Directory (Azure AD), возможно возникновение ошибок. Это статье представлен обзор различных типов ошибок синхронизации, некоторые из возможных сценариев hello, вызывающие эти ошибки и возможные способы toofix hello. Данная статья включает hello распространенных типов ошибок и не могут охватывать все возможные ошибки hello.
 
- В этой статье предполагается, что читатель знаком с базовыми [принципами архитектуры Azure AD и Azure AD Connect](active-directory-aadconnect-design-concepts.md).
+ В этой статье предполагается hello читатель хорошо знаком с базовым hello [разработки концепции Azure AD и Azure AD Connect](active-directory-aadconnect-design-concepts.md).
 
-В последней версии Azure AD Connect \(от августа 2016 г. и более новых версиях\) добавлена возможность просмотра отчета об ошибках синхронизации на [портале Azure](https://aka.ms/aadconnecthealth) в качестве части отчета Azure AD Connect Health для синхронизации.
+Последнюю версию Azure AD Connect hello \(августа 2016 или более поздней версии\), вывод отчета об ошибках синхронизации доступна в hello [портала Azure](https://aka.ms/aadconnecthealth) как часть Azure AD Connect Health для синхронизации.
 
-С 1 сентября 2016 года функция [устойчивости повторяющихся атрибутов Azure AD](active-directory-aadconnectsyncservice-duplicate-attribute-resiliency.md) будет включена по умолчанию для всех *новых* клиентов Azure AD. В ближайшие месяцы эта функция будет автоматически включена для имеющихся клиентов.
+Начиная с 1 сентября 2016 [Azure Active Directory повторяющийся атрибут устойчивости](active-directory-aadconnectsyncservice-duplicate-attribute-resiliency.md) , функция будет включена по умолчанию для всех hello *новый* клиентов Active Directory Azure. Эта функция будет автоматически включается для существующих клиентов в ближайшее hello.
 
-Во время синхронизации Azure AD Connect выполняет в каталогах 3 типа операций: импорт, синхронизацию и экспорт. В ходе всех операций могут возникать ошибки. Эта статья главным образом посвящена ошибкам во время экспорта данных в Azure AD.
+Azure AD Connect выполняет три типа операций из здесь хранятся синхронизацию каталогов hello: экспорта и импорта, синхронизации. Ошибки могут иметь место во всех операциях hello. Данная статья в основном посвящена ошибки во время экспорта tooAzure AD.
 
-## <a name="errors-during-export-to-azure-ad"></a>Ошибки во время экспорта данных в Azure AD
-В следующем разделе описываются разные типы ошибок синхронизации, которые могут возникнуть при экспорте данных в Azure AD с помощью соединителя Azure AD. Этот соединитель можно определить по формату имени, например contoso.*onmicrosoft.com*.
-Ошибки во время экспорта данных в Azure AD указывают, что при попытке \(модуля синхронизации\) Azure AD Connect выполнить \(добавление, удаление, обновление и т. п.\) в Azure Active Directory произошел сбой.
+## <a name="errors-during-export-tooazure-ad"></a>Ошибки во время экспорта tooAzure AD
+Следующий раздел описывает различные типы ошибок, возникающих во время hello экспорта операции tooAzure AD с помощью синхронизации Здравствуйте, соединитель Azure AD. Этот соединитель может определяться формат имени hello, «contoso. *onmicrosoft.com*».
+Ошибки во время экспорта tooAzure AD указывают hello операции \(Добавление, обновление, удаление и т.д.\) предпринимается попытка Azure AD Connect \(модуль синхронизации\) на Azure Active Directory не удалось.
 
 ![Обзор ошибок экспорта](./media/active-directory-aadconnect-troubleshoot-sync-errors/Export_Errors_Overview_01.png)
 
 ## <a name="data-mismatch-errors"></a>Ошибки несовпадения данных
 ### <a name="invalidsoftmatch"></a>InvalidSoftMatch
-#### <a name="description"></a>Description (Описание)
-* Когда \(модуль синхронизации\) Azure AD Connect указывает Azure AD добавить или обновить объекты, Azure AD сопоставляет входящий объект, используя атрибут **sourceAnchor**, с атрибутом **immutableId** объектов в Azure AD. Это сопоставление называется **жестким**.
-* Если перед подготовкой нового объекта **не удалось найти** объект, соответствующий атрибуту **immutableId** и атрибуту **sourceAnchor** входящего объекта, для поиска соответствия Azure AD использует атрибуты proxyAddresses и userPrincipalName. Такое сопоставление называется **мягким**. Мягкое сопоставление предназначено для имеющихся в Azure AD объектов (происходящих их Azure AD) с новыми объектами, добавленными или обновленными при синхронизации, которые представляют ту же сущность (пользователей, группы) в локальной среде.
-* Ошибка **InvalidSoftMatch** возникает, если при жестком сопоставлении не удалось найти соответствующий объект, **А** при мягком сопоставлении он найден, но при этом значение *immutableId* этого объекта и *sourceAnchor* входящего объекта отличаются, предполагая что совпадающий объект синхронизирован с другим объектом из локального каталога AD.
+#### <a name="description"></a>Описание
+* Когда Azure AD Connect \(модуль синхронизации\) указывает, что Azure Active Directory tooadd или обновления объектов, Azure AD соответствует hello входящего объекта с помощью hello **sourceAnchor** атрибута toohello  **immutableId** атрибутов объектов в Azure AD. Это сопоставление называется **жестким**.
+* Когда Azure AD **не удается найти** любой объект, который соответствует hello **immutableId** атрибута с hello **sourceAnchor** атрибут входящего объекта hello перед подготовкой новый объект возвращается toouse hello ProxyAddresses и UserPrincipalName атрибутов toofind совпадения. Такое сопоставление называется **мягким**. Hello мягкий совпадение — спроектированный toomatch объектов, уже присутствует в Azure AD (, определяемые в Azure AD) с помощью новых объектов hello, добавить или обновить во время синхронизации, представляющие hello одной сущности (пользователей, групп) на локальном компьютере.
+* **InvalidSoftMatch** ошибка возникает, когда hello жестких совпадение не удается найти любой подходящий объект **AND** мягкий соответствия находит подходящий объект, но этот объект имеет значение, отличное от *immutableId* чем hello входящего объекта *SourceAnchor*, предложение, hello объекта сопоставления был синхронизирован с другим объектом из локальной Active Directory.
 
-Другими словами, чтобы выполнить мягкое сопоставление, для атрибута *immutableId* объекта, с которым выполняется сопоставление, не должно быть указано значение. Если для объекта с атрибутом *immutableId* задать значение, которое не соответствует условиям жесткого сопоставления, но соответствует условиям мягкого, при синхронизации возникнет ошибка InvalidSoftMatch.
+Другими словами, чтобы toowork мягкий соответствия hello, hello объекта toobe soft соответствует не следует любое значение для hello *immutableId*. Если любой объект с *immutableId* набор со значением сбой hello жестких соответствия, но соблюдение hello soft удовлетворяющем условиям, hello операция приведет к InvalidSoftMatch ошибка синхронизации.
 
-В схеме Azure Active Directory запрещено использовать для нескольких объектов одинаковые значения следующих атрибутов. \(Это неполный список.\)
+Атрибуты Azure Active Directory схем не разрешает двух или более объектов toohave hello hello следуя тем же значением. \(Это неполный список.\)
 
 * ProxyAddresses
 * UserPrincipalName
@@ -54,52 +54,52 @@ ms.lasthandoff: 08/03/2017
 * ObjectId
 
 > [!NOTE]
-> Функция [устойчивости повторяющихся атрибутов](active-directory-aadconnectsyncservice-duplicate-attribute-resiliency.md) также внедряется в Azure Active Directory в рамках поведения по умолчанию.  Это позволит снизить количество ошибок синхронизации Azure AD Connect (и других клиентов синхронизации), за счет чего обработка повторяющихся в локальных средах Azure AD атрибутов proxyAddresses и userPrincipalName станет более устойчивой. Эта функция не исправляет ошибки дублирования, поэтому данные все равно необходимо исправлять. Но используя эту функцию, можно подготавливать новые объекты, подготовка которых запрещена из-за повторяющихся значений в Azure AD. Это также позволит снизить количество ошибок синхронизации, возвращаемых клиенту синхронизации.
-> После включения в клиенте функции устойчивости повторяющихся атрибутов при подготовке новых объектов не будет отображаться ошибка синхронизации InvalidSoftMatch.
+> [Azure AD атрибут повторяющийся атрибут устойчивости](active-directory-aadconnectsyncservice-duplicate-attribute-resiliency.md) функция также разворачивается как поведение по умолчанию hello Azure Active Directory.  Это позволит снизить hello количество ошибок синхронизации Azure AD Connect (а также другие клиенты синхронизации) путем создания более устойчивым Azure AD в hello способ обработки повторяющихся ProxyAddresses и UserPrincipalName атрибуты, присутствующие в в локальной среде AD сред. Эта функция не исправляет ошибки дублирования hello. Поэтому hello данные по-прежнему должны toobe фиксированной. Однако он допускает подготовку новых объектов, которые в противном случае заблокирован из-за значения tooduplicated идет подготовка в Azure AD. Это также приводит к сокращению hello число ошибок синхронизации, возвращаемых toohello синхронизации клиента.
+> Эта функция включена для вашего клиента, не увидят ошибок синхронизации InvalidSoftMatch hello, встреченных во время инициализации новых объектов.
 >
 >
 
 #### <a name="example-scenarios-for-invalidsoftmatch"></a>Примеры сценариев для InvalidSoftMatch
-1. В локальном каталоге AD есть несколько объектов с одинаковым значением атрибута proxyAddresses. Azure AD подготовит только один объект.
-2. В локальном каталоге AD есть несколько объектов с одинаковым значением атрибута userPrincipalName. Azure AD подготовит только один объект.
-3. В локальный каталог AD добавлен объект с таким же значением атрибута proxyAddresses, что и у имеющегося объекта в Azure AD. Объект, добавленный в локальный каталог, не будет подготовлен в Azure Active Directory.
-4. В локальный каталог AD добавлен объект с таким же значением атрибута userPrincipalName, что и у учетной записи в Azure AD. Объект не будет подготовлен в Azure Active Directory.
-5. Синхронизированная учетная запись перемещена из леса А в лес Б. Azure AD Connect (модуль синхронизации) использовал атрибут ObjectGUID для вычисления sourceAnchor. После перемещения леса значение sourceAnchor изменилось. Новый объект (из леса Б) не удалось синхронизировать с имеющимся объектом в Azure AD.
-6. Синхронизированный объект случайно удален из локального каталога AD. В AD для той же сущности (такой как пользователь) создан новый объект. При этом учетная запись в Azure AD не удалена. При синхронизации новой учетной записи с имеющимся объектом Azure AD произойдет сбой.
-7. Azure AD Connect удалили и переустановили. При повторной установке вместо атрибута sourceAnchor выбран другой атрибут. Синхронизация всех синхронизированных ранее объектов будет остановлена. Отобразится ошибка InvalidSoftMatch.
+1. Два или несколько объектов с hello же значение атрибута ProxyAddresses имеется в локальную службу Active Directory. Azure AD подготовит только один объект.
+2. Два или несколько объектов с hello userPrincipalName тем же значением, имеется в локальную службу Active Directory. Azure AD подготовит только один объект.
+3. Объект был добавлен в hello в локальной среде Active Directory с hello же значение атрибута ProxyAddresses, что и существующий объект в Azure Active Directory. Hello объект, добавленный на локальном компьютере не выполняется получение Подготовка в Azure Active Directory.
+4. Объект был добавлен в локальной Active Directory с hello же значение атрибута userPrincipalName, что и учетная запись в Azure Active Directory. Hello объекта не выполняется получение Подготовка в Azure Active Directory.
+5. Учетной записи синхронизированных был перемещен из леса A tooForest B. Azure AD Connect (модуль синхронизации) используется hello toocompute ObjectGUID атрибут SourceAnchor. После перемещения hello леса значение hello hello SourceAnchor отличается. новый объект Hello (в лесу Б) происходит сбой toosync с hello существующий объект в Azure AD.
+6. Синхронизированных объектов были случайно удалены из в локальной среде Active Directory и новый объект был создан в Active Directory для hello же сущности (например, пользователь) без удаления учетной записи hello в Azure Active Directory. Учетная запись нового Hello не toosync с hello существующего объекта Azure AD.
+7. Azure AD Connect удалили и переустановили. Во время повторной установки hello другой атрибут был выбран как hello SourceAnchor. Все объекты hello, которые ранее синхронизированы остановлена, синхронизация с InvalidSoftMatch ошибки.
 
-#### <a name="example-case"></a>Пример:
+#### <a name="example-case"></a>Пример
 1. Пользователь **Григорий Авдеев** синхронизирован в Azure AD из локального каталога AD в домене *contoso.com*.
 2. Для атрибута **userPrincipalName** Григория задано значение **bobs@contoso.com**.
-3. **abcdefghijklmnopqrstuv==** — это атрибут **sourceAnchor**, вычисленный Azure AD Connect на основе атрибута **objectGUID** из локального каталога Active Directory, который является атрибутом **immutableId** Григория в Azure AD.
-4. Для атрибута **proxyAddresses** Григория используются следующие значения.
+3. **«abcdefghijklmnopqrstuv ==»** — hello **SourceAnchor** вычислены Azure AD Connect с помощью Bob Smith **objectGUID** из локальной Active Directory, который является hello **immutableId** Смит Боб в Azure Active Directory.
+4. Боб также имеет следующие значения для hello **proxyAddresses** атрибута:
    * smtp:bobs@contoso.com
    * smtp:bob.smith@contoso.com
    * **smtp:bob@contoso.com**
-5. В локальный каталог AD добавлен новый пользователь **Артем Кузнецов**.
+5. Новый пользователь **Taylor Боб**, добавляется toohello в локальной среде Active Directory.
 6. Для атрибута **userPrincipalName** Артема задано значение **bobt@contoso.com**.
-7. **abcdefghijkl0123456789==** — это атрибут **sourceAnchor**, вычисленный Azure AD Connect с использованием атрибута **objectGUID** Артема из локального каталога AD. Объект Артема Кузнецова пока не синхронизирован с Azure AD.
-8. Для атрибута proxyAddresses Артема используются следующие значения:
+7. **«abcdefghijkl0123456789 == "«** — hello **sourceAnchor** вычислены Azure AD Connect с помощью Taylor Боб **objectGUID** из в локальной среде Active Directory. Боб Taylor объект имеет пока не синхронизировано tooAzure Active Directory.
+8. Боб Taylor имеет следующие значения для атрибута proxyAddresses hello hello
    * smtp:bobt@contoso.com
    * smtp:bob.taylor@contoso.com
    * **smtp:bob@contoso.com**
-9. Во время синхронизации Azure AD Connect определит добавление Артема Кузнецова в локальный каталог AD и отправит запрос на изменение аналогичных настроек в Azure AD.
-10. Сначала Azure AD выполнит жесткое сопоставление. Другими словами, выполнит поиск объектов, у которых для атрибута immutableId задано значение abcdefghijkl0123456789==. Так как в Azure AD отсутствуют объекты с таким атрибутом immutableId, жесткое сопоставление завершится ошибкой.
-11. Затем Azure AD выполнит мягкое сопоставление объекта Артема Кузнецова. То есть Azure AD выполнит поиск объектов, у которых для атрибута proxyAddresses задано три значения, в том числе smtp:bob@contoso.com.
-12. Azure AD найдет объект Григория Авдеева, который соответствует условиям поиска. Но для атрибута immutableId этого объекта задано значение abcdefghijklmnopqrstuv==. Это значит, что этот объект синхронизирован из другого объекта локального каталога AD. Поэтому Azure AD не может выполнить нестрогое сопоставление, что приведет к ошибке синхронизации **InvalidSoftMatch**.
+9. Во время синхронизации Azure AD Connect будет распознавать hello Добавление Taylor Боб в локальной Active Directory и запрос Azure AD toomake hello такие же изменения.
+10. Сначала Azure AD выполнит жесткое сопоставление. То есть, он выполняет поиск Если любой объект с hello immutableId равно слишком "abcdefghijkl0123456789 ==». Так как в Azure AD отсутствуют объекты с таким атрибутом immutableId, жесткое сопоставление завершится ошибкой.
+11. Azure AD предпримет toosoft-match Taylor Боб. То есть он выполняет поиск при наличии любого объекта равны toohello proxyAddresses три значения, включаяsmtp:bob@contoso.com
+12. Azure AD будет объект Bob Smith toomatch hello soft-match критерии поиска. Но этот объект имеет значение immutableId hello = «abcdefghijklmnopqrstuv ==». Это значит, что этот объект синхронизирован из другого объекта локального каталога AD. Поэтому Azure AD не может выполнить нестрогое сопоставление, что приведет к ошибке синхронизации **InvalidSoftMatch**.
 
-#### <a name="how-to-fix-invalidsoftmatch-error"></a>Как устранить ошибку InvalidSoftMatch
-Чаще всего причина ошибки InvalidSoftMatch — наличие двух объектов с разными атрибутами sourceAnchor \(immutableId\), но одинаковым значением атрибутов proxyAddresses и/или userPrincipalName, которые используются при мягком сопоставлении в Azure AD. Чтобы устранить ошибку InvalidSoftMatch, выполните следующее:
+#### <a name="how-toofix-invalidsoftmatch-error"></a>Как toofix InvalidSoftMatch ошибки
+Hello самая распространенная причина ошибки InvalidSoftMatch hello имеет два объекта с разных SourceAnchor \(immutableId\) имеют одинаковое значение для атрибутов hello ProxyAddresses и/или UserPrincipalName, которые используются во время hello hello процесс soft-match в Azure AD. В порядке toofix hello недопустимый мягкий соответствия
 
-1. Определите повторяющееся значение атрибута proxyAddresses, userPrincipalName или другого атрибута, вызвавшее ошибку. Кроме того, определите два \(или несколько\) объектов, участвующих в конфликте. Эти объекты можно определить с помощью отчета, созданного [Azure AD Connect Health для синхронизации](https://aka.ms/aadchsyncerrors).
-2. Определите объекты, для которых требуется повторяющееся значение.
-3. Удалите из объекта ненужное повторяющееся значение. Обратите внимание, что эти изменения необходимо вносить в каталоге, из которого происходит объект. В некоторых случаях может потребоваться удалить один из объектов, участвующих в конфликте.
-4. Если изменения внесены в локальном каталоге AD, выполните синхронизацию этих изменений с Azure AD Connect.
+1. Определите proxyAddresses hello дублирован, userPrincipalName или другие значения атрибута, вызвавших ошибки hello. Также определять два \(или более\) объекты вовлеченные в конфликт hello. Здравствуйте, отчет, сформированный [Azure AD Connect Health для синхронизации](https://aka.ms/aadchsyncerrors) может помочь выявить hello двух объектов.
+2. Определите, какой объект следует продолжить toohave hello повторяющиеся значения и какой объект не должен.
+3. Удалите повторяющийся hello значение из hello объекта, который не следует это значение. Обратите внимание, что необходимо внести изменения в каталоге hello, который является источником hello объекта из hello. В некоторых случаях может потребоваться toodelete один из объектов hello в конфликте.
+4. Если вы внесли изменения в hello в локальной среде AD hello, позволяют изменить hello синхронизации Azure AD Connect.
 
-Обратите внимание, что отчет об ошибках Azure AD Connect Health для синхронизации обновляется каждые 30 минут. В нем отображаются ошибки, возникшие при последних попытках синхронизации.
+Обратите внимание, что отчет об ошибках синхронизации в Azure AD Connect Health для синхронизации обновляется каждые 30 минут входят ошибки hello hello последней попытки синхронизации.
 
 > [!NOTE]
-> По сути атрибут immutableId не должен изменяться в течение времени существования объекта. Если при настройке Azure AD Connect не учтены некоторые из сценариев выше, может возникнуть ситуация, когда Azure AD Connect вычисляет разное значение атрибута sourceAnchor, представляющего ту же сущность (пользователя, группу, контакт и т. п.), что и в имеющемся объекте Azure AD, который необходимо продолжать использовать.
+> ImmutableId, по определению не должны изменяться в течение срока службы hello hello объекта. Если Azure AD Connect не был настроен в некоторых сценариях hello помните из hello над списком, иначе может оказаться в ситуации, где Azure AD Connect вычисляет другое значение hello SourceAnchor для объекта hello AD, что представляет hello одной сущности (того же пользователя или Группа или контакт и т. д), содержащее обратиться с помощью toocontinue существующего объекта AD Azure.
 >
 >
 
@@ -107,103 +107,103 @@ ms.lasthandoff: 08/03/2017
 * [Duplicate or invalid attributes prevent directory synchronization in Office 365](https://support.microsoft.com/en-us/kb/2647098) (Запрет синхронизации службы каталогов в Office 365 из-за повторяющихся или недопустимых атрибутов)
 
 ### <a name="objecttypemismatch"></a>ObjectTypeMismatch
-#### <a name="description"></a>Description (Описание)
-При попытке Azure AD мягко сопоставить два объекта может возникнуть ситуация, когда у двух объектов разных типов (пользователя, группы, контакта и т. п.) одинаковые значения атрибутов, используемых в этом процессе. Так как повторение этих атрибутов не допускается в Azure AD, операция может завершиться ошибкой синхронизации ObjectTypeMismatch.
+#### <a name="description"></a>Описание
+Когда Azure AD выполняет попытку toosoft совпадения двух объектов, это возможно, что двух разных объектов «тип объекта» (например, пользователя, группы, обратитесь в службу и т.д.) имеют hello же значения для атрибутов hello использовать мягкое соответствия tooperform hello. Как дублирования этих атрибутов не разрешено в Azure AD, hello операция может привести к «ObjectTypeMismatch» ошибки синхронизации.
 
 #### <a name="example-scenarios-for-objecttypemismatch-error"></a>Примеры сценариев ошибки ObjectTypeMismatch
-* Администратор создал в Office 365 группу безопасности, поддерживающую почту. Он добавил в локальный каталог AD (пока не синхронизированный с Azure AD) нового пользователя или контакт с тем же значением атрибута proxyAddresses, что и у группы Office 365.
+* Администратор создал в Office 365 группу безопасности, поддерживающую почту. Администратор добавляет нового пользователя или контакт в в локальной среде AD (которые tooAzure AD еще не синхронизирована) с hello одинаковое значение для атрибута ProxyAddresses hello, что и Office 365 hello группы.
 
 #### <a name="example-case"></a>Примеры
-1. Администратор создал для налогового департамента в Office 365 группу безопасности, поддерживающую почту, а в качестве адреса электронной почты указал tax@contoso.com. Таким образом он назначил этой группе атрибут ProxyAddresses со значением **smtp:tax@contoso.com**.
-2. К домену contoso.com присоединился новый пользователь, для которого в локальном каталоге создана учетная запись с атрибутом proxyAddress. Значение этого атрибута — **smtp:tax@contoso.com**.
-3. Когда Azure AD Connect синхронизирует новую учетную запись пользователя, произойдет ошибка ObjectTypeMismatch.
+1. Администратор создает новую группу безопасности включена поддержка почты в Office 365 для отдела налога hello и предоставляет адрес электронной почты как tax@contoso.com. Это назначает атрибут ProxyAddresses hello для этой группы со значением hello**smtp:tax@contoso.com**
+2. Новый пользователь не присоединит Contoso.com и создания учетной записи для hello пользователя на локальном компьютере с proxyAddress hello как**smtp:tax@contoso.com**
+3. Когда Azure AD Connect будет синхронизировать hello новой учетной записи пользователя, появится ошибка «ObjectTypeMismatch» hello.
 
-#### <a name="how-to-fix-objecttypemismatch-error"></a>Как устранить ошибку ObjectTypeMismatch
-Чаще всего причина ошибки ObjectTypeMismatch заключается в наличии двух объектов разных типов (пользователь, группа, контакт и т. д.), у которых одинаковое значение атрибута proxyAddresses. Чтобы устранить ошибку ObjectTypeMismatch, выполните следующее:
+#### <a name="how-toofix-objecttypemismatch-error"></a>Как toofix ObjectTypeMismatch ошибки
+Наиболее распространенной причиной ошибки ObjectTypeMismatch hello Hello — два объекта другого типа (пользователя, группы, обратитесь в службу и т.д.) имеют одинаковое значение для атрибута ProxyAddresses hello hello. В порядке hello toofix ObjectTypeMismatch:
 
-1. Определите повторяющееся значение атрибута proxyAddresses (или другого атрибута), вызвавшее ошибку. Кроме того, определите два \(или несколько\) объектов, участвующих в конфликте. Эти объекты можно определить с помощью отчета, созданного [Azure AD Connect Health для синхронизации](https://aka.ms/aadchsyncerrors).
-2. Определите объекты, для которых требуется повторяющееся значение.
-3. Удалите из объекта ненужное повторяющееся значение. Обратите внимание, что эти изменения необходимо вносить в каталоге, из которого происходит объект. В некоторых случаях может потребоваться удалить один из объектов, участвующих в конфликте.
-4. Если изменения внесены в локальном каталоге AD, выполните синхронизацию этих изменений с Azure AD Connect. Отчет об ошибках Azure AD Connect Health для синхронизации обновляется каждые 30 минут. В нем отображаются ошибки, возникшие при последних попытках синхронизации.
+1. Определить повторяющийся hello proxyAddresses (или другой атрибут) значение, что может вызвать ошибки hello. Также определять два \(или более\) объекты вовлеченные в конфликт hello. Здравствуйте, отчет, сформированный [Azure AD Connect Health для синхронизации](https://aka.ms/aadchsyncerrors) может помочь выявить hello двух объектов.
+2. Определите, какой объект следует продолжить toohave hello повторяющиеся значения и какой объект не должен.
+3. Удалите повторяющийся hello значение из hello объекта, который не следует это значение. Обратите внимание, что необходимо внести изменения в каталоге hello, который является источником hello объекта из hello. В некоторых случаях может потребоваться toodelete один из объектов hello в конфликте.
+4. Если вы внесли изменения в hello в локальной среде AD hello, позволяют изменить hello синхронизации Azure AD Connect. Отчет об ошибках синхронизации в Azure AD Connect Health для синхронизации обновляется каждые 30 минут и включает hello ошибки последней попытки синхронизации hello.
 
 ## <a name="duplicate-attributes"></a>Повторяющиеся атрибуты
 ### <a name="attributevaluemustbeunique"></a>AttributeValueMustBeUnique
-#### <a name="description"></a>Description (Описание)
-В схеме Azure Active Directory запрещено использовать для нескольких объектов одинаковые значения следующих атрибутов. Это значит, что у каждого объекта в Azure AD должно быть уникальное значение для этих атрибутов в заданном экземпляре.
+#### <a name="description"></a>Описание
+Атрибуты Azure Active Directory схем не разрешает двух или более объектов toohave hello hello следуя тем же значением. Является каждого объекта в Azure AD принудительного toohave уникальное значение этих атрибутов для данного экземпляра.
 
 * ProxyAddresses
 * UserPrincipalName
 
-Если Azure AD Connect пытается добавить новый объект или обновить указанные выше атрибуты имеющегося объекта, добавив для них значения, назначенные другому объекту в Azure Active Directory, то операция завершится ошибкой синхронизации AttributeValueMustBeUnique.
+Если Azure AD Connect пытается tooadd объекта или обновить существующий объект со значением для hello выше атрибутов, уже назначенный объект tooanother в Azure Active Directory, операция hello приводит ошибки синхронизации «AttributeValueMustBeUnique» hello.
 
 #### <a name="possible-scenarios"></a>Возможные сценарии
-1. Повторяющееся значение назначено синхронизированному объекту, конфликтующему с другим синхронизированным объектом.
+1. Повторяющееся значение: назначенного tooan уже синхронизирован объекта, который конфликтует с другим объектом синхронизирован.
 
 #### <a name="example-case"></a>Пример
 1. Пользователь **Григорий Авдеев** синхронизирован в Azure AD из локального каталога AD в домене contoso.com.
 2. Для атрибута **userPrincipalName** Григория в локальном каталоге задано значение **bobs@contoso.com**.
-3. Для атрибута **proxyAddresses** Григория используются следующие значения.
+3. Боб также имеет следующие значения для hello **proxyAddresses** атрибута:
    * smtp:bobs@contoso.com
    * smtp:bob.smith@contoso.com
    * **smtp:bob@contoso.com**
-4. В локальный каталог AD добавлен новый пользователь **Артем Кузнецов**.
+4. Новый пользователь **Taylor Боб**, добавляется toohello в локальной среде Active Directory.
 5. Для атрибута **userPrincipalName** Артема задано значение **bobt@contoso.com**.
-6. Для атрибута **proxyAddresses** **Артема Кузнецова** используются следующие значения: smtp:bobt@contoso.com. smtp:bob.taylor@contoso.com
+6. **Боб Taylor** имеет следующие значения для hello hello **ProxyAddresses** атрибут i. smtp:bobt@contoso.com. smtp:bob.taylor@contoso.com
 7. Синхронизация объекта Артема Кузнецова выполнена успешно.
-8. Администратор решил заменить значение атрибута **proxyAddresses** Артема на следующее: **smtp:bob@contoso.com**
-9. Azure AD выполнит попытку обновить объект Артема в Azure AD, добавив в него значение выше, но эта операция завершится ошибкой, потому что такое значение уже назначено Григорию Авдееву. В результате отобразится ошибка AttributeValueMustBeUnique.
+8. Администратор решил Taylor Боб tooupdate **ProxyAddresses** атрибута с hello следующие значения: i. **smtp:bob@contoso.com**
+9. Azure AD будет tooupdate Боб Taylor объекта в Azure AD с hello выше значения, но, операция завершится ошибкой в том, что значение ProxyAddresses уже назначен tooBob Smith, приведет к ошибке «AttributeValueMustBeUnique».
 
-#### <a name="how-to-fix-attributevaluemustbeunique-error"></a>Как устранить ошибку AttributeValueMustBeUnique
-Чаще всего причина ошибки AttributeValueMustBeUnique заключается в наличии двух объектов с разными атрибутами sourceAnchor \(immutableId\), но одинаковым значением атрибутов proxyAddresses и/или userPrincipalName. Чтобы устранить ошибку AttributeValueMustBeUnique, выполните следующее:
+#### <a name="how-toofix-attributevaluemustbeunique-error"></a>Как toofix AttributeValueMustBeUnique ошибки
+Hello самая распространенная причина ошибки AttributeValueMustBeUnique hello имеет два объекта с разных SourceAnchor \(immutableId\) имеют одинаковое значение для hello ProxyAddresses и (или) атрибуты UserPrincipalName hello. В порядке toofix AttributeValueMustBeUnique ошибки
 
-1. Определите повторяющееся значение атрибута proxyAddresses, userPrincipalName или другого атрибута, вызвавшее ошибку. Кроме того, определите два \(или несколько\) объектов, участвующих в конфликте. Эти объекты можно определить с помощью отчета, созданного [Azure AD Connect Health для синхронизации](https://aka.ms/aadchsyncerrors).
-2. Определите объекты, для которых требуется повторяющееся значение.
-3. Удалите из объекта ненужное повторяющееся значение. Обратите внимание, что эти изменения необходимо вносить в каталоге, из которого происходит объект. В некоторых случаях может потребоваться удалить один из объектов, участвующих в конфликте.
-4. Если изменения внесены в локальном каталоге AD, выполните их синхронизацию c Azure AD Connect. Это позволит устранить ошибку.
+1. Определите proxyAddresses hello дублирован, userPrincipalName или другие значения атрибута, вызвавших ошибки hello. Также определять два \(или более\) объекты вовлеченные в конфликт hello. Здравствуйте, отчет, сформированный [Azure AD Connect Health для синхронизации](https://aka.ms/aadchsyncerrors) может помочь выявить hello двух объектов.
+2. Определите, какой объект следует продолжить toohave hello повторяющиеся значения и какой объект не должен.
+3. Удалите повторяющийся hello значение из hello объекта, который не следует это значение. Обратите внимание, что необходимо внести изменения в каталоге hello, который является источником hello объекта из hello. В некоторых случаях может потребоваться toodelete один из объектов hello в конфликте.
+4. При внесении изменения в hello в локальной среде AD hello позволяют изменить для фиксированной tooget ошибка hello hello синхронизации Azure AD Connect.
 
 #### <a name="related-articles"></a>Связанные статьи
 -[Duplicate or invalid attributes prevent directory synchronization in Office 365](https://support.microsoft.com/en-us/kb/2647098) (Запрет синхронизации службы каталогов в Office 365 из-за повторяющихся или недопустимых атрибутов)
 
 ## <a name="data-validation-failures"></a>Сбой проверки данных
 ### <a name="identitydatavalidationfailed"></a>IdentityDataValidationFailed
-#### <a name="description"></a>Description (Описание)
-Перед записью данных в каталог Azure AD применяет к ним разные ограничения. Это улучшает работу пользователей с приложениями, которые зависят от этих данных.
+#### <a name="description"></a>Описание
+Azure Active Directory обеспечивает различные ограничения на hello сами данные перед разрешением, toobe данные записываются в каталог hello. Это tooensure, конечные пользователи могут получить возможных возможности hello при использовании приложения hello, зависящих от этих данных.
 
 #### <a name="scenarios"></a>Сценарии
-а. Значение атрибута userPrincipalName содержит недопустимые или неподдерживаемые символы.
-b. Атрибут userPrincipalName не соответствует требуемому формату.
+а. Hello UserPrincipalName значения атрибута имеет недопустимые или неподдерживаемые символы.
+b. атрибут UserPrincipalName Hello не соответствует требуемому формату hello.
 
-#### <a name="how-to-fix-identitydatavalidationfailed-error"></a>Как устранить ошибку IdentityDataValidationFailed
-а. Убедитесь, что для значения атрибута userPrincipalName указаны поддерживаемые символы и значение соответствует требуемому формату.
+#### <a name="how-toofix-identitydatavalidationfailed-error"></a>Как toofix IdentityDataValidationFailed ошибки
+а. Убедитесь, что этот атрибут userPrincipalName hello поддерживала символов и требуемый формат.
 
 #### <a name="related-articles"></a>Связанные статьи
-* [Подготовка пользователей к работе путем синхронизации каталогов с Office 365](https://support.office.com/en-us/article/Prepare-to-provision-users-through-directory-synchronization-to-Office-365-01920974-9e6f-4331-a370-13aea4e82b3e)
+* [Подготовка пользователей tooprovision через tooOffice синхронизации каталогов 365](https://support.office.com/en-us/article/Prepare-to-provision-users-through-directory-synchronization-to-Office-365-01920974-9e6f-4331-a370-13aea4e82b3e)
 
 ### <a name="federateddomainchangeerror"></a>Ошибка FederatedDomainChangeError
 #### <a name="description"></a>Описание
-Ошибка синхронизации **FederatedDomainChangeError** возникает в конкретном случае, когда суффикс атрибута userPrincipalName пользователя изменяется при переходе из одного федеративного домена в другой.
+Это определенный регистр, в результате **«FederatedDomainChangeError»** ошибка синхронизации при изменении hello суффикс UserPrincipalName пользователя из одного домена tooanother федеративной федеративный домен.
 
 #### <a name="scenarios"></a>Сценарии
-Суффикс атрибута userPrincipalName синхронизированного пользователя изменился при переходе из одного федеративного домена в другой локальный федеративный домен. Например, *userPrincipalName = bob@contoso.com* изменился на *userPrincipalName = bob@fabrikam.com*.
+Для синхронизированного пользователя hello UserPrincipalName суффикс был изменен с одной федеративный домен федеративный домен tooanother на локальном компьютере. Например *UserPrincipalName = bob@contoso.com*  было изменено слишком*UserPrincipalName = bob@fabrikam.com* .
 
 #### <a name="example"></a>Пример
-1. Григорий Авдеев (учетная запись для contoso.com) добавлен в AD как новый пользователь. Для атрибута userPrincipalName учетной записи задано значение bob@contoso.com.
-2. Григорий перешел в другой домен contoso.com, fabrikam.com. Значение атрибута userPrincipalName изменилось на bob@fabrikam.com.
+1. Алексей иванов учетной записи для Contoso.com, добавляется как новых пользователей в Active Directory с hello UserPrincipalNamebob@contoso.com
+2. Боб перемещает изменены другой деления tooa домена contoso.com, Fabrikam.com и его UserPrincipalNametoobob@fabrikam.com
 3. Домены contoso.com и fabrikam.com — это федеративные домены Azure AD.
 4. Атрибут userPrincipalName Григория не обновляется, поэтому возникла ошибка синхронизации FederatedDomainChangeError.
 
-#### <a name="how-to-fix"></a>Как устранить
-Если при переходе из домена bob@**contoso.com** в домен bob@**fabrikam.com** (домены **contoso.com** и **fabrikam.com** **федеративные**) суффикс атрибута userPrincipalName изменился, выполните приведенные ниже шаги, чтобы устранить ошибку синхронизации.
+#### <a name="how-toofix"></a>Как toofix
+Если суффикс UserPrincipalName пользователя был обновлен от Виктора @**contoso.com** toobob @**fabrikam.com**, где оба **contoso.com** и **fabrikam.com** , **федеративных доменов**, затем выполните эти шаги ошибку синхронизации hello toofix
 
-1. Измените UserPrincipalName пользователя в Azure AD с bob@contoso.com на bob@contoso.onmicrosoft.com. Вы можете использовать следующую команду PowerShell в модуле Azure AD PowerShell: `Set-MsolUserPrincipalName -UserPrincipalName bob@contoso.com -NewUserPrincipalName bob@contoso.onmicrosoft.com`
-2. Разрешите выполнить следующий цикл синхронизации. В этот раз синхронизация пройдет успешно, а для атрибута userPrincipalName Григория будет задано значение bob@fabrikam.com (как и ожидалось).
+1. Обновить пользователя hello UserPrincipalName в Azure AD из bob@contoso.com toobob@contoso.onmicrosoft.com. Можно использовать следующую команду PowerShell с помощью модуля Azure AD PowerShell hello hello.`Set-MsolUserPrincipalName -UserPrincipalName bob@contoso.com -NewUserPrincipalName bob@contoso.onmicrosoft.com`
+2. Разрешить hello следующей синхронизации цикла tooattempt синхронизации. Время синхронизации будет выполнено успешно, и будет выполнено обновление hello UserPrincipalName Боб toobob@fabrikam.com должным образом.
 
 #### <a name="related-articles"></a>Связанные статьи
-* [Изменения не синхронизируются с помощью инструмента синхронизации Azure Active Directory после изменения имени участника-пользователя или учетной записи пользователя для использования другого федеративного домена](https://support.microsoft.com/en-us/help/2669550/changes-aren-t-synced-by-the-azure-active-directory-sync-tool-after-you-change-the-upn-of-a-user-account-to-use-a-different-federated-domain)
+* [Изменения не синхронизированы hello средство синхронизации Azure Active Directory после изменения hello UPN toouse учетной записи пользователя другой федеративный домен](https://support.microsoft.com/en-us/help/2669550/changes-aren-t-synced-by-the-azure-active-directory-sync-tool-after-you-change-the-upn-of-a-user-account-to-use-a-different-federated-domain)
 
 ## <a name="largeobject"></a>LargeObject
 ### <a name="description"></a>Описание
-Если атрибут превышает установленное в схеме Azure AD значение размера, длины и количества, то во время синхронизации возникнет ошибка **LargeObject** или **ExceededAllowedLength**. Как правило, эта ошибка возникает для следующих атрибутов:
+Когда атрибут превышает hello допускается максимального размера, ограничение на длину или предельное число задается схема Azure Active Directory, операция синхронизации hello приводит hello **LargeObject** или **ExceededAllowedLength** ошибка синхронизации. Эта ошибка обычно возникает для hello следующие атрибуты
 
 * userCertificate
 * userSMIMECertificate
@@ -211,14 +211,14 @@ b. Атрибут userPrincipalName не соответствует требуе
 * proxyAddresses
 
 ### <a name="possible-scenarios"></a>Возможные сценарии
-1. Атрибут userCertificate хранит большое количество назначенных Григорию сертификатов. К ним также относятся недействительные и старые сертификаты. Жесткий предел — 15 сертификатов. Дополнительные сведения о том, как обрабатывать ошибки LargeObject с атрибутом userCertificate, см. в статье, посвященной [обработке ошибок LargeObject, вызванных атрибутом userCertificate](active-directory-aadconnectsync-largeobjecterror-usercertificate.md).
-2. Атрибут userSMIMECertificat хранит большое количество назначенных Григорию сертификатов. К ним также относятся недействительные и старые сертификаты. Жесткий предел — 15 сертификатов.
-3. Атрибут thmubnailPhoto, заданный в Active Directory, слишком большой для синхронизации в Azure AD.
-4. При автоматическом заполнении в Active Directory объекту назначено слишком много атрибутов ProxyAddresses.
+1. Атрибут userCertificate Боба хранящей слишком много tooBob сертификаты. К ним также относятся недействительные и старые сертификаты. жесткий предел Hello — 15 сертификаты. Дополнительные сведения о как атрибут toohandle LargeObject ошибок с userCertificate, пожалуйста ссылаться tooarticle [LargeObject обработки ошибок, вызванных userCertificate атрибут](active-directory-aadconnectsync-largeobjecterror-usercertificate.md).
+2. Атрибут userSMIMECertificate Боба хранящей слишком много tooBob сертификаты. К ним также относятся недействительные и старые сертификаты. жесткий предел Hello — 15 сертификаты.
+3. ThumbnailPhoto Боба, заданных в Active Directory является слишком большой toobe синхронизированы в Azure AD.
+4. Во время автоматического заполнения атрибута ProxyAddresses hello в Active Directory имеет слишком много ProxyAddresses назначенный объект.
 
-### <a name="how-to-fix"></a>Как устранить
-1. Убедитесь, что атрибут, повлекший ошибку, не превысил установленное ограничение.
+### <a name="how-toofix"></a>Как toofix
+1. Убедитесь, что этот атрибут hello, которая привела к ошибке hello находится в пределах hello допустимое ограничение.
 
 ## <a name="related-links"></a>Связанные ссылки
 * [Locate Active Directory Objects in Active Directory Administrative Center](https://technet.microsoft.com/library/dd560661.aspx) (Поиск объектов Active Directory в центре администрирования Active Directory)
-* [How to query Azure Active Directory for an object using Azure Active Directory PowerShell](https://msdn.microsoft.com/library/azure/jj151815.aspx) (Как запросить объект с помощью модуля Azure Active Directory для PowerShell)
+* [Как tooquery Azure Active Directory для объекта с помощью Azure Active Directory PowerShell](https://msdn.microsoft.com/library/azure/jj151815.aspx)

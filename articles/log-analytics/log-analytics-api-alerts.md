@@ -1,6 +1,6 @@
 ---
-title: "Использование REST API оповещений Log Analytics в OMS"
-description: "REST API оповещений Log Analytics позволяет создавать оповещения и управлять ими в Log Analytics — компоненте Operations Management Suite (OMS).  В этой статье приводятся сведения об интерфейсе API и примеры выполнения различных операций."
+title: "aaaUsing OMS API аналитики журналов оповещений REST"
+description: "Hello API REST предупреждения аналитики журналов позволяет toocreate оповещений и управление ими в службе анализа журналов, являющейся частью Operations Management Suite (OMS).  Эта статья содержит сведения hello API и несколько примеров для выполнения различных операций."
 services: log-analytics
 documentationcenter: 
 author: bwren
@@ -15,38 +15,38 @@ ms.workload: infrastructure-services
 ms.date: 05/12/2017
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5ce72ffef4394bf3bbe39fa420c4fcaa965ae35c
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 418dc7eb71d6151c6380b8925f1f147a0e13b178
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-and-manage-alert-rules-in-log-analytics-with-rest-api"></a>Создание правил генерации оповещений и управление ими в Log Analytics с помощью REST API
-REST API оповещений в Log Analytics позволяет создавать оповещения и управлять ими в Operations Management Suite (OMS).  В этой статье приводятся сведения об интерфейсе API и примеры выполнения различных операций.
+Hello API REST предупреждения аналитики журналов позволяет toocreate оповещений и управление ими в Operations Management Suite (OMS).  Эта статья содержит сведения hello API и несколько примеров для выполнения различных операций.
 
-Для поиска в службе Log Analytics используется REST API категории RESTful — к нему можно получить доступ с помощью REST API Azure Resource Manager. В этом документе вы найдете примеры, когда доступ к API из командной строки PowerShell осуществляется через [ARMClient](https://github.com/projectkudu/ARMClient) — инструмент командной строки с открытым исходным кодом, который упрощает вызов API Azure Resource Manager. Использование ARMClient и PowerShell — это один из множества вариантов получения доступа к API поиска по службе Log Analytics. С помощью этих средств можно использовать API диспетчера ресурсов Azure категории RESTful для осуществления вызовов рабочих областей OMS и выполнения команд поиска в них. API будет выдавать результаты поиска в формате JSON, позволяя программно использовать результаты поиска различными способами.
+Hello REST API поиска аналитики журналов относится к категории RESTful и может запускаться через REST API диспетчера ресурсов Azure hello. В этом документе вы найдете примеры, когда hello API осуществляется из командной строки PowerShell с помощью [ARMClient](https://github.com/projectkudu/ARMClient), Здравствуйте, средство командной строки с открытым исходным, который упрощает вызов API диспетчера ресурсов Azure. Hello использование ARMClient и PowerShell является одним из многих параметров tooaccess hello API поиска аналитики журналов. С помощью этих средств можно использовать рабочие области tooOMS вызовы toomake API диспетчера ресурсов Azure категории RESTful hello и выполнения команд поиска в них. Hello API будет выдавать tooyou результаты поиска в формате JSON, позволяя результаты поиска hello toouse различными способами программными средствами.
 
 ## <a name="prerequisites"></a>Предварительные требования
-В настоящее время оповещения могут создаваться только с помощью сохраненного поиска в службе Log Analytics.  Дополнительные сведения см. в статье [REST API поиска в журналах](log-analytics-log-search-api.md).
+В настоящее время оповещения могут создаваться только с помощью сохраненного поиска в службе Log Analytics.  Можно ссылаться toohello [REST API поиска журналов](log-analytics-log-search-api.md) для получения дополнительной информации.
 
 ## <a name="schedules"></a>Расписания
-Сохраненный поиск может включать одно расписание или несколько. Расписание определяет, как часто выполняется поиск, а также интервал времени для определения условий.
-У расписаний есть свойства, приведенные в таблице ниже.
+Сохраненный поиск может включать одно расписание или несколько. Hello расписание определяет частоту hello поиска выполняется и идентифицируется hello интервал времени, через какие критерии hello.
+Расписания, имеют свойства hello в hello в следующей таблице.
 
 | Свойство | Описание |
 |:--- |:--- |
-| Интервал |Насколько часто выполняется поиск. Измеряется в минутах. |
-| QueryTimeSpan |Интервал времени для вычисления условий. Значение должно быть больше или равно значению свойства Interval. Измеряется в минутах. |
-| Version (версия) |Используемая версия API.  Сейчас это свойство всегда должно иметь значение 1. |
+| Интервал |Как часто hello поиска выполняется. Измеряется в минутах. |
+| QueryTimeSpan |интервал времени Hello какие hello для вычисления условия. Должно быть больше интервала равно tooor. Измеряется в минутах. |
+| Version (версия) |Здравствуйте, используемой версии API.  В настоящее время это всегда должен иметь значение too1. |
 
-Например, рассмотрим запрос событий с интервалом (свойство Interval) 15 минут и временным диапазоном (свойство TimeSpan) 30 минут. В этом случае запрос будет выполняться каждые 15 минут, а оповещение будет создаваться, если условие по-прежнему соблюдается по прошествии 30-минутного периода.
+Например, рассмотрим запрос событий с интервалом (свойство Interval) 15 минут и временным диапазоном (свойство TimeSpan) 30 минут. В этом случае hello запрос будет выполняться каждые 15 минут, и будет запускаться оповещение, если критерий hello продолжение tooresolve tootrue через интервал 30 минут.
 
 ### <a name="retrieving-schedules"></a>Получение расписаний
-Используйте метод Get для получения всех расписаний для сохраненного поиска.
+Используйте hello получить метод tooretrieve все расписания сохраненного поиска.
 
     armclient get /subscriptions/{Subscription ID}/resourceGroups/OI-Default-East-US/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search  ID}/schedules?api-version=2015-03-20
 
-Чтобы получить конкретное расписание для сохраненного поискового запроса, используйте метод Get с идентификатором расписания.
+Используйте hello Get-метод с tooretrieve идентификатор расписания определенное расписание сохраненного поиска.
 
     armclient get /subscriptions/{Subscription ID}/resourceGroups/OI-Default-East-US/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Subscription ID}/schedules/{Schedule ID}?api-version=2015-03-20
 
@@ -66,82 +66,82 @@ REST API оповещений в Log Analytics позволяет создава
 ```
 
 ### <a name="creating-a-schedule"></a>Создание расписания
-Чтобы создать расписание, используйте метод Put с уникальным идентификатором расписания.  Обратите внимание, что нельзя использовать один и тот же идентификатор для двух расписаний, даже если они связаны с разными сохраненными поисковыми запросами.  При создании расписания в консоли OMS для идентификатора расписания создается GUID.
+Метод Put hello с расписание уникальный идентификатор toocreate новое расписание.  Обратите внимание, что два расписания не может иметь hello таким же Идентификатором даже если они связаны с другой, сохраненные поисковые запросы.  При создании расписания в консоли OMS hello GUID создается для идентификатора расписания hello
 
 > [!NOTE]
-> Имена всех сохраненных поисковых запросов, отчетов и действий, создаваемых с помощью API Log Analytics, должны быть в нижнем регистре.
+> Имя Hello все сохраненные поисковые запросы, отчеты и действия, созданные с помощью hello API аналитики журналов должно быть в нижнем регистре.
 
     $scheduleJson = "{'properties': { 'Interval': 15, 'QueryTimeSpan':15, 'Active':'true' } }"
     armclient put /subscriptions/{Subscription ID}/resourceGroups/OI-Default-East-US/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/mynewschedule?api-version=2015-03-20 $scheduleJson
 
 ### <a name="editing-a-schedule"></a>Изменение расписания
-Чтобы изменить расписание, используйте метод Put с идентификатором существующего расписания для того же сохраненного поискового запроса.  Текст запроса должен содержать Etag расписания.
+Метод Put hello с существующим расписанием идентификатор hello же сохраненный поиск toomodify, который в расписании.  текст Hello hello запроса должен содержать etag hello hello расписания.
 
       $scheduleJson = "{'etag': 'W/\"datetime'2016-02-25T20%3A54%3A49.8074679Z'\""','properties': { 'Interval': 15, 'QueryTimeSpan':15, 'Active':'true' } }"
       armclient put /subscriptions/{Subscription ID}/resourceGroups/OI-Default-East-US/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/mynewschedule?api-version=2015-03-20 $scheduleJson
 
 
 ### <a name="deleting-schedules"></a>Удаление расписаний
-Чтобы удалить расписание, используйте метод Delete с идентификатором расписания.
+Метод Delete hello с toodelete идентификатор расписания расписания.
 
     armclient delete /subscriptions/{Subscription ID}/resourceGroups/OI-Default-East-US/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Subscription ID}/schedules/{Schedule ID}?api-version=2015-03-20
 
 
 ## <a name="actions"></a>Действия
-Расписание может включать несколько действий. Действие может определять один выполняемый процесс или несколько (например, отправку почты или запуск модуля Runbook) или задавать пороговое значение, определяющее, когда результаты поиска отвечают некоторым условиям.  Некоторые действия будут определять оба элемента так, чтобы процессы выполнялись при достижении порогового значения.
+Расписание может включать несколько действий. Действие может определять одну или несколько tooperform процессов, например отправку почты или запуск runbook, или он может определять пороговое значение, которое определяет, когда hello результатов поиска соответствующих некоторым условиям.  Некоторые действия будут определять, чтобы hello процессы выполняются при достижении порога hello.
 
-У всех действий есть свойства, приведенные в таблице ниже.  Разные типы оповещений имеют различные дополнительные свойства, которые описаны ниже.
+Все действия имеют свойства hello в hello в следующей таблице.  Разные типы оповещений имеют различные дополнительные свойства, которые описаны ниже.
 
 | Свойство | Описание |
 |:--- |:--- |
-| Тип |Тип действия.  Сейчас возможными значениями являются Alert и Webhook. |
-| Имя |Отображаемое имя оповещения. |
-| Version (версия) |Используемая версия API.  Сейчас это свойство всегда должно иметь значение 1. |
+| Тип |Тип действия hello.  В настоящее время hello возможные значения: предупреждение и веб-перехватчика. |
+| Имя |Отображаемое имя для hello предупреждения. |
+| Version (версия) |Здравствуйте, используемой версии API.  В настоящее время это всегда должен иметь значение too1. |
 
 ### <a name="retrieving-actions"></a>Получение действий
-Используйте метод Get для получения всех действий для расписания.
+Используйте hello получить метод tooretrieve все действия для расписания.
 
     armclient get /subscriptions/{Subscription ID}/resourceGroups/OI-Default-East-US/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search  ID}/schedules/{Schedule ID}/actions?api-version=2015-03-20
 
-Используйте метод Get с идентификатором действия для получения конкретного действия для расписания.
+Используйте hello Get-метод с hello действия Идентификатором tooretrieve определенное действие для расписания.
 
     armclient get /subscriptions/{Subscription ID}/resourceGroups/OI-Default-East-US/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Subscription ID}/schedules/{Schedule ID}/actions/{Action ID}?api-version=2015-03-20
 
 ### <a name="creating-or-editing-actions"></a>Создание или изменение действий
-Чтобы создать действие, используйте метод Put с идентификатором действия, уникальным для расписания.  При создании действия в консоли OMS для идентификатора действия отображается GUID.
+Метод Put hello действия идентификатором, который является уникальным toohello расписание toocreate новое действие.  При создании действия в консоли OMS hello GUID является идентификатором hello действия.
 
 > [!NOTE]
-> Имена всех сохраненных поисковых запросов, отчетов и действий, создаваемых с помощью API Log Analytics, должны быть в нижнем регистре.
+> Имя Hello все сохраненные поисковые запросы, отчеты и действия, созданные с помощью hello API аналитики журналов должно быть в нижнем регистре.
 
-Чтобы изменить расписание, используйте метод Put с идентификатором существующего действия для того же сохраненного поискового запроса.  Текст запроса должен содержать Etag расписания.
+Метод Put hello с существующие действием, идентификатор hello же сохраненный поиск toomodify, который в расписании.  текст Hello hello запроса должен содержать etag hello hello расписания.
 
-Формат запроса для создания действия зависит от типа действия, поэтому эти примеры приведены в разделах ниже.
+Формат запроса Hello для создания нового действия зависит от типа действия, поэтому эти образцы приведены в следующих разделах hello.
 
 ### <a name="deleting-actions"></a>Удаление действий
-Для удаления действия используйте метод Delete с идентификатором действия.
+Метод Delete hello с hello действия Идентификатором toodelete действие.
 
     armclient delete /subscriptions/{Subscription ID}/resourceGroups/OI-Default-East-US/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Subscription ID}/schedules/{Schedule ID}/Actions/{Action ID}?api-version=2015-03-20
 
 ### <a name="alert-actions"></a>Действия оповещений
-Расписание должно включать одно-единственное действие оповещения.  Действия оповещений включают один или несколько разделов в таблице ниже.  Они более подробно описаны далее.
+Расписание должно включать одно-единственное действие оповещения.  Оповещения имеют один или несколько разделов hello в hello в следующей таблице.  Они более подробно описаны далее.
 
 | Раздел | Описание |
 |:--- |:--- |
-| Пороговое значение |Условие для запуска действия. |
-| EmailNotification |Отправка сообщения нескольким получателям. |
-| Исправление |Запуск модуля Runbook в службе автоматизации Azure для попытки исправления выявленной проблемы. |
+| Пороговое значение |Критерии, когда выполняется действие hello. |
+| EmailNotification |Отправьте почту toomultiple получателей. |
+| Исправление |Запуск runbook в автоматизации Azure tooattempt toocorrect обнаружить проблему. |
 
 #### <a name="thresholds"></a>Пороговые значения
-Действие оповещения должно включать одно-единственное пороговое значение.  Когда результат сохраненного поиска соответствует пороговому значению в действии, связанном с этим поиском, запускаются другие процессы в этом действии.  Действие также может содержать только пороговое значение, чтобы его можно было использовать с действиями других типов, которые не содержат пороговых значений.
+Действие оповещения должно включать одно-единственное пороговое значение.  При hello сохраненного поиска совпадения порог hello в действие, связанное с поиска, запускаются другие процессы в это действие.  Действие также может содержать только пороговое значение, чтобы его можно было использовать с действиями других типов, которые не содержат пороговых значений.
 
-У пороговых значений есть свойства, приведенные в таблице ниже.
+Пороговые значения имеют свойства hello в hello в следующей таблице.
 
 | Свойство | Описание |
 |:--- |:--- |
-| Оператор |Оператор для сравнения порогового значения. <br> gt — больше <br> lt = меньше чем |
-| Значение |Пороговое значение. |
+| operator |Оператор сравнения hello пороговое значение. <br> gt — больше <br> lt = меньше чем |
+| Значение |Значение порога hello. |
 
-Например, рассмотрим запрос событий с интервалом (свойство Interval) 15 минут, временным диапазоном (свойство TimeSpan) 30 минут и пороговым значением больше 10. В этом случае запрос будет выполняться каждые 15 минут, а оповещение будет создаваться при возврате 10 событий, созданных за 30-минутный период.
+Например, рассмотрим запрос событий с интервалом (свойство Interval) 15 минут, временным диапазоном (свойство TimeSpan) 30 минут и пороговым значением больше 10. В этом случае hello запрос будет выполняться каждые 15 минут, и будет запускаться оповещение, если возвращается 10 событий, созданные в течение определенного интервала 30 минут.
 
 Ниже приведен пример ответа для действия, содержащего только пороговое значение.  
 
@@ -156,23 +156,23 @@ REST API оповещений в Log Analytics позволяет создава
         "Version": 1
     }
 
-Чтобы создать действие с пороговым значением для расписания, используйте метод Put с уникальным идентификатором действия.  
+Используйте метод Put hello с уникальные действия Идентификатором toocreate новое действие пороговое значение для расписания.  
 
     $thresholdJson = "{'properties': { 'Name': 'My Threshold', 'Version':'1', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 10 } }"
     armclient put /subscriptions/{Subscription ID}/resourceGroups/OI-Default-East-US/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/mythreshold?api-version=2015-03-20 $thresholdJson
 
-Чтобы изменить действие с пороговым значением для расписания, используйте метод Put с идентификатором существующего действия.  Текст запроса должен содержать Etag действия.
+Используйте метод Put hello с существующие идентификатор действия toomodify действия пороговое значение для расписания.  текст Hello hello запроса должен содержать hello etag действие hello.
 
     $thresholdJson = "{'etag': 'W/\"datetime'2016-02-25T20%3A54%3A20.1302566Z'\"','properties': { 'Name': 'My Threshold', 'Version':'1', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 10 } }"
     armclient put /subscriptions/{Subscription ID}/resourceGroups/OI-Default-East-US/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/mythreshold?api-version=2015-03-20 $thresholdJson
 
 #### <a name="email-notification"></a>Уведомление по электронной почте
-Уведомления отправляются для одного или нескольких получателей по электронной почте.  Уведомления могут включать свойства, приведенные в таблице ниже.
+Уведомления по электронной почте Отправить почту tooone или нескольких получателей.  Они включают свойства hello в hello в следующей таблице.
 
 | Свойство | Описание |
 |:--- |:--- |
 | Recipients |Список адресов электронной почты. |
-| Субъект |Тема сообщения электронной почты. |
+| Субъект |Тема Hello почты hello. |
 | Вложение |Вложения пока не поддерживаются, поэтому это свойство всегда будет иметь значение None. |
 
 Ниже приведен пример ответа для действия уведомления по электронной почте с пороговым значением.  
@@ -190,32 +190,32 @@ REST API оповещений в Log Analytics позволяет создава
                 "recipient1@contoso.com",
                 "recipient2@contoso.com"
             ],
-            "Subject": "This is the subject",
+            "Subject": "This is hello subject",
             "Attachment": "None"
         },
         "Version": 1
     }
 
-Чтобы создать действие почты для расписания, используйте метод Put с уникальным идентификатором действия.  В следующем примере создается уведомление по электронной почте с пороговым значением, которое отправляется в случае, если результаты сохраненного поиска превышают пороговое значение.
+Используйте метод Put hello с уникальные действия Идентификатором toocreate новое действие электронной почты для расписания.  Hello следующем примере создается уведомление по электронной почте с пороговым значением, если результаты hello hello сохраненного поиска превышает порог hello отправляется сообщение hello.
 
-    $emailJson = "{'properties': { 'Name': 'MyEmailAction', 'Version':'1', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 10 }, 'EmailNotification': {'Recipients': ['recipient1@contoso.com', 'recipient2@contoso.com'], 'Subject':'This is the subject', 'Attachment':'None'} }"
+    $emailJson = "{'properties': { 'Name': 'MyEmailAction', 'Version':'1', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 10 }, 'EmailNotification': {'Recipients': ['recipient1@contoso.com', 'recipient2@contoso.com'], 'Subject':'This is hello subject', 'Attachment':'None'} }"
     armclient put /subscriptions/{Subscription ID}/resourceGroups/OI-Default-East-US/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/myemailaction?api-version=2015-03-20 $emailJson
 
-Чтобы изменить действие почты для расписания, используйте метод Put с идентификатором существующего действия.  Текст запроса должен содержать Etag действия.
+Используйте метод Put hello с существующие идентификатор действия toomodify действия электронной почты для расписания.  текст Hello hello запроса должен содержать hello etag действие hello.
 
-    $emailJson = "{'etag': 'W/\"datetime'2016-02-25T20%3A54%3A20.1302566Z'\"','properties': { 'Name': 'MyEmailAction', 'Version':'1', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 10 }, 'EmailNotification': {'Recipients': ['recipient1@contoso.com', 'recipient2@contoso.com'], 'Subject':'This is the subject', 'Attachment':'None'} }"
+    $emailJson = "{'etag': 'W/\"datetime'2016-02-25T20%3A54%3A20.1302566Z'\"','properties': { 'Name': 'MyEmailAction', 'Version':'1', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 10 }, 'EmailNotification': {'Recipients': ['recipient1@contoso.com', 'recipient2@contoso.com'], 'Subject':'This is hello subject', 'Attachment':'None'} }"
     armclient put /subscriptions/{Subscription ID}/resourceGroups/OI-Default-East-US/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/myemailaction?api-version=2015-03-20 $emailJson
 
 #### <a name="remediation-actions"></a>Действия исправления
-Служба исправлений запускает модуль Runbook в службе автоматизации Azure, который пытается устранить проблему, указанную в оповещении.  Вам потребуется создать объект webhook для модуля Runbook, используемого в действии исправления, а затем указать его универсальный код ресурса (URI) в свойстве WebhookUri.  При создании этого действия с помощью консоли OMS новый объект webhook для модуля Runbook создается автоматически.
+Исправления запустить runbook в автоматизации Azure, которую пытается выполнить toocorrect hello проблему, связанную с hello предупреждение.  Необходимо создать веб-перехватчика для hello runbook, используемых в действие исправления и затем укажите hello URI в hello WebhookUri свойство.  При создании этого действия, с помощью консоли OMS hello, для модуля runbook hello автоматически создается новое веб-перехватчика.
 
-Исправления могут включать свойства, приведенные в таблице ниже.
+Исправления включены свойства hello в hello в следующей таблице.
 
 | Свойство | Описание |
 |:--- |:--- |
-| RunbookName |Имя модуля Runbook. Оно должно соответствовать имени опубликованного модуля Runbook в учетной записи автоматизации, настроенной в решении автоматизации в рабочей области OMS. |
-| WebhookUri |Универсальный код ресурса (URI) объекта webhook. |
-| Expiry |Дата и время окончания срока действия объекта webhook.  Если объект webhook не имеет срока действия, это может быть любая допустимая дата в будущем. |
+| RunbookName |Имя hello runbook. Оно должно совпадать опубликованного модуля runbook в автоматизации hello учетной записи, настроенной в hello решение автоматизации в рабочую область OMS. |
+| WebhookUri |URI веб-перехватчика hello. |
+| Expiry |Дата окончания срока действия Hello и время веб-перехватчика hello.  Если веб-перехватчика hello не имеет срока действия, это может быть любой допустимый будущую дату. |
 
 Ниже приведен пример ответа для действия исправления с пороговым значением.
 
@@ -235,18 +235,18 @@ REST API оповещений в Log Analytics позволяет создава
         "Version": 1
     }
 
-Чтобы создать действие исправления для расписания, используйте метод Put с уникальным идентификатором действия.  В следующем примере создается исправление с пороговым значением для запуска модуля Runbook в случае, если результаты сохраненного поиска превышают пороговое значение.
+Используйте метод Put hello с уникальным действия Идентификатором toocreate новое действие исправления для расписания.  Hello пример создает исправление с пороговым значением, hello runbook запускается в том случае, если результаты hello hello сохраненного поиска превышает порог hello.
 
     $remediateJson = "{'properties': { 'Type':'Alert', 'Name': 'My Remediation Action', 'Version':'1', 'Threshold': { 'Operator': 'gt', 'Value': 10 }, 'Remediation': {'RunbookName': 'My-Runbook', 'WebhookUri':'https://s1events.azure-automation.net/webhooks?token=4jCibOjO3w4W2Cfg%2b2NkjLYdafnusaG6i8tnP8h%2fNNg%3d', 'Expiry':'2018-02-25T18:27:20Z'} }"
     armclient put /subscriptions/{Subscription ID}/resourceGroups/OI-Default-East-US/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/myremediationaction?api-version=2015-03-20 $remediateJson
 
-Чтобы изменить действие исправления для расписания, используйте метод Put с идентификатором существующего действия.  Текст запроса должен содержать Etag действия.
+Используйте метод Put hello с существующие toomodify идентификатор действия действие исправления для расписания.  текст Hello hello запроса должен содержать hello etag действие hello.
 
     $remediateJson = "{'etag': 'W/\"datetime'2016-02-25T20%3A54%3A20.1302566Z'\"','properties': { 'Type':'Alert', 'Name': 'My Remediation Action', 'Version':'1', 'Threshold': { 'Operator': 'gt', 'Value': 10 }, 'Remediation': {'RunbookName': 'My-Runbook', 'WebhookUri':'https://s1events.azure-automation.net/webhooks?token=4jCibOjO3w4W2Cfg%2b2NkjLYdafnusaG6i8tnP8h%2fNNg%3d', 'Expiry':'2018-02-25T18:27:20Z'} }"
     armclient put /subscriptions/{Subscription ID}/resourceGroups/OI-Default-East-US/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/myremediationaction?api-version=2015-03-20 $remediateJson
 
 #### <a name="example"></a>Пример
-Ниже приведен полный пример создания оповещения по электронной почте.  Создается новое расписание, а также действие, содержащее пороговое значение и сообщение электронной почты.
+Ниже приведен полный пример toocreate новое оповещение по электронной почте.  Создается новое расписание, а также действие, содержащее пороговое значение и сообщение электронной почты.
 
     $subscriptionId = "3d56705e-5b26-5bcc-9368-dbc8d2fafbfc"
     $resourceGroup  = "MyResourceGroup"    
@@ -259,20 +259,20 @@ REST API оповещений в Log Analytics позволяет создава
     $scheduleJson = "{'properties': { 'Interval': 15, 'QueryTimeSpan':15, 'Active':'true' }"
     armclient put /subscriptions/$subscriptionId/resourceGroups/$resourceGroup/providers/Microsoft.OperationalInsights/workspaces/$workspaceName/savedSearches/$searchId/schedules/$scheduleId/?api-version=2015-03-20 $scheduleJson
 
-    $emailJson = "{'properties': { 'Name': 'MyEmailAction', 'Version':'1', 'Severity':'Warning', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 10 }, 'EmailNotification': {'Recipients': ['recipient1@contoso.com', 'recipient2@contoso.com'], 'Subject':'This is the subject', 'Attachment':'None'} }"
+    $emailJson = "{'properties': { 'Name': 'MyEmailAction', 'Version':'1', 'Severity':'Warning', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 10 }, 'EmailNotification': {'Recipients': ['recipient1@contoso.com', 'recipient2@contoso.com'], 'Subject':'This is hello subject', 'Attachment':'None'} }"
     armclient put /subscriptions/$subscriptionId/resourceGroups/$resourceGroup/providers/Microsoft.OperationalInsights/workspaces/$workspaceName/savedSearches/$searchId/schedules/$scheduleId/actions/$actionId/?api-version=2015-03-20 $emailJson
 
 ### <a name="webhook-actions"></a>Действия webhook
-Действия webhook запускают процесс путем вызова URL-адреса и, при необходимости, предоставления полезных данных для отправки.  Они похожи на действия исправления, но предназначены для объектов webhook, которые могут вызывать процессы, отличные от модулей Runbook службы автоматизации Azure.  Они также включают дополнительную возможность предоставления полезных данных, доставляемых в удаленный процесс.
+Действия веб-перехватчика запустить процесс путем вызова URL-адрес и Дополнительно может предоставлять полезные данные toobe отправлено.  Они являются подобные действия tooRemediation, за исключением того, они предназначены для веб-перехватчиков, который может вызывать процессами, отличными от Runbook автоматизации Azure.  Они также предоставляют hello дополнительную возможность предоставления удаленных процессов toohello toobe доставляется полезных данных.
 
-Действиям webhook не назначается пороговое значение, однако их необходимо добавлять в расписание, которое включает действие оповещения с пороговым значением.  Можно добавить несколько действий webhook, которые будут выполняться все одновременно при достижении порогового значения.
+Действия веб-перехватчика нет порогового значения, но вместо этого следует добавить tooa расписание, которое имеет действие по оповещению с пороговым значением.  Можно добавить несколько действий веб-перехватчика, все выполняемые при достижении порога hello.
 
-Действия webhook могут включать свойства, приведенные в таблице ниже.
+Веб-перехватчика действия включают свойства hello в hello в следующей таблице.
 
 | Свойство | Описание |
 |:--- |:--- |
-| WebhookUri |Тема сообщения электронной почты. |
-| CustomPayload |Пользовательские полезные данные, отправляемые в объект webhook.  Формат зависит от данных, ожидаемых объектом webhook. |
+| WebhookUri |Тема Hello почты hello. |
+| CustomPayload |Настраиваемые полезные данные отправлены toobe toohello веб-перехватчика.  Формат Hello будет зависеть от ожидается какой веб-перехватчика hello. |
 
 Ниже приведен пример ответа для действия webhook и соответствующее действие оповещения с пороговым значением.
 
@@ -307,7 +307,7 @@ REST API оповещений в Log Analytics позволяет создава
     }
 
 #### <a name="create-or-edit-a-webhook-action"></a>Создание или изменение действий webhook
-Чтобы создать действие webhook для расписания, используйте метод Put с уникальным идентификатором действия.  В следующем примере создается действие webhook и запускается действие оповещения с пороговым значением, если результаты сохраненного поиска превышают пороговое значение.
+Используйте метод Put hello с уникальные действия Идентификатором toocreate новое действие веб-перехватчика для расписания.  Hello следующем примере создается действие веб-перехватчика или предупреждений с пороговым значением, чтобы веб-перехватчика hello будут создаваться при hello результаты hello сохраненного поиска превышает порог hello.
 
     $thresholdAction = "{'properties': { 'Name': 'My Threshold', 'Version':'1', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 10 } }"
     armclient put /subscriptions/{Subscription ID}/resourceGroups/OI-Default-East-US/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/mythreshold?api-version=2015-03-20 $thresholdAction
@@ -315,11 +315,11 @@ REST API оповещений в Log Analytics позволяет создава
     $webhookAction = "{'properties': {'Type': 'Webhook', 'Name': 'My Webhook", 'WebhookUri': 'https://oaaswebhookdf.cloudapp.net/webhooks?token=VrkYTKlhk%2fc%2bKBP', 'CustomPayload': '{\"field1\":\"value1\",\"field2\":\"value2\"}', 'Version': 1 }"
     armclient put /subscriptions/{Subscription ID}/resourceGroups/OI-Default-East-US/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/mywebhookaction?api-version=2015-03-20 $webhookAction
 
-Чтобы изменить действие webhook для расписания, используйте метод Put с идентификатором существующего действия.  Текст запроса должен содержать Etag действия.
+Используйте метод Put hello с существующие идентификатор действия toomodify действия веб-перехватчика для расписания.  текст Hello hello запроса должен содержать hello etag действие hello.
 
     $webhookAction = "{'etag': 'W/\"datetime'2016-02-26T20%3A25%3A00.6862124Z'\"','properties': {'Type': 'Webhook', 'Name': 'My Webhook", 'WebhookUri': 'https://oaaswebhookdf.cloudapp.net/webhooks?token=VrkYTKlhk%2fc%2bKBP', 'CustomPayload': '{\"field1\":\"value1\",\"field2\":\"value2\"}', 'Version': 1 }"
     armclient put /subscriptions/{Subscription ID}/resourceGroups/OI-Default-East-US/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/mywebhookaction?api-version=2015-03-20 $webhookAction
 
 ## <a name="next-steps"></a>Дальнейшие действия
-* Используйте [REST API для выполнения поиска в журналах](log-analytics-log-search-api.md) в службе Log Analytics.
+* Используйте hello [REST API поиска журналов tooperform](log-analytics-log-search-api.md) в службе анализа журналов.
 

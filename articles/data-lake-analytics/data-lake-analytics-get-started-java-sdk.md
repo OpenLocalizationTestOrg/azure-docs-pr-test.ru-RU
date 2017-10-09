@@ -1,6 +1,6 @@
 ---
-title: "Разработка приложений с использованием пакета Java SDK для Data Lake Analytics | Документация Майкрософт"
-description: "Разработка приложений с использованием пакета SDK для Java для аналитики озера данных Azure"
+title: "aaaUse пакета SDK для Java аналитика Озера данных toodevelop приложений | Документы Microsoft"
+description: "Использовать приложения toodevelop SDK для Java аналитика Озера данных Azure"
 services: data-lake-analytics
 documentationcenter: 
 author: saveenr
@@ -14,37 +14,37 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 12/05/2016
 ms.author: edmaca
-ms.openlocfilehash: 795d9ec0b0cac5d74673404f1d0d851393336df0
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 0d975812fe659ed34ee9befd37ee7c0bf50d3414
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="get-started-with-azure-data-lake-analytics-using-java-sdk"></a>Начало работы с Azure Data Lake Analytics с помощью пакета SDK Java
 [!INCLUDE [get-started-selector](../../includes/data-lake-analytics-selector-get-started.md)]
 
-Узнайте, как с помощью пакета SDK для Java для аналитики озера данных Azure создать учетную запись озера данных Azure и выполнить такие базовые операции, как создание папок, передача и скачивание файлов данных, удаление учетной записи, а также как работать с заданиями. Дополнительные сведения о Data Lake см. в статье [Обзор аналитики озера данных Microsoft Azure](data-lake-analytics-overview.md).
+Узнайте, как toouse hello toocreate SDK для Java аналитика Озера данных Azure учетной записи Озера данных Azure и выполнять основные операции, такие как создание папками, отправка и загрузка файлов данных, удаление учетной записи и работа с заданиями. Дополнительные сведения о Data Lake см. в статье [Обзор аналитики озера данных Microsoft Azure](data-lake-analytics-overview.md).
 
-В этом учебнике вам предстоит разработать консольное приложение Java, которое содержит примеры общих задач администрирования, а также создает тестовые данные и отправляет задание.  Для навигации по учебнику с помощью других поддерживаемых средств используйте вкладки в верхней части этого раздела.
+В этом учебнике вам предстоит разработать консольное приложение Java, которое содержит примеры общих задач администрирования, а также создает тестовые данные и отправляет задание.  toogo через hello поддерживается же учебник, использовать другие средства, нажмите кнопку hello вкладок в верхней части hello этого раздела.
 
 ## <a name="prerequisites"></a>Предварительные требования
 * Пакет средств разработки для Java (JDK) 8 (с использованием Java версии 1.8).
-* IntelliJ или другая подходящая среда разработки Java. Это необязательный пункт, но мы рекомендуем его выполнить. В инструкциях ниже используется IntelliJ.
+* IntelliJ или другая подходящая среда разработки Java. Это необязательный пункт, но мы рекомендуем его выполнить. Приведенные ниже инструкции Hello используйте IntelliJ.
 * **Подписка Azure**. Ознакомьтесь с [бесплатной пробной версией Azure](https://azure.microsoft.com/pricing/free-trial/).
-* Создайте приложение Azure Active Directory (AAD) и получите его **идентификатор клиента**, **код клиента** и **ключ**. Дополнительные сведения о приложениях AAD и указания о том, как получить идентификатор клиента, см. в статье [Создание приложения Active Directory и субъекта-службы с помощью портала](../azure-resource-manager/resource-group-create-service-principal-portal.md). Когда будут созданы приложение и ключ, URI ответа и ключ также будут доступны на портале.
+* Создайте приложение Azure Active Directory (AAD) и получите его **идентификатор клиента**, **код клиента** и **ключ**. Дополнительные сведения о приложениях AAD и инструкции о том, как tooget идентификатора клиента см. в разделе [Active Directory, создать приложение и участника службы с помощью портала](../azure-resource-manager/resource-group-create-service-principal-portal.md). Hello ответа Reply URI и ключ будут также доступны через портал hello после создания приложения hello и ключом, создаваемым.
 
 ## <a name="how-do-i-authenticate-using-azure-active-directory"></a>Как выполнить аутентификацию с помощью Azure Active Directory?
-Ниже приведен фрагмент кода для **неинтерактивной** аутентификации, в ходе которой приложение указывает собственные учетные данные.
+Приведенный далее фрагмент кода Hello предоставляет код для **неинтерактивной** проверки подлинности, где приложение hello предоставляет свои собственные учетные данные.
 
-Для работы с этим руководством вам потребуется предоставить приложению разрешение на создание ресурсов в Azure. Для целей этого руководства **настоятельно рекомендуем** предоставить приложению только разрешения участника приложения в новой неиспользованной пустой группе ресурсов в подписке Azure.
+Для этого учебника toowork потребуется toogive разрешение toocreate ресурсами приложения в Azure. Это **настоятельно рекомендуется** предоставьте этой группе ресурсов новый, неиспользуемые или пустые участника разрешений приложения tooa только в вашей подписке Azure для целей данного учебника hello.
 
 ## <a name="create-a-java-application"></a>Создание приложения Java
-1. Откройте IntelliJ и создайте новый проект Java с помощью шаблона **приложения командной строки** .
-2. Щелкните правой кнопкой мыши проект в левой части экрана и выберите пункт **Add Framework Support**(Добавить поддержку платформы). Выберите **Maven** и нажмите кнопку **ОК**.
-3. Откройте только что созданный файл **pom.xml** и добавьте следующий фрагмент текста между тегами **\<version>** и **\<project>**:
+1. Откройте IntelliJ и создайте новый проект Java с помощью hello **приложения командной строки** шаблона.
+2. Правой кнопкой мыши проект hello hello левой части экрана и нажмите кнопку **добавьте поддержка Framework**. Выберите **Maven** и нажмите кнопку **ОК**.
+3. Откройте hello вновь созданные **«pom.xml»** и добавьте следующий фрагмент текста между hello hello  **\</Version >** тег и hello  **\< /project >** тег:
 
     >[!NOTE]
-    >Этот шаг выполняется временно, пока пакет SDK для Azure Data Lake Analytics не станет доступным в Maven. Как только пакет SDK появится в Maven, эта статья будет обновлена. Все будущие обновления этого пакета SDK будут доступны в Maven.
+    >Этот шаг является временным, пока не будет доступен в Maven hello SDK аналитика Озера данных Azure. В этой статье будет обновлен после hello SDK доступна в Maven. Все будущие обновления toothis SDK будет объем через Maven.
     >
 
         <repositories>
@@ -95,13 +95,13 @@ ms.lasthandoff: 07/11/2017
                 <version>1.0.0-SNAPSHOT</version>
             </dependency>
         </dependencies>
-4. Последовательно выберите **File** (Файл), **Settings** (Параметры), **Build** (Сборка), **Execution** (Выполнение), **Deployment** (Развертывание). Выберите **Build Tools** (Средства сборки), **Maven**, **Importing** (Импорт). Затем установите флажок **Import Maven projects automatically**(Импортировать проекты Maven автоматически).
-5. Откройте файл **Main.java** и замените существующий блок кода следующим кодом. Кроме того, задайте значения параметров, вызываемых во фрагменте кода, например **localFolderPath**, **_adlaAccountName**, **_adlsAccountName** и **_resourceGroupName**, а затем замените заполнители **CLIENT-ID**, **CLIENT-SECRET**, **TENANT-ID** и **SUBSCRIPTION-ID** соответствующими значениями.
+4. Go слишком**файл**, затем **параметры**, затем **построения**, **выполнения**, **развертывания**. Выберите **Build Tools** (Средства сборки), **Maven**, **Importing** (Импорт). Затем установите флажок **Import Maven projects automatically**(Импортировать проекты Maven автоматически).
+5. Откройте **Main.java** и заменить hello существующий код блока с hello следующий код. Кроме того, укажите hello значения параметров, упомянутых в фрагмент кода hello, таких как **localFolderPath**, **_adlaAccountName**, **_adlsAccountName**, **_ resourceGroupName** и замените заполнители для **идентификатор КЛИЕНТА**, **СЕКРЕТ КЛИЕНТА**, **ИД КЛИЕНТА**, и  **Идентификатор ПОДПИСКИ**.
 
-    Этот код обрабатывает создание учетных записей хранилища озера данных и аналитики озера данных, создание файлов в хранилище, выполнение задания, получения состояния задания, скачивание выходных данных задания и, наконец, удаление учетной записи.
+    Этот код проходит через процесс создания хранилища Озера данных и аналитики Озера данных учетных записей, создание файлов в хранилище hello hello выполнения задания, получения состояния задания, загрузка выходных данных задания и наконец при удалении учетной записи hello.
 
    > [!NOTE]
-   > В настоящее время существует известная проблема со службой озера данных Azure.  Если работа примера приложения прерывается или возникает ошибка, может потребоваться вручную удалить учетные записи хранилища данных озера и аналитики озера данных, создаваемые сценарием.  Если вы еще не работали с порталом, приступить к работе вам поможет руководство [по управлению аналитикой озера данных Azure с помощью портала Azure](data-lake-analytics-manage-use-portal.md) .
+   > В настоящее время имеется известная проблема с hello службе Озера данных Azure.  Если пример приложения hello прерывается или возникает ошибка, может потребоваться toomanually delete hello хранилища Озера данных & аналитики Озера данных учетные записи, которые создает скрипт hello.  Если вы не знакомы с hello портала, hello [управление аналитики Озера данных Azure с помощью портала Azure](data-lake-analytics-manage-use-portal.md) руководство поможет вам начать.
    >
    >
 
@@ -149,9 +149,9 @@ ms.lasthandoff: 07/11/2017
                 _subId =  "<SUBSCRIPTION-ID>";
                 _clientId = "<CLIENT-ID>";
 
-                _clientSecret = "<CLIENT-SECRET>"; // TODO: For production scenarios, we recommend that you replace this line with a more secure way of acquiring the application client secret, rather than hard-coding it in the source code.
+                _clientSecret = "<CLIENT-SECRET>"; // TODO: For production scenarios, we recommend that you replace this line with a more secure way of acquiring hello application client secret, rather than hard-coding it in hello source code.
 
-                String localFolderPath = "C:\\local_path\\"; // TODO: Change this to any unused, new, empty folder on your local machine.
+                String localFolderPath = "C:\\local_path\\"; // TODO: Change this tooany unused, new, empty folder on your local machine.
 
                 // Authenticate
                 ApplicationTokenCredentials creds = new ApplicationTokenCredentials(_clientId, _tenantId, _clientSecret, null);
@@ -176,14 +176,14 @@ ms.lasthandoff: 07/11/2017
                 WaitForNewline("Accounts displayed.", "Creating files.");
 
                 // Create a file in Data Lake Store: input1.csv
-                // TODO: these change order in the next patch
+                // TODO: these change order in hello next patch
                 byte[] bytesContents = "123,abc".getBytes();
                 _adlsFileSystemClient.getFileSystemOperations().create(_adlsAccountName, "/input1.csv", bytesContents, true);
 
                 WaitForNewline("File created.", "Submitting a job.");
 
-                // Submit a job to Data Lake Analytics
-                UUID jobId = SubmitJobByScript("@input =  EXTRACT Data string FROM \"/input1.csv\" USING Extractors.Csv(); OUTPUT @input TO @\"/output1.csv\" USING Outputters.Csv();", "testJob");
+                // Submit a job tooData Lake Analytics
+                UUID jobId = SubmitJobByScript("@input =  EXTRACT Data string FROM \"/input1.csv\" USING Extractors.Csv(); OUTPUT @input too@\"/output1.csv\" USING Outputters.Csv();", "testJob");
                 WaitForNewline("Job submitted.", "Getting job status.");
 
                 // Wait for job completion and output job status
@@ -219,13 +219,13 @@ ms.lasthandoff: 07/11/2017
                 _adlaClient.setSubscriptionId(_subId);
             }
 
-            // Helper function to show status and wait for user input
+            // Helper function tooshow status and wait for user input
             public static void WaitForNewline(String reason, String nextAction)
             {
                 if (nextAction == null)
                     nextAction = "";
 
-                System.out.println(reason + "\r\nPress ENTER to continue...");
+                System.out.println(reason + "\r\nPress ENTER toocontinue...");
                 try{System.in.read();}
                 catch(Exception e){}
 
@@ -262,12 +262,12 @@ ms.lasthandoff: 07/11/2017
                 adlaParameters.setName(_adlaAccountName);
                 adlaParameters.setProperties(adlaProperties);
 
-                    /* If this line generates an error message like "The deep update for property 'DataLakeStoreAccounts' is not supported", please delete the ADLS and ADLA accounts via the portal and re-run your script. */
+                    /* If this line generates an error message like "hello deep update for property 'DataLakeStoreAccounts' is not supported", please delete hello ADLS and ADLA accounts via hello portal and re-run your script. */
 
                 _adlaClient.getAccountOperations().create(_resourceGroupName, _adlaAccountName, adlaParameters);
             }
 
-            //todo: this changes in the next version of the API
+            //todo: this changes in hello next version of hello API
             public static void CreateFile(String path, String contents, boolean force) throws IOException, CloudException {
                 byte[] bytesContents = contents.getBytes();
 
@@ -307,7 +307,7 @@ ms.lasthandoff: 07/11/2017
             }
 
             // Submit a U-SQL job by providing script contents.
-            // Returns the job ID
+            // Returns hello job ID
             public static UUID SubmitJobByScript(String script, String jobName) throws IOException, CloudException {
                 UUID jobId = java.util.UUID.randomUUID();
                 USqlJobProperties properties = new USqlJobProperties();
@@ -340,12 +340,12 @@ ms.lasthandoff: 07/11/2017
             }
         }
 
-1. Следуйте инструкциям на экране для запуска и завершения приложения.
+1. Выполните запросы toorun hello и hello завершения приложения.
 
-## <a name="see-also"></a>Дополнительные материалы
-* Для просмотра учебника с помощью других средств используйте вкладки-селекторы в верхней части страницы.
-* Более сложный запрос можно посмотреть в статье [Анализ журналов веб-сайта с помощью аналитики озера данных Azure](data-lake-analytics-analyze-weblogs.md).
-* Чтобы приступить к разработке приложений U-SQL, ознакомьтесь со статьей [Разработка скриптов U-SQL с помощью средств озера данных для Visual Studio](data-lake-analytics-data-lake-tools-get-started.md).
-* Сведения о языке U-SQL см. в статье [Учебник. Приступая к работе с языком U-SQL для аналитики озера данных Azure](data-lake-analytics-u-sql-get-started.md) и в [справочнике по языку U-SQL](http://go.microsoft.com/fwlink/?LinkId=691348).
+## <a name="see-also"></a>См. также
+* toosee hello же учебника при помощи других средств, щелкните селекторы вкладку hello на hello вверху страницы приветствия.
+* в разделе toosee более сложный запрос, [веб-сайта анализ журналов с помощью аналитики Озера данных Azure](data-lake-analytics-analyze-weblogs.md).
+* tooget к разработке приложений U-SQL, в разделе [сценариев разработки U-SQL, с помощью средства Озера данных для Visual Studio](data-lake-analytics-data-lake-tools-get-started.md).
+* toolearn U-SQL, в разделе [Приступая к работе с Azure аналитика Озера данных U-SQL языка](data-lake-analytics-u-sql-get-started.md), и [Справочник по языку U SQL](http://go.microsoft.com/fwlink/?LinkId=691348).
 * Задачи управления описываются в статье [Управление аналитикой озера данных Azure с помощью портала Azure](data-lake-analytics-manage-use-portal.md).
-* Общие сведения об Azure Data Lake Analytics см. в [этой статье](data-lake-analytics-overview.md).
+* в разделе tooget содержится обзор аналитики Озера данных, [Обзор аналитики Озера данных Azure](data-lake-analytics-overview.md).

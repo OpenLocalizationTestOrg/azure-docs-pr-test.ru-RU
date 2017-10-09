@@ -1,6 +1,6 @@
 ---
-title: "Создание доступной в Интернете внутренней подсистемы балансировки нагрузки с помощью шаблона Azure | Документация Майкрософт"
-description: "Узнайте, как создать балансировщик нагрузки для Интернета в диспетчере ресурсов с помощью шаблона"
+title: "Подсистема балансировки нагрузки aaaCreate с выходом в Интернет - шаблон Azure | Документы Microsoft"
+description: "Узнайте, как в диспетчере ресурсов с помощью шаблона подсистемы балансировки нагрузки, toocreate из Интернета"
 services: load-balancer
 documentationcenter: na
 author: kumudd
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/23/2017
 ms.author: kumud
-ms.openlocfilehash: d829000e63515814b192f3f8256e3b8637bb3a34
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 2bce8cb87303838f3bc732d51228ab46d8015552
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="creating-an-internet-facing-load-balancer-using-a-template"></a>Создание балансировщика нагрузки для Интернета с помощью шаблона
 
@@ -32,20 +32,20 @@ ms.lasthandoff: 07/11/2017
 
 [!INCLUDE [azure-arm-classic-important-include](../../includes/azure-arm-classic-important-include.md)]
 
-В этой статье описывается модель развертывания с использованием менеджера ресурсов. Вы также можете [узнать, как создать балансировщик нагрузки для Интернета, используя классическую модель развертывания](load-balancer-get-started-internet-classic-portal.md)
+В этой статье рассматриваются hello модели развертывания диспетчера ресурсов. Вы также можете [Узнайте, как с помощью классической модели развертывания подсистемы балансировки нагрузки, toocreate из Интернета](load-balancer-get-started-internet-classic-portal.md)
 
 [!INCLUDE [load-balancer-get-started-internet-scenario-include.md](../../includes/load-balancer-get-started-internet-scenario-include.md)]
 
-## <a name="deploy-the-template-by-using-click-to-deploy"></a>Развертывание шаблона с помощью кнопки развертывания
+## <a name="deploy-hello-template-by-using-click-toodeploy"></a>Развертывание с помощью шаблона hello щелкните toodeploy
 
-Образец шаблона, который находится в общедоступном репозитории, использует файл параметров, содержащий значения по умолчанию для создания описанного выше сценария. Чтобы развернуть этот шаблон, перейдите по [данной ссылке](http://go.microsoft.com/fwlink/?LinkId=544801), нажмите **Deploy to Azure**(Развернуть в Azure), при необходимости замените значения параметров по умолчанию и следуйте указаниям на портале.
+шаблон Образец Hello доступны в репозитории открытого hello использует параметр файл, содержащий сценарий hello по умолчанию значения, используемые toogenerate hello, описанный выше. toodeploy это с помощью шаблона щелкните toodeploy, выполните [эту ссылку](http://go.microsoft.com/fwlink/?LinkId=544801), нажмите кнопку **развертывание tooAzure**, замените значения параметров по умолчанию hello при необходимости и следуйте инструкциям hello hello портала.
 
-## <a name="deploy-the-template-by-using-powershell"></a>Развертывание шаблона с помощью PowerShell
+## <a name="deploy-hello-template-by-using-powershell"></a>Развертывание hello шаблона с помощью PowerShell
 
-Чтобы развернуть шаблон, загруженный с помощью PowerShell, выполните описанные ниже действия.
+toodeploy hello шаблона, загруженного с помощью PowerShell, выполните шаги hello.
 
-1. Если вы ранее не использовали Azure PowerShell, следуйте указаниям в статье [Установка и настройка Azure PowerShell](/powershell/azure/overview) до этапа входа в Azure и выбора подписки.
-2. Выполните командлет **New-AzureRmResourceGroupDeployment** , чтобы создать группу ресурсов с помощью шаблона.
+1. Если ранее не пользовались Azure PowerShell, см. раздел [как tooInstall и настройка Azure PowerShell](/powershell/azure/overview) и следуйте инструкциям hello все toohello hello способом завершения toosign в Azure и выберите свою подписку.
+2. Запустите hello **New AzureRmResourceGroupDeployment** Здравствуйте, командлет toocreate группы ресурсов с помощью шаблона.
 
     ```powershell
     New-AzureRmResourceGroupDeployment -Name TestRG -Location uswest `
@@ -53,23 +53,23 @@ ms.lasthandoff: 07/11/2017
         -TemplateParameterFile 'https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/201-2-vms-loadbalancer-lbrules/azuredeploy.parameters.json'
     ```
 
-## <a name="deploy-the-template-by-using-the-azure-cli"></a>Развертывание шаблона с помощью интерфейса командной строки Azure
+## <a name="deploy-hello-template-by-using-hello-azure-cli"></a>Развертывание hello шаблона с помощью hello Azure CLI
 
-Чтобы развернуть шаблон с помощью интерфейса командной строки Azure, выполните следующие действия.
+toodeploy hello шаблона с использованием hello Azure CLI, выполните шаги hello.
 
-1. Если вы еще не пользовались Azure CLI, ознакомьтесь со статьей [Установка и настройка CLI Azure](../cli-install-nodejs.md) и следуйте инструкциям вплоть до выбора учетной записи Azure и подписки.
-2. Выполните команду **azure config mode** , чтобы переключиться в режим диспетчера ресурсов, как показано ниже.
+1. Если ранее не пользовались Azure CLI, см. раздел [Установка и настройка hello Azure CLI](../cli-install-nodejs.md) и следуйте инструкциям hello toohello точку, где выбирается учетная запись Azure и подписки.
+2. Запустите hello **azure конфигурации режима** tooswitch tooResource Manager режим команд, как показано ниже.
 
     ```azurecli
     azure config mode arm
     ```
 
-    Вот результат, ожидаемый для указанной выше команды:
+    Вот hello ожидается выходных данных для приведенных выше команд hello.
 
         info:    New mode is arm
 
-3. В браузере перейдите к [шаблону быстрого запуска](https://github.com/Azure/azure-quickstart-templates/tree/master/201-2-vms-loadbalancer-lbrules), скопируйте содержимое JSON-файла и вставьте его в новый файл на своем компьютере. В данном сценарии скопируйте указанные ниже значения в файл **c:\lb\azuredeploy.parameters.json**.
-4. Выполните командлет **azure group deployment create** , чтобы развернуть новый балансировщик нагрузки с помощью данного шаблона и файлов параметров, которые вы скачали и изменили ранее. В списке, который откроется после выполнения команды, будут указаны используемые параметры.
+3. В браузере перейдите слишком[hello шаблоном краткого руководства](https://github.com/Azure/azure-quickstart-templates/tree/master/201-2-vms-loadbalancer-lbrules), скопируйте содержимое hello hello json-файл и вставьте его в новый файл на своем компьютере. Для этого сценария будет копирование значений hello ниже tooa файл с именем **c:\lb\azuredeploy.parameters.json**.
+4. Запустите hello **создайте группу azure развертывания** командлет toodeploy hello новую подсистему балансировки загрузки с помощью шаблона hello и параметр файлы загружаются и изменить выше. Список Hello отображаться после вывода hello объясняется hello параметров, используемых.
 
     ```azurecli
     azure group create --name TestRG --location westus --template-file 'https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/201-2-vms-loadbalancer-lbrules/azuredeploy.json' --parameters-file 'c:\lb\azuredeploy.parameters.json'

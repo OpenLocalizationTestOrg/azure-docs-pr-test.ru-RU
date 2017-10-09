@@ -1,6 +1,6 @@
 ---
-title: "Пример сценария Azure CLI. Копирование (перемещение) моментального снимка управляемого диска в ту же или другую подписку с помощью CLI | Документы Майкрософт"
-description: "Пример сценария Azure CLI. Копирование (перемещение) моментального снимка управляемого диска в ту же или другую подписку с помощью CLI"
+title: "Пример сценария CLI - копии (перемещения) снимок toosame управляемого диска или другой подписке с CLI aaaAzure | Документы Microsoft"
+description: "Пример сценария Azure CLI - копии (перемещения) снимок toosame управляемого диска или другой подписке с CLI"
 services: virtual-machines-linux
 documentationcenter: storage
 author: ramankumarlive
@@ -15,15 +15,15 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 05/19/2017
 ms.author: ramankum
-ms.openlocfilehash: 0127e342bd0c3afbe9de775399f5510814bff499
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 4a21fd2435181a033b563100888aba0c5834496d
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="copy-snapshot-of-a-managed-disk-to-same-or-different-subscription-with-cli"></a>Копирование моментального снимка управляемого диска в ту же или другую подписку с помощью интерфейса командной строки
+# <a name="copy-snapshot-of-a-managed-disk-toosame-or-different-subscription-with-cli"></a>Скопировать моментальный снимок toosame управляемого диска или другой подписке с CLI
 
-Этот сценарий копирует моментальный снимок управляемого диска в ту же или другую подписку. Этот сценарий можно использовать для перемещения моментального снимка в другую подписку в том же регионе, что и родительский снимок.
+Этот скрипт копирует моментальный снимок toosame управляемого диска или другую подписку. Используйте этот скрипт toomove toodifferent подписки на моментальные снимки в hello же регионе, что hello родительского снимка.
 
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
@@ -32,22 +32,22 @@ ms.lasthandoff: 08/03/2017
 
 ## <a name="sample-script"></a>Пример скрипта
 
-[!code-azurecli[main](../../../cli_scripts/storage/copy-snapshot-to-same-or-different-subscription/copy-snapshot-to-same-or-different-subscription.sh "Копирование моментального снимка")]
+[!code-azurecli[main](../../../cli_scripts/storage/copy-snapshot-to-same-or-different-subscription/copy-snapshot-to-same-or-different-subscription.sh "Copy snapshot")]
 
 
 ## <a name="script-explanation"></a>Описание скрипта
 
-Этот сценарий использует приведенные ниже команды для создания моментального снимка в целевой подписке с помощью идентификатора исходного моментального снимка. Для каждой команды в таблице приведены ссылки на соответствующую документацию.
+Этот скрипт использует следующую toocreate команд моментального снимка в hello целевой подписки с помощью hello идентификатор моментального снимка источника hello. Каждая команда в таблице hello связывает toocommand документацию.
 
 | Команда | Примечания |
 |---|---|
-| [az snapshot show](https://docs.microsoft.com/cli/azure/snapshot#show) | Получает все свойства моментального снимка, используя имя и свойства группы ресурсов моментального снимка. Свойство идентификатора используется для копирования моментального снимка в другую подписку.  |
-| [az snapshot create](https://docs.microsoft.com/cli/azure/snapshot#create) | Копирует моментальный снимок путем создания моментального снимка в другой подписке с помощью идентификатора и имени родительского снимка.  |
+| [az snapshot show](https://docs.microsoft.com/cli/azure/snapshot#show) | Возвращает все свойства hello моментального снимка с использованием имени hello и свойства группы ресурсов hello моментального снимка. Идентификатор свойства — это используемые toocopy hello моментального снимка toodifferent подписка.  |
+| [az snapshot create](https://docs.microsoft.com/cli/azure/snapshot#create) | Здравствуйте моментального снимка путем создания моментального снимка в другую подписку, используя идентификатор и имя копии hello родительского снимка.  |
 
 ## <a name="next-steps"></a>Дальнейшие действия
 
 [Создание виртуальной машины на основе моментального снимка](./../../virtual-machines/scripts/virtual-machines-linux-cli-sample-create-vm-from-snapshot.md?toc=%2fpowershell%2fmodule%2ftoc.json)
 
-Дополнительные сведения об Azure CLI см. в [документации по Azure CLI](https://docs.microsoft.com/cli/azure/overview).
+Дополнительные сведения о hello Azure CLI см. в разделе [документации Azure CLI](https://docs.microsoft.com/cli/azure/overview).
 
-Дополнительные примеры сценариев интерфейса командной строки для виртуальных машин и управляемых дисков см. в [документации по виртуальным машинам Azure под управлением Linux](../../virtual-machines/linux/cli-samples.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Установить дополнительную виртуальную машину и управляемых дисков CLI образцы скриптов можно найти в hello [документации виртуальной Машине Linux Azure](../../virtual-machines/linux/cli-samples.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).

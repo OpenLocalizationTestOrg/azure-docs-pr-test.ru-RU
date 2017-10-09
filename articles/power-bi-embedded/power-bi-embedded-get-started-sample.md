@@ -1,6 +1,6 @@
 ---
-title: "Начало работы с примером"
-description: "Power BI Embedded, использование пакета SDK для добавления интерактивных отчетов Power BI в приложение бизнес-аналитики"
+title: "aaaGet работу с примером"
+description: "Power BI Embedded, используйте пакет SDK tooadd интерактивных отчетов Power BI в приложение бизнес-аналитики"
 services: power-bi-embedded
 documentationcenter: 
 author: guyinacube
@@ -15,17 +15,17 @@ ms.tgt_pltfrm: NA
 ms.workload: powerbi
 ms.date: 03/02/2017
 ms.author: asaxton
-ms.openlocfilehash: c3cb1763f807220a4a829f410d7eb77974b25776
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 1fef9dd8e0f734b748b930d3f85ad4b517d9661e
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="get-started-with-power-bi-embedded-sample"></a>Начало работы с примером Microsoft Power BI Embedded
 
-С помощью **Microsoft Power BI Embedded**можно интегрировать отчеты Power BI прямо в веб- или мобильные приложения. В этой статье приведены общие сведения о примере для начала работы с **Power BI Embedded** .
+С помощью **Microsoft Power BI Embedded**можно интегрировать отчеты Power BI прямо в веб- или мобильные приложения. В этой статье описываются toohello **Power BI Embedded** работы образца get.
 
-Прежде чем мы продолжим, вам следует сохранить приведенные ниже ресурсы. Они помогут вам при интеграции отчетов Power BI в пример приложения, а также в собственные приложения.
+Прежде чем мы продолжим, вы, вероятно, захотите hello toosave следующие ресурсы. Они поможем вам при слишком интеграции отчетов Power BI в пример приложения hello и собственных приложений.
 
 * [Пример веб-приложения рабочей области](http://go.microsoft.com/fwlink/?LinkId=761493)
 * [Справочник по API Power BI Embedded](https://msdn.microsoft.com/en-US/library/azure/mt711507.aspx)
@@ -33,26 +33,26 @@ ms.lasthandoff: 07/11/2017
 * [Пример внедрения отчета JavaScript](https://microsoft.github.io/PowerBI-JavaScript/demo)
 
 > [!NOTE] 
-> Перед настройкой и запуском примера Power BI Embedded необходимо создать по крайней мере одну **коллекцию рабочих областей** в подписке Azure. Сведения о создании **коллекции рабочей области** на портале Azure см. в статье [Начало работы с Microsoft Power BI Embedded](power-bi-embedded-get-started.md).
+> Для настройки и выполнения hello Power BI Embedded получить пример работы, необходимо, чтобы toocreate по крайней мере один **коллекции рабочей** в вашей подписке Azure. toolearn как toocreate **коллекции рабочей** в hello портала Azure. в разделе [Приступая к работе с Power BI Embedded](power-bi-embedded-get-started.md).
 
-## <a name="configure-the-sample-app"></a>Настройка примера приложения
+## <a name="configure-hello-sample-app"></a>Настройка примера приложения hello
 
-Давайте подробнее рассмотрим действия по настройке среды разработки Visual Studio для доступа к компонентам, необходимым для запуска примера приложения.
+Давайте рассмотрим настройку Visual Studio development среды tooaccess hello компоненты необходимые toorun hello образца приложения.
 
-1. Загрузите и распакуйте пример [Power BI Embedded — интеграция отчета в веб-приложение](http://go.microsoft.com/fwlink/?LinkId=761493) в GitHub.
-2. Откройте файл **PowerBI-embedded.sln** в Visual Studio. Может потребоваться выполнить команду **Update-Package** в консоли диспетчера пакетов NuGET, чтобы обновить пакеты, используемые в этом решении.
-3. Выполните сборку решения.
-4. Запустите консольное приложение **ProvisionSample** . В примере консольного приложения необходимо подготовить рабочую область и импортировать файл PBIX.
-5. Чтобы подготовить новую **рабочую область**, выберите параметр 1 — **Collection management** (Управление коллекциями), а затем параметр 6 — **Provision a new Workspace** (Подготовка новой рабочей области).
-6. Чтобы импортировать новый **отчет**, выберите параметр 2 — **Report management** (Управление отчетами), а затем параметр 3 — **Import PBIX Desktop file into a workspace** (Импорт PBIX-файла рабочего стола в рабочую область).
+1. Загрузите и распакуйте hello [Power BI Embedded - интеграции отчета в веб-приложении](http://go.microsoft.com/fwlink/?LinkId=761493) на GitHub.
+2. Откройте файл **PowerBI-embedded.sln** в Visual Studio. Может потребоваться tooexecute hello **пакет обновления** в консоли диспетчера пакетов NuGET в пакетах hello tooupdate порядок, используемый в этом решении hello.
+3. Выполните сборку решения hello.
+4. Запустите hello **ProvisionSample** консольного приложения. В консольном приложении образец hello подготовить рабочую область и импортируйте файл pbix-ФАЙЛ.
+5. tooprovision новый **рабочей**, выберите параметр 1, **управления коллекции**, а затем выберите вариант 6, **подготовить новую рабочую область**
+6. tooimport новый **отчетов**, выберите вариант 2, **отчетов управления**, а затем выберите вариант 3, **рабочего стола pbix-ФАЙЛ для импорта файла в рабочей области**.
 
-7. Введите имя **коллекции рабочих областей** и **ключ доступа**. Их можно получить на **портале Azure**. Дополнительные сведения о том, как получить **ключ доступа**, см. в разделе [Просмотр ключей доступа для вызова API Power BI](power-bi-embedded-get-started.md#view-power-bi-api-access-keys) статьи "Начало работы с Microsoft Power BI Embedded".
+7. Введите имя **коллекции рабочих областей** и **ключ доступа**. Можно получить в виде hello **портала Azure**. Дополнительные сведения о том, как toolearn tooget вашей **ключ доступа**, см. [Просмотр ключей доступа к Power BI API](power-bi-embedded-get-started.md#view-power-bi-api-access-keys) в начало работы с Microsoft Power BI Embedded.
 
     ![](media/powerbi-embedded-get-started-sample/azure-portal.png)
-8. Скопируйте и сохраните созданный **идентификатор рабочей области** для дальнейшего использования в этой статье. После создания **идентификатора рабочей области** его можно найти на **портале Azure**.
+8. Скопируйте и сохраните только что созданный hello **идентификатор рабочей области** toouse далее в этой статье. После hello **идентификатор рабочей области** будет создан, его можно будет найти hello **портала Azure**.
 
     ![](media/powerbi-embedded-get-started-sample/workspace-id.png)
-9. Чтобы импортировать PBIX-файл в свою **рабочую область**, выберите вариант **6. Импорт файла PBIX рабочего стола в существующую рабочую область**. Если у вас нет PBIX-файла, то можете скачать [PBIX-файл примера анализа розничной торговли](http://go.microsoft.com/fwlink/?LinkID=780547).
+9. tooimport PBIX файла в вашей **рабочей**, выберите параметр **6. Импорт файла PBIX рабочего стола в существующую рабочую область**. Если у вас нет под рукой файл PBIX, можно загрузить hello [PBIX пример анализа розничной торговли](http://go.microsoft.com/fwlink/?LinkID=780547).
 10. При появлении запроса укажите понятное имя для своего **набора данных**.
 
 Вы должны получить примерно следующий ответ:
@@ -63,15 +63,15 @@ Checking import state... Succeeded
 ```
 
 > [!NOTE]
-> Если файл PBIX содержит подключения для прямых запросов, выберите вариант 7 для обновления строк подключения.
+> Если в pbix-файл содержит все подключения прямых запросов, запустите строки подключения параметр 7 tooupdate hello.
 
-На этом этапе у вас есть PBIX-файл отчета Power BI, импортированный в **рабочую область**. Теперь рассмотрим, как запустить пример веб-приложения **Power BI Embedded**.
+На этом этапе у вас есть PBIX-файл отчета Power BI, импортированный в **рабочую область**. Теперь давайте рассмотрим, как toorun hello **Power BI Embedded** получить работы образца веб-приложения.
 
-## <a name="run-the-sample-web-app"></a>Запуск примера веб-приложения
-Пример веб-приложения представляет собой приложение, в котором отображаются отчеты, импортированные в **рабочую область**. Вот как настроить пример веб-приложения.
+## <a name="run-hello-sample-web-app"></a>Запустите hello образец веб-приложения
+Пример веб-приложения Hello содержится образец приложения, подготавливает отчеты, которые импортируются в ваш **рабочей**. Ниже показано, как tooconfigure hello примера веб-приложения.
 
-1. В решении **PowerBI-embedded** Visual Studio щелкните веб-приложение **EmbedSample** правой кнопкой мыши и выберите **Назначить запускаемым проектом**.
-2. В файле **web.config** в веб-приложении **EmbedSample** измените параметры приложения **appSettings**: ключ доступа **AccessKey**, имя коллекции рабочих областей **WorkspaceCollection** и идентификатор рабочей области **WorkspaceId**.
+1. В hello **внедренных PowerBI** решения Visual Studio, справа щелкните hello **EmbedSample** веб-приложение и выберите **Назначить запускаемым проектом**.
+2. В **web.config**, в hello **EmbedSample** веб-приложение, изменить hello **appSettings**: **AccessKey**,  **WorkspaceCollection** имя, и **ИД рабочей области**.
 
     ```
     <appSettings>
@@ -81,28 +81,28 @@ Checking import state... Succeeded
         <add key="powerbi:WorkspaceId" value="" />
     </appSettings>
     ```
-3. Запустите веб-приложение **EmbedSample**.
+3. Запустите hello **EmbedSample** веб-приложения.
 
-После запуска веб-приложения **EmbedSample** в левой навигационной панели должно появиться меню **Отчеты**. Чтобы просмотреть отчет, который был импортирован, разверните **Отчеты** и щелкните отчет. Если вы импортировали [PBIX-файл примера анализа розничной торговли](http://go.microsoft.com/fwlink/?LinkID=780547), пример веб-приложения будет выглядеть следующим образом.
+После выполнения hello **EmbedSample** веб-приложение hello левой навигационной панели должна содержать **отчеты** меню. Разверните отчет hello tooview вы импортировали **отчетов**и щелкните отчет. Если вы импортировали hello [PBIX пример анализа розничной торговли](http://go.microsoft.com/fwlink/?LinkID=780547), hello образец веб-приложение будет выглядеть следующим образом:
 
 ![](media/powerbi-embedded-get-started-sample/power-bi-embedded-sample-left-nav.png)
 
-После выбора отчета веб-приложение **EmbedSample** должно выглядеть примерно так:
+После нажатия кнопки отчета hello **EmbedSample** веб-приложения должны выглядеть это:
 
 ![](media/powerbi-embedded-get-started-sample/sample-web-app.png)
 
-## <a name="explore-the-sample-code"></a>Изучение примера кода
+## <a name="explore-hello-sample-code"></a>Просмотр образца кода hello
 
-Пример **Microsoft Power BI Embedded** представляет собой веб-приложение и показывает, как интегрировать отчеты **Power BI** в приложение. Для демонстрации рекомендаций в нем используется шаблон проектирования "модель-представление-контроллер" (MVC). В этом разделе описаны части примера кода, которые можно изучить в решении веб-приложения **PowerBI-embedded**. Шаблон "модель-представление-контроллер" (MVC) разбивает модель домена, представление и действия на основе ввода пользователя на три различных класса: модель, представление и контроллер. Дополнительные сведения о MVC см. в документации [ASP.NET](http://www.asp.net/mvc).
+Hello **Microsoft Power BI Embedded** образец представляет пример веб-приложения, которое показывает, как toointegrate **Power BI** отчеты в приложение. Она использует Model-View-Controller (MVC) разработать рекомендации по toodemonstrate шаблону. В этом разделе описываются части hello пример кода, который можно просмотреть в hello **PowerBI внедренных** веб-приложение. Hello шаблон Model-View-Controller (MVC) разделяет моделирования hello hello домена, презентации hello и hello действия в зависимости от входных данных пользователя в трех отдельных классов: модель, представление и управления. toolearn Дополнительные сведения о платформе MVC. в разделе [Дополнительные сведения о ASP.NET](http://www.asp.net/mvc).
 
-Пример кода **Microsoft Power BI Embedded** разбивается следующим образом. Каждая часть включает имя файла для решения PowerBI-embedded.sln, поэтому вы легко найдете соответствующий код в примере.
+Hello **Microsoft Power BI Embedded** образец кода отделен следующим образом. Каждый раздел включает имя файла hello в hello решения PowerBI embedded.sln, чтобы можно было легко находить кода hello в образце hello.
 
 > [!NOTE]
-> В этом разделе приведены общие сведения о примере кода, которые показывают, как был написан этот код. Чтобы просмотреть полный пример, загрузите решение PowerBI-embedded.sln в Visual Studio.
+> В этом разделе приведена сводка примеров кода hello, показано, как при написании кода hello. hello tooview полный образец, загрузите hello PowerBI embedded.sln решения в Visual Studio.
 
 ### <a name="model"></a>Модель
 
-Пример содержит следующие модели: **ReportsViewModel** и **ReportViewModel**.
+Образец Hello имеет **ReportsViewModel** и **ReportViewModel**.
 
 **ReportsViewModel.cs**: представляет отчеты Power BI.
 
@@ -122,7 +122,7 @@ Checking import state... Succeeded
 
 ### <a name="connection-string"></a>Строка подключения
 
-Строка подключения должна быть в следующем формате:
+Строка подключения Hello должны быть hello следующий формат:
 
 ```
 Data Source=tcp:MyServer.database.windows.net,1433;Initial Catalog=MyDatabase
@@ -132,14 +132,14 @@ Data Source=tcp:MyServer.database.windows.net,1433;Initial Catalog=MyDatabase
 
 ### <a name="view"></a>Просмотр
 
-**Представление** управляет отображением **отчетов** и **отчета** Power BI.
+Hello **представление** управляет отображением hello Power BI **отчеты** и Power BI **отчета**.
 
-**Reports.cshtml**: выполняет итерацию по отчетам **Model.Reports**, чтобы создать **ActionLink**. **ActionLink** формируется следующим образом:
+**Reports.cshtml**: перебора **Model.Reports** toocreate **ActionLink**. Hello **ActionLink** составляется следующим образом:
 
 | Часть | Описание |
 | --- | --- |
-| Название |Имя отчета. |
-| QueryString |Ссылка на идентификатор отчета. |
+| Название |Имя отчета hello. |
+| QueryString |Toohello ссылку отчета. |
 
     <div id="reports-nav" class="panel-collapse collapse">
         <div class="panel-body">
@@ -155,7 +155,7 @@ Data Source=tcp:MyServer.database.windows.net,1433;Initial Catalog=MyDatabase
         </div>
     </div>
 
-Report.cshtml: устанавливает **Model.AccessToken** и лямбда-выражение для **PowerBIReportFor**.
+Report.cshtml: Задать hello **Model.AccessToken**, и лямбда-выражение для hello **PowerBIReportFor**.
 
     @model ReportViewModel
 
@@ -168,7 +168,7 @@ Report.cshtml: устанавливает **Model.AccessToken** и лямбда-
 
 ### <a name="controller"></a>Controller
 
-**DashboardController.cs**: создает PowerBIClient, передающий **маркер приложения**. Для получения **учетных данных** создается JSON Web Token (JWT) на основе **ключа подписывания**. **Учетные данные** используются для создания экземпляра **PowerBIClient**. После создания экземпляра **PowerBIClient** можно вызвать методы GetReports() и GetReportsAsync().
+**DashboardController.cs**: создает PowerBIClient, передающий **маркер приложения**. JSON Web Token (JWT) создается на основе hello **ключа подписи** tooget hello **учетные данные**. Hello **учетные данные** являются экземпляра используется toocreate **PowerBIClient**. После создания экземпляра **PowerBIClient** можно вызвать методы GetReports() и GetReportsAsync().
 
 CreatePowerBIClient()
 
@@ -223,13 +223,13 @@ ActionResult Reports()
 
 ### <a name="integrate-a-report-into-your-app"></a>Интеграция отчета в приложение
 
-После получения **отчета** можно использовать **IFrame** для внедрения **отчета** Power BI. Ниже приведен фрагмент кода из файла powerbi.js в примере **Microsoft Power BI Embedded**.
+После получения **отчетов**, используется **IFrame** tooembed hello Power BI **отчета**. Ниже приведен фрагмент кода из powerbi.js в hello **Microsoft Power BI Embedded** образца.
 
 ![](media/powerbi-embedded-get-started-sample/power-bi-embedded-iframe-code.png)
 
 ## <a name="filter-reports-embedded-in-your-application"></a>Фильтрация отчетов, внедренных в приложение
 
-Можно отфильтровать внедренный отчет, используя синтаксис URL-адреса. Для этого добавьте параметр строки запроса **$filter** с оператором **eq** в исходный URL-адрес iFrame с указанием фильтра. Ниже приведен синтаксис запроса фильтра.
+Можно отфильтровать внедренный отчет, используя синтаксис URL-адреса. toodo, добавлении **$filter** параметр строки запроса с **eq** tooyour URL-адреса iFrame src с фильтром hello указан оператор. Ниже приведен синтаксис запроса фильтра hello.
 
 ```
 https://app.powerbi.com/reportEmbed
@@ -238,9 +238,9 @@ $filter={tableName/fieldName}%20eq%20'{fieldValue}'
 ```
 
 > [!NOTE]
-> {tableName/fieldName} не может содержать пробелы или специальные знаки. {FieldValue} принимает одно дискретное значение.  
+> {tableName/fieldName} не может содержать пробелы или специальные знаки. Hello {fieldValue} принимает одно значение категориальных.  
 
-## <a name="see-also"></a>Дополнительные материалы
+## <a name="see-also"></a>См. также
 
 [Типичные сценарии использования Microsoft Power BI Embedded](power-bi-embedded-scenarios.md)  
 [Аутентификация и авторизация в Power BI Embedded](power-bi-embedded-app-token-flow.md)  
@@ -248,4 +248,4 @@ $filter={tableName/fieldName}%20eq%20'{fieldValue}'
 [Создание отчета из набора данных](power-bi-embedded-create-report-from-dataset.md)  
 [Power BI Desktop](https://powerbi.microsoft.com/documentation/powerbi-desktop-get-the-desktop/)  
 [Пример внедрения JavaScript](https://microsoft.github.io/PowerBI-JavaScript/demo/)  
-У вас имеются и другие вопросы? [Попробуйте задать их в сообществе Power BI](http://community.powerbi.com/)
+У вас имеются и другие вопросы? [Повторите hello сообщества Power BI](http://community.powerbi.com/)

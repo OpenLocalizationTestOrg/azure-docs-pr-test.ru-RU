@@ -1,6 +1,6 @@
 ---
-title: "Журналы IIS в службе Log Analytics | Документация Майкрософт"
-description: "Службы IIS (Internet Information Services) хранят данные об активности пользователей в файлах журналов, собираемых службой Log Analytics.  В этой статье описано, как настроить коллекцию журналов IIS и сведения о записях, созданных ими в репозитории OMS."
+title: "Регистрирует aaaIIS в службе анализа журналов | Документы Microsoft"
+description: "Службы IIS (Internet Information Services) хранят данные об активности пользователей в файлах журналов, собираемых службой Log Analytics.  В этой статье описывается tooconfigure сбора журналов IIS и сведения о записи hello их создания в репозитории OMS hello."
 services: log-analytics
 documentationcenter: 
 author: bwren
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/12/2017
 ms.author: bwren
-ms.openlocfilehash: 2114bdafb3b9fe2eb0632271840b8b70a76d10f1
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: c5575351090cdabaf651bcb49867794ee3a4b6e6
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="iis-logs-in-log-analytics"></a>Журналы IIS в службе Log Analytics
 Службы IIS (Internet Information Services) хранят данные об активности пользователей в файлах журналов, собираемых службой Log Analytics.  
@@ -31,63 +31,63 @@ ms.lasthandoff: 08/03/2017
 Служба Log Analytics поддерживает только те файлы журналов IIS, которые хранятся в формате W3C, и не поддерживает настраиваемые поля или расширенное ведение журналов IIS.  
 Она не собирает журналы в формате NCSA или в собственном формате IIS.
 
-Журналы IIS настраиваются в меню ["Данные" в параметрах Log Analytics](log-analytics-data-sources.md#configuring-data-sources).  Никакие настройки, кроме выбора параметра **Сбор файлов журналов IIS в формате W3C**, не требуются.
+Настройка журналов служб IIS в службе анализа журналов из hello [меню данные в параметры журнала аналитика](log-analytics-data-sources.md#configuring-data-sources).  Никакие настройки, кроме выбора параметра **Сбор файлов журналов IIS в формате W3C**, не требуются.
 
-Если вы включаете сбор данных журналов IIS, рекомендуем настроить на каждом сервере переход на журналы IIS.
+Рекомендуется при включении сбора журналов IIS, следует настроить приветствия смену журнала IIS на каждом сервере.
 
 ## <a name="data-collection"></a>Сбор данных
-Log Analytics собирает записи в журналах IIS из каждого подключенного источника примерно раз в 15 минут.  Агент фиксирует место сбора в каждом журнале событий, который используется для сбора данных.  Если агент перейдет в автономный режим, Log Analytics собирает события, начиная с места остановки, даже если эти события были созданы, пока агент находился вне сети.
+Log Analytics собирает записи в журналах IIS из каждого подключенного источника примерно раз в 15 минут.  Hello агент записывает его место в каждого, выполняющее сбор данных из журнала событий.  Если агент hello переходит в автономный режим, затем анализа журналов собирает события от последнего места остановки, даже если эти события создаются, когда агент hello находился в автономном режиме.
 
 ## <a name="iis-log-record-properties"></a>Свойства записей в журналах IIS
-Записи в журналах IIS относятся к типу **W3CIISLog** и обладают свойствами, описанными в таблице ниже.
+Записи журнала IIS имеют тип **W3CIISLog** и имеющих свойства hello в hello в следующей таблице:
 
 | Свойство | Описание |
 |:--- |:--- |
-| Компьютер |Имя компьютера, с которого было получено событие. |
-| cIP |IP-адрес клиента. |
-| csMethod |Метод запроса, такой как GET или POST. |
-| csReferer |Сайт, с которого пользователь перешел на текущий сайт. |
-| csUserAgent |Тип браузера клиента. |
-| csUserName |Имя прошедшего проверку пользователя, который подключился к серверу. Анонимные пользователи обозначаются дефисом. |
-| csUriStem |Целевой объект запроса, такой как веб-страница. |
-| csUriQuery |Запрос, который пытался выполнить клиент (если есть). |
-| ManagementGroupName |Имя группы управления для агентов Operations Manager.  Для других агентов это AOI-\<идентификатор_рабочей_области\>. |
-| RemoteIPCountry |Страна IP-адреса клиента. |
-| RemoteIPLatitude |Широта IP-адреса клиента. |
-| RemoteIPLongitude |Долгота IP-адреса клиента. |
+| Компьютер |Имя компьютера hello, hello события, собранные из. |
+| cIP |IP-адрес клиента hello. |
+| csMethod |Метод запроса hello, например GET или POST. |
+| csReferer |Сайт, hello пользователя по ссылке с toohello текущего узла. |
+| csUserAgent |Тип браузера клиента hello. |
+| csUserName |Имя hello проверку подлинности пользователя, который получил доступ к серверу hello. Анонимные пользователи обозначаются дефисом. |
+| csUriStem |Целевой объект запроса hello, например веб-страницы. |
+| csUriQuery |Запрос, если таковые имеются, этот клиент hello пытается tooperform. |
+| ManagementGroupName |Имя группы управления hello агенты Operations Manager.  Для других агентов это AOI-\<идентификатор_рабочей_области\>. |
+| RemoteIPCountry |Страна hello IP-адрес клиента hello. |
+| RemoteIPLatitude |Широта hello клиентского IP-адреса. |
+| RemoteIPLongitude |Долгота hello клиентского IP-адреса. |
 | scStatus |Код состояния HTTP. |
 | scSubStatus |Код ошибки подсостояния . |
 | scWin32Status |Код состояния Windows. |
-| sIP |IP-адрес веб-сервера. |
+| sIP |IP-адрес веб-сервера hello. |
 | SourceSystem |OpsMgr |
-| sPort |Порт на сервере, к которому подключен клиент. |
-| sSiteName |Имя сайта IIS. |
-| TimeGenerated |Дата и время регистрации записи. |
-| TimeTaken |Время обработки запроса в миллисекундах. |
+| sPort |Hello server hello клиенту, подключившемуся к порту. |
+| sSiteName |Имя сайта IIS hello. |
+| TimeGenerated |Дата и время записи hello журнал. |
+| TimeTaken |Длина hello tooprocess время запроса в миллисекундах. |
 
 ## <a name="log-searches-with-iis-logs"></a>Поиск по журналами с помощью журналов IIS
-В следующей таблице представлены различные примеры запросов к журналу, извлекающих записи из журналов IIS.
+Hello следующей таблице приведены примеры различных журнала запросов, получающих записи журнала IIS.
 
 | Запрос | Описание |
 |:--- |:--- |
 | Type=W3CIISLog |Все записи в журнале IIS. |
 | Type=W3CIISLog scStatus=500 |Все записи журнала IIS с состоянием возврата 500. |
 | Type=W3CIISLog &#124; Measure count() by cIP |Число записей в журнале IIS по IP-адресу клиента. |
-| Type=W3CIISLog csHost="www.contoso.com" &#124; Measure count() by csUriStem |Число записей в журнале IIS по URL-адресу для узла www.contoso.com. |
+| Type=W3CIISLog csHost="www.contoso.com" &#124; Measure count() by csUriStem |Число IIS элементы журнала по URL-адрес для узла www.contoso.com hello. |
 | Type=W3CIISLog &#124; Measure Sum(csBytes) by Computer &#124; top 500000 |Общее количество байтов, полученных каждым компьютером IIS. |
 
 >[!NOTE]
-> Если ваша рабочая область переведена на [язык запросов Log Analytics](log-analytics-log-search-upgrade.md), указанные выше запросы будут изменены следующим образом.
+> Если рабочую область был обновленного toohello [языка запросов новый журнал аналитики](log-analytics-log-search-upgrade.md), то hello выше запросы будут изменены следующие toohello.
 
 > | Запрос | Описание |
 |:--- |:--- |
 | W3CIISLog |Все записи в журнале IIS. |
 | W3CIISLog &#124; where scStatus==500 |Все записи журнала IIS с состоянием возврата 500. |
 | W3CIISLog &#124; summarize count() by cIP |Число записей в журнале IIS по IP-адресу клиента. |
-| W3CIISLog &#124; where csHost=="www.contoso.com" &#124; summarize count() by csUriStem |Число записей в журнале IIS по URL-адресу для узла www.contoso.com. |
+| W3CIISLog &#124; where csHost=="www.contoso.com" &#124; summarize count() by csUriStem |Число IIS элементы журнала по URL-адрес для узла www.contoso.com hello. |
 | W3CIISLog &#124; summarize sum(csBytes) by Computer &#124; take 500000 |Общее количество байтов, полученных каждым компьютером IIS. |
 
 ## <a name="next-steps"></a>Дальнейшие действия
-* Настройте службу Log Analytics для сбора других [источников данных](log-analytics-data-sources.md) для анализа.
-* Узнайте больше об [операциях поиска по журналу](log-analytics-log-searches.md) , которые можно применять для анализа данных, собираемых из источников данных и решений.
-* Настройте оповещения в службе Log Analytics для получения заблаговременных уведомлений о важных условиях, обнаруженных в журналах IIS.
+* Настройка других анализа журналов toocollect [источники данных](log-analytics-data-sources.md) для анализа.
+* Дополнительные сведения о [входа выполняет](log-analytics-log-searches.md) tooanalyze hello данные, собранные из источников данных и решений.
+* Настройка оповещений в анализа журналов tooproactively уведомления о важных условий, которые обнаружены в журналах IIS.

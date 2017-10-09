@@ -1,6 +1,6 @@
 ---
-title: "Подключение Arduino (C) к Интернету вещей Azure. Урок 4. Изменение приложения | Документация Майкрософт"
-description: "Настроив сообщения, вы сможете изменять режим включения и отключения светодиодного индикатора."
+title: "Connect Arduino (C) tooAzure IoT — занятия 4: изменить приложение | Документы Microsoft"
+description: "Настройте hello toochange сообщений hello, Индикатор, включение и отключение поведение."
 services: iot-hub
 documentationcenter: 
 author: shizn
@@ -17,30 +17,30 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/21/2017
 ms.author: xshi
-ms.openlocfilehash: 5009a0466f2c5689b8ab426049f4c4f02272512b
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 8cc438650f01ae4335d91c94df6a29e0ffbdc508
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="change-the-on-and-off-behavior-of-the-led"></a>Изменение режима включения и отключения светодиодного индикатора
+# <a name="change-hello-on-and-off-behavior-of-hello-led"></a>Изменить hello и отключать поведение hello Индикатора
 ## <a name="what-you-will-do"></a>Выполняемая задача
-Настроив сообщения, вы сможете изменять режим включения и отключения светодиодного индикатора. Если возникнут какие-либо проблемы в работе платы Adafruit Feather M0 WiFi Arduino, решения можно найти на [странице со сведениями об устранении неполадок](iot-hub-adafruit-feather-m0-wifi-kit-arduino-troubleshooting.md).
+Настройте hello toochange сообщений hello, Индикатор, включение и отключение поведение. Если у вас возникнут проблемы, искать решения на hello [страницу устранения неполадок](iot-hub-adafruit-feather-m0-wifi-kit-arduino-troubleshooting.md) Adafruit Растушевка M0 Wi-Fi Arduino плата.
 
 ## <a name="what-you-will-learn"></a>Новые знания
-Использование дополнительных функций Arduino для изменения режима включения и отключения светодиодного индикатора.
+Используйте дополнительные hello toochange функции Arduino, Индикатор, включение и отключение поведение.
 
 ## <a name="what-you-need"></a>Необходимые элементы
-Необходимо успешно выполнить [запуск примера приложения на плате Arduino для получения сообщений из облака на устройство][receive-cloud-to-device-messages].
+Необходимо успешно выполнить [запуска примеров приложений в облаке tooreceive Arduino доски сообщений toodevice][receive-cloud-to-device-messages].
 
-## <a name="add-functions-to-mainc-and-gulpfilejs"></a>Добавление функций в файлы main.c и gulpfile.js
-1. Откройте пример приложения в Visual Studio Code, выполнив следующие команды:
+## <a name="add-functions-toomainc-and-gulpfilejs"></a>Добавление функций toomain.c и gulpfile.js
+1. Откройте пример приложения hello в коде Visual Studio, выполнив следующие команды hello:
 
    ```bash
    cd Lesson4
    code .
    ```
-2. Откройте файл `app.ino` и после функции blinkLED() добавьте следующие функции:
+2. Откройте hello `app.ino` файл, а затем добавьте следующие функции после blinkLED() функции hello:
 
    ```arduino
    static void turnOnLED()
@@ -55,7 +55,7 @@ ms.lasthandoff: 07/11/2017
    ```
 
    ![Файл app.ino с добавленными функциями][app-ino-file]
-3. Добавьте следующие условия перед блоком `else if` функции `receiveMessageCallback`:
+3. Добавьте следующие условия перед hello hello `else if` блок hello `receiveMessageCallback` функции:
 
    ```arduino
    else if (strcmp((const char*)value, "\"on\"") == 0)
@@ -68,8 +68,8 @@ ms.lasthandoff: 07/11/2017
    }
    ```
 
-   Теперь пример приложения настроен для ответа на дополнительные инструкции с помощью сообщений. Инструкция on включает светодиодный индикатор, а инструкция off его отключает.
-4. Откройте файл gulpfile.js и добавьте новую функцию перед функцией `sendMessage`:
+   Теперь вы настроили hello образец приложения toorespond toomore инструкции с помощью сообщений. Hello «на «инструкция включает Индикатор hello и hello, «off» инструкция отключает hello Индикатора.
+4. Откройте файл gulpfile.js hello, а затем добавьте новую функцию перед функцией hello `sendMessage`:
 
    ```javascript
    var buildCustomMessage = function (messageId) {
@@ -84,33 +84,33 @@ ms.lasthandoff: 07/11/2017
    ```
 
    ![Файл gulpfile.js с добавленной функцией][gulp-file-js]
-5. В функции `sendMessage` замените строку `var message = buildMessage(sentMessageCount);` новой строкой, показанной в следующем фрагменте:
+5. В hello `sendMessage` функционировать, замените строку hello `var message = buildMessage(sentMessageCount);` с новую строку hello показано hello, следующий фрагмент кода:
 
    ```javascript
    var message = buildCustomMessage(sentMessageCount);
    ```
-6. Сохраните все изменения.
+6. Сохраните все изменения hello.
 
-### <a name="deploy-and-run-the-sample-application"></a>Развертывание и запуск примера приложения
-Разверните и запустите пример приложения на плате Arduino, выполнив следующую команду:
+### <a name="deploy-and-run-hello-sample-application"></a>Развертывание и запуск образца приложения hello
+Развертывание и запуск образца приложения hello на доске Arduino, выполнив следующую команду hello:
 
 ```bash
 gulp run
-# You can monitor the serial port by running listen task:
+# You can monitor hello serial port by running listen task:
 gulp listen
 
 # Or you can combine above two gulp tasks into one:
 gulp run --listen
 ```
 
-Светодиодный индикатор должен включиться на две секунды, а затем на две секунды выключиться. Последнее сообщение stop останавливает выполнение примера приложения.
+Вы увидите hello Индикатор, включите для двух секунд, а затем выключите для другой две секунды. Последнее сообщение Hello «остановить» останавливает образец приложения hello запуск.
 
 ![on и off][on-and-off]
 
-Поздравляем! Вы успешно настроили сообщения, отправляемые на плату Arduino из Центра Интернета вещей.
+Поздравляем! Сообщения приветствия, отправляемыми плата Arduino tooyour ваш центр IoT успешно настроен.
 
 ### <a name="summary"></a>Сводка
-В этом дополнительном разделе показано, как настроить сообщения таким образом, чтобы пример приложения мог управлять включением и отключением светодиодного индикатора разными способами.
+Этот дополнительный раздел показывает способ toocustomize сообщений, чтобы пример приложения hello мог управлять hello и отключать поведение hello Индикатор по-разному.
 
 <!-- Images and links -->
 

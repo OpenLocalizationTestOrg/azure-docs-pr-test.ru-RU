@@ -1,6 +1,6 @@
 ---
-title: "Управление вычислительными ресурсами в хранилище данных SQL Azure (PowerShell) | Документация Майкрософт"
-description: "Задачи PowerShell для управления вычислительными ресурсами. Масштабирование вычислительных ресурсов путем изменения числа единиц DWU. Кроме того, можно приостанавливать и возобновлять работу вычислительных ресурсов для сокращения затрат."
+title: "aaaManage вычислительная мощность в хранилище данных SQL Azure (PowerShell) | Документы Microsoft"
+description: "PowerShell задачи toomanage вычислительной мощности. Масштабирование вычислительных ресурсов путем изменения числа единиц DWU. Или, приостанавливать и возобновлять toosave затраты вычислительных ресурсов."
 services: sql-data-warehouse
 documentationcenter: NA
 author: hirokib
@@ -15,11 +15,11 @@ ms.workload: data-services
 ms.custom: manage
 ms.date: 10/31/2016
 ms.author: elbutter;barbkess
-ms.openlocfilehash: 6a185d96447c2e1b0b463439dd062081e783da5f
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 8b379d4cf89570649767f6896d2c630d4f1111d7
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="manage-compute-power-in-azure-sql-data-warehouse-powershell"></a>Управление вычислительными ресурсами в хранилище данных SQL Azure (PowerShell)
 > [!div class="op_single_selector"]
@@ -32,17 +32,17 @@ ms.lasthandoff: 07/11/2017
 >
 
 ## <a name="before-you-begin"></a>Перед началом работы
-### <a name="install-the-latest-version-of-azure-powershell"></a>Установка последней версии Azure PowerShell
+### <a name="install-hello-latest-version-of-azure-powershell"></a>Установите последнюю версию Azure PowerShell hello
 > [!NOTE]
-> Чтобы использовать Azure PowerShell с хранилищем данных SQL, установите Azure PowerShell 1.0.3 или более поздней версии.  Чтобы узнать текущую версию, выполните команду **Get-Module -ListAvailable -Name Azure**. Последнюю версию можно установить с помощью [установщика веб-платформы Майкрософт][Microsoft Web Platform Installer].  Дополнительные сведения см. в статье [Установка и настройка служб Azure PowerShell][How to install and configure Azure PowerShell].
+> toouse Azure PowerShell с хранилищем данных SQL необходимо Azure PowerShell версия 1.0.3 или выше.  tooverify текущей версии выполните команду hello **Get-Module - ListAvailable-Name Azure**. Можно установить последнюю версию hello с [Microsoft Web Platform Installer][Microsoft Web Platform Installer].  Дополнительные сведения см. в разделе [как tooinstall и настройка Azure PowerShell][How tooinstall and configure Azure PowerShell].
 >
 > 
 
 ### <a name="get-started-with-azure-powershell-cmdlets"></a>Приступая к работе с командлетами Azure PowerShell
-Чтобы начать работу:
+tooget работы.
 
 1. Откройте Azure PowerShell.
-2. В командной строке PowerShell выполните приведенные далее команды, чтобы войти в Azure Resource Manager Azure и выбрать свою подписку.
+2. В командной строке PowerShell hello запустите эти команды toosign в toohello диспетчера ресурсов Azure и выберите подписку.
 
     ```PowerShell
     Login-AzureRmAccount
@@ -56,7 +56,7 @@ ms.lasthandoff: 07/11/2017
 ## <a name="scale-compute-power"></a>Масштабирование вычислительных ресурсов
 [!INCLUDE [SQL Data Warehouse scale DWUs description](../../includes/sql-data-warehouse-scale-dwus-description.md)]
 
-Чтобы изменить число единиц DWU, используйте командлет PowerShell [Set-AzureRmSqlDatabase][Set-AzureRmSqlDatabase]. В приведенном ниже примере для базы данных MySQLDW, размещенной на сервере MyServer, устанавливается цель уровня обслуживания DW1000.
+hello toochange Dwu, использовать hello [набор AzureRmSqlDatabase] [ Set-AzureRmSqlDatabase] командлета PowerShell. Hello следующем примере hello службы уровня цели tooDW1000 для базы данных hello MySQLDW, который размещается на сервере MyServer.
 
 ```Powershell
 Set-AzureRmSqlDatabase -DatabaseName "MySQLDW" -ServerName "MyServer" -RequestedServiceObjectiveName "DW1000"
@@ -67,10 +67,10 @@ Set-AzureRmSqlDatabase -DatabaseName "MySQLDW" -ServerName "MyServer" -Requested
 ## <a name="pause-compute"></a>Приостановка работы вычислительных ресурсов
 [!INCLUDE [SQL Data Warehouse pause description](../../includes/sql-data-warehouse-pause-description.md)]
 
-Чтобы приостановить работу базы данных, используйте командлет [Suspend-AzureRmSqlDatabase][Suspend-AzureRmSqlDatabase]. В приведенном ниже примере приостанавливается работа базы данных с именем Database02, размещенной на сервере с именем Server01. Сервер находится в группе ресурсов Azure с именем ResourceGroup1.
+toopause базы данных, используйте hello [Suspend AzureRmSqlDatabase] [ Suspend-AzureRmSqlDatabase] командлета. Hello следующем примере показана Приостановка базы данных с именем Database02, размещенный на сервере с именем Server01. Hello сервер находится в группе ресурсов Azure с именем ResourceGroup1.
 
 > [!NOTE]
-> Обратите внимание, что если вашим сервером является foo.database.windows.net, в командлетах PowerShell в качестве -ServerName используйте значение "foo".
+> Обратите внимание, что если сервер является foo.database.windows.net, используйте «foo» как hello - ServerName в командлеты PowerShell hello.
 >
 > 
 
@@ -78,7 +78,7 @@ Set-AzureRmSqlDatabase -DatabaseName "MySQLDW" -ServerName "MyServer" -Requested
 Suspend-AzureRmSqlDatabase –ResourceGroupName "ResourceGroup1" `
 –ServerName "Server01" –DatabaseName "Database02"
 ```
-В следующем примере, являющемся вариантом предыдущего, база данных извлекается в объект $database. Затем объект передается по конвейеру в командлет [Suspend-AzureRmSqlDatabase][Suspend-AzureRmSqlDatabase]. Результаты сохраняются в объекте resultDatabase. Последняя команда отображает результаты.
+Вариант, в следующем примере извлекает hello базы данных в hello $database объекта. Затем он передает hello объекта слишком[Suspend AzureRmSqlDatabase][Suspend-AzureRmSqlDatabase]. Hello результаты сохраняются в resultDatabase hello объекта. Последняя команда Hello показывает результаты hello.
 
 ```Powershell
 $database = Get-AzureRmSqlDatabase –ResourceGroupName "ResourceGroup1" `
@@ -92,14 +92,14 @@ $resultDatabase
 ## <a name="resume-compute"></a>Возобновление работы вычислительных ресурсов
 [!INCLUDE [SQL Data Warehouse resume description](../../includes/sql-data-warehouse-resume-description.md)]
 
-Чтобы запустить базу данных, используйте командлет [Resume-AzureRmSqlDatabase][Resume-AzureRmSqlDatabase]. В приведенном ниже примере запускается база данных с именем Database02, размещенная на сервере с именем Server01. Сервер находится в группе ресурсов Azure с именем ResourceGroup1.
+toostart базы данных, используйте hello [Resume AzureRmSqlDatabase] [ Resume-AzureRmSqlDatabase] командлета. Hello следующий пример запускает базы данных с именем Database02, размещенный на сервере с именем Server01. Hello сервер находится в группе ресурсов Azure с именем ResourceGroup1.
 
 ```Powershell
 Resume-AzureRmSqlDatabase –ResourceGroupName "ResourceGroup1" `
 –ServerName "Server01" -DatabaseName "Database02"
 ```
 
-В следующем примере, являющемся вариантом предыдущего, база данных извлекается в объект $database. Затем объект передается в командлет [Resume-AzureRmSqlDatabase][Resume-AzureRmSqlDatabase], и результаты сохраняются в объекте $resultDatabase. Последняя команда отображает результаты.
+Вариант, в следующем примере извлекает hello базы данных в hello $database объекта. Затем он передает hello объекта слишком[Resume AzureRmSqlDatabase] [ Resume-AzureRmSqlDatabase] и сохраняет результаты hello в $resultDatabase. Последняя команда Hello показывает результаты hello.
 
 ```Powershell
 $database = Get-AzureRmSqlDatabase –ResourceGroupName "ResourceGroup1" `
@@ -112,7 +112,7 @@ $resultDatabase
 
 ## <a name="check-database-state"></a>Проверка состояния базы данных
 
-Как показано в приведенных выше примерах, командлет [Get-AzureRmSqlDatabase][Get-AzureRmSqlDatabase] можно использовать, чтобы получить сведения о базе данных, тем самым проверив ее состояние, но также его можно использовать в качестве аргумента. 
+Как показано в hello выше примерах, можно использовать [Get AzureRmSqlDatabase] [ Get-AzureRmSqlDatabase] командлет tooget сведения из базы данных, тем самым Проверка состояния hello, но toouse в качестве аргумента. 
 
 ```powershell
 Get-AzureRmSqlDatabase [-ResourceGroupName] <String> [-ServerName] <String> [[-DatabaseName] <String>]
@@ -142,7 +142,7 @@ ElasticPoolName               :
 EarliestRestoreDate           : 1/1/0001 12:00:00 AM
 ```
 
-В котором можно проверить *Status* (Состояние) базы данных. Как видите, в этом случае база данных находится в сети (Online). 
+Которой затем можно проверить toosee hello *состояние* hello базы данных. Как видите, в этом случае база данных находится в сети (Online). 
 
 При выполнении этой команды должно отобразиться одно из следующих значений состояния: "Online" (В сети), "Pausing" (Приостановка), "Resuming" (Возобновление), "Scaling" (Масштабирование) и "Paused" (Приостановлена).
 
@@ -156,7 +156,7 @@ EarliestRestoreDate           : 1/1/0001 12:00:00 AM
 <!--Article references-->
 [Service capacity limits]: ./sql-data-warehouse-service-capacity-limits.md
 [Management overview]: ./sql-data-warehouse-overview-manage.md
-[How to install and configure Azure PowerShell]: /powershell/azureps-cmdlets-docs
+[How tooinstall and configure Azure PowerShell]: /powershell/azureps-cmdlets-docs
 [Manage compute overview]: ./sql-data-warehouse-manage-compute-overview.md
 
 <!--MSDN references-->
