@@ -1,5 +1,5 @@
 ---
-title: "Общие сведения о Azure Cosmos DB | Документы Microsoft"
+title: "Общие сведения о Cosmos DB aaaAzure | Документы Microsoft"
 description: "Справку для обзора Azure Cosmos DB на портале Azure"
 services: cosmos-db
 author: sewatson
@@ -8,19 +8,19 @@ ms.service: cosmos-db
 ms.topic: article
 ms.date: 05/10/2017
 ms.author: sewatson
-ms.openlocfilehash: 30ffaff9c4a7bacbda1f6b973f328a345eb5d5b0
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: d38c1983a766660f448ca36c23435cf604a174b6
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-cosmos-db-documentation"></a>Документация по базе данных Azure Cosmos
 
-Azure Cosmos DB – это глобально распределенная служба базы данных, которая позволяет гибко и независимо масштабировать пропускную способность и ресурсы хранилища в любых регионах в рамках полного соглашения об уровне обслуживания. С помощью базы данных Cosmos вы можете разрабатывать документы, пары "ключ-значение" или базы данных графов, используя ряд популярных API-интерфейсов и модели программирования. Узнайте, как использовать базу данных Cosmos, ознакомившись с нашими шаблонами быстрого запуска, примерами и руководствами.
+Azure Cosmos DB является глобально распределенной базы данных служба, предоставляющая tooenable вы tooelastically и независимо друг от друга шкалы пропускной способности и хранения между любым числом географических регионов с полное соглашение об уровне ОБСЛУЖИВАНИЯ. С помощью базы данных Cosmos вы можете разрабатывать документы, пары "ключ-значение" или базы данных графов, используя ряд популярных API-интерфейсов и модели программирования. Узнайте, как toouse Cosmos DB с нашей краткие руководства, учебники и образцы.
 
 ## <a name="5-minute-quickstarts"></a>5-минутные руководства по началу работы
 
-Сведения об использовании Azure Cosmos DB для создания глобально распределенной базы данных с помощью одного из многомодельных API-интерфейсов:
+Узнайте, как Azure Cosmos DB toouse toocreate распределенной базы данных с помощью одного из hello моделей API-интерфейсы:
 
 ### <a name="documentdb-api"></a>API DocumentDB
 
@@ -48,22 +48,22 @@ Azure Cosmos DB – это глобально распределенная сл
 
 ## <a name="step-by-step-tutorials"></a>Пошаговые руководства
 
-Дополнительные сведения о разработке приложений с помощью Azure Cosmos DB:
+Узнайте, как toodevelop приложения, использующие Azure Cosmos DB:
 
 - Разработка приложений с Cosmos DB: [DocumentDB](/azure/cosmos-db/tutorial-develop-documentdb-dotnet) | [MongoDB](/azure/cosmos-db/tutorial-develop-mongodb) | [таблицы](/azure/cosmos-db/tutorial-develop-table-dotnet) | [графа](/azure/cosmos-db/tutorial-develop-graph-dotnet)
 - Импорт данных в Cosmos DB [DocumentDB](/azure/documentdb/documentdb-import-data) | [MongoDB](/azure/documentdb/documentdb-mongodb-migrate) 
 - Запрос данных с помощью Cosmos DB: [DocumentDB](/azure/cosmos-db/tutorial-query-documentdb) | [MongoDB](/azure/cosmos-db/tutorial-query-mongodb) | [таблицы](/azure/cosmos-db/tutorial-query-table) | [графа](/azure/cosmos-db/tutorial-query-graph)
 - Глобальная база данных репликации с помощью Cosmos DB: [DocumentDB](/azure/cosmos-db/tutorial-global-distribution-documentdb) | [MongoDB](/azure/cosmos-db/tutorial-global-distribution-mongodb) | [Таблица] (/ / cosmos-db/учебника глобальные распространения таблиц azure | [Графа](/azure/cosmos-db/tutorial-global-distribution-graph)
-- [Разработка приложений локально с помощью эмулятора](/azure/documentdb/documentdb-nosql-local-emulator)
+- [Разработайте приложение локально с помощью эмулятора hello](/azure/documentdb/documentdb-nosql-local-emulator)
 
 ## <a name="samples"></a>Примеры
 
-Поиск скриптов для выполнения типовых задач.
+Поиск сценариев toomanage типовых задач.
 
 - [Интерфейс командной строки Azure](/azure/cosmos-db/cli-samples)
 - [Azure PowerShell](/azure/cosmos-db/powershell-samples)
 
 ## <a name="more"></a>Подробнее
 
-- [Обратитесь к документации для получения дополнительных сведений](/azure/cosmos-db/index)
+- [Обратитесь к документации toolearn Дополнительные](/azure/cosmos-db/index)
 - [Дополнительные сведения о всех служб Azure](https://aka.ms/j3wr7y)

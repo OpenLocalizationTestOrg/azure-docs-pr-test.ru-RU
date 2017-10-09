@@ -15,46 +15,46 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/12/2017
 ms.author: yushwang
-ms.openlocfilehash: b00a3fe7ba4b12c2e9c486188c292cd6fafb60a3
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: a9d13ae6b319e2efa8965dc2955c9b89ac3fd12b
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-configure-bgp-on-azure-vpn-gateways-using-powershell"></a>Настройка BGP на VPN-шлюзах Azure с помощью PowerShell
-В этой статье содержится пошаговое описание процесса, который позволит с помощью модели развертывания Resource Manager и PowerShell включить BGP для VPN-подключения типа "сеть — сеть" (S2S), настроенного между локальными сетями, или для подключения между виртуальными сетями.
+# <a name="how-tooconfigure-bgp-on-azure-vpn-gateways-using-powershell"></a>Как tooconfigure BGP на шлюзах VPN Azure с помощью PowerShell
+В этой статье описывается tooenable действия hello BGP на-сайтами (S2S) VPN-подключения между организациями и подключение к виртуальной сети для виртуальной сети, с помощью модели развертывания диспетчера ресурсов hello и PowerShell.
 
 ## <a name="about-bgp"></a>О протоколе BGP
-Стандартный протокол маршрутизации BGP обычно используется в Интернете для обмена данными о маршрутизации и доступности между двумя или несколькими сетями. Протокол BGP используется VPN-шлюзами Azure и локальными VPN-устройствами (так называемые узлы BGP) для обмена данными о маршрутах. Это позволяет информировать участников обмена о доступности и возможности передавать трафик для определенных сетей через шлюзы или маршрутизаторы. Также BGP позволяет передавать трафик транзитом через несколько сетей. Для этого шлюз BGP распространяет на все известные ему узлы BGP информацию о маршрутах, полученную от остальных узлов BGP.
+BGP — hello протокол маршрутизации обычно используется в hello информации через Интернет tooexchange маршрутизации и возможности доступа между двумя или более сетями. BGP обеспечивает VPN-шлюзы Azure hello и VPN-устройства локальной называется узлов BGP или соседей, tooexchange «маршруты» сообщит обоих шлюзов на доступность hello и возможности доступа для тех префиксов toogo через hello шлюзы или маршрутизаторы участвующих. BGP можно также включить транзитной маршрутизацией среди нескольких сетей, распространение маршрутов BGP шлюз узнает из одного tooall однорангового узла BGP других узлов BGP.
 
-В статье [Обзор использования BGP с VPN-шлюзами Azure](vpn-gateway-bgp-overview.md) приведены дополнительные сведения о преимуществах BGP, о технических требованиях и важных аспектах использования BGP.
+В разделе [Обзор BGP со шлюзами VPN Azure](vpn-gateway-bgp-overview.md) дополнительную информацию о преимуществах BGP и toounderstand hello технических требований и рекомендаций, связанных с помощью BGP.
 
 ## <a name="getting-started-with-bgp-on-azure-vpn-gateways"></a>Приступая к работе с BGP на VPN-шлюзах Azure
 
-В этой статье описано выполнение следующих действий:
+В этой статье рассматриваются hello действия toodo hello следующие задачи:
 
 * [Часть 1 — активация BGP на VPN-шлюзе Azure](#enablebgp)
 * [Часть 2 — создание подключения между локальными сетями с использованием BGP](#crossprembgp)
 * [Часть 3 — создание подключения между виртуальными сетями с использованием BGP](#v2vbgp)
 
-Каждая часть этой инструкции является базовым блоком для использования BGP в вашей сети. Выполнив инструкции, приведенные в трех частях, вы создадите топологию, которая представлена на следующей схеме:
+Каждая часть инструкции hello forms это основной стандартный блок для включения BGP в сетевое подключение. Если вы прошли все три части, как показано в hello, следующая схема сборки hello топологии:
 
 ![Топология BGP](./media/vpn-gateway-bgp-resource-manager-ps/bgp-crosspremv2v.png)
 
-Вы можете объединять блоки для создания более сложных, многоскачковых и транзитных сетей, в соответствии со своими задачами.
+Можно объединять части вместе toobuild более сложных, мульти-прыжка транзитной сети, соответствующий вашим потребностям.
 
-## <a name ="enablebgp"></a>Часть 1 — настройка BGP для VPN-шлюза Azure
-Описанные ниже действия позволят настроить параметры BGP для VPN-шлюза Azure в соответствии со следующей схемой:
+## <a name ="enablebgp"></a>Часть 1 — Настройка BGP на hello Azure VPN-шлюза
+действия по настройке Hello настроить hello параметров BGP hello шлюза Azure VPN как показано в hello, следующая схема:
 
 ![Шлюз BGP](./media/vpn-gateway-bgp-resource-manager-ps/bgp-gateway.png)
 
 ### <a name="before-you-begin"></a>Перед началом работы
 * Убедитесь в том, что у вас уже есть подписка Azure. Если у вас нет подписки Azure, вы можете [активировать преимущества для подписчиков MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) или [зарегистрировать бесплатную учетную запись](https://azure.microsoft.com/pricing/free-trial/).
-* Установите командлеты PowerShell для Azure Resource Manager. См. дополнительные сведения об [установке и настройке командлетов Azure PowerShell](/powershell/azure/overview). 
+* Установите командлеты PowerShell диспетчера ресурсов Azure hello. Дополнительные сведения об установке hello командлеты PowerShell см. в разделе [как tooinstall и настройка Azure PowerShell](/powershell/azure/overview). 
 
 ### <a name="step-1---create-and-configure-vnet1"></a>Шаг 1. Создание и настройка VNet1
 #### <a name="1-declare-your-variables"></a>1. Объявление переменных
-В этом упражнении мы начнем с объявления переменных. В примере ниже объявлены переменные со значениями для этого упражнения. Обязательно замените значения своими при настройке для рабочей среды. Эти переменные можно использовать для ознакомления с этим типом конфигурации. Измените переменные, а затем скопируйте и вставьте код в консоль PowerShell.
+В этом упражнении мы начнем с объявления переменных. Hello следующий пример hello переменных объявляются с помощью hello значения для этого упражнения. Быть убедиться, что значения hello tooreplace собственными при настройке для рабочей среды. Эти переменные можно использовать при выполнении через toobecome действия hello знакомы с этим типом конфигурации. Изменение переменных hello, а затем скопируйте и вставьте в консоль PowerShell.
 
 ```powershell
 $Sub1 = "Replace_With_Your_Subcription_Name"
@@ -78,10 +78,10 @@ $Connection12 = "VNet1toVNet2"
 $Connection15 = "VNet1toSite5"
 ```
 
-#### <a name="2-connect-to-your-subscription-and-create-a-new-resource-group"></a>2) Подключение к подписке Azure и создание группы ресурсов
-Для работы с командлетами Resource Manager необходимо переключиться в режим PowerShell. Дополнительные сведения см. в статье [Использование Azure PowerShell с диспетчером ресурсов Azure](../powershell-azure-resource-manager.md).
+#### <a name="2-connect-tooyour-subscription-and-create-a-new-resource-group"></a>2. Подключить tooyour подписки и создать новую группу ресурсов
+hello toouse командлеты диспетчера ресурсов убедитесь в том, что режима tooPowerShell. Дополнительные сведения см. в статье [Использование Azure PowerShell с диспетчером ресурсов Azure](../powershell-azure-resource-manager.md).
 
-Откройте консоль PowerShell и подключитесь к своей учетной записи. Для подключения используйте следующий пример.
+Откройте консоль PowerShell и подключить tooyour учетную запись. Используйте следующий пример toohelp подключении hello.
 
 ```powershell
 Login-AzureRmAccount
@@ -90,7 +90,7 @@ New-AzureRmResourceGroup -Name $RG1 -Location $Location1
 ```
 
 #### <a name="3-create-testvnet1"></a>3. Создание TestVNet1
-В примере ниже создается виртуальная сеть с именем TestVNet1 и три подсети: GatewaySubnet, FrontEnd и Backend. При замене значений важно, чтобы вы назвали подсеть шлюза именем GatewaySubnet. Если вы используете другое имя, создание шлюза завершится сбоем.
+Hello следующий пример создает виртуальную сеть с именем TestVNet1 и три подсети, один именем GatewaySubnet, одной вызываемой переднего плана и один внутренний вызван. При замене значений важно, чтобы вы назвали подсеть шлюза именем GatewaySubnet. Если вы используете другое имя, создание шлюза завершится сбоем.
 
 ```powershell
 $fesub1 = New-AzureRmVirtualNetworkSubnetConfig -Name $FESubName1 -AddressPrefix $FESubPrefix1 $besub1 = New-AzureRmVirtualNetworkSubnetConfig -Name $BESubName1 -AddressPrefix $BESubPrefix1
@@ -99,9 +99,9 @@ $gwsub1 = New-AzureRmVirtualNetworkSubnetConfig -Name $GWSubName1 -AddressPrefix
 New-AzureRmVirtualNetwork -Name $VNetName1 -ResourceGroupName $RG1 -Location $Location1 -AddressPrefix $VNetPrefix11,$VNetPrefix12 -Subnet $fesub1,$besub1,$gwsub1
 ```
 
-### <a name="step-2---create-the-vpn-gateway-for-testvnet1-with-bgp-parameters"></a>Шаг 2. Создание VPN-шлюза для TestVNet1 с параметрами BGP
-#### <a name="1-create-the-ip-and-subnet-configurations"></a>1. Настройка IP-адресов и подсети
-Запросите выделение общедоступного IP-адреса для шлюза, который будет создан для виртуальной сети. Также следует определить необходимые конфигурации подсети и IP-адресов.
+### <a name="step-2---create-hello-vpn-gateway-for-testvnet1-with-bgp-parameters"></a>Шаг 2 — Создание hello VPN-шлюза для TestVNet1 с параметрами BGP
+#### <a name="1-create-hello-ip-and-subnet-configurations"></a>1. Создайте hello конфигурации IP-адресов и подсети
+Запрос открытый IP-адрес toobe toohello выделенный шлюз, создаваемых для виртуальной сети. Также мы определим hello требуется подсеть и IP-конфигурации.
 
 ```powershell
 $gwpip1 = New-AzureRmPublicIpAddress -Name $GWIPName1 -ResourceGroupName $RG1 -Location $Location1 -AllocationMethod Dynamic
@@ -111,22 +111,22 @@ $subnet1 = Get-AzureRmVirtualNetworkSubnetConfig -Name "GatewaySubnet" -VirtualN
 $gwipconf1 = New-AzureRmVirtualNetworkGatewayIpConfig -Name $GWIPconfName1 -Subnet $subnet1 -PublicIpAddress $gwpip1
 ```
 
-#### <a name="2-create-the-vpn-gateway-with-the-as-number"></a>2. Создание VPN-шлюза с номером AS
-Создайте шлюз для виртуальной сети TestVNet1. Для использования BGP обязательно нужен VPN-шлюз на основе маршрутов, а также дополнительный параметр -Asn, который задает номер ASN для TestVNet1. Если параметр ASN не указан, будет назначено значение ASN 65515. Создание шлюза может занять некоторое время (30 минут или более).
+#### <a name="2-create-hello-vpn-gateway-with-hello-as-number"></a>2. Создайте шлюз VPN hello hello как число
+Создание шлюза виртуальной сети hello для TestVNet1. BGP требуется TestVNet1 типа на основе маршрутов VPN-шлюза, а также hello сложения параметр - Asn, tooset hello ASN (номер AS). Если не задан параметр ASN hello, назначается ASN 65515. Создание шлюза может занять некоторое время (30 минут или более toocomplete).
 
 ```powershell
 New-AzureRmVirtualNetworkGateway -Name $GWName1 -ResourceGroupName $RG1 -Location $Location1 -IpConfigurations $gwipconf1 -GatewayType Vpn -VpnType RouteBased -GatewaySku HighPerformance -Asn $VNet1ASN
 ```
 
-#### <a name="3-obtain-the-azure-bgp-peer-ip-address"></a>3. Получение IP-адреса для узла Azure BGP
-После создания шлюза необходимо получить IP-адрес для узла BGP на VPN-шлюзе Azure. Этот адрес нужен, чтобы VPN-шлюз Azure мог выполнять роль узла BGP для локальных VPN-устройств.
+#### <a name="3-obtain-hello-azure-bgp-peer-ip-address"></a>3. Получить hello Azure BGP однорангового узла, IP-адрес
+После создания шлюза hello требуется tooobtain hello IP-однорангового узла BGP адрес на hello шлюза VPN Azure. Этот адрес будет hello необходимые tooconfigure VPN-шлюз Azure как узла BGP для VPN-устройства в локальной среде.
 
 ```powershell
 $vnet1gw = Get-AzureRmVirtualNetworkGateway -Name $GWName1 -ResourceGroupName $RG1
 $vnet1gw.BgpSettingsText
 ```
 
-Последняя команда выводит соответствующую конфигурацию BGP для VPN-шлюза Azure.
+Последняя команда Hello показывает hello соответствующей конфигурации BGP hello VPN-шлюз Azure; Например:
 
 ```powershell
 $vnet1gw.BgpSettingsText
@@ -137,21 +137,21 @@ $vnet1gw.BgpSettingsText
 }
 ```
 
-С помощью созданного шлюза можно установить подключение между локальными или виртуальными сетями с использованием BGP. В следующих разделах описано, как это сделать.
+После создания шлюза hello с протоколом BGP можно использовать этот шлюз tooestablish между организациями подключение или подключение виртуальной сети для виртуальной сети. Hello следующие разделы содержат пошаговые инструкции hello действия toocomplete hello упражнении.
 
 ## <a name ="crossprembbgp"></a>Часть 2 — создание подключения между локальными сетями с использованием BGP
 
-Чтобы установить подключение между локальными сетями, нужно создать локальный сетевой шлюз, который будет представлять локальное VPN-устройство, а также подключение между VPN-шлюзом и шлюзом локальной сети. Несмотря на то что эти действия подробно описаны в других статьях, в этой статье указаны дополнительные свойства, необходимые для параметров конфигурации BGP.
+tooestablish подключения между организациями необходимо toocreate toorepresent шлюза локальной сети VPN-устройства в локальной среде и hello VPN-подключения tooconnect шлюза с hello шлюза локальной сети. Хотя статей, которые помогают выполнить эти действия, в этой статье содержатся параметры конфигурации BGP hello необходимые toospecify hello дополнительные свойства.
 
 ![BGP между локальными сетями](./media/vpn-gateway-bgp-resource-manager-ps/bgp-crossprem.png)
 
 Прежде чем продолжить, убедитесь, что вы выполнили инструкции из [первой части](#enablebgp) этой статьи.
 
-### <a name="step-1---create-and-configure-the-local-network-gateway"></a>Шаг 1. Создание и настройка локального сетевого шлюза
+### <a name="step-1---create-and-configure-hello-local-network-gateway"></a>Шаг 1. Создание и настройка шлюза локальной сети hello
 
 #### <a name="1-declare-your-variables"></a>1. Объявление переменных
 
-В этом подразделе мы продолжим создание конфигурации, которая представлена на схеме. Не забудьте заменить значения теми, которые вы хотите использовать для конфигурации.
+В этом упражнении продолжается конфигурации hello toobuild иллюстрации hello. Быть убедиться, что tooreplace hello значениями hello из них требуется toouse для вашей конфигурации.
 
 ```powershell
 $RG5 = "TestBGPRG5"
@@ -163,17 +163,17 @@ $LNGASN5 = 65050
 $BGPPeerIP5 = "10.52.255.254"
 ```
 
-Несколько важных замечаний о параметрах локального сетевого шлюза.
+Несколько вещей toonote относительно hello параметры шлюза локальной сети:
 
-* Локальный сетевой шлюз может находиться в том же расположении, что и VPN-шлюз, или в любом другом. Это же справедливо в отношении групп ресурсов. В нашем примере они располагаются в разных группах ресурсов и расположениях.
-* Минимальный префикс, который необходимо объявить для локального сетевого шлюза — это IP-адрес узла BGP на вашем VPN-устройстве. В нашем примере это префикс /32 для адреса 10.52.255.254/32.
-* Не забывайте, что для локальных сетей и виртуальной сети Azure должны быть указаны разные номера ASN BGP. Если они совпадают, а локальное VPN-устройство уже использует свой ASN для связи с другими соседями BGP, необходимо изменить ASN вашей виртуальной сети.
+* Hello шлюза локальной сети может быть в hello таким же или другое расположение и ресурсов группы как hello шлюза VPN. В нашем примере они располагаются в разных группах ресурсов и расположениях.
+* адрес узла hello ваш адрес BGP одноранговых IP на VPN-устройства используется префикс минимальное Hello, требуется toodeclare hello шлюза локальной сети. В нашем примере это префикс /32 для адреса 10.52.255.254/32.
+* Не забывайте, что для локальных сетей и виртуальной сети Azure должны быть указаны разные номера ASN BGP. Если они являются одинаковыми hello, необходимо toochange вашей виртуальной сети ASN Если VPN-устройства локальной уже использует hello ASN toopeer с соседним узлам BGP.
 
-Прежде чем продолжить, убедитесь, что вы все еще подключены к подписке 1.
+Прежде чем продолжить, убедитесь, что будут по-прежнему подключенных tooSubscription 1.
 
-#### <a name="2-create-the-local-network-gateway-for-site5"></a>2. Создание локального сетевого шлюза для сети Site5
+#### <a name="2-create-hello-local-network-gateway-for-site5"></a>2. Создание шлюза локальной сети hello для Site5
 
-Прежде чем создавать локальный сетевой шлюз, не забудьте создать группу ресурсов, если она не была создана ранее. Обратите внимание на два дополнительных параметра локального сетевого шлюза: Asn и BgpPeerAddress.
+Убедиться, что группа ресурсов hello toocreate быть в том случае, если она не была создана, прежде чем создать шлюз локальной сети hello. Обратите внимание, hello два дополнительных параметров для шлюза локальной сети hello: BgpPeerAddress и Asn.
 
 ```powershell
 New-AzureRmResourceGroup -Name $RG5 -Location $Location5
@@ -181,55 +181,55 @@ New-AzureRmResourceGroup -Name $RG5 -Location $Location5
 New-AzureRmLocalNetworkGateway -Name $LNGName5 -ResourceGroupName $RG5 -Location $Location5 -GatewayIpAddress $LNGIP5 -AddressPrefix $LNGPrefix50 -Asn $LNGASN5 -BgpPeeringAddress $BGPPeerIP5
 ```
 
-### <a name="step-2---connect-the-vnet-gateway-and-local-network-gateway"></a>Шаг 2. Подключение шлюза виртуальной сети к локальному сетевому шлюзу
+### <a name="step-2---connect-hello-vnet-gateway-and-local-network-gateway"></a>Шаг 2 - подключения шлюза виртуальной сети hello и шлюз локальной сети
 
-#### <a name="1-get-the-two-gateways"></a>1. Получение обоих шлюзов
+#### <a name="1-get-hello-two-gateways"></a>1. Получить hello двумя шлюзами
 
 ```powershell
 $vnet1gw = Get-AzureRmVirtualNetworkGateway -Name $GWName1  -ResourceGroupName $RG1
 $lng5gw  = Get-AzureRmLocalNetworkGateway -Name $LNGName5 -ResourceGroupName $RG5
 ```
 
-#### <a name="2-create-the-testvnet1-to-site5-connection"></a>2) Создание подключения между TestVNet1 и Site5
+#### <a name="2-create-hello-testvnet1-toosite5-connection"></a>2. Создание подключения tooSite5 TestVNet1 hello
 
-На этом шаге вы создадите подключение между TestVNet1 и Site5. Чтобы активировать BGP для этого подключения, укажите параметр -EnableBGP True. Как обсуждалось ранее, на одном VPN-шлюзе можно одновременно создавать подключения с использованием BGP и без него. Если BGP не указано в свойствах подключения явным образом, Azure не будет использовать BGP для этого подключения, даже если параметры BGP настроены для обоих шлюзов.
+На этом этапе можно создать подключение hello TestVNet1 tooSite5. Необходимо указать «-EnableBGP $True» tooenable BGP для этого подключения. Как было сказано ранее, это возможных toohave BGP и не BGP подключения hello же шлюза VPN Azure. Если включен протокол BGP в свойстве соединения hello, Azure не включит BGP для этого подключения несмотря на то, что параметры BGP уже настроены для обоих шлюзов.
 
 ```powershell
 New-AzureRmVirtualNetworkGatewayConnection -Name $Connection15 -ResourceGroupName $RG1 -VirtualNetworkGateway1 $vnet1gw -LocalNetworkGateway2 $lng5gw -Location $Location1 -ConnectionType IPsec -SharedKey 'AzureA1b2C3' -EnableBGP $True
 ```
 
-В следующем примере перечислены параметры, которые следует ввести в разделе конфигурации BGP на локальном VPN-устройстве для нашего упражнения.
+Hello следующий пример формирует список параметров Привет вводимых вами в hello BGP раздел конфигурации для локального VPN-устройства для этого упражнения.
 
 ```
 
 - Site5 ASN            : 65050
 - Site5 BGP IP         : 10.52.255.254
-- Prefixes to announce : (for example) 10.51.0.0/16 and 10.52.0.0/16
+- Prefixes tooannounce : (for example) 10.51.0.0/16 and 10.52.0.0/16
 - Azure VNet ASN       : 65010
 - Azure VNet BGP IP    : 10.12.255.30
-- Static route         : Add a route for 10.12.255.30/32, with nexthop being the VPN tunnel interface on your device
-- eBGP Multihop        : Ensure the "multihop" option for eBGP is enabled on your device if needed
+- Static route         : Add a route for 10.12.255.30/32, with nexthop being hello VPN tunnel interface on your device
+- eBGP Multihop        : Ensure hello "multihop" option for eBGP is enabled on your device if needed
 ```
 
-Подключение установится через несколько минут. Сразу после создания подключения IPsec начнется сеанс пиринга BGP.
+Hello подключение выполняется через несколько минут и запускает сеанс пиринга BGP hello после установления соединения IPsec hello.
 
 ## <a name ="v2vbgp"></a>Часть 3 — создание подключения между виртуальными сетями с использованием BGP
 
-В этом разделе мы добавим подключение между виртуальными сетями с использованием BGP, как показано на следующей схеме:
+В этом разделе добавит подключение виртуальной сети для виртуальной сети с протоколом BGP, как показано на hello, следующая схема:
 
 ![BGP между виртуальными сетями](./media/vpn-gateway-bgp-resource-manager-ps/bgp-vnet2vnet.png)
 
-Приведенные ниже инструкции продолжают действия, описанные выше. Чтобы создать и настроить сеть TestVNet1 и VPN-шлюз с использованием BGP, сначала следует выполнить инструкции из [первой части](#enablebgp) . 
+Привет, следуя инструкциям по-прежнему hello предыдущих шагах. Необходимо выполнить [части I](#enablebgp) toocreate hello VPN-шлюз с BGP и настроите TestVNet1. 
 
-### <a name="step-1---create-testvnet2-and-the-vpn-gateway"></a>Шаг 1. Создание TestVNet2 и VPN-шлюза
+### <a name="step-1---create-testvnet2-and-hello-vpn-gateway"></a>Шаг 1 — Создание TestVNet2 и hello VPN-шлюза
 
-Важно убедиться в том, что пространство IP-адресов для новой виртуальной сети TestVNet2 не пересекается с диапазонами любой из ваших виртуальных сетей.
+Это важные toomake в том, что пространство IP-адресов hello hello новой виртуальной сети, TestVNet2, не перекрываются с диапазонов виртуальной сети.
 
-В этом примере виртуальные сети относятся к одной подписке. Вы можете создавать подключения между виртуальным сетями из разных подписок. Дополнительные сведения см. в статье [Настройка подключения VPN-шлюза между виртуальными сетями с помощью PowerShell](vpn-gateway-vnet-vnet-rm-ps.md). Чтобы использовать для подключения протокол BGP, обязательно укажите параметр -EnableBgp True при создании подключения.
+В этом примере hello виртуальные сети относятся toohello одной подписке. Вы можете создавать подключения между виртуальным сетями из разных подписок. Дополнительные сведения см. в статье [Настройка подключения VPN-шлюза между виртуальными сетями с помощью PowerShell](vpn-gateway-vnet-vnet-rm-ps.md). Убедитесь, что добавить hello»-EnableBgp $True» при создании hello tooenable подключений BGP.
 
 #### <a name="1-declare-your-variables"></a>1. Объявление переменных
 
-Не забудьте заменить значения теми, которые вы хотите использовать для конфигурации.
+Быть убедиться, что tooreplace hello значениями hello из них требуется toouse для вашей конфигурации.
 
 ```powershell
 $RG2 = "TestBGPRG2"
@@ -252,7 +252,7 @@ $Connection21 = "VNet2toVNet1"
 $Connection12 = "VNet1toVNet2"
 ```
 
-#### <a name="2-create-testvnet2-in-the-new-resource-group"></a>2) Создание сети TestVNet2 в новой группе ресурсов
+#### <a name="2-create-testvnet2-in-hello-new-resource-group"></a>2. Создание TestVNet2 в новую группу ресурсов hello
 
 ```powershell
 New-AzureRmResourceGroup -Name $RG2 -Location $Location2
@@ -264,9 +264,9 @@ $gwsub2 = New-AzureRmVirtualNetworkSubnetConfig -Name $GWSubName2 -AddressPrefix
 New-AzureRmVirtualNetwork -Name $VNetName2 -ResourceGroupName $RG2 -Location $Location2 -AddressPrefix $VNetPrefix21,$VNetPrefix22 -Subnet $fesub2,$besub2,$gwsub2
 ```
 
-#### <a name="3-create-the-vpn-gateway-for-testvnet2-with-bgp-parameters"></a>3. Создание VPN-шлюза для TestVNet2 с параметрами BGP
+#### <a name="3-create-hello-vpn-gateway-for-testvnet2-with-bgp-parameters"></a>3. Создание VPN-шлюз hello для TestVNet2 с параметрами BGP
 
-Запросите выделение общедоступного IP-адреса для шлюза, который будет создан для виртуальной сети, и определите необходимые конфигурации подсети и IP-адресов.
+Запрос открытый IP-адрес toobe выделенный toohello шлюза вы создадите для виртуальной сети и определите необходимые hello подсети и IP-конфигурации.
 
 ```powershell
 $gwpip2    = New-AzureRmPublicIpAddress -Name $GWIPName2 -ResourceGroupName $RG2 -Location $Location2 -AllocationMethod Dynamic
@@ -276,28 +276,28 @@ $subnet2   = Get-AzureRmVirtualNetworkSubnetConfig -Name "GatewaySubnet" -Virtua
 $gwipconf2 = New-AzureRmVirtualNetworkGatewayIpConfig -Name $GWIPconfName2 -Subnet $subnet2 -PublicIpAddress $gwpip2
 ```
 
-Создайте VPN-шлюз с номером AS. Номер ASN по умолчанию необходимо переопределить для ваших VPN-шлюзов Azure. Номера ASN для подключенных виртуальных сетей должны быть разными, чтобы работал протокол BGP и транзитная маршрутизация.
+Создайте шлюз VPN hello hello как число. По умолчанию hello ASN необходимо переопределить на шлюзах Azure VPN. Hello ASN для hello подключенных виртуальных сетей должны быть разные tooenable BGP и транзитной маршрутизацией.
 
 ```powershell
 New-AzureRmVirtualNetworkGateway -Name $GWName2 -ResourceGroupName $RG2 -Location $Location2 -IpConfigurations $gwipconf2 -GatewayType Vpn -VpnType RouteBased -GatewaySku Standard -Asn $VNet2ASN
 ```
 
-### <a name="step-2---connect-the-testvnet1-and-testvnet2-gateways"></a>Шаг 2. Подключение шлюзов TestVNet1 и TestVNet2
+### <a name="step-2---connect-hello-testvnet1-and-testvnet2-gateways"></a>Шаг 2 — подключить hello TestVNet1 и TestVNet2 шлюзов
 
-В этом примере оба шлюза находятся в одной подписке. Этот шаг можно выполнить в одном сеансе PowerShell.
+В этом примере обоих шлюзов находятся в hello одной подписке. На этом шаге hello можно завершить сеанс PowerShell.
 
 #### <a name="1-get-both-gateways"></a>1. Получение обоих шлюзов
 
-Обязательно войдите и подключитесь к подписке 1.
+Убедитесь, что вход и подключиться tooSubscription 1.
 
 ```powershell
 $vnet1gw = Get-AzureRmVirtualNetworkGateway -Name $GWName1 -ResourceGroupName $RG1
 $vnet2gw = Get-AzureRmVirtualNetworkGateway -Name $GWName2 -ResourceGroupName $RG2
 ```
 
-#### <a name="2-create-both-connections"></a>2) Создание двух подключений
+#### <a name="2-create-both-connections"></a>2. Создание двух подключений
 
-На этом шаге вы создадите подключение из TestVNet1 к TestVNet2, а также подключение из TestVNet2 к TestVNet1.
+На этом этапе можно создать hello из TestVNet1 tooTestVNet2 и hello соединению с TestVNet2 tooTestVNet1.
 
 ```powershell
 New-AzureRmVirtualNetworkGatewayConnection -Name $Connection12 -ResourceGroupName $RG1 -VirtualNetworkGateway1 $vnet1gw -VirtualNetworkGateway2 $vnet2gw -Location $Location1 -ConnectionType Vnet2Vnet -SharedKey 'AzureA1b2C3' -EnableBgp $True
@@ -306,16 +306,16 @@ New-AzureRmVirtualNetworkGatewayConnection -Name $Connection21 -ResourceGroupNam
 ```
 
 > [!IMPORTANT]
-> Не забудьте включить BGP для ОБОИХ подключений.
+> Быть убедиться, что tooenable BGP для ОБОИХ подключений.
 > 
 > 
 
-Подключение будет установлено через несколько минут после выполнения этих действий. Сразу после создания подключения между виртуальными сетями начнется сеанс пиринга BGP.
+После выполнения этих действий, hello подключение выполняется через несколько минут. сеанс пиринга BGP Hello работает после завершения hello подключения VNet-VNet.
 
-Если вы выполнили все три части этого упражнения, ваша сеть будет иметь примерно такую топологию:
+Если вы выполнили все три части этого упражнения, вы установили hello следующие топологии сети:
 
 ![BGP между виртуальными сетями](./media/vpn-gateway-bgp-resource-manager-ps/bgp-crosspremv2v.png)
 
 ## <a name="next-steps"></a>Дальнейшие действия
 
-Установив подключение, можно добавить виртуальные машины в виртуальные сети. Инструкции см. в статье о [создании виртуальной машины](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+После завершения подключения можно добавить виртуальные машины tooyour виртуальных сетей. Инструкции см. в статье о [создании виртуальной машины](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).

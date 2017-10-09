@@ -1,6 +1,6 @@
 ---
-title: "Устранение неполадок клиента Docker в Windows с помощью Visual Studio | Документация Майкрософт"
-description: "Устранение неполадок, которые возникают при использовании Visual Studio для создания и развертывания веб-приложений в Docker в Windows с помощью Visual Studio."
+title: "ошибки клиента aaaTroubleshooting Docker в Windows с помощью Visual Studio | Документы Microsoft"
+description: "Устранение неполадок, возникающих при использовании Visual Studio toocreate и развертывание web tooDocker приложений для Windows с помощью Visual Studio."
 services: azure-container-service
 documentationcenter: na
 author: mlearned
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 06/08/2016
 ms.author: mlearned
-ms.openlocfilehash: 89fa04a1107b6abb49aefd68066443717ac9b731
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 7421ae8e044d58fc412d748fb870da4c9b2fdb3b
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="troubleshoot-visual-studio-docker-development"></a>Устранение неполадок при разработке Docker в Visual Studio
 
-При работе с инструментами Visual Studio для предварительной версии Docker могут возникать некоторые проблемы из-за особенностей предварительной версии.
+При работе с Visual Studio Tools для предварительной версии Docker, могут возникнуть некоторые проблемы из-за характера hello hello предварительного просмотра.
 Далее приведены некоторые распространенные проблемы и способы их устранения.  
 
 ## <a name="visual-studio-2017-rc"></a>Visual Studio 2017 RC
@@ -31,38 +31,38 @@ ms.lasthandoff: 07/11/2017
 
 ####  <a name="build-errors-occur-when-debugging-a-net-core-web-or-console-application"></a>При отладке веб-приложения или консольного приложения .NET Core возникают ошибки сборки.  
 
-Это может быть связано с отсутствием общего доступа к диску, на котором расположен проект с Docker для Windows.  Может появляться сообщение об ошибке следующего вида.
+Это может быть связанные toonot на диске hello, где находится проект hello Docker для Windows.  Может появиться ошибка hello следующим образом:
 
 ```
-The "PrepareForLaunch" task failed unexpectedly.
-Microsoft.DotNet.Docker.CommandLineClientException: Creating network "webapplication13628050196_default" with the default driver
+hello "PrepareForLaunch" task failed unexpectedly.
+Microsoft.DotNet.Docker.CommandLineClientException: Creating network "webapplication13628050196_default" with hello default driver
 Building webapplication1
 Creating webapplication13628050196_webapplication1_1
 ERROR: for webapplication1  Cannot create container for service webapplication1: C: drive is not shared. Please share it in Docker for Windows Settings
 ```
-Действия для устранения этой проблемы.
+tooresolve этой проблемы:
 
-1. Щелкните правой кнопкой мыши **Docker for Windows** (Docker для Windows) в области уведомлений, а затем выберите **Параметры**.  
-2. Перейдите на вкладку **Shared Drives** (Общие диски) и предоставьте доступ к диску, на котором находится проект.
+1. Щелкните правой кнопкой мыши **Docker для Windows** в hello области уведомлений, а затем выберите **параметры**.  
+2. Выберите **общих дисков** и общий доступ к диску hello, где находится проект hello.
 
 ### <a name="windows-containers"></a>**Контейнеры Windows**
 
-Ниже описываются особенности отладки веб-приложений и консольных приложений .NET Framework в контейнерах Windows.
+Hello следующие вопросы, toodebugging конкретных приложений .NET Framework и веб-консоли в контейнерах Windows.
 
 #### <a name="prerequisites"></a>Предварительные требования
 
-1. Должна быть установлена Visual Studio 2017 RC (или более поздняя версия) с .NET Core и Docker (предварительная версия).
+1. Версия-Кандидат Visual Studio 2017 г. (или более поздней версии) с hello .NET Core и должен быть установлен Docker Предварительный просмотр рабочей нагрузки.
 2. Юбилейное обновление Windows 10 с последними обновлениями и исправлениями для Windows. В частности, должно быть установлено обновление [KB3194798](https://support.microsoft.com/en-us/help/3194798/cumulative-update-for-windows-10-version-1607-and-windows-server-2016-october-11,-2016). 
 3. Должен быть установлен компонент [Docker для Windows](https://docs.docker.com/docker-for-windows/) (сборка 1.13.0 или более поздней версии).
-4. Должен быть выбран параметр **Switch to Windows containers** (Переключение на контейнеры Windows). В области уведомлений щелкните **Docker for Windows** (Docker для Windows) и выберите **Switch to Windows containers** (Переключение на контейнеры Windows). После перезагрузки виртуальной машины убедитесь, что этот параметр остался включенным.
+4. **Переключение контейнеры tooWindows** должен быть выбран. В области уведомлений hello, нажмите кнопку **Docker для Windows**, а затем выберите **переключаться контейнеры tooWindows**. После перезапуска машины hello убедитесь, что данная настройка сохраняется.
 
 #### <a name="console-output-does-not-appear-in-visual-studios-output-window-while-debugging-a-console-application"></a>Вывод консоли не отображается в окне вывода Visual Studio при отладке консольного приложения.
 
-Это известная проблема отладчика Visual Studio (msvsmon.exe), который сейчас не предназначен для такого использования. Поддержка этого сценария, возможно, будет добавлена в будущем выпуске. Для просмотра выходных данных консольного приложения в Visual Studio используйте **Docker: Start Project** (Docker: запустить проект), что эквивалентно операции **Start without Debugging** (Запуск без отладки).
+Это известная проблема с отладчиком Visual Studio hello (msvsmon.exe), которая в настоящее время не предназначена для этого сценария. Поддержка этого сценария, возможно, будет добавлена в будущем выпуске. Вывод toosee hello консольное приложение в Visual Studio, используйте **Docker: запуск проекта**, что равносильно слишком**Запуск без отладки**.
 
-#### <a name="debugging-web-applications-with-the-release-configuration-fails-with-403-forbidden-error"></a>При отладке веб-приложений в конфигурации выпуска возникает ошибка "(403) Запрещено".
+#### <a name="debugging-web-applications-with-hello-release-configuration-fails-with-403-forbidden-error"></a>Отладка веб-приложений с hello выпуска конфигурации происходит сбой с ошибкой (403) запрещено
 
-Чтобы решить эту проблему, откройте файл web.release.config в решении и закомментируйте или удалите приведенные ниже строки.
+toowork решения этой проблемы откройте web.release.config в решении hello и закомментируйте или удалите hello следующие строки:
 
 ```
 <compilation xdt:Transform="RemoveAttributes(debug)" />
@@ -72,17 +72,17 @@ ERROR: for webapplication1  Cannot create container for service webapplication1:
 
 ### <a name="linux-containers"></a>**Контейнеры Linux**
 
-#### <a name="unable-to-validate-volume-mapping"></a>Не удалось проверить сопоставление тома
-Сопоставление тома требуется для доступа к исходному коду и двоичным файлам приложения из папки приложения в контейнере.  Определенные сопоставления томов содержатся в файлах docker-compose.dev.debug.yml и docker-compose.dev.release.yml. Так как файлы изменяются на хост-компьютере, контейнеры отобразят эти изменения в той же структуре папок.
+#### <a name="unable-toovalidate-volume-mapping"></a>Не удается toovalidate тома сопоставления
+Сопоставление том является обязательным tooshare hello исходного кода и двоичные файлы приложения в папке приложения hello в контейнере hello.  Определенные сопоставления томов содержатся в файлах docker-compose.dev.debug.yml и docker-compose.dev.release.yml. Как файлы изменяются на хост-компьютере, контейнеры hello отразить эти изменения в аналогичную структуру папок.
 
-Вот как включить сопоставление тома.
+сопоставление tooenable тома:
 
-1. Щелкните значок **кита** в области уведомлений и выберите **Settings** (Параметры).
+1. Нажмите кнопку **Moby** в области уведомлений hello и выберите **параметры**.
 2. Выберите **Shared Drives** (Общие диски).
-3. Выберите диск, на котором размещен ваш проект, и диск, на котором находится профиль пользователя (%USERPROFILE%).
+3. Выберите hello диск, на котором находится где находится % USERPROFILE % проекта и hello диска.
 4. Нажмите кнопку **Применить**.
 
-Чтобы проверить, работает ли сопоставление тома, выполните повторную сборку или нажмите клавишу F5 в Visual Studio. Или же выполните следующие команды из командной строки.
+tootest исправности тома сопоставленного перестроить и выберите F5 из среды Visual Studio после одного или нескольких дисков были совместно, или запустите hello после кода из командной строки.
 
 > [!NOTE]
 > В этом примере предполагается, что папка Users находится на диске C и что к этому диску предоставлен общий доступ.
@@ -92,20 +92,20 @@ ERROR: for webapplication1  Cannot create container for service webapplication1:
 docker run -it -v /c/Users/Public:/wormhole busybox
 ```
 
-Выполните следующий код в контейнере Linux.
+Запустите следующий код в контейнере Linux hello hello.
 
 ```
 / # ls
 ```
 
-Вы должны увидеть список каталогов из папки Users/Public. Если файлы не отображаются и папка /c/Users/Public не пустая, значит сопоставление тома настроено неправильно.
+Вы увидите список из hello пользователей и общих папок каталогов. Если файлы не отображаются и папка /c/Users/Public не пустая, значит сопоставление тома настроено неправильно.
 
 ```
 bin       etc       proc      sys       usr       wormhole
 dev       home      root      tmp       var
 ```
 
-Перейдите в каталог wormhole, чтобы просмотреть содержимое каталога `/c/Users/Public`:
+Изменить содержимое toohello норки каталога toosee hello объекта hello `/c/Users/Public` каталога:
 
 ```
 / # cd wormhole/
@@ -117,31 +117,31 @@ Documents        Libraries        Pictures
 ```
 
 > [!NOTE]
-> При работе с виртуальными машинами Linux в файловой системе контейнера учитывается регистр.
+> При работе с виртуальными машинами Linux hello контейнера файловая система учитывает регистр.
 
 ## <a name="build-prepareforbuild-task-failed-unexpectedly"></a>Сборка. Непредвиденная ошибка при выполнении задачи PrepareForBuild
 
-Microsoft.DotNet.Docker.CommandLine.ClientException. Произошла ошибка при попытке подключения.
+Microsoft.DotNet.Docker.CommandLine.ClientException: Произошла ошибка при попытке tooconnect.
 
-Убедитесь, что запущен узел Docker по умолчанию. Откройте окно командой строки и выполните следующую команду:
+Убедитесь, что этот узел Docker по умолчанию hello работает. Откройте окно командой строки и выполните следующую команду:
 
 ```
 docker info
 ```
 
-Если команда вернет ошибку, попытайтесь запустить классическое приложение **Docker для Windows** . При запущенном приложении в области уведомлений должен отображаться значок **кита**. Щелкните значок **кита** правой кнопкой мыши и откройте **Settings** (Параметры). Щелкните **Reset** (Сброс) и перезапустите Docker.
+Если возвращается ошибка, будет пытаться toostart hello **Docker для Windows** классического приложения. Если выполняется классического приложения hello, затем **Moby** должны быть видимыми в области уведомлений hello. Щелкните значок **кита** правой кнопкой мыши и откройте **Settings** (Параметры). Щелкните **Reset** (Сброс) и перезапустите Docker.
 
-## <a name="an-error-dialog-occurs-when-attempting-to-add-docker-support-or-debug-f5-an-aspnet-core-application-in-a-container"></a>В контейнере отображается сообщение об ошибке при попытке добавить поддержку Docker или запустить отладку (F5) для приложения ASP.NET Core
+## <a name="an-error-dialog-occurs-when-attempting-tooadd-docker-support-or-debug-f5-an-aspnet-core-application-in-a-container"></a>Окно сообщения об ошибке возникает при попытке tooadd поддержки Docker или отладки приложения ASP.NET Core в контейнере (F5)
 
-Иногда после удаления и установки расширений может повреждаться кэш Visual Studio MEF (Managed Extensibility Framework). В таком случае могут возникать разные сообщения об ошибках при добавлении поддержки Docker и (или) попытке запустить или выполнить отладку (F5) для приложения ASP.NET Core. В качестве временного решения удалите и повторно создайте кэш MEF, используя следующие действия.
+После удаления и установки расширений, могут быть повреждены hello кэша Managed Extensibility Framework (MEF) в Visual Studio. В этом случае можно вызвать различные сообщения об ошибках при добавление поддержки Docker или попытка toorun или отладки приложения ASP.NET Core (F5). Для временного решения проблемы используйте следующие шаги toodelete и повторное создание hello кэш MEF hello.
 
 1. Закройте все экземпляры Visual Studio.
 1. Откройте каталог %USERPROFILE%\AppData\Local\Microsoft\VisualStudio\14.0\.
-1. Удалите следующие папки:
+1. Удалите hello следующие папки:
      ```
        ComponentModelCache
        Extensions
        MEFCacheBackup
     ```
 1. Откройте Visual Studio.
-1. Запустите сценарий снова.
+1. Сценарий hello повторите попытку.

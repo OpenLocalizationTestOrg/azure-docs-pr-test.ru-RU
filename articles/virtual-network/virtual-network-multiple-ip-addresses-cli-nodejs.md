@@ -1,6 +1,6 @@
 ---
-title: "Виртуальная машина с несколькими сетевыми картами (Azure CLI 1.0) | Документация Майкрософт"
-description: "Назначение виртуальной машине нескольких IP-адресов с помощью Azure CLI 1.0 | Resource Manager"
+title: "aaaVM несколько IP-адресов с помощью Azure CLI 1.0 hello | Документы Microsoft"
+description: "Узнайте, как tooassign несколько IP-адресов tooa виртуальную машину с помощью Azure CLI 1.0 \"hello\" | Диспетчер ресурсов."
 services: virtual-network
 documentationcenter: na
 author: anavinahar
@@ -15,25 +15,25 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/17/2016
 ms.author: annahar
-ms.openlocfilehash: 9f085dfa1fe4db36d58cb976bb550a46bf241ac7
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 83ad48e67309fb21d5aca967d4f2c01afdc0b5cc
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="assign-multiple-ip-addresses-to-virtual-machines-using-azure-cli-10"></a>Назначение виртуальным машинам нескольких IP-адресов с помощью Azure CLI 1.0
+# <a name="assign-multiple-ip-addresses-toovirtual-machines-using-azure-cli-10"></a>Назначить несколько IP-адресов с помощью Azure CLI 1.0 машины toovirtual
 
 [!INCLUDE [virtual-network-multiple-ip-addresses-intro.md](../../includes/virtual-network-multiple-ip-addresses-intro.md)]
 
-В этой статье описывается создание виртуальной машины с помощью модели развертывания Azure Resource Manager с использованием Azure CLI 1.0. Для ресурсов, созданных с помощью классической модели развертывания, нельзя назначить несколько IP-адресов. Дополнительные сведения о моделях развертывания Azure см. в статье [Azure Resource Manager vs. classic deployment: Understand deployment models and the state of your resources](../resource-manager-deployment-model.md) (Развертывание с помощью Azure Resource Manager и классическое развертывание. Общие сведения о моделях развертывания и состоянии ресурсов).
+В этой статье объясняется, как toocreate виртуальной машины (VM) с помощью hello Azure Resource Manager развертывания модели с помощью hello Azure CLI 1.0. Несколько IP-адресов нельзя назначить tooresources, созданные с помощью hello классической модели развертывания. Дополнительные сведения о моделях развертывания Azure, чтение hello toolearn [понять модели развертывания](../resource-manager-deployment-model.md) статьи.
 
 [!INCLUDE [virtual-network-multiple-ip-addresses-template-scenario.md](../../includes/virtual-network-multiple-ip-addresses-scenario.md)]
 
 ## <a name = "create"></a>Создание виртуальной машины с несколькими IP-адресами
 
-Эту задачу можно выполнить с помощью Azure CLI 1.0 (в этой статье) или [Azure CLI 2.0](virtual-network-multiple-ip-addresses-cli.md). Вы можете создать пример виртуальной машины с несколькими IP-адресами, как описано в нашем сценарии. Измените имена переменных и типы IP-адресов в соответствии с требованиями этой реализации.
+Выполнить эту задачу с помощью hello Azure CLI 1.0 (Эта статья) или hello [Azure CLI 2.0](virtual-network-multiple-ip-addresses-cli.md). Привет, описанных ниже объясняется, как toocreate пример виртуальной Машины с несколькими IP-адресов, как описано в сценарии hello. Измените имена переменных и типы IP-адресов в соответствии с требованиями этой реализации.
 
-1. Установите и настройте Azure CLI 1.0, следуя инструкциям из [этой статьи](../cli-install-nodejs.md?toc=%2fazure%2fvirtual-network%2ftoc.json), а затем войдите в учетную запись Azure, выполнив команду `azure-login`.
+1. Установка и настройка hello Azure CLI 1.0 с hello следующие шаги в hello [Установка и настройка hello Azure CLI](../cli-install-nodejs.md?toc=%2fazure%2fvirtual-network%2ftoc.json) статью и войдите в учетную запись Azure с hello `azure-login` команды.
 
 2. Создайте группу ресурсов:
     
@@ -48,30 +48,30 @@ ms.lasthandoff: 07/11/2017
     azure network vnet create --resource-group $RgName --location $Location --name myVNet \
     --address-prefixes 10.0.0.0/16
     ```
-4. Создайте подсеть в виртуальной сети:
+4. Создание подсети в виртуальной сети hello:
 
     ```azurecli
     azure network vnet subnet create --name mySubnet --resource-group $RgName --vnet-name myVNet \
     --address-prefix 10.0.0.0/24
     ```
     
-5. Создайте учетную запись хранения для виртуальной машины. Перед выполнением следующей команды замените *mystorageaccount* на уникальное имя. Это имя должно быть уникальным в Azure.
+5. Создайте учетную запись хранилища для hello виртуальной Машины. Перед запуском hello следующую команду, замените *mystorageaccount* с уникальным именем. Hello имя должно быть уникальным в пределах Azure:
 
     ```azurecli
     az storage account create --resource-group $RgName --location $Location --name mystorageaccount \
     --kind Storage --sku Standard_LRS
     ```
 
-6. Создайте конфигурации IP, сетевую карту и присвойте конфигурации IP сетевой карте. Конфигурации можно добавлять, удалять или изменять по мере необходимости. В сценарии описаны следующие конфигурации.
+6. Создайте hello IP-конфигурации, сетевой Адаптер и назначьте hello IP конфигураций toohello сетевого адаптера. Можно добавить, удалить или изменить hello конфигурации при необходимости. Hello конфигурации описаны в сценарии hello:
 
     **IPConfig-1**
 
-    Выполните указанные ниже команды, чтобы создать:
+    Введите команды hello, следующие за toocreate:
 
     - ресурс общедоступного IP-адреса с общедоступным статическим IP-адресом;
-    - сетевую карту, назначив ей общедоступный IP-адрес и статический частный IP-адрес.
+    - Сетевой Адаптер, назначение hello общедоступный IP-адрес и статические tooit частного IP-адрес.
     
-    Замените *mypublicdns* именем, которое является уникальным в пределах расположения Azure.
+    Замените *mypublicdns* с именем, которое является уникальным в пределах hello расположение Azure.
 
       ```azurecli
       azure network public-ip create --resource-group $RgName --location $Location --name myPublicIP1 \
@@ -83,11 +83,11 @@ ms.lasthandoff: 07/11/2017
       ```
 
       > [!NOTE]
-      > За общедоступные IP-адреса взимается номинальная плата. Дополнительные сведения о ценах на IP-адреса см. на странице [Цены на IP-адреса](https://azure.microsoft.com/pricing/details/ip-addresses). Число общедоступных IP-адресов, которые можно использовать в одной подписке, ограничено. Сведения об ограничениях см. в статье [Подписка Azure, границы, квоты и ограничения службы](../azure-subscription-service-limits.md#networking-limits).
+      > За общедоступные IP-адреса взимается номинальная плата. Дополнительные сведения о IP-адресов цен, toolearn чтения hello [цены IP адрес](https://azure.microsoft.com/pricing/details/ip-addresses) страницы. Нет toohello предельное число общих IP-адресов, которые могут использоваться в подписке. Дополнительные об ограничениях hello, чтение hello toolearn [Azure ограничивает](../azure-subscription-service-limits.md#networking-limits) статьи.
 
     **IPConfig-2**
 
-     Выполните следующие команды, чтобы создать ресурс общедоступного IP-адреса и IP-конфигурацию с общедоступным статическим IP-адресом и частным статическим IP-адресом.
+     Введите следующие команды toocreate hello ресурс открытый IP-адреса и новой конфигурации IP с статический общедоступный IP-адрес и статический частный IP-адрес:
     
       ```azurecli
       azure network public-ip create --resource-group $RgName --location $Location --name myPublicIP2
@@ -99,7 +99,7 @@ ms.lasthandoff: 07/11/2017
 
     **IPConfig-3**
 
-    Выполните следующие команды, чтобы создать конфигурацию IP с частным статическим IP-адресом без общедоступного IP-адреса:
+    Введите следующие команды toocreate IP-адрес с статический частный IP-адрес и не общедоступный IP-адрес hello:
 
       ```azurecli
       azure network nic ip-config create --resource-group $RgName --nic-name myNic1 --private-ip-address 10.0.0.6 \
@@ -107,7 +107,7 @@ ms.lasthandoff: 07/11/2017
       ```
 
     >[!NOTE] 
-    >Хотя в этом руководстве все IP-конфигурации назначаются одному сетевому адаптеру, вы также можете назначить несколько IP-конфигураций любому сетевому адаптеру, связанному с виртуальной машиной. Изучите статью о создании виртуальной машины с несколькими сетевыми адаптерами.
+    >Хотя в данной статье назначает все tooa IP-конфигурации один сетевой Адаптер, также можно назначить несколько tooany конфигурации IP сетевого Адаптера на виртуальной машине. toolearn как прочитано виртуальной Машины с несколькими сетевыми картами toocreate hello Создание виртуальной Машины с помощью нескольких сетевых адаптеров в статье.
 
 7. Создание виртуальной машины Linux 
 
@@ -116,26 +116,26 @@ ms.lasthandoff: 07/11/2017
     --image UbuntuLTS --ssh-key-value ~/.ssh/id_rsa.pub --admin-username azureuser
     ```
 
-    Например, чтобы использовать размер виртуальной машины Standard DS2 v2, просто добавьте свойство `--vm-size Standard_DS3_v2` в команду `azure vm create` на шаге 6.
+    toochange hello v2 tooStandard DS2 размер виртуальной Машины, например, просто добавьте следующие свойства hello `--vm-size Standard_DS3_v2` toohello `azure vm create` команду на шаге 6.
 
-8. Введите следующую команду, чтобы просмотреть свойства сетевого адаптера и связанных с ним IP-конфигураций:
+8. Введите следующая команда tooview hello Сетевых hello и hello связанные IP-конфигурации:
 
     ```azurecli
     azure network nic show --resource-group $RgName --name myNic1
     ```
-9. Добавьте в операционную систему виртуальной машины частные IP-адреса, выполнив действия, соответствующие вашей операционной системе, как описано в разделе [Добавление IP-адресов в операционную систему виртуальной машины](#os-config) этой статьи.
+9. Добавить hello частного IP адресов toohello ВМ операционной системы, выполнив шаги hello для вашей операционной системы в hello [добавить IP-адресов операционной системы виртуальной Машины tooa](#os-config) этой статьи.
 
-## <a name="add"></a>Добавление IP-адресов в виртуальную машину
+## <a name="add"></a>Добавьте IP адресов tooa виртуальной Машины
 
-Выполнив следующие шаги, вы сможете назначить дополнительные частные или общедоступные IP-адреса существующим сетевым адаптерам. Примеры созданы на основе [сценария](#Scenario), описанного в этой статье.
+Можно добавить дополнительные частных и общедоступных IP адресов tooan существующего сетевого Адаптера, выполнив hello, описанных ниже. Hello примеры созданы на основе hello [сценарий](#Scenario) описано в этой статье.
 
-1. Откройте интерфейс командной строки Azure и выполните в рамках одного сеанса командной строки все действия, описанные в этом разделе. Если интерфейс командной строки Azure еще не установлен, выполните инструкции из статьи [Установка Azure CLI](../cli-install-nodejs.md?toc=%2fazure%2fvirtual-network%2ftoc.json), а затем войдите в учетную запись Azure.
+1. Откройте Azure CLI и завершения hello, оставшиеся шаги в этом разделе в одном сеансе CLI. Если у вас еще нет Azure CLI установлен и настроен, hello завершения шагов в hello [Установка и настройка hello Azure CLI](../cli-install-nodejs.md?toc=%2fazure%2fvirtual-network%2ftoc.json) статью и войдите в учетную запись Azure.
 
-2. Выполните действия, описанные в одном из следующих разделов, с учетом задач.
+2. Выполните действия hello в одном из следующих разделах, в зависимости от требований hello.
 
     - **Добавление частного IP-адреса**
     
-        Чтобы назначить сетевому адаптеру частный IP-адрес, создайте IP-конфигурацию с помощью следующей команды. Статический адрес должен быть свободен в используемой подсети.
+        tooadd закрытый tooa адрес IP сетевого Адаптера, необходимо создать IP-конфигурации, с помощью следующей команды hello. Hello статический адрес должен быть неиспользуемый адрес для подсети hello.
 
         ```azurecli
         azure network nic ip-config create --resource-group myResourceGroup --nic-name myNic1 \
@@ -145,37 +145,37 @@ ms.lasthandoff: 07/11/2017
 
     - **Добавление общедоступного IP-адреса**
     
-        Чтобы добавить общедоступный IP-адрес, его нужно связать с новой или имеющейся IP-конфигурацией. Выполните шаги, описанные в одном из следующих разделов, в соответствии с задачами.
+        Общедоступный IP-адрес будет добавлен, связав ее tooeither новой конфигурации IP или существующей конфигурации IP. Этапы hello в одном hello следующих разделах, сколько требуется.
 
         > [!NOTE]
-        > За общедоступные IP-адреса взимается номинальная плата. Дополнительные сведения о ценах на IP-адреса см. на странице [Цены на IP-адреса](https://azure.microsoft.com/pricing/details/ip-addresses). Число общедоступных IP-адресов, которые можно использовать в одной подписке, ограничено. Сведения об ограничениях см. в статье [Подписка Azure, границы, квоты и ограничения службы](../azure-subscription-service-limits.md#networking-limits).
+        > За общедоступные IP-адреса взимается номинальная плата. Дополнительные сведения о IP-адресов цен, toolearn чтения hello [цены IP адрес](https://azure.microsoft.com/pricing/details/ip-addresses) страницы. Нет toohello предельное число общих IP-адресов, которые могут использоваться в подписке. Дополнительные об ограничениях hello, чтение hello toolearn [Azure ограничивает](../azure-subscription-service-limits.md#networking-limits) статьи.
         >
 
-        **Связывание ресурса с новой IP-конфигурацией**
+        **Связать новую конфигурацию IP hello ресурсов tooa**
     
-        Чтобы добавить общедоступный IP-адрес в новую IP-конфигурацию, необходимо добавить и частный IP-адрес, так как все IP-конфигурации должны иметь частный IP-адрес. В конфигурацию можно добавить имеющийся ресурс общедоступного IP-адреса или создать новый. Чтобы создать ресурс, выполните следующую команду:
+        Чтобы добавить общедоступный IP-адрес в новую IP-конфигурацию, необходимо добавить и частный IP-адрес, так как все IP-конфигурации должны иметь частный IP-адрес. В конфигурацию можно добавить имеющийся ресурс общедоступного IP-адреса или создать новый. toocreate новый, введите следующую команду hello:
 
         ```azurecli
         azure network public-ip create --resource-group myResourceGroup --location westcentralus --name myPublicIP3 \
         --domain-name-label mypublicdns3
         ```
 
-        Чтобы создать новую конфигурацию IP с частным статическим IP-адресом и связанным ресурсом общедоступного IP-адреса *myPublicIP3*, введите следующую команду:
+        toocreate новой конфигурации IP с статический частный IP-адрес и связанные hello *myPublicIP3* общедоступный IP-адрес адрес ресурса, введите следующую команду hello:
 
         ```azurecli
         azure network nic ip-config create --resource-group myResourceGroup --nic-name myNic --name IPConfig-4 \
         --private-ip-address 10.0.0.8 --public-ip-name myPublicIP3
         ```
 
-        **Связывание ресурса с существующей IP-конфигурацией**
+        **Связать существующую конфигурацию IP hello ресурсов tooan**
 
-        Ресурс общедоступного IP-адреса может быть связан только с такой IP-конфигурацией, у которой еще нет такого ресурса. Чтобы определить, связан ли с конкретной IP-конфигурацией какой-либо общедоступный IP-адрес, выполните следующую команду:
+        Открытый ресурс IP-адреса можно только связанные tooan IP-конфигурации, уже не связан. Можно определить, имеет ли связанный общий IP-адрес IP-адрес, введя следующую команду hello.
 
         ```azurecli
         azure network nic ip-config list --resource-group myResourceGroup --nic-name myNic1
         ```
 
-        Найдите в возвращаемых данных строку, похожую на приведенную ниже для IPConfig-3.
+        Поиск строки аналогично toohello, том, что следует для IPConfig 3 в hello, возвращаемые выходные данные:
 
         ```         
         Name               Provisioning state  Primary  Private IP allocation Private IP version  Private IP address  Subnet    Public IP
@@ -184,26 +184,26 @@ ms.lasthandoff: 07/11/2017
         IPConfig-3         Succeeded           false    Static                IPv4                10.0.0.6            mySubnet
         ```
           
-        Столбец **Общедоступный IP-адрес** для IP-конфигурации *IpConfig-3* пуст. Это означает, что сейчас с этой конфигурацией общедоступные IP-адреса не связаны. Вы можете добавить к конфигурации IpConfig-3 имеющийся ресурс общедоступного IP-адреса или создать новый ресурс, выполнив следующую команду:
+        С момента hello **общедоступный IP-адрес** столбца для *IpConfig 3* является пустым, не открытого ресурса IP-адреса является в настоящее время связаны tooit. Можно добавить существующие открытый IP адрес ресурса tooIpConfig-3, или введите hello, следующая команда toocreate один:
 
         ```azurecli
         azure network public-ip create --resource-group  myResourceGroup --location westcentralus \
         --name myPublicIP3 --domain-name-label mypublicdns3 --allocation-method Static
         ```
 
-        Чтобы связать ресурс общедоступного IP-адреса с имеющейся IP-конфигурацией с именем *IPConfig-3*, выполните следующую команду:
+        Введите следующую команду, общедоступный IP-адрес tooassociate hello адресов toohello существующие IP конфигурации ресурса с именем hello *IPConfig 3*:
         ```azurecli
         azure network nic ip-config set --resource-group myResourceGroup --nic-name myNic1 --name IPConfig-3 \
         --public-ip-name myPublicIP3
         ```
 
-3. Просмотрите частные IP адреса и ресурсы общедоступных IP-адресов, назначенные сетевому адаптеру. Для этого введите следующую команду.
+3. Просмотр hello частных IP-адресов и hello открытый IP адрес ресурсы назначенного toohello hello сетевого Адаптера, введя следующую команду:
 
     ```azurecli
     azure network nic ip-config list --resource-group myResourceGroup --nic-name myNic1
     ```
 
-      Выходные данные аналогичны приведенным ниже.
+      Hello возвращено выходные данные выглядят аналогично toohello следующее:
       ```
       Name               Provisioning state  Primary  Private IP allocation Private IP version  Private IP address  Subnet    Public IP
         
@@ -211,6 +211,6 @@ ms.lasthandoff: 07/11/2017
       IPConfig-2         Succeeded           false    Static                IPv4                10.0.0.5            mySubnet  myPublicIP2
       IPConfig-3         Succeeded           false    Static                IPv4                10.0.0.6            mySubnet  myPublicIP3
       ```
-4. Добавьте в операционную систему виртуальной машины частные IP-адреса, которые вы ранее назначили сетевой карте. Для этого выполните инструкции из раздела [Добавление IP-адресов в операционную систему виртуальной машины](#os-config) этой статьи. Не добавляйте в операционную систему общедоступные IP-адреса.
+4. Добавить hello частных IP-адресов вы добавили операционной системы ВМ toohello toohello сетевой Адаптер, следуя инструкциям hello hello [добавить IP-адресов операционной системы виртуальной Машины tooa](#os-config) этой статьи. Не добавляйте hello открытый IP адресов toohello операционной системы.
 
 [!INCLUDE [virtual-network-multiple-ip-addresses-os-config.md](../../includes/virtual-network-multiple-ip-addresses-os-config.md)]

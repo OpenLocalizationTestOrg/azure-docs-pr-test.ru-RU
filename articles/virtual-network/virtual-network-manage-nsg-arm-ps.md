@@ -1,6 +1,6 @@
 ---
-title: "Управление группами безопасности сети с помощью Azure PowerShell | Документация Майкрософт"
-description: "Узнайте, как управлять группами безопасности сети с помощью PowerShell."
+title: "aaaManage сетевых групп безопасности - Azure PowerShell | Документы Microsoft"
+description: "Узнайте, как toomanage сетевых групп безопасности, с помощью PowerShell."
 services: virtual-network
 documentationcenter: na
 author: jimdial
@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 03/14/2016
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ca7f4926ca4edf9d20612aca74f6ae5f0ed847b3
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 930fe5e0827896ad67b24d84e41a5d3f898ba838
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="manage-network-security-groups-using-powershell"></a>Управление группами безопасности сети с помощью PowerShell
 
@@ -29,7 +29,7 @@ ms.lasthandoff: 07/11/2017
 [!INCLUDE [virtual-network-manage-nsg-intro-include.md](../../includes/virtual-network-manage-nsg-intro-include.md)]
 
 > [!NOTE]
-> В Azure предлагаются две модели развертывания для создания ресурсов и работы с ними: [модель Resource Manager и классическая модель](../resource-manager-deployment-model.md). В этой статье описывается использование модели развертывания c помощью Resource Manager. Для большинства новых развертываний мы рекомендуем использовать эту модель вместо классической.
+> В Azure предлагаются две модели развертывания для создания ресурсов и работы с ними: [модель Resource Manager и классическая модель](../resource-manager-deployment-model.md). В этой статье описан с помощью модели развертывания диспетчера ресурсов hello, который рекомендуется в большинстве случаев новый вместо hello классической модели развертывания.
 >
 
 [!INCLUDE [virtual-network-manage-nsg-arm-scenario-include.md](../../includes/virtual-network-manage-nsg-arm-scenario-include.md)]
@@ -40,7 +40,7 @@ ms.lasthandoff: 07/11/2017
 Вы можете просмотреть существующие группы безопасности сети, получить правила для существующей группы и узнать, с какими ресурсами она связана.
 
 ### <a name="view-existing-nsgs"></a>Просмотр существующих групп безопасности сети
-Чтобы просмотреть все существующие группы безопасности сети в подписке, выполните командлет `Get-AzureRmNetworkSecurityGroup`.
+tooview все существующие Nsg в подписке, запустите hello `Get-AzureRmNetworkSecurityGroup` командлета.
 
 Ожидаемый результат:
 
@@ -87,7 +87,7 @@ ms.lasthandoff: 07/11/2017
     Subnets              : [...]
 
 
-Чтобы просмотреть список групп безопасности сети в определенной группе ресурсов, выполните командлет `Get-AzureRmNetworkSecurityGroup`.
+tooview списка Nsg hello в определенной группе ресурсов, запустите hello `Get-AzureRmNetworkSecurityGroup` командлета.
 
 Ожидаемые выходные данные:
 
@@ -120,7 +120,7 @@ ms.lasthandoff: 07/11/2017
     Subnets              : [...]
 
 ### <a name="list-all-rules-for-an-nsg"></a>Перечисление всех правил для группы безопасности сети
-Чтобы просмотреть правила группы безопасности сети с именем **NSG-FrontEnd**, введите следующую команду:
+tooview hello правила NSG с именем **NSG-FrontEnd**, введите следующую команду hello:
 
 ```powershell
 Get-AzureRmNetworkSecurityGroup -ResourceGroupName RG-NSG -Name NSG-FrontEnd | Select SecurityRules -ExpandProperty SecurityRules
@@ -157,17 +157,17 @@ Get-AzureRmNetworkSecurityGroup -ResourceGroupName RG-NSG -Name NSG-FrontEnd | S
     Direction                : Inbound
 
 > [!NOTE]
-> Можно также использовать `Get-AzureRmNetworkSecurityGroup -ResourceGroupName RG-NSG -Name "NSG-FrontEnd" | Select DefaultSecurityRules -ExpandProperty DefaultSecurityRules` для получения списка правил по умолчанию из группы безопасности сети **NSG-FrontEnd**.
+> Можно также использовать `Get-AzureRmNetworkSecurityGroup -ResourceGroupName RG-NSG -Name "NSG-FrontEnd" | Select DefaultSecurityRules -ExpandProperty DefaultSecurityRules` toolist правила по умолчанию hello из hello **NSG-FrontEnd** NSG.
 > 
 
 ### <a name="view-nsgs-associations"></a>Просмотр связей для группы безопасности сети
-Чтобы просмотреть, к каким ресурсам привязана группа безопасности сети **NSG-FrontEnd**, выполните следующую команду:
+tooview какие ресурсы hello **NSG-FrontEnd** NSG — связан с, запустите hello следующую команду:
 
 ```powershell
 Get-AzureRmNetworkSecurityGroup -ResourceGroupName RG-NSG -Name NSG-FrontEnd
 ```
 
-Найдите свойства **NetworkInterfaces** и **Subnets**, как показано ниже.
+Найдите hello **сетевых интерфейсов** и **подсети** свойства, как показано ниже:
 
     NetworkInterfaces    : []
     Subnets              : [
@@ -177,21 +177,21 @@ Get-AzureRmNetworkSecurityGroup -ResourceGroupName RG-NSG -Name NSG-FrontEnd
                              }
                            ]
 
-В предыдущем примере группа безопасности сети не привязана к сетевым интерфейсам, но связана с подсетью **FrontEnd**.
+В предыдущем примере hello hello NSG не связан tooany сетевых интерфейсов (NIC); Это связанный tooa подсеть с именем **переднего плана**.
 
 ## <a name="manage-rules"></a>Управление правилами
-Можно добавлять правила для существующей группы безопасности сети, изменять существующие правила и удалять их.
+Добавление существующей NSG tooan правила, изменять существующие правила и удалять правила.
 
 ### <a name="add-a-rule"></a>Добавление правила
-Чтобы добавить правило, разрешающее **входящий** трафик через порт **443** с любого компьютера в группу безопасности сети **NSG-FrontEnd**, выполните следующие действия:
+tooadd правила, что позволяет **входящих** tooport трафика **443** с любого компьютера toohello **NSG-FrontEnd** NSG завершения hello, следующие шаги:
 
-1. Чтобы получить существующую группу безопасности сети и сохранить ее в переменной, выполните следующую команду:
+1. Выполните hello, следующая команда tooretrieve hello существующей NSG и сохранить его в переменной.
 
     ```powershell   
     $nsg = Get-AzureRmNetworkSecurityGroup -ResourceGroupName RG-NSG -Name NSG-FrontEnd
     ```
 
-2. Чтобы добавить правило к группе безопасности сети, выполните следующую команду:
+2. Выполните следующие команды tooadd hello toohello правила NSG:
 
     ```powershell
     Add-AzureRmNetworkSecurityRuleConfig -NetworkSecurityGroup $nsg `
@@ -207,12 +207,12 @@ Get-AzureRmNetworkSecurityGroup -ResourceGroupName RG-NSG -Name NSG-FrontEnd
     -DestinationPortRange 443
     ```
 
-3. Чтобы сохранить изменения в группе безопасности сети, выполните следующую команду:
+3. Запустите следующую команду hello toohello NSG, внесены изменения toosave hello.
 
     ```powershell
     Set-AzureRmNetworkSecurityGroup -NetworkSecurityGroup $nsg
     ```
-    Ожидаемый результат, показаны только правила безопасности:
+    Отображение только hello правила безопасности ожидаемый результат:
    
         Name                 : NSG-FrontEnd
         ...
@@ -243,15 +243,15 @@ Get-AzureRmNetworkSecurityGroup -ResourceGroupName RG-NSG -Name NSG-FrontEnd
                                ]
 
 ### <a name="change-a-rule"></a>Изменение правила
-Чтобы изменить ранее созданное правило, разрешающее входящий трафик только из **Интернета** , выполните шаги ниже.
+правило toochange hello, созданной ранее tooallow входящий трафик от hello **Internet** , выполните следующие шаги hello.
 
-1. Чтобы получить существующую группу безопасности сети и сохранить ее в переменной, выполните следующую команду:
+1. Выполните hello, следующая команда tooretrieve hello существующей NSG и сохранить его в переменной.
 
     ```powershell 
     $nsg = Get-AzureRmNetworkSecurityGroup -ResourceGroupName RG-NSG -Name NSG-FrontEnd
     ```
 
-2. Выполните следующую команду с новыми параметрами правила:
+2. Выполните следующую команду с новыми настройками правило hello hello.
 
     ```powershell
     Set-AzureRmNetworkSecurityRuleConfig -NetworkSecurityGroup $nsg `
@@ -267,13 +267,13 @@ Get-AzureRmNetworkSecurityGroup -ResourceGroupName RG-NSG -Name NSG-FrontEnd
     -DestinationPortRange 443
     ```
 
-3. Чтобы сохранить изменения в группе безопасности сети, выполните следующую команду:
+3. Запустите следующую команду hello toohello NSG, внесены изменения toosave hello.
 
     ```powershell
     Set-AzureRmNetworkSecurityGroup -NetworkSecurityGroup $nsg
     ```
 
-    Ожидаемый результат, показаны только правила безопасности:
+    Отображение только hello правила безопасности ожидаемый результат:
    
         Name                 : NSG-FrontEnd
         ...
@@ -304,25 +304,25 @@ Get-AzureRmNetworkSecurityGroup -ResourceGroupName RG-NSG -Name NSG-FrontEnd
                                ]
 
 ### <a name="delete-a-rule"></a>Удаление правила
-1. Чтобы получить существующую группу безопасности сети и сохранить ее в переменной, выполните следующую команду:
+1. Выполните hello, следующая команда tooretrieve hello существующей NSG и сохранить его в переменной.
 
     ```powershell
     $nsg = Get-AzureRmNetworkSecurityGroup -ResourceGroupName RG-NSG -Name NSG-FrontEnd
     ```
 
-2. Чтобы удалить правило из группы безопасности сети, выполните следующую команду:
+2. Выполните следующую команду tooremove hello правила из hello NSG hello.
 
     ```powershell
     Remove-AzureRmNetworkSecurityRuleConfig -NetworkSecurityGroup $nsg -Name https-rule
     ```
 
-3. Чтобы сохранить изменения в группе безопасности сети, выполните следующую команду:
+3. Сохраните изменения, внесенные hello toohello NSG, выполнив следующую команду hello:
 
     ```powershell
     Set-AzureRmNetworkSecurityGroup -NetworkSecurityGroup $nsg
     ```
 
-    Ожидаемый результат, показаны только правила безопасности. Обратите внимание, что **https-rule** больше не отображается.
+    Ожидаемый результат, отображаются только hello правил безопасности, уведомление hello **https правило** больше не отображается:
    
         Name                 : NSG-FrontEnd
         ...
@@ -338,36 +338,36 @@ Get-AzureRmNetworkSecurityGroup -ResourceGroupName RG-NSG -Name NSG-FrontEnd
                                ]
 
 ## <a name="manage-associations"></a>Управление связями
-Группу безопасности сети можно связать с сетевыми адаптерами и подсетями. Можно также отменить связь группы безопасности сети с любым ресурсом.
+Можно связать NSG toosubnets и сетевых адаптеров. Можно также отменить связь группы безопасности сети с любым ресурсом.
 
-### <a name="associate-an-nsg-to-a-nic"></a>Связывание группы безопасности сети с сетевым адаптером
-Чтобы привязать группу безопасности сети **NSG-FrontEnd** к сетевому интерфейсу **TestNICWeb1**, выполните следующие действия:
+### <a name="associate-an-nsg-tooa-nic"></a>Связывание NSG tooa сетевого Адаптера
+tooassociate hello **NSG-FrontEnd** NSG toohello **TestNICWeb1** сетевого Адаптера, полный hello, следующие шаги:
 
-1. Чтобы получить существующую группу безопасности сети и сохранить ее в переменной, выполните следующую команду:
+1. Выполните hello, следующая команда tooretrieve hello существующей NSG и сохранить его в переменной.
 
     ```powershell
     $nsg = Get-AzureRmNetworkSecurityGroup -ResourceGroupName RG-NSG -Name NSG-FrontEnd
     ```
 
-2. Чтобы получить сетевой интерфейс и сохранить его в переменной, выполните следующую команду:
+2. Выполните hello, следующая команда tooretrieve hello существующего сетевого Адаптера и сохранить его в переменной.
 
     ```powershell
     $nic = Get-AzureRmNetworkInterface -ResourceGroupName RG-NSG -Name TestNICWeb1
     ```
 
-3. Задайте для свойства **NetworkSecurityGroup** переменной **NIC** значение переменной **NSG** с помощью следующей команды:
+3. Набор hello **NetworkSecurityGroup** свойство hello **Сетевых** значение переменной toohello hello **NSG** переменных, введя следующую команду hello:
 
     ```powershell
     $nic.NetworkSecurityGroup = $nsg
     ```
 
-4. Чтобы сохранить изменения в сетевом интерфейсе, выполните следующую команду:
+4. toohello сетевого Адаптера, запустите следующую команду hello внесены изменения toosave hello.
 
     ```powershell
     Set-AzureRmNetworkInterface -NetworkInterface $nic
     ```
    
-    Ожидаемый результат, показано только свойство **NetworkSecurityGroup** :
+    Ожидаемый результат отображение только hello **NetworkSecurityGroup** свойства:
    
         NetworkSecurityGroup : {
                                  "SecurityRules": [],
@@ -378,58 +378,58 @@ Get-AzureRmNetworkSecurityGroup -ResourceGroupName RG-NSG -Name NSG-FrontEnd
                                }
 
 ### <a name="dissociate-an-nsg-from-a-nic"></a>Отмена связи с сетевым адаптером для группы безопасности сети
-Чтобы отменить связь группы безопасности сети **NSG-FrontEnd** с сетевым интерфейсом **TestNICWeb1**, выполните следующие действия:
+toodissociate hello **NSG-FrontEnd** NSG из hello **TestNICWeb1** сетевого Адаптера, полный hello, следующие шаги:
 
-1. Чтобы получить сетевой интерфейс и сохранить его в переменной, выполните следующую команду:
+1. Выполните hello, следующая команда tooretrieve hello существующего сетевого Адаптера и сохранить его в переменной.
 
     ```powershell
     $nic = Get-AzureRmNetworkInterface -ResourceGroupName RG-NSG -Name TestNICWeb1
     ```
 
-2. Задайте для свойства **NetworkSecurityGroup** переменной **NIC** значение **$null** с помощью следующей команды:
+2. Набор hello **NetworkSecurityGroup** свойство hello **Сетевых** переменной слишком**$null** , выполнив следующую команду hello:
 
     ```powershell
     $nic.NetworkSecurityGroup = $null
     ```
 
-3. Чтобы сохранить изменения в сетевом интерфейсе, выполните следующую команду:
+3. toohello сетевого Адаптера, запустите следующую команду hello внесены изменения toosave hello.
 
     ```powershell
     Set-AzureRmNetworkInterface -NetworkInterface $nic
     ```
    
-    Ожидаемый результат, показано только свойство **NetworkSecurityGroup** :
+    Ожидаемый результат отображение только hello **NetworkSecurityGroup** свойства:
    
         NetworkSecurityGroup : null
 
 ### <a name="dissociate-an-nsg-from-a-subnet"></a>Отмена связи с подсетью для группы безопасности сети
-Чтобы отменить связь группы безопасности сети **NSG-FrontEnd** с подсетью **FrontEnd**, выполните следующие действия:
+toodissociate hello **NSG-FrontEnd** NSG из hello **переднего плана** подсети, полный hello, следующие шаги:
 
-1. Чтобы получить существующую виртуальную сеть и сохранить ее в переменной, выполните следующую команду:
+1. Выполните hello, следующая команда tooretrieve hello существующей виртуальной сети и сохранить его в переменной.
 
     ```powershell
     $vnet = Get-AzureRmVirtualNetwork -ResourceGroupName RG-NSG -Name TestVNet
     ```
 
-2. Чтобы получить подсеть **FrontEnd** и сохранить ее в переменной, выполните следующую команду:
+2. Выполнения hello следующие команда hello tooretrieve **переднего плана** подсети и сохранить его в переменной:
 
     ```powershell
     $subnet = Get-AzureRmVirtualNetworkSubnetConfig -VirtualNetwork $vnet -Name FrontEnd
     ```
  
-3. Задайте для свойства **NetworkSecurityGroup** переменной **subnet** значение **$null** с помощью следующей команды:
+3. Набор hello **NetworkSecurityGroup** свойство hello **подсети** переменной слишком**$null** , введя hello следующую команду:
 
     ```powershell
     $subnet.NetworkSecurityGroup = $null
     ```
 
-4. Чтобы сохранить изменения в подсети, выполните следующую команду:
+4. toohello подсети, запустите следующую команду hello внесены изменения toosave hello.
 
     ```powershell
     Set-AzureRmVirtualNetwork -VirtualNetwork $vnet
     ```
 
-    Ожидаемый результат, показаны только свойства подсети **FrontEnd** . Обратите внимание, что свойства **NetworkSecurityGroup**нет:
+    Ожидаемый результат, отображаются только hello свойств hello **переднего плана** подсети. Обратите внимание, что свойства **NetworkSecurityGroup**нет:
    
             ...
             Subnets           : [
@@ -451,40 +451,40 @@ Get-AzureRmNetworkSecurityGroup -ResourceGroupName RG-NSG -Name NSG-FrontEnd
                                     ...
                                 ]
 
-### <a name="associate-an-nsg-to-a-subnet"></a>Связывание группы NSG с подсетью
-Чтобы привязать группу безопасности сети **NSG-FrontEnd** к подсети **FronEnd** снова, выполните следующие действия:
+### <a name="associate-an-nsg-tooa-subnet"></a>Связывание NSG tooa подсети
+tooassociate hello **NSG-FrontEnd** NSG toohello **FronEnd** снова подсети, полный hello, следующие шаги:
 
-1. Чтобы получить существующую виртуальную сеть и сохранить ее в переменной, выполните следующую команду:
+1. Выполните hello, следующая команда tooretrieve hello существующей виртуальной сети и сохранить его в переменной.
 
     ```powershell
     $vnet = Get-AzureRmVirtualNetwork -ResourceGroupName RG-NSG -Name TestVNet
     ```
 
-2. Чтобы получить подсеть **FrontEnd** и сохранить ее в переменной, выполните следующую команду:
+2. Выполнения hello следующие команда hello tooretrieve **переднего плана** подсети и сохранить его в переменной:
 
     ```powershell
     $subnet = Get-AzureRmVirtualNetworkSubnetConfig -VirtualNetwork $vnet -Name FrontEnd
     ```
  
-3. Чтобы получить существующую группу безопасности сети и сохранить ее в переменной, выполните следующую команду:
+3. Выполните hello, следующая команда tooretrieve hello существующей NSG и сохранить его в переменной.
 
     ```powershell
     $nsg = Get-AzureRmNetworkSecurityGroup -ResourceGroupName RG-NSG -Name NSG-FrontEnd
     ```
 
-4. Чтобы задать для свойства **NetworkSecurityGroup** переменной **subnet** значение **$null**, выполните следующую команду:
+4. Набор hello **NetworkSecurityGroup** свойство hello **подсети** переменной слишком**$null** , выполнив следующую команду hello:
 
     ```powershell
     $subnet.NetworkSecurityGroup = $nsg
     ```
 
-5. Чтобы сохранить изменения в подсети, выполните следующую команду:
+5. toohello подсети, запустите следующую команду hello внесены изменения toosave hello.
 
     ```powershell
     Set-AzureRmVirtualNetwork -VirtualNetwork $vnet
     ```
 
-    Ожидаемый результат, показано только свойство **NetworkSecurityGroup** для подсети **FrontEnd**.
+    Ожидаемый результат отображение только hello **NetworkSecurityGroup** свойство hello **переднего плана** подсети:
    
         ...
         "NetworkSecurityGroup": {
@@ -497,19 +497,19 @@ Get-AzureRmNetworkSecurityGroup -ResourceGroupName RG-NSG -Name NSG-FrontEnd
         ...
 
 ## <a name="delete-an-nsg"></a>Удаление группы NSG
-Группу безопасности сети можно удалить только в том случае, если она не связана с ресурсами. Чтобы удалить группу безопасности сети, выполните следующие действия.
+NSG можно удалить только в том случае, если она не сопоставлена tooany ресурсов. toodelete NSG, выполните следующие действия hello.
 
-1. Чтобы проверить ресурсы, связанные с группой, выполните команду `azure network nsg show` , как показано в разделе [Просмотр связей для группы безопасности сети](#View-NSGs-associations).
-2. Если группа связана с сетевыми адаптерами, выполните `azure network nic set` , как показано в разделе [Отмена связи с сетевым адаптером для группы безопасности сети](#Dissociate-an-NSG-from-a-NIC) , для каждого сетевого адаптера. 
-3. Если группа связана с подсетью, выполните `azure network vnet subnet set` , как показано в разделе [Отмена связи с подсетью для группы безопасности сети](#Dissociate-an-NSG-from-a-subnet) , для каждой подсети.
-4. Чтобы удалить группу безопасности сети, выполните следующую команду:
+1. ресурсы hello toocheck связанные tooan NSG, запустите hello `azure network nsg show` как показано в [связи Nsg представление](#View-NSGs-associations).
+2. Если hello NSG связанные tooany сетевых адаптеров, запустите hello `azure network nic set` как показано в [связь между Сетевыми NSG](#Dissociate-an-NSG-from-a-NIC) для каждого сетевого адаптера. 
+3. Если hello NSG связанные tooany подсети, запустите hello `azure network vnet subnet set` как показано в [связь NSG из подсети](#Dissociate-an-NSG-from-a-subnet) для каждой подсети.
+4. hello toodelete NSG, запустите hello следующую команду:
 
     ```powershell
     Remove-AzureRmNetworkSecurityGroup -ResourceGroupName RG-NSG -Name NSG-FrontEnd -Force
     ```
    
    > [!NOTE]
-   > Параметр `-Force` гарантирует, что удаление не потребуется подтверждать.
+   > Hello `-Force` параметр гарантирует удаление hello tooconfirm не требуется.
    > 
 
 ## <a name="next-steps"></a>Дальнейшие действия

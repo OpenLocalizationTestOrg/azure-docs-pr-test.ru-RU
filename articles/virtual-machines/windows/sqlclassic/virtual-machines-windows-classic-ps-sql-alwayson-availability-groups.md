@@ -1,6 +1,6 @@
 ---
-title: "Настройка группы доступности Always On на виртуальной машине Azure с помощью PowerShell | Документация Майкрософт"
-description: "В этом руководстве используются ресурсы, которые были созданы с помощью классической модели развертывания. Здесь вы будете создавать группы доступности Always On в Azure с помощью PowerShell."
+title: "aaaConfigure hello группы доступности AlwaysOn на Виртуальной машине Azure с помощью PowerShell | Документы Microsoft"
+description: "В этом учебнике используется ресурсов, которые были созданы с помощью hello классической модели развертывания. Используйте PowerShell toocreate группы доступности AlwaysOn в Azure."
 services: virtual-machines-windows
 documentationcenter: na
 author: MikeRayMSFT
@@ -15,13 +15,13 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 03/17/2017
 ms.author: mikeray
-ms.openlocfilehash: b99cf767fb931d3f7fe14fcbe7990126244613ed
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: d4a27e203b2ff299adebec2b010c03422459b3c3
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="configure-the-always-on-availability-group-on-an-azure-vm-with-powershell"></a>Настройка группы доступности Always On на виртуальной машине Azure с помощью PowerShell
+# <a name="configure-hello-always-on-availability-group-on-an-azure-vm-with-powershell"></a>Настройка группы доступности Always On для hello на Виртуальной машине Azure с помощью PowerShell
 > [!div class="op_single_selector"]
 > * [Классическая модель: пользовательский интерфейс](../classic/portal-sql-alwayson-availability-groups.md)
 > * [Классическая модель: PowerShell](../classic/ps-sql-alwayson-availability-groups.md)
@@ -30,37 +30,37 @@ ms.lasthandoff: 07/11/2017
 Прежде чем начать, учтите, что теперь можно выполнить эту задачу в модели Azure Resource Manager. Для новых развертываний мы советуем использовать модель Azure Resource Manager. См. сведения в статье [Введение в группы доступности Always On SQL Server на виртуальных машинах Azure](../sql/virtual-machines-windows-portal-sql-availability-group-overview.md).
 
 > [!IMPORTANT]
-> Для большинства новых развертываний рекомендуется использовать модель Resource Manager. В Azure предлагаются две модели развертывания для создания ресурсов и работы с ними: [модель диспетчера ресурсов и классическая модель](../../../azure-resource-manager/resource-manager-deployment-model.md). В этой статье рассматривается использование классической модели развертывания.
+> Корпорация Майкрософт рекомендует наиболее новые развертывания для использования модели hello диспетчера ресурсов. В Azure предлагаются две модели развертывания для создания ресурсов и работы с ними: [модель диспетчера ресурсов и классическая модель](../../../azure-resource-manager/resource-manager-deployment-model.md). В этой статье описан с помощью hello классической модели развертывания.
 
-Виртуальные машины Azure могут помочь администраторам баз данных сократить затраты при реализации более высокого уровня доступности системы SQL Server. В этом руководстве описано, как реализовать группу доступности с помощью сквозного соединения SQL Server Always On в среде Azure. Когда вы завершите, решение SQL Server Always On в Azure будет состоять из следующих элементов:
+Виртуальные машины (VM) Azure может помочь стоимости hello toolower администраторы базы данных системы SQL Server высокой доступности. Этот учебник показывает, как группировать tooimplement доступности с помощью SQL Server Always On end-to-end среде Azure. В конце учебника hello hello решения AlwaysOn в SQL Server в Azure будет состоять из hello следующие элементы:
 
 * Виртуальной сети, которая содержит множество подсетей, в том числе внешнюю и внутреннюю подсети;
 * контроллера домена с доменом Active Directory;
-* двух виртуальных машин SQL Server, развернутых во внутреннюю подсеть и присоединенных к домену Active Directory;
-* отказоустойчивого кластера Windows из трех узлов с моделью кворума "Большинство узлов";
+* Две виртуальные машины SQL Server, развернутые toohello внутренней подсети и присоединены к домену toohello домена Active Directory.
+* Отказоустойчивый кластер Windows трех узлов с моделью кворума большинства узлов hello.
 * группы доступности с двумя репликами с синхронной фиксацией базы данных доступности.
 
-Этот сценарий — хороший выбор из-за его простоты на Azure, а не из-за его экономичности или других факторов. Например, можно сократить число виртуальных машин для группы доступности с двумя репликами, чтобы сократить часы вычислительных операций в Azure, используя контроллер домена как следящую общую папку кворума в отказоустойчивом кластере из двух узлов. Этот метод сократит число виртуальных машин на одну по сравнению с указанной выше конфигурацией.
+Этот сценарий — хороший выбор из-за его простоты на Azure, а не из-за его экономичности или других факторов. Например можно свести к минимуму hello число виртуальных машин для группы доступности с двумя репликами toosave часы вычислительных операций в Azure, используя hello контроллер домена как следящую общую папку hello кворума в кластере отработки отказа двух узлов. Этот метод уменьшает число виртуальных Машин hello из hello выше конфигурации.
 
-В данном руководстве показаны шаги, необходимые для настройки описанного решения. Подробные сведения каждого этапа не приводятся. Вместо предоставления элементов графического пользовательского интерфейса на каждом этапе в руководстве используются скрипты PowerShell для быстрого ознакомления с этапами. В этом учебнике предполагается следующее:
+Этот учебник предназначен, что tooshow hello шаги, необходимые tooset копирование hello описано решение выше, не приводятся подробные сведения каждого этапа hello. Таким образом вместо обеспечивает действия по настройке hello графического пользовательского интерфейса, он использует tootake сценариев PowerShell можно быстро через каждый шаг. В этом учебнике предполагается hello следующее:
 
-* Вы уже имеете учетную запись Azure с подпиской для виртуальных машин.
-* В системе установлены [командлеты Azure PowerShell](/powershell/azure/overview).
+* Уже имеется учетная запись Azure с подпиской для виртуальных машин hello.
+* После установки hello [командлетов Azure PowerShell](/powershell/azure/overview).
 * Вы хорошо понимаете принцип работы групп доступности Always On в локальных решениях. Дополнительные сведения см. в разделе [Группы доступности AlwaysOn (SQL Server)](https://msdn.microsoft.com/library/hh510230.aspx).
 
-## <a name="connect-to-your-azure-subscription-and-create-the-virtual-network"></a>Подключение к подписке Azure и создание виртуальной сети
-1. В окне Powershell на локальном компьютере импортируйте модуль Azure, скачайте файл параметров публикации на компьютер и подключите сеанс PowerShell к подписке Azure путем импорта скачанных параметров публикации.
+## <a name="connect-tooyour-azure-subscription-and-create-hello-virtual-network"></a>Подключение tooyour подписки Azure и создать виртуальную сеть hello
+1. В окне PowerShell на локальном компьютере импортируйте модуль Azure hello, загрузите hello машины tooyour файл параметров публикации и подключения к tooyour сеанса PowerShell подписки Azure путем импорта hello загрузки параметров публикации.
 
         Import-Module "C:\Program Files (x86)\Microsoft SDKs\Azure\PowerShell\Azure\Azure.psd1"
         Get-AzurePublishSettingsFile
         Import-AzurePublishSettingsFile <publishsettingsfilepath>
 
-    Команда **Get AzurePublishgSettingsFile** автоматически создает сертификат управления, а Azure скачивает его на компьютер. Автоматически откроется браузер, где потребуется ввести данные учетной записи Майкрософт для подписки Azure. Скачанный **PUBLISHSETTINGS**-файл содержит всю информацию, необходимую для управления подпиской Azure. После сохранения этого файла в локальный каталог импортируйте его с помощью команды **Import-AzurePublishSettingsFile**.
+    Hello **Get-AzurePublishSettingsFile** команда автоматически создает сертификат управления с помощью Azure и загружает его tooyour машины. Автоматически откроется браузер, и все данные учетной записи Майкрософт запрос tooenter hello для подписки Azure. загружаются Hello **.publishsettings** файле содержится вся информация hello требуется toomanage подписки Azure. После сохранения этого файла tooa локальный каталог, импортировать его, используя hello **команду Import-AzurePublishSettingsFile** команды.
 
    > [!NOTE]
-   > PUBLISHSETTINGS-файл содержит учетные данные (незакодированные), используемые для администрирования подписок и служб Azure. В целях безопасности этот файл рекомендуется временно хранить за пределами исходных каталогов (например, в папке Libraries\Documents), а затем удалить его после выполнения импорта. Злоумышленник, получивший доступ к PUBLISHSETTINGS-файлу, сможет изменять, создавать и удалять ваши службы Azure.
+   > файл PUBLISHSETTINGS Hello содержит учетные данные (Незакодированные), используемые tooadminister подписки Azure и служб. Hello рекомендации по безопасности для этого файла является toostore он временно за пределами исходных каталогов (например, в папке Libraries\Documents hello), а затем удалите его после завершения импорта hello. Злоумышленник, получивший доступ toohello PUBLISHSETTINGS-файл можно изменять, создавать и удалять служб Azure.
 
-2. Определите ряд переменных, которые будут использоваться для создания облачной ИТ-инфраструктуры.
+2. Определите ряд переменных, вы сможете использовать toocreate облачной ИТ-инфраструктуры.
 
         $location = "West US"
         $affinityGroupName = "ContosoAG"
@@ -80,12 +80,12 @@ ms.lasthandoff: 07/11/2017
         $vmAdminPassword = "Contoso!000"
         $workingDir = "c:\scripts\"
 
-    Чтобы обеспечить дальнейшее успешное выполнение команд, обратите внимание на следующее:
+    Обратите внимания toohello после tooensure, который позднее будет успешным команды:
 
-   * Переменные **$storageAccountName** и **$dcServiceName** должны быть уникальными, так как они используются для идентификации в Интернете соответственно облачной учетной записи хранения и облачного сервера.
-   * Имена переменных **$affinityGroupName** и **$virtualNetworkName** задаются в документе конфигурации виртуальной сети, который будет использован позднее.
-   * **$sqlImageName** указывает обновленное имя образа виртуальной машины, который содержит SQL Server 2012 Enterprise Edition с пакетом обновления 1 (SP1).
-   * Для простоты во всем руководстве используется единственный пароль — **Contoso!000**.
+   * Переменные **$storageAccountName** и **$dcServiceName** должно быть уникальным, так как они используются tooidentify вашей учетная запись облачного хранилища и облачного сервера соответственно на hello Интернет.
+   * Здравствуйте, имена, указанные для переменных **$affinityGroupName** и **$virtualNetworkName** настраиваются в документе конфигурации hello виртуальной сети, которые будут использоваться позже.
+   * **$sqlImageName** указывает hello обновить имя образа виртуальной Машины hello, который содержит SQL Server 2012 Service Pack 1 Enterprise Edition.
+   * Для простоты **Contoso! 000** Здравствуйте, же пароль, который используется на протяжении всего учебника hello.
 
 3. Создайте территориальную группу
 
@@ -100,7 +100,7 @@ ms.lasthandoff: 07/11/2017
         Set-AzureVNetConfig `
             -ConfigurationPath $networkConfigPath
 
-    Файл конфигурации содержит следующий XML-документ. Вкратце, он определяет виртуальную сеть под названием **ContosoNET** в территориальной группе, которая называется **ContosoAG**. Она имеет адресное пространство **10.10.0.0/16** и две подсети **10.10.1.0/24** и **10.10.2.0/24**, которые являются интерфейсной и конечной подсетями соответственно. В интерфейсной подсети можно разместить клиентские приложения, например Microsoft SharePoint, а в конечной подсети размещаются виртуальные машины SQL Server. Если переменные **$affinityGroupName** и **$virtualNetworkName** были изменены, следует изменить и соответствующие имена, приведенные ниже.
+    файл конфигурации Hello содержит следующие XML-документ hello. Вкратце, он указывает виртуальную сеть с именем **ContosoNET** в территориальной группе hello вызывается **ContosoAG**. Он имеет hello адресное пространство **10.10.0.0/16** и две подсети **10.10.1.0/24** и **10.10.2.0/24**, являющиеся интерфейсной подсети hello и задней подсеть соответственно. Hello интерфейсной подсети — расположения клиентские приложения, например Microsoft SharePoint. Hello конечной подсети является расположения hello виртуальные машины SQL Server. При изменении hello **$affinityGroupName** и **$virtualNetworkName** переменных ранее, необходимо также изменить соответствующие имена ниже hello.
 
         <NetworkConfiguration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.microsoft.com/ServiceHosting/2011/07/NetworkConfiguration">
           <VirtualNetworkConfiguration>
@@ -123,7 +123,7 @@ ms.lasthandoff: 07/11/2017
           </VirtualNetworkConfiguration>
         </NetworkConfiguration>
 
-5. Создайте учетную запись хранения, связанную с созданной территориальной группой, а затем установите ее в качестве текущей учетной записи хранения в своей подписке.
+5. Создайте учетную запись хранилища, связанной с hello территориальная группа создана и задать его в качестве текущей учетной записи хранилища hello в вашей подписке.
 
         New-AzureStorageAccount `
             -StorageAccountName $storageAccountName `
@@ -133,7 +133,7 @@ ms.lasthandoff: 07/11/2017
             -SubscriptionName (Get-AzureSubscription).SubscriptionName `
             -CurrentStorageAccount $storageAccountName
 
-6. Создайте сервер контроллера домена в новой облачной службе и группе доступности.
+6. Создайте сервер контроллера домена hello в hello новой облачной службе и группе доступности.
 
         New-AzureVMConfig `
             -Name $dcServerName `
@@ -151,14 +151,14 @@ ms.lasthandoff: 07/11/2017
                     –AffinityGroup $affinityGroupName `
                     -VNetName $virtualNetworkName
 
-    Эти переданные команды выполняют следующие задачи:
+    Эти перенаправленные команды hello следующие действия:
 
    * **New-AzureVMConfig** создает конфигурацию виртуальной машины.
-   * **Add-AzureProvisioningConfig** задает параметры конфигурации отдельного сервера Windows.
-   * **Add-AzureDataDisk** добавляет диск данных, который используется для хранения данных Active Directory, при этом параметр кэширования задан как None.
-   * **New-AzureVM** создает новую облачную службу и новую виртуальную машину Azure в новой облачной службе.
+   * **-AzureProvisioningConfig** дает hello параметры конфигурации изолированного сервера Windows.
+   * **-AzureDataDisk** добавляет диск данных hello, который будет использоваться для хранения данных Active Directory с кэширование параметр set tooNone hello.
+   * **Новый-AzureVM** создает новую облачную службу, а hello новой виртуальной Машины Azure в новой облачной службе hello.
 
-7. Дождитесь полной подготовки к работе новой виртуальной машины и скачайте файл удаленного рабочего стола в рабочий каталог. Так как подготовка виртуальной машины Azure к работе занимает длительное время, цикл `while` продолжает опрашивать новую виртуальную машину до тех пор, пока она не станет готова к использованию.
+7. Дождитесь hello toobe новой виртуальной Машины полностью подготовлены и загрузить hello файл удаленного рабочего стола tooyour рабочий каталог. Здравствуйте, так как hello новой виртуальной Машины Azure использует tooprovision много времени, `while` цикл продолжает toopoll hello новой виртуальной Машины, пока он не готов к использованию.
 
         $VMStatus = Get-AzureVM -ServiceName $dcServiceName -Name $dcServerName
 
@@ -174,12 +174,12 @@ ms.lasthandoff: 07/11/2017
             -Name $dcServerName `
             -LocalPath "$workingDir$dcServerName.rdp"
 
-Сервер контроллера домена успешно подготовлен. Далее нужно настроить домен Active Directory на этом сервере контроллера домена. Не закрывайте окно PowerShell на локальном компьютере. Оно пригодится вам позже во время создания двух виртуальных машин SQL Server.
+Hello сервера контроллера домена успешно подготовлен. Далее следует настроить hello домена Active Directory на этом сервере контроллера домена. Не закрывайте окно hello PowerShell на локальном компьютере. Оно будет использоваться снова далее toocreate hello две виртуальные машины SQL Server.
 
-## <a name="configure-the-domain-controller"></a>Настройка контроллера домена
-1. Подключитесь к серверу контроллера домена, запустив файл удаленного рабочего стола. Используйте имя администратора компьютера AzureAdmin и пароль **Contoso!000**, которые вы указали при создании новой виртуальной машины.
+## <a name="configure-hello-domain-controller"></a>Настройка контроллера домена hello
+1. Подключитесь toohello сервера контроллера домена, запустив файл удаленного рабочего стола hello. Использовать AzureAdmin имя пользователя и пароль администратора машины hello **Contoso! 000**, который был указан при создании hello новой виртуальной Машины.
 2. Откройте окно PowerShell с правами администратора.
-3. Выполните следующую команду **DCPROMO.EXE**, чтобы настроить домен **corp.contoso.com** с каталогами данных на диске M.
+3. Запустите следующие hello **DCPROMO. EXE** tooset команду копирования hello **corp.contoso.com** домен с hello каталоги данных на диск M.
 
         dcpromo.exe `
             /unattend `
@@ -197,14 +197,14 @@ ms.lasthandoff: 07/11/2017
             /SYSVOLPath:"C:\Windows\SYSVOL" `
             /SafeModeAdminPassword:"Contoso!000"
 
-    После завершения команды виртуальная машина автоматически перезагружается.
+    После завершения выполнения команды hello hello виртуальная машина автоматически перезапустится.
 
-4. Подключитесь к серверу контроллера домена еще раз, запустив файл удаленного рабочего стола. На этот раз войдите с именем **CORP\Administrator**.
-5. Откройте окно Powershell в режиме администратора и импортируйте модуль Active Directory PowerShell с помощью следующей команды:
+4. Повторное подключение toohello сервера контроллера домена, запустив файл удаленного рабочего стола hello. На этот раз войдите с именем **CORP\Administrator**.
+5. Откройте окно PowerShell с правами администратора и импортируйте модуль Active Directory PowerShell hello с помощью hello следующую команду:
 
         Import-Module ActiveDirectory
 
-6. Выполните следующие команды, чтобы добавить трех пользователей в домен.
+6. Выполните следующие команды tooadd трех пользователей toohello домена hello.
 
         $pwd = ConvertTo-SecureString "Contoso!000" -AsPlainText -Force
         New-ADUser `
@@ -226,8 +226,8 @@ ms.lasthandoff: 07/11/2017
             -ChangePasswordAtLogon $false `
             -Enabled $true
 
-    **CORP\Install** служит для настройки всего, что связано с экземплярами службы SQL Server, отказоустойчивым кластером и группой доступности. **CORP\SQLSvc1** и **CORP\SQLSvc2** используются в качестве учетных записей службы SQL Server для двух виртуальных машин SQL Server.
-7. Затем выполните следующие команды, чтобы предоставить учетной записи **CORP\Install** разрешения для создания объектов компьютеров в домене.
+    **CORP\Install** является используется tooconfigure все данные, связанные с экземплярами службы SQL Server toohello, hello отказоустойчивого кластера группы доступности hello. **CORP\SQLSvc1** и **CORP\SQLSvc2** , используются в качестве учетных записей служб SQL Server hello hello двух виртуальных машин SQL Server.
+7. Hello Далее, выполните следующие команды toogive **CORP\Install** hello разрешения toocreate объектов-компьютеров в домене hello.
 
         Cd ad:
         $sid = new-object System.Security.Principal.SecurityIdentifier (Get-ADUser "Install").SID
@@ -238,12 +238,12 @@ ms.lasthandoff: 07/11/2017
         $acl.AddAccessRule($ace1)
         Set-Acl -Path "DC=corp,DC=contoso,DC=com" -AclObject $acl
 
-    Идентификатор GUID, указанный выше,— это GUID для типа объекта-компьютера. Для учетной записи **CORP\Install** требуются разрешения **Чтение всех свойств** и **Создание объектов компьютеров**. Они необходимы для создания объектов Active Directory для отказоустойчивого кластера. Разрешение **Чтение всех свойств** предоставлено учетной записи CORP\Install по умолчанию, поэтому предоставлять его явным образом не требуется. Дополнительные сведения о разрешениях, необходимых для создания отказоустойчивого кластера, см. в статье [Failover Cluster Step-by-Step Guide: Configuring Accounts in Active Directory](https://technet.microsoft.com/library/cc731002%28v=WS.10%29.aspx) (Пошаговое руководство по отказоустойчивым кластерам. Настройка учетных записей в Active Directory).
+    Hello GUID, указанный выше — hello GUID для типа объекта компьютера hello. Hello **CORP\Install** учетная запись должна hello **чтение всех свойств** и **создание объектов-компьютеров** Active Direct hello toocreate разрешение объектов для отработки отказа hello кластер. Hello **чтение всех свойств** разрешение уже предоставлено tooCORP\Install по умолчанию, поэтому не требуется toogrant его явным образом. Дополнительные сведения о разрешениях, необходимых toocreate hello отказоустойчивого кластера, см. в разделе [Пошаговое руководство по отказоустойчивому кластеру: Настройка учетных записей в Active Directory](https://technet.microsoft.com/library/cc731002%28v=WS.10%29.aspx).
 
-    После завершения настройки Active Directory и объектов пользователей нужно создать две виртуальные машины SQL Server и присоединить их к этому домену.
+    Теперь, после завершения настройки Active Directory и объектов пользователей hello, вы создадите двух виртуальных машин SQL Server и присоединить их toothis домена.
 
-## <a name="create-the-sql-server-vms"></a>Создание виртуальных машин SQL Server
-1. Перейдите в окно PowerShell, открытое на локальном компьютере. Определите следующие дополнительные переменные:
+## <a name="create-hello-sql-server-vms"></a>Создание виртуальных машин SQL Server hello
+1. По-прежнему toouse окно hello PowerShell, открытое на локальном компьютере. Определите следующие дополнительные переменные hello:
 
         $domainName= "corp"
         $FQDN = "corp.contoso.com"
@@ -256,8 +256,8 @@ ms.lasthandoff: 07/11/2017
         $dataDiskSize = 100
         $dnsSettings = New-AzureDns -Name "ContosoBackDNS" -IPAddress "10.10.0.4"
 
-    IP-адрес **10.10.0.4** обычно назначается первой виртуальной машине, созданной в подсети **10.10.0.0/16** вашей виртуальной сети Azure. Необходимо убедиться, что это адрес сервера контроллера домена. Для этого выполните команду **IPCONFIG**.
-2. Выполните следующий набор команд, чтобы создать в отказоустойчивом кластере первую виртуальную машину с именем **ContosoQuorum**:
+    Здравствуйте, IP-адрес **10.10.0.4** toohello обычно назначается первой виртуальной Машины, созданной в hello **10.10.0.0/16** подсети виртуальной сети Azure. Следует убедиться, что это hello адрес сервера контроллера домена, запустив **IPCONFIG**.
+2. С именем виртуальной Машины в отказоустойчивом кластере hello, выполнения hello следующий набор команд toocreate hello сначала **ContosoQuorum**:
 
         New-AzureVMConfig `
             -Name $quorumServerName `
@@ -283,13 +283,13 @@ ms.lasthandoff: 07/11/2017
                         -VNetName $virtualNetworkName `
                         -DnsSettings $dnsSettings
 
-    Обратите внимание на следующее относительно указанной выше команды:
+    Обратите внимание hello следующее относительно приведенных выше команд hello.
 
-   * **New-AzureVMConfig** создает конфигурацию виртуальной машины с заданным именем группы доступности. Последующие виртуальные машины будут созданы с тем же именем группы доступности, поэтому они присоединяются к той же группе доступности.
-   * **Add-AzureProvisioningConfig** объединяет виртуальную машину с созданным доменом Active Directory.
-   * **Set-AzureSubnet** размещает виртуальную машину в конечной подсети.
-   * **New-AzureVM** создает новую облачную службу и новую виртуальную машину Azure в новой облачной службе. Параметр **DnsSettings** указывает, что для сервера DNS, который используется для серверов в новой облачной службе, задан IP-адрес **10.10.0.4**. Это IP-адрес сервера контроллера домена. Этот параметр необходим для активации новых виртуальных машин в облачной службе для успешного присоединения к домену Active Directory. Без этого параметра вам потребуется вручную настроить параметры IPv4 на виртуальной машине для использования сервера контроллера домена в качестве основного DNS-сервера после подготовки виртуальной машины и ее присоединения к домену Active Directory.
-3. Выполните следующий набор команд, чтобы создать виртуальные машины SQL Server с именами **ContosoSQL1** и **ContosoSQL2**.
+   * **Новый AzureVMConfig** создает конфигурацию виртуальной Машины с hello заданным именем группы доступности. Hello последующие виртуальные машины будут созданы со hello же имя набора доступности, чтобы все они присоединены toohello одной группе доступности.
+   * **-AzureProvisioningConfig** соединения hello домена Active Directory toohello виртуальной Машины, созданной.
+   * **SET-AzureSubnet** местах hello виртуальной Машины в конечной подсети hello.
+   * **Новый-AzureVM** создает новую облачную службу, а hello новой виртуальной Машины Azure в новой облачной службе hello. Hello **DnsSettings** для hello серверов в новой облачной службе hello имеет hello IP-адрес указывает этот DNS-сервер hello **10.10.0.4**. Это IP-адрес сервера контроллера домена hello hello. Этот параметр необходим tooenable hello новых виртуальных машин в домене Active Directory для службы toojoin hello облака toohello успешно. Без этого параметра необходимо вручную задать параметры IPv4 hello в вашей виртуальной Машины toouse hello контроллер домена как основной DNS-сервер hello после подготовки hello виртуальной Машины и затем присоединить домену Active Directory toohello hello виртуальной Машины.
+3. Выполнения hello следующие выведенной команды toocreate hello виртуальные машины SQL Server с именем **ContosoSQL1** и **ContosoSQL2**.
 
         # Create ContosoSQL1...
         New-AzureVMConfig `
@@ -347,20 +347,20 @@ ms.lasthandoff: 07/11/2017
                         New-AzureVM `
                             -ServiceName $sqlServiceName
 
-    Обратите внимание на следующее относительно указанных выше команд:
+    Обратите внимание hello следующее относительно hello показанные выше команды.
 
-   * **New-AzureVMConfig** использует то же имя группы доступности, что и сервер контроллера домена, и использует образ SQL Server 2012 Enterprise Edition с пакетом обновления 1 (SP1) из коллекции виртуальных машин. Кроме того, этот набор команд задает режим диска операционной системы на чтение кэша (запрет записи в кэш). Мы советуем переносить файлы баз данных на отдельный диск данных, подсоединенный к виртуальной машине, и настроить для него запрет на чтение кэша или запись в кэш. Однако наилучшая альтернатива — удалить кэширование записи на диске операционной системы, так как кэширование чтения с этого диска удалить нельзя.
-   * **Add-AzureProvisioningConfig** объединяет виртуальную машину с созданным доменом Active Directory.
-   * **Set-AzureSubnet** размещает виртуальную машину в конечной подсети.
-   * **Add-AzureEndpoint** добавляет конечные точки доступа, чтобы клиентские приложения могли обращаться к экземплярам службы SQL Server через Интернет. Виртуальным машинам ContosoSQL1 и ContosoSQL2 назначаются различные порты.
-   * **New-AzureVM** создает новую виртуальную машину SQL Server в той же облачной службе, что и ContosoQuorum. Если виртуальные машины должны находиться в одной группе доступности, то необходимо размещать их в одной облачной службе.
-4. Дождитесь полной подготовки к работе каждой виртуальной машины и скачайте для каждой виртуальной машины файл удаленного рабочего стола в рабочий каталог. Цикл `for` проходит по трем новым виртуальным машинам и выполняет для каждой из них команды в фигурных скобках верхнего уровня.
+   * **Новый AzureVMConfig** использует hello же имя набора доступности как контроллер домена hello и использует hello образа SQL Server 2012 Service Pack 1 Enterprise Edition в коллекции виртуальных машин hello. Он также устанавливает hello операционной системы диска tooread кэша (запрет записи в кэш). Мы рекомендуем hello базы данных файлы tooa отдельный диск с данными присоединения toohello виртуальной Машины и настроить в нем нет чтение или кэширование записи. Однако Наилучшая альтернатива hello это tooremove кэширование записи на диск операционной системы hello, так как не удается удалить кэширование на диске операционной системы hello.
+   * **-AzureProvisioningConfig** соединения hello домена Active Directory toohello виртуальной Машины, созданной.
+   * **SET-AzureSubnet** местах hello виртуальной Машины в конечной подсети hello.
+   * **-AzureEndpoint** добавляет конечные точки доступа, чтобы клиентские приложения могут обращаться к эти экземпляры служб SQL Server на hello Интернета. Другие порты, получают tooContosoSQL1 и ContosoSQL2.
+   * **Новый-AzureVM** создает hello новую виртуальную Машину SQL Server в hello же облачную службу как ContosoQuorum. Виртуальные машины hello необходимо поместить в hello же облачную службу при необходимости toobe в одной группе доступности hello.
+4. Дождитесь каждого toobe ВМ полностью подготовлены, а для каждой виртуальной Машины toodownload его файл удаленного рабочего стола tooyour рабочий каталог. Hello `for` цикла циклически hello трем новым виртуальным машинам и выполняет команды hello в фигурных скобках верхнего уровня hello для каждого из них.
 
         Foreach ($VM in $VMs = Get-AzureVM -ServiceName $sqlServiceName)
         {
             write-host "Waiting for " $VM.Name "..."
 
-            # Loop until the VM status is "ReadyRole"
+            # Loop until hello VM status is "ReadyRole"
             While ($VM.InstanceStatus -ne "ReadyRole")
             {
                 write-host "  Current Status = " $VM.InstanceStatus
@@ -374,28 +374,28 @@ ms.lasthandoff: 07/11/2017
             Get-AzureRemoteDesktopFile -ServiceName $VM.ServiceName -Name $VM.InstanceName -LocalPath "$workingDir$($VM.InstanceName).rdp"
         }
 
-    Виртуальные машины SQL Server подготовлены и запущены, но они устанавливаются с SQL Server с использованием параметров по умолчанию.
+    виртуальные машины Hello SQL Server настроены и запущены, но они установлены с помощью SQL Server с параметрами по умолчанию.
 
-## <a name="initialize-the-failover-cluster-vms"></a>Инициализация виртуальных машин отказоустойчивого кластера
-В этом разделе вам необходимо изменить три сервера, которые будут использоваться в отказоустойчивом кластере и при установке SQL Server. В частности:
+## <a name="initialize-hello-failover-cluster-vms"></a>Инициализировать hello отказоустойчивого кластера виртуальные машины
+В этом разделе требуется три серверов hello toomodify, которые будут использоваться в отказоустойчивом кластере hello и hello установки SQL Server. В частности:
 
-* Все серверы. Необходимо установить компонент **отказоустойчивой кластеризации**.
-* Все серверы. Необходимо добавить учетную запись **CORP\Install** в качестве **администратора** виртуальной машины.
-* Только ContosoSQL1 и ContosoSQL2. Необходимо добавить учетную запись **CORP\Install** в качестве роли **sysadmin** в базе данных по умолчанию.
-* Только ContosoSQL1 и ContosoSQL2. Необходимо добавить учетную запись **NT AUTHORITY\System** в качестве имени входа со следующими разрешениями:
+* Все серверы: требуется tooinstall hello **отказоустойчивой кластеризации** компонентов.
+* Все серверы: требуется tooadd **CORP\Install** как hello машина **администратора**.
+* Только ContosoSQL1 и ContosoSQL2: требуется tooadd **CORP\Install** как **sysadmin** роли в базе данных по умолчанию hello.
+* Только ContosoSQL1 и ContosoSQL2: требуется tooadd **NT AUTHORITY\System** как вход с hello следующие разрешения:
 
   * Изменение любой группы доступности
   * Соединение SQL
   * Просмотр состояния сервера
-* Только ContosoSQL1 и ContosoSQL2. Протокол **TCP** уже включен на виртуальной машине SQL Server. Однако все еще требуется открыть брандмауэр для удаленного доступа к SQL Server.
+* Только ContosoSQL1 и ContosoSQL2: hello **TCP** протокол уже включен на виртуальной Машине SQL Server hello. Однако по-прежнему требуются tooopen hello брандмауэра для удаленного доступа к SQL Server.
 
-Теперь все готово к запуску. Выполните следующие шаги, начиная с **ContosoQuorum**.
+Теперь вы готовы toostart. Начиная с версии **ContosoQuorum**, выполните следующие шаги hello:
 
-1. Подключитесь к **ContosoQuorum** , запустив файлы удаленного рабочего стола. Используйте имя администратора компьютера **AzureAdmin** и пароль **Contoso!000**, которые вы указали при создании виртуальной машины.
-2. Убедитесь, что компьютеры успешно добавлены в домен **corp.contoso.com**.
-3. Дождитесь, пока программа установки SQL Server не завершит автоматические задачи инициализации, прежде чем продолжить.
+1. Подключение слишком**ContosoQuorum** путем запуска файлов удаленного рабочего стола hello. Используйте имя пользователя администратора машины hello **AzureAdmin** и пароль **Contoso! 000**, указанные при создании виртуальных машин hello.
+2. Убедитесь, что компьютеры hello была успешно присоединена слишком**corp.contoso.com**.
+3. Дождитесь hello toofinish установки на SQL Server под управлением hello автоматизировать задачи инициализации, прежде чем продолжить.
 4. Откройте окно PowerShell с правами администратора.
-5. Установите компонент отказоустойчивой кластеризации Windows.
+5. Установите компонент отказоустойчивой кластеризации Windows hello.
 
         Import-Module ServerManager
         Add-WindowsFeature Failover-Clustering
@@ -406,46 +406,46 @@ ms.lasthandoff: 07/11/2017
 
         logoff.exe
 
-Затем инициализируйте виртуальные машины **ContosoSQL1** и **ContosoSQL2**. Выполните следующие шаги, которые идентичны для обеих виртуальных машин SQL Server.
+Затем инициализируйте виртуальные машины **ContosoSQL1** и **ContosoSQL2**. Выполните hello шаги, которые идентичны для обеих виртуальных машин SQL Server.
 
-1. Подключитесь к двум виртуальным машинам SQL Server, запустив файлы удаленного рабочего стола. Используйте имя администратора компьютера **AzureAdmin** и пароль **Contoso!000**, которые вы указали при создании виртуальной машины.
-2. Убедитесь, что компьютеры успешно добавлены в домен **corp.contoso.com**.
-3. Дождитесь, пока программа установки SQL Server не завершит автоматические задачи инициализации, прежде чем продолжить.
+1. Подключитесь toohello двух виртуальных машин SQL Server, запустив файлы удаленного рабочего стола hello. Используйте имя пользователя администратора машины hello **AzureAdmin** и пароль **Contoso! 000**, указанные при создании виртуальных машин hello.
+2. Убедитесь, что компьютеры hello была успешно присоединена слишком**corp.contoso.com**.
+3. Дождитесь hello toofinish установки на SQL Server под управлением hello автоматизировать задачи инициализации, прежде чем продолжить.
 4. Откройте окно PowerShell с правами администратора.
-5. Установите компонент отказоустойчивой кластеризации Windows.
+5. Установите компонент отказоустойчивой кластеризации Windows hello.
 
         Import-Module ServerManager
         Add-WindowsFeature Failover-Clustering
 6. Добавьте **CORP\Install** в качестве локального администратора.
 
         net localgroup administrators "CORP\Install" /Add
-7. Импортируйте поставщика SQL Server PowerShell.
+7. Импортируйте поставщик SQL Server PowerShell hello.
 
         Set-ExecutionPolicy -Execution RemoteSigned -Force
         Import-Module -Name "sqlps" -DisableNameChecking
-8. Добавьте **CORP\Install** в качестве роли sysadmin для экземпляра SQL Server по умолчанию.
+8. Добавить **CORP\Install** как hello роли sysadmin для экземпляра SQL Server по умолчанию hello.
 
         net localgroup administrators "CORP\Install" /Add
         Invoke-SqlCmd -Query "EXEC sp_addsrvrolemember 'CORP\Install', 'sysadmin'" -ServerInstance "."
-9. Добавьте **NT AUTHORITY\System** в качестве имени входа с тремя описанными выше разрешениями.
+9. Добавить **NT AUTHORITY\System** как вход с описанными выше разрешениями hello трех.
 
         Invoke-SqlCmd -Query "CREATE LOGIN [NT AUTHORITY\SYSTEM] FROM WINDOWS" -ServerInstance "."
-        Invoke-SqlCmd -Query "GRANT ALTER ANY AVAILABILITY GROUP TO [NT AUTHORITY\SYSTEM] AS SA" -ServerInstance "."
-        Invoke-SqlCmd -Query "GRANT CONNECT SQL TO [NT AUTHORITY\SYSTEM] AS SA" -ServerInstance "."
-        Invoke-SqlCmd -Query "GRANT VIEW SERVER STATE TO [NT AUTHORITY\SYSTEM] AS SA" -ServerInstance "."
-10. Откройте брандмауэр для удаленного доступа к SQL Server.
+        Invoke-SqlCmd -Query "GRANT ALTER ANY AVAILABILITY GROUP too[NT AUTHORITY\SYSTEM] AS SA" -ServerInstance "."
+        Invoke-SqlCmd -Query "GRANT CONNECT SQL too[NT AUTHORITY\SYSTEM] AS SA" -ServerInstance "."
+        Invoke-SqlCmd -Query "GRANT VIEW SERVER STATE too[NT AUTHORITY\SYSTEM] AS SA" -ServerInstance "."
+10. Откройте брандмауэр Windows hello для удаленного доступа к SQL Server.
 
          netsh advfirewall firewall add rule name='SQL Server (TCP-In)' program='C:\Program Files\Microsoft SQL Server\MSSQL11.MSSQLSERVER\MSSQL\Binn\sqlservr.exe' dir=in action=allow protocol=TCP
 11. Выйдите из обеих виртуальных машин.
 
          logoff.exe
 
-Теперь можно приступить к настройке группы доступности. Для выполнения всех действий с **ContosoSQL1** будет использоваться поставщик SQL Server PowerShell.
+Наконец вы готовы tooconfigure группы доступности hello. Вы воспользуетесь tooperform hello поставщик SQL Server PowerShell, работающие hello со **ContosoSQL1**.
 
-## <a name="configure-the-availability-group"></a>Настройка группы доступности
-1. Снова подключитесь к **ContosoSQL1** , запустив файлы удаленного рабочего стола. Вместо входа с помощью учетной записи компьютера войдите с помощью учетной записи **CORP\Install**.
+## <a name="configure-hello-availability-group"></a>Настройка группы доступности hello
+1. Подключение слишком**ContosoSQL1** еще раз путем запуска файлов удаленного рабочего стола hello. Вместо вход с помощью учетной записи компьютера hello, войдите в систему с **CORP\Install**.
 2. Откройте окно PowerShell с правами администратора.
-3. Определите следующие переменные.
+3. Определите следующие переменные hello:
 
         $server1 = "ContosoSQL1"
         $server2 = "ContosoSQL2"
@@ -459,11 +459,11 @@ ms.lasthandoff: 07/11/2017
         $backupShare = "\\$server1\backup"
         $quorumShare = "\\$server1\quorum"
         $ag = "AG1"
-4. Импортируйте поставщика SQL Server PowerShell.
+4. Импортируйте поставщик SQL Server PowerShell hello.
 
         Set-ExecutionPolicy RemoteSigned -Force
         Import-Module "sqlps" -DisableNameChecking
-5. Измените учетную запись службы SQL Server для ContosoSQL1 на CORP\SQLSvc1.
+5. Изменение учетной записи службы SQL Server hello для ContosoSQL1 tooCORP\SQLSvc1.
 
         $wmi1 = new-object ("Microsoft.SqlServer.Management.Smo.Wmi.ManagedComputer") $server1
         $wmi1.services | where {$_.Type -eq 'SqlServer'} | foreach{$_.SetServiceAccount($acct1,$password)}
@@ -472,7 +472,7 @@ ms.lasthandoff: 07/11/2017
         $svc1.WaitForStatus([System.ServiceProcess.ServiceControllerStatus]::Stopped,$timeout)
         $svc1.Start();
         $svc1.WaitForStatus([System.ServiceProcess.ServiceControllerStatus]::Running,$timeout)
-6. Измените учетную запись службы SQL Server для ContosoSQL2 на CORP\SQLSvc2.
+6. Изменение учетной записи службы SQL Server hello для ContosoSQL2 tooCORP\SQLSvc2.
 
         $wmi2 = new-object ("Microsoft.SqlServer.Management.Smo.Wmi.ManagedComputer") $server2
         $wmi2.services | where {$_.Type -eq 'SqlServer'} | foreach{$_.SetServiceAccount($acct2,$password)}
@@ -481,12 +481,12 @@ ms.lasthandoff: 07/11/2017
         $svc2.WaitForStatus([System.ServiceProcess.ServiceControllerStatus]::Stopped,$timeout)
         $svc2.Start();
         $svc2.WaitForStatus([System.ServiceProcess.ServiceControllerStatus]::Running,$timeout)
-7. Скачайте файл **CreateAzureFailoverCluster.ps1** из статьи [Create Failover Cluster for Always On Availability Groups in Azure VM](http://gallery.technet.microsoft.com/scriptcenter/Create-WSFC-Cluster-for-7c207d3a) (Создание отказоустойчивого кластера для групп доступности Always On на виртуальной машине Azure) в локальный рабочий каталог. Этот скрипт поможет создать рабочий отказоустойчивый кластер. Важные сведения о взаимодействии кластеров Windows с сетью Azure см. в статье [Высокий уровень доступности и аварийное восстановление для SQL Server на виртуальных машинах Azure](../sql/virtual-machines-windows-sql-high-availability-dr.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fsqlclassic%2ftoc.json).
-8. Измените рабочий каталог и создайте отказоустойчивый кластер с помощью скачанного сценария.
+7. Загрузить **CreateAzureFailoverCluster.ps1** из [Создание отказоустойчивого кластера для группы доступности AlwaysOn в виртуальной Машине Azure](http://gallery.technet.microsoft.com/scriptcenter/Create-WSFC-Cluster-for-7c207d3a) toohello локальный рабочий каталог. Вы будете использовать этот сценарий toohelp, Создание функциональной отказоустойчивого кластера. Важная информация по отказоустойчивой кластеризации Windows взаимодействие с hello Azure сети см. в разделе [высокий уровень доступности и аварийного восстановления SQL Server в виртуальных машинах Azure](../sql/virtual-machines-windows-sql-high-availability-dr.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fsqlclassic%2ftoc.json).
+8. Изменить tooyour рабочий каталог и создайте hello отказоустойчивого кластера с помощью сценария загружаются hello.
 
         Set-ExecutionPolicy Unrestricted -Force
         .\CreateAzureFailoverCluster.ps1 -ClusterName "$clusterName" -ClusterNode "$server1","$server2","$serverQuorum"
-9. Включите группы доступности Always On для экземпляров SQL Server по умолчанию на виртуальных машинах **ContosoSQL1** и **ContosoSQL2**.
+9. Включение групп доступности AlwaysOn для экземпляров SQL Server по умолчанию hello **ContosoSQL1** и **ContosoSQL2**.
 
         Enable-SqlAlwaysOn `
             -Path SQLSERVER:\SQL\$server1\Default `
@@ -498,20 +498,20 @@ ms.lasthandoff: 07/11/2017
         $svc2.WaitForStatus([System.ServiceProcess.ServiceControllerStatus]::Stopped,$timeout)
         $svc2.Start();
         $svc2.WaitForStatus([System.ServiceProcess.ServiceControllerStatus]::Running,$timeout)
-10. Создайте каталог резервной копии и предоставьте разрешения для учетных записей службы SQL Server. Этот каталог будет использоваться для подготовки базы данных на вторичной реплике.
+10. Создать каталог резервных копий и предоставьте разрешения для учетных записей служб SQL Server hello. Вы используете tooprepare directory hello баз данных доступности на вторичной реплике hello.
 
          $backup = "C:\backup"
          New-Item $backup -ItemType directory
          net share backup=$backup "/grant:$acct1,FULL" "/grant:$acct2,FULL"
          icacls.exe "$backup" /grant:r ("$acct1" + ":(OI)(CI)F") ("$acct2" + ":(OI)(CI)F")
-11. Создайте базу данных в **ContosoSQL1** с именем **MyDB1**, создайте полный архив и архив журнала, а затем восстановите их на виртуальной машине **ContosoSQL2** с параметром **WITH NORECOVERY**.
+11. Создание базы данных на **ContosoSQL1** вызывается **MyDB1**, выполните полную резервную копию и резервную копию журнала и восстановить их на **ContosoSQL2** с hello **WITH Параметр NORECOVERY** параметр.
 
          Invoke-SqlCmd -Query "CREATE database $db"
          Backup-SqlDatabase -Database $db -BackupFile "$backupShare\db.bak" -ServerInstance $server1
          Backup-SqlDatabase -Database $db -BackupFile "$backupShare\db.log" -ServerInstance $server1 -BackupAction Log
          Restore-SqlDatabase -Database $db -BackupFile "$backupShare\db.bak" -ServerInstance $server2 -NoRecovery
          Restore-SqlDatabase -Database $db -BackupFile "$backupShare\db.log" -ServerInstance $server2 -RestoreAction Log -NoRecovery
-12. Создайте конечные точки группы доступности на трех ВМ SQL Server и задайте соответствующие разрешения для конечных точек.
+12. Создайте конечные точки группы доступности hello на hello виртуальные машины SQL Server и задайте соответствующие разрешения hello в конечных точках hello.
 
          $endpoint =
              New-SqlHadrEndpoint MyMirroringEndpoint `
@@ -529,10 +529,10 @@ ms.lasthandoff: 07/11/2017
              -State "Started"
 
          Invoke-SqlCmd -Query "CREATE LOGIN [$acct2] FROM WINDOWS" -ServerInstance $server1
-         Invoke-SqlCmd -Query "GRANT CONNECT ON ENDPOINT::[MyMirroringEndpoint] TO [$acct2]" -ServerInstance $server1
+         Invoke-SqlCmd -Query "GRANT CONNECT ON ENDPOINT::[MyMirroringEndpoint] too[$acct2]" -ServerInstance $server1
          Invoke-SqlCmd -Query "CREATE LOGIN [$acct1] FROM WINDOWS" -ServerInstance $server2
-         Invoke-SqlCmd -Query "GRANT CONNECT ON ENDPOINT::[MyMirroringEndpoint] TO [$acct1]" -ServerInstance $server2
-13. Создайте реплики доступности.
+         Invoke-SqlCmd -Query "GRANT CONNECT ON ENDPOINT::[MyMirroringEndpoint] too[$acct1]" -ServerInstance $server2
+13. Создание реплики доступности hello.
 
          $primaryReplica =
              New-SqlAvailabilityReplica `
@@ -550,7 +550,7 @@ ms.lasthandoff: 07/11/2017
              -FailoverMode "Automatic" `
              -Version 11 `
              -AsTemplate
-14. Теперь создайте группу доступности и добавьте в нее вторичную реплику.
+14. Наконец создайте группу доступности hello и группы доступности toohello вторичная реплика hello соединения.
 
          New-SqlAvailabilityGroup `
              -Name $ag `
@@ -565,6 +565,6 @@ ms.lasthandoff: 07/11/2017
              -Database $db
 
 ## <a name="next-steps"></a>Дальнейшие действия
-Решение SQL Server Always On на основе группы доступности в Azure успешно создано. Инструкции по настройке прослушивателя для этой группы доступности см. в статье [Настройка прослушивателя внутренней подсистемы балансировки нагрузки для группы доступности Always On в Azure](../classic/ps-sql-int-listener.md).
+Решение SQL Server Always On на основе группы доступности в Azure успешно создано. tooconfigure прослушивателя для этой группы доступности. в разделе [настроить прослушиватель ILB для групп доступности AlwaysOn в Azure](../classic/ps-sql-int-listener.md).
 
 Дополнительные сведения об использовании SQL Server в Azure см. в статье [Общие сведения об SQL Server на виртуальных машинах Azure](../sql/virtual-machines-windows-sql-server-iaas-overview.md).

@@ -1,6 +1,6 @@
 ---
-title: "Приступая к работе с хранилищем очередей и подключенными службами Visual Studio (ASP.NET Core) | Документация Майкрософт"
-description: "Начало работы с хранилищем очередей Azure в проекте ASP.NET Core в Visual Studio."
+title: "aaaGet работы с хранилищем очередей и Visual Studio подключенных служб (ASP.NET Core) | Документы Microsoft"
+description: "Как tooget запущена с помощью хранилища очереди Azure в проекте ASP.NET Core в Visual Studio"
 services: storage
 documentationcenter: 
 author: kraigb
@@ -14,23 +14,23 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/02/2016
 ms.author: kraigb
-ms.openlocfilehash: 394344c0e126472b97c2e8f721c8c8d6514a17dc
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 90c1ebcb6a2eac6bc4f6b69133bdf3135d359a72
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="get-started-with-queue-storage-and-visual-studio-connected-services-aspnet-core"></a>Приступая к работе с хранилищем очередей и подключенными службами Visual Studio (ASP.NET Core)
 [!INCLUDE [storage-try-azure-tools-queues](../../includes/storage-try-azure-tools-queues.md)]
 
 ## <a name="overview"></a>Обзор
-В этой статье описывается, как приступить к использованию хранилища очередей Azure в Visual Studio после создания учетной записи хранения Azure или указания ссылки на нее в проекте ASP.NET Core с помощью диалогового окна **Добавление подключенных служб** в Visual Studio. Операция **Добавить подключенные службы** устанавливает соответствующие пакеты NuGet для доступа к службе хранилища Azure в вашем проекте и добавляет строку подключения для учетной записи хранения в файлы конфигурации проекта.
+В этой статье описывается, как tooget запущена с помощью хранилища очередей Azure в Visual Studio после создания или ссылка на учетную запись хранилища Azure в проекте ASP.NET Core с помощью Visual Studio hello **Добавление подключенных служб** диалогового окна. Hello **Добавление подключенных служб** операция устанавливает пакеты tooaccess hello соответствующие NuGet хранилища Azure в проекте и добавляет строку hello подключения для hello учетную запись хранилища, tooyour файлы конфигурации проекта.
 
-Хранилище очередей Azure — это служба хранения большого количества сообщений, к которым можно получить доступ практически из любой точки мира с помощью вызовов с проверкой подлинности по протоколу HTTP или HTTPS. Одно сообщение очереди может быть размером до 64 КБ, а очередь может содержать миллионы сообщений, ограничиваемых общей емкостью учетной записи хранения.
+Хранилище очередей Azure — это служба для хранения большого числа сообщений, которые может осуществляться из любого места в Здравствуй, мир! через вызовы прошедшего проверку подлинности, протокол HTTP или HTTPS. Сообщение одной очереди может быть вверх too64 килобайт (КБ), размер и очередь может содержать миллионы сообщений вверх toohello предел общая емкость учетной записи хранения.
 
-Чтобы начать работу, сначала необходимо создать очередь Azure в учетной записи хранения. Мы покажем, как создать очередь в коде. Кроме того, вы узнаете, как выполнять базовые операции с очередями, например добавлять, изменять, считывать и удалять сообщения в очередях. Примеры написаны на C\#, и в них используется библиотека клиента службы хранилища Azure для .NET. Дополнительные сведения см. на сайте [ASP.NET](http://www.asp.net).
+tooget работы, необходимо сначала toocreate очереди Azure в вашей учетной записи хранилища. Мы покажем, как toocreate очередь в коде. Мы также покажем, как tooperform basic очередь операций, таких как добавление, изменение, чтение и удаление сообщений очереди. Hello примеры на языке C\# кода и использовать hello клиентская библиотека хранилища Azure для .NET. Дополнительные сведения см. на сайте [ASP.NET](http://www.asp.net).
 
-**Примечание**. Некоторые интерфейсы API, которые выполняют вызовы к службе хранилища Azure в ASP.NET Core, являются асинхронными. Дополнительные сведения см. в статье [Asynchronous Programming with async and await (C#)](http://msdn.microsoft.com/library/hh191443.aspx) (Асинхронное программирование с использованием ключевых слов Async и Await (C#)). В следующем примере кода предполагается, что используются асинхронные методы программирования.
+**Примечание:** некоторые интерфейсы API, которые выполняют вызовы tooAzure хранилища в ASP.NET Core hello являются асинхронными. Дополнительные сведения см. в статье [Asynchronous Programming with async and await (C#)](http://msdn.microsoft.com/library/hh191443.aspx) (Асинхронное программирование с использованием ключевых слов Async и Await (C#)). Приведенный ниже код Hello предполагается, что используются асинхронные методы программирования.
 
 * Дополнительные сведения о выполнении программных операций с очередями см. в статье [Приступая к работе с хранилищем очередей Azure с помощью .NET](../storage/queues/storage-dotnet-how-to-use-queues.md).
 * Общие сведения о службе хранилища Azure см. в [документации по службе хранилища](https://azure.microsoft.com/documentation/services/storage/).
@@ -38,73 +38,73 @@ ms.lasthandoff: 08/29/2017
 * Дополнительную информацию о программировании для ASP.NET см. в разделе [ASP.NET](http://www.asp.net).
 
 ## <a name="access-queues-in-code"></a>Доступ к очередям в коде
-Для доступа к очередям в проектах ASP.NET Core необходимо добавить следующие элементы во все файлы исходного кода C#, которые обращаются к хранилищу очередей Azure.
+tooaccess очереди в проектах ASP.NET Core, требуются следующие hello tooinclude элементы tooany C# исходного файла, который получает доступ к хранилищу очереди Azure.
 
-1. Убедитесь, что объявления пространств имен в верхней части файла C# содержат указанные ниже выражения **using** .
+1. Убедитесь, что объявления пространств имен hello hello верхней части файла hello C# включить эти **с помощью** инструкции.
    
         using Microsoft.Framework.Configuration;
         using Microsoft.WindowsAzure.Storage;
         using Microsoft.WindowsAzure.Storage.Queue;
         using System.Threading.Tasks;
         using LogLevel = Microsoft.Framework.Logging.LogLevel;
-2. Получите объект **CloudStorageAccount** , представляющий данные учетной записи хранения. Используйте следующий код, чтобы получить строку подключения и сведения об учетной записи хранения из конфигурации службы Azure.
+2. Получите объект **CloudStorageAccount** , представляющий данные учетной записи хранения. Hello используйте следующий код tooget hello хранения строки соединения и сведения об учетной записи хранилища из конфигурации службы Azure hello.
    
          CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
            CloudConfigurationManager.GetSetting("<storage-account-name>_AzureStorageConnectionString"));
-3. Используйте объект **CloudQueueClient** для ссылки на объекты очереди в вашей учетной записи хранения.  
+3. Получить **CloudQueueClient** объектов tooreference hello очереди в учетной записи.  
    
-        // Create the CloudQueueClient object for the storage account.
+        // Create hello CloudQueueClient object for hello storage account.
         CloudQueueClient queueClient = storageAccount.CreateCloudQueueClient();
-4. Получите объект **CloudQueue** для ссылки на определенную очередь.
+4. Получить **CloudQueue** объекта tooreference определенной очереди.
    
-        // Get a reference to the CloudQueue named "messageQueue"
+        // Get a reference toohello CloudQueue named "messageQueue"
         CloudQueue messageQueue = queueClient.GetQueueReference("messageQueue");
 
-**ПРИМЕЧАНИЕ.** Вставьте весь код, представленный выше, перед кодом в следующих примерах.
+**Примечание:** используются hello над кодом перед кода hello из hello следующие примеры.
 
 ### <a name="create-a-queue-in-code"></a>Создание очереди в коде
-Чтобы создать очередь Azure в коде, просто добавьте вызов **CreateIfNotExistsAsync**.
+hello toocreate очереди Azure в коде, просто добавьте вызов слишком**CreateIfNotExistsAsync**.
 
-    // Create the CloudQueue if it does not exist.
+    // Create hello CloudQueue if it does not exist.
     await messageQueue.CreateIfNotExistsAsync();
 
-## <a name="add-a-message-to-a-queue"></a>Добавление сообщения в очередь
-Чтобы вставить сообщение в существующую очередь, создайте новый объект **CloudQueueMessage**, а затем вызовите метод **AddMessageAsync**.
+## <a name="add-a-message-tooa-queue"></a>Добавить tooa очереди сообщений
+tooinsert сообщения в существующей очереди, создайте новый **CloudQueueMessage** объект, а затем вызов hello **AddMessageAsync** метод.
 
 Для создания объекта **CloudQueueMessage** можно использовать либо строку (в формате UTF-8), либо массив типа byte.
 
-Ниже приведен пример, который вставляет сообщение "Hello, World".
+Ниже приведен пример, который вставляет приветственное сообщение «Hello, World».
 
-    // Create a message and add it to the queue.
+    // Create a message and add it toohello queue.
     CloudQueueMessage message = new CloudQueueMessage("Hello, World");
     await messageQueue.AddMessageAsync(message);
 
 ## <a name="read-a-message-in-a-queue"></a>Чтение сообщения в очереди
-Вы можете просмотреть сообщение в начале очереди, не удаляя его из очереди, вызвав метод **PeekMessageAsync** .
+Можно считывать сообщения hello в hello передней части очереди, не удаляя его из очереди hello, вызывающему Привет **PeekMessageAsync** метод.
 
-    // Peek the next message in the queue. 
+    // Peek hello next message in hello queue. 
     CloudQueueMessage peekedMessage = await messageQueue.PeekMessageAsync();
 
 
 ## <a name="read-and-remove-a-message-in-a-queue"></a>Чтение и удаление сообщения в очереди
 Ваш код может удалить сообщение из очереди в два этапа.
 
-1. Вызовите **GetMessageAsync** , чтобы получить следующее сообщение в очереди. Сообщение, возвращаемое методом **GetMessageAsync** , становится невидимым для любого другого кода, считывающего сообщения из этой очереди. По умолчанию это сообщение остается невидимым в течение 30 секунд.
-2. Чтобы завершить удаление сообщения из очереди, вызовите **DeleteMessageAsync**.
+1. Вызовите **GetMessageAsync** tooget hello следующего сообщения в очереди. Сообщение, возвращенное из **GetMessageAsync** становится невидимой tooany другой код, чтение сообщений из этой очереди. По умолчанию это сообщение остается невидимым в течение 30 секунд.
+2. Удаление приветственное сообщение из очереди hello, вызов toofinish **DeleteMessageAsync**.
 
-Этот двухэтапный процесс удаления сообщения позволяет удостовериться, что если коду не удастся обработать сообщение из-за сбоя оборудования или программного обеспечения, другой экземпляр кода сможет получить то же сообщение и повторить попытку. Следующий код вызывает метод **DeleteMessageAsync** сразу после обработки сообщения.
+Это двухэтапный процесс удаления сообщения подтверждает, если tooprocess получит сообщение toohardware или ошибок программного обеспечения, другой экземпляр кода из-за сбоя программы hello одного сообщения и повторите попытку. Hello следующий код вызывает **DeleteMessageAsync** сразу после обработки сообщения hello.
 
-    // Get the next message in the queue.
+    // Get hello next message in hello queue.
     CloudQueueMessage retrievedMessage = await messageQueue.GetMessageAsync();
 
-    // Process the message in less than 30 seconds.
+    // Process hello message in less than 30 seconds.
 
-    // Then delete the message.
+    // Then delete hello message.
     await messageQueue.DeleteMessageAsync(retrievedMessage);
 
 ## <a name="leverage-additional-options-for-dequeuing-messages"></a>Дополнительные варианты удаления сообщений из очереди
 Способ извлечения сообщения из очереди можно настроить двумя способами.
-Во-первых, можно получить пакет сообщений (до 32 сообщений). Во-вторых, можно задать более длительное или короткое время ожидания видимости, чтобы предоставить коду больше или меньше времени на полную обработку каждого сообщения. В следующем примере кода метод **GetMessages** используется для получения 20 сообщений в одном вызове. Затем он обрабатывает каждое сообщение с помощью цикла **foreach** . Он также задает время ожидания невидимости 5 минут для каждого сообщения. Обратите внимание, что пятиминутный период начинается для всех сообщений одновременно, поэтому по прошествии 5 минут с момента вызова **GetMessages**все сообщения, которые не были удалены, снова становятся видимыми.
+Во-первых можно получить пакет сообщений (вверх too32). Во-вторых можно задать более длинный или короткий невидимости тайм-аута, позволяя вашему коду больше или меньше toofully времени обработки каждого сообщения. Hello следующий пример кода использует **GetMessages** метод tooget 20 сообщений в одном вызове. Затем он обрабатывает каждое сообщение с помощью цикла **foreach** . Он также устанавливает минут too5 hello невидимости время ожидания для каждого сообщения. Обратите внимание, что начала hello 5 минут для всех сообщений в hello же времени, поэтому после 5 минут после вызова hello слишком**GetMessages**, все сообщения, которые не были удалены становятся видимыми.
 
     // Retrieve 20 messages at a time, keeping those messages invisible for 5 minutes, 
     //   delete each message after processing.
@@ -115,39 +115,39 @@ ms.lasthandoff: 08/29/2017
         queue.DeleteMessage(message);
     }
 
-## <a name="get-the-queue-length"></a>Получение длины очереди
-Вы можете узнать приблизительное количество сообщений в очереди. Метод **FetchAttributes** отправляет в службу очередей запрос на извлечение атрибутов очереди, включая количество сообщений. Свойство **ApproximateMethodCount** возвращает последнее значение, полученное с использованием метода **FetchAttributes**, без вызова службы очередей.
+## <a name="get-hello-queue-length"></a>Получает длину очереди hello
+Можно получить оценку hello количество сообщений в очереди. **FetchAttributes** метод запрашивает hello службы очередей для получения атрибутов hello очереди, включая количество сообщений hello. Hello **ApproximateMethodCount** свойство возвращает последнее значение hello извлекается с **FetchAttributes** метод без вызова службы очередей hello.
 
-    // Fetch the queue attributes.
+    // Fetch hello queue attributes.
     messageQueue.FetchAttributes();
 
-    // Retrieve the cached approximate message count.
+    // Retrieve hello cached approximate message count.
     int? cachedMessageCount = messageQueue.ApproximateMessageCount;
 
-    // Display the number of messages.
+    // Display hello number of messages.
     Console.WriteLine("Number of messages in queue: " + cachedMessageCount);
 
-## <a name="use-the-async-await-pattern-with-common-queue-apis"></a>Использование схемы Async-Await со стандартными API очереди
-В этом примере показано использование алгоритма Async-Await со стандартными API очередей. Пример вызывает асинхронную версию каждого заданного метода. Это можно увидеть после исправления каждого метода для асинхронного использования. При использовании асинхронного метода схема Async-Await приостанавливает локальное выполнение процесса до завершения вызова. Благодаря этому текущий поток может выполнять другие задачи, что позволяет избежать возникновения узких мест и повысить общую скорость реагирования приложения. Дополнительные сведения об использовании алгоритма Async-Await в .NET см. в статье [Асинхронное программирование с использованием ключевых слов Async и Await (C# и Visual Basic)](https://msdn.microsoft.com/library/hh191443.aspx).
+## <a name="use-hello-async-await-pattern-with-common-queue-apis"></a>Использование шаблона hello Async-Await с очередь общих API-интерфейсов
+В этом примере показано, как toouse hello Async-Await шаблоном очередь общих интерфейсов API. Hello образец вызовы hello асинхронной версии каждого hello, учитывая методы. Это можно заметить исправлением hello Async после каждого метода. При использовании асинхронного метода hello шаблон Async-Await приостанавливает локальное выполнение до завершения вызова hello. Такое поведение позволяет hello текущий поток toodo другие типы работ, который позволяет избежать проблем с производительностью и повышает общую скорость реагирования приложения hello. Дополнительные сведения об использовании hello шаблон Async-Await в .NET, см. в разделе [Async и Await (C# и Visual Basic)](https://msdn.microsoft.com/library/hh191443.aspx)
 
-    // Create a message to add to the queue.
+    // Create a message tooadd toohello queue.
     CloudQueueMessage cloudQueueMessage = new CloudQueueMessage("My message");
 
-    // Async enqueue the message.
+    // Async enqueue hello message.
     await messageQueue.AddMessageAsync(cloudQueueMessage);
     Console.WriteLine("Message added");
 
-    // Async dequeue the message.
+    // Async dequeue hello message.
     CloudQueueMessage retrievedMessage = await messageQueue.GetMessageAsync();
     Console.WriteLine("Retrieved message with content '{0}'", retrievedMessage.AsString);
 
-    // Async delete the message.
+    // Async delete hello message.
     await messageQueue.DeleteMessageAsync(retrievedMessage);
     Console.WriteLine("Deleted message");
 ## <a name="delete-a-queue"></a>Удаление очереди
-Чтобы удалить очередь и все сообщения в ней, вызовите метод **Delete** для объекта очереди.
+toodelete все сообщения hello и очереди содержащиеся в нем, вызовите метод **удалить** метод hello объекта очереди.
 
-    // Delete the queue.
+    // Delete hello queue.
     messageQueue.Delete();
 
 

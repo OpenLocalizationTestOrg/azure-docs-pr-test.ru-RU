@@ -1,6 +1,6 @@
 ---
-title: "Доступ к частным облакам Azure с помощью Visual Studio | Документация Майкрософт"
-description: "Узнайте, как получить доступ к ресурсам частного облака с помощью Visual Studio."
+title: "Частные облака Azure aaaAccessing вместе с Visual Studio | Документы Microsoft"
+description: "Узнайте, как tooaccess частные облачные ресурсы с помощью Visual Studio."
 services: visual-studio-online
 documentationcenter: na
 author: kraigb
@@ -14,42 +14,42 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 03/19/2017
 ms.author: kraigb
-ms.openlocfilehash: b2578c837732ab05d538e9b896ed3a3035075a70
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 5cfd6439afdcf98c6f7d7f29ab6c4256ed02533a
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="accessing-private-azure-clouds-with-visual-studio"></a>Доступ к частным облакам Azure с помощью Visual Studio
-По умолчанию Visual Studio поддерживает конечные точки REST общедоступных облаков Azure. В этой статье вы узнаете, как использовать сертификат частного облака для доступа к частному облаку и взаимодействия с ним через Visual Studio.
+По умолчанию Visual Studio поддерживает конечные точки REST общедоступных облаков Azure. В этом разделе вы узнаете, как toouse вашего частного облака, сертификат tooaccess - и взаимодействовать с - hello частного облака из Visual Studio.
 
-## <a name="to-access-a-private-azure-cloud-in-visual-studio"></a>Получение доступа к частному облаку Azure из Visual Studio
-1. Скачайте файл параметров публикации с [классического портала Azure](http://go.microsoft.com/fwlink/?LinkID=213885) для частного облака или запросите этот файл у администратора. В общедоступной версии Azure скачать файл можно по ссылке [https://manage.windowsazure.com/publishsettings/](https://manage.windowsazure.com/publishsettings/). (Имя скачанного файла должно иметь расширение `.publishsettings`.)
+## <a name="tooaccess-a-private-azure-cloud-in-visual-studio"></a>облако tooaccess закрытый Azure в Visual Studio
+1. В hello [классический портал Azure](http://go.microsoft.com/fwlink/?LinkID=213885) для hello частного облака, загрузите файл параметров публикации или обратитесь к администратору для файла параметров публикации. На hello общедоступной версии Azure, hello toodownload ссылки, это [https://manage.windowsazure.com/publishsettings/](https://manage.windowsazure.com/publishsettings/). (hello скачанный файл должен иметь расширение `.publishsettings`)
 
 1. Запустите Visual Studio
 
-1. В **обозревателе сервера** щелкните правой кнопкой мыши узел **Azure**, а затем выберите в контекстном меню пункт **Управление подписками и их фильтрация**.
+1. В **обозревателя серверов**, щелкните правой кнопкой мыши hello **Azure** узел и в контекстном меню hello, выберите **управление подписками и их фильтрация**.
    
     ![Команда "Управление подписками"](./media/vs-azure-tools-access-private-azure-clouds-with-visual-studio/IC790778.png)
 
-1. В диалоговом окне **Управление подписками Microsoft Azure** выберите вкладку **Сертификаты**, а затем нажмите кнопку **Импорт**.
+1. В hello **управление подписками Microsoft Azure** диалоговое окно, выберите hello **сертификаты** , а затем выберите **импорта**.
    
     ![Импорт сертификатов Azure](./media/vs-azure-tools-access-private-azure-clouds-with-visual-studio/IC790779.png)
 
-1. В диалоговом окне **Импорт подписок Microsoft Azure** нажмите кнопку **Обзор**.
+1. В hello **Импорт подписок Microsoft Azure** диалогового окна выберите **Обзор**.
 
-    ![Кнопка "Обзор" в диалоговом окне "Импорт подписок Microsoft Azure"](./media/vs-azure-tools-access-private-azure-clouds-with-visual-studio/browse-button.png)
+    ![Кнопка в диалоговом окне приветствия Импорт подписок Microsoft Azure "Обзор"](./media/vs-azure-tools-access-private-azure-clouds-with-visual-studio/browse-button.png)
 
-1. В диалоговом окне **Открытие** найдите каталог, в котором вы сохранили PUBLISHSETTINGS-файл, выберите его, а затем нажмите кнопку **Открыть**.
+1. В hello **откройте** диалогового окна обзора toohello каталог, где вы hello сохраненный файл параметров публикации, выберите hello файла, а затем выберите **откройте**.
 
-    ![Выбор PUBLISHSETTINGS-файла](./media/vs-azure-tools-access-private-azure-clouds-with-visual-studio/select-publish-settings-file.png)
+    ![Выберите файл настроек публикации hello](./media/vs-azure-tools-access-private-azure-clouds-with-visual-studio/select-publish-settings-file.png)
 
-1. Вернувшись в диалоговое окно **Импорт подписок Microsoft Azure** нажмите кнопку **Импорт**.
+1. Если возвращается toohello **Импорт подписок Microsoft Azure** диалогового окна выберите **импорта**.
 
-    ![Импорт PUBLISHSETTINGS-файла](./media/vs-azure-tools-access-private-azure-clouds-with-visual-studio/IC790780.png)
+    ![Импорт файла настроек публикации hello](./media/vs-azure-tools-access-private-azure-clouds-with-visual-studio/IC790780.png)
 
-    Сертификаты импортируются из PUBLISHSETTINGS-файла в Visual Studio, и теперь вы можете работать с ресурсами частного облака.
+    Hello сертификаты импортированы из файла настроек публикации hello в Visual Studio, и теперь можно взаимодействовать с ресурсами частного облака.
    
 ## <a name="next-steps"></a>Дальнейшие действия
-- [Публикация в облачной службе Azure из Visual Studio](https://msdn.microsoft.com/library/azure/ee460772.aspx)
+- [Tooan публикации облачной службы Azure из Visual Studio](https://msdn.microsoft.com/library/azure/ee460772.aspx)
 - [How to: Download and Import Publish Settings and Subscription Information](https://msdn.microsoft.com/library/dn385850\(v=nav.70\).aspx) (Практическое руководство. Скачивание и импорт параметров публикации и информации о подписке)

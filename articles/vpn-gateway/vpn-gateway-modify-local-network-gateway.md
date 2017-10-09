@@ -1,5 +1,5 @@
 ---
-title: "Изменение префиксов IP-адресов шлюза локальной сети и IP-адреса VPN- шлюза | Azure | PowerShell | Документация Майкрософт"
+title: "Изменить префиксов IP-адресов шлюза локальной сети hello и адрес IP-адрес шлюза VPN hello | Azure | PowerShell | Документы Microsoft"
 description: "Из этой статьи вы узнаете, как изменять префиксы IP-адресов для шлюза локальной сети с помощью PowerShell."
 services: vpn-gateway
 documentationcenter: na
@@ -15,15 +15,15 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2017
 ms.author: cherylmc
-ms.openlocfilehash: 2a095b96a8c352abeca72640d37c0d629b447763
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 1353598b39a97fae9bdb424505a5ae2560482654
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="modify-local-network-gateway-settings-using-powershell"></a>Изменение параметров шлюза локальной сети с помощью PowerShell
 
-Иногда такие параметры шлюза локальной сети, как AddressPrefix или GatewayIPAddress, могут изменяться. В этой статье описывается, как изменить параметры шлюза локальной сети. Эти параметры можно изменить с использованием другого метода, выбрав вариант из следующего списка:
+Иногда hello параметры для изменения AddressPrefix или GatewayIPAddress шлюза локальной сети. В этой статье показано, как toomodify параметры шлюза локальной сети. Также можно изменить эти параметры с помощью другого метода, выбрав другой вариант из hello после списка:
 
 > [!div class="op_single_selector"]
 > * [Портал Azure](vpn-gateway-modify-local-network-gateway-portal.md)
@@ -34,13 +34,13 @@ ms.lasthandoff: 08/18/2017
 
 ## <a name="before"></a>Перед началом работы
 
-Установите последнюю версию командлетов PowerShell для Azure Resource Manager. Дополнительные сведения об установке командлетов PowerShell см. в статье [Как установить и настроить Azure PowerShell](/powershell/azureps-cmdlets-docs).
+Установите последнюю версию hello hello командлеты PowerShell диспетчера ресурсов Azure. В разделе [как tooinstall и настройка Azure PowerShell](/powershell/azureps-cmdlets-docs) Дополнительные сведения об установке командлетов PowerShell hello.
 
 ## <a name="ipaddprefix"></a>Изменение префиксов IP-адресов
 
 [!INCLUDE [vpn-gateway-modify-ip-prefix-rm](../../includes/vpn-gateway-modify-ip-prefix-rm-include.md)]
 
-## <a name="gwip"></a>Изменение IP-адреса шлюза
+## <a name="gwip"></a>Изменение IP-адреса шлюза hello
 
 [!INCLUDE [vpn-gateway-modify-lng-gateway-ip-rm](../../includes/vpn-gateway-modify-lng-gateway-ip-rm-include.md)]
 

@@ -1,5 +1,5 @@
 ---
-title: "Общие сведения о Linux виртуальных машин | Документы Microsoft"
+title: "Общие сведения о виртуальных машинах aaaLinux | Документы Microsoft"
 description: "Справку для Обзор Linux виртуальной машины на портале Azure"
 services: virtual-machines-linux
 author: sewatson
@@ -8,19 +8,19 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 04/27/2017
 ms.author: sewatson
-ms.openlocfilehash: 0de3fc4cab53564d7d131666e4a8c0ace8a64fb8
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: f86980c9f39e1a0fbef78dbde0c60803d8ace25a
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="linux-virtual-machines-documentation"></a>Документация по виртуальным машинам Linux
 
-Виртуальные машины Linux Azure предоставляют по запросу безопасную высокомасштабируемую виртуализированную инфраструктуру с использованием Red Hat, Ubuntu или дистрибутива Linux по вашему выбору. Узнайте, как создавать, настраивать, масштабировать виртуальные машины Linux и управлять ими, используя наши шаблоны быстрого запуска, примеры и руководства.
+Виртуальные машины Azure Linux предоставляет по запросу, крупномасштабных, безопасный, виртуализированные инфраструктуры, с помощью Red Hat, Ubuntu или hello дистрибутив Linux по своему усмотрению. Узнайте, как toocreate, настройки, управления и масштабирования виртуальных машин Linux с нашей краткие руководства, учебники и образцы.
 
 ## <a name="5-minute-quickstarts"></a>5-минутные руководства по началу работы
 
-Сведения о развертывании веб сервера NGINX на виртуальной машине под управлением Ubuntu:
+Узнайте, как toodeploy NGINX веб сервера на виртуальной машине под управлением Ubuntu:
 
 - [Портал Azure](/azure/virtual-machines/virtual-machines-linux-quick-create-portal?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 - [Azure PowerShell](/azure/virtual-machines/virtual-machines-linux-quick-create-powershell?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
@@ -28,7 +28,7 @@ ms.lasthandoff: 08/03/2017
 
 ## <a name="step-by-step-tutorials"></a>Пошаговые руководства
 
-Дополнительные сведения о развертывании, управлять и масштабирования виртуальных машин Linux в Azure.
+Узнайте, как toodeploy, управлять и масштабирования виртуальных машин Linux в Azure.
 
 - [Manage Linux virtual machines with the Azure CLI](/azure/virtual-machines/linux/tutorial-manage-vm) (Управление виртуальными машинами Linux с помощью Azure CLI)
 - [Manage Azure disks with the Azure CLI](/azure/virtual-machines/linux/tutorial-manage-disks) (Управление дисками Azure с помощью Azure CLI)
@@ -51,12 +51,12 @@ ms.lasthandoff: 08/03/2017
 
 ## <a name="samples"></a>Примеры 
 
-Развертывание первого приложения в Azure.
+Развертывание вашего первого приложения tooAzure.
 
 - [Интерфейс командной строки Azure](/azure/virtual-machines/virtual-machines-linux-cli-samples)
 - [Azure PowerShell](/azure/virtual-machines/virtual-machines-linux-powershell-samples)
 
 ## <a name="more"></a>Подробнее
 
-- [Обратитесь к документации для получения дополнительных сведений](/azure/virtual-machines/linux/index)
+- [Обратитесь к документации toolearn Дополнительные](/azure/virtual-machines/linux/index)
 - [Дополнительные сведения о всех служб Azure](https://aka.ms/j3wr7y)
