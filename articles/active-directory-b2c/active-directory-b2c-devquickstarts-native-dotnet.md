@@ -1,6 +1,6 @@
 ---
-title: "Azure Active Directory B2C | Документация Майкрософт"
-description: "Инструкции по созданию приложений Windows, позволяющих пользователям выполнять вход, регистрироваться и управлять профилем, с помощью Azure Active Directory B2C."
+title: "aaaAzure Active Directory B2C | Документы Microsoft"
+description: "Как toobuild настольных приложений Windows, содержит вход, регистрации и профиль управления с помощью Azure Active Directory B2C."
 services: active-directory-b2c
 documentationcenter: .net
 author: dstrockis
@@ -14,64 +14,64 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 01/07/2017
 ms.author: dastrock
-ms.openlocfilehash: 8e2b5c704230ee2ba1395dc76a1551aaa8e7af7f
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: f22b0299ff74bfba2f3fea88f006da609859dda5
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="azure-ad-b2c-build-a-windows-desktop-app"></a><span data-ttu-id="9d308-103">Azure AD B2C: создание классического приложения Windows</span><span class="sxs-lookup"><span data-stu-id="9d308-103">Azure AD B2C: Build a Windows desktop app</span></span>
-<span data-ttu-id="9d308-104">Azure Active Directory (Azure AD) B2C позволяет добавлять в приложения мощные функции для самостоятельного управления удостоверениями.</span><span class="sxs-lookup"><span data-stu-id="9d308-104">By using Azure Active Directory (Azure AD) B2C, you can add powerful self-service identity management features to your desktop app in a few short steps.</span></span> <span data-ttu-id="9d308-105">Это можно сделать, выполнив несколько простых действий.</span><span class="sxs-lookup"><span data-stu-id="9d308-105">This article will show you how to create a .NET Windows Presentation Foundation (WPF) "to-do list" app that includes user sign-up, sign-in, and profile management.</span></span> <span data-ttu-id="9d308-106">В этой статье описывается, как создать приложение .NET WPF "Список дел", которое предусматривает регистрацию и вход пользователя, а также управление профилем.</span><span class="sxs-lookup"><span data-stu-id="9d308-106">The app will include support for sign-up and sign-in by using a user name or email.</span></span> <span data-ttu-id="9d308-107">Приложение будет поддерживать регистрацию и вход в систему по имени пользователя или адресу электронной почты, а также по учетной записи в социальной сети, такой как Facebook или Google.</span><span class="sxs-lookup"><span data-stu-id="9d308-107">It will also include support for sign-up and sign-in by using social accounts such as Facebook and Google.</span></span>
+# <a name="azure-ad-b2c-build-a-windows-desktop-app"></a><span data-ttu-id="13883-103">Azure AD B2C: создание классического приложения Windows</span><span class="sxs-lookup"><span data-stu-id="13883-103">Azure AD B2C: Build a Windows desktop app</span></span>
+<span data-ttu-id="13883-104">С помощью B2C Azure Active Directory (Azure AD), можно добавить классического приложения функции управления tooyour мощные самообслуживания идентификаторов в несколько простых шагов.</span><span class="sxs-lookup"><span data-stu-id="13883-104">By using Azure Active Directory (Azure AD) B2C, you can add powerful self-service identity management features tooyour desktop app in a few short steps.</span></span> <span data-ttu-id="13883-105">В этой статье будет показано, как toocreate приложение .NET Windows Presentation Foundation (WPF) «список дел», которое включает в себя пользователя регистрации, вход и управление профилями пользователей.</span><span class="sxs-lookup"><span data-stu-id="13883-105">This article will show you how toocreate a .NET Windows Presentation Foundation (WPF) "to-do list" app that includes user sign-up, sign-in, and profile management.</span></span> <span data-ttu-id="13883-106">приложение Hello будет включать поддержку для регистрации и входа с помощью электронной почты или имя пользователя.</span><span class="sxs-lookup"><span data-stu-id="13883-106">hello app will include support for sign-up and sign-in by using a user name or email.</span></span> <span data-ttu-id="13883-107">Приложение будет поддерживать регистрацию и вход в систему по имени пользователя или адресу электронной почты, а также по учетной записи в социальной сети, такой как Facebook или Google.</span><span class="sxs-lookup"><span data-stu-id="13883-107">It will also include support for sign-up and sign-in by using social accounts such as Facebook and Google.</span></span>
 
-## <a name="get-an-azure-ad-b2c-directory"></a><span data-ttu-id="9d308-108">Создание каталога Azure AD B2C</span><span class="sxs-lookup"><span data-stu-id="9d308-108">Get an Azure AD B2C directory</span></span>
-<span data-ttu-id="9d308-109">Перед использованием Azure AD B2C необходимо создать каталог или клиент.</span><span class="sxs-lookup"><span data-stu-id="9d308-109">Before you can use Azure AD B2C, you must create a directory, or tenant.</span></span>  <span data-ttu-id="9d308-110">Каталог — это контейнер для данных всех ваших пользователей, приложений, групп и т. д.</span><span class="sxs-lookup"><span data-stu-id="9d308-110">A directory is a container for all of your users, apps, groups, and more.</span></span> <span data-ttu-id="9d308-111">Прежде чем продолжать работу с руководством, [создайте каталог B2C](active-directory-b2c-get-started.md), если вы его еще не создали.</span><span class="sxs-lookup"><span data-stu-id="9d308-111">If you don't have one already, [create a B2C directory](active-directory-b2c-get-started.md) before you continue in this guide.</span></span>
+## <a name="get-an-azure-ad-b2c-directory"></a><span data-ttu-id="13883-108">Создание каталога Azure AD B2C</span><span class="sxs-lookup"><span data-stu-id="13883-108">Get an Azure AD B2C directory</span></span>
+<span data-ttu-id="13883-109">Перед использованием Azure AD B2C необходимо создать каталог или клиент.</span><span class="sxs-lookup"><span data-stu-id="13883-109">Before you can use Azure AD B2C, you must create a directory, or tenant.</span></span>  <span data-ttu-id="13883-110">Каталог — это контейнер для данных всех ваших пользователей, приложений, групп и т. д.</span><span class="sxs-lookup"><span data-stu-id="13883-110">A directory is a container for all of your users, apps, groups, and more.</span></span> <span data-ttu-id="13883-111">Прежде чем продолжать работу с руководством, [создайте каталог B2C](active-directory-b2c-get-started.md), если вы его еще не создали.</span><span class="sxs-lookup"><span data-stu-id="13883-111">If you don't have one already, [create a B2C directory](active-directory-b2c-get-started.md) before you continue in this guide.</span></span>
 
-## <a name="create-an-application"></a><span data-ttu-id="9d308-112">Создание приложения</span><span class="sxs-lookup"><span data-stu-id="9d308-112">Create an application</span></span>
-<span data-ttu-id="9d308-113">Затем необходимо создать приложение в каталоге B2C.</span><span class="sxs-lookup"><span data-stu-id="9d308-113">Next, you need to create an app in your B2C directory.</span></span> <span data-ttu-id="9d308-114">Это дает Azure AD информацию, необходимую для безопасного взаимодействия с вашим приложением.</span><span class="sxs-lookup"><span data-stu-id="9d308-114">This gives Azure AD information that it needs to securely communicate with your app.</span></span> <span data-ttu-id="9d308-115">Чтобы создать приложение, следуйте [этим инструкциям](active-directory-b2c-app-registration.md).</span><span class="sxs-lookup"><span data-stu-id="9d308-115">To create an app, follow [these instructions](active-directory-b2c-app-registration.md).</span></span>  <span data-ttu-id="9d308-116">Не забудьте сделать следующее.</span><span class="sxs-lookup"><span data-stu-id="9d308-116">Be sure to:</span></span>
+## <a name="create-an-application"></a><span data-ttu-id="13883-112">Создание приложения</span><span class="sxs-lookup"><span data-stu-id="13883-112">Create an application</span></span>
+<span data-ttu-id="13883-113">Далее необходимо toocreate приложения в каталоге B2C.</span><span class="sxs-lookup"><span data-stu-id="13883-113">Next, you need toocreate an app in your B2C directory.</span></span> <span data-ttu-id="13883-114">Это дает сведения о Azure AD, что его нуждается toosecurely взаимодействовать с приложением.</span><span class="sxs-lookup"><span data-stu-id="13883-114">This gives Azure AD information that it needs toosecurely communicate with your app.</span></span> <span data-ttu-id="13883-115">toocreate приложения, выполните [эти инструкции](active-directory-b2c-app-registration.md).</span><span class="sxs-lookup"><span data-stu-id="13883-115">toocreate an app, follow [these instructions](active-directory-b2c-app-registration.md).</span></span>  <span data-ttu-id="13883-116">Не забудьте сделать следующее.</span><span class="sxs-lookup"><span data-stu-id="13883-116">Be sure to:</span></span>
 
-* <span data-ttu-id="9d308-117">Включите в приложение **собственный клиент** .</span><span class="sxs-lookup"><span data-stu-id="9d308-117">Include a **native client** in the application.</span></span>
-* <span data-ttu-id="9d308-118">Скопируйте **URI перенаправления** `urn:ietf:wg:oauth:2.0:oob`.</span><span class="sxs-lookup"><span data-stu-id="9d308-118">Copy the **Redirect URI** `urn:ietf:wg:oauth:2.0:oob`.</span></span> <span data-ttu-id="9d308-119">Это URL-адрес по умолчанию для данного примера кода.</span><span class="sxs-lookup"><span data-stu-id="9d308-119">It is the default URL for this code sample.</span></span>
-* <span data-ttu-id="9d308-120">Скопируйте **идентификатор приложения** , назначенный приложению.</span><span class="sxs-lookup"><span data-stu-id="9d308-120">Copy the **Application ID** that is assigned to your app.</span></span> <span data-ttu-id="9d308-121">Оно понадобится вам позднее.</span><span class="sxs-lookup"><span data-stu-id="9d308-121">You will need it later.</span></span>
+* <span data-ttu-id="13883-117">Включить **собственного клиента** в приложение hello.</span><span class="sxs-lookup"><span data-stu-id="13883-117">Include a **native client** in hello application.</span></span>
+* <span data-ttu-id="13883-118">Копировать hello **URI перенаправления** `urn:ietf:wg:oauth:2.0:oob`.</span><span class="sxs-lookup"><span data-stu-id="13883-118">Copy hello **Redirect URI** `urn:ietf:wg:oauth:2.0:oob`.</span></span> <span data-ttu-id="13883-119">Это URL-адрес по умолчанию hello для этого примера кода.</span><span class="sxs-lookup"><span data-stu-id="13883-119">It is hello default URL for this code sample.</span></span>
+* <span data-ttu-id="13883-120">Копировать hello **идентификатор приложения** , назначенный tooyour приложения.</span><span class="sxs-lookup"><span data-stu-id="13883-120">Copy hello **Application ID** that is assigned tooyour app.</span></span> <span data-ttu-id="13883-121">Оно понадобится вам позднее.</span><span class="sxs-lookup"><span data-stu-id="13883-121">You will need it later.</span></span>
 
 [!INCLUDE [active-directory-b2c-devquickstarts-v2-apps](../../includes/active-directory-b2c-devquickstarts-v2-apps.md)]
 
-## <a name="create-your-policies"></a><span data-ttu-id="9d308-122">Создание политик</span><span class="sxs-lookup"><span data-stu-id="9d308-122">Create your policies</span></span>
-<span data-ttu-id="9d308-123">В Azure AD B2C любое взаимодействие с пользователем определяется [политикой](active-directory-b2c-reference-policies.md).</span><span class="sxs-lookup"><span data-stu-id="9d308-123">In Azure AD B2C, every user experience is defined by a [policy](active-directory-b2c-reference-policies.md).</span></span> <span data-ttu-id="9d308-124">Этот пример кода включает три способа идентификации: регистрацию, вход в систему и изменение профиля.</span><span class="sxs-lookup"><span data-stu-id="9d308-124">This code sample contains three identity experiences: sign up, sign in, and edit profile.</span></span> <span data-ttu-id="9d308-125">Вам необходимо создать по одной политике для каждого типа, как описано в [справочнике по политикам](active-directory-b2c-reference-policies.md#create-a-sign-up-policy).</span><span class="sxs-lookup"><span data-stu-id="9d308-125">You need to create a policy for each type, as described in the [policy reference article](active-directory-b2c-reference-policies.md#create-a-sign-up-policy).</span></span> <span data-ttu-id="9d308-126">При создании трех необходимых политик обязательно сделайте следующее:</span><span class="sxs-lookup"><span data-stu-id="9d308-126">When you create the three policies, be sure to:</span></span>
+## <a name="create-your-policies"></a><span data-ttu-id="13883-122">Создание политик</span><span class="sxs-lookup"><span data-stu-id="13883-122">Create your policies</span></span>
+<span data-ttu-id="13883-123">В Azure AD B2C любое взаимодействие с пользователем определяется [политикой](active-directory-b2c-reference-policies.md).</span><span class="sxs-lookup"><span data-stu-id="13883-123">In Azure AD B2C, every user experience is defined by a [policy](active-directory-b2c-reference-policies.md).</span></span> <span data-ttu-id="13883-124">Этот пример кода включает три способа идентификации: регистрацию, вход в систему и изменение профиля.</span><span class="sxs-lookup"><span data-stu-id="13883-124">This code sample contains three identity experiences: sign up, sign in, and edit profile.</span></span> <span data-ttu-id="13883-125">Необходимо toocreate политики для каждого типа, как описано в [статье политики](active-directory-b2c-reference-policies.md#create-a-sign-up-policy).</span><span class="sxs-lookup"><span data-stu-id="13883-125">You need toocreate a policy for each type, as described in the [policy reference article](active-directory-b2c-reference-policies.md#create-a-sign-up-policy).</span></span> <span data-ttu-id="13883-126">При создании hello три политики, нужно убедиться, что:</span><span class="sxs-lookup"><span data-stu-id="13883-126">When you create hello three policies, be sure to:</span></span>
 
-* <span data-ttu-id="9d308-127">В колонке поставщиков удостоверений выберите **User ID sign-up** (Регистрация с помощью идентификатора пользователя) или **Email sign-up** (Регистрация по электронной почте).</span><span class="sxs-lookup"><span data-stu-id="9d308-127">Choose either **User ID sign-up** or **Email sign-up** in the identity providers blade.</span></span>
-* <span data-ttu-id="9d308-128">В политике регистрации укажите **отображаемое имя** и другие атрибуты регистрации.</span><span class="sxs-lookup"><span data-stu-id="9d308-128">Choose **Display name** and other sign-up attributes in your sign-up policy.</span></span>
-* <span data-ttu-id="9d308-129">В каждой политике в качестве утверждения приложения выберите утверждения **Отображаемое имя** и **Идентификатор объекта**.</span><span class="sxs-lookup"><span data-stu-id="9d308-129">Choose **Display name** and **Object ID** claims as application claims for every policy.</span></span> <span data-ttu-id="9d308-130">Можно также выбрать другие утверждения.</span><span class="sxs-lookup"><span data-stu-id="9d308-130">You can choose other claims as well.</span></span>
-* <span data-ttu-id="9d308-131">Скопируйте **имя** каждой созданной политики.</span><span class="sxs-lookup"><span data-stu-id="9d308-131">Copy the **Name** of each policy after you create it.</span></span> <span data-ttu-id="9d308-132">У него должен быть префикс `b2c_1_`.</span><span class="sxs-lookup"><span data-stu-id="9d308-132">It should have the prefix `b2c_1_`.</span></span>  <span data-ttu-id="9d308-133">Эти имена политик понадобятся вам через некоторое время.</span><span class="sxs-lookup"><span data-stu-id="9d308-133">You'll need these policy names later.</span></span>
+* <span data-ttu-id="13883-127">Выберите либо **регистрации идентификатора пользователя** или **электронной почты регистрации** в колонке Поставщики удостоверений hello.</span><span class="sxs-lookup"><span data-stu-id="13883-127">Choose either **User ID sign-up** or **Email sign-up** in hello identity providers blade.</span></span>
+* <span data-ttu-id="13883-128">В политике регистрации укажите **отображаемое имя** и другие атрибуты регистрации.</span><span class="sxs-lookup"><span data-stu-id="13883-128">Choose **Display name** and other sign-up attributes in your sign-up policy.</span></span>
+* <span data-ttu-id="13883-129">В каждой политике в качестве утверждения приложения выберите утверждения **Отображаемое имя** и **Идентификатор объекта**.</span><span class="sxs-lookup"><span data-stu-id="13883-129">Choose **Display name** and **Object ID** claims as application claims for every policy.</span></span> <span data-ttu-id="13883-130">Можно также выбрать другие утверждения.</span><span class="sxs-lookup"><span data-stu-id="13883-130">You can choose other claims as well.</span></span>
+* <span data-ttu-id="13883-131">Копировать hello **имя** каждой политики, после его создания.</span><span class="sxs-lookup"><span data-stu-id="13883-131">Copy hello **Name** of each policy after you create it.</span></span> <span data-ttu-id="13883-132">Он должен иметь префикс hello `b2c_1_`.</span><span class="sxs-lookup"><span data-stu-id="13883-132">It should have hello prefix `b2c_1_`.</span></span>  <span data-ttu-id="13883-133">Эти имена политик понадобятся вам через некоторое время.</span><span class="sxs-lookup"><span data-stu-id="13883-133">You'll need these policy names later.</span></span>
 
 [!INCLUDE [active-directory-b2c-devquickstarts-policy](../../includes/active-directory-b2c-devquickstarts-policy.md)]
 
-<span data-ttu-id="9d308-134">Создав три политики, можно приступать к созданию приложения.</span><span class="sxs-lookup"><span data-stu-id="9d308-134">After you have successfully created the three policies, you're ready to build your app.</span></span>
+<span data-ttu-id="13883-134">После успешного создания hello три политики, вы будете готовы toobuild приложения.</span><span class="sxs-lookup"><span data-stu-id="13883-134">After you have successfully created hello three policies, you're ready toobuild your app.</span></span>
 
-## <a name="download-the-code"></a><span data-ttu-id="9d308-135">Загрузка кода</span><span class="sxs-lookup"><span data-stu-id="9d308-135">Download the code</span></span>
-<span data-ttu-id="9d308-136">Код для этого руководства размещен на портале [GitHub](https://github.com/AzureADQuickStarts/B2C-NativeClient-DotNet).</span><span class="sxs-lookup"><span data-stu-id="9d308-136">The code for this tutorial [is maintained on GitHub](https://github.com/AzureADQuickStarts/B2C-NativeClient-DotNet).</span></span> <span data-ttu-id="9d308-137">Чтобы выполнить сборку примера, [скачайте схему проекта в ZIP-архиве](https://github.com/AzureADQuickStarts/B2C-NativeClient-DotNet/archive/skeleton.zip).</span><span class="sxs-lookup"><span data-stu-id="9d308-137">To build the sample as you go, you can [download a skeleton project as a .zip file](https://github.com/AzureADQuickStarts/B2C-NativeClient-DotNet/archive/skeleton.zip).</span></span> <span data-ttu-id="9d308-138">Ее также можно клонировать:</span><span class="sxs-lookup"><span data-stu-id="9d308-138">You can also clone the skeleton:</span></span>
+## <a name="download-hello-code"></a><span data-ttu-id="13883-135">Загрузка кода hello</span><span class="sxs-lookup"><span data-stu-id="13883-135">Download hello code</span></span>
+<span data-ttu-id="13883-136">Здравствуйте, код для этого учебника [сохраняется на сайте GitHub](https://github.com/AzureADQuickStarts/B2C-NativeClient-DotNet).</span><span class="sxs-lookup"><span data-stu-id="13883-136">hello code for this tutorial [is maintained on GitHub](https://github.com/AzureADQuickStarts/B2C-NativeClient-DotNet).</span></span> <span data-ttu-id="13883-137">Образец hello toobuild как можно перейти, вы можете [загрузить каркас проект как ZIP-файл](https://github.com/AzureADQuickStarts/B2C-NativeClient-DotNet/archive/skeleton.zip).</span><span class="sxs-lookup"><span data-stu-id="13883-137">toobuild hello sample as you go, you can [download a skeleton project as a .zip file](https://github.com/AzureADQuickStarts/B2C-NativeClient-DotNet/archive/skeleton.zip).</span></span> <span data-ttu-id="13883-138">Также можно клонировать основу hello:</span><span class="sxs-lookup"><span data-stu-id="13883-138">You can also clone hello skeleton:</span></span>
 
 ```
 git clone --branch skeleton https://github.com/AzureADQuickStarts/B2C-NativeClient-DotNet.git
 ```
 
-<span data-ttu-id="9d308-139">Кроме того, можно скачать готовое приложение [в виде ZIP-архива](https://github.com/AzureADQuickStarts/B2C-NativeClient-DotNet/archive/complete.zip) или получить его из ветви `complete` того же репозитория.</span><span class="sxs-lookup"><span data-stu-id="9d308-139">The completed app is also [available as a .zip file](https://github.com/AzureADQuickStarts/B2C-NativeClient-DotNet/archive/complete.zip) or on the `complete` branch of the same repository.</span></span>
+<span data-ttu-id="13883-139">также является приложение Hello завершения [доступны как ZIP-файл](https://github.com/AzureADQuickStarts/B2C-NativeClient-DotNet/archive/complete.zip) или на hello `complete` ветви hello одного репозитория.</span><span class="sxs-lookup"><span data-stu-id="13883-139">hello completed app is also [available as a .zip file](https://github.com/AzureADQuickStarts/B2C-NativeClient-DotNet/archive/complete.zip) or on hello `complete` branch of hello same repository.</span></span>
 
-<span data-ttu-id="9d308-140">Скачав пример кода, откройте SLN-файл Visual Studio, чтобы начать работу.</span><span class="sxs-lookup"><span data-stu-id="9d308-140">After you download the sample code, open the Visual Studio .sln file to get started.</span></span> <span data-ttu-id="9d308-141">Проект `TaskClient` — это классическое приложение WPF, с которым взаимодействует пользователь.</span><span class="sxs-lookup"><span data-stu-id="9d308-141">The `TaskClient` project is the WPF desktop application that the user interacts with.</span></span> <span data-ttu-id="9d308-142">В рамках этого руководства оно вызывает веб-API задачи серверной части (размещено в Azure) со списком дел для каждого пользователя.</span><span class="sxs-lookup"><span data-stu-id="9d308-142">For the purposes of this tutorial, it calls a back-end task web API, hosted in Azure, that stores each user's to-do list.</span></span>  <span data-ttu-id="9d308-143">Вам не нужно создавать веб-API — мы предлагаем готовое решение.</span><span class="sxs-lookup"><span data-stu-id="9d308-143">You do not need to build the web API, we already have it running for you.</span></span>
+<span data-ttu-id="13883-140">После загрузки кода образца hello запущен tooget файл .sln Visual Studio откройте hello.</span><span class="sxs-lookup"><span data-stu-id="13883-140">After you download hello sample code, open hello Visual Studio .sln file tooget started.</span></span> <span data-ttu-id="13883-141">Hello `TaskClient` проект является hello классическое приложение WPF, hello пользователь взаимодействует с.</span><span class="sxs-lookup"><span data-stu-id="13883-141">hello `TaskClient` project is hello WPF desktop application that hello user interacts with.</span></span> <span data-ttu-id="13883-142">Для целей этого учебника hello он вызывает задачу серверной части веб-API, размещенных в Azure, который хранит список дел каждого пользователя.</span><span class="sxs-lookup"><span data-stu-id="13883-142">For hello purposes of this tutorial, it calls a back-end task web API, hosted in Azure, that stores each user's to-do list.</span></span>  <span data-ttu-id="13883-143">Нет необходимости toobuild hello веб-API, у нас уже есть она запущена.</span><span class="sxs-lookup"><span data-stu-id="13883-143">You do not need toobuild hello web API, we already have it running for you.</span></span>
 
-<span data-ttu-id="9d308-144">Сведения о том, как веб-API надежно выполняет проверку подлинности запросов с помощью Azure AD B2C, см. в [статье о начале работы с веб-API](active-directory-b2c-devquickstarts-api-dotnet.md).</span><span class="sxs-lookup"><span data-stu-id="9d308-144">To learn how a web API securely authenticates requests by using Azure AD B2C, check out the [web API getting started article](active-directory-b2c-devquickstarts-api-dotnet.md).</span></span>
+<span data-ttu-id="13883-144">toolearn как веб-API безопасно проверка подлинности запросов с помощью Azure AD B2C извлечь [веб-API Приступая к работе статьи](active-directory-b2c-devquickstarts-api-dotnet.md).</span><span class="sxs-lookup"><span data-stu-id="13883-144">toolearn how a web API securely authenticates requests by using Azure AD B2C, check out the [web API getting started article](active-directory-b2c-devquickstarts-api-dotnet.md).</span></span>
 
-## <a name="execute-policies"></a><span data-ttu-id="9d308-145">Выполнение политик</span><span class="sxs-lookup"><span data-stu-id="9d308-145">Execute policies</span></span>
-<span data-ttu-id="9d308-146">Приложение взаимодействует с Azure AD B2C, отправляя сообщения проверки подлинности. В этих сообщениях указана политика, которую необходимо выполнить как часть HTTP-запроса.</span><span class="sxs-lookup"><span data-stu-id="9d308-146">Your app communicates with Azure AD B2C by sending authentication messages that specify the policy they want to execute as part of the HTTP request.</span></span> <span data-ttu-id="9d308-147">Для классических приложений .NET можно использовать библиотеку проверки подлинности Майкрософт (MSAL), чтобы отправлять сообщения проверки подлинности OAuth 2.0, выполнять политики и получать маркеры для вызова веб-API.</span><span class="sxs-lookup"><span data-stu-id="9d308-147">For .NET desktop applications, you can use the preview Microsoft Authentication Library (MSAL) to send OAuth 2.0 authentication messages, execute policies, and get tokens that call web APIs.</span></span>
+## <a name="execute-policies"></a><span data-ttu-id="13883-145">Выполнение политик</span><span class="sxs-lookup"><span data-stu-id="13883-145">Execute policies</span></span>
+<span data-ttu-id="13883-146">Приложение взаимодействует с Azure AD B2C, отправляя сообщения проверки подлинности, укажите политику hello требуемый tooexecute hello HTTP-запроса.</span><span class="sxs-lookup"><span data-stu-id="13883-146">Your app communicates with Azure AD B2C by sending authentication messages that specify hello policy they want tooexecute as part of hello HTTP request.</span></span> <span data-ttu-id="13883-147">Для классических приложений .NET, можно использовать hello Предварительный просмотр сообщения проверки подлинности OAuth 2.0 toosend библиотеки проверки подлинности Microsoft (MSAL), выполнение политик и получения маркеров, которые вызывают веб-API-интерфейсы.</span><span class="sxs-lookup"><span data-stu-id="13883-147">For .NET desktop applications, you can use hello preview Microsoft Authentication Library (MSAL) toosend OAuth 2.0 authentication messages, execute policies, and get tokens that call web APIs.</span></span>
 
-### <a name="install-msal"></a><span data-ttu-id="9d308-148">Установка MSAL</span><span class="sxs-lookup"><span data-stu-id="9d308-148">Install MSAL</span></span>
-<span data-ttu-id="9d308-149">Добавьте MSAL в проект `TaskClient` с помощью консоли диспетчера пакетов Visual Studio.</span><span class="sxs-lookup"><span data-stu-id="9d308-149">Add MSAL to the `TaskClient` project by using the Visual Studio Package Manager Console.</span></span>
+### <a name="install-msal"></a><span data-ttu-id="13883-148">Установка MSAL</span><span class="sxs-lookup"><span data-stu-id="13883-148">Install MSAL</span></span>
+<span data-ttu-id="13883-149">Добавить MSAL toohello `TaskClient` проекта с помощью консоли диспетчера пакетов Visual Studio hello.</span><span class="sxs-lookup"><span data-stu-id="13883-149">Add MSAL toohello `TaskClient` project by using hello Visual Studio Package Manager Console.</span></span>
 
 ```
 PM> Install-Package Microsoft.Identity.Client -IncludePrerelease
 ```
 
-### <a name="enter-your-b2c-details"></a><span data-ttu-id="9d308-150">Ввод данных B2C</span><span class="sxs-lookup"><span data-stu-id="9d308-150">Enter your B2C details</span></span>
-<span data-ttu-id="9d308-151">Откройте файл `Globals.cs` и замените все значения свойств собственными.</span><span class="sxs-lookup"><span data-stu-id="9d308-151">Open the file `Globals.cs` and replace each of the property values with your own.</span></span> <span data-ttu-id="9d308-152">Этот класс применяется для создания ссылки на часто используемые значения во всем проекте `TaskClient` .</span><span class="sxs-lookup"><span data-stu-id="9d308-152">This class is used throughout `TaskClient` to reference commonly used values.</span></span>
+### <a name="enter-your-b2c-details"></a><span data-ttu-id="13883-150">Ввод данных B2C</span><span class="sxs-lookup"><span data-stu-id="13883-150">Enter your B2C details</span></span>
+<span data-ttu-id="13883-151">Привет открыть файл `Globals.cs` и замените все значения свойств hello свои собственные.</span><span class="sxs-lookup"><span data-stu-id="13883-151">Open hello file `Globals.cs` and replace each of hello property values with your own.</span></span> <span data-ttu-id="13883-152">Этот класс используется во всех `TaskClient` tooreference часто используемых значений.</span><span class="sxs-lookup"><span data-stu-id="13883-152">This class is used throughout `TaskClient` tooreference commonly used values.</span></span>
 
 ```C#
 public static class Globals
@@ -91,8 +91,8 @@ public static class Globals
 
 [!INCLUDE [active-directory-b2c-devquickstarts-tenant-name](../../includes/active-directory-b2c-devquickstarts-tenant-name.md)]
 
-### <a name="create-the-publicclientapplication"></a><span data-ttu-id="9d308-153">Создание PublicClientApplication</span><span class="sxs-lookup"><span data-stu-id="9d308-153">Create the PublicClientApplication</span></span>
-<span data-ttu-id="9d308-154">Основной класс MSAL — это `PublicClientApplication`.</span><span class="sxs-lookup"><span data-stu-id="9d308-154">The primary class of MSAL is `PublicClientApplication`.</span></span> <span data-ttu-id="9d308-155">Этот класс представляет приложение в системе Azure AD B2C.</span><span class="sxs-lookup"><span data-stu-id="9d308-155">This class represents your application in the Azure AD B2C system.</span></span> <span data-ttu-id="9d308-156">При запуске приложения создайте экземпляр `PublicClientApplication` в `MainWindow.xaml.cs`.</span><span class="sxs-lookup"><span data-stu-id="9d308-156">When the app initalizes, create an instance of `PublicClientApplication` in `MainWindow.xaml.cs`.</span></span> <span data-ttu-id="9d308-157">Его можно использовать для выполнения всех действий в этом окне.</span><span class="sxs-lookup"><span data-stu-id="9d308-157">This can be used throughout the window.</span></span>
+### <a name="create-hello-publicclientapplication"></a><span data-ttu-id="13883-153">Создать hello PublicClientApplication</span><span class="sxs-lookup"><span data-stu-id="13883-153">Create hello PublicClientApplication</span></span>
+<span data-ttu-id="13883-154">основной класс Hello MSAL: `PublicClientApplication`.</span><span class="sxs-lookup"><span data-stu-id="13883-154">hello primary class of MSAL is `PublicClientApplication`.</span></span> <span data-ttu-id="13883-155">Этот класс представляет приложение в системе hello Azure AD B2C.</span><span class="sxs-lookup"><span data-stu-id="13883-155">This class represents your application in hello Azure AD B2C system.</span></span> <span data-ttu-id="13883-156">Когда hello Инициализирует приложение, создайте экземпляр класса `PublicClientApplication` в `MainWindow.xaml.cs`.</span><span class="sxs-lookup"><span data-stu-id="13883-156">When hello app initalizes, create an instance of `PublicClientApplication` in `MainWindow.xaml.cs`.</span></span> <span data-ttu-id="13883-157">Это можно использовать в окне приветствия.</span><span class="sxs-lookup"><span data-stu-id="13883-157">This can be used throughout hello window.</span></span>
 
 ```C#
 protected async override void OnInitialized(EventArgs e)
@@ -101,16 +101,16 @@ protected async override void OnInitialized(EventArgs e)
 
     pca = new PublicClientApplication(Globals.clientId)
     {
-        // MSAL implements an in-memory cache by default.  Since we want tokens to persist when the user closes the app,
-        // we've extended the MSAL TokenCache and created a simple FileCache in this app.
+        // MSAL implements an in-memory cache by default.  Since we want tokens toopersist when hello user closes hello app,
+        // we've extended hello MSAL TokenCache and created a simple FileCache in this app.
         UserTokenCache = new FileCache(),
     };
 
     ...
 ```
 
-### <a name="initiate-a-sign-up-flow"></a><span data-ttu-id="9d308-158">Запуск потока регистрации</span><span class="sxs-lookup"><span data-stu-id="9d308-158">Initiate a sign-up flow</span></span>
-<span data-ttu-id="9d308-159">Нам нужно, чтобы, когда пользователь нажимал кнопку регистрации, инициировался созданный нами поток регистрации.</span><span class="sxs-lookup"><span data-stu-id="9d308-159">When a user opts to signs up, you want to initiate a sign-up flow that uses the sign-up policy you created.</span></span> <span data-ttu-id="9d308-160">Для этого требуется только вызов метода `pca.AcquireTokenAsync(...)`с помощью MSAL.</span><span class="sxs-lookup"><span data-stu-id="9d308-160">By using MSAL, you just call `pca.AcquireTokenAsync(...)`.</span></span> <span data-ttu-id="9d308-161">Параметры, передаваемые в метод `AcquireTokenAsync(...)` , определяют, какой маркер вы получите, какая политика будет использована в запросе проверки подлинности, а также другие данные.</span><span class="sxs-lookup"><span data-stu-id="9d308-161">The parameters you pass to `AcquireTokenAsync(...)` determine which token you receive, the policy used in the authentication request, and more.</span></span>
+### <a name="initiate-a-sign-up-flow"></a><span data-ttu-id="13883-158">Запуск потока регистрации</span><span class="sxs-lookup"><span data-stu-id="13883-158">Initiate a sign-up flow</span></span>
+<span data-ttu-id="13883-159">Когда пользователь соглашается toosigns вверх, нужно tooinitiate регистрации потока, в котором применяется созданной вами политикой регистрации hello.</span><span class="sxs-lookup"><span data-stu-id="13883-159">When a user opts toosigns up, you want tooinitiate a sign-up flow that uses hello sign-up policy you created.</span></span> <span data-ttu-id="13883-160">Для этого требуется только вызов метода `pca.AcquireTokenAsync(...)`с помощью MSAL.</span><span class="sxs-lookup"><span data-stu-id="13883-160">By using MSAL, you just call `pca.AcquireTokenAsync(...)`.</span></span> <span data-ttu-id="13883-161">Здравствуйте, параметры, можно передать слишком`AcquireTokenAsync(...)` определить, какой токен появляется, hello политику, используемую в запрос проверки подлинности hello и многое другое.</span><span class="sxs-lookup"><span data-stu-id="13883-161">hello parameters you pass too`AcquireTokenAsync(...)` determine which token you receive, hello policy used in hello authentication request, and more.</span></span>
 
 ```C#
 private async void SignUp(object sender, RoutedEventArgs e)
@@ -118,29 +118,29 @@ private async void SignUp(object sender, RoutedEventArgs e)
     AuthenticationResult result = null;
     try
     {
-        // Use the app's clientId here as the scope parameter, indicating that
-        // you want a token to the your app's backend web API (represented by
-        // the cloud hosted task API).  Use the UiOptions.ForceLogin flag to
-        // indicate to MSAL that it should show a sign-up UI no matter what.
+        // Use hello app's clientId here as hello scope parameter, indicating that
+        // you want a token toohello your app's backend web API (represented by
+        // hello cloud hosted task API).  Use hello UiOptions.ForceLogin flag to
+        // indicate tooMSAL that it should show a sign-up UI no matter what.
         result = await pca.AcquireTokenAsync(new string[] { Globals.clientId },
                 string.Empty, UiOptions.ForceLogin, null, null, Globals.authority,
                 Globals.signUpPolicy);
 
-        // Upon success, indicate in the app that the user is signed in.
+        // Upon success, indicate in hello app that hello user is signed in.
         SignInButton.Visibility = Visibility.Collapsed;
         SignUpButton.Visibility = Visibility.Collapsed;
         EditProfileButton.Visibility = Visibility.Visible;
         SignOutButton.Visibility = Visibility.Visible;
 
-        // When the request completes successfully, you can get user
-        // information from the AuthenticationResult
+        // When hello request completes successfully, you can get user
+        // information from hello AuthenticationResult
         UsernameLabel.Content = result.User.Name;
 
-        // After the sign up successfully completes, display the user's To-Do List
+        // After hello sign up successfully completes, display hello user's To-Do List
         GetTodoList();
     }
 
-    // Handle any exeptions that occurred during execution of the policy.
+    // Handle any exeptions that occurred during execution of hello policy.
     catch (MsalException ex)
     {
         if (ex.ErrorCode != "authentication_canceled")
@@ -160,8 +160,8 @@ private async void SignUp(object sender, RoutedEventArgs e)
 }
 ```
 
-### <a name="initiate-a-sign-in-flow"></a><span data-ttu-id="9d308-162">Инициация потока входа</span><span class="sxs-lookup"><span data-stu-id="9d308-162">Initiate a sign-in flow</span></span>
-<span data-ttu-id="9d308-163">Поток входа инициируется таким же образом, как и поток регистрации.</span><span class="sxs-lookup"><span data-stu-id="9d308-163">You can initiate a sign-in flow in the same way that you initiate a sign-up flow.</span></span> <span data-ttu-id="9d308-164">При входе пользователя будет выполнен тот же вызов в MSAL, но на этот раз с использованием политики входа:</span><span class="sxs-lookup"><span data-stu-id="9d308-164">When a user signs in, make the same call to MSAL, this time by using your sign-in policy:</span></span>
+### <a name="initiate-a-sign-in-flow"></a><span data-ttu-id="13883-162">Инициация потока входа</span><span class="sxs-lookup"><span data-stu-id="13883-162">Initiate a sign-in flow</span></span>
+<span data-ttu-id="13883-163">Можно выполнить вход в потоке hello так же, как запустить регистрации потока.</span><span class="sxs-lookup"><span data-stu-id="13883-163">You can initiate a sign-in flow in hello same way that you initiate a sign-up flow.</span></span> <span data-ttu-id="13883-164">При входе в систему пользователя сделать hello же вызвать tooMSAL, с использованием политики входа:</span><span class="sxs-lookup"><span data-stu-id="13883-164">When a user signs in, make hello same call tooMSAL, this time by using your sign-in policy:</span></span>
 
 ```C#
 private async void SignIn(object sender = null, RoutedEventArgs args = null)
@@ -175,8 +175,8 @@ private async void SignIn(object sender = null, RoutedEventArgs args = null)
         ...
 ```
 
-### <a name="initiate-an-edit-profile-flow"></a><span data-ttu-id="9d308-165">Инициирование потока изменения профиля</span><span class="sxs-lookup"><span data-stu-id="9d308-165">Initiate an edit-profile flow</span></span>
-<span data-ttu-id="9d308-166">Политика редактирования профиля реализуется аналогично.</span><span class="sxs-lookup"><span data-stu-id="9d308-166">Again, you can execute an edit-profile policy in the same fashion:</span></span>
+### <a name="initiate-an-edit-profile-flow"></a><span data-ttu-id="13883-165">Инициирование потока изменения профиля</span><span class="sxs-lookup"><span data-stu-id="13883-165">Initiate an edit-profile flow</span></span>
+<span data-ttu-id="13883-166">Еще раз, можно выполнить политику изменения профиля в hello аналогичным способом:</span><span class="sxs-lookup"><span data-stu-id="13883-166">Again, you can execute an edit-profile policy in hello same fashion:</span></span>
 
 ```C#
 private async void EditProfile(object sender, RoutedEventArgs e)
@@ -189,16 +189,16 @@ private async void EditProfile(object sender, RoutedEventArgs e)
                     Globals.editProfilePolicy);
 ```
 
-<span data-ttu-id="9d308-167">Во всех этих случаях MSAL либо возвращает маркер в `AuthenticationResult` , либо выдает исключение.</span><span class="sxs-lookup"><span data-stu-id="9d308-167">In all of these cases, MSAL either returns a token in `AuthenticationResult` or throws an exception.</span></span> <span data-ttu-id="9d308-168">Если MSAL выдает маркер, для обновления данных пользователя в приложении (например, пользовательского интерфейса) можно использовать объект `AuthenticationResult.User` .</span><span class="sxs-lookup"><span data-stu-id="9d308-168">Each time you get a token from MSAL, you can use the `AuthenticationResult.User` object to update the user data in the app, such as the UI.</span></span> <span data-ttu-id="9d308-169">Кроме того, ADAL кэширует маркер для использования в других частях приложения.</span><span class="sxs-lookup"><span data-stu-id="9d308-169">ADAL also caches the token for use in other parts of the application.</span></span>
+<span data-ttu-id="13883-167">Во всех этих случаях MSAL либо возвращает маркер в `AuthenticationResult` , либо выдает исключение.</span><span class="sxs-lookup"><span data-stu-id="13883-167">In all of these cases, MSAL either returns a token in `AuthenticationResult` or throws an exception.</span></span> <span data-ttu-id="13883-168">Каждый раз, получить маркер из MSAL, можно использовать hello `AuthenticationResult.User` объекта tooupdate hello пользовательских данных в приложение hello, например hello пользовательского интерфейса.</span><span class="sxs-lookup"><span data-stu-id="13883-168">Each time you get a token from MSAL, you can use hello `AuthenticationResult.User` object tooupdate hello user data in hello app, such as hello UI.</span></span> <span data-ttu-id="13883-169">ADAL также кэшей hello маркер для использования в других частях приложения hello.</span><span class="sxs-lookup"><span data-stu-id="13883-169">ADAL also caches hello token for use in other parts of hello application.</span></span>
 
-### <a name="check-for-tokens-on-app-start"></a><span data-ttu-id="9d308-170">Проверка наличия маркеров при запуске приложения</span><span class="sxs-lookup"><span data-stu-id="9d308-170">Check for tokens on app start</span></span>
-<span data-ttu-id="9d308-171">MSAL также можно использовать, чтобы отслеживать состояние входа пользователя.</span><span class="sxs-lookup"><span data-stu-id="9d308-171">You can also use MSAL to keep track of the user's sign-in state.</span></span>  <span data-ttu-id="9d308-172">В этом приложении мы хотим, чтобы пользователь оставался в системе даже после закрытия и повторного открытия приложения.</span><span class="sxs-lookup"><span data-stu-id="9d308-172">In this app, we want the user to remain signed in even after they close the app & re-open it.</span></span>  <span data-ttu-id="9d308-173">В переопределении `OnInitialized` используйте метод `AcquireTokenSilent` MSAL, чтобы проверить наличие кэшированных маркеров:</span><span class="sxs-lookup"><span data-stu-id="9d308-173">Back inside the `OnInitialized` override, use MSAL's `AcquireTokenSilent` method to check for cached tokens:</span></span>
+### <a name="check-for-tokens-on-app-start"></a><span data-ttu-id="13883-170">Проверка наличия маркеров при запуске приложения</span><span class="sxs-lookup"><span data-stu-id="13883-170">Check for tokens on app start</span></span>
+<span data-ttu-id="13883-171">Также можно отслеживать состояние входа пользователя hello tookeep MSAL.</span><span class="sxs-lookup"><span data-stu-id="13883-171">You can also use MSAL tookeep track of hello user's sign-in state.</span></span>  <span data-ttu-id="13883-172">В этом приложении мы хотим tooremain пользователя hello, даже после их закрыть приложение hello и повторно открыть его в системе.</span><span class="sxs-lookup"><span data-stu-id="13883-172">In this app, we want hello user tooremain signed in even after they close hello app & re-open it.</span></span>  <span data-ttu-id="13883-173">Назад внутри hello `OnInitialized` переопределить, используйте его MSAL `AcquireTokenSilent` toocheck метод для кэшированных маркеров:</span><span class="sxs-lookup"><span data-stu-id="13883-173">Back inside hello `OnInitialized` override, use MSAL's `AcquireTokenSilent` method toocheck for cached tokens:</span></span>
 
 ```C#
 AuthenticationResult result = null;
 try
 {
-    // If the user has has a token cached with any policy, we'll display them as signed-in.
+    // If hello user has has a token cached with any policy, we'll display them as signed-in.
     TokenCacheItem tci = pca.UserTokenCache.ReadItems(Globals.clientId).Where(i => i.Scope.Contains(Globals.clientId) && !string.IsNullOrEmpty(i.Policy)).FirstOrDefault();
     string existingPolicy = tci == null ? null : tci.Policy;
     result = await pca.AcquireTokenSilentAsync(new string[] { Globals.clientId }, string.Empty, Globals.authority, existingPolicy, false);
@@ -214,7 +214,7 @@ catch (MsalException ex)
 {
     if (ex.ErrorCode == "failed_to_acquire_token_silently")
     {
-        // There are no tokens in the cache.  Proceed without calling the To Do list service.
+        // There are no tokens in hello cache.  Proceed without calling hello tooDo list service.
     }
     else
     {
@@ -230,8 +230,8 @@ catch (MsalException ex)
 }
 ```
 
-## <a name="call-the-task-api"></a><span data-ttu-id="9d308-174">Вызов API задачи</span><span class="sxs-lookup"><span data-stu-id="9d308-174">Call the task API</span></span>
-<span data-ttu-id="9d308-175">С помощью MSAL вы выполнили политики и получили маркеры.</span><span class="sxs-lookup"><span data-stu-id="9d308-175">You have now used MSAL to execute policies and get tokens.</span></span>  <span data-ttu-id="9d308-176">Если вы хотите использовать один из этих маркеров для вызова API задачи, можно снова использовать метод `AcquireTokenSilent` MSAL для проверки наличия кэшированных маркеров:</span><span class="sxs-lookup"><span data-stu-id="9d308-176">When you want to use one these tokens to call the task API, you can again use MSAL's `AcquireTokenSilent` method to check for cached tokens:</span></span>
+## <a name="call-hello-task-api"></a><span data-ttu-id="13883-174">Вызвать API задачи hello</span><span class="sxs-lookup"><span data-stu-id="13883-174">Call hello task API</span></span>
+<span data-ttu-id="13883-175">Использовали MSAL tooexecute политик и получения токенов.</span><span class="sxs-lookup"><span data-stu-id="13883-175">You have now used MSAL tooexecute policies and get tokens.</span></span>  <span data-ttu-id="13883-176">При необходимости toouse один эти токены toocall hello задач API вы снова сможете использовать его MSAL `AcquireTokenSilent` toocheck метод для кэшированных маркеров:</span><span class="sxs-lookup"><span data-stu-id="13883-176">When you want toouse one these tokens toocall hello task API, you can again use MSAL's `AcquireTokenSilent` method toocheck for cached tokens:</span></span>
 
 ```C#
 private async void GetTodoList()
@@ -239,18 +239,18 @@ private async void GetTodoList()
     AuthenticationResult result = null;
     try
     {
-        // Here we want to check for a cached token, independent of whatever policy was used to acquire it.
+        // Here we want toocheck for a cached token, independent of whatever policy was used tooacquire it.
         TokenCacheItem tci = pca.UserTokenCache.ReadItems(Globals.clientId).Where(i => i.Scope.Contains(Globals.clientId) && !string.IsNullOrEmpty(i.Policy)).FirstOrDefault();
         string existingPolicy = tci == null ? null : tci.Policy;
 
-        // Use AcquireTokenSilent to indicate that MSAL should throw an exception if a token cannot be acquired
+        // Use AcquireTokenSilent tooindicate that MSAL should throw an exception if a token cannot be acquired
         result = await pca.AcquireTokenSilentAsync(new string[] { Globals.clientId }, string.Empty, Globals.authority, existingPolicy, false);
 
     }
-    // If a token could not be acquired silently, we'll catch the exception and show the user a message.
+    // If a token could not be acquired silently, we'll catch hello exception and show hello user a message.
     catch (MsalException ex)
     {
-        // There is no access token in the cache, so prompt the user to sign-in.
+        // There is no access token in hello cache, so prompt hello user toosign-in.
         if (ex.ErrorCode == "failed_to_acquire_token_silently")
         {
             MessageBox.Show("Please sign up or sign in first");
@@ -276,31 +276,31 @@ private async void GetTodoList()
     ...
 ```
 
-<span data-ttu-id="9d308-177">Если вызов `AcquireTokenSilentAsync(...)` завершается успешно, а в кэше есть маркер, можно добавить этот маркер в заголовок `Authorization` HTTP-запроса.</span><span class="sxs-lookup"><span data-stu-id="9d308-177">When the call to `AcquireTokenSilentAsync(...)` succeeds and a token is found in the cache, you can add the token to the `Authorization` header of the HTTP request.</span></span> <span data-ttu-id="9d308-178">Веб-API задачи будет использовать этот заголовок для проверки подлинности запроса на чтение списка дел пользователя:</span><span class="sxs-lookup"><span data-stu-id="9d308-178">The task web API will use this header to authenticate the request to read the user's to-do list:</span></span>
+<span data-ttu-id="13883-177">При слишком hello вызовов`AcquireTokenSilentAsync(...)` завершается успешно и будет найден маркер в кэш hello, можно добавить hello маркера toohello `Authorization` заголовок hello HTTP-запроса.</span><span class="sxs-lookup"><span data-stu-id="13883-177">When hello call too`AcquireTokenSilentAsync(...)` succeeds and a token is found in hello cache, you can add hello token toohello `Authorization` header of hello HTTP request.</span></span> <span data-ttu-id="13883-178">Список дел заголовок tooauthenticate hello запроса tooread hello в учетной записи пользователя будет использоваться веб-задачи Hello API:</span><span class="sxs-lookup"><span data-stu-id="13883-178">hello task web API will use this header tooauthenticate hello request tooread hello user's to-do list:</span></span>
 
 ```C#
     ...
-    // Once the token has been returned by MSAL, add it to the http authorization header, before making the call to access the To Do list service.
+    // Once hello token has been returned by MSAL, add it toohello http authorization header, before making hello call tooaccess hello tooDo list service.
     httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", result.Token);
 
-    // Call the To Do list service.
+    // Call hello tooDo list service.
     HttpResponseMessage response = await httpClient.GetAsync(Globals.taskServiceUrl + "/api/tasks");
     ...
 ```
 
-## <a name="sign-the-user-out"></a><span data-ttu-id="9d308-179">Выход пользователя</span><span class="sxs-lookup"><span data-stu-id="9d308-179">Sign the user out</span></span>
-<span data-ttu-id="9d308-180">Также MSAL можно использовать для завершения сеанса пользователя в приложении, когда пользователь нажимает кнопку **Выход**.</span><span class="sxs-lookup"><span data-stu-id="9d308-180">Finally, you can use MSAL to end a user's session with the app when the user selects **Sign out**.</span></span>  <span data-ttu-id="9d308-181">Для этого нужно удалить все маркеры из соответствующего кэша с помощью MSAL:</span><span class="sxs-lookup"><span data-stu-id="9d308-181">When using MSAL, this is accomplished by clearing all of the tokens from the token cache:</span></span>
+## <a name="sign-hello-user-out"></a><span data-ttu-id="13883-179">Пользователь hello Sign out</span><span class="sxs-lookup"><span data-stu-id="13883-179">Sign hello user out</span></span>
+<span data-ttu-id="13883-180">Наконец, можно использовать MSAL tooend сеанс пользователя с приложение hello при выборе пользователем hello **Выход**.  При использовании MSAL, эти действия выполняются, сняв все маркеры hello из кэша маркеров hello.</span><span class="sxs-lookup"><span data-stu-id="13883-180">Finally, you can use MSAL tooend a user's session with hello app when hello user selects **Sign out**.  When using MSAL, this is accomplished by clearing all of hello tokens from hello token cache:</span></span>
 
 ```C#
 private void SignOut(object sender, RoutedEventArgs e)
 {
-    // Clear any remnants of the user's session.
+    // Clear any remnants of hello user's session.
     pca.UserTokenCache.Clear(Globals.clientId);
 
-    // This is a helper method that clears browser cookies in the browser control that MSAL uses, it is not part of MSAL.
+    // This is a helper method that clears browser cookies in hello browser control that MSAL uses, it is not part of MSAL.
     ClearCookies();
 
-    // Update the UI to show the user as signed out.
+    // Update hello UI tooshow hello user as signed out.
     TaskList.ItemsSource = string.Empty;
     SignInButton.Visibility = Visibility.Visible;
     SignUpButton.Visibility = Visibility.Visible;
@@ -310,23 +310,23 @@ private void SignOut(object sender, RoutedEventArgs e)
 }
 ```
 
-## <a name="run-the-sample-app"></a><span data-ttu-id="9d308-182">Запуск примера приложения</span><span class="sxs-lookup"><span data-stu-id="9d308-182">Run the sample app</span></span>
-<span data-ttu-id="9d308-183">Теперь можно собрать и запустить пример.</span><span class="sxs-lookup"><span data-stu-id="9d308-183">Finally, build and run the sample.</span></span>  <span data-ttu-id="9d308-184">Зарегистрируйтесь в приложении с использованием адреса электронной почты или имени пользователя.</span><span class="sxs-lookup"><span data-stu-id="9d308-184">Sign up for the app by using an email address or user name.</span></span> <span data-ttu-id="9d308-185">Выйдите и снова войдите под именем того же пользователя.</span><span class="sxs-lookup"><span data-stu-id="9d308-185">Sign out and sign back in as the same user.</span></span> <span data-ttu-id="9d308-186">Измените профиль пользователя.</span><span class="sxs-lookup"><span data-stu-id="9d308-186">Edit that user's profile.</span></span> <span data-ttu-id="9d308-187">Выйдите и зарегистрируйтесь от имени другого пользователя.</span><span class="sxs-lookup"><span data-stu-id="9d308-187">Sign out and sign up by using a different user.</span></span>
+## <a name="run-hello-sample-app"></a><span data-ttu-id="13883-181">Запуск образца приложения hello</span><span class="sxs-lookup"><span data-stu-id="13883-181">Run hello sample app</span></span>
+<span data-ttu-id="13883-182">Наконец построение и запуск образца hello.</span><span class="sxs-lookup"><span data-stu-id="13883-182">Finally, build and run hello sample.</span></span>  <span data-ttu-id="13883-183">После регистрации приложения hello с помощью электронной почты адрес или имя пользователя.</span><span class="sxs-lookup"><span data-stu-id="13883-183">Sign up for hello app by using an email address or user name.</span></span> <span data-ttu-id="13883-184">Выйдите из системы и войти снова как hello же пользователя.</span><span class="sxs-lookup"><span data-stu-id="13883-184">Sign out and sign back in as hello same user.</span></span> <span data-ttu-id="13883-185">Измените профиль пользователя.</span><span class="sxs-lookup"><span data-stu-id="13883-185">Edit that user's profile.</span></span> <span data-ttu-id="13883-186">Выйдите и зарегистрируйтесь от имени другого пользователя.</span><span class="sxs-lookup"><span data-stu-id="13883-186">Sign out and sign up by using a different user.</span></span>
 
-## <a name="add-social-idps"></a><span data-ttu-id="9d308-188">Добавление поставщиков удостоверений социальных сетей</span><span class="sxs-lookup"><span data-stu-id="9d308-188">Add social IDPs</span></span>
-<span data-ttu-id="9d308-189">Сейчас приложение поддерживает регистрацию и вход пользователей только с использованием **локальных учетных записей**.</span><span class="sxs-lookup"><span data-stu-id="9d308-189">Currently, the app supports only user sign-up and sign-in that use **local accounts**.</span></span> <span data-ttu-id="9d308-190">Учетные записи хранятся в каталоге B2C, где применяется имя пользователя и пароль.</span><span class="sxs-lookup"><span data-stu-id="9d308-190">These are accounts stored in your B2C directory that use a user name and password.</span></span> <span data-ttu-id="9d308-191">С помощью Azure AD B2C можно добавить поддержку для других поставщиков удостоверений (IDP), не изменяя код.</span><span class="sxs-lookup"><span data-stu-id="9d308-191">By using Azure AD B2C, you can add support for other identity providers (IDPs) without changing any of your code.</span></span>
+## <a name="add-social-idps"></a><span data-ttu-id="13883-187">Добавление поставщиков удостоверений социальных сетей</span><span class="sxs-lookup"><span data-stu-id="13883-187">Add social IDPs</span></span>
+<span data-ttu-id="13883-188">В настоящее время приложение hello поддерживает только регистрации пользователя и войти, использовать **локальные учетные записи**.</span><span class="sxs-lookup"><span data-stu-id="13883-188">Currently, hello app supports only user sign-up and sign-in that use **local accounts**.</span></span> <span data-ttu-id="13883-189">Учетные записи хранятся в каталоге B2C, где применяется имя пользователя и пароль.</span><span class="sxs-lookup"><span data-stu-id="13883-189">These are accounts stored in your B2C directory that use a user name and password.</span></span> <span data-ttu-id="13883-190">С помощью Azure AD B2C можно добавить поддержку для других поставщиков удостоверений (IDP), не изменяя код.</span><span class="sxs-lookup"><span data-stu-id="13883-190">By using Azure AD B2C, you can add support for other identity providers (IDPs) without changing any of your code.</span></span>
 
-<span data-ttu-id="9d308-192">Чтобы добавить в приложение поставщиков удостоверений социальных сетей, следуйте подробным инструкциям, приведенным в указанных ниже статьях.</span><span class="sxs-lookup"><span data-stu-id="9d308-192">To add social IDPs to your app, begin by following the detailed instructions in these articles.</span></span> <span data-ttu-id="9d308-193">Для каждого поставщика удостоверений, поддержку которого нужно добавить, необходимо зарегистрировать приложение в соответствующей системе и получить идентификатор клиента.</span><span class="sxs-lookup"><span data-stu-id="9d308-193">For each IDP you want to support, you need to register an application in that system and obtain a client ID.</span></span>
+<span data-ttu-id="13883-191">tooadd социальных IDPs tooyour приложение, начните с выполнения следующего hello подробные инструкции в следующих статьях.</span><span class="sxs-lookup"><span data-stu-id="13883-191">tooadd social IDPs tooyour app, begin by following hello detailed instructions in these articles.</span></span> <span data-ttu-id="13883-192">Для каждого поставщика Удостоверений требуется toosupport, нужно tooregister приложения в этой системе и получение идентификатора клиента.</span><span class="sxs-lookup"><span data-stu-id="13883-192">For each IDP you want toosupport, you need tooregister an application in that system and obtain a client ID.</span></span>
 
-* [<span data-ttu-id="9d308-194">Настройка Facebook как поставщика удостоверений</span><span class="sxs-lookup"><span data-stu-id="9d308-194">Set up Facebook as an IDP</span></span>](active-directory-b2c-setup-fb-app.md)
-* [<span data-ttu-id="9d308-195">Настройка Google как поставщика удостоверений</span><span class="sxs-lookup"><span data-stu-id="9d308-195">Set up Google as an IDP</span></span>](active-directory-b2c-setup-goog-app.md)
-* [<span data-ttu-id="9d308-196">Настройка Amazon как поставщика удостоверений</span><span class="sxs-lookup"><span data-stu-id="9d308-196">Set up Amazon as an IDP</span></span>](active-directory-b2c-setup-amzn-app.md)
-* [<span data-ttu-id="9d308-197">Настройка LinkedIn как поставщика удостоверений</span><span class="sxs-lookup"><span data-stu-id="9d308-197">Set up LinkedIn as an IDP</span></span>](active-directory-b2c-setup-li-app.md)
+* [<span data-ttu-id="13883-193">Настройка Facebook как поставщика удостоверений</span><span class="sxs-lookup"><span data-stu-id="13883-193">Set up Facebook as an IDP</span></span>](active-directory-b2c-setup-fb-app.md)
+* [<span data-ttu-id="13883-194">Настройка Google как поставщика удостоверений</span><span class="sxs-lookup"><span data-stu-id="13883-194">Set up Google as an IDP</span></span>](active-directory-b2c-setup-goog-app.md)
+* [<span data-ttu-id="13883-195">Настройка Amazon как поставщика удостоверений</span><span class="sxs-lookup"><span data-stu-id="13883-195">Set up Amazon as an IDP</span></span>](active-directory-b2c-setup-amzn-app.md)
+* [<span data-ttu-id="13883-196">Настройка LinkedIn как поставщика удостоверений</span><span class="sxs-lookup"><span data-stu-id="13883-196">Set up LinkedIn as an IDP</span></span>](active-directory-b2c-setup-li-app.md)
 
-<span data-ttu-id="9d308-198">Добавив поставщики удостоверений в каталог B2C, внесите соответствующие изменения в три политики, как описано в [справочной статье о политиках](active-directory-b2c-reference-policies.md).</span><span class="sxs-lookup"><span data-stu-id="9d308-198">After you add the identity providers to your B2C directory, you need to edit each of your three policies to include the new IDPs, as described in the [policy reference article](active-directory-b2c-reference-policies.md).</span></span> <span data-ttu-id="9d308-199">Сохраните политики и перезапустите приложение.</span><span class="sxs-lookup"><span data-stu-id="9d308-199">After you save your policies, run the app again.</span></span> <span data-ttu-id="9d308-200">Добавленные поставщики удостоверений должны отобразиться в виде вариантов при входе и регистрации.</span><span class="sxs-lookup"><span data-stu-id="9d308-200">You should see the new IDPs added as sign-in and sign-up options in each of your identity experiences.</span></span>
+<span data-ttu-id="13883-197">После добавления каталог tooyour B2C Поставщики удостоверений hello, необходимо каждый из трех политик tooinclude hello новый IDPs как описано в hello tooedit [статье политики](active-directory-b2c-reference-policies.md).</span><span class="sxs-lookup"><span data-stu-id="13883-197">After you add hello identity providers tooyour B2C directory, you need tooedit each of your three policies tooinclude hello new IDPs, as described in hello [policy reference article](active-directory-b2c-reference-policies.md).</span></span> <span data-ttu-id="13883-198">После сохранения политик, снова запустите приложение hello.</span><span class="sxs-lookup"><span data-stu-id="13883-198">After you save your policies, run hello app again.</span></span> <span data-ttu-id="13883-199">Вы увидите hello, добавления новых IDPs входа и регистрации в качестве параметров каждой своими впечатлениями удостоверения.</span><span class="sxs-lookup"><span data-stu-id="13883-199">You should see hello new IDPs added as sign-in and sign-up options in each of your identity experiences.</span></span>
 
-<span data-ttu-id="9d308-201">Вы можете свободно экспериментировать с политиками,</span><span class="sxs-lookup"><span data-stu-id="9d308-201">You can experiment with your policies and observe the effects on your sample app.</span></span> <span data-ttu-id="9d308-202">например: добавлять или удалять поставщиков удостоверений, управлять утверждениями приложений или изменять атрибуты регистрации, а также наблюдать эффект в примере приложения.</span><span class="sxs-lookup"><span data-stu-id="9d308-202">Add or remove IDPs, manipulate application claims, or change sign-up attributes.</span></span> <span data-ttu-id="9d308-203">Эксперименты помогают увидеть связь между политиками, запросами на проверку подлинности и библиотекой MSAL.</span><span class="sxs-lookup"><span data-stu-id="9d308-203">Experiment until you can see how policies, authentication requests, and MSAL tie together.</span></span>
+<span data-ttu-id="13883-200">Можно поэкспериментировать с политиками и наблюдать за hello влияние на примере приложения.</span><span class="sxs-lookup"><span data-stu-id="13883-200">You can experiment with your policies and observe hello effects on your sample app.</span></span> <span data-ttu-id="13883-201">например: добавлять или удалять поставщиков удостоверений, управлять утверждениями приложений или изменять атрибуты регистрации, а также наблюдать эффект в примере приложения.</span><span class="sxs-lookup"><span data-stu-id="13883-201">Add or remove IDPs, manipulate application claims, or change sign-up attributes.</span></span> <span data-ttu-id="13883-202">Эксперименты помогают увидеть связь между политиками, запросами на проверку подлинности и библиотекой MSAL.</span><span class="sxs-lookup"><span data-stu-id="13883-202">Experiment until you can see how policies, authentication requests, and MSAL tie together.</span></span>
 
-<span data-ttu-id="9d308-204">Готовый пример [предоставляется в виде ZIP-файла](https://github.com/AzureADQuickStarts/B2C-NativeClient-DotNet/archive/complete.zip).</span><span class="sxs-lookup"><span data-stu-id="9d308-204">For reference, the completed sample [is provided as a .zip file](https://github.com/AzureADQuickStarts/B2C-NativeClient-DotNet/archive/complete.zip).</span></span> <span data-ttu-id="9d308-205">Кроме того, его можно клонировать из GitHub:</span><span class="sxs-lookup"><span data-stu-id="9d308-205">You can also clone it from GitHub:</span></span>
+<span data-ttu-id="13883-203">Справочник по hello выполнить образец [предоставляется как ZIP-файл](https://github.com/AzureADQuickStarts/B2C-NativeClient-DotNet/archive/complete.zip).</span><span class="sxs-lookup"><span data-stu-id="13883-203">For reference, hello completed sample [is provided as a .zip file](https://github.com/AzureADQuickStarts/B2C-NativeClient-DotNet/archive/complete.zip).</span></span> <span data-ttu-id="13883-204">Кроме того, его можно клонировать из GitHub:</span><span class="sxs-lookup"><span data-stu-id="13883-204">You can also clone it from GitHub:</span></span>
 
 ```git clone --branch complete https://github.com/AzureADQuickStarts/B2C-NativeClient-DotNet.git```

@@ -1,5 +1,5 @@
 ---
-title: "Часто задаваемые вопросы по отчетам Azure Active Directory | Документация Майкрософт"
+title: "aaaAzure Active Directory отчетов часто задаваемые вопросы | Документы Microsoft"
 description: "Часто задаваемые вопросы об отчетах Azure Active Directory."
 services: active-directory
 documentationcenter: 
@@ -14,98 +14,98 @@ ms.topic: article
 ms.date: 08/22/2017
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: accf292f70bf0eafdefc00c3feeaf8e346605401
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: be65a05574ea3b5b190cd02a96b211c571ba70bc
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="azure-active-directory-reporting-faq"></a><span data-ttu-id="c2e6c-103">Часто задаваемые вопросы об отчетах Azure Active Directory</span><span class="sxs-lookup"><span data-stu-id="c2e6c-103">Azure Active Directory reporting FAQ</span></span>
+# <a name="azure-active-directory-reporting-faq"></a><span data-ttu-id="a9cce-103">Часто задаваемые вопросы об отчетах Azure Active Directory</span><span class="sxs-lookup"><span data-stu-id="a9cce-103">Azure Active Directory reporting FAQ</span></span>
 
-<span data-ttu-id="c2e6c-104">Эта статья содержит ответы на часто задаваемые вопросы об отчетах Azure Active Directory.</span><span class="sxs-lookup"><span data-stu-id="c2e6c-104">This article includes answers to frequently asked questions (FAQs) about Azure Active Directory reporting.</span></span>  
-<span data-ttu-id="c2e6c-105">Дополнительные сведения см. в разделе [Отчеты в Azure Active Directory — предварительная версия](active-directory-reporting-azure-portal.md).</span><span class="sxs-lookup"><span data-stu-id="c2e6c-105">For more details, see [Azure Active Directory reporting](active-directory-reporting-azure-portal.md).</span></span> 
+<span data-ttu-id="a9cce-104">Эта статья содержит ответы toofrequently, задаваемые вопросы (FAQ) о работе с отчетами Azure Active Directory.</span><span class="sxs-lookup"><span data-stu-id="a9cce-104">This article includes answers toofrequently asked questions (FAQs) about Azure Active Directory reporting.</span></span>  
+<span data-ttu-id="a9cce-105">Дополнительные сведения см. в разделе [Отчеты в Azure Active Directory — предварительная версия](active-directory-reporting-azure-portal.md).</span><span class="sxs-lookup"><span data-stu-id="a9cce-105">For more details, see [Azure Active Directory reporting](active-directory-reporting-azure-portal.md).</span></span> 
 
-<span data-ttu-id="c2e6c-106">**Вопрос. Что такое период хранения данных журналов действий (аудита и входа в систему) на портале Azure?**</span><span class="sxs-lookup"><span data-stu-id="c2e6c-106">**Q: What is the data retention for activity logs (Audit and Sign-ins) in the Azure portal?**</span></span> 
+<span data-ttu-id="a9cce-106">**Вопрос. что такое hello хранение данных для журналов действий (аудита и входа в систему) hello портал Azure?**</span><span class="sxs-lookup"><span data-stu-id="a9cce-106">**Q: What is hello data retention for activity logs (Audit and Sign-ins) in hello Azure portal?**</span></span> 
 
-<span data-ttu-id="c2e6c-107">**Ответ.** Мы храним данные клиентов с бесплатной лицензией в течение 7 дней, а перейдя на лицензию Azure AD Premium 1 или Premium 2, вы сможете использовать данные в течение 30 дней.</span><span class="sxs-lookup"><span data-stu-id="c2e6c-107">**A:** We provide 7 days of data for our free customers and by switching to an Azure AD Premium 1 or Premium 2 license, you can access data for up to 30 days.</span></span> <span data-ttu-id="c2e6c-108">Дополнительные сведения о периоде хранения см. в статье [Политики хранения отчетов Azure Active Directory](active-directory-reporting-retention.md).</span><span class="sxs-lookup"><span data-stu-id="c2e6c-108">For more details on retention, see [Azure Active Directory report retention policies](active-directory-reporting-retention.md)</span></span>
+<span data-ttu-id="a9cce-107">**Ответ** мы предоставляем 7 дней данных клиентам бесплатно и переключив tooan Azure AD Premium 1 или Premium 2 лицензирования, можно получить доступ к данным вверх too30 дней.</span><span class="sxs-lookup"><span data-stu-id="a9cce-107">**A:** We provide 7 days of data for our free customers and by switching tooan Azure AD Premium 1 or Premium 2 license, you can access data for up too30 days.</span></span> <span data-ttu-id="a9cce-108">Дополнительные сведения о периоде хранения см. в статье [Политики хранения отчетов Azure Active Directory](active-directory-reporting-retention.md).</span><span class="sxs-lookup"><span data-stu-id="a9cce-108">For more details on retention, see [Azure Active Directory report retention policies](active-directory-reporting-retention.md)</span></span>
 
 --- 
 
-<span data-ttu-id="c2e6c-109">**Вопрос. Какова задержка перед отображением данных действия после выполнения моей задачи?**</span><span class="sxs-lookup"><span data-stu-id="c2e6c-109">**Q: How long does it take until I can see the Activity data after I have completed my task?**</span></span>
+<span data-ttu-id="a9cce-109">**Вопрос. как долго, пока не отображаются данные о действиях hello после завершения задач?**</span><span class="sxs-lookup"><span data-stu-id="a9cce-109">**Q: How long does it take until I can see hello Activity data after I have completed my task?**</span></span>
 
-<span data-ttu-id="c2e6c-110">**Ответ.** Для журналов аудита действий эта задержка составляет от 15 минут до часа.</span><span class="sxs-lookup"><span data-stu-id="c2e6c-110">**A:** Audit activity logs have a latency ranging from 15 mins to an hour.</span></span> <span data-ttu-id="c2e6c-111">Для журналов действий входа в систему это задержка составляет от 15 минут для большинства записей и до 2 часов для некоторых записей.</span><span class="sxs-lookup"><span data-stu-id="c2e6c-111">Sign-in activity logs have a latency ranging from 15 mins for most records and up to 2 hours for a few records.</span></span>
-
----
-
-<span data-ttu-id="c2e6c-112">**Вопрос. Нужно ли быть глобальным администратором, чтобы просмотреть журналы действий на портале Azure или получить их данные через API?**</span><span class="sxs-lookup"><span data-stu-id="c2e6c-112">**Q: Do I need to be a global admin to see the activity logs in the Azure Portal or to get data through the API?**</span></span>
-
-<span data-ttu-id="c2e6c-113">**Ответ.** Нет.</span><span class="sxs-lookup"><span data-stu-id="c2e6c-113">**A:** No.</span></span> <span data-ttu-id="c2e6c-114">Для просмотра данных отчетов на портале Azure или обращения к ним через API достаточно быть **читателем безопасности**, **администратором безопасности** или **глобальным администратором**.</span><span class="sxs-lookup"><span data-stu-id="c2e6c-114">You can either be a **Security Reader**, a **Security Admin** or a **Global Admin** to see reporting data in Azure Portal or by accessing it through the API.</span></span>
+<span data-ttu-id="a9cce-110">**Ответ** журналы действий аудита имеют задержку, в диапазоне от 15 минут tooan час.</span><span class="sxs-lookup"><span data-stu-id="a9cce-110">**A:** Audit activity logs have a latency ranging from 15 mins tooan hour.</span></span> <span data-ttu-id="a9cce-111">Журналы действия при входе имеют задержку, в диапазоне от 15 минут для большинства записей и too2 часов для несколько записей.</span><span class="sxs-lookup"><span data-stu-id="a9cce-111">Sign-in activity logs have a latency ranging from 15 mins for most records and up too2 hours for a few records.</span></span>
 
 ---
 
-<span data-ttu-id="c2e6c-115">**Вопрос. Можно ли получить данные журнала действий Office 365 на портале Azure?**</span><span class="sxs-lookup"><span data-stu-id="c2e6c-115">**Q: Can I get Office 365 activity log information through the Azure portal?**</span></span>
+<span data-ttu-id="a9cce-112">**Вопрос. необходимо toobe журналы действие hello toosee глобального администратора в hello портала Azure или tooget данных с помощью hello API?**</span><span class="sxs-lookup"><span data-stu-id="a9cce-112">**Q: Do I need toobe a global admin toosee hello activity logs in hello Azure Portal or tooget data through hello API?**</span></span>
 
-<span data-ttu-id="c2e6c-116">**Ответ.** Хотя в журналах действий Office 365 и Azure AD совместно используется много ресурсов каталога, если требуется получить полное представление журналов действий Office 365, то следует перейти в Центр администрирования Office 365 и там получить данные журналов действий Office 365.</span><span class="sxs-lookup"><span data-stu-id="c2e6c-116">**A:** Even though Office 365 activity and Azure AD activity logs share a lot of the directory resources, if you want a full view of the Office 365 activity logs, you should go to the Office 365 Admin Center to get Office 365 Activity log information.</span></span>
+<span data-ttu-id="a9cce-113">**Ответ.** Нет.</span><span class="sxs-lookup"><span data-stu-id="a9cce-113">**A:** No.</span></span> <span data-ttu-id="a9cce-114">Может быть **чтения безопасности**, **администратору безопасности** или **глобального администратора** toosee reporting данные на портале Azure, либо доступ к ним через hello API.</span><span class="sxs-lookup"><span data-stu-id="a9cce-114">You can either be a **Security Reader**, a **Security Admin** or a **Global Admin** toosee reporting data in Azure Portal or by accessing it through hello API.</span></span>
+
+---
+
+<span data-ttu-id="a9cce-115">**Вопрос. можно получить сведения о журнале действия Office 365 через портал Azure hello**</span><span class="sxs-lookup"><span data-stu-id="a9cce-115">**Q: Can I get Office 365 activity log information through hello Azure portal?**</span></span>
+
+<span data-ttu-id="a9cce-116">**Ответ** несмотря на то что действие Office 365 и общей папки журналов Azure AD действия много ресурсов каталога hello, если требуется полное представление Здравствуйте журналы действий Office 365, следует передать сведения о журнале Office 365 действия tooget toohello Центр администрирования Office 365.</span><span class="sxs-lookup"><span data-stu-id="a9cce-116">**A:** Even though Office 365 activity and Azure AD activity logs share a lot of hello directory resources, if you want a full view of hello Office 365 activity logs, you should go toohello Office 365 Admin Center tooget Office 365 Activity log information.</span></span>
 
 ---
 
 
-<span data-ttu-id="c2e6c-117">**Вопрос. Какие интерфейсы API используются для получения данных журналов активности Office 365?**</span><span class="sxs-lookup"><span data-stu-id="c2e6c-117">**Q: Which APIs do I use to get information about Office 365 Activity logs?**</span></span>
+<span data-ttu-id="a9cce-117">**В. какой интерфейсы API использовать tooget сведения о журналах активности Office 365?**</span><span class="sxs-lookup"><span data-stu-id="a9cce-117">**Q: Which APIs do I use tooget information about Office 365 Activity logs?**</span></span>
 
-<span data-ttu-id="c2e6c-118">**Ответ.** Используйте интерфейсы API управления Office 365 для доступа к [журналам действий Office 365 с помощью API](https://msdn.microsoft.com/office-365/office-365-managment-apis-overview).</span><span class="sxs-lookup"><span data-stu-id="c2e6c-118">**A:** Use the Office 365 Management APIs to access the [Office 365 Activity logs through an API](https://msdn.microsoft.com/office-365/office-365-managment-apis-overview).</span></span>
-
----
-
-<span data-ttu-id="c2e6c-119">**Вопрос. Сколько записей можно скачать с портала Azure?**</span><span class="sxs-lookup"><span data-stu-id="c2e6c-119">**Q: How many records I can download from Azure portal?**</span></span>
-
-<span data-ttu-id="c2e6c-120">**Ответ.** С портала Azure можно скачать до 120 тыс. записей.</span><span class="sxs-lookup"><span data-stu-id="c2e6c-120">**A:** You can download up to 120K records from the Azure portal.</span></span> <span data-ttu-id="c2e6c-121">Записи отсортированы по *убыванию даты и времени* по умолчанию, и вы получите 120 тыс. самых последних записей.</span><span class="sxs-lookup"><span data-stu-id="c2e6c-121">The records are sorted by *most recent* and by default, you get the most recent 120K records.</span></span> 
+<span data-ttu-id="a9cce-118">**Ответ** используйте hello API управления Office 365 tooaccess hello [регистрирует действия Office 365 через API](https://msdn.microsoft.com/office-365/office-365-managment-apis-overview).</span><span class="sxs-lookup"><span data-stu-id="a9cce-118">**A:** Use hello Office 365 Management APIs tooaccess hello [Office 365 Activity logs through an API](https://msdn.microsoft.com/office-365/office-365-managment-apis-overview).</span></span>
 
 ---
 
-<span data-ttu-id="c2e6c-122">**Вопрос. Сколько записей можно запрашивать через API действий?**</span><span class="sxs-lookup"><span data-stu-id="c2e6c-122">**Q: How many records can I query through the activities API?**</span></span>
+<span data-ttu-id="a9cce-119">**Вопрос. Сколько записей можно скачать с портала Azure?**</span><span class="sxs-lookup"><span data-stu-id="a9cce-119">**Q: How many records I can download from Azure portal?**</span></span>
 
-<span data-ttu-id="c2e6c-123">**Ответ.** Можно запрашивать до 1 миллиона записей (если вы не используете оператор top, который сортирует записи по убыванию даты и времени).</span><span class="sxs-lookup"><span data-stu-id="c2e6c-123">**A:** You can query up to 1 million records (if you don’t use the top operator, which sorts the record by most recent).</span></span> <span data-ttu-id="c2e6c-124">При использовании оператора top можно запросить до 500 тыс. записей.</span><span class="sxs-lookup"><span data-stu-id="c2e6c-124">If you do use the “top” operator, you can query up to 500K records.</span></span> <span data-ttu-id="c2e6c-125">Примеры запросов с использованием API можно найти [здесь](active-directory-reporting-api-getting-started.md).</span><span class="sxs-lookup"><span data-stu-id="c2e6c-125">You can find sample queries on how to use the API here [here](active-directory-reporting-api-getting-started.md).</span></span>
-
----
-
-<span data-ttu-id="c2e6c-126">**Вопрос. Как получить лицензию уровня Premium?**</span><span class="sxs-lookup"><span data-stu-id="c2e6c-126">**Q: How do I get a premium license?**</span></span>
-
-<span data-ttu-id="c2e6c-127">**Ответ.** Ответ на этот вопрос есть в разделе [Приступая к работе с Azure Active Directory Premium](active-directory-get-started-premium.md).</span><span class="sxs-lookup"><span data-stu-id="c2e6c-127">**A:** See [Getting started with Azure Active Directory Premium](active-directory-get-started-premium.md) for an answer to this question.</span></span>
+<span data-ttu-id="a9cce-120">**Ответ** можно загрузить too120K записей из hello портал Azure.</span><span class="sxs-lookup"><span data-stu-id="a9cce-120">**A:** You can download up too120K records from hello Azure portal.</span></span> <span data-ttu-id="a9cce-121">Hello записи сортируются по *последних* по умолчанию, вы получаете записи hello последние 120 КБ.</span><span class="sxs-lookup"><span data-stu-id="a9cce-121">hello records are sorted by *most recent* and by default, you get hello most recent 120K records.</span></span> 
 
 ---
 
-<span data-ttu-id="c2e6c-128">**Вопрос. Как скоро после получения лицензии Premium я увижу данные действий?**</span><span class="sxs-lookup"><span data-stu-id="c2e6c-128">**Q: How soon should I see activities data after getting a premium license?**</span></span>
+<span data-ttu-id="a9cce-122">**В. сколько записей можно запросить через hello действия API**</span><span class="sxs-lookup"><span data-stu-id="a9cce-122">**Q: How many records can I query through hello activities API?**</span></span>
 
-<span data-ttu-id="c2e6c-129">**Ответ.** Если вас уже есть данные действий с бесплатной лицензией, то вы увидите те же данные.</span><span class="sxs-lookup"><span data-stu-id="c2e6c-129">**A:** If you already have activities data as a free license, then you can see the same data.</span></span> <span data-ttu-id="c2e6c-130">Если у вас нет данных, то потребуется один или два дня.</span><span class="sxs-lookup"><span data-stu-id="c2e6c-130">If you don’t have any data, then it will take one or two days.</span></span>
-
----
-
-<span data-ttu-id="c2e6c-131">**Вопрос. Увижу ли я данные за прошлый месяц после получения лицензии Azure AD Premium?**</span><span class="sxs-lookup"><span data-stu-id="c2e6c-131">**Q: Do I see last month's data after getting an Azure AD premium license?**</span></span>
-
-<span data-ttu-id="c2e6c-132">**Ответ**. Если вы недавно перешли на версию Premium (включая пробную версию), то первоначально сможете увидеть данные за 7 дней.</span><span class="sxs-lookup"><span data-stu-id="c2e6c-132">**A:** If you have recently switched to a Premium version (including a trial version), you can see data up to 7 days initially.</span></span> <span data-ttu-id="c2e6c-133">По мере накопления данных этот период увеличится до 30 дней.</span><span class="sxs-lookup"><span data-stu-id="c2e6c-133">When data accumulates, you will see up to 30 days.</span></span>
+<span data-ttu-id="a9cce-123">**Ответ** можно запросить too1 миллионов записей (Если вы не используете оператор top hello, сортирующий hello записи с помощью большинства последних).</span><span class="sxs-lookup"><span data-stu-id="a9cce-123">**A:** You can query up too1 million records (if you don’t use hello top operator, which sorts hello record by most recent).</span></span> <span data-ttu-id="a9cce-124">При использовании оператора «top» hello, можно запросить too500K записей.</span><span class="sxs-lookup"><span data-stu-id="a9cce-124">If you do use hello “top” operator, you can query up too500K records.</span></span> <span data-ttu-id="a9cce-125">Примеры запросов на как toouse hello API, здесь можно найти [здесь](active-directory-reporting-api-getting-started.md).</span><span class="sxs-lookup"><span data-stu-id="a9cce-125">You can find sample queries on how toouse hello API here [here](active-directory-reporting-api-getting-started.md).</span></span>
 
 ---
 
-<span data-ttu-id="c2e6c-134">**Вопрос. В службе защиты идентификации имеется событие риска, но я не вижу соответствующей операции входа в списке всех операций входа. Так и должно быть?**</span><span class="sxs-lookup"><span data-stu-id="c2e6c-134">**Q: There is a risk event in Identity Protection but I’m not seeing corresponding sign-in in the all sign-ins. Is this expected?**</span></span>
+<span data-ttu-id="a9cce-126">**Вопрос. Как получить лицензию уровня Premium?**</span><span class="sxs-lookup"><span data-stu-id="a9cce-126">**Q: How do I get a premium license?**</span></span>
 
-<span data-ttu-id="c2e6c-135">**Ответ**. Да, служба защиты идентификации оценивает степень риска для всех процессов проверки подлинности, как интерактивных, так и неинтерактивных.</span><span class="sxs-lookup"><span data-stu-id="c2e6c-135">**A:** Yes, Identity Protection evaluates risk for all authentication flows whether if be interactive or non-interactive.</span></span> <span data-ttu-id="c2e6c-136">Однако в списке всех операций входа показаны только интерактивные операции входа.</span><span class="sxs-lookup"><span data-stu-id="c2e6c-136">However, all sign-ins only report shows only the interactive sign-ins.</span></span>
-
----
-
-<span data-ttu-id="c2e6c-137">**Вопрос. Как скачать отчет "Пользователи, находящиеся в группе риска" на портале Azure?**</span><span class="sxs-lookup"><span data-stu-id="c2e6c-137">**Q: How can I download the “Users flagged for risk” report in Azure portal?**</span></span>
-
-<span data-ttu-id="c2e6c-138">**Ответ**. Команда для скачивания отчета *Пользователи, находящиеся в группе риска* будет добавлена в ближайшем будущем.</span><span class="sxs-lookup"><span data-stu-id="c2e6c-138">**A:** The option to download *Users flagged for risk* report will be added soon.</span></span>
+<span data-ttu-id="a9cce-127">**Ответ** разделе [Приступая к работе с Azure Active Directory Premium](active-directory-get-started-premium.md) для вопроса toothis ответов.</span><span class="sxs-lookup"><span data-stu-id="a9cce-127">**A:** See [Getting started with Azure Active Directory Premium](active-directory-get-started-premium.md) for an answer toothis question.</span></span>
 
 ---
 
-<span data-ttu-id="c2e6c-139">**Вопрос. Как узнать, почему операция входа или пользователь были помечены как рискованные на портале Azure?**</span><span class="sxs-lookup"><span data-stu-id="c2e6c-139">**Q: How do I know why a sign-in or a user was flagged risky in the Azure portal?**</span></span>
+<span data-ttu-id="a9cce-128">**Вопрос. Как скоро после получения лицензии Premium я увижу данные действий?**</span><span class="sxs-lookup"><span data-stu-id="a9cce-128">**Q: How soon should I see activities data after getting a premium license?**</span></span>
 
-<span data-ttu-id="c2e6c-140">**Ответ**. Если у вас выпуск Premium, вы можете получить дополнительные сведения о событиях риска, щелкнув пользователя в отчете "Пользователи, находящиеся в группе риска" или щелкнув "Рискованные входы в систему".</span><span class="sxs-lookup"><span data-stu-id="c2e6c-140">**A:** Premium edition customers can learn more about the underlying risk events by clicking on the user in “Users flagged for risk” or by clicking on the “Risky sign-ins”.</span></span> <span data-ttu-id="c2e6c-141">Пользователи выпуска Free или Basic не могут просматривать сведения о событиях риска, связанных с пользователями в группе риска и рискованными операциями входа.</span><span class="sxs-lookup"><span data-stu-id="c2e6c-141">Free and Basic edition customers get to see the at-risk users and sign-ins without the underlying risk event information.</span></span>
+<span data-ttu-id="a9cce-129">**Ответ** Если уже имеются данные действия как бесплатной лицензии, то можно увидеть hello и тех же данных.</span><span class="sxs-lookup"><span data-stu-id="a9cce-129">**A:** If you already have activities data as a free license, then you can see hello same data.</span></span> <span data-ttu-id="a9cce-130">Если у вас нет данных, то потребуется один или два дня.</span><span class="sxs-lookup"><span data-stu-id="a9cce-130">If you don’t have any data, then it will take one or two days.</span></span>
 
 ---
 
-<span data-ttu-id="c2e6c-142">**Вопрос. Как вычисляются IP-адреса в отчете о событиях входа и событиях входа, представляющих риск?**</span><span class="sxs-lookup"><span data-stu-id="c2e6c-142">**Q: How are IP addresses calculated in the sign-ins and risky sign-ins report??**</span></span>
+<span data-ttu-id="a9cce-131">**Вопрос. Увижу ли я данные за прошлый месяц после получения лицензии Azure AD Premium?**</span><span class="sxs-lookup"><span data-stu-id="a9cce-131">**Q: Do I see last month's data after getting an Azure AD premium license?**</span></span>
 
-<span data-ttu-id="c2e6c-143">**Ответ.** IP-адреса выдаются таким образом, что определенная связь между IP-адресом и физическим расположением компьютера с этим адресом отсутствует.</span><span class="sxs-lookup"><span data-stu-id="c2e6c-143">**A:** IP addresses are issued in such a way that there is no definitive connection between an IP address and where the computer with that address is physically located.</span></span> <span data-ttu-id="c2e6c-144">Это осложняется тем, что поставщики мобильной связи и виртуальные частные сети выдают IP-адреса из центральных пулов, которые нередко находятся очень далеко от места, где фактически используется клиентское устройство.</span><span class="sxs-lookup"><span data-stu-id="c2e6c-144">This is complicated by factors such as mobile providers and VPNs issuing IP addresses from central pools often very far from where the client device is actually used.</span></span> <span data-ttu-id="c2e6c-145">Учитывая все вышесказанное, преобразование IP-адреса в физическое расположение не гарантируется и осуществляется на основе трассировок, данных реестра, обратных просмотров и других сведений.</span><span class="sxs-lookup"><span data-stu-id="c2e6c-145">Given the above, converting IP address to a physical location is a best effort based on traces, registry data, reverse look ups and other information.</span></span> 
+<span data-ttu-id="a9cce-132">**Ответ** Если недавно переключения tooa расширенной версии (включая пробной версии), можно будет просматривать данные копии дней too7 изначально.</span><span class="sxs-lookup"><span data-stu-id="a9cce-132">**A:** If you have recently switched tooa Premium version (including a trial version), you can see data up too7 days initially.</span></span> <span data-ttu-id="a9cce-133">Собирает данные, появится вверх too30 дней.</span><span class="sxs-lookup"><span data-stu-id="a9cce-133">When data accumulates, you will see up too30 days.</span></span>
+
+---
+
+<span data-ttu-id="a9cce-134">**Вопрос есть события риска в защиту учетных данных, но я не вижу соответствующего вход в hello все входы. Так и должно быть?**</span><span class="sxs-lookup"><span data-stu-id="a9cce-134">**Q: There is a risk event in Identity Protection but I’m not seeing corresponding sign-in in hello all sign-ins. Is this expected?**</span></span>
+
+<span data-ttu-id="a9cce-135">**Ответ**. Да, служба защиты идентификации оценивает степень риска для всех процессов проверки подлинности, как интерактивных, так и неинтерактивных.</span><span class="sxs-lookup"><span data-stu-id="a9cce-135">**A:** Yes, Identity Protection evaluates risk for all authentication flows whether if be interactive or non-interactive.</span></span> <span data-ttu-id="a9cce-136">Тем не менее все входа в систему только отчете только hello интерактивного входа в систему.</span><span class="sxs-lookup"><span data-stu-id="a9cce-136">However, all sign-ins only report shows only hello interactive sign-ins.</span></span>
+
+---
+
+<span data-ttu-id="a9cce-137">**Вопрос. как можно загрузить отчет «Пользователи с отметкой риск» hello на портале Azure?**</span><span class="sxs-lookup"><span data-stu-id="a9cce-137">**Q: How can I download hello “Users flagged for risk” report in Azure portal?**</span></span>
+
+<span data-ttu-id="a9cce-138">**Ответ** toodownload параметр hello *пользователей с отметкой риск* скоро будет добавлен отчет.</span><span class="sxs-lookup"><span data-stu-id="a9cce-138">**A:** hello option toodownload *Users flagged for risk* report will be added soon.</span></span>
+
+---
+
+<span data-ttu-id="a9cce-139">**Вопрос. как узнать, почему в процесс входа или пользователя были отмечен в hello Azure portal рискованным?**</span><span class="sxs-lookup"><span data-stu-id="a9cce-139">**Q: How do I know why a sign-in or a user was flagged risky in hello Azure portal?**</span></span>
+
+<span data-ttu-id="a9cce-140">**Ответ** Premium edition клиентам Дополнительные сведения о hello базового события рисков, щелкнув пользователя hello в «Пользователи с отметкой риск» или щелкнув hello «Рискованные входа в систему».</span><span class="sxs-lookup"><span data-stu-id="a9cce-140">**A:** Premium edition customers can learn more about hello underlying risk events by clicking on hello user in “Users flagged for risk” or by clicking on hello “Risky sign-ins”.</span></span> <span data-ttu-id="a9cce-141">Выпуск свободного и основные клиенты получали пользователей под риском toosee hello и входа в систему без hello базовые сведения о событиях риска.</span><span class="sxs-lookup"><span data-stu-id="a9cce-141">Free and Basic edition customers get toosee hello at-risk users and sign-ins without hello underlying risk event information.</span></span>
+
+---
+
+<span data-ttu-id="a9cce-142">**Вопрос. как IP-адреса, вычисляются в hello входов и рискованно входы отчетов??**</span><span class="sxs-lookup"><span data-stu-id="a9cce-142">**Q: How are IP addresses calculated in hello sign-ins and risky sign-ins report??**</span></span>
+
+<span data-ttu-id="a9cce-143">**Ответ** IP-адреса, выданные таким образом, что отсутствует определенный подключение между IP-адрес и где физически расположен hello компьютер с таким адресом.</span><span class="sxs-lookup"><span data-stu-id="a9cce-143">**A:** IP addresses are issued in such a way that there is no definitive connection between an IP address and where hello computer with that address is physically located.</span></span> <span data-ttu-id="a9cce-144">Это осложняется факторы, например мобильные поставщиков и виртуальные частные сети, очень часто выдача IP-адресов из центра пулы далеко от которых фактически используется hello клиентского устройства.</span><span class="sxs-lookup"><span data-stu-id="a9cce-144">This is complicated by factors such as mobile providers and VPNs issuing IP addresses from central pools often very far from where hello client device is actually used.</span></span> <span data-ttu-id="a9cce-145">Имея hello выше, преобразование физическое расположение IP адрес tooa — максимум усилий на основе трассировки, данные реестра, обратную просмотров и другие сведения.</span><span class="sxs-lookup"><span data-stu-id="a9cce-145">Given hello above, converting IP address tooa physical location is a best effort based on traces, registry data, reverse look ups and other information.</span></span> 
 
 ---

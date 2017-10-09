@@ -1,6 +1,6 @@
 ---
 title: "Azure AD B2C: защита веб-API с помощью Node.js | Документация Майкрософт"
-description: "Создание веб-API Node.js, который принимает токены от клиента B2C"
+description: "Как toobuild Node.js веб-API, принимающий токены из клиента B2C"
 services: active-directory-b2c
 documentationcenter: 
 author: dstrockis
@@ -14,99 +14,99 @@ ms.devlang: javascript
 ms.topic: hero-article
 ms.date: 01/07/2017
 ms.author: xerners
-ms.openlocfilehash: 6480be75c314ede1b786e959a79c0385dd2edea8
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 47f5bae025a9ba2f486e36acef36aa37cfb43543
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="azure-ad-b2c-secure-a-web-api-by-using-nodejs"></a><span data-ttu-id="c0ab5-103">Azure AD B2C: защита веб-API с помощью Node.js</span><span class="sxs-lookup"><span data-stu-id="c0ab5-103">Azure AD B2C: Secure a web API by using Node.js</span></span>
+# <a name="azure-ad-b2c-secure-a-web-api-by-using-nodejs"></a><span data-ttu-id="e2e4b-103">Azure AD B2C: защита веб-API с помощью Node.js</span><span class="sxs-lookup"><span data-stu-id="e2e4b-103">Azure AD B2C: Secure a web API by using Node.js</span></span>
 <!-- TODO [AZURE.INCLUDE [active-directory-b2c-devquickstarts-web-switcher](../../includes/active-directory-b2c-devquickstarts-web-switcher.md)]-->
 
-<span data-ttu-id="c0ab5-104">С помощью Azure Active Directory (Azure AD) B2C можно защитить веб-API с помощью маркера доступа OAuth 2.0.</span><span class="sxs-lookup"><span data-stu-id="c0ab5-104">With Azure Active Directory (Azure AD) B2C, you can secure a web API by using OAuth 2.0 access tokens.</span></span> <span data-ttu-id="c0ab5-105">Эти маркеры позволяют клиентским приложениям, использующим Azure AD B2C, проходить проверку подлинности для API.</span><span class="sxs-lookup"><span data-stu-id="c0ab5-105">These tokens allow your client apps that use Azure AD B2C to authenticate to the API.</span></span> <span data-ttu-id="c0ab5-106">В этой статье показано, как создать интерфейс веб-API .NET "Список дел", который позволяет пользователям добавлять и просматривать задачи.</span><span class="sxs-lookup"><span data-stu-id="c0ab5-106">This article shows you how to create a "to-do list" API that allows users to add and list tasks.</span></span> <span data-ttu-id="c0ab5-107">Этот веб-API защищен с помощью Azure AD B2C. Управлять списком дел могут только пользователи, прошедшие проверку подлинности.</span><span class="sxs-lookup"><span data-stu-id="c0ab5-107">The web API is secured using Azure AD B2C and only allows authenticated users to manage their to-do list.</span></span>
+<span data-ttu-id="e2e4b-104">С помощью Azure Active Directory (Azure AD) B2C можно защитить веб-API с помощью маркера доступа OAuth 2.0.</span><span class="sxs-lookup"><span data-stu-id="e2e4b-104">With Azure Active Directory (Azure AD) B2C, you can secure a web API by using OAuth 2.0 access tokens.</span></span> <span data-ttu-id="e2e4b-105">Эти маркеры позволяют клиентских приложений, использующих Azure AD B2C tooauthenticate toohello API.</span><span class="sxs-lookup"><span data-stu-id="e2e4b-105">These tokens allow your client apps that use Azure AD B2C tooauthenticate toohello API.</span></span> <span data-ttu-id="e2e4b-106">В этой статье показано, как toocreate API «список дел», которая позволяет пользователям tooadd и список задач.</span><span class="sxs-lookup"><span data-stu-id="e2e4b-106">This article shows you how toocreate a "to-do list" API that allows users tooadd and list tasks.</span></span> <span data-ttu-id="e2e4b-107">веб-API Hello защищается с помощью Azure AD B2C и позволяет toomanage прошедшим проверку пользователям только их список дел.</span><span class="sxs-lookup"><span data-stu-id="e2e4b-107">hello web API is secured using Azure AD B2C and only allows authenticated users toomanage their to-do list.</span></span>
 
 > [!NOTE]
-> <span data-ttu-id="c0ab5-108">Этот пример рассчитан на подключение с использованием [примера приложения iOS B2C](active-directory-b2c-devquickstarts-ios.md).</span><span class="sxs-lookup"><span data-stu-id="c0ab5-108">This sample was written to be connected to by using our [iOS B2C sample application](active-directory-b2c-devquickstarts-ios.md).</span></span> <span data-ttu-id="c0ab5-109">Сначала изучите это руководство, а затем переходите к указанному примеру.</span><span class="sxs-lookup"><span data-stu-id="c0ab5-109">Do the current walk-through first, and then follow along with that sample.</span></span>
+> <span data-ttu-id="e2e4b-108">Этот образец был написан toobe подключены с помощью tooby наших [iOS B2C образец приложения](active-directory-b2c-devquickstarts-ios.md).</span><span class="sxs-lookup"><span data-stu-id="e2e4b-108">This sample was written toobe connected tooby using our [iOS B2C sample application](active-directory-b2c-devquickstarts-ios.md).</span></span> <span data-ttu-id="e2e4b-109">Сначала hello текущего руководство по применению, а затем следуйте вместе с этого образца.</span><span class="sxs-lookup"><span data-stu-id="e2e4b-109">Do hello current walk-through first, and then follow along with that sample.</span></span>
 >
 >
 
-<span data-ttu-id="c0ab5-110">**Passport** — промежуточный слой проверки подлинности для Node.js.</span><span class="sxs-lookup"><span data-stu-id="c0ab5-110">**Passport** is authentication middleware for Node.js.</span></span> <span data-ttu-id="c0ab5-111">Гибкая модульная структура Passport позволяет незаметно устанавливать его в любом приложении на основе Express или в веб-приложении Restify.</span><span class="sxs-lookup"><span data-stu-id="c0ab5-111">Flexible and modular, Passport can be unobtrusively installed in any Express-based or Restify web application.</span></span> <span data-ttu-id="c0ab5-112">Полный набор стратегий поддерживает проверку подлинности с помощью имени пользователя и пароля, Facebook, Twitter и других средств.</span><span class="sxs-lookup"><span data-stu-id="c0ab5-112">A comprehensive set of strategies supports authentication by using a user name and password, Facebook, Twitter, and more.</span></span> <span data-ttu-id="c0ab5-113">Мы разработали стратегию для Azure Active Directory (Azure AD).</span><span class="sxs-lookup"><span data-stu-id="c0ab5-113">We have developed a strategy for Azure Active Directory (Azure AD).</span></span> <span data-ttu-id="c0ab5-114">Сначала следует установить этот модуль, а затем добавить подключаемый модуль Azure AD `passport-azure-ad` .</span><span class="sxs-lookup"><span data-stu-id="c0ab5-114">You install this module and then add the Azure AD `passport-azure-ad` plug-in.</span></span>
+<span data-ttu-id="e2e4b-110">**Passport** — промежуточный слой проверки подлинности для Node.js.</span><span class="sxs-lookup"><span data-stu-id="e2e4b-110">**Passport** is authentication middleware for Node.js.</span></span> <span data-ttu-id="e2e4b-111">Гибкая модульная структура Passport позволяет незаметно устанавливать его в любом приложении на основе Express или в веб-приложении Restify.</span><span class="sxs-lookup"><span data-stu-id="e2e4b-111">Flexible and modular, Passport can be unobtrusively installed in any Express-based or Restify web application.</span></span> <span data-ttu-id="e2e4b-112">Полный набор стратегий поддерживает проверку подлинности с помощью имени пользователя и пароля, Facebook, Twitter и других средств.</span><span class="sxs-lookup"><span data-stu-id="e2e4b-112">A comprehensive set of strategies supports authentication by using a user name and password, Facebook, Twitter, and more.</span></span> <span data-ttu-id="e2e4b-113">Мы разработали стратегию для Azure Active Directory (Azure AD).</span><span class="sxs-lookup"><span data-stu-id="e2e4b-113">We have developed a strategy for Azure Active Directory (Azure AD).</span></span> <span data-ttu-id="e2e4b-114">Установите этот модуль и добавьте hello Azure AD `passport-azure-ad` подключаемого модуля.</span><span class="sxs-lookup"><span data-stu-id="e2e4b-114">You install this module and then add hello Azure AD `passport-azure-ad` plug-in.</span></span>
 
-<span data-ttu-id="c0ab5-115">Для выполнения этого примера необходимо выполнить следующие действия:</span><span class="sxs-lookup"><span data-stu-id="c0ab5-115">To do this sample, you need to:</span></span>
+<span data-ttu-id="e2e4b-115">toodo этот образец, необходимо:</span><span class="sxs-lookup"><span data-stu-id="e2e4b-115">toodo this sample, you need to:</span></span>
 
-1. <span data-ttu-id="c0ab5-116">зарегистрировать приложение в Azure AD;</span><span class="sxs-lookup"><span data-stu-id="c0ab5-116">Register an application with Azure AD.</span></span>
-2. <span data-ttu-id="c0ab5-117">настроить приложение для использования подключаемого модуля Passport `azure-ad-passport` ;</span><span class="sxs-lookup"><span data-stu-id="c0ab5-117">Set up your application to use Passport's `azure-ad-passport` plug-in.</span></span>
-3. <span data-ttu-id="c0ab5-118">настроить клиентское приложение для вызова веб-API с именем to-do list.</span><span class="sxs-lookup"><span data-stu-id="c0ab5-118">Configure a client application to call the "to-do list" web API.</span></span>
+1. <span data-ttu-id="e2e4b-116">зарегистрировать приложение в Azure AD;</span><span class="sxs-lookup"><span data-stu-id="e2e4b-116">Register an application with Azure AD.</span></span>
+2. <span data-ttu-id="e2e4b-117">Настройка вашего приложения toouse Passport `azure-ad-passport` подключаемого модуля.</span><span class="sxs-lookup"><span data-stu-id="e2e4b-117">Set up your application toouse Passport's `azure-ad-passport` plug-in.</span></span>
+3. <span data-ttu-id="e2e4b-118">Настройка клиентского приложения toocall hello «список дел» веб-API.</span><span class="sxs-lookup"><span data-stu-id="e2e4b-118">Configure a client application toocall hello "to-do list" web API.</span></span>
 
-## <a name="get-an-azure-ad-b2c-directory"></a><span data-ttu-id="c0ab5-119">Создание каталога Azure AD B2C</span><span class="sxs-lookup"><span data-stu-id="c0ab5-119">Get an Azure AD B2C directory</span></span>
-<span data-ttu-id="c0ab5-120">Перед использованием Azure AD B2C необходимо создать каталог или клиент.</span><span class="sxs-lookup"><span data-stu-id="c0ab5-120">Before you can use Azure AD B2C, you must create a directory, or tenant.</span></span>  <span data-ttu-id="c0ab5-121">Каталог — это контейнер для всех пользователей, приложений, групп и т. д.</span><span class="sxs-lookup"><span data-stu-id="c0ab5-121">A directory is a container for all users, apps, groups, and more.</span></span>  <span data-ttu-id="c0ab5-122">Если каталог B2C еще не создан, [создайте его](active-directory-b2c-get-started.md), прежде чем продолжить.</span><span class="sxs-lookup"><span data-stu-id="c0ab5-122">If you don't have one already, [create a B2C directory](active-directory-b2c-get-started.md) before you continue.</span></span>
+## <a name="get-an-azure-ad-b2c-directory"></a><span data-ttu-id="e2e4b-119">Создание каталога Azure AD B2C</span><span class="sxs-lookup"><span data-stu-id="e2e4b-119">Get an Azure AD B2C directory</span></span>
+<span data-ttu-id="e2e4b-120">Перед использованием Azure AD B2C необходимо создать каталог или клиент.</span><span class="sxs-lookup"><span data-stu-id="e2e4b-120">Before you can use Azure AD B2C, you must create a directory, or tenant.</span></span>  <span data-ttu-id="e2e4b-121">Каталог — это контейнер для всех пользователей, приложений, групп и т. д.</span><span class="sxs-lookup"><span data-stu-id="e2e4b-121">A directory is a container for all users, apps, groups, and more.</span></span>  <span data-ttu-id="e2e4b-122">Если каталог B2C еще не создан, [создайте его](active-directory-b2c-get-started.md), прежде чем продолжить.</span><span class="sxs-lookup"><span data-stu-id="e2e4b-122">If you don't have one already, [create a B2C directory](active-directory-b2c-get-started.md) before you continue.</span></span>
 
-## <a name="create-an-application"></a><span data-ttu-id="c0ab5-123">Создание приложения</span><span class="sxs-lookup"><span data-stu-id="c0ab5-123">Create an application</span></span>
-<span data-ttu-id="c0ab5-124">Затем необходимо создать приложение в каталоге B2C. Оно будет передавать в Azure AD сведения, необходимые для безопасного взаимодействия с вашим приложением.</span><span class="sxs-lookup"><span data-stu-id="c0ab5-124">Next, you need to create an app in your B2C directory that gives Azure AD some information that it needs to securely communicate with your app.</span></span> <span data-ttu-id="c0ab5-125">В нашем примере и клиентское приложение, и веб-API представлены одним **идентификатором приложения**, так как они представляют одно приложение логики.</span><span class="sxs-lookup"><span data-stu-id="c0ab5-125">In this case, both the client app and web API are represented by a single **Application ID**, because they comprise one logical app.</span></span> <span data-ttu-id="c0ab5-126">Создайте приложение, выполнив [эти указания](active-directory-b2c-app-registration.md).</span><span class="sxs-lookup"><span data-stu-id="c0ab5-126">To create an app, follow [these instructions](active-directory-b2c-app-registration.md).</span></span> <span data-ttu-id="c0ab5-127">Не забудьте сделать следующее.</span><span class="sxs-lookup"><span data-stu-id="c0ab5-127">Be sure to:</span></span>
+## <a name="create-an-application"></a><span data-ttu-id="e2e4b-123">Создание приложения</span><span class="sxs-lookup"><span data-stu-id="e2e4b-123">Create an application</span></span>
+<span data-ttu-id="e2e4b-124">Далее необходимо toocreate приложения в каталоге B2C, которое предоставляет некоторые сведения, необходимые toosecurely Azure AD взаимодействовать с приложением.</span><span class="sxs-lookup"><span data-stu-id="e2e4b-124">Next, you need toocreate an app in your B2C directory that gives Azure AD some information that it needs toosecurely communicate with your app.</span></span> <span data-ttu-id="e2e4b-125">В этом случае клиентское приложение hello и веб-API представлены одним **идентификатор приложения**, так как они включают в себя один логический приложения.</span><span class="sxs-lookup"><span data-stu-id="e2e4b-125">In this case, both hello client app and web API are represented by a single **Application ID**, because they comprise one logical app.</span></span> <span data-ttu-id="e2e4b-126">toocreate приложения, выполните [эти инструкции](active-directory-b2c-app-registration.md).</span><span class="sxs-lookup"><span data-stu-id="e2e4b-126">toocreate an app, follow [these instructions](active-directory-b2c-app-registration.md).</span></span> <span data-ttu-id="e2e4b-127">Не забудьте сделать следующее.</span><span class="sxs-lookup"><span data-stu-id="e2e4b-127">Be sure to:</span></span>
 
-* <span data-ttu-id="c0ab5-128">Включите в приложение **веб-приложение или веб-API** .</span><span class="sxs-lookup"><span data-stu-id="c0ab5-128">Include a **web app/web api** in the application</span></span>
-* <span data-ttu-id="c0ab5-129">Введите `http://localhost/TodoListService` в качестве **URL-адреса ответа**.</span><span class="sxs-lookup"><span data-stu-id="c0ab5-129">Enter `http://localhost/TodoListService` as a **Reply URL**.</span></span> <span data-ttu-id="c0ab5-130">Это URL-адрес по умолчанию для данного примера кода.</span><span class="sxs-lookup"><span data-stu-id="c0ab5-130">It is the default URL for this code sample.</span></span>
-* <span data-ttu-id="c0ab5-131">Создайте для своего приложения **секрет приложения** и скопируйте его.</span><span class="sxs-lookup"><span data-stu-id="c0ab5-131">Create an **Application secret** for your application and copy it.</span></span> <span data-ttu-id="c0ab5-132">Эти данные понадобятся позже.</span><span class="sxs-lookup"><span data-stu-id="c0ab5-132">You need this data later.</span></span> <span data-ttu-id="c0ab5-133">Обратите внимание, что перед использованием это значение должно быть [экранировано для XML](https://www.w3.org/TR/2006/REC-xml11-20060816/#dt-escape) .</span><span class="sxs-lookup"><span data-stu-id="c0ab5-133">Note that this value needs to be [XML escaped](https://www.w3.org/TR/2006/REC-xml11-20060816/#dt-escape) before you use it.</span></span>
-* <span data-ttu-id="c0ab5-134">Скопируйте **идентификатор приложения** , назначенный приложению.</span><span class="sxs-lookup"><span data-stu-id="c0ab5-134">Copy the **Application ID** that is assigned to your app.</span></span> <span data-ttu-id="c0ab5-135">Эти данные понадобятся позже.</span><span class="sxs-lookup"><span data-stu-id="c0ab5-135">You need this data later.</span></span>
+* <span data-ttu-id="e2e4b-128">Включить **веб-приложения и веб-api** в приложение hello</span><span class="sxs-lookup"><span data-stu-id="e2e4b-128">Include a **web app/web api** in hello application</span></span>
+* <span data-ttu-id="e2e4b-129">Введите `http://localhost/TodoListService` в качестве значения **URL-адреса ответа**.</span><span class="sxs-lookup"><span data-stu-id="e2e4b-129">Enter `http://localhost/TodoListService` as a **Reply URL**.</span></span> <span data-ttu-id="e2e4b-130">Это URL-адрес по умолчанию hello для этого примера кода.</span><span class="sxs-lookup"><span data-stu-id="e2e4b-130">It is hello default URL for this code sample.</span></span>
+* <span data-ttu-id="e2e4b-131">Создайте для своего приложения **секрет приложения** и скопируйте его.</span><span class="sxs-lookup"><span data-stu-id="e2e4b-131">Create an **Application secret** for your application and copy it.</span></span> <span data-ttu-id="e2e4b-132">Эти данные понадобятся позже.</span><span class="sxs-lookup"><span data-stu-id="e2e4b-132">You need this data later.</span></span> <span data-ttu-id="e2e4b-133">Обратите внимание, что это значение должно toobe [XML переключения](https://www.w3.org/TR/2006/REC-xml11-20060816/#dt-escape) перед его использованием.</span><span class="sxs-lookup"><span data-stu-id="e2e4b-133">Note that this value needs toobe [XML escaped](https://www.w3.org/TR/2006/REC-xml11-20060816/#dt-escape) before you use it.</span></span>
+* <span data-ttu-id="e2e4b-134">Копировать hello **идентификатор приложения** , назначенный tooyour приложения.</span><span class="sxs-lookup"><span data-stu-id="e2e4b-134">Copy hello **Application ID** that is assigned tooyour app.</span></span> <span data-ttu-id="e2e4b-135">Эти данные понадобятся позже.</span><span class="sxs-lookup"><span data-stu-id="e2e4b-135">You need this data later.</span></span>
 
 [!INCLUDE [active-directory-b2c-devquickstarts-v2-apps](../../includes/active-directory-b2c-devquickstarts-v2-apps.md)]
 
-## <a name="create-your-policies"></a><span data-ttu-id="c0ab5-136">Создание политик</span><span class="sxs-lookup"><span data-stu-id="c0ab5-136">Create your policies</span></span>
-<span data-ttu-id="c0ab5-137">В Azure AD B2C любое взаимодействие с пользователем определяется [политикой](active-directory-b2c-reference-policies.md).</span><span class="sxs-lookup"><span data-stu-id="c0ab5-137">In Azure AD B2C, every user experience is defined by a [policy](active-directory-b2c-reference-policies.md).</span></span> <span data-ttu-id="c0ab5-138">Это приложение содержит два действия с удостоверениями: регистрация и вход.</span><span class="sxs-lookup"><span data-stu-id="c0ab5-138">This app contains two identity experiences: sign up and sign in.</span></span> <span data-ttu-id="c0ab5-139">Вам нужно создать по одной политике каждого типа, как описано в [справочной статье о политиках](active-directory-b2c-reference-policies.md#create-a-sign-up-policy).</span><span class="sxs-lookup"><span data-stu-id="c0ab5-139">You need to create one policy of each type, as described in the [policy reference article](active-directory-b2c-reference-policies.md#create-a-sign-up-policy).</span></span>  <span data-ttu-id="c0ab5-140">При создании трех политик обязательно выполните указанные ниже действия.</span><span class="sxs-lookup"><span data-stu-id="c0ab5-140">When you create your three policies, be sure to:</span></span>
+## <a name="create-your-policies"></a><span data-ttu-id="e2e4b-136">Создание политик</span><span class="sxs-lookup"><span data-stu-id="e2e4b-136">Create your policies</span></span>
+<span data-ttu-id="e2e4b-137">В Azure AD B2C любое взаимодействие с пользователем определяется [политикой](active-directory-b2c-reference-policies.md).</span><span class="sxs-lookup"><span data-stu-id="e2e4b-137">In Azure AD B2C, every user experience is defined by a [policy](active-directory-b2c-reference-policies.md).</span></span> <span data-ttu-id="e2e4b-138">Это приложение содержит два действия с удостоверениями: регистрация и вход.</span><span class="sxs-lookup"><span data-stu-id="e2e4b-138">This app contains two identity experiences: sign up and sign in.</span></span> <span data-ttu-id="e2e4b-139">Требуется одна политика toocreate каждого типа, как описано в [статье политики](active-directory-b2c-reference-policies.md#create-a-sign-up-policy).</span><span class="sxs-lookup"><span data-stu-id="e2e4b-139">You need toocreate one policy of each type, as described in the [policy reference article](active-directory-b2c-reference-policies.md#create-a-sign-up-policy).</span></span>  <span data-ttu-id="e2e4b-140">При создании трех политик обязательно выполните указанные ниже действия.</span><span class="sxs-lookup"><span data-stu-id="e2e4b-140">When you create your three policies, be sure to:</span></span>
 
-* <span data-ttu-id="c0ab5-141">В политике регистрации укажите **отображаемое имя** и другие атрибуты регистрации.</span><span class="sxs-lookup"><span data-stu-id="c0ab5-141">Choose the **Display name** and other sign-up attributes in your sign-up policy.</span></span>
-* <span data-ttu-id="c0ab5-142">Выберите утверждения приложения **Отображаемое имя** и **Идентификатор объекта** для каждой политики.</span><span class="sxs-lookup"><span data-stu-id="c0ab5-142">Choose the **Display name** and **Object ID** application claims in every policy.</span></span>  <span data-ttu-id="c0ab5-143">Можно также выбрать другие утверждения.</span><span class="sxs-lookup"><span data-stu-id="c0ab5-143">You can choose other claims as well.</span></span>
-* <span data-ttu-id="c0ab5-144">Скопируйте **имя** каждой политики после ее создания.</span><span class="sxs-lookup"><span data-stu-id="c0ab5-144">Copy down the **Name** of each policy after you create it.</span></span> <span data-ttu-id="c0ab5-145">У него должен быть префикс `b2c_1_`.</span><span class="sxs-lookup"><span data-stu-id="c0ab5-145">It should have the prefix `b2c_1_`.</span></span>  <span data-ttu-id="c0ab5-146">Имена политик понадобятся вам позже.</span><span class="sxs-lookup"><span data-stu-id="c0ab5-146">You need those policy names later.</span></span>
+* <span data-ttu-id="e2e4b-141">Выберите hello **отображаемое имя** и другие атрибуты регистрации в политике организации доступа к Интернету.</span><span class="sxs-lookup"><span data-stu-id="e2e4b-141">Choose hello **Display name** and other sign-up attributes in your sign-up policy.</span></span>
+* <span data-ttu-id="e2e4b-142">Выберите hello **отображаемое имя** и **идентификатор объекта** утверждений приложения в каждой политике.</span><span class="sxs-lookup"><span data-stu-id="e2e4b-142">Choose hello **Display name** and **Object ID** application claims in every policy.</span></span>  <span data-ttu-id="e2e4b-143">Можно также выбрать другие утверждения.</span><span class="sxs-lookup"><span data-stu-id="e2e4b-143">You can choose other claims as well.</span></span>
+* <span data-ttu-id="e2e4b-144">Копировать вниз hello **имя** каждой политики, после его создания.</span><span class="sxs-lookup"><span data-stu-id="e2e4b-144">Copy down hello **Name** of each policy after you create it.</span></span> <span data-ttu-id="e2e4b-145">Он должен иметь префикс hello `b2c_1_`.</span><span class="sxs-lookup"><span data-stu-id="e2e4b-145">It should have hello prefix `b2c_1_`.</span></span>  <span data-ttu-id="e2e4b-146">Имена политик понадобятся вам позже.</span><span class="sxs-lookup"><span data-stu-id="e2e4b-146">You need those policy names later.</span></span>
 
 [!INCLUDE [active-directory-b2c-devquickstarts-policy](../../includes/active-directory-b2c-devquickstarts-policy.md)]
 
-<span data-ttu-id="c0ab5-147">Создав три политики, можно приступать к сборке приложения.</span><span class="sxs-lookup"><span data-stu-id="c0ab5-147">After you have created your three policies, you're ready to build your app.</span></span>
+<span data-ttu-id="e2e4b-147">После создания трех политик вы будете готовы toobuild приложения.</span><span class="sxs-lookup"><span data-stu-id="e2e4b-147">After you have created your three policies, you're ready toobuild your app.</span></span>
 
-<span data-ttu-id="c0ab5-148">Дополнительные сведения о работе политик в Azure AD B2C см. в [руководстве по началу работы с веб-приложениями .NET](active-directory-b2c-devquickstarts-web-dotnet.md).</span><span class="sxs-lookup"><span data-stu-id="c0ab5-148">To learn about how policies work in Azure AD B2C, start with the [.NET web app getting started tutorial](active-directory-b2c-devquickstarts-web-dotnet.md).</span></span>
+<span data-ttu-id="e2e4b-148">toolearn о том, как работают политики в Azure AD B2C, начинаться с hello [.NET web app начало учебника](active-directory-b2c-devquickstarts-web-dotnet.md).</span><span class="sxs-lookup"><span data-stu-id="e2e4b-148">toolearn about how policies work in Azure AD B2C, start with hello [.NET web app getting started tutorial](active-directory-b2c-devquickstarts-web-dotnet.md).</span></span>
 
-## <a name="download-the-code"></a><span data-ttu-id="c0ab5-149">Загрузка кода</span><span class="sxs-lookup"><span data-stu-id="c0ab5-149">Download the code</span></span>
-<span data-ttu-id="c0ab5-150">Код для этого руководства размещен на портале [GitHub](https://github.com/AzureADQuickStarts/B2C-WebAPI-NodeJS).</span><span class="sxs-lookup"><span data-stu-id="c0ab5-150">The code for this tutorial [is maintained on GitHub](https://github.com/AzureADQuickStarts/B2C-WebAPI-NodeJS).</span></span> <span data-ttu-id="c0ab5-151">Чтобы выполнить сборку примера, [скачайте схему проекта в ZIP-архиве](https://github.com/AzureADQuickStarts/B2C-WebAPI-NodeJS/archive/skeleton.zip).</span><span class="sxs-lookup"><span data-stu-id="c0ab5-151">To build the sample as you go, you can [download a skeleton project as a .zip file](https://github.com/AzureADQuickStarts/B2C-WebAPI-NodeJS/archive/skeleton.zip).</span></span> <span data-ttu-id="c0ab5-152">Ее также можно клонировать:</span><span class="sxs-lookup"><span data-stu-id="c0ab5-152">You can also clone the skeleton:</span></span>
+## <a name="download-hello-code"></a><span data-ttu-id="e2e4b-149">Загрузка кода hello</span><span class="sxs-lookup"><span data-stu-id="e2e4b-149">Download hello code</span></span>
+<span data-ttu-id="e2e4b-150">Здравствуйте, код для этого учебника [сохраняется на сайте GitHub](https://github.com/AzureADQuickStarts/B2C-WebAPI-NodeJS).</span><span class="sxs-lookup"><span data-stu-id="e2e4b-150">hello code for this tutorial [is maintained on GitHub](https://github.com/AzureADQuickStarts/B2C-WebAPI-NodeJS).</span></span> <span data-ttu-id="e2e4b-151">Образец hello toobuild как можно перейти, вы можете [загрузить каркас проект как ZIP-файл](https://github.com/AzureADQuickStarts/B2C-WebAPI-NodeJS/archive/skeleton.zip).</span><span class="sxs-lookup"><span data-stu-id="e2e4b-151">toobuild hello sample as you go, you can [download a skeleton project as a .zip file](https://github.com/AzureADQuickStarts/B2C-WebAPI-NodeJS/archive/skeleton.zip).</span></span> <span data-ttu-id="e2e4b-152">Также можно клонировать основу hello:</span><span class="sxs-lookup"><span data-stu-id="e2e4b-152">You can also clone hello skeleton:</span></span>
 
 ```
 git clone --branch skeleton https://github.com/AzureADQuickStarts/B2C-WebAPI-NodeJS.git
 ```
 
-<span data-ttu-id="c0ab5-153">Кроме того, можно скачать готовое приложение [в виде ZIP-архива](https://github.com/AzureADQuickStarts/B2C-WebAPI-NodeJS/archive/complete.zip) или получить его из ветви `complete` того же репозитория.</span><span class="sxs-lookup"><span data-stu-id="c0ab5-153">The completed app is also [available as a .zip file](https://github.com/AzureADQuickStarts/B2C-WebAPI-NodeJS/archive/complete.zip) or on the `complete` branch of the same repository.</span></span>
+<span data-ttu-id="e2e4b-153">также является приложение Hello завершения [доступны как ZIP-файл](https://github.com/AzureADQuickStarts/B2C-WebAPI-NodeJS/archive/complete.zip) или на hello `complete` ветви hello одного репозитория.</span><span class="sxs-lookup"><span data-stu-id="e2e4b-153">hello completed app is also [available as a .zip file](https://github.com/AzureADQuickStarts/B2C-WebAPI-NodeJS/archive/complete.zip) or on hello `complete` branch of hello same repository.</span></span>
 
-## <a name="download-nodejs-for-your-platform"></a><span data-ttu-id="c0ab5-154">Загрузка Node.js для платформы</span><span class="sxs-lookup"><span data-stu-id="c0ab5-154">Download Node.js for your platform</span></span>
-<span data-ttu-id="c0ab5-155">Чтобы этот пример у вас заработал, потребуется рабочая установка Node.js.</span><span class="sxs-lookup"><span data-stu-id="c0ab5-155">To successfully use this sample, you need a working installation of Node.js.</span></span>
+## <a name="download-nodejs-for-your-platform"></a><span data-ttu-id="e2e4b-154">Загрузка Node.js для платформы</span><span class="sxs-lookup"><span data-stu-id="e2e4b-154">Download Node.js for your platform</span></span>
+<span data-ttu-id="e2e4b-155">в этом примере использовать toosuccessfully, состоящая из Node.js.</span><span class="sxs-lookup"><span data-stu-id="e2e4b-155">toosuccessfully use this sample, you need a working installation of Node.js.</span></span>
 
-<span data-ttu-id="c0ab5-156">Установите Node.js с сайта [nodejs.org](http://nodejs.org).</span><span class="sxs-lookup"><span data-stu-id="c0ab5-156">Install Node.js from [nodejs.org](http://nodejs.org).</span></span>
+<span data-ttu-id="e2e4b-156">Установите Node.js с сайта [nodejs.org](http://nodejs.org).</span><span class="sxs-lookup"><span data-stu-id="e2e4b-156">Install Node.js from [nodejs.org](http://nodejs.org).</span></span>
 
-## <a name="install-mongodb-for-your-platform"></a><span data-ttu-id="c0ab5-157">Установка MongoDB на платформе</span><span class="sxs-lookup"><span data-stu-id="c0ab5-157">Install MongoDB for your platform</span></span>
-<span data-ttu-id="c0ab5-158">Чтобы этот пример у вас заработал, потребуется рабочая установка MongoDB.</span><span class="sxs-lookup"><span data-stu-id="c0ab5-158">To successfully use this sample, you need a working installation of MongoDB.</span></span> <span data-ttu-id="c0ab5-159">MongoDB мы используем для того, чтобы интерфейс REST API устойчиво работал с несколькими экземплярами сервера.</span><span class="sxs-lookup"><span data-stu-id="c0ab5-159">We use MongoDB to make your REST API persistent across server instances.</span></span>
+## <a name="install-mongodb-for-your-platform"></a><span data-ttu-id="e2e4b-157">Установка MongoDB на платформе</span><span class="sxs-lookup"><span data-stu-id="e2e4b-157">Install MongoDB for your platform</span></span>
+<span data-ttu-id="e2e4b-158">в этом примере использовать toosuccessfully, состоящая из MongoDB.</span><span class="sxs-lookup"><span data-stu-id="e2e4b-158">toosuccessfully use this sample, you need a working installation of MongoDB.</span></span> <span data-ttu-id="e2e4b-159">Мы используем MongoDB toomake постоянного REST API по экземплярам сервера.</span><span class="sxs-lookup"><span data-stu-id="e2e4b-159">We use MongoDB toomake your REST API persistent across server instances.</span></span>
 
-<span data-ttu-id="c0ab5-160">Установите MongoDB с сайта [mongodb.org](http://www.mongodb.org).</span><span class="sxs-lookup"><span data-stu-id="c0ab5-160">Install MongoDB from [mongodb.org](http://www.mongodb.org).</span></span>
+<span data-ttu-id="e2e4b-160">Установите MongoDB с сайта [mongodb.org](http://www.mongodb.org).</span><span class="sxs-lookup"><span data-stu-id="e2e4b-160">Install MongoDB from [mongodb.org](http://www.mongodb.org).</span></span>
 
 > [!NOTE]
-> <span data-ttu-id="c0ab5-161">В данном руководстве предполагается, что вы используете стандартный установочный пакет и стандартные конечные точки сервера для MongoDB. На момент написания статьи это `mongodb://localhost`.</span><span class="sxs-lookup"><span data-stu-id="c0ab5-161">This walk-through assumes that you use the default installation and server endpoints for MongoDB, which at the time of this writing is `mongodb://localhost`.</span></span>
+> <span data-ttu-id="e2e4b-161">Это пошаговое руководство предполагает, что можно использовать конечные точки установки и сервером по умолчанию hello для MongoDB, являющийся на момент написания этой статьи hello `mongodb://localhost`.</span><span class="sxs-lookup"><span data-stu-id="e2e4b-161">This walk-through assumes that you use hello default installation and server endpoints for MongoDB, which at hello time of this writing is `mongodb://localhost`.</span></span>
 >
 >
 
-## <a name="install-the-restify-modules-in-your-web-api"></a><span data-ttu-id="c0ab5-162">Установка модулей Restify для веб-API</span><span class="sxs-lookup"><span data-stu-id="c0ab5-162">Install the Restify modules in your web API</span></span>
-<span data-ttu-id="c0ab5-163">Restify мы используем для сборки REST API.</span><span class="sxs-lookup"><span data-stu-id="c0ab5-163">We use Restify to build your REST API.</span></span> <span data-ttu-id="c0ab5-164">Restify — это минимальная гибкая платформа приложений Node.j, производная от Express.</span><span class="sxs-lookup"><span data-stu-id="c0ab5-164">Restify is a minimal and flexible Node.js application framework derived from Express.</span></span> <span data-ttu-id="c0ab5-165">Она располагает широким набором функций, позволяющих реализовать интерфейсы REST API поверх Connect.</span><span class="sxs-lookup"><span data-stu-id="c0ab5-165">It has a robust set of features for building REST APIs on top of Connect.</span></span>
+## <a name="install-hello-restify-modules-in-your-web-api"></a><span data-ttu-id="e2e4b-162">Установка модулей Restify hello в веб-API</span><span class="sxs-lookup"><span data-stu-id="e2e4b-162">Install hello Restify modules in your web API</span></span>
+<span data-ttu-id="e2e4b-163">Мы используем Restify toobuild API-интерфейса REST.</span><span class="sxs-lookup"><span data-stu-id="e2e4b-163">We use Restify toobuild your REST API.</span></span> <span data-ttu-id="e2e4b-164">Restify — это минимальная гибкая платформа приложений Node.j, производная от Express.</span><span class="sxs-lookup"><span data-stu-id="e2e4b-164">Restify is a minimal and flexible Node.js application framework derived from Express.</span></span> <span data-ttu-id="e2e4b-165">Она располагает широким набором функций, позволяющих реализовать интерфейсы REST API поверх Connect.</span><span class="sxs-lookup"><span data-stu-id="e2e4b-165">It has a robust set of features for building REST APIs on top of Connect.</span></span>
 
-### <a name="install-restify"></a><span data-ttu-id="c0ab5-166">Установка Restify</span><span class="sxs-lookup"><span data-stu-id="c0ab5-166">Install Restify</span></span>
-<span data-ttu-id="c0ab5-167">В командной строке перейдите в каталог `azuread`.</span><span class="sxs-lookup"><span data-stu-id="c0ab5-167">From the command line, change your directory to `azuread`.</span></span> <span data-ttu-id="c0ab5-168">Если каталог `azuread` не существует, создайте его.</span><span class="sxs-lookup"><span data-stu-id="c0ab5-168">If the `azuread` directory doesn't exist, create it.</span></span>
+### <a name="install-restify"></a><span data-ttu-id="e2e4b-166">Установка Restify</span><span class="sxs-lookup"><span data-stu-id="e2e4b-166">Install Restify</span></span>
+<span data-ttu-id="e2e4b-167">Из командной строки hello, измените каталог слишком`azuread`.</span><span class="sxs-lookup"><span data-stu-id="e2e4b-167">From hello command line, change your directory too`azuread`.</span></span> <span data-ttu-id="e2e4b-168">Если hello `azuread` каталог не существует, создайте его.</span><span class="sxs-lookup"><span data-stu-id="e2e4b-168">If hello `azuread` directory doesn't exist, create it.</span></span>
 
-<span data-ttu-id="c0ab5-169">`cd azuread` или `mkdir azuread;`</span><span class="sxs-lookup"><span data-stu-id="c0ab5-169">`cd azuread` or `mkdir azuread;`</span></span>
+<span data-ttu-id="e2e4b-169">`cd azuread` или `mkdir azuread;`</span><span class="sxs-lookup"><span data-stu-id="e2e4b-169">`cd azuread` or `mkdir azuread;`</span></span>
 
-<span data-ttu-id="c0ab5-170">Введите следующую команду:</span><span class="sxs-lookup"><span data-stu-id="c0ab5-170">Enter the following command:</span></span>
+<span data-ttu-id="e2e4b-170">Введите следующую команду hello:</span><span class="sxs-lookup"><span data-stu-id="e2e4b-170">Enter hello following command:</span></span>
 
 `npm install restify`
 
-<span data-ttu-id="c0ab5-171">Эта команда устанавливает Restify.</span><span class="sxs-lookup"><span data-stu-id="c0ab5-171">This command installs Restify.</span></span>
+<span data-ttu-id="e2e4b-171">Эта команда устанавливает Restify.</span><span class="sxs-lookup"><span data-stu-id="e2e4b-171">This command installs Restify.</span></span>
 
-#### <a name="did-you-get-an-error"></a><span data-ttu-id="c0ab5-172">Вы получили сообщение об ошибке?</span><span class="sxs-lookup"><span data-stu-id="c0ab5-172">Did you get an error?</span></span>
-<span data-ttu-id="c0ab5-173">В некоторых операционных системах при использовании `npm` вы можете увидеть ошибку `Error: EPERM, chmod '/usr/local/bin/..'` и предложение запустить учетную запись с правами администратора.</span><span class="sxs-lookup"><span data-stu-id="c0ab5-173">In some operating systems, when you use `npm`, you may receive the error `Error: EPERM, chmod '/usr/local/bin/..'` and a request that you run the account as an administrator.</span></span> <span data-ttu-id="c0ab5-174">В этом случае необходимо с помощью команды `sudo` запустить `npm` с более высоким уровнем привилегий.</span><span class="sxs-lookup"><span data-stu-id="c0ab5-174">If this problem occurs, use the `sudo` command to run `npm` at a higher privilege level.</span></span>
+#### <a name="did-you-get-an-error"></a><span data-ttu-id="e2e4b-172">Вы получили сообщение об ошибке?</span><span class="sxs-lookup"><span data-stu-id="e2e4b-172">Did you get an error?</span></span>
+<span data-ttu-id="e2e4b-173">В некоторых операционных системах при использовании `npm`, появляется сообщение об ошибке hello `Error: EPERM, chmod '/usr/local/bin/..'` и запроса на выполнение hello учетной записи с правами администратора.</span><span class="sxs-lookup"><span data-stu-id="e2e4b-173">In some operating systems, when you use `npm`, you may receive hello error `Error: EPERM, chmod '/usr/local/bin/..'` and a request that you run hello account as an administrator.</span></span> <span data-ttu-id="e2e4b-174">При возникновении этой проблемы, используйте hello `sudo` toorun команда `npm` на более высоком уровне привилегий.</span><span class="sxs-lookup"><span data-stu-id="e2e4b-174">If this problem occurs, use hello `sudo` command toorun `npm` at a higher privilege level.</span></span>
 
-#### <a name="did-you-get-a-dtrace-error"></a><span data-ttu-id="c0ab5-175">Вы получили сообщение об ошибке DTrace?</span><span class="sxs-lookup"><span data-stu-id="c0ab5-175">Did you get a DTrace error?</span></span>
-<span data-ttu-id="c0ab5-176">При установке Restify вы можете увидеть что-то подобное:</span><span class="sxs-lookup"><span data-stu-id="c0ab5-176">You may see something like this text when you install Restify:</span></span>
+#### <a name="did-you-get-a-dtrace-error"></a><span data-ttu-id="e2e4b-175">Вы получили сообщение об ошибке DTrace?</span><span class="sxs-lookup"><span data-stu-id="e2e4b-175">Did you get a DTrace error?</span></span>
+<span data-ttu-id="e2e4b-176">При установке Restify вы можете увидеть что-то подобное:</span><span class="sxs-lookup"><span data-stu-id="e2e4b-176">You may see something like this text when you install Restify:</span></span>
 
 ```Shell
 clang: error: no such file or directory: 'HD/azuread/node_modules/restify/node_modules/dtrace-provider/libusdt'
@@ -125,9 +125,9 @@ gyp ERR! not ok
 npm WARN optional dep failed, continuing dtrace-provider@0.2.8
 ```
 
-<span data-ttu-id="c0ab5-177">Restify предоставляет мощный механизм для трассировки вызовов REST с помощью DTrace.</span><span class="sxs-lookup"><span data-stu-id="c0ab5-177">Restify provides a powerful mechanism for tracing REST calls by using DTrace.</span></span> <span data-ttu-id="c0ab5-178">Однако во многих операционных системах DTrace отсутствует.</span><span class="sxs-lookup"><span data-stu-id="c0ab5-178">However, many operating systems do not have DTrace available.</span></span> <span data-ttu-id="c0ab5-179">Эти ошибки можно игнорировать.</span><span class="sxs-lookup"><span data-stu-id="c0ab5-179">You can safely ignore these errors.</span></span>
+<span data-ttu-id="e2e4b-177">Restify предоставляет мощный механизм для трассировки вызовов REST с помощью DTrace.</span><span class="sxs-lookup"><span data-stu-id="e2e4b-177">Restify provides a powerful mechanism for tracing REST calls by using DTrace.</span></span> <span data-ttu-id="e2e4b-178">Однако во многих операционных системах DTrace отсутствует.</span><span class="sxs-lookup"><span data-stu-id="e2e4b-178">However, many operating systems do not have DTrace available.</span></span> <span data-ttu-id="e2e4b-179">Эти ошибки можно игнорировать.</span><span class="sxs-lookup"><span data-stu-id="e2e4b-179">You can safely ignore these errors.</span></span>
 
-<span data-ttu-id="c0ab5-180">Результат этой команды должен выглядеть примерно следующим образом:</span><span class="sxs-lookup"><span data-stu-id="c0ab5-180">The output of the command should appear similar to this text:</span></span>
+<span data-ttu-id="e2e4b-180">аналогичный текст toothis должны быть выведены Hello hello команды:</span><span class="sxs-lookup"><span data-stu-id="e2e4b-180">hello output of hello command should appear similar toothis text:</span></span>
 
     restify@2.6.1 node_modules/restify
     ├── assert-plus@0.1.4
@@ -150,34 +150,34 @@ npm WARN optional dep failed, continuing dtrace-provider@0.2.8
     ├── http-signature@0.10.0 (assert-plus@0.1.2, asn1@0.1.11, ctype@0.5.2)
     └── bunyan@0.22.0 (mv@0.0.5)
 
-## <a name="install-passport-in-your-web-api"></a><span data-ttu-id="c0ab5-181">Установка Passport в веб-API</span><span class="sxs-lookup"><span data-stu-id="c0ab5-181">Install Passport in your web API</span></span>
-<span data-ttu-id="c0ab5-182">В командной строке перейдите в каталог `azuread`, если он еще не выбран.</span><span class="sxs-lookup"><span data-stu-id="c0ab5-182">From the command line, change your directory to `azuread`, if it's not already there.</span></span>
+## <a name="install-passport-in-your-web-api"></a><span data-ttu-id="e2e4b-181">Установка Passport в веб-API</span><span class="sxs-lookup"><span data-stu-id="e2e4b-181">Install Passport in your web API</span></span>
+<span data-ttu-id="e2e4b-182">Из командной строки hello, измените каталог слишком`azuread`, если он еще не существует.</span><span class="sxs-lookup"><span data-stu-id="e2e4b-182">From hello command line, change your directory too`azuread`, if it's not already there.</span></span>
 
-<span data-ttu-id="c0ab5-183">Установите Passport с помощью следующей команды:</span><span class="sxs-lookup"><span data-stu-id="c0ab5-183">Install Passport using the following command:</span></span>
+<span data-ttu-id="e2e4b-183">Установите службы Passport, с помощью hello следующую команду:</span><span class="sxs-lookup"><span data-stu-id="e2e4b-183">Install Passport using hello following command:</span></span>
 
 `npm install passport`
 
-<span data-ttu-id="c0ab5-184">Результат этой команды должен выглядеть примерно следующим образом:</span><span class="sxs-lookup"><span data-stu-id="c0ab5-184">The output of the command should be similar to this text:</span></span>
+<span data-ttu-id="e2e4b-184">Hello выходные данные команды hello должно быть аналогичный текст toothis:</span><span class="sxs-lookup"><span data-stu-id="e2e4b-184">hello output of hello command should be similar toothis text:</span></span>
 
     passport@0.1.17 node_modules\passport
     ├── pause@0.0.1
     └── pkginfo@0.2.3
 
-## <a name="add-passport-azuread-to-your-web-api"></a><span data-ttu-id="c0ab5-185">Добавление passport-azuread в веб-API</span><span class="sxs-lookup"><span data-stu-id="c0ab5-185">Add passport-azuread to your web API</span></span>
-<span data-ttu-id="c0ab5-186">Добавьте стратегию OAuth с помощью набора стратегий `passport-azuread`, который устанавливает подключение Azure AD к Passport.</span><span class="sxs-lookup"><span data-stu-id="c0ab5-186">Next, add the OAuth strategy by using `passport-azuread`, a suite of strategies that connect Azure AD with Passport.</span></span> <span data-ttu-id="c0ab5-187">Используйте эту стратегию для токенов носителя в примере REST API.</span><span class="sxs-lookup"><span data-stu-id="c0ab5-187">Use this strategy for bearer tokens in the REST API sample.</span></span>
+## <a name="add-passport-azuread-tooyour-web-api"></a><span data-ttu-id="e2e4b-185">Добавить веб-API tooyour passport azuread</span><span class="sxs-lookup"><span data-stu-id="e2e4b-185">Add passport-azuread tooyour web API</span></span>
+<span data-ttu-id="e2e4b-186">Добавьте стратегии hello OAuth с помощью `passport-azuread`, набор стратегии, которые подключения Azure AD с Passport.</span><span class="sxs-lookup"><span data-stu-id="e2e4b-186">Next, add hello OAuth strategy by using `passport-azuread`, a suite of strategies that connect Azure AD with Passport.</span></span> <span data-ttu-id="e2e4b-187">Используйте эту стратегию для маркеров носителя в образце hello REST API.</span><span class="sxs-lookup"><span data-stu-id="e2e4b-187">Use this strategy for bearer tokens in hello REST API sample.</span></span>
 
 > [!NOTE]
-> <span data-ttu-id="c0ab5-188">Несмотря на то что OAuth2 предоставляет платформу, на которой может быть выдан токен любого известного типа, широкое распространение получили токены только некоторых типов.</span><span class="sxs-lookup"><span data-stu-id="c0ab5-188">Although OAuth2 provides a framework in which any known token type can be issued, only certain token types have gained widespread use.</span></span> <span data-ttu-id="c0ab5-189">Токены для защиты конечных точек являются токенами носителя.</span><span class="sxs-lookup"><span data-stu-id="c0ab5-189">The tokens for protecting endpoints are bearer tokens.</span></span> <span data-ttu-id="c0ab5-190">Это самый распространенный тип токенов, которые выдаются в OAuth2.</span><span class="sxs-lookup"><span data-stu-id="c0ab5-190">These types of tokens are the most widely issued in OAuth2.</span></span> <span data-ttu-id="c0ab5-191">Во многих реализациях предполагается, что токены носителя — это единственный тип выданного токена.</span><span class="sxs-lookup"><span data-stu-id="c0ab5-191">Many implementations assume that bearer tokens are the only type of token issued.</span></span>
+> <span data-ttu-id="e2e4b-188">Несмотря на то что OAuth2 предоставляет платформу, на которой может быть выдан токен любого известного типа, широкое распространение получили токены только некоторых типов.</span><span class="sxs-lookup"><span data-stu-id="e2e4b-188">Although OAuth2 provides a framework in which any known token type can be issued, only certain token types have gained widespread use.</span></span> <span data-ttu-id="e2e4b-189">Hello маркеры для защиты конечных точек являются маркерами носителя.</span><span class="sxs-lookup"><span data-stu-id="e2e4b-189">hello tokens for protecting endpoints are bearer tokens.</span></span> <span data-ttu-id="e2e4b-190">Эти типы маркеров являются наиболее широко выданных OAuth2 hello.</span><span class="sxs-lookup"><span data-stu-id="e2e4b-190">These types of tokens are hello most widely issued in OAuth2.</span></span> <span data-ttu-id="e2e4b-191">Многие предполагают, что токены носителя являются единственным типом маркера, выданного hello.</span><span class="sxs-lookup"><span data-stu-id="e2e4b-191">Many implementations assume that bearer tokens are hello only type of token issued.</span></span>
 >
 >
 
-<span data-ttu-id="c0ab5-192">В командной строке перейдите в каталог `azuread`, если он еще не выбран.</span><span class="sxs-lookup"><span data-stu-id="c0ab5-192">From the command line, change your directory to `azuread`, if it's not already there.</span></span>
+<span data-ttu-id="e2e4b-192">Из командной строки hello, измените каталог слишком`azuread`, если он еще не существует.</span><span class="sxs-lookup"><span data-stu-id="e2e4b-192">From hello command line, change your directory too`azuread`, if it's not already there.</span></span>
 
-<span data-ttu-id="c0ab5-193">Введите указанную ниже команду для установки модуля Passport `passport-azure-ad` :</span><span class="sxs-lookup"><span data-stu-id="c0ab5-193">Install the Passport `passport-azure-ad` module using the following command:</span></span>
+<span data-ttu-id="e2e4b-193">Установка hello Passport `passport-azure-ad` модуля с помощью hello следующую команду:</span><span class="sxs-lookup"><span data-stu-id="e2e4b-193">Install hello Passport `passport-azure-ad` module using hello following command:</span></span>
 
 `npm install passport-azure-ad`
 
-<span data-ttu-id="c0ab5-194">Результат этой команды должен выглядеть примерно следующим образом:</span><span class="sxs-lookup"><span data-stu-id="c0ab5-194">The output of the command should be similar to this text:</span></span>
+<span data-ttu-id="e2e4b-194">Hello выходные данные команды hello должно быть аналогичный текст toothis:</span><span class="sxs-lookup"><span data-stu-id="e2e4b-194">hello output of hello command should be similar toothis text:</span></span>
 
 ``
 passport-azure-ad@1.0.0 node_modules/passport-azure-ad
@@ -194,19 +194,19 @@ passport-azure-ad@1.0.0 node_modules/passport-azure-ad
 └── xml2js@0.4.9 (sax@0.6.1, xmlbuilder@2.6.4)
 ``
 
-## <a name="add-mongodb-modules-to-your-web-api"></a><span data-ttu-id="c0ab5-195">Добавление модулей MongoDB в веб-API</span><span class="sxs-lookup"><span data-stu-id="c0ab5-195">Add MongoDB modules to your web API</span></span>
-<span data-ttu-id="c0ab5-196">В этом примере для хранения данных используется MongoDB.</span><span class="sxs-lookup"><span data-stu-id="c0ab5-196">This sample uses MongoDB as your data store.</span></span> <span data-ttu-id="c0ab5-197">Для этого нужно установить Mongoose, широко используемый подключаемый модуль для управления моделями и схемами.</span><span class="sxs-lookup"><span data-stu-id="c0ab5-197">For that install Mongoose, a widely used plug-in for managing models and schemas.</span></span>
+## <a name="add-mongodb-modules-tooyour-web-api"></a><span data-ttu-id="e2e4b-195">Добавить MongoDB модули tooyour веб-API</span><span class="sxs-lookup"><span data-stu-id="e2e4b-195">Add MongoDB modules tooyour web API</span></span>
+<span data-ttu-id="e2e4b-196">В этом примере для хранения данных используется MongoDB.</span><span class="sxs-lookup"><span data-stu-id="e2e4b-196">This sample uses MongoDB as your data store.</span></span> <span data-ttu-id="e2e4b-197">Для этого нужно установить Mongoose, широко используемый подключаемый модуль для управления моделями и схемами.</span><span class="sxs-lookup"><span data-stu-id="e2e4b-197">For that install Mongoose, a widely used plug-in for managing models and schemas.</span></span>
 
 * `npm install mongoose`
 
-## <a name="install-additional-modules"></a><span data-ttu-id="c0ab5-198">Установка дополнительных модулей</span><span class="sxs-lookup"><span data-stu-id="c0ab5-198">Install additional modules</span></span>
-<span data-ttu-id="c0ab5-199">Теперь необходимо установить остальные требуемые модули.</span><span class="sxs-lookup"><span data-stu-id="c0ab5-199">Next, install the remaining required modules.</span></span>
+## <a name="install-additional-modules"></a><span data-ttu-id="e2e4b-198">Установка дополнительных модулей</span><span class="sxs-lookup"><span data-stu-id="e2e4b-198">Install additional modules</span></span>
+<span data-ttu-id="e2e4b-199">После этого установите hello оставшихся необходимые модули.</span><span class="sxs-lookup"><span data-stu-id="e2e4b-199">Next, install hello remaining required modules.</span></span>
 
-<span data-ttu-id="c0ab5-200">В командной строке перейдите в каталог `azuread`, если он еще не выбран.</span><span class="sxs-lookup"><span data-stu-id="c0ab5-200">From the command line, change your directory to `azuread`, if it's not already there:</span></span>
+<span data-ttu-id="e2e4b-200">Из командной строки hello, измените каталог слишком`azuread`, если он еще не существует:</span><span class="sxs-lookup"><span data-stu-id="e2e4b-200">From hello command line, change your directory too`azuread`, if it's not already there:</span></span>
 
 `cd azuread`
 
-<span data-ttu-id="c0ab5-201">Установите модули в каталог `node_modules` :</span><span class="sxs-lookup"><span data-stu-id="c0ab5-201">Install the modules in your `node_modules` directory:</span></span>
+<span data-ttu-id="e2e4b-201">Установка модулей hello в вашей `node_modules` каталога:</span><span class="sxs-lookup"><span data-stu-id="e2e4b-201">Install hello modules in your `node_modules` directory:</span></span>
 
 * `npm install assert-plus`
 * `npm install ejs`
@@ -214,14 +214,14 @@ passport-azure-ad@1.0.0 node_modules/passport-azure-ad
 * `npm install express`
 * `npm install bunyan`
 
-## <a name="create-a-serverjs-file-with-your-dependencies"></a><span data-ttu-id="c0ab5-202">Создание файла server.js с зависимостями</span><span class="sxs-lookup"><span data-stu-id="c0ab5-202">Create a server.js file with your dependencies</span></span>
-<span data-ttu-id="c0ab5-203">Основная часть функций для сервера веб-API реализована в файле `server.js` .</span><span class="sxs-lookup"><span data-stu-id="c0ab5-203">The `server.js` file provides the majority of the functionality for your Web API server.</span></span>
+## <a name="create-a-serverjs-file-with-your-dependencies"></a><span data-ttu-id="e2e4b-202">Создание файла server.js с зависимостями</span><span class="sxs-lookup"><span data-stu-id="e2e4b-202">Create a server.js file with your dependencies</span></span>
+<span data-ttu-id="e2e4b-203">Hello `server.js` файл обеспечивает hello большую часть функций hello для сервера веб-API.</span><span class="sxs-lookup"><span data-stu-id="e2e4b-203">hello `server.js` file provides hello majority of hello functionality for your Web API server.</span></span>
 
-<span data-ttu-id="c0ab5-204">В командной строке перейдите в каталог `azuread`, если он еще не выбран.</span><span class="sxs-lookup"><span data-stu-id="c0ab5-204">From the command line, change your directory to `azuread`, if it's not already there:</span></span>
+<span data-ttu-id="e2e4b-204">Из командной строки hello, измените каталог слишком`azuread`, если он еще не существует:</span><span class="sxs-lookup"><span data-stu-id="e2e4b-204">From hello command line, change your directory too`azuread`, if it's not already there:</span></span>
 
 `cd azuread`
 
-<span data-ttu-id="c0ab5-205">Создайте в текстовом редакторе файл `server.js` .</span><span class="sxs-lookup"><span data-stu-id="c0ab5-205">Create a `server.js` file in an editor.</span></span> <span data-ttu-id="c0ab5-206">Добавьте следующие данные:</span><span class="sxs-lookup"><span data-stu-id="c0ab5-206">Add the following information:</span></span>
+<span data-ttu-id="e2e4b-205">Создайте в текстовом редакторе файл `server.js` .</span><span class="sxs-lookup"><span data-stu-id="e2e4b-205">Create a `server.js` file in an editor.</span></span> <span data-ttu-id="e2e4b-206">Добавьте hello следующую информацию:</span><span class="sxs-lookup"><span data-stu-id="e2e4b-206">Add hello following information:</span></span>
 
 ```Javascript
 'use strict';
@@ -240,68 +240,68 @@ var passport = require('passport');
 var OIDCBearerStrategy = require('passport-azure-ad').BearerStrategy;
 ```
 
-<span data-ttu-id="c0ab5-207">Сохраните файл.</span><span class="sxs-lookup"><span data-stu-id="c0ab5-207">Save the file.</span></span> <span data-ttu-id="c0ab5-208">Он нам понадобится позже.</span><span class="sxs-lookup"><span data-stu-id="c0ab5-208">You return to it later.</span></span>
+<span data-ttu-id="e2e4b-207">Сохраните файл hello.</span><span class="sxs-lookup"><span data-stu-id="e2e4b-207">Save hello file.</span></span> <span data-ttu-id="e2e4b-208">Возвращает tooit позже.</span><span class="sxs-lookup"><span data-stu-id="e2e4b-208">You return tooit later.</span></span>
 
-## <a name="create-a-configjs-file-to-store-your-azure-ad-settings"></a><span data-ttu-id="c0ab5-209">Создание файла config.js для хранения параметров Azure AD</span><span class="sxs-lookup"><span data-stu-id="c0ab5-209">Create a config.js file to store your Azure AD settings</span></span>
-<span data-ttu-id="c0ab5-210">Данный фрагмент кода передает параметры конфигурации с вашего портала Azure AD в файл `Passport.js` .</span><span class="sxs-lookup"><span data-stu-id="c0ab5-210">This code file passes the configuration parameters from your Azure AD Portal to the `Passport.js` file.</span></span> <span data-ttu-id="c0ab5-211">Эти значения конфигурации были созданы во время добавления веб-интерфейса API на портал в первой части пошагового руководства.</span><span class="sxs-lookup"><span data-stu-id="c0ab5-211">You created these configuration values when you added the web API to the portal in the first part of the walk-through.</span></span> <span data-ttu-id="c0ab5-212">Сейчас мы объясним, какие значения нужно указать для этих параметров в скопированном фрагменте кода.</span><span class="sxs-lookup"><span data-stu-id="c0ab5-212">We explain what to put in the values of these parameters after you copy the code.</span></span>
+## <a name="create-a-configjs-file-toostore-your-azure-ad-settings"></a><span data-ttu-id="e2e4b-209">Создать файл config.js toostore параметры Azure AD</span><span class="sxs-lookup"><span data-stu-id="e2e4b-209">Create a config.js file toostore your Azure AD settings</span></span>
+<span data-ttu-id="e2e4b-210">Этот файл код передает hello параметры конфигурации из вашего toohello портала Azure AD `Passport.js` файла.</span><span class="sxs-lookup"><span data-stu-id="e2e4b-210">This code file passes hello configuration parameters from your Azure AD Portal toohello `Passport.js` file.</span></span> <span data-ttu-id="e2e4b-211">Эти значения конфигурации, созданный при добавлении API toohello hello веб-портала в первой части hello hello руководство по применению.</span><span class="sxs-lookup"><span data-stu-id="e2e4b-211">You created these configuration values when you added hello web API toohello portal in hello first part of hello walk-through.</span></span> <span data-ttu-id="e2e4b-212">После копирования кода hello рассказывается какие tooput hello значениями этих параметров.</span><span class="sxs-lookup"><span data-stu-id="e2e4b-212">We explain what tooput in hello values of these parameters after you copy hello code.</span></span>
 
-<span data-ttu-id="c0ab5-213">В командной строке перейдите в каталог `azuread`, если он еще не выбран.</span><span class="sxs-lookup"><span data-stu-id="c0ab5-213">From the command line, change your directory to `azuread`, if it's not already there:</span></span>
+<span data-ttu-id="e2e4b-213">Из командной строки hello, измените каталог слишком`azuread`, если он еще не существует:</span><span class="sxs-lookup"><span data-stu-id="e2e4b-213">From hello command line, change your directory too`azuread`, if it's not already there:</span></span>
 
 `cd azuread`
 
-<span data-ttu-id="c0ab5-214">Создайте в текстовом редакторе файл `config.js` .</span><span class="sxs-lookup"><span data-stu-id="c0ab5-214">Create a `config.js` file in an editor.</span></span> <span data-ttu-id="c0ab5-215">Добавьте следующие данные:</span><span class="sxs-lookup"><span data-stu-id="c0ab5-215">Add the following information:</span></span>
+<span data-ttu-id="e2e4b-214">Создайте в текстовом редакторе файл `config.js` .</span><span class="sxs-lookup"><span data-stu-id="e2e4b-214">Create a `config.js` file in an editor.</span></span> <span data-ttu-id="e2e4b-215">Добавьте hello следующую информацию:</span><span class="sxs-lookup"><span data-stu-id="e2e4b-215">Add hello following information:</span></span>
 
 ```Javascript
-// Don't commit this file to your public repos. This config is for first-run
+// Don't commit this file tooyour public repos. This config is for first-run
 exports.creds = {
-clientID: <your client ID for this Web API you created in the portal>
+clientID: <your client ID for this Web API you created in hello portal>
 mongoose_auth_local: 'mongodb://localhost/tasklist', // Your mongo auth uri goes here
-audience: '<your audience URI>', // the Client ID of the application that is calling your API, usually a web API or native client
-identityMetadata: 'https://login.microsoftonline.com/<tenant name>/.well-known/openid-configuration', // Make sure you add the B2C tenant name in the <tenant name> area
+audience: '<your audience URI>', // hello Client ID of hello application that is calling your API, usually a web API or native client
+identityMetadata: 'https://login.microsoftonline.com/<tenant name>/.well-known/openid-configuration', // Make sure you add hello B2C tenant name in hello <tenant name> area
 tenantName:'<tenant name>',
-policyName:'b2c_1_<sign in policy name>' // This is the policy you'll want to validate against in B2C. Usually this is your Sign-in policy (as users sign in to this API)
-passReqToCallback: false // This is a node.js construct that lets you pass the req all the way back to any upstream caller. We turn this off as there is no upstream caller.
+policyName:'b2c_1_<sign in policy name>' // This is hello policy you'll want toovalidate against in B2C. Usually this is your Sign-in policy (as users sign in toothis API)
+passReqToCallback: false // This is a node.js construct that lets you pass hello req all hello way back tooany upstream caller. We turn this off as there is no upstream caller.
 };
 
 ```
 
 [!INCLUDE [active-directory-b2c-devquickstarts-tenant-name](../../includes/active-directory-b2c-devquickstarts-tenant-name.md)]
 
-### <a name="required-values"></a><span data-ttu-id="c0ab5-216">Обязательные значения</span><span class="sxs-lookup"><span data-stu-id="c0ab5-216">Required values</span></span>
-<span data-ttu-id="c0ab5-217">`clientID`: идентификатор клиента для приложения веб-API.</span><span class="sxs-lookup"><span data-stu-id="c0ab5-217">`clientID`: The client ID of your Web API application.</span></span>
+### <a name="required-values"></a><span data-ttu-id="e2e4b-216">Обязательные значения</span><span class="sxs-lookup"><span data-stu-id="e2e4b-216">Required values</span></span>
+<span data-ttu-id="e2e4b-217">`clientID`: hello идентификатор клиента приложения веб-API.</span><span class="sxs-lookup"><span data-stu-id="e2e4b-217">`clientID`: hello client ID of your Web API application.</span></span>
 
-<span data-ttu-id="c0ab5-218">`IdentityMetadata`: здесь `passport-azure-ad` будет искать данные конфигурации для поставщика удостоверений.</span><span class="sxs-lookup"><span data-stu-id="c0ab5-218">`IdentityMetadata`: This is where `passport-azure-ad` looks for your configuration data for the identity provider.</span></span> <span data-ttu-id="c0ab5-219">Кроме того, здесь будет выполняться поиск ключей для проверки веб-токенов JSON.</span><span class="sxs-lookup"><span data-stu-id="c0ab5-219">It also looks for the keys to validate the JSON web tokens.</span></span>
+<span data-ttu-id="e2e4b-218">`IdentityMetadata`: Это место, куда `passport-azure-ad` ищет данные конфигурации для поставщика удостоверений hello.</span><span class="sxs-lookup"><span data-stu-id="e2e4b-218">`IdentityMetadata`: This is where `passport-azure-ad` looks for your configuration data for hello identity provider.</span></span> <span data-ttu-id="e2e4b-219">Он также ищет веб-маркеры JSON hello hello ключи toovalidate.</span><span class="sxs-lookup"><span data-stu-id="e2e4b-219">It also looks for hello keys toovalidate hello JSON web tokens.</span></span>
 
-<span data-ttu-id="c0ab5-220">`audience`: универсальный код ресурса (URI), который идентифицирует вашу службу. Его нужно взять на портале.</span><span class="sxs-lookup"><span data-stu-id="c0ab5-220">`audience`: The uniform resource identifier (URI) from the portal that identifies your calling application.</span></span>
+<span data-ttu-id="e2e4b-220">`audience`: hello универсальный код ресурса (URI) с портала hello, определяющий вызывающего приложения.</span><span class="sxs-lookup"><span data-stu-id="e2e4b-220">`audience`: hello uniform resource identifier (URI) from hello portal that identifies your calling application.</span></span>
 
-<span data-ttu-id="c0ab5-221">`tenantName`: имя клиента (например, **contoso.onmicrosoft.com**).</span><span class="sxs-lookup"><span data-stu-id="c0ab5-221">`tenantName`: Your tenant name (for example, **contoso.onmicrosoft.com**).</span></span>
+<span data-ttu-id="e2e4b-221">`tenantName`: имя клиента (например, **contoso.onmicrosoft.com**).</span><span class="sxs-lookup"><span data-stu-id="e2e4b-221">`tenantName`: Your tenant name (for example, **contoso.onmicrosoft.com**).</span></span>
 
-<span data-ttu-id="c0ab5-222">`policyName`: политика проверки токенов, поступающих на сервер.</span><span class="sxs-lookup"><span data-stu-id="c0ab5-222">`policyName`: The policy that you want to validate the tokens coming in to your server.</span></span> <span data-ttu-id="c0ab5-223">Здесь нужно указать ту же политику, которую вы используете для входа в клиентское приложение.</span><span class="sxs-lookup"><span data-stu-id="c0ab5-223">This policy should be the same policy that you use on the client application for sign-in.</span></span>
+<span data-ttu-id="e2e4b-222">`policyName`: hello политики, которую toovalidate токены hello, поступающие в tooyour server.</span><span class="sxs-lookup"><span data-stu-id="e2e4b-222">`policyName`: hello policy that you want toovalidate hello tokens coming in tooyour server.</span></span> <span data-ttu-id="e2e4b-223">Этот параметр должен быть hello же политики, используемого в клиентское приложение hello для входа в систему.</span><span class="sxs-lookup"><span data-stu-id="e2e4b-223">This policy should be hello same policy that you use on hello client application for sign-in.</span></span>
 
 > [!NOTE]
-> <span data-ttu-id="c0ab5-224">Пока что используйте одни и те же политики в параметрах клиента и сервера.</span><span class="sxs-lookup"><span data-stu-id="c0ab5-224">For now, use the same policies across both client and server setup.</span></span> <span data-ttu-id="c0ab5-225">Если вы уже выполнили действия из пошагового руководства и создали эти политики, делать это еще раз не требуется.</span><span class="sxs-lookup"><span data-stu-id="c0ab5-225">If you have already completed a walk-through and created these policies, you don't need to do so again.</span></span> <span data-ttu-id="c0ab5-226">Поскольку вы выполнили пошаговые инструкции, нет необходимости настраивать на сайте новые политики для клиентских приложений.</span><span class="sxs-lookup"><span data-stu-id="c0ab5-226">Because you completed the walk-through, you shouldn't need to set up new policies for client walk-throughs on the site.</span></span>
+> <span data-ttu-id="e2e4b-224">Пока же hello использование политик для установки клиента и сервера.</span><span class="sxs-lookup"><span data-stu-id="e2e4b-224">For now, use hello same policies across both client and server setup.</span></span> <span data-ttu-id="e2e4b-225">Если вы уже выполнили Пошаговое руководство и создали эти политики, не требуется toodo и опять же.</span><span class="sxs-lookup"><span data-stu-id="e2e4b-225">If you have already completed a walk-through and created these policies, you don't need toodo so again.</span></span> <span data-ttu-id="e2e4b-226">Поскольку вы выполнили Пошаговое руководство hello, не следует должны tooset копирование новых политик для клиентских приложений на сайте hello.</span><span class="sxs-lookup"><span data-stu-id="e2e4b-226">Because you completed hello walk-through, you shouldn't need tooset up new policies for client walk-throughs on hello site.</span></span>
 >
 >
 
-## <a name="add-configuration-to-your-serverjs-file"></a><span data-ttu-id="c0ab5-227">Добавление конфигурации в файл server.js</span><span class="sxs-lookup"><span data-stu-id="c0ab5-227">Add configuration to your server.js file</span></span>
-<span data-ttu-id="c0ab5-228">Чтобы получить значения из файла `config.js`, добавьте в свое приложение файл `.config` в качестве обязательного ресурса, а затем настройте глобальные переменные для переменных, содержащихся в документе `config.js`.</span><span class="sxs-lookup"><span data-stu-id="c0ab5-228">To read the values from the `config.js` file you created, add the `.config` file as a required resource in your application, and then set the global variables to those in the `config.js` document.</span></span>
+## <a name="add-configuration-tooyour-serverjs-file"></a><span data-ttu-id="e2e4b-227">Добавьте файл server.js tooyour конфигурации</span><span class="sxs-lookup"><span data-stu-id="e2e4b-227">Add configuration tooyour server.js file</span></span>
+<span data-ttu-id="e2e4b-228">значения hello tooread из hello `config.js` файл был создан, добавить hello `.config` файл как необходимый ресурс в приложении, а затем задайте toothose hello глобальные переменные в hello `config.js` документа.</span><span class="sxs-lookup"><span data-stu-id="e2e4b-228">tooread hello values from hello `config.js` file you created, add hello `.config` file as a required resource in your application, and then set hello global variables toothose in hello `config.js` document.</span></span>
 
-<span data-ttu-id="c0ab5-229">В командной строке перейдите в каталог `azuread`, если он еще не выбран.</span><span class="sxs-lookup"><span data-stu-id="c0ab5-229">From the command line, change your directory to `azuread`, if it's not already there:</span></span>
+<span data-ttu-id="e2e4b-229">Из командной строки hello, измените каталог слишком`azuread`, если он еще не существует:</span><span class="sxs-lookup"><span data-stu-id="e2e4b-229">From hello command line, change your directory too`azuread`, if it's not already there:</span></span>
 
 `cd azuread`
 
-<span data-ttu-id="c0ab5-230">Откройте файл `server.js` в редакторе.</span><span class="sxs-lookup"><span data-stu-id="c0ab5-230">Open the `server.js` file in an editor.</span></span> <span data-ttu-id="c0ab5-231">Добавьте следующие данные:</span><span class="sxs-lookup"><span data-stu-id="c0ab5-231">Add the following information:</span></span>
+<span data-ttu-id="e2e4b-230">Откройте hello `server.js` файл в редакторе.</span><span class="sxs-lookup"><span data-stu-id="e2e4b-230">Open hello `server.js` file in an editor.</span></span> <span data-ttu-id="e2e4b-231">Добавьте hello следующую информацию:</span><span class="sxs-lookup"><span data-stu-id="e2e4b-231">Add hello following information:</span></span>
 
 ```Javascript
 var config = require('./config');
 ```
-<span data-ttu-id="c0ab5-232">Добавьте в `server.js` новый раздел со следующим кодом:</span><span class="sxs-lookup"><span data-stu-id="c0ab5-232">Add a new section to `server.js` that includes the following code:</span></span>
+<span data-ttu-id="e2e4b-232">Добавить новый раздел слишком`server.js` , включающего hello, следующий код:</span><span class="sxs-lookup"><span data-stu-id="e2e4b-232">Add a new section too`server.js` that includes hello following code:</span></span>
 
 ```Javascript
-// We pass these options in to the ODICBearerStrategy.
+// We pass these options in toohello ODICBearerStrategy.
 
 var options = {
-    // The URL of the metadata document for your app. We put the keys for token validation from the URL found in the jwks_uri tag of the in the metadata.
+    // hello URL of hello metadata document for your app. We put hello keys for token validation from hello URL found in hello jwks_uri tag of hello in hello metadata.
     identityMetadata: config.creds.identityMetadata,
     clientID: config.creds.clientID,
     tenantName: config.creds.tenantName,
@@ -313,15 +313,15 @@ var options = {
 };
 ```
 
-<span data-ttu-id="c0ab5-233">Теперь добавьте заполнители для пользователей, которых мы получаем от наших вызывающих приложений.</span><span class="sxs-lookup"><span data-stu-id="c0ab5-233">Next, let's add some placeholders for the users we receive from our calling applications.</span></span>
+<span data-ttu-id="e2e4b-233">Далее добавим некоторые заполнители для пользователей hello, мы получаем от вызывающего приложения.</span><span class="sxs-lookup"><span data-stu-id="e2e4b-233">Next, let's add some placeholders for hello users we receive from our calling applications.</span></span>
 
 ```Javascript
-// array to hold logged in users and the current logged in user (owner)
+// array toohold logged in users and hello current logged in user (owner)
 var users = [];
 var owner = null;
 ```
 
-<span data-ttu-id="c0ab5-234">Также создадим средство ведения журнала.</span><span class="sxs-lookup"><span data-stu-id="c0ab5-234">Let's go ahead and create our logger too.</span></span>
+<span data-ttu-id="e2e4b-234">Также создадим средство ведения журнала.</span><span class="sxs-lookup"><span data-stu-id="e2e4b-234">Let's go ahead and create our logger too.</span></span>
 
 ```Javascript
 // Our logger
@@ -330,32 +330,32 @@ var log = bunyan.createLogger({
 });
 ```
 
-## <a name="add-the-mongodb-model-and-schema-information-by-using-mongoose"></a><span data-ttu-id="c0ab5-235">Добавление сведений о модели и схеме MongoDB с помощью Moongoose</span><span class="sxs-lookup"><span data-stu-id="c0ab5-235">Add the MongoDB model and schema information by using Mongoose</span></span>
-<span data-ttu-id="c0ab5-236">Все, что мы сделали ранее, теперь поможет нам подключить все три файла к службе REST API.</span><span class="sxs-lookup"><span data-stu-id="c0ab5-236">The earlier preparation pays off as you bring these three files together in a REST API service.</span></span>
+## <a name="add-hello-mongodb-model-and-schema-information-by-using-mongoose"></a><span data-ttu-id="e2e4b-235">Добавить hello MongoDB модели и данные схемы с помощью Mongoose</span><span class="sxs-lookup"><span data-stu-id="e2e4b-235">Add hello MongoDB model and schema information by using Mongoose</span></span>
+<span data-ttu-id="e2e4b-236">Hello предыдущих подготовки обеспечивает как вводить эти три файла друг с другом в службе REST API.</span><span class="sxs-lookup"><span data-stu-id="e2e4b-236">hello earlier preparation pays off as you bring these three files together in a REST API service.</span></span>
 
-<span data-ttu-id="c0ab5-237">В данном пошаговом руководстве используйте MongoDB для хранения задач, как описано выше.</span><span class="sxs-lookup"><span data-stu-id="c0ab5-237">For this walk-through, use MongoDB to store your tasks, as discussed earlier.</span></span>
+<span data-ttu-id="e2e4b-237">Для этого пошагового руководства используйте MongoDB toostore задач, как было сказано ранее.</span><span class="sxs-lookup"><span data-stu-id="e2e4b-237">For this walk-through, use MongoDB toostore your tasks, as discussed earlier.</span></span>
 
-<span data-ttu-id="c0ab5-238">В файле `config.js` для имени базы данных указано значение **tasklist**.</span><span class="sxs-lookup"><span data-stu-id="c0ab5-238">In the `config.js` file, you called your database **tasklist**.</span></span> <span data-ttu-id="c0ab5-239">Это же значение указывается в конце URL-адреса для подключения `mongoose_auth_local` .</span><span class="sxs-lookup"><span data-stu-id="c0ab5-239">That name was also what you put at the end of the `mongoose_auth_local` connection URL.</span></span> <span data-ttu-id="c0ab5-240">Не нужно заранее создавать эту базу данных в MongoDB.</span><span class="sxs-lookup"><span data-stu-id="c0ab5-240">You don't need to create this database beforehand in MongoDB.</span></span> <span data-ttu-id="c0ab5-241">База данных будет автоматически создана при первом запуске приложения сервера.</span><span class="sxs-lookup"><span data-stu-id="c0ab5-241">It creates the database for you on the first run of your server application.</span></span>
+<span data-ttu-id="e2e4b-238">В hello `config.js` файла, именем базы данных **tasklist**.</span><span class="sxs-lookup"><span data-stu-id="e2e4b-238">In hello `config.js` file, you called your database **tasklist**.</span></span> <span data-ttu-id="e2e4b-239">Это имя также было поместить в конце hello hello `mongoose_auth_local` URL-адрес подключения.</span><span class="sxs-lookup"><span data-stu-id="e2e4b-239">That name was also what you put at hello end of hello `mongoose_auth_local` connection URL.</span></span> <span data-ttu-id="e2e4b-240">Не нужно toocreate базы данных, заранее в MongoDB.</span><span class="sxs-lookup"><span data-stu-id="e2e4b-240">You don't need toocreate this database beforehand in MongoDB.</span></span> <span data-ttu-id="e2e4b-241">Hello базы данных создается автоматически при первом запуске серверное приложение hello.</span><span class="sxs-lookup"><span data-stu-id="e2e4b-241">It creates hello database for you on hello first run of your server application.</span></span>
 
-<span data-ttu-id="c0ab5-242">После того как вы укажете серверу, какую базу данных MongoDB необходимо использовать, вам потребуется написать дополнительный код, чтобы создать модель и схему для ваших задач на сервере.</span><span class="sxs-lookup"><span data-stu-id="c0ab5-242">After you tell the server which MongoDB database to use, you need to write some additional code to create the model and schema for your server tasks.</span></span>
+<span data-ttu-id="e2e4b-242">После сообщить hello server какие toouse базы данных MongoDB, необходимо toowrite некоторые модели hello toocreate дополнительного кода и схемы для сервера задач.</span><span class="sxs-lookup"><span data-stu-id="e2e4b-242">After you tell hello server which MongoDB database toouse, you need toowrite some additional code toocreate hello model and schema for your server tasks.</span></span>
 
-### <a name="expand-the-model"></a><span data-ttu-id="c0ab5-243">Развертывание узла модели</span><span class="sxs-lookup"><span data-stu-id="c0ab5-243">Expand the model</span></span>
-<span data-ttu-id="c0ab5-244">Эта модель схемы очень проста.</span><span class="sxs-lookup"><span data-stu-id="c0ab5-244">This schema model is simple.</span></span> <span data-ttu-id="c0ab5-245">При необходимости можно развернуть ее.</span><span class="sxs-lookup"><span data-stu-id="c0ab5-245">You can expand it as required.</span></span>
+### <a name="expand-hello-model"></a><span data-ttu-id="e2e4b-243">Разверните узел модели hello</span><span class="sxs-lookup"><span data-stu-id="e2e4b-243">Expand hello model</span></span>
+<span data-ttu-id="e2e4b-244">Эта модель схемы очень проста.</span><span class="sxs-lookup"><span data-stu-id="e2e4b-244">This schema model is simple.</span></span> <span data-ttu-id="e2e4b-245">При необходимости можно развернуть ее.</span><span class="sxs-lookup"><span data-stu-id="e2e4b-245">You can expand it as required.</span></span>
 
-<span data-ttu-id="c0ab5-246">`owner`: кому назначено это задание.</span><span class="sxs-lookup"><span data-stu-id="c0ab5-246">`owner`: Who is assigned to the task.</span></span> <span data-ttu-id="c0ab5-247">Значение указывается в формате **string**(строка).</span><span class="sxs-lookup"><span data-stu-id="c0ab5-247">This object is a **string**.</span></span>  
+<span data-ttu-id="e2e4b-246">`owner`: Кто назначается toohello задачи.</span><span class="sxs-lookup"><span data-stu-id="e2e4b-246">`owner`: Who is assigned toohello task.</span></span> <span data-ttu-id="e2e4b-247">Значение указывается в формате **string**(строка).</span><span class="sxs-lookup"><span data-stu-id="e2e4b-247">This object is a **string**.</span></span>  
 
-<span data-ttu-id="c0ab5-248">`Text`: сама задача.</span><span class="sxs-lookup"><span data-stu-id="c0ab5-248">`Text`: The task itself.</span></span> <span data-ttu-id="c0ab5-249">Значение указывается в формате **string**(строка).</span><span class="sxs-lookup"><span data-stu-id="c0ab5-249">This object is a **string**.</span></span>
+<span data-ttu-id="e2e4b-248">`Text`: саму задачу hello.</span><span class="sxs-lookup"><span data-stu-id="e2e4b-248">`Text`: hello task itself.</span></span> <span data-ttu-id="e2e4b-249">Значение указывается в формате **string**(строка).</span><span class="sxs-lookup"><span data-stu-id="e2e4b-249">This object is a **string**.</span></span>
 
-<span data-ttu-id="c0ab5-250">`date`: дата ожидаемого выполнения задачи.</span><span class="sxs-lookup"><span data-stu-id="c0ab5-250">`date`: The date that the task is due.</span></span> <span data-ttu-id="c0ab5-251">Значение указывается в формате **datetime**(дата и время).</span><span class="sxs-lookup"><span data-stu-id="c0ab5-251">This object is a **datetime**.</span></span>
+<span data-ttu-id="e2e4b-250">`date`: hello Дата выполнения этой задачи hello.</span><span class="sxs-lookup"><span data-stu-id="e2e4b-250">`date`: hello date that hello task is due.</span></span> <span data-ttu-id="e2e4b-251">Значение указывается в формате **datetime**(дата и время).</span><span class="sxs-lookup"><span data-stu-id="e2e4b-251">This object is a **datetime**.</span></span>
 
-<span data-ttu-id="c0ab5-252">`completed`: статус завершения задачи.</span><span class="sxs-lookup"><span data-stu-id="c0ab5-252">`completed`: If the task is complete.</span></span> <span data-ttu-id="c0ab5-253">Значение указывается в формате **Boolean**(логическое).</span><span class="sxs-lookup"><span data-stu-id="c0ab5-253">This object is a **Boolean**.</span></span>
+<span data-ttu-id="e2e4b-252">`completed`: Если hello задача завершена.</span><span class="sxs-lookup"><span data-stu-id="e2e4b-252">`completed`: If hello task is complete.</span></span> <span data-ttu-id="e2e4b-253">Значение указывается в формате **Boolean**(логическое).</span><span class="sxs-lookup"><span data-stu-id="e2e4b-253">This object is a **Boolean**.</span></span>
 
-### <a name="create-the-schema-in-the-code"></a><span data-ttu-id="c0ab5-254">Создание схемы в коде</span><span class="sxs-lookup"><span data-stu-id="c0ab5-254">Create the schema in the code</span></span>
-<span data-ttu-id="c0ab5-255">В командной строке перейдите в каталог `azuread`, если он еще не выбран.</span><span class="sxs-lookup"><span data-stu-id="c0ab5-255">From the command line, change your directory to `azuread`, if it's not already there:</span></span>
+### <a name="create-hello-schema-in-hello-code"></a><span data-ttu-id="e2e4b-254">Создание схемы hello в коде hello</span><span class="sxs-lookup"><span data-stu-id="e2e4b-254">Create hello schema in hello code</span></span>
+<span data-ttu-id="e2e4b-255">Из командной строки hello, измените каталог слишком`azuread`, если он еще не существует:</span><span class="sxs-lookup"><span data-stu-id="e2e4b-255">From hello command line, change your directory too`azuread`, if it's not already there:</span></span>
 
 `cd azuread`
 
-<span data-ttu-id="c0ab5-256">Откройте файл `server.js` в редакторе.</span><span class="sxs-lookup"><span data-stu-id="c0ab5-256">Open the `server.js` file in an editor.</span></span> <span data-ttu-id="c0ab5-257">Добавьте следующие сведения под записью конфигурации:</span><span class="sxs-lookup"><span data-stu-id="c0ab5-257">Add the following information below the configuration entry:</span></span>
+<span data-ttu-id="e2e4b-256">Откройте hello `server.js` файл в редакторе.</span><span class="sxs-lookup"><span data-stu-id="e2e4b-256">Open hello `server.js` file in an editor.</span></span> <span data-ttu-id="e2e4b-257">Добавьте следующую информацию ниже запись конфигурации hello hello:</span><span class="sxs-lookup"><span data-stu-id="e2e4b-257">Add hello following information below hello configuration entry:</span></span>
 
 ```Javascript
 // MongoDB setup
@@ -363,12 +363,12 @@ var log = bunyan.createLogger({
 var serverPort = process.env.PORT || 3000; // Note we are hosting our API on port 3000
 var serverURI = (process.env.PORT) ? config.creds.mongoose_auth_mongohq : config.creds.mongoose_auth_local;
 
-// Connect to MongoDB
+// Connect tooMongoDB
 global.db = mongoose.connect(serverURI);
 var Schema = mongoose.Schema;
 log.info('MongoDB Schema loaded');
 
-// Here we create a schema to store our tasks and users. Pretty simple schema for now.
+// Here we create a schema toostore our tasks and users. Pretty simple schema for now.
 var TaskSchema = new Schema({
     owner: String,
     Text: String,
@@ -376,41 +376,41 @@ var TaskSchema = new Schema({
     date: Date
 });
 
-// Use the schema to register a model
+// Use hello schema tooregister a model
 mongoose.model('Task', TaskSchema);
 var Task = mongoose.model('Task');
 ```
-<span data-ttu-id="c0ab5-258">Сначала создайте схему, а затем — объект модели для хранения данных, который вы используете в коде при определении **маршрутов**.</span><span class="sxs-lookup"><span data-stu-id="c0ab5-258">You first create the schema, and then you create a model object that you use to store your data throughout the code when you define your **routes**.</span></span>
+<span data-ttu-id="e2e4b-258">Сначала создается схема hello и создайте объект модели, используемой toostore данных по всему hello кода при определении вашей **маршруты**.</span><span class="sxs-lookup"><span data-stu-id="e2e4b-258">You first create hello schema, and then you create a model object that you use toostore your data throughout hello code when you define your **routes**.</span></span>
 
-## <a name="add-routes-for-your-rest-api-task-server"></a><span data-ttu-id="c0ab5-259">Добавление маршрутов для сервера задач REST API</span><span class="sxs-lookup"><span data-stu-id="c0ab5-259">Add routes for your REST API task server</span></span>
-<span data-ttu-id="c0ab5-260">Теперь модель базы данных готова к использованию. Добавьте маршруты, которые используются для сервера REST API.</span><span class="sxs-lookup"><span data-stu-id="c0ab5-260">Now that you have a database model to work with, add the routes you use for your REST API server.</span></span>
+## <a name="add-routes-for-your-rest-api-task-server"></a><span data-ttu-id="e2e4b-259">Добавление маршрутов для сервера задач REST API</span><span class="sxs-lookup"><span data-stu-id="e2e4b-259">Add routes for your REST API task server</span></span>
+<span data-ttu-id="e2e4b-260">Теперь, когда toowork модели базы данных с помощью добавления hello маршрутов, которые можно использовать для сервера REST API.</span><span class="sxs-lookup"><span data-stu-id="e2e4b-260">Now that you have a database model toowork with, add hello routes you use for your REST API server.</span></span>
 
-### <a name="about-routes-in-restify"></a><span data-ttu-id="c0ab5-261">О маршрутах в Restify</span><span class="sxs-lookup"><span data-stu-id="c0ab5-261">About routes in Restify</span></span>
-<span data-ttu-id="c0ab5-262">Маршруты работают в Restify точно так же, как при использовании стека Express.</span><span class="sxs-lookup"><span data-stu-id="c0ab5-262">Routes work in Restify in the same way that they work when they use the Express stack.</span></span> <span data-ttu-id="c0ab5-263">Вы определяете маршруты с помощью идентификатора URI, который, как предполагается, будут вызывать клиентские приложения.</span><span class="sxs-lookup"><span data-stu-id="c0ab5-263">You define routes by using the URI that you expect the client applications to call.</span></span>
+### <a name="about-routes-in-restify"></a><span data-ttu-id="e2e4b-261">О маршрутах в Restify</span><span class="sxs-lookup"><span data-stu-id="e2e4b-261">About routes in Restify</span></span>
+<span data-ttu-id="e2e4b-262">Маршруты работать в Restify в hello таким же способом, что они работают при использовании стека Express hello.</span><span class="sxs-lookup"><span data-stu-id="e2e4b-262">Routes work in Restify in hello same way that they work when they use hello Express stack.</span></span> <span data-ttu-id="e2e4b-263">Определения маршрутов с помощью hello URI, что предполагается toocall приложения hello клиента.</span><span class="sxs-lookup"><span data-stu-id="e2e4b-263">You define routes by using hello URI that you expect hello client applications toocall.</span></span>
 
-<span data-ttu-id="c0ab5-264">Типичный шаблон для маршрута Restify выглядит следующим образом:</span><span class="sxs-lookup"><span data-stu-id="c0ab5-264">A typical pattern for a Restify route is:</span></span>
+<span data-ttu-id="e2e4b-264">Типичный шаблон для маршрута Restify выглядит следующим образом:</span><span class="sxs-lookup"><span data-stu-id="e2e4b-264">A typical pattern for a Restify route is:</span></span>
 
 ```Javascript
 function createObject(req, res, next) {
 // do work on Object
 _object.name = req.params.object; // passed value is in req.params under object
 ///...
-return next(); // keep the server going
+return next(); // keep hello server going
 }
 ....
 server.post('/service/:add/:object', createObject); // calls createObject on routes that match this.
 ```
 
-<span data-ttu-id="c0ab5-265">В Restify и Express доступны более мощные функциональные возможности, например определение типов приложений и выполнение сложной маршрутизации между разными конечными точками.</span><span class="sxs-lookup"><span data-stu-id="c0ab5-265">Restify and Express can provide much deeper functionality, such as defining application types and doing complex routing across different endpoints.</span></span> <span data-ttu-id="c0ab5-266">В этом руководстве мы будем использовать только простые маршруты.</span><span class="sxs-lookup"><span data-stu-id="c0ab5-266">For the purposes of this tutorial, we keep these routes simple.</span></span>
+<span data-ttu-id="e2e4b-265">В Restify и Express доступны более мощные функциональные возможности, например определение типов приложений и выполнение сложной маршрутизации между разными конечными точками.</span><span class="sxs-lookup"><span data-stu-id="e2e4b-265">Restify and Express can provide much deeper functionality, such as defining application types and doing complex routing across different endpoints.</span></span> <span data-ttu-id="e2e4b-266">Для целей этого учебника hello нам усложнять эти маршруты.</span><span class="sxs-lookup"><span data-stu-id="e2e4b-266">For hello purposes of this tutorial, we keep these routes simple.</span></span>
 
-#### <a name="add-default-routes-to-your-server"></a><span data-ttu-id="c0ab5-267">Добавление на сервер маршрутов по умолчанию</span><span class="sxs-lookup"><span data-stu-id="c0ab5-267">Add default routes to your server</span></span>
-<span data-ttu-id="c0ab5-268">Теперь добавьте базовые маршруты CRUD для операций **create** (создание) и **list**(список) интерфейса REST API.</span><span class="sxs-lookup"><span data-stu-id="c0ab5-268">You now add the basic CRUD routes of **create** and **list** for our REST API.</span></span> <span data-ttu-id="c0ab5-269">Другие маршруты можно найти в ветви `complete` примера.</span><span class="sxs-lookup"><span data-stu-id="c0ab5-269">Other routes can be found in the `complete` branch of the sample.</span></span>
+#### <a name="add-default-routes-tooyour-server"></a><span data-ttu-id="e2e4b-267">Добавление сервера tooyour маршруты по умолчанию</span><span class="sxs-lookup"><span data-stu-id="e2e4b-267">Add default routes tooyour server</span></span>
+<span data-ttu-id="e2e4b-268">Теперь добавьте hello основные CRUD маршрутам **создания** и **списка** для наших API REST.</span><span class="sxs-lookup"><span data-stu-id="e2e4b-268">You now add hello basic CRUD routes of **create** and **list** for our REST API.</span></span> <span data-ttu-id="e2e4b-269">Другие маршруты можно найти в hello `complete` ветви образца hello.</span><span class="sxs-lookup"><span data-stu-id="e2e4b-269">Other routes can be found in hello `complete` branch of hello sample.</span></span>
 
-<span data-ttu-id="c0ab5-270">В командной строке перейдите в каталог `azuread`, если он еще не выбран.</span><span class="sxs-lookup"><span data-stu-id="c0ab5-270">From the command line, change your directory to `azuread`, if it's not already there:</span></span>
+<span data-ttu-id="e2e4b-270">Из командной строки hello, измените каталог слишком`azuread`, если он еще не существует:</span><span class="sxs-lookup"><span data-stu-id="e2e4b-270">From hello command line, change your directory too`azuread`, if it's not already there:</span></span>
 
 `cd azuread`
 
-<span data-ttu-id="c0ab5-271">Откройте файл `server.js` в редакторе.</span><span class="sxs-lookup"><span data-stu-id="c0ab5-271">Open the `server.js` file in an editor.</span></span> <span data-ttu-id="c0ab5-272">Добавьте следующие сведения под записями о базе данных, которые вы добавили ранее:</span><span class="sxs-lookup"><span data-stu-id="c0ab5-272">Below the database entries you made above add the following information:</span></span>
+<span data-ttu-id="e2e4b-271">Откройте hello `server.js` файл в редакторе.</span><span class="sxs-lookup"><span data-stu-id="e2e4b-271">Open hello `server.js` file in an editor.</span></span> <span data-ttu-id="e2e4b-272">Ниже записи в базе данных hello внесенные выше добавить hello следующую информацию:</span><span class="sxs-lookup"><span data-stu-id="e2e4b-272">Below hello database entries you made above add hello following information:</span></span>
 
 ```Javascript
 /**
@@ -422,13 +422,13 @@ server.post('/service/:add/:object', createObject); // calls createObject on rou
 
 function createTask(req, res, next) {
 
-    // Resitify currently has a bug which doesn't allow you to set default headers
-    // This headers comply with CORS and allow us to mongodbServer our response to any origin
+    // Resitify currently has a bug which doesn't allow you tooset default headers
+    // This headers comply with CORS and allow us toomongodbServer our response tooany origin
 
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "X-Requested-With");
 
-    // Create a new task model, fill it up and save it to Mongodb
+    // Create a new task model, fill it up and save it tooMongodb
     var _task = new Task();
 
     if (!req.params.Text) {
@@ -445,7 +445,7 @@ function createTask(req, res, next) {
 
     _task.save(function(err) {
         if (err) {
-            req.log.warn(err, 'createTask: unable to save');
+            req.log.warn(err, 'createTask: unable toosave');
             next(err);
         } else {
             res.send(201, _task);
@@ -459,11 +459,11 @@ function createTask(req, res, next) {
 ```
 
 ```Javascript
-/// Simple returns the list of TODOs that were loaded.
+/// Simple returns hello list of TODOs that were loaded.
 
 function listTasks(req, res, next) {
-    // Resitify currently has a bug which doesn't allow you to set default headers
-    // This headers comply with CORS and allow us to mongodbServer our response to any origin
+    // Resitify currently has a bug which doesn't allow you tooset default headers
+    // This headers comply with CORS and allow us toomongodbServer our response tooany origin
 
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "X-Requested-With");
@@ -482,7 +482,7 @@ function listTasks(req, res, next) {
         }
 
         if (!data.length) {
-            log.warn(err, "There is no tasks in the database. Add one!");
+            log.warn(err, "There is no tasks in hello database. Add one!");
         }
 
         if (!owner) {
@@ -499,13 +499,13 @@ function listTasks(req, res, next) {
 ```
 
 
-#### <a name="add-error-handling-for-the-routes"></a><span data-ttu-id="c0ab5-273">Добавление обработки ошибок для маршрутов</span><span class="sxs-lookup"><span data-stu-id="c0ab5-273">Add error handling for the routes</span></span>
-<span data-ttu-id="c0ab5-274">Добавьте обработку ошибок, чтобы в понятной форме передавать клиенту данные о возникших проблемах.</span><span class="sxs-lookup"><span data-stu-id="c0ab5-274">Add some error handling so that you can communicate any problems you encounter back to the client in a way that it can understand.</span></span>
+#### <a name="add-error-handling-for-hello-routes"></a><span data-ttu-id="e2e4b-273">Добавьте обработку ошибок для маршрутов hello</span><span class="sxs-lookup"><span data-stu-id="e2e4b-273">Add error handling for hello routes</span></span>
+<span data-ttu-id="e2e4b-274">Добавление обработки ошибок, чтобы вы могли взаимодействовать проблемы возникают задней toohello клиента, в результате которого оно было понятно.</span><span class="sxs-lookup"><span data-stu-id="e2e4b-274">Add some error handling so that you can communicate any problems you encounter back toohello client in a way that it can understand.</span></span>
 
-<span data-ttu-id="c0ab5-275">Добавьте следующий код:</span><span class="sxs-lookup"><span data-stu-id="c0ab5-275">Add the following code:</span></span>
+<span data-ttu-id="e2e4b-275">Добавьте следующий код hello:</span><span class="sxs-lookup"><span data-stu-id="e2e4b-275">Add hello following code:</span></span>
 
 ```Javascript
-///--- Errors for communicating something interesting back to the client
+///--- Errors for communicating something interesting back toohello client
 function MissingTaskError() {
 restify.RestError.call(this, {
 statusCode: 409,
@@ -541,10 +541,10 @@ util.inherits(TaskNotFoundError, restify.RestError);
 ```
 
 
-## <a name="create-your-server"></a><span data-ttu-id="c0ab5-276">Создание сервера</span><span class="sxs-lookup"><span data-stu-id="c0ab5-276">Create your server</span></span>
-<span data-ttu-id="c0ab5-277">Теперь база данных определена, а маршруты созданы.</span><span class="sxs-lookup"><span data-stu-id="c0ab5-277">You have now defined your database and put your routes in place.</span></span> <span data-ttu-id="c0ab5-278">Осталось только добавить экземпляр сервера, который обрабатывает вызовы.</span><span class="sxs-lookup"><span data-stu-id="c0ab5-278">The last thing for you to do is to add the server instance that manages your calls.</span></span>
+## <a name="create-your-server"></a><span data-ttu-id="e2e4b-276">Создание сервера</span><span class="sxs-lookup"><span data-stu-id="e2e4b-276">Create your server</span></span>
+<span data-ttu-id="e2e4b-277">Теперь база данных определена, а маршруты созданы.</span><span class="sxs-lookup"><span data-stu-id="e2e4b-277">You have now defined your database and put your routes in place.</span></span> <span data-ttu-id="e2e4b-278">Hello худшее вы toodo — экземпляр сервера hello tooadd, который управляет вызовов.</span><span class="sxs-lookup"><span data-stu-id="e2e4b-278">hello last thing for you toodo is tooadd hello server instance that manages your calls.</span></span>
 
-<span data-ttu-id="c0ab5-279">Restify и Express предоставляют широкие возможности для настройки сервера REST API, но здесь мы используем самый простой вариант.</span><span class="sxs-lookup"><span data-stu-id="c0ab5-279">Restify and Express provide deep customization for a REST API server, but we use the most basic setup here.</span></span>
+<span data-ttu-id="e2e4b-279">Restify Express предоставляют обширные возможности для настройки сервера REST API, а вариант установки основных hello.</span><span class="sxs-lookup"><span data-stu-id="e2e4b-279">Restify and Express provide deep customization for a REST API server, but we use hello most basic setup here.</span></span>
 
 ```Javascript
 
@@ -570,21 +570,21 @@ server.pre(restify.pre.userAgentConnection());
 // Set a per request bunyan logger (with requestid filled in)
 server.use(restify.requestLogger());
 
-// Allow 5 requests/second by IP, and burst to 10
+// Allow 5 requests/second by IP, and burst too10
 server.use(restify.throttle({
     burst: 10,
     rate: 5,
     ip: true,
 }));
 
-// Use the common stuff you probably want
+// Use hello common stuff you probably want
 server.use(restify.acceptParser(server.acceptable));
 server.use(restify.dateParser());
 server.use(restify.queryParser());
 server.use(restify.gzipResponse());
 server.use(restify.bodyParser({
     mapParams: true
-})); // Allows for JSON mapping to REST
+})); // Allows for JSON mapping tooREST
 server.use(restify.authorizationParser()); // Looks for authorization headers
 
 // Let's start using Passport.js
@@ -594,7 +594,7 @@ server.use(passport.session()); // Provides session support
 
 
 ```
-## <a name="add-the-routes-to-the-server-without-authentication"></a><span data-ttu-id="c0ab5-280">Добавление маршрутов на сервер (без проверки подлинности)</span><span class="sxs-lookup"><span data-stu-id="c0ab5-280">Add the routes to the server (without authentication)</span></span>
+## <a name="add-hello-routes-toohello-server-without-authentication"></a><span data-ttu-id="e2e4b-280">Добавление сервера toohello маршруты hello (без проверки подлинности)</span><span class="sxs-lookup"><span data-stu-id="e2e4b-280">Add hello routes toohello server (without authentication)</span></span>
 ```Javascript
 server.get('/api/tasks', passport.authenticate('oauth-bearer', {
     session: false
@@ -655,9 +655,9 @@ server.listen(serverPort, function() {
     var consoleMessage = '\n Microsoft Azure Active Directory Tutorial';
     consoleMessage += '\n +++++++++++++++++++++++++++++++++++++++++++++++++++++';
     consoleMessage += '\n %s server is listening at %s';
-    consoleMessage += '\n Open your browser to %s/api/tasks\n';
+    consoleMessage += '\n Open your browser too%s/api/tasks\n';
     consoleMessage += '+++++++++++++++++++++++++++++++++++++++++++++++++++++ \n';
-    consoleMessage += '\n !!! why not try a $curl -isS %s | json to get some ideas? \n';
+    consoleMessage += '\n !!! why not try a $curl -isS %s | json tooget some ideas? \n';
     consoleMessage += '+++++++++++++++++++++++++++++++++++++++++++++++++++++ \n\n';
 
     //log.info(consoleMessage, server.name, server.url, server.url, server.url);
@@ -666,20 +666,20 @@ server.listen(serverPort, function() {
 
 ```
 
-## <a name="add-authentication-to-your-rest-api-server"></a><span data-ttu-id="c0ab5-281">Добавление функции проверки подлинности на сервер REST API</span><span class="sxs-lookup"><span data-stu-id="c0ab5-281">Add authentication to your REST API server</span></span>
-<span data-ttu-id="c0ab5-282">Теперь, когда есть работающий сервер REST API, можно подготовить его к использованию в Azure AD.</span><span class="sxs-lookup"><span data-stu-id="c0ab5-282">Now that you have a running REST API server, you can make it useful against Azure AD.</span></span>
+## <a name="add-authentication-tooyour-rest-api-server"></a><span data-ttu-id="e2e4b-281">Добавление сервера API-интерфейса REST tooyour проверки подлинности</span><span class="sxs-lookup"><span data-stu-id="e2e4b-281">Add authentication tooyour REST API server</span></span>
+<span data-ttu-id="e2e4b-282">Теперь, когда есть работающий сервер REST API, можно подготовить его к использованию в Azure AD.</span><span class="sxs-lookup"><span data-stu-id="e2e4b-282">Now that you have a running REST API server, you can make it useful against Azure AD.</span></span>
 
-<span data-ttu-id="c0ab5-283">В командной строке перейдите в каталог `azuread`, если он еще не выбран.</span><span class="sxs-lookup"><span data-stu-id="c0ab5-283">From the command line, change your directory to `azuread`, if it's not already there:</span></span>
+<span data-ttu-id="e2e4b-283">Из командной строки hello, измените каталог слишком`azuread`, если он еще не существует:</span><span class="sxs-lookup"><span data-stu-id="e2e4b-283">From hello command line, change your directory too`azuread`, if it's not already there:</span></span>
 
 `cd azuread`
 
-### <a name="use-the-oidcbearerstrategy-that-is-included-with-passport-azure-ad"></a><span data-ttu-id="c0ab5-284">Использование стратегии OIDCBearerStrategy, включенной в passport-azure-ad</span><span class="sxs-lookup"><span data-stu-id="c0ab5-284">Use the OIDCBearerStrategy that is included with passport-azure-ad</span></span>
+### <a name="use-hello-oidcbearerstrategy-that-is-included-with-passport-azure-ad"></a><span data-ttu-id="e2e4b-284">Использовать hello OIDCBearerStrategy, который входит в состав passport azure ad</span><span class="sxs-lookup"><span data-stu-id="e2e4b-284">Use hello OIDCBearerStrategy that is included with passport-azure-ad</span></span>
 > [!TIP]
-> <span data-ttu-id="c0ab5-285">При написании интерфейсов API обязательно нужно связывать данные с уникальными параметрами токена, которые пользователь не сможет подделать.</span><span class="sxs-lookup"><span data-stu-id="c0ab5-285">When you write APIs, you should always link the data to something unique from the token that the user can’t spoof.</span></span> <span data-ttu-id="c0ab5-286">Этот сервер сохраняет элементы ToDo на основании **идентификатора объекта** пользователя, указанного в токене (свойство token.oid). Это значение сохраняется в поле owner.</span><span class="sxs-lookup"><span data-stu-id="c0ab5-286">When the server stores ToDo items, it does so based on the **oid** of the user in the token (called through token.oid), which goes in the “owner” field.</span></span> <span data-ttu-id="c0ab5-287">Благодаря этому только владелец сможет получить доступ к своим элементам ToDo.</span><span class="sxs-lookup"><span data-stu-id="c0ab5-287">This value ensures that only that user can access their own ToDo items.</span></span> <span data-ttu-id="c0ab5-288">Значение owner не отображается в API, поэтому внешний пользователь может запросить элементы ToDo другого пользователя, даже если он прошел проверку подлинности.</span><span class="sxs-lookup"><span data-stu-id="c0ab5-288">There is no exposure in the API of “owner,” so an external user can request others’ ToDo items even if they are authenticated.</span></span>
+> <span data-ttu-id="e2e4b-285">При написании API, следует всегда связывать уникальный из токена hello, hello пользователя toosomething данных hello подменить.</span><span class="sxs-lookup"><span data-stu-id="e2e4b-285">When you write APIs, you should always link hello data toosomething unique from hello token that hello user can’t spoof.</span></span> <span data-ttu-id="e2e4b-286">Когда элементы ToDo хранятся на сервере hello, используется таким образом на основании hello **oid** пользователя hello в маркере hello (называемые через token.oid), который переходит в поле hello «владелец».</span><span class="sxs-lookup"><span data-stu-id="e2e4b-286">When hello server stores ToDo items, it does so based on hello **oid** of hello user in hello token (called through token.oid), which goes in hello “owner” field.</span></span> <span data-ttu-id="e2e4b-287">Благодаря этому только владелец сможет получить доступ к своим элементам ToDo.</span><span class="sxs-lookup"><span data-stu-id="e2e4b-287">This value ensures that only that user can access their own ToDo items.</span></span> <span data-ttu-id="e2e4b-288">Нет отсутствие проблем в hello API «владелец», поэтому внешний пользователь может запросить элементов ToDo других пользователей, даже если они проходят проверку подлинности.</span><span class="sxs-lookup"><span data-stu-id="e2e4b-288">There is no exposure in hello API of “owner,” so an external user can request others’ ToDo items even if they are authenticated.</span></span>
 >
 >
 
-<span data-ttu-id="c0ab5-289">Далее используйте стратегию носителя, которая поставляется с `passport-azure-ad`.</span><span class="sxs-lookup"><span data-stu-id="c0ab5-289">Next, use the bearer strategy that comes with `passport-azure-ad`.</span></span>
+<span data-ttu-id="e2e4b-289">Затем с помощью стратегии носителя hello, входящий в состав `passport-azure-ad`.</span><span class="sxs-lookup"><span data-stu-id="e2e4b-289">Next, use hello bearer strategy that comes with `passport-azure-ad`.</span></span>
 
 ```Javascript
 var findById = function(id, fn) {
@@ -696,8 +696,8 @@ var findById = function(id, fn) {
 
 var oidcStrategy = new OIDCBearerStrategy(options,
     function(token, done) {
-        log.info('verifying the user');
-        log.info(token, 'was the token retreived');
+        log.info('verifying hello user');
+        log.info(token, 'was hello token retreived');
         findById(token.sub, function(err, user) {
             if (err) {
                 return done(err);
@@ -718,28 +718,28 @@ var oidcStrategy = new OIDCBearerStrategy(options,
 passport.use(oidcStrategy);
 ```
 
-<span data-ttu-id="c0ab5-290">Passport использует стандартный шаблон для всех своих стратегий.</span><span class="sxs-lookup"><span data-stu-id="c0ab5-290">Passport uses the same pattern for all its strategies.</span></span> <span data-ttu-id="c0ab5-291">Вы передаете ему функцию `function()` с параметрами `token` и `done`.</span><span class="sxs-lookup"><span data-stu-id="c0ab5-291">You pass it a `function()` that has `token` and `done` as parameters.</span></span> <span data-ttu-id="c0ab5-292">Стратегия будет возвращена после выполнения всех задач.</span><span class="sxs-lookup"><span data-stu-id="c0ab5-292">The strategy comes back to you after it has done all of its work.</span></span> <span data-ttu-id="c0ab5-293">Затем следует сохранить данные пользователя и токен, чтобы не задавать их в следующий раз повторно.</span><span class="sxs-lookup"><span data-stu-id="c0ab5-293">You should then store the user and save the token so that you don’t need to ask for it again.</span></span>
+<span data-ttu-id="e2e4b-290">Passport использует hello же шаблон для всех стратегий.</span><span class="sxs-lookup"><span data-stu-id="e2e4b-290">Passport uses hello same pattern for all its strategies.</span></span> <span data-ttu-id="e2e4b-291">Вы передаете ему функцию `function()` с параметрами `token` и `done`.</span><span class="sxs-lookup"><span data-stu-id="e2e4b-291">You pass it a `function()` that has `token` and `done` as parameters.</span></span> <span data-ttu-id="e2e4b-292">Стратегия Hello возвращаются tooyou после его всю свою работу.</span><span class="sxs-lookup"><span data-stu-id="e2e4b-292">hello strategy comes back tooyou after it has done all of its work.</span></span> <span data-ttu-id="e2e4b-293">Следует хранить пользователя hello и сохранить токен hello tooask для него не требуется еще раз.</span><span class="sxs-lookup"><span data-stu-id="e2e4b-293">You should then store hello user and save hello token so that you don’t need tooask for it again.</span></span>
 
 > [!IMPORTANT]
-> <span data-ttu-id="c0ab5-294">Приведенный выше код принимает всех пользователей, которые прошли проверку подлинности на сервере.</span><span class="sxs-lookup"><span data-stu-id="c0ab5-294">The code above takes any user who happens to authenticate to your server.</span></span> <span data-ttu-id="c0ab5-295">Этот процесс называется автоматической регистрацией.</span><span class="sxs-lookup"><span data-stu-id="c0ab5-295">This process is known as autoregistration.</span></span> <span data-ttu-id="c0ab5-296">На рабочих серверах нельзя разрешать пользователям использовать API без предварительной регистрации.</span><span class="sxs-lookup"><span data-stu-id="c0ab5-296">In production servers, don't let in any users access the API without first having them go through a registration process.</span></span> <span data-ttu-id="c0ab5-297">Такой подход обычно используется для клиентских приложений, которые позволяют войти с помощью учетной записи Facebook, а затем предлагают ввести дополнительную информацию.</span><span class="sxs-lookup"><span data-stu-id="c0ab5-297">This process is usually the pattern you see in consumer apps that allow you to register by using Facebook but then ask you to fill out additional information.</span></span> <span data-ttu-id="c0ab5-298">В других вариантах, кроме запуска программы из командной строки, адрес электронной почты можно получить из возвращенного объекта токена, а после этого запросить у пользователя дополнительную информацию.</span><span class="sxs-lookup"><span data-stu-id="c0ab5-298">If this program wasn’t a command-line program, we could have extracted the email from the token object that is returned and then asked users to fill out additional information.</span></span> <span data-ttu-id="c0ab5-299">В нашем упрощенном примере мы сохраняем их в базу данных в памяти.</span><span class="sxs-lookup"><span data-stu-id="c0ab5-299">Because this is a sample, we add them to an in-memory database.</span></span>
+> <span data-ttu-id="e2e4b-294">Приведенный выше код Hello принимает любой пользователь, который происходит tooauthenticate tooyour сервера.</span><span class="sxs-lookup"><span data-stu-id="e2e4b-294">hello code above takes any user who happens tooauthenticate tooyour server.</span></span> <span data-ttu-id="e2e4b-295">Этот процесс называется автоматической регистрацией.</span><span class="sxs-lookup"><span data-stu-id="e2e4b-295">This process is known as autoregistration.</span></span> <span data-ttu-id="e2e4b-296">В рабочей среде не позволяйте в любой API hello доступа пользователей без необходимости их пройти процесс регистрации.</span><span class="sxs-lookup"><span data-stu-id="e2e4b-296">In production servers, don't let in any users access hello API without first having them go through a registration process.</span></span> <span data-ttu-id="e2e4b-297">Этот процесс обычно является шаблон hello в пользовательские приложения, которые позволяет tooregister с помощью Facebook, а затем попросите toofill дополнительных сведений.</span><span class="sxs-lookup"><span data-stu-id="e2e4b-297">This process is usually hello pattern you see in consumer apps that allow you tooregister by using Facebook but then ask you toofill out additional information.</span></span> <span data-ttu-id="e2e4b-298">Если эта программа не была программы командной строки, нам удалось извлекли hello электронной почты из hello токен объекта, который возвращается и затем предложено toofill пользователям Дополнительные сведения.</span><span class="sxs-lookup"><span data-stu-id="e2e4b-298">If this program wasn’t a command-line program, we could have extracted hello email from hello token object that is returned and then asked users toofill out additional information.</span></span> <span data-ttu-id="e2e4b-299">Так как это образец мы их добавить tooan базы данных в памяти.</span><span class="sxs-lookup"><span data-stu-id="e2e4b-299">Because this is a sample, we add them tooan in-memory database.</span></span>
 >
 >
 
-## <a name="run-your-server-application-to-verify-that-it-rejects-you"></a><span data-ttu-id="c0ab5-300">Запуск серверного приложения для подтверждения отказа в доступе</span><span class="sxs-lookup"><span data-stu-id="c0ab5-300">Run your server application to verify that it rejects you</span></span>
-<span data-ttu-id="c0ab5-301">Вы можете использовать `curl` , чтобы определить, активирована ли защита OAuth2 применительно к конечным точкам.</span><span class="sxs-lookup"><span data-stu-id="c0ab5-301">You can use `curl` to see if you now have OAuth2 protection against your endpoints.</span></span> <span data-ttu-id="c0ab5-302">Возвращенные заголовки должны подтвердить, что пока все сделано правильно.</span><span class="sxs-lookup"><span data-stu-id="c0ab5-302">The headers returned should be enough to tell you that you are on the right path.</span></span>
+## <a name="run-your-server-application-tooverify-that-it-rejects-you"></a><span data-ttu-id="e2e4b-300">Запустите tooverify приложения на сервере что он отклоняет вы</span><span class="sxs-lookup"><span data-stu-id="e2e4b-300">Run your server application tooverify that it rejects you</span></span>
+<span data-ttu-id="e2e4b-301">Можно использовать `curl` toosee при наличии защиты OAuth2 теперь для конечных точек.</span><span class="sxs-lookup"><span data-stu-id="e2e4b-301">You can use `curl` toosee if you now have OAuth2 protection against your endpoints.</span></span> <span data-ttu-id="e2e4b-302">Hello возвращены заголовки должно быть достаточно tootell, вы используете правильный путь hello.</span><span class="sxs-lookup"><span data-stu-id="e2e4b-302">hello headers returned should be enough tootell you that you are on hello right path.</span></span>
 
-<span data-ttu-id="c0ab5-303">Убедитесь, что ваш экземпляр MongoDB работает.</span><span class="sxs-lookup"><span data-stu-id="c0ab5-303">Make sure that your MongoDB instance is running:</span></span>
+<span data-ttu-id="e2e4b-303">Убедитесь, что ваш экземпляр MongoDB работает.</span><span class="sxs-lookup"><span data-stu-id="e2e4b-303">Make sure that your MongoDB instance is running:</span></span>
 
     $sudo mongodb
 
-<span data-ttu-id="c0ab5-304">Перейдите в нужный каталог и запустите сервер:</span><span class="sxs-lookup"><span data-stu-id="c0ab5-304">Change to the directory and run the server:</span></span>
+<span data-ttu-id="e2e4b-304">Измените каталог toohello и выполнения hello server:</span><span class="sxs-lookup"><span data-stu-id="e2e4b-304">Change toohello directory and run hello server:</span></span>
 
     $ cd azuread
     $ node server.js
 
-<span data-ttu-id="c0ab5-305">Запустите команду `curl`</span><span class="sxs-lookup"><span data-stu-id="c0ab5-305">In a new terminal window, run `curl`</span></span>
+<span data-ttu-id="e2e4b-305">Запустите команду `curl`</span><span class="sxs-lookup"><span data-stu-id="e2e4b-305">In a new terminal window, run `curl`</span></span>
 
-<span data-ttu-id="c0ab5-306">Попробуйте выполнить базовую команду POST:</span><span class="sxs-lookup"><span data-stu-id="c0ab5-306">Try a basic POST:</span></span>
+<span data-ttu-id="e2e4b-306">Попробуйте выполнить базовую команду POST:</span><span class="sxs-lookup"><span data-stu-id="e2e4b-306">Try a basic POST:</span></span>
 
 `$ curl -isS -X POST http://127.0.0.1:3000/api/tasks/brandon/Hello`
 
@@ -751,12 +751,12 @@ Date: Tue, 14 Jul 2015 05:45:03 GMT
 Transfer-Encoding: chunked
 ```
 
-<span data-ttu-id="c0ab5-307">Если система функционирует правильно, отобразится сообщение об ошибке 401.</span><span class="sxs-lookup"><span data-stu-id="c0ab5-307">A 401 error is the response you want.</span></span> <span data-ttu-id="c0ab5-308">Это означает, что уровень Passport пытается выполнить перенаправление к конечной точке авторизации.</span><span class="sxs-lookup"><span data-stu-id="c0ab5-308">It indicates that the Passport layer is trying to redirect to the authorize endpoint.</span></span>
+<span data-ttu-id="e2e4b-307">Ошибку 401 — ответ hello, которые нужно.</span><span class="sxs-lookup"><span data-stu-id="e2e4b-307">A 401 error is hello response you want.</span></span> <span data-ttu-id="e2e4b-308">Указывает, откуда Passport hello пытается tooredirect toohello конечной точки для проверки подлинности.</span><span class="sxs-lookup"><span data-stu-id="e2e4b-308">It indicates that hello Passport layer is trying tooredirect toohello authorize endpoint.</span></span>
 
-## <a name="you-now-have-a-rest-api-service-that-uses-oauth2"></a><span data-ttu-id="c0ab5-309">Теперь у вас есть служба REST API, использующая OAuth2</span><span class="sxs-lookup"><span data-stu-id="c0ab5-309">You now have a REST API service that uses OAuth2</span></span>
-<span data-ttu-id="c0ab5-310">Вы завершили создание REST API с использованием Restify и OAuth.</span><span class="sxs-lookup"><span data-stu-id="c0ab5-310">You have implemented a REST API by using Restify and OAuth!</span></span> <span data-ttu-id="c0ab5-311">Этого кода будет достаточно, чтобы продолжить создание службы на основе предложенного примера.</span><span class="sxs-lookup"><span data-stu-id="c0ab5-311">You now have sufficient code so that you can continue to develop your service and build on this example.</span></span> <span data-ttu-id="c0ab5-312">До сих пор вы применяли этот сервер без использования клиента, совместимого с OAuth2.</span><span class="sxs-lookup"><span data-stu-id="c0ab5-312">You have gone as far as you can with this server without using an OAuth2-compatible client.</span></span> <span data-ttu-id="c0ab5-313">На следующем этапе вам пригодятся дополнительные инструкции, которые есть, например, в пошаговом руководстве [Azure AD B2C: вызов веб-API из приложения iOS с использованием сторонней библиотеки](active-directory-b2c-devquickstarts-ios.md) .</span><span class="sxs-lookup"><span data-stu-id="c0ab5-313">For that next step use an additional walk-through like our [Connect to a web API by using iOS with B2C](active-directory-b2c-devquickstarts-ios.md) walkthrough.</span></span>
+## <a name="you-now-have-a-rest-api-service-that-uses-oauth2"></a><span data-ttu-id="e2e4b-309">Теперь у вас есть служба REST API, использующая OAuth2</span><span class="sxs-lookup"><span data-stu-id="e2e4b-309">You now have a REST API service that uses OAuth2</span></span>
+<span data-ttu-id="e2e4b-310">Вы завершили создание REST API с использованием Restify и OAuth.</span><span class="sxs-lookup"><span data-stu-id="e2e4b-310">You have implemented a REST API by using Restify and OAuth!</span></span> <span data-ttu-id="e2e4b-311">Теперь у вас есть достаточные кода, можно продолжить toodevelop службы и сборку в этом примере.</span><span class="sxs-lookup"><span data-stu-id="e2e4b-311">You now have sufficient code so that you can continue toodevelop your service and build on this example.</span></span> <span data-ttu-id="e2e4b-312">До сих пор вы применяли этот сервер без использования клиента, совместимого с OAuth2.</span><span class="sxs-lookup"><span data-stu-id="e2e4b-312">You have gone as far as you can with this server without using an OAuth2-compatible client.</span></span> <span data-ttu-id="e2e4b-313">Для данного шага далее использовать дополнительные руководство по применению как нашей [подключения tooa веб-API с помощью операций ввода-вывода с B2C](active-directory-b2c-devquickstarts-ios.md) Пошаговое руководство.</span><span class="sxs-lookup"><span data-stu-id="e2e4b-313">For that next step use an additional walk-through like our [Connect tooa web API by using iOS with B2C](active-directory-b2c-devquickstarts-ios.md) walkthrough.</span></span>
 
-## <a name="next-steps"></a><span data-ttu-id="c0ab5-314">Дальнейшие действия</span><span class="sxs-lookup"><span data-stu-id="c0ab5-314">Next steps</span></span>
-<span data-ttu-id="c0ab5-315">Теперь можно перейти к более сложным темам.</span><span class="sxs-lookup"><span data-stu-id="c0ab5-315">You can now move to more advanced topics, such as:</span></span>
+## <a name="next-steps"></a><span data-ttu-id="e2e4b-314">Дальнейшие действия</span><span class="sxs-lookup"><span data-stu-id="e2e4b-314">Next steps</span></span>
+<span data-ttu-id="e2e4b-315">Теперь можно переместить toomore дополнительные разделы, такие как:</span><span class="sxs-lookup"><span data-stu-id="e2e4b-315">You can now move toomore advanced topics, such as:</span></span>
 
-[<span data-ttu-id="c0ab5-316">Подключение к веб-API с помощью iOS с B2C</span><span class="sxs-lookup"><span data-stu-id="c0ab5-316">Connect to a web API by using iOS with B2C</span></span>](active-directory-b2c-devquickstarts-ios.md)
+[<span data-ttu-id="e2e4b-316">Подключиться с помощью операций ввода-вывода с B2C tooa веб-API</span><span class="sxs-lookup"><span data-stu-id="e2e4b-316">Connect tooa web API by using iOS with B2C</span></span>](active-directory-b2c-devquickstarts-ios.md)
