@@ -1,6 +1,6 @@
 ---
-title: "Как вести потоковую трансляцию с помощью локальных кодировщиков и .NET | Документация Майкрософт"
-description: "В этой статье показано, как использовать .NET для кодирования в реальном времени с помощью локальных кодировщиков."
+title: "aaaHow tooperform потоковой трансляции с помощью локальных кодировщиков, с помощью .NET | Документы Microsoft"
+description: "В этом разделе показано как live toouse .NET tooperform кодировки с локальных кодировщиков."
 services: media-services
 documentationcenter: 
 author: Juliako
@@ -14,60 +14,60 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: cenkdin;juliako
-ms.openlocfilehash: 3ef6065f5b9e05e0ea5716548699943a2c877bc4
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 332582c9f925f8b9270929b3fa8140fce010bbf9
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-perform-live-streaming-with-on-premises-encoders-using-net"></a><span data-ttu-id="0842c-103">Как вести потоковую трансляцию с помощью локальных кодировщиков и .NET</span><span class="sxs-lookup"><span data-stu-id="0842c-103">How to perform live streaming with on-premises encoders using .NET</span></span>
+# <a name="how-tooperform-live-streaming-with-on-premises-encoders-using-net"></a><span data-ttu-id="8dbe9-103">Как tooperform динамической трансляцией с локальных кодировщиков, с помощью .NET</span><span class="sxs-lookup"><span data-stu-id="8dbe9-103">How tooperform live streaming with on-premises encoders using .NET</span></span>
 > [!div class="op_single_selector"]
-> * [<span data-ttu-id="0842c-104">Портал</span><span class="sxs-lookup"><span data-stu-id="0842c-104">Portal</span></span>](media-services-portal-live-passthrough-get-started.md)
-> * [<span data-ttu-id="0842c-105">.NET</span><span class="sxs-lookup"><span data-stu-id="0842c-105">.NET</span></span>](media-services-dotnet-live-encode-with-onpremises-encoders.md)
-> * [<span data-ttu-id="0842c-106">REST</span><span class="sxs-lookup"><span data-stu-id="0842c-106">REST</span></span>](https://docs.microsoft.com/rest/api/media/operations/channel)
+> * [<span data-ttu-id="8dbe9-104">Портал</span><span class="sxs-lookup"><span data-stu-id="8dbe9-104">Portal</span></span>](media-services-portal-live-passthrough-get-started.md)
+> * [<span data-ttu-id="8dbe9-105">.NET</span><span class="sxs-lookup"><span data-stu-id="8dbe9-105">.NET</span></span>](media-services-dotnet-live-encode-with-onpremises-encoders.md)
+> * [<span data-ttu-id="8dbe9-106">REST</span><span class="sxs-lookup"><span data-stu-id="8dbe9-106">REST</span></span>](https://docs.microsoft.com/rest/api/media/operations/channel)
 > 
 > 
 
-<span data-ttu-id="0842c-107">В этом учебнике рассматривается создание **канала** , настроенного для сквозной доставки, с помощью пакета SDK для .NET служб мультимедиа Azure.</span><span class="sxs-lookup"><span data-stu-id="0842c-107">This tutorial walks you through the steps of using the Azure Media Services .NET SDK to create a **Channel** that is configured for a pass-through delivery.</span></span> 
+<span data-ttu-id="8dbe9-107">Этот учебник поможет вам выполнить этапы hello использования hello Azure Media Services .NET SDK toocreate **канала** , настроенного для сквозной доставки.</span><span class="sxs-lookup"><span data-stu-id="8dbe9-107">This tutorial walks you through hello steps of using hello Azure Media Services .NET SDK toocreate a **Channel** that is configured for a pass-through delivery.</span></span> 
 
-## <a name="prerequisites"></a><span data-ttu-id="0842c-108">Предварительные требования</span><span class="sxs-lookup"><span data-stu-id="0842c-108">Prerequisites</span></span>
-<span data-ttu-id="0842c-109">Ниже перечислены необходимые условия для выполнения действий, описанных в этом учебнике.</span><span class="sxs-lookup"><span data-stu-id="0842c-109">The following are required to complete the tutorial:</span></span>
+## <a name="prerequisites"></a><span data-ttu-id="8dbe9-108">Предварительные требования</span><span class="sxs-lookup"><span data-stu-id="8dbe9-108">Prerequisites</span></span>
+<span data-ttu-id="8dbe9-109">Здесь представлены Hello необходимые toocomplete hello учебника:</span><span class="sxs-lookup"><span data-stu-id="8dbe9-109">hello following are required toocomplete hello tutorial:</span></span>
 
-* <span data-ttu-id="0842c-110">Учетная запись Azure.</span><span class="sxs-lookup"><span data-stu-id="0842c-110">An Azure account.</span></span>
-* <span data-ttu-id="0842c-111">Учетная запись служб мультимедиа.</span><span class="sxs-lookup"><span data-stu-id="0842c-111">A Media Services account.</span></span>    <span data-ttu-id="0842c-112">Инструкции по созданию учетной записи служб мультимедиа см. в статье [Создание учетной записи служб мультимедиа Azure с помощью портала Azure](media-services-portal-create-account.md).</span><span class="sxs-lookup"><span data-stu-id="0842c-112">To create a Media Services account, see [How to Create a Media Services Account](media-services-portal-create-account.md).</span></span>
-* <span data-ttu-id="0842c-113">Настройка среды разработки.</span><span class="sxs-lookup"><span data-stu-id="0842c-113">Set up your dev environment.</span></span> <span data-ttu-id="0842c-114">Дополнительные сведения см. в статье [Настройка среды](media-services-set-up-computer.md).</span><span class="sxs-lookup"><span data-stu-id="0842c-114">For more information, see [Set up your environment](media-services-set-up-computer.md).</span></span>
-* <span data-ttu-id="0842c-115">Веб-камера,</span><span class="sxs-lookup"><span data-stu-id="0842c-115">A webcam.</span></span> <span data-ttu-id="0842c-116">например [кодировщик Telestream Wirecast](http://www.telestream.net/wirecast/overview.htm).</span><span class="sxs-lookup"><span data-stu-id="0842c-116">For example, [Telestream Wirecast encoder](http://www.telestream.net/wirecast/overview.htm).</span></span>
+* <span data-ttu-id="8dbe9-110">Учетная запись Azure.</span><span class="sxs-lookup"><span data-stu-id="8dbe9-110">An Azure account.</span></span>
+* <span data-ttu-id="8dbe9-111">Учетная запись служб мультимедиа.</span><span class="sxs-lookup"><span data-stu-id="8dbe9-111">A Media Services account.</span></span>    <span data-ttu-id="8dbe9-112">toocreate учетную запись служб носителей в разделе [как учетную запись служб мультимедиа tooCreate](media-services-portal-create-account.md).</span><span class="sxs-lookup"><span data-stu-id="8dbe9-112">toocreate a Media Services account, see [How tooCreate a Media Services Account](media-services-portal-create-account.md).</span></span>
+* <span data-ttu-id="8dbe9-113">Настройка среды разработки.</span><span class="sxs-lookup"><span data-stu-id="8dbe9-113">Set up your dev environment.</span></span> <span data-ttu-id="8dbe9-114">Дополнительные сведения см. в статье [Настройка среды](media-services-set-up-computer.md).</span><span class="sxs-lookup"><span data-stu-id="8dbe9-114">For more information, see [Set up your environment](media-services-set-up-computer.md).</span></span>
+* <span data-ttu-id="8dbe9-115">Веб-камера,</span><span class="sxs-lookup"><span data-stu-id="8dbe9-115">A webcam.</span></span> <span data-ttu-id="8dbe9-116">например [кодировщик Telestream Wirecast](http://www.telestream.net/wirecast/overview.htm).</span><span class="sxs-lookup"><span data-stu-id="8dbe9-116">For example, [Telestream Wirecast encoder](http://www.telestream.net/wirecast/overview.htm).</span></span>
 
-<span data-ttu-id="0842c-117">Рекомендуется ознакомиться со следующими разделами.</span><span class="sxs-lookup"><span data-stu-id="0842c-117">Recommended to review the following articles:</span></span>
+<span data-ttu-id="8dbe9-117">Рекомендуемые tooreview hello следующие статьи:</span><span class="sxs-lookup"><span data-stu-id="8dbe9-117">Recommended tooreview hello following articles:</span></span>
 
-* [<span data-ttu-id="0842c-118">Поддержка протокола RTMP службами мультимедиа Azure и динамические кодировщики</span><span class="sxs-lookup"><span data-stu-id="0842c-118">Azure Media Services RTMP Support and Live Encoders</span></span>](https://azure.microsoft.com/blog/2014/09/18/azure-media-services-rtmp-support-and-live-encoders/)
-* [<span data-ttu-id="0842c-119">Потоковая трансляция с помощью локальных кодировщиков, создающих потоки с разными скоростями</span><span class="sxs-lookup"><span data-stu-id="0842c-119">Live streaming with on-premises encoders that create multi-bitrate streams</span></span>](media-services-live-streaming-with-onprem-encoders.md)
+* [<span data-ttu-id="8dbe9-118">Поддержка протокола RTMP службами мультимедиа Azure и динамические кодировщики</span><span class="sxs-lookup"><span data-stu-id="8dbe9-118">Azure Media Services RTMP Support and Live Encoders</span></span>](https://azure.microsoft.com/blog/2014/09/18/azure-media-services-rtmp-support-and-live-encoders/)
+* [<span data-ttu-id="8dbe9-119">Потоковая трансляция с помощью локальных кодировщиков, создающих потоки с разными скоростями</span><span class="sxs-lookup"><span data-stu-id="8dbe9-119">Live streaming with on-premises encoders that create multi-bitrate streams</span></span>](media-services-live-streaming-with-onprem-encoders.md)
 
-## <a name="create-and-configure-a-visual-studio-project"></a><span data-ttu-id="0842c-120">Создание и настройка проекта Visual Studio</span><span class="sxs-lookup"><span data-stu-id="0842c-120">Create and configure a Visual Studio project</span></span>
+## <a name="create-and-configure-a-visual-studio-project"></a><span data-ttu-id="8dbe9-120">Создание и настройка проекта Visual Studio</span><span class="sxs-lookup"><span data-stu-id="8dbe9-120">Create and configure a Visual Studio project</span></span>
 
-<span data-ttu-id="0842c-121">Настройте среду разработки и укажите в файле app.config сведения о подключении, как описано в статье [Разработка служб мультимедиа с помощью .NET](media-services-dotnet-how-to-use.md).</span><span class="sxs-lookup"><span data-stu-id="0842c-121">Set up your development environment and populate the app.config file with connection information, as described in [Media Services development with .NET](media-services-dotnet-how-to-use.md).</span></span> 
+<span data-ttu-id="8dbe9-121">Настройка среды разработки и заполнить hello файл app.config с данными подключения, как описано в [разработки служб мультимедиа с помощью .NET](media-services-dotnet-how-to-use.md).</span><span class="sxs-lookup"><span data-stu-id="8dbe9-121">Set up your development environment and populate hello app.config file with connection information, as described in [Media Services development with .NET](media-services-dotnet-how-to-use.md).</span></span> 
 
-## <a name="example"></a><span data-ttu-id="0842c-122">Пример</span><span class="sxs-lookup"><span data-stu-id="0842c-122">Example</span></span>
-<span data-ttu-id="0842c-123">В следующем примере кода показано, как выполнить приведенные ниже задачи.</span><span class="sxs-lookup"><span data-stu-id="0842c-123">The following code example demonstrates how to achieve the following tasks:</span></span>
+## <a name="example"></a><span data-ttu-id="8dbe9-122">Пример</span><span class="sxs-lookup"><span data-stu-id="8dbe9-122">Example</span></span>
+<span data-ttu-id="8dbe9-123">Hello в следующем примере кода показано, как hello tooachieve следующие задачи:</span><span class="sxs-lookup"><span data-stu-id="8dbe9-123">hello following code example demonstrates how tooachieve hello following tasks:</span></span>
 
-* <span data-ttu-id="0842c-124">Подключение к службам мультимедиа</span><span class="sxs-lookup"><span data-stu-id="0842c-124">Connect to Media Services</span></span>
-* <span data-ttu-id="0842c-125">Создание канала</span><span class="sxs-lookup"><span data-stu-id="0842c-125">Create a channel</span></span>
-* <span data-ttu-id="0842c-126">Обновление канала</span><span class="sxs-lookup"><span data-stu-id="0842c-126">Update the channel</span></span>
-* <span data-ttu-id="0842c-127">Получение входной конечной точки канала.</span><span class="sxs-lookup"><span data-stu-id="0842c-127">Retrieve the channel’s input endpoint.</span></span> <span data-ttu-id="0842c-128">Локальному динамическому кодировщику необходимо предоставить входную конечную точку.</span><span class="sxs-lookup"><span data-stu-id="0842c-128">The input endpoint should be provided to the on-premises live encoder.</span></span> <span data-ttu-id="0842c-129">Динамический кодировщик преобразует сигналы от камеры в потоки, которые отправляются на входную конечную точку канала (точку приема).</span><span class="sxs-lookup"><span data-stu-id="0842c-129">The live encoder converts signals from the camera to streams that are sent to the channel’s input (ingest) endpoint.</span></span>
-* <span data-ttu-id="0842c-130">Получение конечной точки предварительного просмотра канала</span><span class="sxs-lookup"><span data-stu-id="0842c-130">Retrieve the channel’s preview endpoint</span></span>
-* <span data-ttu-id="0842c-131">Создание и запуск программы</span><span class="sxs-lookup"><span data-stu-id="0842c-131">Create and start a program</span></span>
-* <span data-ttu-id="0842c-132">Создание указателя, необходимого для доступа к программе</span><span class="sxs-lookup"><span data-stu-id="0842c-132">Create a locator needed to access the program</span></span>
-* <span data-ttu-id="0842c-133">Создание и запуск StreamingEndpoint</span><span class="sxs-lookup"><span data-stu-id="0842c-133">Create and start a StreamingEndpoint</span></span>
-* <span data-ttu-id="0842c-134">Обновление конечной точки потоковой передачи</span><span class="sxs-lookup"><span data-stu-id="0842c-134">Update the streaming endpoint</span></span>
-* <span data-ttu-id="0842c-135">Завершение работы ресурсов</span><span class="sxs-lookup"><span data-stu-id="0842c-135">Shut down resources</span></span>
+* <span data-ttu-id="8dbe9-124">Подключение служб tooMedia</span><span class="sxs-lookup"><span data-stu-id="8dbe9-124">Connect tooMedia Services</span></span>
+* <span data-ttu-id="8dbe9-125">Создание канала</span><span class="sxs-lookup"><span data-stu-id="8dbe9-125">Create a channel</span></span>
+* <span data-ttu-id="8dbe9-126">Обновление канала hello</span><span class="sxs-lookup"><span data-stu-id="8dbe9-126">Update hello channel</span></span>
+* <span data-ttu-id="8dbe9-127">Получение входной конечной точки канала hello.</span><span class="sxs-lookup"><span data-stu-id="8dbe9-127">Retrieve hello channel’s input endpoint.</span></span> <span data-ttu-id="8dbe9-128">Конечная точка ввода Hello должны быть предоставлены toohello локального динамического кодировщика.</span><span class="sxs-lookup"><span data-stu-id="8dbe9-128">hello input endpoint should be provided toohello on-premises live encoder.</span></span> <span data-ttu-id="8dbe9-129">Hello динамический кодировщик преобразует сигналы из toostreams hello камеры, отправленных toohello канала входных данных (приема) конечной точки.</span><span class="sxs-lookup"><span data-stu-id="8dbe9-129">hello live encoder converts signals from hello camera toostreams that are sent toohello channel’s input (ingest) endpoint.</span></span>
+* <span data-ttu-id="8dbe9-130">Получить конечную точку предварительного просмотра канала hello</span><span class="sxs-lookup"><span data-stu-id="8dbe9-130">Retrieve hello channel’s preview endpoint</span></span>
+* <span data-ttu-id="8dbe9-131">Создание и запуск программы</span><span class="sxs-lookup"><span data-stu-id="8dbe9-131">Create and start a program</span></span>
+* <span data-ttu-id="8dbe9-132">Создание указателя, необходимости tooaccess hello программы</span><span class="sxs-lookup"><span data-stu-id="8dbe9-132">Create a locator needed tooaccess hello program</span></span>
+* <span data-ttu-id="8dbe9-133">Создание и запуск StreamingEndpoint</span><span class="sxs-lookup"><span data-stu-id="8dbe9-133">Create and start a StreamingEndpoint</span></span>
+* <span data-ttu-id="8dbe9-134">Обновление конечной точки потоковой передачи hello</span><span class="sxs-lookup"><span data-stu-id="8dbe9-134">Update hello streaming endpoint</span></span>
+* <span data-ttu-id="8dbe9-135">Завершение работы ресурсов</span><span class="sxs-lookup"><span data-stu-id="8dbe9-135">Shut down resources</span></span>
 
 >[!IMPORTANT]
-><span data-ttu-id="0842c-136">Убедитесь, что конечная точка потоковой передачи, из которой нужно передавать содержимое потоком, находится в состоянии **Выполняется**.</span><span class="sxs-lookup"><span data-stu-id="0842c-136">Make sure the streaming endpoint from which you want to stream content is in the **Running** state.</span></span> 
+><span data-ttu-id="8dbe9-136">Убедитесь, что hello, из которого нужно toostream содержимое конечной точки потоковой передачи в hello **под управлением** состояния.</span><span class="sxs-lookup"><span data-stu-id="8dbe9-136">Make sure hello streaming endpoint from which you want toostream content is in hello **Running** state.</span></span> 
     
 >[!NOTE]
-><span data-ttu-id="0842c-137">Действует ограничение в 1 000 000 записей для разных политик AMS (например, для политики Locator или ContentKeyAuthorizationPolicy).</span><span class="sxs-lookup"><span data-stu-id="0842c-137">There is a limit of 1,000,000 policies for different AMS policies (for example, for Locator policy or ContentKeyAuthorizationPolicy).</span></span> <span data-ttu-id="0842c-138">Следует указывать один и тот же идентификатор политики, если вы используете те же дни, разрешения доступа и т. д. Например, политики для указателей, которые должны оставаться на месте в течение длительного времени (не политики передачи).</span><span class="sxs-lookup"><span data-stu-id="0842c-138">You should use the same policy ID if you are always using the same days / access permissions, for example, policies for locators that are intended to remain in place for a long time (non-upload policies).</span></span> <span data-ttu-id="0842c-139">Чтобы узнать больше, ознакомьтесь с [этим](media-services-dotnet-manage-entities.md#limit-access-policies) разделом.</span><span class="sxs-lookup"><span data-stu-id="0842c-139">For more information, see [this](media-services-dotnet-manage-entities.md#limit-access-policies) topic.</span></span>
+><span data-ttu-id="8dbe9-137">Действует ограничение в 1 000 000 записей для разных политик AMS (например, для политики Locator или ContentKeyAuthorizationPolicy).</span><span class="sxs-lookup"><span data-stu-id="8dbe9-137">There is a limit of 1,000,000 policies for different AMS policies (for example, for Locator policy or ContentKeyAuthorizationPolicy).</span></span> <span data-ttu-id="8dbe9-138">Следует использовать hello же идентификатор политики, если вы используете всегда hello же дни / доступа разрешения, например, политики для указатели, которые являются предполагаемого tooremain на месте в течение длительного времени (без передачи политики).</span><span class="sxs-lookup"><span data-stu-id="8dbe9-138">You should use hello same policy ID if you are always using hello same days / access permissions, for example, policies for locators that are intended tooremain in place for a long time (non-upload policies).</span></span> <span data-ttu-id="8dbe9-139">Чтобы узнать больше, ознакомьтесь с [этим](media-services-dotnet-manage-entities.md#limit-access-policies) разделом.</span><span class="sxs-lookup"><span data-stu-id="8dbe9-139">For more information, see [this](media-services-dotnet-manage-entities.md#limit-access-policies) topic.</span></span>
 
-<span data-ttu-id="0842c-140">Сведения о настройке динамического кодировщика см. в записи блога [Azure Media Services RTMP Support and Live Encoders](https://azure.microsoft.com/blog/2014/09/18/azure-media-services-rtmp-support-and-live-encoders/) Поддержка протокола RTMP службами мультимедиа Azure и динамические кодировщики.</span><span class="sxs-lookup"><span data-stu-id="0842c-140">For information on how to configure a live encoder, see [Azure Media Services RTMP Support and Live Encoders](https://azure.microsoft.com/blog/2014/09/18/azure-media-services-rtmp-support-and-live-encoders/).</span></span>
+<span data-ttu-id="8dbe9-140">Дополнительные сведения о разделе tooconfigure динамический кодировщик [поддержка RTMP служб мультимедиа Azure и динамические кодировщики](https://azure.microsoft.com/blog/2014/09/18/azure-media-services-rtmp-support-and-live-encoders/).</span><span class="sxs-lookup"><span data-stu-id="8dbe9-140">For information on how tooconfigure a live encoder, see [Azure Media Services RTMP Support and Live Encoders](https://azure.microsoft.com/blog/2014/09/18/azure-media-services-rtmp-support-and-live-encoders/).</span></span>
 
     using System;
     using System.Collections.Generic;
@@ -86,7 +86,7 @@ ms.lasthandoff: 08/29/2017
         private const string AssetlName = "asset001";
         private const string ProgramlName = "program001";
 
-        // Read values from the App.config file.
+        // Read values from hello App.config file.
         private static readonly string _AADTenantDomain =
         ConfigurationManager.AppSettings["AADTenantDomain"];
         private static readonly string _RESTAPIEndpoint =
@@ -103,11 +103,11 @@ ms.lasthandoff: 08/29/2017
 
             IChannel channel = CreateAndStartChannel();
 
-            // Set the Live Encoder to point to the channel's input endpoint:
+            // Set hello Live Encoder toopoint toohello channel's input endpoint:
             string ingestUrl = channel.Input.Endpoints.FirstOrDefault().Url.ToString();
 
-            // Use the previewEndpoint to preview and verify
-            // that the input from the encoder is actually reaching the Channel.
+            // Use hello previewEndpoint toopreview and verify
+            // that hello input from hello encoder is actually reaching hello Channel.
             string previewEndpoint = channel.Preview.Endpoints.FirstOrDefault().Url.ToString();
 
             IProgram program = CreateAndStartProgram(channel);
@@ -120,7 +120,7 @@ ms.lasthandoff: 08/29/2017
 
         public static IChannel CreateAndStartChannel()
         {
-            //If you want to change the Smooth fragments to HLS segment ratio, you would set the ChannelCreationOptions’s Output property.
+            //If you want toochange hello Smooth fragments tooHLS segment ratio, you would set hello ChannelCreationOptions’s Output property.
 
             IChannel channel = _context.Channels.Create(
             new ChannelCreationOptions
@@ -130,7 +130,7 @@ ms.lasthandoff: 08/29/2017
             Preview = CreateChannelPreview()
             });
 
-            //Starting and stopping Channels can take some time to execute. To determine the state of operations after calling Start or Stop, query the IChannel.State .
+            //Starting and stopping Channels can take some time tooexecute. toodetermine hello state of operations after calling Start or Stop, query hello IChannel.State .
 
             channel.Start();
 
@@ -150,7 +150,7 @@ ms.lasthandoff: 08/29/2017
                     {
                     Name = "TestChannelInput001",
                     // Setting 0.0.0.0 for Address and 0 for SubnetPrefixLength
-                    // will allow access to IP addresses.
+                    // will allow access tooIP addresses.
                     Address = IPAddress.Parse("0.0.0.0"),
                     SubnetPrefixLength = 0
                     }
@@ -171,7 +171,7 @@ ms.lasthandoff: 08/29/2017
                     {
                     Name = "TestChannelPreview001",
                     // Setting 0.0.0.0 for Address and 0 for SubnetPrefixLength
-                    // will allow access to IP addresses.
+                    // will allow access tooIP addresses.
                     Address = IPAddress.Parse("0.0.0.0"),
                     SubnetPrefixLength = 0
                     }
@@ -213,7 +213,7 @@ ms.lasthandoff: 08/29/2017
         {
             IAsset asset = _context.Assets.Create(AssetlName, AssetCreationOptions.None);
 
-            // Create a Program on the Channel. You can have multiple Programs that overlap or are sequential;
+            // Create a Program on hello Channel. You can have multiple Programs that overlap or are sequential;
             // however each Program must have a unique name within your Media Services account.
             IProgram program = channel.Programs.Create(ProgramlName, TimeSpan.FromHours(3), asset.Id);
             program.Start();
@@ -379,11 +379,11 @@ ms.lasthandoff: 08/29/2017
         }
     }
 
-## <a name="next-step"></a><span data-ttu-id="0842c-141">Дальнейшее действие</span><span class="sxs-lookup"><span data-stu-id="0842c-141">Next Step</span></span>
-<span data-ttu-id="0842c-142">Схемы обучения работе со службами мультимедиа</span><span class="sxs-lookup"><span data-stu-id="0842c-142">Review Media Services learning paths</span></span>
+## <a name="next-step"></a><span data-ttu-id="8dbe9-141">Дальнейшее действие</span><span class="sxs-lookup"><span data-stu-id="8dbe9-141">Next Step</span></span>
+<span data-ttu-id="8dbe9-142">Схемы обучения работе со службами мультимедиа</span><span class="sxs-lookup"><span data-stu-id="8dbe9-142">Review Media Services learning paths</span></span>
 
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a><span data-ttu-id="0842c-143">Отзывы</span><span class="sxs-lookup"><span data-stu-id="0842c-143">Provide feedback</span></span>
+## <a name="provide-feedback"></a><span data-ttu-id="8dbe9-143">Отзывы</span><span class="sxs-lookup"><span data-stu-id="8dbe9-143">Provide feedback</span></span>
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 

@@ -1,6 +1,6 @@
 ---
-title: "Документация по порталу Azure. Руководства и справочник по API | Документация Майкрософт"
-description: "Узнайте, как развертывать ресурсы на портале Azure и управлять ими. Руководства, справочники по API и другие документы."
+title: "aaaAzure портала документации - учебники, справочник по API | Документы Microsoft"
+description: "Узнайте, как toodeploy и управлении ресурсами в hello портал Azure. Руководства, справочники по API и другие документы."
 services: 
 documentationcenter: 
 author: squillace
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/22/2017
 ms.author: tysonn
-ms.openlocfilehash: d9145591f768f2d5a8e55f28b0764b31e2ee452b
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 10dbec2bab5c5f1de29a3125aeeb33f80d722282
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-portal-documentation"></a>Документация по порталу Azure
-Узнайте о функциях, с помощью которых можно развертывать ресурсы на портале Azure. В руководствах, справочниках по API и других документах объясняется, как развертывать и отслеживать ресурсы Azure, а также управлять ими.
+Дополнительные сведения о функции hello, toodeploy ресурсы, которые можно использовать в hello портал Azure. Учебники, ссылки на API и другой документации показано, как toodeploy, управлять и отслеживать ресурсы Azure.

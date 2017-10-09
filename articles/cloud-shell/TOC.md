@@ -8,7 +8,7 @@
 
 # Инструкции
 ## [Сохраняемое хранилище](persisting-shell-storage.md)
-## [Использование окна](using-the-shell-window.md)
+## [С помощью окна hello](using-the-shell-window.md)
 
 # [Цены](pricing.md)
 

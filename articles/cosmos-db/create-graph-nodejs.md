@@ -1,6 +1,6 @@
 ---
-title: "Создание приложения Azure Cosmos DB на платформе Node.js с помощью API Graph | Документация Майкрософт"
-description: "В этой статье представлен пример кода Node.js, который можно использовать для подключения и выполнения запросов к Azure Cosmos DB."
+title: "aaaBuild приложения Azure Cosmos DB Node.js с помощью Graph API | Документы Microsoft"
+description: "Содержит образец кода Node.js tooconnect tooand можно использовать запрос Azure Cosmos DB"
 services: cosmos-db
 documentationcenter: 
 author: dennyglee
@@ -15,57 +15,57 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 07/14/2017
 ms.author: denlee
-ms.openlocfilehash: 6d14719938af0ce825955389824441e111024869
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 1445755842bc4e4a84ca2b2f789aadde8467e190
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="azure-cosmos-db-build-a-nodejs-application-by-using-graph-api"></a><span data-ttu-id="7dd01-103">Azure Cosmos DB. Создание приложения Node.js с помощью API Graph</span><span class="sxs-lookup"><span data-stu-id="7dd01-103">Azure Cosmos DB: Build a Node.js application by using Graph API</span></span>
+# <a name="azure-cosmos-db-build-a-nodejs-application-by-using-graph-api"></a><span data-ttu-id="fb5ce-103">Azure Cosmos DB. Создание приложения Node.js с помощью API Graph</span><span class="sxs-lookup"><span data-stu-id="fb5ce-103">Azure Cosmos DB: Build a Node.js application by using Graph API</span></span>
 
-<span data-ttu-id="7dd01-104">Azure Cosmos DB — это глобально распределенная многомодельная служба базы данных Майкрософт.</span><span class="sxs-lookup"><span data-stu-id="7dd01-104">Azure Cosmos DB is the globally distributed multi-model database service from Microsoft.</span></span> <span data-ttu-id="7dd01-105">Вы можете быстро создавать и запрашивать документы, пары "ключ — значение" и базы данных графов, используя преимущества возможностей глобального распределения и горизонтального масштабирования базы данных Azure Cosmos DB.</span><span class="sxs-lookup"><span data-stu-id="7dd01-105">You can quickly create and query document, key/value, and graph databases, all of which benefit from the global distribution and horizontal scale capabilities at the core of Azure Cosmos DB.</span></span> 
+<span data-ttu-id="fb5ce-104">Azure Cosmos DB — глобально распределенных hello моделей базы данных службы от корпорации Майкрософт.</span><span class="sxs-lookup"><span data-stu-id="fb5ce-104">Azure Cosmos DB is hello globally distributed multi-model database service from Microsoft.</span></span> <span data-ttu-id="fb5ce-105">Вы можете быстро создать и запрашивать документа, ключ значение и graph баз данных, все из которых преимущества глобального распространения hello и возможности горизонтального масштабирования в основе hello Azure Cosmos БД.</span><span class="sxs-lookup"><span data-stu-id="fb5ce-105">You can quickly create and query document, key/value, and graph databases, all of which benefit from hello global distribution and horizontal scale capabilities at hello core of Azure Cosmos DB.</span></span> 
 
-<span data-ttu-id="7dd01-106">В этом кратком руководстве объясняется, как создать учетную запись Azure Cosmos DB для API Graph (предварительная версия), базу данных и граф с использованием портала Azure.</span><span class="sxs-lookup"><span data-stu-id="7dd01-106">This quick-start article demonstrates how to create an Azure Cosmos DB account for Graph API (preview), database, and graph by using the Azure portal.</span></span> <span data-ttu-id="7dd01-107">Затем вы можете создать и запустить консольное приложение, используя драйвер [Gremlin Node.js](https://www.npmjs.com/package/gremlin-secure) с открытым кодом.</span><span class="sxs-lookup"><span data-stu-id="7dd01-107">You then build and run a console app by using the open-source [Gremlin Node.js](https://www.npmjs.com/package/gremlin-secure) driver.</span></span>  
+<span data-ttu-id="fb5ce-106">В этой статье краткого руководства показано, как toocreate Cosmos Azure DB записи для Graph API (Предварительная версия), базы данных и диаграммы с помощью hello портал Azure.</span><span class="sxs-lookup"><span data-stu-id="fb5ce-106">This quick-start article demonstrates how toocreate an Azure Cosmos DB account for Graph API (preview), database, and graph by using hello Azure portal.</span></span> <span data-ttu-id="fb5ce-107">Построить и запустить консольное приложение с открытым исходным кодом hello [Gremlin Node.js](https://www.npmjs.com/package/gremlin-secure) драйвера.</span><span class="sxs-lookup"><span data-stu-id="fb5ce-107">You then build and run a console app by using hello open-source [Gremlin Node.js](https://www.npmjs.com/package/gremlin-secure) driver.</span></span>  
 
 > [!NOTE]
-> <span data-ttu-id="7dd01-108">Модуль npm `gremlin-secure` — это модифицированная версия модуля `gremlin` с поддержкой SSL и SASL, необходимой для подключения к Azure Cosmos DB.</span><span class="sxs-lookup"><span data-stu-id="7dd01-108">The npm module `gremlin-secure` is a modified version of `gremlin` module, with support for SSL and SASL required for connecting with Azure Cosmos DB.</span></span> <span data-ttu-id="7dd01-109">Исходный код доступен на сайте [GitHub](https://github.com/CosmosDB/gremlin-javascript).</span><span class="sxs-lookup"><span data-stu-id="7dd01-109">Source code is available on [GitHub](https://github.com/CosmosDB/gremlin-javascript).</span></span>
+> <span data-ttu-id="fb5ce-108">модуль Hello npm `gremlin-secure` является модификацией `gremlin` модуль с поддержкой SSL и необходимые для соединения с Azure Cosmos DB SASL.</span><span class="sxs-lookup"><span data-stu-id="fb5ce-108">hello npm module `gremlin-secure` is a modified version of `gremlin` module, with support for SSL and SASL required for connecting with Azure Cosmos DB.</span></span> <span data-ttu-id="fb5ce-109">Исходный код доступен на сайте [GitHub](https://github.com/CosmosDB/gremlin-javascript).</span><span class="sxs-lookup"><span data-stu-id="fb5ce-109">Source code is available on [GitHub](https://github.com/CosmosDB/gremlin-javascript).</span></span>
 >
 
-## <a name="prerequisites"></a><span data-ttu-id="7dd01-110">Предварительные требования</span><span class="sxs-lookup"><span data-stu-id="7dd01-110">Prerequisites</span></span>
+## <a name="prerequisites"></a><span data-ttu-id="fb5ce-110">Предварительные требования</span><span class="sxs-lookup"><span data-stu-id="fb5ce-110">Prerequisites</span></span>
 
-<span data-ttu-id="7dd01-111">Для выполнения этого примера вам потребуется:</span><span class="sxs-lookup"><span data-stu-id="7dd01-111">Before you can run this sample, you must have the following prerequisites:</span></span>
-* <span data-ttu-id="7dd01-112">[Node.js](https://nodejs.org/en/) v0.10.29 или более поздней версии;</span><span class="sxs-lookup"><span data-stu-id="7dd01-112">[Node.js](https://nodejs.org/en/) version v0.10.29 or later</span></span>
-* [<span data-ttu-id="7dd01-113">Git.</span><span class="sxs-lookup"><span data-stu-id="7dd01-113">Git</span></span>](http://git-scm.com/)
+<span data-ttu-id="fb5ce-111">Перед запуском этого образца необходимо иметь hello следующие предварительные требования:</span><span class="sxs-lookup"><span data-stu-id="fb5ce-111">Before you can run this sample, you must have hello following prerequisites:</span></span>
+* <span data-ttu-id="fb5ce-112">[Node.js](https://nodejs.org/en/) v0.10.29 или более поздней версии;</span><span class="sxs-lookup"><span data-stu-id="fb5ce-112">[Node.js](https://nodejs.org/en/) version v0.10.29 or later</span></span>
+* [<span data-ttu-id="fb5ce-113">Git.</span><span class="sxs-lookup"><span data-stu-id="fb5ce-113">Git</span></span>](http://git-scm.com/)
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="create-a-database-account"></a><span data-ttu-id="7dd01-114">Создание учетной записи базы данных</span><span class="sxs-lookup"><span data-stu-id="7dd01-114">Create a database account</span></span>
+## <a name="create-a-database-account"></a><span data-ttu-id="fb5ce-114">Создание учетной записи базы данных</span><span class="sxs-lookup"><span data-stu-id="fb5ce-114">Create a database account</span></span>
 
 [!INCLUDE [cosmos-db-create-dbaccount-graph](../../includes/cosmos-db-create-dbaccount-graph.md)]
 
-## <a name="add-a-graph"></a><span data-ttu-id="7dd01-115">Добавление графа</span><span class="sxs-lookup"><span data-stu-id="7dd01-115">Add a graph</span></span>
+## <a name="add-a-graph"></a><span data-ttu-id="fb5ce-115">Добавление графа</span><span class="sxs-lookup"><span data-stu-id="fb5ce-115">Add a graph</span></span>
 
 [!INCLUDE [cosmos-db-create-graph](../../includes/cosmos-db-create-graph.md)]
 
-## <a name="clone-the-sample-application"></a><span data-ttu-id="7dd01-116">Клонирование примера приложения</span><span class="sxs-lookup"><span data-stu-id="7dd01-116">Clone the sample application</span></span>
+## <a name="clone-hello-sample-application"></a><span data-ttu-id="fb5ce-116">Пример приложения hello клонирования</span><span class="sxs-lookup"><span data-stu-id="fb5ce-116">Clone hello sample application</span></span>
 
-<span data-ttu-id="7dd01-117">Теперь необходимо клонировать приложение API Graph из GitHub. Задайте строку подключения и выполните ее.</span><span class="sxs-lookup"><span data-stu-id="7dd01-117">Now let's clone a Graph API app from GitHub, set the connection string, and run it.</span></span> <span data-ttu-id="7dd01-118">Вы узнаете, как можно упростить работу с данными программным способом.</span><span class="sxs-lookup"><span data-stu-id="7dd01-118">You'll see how easy it is to work with data programmatically.</span></span> 
+<span data-ttu-id="fb5ce-117">Теперь давайте клон Graph API приложение из GitHub, задайте строку подключения hello и запустите его.</span><span class="sxs-lookup"><span data-stu-id="fb5ce-117">Now let's clone a Graph API app from GitHub, set hello connection string, and run it.</span></span> <span data-ttu-id="fb5ce-118">Вы увидите, как просто можно toowork с данными программными средствами.</span><span class="sxs-lookup"><span data-stu-id="fb5ce-118">You'll see how easy it is toowork with data programmatically.</span></span> 
 
-1. <span data-ttu-id="7dd01-119">Откройте окно терминала Git (например, Git Bash) и перейдите в рабочий каталог, выполнив команду `cd`.</span><span class="sxs-lookup"><span data-stu-id="7dd01-119">Open a Git terminal window, such as Git Bash, and change (via `cd` command) to a working directory.</span></span>  
+1. <span data-ttu-id="fb5ce-119">Откройте окно терминала Git, например Git Bash и измените (через `cd` команда) tooa рабочий каталог.</span><span class="sxs-lookup"><span data-stu-id="fb5ce-119">Open a Git terminal window, such as Git Bash, and change (via `cd` command) tooa working directory.</span></span>  
 
-2. <span data-ttu-id="7dd01-120">Выполните команду ниже, чтобы клонировать репозиторий с примером.</span><span class="sxs-lookup"><span data-stu-id="7dd01-120">Run the following command to clone the sample repository.</span></span> 
+2. <span data-ttu-id="fb5ce-120">Выполнения hello следующая команда репозитории примеров tooclone hello.</span><span class="sxs-lookup"><span data-stu-id="fb5ce-120">Run hello following command tooclone hello sample repository.</span></span> 
 
     ```bash
     git clone https://github.com/Azure-Samples/azure-cosmos-db-graph-nodejs-getting-started.git
     ```
 
-3. <span data-ttu-id="7dd01-121">Откройте файл решения в Visual Studio.</span><span class="sxs-lookup"><span data-stu-id="7dd01-121">Open the solution file in Visual Studio.</span></span> 
+3. <span data-ttu-id="fb5ce-121">Откройте файл решения hello в Visual Studio.</span><span class="sxs-lookup"><span data-stu-id="fb5ce-121">Open hello solution file in Visual Studio.</span></span> 
 
-## <a name="review-the-code"></a><span data-ttu-id="7dd01-122">Просмотр кода</span><span class="sxs-lookup"><span data-stu-id="7dd01-122">Review the code</span></span>
+## <a name="review-hello-code"></a><span data-ttu-id="fb5ce-122">Проверка кода hello</span><span class="sxs-lookup"><span data-stu-id="fb5ce-122">Review hello code</span></span>
 
-<span data-ttu-id="7dd01-123">Сделаем краткий обзор того, что происходит в приложении.</span><span class="sxs-lookup"><span data-stu-id="7dd01-123">Let's make a quick review of what's happening in the app.</span></span> <span data-ttu-id="7dd01-124">Откройте файл `app.js`, и вы увидите приведенные ниже строки кода.</span><span class="sxs-lookup"><span data-stu-id="7dd01-124">Open the `app.js` file, and you'll find the following lines of code.</span></span> 
+<span data-ttu-id="fb5ce-123">Убедитесь, что происходит в приложение hello быстро ознакомиться.</span><span class="sxs-lookup"><span data-stu-id="fb5ce-123">Let's make a quick review of what's happening in hello app.</span></span> <span data-ttu-id="fb5ce-124">Откройте hello `app.js` файл и вы найдете следующие строки кода hello.</span><span class="sxs-lookup"><span data-stu-id="fb5ce-124">Open hello `app.js` file, and you'll find hello following lines of code.</span></span> 
 
-* <span data-ttu-id="7dd01-125">Создание клиента Gremlin.</span><span class="sxs-lookup"><span data-stu-id="7dd01-125">The Gremlin client is created.</span></span>
+* <span data-ttu-id="fb5ce-125">создается клиент Gremlin Hello.</span><span class="sxs-lookup"><span data-stu-id="fb5ce-125">hello Gremlin client is created.</span></span>
 
     ```nodejs
     const client = Gremlin.createClient(
@@ -79,9 +79,9 @@ ms.lasthandoff: 08/03/2017
         });
     ```
 
-  <span data-ttu-id="7dd01-126">Все конфигурации находятся в файле `config.js`, который мы изменим в следующем разделе.</span><span class="sxs-lookup"><span data-stu-id="7dd01-126">The configurations are all in `config.js`, which we edit in the following section.</span></span>
+  <span data-ttu-id="fb5ce-126">Hello конфигурации находятся в `config.js`, который мы изменения в следующем разделе hello.</span><span class="sxs-lookup"><span data-stu-id="fb5ce-126">hello configurations are all in `config.js`, which we edit in hello following section.</span></span>
 
-* <span data-ttu-id="7dd01-127">Выполнение шагов Gremlin с использованием метода `client.execute`.</span><span class="sxs-lookup"><span data-stu-id="7dd01-127">A series of Gremlin steps are executed with the `client.execute` method.</span></span>
+* <span data-ttu-id="fb5ce-127">Последовательность шагов Gremlin выполняются с hello `client.execute` метод.</span><span class="sxs-lookup"><span data-stu-id="fb5ce-127">A series of Gremlin steps are executed with hello `client.execute` method.</span></span>
 
     ```nodejs
     console.log('Running Count'); 
@@ -92,34 +92,34 @@ ms.lasthandoff: 08/03/2017
     });
     ```
 
-## <a name="update-your-connection-string"></a><span data-ttu-id="7dd01-128">Обновление строки подключения</span><span class="sxs-lookup"><span data-stu-id="7dd01-128">Update your connection string</span></span>
+## <a name="update-your-connection-string"></a><span data-ttu-id="fb5ce-128">Обновление строки подключения</span><span class="sxs-lookup"><span data-stu-id="fb5ce-128">Update your connection string</span></span>
 
-1. <span data-ttu-id="7dd01-129">Откройте файл config.js.</span><span class="sxs-lookup"><span data-stu-id="7dd01-129">Open the config.js file.</span></span> 
+1. <span data-ttu-id="fb5ce-129">Привет открыть файл config.js.</span><span class="sxs-lookup"><span data-stu-id="fb5ce-129">Open hello config.js file.</span></span> 
 
-2. <span data-ttu-id="7dd01-130">В файле сonfig.js заполните значения ключа config.endpoint значением **Gremlin URI** со страницы **обзора** на портале Azure.</span><span class="sxs-lookup"><span data-stu-id="7dd01-130">In config.js, fill in the config.endpoint key with the **Gremlin URI** value from the **Overview** page of the Azure portal.</span></span> 
+2. <span data-ttu-id="fb5ce-130">Config.js, заполните в ключ config.endpoint hello с hello **Gremlin URI** значение из hello **Обзор** страница hello портал Azure.</span><span class="sxs-lookup"><span data-stu-id="fb5ce-130">In config.js, fill in hello config.endpoint key with hello **Gremlin URI** value from hello **Overview** page of hello Azure portal.</span></span> 
 
     `config.endpoint = "GRAPHENDPOINT";`
 
-    ![Просмотр и копирование ключа доступа на портале Azure, колонка "Ключи"](./media/create-graph-nodejs/gremlin-uri.png)
+    ![Просмотреть и скопировать ключ доступа в hello портал Azure, ключи колонку](./media/create-graph-nodejs/gremlin-uri.png)
 
-   <span data-ttu-id="7dd01-132">Если значение **Gremlin URI** не указано, можно создать значение на странице **Ключи** на портале с помощью значения **URI**, удалив https:// и изменив документы на графы.</span><span class="sxs-lookup"><span data-stu-id="7dd01-132">If the **Gremlin URI** value is blank, you can generate the value from the **Keys** page in the portal, using the **URI** value, removing https://, and changing documents to graphs.</span></span>
+   <span data-ttu-id="fb5ce-132">Если hello **Gremlin URI** имеет пустое значение, можно создать значение hello из hello **ключей** hello портала с помощью hello **URI** значение https:// удаление и изменение toographs документы.</span><span class="sxs-lookup"><span data-stu-id="fb5ce-132">If hello **Gremlin URI** value is blank, you can generate hello value from hello **Keys** page in hello portal, using hello **URI** value, removing https://, and changing documents toographs.</span></span>
 
-   <span data-ttu-id="7dd01-133">Конечная точка Gremlin должна состоять из имени узла без имени протокола или номера порта, например `mygraphdb.graphs.azure.com` (а не `https://mygraphdb.graphs.azure.com` или `mygraphdb.graphs.azure.com:433`).</span><span class="sxs-lookup"><span data-stu-id="7dd01-133">The Gremlin endpoint must be only the host name without the protocol/port number, like `mygraphdb.graphs.azure.com` (not `https://mygraphdb.graphs.azure.com` or `mygraphdb.graphs.azure.com:433`).</span></span>
+   <span data-ttu-id="fb5ce-133">Конечная точка Gremlin Hello должна быть только имя узла hello без номера протокола и порта hello, таких как `mygraphdb.graphs.azure.com` (не `https://mygraphdb.graphs.azure.com` или `mygraphdb.graphs.azure.com:433`).</span><span class="sxs-lookup"><span data-stu-id="fb5ce-133">hello Gremlin endpoint must be only hello host name without hello protocol/port number, like `mygraphdb.graphs.azure.com` (not `https://mygraphdb.graphs.azure.com` or `mygraphdb.graphs.azure.com:433`).</span></span>
 
-3. <span data-ttu-id="7dd01-134">В файле config.js заполните значения параметра config.primaryKey значением **первичного ключа** на странице **Ключи** на портале Azure.</span><span class="sxs-lookup"><span data-stu-id="7dd01-134">In config.js, fill in the config.primaryKey value in with the **Primary Key** value from the **Keys** page of the Azure portal.</span></span> 
+3. <span data-ttu-id="fb5ce-134">В config.js, заполните значения config.primaryKey hello вход с помощью hello **первичного ключа** значение из hello **ключей** страница hello портал Azure.</span><span class="sxs-lookup"><span data-stu-id="fb5ce-134">In config.js, fill in hello config.primaryKey value in with hello **Primary Key** value from hello **Keys** page of hello Azure portal.</span></span> 
 
     `config.primaryKey = "PRIMARYKEY";`
 
-   ![Колонка "Ключи" на портале Azure](./media/create-graph-nodejs/keys.png)
+   ![Hello Azure портала колонке ключей](./media/create-graph-nodejs/keys.png)
 
-4. <span data-ttu-id="7dd01-136">Введите имя базы данных и графа (контейнера) для значения config.database и config.collection.</span><span class="sxs-lookup"><span data-stu-id="7dd01-136">Enter the database name, and graph (container) name for the value of config.database and config.collection.</span></span> 
+4. <span data-ttu-id="fb5ce-136">Введите имя базы данных hello и имя диаграммы (контейнер) для значения hello config.database и config.collection.</span><span class="sxs-lookup"><span data-stu-id="fb5ce-136">Enter hello database name, and graph (container) name for hello value of config.database and config.collection.</span></span> 
 
-<span data-ttu-id="7dd01-137">Вот как должен выглядеть файл config.js:</span><span class="sxs-lookup"><span data-stu-id="7dd01-137">Here is an example of what your completed config.js file should look like:</span></span>
+<span data-ttu-id="fb5ce-137">Вот как должен выглядеть файл config.js:</span><span class="sxs-lookup"><span data-stu-id="fb5ce-137">Here is an example of what your completed config.js file should look like:</span></span>
 
 ```nodejs
 var config = {}
 
-// Note that this must not have HTTPS or the port number
+// Note that this must not have HTTPS or hello port number
 config.endpoint = "testgraphacct.graphs.azure.com";
 config.primaryKey = "Pams6e7LEUS7LJ2Qk0fjZf3eGo65JdMWHmyn65i52w8ozPX2oxY3iP0yu05t9v1WymAHNcMwPIqNAEv3XDFsEg==";
 config.database = "graphdb"
@@ -128,38 +128,38 @@ config.collection = "Persons"
 module.exports = config;
 ```
 
-## <a name="run-the-console-app"></a><span data-ttu-id="7dd01-138">Запуск консольного приложения</span><span class="sxs-lookup"><span data-stu-id="7dd01-138">Run the console app</span></span>
+## <a name="run-hello-console-app"></a><span data-ttu-id="fb5ce-138">Запустите консольное приложение hello</span><span class="sxs-lookup"><span data-stu-id="fb5ce-138">Run hello console app</span></span>
 
-1. <span data-ttu-id="7dd01-139">Откройте окно терминала. С помощью команды `cd` перейдите в каталог установки файла package.json, включенного в проект.</span><span class="sxs-lookup"><span data-stu-id="7dd01-139">Open a terminal window and change (via `cd` command) to the installation directory for the package.json file that's included in the project.</span></span>  
+1. <span data-ttu-id="fb5ce-139">Откройте окно терминала и измените (через `cd` команда) toohello каталог установки для файла package.json hello, включенный в проект hello.</span><span class="sxs-lookup"><span data-stu-id="fb5ce-139">Open a terminal window and change (via `cd` command) toohello installation directory for hello package.json file that's included in hello project.</span></span>  
 
-2. <span data-ttu-id="7dd01-140">Запустите `npm install`, чтобы установить необходимые модули npm, включая `gremlin-secure`.</span><span class="sxs-lookup"><span data-stu-id="7dd01-140">Run `npm install` to install the required npm modules, including `gremlin-secure`.</span></span>
+2. <span data-ttu-id="fb5ce-140">Запустите `npm install` tooinstall hello необходимые модули npm, включая `gremlin-secure`.</span><span class="sxs-lookup"><span data-stu-id="fb5ce-140">Run `npm install` tooinstall hello required npm modules, including `gremlin-secure`.</span></span>
 
-3. <span data-ttu-id="7dd01-141">Запустите `node app.js` в окне терминала, чтобы запустить приложение Node.</span><span class="sxs-lookup"><span data-stu-id="7dd01-141">Run `node app.js` in a terminal to start your node application.</span></span>
+3. <span data-ttu-id="fb5ce-141">Запустите `node app.js` в терминалов toostart узла приложения.</span><span class="sxs-lookup"><span data-stu-id="fb5ce-141">Run `node app.js` in a terminal toostart your node application.</span></span>
 
-## <a name="browse-with-data-explorer"></a><span data-ttu-id="7dd01-142">Просмотр с помощью обозревателя данных</span><span class="sxs-lookup"><span data-stu-id="7dd01-142">Browse with Data Explorer</span></span>
+## <a name="browse-with-data-explorer"></a><span data-ttu-id="fb5ce-142">Просмотр с помощью обозревателя данных</span><span class="sxs-lookup"><span data-stu-id="fb5ce-142">Browse with Data Explorer</span></span>
 
-<span data-ttu-id="7dd01-143">Теперь вернитесь в обозреватель данных на портале Azure. Здесь вы можете просматривать, запрашивать и изменять новые данные графа, а также работать с ними.</span><span class="sxs-lookup"><span data-stu-id="7dd01-143">You can now go back to Data Explorer in the Azure portal to view, query, modify, and work with your new graph data.</span></span>
+<span data-ttu-id="fb5ce-143">Теперь можно вернуться tooData обозревателя в hello Azure tooview портала, запрос, изменить и работы с данными новый график.</span><span class="sxs-lookup"><span data-stu-id="fb5ce-143">You can now go back tooData Explorer in hello Azure portal tooview, query, modify, and work with your new graph data.</span></span>
 
-<span data-ttu-id="7dd01-144">В обозревателе данных новая база данных отображается в области **Графы**.</span><span class="sxs-lookup"><span data-stu-id="7dd01-144">In Data Explorer, the new database appears in the **Graphs** pane.</span></span> <span data-ttu-id="7dd01-145">Разверните базу данных, а затем коллекцию и щелкните **График**.</span><span class="sxs-lookup"><span data-stu-id="7dd01-145">Expand the database, followed by the collection, then click **Graph**.</span></span>
+<span data-ttu-id="fb5ce-144">В обозревателе данных hello новой базы данных отображается в hello **графы** области.</span><span class="sxs-lookup"><span data-stu-id="fb5ce-144">In Data Explorer, hello new database appears in hello **Graphs** pane.</span></span> <span data-ttu-id="fb5ce-145">Hello базы данных, а затем с помощью коллекции hello, а затем выберите пункт **Graph**.</span><span class="sxs-lookup"><span data-stu-id="fb5ce-145">Expand hello database, followed by hello collection, then click **Graph**.</span></span>
 
-<span data-ttu-id="7dd01-146">Данные, созданные в примере приложения, отображаются в следующей области в пределах вкладки **График** при щелчке **Применить фильтр**.</span><span class="sxs-lookup"><span data-stu-id="7dd01-146">The data generated by the sample app is displayed in the next pane within the **Graph** tab when you click **Apply Filter**.</span></span>
+<span data-ttu-id="fb5ce-146">созданные hello пример приложения Hello данные отображаются в области далее hello в hello **Graph** вкладке при нажатии кнопки **применить фильтр**.</span><span class="sxs-lookup"><span data-stu-id="fb5ce-146">hello data generated by hello sample app is displayed in hello next pane within hello **Graph** tab when you click **Apply Filter**.</span></span>
 
-<span data-ttu-id="7dd01-147">Повторите выполнение `g.V()` с `.has('firstName', 'Thomas')` для тестирования фильтра.</span><span class="sxs-lookup"><span data-stu-id="7dd01-147">Try completing `g.V()` with `.has('firstName', 'Thomas')` to test the filter.</span></span> <span data-ttu-id="7dd01-148">Обратите внимание, что значение учитывает регистр.</span><span class="sxs-lookup"><span data-stu-id="7dd01-148">Do note that the value is case sensitive.</span></span>
+<span data-ttu-id="fb5ce-147">Повторите выполнение `g.V()` с `.has('firstName', 'Thomas')` tootest hello фильтра.</span><span class="sxs-lookup"><span data-stu-id="fb5ce-147">Try completing `g.V()` with `.has('firstName', 'Thomas')` tootest hello filter.</span></span> <span data-ttu-id="fb5ce-148">Обратите внимание, что значение hello с учетом регистра.</span><span class="sxs-lookup"><span data-stu-id="fb5ce-148">Do note that hello value is case sensitive.</span></span>
 
-## <a name="review-slas-in-the-azure-portal"></a><span data-ttu-id="7dd01-149">Просмотр соглашений об уровне обслуживания на портале Azure</span><span class="sxs-lookup"><span data-stu-id="7dd01-149">Review SLAs in the Azure portal</span></span>
+## <a name="review-slas-in-hello-azure-portal"></a><span data-ttu-id="fb5ce-149">Просмотрите соглашений об уровне обслуживания в hello портал Azure</span><span class="sxs-lookup"><span data-stu-id="fb5ce-149">Review SLAs in hello Azure portal</span></span>
 
 [!INCLUDE [cosmosdb-tutorial-review-slas](../../includes/cosmos-db-tutorial-review-slas.md)]
 
-## <a name="clean-up-your-resources"></a><span data-ttu-id="7dd01-150">Очистка ресурсов</span><span class="sxs-lookup"><span data-stu-id="7dd01-150">Clean up your resources</span></span>
+## <a name="clean-up-your-resources"></a><span data-ttu-id="fb5ce-150">Очистка ресурсов</span><span class="sxs-lookup"><span data-stu-id="fb5ce-150">Clean up your resources</span></span>
 
-<span data-ttu-id="7dd01-151">Если вы не планируете использовать это приложение в дальнейшем, удалите все ресурсы, созданные в рамках работы с этой статьей, сделав следующее:</span><span class="sxs-lookup"><span data-stu-id="7dd01-151">If you do not plan to continue using this app, delete all resources that you created in this article by doing the following:</span></span> 
+<span data-ttu-id="fb5ce-151">Если вы не планируете использовать это приложение toocontinue, удалите все ресурсы, созданные в этой статье, выполнив hello ниже:</span><span class="sxs-lookup"><span data-stu-id="fb5ce-151">If you do not plan toocontinue using this app, delete all resources that you created in this article by doing hello following:</span></span> 
 
-1. <span data-ttu-id="7dd01-152">На портале Azure в меню навигации слева щелкните **Группы ресурсов**, а затем выберите имя созданного ресурса.</span><span class="sxs-lookup"><span data-stu-id="7dd01-152">In the Azure portal, on the left navigation menu, click **Resource groups**, and then click the name of the resource that you created.</span></span> 
-2. <span data-ttu-id="7dd01-153">На странице группы ресурсов щелкните **Удалить**, введите имя ресурса для удаления и щелкните **Удалить**.</span><span class="sxs-lookup"><span data-stu-id="7dd01-153">On your resource group page, click **Delete**, type the name of the resource to be deleted, and then click **Delete**.</span></span>
+1. <span data-ttu-id="fb5ce-152">В hello портал Azure, в меню навигации слева hello, щелкните **групп ресурсов**и щелкните имя hello hello ресурса, который был создан.</span><span class="sxs-lookup"><span data-stu-id="fb5ce-152">In hello Azure portal, on hello left navigation menu, click **Resource groups**, and then click hello name of hello resource that you created.</span></span> 
+2. <span data-ttu-id="fb5ce-153">На странице группы ресурсов, нажмите кнопку **удаление**, введите имя hello toobe ресурсов hello удален и нажмите кнопку **удалить**.</span><span class="sxs-lookup"><span data-stu-id="fb5ce-153">On your resource group page, click **Delete**, type hello name of hello resource toobe deleted, and then click **Delete**.</span></span>
 
-## <a name="next-steps"></a><span data-ttu-id="7dd01-154">Дальнейшие действия</span><span class="sxs-lookup"><span data-stu-id="7dd01-154">Next steps</span></span>
+## <a name="next-steps"></a><span data-ttu-id="fb5ce-154">Дальнейшие действия</span><span class="sxs-lookup"><span data-stu-id="fb5ce-154">Next steps</span></span>
 
-<span data-ttu-id="7dd01-155">Из этой статьи вы узнали, как создать учетную запись Azure Cosmos DB, как создать граф с помощью обозревателя данных, а также как запустить приложение.</span><span class="sxs-lookup"><span data-stu-id="7dd01-155">In this article, you've learned how to create an Azure Cosmos DB account, create a graph by using Data Explorer, and run an app.</span></span> <span data-ttu-id="7dd01-156">Теперь вы можете создавать более сложные запросы и внедрять эффективную логику обхода графа с помощью Gremlin.</span><span class="sxs-lookup"><span data-stu-id="7dd01-156">You can now build more complex queries and implement powerful graph traversal logic by using Gremlin.</span></span> 
+<span data-ttu-id="fb5ce-155">В этой статье вы узнали, как создать граф, с помощью данных обозревателя toocreate учетную запись Azure Cosmos DB и запуск приложения.</span><span class="sxs-lookup"><span data-stu-id="fb5ce-155">In this article, you've learned how toocreate an Azure Cosmos DB account, create a graph by using Data Explorer, and run an app.</span></span> <span data-ttu-id="fb5ce-156">Теперь вы можете создавать более сложные запросы и внедрять эффективную логику обхода графа с помощью Gremlin.</span><span class="sxs-lookup"><span data-stu-id="fb5ce-156">You can now build more complex queries and implement powerful graph traversal logic by using Gremlin.</span></span> 
 
 > [!div class="nextstepaction"]
-> [<span data-ttu-id="7dd01-157">Как выполнять запросы к данным в базе данных Azure Cosmos DB с помощью API Graph (предварительная версия)</span><span class="sxs-lookup"><span data-stu-id="7dd01-157">Query using Gremlin</span></span>](tutorial-query-graph.md)
+> [<span data-ttu-id="fb5ce-157">Как выполнять запросы к данным в базе данных Azure Cosmos DB с помощью API Graph (предварительная версия)</span><span class="sxs-lookup"><span data-stu-id="fb5ce-157">Query using Gremlin</span></span>](tutorial-query-graph.md)

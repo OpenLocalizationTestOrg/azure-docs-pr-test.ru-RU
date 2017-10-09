@@ -1,6 +1,6 @@
 ---
-title: "Использование динамического шифрования AES-128 и службы доставки ключей | Документация Майкрософт"
-description: "Службы мультимедиа Microsoft Azure позволяют доставлять содержимое, зашифрованное с помощью 128-битных ключей шифрования AES. Они также включают в себя службу доставки ключей, которая доставляет ключи шифрования авторизованным пользователям. В этой статье показано, как динамически шифровать содержимое с помощью алгоритма AES-128 и службы доставки ключей."
+title: "AES-128 aaaUsing динамического шифрования и ключ службы доставки | Документы Microsoft"
+description: "Службы мультимедиа Microsoft Azure позволяет вам toodeliver контент, зашифрованные с помощью ключей AES 128-разрядное шифрование. Службы мультимедиа также предоставляют службу доставки ключей hello, которая предоставляет пользователям tooauthorized ключи шифрования. В этом разделе показано, как toodynamically шифрования с помощью AES-128 и использовать службу доставки ключей hello."
 services: media-services
 documentationcenter: 
 author: Juliako
@@ -14,128 +14,128 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/25/2017
 ms.author: juliako
-ms.openlocfilehash: ae1b36c26e688e74eb8fcc1a4cdbd3be0c014c08
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: cb1b413ec2ba79f7437464099cf72236ab93f312
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="using-aes-128-dynamic-encryption-and-key-delivery-service"></a><span data-ttu-id="7b7fa-105">Использование динамического шифрования AES-128 и службы доставки ключей</span><span class="sxs-lookup"><span data-stu-id="7b7fa-105">Using AES-128 dynamic encryption and key delivery service</span></span>
+# <a name="using-aes-128-dynamic-encryption-and-key-delivery-service"></a><span data-ttu-id="6e86f-105">Использование динамического шифрования AES-128 и службы доставки ключей</span><span class="sxs-lookup"><span data-stu-id="6e86f-105">Using AES-128 dynamic encryption and key delivery service</span></span>
 > [!div class="op_single_selector"]
-> * [<span data-ttu-id="7b7fa-106">.NET</span><span class="sxs-lookup"><span data-stu-id="7b7fa-106">.NET</span></span>](media-services-protect-with-aes128.md)
-> * [<span data-ttu-id="7b7fa-107">Java</span><span class="sxs-lookup"><span data-stu-id="7b7fa-107">Java</span></span>](https://github.com/southworkscom/azure-sdk-for-media-services-java-samples)
-> * [<span data-ttu-id="7b7fa-108">PHP</span><span class="sxs-lookup"><span data-stu-id="7b7fa-108">PHP</span></span>](https://github.com/Azure/azure-sdk-for-php/tree/master/examples/MediaServices)
+> * [<span data-ttu-id="6e86f-106">.NET</span><span class="sxs-lookup"><span data-stu-id="6e86f-106">.NET</span></span>](media-services-protect-with-aes128.md)
+> * [<span data-ttu-id="6e86f-107">Java</span><span class="sxs-lookup"><span data-stu-id="6e86f-107">Java</span></span>](https://github.com/southworkscom/azure-sdk-for-media-services-java-samples)
+> * [<span data-ttu-id="6e86f-108">PHP</span><span class="sxs-lookup"><span data-stu-id="6e86f-108">PHP</span></span>](https://github.com/Azure/azure-sdk-for-php/tree/master/examples/MediaServices)
 > 
 > 
 
-## <a name="overview"></a><span data-ttu-id="7b7fa-109">Обзор</span><span class="sxs-lookup"><span data-stu-id="7b7fa-109">Overview</span></span>
+## <a name="overview"></a><span data-ttu-id="6e86f-109">Обзор</span><span class="sxs-lookup"><span data-stu-id="6e86f-109">Overview</span></span>
 > [!NOTE]
-> <span data-ttu-id="7b7fa-110">Обзор способов защиты содержимого мультимедиа с помощью шифрования AES представлен в [этом](https://channel9.msdn.com/Shows/Azure-Friday/Azure-Media-Services-Protecting-your-Media-Content-with-AES-Encryption) видео.</span><span class="sxs-lookup"><span data-stu-id="7b7fa-110">See [this](https://channel9.msdn.com/Shows/Azure-Friday/Azure-Media-Services-Protecting-your-Media-Content-with-AES-Encryption) video for an overview of how to protect your Media Content with AES encryption.</span></span>
+> <span data-ttu-id="6e86f-110">В разделе [это](https://channel9.msdn.com/Shows/Azure-Friday/Azure-Media-Services-Protecting-your-Media-Content-with-AES-Encryption) видео Общие сведения о том, как tooprotect мультимедиа контента с шифрованием AES.</span><span class="sxs-lookup"><span data-stu-id="6e86f-110">See [this](https://channel9.msdn.com/Shows/Azure-Friday/Azure-Media-Services-Protecting-your-Media-Content-with-AES-Encryption) video for an overview of how tooprotect your Media Content with AES encryption.</span></span>
 > 
 > 
 
-<span data-ttu-id="7b7fa-111">Службы мультимедиа Microsoft Azure позволяют доставлять по каналам HLS и Smooth Streaming содержимое, зашифрованное с помощью AES (с использованием 128-битных ключей шифрования).</span><span class="sxs-lookup"><span data-stu-id="7b7fa-111">Microsoft Azure Media Services enables you to deliver Http-Live-Streaming (HLS) and Smooth Streams encrypted with Advanced Encryption Standard (AES) (using 128-bit encryption keys).</span></span> <span data-ttu-id="7b7fa-112">Они также включают в себя службу доставки ключей, которая доставляет ключи шифрования авторизованным пользователям.</span><span class="sxs-lookup"><span data-stu-id="7b7fa-112">Media Services also provides the Key Delivery service that delivers encryption keys to authorized users.</span></span> <span data-ttu-id="7b7fa-113">Если вам нужно, чтобы службы мультимедиа зашифровали ресурс-контейнер, свяжите с ним ключ шифрования и настройте политики авторизации для ключа.</span><span class="sxs-lookup"><span data-stu-id="7b7fa-113">If you want for Media Services to encrypt an asset, you need to associate an encryption key with the asset and also configure authorization policies for the key.</span></span> <span data-ttu-id="7b7fa-114">Когда поток запрашивается проигрывателем, службы мультимедиа используют указанный ключ для динамического шифрования содержимого с помощью AES.</span><span class="sxs-lookup"><span data-stu-id="7b7fa-114">When a stream is requested by a player, Media Services uses the specified key to dynamically encrypt your content using AES encryption.</span></span> <span data-ttu-id="7b7fa-115">Чтобы расшифровать поток, проигрыватель запросит ключ у службы доставки ключей.</span><span class="sxs-lookup"><span data-stu-id="7b7fa-115">To decrypt the stream, the player will request the key from the key delivery service.</span></span> <span data-ttu-id="7b7fa-116">Чтобы определить, есть ли у пользователя право на получение ключа, служба оценивает политики авторизации, заданные для ключа.</span><span class="sxs-lookup"><span data-stu-id="7b7fa-116">To decide whether or not the user is authorized to get the key, the service evaluates the authorization policies that you specified for the key.</span></span>
+<span data-ttu-id="6e86f-111">Службы мультимедиа Microsoft Azure позволяет toodeliver Http-Live-Streaming (HLS) и потоки Smooth Streams, зашифрованные с помощью Advanced Encryption Standard (AES) (с помощью 128-битные ключи шифрования).</span><span class="sxs-lookup"><span data-stu-id="6e86f-111">Microsoft Azure Media Services enables you toodeliver Http-Live-Streaming (HLS) and Smooth Streams encrypted with Advanced Encryption Standard (AES) (using 128-bit encryption keys).</span></span> <span data-ttu-id="6e86f-112">Службы мультимедиа также предоставляют службу доставки ключей hello, которая предоставляет пользователям tooauthorized ключи шифрования.</span><span class="sxs-lookup"><span data-stu-id="6e86f-112">Media Services also provides hello Key Delivery service that delivers encryption keys tooauthorized users.</span></span> <span data-ttu-id="6e86f-113">Если требуется для служб мультимедиа tooencrypt актива, требуется tooassociate ключ шифрования с активом hello и также настроить политики авторизации для ключа hello.</span><span class="sxs-lookup"><span data-stu-id="6e86f-113">If you want for Media Services tooencrypt an asset, you need tooassociate an encryption key with hello asset and also configure authorization policies for hello key.</span></span> <span data-ttu-id="6e86f-114">Когда проигрыватель запрашивает поток, службы мультимедиа используют указанный hello toodynamically ключа шифрования контента с помощью шифрования AES.</span><span class="sxs-lookup"><span data-stu-id="6e86f-114">When a stream is requested by a player, Media Services uses hello specified key toodynamically encrypt your content using AES encryption.</span></span> <span data-ttu-id="6e86f-115">поток toodecrypt hello, hello проигрыватель будет запрашивать ключ hello из службы доставки ключей hello.</span><span class="sxs-lookup"><span data-stu-id="6e86f-115">toodecrypt hello stream, hello player will request hello key from hello key delivery service.</span></span> <span data-ttu-id="6e86f-116">toodecide ли он hello авторизованных tooget hello ключ, hello служба оценивает политики авторизации hello, заданные для ключа hello.</span><span class="sxs-lookup"><span data-stu-id="6e86f-116">toodecide whether or not hello user is authorized tooget hello key, hello service evaluates hello authorization policies that you specified for hello key.</span></span>
 
-<span data-ttu-id="7b7fa-117">Службы мультимедиа поддерживают несколько способов аутентификации пользователей, которые запрашивают ключи.</span><span class="sxs-lookup"><span data-stu-id="7b7fa-117">Media Services supports multiple ways of authenticating users who make key requests.</span></span> <span data-ttu-id="7b7fa-118">Для политики авторизации ключа содержимого можно задать одно или несколько из ограничений авторизации: открытая авторизация или с ограничением по маркеру.</span><span class="sxs-lookup"><span data-stu-id="7b7fa-118">The content key authorization policy could have one or more authorization restrictions: open or token restriction.</span></span> <span data-ttu-id="7b7fa-119">При ограничении по маркеру к политике должен прилагаться маркер, выданный службой маркеров безопасности (STS).</span><span class="sxs-lookup"><span data-stu-id="7b7fa-119">The token restricted policy must be accompanied by a token issued by a Secure Token Service (STS).</span></span> <span data-ttu-id="7b7fa-120">Службы мультимедиа поддерживают [простые веб-маркеры](https://msdn.microsoft.com/library/gg185950.aspx#BKMK_2) (SWT) и маркеры в формате [JSON Web Token](https://msdn.microsoft.com/library/gg185950.aspx#BKMK_3) (JWT).</span><span class="sxs-lookup"><span data-stu-id="7b7fa-120">Media Services supports tokens in the [Simple Web Tokens](https://msdn.microsoft.com/library/gg185950.aspx#BKMK_2) (SWT) format and [JSON Web Token](https://msdn.microsoft.com/library/gg185950.aspx#BKMK_3) (JWT) format.</span></span> <span data-ttu-id="7b7fa-121">Дополнительную информацию см. в разделе [Настройка политики авторизации для ключа содержимого](media-services-protect-with-aes128.md#configure_key_auth_policy).</span><span class="sxs-lookup"><span data-stu-id="7b7fa-121">For more information, see [Configure the content key’s authorization policy](media-services-protect-with-aes128.md#configure_key_auth_policy).</span></span>
+<span data-ttu-id="6e86f-117">Службы мультимедиа поддерживают несколько способов аутентификации пользователей, которые запрашивают ключи.</span><span class="sxs-lookup"><span data-stu-id="6e86f-117">Media Services supports multiple ways of authenticating users who make key requests.</span></span> <span data-ttu-id="6e86f-118">Hello политики авторизации ключа контента может иметь одно или несколько ограничений авторизации: открыть или маркер ограниченного использования программ.</span><span class="sxs-lookup"><span data-stu-id="6e86f-118">hello content key authorization policy could have one or more authorization restrictions: open or token restriction.</span></span> <span data-ttu-id="6e86f-119">политика с ограничением токенов Hello должны сопровождаться маркера, выданного по токенов безопасности службы (STS).</span><span class="sxs-lookup"><span data-stu-id="6e86f-119">hello token restricted policy must be accompanied by a token issued by a Secure Token Service (STS).</span></span> <span data-ttu-id="6e86f-120">Службы мультимедиа поддерживают только токены в hello [токенов SWT](https://msdn.microsoft.com/library/gg185950.aspx#BKMK_2) формат (SWT) и [веб-маркера JSON](https://msdn.microsoft.com/library/gg185950.aspx#BKMK_3) формате.</span><span class="sxs-lookup"><span data-stu-id="6e86f-120">Media Services supports tokens in hello [Simple Web Tokens](https://msdn.microsoft.com/library/gg185950.aspx#BKMK_2) (SWT) format and [JSON Web Token](https://msdn.microsoft.com/library/gg185950.aspx#BKMK_3) (JWT) format.</span></span> <span data-ttu-id="6e86f-121">Дополнительные сведения см. в разделе [Настройка политики авторизации hello ключ содержимого](media-services-protect-with-aes128.md#configure_key_auth_policy).</span><span class="sxs-lookup"><span data-stu-id="6e86f-121">For more information, see [Configure hello content key’s authorization policy](media-services-protect-with-aes128.md#configure_key_auth_policy).</span></span>
 
-<span data-ttu-id="7b7fa-122">Чтобы воспользоваться преимуществами динамического шифрования, необходимо иметь ресурс-контейнер, содержащий набор многоскоростных MP4-файлов или многоскоростных исходных файлов Smooth Streaming.</span><span class="sxs-lookup"><span data-stu-id="7b7fa-122">To take advantage of dynamic encryption, you need to have an asset that contains a set of multi-bitrate MP4 files or multi-bitrate Smooth Streaming source files.</span></span> <span data-ttu-id="7b7fa-123">Вам также потребуется настроить политику доставки для ресурса-контейнера (описывается далее в этой статье).</span><span class="sxs-lookup"><span data-stu-id="7b7fa-123">You also need to configure the delivery policy for the asset (described later in this topic).</span></span> <span data-ttu-id="7b7fa-124">В зависимости от формата, указанного в URL-адресе потоковой передачи, сервер потокового воспроизведения по запросу обеспечивает доставку содержимого по выбранному протоколу.</span><span class="sxs-lookup"><span data-stu-id="7b7fa-124">Then, based on the format specified in the streaming URL, the On-Demand Streaming server will ensure that the stream is delivered in the protocol you have chosen.</span></span> <span data-ttu-id="7b7fa-125">В результате вы сможете хранить и оплачивать файлы только в одном формате, а службы мультимедиа выполнят сборку и будут обслуживать соответствующий ответ на основе запросов клиента.</span><span class="sxs-lookup"><span data-stu-id="7b7fa-125">As a result, you only need to store and pay for the files in single storage format and Media Services service will build and serve the appropriate response based on requests from a client.</span></span>
+<span data-ttu-id="6e86f-122">преимущества tootake динамического шифрования требуется актив, содержащий набор MP4-файлов с разными скоростями или файлы источника Smooth Streaming с разными скоростями toohave.</span><span class="sxs-lookup"><span data-stu-id="6e86f-122">tootake advantage of dynamic encryption, you need toohave an asset that contains a set of multi-bitrate MP4 files or multi-bitrate Smooth Streaming source files.</span></span> <span data-ttu-id="6e86f-123">Необходимо также tooconfigure политики доставки hello средства hello (описывается далее в этом разделе).</span><span class="sxs-lookup"><span data-stu-id="6e86f-123">You also need tooconfigure hello delivery policy for hello asset (described later in this topic).</span></span> <span data-ttu-id="6e86f-124">Затем на основании hello формат, указанный в URL-адрес потоковой передачи hello, hello сервера потоковой передачи по требованию проверит доставку потока hello в протоколе hello, которую вы выбрали.</span><span class="sxs-lookup"><span data-stu-id="6e86f-124">Then, based on hello format specified in hello streaming URL, hello On-Demand Streaming server will ensure that hello stream is delivered in hello protocol you have chosen.</span></span> <span data-ttu-id="6e86f-125">В результате достаточно toostore и оплаты для hello файлов в едином формате хранилища и службы мультимедиа будут создавать и обслуживать соответствующий ответ hello на основе запросов клиента.</span><span class="sxs-lookup"><span data-stu-id="6e86f-125">As a result, you only need toostore and pay for hello files in single storage format and Media Services service will build and serve hello appropriate response based on requests from a client.</span></span>
 
-<span data-ttu-id="7b7fa-126">Эта статья будет полезна разработчикам приложений, которые доставляют защищенные файлы мультимедиа.</span><span class="sxs-lookup"><span data-stu-id="7b7fa-126">This topic would be useful to developers that work on applications that deliver protected media.</span></span> <span data-ttu-id="7b7fa-127">В ней показано, как настроить политики авторизации для службы доставки ключей, чтобы только авторизованные клиенты могли получать ключи шифрования,</span><span class="sxs-lookup"><span data-stu-id="7b7fa-127">The topic shows you how to configure the key delivery service with authorization policies so that only authorized clients could receive the encryption keys.</span></span> <span data-ttu-id="7b7fa-128">а также рассматривается использование динамического шифрования.</span><span class="sxs-lookup"><span data-stu-id="7b7fa-128">It also shows how to use dynamic encryption.</span></span>
+<span data-ttu-id="6e86f-126">В этом разделе будет полезно toodevelopers, работать с приложениями, осуществляющими доставку защищенных файлов мультимедиа.</span><span class="sxs-lookup"><span data-stu-id="6e86f-126">This topic would be useful toodevelopers that work on applications that deliver protected media.</span></span> <span data-ttu-id="6e86f-127">Hello разделе показано, как tooconfigure hello службы доставки ключей с политиками авторизации, чтобы только авторизованные клиенты могли получать hello ключей шифрования.</span><span class="sxs-lookup"><span data-stu-id="6e86f-127">hello topic shows you how tooconfigure hello key delivery service with authorization policies so that only authorized clients could receive hello encryption keys.</span></span> <span data-ttu-id="6e86f-128">Здесь также показано, как toouse динамического шифрования.</span><span class="sxs-lookup"><span data-stu-id="6e86f-128">It also shows how toouse dynamic encryption.</span></span>
 
 
-## <a name="aes-128-dynamic-encryption-and-key-delivery-service-workflow"></a><span data-ttu-id="7b7fa-129">Рабочий процесс динамического шифрования AES-128 и службы доставки ключей</span><span class="sxs-lookup"><span data-stu-id="7b7fa-129">AES-128 Dynamic Encryption and Key Delivery Service Workflow</span></span>
+## <a name="aes-128-dynamic-encryption-and-key-delivery-service-workflow"></a><span data-ttu-id="6e86f-129">Рабочий процесс динамического шифрования AES-128 и службы доставки ключей</span><span class="sxs-lookup"><span data-stu-id="6e86f-129">AES-128 Dynamic Encryption and Key Delivery Service Workflow</span></span>
 
-<span data-ttu-id="7b7fa-130">Ниже описаны общие действия, которые необходимо выполнить для шифрования ресурсов-контейнеров с помощью AES, используя службу доставки ключей служб мультимедиа и динамическое шифрование.</span><span class="sxs-lookup"><span data-stu-id="7b7fa-130">The following are general steps that you would need to perform when encrypting your assets with AES, using the Media Services key delivery service, and also using dynamic encryption.</span></span>
+<span data-ttu-id="6e86f-130">Hello ниже приведены общие шаги, что tooperform понадобятся вам при шифровании активов с помощью AES, использовании службы доставки ключей Media Services hello и использовании динамического шифрования.</span><span class="sxs-lookup"><span data-stu-id="6e86f-130">hello following are general steps that you would need tooperform when encrypting your assets with AES, using hello Media Services key delivery service, and also using dynamic encryption.</span></span>
 
-1. <span data-ttu-id="7b7fa-131">[Создание ресурса-контейнера и отправка в него файлов](media-services-protect-with-aes128.md#create_asset).</span><span class="sxs-lookup"><span data-stu-id="7b7fa-131">[Create an asset and upload files into the asset](media-services-protect-with-aes128.md#create_asset).</span></span>
-2. <span data-ttu-id="7b7fa-132">[Кодирование ресурса-контейнера с файлами в набор MP4-файлов с переменной скоростью](media-services-protect-with-aes128.md#encode_asset).</span><span class="sxs-lookup"><span data-stu-id="7b7fa-132">[Encode the asset containing the file to the adaptive bitrate MP4 set](media-services-protect-with-aes128.md#encode_asset).</span></span>
-3. <span data-ttu-id="7b7fa-133">[Создание ключа содержимого и связывание его с закодированным ресурсом-контейнером](media-services-protect-with-aes128.md#create_contentkey).</span><span class="sxs-lookup"><span data-stu-id="7b7fa-133">[Create a content key and associate it with the encoded asset](media-services-protect-with-aes128.md#create_contentkey).</span></span> <span data-ttu-id="7b7fa-134">В службах мультимедиа ключ содержимого содержит ключ шифрования ресурса-контейнера.</span><span class="sxs-lookup"><span data-stu-id="7b7fa-134">In Media Services, the content key contains the asset’s encryption key.</span></span>
-4. <span data-ttu-id="7b7fa-135">[Настройка политики авторизации для ключа содержимого](media-services-protect-with-aes128.md#configure_key_auth_policy).</span><span class="sxs-lookup"><span data-stu-id="7b7fa-135">[Configure the content key’s authorization policy](media-services-protect-with-aes128.md#configure_key_auth_policy).</span></span> <span data-ttu-id="7b7fa-136">Чтобы получить ключ содержимого, клиент должен соответствовать заданной для этого ключа политике авторизации.</span><span class="sxs-lookup"><span data-stu-id="7b7fa-136">The content key authorization policy must be configured by you and met by the client in order for the content key to be delivered to the client.</span></span>
-5. <span data-ttu-id="7b7fa-137">[Настройте политику доставки для ресурса-контейнера](media-services-protect-with-aes128.md#configure_asset_delivery_policy).</span><span class="sxs-lookup"><span data-stu-id="7b7fa-137">[Configure the delivery policy for an asset](media-services-protect-with-aes128.md#configure_asset_delivery_policy).</span></span> <span data-ttu-id="7b7fa-138">Конфигурация политики доставки включает: URL-адрес для получения ключа и вектор инициализации (IV) (при использовании AES 128 необходимо указывать один и тот же вектор инициализации для шифрования и расшифровки), протокол доставки (например, MPEG-DASH, HLS, Smooth Streaming или все перечисленные) и тип динамического шифрования (например, конвертное или без динамического шифрования).</span><span class="sxs-lookup"><span data-stu-id="7b7fa-138">The delivery policy configuration includes: key acquisition URL and Initialization Vector (IV) (AES 128 requires the same IV to be supplied when encrypting and decrypting), delivery protocol (for example, MPEG DASH, HLS, Smooth Streaming or all), the type of dynamic encryption (for example, envelope or no dynamic encryption).</span></span>
+1. <span data-ttu-id="6e86f-131">[Создание актива и отправка файлов в актив hello](media-services-protect-with-aes128.md#create_asset).</span><span class="sxs-lookup"><span data-stu-id="6e86f-131">[Create an asset and upload files into hello asset](media-services-protect-with-aes128.md#create_asset).</span></span>
+2. <span data-ttu-id="6e86f-132">[Кодирование активов hello, содержащий hello файл toohello адаптивных битрейтов MP4](media-services-protect-with-aes128.md#encode_asset).</span><span class="sxs-lookup"><span data-stu-id="6e86f-132">[Encode hello asset containing hello file toohello adaptive bitrate MP4 set](media-services-protect-with-aes128.md#encode_asset).</span></span>
+3. <span data-ttu-id="6e86f-133">[Создание ключа контента и связать его с активом hello кодировке](media-services-protect-with-aes128.md#create_contentkey).</span><span class="sxs-lookup"><span data-stu-id="6e86f-133">[Create a content key and associate it with hello encoded asset](media-services-protect-with-aes128.md#create_contentkey).</span></span> <span data-ttu-id="6e86f-134">В службах мультимедиа ключ контента hello содержит ключ шифрования актива hello.</span><span class="sxs-lookup"><span data-stu-id="6e86f-134">In Media Services, hello content key contains hello asset’s encryption key.</span></span>
+4. <span data-ttu-id="6e86f-135">[Настройка политики авторизации hello ключ содержимого](media-services-protect-with-aes128.md#configure_key_auth_policy).</span><span class="sxs-lookup"><span data-stu-id="6e86f-135">[Configure hello content key’s authorization policy](media-services-protect-with-aes128.md#configure_key_auth_policy).</span></span> <span data-ttu-id="6e86f-136">Политика авторизации ключей содержимого Hello должно быть настроена вами и клиент hello, чтобы клиент доставленный toohello содержимого ключа toobe hello.</span><span class="sxs-lookup"><span data-stu-id="6e86f-136">hello content key authorization policy must be configured by you and met by hello client in order for hello content key toobe delivered toohello client.</span></span>
+5. <span data-ttu-id="6e86f-137">[Настроить политику hello доставки для актива](media-services-protect-with-aes128.md#configure_asset_delivery_policy).</span><span class="sxs-lookup"><span data-stu-id="6e86f-137">[Configure hello delivery policy for an asset](media-services-protect-with-aes128.md#configure_asset_delivery_policy).</span></span> <span data-ttu-id="6e86f-138">Hello конфигурация политики доставки включает: ключевые URL-адрес получения и вектор инициализации (IV) (AES 128 требуется hello, предоставленный toobe же IV при шифровании и расшифровке), протокол доставки (например, MPEG DASH, HLS, Smooth Streaming или все), hello типа динамического шифрования (например конверт или без динамического шифрования).</span><span class="sxs-lookup"><span data-stu-id="6e86f-138">hello delivery policy configuration includes: key acquisition URL and Initialization Vector (IV) (AES 128 requires hello same IV toobe supplied when encrypting and decrypting), delivery protocol (for example, MPEG DASH, HLS, Smooth Streaming or all), hello type of dynamic encryption (for example, envelope or no dynamic encryption).</span></span>
 
-    <span data-ttu-id="7b7fa-139">К разным протоколам можно применять разные политики в отношении одного и того же ресурса-контейнера.</span><span class="sxs-lookup"><span data-stu-id="7b7fa-139">You could apply different policy to each protocol on the same asset.</span></span> <span data-ttu-id="7b7fa-140">Например, вы можете применить шифрование PlayReady при использовании Smooth или DASH и конвертное шифрование AES при использовании HLS.</span><span class="sxs-lookup"><span data-stu-id="7b7fa-140">For example, you could apply PlayReady encryption to Smooth/DASH and AES Envelope to HLS.</span></span> <span data-ttu-id="7b7fa-141">Потоковая передача по тем протоколам, которые не определены в политике доставки (например, если вы добавили одну политику, которая предусматривает использование только протокола HLS), будет блокироваться.</span><span class="sxs-lookup"><span data-stu-id="7b7fa-141">Any protocols that are not defined in a delivery policy (for example, you add a single policy that only specifies HLS as the protocol) will be blocked from streaming.</span></span> <span data-ttu-id="7b7fa-142">Исключением являются те случаи, когда политика доставки ресурсов совсем не определена.</span><span class="sxs-lookup"><span data-stu-id="7b7fa-142">The exception to this is if you have no asset delivery policy defined at all.</span></span> <span data-ttu-id="7b7fa-143">Тогда все протоколы могут использоваться в незашифрованном виде.</span><span class="sxs-lookup"><span data-stu-id="7b7fa-143">Then, all protocols will be allowed in the clear.</span></span>
+    <span data-ttu-id="6e86f-139">Можно применить другой политике tooeach протокола на hello одного средства.</span><span class="sxs-lookup"><span data-stu-id="6e86f-139">You could apply different policy tooeach protocol on hello same asset.</span></span> <span data-ttu-id="6e86f-140">Например можно применить шифрование PlayReady tooSmooth/DASH и AES Envelope tooHLS.</span><span class="sxs-lookup"><span data-stu-id="6e86f-140">For example, you could apply PlayReady encryption tooSmooth/DASH and AES Envelope tooHLS.</span></span> <span data-ttu-id="6e86f-141">Все протоколы, которые не определены в политике доставки (например, добавить отдельную политику, которая указывает в качестве протокола hello только HLS) будут заблокированы для потоковой передачи.</span><span class="sxs-lookup"><span data-stu-id="6e86f-141">Any protocols that are not defined in a delivery policy (for example, you add a single policy that only specifies HLS as hello protocol) will be blocked from streaming.</span></span> <span data-ttu-id="6e86f-142">Hello toothis исключение — когда нет определенных политик доставки активов.</span><span class="sxs-lookup"><span data-stu-id="6e86f-142">hello exception toothis is if you have no asset delivery policy defined at all.</span></span> <span data-ttu-id="6e86f-143">Затем все протоколы будут разрешены в hello снимите флажок.</span><span class="sxs-lookup"><span data-stu-id="6e86f-143">Then, all protocols will be allowed in hello clear.</span></span>
 
-6. <span data-ttu-id="7b7fa-144">[Создайте указатель OnDemand](media-services-protect-with-aes128.md#create_locator) , чтобы получить URL-адрес для потоковой передачи.</span><span class="sxs-lookup"><span data-stu-id="7b7fa-144">[Create an OnDemand locator](media-services-protect-with-aes128.md#create_locator) in order to get a streaming URL.</span></span>
+6. <span data-ttu-id="6e86f-144">[Создание указателя OnDemand](media-services-protect-with-aes128.md#create_locator) чтобы tooget URL-адрес потоковой передачи.</span><span class="sxs-lookup"><span data-stu-id="6e86f-144">[Create an OnDemand locator](media-services-protect-with-aes128.md#create_locator) in order tooget a streaming URL.</span></span>
 
-<span data-ttu-id="7b7fa-145">В этой статье также показано, [как клиентское приложение может запрашивать ключ у службы доставки ключей](media-services-protect-with-aes128.md#client_request).</span><span class="sxs-lookup"><span data-stu-id="7b7fa-145">The topic also shows [how a client application can request a key from the key delivery service](media-services-protect-with-aes128.md#client_request).</span></span>
+<span data-ttu-id="6e86f-145">Hello разделе также показано [как клиентское приложение можно запросить ключ от службы доставки ключей hello](media-services-protect-with-aes128.md#client_request).</span><span class="sxs-lookup"><span data-stu-id="6e86f-145">hello topic also shows [how a client application can request a key from hello key delivery service](media-services-protect-with-aes128.md#client_request).</span></span>
 
-<span data-ttu-id="7b7fa-146">В конце раздела вы найдете полный [пример](media-services-protect-with-aes128.md#example) для .NET.</span><span class="sxs-lookup"><span data-stu-id="7b7fa-146">You will find a complete .NET [example](media-services-protect-with-aes128.md#example) at the end of the topic.</span></span>
+<span data-ttu-id="6e86f-146">Вы найдете полный .NET [пример](media-services-protect-with-aes128.md#example) конце hello hello раздела.</span><span class="sxs-lookup"><span data-stu-id="6e86f-146">You will find a complete .NET [example](media-services-protect-with-aes128.md#example) at hello end of hello topic.</span></span>
 
-<span data-ttu-id="7b7fa-147">На следующем изображении показан описанный выше рабочий процесс.</span><span class="sxs-lookup"><span data-stu-id="7b7fa-147">The following image demonstrates the workflow described above.</span></span> <span data-ttu-id="7b7fa-148">В данном случае для проверки подлинности используется маркер.</span><span class="sxs-lookup"><span data-stu-id="7b7fa-148">Here the token is used for authentication.</span></span>
+<span data-ttu-id="6e86f-147">Следующие изображения Hello демонстрирует hello рабочего процесса, описанного выше.</span><span class="sxs-lookup"><span data-stu-id="6e86f-147">hello following image demonstrates hello workflow described above.</span></span> <span data-ttu-id="6e86f-148">Здесь hello маркер используется для проверки подлинности.</span><span class="sxs-lookup"><span data-stu-id="6e86f-148">Here hello token is used for authentication.</span></span>
 
 ![Защита с помощью AES-128](./media/media-services-content-protection-overview/media-services-content-protection-with-aes.png)
 
-<span data-ttu-id="7b7fa-150">Далее приводятся подробные объяснения, примеры кода и ссылки на статьи с инструкциями для выполнения описанных выше задач.</span><span class="sxs-lookup"><span data-stu-id="7b7fa-150">The rest of this topic provides detailed explanations, code examples, and links to topics that show you how to achieve the tasks described above.</span></span>
+<span data-ttu-id="6e86f-150">Hello остальной части этого раздела содержатся подробные объяснения, примеры кода и tootopics ссылки, которые показывают, как tooachieve hello задач, описанных выше.</span><span class="sxs-lookup"><span data-stu-id="6e86f-150">hello rest of this topic provides detailed explanations, code examples, and links tootopics that show you how tooachieve hello tasks described above.</span></span>
 
-## <a name="current-limitations"></a><span data-ttu-id="7b7fa-151">Текущие ограничения</span><span class="sxs-lookup"><span data-stu-id="7b7fa-151">Current limitations</span></span>
-<span data-ttu-id="7b7fa-152">При добавлении или обновлении политики доставки ресурсов необходимо удалить существующий указатель (если он есть) и создать новый.</span><span class="sxs-lookup"><span data-stu-id="7b7fa-152">If you add or update your asset’s delivery policy, you must delete an existing locator (if any) and create a new locator.</span></span>
+## <a name="current-limitations"></a><span data-ttu-id="6e86f-151">Текущие ограничения</span><span class="sxs-lookup"><span data-stu-id="6e86f-151">Current limitations</span></span>
+<span data-ttu-id="6e86f-152">При добавлении или обновлении политики доставки ресурсов необходимо удалить существующий указатель (если он есть) и создать новый.</span><span class="sxs-lookup"><span data-stu-id="6e86f-152">If you add or update your asset’s delivery policy, you must delete an existing locator (if any) and create a new locator.</span></span>
 
-## <span data-ttu-id="7b7fa-153"><a id="create_asset"></a>Создание ресурса-контейнера и отправка в него файлов</span><span class="sxs-lookup"><span data-stu-id="7b7fa-153"><a id="create_asset"></a>Create an asset and upload files into the asset</span></span>
-<span data-ttu-id="7b7fa-154">Для кодирования и потоковой передачи видео, а также управления ими необходимо сначала отправить содержимое в службы мультимедиа Microsoft Azure.</span><span class="sxs-lookup"><span data-stu-id="7b7fa-154">In order to manage, encode, and stream your videos, you must first upload your content into Microsoft Azure Media Services.</span></span> <span data-ttu-id="7b7fa-155">Оно будет сохранено в безопасном облачном хранилище для последующей обработки и потоковой передачи.</span><span class="sxs-lookup"><span data-stu-id="7b7fa-155">Once uploaded, your content is stored securely in the cloud for further processing and streaming.</span></span> 
+## <span data-ttu-id="6e86f-153"><a id="create_asset"></a>Создание актива и отправка файлов в актив hello</span><span class="sxs-lookup"><span data-stu-id="6e86f-153"><a id="create_asset"></a>Create an asset and upload files into hello asset</span></span>
+<span data-ttu-id="6e86f-154">В порядке toomanage, кодирования и потоковой передачи видео необходимо сначала передать содержимое в службы мультимедиа Microsoft Azure.</span><span class="sxs-lookup"><span data-stu-id="6e86f-154">In order toomanage, encode, and stream your videos, you must first upload your content into Microsoft Azure Media Services.</span></span> <span data-ttu-id="6e86f-155">После отправки контент безопасно хранится в облаке hello для дальнейшей обработки и потоковой передачи.</span><span class="sxs-lookup"><span data-stu-id="6e86f-155">Once uploaded, your content is stored securely in hello cloud for further processing and streaming.</span></span> 
 
-<span data-ttu-id="7b7fa-156">Дополнительные сведения см. в статье [Передача файлов в учетную запись служб мультимедиа с помощью .NET](media-services-dotnet-upload-files.md).</span><span class="sxs-lookup"><span data-stu-id="7b7fa-156">For detailed information, see [Upload Files into a Media Services account](media-services-dotnet-upload-files.md).</span></span>
+<span data-ttu-id="6e86f-156">Дополнительные сведения см. в статье [Передача файлов в учетную запись служб мультимедиа с помощью .NET](media-services-dotnet-upload-files.md).</span><span class="sxs-lookup"><span data-stu-id="6e86f-156">For detailed information, see [Upload Files into a Media Services account](media-services-dotnet-upload-files.md).</span></span>
 
-## <span data-ttu-id="7b7fa-157"><a id="encode_asset"></a>Закодируйте ресурс-контейнер с файлами в набор MP4-файлов с переменной скоростью.</span><span class="sxs-lookup"><span data-stu-id="7b7fa-157"><a id="encode_asset"></a>Encode the asset containing the file to the adaptive bitrate MP4 set</span></span>
-<span data-ttu-id="7b7fa-158">При использовании динамического шифрования вам достаточно создать ресурс-контейнер, содержащий набор многоскоростных MP4-файлов или многоскоростных исходных файлов Smooth Streaming.</span><span class="sxs-lookup"><span data-stu-id="7b7fa-158">With dynamic encryption all you need is to create an asset that contains a set of multi-bitrate MP4 files or multi-bitrate Smooth Streaming source files.</span></span> <span data-ttu-id="7b7fa-159">Затем с учетом формата, указанного в манифесте или запросе фрагмента, сервер потоковой передачи по запросу организует передачу содержимого по выбранному протоколу.</span><span class="sxs-lookup"><span data-stu-id="7b7fa-159">Then, based on the specified format in the manifest or fragment request, the On-Demand Streaming server will ensure that you receive the stream in the protocol you have chosen.</span></span> <span data-ttu-id="7b7fa-160">В результате вы сможете хранить и оплачивать файлы только в одном формате, а службы мультимедиа выполнят сборку и будут обслуживать соответствующий ответ на основе запросов клиента.</span><span class="sxs-lookup"><span data-stu-id="7b7fa-160">As a result, you only need to store and pay for the files in single storage format and Media Services service will build and serve the appropriate response based on requests from a client.</span></span> <span data-ttu-id="7b7fa-161">Дополнительные сведения см. в статье [Динамическая упаковка](media-services-dynamic-packaging-overview.md).</span><span class="sxs-lookup"><span data-stu-id="7b7fa-161">For more information, see the [Dynamic Packaging Overview](media-services-dynamic-packaging-overview.md) topic.</span></span>
+## <span data-ttu-id="6e86f-157"><a id="encode_asset"></a>Кодирование hello активов содержащего hello файл toohello с адаптивной скоростью набор MP4</span><span class="sxs-lookup"><span data-stu-id="6e86f-157"><a id="encode_asset"></a>Encode hello asset containing hello file toohello adaptive bitrate MP4 set</span></span>
+<span data-ttu-id="6e86f-158">При использовании динамического шифрования требуется всего лишь toocreate актив, содержащий набор MP4-файлов с разными скоростями или файлы источника Smooth Streaming с разными скоростями.</span><span class="sxs-lookup"><span data-stu-id="6e86f-158">With dynamic encryption all you need is toocreate an asset that contains a set of multi-bitrate MP4 files or multi-bitrate Smooth Streaming source files.</span></span> <span data-ttu-id="6e86f-159">Затем на основе заданного формата hello в манифесте hello или фрагмента запроса, hello server проверит Получение потока hello в протоколе hello, которую вы выбрали потоковой передачи по требованию.</span><span class="sxs-lookup"><span data-stu-id="6e86f-159">Then, based on hello specified format in hello manifest or fragment request, hello On-Demand Streaming server will ensure that you receive hello stream in hello protocol you have chosen.</span></span> <span data-ttu-id="6e86f-160">В результате достаточно toostore и оплаты для hello файлов в едином формате хранилища и службы мультимедиа будут создавать и обслуживать соответствующий ответ hello на основе запросов клиента.</span><span class="sxs-lookup"><span data-stu-id="6e86f-160">As a result, you only need toostore and pay for hello files in single storage format and Media Services service will build and serve hello appropriate response based on requests from a client.</span></span> <span data-ttu-id="6e86f-161">Дополнительные сведения см. в разделе hello [Общие сведения о динамической упаковке](media-services-dynamic-packaging-overview.md) раздела.</span><span class="sxs-lookup"><span data-stu-id="6e86f-161">For more information, see hello [Dynamic Packaging Overview](media-services-dynamic-packaging-overview.md) topic.</span></span>
 
 >[!NOTE]
-><span data-ttu-id="7b7fa-162">При создании учетной записи AMS в нее добавляется конечная точка потоковой передачи **по умолчанию** в состоянии **Остановлена**.</span><span class="sxs-lookup"><span data-stu-id="7b7fa-162">When your AMS account is created a **default** streaming endpoint is added to your account in the **Stopped** state.</span></span> <span data-ttu-id="7b7fa-163">Чтобы начать потоковую передачу содержимого и воспользоваться динамической упаковкой и динамическим шифрованием, конечная точка потоковой передачи, из которой необходимо выполнять потоковую передачу содержимого, должна находиться в состоянии **Выполняется**.</span><span class="sxs-lookup"><span data-stu-id="7b7fa-163">To start streaming your content and take advantage of dynamic packaging and dynamic encryption, the streaming endpoint from which you want to stream content has to be in the **Running** state.</span></span> 
+><span data-ttu-id="6e86f-162">При создании учетной записи AMS **по умолчанию** конечной точки потоковой передачи в hello добавлена учетная запись tooyour **остановлена** состояния.</span><span class="sxs-lookup"><span data-stu-id="6e86f-162">When your AMS account is created a **default** streaming endpoint is added tooyour account in hello **Stopped** state.</span></span> <span data-ttu-id="6e86f-163">Потоковая передача вашего содержимого и примите преимуществами динамической упаковки и динамического шифрования toostart hello конечной точки потоковой передачи, из которого нужно имеет содержимое toostream toobe в hello **под управлением** состояния.</span><span class="sxs-lookup"><span data-stu-id="6e86f-163">toostart streaming your content and take advantage of dynamic packaging and dynamic encryption, hello streaming endpoint from which you want toostream content has toobe in hello **Running** state.</span></span> 
 >
-><span data-ttu-id="7b7fa-164">Кроме того, чтобы использовать динамическую упаковку и динамическое шифрование, ресурс должен содержать набор файлов формата MP4 или потоковой передачи Smooth Streaming с переменной скоростью.</span><span class="sxs-lookup"><span data-stu-id="7b7fa-164">Also, to be able to use dynamic packaging and dynamic encryption your asset must contain a set of adaptive bitrate MP4s or adaptive bitrate Smooth Streaming files.</span></span>
+><span data-ttu-id="6e86f-164">Кроме того, toobe может toouse динамической упаковки и динамического шифрования ваш ресурс должен содержать набор MP4 с адаптивным битрейтом или файлов Smooth Streaming с адаптивной скоростью.</span><span class="sxs-lookup"><span data-stu-id="6e86f-164">Also, toobe able toouse dynamic packaging and dynamic encryption your asset must contain a set of adaptive bitrate MP4s or adaptive bitrate Smooth Streaming files.</span></span>
 
-<span data-ttu-id="7b7fa-165">Инструкции по выполнению шифрования см. в статье [Порядок кодирования ресурса с использованием стандартного кодировщика мультимедиа](media-services-dotnet-encode-with-media-encoder-standard.md).</span><span class="sxs-lookup"><span data-stu-id="7b7fa-165">For instructions on how to encode, see [How to encode an asset using Media Encoder Standard](media-services-dotnet-encode-with-media-encoder-standard.md).</span></span>
+<span data-ttu-id="6e86f-165">Инструкции о том, как tooencode, в разделе [как tooencode ресурс с помощью Media Encoder Standard](media-services-dotnet-encode-with-media-encoder-standard.md).</span><span class="sxs-lookup"><span data-stu-id="6e86f-165">For instructions on how tooencode, see [How tooencode an asset using Media Encoder Standard](media-services-dotnet-encode-with-media-encoder-standard.md).</span></span>
 
-## <span data-ttu-id="7b7fa-166"><a id="create_contentkey"></a>Создание ключа содержимого и связывание его с закодированным ресурсом-контейнером</span><span class="sxs-lookup"><span data-stu-id="7b7fa-166"><a id="create_contentkey"></a>Create a content key and associate it with the encoded asset</span></span>
-<span data-ttu-id="7b7fa-167">В службах мультимедиа ключ содержимого содержит ключ, который используется для шифрования ресурса-контейнера.</span><span class="sxs-lookup"><span data-stu-id="7b7fa-167">In Media Services, the content key contains the key that you want to encrypt an asset with.</span></span>
+## <span data-ttu-id="6e86f-166"><a id="create_contentkey"></a>Создание ключа контента и связать его с активом hello кодировке</span><span class="sxs-lookup"><span data-stu-id="6e86f-166"><a id="create_contentkey"></a>Create a content key and associate it with hello encoded asset</span></span>
+<span data-ttu-id="6e86f-167">В службах мультимедиа ключ контента hello содержит ключ hello, что требуется tooencrypt актива с.</span><span class="sxs-lookup"><span data-stu-id="6e86f-167">In Media Services, hello content key contains hello key that you want tooencrypt an asset with.</span></span>
 
-<span data-ttu-id="7b7fa-168">Дополнительные сведения см. в статье [Создание ContentKey с использованием .NET](media-services-dotnet-create-contentkey.md).</span><span class="sxs-lookup"><span data-stu-id="7b7fa-168">For detailed information, see [Create content key](media-services-dotnet-create-contentkey.md).</span></span>
+<span data-ttu-id="6e86f-168">Дополнительные сведения см. в статье [Создание ContentKey с использованием .NET](media-services-dotnet-create-contentkey.md).</span><span class="sxs-lookup"><span data-stu-id="6e86f-168">For detailed information, see [Create content key](media-services-dotnet-create-contentkey.md).</span></span>
 
-## <span data-ttu-id="7b7fa-169"><a id="configure_key_auth_policy"></a>Настройка политики авторизации ключа содержимого</span><span class="sxs-lookup"><span data-stu-id="7b7fa-169"><a id="configure_key_auth_policy"></a>Configure the content key’s authorization policy</span></span>
-<span data-ttu-id="7b7fa-170">Службы мультимедиа поддерживают несколько способов аутентификации пользователей, которые запрашивают ключи.</span><span class="sxs-lookup"><span data-stu-id="7b7fa-170">Media Services supports multiple ways of authenticating users who make key requests.</span></span> <span data-ttu-id="7b7fa-171">Чтобы получить ключ содержимого, клиент (проигрыватель) должен соответствовать заданной для этого ключа политике авторизации.</span><span class="sxs-lookup"><span data-stu-id="7b7fa-171">The content key authorization policy must be configured by you and met by the client (player) in order for the key to be delivered to the client.</span></span> <span data-ttu-id="7b7fa-172">Для политики авторизации ключа содержимого можно задать одно или несколько из ограничений авторизации: открытая авторизация, с ограничением по маркеру или с ограничением по IP-адресу.</span><span class="sxs-lookup"><span data-stu-id="7b7fa-172">The content key authorization policy could have one or more authorization restrictions: open, token restriction, or IP restriction.</span></span>
+## <span data-ttu-id="6e86f-169"><a id="configure_key_auth_policy"></a>Настройка политики авторизации hello ключ содержимого</span><span class="sxs-lookup"><span data-stu-id="6e86f-169"><a id="configure_key_auth_policy"></a>Configure hello content key’s authorization policy</span></span>
+<span data-ttu-id="6e86f-170">Службы мультимедиа поддерживают несколько способов аутентификации пользователей, которые запрашивают ключи.</span><span class="sxs-lookup"><span data-stu-id="6e86f-170">Media Services supports multiple ways of authenticating users who make key requests.</span></span> <span data-ttu-id="6e86f-171">Политика авторизации ключей содержимого Hello должно быть настроена вами и hello клиент (проигрыватель) в порядке для ключа toobe hello доставить toohello клиента.</span><span class="sxs-lookup"><span data-stu-id="6e86f-171">hello content key authorization policy must be configured by you and met by hello client (player) in order for hello key toobe delivered toohello client.</span></span> <span data-ttu-id="6e86f-172">Hello политики авторизации ключа контента может иметь одно или несколько ограничений авторизации: Откройте, token или ограничения IP-адресов.</span><span class="sxs-lookup"><span data-stu-id="6e86f-172">hello content key authorization policy could have one or more authorization restrictions: open, token restriction, or IP restriction.</span></span>
 
-<span data-ttu-id="7b7fa-173">Дополнительные сведения см. в разделе [Настройка политики авторизации ключа содержимого](media-services-dotnet-configure-content-key-auth-policy.md).</span><span class="sxs-lookup"><span data-stu-id="7b7fa-173">For detailed information, see [Configure Content Key Authorization Policy](media-services-dotnet-configure-content-key-auth-policy.md).</span></span>
+<span data-ttu-id="6e86f-173">Дополнительные сведения см. в разделе [Настройка политики авторизации ключа содержимого](media-services-dotnet-configure-content-key-auth-policy.md).</span><span class="sxs-lookup"><span data-stu-id="6e86f-173">For detailed information, see [Configure Content Key Authorization Policy](media-services-dotnet-configure-content-key-auth-policy.md).</span></span>
 
-## <span data-ttu-id="7b7fa-174"><a id="configure_asset_delivery_policy"></a>Настройка политики доставки для ресурса-контейнера</span><span class="sxs-lookup"><span data-stu-id="7b7fa-174"><a id="configure_asset_delivery_policy"></a>Configure asset delivery policy</span></span>
-<span data-ttu-id="7b7fa-175">Настройте политику доставки для ресурса-контейнера.</span><span class="sxs-lookup"><span data-stu-id="7b7fa-175">Configure the delivery policy for your asset.</span></span> <span data-ttu-id="7b7fa-176">Вот некоторые элементы, входящие в конфигурацию политики доставки:</span><span class="sxs-lookup"><span data-stu-id="7b7fa-176">Some things that the asset delivery policy configuration includes:</span></span>
+## <span data-ttu-id="6e86f-174"><a id="configure_asset_delivery_policy"></a>Настройка политики доставки для ресурса-контейнера</span><span class="sxs-lookup"><span data-stu-id="6e86f-174"><a id="configure_asset_delivery_policy"></a>Configure asset delivery policy</span></span>
+<span data-ttu-id="6e86f-175">Настройте политику hello доставки для актива.</span><span class="sxs-lookup"><span data-stu-id="6e86f-175">Configure hello delivery policy for your asset.</span></span> <span data-ttu-id="6e86f-176">Некоторые элементы, которые hello конфигурация политики доставки актива включает в себя:</span><span class="sxs-lookup"><span data-stu-id="6e86f-176">Some things that hello asset delivery policy configuration includes:</span></span>
 
-* <span data-ttu-id="7b7fa-177">URL-адрес для получения ключа.</span><span class="sxs-lookup"><span data-stu-id="7b7fa-177">The Key acquisition URL.</span></span> 
-* <span data-ttu-id="7b7fa-178">Вектор инициализации, используемый для конвертного шифрования.</span><span class="sxs-lookup"><span data-stu-id="7b7fa-178">The Initialization Vector (IV) to use for the envelope encryption.</span></span> <span data-ttu-id="7b7fa-179">При использовании AES 128 для шифрования и расшифровки необходимо указывать один и тот же вектор инициализации.</span><span class="sxs-lookup"><span data-stu-id="7b7fa-179">AES 128 requires the same IV to be supplied when encrypting and decrypting.</span></span> 
-* <span data-ttu-id="7b7fa-180">Протокол доставки ресурсов-контейнеров (например, MPEG-DASH, HLS, Smooth Streaming или все перечисленные).</span><span class="sxs-lookup"><span data-stu-id="7b7fa-180">The asset delivery protocol (for example, MPEG DASH, HLS, Smooth Streaming or all).</span></span>
-* <span data-ttu-id="7b7fa-181">Тип динамического шифрования (например, конвертное шифрование с помощью AES), если оно используется.</span><span class="sxs-lookup"><span data-stu-id="7b7fa-181">The type of dynamic encryption (for example, AES envelope) or no dynamic encryption.</span></span> 
+* <span data-ttu-id="6e86f-177">Hello ключ приобретения URL-адрес.</span><span class="sxs-lookup"><span data-stu-id="6e86f-177">hello Key acquisition URL.</span></span> 
+* <span data-ttu-id="6e86f-178">Hello toouse вектор инициализации (IV) для шифрования конвертов hello.</span><span class="sxs-lookup"><span data-stu-id="6e86f-178">hello Initialization Vector (IV) toouse for hello envelope encryption.</span></span> <span data-ttu-id="6e86f-179">AES-128 требуется hello, предоставленный toobe же IV при шифровании и расшифровке.</span><span class="sxs-lookup"><span data-stu-id="6e86f-179">AES 128 requires hello same IV toobe supplied when encrypting and decrypting.</span></span> 
+* <span data-ttu-id="6e86f-180">Hello протокол доставки актива (например, MPEG DASH, HLS, Smooth Streaming или все).</span><span class="sxs-lookup"><span data-stu-id="6e86f-180">hello asset delivery protocol (for example, MPEG DASH, HLS, Smooth Streaming or all).</span></span>
+* <span data-ttu-id="6e86f-181">Hello тип динамического шифрования (например конверт AES) или отсутствие динамического шифрования.</span><span class="sxs-lookup"><span data-stu-id="6e86f-181">hello type of dynamic encryption (for example, AES envelope) or no dynamic encryption.</span></span> 
 
-<span data-ttu-id="7b7fa-182">Дополнительные сведения см. в разделе [Настройка политик доставки ресурсов](media-services-rest-configure-asset-delivery-policy.md).</span><span class="sxs-lookup"><span data-stu-id="7b7fa-182">For detailed information, see [Configure asset delivery policy ](media-services-rest-configure-asset-delivery-policy.md).</span></span>
+<span data-ttu-id="6e86f-182">Дополнительные сведения см. в разделе [Настройка политик доставки ресурсов](media-services-rest-configure-asset-delivery-policy.md).</span><span class="sxs-lookup"><span data-stu-id="6e86f-182">For detailed information, see [Configure asset delivery policy ](media-services-rest-configure-asset-delivery-policy.md).</span></span>
 
-## <span data-ttu-id="7b7fa-183"><a id="create_locator"></a>Создание указателя потоковой передачи по запросу для получения URL-адреса для потоковой передачи</span><span class="sxs-lookup"><span data-stu-id="7b7fa-183"><a id="create_locator"></a>Create an OnDemand streaming locator in order to get a streaming URL</span></span>
-<span data-ttu-id="7b7fa-184">При использовании протоколов Smooth, DASH или HLS вам потребуется предоставить пользователю URL-адрес для потоковой передачи.</span><span class="sxs-lookup"><span data-stu-id="7b7fa-184">You will need to provide your user with the streaming URL for Smooth, DASH or HLS.</span></span>
+## <span data-ttu-id="6e86f-183"><a id="create_locator"></a>Создание OnDemand потоковой передачи указателя в порядке tooget URL-адрес потоковой передачи</span><span class="sxs-lookup"><span data-stu-id="6e86f-183"><a id="create_locator"></a>Create an OnDemand streaming locator in order tooget a streaming URL</span></span>
+<span data-ttu-id="6e86f-184">Вам потребуется tooprovide пользователей с hello потоковой передачи URL-адрес для Smooth, DASH или HLS.</span><span class="sxs-lookup"><span data-stu-id="6e86f-184">You will need tooprovide your user with hello streaming URL for Smooth, DASH or HLS.</span></span>
 
 > [!NOTE]
-> <span data-ttu-id="7b7fa-185">При добавлении или обновлении политики доставки ресурсов необходимо удалить существующий указатель (если он есть) и создать новый.</span><span class="sxs-lookup"><span data-stu-id="7b7fa-185">If you add or update your asset’s delivery policy, you must delete an existing locator (if any) and create a new locator.</span></span>
+> <span data-ttu-id="6e86f-185">При добавлении или обновлении политики доставки ресурсов необходимо удалить существующий указатель (если он есть) и создать новый.</span><span class="sxs-lookup"><span data-stu-id="6e86f-185">If you add or update your asset’s delivery policy, you must delete an existing locator (if any) and create a new locator.</span></span>
 > 
 > 
 
-<span data-ttu-id="7b7fa-186">Указания по публикации ресурса и созданию URL-адреса потоковой передачи см. в статье [Создание URL-адреса потоковой передачи](media-services-deliver-streaming-content.md).</span><span class="sxs-lookup"><span data-stu-id="7b7fa-186">For instructions on how to publish an asset and build a streaming URL, see [Build a streaming URL](media-services-deliver-streaming-content.md).</span></span>
+<span data-ttu-id="6e86f-186">Инструкции по статье toopublish актива и построения URL-АДРЕСЕ потоковой передачи, [построения URL-адрес потоковой передачи](media-services-deliver-streaming-content.md).</span><span class="sxs-lookup"><span data-stu-id="6e86f-186">For instructions on how toopublish an asset and build a streaming URL, see [Build a streaming URL](media-services-deliver-streaming-content.md).</span></span>
 
-## <a name="get-a-test-token"></a><span data-ttu-id="7b7fa-187">Получение маркера тестирования</span><span class="sxs-lookup"><span data-stu-id="7b7fa-187">Get a test token</span></span>
-<span data-ttu-id="7b7fa-188">Получите маркер тестирования в зависимости от ограничения по маркеру, заданного в политике авторизации ключа.</span><span class="sxs-lookup"><span data-stu-id="7b7fa-188">Get a test token based on the token restriction that was used for the key authorization policy.</span></span>
+## <a name="get-a-test-token"></a><span data-ttu-id="6e86f-187">Получение маркера тестирования</span><span class="sxs-lookup"><span data-stu-id="6e86f-187">Get a test token</span></span>
+<span data-ttu-id="6e86f-188">Получение тестового токена, на основе ограничения токенов hello, которое использовалось для политики авторизации ключа hello.</span><span class="sxs-lookup"><span data-stu-id="6e86f-188">Get a test token based on hello token restriction that was used for hello key authorization policy.</span></span>
 
     // Deserializes a string containing an Xml representation of a TokenRestrictionTemplate
     // back into a TokenRestrictionTemplate class instance.
     TokenRestrictionTemplate tokenTemplate = 
         TokenRestrictionTemplateSerializer.Deserialize(tokenTemplateString);
 
-    // Generate a test token based on the data in the given TokenRestrictionTemplate.
-    //The GenerateTestToken method returns the token without the word “Bearer” in front
-    //so you have to add it in front of the token string. 
+    // Generate a test token based on hello data in hello given TokenRestrictionTemplate.
+    //hello GenerateTestToken method returns hello token without hello word “Bearer” in front
+    //so you have tooadd it in front of hello token string. 
     string testToken = TokenRestrictionTemplateSerializer.GenerateTestToken(tokenTemplate);
-    Console.WriteLine("The authorization token is:\nBearer {0}", testToken);
+    Console.WriteLine("hello authorization token is:\nBearer {0}", testToken);
 
-<span data-ttu-id="7b7fa-189">Для проверки потока можно использовать [проигрыватель AMS](http://amsplayer.azurewebsites.net/azuremediaplayer.html) .</span><span class="sxs-lookup"><span data-stu-id="7b7fa-189">You can use the [AMS Player](http://amsplayer.azurewebsites.net/azuremediaplayer.html) to test your stream.</span></span>
+<span data-ttu-id="6e86f-189">Можно использовать hello [AMS проигрывателя](http://amsplayer.azurewebsites.net/azuremediaplayer.html) tootest потока.</span><span class="sxs-lookup"><span data-stu-id="6e86f-189">You can use hello [AMS Player](http://amsplayer.azurewebsites.net/azuremediaplayer.html) tootest your stream.</span></span>
 
-## <span data-ttu-id="7b7fa-190"><a id="client_request"></a>Отправка запроса клиента на получение ключа в службе доставки ключей</span><span class="sxs-lookup"><span data-stu-id="7b7fa-190"><a id="client_request"></a>How can your client request a key from the key delivery service?</span></span>
-<span data-ttu-id="7b7fa-191">На предыдущем этапе вы создали URL-адрес, указывающий на файл манифеста.</span><span class="sxs-lookup"><span data-stu-id="7b7fa-191">In the previous step, you constructed the URL that points to a manifest file.</span></span> <span data-ttu-id="7b7fa-192">Клиент должен извлечь необходимые сведения из файлов манифеста потоковой передачи и отправить запрос в службу доставки ключей.</span><span class="sxs-lookup"><span data-stu-id="7b7fa-192">Your client needs to extract the necessary information from the streaming manifest files in order to make a request to the key delivery service.</span></span>
+## <span data-ttu-id="6e86f-190"><a id="client_request"></a>Как запрос клиентом ключа из службы доставки ключей hello?</span><span class="sxs-lookup"><span data-stu-id="6e86f-190"><a id="client_request"></a>How can your client request a key from hello key delivery service?</span></span>
+<span data-ttu-id="6e86f-191">В предыдущем шаге hello созданный hello URL-адрес, который указывает файл манифеста tooa.</span><span class="sxs-lookup"><span data-stu-id="6e86f-191">In hello previous step, you constructed hello URL that points tooa manifest file.</span></span> <span data-ttu-id="6e86f-192">Клиент должен tooextract hello необходимые сведения из hello потоковой передачи файлов манифеста в порядке toomake службы доставки ключей toohello запроса.</span><span class="sxs-lookup"><span data-stu-id="6e86f-192">Your client needs tooextract hello necessary information from hello streaming manifest files in order toomake a request toohello key delivery service.</span></span>
 
-### <a name="manifest-files"></a><span data-ttu-id="7b7fa-193">Файлы манифестов</span><span class="sxs-lookup"><span data-stu-id="7b7fa-193">Manifest files</span></span>
-<span data-ttu-id="7b7fa-194">Клиенту необходимо извлечь из файла манифеста значение URL-адреса (который также содержит идентификатор ключа содержимого (KID)).</span><span class="sxs-lookup"><span data-stu-id="7b7fa-194">The client needs to extract the URL (that also contains content key Id (kid)) value from the manifest file.</span></span> <span data-ttu-id="7b7fa-195">Затем клиент попытается получить ключ шифрования в службе доставки ключей.</span><span class="sxs-lookup"><span data-stu-id="7b7fa-195">The client will then try to get the encryption key from the key delivery service.</span></span> <span data-ttu-id="7b7fa-196">Клиенту также потребуется извлечь значение вектора инициализации и использовать его для расшифровки потока. В следующем фрагменте кода показан элемент <Protection> манифеста Smooth Streaming.</span><span class="sxs-lookup"><span data-stu-id="7b7fa-196">The client also needs to extract the IV value and use it do decrypt the stream.The following snippet shows the <Protection> element of the Smooth Streaming manifest.</span></span>
+### <a name="manifest-files"></a><span data-ttu-id="6e86f-193">Файлы манифестов</span><span class="sxs-lookup"><span data-stu-id="6e86f-193">Manifest files</span></span>
+<span data-ttu-id="6e86f-194">Hello клиент должен tooextract hello URL-адрес (который также содержит идентификатор (kid) ключа контента) значение из файла манифеста hello.</span><span class="sxs-lookup"><span data-stu-id="6e86f-194">hello client needs tooextract hello URL (that also contains content key Id (kid)) value from hello manifest file.</span></span> <span data-ttu-id="6e86f-195">Затем клиент Hello пытается ключ шифрования hello tooget от службы доставки ключей hello.</span><span class="sxs-lookup"><span data-stu-id="6e86f-195">hello client will then try tooget hello encryption key from hello key delivery service.</span></span> <span data-ttu-id="6e86f-196">Hello клиент также должен tooextract значение hello IV и использовать его для расшифровки stream.hello hello, следующий фрагмент кода показывает hello <Protection> элемента манифеста Smooth Streaming hello.</span><span class="sxs-lookup"><span data-stu-id="6e86f-196">hello client also needs tooextract hello IV value and use it do decrypt hello stream.hello following snippet shows hello <Protection> element of hello Smooth Streaming manifest.</span></span>
 
     <Protection>
       <ProtectionHeader SystemID="B47B251A-2409-4B42-958E-08DBAE7B4EE9">
@@ -149,9 +149,9 @@ ms.lasthandoff: 08/29/2017
       </ProtectionHeader>
     </Protection>
 
-<span data-ttu-id="7b7fa-197">При использовании протокола HLS корневой манифест разбивается на файлы сегментов.</span><span class="sxs-lookup"><span data-stu-id="7b7fa-197">In the case of HLS, the root manifest is broken into segment files.</span></span> 
+<span data-ttu-id="6e86f-197">В случае HLS hello hello корневой манифест разбивается на файлы сегментов.</span><span class="sxs-lookup"><span data-stu-id="6e86f-197">In hello case of HLS, hello root manifest is broken into segment files.</span></span> 
 
-<span data-ttu-id="7b7fa-198">Например, корневой манифест http://test001.origin.mediaservices.windows.net/8bfe7d6f-34e3-4d1a-b289-3e48a8762490/BigBuckBunny.ism/manifest(format=m3u8-aapl) содержит список имен файлов сегментов.</span><span class="sxs-lookup"><span data-stu-id="7b7fa-198">For example, the root manifest is: http://test001.origin.mediaservices.windows.net/8bfe7d6f-34e3-4d1a-b289-3e48a8762490/BigBuckBunny.ism/manifest(format=m3u8-aapl) and it contains a list of segment file names.</span></span>
+<span data-ttu-id="6e86f-198">Например, является hello корневой манифест: http://test001.origin.mediaservices.windows.net/8bfe7d6f-34e3-4d1a-b289-3e48a8762490/BigBuckBunny.ism/manifest(format=m3u8-aapl) и она содержит список имен файлов сегмента.</span><span class="sxs-lookup"><span data-stu-id="6e86f-198">For example, hello root manifest is: http://test001.origin.mediaservices.windows.net/8bfe7d6f-34e3-4d1a-b289-3e48a8762490/BigBuckBunny.ism/manifest(format=m3u8-aapl) and it contains a list of segment file names.</span></span>
 
     . . . 
     #EXT-X-STREAM-INF:PROGRAM-ID=1,BANDWIDTH=630133,RESOLUTION=424x240,CODECS="avc1.4d4015,mp4a.40.2",AUDIO="audio"
@@ -160,7 +160,7 @@ ms.lasthandoff: 08/29/2017
     QualityLevels(842459)/Manifest(video,format=m3u8-aapl)
     …
 
-<span data-ttu-id="7b7fa-199">Если открыть один из файлов сегментов в текстовом редакторе (например, http://test001.origin.mediaservices.windows.net/8bfe7d6f-34e3-4d1a-b289-3e48a8762490/BigBuckBunny.ism/QualityLevels (514369)/Manifest(video,format=m3u8-aapl), можно увидеть строку #EXT-X-KEY, которая означает, что файл зашифрован.</span><span class="sxs-lookup"><span data-stu-id="7b7fa-199">If you open one of the segment files in text editor (for example, http://test001.origin.mediaservices.windows.net/8bfe7d6f-34e3-4d1a-b289-3e48a8762490/BigBuckBunny.ism/QualityLevels(514369)/Manifest(video,format=m3u8-aapl), it should contain #EXT-X-KEY which indicates that the file is encrypted.</span></span>
+<span data-ttu-id="6e86f-199">Если один из файлов сегмента Привет открыть в текстовом редакторе (например, http://test001.origin.mediaservices.windows.net/8bfe7d6f-34e3-4d1a-b289-3e48a8762490/BigBuckBunny.ism/QualityLevels(514369)/Manifest(video,format=m3u8-aapl), it should содержит #EXT-X-ключ, указывает, что этот файл hello шифруется.</span><span class="sxs-lookup"><span data-stu-id="6e86f-199">If you open one of hello segment files in text editor (for example, http://test001.origin.mediaservices.windows.net/8bfe7d6f-34e3-4d1a-b289-3e48a8762490/BigBuckBunny.ism/QualityLevels(514369)/Manifest(video,format=m3u8-aapl), it should contain #EXT-X-KEY which indicates that hello file is encrypted.</span></span>
 
     #EXTM3U
     #EXT-X-VERSION:4
@@ -177,11 +177,11 @@ ms.lasthandoff: 08/29/2017
     #EXT-X-ENDLIST
 
 >[!NOTE] 
-><span data-ttu-id="7b7fa-200">Если вы планируете воспроизводить HLS с шифрованием AES в Safari, см. [этот блог](https://azure.microsoft.com/blog/how-to-make-token-authorized-aes-encrypted-hls-stream-working-in-safari/).</span><span class="sxs-lookup"><span data-stu-id="7b7fa-200">If you are planning to play an AES encrypted HLS in Safari, see [this blog](https://azure.microsoft.com/blog/how-to-make-token-authorized-aes-encrypted-hls-stream-working-in-safari/).</span></span>
+><span data-ttu-id="6e86f-200">При планировании tooplay AES шифрования HLS в Safari см. в разделе [этот блог](https://azure.microsoft.com/blog/how-to-make-token-authorized-aes-encrypted-hls-stream-working-in-safari/).</span><span class="sxs-lookup"><span data-stu-id="6e86f-200">If you are planning tooplay an AES encrypted HLS in Safari, see [this blog](https://azure.microsoft.com/blog/how-to-make-token-authorized-aes-encrypted-hls-stream-working-in-safari/).</span></span>
 
-### <a name="request-the-key-from-the-key-delivery-service"></a><span data-ttu-id="7b7fa-201">Запрос ключа в службе доставки ключей</span><span class="sxs-lookup"><span data-stu-id="7b7fa-201">Request the key from the key delivery service</span></span>
+### <a name="request-hello-key-from-hello-key-delivery-service"></a><span data-ttu-id="6e86f-201">Запросить hello ключ от службы доставки ключей hello</span><span class="sxs-lookup"><span data-stu-id="6e86f-201">Request hello key from hello key delivery service</span></span>
 
-<span data-ttu-id="7b7fa-202">В следующем коде показано, как отправить запрос в службу доставки ключей служб мультимедиа, используя код URI доставки ключа (извлеченный из манифеста) и маркер (получение простых веб-маркеров из службы маркеров безопасности в этой статье не рассматривается).</span><span class="sxs-lookup"><span data-stu-id="7b7fa-202">The following code shows how to send a request to the Media Services key delivery service using a key delivery Uri (that was extracted from the manifest) and a token (this topic does not talk about how to get Simple Web Tokens from a Secure Token Service).</span></span>
+<span data-ttu-id="6e86f-202">Hello следующий код показывает, как toosend toohello запрос служб мультимедиа ключа службы доставки, с помощью Uri доставки ключей (полученного из манифеста hello) и токена (в этом разделе не касается как tooget простой Web токены из службы токенов безопасности).</span><span class="sxs-lookup"><span data-stu-id="6e86f-202">hello following code shows how toosend a request toohello Media Services key delivery service using a key delivery Uri (that was extracted from hello manifest) and a token (this topic does not talk about how tooget Simple Web Tokens from a Secure Token Service).</span></span>
 
     private byte[] GetDeliveryKey(Uri keyDeliveryUri, string token)
     {
@@ -223,24 +223,24 @@ ms.lasthandoff: 08/29/2017
         return key;
     }
 
-## <a name="protect-your-content-with-aes-128-using-net"></a><span data-ttu-id="7b7fa-203">Защита содержимого с помощью AES-128 и .NET</span><span class="sxs-lookup"><span data-stu-id="7b7fa-203">Protect your content with AES-128 using .NET</span></span>
+## <a name="protect-your-content-with-aes-128-using-net"></a><span data-ttu-id="6e86f-203">Защита содержимого с помощью AES-128 и .NET</span><span class="sxs-lookup"><span data-stu-id="6e86f-203">Protect your content with AES-128 using .NET</span></span>
 
-### <a name="create-and-configure-a-visual-studio-project"></a><span data-ttu-id="7b7fa-204">Создание и настройка проекта Visual Studio</span><span class="sxs-lookup"><span data-stu-id="7b7fa-204">Create and configure a Visual Studio project</span></span>
+### <a name="create-and-configure-a-visual-studio-project"></a><span data-ttu-id="6e86f-204">Создание и настройка проекта Visual Studio</span><span class="sxs-lookup"><span data-stu-id="6e86f-204">Create and configure a Visual Studio project</span></span>
 
-1. <span data-ttu-id="7b7fa-205">Настройте среду разработки и укажите в файле app.config сведения о подключении, как описано в статье [Разработка служб мультимедиа с помощью .NET](media-services-dotnet-how-to-use.md).</span><span class="sxs-lookup"><span data-stu-id="7b7fa-205">Set up your development environment and populate the app.config file with connection information, as described in [Media Services development with .NET](media-services-dotnet-how-to-use.md).</span></span> 
-2. <span data-ttu-id="7b7fa-206">Добавьте следующие элементы в **appSettings**, определенные в файле app.config:</span><span class="sxs-lookup"><span data-stu-id="7b7fa-206">Add the following elements to **appSettings** defined in your app.config file:</span></span>
+1. <span data-ttu-id="6e86f-205">Настройка среды разработки и заполнить hello файл app.config с данными подключения, как описано в [разработки служб мультимедиа с помощью .NET](media-services-dotnet-how-to-use.md).</span><span class="sxs-lookup"><span data-stu-id="6e86f-205">Set up your development environment and populate hello app.config file with connection information, as described in [Media Services development with .NET](media-services-dotnet-how-to-use.md).</span></span> 
+2. <span data-ttu-id="6e86f-206">Добавьте следующие элементы слишком hello**appSettings** определенной в файле app.config:</span><span class="sxs-lookup"><span data-stu-id="6e86f-206">Add hello following elements too**appSettings** defined in your app.config file:</span></span>
 
         <add key="Issuer" value="http://testacs.com"/>
         <add key="Audience" value="urn:test"/>
 
-### <span data-ttu-id="7b7fa-207"><a id="example"></a>Пример</span><span class="sxs-lookup"><span data-stu-id="7b7fa-207"><a id="example"></a>Example</span></span>
+### <span data-ttu-id="6e86f-207"><a id="example"></a>Пример</span><span class="sxs-lookup"><span data-stu-id="6e86f-207"><a id="example"></a>Example</span></span>
 
-<span data-ttu-id="7b7fa-208">Замените код в файле Program.cs кодом, приведенным в этом разделе.</span><span class="sxs-lookup"><span data-stu-id="7b7fa-208">Overwrite the code in your Program.cs file with the code shown in this section.</span></span>
+<span data-ttu-id="6e86f-208">Перезаписать hello код в файле Program.cs кодом hello, приведенные в этом разделе.</span><span class="sxs-lookup"><span data-stu-id="6e86f-208">Overwrite hello code in your Program.cs file with hello code shown in this section.</span></span>
  
 >[!NOTE]
-><span data-ttu-id="7b7fa-209">Действует ограничение в 1 000 000 записей для разных политик AMS (например, для политики Locator или ContentKeyAuthorizationPolicy).</span><span class="sxs-lookup"><span data-stu-id="7b7fa-209">There is a limit of 1,000,000 policies for different AMS policies (for example, for Locator policy or ContentKeyAuthorizationPolicy).</span></span> <span data-ttu-id="7b7fa-210">Следует указывать один и тот же идентификатор политики, если вы используете те же дни, разрешения доступа и т. д. Например, политики для указателей, которые должны оставаться на месте в течение длительного времени (не политики передачи).</span><span class="sxs-lookup"><span data-stu-id="7b7fa-210">You should use the same policy ID if you are always using the same days / access permissions, for example, policies for locators that are intended to remain in place for a long time (non-upload policies).</span></span> <span data-ttu-id="7b7fa-211">Чтобы узнать больше, ознакомьтесь с [этим](media-services-dotnet-manage-entities.md#limit-access-policies) разделом.</span><span class="sxs-lookup"><span data-stu-id="7b7fa-211">For more information, see [this](media-services-dotnet-manage-entities.md#limit-access-policies) topic.</span></span>
+><span data-ttu-id="6e86f-209">Действует ограничение в 1 000 000 записей для разных политик AMS (например, для политики Locator или ContentKeyAuthorizationPolicy).</span><span class="sxs-lookup"><span data-stu-id="6e86f-209">There is a limit of 1,000,000 policies for different AMS policies (for example, for Locator policy or ContentKeyAuthorizationPolicy).</span></span> <span data-ttu-id="6e86f-210">Следует использовать hello же идентификатор политики, если вы используете всегда hello же дни / доступа разрешения, например, политики для указатели, которые являются предполагаемого tooremain на месте в течение длительного времени (без передачи политики).</span><span class="sxs-lookup"><span data-stu-id="6e86f-210">You should use hello same policy ID if you are always using hello same days / access permissions, for example, policies for locators that are intended tooremain in place for a long time (non-upload policies).</span></span> <span data-ttu-id="6e86f-211">Чтобы узнать больше, ознакомьтесь с [этим](media-services-dotnet-manage-entities.md#limit-access-policies) разделом.</span><span class="sxs-lookup"><span data-stu-id="6e86f-211">For more information, see [this](media-services-dotnet-manage-entities.md#limit-access-policies) topic.</span></span>
 
-<span data-ttu-id="7b7fa-212">Обязательно обновите переменные, чтобы они указывали на папки, в которых находятся входные файлы.</span><span class="sxs-lookup"><span data-stu-id="7b7fa-212">Make sure to update variables to point to folders where your input files are located.</span></span>
+<span data-ttu-id="6e86f-212">Сделайте том tooupdate переменных toopoint toofolders где расположены входные файлы.</span><span class="sxs-lookup"><span data-stu-id="6e86f-212">Make sure tooupdate variables toopoint toofolders where your input files are located.</span></span>
 
     using System;
     using System.Collections.Generic;
@@ -257,18 +257,18 @@ ms.lasthandoff: 08/29/2017
     {
         class Program
         {
-        // Read values from the App.config file.
+        // Read values from hello App.config file.
         private static readonly string _AADTenantDomain =
         ConfigurationManager.AppSettings["AADTenantDomain"];
         private static readonly string _RESTAPIEndpoint =
         ConfigurationManager.AppSettings["MediaServiceRESTAPIEndpoint"];
 
-        // A Uri describing the issuer of the token.  
-        // Must match the value in the token for the token to be considered valid.
+        // A Uri describing hello issuer of hello token.  
+        // Must match hello value in hello token for hello token toobe considered valid.
         private static readonly Uri _sampleIssuer =
             new Uri(ConfigurationManager.AppSettings["Issuer"]);
-        // The Audience or Scope of the token.  
-        // Must match the value in the token for the token to be considered valid.
+        // hello Audience or Scope of hello token.  
+        // Must match hello value in hello token for hello token toobe considered valid.
         private static readonly Uri _sampleAudience =
             new Uri(ConfigurationManager.AppSettings["Audience"]);
 
@@ -298,7 +298,7 @@ ms.lasthandoff: 08/29/2017
             Console.WriteLine("Encoded asset: {0}", encodedAsset.Id);
 
             IContentKey key = CreateEnvelopeTypeContentKey(encodedAsset);
-            Console.WriteLine("Created key {0} for the asset {1} ", key.Id, encodedAsset.Id);
+            Console.WriteLine("Created key {0} for hello asset {1} ", key.Id, encodedAsset.Id);
             Console.WriteLine();
 
             if (tokenRestriction)
@@ -320,21 +320,21 @@ ms.lasthandoff: 08/29/2017
             TokenRestrictionTemplate tokenTemplate =
                 TokenRestrictionTemplateSerializer.Deserialize(tokenTemplateString);
 
-            // Generate a test token based on the data in the given TokenRestrictionTemplate.
-            // Note, you need to pass the key id Guid because we specified 
-            // TokenClaim.ContentKeyIdentifierClaim in during the creation of TokenRestrictionTemplate.
+            // Generate a test token based on hello data in hello given TokenRestrictionTemplate.
+            // Note, you need toopass hello key id Guid because we specified 
+            // TokenClaim.ContentKeyIdentifierClaim in during hello creation of TokenRestrictionTemplate.
             Guid rawkey = EncryptionUtils.GetKeyIdAsGuid(key.Id);
 
-            //The GenerateTestToken method returns the token without the word “Bearer” in front
-            //so you have to add it in front of the token string. 
+            //hello GenerateTestToken method returns hello token without hello word “Bearer” in front
+            //so you have tooadd it in front of hello token string. 
             string testToken = TokenRestrictionTemplateSerializer.GenerateTestToken(tokenTemplate, null, rawkey);
-            Console.WriteLine("The authorization token is:\nBearer {0}", testToken);
+            Console.WriteLine("hello authorization token is:\nBearer {0}", testToken);
             Console.WriteLine();
             }
 
-            // You can use the bit.ly/aesplayer Flash player to test the URL 
+            // You can use hello bit.ly/aesplayer Flash player tootest hello URL 
             // (with open authorization policy). 
-            // Paste the URL and click the Update button to play the video. 
+            // Paste hello URL and click hello Update button tooplay hello video. 
             //
             string URL = GetStreamingOriginLocator(encodedAsset);
             Console.WriteLine("Smooth Streaming Url: {0}/manifest", URL);
@@ -373,22 +373,22 @@ ms.lasthandoff: 08/29/2017
         {
             // Declare a new job.
             IJob job = _context.Jobs.Create("Media Encoder Standard Job");
-            // Get a media processor reference, and pass to it the name of the 
-            // processor to use for the specific task.
+            // Get a media processor reference, and pass tooit hello name of hello 
+            // processor toouse for hello specific task.
             IMediaProcessor processor = GetLatestMediaProcessorByName("Media Encoder Standard");
 
-            // Create a task with the encoding details, using a string preset.
+            // Create a task with hello encoding details, using a string preset.
             // In this case "Adaptive Streaming" preset is used.
             ITask task = job.Tasks.AddNew("My encoding task",
             processor,
             "Adaptive Streaming",
             TaskOptions.None);
 
-            // Specify the input asset to be encoded.
+            // Specify hello input asset toobe encoded.
             task.InputAssets.Add(asset);
-            // Add an output asset to contain the results of the job. 
+            // Add an output asset toocontain hello results of hello job. 
             // This output is specified as AssetCreationOptions.None, which 
-            // means the output asset is not encrypted. 
+            // means hello output asset is not encrypted. 
             task.OutputAssets.AddNew("Output asset",
             AssetCreationOptions.StorageEncrypted);
 
@@ -422,7 +422,7 @@ ms.lasthandoff: 08/29/2017
                 "ContentKey",
                 ContentKeyType.EnvelopeEncryption);
 
-            // Associate the key with the asset.
+            // Associate hello key with hello asset.
             asset.ContentKeys.Add(key);
 
             return key;
@@ -458,10 +458,10 @@ ms.lasthandoff: 08/29/2017
 
             policy.Options.Add(policyOption);
 
-            // Add ContentKeyAutorizationPolicy to ContentKey
+            // Add ContentKeyAutorizationPolicy tooContentKey
             contentKey.AuthorizationPolicyId = policy.Id;
             IContentKey updatedKey = contentKey.UpdateAsync().Result;
-            Console.WriteLine("Adding Key to Asset: Key ID is " + updatedKey.Id);
+            Console.WriteLine("Adding Key tooAsset: Key ID is " + updatedKey.Id);
         }
 
         public static string AddTokenRestrictedAuthorizationPolicy(IContentKey contentKey)
@@ -496,10 +496,10 @@ ms.lasthandoff: 08/29/2017
 
             policy.Options.Add(policyOption);
 
-            // Add ContentKeyAutorizationPolicy to ContentKey
+            // Add ContentKeyAutorizationPolicy tooContentKey
             contentKey.AuthorizationPolicyId = policy.Id;
             IContentKey updatedKey = contentKey.UpdateAsync().Result;
-            Console.WriteLine("Adding Key to Asset: Key ID is " + updatedKey.Id);
+            Console.WriteLine("Adding Key tooAsset: Key ID is " + updatedKey.Id);
 
             return tokenTemplateString;
         }
@@ -510,17 +510,17 @@ ms.lasthandoff: 08/29/2017
 
             string envelopeEncryptionIV = Convert.ToBase64String(GetRandomBuffer(16));
 
-            // When configuring delivery policy, you can choose to associate it
+            // When configuring delivery policy, you can choose tooassociate it
             // with a key acquisition URL that has a KID appended or
             // or a key acquisition URL that does not have a KID appended  
             // in which case a content key can be reused. 
 
-            // EnvelopeKeyAcquisitionUrl:  contains a key ID in the key URL.
-            // EnvelopeBaseKeyAcquisitionUrl:  the URL does not contains a key ID
+            // EnvelopeKeyAcquisitionUrl:  contains a key ID in hello key URL.
+            // EnvelopeBaseKeyAcquisitionUrl:  hello URL does not contains a key ID
 
-            // The following policy configuration specifies: 
-            // key url that will have KID=<Guid> appended to the envelope and
-            // the Initialization Vector (IV) to use for the envelope encryption.
+            // hello following policy configuration specifies: 
+            // key url that will have KID=<Guid> appended toohello envelope and
+            // hello Initialization Vector (IV) toouse for hello envelope encryption.
 
             Dictionary<AssetDeliveryPolicyConfigurationKey, string> assetDeliveryPolicyConfiguration =
             new Dictionary<AssetDeliveryPolicyConfigurationKey, string>
@@ -535,7 +535,7 @@ ms.lasthandoff: 08/29/2017
                 AssetDeliveryProtocol.SmoothStreaming | AssetDeliveryProtocol.HLS | AssetDeliveryProtocol.Dash,
                 assetDeliveryPolicyConfiguration);
 
-            // Add AssetDelivery Policy to the asset
+            // Add AssetDelivery Policy toohello asset
             asset.DeliveryPolicies.Add(assetDeliveryPolicy);
             Console.WriteLine();
             Console.WriteLine("Adding Asset Delivery Policy: " +
@@ -545,8 +545,8 @@ ms.lasthandoff: 08/29/2017
         static public string GetStreamingOriginLocator(IAsset asset)
         {
 
-            // Get a reference to the streaming manifest file from the  
-            // collection of files in the asset. 
+            // Get a reference toohello streaming manifest file from hello  
+            // collection of files in hello asset. 
 
             var assetFile = asset.AssetFiles.Where(f => f.Name.ToLower().
                 EndsWith(".ism")).
@@ -558,12 +558,12 @@ ms.lasthandoff: 08/29/2017
             TimeSpan.FromDays(30),
             AccessPermissions.Read);
 
-            // Create a locator to the streaming content on an origin. 
+            // Create a locator toohello streaming content on an origin. 
             ILocator originLocator = _context.Locators.CreateLocator(LocatorType.OnDemandOrigin, asset,
             policy,
             DateTime.UtcNow.AddMinutes(-5));
 
-            // Create a URL to the manifest file. 
+            // Create a URL toohello manifest file. 
             return originLocator.Path + assetFile.Name;
         }
 
@@ -603,9 +603,9 @@ ms.lasthandoff: 08/29/2017
     }
 
 
-## <a name="media-services-learning-paths"></a><span data-ttu-id="7b7fa-213">Схемы обучения работе со службами мультимедиа</span><span class="sxs-lookup"><span data-stu-id="7b7fa-213">Media Services learning paths</span></span>
+## <a name="media-services-learning-paths"></a><span data-ttu-id="6e86f-213">Схемы обучения работе со службами мультимедиа</span><span class="sxs-lookup"><span data-stu-id="6e86f-213">Media Services learning paths</span></span>
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a><span data-ttu-id="7b7fa-214">Отзывы</span><span class="sxs-lookup"><span data-stu-id="7b7fa-214">Provide feedback</span></span>
+## <a name="provide-feedback"></a><span data-ttu-id="6e86f-214">Отзывы</span><span class="sxs-lookup"><span data-stu-id="6e86f-214">Provide feedback</span></span>
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 

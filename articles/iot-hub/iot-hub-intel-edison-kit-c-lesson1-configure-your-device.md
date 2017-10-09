@@ -1,12 +1,12 @@
 ---
-title: "Подключение Intel Edison (C) к Интернету вещей Azure. Урок 1. Настройка устройства | Документация Майкрософт"
+title: "Connect Intel Edison (C) tooAzure IoT — занятия 1: Настройка устройства | Документы Microsoft"
 description: "Настройка Intel Edison для первого использования."
 services: iot-hub
 documentationcenter: 
 author: shizn
 manager: timtl
 tags: 
-keywords: "Arduino, настройка, подключение Arduino к компьютеру, настройка Arduino, плата Arduino"
+keywords: "arduino настройки подключения arduino toopc, arduino установки, плата arduino"
 ROBOTS: NOINDEX
 redirect_url: /azure/iot-hub/iot-hub-intel-edison-kit-c-get-started
 ms.assetid: bb8aa45b-d3ff-4438-b9d6-a9725a45ade1
@@ -17,130 +17,130 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/21/2017
 ms.author: xshi
-ms.openlocfilehash: 0c92d9f7ba63b0a0929ff95599fd757ea425ef1e
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 5e06e06f1fcea02086e95742804f82cfcb8e265f
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="configure-your-intel-edison"></a><span data-ttu-id="03490-104">Настройка Intel Edison</span><span class="sxs-lookup"><span data-stu-id="03490-104">Configure your Intel Edison</span></span>
-## <a name="what-you-will-do"></a><span data-ttu-id="03490-105">Выполняемая задача</span><span class="sxs-lookup"><span data-stu-id="03490-105">What you will do</span></span>
-<span data-ttu-id="03490-106">Настройте Intel Edison для первого использования: соберите плату, подключите ее и установите на компьютере инструмент для настройки, с помощью которого установите встроенное ПО Intel Edison, настроите пароль и подключите устройство к Wi-Fi.</span><span class="sxs-lookup"><span data-stu-id="03490-106">Configure Intel Edison for first-time use by assembling the board, powering it up and installing configuration tool to your desktop OS to flash Edison's firmware, set its password and connect it to Wi-Fi.</span></span> <span data-ttu-id="03490-107">Если возникнут какие-либо проблемы, то решения можно найти на [странице со сведениями об устранении неполадок][troubleshooting].</span><span class="sxs-lookup"><span data-stu-id="03490-107">If you have any problems, look for solutions on the [troubleshooting page][troubleshooting].</span></span>
+# <a name="configure-your-intel-edison"></a><span data-ttu-id="aa62a-104">Настройка Intel Edison</span><span class="sxs-lookup"><span data-stu-id="aa62a-104">Configure your Intel Edison</span></span>
+## <a name="what-you-will-do"></a><span data-ttu-id="aa62a-105">Выполняемая задача</span><span class="sxs-lookup"><span data-stu-id="aa62a-105">What you will do</span></span>
+<span data-ttu-id="aa62a-106">Настройте Intel Edison для первого использования путем сборки hello доски, его включение питания и установка конфигурации средства tooyour настольных ОС tooflash встроенного по Edison, задать пароль и подключите его tooWi-Fi.</span><span class="sxs-lookup"><span data-stu-id="aa62a-106">Configure Intel Edison for first-time use by assembling hello board, powering it up and installing configuration tool tooyour desktop OS tooflash Edison's firmware, set its password and connect it tooWi-Fi.</span></span> <span data-ttu-id="aa62a-107">Если у вас возникнут проблемы, искать решения на hello [страницу устранения неполадок][troubleshooting].</span><span class="sxs-lookup"><span data-stu-id="aa62a-107">If you have any problems, look for solutions on hello [troubleshooting page][troubleshooting].</span></span>
 
-## <a name="what-you-will-learn"></a><span data-ttu-id="03490-108">Новые знания</span><span class="sxs-lookup"><span data-stu-id="03490-108">What you will learn</span></span>
-<span data-ttu-id="03490-109">В этой статье вы узнаете следующее:</span><span class="sxs-lookup"><span data-stu-id="03490-109">In this article, you will learn:</span></span>
+## <a name="what-you-will-learn"></a><span data-ttu-id="aa62a-108">Новые знания</span><span class="sxs-lookup"><span data-stu-id="aa62a-108">What you will learn</span></span>
+<span data-ttu-id="aa62a-109">В этой статье вы узнаете следующее:</span><span class="sxs-lookup"><span data-stu-id="aa62a-109">In this article, you will learn:</span></span>
 
-* <span data-ttu-id="03490-110">как собрать и включить плату Edison;</span><span class="sxs-lookup"><span data-stu-id="03490-110">How to assemble Edison board and power it up.</span></span>
-* <span data-ttu-id="03490-111">как прошить встроенное ПО Edison, установить пароль и подключиться к Wi-Fi.</span><span class="sxs-lookup"><span data-stu-id="03490-111">How to flash Edison's firmware, set password and connect Wi-Fi.</span></span>
+* <span data-ttu-id="aa62a-110">Как плата tooassemble Edison и включите его.</span><span class="sxs-lookup"><span data-stu-id="aa62a-110">How tooassemble Edison board and power it up.</span></span>
+* <span data-ttu-id="aa62a-111">Как tooflash Edison встроенного по, задать пароль и подключения Wi-Fi.</span><span class="sxs-lookup"><span data-stu-id="aa62a-111">How tooflash Edison's firmware, set password and connect Wi-Fi.</span></span>
 
-## <a name="what-you-need"></a><span data-ttu-id="03490-112">Необходимые элементы</span><span class="sxs-lookup"><span data-stu-id="03490-112">What you need</span></span>
-<span data-ttu-id="03490-113">Чтобы выполнить эту операцию, вам понадобятся следующие элементы из начального набора Intel Edison:</span><span class="sxs-lookup"><span data-stu-id="03490-113">To complete this operation, you need the following parts from your Intel Edison Starter Kit:</span></span>
+## <a name="what-you-need"></a><span data-ttu-id="aa62a-112">Необходимые элементы</span><span class="sxs-lookup"><span data-stu-id="aa62a-112">What you need</span></span>
+<span data-ttu-id="aa62a-113">toocomplete этой операции требуется hello следующую частей из начального набора Edison Intel:</span><span class="sxs-lookup"><span data-stu-id="aa62a-113">toocomplete this operation, you need hello following parts from your Intel Edison Starter Kit:</span></span>
 
-* <span data-ttu-id="03490-114">модуль Intel® Edison;</span><span class="sxs-lookup"><span data-stu-id="03490-114">Intel® Edison module</span></span>
-* <span data-ttu-id="03490-115">плата расширения Arduino;</span><span class="sxs-lookup"><span data-stu-id="03490-115">Arduino expansion board</span></span>
-* <span data-ttu-id="03490-116">все прокладки и винты, которые входят в комплект поставки, включая два винта для крепления модуля к плате расширения и четыре набора винтов с пластиковыми опорами;</span><span class="sxs-lookup"><span data-stu-id="03490-116">Any spacer bars or screws included in the packaging, including two screws to fasten the module to the expansion board and four sets of screws and plastic spacers.</span></span>
-* <span data-ttu-id="03490-117">кабель micro-USB (тип B-A);</span><span class="sxs-lookup"><span data-stu-id="03490-117">A Micro B to Type A USB cable</span></span>
-* <span data-ttu-id="03490-118">источник питания постоянного тока (DC).</span><span class="sxs-lookup"><span data-stu-id="03490-118">A direct current (DC) power supply.</span></span> <span data-ttu-id="03490-119">Источник питания должен иметь такие параметры:</span><span class="sxs-lookup"><span data-stu-id="03490-119">Your power supply should be rated as follows:</span></span>
-  - <span data-ttu-id="03490-120">напряжение постоянного тока 7–15 В;</span><span class="sxs-lookup"><span data-stu-id="03490-120">7-15V DC</span></span>
-  - <span data-ttu-id="03490-121">мощность не менее 1500 мА;</span><span class="sxs-lookup"><span data-stu-id="03490-121">At least 1500mA</span></span>
-  - <span data-ttu-id="03490-122">центральная клемма положительной полярности.</span><span class="sxs-lookup"><span data-stu-id="03490-122">The center/inner pin should be the positive pole of the power supply</span></span>
+* <span data-ttu-id="aa62a-114">модуль Intel® Edison;</span><span class="sxs-lookup"><span data-stu-id="aa62a-114">Intel® Edison module</span></span>
+* <span data-ttu-id="aa62a-115">плата расширения Arduino;</span><span class="sxs-lookup"><span data-stu-id="aa62a-115">Arduino expansion board</span></span>
+* <span data-ttu-id="aa62a-116">Разделитель строки или винты, включенных в пакетов hello, включая два винты toofasten hello модуля toohello плата расширения и четыре набора винты и пластиковая разделителей.</span><span class="sxs-lookup"><span data-stu-id="aa62a-116">Any spacer bars or screws included in hello packaging, including two screws toofasten hello module toohello expansion board and four sets of screws and plastic spacers.</span></span>
+* <span data-ttu-id="aa62a-117">Micro B tooType USB-кабель</span><span class="sxs-lookup"><span data-stu-id="aa62a-117">A Micro B tooType A USB cable</span></span>
+* <span data-ttu-id="aa62a-118">источник питания постоянного тока (DC).</span><span class="sxs-lookup"><span data-stu-id="aa62a-118">A direct current (DC) power supply.</span></span> <span data-ttu-id="aa62a-119">Источник питания должен иметь такие параметры:</span><span class="sxs-lookup"><span data-stu-id="aa62a-119">Your power supply should be rated as follows:</span></span>
+  - <span data-ttu-id="aa62a-120">напряжение постоянного тока 7–15 В;</span><span class="sxs-lookup"><span data-stu-id="aa62a-120">7-15V DC</span></span>
+  - <span data-ttu-id="aa62a-121">мощность не менее 1500 мА;</span><span class="sxs-lookup"><span data-stu-id="aa62a-121">At least 1500mA</span></span>
+  - <span data-ttu-id="aa62a-122">Hello center или внутренний ПИН-код должен быть полюса положительный результат hello hello источника питания</span><span class="sxs-lookup"><span data-stu-id="aa62a-122">hello center/inner pin should be hello positive pole of hello power supply</span></span>
 
   ![Предметы в начальном наборе](media/iot-hub-intel-edison-lessons/lesson1/kit.png)
 
-<span data-ttu-id="03490-124">Кроме того, вам понадобится следующее:</span><span class="sxs-lookup"><span data-stu-id="03490-124">You also need:</span></span>
+<span data-ttu-id="aa62a-124">Кроме того, вам понадобится следующее:</span><span class="sxs-lookup"><span data-stu-id="aa62a-124">You also need:</span></span>
 
-* <span data-ttu-id="03490-125">Компьютер под управлением Windows, Mac или Linux.</span><span class="sxs-lookup"><span data-stu-id="03490-125">A computer running Windows, Mac, or Linux.</span></span>
-* <span data-ttu-id="03490-126">Беспроводное подключение, к которому будет подключаться Edison.</span><span class="sxs-lookup"><span data-stu-id="03490-126">A wireless connection for Edison to connect to.</span></span>
-* <span data-ttu-id="03490-127">Подключение к Интернету для скачивания инструмента настройки.</span><span class="sxs-lookup"><span data-stu-id="03490-127">An Internet connection to download configuration tool.</span></span>
+* <span data-ttu-id="aa62a-125">Компьютер под управлением Windows, Mac или Linux.</span><span class="sxs-lookup"><span data-stu-id="aa62a-125">A computer running Windows, Mac, or Linux.</span></span>
+* <span data-ttu-id="aa62a-126">Беспроводное подключение для tooconnect Edison для.</span><span class="sxs-lookup"><span data-stu-id="aa62a-126">A wireless connection for Edison tooconnect to.</span></span>
+* <span data-ttu-id="aa62a-127">Подключение toodownload конфигурации инструментальных средств Интернета.</span><span class="sxs-lookup"><span data-stu-id="aa62a-127">An Internet connection toodownload configuration tool.</span></span>
 
-## <a name="assemble-your-board"></a><span data-ttu-id="03490-128">Сборка платы</span><span class="sxs-lookup"><span data-stu-id="03490-128">Assemble your board</span></span>
+## <a name="assemble-your-board"></a><span data-ttu-id="aa62a-128">Сборка платы</span><span class="sxs-lookup"><span data-stu-id="aa62a-128">Assemble your board</span></span>
 
-<span data-ttu-id="03490-129">Этот раздел описывает процедуру подключения модуля Intel® Edison к плате расширения.</span><span class="sxs-lookup"><span data-stu-id="03490-129">This section contains steps to attach your Intel® Edison module to your expansion board.</span></span>
+<span data-ttu-id="aa62a-129">Этот раздел содержит действия tooattach доске Intel® Edison tooyour модуля расширения.</span><span class="sxs-lookup"><span data-stu-id="aa62a-129">This section contains steps tooattach your Intel® Edison module tooyour expansion board.</span></span>
 
-1. <span data-ttu-id="03490-130">Поместите модуль Intel® Edison в белый контур на плате расширения, совместив отверстия в модуле с винтами на плате расширения.</span><span class="sxs-lookup"><span data-stu-id="03490-130">Place the Intel® Edison module within the white outline on your expansion board, lining up the holes on the module with the screws on the expansion board.</span></span>
+1. <span data-ttu-id="aa62a-130">Поместите модуль Intel® Edison hello внутри структуры hello белого на доске расширения, выравнивается отверстия hello hello модуля с винты hello платы расширения hello.</span><span class="sxs-lookup"><span data-stu-id="aa62a-130">Place hello Intel® Edison module within hello white outline on your expansion board, lining up hello holes on hello module with hello screws on hello expansion board.</span></span>
 
-2. <span data-ttu-id="03490-131">Нажмите на модуль в точке под словами `What will you make?`, опустив его вниз до щелчка.</span><span class="sxs-lookup"><span data-stu-id="03490-131">Press down on the module just below the words `What will you make?` until you feel a snap.</span></span>
+2. <span data-ttu-id="aa62a-131">Нажмите и удерживайте на модуль hello сразу после слова hello `What will you make?` до привязки.</span><span class="sxs-lookup"><span data-stu-id="aa62a-131">Press down on hello module just below hello words `What will you make?` until you feel a snap.</span></span>
 
    ![Сборка платы 2](media/iot-hub-intel-edison-lessons/lesson1/assemble_board2.jpg)
 
-3. <span data-ttu-id="03490-133">Используйте две шестигранные гайки (входят в комплект) для крепления модуля к плате расширения.</span><span class="sxs-lookup"><span data-stu-id="03490-133">Use the two hex nuts (included in the package) to secure the module to the expansion board.</span></span>
+3. <span data-ttu-id="aa62a-133">Используйте toohello плата расширения toosecure hello hello два шестнадцатеричных основы (включен в пакет hello) модуля.</span><span class="sxs-lookup"><span data-stu-id="aa62a-133">Use hello two hex nuts (included in hello package) toosecure hello module toohello expansion board.</span></span>
 
    ![Сборка платы 3](media/iot-hub-intel-edison-lessons/lesson1/assemble_board3.jpg)
 
-4. <span data-ttu-id="03490-135">Вставьте винт в одно из четырех угловых отверстий на плате расширения.</span><span class="sxs-lookup"><span data-stu-id="03490-135">Insert a screw in one of the four corner holes on the expansion board.</span></span> <span data-ttu-id="03490-136">Наденьте на винт и плотно затяните белую пластмассовую опору.</span><span class="sxs-lookup"><span data-stu-id="03490-136">Twist and tighten one of the white plastic spacers onto the screw.</span></span>
+4. <span data-ttu-id="aa62a-135">Вставьте винт одним hello четыре угла отверстия на доске расширения hello.</span><span class="sxs-lookup"><span data-stu-id="aa62a-135">Insert a screw in one of hello four corner holes on hello expansion board.</span></span> <span data-ttu-id="aa62a-136">Скручивание и усилить одним из разделителей пластиковая hello белого на винт hello.</span><span class="sxs-lookup"><span data-stu-id="aa62a-136">Twist and tighten one of hello white plastic spacers onto hello screw.</span></span>
 
    ![Сборка платы 4](media/iot-hub-intel-edison-lessons/lesson1/assemble_board4.jpg)
 
-5. <span data-ttu-id="03490-138">Повторите этот шаг для других угловых опор.</span><span class="sxs-lookup"><span data-stu-id="03490-138">Repeat for the other three corner spacers.</span></span>
+5. <span data-ttu-id="aa62a-138">Повторите эти действия для hello других разделителей трех углов.</span><span class="sxs-lookup"><span data-stu-id="aa62a-138">Repeat for hello other three corner spacers.</span></span>
 
    ![Сборка платы 5](media/iot-hub-intel-edison-lessons/lesson1/assemble_board5.jpg)
 
-<span data-ttu-id="03490-140">Сборка платы завершена.</span><span class="sxs-lookup"><span data-stu-id="03490-140">Now your board is assembled.</span></span>
+<span data-ttu-id="aa62a-140">Сборка платы завершена.</span><span class="sxs-lookup"><span data-stu-id="aa62a-140">Now your board is assembled.</span></span>
 
    ![Собранная плата](media/iot-hub-intel-edison-lessons/lesson1/assembled_board.jpg)
 
-## <a name="power-up-edison"></a><span data-ttu-id="03490-142">Подключение питания Edison</span><span class="sxs-lookup"><span data-stu-id="03490-142">Power up Edison</span></span>
+## <a name="power-up-edison"></a><span data-ttu-id="aa62a-142">Подключение питания Edison</span><span class="sxs-lookup"><span data-stu-id="aa62a-142">Power up Edison</span></span>
 
-1. <span data-ttu-id="03490-143">Подключите источник питания.</span><span class="sxs-lookup"><span data-stu-id="03490-143">Plug in the power supply.</span></span>
+1. <span data-ttu-id="aa62a-143">Подключите питание hello.</span><span class="sxs-lookup"><span data-stu-id="aa62a-143">Plug in hello power supply.</span></span>
 
    ![Подключение источника питания](media/iot-hub-intel-edison-lessons/lesson1/plug_power.jpg)
 
-2. <span data-ttu-id="03490-145">Должен загореться зеленый светодиод (на плате расширения Arduino* он обозначен как DS1).</span><span class="sxs-lookup"><span data-stu-id="03490-145">A green LED(labeled DS1 on the Arduino* expansion board) should light up and stay lit.</span></span>
+2. <span data-ttu-id="aa62a-145">Зеленый Индикатор (с меткой DS1 hello плата расширения Arduino *) необходимо включить и оставаться включенными.</span><span class="sxs-lookup"><span data-stu-id="aa62a-145">A green LED(labeled DS1 on hello Arduino* expansion board) should light up and stay lit.</span></span>
 
-3. <span data-ttu-id="03490-146">Подождите минуту, пока завершится загрузка системной платы.</span><span class="sxs-lookup"><span data-stu-id="03490-146">Wait one minute for the board to finish booting up.</span></span>
+3. <span data-ttu-id="aa62a-146">Подождите одну минуту, для загрузки toofinish плата hello.</span><span class="sxs-lookup"><span data-stu-id="aa62a-146">Wait one minute for hello board toofinish booting up.</span></span>
 
    > [!NOTE]
-   > <span data-ttu-id="03490-147">Если у вас нет источника питания постоянного тока, вы можете подать на плату питание через порт USB.</span><span class="sxs-lookup"><span data-stu-id="03490-147">If you do not have a DC power supply, you can still power the board through a USB port.</span></span> <span data-ttu-id="03490-148">Дополнительные сведения см. в разделе `Connect Edison to your computer`.</span><span class="sxs-lookup"><span data-stu-id="03490-148">See `Connect Edison to your computer` section for details.</span></span> <span data-ttu-id="03490-149">Такой способ подачи питания может привести к непредсказуемому поведению системной платы, особенно при использовании Wi-Fi или двигателей.</span><span class="sxs-lookup"><span data-stu-id="03490-149">Powering your board in this fashion may result in unpredictable behavior from your board, especially when using Wi-Fi or driving motors.</span></span>
+   > <span data-ttu-id="aa62a-147">Если у вас питания постоянного ТОКА, вы можете платы hello питания через USB-порт.</span><span class="sxs-lookup"><span data-stu-id="aa62a-147">If you do not have a DC power supply, you can still power hello board through a USB port.</span></span> <span data-ttu-id="aa62a-148">Дополнительные сведения см. в разделе `Connect Edison tooyour computer`.</span><span class="sxs-lookup"><span data-stu-id="aa62a-148">See `Connect Edison tooyour computer` section for details.</span></span> <span data-ttu-id="aa62a-149">Такой способ подачи питания может привести к непредсказуемому поведению системной платы, особенно при использовании Wi-Fi или двигателей.</span><span class="sxs-lookup"><span data-stu-id="aa62a-149">Powering your board in this fashion may result in unpredictable behavior from your board, especially when using Wi-Fi or driving motors.</span></span>
 
-## <a name="connect-edison-to-your-computer"></a><span data-ttu-id="03490-150">Подключение Edison к компьютеру</span><span class="sxs-lookup"><span data-stu-id="03490-150">Connect Edison to your computer</span></span>
+## <a name="connect-edison-tooyour-computer"></a><span data-ttu-id="aa62a-150">Подключите компьютер tooyour Edison</span><span class="sxs-lookup"><span data-stu-id="aa62a-150">Connect Edison tooyour computer</span></span>
 
-1. <span data-ttu-id="03490-151">Переведите микропереключатель вниз, в сторону двух портов micro-USB, чтобы перевести Edison в режим устройства.</span><span class="sxs-lookup"><span data-stu-id="03490-151">Toggle down the microswitch towards the two micro USB ports, so that Edison is in device mode.</span></span> <span data-ttu-id="03490-152">Различия между режимами устройства и узла описаны [здесь](https://software.intel.com/en-us/node/628233#usb-device-mode-vs-usb-host-mode).</span><span class="sxs-lookup"><span data-stu-id="03490-152">For differences between device mode and host mode, please reference [here](https://software.intel.com/en-us/node/628233#usb-device-mode-vs-usb-host-mode).</span></span>
+1. <span data-ttu-id="aa62a-151">Переключение вниз микропереключателя hello сторону hello два micro USB-портов, так, чтобы Edison режим устройства.</span><span class="sxs-lookup"><span data-stu-id="aa62a-151">Toggle down hello microswitch towards hello two micro USB ports, so that Edison is in device mode.</span></span> <span data-ttu-id="aa62a-152">Различия между режимами устройства и узла описаны [здесь](https://software.intel.com/en-us/node/628233#usb-device-mode-vs-usb-host-mode).</span><span class="sxs-lookup"><span data-stu-id="aa62a-152">For differences between device mode and host mode, please reference [here](https://software.intel.com/en-us/node/628233#usb-device-mode-vs-usb-host-mode).</span></span>
 
-   ![Переключение микропереключателя вниз](media/iot-hub-intel-edison-lessons/lesson1/toggle_down_microswitch.jpg)
+   ![Переключение вниз микропереключателя hello](media/iot-hub-intel-edison-lessons/lesson1/toggle_down_microswitch.jpg)
 
-2. <span data-ttu-id="03490-154">Подключите кабель micro-USB к верхнему порту micro-USB.</span><span class="sxs-lookup"><span data-stu-id="03490-154">Plug the micro USB cable into the top micro USB port.</span></span>
+2. <span data-ttu-id="aa62a-154">Подключите кабель USB micro hello hello top micro USB-порту.</span><span class="sxs-lookup"><span data-stu-id="aa62a-154">Plug hello micro USB cable into hello top micro USB port.</span></span>
 
    ![Верхний порт micro-USB](media/iot-hub-intel-edison-lessons/lesson1/top_usbport.jpg)
 
-3. <span data-ttu-id="03490-156">Другой конец кабеля USB подключите к компьютеру.</span><span class="sxs-lookup"><span data-stu-id="03490-156">Plug the other end of USB cable into your computer.</span></span>
+3. <span data-ttu-id="aa62a-156">Другой конец USB-кабель Здравствуйте, подключаемых к компьютеру.</span><span class="sxs-lookup"><span data-stu-id="aa62a-156">Plug hello other end of USB cable into your computer.</span></span>
 
    ![Подключение USB к компьютеру](media/iot-hub-intel-edison-lessons/lesson1/computer_usb.jpg)
 
-4. <span data-ttu-id="03490-158">Вы можете быть уверены, что инициализация платы завершилась, когда компьютер присоединит новый диск (примерно так же, как при подключении SD-карты).</span><span class="sxs-lookup"><span data-stu-id="03490-158">You will know that your board is fully initialized when your computer mounts a new drive (much like inserting a SD card into your computer).</span></span>
+4. <span data-ttu-id="aa62a-158">Вы можете быть уверены, что инициализация платы завершилась, когда компьютер присоединит новый диск (примерно так же, как при подключении SD-карты).</span><span class="sxs-lookup"><span data-stu-id="aa62a-158">You will know that your board is fully initialized when your computer mounts a new drive (much like inserting a SD card into your computer).</span></span>
 
-## <a name="download-and-run-the-configuration-tool"></a><span data-ttu-id="03490-159">Скачивание и запуск инструмента настройки</span><span class="sxs-lookup"><span data-stu-id="03490-159">Download and run the configuration tool</span></span>
-<span data-ttu-id="03490-160">Скачайте последнюю версию инструмента настройки, выбрав нужный вариант в разделе `Installers` на [этой странице](https://software.intel.com/en-us/iot/hardware/edison/downloads).</span><span class="sxs-lookup"><span data-stu-id="03490-160">Get the latest configuration tool from [this link](https://software.intel.com/en-us/iot/hardware/edison/downloads) listed under the `Installers` heading.</span></span> <span data-ttu-id="03490-161">Запустите инструмент и выполните инструкции, которые будут отображаться на экране. Нажимайте кнопку "Далее" по мере необходимости.</span><span class="sxs-lookup"><span data-stu-id="03490-161">Execute the tool and follow its on-screen instructions, clicking Next where needed</span></span>
+## <a name="download-and-run-hello-configuration-tool"></a><span data-ttu-id="aa62a-159">Загрузите и запустите средство настройки hello</span><span class="sxs-lookup"><span data-stu-id="aa62a-159">Download and run hello configuration tool</span></span>
+<span data-ttu-id="aa62a-160">Получить последние средство настройки hello из [эту ссылку](https://software.intel.com/en-us/iot/hardware/edison/downloads) списке hello `Installers` заголовок.</span><span class="sxs-lookup"><span data-stu-id="aa62a-160">Get hello latest configuration tool from [this link](https://software.intel.com/en-us/iot/hardware/edison/downloads) listed under hello `Installers` heading.</span></span> <span data-ttu-id="aa62a-161">Выполнение средства hello и выполните его на экране инструкции, нажав кнопку Далее, при необходимости</span><span class="sxs-lookup"><span data-stu-id="aa62a-161">Execute hello tool and follow its on-screen instructions, clicking Next where needed</span></span>
 
-### <a name="flash-firmware"></a><span data-ttu-id="03490-162">Встроенное ПО</span><span class="sxs-lookup"><span data-stu-id="03490-162">Flash firmware</span></span>
-1. <span data-ttu-id="03490-163">На странице `Set up options` нажмите кнопку `Flash Firmware`.</span><span class="sxs-lookup"><span data-stu-id="03490-163">On the `Set up options` page, click `Flash Firmware`.</span></span>
-2. <span data-ttu-id="03490-164">Выберите образ, который нужно установить на плату:</span><span class="sxs-lookup"><span data-stu-id="03490-164">Select the image to flash onto your board by doing one of the following:</span></span>
-   - <span data-ttu-id="03490-165">чтобы скачать и установить последнюю версию встроенного ПО, предлагаемого Intel для вашей платы, выберите `Download the latest image version xxxx`;</span><span class="sxs-lookup"><span data-stu-id="03490-165">To download and flash your board with the latest firmware image available from Intel, select `Download the latest image version xxxx`.</span></span>
-   - <span data-ttu-id="03490-166">чтобы установить образ, который вы ранее сохранили на своем компьютере, выберите `Select the local image`.</span><span class="sxs-lookup"><span data-stu-id="03490-166">To flash your board with an image you already have saved on your computer, select `Select the local image`.</span></span> <span data-ttu-id="03490-167">Найдите и выберите образ для установки на плату.</span><span class="sxs-lookup"><span data-stu-id="03490-167">Browse to and select the image you want to flash to your board.</span></span>
-3. <span data-ttu-id="03490-168">Инструмент настройки попытается установить ПО на плату.</span><span class="sxs-lookup"><span data-stu-id="03490-168">The setup tool will attempt to flash your board.</span></span> <span data-ttu-id="03490-169">Этот процесс может занять до 10 минут.</span><span class="sxs-lookup"><span data-stu-id="03490-169">The entire flashing process may take up to 10 minutes.</span></span>
+### <a name="flash-firmware"></a><span data-ttu-id="aa62a-162">Встроенное ПО</span><span class="sxs-lookup"><span data-stu-id="aa62a-162">Flash firmware</span></span>
+1. <span data-ttu-id="aa62a-163">На hello `Set up options` щелкните `Flash Firmware`.</span><span class="sxs-lookup"><span data-stu-id="aa62a-163">On hello `Set up options` page, click `Flash Firmware`.</span></span>
+2. <span data-ttu-id="aa62a-164">Выберите tooflash hello изображения на доске, выполнив одно из следующих hello:</span><span class="sxs-lookup"><span data-stu-id="aa62a-164">Select hello image tooflash onto your board by doing one of hello following:</span></span>
+   - <span data-ttu-id="aa62a-165">Выберите toodownload и flash вашей системной платы с hello последнюю образ встроенного ПО Intel, доступные `Download hello latest image version xxxx`.</span><span class="sxs-lookup"><span data-stu-id="aa62a-165">toodownload and flash your board with hello latest firmware image available from Intel, select `Download hello latest image version xxxx`.</span></span>
+   - <span data-ttu-id="aa62a-166">tooflash вашей системной платы с изображением, уже сохранен на компьютере, выберите `Select hello local image`.</span><span class="sxs-lookup"><span data-stu-id="aa62a-166">tooflash your board with an image you already have saved on your computer, select `Select hello local image`.</span></span> <span data-ttu-id="aa62a-167">Обзор tooand выберите hello изображения должны tooflash tooyour платы.</span><span class="sxs-lookup"><span data-stu-id="aa62a-167">Browse tooand select hello image you want tooflash tooyour board.</span></span>
+3. <span data-ttu-id="aa62a-168">средство установки Hello попытается tooflash доске.</span><span class="sxs-lookup"><span data-stu-id="aa62a-168">hello setup tool will attempt tooflash your board.</span></span> <span data-ttu-id="aa62a-169">весь процесс Мерцающий Hello может занять too10 минут.</span><span class="sxs-lookup"><span data-stu-id="aa62a-169">hello entire flashing process may take up too10 minutes.</span></span>
 
-### <a name="set-password"></a><span data-ttu-id="03490-170">Установка пароля</span><span class="sxs-lookup"><span data-stu-id="03490-170">Set password</span></span>
-1. <span data-ttu-id="03490-171">На странице `Set up options` нажмите кнопку `Enable Security`.</span><span class="sxs-lookup"><span data-stu-id="03490-171">On the `Set up options` page, click `Enable Security`.</span></span>
-2. <span data-ttu-id="03490-172">Для платы Intel® Edison вы можете задать пользовательское имя.</span><span class="sxs-lookup"><span data-stu-id="03490-172">You can set a custom name for your Intel® Edison board.</span></span> <span data-ttu-id="03490-173">Это необязательно.</span><span class="sxs-lookup"><span data-stu-id="03490-173">This is optional.</span></span>
-3. <span data-ttu-id="03490-174">Введите пароль для вашей платы, а затем щелкните `Set password`.</span><span class="sxs-lookup"><span data-stu-id="03490-174">Type a password for your board, then click `Set password`.</span></span>
-4. <span data-ttu-id="03490-175">Запишите пароль, он вам пригодится позднее.</span><span class="sxs-lookup"><span data-stu-id="03490-175">Mark down the password, which is used later.</span></span>
+### <a name="set-password"></a><span data-ttu-id="aa62a-170">Установка пароля</span><span class="sxs-lookup"><span data-stu-id="aa62a-170">Set password</span></span>
+1. <span data-ttu-id="aa62a-171">На hello `Set up options` щелкните `Enable Security`.</span><span class="sxs-lookup"><span data-stu-id="aa62a-171">On hello `Set up options` page, click `Enable Security`.</span></span>
+2. <span data-ttu-id="aa62a-172">Для платы Intel® Edison вы можете задать пользовательское имя.</span><span class="sxs-lookup"><span data-stu-id="aa62a-172">You can set a custom name for your Intel® Edison board.</span></span> <span data-ttu-id="aa62a-173">Это необязательно.</span><span class="sxs-lookup"><span data-stu-id="aa62a-173">This is optional.</span></span>
+3. <span data-ttu-id="aa62a-174">Введите пароль для вашей платы, а затем щелкните `Set password`.</span><span class="sxs-lookup"><span data-stu-id="aa62a-174">Type a password for your board, then click `Set password`.</span></span>
+4. <span data-ttu-id="aa62a-175">Помечен как неработающий hello пароль, который будет использоваться позднее.</span><span class="sxs-lookup"><span data-stu-id="aa62a-175">Mark down hello password, which is used later.</span></span>
 
-### <a name="connect-wi-fi"></a><span data-ttu-id="03490-176">Подключение Wi-Fi</span><span class="sxs-lookup"><span data-stu-id="03490-176">Connect Wi-Fi</span></span>
-1. <span data-ttu-id="03490-177">На странице `Set up options` нажмите кнопку `Connect Wi-Fi`.</span><span class="sxs-lookup"><span data-stu-id="03490-177">On the `Set up options` page, click `Connect Wi-Fi`.</span></span> <span data-ttu-id="03490-178">Подождите примерно одну минуту, пока компьютер найдет доступные сети Wi-Fi.</span><span class="sxs-lookup"><span data-stu-id="03490-178">Wait up to one minute as your computer scans for available Wi-Fi networks.</span></span>
-2. <span data-ttu-id="03490-179">В раскрывающемся списке `Detected Networks` выберите нужную сеть.</span><span class="sxs-lookup"><span data-stu-id="03490-179">From the `Detected Networks` drop-down list, select your network.</span></span>
-3. <span data-ttu-id="03490-180">В раскрывающемся списке `Security` выберите режим безопасности для этой сети.</span><span class="sxs-lookup"><span data-stu-id="03490-180">From the `Security` drop-down list, select the network's security type.</span></span>
-4. <span data-ttu-id="03490-181">Укажите имя и пароль для входа, затем нажмите `Configure Wi-Fi`.</span><span class="sxs-lookup"><span data-stu-id="03490-181">Provide your login and password information, then click `Configure Wi-Fi`.</span></span>
-5. <span data-ttu-id="03490-182">Запишите полученный IP-адрес, он вам пригодится позже.</span><span class="sxs-lookup"><span data-stu-id="03490-182">Mark down the IP address, which is used later.</span></span>
+### <a name="connect-wi-fi"></a><span data-ttu-id="aa62a-176">Подключение Wi-Fi</span><span class="sxs-lookup"><span data-stu-id="aa62a-176">Connect Wi-Fi</span></span>
+1. <span data-ttu-id="aa62a-177">На hello `Set up options` щелкните `Connect Wi-Fi`.</span><span class="sxs-lookup"><span data-stu-id="aa62a-177">On hello `Set up options` page, click `Connect Wi-Fi`.</span></span> <span data-ttu-id="aa62a-178">Ожидание копирования tooone минуты в виде проверки вашего компьютера для доступных сетей Wi-Fi.</span><span class="sxs-lookup"><span data-stu-id="aa62a-178">Wait up tooone minute as your computer scans for available Wi-Fi networks.</span></span>
+2. <span data-ttu-id="aa62a-179">Из hello `Detected Networks` раскрывающегося списка выберите сети.</span><span class="sxs-lookup"><span data-stu-id="aa62a-179">From hello `Detected Networks` drop-down list, select your network.</span></span>
+3. <span data-ttu-id="aa62a-180">Из hello `Security` раскрывающегося списка, выберите hello сетевой безопасности типа.</span><span class="sxs-lookup"><span data-stu-id="aa62a-180">From hello `Security` drop-down list, select hello network's security type.</span></span>
+4. <span data-ttu-id="aa62a-181">Укажите имя и пароль для входа, затем нажмите `Configure Wi-Fi`.</span><span class="sxs-lookup"><span data-stu-id="aa62a-181">Provide your login and password information, then click `Configure Wi-Fi`.</span></span>
+5. <span data-ttu-id="aa62a-182">Помечен как неработающий hello IP-адрес, который будет использоваться позднее.</span><span class="sxs-lookup"><span data-stu-id="aa62a-182">Mark down hello IP address, which is used later.</span></span>
 
 > [!NOTE]
-> <span data-ttu-id="03490-183">Убедитесь, что плата Edison подключена к той же сети, что и компьютер.</span><span class="sxs-lookup"><span data-stu-id="03490-183">Make sure that Edison is connected to the same network as your computer.</span></span> <span data-ttu-id="03490-184">Компьютер подключается к плате Edison по IP-адресу.</span><span class="sxs-lookup"><span data-stu-id="03490-184">Your computer connects to your Edison by using the IP address.</span></span>
+> <span data-ttu-id="aa62a-183">Убедитесь, что Edison подключенных toohello сетевых как на компьютере.</span><span class="sxs-lookup"><span data-stu-id="aa62a-183">Make sure that Edison is connected toohello same network as your computer.</span></span> <span data-ttu-id="aa62a-184">Tooyour Edison подключения компьютера с помощью hello IP-адрес.</span><span class="sxs-lookup"><span data-stu-id="aa62a-184">Your computer connects tooyour Edison by using hello IP address.</span></span>
 
-<span data-ttu-id="03490-185">Поздравляем!</span><span class="sxs-lookup"><span data-stu-id="03490-185">Congratulations!</span></span> <span data-ttu-id="03490-186">Вы успешно настроили устройство Edison.</span><span class="sxs-lookup"><span data-stu-id="03490-186">You've successfully configured Edison.</span></span>
+<span data-ttu-id="aa62a-185">Поздравляем!</span><span class="sxs-lookup"><span data-stu-id="aa62a-185">Congratulations!</span></span> <span data-ttu-id="aa62a-186">Вы успешно настроили устройство Edison.</span><span class="sxs-lookup"><span data-stu-id="aa62a-186">You've successfully configured Edison.</span></span>
 
-## <a name="summary"></a><span data-ttu-id="03490-187">Сводка</span><span class="sxs-lookup"><span data-stu-id="03490-187">Summary</span></span>
-<span data-ttu-id="03490-188">Из этой статьи вы узнали, как собрать плату Edison, как установить встроенное ПО, задать пароль и подключить устройство к Wi-Fi с помощью инструмента настройки.</span><span class="sxs-lookup"><span data-stu-id="03490-188">In this article, you’ve learned how to assemble the Edison board, flash its firmware, setup password and connect it to Wi-Fi by using configuration tool.</span></span> <span data-ttu-id="03490-189">Обратите внимание, что светодиодный индикатор еще не светится.</span><span class="sxs-lookup"><span data-stu-id="03490-189">Note that the LED doesn't yet light up.</span></span> <span data-ttu-id="03490-190">Следующая задача — установить необходимые инструменты и программное обеспечение, которые потребуются для запуска примера приложения на устройстве Edison.</span><span class="sxs-lookup"><span data-stu-id="03490-190">The next task is to install the necessary tools and software in preparation for running a sample application on Edison.</span></span>
+## <a name="summary"></a><span data-ttu-id="aa62a-187">Сводка</span><span class="sxs-lookup"><span data-stu-id="aa62a-187">Summary</span></span>
+<span data-ttu-id="aa62a-188">В этой статье вы узнали, как tooassemble hello Edison платы, flash его встроенного по, установка пароля и подключите его tooWi-Fi с помощью средства настройки.</span><span class="sxs-lookup"><span data-stu-id="aa62a-188">In this article, you’ve learned how tooassemble hello Edison board, flash its firmware, setup password and connect it tooWi-Fi by using configuration tool.</span></span> <span data-ttu-id="aa62a-189">Обратите внимание, что Индикатор еще не подсвечивается приветствия.</span><span class="sxs-lookup"><span data-stu-id="aa62a-189">Note that hello LED doesn't yet light up.</span></span> <span data-ttu-id="aa62a-190">Следующая задача Hello-tooinstall hello необходимых средств и программного обеспечения в подготовке к запуску примера приложения на Edison.</span><span class="sxs-lookup"><span data-stu-id="aa62a-190">hello next task is tooinstall hello necessary tools and software in preparation for running a sample application on Edison.</span></span>
 
-## <a name="next-steps"></a><span data-ttu-id="03490-191">Дальнейшие действия</span><span class="sxs-lookup"><span data-stu-id="03490-191">Next steps</span></span>
-<span data-ttu-id="03490-192">[Get the tools][get-the-tools] (Получение инструментов)</span><span class="sxs-lookup"><span data-stu-id="03490-192">[Get the tools][get-the-tools]</span></span>
+## <a name="next-steps"></a><span data-ttu-id="aa62a-191">Дальнейшие действия</span><span class="sxs-lookup"><span data-stu-id="aa62a-191">Next steps</span></span>
+<span data-ttu-id="aa62a-192">[Получить средства hello][get-the-tools]</span><span class="sxs-lookup"><span data-stu-id="aa62a-192">[Get hello tools][get-the-tools]</span></span>
 <!-- Images and links -->
 
 [troubleshooting]: iot-hub-intel-edison-kit-c-troubleshooting.md

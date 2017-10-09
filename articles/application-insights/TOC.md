@@ -42,7 +42,7 @@
 ## Настройка
 ### Таблицы Azure
 #### [Профилировщик](app-insights-profiler.md)
-#### [Включение профилировщика](enable-profiler-cloud-services.md)
+#### [Включить hello профилировщика](enable-profiler-cloud-services.md)
 #### [Диагностика](app-insights-azure-diagnostics.md)
 #### [Предварительные версии](app-insights-previews.md)
 
@@ -130,7 +130,7 @@
 ## экспорт.
 ### [непрерывный экспорт.](app-insights-export-telemetry.md)
 ### [Экспорт модели данных](app-insights-export-data-model.md)
-### [Экспорт в Power BI](app-insights-export-power-bi.md)
+### [Экспорт tooPower бизнес-Аналитики](app-insights-export-power-bi.md)
 
 ## Безопасность
 ### [Сбор и хранение данных](app-insights-data-retention-privacy.md)

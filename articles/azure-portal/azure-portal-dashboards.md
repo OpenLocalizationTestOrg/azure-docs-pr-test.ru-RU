@@ -1,0 +1,97 @@
+---
+title: "aaaCreate и совместно использовать панели мониторинга Azure портала | Документы Microsoft"
+description: "В этой статье объясняется, как toocreate и изменения панелей мониторинга в hello портал Azure."
+services: azure-portal
+documentationcenter: 
+author: sewatson
+manager: timlt
+editor: tysonn
+ms.assetid: ff422f36-47d2-409b-8a19-02e24b03ffe7
+ms.service: multiple
+ms.devlang: NA
+ms.topic: article
+ms.tgt_pltfrm: NA
+ms.workload: na
+ms.date: 09/06/2016
+ms.author: sewatson
+ms.openlocfilehash: 0facd10fe3284d7ad9a9e29791e5af5b5b95c97f
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.translationtype: MT
+ms.contentlocale: ru-RU
+ms.lasthandoff: 10/06/2017
+---
+# <a name="create-and-share-dashboards-in-hello-azure-portal"></a><span data-ttu-id="5bcce-103">Создавать и совместно использовать панели мониторинга в hello портал Azure</span><span class="sxs-lookup"><span data-stu-id="5bcce-103">Create and share dashboards in hello Azure portal</span></span>
+<span data-ttu-id="5bcce-104">Можно создать несколько панелей мониторинга и использовать их совместно с другими пользователями доступа tooyour Azure подписок.</span><span class="sxs-lookup"><span data-stu-id="5bcce-104">You can create multiple dashboards and share them with others who have access tooyour Azure subscriptions.</span></span>  <span data-ttu-id="5bcce-105">В этой статье проходит через создание, изменение, публикации и управлении доступом toodashboards основы hello.</span><span class="sxs-lookup"><span data-stu-id="5bcce-105">This article goes through hello basics of creating, editing, publishing, and managing access toodashboards.</span></span>
+
+## <a name="create-a-dashboard"></a><span data-ttu-id="5bcce-106">Создание панели мониторинга</span><span class="sxs-lookup"><span data-stu-id="5bcce-106">Create a dashboard</span></span>
+<span data-ttu-id="5bcce-107">toocreate информационной панели, выберите hello **новая панель мониторинга** кнопку Далее toohello текущей панели мониторинга по имени.</span><span class="sxs-lookup"><span data-stu-id="5bcce-107">toocreate a dashboard, select hello **New dashboard** button next toohello current dashboard's name.</span></span>  
+
+![создание панели мониторинга](./media/azure-portal-dashboards/new-dashboard.png)
+
+<span data-ttu-id="5bcce-109">В результате этого действия будет создана пустая закрытая панель мониторинга. Затем вы перейдете в режим настройки, в котором можно присвоить имя панели мониторинга, а также добавить плитки или изменить их порядок.</span><span class="sxs-lookup"><span data-stu-id="5bcce-109">This action creates a new, empty, private dashboard and puts you into customization mode where you can name your dashboard and add or rearrange tiles.</span></span>  <span data-ttu-id="5bcce-110">В этом режиме hello сворачиваемого мозаику hello левом меню навигации принимает коллекции.</span><span class="sxs-lookup"><span data-stu-id="5bcce-110">When in this mode, hello collapsible tile gallery takes over hello left navigation menu.</span></span>  <span data-ttu-id="5bcce-111">Hello плитки коллекции позволяет найти плитки для ресурсов Azure различными способами: можно просмотреть, [группы ресурсов](../azure-resource-manager/resource-group-overview.md#resource-groups), тип ресурса, по [тег](../azure-resource-manager/resource-group-using-tags.md), или путем поиска по имени ресурса.</span><span class="sxs-lookup"><span data-stu-id="5bcce-111">hello tile gallery lets you find tiles for your Azure resources in various ways: you can browse by [resource group](../azure-resource-manager/resource-group-overview.md#resource-groups), by resource type, by [tag](../azure-resource-manager/resource-group-using-tags.md), or by searching for your resource by name.</span></span>  
+
+![настройка панели мониторинга](./media/azure-portal-dashboards/customize-dashboard.png)
+
+<span data-ttu-id="5bcce-113">Добавление плиток путем перетаскивания их в рабочую область панели мониторинга hello там, где это требуется.</span><span class="sxs-lookup"><span data-stu-id="5bcce-113">Add tiles by dragging and dropping them onto hello dashboard surface wherever you want.</span></span>
+
+<span data-ttu-id="5bcce-114">Появилась новая категория **Общие** для плиток, не связанных с определенным ресурсом.</span><span class="sxs-lookup"><span data-stu-id="5bcce-114">There's a new category called **General** for tiles that are not associated with a particular resource.</span></span>  <span data-ttu-id="5bcce-115">В этом примере мы закрепить плитки приветствия разметки.</span><span class="sxs-lookup"><span data-stu-id="5bcce-115">In this example, we pin hello Markdown tile.</span></span>  <span data-ttu-id="5bcce-116">Использовании этой панели мониторинга плитку tooadd tooyour пользовательского содержимого.</span><span class="sxs-lookup"><span data-stu-id="5bcce-116">You use this tile tooadd custom content tooyour dashboard.</span></span>  <span data-ttu-id="5bcce-117">Hello Плитка поддерживает обычного текста, [синтаксис разметки](https://daringfireball.net/projects/markdown/syntax)и ограниченный набор элементов HTML.</span><span class="sxs-lookup"><span data-stu-id="5bcce-117">hello tile supports plain text, [Markdown syntax](https://daringfireball.net/projects/markdown/syntax), and a limited set of HTML.</span></span>  <span data-ttu-id="5bcce-118">(В целях безопасности не поддерживается, например, внедрения `<script>` теги или элемент определенных стилей CSS, может повлиять на работу портала hello.)</span><span class="sxs-lookup"><span data-stu-id="5bcce-118">(For safety, you can't do things like inject `<script>` tags or use certain styling element of CSS that might interfere with hello portal.)</span></span> 
+
+![добавление Markdown](./media/azure-portal-dashboards/add-markdown.png)
+
+## <a name="edit-a-dashboard"></a><span data-ttu-id="5bcce-120">Изменение панели мониторинга</span><span class="sxs-lookup"><span data-stu-id="5bcce-120">Edit a dashboard</span></span>
+<span data-ttu-id="5bcce-121">После создания панели мониторинга, можно закреплять плитки из галереи плитки приветствия или представление мозаики hello колонок.</span><span class="sxs-lookup"><span data-stu-id="5bcce-121">After creating your dashboard, you can pin tiles from hello tile gallery or hello tile representation of blades.</span></span> <span data-ttu-id="5bcce-122">Давайте закрепить представление hello нашей группы ресурсов.</span><span class="sxs-lookup"><span data-stu-id="5bcce-122">Let's pin hello representation of our resource group.</span></span> <span data-ttu-id="5bcce-123">Либо можно закрепить при просмотре hello элементов или из колонки группы ресурсов hello.</span><span class="sxs-lookup"><span data-stu-id="5bcce-123">You can either pin when browsing hello item, or from hello resource group blade.</span></span> <span data-ttu-id="5bcce-124">Оба подхода приводят к получению закрепления плитки hello представление группы ресурсов hello.</span><span class="sxs-lookup"><span data-stu-id="5bcce-124">Both approaches result in pinning hello tile representation of hello resource group.</span></span>
+
+![Toodashboard ПИН-кода](./media/azure-portal-dashboards/pin-to-dashboard.png)
+
+<span data-ttu-id="5bcce-126">После закрепления элемента hello, он отобразится на панели мониторинга.</span><span class="sxs-lookup"><span data-stu-id="5bcce-126">After pinning hello item, it appears on your dashboard.</span></span>
+
+![просмотр панели мониторинга](./media/azure-portal-dashboards/view-dashboard.png)
+
+<span data-ttu-id="5bcce-128">Теперь, когда у нас есть плитки разметки и панели мониторинга закрепленных toohello группы ресурсов, мы можно изменять размер и расположение плиток hello в подходящее расположение.</span><span class="sxs-lookup"><span data-stu-id="5bcce-128">Now that we have a Markdown tile and a resource group pinned toohello dashboard, we can resize and rearrange hello tiles into a suitable layout.</span></span>
+
+<span data-ttu-id="5bcce-129">При наведении указателя мыши и выбрав «...» или щелкнув правой кнопкой мыши ячейку, можно увидеть все контекстные команды hello для этой плитки.</span><span class="sxs-lookup"><span data-stu-id="5bcce-129">By hovering and selecting "…" or right-clicking on a tile you can see all hello contextual commands for that tile.</span></span> <span data-ttu-id="5bcce-130">По умолчанию отображаются два пункта:</span><span class="sxs-lookup"><span data-stu-id="5bcce-130">By default, there are two items:</span></span>
+
+1. <span data-ttu-id="5bcce-131">**Изъять из панели мониторинга** — удаляет hello плитку панели мониторинга hello</span><span class="sxs-lookup"><span data-stu-id="5bcce-131">**Unpin from dashboard** – removes hello tile from hello dashboard</span></span>
+2. <span data-ttu-id="5bcce-132">**Настроить**. Эта команда позволяет включить режим настройки.</span><span class="sxs-lookup"><span data-stu-id="5bcce-132">**Customize** – enters customize mode</span></span>
+
+![настройка плитки](./media/azure-portal-dashboards/customize-tile.png)
+
+<span data-ttu-id="5bcce-134">Выбрав пункт "Настроить", можно изменить размер плиток и их порядок.</span><span class="sxs-lookup"><span data-stu-id="5bcce-134">By selecting customize, you can resize and reorder tiles.</span></span> <span data-ttu-id="5bcce-135">tooresize плитки, выберите hello новый размер hello контекстные меню, как показано в hello после изображения.</span><span class="sxs-lookup"><span data-stu-id="5bcce-135">tooresize a tile, select hello new size from hello contextual menu, as shown in hello following image.</span></span>
+
+![изменение размера плитки](./media/azure-portal-dashboards/resize-tile.png)
+
+<span data-ttu-id="5bcce-137">Или, если Плитка hello поддерживает любого размера, можно перетащить hello нижнем правом углу toohello требуемого размера.</span><span class="sxs-lookup"><span data-stu-id="5bcce-137">Or, if hello tile supports any size, you can drag hello bottom right-hand corner toohello desired size.</span></span>
+
+![изменение размера плитки](./media/azure-portal-dashboards/resize-corner.png)
+
+<span data-ttu-id="5bcce-139">После изменения размера плитки, просмотрите панель мониторинга hello.</span><span class="sxs-lookup"><span data-stu-id="5bcce-139">After resizing tiles, view hello dashboard.</span></span>
+
+![просмотр плитки](./media/azure-portal-dashboards/view-tile.png)
+
+<span data-ttu-id="5bcce-141">После завершения настройки панели мониторинга, просто выберите hello **выполняется настройка** tooexit режим настройки или щелкните правой кнопкой мыши и выберите **выполняется настройка** hello контекстном меню.</span><span class="sxs-lookup"><span data-stu-id="5bcce-141">Once you are finished customizing a dashboard, simply select hello **Done customizing** tooexit customize mode or right-click and select **Done customizing** from hello context menu.</span></span>
+
+## <a name="publish-a-dashboard-and-manage-access-control"></a><span data-ttu-id="5bcce-142">Публикация панели мониторинга и управление контролем доступа</span><span class="sxs-lookup"><span data-stu-id="5bcce-142">Publish a dashboard and manage access control</span></span>
+<span data-ttu-id="5bcce-143">При создании панели мониторинга, закрытыми по умолчанию, это означает, что являются hello единственным, кто видеть его.</span><span class="sxs-lookup"><span data-stu-id="5bcce-143">When you create a dashboard, it is private by default, which means you are hello only person who can see it.</span></span>  <span data-ttu-id="5bcce-144">toomake его видимым tooothers использовать hello **общую папку** , расположенную рядом с hello другие панели мониторинга команды.</span><span class="sxs-lookup"><span data-stu-id="5bcce-144">toomake it visible tooothers, use hello **Share** button that appears alongside hello other dashboard commands.</span></span>
+
+![предоставление общего доступа к панели мониторинга](./media/azure-portal-dashboards/share-dashboard.png)
+
+<span data-ttu-id="5bcce-146">Будет предложено toochoose публикации группы ресурса и подписки для toobe вашей панели мониторинга.</span><span class="sxs-lookup"><span data-stu-id="5bcce-146">You are asked toochoose a subscription and resource group for your dashboard toobe published to.</span></span> <span data-ttu-id="5bcce-147">tooseamlessly интегрировать панелей мониторинга в экосистеме hello, мы используем Общие панели мониторинга как ресурсы Azure (то есть нельзя предоставить общий доступ, введя адрес электронной почты).</span><span class="sxs-lookup"><span data-stu-id="5bcce-147">tooseamlessly integrate dashboards into hello ecosystem, we've implemented shared dashboards as Azure resources (so you can't share by typing an email address).</span></span>  <span data-ttu-id="5bcce-148">Доступа к данным toohello отображается большинством hello плиток в портале hello управляются [управления доступом на основе ролей Azure](../active-directory/role-based-access-control-configure.md).</span><span class="sxs-lookup"><span data-stu-id="5bcce-148">Access toohello information displayed by most of hello tiles in hello portal are governed by [Azure Role Based Access Control](../active-directory/role-based-access-control-configure.md).</span></span> <span data-ttu-id="5bcce-149">С точки зрения контроля доступа общие панели мониторинга ничем не отличаются от виртуальных машин и учетных записей хранения.</span><span class="sxs-lookup"><span data-stu-id="5bcce-149">From an access control perspective, shared dashboards are no different from a virtual machine or a storage account.</span></span>  
+
+<span data-ttu-id="5bcce-150">Предположим, что у вас есть подписка Azure и членами вашей команды были назначены роли hello **владельца**, **участника**, или **чтения** hello подписки.</span><span class="sxs-lookup"><span data-stu-id="5bcce-150">Let's say you have an Azure subscription and members of your team have been assigned hello roles of **owner**, **contributor**, or **reader** of hello subscription.</span></span>  <span data-ttu-id="5bcce-151">Пользователи, являющиеся владельцами или участники могут toolist, представление, создания, изменения и удаления панели мониторинга в этой подписке.</span><span class="sxs-lookup"><span data-stu-id="5bcce-151">Users who are owners or contributors are able toolist, view, create, modify, or delete dashboards within that subscription.</span></span>  <span data-ttu-id="5bcce-152">Пользователи, являющиеся читатели могут toolist и представление панели мониторинга, но нельзя изменить или удалить их.</span><span class="sxs-lookup"><span data-stu-id="5bcce-152">Users who are readers are able toolist and view dashboards, but cannot modify or delete them.</span></span>  <span data-ttu-id="5bcce-153">Пользователи с доступом для чтения локальные правки может toomake tooa общую информационную панель, а — не удается toopublish этих изменений назад toohello сервера.</span><span class="sxs-lookup"><span data-stu-id="5bcce-153">Users with reader access are able toomake local edits tooa shared dashboard, but are not able toopublish those changes back toohello server.</span></span>  <span data-ttu-id="5bcce-154">Тем не менее они позволяют частную копию hello панель мониторинга для собственных нужд.</span><span class="sxs-lookup"><span data-stu-id="5bcce-154">However, they can make a private copy of hello dashboard for their own use.</span></span>  <span data-ttu-id="5bcce-155">Как всегда отдельные плитки на панели мониторинга hello применять собственные правила управления доступом на основе ресурсов hello, которым они соответствуют.</span><span class="sxs-lookup"><span data-stu-id="5bcce-155">As always, individual tiles on hello dashboard enforce their own access control rules based on hello resources they correspond to.</span></span>  
+
+<span data-ttu-id="5bcce-156">Для удобства портала hello публикация качества руководства по направлению к шаблону расположения панелей мониторинга в группе ресурсов вызывается **панелей мониторинга**.</span><span class="sxs-lookup"><span data-stu-id="5bcce-156">For convenience, hello portal's publishing experience guides you towards a pattern where you place dashboards in a resource group called **dashboards**.</span></span>  
+
+![публикация панели мониторинга](./media/azure-portal-dashboards/publish-dashboard.png)
+
+<span data-ttu-id="5bcce-158">Вы также можете toopublish мониторинга tooa определенной группе ресурсов.</span><span class="sxs-lookup"><span data-stu-id="5bcce-158">You can also choose toopublish a dashboard tooa particular resource group.</span></span>  <span data-ttu-id="5bcce-159">Hello контроль доступа к этой панели мониторинга соответствует hello управления доступом для группы ресурсов hello.</span><span class="sxs-lookup"><span data-stu-id="5bcce-159">hello access control for that dashboard matches hello access control for hello resource group.</span></span>  <span data-ttu-id="5bcce-160">Пользователи, которые могут управлять ресурсами hello в этой группе ресурсов также иметь доступа к панелям мониторинга toohello.</span><span class="sxs-lookup"><span data-stu-id="5bcce-160">Users that can manage hello resources in that resource group also have access toohello dashboards.</span></span>
+
+![Публикация группы tooresource панели мониторинга](./media/azure-portal-dashboards/publish-to-resource-group.png)
+
+<span data-ttu-id="5bcce-162">После публикации панели мониторинга hello **доступ + доступа** панели управления будет обновления и отображают информацию о hello опубликованных панели мониторинга, включая ссылку доступ пользователя toomanage toohello панели мониторинга.</span><span class="sxs-lookup"><span data-stu-id="5bcce-162">After your dashboard is published, hello **Sharing + access** control pane will refresh and show you information about hello published dashboard, including a link toomanage user access toohello dashboard.</span></span>  <span data-ttu-id="5bcce-163">Эта ссылка запускает hello стандартный Role Based Access Control используется колонке toomanage доступ для любой ресурсов Azure.</span><span class="sxs-lookup"><span data-stu-id="5bcce-163">This link launches hello standard Role Based Access Control blade used toomanage access for any Azure resource.</span></span>  <span data-ttu-id="5bcce-164">Вы можете всегда вернуться toothis представление, выбрав **общего ресурса**.</span><span class="sxs-lookup"><span data-stu-id="5bcce-164">You can always get back toothis view by selecting **Share**.</span></span>
+
+![управление контролем доступа](./media/azure-portal-dashboards/manage-access.png)
+
+## <a name="next-steps"></a><span data-ttu-id="5bcce-166">Дальнейшие действия</span><span class="sxs-lookup"><span data-stu-id="5bcce-166">Next steps</span></span>
+* <span data-ttu-id="5bcce-167">см. ресурсы toomanage [ресурсы с помощью портала управления Azure](../azure-resource-manager/resource-group-portal.md).</span><span class="sxs-lookup"><span data-stu-id="5bcce-167">toomanage resources, see [Manage Azure resources through portal](../azure-resource-manager/resource-group-portal.md).</span></span>
+* <span data-ttu-id="5bcce-168">см. ресурсы toodeploy [развертывания ресурсов с помощью шаблонов диспетчера ресурсов и портал Azure](../azure-resource-manager/resource-group-template-deploy-portal.md).</span><span class="sxs-lookup"><span data-stu-id="5bcce-168">toodeploy resources, see [Deploy resources with Resource Manager templates and Azure portal](../azure-resource-manager/resource-group-template-deploy-portal.md).</span></span>
+

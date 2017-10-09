@@ -1,6 +1,6 @@
 ---
-title: "Веб-приложение Node.js, использующее службу таблиц Azure"
-description: "В этом учебнике объясняется, как использовать службу таблиц Azure для сохранения данных из приложения Node.js, которое размещено в веб-приложениях службы приложений Azure."
+title: "aaaNode.js веб-приложения с помощью hello службы таблиц Azure"
+description: "В этом учебнике показано, как toouse hello таблиц Azure службы toostore данные из приложения Node.js, которая размещается в веб-приложениях службы приложений Azure."
 tags: azure-portal
 services: app-service\web, storage
 documentationcenter: nodejs
@@ -15,82 +15,82 @@ ms.devlang: nodejs
 ms.topic: article
 ms.date: 08/17/2016
 ms.author: tarcher
-ms.openlocfilehash: 3252914934c1084a165fa39ee983d3039e04d567
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: f6e08335b4c7f62f7b3994287edd586860cb7135
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="nodejs-web-app-using-the-azure-table-service"></a><span data-ttu-id="ffb06-103">Веб-приложение Node.js, использующее службу таблиц Azure</span><span class="sxs-lookup"><span data-stu-id="ffb06-103">Node.js web app using the Azure Table Service</span></span>
-## <a name="overview"></a><span data-ttu-id="ffb06-104">Обзор</span><span class="sxs-lookup"><span data-stu-id="ffb06-104">Overview</span></span>
-<span data-ttu-id="ffb06-105">В этом руководстве показано, как использовать службу таблиц на базе службы управления данными Azure для хранения данных и доступа к ним из приложения [node], размещенного в среде веб-приложений [службы приложений Azure](http://go.microsoft.com/fwlink/?LinkId=529714).</span><span class="sxs-lookup"><span data-stu-id="ffb06-105">This tutorial shows you how to use Table service provided by Azure Data Management to store and access data from a [node] application hosted in [Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714) Web Apps.</span></span> <span data-ttu-id="ffb06-106">Этот учебный курс разработан для читателей, обладающих определенным опытом использования Node и [Git].</span><span class="sxs-lookup"><span data-stu-id="ffb06-106">This tutorial assumes that you have some prior experience using node and [Git].</span></span>
+# <a name="nodejs-web-app-using-hello-azure-table-service"></a><span data-ttu-id="4eb9f-103">Веб-приложение node.js с помощью hello службы таблиц Azure</span><span class="sxs-lookup"><span data-stu-id="4eb9f-103">Node.js web app using hello Azure Table Service</span></span>
+## <a name="overview"></a><span data-ttu-id="4eb9f-104">Обзор</span><span class="sxs-lookup"><span data-stu-id="4eb9f-104">Overview</span></span>
+<span data-ttu-id="4eb9f-105">В этом учебнике показано, как предоставляемые управление данными Azure toostore и доступ к данным из службы таблиц toouse [узел] приложение, размещенное в [службе приложений Azure](http://go.microsoft.com/fwlink/?LinkId=529714) веб-приложений.</span><span class="sxs-lookup"><span data-stu-id="4eb9f-105">This tutorial shows you how toouse Table service provided by Azure Data Management toostore and access data from a [node] application hosted in [Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714) Web Apps.</span></span> <span data-ttu-id="4eb9f-106">Этот учебный курс разработан для читателей, обладающих определенным опытом использования Node и [Git].</span><span class="sxs-lookup"><span data-stu-id="4eb9f-106">This tutorial assumes that you have some prior experience using node and [Git].</span></span>
 
-<span data-ttu-id="ffb06-107">Вы узнаете:</span><span class="sxs-lookup"><span data-stu-id="ffb06-107">You will learn:</span></span>
+<span data-ttu-id="4eb9f-107">Вы узнаете:</span><span class="sxs-lookup"><span data-stu-id="4eb9f-107">You will learn:</span></span>
 
-* <span data-ttu-id="ffb06-108">как использовать для установки модулей Node диспетчер npm (node package manager);</span><span class="sxs-lookup"><span data-stu-id="ffb06-108">How to use npm (node package manager) to install the node modules</span></span>
-* <span data-ttu-id="ffb06-109">как работать со службой таблиц Azure;</span><span class="sxs-lookup"><span data-stu-id="ffb06-109">How to work with the Azure Table service</span></span>
-* <span data-ttu-id="ffb06-110">как использовать Azure CLI для создания веб-приложения.</span><span class="sxs-lookup"><span data-stu-id="ffb06-110">How to use the Azure CLI to create a web app.</span></span>
+* <span data-ttu-id="4eb9f-108">Как tooinstall npm (узел диспетчера пакетов) toouse hello модулей узла</span><span class="sxs-lookup"><span data-stu-id="4eb9f-108">How toouse npm (node package manager) tooinstall hello node modules</span></span>
+* <span data-ttu-id="4eb9f-109">Как toowork с hello службы таблицы Azure</span><span class="sxs-lookup"><span data-stu-id="4eb9f-109">How toowork with hello Azure Table service</span></span>
+* <span data-ttu-id="4eb9f-110">Как toouse hello Azure CLI toocreate веб-приложения.</span><span class="sxs-lookup"><span data-stu-id="4eb9f-110">How toouse hello Azure CLI toocreate a web app.</span></span>
 
-<span data-ttu-id="ffb06-111">Руководствуясь этим учебником, вы создадите простое веб-приложение для управления списком дел, позволяющее создавать, извлекать и выполнять задачи.</span><span class="sxs-lookup"><span data-stu-id="ffb06-111">By following this tutorial, you will build a simple web-based "to-do list" application that allows creating, retrieving and completing tasks.</span></span> <span data-ttu-id="ffb06-112">Задачи хранятся в службе таблиц.</span><span class="sxs-lookup"><span data-stu-id="ffb06-112">The tasks are stored in the Table service.</span></span>
+<span data-ttu-id="4eb9f-111">Руководствуясь этим учебником, вы создадите простое веб-приложение для управления списком дел, позволяющее создавать, извлекать и выполнять задачи.</span><span class="sxs-lookup"><span data-stu-id="4eb9f-111">By following this tutorial, you will build a simple web-based "to-do list" application that allows creating, retrieving and completing tasks.</span></span> <span data-ttu-id="4eb9f-112">задачи Hello хранятся в hello службы таблиц.</span><span class="sxs-lookup"><span data-stu-id="4eb9f-112">hello tasks are stored in hello Table service.</span></span>
 
-<span data-ttu-id="ffb06-113">Вот готовое приложение:</span><span class="sxs-lookup"><span data-stu-id="ffb06-113">Here is the completed application:</span></span>
+<span data-ttu-id="4eb9f-113">Вот приложение hello завершена.</span><span class="sxs-lookup"><span data-stu-id="4eb9f-113">Here is hello completed application:</span></span>
 
 ![Веб-страница, показывающая пустой список задач][node-table-finished]
 
 > [!NOTE]
-> <span data-ttu-id="ffb06-115">Чтобы приступить к работе со службой приложений Azure до создания учетной записи Azure, перейдите к разделу [Пробное использование службы приложений](https://azure.microsoft.com/try/app-service/), где вы можете быстро создать кратковременное веб-приложение начального уровня в службе приложений.</span><span class="sxs-lookup"><span data-stu-id="ffb06-115">If you want to get started with Azure App Service before signing up for an Azure account, go to [Try App Service](https://azure.microsoft.com/try/app-service/), where you can immediately create a short-lived starter web app in App Service.</span></span> <span data-ttu-id="ffb06-116">Никаких кредитных карт и обязательств.</span><span class="sxs-lookup"><span data-stu-id="ffb06-116">No credit cards required; no commitments.</span></span>
+> <span data-ttu-id="4eb9f-115">Tooget работы в службе приложений Azure перед регистрацией учетную запись Azure, перейдите слишком[повторите служб приложений](https://azure.microsoft.com/try/app-service/), в котором можно немедленно создать кратковременных начальный веб-приложения в службе приложений.</span><span class="sxs-lookup"><span data-stu-id="4eb9f-115">If you want tooget started with Azure App Service before signing up for an Azure account, go too[Try App Service](https://azure.microsoft.com/try/app-service/), where you can immediately create a short-lived starter web app in App Service.</span></span> <span data-ttu-id="4eb9f-116">Никаких кредитных карт и обязательств.</span><span class="sxs-lookup"><span data-stu-id="4eb9f-116">No credit cards required; no commitments.</span></span>
 > 
 > 
 
-## <a name="prerequisites"></a><span data-ttu-id="ffb06-117">Предварительные требования</span><span class="sxs-lookup"><span data-stu-id="ffb06-117">Prerequisites</span></span>
-<span data-ttu-id="ffb06-118">Перед выполнением инструкций, приведенных в этой статье, следует убедиться, что установлены следующие компоненты:</span><span class="sxs-lookup"><span data-stu-id="ffb06-118">Before following the instructions in this article, ensure that you have the following installed:</span></span>
+## <a name="prerequisites"></a><span data-ttu-id="4eb9f-117">Предварительные требования</span><span class="sxs-lookup"><span data-stu-id="4eb9f-117">Prerequisites</span></span>
+<span data-ttu-id="4eb9f-118">Перед выполнением инструкции hello в этой статье, убедитесь, что установлены следующие компоненты hello:</span><span class="sxs-lookup"><span data-stu-id="4eb9f-118">Before following hello instructions in this article, ensure that you have hello following installed:</span></span>
 
-* <span data-ttu-id="ffb06-119">[node] версии 0.10.24 или выше</span><span class="sxs-lookup"><span data-stu-id="ffb06-119">[node] version 0.10.24 or higher</span></span>
-* <span data-ttu-id="ffb06-120">[Git]</span><span class="sxs-lookup"><span data-stu-id="ffb06-120">[Git]</span></span>
+* <span data-ttu-id="4eb9f-119">[узел] версии 0.10.24 или выше</span><span class="sxs-lookup"><span data-stu-id="4eb9f-119">[node] version 0.10.24 or higher</span></span>
+* <span data-ttu-id="4eb9f-120">[Git]</span><span class="sxs-lookup"><span data-stu-id="4eb9f-120">[Git]</span></span>
 
 [!INCLUDE [create-account-and-websites-note](../../includes/create-account-and-websites-note.md)]
 
-## <a name="create-a-storage-account"></a><span data-ttu-id="ffb06-121">Создайте учетную запись хранения.</span><span class="sxs-lookup"><span data-stu-id="ffb06-121">Create a storage account</span></span>
-<span data-ttu-id="ffb06-122">Создайте учетную запись хранения Azure.</span><span class="sxs-lookup"><span data-stu-id="ffb06-122">Create an Azure storage account.</span></span> <span data-ttu-id="ffb06-123">Это приложение использует ее для хранения списка дел.</span><span class="sxs-lookup"><span data-stu-id="ffb06-123">The app will use this account to store the to-do items.</span></span>
+## <a name="create-a-storage-account"></a><span data-ttu-id="4eb9f-121">Создайте учетную запись хранения.</span><span class="sxs-lookup"><span data-stu-id="4eb9f-121">Create a storage account</span></span>
+<span data-ttu-id="4eb9f-122">Создайте учетную запись хранения Azure.</span><span class="sxs-lookup"><span data-stu-id="4eb9f-122">Create an Azure storage account.</span></span> <span data-ttu-id="4eb9f-123">приложение Hello будет использовать этот счет toostore hello заданий для выполнения.</span><span class="sxs-lookup"><span data-stu-id="4eb9f-123">hello app will use this account toostore hello to-do items.</span></span>
 
-1. <span data-ttu-id="ffb06-124">Войдите на [портал Azure](https://portal.azure.com/).</span><span class="sxs-lookup"><span data-stu-id="ffb06-124">Log into the [Azure Portal](https://portal.azure.com/).</span></span>
-2. <span data-ttu-id="ffb06-125">Щелкните значок **Создать** в левом нижнем углу портала, затем выберите **Данные + хранилище** > **Хранилище**.</span><span class="sxs-lookup"><span data-stu-id="ffb06-125">Click the **New** icon on the bottom left of the portal, then click **Data + Storage** > **Storage**.</span></span> <span data-ttu-id="ffb06-126">Присвойте учетной записи хранения уникальное имя и создайте для нее новую [группу ресурсов](../azure-resource-manager/resource-group-overview.md).</span><span class="sxs-lookup"><span data-stu-id="ffb06-126">Give the storage account a unique name and create a new [resource group](../azure-resource-manager/resource-group-overview.md) for it.</span></span>
+1. <span data-ttu-id="4eb9f-124">Войти в hello [портала Azure](https://portal.azure.com/).</span><span class="sxs-lookup"><span data-stu-id="4eb9f-124">Log into hello [Azure Portal](https://portal.azure.com/).</span></span>
+2. <span data-ttu-id="4eb9f-125">Нажмите кнопку hello **New** значок hello нижней левом углу портала hello, нажмите кнопку **данные + хранилище** > **хранения**.</span><span class="sxs-lookup"><span data-stu-id="4eb9f-125">Click hello **New** icon on hello bottom left of hello portal, then click **Data + Storage** > **Storage**.</span></span> <span data-ttu-id="4eb9f-126">Задайте уникальное имя учетной записи хранилища hello и создайте новый [группы ресурсов](../azure-resource-manager/resource-group-overview.md) для него.</span><span class="sxs-lookup"><span data-stu-id="4eb9f-126">Give hello storage account a unique name and create a new [resource group](../azure-resource-manager/resource-group-overview.md) for it.</span></span>
    
       ![Кнопка «Создать»](./media/storage-nodejs-use-table-storage-web-site/configure-storage.png)
    
-    <span data-ttu-id="ffb06-128">После создания новой учетной записи на кнопке **Уведомления** начнет мигать зеленым слово **Успешно** и откроется колонка учетной записи хранения, в которой будет видно, что учетная запись принадлежит к созданной вами группе ресурсов.</span><span class="sxs-lookup"><span data-stu-id="ffb06-128">When the storage account has been created, the **Notifications** button will flash a green **SUCCESS** and the storage account's blade is open to show that it belongs to the new resource group you created.</span></span>
-3. <span data-ttu-id="ffb06-129">В колонке учетной записи хранения выберите **Параметры** > **Ключи**.</span><span class="sxs-lookup"><span data-stu-id="ffb06-129">In the storage account's blade, click **Settings** > **Keys**.</span></span> <span data-ttu-id="ffb06-130">Скопируйте первичный ключ доступа в буфер обмена.</span><span class="sxs-lookup"><span data-stu-id="ffb06-130">Copy the primary access key to the clipboard.</span></span>
+    <span data-ttu-id="4eb9f-128">При создании учетной записи хранилища hello hello **уведомления** кнопка будет мигать зеленым **успех** и учетной записи хранилища hello колонке открыт tooshow, что оно принадлежит новый ресурс toohello группы создать.</span><span class="sxs-lookup"><span data-stu-id="4eb9f-128">When hello storage account has been created, hello **Notifications** button will flash a green **SUCCESS** and hello storage account's blade is open tooshow that it belongs toohello new resource group you created.</span></span>
+3. <span data-ttu-id="4eb9f-129">В колонке учетной записи хранилища hello щелкните **параметры** > **ключей**.</span><span class="sxs-lookup"><span data-stu-id="4eb9f-129">In hello storage account's blade, click **Settings** > **Keys**.</span></span> <span data-ttu-id="4eb9f-130">Скопировать hello доступа первичного ключа toohello буфер обмена.</span><span class="sxs-lookup"><span data-stu-id="4eb9f-130">Copy hello primary access key toohello clipboard.</span></span>
    
     ![Ключ доступа][portal-storage-access-keys]
 
-## <a name="install-modules-and-generate-scaffolding"></a><span data-ttu-id="ffb06-132">Установка модулей и создание шаблонов</span><span class="sxs-lookup"><span data-stu-id="ffb06-132">Install modules and generate scaffolding</span></span>
-<span data-ttu-id="ffb06-133">В этом разделе вы создадите новое приложение Node и добавите пакеты модулей с помощью npm.</span><span class="sxs-lookup"><span data-stu-id="ffb06-133">In this section you will create a new Node application and use npm to add module packages.</span></span> <span data-ttu-id="ffb06-134">Для этого приложения вы используете модули [Express] и [Azure].</span><span class="sxs-lookup"><span data-stu-id="ffb06-134">For this application you will use the [Express] and [Azure] modules.</span></span> <span data-ttu-id="ffb06-135">Модуль Express предоставляет платформу Model View Controller (Контроллер представления модели) для Node, а модули Azure предоставляют возможность подключения к службе таблиц.</span><span class="sxs-lookup"><span data-stu-id="ffb06-135">The Express module provides a Model View Controller framework for node, while the Azure modules provides connectivity to the Table service.</span></span>
+## <a name="install-modules-and-generate-scaffolding"></a><span data-ttu-id="4eb9f-132">Установка модулей и создание шаблонов</span><span class="sxs-lookup"><span data-stu-id="4eb9f-132">Install modules and generate scaffolding</span></span>
+<span data-ttu-id="4eb9f-133">В этом разделе будет создание нового узла приложения и использовать пакеты модуля tooadd npm.</span><span class="sxs-lookup"><span data-stu-id="4eb9f-133">In this section you will create a new Node application and use npm tooadd module packages.</span></span> <span data-ttu-id="4eb9f-134">Для этого приложения будет использовать hello [Express] и [Azure] модулей.</span><span class="sxs-lookup"><span data-stu-id="4eb9f-134">For this application you will use hello [Express] and [Azure] modules.</span></span> <span data-ttu-id="4eb9f-135">модуль экспресс-выпуск Hello инфраструктура Model View Controller для узла, при hello модули Azure предоставляет таблицу toohello подключения службы.</span><span class="sxs-lookup"><span data-stu-id="4eb9f-135">hello Express module provides a Model View Controller framework for node, while hello Azure modules provides connectivity toohello Table service.</span></span>
 
-### <a name="install-express-and-generate-scaffolding"></a><span data-ttu-id="ffb06-136">Установка модуля Express и формирование шаблонов</span><span class="sxs-lookup"><span data-stu-id="ffb06-136">Install express and generate scaffolding</span></span>
-1. <span data-ttu-id="ffb06-137">Из командной строки создайте новый каталог **tasklist** и перейдите в него.</span><span class="sxs-lookup"><span data-stu-id="ffb06-137">From the command line, create a new directory named **tasklist** and switch to that directory.</span></span>  
-2. <span data-ttu-id="ffb06-138">Введите следующую команду для установки модуля Express.</span><span class="sxs-lookup"><span data-stu-id="ffb06-138">Enter the following command to install the Express module.</span></span>
+### <a name="install-express-and-generate-scaffolding"></a><span data-ttu-id="4eb9f-136">Установка модуля Express и формирование шаблонов</span><span class="sxs-lookup"><span data-stu-id="4eb9f-136">Install express and generate scaffolding</span></span>
+1. <span data-ttu-id="4eb9f-137">Из командной строки hello, создайте новый каталог с именем **tasklist** и каталог toothat коммутатора.</span><span class="sxs-lookup"><span data-stu-id="4eb9f-137">From hello command line, create a new directory named **tasklist** and switch toothat directory.</span></span>  
+2. <span data-ttu-id="4eb9f-138">Введите следующие команды tooinstall hello Express модуля hello.</span><span class="sxs-lookup"><span data-stu-id="4eb9f-138">Enter hello following command tooinstall hello Express module.</span></span>
    
         npm install express-generator@4.2.0 -g
    
-    <span data-ttu-id="ffb06-139">В зависимости от операционной системы вам может потребоваться указать «sudo» перед командой:</span><span class="sxs-lookup"><span data-stu-id="ffb06-139">Depending on the operating system, you may need to put 'sudo' before the command:</span></span>
+    <span data-ttu-id="4eb9f-139">В зависимости от операционной системы hello может потребоваться tooput «sudo» перед командой hello.</span><span class="sxs-lookup"><span data-stu-id="4eb9f-139">Depending on hello operating system, you may need tooput 'sudo' before hello command:</span></span>
    
         sudo npm install express-generator@4.2.0 -g
    
-    <span data-ttu-id="ffb06-140">Выходные данные выглядят следующим образом:</span><span class="sxs-lookup"><span data-stu-id="ffb06-140">The output appears similar to the following example:</span></span>
+    <span data-ttu-id="4eb9f-140">Hello выходные данные отображаются как toohello, в следующем примере:</span><span class="sxs-lookup"><span data-stu-id="4eb9f-140">hello output appears similar toohello following example:</span></span>
    
         express-generator@4.2.0 /usr/local/lib/node_modules/express-generator
         ├── mkdirp@0.3.5
         └── commander@1.3.2 (keypress@0.1.0)
    
    > [!NOTE]
-   > <span data-ttu-id="ffb06-141">Параметр -g указывает на то, что модуль устанавливается глобально.</span><span class="sxs-lookup"><span data-stu-id="ffb06-141">The '-g' parameter installs the module globally.</span></span> <span data-ttu-id="ffb06-142">В результате мы сможем использовать **express** для создания шаблонов веб-приложения без необходимости вводить дополнительные сведения о пути.</span><span class="sxs-lookup"><span data-stu-id="ffb06-142">That way, we can use **express** to generate web app scaffolding without having to type in additional path information.</span></span>
+   > <span data-ttu-id="4eb9f-141">Hello "-g" параметр устанавливает модуль hello глобально.</span><span class="sxs-lookup"><span data-stu-id="4eb9f-141">hello '-g' parameter installs hello module globally.</span></span> <span data-ttu-id="4eb9f-142">Таким образом, мы используем **express** toogenerate формирование приложения без необходимости tootype в Дополнительные сведения о пути.</span><span class="sxs-lookup"><span data-stu-id="4eb9f-142">That way, we can use **express** toogenerate web app scaffolding without having tootype in additional path information.</span></span>
    > 
    > 
-3. <span data-ttu-id="ffb06-143">Чтобы создать шаблоны для этого приложения, введите команду **express** :</span><span class="sxs-lookup"><span data-stu-id="ffb06-143">To create the scaffolding for the application, enter the **express** command:</span></span>
+3. <span data-ttu-id="4eb9f-143">Формирование шаблонов hello toocreate для приложения hello введите hello **express** команды:</span><span class="sxs-lookup"><span data-stu-id="4eb9f-143">toocreate hello scaffolding for hello application, enter hello **express** command:</span></span>
    
         express
    
-    <span data-ttu-id="ffb06-144">Выходные данные этой команды выглядят следующим образом:</span><span class="sxs-lookup"><span data-stu-id="ffb06-144">The output of this command appears similar to the following example:</span></span>
+    <span data-ttu-id="4eb9f-144">Hello выходные данные этой команды появится примерно toohello в следующем примере:</span><span class="sxs-lookup"><span data-stu-id="4eb9f-144">hello output of this command appears similar toohello following example:</span></span>
    
            create : .
            create : ./package.json
@@ -113,19 +113,19 @@ ms.lasthandoff: 08/18/2017
            install dependencies:
              $ cd . && npm install
    
-           run the app:
+           run hello app:
              $ DEBUG=my-application ./bin/www
    
-    <span data-ttu-id="ffb06-145">В каталоге **tasklist** появится несколько новых папок и файлов.</span><span class="sxs-lookup"><span data-stu-id="ffb06-145">You now have several new directories and files in the **tasklist** directory.</span></span>
+    <span data-ttu-id="4eb9f-145">Теперь у вас есть несколько новые каталоги и файлы в hello **tasklist** каталога.</span><span class="sxs-lookup"><span data-stu-id="4eb9f-145">You now have several new directories and files in hello **tasklist** directory.</span></span>
 
-### <a name="install-additional-modules"></a><span data-ttu-id="ffb06-146">Установка дополнительных модулей</span><span class="sxs-lookup"><span data-stu-id="ffb06-146">Install additional modules</span></span>
-<span data-ttu-id="ffb06-147">Модуль **express**, в частности, создает файл **package.json**.</span><span class="sxs-lookup"><span data-stu-id="ffb06-147">One of the files that **express** creates is **package.json**.</span></span> <span data-ttu-id="ffb06-148">Этот файл содержит список зависимостей модуля.</span><span class="sxs-lookup"><span data-stu-id="ffb06-148">This file contains a list of module dependencies.</span></span> <span data-ttu-id="ffb06-149">Позднее, при развертывании приложения в веб-приложениях службы приложений, этот файл будет определять, какие модули должны быть установлены в Azure.</span><span class="sxs-lookup"><span data-stu-id="ffb06-149">Later, when you deploy the application to App Service Web Apps, this file determines which modules need to be installed on Azure.</span></span>
+### <a name="install-additional-modules"></a><span data-ttu-id="4eb9f-146">Установка дополнительных модулей</span><span class="sxs-lookup"><span data-stu-id="4eb9f-146">Install additional modules</span></span>
+<span data-ttu-id="4eb9f-147">Один из hello файлов, **express** создает — **package.json**.</span><span class="sxs-lookup"><span data-stu-id="4eb9f-147">One of hello files that **express** creates is **package.json**.</span></span> <span data-ttu-id="4eb9f-148">Этот файл содержит список зависимостей модуля.</span><span class="sxs-lookup"><span data-stu-id="4eb9f-148">This file contains a list of module dependencies.</span></span> <span data-ttu-id="4eb9f-149">Позже при развертывании приложения hello tooApp службы веб-приложений, этот файл определяет, какие модули должны toobe установлен в Azure.</span><span class="sxs-lookup"><span data-stu-id="4eb9f-149">Later, when you deploy hello application tooApp Service Web Apps, this file determines which modules need toobe installed on Azure.</span></span>
 
-<span data-ttu-id="ffb06-150">В командной строке введите следующую команду, чтобы установить модули, описанные в файле **package.json**.</span><span class="sxs-lookup"><span data-stu-id="ffb06-150">From the command-line, enter the following command to install the modules described in the **package.json** file.</span></span> <span data-ttu-id="ffb06-151">Может потребоваться использовать «sudo» в командной строке.</span><span class="sxs-lookup"><span data-stu-id="ffb06-151">You may need to use 'sudo'.</span></span>
+<span data-ttu-id="4eb9f-150">Из командной строки hello, введите следующие команды tooinstall hello модулей, описанных в hello hello **package.json** файла.</span><span class="sxs-lookup"><span data-stu-id="4eb9f-150">From hello command-line, enter hello following command tooinstall hello modules described in hello **package.json** file.</span></span> <span data-ttu-id="4eb9f-151">Может потребоваться toouse «sudo».</span><span class="sxs-lookup"><span data-stu-id="4eb9f-151">You may need toouse 'sudo'.</span></span>
 
     npm install
 
-<span data-ttu-id="ffb06-152">Выходные данные этой команды выглядят следующим образом:</span><span class="sxs-lookup"><span data-stu-id="ffb06-152">The output of this command appears similar to the following example:</span></span>
+<span data-ttu-id="4eb9f-152">Hello выходные данные этой команды появится примерно toohello в следующем примере:</span><span class="sxs-lookup"><span data-stu-id="4eb9f-152">hello output of this command appears similar toohello following example:</span></span>
 
     debug@0.7.4 node_modules\debug
 
@@ -136,13 +136,13 @@ ms.lasthandoff: 08/18/2017
     [...]
 
 
-<span data-ttu-id="ffb06-153">Теперь введите следующую команду, чтобы установить модули [azure], [node-uuid], [nconf] и [async]:</span><span class="sxs-lookup"><span data-stu-id="ffb06-153">Next, enter the following command to install the [azure], [node-uuid], [nconf] and [async] modules:</span></span>
+<span data-ttu-id="4eb9f-153">Затем введите следующая команда tooinstall hello hello [azure], [узел uuid], [nconf] и [async] модули:</span><span class="sxs-lookup"><span data-stu-id="4eb9f-153">Next, enter hello following command tooinstall hello [azure], [node-uuid], [nconf] and [async] modules:</span></span>
 
     npm install azure-storage node-uuid async nconf --save
 
-<span data-ttu-id="ffb06-154">Флаг **--save** добавляет записи для этих модулей в файл **package.json**.</span><span class="sxs-lookup"><span data-stu-id="ffb06-154">The **--save** flag adds entries for these modules to the **package.json** file.</span></span>
+<span data-ttu-id="4eb9f-154">Hello **--Сохранить** флаг добавляет записи для этих модулей toohello **package.json** файла.</span><span class="sxs-lookup"><span data-stu-id="4eb9f-154">hello **--save** flag adds entries for these modules toohello **package.json** file.</span></span>
 
-<span data-ttu-id="ffb06-155">Выходные данные этой команды выглядят следующим образом:</span><span class="sxs-lookup"><span data-stu-id="ffb06-155">The output of this command appears similar to the following example:</span></span>
+<span data-ttu-id="4eb9f-155">Hello выходные данные этой команды появится примерно toohello в следующем примере:</span><span class="sxs-lookup"><span data-stu-id="4eb9f-155">hello output of this command appears similar toohello following example:</span></span>
 
     async@0.9.0 node_modules\async
 
@@ -156,28 +156,28 @@ ms.lasthandoff: 08/18/2017
     [...]
 
 
-## <a name="create-the-application"></a><span data-ttu-id="ffb06-156">Создание приложения</span><span class="sxs-lookup"><span data-stu-id="ffb06-156">Create the application</span></span>
-<span data-ttu-id="ffb06-157">Теперь все готово к созданию приложения.</span><span class="sxs-lookup"><span data-stu-id="ffb06-157">Now we're ready to build the application.</span></span>
+## <a name="create-hello-application"></a><span data-ttu-id="4eb9f-156">Создание приложения hello</span><span class="sxs-lookup"><span data-stu-id="4eb9f-156">Create hello application</span></span>
+<span data-ttu-id="4eb9f-157">Теперь мы готовы toobuild приложения hello.</span><span class="sxs-lookup"><span data-stu-id="4eb9f-157">Now we're ready toobuild hello application.</span></span>
 
-### <a name="create-a-model"></a><span data-ttu-id="ffb06-158">Создание модели</span><span class="sxs-lookup"><span data-stu-id="ffb06-158">Create a model</span></span>
-<span data-ttu-id="ffb06-159">*Модель* — это объект, который представляет данные в приложении.</span><span class="sxs-lookup"><span data-stu-id="ffb06-159">A *model* is an object that represents the data in your application.</span></span> <span data-ttu-id="ffb06-160">В нашем приложении единственной моделью является объект задачи, который представляет собой элемент списка дел.</span><span class="sxs-lookup"><span data-stu-id="ffb06-160">For the application, the only model is a task object, which represents an item in the to-do list.</span></span> <span data-ttu-id="ffb06-161">У каждой задачи есть следующие поля:</span><span class="sxs-lookup"><span data-stu-id="ffb06-161">Tasks will have the following fields:</span></span>
+### <a name="create-a-model"></a><span data-ttu-id="4eb9f-158">Создание модели</span><span class="sxs-lookup"><span data-stu-id="4eb9f-158">Create a model</span></span>
+<span data-ttu-id="4eb9f-159">Объект *модель* — это объект, представляющий данные hello в приложении.</span><span class="sxs-lookup"><span data-stu-id="4eb9f-159">A *model* is an object that represents hello data in your application.</span></span> <span data-ttu-id="4eb9f-160">Для приложения hello hello только модель — объект задачи, который представляет элемент в список дел hello.</span><span class="sxs-lookup"><span data-stu-id="4eb9f-160">For hello application, hello only model is a task object, which represents an item in hello to-do list.</span></span> <span data-ttu-id="4eb9f-161">Задачи будут иметь hello следующие поля:</span><span class="sxs-lookup"><span data-stu-id="4eb9f-161">Tasks will have hello following fields:</span></span>
 
-* <span data-ttu-id="ffb06-162">PartitionKey</span><span class="sxs-lookup"><span data-stu-id="ffb06-162">PartitionKey</span></span>
-* <span data-ttu-id="ffb06-163">RowKey</span><span class="sxs-lookup"><span data-stu-id="ffb06-163">RowKey</span></span>
-* <span data-ttu-id="ffb06-164">name (строка)</span><span class="sxs-lookup"><span data-stu-id="ffb06-164">name (string)</span></span>
-* <span data-ttu-id="ffb06-165">category (строка)</span><span class="sxs-lookup"><span data-stu-id="ffb06-165">category (string)</span></span>
-* <span data-ttu-id="ffb06-166">completed (логическое значение)</span><span class="sxs-lookup"><span data-stu-id="ffb06-166">completed (Boolean)</span></span>
+* <span data-ttu-id="4eb9f-162">PartitionKey</span><span class="sxs-lookup"><span data-stu-id="4eb9f-162">PartitionKey</span></span>
+* <span data-ttu-id="4eb9f-163">RowKey</span><span class="sxs-lookup"><span data-stu-id="4eb9f-163">RowKey</span></span>
+* <span data-ttu-id="4eb9f-164">name (строка)</span><span class="sxs-lookup"><span data-stu-id="4eb9f-164">name (string)</span></span>
+* <span data-ttu-id="4eb9f-165">category (строка)</span><span class="sxs-lookup"><span data-stu-id="4eb9f-165">category (string)</span></span>
+* <span data-ttu-id="4eb9f-166">completed (логическое значение)</span><span class="sxs-lookup"><span data-stu-id="4eb9f-166">completed (Boolean)</span></span>
 
-<span data-ttu-id="ffb06-167">Поля **PartitionKey** и **RowKey** используются службой таблиц в качестве ключей таблиц.</span><span class="sxs-lookup"><span data-stu-id="ffb06-167">**PartitionKey** and **RowKey** are used by the Table Service as table keys.</span></span> <span data-ttu-id="ffb06-168">Дополнительные сведения см. в статье [Understanding the Table Service Data Model](https://msdn.microsoft.com/library/azure/dd179338.aspx) (Общие сведения о модели данных службы таблиц).</span><span class="sxs-lookup"><span data-stu-id="ffb06-168">For more information, see [Understanding the Table Service data model](https://msdn.microsoft.com/library/azure/dd179338.aspx).</span></span>
+<span data-ttu-id="4eb9f-167">**PartitionKey** и **RowKey** используются hello службы таблиц как ключи таблицы.</span><span class="sxs-lookup"><span data-stu-id="4eb9f-167">**PartitionKey** and **RowKey** are used by hello Table Service as table keys.</span></span> <span data-ttu-id="4eb9f-168">Дополнительные сведения см. в разделе [модели данных службы таблиц hello основные сведения о](https://msdn.microsoft.com/library/azure/dd179338.aspx).</span><span class="sxs-lookup"><span data-stu-id="4eb9f-168">For more information, see [Understanding hello Table Service data model](https://msdn.microsoft.com/library/azure/dd179338.aspx).</span></span>
 
-1. <span data-ttu-id="ffb06-169">В каталоге **tasklist** создайте каталог с именем **models**.</span><span class="sxs-lookup"><span data-stu-id="ffb06-169">In the **tasklist** directory, create a new directory named **models**.</span></span>
-2. <span data-ttu-id="ffb06-170">В каталоге **models** создайте файл с именем **task.js**.</span><span class="sxs-lookup"><span data-stu-id="ffb06-170">In the **models** directory, create a new file named **task.js**.</span></span> <span data-ttu-id="ffb06-171">Этот файл будет содержать модель для задач, создаваемых приложением.</span><span class="sxs-lookup"><span data-stu-id="ffb06-171">This file will contain the model for the tasks created by your application.</span></span>
-3. <span data-ttu-id="ffb06-172">В начале файла **task.js** добавьте следующий код для ссылки на необходимые библиотеки:</span><span class="sxs-lookup"><span data-stu-id="ffb06-172">At the beginning of the **task.js** file, add the following code to reference required libraries:</span></span>
+1. <span data-ttu-id="4eb9f-169">В hello **tasklist** каталога, создайте новый каталог с именем **моделей**.</span><span class="sxs-lookup"><span data-stu-id="4eb9f-169">In hello **tasklist** directory, create a new directory named **models**.</span></span>
+2. <span data-ttu-id="4eb9f-170">В hello **моделей** каталога, создайте новый файл с именем **task.js**.</span><span class="sxs-lookup"><span data-stu-id="4eb9f-170">In hello **models** directory, create a new file named **task.js**.</span></span> <span data-ttu-id="4eb9f-171">Этот файл будет содержать hello модель для hello задачи, созданные вашим приложением.</span><span class="sxs-lookup"><span data-stu-id="4eb9f-171">This file will contain hello model for hello tasks created by your application.</span></span>
+3. <span data-ttu-id="4eb9f-172">В начале hello hello **task.js** файл, добавить следующие tooreference необходимые библиотеки кода hello:</span><span class="sxs-lookup"><span data-stu-id="4eb9f-172">At hello beginning of hello **task.js** file, add hello following code tooreference required libraries:</span></span>
    
         var azure = require('azure-storage');
           var uuid = require('node-uuid');
         var entityGen = azure.TableUtilities.entityGenerator;
-4. <span data-ttu-id="ffb06-173">Добавьте приведенный ниже код, чтобы определить и экспортировать объект Task.</span><span class="sxs-lookup"><span data-stu-id="ffb06-173">Add the following code to define and export the Task object.</span></span> <span data-ttu-id="ffb06-174">Этот объект отвечает за подключение к таблице.</span><span class="sxs-lookup"><span data-stu-id="ffb06-174">This object is responsible for connecting to the table.</span></span>
+4. <span data-ttu-id="4eb9f-173">Добавьте следующую hello кода toodefine и экспорт hello объекта задачи.</span><span class="sxs-lookup"><span data-stu-id="4eb9f-173">Add hello following code toodefine and export hello Task object.</span></span> <span data-ttu-id="4eb9f-174">Этот объект отвечает за подключение toohello таблицы.</span><span class="sxs-lookup"><span data-stu-id="4eb9f-174">This object is responsible for connecting toohello table.</span></span>
    
           module.exports = Task;
    
@@ -191,7 +191,7 @@ ms.lasthandoff: 08/18/2017
             }
           });
         };
-5. <span data-ttu-id="ffb06-175">Добавьте следующий код, определяющий для объекта Task дополнительные методы, которые позволяют взаимодействовать с данными, хранящимися в таблице:</span><span class="sxs-lookup"><span data-stu-id="ffb06-175">Add the following code to define additional methods on the Task object, which allow interactions with data stored in the table:</span></span>
+5. <span data-ttu-id="4eb9f-175">Добавьте hello, следующие дополнительные методы toodefine кода hello объекта задачи, которые позволяют взаимодействия с данными, хранящимися в таблице hello:</span><span class="sxs-lookup"><span data-stu-id="4eb9f-175">Add hello following code toodefine additional methods on hello Task object, which allow interactions with data stored in hello table:</span></span>
    
         Task.prototype = {
           find: function(query, callback) {
@@ -207,7 +207,7 @@ ms.lasthandoff: 08/18/2017
    
           addItem: function(item, callback) {
             self = this;
-            // use entityGenerator to set types
+            // use entityGenerator tooset types
             // NOTE: RowKey must be a string type, even though
             // it contains a GUID in this example.
             var itemDescriptor = {
@@ -241,24 +241,24 @@ ms.lasthandoff: 08/18/2017
             });
           }
         }
-6. <span data-ttu-id="ffb06-176">Сохраните и закройте файл **task.js** .</span><span class="sxs-lookup"><span data-stu-id="ffb06-176">Save and close the **task.js** file.</span></span>
+6. <span data-ttu-id="4eb9f-176">Сохраните и закройте hello **task.js** файла.</span><span class="sxs-lookup"><span data-stu-id="4eb9f-176">Save and close hello **task.js** file.</span></span>
 
-### <a name="create-a-controller"></a><span data-ttu-id="ffb06-177">Создание контроллера</span><span class="sxs-lookup"><span data-stu-id="ffb06-177">Create a controller</span></span>
-<span data-ttu-id="ffb06-178">*Контроллер* обрабатывает HTTP-запросы и отображает HTML-ответ.</span><span class="sxs-lookup"><span data-stu-id="ffb06-178">A *controller* handles HTTP requests and renders the HTML response.</span></span>
+### <a name="create-a-controller"></a><span data-ttu-id="4eb9f-177">Создание контроллера</span><span class="sxs-lookup"><span data-stu-id="4eb9f-177">Create a controller</span></span>
+<span data-ttu-id="4eb9f-178">Объект *контроллера* обрабатывает HTTP-запросы и отображает hello HTML-ответа.</span><span class="sxs-lookup"><span data-stu-id="4eb9f-178">A *controller* handles HTTP requests and renders hello HTML response.</span></span>
 
-1. <span data-ttu-id="ffb06-179">В каталоге **tasklist/routes** создайте файл с именем **tasklist.js** и откройте его в текстовом редакторе.</span><span class="sxs-lookup"><span data-stu-id="ffb06-179">In the **tasklist/routes** directory, create a new file named **tasklist.js** and open it in a text editor.</span></span>
-2. <span data-ttu-id="ffb06-180">Добавьте в **tasklist.js**следующий код.</span><span class="sxs-lookup"><span data-stu-id="ffb06-180">Add the following code to **tasklist.js**.</span></span> <span data-ttu-id="ffb06-181">Он загружает модули azure и async, используемые **tasklist.js**.</span><span class="sxs-lookup"><span data-stu-id="ffb06-181">This loads the azure and async modules, which are used by **tasklist.js**.</span></span> <span data-ttu-id="ffb06-182">Он также определяет функцию **TaskList**, передающую экземпляр объекта **Task**, определенного ранее:</span><span class="sxs-lookup"><span data-stu-id="ffb06-182">This also defines the **TaskList** function, which is passed an instance of the **Task** object we defined earlier:</span></span>
+1. <span data-ttu-id="4eb9f-179">В hello **tasklist/маршруты** каталога, создайте новый файл с именем **tasklist.js** и откройте его в текстовом редакторе.</span><span class="sxs-lookup"><span data-stu-id="4eb9f-179">In hello **tasklist/routes** directory, create a new file named **tasklist.js** and open it in a text editor.</span></span>
+2. <span data-ttu-id="4eb9f-180">Добавьте следующий код слишком hello**tasklist.js**.</span><span class="sxs-lookup"><span data-stu-id="4eb9f-180">Add hello following code too**tasklist.js**.</span></span> <span data-ttu-id="4eb9f-181">Это загружает hello azure и async модули, в которых используются **tasklist.js**.</span><span class="sxs-lookup"><span data-stu-id="4eb9f-181">This loads hello azure and async modules, which are used by **tasklist.js**.</span></span> <span data-ttu-id="4eb9f-182">Этот параметр также определяет hello **TaskList** функции, которая передается экземпляр hello **задачи** объекта было определено ранее:</span><span class="sxs-lookup"><span data-stu-id="4eb9f-182">This also defines hello **TaskList** function, which is passed an instance of hello **Task** object we defined earlier:</span></span>
    
         var azure = require('azure-storage');
         var async = require('async');
    
         module.exports = TaskList;
-3. <span data-ttu-id="ffb06-183">Определите объект **TaskList** .</span><span class="sxs-lookup"><span data-stu-id="ffb06-183">Define a **TaskList** object.</span></span>
+3. <span data-ttu-id="4eb9f-183">Определите объект **TaskList** .</span><span class="sxs-lookup"><span data-stu-id="4eb9f-183">Define a **TaskList** object.</span></span>
    
         function TaskList(task) {
           this.task = task;
         }
-4. <span data-ttu-id="ffb06-184">Добавьте в объект **TaskList**следующие методы:</span><span class="sxs-lookup"><span data-stu-id="ffb06-184">Add the following methods to **TaskList**:</span></span>
+4. <span data-ttu-id="4eb9f-184">Добавьте следующие методы слишком hello**TaskList**:</span><span class="sxs-lookup"><span data-stu-id="4eb9f-184">Add hello following methods too**TaskList**:</span></span>
    
         TaskList.prototype = {
           showTasks: function(req, res) {
@@ -302,9 +302,9 @@ ms.lasthandoff: 08/18/2017
           }
         }
 
-### <a name="modify-appjs"></a><span data-ttu-id="ffb06-185">Изменение app.js</span><span class="sxs-lookup"><span data-stu-id="ffb06-185">Modify app.js</span></span>
-1. <span data-ttu-id="ffb06-186">В каталоге **tasklist** откройте файл **app.js**.</span><span class="sxs-lookup"><span data-stu-id="ffb06-186">From the **tasklist** directory, open the **app.js** file.</span></span> <span data-ttu-id="ffb06-187">Этот файл был создан ранее с помощью команды **express** .</span><span class="sxs-lookup"><span data-stu-id="ffb06-187">This file was created earlier by running the **express** command.</span></span>
-2. <span data-ttu-id="ffb06-188">В начале файла добавьте следующий код для загрузки модуля azure, задайте имя таблицы, ключ раздела, а также учетные данные хранения, используемые в этом примере:</span><span class="sxs-lookup"><span data-stu-id="ffb06-188">At the beginning of the file, add the following to load the azure module, set the table name, partition key, and set the storage credentials used by this example:</span></span>
+### <a name="modify-appjs"></a><span data-ttu-id="4eb9f-185">Изменение app.js</span><span class="sxs-lookup"><span data-stu-id="4eb9f-185">Modify app.js</span></span>
+1. <span data-ttu-id="4eb9f-186">Из hello **tasklist** каталог, откройте hello **в файле app.js** файл.</span><span class="sxs-lookup"><span data-stu-id="4eb9f-186">From hello **tasklist** directory, open hello **app.js** file.</span></span> <span data-ttu-id="4eb9f-187">Этот файл был создан ранее, запустив hello **express** команды.</span><span class="sxs-lookup"><span data-stu-id="4eb9f-187">This file was created earlier by running hello **express** command.</span></span>
+2. <span data-ttu-id="4eb9f-188">В начале файла hello hello, добавьте следующие tooload hello azure модуля, имя таблицы hello набора, ключа секции и набор hello хранилища учетные данные, используемые в этом примере hello:</span><span class="sxs-lookup"><span data-stu-id="4eb9f-188">At hello beginning of hello file, add hello following tooload hello azure module, set hello table name, partition key, and set hello storage credentials used by this example:</span></span>
    
         var azure = require('azure-storage');
         var nconf = require('nconf');
@@ -316,15 +316,15 @@ ms.lasthandoff: 08/18/2017
         var accountKey = nconf.get("STORAGE_KEY");
    
    > [!NOTE]
-   > <span data-ttu-id="ffb06-189">nconf загружает значения конфигурации либо из переменных среды, либо из файла **config.json** , который мы создадим позднее.</span><span class="sxs-lookup"><span data-stu-id="ffb06-189">nconf will load the configuration values from either environment variables or the **config.json** file, which we will create later.</span></span>
+   > <span data-ttu-id="4eb9f-189">nconf загружает значения конфигурации hello из переменных среды или hello **config.json** файл, который мы создадим позже.</span><span class="sxs-lookup"><span data-stu-id="4eb9f-189">nconf will load hello configuration values from either environment variables or hello **config.json** file, which we will create later.</span></span>
    > 
    > 
-3. <span data-ttu-id="ffb06-190">Прокрутите файл app.js вниз до появления следующей строки:</span><span class="sxs-lookup"><span data-stu-id="ffb06-190">In the app.js file, scroll down to where you see the following line:</span></span>
+3. <span data-ttu-id="4eb9f-190">В файле в файле app.js hello, прокрутите вниз toowhere вы видите hello следующую строку:</span><span class="sxs-lookup"><span data-stu-id="4eb9f-190">In hello app.js file, scroll down toowhere you see hello following line:</span></span>
    
         app.use('/', routes);
         app.use('/users', users);
    
-    <span data-ttu-id="ffb06-191">Замените вышеприведенные строки на код, приведенный ниже.</span><span class="sxs-lookup"><span data-stu-id="ffb06-191">Replace the above lines with the code shown below.</span></span> <span data-ttu-id="ffb06-192">Код инициализирует экземпляр <strong>Task</strong> , используя подключение к вашей учетной записи хранения.</span><span class="sxs-lookup"><span data-stu-id="ffb06-192">This will initialize an instance of <strong>Task</strong> with a connection to your storage account.</span></span> <span data-ttu-id="ffb06-193">Он передается в <strong>TaskList</strong>, где будет использоваться для обмена данными со службой таблиц:</span><span class="sxs-lookup"><span data-stu-id="ffb06-193">This is passed to the <strong>TaskList</strong>, which will use it to communicate with the Table service:</span></span>
+    <span data-ttu-id="4eb9f-191">Замените приведенный ниже код hello hello выше строк.</span><span class="sxs-lookup"><span data-stu-id="4eb9f-191">Replace hello above lines with hello code shown below.</span></span> <span data-ttu-id="4eb9f-192">Это будет инициализировать экземпляр <strong>задачи</strong> с учетной записью хранилища tooyour соединения.</span><span class="sxs-lookup"><span data-stu-id="4eb9f-192">This will initialize an instance of <strong>Task</strong> with a connection tooyour storage account.</span></span> <span data-ttu-id="4eb9f-193">Аргумент передается toohello <strong>TaskList</strong>, который будет использовать toocommunicate с hello службы таблиц:</span><span class="sxs-lookup"><span data-stu-id="4eb9f-193">This is passed toohello <strong>TaskList</strong>, which will use it toocommunicate with hello Table service:</span></span>
    
         var TaskList = require('./routes/tasklist');
         var Task = require('./models/task');
@@ -334,11 +334,11 @@ ms.lasthandoff: 08/18/2017
         app.get('/', taskList.showTasks.bind(taskList));
         app.post('/addtask', taskList.addTask.bind(taskList));
         app.post('/completetask', taskList.completeTask.bind(taskList));
-4. <span data-ttu-id="ffb06-194">Сохраните файл **app.js** .</span><span class="sxs-lookup"><span data-stu-id="ffb06-194">Save the **app.js** file.</span></span>
+4. <span data-ttu-id="4eb9f-194">Сохранить hello **в файле app.js** файл.</span><span class="sxs-lookup"><span data-stu-id="4eb9f-194">Save hello **app.js** file.</span></span>
 
-### <a name="modify-the-index-view"></a><span data-ttu-id="ffb06-195">Изменение представления индекса</span><span class="sxs-lookup"><span data-stu-id="ffb06-195">Modify the index view</span></span>
-1. <span data-ttu-id="ffb06-196">Откройте файл **tasklist/views/index.jade** в текстовом редакторе.</span><span class="sxs-lookup"><span data-stu-id="ffb06-196">Open the **tasklist/views/index.jade** file in a text editor.</span></span>
-2. <span data-ttu-id="ffb06-197">Замените все содержимое файла следующим кодом.</span><span class="sxs-lookup"><span data-stu-id="ffb06-197">Replace the entire contents of the file with the following code.</span></span> <span data-ttu-id="ffb06-198">Он определяет представление, в котором отображаются существующие задачи и содержится форма для добавления новых задач и пометки существующих как завершенных.</span><span class="sxs-lookup"><span data-stu-id="ffb06-198">This defines a view that displays existing tasks and includes a form for adding new tasks and marking existing ones as completed.</span></span>
+### <a name="modify-hello-index-view"></a><span data-ttu-id="4eb9f-195">Изменить представление index hello</span><span class="sxs-lookup"><span data-stu-id="4eb9f-195">Modify hello index view</span></span>
+1. <span data-ttu-id="4eb9f-196">Откройте hello **tasklist/views/index.jade** файл в текстовом редакторе.</span><span class="sxs-lookup"><span data-stu-id="4eb9f-196">Open hello **tasklist/views/index.jade** file in a text editor.</span></span>
+2. <span data-ttu-id="4eb9f-197">Замените все содержимое файла hello hello hello, следующий код.</span><span class="sxs-lookup"><span data-stu-id="4eb9f-197">Replace hello entire contents of hello file with hello following code.</span></span> <span data-ttu-id="4eb9f-198">Он определяет представление, в котором отображаются существующие задачи и содержится форма для добавления новых задач и пометки существующих как завершенных.</span><span class="sxs-lookup"><span data-stu-id="4eb9f-198">This defines a view that displays existing tasks and includes a form for adding new tasks and marking existing ones as completed.</span></span>
    
         extends layout
    
@@ -376,14 +376,14 @@ ms.lasthandoff: 08/18/2017
             input(name="item[category]", type="textbox")
             br
             button.btn(type="submit") Add item
-3. <span data-ttu-id="ffb06-199">Сохраните и закройте файл **index.jade** .</span><span class="sxs-lookup"><span data-stu-id="ffb06-199">Save and close **index.jade** file.</span></span>
+3. <span data-ttu-id="4eb9f-199">Сохраните и закройте файл **index.jade** .</span><span class="sxs-lookup"><span data-stu-id="4eb9f-199">Save and close **index.jade** file.</span></span>
 
-### <a name="modify-the-global-layout"></a><span data-ttu-id="ffb06-200">Изменение глобального макета</span><span class="sxs-lookup"><span data-stu-id="ffb06-200">Modify the global layout</span></span>
-<span data-ttu-id="ffb06-201">Файл **layout.jade** в каталоге **views** используется как глобальный шаблон для других **JADE**-файлов.</span><span class="sxs-lookup"><span data-stu-id="ffb06-201">The **layout.jade** file in the **views** directory is a global template for other **.jade** files.</span></span> <span data-ttu-id="ffb06-202">На этом шаге он будет изменен таким образом, чтобы использовать [Twitter Bootstrap](https://github.com/twbs/bootstrap)— набор средств, с помощью которых можно легко создать привлекательный веб-сайт.</span><span class="sxs-lookup"><span data-stu-id="ffb06-202">In this step you will modify it to use [Twitter Bootstrap](https://github.com/twbs/bootstrap), which is a toolkit that makes it easy to design a nice looking web app.</span></span>
+### <a name="modify-hello-global-layout"></a><span data-ttu-id="4eb9f-200">Изменить макет глобального hello</span><span class="sxs-lookup"><span data-stu-id="4eb9f-200">Modify hello global layout</span></span>
+<span data-ttu-id="4eb9f-201">Hello **layout.jade** файла в hello **представления** каталог — это глобальный шаблон для других **.jade** файлов.</span><span class="sxs-lookup"><span data-stu-id="4eb9f-201">hello **layout.jade** file in hello **views** directory is a global template for other **.jade** files.</span></span> <span data-ttu-id="4eb9f-202">На этом этапе вы измените его toouse [Twitter начальной загрузки](https://github.com/twbs/bootstrap), который — это набор средств, который позволяет легко toodesign работы с низким приоритетом привлекательных веб-приложения.</span><span class="sxs-lookup"><span data-stu-id="4eb9f-202">In this step you will modify it toouse [Twitter Bootstrap](https://github.com/twbs/bootstrap), which is a toolkit that makes it easy toodesign a nice looking web app.</span></span>
 
-<span data-ttu-id="ffb06-203">Загрузите и извлеките файлы [Twitter Bootstrap](http://getbootstrap.com/).</span><span class="sxs-lookup"><span data-stu-id="ffb06-203">Download and extract the files for [Twitter Bootstrap](http://getbootstrap.com/).</span></span> <span data-ttu-id="ffb06-204">Скопируйте файл **bootstrap.min.css** из папки Bootstrap **css** в каталог **public/stylesheets** своего приложения.</span><span class="sxs-lookup"><span data-stu-id="ffb06-204">Copy the **bootstrap.min.css** file from the Bootstrap **css** folder into the **public/stylesheets** directory of your application.</span></span>
+<span data-ttu-id="4eb9f-203">Загрузите и извлеките файлы hello для [Twitter начальной загрузки](http://getbootstrap.com/).</span><span class="sxs-lookup"><span data-stu-id="4eb9f-203">Download and extract hello files for [Twitter Bootstrap](http://getbootstrap.com/).</span></span> <span data-ttu-id="4eb9f-204">Копировать hello **bootstrap.min.css** файл из hello начальной загрузки **css** папки в hello **public или таблицы стилей** каталога приложения.</span><span class="sxs-lookup"><span data-stu-id="4eb9f-204">Copy hello **bootstrap.min.css** file from hello Bootstrap **css** folder into hello **public/stylesheets** directory of your application.</span></span>
 
-<span data-ttu-id="ffb06-205">В папке **views** откройте файл **layout.jade** и замените его содержимое следующим:</span><span class="sxs-lookup"><span data-stu-id="ffb06-205">From the **views** folder, open **layout.jade** and replace the entire contents with the following:</span></span>
+<span data-ttu-id="4eb9f-205">Из hello **представления** откройте **layout.jade** и замените все содержимое hello hello следующее:</span><span class="sxs-lookup"><span data-stu-id="4eb9f-205">From hello **views** folder, open **layout.jade** and replace hello entire contents with hello following:</span></span>
 
     doctype html
     html
@@ -397,8 +397,8 @@ ms.lasthandoff: 08/18/2017
           a.navbar-brand(href='/') My Tasks
         block content
 
-### <a name="create-a-config-file"></a><span data-ttu-id="ffb06-206">Создание файла конфигурации</span><span class="sxs-lookup"><span data-stu-id="ffb06-206">Create a config file</span></span>
-<span data-ttu-id="ffb06-207">Для локального запуска приложения мы поместим учетные данные службы хранилища Azure в файл конфигурации.</span><span class="sxs-lookup"><span data-stu-id="ffb06-207">To run the app locally, we'll put Azure Storage credentials into a config file.</span></span> <span data-ttu-id="ffb06-208">Создайте файл **config.json** со следующим кодом JSON:</span><span class="sxs-lookup"><span data-stu-id="ffb06-208">Create a file named **config.json* *with the following JSON:</span></span>
+### <a name="create-a-config-file"></a><span data-ttu-id="4eb9f-206">Создание файла конфигурации</span><span class="sxs-lookup"><span data-stu-id="4eb9f-206">Create a config file</span></span>
+<span data-ttu-id="4eb9f-207">toorun приложение hello локально, мы будем Поместите учетные данные хранилища Azure в файл конфигурации.</span><span class="sxs-lookup"><span data-stu-id="4eb9f-207">toorun hello app locally, we'll put Azure Storage credentials into a config file.</span></span> <span data-ttu-id="4eb9f-208">Создайте файл с именем **config.json* * с hello, следуя JSON:</span><span class="sxs-lookup"><span data-stu-id="4eb9f-208">Create a file named **config.json* *with hello following JSON:</span></span>
 
     {
         "STORAGE_NAME": "<storage account name>",
@@ -407,7 +407,7 @@ ms.lasthandoff: 08/18/2017
         "TABLE_NAME": "tasks"
     }
 
-<span data-ttu-id="ffb06-209">Замените **storage account name** именем учетной записи хранения, созданной ранее, а **storage access key** — первичным ключом доступа к своей учетной записи хранения.</span><span class="sxs-lookup"><span data-stu-id="ffb06-209">Replace **storage account name** with the name of the storage account you created earlier, and replace **storage access key** with the primary access key for your storage account.</span></span> <span data-ttu-id="ffb06-210">Например:</span><span class="sxs-lookup"><span data-stu-id="ffb06-210">For example:</span></span>
+<span data-ttu-id="4eb9f-209">Замените **имя учетной записи хранения** с именем hello хранилища hello учетную запись, созданную ранее и замените **ключ доступа к хранилищу** с hello первичный ключ доступа для учетной записи хранилища.</span><span class="sxs-lookup"><span data-stu-id="4eb9f-209">Replace **storage account name** with hello name of hello storage account you created earlier, and replace **storage access key** with hello primary access key for your storage account.</span></span> <span data-ttu-id="4eb9f-210">Например:</span><span class="sxs-lookup"><span data-stu-id="4eb9f-210">For example:</span></span>
 
     {
         "STORAGE_NAME": "nodejsappstorage",
@@ -416,77 +416,77 @@ ms.lasthandoff: 08/18/2017
         "TABLE_NAME": "tasks"
     }
 
-<span data-ttu-id="ffb06-211">Сохраните этот файл *на один уровень выше* каталога **tasklist** , как показано в ниже:</span><span class="sxs-lookup"><span data-stu-id="ffb06-211">Save this file *one directory level higher* than the **tasklist** directory, like this:</span></span>
+<span data-ttu-id="4eb9f-211">Сохраните этот файл *один уровень каталога выше* чем hello **tasklist** каталог следующим образом:</span><span class="sxs-lookup"><span data-stu-id="4eb9f-211">Save this file *one directory level higher* than hello **tasklist** directory, like this:</span></span>
 
     parent/
       |-- config.json
       |-- tasklist/
 
-<span data-ttu-id="ffb06-212">Это позволит избежать включения файла конфигурации в исходный элемент управления, в результате чего он может оказаться общедоступным.</span><span class="sxs-lookup"><span data-stu-id="ffb06-212">The reason for doing this is to avoid checking the config file into source control, where it might become public.</span></span> <span data-ttu-id="ffb06-213">При развертывании приложения в среде Azure вместо файла конфигурации мы будем использовать переменные среды.</span><span class="sxs-lookup"><span data-stu-id="ffb06-213">When we deploy the app to Azure, we will use environment variables instead of a config file.</span></span>
+<span data-ttu-id="4eb9f-212">Hello причиной этого является tooavoid проверка файла конфигурации hello в систему управления версиями, где могут стать открытый.</span><span class="sxs-lookup"><span data-stu-id="4eb9f-212">hello reason for doing this is tooavoid checking hello config file into source control, where it might become public.</span></span> <span data-ttu-id="4eb9f-213">При развертывании приложения tooAzure hello, мы будем использовать переменные среды вместо файла конфигурации.</span><span class="sxs-lookup"><span data-stu-id="4eb9f-213">When we deploy hello app tooAzure, we will use environment variables instead of a config file.</span></span>
 
-## <a name="run-the-application-locally"></a><span data-ttu-id="ffb06-214">Локальный запуск приложения</span><span class="sxs-lookup"><span data-stu-id="ffb06-214">Run the application locally</span></span>
-<span data-ttu-id="ffb06-215">Для проверки приложения на локальном компьютере выполните следующие действия:</span><span class="sxs-lookup"><span data-stu-id="ffb06-215">To test the application on your local machine, perform the following steps:</span></span>
+## <a name="run-hello-application-locally"></a><span data-ttu-id="4eb9f-214">Запустите приложение hello локально</span><span class="sxs-lookup"><span data-stu-id="4eb9f-214">Run hello application locally</span></span>
+<span data-ttu-id="4eb9f-215">приложения hello tootest на локальном компьютере, выполните следующие шаги hello.</span><span class="sxs-lookup"><span data-stu-id="4eb9f-215">tootest hello application on your local machine, perform hello following steps:</span></span>
 
-1. <span data-ttu-id="ffb06-216">В командной строке измените каталоги на каталог **tasklist** .</span><span class="sxs-lookup"><span data-stu-id="ffb06-216">From the command-line, change directories to the **tasklist** directory.</span></span>
-2. <span data-ttu-id="ffb06-217">Используйте следующую команду для локального запуска приложения:</span><span class="sxs-lookup"><span data-stu-id="ffb06-217">Use the following command to launch the application locally:</span></span>
+1. <span data-ttu-id="4eb9f-216">Из командной строки hello, измените каталоги toohello **tasklist** каталога.</span><span class="sxs-lookup"><span data-stu-id="4eb9f-216">From hello command-line, change directories toohello **tasklist** directory.</span></span>
+2. <span data-ttu-id="4eb9f-217">Используйте следующие приложения hello toolaunch команда локально hello.</span><span class="sxs-lookup"><span data-stu-id="4eb9f-217">Use hello following command toolaunch hello application locally:</span></span>
    
         npm start
-3. <span data-ttu-id="ffb06-218">Откройте браузер и перейдите по адресу http://127.0.0.1:3000.</span><span class="sxs-lookup"><span data-stu-id="ffb06-218">Open a web browser and navigate to http://127.0.0.1:3000.</span></span>
+3. <span data-ttu-id="4eb9f-218">Откройте веб-браузер и перейдите toohttp://127.0.0.1:3000.</span><span class="sxs-lookup"><span data-stu-id="4eb9f-218">Open a web browser and navigate toohttp://127.0.0.1:3000.</span></span>
    
-    <span data-ttu-id="ffb06-219">Появится веб-страница, как в примере ниже.</span><span class="sxs-lookup"><span data-stu-id="ffb06-219">A web page similar to the following example appears.</span></span>
+    <span data-ttu-id="4eb9f-219">Появится примерно toohello веб-страницы, следующий пример.</span><span class="sxs-lookup"><span data-stu-id="4eb9f-219">A web page similar toohello following example appears.</span></span>
    
     ![Веб-страница, показывающая пустой список задач][node-table-finished]
-4. <span data-ttu-id="ffb06-221">Чтобы создать новый элемент списка, введите имя и категорию и щелкните **Add Item**(Добавить элемент).</span><span class="sxs-lookup"><span data-stu-id="ffb06-221">To create a new to-do item, enter a name and category and click **Add Item**.</span></span> 
-5. <span data-ttu-id="ffb06-222">Чтобы пометить задачу как выполненную, установите флажок **Выполнено** и щелкните **Обновить задачи**.</span><span class="sxs-lookup"><span data-stu-id="ffb06-222">To mark a task as complete, check **Complete** and click **Update Tasks**.</span></span>
+4. <span data-ttu-id="4eb9f-221">toocreate новый элемент задачи, введите имя и категории и нажмите кнопку **добавить элемент**.</span><span class="sxs-lookup"><span data-stu-id="4eb9f-221">toocreate a new to-do item, enter a name and category and click **Add Item**.</span></span> 
+5. <span data-ttu-id="4eb9f-222">toomark задач как полный, проверьте **завершить** и нажмите кнопку **задачи обновления**.</span><span class="sxs-lookup"><span data-stu-id="4eb9f-222">toomark a task as complete, check **Complete** and click **Update Tasks**.</span></span>
    
-    ![Изображение нового элемента в списке задач][node-table-list-items]
+    ![Изображение hello новый элемент в списке hello задач][node-table-list-items]
 
-<span data-ttu-id="ffb06-224">Хотя приложение выполняется локально, его данные хранятся в службе таблиц Azure.</span><span class="sxs-lookup"><span data-stu-id="ffb06-224">Even though the application is running locally, it is storing the data in the Azure Table service.</span></span>
+<span data-ttu-id="4eb9f-224">Даже если приложение hello выполняется локально, он хранит данные hello в hello службы таблиц Azure.</span><span class="sxs-lookup"><span data-stu-id="4eb9f-224">Even though hello application is running locally, it is storing hello data in hello Azure Table service.</span></span>
 
-## <a name="deploy-your-application-to-azure"></a><span data-ttu-id="ffb06-225">Развертывание приложения в Azure</span><span class="sxs-lookup"><span data-stu-id="ffb06-225">Deploy your application to Azure</span></span>
-<span data-ttu-id="ffb06-226">В действиях, описанных в этом разделе, для создания веб-приложения в службе приложений используются средства командной строки Azure, а затем для развертывания приложения применяется Git.</span><span class="sxs-lookup"><span data-stu-id="ffb06-226">The steps in this section use the Azure command-line tools to create a new web app in App Service, and then use Git to deploy your application.</span></span> <span data-ttu-id="ffb06-227">Для выполнения этих действий необходима подписка Azure.</span><span class="sxs-lookup"><span data-stu-id="ffb06-227">To perform these steps you must have an Azure subscription.</span></span>
+## <a name="deploy-your-application-tooazure"></a><span data-ttu-id="4eb9f-225">Развертывание tooAzure вашего приложения</span><span class="sxs-lookup"><span data-stu-id="4eb9f-225">Deploy your application tooAzure</span></span>
+<span data-ttu-id="4eb9f-226">Hello шаги в этом разделе Использование средств командной строки Azure hello toocreate новое веб-приложение в службе приложений, а затем использовать Git toodeploy приложения.</span><span class="sxs-lookup"><span data-stu-id="4eb9f-226">hello steps in this section use hello Azure command-line tools toocreate a new web app in App Service, and then use Git toodeploy your application.</span></span> <span data-ttu-id="4eb9f-227">tooperform эти действия, необходимо иметь подписку Azure.</span><span class="sxs-lookup"><span data-stu-id="4eb9f-227">tooperform these steps you must have an Azure subscription.</span></span>
 
 > [!NOTE]
-> <span data-ttu-id="ffb06-228">Эти действия также можно выполнить с помощью [портала Azure](https://portal.azure.com/).</span><span class="sxs-lookup"><span data-stu-id="ffb06-228">These steps can also be performed by using the [Azure Portal](https://portal.azure.com/).</span></span> <span data-ttu-id="ffb06-229">См. статью [Начало работы с веб-приложениями Node.js в службе приложений Azure].</span><span class="sxs-lookup"><span data-stu-id="ffb06-229">See [Build and deploy a Node.js web app in Azure App Service].</span></span>
+> <span data-ttu-id="4eb9f-228">Эти действия можно также выполнить с помощью hello [портала Azure](https://portal.azure.com/).</span><span class="sxs-lookup"><span data-stu-id="4eb9f-228">These steps can also be performed by using hello [Azure Portal](https://portal.azure.com/).</span></span> <span data-ttu-id="4eb9f-229">См. статью [Начало работы с веб-приложениями Node.js в службе приложений Azure].</span><span class="sxs-lookup"><span data-stu-id="4eb9f-229">See [Build and deploy a Node.js web app in Azure App Service].</span></span>
 > 
-> <span data-ttu-id="ffb06-230">Если это первое созданное вами веб-приложение, для его развертывания необходимо использовать портал Azure.</span><span class="sxs-lookup"><span data-stu-id="ffb06-230">If this is the first web app you have created, you must use the Azure Portal to deploy this application.</span></span>
+> <span data-ttu-id="4eb9f-230">Если это первый веб-приложения hello, созданных toodeploy hello портала Azure необходимо использовать это приложение.</span><span class="sxs-lookup"><span data-stu-id="4eb9f-230">If this is hello first web app you have created, you must use hello Azure Portal toodeploy this application.</span></span>
 > 
 > 
 
-<span data-ttu-id="ffb06-231">Сначала установите [интерфейс командной строки Azure] , выполнив в командной строке следующую команду:</span><span class="sxs-lookup"><span data-stu-id="ffb06-231">To get started, install the [Azure CLI] by entering the following command from the command line:</span></span>
+<span data-ttu-id="4eb9f-231">tooget к работе, установите hello [Azure CLI] , введя следующую команду из командной строки hello hello:</span><span class="sxs-lookup"><span data-stu-id="4eb9f-231">tooget started, install hello [Azure CLI] by entering hello following command from hello command line:</span></span>
 
     npm install azure-cli -g
 
-### <a name="import-publishing-settings"></a><span data-ttu-id="ffb06-232">Импорт параметров публикации</span><span class="sxs-lookup"><span data-stu-id="ffb06-232">Import publishing settings</span></span>
-<span data-ttu-id="ffb06-233">На этом шаге вы загрузите файл, содержащий сведения о вашей подписке.</span><span class="sxs-lookup"><span data-stu-id="ffb06-233">In this step, you will download a file containing information about your subscription.</span></span>
+### <a name="import-publishing-settings"></a><span data-ttu-id="4eb9f-232">Импорт параметров публикации</span><span class="sxs-lookup"><span data-stu-id="4eb9f-232">Import publishing settings</span></span>
+<span data-ttu-id="4eb9f-233">На этом шаге вы загрузите файл, содержащий сведения о вашей подписке.</span><span class="sxs-lookup"><span data-stu-id="4eb9f-233">In this step, you will download a file containing information about your subscription.</span></span>
 
-1. <span data-ttu-id="ffb06-234">Введите следующую команду:</span><span class="sxs-lookup"><span data-stu-id="ffb06-234">Enter the following command:</span></span>
+1. <span data-ttu-id="4eb9f-234">Введите следующую команду hello:</span><span class="sxs-lookup"><span data-stu-id="4eb9f-234">Enter hello following command:</span></span>
    
         azure login
    
-    <span data-ttu-id="ffb06-235">Эта команда запускает браузер и открывает страницу загрузки.</span><span class="sxs-lookup"><span data-stu-id="ffb06-235">This command launches a browser and navigates to the download page.</span></span> <span data-ttu-id="ffb06-236">Если появится соответствующий запрос, войдите с помощью учетной записи, которая связана с вашей подпиской Azure.</span><span class="sxs-lookup"><span data-stu-id="ffb06-236">If prompted, log in with the account associated with your Azure subscription.</span></span>
+    <span data-ttu-id="4eb9f-235">Эта команда запускает браузер и переходит на страницу загрузки toohello.</span><span class="sxs-lookup"><span data-stu-id="4eb9f-235">This command launches a browser and navigates toohello download page.</span></span> <span data-ttu-id="4eb9f-236">Если будет предложено, войдите в систему hello учетную запись, связанную с подпиской Azure.</span><span class="sxs-lookup"><span data-stu-id="4eb9f-236">If prompted, log in with hello account associated with your Azure subscription.</span></span>
    
-    <!-- ![The download page][download-publishing-settings] -->
+    <!-- ![hello download page][download-publishing-settings] -->
    
-    <span data-ttu-id="ffb06-237">Скачивание файла должно начаться автоматически. Если этого не произошло, можно щелкнуть ссылку в начале страницы, чтобы скачать файл вручную.</span><span class="sxs-lookup"><span data-stu-id="ffb06-237">The file download begins automatically; if it does not, you can click the link at the beginning of the page to manually download the file.</span></span> <span data-ttu-id="ffb06-238">Сохраните файл и запомните путь к нему.</span><span class="sxs-lookup"><span data-stu-id="ffb06-238">Save the file and note the file path.</span></span>
-2. <span data-ttu-id="ffb06-239">Введите следующую команду, чтобы импортировать параметры.</span><span class="sxs-lookup"><span data-stu-id="ffb06-239">Enter the following command to import the settings:</span></span>
+    <span data-ttu-id="4eb9f-237">Загрузка файла Hello начинается автоматически. Если этого не произошло, можно щелкнуть ссылку hello в начале hello файла hello загрузки toomanually страницы приветствия.</span><span class="sxs-lookup"><span data-stu-id="4eb9f-237">hello file download begins automatically; if it does not, you can click hello link at hello beginning of hello page toomanually download hello file.</span></span> <span data-ttu-id="4eb9f-238">Сохраните hello файл и отметьте hello путь к файлу.</span><span class="sxs-lookup"><span data-stu-id="4eb9f-238">Save hello file and note hello file path.</span></span>
+2. <span data-ttu-id="4eb9f-239">Введите следующие параметры hello tooimport команды hello:</span><span class="sxs-lookup"><span data-stu-id="4eb9f-239">Enter hello following command tooimport hello settings:</span></span>
    
         azure account import <path-to-file>
    
-    <span data-ttu-id="ffb06-240">Укажите путь и имя файла параметров публикации, загруженного на предыдущем шаге.</span><span class="sxs-lookup"><span data-stu-id="ffb06-240">Specify the path and file name of the publishing settings file you downloaded in the previous step.</span></span>
-3. <span data-ttu-id="ffb06-241">После импорта параметров удалите файл параметров публикации.</span><span class="sxs-lookup"><span data-stu-id="ffb06-241">After the settings are imported, delete the publish settings file.</span></span> <span data-ttu-id="ffb06-242">Он больше не нужен, и при этом он содержит важные сведения о вашей подписки Azure.</span><span class="sxs-lookup"><span data-stu-id="ffb06-242">It is no longer needed, and contains sensitive information regarding your Azure subscription.</span></span>
+    <span data-ttu-id="4eb9f-240">Укажите hello путь и имя файла для публикации файла параметров, загруженный в предыдущем шаге hello hello.</span><span class="sxs-lookup"><span data-stu-id="4eb9f-240">Specify hello path and file name of hello publishing settings file you downloaded in hello previous step.</span></span>
+3. <span data-ttu-id="4eb9f-241">После импорта параметров hello, удалите hello файл параметров публикации.</span><span class="sxs-lookup"><span data-stu-id="4eb9f-241">After hello settings are imported, delete hello publish settings file.</span></span> <span data-ttu-id="4eb9f-242">Он больше не нужен, и при этом он содержит важные сведения о вашей подписки Azure.</span><span class="sxs-lookup"><span data-stu-id="4eb9f-242">It is no longer needed, and contains sensitive information regarding your Azure subscription.</span></span>
 
-### <a name="create-an-app-service-web-app"></a><span data-ttu-id="ffb06-243">Создание веб-приложения службы приложений</span><span class="sxs-lookup"><span data-stu-id="ffb06-243">Create an App Service web app</span></span>
-1. <span data-ttu-id="ffb06-244">В командной строке измените каталоги на каталог **tasklist** .</span><span class="sxs-lookup"><span data-stu-id="ffb06-244">From the command-line, change directories to the **tasklist** directory.</span></span>
-2. <span data-ttu-id="ffb06-245">Создайте веб-приложение, используя следующую команду.</span><span class="sxs-lookup"><span data-stu-id="ffb06-245">Use the following command to create a new web app.</span></span>
+### <a name="create-an-app-service-web-app"></a><span data-ttu-id="4eb9f-243">Создание веб-приложения службы приложений</span><span class="sxs-lookup"><span data-stu-id="4eb9f-243">Create an App Service web app</span></span>
+1. <span data-ttu-id="4eb9f-244">Из командной строки hello, измените каталоги toohello **tasklist** каталога.</span><span class="sxs-lookup"><span data-stu-id="4eb9f-244">From hello command-line, change directories toohello **tasklist** directory.</span></span>
+2. <span data-ttu-id="4eb9f-245">Используйте следующие команды toocreate новое веб-приложение hello.</span><span class="sxs-lookup"><span data-stu-id="4eb9f-245">Use hello following command toocreate a new web app.</span></span>
    
         azure site create --git
    
-    <span data-ttu-id="ffb06-246">Вам будет предложено указать имя и расположение веб-приложения.</span><span class="sxs-lookup"><span data-stu-id="ffb06-246">You will be prompted for the web app name and location.</span></span> <span data-ttu-id="ffb06-247">Введите уникальное имя и выберите то же географическое расположение, что и у вашей учетной записи хранения Azure.</span><span class="sxs-lookup"><span data-stu-id="ffb06-247">Provide a unique name and select the same geographical location as your Azure Storage account.</span></span>
+    <span data-ttu-id="4eb9f-246">Будут запрашиваться имя веб-приложения hello и расположение.</span><span class="sxs-lookup"><span data-stu-id="4eb9f-246">You will be prompted for hello web app name and location.</span></span> <span data-ttu-id="4eb9f-247">Укажите уникальное имя и выберите hello географического местоположения учетной записи хранилища Azure.</span><span class="sxs-lookup"><span data-stu-id="4eb9f-247">Provide a unique name and select hello same geographical location as your Azure Storage account.</span></span>
    
-    <span data-ttu-id="ffb06-248">Параметр `--git` создает в Azure репозиторий Git для этого веб-приложения.</span><span class="sxs-lookup"><span data-stu-id="ffb06-248">The `--git` parameter creates a Git repository on Azure for this web app.</span></span> <span data-ttu-id="ffb06-249">Он также инициализирует репозиторий Git в текущем каталоге, если его там нет, и добавляет [удаленный репозиторий Git] с именем «azure», которое используется для публикации приложения в среде Azure.</span><span class="sxs-lookup"><span data-stu-id="ffb06-249">It also initializes a Git repository in the current directory if none exists, and adds a [Git remote] named 'azure', which is used to publish the application to Azure.</span></span> <span data-ttu-id="ffb06-250">Наконец, он создает файл **web.config** , который содержит параметры, используемые средой Azure для размещения приложений Node.</span><span class="sxs-lookup"><span data-stu-id="ffb06-250">Finally, it creates a **web.config** file, which contains settings used by Azure to host node applications.</span></span> <span data-ttu-id="ffb06-251">Если параметр `--git` не указан, но в каталоге есть репозиторий Git, то данная команда все равно создаст удаленный репозиторий «azure».</span><span class="sxs-lookup"><span data-stu-id="ffb06-251">If you omit the `--git` parameter but the directory contains a Git repository, the command will still create the 'azure' remote.</span></span>
+    <span data-ttu-id="4eb9f-248">Hello `--git` параметр создает репозитории в Azure для этого веб-приложения.</span><span class="sxs-lookup"><span data-stu-id="4eb9f-248">hello `--git` parameter creates a Git repository on Azure for this web app.</span></span> <span data-ttu-id="4eb9f-249">Он также инициализирует репозитория в текущем каталоге hello, если не существует и добавляет [Git удаленного] с именем «azure», который является tooAzure приложения используется toopublish hello.</span><span class="sxs-lookup"><span data-stu-id="4eb9f-249">It also initializes a Git repository in hello current directory if none exists, and adds a [Git remote] named 'azure', which is used toopublish hello application tooAzure.</span></span> <span data-ttu-id="4eb9f-250">Наконец, он создает **web.config** файл, содержащий параметры, используемые приложениями Azure toohost узла.</span><span class="sxs-lookup"><span data-stu-id="4eb9f-250">Finally, it creates a **web.config** file, which contains settings used by Azure toohost node applications.</span></span> <span data-ttu-id="4eb9f-251">Если опустить hello `--git` параметр, но hello каталог содержит репозитория, команда hello по-прежнему будет создавать удаленного hello «azure».</span><span class="sxs-lookup"><span data-stu-id="4eb9f-251">If you omit hello `--git` parameter but hello directory contains a Git repository, hello command will still create hello 'azure' remote.</span></span>
    
-    <span data-ttu-id="ffb06-252">После выполнения этой команды должен появиться результат, похожий на следующий.</span><span class="sxs-lookup"><span data-stu-id="ffb06-252">Once this command has completed, you will see output similar to the following.</span></span> <span data-ttu-id="ffb06-253">Обратите внимание на то, что строка, начинающаяся с **Website created at** (Веб-сайт, созданный по адресу), содержит URL-адрес веб-приложения.</span><span class="sxs-lookup"><span data-stu-id="ffb06-253">Note that the line beginning with **Website created at** contains the URL for the web app.</span></span>
+    <span data-ttu-id="4eb9f-252">После завершения этой команды вы увидите примерно toohello следующие выходные данные.</span><span class="sxs-lookup"><span data-stu-id="4eb9f-252">Once this command has completed, you will see output similar toohello following.</span></span> <span data-ttu-id="4eb9f-253">Обратите внимание, что hello строки, начинающиеся с **веб-сайт создан на** содержит hello URL-адрес для веб-приложения hello.</span><span class="sxs-lookup"><span data-stu-id="4eb9f-253">Note that hello line beginning with **Website created at** contains hello URL for hello web app.</span></span>
    
         info:   Executing command site create
         help:   Need a site name
@@ -502,81 +502,81 @@ ms.lasthandoff: 08/18/2017
         info:   site create command OK
    
    > [!NOTE]
-   > <span data-ttu-id="ffb06-254">Если это первое веб-приложение службы приложений для вашей подписки, вам будет рекомендовано использовать портал Azure для создания этого приложения.</span><span class="sxs-lookup"><span data-stu-id="ffb06-254">If this is the first App Service web app for your subscription, you will be instructed to use the Azure Portal to create the web app.</span></span> <span data-ttu-id="ffb06-255">Дополнительные сведения см. в разделе [Начало работы с веб-приложениями Node.js в службе приложений Azure].</span><span class="sxs-lookup"><span data-stu-id="ffb06-255">For more information, see [Build and deploy a Node.js web app in Azure App Service].</span></span>
+   > <span data-ttu-id="4eb9f-254">Если это hello первого приложения службы веб-приложения для вашей подписки будет веб-приложения hello toocreate соответствии toouse hello портала Azure.</span><span class="sxs-lookup"><span data-stu-id="4eb9f-254">If this is hello first App Service web app for your subscription, you will be instructed toouse hello Azure Portal toocreate hello web app.</span></span> <span data-ttu-id="4eb9f-255">Дополнительные сведения см. в разделе [Начало работы с веб-приложениями Node.js в службе приложений Azure].</span><span class="sxs-lookup"><span data-stu-id="4eb9f-255">For more information, see [Build and deploy a Node.js web app in Azure App Service].</span></span>
    > 
    > 
 
-### <a name="set-environment-variables"></a><span data-ttu-id="ffb06-256">Настройка переменных среды</span><span class="sxs-lookup"><span data-stu-id="ffb06-256">Set environment variables</span></span>
-<span data-ttu-id="ffb06-257">На этом шаге в конфигурацию веб-приложения в Azure добавляются переменные среды.</span><span class="sxs-lookup"><span data-stu-id="ffb06-257">In this step, you will add environment variables to your web app configuration on Azure.</span></span>
-<span data-ttu-id="ffb06-258">В командной строке введите следующую команду:</span><span class="sxs-lookup"><span data-stu-id="ffb06-258">From the command line, enter the following:</span></span>
+### <a name="set-environment-variables"></a><span data-ttu-id="4eb9f-256">Настройка переменных среды</span><span class="sxs-lookup"><span data-stu-id="4eb9f-256">Set environment variables</span></span>
+<span data-ttu-id="4eb9f-257">На этом шаге вы добавите конфигурации приложения web tooyour переменных среды в Azure.</span><span class="sxs-lookup"><span data-stu-id="4eb9f-257">In this step, you will add environment variables tooyour web app configuration on Azure.</span></span>
+<span data-ttu-id="4eb9f-258">Из командной строки hello введите hello следующие данные:</span><span class="sxs-lookup"><span data-stu-id="4eb9f-258">From hello command line, enter hello following:</span></span>
 
     azure site appsetting add
         STORAGE_NAME=<storage account name>;STORAGE_KEY=<storage access key>;PARTITION_KEY=mytasks;TABLE_NAME=tasks
 
 
-<span data-ttu-id="ffb06-259">Замените **<storage account name>** именем учетной записи хранения, созданной ранее, а **<storage access key>** — первичным ключом доступа к учетной записи хранения.</span><span class="sxs-lookup"><span data-stu-id="ffb06-259">Replace **<storage account name>** with the name of the storage account you created earlier, and replace **<storage access key>** with the primary access key for your storage account.</span></span> <span data-ttu-id="ffb06-260">(Используйте те же значения, что и в файле config.json, который создали ранее.)</span><span class="sxs-lookup"><span data-stu-id="ffb06-260">(Use the same values as the config.json file that you created earlier.)</span></span>
+<span data-ttu-id="4eb9f-259">Замените  **<storage account name>**  с именем hello хранилища hello учетную запись, созданную ранее и замените  **<storage access key>**  с hello первичный ключ доступа для учетной записи хранилища.</span><span class="sxs-lookup"><span data-stu-id="4eb9f-259">Replace **<storage account name>** with hello name of hello storage account you created earlier, and replace **<storage access key>** with hello primary access key for your storage account.</span></span> <span data-ttu-id="4eb9f-260">(Используйте hello же значений в виде файла config.json hello, созданного ранее).</span><span class="sxs-lookup"><span data-stu-id="4eb9f-260">(Use hello same values as hello config.json file that you created earlier.)</span></span>
 
-<span data-ttu-id="ffb06-261">Переменные среды также можно задать на [портале Azure](https://portal.azure.com/):</span><span class="sxs-lookup"><span data-stu-id="ffb06-261">Alternatively, you can set environment variables in the [Azure Portal](https://portal.azure.com/):</span></span>
+<span data-ttu-id="4eb9f-261">Кроме того, можно задать переменные среды в hello [портала Azure](https://portal.azure.com/):</span><span class="sxs-lookup"><span data-stu-id="4eb9f-261">Alternatively, you can set environment variables in hello [Azure Portal](https://portal.azure.com/):</span></span>
 
-1. <span data-ttu-id="ffb06-262">Откройте колонку веб-приложения, выбрав **Обзор** > **Веб-приложения** > имя вашего веб-приложения.</span><span class="sxs-lookup"><span data-stu-id="ffb06-262">Open the web app's blade by clicking **Browse** > **Web Apps** > your web app name.</span></span>
-2. <span data-ttu-id="ffb06-263">В колонке веб-приложения щелкните **Все параметры** > **Параметры приложения**.</span><span class="sxs-lookup"><span data-stu-id="ffb06-263">In your web app's blade, click **All Settings** > **Application Settings**.</span></span>
+1. <span data-ttu-id="4eb9f-262">Открыть колонку hello веб-приложение, нажав кнопку **Обзор** > **веб-приложений** > имя вашего веб-приложения.</span><span class="sxs-lookup"><span data-stu-id="4eb9f-262">Open hello web app's blade by clicking **Browse** > **Web Apps** > your web app name.</span></span>
+2. <span data-ttu-id="4eb9f-263">В колонке веб-приложения щелкните **Все параметры** > **Параметры приложения**.</span><span class="sxs-lookup"><span data-stu-id="4eb9f-263">In your web app's blade, click **All Settings** > **Application Settings**.</span></span>
    
      <!-- ![Top Menu](./media/storage-nodejs-use-table-storage-web-site/PollsCommonWebSiteTopMenu.png) -->
-3. <span data-ttu-id="ffb06-264">Прокрутите содержимое вниз до раздела **Параметры приложения** и добавьте пары «ключ-значение».</span><span class="sxs-lookup"><span data-stu-id="ffb06-264">Scroll down to the **App settings** section and add the key/value pairs.</span></span>
+3. <span data-ttu-id="4eb9f-264">Прокрутите вниз toohello **параметры приложения** статьи и добавьте пары ключ значение hello.</span><span class="sxs-lookup"><span data-stu-id="4eb9f-264">Scroll down toohello **App settings** section and add hello key/value pairs.</span></span>
    
      ![Параметры приложения](./media/storage-nodejs-use-table-storage-web-site/storage-tasks-appsettings.png)
-4. <span data-ttu-id="ffb06-266">Щелкните **СОХРАНИТЬ**.</span><span class="sxs-lookup"><span data-stu-id="ffb06-266">Click **SAVE**.</span></span>
+4. <span data-ttu-id="4eb9f-266">Щелкните **СОХРАНИТЬ**.</span><span class="sxs-lookup"><span data-stu-id="4eb9f-266">Click **SAVE**.</span></span>
 
-### <a name="publish-the-application"></a><span data-ttu-id="ffb06-267">Публикация приложения</span><span class="sxs-lookup"><span data-stu-id="ffb06-267">Publish the application</span></span>
-<span data-ttu-id="ffb06-268">Чтобы опубликовать приложение, зафиксируйте файлы с кодом в репозитории Git и отправьте их в azure/master.</span><span class="sxs-lookup"><span data-stu-id="ffb06-268">To publish the app, commit the code files to Git and then push to azure/master.</span></span>
+### <a name="publish-hello-application"></a><span data-ttu-id="4eb9f-267">Публикация приложения hello</span><span class="sxs-lookup"><span data-stu-id="4eb9f-267">Publish hello application</span></span>
+<span data-ttu-id="4eb9f-268">приложение hello toopublish, зафиксируйте tooGit файлы кода hello и затем отправьте tooazure/master.</span><span class="sxs-lookup"><span data-stu-id="4eb9f-268">toopublish hello app, commit hello code files tooGit and then push tooazure/master.</span></span>
 
-1. <span data-ttu-id="ffb06-269">Задайте учетные данные развертывания.</span><span class="sxs-lookup"><span data-stu-id="ffb06-269">Set your deployment credentials.</span></span>
+1. <span data-ttu-id="4eb9f-269">Задайте учетные данные развертывания.</span><span class="sxs-lookup"><span data-stu-id="4eb9f-269">Set your deployment credentials.</span></span>
    
         azure site deployment user set <name> <password>
-2. <span data-ttu-id="ffb06-270">Добавьте и зафиксируйте файлы своего приложения.</span><span class="sxs-lookup"><span data-stu-id="ffb06-270">Add and commit your application files.</span></span>
+2. <span data-ttu-id="4eb9f-270">Добавьте и зафиксируйте файлы своего приложения.</span><span class="sxs-lookup"><span data-stu-id="4eb9f-270">Add and commit your application files.</span></span>
    
         git add .
         git commit -m "adding files"
-3. <span data-ttu-id="ffb06-271">Отправьте зафиксированные данные в веб-приложение службы приложений:</span><span class="sxs-lookup"><span data-stu-id="ffb06-271">Push the commit to the App Service web app:</span></span>
+3. <span data-ttu-id="4eb9f-271">Принудительной фиксации hello toohello веб-приложения служб приложений:</span><span class="sxs-lookup"><span data-stu-id="4eb9f-271">Push hello commit toohello App Service web app:</span></span>
    
         git push azure master
    
-    <span data-ttu-id="ffb06-272">В качестве целевой ветви используйте **master** .</span><span class="sxs-lookup"><span data-stu-id="ffb06-272">Use **master** as the target branch.</span></span> <span data-ttu-id="ffb06-273">В конце развертывания должно появиться заявление, похожее на следующее:</span><span class="sxs-lookup"><span data-stu-id="ffb06-273">At the end of the deployment, you see a statement similar to the following example:</span></span>
+    <span data-ttu-id="4eb9f-272">Используйте **master** как hello целевой ветви.</span><span class="sxs-lookup"><span data-stu-id="4eb9f-272">Use **master** as hello target branch.</span></span> <span data-ttu-id="4eb9f-273">В конце развертывания hello hello появляется примерно toohello оператор, следующий пример:</span><span class="sxs-lookup"><span data-stu-id="4eb9f-273">At hello end of hello deployment, you see a statement similar toohello following example:</span></span>
    
-        To https://username@tabletasklist.azurewebsites.net/TableTasklist.git
+        toohttps://username@tabletasklist.azurewebsites.net/TableTasklist.git
           * [new branch]      master -> master
-4. <span data-ttu-id="ffb06-274">После завершения операции отправки перейдите по полученному ранее URL-адресу веб-приложения с помощью команды `azure create site` , чтобы просмотреть приложение.</span><span class="sxs-lookup"><span data-stu-id="ffb06-274">Once the push operation has completed, browse to the web app URL returned previously by the `azure create site` command to view your application.</span></span>
+4. <span data-ttu-id="4eb9f-274">После завершения операции принудительной отправки hello Обзор toohello веб-приложения URL, ранее возвращенный hello `azure create site` команды tooview приложения.</span><span class="sxs-lookup"><span data-stu-id="4eb9f-274">Once hello push operation has completed, browse toohello web app URL returned previously by hello `azure create site` command tooview your application.</span></span>
 
-## <a name="next-steps"></a><span data-ttu-id="ffb06-275">Дальнейшие действия</span><span class="sxs-lookup"><span data-stu-id="ffb06-275">Next steps</span></span>
-<span data-ttu-id="ffb06-276">Хотя в действиях этой статьи описывается использование службы таблиц для хранения информации, можно также использовать [MongoDB](https://mlab.com/azure/).</span><span class="sxs-lookup"><span data-stu-id="ffb06-276">While the steps in this article describe using the Table Service to store information, you can also use [MongoDB](https://mlab.com/azure/).</span></span> 
+## <a name="next-steps"></a><span data-ttu-id="4eb9f-275">Дальнейшие действия</span><span class="sxs-lookup"><span data-stu-id="4eb9f-275">Next steps</span></span>
+<span data-ttu-id="4eb9f-276">При hello действия, описанные в этой статье описывается использование сведения toostore hello службы таблиц, можно также использовать [MongoDB](https://mlab.com/azure/).</span><span class="sxs-lookup"><span data-stu-id="4eb9f-276">While hello steps in this article describe using hello Table Service toostore information, you can also use [MongoDB](https://mlab.com/azure/).</span></span> 
 
-## <a name="additional-resources"></a><span data-ttu-id="ffb06-277">Дополнительные ресурсы</span><span class="sxs-lookup"><span data-stu-id="ffb06-277">Additional resources</span></span>
-<span data-ttu-id="ffb06-278">[интерфейс командной строки Azure]</span><span class="sxs-lookup"><span data-stu-id="ffb06-278">[Azure CLI]</span></span>
+## <a name="additional-resources"></a><span data-ttu-id="4eb9f-277">Дополнительные ресурсы</span><span class="sxs-lookup"><span data-stu-id="4eb9f-277">Additional resources</span></span>
+<span data-ttu-id="4eb9f-278">[Azure CLI]</span><span class="sxs-lookup"><span data-stu-id="4eb9f-278">[Azure CLI]</span></span>
 
-## <a name="whats-changed"></a><span data-ttu-id="ffb06-279">Изменения</span><span class="sxs-lookup"><span data-stu-id="ffb06-279">What's changed</span></span>
-* <span data-ttu-id="ffb06-280">Руководство по переходу от веб-сайтов к службе приложений см. в статье [Служба приложений Azure и существующие службы Azure](http://go.microsoft.com/fwlink/?LinkId=529714).</span><span class="sxs-lookup"><span data-stu-id="ffb06-280">For a guide to the change from Websites to App Service see: [Azure App Service and Its Impact on Existing Azure Services](http://go.microsoft.com/fwlink/?LinkId=529714)</span></span>
+## <a name="whats-changed"></a><span data-ttu-id="4eb9f-279">Изменения</span><span class="sxs-lookup"><span data-stu-id="4eb9f-279">What's changed</span></span>
+* <span data-ttu-id="4eb9f-280">Toohello руководство изменений из tooApp веб-сайтов службы. в разделе: [службе приложений Azure и ее влияние на существующие службы Azure](http://go.microsoft.com/fwlink/?LinkId=529714)</span><span class="sxs-lookup"><span data-stu-id="4eb9f-280">For a guide toohello change from Websites tooApp Service see: [Azure App Service and Its Impact on Existing Azure Services](http://go.microsoft.com/fwlink/?LinkId=529714)</span></span>
 
 <!-- URLs -->
 
-<span data-ttu-id="ffb06-281">[Начало работы с веб-приложениями Node.js в службе приложений Azure]: app-service-web-get-started-nodejs.md</span><span class="sxs-lookup"><span data-stu-id="ffb06-281">[Build and deploy a Node.js web app in Azure App Service]: app-service-web-get-started-nodejs.md</span></span>
+[Начало работы с веб-приложениями Node.js в службе приложений Azure]: app-service-web-get-started-nodejs.md
 [Azure Developer Center]: /develop/nodejs/
 
-<span data-ttu-id="ffb06-282">[node]: http://nodejs.org</span><span class="sxs-lookup"><span data-stu-id="ffb06-282">[node]: http://nodejs.org</span></span>
-<span data-ttu-id="ffb06-283">[Git]: http://git-scm.com</span><span class="sxs-lookup"><span data-stu-id="ffb06-283">[Git]: http://git-scm.com</span></span>
-<span data-ttu-id="ffb06-284">[Express]: http://expressjs.com</span><span class="sxs-lookup"><span data-stu-id="ffb06-284">[Express]: http://expressjs.com</span></span>
+[узел]: http://nodejs.org
+[Git]: http://git-scm.com
+[Express]: http://expressjs.com
 [for free]: http://windowsazure.com
-<span data-ttu-id="ffb06-285">[удаленный репозиторий Git]: http://git-scm.com/docs/git-remote</span><span class="sxs-lookup"><span data-stu-id="ffb06-285">[Git remote]: http://git-scm.com/docs/git-remote</span></span>
+[Git удаленного]: http://git-scm.com/docs/git-remote
 
-<span data-ttu-id="ffb06-286">[интерфейс командной строки Azure]:../cli-install-nodejs.md</span><span class="sxs-lookup"><span data-stu-id="ffb06-286">[Azure CLI]:../cli-install-nodejs.md</span></span>
+[Azure CLI]:../cli-install-nodejs.md
 
-<span data-ttu-id="ffb06-287">[azure]: https://github.com/Azure/azure-sdk-for-node</span><span class="sxs-lookup"><span data-stu-id="ffb06-287">[azure]: https://github.com/Azure/azure-sdk-for-node</span></span>
-<span data-ttu-id="ffb06-288">[node-uuid]: https://www.npmjs.com/package/node-uuid</span><span class="sxs-lookup"><span data-stu-id="ffb06-288">[node-uuid]: https://www.npmjs.com/package/node-uuid</span></span>
-<span data-ttu-id="ffb06-289">[nconf]: https://www.npmjs.com/package/nconf</span><span class="sxs-lookup"><span data-stu-id="ffb06-289">[nconf]: https://www.npmjs.com/package/nconf</span></span>
-<span data-ttu-id="ffb06-290">[async]: https://www.npmjs.com/package/async</span><span class="sxs-lookup"><span data-stu-id="ffb06-290">[async]: https://www.npmjs.com/package/async</span></span>
+[azure]: https://github.com/Azure/azure-sdk-for-node
+[узел uuid]: https://www.npmjs.com/package/node-uuid
+[nconf]: https://www.npmjs.com/package/nconf
+[async]: https://www.npmjs.com/package/async
 
 [Azure Portal]: https://portal.azure.com
 
-[Create and deploy a Node.js application to an Azure Web Site]: app-service-web-get-started-nodejs.md
+[Create and deploy a Node.js application tooan Azure Web Site]: app-service-web-get-started-nodejs.md
 
 <!-- Image References -->
 

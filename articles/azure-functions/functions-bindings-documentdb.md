@@ -1,6 +1,6 @@
 ---
-title: "Привязки Cosmos DB в Функциях Azure | Документация Майкрософт"
-description: "Узнайте, как использовать привязки Azure Cosmos DB в Функциях Azure."
+title: "привязки функции Cosmos DB aaaAzure | Документы Microsoft"
+description: "Понять, как привязки toouse Azure Cosmos DB в функциях Azure."
 services: functions
 documentationcenter: na
 author: christopheranderson
@@ -16,48 +16,48 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 04/18/2016
 ms.author: glenga
-ms.openlocfilehash: de95b0591eb95e76dbb7ba2382e9e14e1f66cda1
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 76b89e8296db1dd28dff9528903b1f6a28f55232
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="azure-functions-cosmos-db-bindings"></a><span data-ttu-id="c277d-104">Привязки Cosmos DB в Функциях Azure</span><span class="sxs-lookup"><span data-stu-id="c277d-104">Azure Functions Cosmos DB bindings</span></span>
+# <a name="azure-functions-cosmos-db-bindings"></a><span data-ttu-id="b0399-104">Привязки Cosmos DB в Функциях Azure</span><span class="sxs-lookup"><span data-stu-id="b0399-104">Azure Functions Cosmos DB bindings</span></span>
 [!INCLUDE [functions-selector-bindings](../../includes/functions-selector-bindings.md)]
 
-<span data-ttu-id="c277d-105">В этой статье объясняется, как настроить и запрограммировать привязки Azure Cosmos DB в Функциях Azure.</span><span class="sxs-lookup"><span data-stu-id="c277d-105">This article explains how to configure and code Azure Cosmos DB bindings in Azure Functions.</span></span> <span data-ttu-id="c277d-106">Функции Azure поддерживают входные и выходные привязки для Cosmos DB.</span><span class="sxs-lookup"><span data-stu-id="c277d-106">Azure Functions supports input and output bindings for Cosmos DB.</span></span>
+<span data-ttu-id="b0399-105">В этой статье объясняется, как привязки Azure Cosmos DB tooconfigure и код в функциях Azure.</span><span class="sxs-lookup"><span data-stu-id="b0399-105">This article explains how tooconfigure and code Azure Cosmos DB bindings in Azure Functions.</span></span> <span data-ttu-id="b0399-106">Функции Azure поддерживают входные и выходные привязки для Cosmos DB.</span><span class="sxs-lookup"><span data-stu-id="b0399-106">Azure Functions supports input and output bindings for Cosmos DB.</span></span>
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
-<span data-ttu-id="c277d-107">Дополнительные сведения о Cosmos DB см. в статьях [Знакомство с DocumentDB: база данных NoSQL JSON](../documentdb/documentdb-introduction.md) и [Руководство по NoSQL. Создание консольного приложения DocumentDB на языке C#](../documentdb/documentdb-get-started.md).</span><span class="sxs-lookup"><span data-stu-id="c277d-107">For more information on Cosmos DB, see [Introduction to Cosmos DB](../documentdb/documentdb-introduction.md) and [Build a Cosmos DB console application](../documentdb/documentdb-get-started.md).</span></span>
+<span data-ttu-id="b0399-107">Дополнительные сведения о Cosmos DB см. в разделе [tooCosmos введение DB](../documentdb/documentdb-introduction.md) и [построение консольного приложения Cosmos DB](../documentdb/documentdb-get-started.md).</span><span class="sxs-lookup"><span data-stu-id="b0399-107">For more information on Cosmos DB, see [Introduction tooCosmos DB](../documentdb/documentdb-introduction.md) and [Build a Cosmos DB console application](../documentdb/documentdb-get-started.md).</span></span>
 
 <a id="docdbinput"></a>
 
-## <a name="documentdb-api-input-binding"></a><span data-ttu-id="c277d-108">Входная привязка API DocumentDB</span><span class="sxs-lookup"><span data-stu-id="c277d-108">DocumentDB API input binding</span></span>
-<span data-ttu-id="c277d-109">Входная привязка API DocumentDB получает документ Cosmos DB и передает его именованному входному параметру функции.</span><span class="sxs-lookup"><span data-stu-id="c277d-109">The DocumentDB API input binding retrieves a Cosmos DB document and passes it to the named input parameter of the function.</span></span> <span data-ttu-id="c277d-110">Идентификатор документа можно определить по триггеру, который вызывает функцию.</span><span class="sxs-lookup"><span data-stu-id="c277d-110">The document ID can be determined based on the trigger that invokes the function.</span></span> 
+## <a name="documentdb-api-input-binding"></a><span data-ttu-id="b0399-108">Входная привязка API DocumentDB</span><span class="sxs-lookup"><span data-stu-id="b0399-108">DocumentDB API input binding</span></span>
+<span data-ttu-id="b0399-109">Hello входной привязки DocumentDB API извлекает Cosmos DB документ и передает его toohello с именем входного параметра функции hello.</span><span class="sxs-lookup"><span data-stu-id="b0399-109">hello DocumentDB API input binding retrieves a Cosmos DB document and passes it toohello named input parameter of hello function.</span></span> <span data-ttu-id="b0399-110">можно определить идентификатор документа Hello на основании hello триггер, который вызывает функции hello.</span><span class="sxs-lookup"><span data-stu-id="b0399-110">hello document ID can be determined based on hello trigger that invokes hello function.</span></span> 
 
-<span data-ttu-id="c277d-111">Входная привязка API DocumentDB имеет следующие свойства в *function.json*:</span><span class="sxs-lookup"><span data-stu-id="c277d-111">The DocumentDB API input binding has the following properties in *function.json*:</span></span>
+<span data-ttu-id="b0399-111">Hello DocumentDB API входной привязки имеет следующие свойства в hello *function.json*:</span><span class="sxs-lookup"><span data-stu-id="b0399-111">hello DocumentDB API input binding has hello following properties in *function.json*:</span></span>
 
-- <span data-ttu-id="c277d-112">`name` — имя идентификатора, используемого в коде функции для документа.</span><span class="sxs-lookup"><span data-stu-id="c277d-112">`name` : Identifier name used in function code for the document</span></span>
-- <span data-ttu-id="c277d-113">`type` — для этого свойства нужно задать значение "documentdb".</span><span class="sxs-lookup"><span data-stu-id="c277d-113">`type` : must be set to "documentdb"</span></span>
-- <span data-ttu-id="c277d-114">`databaseName` — база данных, содержащая документ.</span><span class="sxs-lookup"><span data-stu-id="c277d-114">`databaseName` : The database containing the document</span></span>
-- <span data-ttu-id="c277d-115">`collectionName` — коллекция, содержащая документ.</span><span class="sxs-lookup"><span data-stu-id="c277d-115">`collectionName` : The collection containing the document</span></span>
-- <span data-ttu-id="c277d-116">`id` — идентификатор документа, который нужно получить.</span><span class="sxs-lookup"><span data-stu-id="c277d-116">`id` : The Id of the document to retrieve.</span></span> <span data-ttu-id="c277d-117">Это свойство поддерживает параметры привязки; см. раздел [Привязка к пользовательским входным свойствам в выражении привязки](functions-triggers-bindings.md#bind-to-custom-input-properties-in-a-binding-expression) статьи [Основные понятия триггеров и привязок в Функциях Azure](functions-triggers-bindings.md).</span><span class="sxs-lookup"><span data-stu-id="c277d-117">This property supports bindings parameters; see [Bind to custom input properties in a binding expression](functions-triggers-bindings.md#bind-to-custom-input-properties-in-a-binding-expression) in the article [Azure Functions triggers and bindings concepts](functions-triggers-bindings.md).</span></span>
-- <span data-ttu-id="c277d-118">`sqlQuery` — SQL-запрос к Cosmos DB, используемый для извлечения нескольких документов.</span><span class="sxs-lookup"><span data-stu-id="c277d-118">`sqlQuery` : A Cosmos DB SQL query used for retrieving multiple documents.</span></span> <span data-ttu-id="c277d-119">Запрос поддерживает привязки времени выполнения.</span><span class="sxs-lookup"><span data-stu-id="c277d-119">The query supports runtime bindings.</span></span> <span data-ttu-id="c277d-120">Например: `SELECT * FROM c where c.departmentId = {departmentId}`</span><span class="sxs-lookup"><span data-stu-id="c277d-120">For example: `SELECT * FROM c where c.departmentId = {departmentId}`</span></span>
-- <span data-ttu-id="c277d-121">`connection` — имя параметра приложения, содержащего строку подключения к Cosmos DB.</span><span class="sxs-lookup"><span data-stu-id="c277d-121">`connection` : The name of the app setting containing your Cosmos DB connection string</span></span>
-- <span data-ttu-id="c277d-122">`direction` — для этого свойства нужно задать значение `"in"`.</span><span class="sxs-lookup"><span data-stu-id="c277d-122">`direction`  : must be set to `"in"`.</span></span>
+- <span data-ttu-id="b0399-112">`name`: Идентификатор имя, используемое в код функции для hello документа</span><span class="sxs-lookup"><span data-stu-id="b0399-112">`name` : Identifier name used in function code for hello document</span></span>
+- <span data-ttu-id="b0399-113">`type`: необходимо задать слишком «documentdb»</span><span class="sxs-lookup"><span data-stu-id="b0399-113">`type` : must be set too"documentdb"</span></span>
+- <span data-ttu-id="b0399-114">`databaseName`: hello базы данных, содержащей документ hello</span><span class="sxs-lookup"><span data-stu-id="b0399-114">`databaseName` : hello database containing hello document</span></span>
+- <span data-ttu-id="b0399-115">`collectionName`: hello коллекцию, содержащую hello документа</span><span class="sxs-lookup"><span data-stu-id="b0399-115">`collectionName` : hello collection containing hello document</span></span>
+- <span data-ttu-id="b0399-116">`id`: hello идентификатор hello tooretrieve документа.</span><span class="sxs-lookup"><span data-stu-id="b0399-116">`id` : hello Id of hello document tooretrieve.</span></span> <span data-ttu-id="b0399-117">Это свойство поддерживает параметры привязки; в разделе [привязки входных свойств toocustom в выражение привязки](functions-triggers-bindings.md#bind-to-custom-input-properties-in-a-binding-expression) в статье hello [триггеры функций Azure и основные понятия привязки](functions-triggers-bindings.md).</span><span class="sxs-lookup"><span data-stu-id="b0399-117">This property supports bindings parameters; see [Bind toocustom input properties in a binding expression](functions-triggers-bindings.md#bind-to-custom-input-properties-in-a-binding-expression) in hello article [Azure Functions triggers and bindings concepts](functions-triggers-bindings.md).</span></span>
+- <span data-ttu-id="b0399-118">`sqlQuery` — SQL-запрос к Cosmos DB, используемый для извлечения нескольких документов.</span><span class="sxs-lookup"><span data-stu-id="b0399-118">`sqlQuery` : A Cosmos DB SQL query used for retrieving multiple documents.</span></span> <span data-ttu-id="b0399-119">запрос Hello поддерживает привязки исполняющей среды.</span><span class="sxs-lookup"><span data-stu-id="b0399-119">hello query supports runtime bindings.</span></span> <span data-ttu-id="b0399-120">Например: `SELECT * FROM c where c.departmentId = {departmentId}`</span><span class="sxs-lookup"><span data-stu-id="b0399-120">For example: `SELECT * FROM c where c.departmentId = {departmentId}`</span></span>
+- <span data-ttu-id="b0399-121">`connection`: hello имя параметра приложения hello, содержащий строки подключения Cosmos DB</span><span class="sxs-lookup"><span data-stu-id="b0399-121">`connection` : hello name of hello app setting containing your Cosmos DB connection string</span></span>
+- <span data-ttu-id="b0399-122">`direction`: необходимо задать слишком`"in"`.</span><span class="sxs-lookup"><span data-stu-id="b0399-122">`direction`  : must be set too`"in"`.</span></span>
 
-<span data-ttu-id="c277d-123">Свойства `id` и `sqlQuery` невозможно указать одновременно.</span><span class="sxs-lookup"><span data-stu-id="c277d-123">The properties `id` and `sqlQuery` cannot both be specified.</span></span> <span data-ttu-id="c277d-124">Если не задано ни `id`, ни `sqlQuery`, извлекается вся коллекция.</span><span class="sxs-lookup"><span data-stu-id="c277d-124">If neither `id` nor `sqlQuery` is set, the entire collection is retrieved.</span></span>
+<span data-ttu-id="b0399-123">Здравствуйте, свойства `id` и `sqlQuery` невозможно указать одновременно.</span><span class="sxs-lookup"><span data-stu-id="b0399-123">hello properties `id` and `sqlQuery` cannot both be specified.</span></span> <span data-ttu-id="b0399-124">Если ни одна из `id` , ни `sqlQuery` имеет значение, hello всего извлекается коллекция.</span><span class="sxs-lookup"><span data-stu-id="b0399-124">If neither `id` nor `sqlQuery` is set, hello entire collection is retrieved.</span></span>
 
-## <a name="using-a-documentdb-api-input-binding"></a><span data-ttu-id="c277d-125">Использование входной привязки API DocumentDB</span><span class="sxs-lookup"><span data-stu-id="c277d-125">Using a DocumentDB API input binding</span></span>
+## <a name="using-a-documentdb-api-input-binding"></a><span data-ttu-id="b0399-125">Использование входной привязки API DocumentDB</span><span class="sxs-lookup"><span data-stu-id="b0399-125">Using a DocumentDB API input binding</span></span>
 
-* <span data-ttu-id="c277d-126">В функциях C# и F# любые изменения, внесенные во входной документ посредством именованных входных параметров, сохраняются автоматически после успешного выхода из функции.</span><span class="sxs-lookup"><span data-stu-id="c277d-126">In C# and F# functions, when the function exits successfully, any changes made to the input document via named input parameters are automatically persisted.</span></span> 
-* <span data-ttu-id="c277d-127">В функциях JavaScript изменения не обрабатываются автоматически при выходе из функции.</span><span class="sxs-lookup"><span data-stu-id="c277d-127">In JavaScript functions, updates are not made automatically upon function exit.</span></span> <span data-ttu-id="c277d-128">Для внесения изменений используйте `context.bindings.<documentName>In` и `context.bindings.<documentName>Out`.</span><span class="sxs-lookup"><span data-stu-id="c277d-128">Instead, use `context.bindings.<documentName>In` and `context.bindings.<documentName>Out` to make updates.</span></span> <span data-ttu-id="c277d-129">См. [пример JavaScript](#injavascript).</span><span class="sxs-lookup"><span data-stu-id="c277d-129">See the [JavaScript sample](#injavascript).</span></span>
+* <span data-ttu-id="b0399-126">В C# и F # функции при выходе из функции hello, успешно, все изменения, внесенные toohello входного документа через именованный входных параметров, автоматически сохраняется.</span><span class="sxs-lookup"><span data-stu-id="b0399-126">In C# and F# functions, when hello function exits successfully, any changes made toohello input document via named input parameters are automatically persisted.</span></span> 
+* <span data-ttu-id="b0399-127">В функциях JavaScript изменения не обрабатываются автоматически при выходе из функции.</span><span class="sxs-lookup"><span data-stu-id="b0399-127">In JavaScript functions, updates are not made automatically upon function exit.</span></span> <span data-ttu-id="b0399-128">Вместо этого используйте `context.bindings.<documentName>In` и `context.bindings.<documentName>Out` toomake обновлений.</span><span class="sxs-lookup"><span data-stu-id="b0399-128">Instead, use `context.bindings.<documentName>In` and `context.bindings.<documentName>Out` toomake updates.</span></span> <span data-ttu-id="b0399-129">В разделе hello [пример JavaScript](#injavascript).</span><span class="sxs-lookup"><span data-stu-id="b0399-129">See hello [JavaScript sample](#injavascript).</span></span>
 
 <a name="inputsample"></a>
 
-## <a name="input-sample-for-single-document"></a><span data-ttu-id="c277d-130">Пример входной привязки для отдельного документа</span><span class="sxs-lookup"><span data-stu-id="c277d-130">Input sample for single document</span></span>
-<span data-ttu-id="c277d-131">Предположим, что у вас есть следующая входная привязка API DocumentDB в массиве `bindings` файла function.json:</span><span class="sxs-lookup"><span data-stu-id="c277d-131">Suppose you have the following DocumentDB API input binding in the `bindings` array of function.json:</span></span>
+## <a name="input-sample-for-single-document"></a><span data-ttu-id="b0399-130">Пример входной привязки для отдельного документа</span><span class="sxs-lookup"><span data-stu-id="b0399-130">Input sample for single document</span></span>
+<span data-ttu-id="b0399-131">Предположим, что имеется следующее hello DocumentDB API входной привязки в hello `bindings` массив function.json:</span><span class="sxs-lookup"><span data-stu-id="b0399-131">Suppose you have hello following DocumentDB API input binding in hello `bindings` array of function.json:</span></span>
 
 ```json
 {
@@ -71,14 +71,14 @@ ms.lasthandoff: 08/29/2017
 }
 ```
 
-<span data-ttu-id="c277d-132">Чтобы обновить текстовое значение документа, см. пример для конкретного языка, использующий эту входную привязку.</span><span class="sxs-lookup"><span data-stu-id="c277d-132">See the language-specific sample that uses this input binding to update the document's text value.</span></span>
+<span data-ttu-id="b0399-132">См. пример hello зависящие от языка, который использует этот входной привязки tooupdate hello документа текстовое значение.</span><span class="sxs-lookup"><span data-stu-id="b0399-132">See hello language-specific sample that uses this input binding tooupdate hello document's text value.</span></span>
 
-* [<span data-ttu-id="c277d-133">C#</span><span class="sxs-lookup"><span data-stu-id="c277d-133">C#</span></span>](#incsharp)
-* [<span data-ttu-id="c277d-134">F#</span><span class="sxs-lookup"><span data-stu-id="c277d-134">F#</span></span>](#infsharp)
-* [<span data-ttu-id="c277d-135">JavaScript</span><span class="sxs-lookup"><span data-stu-id="c277d-135">JavaScript</span></span>](#injavascript)
+* [<span data-ttu-id="b0399-133">C#</span><span class="sxs-lookup"><span data-stu-id="b0399-133">C#</span></span>](#incsharp)
+* [<span data-ttu-id="b0399-134">F#</span><span class="sxs-lookup"><span data-stu-id="b0399-134">F#</span></span>](#infsharp)
+* [<span data-ttu-id="b0399-135">JavaScript</span><span class="sxs-lookup"><span data-stu-id="b0399-135">JavaScript</span></span>](#injavascript)
 
 <a name="incsharp"></a>
-### <a name="input-sample-in-c"></a><span data-ttu-id="c277d-136">Пример входной привязки для языка C#</span><span class="sxs-lookup"><span data-stu-id="c277d-136">Input sample in C#</span></span> #
+### <a name="input-sample-in-c"></a><span data-ttu-id="b0399-136">Пример входной привязки для языка C#</span><span class="sxs-lookup"><span data-stu-id="b0399-136">Input sample in C#</span></span> #
 
 ```cs
 // Change input document contents using DocumentDB API input binding 
@@ -89,7 +89,7 @@ public static void Run(string myQueueItem, dynamic inputDocument)
 ```
 <a name="infsharp"></a>
 
-### <a name="input-sample-in-f"></a><span data-ttu-id="c277d-137">Пример входной привязки для языка F#</span><span class="sxs-lookup"><span data-stu-id="c277d-137">Input sample in F#</span></span> #
+### <a name="input-sample-in-f"></a><span data-ttu-id="b0399-137">Пример входной привязки для языка F#</span><span class="sxs-lookup"><span data-stu-id="b0399-137">Input sample in F#</span></span> #
 
 ```fsharp
 (* Change input document contents using DocumentDB API input binding *)
@@ -98,7 +98,7 @@ let Run(myQueueItem: string, inputDocument: obj) =
   inputDocument?text <- "This has changed."
 ```
 
-<span data-ttu-id="c277d-138">В этом примере нужен файл `project.json`, указывающий зависимости NuGet `FSharp.Interop.Dynamic` и `Dynamitey`:</span><span class="sxs-lookup"><span data-stu-id="c277d-138">This sample requires a `project.json` file that specifies the `FSharp.Interop.Dynamic` and `Dynamitey` NuGet dependencies:</span></span>
+<span data-ttu-id="b0399-138">Для этого образца необходимо `project.json` файл, задающий hello `FSharp.Interop.Dynamic` и `Dynamitey` зависимостей NuGet:</span><span class="sxs-lookup"><span data-stu-id="b0399-138">This sample requires a `project.json` file that specifies hello `FSharp.Interop.Dynamic` and `Dynamitey` NuGet dependencies:</span></span>
 
 ```json
 {
@@ -113,11 +113,11 @@ let Run(myQueueItem: string, inputDocument: obj) =
 }
 ```
 
-<span data-ttu-id="c277d-139">Чтобы добавить файл `project.json`, см. раздел [об управлении пакетом F#](functions-reference-fsharp.md#package).</span><span class="sxs-lookup"><span data-stu-id="c277d-139">To add a `project.json` file, see [F# package management](functions-reference-fsharp.md#package).</span></span>
+<span data-ttu-id="b0399-139">tooadd `project.json` файла см. в разделе [пакета управления F #](functions-reference-fsharp.md#package).</span><span class="sxs-lookup"><span data-stu-id="b0399-139">tooadd a `project.json` file, see [F# package management](functions-reference-fsharp.md#package).</span></span>
 
 <a name="injavascript"></a>
 
-### <a name="input-sample-in-javascript"></a><span data-ttu-id="c277d-140">Пример входной привязки для JavaScript</span><span class="sxs-lookup"><span data-stu-id="c277d-140">Input sample in JavaScript</span></span>
+### <a name="input-sample-in-javascript"></a><span data-ttu-id="b0399-140">Пример входной привязки для JavaScript</span><span class="sxs-lookup"><span data-stu-id="b0399-140">Input sample in JavaScript</span></span>
 
 ```javascript
 // Change input document contents using DocumentDB API input binding, using context.bindings.inputDocumentOut
@@ -128,11 +128,11 @@ module.exports = function (context) {
 };
 ```
 
-## <a name="input-sample-with-multiple-documents"></a><span data-ttu-id="c277d-141">Пример входной привязки с несколькими документами</span><span class="sxs-lookup"><span data-stu-id="c277d-141">Input sample with multiple documents</span></span>
+## <a name="input-sample-with-multiple-documents"></a><span data-ttu-id="b0399-141">Пример входной привязки с несколькими документами</span><span class="sxs-lookup"><span data-stu-id="b0399-141">Input sample with multiple documents</span></span>
 
-<span data-ttu-id="c277d-142">Предположим, что нужно извлечь несколько документов, указанных SQL-запросом, используя триггер очереди для настройки параметров запроса.</span><span class="sxs-lookup"><span data-stu-id="c277d-142">Suppose that you wish to retrieve multiple documents specified by a SQL query, using a queue trigger to customize the query parameters.</span></span> 
+<span data-ttu-id="b0399-142">Предположим, что вы хотите tooretrieve несколько документов, указанный в запросе SQL с помощью параметров очереди триггера toocustomize hello запроса.</span><span class="sxs-lookup"><span data-stu-id="b0399-142">Suppose that you wish tooretrieve multiple documents specified by a SQL query, using a queue trigger toocustomize hello query parameters.</span></span> 
 
-<span data-ttu-id="c277d-143">В этом примере триггер очереди предоставляет параметр `departmentId`. Сообщение очереди `{ "departmentId" : "Finance" }` возвращает все записи для финансового отдела.</span><span class="sxs-lookup"><span data-stu-id="c277d-143">In this example, the queue trigger provides a parameter `departmentId`.A queue message of `{ "departmentId" : "Finance" }` would return all records for the finance department.</span></span> <span data-ttu-id="c277d-144">Используйте в *function.json* следующий код:</span><span class="sxs-lookup"><span data-stu-id="c277d-144">Use the following in *function.json*:</span></span>
+<span data-ttu-id="b0399-143">В этом примере hello очереди триггера предоставляет параметр `departmentId`. Сообщение из очереди `{ "departmentId" : "Finance" }` возвратит все записи для hello финансового отдела.</span><span class="sxs-lookup"><span data-stu-id="b0399-143">In this example, hello queue trigger provides a parameter `departmentId`.A queue message of `{ "departmentId" : "Finance" }` would return all records for hello finance department.</span></span> <span data-ttu-id="b0399-144">Используйте следующие hello в *function.json*:</span><span class="sxs-lookup"><span data-stu-id="b0399-144">Use hello following in *function.json*:</span></span>
 
 ```
 {
@@ -146,7 +146,7 @@ module.exports = function (context) {
 }
 ```
 
-### <a name="input-sample-with-multiple-documents-in-c"></a><span data-ttu-id="c277d-145">Пример входной привязки с несколькими документами для языка C#</span><span class="sxs-lookup"><span data-stu-id="c277d-145">Input sample with multiple documents in C#</span></span>
+### <a name="input-sample-with-multiple-documents-in-c"></a><span data-ttu-id="b0399-145">Пример входной привязки с несколькими документами для языка C#</span><span class="sxs-lookup"><span data-stu-id="b0399-145">Input sample with multiple documents in C#</span></span>
 
 ```csharp
 public static void Run(QueuePayload myQueueItem, IEnumerable<dynamic> documents)
@@ -163,7 +163,7 @@ public class QueuePayload
 }
 ```
 
-### <a name="input-sample-with-multiple-documents-in-javascript"></a><span data-ttu-id="c277d-146">Пример входной привязки с несколькими документами для JavaScript</span><span class="sxs-lookup"><span data-stu-id="c277d-146">Input sample with multiple documents in JavaScript</span></span>
+### <a name="input-sample-with-multiple-documents-in-javascript"></a><span data-ttu-id="b0399-146">Пример входной привязки с несколькими документами для JavaScript</span><span class="sxs-lookup"><span data-stu-id="b0399-146">Input sample with multiple documents in JavaScript</span></span>
 
 ```javascript
 module.exports = function (context, input) {    
@@ -176,31 +176,31 @@ module.exports = function (context, input) {
 };
 ```
 
-## <span data-ttu-id="c277d-147"><a id="docdboutput"></a>Выходная привязка API DocumentDB</span><span class="sxs-lookup"><span data-stu-id="c277d-147"><a id="docdboutput"></a>DocumentDB API output binding</span></span>
-<span data-ttu-id="c277d-148">Выходная привязка API DocumentDB позволяет записать новый документ в Azure Cosmos DB.</span><span class="sxs-lookup"><span data-stu-id="c277d-148">The DocumentDB API output binding lets you write a new document to an Azure Cosmos DB database.</span></span> <span data-ttu-id="c277d-149">Он содержит следующие свойства в *function.json*:</span><span class="sxs-lookup"><span data-stu-id="c277d-149">It has the following properties in *function.json*:</span></span>
+## <span data-ttu-id="b0399-147"><a id="docdboutput"></a>Выходная привязка API DocumentDB</span><span class="sxs-lookup"><span data-stu-id="b0399-147"><a id="docdboutput"></a>DocumentDB API output binding</span></span>
+<span data-ttu-id="b0399-148">привязка позволяет вам создавать новую базу данных Azure Cosmos DB документа tooan вывода Hello DocumentDB API.</span><span class="sxs-lookup"><span data-stu-id="b0399-148">hello DocumentDB API output binding lets you write a new document tooan Azure Cosmos DB database.</span></span> <span data-ttu-id="b0399-149">Он имеет следующие свойства в hello *function.json*:</span><span class="sxs-lookup"><span data-stu-id="b0399-149">It has hello following properties in *function.json*:</span></span>
 
-- <span data-ttu-id="c277d-150">`name` — идентификатор, используемый в коде функции для нового документа.</span><span class="sxs-lookup"><span data-stu-id="c277d-150">`name` : Identifier used in function code for the new document</span></span>
-- <span data-ttu-id="c277d-151">`type` — для этого свойства нужно задать значение `"documentdb"`.</span><span class="sxs-lookup"><span data-stu-id="c277d-151">`type` : must be set to `"documentdb"`</span></span>
-- <span data-ttu-id="c277d-152">`databaseName` — база данных, содержащая коллекцию, в которой будет создан документ.</span><span class="sxs-lookup"><span data-stu-id="c277d-152">`databaseName` : The database containing the collection where the new document will be created.</span></span>
-- <span data-ttu-id="c277d-153">`collectionName` — коллекция, в которой будет создан документ.</span><span class="sxs-lookup"><span data-stu-id="c277d-153">`collectionName` : The collection where the new document will be created.</span></span>
-- <span data-ttu-id="c277d-154">`createIfNotExists` — логическое значение, указывающее, будет ли создана коллекция при ее отсутствии.</span><span class="sxs-lookup"><span data-stu-id="c277d-154">`createIfNotExists` : A boolean value to indicate whether the collection will be created if it does not exist.</span></span> <span data-ttu-id="c277d-155">Значение по умолчанию — *false*.</span><span class="sxs-lookup"><span data-stu-id="c277d-155">The default is *false*.</span></span> <span data-ttu-id="c277d-156">Это вызвано тем, что коллекции создаются с использованием зарезервированной пропускной способности, с которой связаны ценовые требования.</span><span class="sxs-lookup"><span data-stu-id="c277d-156">The reason for this is new collections are created with reserved throughput, which has pricing implications.</span></span> <span data-ttu-id="c277d-157">Дополнительные сведения см. на [странице цен](https://azure.microsoft.com/pricing/details/documentdb/).</span><span class="sxs-lookup"><span data-stu-id="c277d-157">For more details, please visit the [pricing page](https://azure.microsoft.com/pricing/details/documentdb/).</span></span>
-- <span data-ttu-id="c277d-158">`connection` — имя параметра приложения, содержащего строку подключения к Cosmos DB.</span><span class="sxs-lookup"><span data-stu-id="c277d-158">`connection` : The name of the app setting containing your Cosmos DB connection string</span></span>
-- <span data-ttu-id="c277d-159">`direction` — для этого свойства нужно задать значение `"out"`.</span><span class="sxs-lookup"><span data-stu-id="c277d-159">`direction` : must be set to `"out"`</span></span>
+- <span data-ttu-id="b0399-150">`name`: Идентификатор, используемый в коде функция для нового документа hello</span><span class="sxs-lookup"><span data-stu-id="b0399-150">`name` : Identifier used in function code for hello new document</span></span>
+- <span data-ttu-id="b0399-151">`type`: необходимо задать слишком`"documentdb"`</span><span class="sxs-lookup"><span data-stu-id="b0399-151">`type` : must be set too`"documentdb"`</span></span>
+- <span data-ttu-id="b0399-152">`databaseName`: hello базы данных, содержащей коллекцию hello, где будет создан новый документ hello.</span><span class="sxs-lookup"><span data-stu-id="b0399-152">`databaseName` : hello database containing hello collection where hello new document will be created.</span></span>
+- <span data-ttu-id="b0399-153">`collectionName`: hello коллекции, где будет создан новый документ hello.</span><span class="sxs-lookup"><span data-stu-id="b0399-153">`collectionName` : hello collection where hello new document will be created.</span></span>
+- <span data-ttu-id="b0399-154">`createIfNotExists`: Логическое значение tooindicate ли будет создана коллекция hello, если он не существует.</span><span class="sxs-lookup"><span data-stu-id="b0399-154">`createIfNotExists` : A boolean value tooindicate whether hello collection will be created if it does not exist.</span></span> <span data-ttu-id="b0399-155">по умолчанию Hello — *false*.</span><span class="sxs-lookup"><span data-stu-id="b0399-155">hello default is *false*.</span></span> <span data-ttu-id="b0399-156">Здравствуйте, поэтому для этой новой наборы создаются с зарезервированной пропускной способностью, имеющая цены последствия.</span><span class="sxs-lookup"><span data-stu-id="b0399-156">hello reason for this is new collections are created with reserved throughput, which has pricing implications.</span></span> <span data-ttu-id="b0399-157">Для получения дополнительных сведений посетите hello [странице цен](https://azure.microsoft.com/pricing/details/documentdb/).</span><span class="sxs-lookup"><span data-stu-id="b0399-157">For more details, please visit hello [pricing page](https://azure.microsoft.com/pricing/details/documentdb/).</span></span>
+- <span data-ttu-id="b0399-158">`connection`: hello имя параметра приложения hello, содержащий строки подключения Cosmos DB</span><span class="sxs-lookup"><span data-stu-id="b0399-158">`connection` : hello name of hello app setting containing your Cosmos DB connection string</span></span>
+- <span data-ttu-id="b0399-159">`direction`: необходимо задать слишком`"out"`</span><span class="sxs-lookup"><span data-stu-id="b0399-159">`direction` : must be set too`"out"`</span></span>
 
-## <a name="using-a-documentdb-api-output-binding"></a><span data-ttu-id="c277d-160">Использование выходной привязки API DocumentDB</span><span class="sxs-lookup"><span data-stu-id="c277d-160">Using a DocumentDB API output binding</span></span>
-<span data-ttu-id="c277d-161">В этом разделе показано, как использовать выходную привязку API DocumentDB в коде функции.</span><span class="sxs-lookup"><span data-stu-id="c277d-161">This section shows you how to use your DocumentDB API output binding in your function code.</span></span>
+## <a name="using-a-documentdb-api-output-binding"></a><span data-ttu-id="b0399-160">Использование выходной привязки API DocumentDB</span><span class="sxs-lookup"><span data-stu-id="b0399-160">Using a DocumentDB API output binding</span></span>
+<span data-ttu-id="b0399-161">В этом разделе показано, как toouse вывода привязки в коде функция DocumentDB API.</span><span class="sxs-lookup"><span data-stu-id="b0399-161">This section shows you how toouse your DocumentDB API output binding in your function code.</span></span>
 
-<span data-ttu-id="c277d-162">При записи в выходном параметре функции в базе данных по умолчанию создается документ, для которого автоматически создается GUID в качестве идентификатора документа.</span><span class="sxs-lookup"><span data-stu-id="c277d-162">When you write to the output parameter in your function, by default a new document is generated in your database, with an automatically generated GUID as the document ID.</span></span> <span data-ttu-id="c277d-163">Идентификатор выходного документа можно определить, указав свойство JSON `id` в выходном параметре.</span><span class="sxs-lookup"><span data-stu-id="c277d-163">You can specify the document ID of output document by specifying the `id` JSON property in the output parameter.</span></span> 
+<span data-ttu-id="b0399-162">При написании toohello выходного параметра в функции, по умолчанию новый документ создается в базе данных, с автоматически созданным GUID, как hello документов идентификатор.</span><span class="sxs-lookup"><span data-stu-id="b0399-162">When you write toohello output parameter in your function, by default a new document is generated in your database, with an automatically generated GUID as hello document ID.</span></span> <span data-ttu-id="b0399-163">Можно указать идентификатор hello документ выходной документ, указав hello `id` свойства JSON в hello выходной параметр.</span><span class="sxs-lookup"><span data-stu-id="b0399-163">You can specify hello document ID of output document by specifying hello `id` JSON property in hello output parameter.</span></span> 
 
 >[!Note]  
-><span data-ttu-id="c277d-164">Если указать идентификатор существующего документа, он перезаписывается новым выходным документом.</span><span class="sxs-lookup"><span data-stu-id="c277d-164">When you specify the ID of an existing document, it gets overwritten by the new output document.</span></span> 
+><span data-ttu-id="b0399-164">При указании ID hello существующего документа заменяется hello новый выходной документ.</span><span class="sxs-lookup"><span data-stu-id="b0399-164">When you specify hello ID of an existing document, it gets overwritten by hello new output document.</span></span> 
 
-<span data-ttu-id="c277d-165">Для вывода в несколько документов можно также выполнить привязку к `ICollector<T>` или `IAsyncCollector<T>`, где `T` — любой из поддерживаемых типов.</span><span class="sxs-lookup"><span data-stu-id="c277d-165">To output multiple documents, you can also bind to `ICollector<T>` or `IAsyncCollector<T>` where `T` is one of the supported types.</span></span>
+<span data-ttu-id="b0399-165">toooutput несколько документов, можно также привязать слишком`ICollector<T>` или `IAsyncCollector<T>` где `T` является одним из типов hello поддерживается.</span><span class="sxs-lookup"><span data-stu-id="b0399-165">toooutput multiple documents, you can also bind too`ICollector<T>` or `IAsyncCollector<T>` where `T` is one of hello supported types.</span></span>
 
 <a name="outputsample"></a>
 
-## <a name="documentdb-api-output-binding-sample"></a><span data-ttu-id="c277d-166">Пример выходной привязки API DocumentDB</span><span class="sxs-lookup"><span data-stu-id="c277d-166">DocumentDB API output binding sample</span></span>
-<span data-ttu-id="c277d-167">Предположим, что у вас есть следующая выходная привязка API DocumentDB в массиве `bindings` файла function.json:</span><span class="sxs-lookup"><span data-stu-id="c277d-167">Suppose you have the following DocumentDB API output binding in the `bindings` array of function.json:</span></span>
+## <a name="documentdb-api-output-binding-sample"></a><span data-ttu-id="b0399-166">Пример выходной привязки API DocumentDB</span><span class="sxs-lookup"><span data-stu-id="b0399-166">DocumentDB API output binding sample</span></span>
+<span data-ttu-id="b0399-167">Предположим, что имеется следующее hello DocumentDB API вывода привязки в hello `bindings` массив function.json:</span><span class="sxs-lookup"><span data-stu-id="b0399-167">Suppose you have hello following DocumentDB API output binding in hello `bindings` array of function.json:</span></span>
 
 ```json
 {
@@ -214,7 +214,7 @@ module.exports = function (context, input) {
 }
 ```
 
-<span data-ttu-id="c277d-168">Кроме того, у вас есть входная привязка очереди для очереди, которая получает JSON в следующем формате:</span><span class="sxs-lookup"><span data-stu-id="c277d-168">And you have a queue input binding for a queue that receives JSON in the following format:</span></span>
+<span data-ttu-id="b0399-168">И у вас есть привязка входной очереди для очереди, получающего hello следующая формата JSON:</span><span class="sxs-lookup"><span data-stu-id="b0399-168">And you have a queue input binding for a queue that receives JSON in hello following format:</span></span>
 
 ```json
 {
@@ -224,7 +224,7 @@ module.exports = function (context, input) {
 }
 ```
 
-<span data-ttu-id="c277d-169">При этом вам нужно создать документы Cosmos DB в следующем формате для каждой записи:</span><span class="sxs-lookup"><span data-stu-id="c277d-169">And you want to create Cosmos DB documents in the following format for each record:</span></span>
+<span data-ttu-id="b0399-169">И вы хотите toocreate Cosmos DB документы в кодировке для каждой записи hello:</span><span class="sxs-lookup"><span data-stu-id="b0399-169">And you want toocreate Cosmos DB documents in hello following format for each record:</span></span>
 
 ```json
 {
@@ -235,15 +235,15 @@ module.exports = function (context, input) {
 }
 ```
 
-<span data-ttu-id="c277d-170">Чтобы добавить документы в базу данных, см. пример для конкретного языка, использующий эту выходную привязку.</span><span class="sxs-lookup"><span data-stu-id="c277d-170">See the language-specific sample that uses this output binding to add documents to your database.</span></span>
+<span data-ttu-id="b0399-170">См. пример hello зависящие от языка, который использует этот выходной привязки tooadd документы tooyour базы данных.</span><span class="sxs-lookup"><span data-stu-id="b0399-170">See hello language-specific sample that uses this output binding tooadd documents tooyour database.</span></span>
 
-* [<span data-ttu-id="c277d-171">C#</span><span class="sxs-lookup"><span data-stu-id="c277d-171">C#</span></span>](#outcsharp)
-* [<span data-ttu-id="c277d-172">F#</span><span class="sxs-lookup"><span data-stu-id="c277d-172">F#</span></span>](#outfsharp)
-* [<span data-ttu-id="c277d-173">JavaScript</span><span class="sxs-lookup"><span data-stu-id="c277d-173">JavaScript</span></span>](#outjavascript)
+* [<span data-ttu-id="b0399-171">C#</span><span class="sxs-lookup"><span data-stu-id="b0399-171">C#</span></span>](#outcsharp)
+* [<span data-ttu-id="b0399-172">F#</span><span class="sxs-lookup"><span data-stu-id="b0399-172">F#</span></span>](#outfsharp)
+* [<span data-ttu-id="b0399-173">JavaScript</span><span class="sxs-lookup"><span data-stu-id="b0399-173">JavaScript</span></span>](#outjavascript)
 
 <a name="outcsharp"></a>
 
-### <a name="output-sample-in-c"></a><span data-ttu-id="c277d-174">Пример выходной привязки для языка C#</span><span class="sxs-lookup"><span data-stu-id="c277d-174">Output sample in C#</span></span> #
+### <a name="output-sample-in-c"></a><span data-ttu-id="b0399-174">Пример выходной привязки для языка C#</span><span class="sxs-lookup"><span data-stu-id="b0399-174">Output sample in C#</span></span> #
 
 ```cs
 #r "Newtonsoft.Json"
@@ -269,7 +269,7 @@ public static void Run(string myQueueItem, out object employeeDocument, TraceWri
 
 <a name="outfsharp"></a>
 
-### <a name="output-sample-in-f"></a><span data-ttu-id="c277d-175">Пример выходной привязки для языка F#</span><span class="sxs-lookup"><span data-stu-id="c277d-175">Output sample in F#</span></span> #
+### <a name="output-sample-in-f"></a><span data-ttu-id="b0399-175">Пример выходной привязки для языка F#</span><span class="sxs-lookup"><span data-stu-id="b0399-175">Output sample in F#</span></span> #
 
 ```fsharp
 open FSharp.Interop.Dynamic
@@ -292,7 +292,7 @@ let Run(myQueueItem: string, employeeDocument: byref<obj>, log: TraceWriter) =
       address = employee?address }
 ```
 
-<span data-ttu-id="c277d-176">В этом примере нужен файл `project.json`, указывающий зависимости NuGet `FSharp.Interop.Dynamic` и `Dynamitey`:</span><span class="sxs-lookup"><span data-stu-id="c277d-176">This sample requires a `project.json` file that specifies the `FSharp.Interop.Dynamic` and `Dynamitey` NuGet dependencies:</span></span>
+<span data-ttu-id="b0399-176">Для этого образца необходимо `project.json` файл, задающий hello `FSharp.Interop.Dynamic` и `Dynamitey` зависимостей NuGet:</span><span class="sxs-lookup"><span data-stu-id="b0399-176">This sample requires a `project.json` file that specifies hello `FSharp.Interop.Dynamic` and `Dynamitey` NuGet dependencies:</span></span>
 
 ```json
 {
@@ -307,11 +307,11 @@ let Run(myQueueItem: string, employeeDocument: byref<obj>, log: TraceWriter) =
 }
 ```
 
-<span data-ttu-id="c277d-177">Чтобы добавить файл `project.json`, см. раздел [об управлении пакетом F#](functions-reference-fsharp.md#package).</span><span class="sxs-lookup"><span data-stu-id="c277d-177">To add a `project.json` file, see [F# package management](functions-reference-fsharp.md#package).</span></span>
+<span data-ttu-id="b0399-177">tooadd `project.json` файла см. в разделе [пакета управления F #](functions-reference-fsharp.md#package).</span><span class="sxs-lookup"><span data-stu-id="b0399-177">tooadd a `project.json` file, see [F# package management](functions-reference-fsharp.md#package).</span></span>
 
 <a name="outjavascript"></a>
 
-### <a name="output-sample-in-javascript"></a><span data-ttu-id="c277d-178">Пример выходной привязки для JavaScript</span><span class="sxs-lookup"><span data-stu-id="c277d-178">Output sample in JavaScript</span></span>
+### <a name="output-sample-in-javascript"></a><span data-ttu-id="b0399-178">Пример выходной привязки для JavaScript</span><span class="sxs-lookup"><span data-stu-id="b0399-178">Output sample in JavaScript</span></span>
 
 ```javascript
 module.exports = function (context) {

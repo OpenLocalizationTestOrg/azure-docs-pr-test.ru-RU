@@ -1,6 +1,6 @@
 ---
-title: "Управление Azure Data Lake Analytics с помощью пакета SDK Azure для Java | Документация Майкрософт"
-description: "Разработка приложений с использованием пакета SDK для Java для аналитики озера данных Azure"
+title: "Аналитика Озера данных Azure, с помощью пакета SDK для Java Azure aaaManage | Документы Microsoft"
+description: "Использовать приложения toodevelop SDK для Java аналитика Озера данных Azure"
 services: data-lake-analytics
 documentationcenter: 
 author: matt1883
@@ -14,29 +14,29 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 06/18/2017
 ms.author: saveenr
-ms.openlocfilehash: 8a0c1c7aab89f3bb62d0eb9f42e8ac65309d617e
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 79e5fa1bacd5fd65072a1c3c480482a8e51d94b6
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="manage--azure-data-lake-analytics-using-java-sdk"></a><span data-ttu-id="b6545-103">Управление Azure Data Lake Analytics с помощью пакета SDK для Java</span><span class="sxs-lookup"><span data-stu-id="b6545-103">Manage  Azure Data Lake Analytics using Java SDK</span></span>
+# <a name="manage--azure-data-lake-analytics-using-java-sdk"></a><span data-ttu-id="97e7e-103">Управление Azure Data Lake Analytics с помощью пакета SDK для Java</span><span class="sxs-lookup"><span data-stu-id="97e7e-103">Manage  Azure Data Lake Analytics using Java SDK</span></span>
 
-<span data-ttu-id="b6545-104">В этом руководстве вы разработаете консольное приложение Java, которое выполняет общие действия в Azure Data Lake.</span><span class="sxs-lookup"><span data-stu-id="b6545-104">In this tutorial, you develop a Java console application that performs common operations for Azure Data Lake.</span></span>
+<span data-ttu-id="97e7e-104">В этом руководстве вы разработаете консольное приложение Java, которое выполняет общие действия в Azure Data Lake.</span><span class="sxs-lookup"><span data-stu-id="97e7e-104">In this tutorial, you develop a Java console application that performs common operations for Azure Data Lake.</span></span>
 
-## <a name="prerequisites"></a><span data-ttu-id="b6545-105">Предварительные требования</span><span class="sxs-lookup"><span data-stu-id="b6545-105">Prerequisites</span></span>
-* <span data-ttu-id="b6545-106">**Пакет средств разработки для Java (JDK) 8** (с использованием Java версии 1.8).</span><span class="sxs-lookup"><span data-stu-id="b6545-106">**Java Development Kit (JDK) 8** (using Java version 1.8).</span></span>
-* <span data-ttu-id="b6545-107">**IntelliJ** или другая подходящая среда разработки Java.</span><span class="sxs-lookup"><span data-stu-id="b6545-107">**IntelliJ** or another suitable Java development environment.</span></span> <span data-ttu-id="b6545-108">В инструкциях в этом документе используется IntelliJ.</span><span class="sxs-lookup"><span data-stu-id="b6545-108">The instructions in this document use IntelliJ.</span></span>
-* <span data-ttu-id="b6545-109">Создайте приложение Azure Active Directory (AAD) и получите его **идентификатор клиента**, **код клиента** и **ключ**.</span><span class="sxs-lookup"><span data-stu-id="b6545-109">Create an Azure Active Directory (AAD) application and retrieve its **Client ID**, **Tenant ID**, and **Key**.</span></span> <span data-ttu-id="b6545-110">Дополнительные сведения о приложениях AAD и указания о том, как получить идентификатор клиента, см. в статье [Создание приложения Active Directory и субъекта-службы с помощью портала](../azure-resource-manager/resource-group-create-service-principal-portal.md).</span><span class="sxs-lookup"><span data-stu-id="b6545-110">For more information about AAD applications and instructions on how to get a client ID, see [Create Active Directory application and service principal using portal](../azure-resource-manager/resource-group-create-service-principal-portal.md).</span></span> <span data-ttu-id="b6545-111">Когда будут созданы приложение и ключ, URI ответа и ключ также будут доступны на портале.</span><span class="sxs-lookup"><span data-stu-id="b6545-111">The Reply URI and Key is available from the portal once you have the application created and key generated.</span></span>
+## <a name="prerequisites"></a><span data-ttu-id="97e7e-105">Предварительные требования</span><span class="sxs-lookup"><span data-stu-id="97e7e-105">Prerequisites</span></span>
+* <span data-ttu-id="97e7e-106">**Пакет средств разработки для Java (JDK) 8** (с использованием Java версии 1.8).</span><span class="sxs-lookup"><span data-stu-id="97e7e-106">**Java Development Kit (JDK) 8** (using Java version 1.8).</span></span>
+* <span data-ttu-id="97e7e-107">**IntelliJ** или другая подходящая среда разработки Java.</span><span class="sxs-lookup"><span data-stu-id="97e7e-107">**IntelliJ** or another suitable Java development environment.</span></span> <span data-ttu-id="97e7e-108">Hello инструкциях в этом документе используется IntelliJ.</span><span class="sxs-lookup"><span data-stu-id="97e7e-108">hello instructions in this document use IntelliJ.</span></span>
+* <span data-ttu-id="97e7e-109">Создайте приложение Azure Active Directory (AAD) и получите его **идентификатор клиента**, **код клиента** и **ключ**.</span><span class="sxs-lookup"><span data-stu-id="97e7e-109">Create an Azure Active Directory (AAD) application and retrieve its **Client ID**, **Tenant ID**, and **Key**.</span></span> <span data-ttu-id="97e7e-110">Дополнительные сведения о приложениях AAD и инструкции о том, как tooget идентификатора клиента см. в разделе [Active Directory, создать приложение и участника службы с помощью портала](../azure-resource-manager/resource-group-create-service-principal-portal.md).</span><span class="sxs-lookup"><span data-stu-id="97e7e-110">For more information about AAD applications and instructions on how tooget a client ID, see [Create Active Directory application and service principal using portal](../azure-resource-manager/resource-group-create-service-principal-portal.md).</span></span> <span data-ttu-id="97e7e-111">Hello ответа Reply URI и ключ можно получить на портал hello после создания приложения hello и ключом, создаваемым.</span><span class="sxs-lookup"><span data-stu-id="97e7e-111">hello Reply URI and Key is available from hello portal once you have hello application created and key generated.</span></span>
 
-## <a name="authenticating-using-azure-active-directory"></a><span data-ttu-id="b6545-112">Проверка подлинности с помощью Azure Active Directory</span><span class="sxs-lookup"><span data-stu-id="b6545-112">Authenticating using Azure Active Directory</span></span>
+## <a name="authenticating-using-azure-active-directory"></a><span data-ttu-id="97e7e-112">Проверка подлинности с помощью Azure Active Directory</span><span class="sxs-lookup"><span data-stu-id="97e7e-112">Authenticating using Azure Active Directory</span></span>
 
-<span data-ttu-id="b6545-113">Ниже приведен фрагмент кода для **неинтерактивной** аутентификации, в ходе которой приложение указывает собственные учетные данные.</span><span class="sxs-lookup"><span data-stu-id="b6545-113">The code following snippet provides code for **non-interactive** authentication, where the application provides its own credentials.</span></span>
+<span data-ttu-id="97e7e-113">Здравствуйте, код в следующем фрагменте кода приводится код для **неинтерактивной** проверки подлинности, где приложение hello предоставляет свои собственные учетные данные.</span><span class="sxs-lookup"><span data-stu-id="97e7e-113">hello code following snippet provides code for **non-interactive** authentication, where hello application provides its own credentials.</span></span>
 
-## <a name="create-a-java-application"></a><span data-ttu-id="b6545-114">Создание приложения Java</span><span class="sxs-lookup"><span data-stu-id="b6545-114">Create a Java application</span></span>
-1. <span data-ttu-id="b6545-115">Откройте IntelliJ и создайте проект Java с помощью шаблона **приложения командной строки**.</span><span class="sxs-lookup"><span data-stu-id="b6545-115">Open IntelliJ and create a Java project using the **Command-Line App** template.</span></span>
-2. <span data-ttu-id="b6545-116">Щелкните правой кнопкой мыши проект в левой части экрана и выберите пункт **Add Framework Support**(Добавить поддержку платформы).</span><span class="sxs-lookup"><span data-stu-id="b6545-116">Right-click on the project on the left-hand side of your screen and click **Add Framework Support**.</span></span> <span data-ttu-id="b6545-117">Выберите **Maven** и нажмите кнопку **ОК**.</span><span class="sxs-lookup"><span data-stu-id="b6545-117">Choose **Maven** and click **OK**.</span></span>
-3. <span data-ttu-id="b6545-118">Откройте только что созданный файл **pom.xml** и добавьте следующий фрагмент текста между тегами **\<version>** и **\<project>**:</span><span class="sxs-lookup"><span data-stu-id="b6545-118">Open the newly created **"pom.xml"** file and add the following snippet of text between the **\</version>** tag and the **\</project>** tag:</span></span>
+## <a name="create-a-java-application"></a><span data-ttu-id="97e7e-114">Создание приложения Java</span><span class="sxs-lookup"><span data-stu-id="97e7e-114">Create a Java application</span></span>
+1. <span data-ttu-id="97e7e-115">Откройте IntelliJ и создайте проект Java, с помощью hello **приложения командной строки** шаблона.</span><span class="sxs-lookup"><span data-stu-id="97e7e-115">Open IntelliJ and create a Java project using hello **Command-Line App** template.</span></span>
+2. <span data-ttu-id="97e7e-116">Правой кнопкой мыши проект hello hello левой части экрана и нажмите кнопку **добавьте поддержка Framework**.</span><span class="sxs-lookup"><span data-stu-id="97e7e-116">Right-click on hello project on hello left-hand side of your screen and click **Add Framework Support**.</span></span> <span data-ttu-id="97e7e-117">Выберите **Maven** и нажмите кнопку **ОК**.</span><span class="sxs-lookup"><span data-stu-id="97e7e-117">Choose **Maven** and click **OK**.</span></span>
+3. <span data-ttu-id="97e7e-118">Откройте hello вновь созданные **«pom.xml»** и добавьте следующий фрагмент текста между hello hello  **\</Version >** тег и hello  **\< /project >** тег:</span><span class="sxs-lookup"><span data-stu-id="97e7e-118">Open hello newly created **"pom.xml"** file and add hello following snippet of text between hello **\</version>** tag and hello **\</project>** tag:</span></span>
 
 ```
 <repositories>
@@ -89,9 +89,9 @@ ms.lasthandoff: 08/03/2017
 </dependencies>
 ```
 
-<span data-ttu-id="b6545-119">Последовательно выберите пункты **Файл > Параметры > Сборка > Выполнение > Развертывание**.</span><span class="sxs-lookup"><span data-stu-id="b6545-119">Go to **File > Settings > Build > Execution > Deployment**.</span></span> <span data-ttu-id="b6545-120">Выберите **Средства сборки > Maven > Импорт**.</span><span class="sxs-lookup"><span data-stu-id="b6545-120">Select **Build Tools > Maven > Importing**.</span></span> <span data-ttu-id="b6545-121">Затем установите флажок **Import Maven projects automatically**(Импортировать проекты Maven автоматически).</span><span class="sxs-lookup"><span data-stu-id="b6545-121">Then check **Import Maven projects automatically**.</span></span>
+<span data-ttu-id="97e7e-119">Go слишком**файл > Параметры > сборки > выполнения > развертывания**.</span><span class="sxs-lookup"><span data-stu-id="97e7e-119">Go too**File > Settings > Build > Execution > Deployment**.</span></span> <span data-ttu-id="97e7e-120">Выберите **Средства сборки > Maven > Импорт**.</span><span class="sxs-lookup"><span data-stu-id="97e7e-120">Select **Build Tools > Maven > Importing**.</span></span> <span data-ttu-id="97e7e-121">Затем установите флажок **Import Maven projects automatically**(Импортировать проекты Maven автоматически).</span><span class="sxs-lookup"><span data-stu-id="97e7e-121">Then check **Import Maven projects automatically**.</span></span>
 
-<span data-ttu-id="b6545-122">Откройте файл `Main.java` и замените существующий блок кода следующим фрагментом кода.</span><span class="sxs-lookup"><span data-stu-id="b6545-122">Open `Main.java` and replace the existing code block with the following code snippet:</span></span>
+<span data-ttu-id="97e7e-122">Откройте `Main.java` и замените hello существующий код блока с hello следующий фрагмент кода:</span><span class="sxs-lookup"><span data-stu-id="97e7e-122">Open `Main.java` and replace hello existing code block with hello following code snippet:</span></span>
 
 ```
 package com.company;
@@ -175,10 +175,10 @@ public class Main {
         WaitForNewline("File created.", "Submitting a job.");
 
         // ----------------------------------------
-        // Submit a job to Data Lake Analytics
+        // Submit a job tooData Lake Analytics
         // ----------------------------------------
 
-string script = "@input =  EXTRACT Data string FROM \"/input1.csv\" USING Extractors.Csv(); OUTPUT @input TO @\"/output1.csv\" USING Outputters.Csv();", "testJob";
+string script = "@input =  EXTRACT Data string FROM \"/input1.csv\" USING Extractors.Csv(); OUTPUT @input too@\"/output1.csv\" USING Outputters.Csv();", "testJob";
         UUID jobId = SubmitJobByScript(script);
         WaitForNewline("Job submitted.", "Getting job status.");
 
@@ -201,21 +201,21 @@ string script = "@input =  EXTRACT Data string FROM \"/input1.csv\" USING Extrac
 }
 ```
 
-<span data-ttu-id="b6545-123">Укажите значения для параметров, вызываемых во фрагменте кода:</span><span class="sxs-lookup"><span data-stu-id="b6545-123">Provide the values for parameters called out in the code snippet:</span></span>
+<span data-ttu-id="97e7e-123">Укажите hello значения для параметров, вызванной в фрагменте кода hello:</span><span class="sxs-lookup"><span data-stu-id="97e7e-123">Provide hello values for parameters called out in hello code snippet:</span></span>
 * `localFolderPath`
 * `_adlaAccountName`
 * `_adlsAccountName`
 * `_resourceGroupName`
 
-<span data-ttu-id="b6545-124">Замените заполнители для:</span><span class="sxs-lookup"><span data-stu-id="b6545-124">Replace the placeholders for:</span></span>
-* <span data-ttu-id="b6545-125">`CLIENT-ID`,</span><span class="sxs-lookup"><span data-stu-id="b6545-125">`CLIENT-ID`,</span></span>
-* <span data-ttu-id="b6545-126">`CLIENT-SECRET`,</span><span class="sxs-lookup"><span data-stu-id="b6545-126">`CLIENT-SECRET`,</span></span>
+<span data-ttu-id="97e7e-124">Замените заполнители hello для:</span><span class="sxs-lookup"><span data-stu-id="97e7e-124">Replace hello placeholders for:</span></span>
+* <span data-ttu-id="97e7e-125">`CLIENT-ID`,</span><span class="sxs-lookup"><span data-stu-id="97e7e-125">`CLIENT-ID`,</span></span>
+* <span data-ttu-id="97e7e-126">`CLIENT-SECRET`,</span><span class="sxs-lookup"><span data-stu-id="97e7e-126">`CLIENT-SECRET`,</span></span>
 * `TENANT-ID`
 * `SUBSCRIPTION-ID`
 
-## <a name="helper-functions"></a><span data-ttu-id="b6545-127">Вспомогательные функции</span><span class="sxs-lookup"><span data-stu-id="b6545-127">Helper functions</span></span>
+## <a name="helper-functions"></a><span data-ttu-id="97e7e-127">Вспомогательные функции</span><span class="sxs-lookup"><span data-stu-id="97e7e-127">Helper functions</span></span>
 
-### <a name="setup-clients"></a><span data-ttu-id="b6545-128">Настройка клиентов</span><span class="sxs-lookup"><span data-stu-id="b6545-128">Setup clients</span></span>
+### <a name="setup-clients"></a><span data-ttu-id="97e7e-128">Настройка клиентов</span><span class="sxs-lookup"><span data-stu-id="97e7e-128">Setup clients</span></span>
 
 ```
 public static void SetupClients(ServiceClientCredentials creds)
@@ -231,7 +231,7 @@ public static void SetupClients(ServiceClientCredentials creds)
 ```
 
 
-### <a name="wait-for-input"></a><span data-ttu-id="b6545-129">Ожидание входных данных</span><span class="sxs-lookup"><span data-stu-id="b6545-129">Wait for input</span></span>
+### <a name="wait-for-input"></a><span data-ttu-id="97e7e-129">Ожидание входных данных</span><span class="sxs-lookup"><span data-stu-id="97e7e-129">Wait for input</span></span>
 
 ```
 public static void WaitForNewline(String reason, String nextAction)
@@ -239,7 +239,7 @@ public static void WaitForNewline(String reason, String nextAction)
     if (nextAction == null)
         nextAction = "";
 
-    System.out.println(reason + "\r\nPress ENTER to continue...");
+    System.out.println(reason + "\r\nPress ENTER toocontinue...");
     try{System.in.read();}
     catch(Exception e){}
 
@@ -250,7 +250,7 @@ public static void WaitForNewline(String reason, String nextAction)
 }
 ```
 
-### <a name="create-accounts"></a><span data-ttu-id="b6545-130">Создание учетных записей</span><span class="sxs-lookup"><span data-stu-id="b6545-130">Create accounts</span></span>
+### <a name="create-accounts"></a><span data-ttu-id="97e7e-130">Создание учетных записей</span><span class="sxs-lookup"><span data-stu-id="97e7e-130">Create accounts</span></span>
 
 ```
 public static void CreateAccounts() throws InterruptedException, CloudException, IOException 
@@ -284,7 +284,7 @@ public static void CreateAccounts() throws InterruptedException, CloudException,
 }
 ```
 
-### <a name="create-a-file"></a><span data-ttu-id="b6545-131">Создание файла</span><span class="sxs-lookup"><span data-stu-id="b6545-131">Create a file</span></span>
+### <a name="create-a-file"></a><span data-ttu-id="97e7e-131">Создание файла</span><span class="sxs-lookup"><span data-stu-id="97e7e-131">Create a file</span></span>
 
 ```
 public static void CreateFile(String path, String contents, boolean force) throws IOException, CloudException 
@@ -295,7 +295,7 @@ public static void CreateFile(String path, String contents, boolean force) throw
 }
 ```
 
-### <a name="delete-a-file"></a><span data-ttu-id="b6545-132">Удаление файла</span><span class="sxs-lookup"><span data-stu-id="b6545-132">Delete a file</span></span>
+### <a name="delete-a-file"></a><span data-ttu-id="97e7e-132">Удаление файла</span><span class="sxs-lookup"><span data-stu-id="97e7e-132">Delete a file</span></span>
 
 ```
 public static void DeleteFile(String filePath) throws IOException, CloudException 
@@ -304,7 +304,7 @@ public static void DeleteFile(String filePath) throws IOException, CloudExceptio
 }
 ```
 
-### <a name="download-a-file"></a><span data-ttu-id="b6545-133">Скачивание файла</span><span class="sxs-lookup"><span data-stu-id="b6545-133">Download a file</span></span>
+### <a name="download-a-file"></a><span data-ttu-id="97e7e-133">Скачивание файла</span><span class="sxs-lookup"><span data-stu-id="97e7e-133">Download a file</span></span>
 
 ```
 public static void DownloadFile(String srcPath, String destPath) throws IOException, CloudException 
@@ -336,7 +336,7 @@ public static void DownloadFile(String srcPath, String destPath) throws IOExcept
 }
 ```
 
-### <a name="submit-a-u-sql-job"></a><span data-ttu-id="b6545-134">Отправка задания U-SQL</span><span class="sxs-lookup"><span data-stu-id="b6545-134">Submit a U-SQL job</span></span>
+### <a name="submit-a-u-sql-job"></a><span data-ttu-id="97e7e-134">Отправка задания U-SQL</span><span class="sxs-lookup"><span data-stu-id="97e7e-134">Submit a U-SQL job</span></span>
 
 ```
 public static UUID SubmitJobByScript(String script, String jobName) throws IOException, CloudException 
@@ -367,7 +367,7 @@ public static JobResult WaitForJob(UUID jobId) throws IOException, CloudExceptio
 }
 ```
 
-### <a name="retrieve-job-status"></a><span data-ttu-id="b6545-135">Получение состояния задания</span><span class="sxs-lookup"><span data-stu-id="b6545-135">Retrieve job status</span></span>
+### <a name="retrieve-job-status"></a><span data-ttu-id="97e7e-135">Получение состояния задания</span><span class="sxs-lookup"><span data-stu-id="97e7e-135">Retrieve job status</span></span>
 
 ```
 public static String GetJobStatus(UUID jobId) throws IOException, CloudException 
@@ -377,8 +377,8 @@ public static String GetJobStatus(UUID jobId) throws IOException, CloudException
 }
 ```
 
-## <a name="next-steps"></a><span data-ttu-id="b6545-136">Дальнейшие действия</span><span class="sxs-lookup"><span data-stu-id="b6545-136">Next steps</span></span>
+## <a name="next-steps"></a><span data-ttu-id="97e7e-136">Дальнейшие действия</span><span class="sxs-lookup"><span data-stu-id="97e7e-136">Next steps</span></span>
 
-* <span data-ttu-id="b6545-137">Сведения о языке U-SQL см. в статье [Учебник. Приступая к работе с языком U-SQL для аналитики озера данных Azure](data-lake-analytics-u-sql-get-started.md) и в [справочнике по языку U-SQL](http://go.microsoft.com/fwlink/?LinkId=691348).</span><span class="sxs-lookup"><span data-stu-id="b6545-137">To learn U-SQL, see [Get started with Azure Data Lake Analytics U-SQL language](data-lake-analytics-u-sql-get-started.md), and [U-SQL language reference](http://go.microsoft.com/fwlink/?LinkId=691348).</span></span>
-* <span data-ttu-id="b6545-138">Задачи управления описываются в руководстве по [управлению Azure Data Lake Analytics с помощью портала Azure](data-lake-analytics-manage-use-portal.md).</span><span class="sxs-lookup"><span data-stu-id="b6545-138">For management tasks, see [Manage Azure Data Lake Analytics using Azure portal](data-lake-analytics-manage-use-portal.md).</span></span>
-* <span data-ttu-id="b6545-139">Общие сведения об Azure Data Lake Analytics см. в [этой статье](data-lake-analytics-overview.md).</span><span class="sxs-lookup"><span data-stu-id="b6545-139">To get an overview of Data Lake Analytics, see [Azure Data Lake Analytics overview](data-lake-analytics-overview.md).</span></span>
+* <span data-ttu-id="97e7e-137">toolearn U-SQL, в разделе [Приступая к работе с Azure аналитика Озера данных U-SQL языка](data-lake-analytics-u-sql-get-started.md), и [Справочник по языку U SQL](http://go.microsoft.com/fwlink/?LinkId=691348).</span><span class="sxs-lookup"><span data-stu-id="97e7e-137">toolearn U-SQL, see [Get started with Azure Data Lake Analytics U-SQL language](data-lake-analytics-u-sql-get-started.md), and [U-SQL language reference](http://go.microsoft.com/fwlink/?LinkId=691348).</span></span>
+* <span data-ttu-id="97e7e-138">Задачи управления описываются в руководстве по [управлению Azure Data Lake Analytics с помощью портала Azure](data-lake-analytics-manage-use-portal.md).</span><span class="sxs-lookup"><span data-stu-id="97e7e-138">For management tasks, see [Manage Azure Data Lake Analytics using Azure portal](data-lake-analytics-manage-use-portal.md).</span></span>
+* <span data-ttu-id="97e7e-139">в разделе tooget содержится обзор аналитики Озера данных, [Обзор аналитики Озера данных Azure](data-lake-analytics-overview.md).</span><span class="sxs-lookup"><span data-stu-id="97e7e-139">tooget an overview of Data Lake Analytics, see [Azure Data Lake Analytics overview](data-lake-analytics-overview.md).</span></span>

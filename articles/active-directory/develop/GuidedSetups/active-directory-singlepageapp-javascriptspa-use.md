@@ -1,5 +1,5 @@
 ---
-title: "Интерактивная настройка Azure AD версии 2 для приложений JS SPA | Документация Майкрософт"
+title: "aaaAzure AD v2 JS SPA Интерактивная установка - использование | Документы Microsoft"
 description: "В этой статье описано, как приложения JavaScript SPA могут вызывать API, которому необходимы маркеры доступа, с помощью конечной точки Azure Active Directory версии 2."
 services: active-directory
 documentationcenter: dev-center-name
@@ -13,22 +13,22 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 06/01/2017
 ms.author: andret
-ms.openlocfilehash: f52157df298ddfc1c1b29a18dc9a54aae59b52a3
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 4f7f824ed787d998dc4aea3dc21c95d7dfe70ae0
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-## <a name="use-the-microsoft-authentication-library-msal-to-sign-in-the-user"></a><span data-ttu-id="36275-103">Использование библиотеки проверки подлинности Майкрософт (MSAL) для входа пользователя</span><span class="sxs-lookup"><span data-stu-id="36275-103">Use the Microsoft Authentication Library (MSAL) to sign-in the user</span></span>
+## <a name="use-hello-microsoft-authentication-library-msal-toosign-in-hello-user"></a><span data-ttu-id="dc3c2-103">Используйте user в toosign hello hello библиотеки проверки подлинности Microsoft (MSAL)</span><span class="sxs-lookup"><span data-stu-id="dc3c2-103">Use hello Microsoft Authentication Library (MSAL) toosign-in hello user</span></span>
 
-1.  <span data-ttu-id="36275-104">Создайте файл с именем `app.js`.</span><span class="sxs-lookup"><span data-stu-id="36275-104">Create a file named `app.js`.</span></span> <span data-ttu-id="36275-105">Если вы работаете с Visual Studio, выберите проект (корневую папку проекта), щелкните правой кнопкой мыши и выберите `Add` > `New Item` > `JavaScript File`.</span><span class="sxs-lookup"><span data-stu-id="36275-105">If you are using Visual Studio, select the project (project root folder), right click and select: `Add` > `New Item` > `JavaScript File`:</span></span>
-2.  <span data-ttu-id="36275-106">Добавьте в файл `app.js` следующий код:</span><span class="sxs-lookup"><span data-stu-id="36275-106">Add the following code to your `app.js` file:</span></span>
+1.  <span data-ttu-id="dc3c2-104">Создайте файл с именем `app.js`.</span><span class="sxs-lookup"><span data-stu-id="dc3c2-104">Create a file named `app.js`.</span></span> <span data-ttu-id="dc3c2-105">Если вы используете Visual Studio, выберите hello проектов (корневой папки проекта,), щелкните правой кнопкой мыши и выберите: `Add`  >  `New Item`  >  `JavaScript File`:</span><span class="sxs-lookup"><span data-stu-id="dc3c2-105">If you are using Visual Studio, select hello project (project root folder), right click and select: `Add` > `New Item` > `JavaScript File`:</span></span>
+2.  <span data-ttu-id="dc3c2-106">Добавьте следующий код tooyour hello `app.js` файла:</span><span class="sxs-lookup"><span data-stu-id="dc3c2-106">Add hello following code tooyour `app.js` file:</span></span>
 
 ```javascript
-// Graph API endpoint to show user profile
+// Graph API endpoint tooshow user profile
 var graphApiEndpoint = "https://graph.microsoft.com/v1.0/me";
 
-// Graph API scope used to obtain the access token to read user profile
+// Graph API scope used tooobtain hello access token tooread user profile
 var graphAPIScopes = ["https://graph.microsoft.com/user.read"];
 
 // Initialize application
@@ -42,7 +42,7 @@ if (userAgentApplication.redirectUri) {
 }
 
 window.onload = function () {
-    // If page is refreshed, continue to display user info
+    // If page is refreshed, continue toodisplay user info
     if (!userAgentApplication.isCallback(window.location.hash) && window.parent === window && !window.opener) {
         var user = userAgentApplication.getUser();
         if (user) {
@@ -52,21 +52,21 @@ window.onload = function () {
 }
 
 /**
- * Call the Microsoft Graph API and display the results on the page. Sign the user in if necessary
+ * Call hello Microsoft Graph API and display hello results on hello page. Sign hello user in if necessary
  */
 function callGraphApi() {
     var user = userAgentApplication.getUser();
     if (!user) {
-        // If user is not signed in, then prompt user to sign in via loginRedirect.
-        // This will redirect user to the Azure Active Directory v2 Endpoint
+        // If user is not signed in, then prompt user toosign in via loginRedirect.
+        // This will redirect user toohello Azure Active Directory v2 Endpoint
         userAgentApplication.loginRedirect(graphAPIScopes);
-        // The call to loginRedirect above frontloads the consent to query Graph API during the sign-in.
-        // If you want to use dynamic consent, just remove the graphAPIScopes from loginRedirect call.
-        // As such, user will be prompted to give consent when requested access to a resource that 
-        // he/she hasn't consented before. In the case of this application - 
-        // the first time the Graph API call to obtain user's profile is executed.
+        // hello call toologinRedirect above frontloads hello consent tooquery Graph API during hello sign-in.
+        // If you want toouse dynamic consent, just remove hello graphAPIScopes from loginRedirect call.
+        // As such, user will be prompted toogive consent when requested access tooa resource that 
+        // he/she hasn't consented before. In hello case of this application - 
+        // hello first time hello Graph API call tooobtain user's profile is executed.
     } else {
-        // If user is already signed in, display the user info
+        // If user is already signed in, display hello user info
         var userInfoElement = document.getElementById("userInfo");
         userInfoElement.parentElement.classList.remove("hidden");
         userInfoElement.innerHTML = JSON.stringify(user, null, 4);
@@ -74,24 +74,24 @@ function callGraphApi() {
         // Show Sign-Out button
         document.getElementById("signOutButton").classList.remove("hidden");
 
-        // Now Call Graph API to show the user profile information:
+        // Now Call Graph API tooshow hello user profile information:
         var graphCallResponseElement = document.getElementById("graphResponse");
         graphCallResponseElement.parentElement.classList.remove("hidden");
         graphCallResponseElement.innerText = "Calling Graph ...";
 
-        // In order to call the Graph API, an access token needs to be acquired.
-        // Try to acquire the token used to query Graph API silently first:
+        // In order toocall hello Graph API, an access token needs toobe acquired.
+        // Try tooacquire hello token used tooquery Graph API silently first:
         userAgentApplication.acquireTokenSilent(graphAPIScopes)
             .then(function (token) {
-                //After the access token is acquired, call the Web API, sending the acquired token
+                //After hello access token is acquired, call hello Web API, sending hello acquired token
                 callWebApiWithToken(graphApiEndpoint, token, graphCallResponseElement, document.getElementById("accessToken"));
 
             }, function (error) {
-                // If the acquireTokenSilent() method fails, then acquire the token interactively via acquireTokenRedirect().
-                // In this case, the browser will redirect user back to the Azure Active Directory v2 Endpoint so the user 
-                // can reenter the current username/ password and/ or give consent to new permissions your application is requesting.
+                // If hello acquireTokenSilent() method fails, then acquire hello token interactively via acquireTokenRedirect().
+                // In this case, hello browser will redirect user back toohello Azure Active Directory v2 Endpoint so hello user 
+                // can reenter hello current username/ password and/ or give consent toonew permissions your application is requesting.
                 // After authentication/ authorization completes, this page will be reloaded again and callGraphApi() will be executed on page load.
-                // Then, acquireTokenSilent will then get the token silently, the Graph API call results will be made and results will be displayed in the page.
+                // Then, acquireTokenSilent will then get hello token silently, hello Graph API call results will be made and results will be displayed in hello page.
                 if (error) {
                     userAgentApplication.acquireTokenRedirect(graphAPIScopes);
                 }
@@ -101,11 +101,11 @@ function callGraphApi() {
 }
 
 /**
- * Callback method from sign-in: if no errors, call callGraphApi() to show results.
- * @param {string} errorDesc - If error occur, the error message
- * @param {object} token - The token received from login
- * @param {object} error - The error string
- * @param {string} tokenType - the token type: usually id_token
+ * Callback method from sign-in: if no errors, call callGraphApi() tooshow results.
+ * @param {string} errorDesc - If error occur, hello error message
+ * @param {object} token - hello token received from login
+ * @param {object} error - hello error string
+ * @param {string} tokenType - hello token type: usually id_token
  */
 function loginCallback(errorDesc, token, error, tokenType) {
     if (errorDesc) {
@@ -116,8 +116,8 @@ function loginCallback(errorDesc, token, error, tokenType) {
 }
 
 /**
- * Show an error message in the page
- * @param {string} endpoint - the endpoint used for the error message
+ * Show an error message in hello page
+ * @param {string} endpoint - hello endpoint used for hello error message
  * @param {string} error - Error string
  * @param {string} errorDesc - Error description
  */
@@ -133,42 +133,42 @@ function showError(endpoint, error, errorDesc) {
 ```
 
 <!--start-collapse-->
-### <a name="more-information"></a><span data-ttu-id="36275-107">Дополнительные сведения</span><span class="sxs-lookup"><span data-stu-id="36275-107">More Information</span></span>
+### <a name="more-information"></a><span data-ttu-id="dc3c2-107">Дополнительные сведения</span><span class="sxs-lookup"><span data-stu-id="dc3c2-107">More Information</span></span>
 
-<span data-ttu-id="36275-108">Когда пользователь впервые нажимает кнопку *Call Microsoft Graph API* (Вызвать API Microsoft Graph), метод `callGraphApi` вызывает `loginRedirect` для входа пользователя в систему.</span><span class="sxs-lookup"><span data-stu-id="36275-108">After a user clicks the *‘Call Microsoft Graph API’* button for the first time, `callGraphApi` method calls `loginRedirect` to sign in the user.</span></span> <span data-ttu-id="36275-109">В результате выполнения этого метода пользователь перенаправляется на *конечную точку Microsoft Azure Active Directory версии 2* для запроса и проверки учетных данных.</span><span class="sxs-lookup"><span data-stu-id="36275-109">This method results in redirecting the user to the *Microsoft Azure Active Directory v2 endpoint* to prompt and validate the user's credentials.</span></span> <span data-ttu-id="36275-110">В результате успешного входа пользователь перенаправляется обратно на исходную страницу *index.html*, поступает маркер, обрабатываемый `msal.js`, после чего кэшируются сведения, содержащиеся в маркере.</span><span class="sxs-lookup"><span data-stu-id="36275-110">As a result of a successful sign-in, the user is redirected back to the original *index.html* page, and a token is received, processed by `msal.js` and the information contained in the token is cached.</span></span> <span data-ttu-id="36275-111">Этот маркер известен как *маркер идентификатора*. Он содержит основные сведения о пользователе, такие как отображаемое имя пользователя.</span><span class="sxs-lookup"><span data-stu-id="36275-111">This token is known as the *ID token* and contains basic information about the user, such as the user display name.</span></span> <span data-ttu-id="36275-112">Если вы планируете использовать какие-либо данные, предоставляемые этим маркером, то необходимо убедиться, что маркер проверен внутренним сервером. Это позволит гарантировать, что маркер был выдан допустимому пользователю для вашего приложения.</span><span class="sxs-lookup"><span data-stu-id="36275-112">If you plan to use any data provided by this token for any purposes, you need to make sure this token is validated by your backend server to guarantee that the token was issued to a valid user for your application.</span></span>
+<span data-ttu-id="dc3c2-108">После нажатия пользователем hello *«Вызвать Microsoft Graph API»* кнопки для hello первый раз `callGraphApi` вызовы метода `loginRedirect` toosign в hello пользователя.</span><span class="sxs-lookup"><span data-stu-id="dc3c2-108">After a user clicks hello *‘Call Microsoft Graph API’* button for hello first time, `callGraphApi` method calls `loginRedirect` toosign in hello user.</span></span> <span data-ttu-id="dc3c2-109">Этот метод приводит к перенаправление hello пользователя toohello *конечной точки Microsoft Azure Active Directory v2* tooprompt и проверки учетных данных пользователя hello.</span><span class="sxs-lookup"><span data-stu-id="dc3c2-109">This method results in redirecting hello user toohello *Microsoft Azure Active Directory v2 endpoint* tooprompt and validate hello user's credentials.</span></span> <span data-ttu-id="dc3c2-110">В результате успешного входа в систему пользователь hello является перенаправленный задней toohello исходного *index.html* страницы и токен поступает, обрабатываемых `msal.js` и кэшируется hello сведения, содержащиеся в маркере hello.</span><span class="sxs-lookup"><span data-stu-id="dc3c2-110">As a result of a successful sign-in, hello user is redirected back toohello original *index.html* page, and a token is received, processed by `msal.js` and hello information contained in hello token is cached.</span></span> <span data-ttu-id="dc3c2-111">Этот маркер называется hello *маркер идентификатора* и содержит основные сведения о пользователе hello, такие как отображаемое имя пользователя hello.</span><span class="sxs-lookup"><span data-stu-id="dc3c2-111">This token is known as hello *ID token* and contains basic information about hello user, such as hello user display name.</span></span> <span data-ttu-id="dc3c2-112">Если планируется toouse данные предоставляемых по этот маркер для каких целей, необходимо убедиться, что этот маркер проверяется с вашей tooguarantee сервера базы данных, hello маркера toomake выдан tooa допустимого пользователя для приложения.</span><span class="sxs-lookup"><span data-stu-id="dc3c2-112">If you plan toouse any data provided by this token for any purposes, you need toomake sure this token is validated by your backend server tooguarantee that hello token was issued tooa valid user for your application.</span></span>
 
-<span data-ttu-id="36275-113">Одностраничное приложение, создаваемое в этом руководстве, не использует маркер идентификатора напрямую. Вместо этого оно вызывает `acquireTokenSilent` и (или) `acquireTokenRedirect` для получения *маркера доступа*, используемого для запроса API Microsoft Graph.</span><span class="sxs-lookup"><span data-stu-id="36275-113">The SPA generated by this guide does not make use directly of the ID token – instead, it calls `acquireTokenSilent` and/or `acquireTokenRedirect` to acquire an *access token* used to query the Microsoft Graph API.</span></span> <span data-ttu-id="36275-114">Если вам нужен пример, проверяющий маркер идентификатора, ознакомьтесь с [этим](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi-v2 "Пример active-directory-javascript-singlepageapp-dotnet-webapi-v2 на портале GitHub") примером приложения на портале GitHub. В нем для проверки маркеров используется веб-API ASP.NET.</span><span class="sxs-lookup"><span data-stu-id="36275-114">If you need a sample that validates the ID token, take a look at [this](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi-v2 "Github active-directory-javascript-singlepageapp-dotnet-webapi-v2 sample") sample application in GitHub – the sample uses an ASP.NET Web API for token validation.</span></span>
+<span data-ttu-id="dc3c2-113">Hello SPA, созданные в этом руководстве не смог использовать напрямую из маркер идентификатора hello-вместо этого он вызывает `acquireTokenSilent` и/или `acquireTokenRedirect` tooacquire *маркер доступа* используется tooquery hello Microsoft Graph API.</span><span class="sxs-lookup"><span data-stu-id="dc3c2-113">hello SPA generated by this guide does not make use directly of hello ID token – instead, it calls `acquireTokenSilent` and/or `acquireTokenRedirect` tooacquire an *access token* used tooquery hello Microsoft Graph API.</span></span> <span data-ttu-id="dc3c2-114">Если вам требуется образец, проверяет маркер идентификатора hello, взгляните на [это](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi-v2 "Github active-directory-javascript-singlepageapp-dotnet-webapi-v2 пример") примера приложения в GitHub — образец hello использует веб-API ASP.NET для проверки токенов.</span><span class="sxs-lookup"><span data-stu-id="dc3c2-114">If you need a sample that validates hello ID token, take a look at [this](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi-v2 "Github active-directory-javascript-singlepageapp-dotnet-webapi-v2 sample") sample application in GitHub – hello sample uses an ASP.NET Web API for token validation.</span></span>
 
-#### <a name="getting-a-user-token-interactively"></a><span data-ttu-id="36275-115">Интерактивное получение маркера пользователя</span><span class="sxs-lookup"><span data-stu-id="36275-115">Getting a user token interactively</span></span>
+#### <a name="getting-a-user-token-interactively"></a><span data-ttu-id="dc3c2-115">Интерактивное получение маркера пользователя</span><span class="sxs-lookup"><span data-stu-id="dc3c2-115">Getting a user token interactively</span></span>
 
-<span data-ttu-id="36275-116">После первоначального входа вам не нужно требовать от пользователей повторно проходить проверку подлинности каждый раз, когда они запрашивают маркер для доступа к ресурсу, поэтому в большинстве случаев для получения маркеров следует использовать *acquireTokenSilent*.</span><span class="sxs-lookup"><span data-stu-id="36275-116">After the initial sign-in, you do not want the ask users to reauthenticate every time they need to request a token to access a resource – so *acquireTokenSilent* should be used most of the time to acquire tokens.</span></span> <span data-ttu-id="36275-117">Но существуют ситуации, когда пользователи должны взаимодействовать с конечной точкой Azure Active Directory версии 2. Далее приведены некоторые примеры.</span><span class="sxs-lookup"><span data-stu-id="36275-117">There are situations however that you need to force users interact with Azure Active Directory v2 endpoint – some examples include:</span></span>
--   <span data-ttu-id="36275-118">Пользователям может потребоваться повторно ввести учетные данные, так как истек срок действия пароля</span><span class="sxs-lookup"><span data-stu-id="36275-118">Users may need to reenter their credentials because the password has expired</span></span>
--   <span data-ttu-id="36275-119">Ваше приложение запрашивает доступ к ресурсу, на обращение к которому пользователь должен дать согласие</span><span class="sxs-lookup"><span data-stu-id="36275-119">Your application is requesting access to a resource that the user needs to consent to</span></span>
--   <span data-ttu-id="36275-120">Требуется двухфакторная проверка подлинности</span><span class="sxs-lookup"><span data-stu-id="36275-120">Two factor authentication is required</span></span>
+<span data-ttu-id="dc3c2-116">После hello, начальный вход, вы не хотите hello Попросите пользователей tooreauthenticate каждый раз, они должны toorequest маркера tooaccess ресурсов — так *acquireTokenSilent* следует использовать большую часть токены tooacquire времени hello.</span><span class="sxs-lookup"><span data-stu-id="dc3c2-116">After hello initial sign-in, you do not want hello ask users tooreauthenticate every time they need toorequest a token tooaccess a resource – so *acquireTokenSilent* should be used most of hello time tooacquire tokens.</span></span> <span data-ttu-id="dc3c2-117">Однако существуют ситуации, необходимо tooforce пользователи взаимодействуют с конечной точкой v2 Azure Active Directory — некоторые примеры:</span><span class="sxs-lookup"><span data-stu-id="dc3c2-117">There are situations however that you need tooforce users interact with Azure Active Directory v2 endpoint – some examples include:</span></span>
+-   <span data-ttu-id="dc3c2-118">Пользователям может потребоваться tooreenter свои учетные данные, так как истек срок действия пароля hello</span><span class="sxs-lookup"><span data-stu-id="dc3c2-118">Users may need tooreenter their credentials because hello password has expired</span></span>
+-   <span data-ttu-id="dc3c2-119">Приложение запрашивает ресурс tooa доступ, hello tooconsent потребностей пользователя для</span><span class="sxs-lookup"><span data-stu-id="dc3c2-119">Your application is requesting access tooa resource that hello user needs tooconsent to</span></span>
+-   <span data-ttu-id="dc3c2-120">Требуется двухфакторная проверка подлинности</span><span class="sxs-lookup"><span data-stu-id="dc3c2-120">Two factor authentication is required</span></span>
 
-<span data-ttu-id="36275-121">Вызов *acquireTokenRedirect(scope)* приводит к перенаправлению пользователей на конечную точку Azure Active Directory версии 2 (или *acquireTokenPopup(scope)* приводит к отображению всплывающего окна), с которой пользователям нужно взаимодействовать либо подтвердив свои учетные данные, дав согласие на доступ к требуемому ресурсу, либо выполнив двухфакторную проверку подлинности.</span><span class="sxs-lookup"><span data-stu-id="36275-121">Calling the *acquireTokenRedirect(scope)* result in redirecting users to the Azure Active Directory v2 endpoint (or *acquireTokenPopup(scope)* result on a popup window) where users need to interact with by either confirming their credentials, giving the consent to the required resource, or completing the two factor authentication.</span></span>
+<span data-ttu-id="dc3c2-121">Вызов hello *acquireTokenRedirect(scope)* привести перенаправления конечной точки toohello v2 Azure Active Directory пользователей (или *acquireTokenPopup(scope)* результат всплывающем окне) которых пользователям необходимо toointeract с подтверждая либо свои учетные данные, предоставляя toohello согласия hello необходимых ресурсов или завершение hello двухфакторной проверки подлинности.</span><span class="sxs-lookup"><span data-stu-id="dc3c2-121">Calling hello *acquireTokenRedirect(scope)* result in redirecting users toohello Azure Active Directory v2 endpoint (or *acquireTokenPopup(scope)* result on a popup window) where users need toointeract with by either confirming their credentials, giving hello consent toohello required resource, or completing hello two factor authentication.</span></span>
 
-#### <a name="getting-a-user-token-silently"></a><span data-ttu-id="36275-122">Автоматическое получение маркера пользователя</span><span class="sxs-lookup"><span data-stu-id="36275-122">Getting a user token silently</span></span>
-<span data-ttu-id="36275-123">Метод ` acquireTokenSilent` обрабатывает получение и обновление маркера без участия пользователя.</span><span class="sxs-lookup"><span data-stu-id="36275-123">The ` acquireTokenSilent` method handles token acquisitions and renewal without any user interaction.</span></span> <span data-ttu-id="36275-124">После первого выполнения метода `loginRedirect` (или `loginPopup`) обычно используется метод `acquireTokenSilent`, чтобы получить маркеры для доступа к защищенным ресурсам для последующих вызовов (например, автоматическое выполнение запросов или обновлений маркеров).</span><span class="sxs-lookup"><span data-stu-id="36275-124">After `loginRedirect` (or `loginPopup`) is executed for the first time, `acquireTokenSilent` is the method commonly used to obtain tokens used to access protected resources for subsequent calls - as calls to request or renew tokens are made silently.</span></span>
-<span data-ttu-id="36275-125">В некоторых случаях `acquireTokenSilent` может завершиться ошибкой, например если истек срок действия пароля пользователя.</span><span class="sxs-lookup"><span data-stu-id="36275-125">`acquireTokenSilent` may fail in some cases – for example, the user's password has expired.</span></span> <span data-ttu-id="36275-126">Приложение может обработать это исключение двумя способами:</span><span class="sxs-lookup"><span data-stu-id="36275-126">Your application can handle this exception in two ways:</span></span>
+#### <a name="getting-a-user-token-silently"></a><span data-ttu-id="dc3c2-122">Автоматическое получение маркера пользователя</span><span class="sxs-lookup"><span data-stu-id="dc3c2-122">Getting a user token silently</span></span>
+<span data-ttu-id="dc3c2-123">Hello ` acquireTokenSilent` метод обрабатывает приобретения токена и обновления без вмешательства пользователя.</span><span class="sxs-lookup"><span data-stu-id="dc3c2-123">hello ` acquireTokenSilent` method handles token acquisitions and renewal without any user interaction.</span></span> <span data-ttu-id="dc3c2-124">После `loginRedirect` (или `loginPopup`) выполняется для hello первый раз `acquireTokenSilent` tooobtain маркерами hello распространенным методом tooaccess защищенные ресурсы для последующих вызовов — как вызовы toorequest или обновить маркеры выполняются без вмешательства пользователя.</span><span class="sxs-lookup"><span data-stu-id="dc3c2-124">After `loginRedirect` (or `loginPopup`) is executed for hello first time, `acquireTokenSilent` is hello method commonly used tooobtain tokens used tooaccess protected resources for subsequent calls - as calls toorequest or renew tokens are made silently.</span></span>
+<span data-ttu-id="dc3c2-125">`acquireTokenSilent`может ли сбой в некоторых случаях — например, пароль пользователя hello истек.</span><span class="sxs-lookup"><span data-stu-id="dc3c2-125">`acquireTokenSilent` may fail in some cases – for example, hello user's password has expired.</span></span> <span data-ttu-id="dc3c2-126">Приложение может обработать это исключение двумя способами:</span><span class="sxs-lookup"><span data-stu-id="dc3c2-126">Your application can handle this exception in two ways:</span></span>
 
-1.  <span data-ttu-id="36275-127">Немедленно вызвать `acquireTokenRedirect`, в результате чего пользователю будет предложено выполнить вход.</span><span class="sxs-lookup"><span data-stu-id="36275-127">Make a call to `acquireTokenRedirect` immediately, which results in prompting the user to sign in.</span></span> <span data-ttu-id="36275-128">Этот шаблон обычно используется в интерактивных приложениях, где пользователю недоступно не прошедшее проверку подлинности содержимое.</span><span class="sxs-lookup"><span data-stu-id="36275-128">This pattern is commonly used in online applications where there is no unauthenticated content in the application available to the user.</span></span> <span data-ttu-id="36275-129">Пример, созданный в ходе пошаговой настройки, использует этот шаблон.</span><span class="sxs-lookup"><span data-stu-id="36275-129">The sample generated by this guided setup uses this pattern.</span></span>
+1.  <span data-ttu-id="dc3c2-127">Вызвать слишком`acquireTokenRedirect` немедленно, что приводит запроса hello toosign пользователя в.</span><span class="sxs-lookup"><span data-stu-id="dc3c2-127">Make a call too`acquireTokenRedirect` immediately, which results in prompting hello user toosign in.</span></span> <span data-ttu-id="dc3c2-128">Этот шаблон обычно используется в веб-приложений которого нет содержимого, не прошедшие проверку подлинности в пользователя доступны toohello приложения hello.</span><span class="sxs-lookup"><span data-stu-id="dc3c2-128">This pattern is commonly used in online applications where there is no unauthenticated content in hello application available toohello user.</span></span> <span data-ttu-id="dc3c2-129">Образец Hello, созданные этой интерактивной программы установки использует этот шаблон.</span><span class="sxs-lookup"><span data-stu-id="dc3c2-129">hello sample generated by this guided setup uses this pattern.</span></span>
 
-2. <span data-ttu-id="36275-130">Приложения также могут визуально уведомить пользователя, что требуется интерактивный вход, чтобы пользователь мог выбрать подходящее время для входа или приложение могло повторить метод `acquireTokenSilent` ​​позднее.</span><span class="sxs-lookup"><span data-stu-id="36275-130">Applications can also make a visual indication to the user that an interactive sign-in is required, so the user can select the right time to sign in, or the application can retry `acquireTokenSilent` at a later time.</span></span> <span data-ttu-id="36275-131">Обычно это применимо для тех случаев, когда пользователь может использовать другие функции приложения, на которые это не влияет, например, когда в приложении есть не прошедшее проверку подлинности содержимое.</span><span class="sxs-lookup"><span data-stu-id="36275-131">This is commonly used when the user can use other functionality of the application without being disrupted - for example, there is unauthenticated content available in the application.</span></span> <span data-ttu-id="36275-132">В этом случае пользователь может решить, когда ему требуется вход для доступа к защищенному ресурсу, или обновить устаревшие данные.</span><span class="sxs-lookup"><span data-stu-id="36275-132">In this case, the user can decide when they want to sign in to access the protected resource, or to refresh the outdated information.</span></span>
+2. <span data-ttu-id="dc3c2-130">Приложения также может сделать пользователь toohello визуальный индикатор, интерактивный вход не требуется, поэтому hello пользователь может выбрать toosign нужное время hello в или приложение hello перезапустит `acquireTokenSilent` позднее.</span><span class="sxs-lookup"><span data-stu-id="dc3c2-130">Applications can also make a visual indication toohello user that an interactive sign-in is required, so hello user can select hello right time toosign in, or hello application can retry `acquireTokenSilent` at a later time.</span></span> <span data-ttu-id="dc3c2-131">Обычно это используется при hello пользователя можно использовать другие функциональные возможности приложения hello без была прервана - например, отсутствуют содержимого, не прошедшие проверку подлинности в приложение hello.</span><span class="sxs-lookup"><span data-stu-id="dc3c2-131">This is commonly used when hello user can use other functionality of hello application without being disrupted - for example, there is unauthenticated content available in hello application.</span></span> <span data-ttu-id="dc3c2-132">В этом случае пользователь hello можно указать при хочет toosign в tooaccess hello защищенных ресурсов, или toorefresh hello устаревшие данные.</span><span class="sxs-lookup"><span data-stu-id="dc3c2-132">In this case, hello user can decide when they want toosign in tooaccess hello protected resource, or toorefresh hello outdated information.</span></span>
 
 <!--end-collapse-->
 
-## <a name="call-the-microsoft-graph-api-using-the-token-you-just-obtained"></a><span data-ttu-id="36275-133">Вызов API Microsoft Graph с помощью полученного маркера</span><span class="sxs-lookup"><span data-stu-id="36275-133">Call the Microsoft Graph API using the token you just obtained</span></span>
+## <a name="call-hello-microsoft-graph-api-using-hello-token-you-just-obtained"></a><span data-ttu-id="dc3c2-133">Вызвать API Microsoft Graph hello hello токен, который был получен с помощью</span><span class="sxs-lookup"><span data-stu-id="dc3c2-133">Call hello Microsoft Graph API using hello token you just obtained</span></span>
 
-<span data-ttu-id="36275-134">Добавьте в файл `app.js` следующий код:</span><span class="sxs-lookup"><span data-stu-id="36275-134">Add the following code to your `app.js` file:</span></span>
+<span data-ttu-id="dc3c2-134">Добавьте следующий код tooyour hello `app.js` файла:</span><span class="sxs-lookup"><span data-stu-id="dc3c2-134">Add hello following code tooyour `app.js` file:</span></span>
 
 ```javascript
 /**
  * Call a Web API using an access token.
  * @param {any} endpoint - Web API endpoint
  * @param {any} token - Access token
- * @param {object} responseElement - HTML element used to display the results
- * @param {object} showTokenElement = HTML element used to display the RAW access token
+ * @param {object} responseElement - HTML element used toodisplay hello results
+ * @param {object} showTokenElement = HTML element used toodisplay hello RAW access token
  */
 function callWebApiWithToken(endpoint, token, responseElement, showTokenElement) {
     var headers = new Headers();
@@ -185,7 +185,7 @@ function callWebApiWithToken(endpoint, token, responseElement, showTokenElement)
             if (response.status === 200 && contentType && contentType.indexOf("application/json") !== -1) {
                 response.json()
                     .then(function (data) {
-                        // Display response in the page
+                        // Display response in hello page
                         console.log(data);
                         responseElement.innerHTML = JSON.stringify(data, null, 4);
                         if (showTokenElement) {
@@ -199,7 +199,7 @@ function callWebApiWithToken(endpoint, token, responseElement, showTokenElement)
             } else {
                 response.json()
                     .then(function (data) {
-                        // Display response as error in the page
+                        // Display response as error in hello page
                         showError(endpoint, data);
                     })
                     .catch(function (error) {
@@ -214,19 +214,19 @@ function callWebApiWithToken(endpoint, token, responseElement, showTokenElement)
 ```
 <!--start-collapse-->
 
-### <a name="more-information-on-making-a-rest-call-against-a-protected-api"></a><span data-ttu-id="36275-135">Дополнительные сведения о вызове REST через защищенный API</span><span class="sxs-lookup"><span data-stu-id="36275-135">More information on making a REST call against a protected API</span></span>
+### <a name="more-information-on-making-a-rest-call-against-a-protected-api"></a><span data-ttu-id="dc3c2-135">Дополнительные сведения о вызове REST через защищенный API</span><span class="sxs-lookup"><span data-stu-id="dc3c2-135">More information on making a REST call against a protected API</span></span>
 
-<span data-ttu-id="36275-136">В примере приложения, созданном в этом руководстве, метод `callWebApiWithToken()` выполняет HTTP-запрос `GET` к защищенному ресурсу, требующему маркер, а затем возвращает содержимое вызывающему объекту.</span><span class="sxs-lookup"><span data-stu-id="36275-136">In the sample application created by this guide, the `callWebApiWithToken()` method is used to make an HTTP `GET` request against a protected resource that requires a token and then return the content to the caller.</span></span> <span data-ttu-id="36275-137">Этот метод добавляет полученный маркер в *заголовок авторизации HTTP*.</span><span class="sxs-lookup"><span data-stu-id="36275-137">This method adds the acquired token in the *HTTP Authorization header*.</span></span> <span data-ttu-id="36275-138">Для примера приложения, созданного в этом руководстве, ресурс — это конечная точка *me* API Microsoft Graph, которая отображает сведения о профиле пользователя.</span><span class="sxs-lookup"><span data-stu-id="36275-138">For the sample application created by this guide, the resource is the Microsoft Graph API *me* endpoint – which displays the user's profile information.</span></span>
+<span data-ttu-id="dc3c2-136">В примере приложения hello, созданные в этом руководстве, hello `callWebApiWithToken()` в противном случае используется toomake HTTP `GET` запроса к защищенному ресурсу, требующий toohello содержимого токена и затем вернуться hello вызывающий объект.</span><span class="sxs-lookup"><span data-stu-id="dc3c2-136">In hello sample application created by this guide, hello `callWebApiWithToken()` method is used toomake an HTTP `GET` request against a protected resource that requires a token and then return hello content toohello caller.</span></span> <span data-ttu-id="dc3c2-137">Этот метод добавляет маркер hello получена в hello *заголовок авторизации HTTP*.</span><span class="sxs-lookup"><span data-stu-id="dc3c2-137">This method adds hello acquired token in hello *HTTP Authorization header*.</span></span> <span data-ttu-id="dc3c2-138">Для примера приложения hello, созданные в этом руководстве, hello ресурсов — hello Microsoft Graph API *мне* конечной точки — которого отображаются сведения о профиле пользователя hello.</span><span class="sxs-lookup"><span data-stu-id="dc3c2-138">For hello sample application created by this guide, hello resource is hello Microsoft Graph API *me* endpoint – which displays hello user's profile information.</span></span>
 
 <!--end-collapse-->
 
-## <a name="add-a-method-to-sign-out-the-user"></a><span data-ttu-id="36275-139">Добавление метода для выхода пользователя</span><span class="sxs-lookup"><span data-stu-id="36275-139">Add a method to sign out the user</span></span>
+## <a name="add-a-method-toosign-out-hello-user"></a><span data-ttu-id="dc3c2-139">Добавьте метод toosign выход пользователя hello</span><span class="sxs-lookup"><span data-stu-id="dc3c2-139">Add a method toosign out hello user</span></span>
 
-<span data-ttu-id="36275-140">Добавьте в файл `app.js` следующий код:</span><span class="sxs-lookup"><span data-stu-id="36275-140">Add the following code to your `app.js` file:</span></span>
+<span data-ttu-id="dc3c2-140">Добавьте следующий код tooyour hello `app.js` файла:</span><span class="sxs-lookup"><span data-stu-id="dc3c2-140">Add hello following code tooyour `app.js` file:</span></span>
 
 ```javascript
 /**
- * Sign-out the user
+ * Sign-out hello user
  */
 function signOut() {
     userAgentApplication.logout();

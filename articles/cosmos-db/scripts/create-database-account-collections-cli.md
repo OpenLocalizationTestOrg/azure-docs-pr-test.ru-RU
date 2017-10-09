@@ -1,5 +1,5 @@
 ---
-title: "Создание учетной записи, базы данных и коллекции API DocumentDB для Azure Cosmos DB с помощью сценария Azure CLI | Документация Майкрософт"
+title: "Создание скрипта CLI aaaAzure учетной записи, базу данных и коллекцию Azure Cosmos DB DocumentDB API | Документы Microsoft"
 description: "Пример сценария Azure CLI для создания учетной записи, базы данных и коллекции API DocumentDB в Azure Cosmos DB."
 services: cosmos-db
 documentationcenter: cosmosdb
@@ -16,44 +16,44 @@ ms.tgt_pltfrm: cosmosdb
 ms.workload: database
 ms.date: 06/06/2017
 ms.author: mimig
-ms.openlocfilehash: 28f99d56404e47adcd375d9f3106cc234469cbfd
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 53919a849e04fa69680219e51c0289b9f2affe07
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="azure-cosmos-db-create-an-documentdb-api-account-using-cli"></a><span data-ttu-id="01b30-103">Azure Cosmos DB: создание учетной записи API DocumentDB с помощью интерфейса командной строки</span><span class="sxs-lookup"><span data-stu-id="01b30-103">Azure Cosmos DB: Create an DocumentDB API account using CLI</span></span>
+# <a name="azure-cosmos-db-create-an-documentdb-api-account-using-cli"></a><span data-ttu-id="225b4-103">Azure Cosmos DB: создание учетной записи API DocumentDB с помощью интерфейса командной строки</span><span class="sxs-lookup"><span data-stu-id="225b4-103">Azure Cosmos DB: Create an DocumentDB API account using CLI</span></span>
 
-<span data-ttu-id="01b30-104">Этот пример сценария интерфейса командной строки (CLI) создает учетную запись, базу данных и коллекцию API DocumentDB в Azure Cosmos DB.</span><span class="sxs-lookup"><span data-stu-id="01b30-104">This sample CLI script creates an Azure Cosmos DB DocumentDB API account, database, and collection.</span></span>  
+<span data-ttu-id="225b4-104">Этот пример сценария интерфейса командной строки (CLI) создает учетную запись, базу данных и коллекцию API DocumentDB в Azure Cosmos DB.</span><span class="sxs-lookup"><span data-stu-id="225b4-104">This sample CLI script creates an Azure Cosmos DB DocumentDB API account, database, and collection.</span></span>  
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-<span data-ttu-id="01b30-105">Если вы решили установить и использовать интерфейс командной строки локально, для работы с этим руководством вам понадобится Azure CLI 2.0 или более поздней версии.</span><span class="sxs-lookup"><span data-stu-id="01b30-105">If you choose to install and use the CLI locally, this topic requires that you are running the Azure CLI version 2.0 or later.</span></span> <span data-ttu-id="01b30-106">Чтобы узнать версию, выполните команду `az --version`.</span><span class="sxs-lookup"><span data-stu-id="01b30-106">Run `az --version` to find the version.</span></span> <span data-ttu-id="01b30-107">Если вам необходимо выполнить установку или обновление, см. статью [Установка Azure CLI 2.0]( /cli/azure/install-azure-cli).</span><span class="sxs-lookup"><span data-stu-id="01b30-107">If you need to install or upgrade, see [Install Azure CLI 2.0]( /cli/azure/install-azure-cli).</span></span> 
+<span data-ttu-id="225b4-105">Если выбрать tooinstall и использовать hello CLI локально, в этом разделе требуется под управлением hello Azure CLI версии 2.0 или более поздней версии.</span><span class="sxs-lookup"><span data-stu-id="225b4-105">If you choose tooinstall and use hello CLI locally, this topic requires that you are running hello Azure CLI version 2.0 or later.</span></span> <span data-ttu-id="225b4-106">Запустите `az --version` версии toofind hello.</span><span class="sxs-lookup"><span data-stu-id="225b4-106">Run `az --version` toofind hello version.</span></span> <span data-ttu-id="225b4-107">Если требуется tooinstall или обновления, см. раздел [установить CLI Azure 2.0]( /cli/azure/install-azure-cli).</span><span class="sxs-lookup"><span data-stu-id="225b4-107">If you need tooinstall or upgrade, see [Install Azure CLI 2.0]( /cli/azure/install-azure-cli).</span></span> 
 
-## <a name="sample-script"></a><span data-ttu-id="01b30-108">Пример скрипта</span><span class="sxs-lookup"><span data-stu-id="01b30-108">Sample script</span></span>
+## <a name="sample-script"></a><span data-ttu-id="225b4-108">Пример скрипта</span><span class="sxs-lookup"><span data-stu-id="225b4-108">Sample script</span></span>
 
-<span data-ttu-id="01b30-109">[!code-azurecli-interactive[main](../../../cli_scripts/cosmosdb/create-cosmosdb-account-database/create-cosmosdb-account-database.sh?highlight=15-35 "Создание учетной записи, базы данных и коллекции API DocumentDB в Azure Cosmos DB")]</span><span class="sxs-lookup"><span data-stu-id="01b30-109">[!code-azurecli-interactive[main](../../../cli_scripts/cosmosdb/create-cosmosdb-account-database/create-cosmosdb-account-database.sh?highlight=15-35 "Create an Azure Cosmos DB DocumentDB API account, database, and collection")]</span></span>
+[!code-azurecli-interactive[main](../../../cli_scripts/cosmosdb/create-cosmosdb-account-database/create-cosmosdb-account-database.sh?highlight=15-35 "Create an Azure Cosmos DB DocumentDB API account, database, and collection")]
 
-## <a name="clean-up-deployment"></a><span data-ttu-id="01b30-110">Очистка развертывания</span><span class="sxs-lookup"><span data-stu-id="01b30-110">Clean up deployment</span></span>
+## <a name="clean-up-deployment"></a><span data-ttu-id="225b4-109">Очистка развертывания</span><span class="sxs-lookup"><span data-stu-id="225b4-109">Clean up deployment</span></span>
 
-<span data-ttu-id="01b30-111">После выполнения примера сценария можно удалить группу ресурсов и все связанные с ней ресурсы, выполнив следующую команду.</span><span class="sxs-lookup"><span data-stu-id="01b30-111">After the script sample has been run, the following command can be used to remove the resource group and all resources associated with it.</span></span>
+<span data-ttu-id="225b4-110">После выполнения сценария образец hello hello, следующая команда может быть группы ресурсов используется tooremove hello и все ресурсы, связанные с ним.</span><span class="sxs-lookup"><span data-stu-id="225b4-110">After hello script sample has been run, hello following command can be used tooremove hello resource group and all resources associated with it.</span></span>
 
 ```azurecli-interactive
 az group delete --name myResourceGroup
 ```
 
-## <a name="script-explanation"></a><span data-ttu-id="01b30-112">Описание скрипта</span><span class="sxs-lookup"><span data-stu-id="01b30-112">Script explanation</span></span>
+## <a name="script-explanation"></a><span data-ttu-id="225b4-111">Описание скрипта</span><span class="sxs-lookup"><span data-stu-id="225b4-111">Script explanation</span></span>
 
-<span data-ttu-id="01b30-113">Этот скрипт использует следующие команды.</span><span class="sxs-lookup"><span data-stu-id="01b30-113">This script uses the following commands.</span></span> <span data-ttu-id="01b30-114">Для каждой команды в таблице приведены ссылки на соответствующую документацию.</span><span class="sxs-lookup"><span data-stu-id="01b30-114">Each command in the table links to command specific documentation.</span></span>
+<span data-ttu-id="225b4-112">Этот скрипт использует hello, следующие команды.</span><span class="sxs-lookup"><span data-stu-id="225b4-112">This script uses hello following commands.</span></span> <span data-ttu-id="225b4-113">Каждая команда в таблице hello связывает toocommand документацию.</span><span class="sxs-lookup"><span data-stu-id="225b4-113">Each command in hello table links toocommand specific documentation.</span></span>
 
-| <span data-ttu-id="01b30-115">Команда</span><span class="sxs-lookup"><span data-stu-id="01b30-115">Command</span></span> | <span data-ttu-id="01b30-116">Примечания</span><span class="sxs-lookup"><span data-stu-id="01b30-116">Notes</span></span> |
+| <span data-ttu-id="225b4-114">Команда</span><span class="sxs-lookup"><span data-stu-id="225b4-114">Command</span></span> | <span data-ttu-id="225b4-115">Примечания</span><span class="sxs-lookup"><span data-stu-id="225b4-115">Notes</span></span> |
 |---|---|
-| [<span data-ttu-id="01b30-117">az group create</span><span class="sxs-lookup"><span data-stu-id="01b30-117">az group create</span></span>](/cli/azure/group#create) | <span data-ttu-id="01b30-118">Создает группу ресурсов, в которой хранятся все ресурсы.</span><span class="sxs-lookup"><span data-stu-id="01b30-118">Creates a resource group in which all resources are stored.</span></span> |
-| [<span data-ttu-id="01b30-119">az cosmosdb create</span><span class="sxs-lookup"><span data-stu-id="01b30-119">az cosmosdb create</span></span>](/cli/azure/cosmosdb#create) | <span data-ttu-id="01b30-120">Создает учетную запись Azure Cosmos DB.</span><span class="sxs-lookup"><span data-stu-id="01b30-120">Creates an Azure Cosmos DB account.</span></span> |
-| [<span data-ttu-id="01b30-121">az group delete</span><span class="sxs-lookup"><span data-stu-id="01b30-121">az group delete</span></span>](/cli/azure/resource#delete) | <span data-ttu-id="01b30-122">Удаляет группу ресурсов со всеми вложенными ресурсами.</span><span class="sxs-lookup"><span data-stu-id="01b30-122">Deletes a resource group including all nested resources.</span></span> |
+| [<span data-ttu-id="225b4-116">az group create</span><span class="sxs-lookup"><span data-stu-id="225b4-116">az group create</span></span>](/cli/azure/group#create) | <span data-ttu-id="225b4-117">Создает группу ресурсов, в которой хранятся все ресурсы.</span><span class="sxs-lookup"><span data-stu-id="225b4-117">Creates a resource group in which all resources are stored.</span></span> |
+| [<span data-ttu-id="225b4-118">az cosmosdb create</span><span class="sxs-lookup"><span data-stu-id="225b4-118">az cosmosdb create</span></span>](/cli/azure/cosmosdb#create) | <span data-ttu-id="225b4-119">Создает учетную запись Azure Cosmos DB.</span><span class="sxs-lookup"><span data-stu-id="225b4-119">Creates an Azure Cosmos DB account.</span></span> |
+| [<span data-ttu-id="225b4-120">az group delete</span><span class="sxs-lookup"><span data-stu-id="225b4-120">az group delete</span></span>](/cli/azure/resource#delete) | <span data-ttu-id="225b4-121">Удаляет группу ресурсов со всеми вложенными ресурсами.</span><span class="sxs-lookup"><span data-stu-id="225b4-121">Deletes a resource group including all nested resources.</span></span> |
 
-## <a name="next-steps"></a><span data-ttu-id="01b30-123">Дальнейшие действия</span><span class="sxs-lookup"><span data-stu-id="01b30-123">Next steps</span></span>
+## <a name="next-steps"></a><span data-ttu-id="225b4-122">Дальнейшие действия</span><span class="sxs-lookup"><span data-stu-id="225b4-122">Next steps</span></span>
 
-<span data-ttu-id="01b30-124">Дополнительные сведения об Azure CLI см. в [документации по Azure CLI](https://docs.microsoft.com/cli/azure/overview).</span><span class="sxs-lookup"><span data-stu-id="01b30-124">For more information on the Azure CLI, see [Azure CLI documentation](https://docs.microsoft.com/cli/azure/overview).</span></span>
+<span data-ttu-id="225b4-123">Дополнительные сведения о hello Azure CLI см. в разделе [документации Azure CLI](https://docs.microsoft.com/cli/azure/overview).</span><span class="sxs-lookup"><span data-stu-id="225b4-123">For more information on hello Azure CLI, see [Azure CLI documentation](https://docs.microsoft.com/cli/azure/overview).</span></span>
 
-<span data-ttu-id="01b30-125">Дополнительные примеры скриптов CLI для базы данных Azure Cosmos DB см. в [документации по интерфейсу командной строки базы данных Azure Cosmos DB](../cli-samples.md).</span><span class="sxs-lookup"><span data-stu-id="01b30-125">Additional Azure Cosmos DB CLI script samples can be found in the [Azure Cosmos DB CLI documentation](../cli-samples.md).</span></span>
+<span data-ttu-id="225b4-124">Дополнительные примеры сценариев, использующих DB Cosmos Azure CLI можно найти в hello [документации Azure Cosmos DB CLI](../cli-samples.md).</span><span class="sxs-lookup"><span data-stu-id="225b4-124">Additional Azure Cosmos DB CLI script samples can be found in hello [Azure Cosmos DB CLI documentation](../cli-samples.md).</span></span>

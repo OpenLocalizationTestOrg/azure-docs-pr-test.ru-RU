@@ -1,5 +1,5 @@
 ---
-title: "Пример сценария Azure CLI. Развертывание шаблона | Документы Майкрософт"
+title: "Пример сценария CLI - aaaAzure развертывания шаблона | Документы Microsoft"
 description: "Пример сценария для развертывания шаблона Azure Resource Manager."
 services: azure-resource-manager
 documentationcenter: na
@@ -14,21 +14,21 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/19/2017
 ms.author: tomfitz
-ms.openlocfilehash: 974230f349aec46fde58e69658e05a13bff4296f
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 5a94eedbd898ced29d67f8ce3023ca5c65f83af2
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="azure-resource-manager-template-deployment---azure-cli-script"></a><span data-ttu-id="81b35-103">Развертывание шаблона Azure Resource Manager — сценарий Azure CLI</span><span class="sxs-lookup"><span data-stu-id="81b35-103">Azure Resource Manager template deployment - Azure CLI script</span></span>
+# <a name="azure-resource-manager-template-deployment---azure-cli-script"></a><span data-ttu-id="1cdaf-103">Развертывание шаблона Azure Resource Manager — сценарий Azure CLI</span><span class="sxs-lookup"><span data-stu-id="1cdaf-103">Azure Resource Manager template deployment - Azure CLI script</span></span>
 
-<span data-ttu-id="81b35-104">Этот сценарий развертывает шаблон Resource Manager в группе ресурсов в вашей подписке.</span><span class="sxs-lookup"><span data-stu-id="81b35-104">This script deploys a Resource Manager template to a resource group in your subscription.</span></span>
+<span data-ttu-id="1cdaf-104">Этот сценарий выполняет развертывание группы ресурсов tooa шаблона диспетчера ресурсов в вашей подписке.</span><span class="sxs-lookup"><span data-stu-id="1cdaf-104">This script deploys a Resource Manager template tooa resource group in your subscription.</span></span>
 
 [!INCLUDE [sample-cli-install](../../includes/sample-cli-install.md)]
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="sample-script"></a><span data-ttu-id="81b35-105">Пример скрипта</span><span class="sxs-lookup"><span data-stu-id="81b35-105">Sample script</span></span>
+## <a name="sample-script"></a><span data-ttu-id="1cdaf-105">Пример скрипта</span><span class="sxs-lookup"><span data-stu-id="1cdaf-105">Sample script</span></span>
 
 ```azurecli
 #!/bin/bash
@@ -37,7 +37,7 @@ IFS=$'\n\t'
 
 # -e: immediately exit if any command has a non-zero exit status
 # -o: prevents errors in a pipeline from being masked
-# IFS new value is less likely to cause confusing bugs when looping arrays or arguments (e.g. $@)
+# IFS new value is less likely toocause confusing bugs when looping arrays or arguments (e.g. $@)
 
 usage() { echo "Usage: $0 -i <subscriptionId> -g <resourceGroupName> -n <deploymentName> -l <resourceGroupLocation>" 1>&2; exit 1; }
 
@@ -84,12 +84,12 @@ if [[ -z "$deploymentName" ]]; then
 fi
 
 if [[ -z "$resourceGroupLocation" ]]; then
-    echo "Enter a location below to create a new resource group else skip this"
+    echo "Enter a location below toocreate a new resource group else skip this"
     echo "ResourceGroupLocation:"
     read resourceGroupLocation
 fi
 
-#templateFile Path - template file to be used
+#templateFile Path - template file toobe used
 templateFilePath="template.json"
 
 if [ ! -f "$templateFilePath" ]; then
@@ -110,7 +110,7 @@ if [ -z "$subscriptionId" ] || [ -z "$resourceGroupName" ] || [ -z "$deploymentN
     usage
 fi
 
-#login to azure using your credentials
+#login tooazure using your credentials
 az account show 1> /dev/null
 
 if [ $? != 0 ];
@@ -118,7 +118,7 @@ then
     az login
 fi
 
-#set the default subscription id
+#set hello default subscription id
 az account set --subscription $subscriptionId
 
 #Check for existing RG
@@ -145,30 +145,30 @@ then
 fi
 ```
 
-## <a name="clean-up-deployment"></a><span data-ttu-id="81b35-106">Очистка развертывания</span><span class="sxs-lookup"><span data-stu-id="81b35-106">Clean up deployment</span></span> 
+## <a name="clean-up-deployment"></a><span data-ttu-id="1cdaf-106">Очистка развертывания</span><span class="sxs-lookup"><span data-stu-id="1cdaf-106">Clean up deployment</span></span> 
 
-<span data-ttu-id="81b35-107">Выполните следующую команду, чтобы удалить группу ресурсов и все ее ресурсы.</span><span class="sxs-lookup"><span data-stu-id="81b35-107">Run the following command to remove the resource group and all its resources.</span></span>
+<span data-ttu-id="1cdaf-107">Выполнения hello следующую команду, группа ресурсов tooremove hello и всех его ресурсов.</span><span class="sxs-lookup"><span data-stu-id="1cdaf-107">Run hello following command tooremove hello resource group and all its resources.</span></span>
 
 ```azurecli
 az group delete --name myResourceGroup
 ```
 
-## <a name="script-explanation"></a><span data-ttu-id="81b35-108">Описание скрипта</span><span class="sxs-lookup"><span data-stu-id="81b35-108">Script explanation</span></span>
+## <a name="script-explanation"></a><span data-ttu-id="1cdaf-108">Описание скрипта</span><span class="sxs-lookup"><span data-stu-id="1cdaf-108">Script explanation</span></span>
 
-<span data-ttu-id="81b35-109">Чтобы создать развертывание, скрипт использует следующие команды.</span><span class="sxs-lookup"><span data-stu-id="81b35-109">This script uses the following commands to create the deployment.</span></span> <span data-ttu-id="81b35-110">Для каждого элемента в таблице приведены ссылки на документацию по команде.</span><span class="sxs-lookup"><span data-stu-id="81b35-110">Each item in the table links to command specific documentation.</span></span>
+<span data-ttu-id="1cdaf-109">Этот скрипт использует следующие команды toocreate hello развертывания hello.</span><span class="sxs-lookup"><span data-stu-id="1cdaf-109">This script uses hello following commands toocreate hello deployment.</span></span> <span data-ttu-id="1cdaf-110">Каждый элемент в таблице hello связывает toocommand документацию.</span><span class="sxs-lookup"><span data-stu-id="1cdaf-110">Each item in hello table links toocommand specific documentation.</span></span>
 
-| <span data-ttu-id="81b35-111">Команда</span><span class="sxs-lookup"><span data-stu-id="81b35-111">Command</span></span> | <span data-ttu-id="81b35-112">Примечания</span><span class="sxs-lookup"><span data-stu-id="81b35-112">Notes</span></span> |
+| <span data-ttu-id="1cdaf-111">Команда</span><span class="sxs-lookup"><span data-stu-id="1cdaf-111">Command</span></span> | <span data-ttu-id="1cdaf-112">Примечания</span><span class="sxs-lookup"><span data-stu-id="1cdaf-112">Notes</span></span> |
 |---|---|
-| [<span data-ttu-id="81b35-113">az group exists</span><span class="sxs-lookup"><span data-stu-id="81b35-113">az group exists</span></span>](/cli/azure/group#exists) | <span data-ttu-id="81b35-114">Проверяет, существует ли группа ресурсов.</span><span class="sxs-lookup"><span data-stu-id="81b35-114">Checks whether resource group exists.</span></span> |
-| [<span data-ttu-id="81b35-115">az group create</span><span class="sxs-lookup"><span data-stu-id="81b35-115">az group create</span></span>](/cli/azure/group#create) | <span data-ttu-id="81b35-116">Создает группу ресурсов, в которой хранятся все ресурсы.</span><span class="sxs-lookup"><span data-stu-id="81b35-116">Creates a resource group in which all resources are stored.</span></span> |
-| [<span data-ttu-id="81b35-117">az group deployment create</span><span class="sxs-lookup"><span data-stu-id="81b35-117">az group deployment create</span></span>](/cli/azure/group/deployment#create) | <span data-ttu-id="81b35-118">Запускает развертывание.</span><span class="sxs-lookup"><span data-stu-id="81b35-118">Start a deployment.</span></span>  |
-| [<span data-ttu-id="81b35-119">az group delete</span><span class="sxs-lookup"><span data-stu-id="81b35-119">az group delete</span></span>](/cli/azure/group#delete) | <span data-ttu-id="81b35-120">Удаляет группу ресурсов со всеми ресурсами.</span><span class="sxs-lookup"><span data-stu-id="81b35-120">Deletes a resource group including all its resources.</span></span> |
+| [<span data-ttu-id="1cdaf-113">az group exists</span><span class="sxs-lookup"><span data-stu-id="1cdaf-113">az group exists</span></span>](/cli/azure/group#exists) | <span data-ttu-id="1cdaf-114">Проверяет, существует ли группа ресурсов.</span><span class="sxs-lookup"><span data-stu-id="1cdaf-114">Checks whether resource group exists.</span></span> |
+| [<span data-ttu-id="1cdaf-115">az group create</span><span class="sxs-lookup"><span data-stu-id="1cdaf-115">az group create</span></span>](/cli/azure/group#create) | <span data-ttu-id="1cdaf-116">Создает группу ресурсов, в которой хранятся все ресурсы.</span><span class="sxs-lookup"><span data-stu-id="1cdaf-116">Creates a resource group in which all resources are stored.</span></span> |
+| [<span data-ttu-id="1cdaf-117">az group deployment create</span><span class="sxs-lookup"><span data-stu-id="1cdaf-117">az group deployment create</span></span>](/cli/azure/group/deployment#create) | <span data-ttu-id="1cdaf-118">Запускает развертывание.</span><span class="sxs-lookup"><span data-stu-id="1cdaf-118">Start a deployment.</span></span>  |
+| [<span data-ttu-id="1cdaf-119">az group delete</span><span class="sxs-lookup"><span data-stu-id="1cdaf-119">az group delete</span></span>](/cli/azure/group#delete) | <span data-ttu-id="1cdaf-120">Удаляет группу ресурсов со всеми ресурсами.</span><span class="sxs-lookup"><span data-stu-id="1cdaf-120">Deletes a resource group including all its resources.</span></span> |
 
 
 
-## <a name="next-steps"></a><span data-ttu-id="81b35-121">Дальнейшие действия</span><span class="sxs-lookup"><span data-stu-id="81b35-121">Next steps</span></span>
-* <span data-ttu-id="81b35-122">Вводные сведения о развертывании шаблонов см. в статье [Развертывание ресурсов с использованием шаблонов Resource Manager и Azure PowerShell](resource-group-template-deploy-cli.md).</span><span class="sxs-lookup"><span data-stu-id="81b35-122">For an introduction to deploying templates, see [Deploy resources with Resource Manager templates and Azure PowerShell](resource-group-template-deploy-cli.md).</span></span>
-* <span data-ttu-id="81b35-123">Сведения о развертывании шаблона, которому нужен токен SAS, см. в статье [Развертывание частного шаблона с помощью маркера SAS](resource-manager-cli-sas-token.md).</span><span class="sxs-lookup"><span data-stu-id="81b35-123">For information about deploying a template that requires a SAS token, see [Deploy private template with SAS token](resource-manager-cli-sas-token.md).</span></span>
-* <span data-ttu-id="81b35-124">Сведения об определении параметров в шаблоне см. в разделе [Создание шаблонов](resource-group-authoring-templates.md#parameters).</span><span class="sxs-lookup"><span data-stu-id="81b35-124">To define parameters in template, see [Authoring templates](resource-group-authoring-templates.md#parameters).</span></span>
-* <span data-ttu-id="81b35-125">Руководство по использованию Resource Manager для эффективного управления подписками в организациях см [Azure enterprise scaffold - prescriptive subscription governance](resource-manager-subscription-governance.md) (Шаблон Azure для организаций. Рекомендуемая система управления подпиской).</span><span class="sxs-lookup"><span data-stu-id="81b35-125">For guidance on how enterprises can use Resource Manager to effectively manage subscriptions, see [Azure enterprise scaffold - prescriptive subscription governance](resource-manager-subscription-governance.md).</span></span>
+## <a name="next-steps"></a><span data-ttu-id="1cdaf-121">Дальнейшие действия</span><span class="sxs-lookup"><span data-stu-id="1cdaf-121">Next steps</span></span>
+* <span data-ttu-id="1cdaf-122">Шаблоны toodeploying введение в разделе [развертывания ресурсов с помощью шаблонов диспетчера ресурсов и Azure PowerShell](resource-group-template-deploy-cli.md).</span><span class="sxs-lookup"><span data-stu-id="1cdaf-122">For an introduction toodeploying templates, see [Deploy resources with Resource Manager templates and Azure PowerShell](resource-group-template-deploy-cli.md).</span></span>
+* <span data-ttu-id="1cdaf-123">Сведения о развертывании шаблона, которому нужен токен SAS, см. в статье [Развертывание частного шаблона с помощью маркера SAS](resource-manager-cli-sas-token.md).</span><span class="sxs-lookup"><span data-stu-id="1cdaf-123">For information about deploying a template that requires a SAS token, see [Deploy private template with SAS token](resource-manager-cli-sas-token.md).</span></span>
+* <span data-ttu-id="1cdaf-124">toodefine параметры в шаблоне, в разделе [разработки шаблонов](resource-group-authoring-templates.md#parameters).</span><span class="sxs-lookup"><span data-stu-id="1cdaf-124">toodefine parameters in template, see [Authoring templates](resource-group-authoring-templates.md#parameters).</span></span>
+* <span data-ttu-id="1cdaf-125">Для получения рекомендаций по как предприятия могут использовать диспетчер ресурсов tooeffectively управление подписками см. в разделе [корпоративные функции формирования шаблонов - управление конкретные подписки](resource-manager-subscription-governance.md).</span><span class="sxs-lookup"><span data-stu-id="1cdaf-125">For guidance on how enterprises can use Resource Manager tooeffectively manage subscriptions, see [Azure enterprise scaffold - prescriptive subscription governance](resource-manager-subscription-governance.md).</span></span>
 

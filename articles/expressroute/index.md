@@ -1,6 +1,6 @@
 ---
-title: "Документация по Azure ExpressRoute. Руководства и справочник по API | Документация Майкрософт"
-description: "Узнайте, как настроить и администрировать частное подключение ExpressRoute к облачным службам Майкрософт из локальной инфраструктуры или из среды для совместной работы."
+title: "aaaAzure документации по ExpressRoute - учебники, справочник по API | Документы Microsoft"
+description: "Узнайте, как tooconfigure и управления ими частного облака службы tooMicrosoft ExpressRoute подключения из вашей локальной инфраструктуры или совместного размещения средств."
 services: expressroute
 author: carolz
 manager: carolz
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: 1c9d64f415a94c35bc6e41706ce78b0da34a0131
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: aad3408378b3d492ffa3c9c11a7bb5066567bb8f
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/19/2017
+ms.lasthandoff: 10/06/2017
 ---
 #<a name="expressroute-documentation"></a>Документация по ExpressRoute
 
-Узнайте, как с помощью ExpressRoute настроить быстрое частное подключение к облачным службам Майкрософт из локальной инфраструктуры или из среды для совместной работы. Настроить канал ExpressRoute и управлять им вам помогут руководства, справочники по REST API и другая документация.
+Узнайте, как tooset ExpressRoute toouse копирование tooMicrosoft быстрый, частного подключения облачных служб из вашей локальной инфраструктуры или совместного размещения средств. Настроить канал ExpressRoute и управлять им вам помогут руководства, справочники по REST API и другая документация.
 
 <ul class="panelContent cardsFTitle">
     <li>

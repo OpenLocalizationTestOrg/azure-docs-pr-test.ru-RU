@@ -1,6 +1,6 @@
 ---
-title: "H264 Single Bitrate 4K Audio 5.1 | Документация Майкрософт"
-description: "Этот раздел содержит общие сведения о предустановке задачи **H264 Single Bitrate 4K Audio 5.1**."
+title: "Односкоростной 4K aaaH264 звук 5.1 | Документы Microsoft"
+description: "Hello разделе приводится обзор hello ** Предустановка H264 Односкоростной 4K аудио 5.1* * задачи."
 author: Juliako
 manager: cfowler
 editor: 
@@ -14,23 +14,23 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/20/2017
 ms.author: juliako
-ms.openlocfilehash: d34fb5b640dbdbfc4d3d6b716fdd46176826a318
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 8ed5d85a0c58eaa9b076be667f4499659d90b19e
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="h264-single-bitrate-4k-audio-51"></a><span data-ttu-id="b0d4d-103">H264 Single Bitrate 4K Audio 5.1</span><span class="sxs-lookup"><span data-stu-id="b0d4d-103">H264 Single Bitrate 4K Audio 5.1</span></span>
-<span data-ttu-id="b0d4d-104">`Media Encoder Standard` определяет набор предустановок кодирования, которые можно использовать при создании заданий кодирования.</span><span class="sxs-lookup"><span data-stu-id="b0d4d-104">`Media Encoder Standard` defines a set of encoding presets you can use when creating encoding jobs.</span></span> <span data-ttu-id="b0d4d-105">Можно также использовать `preset name`, чтобы указать, в какой формат нужно закодировать файл мультимедиа.</span><span class="sxs-lookup"><span data-stu-id="b0d4d-105">You can either use a `preset name` to specify into which format you would like to encode your media file.</span></span> <span data-ttu-id="b0d4d-106">Или можно создать собственные предустановки в формате JSON или XML (с использованием кодировки UTF-8 или UTF-16).</span><span class="sxs-lookup"><span data-stu-id="b0d4d-106">Or, you can create your own JSON or XML-based presets (using UTF-8 or UTF-16 encoding.</span></span> <span data-ttu-id="b0d4d-107">Затем следует передавать пользовательскую предустановку в кодировщик.</span><span class="sxs-lookup"><span data-stu-id="b0d4d-107">You would then pass the custom preset to the encoder.</span></span> <span data-ttu-id="b0d4d-108">Список предустановок, поддерживаемых данным кодировщиком `Media Encoder Standard`, приведен в разделе [Предустановки задач для Media Encoder Standard](media-services-mes-presets-overview.md).</span><span class="sxs-lookup"><span data-stu-id="b0d4d-108">For the list of all the preset names supported by this `Media Encoder Standard` encoder, see [Task Presets for Media Encoder Standard](media-services-mes-presets-overview.md).</span></span>  
+# <a name="h264-single-bitrate-4k-audio-51"></a><span data-ttu-id="c5ecd-103">H264 Single Bitrate 4K Audio 5.1</span><span class="sxs-lookup"><span data-stu-id="c5ecd-103">H264 Single Bitrate 4K Audio 5.1</span></span>
+<span data-ttu-id="c5ecd-104">`Media Encoder Standard` определяет набор предустановок кодирования, которые можно использовать при создании заданий кодирования.</span><span class="sxs-lookup"><span data-stu-id="c5ecd-104">`Media Encoder Standard` defines a set of encoding presets you can use when creating encoding jobs.</span></span> <span data-ttu-id="c5ecd-105">Можно использовать либо `preset name` toospecify в формат, который вы хотите tooencode файла мультимедиа.</span><span class="sxs-lookup"><span data-stu-id="c5ecd-105">You can either use a `preset name` toospecify into which format you would like tooencode your media file.</span></span> <span data-ttu-id="c5ecd-106">Или можно создать собственные предустановки в формате JSON или XML (с использованием кодировки UTF-8 или UTF-16).</span><span class="sxs-lookup"><span data-stu-id="c5ecd-106">Or, you can create your own JSON or XML-based presets (using UTF-8 or UTF-16 encoding.</span></span> <span data-ttu-id="c5ecd-107">Затем следует передавать hello toohello пользовательской предустановки кодировщика.</span><span class="sxs-lookup"><span data-stu-id="c5ecd-107">You would then pass hello custom preset toohello encoder.</span></span> <span data-ttu-id="c5ecd-108">Список всех hello hello предустановленный набор имен, поддерживаемых этим `Media Encoder Standard` кодировщик, см. [предустановки задачи для Media Encoder Standard](media-services-mes-presets-overview.md).</span><span class="sxs-lookup"><span data-stu-id="c5ecd-108">For hello list of all hello preset names supported by this `Media Encoder Standard` encoder, see [Task Presets for Media Encoder Standard](media-services-mes-presets-overview.md).</span></span>  
   
- <span data-ttu-id="b0d4d-109">В этом разделе показана предустановка `H264 Single Bitrate 4K Audio 5.1` в форматах XML и JSON.</span><span class="sxs-lookup"><span data-stu-id="b0d4d-109">This topic shows the `H264 Single Bitrate 4K Audio 5.1` preset (in XML and JSON format).</span></span>  
+ <span data-ttu-id="c5ecd-109">В этом разделе показано hello `H264 Single Bitrate 4K Audio 5.1` конфигурации (в формате XML и JSON).</span><span class="sxs-lookup"><span data-stu-id="c5ecd-109">This topic shows hello `H264 Single Bitrate 4K Audio 5.1` preset (in XML and JSON format).</span></span>  
   
- <span data-ttu-id="b0d4d-110">Данная предустановка создает отдельный MP4-файл со скоростью 18 000 Кбит/с и звуком в формате AAC 5.1.</span><span class="sxs-lookup"><span data-stu-id="b0d4d-110">This preset produces a single MP4 file with a bitrate of 18000 kbps, and AAC 5.1 audio.</span></span> <span data-ttu-id="b0d4d-111">Чтобы получить дополнительные сведения о профиле, скорости, частоте выборки и т. п. данной предустановки, ознакомьтесь с кодом XML или JSON ниже.</span><span class="sxs-lookup"><span data-stu-id="b0d4d-111">For detailed information about profile, bitrate, sampling rate, etc. of this preset, examine the XML or JSON defined below.</span></span> <span data-ttu-id="b0d4d-112">Описание каждого элемента и его допустимых значений см. в разделе [Схема Media Encoder Standard](media-services-mes-schema.md).</span><span class="sxs-lookup"><span data-stu-id="b0d4d-112">For explanations of what each element means, and the valid values for each element, see the [Media Encoder Standard schema](media-services-mes-schema.md).</span></span>  
+ <span data-ttu-id="c5ecd-110">Данная предустановка создает отдельный MP4-файл со скоростью 18 000 Кбит/с и звуком в формате AAC 5.1.</span><span class="sxs-lookup"><span data-stu-id="c5ecd-110">This preset produces a single MP4 file with a bitrate of 18000 kbps, and AAC 5.1 audio.</span></span> <span data-ttu-id="c5ecd-111">Подробные сведения о профиле скоростью, выборки скорость, т. д. это стиль, проверьте hello XML или JSON, описанные ниже.</span><span class="sxs-lookup"><span data-stu-id="c5ecd-111">For detailed information about profile, bitrate, sampling rate, etc. of this preset, examine hello XML or JSON defined below.</span></span> <span data-ttu-id="c5ecd-112">Для объяснения означает, что каждый элемент и hello допустимые значения для каждого элемента в разделе hello [Media Encoder стандартной схеме](media-services-mes-schema.md).</span><span class="sxs-lookup"><span data-stu-id="c5ecd-112">For explanations of what each element means, and hello valid values for each element, see hello [Media Encoder Standard schema](media-services-mes-schema.md).</span></span>  
   
 > [!NOTE]
->  <span data-ttu-id="b0d4d-113">Для кодирования в формат 4K необходимы зарезервированные единицы типа "Премиум".</span><span class="sxs-lookup"><span data-stu-id="b0d4d-113">You should get the Premium reserved unit type with 4K encodes.</span></span> <span data-ttu-id="b0d4d-114">Дополнительные сведения см. в статье [Масштабирование кодирования](https://azure.microsoft.com/en-us/documentation/articles/media-services-portal-encoding-units).</span><span class="sxs-lookup"><span data-stu-id="b0d4d-114">For more information, see [How to Scale Encoding](https://azure.microsoft.com/en-us/documentation/articles/media-services-portal-encoding-units).</span></span>  
+>  <span data-ttu-id="c5ecd-113">Вы должны получить hello Premium защищены кодирует тип единицы измерения с 4 КБ.</span><span class="sxs-lookup"><span data-stu-id="c5ecd-113">You should get hello Premium reserved unit type with 4K encodes.</span></span> <span data-ttu-id="c5ecd-114">Дополнительные сведения см. в разделе [как tooScale кодировка](https://azure.microsoft.com/en-us/documentation/articles/media-services-portal-encoding-units).</span><span class="sxs-lookup"><span data-stu-id="c5ecd-114">For more information, see [How tooScale Encoding](https://azure.microsoft.com/en-us/documentation/articles/media-services-portal-encoding-units).</span></span>  
   
- <span data-ttu-id="b0d4d-115">XML</span><span class="sxs-lookup"><span data-stu-id="b0d4d-115">XML</span></span>  
+ <span data-ttu-id="c5ecd-115">XML</span><span class="sxs-lookup"><span data-stu-id="c5ecd-115">XML</span></span>  
   
 ```  
 <?xml version="1.0" encoding="utf-16"?>  
@@ -73,7 +73,7 @@ ms.lasthandoff: 08/29/2017
 </Preset>  
 ```  
   
- <span data-ttu-id="b0d4d-116">JSON</span><span class="sxs-lookup"><span data-stu-id="b0d4d-116">JSON</span></span>  
+ <span data-ttu-id="c5ecd-116">JSON</span><span class="sxs-lookup"><span data-stu-id="c5ecd-116">JSON</span></span>  
   
 ```  
 {  

@@ -1,6 +1,6 @@
 ---
-title: "Настройка Application Insights в Azure с помощью PowerShell | Документация Майкрософт"
-description: "Автоматизируйте настройку системы диагностики Azure для передачи данных в Application Insights."
+title: "toosetup aaaUsing PowerShell Application Insights в Azure | Документы Microsoft"
+description: "Автоматизируйте настройку диагностики Azure toopipe tooApplication аналитики."
 services: application-insights
 documentationcenter: .net
 author: sbtron
@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/17/2015
 ms.author: bwren
-ms.openlocfilehash: 3b6da89cc33cda713b483a2af3cbb493a03d6bec
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: c48a5d8eb23df162522860935af876063aaa6976
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="using-powershell-to-set-up-application-insights-for-an-azure-web-app"></a><span data-ttu-id="bc759-103">Настройка Application Insights для веб-приложения Azure с помощью PowerShell</span><span class="sxs-lookup"><span data-stu-id="bc759-103">Using PowerShell to set up Application Insights for an Azure web app</span></span>
-<span data-ttu-id="bc759-104">[Microsoft Azure](https://azure.com) можно [настроить для отправки данных системы диагностики Azure](app-insights-azure-diagnostics.md) в [Azure Application Insights](app-insights-overview.md).</span><span class="sxs-lookup"><span data-stu-id="bc759-104">[Microsoft Azure](https://azure.com) can be [configured to send Azure Diagnostics](app-insights-azure-diagnostics.md) to [Azure Application Insights](app-insights-overview.md).</span></span> <span data-ttu-id="bc759-105">Данные диагностики связаны с облачными службами Azure и виртуальными машинами Azure.</span><span class="sxs-lookup"><span data-stu-id="bc759-105">The diagnostics relate to Azure Cloud Services and Azure VMs.</span></span> <span data-ttu-id="bc759-106">Они дополняют данные телеметрии, отправляемые из приложения с помощью пакета SDK Application Insights.</span><span class="sxs-lookup"><span data-stu-id="bc759-106">They complement the telemetry that you send from within the app using the Application Insights SDK.</span></span> <span data-ttu-id="bc759-107">В рамках автоматизации создания новых ресурсов в Azure вы можете настроить диагностику с помощью PowerShell.</span><span class="sxs-lookup"><span data-stu-id="bc759-107">As part of automating the process of creating new resources in Azure, you can configure diagnostics using PowerShell.</span></span>
+# <a name="using-powershell-tooset-up-application-insights-for-an-azure-web-app"></a><span data-ttu-id="119d6-103">С помощью PowerShell tooset копирование Application Insights для веб-приложение Azure</span><span class="sxs-lookup"><span data-stu-id="119d6-103">Using PowerShell tooset up Application Insights for an Azure web app</span></span>
+<span data-ttu-id="119d6-104">[Microsoft Azure](https://azure.com) может быть [настроили систему диагностики Azure toosend](app-insights-azure-diagnostics.md) слишком[Azure Application Insights](app-insights-overview.md).</span><span class="sxs-lookup"><span data-stu-id="119d6-104">[Microsoft Azure](https://azure.com) can be [configured toosend Azure Diagnostics](app-insights-azure-diagnostics.md) too[Azure Application Insights](app-insights-overview.md).</span></span> <span data-ttu-id="119d6-105">Диагностика Hello связаны tooAzure облачных служб и виртуальных машинах Azure.</span><span class="sxs-lookup"><span data-stu-id="119d6-105">hello diagnostics relate tooAzure Cloud Services and Azure VMs.</span></span> <span data-ttu-id="119d6-106">Они дополняют hello данные телеметрии, отправляемого из приложения hello, с помощью пакета SDK Application Insights hello.</span><span class="sxs-lookup"><span data-stu-id="119d6-106">They complement hello telemetry that you send from within hello app using hello Application Insights SDK.</span></span> <span data-ttu-id="119d6-107">В рамках автоматизации hello процесс создания новых ресурсов в Azure, можно настроить диагностику с помощью PowerShell.</span><span class="sxs-lookup"><span data-stu-id="119d6-107">As part of automating hello process of creating new resources in Azure, you can configure diagnostics using PowerShell.</span></span>
 
-## <a name="azure-template"></a><span data-ttu-id="bc759-108">Шаблон Azure</span><span class="sxs-lookup"><span data-stu-id="bc759-108">Azure template</span></span>
-<span data-ttu-id="bc759-109">Если веб-приложение работает в Azure и вы создаете ресурсы с помощью шаблона Azure Resource Manager, можно настроить Application Insights, добавив следующий код в узел ресурсов:</span><span class="sxs-lookup"><span data-stu-id="bc759-109">If the web app is in Azure and you create your resources using an Azure Resource Manager template, you can configure Application Insights by adding this to the resources node:</span></span>
+## <a name="azure-template"></a><span data-ttu-id="119d6-108">Шаблон Azure</span><span class="sxs-lookup"><span data-stu-id="119d6-108">Azure template</span></span>
+<span data-ttu-id="119d6-109">Если hello веб-приложения в Azure и создать ресурсы с помощью шаблона Azure Resource Manager, можно настроить путем добавления этого узла toohello ресурсы Application Insights:</span><span class="sxs-lookup"><span data-stu-id="119d6-109">If hello web app is in Azure and you create your resources using an Azure Resource Manager template, you can configure Application Insights by adding this toohello resources node:</span></span>
 
     {
       resources: [
@@ -42,11 +42,11 @@ ms.lasthandoff: 08/18/2017
        ]
      } 
 
-* <span data-ttu-id="bc759-110">`nameOfAIAppResource` — имя ресурса Application Insights.</span><span class="sxs-lookup"><span data-stu-id="bc759-110">`nameOfAIAppResource` - a name for the Application Insights resource</span></span>
-* <span data-ttu-id="bc759-111">`myWebAppName` — идентификатор веб-приложения.</span><span class="sxs-lookup"><span data-stu-id="bc759-111">`myWebAppName` - the id of the web app</span></span>
+* <span data-ttu-id="119d6-110">`nameOfAIAppResource`-Имя ресурса Application Insights hello</span><span class="sxs-lookup"><span data-stu-id="119d6-110">`nameOfAIAppResource` - a name for hello Application Insights resource</span></span>
+* <span data-ttu-id="119d6-111">`myWebAppName`— Идентификатор hello hello веб-приложения</span><span class="sxs-lookup"><span data-stu-id="119d6-111">`myWebAppName` - hello id of hello web app</span></span>
 
-## <a name="enable-diagnostics-extension-as-part-of-deploying-a-cloud-service"></a><span data-ttu-id="bc759-112">Включение расширения диагностики как части развертывания облачной службы</span><span class="sxs-lookup"><span data-stu-id="bc759-112">Enable diagnostics extension as part of deploying a Cloud Service</span></span>
-<span data-ttu-id="bc759-113">Параметр `ExtensionConfiguration` командлета `New-AzureDeployment` принимает массив значений для конфигурации диагностики.</span><span class="sxs-lookup"><span data-stu-id="bc759-113">The `New-AzureDeployment` cmdlet has a parameter `ExtensionConfiguration`, which takes an array of diagnostics configurations.</span></span> <span data-ttu-id="bc759-114">Их можно создать с помощью командлета `New-AzureServiceDiagnosticsExtensionConfig` .</span><span class="sxs-lookup"><span data-stu-id="bc759-114">These can be created using the `New-AzureServiceDiagnosticsExtensionConfig` cmdlet.</span></span> <span data-ttu-id="bc759-115">Например:</span><span class="sxs-lookup"><span data-stu-id="bc759-115">For example:</span></span>
+## <a name="enable-diagnostics-extension-as-part-of-deploying-a-cloud-service"></a><span data-ttu-id="119d6-112">Включение расширения диагностики как части развертывания облачной службы</span><span class="sxs-lookup"><span data-stu-id="119d6-112">Enable diagnostics extension as part of deploying a Cloud Service</span></span>
+<span data-ttu-id="119d6-113">Hello `New-AzureDeployment` содержит параметр `ExtensionConfiguration`, который принимает массив конфигурации диагностики.</span><span class="sxs-lookup"><span data-stu-id="119d6-113">hello `New-AzureDeployment` cmdlet has a parameter `ExtensionConfiguration`, which takes an array of diagnostics configurations.</span></span> <span data-ttu-id="119d6-114">Эти компоненты можно создать с помощью hello `New-AzureServiceDiagnosticsExtensionConfig` командлета.</span><span class="sxs-lookup"><span data-stu-id="119d6-114">These can be created using hello `New-AzureServiceDiagnosticsExtensionConfig` cmdlet.</span></span> <span data-ttu-id="119d6-115">Например:</span><span class="sxs-lookup"><span data-stu-id="119d6-115">For example:</span></span>
 
 ```ps
 
@@ -81,8 +81,8 @@ ms.lasthandoff: 08/18/2017
 
 ``` 
 
-## <a name="enable-diagnostics-extension-on-an-existing-cloud-service"></a><span data-ttu-id="bc759-116">Включение расширения диагностики в существующей облачной службе</span><span class="sxs-lookup"><span data-stu-id="bc759-116">Enable diagnostics extension on an existing Cloud Service</span></span>
-<span data-ttu-id="bc759-117">Для уже существующей службы используйте командлет `Set-AzureServiceDiagnosticsExtension`.</span><span class="sxs-lookup"><span data-stu-id="bc759-117">On an existing service, use `Set-AzureServiceDiagnosticsExtension`.</span></span>
+## <a name="enable-diagnostics-extension-on-an-existing-cloud-service"></a><span data-ttu-id="119d6-116">Включение расширения диагностики в существующей облачной службе</span><span class="sxs-lookup"><span data-stu-id="119d6-116">Enable diagnostics extension on an existing Cloud Service</span></span>
+<span data-ttu-id="119d6-117">Для уже существующей службы используйте командлет `Set-AzureServiceDiagnosticsExtension`.</span><span class="sxs-lookup"><span data-stu-id="119d6-117">On an existing service, use `Set-AzureServiceDiagnosticsExtension`.</span></span>
 
 ```ps
 
@@ -110,22 +110,22 @@ ms.lasthandoff: 08/18/2017
         -Role "WorkerRole"
 ```
 
-## <a name="get-current-diagnostics-extension-configuration"></a><span data-ttu-id="bc759-118">Получение текущей конфигурации расширения диагностики</span><span class="sxs-lookup"><span data-stu-id="bc759-118">Get current diagnostics extension configuration</span></span>
+## <a name="get-current-diagnostics-extension-configuration"></a><span data-ttu-id="119d6-118">Получение текущей конфигурации расширения диагностики</span><span class="sxs-lookup"><span data-stu-id="119d6-118">Get current diagnostics extension configuration</span></span>
 ```ps
 
     Get-AzureServiceDiagnosticsExtension -ServiceName "MyService"
 ```
 
 
-## <a name="remove-diagnostics-extension"></a><span data-ttu-id="bc759-119">Удаление расширения диагностики</span><span class="sxs-lookup"><span data-stu-id="bc759-119">Remove diagnostics extension</span></span>
+## <a name="remove-diagnostics-extension"></a><span data-ttu-id="119d6-119">Удаление расширения диагностики</span><span class="sxs-lookup"><span data-stu-id="119d6-119">Remove diagnostics extension</span></span>
 ```ps
 
     Remove-AzureServiceDiagnosticsExtension -ServiceName "MyService"
 ```
 
-<span data-ttu-id="bc759-120">Если расширение диагностики было включено с помощью командлета `Set-AzureServiceDiagnosticsExtension` или `New-AzureServiceDiagnosticsExtensionConfig` без параметра Role, вы можете удалить расширение с помощью командлета `Remove-AzureServiceDiagnosticsExtension` без параметра Role.</span><span class="sxs-lookup"><span data-stu-id="bc759-120">If you enabled the diagnostics extension using either `Set-AzureServiceDiagnosticsExtension` or `New-AzureServiceDiagnosticsExtensionConfig` without the Role parameter, then you can remove the extension using `Remove-AzureServiceDiagnosticsExtension` without the Role parameter.</span></span> <span data-ttu-id="bc759-121">Если параметр Role использовался при включении расширения, он также должен применяться и при его удалении.</span><span class="sxs-lookup"><span data-stu-id="bc759-121">If the Role parameter was used when enabling the extension then it must also be used when removing the extension.</span></span>
+<span data-ttu-id="119d6-120">Если включен с помощью расширения диагностики hello `Set-AzureServiceDiagnosticsExtension` или `New-AzureServiceDiagnosticsExtensionConfig` без параметра роли hello, затем можно удалить с помощью расширения hello `Remove-AzureServiceDiagnosticsExtension` без параметра роли hello.</span><span class="sxs-lookup"><span data-stu-id="119d6-120">If you enabled hello diagnostics extension using either `Set-AzureServiceDiagnosticsExtension` or `New-AzureServiceDiagnosticsExtensionConfig` without hello Role parameter, then you can remove hello extension using `Remove-AzureServiceDiagnosticsExtension` without hello Role parameter.</span></span> <span data-ttu-id="119d6-121">Если параметр hello роль была использована при включении расширения hello затем он должен также использоваться при удалении расширения hello.</span><span class="sxs-lookup"><span data-stu-id="119d6-121">If hello Role parameter was used when enabling hello extension then it must also be used when removing hello extension.</span></span>
 
-<span data-ttu-id="bc759-122">Удаление расширения диагностики из каждой отдельной роли</span><span class="sxs-lookup"><span data-stu-id="bc759-122">To remove the diagnostics extension from each individual role:</span></span>
+<span data-ttu-id="119d6-122">Модуль диагностики hello tooremove из каждого отдельного роли:</span><span class="sxs-lookup"><span data-stu-id="119d6-122">tooremove hello diagnostics extension from each individual role:</span></span>
 
 ```ps
 
@@ -133,8 +133,8 @@ ms.lasthandoff: 08/18/2017
 ```
 
 
-## <a name="see-also"></a><span data-ttu-id="bc759-123">Дополнительные материалы</span><span class="sxs-lookup"><span data-stu-id="bc759-123">See also</span></span>
-* [<span data-ttu-id="bc759-124">Мониторинг приложений облачных служб Azure с помощью Application Insights</span><span class="sxs-lookup"><span data-stu-id="bc759-124">Monitor Azure Cloud Services apps with Application Insights</span></span>](app-insights-cloudservices.md)
-* [<span data-ttu-id="bc759-125">Отправка данных системы диагностики Azure в Application Insights</span><span class="sxs-lookup"><span data-stu-id="bc759-125">Send Azure Diagnostics to Application Insights</span></span>](app-insights-azure-diagnostics.md)
-* [<span data-ttu-id="bc759-126">Use PowerShell to set alerts in Application Insights</span><span class="sxs-lookup"><span data-stu-id="bc759-126">Automate configuring alerts</span></span>](app-insights-powershell-alerts.md)
+## <a name="see-also"></a><span data-ttu-id="119d6-123">См. также</span><span class="sxs-lookup"><span data-stu-id="119d6-123">See also</span></span>
+* [<span data-ttu-id="119d6-124">Мониторинг приложений облачных служб Azure с помощью Application Insights</span><span class="sxs-lookup"><span data-stu-id="119d6-124">Monitor Azure Cloud Services apps with Application Insights</span></span>](app-insights-cloudservices.md)
+* [<span data-ttu-id="119d6-125">Отправить аналитики tooApplication диагностики Azure</span><span class="sxs-lookup"><span data-stu-id="119d6-125">Send Azure Diagnostics tooApplication Insights</span></span>](app-insights-azure-diagnostics.md)
+* [<span data-ttu-id="119d6-126">Use PowerShell to set alerts in Application Insights</span><span class="sxs-lookup"><span data-stu-id="119d6-126">Automate configuring alerts</span></span>](app-insights-powershell-alerts.md)
 

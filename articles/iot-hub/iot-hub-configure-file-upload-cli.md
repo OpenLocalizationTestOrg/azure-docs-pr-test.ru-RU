@@ -1,6 +1,6 @@
 ---
-title: "Настройка отправки файлов в Центр Интернета вещей с помощью Azure CLI (az.py) | Документация Майкрософт"
-description: "Настройка отправки файлов в Центр Интернета вещей Azure, используя кроссплатформенный интерфейс командной строки Azure 2.0 (az.py)."
+title: "tooIoT передачи файла aaaConfigure концентратора с помощью Azure CLI (az.py) | Документы Microsoft"
+description: "Как с помощью tooconfigure fileuploads tooAzure центр IoT hello кросс платформенных Azure CLI 2.0 (az.py)."
 services: iot-hub
 documentationcenter: 
 author: dominicbetts
@@ -14,94 +14,94 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/08/2017
 ms.author: dobett
-ms.openlocfilehash: a9af26d7ebacf5513952786621aaa92f64be263b
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 390113df2d96df9833b6aa383ed66805528614a0
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="configure-iot-hub-file-uploads-using-azure-cli"></a><span data-ttu-id="50427-103">Настройка отправки файлов в Центре Интернета вещей с помощью Azure CLI</span><span class="sxs-lookup"><span data-stu-id="50427-103">Configure IoT Hub file uploads using Azure CLI</span></span>
+# <a name="configure-iot-hub-file-uploads-using-azure-cli"></a><span data-ttu-id="be8d8-103">Настройка отправки файлов в Центре Интернета вещей с помощью Azure CLI</span><span class="sxs-lookup"><span data-stu-id="be8d8-103">Configure IoT Hub file uploads using Azure CLI</span></span>
 
 [!INCLUDE [iot-hub-file-upload-selector](../../includes/iot-hub-file-upload-selector.md)]
 
-<span data-ttu-id="50427-104">Чтобы использовать [функцию передачи файлов в Центре Интернета вещей][lnk-upload], сначала необходимо связать учетную запись хранения Azure с Центром Интернета вещей.</span><span class="sxs-lookup"><span data-stu-id="50427-104">To use the [file upload functionality in IoT Hub][lnk-upload], you must first associate an Azure Storage account with your IoT hub.</span></span> <span data-ttu-id="50427-105">Можно использовать существующую учетную запись хранения или создать новую.</span><span class="sxs-lookup"><span data-stu-id="50427-105">You can use an existing storage account or create a new one.</span></span>
+<span data-ttu-id="be8d8-104">toouse hello [файла функций передачи данных в центр IoT][lnk-upload], его необходимо связать учетную запись хранилища Azure с вашего центра IoT.</span><span class="sxs-lookup"><span data-stu-id="be8d8-104">toouse hello [file upload functionality in IoT Hub][lnk-upload], you must first associate an Azure Storage account with your IoT hub.</span></span> <span data-ttu-id="be8d8-105">Можно использовать существующую учетную запись хранения или создать новую.</span><span class="sxs-lookup"><span data-stu-id="be8d8-105">You can use an existing storage account or create a new one.</span></span>
 
-<span data-ttu-id="50427-106">Для работы с этим учебником требуется:</span><span class="sxs-lookup"><span data-stu-id="50427-106">To complete this tutorial, you need the following:</span></span>
+<span data-ttu-id="be8d8-106">toocomplete этого учебника требуется hello следующие:</span><span class="sxs-lookup"><span data-stu-id="be8d8-106">toocomplete this tutorial, you need hello following:</span></span>
 
-* <span data-ttu-id="50427-107">Активная учетная запись Azure.</span><span class="sxs-lookup"><span data-stu-id="50427-107">An active Azure account.</span></span> <span data-ttu-id="50427-108">Если у вас нет учетной записи, можно создать [бесплатную учетную запись][lnk-free-trial] всего за несколько минут.</span><span class="sxs-lookup"><span data-stu-id="50427-108">If you don't have an account, you can create a [free account][lnk-free-trial] in just a couple of minutes.</span></span>
-* <span data-ttu-id="50427-109">[Azure CLI 2.0][lnk-CLI-install].</span><span class="sxs-lookup"><span data-stu-id="50427-109">[Azure CLI 2.0][lnk-CLI-install].</span></span>
-* <span data-ttu-id="50427-110">Центр интернета вещей Azure.</span><span class="sxs-lookup"><span data-stu-id="50427-110">An Azure IoT hub.</span></span> <span data-ttu-id="50427-111">Выполните [команду][lnk-cli-create-iothub] `az iot hub create` или воспользуйтесь порталом Azure, чтобы создать Центр Интернета вещей (если у вас его еще нет) [lnk-portal-hub].</span><span class="sxs-lookup"><span data-stu-id="50427-111">If you don't have an IoT hub, you can use the `az iot hub create` [command][lnk-cli-create-iothub] to create one or use the portal to [Create an IoT hub][lnk-portal-hub].</span></span>
-* <span data-ttu-id="50427-112">Учетная запись хранения Azure.</span><span class="sxs-lookup"><span data-stu-id="50427-112">An Azure Storage account.</span></span> <span data-ttu-id="50427-113">Ознакомьтесь со сведениями раздела [Управление учетными записями хранения][lnk-manage-storage] или воспользуйтесь порталом, чтобы [создать учетную запись хранения Azure][lnk-portal-storage] (если у вас ее еще нет).</span><span class="sxs-lookup"><span data-stu-id="50427-113">If you don't have an Azure Storage account, you can use the [Azure CLI 2.0 - Manage storage accounts][lnk-manage-storage] to create one or use the portal to [Create a storage account][lnk-portal-storage].</span></span>
+* <span data-ttu-id="be8d8-107">Активная учетная запись Azure.</span><span class="sxs-lookup"><span data-stu-id="be8d8-107">An active Azure account.</span></span> <span data-ttu-id="be8d8-108">Если у вас нет учетной записи, можно создать [бесплатную учетную запись][lnk-free-trial] всего за несколько минут.</span><span class="sxs-lookup"><span data-stu-id="be8d8-108">If you don't have an account, you can create a [free account][lnk-free-trial] in just a couple of minutes.</span></span>
+* <span data-ttu-id="be8d8-109">[Azure CLI 2.0][lnk-CLI-install].</span><span class="sxs-lookup"><span data-stu-id="be8d8-109">[Azure CLI 2.0][lnk-CLI-install].</span></span>
+* <span data-ttu-id="be8d8-110">Центр интернета вещей Azure.</span><span class="sxs-lookup"><span data-stu-id="be8d8-110">An Azure IoT hub.</span></span> <span data-ttu-id="be8d8-111">При отсутствии центра IoT можно использовать hello `az iot hub create` [команда] [ lnk-cli-create-iothub] toocreate один или используйте hello портала слишком [создать центр IoT] [lnk портала концентратора].</span><span class="sxs-lookup"><span data-stu-id="be8d8-111">If you don't have an IoT hub, you can use hello `az iot hub create` [command][lnk-cli-create-iothub] toocreate one or use hello portal too[Create an IoT hub][lnk-portal-hub].</span></span>
+* <span data-ttu-id="be8d8-112">Учетная запись хранения Azure.</span><span class="sxs-lookup"><span data-stu-id="be8d8-112">An Azure Storage account.</span></span> <span data-ttu-id="be8d8-113">При отсутствии учетной записи хранилища Azure можно использовать hello [Azure CLI 2.0 — управление учетными записями хранения] [ lnk-manage-storage] toocreate одно или используйте hello портала слишком[создать учетную запись хранилища] [lnk-portal-storage].</span><span class="sxs-lookup"><span data-stu-id="be8d8-113">If you don't have an Azure Storage account, you can use hello [Azure CLI 2.0 - Manage storage accounts][lnk-manage-storage] toocreate one or use hello portal too[Create a storage account][lnk-portal-storage].</span></span>
 
-## <a name="sign-in-and-set-your-azure-account"></a><span data-ttu-id="50427-114">Выполнение входа и установка учетной записи Azure</span><span class="sxs-lookup"><span data-stu-id="50427-114">Sign in and set your Azure account</span></span>
+## <a name="sign-in-and-set-your-azure-account"></a><span data-ttu-id="be8d8-114">Выполнение входа и установка учетной записи Azure</span><span class="sxs-lookup"><span data-stu-id="be8d8-114">Sign in and set your Azure account</span></span>
 
-<span data-ttu-id="50427-115">Войдите в учетную запись Azure и выберите подписку.</span><span class="sxs-lookup"><span data-stu-id="50427-115">Sign in to your Azure account and select your subscription.</span></span>
+<span data-ttu-id="be8d8-115">Войдите в tooyour учетная запись Azure и выберите свою подписку.</span><span class="sxs-lookup"><span data-stu-id="be8d8-115">Sign in tooyour Azure account and select your subscription.</span></span>
 
-1. <span data-ttu-id="50427-116">В командной строке запустите [команду для входа][lnk-login-command]:</span><span class="sxs-lookup"><span data-stu-id="50427-116">At the command prompt, run the [login command][lnk-login-command]:</span></span>
+1. <span data-ttu-id="be8d8-116">Hello командной строки, выполнив hello [входа команда][lnk-login-command]:</span><span class="sxs-lookup"><span data-stu-id="be8d8-116">At hello command prompt, run hello [login command][lnk-login-command]:</span></span>
 
     ```azurecli
     az login
     ```
 
-    <span data-ttu-id="50427-117">Следуйте инструкциям, чтобы выполнить аутентификацию с использованием кода и войти в учетную запись Azure через веб-браузер.</span><span class="sxs-lookup"><span data-stu-id="50427-117">Follow the instructions to authenticate using the code and sign in to your Azure account through a web browser.</span></span>
+    <span data-ttu-id="be8d8-117">Выполните инструкции tooauthenticate hello, с помощью кода hello и войдите в tooyour учетная запись Azure через веб-браузер.</span><span class="sxs-lookup"><span data-stu-id="be8d8-117">Follow hello instructions tooauthenticate using hello code and sign in tooyour Azure account through a web browser.</span></span>
 
-1. <span data-ttu-id="50427-118">Если у вас есть несколько подписок Azure, то при выполнении входа в Azure вы получаете доступ ко всем учетным записям Azure, связанным с вашими учетными данными.</span><span class="sxs-lookup"><span data-stu-id="50427-118">If you have multiple Azure subscriptions, signing in to Azure grants you access to all the Azure accounts associated with your credentials.</span></span> <span data-ttu-id="50427-119">Используйте следующую [команду для вывода учетных записей Azure][lnk-az-account-command], доступных для использования:</span><span class="sxs-lookup"><span data-stu-id="50427-119">Use the following [command to list the Azure accounts][lnk-az-account-command] available for you to use:</span></span>
+1. <span data-ttu-id="be8d8-118">Если у вас несколько подписок Azure, предоставляет доступ tooall вход tooAzure hello Azure учетные записи, связанные с учетными данными.</span><span class="sxs-lookup"><span data-stu-id="be8d8-118">If you have multiple Azure subscriptions, signing in tooAzure grants you access tooall hello Azure accounts associated with your credentials.</span></span> <span data-ttu-id="be8d8-119">Используйте следующие hello [toolist команда hello учетных записей Azure] [ lnk-az-account-command] для toouse вы:</span><span class="sxs-lookup"><span data-stu-id="be8d8-119">Use hello following [command toolist hello Azure accounts][lnk-az-account-command] available for you toouse:</span></span>
 
     ```azurecli
     az account list
     ```
 
-    <span data-ttu-id="50427-120">Используйте следующую команду, чтобы выбрать подписку, которая будет использоваться для выполнения команд для создания Центра Интернета вещей.</span><span class="sxs-lookup"><span data-stu-id="50427-120">Use the following command to select subscription that you want to use to run the commands to create your IoT hub.</span></span> <span data-ttu-id="50427-121">Вы можете использовать имя подписки или идентификатор из выходных данных предыдущей команды:</span><span class="sxs-lookup"><span data-stu-id="50427-121">You can use either the subscription name or ID from the output of the previous command:</span></span>
+    <span data-ttu-id="be8d8-120">Используется следующая команда tooselect подписки требуется toouse toorun hello команды toocreate концентратор IoT hello.</span><span class="sxs-lookup"><span data-stu-id="be8d8-120">Use hello following command tooselect subscription that you want toouse toorun hello commands toocreate your IoT hub.</span></span> <span data-ttu-id="be8d8-121">Можно использовать имя подписки hello или идентификатор из hello выходные данные предыдущей команды hello:</span><span class="sxs-lookup"><span data-stu-id="be8d8-121">You can use either hello subscription name or ID from hello output of hello previous command:</span></span>
 
     ```azurecli
     az account set --subscription {your subscription name or id}
     ```
 
-## <a name="retrieve-your-storage-account-details"></a><span data-ttu-id="50427-122">Получение сведений об учетной записи хранения</span><span class="sxs-lookup"><span data-stu-id="50427-122">Retrieve your storage account details</span></span>
+## <a name="retrieve-your-storage-account-details"></a><span data-ttu-id="be8d8-122">Получение сведений об учетной записи хранения</span><span class="sxs-lookup"><span data-stu-id="be8d8-122">Retrieve your storage account details</span></span>
 
-<span data-ttu-id="50427-123">В следующих шагах предполагается, что для создания учетной записи хранения вы использовали модель развертывания **с помощью Resource Manager**, а не **классическую** модель развертывания.</span><span class="sxs-lookup"><span data-stu-id="50427-123">The following steps assume that you created your storage account using the **Resource Manager** deployment model, and not the **Classic** deployment model.</span></span>
+<span data-ttu-id="be8d8-123">Hello следующие шаги предполагают, что вы создали учетную запись хранилища с помощью hello **диспетчера ресурсов** модель развертывания, а не hello **классический** модели развертывания.</span><span class="sxs-lookup"><span data-stu-id="be8d8-123">hello following steps assume that you created your storage account using hello **Resource Manager** deployment model, and not hello **Classic** deployment model.</span></span>
 
-<span data-ttu-id="50427-124">Для настройки отправки файлов с ваших устройств необходима строка подключения учетной записи хранения Azure.</span><span class="sxs-lookup"><span data-stu-id="50427-124">To configure file uploads from your devices, you need the connection string for an Azure storage account.</span></span> <span data-ttu-id="50427-125">Эта учетная запись хранения должна относиться к той же подписке, что и Центр Интернета вещей.</span><span class="sxs-lookup"><span data-stu-id="50427-125">The storage account must be in the same subscription as your IoT hub.</span></span> <span data-ttu-id="50427-126">Кроме того, вам понадобится имя контейнера BLOB-объектов в учетной записи хранения.</span><span class="sxs-lookup"><span data-stu-id="50427-126">You also need the name of a blob container in the storage account.</span></span> <span data-ttu-id="50427-127">Для получения ключей учетной записи хранения используйте следующую команду:</span><span class="sxs-lookup"><span data-stu-id="50427-127">Use the following command to retrieve your storage account keys:</span></span>
+<span data-ttu-id="be8d8-124">отправляет файл tooconfigure с устройств, необходимо hello строку подключения для учетной записи хранилища Azure.</span><span class="sxs-lookup"><span data-stu-id="be8d8-124">tooconfigure file uploads from your devices, you need hello connection string for an Azure storage account.</span></span> <span data-ttu-id="be8d8-125">Учетная запись хранения Hello должна быть в hello той же подписке, ваш центр IoT.</span><span class="sxs-lookup"><span data-stu-id="be8d8-125">hello storage account must be in hello same subscription as your IoT hub.</span></span> <span data-ttu-id="be8d8-126">Необходимо также hello имя контейнера BLOB-объектов в учетной записи хранения hello.</span><span class="sxs-lookup"><span data-stu-id="be8d8-126">You also need hello name of a blob container in hello storage account.</span></span> <span data-ttu-id="be8d8-127">Используйте следующие команды tooretrieve hello ключи учетной записи хранилища:</span><span class="sxs-lookup"><span data-stu-id="be8d8-127">Use hello following command tooretrieve your storage account keys:</span></span>
 
 ```azurecli
 az storage account show-connection-string --name {your storage account name} --resource-group {your storage account resource group}
 ```
 
-<span data-ttu-id="50427-128">Запишите значение **connectionString**.</span><span class="sxs-lookup"><span data-stu-id="50427-128">Make a note of the **connectionString** value.</span></span> <span data-ttu-id="50427-129">Оно понадобится вам на следующих этапах.</span><span class="sxs-lookup"><span data-stu-id="50427-129">You need it in the following steps.</span></span>
+<span data-ttu-id="be8d8-128">Запишите hello **connectionString** значение.</span><span class="sxs-lookup"><span data-stu-id="be8d8-128">Make a note of hello **connectionString** value.</span></span> <span data-ttu-id="be8d8-129">Необходимо в hello следующие шаги.</span><span class="sxs-lookup"><span data-stu-id="be8d8-129">You need it in hello following steps.</span></span>
 
-<span data-ttu-id="50427-130">Для отправки файлов можно использовать существующий контейнер BLOB-объектов или создать новый.</span><span class="sxs-lookup"><span data-stu-id="50427-130">You can either use an existing blob container for your file uploads or create new one:</span></span>
+<span data-ttu-id="be8d8-130">Для отправки файлов можно использовать существующий контейнер BLOB-объектов или создать новый.</span><span class="sxs-lookup"><span data-stu-id="be8d8-130">You can either use an existing blob container for your file uploads or create new one:</span></span>
 
-* <span data-ttu-id="50427-131">Чтобы получить список имеющихся контейнеров больших двоичных объектов в вашей учетной записи хранения, выполните следующую команду:</span><span class="sxs-lookup"><span data-stu-id="50427-131">To list the existing blob containers in your storage account, use the following command:</span></span>
+* <span data-ttu-id="be8d8-131">toolist hello существующие BLOB-объект контейнеры в учетной записи используйте hello следующую команду:</span><span class="sxs-lookup"><span data-stu-id="be8d8-131">toolist hello existing blob containers in your storage account, use hello following command:</span></span>
 
     ```azurecli
     az storage container list --connection-string "{your storage account connection string}"
     ```
 
-* <span data-ttu-id="50427-132">Для создания контейнера больших двоичных объектов в учетной записи хранения выполните следующую команду:</span><span class="sxs-lookup"><span data-stu-id="50427-132">To create a blob container in your storage account, use the following command:</span></span>
+* <span data-ttu-id="be8d8-132">toocreate контейнер больших двоичных объектов в вашей учетной записи хранилища, hello используйте следующую команду:</span><span class="sxs-lookup"><span data-stu-id="be8d8-132">toocreate a blob container in your storage account, use hello following command:</span></span>
 
     ```azurecli
     az storage container create --name {container name} --connection-string "{your storage account connection string}"
     ```
 
-## <a name="file-upload"></a><span data-ttu-id="50427-133">Передача файла</span><span class="sxs-lookup"><span data-stu-id="50427-133">File upload</span></span>
+## <a name="file-upload"></a><span data-ttu-id="be8d8-133">Передача файла</span><span class="sxs-lookup"><span data-stu-id="be8d8-133">File upload</span></span>
 
-<span data-ttu-id="50427-134">Теперь с помощью данных учетной записи хранения можно настроить Центр Интернета вещей для включения [функции отправки файлов][lnk-upload].</span><span class="sxs-lookup"><span data-stu-id="50427-134">You can now configure your IoT hub to enable [file upload functionality][lnk-upload] using your storage account details.</span></span>
+<span data-ttu-id="be8d8-134">Теперь вы можете настроить ваш tooenable концентратора IoT [файл функций передачи] [ lnk-upload] с помощью сведений о своей учетной записи хранилища.</span><span class="sxs-lookup"><span data-stu-id="be8d8-134">You can now configure your IoT hub tooenable [file upload functionality][lnk-upload] using your storage account details.</span></span>
 
-<span data-ttu-id="50427-135">Для настройки потребуются следующие значения:</span><span class="sxs-lookup"><span data-stu-id="50427-135">The configuration requires the following values:</span></span>
+<span data-ttu-id="be8d8-135">Конфигурация Hello требует hello следующие значения:</span><span class="sxs-lookup"><span data-stu-id="be8d8-135">hello configuration requires hello following values:</span></span>
 
-<span data-ttu-id="50427-136">**Контейнер хранилища**. Контейнер BLOB-объектов в учетной записи хранения Azure в текущей подписке Azure, который нужно связать с Центром Интернета вещей.</span><span class="sxs-lookup"><span data-stu-id="50427-136">**Storage container**: A blob container in an Azure storage account in your current Azure subscription to associate with your IoT hub.</span></span> <span data-ttu-id="50427-137">Необходимые сведения об учетной записи хранения вы получили в предыдущем разделе.</span><span class="sxs-lookup"><span data-stu-id="50427-137">You retrieved the necessary storage account information in the preceding section.</span></span> <span data-ttu-id="50427-138">Центр Интернета вещей автоматически генерирует универсальные коды ресурсов (URI) подписанных URL-адресов с разрешениями на запись в этом контейнере больших двоичных объектов, чтобы устройства могли их использовать во время передач файлов.</span><span class="sxs-lookup"><span data-stu-id="50427-138">IoT Hub automatically generates SAS URIs with write permissions to this blob container for devices to use when they upload files.</span></span>
+<span data-ttu-id="be8d8-136">**Контейнер хранилища**: контейнер больших двоичных объектов в учетной записи хранилища Azure в вашей текущей подписки Azure tooassociate с вашего центра IoT.</span><span class="sxs-lookup"><span data-stu-id="be8d8-136">**Storage container**: A blob container in an Azure storage account in your current Azure subscription tooassociate with your IoT hub.</span></span> <span data-ttu-id="be8d8-137">Вы получили сведения об учетной записи хранилище hello в предшествующих раздел hello.</span><span class="sxs-lookup"><span data-stu-id="be8d8-137">You retrieved hello necessary storage account information in hello preceding section.</span></span> <span data-ttu-id="be8d8-138">Центр IoT автоматически создает идентификаторы URI SAS с контейнер больших двоичных объектов toothis разрешения записи для устройств toouse, когда они отправляют файлы.</span><span class="sxs-lookup"><span data-stu-id="be8d8-138">IoT Hub automatically generates SAS URIs with write permissions toothis blob container for devices toouse when they upload files.</span></span>
 
-<span data-ttu-id="50427-139">**Receive notifications for uploaded files** (Получать уведомления об отправленных файлах). Включите или отключите уведомления об отправке файлов.</span><span class="sxs-lookup"><span data-stu-id="50427-139">**Receive notifications for uploaded files**: Enable or disable file upload notifications.</span></span>
+<span data-ttu-id="be8d8-139">**Receive notifications for uploaded files** (Получать уведомления об отправленных файлах). Включите или отключите уведомления об отправке файлов.</span><span class="sxs-lookup"><span data-stu-id="be8d8-139">**Receive notifications for uploaded files**: Enable or disable file upload notifications.</span></span>
 
-<span data-ttu-id="50427-140">**SAS TTL** (Срок жизни SAS). Этот параметр определяет срок жизни универсальных кодов ресурса (URI) SAS, возвращаемых Центром Интернета вещей на устройство.</span><span class="sxs-lookup"><span data-stu-id="50427-140">**SAS TTL**: This setting is the time-to-live of the SAS URIs returned to the device by IoT Hub.</span></span> <span data-ttu-id="50427-141">Значение по умолчанию — один час.</span><span class="sxs-lookup"><span data-stu-id="50427-141">Set to one hour by default.</span></span>
+<span data-ttu-id="be8d8-140">**Срок ЖИЗНИ SAS**: этот параметр — hello, время жизни объекта hello идентификаторы URI SAS возвращенных toohello устройства центра IoT.</span><span class="sxs-lookup"><span data-stu-id="be8d8-140">**SAS TTL**: This setting is hello time-to-live of hello SAS URIs returned toohello device by IoT Hub.</span></span> <span data-ttu-id="be8d8-141">По умолчанию значение tooone час.</span><span class="sxs-lookup"><span data-stu-id="be8d8-141">Set tooone hour by default.</span></span>
 
-<span data-ttu-id="50427-142">**File notification settings default TTL** (Стандартный срок жизни уведомления о файле). Срок жизни уведомления об отправке файла.</span><span class="sxs-lookup"><span data-stu-id="50427-142">**File notification settings default TTL**: The time-to-live of a file upload notification before it is expired.</span></span> <span data-ttu-id="50427-143">Значение по умолчанию — один день.</span><span class="sxs-lookup"><span data-stu-id="50427-143">Set to one day by default.</span></span>
+<span data-ttu-id="be8d8-142">**Уведомления об параметры по умолчанию срок ЖИЗНИ файла**: hello time-to-live уведомления передачи файла до окончания срока их.</span><span class="sxs-lookup"><span data-stu-id="be8d8-142">**File notification settings default TTL**: hello time-to-live of a file upload notification before it is expired.</span></span> <span data-ttu-id="be8d8-143">По умолчанию значение tooone день.</span><span class="sxs-lookup"><span data-stu-id="be8d8-143">Set tooone day by default.</span></span>
 
-<span data-ttu-id="50427-144">**File notification maximum delivery count**(Максимальное число доставок уведомления о файле): число попыток доставки уведомления о передаче файла, предпринимаемых Центром Интернета вещей.</span><span class="sxs-lookup"><span data-stu-id="50427-144">**File notification maximum delivery count**: The number of times the IoT Hub attempts to deliver a file upload notification.</span></span> <span data-ttu-id="50427-145">Значение по умолчанию — 10.</span><span class="sxs-lookup"><span data-stu-id="50427-145">Set to 10 by default.</span></span>
+<span data-ttu-id="be8d8-144">**Файл уведомления максимальное число доставок**: hello время hello toodeliver попыток центра IoT уведомление передачи файла.</span><span class="sxs-lookup"><span data-stu-id="be8d8-144">**File notification maximum delivery count**: hello number of times hello IoT Hub attempts toodeliver a file upload notification.</span></span> <span data-ttu-id="be8d8-145">По умолчанию значение too10.</span><span class="sxs-lookup"><span data-stu-id="be8d8-145">Set too10 by default.</span></span>
 
-<span data-ttu-id="50427-146">Чтобы настроить параметры отправки файлов в Центре Интернета вещей, выполните следующие команды Azure CLI:</span><span class="sxs-lookup"><span data-stu-id="50427-146">Use the following Azure CLI commands to configure the file upload settings on your IoT hub:</span></span>
+<span data-ttu-id="be8d8-146">Используйте следующие параметры передачи файла hello tooconfigure Azure CLI команды на концентратор IoT hello.</span><span class="sxs-lookup"><span data-stu-id="be8d8-146">Use hello following Azure CLI commands tooconfigure hello file upload settings on your IoT hub:</span></span>
 
-<span data-ttu-id="50427-147">Выполните следующие команды в оболочке Bash:</span><span class="sxs-lookup"><span data-stu-id="50427-147">In a bash shell use:</span></span>
+<span data-ttu-id="be8d8-147">Выполните следующие команды в оболочке Bash:</span><span class="sxs-lookup"><span data-stu-id="be8d8-147">In a bash shell use:</span></span>
 
 ```azurecli
 az iot hub update --name {your iot hub name} --set properties.storageEndpoints.'$default'.connectionString="{your storage account connection string}"
@@ -113,7 +113,7 @@ az iot hub update --name {your iot hub name} --set properties.messagingEndpoints
 az iot hub update --name {your iot hub name} --set properties.messagingEndpoints.fileNotifications.ttlAsIso8601=PT1H0M0S
 ```
 
-<span data-ttu-id="50427-148">В командной строке Windows выполните следующие команды:</span><span class="sxs-lookup"><span data-stu-id="50427-148">At a Windows command prompt use:</span></span>
+<span data-ttu-id="be8d8-148">В командной строке Windows выполните следующие команды:</span><span class="sxs-lookup"><span data-stu-id="be8d8-148">At a Windows command prompt use:</span></span>
 
 ```azurecli
 az iot hub update --name {your iot hub name} --set "properties.storageEndpoints.$default.connectionString="{your storage account connection string}""
@@ -125,27 +125,27 @@ az iot hub update --name {your iot hub name} --set properties.messagingEndpoints
 az iot hub update --name {your iot hub name} --set properties.messagingEndpoints.fileNotifications.ttlAsIso8601=PT1H0M0S
 ```
 
-<span data-ttu-id="50427-149">Вы можете просмотреть конфигурацию отправки файла в Центре Интернета вещей, выполнив следующую команду:</span><span class="sxs-lookup"><span data-stu-id="50427-149">You can review the file upload configuration on your IoT hub using the following command:</span></span>
+<span data-ttu-id="be8d8-149">Вы можете просмотреть hello конфигурации загрузки файла на ваш центр IoT с помощью hello следующую команду:</span><span class="sxs-lookup"><span data-stu-id="be8d8-149">You can review hello file upload configuration on your IoT hub using hello following command:</span></span>
 
 ```azurecli
 az iot hub show --name {your iot hub name}
 ```
 
-## <a name="next-steps"></a><span data-ttu-id="50427-150">Дальнейшие действия</span><span class="sxs-lookup"><span data-stu-id="50427-150">Next steps</span></span>
+## <a name="next-steps"></a><span data-ttu-id="be8d8-150">Дальнейшие действия</span><span class="sxs-lookup"><span data-stu-id="be8d8-150">Next steps</span></span>
 
-<span data-ttu-id="50427-151">Дополнительные сведения о возможностях Центра Интернета вещей, касающихся отправки файлов, см. в разделе об [отправке файлов с устройства][lnk-upload].</span><span class="sxs-lookup"><span data-stu-id="50427-151">For more information about the file upload capabilities of IoT Hub, see [Upload files from a device][lnk-upload].</span></span>
+<span data-ttu-id="be8d8-151">Дополнительные сведения о возможности передачи файлов hello центра IoT см. в разделе [передачи файлов на устройстве][lnk-upload].</span><span class="sxs-lookup"><span data-stu-id="be8d8-151">For more information about hello file upload capabilities of IoT Hub, see [Upload files from a device][lnk-upload].</span></span>
 
-<span data-ttu-id="50427-152">Дополнительные сведения об управлении Центром Интернета вещей в Azure см. по следующим ссылкам:</span><span class="sxs-lookup"><span data-stu-id="50427-152">Follow these links to learn more about managing Azure IoT Hub:</span></span>
+<span data-ttu-id="be8d8-152">Выполните эти дополнительные сведения об управлении центр IoT Azure toolearn ссылки.</span><span class="sxs-lookup"><span data-stu-id="be8d8-152">Follow these links toolearn more about managing Azure IoT Hub:</span></span>
 
-* <span data-ttu-id="50427-153">[Массовое управление удостоверениями устройств Центра Интернета вещей][lnk-bulk]</span><span class="sxs-lookup"><span data-stu-id="50427-153">[Bulk manage IoT devices][lnk-bulk]</span></span>
-* <span data-ttu-id="50427-154">[Метрики Центра Интернета вещей][lnk-metrics]</span><span class="sxs-lookup"><span data-stu-id="50427-154">[IoT Hub metrics][lnk-metrics]</span></span>
-* <span data-ttu-id="50427-155">[Мониторинг операций][lnk-monitor]</span><span class="sxs-lookup"><span data-stu-id="50427-155">[Operations monitoring][lnk-monitor]</span></span>
+* <span data-ttu-id="be8d8-153">[Массовое управление удостоверениями устройств Центра Интернета вещей][lnk-bulk]</span><span class="sxs-lookup"><span data-stu-id="be8d8-153">[Bulk manage IoT devices][lnk-bulk]</span></span>
+* <span data-ttu-id="be8d8-154">[Метрики Центра Интернета вещей][lnk-metrics]</span><span class="sxs-lookup"><span data-stu-id="be8d8-154">[IoT Hub metrics][lnk-metrics]</span></span>
+* <span data-ttu-id="be8d8-155">[Мониторинг операций][lnk-monitor]</span><span class="sxs-lookup"><span data-stu-id="be8d8-155">[Operations monitoring][lnk-monitor]</span></span>
 
-<span data-ttu-id="50427-156">Для дальнейшего изучения возможностей Центра Интернета вещей см. следующие статьи:</span><span class="sxs-lookup"><span data-stu-id="50427-156">To further explore the capabilities of IoT Hub, see:</span></span>
+<span data-ttu-id="be8d8-156">Изучение возможностей hello центра IoT toofurther см. в разделе:</span><span class="sxs-lookup"><span data-stu-id="be8d8-156">toofurther explore hello capabilities of IoT Hub, see:</span></span>
 
-* <span data-ttu-id="50427-157">[Руководство разработчика для Центра Интернета вещей][lnk-devguide]</span><span class="sxs-lookup"><span data-stu-id="50427-157">[IoT Hub developer guide][lnk-devguide]</span></span>
-* <span data-ttu-id="50427-158">[Simulating a device with IoT Edge][lnk-iotedge] (Моделирование устройства с помощью Edge Интернета вещей)</span><span class="sxs-lookup"><span data-stu-id="50427-158">[Simulating a device with IoT Edge][lnk-iotedge]</span></span>
-* <span data-ttu-id="50427-159">[Все аспекты безопасности решения Центра Интернета вещей][lnk-securing]</span><span class="sxs-lookup"><span data-stu-id="50427-159">[Secure your IoT solution from the ground up][lnk-securing]</span></span>
+* <span data-ttu-id="be8d8-157">[Руководство разработчика для Центра Интернета вещей][lnk-devguide]</span><span class="sxs-lookup"><span data-stu-id="be8d8-157">[IoT Hub developer guide][lnk-devguide]</span></span>
+* <span data-ttu-id="be8d8-158">[Simulating a device with IoT Edge][lnk-iotedge] (Моделирование устройства с помощью Edge Интернета вещей)</span><span class="sxs-lookup"><span data-stu-id="be8d8-158">[Simulating a device with IoT Edge][lnk-iotedge]</span></span>
+* <span data-ttu-id="be8d8-159">[Защита вашего решения IoT из hello основание,][lnk-securing]</span><span class="sxs-lookup"><span data-stu-id="be8d8-159">[Secure your IoT solution from hello ground up][lnk-securing]</span></span>
 
 [13]: ./media/iot-hub-configure-file-upload/file-upload-settings.png
 [14]: ./media/iot-hub-configure-file-upload/file-upload-container-selection.png

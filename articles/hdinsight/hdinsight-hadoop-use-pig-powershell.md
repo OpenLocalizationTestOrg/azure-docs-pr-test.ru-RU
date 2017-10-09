@@ -1,6 +1,6 @@
 ---
-title: "Использование Hadoop Pig с помощью PowerShell в HDInsight — Azure | Документы Майкрософт"
-description: "Узнайте, как отправлять задания Pig в кластер Hadoop в HDInsight с помощью Azure PowerShell."
+title: "aaaUse Pig для Hadoop с помощью PowerShell в HDInsight — Azure | Документы Microsoft"
+description: "Узнайте, как кластера tooa задания Pig toosubmit Hadoop в HDInsight с помощью Azure PowerShell."
 services: hdinsight
 documentationcenter: 
 author: Blackmist
@@ -16,62 +16,62 @@ ms.workload: big-data
 ms.date: 06/16/2017
 ms.author: larryfr
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: 28904b07609ffb40a8195278fd1afd3957896733
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 771617df203011eaec715a0dba6f5014a42877f3
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="use-azure-powershell-to-run-pig-jobs-with-hdinsight"></a><span data-ttu-id="cdb16-103">Использование Azure PowerShell для выполнения заданий Pig в HDInsight</span><span class="sxs-lookup"><span data-stu-id="cdb16-103">Use Azure PowerShell to run Pig jobs with HDInsight</span></span>
+# <a name="use-azure-powershell-toorun-pig-jobs-with-hdinsight"></a><span data-ttu-id="16c6d-103">Используйте задания Pig toorun Azure PowerShell с HDInsight</span><span class="sxs-lookup"><span data-stu-id="16c6d-103">Use Azure PowerShell toorun Pig jobs with HDInsight</span></span>
 
 [!INCLUDE [pig-selector](../../includes/hdinsight-selector-use-pig.md)]
 
-<span data-ttu-id="cdb16-104">В этом документе приведен пример использования Azure PowerShell для отправки заданий Pig в Hadoop в кластере HDInsight.</span><span class="sxs-lookup"><span data-stu-id="cdb16-104">This document provides an example of using Azure PowerShell to submit Pig jobs to a Hadoop on HDInsight cluster.</span></span> <span data-ttu-id="cdb16-105">Pig позволяет написать задания MapReduce с использованием языка (Pig Latin), который моделирует преобразования данных, а не функции сопоставления и приведения.</span><span class="sxs-lookup"><span data-stu-id="cdb16-105">Pig allows you to write MapReduce jobs by using a language (Pig Latin) that models data transformations, rather than map and reduce functions.</span></span>
+<span data-ttu-id="16c6d-104">Этот документ содержит пример использования tooa задания Hadoop для Azure PowerShell toosubmit Pig в кластере HDInsight.</span><span class="sxs-lookup"><span data-stu-id="16c6d-104">This document provides an example of using Azure PowerShell toosubmit Pig jobs tooa Hadoop on HDInsight cluster.</span></span> <span data-ttu-id="16c6d-105">Pig позволяет задания MapReduce toowrite языке (Pig латиница) моделирует преобразования данных, вместо сопоставления и уменьшения функции.</span><span class="sxs-lookup"><span data-stu-id="16c6d-105">Pig allows you toowrite MapReduce jobs by using a language (Pig Latin) that models data transformations, rather than map and reduce functions.</span></span>
 
 > [!NOTE]
-> <span data-ttu-id="cdb16-106">В этом документе не приводится подробное описание процессов, которые выполняют операторы Pig Latin, используемые в примерах.</span><span class="sxs-lookup"><span data-stu-id="cdb16-106">This document does not provide a detailed description of what the Pig Latin statements used in the examples do.</span></span> <span data-ttu-id="cdb16-107">Информацию об операторах Pig Latin, используемых в данном примере, см. в статье [Использование Pig с Hadoop в HDInsight](hdinsight-use-pig.md).</span><span class="sxs-lookup"><span data-stu-id="cdb16-107">For information about the Pig Latin used in this example, see [Use Pig with Hadoop on HDInsight](hdinsight-use-pig.md).</span></span>
+> <span data-ttu-id="16c6d-106">Этот документ не предоставляет подробное описание действий hello латиница Pig инструкций, используемых в примерах hello.</span><span class="sxs-lookup"><span data-stu-id="16c6d-106">This document does not provide a detailed description of what hello Pig Latin statements used in hello examples do.</span></span> <span data-ttu-id="16c6d-107">Сведения о hello латиница Pig, используемых в этом примере содержатся [использование Pig с Hadoop в HDInsight](hdinsight-use-pig.md).</span><span class="sxs-lookup"><span data-stu-id="16c6d-107">For information about hello Pig Latin used in this example, see [Use Pig with Hadoop on HDInsight](hdinsight-use-pig.md).</span></span>
 
-## <span data-ttu-id="cdb16-108"><a id="prereq"></a>Предварительные требования</span><span class="sxs-lookup"><span data-stu-id="cdb16-108"><a id="prereq"></a>Prerequisites</span></span>
+## <span data-ttu-id="16c6d-108"><a id="prereq"></a>Предварительные требования</span><span class="sxs-lookup"><span data-stu-id="16c6d-108"><a id="prereq"></a>Prerequisites</span></span>
 
-* <span data-ttu-id="cdb16-109">**Кластер Azure HDInsight**.</span><span class="sxs-lookup"><span data-stu-id="cdb16-109">**An Azure HDInsight cluster**</span></span>
+* <span data-ttu-id="16c6d-109">**Кластер Azure HDInsight**.</span><span class="sxs-lookup"><span data-stu-id="16c6d-109">**An Azure HDInsight cluster**</span></span>
 
   > [!IMPORTANT]
-  > <span data-ttu-id="cdb16-110">Linux — это единственная операционная система, используемая для работы с HDInsight 3.4 или более поздних версий.</span><span class="sxs-lookup"><span data-stu-id="cdb16-110">Linux is the only operating system used on HDInsight version 3.4 or greater.</span></span> <span data-ttu-id="cdb16-111">Дополнительные сведения см. в разделе [Приближается дата прекращения сопровождения HDI версии 3.3](hdinsight-component-versioning.md#hdinsight-windows-retirement).</span><span class="sxs-lookup"><span data-stu-id="cdb16-111">For more information, see [HDInsight retirement on Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).</span></span>
+  > <span data-ttu-id="16c6d-110">Linux — hello только операционную систему, используемую в HDInsight версии 3.4 или более поздней.</span><span class="sxs-lookup"><span data-stu-id="16c6d-110">Linux is hello only operating system used on HDInsight version 3.4 or greater.</span></span> <span data-ttu-id="16c6d-111">Дополнительные сведения см. в разделе [Приближается дата прекращения сопровождения HDI версии 3.3](hdinsight-component-versioning.md#hdinsight-windows-retirement).</span><span class="sxs-lookup"><span data-stu-id="16c6d-111">For more information, see [HDInsight retirement on Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).</span></span>
 
-* <span data-ttu-id="cdb16-112"><seg>
-  **Рабочая станция с Azure PowerShell**.</seg></span><span class="sxs-lookup"><span data-stu-id="cdb16-112">**A workstation with Azure PowerShell**.</span></span>
+* <span data-ttu-id="16c6d-112"><seg>
+  **Рабочая станция с Azure PowerShell**.</seg></span><span class="sxs-lookup"><span data-stu-id="16c6d-112">**A workstation with Azure PowerShell**.</span></span>
 
 [!INCLUDE [upgrade-powershell](../../includes/hdinsight-use-latest-powershell.md)]
 
-## <span data-ttu-id="cdb16-113"><a id="powershell"></a>Выполнение заданий Pig с помощью PowerShell</span><span class="sxs-lookup"><span data-stu-id="cdb16-113"><a id="powershell"></a>Run Pig jobs using PowerShell</span></span>
+## <span data-ttu-id="16c6d-113"><a id="powershell"></a>Выполнение заданий Pig с помощью PowerShell</span><span class="sxs-lookup"><span data-stu-id="16c6d-113"><a id="powershell"></a>Run Pig jobs using PowerShell</span></span>
 
-<span data-ttu-id="cdb16-114">Azure PowerShell предоставляет *командлеты* , позволяющие удаленно запускать задания Pig в HDInsight.</span><span class="sxs-lookup"><span data-stu-id="cdb16-114">Azure PowerShell provides *cmdlets* that allow you to remotely run Pig jobs on HDInsight.</span></span> <span data-ttu-id="cdb16-115">Во внутренних процессах PowerShell использует вызовы REST к [WebHCat](https://cwiki.apache.org/confluence/display/Hive/WebHCat), выполняющемуся на кластере HDInsight.</span><span class="sxs-lookup"><span data-stu-id="cdb16-115">Internally, PowerShell uses REST calls to [WebHCat](https://cwiki.apache.org/confluence/display/Hive/WebHCat) running on the HDInsight cluster.</span></span>
+<span data-ttu-id="16c6d-114">Azure PowerShell предоставляет *командлеты* , которые позволяют tooremotely запуска задания Pig в HDInsight.</span><span class="sxs-lookup"><span data-stu-id="16c6d-114">Azure PowerShell provides *cmdlets* that allow you tooremotely run Pig jobs on HDInsight.</span></span> <span data-ttu-id="16c6d-115">На внутреннем уровне PowerShell использует вызовы REST слишком[WebHCat](https://cwiki.apache.org/confluence/display/Hive/WebHCat) работающих в кластере HDInsight hello.</span><span class="sxs-lookup"><span data-stu-id="16c6d-115">Internally, PowerShell uses REST calls too[WebHCat](https://cwiki.apache.org/confluence/display/Hive/WebHCat) running on hello HDInsight cluster.</span></span>
 
-<span data-ttu-id="cdb16-116">При выполнении заданий Pig на удаленном кластере HDInsight используются следующие командлеты:</span><span class="sxs-lookup"><span data-stu-id="cdb16-116">The following cmdlets are used when running Pig jobs on a remote HDInsight cluster:</span></span>
+<span data-ttu-id="16c6d-116">Hello используются следующие командлеты для выполнения заданий Pig на удаленный кластер HDInsight:</span><span class="sxs-lookup"><span data-stu-id="16c6d-116">hello following cmdlets are used when running Pig jobs on a remote HDInsight cluster:</span></span>
 
-* <span data-ttu-id="cdb16-117">**Login-AzureRmAccount**— выполняет аутентификацию Azure PowerShell для подписки Azure.</span><span class="sxs-lookup"><span data-stu-id="cdb16-117">**Login-AzureRmAccount**: Authenticates Azure PowerShell to your Azure Subscription</span></span>
-* <span data-ttu-id="cdb16-118">**New-AzureRmHDInsightPigJobDefinition** — создает *определение задания* с использованием заданных операторов Pig Latin.</span><span class="sxs-lookup"><span data-stu-id="cdb16-118">**New-AzureRmHDInsightPigJobDefinition**: Creates a *job definition* by using the specified Pig Latin statements</span></span>
-* <span data-ttu-id="cdb16-119">**Start-AzureRmHDInsightJob**— отправляет определение задания в HDInsight, запускает задание и возвращает объект- *задание* , который можно использовать для проверки состояния задания.</span><span class="sxs-lookup"><span data-stu-id="cdb16-119">**Start-AzureRmHDInsightJob**: Sends the job definition to HDInsight, starts the job, and returns a *job* object that can be used to check the status of the job</span></span>
-* <span data-ttu-id="cdb16-120">**Wait-AzureRmHDInsightJob**— использует объект-задание для проверки состояния задания.</span><span class="sxs-lookup"><span data-stu-id="cdb16-120">**Wait-AzureRmHDInsightJob**: Uses the job object to check the status of the job.</span></span> <span data-ttu-id="cdb16-121">Он ждет завершения задания или превышения времени ожидания.</span><span class="sxs-lookup"><span data-stu-id="cdb16-121">It waits until the job has completed, or the wait time has been exceeded.</span></span>
-* <span data-ttu-id="cdb16-122">**Get-AzureRmHDInsightJobOutput**— используется для получения выходных данных задания.</span><span class="sxs-lookup"><span data-stu-id="cdb16-122">**Get-AzureRmHDInsightJobOutput**: Used to retrieve the output of the job</span></span>
+* <span data-ttu-id="16c6d-117">**AzureRmAccount входа**: tooyour Azure PowerShell выполняет проверку подлинности подписки Azure</span><span class="sxs-lookup"><span data-stu-id="16c6d-117">**Login-AzureRmAccount**: Authenticates Azure PowerShell tooyour Azure Subscription</span></span>
+* <span data-ttu-id="16c6d-118">**Новый AzureRmHDInsightPigJobDefinition**: создает *определение задания* с помощью hello указан инструкций Латинская Pig</span><span class="sxs-lookup"><span data-stu-id="16c6d-118">**New-AzureRmHDInsightPigJobDefinition**: Creates a *job definition* by using hello specified Pig Latin statements</span></span>
+* <span data-ttu-id="16c6d-119">**Начало AzureRmHDInsightJob**: отправляет tooHDInsight определение задания hello, запускает задание hello и возвращает *задания* объект, который может быть используется toocheck hello состояние задания hello</span><span class="sxs-lookup"><span data-stu-id="16c6d-119">**Start-AzureRmHDInsightJob**: Sends hello job definition tooHDInsight, starts hello job, and returns a *job* object that can be used toocheck hello status of hello job</span></span>
+* <span data-ttu-id="16c6d-120">**Ожидание AzureRmHDInsightJob**: использует hello объекта toocheck hello состояния заданий hello задания.</span><span class="sxs-lookup"><span data-stu-id="16c6d-120">**Wait-AzureRmHDInsightJob**: Uses hello job object toocheck hello status of hello job.</span></span> <span data-ttu-id="16c6d-121">Он ожидает завершения задания hello или превышения времени ожидания hello.</span><span class="sxs-lookup"><span data-stu-id="16c6d-121">It waits until hello job has completed, or hello wait time has been exceeded.</span></span>
+* <span data-ttu-id="16c6d-122">**Get-AzureRmHDInsightJobOutput**: использовать tooretrieve hello выходные данные задания hello</span><span class="sxs-lookup"><span data-stu-id="16c6d-122">**Get-AzureRmHDInsightJobOutput**: Used tooretrieve hello output of hello job</span></span>
 
-<span data-ttu-id="cdb16-123">Следующие шаги показывают, как использовать эти командлеты для выполнения задания в кластере HDInsight.</span><span class="sxs-lookup"><span data-stu-id="cdb16-123">The following steps demonstrate how to use these cmdlets to run a job on your HDInsight cluster.</span></span>
+<span data-ttu-id="16c6d-123">Hello следующие шаги показывают, как toouse toorun эти командлеты заданий в кластере HDInsight.</span><span class="sxs-lookup"><span data-stu-id="16c6d-123">hello following steps demonstrate how toouse these cmdlets toorun a job on your HDInsight cluster.</span></span>
 
-1. <span data-ttu-id="cdb16-124">С помощью редактора сохраните следующий код как **pigjob.ps1**.</span><span class="sxs-lookup"><span data-stu-id="cdb16-124">Using an editor, save the following code as **pigjob.ps1**.</span></span>
+1. <span data-ttu-id="16c6d-124">С помощью редактора, сохранить следующий код в виде hello **pigjob.ps1**.</span><span class="sxs-lookup"><span data-stu-id="16c6d-124">Using an editor, save hello following code as **pigjob.ps1**.</span></span>
 
-    <span data-ttu-id="cdb16-125">[!code-powershell[main](../../powershell_scripts/hdinsight/use-pig/use-pig.ps1?range=5-51)]</span><span class="sxs-lookup"><span data-stu-id="cdb16-125">[!code-powershell[main](../../powershell_scripts/hdinsight/use-pig/use-pig.ps1?range=5-51)]</span></span>
+    [!code-powershell[main](../../powershell_scripts/hdinsight/use-pig/use-pig.ps1?range=5-51)]
 
-1. <span data-ttu-id="cdb16-126">Откройте командную строку Windows PowerShell.</span><span class="sxs-lookup"><span data-stu-id="cdb16-126">Open a new Windows PowerShell command prompt.</span></span> <span data-ttu-id="cdb16-127">Перейдите к расположению файла **pigjob.ps1** , а затем используйте следующую команду для запуска сценария:</span><span class="sxs-lookup"><span data-stu-id="cdb16-127">Change directories to the location of the **pigjob.ps1** file, then use the following command to run the script:</span></span>
+1. <span data-ttu-id="16c6d-125">Откройте командную строку Windows PowerShell.</span><span class="sxs-lookup"><span data-stu-id="16c6d-125">Open a new Windows PowerShell command prompt.</span></span> <span data-ttu-id="16c6d-126">Изменить расположение каталогов toohello hello **pigjob.ps1** файла, а затем используйте следующий сценарий hello toorun hello:</span><span class="sxs-lookup"><span data-stu-id="16c6d-126">Change directories toohello location of hello **pigjob.ps1** file, then use hello following command toorun hello script:</span></span>
 
         .\pigjob.ps1
 
-    <span data-ttu-id="cdb16-128">Вам будет предложено войти в свою подписку Azure.</span><span class="sxs-lookup"><span data-stu-id="cdb16-128">You are prompted to log in to your Azure subscription.</span></span> <span data-ttu-id="cdb16-129">Затем вам будет предложено ввести данные HTTPS, имя и пароль учетной записи администратора для кластера HDInsight.</span><span class="sxs-lookup"><span data-stu-id="cdb16-129">Then, you are asked for the HTTPs/Admin account name and password for the HDInsight cluster.</span></span>
+    <span data-ttu-id="16c6d-127">Все запрашиваемые toolog в tooyour подписки Azure.</span><span class="sxs-lookup"><span data-stu-id="16c6d-127">You are prompted toolog in tooyour Azure subscription.</span></span> <span data-ttu-id="16c6d-128">После этого появится для hello HTTPs/Admin учетную запись и пароль для кластера HDInsight hello.</span><span class="sxs-lookup"><span data-stu-id="16c6d-128">Then, you are asked for hello HTTPs/Admin account name and password for hello HDInsight cluster.</span></span>
 
-2. <span data-ttu-id="cdb16-130">После завершения задания должна быть возвращена информация следующего вида.</span><span class="sxs-lookup"><span data-stu-id="cdb16-130">When the job completes, it should return information similar to the following text:</span></span>
+2. <span data-ttu-id="16c6d-129">После завершения задания hello, он должен возвращать сведения аналогичные toohello следующий текст:</span><span class="sxs-lookup"><span data-stu-id="16c6d-129">When hello job completes, it should return information similar toohello following text:</span></span>
 
-        Start the Pig job ...
-        Wait for the Pig job to complete ...
-        Display the standard output ...
+        Start hello Pig job ...
+        Wait for hello Pig job toocomplete ...
+        Display hello standard output ...
         (TRACE,816)
         (DEBUG,434)
         (INFO,96)
@@ -79,29 +79,29 @@ ms.lasthandoff: 07/11/2017
         (ERROR,6)
         (FATAL,2)
 
-## <span data-ttu-id="cdb16-131"><a id="troubleshooting"></a>Устранение неполадок</span><span class="sxs-lookup"><span data-stu-id="cdb16-131"><a id="troubleshooting"></a>Troubleshooting</span></span>
+## <span data-ttu-id="16c6d-130"><a id="troubleshooting"></a>Устранение неполадок</span><span class="sxs-lookup"><span data-stu-id="16c6d-130"><a id="troubleshooting"></a>Troubleshooting</span></span>
 
-<span data-ttu-id="cdb16-132">Если данные не возвращаются по завершении задания, возможно, во время обработки произошла ошибка.</span><span class="sxs-lookup"><span data-stu-id="cdb16-132">If no information is returned when the job completes, an error may have occurred during processing.</span></span> <span data-ttu-id="cdb16-133">Чтобы просмотреть информацию об ошибке для данного задания, добавьте следующую команду в конец файла **pigjob.ps1** , сохраните его, а затем запустите снова.</span><span class="sxs-lookup"><span data-stu-id="cdb16-133">To view error information for this job, add the following command to the end of the **pigjob.ps1** file, save it, and then run it again.</span></span>
+<span data-ttu-id="16c6d-131">Если данные не возвращаются при завершении задания hello, произошла ошибка во время обработки.</span><span class="sxs-lookup"><span data-stu-id="16c6d-131">If no information is returned when hello job completes, an error may have occurred during processing.</span></span> <span data-ttu-id="16c6d-132">tooview сведения об ошибке для данного задания, добавить hello, следующая команда toohello конец hello **pigjob.ps1** файл, сохраните его и затем снова запустите ее.</span><span class="sxs-lookup"><span data-stu-id="16c6d-132">tooview error information for this job, add hello following command toohello end of hello **pigjob.ps1** file, save it, and then run it again.</span></span>
 
-    # Print the output of the Pig job.
-    Write-Host "Display the standard error output ..." -ForegroundColor Green
+    # Print hello output of hello Pig job.
+    Write-Host "Display hello standard error output ..." -ForegroundColor Green
     Get-AzureRmHDInsightJobOutput `
             -Clustername $clusterName `
             -JobId $pigJob.JobId `
             -HttpCredential $creds `
             -DisplayOutputType StandardError
 
-<span data-ttu-id="cdb16-134">Будет возвращена информация, которая записывается в STDERR на сервере при запуске задания и может помочь определить причину сбоя задания.</span><span class="sxs-lookup"><span data-stu-id="cdb16-134">This returns the information that was written to STDERR on the server when you ran the job, and it may help determine why the job is failing.</span></span>
+<span data-ttu-id="16c6d-133">Возвращает сведения hello, куда было записано tooSTDERR на сервере hello при выполнении задания hello и может помочь определить, почему происходит сбой задания hello.</span><span class="sxs-lookup"><span data-stu-id="16c6d-133">This returns hello information that was written tooSTDERR on hello server when you ran hello job, and it may help determine why hello job is failing.</span></span>
 
-## <span data-ttu-id="cdb16-135"><a id="summary"></a>Сводка</span><span class="sxs-lookup"><span data-stu-id="cdb16-135"><a id="summary"></a>Summary</span></span>
-<span data-ttu-id="cdb16-136">Как можно видеть, Azure PowerShell позволяет с легкостью выполнять задания Pig в кластере HDInsight, отслеживать состояние задания и получать выходные данные.</span><span class="sxs-lookup"><span data-stu-id="cdb16-136">As you can see, Azure PowerShell provides an easy way to run Pig jobs on an HDInsight cluster, monitor the job status, and retrieve the output.</span></span>
+## <span data-ttu-id="16c6d-134"><a id="summary"></a>Сводка</span><span class="sxs-lookup"><span data-stu-id="16c6d-134"><a id="summary"></a>Summary</span></span>
+<span data-ttu-id="16c6d-135">Как видите, Azure PowerShell предоставляет toorun простой способ задания Pig в кластер HDInsight, состояние задания монитора hello и получить hello выход.</span><span class="sxs-lookup"><span data-stu-id="16c6d-135">As you can see, Azure PowerShell provides an easy way toorun Pig jobs on an HDInsight cluster, monitor hello job status, and retrieve hello output.</span></span>
 
-## <span data-ttu-id="cdb16-137"><a id="nextsteps"></a>Дальнейшие действия</span><span class="sxs-lookup"><span data-stu-id="cdb16-137"><a id="nextsteps"></a>Next steps</span></span>
-<span data-ttu-id="cdb16-138">Общая информация о Pig в HDInsight:</span><span class="sxs-lookup"><span data-stu-id="cdb16-138">For general information about Pig in HDInsight:</span></span>
+## <span data-ttu-id="16c6d-136"><a id="nextsteps"></a>Дальнейшие действия</span><span class="sxs-lookup"><span data-stu-id="16c6d-136"><a id="nextsteps"></a>Next steps</span></span>
+<span data-ttu-id="16c6d-137">Общая информация о Pig в HDInsight:</span><span class="sxs-lookup"><span data-stu-id="16c6d-137">For general information about Pig in HDInsight:</span></span>
 
-* [<span data-ttu-id="cdb16-139">Использование Pig с Hadoop в HDInsight</span><span class="sxs-lookup"><span data-stu-id="cdb16-139">Use Pig with Hadoop on HDInsight</span></span>](hdinsight-use-pig.md)
+* [<span data-ttu-id="16c6d-138">Использование Pig с Hadoop в HDInsight</span><span class="sxs-lookup"><span data-stu-id="16c6d-138">Use Pig with Hadoop on HDInsight</span></span>](hdinsight-use-pig.md)
 
-<span data-ttu-id="cdb16-140">Дополнительная информация о других способах работы с Hadoop в HDInsight:</span><span class="sxs-lookup"><span data-stu-id="cdb16-140">For information about other ways you can work with Hadoop on HDInsight:</span></span>
+<span data-ttu-id="16c6d-139">Дополнительная информация о других способах работы с Hadoop в HDInsight:</span><span class="sxs-lookup"><span data-stu-id="16c6d-139">For information about other ways you can work with Hadoop on HDInsight:</span></span>
 
-* [<span data-ttu-id="cdb16-141">Использование Hive с Hadoop в HDInsight</span><span class="sxs-lookup"><span data-stu-id="cdb16-141">Use Hive with Hadoop on HDInsight</span></span>](hdinsight-use-hive.md)
-* [<span data-ttu-id="cdb16-142">Использование MapReduce с Hadoop в HDInsight</span><span class="sxs-lookup"><span data-stu-id="cdb16-142">Use MapReduce with Hadoop on HDInsight</span></span>](hdinsight-use-mapreduce.md)
+* [<span data-ttu-id="16c6d-140">Использование Hive с Hadoop в HDInsight</span><span class="sxs-lookup"><span data-stu-id="16c6d-140">Use Hive with Hadoop on HDInsight</span></span>](hdinsight-use-hive.md)
+* [<span data-ttu-id="16c6d-141">Использование MapReduce с Hadoop в HDInsight</span><span class="sxs-lookup"><span data-stu-id="16c6d-141">Use MapReduce with Hadoop on HDInsight</span></span>](hdinsight-use-mapreduce.md)

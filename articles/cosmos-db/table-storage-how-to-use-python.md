@@ -1,6 +1,6 @@
 ---
-title: "Как использовать хранилище таблиц Azure с Python | Документация Майкрософт"
-description: "Хранение структурированных данных в облаке в хранилище таблиц Azure (хранилище данных NoSQL)."
+title: "aaaHow toouse хранилище таблиц Azure с Python | Документы Microsoft"
+description: "Хранения структурированных данных в облаке hello, с помощью хранилища таблиц Azure, хранилище данных NoSQL."
 services: cosmos-db
 documentationcenter: python
 author: mimig1
@@ -14,38 +14,38 @@ ms.devlang: python
 ms.topic: article
 ms.date: 05/16/2017
 ms.author: mimig
-ms.openlocfilehash: 0c46f04786ba4b62bd7ca22c5e25643123e6e136
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 3382fcd5667a93d5533b5f8fad1d3d1c27f23482
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-use-table-storage-in-python"></a><span data-ttu-id="c79e6-103">Как использовать хранилище таблиц в Python</span><span class="sxs-lookup"><span data-stu-id="c79e6-103">How to use Table storage in Python</span></span>
+# <a name="how-toouse-table-storage-in-python"></a><span data-ttu-id="f4eb2-103">Как toouse хранилища таблиц на Python</span><span class="sxs-lookup"><span data-stu-id="f4eb2-103">How toouse Table storage in Python</span></span>
 
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
 [!INCLUDE [storage-table-cosmos-db-langsoon-tip-include](../../includes/storage-table-cosmos-db-langsoon-tip-include.md)]
 
-<span data-ttu-id="c79e6-104">В этом руководстве объясняется, как реализовать типичные сценарии хранилища таблиц Azure в Python с помощью [пакета SDK для службы хранилища Microsoft Azure для Python](https://github.com/Azure/azure-storage-python).</span><span class="sxs-lookup"><span data-stu-id="c79e6-104">This guide shows you how to perform common Azure Table storage scenarios in Python using the [Microsoft Azure Storage SDK for Python](https://github.com/Azure/azure-storage-python).</span></span> <span data-ttu-id="c79e6-105">Здесь описаны такие сценарии, как создание и удаление таблицы, вставка и запрос сущностей.</span><span class="sxs-lookup"><span data-stu-id="c79e6-105">The scenarios covered include creating and deleting a table, and inserting and querying entities.</span></span>
+<span data-ttu-id="f4eb2-104">В этом руководстве показано, как hello распространенных сценариев хранилища таблиц Azure tooperform в Python с помощью [пакет SDK хранилища Microsoft Azure для Python](https://github.com/Azure/azure-storage-python).</span><span class="sxs-lookup"><span data-stu-id="f4eb2-104">This guide shows you how tooperform common Azure Table storage scenarios in Python using hello [Microsoft Azure Storage SDK for Python](https://github.com/Azure/azure-storage-python).</span></span> <span data-ttu-id="f4eb2-105">Hello сценарии включают создание и удаление таблицы, вставка и выполнения запросов к сущностям.</span><span class="sxs-lookup"><span data-stu-id="f4eb2-105">hello scenarios covered include creating and deleting a table, and inserting and querying entities.</span></span>
 
-<span data-ttu-id="c79e6-106">Работая над сценариями в этом руководстве, вы можете использовать в качестве справки [пакет SDK для службы хранилища Microsoft Azure для Python](https://azure-storage.readthedocs.io/en/latest/index.html).</span><span class="sxs-lookup"><span data-stu-id="c79e6-106">While working through the scenarios in this tutorial, you may wish to refer to the [Azure Storage SDK for Python API reference](https://azure-storage.readthedocs.io/en/latest/index.html).</span></span>
+<span data-ttu-id="f4eb2-106">При одновременной ликвидации hello сценарии в этом учебнике вы можете toorefer toohello [пакет SDK хранилища Azure для Python API-ссылка](https://azure-storage.readthedocs.io/en/latest/index.html).</span><span class="sxs-lookup"><span data-stu-id="f4eb2-106">While working through hello scenarios in this tutorial, you may wish toorefer toohello [Azure Storage SDK for Python API reference](https://azure-storage.readthedocs.io/en/latest/index.html).</span></span>
 
 [!INCLUDE [storage-table-concepts-include](../../includes/storage-table-concepts-include.md)]
 
 [!INCLUDE [storage-create-account-include](../../includes/storage-create-account-include.md)]
 
-## <a name="install-the-azure-storage-sdk-for-python"></a><span data-ttu-id="c79e6-107">Установка пакета SDK для службы хранилища Microsoft Azure для Python</span><span class="sxs-lookup"><span data-stu-id="c79e6-107">Install the Azure Storage SDK for Python</span></span>
+## <a name="install-hello-azure-storage-sdk-for-python"></a><span data-ttu-id="f4eb2-107">Установка hello пакет SDK хранилища Azure для Python</span><span class="sxs-lookup"><span data-stu-id="f4eb2-107">Install hello Azure Storage SDK for Python</span></span>
 
-<span data-ttu-id="c79e6-108">После создания учетной записи хранения установите [пакет SDK для службы хранилища Microsoft Azure для Python](https://github.com/Azure/azure-storage-python).</span><span class="sxs-lookup"><span data-stu-id="c79e6-108">Once you've created a storage account, your next step is to install the [Microsoft Azure Storage SDK for Python](https://github.com/Azure/azure-storage-python).</span></span> <span data-ttu-id="c79e6-109">Дополнительные сведения по установке пакета SDK см. в файле [README.rst](https://github.com/Azure/azure-storage-python/blob/master/README.rst) в репозитории GitHub Storage SDK for Python (пакет SDK для службы хранилища для Python).</span><span class="sxs-lookup"><span data-stu-id="c79e6-109">For details on installing the SDK, refer to the [README.rst](https://github.com/Azure/azure-storage-python/blob/master/README.rst) file in the Storage SDK for Python repository on GitHub.</span></span>
+<span data-ttu-id="f4eb2-108">После создания учетной записи хранилища, следующим шагом является tooinstall hello [пакет SDK хранилища Microsoft Azure для Python](https://github.com/Azure/azure-storage-python).</span><span class="sxs-lookup"><span data-stu-id="f4eb2-108">Once you've created a storage account, your next step is tooinstall hello [Microsoft Azure Storage SDK for Python](https://github.com/Azure/azure-storage-python).</span></span> <span data-ttu-id="f4eb2-109">Для получения сведений об установке hello SDK, см. toohello [README.rst](https://github.com/Azure/azure-storage-python/blob/master/README.rst) файл hello SDK хранилища для репозитория Python на GitHub.</span><span class="sxs-lookup"><span data-stu-id="f4eb2-109">For details on installing hello SDK, refer toohello [README.rst](https://github.com/Azure/azure-storage-python/blob/master/README.rst) file in hello Storage SDK for Python repository on GitHub.</span></span>
 
-## <a name="create-a-table"></a><span data-ttu-id="c79e6-110">Создание таблицы</span><span class="sxs-lookup"><span data-stu-id="c79e6-110">Create a table</span></span>
+## <a name="create-a-table"></a><span data-ttu-id="f4eb2-110">Создание таблицы</span><span class="sxs-lookup"><span data-stu-id="f4eb2-110">Create a table</span></span>
 
-<span data-ttu-id="c79e6-111">Для работы со службой таблиц Azure в Python необходимо импортировать модуль [TableService][py_TableService].</span><span class="sxs-lookup"><span data-stu-id="c79e6-111">To work with the Azure Table service in Python, you must import the [TableService][py_TableService] module.</span></span> <span data-ttu-id="c79e6-112">Так как вы будете работать с сущностями в таблице, вам также нужен класс [Entity][py_Entity].</span><span class="sxs-lookup"><span data-stu-id="c79e6-112">Since you'll be working with Table entities, you also need the [Entity][py_Entity] class.</span></span> <span data-ttu-id="c79e6-113">Добавьте следующий код в начало файла Python, чтобы импортировать модуль и класс:</span><span class="sxs-lookup"><span data-stu-id="c79e6-113">Add this code near the top your Python file to import both:</span></span>
+<span data-ttu-id="f4eb2-111">toowork с hello Python службы таблиц Azure, необходимо импортировать hello [TableService] [ py_TableService] модуля.</span><span class="sxs-lookup"><span data-stu-id="f4eb2-111">toowork with hello Azure Table service in Python, you must import hello [TableService][py_TableService] module.</span></span> <span data-ttu-id="f4eb2-112">Поскольку вы будете работать с сущностями в таблице, необходимо также hello [сущности] [ py_Entity] класса.</span><span class="sxs-lookup"><span data-stu-id="f4eb2-112">Since you'll be working with Table entities, you also need hello [Entity][py_Entity] class.</span></span> <span data-ttu-id="f4eb2-113">Добавьте следующий код верхней hello вашей Python файл tooimport оба.</span><span class="sxs-lookup"><span data-stu-id="f4eb2-113">Add this code near hello top your Python file tooimport both:</span></span>
 
 ```python
 from azure.storage.table import TableService, Entity
 ```
 
-<span data-ttu-id="c79e6-114">Создайте объект [TableService][py_TableService], передав ключ учетной записи и имя учетной записи хранения.</span><span class="sxs-lookup"><span data-stu-id="c79e6-114">Create a [TableService][py_TableService] object, passing in your storage account name and account key.</span></span> <span data-ttu-id="c79e6-115">Замените `myaccount` и `mykey` именем и ключом своей учетной записи и вызовите метод [create_table][py_create_table], чтобы создать таблицу в службе хранилища Azure.</span><span class="sxs-lookup"><span data-stu-id="c79e6-115">Replace `myaccount` and `mykey` with your account name and key, and call [create_table][py_create_table] to create the table in Azure Storage.</span></span>
+<span data-ttu-id="f4eb2-114">Создайте объект [TableService][py_TableService], передав ключ учетной записи и имя учетной записи хранения.</span><span class="sxs-lookup"><span data-stu-id="f4eb2-114">Create a [TableService][py_TableService] object, passing in your storage account name and account key.</span></span> <span data-ttu-id="f4eb2-115">Замените `myaccount` и `mykey` имя учетной записи и ключа и вызова [create_table] [ py_create_table] toocreate hello таблица в хранилище Azure.</span><span class="sxs-lookup"><span data-stu-id="f4eb2-115">Replace `myaccount` and `mykey` with your account name and key, and call [create_table][py_create_table] toocreate hello table in Azure Storage.</span></span>
 
 ```python
 table_service = TableService(account_name='myaccount', account_key='mykey')
@@ -53,48 +53,48 @@ table_service = TableService(account_name='myaccount', account_key='mykey')
 table_service.create_table('tasktable')
 ```
 
-## <a name="add-an-entity-to-a-table"></a><span data-ttu-id="c79e6-116">Добавление сущности в таблицу</span><span class="sxs-lookup"><span data-stu-id="c79e6-116">Add an entity to a table</span></span>
+## <a name="add-an-entity-tooa-table"></a><span data-ttu-id="f4eb2-116">Добавьте таблицу tooa сущности</span><span class="sxs-lookup"><span data-stu-id="f4eb2-116">Add an entity tooa table</span></span>
 
-<span data-ttu-id="c79e6-117">Чтобы добавить сущность, сначала создайте объект, который представляет сущность, затем передайте объект в метод [TableService][py_TableService].[insert_entity][py_insert_entity].</span><span class="sxs-lookup"><span data-stu-id="c79e6-117">To add an entity, you first create an object that represents your entity, then pass the object to the [TableService][py_TableService].[insert_entity][py_insert_entity] method.</span></span> <span data-ttu-id="c79e6-118">Объект сущности может быть словарем или объектом типа [Entity][py_Entity]. Он определяет имена и значения свойств сущности.</span><span class="sxs-lookup"><span data-stu-id="c79e6-118">The entity object can be a dictionary or an object of type [Entity][py_Entity], and defines your entity's property names and values.</span></span> <span data-ttu-id="c79e6-119">Каждая сущность должна включать требуемые свойства [PartitionKey и RowKey](#partitionkey-and-rowkey) помимо других свойств, определенных для сущности.</span><span class="sxs-lookup"><span data-stu-id="c79e6-119">Every entity must include the required [PartitionKey and RowKey](#partitionkey-and-rowkey) properties, in addition to any other properties you define for the entity.</span></span>
+<span data-ttu-id="f4eb2-117">tooadd сущность сначала создать объект, представляющий сущности, затем передайте hello объекта toohello [TableService][py_TableService].[ insert_entity] [ py_insert_entity] метод.</span><span class="sxs-lookup"><span data-stu-id="f4eb2-117">tooadd an entity, you first create an object that represents your entity, then pass hello object toohello [TableService][py_TableService].[insert_entity][py_insert_entity] method.</span></span> <span data-ttu-id="f4eb2-118">Hello объекта сущности может быть словарь или объект типа [сущности][py_Entity]и определяет вашего лица имена и значения свойств.</span><span class="sxs-lookup"><span data-stu-id="f4eb2-118">hello entity object can be a dictionary or an object of type [Entity][py_Entity], and defines your entity's property names and values.</span></span> <span data-ttu-id="f4eb2-119">Каждой сущности должны содержать необходимые hello [PartitionKey и RowKey](#partitionkey-and-rowkey) свойства, в добавление tooany другие свойства необходимо указать для сущности hello.</span><span class="sxs-lookup"><span data-stu-id="f4eb2-119">Every entity must include hello required [PartitionKey and RowKey](#partitionkey-and-rowkey) properties, in addition tooany other properties you define for hello entity.</span></span>
 
-<span data-ttu-id="c79e6-120">В этом примере создается объект словаря, который представляет сущность, а затем передает его в метод [insert_entity][py_insert_entity], чтобы добавить его в таблицу:</span><span class="sxs-lookup"><span data-stu-id="c79e6-120">This example creates a dictionary object representing an entity, then passes it to the [insert_entity][py_insert_entity] method to add it to the table:</span></span>
+<span data-ttu-id="f4eb2-120">В этом примере создается объект словаря представляет сущность, затем передает его toohello [insert_entity] [ py_insert_entity] tooadd метод его toohello таблицы:</span><span class="sxs-lookup"><span data-stu-id="f4eb2-120">This example creates a dictionary object representing an entity, then passes it toohello [insert_entity][py_insert_entity] method tooadd it toohello table:</span></span>
 
 ```python
-task = {'PartitionKey': 'tasksSeattle', 'RowKey': '001', 'description' : 'Take out the trash', 'priority' : 200}
+task = {'PartitionKey': 'tasksSeattle', 'RowKey': '001', 'description' : 'Take out hello trash', 'priority' : 200}
 table_service.insert_entity('tasktable', task)
 ```
 
-<span data-ttu-id="c79e6-121">В этом примере создается объект [Entity][py_Entity], а затем передает его в метод [insert_entity][py_insert_entity], чтобы добавить его в таблицу:</span><span class="sxs-lookup"><span data-stu-id="c79e6-121">This example creates an [Entity][py_Entity] object, then passes it to the [insert_entity][py_insert_entity] method to add it to the table:</span></span>
+<span data-ttu-id="f4eb2-121">В этом примере создается [сущности] [ py_Entity] объекта, а затем передает его toohello [insert_entity] [ py_insert_entity] tooadd метод его toohello таблицы:</span><span class="sxs-lookup"><span data-stu-id="f4eb2-121">This example creates an [Entity][py_Entity] object, then passes it toohello [insert_entity][py_insert_entity] method tooadd it toohello table:</span></span>
 
 ```python
 task = Entity()
 task.PartitionKey = 'tasksSeattle'
 task.RowKey = '002'
-task.description = 'Wash the car'
+task.description = 'Wash hello car'
 task.priority = 100
 table_service.insert_entity('tasktable', task)
 ```
 
-### <a name="partitionkey-and-rowkey"></a><span data-ttu-id="c79e6-122">PartitionKey и RowKey</span><span class="sxs-lookup"><span data-stu-id="c79e6-122">PartitionKey and RowKey</span></span>
+### <a name="partitionkey-and-rowkey"></a><span data-ttu-id="f4eb2-122">PartitionKey и RowKey</span><span class="sxs-lookup"><span data-stu-id="f4eb2-122">PartitionKey and RowKey</span></span>
 
-<span data-ttu-id="c79e6-123">Для каждой сущности необходимо указать свойства **PartitionKey** и **RowKey**.</span><span class="sxs-lookup"><span data-stu-id="c79e6-123">You must specify both a **PartitionKey** and a **RowKey** property for every entity.</span></span> <span data-ttu-id="c79e6-124">Это уникальные идентификаторы сущностей, так как вместе они формируют первичный ключ сущности.</span><span class="sxs-lookup"><span data-stu-id="c79e6-124">These are the unique identifiers of your entities, as together they form the primary key of an entity.</span></span> <span data-ttu-id="c79e6-125">С помощью этих значений можно отправлять запросы быстрее, чем к другим свойствам, так как индексируются только эти свойства.</span><span class="sxs-lookup"><span data-stu-id="c79e6-125">You can query using these values much faster than you can query any other entity properties because only these properties are indexed.</span></span>
+<span data-ttu-id="f4eb2-123">Для каждой сущности необходимо указать свойства **PartitionKey** и **RowKey**.</span><span class="sxs-lookup"><span data-stu-id="f4eb2-123">You must specify both a **PartitionKey** and a **RowKey** property for every entity.</span></span> <span data-ttu-id="f4eb2-124">Это hello уникальные идентификаторы объектов, как вместе они формируют hello первичного ключа сущности.</span><span class="sxs-lookup"><span data-stu-id="f4eb2-124">These are hello unique identifiers of your entities, as together they form hello primary key of an entity.</span></span> <span data-ttu-id="f4eb2-125">С помощью этих значений можно отправлять запросы быстрее, чем к другим свойствам, так как индексируются только эти свойства.</span><span class="sxs-lookup"><span data-stu-id="f4eb2-125">You can query using these values much faster than you can query any other entity properties because only these properties are indexed.</span></span>
 
-<span data-ttu-id="c79e6-126">Служба таблиц использует **PartitionKey** для интеллектуального распределения сущностей таблицы по узлам хранилища.</span><span class="sxs-lookup"><span data-stu-id="c79e6-126">The Table service uses **PartitionKey** to intelligently distribute table entities across storage nodes.</span></span> <span data-ttu-id="c79e6-127">Сущности с одним значением **PartitionKey** хранятся на одном узле.</span><span class="sxs-lookup"><span data-stu-id="c79e6-127">Entities that have the same  **PartitionKey** are stored on the same node.</span></span> <span data-ttu-id="c79e6-128">**RowKey** — это уникальный идентификатор сущности в разделе, которому она принадлежит.</span><span class="sxs-lookup"><span data-stu-id="c79e6-128">**RowKey** is the unique ID of the entity within the partition it belongs to.</span></span>
+<span data-ttu-id="f4eb2-126">Здравствуйте, служба таблиц использует **PartitionKey** toointelligently распределения таблицы сущностей по узлам хранилища.</span><span class="sxs-lookup"><span data-stu-id="f4eb2-126">hello Table service uses **PartitionKey** toointelligently distribute table entities across storage nodes.</span></span> <span data-ttu-id="f4eb2-127">Сущности, которые hello же **PartitionKey** хранятся на hello того же узла.</span><span class="sxs-lookup"><span data-stu-id="f4eb2-127">Entities that have hello same  **PartitionKey** are stored on hello same node.</span></span> <span data-ttu-id="f4eb2-128">**RowKey** hello уникальным идентификатором hello сущности внутри раздела hello, он принадлежит.</span><span class="sxs-lookup"><span data-stu-id="f4eb2-128">**RowKey** is hello unique ID of hello entity within hello partition it belongs to.</span></span>
 
-## <a name="update-an-entity"></a><span data-ttu-id="c79e6-129">Обновление сущности</span><span class="sxs-lookup"><span data-stu-id="c79e6-129">Update an entity</span></span>
+## <a name="update-an-entity"></a><span data-ttu-id="f4eb2-129">Обновление сущности</span><span class="sxs-lookup"><span data-stu-id="f4eb2-129">Update an entity</span></span>
 
-<span data-ttu-id="c79e6-130">Чтобы обновить все значения свойств сущности, вызовите метод [update_entity][py_update_entity].</span><span class="sxs-lookup"><span data-stu-id="c79e6-130">To update all of an entity's property values, call the [update_entity][py_update_entity] method.</span></span> <span data-ttu-id="c79e6-131">Этот пример показывает, как заменить сущность обновленной версией:</span><span class="sxs-lookup"><span data-stu-id="c79e6-131">This example shows how to replace an existing entity with an updated version:</span></span>
+<span data-ttu-id="f4eb2-130">tooupdate всех значений свойств сущности, вызовите hello [update_entity] [ py_update_entity] метод.</span><span class="sxs-lookup"><span data-stu-id="f4eb2-130">tooupdate all of an entity's property values, call hello [update_entity][py_update_entity] method.</span></span> <span data-ttu-id="f4eb2-131">В этом примере показано, как tooreplace существующую сущность с обновленной версии:</span><span class="sxs-lookup"><span data-stu-id="f4eb2-131">This example shows how tooreplace an existing entity with an updated version:</span></span>
 
 ```python
-task = {'PartitionKey': 'tasksSeattle', 'RowKey': '001', 'description' : 'Take out the garbage', 'priority' : 250}
+task = {'PartitionKey': 'tasksSeattle', 'RowKey': '001', 'description' : 'Take out hello garbage', 'priority' : 250}
 table_service.update_entity('tasktable', task)
 ```
 
-<span data-ttu-id="c79e6-132">Если обновляемая сущность больше не существует, операция обновления завершается ошибкой.</span><span class="sxs-lookup"><span data-stu-id="c79e6-132">If the entity that is being updated doesn't already exist, then the update operation will fail.</span></span> <span data-ttu-id="c79e6-133">Если вы хотите сохранить сущность независимо от того, существует она или нет, используйте метод [insert_or_replace_entity][py_insert_or_replace_entity].</span><span class="sxs-lookup"><span data-stu-id="c79e6-133">If you want to store an entity whether it exists or not, use [insert_or_replace_entity][py_insert_or_replace_entity].</span></span> <span data-ttu-id="c79e6-134">В следующем примере первый вызов заменит существующую сущность.</span><span class="sxs-lookup"><span data-stu-id="c79e6-134">In the following example, the first call will replace the existing entity.</span></span> <span data-ttu-id="c79e6-135">Второй вызов вставит новую сущность, так как в таблице нет сущности с указанными свойствами PartitionKey и RowKey.</span><span class="sxs-lookup"><span data-stu-id="c79e6-135">The second call will insert a new entity, since no entity with the specified PartitionKey and RowKey exists in the table.</span></span>
+<span data-ttu-id="f4eb2-132">Если hello сущности, которая обновляется еще не существует, то hello операция обновления завершится ошибкой.</span><span class="sxs-lookup"><span data-stu-id="f4eb2-132">If hello entity that is being updated doesn't already exist, then hello update operation will fail.</span></span> <span data-ttu-id="f4eb2-133">Toostore сущность ли он существует, или нет, используйте [insert_or_replace_entity][py_insert_or_replace_entity].</span><span class="sxs-lookup"><span data-stu-id="f4eb2-133">If you want toostore an entity whether it exists or not, use [insert_or_replace_entity][py_insert_or_replace_entity].</span></span> <span data-ttu-id="f4eb2-134">В следующем примере hello первый вызов hello заменяет существующую сущность hello.</span><span class="sxs-lookup"><span data-stu-id="f4eb2-134">In hello following example, hello first call will replace hello existing entity.</span></span> <span data-ttu-id="f4eb2-135">При втором вызове Hello вставит новую сущность, так как сущность с hello указан PartitionKey и RowKey существует в таблице hello.</span><span class="sxs-lookup"><span data-stu-id="f4eb2-135">hello second call will insert a new entity, since no entity with hello specified PartitionKey and RowKey exists in hello table.</span></span>
 
 ```python
-# Replace the entity created earlier
-task = {'PartitionKey': 'tasksSeattle', 'RowKey': '001', 'description' : 'Take out the garbage again', 'priority' : 250}
+# Replace hello entity created earlier
+task = {'PartitionKey': 'tasksSeattle', 'RowKey': '001', 'description' : 'Take out hello garbage again', 'priority' : 250}
 table_service.insert_or_replace_entity('tasktable', task)
 
 # Insert a new entity
@@ -103,38 +103,38 @@ table_service.insert_or_replace_entity('tasktable', task)
 ```
 
 > [!TIP]
-> <span data-ttu-id="c79e6-136">Метод [update_entity][py_update_entity] заменяет все свойства и значения сущности. Его также можно использовать для удаления свойства из сущности.</span><span class="sxs-lookup"><span data-stu-id="c79e6-136">The [update_entity][py_update_entity] method replaces all properties and values of an existing entity, which you can also use to remove properties from an existing entity.</span></span> <span data-ttu-id="c79e6-137">Чтобы обновить сущность с помощью новых или измененных значений свойств без полной замены сущности используйте метод [merge_entity][py_merge_entity].</span><span class="sxs-lookup"><span data-stu-id="c79e6-137">You can use the [merge_entity][py_merge_entity] method to update an existing entity with new or modified property values without completely replacing the entity.</span></span>
+> <span data-ttu-id="f4eb2-136">Hello [update_entity] [ py_update_entity] метод заменяет все свойства и значения существующей сущности, который затем можно также использовать свойства tooremove из имеющейся сущности.</span><span class="sxs-lookup"><span data-stu-id="f4eb2-136">hello [update_entity][py_update_entity] method replaces all properties and values of an existing entity, which you can also use tooremove properties from an existing entity.</span></span> <span data-ttu-id="f4eb2-137">Можно использовать hello [merge_entity] [ py_merge_entity] tooupdate метод существующей сущности со значениями новых или измененных свойств без полной замены hello сущности.</span><span class="sxs-lookup"><span data-stu-id="f4eb2-137">You can use hello [merge_entity][py_merge_entity] method tooupdate an existing entity with new or modified property values without completely replacing hello entity.</span></span>
 
-## <a name="modify-multiple-entities"></a><span data-ttu-id="c79e6-138">Изменение нескольких сущностей</span><span class="sxs-lookup"><span data-stu-id="c79e6-138">Modify multiple entities</span></span>
+## <a name="modify-multiple-entities"></a><span data-ttu-id="f4eb2-138">Изменение нескольких сущностей</span><span class="sxs-lookup"><span data-stu-id="f4eb2-138">Modify multiple entities</span></span>
 
-<span data-ttu-id="c79e6-139">Для атомарной обработки запроса службой таблиц можно отправить сразу несколько операций в пакете.</span><span class="sxs-lookup"><span data-stu-id="c79e6-139">To ensure the atomic processing of a request by the Table service, you can submit multiple operations together in a batch.</span></span> <span data-ttu-id="c79e6-140">Сначала используйте класс [TableBatch][py_TableBatch], чтобы добавить несколько операций в одном пакете.</span><span class="sxs-lookup"><span data-stu-id="c79e6-140">First, use the [TableBatch][py_TableBatch] class to add multiple operations to a single batch.</span></span> <span data-ttu-id="c79e6-141">Затем вызовите метод [TableService][py_TableService].[commit_batch][py_commit_batch], чтобы отправить операции в атомарной операции.</span><span class="sxs-lookup"><span data-stu-id="c79e6-141">Next, call [TableService][py_TableService].[commit_batch][py_commit_batch] to submit the operations in an atomic operation.</span></span> <span data-ttu-id="c79e6-142">Все сущности, которые должны быть изменены в пакете, должны находиться в одном разделе.</span><span class="sxs-lookup"><span data-stu-id="c79e6-142">All entities to be modified in batch must be in the same partition.</span></span>
+<span data-ttu-id="f4eb2-139">tooensure Здравствуйте atomic обработки запроса службой таблиц hello, вы можете отправить несколько операций вместе в одном пакете.</span><span class="sxs-lookup"><span data-stu-id="f4eb2-139">tooensure hello atomic processing of a request by hello Table service, you can submit multiple operations together in a batch.</span></span> <span data-ttu-id="f4eb2-140">Во-первых, используйте hello [TableBatch] [ py_TableBatch] класса tooadd один пакет нескольких операций tooa.</span><span class="sxs-lookup"><span data-stu-id="f4eb2-140">First, use hello [TableBatch][py_TableBatch] class tooadd multiple operations tooa single batch.</span></span> <span data-ttu-id="f4eb2-141">Затем вызовите [TableService][py_TableService].[ commit_batch] [ py_commit_batch] toosubmit операции hello в атомарной операции.</span><span class="sxs-lookup"><span data-stu-id="f4eb2-141">Next, call [TableService][py_TableService].[commit_batch][py_commit_batch] toosubmit hello operations in an atomic operation.</span></span> <span data-ttu-id="f4eb2-142">Все сущности toobe, изменения в пакете должны находиться в hello одной секции.</span><span class="sxs-lookup"><span data-stu-id="f4eb2-142">All entities toobe modified in batch must be in hello same partition.</span></span>
 
-<span data-ttu-id="c79e6-143">В этом примере показано добавление двух сущностей в пакете:</span><span class="sxs-lookup"><span data-stu-id="c79e6-143">This example adds two entities together in a batch:</span></span>
+<span data-ttu-id="f4eb2-143">В этом примере показано добавление двух сущностей в пакете:</span><span class="sxs-lookup"><span data-stu-id="f4eb2-143">This example adds two entities together in a batch:</span></span>
 
 ```python
 from azure.storage.table import TableBatch
 batch = TableBatch()
 task004 = {'PartitionKey': 'tasksSeattle', 'RowKey': '004', 'description' : 'Go grocery shopping', 'priority' : 400}
-task005 = {'PartitionKey': 'tasksSeattle', 'RowKey': '005', 'description' : 'Clean the bathroom', 'priority' : 100}
+task005 = {'PartitionKey': 'tasksSeattle', 'RowKey': '005', 'description' : 'Clean hello bathroom', 'priority' : 100}
 batch.insert_entity(task004)
 batch.insert_entity(task005)
 table_service.commit_batch('tasktable', batch)
 ```
 
-<span data-ttu-id="c79e6-144">Для пакетов также можно использовать синтаксис диспетчера контекста:</span><span class="sxs-lookup"><span data-stu-id="c79e6-144">Batches can also be used with the context manager syntax:</span></span>
+<span data-ttu-id="f4eb2-144">Пакеты также может использоваться с синтаксисом диспетчера контекста hello:</span><span class="sxs-lookup"><span data-stu-id="f4eb2-144">Batches can also be used with hello context manager syntax:</span></span>
 
 ```python
 task006 = {'PartitionKey': 'tasksSeattle', 'RowKey': '006', 'description' : 'Go grocery shopping', 'priority' : 400}
-task007 = {'PartitionKey': 'tasksSeattle', 'RowKey': '007', 'description' : 'Clean the bathroom', 'priority' : 100}
+task007 = {'PartitionKey': 'tasksSeattle', 'RowKey': '007', 'description' : 'Clean hello bathroom', 'priority' : 100}
 
 with table_service.batch('tasktable') as batch:
     batch.insert_entity(task006)
     batch.insert_entity(task007)
 ```
 
-## <a name="query-for-an-entity"></a><span data-ttu-id="c79e6-145">Запрос сущности</span><span class="sxs-lookup"><span data-stu-id="c79e6-145">Query for an entity</span></span>
+## <a name="query-for-an-entity"></a><span data-ttu-id="f4eb2-145">Запрос сущности</span><span class="sxs-lookup"><span data-stu-id="f4eb2-145">Query for an entity</span></span>
 
-<span data-ttu-id="c79e6-146">Чтобы запросить сущность в таблице, передайте ее свойства PartitionKey и RowKey в метод [TableService][py_TableService].[get_entity][py_get_entity].</span><span class="sxs-lookup"><span data-stu-id="c79e6-146">To query for an entity in a table, pass its PartitionKey and RowKey to the [TableService][py_TableService].[get_entity][py_get_entity] method.</span></span>
+<span data-ttu-id="f4eb2-146">tooquery для сущности в таблице, передать его PartitionKey и RowKey toohello [TableService][py_TableService].[ get_entity] [ py_get_entity] метод.</span><span class="sxs-lookup"><span data-stu-id="f4eb2-146">tooquery for an entity in a table, pass its PartitionKey and RowKey toohello [TableService][py_TableService].[get_entity][py_get_entity] method.</span></span>
 
 ```python
 task = table_service.get_entity('tasktable', 'tasksSeattle', '001')
@@ -142,9 +142,9 @@ print(task.description)
 print(task.priority)
 ```
 
-## <a name="query-a-set-of-entities"></a><span data-ttu-id="c79e6-147">Запрос набора сущностей</span><span class="sxs-lookup"><span data-stu-id="c79e6-147">Query a set of entities</span></span>
+## <a name="query-a-set-of-entities"></a><span data-ttu-id="f4eb2-147">Запрос набора сущностей</span><span class="sxs-lookup"><span data-stu-id="f4eb2-147">Query a set of entities</span></span>
 
-<span data-ttu-id="c79e6-148">Можно запросить набор сущностей, указав строку фильтра с помощью параметра **filter**.</span><span class="sxs-lookup"><span data-stu-id="c79e6-148">You can query for a set of entities by supplying a filter string with the **filter** parameter.</span></span> <span data-ttu-id="c79e6-149">Этот пример находит все задачи в Сиэтле, используя фильтр PartitionKey:</span><span class="sxs-lookup"><span data-stu-id="c79e6-149">This example finds all tasks in Seattle by applying a filter on PartitionKey:</span></span>
+<span data-ttu-id="f4eb2-148">Вы можете запросить набор сущностей, указав строку фильтра с hello **фильтра** параметра.</span><span class="sxs-lookup"><span data-stu-id="f4eb2-148">You can query for a set of entities by supplying a filter string with hello **filter** parameter.</span></span> <span data-ttu-id="f4eb2-149">Этот пример находит все задачи в Сиэтле, используя фильтр PartitionKey:</span><span class="sxs-lookup"><span data-stu-id="f4eb2-149">This example finds all tasks in Seattle by applying a filter on PartitionKey:</span></span>
 
 ```python
 tasks = table_service.query_entities('tasktable', filter="PartitionKey eq 'tasksSeattle'")
@@ -153,14 +153,14 @@ for task in tasks:
     print(task.priority)
 ```
 
-## <a name="query-a-subset-of-entity-properties"></a><span data-ttu-id="c79e6-150">Запрос подмножества свойств сущности</span><span class="sxs-lookup"><span data-stu-id="c79e6-150">Query a subset of entity properties</span></span>
+## <a name="query-a-subset-of-entity-properties"></a><span data-ttu-id="f4eb2-150">Запрос подмножества свойств сущности</span><span class="sxs-lookup"><span data-stu-id="f4eb2-150">Query a subset of entity properties</span></span>
 
-<span data-ttu-id="c79e6-151">Также можно ограничить свойства, возвращаемые для каждой сущности в запросе.</span><span class="sxs-lookup"><span data-stu-id="c79e6-151">You can also restrict which properties are returned for each entity in a query.</span></span> <span data-ttu-id="c79e6-152">Этот метод, который называется *проекцией*, снижает потребление пропускной способности и может повысить производительность запросов, особенно для больших сущностей и наборов результатов.</span><span class="sxs-lookup"><span data-stu-id="c79e6-152">This technique, called *projection*, reduces bandwidth and can improve query performance, especially for large entities or result sets.</span></span> <span data-ttu-id="c79e6-153">Используйте параметр **select** и передайте имена свойств, которые необходимо вернуть клиенту.</span><span class="sxs-lookup"><span data-stu-id="c79e6-153">Use the **select** parameter and pass the names of the properties you want returned to the client.</span></span>
+<span data-ttu-id="f4eb2-151">Также можно ограничить свойства, возвращаемые для каждой сущности в запросе.</span><span class="sxs-lookup"><span data-stu-id="f4eb2-151">You can also restrict which properties are returned for each entity in a query.</span></span> <span data-ttu-id="f4eb2-152">Этот метод, который называется *проекцией*, снижает потребление пропускной способности и может повысить производительность запросов, особенно для больших сущностей и наборов результатов.</span><span class="sxs-lookup"><span data-stu-id="f4eb2-152">This technique, called *projection*, reduces bandwidth and can improve query performance, especially for large entities or result sets.</span></span> <span data-ttu-id="f4eb2-153">Используйте hello **выберите** имена параметра и передайте hello hello свойства, которые вы хотите вернул toohello клиента.</span><span class="sxs-lookup"><span data-stu-id="f4eb2-153">Use hello **select** parameter and pass hello names of hello properties you want returned toohello client.</span></span>
 
-<span data-ttu-id="c79e6-154">Запрос в следующем коде возвращает только описания сущностей в таблице.</span><span class="sxs-lookup"><span data-stu-id="c79e6-154">The query in the following code returns only the descriptions of entities in the table.</span></span>
+<span data-ttu-id="f4eb2-154">запрос Hello в hello, следующий код возвращает только hello описания сущности в таблице hello.</span><span class="sxs-lookup"><span data-stu-id="f4eb2-154">hello query in hello following code returns only hello descriptions of entities in hello table.</span></span>
 
 > [!NOTE]
-> <span data-ttu-id="c79e6-155">Следующий фрагмент работает только для службы хранилища Azure.</span><span class="sxs-lookup"><span data-stu-id="c79e6-155">The following snippet works only against the Azure Storage.</span></span> <span data-ttu-id="c79e6-156">Его не поддерживает эмулятор хранения.</span><span class="sxs-lookup"><span data-stu-id="c79e6-156">It is not supported by the storage emulator.</span></span>
+> <span data-ttu-id="f4eb2-155">Здравствуйте, следующий фрагмент кода работает только с hello хранилища Azure.</span><span class="sxs-lookup"><span data-stu-id="f4eb2-155">hello following snippet works only against hello Azure Storage.</span></span> <span data-ttu-id="f4eb2-156">Не поддерживается эмулятором хранилища hello.</span><span class="sxs-lookup"><span data-stu-id="f4eb2-156">It is not supported by hello storage emulator.</span></span>
 
 ```python
 tasks = table_service.query_entities('tasktable', filter="PartitionKey eq 'tasksSeattle'", select='description')
@@ -168,28 +168,28 @@ for task in tasks:
     print(task.description)
 ```
 
-## <a name="delete-an-entity"></a><span data-ttu-id="c79e6-157">Удаление сущности</span><span class="sxs-lookup"><span data-stu-id="c79e6-157">Delete an entity</span></span>
+## <a name="delete-an-entity"></a><span data-ttu-id="f4eb2-157">Удаление сущности</span><span class="sxs-lookup"><span data-stu-id="f4eb2-157">Delete an entity</span></span>
 
-<span data-ttu-id="c79e6-158">Чтобы удалить сущность, передайте ее свойства PartitionKey и RowKey в метод [delete_entity][py_delete_entity].</span><span class="sxs-lookup"><span data-stu-id="c79e6-158">Delete an entity by passing its PartitionKey and RowKey to the [delete_entity][py_delete_entity] method.</span></span>
+<span data-ttu-id="f4eb2-158">Удаление сущности, передав его PartitionKey и RowKey toohello [delete_entity] [ py_delete_entity] метод.</span><span class="sxs-lookup"><span data-stu-id="f4eb2-158">Delete an entity by passing its PartitionKey and RowKey toohello [delete_entity][py_delete_entity] method.</span></span>
 
 ```python
 table_service.delete_entity('tasktable', 'tasksSeattle', '001')
 ```
 
-## <a name="delete-a-table"></a><span data-ttu-id="c79e6-159">Удаление таблицы</span><span class="sxs-lookup"><span data-stu-id="c79e6-159">Delete a table</span></span>
+## <a name="delete-a-table"></a><span data-ttu-id="f4eb2-159">Удаление таблицы</span><span class="sxs-lookup"><span data-stu-id="f4eb2-159">Delete a table</span></span>
 
-<span data-ttu-id="c79e6-160">Если вам больше не нужна таблица или сущность в ней, вызовите метод [delete_table][py_delete_table], чтобы полностью удалить таблицу из службы хранилища Azure.</span><span class="sxs-lookup"><span data-stu-id="c79e6-160">If you no longer need a table or any of the entities within it, call the [delete_table][py_delete_table] method to permanently delete the table from Azure Storage.</span></span>
+<span data-ttu-id="f4eb2-160">Если вы больше не нужна, таблицы или любого hello сущностей внутри него, вызовите hello [delete_table] [ py_delete_table] toopermanently метод удалить таблицу hello из хранилища Azure.</span><span class="sxs-lookup"><span data-stu-id="f4eb2-160">If you no longer need a table or any of hello entities within it, call hello [delete_table][py_delete_table] method toopermanently delete hello table from Azure Storage.</span></span>
 
 ```python
 table_service.delete_table('tasktable')
 ```
 
-## <a name="next-steps"></a><span data-ttu-id="c79e6-161">Дальнейшие действия</span><span class="sxs-lookup"><span data-stu-id="c79e6-161">Next steps</span></span>
+## <a name="next-steps"></a><span data-ttu-id="f4eb2-161">Дальнейшие действия</span><span class="sxs-lookup"><span data-stu-id="f4eb2-161">Next steps</span></span>
 
-* <span data-ttu-id="c79e6-162">[Azure Storage SDK for Python API reference](https://azure-storage.readthedocs.io/en/latest/index.html) (Справочник по пакету SDK службы хранилища Azure для API Python)</span><span class="sxs-lookup"><span data-stu-id="c79e6-162">[Azure Storage SDK for Python API reference](https://azure-storage.readthedocs.io/en/latest/index.html)</span></span>
-* [<span data-ttu-id="c79e6-163">Пакет SDK службы хранилища Azure для Python</span><span class="sxs-lookup"><span data-stu-id="c79e6-163">Azure Storage SDK for Python</span></span>](https://github.com/Azure/azure-storage-python)
-* [<span data-ttu-id="c79e6-164">Центр по разработке для Python</span><span class="sxs-lookup"><span data-stu-id="c79e6-164">Python Developer Center</span></span>](https://azure.microsoft.com/develop/python/)
-* <span data-ttu-id="c79e6-165">[Приступая к работе с обозревателем службы хранилища (предварительная версия)](../vs-azure-tools-storage-manage-with-storage-explorer.md). Обозреватель службы хранилища Microsoft Azure — бесплатное кроссплатформенное приложение для визуализации данных службы хранилища Azure в Windows, macOS и Linux.</span><span class="sxs-lookup"><span data-stu-id="c79e6-165">[Microsoft Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md): A free, cross-platform application for working visually with Azure Storage data on Windows, macOS, and Linux.</span></span>
+* <span data-ttu-id="f4eb2-162">[Azure Storage SDK for Python API reference](https://azure-storage.readthedocs.io/en/latest/index.html) (Справочник по пакету SDK службы хранилища Azure для API Python)</span><span class="sxs-lookup"><span data-stu-id="f4eb2-162">[Azure Storage SDK for Python API reference](https://azure-storage.readthedocs.io/en/latest/index.html)</span></span>
+* [<span data-ttu-id="f4eb2-163">Пакет SDK службы хранилища Azure для Python</span><span class="sxs-lookup"><span data-stu-id="f4eb2-163">Azure Storage SDK for Python</span></span>](https://github.com/Azure/azure-storage-python)
+* [<span data-ttu-id="f4eb2-164">Центр по разработке для Python</span><span class="sxs-lookup"><span data-stu-id="f4eb2-164">Python Developer Center</span></span>](https://azure.microsoft.com/develop/python/)
+* <span data-ttu-id="f4eb2-165">[Приступая к работе с обозревателем службы хранилища (предварительная версия)](../vs-azure-tools-storage-manage-with-storage-explorer.md). Обозреватель службы хранилища Microsoft Azure — бесплатное кроссплатформенное приложение для визуализации данных службы хранилища Azure в Windows, macOS и Linux.</span><span class="sxs-lookup"><span data-stu-id="f4eb2-165">[Microsoft Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md): A free, cross-platform application for working visually with Azure Storage data on Windows, macOS, and Linux.</span></span>
 
 [py_commit_batch]: https://azure-storage.readthedocs.io/en/latest/ref/azure.storage.table.tableservice.html#azure.storage.table.tableservice.TableService.commit_batch
 [py_create_table]: https://azure-storage.readthedocs.io/en/latest/ref/azure.storage.table.tableservice.html#azure.storage.table.tableservice.TableService.create_table

@@ -1,6 +1,6 @@
 ---
-title: "Подключение Intel Edison (Node) к Интернету вещей Azure. Урок 1. Развертывание приложения | Документация Майкрософт"
-description: "Клонируйте пример приложения C c GitHub и разверните его с помощью инструмента Gulp на плате Intel Edison. Это приложение будет каждые две секунды включать и выключать светодиодный индикатор на компьютере."
+title: "Подключение Edison Intel (узел) tooAzure IoT — занятия 1: развертывание приложения | Документы Microsoft"
+description: "Клонировать пример C приложения hello из GitHub и запуска этого приложения tooyour плата Intel Edison gulp toodeploy. В этом образце приложения мигает hello Индикатор подключен toohello плата каждые две секунды."
 services: iot-hub
 documentationcenter: 
 author: shizn
@@ -17,34 +17,34 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/21/2017
 ms.author: xshi
-ms.openlocfilehash: 8490fbbf14183432c665165412f00955d6323580
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: bc03c7e45bd1ba9e9b2c8f2fec70a1be647e96b7
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="create-and-deploy-the-blink-application"></a><span data-ttu-id="e16ab-105">Создание и развертывание приложения для включения индикатора</span><span class="sxs-lookup"><span data-stu-id="e16ab-105">Create and deploy the blink application</span></span>
-## <a name="what-you-will-do"></a><span data-ttu-id="e16ab-106">Выполняемая задача</span><span class="sxs-lookup"><span data-stu-id="e16ab-106">What you will do</span></span>
-<span data-ttu-id="e16ab-107">Клонирование примера приложения C из GitHub и его развертывание с помощью инструмента Gulp на устройстве Intel Edison.</span><span class="sxs-lookup"><span data-stu-id="e16ab-107">Clone the sample C application from GitHub, and use the gulp tool to deploy the sample application to Intel Edison.</span></span> <span data-ttu-id="e16ab-108">Этот пример приложения будет каждые две секунды включать светодиодный индикатор, подключенный к плате.</span><span class="sxs-lookup"><span data-stu-id="e16ab-108">The sample application blinks the LED connected to the board every two seconds.</span></span> <span data-ttu-id="e16ab-109">Если возникнут какие-либо проблемы, то решения можно найти на [странице со сведениями об устранении неполадок][troubleshooting].</span><span class="sxs-lookup"><span data-stu-id="e16ab-109">If you have any problems, look for solutions on the [troubleshooting page][troubleshooting].</span></span>
+# <a name="create-and-deploy-hello-blink-application"></a><span data-ttu-id="9f430-105">Создание и развертывание приложения hello мерцания</span><span class="sxs-lookup"><span data-stu-id="9f430-105">Create and deploy hello blink application</span></span>
+## <a name="what-you-will-do"></a><span data-ttu-id="9f430-106">Выполняемая задача</span><span class="sxs-lookup"><span data-stu-id="9f430-106">What you will do</span></span>
+<span data-ttu-id="9f430-107">Клонировать пример C приложения hello из GitHub и использовать приложения образец tooIntel Edison hello gulp средство toodeploy hello.</span><span class="sxs-lookup"><span data-stu-id="9f430-107">Clone hello sample C application from GitHub, and use hello gulp tool toodeploy hello sample application tooIntel Edison.</span></span> <span data-ttu-id="9f430-108">Пример приложения Hello мигает hello Индикатор подключен toohello плата каждые две секунды.</span><span class="sxs-lookup"><span data-stu-id="9f430-108">hello sample application blinks hello LED connected toohello board every two seconds.</span></span> <span data-ttu-id="9f430-109">Если у вас возникнут проблемы, искать решения на hello [страницу устранения неполадок][troubleshooting].</span><span class="sxs-lookup"><span data-stu-id="9f430-109">If you have any problems, look for solutions on hello [troubleshooting page][troubleshooting].</span></span>
 
-## <a name="what-you-will-learn"></a><span data-ttu-id="e16ab-110">Новые знания</span><span class="sxs-lookup"><span data-stu-id="e16ab-110">What you will learn</span></span>
-* <span data-ttu-id="e16ab-111">Как развертывать и запускать пример приложения в Edison.</span><span class="sxs-lookup"><span data-stu-id="e16ab-111">How to deploy and run the sample application on Edison.</span></span>
+## <a name="what-you-will-learn"></a><span data-ttu-id="9f430-110">Новые знания</span><span class="sxs-lookup"><span data-stu-id="9f430-110">What you will learn</span></span>
+* <span data-ttu-id="9f430-111">Как toodeploy и выполнения hello образец приложения на Edison.</span><span class="sxs-lookup"><span data-stu-id="9f430-111">How toodeploy and run hello sample application on Edison.</span></span>
 
-## <a name="what-you-need"></a><span data-ttu-id="e16ab-112">Необходимые элементы</span><span class="sxs-lookup"><span data-stu-id="e16ab-112">What you need</span></span>
-<span data-ttu-id="e16ab-113">Необходимо успешно выполнить следующие операции:</span><span class="sxs-lookup"><span data-stu-id="e16ab-113">You must have successfully completed the following operations:</span></span>
+## <a name="what-you-need"></a><span data-ttu-id="9f430-112">Необходимые элементы</span><span class="sxs-lookup"><span data-stu-id="9f430-112">What you need</span></span>
+<span data-ttu-id="9f430-113">Необходимо успешно выполнить hello следующие операции:</span><span class="sxs-lookup"><span data-stu-id="9f430-113">You must have successfully completed hello following operations:</span></span>
 
-* <span data-ttu-id="e16ab-114">[Настройка устройства][configure-your-device]</span><span class="sxs-lookup"><span data-stu-id="e16ab-114">[Configure your device][configure-your-device]</span></span>
-* <span data-ttu-id="e16ab-115">[Get the tools][get-the-tools] (Получение инструментов)</span><span class="sxs-lookup"><span data-stu-id="e16ab-115">[Get the tools][get-the-tools]</span></span>
+* <span data-ttu-id="9f430-114">[Настройка устройства][configure-your-device]</span><span class="sxs-lookup"><span data-stu-id="9f430-114">[Configure your device][configure-your-device]</span></span>
+* <span data-ttu-id="9f430-115">[Получить средства hello][get-the-tools]</span><span class="sxs-lookup"><span data-stu-id="9f430-115">[Get hello tools][get-the-tools]</span></span>
 
-## <a name="open-the-sample-application"></a><span data-ttu-id="e16ab-116">Открытие примера приложения</span><span class="sxs-lookup"><span data-stu-id="e16ab-116">Open the sample application</span></span>
-<span data-ttu-id="e16ab-117">Чтобы открыть пример приложения, сделайте следующее:</span><span class="sxs-lookup"><span data-stu-id="e16ab-117">To open the sample application, follow these steps:</span></span>
+## <a name="open-hello-sample-application"></a><span data-ttu-id="9f430-116">Привет открыть образец приложения</span><span class="sxs-lookup"><span data-stu-id="9f430-116">Open hello sample application</span></span>
+<span data-ttu-id="9f430-117">tooopen hello образец приложения, выполните следующие действия:</span><span class="sxs-lookup"><span data-stu-id="9f430-117">tooopen hello sample application, follow these steps:</span></span>
 
-1. <span data-ttu-id="e16ab-118">Клонируйте пример репозитория из GitHub, выполнив следующую команду.</span><span class="sxs-lookup"><span data-stu-id="e16ab-118">Clone the sample repository from GitHub by running the following command:</span></span>
+1. <span data-ttu-id="9f430-118">Клонирование репозитория образец hello из GitHub, выполнив следующую команду hello:</span><span class="sxs-lookup"><span data-stu-id="9f430-118">Clone hello sample repository from GitHub by running hello following command:</span></span>
 
    ```bash
    git clone https://github.com/Azure-Samples/iot-hub-node-edison-getting-started.git
    ```
-2. <span data-ttu-id="e16ab-119">Откройте пример приложения в Visual Studio Code, выполнив следующие команды:</span><span class="sxs-lookup"><span data-stu-id="e16ab-119">Open the sample application in Visual Studio Code by running the following commands:</span></span>
+2. <span data-ttu-id="9f430-119">Откройте пример приложения hello в коде Visual Studio, выполнив следующие команды hello:</span><span class="sxs-lookup"><span data-stu-id="9f430-119">Open hello sample application in Visual Studio Code by running hello following commands:</span></span>
 
    ```bash
    cd iot-hub-node-edison-getting-started
@@ -54,27 +54,27 @@ ms.lasthandoff: 07/11/2017
 
    ![Структура репозитория][repo-structure]
 
-<span data-ttu-id="e16ab-121">Файл в подпапке `app` — это ключевой исходный файл, содержащий код для управления светодиодным индикатором.</span><span class="sxs-lookup"><span data-stu-id="e16ab-121">The file in the `app` subfolder is the key source file that contains the code to control the LED.</span></span>
+<span data-ttu-id="9f430-121">файл Hello в hello `app` подпапка является hello ключа исходного файла, содержащего hello toocontrol кода hello Индикатора.</span><span class="sxs-lookup"><span data-stu-id="9f430-121">hello file in hello `app` subfolder is hello key source file that contains hello code toocontrol hello LED.</span></span>
 
-### <a name="install-application-dependencies"></a><span data-ttu-id="e16ab-122">Установка зависимостей приложения</span><span class="sxs-lookup"><span data-stu-id="e16ab-122">Install application dependencies</span></span>
-<span data-ttu-id="e16ab-123">Установите библиотеки и другие модули, необходимые для примера приложения, выполнив следующую команду:</span><span class="sxs-lookup"><span data-stu-id="e16ab-123">Install the libraries and other modules you need for the sample application by running the following command:</span></span>
+### <a name="install-application-dependencies"></a><span data-ttu-id="9f430-122">Установка зависимостей приложения</span><span class="sxs-lookup"><span data-stu-id="9f430-122">Install application dependencies</span></span>
+<span data-ttu-id="9f430-123">Установка библиотеки hello и другие модули, необходимые для образца приложения hello, выполнив следующую команду hello:</span><span class="sxs-lookup"><span data-stu-id="9f430-123">Install hello libraries and other modules you need for hello sample application by running hello following command:</span></span>
 
 ```bash
 npm install
 ```
 
-## <a name="configure-the-device-connection"></a><span data-ttu-id="e16ab-124">Настройка подключения устройства</span><span class="sxs-lookup"><span data-stu-id="e16ab-124">Configure the device connection</span></span>
-<span data-ttu-id="e16ab-125">Чтобы настроить подключение устройства, выполните следующие действия.</span><span class="sxs-lookup"><span data-stu-id="e16ab-125">To configure the device connection, follow these steps:</span></span>
+## <a name="configure-hello-device-connection"></a><span data-ttu-id="9f430-124">Настройка подключения устройства hello</span><span class="sxs-lookup"><span data-stu-id="9f430-124">Configure hello device connection</span></span>
+<span data-ttu-id="9f430-125">tooconfigure Здравствуйте подключения устройства, выполните следующие действия:</span><span class="sxs-lookup"><span data-stu-id="9f430-125">tooconfigure hello device connection, follow these steps:</span></span>
 
-1. <span data-ttu-id="e16ab-126">Создайте файл конфигурации устройства, выполнив приведенную ниже команду.</span><span class="sxs-lookup"><span data-stu-id="e16ab-126">Generate the device configuration file by running the following command:</span></span>
+1. <span data-ttu-id="9f430-126">Создайте файл конфигурации устройства hello, выполнив hello следующую команду:</span><span class="sxs-lookup"><span data-stu-id="9f430-126">Generate hello device configuration file by running hello following command:</span></span>
 
    ```bash
    gulp init
    ```
 
-   <span data-ttu-id="e16ab-127">Файл конфигурации `config-edison.json` содержит учетные данные пользователя для входа в Edison.</span><span class="sxs-lookup"><span data-stu-id="e16ab-127">The configuration file `config-edison.json` contains the user credentials you use to log in to Edison.</span></span> <span data-ttu-id="e16ab-128">Чтобы избежать утечки учетных данных пользователя, файл конфигурации создается в подпапке `.iot-hub-getting-started` домашней папки на компьютере.</span><span class="sxs-lookup"><span data-stu-id="e16ab-128">To avoid the leak of user credentials, the configuration file is generated in the subfolder `.iot-hub-getting-started` of the home folder on your computer.</span></span>
+   <span data-ttu-id="9f430-127">файл конфигурации Hello `config-edison.json` содержит учетные данные пользователя hello использовать toolog в tooEdison.</span><span class="sxs-lookup"><span data-stu-id="9f430-127">hello configuration file `config-edison.json` contains hello user credentials you use toolog in tooEdison.</span></span> <span data-ttu-id="9f430-128">tooavoid hello утечки учетных данных пользователя, создается файл конфигурации hello hello во вложенной папке `.iot-hub-getting-started` hello домашней папки на компьютере.</span><span class="sxs-lookup"><span data-stu-id="9f430-128">tooavoid hello leak of user credentials, hello configuration file is generated in hello subfolder `.iot-hub-getting-started` of hello home folder on your computer.</span></span>
 
-2. <span data-ttu-id="e16ab-129">Откройте файл конфигурации устройства в Visual Studio Code, выполнив приведенную ниже команду.</span><span class="sxs-lookup"><span data-stu-id="e16ab-129">Open the device configuration file in Visual Studio Code by running the following command:</span></span>
+2. <span data-ttu-id="9f430-129">Откройте файл конфигурации устройства hello в коде Visual Studio, выполнив следующую команду hello:</span><span class="sxs-lookup"><span data-stu-id="9f430-129">Open hello device configuration file in Visual Studio Code by running hello following command:</span></span>
 
    ```bash
    # For Windows command prompt
@@ -84,31 +84,31 @@ npm install
    code ~/.iot-hub-getting-started/config-edison.json
    ```
 
-3. <span data-ttu-id="e16ab-130">Замените заполнитель `[device hostname or IP address]` и `[device password]` на IP-адрес и пароль, указанный на предыдущем уроке.</span><span class="sxs-lookup"><span data-stu-id="e16ab-130">Replace the placeholder `[device hostname or IP address]` and `[device password]` with the IP address and password that you marked down in previous lesson.</span></span>
+3. <span data-ttu-id="9f430-130">Замените заполнитель hello `[device hostname or IP address]` и `[device password]` hello IP-адрес и пароль, который помечен на предыдущем занятии.</span><span class="sxs-lookup"><span data-stu-id="9f430-130">Replace hello placeholder `[device hostname or IP address]` and `[device password]` with hello IP address and password that you marked down in previous lesson.</span></span>
 
    ![Config.json](media/iot-hub-intel-edison-lessons/lesson1/vscode-config-mac.png)
 
-<span data-ttu-id="e16ab-132">Поздравляем!</span><span class="sxs-lookup"><span data-stu-id="e16ab-132">Congratulations!</span></span> <span data-ttu-id="e16ab-133">Вы успешно создали пример приложения для платы Edison.</span><span class="sxs-lookup"><span data-stu-id="e16ab-133">You've successfully created the first sample application for Edison.</span></span>
+<span data-ttu-id="9f430-132">Поздравляем!</span><span class="sxs-lookup"><span data-stu-id="9f430-132">Congratulations!</span></span> <span data-ttu-id="9f430-133">Первый пример приложения hello для Edison успешно создана.</span><span class="sxs-lookup"><span data-stu-id="9f430-133">You've successfully created hello first sample application for Edison.</span></span>
 
-## <a name="deploy-and-run-the-sample-application"></a><span data-ttu-id="e16ab-134">Развертывание и запуск примера приложения</span><span class="sxs-lookup"><span data-stu-id="e16ab-134">Deploy and run the sample application</span></span>
+## <a name="deploy-and-run-hello-sample-application"></a><span data-ttu-id="9f430-134">Развертывание и запуск образца приложения hello</span><span class="sxs-lookup"><span data-stu-id="9f430-134">Deploy and run hello sample application</span></span>
 
-### <a name="deploy-and-run-the-sample-app"></a><span data-ttu-id="e16ab-135">Развертывание и запуск примера приложения</span><span class="sxs-lookup"><span data-stu-id="e16ab-135">Deploy and run the sample app</span></span>
-<span data-ttu-id="e16ab-136">Разверните и запустите пример приложения, выполнив следующую команду.</span><span class="sxs-lookup"><span data-stu-id="e16ab-136">Deploy and run the sample application by running the following command:</span></span>
+### <a name="deploy-and-run-hello-sample-app"></a><span data-ttu-id="9f430-135">Развертывание и запуск образца приложения hello</span><span class="sxs-lookup"><span data-stu-id="9f430-135">Deploy and run hello sample app</span></span>
+<span data-ttu-id="9f430-136">Развертывание и запуск образца приложения hello, выполнив следующую команду hello:</span><span class="sxs-lookup"><span data-stu-id="9f430-136">Deploy and run hello sample application by running hello following command:</span></span>
 
 ```bash
 gulp deploy && gulp run
 ```
 
-### <a name="verify-the-app-works"></a><span data-ttu-id="e16ab-137">Проверка работы приложения</span><span class="sxs-lookup"><span data-stu-id="e16ab-137">Verify the app works</span></span>
-<span data-ttu-id="e16ab-138">После того, как светодиодный индикатор мигнет 20 раз, пример приложения завершит работу автоматически.</span><span class="sxs-lookup"><span data-stu-id="e16ab-138">The sample application terminates automatically after the LED blinks for 20 times.</span></span> <span data-ttu-id="e16ab-139">Если светодиодный индикатор не мигает, см. способы решения распространенных проблем в [руководстве по устранению неполадок][troubleshooting].</span><span class="sxs-lookup"><span data-stu-id="e16ab-139">If you don’t see the LED blinking, see the [troubleshooting guide][troubleshooting] for solutions to common problems.</span></span>
+### <a name="verify-hello-app-works"></a><span data-ttu-id="9f430-137">Проверки работы приложения hello</span><span class="sxs-lookup"><span data-stu-id="9f430-137">Verify hello app works</span></span>
+<span data-ttu-id="9f430-138">Пример приложения Hello автоматически завершается после hello Индикатор мигает в течение 20 раз.</span><span class="sxs-lookup"><span data-stu-id="9f430-138">hello sample application terminates automatically after hello LED blinks for 20 times.</span></span> <span data-ttu-id="9f430-139">Если вы не видите hello Индикатор мигает, см. раздел hello [руководство по устранению неполадок] [ troubleshooting] для решения проблемы toocommon.</span><span class="sxs-lookup"><span data-stu-id="9f430-139">If you don’t see hello LED blinking, see hello [troubleshooting guide][troubleshooting] for solutions toocommon problems.</span></span>
 
 ![Светодиодный индикатор мигает][led-blinking]
 
-## <a name="summary"></a><span data-ttu-id="e16ab-141">Сводка</span><span class="sxs-lookup"><span data-stu-id="e16ab-141">Summary</span></span>
-<span data-ttu-id="e16ab-142">Вы установили необходимые инструменты для работы с устройством Edison и развернули пример приложения, заставляющего светодиодный индикатор мигать.</span><span class="sxs-lookup"><span data-stu-id="e16ab-142">You've installed the required tools to work with Edison and deployed a sample application to Edison to blink the LED.</span></span> <span data-ttu-id="e16ab-143">Теперь можно приступать к созданию, развертыванию и запуску другого примера приложения, которое подключает устройство Edison к Центру Интернета вещей Azure для отправки и получения сообщений.</span><span class="sxs-lookup"><span data-stu-id="e16ab-143">You can now create, deploy, and run another sample application that connects Edison to Azure IoT Hub to send and receive messages.</span></span>
+## <a name="summary"></a><span data-ttu-id="9f430-141">Сводка</span><span class="sxs-lookup"><span data-stu-id="9f430-141">Summary</span></span>
+<span data-ttu-id="9f430-142">Вы установили hello необходимые средства toowork с Edison и развернуть образец приложения tooEdison tooblink hello Индикатора.</span><span class="sxs-lookup"><span data-stu-id="9f430-142">You've installed hello required tools toowork with Edison and deployed a sample application tooEdison tooblink hello LED.</span></span> <span data-ttu-id="9f430-143">Вы теперь можно создать, развернуть и выполнения другой пример приложения, которое подключается Edison tooAzure toosend центр IoT и получать сообщения.</span><span class="sxs-lookup"><span data-stu-id="9f430-143">You can now create, deploy, and run another sample application that connects Edison tooAzure IoT Hub toosend and receive messages.</span></span>
 
-## <a name="next-steps"></a><span data-ttu-id="e16ab-144">Дальнейшие действия</span><span class="sxs-lookup"><span data-stu-id="e16ab-144">Next steps</span></span>
-<span data-ttu-id="e16ab-145">[Get the Azure tools][get-the-azure-tools] (Получение инструментов Azure)</span><span class="sxs-lookup"><span data-stu-id="e16ab-145">[Get the Azure tools][get-the-azure-tools]</span></span>
+## <a name="next-steps"></a><span data-ttu-id="9f430-144">Дальнейшие действия</span><span class="sxs-lookup"><span data-stu-id="9f430-144">Next steps</span></span>
+<span data-ttu-id="9f430-145">[Получить инструменты Azure hello][get-the-azure-tools]</span><span class="sxs-lookup"><span data-stu-id="9f430-145">[Get hello Azure tools][get-the-azure-tools]</span></span>
 
 <!-- Images and links -->
 

@@ -1,6 +1,6 @@
 ---
-title: "Развертывание нескольких экземпляров ресурсов Azure | Документация Майкрософт"
-description: "Использование операции копирования и массивов в шаблоне диспетчера ресурсов Azure для выполнения нескольких итераций при развертывании ресурсов."
+title: "aaaDeploy нескольких экземпляров ресурсов Azure | Документы Microsoft"
+description: "Используйте операции копирования и массивов в tooiterate шаблона диспетчера ресурсов Azure несколько раз при развертывании ресурсов."
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -14,21 +14,21 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/26/2017
 ms.author: tomfitz
-ms.openlocfilehash: ed8e3081d2b2e07938d7cf3aa5f95f6dde81bc66
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: a3bd42f694053317c30b639c33dc4efae41a9a9b
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="deploy-multiple-instances-of-a-resource-or-property-in-azure-resource-manager-templates"></a><span data-ttu-id="e0921-103">Развертывание нескольких экземпляров ресурса или свойства в шаблонах Azure Resource Manager</span><span class="sxs-lookup"><span data-stu-id="e0921-103">Deploy multiple instances of a resource or property in Azure Resource Manager templates</span></span>
-<span data-ttu-id="e0921-104">В этом разделе показано, как выполнить итерацию в шаблоне Azure Resource Manager для создания нескольких экземпляров ресурса или нескольких экземпляров свойства ресурса.</span><span class="sxs-lookup"><span data-stu-id="e0921-104">This topic shows you how to iterate in your Azure Resource Manager template to create multiple instances of a resource, or multiple instances of a property on a resource.</span></span>
+# <a name="deploy-multiple-instances-of-a-resource-or-property-in-azure-resource-manager-templates"></a><span data-ttu-id="b42c9-103">Развертывание нескольких экземпляров ресурса или свойства в шаблонах Azure Resource Manager</span><span class="sxs-lookup"><span data-stu-id="b42c9-103">Deploy multiple instances of a resource or property in Azure Resource Manager templates</span></span>
+<span data-ttu-id="b42c9-104">В этом разделе показано, как tooiterate в вашей toocreate шаблона диспетчера ресурсов Azure несколько экземпляров ресурс или несколько экземпляров свойства ресурса.</span><span class="sxs-lookup"><span data-stu-id="b42c9-104">This topic shows you how tooiterate in your Azure Resource Manager template toocreate multiple instances of a resource, or multiple instances of a property on a resource.</span></span>
 
-<span data-ttu-id="e0921-105">Если необходимо добавить логику в шаблон, чтобы указать, развертывается ли ресурс, ознакомьтесь с разделом [Условное развертывание ресурса](#conditionally-deploy-resource).</span><span class="sxs-lookup"><span data-stu-id="e0921-105">If you need to add logic to your template that enables you to specify whether a resource is deployed, see [Conditionally deploy resource](#conditionally-deploy-resource).</span></span>
+<span data-ttu-id="b42c9-105">Если вам требуется tooadd логику tooyour шаблон, который позволяет toospecify развернут ли ресурс см. в разделе [условно развертывания ресурсов](#conditionally-deploy-resource).</span><span class="sxs-lookup"><span data-stu-id="b42c9-105">If you need tooadd logic tooyour template that enables you toospecify whether a resource is deployed, see [Conditionally deploy resource](#conditionally-deploy-resource).</span></span>
 
-## <a name="resource-iteration"></a><span data-ttu-id="e0921-106">Итерация ресурса</span><span class="sxs-lookup"><span data-stu-id="e0921-106">Resource iteration</span></span>
-<span data-ttu-id="e0921-107">Для создания нескольких экземпляров типа ресурса добавьте элемент `copy` к типу ресурса.</span><span class="sxs-lookup"><span data-stu-id="e0921-107">To create multiple instances of a resource type, add a `copy` element to the resource type.</span></span> <span data-ttu-id="e0921-108">В элементе копирования укажите число итераций и имя для этого цикла.</span><span class="sxs-lookup"><span data-stu-id="e0921-108">In the copy element, you specify the number of iterations and a name for this loop.</span></span> <span data-ttu-id="e0921-109">Значение count должно быть положительным целым числом не больше 800.</span><span class="sxs-lookup"><span data-stu-id="e0921-109">The count value must be a positive integer and cannot exceed 800.</span></span> <span data-ttu-id="e0921-110">Resource Manager создает ресурсы параллельно.</span><span class="sxs-lookup"><span data-stu-id="e0921-110">Resource Manager creates the resources in parallel.</span></span> <span data-ttu-id="e0921-111">Поэтому порядок, в котором они создаются, не гарантируется.</span><span class="sxs-lookup"><span data-stu-id="e0921-111">Therefore, the order in which they are created is not guaranteed.</span></span> <span data-ttu-id="e0921-112">Чтобы последовательно создать ресурсы с помощью итерации, ознакомьтесь с разделом [Последовательное копирование](#serial-copy).</span><span class="sxs-lookup"><span data-stu-id="e0921-112">To create iterated resources in sequence, see [Serial copy](#serial-copy).</span></span> 
+## <a name="resource-iteration"></a><span data-ttu-id="b42c9-106">Итерация ресурса</span><span class="sxs-lookup"><span data-stu-id="b42c9-106">Resource iteration</span></span>
+<span data-ttu-id="b42c9-107">добавить несколько экземпляров типа ресурса toocreate `copy` тип ресурса toohello элемента.</span><span class="sxs-lookup"><span data-stu-id="b42c9-107">toocreate multiple instances of a resource type, add a `copy` element toohello resource type.</span></span> <span data-ttu-id="b42c9-108">В элементе копирования hello укажите hello количество итераций и имя для этого цикла.</span><span class="sxs-lookup"><span data-stu-id="b42c9-108">In hello copy element, you specify hello number of iterations and a name for this loop.</span></span> <span data-ttu-id="b42c9-109">значение count Hello должно быть положительным целым числом и не может превышать 800.</span><span class="sxs-lookup"><span data-stu-id="b42c9-109">hello count value must be a positive integer and cannot exceed 800.</span></span> <span data-ttu-id="b42c9-110">Диспетчер ресурсов создает ресурсы hello в параллельном режиме.</span><span class="sxs-lookup"><span data-stu-id="b42c9-110">Resource Manager creates hello resources in parallel.</span></span> <span data-ttu-id="b42c9-111">Hello порядок, в котором они были созданы не гарантируется.</span><span class="sxs-lookup"><span data-stu-id="b42c9-111">Therefore, hello order in which they are created is not guaranteed.</span></span> <span data-ttu-id="b42c9-112">Итерация toocreate ресурсы в последовательности, в разделе [последовательного копирования](#serial-copy).</span><span class="sxs-lookup"><span data-stu-id="b42c9-112">toocreate iterated resources in sequence, see [Serial copy](#serial-copy).</span></span> 
 
-<span data-ttu-id="e0921-113">Для многократного создания ресурса используется следующий формат.</span><span class="sxs-lookup"><span data-stu-id="e0921-113">The resource to create multiple times takes the following format:</span></span>
+<span data-ttu-id="b42c9-113">Hello ресурсов toocreate несколько раз принимает hello следующий формат:</span><span class="sxs-lookup"><span data-stu-id="b42c9-113">hello resource toocreate multiple times takes hello following format:</span></span>
 
 ```json
 {
@@ -55,31 +55,31 @@ ms.lasthandoff: 07/11/2017
 }
 ```
 
-<span data-ttu-id="e0921-114">Обратите внимание, что имя каждого ресурса содержит функцию `copyIndex()`, которая возвращает текущую итерацию в цикле.</span><span class="sxs-lookup"><span data-stu-id="e0921-114">Notice that the name of each resource includes the `copyIndex()` function, which returns the current iteration in the loop.</span></span> <span data-ttu-id="e0921-115">`copyIndex()` отсчитывается, начиная с нуля.</span><span class="sxs-lookup"><span data-stu-id="e0921-115">`copyIndex()` is zero-based.</span></span> <span data-ttu-id="e0921-116">См. приведенный ниже пример.</span><span class="sxs-lookup"><span data-stu-id="e0921-116">So, the following example:</span></span>
+<span data-ttu-id="b42c9-114">Обратите внимание, что hello имя каждого ресурса содержит hello `copyIndex()` функция, возвращающая hello текущей итерации цикла hello.</span><span class="sxs-lookup"><span data-stu-id="b42c9-114">Notice that hello name of each resource includes hello `copyIndex()` function, which returns hello current iteration in hello loop.</span></span> <span data-ttu-id="b42c9-115">`copyIndex()` отсчитывается, начиная с нуля.</span><span class="sxs-lookup"><span data-stu-id="b42c9-115">`copyIndex()` is zero-based.</span></span> <span data-ttu-id="b42c9-116">Следующий пример в этом случае hello:</span><span class="sxs-lookup"><span data-stu-id="b42c9-116">So, hello following example:</span></span>
 
 ```json
 "name": "[concat('storage', copyIndex())]",
 ```
 
-<span data-ttu-id="e0921-117">Он создает следующие имена:</span><span class="sxs-lookup"><span data-stu-id="e0921-117">Creates these names:</span></span>
+<span data-ttu-id="b42c9-117">Он создает следующие имена:</span><span class="sxs-lookup"><span data-stu-id="b42c9-117">Creates these names:</span></span>
 
-* <span data-ttu-id="e0921-118">storage0;</span><span class="sxs-lookup"><span data-stu-id="e0921-118">storage0</span></span>
-* <span data-ttu-id="e0921-119">storage1;</span><span class="sxs-lookup"><span data-stu-id="e0921-119">storage1</span></span>
-* <span data-ttu-id="e0921-120">storage2.</span><span class="sxs-lookup"><span data-stu-id="e0921-120">storage2.</span></span>
+* <span data-ttu-id="b42c9-118">storage0;</span><span class="sxs-lookup"><span data-stu-id="b42c9-118">storage0</span></span>
+* <span data-ttu-id="b42c9-119">storage1;</span><span class="sxs-lookup"><span data-stu-id="b42c9-119">storage1</span></span>
+* <span data-ttu-id="b42c9-120">storage2.</span><span class="sxs-lookup"><span data-stu-id="b42c9-120">storage2.</span></span>
 
-<span data-ttu-id="e0921-121">Чтобы сместить значение индекса, можно передать нужное значение в функцию copyIndex().</span><span class="sxs-lookup"><span data-stu-id="e0921-121">To offset the index value, you can pass a value in the copyIndex() function.</span></span> <span data-ttu-id="e0921-122">Число выполняемых итераций по-прежнему указывается в элементе копирования, но значение copyIndex сдвигается на указанное значение.</span><span class="sxs-lookup"><span data-stu-id="e0921-122">The number of iterations to perform is still specified in the copy element, but the value of copyIndex is offset by the specified value.</span></span> <span data-ttu-id="e0921-123">См. приведенный ниже пример.</span><span class="sxs-lookup"><span data-stu-id="e0921-123">So, the following example:</span></span>
+<span data-ttu-id="b42c9-121">значение индекса toooffset hello, можно передать значение в функции copyIndex() hello.</span><span class="sxs-lookup"><span data-stu-id="b42c9-121">toooffset hello index value, you can pass a value in hello copyIndex() function.</span></span> <span data-ttu-id="b42c9-122">Hello количество итераций tooperform по-прежнему указывается в элемента copy hello, но значение hello copyIndex смещением hello указано значение.</span><span class="sxs-lookup"><span data-stu-id="b42c9-122">hello number of iterations tooperform is still specified in hello copy element, but hello value of copyIndex is offset by hello specified value.</span></span> <span data-ttu-id="b42c9-123">Следующий пример в этом случае hello:</span><span class="sxs-lookup"><span data-stu-id="b42c9-123">So, hello following example:</span></span>
 
 ```json
 "name": "[concat('storage', copyIndex(1))]",
 ```
 
-<span data-ttu-id="e0921-124">Он создает следующие имена:</span><span class="sxs-lookup"><span data-stu-id="e0921-124">Creates these names:</span></span>
+<span data-ttu-id="b42c9-124">Он создает следующие имена:</span><span class="sxs-lookup"><span data-stu-id="b42c9-124">Creates these names:</span></span>
 
-* <span data-ttu-id="e0921-125">storage1;</span><span class="sxs-lookup"><span data-stu-id="e0921-125">storage1</span></span>
-* <span data-ttu-id="e0921-126">storage2;</span><span class="sxs-lookup"><span data-stu-id="e0921-126">storage2</span></span>
-* <span data-ttu-id="e0921-127">storage3.</span><span class="sxs-lookup"><span data-stu-id="e0921-127">storage3</span></span>
+* <span data-ttu-id="b42c9-125">storage1;</span><span class="sxs-lookup"><span data-stu-id="b42c9-125">storage1</span></span>
+* <span data-ttu-id="b42c9-126">storage2;</span><span class="sxs-lookup"><span data-stu-id="b42c9-126">storage2</span></span>
+* <span data-ttu-id="b42c9-127">storage3.</span><span class="sxs-lookup"><span data-stu-id="b42c9-127">storage3</span></span>
 
-<span data-ttu-id="e0921-128">Операция копирования удобна при работе с массивами, так как позволяет выполнить итерацию по каждому элементу в массиве.</span><span class="sxs-lookup"><span data-stu-id="e0921-128">The copy operation is helpful when working with arrays because you can iterate through each element in the array.</span></span> <span data-ttu-id="e0921-129">Используйте функцию `length` в массиве, чтобы указать число итераций, а также функцию `copyIndex` для получения текущего индекса в массиве.</span><span class="sxs-lookup"><span data-stu-id="e0921-129">Use the `length` function on the array to specify the count for iterations, and `copyIndex` to retrieve the current index in the array.</span></span> <span data-ttu-id="e0921-130">См. приведенный ниже пример.</span><span class="sxs-lookup"><span data-stu-id="e0921-130">So, the following example:</span></span>
+<span data-ttu-id="b42c9-128">Операция копирования Hello полезно при работе с массивами, так как каждый элемент массива hello итерацию.</span><span class="sxs-lookup"><span data-stu-id="b42c9-128">hello copy operation is helpful when working with arrays because you can iterate through each element in hello array.</span></span> <span data-ttu-id="b42c9-129">Используйте hello `length` функции hello массива toospecify hello число итераций, и `copyIndex` tooretrieve hello текущий индекс в массиве hello.</span><span class="sxs-lookup"><span data-stu-id="b42c9-129">Use hello `length` function on hello array toospecify hello count for iterations, and `copyIndex` tooretrieve hello current index in hello array.</span></span> <span data-ttu-id="b42c9-130">Следующий пример в этом случае hello:</span><span class="sxs-lookup"><span data-stu-id="b42c9-130">So, hello following example:</span></span>
 
 ```json
 "parameters": { 
@@ -104,17 +104,17 @@ ms.lasthandoff: 07/11/2017
 ]
 ```
 
-<span data-ttu-id="e0921-131">Он создает следующие имена:</span><span class="sxs-lookup"><span data-stu-id="e0921-131">Creates these names:</span></span>
+<span data-ttu-id="b42c9-131">Он создает следующие имена:</span><span class="sxs-lookup"><span data-stu-id="b42c9-131">Creates these names:</span></span>
 
-* <span data-ttu-id="e0921-132">storagecontoso;</span><span class="sxs-lookup"><span data-stu-id="e0921-132">storagecontoso</span></span>
-* <span data-ttu-id="e0921-133">storagefabrikam;</span><span class="sxs-lookup"><span data-stu-id="e0921-133">storagefabrikam</span></span>
-* <span data-ttu-id="e0921-134">storagecoho.</span><span class="sxs-lookup"><span data-stu-id="e0921-134">storagecoho</span></span>
+* <span data-ttu-id="b42c9-132">storagecontoso;</span><span class="sxs-lookup"><span data-stu-id="b42c9-132">storagecontoso</span></span>
+* <span data-ttu-id="b42c9-133">storagefabrikam;</span><span class="sxs-lookup"><span data-stu-id="b42c9-133">storagefabrikam</span></span>
+* <span data-ttu-id="b42c9-134">storagecoho.</span><span class="sxs-lookup"><span data-stu-id="b42c9-134">storagecoho</span></span>
 
-## <a name="serial-copy"></a><span data-ttu-id="e0921-135">Последовательное копирование</span><span class="sxs-lookup"><span data-stu-id="e0921-135">Serial copy</span></span>
+## <a name="serial-copy"></a><span data-ttu-id="b42c9-135">Последовательное копирование</span><span class="sxs-lookup"><span data-stu-id="b42c9-135">Serial copy</span></span>
 
-<span data-ttu-id="e0921-136">При использовании элемента copy для создания нескольких экземпляров типа ресурса по умолчанию Resource Manager развертывает эти экземпляры параллельно.</span><span class="sxs-lookup"><span data-stu-id="e0921-136">When you use the copy element to create multiple instances of a resource type, Resource Manager, by default, deploys those instances in parallel.</span></span> <span data-ttu-id="e0921-137">Тем не менее можно настроить последовательное развертывание ресурсов.</span><span class="sxs-lookup"><span data-stu-id="e0921-137">However, you may want to specify that the resources are deployed in sequence.</span></span> <span data-ttu-id="e0921-138">Например, при обновлении рабочей среды может потребоваться дифференцировать обновления, чтобы только определенное число элементов могло быть обновлено в любой момент времени.</span><span class="sxs-lookup"><span data-stu-id="e0921-138">For example, when updating a production environment, you may want to stagger the updates so only a certain number are updated at any one time.</span></span>
+<span data-ttu-id="b42c9-136">При использовании hello Копировать элемент toocreate несколько экземпляров типа ресурса, диспетчер ресурсов по умолчанию развертывает эти экземпляры в параллельном режиме.</span><span class="sxs-lookup"><span data-stu-id="b42c9-136">When you use hello copy element toocreate multiple instances of a resource type, Resource Manager, by default, deploys those instances in parallel.</span></span> <span data-ttu-id="b42c9-137">Тем не менее вы можете toospecify, hello ресурсы развертываются в последовательности.</span><span class="sxs-lookup"><span data-stu-id="b42c9-137">However, you may want toospecify that hello resources are deployed in sequence.</span></span> <span data-ttu-id="b42c9-138">Например, при обновлении рабочей среде, можно toostagger hello обновляет только определенное число обновляются в любой момент времени.</span><span class="sxs-lookup"><span data-stu-id="b42c9-138">For example, when updating a production environment, you may want toostagger hello updates so only a certain number are updated at any one time.</span></span>
 
-<span data-ttu-id="e0921-139">Resource Manager предоставляет свойства элемента copy, позволяющие последовательно развернуть несколько экземпляров.</span><span class="sxs-lookup"><span data-stu-id="e0921-139">Resource Manager provides properties on the copy element that enable you to serially deploy multiple instances.</span></span> <span data-ttu-id="e0921-140">В элементе copy задайте для `mode` значение **serial**, а для `batchSize` — число экземпляров, которые могут развертываться одновременно.</span><span class="sxs-lookup"><span data-stu-id="e0921-140">In the copy element, set `mode` to **serial** and `batchSize` to the number of instances to deploy at a time.</span></span> <span data-ttu-id="e0921-141">В последовательном режиме Resource Manager создает зависимость от предыдущих экземпляров в цикле, поэтому он не начинает выполнение следующего пакета до завершения предыдущего.</span><span class="sxs-lookup"><span data-stu-id="e0921-141">With serial mode, Resource Manager creates a dependency on earlier instances in the loop, so it does not start one batch until the previous batch completes.</span></span>
+<span data-ttu-id="b42c9-139">Диспетчер ресурсов предоставляет свойства для копирования элемента hello, которые позволяют вам tooserially развертывание нескольких экземпляров.</span><span class="sxs-lookup"><span data-stu-id="b42c9-139">Resource Manager provides properties on hello copy element that enable you tooserially deploy multiple instances.</span></span> <span data-ttu-id="b42c9-140">В набор элементов для копирования hello, `mode` слишком**последовательной** и `batchSize` toohello число экземпляров toodeploy одновременно.</span><span class="sxs-lookup"><span data-stu-id="b42c9-140">In hello copy element, set `mode` too**serial** and `batchSize` toohello number of instances toodeploy at a time.</span></span> <span data-ttu-id="b42c9-141">С помощью последовательного режима диспетчера ресурсов создает зависимость от предыдущих экземпляров в цикле hello, один пакет не запускаются до завершения предыдущего пакета hello.</span><span class="sxs-lookup"><span data-stu-id="b42c9-141">With serial mode, Resource Manager creates a dependency on earlier instances in hello loop, so it does not start one batch until hello previous batch completes.</span></span>
 
 ```json
 "copy": {
@@ -125,9 +125,9 @@ ms.lasthandoff: 07/11/2017
 },
 ```
 
-<span data-ttu-id="e0921-142">Свойство mode также принимает значение **parallel**, которое является значением по умолчанию.</span><span class="sxs-lookup"><span data-stu-id="e0921-142">The mode property also accepts **parallel**, which is the default value.</span></span>
+<span data-ttu-id="b42c9-142">Hello свойство режима также принимает **параллельных**, которое является значением по умолчанию hello.</span><span class="sxs-lookup"><span data-stu-id="b42c9-142">hello mode property also accepts **parallel**, which is hello default value.</span></span>
 
-<span data-ttu-id="e0921-143">Чтобы проверить последовательное копирование без создания фактических ресурсов, используйте следующий шаблон, который развертывает пустые вложенные шаблоны.</span><span class="sxs-lookup"><span data-stu-id="e0921-143">To test serial copy without creating actual resources, use the following template that deploys empty nested templates:</span></span>
+<span data-ttu-id="b42c9-143">tootest последовательного копирования без создания фактические ресурсы hello используйте следующий шаблон, который развертывает пустые вложенные шаблоны:</span><span class="sxs-lookup"><span data-stu-id="b42c9-143">tootest serial copy without creating actual resources, use hello following template that deploys empty nested templates:</span></span>
 
 ```json
 {
@@ -170,11 +170,11 @@ ms.lasthandoff: 07/11/2017
 }
 ```
 
-<span data-ttu-id="e0921-144">В журнале развертывания обратите внимание на то, что вложенные развертывания обрабатываются последовательно.</span><span class="sxs-lookup"><span data-stu-id="e0921-144">In the deployment history, notice that the nested deployments are processed in sequence.</span></span>
+<span data-ttu-id="b42c9-144">В журнале развертывания hello Обратите внимание, что hello вложенных развертываний, обрабатываются последовательно.</span><span class="sxs-lookup"><span data-stu-id="b42c9-144">In hello deployment history, notice that hello nested deployments are processed in sequence.</span></span>
 
 ![Последовательное развертывание](./media/resource-group-create-multiple/serial-copy.png)
 
-<span data-ttu-id="e0921-146">В качестве более реалистичного сценария приведен следующий пример. Он одновременно развертывает два экземпляра виртуальной машины Linux из вложенного шаблона.</span><span class="sxs-lookup"><span data-stu-id="e0921-146">For a more realistic scenario, the following example deploys two instances at a time of a Linux VM from a nested template:</span></span>
+<span data-ttu-id="b42c9-146">Для более реалистичном случае следующий пример hello развертывает два экземпляра во время из вложенного шаблона виртуальной машины Linux:</span><span class="sxs-lookup"><span data-stu-id="b42c9-146">For a more realistic scenario, hello following example deploys two instances at a time of a Linux VM from a nested template:</span></span>
 
 ```json
 {
@@ -184,19 +184,19 @@ ms.lasthandoff: 07/11/2017
         "adminUsername": {
             "type": "string",
             "metadata": {
-                "description": "User name for the Virtual Machine."
+                "description": "User name for hello Virtual Machine."
             }
         },
         "adminPassword": {
             "type": "securestring",
             "metadata": {
-                "description": "Password for the Virtual Machine."
+                "description": "Password for hello Virtual Machine."
             }
         },
         "dnsLabelPrefix": {
             "type": "string",
             "metadata": {
-                "description": "Unique DNS Name for the Public IP used to access the Virtual Machine."
+                "description": "Unique DNS Name for hello Public IP used tooaccess hello Virtual Machine."
             }
         },
         "ubuntuOSVersion": {
@@ -209,7 +209,7 @@ ms.lasthandoff: 07/11/2017
                 "16.04.0-LTS"
             ],
             "metadata": {
-                "description": "The Ubuntu version for the VM. This will pick a fully patched image of this given Ubuntu version."
+                "description": "hello Ubuntu version for hello VM. This will pick a fully patched image of this given Ubuntu version."
             }
         }
     },
@@ -256,15 +256,15 @@ ms.lasthandoff: 07/11/2017
 }
 ```
 
-## <a name="property-iteration"></a><span data-ttu-id="e0921-147">Итерация свойства</span><span class="sxs-lookup"><span data-stu-id="e0921-147">Property iteration</span></span>
+## <a name="property-iteration"></a><span data-ttu-id="b42c9-147">Итерация свойства</span><span class="sxs-lookup"><span data-stu-id="b42c9-147">Property iteration</span></span>
 
-<span data-ttu-id="e0921-148">Чтобы создать несколько значений для свойства ресурса, добавьте массив `copy` в элемент properties.</span><span class="sxs-lookup"><span data-stu-id="e0921-148">To create multiple values for a property on a resource, add a `copy` array in the properties element.</span></span> <span data-ttu-id="e0921-149">Этот массив содержит объекты, каждый из которых имеет следующие свойства:</span><span class="sxs-lookup"><span data-stu-id="e0921-149">This array contains objects, and each object has the following properties:</span></span>
+<span data-ttu-id="b42c9-148">добавить несколько значений для свойства ресурса, toocreate `copy` массива в элементе свойства hello.</span><span class="sxs-lookup"><span data-stu-id="b42c9-148">toocreate multiple values for a property on a resource, add a `copy` array in hello properties element.</span></span> <span data-ttu-id="b42c9-149">Этот массив содержит объекты, и каждый объект имеет hello следующие свойства:</span><span class="sxs-lookup"><span data-stu-id="b42c9-149">This array contains objects, and each object has hello following properties:</span></span>
 
-* <span data-ttu-id="e0921-150">name — имя свойства, для которого необходимо создать нескольких значений;</span><span class="sxs-lookup"><span data-stu-id="e0921-150">name - the name of the property to create multiple values for</span></span>
-* <span data-ttu-id="e0921-151">count — количество значений, которые необходимо создать;</span><span class="sxs-lookup"><span data-stu-id="e0921-151">count - the number of values to create</span></span>
-* <span data-ttu-id="e0921-152">input — объект, содержащий значения для назначения свойству.</span><span class="sxs-lookup"><span data-stu-id="e0921-152">input - an object that contains the values to assign to the property</span></span>  
+* <span data-ttu-id="b42c9-150">имя — имя hello объекта toocreate свойство hello несколько значений для</span><span class="sxs-lookup"><span data-stu-id="b42c9-150">name - hello name of hello property toocreate multiple values for</span></span>
+* <span data-ttu-id="b42c9-151">число — количество hello toocreate значения</span><span class="sxs-lookup"><span data-stu-id="b42c9-151">count - hello number of values toocreate</span></span>
+* <span data-ttu-id="b42c9-152">входные данные — это объект, содержащий tooassign toohello hello значения свойства</span><span class="sxs-lookup"><span data-stu-id="b42c9-152">input - an object that contains hello values tooassign toohello property</span></span>  
 
-<span data-ttu-id="e0921-153">В следующем примере показано, как применить массив `copy` к свойству dataDisks на виртуальной машине:</span><span class="sxs-lookup"><span data-stu-id="e0921-153">The following example shows how to apply `copy` to the dataDisks property on a virtual machine:</span></span>
+<span data-ttu-id="b42c9-153">Следующий пример показывает как Hello tooapply `copy` toohello dataDisks свойства на виртуальной машине:</span><span class="sxs-lookup"><span data-stu-id="b42c9-153">hello following example shows how tooapply `copy` toohello dataDisks property on a virtual machine:</span></span>
 
 ```json
 {
@@ -285,9 +285,9 @@ ms.lasthandoff: 07/11/2017
       ...
 ```
 
-<span data-ttu-id="e0921-154">Обратите внимание, что при использовании `copyIndex` в итерации свойства, необходимо указать имя итерации.</span><span class="sxs-lookup"><span data-stu-id="e0921-154">Notice that when using `copyIndex` inside a property iteration, you must provide the name of the iteration.</span></span> <span data-ttu-id="e0921-155">Вам не нужно указывать имя при использовании итерации ресурса.</span><span class="sxs-lookup"><span data-stu-id="e0921-155">You do not have to provide the name when used with resource iteration.</span></span>
+<span data-ttu-id="b42c9-154">Обратите внимание, что при использовании `copyIndex` внутри свойства итерации, необходимо указать имя hello hello итерации.</span><span class="sxs-lookup"><span data-stu-id="b42c9-154">Notice that when using `copyIndex` inside a property iteration, you must provide hello name of hello iteration.</span></span> <span data-ttu-id="b42c9-155">У вас имя hello tooprovide при использовании ресурсов итерации.</span><span class="sxs-lookup"><span data-stu-id="b42c9-155">You do not have tooprovide hello name when used with resource iteration.</span></span>
 
-<span data-ttu-id="e0921-156">Диспетчер ресурсов разворачивает массив `copy` во время развертывания.</span><span class="sxs-lookup"><span data-stu-id="e0921-156">Resource Manager expands the `copy` array during deployment.</span></span> <span data-ttu-id="e0921-157">Имя массива становится именем свойства.</span><span class="sxs-lookup"><span data-stu-id="e0921-157">The name of the array becomes the name of the property.</span></span> <span data-ttu-id="e0921-158">Входные значения становятся свойствами объекта.</span><span class="sxs-lookup"><span data-stu-id="e0921-158">The input values become the object properties.</span></span> <span data-ttu-id="e0921-159">Развернутый шаблон выглядит так:</span><span class="sxs-lookup"><span data-stu-id="e0921-159">The deployed template becomes:</span></span>
+<span data-ttu-id="b42c9-156">Диспетчер ресурсов расширяет hello `copy` массива во время развертывания.</span><span class="sxs-lookup"><span data-stu-id="b42c9-156">Resource Manager expands hello `copy` array during deployment.</span></span> <span data-ttu-id="b42c9-157">Имя Hello массива hello становится именем hello hello свойства.</span><span class="sxs-lookup"><span data-stu-id="b42c9-157">hello name of hello array becomes hello name of hello property.</span></span> <span data-ttu-id="b42c9-158">входные значения Hello становятся hello объекта свойства.</span><span class="sxs-lookup"><span data-stu-id="b42c9-158">hello input values become hello object properties.</span></span> <span data-ttu-id="b42c9-159">Шаблон развертывания Hello выглядит следующим образом:</span><span class="sxs-lookup"><span data-stu-id="b42c9-159">hello deployed template becomes:</span></span>
 
 ```json
 {
@@ -316,7 +316,7 @@ ms.lasthandoff: 07/11/2017
       ...
 ```
 
-<span data-ttu-id="e0921-160">Вы можете совместно использовать итерацию свойства и ресурса.</span><span class="sxs-lookup"><span data-stu-id="e0921-160">You can use resource and property iteration together.</span></span> <span data-ttu-id="e0921-161">Обращайтесь к итерации свойства по имени.</span><span class="sxs-lookup"><span data-stu-id="e0921-161">Reference the property iteration by name.</span></span>
+<span data-ttu-id="b42c9-160">Вы можете совместно использовать итерацию свойства и ресурса.</span><span class="sxs-lookup"><span data-stu-id="b42c9-160">You can use resource and property iteration together.</span></span> <span data-ttu-id="b42c9-161">Справочник по итерации hello свойства по имени.</span><span class="sxs-lookup"><span data-stu-id="b42c9-161">Reference hello property iteration by name.</span></span>
 
 ```json
 {
@@ -350,7 +350,7 @@ ms.lasthandoff: 07/11/2017
 }
 ```
 
-<span data-ttu-id="e0921-162">Вы можете включить только один элемент copy в properties для каждого ресурса.</span><span class="sxs-lookup"><span data-stu-id="e0921-162">You can only include one copy element in the properties for each resource.</span></span> <span data-ttu-id="e0921-163">Чтобы указать цикл итерации для нескольких свойств, определите несколько объектов в массиве copy.</span><span class="sxs-lookup"><span data-stu-id="e0921-163">To specify an iteration loop for more than one property, define multiple objects in the copy array.</span></span> <span data-ttu-id="e0921-164">Итерация каждого объекта выполняется отдельно.</span><span class="sxs-lookup"><span data-stu-id="e0921-164">Each object is iterated separately.</span></span> <span data-ttu-id="e0921-165">Например, чтобы создать несколько экземпляров свойств `frontendIPConfigurations` и `loadBalancingRules` в балансировщике нагрузки, определите оба объекта в одном элементе copy:</span><span class="sxs-lookup"><span data-stu-id="e0921-165">For example, to create multiple instances of both the `frontendIPConfigurations` property and the `loadBalancingRules` property on a load balancer, define both objects in a single copy element:</span></span> 
+<span data-ttu-id="b42c9-162">В свойствах hello для каждого ресурса может содержать только один элемент для копирования.</span><span class="sxs-lookup"><span data-stu-id="b42c9-162">You can only include one copy element in hello properties for each resource.</span></span> <span data-ttu-id="b42c9-163">toospecify итерации цикла для более чем одного свойства определить несколько объектов в массиве копирования hello.</span><span class="sxs-lookup"><span data-stu-id="b42c9-163">toospecify an iteration loop for more than one property, define multiple objects in hello copy array.</span></span> <span data-ttu-id="b42c9-164">Итерация каждого объекта выполняется отдельно.</span><span class="sxs-lookup"><span data-stu-id="b42c9-164">Each object is iterated separately.</span></span> <span data-ttu-id="b42c9-165">Например, toocreate несколько экземпляров обоих hello `frontendIPConfigurations` свойство и hello `loadBalancingRules` свойство в подсистеме балансировки нагрузки определять оба объекта в элементе одной копии:</span><span class="sxs-lookup"><span data-stu-id="b42c9-165">For example, toocreate multiple instances of both hello `frontendIPConfigurations` property and hello `loadBalancingRules` property on a load balancer, define both objects in a single copy element:</span></span> 
 
 ```json
 {
@@ -397,8 +397,8 @@ ms.lasthandoff: 07/11/2017
 }
 ```
 
-## <a name="depend-on-resources-in-a-loop"></a><span data-ttu-id="e0921-166">Зависимость от ресурсов в цикле</span><span class="sxs-lookup"><span data-stu-id="e0921-166">Depend on resources in a loop</span></span>
-<span data-ttu-id="e0921-167">С помощью элемента `dependsOn` можно определить последовательность развертывания ресурсов.</span><span class="sxs-lookup"><span data-stu-id="e0921-167">You specify that a resource is deployed after another resource by using the `dependsOn` element.</span></span> <span data-ttu-id="e0921-168">Чтобы развернуть ресурс, который зависит от коллекции ресурсов в цикле, укажите имя цикла копирования в элементе dependsOn.</span><span class="sxs-lookup"><span data-stu-id="e0921-168">To deploy a resource that depends on the collection of resources in a loop, provide the name of the copy loop in the dependsOn element.</span></span> <span data-ttu-id="e0921-169">В следующем примере показано, как развернуть три учетные записи хранения до развертывания виртуальной машины.</span><span class="sxs-lookup"><span data-stu-id="e0921-169">The following example shows how to deploy three storage accounts before deploying the Virtual Machine.</span></span> <span data-ttu-id="e0921-170">Полное определение виртуальной машины не показано.</span><span class="sxs-lookup"><span data-stu-id="e0921-170">The full Virtual Machine definition is not shown.</span></span> <span data-ttu-id="e0921-171">Обратите внимание, что параметр name элемента copy имеет значение `storagecopy`, а элемент dependsOn для виртуальных машин имеет значение `storagecopy`.</span><span class="sxs-lookup"><span data-stu-id="e0921-171">Notice that the copy element has name set to `storagecopy` and the dependsOn element for the Virtual Machines is also set to `storagecopy`.</span></span>
+## <a name="depend-on-resources-in-a-loop"></a><span data-ttu-id="b42c9-166">Зависимость от ресурсов в цикле</span><span class="sxs-lookup"><span data-stu-id="b42c9-166">Depend on resources in a loop</span></span>
+<span data-ttu-id="b42c9-167">Укажите, что ресурс развернут после другой ресурс с помощью hello `dependsOn` элемента.</span><span class="sxs-lookup"><span data-stu-id="b42c9-167">You specify that a resource is deployed after another resource by using hello `dependsOn` element.</span></span> <span data-ttu-id="b42c9-168">toodeploy ресурс, который зависит от hello коллекцию ресурсов в цикле, укажите имя hello копирования цикла hello элемент dependsOn hello.</span><span class="sxs-lookup"><span data-stu-id="b42c9-168">toodeploy a resource that depends on hello collection of resources in a loop, provide hello name of hello copy loop in hello dependsOn element.</span></span> <span data-ttu-id="b42c9-169">Hello в следующем примере показано, как toodeploy три учетные записи хранения перед развертыванием hello виртуальной машины.</span><span class="sxs-lookup"><span data-stu-id="b42c9-169">hello following example shows how toodeploy three storage accounts before deploying hello Virtual Machine.</span></span> <span data-ttu-id="b42c9-170">полное определение виртуальной машины Hello не указывается.</span><span class="sxs-lookup"><span data-stu-id="b42c9-170">hello full Virtual Machine definition is not shown.</span></span> <span data-ttu-id="b42c9-171">Обратите внимание на то этого элемента copy hello имя задано слишком`storagecopy` и элемент dependsOn hello для hello виртуальные машины также имеет слишком`storagecopy`.</span><span class="sxs-lookup"><span data-stu-id="b42c9-171">Notice that hello copy element has name set too`storagecopy` and hello dependsOn element for hello Virtual Machines is also set too`storagecopy`.</span></span>
 
 ```json
 {
@@ -433,10 +433,10 @@ ms.lasthandoff: 07/11/2017
 }
 ```
 
-## <a name="create-multiple-instances-of-a-child-resource"></a><span data-ttu-id="e0921-172">Создание нескольких экземпляров дочернего ресурса</span><span class="sxs-lookup"><span data-stu-id="e0921-172">Create multiple instances of a child resource</span></span>
-<span data-ttu-id="e0921-173">Нельзя включить дочерний ресурс в цикл копирования.</span><span class="sxs-lookup"><span data-stu-id="e0921-173">You cannot use a copy loop for a child resource.</span></span> <span data-ttu-id="e0921-174">Чтобы создать несколько экземпляров ресурса, которые определяются как вложенные в другой ресурс, необходимо создать его как ресурс верхнего уровня.</span><span class="sxs-lookup"><span data-stu-id="e0921-174">To create multiple instances of a resource that you typically define as nested within another resource, you must instead create that resource as a top-level resource.</span></span> <span data-ttu-id="e0921-175">Вы можете определить связь с родительским ресурсом с помощью свойств type и name.</span><span class="sxs-lookup"><span data-stu-id="e0921-175">You define the relationship with the parent resource through the type and name properties.</span></span>
+## <a name="create-multiple-instances-of-a-child-resource"></a><span data-ttu-id="b42c9-172">Создание нескольких экземпляров дочернего ресурса</span><span class="sxs-lookup"><span data-stu-id="b42c9-172">Create multiple instances of a child resource</span></span>
+<span data-ttu-id="b42c9-173">Нельзя включить дочерний ресурс в цикл копирования.</span><span class="sxs-lookup"><span data-stu-id="b42c9-173">You cannot use a copy loop for a child resource.</span></span> <span data-ttu-id="b42c9-174">toocreate несколько экземпляров ресурса, который обычно определяется как вложенный в другой ресурс, необходимо вместо этого создать этот ресурс как ресурс верхнего уровня.</span><span class="sxs-lookup"><span data-stu-id="b42c9-174">toocreate multiple instances of a resource that you typically define as nested within another resource, you must instead create that resource as a top-level resource.</span></span> <span data-ttu-id="b42c9-175">Можно определить hello связь с родительского ресурса hello через hello тип и имя свойства.</span><span class="sxs-lookup"><span data-stu-id="b42c9-175">You define hello relationship with hello parent resource through hello type and name properties.</span></span>
 
-<span data-ttu-id="e0921-176">Предположим, вы определяете набор данных как дочерний ресурс фабрики данных.</span><span class="sxs-lookup"><span data-stu-id="e0921-176">For example, suppose you typically define a dataset as a child resource within a data factory.</span></span>
+<span data-ttu-id="b42c9-176">Предположим, вы определяете набор данных как дочерний ресурс фабрики данных.</span><span class="sxs-lookup"><span data-stu-id="b42c9-176">For example, suppose you typically define a dataset as a child resource within a data factory.</span></span>
 
 ```json
 "resources": [
@@ -456,11 +456,11 @@ ms.lasthandoff: 07/11/2017
 }]
 ```
 
-<span data-ttu-id="e0921-177">Чтобы создать несколько экземпляров набора данных, переместите его за пределы фабрики данных.</span><span class="sxs-lookup"><span data-stu-id="e0921-177">To create multiple instances of data sets, move it outside of the data factory.</span></span> <span data-ttu-id="e0921-178">Набор данных должен находиться на том же уровне, что и фабрика данных, но при этом он должен быть дочерним ресурсом фабрики данных.</span><span class="sxs-lookup"><span data-stu-id="e0921-178">The dataset must be at the same level as the data factory, but it is still a child resource of the data factory.</span></span> <span data-ttu-id="e0921-179">Вы можете сохранить связь между набором данных и фабрикой данных с помощью свойств type и name.</span><span class="sxs-lookup"><span data-stu-id="e0921-179">You preserve the relationship between data set and data factory through the type and name properties.</span></span> <span data-ttu-id="e0921-180">Так как тип нельзя определить по положению в шаблоне, укажите полное имя типа в следующем формате: `{resource-provider-namespace}/{parent-resource-type}/{child-resource-type}`.</span><span class="sxs-lookup"><span data-stu-id="e0921-180">Since type can no longer be inferred from its position in the template, you must provide the fully qualified type in the format: `{resource-provider-namespace}/{parent-resource-type}/{child-resource-type}`.</span></span>
+<span data-ttu-id="b42c9-177">toocreate несколько экземпляров наборов данных, переместите его вне фабрики данных hello.</span><span class="sxs-lookup"><span data-stu-id="b42c9-177">toocreate multiple instances of data sets, move it outside of hello data factory.</span></span> <span data-ttu-id="b42c9-178">Hello набор данных должен быть hello же уровня как hello фабрики данных, но она по-прежнему дочерний ресурс hello фабрики данных.</span><span class="sxs-lookup"><span data-stu-id="b42c9-178">hello dataset must be at hello same level as hello data factory, but it is still a child resource of hello data factory.</span></span> <span data-ttu-id="b42c9-179">Можно сохранить hello связь между набора данных и фабрику данных через hello тип и имя свойства.</span><span class="sxs-lookup"><span data-stu-id="b42c9-179">You preserve hello relationship between data set and data factory through hello type and name properties.</span></span> <span data-ttu-id="b42c9-180">Так как тип не может быть выведен из его положение в шаблоне hello, необходимо указать тип полное hello в формате hello: `{resource-provider-namespace}/{parent-resource-type}/{child-resource-type}`.</span><span class="sxs-lookup"><span data-stu-id="b42c9-180">Since type can no longer be inferred from its position in hello template, you must provide hello fully qualified type in hello format: `{resource-provider-namespace}/{parent-resource-type}/{child-resource-type}`.</span></span>
 
-<span data-ttu-id="e0921-181">Чтобы установить связь между родительским и дочерним ресурсами, укажите имя набора данных, которое включает имя родительского ресурса.</span><span class="sxs-lookup"><span data-stu-id="e0921-181">To establish a parent/child relationship with an instance of the data factory, provide a name for the data set that includes the parent resource name.</span></span> <span data-ttu-id="e0921-182">Используйте формат `{parent-resource-name}/{child-resource-name}`.</span><span class="sxs-lookup"><span data-stu-id="e0921-182">Use the format: `{parent-resource-name}/{child-resource-name}`.</span></span>  
+<span data-ttu-id="b42c9-181">tooestablish иерархическое отношение с экземпляром hello фабрики данных, введите имя для набора данных hello, которая включает имя родительского ресурса hello.</span><span class="sxs-lookup"><span data-stu-id="b42c9-181">tooestablish a parent/child relationship with an instance of hello data factory, provide a name for hello data set that includes hello parent resource name.</span></span> <span data-ttu-id="b42c9-182">Использование формата hello: `{parent-resource-name}/{child-resource-name}`.</span><span class="sxs-lookup"><span data-stu-id="b42c9-182">Use hello format: `{parent-resource-name}/{child-resource-name}`.</span></span>  
 
-<span data-ttu-id="e0921-183">В следующем примере показано, как это сделать:</span><span class="sxs-lookup"><span data-stu-id="e0921-183">The following example shows the implementation:</span></span>
+<span data-ttu-id="b42c9-183">Hello ниже приведен пример реализации hello.</span><span class="sxs-lookup"><span data-stu-id="b42c9-183">hello following example shows hello implementation:</span></span>
 
 ```json
 "resources": [
@@ -483,9 +483,9 @@ ms.lasthandoff: 07/11/2017
 }]
 ```
 
-## <a name="conditionally-deploy-resource"></a><span data-ttu-id="e0921-184">Условное развертывание ресурса</span><span class="sxs-lookup"><span data-stu-id="e0921-184">Conditionally deploy resource</span></span>
+## <a name="conditionally-deploy-resource"></a><span data-ttu-id="b42c9-184">Условное развертывание ресурса</span><span class="sxs-lookup"><span data-stu-id="b42c9-184">Conditionally deploy resource</span></span>
 
-<span data-ttu-id="e0921-185">Чтобы указать, развернут ли ресурс, используйте элемент `condition`.</span><span class="sxs-lookup"><span data-stu-id="e0921-185">To specify whether a resource is deployed, use the `condition` element.</span></span> <span data-ttu-id="e0921-186">Этот элемент возвращает значение True или False.</span><span class="sxs-lookup"><span data-stu-id="e0921-186">The value for this element resolves to true or false.</span></span> <span data-ttu-id="e0921-187">Если значение True, ресурс развернут.</span><span class="sxs-lookup"><span data-stu-id="e0921-187">When the value is true, the resource is deployed.</span></span> <span data-ttu-id="e0921-188">А если False — то не развернут.</span><span class="sxs-lookup"><span data-stu-id="e0921-188">When the value is false, the resource is not deployed.</span></span> <span data-ttu-id="e0921-189">Например, чтобы указать, развернута ли новая учетная запись хранения или используется ли имеющаяся, сделайте следующее:</span><span class="sxs-lookup"><span data-stu-id="e0921-189">For example, to specify whether a new storage account is deployed or an existing storage account is used, use:</span></span>
+<span data-ttu-id="b42c9-185">toospecify ли ресурс развернут, использовать hello `condition` элемента.</span><span class="sxs-lookup"><span data-stu-id="b42c9-185">toospecify whether a resource is deployed, use hello `condition` element.</span></span> <span data-ttu-id="b42c9-186">Hello значение для этого элемента разрешает tootrue или false.</span><span class="sxs-lookup"><span data-stu-id="b42c9-186">hello value for this element resolves tootrue or false.</span></span> <span data-ttu-id="b42c9-187">Если hello значение равно true, ресурс hello развернут.</span><span class="sxs-lookup"><span data-stu-id="b42c9-187">When hello value is true, hello resource is deployed.</span></span> <span data-ttu-id="b42c9-188">Если hello значение равно false, ресурс hello не развернут.</span><span class="sxs-lookup"><span data-stu-id="b42c9-188">When hello value is false, hello resource is not deployed.</span></span> <span data-ttu-id="b42c9-189">Например toospecify ли развернуть новую учетную запись хранилища или использовать существующую учетную запись хранения, используйте:</span><span class="sxs-lookup"><span data-stu-id="b42c9-189">For example, toospecify whether a new storage account is deployed or an existing storage account is used, use:</span></span>
 
 ```json
 {
@@ -502,11 +502,11 @@ ms.lasthandoff: 07/11/2017
 }
 ```
 
-<span data-ttu-id="e0921-190">Пример использования нового или имеющегося шаблона условий см. [здесь](https://github.com/rjmax/Build2017/blob/master/Act1.TemplateEnhancements/Chapter05.ConditionalResources.NewOrExisting.json).</span><span class="sxs-lookup"><span data-stu-id="e0921-190">For an example of using a new or existing resource, see [New or existing condition template](https://github.com/rjmax/Build2017/blob/master/Act1.TemplateEnhancements/Chapter05.ConditionalResources.NewOrExisting.json).</span></span>
+<span data-ttu-id="b42c9-190">Пример использования нового или имеющегося шаблона условий см. [здесь](https://github.com/rjmax/Build2017/blob/master/Act1.TemplateEnhancements/Chapter05.ConditionalResources.NewOrExisting.json).</span><span class="sxs-lookup"><span data-stu-id="b42c9-190">For an example of using a new or existing resource, see [New or existing condition template](https://github.com/rjmax/Build2017/blob/master/Act1.TemplateEnhancements/Chapter05.ConditionalResources.NewOrExisting.json).</span></span>
 
-<span data-ttu-id="e0921-191">Пример использования пароля или ключа SSH для развертывания виртуальной машины см. в [шаблоне имени пользователя или условия SSH](https://github.com/rjmax/Build2017/blob/master/Act1.TemplateEnhancements/Chapter05.ConditionalResourcesUsernameOrSsh.json).</span><span class="sxs-lookup"><span data-stu-id="e0921-191">For an example of using a password or SSH key to deploy virtual machine, see [Username or SSH condition template](https://github.com/rjmax/Build2017/blob/master/Act1.TemplateEnhancements/Chapter05.ConditionalResourcesUsernameOrSsh.json).</span></span>
+<span data-ttu-id="b42c9-191">Пример использования пароля или SSH ключа toodeploy виртуальной машины, в разделе [имя пользователя или SSH условие шаблона](https://github.com/rjmax/Build2017/blob/master/Act1.TemplateEnhancements/Chapter05.ConditionalResourcesUsernameOrSsh.json).</span><span class="sxs-lookup"><span data-stu-id="b42c9-191">For an example of using a password or SSH key toodeploy virtual machine, see [Username or SSH condition template](https://github.com/rjmax/Build2017/blob/master/Act1.TemplateEnhancements/Chapter05.ConditionalResourcesUsernameOrSsh.json).</span></span>
 
-## <a name="next-steps"></a><span data-ttu-id="e0921-192">Дальнейшие действия</span><span class="sxs-lookup"><span data-stu-id="e0921-192">Next steps</span></span>
-* <span data-ttu-id="e0921-193">Сведения о разделах шаблона см. в статье, посвященной [созданию шаблонов Azure Resource Manager](resource-group-authoring-templates.md).</span><span class="sxs-lookup"><span data-stu-id="e0921-193">If you want to learn about the sections of a template, see [Authoring Azure Resource Manager Templates](resource-group-authoring-templates.md).</span></span>
-* <span data-ttu-id="e0921-194">Инструкции по развертыванию шаблонов см. в статье, посвященной [развертыванию приложения с помощью шаблона Azure Resource Manager](resource-group-template-deploy.md).</span><span class="sxs-lookup"><span data-stu-id="e0921-194">To learn how to deploy your template, see [Deploy an application with Azure Resource Manager Template](resource-group-template-deploy.md).</span></span>
+## <a name="next-steps"></a><span data-ttu-id="b42c9-192">Дальнейшие действия</span><span class="sxs-lookup"><span data-stu-id="b42c9-192">Next steps</span></span>
+* <span data-ttu-id="b42c9-193">Toolearn о разделах hello шаблона см [разработки шаблоны Azure Resource Manager](resource-group-authoring-templates.md).</span><span class="sxs-lookup"><span data-stu-id="b42c9-193">If you want toolearn about hello sections of a template, see [Authoring Azure Resource Manager Templates](resource-group-authoring-templates.md).</span></span>
+* <span data-ttu-id="b42c9-194">toolearn как toodeploy шаблону, в разделе [развернуть приложение с помощью шаблона Azure Resource Manager](resource-group-template-deploy.md).</span><span class="sxs-lookup"><span data-stu-id="b42c9-194">toolearn how toodeploy your template, see [Deploy an application with Azure Resource Manager Template](resource-group-template-deploy.md).</span></span>
 

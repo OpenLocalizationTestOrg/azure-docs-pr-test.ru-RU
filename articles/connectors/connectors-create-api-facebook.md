@@ -1,6 +1,6 @@
 ---
-title: "Добавление соединителя Facebook в приложения логики | Документация Майкрософт"
-description: "Обзор соединителя Facebook с параметрами интерфейса API REST"
+title: "Соединитель Facebook aaaAdd hello в приложениях для логики | Документы Microsoft"
+description: "Обзор соединителя Facebook hello с параметрами REST API"
 services: 
 documentationcenter: 
 author: MandiOhlinger
@@ -15,34 +15,34 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/07/2016
 ms.author: mandia; ladocs
-ms.openlocfilehash: e10a30ccef3e81cb3d7749696453d82b8958d076
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 962c6ed5d36e465de9d485d50e5c6dca6d44f470
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="get-started-with-the-facebook-connector"></a><span data-ttu-id="dd5f3-103">Начало работы с соединителем Facebook</span><span class="sxs-lookup"><span data-stu-id="dd5f3-103">Get started with the Facebook connector</span></span>
-<span data-ttu-id="dd5f3-104">Подключение к Facebook позволяет оставлять публикации в хронике, получать канал страниц и выполнять другие действия.</span><span class="sxs-lookup"><span data-stu-id="dd5f3-104">Connect to Facebook and post to a timeline, get a page feed, and more.</span></span> <span data-ttu-id="dd5f3-105">С помощью Facebook можно:</span><span class="sxs-lookup"><span data-stu-id="dd5f3-105">With Facebook, you can:</span></span>
+# <a name="get-started-with-hello-facebook-connector"></a><span data-ttu-id="d4dd3-103">Приступая к работе с соединитель Facebook hello</span><span class="sxs-lookup"><span data-stu-id="d4dd3-103">Get started with hello Facebook connector</span></span>
+<span data-ttu-id="d4dd3-104">Подключения tooFacebook и учет tooa временной шкалы, страницы веб-канала и другие.</span><span class="sxs-lookup"><span data-stu-id="d4dd3-104">Connect tooFacebook and post tooa timeline, get a page feed, and more.</span></span> <span data-ttu-id="d4dd3-105">С помощью Facebook можно:</span><span class="sxs-lookup"><span data-stu-id="d4dd3-105">With Facebook, you can:</span></span>
 
-* <span data-ttu-id="dd5f3-106">формировать бизнес-процессы на основе данных, получаемых из Facebook;</span><span class="sxs-lookup"><span data-stu-id="dd5f3-106">Build your business flow based on the data you get from Facebook.</span></span> 
-* <span data-ttu-id="dd5f3-107">использовать триггер при получении новой публикации;</span><span class="sxs-lookup"><span data-stu-id="dd5f3-107">Use a trigger when a new post is received.</span></span>
-* <span data-ttu-id="dd5f3-108">использовать действия, оставляющие публикации в хронике, получающие канал страниц и выполняющие другие действия.</span><span class="sxs-lookup"><span data-stu-id="dd5f3-108">Use actions that post to your timeline, get a page feed, and more.</span></span> <span data-ttu-id="dd5f3-109">Эти действия получают ответ и делают выходные данные доступными для использования другими действиями.</span><span class="sxs-lookup"><span data-stu-id="dd5f3-109">These actions get a response, and then make the output available for other actions.</span></span> <span data-ttu-id="dd5f3-110">Например, можно настроить трансляцию всех публикаций, которые появляются в хронике, в Twitter.</span><span class="sxs-lookup"><span data-stu-id="dd5f3-110">For example, when there is a new post on your timeline, you can take that post and push it to your Twitter feed.</span></span> 
+* <span data-ttu-id="d4dd3-106">Создать поток вашего бизнеса, на основе данных hello, получаемых от Facebook.</span><span class="sxs-lookup"><span data-stu-id="d4dd3-106">Build your business flow based on hello data you get from Facebook.</span></span> 
+* <span data-ttu-id="d4dd3-107">использовать триггер при получении новой публикации;</span><span class="sxs-lookup"><span data-stu-id="d4dd3-107">Use a trigger when a new post is received.</span></span>
+* <span data-ttu-id="d4dd3-108">Используйте действия, которые блога шкалы tooyour получить страницы веб-канала и многое другое.</span><span class="sxs-lookup"><span data-stu-id="d4dd3-108">Use actions that post tooyour timeline, get a page feed, and more.</span></span> <span data-ttu-id="d4dd3-109">Эти действия получить ответ и внесите hello выходные данные для других действий.</span><span class="sxs-lookup"><span data-stu-id="d4dd3-109">These actions get a response, and then make hello output available for other actions.</span></span> <span data-ttu-id="d4dd3-110">Например если имеется запись на шкале времени, можно использовать, post и принудительно отправить его веб-канал Twitter tooyour.</span><span class="sxs-lookup"><span data-stu-id="d4dd3-110">For example, when there is a new post on your timeline, you can take that post and push it tooyour Twitter feed.</span></span> 
 
-<span data-ttu-id="dd5f3-111">Для начала можно создать приложение логики, как описано [здесь](../logic-apps/logic-apps-create-a-logic-app.md).</span><span class="sxs-lookup"><span data-stu-id="dd5f3-111">You can get started by creating a logic app now, see [Create a logic app](../logic-apps/logic-apps-create-a-logic-app.md).</span></span>
+<span data-ttu-id="d4dd3-111">Для начала можно создать приложение логики, как описано [здесь](../logic-apps/logic-apps-create-a-logic-app.md).</span><span class="sxs-lookup"><span data-stu-id="d4dd3-111">You can get started by creating a logic app now, see [Create a logic app](../logic-apps/logic-apps-create-a-logic-app.md).</span></span>
 
-## <a name="create-a-connection-to-facebook"></a><span data-ttu-id="dd5f3-112">Создание подключения к Facebook</span><span class="sxs-lookup"><span data-stu-id="dd5f3-112">Create a connection to Facebook</span></span>
-<span data-ttu-id="dd5f3-113">При добавлении соединителя в приложения логики эти приложения необходимо авторизовать для подключения к Facebook.</span><span class="sxs-lookup"><span data-stu-id="dd5f3-113">When you add this connector to your logic apps, you must authorize logic apps to connect to your Facebook.</span></span>
+## <a name="create-a-connection-toofacebook"></a><span data-ttu-id="d4dd3-112">Создание tooFacebook подключения</span><span class="sxs-lookup"><span data-stu-id="d4dd3-112">Create a connection tooFacebook</span></span>
+<span data-ttu-id="d4dd3-113">При добавлении этого соединителя tooyour логику приложения, необходимо авторизовать tooyour tooconnect логику приложения Facebook.</span><span class="sxs-lookup"><span data-stu-id="d4dd3-113">When you add this connector tooyour logic apps, you must authorize logic apps tooconnect tooyour Facebook.</span></span>
 
-1. <span data-ttu-id="dd5f3-114">Вход в учетную запись Facebook</span><span class="sxs-lookup"><span data-stu-id="dd5f3-114">Sign in to your Facebook account</span></span>
-2. <span data-ttu-id="dd5f3-115">Выберите **Авторизовать**и разрешите приложениям логики подключаться к Facebook и использовать его.</span><span class="sxs-lookup"><span data-stu-id="dd5f3-115">Select **Authorize**, and allow your logic apps to connect and use your Facebook.</span></span> 
+1. <span data-ttu-id="d4dd3-114">Войдите в tooyour учетную запись Facebook</span><span class="sxs-lookup"><span data-stu-id="d4dd3-114">Sign in tooyour Facebook account</span></span>
+2. <span data-ttu-id="d4dd3-115">Выберите **авторизовать**и разрешить вашей tooconnect логику приложения и использовать ваш Facebook.</span><span class="sxs-lookup"><span data-stu-id="d4dd3-115">Select **Authorize**, and allow your logic apps tooconnect and use your Facebook.</span></span> 
 
-> [!INCLUDE [Steps to create a connection to Facebook](../../includes/connectors-create-api-facebook.md)]
+> [!INCLUDE [Steps toocreate a connection tooFacebook](../../includes/connectors-create-api-facebook.md)]
 > 
 
 
-## <a name="connector-specific-details"></a><span data-ttu-id="dd5f3-116">Сведения о соединителях</span><span class="sxs-lookup"><span data-stu-id="dd5f3-116">Connector-specific details</span></span>
+## <a name="connector-specific-details"></a><span data-ttu-id="d4dd3-116">Сведения о соединителях</span><span class="sxs-lookup"><span data-stu-id="d4dd3-116">Connector-specific details</span></span>
 
-<span data-ttu-id="dd5f3-117">Информацию о существующих ограничениях, а также о триггерах и действиях, определенных в Swagger, см. в статье со [сведениями о соединителях](/connectors/facebook/).</span><span class="sxs-lookup"><span data-stu-id="dd5f3-117">View any triggers and actions defined in the swagger, and also see any limits in the [connector details](/connectors/facebook/).</span></span>
+<span data-ttu-id="d4dd3-117">Просмотреть все триггеры и действия, определенные в hello swagger и любые пределы в hello см. также [сведений о соединителе](/connectors/facebook/).</span><span class="sxs-lookup"><span data-stu-id="d4dd3-117">View any triggers and actions defined in hello swagger, and also see any limits in hello [connector details](/connectors/facebook/).</span></span>
 
-## <a name="more-connectors"></a><span data-ttu-id="dd5f3-118">Дополнительные сведения о соединителях</span><span class="sxs-lookup"><span data-stu-id="dd5f3-118">More connectors</span></span>
-<span data-ttu-id="dd5f3-119">Вы можете вернуться к [списку интерфейсов API](apis-list.md).</span><span class="sxs-lookup"><span data-stu-id="dd5f3-119">Go back to the [APIs list](apis-list.md).</span></span>
+## <a name="more-connectors"></a><span data-ttu-id="d4dd3-118">Дополнительные сведения о соединителях</span><span class="sxs-lookup"><span data-stu-id="d4dd3-118">More connectors</span></span>
+<span data-ttu-id="d4dd3-119">Вернитесь к предыдущему окну toohello [API-интерфейсы списка](apis-list.md).</span><span class="sxs-lookup"><span data-stu-id="d4dd3-119">Go back toohello [APIs list](apis-list.md).</span></span>

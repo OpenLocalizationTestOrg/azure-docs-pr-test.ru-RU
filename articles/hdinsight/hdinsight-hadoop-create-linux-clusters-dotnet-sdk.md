@@ -1,6 +1,6 @@
 ---
-title: "Создание кластеров Hadoop с помощью .NET в Azure HDInsight | Документы Майкрософт"
-description: "Узнайте, как создавать кластеры Hadoop, HBase, Storm или Spark на платформе Linux в HDInsight с помощью пакета SDK для HDInsight .NET."
+title: "aaaCreate Hadoop кластеры, использующие .NET - Azure HDInsight | Документы Microsoft"
+description: "Узнайте, как toocreate Hadoop, HBase, ураган или Spark кластеров в Linux с помощью HDInsight hello HDInsight .NET SDK."
 services: hdinsight
 documentationcenter: 
 author: mumian
@@ -16,38 +16,38 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 08/17/2017
 ms.author: jgao
-ms.openlocfilehash: ccd3a0c777510e0694170b2f9acc8da0e7dcde9b
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 9460b0d27143c97860b3540fcec26851d755aa28
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="create-linux-based-clusters-in-hdinsight-using-the-net-sdk"></a><span data-ttu-id="c8aef-103">Создание кластеров под управлением Linux в HDInsight с помощью пакета SDK для .NET</span><span class="sxs-lookup"><span data-stu-id="c8aef-103">Create Linux-based clusters in HDInsight using the .NET SDK</span></span>
+# <a name="create-linux-based-clusters-in-hdinsight-using-hello-net-sdk"></a><span data-ttu-id="3e0f9-103">Создавать кластеры под управлением Linux в HDInsight с помощью hello .NET SDK</span><span class="sxs-lookup"><span data-stu-id="3e0f9-103">Create Linux-based clusters in HDInsight using hello .NET SDK</span></span>
 
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
 
 
-<span data-ttu-id="c8aef-104">Узнайте, как создать кластер Hadoop в кластере Azure HDInsight с помощью пакета SDK для .NET.</span><span class="sxs-lookup"><span data-stu-id="c8aef-104">Learn how to create a Hadoop cluster in Azure HDInsight cluster using the .NET SDK.</span></span>
+<span data-ttu-id="3e0f9-104">Узнайте, как toocreate кластер Hadoop в кластере Azure HDInsight с помощью hello .NET SDK.</span><span class="sxs-lookup"><span data-stu-id="3e0f9-104">Learn how toocreate a Hadoop cluster in Azure HDInsight cluster using hello .NET SDK.</span></span>
 
 > [!IMPORTANT]
-> <span data-ttu-id="c8aef-105">Действия, описанные в этом документе, позволяют создать кластер с одним узлом рабочей роли.</span><span class="sxs-lookup"><span data-stu-id="c8aef-105">The steps in this document create a cluster with one worker node.</span></span> <span data-ttu-id="c8aef-106">Если вы планируете использовать более 32 рабочих узлов (при создании кластера или в ходе масштабирования после создания кластера), то для головного узла необходимо выбрать как минимум 8 ядер и 14 ГБ ОЗУ.</span><span class="sxs-lookup"><span data-stu-id="c8aef-106">If you plan on more than 32 worker nodes, either at cluster creation or by scaling the cluster after creation, you need to select a head node size with at least 8 cores and 14GB ram.</span></span>
+> <span data-ttu-id="3e0f9-105">Hello в данном пошаговом руководстве создать кластер с узлом один рабочий процесс.</span><span class="sxs-lookup"><span data-stu-id="3e0f9-105">hello steps in this document create a cluster with one worker node.</span></span> <span data-ttu-id="3e0f9-106">Если вы планируете более 32 узлов рабочих ролей, в момент создания кластера или путем масштабирования hello кластера после создания необходимо tooselect размер головного узла с по крайней мере 8 ядер и 14 ГБ ОЗУ.</span><span class="sxs-lookup"><span data-stu-id="3e0f9-106">If you plan on more than 32 worker nodes, either at cluster creation or by scaling hello cluster after creation, you need tooselect a head node size with at least 8 cores and 14GB ram.</span></span>
 >
-> <span data-ttu-id="c8aef-107">Дополнительные сведения о размерах узлов и их стоимости см. на странице с [ценами на HDInsight](https://azure.microsoft.com/pricing/details/hdinsight/).</span><span class="sxs-lookup"><span data-stu-id="c8aef-107">For more information on node sizes and associated costs, see [HDInsight pricing](https://azure.microsoft.com/pricing/details/hdinsight/).</span></span>
+> <span data-ttu-id="3e0f9-107">Дополнительные сведения о размерах узлов и их стоимости см. на странице с [ценами на HDInsight](https://azure.microsoft.com/pricing/details/hdinsight/).</span><span class="sxs-lookup"><span data-stu-id="3e0f9-107">For more information on node sizes and associated costs, see [HDInsight pricing](https://azure.microsoft.com/pricing/details/hdinsight/).</span></span>
 
-## <a name="prerequisites"></a><span data-ttu-id="c8aef-108">Предварительные требования</span><span class="sxs-lookup"><span data-stu-id="c8aef-108">Prerequisites</span></span>
+## <a name="prerequisites"></a><span data-ttu-id="3e0f9-108">Предварительные требования</span><span class="sxs-lookup"><span data-stu-id="3e0f9-108">Prerequisites</span></span>
 
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
-* <span data-ttu-id="c8aef-109">**Подписка Azure**.</span><span class="sxs-lookup"><span data-stu-id="c8aef-109">**An Azure subscription**.</span></span> <span data-ttu-id="c8aef-110">Ознакомьтесь с [бесплатной пробной версией Azure](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).</span><span class="sxs-lookup"><span data-stu-id="c8aef-110">See [Get Azure free trial](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).</span></span>
-* <span data-ttu-id="c8aef-111">**Учетная запись хранения Azure.**</span><span class="sxs-lookup"><span data-stu-id="c8aef-111">**An Azure storage account**.</span></span> <span data-ttu-id="c8aef-112">Ознакомьтесь со статьей [Создание учетной записи хранения](../storage/common/storage-create-storage-account.md#create-a-storage-account).</span><span class="sxs-lookup"><span data-stu-id="c8aef-112">See [Create a storage account](../storage/common/storage-create-storage-account.md#create-a-storage-account).</span></span>
-* <span data-ttu-id="c8aef-113">**Visual Studio 2013, Visual Studio 2015 или Visual Studio 2017**.</span><span class="sxs-lookup"><span data-stu-id="c8aef-113">**Visual Studio 2013, Visual Studio 2015 or Visual Studio 2017**.</span></span>
+* <span data-ttu-id="3e0f9-109">**Подписка Azure**.</span><span class="sxs-lookup"><span data-stu-id="3e0f9-109">**An Azure subscription**.</span></span> <span data-ttu-id="3e0f9-110">Ознакомьтесь с [бесплатной пробной версией Azure](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).</span><span class="sxs-lookup"><span data-stu-id="3e0f9-110">See [Get Azure free trial](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).</span></span>
+* <span data-ttu-id="3e0f9-111">**Учетная запись хранения Azure.**</span><span class="sxs-lookup"><span data-stu-id="3e0f9-111">**An Azure storage account**.</span></span> <span data-ttu-id="3e0f9-112">Ознакомьтесь со статьей [Создание учетной записи хранения](../storage/common/storage-create-storage-account.md#create-a-storage-account).</span><span class="sxs-lookup"><span data-stu-id="3e0f9-112">See [Create a storage account](../storage/common/storage-create-storage-account.md#create-a-storage-account).</span></span>
+* <span data-ttu-id="3e0f9-113">**Visual Studio 2013, Visual Studio 2015 или Visual Studio 2017**.</span><span class="sxs-lookup"><span data-stu-id="3e0f9-113">**Visual Studio 2013, Visual Studio 2015 or Visual Studio 2017**.</span></span>
 
-## <a name="create-clusters"></a><span data-ttu-id="c8aef-114">Создание кластеров</span><span class="sxs-lookup"><span data-stu-id="c8aef-114">Create clusters</span></span>
+## <a name="create-clusters"></a><span data-ttu-id="3e0f9-114">Создание кластеров</span><span class="sxs-lookup"><span data-stu-id="3e0f9-114">Create clusters</span></span>
 
-1. <span data-ttu-id="c8aef-115">Откройте Visual Studio 2017.</span><span class="sxs-lookup"><span data-stu-id="c8aef-115">Open Visual Studio 2017.</span></span>
-2. <span data-ttu-id="c8aef-116">Создайте консольное приложение Visual C#.</span><span class="sxs-lookup"><span data-stu-id="c8aef-116">Create a new Visual C# console application.</span></span>
-3. <span data-ttu-id="c8aef-117">В меню **Средства** щелкните **Диспетчер пакетов NuGet**, а затем щелкните **Консоль диспетчера пакетов**.</span><span class="sxs-lookup"><span data-stu-id="c8aef-117">From the **Tools** menu, click **NuGet Package Manager**, and then click **Package Manager Console**.</span></span>
-4. <span data-ttu-id="c8aef-118">Чтобы установить пакеты, выполните в консоли следующую команду:</span><span class="sxs-lookup"><span data-stu-id="c8aef-118">Run the following command in the console to install the packages:</span></span>
+1. <span data-ttu-id="3e0f9-115">Откройте Visual Studio 2017.</span><span class="sxs-lookup"><span data-stu-id="3e0f9-115">Open Visual Studio 2017.</span></span>
+2. <span data-ttu-id="3e0f9-116">Создайте консольное приложение Visual C#.</span><span class="sxs-lookup"><span data-stu-id="3e0f9-116">Create a new Visual C# console application.</span></span>
+3. <span data-ttu-id="3e0f9-117">Из hello **средства** меню, нажмите кнопку **диспетчера пакетов NuGet**, а затем нажмите кнопку **консоль диспетчера пакетов**.</span><span class="sxs-lookup"><span data-stu-id="3e0f9-117">From hello **Tools** menu, click **NuGet Package Manager**, and then click **Package Manager Console**.</span></span>
+4. <span data-ttu-id="3e0f9-118">Выполните следующую команду в пакетах hello tooinstall консоли hello hello.</span><span class="sxs-lookup"><span data-stu-id="3e0f9-118">Run hello following command in hello console tooinstall hello packages:</span></span>
 
     ```powershell
     Install-Package Microsoft.Rest.ClientRuntime.Azure.Authentication -Pre
@@ -55,8 +55,8 @@ ms.lasthandoff: 08/29/2017
     Install-Package Microsoft.Azure.Management.HDInsight
     ```
 
-    <span data-ttu-id="c8aef-119">Эти команды добавляют библиотеки .NET и ссылки на них в текущий проект Visual Studio.</span><span class="sxs-lookup"><span data-stu-id="c8aef-119">These commands add .NET libraries and references to them to the current Visual Studio project.</span></span>
-5. <span data-ttu-id="c8aef-120">В обозревателе решений дважды щелкните файл **Program.cs** , чтобы открыть его, вставьте указанный ниже код и укажите значения для переменных.</span><span class="sxs-lookup"><span data-stu-id="c8aef-120">From Solution Explorer, double-click **Program.cs** to open it, paste the following code, and provide values for the variables:</span></span>
+    <span data-ttu-id="3e0f9-119">Эти команды добавляют .NET библиотеки и ссылки на toothem toohello текущего проекта Visual Studio.</span><span class="sxs-lookup"><span data-stu-id="3e0f9-119">These commands add .NET libraries and references toothem toohello current Visual Studio project.</span></span>
+5. <span data-ttu-id="3e0f9-120">В обозревателе решений дважды щелкните **Program.cs** tooopen, вставьте следующий код hello и укажите значения для переменных hello:</span><span class="sxs-lookup"><span data-stu-id="3e0f9-120">From Solution Explorer, double-click **Program.cs** tooopen it, paste hello following code, and provide values for hello variables:</span></span>
 
     ```csharp
     using System;
@@ -77,7 +77,7 @@ ms.lasthandoff: 08/29/2017
             private const string SubscriptionId = "<Your Azure Subscription ID>";
             // Replace with your AAD tenant ID if necessary
             private const string TenantId = UserTokenProvider.CommonTenantId; 
-            // This is the GUID for the PowerShell client. Used for interactive logins in this example.
+            // This is hello GUID for hello PowerShell client. Used for interactive logins in this example.
             private const string ClientId = "1950a258-227b-4e31-a9cf-717495945fc2";
 
             private const string ExistingResourceGroupName = "<Enter Resource Group Name>";
@@ -87,7 +87,7 @@ ms.lasthandoff: 08/29/2017
 
             private const string NewClusterName = "<Enter HDInsight Cluster Name>";
             private const int NewClusterNumNodes = 2;
-            private const string NewClusterLocation = "EAST US 2";     // Must be the same as the default Storage account
+            private const string NewClusterLocation = "EAST US 2";     // Must be hello same as hello default Storage account
             private const OSType NewClusterOSType = OSType.Linux;
             private const string NewClusterType = "Hadoop";
             private const string NewClusterVersion = "3.5";
@@ -105,11 +105,11 @@ ms.lasthandoff: 08/29/2017
                 WVfu15kKyY8YAiynVbdV51EB0SZaSLdMZkZQ81xi4DDtCZD7qvdtWEFwLa+EHdkd
                 pzO36Mtev5XvseLQqzXzZ6aVBdlXoppGHXkoGHAMNOtEWRXpAUtEccjpATsaZhQR
                 zZdZlzHduhM10ofS4YOYBADt9JohporbQVHM5w6qUhIgyiPo7w==
-                ---- END SSH2 PUBLIC KEY ----"; //replace the public key with your own
+                ---- END SSH2 PUBLIC KEY ----"; //replace hello public key with your own
 
             static void Main(string[] args)
             {
-                System.Console.WriteLine("Creating a cluster.  The process takes 10 to 20 minutes ...");
+                System.Console.WriteLine("Creating a cluster.  hello process takes 10 too20 minutes ...");
 
                 // Authenticate and get a token
                 var authToken = GetTokenCloudCredentials(TenantId, ClientId, SubscriptionId);
@@ -118,7 +118,7 @@ ms.lasthandoff: 08/29/2017
                 // Get an HDInsight management client
                 _hdiManagementClient = new HDInsightManagementClient(authToken);
 
-                // Set parameters for the new cluster
+                // Set parameters for hello new cluster
                 var parameters = new ClusterCreateParameters
                 {
                     ClusterSizeInNodes = NewClusterNumNodes,
@@ -127,11 +127,11 @@ ms.lasthandoff: 08/29/2017
                     OSType = NewClusterOSType,
                     Version = NewClusterVersion,
 
-                    // Use an Azure storage account as the default storage
+                    // Use an Azure storage account as hello default storage
                     DefaultStorageInfo = new AzureStorageInfo(ExistingStorageName, ExistingStorageKey, ExistingBlobContainer),
 
-                    // Is the cluster type RServer? If so, you can set the EdgeNodeSize.
-                    // Otherwise, the default VM size is used.
+                    // Is hello cluster type RServer? If so, you can set hello EdgeNodeSize.
+                    // Otherwise, hello default VM size is used.
                     //EdgeNodeSize = "Standard_D12_v2",
 
                     Password = NewClusterPassword,
@@ -142,7 +142,7 @@ ms.lasthandoff: 08/29/2017
                     //SshPublicKey = NewClusterSshPublicKey
                 };
 
-                // Is the cluster type RServer? If so, add the RStudio configuration option.
+                // Is hello cluster type RServer? If so, add hello RStudio configuration option.
                 /*
                 parameters.Configurations.Add(
                     "rserver",
@@ -153,15 +153,15 @@ ms.lasthandoff: 08/29/2017
                 );
                 */
 
-                // Create the cluster
+                // Create hello cluster
                 _hdiManagementClient.Clusters.Create(ExistingResourceGroupName, NewClusterName, parameters);
 
-                System.Console.WriteLine("The cluster has been created. Press ENTER to continue ...");
+                System.Console.WriteLine("hello cluster has been created. Press ENTER toocontinue ...");
                 System.Console.ReadLine();
             }
 
             /// <summary>
-            /// Authenticate to an Azure subscription and retrieve an authentication token
+            /// Authenticate tooan Azure subscription and retrieve an authentication token
             /// </summary>
             static TokenCloudCredentials GetTokenCloudCredentials(string TenantId, string ClientId, string SubscriptionId)
             {
@@ -181,29 +181,29 @@ ms.lasthandoff: 08/29/2017
             /// <param name="authToken">An authentication token for your Azure subscription</param>
             static void EnableHDInsight(TokenCloudCredentials authToken)
             {
-                // Create a client for the Resource manager and set the subscription ID
+                // Create a client for hello Resource manager and set hello subscription ID
                 var resourceManagementClient = new ResourceManagementClient(new TokenCredentials(authToken.Token));
                 resourceManagementClient.SubscriptionId = SubscriptionId;
-                // Register the HDInsight provider
+                // Register hello HDInsight provider
                 var rpResult = resourceManagementClient.Providers.Register("Microsoft.HDInsight");
             }
         }
     }
     ```
 
-6. <span data-ttu-id="c8aef-121">Замените значения членов класса.</span><span class="sxs-lookup"><span data-stu-id="c8aef-121">Replace the class member values.</span></span>
-7. <span data-ttu-id="c8aef-122">Нажмите клавишу **F5** для запуска приложения.</span><span class="sxs-lookup"><span data-stu-id="c8aef-122">Press **F5** to run the application.</span></span> <span data-ttu-id="c8aef-123">Должно открыться окно консоли, в котором отображается состояние приложения.</span><span class="sxs-lookup"><span data-stu-id="c8aef-123">A console window should open and display the status of the application.</span></span> <span data-ttu-id="c8aef-124">Появится запрос на ввод данных учетной записи Azure.</span><span class="sxs-lookup"><span data-stu-id="c8aef-124">You are prompted to enter your Azure account credentials.</span></span> <span data-ttu-id="c8aef-125">На подготовку кластера HDInsight может уйти несколько минут (обычно около 15).</span><span class="sxs-lookup"><span data-stu-id="c8aef-125">It can take several minutes to create an HDInsight cluster, normally around 15.</span></span>
+6. <span data-ttu-id="3e0f9-121">Замените значения членов класса hello.</span><span class="sxs-lookup"><span data-stu-id="3e0f9-121">Replace hello class member values.</span></span>
+7. <span data-ttu-id="3e0f9-122">Нажмите клавишу **F5** toorun приложения hello.</span><span class="sxs-lookup"><span data-stu-id="3e0f9-122">Press **F5** toorun hello application.</span></span> <span data-ttu-id="3e0f9-123">Окно консоли следует открыть и отобразить состояние приложения hello hello.</span><span class="sxs-lookup"><span data-stu-id="3e0f9-123">A console window should open and display hello status of hello application.</span></span> <span data-ttu-id="3e0f9-124">Вы являются tooenter запрашиваемые учетные данные учетной записи Azure.</span><span class="sxs-lookup"><span data-stu-id="3e0f9-124">You are prompted tooenter your Azure account credentials.</span></span> <span data-ttu-id="3e0f9-125">Может потребоваться несколько минут toocreate кластер HDInsight обычно около 15.</span><span class="sxs-lookup"><span data-stu-id="3e0f9-125">It can take several minutes toocreate an HDInsight cluster, normally around 15.</span></span>
 
-## <a name="use-bootstrap"></a><span data-ttu-id="c8aef-126">Использование начальной загрузки</span><span class="sxs-lookup"><span data-stu-id="c8aef-126">Use bootstrap</span></span>
+## <a name="use-bootstrap"></a><span data-ttu-id="3e0f9-126">Использование начальной загрузки</span><span class="sxs-lookup"><span data-stu-id="3e0f9-126">Use bootstrap</span></span>
 
-<span data-ttu-id="c8aef-127">С помощью начальной загрузки можно настроить дополнительные параметры во время создания кластеров.</span><span class="sxs-lookup"><span data-stu-id="c8aef-127">Using bootstrap, you can configure addition settings during the cluster creations.</span></span>  <span data-ttu-id="c8aef-128">Подробные сведения см. в статье [Настройка кластеров HDInsight с помощью начальной загрузки](hdinsight-hadoop-customize-cluster-bootstrap.md).</span><span class="sxs-lookup"><span data-stu-id="c8aef-128">For more information, see [Customize HDInsight clusters using Bootstrap](hdinsight-hadoop-customize-cluster-bootstrap.md).</span></span>
+<span data-ttu-id="3e0f9-127">Начальной загрузки можно настроить параметры сложения во время операции создания кластера hello.</span><span class="sxs-lookup"><span data-stu-id="3e0f9-127">Using bootstrap, you can configure addition settings during hello cluster creations.</span></span>  <span data-ttu-id="3e0f9-128">Подробные сведения см. в статье [Настройка кластеров HDInsight с помощью начальной загрузки](hdinsight-hadoop-customize-cluster-bootstrap.md).</span><span class="sxs-lookup"><span data-stu-id="3e0f9-128">For more information, see [Customize HDInsight clusters using Bootstrap](hdinsight-hadoop-customize-cluster-bootstrap.md).</span></span>
 
-<span data-ttu-id="c8aef-129">Измените пример в разделе [Создание кластеров](#create-clusters) для настройки параметра Hive.</span><span class="sxs-lookup"><span data-stu-id="c8aef-129">Modify the sample in [Create clusters](#create-clusters) to configure a Hive setting:</span></span>
+<span data-ttu-id="3e0f9-129">Изменить пример hello в [создавать кластеры](#create-clusters) tooconfigure параметр Hive:</span><span class="sxs-lookup"><span data-stu-id="3e0f9-129">Modify hello sample in [Create clusters](#create-clusters) tooconfigure a Hive setting:</span></span>
 
 ```csharp
 static void Main(string[] args)
 {
-    System.Console.WriteLine("Creating a cluster.  The process takes 10 to 20 minutes ...");
+    System.Console.WriteLine("Creating a cluster.  hello process takes 10 too20 minutes ...");
 
     // Authenticate and get a token
     var authToken = GetTokenCloudCredentials(TenantId, ClientId, SubscriptionId);
@@ -212,7 +212,7 @@ static void Main(string[] args)
     // Get an HDInsight management client
     _hdiManagementClient = new HDInsightManagementClient(authToken);
 
-    // Set parameters for the new cluster
+    // Set parameters for hello new cluster
     var extendedParameters = new ClusterCreateParametersExtended
     {
         Location = NewClusterLocation,
@@ -281,7 +281,7 @@ static void Main(string[] args)
             {
                 UserName = NewClusterSshUserName,
                 Password = NewClusterSshPassword //,
-                // When use a SSH pulbic key, make sure to remove comments, headers and trailers, and concatenate the key into one line 
+                // When use a SSH pulbic key, make sure tooremove comments, headers and trailers, and concatenate hello key into one line 
                 //SshProfile = new SshProfile
                 //{
                 //    SshPublicKeys = sshPublicKeys
@@ -318,21 +318,21 @@ static void Main(string[] args)
 
     _hdiManagementClient.Clusters.Create(ExistingResourceGroupName, NewClusterName, extendedParameters);
 
-    System.Console.WriteLine("The cluster has been created. Press ENTER to continue ...");
+    System.Console.WriteLine("hello cluster has been created. Press ENTER toocontinue ...");
     System.Console.ReadLine();
 }
 ```
 
-## <a name="use-script-action"></a><span data-ttu-id="c8aef-130">Использование действия сценария</span><span class="sxs-lookup"><span data-stu-id="c8aef-130">Use Script Action</span></span>
+## <a name="use-script-action"></a><span data-ttu-id="3e0f9-130">Использование действия сценария</span><span class="sxs-lookup"><span data-stu-id="3e0f9-130">Use Script Action</span></span>
 
-<span data-ttu-id="c8aef-131">С помощью действия сценария можно настроить дополнительные параметры при создании кластеров.</span><span class="sxs-lookup"><span data-stu-id="c8aef-131">Using Script Action, you can configure additional settings during cluster creations.</span></span>  <span data-ttu-id="c8aef-132">Дополнительные сведения см. в статье [Настройка кластеров HDInsight под управлением Linux с помощью действия сценария](hdinsight-hadoop-customize-cluster-linux.md).</span><span class="sxs-lookup"><span data-stu-id="c8aef-132">For more information, see [Customize Linux-based HDInsight clusters using Script Action](hdinsight-hadoop-customize-cluster-linux.md).</span></span>
+<span data-ttu-id="3e0f9-131">С помощью действия сценария можно настроить дополнительные параметры при создании кластеров.</span><span class="sxs-lookup"><span data-stu-id="3e0f9-131">Using Script Action, you can configure additional settings during cluster creations.</span></span>  <span data-ttu-id="3e0f9-132">Дополнительные сведения см. в статье [Настройка кластеров HDInsight под управлением Linux с помощью действия сценария](hdinsight-hadoop-customize-cluster-linux.md).</span><span class="sxs-lookup"><span data-stu-id="3e0f9-132">For more information, see [Customize Linux-based HDInsight clusters using Script Action](hdinsight-hadoop-customize-cluster-linux.md).</span></span>
 
-<span data-ttu-id="c8aef-133">Измените пример в разделе [Создание кластеров](#create-clusters) для вызова действия сценария для установки R.</span><span class="sxs-lookup"><span data-stu-id="c8aef-133">Modify the sample in [Create clusters](#create-clusters) to call a Script Action to install R:</span></span>
+<span data-ttu-id="3e0f9-133">Изменить пример hello в [создавать кластеры](#create-clusters) toocall tooinstall действие сценария R:</span><span class="sxs-lookup"><span data-stu-id="3e0f9-133">Modify hello sample in [Create clusters](#create-clusters) toocall a Script Action tooinstall R:</span></span>
 
 ```csharp
 static void Main(string[] args)
 {
-    System.Console.WriteLine("Creating a cluster.  The process takes 10 to 20 minutes ...");
+    System.Console.WriteLine("Creating a cluster.  hello process takes 10 too20 minutes ...");
 
     // Authenticate and get a token
     var authToken = GetTokenCloudCredentials(TenantId, ClientId, SubscriptionId);
@@ -341,7 +341,7 @@ static void Main(string[] args)
     // Get an HDInsight management client
     _hdiManagementClient = new HDInsightManagementClient(authToken);
 
-    // Set parameters for the new cluster
+    // Set parameters for hello new cluster
     var parameters = new ClusterCreateParameters
     {
         ClusterSizeInNodes = NewClusterNumNodes,
@@ -366,42 +366,42 @@ static void Main(string[] args)
 
     _hdiManagementClient.Clusters.Create(ExistingResourceGroupName, NewClusterName, parameters);
 
-    System.Console.WriteLine("The cluster has been created. Press ENTER to continue ...");
+    System.Console.WriteLine("hello cluster has been created. Press ENTER toocontinue ...");
     System.Console.ReadLine();
 }
 ```
 
-## <a name="troubleshoot"></a><span data-ttu-id="c8aef-134">Устранение неполадок</span><span class="sxs-lookup"><span data-stu-id="c8aef-134">Troubleshoot</span></span>
+## <a name="troubleshoot"></a><span data-ttu-id="3e0f9-134">Устранение неполадок</span><span class="sxs-lookup"><span data-stu-id="3e0f9-134">Troubleshoot</span></span>
 
-<span data-ttu-id="c8aef-135">Если при создании кластеров HDInsight возникли проблемы, см. раздел [Создание кластеров](hdinsight-administer-use-portal-linux.md#create-clusters).</span><span class="sxs-lookup"><span data-stu-id="c8aef-135">If you run into issues with creating HDInsight clusters, see [access control requirements](hdinsight-administer-use-portal-linux.md#create-clusters).</span></span>
+<span data-ttu-id="3e0f9-135">Если при создании кластеров HDInsight возникли проблемы, см. раздел [Создание кластеров](hdinsight-administer-use-portal-linux.md#create-clusters).</span><span class="sxs-lookup"><span data-stu-id="3e0f9-135">If you run into issues with creating HDInsight clusters, see [access control requirements](hdinsight-administer-use-portal-linux.md#create-clusters).</span></span>
 
-## <a name="next-steps"></a><span data-ttu-id="c8aef-136">Дальнейшие действия</span><span class="sxs-lookup"><span data-stu-id="c8aef-136">Next steps</span></span>
-<span data-ttu-id="c8aef-137">Теперь, когда вы успешно создали кластер HDInsight, обратитесь к следующим статьям, чтобы научиться работать с кластером.</span><span class="sxs-lookup"><span data-stu-id="c8aef-137">Now that you have successfully created an HDInsight cluster, use the following to learn how to work with your cluster.</span></span> 
+## <a name="next-steps"></a><span data-ttu-id="3e0f9-136">Дальнейшие действия</span><span class="sxs-lookup"><span data-stu-id="3e0f9-136">Next steps</span></span>
+<span data-ttu-id="3e0f9-137">Теперь, когда вы успешно создали кластер HDInsight, используйте следующие toolearn как hello toowork с кластером.</span><span class="sxs-lookup"><span data-stu-id="3e0f9-137">Now that you have successfully created an HDInsight cluster, use hello following toolearn how toowork with your cluster.</span></span> 
 
-### <a name="hadoop-clusters"></a><span data-ttu-id="c8aef-138">Кластеры Hadoop</span><span class="sxs-lookup"><span data-stu-id="c8aef-138">Hadoop clusters</span></span>
-* [<span data-ttu-id="c8aef-139">Использование Hive с HDInsight</span><span class="sxs-lookup"><span data-stu-id="c8aef-139">Use Hive with HDInsight</span></span>](hdinsight-use-hive.md)
-* [<span data-ttu-id="c8aef-140">Использование Pig с HDInsight</span><span class="sxs-lookup"><span data-stu-id="c8aef-140">Use Pig with HDInsight</span></span>](hdinsight-use-pig.md)
-* [<span data-ttu-id="c8aef-141">Использование MapReduce с HDInsight</span><span class="sxs-lookup"><span data-stu-id="c8aef-141">Use MapReduce with HDInsight</span></span>](hdinsight-use-mapreduce.md)
+### <a name="hadoop-clusters"></a><span data-ttu-id="3e0f9-138">Кластеры Hadoop</span><span class="sxs-lookup"><span data-stu-id="3e0f9-138">Hadoop clusters</span></span>
+* [<span data-ttu-id="3e0f9-139">Использование Hive с HDInsight</span><span class="sxs-lookup"><span data-stu-id="3e0f9-139">Use Hive with HDInsight</span></span>](hdinsight-use-hive.md)
+* [<span data-ttu-id="3e0f9-140">Использование Pig с HDInsight</span><span class="sxs-lookup"><span data-stu-id="3e0f9-140">Use Pig with HDInsight</span></span>](hdinsight-use-pig.md)
+* [<span data-ttu-id="3e0f9-141">Использование MapReduce с HDInsight</span><span class="sxs-lookup"><span data-stu-id="3e0f9-141">Use MapReduce with HDInsight</span></span>](hdinsight-use-mapreduce.md)
 
-### <a name="hbase-clusters"></a><span data-ttu-id="c8aef-142">Кластеры HBase</span><span class="sxs-lookup"><span data-stu-id="c8aef-142">HBase clusters</span></span>
-* [<span data-ttu-id="c8aef-143">Начало работы с HBase в HDInsight</span><span class="sxs-lookup"><span data-stu-id="c8aef-143">Get started with HBase on HDInsight</span></span>](hdinsight-hbase-tutorial-get-started-linux.md)
-* [<span data-ttu-id="c8aef-144">Разработка приложений Java для HBase в HDInsight</span><span class="sxs-lookup"><span data-stu-id="c8aef-144">Develop Java applications for HBase on HDInsight</span></span>](hdinsight-hbase-build-java-maven-linux.md)
+### <a name="hbase-clusters"></a><span data-ttu-id="3e0f9-142">Кластеры HBase</span><span class="sxs-lookup"><span data-stu-id="3e0f9-142">HBase clusters</span></span>
+* [<span data-ttu-id="3e0f9-143">Начало работы с HBase в HDInsight</span><span class="sxs-lookup"><span data-stu-id="3e0f9-143">Get started with HBase on HDInsight</span></span>](hdinsight-hbase-tutorial-get-started-linux.md)
+* [<span data-ttu-id="3e0f9-144">Разработка приложений Java для HBase в HDInsight</span><span class="sxs-lookup"><span data-stu-id="3e0f9-144">Develop Java applications for HBase on HDInsight</span></span>](hdinsight-hbase-build-java-maven-linux.md)
 
-### <a name="storm-clusters"></a><span data-ttu-id="c8aef-145">Кластеры Storm</span><span class="sxs-lookup"><span data-stu-id="c8aef-145">Storm clusters</span></span>
-* [<span data-ttu-id="c8aef-146">Разработка приложений Java для Storm в HDInsight</span><span class="sxs-lookup"><span data-stu-id="c8aef-146">Develop Java topologies for Storm on HDInsight</span></span>](hdinsight-storm-develop-java-topology.md)
-* [<span data-ttu-id="c8aef-147">Использование компонентов Python в Storm в HDInsight</span><span class="sxs-lookup"><span data-stu-id="c8aef-147">Use Python components in Storm on HDInsight</span></span>](hdinsight-storm-develop-python-topology.md)
-* [<span data-ttu-id="c8aef-148">Развертывание и мониторинг топологий с помощью Storm в HDInsight</span><span class="sxs-lookup"><span data-stu-id="c8aef-148">Deploy and monitor topologies with Storm on HDInsight</span></span>](hdinsight-storm-deploy-monitor-topology-linux.md)
+### <a name="storm-clusters"></a><span data-ttu-id="3e0f9-145">Кластеры Storm</span><span class="sxs-lookup"><span data-stu-id="3e0f9-145">Storm clusters</span></span>
+* [<span data-ttu-id="3e0f9-146">Разработка приложений Java для Storm в HDInsight</span><span class="sxs-lookup"><span data-stu-id="3e0f9-146">Develop Java topologies for Storm on HDInsight</span></span>](hdinsight-storm-develop-java-topology.md)
+* [<span data-ttu-id="3e0f9-147">Использование компонентов Python в Storm в HDInsight</span><span class="sxs-lookup"><span data-stu-id="3e0f9-147">Use Python components in Storm on HDInsight</span></span>](hdinsight-storm-develop-python-topology.md)
+* [<span data-ttu-id="3e0f9-148">Развертывание и мониторинг топологий с помощью Storm в HDInsight</span><span class="sxs-lookup"><span data-stu-id="3e0f9-148">Deploy and monitor topologies with Storm on HDInsight</span></span>](hdinsight-storm-deploy-monitor-topology-linux.md)
 
-### <a name="spark-clusters"></a><span data-ttu-id="c8aef-149">Кластеры Spark</span><span class="sxs-lookup"><span data-stu-id="c8aef-149">Spark clusters</span></span>
-* [<span data-ttu-id="c8aef-150">Создание автономного приложения с использованием Scala</span><span class="sxs-lookup"><span data-stu-id="c8aef-150">Create a standalone application using Scala</span></span>](hdinsight-apache-spark-create-standalone-application.md)
-* [<span data-ttu-id="c8aef-151">Удаленный запуск заданий с помощью Livy в кластере Spark</span><span class="sxs-lookup"><span data-stu-id="c8aef-151">Run jobs remotely on a Spark cluster using Livy</span></span>](hdinsight-apache-spark-livy-rest-interface.md)
-* [<span data-ttu-id="c8aef-152">Использование Spark со средствами бизнес-аналитики. Выполнение интерактивного анализа данных с использованием Spark в HDInsight с помощью средств бизнес-аналитики</span><span class="sxs-lookup"><span data-stu-id="c8aef-152">Spark with BI: Perform interactive data analysis using Spark in HDInsight with BI tools</span></span>](hdinsight-apache-spark-use-bi-tools.md)
-* [<span data-ttu-id="c8aef-153">Использование Spark с машинным обучением. Использование Spark в HDInsight для прогнозирования результатов контроля качества пищевых продуктов</span><span class="sxs-lookup"><span data-stu-id="c8aef-153">Spark with Machine Learning: Use Spark in HDInsight to predict food inspection results</span></span>](hdinsight-apache-spark-machine-learning-mllib-ipython.md)
-* [<span data-ttu-id="c8aef-154">Потоковая передача Spark. Использование Spark в HDInsight для сборки приложений потоковой передачи данных в режиме реального времени</span><span class="sxs-lookup"><span data-stu-id="c8aef-154">Spark Streaming: Use Spark in HDInsight for building real-time streaming applications</span></span>](hdinsight-apache-spark-eventhub-streaming.md)
+### <a name="spark-clusters"></a><span data-ttu-id="3e0f9-149">Кластеры Spark</span><span class="sxs-lookup"><span data-stu-id="3e0f9-149">Spark clusters</span></span>
+* [<span data-ttu-id="3e0f9-150">Создание автономного приложения с использованием Scala</span><span class="sxs-lookup"><span data-stu-id="3e0f9-150">Create a standalone application using Scala</span></span>](hdinsight-apache-spark-create-standalone-application.md)
+* [<span data-ttu-id="3e0f9-151">Удаленный запуск заданий с помощью Livy в кластере Spark</span><span class="sxs-lookup"><span data-stu-id="3e0f9-151">Run jobs remotely on a Spark cluster using Livy</span></span>](hdinsight-apache-spark-livy-rest-interface.md)
+* [<span data-ttu-id="3e0f9-152">Использование Spark со средствами бизнес-аналитики. Выполнение интерактивного анализа данных с использованием Spark в HDInsight с помощью средств бизнес-аналитики</span><span class="sxs-lookup"><span data-stu-id="3e0f9-152">Spark with BI: Perform interactive data analysis using Spark in HDInsight with BI tools</span></span>](hdinsight-apache-spark-use-bi-tools.md)
+* [<span data-ttu-id="3e0f9-153">Spark с машинного обучения: используйте Spark в HDInsight toopredict food проверки результатов</span><span class="sxs-lookup"><span data-stu-id="3e0f9-153">Spark with Machine Learning: Use Spark in HDInsight toopredict food inspection results</span></span>](hdinsight-apache-spark-machine-learning-mllib-ipython.md)
+* [<span data-ttu-id="3e0f9-154">Потоковая передача Spark. Использование Spark в HDInsight для сборки приложений потоковой передачи данных в режиме реального времени</span><span class="sxs-lookup"><span data-stu-id="3e0f9-154">Spark Streaming: Use Spark in HDInsight for building real-time streaming applications</span></span>](hdinsight-apache-spark-eventhub-streaming.md)
 
-### <a name="run-jobs"></a><span data-ttu-id="c8aef-155">Выполнение заданий</span><span class="sxs-lookup"><span data-stu-id="c8aef-155">Run jobs</span></span>
-* [<span data-ttu-id="c8aef-156">Выполнение заданий Hive в HDInsight с помощью пакета SDK для .NET</span><span class="sxs-lookup"><span data-stu-id="c8aef-156">Run Hive jobs in HDInsight using .NET SDK</span></span>](hdinsight-hadoop-use-hive-dotnet-sdk.md)
-* [<span data-ttu-id="c8aef-157">Выполнение заданий Pig в HDInsight с помощью пакета SDK для .NET</span><span class="sxs-lookup"><span data-stu-id="c8aef-157">Run Pig jobs in HDInsight using .NET SDK</span></span>](hdinsight-hadoop-use-pig-dotnet-sdk.md)
-* [<span data-ttu-id="c8aef-158">Выполнение заданий Sqoop в HDInsight с помощью пакета SDK для .NET</span><span class="sxs-lookup"><span data-stu-id="c8aef-158">Run Sqoop jobs in HDInsight using .NET SDK</span></span>](hdinsight-hadoop-use-sqoop-dotnet-sdk.md)
-* [<span data-ttu-id="c8aef-159">Запуск заданий Oozie в HDInsight</span><span class="sxs-lookup"><span data-stu-id="c8aef-159">Run Oozie jobs in HDInsight</span></span>](hdinsight-use-oozie.md)
+### <a name="run-jobs"></a><span data-ttu-id="3e0f9-155">Выполнение заданий</span><span class="sxs-lookup"><span data-stu-id="3e0f9-155">Run jobs</span></span>
+* [<span data-ttu-id="3e0f9-156">Выполнение заданий Hive в HDInsight с помощью пакета SDK для .NET</span><span class="sxs-lookup"><span data-stu-id="3e0f9-156">Run Hive jobs in HDInsight using .NET SDK</span></span>](hdinsight-hadoop-use-hive-dotnet-sdk.md)
+* [<span data-ttu-id="3e0f9-157">Выполнение заданий Pig в HDInsight с помощью пакета SDK для .NET</span><span class="sxs-lookup"><span data-stu-id="3e0f9-157">Run Pig jobs in HDInsight using .NET SDK</span></span>](hdinsight-hadoop-use-pig-dotnet-sdk.md)
+* [<span data-ttu-id="3e0f9-158">Выполнение заданий Sqoop в HDInsight с помощью пакета SDK для .NET</span><span class="sxs-lookup"><span data-stu-id="3e0f9-158">Run Sqoop jobs in HDInsight using .NET SDK</span></span>](hdinsight-hadoop-use-sqoop-dotnet-sdk.md)
+* [<span data-ttu-id="3e0f9-159">Запуск заданий Oozie в HDInsight</span><span class="sxs-lookup"><span data-stu-id="3e0f9-159">Run Oozie jobs in HDInsight</span></span>](hdinsight-use-oozie.md)
 

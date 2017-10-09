@@ -17,93 +17,93 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/21/2017
 ms.author: xshi
-ms.openlocfilehash: 685a479583f5f11f57bef22dc5881285bb1f70d0
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 5d2322268aa18f52f60c2833778323773ac4eec3
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="create-your-azure-iot-hub-and-register-your-device"></a><span data-ttu-id="5401c-103">Создание Центра Интернета вещей Azure и регистрация устройства</span><span class="sxs-lookup"><span data-stu-id="5401c-103">Create your Azure IoT hub and register your device</span></span>
+# <a name="create-your-azure-iot-hub-and-register-your-device"></a><span data-ttu-id="84b84-103">Создание Центра Интернета вещей Azure и регистрация устройства</span><span class="sxs-lookup"><span data-stu-id="84b84-103">Create your Azure IoT hub and register your device</span></span>
 
-## <a name="what-you-will-do"></a><span data-ttu-id="5401c-104">Выполняемая задача</span><span class="sxs-lookup"><span data-stu-id="5401c-104">What you will do</span></span>
+## <a name="what-you-will-do"></a><span data-ttu-id="84b84-104">Выполняемая задача</span><span class="sxs-lookup"><span data-stu-id="84b84-104">What you will do</span></span>
 
-- <span data-ttu-id="5401c-105">Создание группы ресурсов</span><span class="sxs-lookup"><span data-stu-id="5401c-105">Create a resource group</span></span>
-- <span data-ttu-id="5401c-106">Создание первого Центра Интернета вещей.</span><span class="sxs-lookup"><span data-stu-id="5401c-106">Create your first IoT hub</span></span>
-- <span data-ttu-id="5401c-107">Регистрация устройства в собственном Центре Интернета вещей с помощью Azure CLI.</span><span class="sxs-lookup"><span data-stu-id="5401c-107">Register your device in your IoT hub by using the Azure CLI.</span></span> 
+- <span data-ttu-id="84b84-105">Создание группы ресурсов</span><span class="sxs-lookup"><span data-stu-id="84b84-105">Create a resource group</span></span>
+- <span data-ttu-id="84b84-106">Создание первого Центра Интернета вещей.</span><span class="sxs-lookup"><span data-stu-id="84b84-106">Create your first IoT hub</span></span>
+- <span data-ttu-id="84b84-107">Регистрация устройства в концентратор IoT с использованием hello Azure CLI.</span><span class="sxs-lookup"><span data-stu-id="84b84-107">Register your device in your IoT hub by using hello Azure CLI.</span></span> 
 
-<span data-ttu-id="5401c-108">При регистрации устройства в собственном Центре Интернета вещей служба Центра Интернета вещей Azure создает ключ для устройства, используемый для аутентификации в службе.</span><span class="sxs-lookup"><span data-stu-id="5401c-108">When you register your device in your IoT hub, the Azure IoT Hub service generates a key for your device to use to authenticate with the service.</span></span> 
+<span data-ttu-id="84b84-108">При регистрации устройства в концентратор IoT, hello Azure IoT Hub service создает ключ для tooauthenticate toouse вашего устройства с помощью службы hello.</span><span class="sxs-lookup"><span data-stu-id="84b84-108">When you register your device in your IoT hub, hello Azure IoT Hub service generates a key for your device toouse tooauthenticate with hello service.</span></span> 
 
-<span data-ttu-id="5401c-109">Если возникнут какие-либо проблемы, то решения можно найти на [странице со сведениями об устранении неполадок](iot-hub-gateway-kit-c-troubleshooting.md).</span><span class="sxs-lookup"><span data-stu-id="5401c-109">If you have any problems, look for solutions on the [troubleshooting page](iot-hub-gateway-kit-c-troubleshooting.md).</span></span>
+<span data-ttu-id="84b84-109">Если у вас возникнут проблемы, искать решения на hello [страницу устранения неполадок](iot-hub-gateway-kit-c-troubleshooting.md).</span><span class="sxs-lookup"><span data-stu-id="84b84-109">If you have any problems, look for solutions on hello [troubleshooting page](iot-hub-gateway-kit-c-troubleshooting.md).</span></span>
 
-## <a name="what-you-will-learn"></a><span data-ttu-id="5401c-110">Новые знания</span><span class="sxs-lookup"><span data-stu-id="5401c-110">What you will learn</span></span>
+## <a name="what-you-will-learn"></a><span data-ttu-id="84b84-110">Новые знания</span><span class="sxs-lookup"><span data-stu-id="84b84-110">What you will learn</span></span>
 
-<span data-ttu-id="5401c-111">Из этого урока вы узнаете:</span><span class="sxs-lookup"><span data-stu-id="5401c-111">In this lesson, you will learn:</span></span>
+<span data-ttu-id="84b84-111">Из этого урока вы узнаете:</span><span class="sxs-lookup"><span data-stu-id="84b84-111">In this lesson, you will learn:</span></span>
 
-- <span data-ttu-id="5401c-112">Как создать Центр Интернета вещей с помощью Azure CLI.</span><span class="sxs-lookup"><span data-stu-id="5401c-112">How to use the Azure CLI to create an IoT hub.</span></span>
-- <span data-ttu-id="5401c-113">Как зарегистрировать устройство в Центре Интернета вещей.</span><span class="sxs-lookup"><span data-stu-id="5401c-113">How to register a device in an IoT hub.</span></span>
+- <span data-ttu-id="84b84-112">Как toouse hello Azure CLI toocreate центр IoT.</span><span class="sxs-lookup"><span data-stu-id="84b84-112">How toouse hello Azure CLI toocreate an IoT hub.</span></span>
+- <span data-ttu-id="84b84-113">Как tooregister устройства в центр IoT.</span><span class="sxs-lookup"><span data-stu-id="84b84-113">How tooregister a device in an IoT hub.</span></span>
 
-## <a name="what-you-need"></a><span data-ttu-id="5401c-114">Необходимые элементы</span><span class="sxs-lookup"><span data-stu-id="5401c-114">What you need</span></span>
+## <a name="what-you-need"></a><span data-ttu-id="84b84-114">Необходимые элементы</span><span class="sxs-lookup"><span data-stu-id="84b84-114">What you need</span></span>
 
-- <span data-ttu-id="5401c-115">Активная подписка Azure.</span><span class="sxs-lookup"><span data-stu-id="5401c-115">An active Azure subscription.</span></span> <span data-ttu-id="5401c-116">Если у вас нет учетной записи Azure, можно создать [бесплатную учетную запись Azure](http://azure.microsoft.com/pricing/free-trial/) всего за несколько минут.</span><span class="sxs-lookup"><span data-stu-id="5401c-116">If you don't have an Azure account, you can create a [free Azure trial account](http://azure.microsoft.com/pricing/free-trial/) in just a few minutes.</span></span>
-- <span data-ttu-id="5401c-117">У вас должен быть установлен Azure CLI.</span><span class="sxs-lookup"><span data-stu-id="5401c-117">You should have the Azure CLI installed.</span></span>
+- <span data-ttu-id="84b84-115">Активная подписка Azure.</span><span class="sxs-lookup"><span data-stu-id="84b84-115">An active Azure subscription.</span></span> <span data-ttu-id="84b84-116">Если у вас нет учетной записи Azure, можно создать [бесплатную учетную запись Azure](http://azure.microsoft.com/pricing/free-trial/) всего за несколько минут.</span><span class="sxs-lookup"><span data-stu-id="84b84-116">If you don't have an Azure account, you can create a [free Azure trial account](http://azure.microsoft.com/pricing/free-trial/) in just a few minutes.</span></span>
+- <span data-ttu-id="84b84-117">Необходимо иметь hello установлен Azure CLI.</span><span class="sxs-lookup"><span data-stu-id="84b84-117">You should have hello Azure CLI installed.</span></span>
 
-## <a name="create-an-iot-hub"></a><span data-ttu-id="5401c-118">Создание центра IoT</span><span class="sxs-lookup"><span data-stu-id="5401c-118">Create an IoT hub</span></span>
+## <a name="create-an-iot-hub"></a><span data-ttu-id="84b84-118">Создание центра IoT</span><span class="sxs-lookup"><span data-stu-id="84b84-118">Create an IoT hub</span></span>
 
-<span data-ttu-id="5401c-119">Чтобы создать Центр Интернета вещей, сделайте следующее:</span><span class="sxs-lookup"><span data-stu-id="5401c-119">To create an IoT hub, follow these steps:</span></span>
+<span data-ttu-id="84b84-119">toocreate центра IoT, выполните следующие действия.</span><span class="sxs-lookup"><span data-stu-id="84b84-119">toocreate an IoT hub, follow these steps:</span></span>
 
-1. <span data-ttu-id="5401c-120">Войдите в свою учетную запись Azure с помощью следующей команды:</span><span class="sxs-lookup"><span data-stu-id="5401c-120">Sign in to your Azure account by running the following command:</span></span>
+1. <span data-ttu-id="84b84-120">Войдите в tooyour учетная запись Azure, выполнив следующую команду hello:</span><span class="sxs-lookup"><span data-stu-id="84b84-120">Sign in tooyour Azure account by running hello following command:</span></span>
 
    ```bash
    az login
    ```
 
-   <span data-ttu-id="5401c-121">После входа отобразится список всех доступных подписок Azure.</span><span class="sxs-lookup"><span data-stu-id="5401c-121">All your available subscriptions will be listed after a successful sign-in.</span></span>
+   <span data-ttu-id="84b84-121">После входа отобразится список всех доступных подписок Azure.</span><span class="sxs-lookup"><span data-stu-id="84b84-121">All your available subscriptions will be listed after a successful sign-in.</span></span>
 
-2. <span data-ttu-id="5401c-122">Определите подписку Azure, которую необходимо использовать по умолчанию, выполнив следующую команду:</span><span class="sxs-lookup"><span data-stu-id="5401c-122">Set the default Azure subscription that you want to use by running the following command:</span></span>
+2. <span data-ttu-id="84b84-122">Значение по умолчанию hello подписки Azure, требуется toouse, выполнив следующую команду hello:</span><span class="sxs-lookup"><span data-stu-id="84b84-122">Set hello default Azure subscription that you want toouse by running hello following command:</span></span>
 
    ```bash
    az account set --subscription {subscription id or name}
    ```
 
-   <span data-ttu-id="5401c-123">Значение `subscription ID or name` можно найти в выходных данных команды `az login` или `az account list`.</span><span class="sxs-lookup"><span data-stu-id="5401c-123">`subscription ID or name` can be found in the output of the `az login` or the `az account list` command.</span></span>
+   <span data-ttu-id="84b84-123">`subscription ID or name`можно найти в выходных данных hello hello `az login` или hello `az account list` команды.</span><span class="sxs-lookup"><span data-stu-id="84b84-123">`subscription ID or name` can be found in hello output of hello `az login` or hello `az account list` command.</span></span>
 
-3. <span data-ttu-id="5401c-124">Зарегистрируйте поставщик с помощью следующей команды.</span><span class="sxs-lookup"><span data-stu-id="5401c-124">Register the provider by running the following command.</span></span> <span data-ttu-id="5401c-125">Поставщики ресурсов — это службы, предоставляющие ресурсы для приложения.</span><span class="sxs-lookup"><span data-stu-id="5401c-125">Resource providers are services that provide resources for your application.</span></span> <span data-ttu-id="5401c-126">Поставщик следует регистрировать перед развертыванием ресурса Azure, предлагаемого поставщиком.</span><span class="sxs-lookup"><span data-stu-id="5401c-126">You must register the provider before you can deploy the Azure resource that the provider offers.</span></span>
+3. <span data-ttu-id="84b84-124">Регистрация поставщика hello, выполнив следующую команду hello.</span><span class="sxs-lookup"><span data-stu-id="84b84-124">Register hello provider by running hello following command.</span></span> <span data-ttu-id="84b84-125">Поставщики ресурсов — это службы, предоставляющие ресурсы для приложения.</span><span class="sxs-lookup"><span data-stu-id="84b84-125">Resource providers are services that provide resources for your application.</span></span> <span data-ttu-id="84b84-126">Перед развертыванием hello ресурс Azure, который hello предложения поставщика необходимо зарегистрировать поставщик hello.</span><span class="sxs-lookup"><span data-stu-id="84b84-126">You must register hello provider before you can deploy hello Azure resource that hello provider offers.</span></span>
 
    ```bash
    az provider register -n "Microsoft.Devices"
    ```
 
-4. <span data-ttu-id="5401c-127">Создайте группу ресурсов с именем `iot-gateway` в регионе "Западная часть США", выполнив следующую команду:</span><span class="sxs-lookup"><span data-stu-id="5401c-127">Create a resource group named `iot-gateway` in the West US region by running the following command:</span></span>
+4. <span data-ttu-id="84b84-127">Создание группы ресурсов с именем `iot-gateway` в регионе hello Запад США, выполнив следующую команду hello:</span><span class="sxs-lookup"><span data-stu-id="84b84-127">Create a resource group named `iot-gateway` in hello West US region by running hello following command:</span></span>
 
    ```bash
    az group create --name iot-gateway --location westus
    ```
    
-   <span data-ttu-id="5401c-128">`westus` — это расположение, в котором создается группа ресурсов.</span><span class="sxs-lookup"><span data-stu-id="5401c-128">`westus` is the location you create your resource group.</span></span> <span data-ttu-id="5401c-129">Чтобы использовать другое расположение, выполните команду `az account list-locations -o table` и просмотрите все расположения, поддерживаемые Azure.</span><span class="sxs-lookup"><span data-stu-id="5401c-129">If you want to use another location, you can run `az account list-locations -o table` to see all the locations Azure supports.</span></span>
+   <span data-ttu-id="84b84-128">`westus`— местоположение hello, создайте группу ресурсов.</span><span class="sxs-lookup"><span data-stu-id="84b84-128">`westus` is hello location you create your resource group.</span></span> <span data-ttu-id="84b84-129">Если требуется toouse другое расположение, можно запустить `az account list-locations -o table` toosee все hello Azure поддерживает расположений.</span><span class="sxs-lookup"><span data-stu-id="84b84-129">If you want toouse another location, you can run `az account list-locations -o table` toosee all hello locations Azure supports.</span></span>
 
-5. <span data-ttu-id="5401c-130">Создайте Центр Интернета вещей в группе ресурсов `iot-gateway`, выполнив следующую команду:</span><span class="sxs-lookup"><span data-stu-id="5401c-130">Create an IoT hub in the `iot-gateway` resource group by running the following command:</span></span>
+5. <span data-ttu-id="84b84-130">Создать центр IoT в hello `iot-gateway` группы ресурсов, выполнив следующую команду hello:</span><span class="sxs-lookup"><span data-stu-id="84b84-130">Create an IoT hub in hello `iot-gateway` resource group by running hello following command:</span></span>
 
    ```bash
    az iot hub create --name {my hub name} --resource-group iot-gateway
    ```
 
-<span data-ttu-id="5401c-131">По умолчанию создается Центр Интернета вещей уровня "Бесплатный".</span><span class="sxs-lookup"><span data-stu-id="5401c-131">By default, the tool creates an IoT Hub in the Free pricing tier.</span></span> <span data-ttu-id="5401c-132">Дополнительные сведения см. на странице [Центр Интернета вещей Azure — Цены](https://azure.microsoft.com/pricing/details/iot-hub/).</span><span class="sxs-lookup"><span data-stu-id="5401c-132">For more infomation, see [Azure IoT Hub pricing](https://azure.microsoft.com/pricing/details/iot-hub/).</span></span>
+<span data-ttu-id="84b84-131">По умолчанию hello средство создает центр IoT в ценовую категорию Free hello.</span><span class="sxs-lookup"><span data-stu-id="84b84-131">By default, hello tool creates an IoT Hub in hello Free pricing tier.</span></span> <span data-ttu-id="84b84-132">Дополнительные сведения см. на странице [Центр Интернета вещей Azure — Цены](https://azure.microsoft.com/pricing/details/iot-hub/).</span><span class="sxs-lookup"><span data-stu-id="84b84-132">For more infomation, see [Azure IoT Hub pricing](https://azure.microsoft.com/pricing/details/iot-hub/).</span></span>
 
 > [!NOTE]
-> <span data-ttu-id="5401c-133">Имя Центра Интернета вещей должно быть глобально уникальным.</span><span class="sxs-lookup"><span data-stu-id="5401c-133">The name of your IoT hub must be globally unique.</span></span> <span data-ttu-id="5401c-134">В подписке Azure можно создать только один выпуск Центра Интернета вещей категории F1.</span><span class="sxs-lookup"><span data-stu-id="5401c-134">You can create only one F1 edition of Azure Iot Hub under your Azure subscription.</span></span>
+> <span data-ttu-id="84b84-133">имя вашего центра IoT Hello должно быть глобально уникальным.</span><span class="sxs-lookup"><span data-stu-id="84b84-133">hello name of your IoT hub must be globally unique.</span></span> <span data-ttu-id="84b84-134">В подписке Azure можно создать только один выпуск Центра Интернета вещей категории F1.</span><span class="sxs-lookup"><span data-stu-id="84b84-134">You can create only one F1 edition of Azure Iot Hub under your Azure subscription.</span></span>
 
-## <a name="register-your-device-in-your-iot-hub"></a><span data-ttu-id="5401c-135">Регистрация устройства в Центре Интернета вещей</span><span class="sxs-lookup"><span data-stu-id="5401c-135">Register your device in your IoT hub</span></span>
+## <a name="register-your-device-in-your-iot-hub"></a><span data-ttu-id="84b84-135">Регистрация устройства в Центре Интернета вещей</span><span class="sxs-lookup"><span data-stu-id="84b84-135">Register your device in your IoT hub</span></span>
 
-<span data-ttu-id="5401c-136">Каждое устройство, которое отправляет сообщения в ваш Центр Интернета вещей и получает сообщения из него, должно быть зарегистрировано с использованием уникального идентификатора.</span><span class="sxs-lookup"><span data-stu-id="5401c-136">Each device that sends messages to your IoT hub and receives messages from your IoT hub must be registered with a unique ID.</span></span>
-<span data-ttu-id="5401c-137">Зарегистрируйте устройство в Центре Интернета вещей, используя следующую команду:</span><span class="sxs-lookup"><span data-stu-id="5401c-137">Register your device in your IoT hub by running following command:</span></span>
+<span data-ttu-id="84b84-136">Каждое устройство, которое отправляет центр IoT tooyour сообщений и получает сообщения из вашего центра IoT должны быть зарегистрированы в уникальный идентификатор.</span><span class="sxs-lookup"><span data-stu-id="84b84-136">Each device that sends messages tooyour IoT hub and receives messages from your IoT hub must be registered with a unique ID.</span></span>
+<span data-ttu-id="84b84-137">Зарегистрируйте устройство в Центре Интернета вещей, используя следующую команду:</span><span class="sxs-lookup"><span data-stu-id="84b84-137">Register your device in your IoT hub by running following command:</span></span>
 
 ```bash
 az iot device create --device-id mydevice --hub-name {my hub name} --resource-group iot-gateway
 ```
 
-## <a name="summary"></a><span data-ttu-id="5401c-138">Сводка</span><span class="sxs-lookup"><span data-stu-id="5401c-138">Summary</span></span>
+## <a name="summary"></a><span data-ttu-id="84b84-138">Сводка</span><span class="sxs-lookup"><span data-stu-id="84b84-138">Summary</span></span>
 
-<span data-ttu-id="5401c-139">Вы создали Центр Интернета вещей и зарегистрировали в нем логическое устройство с идентификатором устройства.</span><span class="sxs-lookup"><span data-stu-id="5401c-139">You've created an IoT hub and registered your logical device with a device identity in your IoT hub.</span></span> <span data-ttu-id="5401c-140">Теперь можно перейти к настройке и запуску примера приложения шлюза, используемого для отправки данных с физического устройства в Центр Интернета вещей, находящийся в облаке.</span><span class="sxs-lookup"><span data-stu-id="5401c-140">You're ready to learn how to configure and run a gateway sample application to send data from your physical device to your IoT hub in the cloud.</span></span>
+<span data-ttu-id="84b84-139">Вы создали Центр Интернета вещей и зарегистрировали в нем логическое устройство с идентификатором устройства.</span><span class="sxs-lookup"><span data-stu-id="84b84-139">You've created an IoT hub and registered your logical device with a device identity in your IoT hub.</span></span> <span data-ttu-id="84b84-140">Теперь вы готовы toolearn об облачных tooconfigure и запустите приложение toosend шлюза образец данных из концентратор IoT tooyour физическое устройство hello.</span><span class="sxs-lookup"><span data-stu-id="84b84-140">You're ready toolearn how tooconfigure and run a gateway sample application toosend data from your physical device tooyour IoT hub in hello cloud.</span></span>
 
-## <a name="next-steps"></a><span data-ttu-id="5401c-141">Дальнейшие действия</span><span class="sxs-lookup"><span data-stu-id="5401c-141">Next steps</span></span>
-[<span data-ttu-id="5401c-142">Настройка и запуск примера приложения BLE</span><span class="sxs-lookup"><span data-stu-id="5401c-142">Configure and run a BLE sample app</span></span>](iot-hub-gateway-kit-c-lesson3-configure-ble-app.md)
+## <a name="next-steps"></a><span data-ttu-id="84b84-141">Дальнейшие действия</span><span class="sxs-lookup"><span data-stu-id="84b84-141">Next steps</span></span>
+[<span data-ttu-id="84b84-142">Настройка и запуск примера приложения BLE</span><span class="sxs-lookup"><span data-stu-id="84b84-142">Configure and run a BLE sample app</span></span>](iot-hub-gateway-kit-c-lesson3-configure-ble-app.md)

@@ -1,6 +1,6 @@
 ---
-title: "Оценка приложений Service Fabric в Azure Log Analytics с помощью PowerShell | Документация Майкрософт"
-description: "Решение Service Fabric в Log Analytics можно использовать для оценки риска и работоспособности приложений, микрослужб, узлов и кластеров Service Fabric с помощью PowerShell."
+title: "aaaAssess Service Fabric приложений с Azure Log Analytics с помощью PowerShell | Документы Microsoft"
+description: "Можно использовать решение Service Fabric hello в службе анализа журналов с помощью PowerShell tooassess hello риска и работоспособности приложения Service Fabric, micro служб, узлов и кластеров."
 services: log-analytics
 documentationcenter: 
 author: niniikhena
@@ -14,67 +14,67 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/06/2017
 ms.author: nini
-ms.openlocfilehash: ca86787e344aa5e9e68934dee6e9e83aeb4cc340
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 3f6d6c0df02d6d453b77e50b75b64bf7eb73bbbf
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="assess-azure-service-fabric-applications-and-micro-services-with-powershell"></a><span data-ttu-id="b3475-103">Оценка приложений и микрослужб Azure Service Fabric с помощью PowerShell</span><span class="sxs-lookup"><span data-stu-id="b3475-103">Assess Azure Service Fabric applications and micro-services with PowerShell</span></span>
+# <a name="assess-azure-service-fabric-applications-and-micro-services-with-powershell"></a><span data-ttu-id="cc666-103">Оценка приложений и микрослужб Azure Service Fabric с помощью PowerShell</span><span class="sxs-lookup"><span data-stu-id="cc666-103">Assess Azure Service Fabric applications and micro-services with PowerShell</span></span>
 > [!div class="op_single_selector"]
-> * [<span data-ttu-id="b3475-104">Диспетчер ресурсов</span><span class="sxs-lookup"><span data-stu-id="b3475-104">Resource Manager</span></span>](log-analytics-service-fabric-azure-resource-manager.md)
-> * [<span data-ttu-id="b3475-105">PowerShell</span><span class="sxs-lookup"><span data-stu-id="b3475-105">PowerShell</span></span>](log-analytics-service-fabric.md)
+> * [<span data-ttu-id="cc666-104">Диспетчер ресурсов</span><span class="sxs-lookup"><span data-stu-id="cc666-104">Resource Manager</span></span>](log-analytics-service-fabric-azure-resource-manager.md)
+> * [<span data-ttu-id="cc666-105">PowerShell</span><span class="sxs-lookup"><span data-stu-id="cc666-105">PowerShell</span></span>](log-analytics-service-fabric.md)
 >
 >
 
 
 ![Символ Service Fabric](./media/log-analytics-service-fabric/service-fabric-assessment-symbol.png)
 
-<span data-ttu-id="b3475-107">В этой статье описывается, как с помощью решений Service Fabric в Log Analytics определять и устранять неполадки в кластере Service Fabric.</span><span class="sxs-lookup"><span data-stu-id="b3475-107">This article describes how to use the Service Fabric solution in Log Analytics to help identify and troubleshoot issues across your Service Fabric cluster.</span></span> <span data-ttu-id="b3475-108">Это поможет наблюдать за работой узлов Service Fabric и выполнением приложений и микрослужб.</span><span class="sxs-lookup"><span data-stu-id="b3475-108">It helps you see how your Service Fabric nodes are performing and how your applications and micro-services are running.</span></span>
+<span data-ttu-id="cc666-107">В этой статье описывается как hello toouse Service Fabric решения в службе анализа журналов toohelp выявить и устранить проблемы к кластеру Service Fabric.</span><span class="sxs-lookup"><span data-stu-id="cc666-107">This article describes how toouse hello Service Fabric solution in Log Analytics toohelp identify and troubleshoot issues across your Service Fabric cluster.</span></span> <span data-ttu-id="cc666-108">Это поможет наблюдать за работой узлов Service Fabric и выполнением приложений и микрослужб.</span><span class="sxs-lookup"><span data-stu-id="cc666-108">It helps you see how your Service Fabric nodes are performing and how your applications and micro-services are running.</span></span>
 
-<span data-ttu-id="b3475-109">Решение Service Fabric использует данные системы диагностики Azure, полученные от виртуальных машин Service Fabric, собирая эти данные из таблиц Azure WAD.</span><span class="sxs-lookup"><span data-stu-id="b3475-109">The Service Fabric solution uses Azure Diagnostics data from your Service Fabric VMs, by collecting this data from your Azure WAD tables.</span></span> <span data-ttu-id="b3475-110">Затем Log Analytics считывает следующие события платформы Service Fabric:</span><span class="sxs-lookup"><span data-stu-id="b3475-110">Log Analytics then reads the following Service Fabric framework events:</span></span>
+<span data-ttu-id="cc666-109">Hello Service Fabric решение использует данные диагностики Azure Service Fabric виртуальные машины, путем сбора данных из таблиц Azure WAD.</span><span class="sxs-lookup"><span data-stu-id="cc666-109">hello Service Fabric solution uses Azure Diagnostics data from your Service Fabric VMs, by collecting this data from your Azure WAD tables.</span></span> <span data-ttu-id="cc666-110">Служба аналитики журналов считывает hello следующие события Service Fabric framework:</span><span class="sxs-lookup"><span data-stu-id="cc666-110">Log Analytics then reads hello following Service Fabric framework events:</span></span>
 
-- <span data-ttu-id="b3475-111">**события надежных служб**;</span><span class="sxs-lookup"><span data-stu-id="b3475-111">**Reliable Service Events**</span></span>
-- <span data-ttu-id="b3475-112">**события субъектов**;</span><span class="sxs-lookup"><span data-stu-id="b3475-112">**Actor Events**</span></span>
-- <span data-ttu-id="b3475-113">**операционные события**;</span><span class="sxs-lookup"><span data-stu-id="b3475-113">**Operational Events**</span></span>
-- <span data-ttu-id="b3475-114">**пользовательские события трассировки событий Windows**.</span><span class="sxs-lookup"><span data-stu-id="b3475-114">**Custom ETW events**</span></span>
+- <span data-ttu-id="cc666-111">**события надежных служб**;</span><span class="sxs-lookup"><span data-stu-id="cc666-111">**Reliable Service Events**</span></span>
+- <span data-ttu-id="cc666-112">**события субъектов**;</span><span class="sxs-lookup"><span data-stu-id="cc666-112">**Actor Events**</span></span>
+- <span data-ttu-id="cc666-113">**операционные события**;</span><span class="sxs-lookup"><span data-stu-id="cc666-113">**Operational Events**</span></span>
+- <span data-ttu-id="cc666-114">**пользовательские события трассировки событий Windows**.</span><span class="sxs-lookup"><span data-stu-id="cc666-114">**Custom ETW events**</span></span>
 
-<span data-ttu-id="b3475-115">На панели мониторинга решения Service Fabric отображаются важные проблемы и соответствующие события в среде Service Fabric.</span><span class="sxs-lookup"><span data-stu-id="b3475-115">The Service Fabric solution dashboard shows you notable issues and relevant events in your Service Fabric environment.</span></span>
+<span data-ttu-id="cc666-115">панель решения структуры службы Hello показывает важные проблемы и соответствующие события в вашей среде Service Fabric.</span><span class="sxs-lookup"><span data-stu-id="cc666-115">hello Service Fabric solution dashboard shows you notable issues and relevant events in your Service Fabric environment.</span></span>
 
-## <a name="installing-and-configuring-the-solution"></a><span data-ttu-id="b3475-116">Установка и настройка решения</span><span class="sxs-lookup"><span data-stu-id="b3475-116">Installing and configuring the solution</span></span>
-<span data-ttu-id="b3475-117">Для установки и настройки решения выполните три простых шага, описанных ниже.</span><span class="sxs-lookup"><span data-stu-id="b3475-117">Follow these three easy steps to install and configure the solution:</span></span>
+## <a name="installing-and-configuring-hello-solution"></a><span data-ttu-id="cc666-116">Установка и настройка решения hello</span><span class="sxs-lookup"><span data-stu-id="cc666-116">Installing and configuring hello solution</span></span>
+<span data-ttu-id="cc666-117">Выполните эти 3 простых шага tooinstall и настройка hello решения:</span><span class="sxs-lookup"><span data-stu-id="cc666-117">Follow these three easy steps tooinstall and configure hello solution:</span></span>
 
-1. <span data-ttu-id="b3475-118">Привяжите к своей рабочей области подписку Azure, которая использовалась для создания всех ресурсов кластера, включая учетные записи хранения.</span><span class="sxs-lookup"><span data-stu-id="b3475-118">Associate the Azure subscription that you used to create all cluster resources, including storage accounts, with your workspace.</span></span> <span data-ttu-id="b3475-119">Сведения о создании рабочей области Log Analytics см. в статье [Начало работы с Log Analytics](log-analytics-get-started.md).</span><span class="sxs-lookup"><span data-stu-id="b3475-119">See [Get started with Log Analytics](log-analytics-get-started.md) for information about creating a Log Analytics workspace.</span></span>
-2. <span data-ttu-id="b3475-120">Настройте Log Analytics для сбора и просмотра журналов Service Fabric.</span><span class="sxs-lookup"><span data-stu-id="b3475-120">Configure Log Analytics to collect and view Service Fabric logs.</span></span>
-3. <span data-ttu-id="b3475-121">Включите решение Service Fabric в рабочей области.</span><span class="sxs-lookup"><span data-stu-id="b3475-121">Enable the Service Fabric solution in your workspace.</span></span>
+1. <span data-ttu-id="cc666-118">Свяжите hello подписку Azure, используемую toocreate все ресурсы кластера, включая учетные записи хранения с рабочей областью.</span><span class="sxs-lookup"><span data-stu-id="cc666-118">Associate hello Azure subscription that you used toocreate all cluster resources, including storage accounts, with your workspace.</span></span> <span data-ttu-id="cc666-119">Сведения о создании рабочей области Log Analytics см. в статье [Начало работы с Log Analytics](log-analytics-get-started.md).</span><span class="sxs-lookup"><span data-stu-id="cc666-119">See [Get started with Log Analytics](log-analytics-get-started.md) for information about creating a Log Analytics workspace.</span></span>
+2. <span data-ttu-id="cc666-120">Настройка аналитики журналов toocollect и просмотрите журналы Service Fabric.</span><span class="sxs-lookup"><span data-stu-id="cc666-120">Configure Log Analytics toocollect and view Service Fabric logs.</span></span>
+3. <span data-ttu-id="cc666-121">Включите решение Service Fabric hello в рабочей области.</span><span class="sxs-lookup"><span data-stu-id="cc666-121">Enable hello Service Fabric solution in your workspace.</span></span>
 
-## <a name="configure-log-analytics-to-collect-and-view-service-fabric-logs"></a><span data-ttu-id="b3475-122">Настройка Log Analytics для сбора и просмотра журналов Service Fabric</span><span class="sxs-lookup"><span data-stu-id="b3475-122">Configure Log Analytics to collect and view Service Fabric logs</span></span>
-<span data-ttu-id="b3475-123">В этом разделе описана настройка Log Analytics для получения журналов Service Fabric.</span><span class="sxs-lookup"><span data-stu-id="b3475-123">In this section, you learn how to configure Log Analytics to retrieve Service Fabric logs.</span></span> <span data-ttu-id="b3475-124">Журналы дают возможность просматривать, анализировать и устранять неполадки в кластере, а также в приложениях и службах, работающих в этом кластере, с помощью портала OMS.</span><span class="sxs-lookup"><span data-stu-id="b3475-124">The logs allow you to view, analyze, and troubleshoot issues in your cluster or in the applications and services running in that cluster, using the OMS portal.</span></span>
+## <a name="configure-log-analytics-toocollect-and-view-service-fabric-logs"></a><span data-ttu-id="cc666-122">Настроить toocollect анализа журналов и просмотреть журналы Service Fabric</span><span class="sxs-lookup"><span data-stu-id="cc666-122">Configure Log Analytics toocollect and view Service Fabric logs</span></span>
+<span data-ttu-id="cc666-123">В этом разделе вы узнаете, как журналы аналитики журналов tooconfigure tooretrieve Service Fabric.</span><span class="sxs-lookup"><span data-stu-id="cc666-123">In this section, you learn how tooconfigure Log Analytics tooretrieve Service Fabric logs.</span></span> <span data-ttu-id="cc666-124">журналы Hello позволяют tooview, анализ и устранение неполадок в кластере или в hello приложений и служб, работающих в этом кластере, с помощью портала OMS hello.</span><span class="sxs-lookup"><span data-stu-id="cc666-124">hello logs allow you tooview, analyze, and troubleshoot issues in your cluster or in hello applications and services running in that cluster, using hello OMS portal.</span></span>
 
 > [!NOTE]
-> <span data-ttu-id="b3475-125">Настройте расширение системы диагностики Azure для передачи журналов для таблиц хранилища.</span><span class="sxs-lookup"><span data-stu-id="b3475-125">Configure the Azure Diagnostics extension to upload the logs for storage tables.</span></span> <span data-ttu-id="b3475-126">Таблицы должны соответствовать журналам, которые ищет Log Analytics.</span><span class="sxs-lookup"><span data-stu-id="b3475-126">The tables must match what Log Analytics looks for.</span></span> <span data-ttu-id="b3475-127">Дополнительные сведения см. в статье [Сбор журналов с помощью системы диагностики Azure](../service-fabric/service-fabric-diagnostics-how-to-setup-wad.md).</span><span class="sxs-lookup"><span data-stu-id="b3475-127">For more information, see [How to collect logs with Azure Diagnostics](../service-fabric/service-fabric-diagnostics-how-to-setup-wad.md).</span></span> <span data-ttu-id="b3475-128">На примерах настроек конфигурации в этой статье вы увидите, какими должны быть имена таблиц хранилища.</span><span class="sxs-lookup"><span data-stu-id="b3475-128">The configuration settings examples in this article show you what the names of the storage tables should be.</span></span> <span data-ttu-id="b3475-129">После настройки диагностики в кластере и отправки журналов в учетную запись хранения можно перейти к настройке Log Analytics для сбора этих журналов.</span><span class="sxs-lookup"><span data-stu-id="b3475-129">Once Diagnostics is set up on the cluster and is uploading logs to a storage account, the next step is to configure Log Analytics to collect these logs.</span></span>
+> <span data-ttu-id="cc666-125">Настройка журналов hello Azure Diagnostics расширения tooupload hello для хранилища таблиц.</span><span class="sxs-lookup"><span data-stu-id="cc666-125">Configure hello Azure Diagnostics extension tooupload hello logs for storage tables.</span></span> <span data-ttu-id="cc666-126">Hello таблиц должны соответствовать выглядит для анализа журналов.</span><span class="sxs-lookup"><span data-stu-id="cc666-126">hello tables must match what Log Analytics looks for.</span></span> <span data-ttu-id="cc666-127">Дополнительные сведения см. в разделе [как toocollect журналы с диагностикой Azure](../service-fabric/service-fabric-diagnostics-how-to-setup-wad.md).</span><span class="sxs-lookup"><span data-stu-id="cc666-127">For more information, see [How toocollect logs with Azure Diagnostics](../service-fabric/service-fabric-diagnostics-how-to-setup-wad.md).</span></span> <span data-ttu-id="cc666-128">примерах параметры конфигурации Hello в этой статье показано, какие имена hello hello хранилища таблиц должны быть.</span><span class="sxs-lookup"><span data-stu-id="cc666-128">hello configuration settings examples in this article show you what hello names of hello storage tables should be.</span></span> <span data-ttu-id="cc666-129">После диагностики настроен на кластере hello и передает журналы учетной записи хранилища tooa, hello следующим шагом является toocollect анализа журналов tooconfigure эти журналы.</span><span class="sxs-lookup"><span data-stu-id="cc666-129">Once Diagnostics is set up on hello cluster and is uploading logs tooa storage account, hello next step is tooconfigure Log Analytics toocollect these logs.</span></span>
 >
 >
 
-<span data-ttu-id="b3475-130">Обновите раздел **EtwEventSourceProviderConfiguration** в файле **template.json**, добавив записи для нового канала EventSources, до обновления конфигурации, запустив файл **deploy.ps1**.</span><span class="sxs-lookup"><span data-stu-id="b3475-130">Ensure that you update the **EtwEventSourceProviderConfiguration** section in the **template.json** file to add entries for the new EventSources before you apply the configuration update by running **deploy.ps1**.</span></span> <span data-ttu-id="b3475-131">Таблица для отправки совпадает с таблицей (ETWEventTable).</span><span class="sxs-lookup"><span data-stu-id="b3475-131">The table for upload is the same as (ETWEventTable).</span></span> <span data-ttu-id="b3475-132">На данный момент Log Analytics может только считывать данные трассировки событий Windows приложения из таблицы *WADETWEventTable*.</span><span class="sxs-lookup"><span data-stu-id="b3475-132">At the moment, Log Analytics can only read application ETW events from the *WADETWEventTable* table.</span></span>
+<span data-ttu-id="cc666-130">Убедитесь, что обновлены hello **EtwEventSourceProviderConfiguration** раздела hello **template.json** tooadd записи для hello обновить новый EventSources перед применением конфигурации hello, файла под управлением **deploy.ps1**.</span><span class="sxs-lookup"><span data-stu-id="cc666-130">Ensure that you update hello **EtwEventSourceProviderConfiguration** section in hello **template.json** file tooadd entries for hello new EventSources before you apply hello configuration update by running **deploy.ps1**.</span></span> <span data-ttu-id="cc666-131">Hello таблицы для передачи hello же, как (ETWEventTable).</span><span class="sxs-lookup"><span data-stu-id="cc666-131">hello table for upload is hello same as (ETWEventTable).</span></span> <span data-ttu-id="cc666-132">В момент hello анализа журналов можно только для чтения событий трассировки событий Windows приложения из hello *WADETWEventTable* таблицы.</span><span class="sxs-lookup"><span data-stu-id="cc666-132">At hello moment, Log Analytics can only read application ETW events from hello *WADETWEventTable* table.</span></span>
 
-<span data-ttu-id="b3475-133">Для выполнения некоторых операций в этом разделе используются следующие инструменты:</span><span class="sxs-lookup"><span data-stu-id="b3475-133">The following tools are used to perform some of the operations in this section:</span></span>
+<span data-ttu-id="cc666-133">Hello следующие средства, используемые tooperform некоторые операции hello в этом разделе:</span><span class="sxs-lookup"><span data-stu-id="cc666-133">hello following tools are used tooperform some of hello operations in this section:</span></span>
 
-* <span data-ttu-id="b3475-134">Azure PowerShell</span><span class="sxs-lookup"><span data-stu-id="b3475-134">Azure PowerShell</span></span>
-* [<span data-ttu-id="b3475-135">Operations Management Suite</span><span class="sxs-lookup"><span data-stu-id="b3475-135">Operations Management Suite</span></span>](http://www.microsoft.com/oms)
+* <span data-ttu-id="cc666-134">Azure PowerShell</span><span class="sxs-lookup"><span data-stu-id="cc666-134">Azure PowerShell</span></span>
+* [<span data-ttu-id="cc666-135">Operations Management Suite</span><span class="sxs-lookup"><span data-stu-id="cc666-135">Operations Management Suite</span></span>](http://www.microsoft.com/oms)
 
-### <a name="configure-a-log-analytics-workspace-to-show-the-cluster-logs"></a><span data-ttu-id="b3475-136">Настройка рабочей области Log Analytics для отображения журналов кластера</span><span class="sxs-lookup"><span data-stu-id="b3475-136">Configure a Log Analytics workspace to show the cluster logs</span></span>
+### <a name="configure-a-log-analytics-workspace-tooshow-hello-cluster-logs"></a><span data-ttu-id="cc666-136">Настройка кластера журналов hello tooshow анализа журналов рабочей области</span><span class="sxs-lookup"><span data-stu-id="cc666-136">Configure a Log Analytics workspace tooshow hello cluster logs</span></span>
 
-<span data-ttu-id="b3475-137">После создания рабочей области Log Analytics настройте ее для извлечения журналов из таблиц службы хранилища Azure.</span><span class="sxs-lookup"><span data-stu-id="b3475-137">After you create a Log Analytics workspace, configure the workspace to pull logs from the Azure storage tables.</span></span> <span data-ttu-id="b3475-138">После этого выполните следующий сценарий PowerShell.</span><span class="sxs-lookup"><span data-stu-id="b3475-138">Then, run the following PowerShell script:</span></span>
+<span data-ttu-id="cc666-137">После создания рабочей области аналитики журналов, Настройка журналов toopull hello рабочей области из таблиц хранилища Azure hello.</span><span class="sxs-lookup"><span data-stu-id="cc666-137">After you create a Log Analytics workspace, configure hello workspace toopull logs from hello Azure storage tables.</span></span> <span data-ttu-id="cc666-138">Затем выполните следующий сценарий PowerShell hello:</span><span class="sxs-lookup"><span data-stu-id="cc666-138">Then, run hello following PowerShell script:</span></span>
 
 ```
 <#
-    This script will configure an Operations Management Suite workspace (previously called an Operational Insights workspace) to read Diagnostics from an Azure Storage account.
+    This script will configure an Operations Management Suite workspace (previously called an Operational Insights workspace) tooread Diagnostics from an Azure Storage account.
     It will enable all supported data types (currently Service Fabric Events, ETW Events and IIS Logs).
     It supports Resource Manager storage accounts.
-    If you have more than one Azure Subscription, you will be prompted for the subscription to configure.
-    If you have more than one Log Analytics workspace you will be prompted for the workspace to configure.
-    It will then look through your Service Fabric clusters, and configure your Log Analytics workspace to read Diagnostics from storage accounts that are connected to that cluster and have diagnostics enabled.
+    If you have more than one Azure Subscription, you will be prompted for hello subscription tooconfigure.
+    If you have more than one Log Analytics workspace you will be prompted for hello workspace tooconfigure.
+    It will then look through your Service Fabric clusters, and configure your Log Analytics workspace tooread Diagnostics from storage accounts that are connected toothat cluster and have diagnostics enabled.
 #>
 
 try
@@ -94,7 +94,7 @@ function Select-Subscription {
              0 {Write-Error "No Operations Management Suite workspaces found"}
              1 {return $allSubscriptions}
         default {
-            $uiPrompt = "Enter the number corresponding to the Azure subscription you would like to work with.`n"
+            $uiPrompt = "Enter hello number corresponding toohello Azure subscription you would like toowork with.`n"
 
             $count = 1
             foreach ($subscription in $allSubscriptions) {
@@ -117,7 +117,7 @@ function Select-Workspace {
         0 {Write-Error "No Operations Management Suite workspaces found. `n"}
         1 {return $allWorkspaces}
         default {
-            $uiPrompt = "Enter the number corresponding to the workspace you want to configure.`n"
+            $uiPrompt = "Enter hello number corresponding toohello workspace you want tooconfigure.`n"
             $count = 1
             foreach ($workspace in $allWorkspaces) {
                 $uiPrompt += "$count. " + $workspace.Name + " (" + $workspace.CustomerId + ")`n"
@@ -141,15 +141,15 @@ function Check-ETWProviderLogging {
          Write-Debug ("ID: $id Provider: $provider ExpectedTable $expectedTable ActualTable $table")
          if ( ($table -eq $null) -or ($table -eq ""))  
          {
-             Write-Warning ("$id No configuration found for $provider. Configure Azure diagnostics to write to $expectedTable.")
+             Write-Warning ("$id No configuration found for $provider. Configure Azure diagnostics toowrite too$expectedTable.")
          }  
          elseif ( $table -ne $expectedTable )
          {
-             Write-Warning ("$id $provider events are being written to $table instead of WAD$expectedTable. Events will not be collected by Log Analytics")
+             Write-Warning ("$id $provider events are being written too$table instead of WAD$expectedTable. Events will not be collected by Log Analytics")
          }  
          else
          {
-             Write-Verbose "$id $provider events are being written to WAD$expectedTable (Correct configuration.)"
+             Write-Verbose "$id $provider events are being written tooWAD$expectedTable (Correct configuration.)"
          }
  }
 
@@ -183,7 +183,7 @@ function Check-ServiceFabricScaleSetDiagnostics {
          $etwManifestProviderList = $scaleSetDiagnostics.WadCfg.DiagnosticMonitorConfiguration.EtwProviders.EtwManifestProviderConfiguration
      } else
      {
-         Write-Error "Unable to parse Azure Diagnostics setting for $id"
+         Write-Error "Unable tooparse Azure Diagnostics setting for $id"
              Write-Warning ("$id does not have diagnostics enabled")
      }
      foreach ($provider in $serviceFabricProviderList)  
@@ -223,7 +223,7 @@ function Check-ServiceFabricScaleSetDiagnostics {
 
 function Select-StorageAccount {
     $allResources = Get-AzureRmResource #pulls in all resources
-    $serviceFabricClusters = $allResources.Where({$_.ResourceType -eq "Microsoft.ServiceFabric/clusters"}) #pulls in all service fabric clusters in the resource
+    $serviceFabricClusters = $allResources.Where({$_.ResourceType -eq "Microsoft.ServiceFabric/clusters"}) #pulls in all service fabric clusters in hello resource
     $storageAccountList = @()
     foreach($cluster in $serviceFabricClusters) {
         Write-Host("Checking cluster: " + $cluster.Name)
@@ -256,7 +256,7 @@ function Select-StorageAccount {
                             }
                         catch
                             {
-                                # HTTP Not Found is returned if the storage insight doesn't exist
+                                # HTTP Not Found is returned if hello storage insight doesn't exist
                             }
                         if ($existingConfig) {                         
                                   [array]$Tables = $existingConfig.Tables
@@ -270,7 +270,7 @@ function Select-StorageAccount {
                                                Write-Host "$table is already configured.`n";
                                              }
                                       }
-                                      # If any of the tables from the table list are not already monitored, then we add them
+                                      # If any of hello tables from hello table list are not already monitored, then we add them
                                    if($dirty -eq $true) {
                                            Set-AzureRmOperationalInsightsStorageInsight -Workspace $workspace -Name $insightsName -Tables $Tables
                                            Write-Host "Updating Storage Insight. `n"
@@ -297,12 +297,12 @@ $workspace = Select-Workspace
 $storageAccount = Select-StorageAccount
 ```
 
-<span data-ttu-id="b3475-139">Настроив рабочую область Log Analytics для чтения данных из таблиц Azure в своей учетной записи хранения, войдите на портал Azure.</span><span class="sxs-lookup"><span data-stu-id="b3475-139">After you've configured the Log Analytics workspace to read from the Azure tables in your storage account, log in to the Azure portal.</span></span> <span data-ttu-id="b3475-140">В разделе **Все ресурсы** выберите рабочую область Log Analytics.</span><span class="sxs-lookup"><span data-stu-id="b3475-140">Select the Log Analytics workspace from **All Resources**.</span></span> <span data-ttu-id="b3475-141">Будет отображено количество журналов учетной записи хранения, подключенной к рабочей области.</span><span class="sxs-lookup"><span data-stu-id="b3475-141">The number of storage account logs connected to the workspace is displayed.</span></span> <span data-ttu-id="b3475-142">Выберите элемент **Журналы учетной записи хранения**.</span><span class="sxs-lookup"><span data-stu-id="b3475-142">Select the **Storage account logs** tile.</span></span> <span data-ttu-id="b3475-143">Просмотрите список журналов учетной записи хранения, чтобы убедиться, что ваша учетная запись хранения подключена к нужной рабочей области.</span><span class="sxs-lookup"><span data-stu-id="b3475-143">Review the list of storage account logs to verify that your storage account is connected to the correct workspace.</span></span>
+<span data-ttu-id="cc666-139">После настройки hello tooread рабочей области аналитики журналов из hello Azure таблиц в учетной записи выполните вход toohello портал Azure.</span><span class="sxs-lookup"><span data-stu-id="cc666-139">After you've configured hello Log Analytics workspace tooread from hello Azure tables in your storage account, log in toohello Azure portal.</span></span> <span data-ttu-id="cc666-140">Выберите рабочую область службы анализа журналов hello **все ресурсы**.</span><span class="sxs-lookup"><span data-stu-id="cc666-140">Select hello Log Analytics workspace from **All Resources**.</span></span> <span data-ttu-id="cc666-141">отображается номер Hello рабочей toohello подключен журналы учетной записи хранилища.</span><span class="sxs-lookup"><span data-stu-id="cc666-141">hello number of storage account logs connected toohello workspace is displayed.</span></span> <span data-ttu-id="cc666-142">Выберите hello **журналы учетной записи хранения** плитки.</span><span class="sxs-lookup"><span data-stu-id="cc666-142">Select hello **Storage account logs** tile.</span></span> <span data-ttu-id="cc666-143">Просмотрите список hello tooverify журналы учетной записи хранилища, что учетной записи хранения является подключенных toohello нужной рабочей области.</span><span class="sxs-lookup"><span data-stu-id="cc666-143">Review hello list of storage account logs tooverify that your storage account is connected toohello correct workspace.</span></span>
 
 ![Журналы учетной записи хранения](./media/log-analytics-service-fabric/sf1.png)
 
-## <a name="enable-the-service-fabric-solution"></a><span data-ttu-id="b3475-145">Включение решения Service Fabric</span><span class="sxs-lookup"><span data-stu-id="b3475-145">Enable the Service Fabric solution</span></span>
-<span data-ttu-id="b3475-146">Используйте следующий сценарий, чтобы добавить решение в рабочую область Log Analytics.</span><span class="sxs-lookup"><span data-stu-id="b3475-146">Use the following script to add the solution to your Log Analytics workspace.</span></span> <span data-ttu-id="b3475-147">Запустите сценарий в PowerShell, используя подписку Azure, связанную с рабочей областью Log Analytics, в которой нужно включить решение Service Fabric.</span><span class="sxs-lookup"><span data-stu-id="b3475-147">Run the script in PowerShell, using the Azure subscription that is associated with the Log Analytics workspace that you want to enable the Service Fabric solution in.</span></span>
+## <a name="enable-hello-service-fabric-solution"></a><span data-ttu-id="cc666-145">Включить решение hello Service Fabric</span><span class="sxs-lookup"><span data-stu-id="cc666-145">Enable hello Service Fabric solution</span></span>
+<span data-ttu-id="cc666-146">Используйте hello, выполнив сценарий tooadd hello решения tooyour анализа журналов рабочей области.</span><span class="sxs-lookup"><span data-stu-id="cc666-146">Use hello following script tooadd hello solution tooyour Log Analytics workspace.</span></span> <span data-ttu-id="cc666-147">Запустите сценарий hello в PowerShell, с помощью hello подписки Azure, связанный с рабочей областью аналитики журналов hello, вы должны быть tooenable hello Service Fabric решения.</span><span class="sxs-lookup"><span data-stu-id="cc666-147">Run hello script in PowerShell, using hello Azure subscription that is associated with hello Log Analytics workspace that you want tooenable hello Service Fabric solution in.</span></span>
 
 ```
 function Select-Subscription {
@@ -312,7 +312,7 @@ function Select-Subscription {
              0 {Write-Error "No Operations Management Suite workspaces found"}
              1 {return $allSubscriptions}
         default {
-            $uiPrompt = "Enter the number corresponding to the Azure subscription you would like to work with.`n"
+            $uiPrompt = "Enter hello number corresponding toohello Azure subscription you would like toowork with.`n"
             $count = 1
             foreach ($subscription in $allSubscriptions) {
                 $uiPrompt += "$count. " + $subscription.SubscriptionName + " (" + $subscription.SubscriptionId + ")`n"
@@ -333,7 +333,7 @@ function Select-Workspace {
         0 {Write-Error "No Operations Management Suite workspaces found"}
         1 {return $allWorkspaces}
         default {
-            $uiPrompt = "Enter the number corresponding to the workspace you want to configure.`n"
+            $uiPrompt = "Enter hello number corresponding toohello workspace you want tooconfigure.`n"
             $count = 1
             foreach ($workspace in $allWorkspaces) {
                 $uiPrompt += "$count. " + $workspace.Name + " (" + $workspace.CustomerId + ")`n"
@@ -353,49 +353,49 @@ $workspace = Select-Workspace
 Set-AzureRmOperationalInsightsIntelligencePack -ResourceGroupName $workspace.ResourceGroupName -WorkspaceName $workspace.Name -IntelligencePackName "ServiceFabric" -Enabled $true
 ```
 
-<span data-ttu-id="b3475-148">После включения решения на страницу *Обзор* Log Analytics будет добавлен элемент "Service Fabric".</span><span class="sxs-lookup"><span data-stu-id="b3475-148">After you enable the solution, the Service Fabric tile is added to your Log Analytics *Overview* page.</span></span> <span data-ttu-id="b3475-149">На странице отображается представление важных проблем, таких как сбои runAsync и отмены операций, произошедшие за последние 24 часа.</span><span class="sxs-lookup"><span data-stu-id="b3475-149">The page shows a view of notable issues such as runAsync failures and cancellations that occurred in the last 24 hours.</span></span>
+<span data-ttu-id="cc666-148">После включения решения hello hello Service Fabric Плитка добавляется tooyour анализа журналов *Обзор* страницы.</span><span class="sxs-lookup"><span data-stu-id="cc666-148">After you enable hello solution, hello Service Fabric tile is added tooyour Log Analytics *Overview* page.</span></span> <span data-ttu-id="cc666-149">Страница приветствия показано представление важных проблем, таких как сбои runAsync и отмен, произошедших в hello последние 24 часа.</span><span class="sxs-lookup"><span data-stu-id="cc666-149">hello page shows a view of notable issues such as runAsync failures and cancellations that occurred in hello last 24 hours.</span></span>
 
 ![Плитка Service Fabric](./media/log-analytics-service-fabric/sf2.png)
 
-### <a name="view-service-fabric-events"></a><span data-ttu-id="b3475-151">Просмотр событий Service Fabric</span><span class="sxs-lookup"><span data-stu-id="b3475-151">View Service Fabric events</span></span>
-<span data-ttu-id="b3475-152">Щелкните плитку **Service Fabric**, чтобы открыть панель мониторинга Service Fabric.</span><span class="sxs-lookup"><span data-stu-id="b3475-152">Click the **Service Fabric** tile to open the Service Fabric dashboard.</span></span> <span data-ttu-id="b3475-153">Панель мониторинга содержит столбцы, перечисленные в приведенной ниже таблице.</span><span class="sxs-lookup"><span data-stu-id="b3475-153">The dashboard includes the columns in the table that follows.</span></span> <span data-ttu-id="b3475-154">В каждом столбце отображены 10 наиболее распространенных событий, соответствующих указанным для столбца критериям, на выбранном диапазоне времени.</span><span class="sxs-lookup"><span data-stu-id="b3475-154">Each column lists the top 10 events by count matching that column's criteria for the specified time range.</span></span> <span data-ttu-id="b3475-155">Можно выполнить поиск по журналам, выводящий весь список, щелкнув элемент **Показать все** в правой нижней части каждого столбца или заголовок этого столбца.</span><span class="sxs-lookup"><span data-stu-id="b3475-155">You can run a log search that provides the entire list by clicking **See all** at the right bottom of each column, or by clicking the column header.</span></span>
+### <a name="view-service-fabric-events"></a><span data-ttu-id="cc666-151">Просмотр событий Service Fabric</span><span class="sxs-lookup"><span data-stu-id="cc666-151">View Service Fabric events</span></span>
+<span data-ttu-id="cc666-152">Нажмите кнопку hello **Service Fabric** hello tooopen плитки на панели структуры службы.</span><span class="sxs-lookup"><span data-stu-id="cc666-152">Click hello **Service Fabric** tile tooopen hello Service Fabric dashboard.</span></span> <span data-ttu-id="cc666-153">панель мониторинга Hello включает столбцы hello в следующей таблице hello.</span><span class="sxs-lookup"><span data-stu-id="cc666-153">hello dashboard includes hello columns in hello table that follows.</span></span> <span data-ttu-id="cc666-154">Каждый столбец перечислены hello top 10 событий, сопоставляя count, критерии столбца для hello указанный диапазон времени.</span><span class="sxs-lookup"><span data-stu-id="cc666-154">Each column lists hello top 10 events by count matching that column's criteria for hello specified time range.</span></span> <span data-ttu-id="cc666-155">Можно выполнить поиск журнала, который предоставляет hello весь список, щелкнув **все** hello справа внизу каждого столбца или щелкните заголовок столбца hello.</span><span class="sxs-lookup"><span data-stu-id="cc666-155">You can run a log search that provides hello entire list by clicking **See all** at hello right bottom of each column, or by clicking hello column header.</span></span>
 
-| <span data-ttu-id="b3475-156">**Событие Service Fabric**</span><span class="sxs-lookup"><span data-stu-id="b3475-156">**Service Fabric event**</span></span> | <span data-ttu-id="b3475-157">**description**</span><span class="sxs-lookup"><span data-stu-id="b3475-157">**description**</span></span> |
+| <span data-ttu-id="cc666-156">**Событие Service Fabric**</span><span class="sxs-lookup"><span data-stu-id="cc666-156">**Service Fabric event**</span></span> | <span data-ttu-id="cc666-157">**description**</span><span class="sxs-lookup"><span data-stu-id="cc666-157">**description**</span></span> |
 | --- | --- |
-| <span data-ttu-id="b3475-158">Важные проблемы</span><span class="sxs-lookup"><span data-stu-id="b3475-158">Notable Issues</span></span> | <span data-ttu-id="b3475-159">Отображаются проблемы, в том числе события RunAsyncFailure, RunAsynCancellation и NodeDown.</span><span class="sxs-lookup"><span data-stu-id="b3475-159">Displays issues including RunAsyncFailures, RunAsynCancellations, and Node Downs.</span></span> |
-| <span data-ttu-id="b3475-160">Операционные события</span><span class="sxs-lookup"><span data-stu-id="b3475-160">Operational Events</span></span> | <span data-ttu-id="b3475-161">Отображаются важные операционные события, включая обновление и развертывание приложений.</span><span class="sxs-lookup"><span data-stu-id="b3475-161">Displays notable operational events including application upgrade and deployments.</span></span> |
-| <span data-ttu-id="b3475-162">События надежных служб</span><span class="sxs-lookup"><span data-stu-id="b3475-162">Reliable Service Events</span></span> | <span data-ttu-id="b3475-163">Отображаются важные события надежных служб, в том числе события RunAsyncInvocation.</span><span class="sxs-lookup"><span data-stu-id="b3475-163">Displays notable reliable service events including  Runasyncinvocations.</span></span> |
-| <span data-ttu-id="b3475-164">События субъектов</span><span class="sxs-lookup"><span data-stu-id="b3475-164">Actor Events</span></span> | <span data-ttu-id="b3475-165">Отображаются важные события субъектов, создаваемые микрослужбами.</span><span class="sxs-lookup"><span data-stu-id="b3475-165">Displays notable actor events generated by your micro-services.</span></span> <span data-ttu-id="b3475-166">К этим событиям относятся исключения, порожденные методом субъекта, активация и деактивация субъектов и т. д.</span><span class="sxs-lookup"><span data-stu-id="b3475-166">Events include exceptions thrown by an actor method, actor activations and deactivations, and so on.</span></span> |
-| <span data-ttu-id="b3475-167">События приложений</span><span class="sxs-lookup"><span data-stu-id="b3475-167">Application Events</span></span> | <span data-ttu-id="b3475-168">Отображаются все пользовательские события трассировки событий Windows, создаваемые приложениями.</span><span class="sxs-lookup"><span data-stu-id="b3475-168">Displays all custom ETW events generated by your applications.</span></span> |
+| <span data-ttu-id="cc666-158">Важные проблемы</span><span class="sxs-lookup"><span data-stu-id="cc666-158">Notable Issues</span></span> | <span data-ttu-id="cc666-159">Отображаются проблемы, в том числе события RunAsyncFailure, RunAsynCancellation и NodeDown.</span><span class="sxs-lookup"><span data-stu-id="cc666-159">Displays issues including RunAsyncFailures, RunAsynCancellations, and Node Downs.</span></span> |
+| <span data-ttu-id="cc666-160">Операционные события</span><span class="sxs-lookup"><span data-stu-id="cc666-160">Operational Events</span></span> | <span data-ttu-id="cc666-161">Отображаются важные операционные события, включая обновление и развертывание приложений.</span><span class="sxs-lookup"><span data-stu-id="cc666-161">Displays notable operational events including application upgrade and deployments.</span></span> |
+| <span data-ttu-id="cc666-162">События надежных служб</span><span class="sxs-lookup"><span data-stu-id="cc666-162">Reliable Service Events</span></span> | <span data-ttu-id="cc666-163">Отображаются важные события надежных служб, в том числе события RunAsyncInvocation.</span><span class="sxs-lookup"><span data-stu-id="cc666-163">Displays notable reliable service events including  Runasyncinvocations.</span></span> |
+| <span data-ttu-id="cc666-164">События субъектов</span><span class="sxs-lookup"><span data-stu-id="cc666-164">Actor Events</span></span> | <span data-ttu-id="cc666-165">Отображаются важные события субъектов, создаваемые микрослужбами.</span><span class="sxs-lookup"><span data-stu-id="cc666-165">Displays notable actor events generated by your micro-services.</span></span> <span data-ttu-id="cc666-166">К этим событиям относятся исключения, порожденные методом субъекта, активация и деактивация субъектов и т. д.</span><span class="sxs-lookup"><span data-stu-id="cc666-166">Events include exceptions thrown by an actor method, actor activations and deactivations, and so on.</span></span> |
+| <span data-ttu-id="cc666-167">События приложений</span><span class="sxs-lookup"><span data-stu-id="cc666-167">Application Events</span></span> | <span data-ttu-id="cc666-168">Отображаются все пользовательские события трассировки событий Windows, создаваемые приложениями.</span><span class="sxs-lookup"><span data-stu-id="cc666-168">Displays all custom ETW events generated by your applications.</span></span> |
 
 ![Панель мониторинга Service Fabric](./media/log-analytics-service-fabric/sf3.png)
 
 ![Панель мониторинга Service Fabric](./media/log-analytics-service-fabric/sf4.png)
 
-<span data-ttu-id="b3475-171">В следующей таблице описаны методы сбора данных, а также приведены сведения о сборе данных для Service Fabric.</span><span class="sxs-lookup"><span data-stu-id="b3475-171">The following table shows data collection methods and other details about how data is collected for Service Fabric:</span></span>
+<span data-ttu-id="cc666-171">Hello ниже приведены методы сбора данных и другие сведения о сборе данных для структуры службы:</span><span class="sxs-lookup"><span data-stu-id="cc666-171">hello following table shows data collection methods and other details about how data is collected for Service Fabric:</span></span>
 
-| <span data-ttu-id="b3475-172">платформа</span><span class="sxs-lookup"><span data-stu-id="b3475-172">platform</span></span> | <span data-ttu-id="b3475-173">Direct Agent</span><span class="sxs-lookup"><span data-stu-id="b3475-173">Direct Agent</span></span> | <span data-ttu-id="b3475-174">Агент Operations Manager</span><span class="sxs-lookup"><span data-stu-id="b3475-174">Operations Manager agent</span></span> | <span data-ttu-id="b3475-175">Хранилище Azure</span><span class="sxs-lookup"><span data-stu-id="b3475-175">Azure Storage</span></span> | <span data-ttu-id="b3475-176">Нужен ли Operations Manager?</span><span class="sxs-lookup"><span data-stu-id="b3475-176">Operations Manager required?</span></span> | <span data-ttu-id="b3475-177">Отправка данных агента Operations Manager через группу управления</span><span class="sxs-lookup"><span data-stu-id="b3475-177">Operations Manager agent data sent via management group</span></span> | <span data-ttu-id="b3475-178">частота сбора</span><span class="sxs-lookup"><span data-stu-id="b3475-178">collection frequency</span></span> |
+| <span data-ttu-id="cc666-172">платформа</span><span class="sxs-lookup"><span data-stu-id="cc666-172">platform</span></span> | <span data-ttu-id="cc666-173">Direct Agent</span><span class="sxs-lookup"><span data-stu-id="cc666-173">Direct Agent</span></span> | <span data-ttu-id="cc666-174">Агент Operations Manager</span><span class="sxs-lookup"><span data-stu-id="cc666-174">Operations Manager agent</span></span> | <span data-ttu-id="cc666-175">Хранилище Azure</span><span class="sxs-lookup"><span data-stu-id="cc666-175">Azure Storage</span></span> | <span data-ttu-id="cc666-176">Нужен ли Operations Manager?</span><span class="sxs-lookup"><span data-stu-id="cc666-176">Operations Manager required?</span></span> | <span data-ttu-id="cc666-177">Отправка данных агента Operations Manager через группу управления</span><span class="sxs-lookup"><span data-stu-id="cc666-177">Operations Manager agent data sent via management group</span></span> | <span data-ttu-id="cc666-178">частота сбора</span><span class="sxs-lookup"><span data-stu-id="cc666-178">collection frequency</span></span> |
 | --- | --- | --- | --- | --- | --- | --- |
-| <span data-ttu-id="b3475-179">Windows</span><span class="sxs-lookup"><span data-stu-id="b3475-179">Windows</span></span> |  |  | <span data-ttu-id="b3475-180">&#8226;</span><span class="sxs-lookup"><span data-stu-id="b3475-180">&#8226;</span></span> |  |  |<span data-ttu-id="b3475-181">10 минут</span><span class="sxs-lookup"><span data-stu-id="b3475-181">10 minutes</span></span> |
+| <span data-ttu-id="cc666-179">Windows</span><span class="sxs-lookup"><span data-stu-id="cc666-179">Windows</span></span> |  |  | <span data-ttu-id="cc666-180">&#8226;</span><span class="sxs-lookup"><span data-stu-id="cc666-180">&#8226;</span></span> |  |  |<span data-ttu-id="cc666-181">10 минут</span><span class="sxs-lookup"><span data-stu-id="cc666-181">10 minutes</span></span> |
 
 > [!NOTE]
-> <span data-ttu-id="b3475-182">Измените область событий, выбрав **Data based on last seven days** (Данные за последние семь дней) в верхней части панели мониторинга.</span><span class="sxs-lookup"><span data-stu-id="b3475-182">Change the scope of events with **Data based on last seven days** at the top of the dashboard.</span></span> <span data-ttu-id="b3475-183">Кроме того, можно отобразить события, созданные за последние семь дней, один день или шесть часов.</span><span class="sxs-lookup"><span data-stu-id="b3475-183">You can also show events generated within the last seven days, one day, or six hours.</span></span> <span data-ttu-id="b3475-184">Можно также выбрать вариант **Custom** (Другое) и указать диапазон дат.</span><span class="sxs-lookup"><span data-stu-id="b3475-184">Or, you can select **Custom** to specify a custom date range.</span></span>
+> <span data-ttu-id="cc666-182">Изменение видимости hello события с **данные основаны на последних семи дней** hello верхней части панели мониторинга hello.</span><span class="sxs-lookup"><span data-stu-id="cc666-182">Change hello scope of events with **Data based on last seven days** at hello top of hello dashboard.</span></span> <span data-ttu-id="cc666-183">Также можно показать события, создаваемые в hello последние семь дней, один день или 6 часов.</span><span class="sxs-lookup"><span data-stu-id="cc666-183">You can also show events generated within hello last seven days, one day, or six hours.</span></span> <span data-ttu-id="cc666-184">Или можно выбрать **пользовательские** toospecify пользовательского диапазона дат.</span><span class="sxs-lookup"><span data-stu-id="cc666-184">Or, you can select **Custom** toospecify a custom date range.</span></span>
 >
 >
 
-## <a name="troubleshoot-your-service-fabric-and-log-analytics-configuration"></a><span data-ttu-id="b3475-185">Устранение неполадок конфигурации Service Fabric и конфигурации Log Analytics</span><span class="sxs-lookup"><span data-stu-id="b3475-185">Troubleshoot your Service Fabric and Log Analytics configuration</span></span>
-<span data-ttu-id="b3475-186">Если необходимо проверить конфигурацию Log Analytics, потому что не удается просмотреть данные событий в Log Analytics, используйте приведенный ниже сценарий.</span><span class="sxs-lookup"><span data-stu-id="b3475-186">If you need to verify your Log Analytics configuration because you are unable to view event data in Log Analytics, use the following script.</span></span> <span data-ttu-id="b3475-187">Он выполняет следующие действия:</span><span class="sxs-lookup"><span data-stu-id="b3475-187">It performs the following actions:</span></span>
+## <a name="troubleshoot-your-service-fabric-and-log-analytics-configuration"></a><span data-ttu-id="cc666-185">Устранение неполадок конфигурации Service Fabric и конфигурации Log Analytics</span><span class="sxs-lookup"><span data-stu-id="cc666-185">Troubleshoot your Service Fabric and Log Analytics configuration</span></span>
+<span data-ttu-id="cc666-186">Tooverify конфигурацию службы анализа журналов, поскольку не удается tooview данные событий в службе анализа журналов, используйте следующий сценарий hello.</span><span class="sxs-lookup"><span data-stu-id="cc666-186">If you need tooverify your Log Analytics configuration because you are unable tooview event data in Log Analytics, use hello following script.</span></span> <span data-ttu-id="cc666-187">Оно выполняет hello, следующие действия:</span><span class="sxs-lookup"><span data-stu-id="cc666-187">It performs hello following actions:</span></span>
 
-1. <span data-ttu-id="b3475-188">считывает конфигурацию диагностики Service Fabric;</span><span class="sxs-lookup"><span data-stu-id="b3475-188">Reads your Service Fabric diagnostics configuration</span></span>
-2. <span data-ttu-id="b3475-189">проверяет наличие данных, записанных в таблицы;</span><span class="sxs-lookup"><span data-stu-id="b3475-189">Checks for data written into the tables</span></span>
-3. <span data-ttu-id="b3475-190">проверяет, настроена ли служба Log Analytics для чтения данных из таблиц.</span><span class="sxs-lookup"><span data-stu-id="b3475-190">Verifies that Log Analytics is configured to read from the tables</span></span>
+1. <span data-ttu-id="cc666-188">считывает конфигурацию диагностики Service Fabric;</span><span class="sxs-lookup"><span data-stu-id="cc666-188">Reads your Service Fabric diagnostics configuration</span></span>
+2. <span data-ttu-id="cc666-189">Проверяет наличие данных, записанных в таблицы hello</span><span class="sxs-lookup"><span data-stu-id="cc666-189">Checks for data written into hello tables</span></span>
+3. <span data-ttu-id="cc666-190">Проверяет, является ли служба аналитики журналов настроенных tooread из таблиц hello</span><span class="sxs-lookup"><span data-stu-id="cc666-190">Verifies that Log Analytics is configured tooread from hello tables</span></span>
 
 ```
 <#
     Verify Service Fabric and Log Analytics configuration
     1. Read Service Fabric diagnostics configuration
-    2. Check for data being written into the tables
-    3. Verify Log Analytics is configured to read from the tables
+    2. Check for data being written into hello tables
+    3. Verify Log Analytics is configured tooread from hello tables
 
     Supported tables:
     WADServiceFabricReliableActorEventTable
@@ -404,7 +404,7 @@ Set-AzureRmOperationalInsightsIntelligencePack -ResourceGroupName $workspace.Res
     WADETWEventTable
 
     Script will write a warning for every misconfiguration detected
-    To see items that are correctly configured set $VerbosePreference="Continue"
+    toosee items that are correctly configured set $VerbosePreference="Continue"
 #>
 Param
 (
@@ -421,7 +421,7 @@ $WADtables = @("WADServiceFabricReliableActorEventTable",
                )
 
 <#
-    Check if OMS Log Analytics is configured to index service fabric events from the specified table
+    Check if OMS Log Analytics is configured tooindex service fabric events from hello specified table
 #>
 
 function Check-OMSLogAnalyticsConfiguration {
@@ -439,26 +439,26 @@ function Check-OMSLogAnalyticsConfiguration {
 
         if ("WADServiceFabric*EventTable" -in $currentStorageAccountInsight.Tables)
         {
-            Write-Verbose ("OMS Log Analytics workspace " + $workspace.Name + " is configured to index service fabric actor, service and operational events from " + $storageAccount.Name)
+            Write-Verbose ("OMS Log Analytics workspace " + $workspace.Name + " is configured tooindex service fabric actor, service and operational events from " + $storageAccount.Name)
         } else
         {
-            Write-Warning ("OMS Log Analytics workspace " + $workspace.Name + " is not configured to index service fabric actor, service and operational events from " + $storageAccount.Name)
+            Write-Warning ("OMS Log Analytics workspace " + $workspace.Name + " is not configured tooindex service fabric actor, service and operational events from " + $storageAccount.Name)
         }
         if ("WADETWEventTable" -in $currentStorageAccountInsight.Tables)
         {
-            Write-Verbose ("OMS Log Analytics workspace " + $workspace.Name + " is configured to index service fabric application events from " + $storageAccount.Name)
+            Write-Verbose ("OMS Log Analytics workspace " + $workspace.Name + " is configured tooindex service fabric application events from " + $storageAccount.Name)
         } else
         {
-            Write-Warning ("OMS Log Analytics workspace " + $workspace.Name + " is not configured to index service fabric application events from " + $storageAccount.Name)
+            Write-Warning ("OMS Log Analytics workspace " + $workspace.Name + " is not configured tooindex service fabric application events from " + $storageAccount.Name)
         }
     } else
     {
-        Write-Warning ("OMS Log Analytics workspace " + $workspace.Name + "is not configured to read service fabric events from " + $storageAccount.Name)
+        Write-Warning ("OMS Log Analytics workspace " + $workspace.Name + "is not configured tooread service fabric events from " + $storageAccount.Name)
     }    
 }
 
 <#
-    Check Azure table storage to confirm there is recent data written by Service Fabric
+    Check Azure table storage tooconfirm there is recent data written by Service Fabric
 #>
 
 function Check-TablesForData {
@@ -490,7 +490,7 @@ function Check-TablesForData {
             Write-Debug $entities
             if ($entities.Count -gt 0)
             {
-                Write-Verbose ("Data was written to $table in " + $storageAccount.ResourceName + "after $recently")
+                Write-Verbose ("Data was written too$table in " + $storageAccount.ResourceName + "after $recently")
             } else
             {
                 Write-Warning ("No data after $recently is in  $table in " + $storageAccount.ResourceName)
@@ -503,7 +503,7 @@ function Check-TablesForData {
 }
 
 <#
-    Check if ETW provider is configured to log events to the expected table storage
+    Check if ETW provider is configured toolog events toohello expected table storage
 #>
 function Check-ETWProviderLogging {
     param(
@@ -515,15 +515,15 @@ function Check-ETWProviderLogging {
         Write-Debug ("ID: $id Provider: $provider ExpectedTable $expectedTable ActualTable $table")
         if ( ($table -eq $null) -or ($table -eq ""))
         {
-            Write-Warning ("$id No configuration found for $provider. Configure Azure diagnostics to write to $expectedTable.")
+            Write-Warning ("$id No configuration found for $provider. Configure Azure diagnostics toowrite too$expectedTable.")
         }
         elseif ( $table -ne $expectedTable )
         {
-            Write-Warning ("$id $provider events are being written to $table instead of WAD$expectedTable. Events will not be collected by Log Analytics")
+            Write-Warning ("$id $provider events are being written too$table instead of WAD$expectedTable. Events will not be collected by Log Analytics")
         }
         else
         {
-            Write-Verbose "$id $provider events are being written to WAD$expectedTable (Correct configuration.)"
+            Write-Verbose "$id $provider events are being written tooWAD$expectedTable (Correct configuration.)"
         }
 }
 
@@ -560,7 +560,7 @@ function Check-ServiceFabricScaleSetDiagnostics {
         $etwManifestProviderList = $scaleSetDiagnostics.WadCfg.DiagnosticMonitorConfiguration.EtwProviders.EtwManifestProviderConfiguration
     } else
     {
-        Write-Error "Unable to parse Azure Diagnostics setting for $id"
+        Write-Error "Unable tooparse Azure Diagnostics setting for $id"
         Write-Warning ("$id does not have diagnostics enabled")
     }
 
@@ -618,7 +618,7 @@ $OMSworkspace = $allResources.Where({($_.ResourceType -eq "Microsoft.Operational
 
 if ($OMSworkspace.Name -ne $workspaceName)
 {
-    Write-Error ("Unable to find Log Analytics Workspace " + $workspaceName)
+    Write-Error ("Unable toofind Log Analytics Workspace " + $workspaceName)
 }
 
 $serviceFabricClusters = $allResources.Where({$_.ResourceType -eq "Microsoft.ServiceFabric/clusters"})
@@ -649,5 +649,5 @@ foreach($storageAccount in $storageAccountsToCheck)
  ```
 
 
-## <a name="next-steps"></a><span data-ttu-id="b3475-191">Дальнейшие действия</span><span class="sxs-lookup"><span data-stu-id="b3475-191">Next steps</span></span>
-* <span data-ttu-id="b3475-192">Подробные сведения о данных событий Service Fabric см. в статье [Поиск по журналам в Log Analytics](log-analytics-log-searches.md).</span><span class="sxs-lookup"><span data-stu-id="b3475-192">Use [Log Searches in Log Analytics](log-analytics-log-searches.md) to view detailed Service Fabric event data.</span></span>
+## <a name="next-steps"></a><span data-ttu-id="cc666-191">Дальнейшие действия</span><span class="sxs-lookup"><span data-stu-id="cc666-191">Next steps</span></span>
+* <span data-ttu-id="cc666-192">Используйте [поиска журналов в службе анализа журналов](log-analytics-log-searches.md) tooview подробные данные о событиях Service Fabric.</span><span class="sxs-lookup"><span data-stu-id="cc666-192">Use [Log Searches in Log Analytics](log-analytics-log-searches.md) tooview detailed Service Fabric event data.</span></span>

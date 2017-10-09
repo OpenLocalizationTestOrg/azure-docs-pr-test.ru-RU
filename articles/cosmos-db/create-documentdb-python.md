@@ -1,6 +1,6 @@
 ---
-title: "Azure Cosmos DB. Создание приложения с помощью Python и API DocumentDB | Документация Майкрософт"
-description: "В этой статье представлен пример кода Python, который можно использовать для подключения и выполнения запросов к API DocumentDB в Azure Cosmos DB."
+title: "Azure Cosmos DB: Сборка приложения с помощью Python и hello DocumentDB API | Документы Microsoft"
+description: "Содержит пример кода Python, можно использовать запрос tooand tooconnect hello Azure Cosmos DB DocumentDB API"
 services: cosmos-db
 documentationcenter: 
 author: mimig1
@@ -15,66 +15,66 @@ ms.devlang: python
 ms.topic: hero-article
 ms.date: 05/13/2017
 ms.author: mimig
-ms.openlocfilehash: 08d467ea27484e7d1d07d6c21b2e04b6525fbcd8
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: e66965ab493c6ef693e88a3767a401d39e1bde2a
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="azure-cosmos-db-build-a-documentdb-api-app-with-python-and-the-azure-portal"></a><span data-ttu-id="b656f-103">Azure Cosmos DB. Создание приложения API DocumentDB с помощью Python и портала Azure</span><span class="sxs-lookup"><span data-stu-id="b656f-103">Azure Cosmos DB: Build a DocumentDB API app with Python and the Azure portal</span></span>
+# <a name="azure-cosmos-db-build-a-documentdb-api-app-with-python-and-hello-azure-portal"></a><span data-ttu-id="41012-103">Azure Cosmos DB: Создать приложение DocumentDB API с Python и hello портал Azure</span><span class="sxs-lookup"><span data-stu-id="41012-103">Azure Cosmos DB: Build a DocumentDB API app with Python and hello Azure portal</span></span>
 
-<span data-ttu-id="b656f-104">Azure Cosmos DB — это глобально распределенная многомодельная служба базы данных Майкрософт.</span><span class="sxs-lookup"><span data-stu-id="b656f-104">Azure Cosmos DB is Microsoft’s globally distributed multi-model database service.</span></span> <span data-ttu-id="b656f-105">Вы можете быстро создавать и запрашивать документы, пары "ключ — значение" и базы данных графов, используя преимущества возможностей глобального распределения и горизонтального масштабирования Azure Cosmos DB.</span><span class="sxs-lookup"><span data-stu-id="b656f-105">You can quickly create and query document, key/value, and graph databases, all of which benefit from the global distribution and horizontal scale capabilities at the core of Azure Cosmos DB.</span></span> 
+<span data-ttu-id="41012-104">Azure Cosmos DB — это глобально распределенная многомодельная служба базы данных Майкрософт.</span><span class="sxs-lookup"><span data-stu-id="41012-104">Azure Cosmos DB is Microsoft’s globally distributed multi-model database service.</span></span> <span data-ttu-id="41012-105">Вы можете быстро создать и запрашивать документа, ключ значение и graph баз данных, все из которых преимущества глобального распространения hello и возможности горизонтального масштабирования в основе hello Azure Cosmos БД.</span><span class="sxs-lookup"><span data-stu-id="41012-105">You can quickly create and query document, key/value, and graph databases, all of which benefit from hello global distribution and horizontal scale capabilities at hello core of Azure Cosmos DB.</span></span> 
 
-<span data-ttu-id="b656f-106">В этом кратком руководстве показано, как создать учетную запись Azure Cosmos DB, базу данных документов и коллекцию с использованием портала Azure.</span><span class="sxs-lookup"><span data-stu-id="b656f-106">This quick start demonstrates how to create an Azure Cosmos DB account, document database, and collection using the Azure portal.</span></span> <span data-ttu-id="b656f-107">Затем вы создадите и запустите консольное приложение на базе [API для DocumentDB на Python](documentdb-sdk-python.md).</span><span class="sxs-lookup"><span data-stu-id="b656f-107">You then build and run a console app built on the [DocumentDB Python API](documentdb-sdk-python.md).</span></span>
+<span data-ttu-id="41012-106">В этом кратком руководстве показано, как toocreate учетную запись Azure Cosmos DB документа базы данных и коллекцию с помощью hello портал Azure.</span><span class="sxs-lookup"><span data-stu-id="41012-106">This quick start demonstrates how toocreate an Azure Cosmos DB account, document database, and collection using hello Azure portal.</span></span> <span data-ttu-id="41012-107">Затем постройте и запустите консольное приложение, построенных на hello [DocumentDB Python API](documentdb-sdk-python.md).</span><span class="sxs-lookup"><span data-stu-id="41012-107">You then build and run a console app built on hello [DocumentDB Python API](documentdb-sdk-python.md).</span></span>
 
-## <a name="prerequisites"></a><span data-ttu-id="b656f-108">Предварительные требования</span><span class="sxs-lookup"><span data-stu-id="b656f-108">Prerequisites</span></span>
+## <a name="prerequisites"></a><span data-ttu-id="41012-108">Предварительные требования</span><span class="sxs-lookup"><span data-stu-id="41012-108">Prerequisites</span></span>
 
-* <span data-ttu-id="b656f-109">Для выполнения этого примера вам потребуется:</span><span class="sxs-lookup"><span data-stu-id="b656f-109">Before you can run this sample, you must have the following prerequisites:</span></span>
-    * <span data-ttu-id="b656f-110">[Visual Studio 2015 или более поздней версии.](http://www.visualstudio.com/)</span><span class="sxs-lookup"><span data-stu-id="b656f-110">[Visual Studio 2015](http://www.visualstudio.com/) or higher.</span></span>
-    * <span data-ttu-id="b656f-111">Средства Python для Visual Studio с сайта [GitHub](http://microsoft.github.io/PTVS/).</span><span class="sxs-lookup"><span data-stu-id="b656f-111">Python Tools for Visual Studio from [GitHub](http://microsoft.github.io/PTVS/).</span></span> <span data-ttu-id="b656f-112">В этом руководстве используются средства Python для VS 2015.</span><span class="sxs-lookup"><span data-stu-id="b656f-112">This tutorial uses Python Tools for VS 2015.</span></span>
-    * <span data-ttu-id="b656f-113">Python 2.7 с сайта [python.org](https://www.python.org/downloads/release/python-2712/).</span><span class="sxs-lookup"><span data-stu-id="b656f-113">Python 2.7 from [python.org](https://www.python.org/downloads/release/python-2712/)</span></span>
+* <span data-ttu-id="41012-109">Перед запуском этого образца необходимо иметь hello следующие предварительные требования:</span><span class="sxs-lookup"><span data-stu-id="41012-109">Before you can run this sample, you must have hello following prerequisites:</span></span>
+    * <span data-ttu-id="41012-110">[Visual Studio 2015 или более поздней версии.](http://www.visualstudio.com/)</span><span class="sxs-lookup"><span data-stu-id="41012-110">[Visual Studio 2015](http://www.visualstudio.com/) or higher.</span></span>
+    * <span data-ttu-id="41012-111">Средства Python для Visual Studio с сайта [GitHub](http://microsoft.github.io/PTVS/).</span><span class="sxs-lookup"><span data-stu-id="41012-111">Python Tools for Visual Studio from [GitHub](http://microsoft.github.io/PTVS/).</span></span> <span data-ttu-id="41012-112">В этом руководстве используются средства Python для VS 2015.</span><span class="sxs-lookup"><span data-stu-id="41012-112">This tutorial uses Python Tools for VS 2015.</span></span>
+    * <span data-ttu-id="41012-113">Python 2.7 с сайта [python.org](https://www.python.org/downloads/release/python-2712/).</span><span class="sxs-lookup"><span data-stu-id="41012-113">Python 2.7 from [python.org](https://www.python.org/downloads/release/python-2712/)</span></span>
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="create-a-database-account"></a><span data-ttu-id="b656f-114">Создание учетной записи базы данных</span><span class="sxs-lookup"><span data-stu-id="b656f-114">Create a database account</span></span>
+## <a name="create-a-database-account"></a><span data-ttu-id="41012-114">Создание учетной записи базы данных</span><span class="sxs-lookup"><span data-stu-id="41012-114">Create a database account</span></span>
 
 [!INCLUDE [cosmos-db-create-dbaccount](../../includes/cosmos-db-create-dbaccount.md)]
 
-## <a name="add-a-collection"></a><span data-ttu-id="b656f-115">Добавление коллекции</span><span class="sxs-lookup"><span data-stu-id="b656f-115">Add a collection</span></span>
+## <a name="add-a-collection"></a><span data-ttu-id="41012-115">Добавление коллекции</span><span class="sxs-lookup"><span data-stu-id="41012-115">Add a collection</span></span>
 
 [!INCLUDE [cosmos-db-create-collection](../../includes/cosmos-db-create-collection.md)]
 
-## <a name="clone-the-sample-application"></a><span data-ttu-id="b656f-116">Клонирование примера приложения</span><span class="sxs-lookup"><span data-stu-id="b656f-116">Clone the sample application</span></span>
+## <a name="clone-hello-sample-application"></a><span data-ttu-id="41012-116">Пример приложения hello клонирования</span><span class="sxs-lookup"><span data-stu-id="41012-116">Clone hello sample application</span></span>
 
-<span data-ttu-id="b656f-117">Теперь необходимо клонировать приложение API DocumentDB из GitHub. Задайте строку подключения и выполните ее.</span><span class="sxs-lookup"><span data-stu-id="b656f-117">Now let's clone a DocumentDB API app from github, set the connection string, and run it.</span></span> <span data-ttu-id="b656f-118">Вы узнаете, как можно упростить работу с данными программным способом.</span><span class="sxs-lookup"><span data-stu-id="b656f-118">You see how easy it is to work with data programmatically.</span></span> 
+<span data-ttu-id="41012-117">Теперь давайте клонирование DocumentDB API приложений из github, задайте строку подключения hello и запустите его.</span><span class="sxs-lookup"><span data-stu-id="41012-117">Now let's clone a DocumentDB API app from github, set hello connection string, and run it.</span></span> <span data-ttu-id="41012-118">Вы видите, как просто можно toowork с данными программными средствами.</span><span class="sxs-lookup"><span data-stu-id="41012-118">You see how easy it is toowork with data programmatically.</span></span> 
 
-1. <span data-ttu-id="b656f-119">Откройте окно терминала Git, например Git Bash, и выполните команду `cd`, чтобы перейти в рабочий каталог.</span><span class="sxs-lookup"><span data-stu-id="b656f-119">Open a git terminal window, such as git bash, and `cd` to a working directory.</span></span>  
+1. <span data-ttu-id="41012-119">Откройте окно терминала git, таких как git bash и `cd` tooa рабочий каталог.</span><span class="sxs-lookup"><span data-stu-id="41012-119">Open a git terminal window, such as git bash, and `cd` tooa working directory.</span></span>  
 
-2. <span data-ttu-id="b656f-120">Выполните команду ниже, чтобы клонировать репозиторий с примером.</span><span class="sxs-lookup"><span data-stu-id="b656f-120">Run the following command to clone the sample repository.</span></span> 
+2. <span data-ttu-id="41012-120">Выполнения hello следующая команда репозитории примеров tooclone hello.</span><span class="sxs-lookup"><span data-stu-id="41012-120">Run hello following command tooclone hello sample repository.</span></span> 
 
     ```bash
     git clone https://github.com/Azure-Samples/azure-cosmos-db-documentdb-python-getting-started.git
     ```  
-## <a name="review-the-code"></a><span data-ttu-id="b656f-121">Просмотр кода</span><span class="sxs-lookup"><span data-stu-id="b656f-121">Review the code</span></span>
+## <a name="review-hello-code"></a><span data-ttu-id="41012-121">Проверка кода hello</span><span class="sxs-lookup"><span data-stu-id="41012-121">Review hello code</span></span>
 
-<span data-ttu-id="b656f-122">Сделаем краткий обзор того, что происходит в приложении.</span><span class="sxs-lookup"><span data-stu-id="b656f-122">Let's make a quick review of what's happening in the app.</span></span> <span data-ttu-id="b656f-123">Откройте файл DocumentDBGetStarted.py, и вы увидите, что эти строки кода создают ресурсы Azure Cosmos DB.</span><span class="sxs-lookup"><span data-stu-id="b656f-123">Open the DocumentDBGetStarted.py file and you'll find that these lines of code create the Azure Cosmos DB resources.</span></span> 
+<span data-ttu-id="41012-122">Убедитесь, что происходит в приложение hello быстро ознакомиться.</span><span class="sxs-lookup"><span data-stu-id="41012-122">Let's make a quick review of what's happening in hello app.</span></span> <span data-ttu-id="41012-123">Привет открыть файл DocumentDBGetStarted.py и вы найдете следующие строки кода создать hello Azure Cosmos DB ресурсы.</span><span class="sxs-lookup"><span data-stu-id="41012-123">Open hello DocumentDBGetStarted.py file and you'll find that these lines of code create hello Azure Cosmos DB resources.</span></span> 
 
 
-* <span data-ttu-id="b656f-124">Инициализация экземпляра DocumentClient.</span><span class="sxs-lookup"><span data-stu-id="b656f-124">The DocumentClient is initialized.</span></span>
+* <span data-ttu-id="41012-124">Hello DocumentClient инициализируется.</span><span class="sxs-lookup"><span data-stu-id="41012-124">hello DocumentClient is initialized.</span></span>
 
     ```python
-    # Initialize the Python DocumentDB client
+    # Initialize hello Python DocumentDB client
     client = document_client.DocumentClient(config['ENDPOINT'], {'masterKey': config['MASTERKEY']})
     ```
 
-* <span data-ttu-id="b656f-125">Создание базы данных.</span><span class="sxs-lookup"><span data-stu-id="b656f-125">A new database is created.</span></span>
+* <span data-ttu-id="41012-125">Создание базы данных.</span><span class="sxs-lookup"><span data-stu-id="41012-125">A new database is created.</span></span>
 
     ```python
     # Create a database
     db = client.CreateDatabase({ 'id': config['DOCUMENTDB_DATABASE'] })
     ```
 
-* <span data-ttu-id="b656f-126">Создание коллекции.</span><span class="sxs-lookup"><span data-stu-id="b656f-126">A new collection is created.</span></span>
+* <span data-ttu-id="41012-126">Создание коллекции.</span><span class="sxs-lookup"><span data-stu-id="41012-126">A new collection is created.</span></span>
 
     ```python
     # Create collection options
@@ -88,7 +88,7 @@ ms.lasthandoff: 07/11/2017
     collection = client.CreateCollection(db['_self'], { 'id': config['DOCUMENTDB_COLLECTION'] }, options)
     ```
 
-* <span data-ttu-id="b656f-127">Создание нескольких документов.</span><span class="sxs-lookup"><span data-stu-id="b656f-127">Some documents are created.</span></span>
+* <span data-ttu-id="41012-127">Создание нескольких документов.</span><span class="sxs-lookup"><span data-stu-id="41012-127">Some documents are created.</span></span>
 
     ```python
     # Create some documents
@@ -102,7 +102,7 @@ ms.lasthandoff: 07/11/2017
         })
     ```
 
-* <span data-ttu-id="b656f-128">Выполнение запросов с помощью SQL</span><span class="sxs-lookup"><span data-stu-id="b656f-128">A query is performed using SQL</span></span>
+* <span data-ttu-id="41012-128">Выполнение запросов с помощью SQL</span><span class="sxs-lookup"><span data-stu-id="41012-128">A query is performed using SQL</span></span>
 
     ```python
     # Query them in SQL
@@ -118,49 +118,49 @@ ms.lasthandoff: 07/11/2017
     print(results)
     ```
 
-## <a name="update-your-connection-string"></a><span data-ttu-id="b656f-129">Обновление строки подключения</span><span class="sxs-lookup"><span data-stu-id="b656f-129">Update your connection string</span></span>
+## <a name="update-your-connection-string"></a><span data-ttu-id="41012-129">Обновление строки подключения</span><span class="sxs-lookup"><span data-stu-id="41012-129">Update your connection string</span></span>
 
-<span data-ttu-id="b656f-130">Теперь вернитесь на портал Azure, чтобы получить данные строки подключения. Скопируйте эти данные в приложение.</span><span class="sxs-lookup"><span data-stu-id="b656f-130">Now go back to the Azure portal to get your connection string information and copy it into the app.</span></span>
+<span data-ttu-id="41012-130">Теперь вернитесь toohello Azure портала tooget данные строки подключения и скопируйте его в приложение hello.</span><span class="sxs-lookup"><span data-stu-id="41012-130">Now go back toohello Azure portal tooget your connection string information and copy it into hello app.</span></span>
 
-1. <span data-ttu-id="b656f-131">На [портале Azure](http://portal.azure.com/) перейдите к учетной записи базы данных Azure Cosmos DB и на левой панели навигации щелкните **Ключи**, а затем выберите **Ключи записи-чтения**.</span><span class="sxs-lookup"><span data-stu-id="b656f-131">In the [Azure portal](http://portal.azure.com/), in your Azure Cosmos DB account, in the left navigation click **Keys**, and then click **Read-write Keys**.</span></span> <span data-ttu-id="b656f-132">На следующем шаге используйте кнопку копирования в правой части экрана, чтобы скопировать универсальный код ресурса (URI) и первичный ключ в файл `DocumentDBGetStarted.py`.</span><span class="sxs-lookup"><span data-stu-id="b656f-132">You'll use the copy buttons on the right side of the screen to copy the URI and Primary Key into the `DocumentDBGetStarted.py` file in the next step.</span></span>
+1. <span data-ttu-id="41012-131">В hello [портал Azure](http://portal.azure.com/), в вашей Azure Cosmos DB учетной записи, в hello навигации слева щелкните **ключей**и нажмите кнопку **чтения и записи ключей**.</span><span class="sxs-lookup"><span data-stu-id="41012-131">In hello [Azure portal](http://portal.azure.com/), in your Azure Cosmos DB account, in hello left navigation click **Keys**, and then click **Read-write Keys**.</span></span> <span data-ttu-id="41012-132">Кнопки копирования hello будет использоваться на правой стороне hello hello toocopy экрана приветствия URI и первичный ключ в hello `DocumentDBGetStarted.py` файла в следующем шаге hello.</span><span class="sxs-lookup"><span data-stu-id="41012-132">You'll use hello copy buttons on hello right side of hello screen toocopy hello URI and Primary Key into hello `DocumentDBGetStarted.py` file in hello next step.</span></span>
 
-    ![Просмотр и копирование ключа доступа на портале Azure, колонка "Ключи"](./media/create-documentdb-dotnet/keys.png)
+    ![Просмотреть и скопировать ключ доступа в hello портал Azure, ключи колонку](./media/create-documentdb-dotnet/keys.png)
 
-2. <span data-ttu-id="b656f-134">Откройте файл `DocumentDBGetStarted.py`.</span><span class="sxs-lookup"><span data-stu-id="b656f-134">In Open the `DocumentDBGetStarted.py` file.</span></span> 
+2. <span data-ttu-id="41012-134">В открытых hello `DocumentDBGetStarted.py` файла.</span><span class="sxs-lookup"><span data-stu-id="41012-134">In Open hello `DocumentDBGetStarted.py` file.</span></span> 
 
-3. <span data-ttu-id="b656f-135">Скопируйте значение универсального кода ресурса (URI) на портале (с помощью кнопки копирования) и добавьте его в качестве значения параметра ключа конечной точки в файле `DocumentDBGetStarted.py`.</span><span class="sxs-lookup"><span data-stu-id="b656f-135">Copy your URI value from the portal (using the copy button) and make it the value of the endpoint key in `DocumentDBGetStarted.py`.</span></span> 
+3. <span data-ttu-id="41012-135">Скопируйте значение URI с портала hello (с использованием "Копировать" hello ") и сделать его hello значение ключа hello конечной точки в `DocumentDBGetStarted.py`.</span><span class="sxs-lookup"><span data-stu-id="41012-135">Copy your URI value from hello portal (using hello copy button) and make it hello value of hello endpoint key in `DocumentDBGetStarted.py`.</span></span> 
 
     `config.ENDPOINT : "https://FILLME.documents.azure.com"`
 
-4. <span data-ttu-id="b656f-136">Затем скопируйте значение первичного ключа с портала и добавьте его в качестве значения параметра `config.MASTERKEY` в файле `DocumentDBGetStarted.py`.</span><span class="sxs-lookup"><span data-stu-id="b656f-136">Then copy your PRIMARY KEY value from the portal and make it the value of the `config.MASTERKEY` in `DocumentDBGetStarted.py`.</span></span> <span data-ttu-id="b656f-137">Теперь приложение со всеми сведениями, необходимыми для взаимодействия с Azure Cosmos DB, обновлено.</span><span class="sxs-lookup"><span data-stu-id="b656f-137">You've now updated your app with all the info it needs to communicate with Azure Cosmos DB.</span></span> 
+4. <span data-ttu-id="41012-136">Затем скопируйте значение ПЕРВИЧНОГО ключа из портала hello и сделать его значение hello hello `config.MASTERKEY` в `DocumentDBGetStarted.py`.</span><span class="sxs-lookup"><span data-stu-id="41012-136">Then copy your PRIMARY KEY value from hello portal and make it hello value of hello `config.MASTERKEY` in `DocumentDBGetStarted.py`.</span></span> <span data-ttu-id="41012-137">Теперь вы обновили приложения с все hello сведения учетной записи, он должен toocommunicate с Azure Cosmos DB.</span><span class="sxs-lookup"><span data-stu-id="41012-137">You've now updated your app with all hello info it needs toocommunicate with Azure Cosmos DB.</span></span> 
 
     `config.MASTERKEY : "FILLME"`
     
-## <a name="run-the-app"></a><span data-ttu-id="b656f-138">Запуск приложения</span><span class="sxs-lookup"><span data-stu-id="b656f-138">Run the app</span></span>
-1. <span data-ttu-id="b656f-139">В Visual Studio щелкните правой кнопкой мыши проект в **обозревателе решений**, выберите текущую среду Python и щелкните ее правой кнопкой мыши.</span><span class="sxs-lookup"><span data-stu-id="b656f-139">In Visual Studio, right-click on the project in **Solution Explorer**, select the current Python environment, then right click.</span></span>
+## <a name="run-hello-app"></a><span data-ttu-id="41012-138">Выполните приложение hello</span><span class="sxs-lookup"><span data-stu-id="41012-138">Run hello app</span></span>
+1. <span data-ttu-id="41012-139">В Visual Studio щелкните правой кнопкой мыши проект hello в **обозревателе решений**, выберите hello текущей среды Python, а затем щелкните правой кнопкой мыши.</span><span class="sxs-lookup"><span data-stu-id="41012-139">In Visual Studio, right-click on hello project in **Solution Explorer**, select hello current Python environment, then right click.</span></span>
 
-2. <span data-ttu-id="b656f-140">Выберите "Установить пакет Python...", а затем введите **pydocumentdb**</span><span class="sxs-lookup"><span data-stu-id="b656f-140">Select Install Python Package, then type in **pydocumentdb**</span></span>
+2. <span data-ttu-id="41012-140">Выберите "Установить пакет Python...", а затем введите **pydocumentdb**</span><span class="sxs-lookup"><span data-stu-id="41012-140">Select Install Python Package, then type in **pydocumentdb**</span></span>
 
-3. <span data-ttu-id="b656f-141">Нажмите клавишу F5 для запуска приложения.</span><span class="sxs-lookup"><span data-stu-id="b656f-141">Run F5 to run the application.</span></span> <span data-ttu-id="b656f-142">Приложение откроется в браузере.</span><span class="sxs-lookup"><span data-stu-id="b656f-142">Your app displays in your browser.</span></span> 
+3. <span data-ttu-id="41012-141">Запустите приложение hello toorun F5.</span><span class="sxs-lookup"><span data-stu-id="41012-141">Run F5 toorun hello application.</span></span> <span data-ttu-id="41012-142">Приложение откроется в браузере.</span><span class="sxs-lookup"><span data-stu-id="41012-142">Your app displays in your browser.</span></span> 
 
-<span data-ttu-id="b656f-143">Вернитесь в обозреватель данных, где вы можете просматривать, запрашивать и изменять новые данные, а также работать с ними.</span><span class="sxs-lookup"><span data-stu-id="b656f-143">You can now go back to Data Explorer and see query, modify, and work with this new data.</span></span> 
+<span data-ttu-id="41012-143">Теперь можно вернуться tooData обозревателя и запроса в разделе, изменения и работать с новые данные.</span><span class="sxs-lookup"><span data-stu-id="41012-143">You can now go back tooData Explorer and see query, modify, and work with this new data.</span></span> 
 
-## <a name="review-slas-in-the-azure-portal"></a><span data-ttu-id="b656f-144">Просмотр соглашений об уровне обслуживания на портале Azure</span><span class="sxs-lookup"><span data-stu-id="b656f-144">Review SLAs in the Azure portal</span></span>
+## <a name="review-slas-in-hello-azure-portal"></a><span data-ttu-id="41012-144">Просмотрите соглашений об уровне обслуживания в hello портал Azure</span><span class="sxs-lookup"><span data-stu-id="41012-144">Review SLAs in hello Azure portal</span></span>
 
 [!INCLUDE [cosmosdb-tutorial-review-slas](../../includes/cosmos-db-tutorial-review-slas.md)]
 
-## <a name="clean-up-resources"></a><span data-ttu-id="b656f-145">Очистка ресурсов</span><span class="sxs-lookup"><span data-stu-id="b656f-145">Clean up resources</span></span>
+## <a name="clean-up-resources"></a><span data-ttu-id="41012-145">Очистка ресурсов</span><span class="sxs-lookup"><span data-stu-id="41012-145">Clean up resources</span></span>
 
-<span data-ttu-id="b656f-146">Если вы не собираетесь использовать это приложение дальше, удалите все ресурсы, созданные в ходе работы с этим руководством, на портале Azure, сделав следующее:</span><span class="sxs-lookup"><span data-stu-id="b656f-146">If you're not going to continue to use this app, delete all resources created by this quickstart in the Azure portal with the following steps:</span></span>
+<span data-ttu-id="41012-146">Если вы не будете toocontinue toouse это приложение, необходимо удалите все ресурсы, созданные в этом кратком руководстве в hello портал Azure с hello следующие шаги:</span><span class="sxs-lookup"><span data-stu-id="41012-146">If you're not going toocontinue toouse this app, delete all resources created by this quickstart in hello Azure portal with hello following steps:</span></span>
 
-1. <span data-ttu-id="b656f-147">В меню слева на портале Azure щелкните **Группы ресурсов**, а затем выберите имя созданного ресурса.</span><span class="sxs-lookup"><span data-stu-id="b656f-147">From the left-hand menu in the Azure portal, click **Resource groups** and then click the name of the resource you created.</span></span> 
-2. <span data-ttu-id="b656f-148">На странице группы ресурсов щелкните **Удалить**, в текстовом поле введите имя ресурса для удаления и щелкните **Удалить**.</span><span class="sxs-lookup"><span data-stu-id="b656f-148">On your resource group page, click **Delete**, type the name of the resource to delete in the text box, and then click **Delete**.</span></span>
+1. <span data-ttu-id="41012-147">Hello слева в меню портала Azure hello, пункт **групп ресурсов** и щелкните имя hello созданного ресурса hello.</span><span class="sxs-lookup"><span data-stu-id="41012-147">From hello left-hand menu in hello Azure portal, click **Resource groups** and then click hello name of hello resource you created.</span></span> 
+2. <span data-ttu-id="41012-148">На странице группы ресурсов, нажмите кнопку **удаление**, введите имя hello toodelete ресурсов hello в hello текстовое поле и нажмите кнопку **удалить**.</span><span class="sxs-lookup"><span data-stu-id="41012-148">On your resource group page, click **Delete**, type hello name of hello resource toodelete in hello text box, and then click **Delete**.</span></span>
 
-## <a name="next-steps"></a><span data-ttu-id="b656f-149">Дальнейшие действия</span><span class="sxs-lookup"><span data-stu-id="b656f-149">Next steps</span></span>
+## <a name="next-steps"></a><span data-ttu-id="41012-149">Дальнейшие действия</span><span class="sxs-lookup"><span data-stu-id="41012-149">Next steps</span></span>
 
-<span data-ttu-id="b656f-150">В этом кратком руководстве вы узнали, как создать учетную запись Azure Cosmos DB, коллекцию с помощью обозревателя данных, а также как запустить приложение.</span><span class="sxs-lookup"><span data-stu-id="b656f-150">In this quickstart, you've learned how to create an Azure Cosmos DB account, create a collection using the Data Explorer, and run an app.</span></span> <span data-ttu-id="b656f-151">Теперь можно импортировать дополнительные данные в учетную запись Azure Cosmos DB.</span><span class="sxs-lookup"><span data-stu-id="b656f-151">You can now import additional data to your Cosmos DB account.</span></span> 
+<span data-ttu-id="41012-150">В этом кратком руководстве вы узнали, как создать коллекцию с помощью hello обозреватель данных toocreate учетную запись Azure Cosmos DB и запуск приложения.</span><span class="sxs-lookup"><span data-stu-id="41012-150">In this quickstart, you've learned how toocreate an Azure Cosmos DB account, create a collection using hello Data Explorer, and run an app.</span></span> <span data-ttu-id="41012-151">Теперь можно импортировать учетной записи Cosmos DB tooyour дополнительные данные.</span><span class="sxs-lookup"><span data-stu-id="41012-151">You can now import additional data tooyour Cosmos DB account.</span></span> 
 
 > [!div class="nextstepaction"]
-> [<span data-ttu-id="b656f-152">Импорт данных в DocumentDB с помощью средства миграции базы данных</span><span class="sxs-lookup"><span data-stu-id="b656f-152">Import data into Azure Cosmos DB for the DocumentDB API</span></span>](import-data.md)
+> [<span data-ttu-id="41012-152">Импорт данных в базе данных Azure Cosmos для hello DocumentDB API</span><span class="sxs-lookup"><span data-stu-id="41012-152">Import data into Azure Cosmos DB for hello DocumentDB API</span></span>](import-data.md)
 
 

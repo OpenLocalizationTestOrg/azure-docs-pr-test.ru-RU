@@ -1,5 +1,5 @@
 ---
-title: "Операции входа с возможно инфицированных устройств"
+title: "aaaSign модули с возможно инфицированных устройств"
 description: "Отчет, в котором указываются попытки входа, выполненные с устройств, на которых могут выполняться вредоносные программы."
 services: active-directory
 documentationcenter: 
@@ -14,18 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/04/2016
 ms.author: saah;kenhoff
-ms.openlocfilehash: 3809e20937d8d9829675e20f893101cb849dcea2
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 8d973701d6833f748de443f96cf7ed1d060202e3
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="sign-ins-from-possibly-infected-devices"></a><span data-ttu-id="28a3f-103">Операции входа с возможно инфицированных устройств</span><span class="sxs-lookup"><span data-stu-id="28a3f-103">Sign ins from possibly infected devices</span></span>
-<span data-ttu-id="28a3f-104">Предназначение этого отчета — определить инфицированные устройства пользователей, которые теперь являются частью ботнета.</span><span class="sxs-lookup"><span data-stu-id="28a3f-104">This report attempts to identify your users' devices that that have become infected and are now part of a botnet.</span></span> <span data-ttu-id="28a3f-105">Мы сопоставляем IP-адреса, с которых вошли пользователи, с IP-адресами, с которых подключались к серверам ботнета.</span><span class="sxs-lookup"><span data-stu-id="28a3f-105">We correlate IP addresses of users' sign-ins against IP addresses that we know to be in contact with botnet servers.</span></span>
+# <a name="sign-ins-from-possibly-infected-devices"></a><span data-ttu-id="5f611-103">Операции входа с возможно инфицированных устройств</span><span class="sxs-lookup"><span data-stu-id="5f611-103">Sign ins from possibly infected devices</span></span>
+<span data-ttu-id="5f611-104">В этом отчете попыток tooidentify устройств пользователей, быть заражен и теперь являются частью ботнет.</span><span class="sxs-lookup"><span data-stu-id="5f611-104">This report attempts tooidentify your users' devices that that have become infected and are now part of a botnet.</span></span> <span data-ttu-id="5f611-105">IP-адресов пользователей входа в систему с IP-адресами, что мы знаем, toobe подключенные к серверам ботнет корреляции.</span><span class="sxs-lookup"><span data-stu-id="5f611-105">We correlate IP addresses of users' sign-ins against IP addresses that we know toobe in contact with botnet servers.</span></span>
 
-<span data-ttu-id="28a3f-106">Рекомендация. В этом отчете отмечаются IP-адреса, а не устройства пользователей.</span><span class="sxs-lookup"><span data-stu-id="28a3f-106">Recommendation: This report flags IP addresses, not user devices.</span></span> <span data-ttu-id="28a3f-107">Мы советуем связаться с пользователем и проверить все его устройства, чтобы убедиться в наличии проблемы.</span><span class="sxs-lookup"><span data-stu-id="28a3f-107">We recommend that you contact the user and scan all the user's devices to be certain.</span></span> <span data-ttu-id="28a3f-108">Может оказаться, что инфицировано личное устройство этого пользователя или какого-то другого пользователя, который использовал тот же IP-адрес.</span><span class="sxs-lookup"><span data-stu-id="28a3f-108">It is also possible that a user's personal device is infected, or that someone other than the user, who was using the same IP address as the user, has an infected device.</span></span>
+<span data-ttu-id="5f611-106">Рекомендация. В этом отчете отмечаются IP-адреса, а не устройства пользователей.</span><span class="sxs-lookup"><span data-stu-id="5f611-106">Recommendation: This report flags IP addresses, not user devices.</span></span> <span data-ttu-id="5f611-107">Рекомендуется связаться пользователем hello и сканировать все пользовательские hello устройств toobe определенных.</span><span class="sxs-lookup"><span data-stu-id="5f611-107">We recommend that you contact hello user and scan all hello user's devices toobe certain.</span></span> <span data-ttu-id="5f611-108">Также возможно, заражен личное устройство пользователя, или что кто-то отличное от hello пользователя, который использовался hello же IP-адрес, как пользователь hello имеет зараженном устройстве.</span><span class="sxs-lookup"><span data-stu-id="5f611-108">It is also possible that a user's personal device is infected, or that someone other than hello user, who was using hello same IP address as hello user, has an infected device.</span></span>
 
-<span data-ttu-id="28a3f-109">Дополнительную информацию о том, как обеспечить защиту от вредоносных программ, см. в [центре защиты от вредоносных программ](http://go.microsoft.com/fwlink/?linkid=335773).</span><span class="sxs-lookup"><span data-stu-id="28a3f-109">For more information about how to address malware infections, see the [Malware Protection Center](http://go.microsoft.com/fwlink/?linkid=335773).</span></span>
+<span data-ttu-id="5f611-109">Дополнительные сведения о том, как tooaddress вредоносных программ, в разделе hello [Malware Protection Center](http://go.microsoft.com/fwlink/?linkid=335773).</span><span class="sxs-lookup"><span data-stu-id="5f611-109">For more information about how tooaddress malware infections, see hello [Malware Protection Center](http://go.microsoft.com/fwlink/?linkid=335773).</span></span>
 
 ![Операции входа с возможно инфицированных устройств](./media/active-directory-reporting-sign-ins-from-possibly-infected-devices/signInsFromPossiblyInfectedDevices.PNG)
 

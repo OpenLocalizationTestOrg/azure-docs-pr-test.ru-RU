@@ -1,6 +1,6 @@
 ---
-title: "Управление кэшами Redis с помощью Azure Explorer для Eclipse | Документация Майкрософт"
-description: "Узнайте, как управлять кэшами Redis для Azure с помощью Azure Explorer для Eclipse."
+title: "Использование кэша Redis aaaManaging hello обозреватель Azure для Eclipse | Документы Microsoft"
+description: "Узнайте, как toomanage redis для Azure кэширует с помощью hello обозреватель Azure для Eclipse."
 services: 
 documentationcenter: java
 author: rmcmurray
@@ -14,97 +14,97 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 06/14/2017
 ms.author: robmcm
-ms.openlocfilehash: dc1ed15cb83e6ddc8cf84f5c52a0482231f75e40
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: aa0c38862bda7919a3fc6c53c2fdaf555dd64bff
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="managing-redis-caches-using-the-azure-explorer-for-eclipse"></a><span data-ttu-id="89d89-103">Управление кэшами Redis с помощью Azure Explorer для Eclipse</span><span class="sxs-lookup"><span data-stu-id="89d89-103">Managing Redis Caches using the Azure Explorer for Eclipse</span></span>
+# <a name="managing-redis-caches-using-hello-azure-explorer-for-eclipse"></a><span data-ttu-id="7c4eb-103">Управление кэшами Redis, с помощью hello обозреватель Azure для Eclipse</span><span class="sxs-lookup"><span data-stu-id="7c4eb-103">Managing Redis Caches using hello Azure Explorer for Eclipse</span></span>
 
-<span data-ttu-id="89d89-104">Обозреватель Azure Explorer, входящий в состав набора средств Azure для Eclipse, предоставляет разработчикам Java удобное решение для управления кэшами Redis в учетной записи Azure из интегрированной среды разработки Eclipse.</span><span class="sxs-lookup"><span data-stu-id="89d89-104">The Azure Explorer, which is part of the Azure Toolkit for Eclipse, provides Java developers with an easy-to-use solution for managing redis caches in their Azure account from inside the Eclipse IDE.</span></span>
+<span data-ttu-id="7c4eb-104">Hello Explorer Azure, который является частью hello средств Azure для Eclipse, обеспечивает разработчиков Java в использовании решения для управления redis кэши в его учетной записью Azure из внутри hello интегрированной среды разработки Eclipse.</span><span class="sxs-lookup"><span data-stu-id="7c4eb-104">hello Azure Explorer, which is part of hello Azure Toolkit for Eclipse, provides Java developers with an easy-to-use solution for managing redis caches in their Azure account from inside hello Eclipse IDE.</span></span>
 
 [!INCLUDE [azure-toolkit-for-eclipse-prerequisites](../includes/azure-toolkit-for-eclipse-prerequisites.md)]
 
 [!INCLUDE [azure-toolkit-for-eclipse-show-azure-explorer](../includes/azure-toolkit-for-eclipse-show-azure-explorer.md)]
 
-## <a name="create-a-redis-cache-by-using-eclipse"></a><span data-ttu-id="89d89-105">Создание кэша Redis с помощью Eclipse</span><span class="sxs-lookup"><span data-stu-id="89d89-105">Create a Redis Cache by using Eclipse</span></span>
+## <a name="create-a-redis-cache-by-using-eclipse"></a><span data-ttu-id="7c4eb-105">Создание кэша Redis с помощью Eclipse</span><span class="sxs-lookup"><span data-stu-id="7c4eb-105">Create a Redis Cache by using Eclipse</span></span>
 
-<span data-ttu-id="89d89-106">Приведенные ниже пошаговые инструкции помогут вам создать кэш Redis с использованием Azure Explorer.</span><span class="sxs-lookup"><span data-stu-id="89d89-106">The following steps walk you through the steps to create a redis cache using the Azure Explorer.</span></span>
+<span data-ttu-id="7c4eb-106">Hello следующие шаги пошаговыми руководствами toocreate hello действия кэша redis с использованием hello обозреватель Azure.</span><span class="sxs-lookup"><span data-stu-id="7c4eb-106">hello following steps walk you through hello steps toocreate a redis cache using hello Azure Explorer.</span></span>
 
-1. <span data-ttu-id="89d89-107">Войдите в свою учетную запись Azure, следуя инструкциям из статьи [Инструкции по входу для набора средств Azure для Eclipse].</span><span class="sxs-lookup"><span data-stu-id="89d89-107">Sign in to your Azure account using the steps in the [Sign In Instructions for the Azure Toolkit for Eclipse] article.</span></span>
+1. <span data-ttu-id="7c4eb-107">Войдите в tooyour учетная запись Azure с помощью действия hello в hello [входа в инструкции для средств Azure для Eclipse hello] статьи.</span><span class="sxs-lookup"><span data-stu-id="7c4eb-107">Sign in tooyour Azure account using hello steps in hello [Sign In Instructions for hello Azure Toolkit for Eclipse] article.</span></span>
 
-1. <span data-ttu-id="89d89-108">В окне средства **Azure Explorer** разверните узел **Azure**, щелкните правой кнопкой мыши элемент **Кэши Redis** и выберите пункт **Create Redis Cache** (Создать кэш Redis).</span><span class="sxs-lookup"><span data-stu-id="89d89-108">In the **Azure Explorer** tool window, expand the **Azure** node, right-click **Redis Caches**, and then click **Create Redis Cache**.</span></span>
+1. <span data-ttu-id="7c4eb-108">В hello **обозреватель Azure** окно инструментов, разверните hello **Azure** узел, щелкните правой кнопкой мыши **кэша Redis**и нажмите кнопку **создать кэш Redis**.</span><span class="sxs-lookup"><span data-stu-id="7c4eb-108">In hello **Azure Explorer** tool window, expand hello **Azure** node, right-click **Redis Caches**, and then click **Create Redis Cache**.</span></span>
 
    ![Меню создания кэша Redis][CR01]
 
-1. <span data-ttu-id="89d89-110">Когда отобразится диалоговое окно **Новый кэш Redis**, укажите значения для следующих параметров:</span><span class="sxs-lookup"><span data-stu-id="89d89-110">When the **New Redis Cache** dialog box appears, specify the following options:</span></span>
+1. <span data-ttu-id="7c4eb-110">Здравствуйте, когда **новый кэш Redis** диалоговое окно, укажите hello следующие параметры:</span><span class="sxs-lookup"><span data-stu-id="7c4eb-110">When hello **New Redis Cache** dialog box appears, specify hello following options:</span></span>
 
    ![Диалоговое окно создания кэша Redis][CR02]
 
-   <span data-ttu-id="89d89-112">а.</span><span class="sxs-lookup"><span data-stu-id="89d89-112">a.</span></span> <span data-ttu-id="89d89-113">**DNS-имя**: определяет поддомен DNS для нового кэша Redis, который добавляется перед адресом redis.cache.windows.net, например: *wingtiptoys.redis.cache.windows.net*.</span><span class="sxs-lookup"><span data-stu-id="89d89-113">**DNS Name**: Specifies the DNS subdomain for the new redis cache, which is prepended to ".redis.cache.windows.net"; for example: *wingtiptoys.redis.cache.windows.net*.</span></span>
+   <span data-ttu-id="7c4eb-112">а.</span><span class="sxs-lookup"><span data-stu-id="7c4eb-112">a.</span></span> <span data-ttu-id="7c4eb-113">**DNS-имя**: определяет поддомен hello DNS для hello новый кэш redis, который добавляется слишком». redis.cache.windows .net», например: *wingtiptoys.redis.cache.windows.net*.</span><span class="sxs-lookup"><span data-stu-id="7c4eb-113">**DNS Name**: Specifies hello DNS subdomain for hello new redis cache, which is prepended too".redis.cache.windows.net"; for example: *wingtiptoys.redis.cache.windows.net*.</span></span>
 
-   <span data-ttu-id="89d89-114">b.</span><span class="sxs-lookup"><span data-stu-id="89d89-114">b.</span></span> <span data-ttu-id="89d89-115">**Подписка**: указывает подписку Azure, которую нужно использовать для нового кэша Redis.</span><span class="sxs-lookup"><span data-stu-id="89d89-115">**Subscription**: Specifies the Azure subscription you want to use for the new redis cache.</span></span>
+   <span data-ttu-id="7c4eb-114">b.</span><span class="sxs-lookup"><span data-stu-id="7c4eb-114">b.</span></span> <span data-ttu-id="7c4eb-115">**Подписки**: указывает hello подписки Azure, требуется toouse hello новый кэш redis.</span><span class="sxs-lookup"><span data-stu-id="7c4eb-115">**Subscription**: Specifies hello Azure subscription you want toouse for hello new redis cache.</span></span>
 
-   <span data-ttu-id="89d89-116">c.</span><span class="sxs-lookup"><span data-stu-id="89d89-116">c.</span></span> <span data-ttu-id="89d89-117">**Группа ресурсов**: указывает группу ресурсов для кэша Redis. Нужно выбрать один из следующих параметров:</span><span class="sxs-lookup"><span data-stu-id="89d89-117">**Resource Group**: Specifies the resource group for your redis cache; you need to choose one of the following options:</span></span>
-      * <span data-ttu-id="89d89-118">**Создать**: указывает, что нужно создать группу ресурсов.</span><span class="sxs-lookup"><span data-stu-id="89d89-118">**Create New**: Specifies that you want to create a new resource group.</span></span>
-      * <span data-ttu-id="89d89-119">**Использовать существующую**: указывает, что будет выбрана группа ресурсов, связанная с учетной записью Azure.</span><span class="sxs-lookup"><span data-stu-id="89d89-119">**Use Existing**: Specifies that you will choose from a list of resource groups associated with your Azure account.</span></span>
+   <span data-ttu-id="7c4eb-116">c.</span><span class="sxs-lookup"><span data-stu-id="7c4eb-116">c.</span></span> <span data-ttu-id="7c4eb-117">**Группа ресурсов**: Определяет hello группы ресурсов для кэша redis; требуется toochoose один из следующих вариантов hello:</span><span class="sxs-lookup"><span data-stu-id="7c4eb-117">**Resource Group**: Specifies hello resource group for your redis cache; you need toochoose one of hello following options:</span></span>
+      * <span data-ttu-id="7c4eb-118">**Создать новое**: Указывает, что toocreate новую группу ресурсов.</span><span class="sxs-lookup"><span data-stu-id="7c4eb-118">**Create New**: Specifies that you want toocreate a new resource group.</span></span>
+      * <span data-ttu-id="7c4eb-119">**Использовать существующую**: указывает, что будет выбрана группа ресурсов, связанная с учетной записью Azure.</span><span class="sxs-lookup"><span data-stu-id="7c4eb-119">**Use Existing**: Specifies that you will choose from a list of resource groups associated with your Azure account.</span></span>
 
-   <span data-ttu-id="89d89-120">d.</span><span class="sxs-lookup"><span data-stu-id="89d89-120">d.</span></span> <span data-ttu-id="89d89-121">**Расположение**: указывает расположение, в котором создается кэш Redis (например, *западная часть США*).</span><span class="sxs-lookup"><span data-stu-id="89d89-121">**Location**: Specifies the location where your redis cache is created; for example, *West US*.</span></span>
+   <span data-ttu-id="7c4eb-120">d.</span><span class="sxs-lookup"><span data-stu-id="7c4eb-120">d.</span></span> <span data-ttu-id="7c4eb-121">**Расположение**: Указывает расположение hello, где создается кэш redis; например, *Запад США*.</span><span class="sxs-lookup"><span data-stu-id="7c4eb-121">**Location**: Specifies hello location where your redis cache is created; for example, *West US*.</span></span>
 
-   <span data-ttu-id="89d89-122">д.</span><span class="sxs-lookup"><span data-stu-id="89d89-122">e.</span></span> <span data-ttu-id="89d89-123">**Ценовая категория**: указывает ценовую категорию для кэша Redis. Этот параметр ограничивает количество клиентских подключений.</span><span class="sxs-lookup"><span data-stu-id="89d89-123">**Pricing Tier**: Specifies which pricing tier your redis cache uses; this setting determines the number of client connections.</span></span> <span data-ttu-id="89d89-124">(Дополнительные сведения см. на [странице с ценами на кэш Redis].)</span><span class="sxs-lookup"><span data-stu-id="89d89-124">(For more information, see [Redis Cache Pricing].)</span></span>
+   <span data-ttu-id="7c4eb-122">д.</span><span class="sxs-lookup"><span data-stu-id="7c4eb-122">e.</span></span> <span data-ttu-id="7c4eb-123">**Ценовая категория**: Определяет выбранной ценовой категории использует кэш redis; этот параметр определяет hello число клиентских подключений.</span><span class="sxs-lookup"><span data-stu-id="7c4eb-123">**Pricing Tier**: Specifies which pricing tier your redis cache uses; this setting determines hello number of client connections.</span></span> <span data-ttu-id="7c4eb-124">(Дополнительные сведения см. на [странице с ценами на кэш Redis].)</span><span class="sxs-lookup"><span data-stu-id="7c4eb-124">(For more information, see [Redis Cache Pricing].)</span></span>
 
-   <span data-ttu-id="89d89-125">f.</span><span class="sxs-lookup"><span data-stu-id="89d89-125">f.</span></span> <span data-ttu-id="89d89-126">**Порт без SSL**: указывает, разрешает ли кэш Redis подключения без использования SSL. По умолчанию разрешены только SSL-подключения.</span><span class="sxs-lookup"><span data-stu-id="89d89-126">**Non-SSL port**: Specifies whether your redis cache allows non-SSL connections; by default, only SSL connections are allowed.</span></span>
+   <span data-ttu-id="7c4eb-125">f.</span><span class="sxs-lookup"><span data-stu-id="7c4eb-125">f.</span></span> <span data-ttu-id="7c4eb-126">**Порт без SSL**: указывает, разрешает ли кэш Redis подключения без использования SSL. По умолчанию разрешены только SSL-подключения.</span><span class="sxs-lookup"><span data-stu-id="7c4eb-126">**Non-SSL port**: Specifies whether your redis cache allows non-SSL connections; by default, only SSL connections are allowed.</span></span>
 
-1. <span data-ttu-id="89d89-127">Когда вы введете значения для всех параметров кэша Redis, нажмите кнопку **ОК**.</span><span class="sxs-lookup"><span data-stu-id="89d89-127">When you have specified all your redis cache settings, click **OK**.</span></span>
+1. <span data-ttu-id="7c4eb-127">Когда вы введете значения для всех параметров кэша Redis, нажмите кнопку **ОК**.</span><span class="sxs-lookup"><span data-stu-id="7c4eb-127">When you have specified all your redis cache settings, click **OK**.</span></span>
 
-<span data-ttu-id="89d89-128">После создания кэш Redis отобразится в Azure Explorer.</span><span class="sxs-lookup"><span data-stu-id="89d89-128">After your redis cache has been created, it will be displayed in the Azure Explorer.</span></span>
+<span data-ttu-id="7c4eb-128">После создания кэша redis отображается в обозревателе Azure hello.</span><span class="sxs-lookup"><span data-stu-id="7c4eb-128">After your redis cache has been created, it will be displayed in hello Azure Explorer.</span></span>
 
    ![Кэш Redis в Azure Explorer][CR03]
 
 > [!NOTE]
 >
-> <span data-ttu-id="89d89-130">Дополнительные сведения о настройке кэша Redis для Azure см. в статье [Настройка кэша Redis для Azure].</span><span class="sxs-lookup"><span data-stu-id="89d89-130">For more information about configuring your Azure redis cache settings, see [How to configure Azure Redis Cache].</span></span>
+> <span data-ttu-id="7c4eb-130">Дополнительные сведения о настройке Azure параметры кэша redis см. в разделе [как tooconfigure кэш Azure Redis].</span><span class="sxs-lookup"><span data-stu-id="7c4eb-130">For more information about configuring your Azure redis cache settings, see [How tooconfigure Azure Redis Cache].</span></span>
 >
 
-## <a name="display-the-properties-for-your-redis-cache-in-eclipse"></a><span data-ttu-id="89d89-131">Отображение свойств кэша Redis в Eclipse</span><span class="sxs-lookup"><span data-stu-id="89d89-131">Display the properties for your Redis Cache in Eclipse</span></span>
+## <a name="display-hello-properties-for-your-redis-cache-in-eclipse"></a><span data-ttu-id="7c4eb-131">Отобразить свойства hello для кэша Redis в Eclipse</span><span class="sxs-lookup"><span data-stu-id="7c4eb-131">Display hello properties for your Redis Cache in Eclipse</span></span>
 
-1. <span data-ttu-id="89d89-132">В Azure Explorer щелкните правой кнопкой мыши кэш Redis и выберите пункт **Показать свойства**.</span><span class="sxs-lookup"><span data-stu-id="89d89-132">In the Azure Explorer, right-click your redis cache and click **Show properties**.</span></span>
+1. <span data-ttu-id="7c4eb-132">В обозреватель Azure hello правой кнопкой мыши кэша redis и нажмите кнопку **Показать свойства**.</span><span class="sxs-lookup"><span data-stu-id="7c4eb-132">In hello Azure Explorer, right-click your redis cache and click **Show properties**.</span></span>
 
-   ![Контекстное меню Azure Explorer для отображения свойств кэша Redis][SP01]
+   ![Azure свойства обозревателя контекстного меню toodisplay для кэша redis][SP01]
 
-1. <span data-ttu-id="89d89-134">В Azure Explorer отобразятся свойства кэша Redis.</span><span class="sxs-lookup"><span data-stu-id="89d89-134">The Azure Explorer displays the properties for your redis cache.</span></span>
+1. <span data-ttu-id="7c4eb-134">Hello обозреватель Azure отображаются свойства hello для кэша redis.</span><span class="sxs-lookup"><span data-stu-id="7c4eb-134">hello Azure Explorer displays hello properties for your redis cache.</span></span>
 
    ![Свойства кэша Redis][SP02]
 
-## <a name="delete-your-redis-cache-by-using-eclipse"></a><span data-ttu-id="89d89-136">Удаление кэша Redis с помощью Eclipse</span><span class="sxs-lookup"><span data-stu-id="89d89-136">Delete your Redis Cache by using Eclipse</span></span>
+## <a name="delete-your-redis-cache-by-using-eclipse"></a><span data-ttu-id="7c4eb-136">Удаление кэша Redis с помощью Eclipse</span><span class="sxs-lookup"><span data-stu-id="7c4eb-136">Delete your Redis Cache by using Eclipse</span></span>
 
-1. <span data-ttu-id="89d89-137">В Azure Explorer щелкните правой кнопкой мыши кэш Redis и выберите пункт **Удалить**.</span><span class="sxs-lookup"><span data-stu-id="89d89-137">In the Azure Explorer, right-click your redis cache and click **Delete**.</span></span>
+1. <span data-ttu-id="7c4eb-137">В обозреватель Azure hello правой кнопкой мыши кэша redis и нажмите кнопку **удалить**.</span><span class="sxs-lookup"><span data-stu-id="7c4eb-137">In hello Azure Explorer, right-click your redis cache and click **Delete**.</span></span>
 
-   ![Контекстное меню Azure Explorer для удаления кэша Redis][DE01]
+   ![Обозреватель контекст меню toodelete кэш redis для Azure][DE01]
 
-1. <span data-ttu-id="89d89-139">Когда появится запрос на подтверждение, щелкните **Да**, чтобы удалить кэш Redis.</span><span class="sxs-lookup"><span data-stu-id="89d89-139">Click **OK** when prompted to delete your redis cache.</span></span>
+1. <span data-ttu-id="7c4eb-139">Нажмите кнопку **ОК** при запросе toodelete кэша redis.</span><span class="sxs-lookup"><span data-stu-id="7c4eb-139">Click **OK** when prompted toodelete your redis cache.</span></span>
 
    ![Запрос на удаление кэша Redis][DE02]
 
-## <a name="next-steps"></a><span data-ttu-id="89d89-141">Дальнейшие действия</span><span class="sxs-lookup"><span data-stu-id="89d89-141">Next steps</span></span>
+## <a name="next-steps"></a><span data-ttu-id="7c4eb-141">Дальнейшие действия</span><span class="sxs-lookup"><span data-stu-id="7c4eb-141">Next steps</span></span>
 
 [!INCLUDE [azure-toolkit-additional-resources](../includes/azure-toolkit-additional-resources.md)]
 
-<span data-ttu-id="89d89-142">Дополнительные сведения о кэшах Redis для Azure, параметрах конфигурации и ценах см. по следующим ссылкам:</span><span class="sxs-lookup"><span data-stu-id="89d89-142">For more information about Azure redis caches, configuration settings and pricing, see the following links:</span></span>
+<span data-ttu-id="7c4eb-142">Дополнительные сведения о кэш redis для Azure, параметры конфигурации и ценах см. в разделе hello ссылкам:</span><span class="sxs-lookup"><span data-stu-id="7c4eb-142">For more information about Azure redis caches, configuration settings and pricing, see hello following links:</span></span>
 
-* <span data-ttu-id="89d89-143">[кэш Azure Redis]</span><span class="sxs-lookup"><span data-stu-id="89d89-143">[Azure Redis Cache]</span></span>
-* <span data-ttu-id="89d89-144">[Документация по кэшу Redis]</span><span class="sxs-lookup"><span data-stu-id="89d89-144">[Redis Cache Documentation]</span></span>
-* <span data-ttu-id="89d89-145">[странице с ценами на кэш Redis]</span><span class="sxs-lookup"><span data-stu-id="89d89-145">[Redis Cache Pricing]</span></span>
-* <span data-ttu-id="89d89-146">[Настройка кэша Redis для Azure]</span><span class="sxs-lookup"><span data-stu-id="89d89-146">[How to configure Azure Redis Cache]</span></span>
+* <span data-ttu-id="7c4eb-143">[кэш Azure Redis]</span><span class="sxs-lookup"><span data-stu-id="7c4eb-143">[Azure Redis Cache]</span></span>
+* <span data-ttu-id="7c4eb-144">[Документация по кэшу Redis]</span><span class="sxs-lookup"><span data-stu-id="7c4eb-144">[Redis Cache Documentation]</span></span>
+* <span data-ttu-id="7c4eb-145">[странице с ценами на кэш Redis]</span><span class="sxs-lookup"><span data-stu-id="7c4eb-145">[Redis Cache Pricing]</span></span>
+* <span data-ttu-id="7c4eb-146">[как tooconfigure кэш Azure Redis]</span><span class="sxs-lookup"><span data-stu-id="7c4eb-146">[How tooconfigure Azure Redis Cache]</span></span>
 
 <!-- URL List -->
 
-<span data-ttu-id="89d89-147">[странице с ценами на кэш Redis]: https://azure.microsoft.com/pricing/details/cache/</span><span class="sxs-lookup"><span data-stu-id="89d89-147">[Redis Cache Pricing]: https://azure.microsoft.com/pricing/details/cache/</span></span>
-<span data-ttu-id="89d89-148">[кэш Azure Redis]: https://azure.microsoft.com/services/cache/</span><span class="sxs-lookup"><span data-stu-id="89d89-148">[Azure Redis Cache]: https://azure.microsoft.com/services/cache/</span></span>
-<span data-ttu-id="89d89-149">[Документация по кэшу Redis]: ./redis-cache/index.md</span><span class="sxs-lookup"><span data-stu-id="89d89-149">[Redis Cache Documentation]: ./redis-cache/index.md</span></span>
-<span data-ttu-id="89d89-150">[Настройка кэша Redis для Azure]: ./redis-cache/cache-configure.md</span><span class="sxs-lookup"><span data-stu-id="89d89-150">[How to configure Azure Redis Cache]: ./redis-cache/cache-configure.md</span></span>
-<span data-ttu-id="89d89-151">[Инструкции по входу для набора средств Azure для Eclipse]: ./azure-toolkit-for-eclipse-sign-in-instructions.md</span><span class="sxs-lookup"><span data-stu-id="89d89-151">[Sign In Instructions for the Azure Toolkit for Eclipse]: ./azure-toolkit-for-eclipse-sign-in-instructions.md</span></span>
+[странице с ценами на кэш Redis]: https://azure.microsoft.com/pricing/details/cache/
+[кэш Azure Redis]: https://azure.microsoft.com/services/cache/
+[Документация по кэшу Redis]: ./redis-cache/index.md
+[как tooconfigure кэш Azure Redis]: ./redis-cache/cache-configure.md
+[входа в инструкции для средств Azure для Eclipse hello]: ./azure-toolkit-for-eclipse-sign-in-instructions.md
 
 <!-- IMG List -->
 

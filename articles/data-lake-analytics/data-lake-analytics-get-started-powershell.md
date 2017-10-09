@@ -1,6 +1,6 @@
 ---
-title: "Начало работы с Azure Data Lake Analytics с помощью Azure PowerShell | Документация Майкрософт"
-description: "Используйте Azure PowerShell для создания учетной записи Data Lake Analytics, создания задания Data Lake Analytics с помощью U-SQL и его отправки. "
+title: "aaaGet к выполнению аналитики Озера данных Azure, с помощью Azure PowerShell | Документы Microsoft"
+description: "Использовать Azure PowerShell toocreate учетную запись аналитики Озера данных, создайте задание аналитики Озера данных с помощью U-SQL и отправка задания hello. "
 services: data-lake-analytics
 documentationcenter: 
 author: saveenr
@@ -14,42 +14,41 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 05/04/2017
 ms.author: edmaca
-ms.openlocfilehash: 4f73e27c733edae658d1ea3bdabe48076328279b
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: cb9b35352d1cc9a78337448b1d6835875a212e08
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="get-started-with-azure-data-lake-analytics-using-azure-powershell"></a><span data-ttu-id="82dcd-103">Начало работы с Azure Data Lake Analytics с помощью Azure PowerShell</span><span class="sxs-lookup"><span data-stu-id="82dcd-103">Get started with Azure Data Lake Analytics using Azure PowerShell</span></span>
+# <a name="get-started-with-azure-data-lake-analytics-using-azure-powershell"></a><span data-ttu-id="08eec-103">Начало работы с Azure Data Lake Analytics с помощью Azure PowerShell</span><span class="sxs-lookup"><span data-stu-id="08eec-103">Get started with Azure Data Lake Analytics using Azure PowerShell</span></span>
 [!INCLUDE [get-started-selector](../../includes/data-lake-analytics-selector-get-started.md)]
 
-<span data-ttu-id="82dcd-104">Узнайте, как использовать Azure PowerShell для создания учетных записей Azure Data Lake Analytics, а затем отправлять и выполнять задания U-SQL.</span><span class="sxs-lookup"><span data-stu-id="82dcd-104">Learn how to use Azure PowerShell to create Azure Data Lake Analytics accounts and then submit and run U-SQL jobs.</span></span> <span data-ttu-id="82dcd-105">Дополнительные сведения о Data Lake Analytics см. в [обзоре Azure Data Lake Analytics](data-lake-analytics-overview.md).</span><span class="sxs-lookup"><span data-stu-id="82dcd-105">For more information about Data Lake Analytics, see [Azure Data Lake Analytics overview](data-lake-analytics-overview.md).</span></span>
+<span data-ttu-id="08eec-104">Узнайте, как toouse toocreate Azure PowerShell аналитики Озера данных Azure учетные записи и затем отправьте и запуска заданий U-SQL.</span><span class="sxs-lookup"><span data-stu-id="08eec-104">Learn how toouse Azure PowerShell toocreate Azure Data Lake Analytics accounts and then submit and run U-SQL jobs.</span></span> <span data-ttu-id="08eec-105">Дополнительные сведения о Data Lake Analytics см. в [обзоре Azure Data Lake Analytics](data-lake-analytics-overview.md).</span><span class="sxs-lookup"><span data-stu-id="08eec-105">For more information about Data Lake Analytics, see [Azure Data Lake Analytics overview](data-lake-analytics-overview.md).</span></span>
 
-## <a name="prerequisites"></a><span data-ttu-id="82dcd-106">Предварительные требования</span><span class="sxs-lookup"><span data-stu-id="82dcd-106">Prerequisites</span></span>
+## <a name="prerequisites"></a><span data-ttu-id="08eec-106">Предварительные требования</span><span class="sxs-lookup"><span data-stu-id="08eec-106">Prerequisites</span></span>
 
-<span data-ttu-id="82dcd-107">Перед началом работы с этим руководством необходимо иметь следующую информацию:</span><span class="sxs-lookup"><span data-stu-id="82dcd-107">Before you begin this tutorial, you must have the following information:</span></span>
+<span data-ttu-id="08eec-107">Прежде чем начать работу с учебником, необходимо иметь hello следующую информацию:</span><span class="sxs-lookup"><span data-stu-id="08eec-107">Before you begin this tutorial, you must have hello following information:</span></span>
 
-* <span data-ttu-id="82dcd-108">**Учетная запись Azure Data Lake Analytics**.</span><span class="sxs-lookup"><span data-stu-id="82dcd-108">**An Azure Data Lake Analytics account**.</span></span> <span data-ttu-id="82dcd-109">См. раздел [Начало работы с Data Lake Analytics](https://docs.microsoft.com/en-us/azure/data-lake-analytics/data-lake-analytics-get-started-portal).</span><span class="sxs-lookup"><span data-stu-id="82dcd-109">See [Get started with Data Lake Analytics](https://docs.microsoft.com/en-us/azure/data-lake-analytics/data-lake-analytics-get-started-portal).</span></span>
-* <span data-ttu-id="82dcd-110"><seg>
-  **Рабочая станция с Azure PowerShell**.</seg></span><span class="sxs-lookup"><span data-stu-id="82dcd-110">**A workstation with Azure PowerShell**.</span></span> <span data-ttu-id="82dcd-111">См. статью [Установка и настройка Azure PowerShell](/powershell/azure/overview).</span><span class="sxs-lookup"><span data-stu-id="82dcd-111">See [How to install and configure Azure PowerShell](/powershell/azure/overview).</span></span>
+* <span data-ttu-id="08eec-108">**Учетная запись Azure Data Lake Analytics**.</span><span class="sxs-lookup"><span data-stu-id="08eec-108">**An Azure Data Lake Analytics account**.</span></span> <span data-ttu-id="08eec-109">См. раздел [Начало работы с Data Lake Analytics](https://docs.microsoft.com/en-us/azure/data-lake-analytics/data-lake-analytics-get-started-portal).</span><span class="sxs-lookup"><span data-stu-id="08eec-109">See [Get started with Data Lake Analytics](https://docs.microsoft.com/en-us/azure/data-lake-analytics/data-lake-analytics-get-started-portal).</span></span>
+* <span data-ttu-id="08eec-110">**Рабочая станция с Azure PowerShell**.</span><span class="sxs-lookup"><span data-stu-id="08eec-110">**A workstation with Azure PowerShell**.</span></span> <span data-ttu-id="08eec-111">В разделе [как tooinstall и настройка Azure PowerShell](/powershell/azure/overview).</span><span class="sxs-lookup"><span data-stu-id="08eec-111">See [How tooinstall and configure Azure PowerShell](/powershell/azure/overview).</span></span>
 
-## <a name="log-in-to-azure"></a><span data-ttu-id="82dcd-112">Вход в Azure</span><span class="sxs-lookup"><span data-stu-id="82dcd-112">Log in to Azure</span></span>
+## <a name="log-in-tooazure"></a><span data-ttu-id="08eec-112">Войдите в tooAzure</span><span class="sxs-lookup"><span data-stu-id="08eec-112">Log in tooAzure</span></span>
 
-<span data-ttu-id="82dcd-113">Для работы с руководством необходим опыт работы с Azure PowerShell.</span><span class="sxs-lookup"><span data-stu-id="82dcd-113">This tutorial assumes you are already familiar with using Azure PowerShell.</span></span> <span data-ttu-id="82dcd-114">В частности вам нужно знать, как выполнить вход в Azure.</span><span class="sxs-lookup"><span data-stu-id="82dcd-114">In particular, you need to know how to log in to Azure.</span></span> <span data-ttu-id="82dcd-115">Если вам нужна помощь, см. раздел [Начало работы с Azure PowerShell](https://docs.microsoft.com/en-us/powershell/azure/get-started-azureps).</span><span class="sxs-lookup"><span data-stu-id="82dcd-115">See the [Get started with Azure PowerShell](https://docs.microsoft.com/en-us/powershell/azure/get-started-azureps) if you need help.</span></span>
+<span data-ttu-id="08eec-113">Для работы с руководством необходим опыт работы с Azure PowerShell.</span><span class="sxs-lookup"><span data-stu-id="08eec-113">This tutorial assumes you are already familiar with using Azure PowerShell.</span></span> <span data-ttu-id="08eec-114">В частности, необходимы tooknow как toolog в tooAzure.</span><span class="sxs-lookup"><span data-stu-id="08eec-114">In particular, you need tooknow how toolog in tooAzure.</span></span> <span data-ttu-id="08eec-115">В разделе hello [Приступая к работе с Azure PowerShell](https://docs.microsoft.com/en-us/powershell/azure/get-started-azureps) Если вам нужна помощь.</span><span class="sxs-lookup"><span data-stu-id="08eec-115">See hello [Get started with Azure PowerShell](https://docs.microsoft.com/en-us/powershell/azure/get-started-azureps) if you need help.</span></span>
 
-<span data-ttu-id="82dcd-116">Вход в систему с использованием имени подписки:</span><span class="sxs-lookup"><span data-stu-id="82dcd-116">To log in with a subscription name:</span></span>
+<span data-ttu-id="08eec-116">toolog систему с именем подписки:</span><span class="sxs-lookup"><span data-stu-id="08eec-116">toolog in with a subscription name:</span></span>
 
 ```
 Login-AzureRmAccount -SubscriptionName "ContosoSubscription"
 ```
 
-<span data-ttu-id="82dcd-117">Вместо имени подписки для входа можно использовать ее идентификатор:</span><span class="sxs-lookup"><span data-stu-id="82dcd-117">Instead of the subscription name, you can also use a subscription id to log in:</span></span>
+<span data-ttu-id="08eec-117">Вместо имени подписки hello можно также использовать toolog идентификатор подписки в:</span><span class="sxs-lookup"><span data-stu-id="08eec-117">Instead of hello subscription name, you can also use a subscription id toolog in:</span></span>
 
 ```
 Login-AzureRmAccount -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
 ```
 
-<span data-ttu-id="82dcd-118">При успешном выполнении этой команды выходные данные будут выглядеть так:</span><span class="sxs-lookup"><span data-stu-id="82dcd-118">If  successful, the output of this command looks like the following text:</span></span>
+<span data-ttu-id="08eec-118">В случае успешного выполнения hello выходные данные этой команды выглядит следующим образом после текста hello.</span><span class="sxs-lookup"><span data-stu-id="08eec-118">If  successful, hello output of this command looks like hello following text:</span></span>
 
 ```
 Environment           : AzureCloud
@@ -60,9 +59,9 @@ SubscriptionName      : ContosoSubscription
 CurrentStorageAccount :
 ```
 
-## <a name="preparing-for-the-tutorial"></a><span data-ttu-id="82dcd-119">Подготовка к работе с руководством</span><span class="sxs-lookup"><span data-stu-id="82dcd-119">Preparing for the tutorial</span></span>
+## <a name="preparing-for-hello-tutorial"></a><span data-ttu-id="08eec-119">Подготовка для учебника hello</span><span class="sxs-lookup"><span data-stu-id="08eec-119">Preparing for hello tutorial</span></span>
 
-<span data-ttu-id="82dcd-120">В этом руководстве во фрагментах кода PowerShell для хранения информации используются следующие переменные:</span><span class="sxs-lookup"><span data-stu-id="82dcd-120">The PowerShell snippets in this tutorial use these variables to store this information:</span></span>
+<span data-ttu-id="08eec-120">фрагменты кода PowerShell Hello в этом учебнике используйте эти переменные toostore эти сведения.</span><span class="sxs-lookup"><span data-stu-id="08eec-120">hello PowerShell snippets in this tutorial use these variables toostore this information:</span></span>
 
 ```
 $rg = "<ResourceGroupName>"
@@ -71,15 +70,15 @@ $adla = "<DataLakeAnalyticsAccountName>"
 $location = "East US 2"
 ```
 
-## <a name="get-information-about-a-data-lake-analytics-account"></a><span data-ttu-id="82dcd-121">Получение сведений об учетной записи Data Lake Analytics</span><span class="sxs-lookup"><span data-stu-id="82dcd-121">Get information about a Data Lake Analytics account</span></span>
+## <a name="get-information-about-a-data-lake-analytics-account"></a><span data-ttu-id="08eec-121">Получение сведений об учетной записи Data Lake Analytics</span><span class="sxs-lookup"><span data-stu-id="08eec-121">Get information about a Data Lake Analytics account</span></span>
 
 ```
 Get-AdlAnalyticsAccount -ResourceGroupName $rg -Name $adla  
 ```
 
-## <a name="submit-a-u-sql-job"></a><span data-ttu-id="82dcd-122">Отправка задания U-SQL</span><span class="sxs-lookup"><span data-stu-id="82dcd-122">Submit a U-SQL job</span></span>
+## <a name="submit-a-u-sql-job"></a><span data-ttu-id="08eec-122">Отправка задания U-SQL</span><span class="sxs-lookup"><span data-stu-id="08eec-122">Submit a U-SQL job</span></span>
 
-<span data-ttu-id="82dcd-123">Создайте переменную для хранения скрипта U-SQL PowerShell.</span><span class="sxs-lookup"><span data-stu-id="82dcd-123">Create a PowerShell variable to hold the U-SQL script.</span></span>
+<span data-ttu-id="08eec-123">Создайте сценарий PowerShell переменной toohold hello U-SQL.</span><span class="sxs-lookup"><span data-stu-id="08eec-123">Create a PowerShell variable toohold hello U-SQL script.</span></span>
 
 ```
 $script = @"
@@ -91,19 +90,19 @@ $script = @"
         ) AS 
               D( customer, amount );
 OUTPUT @a
-    TO "/data.csv"
+    too"/data.csv"
     USING Outputters.Csv();
 
 "@
 ```
 
-<span data-ttu-id="82dcd-124">Отправьте скрипт.</span><span class="sxs-lookup"><span data-stu-id="82dcd-124">Submit the script.</span></span>
+<span data-ttu-id="08eec-124">Отправьте скрипт hello.</span><span class="sxs-lookup"><span data-stu-id="08eec-124">Submit hello script.</span></span>
 
 ```
 $job = Submit-AdlJob -AccountName $adla –Script $script
 ```
 
-<span data-ttu-id="82dcd-125">Или же можно сохранить скрипт в файл, а затем отправить его с помощью следующей команды:</span><span class="sxs-lookup"><span data-stu-id="82dcd-125">Alternatively, you could save the script as a file and submit with the following command:</span></span>
+<span data-ttu-id="08eec-125">Кроме того можно сохранить как файл скрипта hello и отправить с hello следующую команду:</span><span class="sxs-lookup"><span data-stu-id="08eec-125">Alternatively, you could save hello script as a file and submit with hello following command:</span></span>
 
 ```
 $filename = "d:\test.usql"
@@ -112,25 +111,25 @@ $job = Submit-AdlJob -AccountName $adla –ScriptPath $filename
 ```
 
 
-<span data-ttu-id="82dcd-126">Получите состояние конкретного задания.</span><span class="sxs-lookup"><span data-stu-id="82dcd-126">Get the status of a specific job.</span></span> <span data-ttu-id="82dcd-127">Продолжайте использовать этот командлет, пока задание не будет выполнено.</span><span class="sxs-lookup"><span data-stu-id="82dcd-127">Keep using this cmdlet until you see the job is done.</span></span>
+<span data-ttu-id="08eec-126">Получите состояние hello определенного задания.</span><span class="sxs-lookup"><span data-stu-id="08eec-126">Get hello status of a specific job.</span></span> <span data-ttu-id="08eec-127">Продолжать использовать этот командлет, пока вы увидите, что выполнена hello.</span><span class="sxs-lookup"><span data-stu-id="08eec-127">Keep using this cmdlet until you see hello job is done.</span></span>
 
 ```
 $job = Get-AdlJob -AccountName $adla -JobId $job.JobId
 ```
 
-<span data-ttu-id="82dcd-128">Вместо того чтобы снова и снова вызывать командлет Get-AdlAnalyticsJob, пока задание не будет завершено, можно использовать командлет Wait-AdlJob.</span><span class="sxs-lookup"><span data-stu-id="82dcd-128">Instead of calling Get-AdlAnalyticsJob over and over until a job finishes, you can use the Wait-AdlJob cmdlet.</span></span>
+<span data-ttu-id="08eec-128">Вместо вызова Get AdlAnalyticsJob снова и снова до завершения задания, можно использовать командлет Wait-AdlJob hello.</span><span class="sxs-lookup"><span data-stu-id="08eec-128">Instead of calling Get-AdlAnalyticsJob over and over until a job finishes, you can use hello Wait-AdlJob cmdlet.</span></span>
 
 ```
 Wait-AdlJob -Account $adla -JobId $job.JobId
 ```
 
-<span data-ttu-id="82dcd-129">Загрузите выходной файл.</span><span class="sxs-lookup"><span data-stu-id="82dcd-129">Download the output file.</span></span>
+<span data-ttu-id="08eec-129">Загрузите hello выходного файла.</span><span class="sxs-lookup"><span data-stu-id="08eec-129">Download hello output file.</span></span>
 
 ```
 Export-AdlStoreItem -AccountName $adls -Path "/data.csv" -Destination "C:\data.csv"
 ```
 
-## <a name="see-also"></a><span data-ttu-id="82dcd-130">См. также</span><span class="sxs-lookup"><span data-stu-id="82dcd-130">See also</span></span>
-* <span data-ttu-id="82dcd-131">Для просмотра учебника с помощью других средств используйте вкладки-селекторы в верхней части страницы.</span><span class="sxs-lookup"><span data-stu-id="82dcd-131">To see the same tutorial using other tools, click the tab selectors on the top of the page.</span></span>
-* <span data-ttu-id="82dcd-132">Для знакомства с U-SQL см. статью о [начале работы с языком U-SQL для Azure Data Lake Analytics](data-lake-analytics-u-sql-get-started.md).</span><span class="sxs-lookup"><span data-stu-id="82dcd-132">To learn U-SQL, see [Get started with Azure Data Lake Analytics U-SQL language](data-lake-analytics-u-sql-get-started.md).</span></span>
-* <span data-ttu-id="82dcd-133">Задачи управления описываются в руководстве по [управлению Azure Data Lake Analytics с помощью портала Azure](data-lake-analytics-manage-use-portal.md).</span><span class="sxs-lookup"><span data-stu-id="82dcd-133">For management tasks, see [Manage Azure Data Lake Analytics using Azure portal](data-lake-analytics-manage-use-portal.md).</span></span>
+## <a name="see-also"></a><span data-ttu-id="08eec-130">См. также</span><span class="sxs-lookup"><span data-stu-id="08eec-130">See also</span></span>
+* <span data-ttu-id="08eec-131">toosee hello же учебника при помощи других средств, щелкните селекторы вкладку hello на hello вверху страницы приветствия.</span><span class="sxs-lookup"><span data-stu-id="08eec-131">toosee hello same tutorial using other tools, click hello tab selectors on hello top of hello page.</span></span>
+* <span data-ttu-id="08eec-132">в разделе toolearn U-SQL [Приступая к работе с Azure аналитика Озера данных U-SQL языка](data-lake-analytics-u-sql-get-started.md).</span><span class="sxs-lookup"><span data-stu-id="08eec-132">toolearn U-SQL, see [Get started with Azure Data Lake Analytics U-SQL language](data-lake-analytics-u-sql-get-started.md).</span></span>
+* <span data-ttu-id="08eec-133">Задачи управления описываются в руководстве по [управлению Azure Data Lake Analytics с помощью портала Azure](data-lake-analytics-manage-use-portal.md).</span><span class="sxs-lookup"><span data-stu-id="08eec-133">For management tasks, see [Manage Azure Data Lake Analytics using Azure portal](data-lake-analytics-manage-use-portal.md).</span></span>

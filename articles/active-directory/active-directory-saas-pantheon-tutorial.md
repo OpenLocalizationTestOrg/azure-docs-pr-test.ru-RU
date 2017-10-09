@@ -1,6 +1,6 @@
 ---
 title: "Руководство по интеграции Azure Active Directory с Pantheon | Документация Майкрософт"
-description: "Узнайте, как настроить единый вход между Azure Active Directory и Pantheon."
+description: "Узнайте, как tooconfigure единый вход между Azure Active Directory и Pantheon."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,228 +13,228 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/30/2017
 ms.author: jeedes
-ms.openlocfilehash: 3f4ac1db2ee83d9f9fcb375d0fb7c40ad21c4688
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 5c3e54aef1f64dbab77d40a8c098172d609bfec8
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="tutorial-azure-active-directory-integration-with-pantheon"></a><span data-ttu-id="8dad9-103">Руководство по интеграции Azure Active Directory с Pantheon</span><span class="sxs-lookup"><span data-stu-id="8dad9-103">Tutorial: Azure Active Directory integration with Pantheon</span></span>
+# <a name="tutorial-azure-active-directory-integration-with-pantheon"></a><span data-ttu-id="35c3b-103">Руководство по интеграции Azure Active Directory с Pantheon</span><span class="sxs-lookup"><span data-stu-id="35c3b-103">Tutorial: Azure Active Directory integration with Pantheon</span></span>
 
-<span data-ttu-id="8dad9-104">В этом руководстве описано, как интегрировать Pantheon с Azure Active Directory (Azure AD).</span><span class="sxs-lookup"><span data-stu-id="8dad9-104">In this tutorial, you learn how to integrate Pantheon with Azure Active Directory (Azure AD).</span></span>
+<span data-ttu-id="35c3b-104">В этом учебнике вы узнаете, как toointegrate Pantheon с Azure Active Directory (Azure AD).</span><span class="sxs-lookup"><span data-stu-id="35c3b-104">In this tutorial, you learn how toointegrate Pantheon with Azure Active Directory (Azure AD).</span></span>
 
-<span data-ttu-id="8dad9-105">Интеграция Azure AD с приложением Pantheon обеспечивает следующие преимущества:</span><span class="sxs-lookup"><span data-stu-id="8dad9-105">Integrating Pantheon with Azure AD provides you with the following benefits:</span></span>
+<span data-ttu-id="35c3b-105">Интеграция с Azure AD Pantheon предоставляет hello следующие преимущества:</span><span class="sxs-lookup"><span data-stu-id="35c3b-105">Integrating Pantheon with Azure AD provides you with hello following benefits:</span></span>
 
-- <span data-ttu-id="8dad9-106">С помощью Azure AD вы можете контролировать доступ к Pantheon.</span><span class="sxs-lookup"><span data-stu-id="8dad9-106">You can control in Azure AD who has access to Pantheon</span></span>
-- <span data-ttu-id="8dad9-107">Вы можете включить автоматический вход пользователей в Pantheon (единый вход) с учетной записью Azure AD.</span><span class="sxs-lookup"><span data-stu-id="8dad9-107">You can enable your users to automatically get signed-on to Pantheon (Single Sign-On) with their Azure AD accounts</span></span>
-- <span data-ttu-id="8dad9-108">Вы можете управлять учетными записями централизованно — через портал Azure.</span><span class="sxs-lookup"><span data-stu-id="8dad9-108">You can manage your accounts in one central location - the Azure portal</span></span>
+- <span data-ttu-id="35c3b-106">Можно управлять в Azure AD, имеющего доступ tooPantheon</span><span class="sxs-lookup"><span data-stu-id="35c3b-106">You can control in Azure AD who has access tooPantheon</span></span>
+- <span data-ttu-id="35c3b-107">Можно включить на пользователей tooautomatically get вошедшего tooPantheon (Single Sign-On) с помощью своих учетных записей Azure AD</span><span class="sxs-lookup"><span data-stu-id="35c3b-107">You can enable your users tooautomatically get signed-on tooPantheon (Single Sign-On) with their Azure AD accounts</span></span>
+- <span data-ttu-id="35c3b-108">Можно управлять учетными записями в одном централизованном месте - hello портал Azure</span><span class="sxs-lookup"><span data-stu-id="35c3b-108">You can manage your accounts in one central location - hello Azure portal</span></span>
 
-<span data-ttu-id="8dad9-109">Подробнее узнать об интеграции приложений SaaS с Azure AD можно в разделе [Что такое доступ к приложениям и единый вход с помощью Azure Active Directory](active-directory-appssoaccess-whatis.md).</span><span class="sxs-lookup"><span data-stu-id="8dad9-109">If you want to know more details about SaaS app integration with Azure AD, see [what is application access and single sign-on with Azure Active Directory](active-directory-appssoaccess-whatis.md).</span></span>
+<span data-ttu-id="35c3b-109">Если tooknow Дополнительные сведения об интеграции приложений SaaS в Azure AD, см. [доступ к приложению и единый вход в Azure Active Directory](active-directory-appssoaccess-whatis.md).</span><span class="sxs-lookup"><span data-stu-id="35c3b-109">If you want tooknow more details about SaaS app integration with Azure AD, see [what is application access and single sign-on with Azure Active Directory](active-directory-appssoaccess-whatis.md).</span></span>
 
-## <a name="prerequisites"></a><span data-ttu-id="8dad9-110">Предварительные требования</span><span class="sxs-lookup"><span data-stu-id="8dad9-110">Prerequisites</span></span>
+## <a name="prerequisites"></a><span data-ttu-id="35c3b-110">Предварительные требования</span><span class="sxs-lookup"><span data-stu-id="35c3b-110">Prerequisites</span></span>
 
-<span data-ttu-id="8dad9-111">Чтобы настроить интеграцию Azure AD с Pantheon, вам потребуется:</span><span class="sxs-lookup"><span data-stu-id="8dad9-111">To configure Azure AD integration with Pantheon, you need the following items:</span></span>
+<span data-ttu-id="35c3b-111">tooconfigure интеграция Azure AD с Pantheon требуется hello следующих элементов:</span><span class="sxs-lookup"><span data-stu-id="35c3b-111">tooconfigure Azure AD integration with Pantheon, you need hello following items:</span></span>
 
-- <span data-ttu-id="8dad9-112">подписка Azure AD;</span><span class="sxs-lookup"><span data-stu-id="8dad9-112">An Azure AD subscription</span></span>
-- <span data-ttu-id="8dad9-113">подписка Pantheon с поддержкой единого входа.</span><span class="sxs-lookup"><span data-stu-id="8dad9-113">A Pantheon single sign-on enabled subscription</span></span>
+- <span data-ttu-id="35c3b-112">подписка Azure AD;</span><span class="sxs-lookup"><span data-stu-id="35c3b-112">An Azure AD subscription</span></span>
+- <span data-ttu-id="35c3b-113">подписка Pantheon с поддержкой единого входа.</span><span class="sxs-lookup"><span data-stu-id="35c3b-113">A Pantheon single sign-on enabled subscription</span></span>
 
 > [!NOTE]
-> <span data-ttu-id="8dad9-114">Мы не рекомендуем использовать рабочую среду для проверки действий в этом учебнике.</span><span class="sxs-lookup"><span data-stu-id="8dad9-114">To test the steps in this tutorial, we do not recommend using a production environment.</span></span>
+> <span data-ttu-id="35c3b-114">в этом учебнике шаги tootest hello, не рекомендуется в рабочей среде.</span><span class="sxs-lookup"><span data-stu-id="35c3b-114">tootest hello steps in this tutorial, we do not recommend using a production environment.</span></span>
 
-<span data-ttu-id="8dad9-115">При проверке действий в этом учебнике соблюдайте следующие рекомендации:</span><span class="sxs-lookup"><span data-stu-id="8dad9-115">To test the steps in this tutorial, you should follow these recommendations:</span></span>
+<span data-ttu-id="35c3b-115">tootest hello шаги в этом учебнике, необходимо следовать приведенным ниже рекомендациям:</span><span class="sxs-lookup"><span data-stu-id="35c3b-115">tootest hello steps in this tutorial, you should follow these recommendations:</span></span>
 
-- <span data-ttu-id="8dad9-116">Не используйте рабочую среду без необходимости.</span><span class="sxs-lookup"><span data-stu-id="8dad9-116">Do not use your production environment, unless it is necessary.</span></span>
-- <span data-ttu-id="8dad9-117">Если у вас нет пробной среды Azure AD, вы можете получить пробную версию на один месяц по [этой ссылке](https://azure.microsoft.com/pricing/free-trial/).</span><span class="sxs-lookup"><span data-stu-id="8dad9-117">If you don't have an Azure AD trial environment, you can get a one-month trial [here](https://azure.microsoft.com/pricing/free-trial/).</span></span>
+- <span data-ttu-id="35c3b-116">Не используйте рабочую среду без необходимости.</span><span class="sxs-lookup"><span data-stu-id="35c3b-116">Do not use your production environment, unless it is necessary.</span></span>
+- <span data-ttu-id="35c3b-117">Если у вас нет пробной среды Azure AD, вы можете получить пробную версию на один месяц по [этой ссылке](https://azure.microsoft.com/pricing/free-trial/).</span><span class="sxs-lookup"><span data-stu-id="35c3b-117">If you don't have an Azure AD trial environment, you can get a one-month trial [here](https://azure.microsoft.com/pricing/free-trial/).</span></span>
 
-## <a name="scenario-description"></a><span data-ttu-id="8dad9-118">Описание сценария</span><span class="sxs-lookup"><span data-stu-id="8dad9-118">Scenario description</span></span>
-<span data-ttu-id="8dad9-119">В рамках этого руководства проводится проверка единого входа Azure AD в тестовой среде.</span><span class="sxs-lookup"><span data-stu-id="8dad9-119">In this tutorial, you test Azure AD single sign-on in a test environment.</span></span> <span data-ttu-id="8dad9-120">Сценарий, описанный в этом учебнике, состоит из двух основных блоков:</span><span class="sxs-lookup"><span data-stu-id="8dad9-120">The scenario outlined in this tutorial consists of two main building blocks:</span></span>
+## <a name="scenario-description"></a><span data-ttu-id="35c3b-118">Описание сценария</span><span class="sxs-lookup"><span data-stu-id="35c3b-118">Scenario description</span></span>
+<span data-ttu-id="35c3b-119">В рамках этого руководства проводится проверка единого входа Azure AD в тестовой среде.</span><span class="sxs-lookup"><span data-stu-id="35c3b-119">In this tutorial, you test Azure AD single sign-on in a test environment.</span></span> <span data-ttu-id="35c3b-120">Hello сценарий, описанный в этом учебнике состоит из двух основных компонентов:</span><span class="sxs-lookup"><span data-stu-id="35c3b-120">hello scenario outlined in this tutorial consists of two main building blocks:</span></span>
 
-1. <span data-ttu-id="8dad9-121">Добавление Pantheon из коллекции</span><span class="sxs-lookup"><span data-stu-id="8dad9-121">Adding Pantheon from the gallery</span></span>
-2. <span data-ttu-id="8dad9-122">Настройка и проверка единого входа в Azure AD</span><span class="sxs-lookup"><span data-stu-id="8dad9-122">Configuring and testing Azure AD single sign-on</span></span>
+1. <span data-ttu-id="35c3b-121">Добавление Pantheon из галереи hello</span><span class="sxs-lookup"><span data-stu-id="35c3b-121">Adding Pantheon from hello gallery</span></span>
+2. <span data-ttu-id="35c3b-122">Настройка и проверка единого входа в Azure AD</span><span class="sxs-lookup"><span data-stu-id="35c3b-122">Configuring and testing Azure AD single sign-on</span></span>
 
-## <a name="adding-pantheon-from-the-gallery"></a><span data-ttu-id="8dad9-123">Добавление Pantheon из коллекции</span><span class="sxs-lookup"><span data-stu-id="8dad9-123">Adding Pantheon from the gallery</span></span>
-<span data-ttu-id="8dad9-124">Чтобы настроить интеграцию Pantheon с Azure AD, необходимо добавить Pantheon из коллекции в список управляемых приложений SaaS.</span><span class="sxs-lookup"><span data-stu-id="8dad9-124">To configure the integration of Pantheon into Azure AD, you need to add Pantheon from the gallery to your list of managed SaaS apps.</span></span>
+## <a name="adding-pantheon-from-hello-gallery"></a><span data-ttu-id="35c3b-123">Добавление Pantheon из галереи hello</span><span class="sxs-lookup"><span data-stu-id="35c3b-123">Adding Pantheon from hello gallery</span></span>
+<span data-ttu-id="35c3b-124">tooconfigure hello интеграции Pantheon в Azure AD, вы должны tooadd Pantheon из списка tooyour коллекции hello управляемых приложений SaaS.</span><span class="sxs-lookup"><span data-stu-id="35c3b-124">tooconfigure hello integration of Pantheon into Azure AD, you need tooadd Pantheon from hello gallery tooyour list of managed SaaS apps.</span></span>
 
-<span data-ttu-id="8dad9-125">**Чтобы добавить Pantheon из коллекции, выполните следующие действия:**</span><span class="sxs-lookup"><span data-stu-id="8dad9-125">**To add Pantheon from the gallery, perform the following steps:**</span></span>
+<span data-ttu-id="35c3b-125">**tooadd Pantheon из галереи hello, выполните следующие шаги hello.**</span><span class="sxs-lookup"><span data-stu-id="35c3b-125">**tooadd Pantheon from hello gallery, perform hello following steps:**</span></span>
 
-1. <span data-ttu-id="8dad9-126">На **[портале Azure](https://portal.azure.com)** в области навигации слева щелкните значок **Azure Active Directory**.</span><span class="sxs-lookup"><span data-stu-id="8dad9-126">In the **[Azure portal](https://portal.azure.com)**, on the left navigation panel, click **Azure Active Directory** icon.</span></span> 
+1. <span data-ttu-id="35c3b-126">В hello  **[портал Azure](https://portal.azure.com)**на левой навигационной панели hello, нажмите кнопку **Azure Active Directory** значок.</span><span class="sxs-lookup"><span data-stu-id="35c3b-126">In hello **[Azure portal](https://portal.azure.com)**, on hello left navigation panel, click **Azure Active Directory** icon.</span></span> 
 
     ![Active Directory][1]
 
-2. <span data-ttu-id="8dad9-128">Перейдите к разделу **Корпоративные приложения**.</span><span class="sxs-lookup"><span data-stu-id="8dad9-128">Navigate to **Enterprise applications**.</span></span> <span data-ttu-id="8dad9-129">Затем выберите **Все приложения**.</span><span class="sxs-lookup"><span data-stu-id="8dad9-129">Then go to **All applications**.</span></span>
+2. <span data-ttu-id="35c3b-128">Перейдите в слишком**корпоративных приложений**.</span><span class="sxs-lookup"><span data-stu-id="35c3b-128">Navigate too**Enterprise applications**.</span></span> <span data-ttu-id="35c3b-129">Затем перейдите слишком**все приложения**.</span><span class="sxs-lookup"><span data-stu-id="35c3b-129">Then go too**All applications**.</span></span>
 
     ![Приложения][2]
     
-3. <span data-ttu-id="8dad9-131">Чтобы добавить новое приложение, в верхней части диалогового окна нажмите кнопку **Создать приложение**.</span><span class="sxs-lookup"><span data-stu-id="8dad9-131">To add new application, click **New application** button on the top of dialog.</span></span>
+3. <span data-ttu-id="35c3b-131">tooadd новое приложение, нажмите кнопку **новое приложение** кнопку в верхней части hello диалогового окна.</span><span class="sxs-lookup"><span data-stu-id="35c3b-131">tooadd new application, click **New application** button on hello top of dialog.</span></span>
 
     ![Приложения][3]
 
-4. <span data-ttu-id="8dad9-133">В поле поиска введите **Pantheon**.</span><span class="sxs-lookup"><span data-stu-id="8dad9-133">In the search box, type **Pantheon**.</span></span>
+4. <span data-ttu-id="35c3b-133">Введите в поле поиска hello **Pantheon**.</span><span class="sxs-lookup"><span data-stu-id="35c3b-133">In hello search box, type **Pantheon**.</span></span>
 
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-pantheon-tutorial/tutorial_pantheon_search.png)
 
-5. <span data-ttu-id="8dad9-135">На панели результатов выберите **Pantheon** и щелкните **Добавить**, чтобы добавить это приложение.</span><span class="sxs-lookup"><span data-stu-id="8dad9-135">In the results panel, select **Pantheon**, and then click **Add** button to add the application.</span></span>
+5. <span data-ttu-id="35c3b-135">В панели результатов hello выберите **Pantheon**и нажмите кнопку **добавить** кнопку tooadd приложения hello.</span><span class="sxs-lookup"><span data-stu-id="35c3b-135">In hello results panel, select **Pantheon**, and then click **Add** button tooadd hello application.</span></span>
 
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-pantheon-tutorial/tutorial_pantheon_addfromgallery.png)
 
-##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a><span data-ttu-id="8dad9-137">Настройка и проверка единого входа в Azure AD</span><span class="sxs-lookup"><span data-stu-id="8dad9-137">Configuring and testing Azure AD single sign-on</span></span>
-<span data-ttu-id="8dad9-138">В этом разделе описана настройка и проверка единого входа Azure AD в Pantheon с использованием тестового пользователя Britta Simon.</span><span class="sxs-lookup"><span data-stu-id="8dad9-138">In this section, you configure and test Azure AD single sign-on with Pantheon based on a test user called "Britta Simon".</span></span>
+##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a><span data-ttu-id="35c3b-137">Настройка и проверка единого входа в Azure AD</span><span class="sxs-lookup"><span data-stu-id="35c3b-137">Configuring and testing Azure AD single sign-on</span></span>
+<span data-ttu-id="35c3b-138">В этом разделе описана настройка и проверка единого входа Azure AD в Pantheon с использованием тестового пользователя Britta Simon.</span><span class="sxs-lookup"><span data-stu-id="35c3b-138">In this section, you configure and test Azure AD single sign-on with Pantheon based on a test user called "Britta Simon".</span></span>
 
-<span data-ttu-id="8dad9-139">Для работы единого входа в Azure AD необходимо знать, какой пользователь в Pantheon соответствует пользователю в Azure AD.</span><span class="sxs-lookup"><span data-stu-id="8dad9-139">For single sign-on to work, Azure AD needs to know what the counterpart user in Pantheon is to a user in Azure AD.</span></span> <span data-ttu-id="8dad9-140">Иными словами, необходимо установить связь между пользователем Azure AD и соответствующим пользователем в Pantheon.</span><span class="sxs-lookup"><span data-stu-id="8dad9-140">In other words, a link relationship between an Azure AD user and the related user in Pantheon needs to be established.</span></span>
+<span data-ttu-id="35c3b-139">Для единого входа toowork Azure AD необходима tooknow пользователь аналог какие hello в Pantheon является tooa в Azure AD.</span><span class="sxs-lookup"><span data-stu-id="35c3b-139">For single sign-on toowork, Azure AD needs tooknow what hello counterpart user in Pantheon is tooa user in Azure AD.</span></span> <span data-ttu-id="35c3b-140">Другими словами связи между пользователя Azure AD и связанных пользователей hello в Pantheon должен установить toobe.</span><span class="sxs-lookup"><span data-stu-id="35c3b-140">In other words, a link relationship between an Azure AD user and hello related user in Pantheon needs toobe established.</span></span>
 
-<span data-ttu-id="8dad9-141">Чтобы установить эту связь, назначьте **имя пользователя** в Azure AD в качестве значения **имени пользователя** в Pantheon.</span><span class="sxs-lookup"><span data-stu-id="8dad9-141">In Pantheon, assign the value of the **user name** in Azure AD as the value of the **Username** to establish the link relationship.</span></span>
+<span data-ttu-id="35c3b-141">В Pantheon, присвойте значение hello hello **имя пользователя** в Azure AD в качестве значения hello hello **Username** tooestablish hello связи.</span><span class="sxs-lookup"><span data-stu-id="35c3b-141">In Pantheon, assign hello value of hello **user name** in Azure AD as hello value of hello **Username** tooestablish hello link relationship.</span></span>
 
-<span data-ttu-id="8dad9-142">Чтобы настроить и проверить единый вход Azure AD в Pantheon, вам потребуется выполнить действия в следующих стандартных блоках:</span><span class="sxs-lookup"><span data-stu-id="8dad9-142">To configure and test Azure AD single sign-on with Pantheon, you need to complete the following building blocks:</span></span>
+<span data-ttu-id="35c3b-142">tooconfigure и теста Azure AD единого входа с Pantheon, требуются следующие стандартные блоки hello toocomplete:</span><span class="sxs-lookup"><span data-stu-id="35c3b-142">tooconfigure and test Azure AD single sign-on with Pantheon, you need toocomplete hello following building blocks:</span></span>
 
-1. <span data-ttu-id="8dad9-143">**[Настройка единого входа в Azure AD](#configuring-azure-ad-single-sign-on)** необходима, чтобы пользователи могли использовать эту функцию.</span><span class="sxs-lookup"><span data-stu-id="8dad9-143">**[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - to enable your users to use this feature.</span></span>
-2. <span data-ttu-id="8dad9-144">**[Создание тестового пользователя Azure AD](#creating-an-azure-ad-test-user)** требуется для проверки работы единого входа Azure AD от имени пользователя Britta Simon.</span><span class="sxs-lookup"><span data-stu-id="8dad9-144">**[Creating an Azure AD test user](#creating-an-azure-ad-test-user)** - to test Azure AD single sign-on with Britta Simon.</span></span>
-3. <span data-ttu-id="8dad9-145">**[Создание тестового пользователя Pantheon](#creating-a-pantheon-test-user)** требуется для создания в Pantheon пользователя Britta Simon, связанного с представлением этого же пользователя в Azure AD.</span><span class="sxs-lookup"><span data-stu-id="8dad9-145">**[Creating a Pantheon test user](#creating-a-pantheon-test-user)** - to have a counterpart of Britta Simon in Pantheon that is linked to the Azure AD representation of user.</span></span>
-4. <span data-ttu-id="8dad9-146">**[Назначение тестового пользователя Azure AD](#assigning-the-azure-ad-test-user)** необходимо, чтобы позволить Britta Simon использовать единый вход в Azure AD.</span><span class="sxs-lookup"><span data-stu-id="8dad9-146">**[Assigning the Azure AD test user](#assigning-the-azure-ad-test-user)** - to enable Britta Simon to use Azure AD single sign-on.</span></span>
-5. <span data-ttu-id="8dad9-147">**[Testing Single Sign-On](#testing-single-sign-on)** необходима, чтобы убедиться в корректной работе конфигурации.</span><span class="sxs-lookup"><span data-stu-id="8dad9-147">**[Testing Single Sign-On](#testing-single-sign-on)** - to verify whether the configuration works.</span></span>
+1. <span data-ttu-id="35c3b-143">**[Настройка Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**  -tooenable вашей toouse пользователи этой функции.</span><span class="sxs-lookup"><span data-stu-id="35c3b-143">**[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - tooenable your users toouse this feature.</span></span>
+2. <span data-ttu-id="35c3b-144">**[Создание тестового пользователя Azure AD](#creating-an-azure-ad-test-user)**  -tootest Azure AD единого входа с Саймон Britta.</span><span class="sxs-lookup"><span data-stu-id="35c3b-144">**[Creating an Azure AD test user](#creating-an-azure-ad-test-user)** - tootest Azure AD single sign-on with Britta Simon.</span></span>
+3. <span data-ttu-id="35c3b-145">**[Создание тестового пользователя Pantheon](#creating-a-pantheon-test-user)**  -toohave аналог Саймон Britta в Pantheon, который представляет связанный toohello Azure AD пользователя.</span><span class="sxs-lookup"><span data-stu-id="35c3b-145">**[Creating a Pantheon test user](#creating-a-pantheon-test-user)** - toohave a counterpart of Britta Simon in Pantheon that is linked toohello Azure AD representation of user.</span></span>
+4. <span data-ttu-id="35c3b-146">**[Назначение hello Azure AD тестового пользователя](#assigning-the-azure-ad-test-user)**  -tooenable Britta Simon toouse Azure AD единым входом.</span><span class="sxs-lookup"><span data-stu-id="35c3b-146">**[Assigning hello Azure AD test user](#assigning-the-azure-ad-test-user)** - tooenable Britta Simon toouse Azure AD single sign-on.</span></span>
+5. <span data-ttu-id="35c3b-147">**[Тестирование единого входа](#testing-single-sign-on)**  -tooverify ли hello works конфигурации.</span><span class="sxs-lookup"><span data-stu-id="35c3b-147">**[Testing Single Sign-On](#testing-single-sign-on)** - tooverify whether hello configuration works.</span></span>
 
-### <a name="configuring-azure-ad-single-sign-on"></a><span data-ttu-id="8dad9-148">Настройка единого входа в Azure AD</span><span class="sxs-lookup"><span data-stu-id="8dad9-148">Configuring Azure AD single sign-on</span></span>
+### <a name="configuring-azure-ad-single-sign-on"></a><span data-ttu-id="35c3b-148">Настройка единого входа в Azure AD</span><span class="sxs-lookup"><span data-stu-id="35c3b-148">Configuring Azure AD single sign-on</span></span>
 
-<span data-ttu-id="8dad9-149">В данном разделе описано, как включить единый вход Azure AD на портале Azure и настроить его в приложении Pantheon.</span><span class="sxs-lookup"><span data-stu-id="8dad9-149">In this section, you enable Azure AD single sign-on in the Azure portal and configure single sign-on in your Pantheon application.</span></span>
+<span data-ttu-id="35c3b-149">В этом разделе включения Azure AD единым входом в портал Azure hello и настройки единого входа в приложении Pantheon.</span><span class="sxs-lookup"><span data-stu-id="35c3b-149">In this section, you enable Azure AD single sign-on in hello Azure portal and configure single sign-on in your Pantheon application.</span></span>
 
-<span data-ttu-id="8dad9-150">**Чтобы настроить единый вход Azure AD в Pantheon, выполните следующие действия:**</span><span class="sxs-lookup"><span data-stu-id="8dad9-150">**To configure Azure AD single sign-on with Pantheon, perform the following steps:**</span></span>
+<span data-ttu-id="35c3b-150">**tooconfigure Azure AD единого входа с Pantheon, выполните следующие шаги hello.**</span><span class="sxs-lookup"><span data-stu-id="35c3b-150">**tooconfigure Azure AD single sign-on with Pantheon, perform hello following steps:**</span></span>
 
-1. <span data-ttu-id="8dad9-151">На портале Azure на странице интеграции с приложением **Pantheon** выберите **Единый вход**.</span><span class="sxs-lookup"><span data-stu-id="8dad9-151">In the Azure portal, on the **Pantheon** application integration page, click **Single sign-on**.</span></span>
+1. <span data-ttu-id="35c3b-151">В hello в hello портала Azure **Pantheon** странице интеграции приложения щелкните **единого входа**.</span><span class="sxs-lookup"><span data-stu-id="35c3b-151">In hello Azure portal, on hello **Pantheon** application integration page, click **Single sign-on**.</span></span>
 
     ![Настройка единого входа][4]
 
-2. <span data-ttu-id="8dad9-153">В диалоговом окне **Единый вход** в разделе **Режим** выберите **Вход на основе SAML**, чтобы включить функцию единого входа.</span><span class="sxs-lookup"><span data-stu-id="8dad9-153">On the **Single sign-on** dialog, select **Mode** as **SAML-based Sign-on** to enable single sign-on.</span></span>
+2. <span data-ttu-id="35c3b-153">На hello **единого входа** диалогового окна выберите **режим** как **входа на базе SAML** tooenable единого входа.</span><span class="sxs-lookup"><span data-stu-id="35c3b-153">On hello **Single sign-on** dialog, select **Mode** as   **SAML-based Sign-on** tooenable single sign-on.</span></span>
  
     ![Настройка единого входа](./media/active-directory-saas-pantheon-tutorial/tutorial_pantheon_samlbase.png)
 
-3. <span data-ttu-id="8dad9-155">В разделе **Домены и URL-адреса приложения Pantheon** сделайте следующее:</span><span class="sxs-lookup"><span data-stu-id="8dad9-155">On the **Pantheon Domain and URLs** section, perform the following steps:</span></span>
+3. <span data-ttu-id="35c3b-155">На hello **URL-адреса и домена Pantheon** выполните следующие шаги hello:</span><span class="sxs-lookup"><span data-stu-id="35c3b-155">On hello **Pantheon Domain and URLs** section, perform hello following steps:</span></span>
 
     ![Настройка единого входа](./media/active-directory-saas-pantheon-tutorial/tutorial_pantheon_url.png)
 
-    <span data-ttu-id="8dad9-157">а.</span><span class="sxs-lookup"><span data-stu-id="8dad9-157">a.</span></span> <span data-ttu-id="8dad9-158">В текстовом поле **Идентификатор** введите URL-адрес в следующем формате: `urn:auth0:pantheon:<orgname>-SSO`</span><span class="sxs-lookup"><span data-stu-id="8dad9-158">In the **Identifier** textbox, type a URL using the following pattern: `urn:auth0:pantheon:<orgname>-SSO`</span></span>
+    <span data-ttu-id="35c3b-157">а.</span><span class="sxs-lookup"><span data-stu-id="35c3b-157">a.</span></span> <span data-ttu-id="35c3b-158">В hello **идентификатор** текстовом поле введите URL-адрес, используя следующий шаблон hello:`urn:auth0:pantheon:<orgname>-SSO`</span><span class="sxs-lookup"><span data-stu-id="35c3b-158">In hello **Identifier** textbox, type a URL using hello following pattern: `urn:auth0:pantheon:<orgname>-SSO`</span></span>
 
-    <span data-ttu-id="8dad9-159">b.</span><span class="sxs-lookup"><span data-stu-id="8dad9-159">b.</span></span> <span data-ttu-id="8dad9-160">В текстовом поле **URL-адрес ответа** введите URL-адрес в следующем формате: `https://pantheon.auth0.com/login/callback?connection=<orgname>-SSO`.</span><span class="sxs-lookup"><span data-stu-id="8dad9-160">In the **Reply URL** textbox, type a URL using the following pattern: `https://pantheon.auth0.com/login/callback?connection=<orgname>-SSO`</span></span>
+    <span data-ttu-id="35c3b-159">b.</span><span class="sxs-lookup"><span data-stu-id="35c3b-159">b.</span></span> <span data-ttu-id="35c3b-160">В hello **URL-адрес ответа** текстовом поле введите URL-адрес, используя следующий шаблон hello:`https://pantheon.auth0.com/login/callback?connection=<orgname>-SSO`</span><span class="sxs-lookup"><span data-stu-id="35c3b-160">In hello **Reply URL** textbox, type a URL using hello following pattern: `https://pantheon.auth0.com/login/callback?connection=<orgname>-SSO`</span></span>
 
     > [!NOTE] 
-    > <span data-ttu-id="8dad9-161">Эти значения приведены в качестве примера.</span><span class="sxs-lookup"><span data-stu-id="8dad9-161">These values are not real.</span></span> <span data-ttu-id="8dad9-162">Измените их на фактические значения идентификатора и URL-адреса ответа.</span><span class="sxs-lookup"><span data-stu-id="8dad9-162">Update these values with the actual Identifier and Reply URL.</span></span> <span data-ttu-id="8dad9-163">Чтобы получить эти значения, обратитесь в [службу поддержки Pantheon](https://pantheon.io/docs/getting-support/).</span><span class="sxs-lookup"><span data-stu-id="8dad9-163">Contact [Pantheon support team](https://pantheon.io/docs/getting-support/) to get these values.</span></span>
+    > <span data-ttu-id="35c3b-161">Эти значения приведены в качестве примера.</span><span class="sxs-lookup"><span data-stu-id="35c3b-161">These values are not real.</span></span> <span data-ttu-id="35c3b-162">Обновите эти значения с hello фактический идентификатор и ответ URL-адрес.</span><span class="sxs-lookup"><span data-stu-id="35c3b-162">Update these values with hello actual Identifier and Reply URL.</span></span> <span data-ttu-id="35c3b-163">Обратитесь к [Pantheon поддержки](https://pantheon.io/docs/getting-support/) tooget эти значения.</span><span class="sxs-lookup"><span data-stu-id="35c3b-163">Contact [Pantheon support team](https://pantheon.io/docs/getting-support/) tooget these values.</span></span>
 
-4. <span data-ttu-id="8dad9-164">Приложение Pantheon ожидает получить утверждение SAML в определенном формате. Для этого формата потребуется указать адрес электронной почты пользователя в качестве значения атрибута UserIdentifier.</span><span class="sxs-lookup"><span data-stu-id="8dad9-164">Pantheon application expects the SAML assertion in specific format, which requires you to set the UserIdentifier attribute value with the user’s email address.</span></span> <span data-ttu-id="8dad9-165">По умолчанию Azure AD использует для этого атрибута значение UserPrincipalName.</span><span class="sxs-lookup"><span data-stu-id="8dad9-165">By default Azure AD uses the UserPrincipalName for UserIdentifier attribute.</span></span> <span data-ttu-id="8dad9-166">Для успешной интеграции это значение следует изменить так, чтобы оно совпадало с адресом электронной почты пользователя.</span><span class="sxs-lookup"><span data-stu-id="8dad9-166">But for successful integration you need to adjust this value to match with user’s email address.</span></span> <span data-ttu-id="8dad9-167">Интеграция будет работать только после выполнения правильного сопоставления.</span><span class="sxs-lookup"><span data-stu-id="8dad9-167">The integration will only work after doing the correct mapping.</span></span>
+4. <span data-ttu-id="35c3b-164">Pantheon приложение ожидает утверждения SAML hello в определенном формате, поэтому требуется вы tooset hello значения атрибута идентификатор пользователя с помощью адреса электронной почты пользователя hello.</span><span class="sxs-lookup"><span data-stu-id="35c3b-164">Pantheon application expects hello SAML assertion in specific format, which requires you tooset hello UserIdentifier attribute value with hello user’s email address.</span></span> <span data-ttu-id="35c3b-165">По умолчанию Azure AD использует hello UserPrincipalName атрибута идентификатор пользователя.</span><span class="sxs-lookup"><span data-stu-id="35c3b-165">By default Azure AD uses hello UserPrincipalName for UserIdentifier attribute.</span></span> <span data-ttu-id="35c3b-166">Однако для успешной интеграции требуют tooadjust toomatch это значение с адреса электронной почты пользователя.</span><span class="sxs-lookup"><span data-stu-id="35c3b-166">But for successful integration you need tooadjust this value toomatch with user’s email address.</span></span> <span data-ttu-id="35c3b-167">Интеграция Hello будет работать только после выполнения hello правильное сопоставление.</span><span class="sxs-lookup"><span data-stu-id="35c3b-167">hello integration will only work after doing hello correct mapping.</span></span>
 
     ![Настройка единого входа](./media/active-directory-saas-pantheon-tutorial/tutorial_attribute.png)  
 
 
-5. <span data-ttu-id="8dad9-169">В разделе **Сертификат подписи SAML** щелкните **Сертификат (Base64)**, а затем сохраните файл сертификата на компьютере.</span><span class="sxs-lookup"><span data-stu-id="8dad9-169">On the **SAML Signing Certificate** section, click **Certificate(Base64)** and then save the certificate file on your computer.</span></span>
+5. <span data-ttu-id="35c3b-169">На hello **сертификат подписи SAML** щелкните **Certificate(Base64)** и затем сохраните файл сертификата hello на вашем компьютере.</span><span class="sxs-lookup"><span data-stu-id="35c3b-169">On hello **SAML Signing Certificate** section, click **Certificate(Base64)** and then save hello certificate file on your computer.</span></span>
 
     ![Настройка единого входа](./media/active-directory-saas-pantheon-tutorial/tutorial_pantheon_certificate.png)
 
-6. <span data-ttu-id="8dad9-171">Нажмите кнопку **Сохранить** .</span><span class="sxs-lookup"><span data-stu-id="8dad9-171">Click **Save** button.</span></span>
+6. <span data-ttu-id="35c3b-171">Нажмите кнопку **Сохранить** .</span><span class="sxs-lookup"><span data-stu-id="35c3b-171">Click **Save** button.</span></span>
 
     ![Настройка единого входа](./media/active-directory-saas-pantheon-tutorial/tutorial_general_400.png)
 
-7. <span data-ttu-id="8dad9-173">В разделе **Настройка Pantheon** выберите **Настроить Pantheon**, чтобы открыть окно **Настройка единого входа**.</span><span class="sxs-lookup"><span data-stu-id="8dad9-173">On the **Pantheon Configuration** section, click **Configure Pantheon** to open **Configure sign-on** window.</span></span> <span data-ttu-id="8dad9-174">Скопируйте **URL-адрес службы единого входа SAML** из раздела **Краткий справочник**.</span><span class="sxs-lookup"><span data-stu-id="8dad9-174">Copy the **SAML Single Sign-On Service URL** from the **Quick Reference section.**</span></span>
+7. <span data-ttu-id="35c3b-173">На hello **конфигурации Pantheon** щелкните **Настройка Pantheon** tooopen **Настройка входа** окна.</span><span class="sxs-lookup"><span data-stu-id="35c3b-173">On hello **Pantheon Configuration** section, click **Configure Pantheon** tooopen **Configure sign-on** window.</span></span> <span data-ttu-id="35c3b-174">Копировать hello **SAML единого входа URL-адрес службы** из hello **краткий справочник.**</span><span class="sxs-lookup"><span data-stu-id="35c3b-174">Copy hello **SAML Single Sign-On Service URL** from hello **Quick Reference section.**</span></span>
 
     ![Настройка единого входа](./media/active-directory-saas-pantheon-tutorial/tutorial_pantheon_configure.png) 
 
-8. <span data-ttu-id="8dad9-176">Чтобы настроить единый вход на стороне **Pantheon**, нужно отправить скачанный **сертификат** и **URL-адрес службы единого входа SAML** в [службу поддержки Pantheon](https://pantheon.io/docs/getting-support/).</span><span class="sxs-lookup"><span data-stu-id="8dad9-176">To configure single sign-on on **Pantheon** side, you need to send the downloaded **Certificate** and **SAML Single Sign-On Service URL** to [Pantheon support team](https://pantheon.io/docs/getting-support/).</span></span>
+8. <span data-ttu-id="35c3b-176">tooconfigure единого входа на **Pantheon** стороны, необходимо загрузить hello toosend **сертификат** и **SAML единого входа URL-адрес службы** слишком[Pantheon поддержки](https://pantheon.io/docs/getting-support/).</span><span class="sxs-lookup"><span data-stu-id="35c3b-176">tooconfigure single sign-on on **Pantheon** side, you need toosend hello downloaded **Certificate** and **SAML Single Sign-On Service URL** too[Pantheon support team](https://pantheon.io/docs/getting-support/).</span></span>
 
      > [!Note]
-     > <span data-ttu-id="8dad9-177">Чтобы включить эту связь, необходимо также предоставить сведения о доменах электронной почты и о формате даты и времени.</span><span class="sxs-lookup"><span data-stu-id="8dad9-177">You also need to provide the Email Domain(s) information and Date Time when you want to enable this connection.</span></span> <span data-ttu-id="8dad9-178">Дополнительные сведения см. [здесь](https://pantheon.io/docs/sso-organizations/).</span><span class="sxs-lookup"><span data-stu-id="8dad9-178">You can find more details about it from [here](https://pantheon.io/docs/sso-organizations/)</span></span>
+     > <span data-ttu-id="35c3b-177">Необходимо также tooprovide hello доменов электронной почты сведения и Дата и время при необходимости tooenable этого подключения.</span><span class="sxs-lookup"><span data-stu-id="35c3b-177">You also need tooprovide hello Email Domain(s) information and Date Time when you want tooenable this connection.</span></span> <span data-ttu-id="35c3b-178">Дополнительные сведения см. [здесь](https://pantheon.io/docs/sso-organizations/).</span><span class="sxs-lookup"><span data-stu-id="35c3b-178">You can find more details about it from [here](https://pantheon.io/docs/sso-organizations/)</span></span>
 
 > [!TIP]
-> <span data-ttu-id="8dad9-179">Краткую версию этих инструкций теперь можно также прочитать на [портале Azure](https://portal.azure.com) во время настройки приложения.</span><span class="sxs-lookup"><span data-stu-id="8dad9-179">You can now read a concise version of these instructions inside the [Azure portal](https://portal.azure.com), while you are setting up the app!</span></span>  <span data-ttu-id="8dad9-180">После добавления этого приложения из раздела **Active Directory > Корпоративные приложения** просто выберите вкладку **Единый вход** и откройте встроенную документацию через раздел **Настройка** в нижней части страницы.</span><span class="sxs-lookup"><span data-stu-id="8dad9-180">After adding this app from the **Active Directory > Enterprise Applications** section, simply click the **Single Sign-On** tab and access the embedded documentation through the **Configuration** section at the bottom.</span></span> <span data-ttu-id="8dad9-181">Дополнительные сведения о встроенной документации см. в разделе [Встроенная документация Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985).</span><span class="sxs-lookup"><span data-stu-id="8dad9-181">You can read more about the embedded documentation feature here: [Azure AD embedded documentation]( https://go.microsoft.com/fwlink/?linkid=845985)</span></span>
+> <span data-ttu-id="35c3b-179">Вы сможете прочитать четкими версии этих инструкций внутри hello [портал Azure](https://portal.azure.com), а вы настраиваете приложение hello!</span><span class="sxs-lookup"><span data-stu-id="35c3b-179">You can now read a concise version of these instructions inside hello [Azure portal](https://portal.azure.com), while you are setting up hello app!</span></span>  <span data-ttu-id="35c3b-180">После добавления этого приложения из hello **Active Directory > корпоративных приложений** просто щелкните hello **Single Sign-On** вкладку и доступа hello внедренных документации с помощью hello  **Конфигурация** раздела внизу hello.</span><span class="sxs-lookup"><span data-stu-id="35c3b-180">After adding this app from hello **Active Directory > Enterprise Applications** section, simply click hello **Single Sign-On** tab and access hello embedded documentation through hello **Configuration** section at hello bottom.</span></span> <span data-ttu-id="35c3b-181">Вы можете прочитать больше о документации embedded функции hello здесь: [документации внедренных Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)</span><span class="sxs-lookup"><span data-stu-id="35c3b-181">You can read more about hello embedded documentation feature here: [Azure AD embedded documentation]( https://go.microsoft.com/fwlink/?linkid=845985)</span></span>
 
-### <a name="creating-an-azure-ad-test-user"></a><span data-ttu-id="8dad9-182">Создание тестового пользователя Azure AD</span><span class="sxs-lookup"><span data-stu-id="8dad9-182">Creating an Azure AD test user</span></span>
-<span data-ttu-id="8dad9-183">Цель этого раздела — создать на портале Azure тестового пользователя с именем Britta Simon.</span><span class="sxs-lookup"><span data-stu-id="8dad9-183">The objective of this section is to create a test user in the Azure portal called Britta Simon.</span></span>
+### <a name="creating-an-azure-ad-test-user"></a><span data-ttu-id="35c3b-182">Создание тестового пользователя Azure AD</span><span class="sxs-lookup"><span data-stu-id="35c3b-182">Creating an Azure AD test user</span></span>
+<span data-ttu-id="35c3b-183">Цель этого раздела Hello — toocreate тестового пользователя в hello вызывается Саймон Britta портал Azure.</span><span class="sxs-lookup"><span data-stu-id="35c3b-183">hello objective of this section is toocreate a test user in hello Azure portal called Britta Simon.</span></span>
 
 ![Создание пользователя Azure AD][100]
 
-<span data-ttu-id="8dad9-185">**Чтобы создать тестового пользователя в Azure AD, выполните следующие действия:**</span><span class="sxs-lookup"><span data-stu-id="8dad9-185">**To create a test user in Azure AD, perform the following steps:**</span></span>
+<span data-ttu-id="35c3b-185">**toocreate тестового пользователя в Azure AD, выполните следующие шаги hello.**</span><span class="sxs-lookup"><span data-stu-id="35c3b-185">**toocreate a test user in Azure AD, perform hello following steps:**</span></span>
 
-1. <span data-ttu-id="8dad9-186">На **портале Azure** в области навигации слева щелкните значок **Azure Active Directory**.</span><span class="sxs-lookup"><span data-stu-id="8dad9-186">In the **Azure portal**, on the left navigation pane, click **Azure Active Directory** icon.</span></span>
+1. <span data-ttu-id="35c3b-186">В hello **портал Azure**, на левой панели навигации hello, нажмите кнопку **Azure Active Directory** значок.</span><span class="sxs-lookup"><span data-stu-id="35c3b-186">In hello **Azure portal**, on hello left navigation pane, click **Azure Active Directory** icon.</span></span>
 
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-pantheon-tutorial/create_aaduser_01.png) 
 
-2. <span data-ttu-id="8dad9-188">Чтобы отобразить список пользователей, перейдите в раздел **Пользователи и группы** и щелкните **Все пользователи**.</span><span class="sxs-lookup"><span data-stu-id="8dad9-188">To display the list of users, go to **Users and groups** and click **All users**.</span></span>
+2. <span data-ttu-id="35c3b-188">hello toodisplay список пользователей, перейдите в слишком**пользователей и групп** и нажмите кнопку **всех пользователей**.</span><span class="sxs-lookup"><span data-stu-id="35c3b-188">toodisplay hello list of users, go too**Users and groups** and click **All users**.</span></span>
     
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-pantheon-tutorial/create_aaduser_02.png) 
 
-3. <span data-ttu-id="8dad9-190">Чтобы открыть диалоговое окно **Пользователь**, в верхней части диалогового окна щелкните **Добавить**.</span><span class="sxs-lookup"><span data-stu-id="8dad9-190">To open the **User** dialog, click **Add** on the top of the dialog.</span></span>
+3. <span data-ttu-id="35c3b-190">tooopen hello **пользователя** диалоговое окно, нажмите кнопку **добавить** в верхней части hello диалогового окна "hello".</span><span class="sxs-lookup"><span data-stu-id="35c3b-190">tooopen hello **User** dialog, click **Add** on hello top of hello dialog.</span></span>
  
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-pantheon-tutorial/create_aaduser_03.png) 
 
-4. <span data-ttu-id="8dad9-192">На странице диалогового окна **Пользователь** выполните следующие действия.</span><span class="sxs-lookup"><span data-stu-id="8dad9-192">On the **User** dialog page, perform the following steps:</span></span>
+4. <span data-ttu-id="35c3b-192">На hello **пользователя** диалогового окна выполните следующие шаги hello:</span><span class="sxs-lookup"><span data-stu-id="35c3b-192">On hello **User** dialog page, perform hello following steps:</span></span>
  
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-pantheon-tutorial/create_aaduser_04.png) 
 
-    <span data-ttu-id="8dad9-194">а.</span><span class="sxs-lookup"><span data-stu-id="8dad9-194">a.</span></span> <span data-ttu-id="8dad9-195">В текстовом поле **Имя** введите **BrittaSimon**.</span><span class="sxs-lookup"><span data-stu-id="8dad9-195">In the **Name** textbox, type **BrittaSimon**.</span></span>
+    <span data-ttu-id="35c3b-194">а.</span><span class="sxs-lookup"><span data-stu-id="35c3b-194">a.</span></span> <span data-ttu-id="35c3b-195">В hello **имя** введите **BrittaSimon**.</span><span class="sxs-lookup"><span data-stu-id="35c3b-195">In hello **Name** textbox, type **BrittaSimon**.</span></span>
 
-    <span data-ttu-id="8dad9-196">b.</span><span class="sxs-lookup"><span data-stu-id="8dad9-196">b.</span></span> <span data-ttu-id="8dad9-197">В текстовом поле **Имя пользователя** введите **адрес электронной почты** учетной записи BrittaSimon.</span><span class="sxs-lookup"><span data-stu-id="8dad9-197">In the **User name** textbox, type the **email address** of BrittaSimon.</span></span>
+    <span data-ttu-id="35c3b-196">b.</span><span class="sxs-lookup"><span data-stu-id="35c3b-196">b.</span></span> <span data-ttu-id="35c3b-197">В hello **имя пользователя** в текстовое поле типа hello **адрес электронной почты** из BrittaSimon.</span><span class="sxs-lookup"><span data-stu-id="35c3b-197">In hello **User name** textbox, type hello **email address** of BrittaSimon.</span></span>
 
-    <span data-ttu-id="8dad9-198">c.</span><span class="sxs-lookup"><span data-stu-id="8dad9-198">c.</span></span> <span data-ttu-id="8dad9-199">Выберите **Показать пароль** и запишите значение поля **Пароль**.</span><span class="sxs-lookup"><span data-stu-id="8dad9-199">Select **Show Password** and write down the value of the **Password**.</span></span>
+    <span data-ttu-id="35c3b-198">c.</span><span class="sxs-lookup"><span data-stu-id="35c3b-198">c.</span></span> <span data-ttu-id="35c3b-199">Выберите **Показать пароль** и запишите значение hello hello **пароль**.</span><span class="sxs-lookup"><span data-stu-id="35c3b-199">Select **Show Password** and write down hello value of hello **Password**.</span></span>
 
-    <span data-ttu-id="8dad9-200">d.</span><span class="sxs-lookup"><span data-stu-id="8dad9-200">d.</span></span> <span data-ttu-id="8dad9-201">Щелкните **Создать**.</span><span class="sxs-lookup"><span data-stu-id="8dad9-201">Click **Create**.</span></span>
+    <span data-ttu-id="35c3b-200">d.</span><span class="sxs-lookup"><span data-stu-id="35c3b-200">d.</span></span> <span data-ttu-id="35c3b-201">Щелкните **Создать**.</span><span class="sxs-lookup"><span data-stu-id="35c3b-201">Click **Create**.</span></span>
  
-### <a name="creating-a-pantheon-test-user"></a><span data-ttu-id="8dad9-202">Создание тестового пользователя Pantheon</span><span class="sxs-lookup"><span data-stu-id="8dad9-202">Creating a Pantheon test user</span></span>
+### <a name="creating-a-pantheon-test-user"></a><span data-ttu-id="35c3b-202">Создание тестового пользователя Pantheon</span><span class="sxs-lookup"><span data-stu-id="35c3b-202">Creating a Pantheon test user</span></span>
 
-<span data-ttu-id="8dad9-203">В этом разделе описано, как создать пользователя Britta Simon в приложении Pantheon.</span><span class="sxs-lookup"><span data-stu-id="8dad9-203">In this section, you create a user called Britta Simon in Pantheon.</span></span> <span data-ttu-id="8dad9-204">Выполните следующие ниже действия, чтобы добавить пользователя в Pantheon.</span><span class="sxs-lookup"><span data-stu-id="8dad9-204">Please follow the below steps to add the user in Pantheon.</span></span> 
+<span data-ttu-id="35c3b-203">В этом разделе описано, как создать пользователя Britta Simon в приложении Pantheon.</span><span class="sxs-lookup"><span data-stu-id="35c3b-203">In this section, you create a user called Britta Simon in Pantheon.</span></span> <span data-ttu-id="35c3b-204">Следуйте hello ниже шаги tooadd hello пользователя в Pantheon.</span><span class="sxs-lookup"><span data-stu-id="35c3b-204">Please follow hello below steps tooadd hello user in Pantheon.</span></span> 
 
 >[!NOTE] 
-><span data-ttu-id="8dad9-205">Чтобы единый вход начал работать, необходимо сначала создать пользователя в Pantheon.</span><span class="sxs-lookup"><span data-stu-id="8dad9-205">For SSO to work user needs to be created first in Pantheon.</span></span>
+><span data-ttu-id="35c3b-205">Для единого входа toowork пользователь должен сначала создается в Pantheon toobe.</span><span class="sxs-lookup"><span data-stu-id="35c3b-205">For SSO toowork user needs toobe created first in Pantheon.</span></span>
 
-1. <span data-ttu-id="8dad9-206">Войдите в Pantheon с учетными данными администратора.</span><span class="sxs-lookup"><span data-stu-id="8dad9-206">Login to Pantheon with admin credentials.</span></span>
+1. <span data-ttu-id="35c3b-206">TooPantheon входа в систему с учетными данными администратора.</span><span class="sxs-lookup"><span data-stu-id="35c3b-206">Login tooPantheon with admin credentials.</span></span>
 
-2. <span data-ttu-id="8dad9-207">Перейдите на страницу **Organization** (Организация) панели мониторинга.</span><span class="sxs-lookup"><span data-stu-id="8dad9-207">Navigate to **Organization** dashboard page.</span></span>
+2. <span data-ttu-id="35c3b-207">Перейдите в слишком**организации** страницу панели мониторинга.</span><span class="sxs-lookup"><span data-stu-id="35c3b-207">Navigate too**Organization** dashboard page.</span></span>
  
-3. <span data-ttu-id="8dad9-208">Выберите параметр **Пользователи**.</span><span class="sxs-lookup"><span data-stu-id="8dad9-208">Click **People**.</span></span>
+3. <span data-ttu-id="35c3b-208">Выберите параметр **Пользователи**.</span><span class="sxs-lookup"><span data-stu-id="35c3b-208">Click **People**.</span></span>
 
-4. <span data-ttu-id="8dad9-209">Нажмите кнопку **Добавить пользователя**.</span><span class="sxs-lookup"><span data-stu-id="8dad9-209">Click **Add user**.</span></span>
+4. <span data-ttu-id="35c3b-209">Нажмите кнопку **Добавить пользователя**.</span><span class="sxs-lookup"><span data-stu-id="35c3b-209">Click **Add user**.</span></span>
 
-5. <span data-ttu-id="8dad9-210">Введите адрес электронной почты пользователя.</span><span class="sxs-lookup"><span data-stu-id="8dad9-210">Enter the user's email address.</span></span>
+5. <span data-ttu-id="35c3b-210">Введите адрес электронной почты пользователя hello.</span><span class="sxs-lookup"><span data-stu-id="35c3b-210">Enter hello user's email address.</span></span>
 
-6. <span data-ttu-id="8dad9-211">Выберите роль пользователя.</span><span class="sxs-lookup"><span data-stu-id="8dad9-211">Choose the user's role.</span></span>
+6. <span data-ttu-id="35c3b-211">Выберите роль пользователя hello.</span><span class="sxs-lookup"><span data-stu-id="35c3b-211">Choose hello user's role.</span></span>
 
-7. <span data-ttu-id="8dad9-212">Нажмите кнопку **Добавить пользователя**.</span><span class="sxs-lookup"><span data-stu-id="8dad9-212">Click **Add user**.</span></span>
+7. <span data-ttu-id="35c3b-212">Нажмите кнопку **Добавить пользователя**.</span><span class="sxs-lookup"><span data-stu-id="35c3b-212">Click **Add user**.</span></span>
 
-### <a name="assigning-the-azure-ad-test-user"></a><span data-ttu-id="8dad9-213">Назначение тестового пользователя Azure AD</span><span class="sxs-lookup"><span data-stu-id="8dad9-213">Assigning the Azure AD test user</span></span>
+### <a name="assigning-hello-azure-ad-test-user"></a><span data-ttu-id="35c3b-213">Назначение hello Azure AD тестового пользователя</span><span class="sxs-lookup"><span data-stu-id="35c3b-213">Assigning hello Azure AD test user</span></span>
 
-<span data-ttu-id="8dad9-214">В этом разделе описано, как предоставить пользователю Britta Simon доступ к Pantheon, чтобы он мог использовать единый вход Azure.</span><span class="sxs-lookup"><span data-stu-id="8dad9-214">In this section, you enable Britta Simon to use Azure single sign-on by granting access to Pantheon.</span></span>
+<span data-ttu-id="35c3b-214">В этом разделе включите toouse Britta Simon Azure единого входа путем предоставления tooPantheon доступа.</span><span class="sxs-lookup"><span data-stu-id="35c3b-214">In this section, you enable Britta Simon toouse Azure single sign-on by granting access tooPantheon.</span></span>
 
 ![Назначение пользователя][200] 
 
-<span data-ttu-id="8dad9-216">**Чтобы назначить пользователя Britta Simon в Pantheon, выполните следующие действия:**</span><span class="sxs-lookup"><span data-stu-id="8dad9-216">**To assign Britta Simon to Pantheon, perform the following steps:**</span></span>
+<span data-ttu-id="35c3b-216">**tooassign tooPantheon Britta Simon выполните следующие шаги hello.**</span><span class="sxs-lookup"><span data-stu-id="35c3b-216">**tooassign Britta Simon tooPantheon, perform hello following steps:**</span></span>
 
-1. <span data-ttu-id="8dad9-217">На портале Azure откройте представление приложений, перейдите к представлению каталога, а затем выберите **Корпоративные приложения** и щелкните **Все приложения**.</span><span class="sxs-lookup"><span data-stu-id="8dad9-217">In the Azure portal, open the applications view, and then navigate to the directory view and go to **Enterprise applications** then click **All applications**.</span></span>
+1. <span data-ttu-id="35c3b-217">В hello портал Azure, откройте представление приложения hello, а затем перейдите toohello представления каталога и перейти слишком**корпоративных приложений** щелкните **все приложения**.</span><span class="sxs-lookup"><span data-stu-id="35c3b-217">In hello Azure portal, open hello applications view, and then navigate toohello directory view and go too**Enterprise applications** then click **All applications**.</span></span>
 
     ![Назначение пользователя][201] 
 
-2. <span data-ttu-id="8dad9-219">В списке приложений выберите **Pantheon**.</span><span class="sxs-lookup"><span data-stu-id="8dad9-219">In the applications list, select **Pantheon**.</span></span>
+2. <span data-ttu-id="35c3b-219">В списке приложений hello выберите **Pantheon**.</span><span class="sxs-lookup"><span data-stu-id="35c3b-219">In hello applications list, select **Pantheon**.</span></span>
 
     ![Настройка единого входа](./media/active-directory-saas-pantheon-tutorial/tutorial_pantheon_app.png) 
 
-3. <span data-ttu-id="8dad9-221">В меню слева выберите **Пользователи и группы**.</span><span class="sxs-lookup"><span data-stu-id="8dad9-221">In the menu on the left, click **Users and groups**.</span></span>
+3. <span data-ttu-id="35c3b-221">В меню слева hello hello выберите **пользователей и групп**.</span><span class="sxs-lookup"><span data-stu-id="35c3b-221">In hello menu on hello left, click **Users and groups**.</span></span>
 
     ![Назначение пользователя][202] 
 
-4. <span data-ttu-id="8dad9-223">Нажмите кнопку **Добавить**.</span><span class="sxs-lookup"><span data-stu-id="8dad9-223">Click **Add** button.</span></span> <span data-ttu-id="8dad9-224">Затем в диалоговом окне **Добавление назначения** выберите **Пользователи и группы**.</span><span class="sxs-lookup"><span data-stu-id="8dad9-224">Then select **Users and groups** on **Add Assignment** dialog.</span></span>
+4. <span data-ttu-id="35c3b-223">Нажмите кнопку **Добавить**.</span><span class="sxs-lookup"><span data-stu-id="35c3b-223">Click **Add** button.</span></span> <span data-ttu-id="35c3b-224">Затем в диалоговом окне **Добавление назначения** выберите **Пользователи и группы**.</span><span class="sxs-lookup"><span data-stu-id="35c3b-224">Then select **Users and groups** on **Add Assignment** dialog.</span></span>
 
     ![Назначение пользователя][203]
 
-5. <span data-ttu-id="8dad9-226">В диалоговом окне **Пользователи и группы** в списке пользователей выберите **Britta Simon**.</span><span class="sxs-lookup"><span data-stu-id="8dad9-226">On **Users and groups** dialog, select **Britta Simon** in the Users list.</span></span>
+5. <span data-ttu-id="35c3b-226">На **пользователей и групп** диалогового окна выберите **Britta Simon** в список пользователей hello.</span><span class="sxs-lookup"><span data-stu-id="35c3b-226">On **Users and groups** dialog, select **Britta Simon** in hello Users list.</span></span>
 
-6. <span data-ttu-id="8dad9-227">В диалоговом окне **Пользователи и группы** нажмите кнопку **Выбрать**.</span><span class="sxs-lookup"><span data-stu-id="8dad9-227">Click **Select** button on **Users and groups** dialog.</span></span>
+6. <span data-ttu-id="35c3b-227">В диалоговом окне **Пользователи и группы** нажмите кнопку **Выбрать**.</span><span class="sxs-lookup"><span data-stu-id="35c3b-227">Click **Select** button on **Users and groups** dialog.</span></span>
 
-7. <span data-ttu-id="8dad9-228">В диалоговом окне **Добавление назначения** нажмите кнопку **Назначить**.</span><span class="sxs-lookup"><span data-stu-id="8dad9-228">Click **Assign** button on **Add Assignment** dialog.</span></span>
+7. <span data-ttu-id="35c3b-228">В диалоговом окне **Добавление назначения** нажмите кнопку **Назначить**.</span><span class="sxs-lookup"><span data-stu-id="35c3b-228">Click **Assign** button on **Add Assignment** dialog.</span></span>
     
-### <a name="testing-single-sign-on"></a><span data-ttu-id="8dad9-229">Проверка единого входа</span><span class="sxs-lookup"><span data-stu-id="8dad9-229">Testing single sign-on</span></span>
+### <a name="testing-single-sign-on"></a><span data-ttu-id="35c3b-229">Проверка единого входа</span><span class="sxs-lookup"><span data-stu-id="35c3b-229">Testing single sign-on</span></span>
 
-<span data-ttu-id="8dad9-230">В этом разделе описано, как проверить конфигурацию единого входа Azure AD с помощью панели доступа.</span><span class="sxs-lookup"><span data-stu-id="8dad9-230">In this section, you test your Azure AD single sign-on configuration using the Access Panel.</span></span>
+<span data-ttu-id="35c3b-230">В этом разделе тестирования конфигурации Azure AD единого входа с помощью панели доступа hello.</span><span class="sxs-lookup"><span data-stu-id="35c3b-230">In this section, you test your Azure AD single sign-on configuration using hello Access Panel.</span></span>
 
-<span data-ttu-id="8dad9-231">Щелкнув элемент Pantheon на панели доступа, вы автоматически войдете в приложение Pantheon.</span><span class="sxs-lookup"><span data-stu-id="8dad9-231">When you click the Pantheon tile in the Access Panel, you should get automatically signed-on to your Pantheon application.</span></span>
-<span data-ttu-id="8dad9-232">Дополнительные сведения о панели доступа см. в статье [Общие сведения о панели доступа](active-directory-saas-access-panel-introduction.md).</span><span class="sxs-lookup"><span data-stu-id="8dad9-232">For more information about the Access Panel, see [Introduction to the Access Panel](active-directory-saas-access-panel-introduction.md).</span></span> 
+<span data-ttu-id="35c3b-231">При нажатии кнопки hello Pantheon плитки в панели доступа hello, вы должны получить автоматически вошедшего tooyour Pantheon приложения.</span><span class="sxs-lookup"><span data-stu-id="35c3b-231">When you click hello Pantheon tile in hello Access Panel, you should get automatically signed-on tooyour Pantheon application.</span></span>
+<span data-ttu-id="35c3b-232">Дополнительные сведения о панели доступа hello см. в разделе [toohello введение панели доступа](active-directory-saas-access-panel-introduction.md).</span><span class="sxs-lookup"><span data-stu-id="35c3b-232">For more information about hello Access Panel, see [Introduction toohello Access Panel](active-directory-saas-access-panel-introduction.md).</span></span> 
 
-## <a name="additional-resources"></a><span data-ttu-id="8dad9-233">Дополнительные ресурсы</span><span class="sxs-lookup"><span data-stu-id="8dad9-233">Additional resources</span></span>
+## <a name="additional-resources"></a><span data-ttu-id="35c3b-233">Дополнительные ресурсы</span><span class="sxs-lookup"><span data-stu-id="35c3b-233">Additional resources</span></span>
 
-* [<span data-ttu-id="8dad9-234">Список учебников по интеграции приложений SaaS с Azure Active Directory</span><span class="sxs-lookup"><span data-stu-id="8dad9-234">List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory</span></span>](active-directory-saas-tutorial-list.md)
-* [<span data-ttu-id="8dad9-235">Что такое доступ к приложениям и единый вход с помощью Azure Active Directory?</span><span class="sxs-lookup"><span data-stu-id="8dad9-235">What is application access and single sign-on with Azure Active Directory?</span></span>](active-directory-appssoaccess-whatis.md)
+* [<span data-ttu-id="35c3b-234">Список учебников по tooIntegrate приложений SaaS в Azure Active Directory</span><span class="sxs-lookup"><span data-stu-id="35c3b-234">List of Tutorials on How tooIntegrate SaaS Apps with Azure Active Directory</span></span>](active-directory-saas-tutorial-list.md)
+* [<span data-ttu-id="35c3b-235">Что такое доступ к приложениям и единый вход с помощью Azure Active Directory?</span><span class="sxs-lookup"><span data-stu-id="35c3b-235">What is application access and single sign-on with Azure Active Directory?</span></span>](active-directory-appssoaccess-whatis.md)
 
 <!--Image references-->
 

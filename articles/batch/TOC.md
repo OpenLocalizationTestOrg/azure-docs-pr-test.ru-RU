@@ -64,7 +64,7 @@
 # Сопутствующие материалы
 ## [Batch Shipyard](https://github.com/Azure/batch-shipyard)
 ## [Обработка данных с помощью пакетной службы и фабрики данных](../data-factory/data-factory-data-processing-using-batch.md?toc=%2fazure%2fbatch%2ftoc.json)
-## [Решения для пакетной службы и высокопроизводительных вычислений в облаке Azure](batch-hpc-solutions.md)
+## [Решения пакет и HPC в облаке Azure hello](batch-hpc-solutions.md)
 
 # Ресурсы
 ## [Стратегия развития Azure](https://azure.microsoft.com/roadmap/)

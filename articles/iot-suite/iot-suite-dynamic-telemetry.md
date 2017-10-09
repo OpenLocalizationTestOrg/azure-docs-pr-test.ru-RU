@@ -1,6 +1,6 @@
 ---
-title: "Использование динамической телеметрии | Документация Майкрософт"
-description: "Ознакомьтесь с этим руководством, чтобы узнать, как использовать динамическую телеметрию с предварительно настроенным решением для удаленного мониторинга Azure IoT Suite."
+title: "динамические данные телеметрии aaaUse | Документы Microsoft"
+description: "Выполните этот учебник toolearn как toouse динамические данные телеметрии с удаленного мониторинга hello Azure IoT Suite предварительно настроенных решений."
 services: 
 suite: iot-suite
 documentationcenter: 
@@ -15,35 +15,35 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/24/2017
 ms.author: dobett
-ms.openlocfilehash: 0114f27f9b8ae76e1170d04ddf66e2c4bf20686a
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 06cb2a370b67b4950efdfa4c7d906ac92106f4a0
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="use-dynamic-telemetry-with-the-remote-monitoring-preconfigured-solution"></a><span data-ttu-id="de040-103">Использование динамической телеметрии с предварительно настроенным решением для удаленного мониторинга</span><span class="sxs-lookup"><span data-stu-id="de040-103">Use dynamic telemetry with the remote monitoring preconfigured solution</span></span>
+# <a name="use-dynamic-telemetry-with-hello-remote-monitoring-preconfigured-solution"></a><span data-ttu-id="e0583-103">Используйте динамические данные телеметрии с hello удаленное наблюдение предварительно настроенных решений</span><span class="sxs-lookup"><span data-stu-id="e0583-103">Use dynamic telemetry with hello remote monitoring preconfigured solution</span></span>
 
-<span data-ttu-id="de040-104">Динамическая телеметрия позволяют визуализировать любые данные телеметрии, отправленные в предварительно настроенное решение для удаленного мониторинга.</span><span class="sxs-lookup"><span data-stu-id="de040-104">Dynamic telemetry enables you to visualize any telemetry sent to the remote monitoring preconfigured solution.</span></span> <span data-ttu-id="de040-105">Имитации устройств, развертываемые вместе с предварительно настроенным решением, отправляют данные телеметрии температуры и влажности, которые можно отобразить на панели мониторинга.</span><span class="sxs-lookup"><span data-stu-id="de040-105">The simulated devices that deploy with the preconfigured solution send temperature and humidity telemetry, which you can visualize on the dashboard.</span></span> <span data-ttu-id="de040-106">Если настроить существующие имитации устройств, создать имитации устройств или подключить физические устройства к предварительно настроенному решению, то это позволит отправлять другие значения телеметрии, такие как внешняя температура, число оборотов в минуту или скорость ветра.</span><span class="sxs-lookup"><span data-stu-id="de040-106">If you customize existing simulated devices, create new simulated devices, or connect physical devices to the preconfigured solution you can send other telemetry values such as the external temperature, RPM, or windspeed.</span></span> <span data-ttu-id="de040-107">Затем эти дополнительные данные телеметрии можно будет визуализировать на панели мониторинга.</span><span class="sxs-lookup"><span data-stu-id="de040-107">You can then visualize this additional telemetry on the dashboard.</span></span>
+<span data-ttu-id="e0583-104">Динамические данные телеметрии позволяет вы toovisualize все отправленные данные телеметрии toohello удаленное наблюдение предварительно настроенных решений.</span><span class="sxs-lookup"><span data-stu-id="e0583-104">Dynamic telemetry enables you toovisualize any telemetry sent toohello remote monitoring preconfigured solution.</span></span> <span data-ttu-id="e0583-105">Hello имитируемые устройства, развертываемые hello предварительно настроенное решение отправляют температуры и влажности для телеметрии, то можно отобразить на панели мониторинга hello.</span><span class="sxs-lookup"><span data-stu-id="e0583-105">hello simulated devices that deploy with hello preconfigured solution send temperature and humidity telemetry, which you can visualize on hello dashboard.</span></span> <span data-ttu-id="e0583-106">При настройке существующих устройств, имитация создания новых устройств, имитация или физических устройств toohello предварительно настроенных решений можно отправить другим значениям телеметрии, например hello температура, RPM или windspeed подключения.</span><span class="sxs-lookup"><span data-stu-id="e0583-106">If you customize existing simulated devices, create new simulated devices, or connect physical devices toohello preconfigured solution you can send other telemetry values such as hello external temperature, RPM, or windspeed.</span></span> <span data-ttu-id="e0583-107">Затем можно отобразить дополнительные данные телеметрии на панели мониторинга hello.</span><span class="sxs-lookup"><span data-stu-id="e0583-107">You can then visualize this additional telemetry on hello dashboard.</span></span>
 
-<span data-ttu-id="de040-108">В этом учебнике используется простая имитация устройства Node.js, которую можно легко изменить для экспериментов с динамической телеметрией.</span><span class="sxs-lookup"><span data-stu-id="de040-108">This tutorial uses a simple Node.js simulated device that you can easily modify to experiment with dynamic telemetry.</span></span>
+<span data-ttu-id="e0583-108">В этом учебнике используется простой Node.js имитированное устройство, можно легко изменить tooexperiment с динамической телеметрии.</span><span class="sxs-lookup"><span data-stu-id="e0583-108">This tutorial uses a simple Node.js simulated device that you can easily modify tooexperiment with dynamic telemetry.</span></span>
 
-<span data-ttu-id="de040-109">Чтобы завершить этот учебник, потребуется следующее.</span><span class="sxs-lookup"><span data-stu-id="de040-109">To complete this tutorial, you’ll need:</span></span>
+<span data-ttu-id="e0583-109">toocomplete этого учебника вам потребуется:</span><span class="sxs-lookup"><span data-stu-id="e0583-109">toocomplete this tutorial, you’ll need:</span></span>
 
-* <span data-ttu-id="de040-110">Активная подписка Azure.</span><span class="sxs-lookup"><span data-stu-id="de040-110">An active Azure subscription.</span></span> <span data-ttu-id="de040-111">Если ее нет, можно создать бесплатную пробную учетную запись всего за несколько минут.</span><span class="sxs-lookup"><span data-stu-id="de040-111">If you don’t have an account, you can create a free trial account in just a couple of minutes.</span></span> <span data-ttu-id="de040-112">Дополнительные сведения см. в статье о [бесплатной пробной версии Azure][lnk_free_trial].</span><span class="sxs-lookup"><span data-stu-id="de040-112">For details, see [Azure Free Trial][lnk_free_trial].</span></span>
-* <span data-ttu-id="de040-113">[Node.js][lnk-node] версии 0.12.x или более поздней.</span><span class="sxs-lookup"><span data-stu-id="de040-113">[Node.js][lnk-node] version 0.12.x or later.</span></span>
+* <span data-ttu-id="e0583-110">Активная подписка Azure.</span><span class="sxs-lookup"><span data-stu-id="e0583-110">An active Azure subscription.</span></span> <span data-ttu-id="e0583-111">Если ее нет, можно создать бесплатную пробную учетную запись всего за несколько минут.</span><span class="sxs-lookup"><span data-stu-id="e0583-111">If you don’t have an account, you can create a free trial account in just a couple of minutes.</span></span> <span data-ttu-id="e0583-112">Дополнительные сведения см. в статье о [бесплатной пробной версии Azure][lnk_free_trial].</span><span class="sxs-lookup"><span data-stu-id="e0583-112">For details, see [Azure Free Trial][lnk_free_trial].</span></span>
+* <span data-ttu-id="e0583-113">[Node.js][lnk-node] версии 0.12.x или более поздней.</span><span class="sxs-lookup"><span data-stu-id="e0583-113">[Node.js][lnk-node] version 0.12.x or later.</span></span>
 
-<span data-ttu-id="de040-114">Этот учебник подходит для любой операционной системы, например Windows или Linux, в которой можно установить Node.js.</span><span class="sxs-lookup"><span data-stu-id="de040-114">You can complete this tutorial on any operating system, such as Windows or Linux, where you can install Node.js.</span></span>
+<span data-ttu-id="e0583-114">Этот учебник подходит для любой операционной системы, например Windows или Linux, в которой можно установить Node.js.</span><span class="sxs-lookup"><span data-stu-id="e0583-114">You can complete this tutorial on any operating system, such as Windows or Linux, where you can install Node.js.</span></span>
 
 [!INCLUDE [iot-suite-provision-remote-monitoring](../../includes/iot-suite-provision-remote-monitoring.md)]
 
 [!INCLUDE [iot-suite-send-external-temperature](../../includes/iot-suite-send-external-temperature.md)]
 
-## <a name="add-a-telemetry-type"></a><span data-ttu-id="de040-115">Добавление типа данных телеметрии</span><span class="sxs-lookup"><span data-stu-id="de040-115">Add a telemetry type</span></span>
+## <a name="add-a-telemetry-type"></a><span data-ttu-id="e0583-115">Добавление типа данных телеметрии</span><span class="sxs-lookup"><span data-stu-id="e0583-115">Add a telemetry type</span></span>
 
-<span data-ttu-id="de040-116">Следующий шаг — заменить данные телеметрии, созданные имитацией устройства Node.js, новым набором значений.</span><span class="sxs-lookup"><span data-stu-id="de040-116">The next step is to replace the telemetry generated by the Node.js simulated device with a new set of values:</span></span>
+<span data-ttu-id="e0583-116">Hello следующим шагом является tooreplace hello телеметрии, созданные hello Node.js имитированное устройство с новым набором значений:</span><span class="sxs-lookup"><span data-stu-id="e0583-116">hello next step is tooreplace hello telemetry generated by hello Node.js simulated device with a new set of values:</span></span>
 
-1. <span data-ttu-id="de040-117">Остановите имитацию устройства Node.js, нажав клавиши **Ctrl+C** в командной строке или оболочке.</span><span class="sxs-lookup"><span data-stu-id="de040-117">Stop the Node.js simulated device by typing **Ctrl+C** in your command prompt or shell.</span></span>
-2. <span data-ttu-id="de040-118">В файле remote_monitoring.js можно увидеть базовые значения для существующих данных телеметрии температуры, влажности и внешней температуры.</span><span class="sxs-lookup"><span data-stu-id="de040-118">In the remote_monitoring.js file, you can see the base data values for the existing temperature, humidity, and external temperature telemetry.</span></span> <span data-ttu-id="de040-119">Добавьте базовое значение данных для **rpm** следующим образом.</span><span class="sxs-lookup"><span data-stu-id="de040-119">Add a base data value for **rpm** as follows:</span></span>
+1. <span data-ttu-id="e0583-117">Остановка hello Node.js имитированное устройство, введя **Ctrl + C** в командной строке или оболочки.</span><span class="sxs-lookup"><span data-stu-id="e0583-117">Stop hello Node.js simulated device by typing **Ctrl+C** in your command prompt or shell.</span></span>
+2. <span data-ttu-id="e0583-118">В файле remote_monitoring.js hello вы увидите hello основные значения данных для существующих температуры hello, влажность и температура телеметрии.</span><span class="sxs-lookup"><span data-stu-id="e0583-118">In hello remote_monitoring.js file, you can see hello base data values for hello existing temperature, humidity, and external temperature telemetry.</span></span> <span data-ttu-id="e0583-119">Добавьте базовое значение данных для **rpm** следующим образом.</span><span class="sxs-lookup"><span data-stu-id="e0583-119">Add a base data value for **rpm** as follows:</span></span>
 
     ```nodejs
     // Sensors data
@@ -53,7 +53,7 @@ ms.lasthandoff: 08/29/2017
     var rpm = 200;
     ```
 
-3. <span data-ttu-id="de040-120">Имитированное устройство Node.js добавляет случайное приращение базовых значений данных с помощью функции **generateRandomIncrement**, определенной в файле remote_monitoring.js.</span><span class="sxs-lookup"><span data-stu-id="de040-120">The Node.js simulated device uses the **generateRandomIncrement** function in the remote_monitoring.js file to add a random increment to the base data values.</span></span> <span data-ttu-id="de040-121">Рандомизируйте значение **rpm** , добавив строку кода после существующего кода рандомизации следующим образом.</span><span class="sxs-lookup"><span data-stu-id="de040-121">Randomize the **rpm** value by adding a line of code after the existing randomizations as follows:</span></span>
+3. <span data-ttu-id="e0583-120">Hello Node.js имитированное устройство использует hello **generateRandomIncrement** функционировать в hello remote_monitoring.js файл tooadd toohello случайных приращения основные значения данных.</span><span class="sxs-lookup"><span data-stu-id="e0583-120">hello Node.js simulated device uses hello **generateRandomIncrement** function in hello remote_monitoring.js file tooadd a random increment toohello base data values.</span></span> <span data-ttu-id="e0583-121">Случайный выбор hello **rpm** значение, добавив строку кода после существующего метода рандомизации hello следующим образом:</span><span class="sxs-lookup"><span data-stu-id="e0583-121">Randomize hello **rpm** value by adding a line of code after hello existing randomizations as follows:</span></span>
 
     ```nodejs
     temperature += generateRandomIncrement();
@@ -62,7 +62,7 @@ ms.lasthandoff: 08/29/2017
     rpm += generateRandomIncrement();
     ```
 
-4. <span data-ttu-id="de040-122">Добавьте новое значение rpm в полезные данные JSON, которые устройство отправляет в центр IoT.</span><span class="sxs-lookup"><span data-stu-id="de040-122">Add the new rpm value to the JSON payload the device sends to IoT Hub:</span></span>
+4. <span data-ttu-id="e0583-122">Добавьте hello новый rpm значение toohello JSON полезных данных hello устройство отправляет tooIoT концентратора.</span><span class="sxs-lookup"><span data-stu-id="e0583-122">Add hello new rpm value toohello JSON payload hello device sends tooIoT Hub:</span></span>
 
     ```nodejs
     var data = JSON.stringify({
@@ -74,20 +74,20 @@ ms.lasthandoff: 08/29/2017
     });
     ```
 
-5. <span data-ttu-id="de040-123">Запустите имитацию устройства Node.js с помощью следующей команды.</span><span class="sxs-lookup"><span data-stu-id="de040-123">Run the Node.js simulated device using the following command:</span></span>
+5. <span data-ttu-id="e0583-123">Запустите имитированное устройство hello Node.js с помощью hello следующую команду:</span><span class="sxs-lookup"><span data-stu-id="e0583-123">Run hello Node.js simulated device using hello following command:</span></span>
 
     `node remote_monitoring.js`
 
-6. <span data-ttu-id="de040-124">Вы увидите новый тип данных телеметрии RPM на диаграмме на панели мониторинга.</span><span class="sxs-lookup"><span data-stu-id="de040-124">Observe the new RPM telemetry type that displays on the chart in the dashboard:</span></span>
+6. <span data-ttu-id="e0583-124">Изучите hello новый RPM телеметрии тип, который отображается на диаграмме hello в панели мониторинга hello:</span><span class="sxs-lookup"><span data-stu-id="e0583-124">Observe hello new RPM telemetry type that displays on hello chart in hello dashboard:</span></span>
 
-![Добавление значения оборотов в секунду на панель мониторинга][image3]
+![Добавление панели мониторинга toohello об/мин][image3]
 
 > [!NOTE]
-> <span data-ttu-id="de040-126">Может потребоваться отключить и снова включить устройство Node.js на странице **Устройства** на панели мониторинга, чтобы немедленно отобразить изменения.</span><span class="sxs-lookup"><span data-stu-id="de040-126">You may need to disable and then enable the Node.js device on the **Devices** page in the dashboard to see the change immediately.</span></span>
+> <span data-ttu-id="e0583-126">Может требуется toodisable и затем включите устройство Node.js hello hello **устройств** страницу изменения hello toosee мониторинга hello немедленно.</span><span class="sxs-lookup"><span data-stu-id="e0583-126">You may need toodisable and then enable hello Node.js device on hello **Devices** page in hello dashboard toosee hello change immediately.</span></span>
 
-## <a name="customize-the-dashboard-display"></a><span data-ttu-id="de040-127">Настройка отображения панели мониторинга</span><span class="sxs-lookup"><span data-stu-id="de040-127">Customize the dashboard display</span></span>
+## <a name="customize-hello-dashboard-display"></a><span data-ttu-id="e0583-127">Настройте отображение панели мониторинга hello</span><span class="sxs-lookup"><span data-stu-id="e0583-127">Customize hello dashboard display</span></span>
 
-<span data-ttu-id="de040-128">Сообщение **Device-Info** может содержать метаданные о данных телеметрии, которые устройство может отправлять в центр IoT.</span><span class="sxs-lookup"><span data-stu-id="de040-128">The **Device-Info** message can include metadata about the telemetry the device can send to IoT Hub.</span></span> <span data-ttu-id="de040-129">В этих метаданных могут быть указаны типы данных телеметрии, отправляемых устройством.</span><span class="sxs-lookup"><span data-stu-id="de040-129">This metadata can specify the telemetry types the device sends.</span></span> <span data-ttu-id="de040-130">Измените значение **deviceMetaData** в файле remote_monitoring.js, чтобы добавить определение **Telemetry** после определения **Commands**.</span><span class="sxs-lookup"><span data-stu-id="de040-130">Modify the **deviceMetaData** value in the remote_monitoring.js file to include a **Telemetry** definition following the **Commands** definition.</span></span> <span data-ttu-id="de040-131">Определение **Commands** показано в следующем фрагменте кода (не забудьте добавить `,` после определения **Commands**).</span><span class="sxs-lookup"><span data-stu-id="de040-131">The following code snippet shows the **Commands** definition (be sure to add a `,` after the **Commands** definition):</span></span>
+<span data-ttu-id="e0583-128">Hello **сведения об устройстве** сообщение может содержать метаданные о телеметрии hello hello устройство может отправлять tooIoT концентратора.</span><span class="sxs-lookup"><span data-stu-id="e0583-128">hello **Device-Info** message can include metadata about hello telemetry hello device can send tooIoT Hub.</span></span> <span data-ttu-id="e0583-129">Эти метаданные можно указать типы телеметрии hello, отправляемую hello устройства.</span><span class="sxs-lookup"><span data-stu-id="e0583-129">This metadata can specify hello telemetry types hello device sends.</span></span> <span data-ttu-id="e0583-130">Изменение hello **deviceMetaData** значения в файл tooinclude hello remote_monitoring.js **телеметрии** hello после определения **команды** определения.</span><span class="sxs-lookup"><span data-stu-id="e0583-130">Modify hello **deviceMetaData** value in hello remote_monitoring.js file tooinclude a **Telemetry** definition following hello **Commands** definition.</span></span> <span data-ttu-id="e0583-131">Hello следующий фрагмент кода показывает hello **команды** определение (быть убедиться, что tooadd `,` после hello **команды** определение):</span><span class="sxs-lookup"><span data-stu-id="e0583-131">hello following code snippet shows hello **Commands** definition (be sure tooadd a `,` after hello **Commands** definition):</span></span>
 
 ```nodejs
 'Commands': [{
@@ -119,10 +119,10 @@ ms.lasthandoff: 08/29/2017
 ```
 
 > [!NOTE]
-> <span data-ttu-id="de040-132">Решение для удаленного мониторинга проверяет соответствие регистра при сравнении определения метаданных с информацией в потоке данных телеметрии.</span><span class="sxs-lookup"><span data-stu-id="de040-132">The remote monitoring solution uses a case-insensitive match to compare the metadata definition with data in the telemetry stream.</span></span>
+> <span data-ttu-id="e0583-132">решение для удаленного мониторинга Hello используется определение метаданных hello toocompare сравнение без учета регистра с данными в потоке данных телеметрии hello.</span><span class="sxs-lookup"><span data-stu-id="e0583-132">hello remote monitoring solution uses a case-insensitive match toocompare hello metadata definition with data in hello telemetry stream.</span></span>
 
 
-<span data-ttu-id="de040-133">Добавление определения **Telemetry** , показанное в предыдущем фрагменте кода, не изменяет поведение панели мониторинга.</span><span class="sxs-lookup"><span data-stu-id="de040-133">Adding a **Telemetry** definition as shown in the preceding code snippet does not change the behavior of the dashboard.</span></span> <span data-ttu-id="de040-134">Тем не менее метаданные также могут содержать атрибут **DisplayName** для настройки отображения на панели мониторинга.</span><span class="sxs-lookup"><span data-stu-id="de040-134">However, the metadata can also include a **DisplayName** attribute to customize the display in the dashboard.</span></span> <span data-ttu-id="de040-135">Измените определение метаданных **Telemetry** , как показано во фрагменте кода ниже.</span><span class="sxs-lookup"><span data-stu-id="de040-135">Update the **Telemetry** metadata definition as shown in the following snippet:</span></span>
+<span data-ttu-id="e0583-133">Добавление **телеметрии** определения, как показано в предыдущем hello фрагмент кода hello поведение мониторинга hello не меняется.</span><span class="sxs-lookup"><span data-stu-id="e0583-133">Adding a **Telemetry** definition as shown in hello preceding code snippet does not change hello behavior of hello dashboard.</span></span> <span data-ttu-id="e0583-134">Тем не менее, может также включать метаданные hello **DisplayName** атрибута toocustomize hello, отображаются в панели мониторинга hello.</span><span class="sxs-lookup"><span data-stu-id="e0583-134">However, hello metadata can also include a **DisplayName** attribute toocustomize hello display in hello dashboard.</span></span> <span data-ttu-id="e0583-135">Обновление hello **телеметрии** определение метаданных, как показано в hello, следующий фрагмент кода:</span><span class="sxs-lookup"><span data-stu-id="e0583-135">Update hello **Telemetry** metadata definition as shown in hello following snippet:</span></span>
 
 ```nodejs
 'Telemetry': [
@@ -144,18 +144,18 @@ ms.lasthandoff: 08/29/2017
 ]
 ```
 
-<span data-ttu-id="de040-136">На следующем снимке экрана показано, как это изменение меняет легенду диаграммы на панели мониторинга.</span><span class="sxs-lookup"><span data-stu-id="de040-136">The following screenshot shows how this change modifies the chart legend on the dashboard:</span></span>
+<span data-ttu-id="e0583-136">Hello следующем снимке экрана показано это изменение изменение hello условные обозначения диаграммы на панели мониторинга hello:</span><span class="sxs-lookup"><span data-stu-id="e0583-136">hello following screenshot shows how this change modifies hello chart legend on hello dashboard:</span></span>
 
-![Настройка легенды диаграммы][image4]
+![Настройка условных обозначений диаграммы hello][image4]
 
 > [!NOTE]
-> <span data-ttu-id="de040-138">Может потребоваться отключить и снова включить устройство Node.js на странице **Устройства** на панели мониторинга, чтобы немедленно отобразить изменения.</span><span class="sxs-lookup"><span data-stu-id="de040-138">You may need to disable and then enable the Node.js device on the **Devices** page in the dashboard to see the change immediately.</span></span>
+> <span data-ttu-id="e0583-138">Может требуется toodisable и затем включите устройство Node.js hello hello **устройств** страницу изменения hello toosee мониторинга hello немедленно.</span><span class="sxs-lookup"><span data-stu-id="e0583-138">You may need toodisable and then enable hello Node.js device on hello **Devices** page in hello dashboard toosee hello change immediately.</span></span>
 
-## <a name="filter-the-telemetry-types"></a><span data-ttu-id="de040-139">Фильтрация типов данных телеметрии</span><span class="sxs-lookup"><span data-stu-id="de040-139">Filter the telemetry types</span></span>
+## <a name="filter-hello-telemetry-types"></a><span data-ttu-id="e0583-139">Фильтровать типы телеметрии hello</span><span class="sxs-lookup"><span data-stu-id="e0583-139">Filter hello telemetry types</span></span>
 
-<span data-ttu-id="de040-140">По умолчанию диаграмма на панели мониторинга отображает каждый ряд данных в потоке данных телеметрии.</span><span class="sxs-lookup"><span data-stu-id="de040-140">By default, the chart on the dashboard shows every data series in the telemetry stream.</span></span> <span data-ttu-id="de040-141">Можно использовать метаданные **Device-Info** , чтобы подавить вывод определенных типов данных телеметрии на диаграмме.</span><span class="sxs-lookup"><span data-stu-id="de040-141">You can use the **Device-Info** metadata to suppress the display of specific telemetry types on the chart.</span></span> 
+<span data-ttu-id="e0583-140">По умолчанию hello диаграммы на панели мониторинга hello отображает каждого ряда данных в потоке данных телеметрии hello.</span><span class="sxs-lookup"><span data-stu-id="e0583-140">By default, hello chart on hello dashboard shows every data series in hello telemetry stream.</span></span> <span data-ttu-id="e0583-141">Можно использовать hello **сведения об устройстве** toosuppress метаданных hello Отображение типов определенной телеметрии на диаграмме hello.</span><span class="sxs-lookup"><span data-stu-id="e0583-141">You can use hello **Device-Info** metadata toosuppress hello display of specific telemetry types on hello chart.</span></span> 
 
-<span data-ttu-id="de040-142">Чтобы на диаграмме отображались только данные телеметрии температуры и влажности, опустите **ExternalTemperature** в метаданных **Telemetry** для **Device-Info**, как показано ниже.</span><span class="sxs-lookup"><span data-stu-id="de040-142">To make the chart show only Temperature and Humidity telemetry, omit **ExternalTemperature** from the **Device-Info** **Telemetry** metadata as follows:</span></span>
+<span data-ttu-id="e0583-142">Диаграмма hello toomake Показать только температуры и влажности телеметрии, опустить **ExternalTemperature** из hello **сведения об устройстве** **телеметрии** метаданных следующим образом:</span><span class="sxs-lookup"><span data-stu-id="e0583-142">toomake hello chart show only Temperature and Humidity telemetry, omit **ExternalTemperature** from hello **Device-Info** **Telemetry** metadata as follows:</span></span>
 
 ```nodejs
 'Telemetry': [
@@ -177,22 +177,22 @@ ms.lasthandoff: 08/29/2017
 ]
 ```
 
-<span data-ttu-id="de040-143">**Outdoor Temperature** (Наружная температура) больше не отображается на диаграмме.</span><span class="sxs-lookup"><span data-stu-id="de040-143">The **Outdoor Temperature** no longer displays on the chart:</span></span>
+<span data-ttu-id="e0583-143">Hello **наружной температуры** больше не отображается на диаграмме hello:</span><span class="sxs-lookup"><span data-stu-id="e0583-143">hello **Outdoor Temperature** no longer displays on hello chart:</span></span>
 
-![Фильтрация данных телеметрии на панели мониторинга][image5]
+![Данные телеметрии hello фильтра на панели мониторинга hello][image5]
 
-<span data-ttu-id="de040-145">Это изменение влияет только на отображение диаграммы.</span><span class="sxs-lookup"><span data-stu-id="de040-145">This change only affects the chart display.</span></span> <span data-ttu-id="de040-146">Значения данных **ExternalTemperature** по-прежнему сохраняются и остаются доступными для внутренней обработки.</span><span class="sxs-lookup"><span data-stu-id="de040-146">The **ExternalTemperature** data values are still stored and made available for any backend processing.</span></span>
+<span data-ttu-id="e0583-145">Это изменение влияет только на отображение диаграммы hello.</span><span class="sxs-lookup"><span data-stu-id="e0583-145">This change only affects hello chart display.</span></span> <span data-ttu-id="e0583-146">Hello **ExternalTemperature** значение данных по-прежнему сохраняются и становятся доступными для обработки базы данных.</span><span class="sxs-lookup"><span data-stu-id="e0583-146">hello **ExternalTemperature** data values are still stored and made available for any backend processing.</span></span>
 
 > [!NOTE]
-> <span data-ttu-id="de040-147">Может потребоваться отключить и снова включить устройство Node.js на странице **Устройства** на панели мониторинга, чтобы немедленно отобразить изменения.</span><span class="sxs-lookup"><span data-stu-id="de040-147">You may need to disable and then enable the Node.js device on the **Devices** page in the dashboard to see the change immediately.</span></span>
+> <span data-ttu-id="e0583-147">Может требуется toodisable и затем включите устройство Node.js hello hello **устройств** страницу изменения hello toosee мониторинга hello немедленно.</span><span class="sxs-lookup"><span data-stu-id="e0583-147">You may need toodisable and then enable hello Node.js device on hello **Devices** page in hello dashboard toosee hello change immediately.</span></span>
 
-## <a name="handle-errors"></a><span data-ttu-id="de040-148">Обработка ошибок</span><span class="sxs-lookup"><span data-stu-id="de040-148">Handle errors</span></span>
+## <a name="handle-errors"></a><span data-ttu-id="e0583-148">Обработка ошибок</span><span class="sxs-lookup"><span data-stu-id="e0583-148">Handle errors</span></span>
 
-<span data-ttu-id="de040-149">Чтобы поток данных можно было отобразить на диаграмме, его значение **Type** в метаданных **Device-Info** должно соответствовать типу данных значений телеметрии.</span><span class="sxs-lookup"><span data-stu-id="de040-149">For a data stream to display on the chart, its **Type** in the **Device-Info** metadata must match the data type of the telemetry values.</span></span> <span data-ttu-id="de040-150">Например, если в метаданных указано, что **Type** данных влажности — **int**, а в потоке данных телеметрии обнаружен тип **double**, то данные телеметрии влажности не отображаются на диаграмме.</span><span class="sxs-lookup"><span data-stu-id="de040-150">For example, if the metadata specifies that the **Type** of humidity data is **int** and a **double** is found in the telemetry stream then the humidity telemetry does not display on the chart.</span></span> <span data-ttu-id="de040-151">Тем не менее значения **Humidity** по-прежнему сохраняются и остаются доступными для внутренней обработки.</span><span class="sxs-lookup"><span data-stu-id="de040-151">However, the **Humidity** values are still stored and made available for any back-end processing.</span></span>
+<span data-ttu-id="e0583-149">Для toodisplay потока данных на диаграмме hello его **тип** в hello **сведения об устройстве** метаданных должен соответствовать типу данных hello hello телеметрии значений.</span><span class="sxs-lookup"><span data-stu-id="e0583-149">For a data stream toodisplay on hello chart, its **Type** in hello **Device-Info** metadata must match hello data type of hello telemetry values.</span></span> <span data-ttu-id="e0583-150">Например, если hello метаданные указывают, hello **тип** влажности является данных **int** и **двойные** найден в потоке данных телеметрии hello телеметрии влажности hello не не отображать на диаграмме hello.</span><span class="sxs-lookup"><span data-stu-id="e0583-150">For example, if hello metadata specifies that hello **Type** of humidity data is **int** and a **double** is found in hello telemetry stream then hello humidity telemetry does not display on hello chart.</span></span> <span data-ttu-id="e0583-151">Здравствуйте, однако **влажность** значения по-прежнему сохраняются и становятся доступными для внутренней обработки.</span><span class="sxs-lookup"><span data-stu-id="e0583-151">However, hello **Humidity** values are still stored and made available for any back-end processing.</span></span>
 
-## <a name="next-steps"></a><span data-ttu-id="de040-152">Дальнейшие действия</span><span class="sxs-lookup"><span data-stu-id="de040-152">Next steps</span></span>
+## <a name="next-steps"></a><span data-ttu-id="e0583-152">Дальнейшие действия</span><span class="sxs-lookup"><span data-stu-id="e0583-152">Next steps</span></span>
 
-<span data-ttu-id="de040-153">Теперь, когда вы узнали, как использовать динамическую телеметрию, ознакомьтесь также со статьей о том, как с помощью предварительно настроенных решений применять сведения об устройстве: [Метаданные сведений об устройстве в предварительно настроенном решении для удаленного мониторинга][lnk-devinfo].</span><span class="sxs-lookup"><span data-stu-id="de040-153">Now that you've seen how to use dynamic telemetry, you can learn more about how the preconfigured solutions use device information: [Device information metadata in the remote monitoring preconfigured solution][lnk-devinfo].</span></span>
+<span data-ttu-id="e0583-153">Теперь, когда вы знаете, как toouse динамические данные телеметрии, можно узнать больше о том, как hello предварительно настроенных решений использовать сведения об устройстве: [метаданных сведения устройства в удаленный мониторинг hello предварительно настроенное решение] [ lnk-devinfo].</span><span class="sxs-lookup"><span data-stu-id="e0583-153">Now that you've seen how toouse dynamic telemetry, you can learn more about how hello preconfigured solutions use device information: [Device information metadata in hello remote monitoring preconfigured solution][lnk-devinfo].</span></span>
 
 [lnk-devinfo]: iot-suite-remote-monitoring-device-info.md
 

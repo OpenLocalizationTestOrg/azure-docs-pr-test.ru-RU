@@ -1,11 +1,11 @@
 # Обзор
 ## [Azure и Интернет вещей](iot-suite-what-is-azure-iot.md)
 ## [Что такое IoT Suite?](iot-suite-overview.md)
-## [Что такое предварительно настроенные решения?](iot-suite-what-are-preconfigured-solutions.md)
+## [Что такое hello предварительно настроенных решений](iot-suite-what-are-preconfigured-solutions.md)
 
 
 # Начало работы
-## [Приступая к работе с предварительно настроенными решениями](iot-suite-getstarted-preconfigured-solutions.md)
+## [Приступая к работе с hello предварительно настроенных решений](iot-suite-getstarted-preconfigured-solutions.md)
 ## [Разрешения для azureiotsuite.com](iot-suite-permissions.md)
 ## [Обзор решения для диагностического обслуживания](iot-suite-predictive-overview.md)
 ## [Общие сведения о решении подключенного производства](iot-suite-connected-factory-overview.md)
@@ -30,11 +30,11 @@
 ### [C в Windows](iot-suite-connecting-devices.md)
 ### [C в Linux](iot-suite-connecting-devices-linux.md)
 ### [Node.js](iot-suite-connecting-devices-node.md)
-## [Подключение приложения логики к решению для удаленного мониторинга](iot-suite-logic-apps-tutorial.md)
+## [Подключение приложения логики toohello удаленного мониторинга решения](iot-suite-logic-apps-tutorial.md)
 ## [Настройка предварительно настроенного решения](iot-suite-guidance-on-customizing-preconfigured-solutions.md)
-## [Использование динамической телеметрии с решением для удаленного мониторинга](iot-suite-dynamic-telemetry.md)
-## [Создание настраиваемого правила в решении для удаленного мониторинга](iot-suite-custom-rule.md)
-## [Сведения об устройстве в решении для удаленного мониторинга](iot-suite-remote-monitoring-device-info.md)
+## [Используйте динамические данные телеметрии с hello удаленного решением для мониторинга](iot-suite-dynamic-telemetry.md)
+## [Создание пользовательского правила в решение для удаленного мониторинга hello](iot-suite-custom-rule.md)
+## [Сведения об устройстве в hello удаленного решением для мониторинга](iot-suite-remote-monitoring-device-info.md)
 ## [Развертывание шлюза для подключенного производства](iot-suite-connected-factory-gateway-deployment.md)
 ## [Настройка подключенной фабрики](iot-suite-connected-factory-customize.md)
 
@@ -42,7 +42,7 @@
 ## [Архитектура безопасности](iot-security-architecture.md)
 ## [Рекомендации по обеспечению безопасности](iot-security-best-practices.md)
 ## [Защита развернутой службы Интернета вещей](iot-suite-security-deployment.md)
-## [Все аспекты безопасности](securing-iot-ground-up.md)
+## [Безопасности из hello основание,](securing-iot-ground-up.md)
 
 # Сопутствующие материалы
 ## [Анализ потока](/azure/stream-analytics/)

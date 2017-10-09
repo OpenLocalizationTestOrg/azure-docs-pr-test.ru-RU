@@ -1,6 +1,6 @@
 ---
-title: "Несколько виртуальных IP-адресов для облачной службы"
-description: "Обзор данных об использовании нескольких виртуальных IP-адресов и установке нескольких виртуальных IP-адресов для облачной службы"
+title: "aaaMutiple виртуальные IP-адреса для облачной службы"
+description: "Общие сведения о multiVIP и как tooset несколько виртуальных IP-адресов в облачной службе"
 services: load-balancer
 documentationcenter: na
 author: kumudd
@@ -13,74 +13,74 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/24/2016
 ms.author: kumud
-ms.openlocfilehash: f40e0501eed8d5f296e7c79d8a35705a695ae6fd
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: b3e0f2b24968cb75a7064484a09ffe94505bb70b
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="configure-multiple-vips-for-a-cloud-service"></a><span data-ttu-id="aad39-103">Настройка нескольких виртуальных IP-адресов для облачной службы</span><span class="sxs-lookup"><span data-stu-id="aad39-103">Configure multiple VIPs for a cloud service</span></span>
+# <a name="configure-multiple-vips-for-a-cloud-service"></a><span data-ttu-id="4b27f-103">Настройка нескольких виртуальных IP-адресов для облачной службы</span><span class="sxs-lookup"><span data-stu-id="4b27f-103">Configure multiple VIPs for a cloud service</span></span>
 
-<span data-ttu-id="aad39-104">Доступ к облачным службам Azure через общедоступное подключение к Интернету можно получить с помощью IP-адреса, предоставляемого Azure.</span><span class="sxs-lookup"><span data-stu-id="aad39-104">You can access Azure cloud services over the public Internet by using an IP address provided by Azure.</span></span> <span data-ttu-id="aad39-105">Этот общедоступный IP-адрес называется виртуальным IP-адресом, так как он привязан к подсистеме балансировки нагрузки Azure, а не к экземплярам виртуальной машины в облачной службе.</span><span class="sxs-lookup"><span data-stu-id="aad39-105">This public IP address is referred to as a VIP (virtual IP) since it is linked to the Azure load balancer, and not the Virtual Machine (VM) instances within the cloud service.</span></span> <span data-ttu-id="aad39-106">Доступ к любому экземпляру виртуальной машины в облачной службе можно получить с помощью одного виртуального IP-адреса.</span><span class="sxs-lookup"><span data-stu-id="aad39-106">You can access any VM instance within a cloud service by using a single VIP.</span></span>
+<span data-ttu-id="4b27f-104">Облачные службы Azure для доступа к hello общедоступный Интернет с помощью IP-адрес, предоставленный службой Azure.</span><span class="sxs-lookup"><span data-stu-id="4b27f-104">You can access Azure cloud services over hello public Internet by using an IP address provided by Azure.</span></span> <span data-ttu-id="4b27f-105">Этот общедоступный IP-адрес является ссылка tooas виртуального IP-адреса (виртуальный IP-адрес), так как он связан toohello Azure подсистемы балансировки нагрузки, а не hello в облачную службу hello экземпляров виртуальной машины (VM).</span><span class="sxs-lookup"><span data-stu-id="4b27f-105">This public IP address is referred tooas a VIP (virtual IP) since it is linked toohello Azure load balancer, and not hello Virtual Machine (VM) instances within hello cloud service.</span></span> <span data-ttu-id="4b27f-106">Доступ к любому экземпляру виртуальной машины в облачной службе можно получить с помощью одного виртуального IP-адреса.</span><span class="sxs-lookup"><span data-stu-id="4b27f-106">You can access any VM instance within a cloud service by using a single VIP.</span></span>
 
-<span data-ttu-id="aad39-107">Однако существуют случаи, в которых может потребоваться несколько виртуальных IP-адресов в качестве точки входа для одной и той же облачной службы.</span><span class="sxs-lookup"><span data-stu-id="aad39-107">However, there are scenarios in which you may need more than one VIP as an entry point to the same cloud service.</span></span> <span data-ttu-id="aad39-108">Например, в вашей облачной службе может размещаться несколько веб-сайтов, которые требуют подключения по протоколу SSL с помощью порта 443 по умолчанию, так как каждый из веб-сайтов должен быть размещен для отдельного пользователя или клиента.</span><span class="sxs-lookup"><span data-stu-id="aad39-108">For instance, your cloud service may host multiple websites that require SSL connectivity using the default port of 443, as each site is hosted for a different customer, or tenant.</span></span> <span data-ttu-id="aad39-109">В этом случае необходим отдельный общедоступный IP-адрес для каждого веб-сайта.</span><span class="sxs-lookup"><span data-stu-id="aad39-109">In this scenario, you need to have a different public facing IP address for each website.</span></span> <span data-ttu-id="aad39-110">На схеме ниже показан типичный мультитенантный веб-хостинг, требующий несколько сертификатов SSL для одного и того же общедоступного порта.</span><span class="sxs-lookup"><span data-stu-id="aad39-110">The diagram below illustrates a typical multi-tenant web hosting with a need for multiple SSL certificates on the same public port.</span></span>
+<span data-ttu-id="4b27f-107">Однако существуют сценарии, в которых может потребоваться более одного виртуального IP-адреса в качестве точки входа toohello же облачной службе.</span><span class="sxs-lookup"><span data-stu-id="4b27f-107">However, there are scenarios in which you may need more than one VIP as an entry point toohello same cloud service.</span></span> <span data-ttu-id="4b27f-108">Например облачной службы может содержать несколько веб-сайтов, требующих подключения SSL, с использованием порта 443, по умолчанию hello, как каждый сайт размещается для другого клиента или клиента.</span><span class="sxs-lookup"><span data-stu-id="4b27f-108">For instance, your cloud service may host multiple websites that require SSL connectivity using hello default port of 443, as each site is hosted for a different customer, or tenant.</span></span> <span data-ttu-id="4b27f-109">В этом случае необходимо toohave другой открытый IP-адреса для каждого веб-сайта.</span><span class="sxs-lookup"><span data-stu-id="4b27f-109">In this scenario, you need toohave a different public facing IP address for each website.</span></span> <span data-ttu-id="4b27f-110">Hello схеме ниже показан типичный несколькими клиентами размещения веб-сайтов с необходимостью несколько SSL-сертификатов на hello же открытый порт.</span><span class="sxs-lookup"><span data-stu-id="4b27f-110">hello diagram below illustrates a typical multi-tenant web hosting with a need for multiple SSL certificates on hello same public port.</span></span>
 
 ![Сценарий SSL с несколькими виртуальными IP-адресами](./media/load-balancer-multivip/Figure1.png)
 
-<span data-ttu-id="aad39-112">В приведенном выше примере все виртуальные IP-адреса используют один и тот же общедоступный порт (443), а трафик перенаправляется на одну или несколько виртуальных машин с балансировкой нагрузки по уникальному частному порту для внутреннего IP-адреса облачной службы, в которой размещены все веб-сайты.</span><span class="sxs-lookup"><span data-stu-id="aad39-112">In the example above, all VIPs use the same public port (443) and traffic is redirected to one or more load balanced VMs on a unique private port for the internal IP address of the cloud service hosting all the websites.</span></span>
+<span data-ttu-id="4b27f-112">В примере hello выше, все виртуальные IP-адреса используйте hello же открытый порт (443) и трафик перенаправленный tooone или более нагрузки взаимосвязанных виртуальных машин на уникальный частный порт для hello внутренний IP-адрес облачной службы hello размещение всех hello веб-сайтов.</span><span class="sxs-lookup"><span data-stu-id="4b27f-112">In hello example above, all VIPs use hello same public port (443) and traffic is redirected tooone or more load balanced VMs on a unique private port for hello internal IP address of hello cloud service hosting all hello websites.</span></span>
 
 > [!NOTE]
-> <span data-ttu-id="aad39-113">Другой вариант использования нескольких виртуальных IP-адресов заключается в размещении нескольких прослушивателей группы доступности SQL AlwaysOn в одном и том же наборе виртуальных машин.</span><span class="sxs-lookup"><span data-stu-id="aad39-113">Another situation requiring the use the multiple VIPs is hosting multiple SQL AlwaysOn availability group listeners on the same set of Virtual Machines.</span></span>
+> <span data-ttu-id="4b27f-113">Другой используйте hello требующих hello ситуации несколько виртуальных IP-адресов размещается несколько прослушивателей группы доступности SQL AlwaysOn в hello же набор виртуальных машин.</span><span class="sxs-lookup"><span data-stu-id="4b27f-113">Another situation requiring hello use hello multiple VIPs is hosting multiple SQL AlwaysOn availability group listeners on hello same set of Virtual Machines.</span></span>
 
-<span data-ttu-id="aad39-114">Виртуальные IP-адреса динамичны по умолчанию. Это означает, что фактический IP-адрес, назначенный облачной службе, может со временем измениться.</span><span class="sxs-lookup"><span data-stu-id="aad39-114">VIPs are dynamic by default, which means that the actual IP address assigned to the cloud service may change over time.</span></span> <span data-ttu-id="aad39-115">Чтобы избежать этого, можно зарезервировать виртуальный IP-адрес для службы.</span><span class="sxs-lookup"><span data-stu-id="aad39-115">To prevent that from happening, you can reserve a VIP for your service.</span></span> <span data-ttu-id="aad39-116">Дополнительную информацию о зарезервированных виртуальных IP-адресах см. в статье [Обзор зарезервированных IP-адресов](../virtual-network/virtual-networks-reserved-public-ip.md).</span><span class="sxs-lookup"><span data-stu-id="aad39-116">To learn more about reserved VIPs, see [Reserved Public IP](../virtual-network/virtual-networks-reserved-public-ip.md).</span></span>
+<span data-ttu-id="4b27f-114">Виртуальные IP-адреса являются динамическими по умолчанию, это означает, что со временем может меняться hello фактических IP-адрес toohello облачной службы.</span><span class="sxs-lookup"><span data-stu-id="4b27f-114">VIPs are dynamic by default, which means that hello actual IP address assigned toohello cloud service may change over time.</span></span> <span data-ttu-id="4b27f-115">tooprevent, ситуации, вы можете зарезервировать VIP-адрес для службы.</span><span class="sxs-lookup"><span data-stu-id="4b27f-115">tooprevent that from happening, you can reserve a VIP for your service.</span></span> <span data-ttu-id="4b27f-116">toolearn Дополнительные сведения о зарезервированных виртуальных IP-адресов в разделе [зарезервированный общедоступный IP-адрес](../virtual-network/virtual-networks-reserved-public-ip.md).</span><span class="sxs-lookup"><span data-stu-id="4b27f-116">toolearn more about reserved VIPs, see [Reserved Public IP](../virtual-network/virtual-networks-reserved-public-ip.md).</span></span>
 
 > [!NOTE]
-> <span data-ttu-id="aad39-117">Информацию о ценах на виртуальные IP-адреса и зарезервированные IP-адреса см. на странице [Цены на IP-адреса](https://azure.microsoft.com/pricing/details/ip-addresses/).</span><span class="sxs-lookup"><span data-stu-id="aad39-117">Please see [IP Address pricing](https://azure.microsoft.com/pricing/details/ip-addresses/) for information on pricing on VIPs and reserved IPs.</span></span>
+> <span data-ttu-id="4b27f-117">Информацию о ценах на виртуальные IP-адреса и зарезервированные IP-адреса см. на странице [Цены на IP-адреса](https://azure.microsoft.com/pricing/details/ip-addresses/).</span><span class="sxs-lookup"><span data-stu-id="4b27f-117">Please see [IP Address pricing](https://azure.microsoft.com/pricing/details/ip-addresses/) for information on pricing on VIPs and reserved IPs.</span></span>
 
-<span data-ttu-id="aad39-118">Вы можете использовать PowerShell для проверки виртуальных IP-адресов, используемых облачной службой, а также добавления и удаления виртуальных IP-адресов, привязки виртуального IP-адреса к конечной точке и настройки балансировки нагрузки для конкретного виртуального IP-адреса.</span><span class="sxs-lookup"><span data-stu-id="aad39-118">You can use PowerShell to verify the VIPs used by your cloud services, as well as add and remove VIPs, associate a VIP to an endpoint, and configure load balancing on a specific VIP.</span></span>
+<span data-ttu-id="4b27f-118">Можно использовать PowerShell tooverify hello виртуальные IP-адреса, используемые облачных служб, а также добавить и удалить виртуальные IP-адреса, связать конечную точку tooan виртуального IP-адреса и Настройка балансировки нагрузки в конкретных виртуальных IP-адресов.</span><span class="sxs-lookup"><span data-stu-id="4b27f-118">You can use PowerShell tooverify hello VIPs used by your cloud services, as well as add and remove VIPs, associate a VIP tooan endpoint, and configure load balancing on a specific VIP.</span></span>
 
-## <a name="limitations"></a><span data-ttu-id="aad39-119">Ограничения</span><span class="sxs-lookup"><span data-stu-id="aad39-119">Limitations</span></span>
+## <a name="limitations"></a><span data-ttu-id="4b27f-119">Ограничения</span><span class="sxs-lookup"><span data-stu-id="4b27f-119">Limitations</span></span>
 
-<span data-ttu-id="aad39-120">В настоящее время функциональность нескольких виртуальных IP-адресов ограничена следующими сценариями.</span><span class="sxs-lookup"><span data-stu-id="aad39-120">At this time, Multi VIP functionality is limited to the following scenarios:</span></span>
+<span data-ttu-id="4b27f-120">В настоящее время функциональные возможности нескольких виртуальных IP-адресов является ограниченной toohello следующие сценарии:</span><span class="sxs-lookup"><span data-stu-id="4b27f-120">At this time, Multi VIP functionality is limited toohello following scenarios:</span></span>
 
-* <span data-ttu-id="aad39-121">**Только IaaS**.</span><span class="sxs-lookup"><span data-stu-id="aad39-121">**IaaS only**.</span></span> <span data-ttu-id="aad39-122">Вы можете включить несколько виртуальных IP-адресов для облачных служб, содержащих виртуальные машины.</span><span class="sxs-lookup"><span data-stu-id="aad39-122">You can only enable Multi VIP for cloud services that contain VMs.</span></span> <span data-ttu-id="aad39-123">Нельзя использовать несколько виртуальных IP-адресов в сценариях PaaS с экземплярами ролей.</span><span class="sxs-lookup"><span data-stu-id="aad39-123">You cannot use Multi VIP in PaaS scenarios with role instances.</span></span>
-* <span data-ttu-id="aad39-124">**Только PowerShell**.</span><span class="sxs-lookup"><span data-stu-id="aad39-124">**PowerShell only**.</span></span> <span data-ttu-id="aad39-125">Несколькими виртуальными IP-адресами можно управлять только с помощью PowerShell.</span><span class="sxs-lookup"><span data-stu-id="aad39-125">You can only manage Multi VIP by using PowerShell.</span></span>
+* <span data-ttu-id="4b27f-121">**Только IaaS**.</span><span class="sxs-lookup"><span data-stu-id="4b27f-121">**IaaS only**.</span></span> <span data-ttu-id="4b27f-122">Вы можете включить несколько виртуальных IP-адресов для облачных служб, содержащих виртуальные машины.</span><span class="sxs-lookup"><span data-stu-id="4b27f-122">You can only enable Multi VIP for cloud services that contain VMs.</span></span> <span data-ttu-id="4b27f-123">Нельзя использовать несколько виртуальных IP-адресов в сценариях PaaS с экземплярами ролей.</span><span class="sxs-lookup"><span data-stu-id="4b27f-123">You cannot use Multi VIP in PaaS scenarios with role instances.</span></span>
+* <span data-ttu-id="4b27f-124">**Только PowerShell**.</span><span class="sxs-lookup"><span data-stu-id="4b27f-124">**PowerShell only**.</span></span> <span data-ttu-id="4b27f-125">Несколькими виртуальными IP-адресами можно управлять только с помощью PowerShell.</span><span class="sxs-lookup"><span data-stu-id="4b27f-125">You can only manage Multi VIP by using PowerShell.</span></span>
 
-<span data-ttu-id="aad39-126">Эти ограничения являются временными и могут измениться в любое время.</span><span class="sxs-lookup"><span data-stu-id="aad39-126">These limitations are temporary, and may change at any time.</span></span> <span data-ttu-id="aad39-127">Обязательно вернитесь на эту страницу, чтобы проверить будущие изменения.</span><span class="sxs-lookup"><span data-stu-id="aad39-127">Make sure to revisit this page to verify future changes.</span></span>
+<span data-ttu-id="4b27f-126">Эти ограничения являются временными и могут измениться в любое время.</span><span class="sxs-lookup"><span data-stu-id="4b27f-126">These limitations are temporary, and may change at any time.</span></span> <span data-ttu-id="4b27f-127">Убедитесь, что toorevisit tooverify будущие изменения этой страницы.</span><span class="sxs-lookup"><span data-stu-id="4b27f-127">Make sure toorevisit this page tooverify future changes.</span></span>
 
-## <a name="how-to-add-a-vip-to-a-cloud-service"></a><span data-ttu-id="aad39-128">Как добавить виртуальный IP-адрес в облачную службу</span><span class="sxs-lookup"><span data-stu-id="aad39-128">How to add a VIP to a cloud service</span></span>
-<span data-ttu-id="aad39-129">Чтобы добавить виртуальный IP-адрес в службу, выполните следующую команду PowerShell:</span><span class="sxs-lookup"><span data-stu-id="aad39-129">To add a VIP to your service, run the following PowerShell command:</span></span>
+## <a name="how-tooadd-a-vip-tooa-cloud-service"></a><span data-ttu-id="4b27f-128">Как tooa tooadd VIP облачной службы</span><span class="sxs-lookup"><span data-stu-id="4b27f-128">How tooadd a VIP tooa cloud service</span></span>
+<span data-ttu-id="4b27f-129">tooyour службе tooadd VIP-адрес, выполните следующую команду PowerShell hello:</span><span class="sxs-lookup"><span data-stu-id="4b27f-129">tooadd a VIP tooyour service, run hello following PowerShell command:</span></span>
 
 ```powershell
 Add-AzureVirtualIP -VirtualIPName Vip3 -ServiceName myService
 ```
 
-<span data-ttu-id="aad39-130">Эта команда отображает примерно такой результат:</span><span class="sxs-lookup"><span data-stu-id="aad39-130">This command displays a result similar to the following sample:</span></span>
+<span data-ttu-id="4b27f-130">Эта команда выводит примерно toohello результат, следующий пример:</span><span class="sxs-lookup"><span data-stu-id="4b27f-130">This command displays a result similar toohello following sample:</span></span>
 
     OperationDescription OperationId                          OperationStatus
     -------------------- -----------                          ---------------
     Add-AzureVirtualIP   4bd7b638-d2e7-216f-ba38-5221233d70ce Succeeded
 
-## <a name="how-to-remove-a-vip-from-a-cloud-service"></a><span data-ttu-id="aad39-131">Как удалить виртуальный IP-адрес из облачной службы</span><span class="sxs-lookup"><span data-stu-id="aad39-131">How to remove a VIP from a cloud service</span></span>
-<span data-ttu-id="aad39-132">Чтобы удалить виртуальный IP-адрес, добавленный в службу в примере выше, выполните следующую команду PowerShell:</span><span class="sxs-lookup"><span data-stu-id="aad39-132">To remove the VIP added to your service in the example above, run the following PowerShell command:</span></span>
+## <a name="how-tooremove-a-vip-from-a-cloud-service"></a><span data-ttu-id="4b27f-131">Как tooremove VIP-адрес из облачной службы</span><span class="sxs-lookup"><span data-stu-id="4b27f-131">How tooremove a VIP from a cloud service</span></span>
+<span data-ttu-id="4b27f-132">в примере hello выше выполнения hello следующую команду PowerShell hello tooremove виртуальных IP-адресов добавлены tooyour службы:</span><span class="sxs-lookup"><span data-stu-id="4b27f-132">tooremove hello VIP added tooyour service in hello example above, run hello following PowerShell command:</span></span>
 
 ```powershell
 Remove-AzureVirtualIP -VirtualIPName Vip3 -ServiceName myService
 ```
 
 > [!IMPORTANT]
-> <span data-ttu-id="aad39-133">Виртуальный IP-адрес можно удалить только в том случае, если с ним не связаны конечные точки.</span><span class="sxs-lookup"><span data-stu-id="aad39-133">You can only remove a VIP if it has no endpoints associated to it.</span></span>
+> <span data-ttu-id="4b27f-133">VIP-адрес можно удалить только в том случае, если у него есть не tooit конечных точек, связанных.</span><span class="sxs-lookup"><span data-stu-id="4b27f-133">You can only remove a VIP if it has no endpoints associated tooit.</span></span>
 
 
-## <a name="how-to-retrieve-vip-information-from-a-cloud-service"></a><span data-ttu-id="aad39-134">Как получить данные о виртуальном IP-адресе из облачной службы</span><span class="sxs-lookup"><span data-stu-id="aad39-134">How to retrieve VIP information from a Cloud Service</span></span>
-<span data-ttu-id="aad39-135">Чтобы получить виртуальный IP-адрес, связанный с облачной службой, выполните следующий сценарий PowerShell:</span><span class="sxs-lookup"><span data-stu-id="aad39-135">To retrieve the VIPs associated with a cloud service, run the following PowerShell script:</span></span>
+## <a name="how-tooretrieve-vip-information-from-a-cloud-service"></a><span data-ttu-id="4b27f-134">Каким образом сведения tooretrieve виртуальных IP-адресов из облачной службы</span><span class="sxs-lookup"><span data-stu-id="4b27f-134">How tooretrieve VIP information from a Cloud Service</span></span>
+<span data-ttu-id="4b27f-135">hello tooretrieve виртуальные IP-адреса связанный с облачной службой, запустите следующий сценарий PowerShell hello:</span><span class="sxs-lookup"><span data-stu-id="4b27f-135">tooretrieve hello VIPs associated with a cloud service, run hello following PowerShell script:</span></span>
 
 ```powershell
 $deployment = Get-AzureDeployment -ServiceName myService
 $deployment.VirtualIPs
 ```
 
-<span data-ttu-id="aad39-136">Сценарий отображает примерно такой результат:</span><span class="sxs-lookup"><span data-stu-id="aad39-136">The script displays a result similar to the following sample:</span></span>
+<span data-ttu-id="4b27f-136">сценарий Hello отображает результат аналогичные toohello, следующий пример:</span><span class="sxs-lookup"><span data-stu-id="4b27f-136">hello script displays a result similar toohello following sample:</span></span>
 
     Address         : 191.238.74.148
     IsDnsProgrammed : True
@@ -100,17 +100,17 @@ $deployment.VirtualIPs
     ReservedIPName  :
     ExtensionData   :
 
-<span data-ttu-id="aad39-137">В этом примере облачная служба имеет 3 виртуальных IP-адреса:</span><span class="sxs-lookup"><span data-stu-id="aad39-137">In this example, the cloud service has 3 VIPs:</span></span>
+<span data-ttu-id="4b27f-137">В этом примере hello облачная служба имеет 3 виртуальные IP-адреса:</span><span class="sxs-lookup"><span data-stu-id="4b27f-137">In this example, hello cloud service has 3 VIPs:</span></span>
 
-* <span data-ttu-id="aad39-138">**Vip1** — виртуальный IP-адрес по умолчанию, так как для параметра IsDnsProgrammedName задано значение true;</span><span class="sxs-lookup"><span data-stu-id="aad39-138">**Vip1** is the default VIP, you know that because the value for IsDnsProgrammedName is set to true.</span></span>
-* <span data-ttu-id="aad39-139">**Vip2** и **Vip3** не используются, так как они не имеют IP-адресов.</span><span class="sxs-lookup"><span data-stu-id="aad39-139">**Vip2** and **Vip3** are not used as they do not have any IP addresses.</span></span> <span data-ttu-id="aad39-140">Они будут использоваться, только если связать конечную точку с виртуальным IP-адресом.</span><span class="sxs-lookup"><span data-stu-id="aad39-140">They will only be used if you associate an endpoint to the VIP.</span></span>
+* <span data-ttu-id="4b27f-138">**Vip1** Здравствуйте виртуальных IP-адресов по умолчанию, вам известно, что поскольку hello для IsDnsProgrammedName значение tootrue.</span><span class="sxs-lookup"><span data-stu-id="4b27f-138">**Vip1** is hello default VIP, you know that because hello value for IsDnsProgrammedName is set tootrue.</span></span>
+* <span data-ttu-id="4b27f-139">**Vip2** и **Vip3** не используются, так как они не имеют IP-адресов.</span><span class="sxs-lookup"><span data-stu-id="4b27f-139">**Vip2** and **Vip3** are not used as they do not have any IP addresses.</span></span> <span data-ttu-id="4b27f-140">Они будут использоваться только в том случае, если вы связываете конечной точки toohello виртуальных IP-адресов.</span><span class="sxs-lookup"><span data-stu-id="4b27f-140">They will only be used if you associate an endpoint toohello VIP.</span></span>
 
 > [!NOTE]
-> <span data-ttu-id="aad39-141">За использование дополнительных виртуальных IP-адресов в подписке начнет взиматься плата, когда они будут связаны с конечной точкой.</span><span class="sxs-lookup"><span data-stu-id="aad39-141">Your subscription will only be charged for extra VIPs once they are associated with an endpoint.</span></span> <span data-ttu-id="aad39-142">Дополнительную информацию о ценах см. на странице [Цены на IP-адреса](https://azure.microsoft.com/pricing/details/ip-addresses/).</span><span class="sxs-lookup"><span data-stu-id="aad39-142">For more information on pricing, see [IP Address pricing](https://azure.microsoft.com/pricing/details/ip-addresses/).</span></span>
+> <span data-ttu-id="4b27f-141">За использование дополнительных виртуальных IP-адресов в подписке начнет взиматься плата, когда они будут связаны с конечной точкой.</span><span class="sxs-lookup"><span data-stu-id="4b27f-141">Your subscription will only be charged for extra VIPs once they are associated with an endpoint.</span></span> <span data-ttu-id="4b27f-142">Дополнительную информацию о ценах см. на странице [Цены на IP-адреса](https://azure.microsoft.com/pricing/details/ip-addresses/).</span><span class="sxs-lookup"><span data-stu-id="4b27f-142">For more information on pricing, see [IP Address pricing](https://azure.microsoft.com/pricing/details/ip-addresses/).</span></span>
 
-## <a name="how-to-associate-a-vip-to-an-endpoint"></a><span data-ttu-id="aad39-143">Как привязать виртуальный IP-адрес к конечной точке</span><span class="sxs-lookup"><span data-stu-id="aad39-143">How to associate a VIP to an endpoint</span></span>
+## <a name="how-tooassociate-a-vip-tooan-endpoint"></a><span data-ttu-id="4b27f-143">Как конечная точка tooan tooassociate VIP-адрес</span><span class="sxs-lookup"><span data-stu-id="4b27f-143">How tooassociate a VIP tooan endpoint</span></span>
 
-<span data-ttu-id="aad39-144">Чтобы связать виртуальный IP-адрес в облачной службе с конечной точкой, выполните следующую команду PowerShell:</span><span class="sxs-lookup"><span data-stu-id="aad39-144">To associate a VIP on a cloud service to an endpoint, run the following PowerShell command:</span></span>
+<span data-ttu-id="4b27f-144">tooassociate VIP-адрес в облаке tooan конечную точку службы, запустите следующую команду PowerShell hello:</span><span class="sxs-lookup"><span data-stu-id="4b27f-144">tooassociate a VIP on a cloud service tooan endpoint, run hello following PowerShell command:</span></span>
 
 ```powershell
 Get-AzureVM -ServiceName myService -Name myVM1 |
@@ -118,16 +118,16 @@ Get-AzureVM -ServiceName myService -Name myVM1 |
     Update-AzureVM
 ```
 
-<span data-ttu-id="aad39-145">Эта команда создает конечную точку, связанную с виртуальным IP-адресом, с именем *Vip2* на порте *80* и связывает ее с виртуальной машиной с именем *myVM1* в облачной службе с именем *myService* с помощью *TCP* на порте *8080*.</span><span class="sxs-lookup"><span data-stu-id="aad39-145">The command creates an endpoint linked to the VIP called *Vip2* on port *80*, and links it to the VM named *myVM1* in a cloud service named *myService* using *TCP* on port *8080*.</span></span>
+<span data-ttu-id="4b27f-145">Hello команда создает конечная точка с именем виртуальный IP-адрес связанного toohello *Vip2* через порт *80*и связывает его toohello виртуальной Машины с именем *myVM1* в облачной службе с именем  *myService* с помощью *TCP* через порт *8080*.</span><span class="sxs-lookup"><span data-stu-id="4b27f-145">hello command creates an endpoint linked toohello VIP called *Vip2* on port *80*, and links it toohello VM named *myVM1* in a cloud service named *myService* using *TCP* on port *8080*.</span></span>
 
-<span data-ttu-id="aad39-146">Чтобы проверить конфигурацию, выполните следующую команду PowerShell:</span><span class="sxs-lookup"><span data-stu-id="aad39-146">To verify the configuration, run the following PowerShell command:</span></span>
+<span data-ttu-id="4b27f-146">tooverify конфигурация hello, запустите следующую команду PowerShell hello:</span><span class="sxs-lookup"><span data-stu-id="4b27f-146">tooverify hello configuration, run hello following PowerShell command:</span></span>
 
 ```powershell
 $deployment = Get-AzureDeployment -ServiceName myService
 $deployment.VirtualIPs
 ```
 
-<span data-ttu-id="aad39-147">Результат должен быть аналогичным приведенному ниже:</span><span class="sxs-lookup"><span data-stu-id="aad39-147">The output looks similar to the following example:</span></span>
+<span data-ttu-id="4b27f-147">Hello выходные данные выглядят аналогично toohello в следующем примере:</span><span class="sxs-lookup"><span data-stu-id="4b27f-147">hello output looks similar toohello following example:</span></span>
 
     Address         : 191.238.74.148
     IsDnsProgrammed : True
@@ -147,9 +147,9 @@ $deployment.VirtualIPs
     ReservedIPName  :
     ExtensionData   :
 
-## <a name="how-to-enable-load-balancing-on-a-specific-vip"></a><span data-ttu-id="aad39-148">Как включить балансировку нагрузки в конкретном виртуальном IP-адресе</span><span class="sxs-lookup"><span data-stu-id="aad39-148">How to enable load balancing on a specific VIP</span></span>
+## <a name="how-tooenable-load-balancing-on-a-specific-vip"></a><span data-ttu-id="4b27f-148">Как tooenable балансировку нагрузки для определенного виртуального IP-адреса</span><span class="sxs-lookup"><span data-stu-id="4b27f-148">How tooenable load balancing on a specific VIP</span></span>
 
-<span data-ttu-id="aad39-149">Вы можете связать один виртуальный IP-адрес с несколькими виртуальными машинами для балансировки нагрузки.</span><span class="sxs-lookup"><span data-stu-id="aad39-149">You can associate a single VIP with multiple virtual machines for load balancing purposes.</span></span> <span data-ttu-id="aad39-150">Например, у вас есть облачная служба с именем *myService* и две виртуальные машины с именами *myVM1* и *myVM2*.</span><span class="sxs-lookup"><span data-stu-id="aad39-150">For example, you have a cloud service named *myService*, and two virtual machines named *myVM1* and *myVM2*.</span></span> <span data-ttu-id="aad39-151">Облачная служба имеет несколько виртуальных IP-адресов, имя одного из которых — *Vip2*.</span><span class="sxs-lookup"><span data-stu-id="aad39-151">And your cloud service has multiple VIPs, one of them named *Vip2*.</span></span> <span data-ttu-id="aad39-152">Если вы хотите убедиться, что весь трафик порта *81* по адресу *Vip2* распределяется между *myVM1* и *myVM2* на порте *8181*, выполните следующий сценарий PowerShell:</span><span class="sxs-lookup"><span data-stu-id="aad39-152">If you want to ensure that all traffic to port *81* on *Vip2* is balanced between *myVM1* and *myVM2* on port *8181*, run the following PowerShell script:</span></span>
+<span data-ttu-id="4b27f-149">Вы можете связать один виртуальный IP-адрес с несколькими виртуальными машинами для балансировки нагрузки.</span><span class="sxs-lookup"><span data-stu-id="4b27f-149">You can associate a single VIP with multiple virtual machines for load balancing purposes.</span></span> <span data-ttu-id="4b27f-150">Например, у вас есть облачная служба с именем *myService* и две виртуальные машины с именами *myVM1* и *myVM2*.</span><span class="sxs-lookup"><span data-stu-id="4b27f-150">For example, you have a cloud service named *myService*, and two virtual machines named *myVM1* and *myVM2*.</span></span> <span data-ttu-id="4b27f-151">Облачная служба имеет несколько виртуальных IP-адресов, имя одного из которых — *Vip2*.</span><span class="sxs-lookup"><span data-stu-id="4b27f-151">And your cloud service has multiple VIPs, one of them named *Vip2*.</span></span> <span data-ttu-id="4b27f-152">Если требуется, весь трафик tooport tooensure *81* на *Vip2* распределяются между *myVM1* и *myVM2* через порт *8181* , запустите hello следующий сценарий PowerShell:</span><span class="sxs-lookup"><span data-stu-id="4b27f-152">If you want tooensure that all traffic tooport *81* on *Vip2* is balanced between *myVM1* and *myVM2* on port *8181*, run hello following PowerShell script:</span></span>
 
 ```powershell
 Get-AzureVM -ServiceName myService -Name myVM1 |
@@ -161,20 +161,20 @@ Get-AzureVM -ServiceName myService -Name myVM2 |
     Update-AzureVM
 ```
 
-<span data-ttu-id="aad39-153">Вы можете также обновить подсистему балансировки нагрузки, чтобы использовать другой виртуальный IP-адрес.</span><span class="sxs-lookup"><span data-stu-id="aad39-153">You can also update your load balancer to use a different VIP.</span></span> <span data-ttu-id="aad39-154">Например, если выполнить следующую команду PowerShell, набор балансировки нагрузки станет использовать виртуальный IP-адрес с именем Vip1:</span><span class="sxs-lookup"><span data-stu-id="aad39-154">For example, if you run the PowerShell command below, you will change the load balancing set to use a VIP named Vip1:</span></span>
+<span data-ttu-id="4b27f-153">Можно также обновить ваш toouse подсистемы балансировки нагрузки различных виртуальных IP-адресов.</span><span class="sxs-lookup"><span data-stu-id="4b27f-153">You can also update your load balancer toouse a different VIP.</span></span> <span data-ttu-id="4b27f-154">Например при запуске hello следующую команду PowerShell, мы изменим hello балансировки toouse набора виртуальных IP-адресов, с именем Vip1:</span><span class="sxs-lookup"><span data-stu-id="4b27f-154">For example, if you run hello PowerShell command below, you will change hello load balancing set toouse a VIP named Vip1:</span></span>
 
 ```powershell
 Set-AzureLoadBalancedEndpoint -ServiceName myService -LBSetName myLBSet -VirtualIPName Vip1
 ```
 
-## <a name="next-steps"></a><span data-ttu-id="aad39-155">Дальнейшие действия</span><span class="sxs-lookup"><span data-stu-id="aad39-155">Next Steps</span></span>
+## <a name="next-steps"></a><span data-ttu-id="4b27f-155">Дальнейшие действия</span><span class="sxs-lookup"><span data-stu-id="4b27f-155">Next Steps</span></span>
 
-[<span data-ttu-id="aad39-156">Служба анализа журналов для балансировщика нагрузки Azure (предварительная версия)</span><span class="sxs-lookup"><span data-stu-id="aad39-156">Log analytics for Azure Load Balance</span></span>](load-balancer-monitor-log.md)
+[<span data-ttu-id="4b27f-156">Служба анализа журналов для балансировщика нагрузки Azure (предварительная версия)</span><span class="sxs-lookup"><span data-stu-id="4b27f-156">Log analytics for Azure Load Balance</span></span>](load-balancer-monitor-log.md)
 
-[<span data-ttu-id="aad39-157">Обзор подсистемы балансировки нагрузки, доступной в Интернете</span><span class="sxs-lookup"><span data-stu-id="aad39-157">Internet facing load balancer overview</span></span>](load-balancer-internet-overview.md)
+[<span data-ttu-id="4b27f-157">Обзор подсистемы балансировки нагрузки, доступной в Интернете</span><span class="sxs-lookup"><span data-stu-id="4b27f-157">Internet facing load balancer overview</span></span>](load-balancer-internet-overview.md)
 
-[<span data-ttu-id="aad39-158">Приступая к работе с подсистемой балансировки нагрузки, доступной в Интернете</span><span class="sxs-lookup"><span data-stu-id="aad39-158">Get started on Internet facing load balancer</span></span>](load-balancer-get-started-internet-arm-ps.md)
+[<span data-ttu-id="4b27f-158">Приступая к работе с подсистемой балансировки нагрузки, доступной в Интернете</span><span class="sxs-lookup"><span data-stu-id="4b27f-158">Get started on Internet facing load balancer</span></span>](load-balancer-get-started-internet-arm-ps.md)
 
-[<span data-ttu-id="aad39-159">Обзор виртуальной сети</span><span class="sxs-lookup"><span data-stu-id="aad39-159">Virtual Network Overview</span></span>](../virtual-network/virtual-networks-overview.md)
+[<span data-ttu-id="4b27f-159">Обзор виртуальной сети</span><span class="sxs-lookup"><span data-stu-id="4b27f-159">Virtual Network Overview</span></span>](../virtual-network/virtual-networks-overview.md)
 
-[<span data-ttu-id="aad39-160">API REST зарезервированных IP-адресов</span><span class="sxs-lookup"><span data-stu-id="aad39-160">Reserved IP REST APIs</span></span>](https://msdn.microsoft.com/library/azure/dn722420.aspx)
+[<span data-ttu-id="4b27f-160">API REST зарезервированных IP-адресов</span><span class="sxs-lookup"><span data-stu-id="4b27f-160">Reserved IP REST APIs</span></span>](https://msdn.microsoft.com/library/azure/dn722420.aspx)

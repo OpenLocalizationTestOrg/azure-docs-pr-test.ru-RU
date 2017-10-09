@@ -1,6 +1,6 @@
 ---
-title: "Приступая к работе со службой DNS Azure с помощью Azure CLI 2.0 | Документация Майкрософт"
-description: "Узнайте, как создать зону и запись DNS в службе DNS Azure. Это пошаговое руководство описывает создание первых зоны и записи DNS, а также управление ими с помощью интерфейса командной строки Azure CLI 2.0."
+title: "aaaGet работы с Azure DNS, с помощью Azure CLI 2.0 | Документы Microsoft"
+description: "Узнайте, как toocreate DNS зоны и записи в Azure DNS. Это toocreate Пошаговое руководство и управлять первый DNS-зоны и записи с помощью Azure CLI 2.0 hello."
 services: dns
 documentationcenter: na
 author: jtuliani
@@ -15,72 +15,72 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/10/2017
 ms.author: jonatul
-ms.openlocfilehash: 6958d61b29961f59cb22f62bec55f2d467e7e7cb
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 8a894941e9910d5cc35394a1be9dbca9792613f2
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="get-started-with-azure-dns-using-azure-cli-20"></a><span data-ttu-id="4c095-104">Начало работы со службой DNS Azure с помощью Azure CLI 2.0</span><span class="sxs-lookup"><span data-stu-id="4c095-104">Get started with Azure DNS using Azure CLI 2.0</span></span>
+# <a name="get-started-with-azure-dns-using-azure-cli-20"></a><span data-ttu-id="11627-104">Начало работы со службой DNS Azure с помощью Azure CLI 2.0</span><span class="sxs-lookup"><span data-stu-id="11627-104">Get started with Azure DNS using Azure CLI 2.0</span></span>
 
 > [!div class="op_single_selector"]
-> * [<span data-ttu-id="4c095-105">Портал Azure</span><span class="sxs-lookup"><span data-stu-id="4c095-105">Azure portal</span></span>](dns-getstarted-portal.md)
-> * [<span data-ttu-id="4c095-106">PowerShell</span><span class="sxs-lookup"><span data-stu-id="4c095-106">PowerShell</span></span>](dns-getstarted-powershell.md)
-> * [<span data-ttu-id="4c095-107">Azure CLI 1.0</span><span class="sxs-lookup"><span data-stu-id="4c095-107">Azure CLI 1.0</span></span>](dns-getstarted-cli-nodejs.md)
-> * [<span data-ttu-id="4c095-108">Azure CLI 2.0</span><span class="sxs-lookup"><span data-stu-id="4c095-108">Azure CLI 2.0</span></span>](dns-getstarted-cli.md)
+> * [<span data-ttu-id="11627-105">Портал Azure</span><span class="sxs-lookup"><span data-stu-id="11627-105">Azure portal</span></span>](dns-getstarted-portal.md)
+> * [<span data-ttu-id="11627-106">PowerShell</span><span class="sxs-lookup"><span data-stu-id="11627-106">PowerShell</span></span>](dns-getstarted-powershell.md)
+> * [<span data-ttu-id="11627-107">Azure CLI 1.0</span><span class="sxs-lookup"><span data-stu-id="11627-107">Azure CLI 1.0</span></span>](dns-getstarted-cli-nodejs.md)
+> * [<span data-ttu-id="11627-108">Azure CLI 2.0</span><span class="sxs-lookup"><span data-stu-id="11627-108">Azure CLI 2.0</span></span>](dns-getstarted-cli.md)
 
-<span data-ttu-id="4c095-109">В этой статье описано, как создать первую зону DNS и первую запись DNS, используя кроссплатформенный интерфейс командной строки Azure CLI 2.0, доступный для Windows, Mac и Linux.</span><span class="sxs-lookup"><span data-stu-id="4c095-109">This article walks you through the steps to create your first DNS zone and record using the cross-platform Azure CLI 2.0, which is available for Windows, Mac and Linux.</span></span> <span data-ttu-id="4c095-110">Эти действия также можно выполнить с помощью портала Azure или Azure PowerShell.</span><span class="sxs-lookup"><span data-stu-id="4c095-110">You can also perform these steps using the Azure portal or Azure PowerShell.</span></span>
+<span data-ttu-id="11627-109">В этой статье поможет выполнить шаги toocreate hello вашей первой зоны DNS и записи с помощью hello Azure CLI кросс платформенных 2.0, которая доступна для Windows, Mac и Linux.</span><span class="sxs-lookup"><span data-stu-id="11627-109">This article walks you through hello steps toocreate your first DNS zone and record using hello cross-platform Azure CLI 2.0, which is available for Windows, Mac and Linux.</span></span> <span data-ttu-id="11627-110">Также можно выполнить следующие действия с помощью hello портал Azure или Azure PowerShell.</span><span class="sxs-lookup"><span data-stu-id="11627-110">You can also perform these steps using hello Azure portal or Azure PowerShell.</span></span>
 
-<span data-ttu-id="4c095-111">Зона DNS используется для размещения DNS-записей определенного домена.</span><span class="sxs-lookup"><span data-stu-id="4c095-111">A DNS zone is used to host the DNS records for a particular domain.</span></span> <span data-ttu-id="4c095-112">Чтобы разместить свой домен в Azure DNS, необходимо создать зону DNS для этого доменного имени.</span><span class="sxs-lookup"><span data-stu-id="4c095-112">To start hosting your domain in Azure DNS, you need to create a DNS zone for that domain name.</span></span> <span data-ttu-id="4c095-113">Каждая запись DNS для вашего домена создается внутри этой зоны DNS.</span><span class="sxs-lookup"><span data-stu-id="4c095-113">Each DNS record for your domain is then created inside this DNS zone.</span></span> <span data-ttu-id="4c095-114">Наконец, чтобы опубликовать зону DNS в Интернете, необходимо настроить серверы доменных имен для домена.</span><span class="sxs-lookup"><span data-stu-id="4c095-114">Finally, to publish your DNS zone to the Internet, you need to configure the name servers for the domain.</span></span> <span data-ttu-id="4c095-115">Каждый из этих шагов описан ниже.</span><span class="sxs-lookup"><span data-stu-id="4c095-115">Each of these steps is described below.</span></span>
+<span data-ttu-id="11627-111">Зоны DNS-записей DNS используется toohost hello для определенного домена.</span><span class="sxs-lookup"><span data-stu-id="11627-111">A DNS zone is used toohost hello DNS records for a particular domain.</span></span> <span data-ttu-id="11627-112">toostart размещение домена в Azure DNS необходимо toocreate зону DNS для этого имени домена.</span><span class="sxs-lookup"><span data-stu-id="11627-112">toostart hosting your domain in Azure DNS, you need toocreate a DNS zone for that domain name.</span></span> <span data-ttu-id="11627-113">Каждая запись DNS для вашего домена создается внутри этой зоны DNS.</span><span class="sxs-lookup"><span data-stu-id="11627-113">Each DNS record for your domain is then created inside this DNS zone.</span></span> <span data-ttu-id="11627-114">Наконец, toopublish toohello Интернета, зоны DNS-сервера требуется tooconfigure hello имя серверов для домена hello.</span><span class="sxs-lookup"><span data-stu-id="11627-114">Finally, toopublish your DNS zone toohello Internet, you need tooconfigure hello name servers for hello domain.</span></span> <span data-ttu-id="11627-115">Каждый из этих шагов описан ниже.</span><span class="sxs-lookup"><span data-stu-id="11627-115">Each of these steps is described below.</span></span>
 
-<span data-ttu-id="4c095-116">При выполнении этих инструкций предполагается, что вы уже установили Azure CLI 2.0 и выполнили вход.</span><span class="sxs-lookup"><span data-stu-id="4c095-116">These instructions assume you have already installed and signed in to Azure CLI 2.0.</span></span> <span data-ttu-id="4c095-117">Чтобы получить справку, см. статью [Как управлять зонами DNS в службе DNS Azure с помощью Azure CLI 2.0](dns-operations-dnszones-cli.md).</span><span class="sxs-lookup"><span data-stu-id="4c095-117">For help, see [How to manage DNS zones using Azure CLI 2.0](dns-operations-dnszones-cli.md).</span></span>
+<span data-ttu-id="11627-116">Эти инструкции предполагают, вы уже установили и вход выполнен tooAzure CLI 2.0.</span><span class="sxs-lookup"><span data-stu-id="11627-116">These instructions assume you have already installed and signed in tooAzure CLI 2.0.</span></span> <span data-ttu-id="11627-117">Справочные сведения см. в разделе [как toomanage DNS-зоны с помощью Azure CLI 2.0](dns-operations-dnszones-cli.md).</span><span class="sxs-lookup"><span data-stu-id="11627-117">For help, see [How toomanage DNS zones using Azure CLI 2.0](dns-operations-dnszones-cli.md).</span></span>
 
-## <a name="create-the-resource-group"></a><span data-ttu-id="4c095-118">Создание группы ресурсов</span><span class="sxs-lookup"><span data-stu-id="4c095-118">Create the resource group</span></span>
+## <a name="create-hello-resource-group"></a><span data-ttu-id="11627-118">Создать группу ресурсов hello</span><span class="sxs-lookup"><span data-stu-id="11627-118">Create hello resource group</span></span>
 
-<span data-ttu-id="4c095-119">Перед созданием зоны DNS создается группа ресурсов, которая будет включать эту зону DNS.</span><span class="sxs-lookup"><span data-stu-id="4c095-119">Before creating the DNS zone, a resource group is created to contain the DNS Zone.</span></span> <span data-ttu-id="4c095-120">Ниже показана команда для создания группы ресурсов.</span><span class="sxs-lookup"><span data-stu-id="4c095-120">The following shows the command.</span></span>
+<span data-ttu-id="11627-119">Перед созданием hello зоны DNS, зоны DNS hello toocontain создания группы ресурсов.</span><span class="sxs-lookup"><span data-stu-id="11627-119">Before creating hello DNS zone, a resource group is created toocontain hello DNS Zone.</span></span> <span data-ttu-id="11627-120">Hello ниже показана команда hello.</span><span class="sxs-lookup"><span data-stu-id="11627-120">hello following shows hello command.</span></span>
 
 ```azurecli
 az group create --name MyResourceGroup --location "West US"
 ```
 
-## <a name="create-a-dns-zone"></a><span data-ttu-id="4c095-121">Создание зоны DNS</span><span class="sxs-lookup"><span data-stu-id="4c095-121">Create a DNS zone</span></span>
+## <a name="create-a-dns-zone"></a><span data-ttu-id="11627-121">Создание зоны DNS</span><span class="sxs-lookup"><span data-stu-id="11627-121">Create a DNS zone</span></span>
 
-<span data-ttu-id="4c095-122">Зона DNS создается с помощью команды `az network dns zone create`.</span><span class="sxs-lookup"><span data-stu-id="4c095-122">A DNS zone is created using the `az network dns zone create` command.</span></span> <span data-ttu-id="4c095-123">Чтобы просмотреть справку для этой команды, введите `az network dns zone create -h`.</span><span class="sxs-lookup"><span data-stu-id="4c095-123">To see help for this command, type `az network dns zone create -h`.</span></span>
+<span data-ttu-id="11627-122">Зоны DNS создается с помощью hello `az network dns zone create` команды.</span><span class="sxs-lookup"><span data-stu-id="11627-122">A DNS zone is created using hello `az network dns zone create` command.</span></span> <span data-ttu-id="11627-123">toosee справку для этой команды, введите `az network dns zone create -h`.</span><span class="sxs-lookup"><span data-stu-id="11627-123">toosee help for this command, type `az network dns zone create -h`.</span></span>
 
-<span data-ttu-id="4c095-124">В следующем примере будет создана зона DNS *contoso.com* в группе ресурсов *MyResourceGroup*.</span><span class="sxs-lookup"><span data-stu-id="4c095-124">The following example creates a DNS zone called *contoso.com* in the resource group *MyResourceGroup*.</span></span> <span data-ttu-id="4c095-125">Пример можно использовать для создания зоны DNS, заменив соответствующие значения собственными.</span><span class="sxs-lookup"><span data-stu-id="4c095-125">Use the example to create a DNS zone, substituting the values for your own.</span></span>
+<span data-ttu-id="11627-124">Hello следующий пример создает зоны DNS, которая называется *contoso.com* в группе ресурсов hello *MyResourceGroup*.</span><span class="sxs-lookup"><span data-stu-id="11627-124">hello following example creates a DNS zone called *contoso.com* in hello resource group *MyResourceGroup*.</span></span> <span data-ttu-id="11627-125">Используйте toocreate пример hello зону DNS, подставив собственные значения hello.</span><span class="sxs-lookup"><span data-stu-id="11627-125">Use hello example toocreate a DNS zone, substituting hello values for your own.</span></span>
 
 ```azurecli
 az network dns zone create -g MyResourceGroup -n contoso.com
 ```
 
 
-## <a name="create-a-dns-record"></a><span data-ttu-id="4c095-126">Создание записи DNS</span><span class="sxs-lookup"><span data-stu-id="4c095-126">Create a DNS record</span></span>
+## <a name="create-a-dns-record"></a><span data-ttu-id="11627-126">Создание записи DNS</span><span class="sxs-lookup"><span data-stu-id="11627-126">Create a DNS record</span></span>
 
-<span data-ttu-id="4c095-127">Чтобы создать запись DNS, используйте команду `az network dns record-set [record type] add-record`.</span><span class="sxs-lookup"><span data-stu-id="4c095-127">To create a DNS record, use the `az network dns record-set [record type] add-record` command.</span></span> <span data-ttu-id="4c095-128">Чтобы получить справку, например по записям типа A, см. `azure network dns record-set A add-record -h`.</span><span class="sxs-lookup"><span data-stu-id="4c095-128">For help, for A records for example, see `azure network dns record-set A add-record -h`.</span></span>
+<span data-ttu-id="11627-127">запись DNS toocreate использовать hello `az network dns record-set [record type] add-record` команды.</span><span class="sxs-lookup"><span data-stu-id="11627-127">toocreate a DNS record, use hello `az network dns record-set [record type] add-record` command.</span></span> <span data-ttu-id="11627-128">Чтобы получить справку, например по записям типа A, см. `azure network dns record-set A add-record -h`.</span><span class="sxs-lookup"><span data-stu-id="11627-128">For help, for A records for example, see `azure network dns record-set A add-record -h`.</span></span>
 
-<span data-ttu-id="4c095-129">В следующем примере создается запись с относительным именем www в зоне DNS contoso.com, в группе ресурсов MyResourceGroup.</span><span class="sxs-lookup"><span data-stu-id="4c095-129">The following example creates a record with the relative name "www" in the DNS Zone "contoso.com", in resource group "MyResourceGroup".</span></span> <span data-ttu-id="4c095-130">Полное доменное имя набора записей — www.contoso.com.</span><span class="sxs-lookup"><span data-stu-id="4c095-130">The fully-qualified name of the record set is "www.contoso.com".</span></span> <span data-ttu-id="4c095-131">Используется тип записи A с IP-адресом 1.2.3.4 и сроком жизни по умолчанию 3600 секунд (1 час).</span><span class="sxs-lookup"><span data-stu-id="4c095-131">The record type is "A", with IP address "1.2.3.4", and a default TTL of 3600 seconds (1 hour) is used.</span></span>
+<span data-ttu-id="11627-129">Hello в примере создается запись с hello относительное имя «www» в зону DNS «contoso.com» в группе ресурсов «MyResourceGroup» hello.</span><span class="sxs-lookup"><span data-stu-id="11627-129">hello following example creates a record with hello relative name "www" in hello DNS Zone "contoso.com", in resource group "MyResourceGroup".</span></span> <span data-ttu-id="11627-130">Hello полное имя набора записей hello — «www.contoso.com».</span><span class="sxs-lookup"><span data-stu-id="11627-130">hello fully-qualified name of hello record set is "www.contoso.com".</span></span> <span data-ttu-id="11627-131">Тип записи Hello — «A» с IP-адресом «1.2.3.4», и используется значение по умолчанию срок ЖИЗНИ 3600 секунд (1 час).</span><span class="sxs-lookup"><span data-stu-id="11627-131">hello record type is "A", with IP address "1.2.3.4", and a default TTL of 3600 seconds (1 hour) is used.</span></span>
 
 ```azurecli
 az network dns record-set a add-record -g MyResourceGroup -z contoso.com -n www -a 1.2.3.4
 ```
 
-<span data-ttu-id="4c095-132">Сведения о других типах записей, наборах записей с несколькими записями, других значениях срока жизни, а также об изменении существующих записей см. в статье [Управление записями и наборами записей DNS в Azure DNS с помощью Azure CLI 2.0](dns-operations-recordsets-cli.md).</span><span class="sxs-lookup"><span data-stu-id="4c095-132">For other record types, for record sets with more than one record, for alternative TTL values, and to modify existing records, see [Manage DNS records and record sets using the Azure CLI 2.0](dns-operations-recordsets-cli.md).</span></span>
+<span data-ttu-id="11627-132">Для других типов записей для наборов записей с более одной записи для альтернативных значений срока ЖИЗНИ и toomodify существующие записи, в разделе [Управление DNS-записи и с помощью наборов записей hello Azure CLI 2.0](dns-operations-recordsets-cli.md).</span><span class="sxs-lookup"><span data-stu-id="11627-132">For other record types, for record sets with more than one record, for alternative TTL values, and toomodify existing records, see [Manage DNS records and record sets using hello Azure CLI 2.0](dns-operations-recordsets-cli.md).</span></span>
 
 
-## <a name="view-records"></a><span data-ttu-id="4c095-133">Просмотр записей</span><span class="sxs-lookup"><span data-stu-id="4c095-133">View records</span></span>
+## <a name="view-records"></a><span data-ttu-id="11627-133">Просмотр записей</span><span class="sxs-lookup"><span data-stu-id="11627-133">View records</span></span>
 
-<span data-ttu-id="4c095-134">Чтобы просмотреть список записей DNS в зоне, используйте следующую команду:</span><span class="sxs-lookup"><span data-stu-id="4c095-134">To list the DNS records in your zone, use:</span></span>
+<span data-ttu-id="11627-134">toolist hello DNS-записи в зоне, используйте:</span><span class="sxs-lookup"><span data-stu-id="11627-134">toolist hello DNS records in your zone, use:</span></span>
 
 ```azurecli
 az network dns record-set list -g MyResourceGroup -z contoso.com
 ```
 
 
-## <a name="update-name-servers"></a><span data-ttu-id="4c095-135">Обновление серверов доменных имен</span><span class="sxs-lookup"><span data-stu-id="4c095-135">Update name servers</span></span>
+## <a name="update-name-servers"></a><span data-ttu-id="11627-135">Обновление серверов доменных имен</span><span class="sxs-lookup"><span data-stu-id="11627-135">Update name servers</span></span>
 
-<span data-ttu-id="4c095-136">Когда вы убедитесь, что зона и записи DNS настроены правильно, необходимо настроить доменное имя для использования серверов доменных имен службы DNS Azure.</span><span class="sxs-lookup"><span data-stu-id="4c095-136">Once you are satisfied that your DNS zone and records have been set up correctly, you need to configure your domain name to use the Azure DNS name servers.</span></span> <span data-ttu-id="4c095-137">Это позволит другим пользователям в Интернете находить ваши записи DNS.</span><span class="sxs-lookup"><span data-stu-id="4c095-137">This enables other users on the Internet to find your DNS records.</span></span>
+<span data-ttu-id="11627-136">Как только будут выполнены, что DNS-зоны и записи были настроены правильно, необходимо tooconfigure домена имя toouse hello Azure DNS-серверами.</span><span class="sxs-lookup"><span data-stu-id="11627-136">Once you are satisfied that your DNS zone and records have been set up correctly, you need tooconfigure your domain name toouse hello Azure DNS name servers.</span></span> <span data-ttu-id="11627-137">Это позволяет другим пользователям на hello Internet toofind DNS-записей.</span><span class="sxs-lookup"><span data-stu-id="11627-137">This enables other users on hello Internet toofind your DNS records.</span></span>
 
-<span data-ttu-id="4c095-138">Для получения списка серверов доменных имен для определенной зоны используется команда `az network dns zone show`.</span><span class="sxs-lookup"><span data-stu-id="4c095-138">The name servers for your zone are given by the `az network dns zone show` command.</span></span> <span data-ttu-id="4c095-139">Чтобы просмотреть имена серверов доменных имен, используйте выходные данные JSON, как показано в следующем примере:</span><span class="sxs-lookup"><span data-stu-id="4c095-139">To see the name server names, use JSON output, as shown in the following example.</span></span>
+<span data-ttu-id="11627-138">Hello серверы имен для зоны определяются hello `az network dns zone show` команды.</span><span class="sxs-lookup"><span data-stu-id="11627-138">hello name servers for your zone are given by hello `az network dns zone show` command.</span></span> <span data-ttu-id="11627-139">имена серверов имя toosee hello, используйте выходных данных, JSON, как показано в следующий пример hello.</span><span class="sxs-lookup"><span data-stu-id="11627-139">toosee hello name server names, use JSON output, as shown in hello following example.</span></span>
 
 ```azurecli
 az network dns zone show -g MyResourceGroup -n contoso.com -o json
@@ -104,20 +104,20 @@ az network dns zone show -g MyResourceGroup -n contoso.com -o json
 }
 ```
 
-<span data-ttu-id="4c095-140">Эти серверы доменных имен необходимо настроить с помощью регистратора доменных имен (у которого было приобретено доменное имя).</span><span class="sxs-lookup"><span data-stu-id="4c095-140">These name servers should be configured with the domain name registrar (where you purchased the domain name).</span></span> <span data-ttu-id="4c095-141">Регистратор предложит вам вариант настройки серверов доменных имен для домена.</span><span class="sxs-lookup"><span data-stu-id="4c095-141">Your registrar will offer the option to set up the name servers for the domain.</span></span> <span data-ttu-id="4c095-142">Дополнительные сведения см. в статье [Делегирование домена в Azure DNS](dns-domain-delegation.md).</span><span class="sxs-lookup"><span data-stu-id="4c095-142">For more information, see [Delegate your domain to Azure DNS](dns-domain-delegation.md).</span></span>
+<span data-ttu-id="11627-140">Эти серверы имен должны быть настроены с помощью регистратора доменных имен hello (которого вы приобрели hello доменное имя).</span><span class="sxs-lookup"><span data-stu-id="11627-140">These name servers should be configured with hello domain name registrar (where you purchased hello domain name).</span></span> <span data-ttu-id="11627-141">Регистратор предлагают tooset параметр hello hello серверов имя домена hello.</span><span class="sxs-lookup"><span data-stu-id="11627-141">Your registrar will offer hello option tooset up hello name servers for hello domain.</span></span> <span data-ttu-id="11627-142">Дополнительные сведения см. в разделе [делегировать tooAzure вашего домена DNS](dns-domain-delegation.md).</span><span class="sxs-lookup"><span data-stu-id="11627-142">For more information, see [Delegate your domain tooAzure DNS](dns-domain-delegation.md).</span></span>
 
-## <a name="delete-all-resources"></a><span data-ttu-id="4c095-143">Удаление всех ресурсов</span><span class="sxs-lookup"><span data-stu-id="4c095-143">Delete all resources</span></span>
+## <a name="delete-all-resources"></a><span data-ttu-id="11627-143">Удаление всех ресурсов</span><span class="sxs-lookup"><span data-stu-id="11627-143">Delete all resources</span></span>
  
-<span data-ttu-id="4c095-144">Чтобы удалить все ресурсы, созданные при работе с этой статьей, сделайте следующее:</span><span class="sxs-lookup"><span data-stu-id="4c095-144">To delete all resources created in this article, take the following step:</span></span>
+<span data-ttu-id="11627-144">toodelete все ресурсы созданы в этой статье hello выполните следующий шаг:</span><span class="sxs-lookup"><span data-stu-id="11627-144">toodelete all resources created in this article, take hello following step:</span></span>
 
 ```azurecli
 az group delete --name MyResourceGroup
 ```
 
-## <a name="next-steps"></a><span data-ttu-id="4c095-145">Дальнейшие действия</span><span class="sxs-lookup"><span data-stu-id="4c095-145">Next steps</span></span>
+## <a name="next-steps"></a><span data-ttu-id="11627-145">Дальнейшие действия</span><span class="sxs-lookup"><span data-stu-id="11627-145">Next steps</span></span>
 
-<span data-ttu-id="4c095-146">Дополнительные сведения о службе DNS Azure см. в статье [Обзор Azure DNS](dns-overview.md).</span><span class="sxs-lookup"><span data-stu-id="4c095-146">To learn more about Azure DNS, see [Azure DNS overview](dns-overview.md).</span></span>
+<span data-ttu-id="11627-146">toolearn Дополнительные сведения о Azure DNS в разделе [Обзор Azure DNS](dns-overview.md).</span><span class="sxs-lookup"><span data-stu-id="11627-146">toolearn more about Azure DNS, see [Azure DNS overview](dns-overview.md).</span></span>
 
-<span data-ttu-id="4c095-147">Дополнительные сведения об управлении зонами DNS в службе DNS Azure см. в статье [Как управлять зонами DNS в службе DNS Azure с помощью Azure CLI 2.0](dns-operations-dnszones-cli.md).</span><span class="sxs-lookup"><span data-stu-id="4c095-147">To learn more about managing DNS zones in Azure DNS, see [Manage DNS zones in Azure DNS using Azure CLI 2.0](dns-operations-dnszones-cli.md).</span></span>
+<span data-ttu-id="11627-147">toolearn Дополнительные сведения об управлении зонами DNS в Azure DNS, в разделе [зоны DNS, управление в Azure DNS, с помощью Azure CLI 2.0](dns-operations-dnszones-cli.md).</span><span class="sxs-lookup"><span data-stu-id="11627-147">toolearn more about managing DNS zones in Azure DNS, see [Manage DNS zones in Azure DNS using Azure CLI 2.0](dns-operations-dnszones-cli.md).</span></span>
 
-<span data-ttu-id="4c095-148">Дополнительные сведения об управлении записями DNS в службе DNS Azure см. в статье [Управление записями и наборами записей DNS в Azure DNS с помощью Azure CLI 2.0](dns-operations-recordsets-cli.md).</span><span class="sxs-lookup"><span data-stu-id="4c095-148">To learn more about managing DNS records in Azure DNS, see [Manage DNS records and record sets in Azure DNS using Azure CLI 2.0](dns-operations-recordsets-cli.md).</span></span>
+<span data-ttu-id="11627-148">toolearn Дополнительные сведения об управлении DNS-записи в Azure DNS, в разделе [Управление DNS-записи и записи задает в Azure DNS, с помощью Azure CLI 2.0](dns-operations-recordsets-cli.md).</span><span class="sxs-lookup"><span data-stu-id="11627-148">toolearn more about managing DNS records in Azure DNS, see [Manage DNS records and record sets in Azure DNS using Azure CLI 2.0](dns-operations-recordsets-cli.md).</span></span>

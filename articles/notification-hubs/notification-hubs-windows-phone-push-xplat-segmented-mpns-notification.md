@@ -1,6 +1,6 @@
 ---
-title: "Использование центров уведомлений для передачи экстренных новостей (Windows Phone)"
-description: "Использование Центров уведомлений Azure для применения тегов в регистрациях, чтобы передавать экстренные новости в приложение Windows Phone."
+title: "Концентраторы уведомлений toosend aaaUse, новости (Windows Phone)"
+description: "Используйте тег toouse концентраторов уведомлений Azure в критические приложения Windows Phone tooa новостей toosend регистраций."
 services: notification-hubs
 documentationcenter: windows
 author: ysxu
@@ -14,27 +14,27 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/29/2016
 ms.author: yuaxu
-ms.openlocfilehash: 3a6a69bf555c7267d3fbeb03ff6c03054991960f
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 3519a8701105f88198afe288e59e9204420234db
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="use-notification-hubs-to-send-breaking-news"></a><span data-ttu-id="6e693-103">Использование концентраторов уведомлений для передачи экстренных новостей</span><span class="sxs-lookup"><span data-stu-id="6e693-103">Use Notification Hubs to send breaking news</span></span>
+# <a name="use-notification-hubs-toosend-breaking-news"></a><span data-ttu-id="7c8a2-103">Использование концентраторов уведомлений toosend новости</span><span class="sxs-lookup"><span data-stu-id="7c8a2-103">Use Notification Hubs toosend breaking news</span></span>
 [!INCLUDE [notification-hubs-selector-breaking-news](../../includes/notification-hubs-selector-breaking-news.md)]
 
-## <a name="overview"></a><span data-ttu-id="6e693-104">Обзор</span><span class="sxs-lookup"><span data-stu-id="6e693-104">Overview</span></span>
-<span data-ttu-id="6e693-105">В этом разделе показано, как использовать концентраторы уведомлений Azure для рассылки уведомлений об экстренных новостях в приложение Windows Phone 8.0/8.1 Silverlight.</span><span class="sxs-lookup"><span data-stu-id="6e693-105">This topic shows you how to use Azure Notification Hubs to broadcast breaking news notifications to a Windows Phone 8.0/8.1 Silverlight app.</span></span> <span data-ttu-id="6e693-106">Если вы используете приложение Windows Store или Windows Phone 8.1, см. версию [Windows Universal](notification-hubs-windows-notification-dotnet-push-xplat-segmented-wns.md).</span><span class="sxs-lookup"><span data-stu-id="6e693-106">If you are targeting Windows Store or Windows Phone 8.1 app, please refer to to the [Windows Universal](notification-hubs-windows-notification-dotnet-push-xplat-segmented-wns.md) version.</span></span> <span data-ttu-id="6e693-107">По завершении вы сможете зарегистрироваться в интересующих вас категориях экстренных новостей и получать push-уведомления только для этих категорий.</span><span class="sxs-lookup"><span data-stu-id="6e693-107">When complete, you will be able to register for breaking news categories you are interested in, and receive only push notifications for those categories.</span></span> <span data-ttu-id="6e693-108">Данный сценарий является общеупотребимым шаблоном для многих приложений, где требуется отправлять уведомления группам пользователей, ранее проявивших к ним интерес, например, программы чтения RSS, приложений для музыкальных фанатов и т. д.</span><span class="sxs-lookup"><span data-stu-id="6e693-108">This scenario is a common pattern for many apps where notifications have to be sent to groups of users that have previously declared interest in them, e.g. RSS reader, apps for music fans, etc.</span></span>
+## <a name="overview"></a><span data-ttu-id="7c8a2-104">Обзор</span><span class="sxs-lookup"><span data-stu-id="7c8a2-104">Overview</span></span>
+<span data-ttu-id="7c8a2-105">В этом разделе показано, как toouse концентраторов уведомлений Azure toobroadcast критические новостей уведомления tooa Windows Phone 8.0/8.1 приложение Silverlight.</span><span class="sxs-lookup"><span data-stu-id="7c8a2-105">This topic shows you how toouse Azure Notification Hubs toobroadcast breaking news notifications tooa Windows Phone 8.0/8.1 Silverlight app.</span></span> <span data-ttu-id="7c8a2-106">Если вы используете магазина Windows или приложения Windows Phone 8.1, можно найти tootoohello [Windows Universal](notification-hubs-windows-notification-dotnet-push-xplat-segmented-wns.md) версии.</span><span class="sxs-lookup"><span data-stu-id="7c8a2-106">If you are targeting Windows Store or Windows Phone 8.1 app, please refer tootoohello [Windows Universal](notification-hubs-windows-notification-dotnet-push-xplat-segmented-wns.md) version.</span></span> <span data-ttu-id="7c8a2-107">После завершения будет быть может tooregister переноса категории новостей нужных вам и получения только push-уведомлений для этих категорий.</span><span class="sxs-lookup"><span data-stu-id="7c8a2-107">When complete, you will be able tooregister for breaking news categories you are interested in, and receive only push notifications for those categories.</span></span> <span data-ttu-id="7c8a2-108">Этот сценарий представлен общий шаблон для многих приложений, где уведомления состоят из отправленных toobe toogroups пользователей, которым был объявлен ранее интересующих их, например, средство чтения RSS, приложений для вентиляторов музыку и т. д.</span><span class="sxs-lookup"><span data-stu-id="7c8a2-108">This scenario is a common pattern for many apps where notifications have toobe sent toogroups of users that have previously declared interest in them, e.g. RSS reader, apps for music fans, etc.</span></span>
 
-<span data-ttu-id="6e693-109">Широковещательные сценарии реализуются путем включения одного или нескольких *тегов* при создании регистрации в концентраторе уведомлений.</span><span class="sxs-lookup"><span data-stu-id="6e693-109">Broadcast scenarios are enabled by including one or more *tags* when creating a registration in the notification hub.</span></span> <span data-ttu-id="6e693-110">Если уведомления отправляются на тег, их получают все устройства, зарегистрированные для данного тега.</span><span class="sxs-lookup"><span data-stu-id="6e693-110">When notifications are sent to a tag, all devices that have registered for the tag will receive the notification.</span></span> <span data-ttu-id="6e693-111">Поскольку теги представляют собой обычные строки, их не нужно подготавливать заранее.</span><span class="sxs-lookup"><span data-stu-id="6e693-111">Because tags are simply strings, they do not have to be provisioned in advance.</span></span> <span data-ttu-id="6e693-112">Дополнительные сведения о тегах см. в статье [Маршрутизация и выражения тегов](notification-hubs-tags-segment-push-message.md).</span><span class="sxs-lookup"><span data-stu-id="6e693-112">For more information about tags, refer to [Notification Hubs Routing and Tag Expressions](notification-hubs-tags-segment-push-message.md).</span></span>
+<span data-ttu-id="7c8a2-109">Широковещательный сценарии реализуются путем включения одного или нескольких *теги* при создании регистрации в концентраторе уведомлений hello.</span><span class="sxs-lookup"><span data-stu-id="7c8a2-109">Broadcast scenarios are enabled by including one or more *tags* when creating a registration in hello notification hub.</span></span> <span data-ttu-id="7c8a2-110">Отправке уведомлений tooa тегов, все устройства, которые зарегистрированы для тега hello получат уведомление hello.</span><span class="sxs-lookup"><span data-stu-id="7c8a2-110">When notifications are sent tooa tag, all devices that have registered for hello tag will receive hello notification.</span></span> <span data-ttu-id="7c8a2-111">Так как теги являются просто строками, у которых нет toobe заранее подготовлены.</span><span class="sxs-lookup"><span data-stu-id="7c8a2-111">Because tags are simply strings, they do not have toobe provisioned in advance.</span></span> <span data-ttu-id="7c8a2-112">Дополнительные сведения о тегах см. в разделе слишком[маршрутизации концентраторов уведомлений и выражения с тегами](notification-hubs-tags-segment-push-message.md).</span><span class="sxs-lookup"><span data-stu-id="7c8a2-112">For more information about tags, refer too[Notification Hubs Routing and Tag Expressions](notification-hubs-tags-segment-push-message.md).</span></span>
 
-## <a name="prerequisites"></a><span data-ttu-id="6e693-113">Предварительные требования</span><span class="sxs-lookup"><span data-stu-id="6e693-113">Prerequisites</span></span>
-<span data-ttu-id="6e693-114">Материал данной статьи основан на приложении, созданном в статье [Отправка push-уведомлений в приложения Windows Phone с помощью центров уведомлений Azure].</span><span class="sxs-lookup"><span data-stu-id="6e693-114">This topic builds on the app you created in [Get started with Notification Hubs].</span></span> <span data-ttu-id="6e693-115">Перед началом работы с учебником необходимо пройти задания учебника [Отправка push-уведомлений в приложения Windows Phone с помощью центров уведомлений Azure].</span><span class="sxs-lookup"><span data-stu-id="6e693-115">Before starting this tutorial, you must have already completed [Get started with Notification Hubs].</span></span>
+## <a name="prerequisites"></a><span data-ttu-id="7c8a2-113">Предварительные требования</span><span class="sxs-lookup"><span data-stu-id="7c8a2-113">Prerequisites</span></span>
+<span data-ttu-id="7c8a2-114">В этом разделе основан на приложение hello, созданный в [приступить к работе с концентраторами уведомлений].</span><span class="sxs-lookup"><span data-stu-id="7c8a2-114">This topic builds on hello app you created in [Get started with Notification Hubs].</span></span> <span data-ttu-id="7c8a2-115">Перед началом работы с учебником необходимо пройти задания учебника [приступить к работе с концентраторами уведомлений].</span><span class="sxs-lookup"><span data-stu-id="7c8a2-115">Before starting this tutorial, you must have already completed [Get started with Notification Hubs].</span></span>
 
-## <a name="add-category-selection-to-the-app"></a><span data-ttu-id="6e693-116">Добавление возможности выбора категорий в приложение</span><span class="sxs-lookup"><span data-stu-id="6e693-116">Add category selection to the app</span></span>
-<span data-ttu-id="6e693-117">Прежде всего необходимо добавить элементы пользовательского интерфейса для имеющейся главной страницы, позволяющие пользователю выбирать категории для регистрации.</span><span class="sxs-lookup"><span data-stu-id="6e693-117">The first step is to add the UI elements to your existing main page that enable the user to select categories to register.</span></span> <span data-ttu-id="6e693-118">Выбранные пользователем категории хранятся на устройстве.</span><span class="sxs-lookup"><span data-stu-id="6e693-118">The categories selected by a user are stored on the device.</span></span> <span data-ttu-id="6e693-119">При запуске приложения в концентраторе уведомлений создается регистрация устройства с выбранными категориями, представленными в форме тегов.</span><span class="sxs-lookup"><span data-stu-id="6e693-119">When the app starts, a device registration is created in your notification hub with the selected categories as tags.</span></span>
+## <a name="add-category-selection-toohello-app"></a><span data-ttu-id="7c8a2-116">Добавить приложение toohello Выбор категории</span><span class="sxs-lookup"><span data-stu-id="7c8a2-116">Add category selection toohello app</span></span>
+<span data-ttu-id="7c8a2-117">Hello первым шагом является tooadd hello пользовательского интерфейса элементы tooyour существующей главной страницы, включить tooregister категории tooselect пользователя hello.</span><span class="sxs-lookup"><span data-stu-id="7c8a2-117">hello first step is tooadd hello UI elements tooyour existing main page that enable hello user tooselect categories tooregister.</span></span> <span data-ttu-id="7c8a2-118">выбранные пользователем категории Hello хранятся на устройстве hello.</span><span class="sxs-lookup"><span data-stu-id="7c8a2-118">hello categories selected by a user are stored on hello device.</span></span> <span data-ttu-id="7c8a2-119">При запуске приложение hello регистрацию устройств создается в концентратор уведомлений с категориями hello выбран как теги.</span><span class="sxs-lookup"><span data-stu-id="7c8a2-119">When hello app starts, a device registration is created in your notification hub with hello selected categories as tags.</span></span>
 
-1. <span data-ttu-id="6e693-120">Откройте файл проекта MainPage.xaml, а затем замените элементы **Grid** с именами `TitlePanel` и `ContentPanel` следующим кодом:</span><span class="sxs-lookup"><span data-stu-id="6e693-120">Open the MainPage.xaml project file, then replace the **Grid** elements named `TitlePanel` and `ContentPanel` with the following code:</span></span>
+1. <span data-ttu-id="7c8a2-120">Откройте файл проекта MainPage.xaml hello, а затем заменить hello **сетки** элементы с именем `TitlePanel` и `ContentPanel` с hello, следующий код:</span><span class="sxs-lookup"><span data-stu-id="7c8a2-120">Open hello MainPage.xaml project file, then replace hello **Grid** elements named `TitlePanel` and `ContentPanel` with hello following code:</span></span>
    
         <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,28">
             <TextBlock Text="Breaking News" Style="{StaticResource PhoneTextNormalStyle}" Margin="12,0"/>
@@ -60,17 +60,17 @@ ms.lasthandoff: 07/11/2017
             <CheckBox Name="SportsCheckBox" Grid.Row="2" Grid.Column="1">Sports</CheckBox>
             <Button Name="SubscribeButton" Content="Subscribe" HorizontalAlignment="Center" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Click="SubscribeButton_Click" />
         </Grid>
-2. <span data-ttu-id="6e693-121">Создайте в проекте класс **Notifications**, добавьте к определению класса модификатор **public**, а затем добавьте в файл оператор **using**.</span><span class="sxs-lookup"><span data-stu-id="6e693-121">In the project, create a new class named **Notifications**, add the **public** modifier to the class definition, then add the following **using** statements to the new code file:</span></span>
+2. <span data-ttu-id="7c8a2-121">В проекте hello, создайте новый класс с именем **уведомления**, добавить hello **открытый** toohello модификатор определения класса, а затем добавьте следующие hello **с помощью** инструкций toohello новый файл кода:</span><span class="sxs-lookup"><span data-stu-id="7c8a2-121">In hello project, create a new class named **Notifications**, add hello **public** modifier toohello class definition, then add hello following **using** statements toohello new code file:</span></span>
    
         using Microsoft.Phone.Notification;
         using Microsoft.WindowsAzure.Messaging;
         using System.IO.IsolatedStorage;
         using System.Windows;
-3. <span data-ttu-id="6e693-122">Скопируйте следующий код в новый класс **Notifications** :</span><span class="sxs-lookup"><span data-stu-id="6e693-122">Copy the following code into the new **Notifications** class:</span></span>
+3. <span data-ttu-id="7c8a2-122">Копирования hello следующий код в новый hello **уведомления** класса:</span><span class="sxs-lookup"><span data-stu-id="7c8a2-122">Copy hello following code into hello new **Notifications** class:</span></span>
    
         private NotificationHub hub;
    
-        // Registration task to complete registration in the ChannelUriUpdated event handler
+        // Registration task toocomplete registration in hello ChannelUriUpdated event handler
         private TaskCompletionSource<Registration> registrationTask;
    
         public Notifications(string hubName, string listenConnectionString)
@@ -114,12 +114,12 @@ ms.lasthandoff: 07/11/2017
                 channel.BindToShellToast();
                 channel.ChannelUriUpdated += channel_ChannelUriUpdated;
    
-                // This is optional, used to receive notifications while the app is running.
+                // This is optional, used tooreceive notifications while hello app is running.
                 channel.ShellToastNotificationReceived += channel_ShellToastNotificationReceived;
             }
    
-            // If channel.ChannelUri is not null, we will complete the registrationTask here.  
-            // If it is null, the registrationTask will be completed in the ChannelUriUpdated event handler.
+            // If channel.ChannelUri is not null, we will complete hello registrationTask here.  
+            // If it is null, hello registrationTask will be completed in hello ChannelUriUpdated event handler.
             if (channel.ChannelUri != null)
             {
                 await RegisterTemplate(channel.ChannelUri);
@@ -135,7 +135,7 @@ ms.lasthandoff: 07/11/2017
    
         async Task<Registration> RegisterTemplate(Uri channelUri)
         {
-            // Using a template registration to support notifications across platforms.
+            // Using a template registration toosupport notifications across platforms.
             // Any template notifications that contain messageParam and a corresponding tag expression
             // will be delivered for this registration.
    
@@ -145,7 +145,7 @@ ms.lasthandoff: 07/11/2017
                                                 "</wp:Toast>" +
                                             "</wp:Notification>";
    
-            // The stored categories tags are passed with the template registration.
+            // hello stored categories tags are passed with hello template registration.
    
             registrationTask.SetResult(await hub.RegisterTemplateAsync(channelUri.ToString(), 
                 templateBodyMPNS, "simpleMPNSTemplateExample", this.RetrieveCategories()));
@@ -153,7 +153,7 @@ ms.lasthandoff: 07/11/2017
             return await registrationTask.Task;
         }
    
-        // This is optional. It is used to receive notifications while the app is running.
+        // This is optional. It is used tooreceive notifications while hello app is running.
         void channel_ShellToastNotificationReceived(object sender, NotificationEventArgs e)
         {
             StringBuilder message = new StringBuilder();
@@ -161,7 +161,7 @@ ms.lasthandoff: 07/11/2017
    
             message.AppendFormat("Received Toast {0}:\n", DateTime.Now.ToShortTimeString());
    
-            // Parse out the information that was part of the message.
+            // Parse out hello information that was part of hello message.
             foreach (string key in e.Collection.Keys)
             {
                 message.AppendFormat("{0}: {1}\n", key, e.Collection[key]);
@@ -176,28 +176,28 @@ ms.lasthandoff: 07/11/2017
                 }
             }
    
-            // Display a dialog of all the fields in the toast.
+            // Display a dialog of all hello fields in hello toast.
             System.Windows.Deployment.Current.Dispatcher.BeginInvoke(() => 
             { 
                 MessageBox.Show(message.ToString()); 
             });
         }
 
-    <span data-ttu-id="6e693-123">Этот класс использует изолированное хранилище для хранения категорий новостей, которые должно получать данное устройство.</span><span class="sxs-lookup"><span data-stu-id="6e693-123">This class uses the isolated storage to store the categories of news that this device is to receive.</span></span> <span data-ttu-id="6e693-124">Он также содержит методы регистрации в этих категориях с помощью [шаблонной](notification-hubs-templates-cross-platform-push-messages.md) регистрации уведомлений.</span><span class="sxs-lookup"><span data-stu-id="6e693-124">It also contains methods to register for these categories using a [template](notification-hubs-templates-cross-platform-push-messages.md) notification registration.</span></span>
+    <span data-ttu-id="7c8a2-123">Этот класс использует hello изолированные хранилища toostore hello категории новостей, что устройство является tooreceive.</span><span class="sxs-lookup"><span data-stu-id="7c8a2-123">This class uses hello isolated storage toostore hello categories of news that this device is tooreceive.</span></span> <span data-ttu-id="7c8a2-124">Он также содержит методы tooregister для следующих категорий с помощью [шаблона](notification-hubs-templates-cross-platform-push-messages.md) регистрации уведомлений.</span><span class="sxs-lookup"><span data-stu-id="7c8a2-124">It also contains methods tooregister for these categories using a [template](notification-hubs-templates-cross-platform-push-messages.md) notification registration.</span></span>
 
 
-1. <span data-ttu-id="6e693-125">В файле проекта App.xaml.cs добавьте следующее свойство в класс **App** .</span><span class="sxs-lookup"><span data-stu-id="6e693-125">In the App.xaml.cs project file, add the following property to the **App** class.</span></span> <span data-ttu-id="6e693-126">Замените заполнители `<hub name>` и `<connection string with listen access>` именем центра уведомлений и строкой подключения для *DefaultListenSharedAccessSignature*, полученными ранее.</span><span class="sxs-lookup"><span data-stu-id="6e693-126">Replace the `<hub name>` and `<connection string with listen access>` placeholders with your notification hub name and the connection string for *DefaultListenSharedAccessSignature* that you obtained earlier.</span></span>
+1. <span data-ttu-id="7c8a2-125">Добавьте в файл проекта App.xaml.cs hello hello следующие свойства toohello **приложения** класса.</span><span class="sxs-lookup"><span data-stu-id="7c8a2-125">In hello App.xaml.cs project file, add hello following property toohello **App** class.</span></span> <span data-ttu-id="7c8a2-126">Замените hello `<hub name>` и `<connection string with listen access>` местозаполнителей уведомления имя и hello строку подключения к концентратору для *DefaultListenSharedAccessSignature* , полученный ранее.</span><span class="sxs-lookup"><span data-stu-id="7c8a2-126">Replace hello `<hub name>` and `<connection string with listen access>` placeholders with your notification hub name and hello connection string for *DefaultListenSharedAccessSignature* that you obtained earlier.</span></span>
    
         public Notifications notifications = new Notifications("<hub name>", "<connection string with listen access>");
    
    > [!NOTE]
-   > <span data-ttu-id="6e693-127">Так как учетные данные, которые распространяются с помощью клиентского приложения, обычно небезопасны, с помощью вашего клиентского приложения следует распространять только ключ для доступа к прослушиванию.</span><span class="sxs-lookup"><span data-stu-id="6e693-127">Because credentials that are distributed with a client app are not generally secure, you should only distribute the key for listen access with your client app.</span></span> <span data-ttu-id="6e693-128">Доступ к прослушиванию позволяет приложению регистрироваться для использования уведомлений, однако при этом нельзя изменять имеющиеся регистрации и отправлять уведомления.</span><span class="sxs-lookup"><span data-stu-id="6e693-128">Listen access enables your app to register for notifications, but existing registrations cannot be modified and notifications cannot be sent.</span></span> <span data-ttu-id="6e693-129">Для отправки уведомлений и изменения существующих регистраций используется ключ полного доступа в защищенной серверной службе.</span><span class="sxs-lookup"><span data-stu-id="6e693-129">The full access key is used in a secured backend service for sending notifications and changing existing registrations.</span></span>
+   > <span data-ttu-id="7c8a2-127">Так как учетные данные, которые распространяются с помощью клиентского приложения, обычно не безопасны, hello ключ для прослушивания доступа следует распространять только с помощью клиентского приложения.</span><span class="sxs-lookup"><span data-stu-id="7c8a2-127">Because credentials that are distributed with a client app are not generally secure, you should only distribute hello key for listen access with your client app.</span></span> <span data-ttu-id="7c8a2-128">Прослушивать доступа включает tooregister вашего приложения для уведомлений, но существующие регистрации нельзя изменить, и не может отправлять уведомления.</span><span class="sxs-lookup"><span data-stu-id="7c8a2-128">Listen access enables your app tooregister for notifications, but existing registrations cannot be modified and notifications cannot be sent.</span></span> <span data-ttu-id="7c8a2-129">Полный доступ Hello используется в защищенной серверной службе для отправки уведомлений и изменять существующие регистрации.</span><span class="sxs-lookup"><span data-stu-id="7c8a2-129">hello full access key is used in a secured backend service for sending notifications and changing existing registrations.</span></span>
    > 
    > 
-2. <span data-ttu-id="6e693-130">В MainPage.xaml.cs добавьте следующую строку:</span><span class="sxs-lookup"><span data-stu-id="6e693-130">In your MainPage.xaml.cs, add the following line:</span></span>
+2. <span data-ttu-id="7c8a2-130">Добавьте в ваш MainPage.xaml.cs hello, следующей строкой.</span><span class="sxs-lookup"><span data-stu-id="7c8a2-130">In your MainPage.xaml.cs, add hello following line:</span></span>
    
         using Windows.UI.Popups;
-3. <span data-ttu-id="6e693-131">В файле проекта MainPage.xaml.cs добавьте следующий метод:</span><span class="sxs-lookup"><span data-stu-id="6e693-131">In the MainPage.xaml.cs project file, add the following method:</span></span>
+3. <span data-ttu-id="7c8a2-131">В файле проекта MainPage.xaml.cs hello добавьте следующий метод hello:</span><span class="sxs-lookup"><span data-stu-id="7c8a2-131">In hello MainPage.xaml.cs project file, add hello following method:</span></span>
    
         private async void SubscribeButton_Click(object sender, RoutedEventArgs e)
         {
@@ -215,19 +215,19 @@ ms.lasthandoff: 07/11/2017
              result.RegistrationId);
         }
    
-    <span data-ttu-id="6e693-132">Этот метод создает список категорий и использует класс **Notifications** класс для хранения списка в локальном хранилище и регистрации соответствующих тегов в концентраторе уведомлений.</span><span class="sxs-lookup"><span data-stu-id="6e693-132">This method creates a list of categories and uses the **Notifications** class to store the list in the local storage and register the corresponding tags with your notification hub.</span></span> <span data-ttu-id="6e693-133">При изменении категорий регистрация создается заново с новыми категориями.</span><span class="sxs-lookup"><span data-stu-id="6e693-133">When categories are changed, the registration is recreated with the new categories.</span></span>
+    <span data-ttu-id="7c8a2-132">Этот метод создает список категорий и использует hello **уведомления** класса toostore список hello в локальном хранилище hello и зарегистрируйте hello соответствующие теги в концентраторе уведомлений.</span><span class="sxs-lookup"><span data-stu-id="7c8a2-132">This method creates a list of categories and uses hello **Notifications** class toostore hello list in hello local storage and register hello corresponding tags with your notification hub.</span></span> <span data-ttu-id="7c8a2-133">При изменении категории регистрации hello воссоздается при hello новые категории.</span><span class="sxs-lookup"><span data-stu-id="7c8a2-133">When categories are changed, hello registration is recreated with hello new categories.</span></span>
 
-<span data-ttu-id="6e693-134">Ваше приложение теперь может сохранять набор категорий в локальном хранилище на устройстве и регистрироваться в центре уведомлений всякий раз, когда пользователь изменяет выбранные категории.</span><span class="sxs-lookup"><span data-stu-id="6e693-134">Your app is now able to store a set of categories in local storage on the device and register with the notification hub whenever the user changes the selection of categories.</span></span>
+<span data-ttu-id="7c8a2-134">Приложение теперь может toostore набор категорий в локальном хранилище на устройстве hello и зарегистрировать с концентратором уведомлений hello всякий раз, когда изменения пользователя hello hello выбора категорий.</span><span class="sxs-lookup"><span data-stu-id="7c8a2-134">Your app is now able toostore a set of categories in local storage on hello device and register with hello notification hub whenever hello user changes hello selection of categories.</span></span>
 
-## <a name="register-for-notifications"></a><span data-ttu-id="6e693-135">Регистрация для использования уведомлений</span><span class="sxs-lookup"><span data-stu-id="6e693-135">Register for notifications</span></span>
-<span data-ttu-id="6e693-136">Эти действия позволяют зарегистрироваться в концентраторе уведомлений при запуске с использованием категорий, сохраненных в локальном хранилище.</span><span class="sxs-lookup"><span data-stu-id="6e693-136">These steps register with the notification hub on startup using the categories that have been stored in local storage.</span></span>
+## <a name="register-for-notifications"></a><span data-ttu-id="7c8a2-135">Регистрация для использования уведомлений</span><span class="sxs-lookup"><span data-stu-id="7c8a2-135">Register for notifications</span></span>
+<span data-ttu-id="7c8a2-136">Эти шаги зарегистрировать hello концентратора уведомлений при запуске с помощью категорий hello, хранящихся в локальном хранилище.</span><span class="sxs-lookup"><span data-stu-id="7c8a2-136">These steps register with hello notification hub on startup using hello categories that have been stored in local storage.</span></span>
 
 > [!NOTE]
-> <span data-ttu-id="6e693-137">Поскольку URI канала, назначенный службой push-уведомлений Windows (MPNS), может измениться в любое время, следует регулярно производить регистрацию для использования уведомлений, чтобы предотвратить сбои уведомлений.</span><span class="sxs-lookup"><span data-stu-id="6e693-137">Because the channel URI assigned by the Microsoft Push Notification Service (MPNS) can change at any time, you should register for notifications frequently to avoid notification failures.</span></span> <span data-ttu-id="6e693-138">В этом примере регистрация для использования уведомлений осуществляется при каждом запуске приложения.</span><span class="sxs-lookup"><span data-stu-id="6e693-138">This example registers for notifications every time that the app starts.</span></span> <span data-ttu-id="6e693-139">Для тех приложений, которые запускаются часто, более одного раза в день, возможно, лучше пропустить регистрацию, чтобы сэкономить трафик, если с момента прошлой регистрации прошло меньше суток.</span><span class="sxs-lookup"><span data-stu-id="6e693-139">For apps that are run frequently, more than once a day, you can probably skip registration to preserve bandwidth if less than a day has passed since the previous registration.</span></span>
+> <span data-ttu-id="7c8a2-137">URI, присвоенный hello Microsoft Push Notification Service (MPNS) hello канала может меняться в любое время, следует зарегистрировать для получения уведомлений часто tooavoid сбоев уведомлений.</span><span class="sxs-lookup"><span data-stu-id="7c8a2-137">Because hello channel URI assigned by hello Microsoft Push Notification Service (MPNS) can change at any time, you should register for notifications frequently tooavoid notification failures.</span></span> <span data-ttu-id="7c8a2-138">В этом примере регистрируется для уведомлений, каждый раз при запуске этого приложения hello.</span><span class="sxs-lookup"><span data-stu-id="7c8a2-138">This example registers for notifications every time that hello app starts.</span></span> <span data-ttu-id="7c8a2-139">Для приложений, которые часто выполняются более чем один раз в день, возможно, если можно пропустить пропускной способности toopreserve регистрации менее чем за день прошел с момента предыдущей регистрации hello.</span><span class="sxs-lookup"><span data-stu-id="7c8a2-139">For apps that are run frequently, more than once a day, you can probably skip registration toopreserve bandwidth if less than a day has passed since hello previous registration.</span></span>
 > 
 > 
 
-1. <span data-ttu-id="6e693-140">Откройте файл App.xaml.cs, добавьте модификатор **async** в метод **Application_Launching** и замените код регистрации центров уведомлений, добавленный в [Отправка push-уведомлений в приложения Windows Phone с помощью центров уведомлений Azure], следующей строкой кода.</span><span class="sxs-lookup"><span data-stu-id="6e693-140">Open the App.xaml.cs file and add the **async** modifier to **Application_Launching** method and replace the Notification Hubs registration code that you added in [Get started with Notification Hubs] with the following code:</span></span>
+1. <span data-ttu-id="7c8a2-140">Откройте файл App.xaml.cs hello и добавьте hello **async** модификатор слишком**Application_Launching** метод и заменить код регистрации hello концентраторов уведомлений, добавленный в [приступить к работе с концентраторами уведомлений] с hello, следующий код:</span><span class="sxs-lookup"><span data-stu-id="7c8a2-140">Open hello App.xaml.cs file and add hello **async** modifier too**Application_Launching** method and replace hello Notification Hubs registration code that you added in [Get started with Notification Hubs] with hello following code:</span></span>
    
         private async void Application_Launching(object sender, LaunchingEventArgs e)
         {
@@ -240,8 +240,8 @@ ms.lasthandoff: 07/11/2017
                 });
         }
    
-    <span data-ttu-id="6e693-141">Это гарантирует, что при каждом запуске приложения оно извлекает категории из локального хранилища и запрашивает для них регистрацию.</span><span class="sxs-lookup"><span data-stu-id="6e693-141">This makes sure that every time the app starts it retrieves the categories from local storage and requests a registration for these categories.</span></span>
-2. <span data-ttu-id="6e693-142">В файле проекта MainPage.xaml.cs добавьте следующий код, который выполняет метод **OnNavigatedTo** :</span><span class="sxs-lookup"><span data-stu-id="6e693-142">In the MainPage.xaml.cs project file, add the following code that implements the **OnNavigatedTo** method:</span></span>
+    <span data-ttu-id="7c8a2-141">Это гарантирует, что каждый раз при запуске приложение hello он получает hello категорий из локального хранилища и запросов регистрации для следующих категорий.</span><span class="sxs-lookup"><span data-stu-id="7c8a2-141">This makes sure that every time hello app starts it retrieves hello categories from local storage and requests a registration for these categories.</span></span>
+2. <span data-ttu-id="7c8a2-142">В файле проекта MainPage.xaml.cs hello, добавьте следующий код, который реализует hello hello **OnNavigatedTo** метод:</span><span class="sxs-lookup"><span data-stu-id="7c8a2-142">In hello MainPage.xaml.cs project file, add hello following code that implements hello **OnNavigatedTo** method:</span></span>
    
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
@@ -255,48 +255,48 @@ ms.lasthandoff: 07/11/2017
             if (categories.Contains("Sports")) SportsCheckBox.IsChecked = true;
         }
    
-    <span data-ttu-id="6e693-143">При этом главная страница обновляется в зависимости от состояния ранее сохраненных категорий.</span><span class="sxs-lookup"><span data-stu-id="6e693-143">This updates the main page based on the status of previously saved categories.</span></span>
+    <span data-ttu-id="7c8a2-143">Этого обновления hello главной страницы на основе состояния hello ранее сохраненные категорий.</span><span class="sxs-lookup"><span data-stu-id="7c8a2-143">This updates hello main page based on hello status of previously saved categories.</span></span>
 
-<span data-ttu-id="6e693-144">Теперь приложение готово и может сохранять набор категорий в локальном хранилище устройств и использовать его для регистрации в концентраторе уведомлений всякий раз, когда пользователь изменяет выбранные категории.</span><span class="sxs-lookup"><span data-stu-id="6e693-144">The app is now complete and can store a set of categories in the device local storage used to register with the notification hub whenever the user changes the selection of categories.</span></span> <span data-ttu-id="6e693-145">А сейчас определим серверную часть, которая может отправлять уведомления категорий в это приложение.</span><span class="sxs-lookup"><span data-stu-id="6e693-145">Next, we will define a backend that can send category notifications to this app.</span></span>
+<span data-ttu-id="7c8a2-144">приложение Hello завершен, можно сохранить набор категорий в hello tooregister локального хранилища используется устройством с концентратором уведомлений hello всякий раз, когда изменения пользователя hello hello выбора категорий.</span><span class="sxs-lookup"><span data-stu-id="7c8a2-144">hello app is now complete and can store a set of categories in hello device local storage used tooregister with hello notification hub whenever hello user changes hello selection of categories.</span></span> <span data-ttu-id="7c8a2-145">Затем мы определим серверной части, можно отправить приложение toothis категории уведомлений.</span><span class="sxs-lookup"><span data-stu-id="7c8a2-145">Next, we will define a backend that can send category notifications toothis app.</span></span>
 
-## <a name="sending-tagged-notifications"></a><span data-ttu-id="6e693-146">Отправка уведомлений с тегами</span><span class="sxs-lookup"><span data-stu-id="6e693-146">Sending tagged notifications</span></span>
+## <a name="sending-tagged-notifications"></a><span data-ttu-id="7c8a2-146">Отправка уведомлений с тегами</span><span class="sxs-lookup"><span data-stu-id="7c8a2-146">Sending tagged notifications</span></span>
 [!INCLUDE [notification-hubs-send-categories-template](../../includes/notification-hubs-send-categories-template.md)]
 
-## <a name="run-the-app-and-generate-notifications"></a><span data-ttu-id="6e693-147">Запуск приложения и создание уведомлений</span><span class="sxs-lookup"><span data-stu-id="6e693-147">Run the app and generate notifications</span></span>
-1. <span data-ttu-id="6e693-148">В Visual Studio нажмите клавишу F5, чтобы скомпилировать и запустить приложение.</span><span class="sxs-lookup"><span data-stu-id="6e693-148">In Visual Studio, press F5 to compile and start the app.</span></span>
+## <a name="run-hello-app-and-generate-notifications"></a><span data-ttu-id="7c8a2-147">Запустите приложение hello и создавать уведомления</span><span class="sxs-lookup"><span data-stu-id="7c8a2-147">Run hello app and generate notifications</span></span>
+1. <span data-ttu-id="7c8a2-148">В Visual Studio нажмите клавишу F5 toocompile и запустить приложение hello.</span><span class="sxs-lookup"><span data-stu-id="7c8a2-148">In Visual Studio, press F5 toocompile and start hello app.</span></span>
    
     ![][1]
    
-    <span data-ttu-id="6e693-149">Обратите внимание, что в пользовательском интерфейсе присутствует набор переключателей, позволяющий выбрать категории для подписки.</span><span class="sxs-lookup"><span data-stu-id="6e693-149">Note that the app UI provides a set of toggles that lets you choose the categories to subscribe to.</span></span>
-2. <span data-ttu-id="6e693-150">Включите переключатели одной или нескольких категорий, затем нажмите **Подписаться**.</span><span class="sxs-lookup"><span data-stu-id="6e693-150">Enable one or more categories toggles, then click **Subscribe**.</span></span>
+    <span data-ttu-id="7c8a2-149">Обратите внимание, что приложение hello пользовательского интерфейса предоставляет набор переключает, позволяет выбрать toosubscribe hello категорий для.</span><span class="sxs-lookup"><span data-stu-id="7c8a2-149">Note that hello app UI provides a set of toggles that lets you choose hello categories toosubscribe to.</span></span>
+2. <span data-ttu-id="7c8a2-150">Включите переключатели одной или нескольких категорий, затем нажмите **Подписаться**.</span><span class="sxs-lookup"><span data-stu-id="7c8a2-150">Enable one or more categories toggles, then click **Subscribe**.</span></span>
    
-    <span data-ttu-id="6e693-151">Приложение преобразует выбранные категории в теги и запрашивает у концентратора уведомлений новую регистрацию устройств для выбранных тегов.</span><span class="sxs-lookup"><span data-stu-id="6e693-151">The app converts the selected categories into tags and requests a new device registration for the selected tags from the notification hub.</span></span> <span data-ttu-id="6e693-152">Зарегистрированные категории возвращаются и отображаются в диалоговом окне.</span><span class="sxs-lookup"><span data-stu-id="6e693-152">The registered categories are returned and displayed in a dialog.</span></span>
+    <span data-ttu-id="7c8a2-151">приложение Hello преобразует hello выбранной категории в теги и запрашивает новую регистрацию устройств для hello выбранных тегов из концентратора уведомлений hello.</span><span class="sxs-lookup"><span data-stu-id="7c8a2-151">hello app converts hello selected categories into tags and requests a new device registration for hello selected tags from hello notification hub.</span></span> <span data-ttu-id="7c8a2-152">Hello зарегистрированных категорий возвращается и отображается в диалоговом окне.</span><span class="sxs-lookup"><span data-stu-id="7c8a2-152">hello registered categories are returned and displayed in a dialog.</span></span>
    
     ![][2]
-3. <span data-ttu-id="6e693-153">После получения подтверждения того, что подписка на категории была завершена, запустите консольное приложение для отправки уведомлений для каждой категории.</span><span class="sxs-lookup"><span data-stu-id="6e693-153">After receiving a confirmation that your categories were subscription completed, run the console app to send notifications for each categories.</span></span> <span data-ttu-id="6e693-154">Убедитесь, что получены только уведомления для категорий, на которые вы подписаны.</span><span class="sxs-lookup"><span data-stu-id="6e693-154">Verify you only receive a notification for the categories you have subscribed to.</span></span>
+3. <span data-ttu-id="7c8a2-153">После получения подтверждения, что категорий были завершения подписки, запустите уведомления toosend hello консольного приложения для каждой категории.</span><span class="sxs-lookup"><span data-stu-id="7c8a2-153">After receiving a confirmation that your categories were subscription completed, run hello console app toosend notifications for each categories.</span></span> <span data-ttu-id="7c8a2-154">Убедитесь, что только вы получаете уведомление для hello категорий, которые вы подписаны.</span><span class="sxs-lookup"><span data-stu-id="7c8a2-154">Verify you only receive a notification for hello categories you have subscribed to.</span></span>
    
     ![][3]
 
-<span data-ttu-id="6e693-155">Вы завершили эту тему.</span><span class="sxs-lookup"><span data-stu-id="6e693-155">You have completed this topic.</span></span>
+<span data-ttu-id="7c8a2-155">Вы завершили эту тему.</span><span class="sxs-lookup"><span data-stu-id="7c8a2-155">You have completed this topic.</span></span>
 
 <!--##Next steps
 
-In this tutorial we learned how to broadcast breaking news by category. Consider completing one of the following tutorials that highlight other advanced Notification Hubs scenarios:
+In this tutorial we learned how toobroadcast breaking news by category. Consider completing one of hello following tutorials that highlight other advanced Notification Hubs scenarios:
 
-+ [Use Notification Hubs to broadcast localized breaking news]
++ [Use Notification Hubs toobroadcast localized breaking news]
 
-    Learn how to expand the breaking news app to enable sending localized notifications.
+    Learn how tooexpand hello breaking news app tooenable sending localized notifications.
 
 + [Notify users with Notification Hubs]
 
-    Learn how to push notifications to specific authenticated users. This is a good solution for sending notifications only to specific users.
+    Learn how toopush notifications toospecific authenticated users. This is a good solution for sending notifications only toospecific users.
 -->
 
 <!-- Anchors. -->
-[Add category selection to the app]: #adding-categories
+[Add category selection toohello app]: #adding-categories
 [Register for notifications]: #register
 [Send notifications from your back-end]: #send
-[Run the app and generate notifications]: #test-app
+[Run hello app and generate notifications]: #test-app
 [Next Steps]: #next-steps
 
 <!-- Images. -->
@@ -307,10 +307,10 @@ In this tutorial we learned how to broadcast breaking news by category. Consider
 
 
 <!-- URLs.-->
-<span data-ttu-id="6e693-156">[Отправка push-уведомлений в приложения Windows Phone с помощью центров уведомлений Azure]: /manage/services/notification-hubs/get-started-notification-hubs-wp8/</span><span class="sxs-lookup"><span data-stu-id="6e693-156">[Get started with Notification Hubs]: /manage/services/notification-hubs/get-started-notification-hubs-wp8/</span></span>
-[Use Notification Hubs to broadcast localized breaking news]: ../breakingnews-localized-wp8.md
+[приступить к работе с концентраторами уведомлений]: /manage/services/notification-hubs/get-started-notification-hubs-wp8/
+[Use Notification Hubs toobroadcast localized breaking news]: ../breakingnews-localized-wp8.md
 [Notify users with Notification Hubs]: /manage/services/notification-hubs/notify-users/
 [Mobile Service]: /develop/mobile/tutorials/get-started
 [Notification Hubs Guidance]: http://msdn.microsoft.com/library/jj927170.aspx
-[Notification Hubs How-To for Windows Phone]: ??
+[Notification Hubs How-toofor Windows Phone]: ??
 

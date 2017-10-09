@@ -1,6 +1,6 @@
 ---
-title: "Интерфейсы API для выставления счетов Azure корпоративным клиентам: прейскурант | Документация Майкрософт"
-description: "Узнайте, как с помощью интерфейсов API отчетов для корпоративных клиентов Azure извлекать данные о потреблении программным способом."
+title: "aaaAzure выставления счетов Enterprise API-интерфейсов - PriceSheet | Документы Microsoft"
+description: "Дополнительные сведения о hello API отчетов, которые программным образом включить корпоративных клиентов toopull потребления данных Azure."
 services: 
 documentationcenter: 
 author: aedwin
@@ -15,29 +15,29 @@ ms.tgt_pltfrm: na
 ms.workload: billing
 ms.date: 04/25/2017
 ms.author: aedwin
-ms.openlocfilehash: 2e7d6e883abe4cee13bc5f684baf2a1ea9c6c397
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 4cfe694c63fba266d117054b046d9caacb3b7197
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="reporting-apis-for-enterprise-customers---price-sheet"></a><span data-ttu-id="2fe21-103">API-интерфейсы отчетов для корпоративных клиентов: прейскурант</span><span class="sxs-lookup"><span data-stu-id="2fe21-103">Reporting APIs for Enterprise customers - Price Sheet</span></span>
+# <a name="reporting-apis-for-enterprise-customers---price-sheet"></a><span data-ttu-id="fbfb8-103">API-интерфейсы отчетов для корпоративных клиентов: прейскурант</span><span class="sxs-lookup"><span data-stu-id="fbfb8-103">Reporting APIs for Enterprise customers - Price Sheet</span></span>
 
-<span data-ttu-id="2fe21-104">API прейскуранта предоставляет соответствующий тариф для каждой метрики в отдельной регистрации и за определенный расчетный период.</span><span class="sxs-lookup"><span data-stu-id="2fe21-104">The Price Sheet API provides the applicable rate for each Meter for the given Enrollment and Billing Period.</span></span>
+<span data-ttu-id="fbfb8-104">Hello цена лист API предоставляет соответствующему курсу hello для каждого индикатора для регистрации и выставления счетов за период hello.</span><span class="sxs-lookup"><span data-stu-id="fbfb8-104">hello Price Sheet API provides hello applicable rate for each Meter for hello given Enrollment and Billing Period.</span></span>
 
-##<a name="request"></a><span data-ttu-id="2fe21-105">Запрос</span><span class="sxs-lookup"><span data-stu-id="2fe21-105">Request</span></span>
-<span data-ttu-id="2fe21-106">Общие свойства заголовка, которые необходимо добавить, указываются [здесь](billing-enterprise-api.md).</span><span class="sxs-lookup"><span data-stu-id="2fe21-106">Common header properties that need to be added are specified [here](billing-enterprise-api.md).</span></span> <span data-ttu-id="2fe21-107">Если расчетный период не указан, то возвращаются данные за текущий расчетный период.</span><span class="sxs-lookup"><span data-stu-id="2fe21-107">If a billing period is not specified, then data for the current billing period is returned.</span></span>
+##<a name="request"></a><span data-ttu-id="fbfb8-105">Запрос</span><span class="sxs-lookup"><span data-stu-id="fbfb8-105">Request</span></span>
+<span data-ttu-id="fbfb8-106">Задаются общие свойства заголовка, которые необходимо добавить toobe [здесь](billing-enterprise-api.md).</span><span class="sxs-lookup"><span data-stu-id="fbfb8-106">Common header properties that need toobe added are specified [here](billing-enterprise-api.md).</span></span> <span data-ttu-id="fbfb8-107">Если периода выставления счетов не указан, данные для выставления счетов hello для текущего периода возвращается.</span><span class="sxs-lookup"><span data-stu-id="fbfb8-107">If a billing period is not specified, then data for hello current billing period is returned.</span></span>
 
-|<span data-ttu-id="2fe21-108">Метод</span><span class="sxs-lookup"><span data-stu-id="2fe21-108">Method</span></span> | <span data-ttu-id="2fe21-109">URI запроса</span><span class="sxs-lookup"><span data-stu-id="2fe21-109">Request URI</span></span>|
+|<span data-ttu-id="fbfb8-108">Метод</span><span class="sxs-lookup"><span data-stu-id="fbfb8-108">Method</span></span> | <span data-ttu-id="fbfb8-109">URI запроса</span><span class="sxs-lookup"><span data-stu-id="fbfb8-109">Request URI</span></span>|
 |-|-|
-|<span data-ttu-id="2fe21-110">ПОЛУЧЕНИЕ</span><span class="sxs-lookup"><span data-stu-id="2fe21-110">GET</span></span>|<span data-ttu-id="2fe21-111">https://consumption.azure.com/v2/enrollments/{enrollmentNumber}/pricesheet</span><span class="sxs-lookup"><span data-stu-id="2fe21-111">https://consumption.azure.com/v2/enrollments/{enrollmentNumber}/pricesheet</span></span>|
-|<span data-ttu-id="2fe21-112">ПОЛУЧЕНИЕ</span><span class="sxs-lookup"><span data-stu-id="2fe21-112">GET</span></span>|<span data-ttu-id="2fe21-113">https://consumption.azure.com/v2/enrollments/{enrollmentNumber}/billingPeriods/{billingPeriod}/pricesheet</span><span class="sxs-lookup"><span data-stu-id="2fe21-113">https://consumption.azure.com/v2/enrollments/{enrollmentNumber}/billingPeriods/{billingPeriod}/pricesheet</span></span>|
+|<span data-ttu-id="fbfb8-110">ПОЛУЧЕНИЕ</span><span class="sxs-lookup"><span data-stu-id="fbfb8-110">GET</span></span>|<span data-ttu-id="fbfb8-111">https://consumption.azure.com/v2/enrollments/{enrollmentNumber}/pricesheet</span><span class="sxs-lookup"><span data-stu-id="fbfb8-111">https://consumption.azure.com/v2/enrollments/{enrollmentNumber}/pricesheet</span></span>|
+|<span data-ttu-id="fbfb8-112">ПОЛУЧЕНИЕ</span><span class="sxs-lookup"><span data-stu-id="fbfb8-112">GET</span></span>|<span data-ttu-id="fbfb8-113">https://consumption.azure.com/v2/enrollments/{enrollmentNumber}/billingPeriods/{billingPeriod}/pricesheet</span><span class="sxs-lookup"><span data-stu-id="fbfb8-113">https://consumption.azure.com/v2/enrollments/{enrollmentNumber}/billingPeriods/{billingPeriod}/pricesheet</span></span>|
 
 > [!Note]
-> <span data-ttu-id="2fe21-114">Чтобы использовать предварительную версию API, измените v2 на v1 в URL-адресе выше.</span><span class="sxs-lookup"><span data-stu-id="2fe21-114">To use the preview version of API, replace v2 with v1 in the above URL.</span></span>
+> <span data-ttu-id="fbfb8-114">toouse hello предварительную версию API, замените v2 v1 в hello выше URL-адрес.</span><span class="sxs-lookup"><span data-stu-id="fbfb8-114">toouse hello preview version of API, replace v2 with v1 in hello above URL.</span></span>
 >
 
-## <a name="response"></a><span data-ttu-id="2fe21-115">Ответ</span><span class="sxs-lookup"><span data-stu-id="2fe21-115">Response</span></span>
+## <a name="response"></a><span data-ttu-id="fbfb8-115">Ответ</span><span class="sxs-lookup"><span data-stu-id="fbfb8-115">Response</span></span>
 
     
         [
@@ -68,29 +68,29 @@ ms.lasthandoff: 08/03/2017
     
 
 > [!Note]
-><span data-ttu-id="2fe21-116">Если вы используете API предварительной версии, поле meterId недоступно.</span><span class="sxs-lookup"><span data-stu-id="2fe21-116">If you are using the Preview API, meterId field is not available.</span></span>
+><span data-ttu-id="fbfb8-116">Если вы используете hello API предварительной версии, meterId поле недоступно.</span><span class="sxs-lookup"><span data-stu-id="fbfb8-116">If you are using hello Preview API, meterId field is not available.</span></span>
 >
 
-<span data-ttu-id="2fe21-117">**Определения свойств ответа**</span><span class="sxs-lookup"><span data-stu-id="2fe21-117">**Response property definitions**</span></span>
+<span data-ttu-id="fbfb8-117">**Определения свойств ответа**</span><span class="sxs-lookup"><span data-stu-id="fbfb8-117">**Response property definitions**</span></span>
 
-|<span data-ttu-id="2fe21-118">Имя свойства</span><span class="sxs-lookup"><span data-stu-id="2fe21-118">Property Name</span></span>| <span data-ttu-id="2fe21-119">Тип</span><span class="sxs-lookup"><span data-stu-id="2fe21-119">Type</span></span>| <span data-ttu-id="2fe21-120">Описание</span><span class="sxs-lookup"><span data-stu-id="2fe21-120">Description</span></span>
+|<span data-ttu-id="fbfb8-118">Имя свойства</span><span class="sxs-lookup"><span data-stu-id="fbfb8-118">Property Name</span></span>| <span data-ttu-id="fbfb8-119">Тип</span><span class="sxs-lookup"><span data-stu-id="fbfb8-119">Type</span></span>| <span data-ttu-id="fbfb8-120">Описание</span><span class="sxs-lookup"><span data-stu-id="fbfb8-120">Description</span></span>
 |-|-|-|
-|<span data-ttu-id="2fe21-121">id</span><span class="sxs-lookup"><span data-stu-id="2fe21-121">id</span></span>| <span data-ttu-id="2fe21-122">string</span><span class="sxs-lookup"><span data-stu-id="2fe21-122">string</span></span>| <span data-ttu-id="2fe21-123">Уникальный идентификатор, представляющий определенный элемент PriceSheet (метрика за расчетный период)</span><span class="sxs-lookup"><span data-stu-id="2fe21-123">The unique Id that represents a particular PriceSheet item (meter by billing period)</span></span>|
-|<span data-ttu-id="2fe21-124">billingPeriodId</span><span class="sxs-lookup"><span data-stu-id="2fe21-124">billingPeriodId</span></span>| <span data-ttu-id="2fe21-125">string</span><span class="sxs-lookup"><span data-stu-id="2fe21-125">string</span></span>| <span data-ttu-id="2fe21-126">Уникальный идентификатор, представляющий определенный расчетный период</span><span class="sxs-lookup"><span data-stu-id="2fe21-126">The unique Id that represents a particular Billing period</span></span>|
-|<span data-ttu-id="2fe21-127">meterId</span><span class="sxs-lookup"><span data-stu-id="2fe21-127">meterId</span></span>| <span data-ttu-id="2fe21-128">string</span><span class="sxs-lookup"><span data-stu-id="2fe21-128">string</span></span>| <span data-ttu-id="2fe21-129">Идентификатор средства измерения.</span><span class="sxs-lookup"><span data-stu-id="2fe21-129">The identifier for the meter.</span></span> <span data-ttu-id="2fe21-130">Может сопоставляться с идентификатором meterId использования.</span><span class="sxs-lookup"><span data-stu-id="2fe21-130">It can be mapped to the usage meterId.</span></span>|
-|<span data-ttu-id="2fe21-131">meterName</span><span class="sxs-lookup"><span data-stu-id="2fe21-131">meterName</span></span>| <span data-ttu-id="2fe21-132">string</span><span class="sxs-lookup"><span data-stu-id="2fe21-132">string</span></span>| <span data-ttu-id="2fe21-133">Имя метрики</span><span class="sxs-lookup"><span data-stu-id="2fe21-133">The meter name</span></span>|
-|<span data-ttu-id="2fe21-134">unitOfMeasure</span><span class="sxs-lookup"><span data-stu-id="2fe21-134">unitOfMeasure</span></span>| <span data-ttu-id="2fe21-135">string</span><span class="sxs-lookup"><span data-stu-id="2fe21-135">string</span></span>| <span data-ttu-id="2fe21-136">Единица измерения для измерения службы</span><span class="sxs-lookup"><span data-stu-id="2fe21-136">The Unit of Measure for measuring the service</span></span>|
-|<span data-ttu-id="2fe21-137">includedQuantity</span><span class="sxs-lookup"><span data-stu-id="2fe21-137">includedQuantity</span></span>| <span data-ttu-id="2fe21-138">decimal</span><span class="sxs-lookup"><span data-stu-id="2fe21-138">decimal</span></span>| <span data-ttu-id="2fe21-139">Количество, которое включено</span><span class="sxs-lookup"><span data-stu-id="2fe21-139">Quantity that is included</span></span> |
-|<span data-ttu-id="2fe21-140">partNumber</span><span class="sxs-lookup"><span data-stu-id="2fe21-140">partNumber</span></span>| <span data-ttu-id="2fe21-141">string</span><span class="sxs-lookup"><span data-stu-id="2fe21-141">string</span></span>| <span data-ttu-id="2fe21-142">Артикул, связанный со метрикой</span><span class="sxs-lookup"><span data-stu-id="2fe21-142">The part number associated with the Meter</span></span>|
-|<span data-ttu-id="2fe21-143">unitPrice</span><span class="sxs-lookup"><span data-stu-id="2fe21-143">unitPrice</span></span>| <span data-ttu-id="2fe21-144">decimal</span><span class="sxs-lookup"><span data-stu-id="2fe21-144">decimal</span></span>| <span data-ttu-id="2fe21-145">Цена единицы измерения для метрики</span><span class="sxs-lookup"><span data-stu-id="2fe21-145">The unit price for the meter</span></span>|
-|<span data-ttu-id="2fe21-146">currencyCode</span><span class="sxs-lookup"><span data-stu-id="2fe21-146">currencyCode</span></span>| <span data-ttu-id="2fe21-147">string</span><span class="sxs-lookup"><span data-stu-id="2fe21-147">string</span></span>| <span data-ttu-id="2fe21-148">Код валюты для unitPrice</span><span class="sxs-lookup"><span data-stu-id="2fe21-148">The currency code for the unitPrice</span></span>|
+|<span data-ttu-id="fbfb8-121">id</span><span class="sxs-lookup"><span data-stu-id="fbfb8-121">id</span></span>| <span data-ttu-id="fbfb8-122">string</span><span class="sxs-lookup"><span data-stu-id="fbfb8-122">string</span></span>| <span data-ttu-id="fbfb8-123">Hello уникальный идентификатор, представляющий определенный элемент PriceSheet (индикатор, расчетный период)</span><span class="sxs-lookup"><span data-stu-id="fbfb8-123">hello unique Id that represents a particular PriceSheet item (meter by billing period)</span></span>|
+|<span data-ttu-id="fbfb8-124">billingPeriodId</span><span class="sxs-lookup"><span data-stu-id="fbfb8-124">billingPeriodId</span></span>| <span data-ttu-id="fbfb8-125">string</span><span class="sxs-lookup"><span data-stu-id="fbfb8-125">string</span></span>| <span data-ttu-id="fbfb8-126">Hello уникальный идентификатор, представляющий определенного периода выставления счетов</span><span class="sxs-lookup"><span data-stu-id="fbfb8-126">hello unique Id that represents a particular Billing period</span></span>|
+|<span data-ttu-id="fbfb8-127">meterId</span><span class="sxs-lookup"><span data-stu-id="fbfb8-127">meterId</span></span>| <span data-ttu-id="fbfb8-128">string</span><span class="sxs-lookup"><span data-stu-id="fbfb8-128">string</span></span>| <span data-ttu-id="fbfb8-129">Идентификатор Hello индикатор hello.</span><span class="sxs-lookup"><span data-stu-id="fbfb8-129">hello identifier for hello meter.</span></span> <span data-ttu-id="fbfb8-130">Это может быть meterId сопоставленных toohello использования.</span><span class="sxs-lookup"><span data-stu-id="fbfb8-130">It can be mapped toohello usage meterId.</span></span>|
+|<span data-ttu-id="fbfb8-131">meterName</span><span class="sxs-lookup"><span data-stu-id="fbfb8-131">meterName</span></span>| <span data-ttu-id="fbfb8-132">string</span><span class="sxs-lookup"><span data-stu-id="fbfb8-132">string</span></span>| <span data-ttu-id="fbfb8-133">имя индикатора Hello</span><span class="sxs-lookup"><span data-stu-id="fbfb8-133">hello meter name</span></span>|
+|<span data-ttu-id="fbfb8-134">unitOfMeasure</span><span class="sxs-lookup"><span data-stu-id="fbfb8-134">unitOfMeasure</span></span>| <span data-ttu-id="fbfb8-135">string</span><span class="sxs-lookup"><span data-stu-id="fbfb8-135">string</span></span>| <span data-ttu-id="fbfb8-136">Hello единица измерения для измерения службы hello</span><span class="sxs-lookup"><span data-stu-id="fbfb8-136">hello Unit of Measure for measuring hello service</span></span>|
+|<span data-ttu-id="fbfb8-137">includedQuantity</span><span class="sxs-lookup"><span data-stu-id="fbfb8-137">includedQuantity</span></span>| <span data-ttu-id="fbfb8-138">decimal</span><span class="sxs-lookup"><span data-stu-id="fbfb8-138">decimal</span></span>| <span data-ttu-id="fbfb8-139">Количество, которое включено</span><span class="sxs-lookup"><span data-stu-id="fbfb8-139">Quantity that is included</span></span> |
+|<span data-ttu-id="fbfb8-140">partNumber</span><span class="sxs-lookup"><span data-stu-id="fbfb8-140">partNumber</span></span>| <span data-ttu-id="fbfb8-141">string</span><span class="sxs-lookup"><span data-stu-id="fbfb8-141">string</span></span>| <span data-ttu-id="fbfb8-142">Номер части Hello, связанный с hello индикатора</span><span class="sxs-lookup"><span data-stu-id="fbfb8-142">hello part number associated with hello Meter</span></span>|
+|<span data-ttu-id="fbfb8-143">unitPrice</span><span class="sxs-lookup"><span data-stu-id="fbfb8-143">unitPrice</span></span>| <span data-ttu-id="fbfb8-144">decimal</span><span class="sxs-lookup"><span data-stu-id="fbfb8-144">decimal</span></span>| <span data-ttu-id="fbfb8-145">Hello цену за единицу для индикатора hello</span><span class="sxs-lookup"><span data-stu-id="fbfb8-145">hello unit price for hello meter</span></span>|
+|<span data-ttu-id="fbfb8-146">currencyCode</span><span class="sxs-lookup"><span data-stu-id="fbfb8-146">currencyCode</span></span>| <span data-ttu-id="fbfb8-147">string</span><span class="sxs-lookup"><span data-stu-id="fbfb8-147">string</span></span>| <span data-ttu-id="fbfb8-148">Код валюты Hello hello unitPrice</span><span class="sxs-lookup"><span data-stu-id="fbfb8-148">hello currency code for hello unitPrice</span></span>|
 <br/>
-## <a name="see-also"></a><span data-ttu-id="2fe21-149">См. также</span><span class="sxs-lookup"><span data-stu-id="2fe21-149">See also</span></span>
+## <a name="see-also"></a><span data-ttu-id="fbfb8-149">См. также</span><span class="sxs-lookup"><span data-stu-id="fbfb8-149">See also</span></span>
 
-* [<span data-ttu-id="2fe21-150">Интерфейсы API для выставления счетов Azure корпоративным клиентам: расчетные периоды</span><span class="sxs-lookup"><span data-stu-id="2fe21-150">Billing Periods API</span></span>](billing-enterprise-api-billing-periods.md)
+* [<span data-ttu-id="fbfb8-150">Интерфейсы API для выставления счетов Azure корпоративным клиентам: расчетные периоды</span><span class="sxs-lookup"><span data-stu-id="fbfb8-150">Billing Periods API</span></span>](billing-enterprise-api-billing-periods.md)
 
-* [<span data-ttu-id="2fe21-151">Интерфейсы API для выставления счетов Azure корпоративным клиентам: сведения об использовании</span><span class="sxs-lookup"><span data-stu-id="2fe21-151">Usage Detail API</span></span>](billing-enterprise-api-usage-detail.md)
+* [<span data-ttu-id="fbfb8-151">Интерфейсы API для выставления счетов Azure корпоративным клиентам: сведения об использовании</span><span class="sxs-lookup"><span data-stu-id="fbfb8-151">Usage Detail API</span></span>](billing-enterprise-api-usage-detail.md)
 
-* [<span data-ttu-id="2fe21-152">Интерфейсы API отчетов для корпоративных клиентов: баланс и сводка</span><span class="sxs-lookup"><span data-stu-id="2fe21-152">Balance and Summary API</span></span>](billing-enterprise-api-balance-summary.md)
+* [<span data-ttu-id="fbfb8-152">Интерфейсы API отчетов для корпоративных клиентов: баланс и сводка</span><span class="sxs-lookup"><span data-stu-id="fbfb8-152">Balance and Summary API</span></span>](billing-enterprise-api-balance-summary.md)
 
-* [<span data-ttu-id="2fe21-153">Интерфейсы API для выставления счетов Azure корпоративным клиентам: платежи в Marketplace</span><span class="sxs-lookup"><span data-stu-id="2fe21-153">Marketplace Store Charge API</span></span>](billing-enterprise-api-marketplace-storecharge.md)
+* [<span data-ttu-id="fbfb8-153">Интерфейсы API для выставления счетов Azure корпоративным клиентам: платежи в Marketplace</span><span class="sxs-lookup"><span data-stu-id="fbfb8-153">Marketplace Store Charge API</span></span>](billing-enterprise-api-marketplace-storecharge.md)

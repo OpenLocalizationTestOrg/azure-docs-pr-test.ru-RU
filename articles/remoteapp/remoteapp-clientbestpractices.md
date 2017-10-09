@@ -1,6 +1,6 @@
 ---
-title: "Советы и рекомендации по работе с клиентами Azure RemoteApp | Документация Майкрософт"
-description: "Изучите рекомендации по использованию клиентов RemoteApp"
+title: "aaaBest рекомендации по Azure RemoteApp клиентов | Документы Microsoft"
+description: "Дополнительные сведения о рекомендации по использованию клиентов RemoteApp hello"
 services: remoteapp
 documentationcenter: 
 author: msmbaldwin
@@ -13,20 +13,20 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/23/2016
 ms.author: mbaldwin
-ms.openlocfilehash: 416cd37a907010176fe331ddb908a35b6fd6b253
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: aa0ccb2f51d381462b78d60e966b87a67d8c247e
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="best-practices-for-azure-remoteapp-clients"></a><span data-ttu-id="3df09-103">Советы и рекомендации по работе с клиентами Azure RemoteApp</span><span class="sxs-lookup"><span data-stu-id="3df09-103">Best practices for Azure RemoteApp clients</span></span>
+# <a name="best-practices-for-azure-remoteapp-clients"></a><span data-ttu-id="251a7-103">Советы и рекомендации по работе с клиентами Azure RemoteApp</span><span class="sxs-lookup"><span data-stu-id="251a7-103">Best practices for Azure RemoteApp clients</span></span>
 > [!IMPORTANT]
-> <span data-ttu-id="3df09-104">Мы выводим службу Azure RemoteApp из эксплуатации 31 августа 2017 года.</span><span class="sxs-lookup"><span data-stu-id="3df09-104">Azure RemoteApp is being discontinued on August 31, 2017.</span></span> <span data-ttu-id="3df09-105">Дополнительные сведения см. в [объявлении](https://go.microsoft.com/fwlink/?linkid=821148).</span><span class="sxs-lookup"><span data-stu-id="3df09-105">Read the [announcement](https://go.microsoft.com/fwlink/?linkid=821148) for details.</span></span>
+> <span data-ttu-id="251a7-104">Мы выводим службу Azure RemoteApp из эксплуатации 31 августа 2017 года.</span><span class="sxs-lookup"><span data-stu-id="251a7-104">Azure RemoteApp is being discontinued on August 31, 2017.</span></span> <span data-ttu-id="251a7-105">Чтение hello [объявления](https://go.microsoft.com/fwlink/?linkid=821148) подробные сведения.</span><span class="sxs-lookup"><span data-stu-id="251a7-105">Read hello [announcement](https://go.microsoft.com/fwlink/?linkid=821148) for details.</span></span>
 > 
 > 
 
-<span data-ttu-id="3df09-106">Приведенные ниже сведения помогут вам эффективно настроить и использовать клиенты Azure RemoteApp.</span><span class="sxs-lookup"><span data-stu-id="3df09-106">The following information can help you use Azure RemoteApp clients:</span></span>
+<span data-ttu-id="251a7-106">Hello следующие сведения помогут использовать клиенты Azure RemoteApp.</span><span class="sxs-lookup"><span data-stu-id="251a7-106">hello following information can help you use Azure RemoteApp clients:</span></span>
 
-* <span data-ttu-id="3df09-107">Всегда используйте клиент последней версии.</span><span class="sxs-lookup"><span data-stu-id="3df09-107">Always use the latest client.</span></span> <span data-ttu-id="3df09-108">В клиенте последней версии гарантировано установлены последние исправления ошибок, усовершенствований и функциональных возможностей.</span><span class="sxs-lookup"><span data-stu-id="3df09-108">This ensures that the client version you are running has the latest bug fixes, improvements and features.</span></span> <span data-ttu-id="3df09-109">Вам может потребоваться регистрация в соответствующем магазине для автоматического получения обновлений клиента.</span><span class="sxs-lookup"><span data-stu-id="3df09-109">You might need to sign up to automatically receive updates for the client in the appropriate Store.</span></span>
-* <span data-ttu-id="3df09-110">Удаленное приложение RemoteApp автоматически выводит вас из системы, если вы не используете его в течение определенного периода времени.</span><span class="sxs-lookup"><span data-stu-id="3df09-110">RemoteApp will automatically log you off if you are inactive for a certain period of time.</span></span> <span data-ttu-id="3df09-111">Во избежание потери данных рекомендуется закрыть приложения после завершения использования службы.</span><span class="sxs-lookup"><span data-stu-id="3df09-111">In order to prevent data loss, we recommend closing your applications when you finish using the service.</span></span>
+* <span data-ttu-id="251a7-107">Всегда используйте последнюю версию клиента hello.</span><span class="sxs-lookup"><span data-stu-id="251a7-107">Always use hello latest client.</span></span> <span data-ttu-id="251a7-108">Это гарантирует, что hello вы используете версию клиента имеет hello последние исправления, улучшения и функции.</span><span class="sxs-lookup"><span data-stu-id="251a7-108">This ensures that hello client version you are running has hello latest bug fixes, improvements and features.</span></span> <span data-ttu-id="251a7-109">Может потребоваться toosign копирование tooautomatically получать обновления для клиента hello в хранилище соответствующие hello.</span><span class="sxs-lookup"><span data-stu-id="251a7-109">You might need toosign up tooautomatically receive updates for hello client in hello appropriate Store.</span></span>
+* <span data-ttu-id="251a7-110">Удаленное приложение RemoteApp автоматически выводит вас из системы, если вы не используете его в течение определенного периода времени.</span><span class="sxs-lookup"><span data-stu-id="251a7-110">RemoteApp will automatically log you off if you are inactive for a certain period of time.</span></span> <span data-ttu-id="251a7-111">Потери данных tooprevent заказа мы рекомендуем закрытие приложения после завершения работы с hello службы.</span><span class="sxs-lookup"><span data-stu-id="251a7-111">In order tooprevent data loss, we recommend closing your applications when you finish using hello service.</span></span>
 

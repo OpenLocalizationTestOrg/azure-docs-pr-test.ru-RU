@@ -1,6 +1,6 @@
 ---
-title: "Масштабирование обработки мультимедийных данных путем добавления единиц кодирования в Azure | Документация Майкрософт"
-description: "Информация о добавлении единиц кодирования с помощью .NET"
+title: "обработки путем добавления единицы кодирования — Azure media aaaScale |  Документы Microsoft"
+description: "Узнайте, как единицы кодирования tooadd toohow в .NET Framework"
 services: media-services
 documentationcenter: 
 author: juliako
@@ -14,32 +14,32 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/09/2017
 ms.author: juliako;milangada;
-ms.openlocfilehash: 72a8729d22a9e76c8076d7a3347619a2163e4f09
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: b9f71a6487c5d136319a38a1598d60edfaa81b9e
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-scale-encoding-with-net-sdk"></a><span data-ttu-id="6208c-103">Масштабирование кодирования с помощью пакета SDK для .NET</span><span class="sxs-lookup"><span data-stu-id="6208c-103">How to scale encoding with .NET SDK</span></span>
+# <a name="how-tooscale-encoding-with-net-sdk"></a><span data-ttu-id="83a71-103">Как tooscale кодирование с помощью пакета SDK для .NET</span><span class="sxs-lookup"><span data-stu-id="83a71-103">How tooscale encoding with .NET SDK</span></span>
 > [!div class="op_single_selector"]
-> * [<span data-ttu-id="6208c-104">Портал</span><span class="sxs-lookup"><span data-stu-id="6208c-104">Portal</span></span>](media-services-portal-scale-media-processing.md)
-> * [<span data-ttu-id="6208c-105">.NET</span><span class="sxs-lookup"><span data-stu-id="6208c-105">.NET</span></span>](media-services-dotnet-encoding-units.md)
-> * [<span data-ttu-id="6208c-106">REST</span><span class="sxs-lookup"><span data-stu-id="6208c-106">REST</span></span>](https://docs.microsoft.com/rest/api/media/operations/encodingreservedunittype)
-> * [<span data-ttu-id="6208c-107">Java</span><span class="sxs-lookup"><span data-stu-id="6208c-107">Java</span></span>](https://github.com/southworkscom/azure-sdk-for-media-services-java-samples)
-> * [<span data-ttu-id="6208c-108">PHP</span><span class="sxs-lookup"><span data-stu-id="6208c-108">PHP</span></span>](https://github.com/Azure/azure-sdk-for-php/tree/master/examples/MediaServices)
+> * [<span data-ttu-id="83a71-104">Портал</span><span class="sxs-lookup"><span data-stu-id="83a71-104">Portal</span></span>](media-services-portal-scale-media-processing.md)
+> * [<span data-ttu-id="83a71-105">.NET</span><span class="sxs-lookup"><span data-stu-id="83a71-105">.NET</span></span>](media-services-dotnet-encoding-units.md)
+> * [<span data-ttu-id="83a71-106">REST</span><span class="sxs-lookup"><span data-stu-id="83a71-106">REST</span></span>](https://docs.microsoft.com/rest/api/media/operations/encodingreservedunittype)
+> * [<span data-ttu-id="83a71-107">Java</span><span class="sxs-lookup"><span data-stu-id="83a71-107">Java</span></span>](https://github.com/southworkscom/azure-sdk-for-media-services-java-samples)
+> * [<span data-ttu-id="83a71-108">PHP</span><span class="sxs-lookup"><span data-stu-id="83a71-108">PHP</span></span>](https://github.com/Azure/azure-sdk-for-php/tree/master/examples/MediaServices)
 > 
 > 
 
-## <a name="overview"></a><span data-ttu-id="6208c-109">Обзор</span><span class="sxs-lookup"><span data-stu-id="6208c-109">Overview</span></span>
+## <a name="overview"></a><span data-ttu-id="83a71-109">Обзор</span><span class="sxs-lookup"><span data-stu-id="83a71-109">Overview</span></span>
 > [!IMPORTANT]
-> <span data-ttu-id="6208c-110">Обязательно ознакомьтесь с этим [обзором](media-services-scale-media-processing-overview.md) , чтобы получить дополнительные сведения о масштабировании обработки мультимедиа.</span><span class="sxs-lookup"><span data-stu-id="6208c-110">Make sure to review the [overview](media-services-scale-media-processing-overview.md) topic to get more information about scaling media processing topic.</span></span>
+> <span data-ttu-id="83a71-110">Убедитесь, что hello tooreview [Обзор](media-services-scale-media-processing-overview.md) tooget разделе Дополнительные сведения о масштабировании раздела с мультимедиа.</span><span class="sxs-lookup"><span data-stu-id="83a71-110">Make sure tooreview hello [overview](media-services-scale-media-processing-overview.md) topic tooget more information about scaling media processing topic.</span></span>
 > 
 > 
 
-<span data-ttu-id="6208c-111">Чтобы изменить тип зарезервированных единиц и число зарезервированных единиц кодирования с помощью пакета SDK для .NET, сделайте следующее:</span><span class="sxs-lookup"><span data-stu-id="6208c-111">To change the reserved unit type and the number of encoding reserved units using .NET SDK, do the following:</span></span>
+<span data-ttu-id="83a71-111">toochange hello зарезервированные единицы типа и hello количество зарезервированные единицы кодирования с помощью пакета SDK .NET, hello следующие:</span><span class="sxs-lookup"><span data-stu-id="83a71-111">toochange hello reserved unit type and hello number of encoding reserved units using .NET SDK, do hello following:</span></span>
 
     IEncodingReservedUnit encodingS1ReservedUnit = _context.EncodingReservedUnits.FirstOrDefault();
-    encodingS1ReservedUnit.ReservedUnitType = ReservedUnitType.Basic; // Corresponds to S1
+    encodingS1ReservedUnit.ReservedUnitType = ReservedUnitType.Basic; // Corresponds tooS1
     encodingS1ReservedUnit.Update();
     Console.WriteLine("Reserved Unit Type: {0}", encodingS1ReservedUnit.ReservedUnitType);
 
@@ -48,25 +48,25 @@ ms.lasthandoff: 08/29/2017
 
     Console.WriteLine("Number of reserved units: {0}", encodingS1ReservedUnit.CurrentReservedUnits);
 
-## <a name="opening-a-support-ticket"></a><span data-ttu-id="6208c-112">Открытие запроса в службу поддержки</span><span class="sxs-lookup"><span data-stu-id="6208c-112">Opening a Support Ticket</span></span>
-<span data-ttu-id="6208c-113">По умолчанию каждая учетная запись служб мультимедиа может масштабироваться до 25 зарезервированных единиц кодирования и 5 зарезервированных единиц потоковой передачи по требованию.</span><span class="sxs-lookup"><span data-stu-id="6208c-113">By default every Media Services account can scale to up to 25 Encoding and 5 On-Demand Streaming Reserved Units.</span></span> <span data-ttu-id="6208c-114">Вы можете запросить более высокий предел, открыв запрос в службу поддержки.</span><span class="sxs-lookup"><span data-stu-id="6208c-114">You can request a higher limit by opening a support ticket.</span></span>
+## <a name="opening-a-support-ticket"></a><span data-ttu-id="83a71-112">Открытие запроса в службу поддержки</span><span class="sxs-lookup"><span data-stu-id="83a71-112">Opening a Support Ticket</span></span>
+<span data-ttu-id="83a71-113">По умолчанию каждая учетная запись служб мультимедиа можно масштабировать tooup too25 кодирования и 5 по требованию зарезервированные элементы потоковой передачи.</span><span class="sxs-lookup"><span data-stu-id="83a71-113">By default every Media Services account can scale tooup too25 Encoding and 5 On-Demand Streaming Reserved Units.</span></span> <span data-ttu-id="83a71-114">Вы можете запросить более высокий предел, открыв запрос в службу поддержки.</span><span class="sxs-lookup"><span data-stu-id="83a71-114">You can request a higher limit by opening a support ticket.</span></span>
 
-### <a name="open-a-support-ticket"></a><span data-ttu-id="6208c-115">Открытие запроса в службу поддержки</span><span class="sxs-lookup"><span data-stu-id="6208c-115">Open a support ticket</span></span>
-<span data-ttu-id="6208c-116">Чтобы открыть запрос в службу поддержки, выполните следующее:</span><span class="sxs-lookup"><span data-stu-id="6208c-116">To open a support ticket do the following:</span></span>
+### <a name="open-a-support-ticket"></a><span data-ttu-id="83a71-115">Открытие запроса в службу поддержки</span><span class="sxs-lookup"><span data-stu-id="83a71-115">Open a support ticket</span></span>
+<span data-ttu-id="83a71-116">обращение в службу поддержки tooopen hello следующие:</span><span class="sxs-lookup"><span data-stu-id="83a71-116">tooopen a support ticket do hello following:</span></span>
 
-1. <span data-ttu-id="6208c-117">Щелкните [Получить поддержку](https://manage.windowsazure.com/?getsupport=true).</span><span class="sxs-lookup"><span data-stu-id="6208c-117">Click [Get Support](https://manage.windowsazure.com/?getsupport=true).</span></span> <span data-ttu-id="6208c-118">Если вы не выполнили вход, будет предложено ввести учетные данные.</span><span class="sxs-lookup"><span data-stu-id="6208c-118">If you are not logged in, you will be prompted to enter your credentials.</span></span>
-2. <span data-ttu-id="6208c-119">Выберите свою подписку.</span><span class="sxs-lookup"><span data-stu-id="6208c-119">Select your subscription.</span></span>
-3. <span data-ttu-id="6208c-120">В группе типа поддержки выберите "Техническая".</span><span class="sxs-lookup"><span data-stu-id="6208c-120">Under support type, select "Technical".</span></span>
-4. <span data-ttu-id="6208c-121">Щелкните "Создать запрос в службу поддержки".</span><span class="sxs-lookup"><span data-stu-id="6208c-121">Click on "Create Ticket".</span></span>
-5. <span data-ttu-id="6208c-122">Выберите "Службы мультимедиа Azure" в списке продуктов, представленных на следующей странице.</span><span class="sxs-lookup"><span data-stu-id="6208c-122">Select "Azure Media Services" in the product list presented on the next page.</span></span>
-6. <span data-ttu-id="6208c-123">Выберите соответствующее значение в поле "Тип проблемы".</span><span class="sxs-lookup"><span data-stu-id="6208c-123">Select a "Problem type" that is appropriate for your issue.</span></span>
-7. <span data-ttu-id="6208c-124">Нажмите кнопку "Продолжить".</span><span class="sxs-lookup"><span data-stu-id="6208c-124">Click Continue.</span></span>
-8. <span data-ttu-id="6208c-125">Следуйте указаниям на следующей странице, а затем введите сведения о проблеме.</span><span class="sxs-lookup"><span data-stu-id="6208c-125">Follow instructions on next page and then enter details about your issue.</span></span>
-9. <span data-ttu-id="6208c-126">Нажмите кнопку "Отправить" для создания запроса в службу поддержки.</span><span class="sxs-lookup"><span data-stu-id="6208c-126">Click submit to open the ticket.</span></span>
+1. <span data-ttu-id="83a71-117">Щелкните [Получить поддержку](https://manage.windowsazure.com/?getsupport=true).</span><span class="sxs-lookup"><span data-stu-id="83a71-117">Click [Get Support](https://manage.windowsazure.com/?getsupport=true).</span></span> <span data-ttu-id="83a71-118">Если вы не вошли в, будет иметь tooenter запрашиваемые учетные данные.</span><span class="sxs-lookup"><span data-stu-id="83a71-118">If you are not logged in, you will be prompted tooenter your credentials.</span></span>
+2. <span data-ttu-id="83a71-119">Выберите свою подписку.</span><span class="sxs-lookup"><span data-stu-id="83a71-119">Select your subscription.</span></span>
+3. <span data-ttu-id="83a71-120">В группе типа поддержки выберите "Техническая".</span><span class="sxs-lookup"><span data-stu-id="83a71-120">Under support type, select "Technical".</span></span>
+4. <span data-ttu-id="83a71-121">Щелкните "Создать запрос в службу поддержки".</span><span class="sxs-lookup"><span data-stu-id="83a71-121">Click on "Create Ticket".</span></span>
+5. <span data-ttu-id="83a71-122">Выберите «Службы мультимедиа Azure» в список продуктов hello приведены на следующей странице приветствия.</span><span class="sxs-lookup"><span data-stu-id="83a71-122">Select "Azure Media Services" in hello product list presented on hello next page.</span></span>
+6. <span data-ttu-id="83a71-123">Выберите соответствующее значение в поле "Тип проблемы".</span><span class="sxs-lookup"><span data-stu-id="83a71-123">Select a "Problem type" that is appropriate for your issue.</span></span>
+7. <span data-ttu-id="83a71-124">Нажмите кнопку "Продолжить".</span><span class="sxs-lookup"><span data-stu-id="83a71-124">Click Continue.</span></span>
+8. <span data-ttu-id="83a71-125">Следуйте указаниям на следующей странице, а затем введите сведения о проблеме.</span><span class="sxs-lookup"><span data-stu-id="83a71-125">Follow instructions on next page and then enter details about your issue.</span></span>
+9. <span data-ttu-id="83a71-126">Нажмите кнопку Отправить запрос tooopen hello.</span><span class="sxs-lookup"><span data-stu-id="83a71-126">Click submit tooopen hello ticket.</span></span>
 
-## <a name="media-services-learning-paths"></a><span data-ttu-id="6208c-127">Схемы обучения работе со службами мультимедиа</span><span class="sxs-lookup"><span data-stu-id="6208c-127">Media Services learning paths</span></span>
+## <a name="media-services-learning-paths"></a><span data-ttu-id="83a71-127">Схемы обучения работе со службами мультимедиа</span><span class="sxs-lookup"><span data-stu-id="83a71-127">Media Services learning paths</span></span>
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a><span data-ttu-id="6208c-128">Отзывы</span><span class="sxs-lookup"><span data-stu-id="6208c-128">Provide feedback</span></span>
+## <a name="provide-feedback"></a><span data-ttu-id="83a71-128">Отзывы</span><span class="sxs-lookup"><span data-stu-id="83a71-128">Provide feedback</span></span>
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 

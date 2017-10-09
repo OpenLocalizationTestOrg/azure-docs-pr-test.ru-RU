@@ -1,6 +1,6 @@
 ---
-title: "Документация по Azure Data Lake Analytics. Руководства и справочник по API | Документация Майкрософт"
-description: "Узнайте, как выполнять анализ больших данных с помощью Data Lake Analytics. Руководства, в которых показано, как выполнять пакетный, оперативный и интерактивный анализ и как создавать запросы U-SQL."
+title: "aaaAzure документация по аналитике Озера данных — учебники, справочник по API | Документы Microsoft"
+description: "Узнайте, как выполнять анализ больших данных с помощью Data Lake Analytics. Учебники рассказывается, как toorun пакета, в режиме реального времени и интерактивные аналитические и каким образом запросы toowrite U-SQL."
 services: data-lake-analytics
 author: saveenr
 manager: saveenr
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: 050965185c0c4b2d6880b74592e640be85678c06
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 515ad4c2a9023e970f1da05785bf3583d37cfccf
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/19/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="data-lake-analytics-documentation"></a>Документация по Data Lake Analytics
 
-Узнайте, как использовать Data Lake Analytics для запуска заданий анализа больших данных, обрабатывающих большие массивы данных. Руководства и другая документация, в которой показано, как создавать и администрировать задания пакетной, оперативной и интерактивной аналитики, а также создавать запросы на языке U-SQL.
+Узнайте, как toouse анализа больших данных аналитики Озера данных toorun заданий, наборы данных toomassive масштабирования. Учебники и другую документацию показывается, как toocreate пакет, в режиме реального времени и задания интерактивный analytics и как с помощью tooquery hello языка U-SQL и управлять ими.
 
 <ul class="panelContent cardsFTitle">
     <li>

@@ -1,6 +1,6 @@
 ---
-title: "Веб-канал изменений для ресурсов HL7 FHIR в Azure Cosmos DB | Документация Майкрософт"
-description: "Сведения о настройке уведомлений об изменениях в медицинских картах пациентов в системе HL7 FHIR с помощью Azure Logic Apps, Azure Cosmos DB и служебной шины."
+title: "веб-канал для ресурсов HL7 FHIR - Azure Cosmos DB aaaChange | Документы Microsoft"
+description: "Узнайте, как tooset копирование изменить уведомления для HL7 FHIR здравоохранения пациентов с помощью приложения логики Azure Azure Cosmos DB и Service Bus."
 keywords: HL7 FHIR
 services: cosmos-db
 author: hedidin
@@ -15,95 +15,95 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/08/2017
 ms.author: b-hoedid
-ms.openlocfilehash: d2b50c0b6864af41fb9cfa051721c432772b228d
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: d2809bf5c6d8c193c49438d20684c56caea646bb
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="notifying-patients-of-hl7-fhir-health-care-record-changes-using-logic-apps-and-azure-cosmos-db"></a><span data-ttu-id="b953b-104">Уведомление пациентов об изменениях в медицинских картах HL7 FHIR с помощью Logic Apps и Azure Cosmos DB</span><span class="sxs-lookup"><span data-stu-id="b953b-104">Notifying patients of HL7 FHIR health care record changes using Logic Apps and Azure Cosmos DB</span></span>
+# <a name="notifying-patients-of-hl7-fhir-health-care-record-changes-using-logic-apps-and-azure-cosmos-db"></a><span data-ttu-id="14378-104">Уведомление пациентов об изменениях в медицинских картах HL7 FHIR с помощью Logic Apps и Azure Cosmos DB</span><span class="sxs-lookup"><span data-stu-id="14378-104">Notifying patients of HL7 FHIR health care record changes using Logic Apps and Azure Cosmos DB</span></span>
 
-<span data-ttu-id="b953b-105">Недавно специалист MVP по Azure Ховард Эдидин (Howard Edidin) получил запрос от медицинской организации, которая решила добавить новые функциональные возможности на свой портал для пациентов.</span><span class="sxs-lookup"><span data-stu-id="b953b-105">Azure MVP Howard Edidin was recently contacted by a healthcare organization that wanted to add new functionality to their patient portal.</span></span> <span data-ttu-id="b953b-106">Ей нужно было отправлять пациентам уведомления об изменениях в медицинских картах, а также предоставить пациентам возможность подписаться на такие уведомления.</span><span class="sxs-lookup"><span data-stu-id="b953b-106">They needed to send notifications to patients when their health record was updated, and they needed patients to be able to subscribe to these updates.</span></span> 
+<span data-ttu-id="14378-105">Недавно Azure Edidin Говард MVP подключился здравоохранения организации, которая нужна tooadd новые функциональные возможности tootheir пациента портала.</span><span class="sxs-lookup"><span data-stu-id="14378-105">Azure MVP Howard Edidin was recently contacted by a healthcare organization that wanted tooadd new functionality tootheir patient portal.</span></span> <span data-ttu-id="14378-106">Они нужны toopatients toosend уведомлений при их записи работоспособности была обновлена, и они нужны пациентов toobe может toosubscribe toothese обновлений.</span><span class="sxs-lookup"><span data-stu-id="14378-106">They needed toosend notifications toopatients when their health record was updated, and they needed patients toobe able toosubscribe toothese updates.</span></span> 
 
-<span data-ttu-id="b953b-107">Эта статья содержит пошаговое описание процесса, позволившего создать для этой организации веб-канал изменений с помощью Azure Cosmos DB, Logic Apps и служебной шины.</span><span class="sxs-lookup"><span data-stu-id="b953b-107">This article walks through the change feed notification solution created for this healthcare organization using Azure Cosmos DB, Logic Apps, and Service Bus.</span></span> 
+<span data-ttu-id="14378-107">В этой статье рассматриваются hello изменение канала уведомлений решения, созданного для этой организации здравоохранения, с помощью Azure Cosmos DB, Logic Apps и Service Bus.</span><span class="sxs-lookup"><span data-stu-id="14378-107">This article walks through hello change feed notification solution created for this healthcare organization using Azure Cosmos DB, Logic Apps, and Service Bus.</span></span> 
 
-## <a name="project-requirements"></a><span data-ttu-id="b953b-108">Проектные требования</span><span class="sxs-lookup"><span data-stu-id="b953b-108">Project requirements</span></span>
-- <span data-ttu-id="b953b-109">Поставщики отправляют документы в формате XML, соответствующие архитектуре HL7 для консолидированных клинических документов (C-CDA).</span><span class="sxs-lookup"><span data-stu-id="b953b-109">Providers send HL7 Consolidated-Clinical Document Architecture (C-CDA) documents in XML format.</span></span> <span data-ttu-id="b953b-110">Документы C-CDA могут включать практически любые типы клинических документов, в том числе клинические (семейные истории болезни, журналы вакцинации и т. п.), административные, операционные и финансовые.</span><span class="sxs-lookup"><span data-stu-id="b953b-110">C-CDA documents encompass just about every type of clinical document, including clinical documents such as family histories and immunization records, as well as administrative, workflow, and financial documents.</span></span> 
-- <span data-ttu-id="b953b-111">Документы C-CDA преобразуются в [ресурсы HL7 FHIR](http://hl7.org/fhir/2017Jan/resourcelist.html) в формате JSON.</span><span class="sxs-lookup"><span data-stu-id="b953b-111">C-CDA documents are converted to [HL7 FHIR Resources](http://hl7.org/fhir/2017Jan/resourcelist.html) in JSON format.</span></span>
-- <span data-ttu-id="b953b-112">Преобразованные документы ресурсов FHIR отправляются по электронной почте в формате JSON.</span><span class="sxs-lookup"><span data-stu-id="b953b-112">Modified FHIR resource documents are sent by email in JSON format.</span></span>
+## <a name="project-requirements"></a><span data-ttu-id="14378-108">Проектные требования</span><span class="sxs-lookup"><span data-stu-id="14378-108">Project requirements</span></span>
+- <span data-ttu-id="14378-109">Поставщики отправляют документы в формате XML, соответствующие архитектуре HL7 для консолидированных клинических документов (C-CDA).</span><span class="sxs-lookup"><span data-stu-id="14378-109">Providers send HL7 Consolidated-Clinical Document Architecture (C-CDA) documents in XML format.</span></span> <span data-ttu-id="14378-110">Документы C-CDA могут включать практически любые типы клинических документов, в том числе клинические (семейные истории болезни, журналы вакцинации и т. п.), административные, операционные и финансовые.</span><span class="sxs-lookup"><span data-stu-id="14378-110">C-CDA documents encompass just about every type of clinical document, including clinical documents such as family histories and immunization records, as well as administrative, workflow, and financial documents.</span></span> 
+- <span data-ttu-id="14378-111">Документы C CDA преобразуются слишком[FHIR ресурсы HL7](http://hl7.org/fhir/2017Jan/resourcelist.html) в формате JSON.</span><span class="sxs-lookup"><span data-stu-id="14378-111">C-CDA documents are converted too[HL7 FHIR Resources](http://hl7.org/fhir/2017Jan/resourcelist.html) in JSON format.</span></span>
+- <span data-ttu-id="14378-112">Преобразованные документы ресурсов FHIR отправляются по электронной почте в формате JSON.</span><span class="sxs-lookup"><span data-stu-id="14378-112">Modified FHIR resource documents are sent by email in JSON format.</span></span>
 
-## <a name="solution-workflow"></a><span data-ttu-id="b953b-113">Рабочий процесс решения</span><span class="sxs-lookup"><span data-stu-id="b953b-113">Solution workflow</span></span> 
+## <a name="solution-workflow"></a><span data-ttu-id="14378-113">Рабочий процесс решения</span><span class="sxs-lookup"><span data-stu-id="14378-113">Solution workflow</span></span> 
 
-<span data-ttu-id="b953b-114">На высоком уровне этот проект включал следующие этапы рабочего процесса.</span><span class="sxs-lookup"><span data-stu-id="b953b-114">At a high level, the project required the following workflow steps:</span></span> 
-1. <span data-ttu-id="b953b-115">Преобразование документов C-CDA в ресурсы FHIR.</span><span class="sxs-lookup"><span data-stu-id="b953b-115">Convert C-CDA documents to FHIR resources.</span></span>
-2. <span data-ttu-id="b953b-116">Регулярный опрос триггеров для выявления измененных ресурсов FHIR.</span><span class="sxs-lookup"><span data-stu-id="b953b-116">Perform recurring trigger polling for modified FHIR resources.</span></span> 
-2. <span data-ttu-id="b953b-117">Вызов пользовательского приложения FhirNotificationApi для подключения к Azure Cosmos DB и получения новых и измененных документов.</span><span class="sxs-lookup"><span data-stu-id="b953b-117">Call a custom app, FhirNotificationApi, to connect to Azure Cosmos DB and query for new or modified documents.</span></span>
-3. <span data-ttu-id="b953b-118">Сохранение ответа в очереди служебной шины.</span><span class="sxs-lookup"><span data-stu-id="b953b-118">Save the response to to the Service Bus queue.</span></span>
-4. <span data-ttu-id="b953b-119">Опрос очереди служебной шины для отслеживания новых сообщений.</span><span class="sxs-lookup"><span data-stu-id="b953b-119">Poll for new messages in the Service Bus queue.</span></span>
-5. <span data-ttu-id="b953b-120">Отправка пациентам уведомлений по электронной почте.</span><span class="sxs-lookup"><span data-stu-id="b953b-120">Send email notifications to patients.</span></span>
+<span data-ttu-id="14378-114">На высоком уровне hello проекту требуется hello действий рабочего процесса:</span><span class="sxs-lookup"><span data-stu-id="14378-114">At a high level, hello project required hello following workflow steps:</span></span> 
+1. <span data-ttu-id="14378-115">Преобразуйте ресурсы tooFHIR C CDA документов.</span><span class="sxs-lookup"><span data-stu-id="14378-115">Convert C-CDA documents tooFHIR resources.</span></span>
+2. <span data-ttu-id="14378-116">Регулярный опрос триггеров для выявления измененных ресурсов FHIR.</span><span class="sxs-lookup"><span data-stu-id="14378-116">Perform recurring trigger polling for modified FHIR resources.</span></span> 
+2. <span data-ttu-id="14378-117">Вызов пользовательского приложения, FhirNotificationApi, tooconnect tooAzure Cosmos DB и запросов для новых или измененных документов.</span><span class="sxs-lookup"><span data-stu-id="14378-117">Call a custom app, FhirNotificationApi, tooconnect tooAzure Cosmos DB and query for new or modified documents.</span></span>
+3. <span data-ttu-id="14378-118">Сохраните очереди Service Bus tootoohello hello ответов.</span><span class="sxs-lookup"><span data-stu-id="14378-118">Save hello response tootoohello Service Bus queue.</span></span>
+4. <span data-ttu-id="14378-119">Опрос для новых сообщений в очереди Service Bus hello.</span><span class="sxs-lookup"><span data-stu-id="14378-119">Poll for new messages in hello Service Bus queue.</span></span>
+5. <span data-ttu-id="14378-120">Отправьте по электронной почте уведомления toopatients.</span><span class="sxs-lookup"><span data-stu-id="14378-120">Send email notifications toopatients.</span></span>
 
-## <a name="solution-architecture"></a><span data-ttu-id="b953b-121">Архитектура решения</span><span class="sxs-lookup"><span data-stu-id="b953b-121">Solution architecture</span></span>
-<span data-ttu-id="b953b-122">Для выполнения перечисленных выше требований и создания полного рабочего процесса в это решение потребовалось включить три приложения логики,</span><span class="sxs-lookup"><span data-stu-id="b953b-122">This solution requires three Logic Apps to meet the above requirements and complete the solution workflow.</span></span> <span data-ttu-id="b953b-123">перечисленные ниже.</span><span class="sxs-lookup"><span data-stu-id="b953b-123">The three logic apps are:</span></span>
-1. <span data-ttu-id="b953b-124">**Приложение HL7-FHIR-Mapping** получает документ HL7 C-CDA, преобразует его в ресурс FHIR, а затем сохраняет в Azure Cosmos DB.</span><span class="sxs-lookup"><span data-stu-id="b953b-124">**HL7-FHIR-Mapping app**: Receives the HL7 C-CDA document, transforms it to the FHIR Resource, then saves it to Azure Cosmos DB.</span></span>
-2. <span data-ttu-id="b953b-125">**Приложение EHR** запрашивает репозиторий FHIR в Azure Cosmos DB и сохраняет ответ в очередь служебной шины.</span><span class="sxs-lookup"><span data-stu-id="b953b-125">**EHR app**: Queries the Azure Cosmos DB FHIR repository and saves the response to a Service Bus queue.</span></span> <span data-ttu-id="b953b-126">Это приложение логики использует [приложение API](#api-app) для получения новых и измененных документов.</span><span class="sxs-lookup"><span data-stu-id="b953b-126">This logic app uses an [API app](#api-app) to retrieve new and changed documents.</span></span>
-3. <span data-ttu-id="b953b-127">**Приложение для обработки уведомлений** отправляет по электронной почте уведомление, в текст которого включает документы ресурсов FHIR.</span><span class="sxs-lookup"><span data-stu-id="b953b-127">**Process notification app**: Sends an email notification with the FHIR resource documents in the body.</span></span>
+## <a name="solution-architecture"></a><span data-ttu-id="14378-121">Архитектура решения</span><span class="sxs-lookup"><span data-stu-id="14378-121">Solution architecture</span></span>
+<span data-ttu-id="14378-122">Это решение требует трех hello toomeet Logic Apps выше требования и рабочий процесс завершения hello решения.</span><span class="sxs-lookup"><span data-stu-id="14378-122">This solution requires three Logic Apps toomeet hello above requirements and complete hello solution workflow.</span></span> <span data-ttu-id="14378-123">Ниже перечислены три логику приложения Hello</span><span class="sxs-lookup"><span data-stu-id="14378-123">hello three logic apps are:</span></span>
+1. <span data-ttu-id="14378-124">**Приложение HL7 FHIR сопоставления**: Получает документ HL7 C-CDA hello, преобразует их toohello FHIR ресурсов, а затем сохраняет его tooAzure Cosmos DB.</span><span class="sxs-lookup"><span data-stu-id="14378-124">**HL7-FHIR-Mapping app**: Receives hello HL7 C-CDA document, transforms it toohello FHIR Resource, then saves it tooAzure Cosmos DB.</span></span>
+2. <span data-ttu-id="14378-125">**Приложение EHR**: запрос hello Azure Cosmos DB FHIR репозитория и сохраняет очереди Service Bus tooa ответов hello.</span><span class="sxs-lookup"><span data-stu-id="14378-125">**EHR app**: Queries hello Azure Cosmos DB FHIR repository and saves hello response tooa Service Bus queue.</span></span> <span data-ttu-id="14378-126">Это приложение логики использует [приложения API](#api-app) tooretrieve новые и измененные документы.</span><span class="sxs-lookup"><span data-stu-id="14378-126">This logic app uses an [API app](#api-app) tooretrieve new and changed documents.</span></span>
+3. <span data-ttu-id="14378-127">**Процесс уведомления приложения**: отправляет уведомление по электронной почте с документами ресурсов FHIR hello в тексте hello.</span><span class="sxs-lookup"><span data-stu-id="14378-127">**Process notification app**: Sends an email notification with hello FHIR resource documents in hello body.</span></span>
 
-![Три приложения логики, используемые в этом решении HL7 FHIR](./media/change-feed-hl7-fhir-logic-apps/health-care-solution-hl7-fhir.png)
-
-
-
-### <a name="azure-services-used-in-the-solution"></a><span data-ttu-id="b953b-129">Службы Azure, используемые в решении</span><span class="sxs-lookup"><span data-stu-id="b953b-129">Azure services used in the solution</span></span>
-
-#### <a name="azure-cosmos-db-documentdb-api"></a><span data-ttu-id="b953b-130">API DocumentDB в Azure Cosmos DB</span><span class="sxs-lookup"><span data-stu-id="b953b-130">Azure Cosmos DB DocumentDB API</span></span>
-<span data-ttu-id="b953b-131">Azure Cosmos DB выполняет роль репозитория для ресурсов FHIR, как показано на следующем рисунке.</span><span class="sxs-lookup"><span data-stu-id="b953b-131">Azure Cosmos DB is the repository for the FHIR resources as shown in the following figure.</span></span>
-
-![Учетная запись Azure Cosmos DB, используемая в этом руководстве по HL7 FHIR](./media/change-feed-hl7-fhir-logic-apps/account.png)
-
-#### <a name="logic-apps"></a><span data-ttu-id="b953b-133">Приложения логики</span><span class="sxs-lookup"><span data-stu-id="b953b-133">Logic Apps</span></span>
-<span data-ttu-id="b953b-134">Приложения логики обрабатывают рабочий процесс.</span><span class="sxs-lookup"><span data-stu-id="b953b-134">Logic Apps handle the workflow process.</span></span> <span data-ttu-id="b953b-135">На следующих снимках экрана показаны приложения логики, созданные для этого решения.</span><span class="sxs-lookup"><span data-stu-id="b953b-135">The following screenshots show the Logic apps created for this solution.</span></span> 
+![Приложения Hello трех логики, используемый в этом решении здравоохранения HL7 FHIR](./media/change-feed-hl7-fhir-logic-apps/health-care-solution-hl7-fhir.png)
 
 
-1. <span data-ttu-id="b953b-136">**Приложение HL7-FHIR-Mapping** получает документ HL7 C-CDA и преобразует его в ресурс FHIR с помощью пакета интеграции Enterprise для Logic Apps.</span><span class="sxs-lookup"><span data-stu-id="b953b-136">**HL7-FHIR-Mapping app**: Receive the HL7 C-CDA document and transform it to an FHIR resource using the Enterprise Integration Pack for Logic Apps.</span></span> <span data-ttu-id="b953b-137">Пакет интеграции Enterprise обрабатывает сопоставление C-CDA с ресурсами FHIR.</span><span class="sxs-lookup"><span data-stu-id="b953b-137">The Enterprise Integration Pack handles the mapping from the C-CDA to FHIR resources.</span></span>
 
-    ![Приложение логики для получения медицинских карт HL7 FHIR](./media/change-feed-hl7-fhir-logic-apps/hl7-fhir-logic-apps-json-transform.png)
+### <a name="azure-services-used-in-hello-solution"></a><span data-ttu-id="14378-129">Используемые в решении hello служб Azure</span><span class="sxs-lookup"><span data-stu-id="14378-129">Azure services used in hello solution</span></span>
+
+#### <a name="azure-cosmos-db-documentdb-api"></a><span data-ttu-id="14378-130">API DocumentDB в Azure Cosmos DB</span><span class="sxs-lookup"><span data-stu-id="14378-130">Azure Cosmos DB DocumentDB API</span></span>
+<span data-ttu-id="14378-131">Azure Cosmos DB — репозиторий hello hello FHIR ресурсов, как показано в hello следующий рисунок.</span><span class="sxs-lookup"><span data-stu-id="14378-131">Azure Cosmos DB is hello repository for hello FHIR resources as shown in hello following figure.</span></span>
+
+![Учетная запись Azure Cosmos DB Hello, используемая в этом учебнике здравоохранения HL7 FHIR](./media/change-feed-hl7-fhir-logic-apps/account.png)
+
+#### <a name="logic-apps"></a><span data-ttu-id="14378-133">Logic Apps</span><span class="sxs-lookup"><span data-stu-id="14378-133">Logic Apps</span></span>
+<span data-ttu-id="14378-134">Приложения логики обработки hello рабочего процесса.</span><span class="sxs-lookup"><span data-stu-id="14378-134">Logic Apps handle hello workflow process.</span></span> <span data-ttu-id="14378-135">Hello следующих снимках экрана показано hello логики приложений, созданных для этого решения.</span><span class="sxs-lookup"><span data-stu-id="14378-135">hello following screenshots show hello Logic apps created for this solution.</span></span> 
 
 
-2. <span data-ttu-id="b953b-139">**Приложение EHR** отправляет запросы в репозиторий FHIR в Azure Cosmos DB и сохраняет ответ в очередь служебной шины.</span><span class="sxs-lookup"><span data-stu-id="b953b-139">**EHR app**: Query the Azure Cosmos DB FHIR repository and save the response to a Service Bus queue.</span></span> <span data-ttu-id="b953b-140">Ниже приводится код приложения GetNewOrModifiedFHIRDocuments.</span><span class="sxs-lookup"><span data-stu-id="b953b-140">The code for the GetNewOrModifiedFHIRDocuments app is below.</span></span>
+1. <span data-ttu-id="14378-136">**Приложение HL7 FHIR сопоставления**: получить документ HL7 C-CDA hello и преобразовать его tooan FHIR ресурсов с использованием hello пакет интеграции Enterprise для логики приложений.</span><span class="sxs-lookup"><span data-stu-id="14378-136">**HL7-FHIR-Mapping app**: Receive hello HL7 C-CDA document and transform it tooan FHIR resource using hello Enterprise Integration Pack for Logic Apps.</span></span> <span data-ttu-id="14378-137">Пакет интеграции Enterprise Hello обрабатывает сопоставление из hello ресурсов tooFHIR C CDA hello.</span><span class="sxs-lookup"><span data-stu-id="14378-137">hello Enterprise Integration Pack handles hello mapping from hello C-CDA tooFHIR resources.</span></span>
 
-    ![Приложение логики, используемое для запросов к Azure Cosmos DB](./media/change-feed-hl7-fhir-logic-apps/hl7-fhir-logic-apps-api-app.png)
+    ![Логика приложения Hello используется tooreceive HL7 FHIR медицинских записей](./media/change-feed-hl7-fhir-logic-apps/hl7-fhir-logic-apps-json-transform.png)
 
-3. <span data-ttu-id="b953b-142">**Приложение для обработки уведомлений** отправляет по электронной почте уведомление, в текст которого включает документы ресурсов FHIR.</span><span class="sxs-lookup"><span data-stu-id="b953b-142">**Process notification app**: Send an email notification with the FHIR resource documents in the body.</span></span>
 
-    ![Приложение логики, отправляющее пациенту сообщение электронной почты, текст которого содержит ресурсы HL7 FHIR](./media/change-feed-hl7-fhir-logic-apps/hl7-fhir-logic-apps-send-email.png)
+2. <span data-ttu-id="14378-139">**Приложение EHR**: запроса hello Azure Cosmos DB FHIR репозиторий и сохраните tooa ответа hello Service Bus в очередь.</span><span class="sxs-lookup"><span data-stu-id="14378-139">**EHR app**: Query hello Azure Cosmos DB FHIR repository and save hello response tooa Service Bus queue.</span></span> <span data-ttu-id="14378-140">Hello для приложения hello GetNewOrModifiedFHIRDocuments приведен ниже.</span><span class="sxs-lookup"><span data-stu-id="14378-140">hello code for hello GetNewOrModifiedFHIRDocuments app is below.</span></span>
 
-#### <a name="service-bus"></a><span data-ttu-id="b953b-144">Service Bus</span><span class="sxs-lookup"><span data-stu-id="b953b-144">Service Bus</span></span>
-<span data-ttu-id="b953b-145">На следующем рисунке показана очередь пациентов.</span><span class="sxs-lookup"><span data-stu-id="b953b-145">The following figure shows the patients queue.</span></span> <span data-ttu-id="b953b-146">Значение свойства Tag используется для создания темы сообщения электронной почты.</span><span class="sxs-lookup"><span data-stu-id="b953b-146">The Tag property value is used for the email subject.</span></span>
+    ![tooquery Hello использовать приложения логики Azure Cosmos DB](./media/change-feed-hl7-fhir-logic-apps/hl7-fhir-logic-apps-api-app.png)
 
-![Очередь служебной шины, используемая в этом руководстве по HL7 FHIR](./media/change-feed-hl7-fhir-logic-apps/hl7-fhir-service-bus-queue.png)
+3. <span data-ttu-id="14378-142">**Процесс уведомления приложения**: отправить уведомление по электронной почте с документами ресурсов FHIR hello в тексте hello.</span><span class="sxs-lookup"><span data-stu-id="14378-142">**Process notification app**: Send an email notification with hello FHIR resource documents in hello body.</span></span>
+
+    ![Hello логики приложения, отправляющие пациента письма с ресурсом HL7 FHIR hello в тексте hello](./media/change-feed-hl7-fhir-logic-apps/hl7-fhir-logic-apps-send-email.png)
+
+#### <a name="service-bus"></a><span data-ttu-id="14378-144">Служебная шина</span><span class="sxs-lookup"><span data-stu-id="14378-144">Service Bus</span></span>
+<span data-ttu-id="14378-145">Следующий рисунок показывает hello пациентов очереди Hello.</span><span class="sxs-lookup"><span data-stu-id="14378-145">hello following figure shows hello patients queue.</span></span> <span data-ttu-id="14378-146">Hello значению свойства Tag используется тема сообщения hello.</span><span class="sxs-lookup"><span data-stu-id="14378-146">hello Tag property value is used for hello email subject.</span></span>
+
+![Hello очередь Service Bus, используемые в этом учебнике HL7 FHIR](./media/change-feed-hl7-fhir-logic-apps/hl7-fhir-service-bus-queue.png)
 
 <a id="api-app"></a>
 
-#### <a name="api-app"></a><span data-ttu-id="b953b-148">Приложение API</span><span class="sxs-lookup"><span data-stu-id="b953b-148">API app</span></span>
-<span data-ttu-id="b953b-149">Приложение API подключается к Azure Cosmos DB и запрашивает наличие новых или измененных документов FHIR по типу ресурса.</span><span class="sxs-lookup"><span data-stu-id="b953b-149">An API app connects to Azure Cosmos DB and queries for new or modified FHIR documents By resource type.</span></span> <span data-ttu-id="b953b-150">Это приложение содержит один контроллер **FhirNotificationApi** с одной операцией **GetNewOrModifiedFhirDocuments** (см. раздел об [исходном коде для приложения API](#api-app-source)).</span><span class="sxs-lookup"><span data-stu-id="b953b-150">This app has one controller, **FhirNotificationApi** with a one operation **GetNewOrModifiedFhirDocuments**, see [source for API app](#api-app-source).</span></span>
+#### <a name="api-app"></a><span data-ttu-id="14378-148">Приложение API</span><span class="sxs-lookup"><span data-stu-id="14378-148">API app</span></span>
+<span data-ttu-id="14378-149">Приложения API подключается tooAzure Cosmos DB и запросов для новых или измененных документов FHIR от типа ресурса.</span><span class="sxs-lookup"><span data-stu-id="14378-149">An API app connects tooAzure Cosmos DB and queries for new or modified FHIR documents By resource type.</span></span> <span data-ttu-id="14378-150">Это приложение содержит один контроллер **FhirNotificationApi** с одной операцией **GetNewOrModifiedFhirDocuments** (см. раздел об [исходном коде для приложения API](#api-app-source)).</span><span class="sxs-lookup"><span data-stu-id="14378-150">This app has one controller, **FhirNotificationApi** with a one operation **GetNewOrModifiedFhirDocuments**, see [source for API app](#api-app-source).</span></span>
 
-<span data-ttu-id="b953b-151">Мы используем класс [`CreateDocumentChangeFeedQuery`](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.createdocumentchangefeedquery.aspx) из API-интерфейса .NET для DocumentDB в Azure Cosmos DB.</span><span class="sxs-lookup"><span data-stu-id="b953b-151">We are using the [`CreateDocumentChangeFeedQuery`](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.createdocumentchangefeedquery.aspx) class from the Azure Cosmos DB DocumentDB .NET API.</span></span> <span data-ttu-id="b953b-152">Дополнительные сведения см. в статье [Работа с поддержкой веб-канала изменений в Azure DocumentDB](change-feed.md).</span><span class="sxs-lookup"><span data-stu-id="b953b-152">For more information, see the [change feed article](change-feed.md).</span></span> 
+<span data-ttu-id="14378-151">Мы используем hello [ `CreateDocumentChangeFeedQuery` ](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.createdocumentchangefeedquery.aspx) класс из hello Azure Cosmos DB DocumentDB .NET API.</span><span class="sxs-lookup"><span data-stu-id="14378-151">We are using hello [`CreateDocumentChangeFeedQuery`](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.createdocumentchangefeedquery.aspx) class from hello Azure Cosmos DB DocumentDB .NET API.</span></span> <span data-ttu-id="14378-152">Дополнительные сведения см. в разделе hello [изменение веб-канала статьи](change-feed.md).</span><span class="sxs-lookup"><span data-stu-id="14378-152">For more information, see hello [change feed article](change-feed.md).</span></span> 
 
-##### <a name="getnewormodifiedfhirdocuments-operation"></a><span data-ttu-id="b953b-153">Операция GetNewOrModifiedFhirDocuments</span><span class="sxs-lookup"><span data-stu-id="b953b-153">GetNewOrModifiedFhirDocuments operation</span></span>
+##### <a name="getnewormodifiedfhirdocuments-operation"></a><span data-ttu-id="14378-153">Операция GetNewOrModifiedFhirDocuments</span><span class="sxs-lookup"><span data-stu-id="14378-153">GetNewOrModifiedFhirDocuments operation</span></span>
 
-<span data-ttu-id="b953b-154">**Входные данные**</span><span class="sxs-lookup"><span data-stu-id="b953b-154">**Inputs**</span></span>
-- <span data-ttu-id="b953b-155">DatabaseId;</span><span class="sxs-lookup"><span data-stu-id="b953b-155">DatabaseId</span></span>
-- <span data-ttu-id="b953b-156">CollectionId;</span><span class="sxs-lookup"><span data-stu-id="b953b-156">CollectionId</span></span>
-- <span data-ttu-id="b953b-157">имя типа ресурса FHIR HL7;</span><span class="sxs-lookup"><span data-stu-id="b953b-157">HL7 FHIR Resource Type name</span></span>
-- <span data-ttu-id="b953b-158">логическое значение Start from Beginning (Начать с начала);</span><span class="sxs-lookup"><span data-stu-id="b953b-158">Boolean: Start from Beginning</span></span>
-- <span data-ttu-id="b953b-159">целочисленное значение количества обработанных документов.</span><span class="sxs-lookup"><span data-stu-id="b953b-159">Int: Number of documents returned</span></span>
+<span data-ttu-id="14378-154">**Входные данные**</span><span class="sxs-lookup"><span data-stu-id="14378-154">**Inputs**</span></span>
+- <span data-ttu-id="14378-155">DatabaseId;</span><span class="sxs-lookup"><span data-stu-id="14378-155">DatabaseId</span></span>
+- <span data-ttu-id="14378-156">CollectionId;</span><span class="sxs-lookup"><span data-stu-id="14378-156">CollectionId</span></span>
+- <span data-ttu-id="14378-157">имя типа ресурса FHIR HL7;</span><span class="sxs-lookup"><span data-stu-id="14378-157">HL7 FHIR Resource Type name</span></span>
+- <span data-ttu-id="14378-158">логическое значение Start from Beginning (Начать с начала);</span><span class="sxs-lookup"><span data-stu-id="14378-158">Boolean: Start from Beginning</span></span>
+- <span data-ttu-id="14378-159">целочисленное значение количества обработанных документов.</span><span class="sxs-lookup"><span data-stu-id="14378-159">Int: Number of documents returned</span></span>
 
-<span data-ttu-id="b953b-160">**Outputs**</span><span class="sxs-lookup"><span data-stu-id="b953b-160">**Outputs**</span></span>
-- <span data-ttu-id="b953b-161">При успешном завершении: код состояния 200; возвращается список документов (в массиве JSON).</span><span class="sxs-lookup"><span data-stu-id="b953b-161">Success: Status Code: 200, Response: List of Documents (JSON Array)</span></span>
-- <span data-ttu-id="b953b-162">В случае ошибки: код состояния 404; возвращает строку "No Documents found for '*resource name'* Resource Type" (Не найдены документы с типом ресурса "имя_ресурса").</span><span class="sxs-lookup"><span data-stu-id="b953b-162">Failure: Status Code: 404, Response: "No Documents found for '*resource name'* Resource Type"</span></span>
+<span data-ttu-id="14378-160">**Outputs**</span><span class="sxs-lookup"><span data-stu-id="14378-160">**Outputs**</span></span>
+- <span data-ttu-id="14378-161">При успешном завершении: код состояния 200; возвращается список документов (в массиве JSON).</span><span class="sxs-lookup"><span data-stu-id="14378-161">Success: Status Code: 200, Response: List of Documents (JSON Array)</span></span>
+- <span data-ttu-id="14378-162">В случае ошибки: код состояния 404; возвращает строку "No Documents found for '*resource name'* Resource Type" (Не найдены документы с типом ресурса "имя_ресурса").</span><span class="sxs-lookup"><span data-stu-id="14378-162">Failure: Status Code: 404, Response: "No Documents found for '*resource name'* Resource Type"</span></span>
 
 <a id="api-app-source"></a>
 
-<span data-ttu-id="b953b-163">**Исходный код приложения API**</span><span class="sxs-lookup"><span data-stu-id="b953b-163">**Source for the API app**</span></span>
+<span data-ttu-id="14378-163">**Источник для приложение hello API**</span><span class="sxs-lookup"><span data-stu-id="14378-163">**Source for hello API app**</span></span>
 
 ```C#
 
@@ -127,8 +127,8 @@ ms.lasthandoff: 07/11/2017
         public class FhirResourceTypeController : ApiController
         {
             /// <summary>
-            ///     Gets the new or modified FHIR documents from Last Run Date 
-            ///     or create date of the collection
+            ///     Gets hello new or modified FHIR documents from Last Run Date 
+            ///     or create date of hello collection
             /// </summary>
             /// <param name="databaseId"></param>
             /// <param name="collectionId"></param>
@@ -208,27 +208,27 @@ ms.lasthandoff: 07/11/2017
     
 ```
 
-### <a name="testing-the-fhirnotificationapi"></a><span data-ttu-id="b953b-164">Тестирование FhirNotificationApi</span><span class="sxs-lookup"><span data-stu-id="b953b-164">Testing the FhirNotificationApi</span></span> 
+### <a name="testing-hello-fhirnotificationapi"></a><span data-ttu-id="14378-164">Приветствие FhirNotificationApi тестирования</span><span class="sxs-lookup"><span data-stu-id="14378-164">Testing hello FhirNotificationApi</span></span> 
 
-<span data-ttu-id="b953b-165">На следующем рисунке показано, как использовалось приложение Swagger для тестирования [FhirNotificationApi](#api-app-source).</span><span class="sxs-lookup"><span data-stu-id="b953b-165">The following image demonstrates how swagger was used to to test the [FhirNotificationApi](#api-app-source).</span></span>
+<span data-ttu-id="14378-165">Hello на рисунке показано, каким образом было hello используется tootootest swagger [FhirNotificationApi](#api-app-source).</span><span class="sxs-lookup"><span data-stu-id="14378-165">hello following image demonstrates how swagger was used tootootest hello [FhirNotificationApi](#api-app-source).</span></span>
 
-![Файл Swagger, используемый для тестирования приложения API](./media/change-feed-hl7-fhir-logic-apps/hl7-fhir-testing-app.png)
-
-
-### <a name="azure-portal-dashboard"></a><span data-ttu-id="b953b-167">Панель мониторинга портала Azure</span><span class="sxs-lookup"><span data-stu-id="b953b-167">Azure portal dashboard</span></span>
-
-<span data-ttu-id="b953b-168">На следующем рисунке показаны все службы Azure, используемые в этом решении, которые работают на портале Azure.</span><span class="sxs-lookup"><span data-stu-id="b953b-168">The following image shows all of the Azure services for this solution running in the Azure portal.</span></span>
-
-![Портал Azure с информацией обо всех службах, используемых в этом руководстве по HL7 FHIR](./media/change-feed-hl7-fhir-logic-apps/hl7-fhir-portal.png)
+![файл Swagger Hello использовать приложение API tootest hello](./media/change-feed-hl7-fhir-logic-apps/hl7-fhir-testing-app.png)
 
 
-## <a name="summary"></a><span data-ttu-id="b953b-170">Сводка</span><span class="sxs-lookup"><span data-stu-id="b953b-170">Summary</span></span>
+### <a name="azure-portal-dashboard"></a><span data-ttu-id="14378-167">Панель мониторинга портала Azure</span><span class="sxs-lookup"><span data-stu-id="14378-167">Azure portal dashboard</span></span>
 
-- <span data-ttu-id="b953b-171">Вы узнали, что в Azure Cosmos DB есть встроенная поддержка уведомлений о новых или измененных документах, и научились легко ее применять.</span><span class="sxs-lookup"><span data-stu-id="b953b-171">You have learned that Azure Cosmos DB has native suppport for notifications for new or modifed documents and how easy it is to use.</span></span> 
-- <span data-ttu-id="b953b-172">Используя приложения логики, вы можете создавать рабочие процессы даже без написания кода.</span><span class="sxs-lookup"><span data-stu-id="b953b-172">By leveraging Logic Apps, you can create workflows without writing any code.</span></span>
-- <span data-ttu-id="b953b-173">Также вы узнали, как использовать очереди служебной шины Azure для обработки распространения документов HL7 FHIR.</span><span class="sxs-lookup"><span data-stu-id="b953b-173">Using Azure Service Bus Queues to handle the distribution for the HL7 FHIR documents.</span></span>
+<span data-ttu-id="14378-168">Следующие изображения Hello показывает все hello служб Azure для этого решения, работающих в hello портал Azure.</span><span class="sxs-lookup"><span data-stu-id="14378-168">hello following image shows all of hello Azure services for this solution running in hello Azure portal.</span></span>
 
-## <a name="next-steps"></a><span data-ttu-id="b953b-174">Дальнейшие действия</span><span class="sxs-lookup"><span data-stu-id="b953b-174">Next steps</span></span>
-<span data-ttu-id="b953b-175">Дополнительные сведения о базе данных Azure Cosmos DB см. на [ее главной странице](https://azure.microsoft.com/services/cosmos-db/).</span><span class="sxs-lookup"><span data-stu-id="b953b-175">For more information about Azure Cosmos DB, see the [Azure Cosmos DB home page](https://azure.microsoft.com/services/cosmos-db/).</span></span> <span data-ttu-id="b953b-176">Подробную информацию о приложениях логики см. [здесь](https://azure.microsoft.com/services/logic-apps/).</span><span class="sxs-lookup"><span data-stu-id="b953b-176">For more informaiton about Logic Apps, see [Logic Apps](https://azure.microsoft.com/services/logic-apps/).</span></span>
+![портал Azure, показывающий все службы hello, используемые в этом учебнике HL7 FHIR Hello](./media/change-feed-hl7-fhir-logic-apps/hl7-fhir-portal.png)
+
+
+## <a name="summary"></a><span data-ttu-id="14378-170">Сводка</span><span class="sxs-lookup"><span data-stu-id="14378-170">Summary</span></span>
+
+- <span data-ttu-id="14378-171">Вы узнали, что Azure Cosmos DB имеет собственный поддержки для получения уведомлений о новых или изменена документы и как просто можно toouse.</span><span class="sxs-lookup"><span data-stu-id="14378-171">You have learned that Azure Cosmos DB has native suppport for notifications for new or modifed documents and how easy it is toouse.</span></span> 
+- <span data-ttu-id="14378-172">Используя приложения логики, вы можете создавать рабочие процессы даже без написания кода.</span><span class="sxs-lookup"><span data-stu-id="14378-172">By leveraging Logic Apps, you can create workflows without writing any code.</span></span>
+- <span data-ttu-id="14378-173">С помощью распространения hello toohandle очереди шины обслуживания Azure для hello HL7 FHIR документов.</span><span class="sxs-lookup"><span data-stu-id="14378-173">Using Azure Service Bus Queues toohandle hello distribution for hello HL7 FHIR documents.</span></span>
+
+## <a name="next-steps"></a><span data-ttu-id="14378-174">Дальнейшие действия</span><span class="sxs-lookup"><span data-stu-id="14378-174">Next steps</span></span>
+<span data-ttu-id="14378-175">Дополнительные сведения о базе данных Azure Cosmos см. в разделе hello [Домашняя страница Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/).</span><span class="sxs-lookup"><span data-stu-id="14378-175">For more information about Azure Cosmos DB, see hello [Azure Cosmos DB home page](https://azure.microsoft.com/services/cosmos-db/).</span></span> <span data-ttu-id="14378-176">Подробную информацию о приложениях логики см. [здесь](https://azure.microsoft.com/services/logic-apps/).</span><span class="sxs-lookup"><span data-stu-id="14378-176">For more informaiton about Logic Apps, see [Logic Apps](https://azure.microsoft.com/services/logic-apps/).</span></span>
 
 

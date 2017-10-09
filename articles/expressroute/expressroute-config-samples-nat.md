@@ -1,5 +1,5 @@
 ---
-title: "Примеры конфигурации маршрутизатора клиента ExpressRoute | Документация Майкрософт"
+title: "Примеры конфигурации маршрутизатора клиента aaaExpressRoute | Документы Microsoft"
 description: "Эта страница содержит примеры конфигурации для маршрутизаторов серий Cisco ASA и Juniper MX."
 documentationcenter: na
 services: expressroute
@@ -14,27 +14,27 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/10/2016
 ms.author: cherylmc
-ms.openlocfilehash: 83a7da2db537a3c900e90432455d59e8ac56d917
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: b5faca0666bda6173e54abb0b6560d5f8bf8bfc2
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="router-configuration-samples-to-set-up-and-manage-nat"></a><span data-ttu-id="78f58-103">Примеры конфигурации маршрутизатора для настройки и управления NAT</span><span class="sxs-lookup"><span data-stu-id="78f58-103">Router configuration samples to set up and manage NAT</span></span>
-<span data-ttu-id="78f58-104">Эта страница содержит примеры конфигурации NAT для маршрутизаторов серий Cisco ASA и Juniper SRX.</span><span class="sxs-lookup"><span data-stu-id="78f58-104">This page provides NAT configuration samples for Cisco ASA and Juniper SRX series routers.</span></span> <span data-ttu-id="78f58-105">Эти примеры имеют только справочный характер и не должны использоваться как есть.</span><span class="sxs-lookup"><span data-stu-id="78f58-105">These are intended to be samples for guidance only and must not be used as is.</span></span> <span data-ttu-id="78f58-106">Подходящие конфигурации для своей сети можно выработать совместно с поставщиком.</span><span class="sxs-lookup"><span data-stu-id="78f58-106">You can work with your vendor to come up with appropriate configurations for your network.</span></span> 
+# <a name="router-configuration-samples-tooset-up-and-manage-nat"></a><span data-ttu-id="8da78-103">Конфигурация маршрутизатора образцы tooset вверх и управлять NAT</span><span class="sxs-lookup"><span data-stu-id="8da78-103">Router configuration samples tooset up and manage NAT</span></span>
+<span data-ttu-id="8da78-104">Эта страница содержит примеры конфигурации NAT для маршрутизаторов серий Cisco ASA и Juniper SRX.</span><span class="sxs-lookup"><span data-stu-id="8da78-104">This page provides NAT configuration samples for Cisco ASA and Juniper SRX series routers.</span></span> <span data-ttu-id="8da78-105">Эти примеры предполагаемого toobe только рекомендации и не должны использоваться как есть.</span><span class="sxs-lookup"><span data-stu-id="8da78-105">These are intended toobe samples for guidance only and must not be used as is.</span></span> <span data-ttu-id="8da78-106">Можно работать с вашего поставщика toocome с соответствующие настройки для вашей сети.</span><span class="sxs-lookup"><span data-stu-id="8da78-106">You can work with your vendor toocome up with appropriate configurations for your network.</span></span> 
 
 > [!IMPORTANT]
-> <span data-ttu-id="78f58-107">Примеры на этой странице имеют исключительно справочный характер.</span><span class="sxs-lookup"><span data-stu-id="78f58-107">Samples in this page are intended to be purely for guidance.</span></span> <span data-ttu-id="78f58-108">Для получения подходящей конфигурации, которая удовлетворяет вашим потребностям, необходимо провести совместную работу со специалистами по продажам или техническими специалистами поставщика и вашими сетевыми специалистами.</span><span class="sxs-lookup"><span data-stu-id="78f58-108">You must work with your vendor's sales / technical team and your networking team to come up with appropriate configurations to meet your needs.</span></span> <span data-ttu-id="78f58-109">Корпорация Майкрософт не предоставляет поддержки по вопросам, связанным с конфигурациями, перечисленными на этой странице.</span><span class="sxs-lookup"><span data-stu-id="78f58-109">Microsoft will not support issues related to configurations listed in this page.</span></span> <span data-ttu-id="78f58-110">Для получения поддержки вам необходимо обратиться к поставщику устройства.</span><span class="sxs-lookup"><span data-stu-id="78f58-110">You must contact your device vendor for support issues.</span></span>
+> <span data-ttu-id="8da78-107">Образцы на этой странице, предполагаемой toobe исключительно для рекомендации.</span><span class="sxs-lookup"><span data-stu-id="8da78-107">Samples in this page are intended toobe purely for guidance.</span></span> <span data-ttu-id="8da78-108">Необходимо работать с у поставщика продаж / технической группы и вашей сети team toocome вверх с toomeet соответствующие настройки вашим потребностям.</span><span class="sxs-lookup"><span data-stu-id="8da78-108">You must work with your vendor's sales / technical team and your networking team toocome up with appropriate configurations toomeet your needs.</span></span> <span data-ttu-id="8da78-109">Корпорация Майкрософт не будет поддерживать проблемы связанные tooconfigurations, перечисленные на этой странице.</span><span class="sxs-lookup"><span data-stu-id="8da78-109">Microsoft will not support issues related tooconfigurations listed in this page.</span></span> <span data-ttu-id="8da78-110">Для получения поддержки вам необходимо обратиться к поставщику устройства.</span><span class="sxs-lookup"><span data-stu-id="8da78-110">You must contact your device vendor for support issues.</span></span>
 > 
 > 
 
-* <span data-ttu-id="78f58-111">Примеры конфигурации маршрутизатора относятся к пирингам Azure Public и Microsoft.</span><span class="sxs-lookup"><span data-stu-id="78f58-111">Router configuration samples below apply to Azure Public and Microsoft peerings.</span></span> <span data-ttu-id="78f58-112">Вы не должны настраивать NAT для частного пиринга Azure.</span><span class="sxs-lookup"><span data-stu-id="78f58-112">You must not configure NAT for Azure private peering.</span></span> <span data-ttu-id="78f58-113">Для получения дополнительных сведений обратитесь к статьям [Сеансы пиринга ExpressRoute](expressroute-circuit-peerings.md) и [Требования ExpressRoute к NAT](expressroute-nat.md).</span><span class="sxs-lookup"><span data-stu-id="78f58-113">Review [ExpressRoute peerings](expressroute-circuit-peerings.md) and [ExpressRoute NAT requirements](expressroute-nat.md) for more details.</span></span>
+* <span data-ttu-id="8da78-111">Ниже примеров конфигурации маршрутизатора применяются tooAzure пиринги Public и Майкрософт.</span><span class="sxs-lookup"><span data-stu-id="8da78-111">Router configuration samples below apply tooAzure Public and Microsoft peerings.</span></span> <span data-ttu-id="8da78-112">Вы не должны настраивать NAT для частного пиринга Azure.</span><span class="sxs-lookup"><span data-stu-id="8da78-112">You must not configure NAT for Azure private peering.</span></span> <span data-ttu-id="8da78-113">Для получения дополнительных сведений обратитесь к статьям [Сеансы пиринга ExpressRoute](expressroute-circuit-peerings.md) и [Требования ExpressRoute к NAT](expressroute-nat.md).</span><span class="sxs-lookup"><span data-stu-id="8da78-113">Review [ExpressRoute peerings](expressroute-circuit-peerings.md) and [ExpressRoute NAT requirements](expressroute-nat.md) for more details.</span></span>
 
-* <span data-ttu-id="78f58-114">Для подключений к Интернету и ExpressRoute ДОЛЖНЫ использоваться отдельные пулы IP-адресов NAT.</span><span class="sxs-lookup"><span data-stu-id="78f58-114">You MUST use separate NAT IP pools for connectivity to the internet and ExpressRoute.</span></span> <span data-ttu-id="78f58-115">Использование одного пула IP-адресов NAT для подключения к Интернету и ExpressRoute приведет к асимметричной маршрутизации и потере подключения.</span><span class="sxs-lookup"><span data-stu-id="78f58-115">Using the same NAT IP pool across the internet and ExpressRoute will result in asymmetric routing and loss of connectivity.</span></span>
+* <span data-ttu-id="8da78-114">НЕОБХОДИМО использовать отдельные пулы NAT IP для toohello подключения к Интернету и ExpressRoute.</span><span class="sxs-lookup"><span data-stu-id="8da78-114">You MUST use separate NAT IP pools for connectivity toohello internet and ExpressRoute.</span></span> <span data-ttu-id="8da78-115">С помощью hello пул же NAT IP между hello Интернета и приведет к ExpressRoute асимметричного маршрутизации и потери связи.</span><span class="sxs-lookup"><span data-stu-id="8da78-115">Using hello same NAT IP pool across hello internet and ExpressRoute will result in asymmetric routing and loss of connectivity.</span></span>
 
 
-## <a name="cisco-asa-firewalls"></a><span data-ttu-id="78f58-116">Брандмауэры Cisco ASA</span><span class="sxs-lookup"><span data-stu-id="78f58-116">Cisco ASA firewalls</span></span>
-### <a name="pat-configuration-for-traffic-from-customer-network-to-microsoft"></a><span data-ttu-id="78f58-117">Конфигурация NAT для трафика от сети клиента в Майкрософт</span><span class="sxs-lookup"><span data-stu-id="78f58-117">PAT configuration for traffic from customer network to Microsoft</span></span>
+## <a name="cisco-asa-firewalls"></a><span data-ttu-id="8da78-116">Брандмауэры Cisco ASA</span><span class="sxs-lookup"><span data-stu-id="8da78-116">Cisco ASA firewalls</span></span>
+### <a name="pat-configuration-for-traffic-from-customer-network-toomicrosoft"></a><span data-ttu-id="8da78-117">МАРИЯ конфигурации для входящего трафика с tooMicrosoft сети клиента</span><span class="sxs-lookup"><span data-stu-id="8da78-117">PAT configuration for traffic from customer network tooMicrosoft</span></span>
     object network MSFT-PAT
       range <SNAT-START-IP> <SNAT-END-IP>
 
@@ -54,26 +54,26 @@ ms.lasthandoff: 07/11/2017
 
     nat (outside,inside) source dynamic on-prem pat-pool MSFT-PAT destination static MSFT-Range MSFT-Range
 
-### <a name="pat-configuration-for-traffic-from-microsoft-to-customer-network"></a><span data-ttu-id="78f58-118">Конфигурация PAT для трафика из Майкрософт в клиентскую сеть</span><span class="sxs-lookup"><span data-stu-id="78f58-118">PAT configuration for traffic from Microsoft to customer network</span></span>
+### <a name="pat-configuration-for-traffic-from-microsoft-toocustomer-network"></a><span data-ttu-id="8da78-118">МАРИЯ конфигурации для трафика сети toocustomer Microsoft</span><span class="sxs-lookup"><span data-stu-id="8da78-118">PAT configuration for traffic from Microsoft toocustomer network</span></span>
 
-<span data-ttu-id="78f58-119">**Интерфейсы и направление:**</span><span class="sxs-lookup"><span data-stu-id="78f58-119">**Interfaces and Direction:**</span></span>
+<span data-ttu-id="8da78-119">**Интерфейсы и направление:**</span><span class="sxs-lookup"><span data-stu-id="8da78-119">**Interfaces and Direction:**</span></span>
 
-    Source Interface (where the traffic enters the ASA): inside
-    Destination Interface (where the traffic exits the ASA): outside
+    Source Interface (where hello traffic enters hello ASA): inside
+    Destination Interface (where hello traffic exits hello ASA): outside
 
-<span data-ttu-id="78f58-120">**Конфигурация:**</span><span class="sxs-lookup"><span data-stu-id="78f58-120">**Configuration:**</span></span>
+<span data-ttu-id="8da78-120">**Конфигурация:**</span><span class="sxs-lookup"><span data-stu-id="8da78-120">**Configuration:**</span></span>
 
-<span data-ttu-id="78f58-121">Пул преобразования сетевых адресов:</span><span class="sxs-lookup"><span data-stu-id="78f58-121">NAT Pool:</span></span>
+<span data-ttu-id="8da78-121">Пул преобразования сетевых адресов:</span><span class="sxs-lookup"><span data-stu-id="8da78-121">NAT Pool:</span></span>
 
     object network outbound-PAT
         host <NAT-IP>
 
-<span data-ttu-id="78f58-122">Целевой сервер:</span><span class="sxs-lookup"><span data-stu-id="78f58-122">Target Server:</span></span>
+<span data-ttu-id="8da78-122">Целевой сервер:</span><span class="sxs-lookup"><span data-stu-id="8da78-122">Target Server:</span></span>
 
     object network Customer-Network
         network-object <IP> <Subnet-Mask>
 
-<span data-ttu-id="78f58-123">Группа объектов для клиентских IP-адресов</span><span class="sxs-lookup"><span data-stu-id="78f58-123">Object Group for Customer IP Addresses</span></span>
+<span data-ttu-id="8da78-123">Группа объектов для клиентских IP-адресов</span><span class="sxs-lookup"><span data-stu-id="8da78-123">Object Group for Customer IP Addresses</span></span>
 
     object-group network MSFT-Network-1
         network-object <MSFT-IP> <Subnet-Mask>
@@ -81,16 +81,16 @@ ms.lasthandoff: 07/11/2017
     object-group network MSFT-PAT-Networks
         network-object object MSFT-Network-1
 
-<span data-ttu-id="78f58-124">Команды преобразования сетевых адресов:</span><span class="sxs-lookup"><span data-stu-id="78f58-124">NAT Commands:</span></span>
+<span data-ttu-id="8da78-124">Команды преобразования сетевых адресов:</span><span class="sxs-lookup"><span data-stu-id="8da78-124">NAT Commands:</span></span>
 
     nat (inside,outside) source dynamic MSFT-PAT-Networks pat-pool outbound-PAT destination static Customer-Network Customer-Network
 
 
-## <a name="juniper-srx-series-routers"></a><span data-ttu-id="78f58-125">Маршрутизаторы серии Juniper SRX</span><span class="sxs-lookup"><span data-stu-id="78f58-125">Juniper SRX series routers</span></span>
-### <a name="1-create-redundant-ethernet-interfaces-for-the-cluster"></a><span data-ttu-id="78f58-126">1. Создайте избыточные интерфейсы Ethernet для кластера.</span><span class="sxs-lookup"><span data-stu-id="78f58-126">1. Create redundant Ethernet interfaces for the cluster</span></span>
+## <a name="juniper-srx-series-routers"></a><span data-ttu-id="8da78-125">Маршрутизаторы серии Juniper SRX</span><span class="sxs-lookup"><span data-stu-id="8da78-125">Juniper SRX series routers</span></span>
+### <a name="1-create-redundant-ethernet-interfaces-for-hello-cluster"></a><span data-ttu-id="8da78-126">1. Создание избыточных интерфейсов Ethernet для кластера hello</span><span class="sxs-lookup"><span data-stu-id="8da78-126">1. Create redundant Ethernet interfaces for hello cluster</span></span>
     interfaces {
         reth0 {
-            description "To Internal Network";
+            description "tooInternal Network";
             vlan-tagging;
             redundant-ether-options {
                 redundancy-group 1;
@@ -103,13 +103,13 @@ ms.lasthandoff: 07/11/2017
             }
         }
         reth1 {
-            description "To Microsoft via Edge Router";
+            description "tooMicrosoft via Edge Router";
             vlan-tagging;
             redundant-ether-options {
                 redundancy-group 2;
             }
             unit 100 {
-                description "To Microsoft via Edge Router";
+                description "tooMicrosoft via Edge Router";
                 vlan-id 100;
                 family inet {
                     address <IP-Address/Subnet-mask>;
@@ -119,15 +119,15 @@ ms.lasthandoff: 07/11/2017
     }
 
 
-### <a name="2-create-two-security-zones"></a><span data-ttu-id="78f58-127">2. Создайте две зоны безопасности.</span><span class="sxs-lookup"><span data-stu-id="78f58-127">2. Create two security zones</span></span>
-* <span data-ttu-id="78f58-128">Доверенная зона предназначена для внутренней сети, а недоверенная зона — для внешней сети, направленной на граничные маршрутизаторы.</span><span class="sxs-lookup"><span data-stu-id="78f58-128">Trust Zone for internal network and Untrust Zone for external network facing Edge Routers</span></span>
-* <span data-ttu-id="78f58-129">Назначьте соответствующие интерфейсы зонам.</span><span class="sxs-lookup"><span data-stu-id="78f58-129">Assign appropriate interfaces to the zones</span></span>
-* <span data-ttu-id="78f58-130">Включите службы для интерфейсов.</span><span class="sxs-lookup"><span data-stu-id="78f58-130">Allow services on the interfaces</span></span>
+### <a name="2-create-two-security-zones"></a><span data-ttu-id="8da78-127">2. Создайте две зоны безопасности.</span><span class="sxs-lookup"><span data-stu-id="8da78-127">2. Create two security zones</span></span>
+* <span data-ttu-id="8da78-128">Доверенная зона предназначена для внутренней сети, а недоверенная зона — для внешней сети, направленной на граничные маршрутизаторы.</span><span class="sxs-lookup"><span data-stu-id="8da78-128">Trust Zone for internal network and Untrust Zone for external network facing Edge Routers</span></span>
+* <span data-ttu-id="8da78-129">Назначьте соответствующие интерфейсы toohello зоны</span><span class="sxs-lookup"><span data-stu-id="8da78-129">Assign appropriate interfaces toohello zones</span></span>
+* <span data-ttu-id="8da78-130">Разрешить службам в интерфейсах hello</span><span class="sxs-lookup"><span data-stu-id="8da78-130">Allow services on hello interfaces</span></span>
 
-    <span data-ttu-id="78f58-131">security {       zones {           security-zone Trust {               host-inbound-traffic {                   system-services {                       ping;                   }                   protocols {                       bgp;                   }               }               interfaces {                   reth0.100;               }           }           security-zone Untrust {               host-inbound-traffic {                   system-services {                       ping;                   }                   protocols {                       bgp;                   }               }               interfaces {                   reth1.100;               }           }       }   }</span><span class="sxs-lookup"><span data-stu-id="78f58-131">security {       zones {           security-zone Trust {               host-inbound-traffic {                   system-services {                       ping;                   }                   protocols {                       bgp;                   }               }               interfaces {                   reth0.100;               }           }           security-zone Untrust {               host-inbound-traffic {                   system-services {                       ping;                   }                   protocols {                       bgp;                   }               }               interfaces {                   reth1.100;               }           }       }   }</span></span>
+    <span data-ttu-id="8da78-131">security {       zones {           security-zone Trust {               host-inbound-traffic {                   system-services {                       ping;                   }                   protocols {                       bgp;                   }               }               interfaces {                   reth0.100;               }           }           security-zone Untrust {               host-inbound-traffic {                   system-services {                       ping;                   }                   protocols {                       bgp;                   }               }               interfaces {                   reth1.100;               }           }       }   }</span><span class="sxs-lookup"><span data-stu-id="8da78-131">security {       zones {           security-zone Trust {               host-inbound-traffic {                   system-services {                       ping;                   }                   protocols {                       bgp;                   }               }               interfaces {                   reth0.100;               }           }           security-zone Untrust {               host-inbound-traffic {                   system-services {                       ping;                   }                   protocols {                       bgp;                   }               }               interfaces {                   reth1.100;               }           }       }   }</span></span>
 
 
-### <a name="3-create-security-policies-between-zones"></a><span data-ttu-id="78f58-132">3. Создайте политики безопасности между зонами.</span><span class="sxs-lookup"><span data-stu-id="78f58-132">3. Create security policies between zones</span></span>
+### <a name="3-create-security-policies-between-zones"></a><span data-ttu-id="8da78-132">3. Создайте политики безопасности между зонами.</span><span class="sxs-lookup"><span data-stu-id="8da78-132">3. Create security policies between zones</span></span>
     security {
         policies {
             from-zone Trust to-zone Untrust {
@@ -158,9 +158,9 @@ ms.lasthandoff: 07/11/2017
     }
 
 
-### <a name="4-configure-nat-policies"></a><span data-ttu-id="78f58-133">4. Настройте политики NAT.</span><span class="sxs-lookup"><span data-stu-id="78f58-133">4. Configure NAT policies</span></span>
-* <span data-ttu-id="78f58-134">Создайте два пула NAT.</span><span class="sxs-lookup"><span data-stu-id="78f58-134">Create two NAT pools.</span></span> <span data-ttu-id="78f58-135">Один будет использоваться для исходящего трафика NAT в Майкрософт, а второй — для трафика от Майкрософт клиенту.</span><span class="sxs-lookup"><span data-stu-id="78f58-135">One will be used to NAT traffic outbound to Microsoft and other from Microsoft to the customer.</span></span>
-* <span data-ttu-id="78f58-136">Создайте правила для преобразования сетевых адресов соответствующего трафика.</span><span class="sxs-lookup"><span data-stu-id="78f58-136">Create rules to NAT the respective traffic</span></span>
+### <a name="4-configure-nat-policies"></a><span data-ttu-id="8da78-133">4. Настройте политики NAT.</span><span class="sxs-lookup"><span data-stu-id="8da78-133">4. Configure NAT policies</span></span>
+* <span data-ttu-id="8da78-134">Создайте два пула NAT.</span><span class="sxs-lookup"><span data-stu-id="8da78-134">Create two NAT pools.</span></span> <span data-ttu-id="8da78-135">Один будет tooMicrosoft исходящего трафика используется tooNAT и других toohello клиентов Microsoft.</span><span class="sxs-lookup"><span data-stu-id="8da78-135">One will be used tooNAT traffic outbound tooMicrosoft and other from Microsoft toohello customer.</span></span>
+* <span data-ttu-id="8da78-136">Создание правил трафика соответствующих tooNAT hello</span><span class="sxs-lookup"><span data-stu-id="8da78-136">Create rules tooNAT hello respective traffic</span></span>
   
        security {
            nat {
@@ -183,7 +183,7 @@ ms.lasthandoff: 07/11/2017
                    }
                    rule-set Outbound_NAT {
                        from routing-instance Internal;
-                       to routing-instance External-ExpressRoute;
+                       toorouting-instance External-ExpressRoute;
                        rule SNAT-Out {
                            match {
                                source-address 0.0.0.0/0;
@@ -199,7 +199,7 @@ ms.lasthandoff: 07/11/2017
                    }
                    rule-set Inbound-NAT {
                        from routing-instance External-ExpressRoute;
-                       to routing-instance Internal;
+                       toorouting-instance Internal;
                        rule SNAT-In {
                            match {
                                source-address 0.0.0.0/0;
@@ -217,10 +217,10 @@ ms.lasthandoff: 07/11/2017
            }
        }
 
-### <a name="5-configure-bgp-to-advertise-selective-prefixes-in-each-direction"></a><span data-ttu-id="78f58-137">5. Настройки BGP для использования выборочных префиксов в каждом направлении</span><span class="sxs-lookup"><span data-stu-id="78f58-137">5. Configure BGP to advertise selective prefixes in each direction</span></span>
-<span data-ttu-id="78f58-138">Обратитесь к примерам на странице [Примеры настройки маршрутизации ](expressroute-config-samples-routing.md) .</span><span class="sxs-lookup"><span data-stu-id="78f58-138">Refer to samples in [Routing configuration samples ](expressroute-config-samples-routing.md) page.</span></span>
+### <a name="5-configure-bgp-tooadvertise-selective-prefixes-in-each-direction"></a><span data-ttu-id="8da78-137">5. Настройка BGP tooadvertise Выборочный префиксы в каждом направлении</span><span class="sxs-lookup"><span data-stu-id="8da78-137">5. Configure BGP tooadvertise selective prefixes in each direction</span></span>
+<span data-ttu-id="8da78-138">Ссылки toosamples в [образцы настройки маршрутизации ](expressroute-config-samples-routing.md) страницы.</span><span class="sxs-lookup"><span data-stu-id="8da78-138">Refer toosamples in [Routing configuration samples ](expressroute-config-samples-routing.md) page.</span></span>
 
-### <a name="6-create-policies"></a><span data-ttu-id="78f58-139">6. Создайте политики.</span><span class="sxs-lookup"><span data-stu-id="78f58-139">6. Create policies</span></span>
+### <a name="6-create-policies"></a><span data-ttu-id="8da78-139">6. Создайте политики.</span><span class="sxs-lookup"><span data-stu-id="8da78-139">6. Create policies</span></span>
     routing-options {
                   autonomous-system <Customer-ASN>;
     }
@@ -315,6 +315,6 @@ ms.lasthandoff: 07/11/2017
         }
     }
 
-## <a name="next-steps"></a><span data-ttu-id="78f58-140">Дальнейшие действия</span><span class="sxs-lookup"><span data-stu-id="78f58-140">Next steps</span></span>
-<span data-ttu-id="78f58-141">Дополнительные сведения см. в разделе [Вопросы и ответы по ExpressRoute](expressroute-faqs.md).</span><span class="sxs-lookup"><span data-stu-id="78f58-141">See the [ExpressRoute FAQ](expressroute-faqs.md) for more details.</span></span>
+## <a name="next-steps"></a><span data-ttu-id="8da78-140">Дальнейшие действия</span><span class="sxs-lookup"><span data-stu-id="8da78-140">Next steps</span></span>
+<span data-ttu-id="8da78-141">В разделе hello [часто задаваемые вопросы о ExpressRoute](expressroute-faqs.md) для получения дополнительных сведений.</span><span class="sxs-lookup"><span data-stu-id="8da78-141">See hello [ExpressRoute FAQ](expressroute-faqs.md) for more details.</span></span>
 

@@ -1,5 +1,5 @@
 ---
-title: "Создание пользовательского образа Azure DevTest Labs из VHD-файла с помощью PowerShell | Документация Майкрософт"
+title: "aaaCreate Azure DevTest Labs образ из VHD-файла с помощью PowerShell | Документы Microsoft"
 description: "Автоматизация создания пользовательского образа в Azure DevTest Labs из VHD-файла с помощью PowerShell"
 services: devtest-lab,virtual-machines
 documentationcenter: na
@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/10/2017
 ms.author: tarcher
-ms.openlocfilehash: a4729f70aae80a13233fbe96a5d8a56c0c9d01d3
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 39b4005fa46cdf86cf0800ca376128134bcfb650
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="create-a-custom-image-from-a-vhd-file-using-powershell"></a><span data-ttu-id="f3303-103">Создание пользовательского образа из VHD-файла с помощью PowerShell</span><span class="sxs-lookup"><span data-stu-id="f3303-103">Create a custom image from a VHD file using PowerShell</span></span>
+# <a name="create-a-custom-image-from-a-vhd-file-using-powershell"></a><span data-ttu-id="c8f26-103">Создание пользовательского образа из VHD-файла с помощью PowerShell</span><span class="sxs-lookup"><span data-stu-id="c8f26-103">Create a custom image from a VHD file using PowerShell</span></span>
 
 [!INCLUDE [devtest-lab-create-custom-image-from-vhd-selector](../../includes/devtest-lab-create-custom-image-from-vhd-selector.md)]
 
@@ -28,24 +28,24 @@ ms.lasthandoff: 07/11/2017
 
 [!INCLUDE [devtest-lab-upload-vhd-options](../../includes/devtest-lab-upload-vhd-options.md)]
 
-## <a name="step-by-step-instructions"></a><span data-ttu-id="f3303-104">Пошаговые инструкции</span><span class="sxs-lookup"><span data-stu-id="f3303-104">Step-by-step instructions</span></span>
+## <a name="step-by-step-instructions"></a><span data-ttu-id="c8f26-104">Пошаговые инструкции</span><span class="sxs-lookup"><span data-stu-id="c8f26-104">Step-by-step instructions</span></span>
 
-<span data-ttu-id="f3303-105">Чтобы создать пользовательский образ из VHD-файла с помощью PowerShell, сделайте следующее:</span><span class="sxs-lookup"><span data-stu-id="f3303-105">The following steps walk you through creating a custom image from a VHD file using PowerShell:</span></span>
+<span data-ttu-id="c8f26-105">Hello следующие шаги содержат пошаговые инструкции по созданию настраиваемого образа из VHD-файла с помощью PowerShell:</span><span class="sxs-lookup"><span data-stu-id="c8f26-105">hello following steps walk you through creating a custom image from a VHD file using PowerShell:</span></span>
 
-1. <span data-ttu-id="f3303-106">В командной строке PowerShell войдите в учетную запись Azure, вызвав командлет **Login-AzureRmAccount**.</span><span class="sxs-lookup"><span data-stu-id="f3303-106">At a PowerShell prompt, log in to your Azure account with the following call to the **Login-AzureRmAccount** cmdlet.</span></span>  
+1. <span data-ttu-id="c8f26-106">В командной строке PowerShell, войдите в tooyour учетная запись Azure с hello после вызова toohello **AzureRmAccount входа** командлета.</span><span class="sxs-lookup"><span data-stu-id="c8f26-106">At a PowerShell prompt, log in tooyour Azure account with hello following call toohello **Login-AzureRmAccount** cmdlet.</span></span>  
     
     ```PowerShell
     Login-AzureRmAccount
     ```
 
-1.  <span data-ttu-id="f3303-107">Выберите необходимую подписку Azure, вызвав командлет **Select-AzureRmSubscription**.</span><span class="sxs-lookup"><span data-stu-id="f3303-107">Select the desired Azure subscription by calling the **Select-AzureRmSubscription** cmdlet.</span></span> <span data-ttu-id="f3303-108">Замените заполнитель для переменной **$subscriptionId** на идентификатор действующей подписки Azure.</span><span class="sxs-lookup"><span data-stu-id="f3303-108">Replace the following placeholder for the **$subscriptionId** variable with a valid Azure subscription ID.</span></span> 
+1.  <span data-ttu-id="c8f26-107">Выберите hello требуемого подписки Azure, вызывающему Привет **AzureRmSubscription выберите** командлета.</span><span class="sxs-lookup"><span data-stu-id="c8f26-107">Select hello desired Azure subscription by calling hello **Select-AzureRmSubscription** cmdlet.</span></span> <span data-ttu-id="c8f26-108">Замените следующие заполнитель для hello hello **$subscriptionId** переменных с идентификатором действительной подписки Azure.</span><span class="sxs-lookup"><span data-stu-id="c8f26-108">Replace hello following placeholder for hello **$subscriptionId** variable with a valid Azure subscription ID.</span></span> 
 
     ```PowerShell
     $subscriptionId = '<Specify your subscription ID here>'
     Select-AzureRmSubscription -SubscriptionId $subscriptionId
     ```
 
-1.  <span data-ttu-id="f3303-109">Получите объект лаборатории, вызвав командлет **Get AzureRmResource**.</span><span class="sxs-lookup"><span data-stu-id="f3303-109">Get the lab object by calling the **Get-AzureRmResource** cmdlet.</span></span> <span data-ttu-id="f3303-110">Замените заполнители для переменных **$labRg** и **$labName** на соответствующие значения для своей среды.</span><span class="sxs-lookup"><span data-stu-id="f3303-110">Replace the following placeholders for the **$labRg** and **$labName** variables with the appropriate values for your environment.</span></span> 
+1.  <span data-ttu-id="c8f26-109">Получить hello лабораторного объекта, вызывающего hello **Get-AzureRmResource** командлета.</span><span class="sxs-lookup"><span data-stu-id="c8f26-109">Get hello lab object by calling hello **Get-AzureRmResource** cmdlet.</span></span> <span data-ttu-id="c8f26-110">Замените следующие местозаполнители для hello hello **$labRg** и **$labName** переменных с hello соответствующие значения для вашей среды.</span><span class="sxs-lookup"><span data-stu-id="c8f26-110">Replace hello following placeholders for hello **$labRg** and **$labName** variables with hello appropriate values for your environment.</span></span> 
 
     ```PowerShell
     $labRg = '<Specify your lab resource group name here>'
@@ -53,70 +53,70 @@ ms.lasthandoff: 07/11/2017
     $lab = Get-AzureRmResource -ResourceId ('/subscriptions/' + $subscriptionId + '/resourceGroups/' + $labRg + '/providers/Microsoft.DevTestLab/labs/' + $labName)
     ```
  
-1.  <span data-ttu-id="f3303-111">Получите значения учетной записи хранения лаборатории и ключа этой учетной записи из объекта лаборатории.</span><span class="sxs-lookup"><span data-stu-id="f3303-111">Get the lab storage account and lab storage account key values from the lab object.</span></span> 
+1.  <span data-ttu-id="c8f26-111">Получите учетную запись хранения лаборатории hello и учетную запись хранения лаборатории значения ключа из hello лабораторного объекта.</span><span class="sxs-lookup"><span data-stu-id="c8f26-111">Get hello lab storage account and lab storage account key values from hello lab object.</span></span> 
 
     ```PowerShell
     $labStorageAccount = Get-AzureRmResource -ResourceId $lab.Properties.defaultStorageAccount 
     $labStorageAccountKey = (Get-AzureRmStorageAccountKey -ResourceGroupName $labStorageAccount.ResourceGroupName -Name $labStorageAccount.ResourceName)[0].Value
     ```
 
-1.  <span data-ttu-id="f3303-112">Замените заполнитель для переменной **$vhdUri** на URI своего VHD-файла.</span><span class="sxs-lookup"><span data-stu-id="f3303-112">Replace the following placeholder for the **$vhdUri** variable with the URI to your uploaded VHD file.</span></span> <span data-ttu-id="f3303-113">URI VHD-файла можно получить в колонке учетной записи хранилища BLOB-объектов на портале Azure.</span><span class="sxs-lookup"><span data-stu-id="f3303-113">You can get the VHD file's URI from the storage account's blob blade in the Azure portal.</span></span>
+1.  <span data-ttu-id="c8f26-112">Замените следующие заполнитель для hello hello **$vhdUri** переменных с hello URI tooyour загружен файл виртуального жесткого диска.</span><span class="sxs-lookup"><span data-stu-id="c8f26-112">Replace hello following placeholder for hello **$vhdUri** variable with hello URI tooyour uploaded VHD file.</span></span> <span data-ttu-id="c8f26-113">URI hello VHD-файл можно получить из колонки BLOB-объектов учетной записи хранилища hello в hello портал Azure.</span><span class="sxs-lookup"><span data-stu-id="c8f26-113">You can get hello VHD file's URI from hello storage account's blob blade in hello Azure portal.</span></span>
 
     ```PowerShell
-    $vhdUri = '<Specify the VHD URI here>'
+    $vhdUri = '<Specify hello VHD URI here>'
     ```
 
-1.  <span data-ttu-id="f3303-114">Создайте пользовательский образ, используя командлет **New-AzureRmResourceGroupDeployment**.</span><span class="sxs-lookup"><span data-stu-id="f3303-114">Create the custom image using the **New-AzureRmResourceGroupDeployment** cmdlet.</span></span> <span data-ttu-id="f3303-115">Замените следующие заполнители для переменных **$customImageName** и **$customImageDescription** на значимые имена для своей среды.</span><span class="sxs-lookup"><span data-stu-id="f3303-115">Replace the following placeholders for the **$customImageName** and **$customImageDescription** variables to meaningful names for your environment.</span></span>
+1.  <span data-ttu-id="c8f26-114">Создание образа с помощью hello hello **New AzureRmResourceGroupDeployment** командлета.</span><span class="sxs-lookup"><span data-stu-id="c8f26-114">Create hello custom image using hello **New-AzureRmResourceGroupDeployment** cmdlet.</span></span> <span data-ttu-id="c8f26-115">Замените следующие местозаполнители для hello hello **$customImageName** и **$customImageDescription** toomeaningful имена переменных среды.</span><span class="sxs-lookup"><span data-stu-id="c8f26-115">Replace hello following placeholders for hello **$customImageName** and **$customImageDescription** variables toomeaningful names for your environment.</span></span>
 
     ```PowerShell
-    $customImageName = '<Specify the custom image name>'
-    $customImageDescription = '<Specify the custom image description>'
+    $customImageName = '<Specify hello custom image name>'
+    $customImageDescription = '<Specify hello custom image description>'
 
     $parameters = @{existingLabName="$($lab.Name)"; existingVhdUri=$vhdUri; imageOsType='windows'; isVhdSysPrepped=$false; imageName=$customImageName; imageDescription=$customImageDescription}
 
     New-AzureRmResourceGroupDeployment -ResourceGroupName $lab.ResourceGroupName -Name CreateCustomImage -TemplateUri 'https://raw.githubusercontent.com/Azure/azure-devtestlab/master/Samples/201-dtl-create-customimage-from-vhd/azuredeploy.json' -TemplateParameterObject $parameters
     ```
 
-## <a name="powershell-script-to-create-a-custom-image-from-a-vhd-file"></a><span data-ttu-id="f3303-116">Создание пользовательского образа из VHD-файла с помощью сценария PowerShell</span><span class="sxs-lookup"><span data-stu-id="f3303-116">PowerShell script to create a custom image from a VHD file</span></span>
+## <a name="powershell-script-toocreate-a-custom-image-from-a-vhd-file"></a><span data-ttu-id="c8f26-116">Сценарий PowerShell toocreate пользовательского образа из VHD-файла</span><span class="sxs-lookup"><span data-stu-id="c8f26-116">PowerShell script toocreate a custom image from a VHD file</span></span>
 
-<span data-ttu-id="f3303-117">Следующий сценарий PowerShell позволяет создать пользовательский образ из VHD-файла.</span><span class="sxs-lookup"><span data-stu-id="f3303-117">The following PowerShell script can be used to create a custom image from a VHD file.</span></span> <span data-ttu-id="f3303-118">Замените заполнители, выделенные угловыми скобками, на необходимые значения.</span><span class="sxs-lookup"><span data-stu-id="f3303-118">Replace the placeholders (starting and ending with angle brackets) with the appropriate values for your needs.</span></span> 
+<span data-ttu-id="c8f26-117">Hello следующий сценарий PowerShell можно использовать toocreate пользовательского образа из VHD-файл.</span><span class="sxs-lookup"><span data-stu-id="c8f26-117">hello following PowerShell script can be used toocreate a custom image from a VHD file.</span></span> <span data-ttu-id="c8f26-118">Замените заполнители hello (начиная и заканчивая угловые скобки) с соответствующими значениями hello вашим потребностям.</span><span class="sxs-lookup"><span data-stu-id="c8f26-118">Replace hello placeholders (starting and ending with angle brackets) with hello appropriate values for your needs.</span></span> 
 
 ```PowerShell
-# Log in to your Azure account.  
+# Log in tooyour Azure account.  
 Login-AzureRmAccount
 
-# Select the desired Azure subscription. 
+# Select hello desired Azure subscription. 
 $subscriptionId = '<Specify your subscription ID here>'
 Select-AzureRmSubscription -SubscriptionId $subscriptionId
 
-# Get the lab object.
+# Get hello lab object.
 $labRg = '<Specify your lab resource group name here>'
 $labName = '<Specify your lab name here>'
 $lab = Get-AzureRmResource -ResourceId ('/subscriptions/' + $subscriptionId + '/resourceGroups/' + $labRg + '/providers/Microsoft.DevTestLab/labs/' + $labName)
 
-# Get the lab storage account and lab storage account key values.
+# Get hello lab storage account and lab storage account key values.
 $labStorageAccount = Get-AzureRmResource -ResourceId $lab.Properties.defaultStorageAccount 
 $labStorageAccountKey = (Get-AzureRmStorageAccountKey -ResourceGroupName $labStorageAccount.ResourceGroupName -Name $labStorageAccount.ResourceName)[0].Value
 
-# Set the URI of the VHD file.  
-$vhdUri = '<Specify the VHD URI here>'
+# Set hello URI of hello VHD file.  
+$vhdUri = '<Specify hello VHD URI here>'
 
-# Set the custom image name and description values.
-$customImageName = '<Specify the custom image name>'
-$customImageDescription = '<Specify the custom image description>'
+# Set hello custom image name and description values.
+$customImageName = '<Specify hello custom image name>'
+$customImageDescription = '<Specify hello custom image description>'
 
-# Set up the parameters object.
+# Set up hello parameters object.
 $parameters = @{existingLabName="$($lab.Name)"; existingVhdUri=$vhdUri; imageOsType='windows'; isVhdSysPrepped=$false; imageName=$customImageName; imageDescription=$customImageDescription}
 
-# Create the custom image. 
+# Create hello custom image. 
 New-AzureRmResourceGroupDeployment -ResourceGroupName $lab.ResourceGroupName -Name CreateCustomImage -TemplateUri 'https://raw.githubusercontent.com/Azure/azure-devtestlab/master/Samples/201-dtl-create-customimage-from-vhd/azuredeploy.json' -TemplateParameterObject $parameters
 ```
 
-## <a name="related-blog-posts"></a><span data-ttu-id="f3303-119">Связанные записи в блогах</span><span class="sxs-lookup"><span data-stu-id="f3303-119">Related blog posts</span></span>
+## <a name="related-blog-posts"></a><span data-ttu-id="c8f26-119">Связанные записи в блогах</span><span class="sxs-lookup"><span data-stu-id="c8f26-119">Related blog posts</span></span>
 
-- [<span data-ttu-id="f3303-120">Custom images or formulas? (Пользовательские изображения или формулы?)</span><span class="sxs-lookup"><span data-stu-id="f3303-120">Custom images or formulas?</span></span>](https://blogs.msdn.microsoft.com/devtestlab/2016/04/06/custom-images-or-formulas/)
-- [<span data-ttu-id="f3303-121">Copying Custom Images between Azure DevTest Labs (Копирование пользовательских образов между лабораториями для разработки и тестирования Azure)</span><span class="sxs-lookup"><span data-stu-id="f3303-121">Copying Custom Images between Azure DevTest Labs</span></span>](http://www.visualstudiogeeks.com/blog/DevOps/How-To-Move-CustomImages-VHD-Between-AzureDevTestLabs#copying-custom-images-between-azure-devtest-labs)
+- [<span data-ttu-id="c8f26-120">Custom images or formulas? (Пользовательские изображения или формулы?)</span><span class="sxs-lookup"><span data-stu-id="c8f26-120">Custom images or formulas?</span></span>](https://blogs.msdn.microsoft.com/devtestlab/2016/04/06/custom-images-or-formulas/)
+- [<span data-ttu-id="c8f26-121">Copying Custom Images between Azure DevTest Labs (Копирование пользовательских образов между лабораториями для разработки и тестирования Azure)</span><span class="sxs-lookup"><span data-stu-id="c8f26-121">Copying Custom Images between Azure DevTest Labs</span></span>](http://www.visualstudiogeeks.com/blog/DevOps/How-To-Move-CustomImages-VHD-Between-AzureDevTestLabs#copying-custom-images-between-azure-devtest-labs)
 
-##<a name="next-steps"></a><span data-ttu-id="f3303-122">Дальнейшие действия</span><span class="sxs-lookup"><span data-stu-id="f3303-122">Next steps</span></span>
+##<a name="next-steps"></a><span data-ttu-id="c8f26-122">Дальнейшие действия</span><span class="sxs-lookup"><span data-stu-id="c8f26-122">Next steps</span></span>
 
-- [<span data-ttu-id="f3303-123">Добавление виртуальной машины с артефактами в лабораторию в Azure DevTest Labs</span><span class="sxs-lookup"><span data-stu-id="f3303-123">Add a VM to your lab</span></span>](./devtest-lab-add-vm-with-artifacts.md)
+- [<span data-ttu-id="c8f26-123">Добавление виртуальных Машин лаборатории tooyour</span><span class="sxs-lookup"><span data-stu-id="c8f26-123">Add a VM tooyour lab</span></span>](./devtest-lab-add-vm-with-artifacts.md)

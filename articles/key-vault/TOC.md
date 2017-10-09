@@ -13,7 +13,7 @@
 ### [Руководство разработчика для хранилища ключей](key-vault-developers-guide.md)
 ### [Ограничения служб](key-vault-service-limits.md)
 ### [Ключи с защитой HSM](key-vault-hsm-protected-keys.md)
-### [Переход на .NET 2.0](key-vault-dotnet2api-release-notes.md)
+### [Перенос too.NET 2.0](key-vault-dotnet2api-release-notes.md)
 ### Общие сведения
 #### [Системы безопасности](key-vault-ovw-security-worlds.md)
 #### [Обратимое удаление](key-vault-ovw-soft-delete.md)
@@ -26,9 +26,9 @@
 ### [Доступность и избыточность](key-vault-disaster-recovery-guidance.md)
 ### [Изменение идентификатора клиента](key-vault-subscription-move-fix.md)
 ### [Создание и управление с помощью интерфейса командной строки версии 2.0](key-vault-manage-with-cli2.md)
-### [Как использовать обратимое удаление в Key Vault с помощью CLI](key-vault-soft-delete-cli.md)
-### [Как использовать обратимое удаление в Key Vault с помощью PowerShell](key-vault-soft-delete-powershell.md)
-### [Использование групп для предоставления доступа](key-vault-group-permissions-for-apps.md)
+### [Как toouse хранилище ключей soft-delete с CLI](key-vault-soft-delete-cli.md)
+### [Как toouse хранилище ключей soft удаление с помощью PowerShell](key-vault-soft-delete-powershell.md)
+### [Использование групп toogrant доступа](key-vault-group-permissions-for-apps.md)
 ### [Защита хранилища ключей](key-vault-secure-your-key-vault.md)
 
 ## Автоматизация

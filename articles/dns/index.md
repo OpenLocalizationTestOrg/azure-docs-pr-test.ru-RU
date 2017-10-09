@@ -1,6 +1,6 @@
 ---
-title: "Документация по DNS Azure. Руководства и справочник по API | Документация Майкрософт"
-description: "Узнайте, как управлять записями DNS с помощью службы доменных имен (DNS) Azure. В документации показано, как настроить и администрировать зоны и записи DNS для доменных имен."
+title: "aaaAzure документации DNS - учебники, справочник по API | Документы Microsoft"
+description: "Узнайте, как toomanage записи DNS с помощью доменных имен Azure. Документация показано как tooset и управление ею зоны и записи для имен доменов DNS."
 services: dns
 author: carolz
 manager: carolz
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: 659e0989e3a1f7114796c2211606e5d629cf68fd
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 64804b1d6cbfefdeab3f9a79bca26848e37e64f3
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/19/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="dns-documentation"></a>Документация по DNS
 
-Узнайте, как управлять записями DNS с помощью службы доменных имен Azure (службы размещения). В руководствах, справочниках по API и другой документации показано, как настроить и администрировать зоны и записи DNS для доменных имен.
+Узнайте, как toomanage записи DNS с помощью Azure доменных имен, размещения службы. Учебники, ссылки на API и другую документацию показывается, как tooset и управление ею зоны и записи для имен доменов DNS.
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -52,7 +52,7 @@ ms.lasthandoff: 07/19/2017
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Начало работы со службой Azure DNS на портале Azure</h3>
+                        <h3>Приступая к работе с Azure DNS, с помощью портала Azure hello</h3>
                     </div>
                 </div>
             </div>
@@ -88,7 +88,7 @@ ms.lasthandoff: 07/19/2017
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Приступая к работе со службой DNS Azure с помощью Azure CLI</h3>
+                        <h3>Приступая к работе с Azure DNS, с помощью hello Azure CLI</h3>
                     </div>
                 </div>
             </div>

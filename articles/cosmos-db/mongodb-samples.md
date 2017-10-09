@@ -1,6 +1,6 @@
 ---
-title: "Использование API MongoDB для создания приложений Azure Cosmos DB | Документация Майкрософт"
-description: "Руководство, в котором создается оперативная база данных с помощью интерфейсов API Azure Cosmos DB для MongoDB."
+title: "aaaUse toobuild MongoDB API-интерфейсы Azure Cosmos DB приложение | Документы Microsoft"
+description: "Учебник, который создает базу данных доступной с помощью API-интерфейсы DB Cosmos Azure hello для MongoDB."
 keywords: "примеры mongodb"
 services: cosmos-db
 author: AndrewHoh
@@ -15,33 +15,33 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/22/2017
 ms.author: anhoh
-ms.openlocfilehash: 433d2e585c884a10e7e923a0b27c179a95410d01
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 09be4362fe3aac02e0163325f958210be9598383
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="build-an-azure-cosmos-db-api-for-mongodb-app-using-nodejs"></a><span data-ttu-id="c5f9b-104">Создание приложения API для MongoDB в Azure Cosmos DB с помощью Node.js</span><span class="sxs-lookup"><span data-stu-id="c5f9b-104">Build an Azure Cosmos DB: API for MongoDB app using Node.js</span></span>
+# <a name="build-an-azure-cosmos-db-api-for-mongodb-app-using-nodejs"></a><span data-ttu-id="8b67c-104">Создание приложения API для MongoDB в Azure Cosmos DB с помощью Node.js</span><span class="sxs-lookup"><span data-stu-id="8b67c-104">Build an Azure Cosmos DB: API for MongoDB app using Node.js</span></span>
 > [!div class="op_single_selector"]
-> * [<span data-ttu-id="c5f9b-105">.NET</span><span class="sxs-lookup"><span data-stu-id="c5f9b-105">.NET</span></span>](documentdb-get-started.md)
-> * [<span data-ttu-id="c5f9b-106">.NET Core</span><span class="sxs-lookup"><span data-stu-id="c5f9b-106">.NET Core</span></span>](documentdb-dotnetcore-get-started.md)
-> * [<span data-ttu-id="c5f9b-107">Java</span><span class="sxs-lookup"><span data-stu-id="c5f9b-107">Java</span></span>](documentdb-java-get-started.md)
-> * [<span data-ttu-id="c5f9b-108">Node.js для MongoDB</span><span class="sxs-lookup"><span data-stu-id="c5f9b-108">Node.js for MongoDB</span></span>](mongodb-samples.md)
-> * [<span data-ttu-id="c5f9b-109">Node.js</span><span class="sxs-lookup"><span data-stu-id="c5f9b-109">Node.js</span></span>](documentdb-nodejs-get-started.md)
-> * [<span data-ttu-id="c5f9b-110">C++</span><span class="sxs-lookup"><span data-stu-id="c5f9b-110">C++</span></span>](documentdb-cpp-get-started.md)
+> * [<span data-ttu-id="8b67c-105">.NET</span><span class="sxs-lookup"><span data-stu-id="8b67c-105">.NET</span></span>](documentdb-get-started.md)
+> * [<span data-ttu-id="8b67c-106">.NET Core</span><span class="sxs-lookup"><span data-stu-id="8b67c-106">.NET Core</span></span>](documentdb-dotnetcore-get-started.md)
+> * [<span data-ttu-id="8b67c-107">Java</span><span class="sxs-lookup"><span data-stu-id="8b67c-107">Java</span></span>](documentdb-java-get-started.md)
+> * [<span data-ttu-id="8b67c-108">Node.js для MongoDB</span><span class="sxs-lookup"><span data-stu-id="8b67c-108">Node.js for MongoDB</span></span>](mongodb-samples.md)
+> * [<span data-ttu-id="8b67c-109">Node.js</span><span class="sxs-lookup"><span data-stu-id="8b67c-109">Node.js</span></span>](documentdb-nodejs-get-started.md)
+> * [<span data-ttu-id="8b67c-110">C++</span><span class="sxs-lookup"><span data-stu-id="8b67c-110">C++</span></span>](documentdb-cpp-get-started.md)
 >  
 >
 
-<span data-ttu-id="c5f9b-111">В этом примере показано, как создать консольное приложение API для MongoDB в Azure Cosmos DB с помощью Node.js.</span><span class="sxs-lookup"><span data-stu-id="c5f9b-111">This example shows you how to build an Azure Cosmos DB: API for MongoDB console app using Node.js.</span></span>
+<span data-ttu-id="8b67c-111">В этом примере показано, как toobuild DB Cosmos Azure: API для MongoDB консольного приложения с помощью Node.js.</span><span class="sxs-lookup"><span data-stu-id="8b67c-111">This example shows you how toobuild an Azure Cosmos DB: API for MongoDB console app using Node.js.</span></span>
 
-<span data-ttu-id="c5f9b-112">Чтобы использовать этот пример, необходимо выполнить следующие действия.</span><span class="sxs-lookup"><span data-stu-id="c5f9b-112">To use this example, you must:</span></span>
+<span data-ttu-id="8b67c-112">toouse в этом примере вы должны:</span><span class="sxs-lookup"><span data-stu-id="8b67c-112">toouse this example, you must:</span></span>
 
-* <span data-ttu-id="c5f9b-113">[Создание](create-mongodb-dotnet.md#create-account) приложения API для MongoDB в Azure Cosmos DB.</span><span class="sxs-lookup"><span data-stu-id="c5f9b-113">[Create](create-mongodb-dotnet.md#create-account) an Azure Cosmos DB: API for MongoDB account.</span></span>
-* <span data-ttu-id="c5f9b-114">Получить сведения о [строке подключения](connect-mongodb-account.md) MongoDB.</span><span class="sxs-lookup"><span data-stu-id="c5f9b-114">Retrieve your MongoDB [connection string](connect-mongodb-account.md) information.</span></span>
+* <span data-ttu-id="8b67c-113">[Создание](create-mongodb-dotnet.md#create-account) приложения API для MongoDB в Azure Cosmos DB.</span><span class="sxs-lookup"><span data-stu-id="8b67c-113">[Create](create-mongodb-dotnet.md#create-account) an Azure Cosmos DB: API for MongoDB account.</span></span>
+* <span data-ttu-id="8b67c-114">Получить сведения о [строке подключения](connect-mongodb-account.md) MongoDB.</span><span class="sxs-lookup"><span data-stu-id="8b67c-114">Retrieve your MongoDB [connection string](connect-mongodb-account.md) information.</span></span>
 
-## <a name="create-the-app"></a><span data-ttu-id="c5f9b-115">Создание приложения</span><span class="sxs-lookup"><span data-stu-id="c5f9b-115">Create the app</span></span>
+## <a name="create-hello-app"></a><span data-ttu-id="8b67c-115">Создание приложения hello</span><span class="sxs-lookup"><span data-stu-id="8b67c-115">Create hello app</span></span>
 
-1. <span data-ttu-id="c5f9b-116">Создайте файл *app.js*, а затем скопируйте и вставьте в него приведенный ниже код.</span><span class="sxs-lookup"><span data-stu-id="c5f9b-116">Create a *app.js* file and copy & paste the code below.</span></span>
+1. <span data-ttu-id="8b67c-116">Создание *в файле app.js* файл и скопируйте и вставьте приведенный ниже код hello.</span><span class="sxs-lookup"><span data-stu-id="8b67c-116">Create a *app.js* file and copy & paste hello code below.</span></span>
 
     ```nodejs
     var MongoClient = require('mongodb').MongoClient;
@@ -66,7 +66,7 @@ ms.lasthandoff: 08/03/2017
             "address": { "country": "USA", "state": "WA", "city": "Seattle" }
         }, function(err, result) {
         assert.equal(err, null);
-        console.log("Inserted a document into the families collection.");
+        console.log("Inserted a document into hello families collection.");
         callback();
     });
     };
@@ -122,13 +122,13 @@ ms.lasthandoff: 08/03/2017
     });
     ```
 
-2. <span data-ttu-id="c5f9b-117">Замените следующие переменные в файле *app.js* параметрами учетной записи (узнайте, как найти [строку подключения](connect-mongodb-account.md)):</span><span class="sxs-lookup"><span data-stu-id="c5f9b-117">Modify the following variables in the *app.js* file per your account settings (Learn how to find your [connection string](connect-mongodb-account.md)):</span></span>
+2. <span data-ttu-id="8b67c-117">Измените следующие переменные в hello hello *в файле app.js* файл на параметры учетной записи (Дополнительные сведения как toofind вашей [строка подключения](connect-mongodb-account.md)):</span><span class="sxs-lookup"><span data-stu-id="8b67c-117">Modify hello following variables in hello *app.js* file per your account settings (Learn how toofind your [connection string](connect-mongodb-account.md)):</span></span>
    
     ```nodejs
     var url = 'mongodb://<endpoint>:<password>@<endpoint>.documents.azure.com:10255/?ssl=true';
     ```
      
-3. <span data-ttu-id="c5f9b-118">Откройте удобный для вас терминал, выполните команду **npm install mongodb --save**, а затем запустите приложение с помощью **node app.js**.</span><span class="sxs-lookup"><span data-stu-id="c5f9b-118">Open your favorite terminal, run **npm install mongodb --save**, then run your app with **node app.js**</span></span>
+3. <span data-ttu-id="8b67c-118">Откройте удобный для вас терминал, выполните команду **npm install mongodb --save**, а затем запустите приложение с помощью **node app.js**.</span><span class="sxs-lookup"><span data-stu-id="8b67c-118">Open your favorite terminal, run **npm install mongodb --save**, then run your app with **node app.js**</span></span>
 
-## <a name="next-steps"></a><span data-ttu-id="c5f9b-119">Дальнейшие действия</span><span class="sxs-lookup"><span data-stu-id="c5f9b-119">Next steps</span></span>
-* <span data-ttu-id="c5f9b-120">Узнайте, как [использовать MongoChef](mongodb-mongochef.md) с учетной записью API для MongoDB в Azure Cosmos DB.</span><span class="sxs-lookup"><span data-stu-id="c5f9b-120">Learn how to [use MongoChef](mongodb-mongochef.md) with your Azure Cosmos DB: API for MongoDB account.</span></span>
+## <a name="next-steps"></a><span data-ttu-id="8b67c-119">Дальнейшие действия</span><span class="sxs-lookup"><span data-stu-id="8b67c-119">Next steps</span></span>
+* <span data-ttu-id="8b67c-120">Узнайте, каким образом слишком[использовать MongoChef](mongodb-mongochef.md) с Cosmos базы данных Azure: API для учетной записи MongoDB.</span><span class="sxs-lookup"><span data-stu-id="8b67c-120">Learn how too[use MongoChef](mongodb-mongochef.md) with your Azure Cosmos DB: API for MongoDB account.</span></span>
