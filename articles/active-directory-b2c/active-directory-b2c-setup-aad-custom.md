@@ -14,21 +14,21 @@ ms.topic: article
 ms.devlang: na
 ms.date: 04/04/2017
 ms.author: parakhj
-ms.openlocfilehash: 6c073d70debfdc3560405955d65fa9ccaa7d8b1f
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 9b0c32086cebc171d91da2e7bfb48136723ccd4d
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-active-directory-b2c-sign-in-by-using-azure-ad-accounts"></a>Azure Active Directory B2C. Выполнение входа с помощью учетных записей Azure AD
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-В этой статье описывается включение входа для пользователей из определенной организации Azure Active Directory (Azure AD) с помощью [пользовательских политик](active-directory-b2c-overview-custom.md).
+В этой статье показано, как tooenable вход для пользователей в определенной организации Azure Active Directory (Azure AD) через использование hello [настраиваемые политики](active-directory-b2c-overview-custom.md).
 
 ## <a name="prerequisites"></a>Предварительные требования
 
-Выполните шаги, описанные в статье [Azure Active Directory B2C. Приступая к работе с настраиваемыми политиками](active-directory-b2c-get-started-custom.md).
+Hello завершения шагов в hello [Приступая к работе с помощью настроенных политик](active-directory-b2c-get-started-custom.md) статьи.
 
 А именно:
 
@@ -36,54 +36,54 @@ ms.lasthandoff: 07/11/2017
 2. Создание приложения Azure AD B2C.
 3. Регистрация двух приложений подсистемы политик.
 4. Настройка ключей.
-5. Настройка начального пакета.
+5. Настройка пакета начального приветствия.
 
 ## <a name="create-an-azure-ad-app"></a>Создание приложения Azure AD
 
-Чтобы включить вход для пользователей из определенной организации Azure AD, вам необходимо зарегистрировать приложение в клиенте организации Azure AD.
+tooenable вход для пользователей в конкретной организации Azure AD необходимо tooregister приложения в рамках клиента hello организации Azure AD.
 
 >[!NOTE]
-> В следующих инструкциях клиент организации Azure AD будет называться "contoso.com", а клиент Azure AD B2C — "fabrikamb2c.onmicrosoft.com".
+> Мы используем «contoso.com» для клиента hello организации Azure AD и «fabrikamb2c.onmicrosoft.com», как клиент Azure AD B2C hello в hello, следуя инструкциям.
 
-1. Войдите на [портал Azure](https://portal.azure.com).
-1. На верхней панели выберите учетную запись. В списке **Каталог** выберите клиент организации Azure AD, в котором вы хотите зарегистрировать приложение (например, contoso.com).
-1. В левой области щелкните **Больше служб** и выполните поиск по запросу "регистрация приложений".
+1. Войдите в toohello [портал Azure](https://portal.azure.com).
+1. На верхней панели hello выберите вашу учетную запись. Из hello **каталога** выберите клиента hello организации Azure AD, где требуется tooregister приложения (contoso.com).
+1. Выберите **больше услуг** в левой области hello и выполните поиск «Регистрации приложения».
 1. Выберите **Регистрация нового приложения**.
 1. Введите значение имя для приложения (например, `Azure AD B2C App`).
-1. Выберите в качестве типа приложения **Веб-приложение или API**.
-1. В поле **URL-адрес входа** введите следующий URL-адрес, где `yourtenant` заменяется на имя вашего клиента Azure AD B2C (`fabrikamb2c.onmicrosoft.com`):
+1. Выберите **веб-приложения и API** для типа приложения hello.
+1. Для **URL-адрес входа**, введите URL-адреса, hello где `yourtenant` заменяется именем hello вашего клиента Azure AD B2C (`fabrikamb2c.onmicrosoft.com`):
 
     ```
     https://login.microsoftonline.com/te/yourtenant.onmicrosoft.com/oauth2/authresp
     ```
 
-1. Сохраните идентификатор приложения.
-1. Щелкните созданное приложение.
-1. В колонке **Параметры** щелкните **Ключи**.
-1. Создайте ключ и сохраните его. Он понадобится для выполнения действий в следующем разделе.
+1. Сохранить код приложения hello.
+1. Выберите только что созданный hello приложение.
+1. В разделе hello **параметры** колонке выберите **ключей**.
+1. Создайте ключ и сохраните его. Используется в hello действия, описанные в следующем разделе hello.
 
-## <a name="add-the-azure-ad-key-to-azure-ad-b2c"></a>Добавление ключа Azure AD в Azure AD B2C
+## <a name="add-hello-azure-ad-key-tooazure-ad-b2c"></a>Добавление ключа tooAzure hello Azure AD AD B2C
 
-Вам необходимо сохранить ключ приложения contoso.com в клиенте Azure AD B2C. Для этого:
-1. Перейдите к клиенту Azure AD B2C и последовательно выберите **B2C Settings** > **Identity Experience Framework** > **Policy Keys** (Параметры B2C > Инфраструктура процедур идентификации > Ключи политики).
+Требуется ключ приложения contoso.com toostore hello в клиенте Azure AD B2C. toodo это:
+1. Клиент Azure AD B2C tooyour перейдите и выберите **B2C параметры** > **Identity Framework качества** > **ключи политики**.
 1. Щелкните **+Добавить**.
 1. Выберите или введите следующие параметры:
    * Выберите **Вручную**.
-   * Для параметра **Имя** выберите имя, соответствующее имени клиента Azure AD (например, `ContosoAppSecret`).  Префикс `B2C_1A_` будет автоматически добавлен к имени ключа.
-   * Вставьте ключ приложения в текстовое поле **Секрет**.
+   * Для параметра **Имя** выберите имя, соответствующее имени клиента Azure AD (например, `ContosoAppSecret`).  префикс Hello `B2C_1A_` автоматически добавляется toohello имя ключа.
+   * Вставьте ключ приложения hello **секрет** поле.
    * Выберите **Подпись**.
 1. Нажмите кнопку **Создать**.
-1. Убедитесь, что вы создали ключ `B2C_1A_ContosoAppSecret`.
+1. Убедитесь, что вы создали ключ hello `B2C_1A_ContosoAppSecret`.
 
 
 ## <a name="add-a-claims-provider-in-your-base-policy"></a>Добавление поставщика утверждений в базовую политику
 
-Чтобы пользователи выполняли вход с помощью Azure AD, необходимо определить Azure AD в качестве поставщика утверждений. Другими словами, необходимо указать конечную точку, с которой будет взаимодействовать Azure AD B2C. Конечная точка предоставит набор утверждений, используемых Azure AD B2C, чтобы проверить, была ли выполнена проверка подлинности определенного пользователя. 
+Если требуется в toosign пользователей с помощью Azure AD необходимо toodefine Azure AD в качестве поставщика утверждений. Другими словами необходимо toospecify конечную точку, которая будет взаимодействовать Azure AD B2C. Конечная точка Hello предоставит набор утверждений, которые используются в Azure AD B2C tooverify проверку определенного пользователя. 
 
-Можно определить Azure AD в качестве поставщика утверждений, добавив Azure AD в узел `<ClaimsProvider>` в файл расширения политики.
+Azure AD можно определить в качестве поставщика утверждений, добавив Azure AD toohello `<ClaimsProvider>` узла в файле расширения hello политики:
 
-1. Откройте файл расширения (TrustFrameworkExtensions.xml) из рабочего каталога.
-1. Найдите раздел `<ClaimsProviders>`. Если он не существует, добавьте его в корневой узел.
+1. Откройте файл расширения hello (TrustFrameworkExtensions.xml) из рабочий каталог.
+1. Найти hello `<ClaimsProviders>` раздела. Если он не существует, добавьте его в корневом узле hello.
 1. Добавьте новый `<ClaimsProvider>`, как показано ниже.
 
     ```XML
@@ -128,94 +128,94 @@ ms.lasthandoff: 07/11/2017
     </ClaimsProvider>
     ```
 
-1. В узле `<ClaimsProvider>` укажите для `<Domain>` уникальное значение, позволяющее отличить этот поставщик удостоверений от других.
-1. В узле `<ClaimsProvider>` задайте для `<DisplayName>` понятное имя поставщика утверждений. В настоящее время это значение не используется.
+1. В разделе hello `<ClaimsProvider>` узел, значение hello обновления для `<Domain>` tooa уникальное значение, которое может быть используется toodistinguish его от других поставщиков удостоверений.
+1. В разделе hello `<ClaimsProvider>` узел, значение hello обновления для `<DisplayName>` tooa понятное имя для hello поставщика утверждений. В настоящее время это значение не используется.
 
-### <a name="update-the-technical-profile"></a>Обновление технического профиля
+### <a name="update-hello-technical-profile"></a>Обновление профиля технические hello
 
-Чтобы получить токен из конечной точки Azure AD, вам необходимо определить протоколы, используемые Azure AD B2C для взаимодействия с Azure AD. Этот процесс происходит внутри элемента `<TechnicalProfile>` поставщика `<ClaimsProvider>`.
-1. Обновите идентификатор узла `<TechnicalProfile>`. Этот идентификатор используется для ссылки на этот технический профиль из других частей политики.
-1. Обновите значение для `<DisplayName>`. Это значение будет отображаться на кнопке входа на экране входа в систему.
-1. Обновите значение для `<Description>`.
-1. Azure AD использует протокол OpenID Connect, поэтому для `<Protocol>` должно быть задано значение `"OpenIdConnect"`.
+tooget токена из конечной точки Azure AD hello необходимо протоколы hello toodefine использование Azure AD B2C toocommunicate с Azure AD. Это выполняется внутри hello `<TechnicalProfile>` элемент `<ClaimsProvider>`.
+1. Обновить идентификатор hello hello `<TechnicalProfile>` узла. Этот идентификатор является toothis используется toorefer технические профиль из других частей hello политики.
+1. Измените значение в hello `<DisplayName>`. Это значение будет отображаться hello вход кнопку на экране входа.
+1. Измените значение в hello `<Description>`.
+1. Azure AD использует протокол OpenID Connect hello, поэтому убедитесь, это значение hello для `<Protocol>` — `"OpenIdConnect"`.
 
-Вам следует обновить раздел `<Metadata>` в приведенном выше коде XML, чтобы добавить параметры конфигурации для определенного клиента Azure AD. В XML-файле обновите значения метаданных следующим образом:
+Требуется tooupdate hello `<Metadata>` раздела hello XML-файл называется tooearlier tooreflect hello настройки для конкретных клиента Azure AD. В XML-файле hello обновите значения метаданных hello следующим образом:
 
-1. Задайте для параметра `<Item Key="METADATA">` значение `https://login.windows.net/yourAzureADtenant/.well-known/openid-configuration`, где `yourAzureADtenant` — это имя клиента Azure AD (contoso.com).
-1. Откройте браузер и перейдите к URL-адресу `METADATA`, который вы только что обновили.
-1. Найдите на этой странице в браузере объект issuer и скопируйте его значение. Вы должны увидеть примерно следующее: `https://sts.windows.net/{tenantId}/`.
-1. Вставьте значение для `<Item Key="ProviderName">` в XML-файл.
-1. Задайте для параметра `<Item Key="client_id">` значение идентификатора приложения.
-1. Задайте для параметра `<Item Key="IdTokenAudience">` значение идентификатора приложения.
-1. Задайте для параметра `<Item Key="response_types">` значение `id_token`.
-1. Задайте для параметра `<Item Key="UsePolicyInRedirectUri">` значение `false`.
+1. Задать `<Item Key="METADATA">` слишком`https://login.windows.net/yourAzureADtenant/.well-known/openid-configuration`, где `yourAzureADtenant` — это имя клиента Azure AD (contoso.com).
+1. Откройте ваш браузер и перейдите toohello `METADATA` URL-адрес, который был обновлен.
+1. В браузере hello поиска hello объекта «issuer» и скопируйте его значение. Он должен выглядеть hello следующим образом: `https://sts.windows.net/{tenantId}/`.
+1. Вставьте значение hello `<Item Key="ProviderName">` hello XML-файл.
+1. Задать `<Item Key="client_id">` toohello код приложения от регистрации приложения hello.
+1. Задать `<Item Key="IdTokenAudience">` toohello код приложения от регистрации приложения hello.
+1. Убедитесь, что `<Item Key="response_types">` задано слишком`id_token`.
+1. Убедитесь, что `<Item Key="UsePolicyInRedirectUri">` задано слишком`false`.
 
-Вам также необходимо связать секрет Azure AD, зарегистрированный в клиенте Azure AD B2C, с информацией о `<ClaimsProvider>` Azure AD.
+Также необходим секретный hello Azure AD toolink, который зарегистрирован в вашей toohello клиента Azure AD B2C Azure AD `<ClaimsProvider>` сведения:
 
-* В разделе `<CryptographicKeys>` в приведенном выше XML-файле задайте для `StorageReferenceId` эталонный идентификатор определенного секрета (например, `ContosoAppSecret`).
+* В hello `<CryptographicKeys>` раздела hello предшествующий XML-файл, измените значение в hello `StorageReferenceId` toohello идентификатор ссылки секрета hello, которое было определено (например, `ContosoAppSecret`).
 
-### <a name="upload-the-extension-file-for-verification"></a>Отправка файла расширения для проверки
+### <a name="upload-hello-extension-file-for-verification"></a>Отправить файл hello расширения для проверки
 
-К этому моменту политика настроена, так что Azure AD B2C знает, как взаимодействовать с каталогом Azure AD. Попробуйте отправить файл расширения политики, чтобы убедиться, что все в порядке. Для этого выполните следующие действия:
+К этому моменту вы настроили политикой, чтобы Azure AD B2C известно как toocommunicate с каталогом Azure AD. Попробуйте отправить файл расширения hello вашей tooconfirm только политики, нет ли проблем в данный момент. toodo так:
 
-1. Откройте колонку **Все политики** в клиенте Azure AD B2C.
-1. Установите флажок **Перезаписать политику, если она существует**.
-1. Отправьте файл расширения (TrustFrameworkExtensions.xml) и немного подождите, чтобы удостовериться в отсутствии сбоя при проверке.
+1. Откройте hello **все политики** колонки в клиенте Azure AD B2C.
+1. Проверьте hello **перезаписать hello политики, если он существует** поле.
+1. Отправить файл расширения hello (TrustFrameworkExtensions.xml) и что он не выдал hello проверки.
 
-## <a name="register-the-azure-ad-claims-provider-to-a-user-journey"></a>Регистрация поставщика утверждений Azure AD для пути взаимодействия пользователя
+## <a name="register-hello-azure-ad-claims-provider-tooa-user-journey"></a>Регистрация пользователя hello Azure AD утверждений поставщика tooa пути
 
-Теперь вам необходимо добавить поставщик удостоверений Azure AD в один из путей взаимодействия пользователя. На этом этапе поставщик удостоверений уже настроен, но еще не доступен ни на одном экране регистрации или входа. Чтобы сделать его доступным, необходимо создать дубликат существующего шаблона пути взаимодействия пользователя, а затем изменить его таким образом, чтобы он также содержал поставщик удостоверений Azure AD.
+Необходимо tooone tooadd hello Azure AD identity поставщика для вашего пути пользователя. На этом этапе Настройка поставщика удостоверений hello, но он не доступен в любом hello регистрации-повышение/вход экранов. toomake ее доступной, она будет создана копия существующего шаблона пути пользователя и затем изменить ее, чтобы он также поставщика удостоверений hello Azure AD:
 
-1. Откройте базовый файл политики (например, TrustFrameworkBase.xml).
-1. Найдите элемент `<UserJourneys>` и скопируйте полный узел `<UserJourney>` с `Id="SignUpOrSignIn"`.
-1. Откройте файл расширения (например, TrustFrameworkExtensions.xml) и найдите элемент `<UserJourneys>`. Если элемент не существует, добавьте его.
-1. Вставьте весь скопированный узел `<UserJourney>` как дочерний элемент `<UserJourneys>`.
-1. Переименуйте идентификатор нового пути пользователя (например, переименуйте как `SignUpOrSignUsingContoso`).
+1. Откройте файл базовый hello политики (например, TrustFrameworkBase.xml).
+1. Найти hello `<UserJourneys>` элемент и скопируйте hello всей `<UserJourney>` узел, который содержит `Id="SignUpOrSignIn"`.
+1. Откройте файл hello расширения (например, TrustFrameworkExtensions.xml) и найти hello `<UserJourneys>` элемента. Если элемент hello не существует, добавьте его.
+1. Вставить hello всей `<UserJourney>` узел, который вы скопировали как дочерний hello `<UserJourneys>` элемента.
+1. Переименуйте идентификатор hello hello новый пользователь пути (например, переименуйте как `SignUpOrSignUsingContoso`).
 
-### <a name="display-the-button"></a>Отображение кнопки
+### <a name="display-hello-button"></a>Экран приветствия «кнопка»
 
-Элемент `<ClaimsProviderSelection>` является аналогом кнопки поставщика удостоверений на экране регистрации или входа. Если вы добавите для Azure AD элемент `<ClaimsProviderSelection>`, новая кнопка отобразится при переходе пользователя на страницу. Для этого:
+Hello `<ClaimsProviderSelection>` элемент является аналогом tooan удостоверение поставщика кнопку на экране регистрации-повышение/вход. При добавлении `<ClaimsProviderSelection>` элемент для Azure AD новая кнопка отображается, когда пользователь попадает на странице приветствия. tooadd этого элемента:
 
-1. Найдите узел `<OrchestrationStep>`, который содержит `Order="1"` в только что созданном пути пользователя.
-1. Добавьте следующий код:
+1. Найти hello `<OrchestrationStep>` узел, который содержит `Order="1"` в только что созданный пользователь путешествия hello.
+1. Добавьте hello следующее:
 
     ```XML
     <ClaimsProviderSelection TargetClaimsExchangeId="ContosoExchange" />
     ```
 
-1. Задайте для параметра `TargetClaimsExchangeId` соответствующее значение. Мы советуем следовать общему соглашению: *\[ClaimProviderName\]Exchange*.
+1. Задать `TargetClaimsExchangeId` tooan соответствующее значение. Мы рекомендуем следующие hello же соглашениями, что и другие:  *\[ClaimProviderName\]Exchange*.
 
-### <a name="link-the-button-to-an-action"></a>Связывание кнопки с действием
+### <a name="link-hello-button-tooan-action"></a>Действие tooan кнопки ссылки hello
 
-Теперь, когда у вас есть кнопка, вам необходимо связать ее с действием. В этом случае действие — это возможность взаимодействия Azure AD B2C с Azure AD для получения токена. Свяжите кнопку с действием, связав технический профиль для поставщика утверждений Azure AD.
+Теперь, когда имеется кнопка на месте, необходимо toolink его tooan действие. Действие Hello в этом случае является для Azure AD B2C toocommunicate с Azure AD tooreceive маркер. Свяжите действие tooan кнопки hello, связывания hello технические профиля для поставщика утверждений Azure AD.
 
-1. Найдите `<OrchestrationStep>`, который содержит `Order="2"` в узле `<UserJourney>`.
-1. Добавьте следующий код:
+1. Найти hello `<OrchestrationStep>` , включающего `Order="2"` в hello `<UserJourney>` узла.
+1. Добавьте hello следующее:
 
     ```XML
     <ClaimsExchange Id="ContosoExchange" TechnicalProfileReferenceId="ContosoProfile" />
     ```
 
-1. Обновите `Id` до того же значения, которое имеет `TargetClaimsExchangeId` в предыдущем разделе.
-1. Задайте для `TechnicalProfileReferenceId` значение идентификатора ранее созданного технического профиля (ContosoProfile).
+1. Обновление `Id` toohello одинаковое значение, что и `TargetClaimsExchangeId` в предшествующих раздел hello.
+1. Обновление `TechnicalProfileReferenceId` toohello идентификатор hello технические профиля, созданную ранее (ContosoProfile).
 
-### <a name="upload-the-updated-extension-file"></a>Передача обновленного файла расширения
+### <a name="upload-hello-updated-extension-file"></a>Отправка файла обновленного расширения hello
 
-Вы внесли все необходимые изменения в файл расширения. Сохраните его. Затем отправьте этот файл. Подождите немного, чтобы убедиться, что все проверки завершены успешно.
+Изменение файла hello расширения завершено. Сохраните его. Затем отправьте файл hello и убедитесь, что успешного выполнения всех проверок.
 
-### <a name="update-the-rp-file"></a>Обновление файла проверяющей стороны
+### <a name="update-hello-rp-file"></a>Обновить файл RP hello
 
-Теперь необходимо обновить файл проверяющей стороны, который активирует созданный путь взаимодействия пользователя.
+Требуется tooupdate hello проверяющей стороны (RP) файл, который будет инициировать только что созданный пользователь путешествия hello:
 
-1. Создайте копию SignUpOrSignIn.xml в рабочем каталоге и переименуйте его (например, на SignUpOrSignInWithAAD.xml).
-1. Откройте новый файл и задайте для атрибута `PolicyId` для `<TrustFrameworkPolicy>` новое уникальное значение (например, SignUpOrSignInWithAAD). <br> Это будет имя вашей политики (например, B2C\_1A\_SignUpOrSignInWithAAD).
-1. Задайте для атрибута `ReferenceId` в `<DefaultUserJourney>` идентификатор созданного пути взаимодействия пользователя (например, SignUpOrSignUsingContoso).
-1. Сохраните изменения и отправьте файл.
+1. Создайте копию SignUpOrSignIn.xml в рабочий каталог и переименуйте его (например, переименуйте его tooSignUpOrSignInWithAAD.xml).
+1. Привет открыть новый файл и обновление hello `PolicyId` для атрибута `<TrustFrameworkPolicy>` с уникальным значением (например, SignUpOrSignInWithAAD). <br> Это будет имя hello политики (например, B2C\_1A\_SignUpOrSignInWithAAD).
+1. Изменение hello `ReferenceId` атрибута в `<DefaultUserJourney>` toomatch идентификатор hello hello пути нового пользователя, созданного (SignUpOrSignUsingContoso).
+1. Сохранить изменения и отправить файл hello.
 
 ## <a name="troubleshooting"></a>Устранение неполадок
 
-Проверьте пользовательскую политику, которую вы отправили. Для этого откройте ее колонку и щелкните **Запустить сейчас**. Для диагностики проблем ознакомьтесь со статьей по [устранению неполадок](active-directory-b2c-troubleshoot-custom.md).
+Тестирование hello пользовательскую политику, которая только что переданный, команду колонке **запустить сейчас**. Узнайте, как проблемы toodiagnose [Устранение неполадок](active-directory-b2c-troubleshoot-custom.md).
 
 ## <a name="next-steps"></a>Дальнейшие действия
 
-Свои отзывы отправляйте сюда: [AADB2CPreview@microsoft.com](mailto:AADB2CPreview@microsoft.com).
+Отправить отзыв слишком[AADB2CPreview@microsoft.com](mailto:AADB2CPreview@microsoft.com).

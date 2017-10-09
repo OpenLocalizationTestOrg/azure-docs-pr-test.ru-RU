@@ -1,6 +1,6 @@
 ---
 title: "Руководство по интеграции Azure Active Directory с O.C. Tanner — AppreciateHub | Документация Майкрософт"
-description: "Узнайте, как настроить единый вход между Azure Active Directory и O.C. Tanner — AppreciateHub."
+description: "Узнайте, как tooconfigure единый вход между Azure Active Directory и O.C. Tanner — AppreciateHub."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,119 +13,119 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/27/2017
 ms.author: jeedes
-ms.openlocfilehash: 9af12372b30d9ee1575e46be3b4144fc3b73ec69
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 45052cf56e35746d7df5910162e40e3bbcad1aca
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-oc-tanner---appreciatehub"></a>Руководство по интеграции Azure Active Directory с O.C. Tanner — AppreciateHub
 
-В этом руководстве вы узнаете, как интегрировать O.C. Tanner — AppreciateHub с Azure Active Directory (Azure AD).
+В этом учебнике вы узнаете, как toointegrate O.C. Tanner — AppreciateHub с Azure Active Directory (Azure AD).
 
-Интеграция O.C. Tanner — AppreciateHub с Azure AD обеспечивает следующие преимущества.
+Интеграция O.C. Петров - AppreciateHub с Azure AD предоставляет hello следующие преимущества:
 
-- С помощью Azure AD вы можете контролировать доступ к O.C. Tanner — AppreciateHub
-- Вы можете включить автоматический вход пользователей в O.C. Tanner — AppreciateHub (единый вход) под учетной записью Azure AD.
-- Вы можете управлять учетными записями централизованно — через портал Azure.
+- Можно управлять в Azure AD, имеющего доступ tooO.C. Tanner — AppreciateHub
+- Можно включить на пользователей tooautomatically get вошедшего tooO.C. Tanner — AppreciateHub (единый вход) под учетной записью Azure AD.
+- Можно управлять учетными записями в одном централизованном месте - hello портал Azure
 
-Подробнее узнать об интеграции приложений SaaS с Azure AD можно в разделе [Что такое доступ к приложениям и единый вход с помощью Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Если tooknow Дополнительные сведения об интеграции приложений SaaS в Azure AD, см. [доступ к приложению и единый вход в Azure Active Directory](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Предварительные требования
 
-Чтобы настроить интеграцию Azure AD с O.C. Tanner — AppreciateHub, вам потребуется:
+Интеграция Azure AD с O.C. tooconfigure Петров - AppreciateHub, требуется hello следующих элементов:
 
 - подписка Azure AD;
 - подписка с поддержкой единого входа O.C. подписка Tanner — AppreciateHub с поддержкой единого входа.
 
 > [!NOTE]
-> Мы не рекомендуем использовать рабочую среду для проверки действий в этом учебнике.
+> в этом учебнике шаги tootest hello, не рекомендуется в рабочей среде.
 
-При проверке действий в этом учебнике соблюдайте следующие рекомендации:
+tootest hello шаги в этом учебнике, необходимо следовать приведенным ниже рекомендациям:
 
 - Не используйте рабочую среду без необходимости.
 - Если у вас нет пробной среды Azure AD, вы можете получить пробную версию на один месяц по [этой ссылке](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Описание сценария
-В рамках этого руководства проводится проверка единого входа Azure AD в тестовой среде. Сценарий, описанный в этом учебнике, состоит из двух основных блоков:
+В рамках этого руководства проводится проверка единого входа Azure AD в тестовой среде. Hello сценарий, описанный в этом учебнике состоит из двух основных компонентов:
 
-1. Добавление O.C. Tanner — AppreciateHub из коллекции
-2. Настройка и проверка единого входа в Azure AD.
+1. Добавление O.C. Петров - AppreciateHub из галереи hello
+2. Настройка и проверка единого входа в Azure AD
 
-## <a name="adding-oc-tanner---appreciatehub-from-the-gallery"></a>Добавление O.C. Tanner — AppreciateHub из коллекции
-Чтобы настроить интеграцию O.C. Tanner — AppreciateHub с Azure AD, необходимо добавить O.C. Tanner — AppreciateHub из коллекции в список управляемых приложений SaaS.
+## <a name="adding-oc-tanner---appreciatehub-from-hello-gallery"></a>Добавление O.C. Петров - AppreciateHub из галереи hello
+Интеграция hello tooconfigure O.C. Петров - AppreciateHub в Azure AD необходимо tooadd O.C. Петров - AppreciateHub из списка tooyour коллекции hello управляемых приложений SaaS.
 
-**Чтобы добавить O.C. Tanner — AppreciateHub из коллекции, выполните следующие действия:**
+**tooadd O.C. Петров - AppreciateHub из галереи hello выполнения hello следующие шаги:**
 
-1. На **[портале Azure](https://portal.azure.com)** в области навигации слева щелкните значок **Azure Active Directory**. 
+1. В hello  **[портал Azure](https://portal.azure.com)**на левой навигационной панели hello, нажмите кнопку **Azure Active Directory** значок. 
 
     ![Active Directory][1]
 
-2. Перейдите к разделу **Корпоративные приложения**. Затем выберите **Все приложения**.
+2. Перейдите в слишком**корпоративных приложений**. Затем перейдите слишком**все приложения**.
 
     ![Приложения][2]
     
-3. Чтобы добавить новое приложение, в верхней части диалогового окна нажмите кнопку **Создать приложение**.
+3. tooadd новое приложение, нажмите кнопку **новое приложение** кнопку в верхней части hello диалогового окна.
 
     ![Приложения][3]
 
-4. В поле поиска введите **O.C. Tanner — AppreciateHub**.
+4. Введите в поле поиска hello **O.C. Tanner — AppreciateHub**.
 
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-oc-tanner-tutorial/tutorial_octannerappreciatehub_search.png)
 
-5. На панели результатов выберите **O.C. Tanner — AppreciateHub** и нажмите кнопку **Добавить**, чтобы добавить приложение.
+5. В панели результатов hello выберите **O.C. Петров - AppreciateHub**, а затем нажмите кнопку **добавить** кнопку tooadd приложения hello.
 
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-oc-tanner-tutorial/tutorial_octannerappreciatehub_addfromgallery.png)
 
 ##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Настройка и проверка единого входа в Azure AD
 В этом разделе описана настройка и проверка единого входа Azure AD в приложение O.C. Tanner — AppreciateHub с использованием тестового пользователя Britta Simon.
 
-Для работы единого входа в Azure AD необходимо знать, какой пользователь в O.C. Tanner — AppreciateHub соответствует пользователю в Azure AD. Иными словами, необходимо установить связь между пользователям Azure AD и соответствующим пользователем в O.C. Необходимо установить связь Tanner — AppreciateHub.
+Для единого входа toowork Azure AD необходима tooknow пользователя аналог hello в O.C. Петров - AppreciateHub — tooa пользователя в Azure AD. Другими словами связи между пользователя Azure AD и связанных пользователей hello в O.C. Петров - AppreciateHub должен установить toobe.
 
-В O.C. Tanner —AppreciateHub назначьте **имя пользователя** в Azure AD в качестве значения **имени пользователя**, чтобы установить эту связь.
+В O.C. Значение hello Петров - AppreciateHub, назначьте hello **имя пользователя** в Azure AD в качестве значения hello hello **Username** tooestablish hello связи.
 
-Чтобы настроить и проверить единый вход Azure AD в O.C. Tanner — AppreciateHub, вам потребуется выполнить действия в следующих стандартных блоках:
+tooconfigure и теста Azure AD единого входа с O.C. Петров - AppreciateHub, требуются следующие стандартные блоки hello toocomplete:
 
-1. **[Настройка единого входа в Azure AD](#configuring-azure-ad-single-sign-on)** необходима, чтобы пользователи могли использовать эту функцию.
-2. **[Создание тестового пользователя Azure AD](#creating-an-azure-ad-test-user)** требуется для проверки работы единого входа Azure AD от имени пользователя Britta Simon.
-3. **[Создание тестового пользователя O.C. Tanner — AppreciateHub](#creating-a-oc-tanner---appreciatehub-test-user)** требуется для создания пользователя Britta Simon в O.C. Tanner — AppreciateHub, связанного с соответствующим представлением в Azure AD.
-4. **[Назначение тестового пользователя Azure AD](#assigning-the-azure-ad-test-user)** необходимо, чтобы позволить Britta Simon использовать единый вход в Azure AD.
-5. **[Testing Single Sign-On](#testing-single-sign-on)** необходима, чтобы убедиться в корректной работе конфигурации.
+1. **[Настройка Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**  -tooenable вашей toouse пользователи этой функции.
+2. **[Создание тестового пользователя Azure AD](#creating-an-azure-ad-test-user)**  -tootest Azure AD единого входа с Саймон Britta.
+3. **[Создание тестового пользователя O.C. Петров - тестового пользователя AppreciateHub](#creating-a-oc-tanner---appreciatehub-test-user)**  -toohave аналог Саймон Britta в O.C. Петров - AppreciateHub, связанные toohello представление пользователя Azure AD.
+4. **[Назначение hello Azure AD тестового пользователя](#assigning-the-azure-ad-test-user)**  -tooenable Britta Simon toouse Azure AD единым входом.
+5. **[Тестирование единого входа](#testing-single-sign-on)**  -tooverify ли hello works конфигурации.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Настройка единого входа в Azure AD
 
-В этом разделе описано, как включить единый вход Azure AD на портале Azure и настроить его в O.C. Tanner — AppreciateHub.
+В этом разделе включения Azure AD единым входом в портал Azure hello и настройки единого входа в вашей O.C. Tanner — AppreciateHub.
 
-**Чтобы настроить единый вход Azure AD в O.C. Tanner — AppreciateHub, выполните следующие действия.**
+**Azure AD tooconfigure единого входа с O.C. Петров - AppreciateHub, выполните следующие шаги hello:**
 
-1. На портале Azure на странице интеграции с приложением **O.C. Tanner — AppreciateHub** щелкните **Единый вход**.
+1. В hello в hello портала Azure **O.C. Tanner — AppreciateHub** щелкните **Единый вход**.
 
     ![Настройка единого входа][4]
 
-2. В диалоговом окне **Единый вход** в разделе **Режим** выберите **Вход на основе SAML**, чтобы включить функцию единого входа.
+2. На hello **единого входа** диалогового окна выберите **режим** как **входа на базе SAML** tooenable единого входа.
  
     ![Настройка единого входа](./media/active-directory-saas-oc-tanner-tutorial/tutorial_octannerappreciatehub_samlbase.png)
 
-3. В разделе **Домены и URL-адреса приложения O.C. Tanner — AppreciateHub** сделайте следующее:
+3. На hello **O.C. Петров - URL-адреса и домена AppreciateHub** выполните следующие шаги hello:
 
     ![Настройка единого входа](./media/active-directory-saas-oc-tanner-tutorial/tutorial_octannerappreciatehub_url.png)
 
-    а. В текстовом поле **URL-адрес ответа** введите URL-адрес в следующем формате: `https://<companyname>.appreciatehub.com/fed/sp/authnResponse20`.
+    а. В hello **URL-адрес ответа** текстовом поле введите URL-адрес, используя следующий шаблон hello:`https://<companyname>.appreciatehub.com/fed/sp/authnResponse20`
 
     > [!NOTE] 
-    > Это значение приведено для справки. Вместо него нужно указать фактический URL-адрес ответа. Обратитесь в [службу поддержки O.C. Tanner — AppreciateHub](mailto:sso@octanner.com), чтобы получить это значение.
+    > Это значение приведено для справки. Измените значение этого параметра hello фактический URL-адрес ответа. Обратитесь в [службу поддержки Петров - группа поддержки AppreciateHub](mailto:sso@octanner.com) tooget это значение.
 
-    b. Откройте файл метаданных, используя следующую ссылку: [https://fed.appreciatehub.com/fed/sp/metadata](https://fed.appreciatehub.com/fed/sp/metadata).
+    b. Привет открыть файл метаданных, с помощью hello по ссылке: [https://fed.appreciatehub.com/fed/sp/metadata](https://fed.appreciatehub.com/fed/sp/metadata).
    
-    c. Найдите узел **md:AssertionConsumerService** . 
+    c. Найдите hello **md:AssertionConsumerService** узла. 
    
-    г) Скопируйте значение атрибута **Location**. 
+    d. Скопируйте значение hello hello **расположение** атрибута. 
    
     ![Настройка параметров приложения][12]
    
-    д. Вставьте значение, полученное на предыдущем шаге, в текстовом поле **URL-адрес для входа**.
+    д. В hello **на URL-адрес входа** textbox за значением hello, полученный в предыдущем шаге hello.
 
-4. В разделе **Сертификат подписи SAML** щелкните **Metadata XML** (Метаданные XML) и сохраните файл метаданных на компьютере.
+4. На hello **сертификат подписи SAML** щелкните **метаданные в формате XML** и затем сохраните файл метаданных hello на вашем компьютере.
 
     ![Настройка единого входа](./media/active-directory-saas-oc-tanner-tutorial/tutorial_octannerappreciatehub_certificate.png) 
 
@@ -133,68 +133,68 @@ ms.lasthandoff: 07/11/2017
 
     ![Настройка единого входа](./media/active-directory-saas-oc-tanner-tutorial/tutorial_general_400.png)
 
-6. Чтобы настроить единый вход на стороне приложения **O.C. Tanner — AppreciateHub**, необходимо отправить скачанный **XML-файл метаданных** [ службе поддержки О.С. Tanner — AppreciateHub](mailto:sso@octanner.com).
+6. tooconfigure единого входа на **O.C. Петров - AppreciateHub** стороны, необходимо загрузить hello toosend **метаданные в формате XML** слишком[O.C. службе поддержки О.С. Tanner — AppreciateHub](mailto:sso@octanner.com).
 
 > [!TIP]
-> Краткую версию этих инструкций теперь можно также прочитать на [портале Azure](https://portal.azure.com) во время настройки приложения.  После добавления этого приложения из раздела **Active Directory > Корпоративные приложения** просто выберите вкладку **Единый вход** и откройте встроенную документацию через раздел **Настройка** в нижней части страницы. Дополнительные сведения о встроенной документации см. в разделе [Встроенная документация Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985).
+> Вы сможете прочитать четкими версии этих инструкций внутри hello [портал Azure](https://portal.azure.com), а вы настраиваете приложение hello!  После добавления этого приложения из hello **Active Directory > корпоративных приложений** просто щелкните hello **Single Sign-On** вкладку и доступа hello внедренных документации с помощью hello  **Конфигурация** раздела внизу hello. Вы можете прочитать больше о документации embedded функции hello здесь: [документации внедренных Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Создание тестового пользователя Azure AD
-Цель этого раздела — создать на портале Azure тестового пользователя с именем Britta Simon.
+Цель этого раздела Hello — toocreate тестового пользователя в hello вызывается Саймон Britta портал Azure.
 
 ![Создание пользователя Azure AD][100]
 
-**Чтобы создать тестового пользователя в Azure AD, выполните следующие действия:**
+**toocreate тестового пользователя в Azure AD, выполните следующие шаги hello.**
 
-1. На **портале Azure** в области навигации слева щелкните значок **Azure Active Directory**.
+1. В hello **портал Azure**, на левой панели навигации hello, нажмите кнопку **Azure Active Directory** значок.
 
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-oc-tanner-tutorial/create_aaduser_01.png) 
 
-2. Чтобы отобразить список пользователей, перейдите в раздел **Пользователи и группы** и щелкните **Все пользователи**.
+2. hello toodisplay список пользователей, перейдите в слишком**пользователей и групп** и нажмите кнопку **всех пользователей**.
     
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-oc-tanner-tutorial/create_aaduser_02.png) 
 
-3. Чтобы открыть диалоговое окно **Пользователь**, в верхней части диалогового окна щелкните **Добавить**.
+3. tooopen hello **пользователя** диалоговое окно, нажмите кнопку **добавить** в верхней части hello диалогового окна "hello".
  
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-oc-tanner-tutorial/create_aaduser_03.png) 
 
-4. На странице диалогового окна **Пользователь** выполните следующие действия.
+4. На hello **пользователя** диалогового окна выполните следующие шаги hello:
  
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-oc-tanner-tutorial/create_aaduser_04.png) 
 
-    а. В текстовом поле **Имя** введите **BrittaSimon**.
+    а. В hello **имя** введите **BrittaSimon**.
 
-    b. В текстовом поле **Имя пользователя** введите **адрес электронной почты** учетной записи BrittaSimon.
+    b. В hello **имя пользователя** в текстовое поле типа hello **адрес электронной почты** из BrittaSimon.
 
-    c. Выберите **Показать пароль** и запишите значение поля **Пароль**.
+    c. Выберите **Показать пароль** и запишите значение hello hello **пароль**.
 
     d. Щелкните **Создать**.
  
 ### <a name="creating-a-oc-tanner---appreciatehub-test-user"></a>Создание тестового пользователя O.C. Tanner — AppreciateHub
 
-Цель этого раздела — создать пользователя с именем Britta Simon в O.C. Tanner — AppreciateHub.
+Цель этого раздела Hello — toocreate пользователя с именем Саймон Britta в O.C. Tanner — AppreciateHub.
 
-**Чтобы создать пользователя с именем Britta Simon в O.C. Tanner — AppreciateHub, выполните следующие действия.**
+**toocreate пользователь вызвал Саймон Britta в O.C. Петров - AppreciateHub, выполните следующие шаги hello:**
 
-Попросите [службу поддержки O.C. Tanner — AppreciateHub](mailto:sso@octanner.com) создать пользователя, у которого значение атрибута nameID совпадает с именем пользователя Britta Simon в Azure AD.
+Попросите [службу поддержки Петров - группа поддержки AppreciateHub](mailto:sso@octanner.com) toocreate пользователь, имеющий как hello атрибута nameID совпадает со значением в имя пользователя hello Саймон Britta в Azure AD.
 
-### <a name="assigning-the-azure-ad-test-user"></a>Назначение тестового пользователя Azure AD
+### <a name="assigning-hello-azure-ad-test-user"></a>Назначение hello Azure AD тестового пользователя
 
-В этом разделе описано, как разрешить пользователю Britta Simon использовать единый вход Azure путем предоставления доступа к O.C. Tanner — AppreciateHub.
+В этом разделе включите toouse Britta Simon Azure единого входа путем предоставления tooO.C доступа. Tanner — AppreciateHub.
 
 ![Назначение пользователя][200] 
 
-**Чтобы назначить пользователя Britta Simon в O.C. Tanner — AppreciateHub, выполните следующие действия.**
+**tooassign tooO.C Britta Simon. Петров - AppreciateHub, выполните следующие шаги hello:**
 
-1. На портале Azure откройте представление приложений, перейдите к представлению каталога, а затем выберите **Корпоративные приложения** и щелкните **Все приложения**.
+1. В hello портал Azure, откройте представление приложения hello, а затем перейдите toohello представления каталога и перейти слишком**корпоративных приложений** щелкните **все приложения**.
 
     ![Назначение пользователя][201] 
 
-2. В списке приложений выберите **O.C. Tanner — AppreciateHub**.
+2. В списке приложений hello выберите **O.C. Tanner — AppreciateHub**.
 
     ![Настройка единого входа](./media/active-directory-saas-oc-tanner-tutorial/tutorial_octannerappreciatehub_app.png) 
 
-3. В меню слева выберите **Пользователи и группы**.
+3. В меню слева hello hello выберите **пользователей и групп**.
 
     ![Назначение пользователя][202] 
 
@@ -202,7 +202,7 @@ ms.lasthandoff: 07/11/2017
 
     ![Назначение пользователя][203]
 
-5. В диалоговом окне **Пользователи и группы** в списке пользователей выберите **Britta Simon**.
+5. На **пользователей и групп** диалогового окна выберите **Britta Simon** в список пользователей hello.
 
 6. В диалоговом окне **Пользователи и группы** нажмите кнопку **Выбрать**.
 
@@ -210,12 +210,12 @@ ms.lasthandoff: 07/11/2017
     
 ### <a name="testing-single-sign-on"></a>Проверка единого входа
 
-Цель этого раздела — проверить конфигурацию единого входа Azure AD с помощью панели доступа.  
-Щелкнув плитку O.C. Tanner — AppreciateHub на панели доступа, вы автоматически войдете в приложение O.C. Tanner — AppreciateHub.
+Цель этого раздела Hello является tootest настройки единого входа Azure AD с помощью панели доступа "hello".  
+При нажатии кнопки hello O.C. Петров - AppreciateHub плитки в Здравствуйте панели доступа, вы должны получить автоматически подписан на tooyour O.C. Tanner — AppreciateHub.
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
-* [Список учебников по интеграции приложений SaaS с Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Список учебников по tooIntegrate приложений SaaS в Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Что такое доступ к приложениям и единый вход с помощью Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 <!--Image references-->

@@ -1,6 +1,6 @@
 ---
-title: "Приступая к работе с Azure AD для веб-API .NET | Документация Майкрософт"
-description: "Практическое руководство по созданию веб-API для .NET MVC, который интегрируется с Azure AD для аутентификации и авторизации."
+title: "aaaAzure AD .NET, веб-API Приступая к работе | Документы Microsoft"
+description: "Как toobuild веб-API .NET MVC, интегрируется с Azure AD для проверки подлинности и авторизации."
 services: active-directory
 documentationcenter: .net
 author: dstrockis
@@ -15,63 +15,63 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: dastrock
 ms.custom: aaddev
-ms.openlocfilehash: f44d75f45073a5d9aa9b1863ed227aba4efcf785
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 91c93e1fe18855f5648076e59e2ccf081eec34bc
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="help-protect-a-web-api-by-using-bearer-tokens-from-azure-ad"></a>Защита веб-API с помощью токенов носителя из Azure AD
 [!INCLUDE [active-directory-devguide](../../../includes/active-directory-devguide.md)]
 
-Если вы создаете приложение, которое предоставляет доступ к конфиденциальным ресурсам, то необходимо знать, как предотвратить несанкционированный доступ к этим ресурсам.
-Azure Active Directory (Azure AD) упрощает для разработчика процесс защиты веб-API с помощью токенов носителя OAuth 2.0 — потребуется добавить всего несколько строк кода.
+При создании приложения, которое предоставляет доступ tooprotected ресурсы, необходимые tooknow как tooprevent несанкционированному доступ к ресурсам toothose.
+Azure Active Directory (Azure AD) позволяет легко и просто toohelp защитить веб-API с помощью маркера доступа OAuth 2.0 носителя с помощью всего нескольких строк кода.
 
-В веб-приложениях ASP.NET эту защиту можно реализовать с помощью поддерживаемого сообществом ПО промежуточного слоя OWIN корпорации Майкрософт, включенного в .NET Framework 4.5. Мы будем использовать OWIN для создания веб-API To Do List, который:
+В веб-приложениях ASP.NET такая защита можно выполнить с помощью реализации Microsoft hello hello сообщество ведет по промежуточного слоя OWIN включены в .NET Framework 4.5. Здесь мы будем использовать OWIN toobuild «tooDo список» веб-API:
 
 * указывает, какие API защищены;
-* проверяет, содержат ли вызовы веб-API действительный маркер доступа.
+* Проверяет, что вызовы веб-API hello содержит действительный маркер доступа.
 
-Для сборки API списка дел сначала необходимо выполнить следующие действия:
+tooDo hello toobuild список API, сначала необходимо:
 
 1. зарегистрировать приложение в Azure AD;
-2. Настроить приложение для использования конвейера аутентификации OWIN.
-3. Настроить клиентское приложение для вызова веб-API.
+2. Настройка проверки подлинности конвейер OWIN hello hello приложения toouse.
+3. Настройка клиентского приложения toocall hello веб-API.
 
-Чтобы начать работу, [скачайте схему приложения](https://github.com/AzureADQuickStarts/WebAPI-Bearer-DotNet/archive/skeleton.zip) или [скачайте готовый пример](https://github.com/AzureADQuickStarts/WebAPI-Bearer-DotNet/archive/complete.zip). Каждый из них является решением Visual Studio 2013. Вам также потребуется клиент Azure AD для регистрации приложения. Если у вас нет клиента, [узнайте, как его получить](active-directory-howto-tenant.md).
+tooget к работе, [загрузить каркас приложения hello](https://github.com/AzureADQuickStarts/WebAPI-Bearer-DotNet/archive/skeleton.zip) или [загрузить образец hello завершения](https://github.com/AzureADQuickStarts/WebAPI-Bearer-DotNet/archive/complete.zip). Каждый из них является решением Visual Studio 2013. Необходимо также клиент Azure AD, в которой tooregister приложения. Если вы их еще нет, [Узнайте, как один tooget](active-directory-howto-tenant.md).
 
 ## <a name="step-1-register-an-application-with-azure-ad"></a>Шаг 1. Регистрация приложения в Azure AD
-Для защиты приложения необходимо сначала создать приложение в клиенте и предоставить Azure AD некоторую важную информации.
+toohelp защитить приложение, сначала нужно toocreate приложения в клиенте и предоставить Azure AD несколько основные сведения.
 
-1. Войдите на [портал Azure](https://portal.azure.com).
+1. Войдите в toohello [портал Azure](https://portal.azure.com).
 
-2. На верхней панели щелкните свою учетную запись. В списке **Каталог** выберите клиент Azure AD, в котором будет зарегистрировано приложение.
+2. На верхней панели hello выберите свою учетную запись. В hello **каталога** выберите клиента hello Azure AD, где требуется tooregister приложения.
 
-3. В области слева щелкните **Больше служб** и выберите **Azure Active Directory**.
+3. Нажмите кнопку **более служб** в hello левой панели, а затем выберите **Azure Active Directory**.
 
 4. Щелкните **Регистрация приложений**, а затем выберите **Добавить**.
 
-5. Следуйте инструкциям на экране, а затем создайте **веб-приложение и (или) веб-API**.
-  * **Имя** приложения является его описанием для пользователей. Введите **Служба списка дел**.
-  * **URI перенаправления** представляет собой сочетание схемы и строки, используемое Azure AD для возвращения любых токенов, запрошенных приложением. Укажите `https://localhost:44321/` для этого параметра.
+5. Следуйте инструкциям hello и создайте новый **веб-приложение или веб-API**.
+  * **Имя** описывает toousers вашего приложения. Введите **tooDo службы списка**.
+  * **Uri перенаправления** представляет собой комбинацию схему и строки, используемый tooreturn все маркеры, запросил приложения Azure AD. Укажите `https://localhost:44321/` для этого параметра.
 
-6. На странице **Параметры** -> **Свойства** приложения обновите его универсальный код ресурса (URI) идентификатора. Введите идентификатор конкретного клиента. Например, введите `https://contoso.onmicrosoft.com/TodoListService`.
+6. Из hello **параметры** -> **свойства** страницы приложения, обновите URI идентификатора приложения hello. Введите идентификатор конкретного клиента. Например, введите `https://contoso.onmicrosoft.com/TodoListService`.
 
-7. Сохраните конфигурацию. Не закрывайте портал, так как через некоторое время потребуется зарегистрировать клиентское приложение.
+7. Сохранение конфигурации hello. Не закрывайте портал hello, так как необходимо tooregister клиентского приложения вскоре.
 
-## <a name="step-2-set-up-the-app-to-use-the-owin-authentication-pipeline"></a>Шаг 2. Настройка приложения для использования конвейера аутентификации OWIN
-Чтобы проверять входящие запросы и токены, необходимо настроить приложение для взаимодействия с Azure AD.
+## <a name="step-2-set-up-hello-app-toouse-hello-owin-authentication-pipeline"></a>Шаг 2: Настройка проверки подлинности конвейер OWIN hello hello приложения toouse
+toovalidate входящие запросы и токены, необходимо tooset копирование toocommunicate вашего приложения в Azure AD.
 
-1. Для начала откройте решение и добавьте пакеты NuGet для ПО промежуточного слоя OWIN в проект TodoListService с помощью консоли диспетчера пакетов.
+1. toobegin, откройте решение hello и добавьте hello NuGet по промежуточного слоя OWIN пакеты проект TodoListService toohello с помощью консоли диспетчера пакетов hello.
 
     ```
     PM> Install-Package Microsoft.Owin.Security.ActiveDirectory -ProjectName TodoListService
     PM> Install-Package Microsoft.Owin.Host.SystemWeb -ProjectName TodoListService
     ```
 
-2. Добавьте класс OWIN Startup в проект TodoListService под именем `Startup.cs`.  Щелкните проект правой кнопкой мыши и выберите **Добавить** > **Новый элемент**, после чего найдите **OWIN**. При запуске вашего приложения промежуточный слой OWIN вызовет метод `Configuration(…)` .
+2. Добавить проект TodoListService запуска OWIN класса toohello вызывается `Startup.cs`.  Щелкните правой кнопкой мыши проект hello, выберите **добавить** > **новый элемент**и выполните поиск **OWIN**. по промежуточного слоя OWIN Hello будет вызывать hello `Configuration(…)` метод при запуске приложения.
 
-3. Замените объявление класса `public partial class Startup`. Часть этого класса уже была реализована в другом файле. В методе `Configuration(…)` отправьте вызов в `ConfgureAuth(…)`, чтобы настроить аутентификацию для веб-приложения.
+3. Измените объявление класса hello слишком`public partial class Startup`. Часть этого класса уже была реализована в другом файле. В hello `Configuration(…)` метод, вызвать слишком`ConfgureAuth(…)` tooset проверку подлинности для веб-приложения.
 
     ```C#
     public partial class Startup
@@ -83,7 +83,7 @@ Azure Active Directory (Azure AD) упрощает для разработчик
     }
     ```
 
-4. Откройте файл `App_Start\Startup.Auth.cs` и реализуйте метод `ConfigureAuth(…)`. Параметры, указанные в `WindowsAzureActiveDirectoryBearerAuthenticationOptions`, будут служить координатами приложения для взаимодействия с Azure AD.
+4. Привет открыть файл `App_Start\Startup.Auth.cs` и реализовать hello `ConfigureAuth(…)` метод. Здравствуйте, параметры, указываемые в `WindowsAzureActiveDirectoryBearerAuthenticationOptions` будет служить в качестве координат для toocommunicate вашего приложения в Azure AD.
 
     ```C#
     public void ConfigureAuth(IAppBuilder app)
@@ -97,7 +97,7 @@ Azure Active Directory (Azure AD) упрощает для разработчик
     }
     ```
 
-5. Теперь можно использовать атрибуты `[Authorize]` для защиты контроллеров и действий с помощью аутентификации носителей JSON Web Token (JWT). Снабдите класс `Controllers\TodoListController.cs` тегом авторизации. Пользователь будет вынужден войти в систему, прежде чем сможет обратиться к этой странице.
+5. Теперь вы можете использовать `[Authorize]` toohelp атрибуты защиты контроллеров и действий с помощью проверки подлинности носителя JSON Web Token (JWT). Украшение hello `Controllers\TodoListController.cs` класса с помощью тега authorize. Это заставит toosign пользователя hello в перед получением доступа к этой странице.
 
     ```C#
     [Authorize]
@@ -105,51 +105,51 @@ Azure Active Directory (Azure AD) упрощает для разработчик
     {
     ```
 
-    Когда авторизованный вызывающий объект успешно вызывает один из интерфейсов API `TodoListController` , может потребоваться доступ к сведениям о вызывающем объекте. OWIN предоставляет доступ к утверждениям внутри маркера защиты посредством объекта `ClaimsPrincpal` .  
+    Когда вызывающий объект авторизованным успешно вызывает один hello `TodoListController` API-интерфейсы, действие hello может иметь доступа tooinformation о вызывающем модуле hello. OWIN предоставляет доступ toohello утверждения в маркер носителя hello через hello `ClaimsPrincpal` объекта.  
 
-6. Общим требованием для веб-API является проверка областей (scope) в токене. Это гарантирует, что пользователь предоставил разрешения, необходимые для доступа к службе списка дел.
+6. Общим требованием для веб-API — hello toovalidate «областей» присутствует в маркере hello. Это гарантирует, что этот пользователь hello согласился toohello разрешений требуется tooaccess hello tooDo службы списка.
 
     ```C#
     public IEnumerable<TodoItem> Get()
     {
-        // user_impersonation is the default permission exposed by applications in Azure AD
+        // user_impersonation is hello default permission exposed by applications in Azure AD
         if (ClaimsPrincipal.Current.FindFirst("http://schemas.microsoft.com/identity/claims/scope").Value != "user_impersonation")
         {
             throw new HttpResponseException(new HttpResponseMessage {
               StatusCode = HttpStatusCode.Unauthorized,
-              ReasonPhrase = "The Scope claim does not contain 'user_impersonation' or scope claim not found"
+              ReasonPhrase = "hello Scope claim does not contain 'user_impersonation' or scope claim not found"
             });
         }
         ...
     }
     ```
 
-7. Откройте файл `web.config` в корне проекта TodoListService и введите значения конфигурации в разделе `<appSettings>`.
-  * `ida:Tenant` — это имя вашего клиента Azure AD, например contoso.onmicrosoft.com.
-  * `ida:Audience` — это URI идентификатора приложения, введенное на портале Azure.
+7. Откройте hello `web.config` файл в корне hello проект TodoListService hello и введите значения конфигурации в hello `<appSettings>` раздела.
+  * `ida:Tenant`— имя вашего клиента Azure AD — например, contoso.onmicrosoft.com hello.
+  * `ida:Audience`hello URI ИД приложения hello, введенного в hello портал Azure.
 
-## <a name="step-3-configure-a-client-application-and-run-the-service"></a>Шаг 3. Настройка клиентского приложения и запуск службы
-Чтобы увидеть службу списка дел в действии, необходимо настроить клиент списка дел для получения токенов от Azure AD и выполнения вызовов службы.
+## <a name="step-3-configure-a-client-application-and-run-hello-service"></a>Шаг 3: Настройте клиентское приложение и запустить службу hello
+Перед просмотром hello tooDo службы списка в действии, необходимо tooconfigure hello tooDo список клиентов, чтобы можно было получить токены из Azure AD и сделать службу toohello вызовы.
 
-1. Вернитесь на [портал Azure](https://portal.azure.com).
+1. Вернитесь к предыдущему окну toohello [портал Azure](https://portal.azure.com).
 
-2. Создайте новое приложение в клиенте Azure AD и выберите **Собственное клиентское приложение** в конечном запросе.
-  * **Имя** приложения является его описанием для пользователей.
-  * В качестве **URI перенаправления** введите значение `http://TodoListClient/`.
+2. Создайте новое приложение в клиенте Azure AD и выберите **собственное клиентское приложение** в результирующей строке hello.
+  * **Имя** описывает toousers вашего приложения.
+  * Введите `http://TodoListClient/` для hello **Uri перенаправления** значение.
 
-3. Когда вы завершите регистрацию, Azure AD присвоит приложению уникальный идентификатор приложения. Это значение вам понадобится для следующих действий, поэтому скопируйте его на странице приложения.
+3. После завершения регистрации Azure AD присваивает значение приложении tooyour приложения уникальный идентификатор. Это значение необходимо в следующих шагах hello, поэтому скопируйте его на приложение hello в окне.
 
-4. На странице **Параметры** выберите **Необходимые разрешения** и щелкните **Добавить**. Найдите и выберите службу списка дел, добавьте разрешение **Access TodoListService** (Доступ к службе списка дел) в списке **Делегированные разрешения**, а затем нажмите кнопку **Готово**.
+4. Из hello **параметры** выберите **требуемые разрешения**, а затем выберите **добавить**. Найдите и выберите tooDo hello список служб, добавьте hello **TodoListService доступа** разрешение в списке **делегированные разрешения**, а затем нажмите кнопку **сделать**.
 
-5. В Visual Studio откройте файл `App.config` в проекте TodoListClient и введите значения конфигурации в раздел `<appSettings>`.
+5. В Visual Studio откройте `App.config` в hello TodoListClient проекта, а затем введите значения конфигурации в hello `<appSettings>` раздела.
 
-  * `ida:Tenant` — это имя вашего клиента Azure AD, например contoso.onmicrosoft.com.
-  * `ida:ClientId` — это идентификатор приложения, скопированный с портала Azure.
-  * `todo:TodoListResourceId` — это URI идентификатора приложения службы списка дел, введенный на портале Azure.
+  * `ida:Tenant`— имя вашего клиента Azure AD — например, contoso.onmicrosoft.com hello.
+  * `ida:ClientId`— Идентификатор приложения hello, скопированный из hello портал Azure.
+  * `todo:TodoListResourceId`— URI идентификатора приложения hello tooDo приложения службы списка, введенное на портал Azure hello hello.
 
 ## <a name="next-steps"></a>Дальнейшие действия
-Наконец, выполните очистку и сборку, а затем запустите каждый из проектов. Если вы еще этого не сделали, создайте нового пользователя в своем клиенте с доменом *.onmicrosoft.com. Войдите в клиент списка дел от имени данного пользователя и добавьте несколько задач в его список дел.
+Наконец, выполните очистку и сборку, а затем запустите каждый из проектов. Если это еще не сделано, пришло время toocreate hello нового пользователя в клиенте с *. onmicrosoft.com домена. Войдите в клиент список tooDo toohello с этим пользователем и добавить список дел toohello пользователей некоторые задачи.
 
-Готовый пример (для которого лишь осталось задать конфигурацию) можно найти в [репозитории GitHub](https://github.com/AzureADQuickStarts/WebAPI-Bearer-DotNet/archive/complete.zip). Теперь можно приступить к другим сценариям идентификации.
+Для ссылки, пример hello завершена (без настройки) доступен в [GitHub](https://github.com/AzureADQuickStarts/WebAPI-Bearer-DotNet/archive/complete.zip). Теперь можно переходить на сценариях toomore удостоверений.
 
 [!INCLUDE [active-directory-devquickstarts-additional-resources](../../../includes/active-directory-devquickstarts-additional-resources.md)]

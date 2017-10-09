@@ -1,6 +1,6 @@
 ---
 title: "Учебник. Интеграция Azure Active Directory с Lynda.com | Документация Майкрософт"
-description: "Узнайте, как настроить единый вход между Azure Active Directory и Lynda.com."
+description: "Узнайте, как tooconfigure единый вход между Azure Active Directory и Lynda.com."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,109 +13,109 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/01/2017
 ms.author: jeedes
-ms.openlocfilehash: 84ed2adcc2d49ddbb6bd2e9cc3b93b967ebed063
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: fb8d7824e5121da79e9248393b0cbcb0efaffec1
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-lyndacom"></a>Руководство. Интеграция Azure Active Directory с Lynda.com
 
-В этом руководстве описано, как интегрировать Lynda.com с Azure Active Directory (Azure AD).
+В этом учебнике вы узнаете, как toointegrate Lynda.com с Azure Active Directory (Azure AD).
 
-Интеграция Lynda.com с Azure AD обеспечивает следующие преимущества:
+Интеграция Lynda.com с Azure AD предоставляет hello следующие преимущества:
 
-- С помощью Azure AD вы можете контролировать доступ к Lynda.com.
-- Вы можете включить автоматический вход пользователей в Lynda.com (единый вход) с учетной записью Azure AD.
-- Вы можете управлять учетными записями централизованно — через портал Azure.
+- Можно управлять в Azure AD, имеющего доступ tooLynda.com
+- Можно включить на пользователей tooautomatically get вошедшего tooLynda.com (Single Sign-On) с помощью своих учетных записей Azure AD
+- Можно управлять учетными записями в одном централизованном месте - hello портал Azure
 
-Подробнее узнать об интеграции приложений SaaS с Azure AD можно в разделе [Что такое доступ к приложениям и единый вход с помощью Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Если tooknow Дополнительные сведения об интеграции приложений SaaS в Azure AD, см. [доступ к приложению и единый вход в Azure Active Directory](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Предварительные требования
 
-Чтобы настроить интеграцию Azure AD с Lynda.com, вам потребуется:
+tooconfigure интеграция Azure AD с Lynda.com требуется hello следующих элементов:
 
 - подписка Azure AD;
 - подписка Lynda.com с поддержкой единого входа.
 
 > [!NOTE]
-> Мы не рекомендуем использовать рабочую среду для проверки действий в этом учебнике.
+> в этом учебнике шаги tootest hello, не рекомендуется в рабочей среде.
 
-При проверке действий в этом учебнике соблюдайте следующие рекомендации:
+tootest hello шаги в этом учебнике, необходимо следовать приведенным ниже рекомендациям:
 
 - Не используйте рабочую среду без необходимости.
 - Если у вас нет пробной среды Azure AD, вы можете получить пробную версию на один месяц по [этой ссылке](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Описание сценария
-В рамках этого руководства проводится проверка единого входа Azure AD в тестовой среде. Сценарий, описанный в этом учебнике, состоит из двух основных блоков:
+В рамках этого руководства проводится проверка единого входа Azure AD в тестовой среде. Hello сценарий, описанный в этом учебнике состоит из двух основных компонентов:
 
-1. Добавление Lynda.com из коллекции
+1. Добавление Lynda.com из галереи hello
 2. Настройка и проверка единого входа в Azure AD
 
-## <a name="adding-lyndacom-from-the-gallery"></a>Добавление Lynda.com из коллекции
-Чтобы настроить интеграцию Lynda.com с Azure AD, необходимо добавить Lynda.com из коллекции в список управляемых приложений SaaS.
+## <a name="adding-lyndacom-from-hello-gallery"></a>Добавление Lynda.com из галереи hello
+tooconfigure hello интеграции Lynda.com в Azure AD, вы должны tooadd Lynda.com из списка tooyour коллекции hello управляемых приложений SaaS.
 
-**Чтобы добавить Lynda.com из коллекции, выполните следующие действия.**
+**tooadd Lynda.com из галереи hello, выполните следующие шаги hello.**
 
-1. На **[портале Azure](https://portal.azure.com)** в области навигации слева щелкните значок **Azure Active Directory**. 
+1. В hello  **[портал Azure](https://portal.azure.com)**на левой навигационной панели hello, нажмите кнопку **Azure Active Directory** значок. 
 
     ![Active Directory][1]
 
-2. Перейдите к разделу **Корпоративные приложения**. Затем выберите **Все приложения**.
+2. Перейдите в слишком**корпоративных приложений**. Затем перейдите слишком**все приложения**.
 
     ![Приложения][2]
     
-3. Чтобы добавить новое приложение, в верхней части диалогового окна нажмите кнопку **Создать приложение**.
+3. tooadd новое приложение, нажмите кнопку **новое приложение** кнопку в верхней части hello диалогового окна.
 
     ![Приложения][3]
 
-4. В поле поиска введите **Lynda.com**.
+4. Введите в поле поиска hello **Lynda.com**.
 
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-lynda-tutorial/tutorial_lynda.com_search.png)
 
-5. На панели результатов выберите **Lynda.com**, а затем нажмите кнопку **Добавить**, чтобы добавить приложение.
+5. В панели результатов hello выберите **Lynda.com**и нажмите кнопку **добавить** кнопку tooadd приложения hello.
 
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-lynda-tutorial/tutorial_lynda.com_addfromgallery.png)
 
 ##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Настройка и проверка единого входа в Azure AD
 В этом разделе описана настройка и проверка единого входа Azure AD в Lynda.com для тестового пользователя Britta Simon.
 
-Для работы единого входа в Azure AD необходимо знать, какой пользователь в Lynda.com соответствует пользователю в Azure AD. Иными словами, необходимо установить связь между пользователем Azure AD и соответствующим пользователем в Lynda.com.
+Для единого входа toowork Azure AD необходима tooknow пользователь аналог какие hello в Lynda.com является tooa в Azure AD. Другими словами связи между пользователя Azure AD и hello связанных пользователей в Lynda.com должен установить toobe.
 
-Чтобы установить эту связь, следует назначить **имя пользователя** в Azure AD в качестве значения **имени пользователя** в Lynda.com.
+Эта связь связь устанавливается путем назначения hello значение hello **имя пользователя** в Azure AD в качестве значения hello hello **Username** в Lynda.com.
 
-Чтобы настроить и проверить единый вход в Azure AD в Lynda.com, вам потребуется выполнить действия в следующих стандартных блоках:
+tooconfigure и теста Azure AD единого входа с Lynda.com, требуются следующие стандартные блоки hello toocomplete:
 
-1. **[Настройка единого входа в Azure AD](#configuring-azure-ad-single-sign-on)** необходима, чтобы пользователи могли использовать эту функцию.
-2. **[Создание тестового пользователя Azure AD](#creating-an-azure-ad-test-user)** требуется для проверки работы единого входа Azure AD от имени пользователя Britta Simon.
-3. **[Создание тестового пользователя Lynda.com](#creating-a-lyndacom-test-user)** требуется для создания в Lynda.com пользователя Britta Simon, связанного с представлением этого пользователя в Azure AD.
-4. **[Назначение тестового пользователя Azure AD](#assigning-the-azure-ad-test-user)** необходимо, чтобы позволить Britta Simon использовать единый вход в Azure AD.
-5. **[Testing Single Sign-On](#testing-single-sign-on)** необходима, чтобы убедиться в корректной работе конфигурации.
+1. **[Настройка Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**  -tooenable вашей toouse пользователи этой функции.
+2. **[Создание тестового пользователя Azure AD](#creating-an-azure-ad-test-user)**  -tootest Azure AD единого входа с Саймон Britta.
+3. **[Создание тестового пользователя Lynda.com](#creating-a-lyndacom-test-user)**  -toohave аналог Саймон Britta в Lynda.com, который представляет связанный toohello Azure AD пользователя.
+4. **[Назначение hello Azure AD тестового пользователя](#assigning-the-azure-ad-test-user)**  -tooenable Britta Simon toouse Azure AD единым входом.
+5. **[Тестирование единого входа](#testing-single-sign-on)**  -tooverify ли hello works конфигурации.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Настройка единого входа в Azure AD
 
-В этом разделе описано, как включить единый вход Azure AD на портале Azure и настроить его в приложении Lynda.com.
+В этом разделе включения Azure AD единым входом в портал Azure hello и настройки единого входа в Lynda.com приложения.
 
-**Чтобы настроить единый вход Azure AD в Lynda.com, выполните следующие действия.**
+**Azure AD tooconfigure единого входа с Lynda.com, выполните следующие шаги hello.**
 
-1. На портале Azure на странице интеграции с приложением **Lynda.com** щелкните **Единый вход**.
+1. В hello в hello портала Azure **Lynda.com** странице интеграции приложения щелкните **единого входа**.
 
     ![Настройка единого входа][4]
 
-2. В диалоговом окне **Единый вход** в разделе **Режим** выберите **Вход на основе SAML**, чтобы включить функцию единого входа.
+2. На hello **единого входа** диалогового окна выберите **режим** как **входа на базе SAML** tooenable единого входа.
  
     ![Настройка единого входа](./media/active-directory-saas-lynda-tutorial/tutorial_lynda.com_samlbase.png)
 
-3. В разделе **Домены и URL-адреса Lynda.com** выполните следующие действия:
+3. На hello **URL-адреса и домена Lynda.com** выполните следующие шаги hello:
 
     ![Настройка единого входа](./media/active-directory-saas-lynda-tutorial/tutorial_lynda.com_url.png)
 
-    В текстовом поле **URL-адрес для входа** введите URL-адрес в следующем формате: `https://<subdomain>.lynda.com/Shibboleth.sso/InCommon?providerId=<url>&target=<url> `
+    В hello **URL-адрес входа** текстовом поле введите URL-адрес, используя следующий шаблон hello:`https://<subdomain>.lynda.com/Shibboleth.sso/InCommon?providerId=<url>&target=<url> `
 
     > [!NOTE] 
-    > Это значение приведено для справки. Вместо него необходимо указать фактический URL-адрес для входа. Чтобы получить их, обратитесь в [службу поддержки клиентов Lynda.com](https://www.linkedin.com/help/lynda/ask). 
+    > Это значение приведено для справки. Измените значение этого параметра hello фактический URL-адрес входа. Обратитесь к [группа поддержки Lynda.com клиента](https://www.linkedin.com/help/lynda/ask) tooget эти значения. 
  
-4. В разделе **Сертификат подписи SAML** щелкните **XML метаданных** и сохраните XML-файл на компьютере.
+4. На hello **сертификат подписи SAML** щелкните **метаданные в формате XML** и сохраните hello XML-файл на компьютере.
 
     ![Настройка единого входа](./media/active-directory-saas-lynda-tutorial/tutorial_lynda.com_certificate.png) 
 
@@ -123,66 +123,66 @@ ms.lasthandoff: 07/11/2017
 
     ![Настройка единого входа](./media/active-directory-saas-lynda-tutorial/tutorial_general_400.png)
 
-6. Чтобы настроить единый вход на стороне **Lynda.com**, нужно отправить скачанный **XML-файл метаданных** в [службу поддержки Lynda.com](https://www.linkedin.com/help/lynda/ask).
+6. tooconfigure единого входа на **Lynda.com** стороны, необходимо загрузить hello toosend **метаданные в формате XML** [поддержки Lynda.com](https://www.linkedin.com/help/lynda/ask).
 
 ### <a name="creating-an-azure-ad-test-user"></a>Создание тестового пользователя Azure AD
-Цель этого раздела — создать на портале Azure тестового пользователя с именем Britta Simon.
+Цель этого раздела Hello — toocreate тестового пользователя в hello вызывается Саймон Britta портал Azure.
 
 ![Создание пользователя Azure AD][100]
 
-**Чтобы создать тестового пользователя в Azure AD, выполните следующие действия:**
+**toocreate тестового пользователя в Azure AD, выполните следующие шаги hello.**
 
-1. На **портале Azure** в области навигации слева щелкните значок **Azure Active Directory**.
+1. В hello **портал Azure**, на левой панели навигации hello, нажмите кнопку **Azure Active Directory** значок.
 
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-lynda-tutorial/create_aaduser_01.png) 
 
-2. Чтобы отобразить список пользователей, перейдите в раздел **Пользователи и группы** и щелкните **Все пользователи**.
+2. hello toodisplay список пользователей, перейдите в слишком**пользователей и групп** и нажмите кнопку **всех пользователей**.
     
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-lynda-tutorial/create_aaduser_02.png) 
 
-3. Чтобы открыть диалоговое окно **Пользователь**, в верхней части диалогового окна щелкните **Добавить**.
+3. tooopen hello **пользователя** диалоговое окно, нажмите кнопку **добавить** в верхней части hello диалогового окна "hello".
  
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-lynda-tutorial/create_aaduser_03.png) 
 
-4. На странице диалогового окна **Пользователь** выполните следующие действия.
+4. На hello **пользователя** диалогового окна выполните следующие шаги hello:
  
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-lynda-tutorial/create_aaduser_04.png) 
 
-    а. В текстовом поле **Имя** введите **BrittaSimon**.
+    а. В hello **имя** введите **BrittaSimon**.
 
-    b. В текстовом поле **Имя пользователя** введите **адрес электронной почты** учетной записи BrittaSimon.
+    b. В hello **имя пользователя** в текстовое поле типа hello **адрес электронной почты** из BrittaSimon.
 
-    c. Выберите **Показать пароль** и запишите значение поля **Пароль**.
+    c. Выберите **Показать пароль** и запишите значение hello hello **пароль**.
 
     d. Щелкните **Создать**.
  
 ### <a name="creating-a-lyndacom-test-user"></a>Создание тестового пользователя Lynda.com
 
-Элемент действия для настройки подготовки пользователей в Lynda.com отсутствует.  
-Когда назначенный пользователь пытается войти в Lynda.com с помощью панели доступа, Lynda.com проверяет, существует ли данный пользователь.  
+Нет элемента действия для вас tooconfigure подготовки пользователей tooLynda.com.  
+Когда назначенный пользователь пытается toolog в tooLynda.com, с помощью панели доступа hello, Lynda.com проверяет, существует ли пользователь hello.  
 
 Если учетная запись пользователя отсутствует, Lynda.com автоматически создает ее.
 
 >[!NOTE]
->Вы можете использовать любые другие средства создания учетной записи пользователя Lynda.com или API, предоставляемые Lynda.com для подготовки учетных записей пользователя AAD. 
+>Можно использовать любые другие Lynda.com пользователя средства создания учетных записей или интерфейсы API, предоставляемые Lynda.com tooprovision учетных записей пользователей AAD. 
 
-### <a name="assigning-the-azure-ad-test-user"></a>Назначение тестового пользователя Azure AD
+### <a name="assigning-hello-azure-ad-test-user"></a>Назначение hello Azure AD тестового пользователя
 
-В этом разделе описано, как включить единый вход Azure для пользователя Britta Simon и предоставить этому пользователю доступ к Lynda.com.
+В этом разделе включите toouse Britta Simon Azure единого входа путем предоставления tooLynda.com доступа.
 
 ![Назначение пользователя][200] 
 
-**Чтобы назначить пользователя Britta Simon в Lynda.com, сделайте следующее:**
+**tooassign tooLynda.com Britta Simon выполните следующие шаги hello.**
 
-1. На портале Azure откройте представление приложений, перейдите к представлению каталога, а затем выберите **Корпоративные приложения** и щелкните **Все приложения**.
+1. В hello портал Azure, откройте представление приложения hello, а затем перейдите toohello представления каталога и перейти слишком**корпоративных приложений** щелкните **все приложения**.
 
     ![Назначение пользователя][201] 
 
-2. В списке приложений выберите **Lynda.com**.
+2. В списке приложений hello выберите **Lynda.com**.
 
     ![Настройка единого входа](./media/active-directory-saas-lynda-tutorial/tutorial_lynda.com_app.png) 
 
-3. В меню слева выберите **Пользователи и группы**.
+3. В меню слева hello hello выберите **пользователей и групп**.
 
     ![Назначение пользователя][202] 
 
@@ -190,7 +190,7 @@ ms.lasthandoff: 07/11/2017
 
     ![Назначение пользователя][203]
 
-5. В диалоговом окне **Пользователи и группы** в списке пользователей выберите **Britta Simon**.
+5. На **пользователей и групп** диалогового окна выберите **Britta Simon** в список пользователей hello.
 
 6. В диалоговом окне **Пользователи и группы** нажмите кнопку **Выбрать**.
 
@@ -202,7 +202,7 @@ ms.lasthandoff: 07/11/2017
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
-* [Список учебников по интеграции приложений SaaS с Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Список учебников по tooIntegrate приложений SaaS в Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Что такое доступ к приложениям и единый вход с помощью Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 <!--Image references-->

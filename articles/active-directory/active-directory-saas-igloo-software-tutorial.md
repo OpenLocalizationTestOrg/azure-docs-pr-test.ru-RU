@@ -1,6 +1,6 @@
 ---
 title: "Учебник. Интеграция Azure Active Directory с Igloo Software | Документация Майкрософт"
-description: "Узнайте, как настроить единый вход между Azure Active Directory и Igloo Software."
+description: "Узнайте, как tooconfigure единый вход между Azure Active Directory и Igloo Software."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,113 +13,113 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/23/2017
 ms.author: jeedes
-ms.openlocfilehash: ab3891e11eb33b4d233e4fc967a40c7df06e4f4e
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 406405d4faa6e56f1005a61e69a29ef2ef2eb34b
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-igloo-software"></a>Учебник. Интеграция Azure Active Directory с Igloo Software
 
-В этом руководстве описано, как интегрировать Igloo Software с Azure Active Directory (Azure AD).
+В этом учебнике вы узнаете, как toointegrate Igloo Software с Azure Active Directory (Azure AD).
 
-Интеграция Igloo Software с Azure AD обеспечивает следующие преимущества:
+Интеграция Igloo Software с Azure AD предоставляет hello следующие преимущества:
 
-- С помощью Azure AD вы можете контролировать доступ к Igloo Software.
-- Вы можете включить автоматический вход пользователей в Igloo Software (единый вход) под учетной записью Azure AD.
-- Вы можете управлять учетными записями централизованно — через портал Azure.
+- Можно управлять в Azure AD, имеющего доступ tooIgloo программного обеспечения
+- Можно включить на пользователей tooautomatically get вошедшего tooIgloo программного обеспечения (Single Sign-On) с помощью своих учетных записей Azure AD
+- Можно управлять учетными записями в одном централизованном месте - hello портал Azure
 
-Подробнее узнать об интеграции приложений SaaS с Azure AD можно в разделе [Что такое доступ к приложениям и единый вход с помощью Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Если tooknow Дополнительные сведения об интеграции приложений SaaS в Azure AD, см. [доступ к приложению и единый вход в Azure Active Directory](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Предварительные требования
 
-Чтобы настроить интеграцию Azure AD с Igloo Software, вам потребуется следующее:
+tooconfigure интеграция Azure AD с Igloo Software необходимо hello следующих элементов:
 
 - подписка Azure AD;
 - подписка Igloo Software с поддержкой единого входа.
 
 > [!NOTE]
-> Мы не рекомендуем использовать рабочую среду для проверки действий в этом учебнике.
+> в этом учебнике шаги tootest hello, не рекомендуется в рабочей среде.
 
-При проверке действий в этом учебнике соблюдайте следующие рекомендации:
+tootest hello шаги в этом учебнике, необходимо следовать приведенным ниже рекомендациям:
 
 - Не используйте рабочую среду без необходимости.
 - Если у вас нет пробной среды Azure AD, вы можете получить пробную версию на один месяц по [этой ссылке](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Описание сценария
-В рамках этого руководства проводится проверка единого входа Azure AD в тестовой среде. Сценарий, описанный в этом учебнике, состоит из двух основных блоков:
+В рамках этого руководства проводится проверка единого входа Azure AD в тестовой среде. Hello сценарий, описанный в этом учебнике состоит из двух основных компонентов:
 
-1. Добавление Igloo Software из коллекции
+1. Добавление Igloo Software из галереи hello
 2. Настройка и проверка единого входа в Azure AD
 
-## <a name="adding-igloo-software-from-the-gallery"></a>Добавление Igloo Software из коллекции
-Чтобы настроить интеграцию Igloo Software с Azure AD, вам потребуется добавить Igloo Software из коллекции в список управляемых приложений SaaS.
+## <a name="adding-igloo-software-from-hello-gallery"></a>Добавление Igloo Software из галереи hello
+tooconfigure hello интеграции Igloo Software в Azure AD, вы должны tooadd Igloo Software из списка tooyour коллекции hello управляемых приложений SaaS.
 
-**Чтобы добавить Igloo Software из коллекции, выполните следующие действия:**
+**tooadd Igloo Software из галереи hello, выполните следующие шаги hello.**
 
-1. На **[портале Azure](https://portal.azure.com)** в области навигации слева щелкните значок **Azure Active Directory**. 
+1. В hello  **[портал Azure](https://portal.azure.com)**на левой навигационной панели hello, нажмите кнопку **Azure Active Directory** значок. 
 
     ![Active Directory][1]
 
-2. Перейдите к разделу **Корпоративные приложения**. Затем выберите **Все приложения**.
+2. Перейдите в слишком**корпоративных приложений**. Затем перейдите слишком**все приложения**.
 
     ![Приложения][2]
     
-3. Чтобы добавить новое приложение, в верхней части диалогового окна нажмите кнопку **Создать приложение**.
+3. tooadd новое приложение, нажмите кнопку **новое приложение** кнопку в верхней части hello диалогового окна.
 
     ![Приложения][3]
 
-4. В поле поиска введите **Igloo Software**.
+4. Введите в поле поиска hello **Igloo Software**.
 
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-igloo-software-tutorial/tutorial_igloosoftware_search.png)
 
-5. В области результатов выберите **Igloo Software** и нажмите кнопку **Добавить**, чтобы добавить приложение.
+5. В панели результатов hello выберите **Igloo Software**и нажмите кнопку **добавить** кнопку tooadd приложения hello.
 
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-igloo-software-tutorial/tutorial_igloosoftware_addfromgallery.png)
 
 ##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Настройка и проверка единого входа в Azure AD
 В этом разделе описана настройка и проверка единого входа Azure AD в Igloo Software для тестового пользователя Britta Simon.
 
-Для работы единого входа в Azure AD необходимо знать, какой пользователь в Igloo Software соответствует пользователю в Azure AD. Иными словами, необходимо установить связь между пользователям Azure AD и соответствующим пользователем в Igloo Software.
+Для единого входа toowork Azure AD необходима tooknow пользователь аналог какие hello в Igloo Software является tooa в Azure AD. Другими словами связи между пользователя Azure AD и hello связанных пользователей в Igloo Software должен установить toobe.
 
-Чтобы установить эту связь, назначьте **имя пользователя** в Azure AD в качестве значения **имени пользователя** в Igloo Software.
+В Igloo Software, присвойте значение hello hello **имя пользователя** в Azure AD в качестве значения hello hello **Username** tooestablish hello связи.
 
-Чтобы настроить и проверить единый вход в Azure AD в Igloo Software, вам потребуется выполнить действия в следующих стандартных блоках:
+tooconfigure и теста Azure AD единого входа с Igloo Software, требуются следующие стандартные блоки hello toocomplete:
 
-1. **[Настройка единого входа в Azure AD](#configuring-azure-ad-single-sign-on)** необходима, чтобы пользователи могли использовать эту функцию.
-2. **[Создание тестового пользователя Azure AD](#creating-an-azure-ad-test-user)** требуется для проверки работы единого входа Azure AD от имени пользователя Britta Simon.
-3. **[Создание тестового пользователя Igloo Software](#creating-an-igloo-software-test-user)** требуется для создания дублирующего Britta Simon пользователя в Igloo Software, связанного с представлением этого пользователя в Azure AD.
-4. **[Назначение тестового пользователя Azure AD](#assigning-the-azure-ad-test-user)** необходимо, чтобы позволить Britta Simon использовать единый вход в Azure AD.
-5. **[Testing Single Sign-On](#testing-single-sign-on)** необходима, чтобы убедиться в корректной работе конфигурации.
+1. **[Настройка Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**  -tooenable вашей toouse пользователи этой функции.
+2. **[Создание тестового пользователя Azure AD](#creating-an-azure-ad-test-user)**  -tootest Azure AD единого входа с Саймон Britta.
+3. **[Создание тестового пользователя, прошедшего Igloo Software](#creating-an-igloo-software-test-user)**  -toohave аналог Саймон Britta в Igloo Software, представление связанных toohello Azure AD пользователя.
+4. **[Назначение hello Azure AD тестового пользователя](#assigning-the-azure-ad-test-user)**  -tooenable Britta Simon toouse Azure AD единым входом.
+5. **[Тестирование единого входа](#testing-single-sign-on)**  -tooverify ли hello works конфигурации.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Настройка единого входа в Azure AD
 
-В этом разделе описано, как включить единый вход Azure AD на портале Azure и настроить его в приложении Igloo Software.
+В этом разделе включения Azure AD единым входом в портал Azure hello и настройки единого входа в приложении Igloo Software.
 
-**Чтобы настроить единый вход в Azure AD для Igloo Software, выполните следующие действия:**
+**tooconfigure Azure AD единого входа с Igloo Software, выполните следующие шаги hello.**
 
-1. На портале Azure на странице интеграции с приложением **Igloo Software** щелкните **Единый вход**.
+1. В hello в hello портала Azure **Igloo Software** странице интеграции приложения щелкните **единого входа**.
 
     ![Настройка единого входа][4]
 
-2. В диалоговом окне **Единый вход** в разделе **Режим** выберите **Вход на основе SAML**, чтобы включить функцию единого входа.
+2. На hello **единого входа** диалогового окна выберите **режим** как **входа на базе SAML** tooenable единого входа.
  
     ![Настройка единого входа](./media/active-directory-saas-igloo-software-tutorial/tutorial_igloosoftware_samlbase.png)
 
-3. В разделе **Домены и URL-адреса Igloo Software** выполните следующие действия:
+3. На hello **URL-адреса и домена программного обеспечения Igloo** выполните следующие шаги hello:
 
     ![Настройка единого входа](./media/active-directory-saas-igloo-software-tutorial/tutorial_igloosoftware_url.png)
     
-    а. В текстовом поле **URL-адрес для входа** введите URL-адрес в следующем формате: `https://<company name>.igloocommmunities.com`
+    а. В hello **URL-адрес входа** текстовом поле введите URL-адрес, используя следующий шаблон hello:`https://<company name>.igloocommmunities.com`
 
-    b. В текстовом поле **Идентификатор** введите URL-адрес в следующем формате: `https://<company name>.igloocommmunities.com/saml.digest`
+    b. В hello **идентификатор** текстовом поле введите URL-адрес, используя следующий шаблон hello:`https://<company name>.igloocommmunities.com/saml.digest`
 
-    c. В текстовом поле **URL-адрес ответа** введите URL-адрес в следующем формате: `https://<company name>.igloocommmunities.com/saml.digest`.
+    c. В hello **URL-адрес ответа** текстовом поле введите URL-адрес, используя следующий шаблон hello:`https://<company name>.igloocommmunities.com/saml.digest`
 
     > [!NOTE] 
-    > Эти значения приведены в качестве примера. Замените их фактическими значениями идентификатора, URL-адреса ответа и URL-адреса входа. Чтобы получить эти значения, обратитесь в [службу поддержки клиентов Igloo Software](https://www.igloosoftware.com/services/support). 
+    > Эти значения приведены в качестве примера. Обновить значения hello фактический идентификатор, URL-адрес ответа и URL-адрес входа. Обратитесь к [Igloo клиентское программное обеспечение поддержки](https://www.igloosoftware.com/services/support) tooget эти значения. 
 
-4. В разделе **Сертификат подписи SAML** щелкните **Сертификат (Base64)**, а затем сохраните файл сертификата на компьютере.
+4. На hello **сертификат подписи SAML** щелкните **Certificate(Base64)** и затем сохраните файл сертификата hello на вашем компьютере.
 
     ![Настройка единого входа](./media/active-directory-saas-igloo-software-tutorial/tutorial_igloosoftware_certificate.png) 
 
@@ -127,39 +127,39 @@ ms.lasthandoff: 07/11/2017
 
     ![Настройка единого входа](./media/active-directory-saas-igloo-software-tutorial/tutorial_general_400.png)
     
-6. В разделе **Настройка Igloo Software** щелкните **Настроить Igloo Software**, чтобы открыть окно **Настройка единого входа**. Скопируйте **URL-адрес выхода и URL-адрес службы единого входа SAML** из раздела **Краткий справочник**.
+6. На hello **конфигурации программного обеспечения Igloo** щелкните **Настройка Igloo Software** tooopen **Настройка входа** окна. Копировать hello **URL-адрес выхода и SAML единого входа URL-адрес службы** из hello **краткий справочник.**
 
     ![Настройка единого входа](./media/active-directory-saas-igloo-software-tutorial/tutorial_igloosoftware_configure.png) 
 
-7. В другом окне веб-браузера войдите на веб-сайт Igloo Software организации в качестве администратора.
+7. В другом окне браузера Войдите на сайте компании Igloo Software tooyour в качестве администратора.
 
-8. Перейдите в раздел **Панель управления**.
+8. Go toohello **панели управления**.
    
      ![Панель управления](./media/active-directory-saas-igloo-software-tutorial/ic799949.png "Панель управления")
 
-9. На вкладке **Членство** щелкните **Параметры входа**.
+9. В hello **членства** щелкните **параметры входа**.
    
     ![Параметры входа](./media/active-directory-saas-igloo-software-tutorial/ic783968.png "Параметры входа")
 
-10. В разделе настройки SAML нажмите **Настройка проверки подлинности SAML**.
+10. В hello раздел конфигурации SAML, нажмите кнопку **Настройка проверки подлинности SAML**.
    
     ![Настройка SAML](./media/active-directory-saas-igloo-software-tutorial/ic783969.png "Настройка SAML")
    
-11. В разделе **Общая конфигурация** выполните следующие действия.
+11. В hello **Общая конфигурация** выполните следующие шаги hello:
    
     ![Общая конфигурация](./media/active-directory-saas-igloo-software-tutorial/ic783970.png "Общая конфигурация")
 
-    а. Придумайте имя для конфигурации и введите его в текстовое поле **Имя подключения** .
+    а. В hello **имя подключения** текстовом поле введите имя файла для конфигурации.
    
-    b. В текстовое поле **URL-адрес входа поставщика удостоверений** вставьте значение **URL-адреса службы единого входа SAML**, скопированное на портале Azure.
+    b. В hello **URL-адрес входа поставщика удостоверений** текстовое значение hello вставить **SAML единого входа URL-адрес службы** скопирован из портала Azure.
    
-    c. В текстовое поле **URL-адрес выхода поставщика удостоверений** вставьте значение **URL-адреса выхода**, скопированное на портале Azure.
+    c. В hello **URL-адрес выхода поставщика удостоверений** текстовое значение hello вставить **URL-адрес выхода** скопирован из портала Azure.
     
-    г) Для параметра **Тип HTTP запроса и ответа о выходе** укажите значение **POST**.
+    d. Для параметра **Тип HTTP запроса и ответа о выходе** укажите значение **POST**.
    
-    д. Откройте в блокноте сертификат в кодировке **Base-64**, скачанный с портала Azure, скопируйте его в буфер обмена и вставьте в текстовое поле **Открытый сертификат**.
+    д. Откройте ваш **base-64** закодированный сертификат в блокноте, загруженные из портала Azure hello копирования содержимого его в буфер обмена, а затем вставьте его toohello **открытый сертификат** текстового поля.
     
-12. В области **Конфигурация ответа и проверки подлинности**выполните следующие действия.
+12. В hello **Настройка ответа и аутентификации**, выполните следующие шаги hello:
     
     ![Конфигурация ответа и проверки подлинности](./media/active-directory-saas-igloo-software-tutorial/IC783971.png "Конфигурация ответа и проверки подлинности")
   
@@ -167,13 +167,13 @@ ms.lasthandoff: 07/11/2017
       
       b. Выберите для параметра **Тип идентификатора** значение **Адрес электронной почты**. 
 
-      c. В текстовом поле **Email Attribute** (Атрибут электронной почты) введите значение **emailaddress**.
+      c. В hello **атрибут адреса электронной почты** введите **emailaddress**.
 
-      г) В текстовое поле **Атрибут имени** введите значение **givenname**.
+      d. В hello **атрибут имени** введите **givenname**.
 
-      д. В текстовое поле **Атрибут фамилии** введите значение **surname**.
+      д. В hello **атрибут фамилии** введите **Фамилия**.
 
-13. Выполните следующие действия для завершения настройки:
+13. Выполните hello следующая конфигурация hello toocomplete действия.
     
     ![Создание пользователя при входе](./media/active-directory-saas-igloo-software-tutorial/IC783972.png "Создание пользователя при входе") 
 
@@ -184,62 +184,62 @@ ms.lasthandoff: 07/11/2017
      c. Щелкните **Сохранить**.
 
 > [!TIP]
-> Краткую версию этих инструкций теперь можно также прочитать на [портале Azure](https://portal.azure.com) во время настройки приложения.  После добавления этого приложения из раздела **Active Directory > Корпоративные приложения** просто выберите вкладку **Единый вход** и откройте встроенную документацию через раздел **Настройка** в нижней части страницы. Дополнительные сведения о встроенной документации см. в разделе [Встроенная документация Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985).
+> Вы сможете прочитать четкими версии этих инструкций внутри hello [портал Azure](https://portal.azure.com), а вы настраиваете приложение hello!  После добавления этого приложения из hello **Active Directory > корпоративных приложений** просто щелкните hello **Single Sign-On** вкладку и доступа hello внедренных документации с помощью hello  **Конфигурация** раздела внизу hello. Вы можете прочитать больше о документации embedded функции hello здесь: [документации внедренных Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
 
 ### <a name="creating-an-azure-ad-test-user"></a>Создание тестового пользователя Azure AD
-Цель этого раздела — создать на портале Azure тестового пользователя с именем Britta Simon.
+Цель этого раздела Hello — toocreate тестового пользователя в hello вызывается Саймон Britta портал Azure.
 
 ![Создание пользователя Azure AD][100]
 
-**Чтобы создать тестового пользователя в Azure AD, выполните следующие действия:**
+**toocreate тестового пользователя в Azure AD, выполните следующие шаги hello.**
 
-1. На **портале Azure** в области навигации слева щелкните значок **Azure Active Directory**.
+1. В hello **портал Azure**, на левой панели навигации hello, нажмите кнопку **Azure Active Directory** значок.
 
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-igloo-software-tutorial/create_aaduser_01.png) 
 
-2. Чтобы отобразить список пользователей, перейдите в раздел **Пользователи и группы** и щелкните **Все пользователи**.
+2. hello toodisplay список пользователей, перейдите в слишком**пользователей и групп** и нажмите кнопку **всех пользователей**.
     
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-igloo-software-tutorial/create_aaduser_02.png) 
 
-3. Чтобы открыть диалоговое окно **Пользователь**, в верхней части диалогового окна щелкните **Добавить**.
+3. tooopen hello **пользователя** диалоговое окно, нажмите кнопку **добавить** в верхней части hello диалогового окна "hello".
  
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-igloo-software-tutorial/create_aaduser_03.png) 
 
-4. На странице диалогового окна **Пользователь** выполните следующие действия.
+4. На hello **пользователя** диалогового окна выполните следующие шаги hello:
  
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-igloo-software-tutorial/create_aaduser_04.png) 
 
-    а. В текстовом поле **Имя** введите **BrittaSimon**.
+    а. В hello **имя** введите **BrittaSimon**.
 
-    b. В текстовом поле **Имя пользователя** введите **адрес электронной почты** учетной записи BrittaSimon.
+    b. В hello **имя пользователя** в текстовое поле типа hello **адрес электронной почты** из BrittaSimon.
 
-    c. Выберите **Показать пароль** и запишите значение поля **Пароль**.
+    c. Выберите **Показать пароль** и запишите значение hello hello **пароль**.
 
     d. Щелкните **Создать**.
  
 ### <a name="creating-an-igloo-software-test-user"></a>Создание тестового пользователя Igloo Software
 
-Элемент действия для настройки подготовки пользователей в Igloo Software отсутствует.  
+Нет элемента действия для вас tooconfigure подготовки пользователей tooIgloo программного обеспечения.  
 
-Когда назначенный пользователь пытается войти в Igloo Software с помощью панели доступа, Igloo Software проверяет, существует ли данный пользователь.  Если учетная запись пользователя отсутствует, Igloo Software автоматически создает ее.
+Когда назначенный пользователь пытается toolog в tooIgloo программного обеспечения с помощью панели доступа hello, Igloo Software проверяет, существует ли пользователь hello.  Если учетная запись пользователя отсутствует, Igloo Software автоматически создает ее.
 
-### <a name="assigning-the-azure-ad-test-user"></a>Назначение тестового пользователя Azure AD
+### <a name="assigning-hello-azure-ad-test-user"></a>Назначение hello Azure AD тестового пользователя
 
-В этом разделе описано, как включить единый вход Azure для пользователя Britta Simon и предоставить этому пользователю доступ к Igloo Software.
+В этом разделе включите toouse Britta Simon Azure единого входа путем предоставления доступа tooIgloo программного обеспечения.
 
 ![Назначение пользователя][200] 
 
-**Чтобы назначить Britta Simon для Igloo Software, выполните следующие действия:**
+**tooassign tooIgloo Britta Simon программное обеспечение, выполните hello следующие шаги.**
 
-1. На портале Azure откройте представление приложений, перейдите к представлению каталога, а затем выберите **Корпоративные приложения** и щелкните **Все приложения**.
+1. В hello портал Azure, откройте представление приложения hello, а затем перейдите toohello представления каталога и перейти слишком**корпоративных приложений** щелкните **все приложения**.
 
     ![Назначение пользователя][201] 
 
-2. В списке приложений выберите **Igloo Software**.
+2. В списке приложений hello выберите **Igloo Software**.
 
     ![Настройка единого входа](./media/active-directory-saas-igloo-software-tutorial/tutorial_igloosoftware_app.png) 
 
-3. В меню слева выберите **Пользователи и группы**.
+3. В меню слева hello hello выберите **пользователей и групп**.
 
     ![Назначение пользователя][202] 
 
@@ -247,7 +247,7 @@ ms.lasthandoff: 07/11/2017
 
     ![Назначение пользователя][203]
 
-5. В диалоговом окне **Пользователи и группы** в списке пользователей выберите **Britta Simon**.
+5. На **пользователей и групп** диалогового окна выберите **Britta Simon** в список пользователей hello.
 
 6. В диалоговом окне **Пользователи и группы** нажмите кнопку **Выбрать**.
 
@@ -255,14 +255,14 @@ ms.lasthandoff: 07/11/2017
     
 ### <a name="testing-single-sign-on"></a>Проверка единого входа
 
-В этом разделе описано, как проверить конфигурацию единого входа Azure AD с помощью панели доступа.
+В этом разделе тестирования конфигурации Azure AD единого входа с помощью панели доступа hello.
 
-Щелкнув элемент Igloo Software на панели доступа, вы автоматически войдете в приложение Igloo Software.
-Дополнительные сведения о панели доступа см. в статье [Общие сведения о панели доступа](active-directory-saas-access-panel-introduction.md). 
+При выборе плитки Igloo Software hello в hello панели доступа, вы должны получить приложения автоматически вошедшего tooyour Igloo Software.
+Дополнительные сведения о панели доступа см. в разделе [toohello введение панели доступа](active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
-* [Список учебников по интеграции приложений SaaS с Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Список учебников по tooIntegrate приложений SaaS в Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Что такое доступ к приложениям и единый вход с помощью Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 

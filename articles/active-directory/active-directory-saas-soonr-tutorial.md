@@ -1,6 +1,6 @@
 ---
 title: "Руководство по интеграции Azure Active Directory с Soonr Workplace | Документация Майкрософт"
-description: "Узнайте, как настроить единый вход между Azure Active Directory и Soonr Workplace."
+description: "Узнайте, как tooconfigure единый вход между Azure Active Directory и Soonr рабочей области."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,202 +14,202 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/22/2017
 ms.author: jeedes
-ms.openlocfilehash: 76946e4af624d70f2202601ee935523ca3db4314
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: f950b45d0beceab2fa17b7690c9de81ec6603089
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-soonr-workplace"></a>Учебник. Интеграция Azure Active Directory с Soonr Workplace
 
-Цель этого учебника — показать, как интегрировать приложение Soonr Workplace с Azure Active Directory (Azure AD).  
-Интеграция Soonr Workplace с Azure AD дает приведенные ниже преимущества.
+Hello цель этого учебника — tooshow вы как toointegrate Soonr рабочему месту с Azure Active Directory (Azure AD).  
+Интеграция с Azure AD Soonr рабочему месту предоставляет hello следующие преимущества:
 
-- С помощью Azure AD вы можете контролировать доступ к приложению Soonr Workplace.
-- Вы можете включить автоматический вход пользователей в Soonr Workplace (единый вход) с учетной записью Azure AD.
-- Вы можете управлять учетными записями централизованно — через классический портал Azure.
+- Можно управлять в Azure AD, имеющего tooSoonr доступа к рабочему месту
+- Можно включить на пользователей tooautomatically get вошедшего tooSoonr рабочему месту (Single Sign-On) с помощью своих учетных записей Azure AD
+- Можно управлять учетными записями в одном централизованном месте - hello классический портал Azure
 
-Подробнее узнать об интеграции приложений SaaS с Azure AD можно в статье [Что такое доступ к приложениям и единый вход с помощью Azure Active Directory?](active-directory-appssoaccess-whatis.md).
+Если tooknow Дополнительные сведения об интеграции приложений SaaS в Azure AD, см. [доступ к приложению и единый вход в Azure Active Directory](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Предварительные требования
 
-Чтобы настроить интеграцию Azure AD с Soonr Workplace, вам потребуется:
+tooconfigure интеграция Azure AD в рабочей области Soonr требуется hello следующих элементов:
 
 - подписка Azure AD;
 - подписка Soonr Workplace с поддержкой единого входа.
 
 
 > [!NOTE] 
-> Мы не рекомендуем использовать рабочую среду для проверки действий в этом учебнике.
+> в этом учебнике шаги tootest hello, не рекомендуется в рабочей среде.
 
 
-При проверке действий в этом учебнике соблюдайте следующие рекомендации:
+tootest hello шаги в этом учебнике, необходимо следовать приведенным ниже рекомендациям:
 
 - Не следует использовать рабочую среду при отсутствии необходимости.
 - Если у вас нет пробной среды Azure AD, вы можете получить пробную версию на один месяц по [этой ссылке](https://azure.microsoft.com/pricing/free-trial/).
 
 
 ## <a name="scenario-description"></a>Описание сценария
-Цель этого учебника — научить вас проверять единый вход в Azure AD в пробной среде.  
-Сценарий, описанный в этом учебнике, состоит из двух основных блоков:
+Hello цель этого учебника — tooenable tootest Azure AD единого входа в тестовой среде.  
+Hello сценарий, описанный в этом учебнике состоит из двух основных компонентов:
 
-1. Добавление Soonr Workplace из коллекции.
+1. Добавление рабочей области Soonr из галереи hello
 2. Настройка и проверка единого входа в Azure AD
 
 
-## <a name="adding-soonr-workplace-from-the-gallery"></a>Добавление Soonr Workplace из коллекции.
-Чтобы настроить интеграцию Soonr Workplace с Azure AD, необходимо добавить Soonr Workplace из коллекции в список управляемых приложений SaaS.
+## <a name="adding-soonr-workplace-from-hello-gallery"></a>Добавление рабочей области Soonr из галереи hello
+tooconfigure hello интеграции Soonr рабочая область в Azure AD, вы должны tooadd Soonr рабочей области из списка tooyour коллекции hello управляемых приложений SaaS.
 
-**Чтобы добавить Soonr Workplace из коллекции, выполните следующие действия:**
+**tooadd Soonr рабочей области из галереи hello выполните следующие шаги hello.**
 
-1. На **классическом портале Azure**в области навигации слева щелкните **Active Directory**. 
+1. В hello **классический портал Azure**, на левой панели навигации hello, нажмите кнопку **Active Directory**. 
 
     ![Active Directory][1]
 
-2. Из списка **Каталог** выберите каталог, для которого нужно включить интеграцию каталогов.
+2. Из hello **каталога** список, выберите hello каталога, для которого требуется Интеграция каталогов tooenable.
 
-3. Чтобы открыть представление приложений, в представлении каталога нажмите **Приложения** в верхнем меню.
+3. Щелкните представление приложения hello tooopen в представлении каталога hello **приложений** в верхнем меню hello.
 
     ![Приложения][2]
 
-4. В нижней части страницы нажмите кнопку **Добавить** .
+4. Нажмите кнопку **добавить** hello нижней части страницы приветствия.
 
     ![Приложения][3]
 
-5. В диалоговом окне **Что необходимо сделать?** щелкните **Добавить приложение из коллекции**.
+5. На hello **что вам требуется toodo** диалоговое окно, нажмите кнопку **добавить приложение из коллекции hello**.
  
     ![Приложения][4]
 
-6. В поле поиска введите **Soonr Workplace**.
+6. Введите в поле поиска hello **рабочему месту Soonr**.
  
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-soonr-tutorial/tutorial_soonr_01.png)
 
-7. В области результатов выберите **Soonr Workplace** и нажмите кнопку **Завершить**, чтобы добавить приложение.
+7. В области результатов hello выберите **рабочему месту Soonr**и нажмите кнопку **завершить** tooadd приложения hello.
 
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-soonr-tutorial/tutorial_soonr_02.png)
 
 ##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Настройка и проверка единого входа в Azure AD
-Цель этого раздела — показать, как настроить и проверить единый вход Azure AD в приложении Soonr Workplace с использованием тестового пользователя Britta Simon.
+Цель этого раздела Hello является tooshow как tooconfigure и тестирования Azure AD единого входа в рабочей области Soonr на основе тестового пользователя с именем «Britta Simon».
 
-Для работы единого входа в Azure AD необходимо знать, какой пользователь в Soonr Workplace соответствует пользователю в Azure AD. Иными словами, необходимо установить связь между пользователем Azure AD и соответствующим пользователем в Soonr Workplace.  
+Для единого входа toowork Azure AD необходима tooknow пользователь аналог какие hello в рабочей области Soonr tooan пользователя в Azure AD. Другими словами связи между пользователя Azure AD и связанных пользователей hello в рабочей области Soonr должен установить toobe.  
 
-Чтобы установить эту связь, следует указать **имя пользователя** в Azure AD в качестве значения **имени пользователя** в Soonr Workplace.
+Эта связь связь устанавливается путем назначения hello значение hello **имя пользователя** в Azure AD в качестве значения hello hello **Username** Soonr рабочем месте.
 
-Чтобы настроить и проверить единый вход Azure AD в Soonr Workplace, вам потребуется выполнить действия в следующих стандартных блоках:
+tooconfigure и тестирования Azure AD единого входа в рабочей области Soonr, требуются следующие стандартные блоки hello toocomplete:
 
-1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-single-sign-on)** необходима, чтобы пользователи могли использовать эту функцию.
-2. **[Создание тестового пользователя Azure AD](#creating-an-azure-ad-test-user)** требуется для проверки работы единого входа Azure AD от имени пользователя Britta Simon.
-3. **[Создание тестового пользователя Soonr Workplace](#creating-a-soonr-workplace-test-user)** требуется для создания в Soonr Workplace соответствующего пользователя Britta Simon, связанного с соответствующим представлением в Azure AD.
-4. **[Назначение тестового пользователя Azure AD](#assigning-the-azure-ad-test-user)** необходимо, чтобы позволить Britta Simon использовать единый вход в Azure AD.
-5. **[Testing Single Sign-On](#testing-single-sign-on)** необходима, чтобы убедиться в корректной работе конфигурации.
+1. **[Настройка Azure AD Single Sign-On](#configuring-azure-ad-single-single-sign-on)**  -tooenable вашей toouse пользователи этой функции.
+2. **[Создание тестового пользователя Azure AD](#creating-an-azure-ad-test-user)**  -tootest Azure AD единого входа с Саймон Britta.
+3. **[Создание тестового пользователя рабочему месту Soonr](#creating-a-soonr-workplace-test-user)**  -toohave аналог Саймон Britta в рабочей области Soonr, представление связанных toohello Azure AD ей.
+4. **[Назначение hello Azure AD тестового пользователя](#assigning-the-azure-ad-test-user)**  -tooenable Britta Simon toouse Azure AD единым входом.
+5. **[Тестирование единого входа](#testing-single-sign-on)**  -tooverify ли hello works конфигурации.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Настройка единого входа в Azure AD
 
-В этом разделе описано, как включить единый вход Azure AD на классическом портале и настроить его в приложении Soonr Workplace.
+В этом разделе включения Azure AD единого входа в классическом портале hello и настройки единого входа в приложении Soonr рабочей области.
 
 
-**Чтобы настроить единый вход Azure AD в Soonr Workplace, выполните следующие действия:**
+**tooconfigure Azure AD единого входа в рабочей области Soonr, выполните следующие шаги hello.**
 
-1. На классическом портале Azure на странице интеграции с приложением **Soonr Workplace** щелкните **Настройка единого входа**, чтобы открыть диалоговое окно **Настройка единого входа**.
+1. В классический портал Azure, на hello hello **рабочему месту Soonr** странице интеграции приложения щелкните **настроить единый вход** tooopen hello **настройки единого входа**  диалоговое окно.
 
     ![Настройка единого входа][6] 
 
-2. На странице **Как пользователи должны входить в Soonr Workplace?** выберите **Единый вход Azure AD** и нажмите кнопку **Далее**.
+2. На hello **предпочитаемый как toosign пользователей на рабочем месте tooSoonr** выберите **Azure AD Single Sign-On**, а затем нажмите кнопку **Далее**.
 
     ![Настройка единого входа](./media/active-directory-saas-soonr-tutorial/tutorial_soonr_03.png) 
 
-3. На странице диалогового окна **Настройка параметров приложения** выполните следующие действия.
+3. На hello **Настройка параметров приложения** диалогового окна выполните следующие шаги hello:.
 
     ![Настройка единого входа](./media/active-directory-saas-soonr-tutorial/tutorial_soonr_04.png) 
 
-    а. В текстовом поле **URL-адрес для входа** введите URL-адрес в следующем формате: `https://<server-name>.soonr.com/singlesignon/saml/SSO`.
+    а. В hello **на URL-адрес входа** текстовом поле введите URL-адрес, используя следующий шаблон hello: `https://<server-name>.soonr.com/singlesignon/saml/SSO`.
 
     b. Щелкните **Далее**.
 
     > [!NOTE] 
-    > Обратите внимание, что это значение используется только в качестве примера. Вместо него необходимо указать фактический URL-адрес для входа. Чтобы получить это значение, обратитесь в службу поддержки Soonr Workplace.
+    > Обратите внимание на то, что это не Вещественное значение hello. У вас есть tooupdate это значение с hello фактический URL-адрес входа. Обратитесь к рабочему месту Soonr поддержки команды tooget это значение.
 
-4. На странице **Настройка единого входа в Soonr Workplace** нажмите кнопку **Скачать метаданные**, а затем сохраните файл метаданных на своем компьютере.
+4. На hello **настроить единый вход на рабочем месте Soonr** щелкните **загрузить метаданные** и затем сохраните файл hello на вашем компьютере:
 
     ![Настройка единого входа](./media/active-directory-saas-soonr-tutorial/tutorial_soonr_05.png) 
 
-5. Чтобы настроить единый вход для своего приложения, обратитесь в службу поддержки Soonr Workplace и предоставьте следующие сведения: 
+5. tooget единого входа, настроенному для вашего приложения, обратитесь в службу поддержки Soonr рабочей области и предоставить им hello следующие: 
 
-    • скачанный файл **метаданных**;
+    • hello загружены **метаданные** файла
 
-    • **URL-адрес издателя**;
+    • hello **URL-адрес издателя**
 
-    • **URL-адрес единого входа SAML**;
+    • hello **URL-адрес единого входа SAML**
 
-    • **URL-адрес службы единого выхода**.
+    • hello **URL-адрес службы единого выхода**
 
     >[!NOTE]
-    >Это приложение заменено на <a href="https://azure.microsoft.com/en-us/marketplace/partners/autotask-corporataion/autotask/">Autotask Workplace</a>; для настройки приложения с помощью Azure AD можно ссылаться на <a href="https://docs.microsoft.com/en-us/azure/active-directory/active-directory-saas-autotaskworkplace-tutorial">это</a> руководство.
+    >Это приложение заменяется <a href="https://azure.microsoft.com/en-us/marketplace/partners/autotask-corporataion/autotask/">Autotask рабочей области</a> и может указывать <a href="https://docs.microsoft.com/en-us/azure/active-directory/active-directory-saas-autotaskworkplace-tutorial">это</a> учебника по настройке приложения hello в Azure AD.
    
-6. На классическом портале Azure выберите подтверждение конфигурации единого входа и нажмите кнопку **Далее**.
+6. В hello классический портал Azure, выберите Подтверждение настройки единого входа hello и нажмите кнопку **Далее**.
 
-    ![единого входа Azure AD][10]
+    ![Единый вход в Azure AD][10]
 
-7. На странице **Подтверждение единого входа** нажмите кнопку **Завершить**.  
+7. На hello **единого входа для подтверждения** щелкните **завершить**.  
   
-    ![единого входа Azure AD][11]
+    ![Единый вход в Azure AD][11]
 
 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Создание тестового пользователя Azure AD
-Цель этого раздела — создать на классическом портале Azure тестового пользователя с именем Britta Simon.  
+Цель этого раздела Hello — toocreate тестового пользователя в классический портал Azure, вызывается Britta Simon hello.  
 
 ![Создание пользователя Azure AD][20]
 
-**Чтобы создать тестового пользователя в Azure AD, выполните следующие действия:**
+**toocreate тестового пользователя в Azure AD, выполните следующие шаги hello.**
 
-1. На **классическом портале Azure** в области навигации слева щелкните **Active Directory**.
+1. В hello **классический портал Azure**, на левой панели навигации hello, нажмите кнопку **Active Directory**.
 
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-soonr-tutorial/create_aaduser_09.png) 
 
-2. Из списка **Каталог** выберите каталог, для которого нужно включить интеграцию каталогов.
+2. Из hello **каталога** список, выберите hello каталога, для которого требуется Интеграция каталогов tooenable.
 
-3. Чтобы отобразить список пользователей, в меню вверху выберите **Пользователи**.
+3. Щелкните toodisplay hello список пользователей, выберите в меню в верхней части экрана приветствия hello **пользователей**.
 
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-soonr-tutorial/create_aaduser_03.png) 
 
-4. Чтобы открыть диалоговое окно **Добавление пользователя**, на панели инструментов внизу нажмите кнопку **Добавить пользователя**.
+4. tooopen hello **добавить пользователя** щелкните диалоговое окно в нижней hello инструментов hello **добавить пользователя**.
 
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-soonr-tutorial/create_aaduser_04.png) 
 
-5. На странице диалогового окна **Тип учетной записи пользователя** выполните следующие действия.
+5. На hello **сообщите нам об этом пользователе** диалогового окна выполните следующие шаги hello:
 
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-soonr-tutorial/create_aaduser_05.png) 
 
     а. В поле «Тип пользователя» выберите значение «Новый пользователь в вашей организации».
 
-    b. В текстовом поле **Имя пользователя** введите **BrittaSimon**.
+    b. В имени пользователя hello **textbox**, тип **BrittaSimon**.
 
-    c. Нажмите кнопку **Далее**.
+    c. Щелкните **Далее**.
 
-6.  На странице диалогового окна **Профиль пользователя** выполните следующие действия.
+6.  На hello **профиля пользователя** диалогового окна выполните следующие шаги hello:
 
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-soonr-tutorial/create_aaduser_06.png) 
 
-    а. В текстовом поле **Имя** введите **Britta**.  
+    а. В hello **имя** введите **Britta**.  
 
-    b. В текстовом поле **Фамилия** введите **Simon**.
+    b. В hello **Фамилия** текстовое поле, тип, **Simon**.
 
-    c. В текстовом поле **Отображаемое имя** введите **Britta Simon**.
+    c. В hello **отображаемое имя** введите **Britta Simon**.
 
-    d. В списке **Роль** выберите **Пользователь**.
+    d. В hello **роли** выберите **пользователя**.
 
-    д. Нажмите кнопку **Далее**.
+    д. Щелкните **Далее**.
 
-7. На странице диалогового окна **Получить временный пароль** нажмите кнопку **Создать**.
+7. На hello **получение временного пароля** странице диалогового окна щелкните **создания**.
 
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-soonr-tutorial/create_aaduser_07.png) 
 
-8. На странице диалогового окна **Получить временный пароль** выполните следующие действия.
+8. На hello **получение временного пароля** диалогового окна выполните следующие шаги hello:
 
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-soonr-tutorial/create_aaduser_08.png) 
 
-    а. Запишите значение поля **Новый пароль**.
+    а. Запишите значение hello hello **новый пароль**.
 
     b. Нажмите **Завершено**.   
 
@@ -217,32 +217,32 @@ ms.lasthandoff: 07/11/2017
 
 ### <a name="creating-a-soonr-workplace-test-user"></a>Создание тестового пользователя Soonr Workplace
 
-Цель этого раздела — создать в приложении Soonr Workplace пользователя с именем Britta Simon. Чтобы создать пользователя на платформе, свяжитесь со службой поддержки Soonr Workplace. Создать запрос в службу поддержки Soonr можно <a href="https://na01.safelinks.protection.outlook.com/?url=http%3A%2F%2Fsoonr.com%2FAWPHelp%2FContent%2F0_HOME%2FSupport_for_End_Clients.htm&data=01%7C01%7Cv-saikra%40microsoft.com%7Ccbb4367ab09b4dacaac408d3eebe3f42%7C72f988bf86f141af91ab2d7cd011db47%7C1&sdata=FB92qtE6m%2Fd8yox7AnL2f1h%2FGXwSkma9x9H8Pz0955M%3D&reserved=0/">здесь</a>.
+Цель этого раздела Hello — toocreate пользователя с именем Britta Simon Soonr рабочем месте. Обратитесь toocreate группы поддержки Soonr рабочее место пользователя на платформе hello. Может вызывать службу поддержки hello Soonr из <a href="https://na01.safelinks.protection.outlook.com/?url=http%3A%2F%2Fsoonr.com%2FAWPHelp%2FContent%2F0_HOME%2FSupport_for_End_Clients.htm&data=01%7C01%7Cv-saikra%40microsoft.com%7Ccbb4367ab09b4dacaac408d3eebe3f42%7C72f988bf86f141af91ab2d7cd011db47%7C1&sdata=FB92qtE6m%2Fd8yox7AnL2f1h%2FGXwSkma9x9H8Pz0955M%3D&reserved=0/">здесь</a>.
 
 
-### <a name="assigning-the-azure-ad-test-user"></a>Назначение тестового пользователя Azure AD
+### <a name="assigning-hello-azure-ad-test-user"></a>Назначение hello Azure AD тестового пользователя
 
-Цель этого раздела — разрешить пользователю Britta Simon использовать единый вход Azure, предоставив ему доступ к Soonr Workplace.
+Hello цель этого раздела — tooenabling toouse Britta Simon Azure единого входа путем предоставления ее tooSoonr доступа к рабочему месту.
 
 ![Назначение пользователя][200] 
 
-**Чтобы назначить пользователя Britta Simon приложению Soonr Workplace, выполните следующие действия:**
+**tooassign tooSoonr Britta Simon рабочему месту, выполните hello следующие шаги.**
 
-1. Чтобы открыть представление приложений, на классическом портале Azure в представлении каталога щелкните **Приложения** в меню вверху.
+1. Hello Azure представления приложения hello tooopen в представлении каталога hello классического портала щелкните **приложений** в верхнем меню hello.
 
     ![Назначение пользователя][201] 
 
-2. Из списка приложений выберите **Soonr Workplace**.
+2. В списке приложений hello выберите **рабочему месту Soonr**.
 
     ![Настройка единого входа](./media/active-directory-saas-soonr-tutorial/tutorial_soonr_50.png) 
 
-1. В меню в верхней части страницы щелкните **Пользователи**.
+1. В меню в верхней части hello hello выберите **пользователей**.
 
     ![Назначение пользователя][203] 
 
-1. В списке пользователей выберите **Britta Simon**.
+1. В списке пользователей hello выберите **Britta Simon**.
 
-2. На панели инструментов внизу щелкните **Назначить**.
+2. В нижней hello hello инструментов, нажмите кнопку **назначить**.
 
     ![Назначение пользователя][205]
 
@@ -250,13 +250,13 @@ ms.lasthandoff: 07/11/2017
 
 ### <a name="testing-single-sign-on"></a>Проверка единого входа
 
-Цель этого раздела — проверить конфигурацию единого входа Azure AD с помощью панели доступа.  
-Щелкнув элемент Soonr Workplace на панели доступа, вы автоматически войдете в приложение Soonr Workplace.
+Цель этого раздела Hello является tootest настройки единого входа Azure AD с помощью панели доступа "hello".  
+При нажатии кнопки hello рабочему месту Soonr плитки в панели доступа hello, вы должны получить автоматически вошедшего tooyour Soonr рабочей области приложения.
 
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
-* [Список учебников по интеграции приложений SaaS с Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Список учебников по tooIntegrate приложений SaaS в Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Что такое доступ к приложениям и единый вход с помощью Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 

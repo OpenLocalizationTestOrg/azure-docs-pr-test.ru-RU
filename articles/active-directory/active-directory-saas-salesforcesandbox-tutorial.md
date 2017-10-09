@@ -1,6 +1,6 @@
 ---
 title: "Руководство по интеграции Azure Active Directory с песочницей Salesforce | Документация Майкрософт"
-description: "Узнайте, как настроить единый вход Azure Active Directory в Salesforce Sandbox."
+description: "Узнайте, как tooconfigure единый вход между Azure Active Directory и песочницы Salesforce."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,116 +13,116 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/19/2017
 ms.author: jeedes
-ms.openlocfilehash: 90e08b9cf2feb93de4877bec9734352949896dca
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 7539f08356568a17ebfcee2764bbbefa129b0553
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-salesforce-sandbox"></a>Учебник. Интеграция Azure Active Directory с песочницей Salesforce
 
-В этом руководстве описано, как интегрировать Salesforce Sandbox с Azure Active Directory (Azure AD).
+В этом учебнике вы узнаете, как toointegrate песочницы Salesforce с Azure Active Directory (Azure AD).
 
-Интеграция Azure AD с Salesforce Sandbox обеспечивает следующие преимущества:
+Интеграция песочницы Salesforce с Azure AD предоставляет hello следующие преимущества:
 
-- С помощью Azure AD можно управлять доступом к Salesforce Sandbox.
-- Вы можете включить автоматический вход пользователей в Salesforce Sandbox (единый вход) с учетной записью Azure AD.
-- Вы можете управлять учетными записями централизованно — через портал Azure.
+- Можно управлять в Azure AD, имеющего доступ tooSalesforce "песочницы"
+- Можно включить на пользователей tooautomatically get вошедшего tooSalesforce "песочницы" (Single Sign-On) с помощью своих учетных записей Azure AD
+- Можно управлять учетными записями в одном централизованном месте - hello портал Azure
 
-Подробнее узнать об интеграции приложений SaaS с Azure AD можно в разделе [Что такое доступ к приложениям и единый вход с помощью Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Если tooknow Дополнительные сведения об интеграции приложений SaaS в Azure AD, см. [доступ к приложению и единый вход в Azure Active Directory](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Предварительные требования
 
-Чтобы настроить интеграцию Azure AD с Salesforce Sandbox, вам потребуется:
+tooconfigure интеграция Azure AD с песочницей Salesforce требуется hello следующих элементов:
 
 - подписка Azure AD;
 - подписка Salesforce Sandbox с поддержкой единого входа.
 
 > [!NOTE]
-> Мы не рекомендуем использовать рабочую среду для проверки действий в этом учебнике.
+> в этом учебнике шаги tootest hello, не рекомендуется в рабочей среде.
 
-При проверке действий в этом учебнике соблюдайте следующие рекомендации:
+tootest hello шаги в этом учебнике, необходимо следовать приведенным ниже рекомендациям:
 
 - Не используйте рабочую среду без необходимости.
 - Если у вас нет пробной среды Azure AD, вы можете получить пробную версию на один месяц по [этой ссылке](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Описание сценария
-В рамках этого руководства проводится проверка единого входа Azure AD в тестовой среде. Сценарий, описанный в этом учебнике, состоит из двух основных блоков:
+В рамках этого руководства проводится проверка единого входа Azure AD в тестовой среде. Hello сценарий, описанный в этом учебнике состоит из двух основных компонентов:
 
-1. Добавление Salesforce Sandbox из коллекции.
+1. Добавление из галереи hello песочницы Salesforce
 2. Настройка и проверка единого входа в Azure AD
 
-## <a name="adding-salesforce-sandbox-from-the-gallery"></a>Добавление Salesforce Sandbox из коллекции
-Чтобы настроить интеграцию Salesforce Sandbox с Azure AD, нужно добавить Salesforce Sandbox из коллекции в список управляемых приложений SaaS.
+## <a name="adding-salesforce-sandbox-from-hello-gallery"></a>Добавление из галереи hello песочницы Salesforce
+tooconfigure hello интеграцией песочницы Salesforce с Azure AD, вы должны tooadd песочницы Salesforce из списка tooyour коллекции hello управляемых приложений SaaS.
 
-**Чтобы добавить Salesforce Sandbox из коллекции, выполните следующие действия.**
+**tooadd песочницы Salesforce из галереи hello, выполните следующие шаги hello.**
 
-1. На **[портале Azure](https://portal.azure.com)** в области навигации слева щелкните значок **Azure Active Directory**. 
+1. В hello  **[портал Azure](https://portal.azure.com)**на левой навигационной панели hello, нажмите кнопку **Azure Active Directory** значок. 
 
     ![Active Directory][1]
 
-2. Перейдите к разделу **Корпоративные приложения**. Затем выберите **Все приложения**.
+2. Перейдите в слишком**корпоративных приложений**. Затем перейдите слишком**все приложения**.
 
     ![Приложения][2]
     
-3. В верхней части диалогового окна нажмите кнопку **Создать приложение**.
+3. Нажмите кнопку **новое приложение** кнопку в верхней части hello диалогового окна "hello".
 
     ![Приложения][3]
 
-4. В поле поиска введите **Salesforce Sandbox**.
+4. Введите в поле поиска hello **песочницы Salesforce**.
 
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-salesforcesandbox-tutorial/tutorial_salesforcesandbox_search.png)
 
-5. На панели результатов выберите **Salesforce Sandbox** и нажмите кнопку **Добавить**, чтобы добавить это приложение.
+5. В панели результатов hello выберите **песочницы Salesforce**и нажмите кнопку **добавить** кнопку tooadd приложения hello.
 
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-salesforcesandbox-tutorial/tutorial_salesforcesandbox_addfromgallery.png)
 
 ##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Настройка и проверка единого входа в Azure AD
 В этом разделе описана настройка и проверка единого входа Azure AD в Salesforce Sandbox с использованием тестового пользователя Britta Simon.
 
-Чтобы единый вход работал, Azure AD необходима информация о том, какой пользователь в Salesforce Sandbox соответствует пользователю в Azure AD. Иными словами, необходимо установить связь между пользователем Azure AD и соответствующим пользователем в Salesforce Sandbox.
+Для единого входа toowork Azure AD необходима tooknow пользователь аналог какие hello в песочницу Salesforce является tooa в Azure AD. Другими словами связи между пользователя Azure AD и hello связанных пользователей в песочницу Salesforce должен установить toobe.
 
-Чтобы установить эту связь, следует назначить **имя пользователя** в Azure AD в качестве значения **имени пользователя** в Salesforce Sandbox.
+Эта связь связь устанавливается путем назначения hello значение hello **имя пользователя** в Azure AD в качестве значения hello hello **Username** в песочницу Salesforce.
 
-Чтобы настроить и проверить единый вход Azure AD в Salesforce Sandbox, вам потребуется выполнить действия в следующих стандартных блоках.
+tooconfigure и тестирования Azure AD единого входа с песочницей Salesforce, требуются следующие стандартные блоки hello toocomplete:
 
-1. **[Настройка единого входа в Azure AD](#configuring-azure-ad-single-sign-on)** необходима, чтобы пользователи могли использовать эту функцию.
-2. **[Создание тестового пользователя Azure AD](#creating-an-azure-ad-test-user)** требуется для проверки работы единого входа Azure AD от имени пользователя Britta Simon.
-3. **[Создание тестового пользователя Salesforce Sandbox](#creating-a-salesforce-sandbox-test-user)** требуется для того, чтобы в Salesforce Sandbox существовал пользователь Britta Simon, связанный с одноименным пользователем в Azure AD.
-4. **[Назначение тестового пользователя Azure AD](#assigning-the-azure-ad-test-user)** необходимо, чтобы позволить Britta Simon использовать единый вход в Azure AD.
-5. **[Testing Single Sign-On](#testing-single-sign-on)** необходима, чтобы убедиться в корректной работе конфигурации.
+1. **[Настройка Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**  -tooenable вашей toouse пользователи этой функции.
+2. **[Создание тестового пользователя Azure AD](#creating-an-azure-ad-test-user)**  -tootest Azure AD единого входа с Саймон Britta.
+3. **[Создание тестового пользователя песочницы Salesforce](#creating-a-salesforce-sandbox-test-user)**  -toohave аналог Саймон Britta в песочницу Salesforce, который представляет связанный toohello Azure AD пользователя.
+4. **[Назначение hello Azure AD тестового пользователя](#assigning-the-azure-ad-test-user)**  -tooenable Britta Simon toouse Azure AD единым входом.
+5. **[Тестирование единого входа](#testing-single-sign-on)**  -tooverify ли hello works конфигурации.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Настройка единого входа в Azure AD
 
-В этом разделе описано, как включить единый вход Azure AD на портале Azure и настроить его в приложении Salesforce Sandbox.
+В этом разделе включения Azure AD единым входом в портал Azure hello и настройки единого входа в приложение песочницы Salesforce.
 
-**Чтобы настроить единый вход Azure AD в Salesforce Sandbox, выполните следующие действия.**
+**tooconfigure Azure AD единого входа с песочницей Salesforce, выполните следующие шаги hello.**
 
-1. На портале Azure на странице интеграции с приложением **Salesforce Sandbox** щелкните **Единый вход**.
+1. В hello в hello портала Azure **песочницы Salesforce** странице интеграции приложения щелкните **единого входа**.
 
     ![Настройка единого входа][4]
 
-2. В диалоговом окне **Единый вход** в разделе **Режим** выберите **Вход на основе SAML**, чтобы включить функцию единого входа.
+2. На hello **единого входа** диалогового окна выберите **режим** как **входа на базе SAML** tooenable единого входа.
  
     ![Настройка единого входа](./media/active-directory-saas-salesforcesandbox-tutorial/tutorial_salesforcesandbox_samlbase.png)
 
-3. В разделе **Домен и URL-адреса Salesforce Sandbox** выполните следующие действия.
+3. На hello **URL-адреса и домен песочницы Salesforce** выполните следующие шаги hello:
 
     ![Настройка единого входа](./media/active-directory-saas-salesforcesandbox-tutorial/tutorial_salesforcesandbox_url.png)
 
-     В текстовом поле **URL-адрес для входа** введите значение в следующем формате: `https://<subdomain>.my.salesforce.com`.
+     В hello **URL-адрес входа** текстовое значение hello типа, используя следующий шаблон hello:`https://<subdomain>.my.salesforce.com`
 
     > [!NOTE] 
-    > Это значение приведено для примера. Замените это значение фактическим URL-адресом входа. Обратитесь к [группе поддержки клиентов Salesforce Sandbox](https://help.salesforce.com/support) для получения этого значения.
+    > Это значение не реальными hello. Измените значение этого параметра hello фактический URL-адрес входа. Обратитесь к [группа поддержки клиента песочницы Salesforce](https://help.salesforce.com/support) tooget это значение.
 
 
-4. Если вы уже настроили единый вход для другого экземпляра Salesforce Sandbox в каталоге, необходимо также настроить параметр **Идентификатор**, задав для него то же значение, что и для параметра **URL-адрес входа**. 
+4. Если вы уже настроили единого входа для другого экземпляра песочницы Salesforce в вашем каталоге, то необходимо также настроить hello **идентификатор** toohave hello совпадает со значением hello **URL-адрес входа**. 
     
     >[!Note]
-    >Поле **Идентификатор** можно найти, установив флажок **Показать дополнительные настройки** на странице **Настроить URL-адрес приложения** диалогового окна. 
+    >Hello **идентификатор** поле можно найти путем проверки hello **Показывать дополнительные параметры** флажок на hello **настроить URL-адрес приложения** hello диалогового окна 
 
 
-5. В разделе **Сертификат подписи SAML** щелкните **Сертификат**, а затем сохраните файл сертификата на компьютере.
+5. На hello **сертификат подписи SAML** щелкните **сертификат** и затем сохраните файл сертификата hello на вашем компьютере.
 
     ![Настройка единого входа](./media/active-directory-saas-salesforcesandbox-tutorial/tutorial_salesforcesandbox_certificate.png) 
 
@@ -130,43 +130,43 @@ ms.lasthandoff: 08/03/2017
 
     ![Настройка единого входа](./media/active-directory-saas-salesforcesandbox-tutorial/tutorial_general_400.png)
 
-7. В разделе **Конфигурация Salesforce Sandbox** щелкните **Настроить Salesforce Sandbox**, чтобы открыть окно **Настройка единого входа**. Скопируйте **идентификатор сущности SAML и URL-адрес службы единого входа SAML** из раздела **Краткий справочник**.
+7. На hello **конфигурации песочницы Salesforce** щелкните **настроить песочницу Salesforce** tooopen **Настройка входа** окна. Копировать hello **идентификатор сущности SAML и SAML единого входа URL-адрес службы** из hello **краткий справочник.**
 
     ![Настройка единого входа](./media/active-directory-saas-salesforcesandbox-tutorial/tutorial_salesforcesandbox_configure.png) 
 <CS>
-8. Откройте новую вкладку в браузере и войдите в учетную запись администратора Salesforce Sandbox.
+8. Откройте новую вкладку в браузере и войдите в учетную запись администратора песочницы Salesforce tooyour.
 
-9. В верхнем меню щелкните **Настройка**.
+9. В меню в верхней части hello hello выберите **установки**.
 
     ![Настройка единого входа](./media/active-directory-saas-salesforcesandbox-tutorial/IC781024.png)
-10. В области навигации слева щелкните **Security Controls** (Средства управления безопасностью), а затем — **Параметры единого входа**.
+10. Hello hello левой панели навигации щелкните **управления безопасностью**, а затем нажмите кнопку **параметры единого входа**.
 
     ![Настройка единого входа](./media/active-directory-saas-salesforcesandbox-tutorial/IC781025.png)
-11. В разделе "Single Sign-On Settings" (Параметры единого входа) сделайте следующее. ![Настройка единого входа](./media/active-directory-saas-salesforcesandbox-tutorial/IC781026.png)
+11. На hello раздел параметров единого входа, выполните следующие шаги hello: ![настройки единого входа](./media/active-directory-saas-salesforcesandbox-tutorial/IC781026.png)
      
      а.  Установите флажок **SAML включен**. 
 
      b.  Нажмите кнопку **Создать**.
 
-12. В разделе «Параметры единого входа SAML» выполните следующие действия:
+12. На hello SAML единого входа «параметры» выполните следующие шаги hello.
 
     ![Настройка единого входа](./media/active-directory-saas-salesforcesandbox-tutorial/IC781027.png)
 
-    В текстовое поле "Name" (Имя) введите имя конфигурации (например, *SPSSOWAAD\_Test*). 
+    a.In hello в текстовое поле имя, имя типа hello hello конфигурации (например: *SPSSOWAAD\_тест*). 
 
-    b. Вставьте значение **SAML Entity ID** (Идентификатор сущности SAML) в поле **Issuer** (Издатель).
+    b. Вставить **идентификатор сущности SMAL** значение в hello **издателя** текстового поля.
 
-    c. В текстовом поле **Entity Id** (Идентификатор сущности) введите **https://test.salesforce.com**, если это первый экземпляр Salesforce Sandbox, добавляемый в каталог. Если вы уже добавили экземпляр Salesforce Sandbox, то для параметра **Идентификатор сущности** введите значение **URL-адрес входа** в следующем формате: `http://company.my.salesforce.com`  
+    c. В hello **идентификатор сущности** введите **https://test.salesforce.com** при hello первый экземпляр песочницы Salesforce, добавляется tooyour каталога. При добавлении экземпляра песочницы Salesforce, а затем для hello **идентификатор сущности** типа в hello **на URL-адрес входа**, которые должны быть в следующем формате:`http://company.my.salesforce.com`  
  
-    d. Чтобы отправить скачанный сертификат, нажмите кнопку **Обзор**.  
+    d. Нажмите кнопку **Обзор** tooupload hello загрузить сертификат.  
 
-    д. В поле **SAML Identity Type** (Тип удостоверения SAML) выберите значение **Assertion contains the Federation ID from the User object** (Проверочное утверждение содержит идентификатор федерации из объекта User).
+    д. Как **типа удостоверения SAML**выберите **утверждение, содержащее hello идентификатор федерации из объекта пользователя hello**.
  
-    Е. В поле **SAML Identity Location** (Расположение удостоверения SAML) выберите значение **Identity is in the NameIdentifier element of the Subject statement** (Удостоверение находится в элементе NameIdentifier оператора Subject).
+    f. Как **расположения удостоверения SAML**выберите **удостоверение находится в элемент hello NameIdentifier оператора Subject hello**.
 
-    g. Вставьте **URL-адрес службы единого входа** в текстовое поле **Identity Provider Login URL** (URL-адрес входа поставщика удостоверений). 
+    ж. Вставить **единого входа URL-адрес службы** в hello **URL-адрес входа поставщика удостоверений** текстового поля. 
 
-    h. SFDC не поддерживает выход SAML.  Чтобы обойти эту проблему, вставьте значение https://login.microsoftonline.com/common/wsfederation?wa=wsignout1.0 в текстовое поле **URL-адрес для выхода поставщика удостоверений**.
+    h. SFDC не поддерживает выход SAML.  Чтобы избежать этого, вставьте «https://login.microsoftonline.com/common/wsfederation?wa=wsignout1.0» в hello **URL-адрес выхода поставщика удостоверений** текстового поля.
 
     i. В поле **Service Provider Initiated Request Binding** (Связывание запросов, инициированных поставщиком услуг) выберите значение **HTTP POST**. 
 
@@ -175,80 +175,80 @@ ms.lasthandoff: 08/03/2017
 ### <a name="enable-your-domain"></a>Включение домена
 В этом разделе предполагается, что вы уже создали домен.  Дополнительные сведения см. в разделе [Define Your Domain Name](https://help.salesforce.com/HTViewHelpDoc?id=domain_name_define.htm&language=en_US) (Определение доменного имени).
 
-**Выполните следующие действия, чтобы включить домен:**
+**tooenable к домену, выполните следующие шаги hello:**
 
-1. В области навигации слева щелкните **Управление доменами**, затем — **Мой домен**.
+1. Hello панели навигации слева щелкните **Управление доменами**, а затем нажмите кнопку **Мой домен.**
    
      ![Настройка единого входа](./media/active-directory-saas-salesforcesandbox-tutorial/IC781029.png)
    
    >[!NOTE]
    >Убедитесь в правильности настройки домена. 
 
-2. В разделе **Login Page Settings** (Параметры страницы входа) щелкните **Изменить**, а затем для параметра **Authentication Service** (Служба проверки подлинности) выберите имя параметра единого входа SAML из предыдущего раздела, после чего щелкните **Сохранить**.
+2. В hello **параметры страницы входа** щелкните **изменить**, затем, по мере **службы проверки подлинности**, выберите имя hello hello SAML единого входа параметр из предыдущего hello статьи, а затем щелкните **Сохранить**.
    
    ![Настройка единого входа](./media/active-directory-saas-salesforcesandbox-tutorial/IC781030.png)
 
-После настройки домена для входа в песочницу Salesforce пользователям необходимо будет использовать URL-адрес домена.  
+Как только домен настроен, пользователям следует использовать hello домена URL-адрес toologin toohello песочницы Salesforce.  
 
-Чтобы получить значение URL-адреса, щелкните профиль единого входа, созданный в предыдущем разделе.    
+значение hello tooget hello URL-адреса, щелкните профиль единого входа hello, созданный в предыдущем разделе hello.    
 
 > [!TIP]
-> Краткую версию этих инструкций теперь можно также прочитать на [портале Azure](https://portal.azure.com) во время настройки приложения.  После добавления этого приложения из раздела **Active Directory > Корпоративные приложения** просто выберите вкладку **Единый вход** и откройте встроенную документацию через раздел **Настройка** в нижней части страницы. Дополнительные сведения о встроенной документации см. в разделе [Встроенная документация Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985).
+> Вы сможете прочитать четкими версии этих инструкций внутри hello [портал Azure](https://portal.azure.com), а вы настраиваете приложение hello!  После добавления этого приложения из hello **Active Directory > корпоративных приложений** просто щелкните hello **Single Sign-On** вкладку и доступа hello внедренных документации с помощью hello  **Конфигурация** раздела внизу hello. Вы можете прочитать больше о документации embedded функции hello здесь: [документации внедренных Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Создание тестового пользователя Azure AD
-Цель этого раздела — создать на портале Azure тестового пользователя с именем Britta Simon.
+Цель этого раздела Hello — toocreate тестового пользователя в hello вызывается Саймон Britta портал Azure.
 
 ![Создание пользователя Azure AD][100]
 
-**Чтобы создать тестового пользователя в Azure AD, выполните следующие действия:**
+**toocreate тестового пользователя в Azure AD, выполните следующие шаги hello.**
 
-1. На **портале Azure** в области навигации слева щелкните значок **Azure Active Directory**.
+1. В hello **портал Azure**, на левой панели навигации hello, нажмите кнопку **Azure Active Directory** значок.
 
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-salesforcesandbox-tutorial/create_aaduser_01.png) 
 
-2. Чтобы отобразить список пользователей, перейдите в раздел **Пользователи и группы** и щелкните **Все пользователи**.
+2. hello toodisplay список пользователей перейти слишком**пользователей и групп** и нажмите кнопку **всех пользователей**.
     
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-salesforcesandbox-tutorial/create_aaduser_02.png) 
 
-3. В верхней части диалогового окна щелкните **Добавить**, чтобы открыть диалоговое окно **Пользователь**.
+3. Вверху hello hello диалоговое окно, нажмите кнопку **добавить** tooopen hello **пользователя** диалогового окна.
  
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-salesforcesandbox-tutorial/create_aaduser_03.png) 
 
-4. На странице диалогового окна **Пользователь** выполните следующие действия.
+4. На hello **пользователя** диалогового окна выполните следующие шаги hello:
  
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-salesforcesandbox-tutorial/create_aaduser_04.png) 
 
-    а. В текстовом поле **Имя** введите **BrittaSimon**.
+    а. В hello **имя** введите **BrittaSimon**.
 
-    b. В текстовом поле **Имя пользователя** введите **адрес электронной почты** учетной записи BrittaSimon.
+    b. В hello **имя пользователя** в текстовое поле типа hello **адрес электронной почты** из BrittaSimon.
 
-    c. Выберите **Показать пароль** и запишите значение поля **Пароль**.
+    c. Выберите **Показать пароль** и запишите значение hello hello **пароль**.
 
     d. Щелкните **Создать**.
  
 ### <a name="creating-a-salesforce-sandbox-test-user"></a>Создание тестового пользователя Salesforce Sandbox
 
 В этом разделе вы создадите в Salesforce Sandbox пользователя с именем Britta Simon. Salesforce Sandbox поддерживает JIT-подготовку. Эта функция включена по умолчанию.
-В этом разделе никакие действия с вашей стороны не требуются. Если пользователь в Salesforce Sandbox еще не существует, он создается при попытке доступа к Salesforce Sandbox.
+В этом разделе никакие действия с вашей стороны не требуются. Если пользователь еще не существует в песочницу Salesforce, создается новый, при попытке tooaccess песочницы Salesforce.
 
-### <a name="assigning-the-azure-ad-test-user"></a>Назначение тестового пользователя Azure AD
+### <a name="assigning-hello-azure-ad-test-user"></a>Назначение hello Azure AD тестового пользователя
 
-В этом разделе описано, как разрешить пользователю Britta Simon использовать единый вход Azure, предоставив этому пользователю доступ к Salesforce Sandbox.
+В этом разделе включите toouse Britta Simon Azure единого входа путем предоставления доступа tooSalesforce "песочницы".
 
 ![Назначение пользователя][200] 
 
-**Чтобы назначить пользователя Britta Simon в Salesforce Sandbox, выполните следующие действия.**
+**tooassign tooSalesforce Britta Simon "песочницы", выполните следующие шаги hello.**
 
-1. На портале Azure откройте представление приложений, перейдите к представлению каталога, а затем выберите **Корпоративные приложения** и щелкните **Все приложения**.
+1. В hello портал Azure, откройте представление приложения hello, а затем перейдите toohello представления каталога и перейти слишком**корпоративных приложений** щелкните **все приложения**.
 
     ![Назначение пользователя][201] 
 
-2. Из списка приложений выберите **Salesforce Sandbox**.
+2. В списке приложений hello выберите **песочницы Salesforce**.
 
     ![Настройка единого входа](./media/active-directory-saas-salesforcesandbox-tutorial/tutorial_salesforcesandbox_app.png) 
 
-3. В меню слева выберите **Пользователи и группы**.
+3. В меню слева hello hello выберите **пользователей и групп**.
 
     ![Назначение пользователя][202] 
 
@@ -256,7 +256,7 @@ ms.lasthandoff: 08/03/2017
 
     ![Назначение пользователя][203]
 
-5. В диалоговом окне **Пользователи и группы** в списке пользователей выберите **Britta Simon**.
+5. На **пользователей и групп** диалогового окна выберите **Britta Simon** в список пользователей hello.
 
 6. В диалоговом окне **Пользователи и группы** нажмите кнопку **Выбрать**.
 
@@ -264,11 +264,11 @@ ms.lasthandoff: 08/03/2017
     
 ### <a name="testing-single-sign-on"></a>Проверка единого входа
 
-Если вы хотите проверить параметры единого входа, откройте панель доступа. Дополнительные сведения о панели доступа можно найти в статье [Общие сведения о панели доступа](active-directory-saas-access-panel-introduction.md).
+Tootest параметры единого входа, откройте панель доступа hello. Дополнительные сведения о панели доступа hello см. в разделе [toohello введение панели доступа](active-directory-saas-access-panel-introduction.md).
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
-* [Список учебников по интеграции приложений SaaS с Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Список учебников по tooIntegrate приложений SaaS в Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Что такое доступ к приложениям и единый вход с помощью Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 * [Руководство по настройке Google Apps для автоматической подготовки пользователей](active-directory-saas-salesforce-sandbox-provisioning-tutorial.md)
 

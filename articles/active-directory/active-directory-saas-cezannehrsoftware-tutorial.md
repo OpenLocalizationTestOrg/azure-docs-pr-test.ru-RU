@@ -1,6 +1,6 @@
 ---
 title: "Руководство по интеграции Azure Active Directory с Cezanne HR Software | Документация Майкрософт"
-description: "Узнайте, как настроить единый вход Azure Active Directory в Cezanne HR Software."
+description: "Узнайте, как tooconfigure единый вход между Azure Active Directory и Cezanne HR программного обеспечения."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,35 +13,35 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: jeedes
-ms.openlocfilehash: 623c438edfce5f98c2d32d8bb25a97d86aa77909
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 3675acd8871d62c2277def8074f7aa39ac46e2a3
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="tutorial-integrate-azure-active-directory-with-cezanne-hr-software"></a>Руководство по интеграции Azure Active Directory с Cezanne HR Software
 
-В этом руководстве описано, как интегрировать Cezanne HR Software с Azure Active Directory (Azure AD).
+В этом учебнике вы узнаете, как toointegrate Cezanne HR программного обеспечения в Azure Active Directory (Azure AD).
 
-Интеграция Cezanne HR Software с Azure AD обеспечивает следующие преимущества: Вы можете:
+Интеграция Cezanne HR программного обеспечения в Azure AD предоставляет следующие преимущества hello. Вы можете:
 
-- С помощью Azure AD можно контролировать доступ к Cezanne HR Software.
-- Вы можете включить автоматический вход пользователей в Cezanne HR Software (единый вход) с использованием учетной записи Azure AD.
-- Централизованное управление учетными записями через портал Azure.
+- Управление Azure AD, имеющего доступ tooCezanne HR программного обеспечения.
+- Включите tooautomatically пользователей при входе в tooCezanne HR программного обеспечения с помощью единого входа (SSO) с помощью своих учетных записей Azure AD.
+- Управление учетными записями в одном централизованном месте: hello портал Azure.
 
-Чтобы узнать больше об интеграции приложений SaaS с Azure AD, прочитайте статью [Что такое доступ к приложениям и единый вход с помощью Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+toolearn Дополнительные сведения о программное обеспечение как услуга (SaaS) интеграции приложений с Azure AD, в разделе [доступ к приложению и единый вход в Azure Active Directory?](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Предварительные требования
 
-Чтобы настроить интеграцию Azure AD с Cezanne HR Software, вам потребуется следующее:
+tooconfigure интеграция Azure AD с Cezanne HR программного обеспечения необходимо hello следующих элементов:
 
 - подписка Azure AD;
 - подписка Cezanne HR Software с поддержкой единого входа.
 
 > [!NOTE]
-> Мы не рекомендуем использовать рабочую среду для тестирования действий, выполняемых в этом руководстве.
+> tootest hello шаги в этом учебнике, рекомендуется не использовать рабочей среде.
 
-При проверке действий в этом руководстве соблюдайте следующие рекомендации:
+tootest hello шаги в этом учебнике, придерживайтесь следующих рекомендаций:
 
 - Не используйте рабочую среду без необходимости.
 - Если у вас нет пробной среды Azure AD, вы можете [получить пробную версию на один месяц](https://azure.microsoft.com/pricing/free-trial/).
@@ -49,240 +49,240 @@ ms.lasthandoff: 08/18/2017
 ## <a name="scenario-description"></a>Описание сценария
 В рамках этого руководства проводится проверка единого входа Azure AD в тестовой среде. 
 
-Сценарий, описанный в этом учебнике, состоит из двух основных блоков:
+Hello сценарий, описанный в этом учебнике состоит из двух основных компонентов:
 
-* Добавление Cezanne HR Software из коллекции.
+* Добавление программного обеспечения Cezanne HR из галереи hello
 * Настройка и проверка единого входа Azure AD.
 
-## <a name="add-cezanne-hr-software-from-the-gallery"></a>Добавление Cezanne HR Software из коллекции
-Чтобы настроить интеграцию Cezanne HR Software с Azure AD, добавьте Cezanne HR Software из коллекции в список управляемых приложений SaaS.
+## <a name="add-cezanne-hr-software-from-hello-gallery"></a>Добавление Cezanne HR программного обеспечения из библиотеки hello
+Интеграция hello tooconfigure Cezanne HR программного обеспечения в Azure AD, добавить Cezanne HR программного обеспечения из hello коллекции tooyour список управляемых приложений SaaS.
 
-Чтобы добавить Cezanne HR Software из коллекции, сделайте следующее.
+tooadd Cezanne HR программного обеспечения из галереи hello hello следующие:
 
-1. На **[портале Azure](https://portal.azure.com)** в области слева нажмите кнопку **Azure Active Directory**. 
+1. В hello  **[портал Azure](https://portal.azure.com)**в левой области hello, выберите hello **Azure Active Directory** кнопки. 
 
-    ![Кнопка Azure Active Directory][1]
+    ![Кнопка «Azure Active Directory» Hello][1]
 
 2. Щелкните **Корпоративные приложения** > **Все приложения**.
 
-    ![Ссылка "Все приложения"][2]
+    ![Здравствуйте, «Все приложения» ссылки][2]
     
-3. Чтобы добавить новое приложение, в верхней части диалогового окна **Все приложения** нажмите кнопку **Новое приложение**.
+3. новое приложение hello верхней части hello tooadd **все приложения** выберите **новое приложение**.
 
-    ![Кнопка "Новое приложение"][3]
+    ![Здравствуйте, «Новое приложение» кнопки][3]
 
-4. В поле поиска введите **Cezanne HR Software**.
+4. Введите в поле поиска hello **программного обеспечения HR Cezanne**.
 
-    ![Поле поиска](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_search.png)
+    ![поле поиска Hello](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_search.png)
 
-5. Из списка результатов выберите **Cezanne HR Software** и нажмите кнопку **Добавить**, чтобы добавить это приложение.
+5. В списке результатов hello выберите **программного обеспечения HR Cezanne** , а затем выберите hello **добавить** кнопку tooadd приложения hello.
 
-    ![Список результатов](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_addfromgallery.png)
+    ![список результатов Hello](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_addfromgallery.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Настройка и проверка единого входа в Azure AD
 В этом разделе описано, как настроить и проверить единый вход Azure AD в Cezanne HR Software с использованием тестового пользователя Britta Simon.
 
-Чтобы единый вход работал, в Azure AD необходимо указать, какой пользователь в Cezanne HR Software соответствует пользователю в Azure AD. Иными словами, необходимо установить связь между пользователем Azure AD и соответствующим пользователем в Cezanne HR Software.
+Для toowork единого входа Azure AD необходима hello tooknow Cezanne HR аналог программного обеспечения toohello пользователя Azure AD. Другими словами необходимо установить связи между пользователя Azure AD и связанных пользователей hello в hello Cezanne HR программного обеспечения.
 
-Чтобы установить эту связь, присвойте **имени пользователя** в Azure AD значение **имени пользователя** в Cezanne HR Software.
+tooestablish hello связи, hello назначения программного обеспечения Cezanne HR **имя пользователя** значение как hello Azure AD **Username** значение.
 
-Чтобы настроить и проверить единый вход Azure AD в Cezanne HR Software, выполните действия в следующих стандартных блоках.
+tooconfigure и Azure AD SSO с помощью программного обеспечения Cezanne HR, полный hello следующие стандартные блоки тестов.
 
 ### <a name="configure-azure-ad-sso"></a>Настройка единого входа Azure AD
 
-В этом разделе описывается, как включить единый вход Azure AD на портале Azure и настроить единый вход в приложении Cezanne HR Software. Для этого выполните следующее.
+В этом разделе можно включить единый вход Azure AD в hello портал Azure и настройки единого входа в приложении Cezanne HR программного обеспечения, выполнив следующие hello:
 
-1. На портале Azure на странице интеграции с приложением **Cezanne HR Software** щелкните **Единый вход**.
+1. В hello в hello портала Azure **программного обеспечения HR Cezanne** странице интеграции приложений выберите **единого входа**.
 
-    ![Команда "Единый вход"][4]
+    ![Здравствуйте, команда «Единый вход»][4]
 
-2. В диалоговом окне **Единый вход** из списка **Режим** выберите значение **Вход на основе SAML**, чтобы включить функцию единого входа.
+2. tooenable единого входа, в hello **единого входа** диалоговое окно, выберите hello **режим** как **входа на базе SAML**.
  
-    ![Поле "Режим"](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_samlbase.png)
+    ![поле «Режим» Hello](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_samlbase.png)
 
-3. В разделе **Домены и URL-адреса приложения Cezanne HR Software** выполните следующие действия.
+3. В разделе **URL-адреса и домена программного обеспечения HR Cezanne**, hello следующие:
 
-    ![Раздел "Домены и URL-адреса приложения Cezanne HR Software"](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_url.png)
+    ![Hello раздел «Cezanne HR программного обеспечения доменов и URL-адреса»](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_url.png)
 
-    а. В поле **URL-адрес для входа** введите URL-адрес, используя следующий синтаксис: `https://w3.cezanneondemand.com/cezannehr/-/<tenant id>`.
+    а. В hello **URL-адрес входа** введите URL-адрес имеет hello синтаксис:`https://w3.cezanneondemand.com/cezannehr/-/<tenant id>`
 
-    b. В поле **URL-адрес ответа** введите URL-адрес, используя следующий синтаксис: `https://w3.cezanneondemand.com:443/<tenantid>`.    
+    b. В hello **URL-адрес ответа** введите URL-адрес имеет hello синтаксис:`https://w3.cezanneondemand.com:443/<tenantid>`    
      
     > [!NOTE] 
-    > Приведенные выше значения используются только для примера. Замените их фактическими значениями URL-адреса ответа и URL-адреса входа. Чтобы получить эти значения, обратитесь к [группе поддержки клиентов Cezanne HR Software](mailto:info@cezannehr.com).
+    > Hello выше значения не являются реальными. Обновите их с URL-адрес ответа фактическое hello и hello URL-адрес входа. значения tooobtain hello, обратитесь в службу hello [группа поддержки клиентского программного обеспечения Cezanne HR](mailto:info@cezannehr.com).
 
-4. В разделе **Сертификат подписи SAML** щелкните **Сертификат (Base64)** и сохраните файл сертификата на компьютере.
+4. В разделе **сертификат подписи SAML**выберите **сертификата (Base64)**и затем сохраните файл сертификата hello на вашем компьютере.
 
-    ![Раздел "Сертификат подписи SAML"](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_certificate.png) 
+    ![раздел «Сертификат подписи SAML» Hello](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_certificate.png) 
 
 5. Щелкните **Сохранить**.
 
-    ![Кнопка "Сохранить"](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_general_400.png)
+    ![кнопка «Сохранить» Hello](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_general_400.png)
     
-6. В разделе **Конфигурация Cezanne HR Software** щелкните **Настроить Cezanne HR Software**, чтобы открыть окно **Настройка единого входа**. Скопируйте **идентификатор сущности SAML** и **URL-адрес службы единого входа SAM**L из раздела **Краткий справочник**.
+6. В разделе **конфигурации программного обеспечения HR Cezanne**выберите **Настройка программного обеспечения Cezanne HR** tooopen hello **Настройка входа** окна. Копировать hello **идентификатор сущности SAML** и **SAML единого входа службы** URL-адрес из hello **краткий справочник** раздела.
 
-    ![Раздел "Конфигурация Cezanne HR Software"](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_configure.png) 
+    ![раздел «Конфигурации программного обеспечения Cezanne HR» Hello](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_configure.png) 
 
-7. В другом окне веб-браузера войдите в свой клиент Cezanne HR Software в качестве администратора.
+7. В другом окне браузера Войдите на tooyour Cezanne HR программного обеспечения клиента с правами администратора.
 
-8. В левой области щелкните **System Setup** (Настройка системы). Выберите **Security Settings** > **Single Sign-On Configuration** ("Параметры безопасности" > "Конфигурация единого входа").
+8. Выберите в левой области hello **настройки системы**. Выберите **Security Settings** > **Single Sign-On Configuration** ("Параметры безопасности" > "Конфигурация единого входа").
 
-    ![Ссылка "Single Sign-On Configuration" (Конфигурация единого входа)](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_000.png)
+    ![связь «Один настройки единого входа» Hello](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_000.png)
 
-9. В области **Allow users to log in using the following Single Sign-On (SSO) Service** (Разрешить пользователям вход с использованием следующей службы единого входа) установите флажок **SAML 2.0** и выберите параметр **Advanced Configuration** (Расширенная конфигурация).
+9. В hello **разрешить пользователям toolog hello следующие службы единого входа (SSO) с помощью** области, выберите hello **SAML 2.0** флажок и выберите hello **Расширенная настройка** параметр.
 
     ![Параметры служб единого входа](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_001.png)
 
 10. Нажмите кнопку **Add New** (Добавить).
 
-    ![Кнопка "Add New" (Добавить)](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_002.png)
+    ![Hello кнопку «Добавить»](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_002.png)
 
-11. В разделе **SAML 2.0 Identity Providers** (Поставщики удостоверений SAML 2.0) выполните следующие действия.
+11. В разделе **Поставщики удостоверений SAML 2.0**, hello следующие:
 
-    ![Раздел "SAML 2.0 Identity Providers" (Поставщики удостоверений SAML 2.0)](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_003.png)
+    ![раздел «Поставщики удостоверений SAML 2.0» Hello](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_003.png)
     
-    а. Введите имя поставщика удостоверений в поле **Display Name** (Отображаемое имя).
+    а. В hello **отображаемое имя** введите название hello поставщика удостоверений.
 
-    b. В поле **Entity Identifier** (Идентификатор сущности) вставьте **идентификатор сущности SAML**, скопированный на портале Azure. 
+    b. В hello **идентификатор сущности** вставьте hello **идентификатор сущности SAML** , скопированный из hello портал Azure. 
 
-    c. Из списка **SAML Binding** (Привязка SAML) выберите пункт **POST**.
+    c. В hello **привязки SAML** выберите **POST**.
 
-    d. Вставьте **URL-адрес службы единого входа SAML**, который вы скопировали на портале Azure, в поле **Security Token Service Endpoint** (Конечная точка службы токенов безопасности). 
+    d. В hello **конечную точку службы маркеров безопасности** вставьте hello **SAML единого входа службы** URL-адрес, скопированный из hello портал Azure. 
     
-    д. В текстовом поле **User ID Attribute Name** (Имя атрибута идентификатора пользователя) введите `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`.
+    д. В hello **имя атрибута идентификатора пользователя** введите `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`.
     
-    f. Чтобы передать сертификат, скачанный с Azure AD, нажмите кнопку **Upload** (Передать).
+    f. tooupload hello загрузить сертификат из Azure AD, выберите hello **отправить** кнопки.
     
-    g. Нажмите кнопку **ОК**. 
+    ж. Нажмите кнопку **ОК**. 
 
 12. Щелкните **Сохранить**.
 
-    ![Кнопка "Сохранить"](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_004.png)
+    ![кнопка «Сохранить» Hello](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_004.png)
 
 > [!TIP]
-> Настроив приложение, вы можете прочитать краткую версию предыдущих инструкций на [портале Azure](https://portal.azure.com). После добавления этого приложения из раздела **Active Directory** > **Корпоративные приложения** выберите вкладку **Единый вход**. Откройте встроенную документацию из раздела **Настройка**. 
+> При настройке приложения hello, могут читать четкими версию перед инструкции в hello hello [портал Azure](https://portal.azure.com). После добавления приложение hello с hello **Active Directory** > **корпоративных приложений** раздел, выберите hello **единого входа** вкладки. Hello доступа внедряются документации из hello **конфигурации** раздела. 
 
-Чтобы узнать больше, ознакомьтесь со [встроенной документацией Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985).
+toolearn Дополнительные сведения о функции hello внедренные документации, в разделе [Azure AD внедренных документации]( https://go.microsoft.com/fwlink/?linkid=845985).
 > 
 
 ### <a name="create-an-azure-ad-test-user"></a>Создание тестового пользователя Azure AD
-В этом разделе вы создадите на портале Azure тестового пользователя Britta Simon.
+В этом разделе создайте тестового пользователя Саймон Britta в hello портал Azure.
 
-![Тестовый пользователь Britta Simon][100]
+![Hello тестового пользователя Саймон Britta][100]
 
-Чтобы создать тестового пользователя в Azure AD, выполните следующее.
+Здравствуйте toocreate тестового пользователя в Azure AD, следующие:
 
-1. На **портале Azure** в области слева нажмите кнопку **Azure Active Directory**.
+1. В hello **портал Azure**в левой области hello, выберите hello **Azure Active Directory** кнопки.
 
-    ![Кнопка Azure Active Directory](./media/active-directory-saas-cezannehrsoftware-tutorial/create_aaduser_01.png) 
+    ![Кнопка «Azure Active Directory» Hello](./media/active-directory-saas-cezannehrsoftware-tutorial/create_aaduser_01.png) 
 
-2. Чтобы отобразить список пользователей, выберите **Пользователи и группы** > **Все пользователи**.
+2. список пользователей, выберите toodisplay hello **пользователей и групп** > **всех пользователей**.
     
-    ![Ссылка "Все пользователи"](./media/active-directory-saas-cezannehrsoftware-tutorial/create_aaduser_02.png) 
+    ![Здравствуйте, «Все пользователи» ссылки](./media/active-directory-saas-cezannehrsoftware-tutorial/create_aaduser_02.png) 
     
-    Откроется диалоговое окно **Все пользователи**.
+    Hello **всех пользователей** откроется диалоговое окно.
 
-3. Щелкните **Добавить**, чтобы открыть диалоговое окно **Пользователь**.
+3. tooopen hello **пользователя** выберите **добавить**.
  
-    ![Кнопка "Добавить"](./media/active-directory-saas-cezannehrsoftware-tutorial/create_aaduser_03.png) 
+    ![Кнопка «Добавить» Hello](./media/active-directory-saas-cezannehrsoftware-tutorial/create_aaduser_03.png) 
 
-4. В диалоговом окне **Пользователь** сделайте следующее.
+4. В hello **пользователя** диалогового окна поле, hello следующие:
  
-    ![Диалоговое окно "Пользователь"](./media/active-directory-saas-cezannehrsoftware-tutorial/create_aaduser_04.png) 
+    ![диалоговое окно «User» Hello](./media/active-directory-saas-cezannehrsoftware-tutorial/create_aaduser_04.png) 
 
-    а. В поле **Имя** введите **BrittaSimon**.
+    а. В hello **имя** введите **BrittaSimon**.
 
-    b. В поле **Имя пользователя** введите **адрес электронной почты** пользователя Britta Simon.
+    b. В hello **имя пользователя** введите пользователя Britta Simon **адрес электронной почты**.
 
-    c. Установите флажок **Показать пароль** и запишите значение, созданное в поле **Пароль**.
+    c. Выберите hello **Показать пароль** флажок, а затем значение hello примечание, созданный в hello **пароль** поле.
 
     d. Нажмите кнопку **Создать**.
  
 ### <a name="create-a-cezanne-hr-software-test-user"></a>Создание тестового пользователя Cezanne HR Software
 
-Чтобы пользователи Azure AD могли входить в Cezanne HR Software, их необходимо подготовить в Cezanne HR Software. В случае Cezanne HR Software подготовка выполняется вручную.
+Пользователи toosign tooenable Azure AD в программном обеспечении tooCezanne отдела Кадров, их необходимо подготовить в отделе Кадров Cezanne программное обеспечение. В случае hello программного обеспечения Cezanne HR Подготовка выполняется вручную.
 
-Чтобы подготовить учетную запись пользователя, сделайте следующее.
+Подготовка учетной записи пользователя, выполнив hello ниже:
 
-1.  Войдите на корпоративный сайт Cezanne HR Software своей организации в качестве администратора.
+1.  Войдите в tooyour Cezanne HR программного обеспечения корпоративный сайт с правами администратора.
 
-2.  В левой области выберите **System Setup** > **Manage Users** > **Add New User** ("Настройка системы" > "Управление пользователями" > "Добавить пользователя").
+2.  Выберите в левой области hello **установки System** > **Управление пользователями** > **добавить пользователя**.
 
-    ![Ссылка "Add New User" (Добавить пользователя)](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_005.png "Создание пользователя")
+    ![ссылка «Добавить пользователя» Hello](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_005.png "нового пользователя")
 
-3.  В разделе **Person Details** (Сведения о пользователе) выполните следующее.
+3.  В разделе **сведения о лице**, hello следующие:
 
-    ![Раздел "Person Details" (Сведения о пользователе)](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_006.png "Создание пользователя")
+    ![Hello раздела «Подробности лица»](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_006.png "нового пользователя")
     
     а. Установите для параметра **Internal User** (Внутренний пользователь) значение **OFF** (Выключено).
     
-    b. В поле **First Name** (Имя) введите имя пользователя, например **Britta**.  
+    b. В hello **имя** поле, тип hello имя пользователя, например, **Britta**.  
  
-    c. В поле **Last Name** (Фамилия) введите фамилию пользователя, например **Simon**.
+    c. В hello **Фамилия** поле, тип hello фамилию пользователя, например, **Simon**.
     
-    d. В поле **E-mail** (Адрес электронной почты) введите адрес электронной почты пользователя, например Brittasimon@contoso.com.
+    d. В hello **электронной почты** введите hello адрес электронной почты пользователя, например, Brittasimon@contoso.com.
 
-4.  В разделе **Account Information** (Сведения об учетной записи) выполните следующее.
+4.  В разделе **сведения об учетной записи**, hello следующие:
 
-    ![Раздел "Account Information" (Сведения об учетной записи)](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_007.png "Создание пользователя")
+    ![раздел «Сведения об учетной записи» Hello](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_007.png "нового пользователя")
     
-    а. В поле **Username** (Имя пользователя) введите адрес электронной почты пользователя, например Brittasimon@contoso.com.
+    а. В hello **Username** введите hello адрес электронной почты пользователя, например, Brittasimon@contoso.com.
     
-    b. В поле **Password** (Пароль) введите пароль пользователя.
+    b. В hello **пароль** введите пароль пользователя hello.
     
-    c. В поле **Security Role** (Роль безопасности) выберите **HR Professional** (Специалист отдела кадров).
+    c. В hello **роль безопасности** выберите **HR Professional**.
     
     d. Нажмите кнопку **ОК**.
 
-5. Перейдите на вкладку **Single sign-on** (Единый вход) и в разделе **SAML 2.0 Identifiers** (Идентификаторы SAML 2.0) нажмите кнопку **Add New** (Добавить).
+5. На hello **единого входа** hello на вкладке **идентификаторов SAML 2.0** выберите **добавить новое**.
 
-    ![Кнопка "Add New" (Добавить)](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_008.png "Пользователь")
+    ![Hello кнопку «Добавить»](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_008.png "пользователя")
 
-6. Из списка **Identity Provider** (Поставщик удостоверений) выберите поставщик удостоверений. В поле **User Identifier** (Идентификатор пользователя) введите адрес электронной почты учетной записи тестового пользователя Britta Simon.
+6. В hello **поставщика удостоверений** выберите поставщика удостоверений. В hello **идентификатор пользователя** введите hello адрес электронной почты для учетной записи тестового пользователя Britta Simon.
 
-    ![Поля "Identity Provider" (Поставщик удостоверений) и "User Identifier" (Идентификатор пользователя)](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_009.png "Пользователь")
+    ![Здравствуйте, «Поставщик удостоверений» и «Идентификатор пользователя» поля](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_009.png "пользователя")
     
 7. Щелкните **Сохранить**.
 
-    ![Кнопка "Save" (Сохранить)](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_010.png "Пользователь")
+    ![кнопка «Сохранить» Hello](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_010.png "пользователя")
 
-### <a name="assign-the-azure-ad-test-user"></a>Назначение тестового пользователя Azure AD
+### <a name="assign-hello-azure-ad-test-user"></a>Назначить hello Azure AD тестового пользователя
 
-В этом разделе описано, как разрешить тестовому пользователю Britta Simon использовать единый вход Azure, предоставив этому пользователю доступ к Cezanne HR Software.
+В этом разделе включите тестового пользователя toouse Britta Simon Azure единого входа путем предоставления программного доступа tooCezanne HR.
 
 ![Проверка доступа пользователей][200] 
 
-1. На портале Azure откройте представление приложений и перейдите к представлению каталога. Щелкните **Корпоративные приложения** > **Все приложения**.
+1. В hello портал Azure откройте представление приложения hello, а затем перейдите toohello представления каталога. Щелкните **Корпоративные приложения** > **Все приложения**.
 
-    ![Ссылка "Все приложения"][201] 
+    ![Здравствуйте, «Все приложения» ссылки][201] 
 
-2. В списке приложений выберите **Cezanne HR Software**.
+2. В списке приложений hello выберите **программного обеспечения HR Cezanne**.
 
-    ![Список "Приложения"](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_app.png) 
+    ![список «Приложения» Hello](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_app.png) 
 
-3. В меню слева выберите **Пользователи и группы**.
+3. Выберите в меню hello слева hello, **пользователей и групп**.
 
     ![Назначение пользователя][202] 
 
-4. Выберите **Добавить**. Затем в диалоговом окне **Добавление назначения** выберите **Пользователи и группы**.
+4. Выберите **Добавить**. Затем в hello **добавить назначение** выберите **пользователей и групп**.
 
     ![Ссылка "Пользователи и группы"][203]
 
-5. В диалоговом окне **Пользователи и группы** в списке **Пользователи** выберите **Britta Simon**.
+5. В hello **пользователей и групп** диалогового окна hello **пользователей** выберите **Britta Simon**.
 
-6. В диалоговом окне **Пользователи и группы** нажмите кнопку **Выбрать**.
+6. В hello **пользователей и групп** выберите **выберите**.
 
-7. В диалоговом окне **Добавление назначения** выберите **Назначить**.
+7. В hello **добавить назначение** выберите **назначить**.
     
 ### <a name="test-sso"></a>Проверка единого входа
 
-В этом разделе вы с помощью панели доступа выполните проверку конфигурации единого входа Azure AD.
+В этом разделе можно проверить конфигурацию единого входа Azure AD с помощью панели доступа hello.
 
-Щелкнув элемент "Cezanne HR Software" на панели доступа, вы автоматически войдете в приложение "Cezanne HR Software".
+При выборе плитки программного обеспечения Cezanne HR hello в панель доступа hello входа автоматически tooyour Cezanne HR программного приложения.
 
 ## <a name="next-steps"></a>Дальнейшие действия
 
-* [Список учебников по интеграции приложений SaaS с Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Список учебников по toointegrate приложений SaaS в Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Что такое доступ к приложениям и единый вход с помощью Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 <!--Image references-->

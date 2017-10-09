@@ -1,5 +1,5 @@
 ---
-title: "Пользователи с аномальными событиями при входе"
+title: "aaaUsers с аномальными событиями при входе"
 description: "Отчет, в котором указываются все учетные записи пользователей, для которых были выявлены аномальные события при входе."
 services: active-directory
 documentationcenter: 
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/04/2016
 ms.author: saah;kenhoff
-ms.openlocfilehash: acba4a4d3fa589aa1846f63883e5482e60605b70
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: efc9e21cfc3156b345a84da7527bf749af2b563c
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="users-with-anomalous-sign-in-activity"></a>Пользователи с аномальными событиями при входе
-Это статистический отчет, объединяющий подозрительные попытки входа из следующих отчетов:
+Это статистический отчет, объединяет подозрительные попытки входа с hello следующие отчеты:
 
 <ul><li>Операции входа из неизвестных источников</li>
 <li>"Операции входа после нескольких неудачных попыток";</li>

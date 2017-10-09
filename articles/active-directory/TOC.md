@@ -10,8 +10,8 @@
 ## [Регистрация для использования Azure AD Premium](active-directory-get-started-premium.md)
 ## [Добавление имени личного домена](add-custom-domain.md)
 ## [Настройка фирменной символики компании](customize-branding.md)
-## [Добавление пользователей в Azure AD](add-users-azure-active-directory.md)
-## [Назначение лицензий пользователям](license-users-groups.md)
+## [Добавление пользователей tooAzure AD](add-users-azure-active-directory.md)
+## [Назначить лицензии toousers](license-users-groups.md)
 ## [Настройка самостоятельного сброса пароля](active-directory-passwords-getting-started.md)
 
 
@@ -38,9 +38,9 @@
 
 ## Управление пользователями
 ### [Назначение лицензий с помощью групп](active-directory-licensing-whatis-azure-portal.md)
-#### [Назначение лицензий группе](active-directory-licensing-group-assignment-azure-portal.md)
+#### [Назначьте группу tooa лицензий](active-directory-licensing-group-assignment-azure-portal.md)
 #### [Поиск и устранение проблем с лицензированием групп](active-directory-licensing-group-problem-resolution-azure-portal.md)
-#### [Перевод отдельных лицензированных пользователей на групповое лицензирование](active-directory-licensing-group-migration-azure-portal.md)
+#### [Перенос отдельных лицензированных пользователей toogroup лицензирования](active-directory-licensing-group-migration-azure-portal.md)
 #### [Дополнительные сценарии группового лицензирования](active-directory-licensing-group-advanced.md)
 #### [Примеры PowerShell для группового лицензирования](active-directory-licensing-ps-examples.md)
 ### [Добавление пользователей из других каталогов (классический портал)](active-directory-create-users-external.md)
@@ -60,15 +60,15 @@
 ### [Управление владельцами групп](active-directory-accessmanagement-managing-group-owners.md)
 ### [Управление членством в группах](active-directory-groups-membership-azure-portal.md)
 ### [Назначение лицензий с помощью групп](active-directory-licensing-whatis-azure-portal.md)
-#### [Назначение лицензий группе](active-directory-licensing-group-assignment-azure-portal.md)
+#### [Назначьте группу tooa лицензий](active-directory-licensing-group-assignment-azure-portal.md)
 #### [Поиск и устранение проблем с лицензированием групп](active-directory-licensing-group-problem-resolution-azure-portal.md)
-#### [Перевод отдельных лицензированных пользователей на групповое лицензирование](active-directory-licensing-group-migration-azure-portal.md)
+#### [Перенос отдельных лицензированных пользователей toogroup лицензирования](active-directory-licensing-group-migration-azure-portal.md)
 #### [Дополнительные сценарии группового лицензирования](active-directory-licensing-group-advanced.md)
 #### [Примеры PowerShell для группового лицензирования](active-directory-licensing-ps-examples.md)
 ### [Настройка срока действия групп Office 365](active-directory-groups-lifecycle-azure-portal.md)
 ### [Просмотр всех групп](active-directory-groups-view-azure-portal.md)
 ### [Включение выделенных групп](active-directory-accessmanagement-dedicated-groups.md)
-### [Включение доступа для групп в приложениях SaaS](active-directory-accessmanagement-group-saasapps.md)
+### [Добавление группы доступа tooSaaS приложений](active-directory-accessmanagement-group-saasapps.md)
 ### [Восстановление удаленной группы Office 365](active-directory-groups-restore-azure-portal.md)
 ### Управление параметрами группы
 #### [Портал Azure](active-directory-groups-settings-azure-portal.md)
@@ -89,7 +89,7 @@
 ### Задачи
 #### [Настройка именованных расположений](active-directory-named-locations.md)
 #### [Поиск отчетов об активности](active-directory-reporting-migration.md)
-#### [Использование пакета содержимого Azure Active Directory Power BI](active-directory-reporting-power-bi-content-pack-how-to.md)
+#### [Использовать hello Azure Active Directory пакет содержимого Power BI](active-directory-reporting-power-bi-content-pack-how-to.md)
 ### Справочные материалы
 #### [Сохранение](active-directory-reporting-retention.md)
 #### [Задержки](active-directory-reporting-latencies-azure-portal.md)
@@ -131,7 +131,7 @@
 
 ## Управление устройствами
 ### [Введение](device-management-introduction.md)
-### [Использование портала Azure](device-management-azure-portal.md)
+### [С помощью портала Azure hello](device-management-azure-portal.md)
 ### [Часто задаваемые вопросы](device-management-faq.md)
 ### Задачи
 #### [Настройка устройств, присоединенных к гибридному облаку Azure AD](device-management-hybrid-azuread-joined-devices-setup.md) 
@@ -188,7 +188,7 @@
 ##### [SharePoint](application-proxy-enable-remote-access-sharepoint.md)
 ##### [Microsoft Teams](application-proxy-teams.md)
 #### [Устранение неполадок](active-directory-application-proxy-troubleshoot.md)
-#### С помощью классического портала
+#### С помощью классического портала hello
 ##### [Скачивание соединителей](application-proxy-enable-classic-portal.md)
 ##### [Публикация приложений](active-directory-application-proxy-publish.md)
 ##### [Использование соединителей](active-directory-application-proxy-connectors.md)
@@ -202,7 +202,7 @@
 #### [Просмотр всех приложений](active-directory-coreapps-view-azure-portal.md)
 #### [Управление подготовкой учетной записи пользователя](active-directory-enterprise-apps-manage-provisioning.md)
 
-### [Управление доступом к приложениям](active-directory-managing-access-to-apps.md)
+### [Управление доступом tooapps](active-directory-managing-access-to-apps.md)
 #### [Самостоятельный доступ к приложениям](active-directory-self-service-application-access.md)
 #### [Доступ с единым входом](active-directory-appssoaccess-whatis.md)
 #### [Сертификаты для единого входа](active-directory-sso-certs.md)
@@ -253,7 +253,7 @@
 #### [Добавление пользователей B2B без приглашения](active-directory-b2b-add-user-without-invite.md)
 #### [Условный доступ для B2B](active-directory-b2b-mfa-instructions.md)
 #### [Политики общего доступа к B2B](active-directory-b2b-delegate-invitations.md)
-#### [Добавление B2B-пользователя к роли](active-directory-b2b-add-guest-to-role.md)
+#### [Добавление роли пользователя tooa B2B](active-directory-b2b-add-guest-to-role.md)
 #### [Динамические группы и B2B-пользователи](active-directory-b2b-dynamic-groups.md)
 #### [Аудит и отчеты](active-directory-b2b-auditing-and-reporting.md)
 #### [Доступ внешних пользователей к B2B и Office 365](active-directory-b2b-o365-external-user.md)
@@ -261,16 +261,16 @@
 #### [Текущие ограничения](active-directory-b2b-current-limitations.md)
 #### [Часто задаваемые вопросы](active-directory-b2b-faq.md)
 #### [Устранение неполадок B2B](active-directory-b2b-troubleshooting.md)
-#### [Общие сведения о B2B-пользователе](active-directory-b2b-user-properties.md)
+#### [Понимать hello B2B пользователя](active-directory-b2b-user-properties.md)
 #### [Маркер B2B-пользователя](active-directory-b2b-user-token.md)
 #### [B2B для интегрированных приложений Azure AD](active-directory-b2b-configure-saas-apps.md)
 #### [Сопоставление утверждений пользователя B2B](active-directory-b2b-claims-mapping.md)
-#### [Сравнение совместной работы B2B и B2C](active-directory-b2b-compare-b2c.md)
+#### [Сравнение tooB2C B2B совместной работы](active-directory-b2b-compare-b2c.md)
 #### [Получение технической поддержки для B2B](active-directory-b2b-support.md)
 
 ### [Интеграция локальных удостоверений с помощью Azure AD Connect](./connect/active-directory-aadconnect.md)
 
-## Делегирование доступа к ресурсам
+## Делегирование доступа tooresources
 ### [Роли администратора](active-directory-assign-admin-roles.md)
 #### [Назначение ролей администратора](active-directory-users-assign-role-azure-portal.md)
 ### [Административные единицы](active-directory-administrative-units-management.md)
@@ -283,7 +283,7 @@
 #### [Пользовательские роли](role-based-access-control-custom-roles.md)
 #### [Назначение настраиваемых ролей для внутренних и внешних пользователей](role-based-access-control-create-custom-roles-for-internal-external-users.md)
 #### [Отчеты](role-based-access-control-access-change-history-report.md)
-#### Дополнительные способы управления ролями
+#### Дополнительные способы toomanage роли
 ##### [Интерфейс командной строки Azure](role-based-access-control-manage-access-azure-cli.md)
 ##### [PowerShell](role-based-access-control-manage-access-powershell.md)
 ##### [REST](role-based-access-control-manage-access-rest.md)
@@ -299,7 +299,7 @@
 #### [Технический справочник: условный доступ к приложениям Azure AD](active-directory-conditional-access-technical-reference.md)
 #### [Поддерживаемые приложения](active-directory-conditional-access-supported-apps.md)
 #### [Общие сведения о политиках устройств](active-directory-conditional-access-device-policies.md)
-#### [Настройка доступа к подключенным приложениям](active-directory-conditional-access-policy-connected-applications.md)
+#### [Настройка доступа tooconnected приложений](active-directory-conditional-access-policy-connected-applications.md)
 #### [Исправление](active-directory-conditional-access-device-remediation.md)
 #### [Часто задаваемые вопросы](active-directory-conditional-faqs.md)
 #### [Классический портал.](active-directory-conditional-access.md)

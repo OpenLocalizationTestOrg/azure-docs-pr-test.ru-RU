@@ -1,6 +1,6 @@
 ---
 title: "Руководство по интеграции Azure Active Directory с Pingboard | Документация Майкрософт"
-description: "Узнайте, как настроить единый вход между Azure Active Directory и Pingboard."
+description: "Узнайте, как tooconfigure единый вход между Azure Active Directory и Pingboard."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,117 +13,117 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/04/2017
 ms.author: jeedes
-ms.openlocfilehash: 008c670a8043da0c67ccefde48d5ef721c75d97c
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 0a916b1f9ef32d8124aa11284d2115bb4fc0bbc5
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-pingboard"></a>Руководство по интеграции Azure Active Directory с Pingboard
 
-В этом руководстве описано, как интегрировать приложение Pingboard с Azure Active Directory (Azure AD).
+В этом учебнике вы узнаете, как toointegrate Pingboard с Azure Active Directory (Azure AD).
 
-Интеграция Azure AD с Pingboard обеспечивает следующие преимущества:
+Интеграция с Azure AD Pingboard предоставляет hello следующие преимущества:
 
-- С помощью Azure AD вы можете контролировать доступ к Pingboard.
-- Вы можете включить автоматический вход пользователей в Pingboard (единый вход) с использованием учетной записи Azure AD.
-- Вы можете управлять учетными записями централизованно — через портал управления Azure.
+- Можно управлять в Azure AD, имеющего доступ tooPingboard
+- Можно включить на пользователей tooautomatically get вошедшего tooPingboard (Single Sign-On) с помощью своих учетных записей Azure AD
+- Можно управлять учетными записями в одном централизованном месте - hello портал управления Azure
 
-Подробнее узнать об интеграции приложений SaaS с Azure AD можно в статье [Что такое доступ к приложениям и единый вход с помощью Azure Active Directory?](active-directory-appssoaccess-whatis.md).
+Если tooknow Дополнительные сведения об интеграции приложений SaaS в Azure AD, см. [доступ к приложению и единый вход в Azure Active Directory](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Предварительные требования
 
-Чтобы настроить интеграцию Azure AD с Pingboard, вам потребуется:
+tooconfigure интеграция Azure AD с Pingboard требуется hello следующих элементов:
 
 - подписка Azure AD;
 - подписка Pingboard с поддержкой единого входа.
 
 > [!NOTE]
-> Мы не рекомендуем использовать рабочую среду для проверки действий в этом учебнике.
+> в этом учебнике шаги tootest hello, не рекомендуется в рабочей среде.
 
-При проверке действий в этом учебнике соблюдайте следующие рекомендации:
+tootest hello шаги в этом учебнике, необходимо следовать приведенным ниже рекомендациям:
 
 - Не следует использовать рабочую среду при отсутствии необходимости.
 - Если у вас нет пробной среды Azure AD, вы можете получить пробную версию на один месяц по [этой ссылке](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Описание сценария
-В рамках этого руководства проводится проверка единого входа Azure AD в тестовой среде. Сценарий, описанный в этом учебнике, состоит из двух основных блоков:
+В рамках этого руководства проводится проверка единого входа Azure AD в тестовой среде. Hello сценарий, описанный в этом учебнике состоит из двух основных компонентов:
 
-1. Добавление Pingboard из коллекции
+1. Добавление Pingboard из галереи hello
 2. Настройка и проверка единого входа в Azure AD
 
-## <a name="adding-pingboard-from-the-gallery"></a>Добавление Pingboard из коллекции
-Чтобы настроить интеграцию Pingboard с Azure AD, необходимо добавить Pingboard из коллекции в список управляемых приложений SaaS.
+## <a name="adding-pingboard-from-hello-gallery"></a>Добавление Pingboard из галереи hello
+tooconfigure hello интеграции Pingboard в Azure AD, вы должны tooadd Pingboard из списка tooyour коллекции hello управляемых приложений SaaS.
 
-**Чтобы добавить Pingboard из коллекции, выполните следующие действия:**
+**tooadd Pingboard из галереи hello, выполните следующие шаги hello.**
 
-1. На **[портале управления Azure](https://portal.azure.com)** в левой области навигации нажмите значок **Azure Active Directory**. 
+1. В hello  **[портала управления Azure](https://portal.azure.com)**на левой навигационной панели hello, нажмите кнопку **Azure Active Directory** значок. 
 
     ![Active Directory][1]
 
-2. Перейдите к разделу **Корпоративные приложения**. Затем выберите **Все приложения**.
+2. Перейдите в слишком**корпоративных приложений**. Затем перейдите слишком**все приложения**.
 
     ![Приложения][2]
     
-3. Нажмите кнопку **Добавить** в верхней части диалогового окна.
+3. Нажмите кнопку **добавить** кнопку в верхней части hello диалогового окна "hello".
 
     ![Приложения][3]
 
-4. В поле поиска введите **Pingboard**.
+4. Введите в поле поиска hello **Pingboard**.
 
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-pingboard-tutorial/tutorial_pingboard_search.png)
 
-5. На панели результатов выберите **Pingboard** и нажмите кнопку **Добавить**, чтобы добавить это приложение.
+5. В панели результатов hello выберите **Pingboard**и нажмите кнопку **добавить** кнопку tooadd приложения hello.
 
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-pingboard-tutorial/tutorial_pingboard_addfromgallery.png)
 
 ##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Настройка и проверка единого входа в Azure AD
 В этом разделе описана настройка и проверка единого входа Azure AD в приложение Pingboard с использованием тестового пользователя Britta Simon.
 
-Для работы единого входа в Azure AD необходимо знать, какой пользователь в Pingboard соответствует пользователю в Azure AD. Иными словами, необходимо установить связь между пользователем Azure AD и соответствующим пользователем в Pingboard.
+Для единого входа toowork Azure AD необходима tooknow пользователь аналог какие hello в Pingboard является tooa в Azure AD. Другими словами связи между пользователя Azure AD и связанных пользователей hello в Pingboard должен установить toobe.
 
-Чтобы установить эту связь, следует назначить **имя пользователя** в Azure AD в качестве значения **имени пользователя** в Pingboard.
+Эта связь связь устанавливается путем назначения hello значение hello **имя пользователя** в Azure AD в качестве значения hello hello **Username** в Pingboard.
 
-Чтобы настроить и проверить единый вход Azure AD в Pingboard, вам потребуется выполнить действия в следующих стандартных блоках:
+tooconfigure и теста Azure AD единого входа с Pingboard, требуются следующие стандартные блоки hello toocomplete:
 
-1. **[Настройка единого входа в Azure AD](#configuring-azure-ad-single-sign-on)** необходима, чтобы пользователи могли использовать эту функцию.
-2. **[Создание тестового пользователя Azure AD](#creating-an-azure-ad-test-user)** требуется для проверки работы единого входа Azure AD от имени пользователя Britta Simon.
-3. **[Создание тестового пользователя Pingboard](#creating-a-pingboard-test-user)** требуется для создания в Pingboard пользователя Britta Simon, связанного с соответствующим пользователем в Azure AD.
-4. **[Назначение тестового пользователя Azure AD](#assigning-the-azure-ad-test-user)** необходимо, чтобы позволить Britta Simon использовать единый вход в Azure AD.
-5. **[Testing Single Sign-On](#testing-single-sign-on)** необходима, чтобы убедиться в корректной работе конфигурации.
+1. **[Настройка Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**  -tooenable вашей toouse пользователи этой функции.
+2. **[Создание тестового пользователя Azure AD](#creating-an-azure-ad-test-user)**  -tootest Azure AD единого входа с Саймон Britta.
+3. **[Создание тестового пользователя Pingboard](#creating-a-pingboard-test-user)**  -toohave аналог Саймон Britta в Pingboard, представление связанных toohello Azure AD ей.
+4. **[Назначение hello Azure AD тестового пользователя](#assigning-the-azure-ad-test-user)**  -tooenable Britta Simon toouse Azure AD единым входом.
+5. **[Тестирование единого входа](#testing-single-sign-on)**  -tooverify ли hello works конфигурации.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Настройка единого входа в Azure AD
 
-В этом разделе описано, как включить единый вход Azure AD на портале управления Azure и настроить его в приложении Pingboard.
+В этом разделе включения Azure AD единым входом в портал управления Azure hello и настройки единого входа в приложении Pingboard.
 
-**Чтобы настроить единый вход Azure AD в Pingboard, выполните следующие действия:**
+**tooconfigure Azure AD единого входа с Pingboard, выполните следующие шаги hello.**
 
-1. На портале управления Azure на странице интеграции с приложением **Pingboard** щелкните **Единый вход**.
+1. На портале управления Azure hello на hello **Pingboard** странице интеграции приложения щелкните **единого входа**.
 
     ![Настройка единого входа][4]
 
-2. В диалоговом окне **Единый вход** в разделе **Режим** выберите **Вход на основе SAML**, чтобы включить функцию единого входа.
+2. На hello **единого входа** диалогового окна, как **режим** выберите **входа на базе SAML** tooenable единого входа.
  
     ![Настройка единого входа](./media/active-directory-saas-pingboard-tutorial/tutorial_pingboard_samlbase.png)
 
-3. Если вы хотите настроить приложение в режиме, инициированном **поставщиком удостоверений**, то в разделе **Домены и URL-адреса приложения Pingboard** выполните следующие действия:
+3. На hello **Pingboard доменов и URL-адреса** выполните hello, выполните действия, при желании tooconfigure приложения hello в **IDP** инициировал режим:
 
     ![Настройка единого входа](./media/active-directory-saas-pingboard-tutorial/tutorial_pingboard_url.png)
 
-    а. В текстовом поле **Идентификатор** введите значение `http://<entity-id>.pingboard.com/sp`.
+    а. В hello **идентификатор** текстовое поле, значение типа hello как:`http://<entity-id>.pingboard.com/sp`
 
-    b. В текстовом поле **URL-адрес ответа** введите URL-адрес в следующем формате: `https://<entity-id>.pingboard.com/auth/saml/consume`.
+    b. В hello **URL-адрес ответа** текстовом поле введите URL-адрес, используя следующий шаблон hello:`https://<entity-id>.pingboard.com/auth/saml/consume`
 
     > [!NOTE] 
-    > Обратите внимание, что значения, указанные выше, используются в качестве примера. Необходимо указать фактические значения идентификатора и URL-адреса ответа. Мы рекомендуем использовать уникальное значение строки идентификатора. Чтобы получить эти значения, обратитесь в [службу поддержки клиентов Pingboard](https://support.pingboard.com/). 
+    > Обратите внимание на то, что они не hello реальные значения. У вас tooupdate эти значения с hello фактический идентификатор и ответ URL-адрес. Здесь мы предлагаем вам toouse hello уникальное значение строки в hello идентификатор. Обратитесь к [группа поддержки клиента Pingboard](https://support.pingboard.com/) tooget эти значения. 
 
-4. Установите флажок **Показать дополнительные параметры URL-адресов**, если вы хотите настроить приложение для работы в режиме, инициируемом **поставщиком услуг**.
+4. Проверьте **Показывать дополнительные параметры URL-адреса**, если нужно, чтобы приложение hello tooconfigure в **SP** инициировал режим:
 
     ![Настройка единого входа](./media/active-directory-saas-pingboard-tutorial/tutorial_pingboard_sp_initiated01.png)
 
-    а. В текстовом поле **URL-адрес для входа** введите значение `http://<sub-domain>.pingboard.com/sign_in`.
+    а. В hello **URL-адрес входа** текстовое поле, значение типа hello как:`http://<sub-domain>.pingboard.com/sign_in`
      
-5. В разделе **Сертификат подписи SAML** щелкните **XML метаданных** и сохраните XML-файл на компьютере.
+5. На hello **сертификат подписи SAML** щелкните **метаданные в формате XML** и сохраните hello XML-файл на компьютере.
 
     ![Настройка единого входа](./media/active-directory-saas-pingboard-tutorial/tutorial_pingboard_certificate.png) 
 
@@ -131,108 +131,108 @@ ms.lasthandoff: 07/11/2017
 
     ![Настройка единого входа](./media/active-directory-saas-pingboard-tutorial/tutorial_general_400.png)
 
-7. Чтобы настроить единый вход на стороне Pingboard, откройте новое окно браузера и войдите в учетную запись Pingboard. Для настройки единого входа нужны права администратора Pingboard.
+7. tooconfigure единого входа на стороне Pingboard, откройте новое окно браузера и войдите в tooyour Pingboard учетной записи. Tooset администратора Pingboard копирование единый вход должен быть на.
 
-8. В верхнем меню выберите **Apps > Integrations** ("Приложения" > "Интеграция").
+8. Hello верхней строке меню выберите **приложений > интеграции**
 
     ![Настройка единого входа](./media/active-directory-saas-pingboard-tutorial/Pingboard_integration.png)
 
-9.  На странице **Integrations** (Интеграция) найдите элемент **Azure Active Directory** и щелкните его.
+9.  На hello **интеграции** найдите hello **«Azure Active Directory»** плитки и щелкните его.
 
     ![Настройка единого входа](./media/active-directory-saas-pingboard-tutorial/Pingboard_aad.png)
 
-10. В появившемся модальном окне щелкните **Configure** (Настройка).
+10. В hello модальное далее щелкните **«Настройка»**
 
     ![Настройка единого входа](./media/active-directory-saas-pingboard-tutorial/Pingboard_configure.png)
 
-11. На следующей странице вы увидите сообщение "Azure SSO Integration is enabled" (Интеграция для единого входа Azure включена). Откройте скачанный XML-файл метаданных в Блокноте и вставьте его содержимое в поле **IDP Metadata** (Метаданные IdP).
+11. На странице hello можно заметить «интеграция единого входа Azure включения.». Откройте hello загружен файл метаданных XML в Блокнот и вставьте hello, содержимого в **метаданные поставщика Удостоверений**.
 
     ![Настройка единого входа](./media/active-directory-saas-pingboard-tutorial/Pingboard_sso_configure.png)
 
-12. Файл будет проверен, и если он пройдет проверку, то единый вход будет включен.
+12. файл Hello будет проверяться, и если все работает правильно, будет включен единый вход
 
 ### <a name="creating-an-azure-ad-test-user"></a>Создание тестового пользователя Azure AD
-Цель этого раздела — создать на портале управления Azure тестового пользователя с именем Britta Simon.
+Цель этого раздела Hello — toocreate тестового пользователя на портале управления Azure hello, вызывается Саймон Britta.
 
 ![Создание пользователя Azure AD][100]
 
-**Чтобы создать тестового пользователя в Azure AD, выполните следующие действия:**
+**toocreate тестового пользователя в Azure AD, выполните следующие шаги hello.**
 
-1. На **портале управления Azure** в области навигации слева щелкните значок **Azure Active Directory**.
+1. В hello **портал управления Azure**, на левой панели навигации hello, нажмите кнопку **Azure Active Directory** значок.
 
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-pingboard-tutorial/create_aaduser_01.png) 
 
-2. Перейдите в раздел **Пользователи и группы** и щелкните **Все пользователи**, чтобы отобразить список пользователей.
+2. Go слишком**пользователей и групп** и нажмите кнопку **всех пользователей** toodisplay hello список пользователей.
     
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-pingboard-tutorial/create_aaduser_02.png) 
 
-3. В верхней части диалогового окна щелкните **Добавить**, чтобы открыть диалоговое окно **Пользователь**.
+3. Вверху hello диалоговое окно приветствия щелкните **добавить** tooopen hello **пользователя** диалогового окна.
  
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-pingboard-tutorial/create_aaduser_03.png) 
 
-4. На странице диалогового окна **Пользователь** выполните следующие действия.
+4. На hello **пользователя** диалогового окна выполните следующие шаги hello:
  
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-pingboard-tutorial/create_aaduser_04.png) 
 
-    а. В текстовом поле **Имя** введите **BrittaSimon**.
+    а. В hello **имя** введите **BrittaSimon**.
 
-    b. В текстовом поле **Имя пользователя** введите **адрес электронной почты** учетной записи BrittaSimon.
+    b. В hello **имя пользователя** в текстовое поле типа hello **адрес электронной почты** из BrittaSimon.
 
-    c. Выберите **Показать пароль** и запишите значение поля **Пароль**.
+    c. Выберите **Показать пароль** и запишите значение hello hello **пароль**.
 
     d. Щелкните **Создать**.
  
 ### <a name="creating-a-pingboard-test-user"></a>Создание тестового пользователя Pingboard
 
-Чтобы пользователи Azure AD могли входить в Pingboard, их необходимо подготовить в Pingboard.  
-В случае с Pingboard подготовка выполняется вручную.
+В порядке tooenable toolog пользователей Azure AD в Pingboard их необходимо подготовить в Pingboard.  
+В случае Pingboard hello Подготовка выполняется вручную.
 
-**Чтобы подготовить учетные записи пользователей, выполните следующие действия.**
+**tooprovision учетных записей пользователей, выполните следующие действия hello:**
 
-1. Войдите на корпоративный сайт Pingboard в качестве администратора.
+1. Войдите в систему tooyour Pingboard сайт компании как администратор.
 
 2. Нажмите кнопку **Add Employee** (Добавить сотрудника) на странице **Directory** (Каталог).
 
     ![Добавление сотрудника](./media/active-directory-saas-pingboard-tutorial/create_testuser_add.png)
 
-3. На диалоговой странице **Add Employee** (Добавление сотрудника) выполните следующие действия.
+3. На hello **«Добавить сотрудника»** диалогового окна выполните следующие шаги hello.
 
     ![Приглашение пользователей](./media/active-directory-saas-pingboard-tutorial/create_testuser_name.png)
 
-    А. В текстовом поле **Full Name** (Полное имя) введите полное имя пользователя Britta Simon.
+    а. В hello **полное имя** textbox hello полное имя типа Саймон Britta.
 
-    b. В текстовом поле **Электронная почта** введите адрес электронной почты учетной записи Britta Simon.
+    b. В hello **электронной почты** текстовом поле введите адрес электронной почты hello Саймон Britta учетной записи.
 
-    c. В текстовом поле **Job Title** (Должность) введите должность пользователя Britta Simon.
+    c. В hello **должность** текстового поля, типа hello должности Саймон Britta.
 
-    d. Из раскрывающегося списка **Location** (Расположение) выберите расположение пользователя Britta Simon.
+    d. В hello **расположение** раскрывающийся список, выберите hello расположение Саймон Britta.
     
     д. Щелкните **Добавить**.   
 
-4. Откроется окно подтверждения добавления пользователя.
+4. Экран подтверждения запустится tooconfirm hello Добавление пользователя.
     
     ![Подтверждение](./media/active-directory-saas-pingboard-tutorial/create_testuser_confirm.png)
         
     > [!NOTE]
-    > Владелец учетной записи Azure Active Directory получит по электронной почте сообщение со ссылкой для активации учетной записи.
+    > Hello владельцем учетной записи Azure Active Directory получит сообщение электронной почты и выполните их учетных записей tooconfirm ссылку, чтобы она стала активной.
 
-### <a name="assigning-the-azure-ad-test-user"></a>Назначение тестового пользователя Azure AD
+### <a name="assigning-hello-azure-ad-test-user"></a>Назначение hello Azure AD тестового пользователя
 
-В этом разделе описано, как разрешить пользователю Britta Simon использовать единый вход Azure путем предоставления доступа к PingBoard.
+В этом разделе включите toouse Britta Simon Azure единого входа путем предоставления ее tooPingboard доступа.
 
 ![Назначение пользователя][200] 
 
-**Чтобы назначить пользователя Britta Simon в Pingboard, выполните следующие действия:**
+**tooassign tooPingboard Britta Simon выполните следующие шаги hello.**
 
-1. На портале управления Azure откройте представление приложений, перейдите к представлению каталога, а затем выберите **Корпоративные приложения** и щелкните **Все приложения**.
+1. На портале управления Azure hello, открыть представление приложения hello, а затем перейдите toohello представления каталога и перейти слишком**корпоративных приложений** щелкните **все приложения**.
 
     ![Назначение пользователя][201] 
 
-2. В списке приложений выберите **Pingboard**.
+2. В списке приложений hello выберите **Pingboard**.
 
     ![Настройка единого входа](./media/active-directory-saas-pingboard-tutorial/tutorial_pingboard_app.png) 
 
-3. В меню слева выберите **Пользователи и группы**.
+3. В меню слева hello hello выберите **пользователей и групп**.
 
     ![Назначение пользователя][202] 
 
@@ -240,7 +240,7 @@ ms.lasthandoff: 07/11/2017
 
     ![Назначение пользователя][203]
 
-5. В диалоговом окне **Пользователи и группы** в списке пользователей выберите **Britta Simon**.
+5. На **пользователей и групп** диалогового окна выберите **Britta Simon** в список пользователей hello.
 
 6. В диалоговом окне **Пользователи и группы** нажмите кнопку **Выбрать**.
 
@@ -248,13 +248,13 @@ ms.lasthandoff: 07/11/2017
     
 ### <a name="testing-single-sign-on"></a>Проверка единого входа
 
-В этом разделе описано, как проверить конфигурацию единого входа Azure AD с помощью панели доступа.
+В этом разделе тестирования конфигурации Azure AD единого входа с помощью панели доступа hello.
 
-Щелкнув элемент Pingboard на панели доступа, вы автоматически войдете в приложение Pingboard.
+При нажатии кнопки hello Pingboard плитки в панели доступа hello, вы должны получить автоматически вошедшего tooyour Pingboard приложения.
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
-* [Список учебников по интеграции приложений SaaS с Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Список учебников по tooIntegrate приложений SaaS в Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Что такое доступ к приложениям и единый вход с помощью Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 

@@ -1,6 +1,6 @@
 ---
-title: "Добавление или изменение данных профиля пользователя в Azure Active Directory | Документы Майкрософт"
-description: "В этом разделе описывается, как в Azure Active Directory добавить профиль пользователя, включая изображение профиля."
+title: "aaaAdd или изменить сведения о профиле пользователя в Azure Active Directory | Документы Microsoft"
+description: "Объясняет, как tooadd hello профиля пользователя, включая изображение профиля в Azure Active Directory"
 services: active-directory
 documentationcenter: 
 author: curtand
@@ -15,32 +15,32 @@ ms.topic: article
 ms.date: 06/27/2017
 ms.author: curtand
 ms.reviewer: jeffsta
-ms.openlocfilehash: 81d93563a3cbe47ebe12c7ac5de26c5bbc2bb8ff
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 58361cf4e3ffb01126938cc1e3e1d4c521f2f01c
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="add-or-change-profile-information-for-a-user-in-azure-active-directory"></a>Добавление или изменение данных профиля пользователя в Azure Active Directory
-В этой статье объясняется, как в Azure Active Directory (Azure AD) добавить данные профиля пользователя, в том числе изображение профиля или данные для аутентификации по телефону и электронной почте. Сведения о добавлении новых пользователей в организации см. в статье [Добавление пользователей из других каталогов или организаций-партнеров в предварительной версии Azure Active Directory](active-directory-users-create-azure-portal.md).
+В этой статье объясняется, как tooadd пользовательский профиль, сведения, такие как изображения или телефону и электронной почте проверки подлинности сведения профиля, в Azure Active Directory (Azure AD). Сведения о добавлении новых пользователей в организации см. в разделе [добавлять новых пользователей tooAzure Active Directory](active-directory-users-create-azure-portal.md).
 
-## <a name="to-change-profile-information"></a>Изменение данных профиля
-1. Войдите на [портал Azure](https://portal.azure.com) с помощью учетной записи глобального администратора каталога.
-2. Выберите **Больше служб**, введите **Пользователи и группы** в текстовое поле, а затем нажмите клавишу **ВВОД**.
+## <a name="toochange-profile-information"></a>сведения о профиле toochange
+1. Войдите в toohello [портал Azure](https://portal.azure.com) с помощью учетной записи глобального администратора каталога hello.
+2. Выберите **дополнительные службы**, введите **пользователей и групп** в hello текстовое поле, а затем выберите **ввод**.
 
    ![Открытие пользователей и групп](./media/active-directory-users-profile-azure-portal/create-users-user-management.png)
-3. В колонке **Пользователи и группы** выберите **Пользователи**.
+3. На hello **пользователей и групп** колонке выберите **пользователей**.
 
-   ![Открытие колонки "Пользователи"](./media/active-directory-users-profile-azure-portal/create-users-open-users-blade.png)
-4. В колонке **Пользователи и группы — Пользователи** выберите пользователя из списка.
-5. В колонке для выбранного пользователя щелкните **Профиль**.
+   ![Открытие колонка "пользователи" hello](./media/active-directory-users-profile-azure-portal/create-users-open-users-blade.png)
+4. На hello **пользователей и групп — пользователей** колонке выберите пользователя из списка hello.
+5. В колонке hello для выбранного пользователя hello, выберите **профиль**.
 
     ![Открытие сведений о работе](./media/active-directory-users-profile-azure-portal/active-directory-create-users-profile.png)
-6. Добавьте или измените данные профиля. На панели команд щелкните **Сохранить**.
+6. Добавить или изменить сведения о профиле hello. Выберите на панели команд hello, **Сохранить**.
 
 ## <a name="next-steps"></a>Дальнейшие действия
-* [Добавление новых пользователей в Azure Active Directory](active-directory-users-create-azure-portal.md)
-* [Сброс пароля пользователя в Azure Active Directory](active-directory-users-reset-password-azure-portal.md)
-* [Назначение пользователю ролей администратора в Azure Active Directory](active-directory-users-assign-role-azure-portal.md)
+* [Добавить новый tooAzure пользователей Active Directory](active-directory-users-create-azure-portal.md)
+* [Сброс пароля hello для пользователя в Azure Active Directory](active-directory-users-reset-password-azure-portal.md)
+* [Назначить пользователя роли tooadministrator в Azure Active Directory](active-directory-users-assign-role-azure-portal.md)
 * [Добавление или изменение данных профиля пользователя в Azure Active Directory](active-directory-users-work-info-azure-portal.md)
 * [Удаление пользователя из каталога в Azure Active Directory](active-directory-users-delete-user-azure-portal.md)

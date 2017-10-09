@@ -1,6 +1,6 @@
 ---
 title: "Учебник. Интеграция Azure Active Directory с Hosted Graphite | Документация Майкрософт"
-description: "Узнайте, как настроить единый вход между Azure Active Directory и Hosted Graphite."
+description: "Узнайте, как tooconfigure единый вход между Azure Active Directory и размещенных Графит."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,120 +13,120 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/22/2017
 ms.author: jeedes
-ms.openlocfilehash: f6ed02cc67be4090402a115c30819ff6cff99c99
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: d8914f6417ba8fbdef1a48e1b36635200ba130d1
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hosted-graphite"></a>Учебник. Интеграция Azure Active Directory с Hosted Graphite
 
-В этом руководстве описано, как интегрировать Hosted Graphite с Azure Active Directory (Azure AD).
+В этом учебнике вы узнаете, как toointegrate Графит размещенного в Azure Active Directory (Azure AD).
 
-Интеграция Azure AD с приложением Hosted Graphite обеспечивает следующие преимущества.
+Интеграция размещенного Графит с Azure AD предоставляет hello следующие преимущества:
 
-- С помощью Azure AD вы можете контролировать доступ к Hosted Graphite.
-- Вы можете включить автоматический вход пользователей в Hosted Graphite (единый вход) с учетной записью Azure AD.
-- Вы можете управлять учетными записями централизованно — через портал Azure.
+- Можно управлять в Azure AD, имеющего доступ tooHosted Графит
+- Можно включить на пользователей tooautomatically get вошедшего tooHosted Графит (Single Sign-On) с помощью своих учетных записей Azure AD
+- Можно управлять учетными записями в одном централизованном месте - hello портал Azure
 
-Подробнее узнать об интеграции приложений SaaS с Azure AD можно в разделе [Что такое доступ к приложениям и единый вход с помощью Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Если tooknow Дополнительные сведения об интеграции приложений SaaS в Azure AD, см. [доступ к приложению и единый вход в Azure Active Directory](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Предварительные требования
 
-Чтобы настроить интеграцию Azure AD с Hosted Graphite, вам потребуется:
+tooconfigure интеграция Azure AD с размещенной Графит требуется hello следующих элементов:
 
 - подписка Azure AD;
 - подписка Hosted Graphite с поддержкой единого входа.
 
 > [!NOTE]
-> Мы не рекомендуем использовать рабочую среду для проверки действий в этом учебнике.
+> в этом учебнике шаги tootest hello, не рекомендуется в рабочей среде.
 
-При проверке действий в этом учебнике соблюдайте следующие рекомендации:
+tootest hello шаги в этом учебнике, необходимо следовать приведенным ниже рекомендациям:
 
 - Не используйте рабочую среду без необходимости.
 - Если у вас нет пробной среды Azure AD, вы можете получить пробную версию на один месяц по [этой ссылке](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Описание сценария
-В рамках этого руководства проводится проверка единого входа Azure AD в тестовой среде. Сценарий, описанный в этом учебнике, состоит из двух основных блоков:
+В рамках этого руководства проводится проверка единого входа Azure AD в тестовой среде. Hello сценарий, описанный в этом учебнике состоит из двух основных компонентов:
 
-1. Добавление Hosted Graphite из коллекции
+1. Добавление размещенных Графит из галереи hello
 2. Настройка и проверка единого входа в Azure AD
 
-## <a name="adding-hosted-graphite-from-the-gallery"></a>Добавление Hosted Graphite из коллекции
-Чтобы настроить интеграцию Hosted Graphite с Azure AD, необходимо добавить Hosted Graphite из коллекции в список управляемых приложений SaaS.
+## <a name="adding-hosted-graphite-from-hello-gallery"></a>Добавление размещенных Графит из галереи hello
+tooconfigure hello интеграции Графит размещенной в Azure AD, вы должны tooadd Hosted Графит из списка tooyour коллекции hello управляемых приложений SaaS.
 
-**Чтобы добавить Hosted Graphite из коллекции, выполните следующие действия.**
+**tooadd Hosted Графит из галереи hello выполните следующие шаги hello.**
 
-1. На **[портале Azure](https://portal.azure.com)** в области навигации слева щелкните значок **Azure Active Directory**. 
+1. В hello  **[портал Azure](https://portal.azure.com)**на левой навигационной панели hello, нажмите кнопку **Azure Active Directory** значок. 
 
     ![Active Directory][1]
 
-2. Перейдите к разделу **Корпоративные приложения**. Затем выберите **Все приложения**.
+2. Перейдите в слишком**корпоративных приложений**. Затем перейдите слишком**все приложения**.
 
     ![Приложения][2]
     
-3. Чтобы добавить новое приложение, в верхней части диалогового окна нажмите кнопку **Создать приложение**.
+3. tooadd новое приложение, нажмите кнопку **новое приложение** кнопку в верхней части hello диалогового окна.
 
     ![Приложения][3]
 
-4. В поле поиска введите **Hosted Graphite**.
+4. Введите в поле поиска hello **размещенных Графит**.
 
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-hostedgraphite-tutorial/tutorial_hostedgraphite_search.png)
 
-5. В области результатов выберите **Hosted Graphite** и нажмите кнопку **Добавить**, чтобы добавить приложение.
+5. В панели результатов hello выберите **размещенных Графит**и нажмите кнопку **добавить** кнопку tooadd приложения hello.
 
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-hostedgraphite-tutorial/tutorial_hostedgraphite_addfromgallery.png)
 
 ##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Настройка и проверка единого входа в Azure AD
 В этом разделе описана настройка и проверка единого входа Azure AD в приложение Hosted Graphite для тестового пользователя Britta Simon.
 
-Для работы единого входа в Azure AD необходимо знать, какой пользователь в Hosted Graphite соответствует пользователю в Azure AD. Иными словами, необходимо установить связь между пользователем Azure AD и соответствующим пользователем в Hosted Graphite.
+Для единого входа toowork Azure AD необходима tooknow пользователь аналог какие hello в размещенных Графит является tooa в Azure AD. Другими словами связи между пользователя Azure AD и связанных пользователей hello в размещенных Графит должен установить toobe.
 
-Чтобы установить эту связь, назначьте **имя пользователя** в Azure AD в качестве значения **имени пользователя** в Hosted Graphite.
+В размещенной Графит, присвойте значение hello hello **имя пользователя** в Azure AD в качестве значения hello hello **Username** tooestablish hello связи.
 
-Чтобы настроить и проверить единый вход Azure AD в Hosted Graphite, вам потребуется выполнить действия в указанных далее стандартных блоках.
+tooconfigure и теста Azure AD единого входа с размещенной Графит, требуются следующие стандартные блоки hello toocomplete:
 
-1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** необходима, чтобы пользователи могли использовать эту функцию.
-2. **[Создание тестового пользователя Azure AD](#creating-an-azure-ad-test-user)** требуется для проверки работы единого входа Azure AD от имени пользователя Britta Simon.
-3. **[Создание тестового пользователя Hosted Graphite](#creating-a-hosted-graphite-test-user)** требуется для создания пользователя Britta Simon в Hosted Graphite, связанного с представлением этого пользователя в Azure AD.
-4. **[Назначение тестового пользователя Azure AD](#assigning-the-azure-ad-test-user)** необходимо, чтобы позволить Britta Simon использовать единый вход в Azure AD.
-5. **[Testing Single Sign-On](#testing-single-sign-on)** необходима, чтобы убедиться в корректной работе конфигурации.
+1. **[Настройка Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**  -tooenable вашей toouse пользователи этой функции.
+2. **[Создание тестового пользователя Azure AD](#creating-an-azure-ad-test-user)**  -tootest Azure AD единого входа с Саймон Britta.
+3. **[Создание тестового пользователя размещенных Графит](#creating-a-hosted-graphite-test-user)**  -toohave аналог Саймон Britta в размещенных Графит, представление связанных toohello Azure AD пользователя.
+4. **[Назначение hello Azure AD тестового пользователя](#assigning-the-azure-ad-test-user)**  -tooenable Britta Simon toouse Azure AD единым входом.
+5. **[Тестирование единого входа](#testing-single-sign-on)**  -tooverify ли hello works конфигурации.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Настройка единого входа в Azure AD
 
-В этом разделе описано, как включить единый вход Azure AD на портале Azure и настроить его в приложении Hosted Graphite.
+В этом разделе включения Azure AD единым входом в портал Azure hello и настройки единого входа в приложения размещенного Графит.
 
-**Чтобы настроить единый вход Azure AD в Hosted Graphite, выполните следующие действия.**
+**tooconfigure Azure AD единого входа с размещенной Графит, выполните следующие шаги hello.**
 
-1. На портале Azure на странице интеграции с приложением **Hosted Graphite** щелкните **Единый вход**.
+1. В hello в hello портала Azure **размещенных Графит** странице интеграции приложения щелкните **единого входа**.
 
     ![Настройка единого входа][4]
 
-2. В диалоговом окне **Единый вход** в разделе **Режим** выберите **Вход на основе SAML**, чтобы включить функцию единого входа.
+2. На hello **единого входа** диалогового окна выберите **режим** как **входа на базе SAML** tooenable единого входа.
  
     ![Настройка единого входа](./media/active-directory-saas-hostedgraphite-tutorial/tutorial_hostedgraphite_samlbase.png)
 
-3. Если вы хотите настроить приложение в **режиме, инициированном поставщиком удостоверений**, то в разделе **Домены и URL-адреса Hosted Graphite** сделайте следующее:
+3. На hello **URL-адреса и размещенной домена Графит** статьи, при желании tooconfigure приложения hello в **режиме, инициированный IDP**, выполните следующие шаги hello:
 
     ![Настройка единого входа](./media/active-directory-saas-hostedgraphite-tutorial/tutorial_hostedgraphite_url.png)
 
-    а. В текстовом поле **Идентификатор** введите URL-адрес в следующем формате: `https://www.hostedgraphite.com/metadata/<user id>`
+    а. В hello **идентификатор** текстовом поле введите URL-адрес, используя следующий шаблон hello:`https://www.hostedgraphite.com/metadata/<user id>`
 
-    b. В текстовом поле **URL-адрес ответа** введите URL-адрес в следующем формате: `https://www.hostedgraphite.com/complete/saml/<user id>`.
+    b. В hello **URL-адрес ответа** текстовом поле введите URL-адрес, используя следующий шаблон hello:`https://www.hostedgraphite.com/complete/saml/<user id>`
 
-4. Если вы хотите настроить приложение в **режиме, инициированном поставщиком услуг**, то в разделе **Домены и URL-адреса Hosted Graphite** сделайте следующее:
+4. На hello **URL-адреса и размещенной домена Графит** статьи, при желании tooconfigure приложения hello в **режиме, инициируемая SP**, выполните следующие шаги hello:
    
     ![Настройка единого входа](./media/active-directory-saas-hostedgraphite-tutorial/tutorial_hostedgraphite_10.png)
   
-    а. Щелкните параметр **Показать дополнительные параметры URL-адресов**.
+    а. Щелкните hello **Показывать дополнительные параметры URL-адреса** параметр
 
-    b. В текстовом поле **URL-адрес для входа** введите URL-адрес в следующем формате: `https://www.hostedgraphite.com/login/saml/<user id>/`.   
+    b. В hello **на URL-адрес входа** текстовом поле введите URL-адрес, используя следующий шаблон hello:`https://www.hostedgraphite.com/login/saml/<user id>/`   
 
     > [!NOTE] 
-    > Обратите внимание, что значения, указанные выше, используются в качестве примера. Необходимо указать фактические значения идентификатора, URL-адреса ответа и URL-адреса входа. Чтобы получить эти значения, на стороне приложения перейдите в раздел "Доступ" -> "Настройка SAML" или обратитесь в [службу поддержки Hosted Graphite](mailto:help@hostedgraphite.com).
+    > Обратите внимание на то, что они не hello реальные значения. Имеется tooupdate эти значения с hello фактический идентификатор, URL-адрес ответа и в URL-адрес входа. tooget эти значения, вы можете перейти tooAccess -> Настройка SAML на стороне приложения или контакт [группа поддержки размещенных Графит](mailto:help@hostedgraphite.com).
     >
  
-5. В разделе **Сертификат подписи SAML** щелкните **Сертификат (Base64)**, а затем сохраните файл сертификата на компьютере.
+5. На hello **сертификат подписи SAML** щелкните **Certificate(Base64)** и затем сохраните файл сертификата hello на вашем компьютере.
 
     ![Настройка единого входа](./media/active-directory-saas-hostedgraphite-tutorial/tutorial_hostedgraphite_certificate.png) 
 
@@ -134,21 +134,21 @@ ms.lasthandoff: 07/11/2017
 
     ![Настройка единого входа](./media/active-directory-saas-hostedgraphite-tutorial/tutorial_general_400.png)
 
-7. В разделе **Настройка Hosted Graphite** щелкните **Настроить Hosted Graphite**, чтобы открыть окно **Настройка единого входа**. Скопируйте **идентификатор сущности SAML и URL-адрес службы единого входа SAML** из раздела **Краткий справочник**.
+7. На hello **конфигурацией размещением Графит** щелкните **Настройка размещенной Графит** tooopen **Настройка входа** окна. Копировать hello **идентификатор сущности SAML и SAML единого входа URL-адрес службы** из hello **краткий справочник.**
 
     ![Настройка единого входа](./media/active-directory-saas-hostedgraphite-tutorial/tutorial_hostedgraphite_configure.png) 
 
-8. Войдите в клиент Hosted Graphite с правами администратора.
+8. Клиент размещенных Графит tooyour входа от имени администратора.
 
-9. На боковой панели выберите **SAML Setup page** (Страница настройки SAML), щелкнув **Access -> SAML Setup** (Доступ -> Настройка SAML).
+9. Go toohello **страница настройки SAML** боковой панели hello (**доступа -> Настройка SAML**).
    
     ![Настройка единого входа на стороне приложения](./media/active-directory-saas-hostedgraphite-tutorial/tutorial_hostedgraphite_000.png)
 
-10. Проверьте, что эти URL-адреса соответствуют конфигурации в разделе **Домены и URL-адреса Hosted Graphite** на портале Azure.
+10. Подтвердите эти URL-адреса соответствуют конфигурации в основном на hello **URL-адреса и размещенной домена Графит** раздел hello портал Azure.
    
     ![Настройка единого входа на стороне приложения](./media/active-directory-saas-hostedgraphite-tutorial/tutorial_hostedgraphite_001.png)
 
-11. В текстовые поля **Идентификатор сущности или издателя** и **URL-адрес единого входа** вставьте значения **Идентификатора сущности SAML** и **URL-адреса службы единого входа SAML**, скопированные на портале Azure. 
+11. В **сущности или ИД издателя** и **URL-адрес входа SSO** текстовые поля, вставьте значение hello **идентификатор сущности SAML** и **SAML единого входа URL-адрес службы** который вы скопировали из портала Azure. 
    
     ![Настройка единого входа на стороне приложения](./media/active-directory-saas-hostedgraphite-tutorial/tutorial_hostedgraphite_002.png)
    
@@ -157,73 +157,73 @@ ms.lasthandoff: 07/11/2017
     
     ![Настройка единого входа на стороне приложения](./media/active-directory-saas-hostedgraphite-tutorial/tutorial_hostedgraphite_004.png)
 
-13. Откройте в блокноте сертификат в кодировке Base-64, скачанный с портала Azure, скопируйте его в буфер обмена и вставьте в текстовое поле **Сертификат X.509**.
+13. Откройте сертификат в кодировке base-64 в блокноте, загруженные из портала Azure hello копирования содержимого его в буфер обмена, а затем вставьте его toohello **сертификат X.509** текстового поля.
     
     ![Настройка единого входа на стороне приложения](./media/active-directory-saas-hostedgraphite-tutorial/tutorial_hostedgraphite_005.png)
 
 14. Нажмите кнопку **Сохранить** .
 
 > [!TIP]
-> Краткую версию этих инструкций теперь можно также прочитать на [портале Azure](https://portal.azure.com) во время настройки приложения.  После добавления этого приложения из раздела **Active Directory > Корпоративные приложения** просто выберите вкладку **Единый вход** и откройте встроенную документацию через раздел **Настройка** в нижней части страницы. Дополнительные сведения о встроенной документации см. в разделе [Встроенная документация Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985).
+> Вы сможете прочитать четкими версии этих инструкций внутри hello [портал Azure](https://portal.azure.com), а вы настраиваете приложение hello!  После добавления этого приложения из hello **Active Directory > корпоративных приложений** просто щелкните hello **Single Sign-On** вкладку и доступа hello внедренных документации с помощью hello  **Конфигурация** раздела внизу hello. Вы можете прочитать больше о документации embedded функции hello здесь: [документации внедренных Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Создание тестового пользователя Azure AD
-Цель этого раздела — создать на портале Azure тестового пользователя с именем Britta Simon.
+Цель этого раздела Hello — toocreate тестового пользователя в hello вызывается Саймон Britta портал Azure.
 
 ![Создание пользователя Azure AD][100]
 
-**Чтобы создать тестового пользователя в Azure AD, выполните следующие действия:**
+**toocreate тестового пользователя в Azure AD, выполните следующие шаги hello.**
 
-1. На **портале Azure** в области навигации слева щелкните значок **Azure Active Directory**.
+1. В hello **портал Azure**, на левой панели навигации hello, нажмите кнопку **Azure Active Directory** значок.
 
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-hostedgraphite-tutorial/create_aaduser_01.png) 
 
-2. Чтобы отобразить список пользователей, перейдите в раздел **Пользователи и группы** и щелкните **Все пользователи**.
+2. hello toodisplay список пользователей, перейдите в слишком**пользователей и групп** и нажмите кнопку **всех пользователей**.
     
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-hostedgraphite-tutorial/create_aaduser_02.png) 
 
-3. Чтобы открыть диалоговое окно **Пользователь**, в верхней части диалогового окна щелкните **Добавить**.
+3. tooopen hello **пользователя** диалоговое окно, нажмите кнопку **добавить** в верхней части hello диалогового окна "hello".
  
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-hostedgraphite-tutorial/create_aaduser_03.png) 
 
-4. На странице диалогового окна **Пользователь** выполните следующие действия.
+4. На hello **пользователя** диалогового окна выполните следующие шаги hello:
  
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-hostedgraphite-tutorial/create_aaduser_04.png) 
 
-    а. В текстовом поле **Имя** введите **BrittaSimon**.
+    а. В hello **имя** введите **BrittaSimon**.
 
-    b. В текстовом поле **Имя пользователя** введите **адрес электронной почты** учетной записи BrittaSimon.
+    b. В hello **имя пользователя** в текстовое поле типа hello **адрес электронной почты** из BrittaSimon.
 
-    c. Выберите **Показать пароль** и запишите значение поля **Пароль**.
+    c. Выберите **Показать пароль** и запишите значение hello hello **пароль**.
 
     d. Щелкните **Создать**.
  
 ### <a name="creating-a-hosted-graphite-test-user"></a>Создание тестового пользователя Hosted Graphite
 
-Цель этого раздела — создать пользователя с именем Britta Simon в Hosted Graphite. Приложение Hosted Graphite поддерживает JIT-подготовку. Эта функция включена по умолчанию.
+Цель этого раздела Hello — toocreate пользователя с именем Britta Simon в размещенных Графит. Приложение Hosted Graphite поддерживает JIT-подготовку. Эта функция включена по умолчанию.
 
-В этом разделе никакие действия с вашей стороны не требуются. Пользователь будет создан при попытке получить доступ к Hosted Graphite (если он еще не создан).
+В этом разделе никакие действия с вашей стороны не требуются. Если он еще не существует во время попытки tooaccess Hosted Графит создается новый пользователь.
 
 >[!NOTE]
->Чтобы создать пользователя вручную, обратитесь в службу поддержки Hosted Graphite по телефону <mailto:help@hostedgraphite.com>. 
+>Если требуется toocreate пользователя вручную, необходимо toocontact hello размещенных Графит поддержки через < mailto:help@hostedgraphite.com >. 
 
-### <a name="assigning-the-azure-ad-test-user"></a>Назначение тестового пользователя Azure AD
+### <a name="assigning-hello-azure-ad-test-user"></a>Назначение hello Azure AD тестового пользователя
 
-В этом разделе описано, как включить единый вход Azure для пользователя Britta Simon, предоставив этому пользователю доступ к Hosted Graphite.
+В этом разделе включите toouse Britta Simon Azure единого входа путем предоставления доступа tooHosted Графит.
 
 ![Назначение пользователя][200] 
 
-**Чтобы назначить пользователя Britta Simon в Hosted Graphite, выполните следующие действия.**
+**tooassign tooHosted Britta Simon Графит, выполните hello следующие шаги.**
 
-1. На портале Azure откройте представление приложений, перейдите к представлению каталога, а затем выберите **Корпоративные приложения** и щелкните **Все приложения**.
+1. В hello портал Azure, откройте представление приложения hello, а затем перейдите toohello представления каталога и перейти слишком**корпоративных приложений** щелкните **все приложения**.
 
     ![Назначение пользователя][201] 
 
-2. В списке приложений выберите **Hosted Graphite**.
+2. В списке приложений hello выберите **размещенных Графит**.
 
     ![Настройка единого входа](./media/active-directory-saas-hostedgraphite-tutorial/tutorial_hostedgraphite_app.png) 
 
-3. В меню слева выберите **Пользователи и группы**.
+3. В меню слева hello hello выберите **пользователей и групп**.
 
     ![Назначение пользователя][202] 
 
@@ -231,7 +231,7 @@ ms.lasthandoff: 07/11/2017
 
     ![Назначение пользователя][203]
 
-5. В диалоговом окне **Пользователи и группы** в списке пользователей выберите **Britta Simon**.
+5. На **пользователей и групп** диалогового окна выберите **Britta Simon** в список пользователей hello.
 
 6. В диалоговом окне **Пользователи и группы** нажмите кнопку **Выбрать**.
 
@@ -239,13 +239,13 @@ ms.lasthandoff: 07/11/2017
     
 ### <a name="testing-single-sign-on"></a>Проверка единого входа
 
-Цель этого раздела — проверить конфигурацию единого входа Azure AD с помощью панели доступа.
+Цель этого раздела Hello является tootest конфигурации единого входа Azure AD с помощью панели доступа "hello".
 
-Щелкнув элемент Hosted Graphite на панели доступа, вы автоматически войдете в приложение Hosted Graphite.
+При выборе плитки размещенных Графит hello в hello панели доступа, следует получать автоматически вошедшего tooyour Графит размещенного приложения.
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
-* [Список учебников по интеграции приложений SaaS с Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Список учебников по tooIntegrate приложений SaaS в Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Что такое доступ к приложениям и единый вход с помощью Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 

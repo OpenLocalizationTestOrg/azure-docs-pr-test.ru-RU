@@ -1,6 +1,6 @@
 ---
-title: "Просмотр всех существующих групп в Azure Active Directory | Документы Майкрософт"
-description: "Сведения о том, как просматривать или искать группы в Azure Active Directory."
+title: "aaaView все существующие группы в Azure Active Directory | Документы Microsoft"
+description: "Сопоставление tooview или выполните поиск групп в Azure Active Directory"
 services: active-directory
 documentationcenter: 
 author: curtand
@@ -15,24 +15,24 @@ ms.topic: article
 ms.date: 05/04/2017
 ms.author: curtand
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1cc8b9194433840df9ce16baf1a0ec2c3dd08ad9
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: ae668d1cdb8032a332053dc40164d4dc829bdd19
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="view-or-search-for-your-user-groups-in-azure-active-directory"></a>Просмотр или поиск групп пользователей в Azure Active Directory
-В этой статье объясняется, как просмотреть все группы в Azure Active Directory (Azure AD). Одной из возможностей управления пользователями Azure AD является использование групп пользователей для выполнения задач управления, например назначение лицензий или разрешений нескольким пользователям одновременно.
+В этой статье объясняется, как tooview всех групп в Azure Active Directory (Azure AD). Одна из функций hello управления пользователя Azure AD —, можно использовать задачи управления tooperform группы, такие как назначение лицензии или разрешения tooa число пользователей, одновременно.
 
-## <a name="how-do-i-see-all-the-groups"></a>Как можно просмотреть все группы?
-1. Войдите на [портал Azure](https://portal.azure.com) с помощью учетной записи глобального администратора каталога.
-2. Выберите **Больше служб**, введите **Пользователи и группы** в текстовое поле, а затем нажмите клавишу **ВВОД**.
+## <a name="how-do-i-see-all-hello-groups"></a>Как просмотреть все группы hello
+1. Войдите в toohello [портал Azure](https://portal.azure.com) с помощью учетной записи глобального администратора каталога hello.
+2. Выберите **дополнительные службы**, введите **пользователей и групп** в hello текстовое поле, а затем выберите **ввод**.
 
    ![Открытие пользователей и групп](./media/active-directory-groups-view-azure-portal/search-user-management.png)
-3. В колонке **Пользователи и группы** выберите **Все группы**.
+3. На hello **пользователей и групп** колонке выберите **все группы**.
 
-   ![Открытие колонки группы](./media/active-directory-groups-view-azure-portal/view-groups-blade.png)
-4. В колонке **Пользователи и группы — Все группы** можно добавить или удалить отображаемые столбцы, отфильтровать список для поиска группы или внести изменения в группы, для которых имеются необходимые разрешения на изменение.
+   ![Открытие hello групп колонку](./media/active-directory-groups-view-azure-portal/view-groups-blade.png)
+4. На hello **пользователей и групп — все группы** колонке, можно добавить или удалить отображаются столбцы, toosearch список hello фильтра для группы, или внести изменения toogroups, что имеются достаточные разрешения toochange.
 
 ## <a name="next-steps"></a>Дальнейшие действия
 В следующих статьях содержатся дополнительные сведения об Azure Active Directory.

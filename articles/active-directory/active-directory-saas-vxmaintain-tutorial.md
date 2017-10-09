@@ -1,6 +1,6 @@
 ---
 title: "Руководство по интеграции Azure Active Directory с vxMaintain | Документация Майкрософт"
-description: "Узнайте, как настроить единый вход между Azure Active Directory и vxMaintain."
+description: "Узнайте, как tooconfigure единый вход между Azure Active Directory и vxMaintain."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,35 +13,35 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/08/2017
 ms.author: jeedes
-ms.openlocfilehash: ad87534af448356b8cc80d8ddd278bfb8a9165e7
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 937ea276d898986fc5a953c96fddabdc8940309f
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="tutorial-integrate-azure-active-directory-with-vxmaintain"></a>Руководство по интеграции Azure Active Directory с vxMaintain
 
-В этом учебнике описано, как интегрировать vxMaintain с Azure Active Directory (Azure AD).
+В этом учебнике вы узнаете, как vxMaintain toointegrate с Azure Active Directory (Azure AD).
 
 Такая интеграция обеспечивает несколько важных преимуществ. Вы можете:
 
-- С помощью Azure AD вы можете контролировать доступ к vxMaintain.
-- Вы можете включить автоматический вход пользователей в vxMaintain (единый вход) с учетной записью Azure AD.
-- Централизованное управление учетными записями через портал Azure.
+- Элемент управления в Azure AD, имеющего доступ к toovxMaintain.
+- Включите tooautomatically пользователей при входе в toovxMaintain с единого входа (SSO) с помощью своих учетных записей Azure AD.
+- Управление учетными записями в одном централизованном месте: hello портал Azure.
 
-Чтобы узнать больше об интеграции приложений SaaS с Azure AD, прочитайте статью [Что такое доступ к приложениям и единый вход с помощью Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+toolearn более об интеграции приложений SaaS с Azure AD, в разделе [доступ к приложению и единый вход в Azure Active Directory?](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Предварительные требования
 
-Чтобы настроить интеграцию Azure AD с vxMaintain, вам потребуется:
+tooconfigure интеграция Azure AD с vxMaintain требуется hello следующих элементов:
 
 - подписка Azure AD;
 - подписка vxMaintain с поддержкой единого входа.
 
 > [!NOTE]
-> Мы не рекомендуем использовать рабочую среду для тестирования действий, выполняемых в этом руководстве.
+> При тестировании hello шаги в этом учебнике, рекомендуется не использовать в производственной среде.
 
-При проверке действий в этом руководстве соблюдайте следующие рекомендации:
+tootest hello шаги в этом учебнике, придерживайтесь следующих рекомендаций:
 
 - Не используйте рабочую среду без необходимости.
 - Если у вас нет пробной среды Azure AD, вы можете [получить пробную версию на один месяц](https://azure.microsoft.com/pricing/free-trial/).
@@ -49,151 +49,151 @@ ms.lasthandoff: 08/18/2017
 ## <a name="scenario-description"></a>Описание сценария
 В рамках этого руководства проводится проверка единого входа Azure AD в тестовой среде. 
 
-Сценарий, описанный в этом руководстве, состоит из двух основных стандартных блоков:
+сценарий Hello, описывающий этот учебник состоит из двух основных компонентов.
 
-* Добавление vxMaintain из коллекции
+* Добавление vxMaintain из галереи hello
 * Настройка и проверка единого входа в Azure AD
 
-## <a name="add-vxmaintain-from-the-gallery"></a>Добавление vxMaintain из коллекции
-Чтобы настроить интеграцию vxMaintain с Azure AD, необходимо добавить vxMaintain из коллекции в список управляемых приложений SaaS.
+## <a name="add-vxmaintain-from-hello-gallery"></a>Добавление vxMaintain из коллекции hello
+интеграции hello tooconfigure vxMaintain с Azure AD, вы должны vxMaintain tooadd из списка tooyour коллекции hello управляемых приложений SaaS.
 
-Чтобы добавить vxMaintain из коллекции, выполните следующие действия.
+vxMaintain tooadd из галереи hello hello следующие:
 
-1. На [портале Azure](https://portal.azure.com) в области слева нажмите кнопку **Azure Active Directory**. 
+1. В hello [портал Azure](https://portal.azure.com)в левой области hello, выберите hello **Azure Active Directory** кнопки. 
 
-    ![Кнопка "Azure Active Directory"][1]
+    ![Кнопка Hello Azure Active Directory][1]
 
 2. Щелкните **Корпоративные приложения** > **Все приложения**.
 
-    ![Область "Корпоративные приложения"][2]
+    ![панель «Корпоративных приложений» Hello][2]
     
-3. Чтобы добавить приложение, в верхней части диалогового окна **Все приложения** нажмите кнопку **Новое приложение**.
+3. приложения, в hello tooadd **все приложения** выберите **новое приложение**.
 
-    ![Кнопка "Новое приложение"][3]
+    ![Здравствуйте, «Новое приложение» кнопки][3]
 
-4. В поле поиска введите **vxMaintain**.
+4. Введите в поле поиска hello **vxMaintain**.
 
-    ![Раскрывающийся список "Режим единого входа"](./media/active-directory-saas-vxmaintain-tutorial/tutorial_vxmaintain_search.png)
+    ![Hello «В единого входа режим» раскрывающегося списка](./media/active-directory-saas-vxmaintain-tutorial/tutorial_vxmaintain_search.png)
 
-5. Из списка результатов выберите **vxMaintain** и нажмите кнопку **Добавить**.
+5. В списке результатов hello выберите **vxMaintain**, а затем выберите **добавить**.
 
-    ![Ссылка на vxMaintain](./media/active-directory-saas-vxmaintain-tutorial/tutorial_vxmaintain_addfromgallery.png)
+    ![ссылка vxMaintain Hello](./media/active-directory-saas-vxmaintain-tutorial/tutorial_vxmaintain_addfromgallery.png)
 
 ##  <a name="configure-and-test-azure-ad-single-sign-on"></a>Настройка и проверка единого входа в Azure AD
 В этом разделе описана настройка и проверка единого входа Azure AD в vxMaintain с использованием тестового пользователя Britta Simon.
 
-Чтобы единый вход работал, в Azure AD необходимо указать, какой пользователь в vxMaintain соответствует пользователю в Azure AD. То есть необходимо установить связь между пользователем Azure AD и соответствующим пользователем vxMaintain.
+Для toowork единого входа Azure AD необходима toohello tooknow hello vxMaintain аналог пользователя Azure AD. То есть необходимо установить связи между hello пользователя Azure AD и соответствующий пользователь vxMaintain hello.
 
-Чтобы установить эту связь, присвойте **имени пользователя** в Azure AD значение **имени пользователя** в vxMaintain.
+tooestablish hello связи, назначьте hello vxMaintain **имя пользователя** значение как hello Azure AD **Username** значение.
 
-Чтобы настроить и проверить единый вход Azure AD в vxMaintain, выполните действия в следующих стандартных блоках.
+tooconfigure и Azure AD SSO с помощью vxMaintain завершения hello следующие стандартные блоки тестов.
 
 ### <a name="configure-azure-ad-sso"></a>Настройка единого входа Azure AD
 
-В этом разделе описывается, как включить единый вход Azure AD на портале Azure и настроить единый вход в приложении vxMaintain. Для этого выполните следующее.
+В этом разделе можно включить единый вход Azure AD в hello портал Azure и настройки единого входа в вашем приложении vxMaintain, выполнив hello ниже:
 
-1. На портале Azure на странице интеграции с приложением **vxMaintain** щелкните **Единый вход**.
+1. В hello в hello портала Azure **vxMaintain** странице интеграции приложений выберите **единого входа**.
 
-    ![Команда "Единый вход"][4]
+    ![Здравствуйте, команда «Единый вход»][4]
 
-2. Чтобы включить функцию единого входа, из раскрывающегося списка **Режим единого входа** выберите параметр **Вход на основе SAML**.
+2. tooenable единого входа, в hello **режим-** раскрывающемся списке выберите **входа на базе SAML**.
  
-    ![Параметр "Вход на основе SAML"](./media/active-directory-saas-vxmaintain-tutorial/tutorial_vxmaintain_samlbase.png)
+    ![Hello команды на основе SAML на «вход»](./media/active-directory-saas-vxmaintain-tutorial/tutorial_vxmaintain_samlbase.png)
 
-3. В разделе **Домены и URL-адреса приложения vxMaintain** выполните следующие действия.
+3. В разделе **vxMaintain URL-адреса и домена**, hello следующие:
 
-    ![Раздел "Домены и URL-адреса приложения vxMaintain"](./media/active-directory-saas-vxmaintain-tutorial/tutorial_vxmaintain_url.png)
+    ![Здравствуйте, vxMaintain разделе URL-адреса и домена](./media/active-directory-saas-vxmaintain-tutorial/tutorial_vxmaintain_url.png)
 
-    а. В поле **Идентификатор** введите URL-адрес, используя следующий синтаксис: `https://<company name>.verisae.com`.
+    а. В hello **идентификатор** введите URL-адрес имеет hello синтаксис:`https://<company name>.verisae.com`
 
-    b. В поле **URL-адрес ответа** введите URL-адрес, используя следующий синтаксис: `https://<company name>.verisae.com/DataNett/action/ssoConsume/mobile?_log=true`.
+    b. В hello **URL-адрес ответа** введите URL-адрес имеет hello синтаксис:`https://<company name>.verisae.com/DataNett/action/ssoConsume/mobile?_log=true`
 
     > [!NOTE] 
-    > Приведенные выше значения используются только для примера. Измените их на фактические значения идентификатора и URL-адреса ответа. Чтобы получить эти значения, обратитесь к [группе поддержки vxMaintain](http://www.verisae.com/contact-us).
+    > Hello выше значения не являются реальными. Дополнить фактический идентификатор hello и URL-адрес ответа. значения tooobtain hello, обратитесь в службу hello [vxMaintain поддержки](http://www.verisae.com/contact-us).
  
-4. В разделе **Сертификат подписи SAML** щелкните **XML метаданных** и сохраните файл метаданных на компьютере.
+4. В разделе **сертификат подписи SAML**выберите **метаданные в формате XML**и сохраните файл tooyour hello метаданных компьютера.
 
-    ![Раздел "Сертификат подписи SAML"](./media/active-directory-saas-vxmaintain-tutorial/tutorial_vxmaintain_certificate.png) 
+    ![раздел «Сертификат подписи SAML» Hello](./media/active-directory-saas-vxmaintain-tutorial/tutorial_vxmaintain_certificate.png) 
 
 5. Щелкните **Сохранить**.
 
-    ![Кнопка "Сохранить"](./media/active-directory-saas-vxmaintain-tutorial/tutorial_general_400.png)
+    ![Кнопка "Сохранить" Hello](./media/active-directory-saas-vxmaintain-tutorial/tutorial_general_400.png)
 
-6. Чтобы настроить единый вход **vxMaintain**, отправьте скачанный **XML-файл метаданных** [группе поддержки vxMaintain](http://www.verisae.com/contact-us).
+6. tooconfigure **vxMaintain** единого входа, загружаются hello отправки **метаданные в формате XML** файл toohello [vxMaintain поддержки](http://www.verisae.com/contact-us).
 
 > [!TIP]
-> Настроив приложение, вы можете прочитать краткую версию предыдущих инструкций на [портале Azure](https://portal.azure.com). После добавления приложения из раздела **Active Directory** > **Корпоративные приложения** просто выберите вкладку **Единый вход** и ознакомьтесь со встроенной документацией, воспользовавшись разделом **Настройка**. 
+> При настройке приложения hello, могут читать четкими версию перед инструкции в hello hello [портал Azure](https://portal.azure.com). После добавления приложение hello с hello **Active Directory** > **корпоративных приложений** раздел, выберите hello **Single Sign-On** вкладку, а затем hello доступа внедренные документации из hello **конфигурации** раздела. 
 >
->Чтобы узнать больше о встроенной документации, ознакомьтесь с разделом [Управление параметрами единого входа для корпоративных приложений](https://go.microsoft.com/fwlink/?linkid=845985).
+>toolearn Дополнительные сведения о функции hello внедренные документации, в разделе [управление единого входа для корпоративных приложений](https://go.microsoft.com/fwlink/?linkid=845985).
 > 
 
 ### <a name="create-an-azure-ad-test-user"></a>Создание тестового пользователя Azure AD
-В этом разделе вы создадите на портале Azure тестового пользователя Britta Simon, выполнив следующие действия.
+В этом разделе создайте тестового пользователя Саймон Britta в hello портал Azure, выполнив hello ниже:
 
-![Тестовый пользователь Azure AD][100]
+![Hello Azure AD тестового пользователя][100]
 
-1. На **портале Azure** в области слева нажмите кнопку **Azure Active Directory**.
+1. В hello **портал Azure**в левой области hello, выберите hello **Azure Active Directory** кнопки.
 
-    ![Кнопка Azure Active Directory](./media/active-directory-saas-vxmaintain-tutorial/create_aaduser_01.png) 
+    ![Кнопка «Azure Active Directory» Hello](./media/active-directory-saas-vxmaintain-tutorial/create_aaduser_01.png) 
 
-2. Чтобы отобразить список пользователей, выберите **Пользователи и группы** > **Все пользователи**.
+2. список пользователей, toodisplay go слишком**пользователей и групп** > **всех пользователей**.
     
-    ![Ссылка "Все пользователи"](./media/active-directory-saas-vxmaintain-tutorial/create_aaduser_02.png)  
-    Откроется диалоговое окно **Все пользователи**. 
+    ![Здравствуйте, «Все пользователи» ссылки](./media/active-directory-saas-vxmaintain-tutorial/create_aaduser_02.png)  
+    Hello **всех пользователей** откроется диалоговое окно. 
 
-3. Щелкните **Добавить**, чтобы открыть диалоговое окно **Пользователь**.
+3. tooopen hello **пользователя** выберите **добавить**.
  
-    ![Кнопка "Добавить"](./media/active-directory-saas-vxmaintain-tutorial/create_aaduser_03.png) 
+    ![Кнопка "Добавить" Hello](./media/active-directory-saas-vxmaintain-tutorial/create_aaduser_03.png) 
 
-4. В диалоговом окне **Пользователь** сделайте следующее.
+4. В hello **пользователя** диалогового окна поле, hello следующие:
  
-    ![Диалоговое окно "Пользователь"](./media/active-directory-saas-vxmaintain-tutorial/create_aaduser_04.png) 
+    ![диалоговое окно приветствия пользователя](./media/active-directory-saas-vxmaintain-tutorial/create_aaduser_04.png) 
 
-    а. В поле **Имя** введите **BrittaSimon**.
+    а. В hello **имя** введите **BrittaSimon**.
 
-    b. В поле **Имя пользователя** введите адрес электронной почты для пользователя Britta Simon.
+    b. В hello **имя пользователя** поле введите адрес электронной почты hello тестового пользователя Саймон Britta.
 
-    c. Установите флажок **Показать пароль** и запишите значение, созданное в поле **Пароль**.
+    c. Выберите hello **Показать пароль** флажок, а затем значение hello примечание, созданный в hello **пароль** поле.
 
     d. Нажмите кнопку **Создать**.
  
 ### <a name="create-a-vxmaintain-test-user"></a>Создание тестового пользователя vxMaintain
 
-В этом разделе вы создадите тестового пользователя Britta Simon в vxMaintain. Обратитесь к [группе поддержки vxMaintain](http://www.verisae.com/contact-us), чтобы добавить пользователей на платформу vxMaintain. Прежде чем использовать единый вход, создайте и активируйте пользователей.
+В этом разделе вы создадите тестового пользователя Britta Simon в vxMaintain. Пользователи tooadd на платформе vxMaintain hello, работать с [vxMaintain поддержки](http://www.verisae.com/contact-us). Прежде чем использовать единый вход, создание и активация пользователей hello.
 
-### <a name="assign-the-azure-ad-test-user"></a>Назначение тестового пользователя Azure AD
+### <a name="assign-hello-azure-ad-test-user"></a>Назначить hello Azure AD тестового пользователя
 
-В этом разделе описано, как разрешить пользователю Britta Simon использовать единый вход Azure, предоставив этому пользователю доступ к vxMaintain. Для этого выполните следующее.
+В этом разделе включите тестового пользователя toouse Britta Simon Azure единого входа путем предоставления доступа toovxMaintain. toodo таким образом, hello следующие:
 
-![Тестовый пользователь в списке "Отображаемое имя"][200] 
+![Тестовый пользователь в списке отображаемое имя hello][200] 
 
-1. На портале Azure откройте представление **Приложения** и выберите представление **Каталог**. Щелкните **Корпоративные приложения** > **Все приложения**.
+1. В hello портал Azure **приложений** просмотреть, перейдите в слишком**каталога** представление > **корпоративных приложений** > **всех приложений**.
 
-    ![Ссылка "Все приложения"][201] 
+    ![Здравствуйте, «Все приложения» ссылки][201] 
 
-2. Из списка **Приложения** выберите **vxMaintain**.
+2. В hello **приложений** выберите **vxMaintain**.
 
-    ![Ссылка на vxMaintain](./media/active-directory-saas-vxmaintain-tutorial/tutorial_vxmaintain_app.png) 
+    ![ссылка vxMaintain Hello](./media/active-directory-saas-vxmaintain-tutorial/tutorial_vxmaintain_app.png) 
 
-3. В области слева выберите **Пользователи и группы**.
+3. Выберите в левой области hello **пользователей и групп**.
 
-    ![Ссылка "Пользователи и группы"][202] 
+    ![Hello ссылку «Пользователи и группы»][202] 
 
-4. Нажмите кнопку **Добавить**, затем в области **Добавление назначения** щелкните **Пользователи и группы**.
+4. Выберите **добавить** и затем в hello **добавить назначение** выберите **пользователей и групп**.
 
-    ![Ссылка "Пользователи и группы"][203]
+    ![Hello ссылку «Пользователи и группы»][203]
 
-5. В диалоговом окне **Пользователи и группы** из списка **Пользователи** выберите **Britta Simon**. Нажмите кнопку **Выбрать**.
+5. В hello **пользователей и групп** диалогового окна hello **пользователей** выберите **Britta Simon**и затем выберите hello **выберите** кнопки.
 
-7. В диалоговом окне **Добавление назначения** выберите **Назначить**.
+7. В hello **добавить назначение** выберите **назначить**.
     
 ### <a name="test-your-azure-ad-single-sign-on"></a>Проверка единого входа Azure AD
 
-В этом разделе вы с помощью панели доступа выполните проверку конфигурации единого входа Azure AD.
+В этом разделе можно проверить конфигурацию единого входа Azure AD с помощью панели доступа hello.
 
-Щелкнув элемент **vxMaintain** на панели доступа, вы автоматически войдете в приложение vxMaintain.
+Выбор hello **vxMaintain** плитки в панели доступа hello следует приложения vxMaintain tooyour автоматического входа.
 
-Дополнительные сведения о панели доступа см. в статье [Общие сведения о панели доступа](active-directory-saas-access-panel-introduction.md).
+Дополнительные сведения о панели доступа см. в разделе [toohello введение панели доступа](active-directory-saas-access-panel-introduction.md).
 
 ## <a name="next-steps"></a>Дальнейшие действия
 

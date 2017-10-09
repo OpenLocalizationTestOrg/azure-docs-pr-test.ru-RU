@@ -1,6 +1,6 @@
 ---
-title: "Задержки в отчетах Azure Active Directory | Документация Майкрософт"
-description: "Время, необходимое для отображения событий отчетов в Azure Active Directory"
+title: "aaaAzure задержки Reporting Active Directory | Документы Microsoft"
+description: "Время, необходимое для создания отчетов tooshow события вверх в Azure Active Directory"
 services: active-directory
 documentationcenter: 
 author: dhanyahk
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/04/2017
 ms.author: dhanyahk;markvi
-ms.openlocfilehash: 9443a00232420d58dea52ed01f31a4ef964a1620
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 14367d21dfb28359f991037cc924d416420be456
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-active-directory-report-latencies"></a>Задержки в отчетах Azure Active Directory
-*Данная документация является частью [руководства по отчетам Azure Active Directory](active-directory-reporting-guide.md).*
+*Данная документация является частью hello [Azure Active Directory руководство по отчетам](active-directory-reporting-guide.md).*
 
 | Отчет | Минимальная | Средняя | Максимальная |
 | --- | --- | --- | --- |

@@ -1,6 +1,6 @@
 ---
-title: "Удаление пользователя из каталога в Azure Active Directory | Документы Майкрософт"
-description: "В этом разделе объясняется, как удалить пользователя и все его данные из Azure Active Directory."
+title: "aaaDelete пользователя из каталога в Azure Active Directory | Документы Microsoft"
+description: "Объясняет, как toodelete пользователь и все его данные из Azure Active Directory"
 services: active-directory
 documentationcenter: 
 author: curtand
@@ -15,31 +15,31 @@ ms.topic: article
 ms.date: 06/27/2017
 ms.author: curtand;jeffsta
 ms.reviewer: jeffsta
-ms.openlocfilehash: 19a4d2c37c785b3b56a2e0e1b6797ec56dad9835
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: e121142479c185fadd796b46aeab02bff4ea8d75
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="delete-a-user-from-a-directory-in-azure-active-directory"></a>Удаление пользователя из каталога в Azure Active Directory
-В этой статье объясняется, как удалить пользователя из каталога в Azure Active Directory (Azure AD). Сведения о добавлении новых пользователей в организации см. в статье [Добавление новых пользователей или пользователей с учетными записями Майкрософт в Azure Active Directory](active-directory-users-create-azure-portal.md).
+В этой статье объясняется, как toodelete пользователя из каталога в Azure Active Directory (Azure AD). Сведения о добавлении новой организации tooyour пользователей см. в разделе [добавлять новых пользователей tooAzure Active Directory](active-directory-users-create-azure-portal.md).
 
-## <a name="to-delete-a-user"></a>Удаление пользователя
-1. Войдите на [портал Azure](https://portal.azure.com) с помощью учетной записи глобального администратора каталога.
-2. Выберите **Больше служб**, введите **Пользователи и группы** в текстовое поле, а затем нажмите клавишу **ВВОД**.
+## <a name="toodelete-a-user"></a>toodelete пользователя
+1. Войдите в слишком[hello портал Azure](https://portal.azure.com) с помощью учетной записи глобального администратора каталога hello.
+2. Выберите **дополнительные службы**, введите **пользователей и групп** в hello текстовое поле, а затем выберите **ввод**.
 
    ![Открытие страницы "Управление пользователями"](./media/active-directory-users-delete-user-azure-portal/create-users-user-management.png)
-3. В колонке **Пользователи и группы** выберите **Пользователи**.
+3. На hello **пользователей и групп** колонке выберите **пользователей**.
 
-   ![Открытие колонки "Пользователи"](./media/active-directory-users-delete-user-azure-portal/create-users-open-users-blade.png)
-4. В колонке **Пользователи и группы — Пользователи** выберите пользователя из списка.
-5. В колонке для выбранного пользователя щелкните **Обзор**, а затем на панели команд щелкните **Удалить**.
+   ![Открытие колонка "пользователи" hello](./media/active-directory-users-delete-user-azure-portal/create-users-open-users-blade.png)
+4. На hello **пользователей и групп — пользователей** колонке выберите пользователя из списка hello.
+5. В колонке hello для выбранного пользователя hello, выберите **Обзор**и выберите в панели команд hello, **удалить**.
 
-    ![Выбор команды "Удалить"](./media/active-directory-users-delete-user-azure-portal/create-users-delete-command.png)
+    ![При выборе команды Delete hello](./media/active-directory-users-delete-user-azure-portal/create-users-delete-command.png)
 
 ## <a name="next-steps"></a>Дальнейшие действия
-* [Добавление новых пользователей в Azure Active Directory](active-directory-users-create-azure-portal.md)
-* [Сброс пароля пользователя в Azure Active Directory](active-directory-users-reset-password-azure-portal.md)
-* [Назначение пользователю ролей администратора в Azure Active Directory](active-directory-users-assign-role-azure-portal.md)
+* [Добавить новый tooAzure пользователей Active Directory](active-directory-users-create-azure-portal.md)
+* [Сброс пароля hello для пользователя в Azure Active Directory](active-directory-users-reset-password-azure-portal.md)
+* [Назначить пользователя роли tooadministrator в Azure Active Directory](active-directory-users-assign-role-azure-portal.md)
 * [Добавление или изменение данных профиля пользователя в Azure Active Directory](active-directory-users-work-info-azure-portal.md)
 * [Удаление пользователя из каталога в Azure Active Directory](active-directory-users-profile-azure-portal.md)

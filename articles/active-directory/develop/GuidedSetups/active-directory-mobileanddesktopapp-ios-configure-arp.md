@@ -1,5 +1,5 @@
 ---
-title: "Приступая к работе с Azure AD версии 2 для iOS. Настройка (ARP) | Документация Майкрософт"
+title: "iOS v2 aaaAzure AD Приступая к работе — Настройка (ARP) | Документы Microsoft"
 description: "В этой статье описано, как приложения iOS (Swift) могут вызывать API, которому необходимы маркеры доступа, с помощью конечной точки Azure Active Directory версии 2."
 services: active-directory
 documentationcenter: dev-center-name
@@ -13,27 +13,27 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/09/2017
 ms.author: andret
-ms.openlocfilehash: 50cb4a2803b6aebe8b39ec9fb02da2293c1065fa
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: e5087e13160243d808b1d02771fa66fb332cfad6
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-## <a name="add-the-applications-registration-information-to-your-app"></a>Добавление в приложение сведений о его регистрации
+## <a name="add-hello-applications-registration-information-tooyour-app"></a>Добавить приложение tooyour сведения о регистрации приложения hello
 
-На этом шаге вам нужно добавить в свой проект идентификатор приложения:
+На этом шаге требуется идентификатор приложения tooyour tooadd hello проекта:
 
-1.  В `ViewController.swift` замените строку, начинающуюся с '`let kClientID`', на следующую:
+1.  В `ViewController.swift`, замените строку hello, начиная с "`let kClientID`" с:
 ```swift
-let kClientID = "[Enter the application Id here]"
+let kClientID = "[Enter hello application Id here]"
 ```
 <!-- Workaround for Docs conversion bug -->
 <ol start="2">
 <li>
-Щелкните <code>Info.plist</code>, удерживая клавишу CTRL, чтобы открыть контекстное меню, затем щелкните <code>Open As</code> > <code>Source Code</code>
-.</li>
+Щелкните, удерживая нажатой <code>Info.plist</code> toobring вверх hello контекстного меню и выберите: <code>Open As</code>> <code>Source Code</code>
+</li>
 <li>
-Добавьте следующий элемент в корневой узел <code>dict</code>:
+В разделе hello <code>dict</code> корневой узел, добавьте hello следующее:
 </li>
 </ol>
 
@@ -47,7 +47,7 @@ let kClientID = "[Enter the application Id here]"
         <string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
         <key>CFBundleURLSchemes</key>
         <array>
-            <string>msal[Enter the application Id here]</string>
+            <string>msal[Enter hello application Id here]</string>
             <string>auth</string>
         </array>
     </dict>

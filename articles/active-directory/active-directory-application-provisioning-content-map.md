@@ -1,6 +1,6 @@
 ---
-title: "Проблемы при настройке и подготовке пользователей для приложения"
-description: "Проблемы при настройке и подготовке пользователей для приложения"
+title: "aaaProblems настройки и подготовки пользователей tooan приложения»"
+description: "Проблемы, настройки и подготовки пользователей tooan приложения»"
 services: active-directory
 documentationcenter: 
 author: ajamess
@@ -12,24 +12,24 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.openlocfilehash: 55c5abccb2472d653a4e355e39a19a224b979b85
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: bc8465ff3d1b706ce752def5f3d999bddbdf6e48
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="problems-configuring-and-provisioning-users-to-an-application"></a>Проблемы при настройке и подготовке пользователей для приложения
+# <a name="problems-configuring-and-provisioning-users-tooan-application"></a>Проблемы настройки и подготовки приложений tooan пользователей
 
 
 
-## <a name="i-want-to-know-when-provisioning-will-finish"></a>Я хочу знать, когда подготовка будет завершена
-  Приведенные ниже документы помогут устранить некоторые из наиболее распространенных проблем в этой категории.
-  * [Я не знаю, как определить, когда конкретный пользователь будет иметь доступ к приложению](https://docs.microsoft.com/azure/active-directory/application-provisioning-when-will-provisioning-finish-specific-user/?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav)
-  * [Подготовка для моего приложения из коллекции Azure AD работает, но она длится несколько часов или больше](https://docs.microsoft.com/azure/active-directory/application-provisioning-when-will-provisioning-finish/?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav)
+## <a name="i-want-tooknow-when-provisioning-will-finish"></a>Как сделать tooknow при подготовке будет завершено
+  Hello следующие документы могут помочь tooresolve некоторые из наиболее распространенных проблем hello в этой категории.
+  * [Я не знаю, как toofind out когда конкретного пользователя будет доступ tooaccess приложения](https://docs.microsoft.com/azure/active-directory/application-provisioning-when-will-provisioning-finish-specific-user/?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav)
+  * [Подготовка приложения коллекции toomy Azure AD работает, но процесс подготовки hello — ведения часов или более](https://docs.microsoft.com/azure/active-directory/application-provisioning-when-will-provisioning-finish/?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav)
 
-## <a name="im-having-problems-configuring-user-provisioning-to-an-application"></a>Возникли проблемы при настройке и подготовке пользователей для приложения
-  Приведенные ниже документы помогут устранить некоторые из наиболее распространенных проблем в этой категории.
-  * [Я не знаю, как настроить подготовку пользователей для приложения из коллекции Azure AD](https://docs.microsoft.com/azure/active-directory/application-provisioning-config-how-to/?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav)
-  * [Возникла проблема при настройке подготовки пользователей для приложения из коллекции Azure AD](https://docs.microsoft.com/azure/active-directory/application-provisioning-config-problem/?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav)
-  * [Подготовка для моего приложения из коллекции Azure AD настроена, но пользователи не подготавливаются](https://docs.microsoft.com/azure/active-directory/application-provisioning-config-problem-no-users-provisioned/?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav)
-  * [Подготовка для моего приложения из коллекции Azure AD работает, но подготавливается неправильный набор пользователей](https://docs.microsoft.com/azure/active-directory/application-provisioning-config-problem-wrong-users-provisioned/?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav)
+## <a name="im-having-problems-configuring-user-provisioning-tooan-application"></a>У меня возникли неполадки при настройке подготовки приложения tooan пользователей
+  Hello следующие документы могут помочь tooresolve некоторые из наиболее распространенных проблем hello в этой категории.
+  * [Я не знаю, как Подготовка приложения Azure AD tooan коллекции пользователей tooconfigure](https://docs.microsoft.com/azure/active-directory/application-provisioning-config-how-to/?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav)
+  * [Я обнаружил проблему при настройке подготовки приложения Azure AD tooan коллекции пользователей](https://docs.microsoft.com/azure/active-directory/application-provisioning-config-problem/?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav)
+  * [Настроили подготовки toomy приложения Azure AD коллекции, но пользователи не выполняется подготовка к работе](https://docs.microsoft.com/azure/active-directory/application-provisioning-config-problem-no-users-provisioned/?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav)
+  * [Подготовка приложения Azure AD коллекции toomy работает, но hello неверный набор пользователей, выполняется подготовка к работе](https://docs.microsoft.com/azure/active-directory/application-provisioning-config-problem-wrong-users-provisioned/?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav)

@@ -1,6 +1,6 @@
 ---
-title: "Добавление мультитенантного приложения в коллекцию приложений Azure AD | Документы Майкрософт"
-description: "В этой статье объясняется, как включить специально разработанное мультитенантное приложение в коллекцию приложений Azure AD"
+title: "aaaHow tooadd коллекции приложений Azure AD toohello многопользовательского приложения | Документы Microsoft"
+description: "Объясняет, как можно получить список пользовательских развитых мультитенантного приложения в коллекции приложений Azure AD hello"
 services: active-directory
 documentationcenter: 
 author: ajamess
@@ -13,28 +13,28 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.openlocfilehash: 208f0d40bd7a8e8f35f16e1fcb09c305d833dbb2
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 2dc6e0d783835d2639a7e6dda172110ee860a977
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-add-a-multi-tenant-application-to-the-azure-ad-application-gallery"></a>Добавление мультитенантного приложения в коллекцию приложений Azure AD
+# <a name="how-tooadd-a-multi-tenant-application-toohello-azure-ad-application-gallery"></a>Как tooadd коллекции приложений Azure AD toohello многопользовательского приложения
 
-## <a name="what-is-the-azure-ad-application-gallery"></a>Что такое коллекция приложений Azure AD?
+## <a name="what-is-hello-azure-ad-application-gallery"></a>Что такое hello коллекции приложений Azure AD?
 
-Коллекция приложений Azure AD является отличным способом представить приложение миллионам пользователей Azure Active Directory, что увеличивает сферу его влияния и позволяет расширить аудиторию приложения в магазине. Ниже показано, как добавить приложение в коллекцию приложений Azure AD.
+Коллекция приложений Hello Azure AD является хорошим способом tooget приложение перед все hello миллионам влияние hello toobroaden клиентов Azure Active Directory и достичь приложения hello рынке. Hello шаги, описанные ниже объясняется, как можно получить список приложения в коллекции приложений Azure AD hello.
 
 ## <a name="if-your-application-supports-saml-or-openidconnect"></a>Если приложение поддерживает SAML или OpenIDConnect
-Если у вас есть многопользовательское приложение, которые вы хотите включить в коллекцию приложений Azure AD, сначала убедитесь, что оно поддерживает одну из следующих технологий единого входа:
+Если мультитенантное приложение хотелось бы toolist в hello коллекции приложений Azure AD, сначала необходимо убедиться, что приложение поддерживает один из следующих технологий-hello.
 
-1. **OpenID Connect.** Прямая интеграция с Azure AD с помощью OpenID Connect для проверки подлинности и API согласия Azure AD для конфигурации. Этот режим является рекомендуемым, если вы только начали интеграцию и ваше приложение не поддерживает SAML.
-2. **SAML.** Приложение уже имеет возможность настройки сторонних поставщиков удостоверений с помощью протокола SAML.
+1. **OpenID Connect** — прямая интеграция с Azure AD, используя для проверки подлинности OpenID Connect и hello согласия Azure AD API для конфигурации. Если приложение не поддерживает SAML только начинает интеграцию, это можно сделать hello. рекомендуется режим.
+2. **SAML** – приложение уже имеет hello возможность tooconfigure сторонних поставщиков с помощью протокола SAML hello.
 
-Если ваше мультитенантное приложение поддерживает один из этих режимов единого входа и вы бы хотели включить его в коллекцию приложений Azure AD, выполните действия, описанные в документе ниже. Чтобы быстро начать, отправьте электронное сообщение по адресу **waadpartners@microsoft.com**.
+Если приложение поддерживает один из следующих режимов единого входа и хотелось бы toolist ваше мультитенантное приложение hello коллекции приложений Azure AD можно выполнить действия hello в документе hello ниже. быстро начать tooget отправить сообщение электронной почты слишком**waadpartners@microsoft.com**.
 
 ## <a name="if-your-application-does-not-support-saml-or-openidconnect"></a>Если приложение не поддерживает SAML или OpenIDConnect
-Даже если приложение не поддерживает один из этих режимов, мы по-прежнему можем интегрировать его в свою коллекцию, применив технологию единого входа по паролю. Если вы хотите изучить эту возможность, отправьте электронное сообщение по адресу **waadpartners@microsoft.com**.
+Даже если приложение не поддерживает один из этих режимов, мы по-прежнему можем интегрировать его в свою коллекцию, применив технологию единого входа по паролю. Если вы хотите tooexplore этого параметра можно отправить сообщение электронной почты слишком**waadpartners@microsoft.com**.
 
 ## <a name="next-steps"></a>Дальнейшие действия
-[Добавление приложения в коллекцию приложений Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/active-directory-app-gallery-listing)
+[Как toolist приложения в коллекции приложений Azure Active Directory hello](https://docs.microsoft.com/azure/active-directory/develop/active-directory-app-gallery-listing)

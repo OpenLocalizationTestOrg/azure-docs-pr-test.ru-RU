@@ -1,6 +1,6 @@
 ---
 title: "Руководство по интеграции Azure Active Directory с OpsGenie | Документация Майкрософт"
-description: "Узнайте, как настроить единый вход между Azure Active Directory и OpsGenie."
+description: "Узнайте, как tooconfigure единый вход между Azure Active Directory и OpsGenie."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,106 +13,106 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/28/2017
 ms.author: jeedes
-ms.openlocfilehash: ce63726d2406d2f1415d29786f0ef92ca95b9b90
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 50d31c234fb9716d05d681b9bc4164740a3a662b
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-opsgenie"></a>Руководство. Интеграция Azure Active Directory с OpsGenie
 
-В этом руководстве описано, как интегрировать OpsGenie с Azure Active Directory (Azure AD).
+В этом учебнике вы узнаете, как toointegrate OpsGenie с Azure Active Directory (Azure AD).
 
-Интеграция Azure AD с приложением OpsGenie обеспечивает следующие преимущества.
+Интеграция с Azure AD OpsGenie предоставляет hello следующие преимущества:
 
-- С помощью Azure AD вы можете контролировать доступ к OpsGenie.
-- Вы можете включить автоматический вход пользователей в OpsGenie (единый вход) под учетной записью Azure AD.
-- Вы можете управлять учетными записями централизованно — через портал Azure.
+- Можно управлять в Azure AD, имеющего доступ tooOpsGenie
+- Можно включить на пользователей tooautomatically get вошедшего tooOpsGenie (Single Sign-On) с помощью своих учетных записей Azure AD
+- Можно управлять учетными записями в одном централизованном месте - hello портал Azure
 
-Подробнее узнать об интеграции приложений SaaS с Azure AD можно в разделе [Что такое доступ к приложениям и единый вход с помощью Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Если tooknow Дополнительные сведения об интеграции приложений SaaS в Azure AD, см. [доступ к приложению и единый вход в Azure Active Directory](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Предварительные требования
 
-Чтобы настроить интеграцию Azure AD с OpsGenie, вам потребуется:
+tooconfigure интеграция Azure AD с OpsGenie требуется hello следующих элементов:
 
 - подписка Azure AD;
 - подписка OpsGenie с поддержкой единого входа.
 
 > [!NOTE]
-> Мы не рекомендуем использовать рабочую среду для проверки действий в этом учебнике.
+> в этом учебнике шаги tootest hello, не рекомендуется в рабочей среде.
 
-При проверке действий в этом учебнике соблюдайте следующие рекомендации:
+tootest hello шаги в этом учебнике, необходимо следовать приведенным ниже рекомендациям:
 
 - Не используйте рабочую среду без необходимости.
 - Если у вас нет пробной среды Azure AD, вы можете получить пробную версию на один месяц по [этой ссылке](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Описание сценария
-В рамках этого руководства проводится проверка единого входа Azure AD в тестовой среде. Сценарий, описанный в этом учебнике, состоит из двух основных блоков:
+В рамках этого руководства проводится проверка единого входа Azure AD в тестовой среде. Hello сценарий, описанный в этом учебнике состоит из двух основных компонентов:
 
-1. Добавление OpsGenie из коллекции
+1. Добавление OpsGenie из галереи hello
 2. Настройка и проверка единого входа в Azure AD
 
-## <a name="adding-opsgenie-from-the-gallery"></a>Добавление OpsGenie из коллекции
-Чтобы настроить интеграцию OpsGenie с Azure AD, необходимо добавить OpsGenie из коллекции в список управляемых приложений SaaS.
+## <a name="adding-opsgenie-from-hello-gallery"></a>Добавление OpsGenie из галереи hello
+tooconfigure hello интеграции OpsGenie в Azure AD, вы должны tooadd OpsGenie из списка tooyour коллекции hello управляемых приложений SaaS.
 
-**Чтобы добавить OpsGenie из коллекции, выполните следующие действия.**
+**tooadd OpsGenie из галереи hello, выполните следующие шаги hello.**
 
-1. На **[портале Azure](https://portal.azure.com)** в области навигации слева щелкните значок **Azure Active Directory**. 
+1. В hello  **[портал Azure](https://portal.azure.com)**на левой навигационной панели hello, нажмите кнопку **Azure Active Directory** значок. 
 
     ![Active Directory][1]
 
-2. Перейдите к разделу **Корпоративные приложения**. Затем выберите **Все приложения**.
+2. Перейдите в слишком**корпоративных приложений**. Затем перейдите слишком**все приложения**.
 
     ![Приложения][2]
     
-3. Чтобы добавить новое приложение, в верхней части диалогового окна нажмите кнопку **Создать приложение**.
+3. tooadd новое приложение, нажмите кнопку **новое приложение** кнопку в верхней части hello диалогового окна.
 
     ![Приложения][3]
 
-4. В поле поиска введите **OpsGenie**.
+4. Введите в поле поиска hello **OpsGenie**.
 
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-opsgenie-tutorial/tutorial_opsgenie_search.png)
 
-5. На панели результатов выберите **OpsGenie** и нажмите кнопку **Добавить**, чтобы добавить это приложение.
+5. В панели результатов hello выберите **OpsGenie**и нажмите кнопку **добавить** кнопку tooadd приложения hello.
 
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-opsgenie-tutorial/tutorial_opsgenie_addfromgallery.png)
 
 ##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Настройка и проверка единого входа в Azure AD
 В этом разделе описаны настройка и проверка единого входа Azure AD в приложение OpsGenie с использованием тестового пользователя Britta Simon.
 
-Чтобы единый вход работал, Azure AD необходимо знать, какой пользователь в OpsGenie соответствует пользователю в Azure AD. Иными словами, необходимо установить связь между пользователем Azure AD и соответствующим пользователем в OpsGenie.
+Для единого входа toowork Azure AD необходима tooknow пользователь аналог какие hello в OpsGenie является tooa в Azure AD. Другими словами связи между пользователя Azure AD и связанных пользователей hello в OpsGenie должен установить toobe.
 
-Чтобы установить эту связь, назначьте **имя пользователя** в Azure AD в качестве значения **имени пользователя** в OpsGenie.
+В OpsGenie, присвойте значение hello hello **имя пользователя** в Azure AD в качестве значения hello hello **Username** tooestablish hello связи.
 
-Чтобы настроить и проверить единый вход Azure AD в OpsGenie, вам потребуется выполнить действия в следующих стандартных блоках:
+tooconfigure и теста Azure AD единого входа с OpsGenie, требуются следующие стандартные блоки hello toocomplete:
 
-1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** необходима, чтобы пользователи могли использовать эту функцию.
-2. **[Создание тестового пользователя Azure AD](#creating-an-azure-ad-test-user)** требуется для проверки работы единого входа Azure AD от имени пользователя Britta Simon.
-3. **[Создание тестового пользователя OpsGenie](#creating-a-opsgenie-test-user)** требуется для создания пользователя Britta Simon в OpsGenie, связанного с соответствующим представлением в Azure AD.
-4. **[Назначение тестового пользователя Azure AD](#assigning-the-azure-ad-test-user)** необходимо, чтобы позволить Britta Simon использовать единый вход в Azure AD.
-5. **[Testing Single Sign-On](#testing-single-sign-on)** необходима, чтобы убедиться в корректной работе конфигурации.
+1. **[Настройка Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**  -tooenable вашей toouse пользователи этой функции.
+2. **[Создание тестового пользователя Azure AD](#creating-an-azure-ad-test-user)**  -tootest Azure AD единого входа с Саймон Britta.
+3. **[Создание тестового пользователя OpsGenie](#creating-a-opsgenie-test-user)**  -toohave аналог Саймон Britta в OpsGenie, который представляет связанный toohello Azure AD пользователя.
+4. **[Назначение hello Azure AD тестового пользователя](#assigning-the-azure-ad-test-user)**  -tooenable Britta Simon toouse Azure AD единым входом.
+5. **[Тестирование единого входа](#testing-single-sign-on)**  -tooverify ли hello works конфигурации.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Настройка единого входа в Azure AD
 
-В этом разделе описано, как включить единый вход Azure AD на портале Azure и настроить его в приложении OpsGenie.
+В этом разделе включения Azure AD единым входом в портал Azure hello и настройки единого входа в приложении OpsGenie.
 
-**Чтобы настроить единый вход Azure AD в OpsGenie, выполните следующие действия.**
+**tooconfigure Azure AD единого входа с OpsGenie, выполните следующие шаги hello.**
 
-1. На портале Azure на странице интеграции с приложением **OpsGenie** щелкните **Единый вход**.
+1. В hello в hello портала Azure **OpsGenie** странице интеграции приложения щелкните **единого входа**.
 
     ![Настройка единого входа][4]
 
-2. В диалоговом окне **Единый вход** в разделе **Режим** выберите **Вход на основе SAML**, чтобы включить функцию единого входа.
+2. На hello **единого входа** диалогового окна выберите **режим** как **входа на базе SAML** tooenable единого входа.
  
     ![Настройка единого входа](./media/active-directory-saas-opsgenie-tutorial/tutorial_opsgenie_samlbase.png)
 
-3. В разделе **Домены и URL-адреса приложения OpsGenie** выполните следующие действия:
+3. На hello **URL-адреса и домена OpsGenie** выполните следующие шаги hello:
 
     ![Настройка единого входа](./media/active-directory-saas-opsgenie-tutorial/tutorial_opsgenie_url.png)
 
-    В текстовом поле **URL-адрес для входа** введите URL-адрес: `https://app.opsgenie.com/auth/login`
+    В hello **URL-адрес входа** текстовом поле введите URL-адрес hello:`https://app.opsgenie.com/auth/login`
 
-4. В разделе **Сертификат подписи SAML** щелкните **Сертификат (Base64)**, а затем сохраните файл сертификата на компьютере.
+4. На hello **сертификат подписи SAML** щелкните **Certificate(Base64)** и затем сохраните файл сертификата hello на вашем компьютере.
 
     ![Настройка единого входа](./media/active-directory-saas-opsgenie-tutorial/tutorial_opsgenie_certificate.png) 
 
@@ -120,111 +120,111 @@ ms.lasthandoff: 07/11/2017
 
     ![Настройка единого входа](./media/active-directory-saas-opsgenie-tutorial/tutorial_general_400.png)
 
-6. В разделе **Настройка OpsGenie** щелкните **Настроить OpsGenie**, чтобы открыть окно **Настройка единого входа**. Скопируйте **URL-адрес выхода, идентификатор сущности SAML и URL-адрес службы единого входа SAML**  из раздела **Краткий справочник**.
+6. На hello **конфигурации OpsGenie** щелкните **Настройка OpsGenie** tooopen **Настройка входа** окна. Копировать hello **URL-адрес выхода, идентификатор сущности SAML и SAML единого входа URL-адрес службы** из hello **краткий справочник.**
 
     ![Настройка единого входа](./media/active-directory-saas-opsgenie-tutorial/tutorial_opsgenie_configure.png) 
 
-7. Откройте другое окно браузера и войдите в OpsGenie с правами администратора.
+7. Откройте другой экземпляр браузера, а затем повторно войти в tooOpsGenie с правами администратора.
 
-8. Щелкните **Параметры** и откройте вкладку **Единый вход**.
+8. Нажмите кнопку **параметры**, а затем нажмите кнопку hello **единого входа** вкладки.
    
     ![Единый вход в OpsGenie](./media/active-directory-saas-opsgenie-tutorial/tutorial_opsgenie_06.png)
 
-9. Чтобы включить единый вход, установите флажок **Включено**.
+9. Выберите tooenable единого входа, **включено**.
    
     ![Параметры OpsGenie](./media/active-directory-saas-opsgenie-tutorial/tutorial_opsgenie_07.png) 
 
-10. В разделе **Поставщик** откройте вкладку **Azure Active Directory**.
+10. В hello **поставщика** щелкните hello **Azure Active Directory** вкладки.
    
     ![Параметры OpsGenie](./media/active-directory-saas-opsgenie-tutorial/tutorial_opsgenie_08.png) 
 
-11. На странице диалогового окна Azure Active Directory выполните следующие действия:
+11. На странице диалогового окна hello Azure Active Directory выполните следующие шаги hello.
    
     ![Параметры OpsGenie](./media/active-directory-saas-opsgenie-tutorial/tutorial_opsgenie_09.png)
     
-    а. Вставьте **URL-адреса службы единого входа**, который вы скопировали с портала Azure, в текстовое поле **SAML 2.0 Endpoint** (Конечная точка SAML 2.0).
+    а. Вставить **на адрес службы единого**, которого вы скопировали из портала Azure hello в hello **конечная точка SAML 2.0** текстового поля.
     
-    b. Откройте скачанный сертификат в кодировке Base-64 в Блокноте, скопируйте его содержимое в буфер обмена, а затем вставьте его в текстовое поле **Сертификат X.500**.
+    b. Откройте загруженный сертификат в кодировке base-64 в блокноте, hello копирования содержимого его в буфер обмена, а затем вставьте его в hello **сертификат X.500** текстового поля.
     
     c. Нажмите кнопку **Сохранить изменения**.
 
 > [!TIP]
-> Краткую версию этих инструкций теперь можно также прочитать на [портале Azure](https://portal.azure.com) во время настройки приложения.  После добавления этого приложения из раздела **Active Directory > Корпоративные приложения** просто выберите вкладку **Единый вход** и откройте встроенную документацию через раздел **Настройка** в нижней части страницы. Дополнительные сведения о встроенной документации см. в разделе [Встроенная документация Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985).
+> Вы сможете прочитать четкими версии этих инструкций внутри hello [портал Azure](https://portal.azure.com), а вы настраиваете приложение hello!  После добавления этого приложения из hello **Active Directory > корпоративных приложений** просто щелкните hello **Single Sign-On** вкладку и доступа hello внедренных документации с помощью hello  **Конфигурация** раздела внизу hello. Вы можете прочитать больше о документации embedded функции hello здесь: [документации внедренных Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Создание тестового пользователя Azure AD
-Цель этого раздела — создать на портале Azure тестового пользователя с именем Britta Simon.
+Цель этого раздела Hello — toocreate тестового пользователя в hello вызывается Саймон Britta портал Azure.
 
 ![Создание пользователя Azure AD][100]
 
-**Чтобы создать тестового пользователя в Azure AD, выполните следующие действия:**
+**toocreate тестового пользователя в Azure AD, выполните следующие шаги hello.**
 
-1. На **портале Azure** в области навигации слева щелкните значок **Azure Active Directory**.
+1. В hello **портал Azure**, на левой панели навигации hello, нажмите кнопку **Azure Active Directory** значок.
 
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-opsgenie-tutorial/create_aaduser_01.png) 
 
-2. Чтобы отобразить список пользователей, перейдите в раздел **Пользователи и группы** и щелкните **Все пользователи**.
+2. hello toodisplay список пользователей, перейдите в слишком**пользователей и групп** и нажмите кнопку **всех пользователей**.
     
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-opsgenie-tutorial/create_aaduser_02.png) 
 
-3. Чтобы открыть диалоговое окно **Пользователь**, в верхней части диалогового окна щелкните **Добавить**.
+3. tooopen hello **пользователя** диалоговое окно, нажмите кнопку **добавить** в верхней части hello диалогового окна "hello".
  
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-opsgenie-tutorial/create_aaduser_03.png) 
 
-4. На странице диалогового окна **Пользователь** выполните следующие действия.
+4. На hello **пользователя** диалогового окна выполните следующие шаги hello:
  
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-opsgenie-tutorial/create_aaduser_04.png) 
 
-    а. В текстовом поле **Имя** введите **BrittaSimon**.
+    а. В hello **имя** введите **BrittaSimon**.
 
-    b. В текстовом поле **Имя пользователя** введите **адрес электронной почты** учетной записи BrittaSimon.
+    b. В hello **имя пользователя** в текстовое поле типа hello **адрес электронной почты** из BrittaSimon.
 
-    c. Выберите **Показать пароль** и запишите значение поля **Пароль**.
+    c. Выберите **Показать пароль** и запишите значение hello hello **пароль**.
 
     d. Щелкните **Создать**.
  
 ### <a name="creating-a-opsgenie-test-user"></a>Создание тестового пользователя OpsGenie
 
-Цель этого раздела — создать пользователя с именем Britta Simon в OpsGenie. 
+Цель этого раздела Hello — toocreate пользователя с именем Саймон Britta в OpsGenie. 
 
 1. В окне веб-браузера войдите в клиент OpsGenie с правами администратора.
 
-2. Перейдите к списку пользователей, щелкнув **Пользователь** на левой панели.
+2. Перейти, щелкнув список tooUsers **пользователя** на левой панели.
    
    ![Параметры OpsGenie](./media/active-directory-saas-opsgenie-tutorial/tutorial_opsgenie_10.png) 
 
 3. Нажмите кнопку **Add User**(Добавить пользователя).
 
-4. На странице **Добавление пользователя** выполните следующие действия.
+4. На hello **добавить пользователя** диалоговое окно, выполните следующие шаги hello:
    
    ![Параметры OpsGenie](./media/active-directory-saas-opsgenie-tutorial/tutorial_opsgenie_11.png)
    
-   а. В текстовом поле **Email** (Адрес электронной почты) введите адрес электронной почты пользователя Britta Simon в Azure Active Directory.
+   а. В hello **электронной почты** текстовом поле введите адрес электронной почты hello BrittaSimon в Azure Active Directory.
    
-   b. В текстовом поле **Full Name** (Полное имя) введите **Britta Simon**.
+   b. В hello **полное имя** введите **Britta Simon**.
    
    c. Щелкните **Сохранить**. 
 
 >[!NOTE]
 >Britta получит по электронной почте инструкции по настройке профиля.
 
-### <a name="assigning-the-azure-ad-test-user"></a>Назначение тестового пользователя Azure AD
+### <a name="assigning-hello-azure-ad-test-user"></a>Назначение hello Azure AD тестового пользователя
 
-В этом разделе описано, как разрешить пользователю Britta Simon использовать единый вход Azure путем предоставления доступа к OpsGenie.
+В этом разделе включите toouse Britta Simon Azure единого входа путем предоставления tooOpsGenie доступа.
 
 ![Назначение пользователя][200] 
 
-**Чтобы назначить пользователя Britta Simon в OpsGenie, выполните следующие действия.**
+**tooassign tooOpsGenie Britta Simon выполните следующие шаги hello.**
 
-1. На портале Azure откройте представление приложений, перейдите к представлению каталога, а затем выберите **Корпоративные приложения** и щелкните **Все приложения**.
+1. В hello портал Azure, откройте представление приложения hello, а затем перейдите toohello представления каталога и перейти слишком**корпоративных приложений** щелкните **все приложения**.
 
     ![Назначение пользователя][201] 
 
-2. Из списка приложений выберите **OpsGenie**.
+2. В списке приложений hello выберите **OpsGenie**.
 
     ![Настройка единого входа](./media/active-directory-saas-opsgenie-tutorial/tutorial_opsgenie_app.png) 
 
-3. В меню слева выберите **Пользователи и группы**.
+3. В меню слева hello hello выберите **пользователей и групп**.
 
     ![Назначение пользователя][202] 
 
@@ -232,7 +232,7 @@ ms.lasthandoff: 07/11/2017
 
     ![Назначение пользователя][203]
 
-5. В диалоговом окне **Пользователи и группы** в списке пользователей выберите **Britta Simon**.
+5. На **пользователей и групп** диалогового окна выберите **Britta Simon** в список пользователей hello.
 
 6. В диалоговом окне **Пользователи и группы** нажмите кнопку **Выбрать**.
 
@@ -240,13 +240,13 @@ ms.lasthandoff: 07/11/2017
     
 ### <a name="testing-single-sign-on"></a>Проверка единого входа
 
-Цель этого раздела — проверить конфигурацию единого входа Azure AD с помощью панели доступа.
+Цель этого раздела Hello является tootest конфигурации единого входа Azure AD с помощью панели доступа "hello".
 
-Щелкнув элемент OpsGenie на панели доступа, вы автоматически войдете в приложение OpsGenie.
+При нажатии кнопки hello OpsGenie плитки в панели доступа hello, вы должны получить автоматически вошедшего tooyour OpsGenie приложения.
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
-* [Список учебников по интеграции приложений SaaS с Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Список учебников по tooIntegrate приложений SaaS в Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Что такое доступ к приложениям и единый вход с помощью Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 <!--Image references-->

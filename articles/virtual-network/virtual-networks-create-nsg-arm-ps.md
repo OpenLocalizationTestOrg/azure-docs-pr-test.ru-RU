@@ -1,6 +1,6 @@
 ---
-title: "Создание групп безопасности сети с помощью Azure PowerShell | Документация Майкрософт"
-description: "Узнайте, как создавать и развертывать группы безопасности сети с помощью PowerShell."
+title: "aaaCreate сетевых групп безопасности - Azure PowerShell | Документы Microsoft"
+description: "Узнайте, как toocreate и развертывание сетевых групп безопасности с помощью PowerShell."
 services: virtual-network
 documentationcenter: na
 author: jimdial
@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 02/23/2016
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 26fe67b43d63c6685d8ae7644dd7df6931a4d2a5
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 1c8db773febb163d9cb010d23f2913b5ebe0fa94
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-network-security-groups-using-powershell"></a>Создание групп безопасности сети с помощью PowerShell
 
@@ -28,17 +28,17 @@ ms.lasthandoff: 07/11/2017
 
 [!INCLUDE [virtual-networks-create-nsg-intro-include](../../includes/virtual-networks-create-nsg-intro-include.md)]
 
-Azure предоставляет две модели развертывания: с помощью Azure Resource Manager и классическую. Для создания ресурсов корпорация Майкрософт рекомендует использовать модель развертывания с помощью Resource Manager. Дополнительные сведения о различиях между двумя моделями см. в статье [Azure Resource Manager vs. classic deployment: Understand deployment models and the state of your resources](../azure-resource-manager/resource-manager-deployment-model.md) (Azure Resource Manager и классическое развертывание. Общие сведения о моделях развертывания и состоянии ресурсов). В этой статье описывается модель развертывания с использованием менеджера ресурсов. Вы также можете [создавать группы безопасности сети с помощью классической модели развертывания](virtual-networks-create-nsg-classic-ps.md).
+Azure предоставляет две модели развертывания: с помощью Azure Resource Manager и классическую. Корпорация Майкрософт рекомендует создать ресурсы с помощью модели развертывания диспетчера ресурсов hello. Дополнительные сведения о toolearn hello различий между моделями hello двух чтения hello [модели развертывания Azure понять](../azure-resource-manager/resource-manager-deployment-model.md) статьи. В этой статье рассматриваются hello модели развертывания диспетчера ресурсов. Вы также можете [создать Nsg в hello классической модели развертывания](virtual-networks-create-nsg-classic-ps.md).
 
 [!INCLUDE [virtual-networks-create-nsg-scenario-include](../../includes/virtual-networks-create-nsg-scenario-include.md)]
 
-Для приведенных ниже примеров команд PowerShell требуется уже созданная простая среда, основанная на приведенном выше сценарии. Чтобы выполнять команды в том виде, в котором они представлены в этом документе, сначала создайте тестовую среду, развернув [этот шаблон](http://github.com/telmosampaio/azure-templates/tree/master/201-IaaS-WebFrontEnd-SQLBackEnd), нажмите **Deploy to Azure**(Развернуть в Azure), при необходимости замените значения параметров по умолчанию и следуйте указаниям на портале.
+Образец Hello PowerShell приведенную ниже команду ожидать простой среде уже создан на основании hello сценарии выше. Toorun hello команд, отображаемых в этом документе, сначала построения необходимо hello тестовой среды, развернув [этот шаблон](http://github.com/telmosampaio/azure-templates/tree/master/201-IaaS-WebFrontEnd-SQLBackEnd), нажмите кнопку **развертывание tooAzure**, замените значения параметров по умолчанию hello При необходимости и выполнения инструкции hello в hello портала.
 
-## <a name="how-to-create-the-nsg-for-the-front-end-subnet"></a>Как создавать сетевую группу безопасности для подсети переднего плана
-Чтобы создать группу безопасности сети под названием *NSG-FrontEnd* по описанному сценарию, выполните следующие действия:
+## <a name="how-toocreate-hello-nsg-for-hello-front-end-subnet"></a>Как toocreate hello NSG для подсети hello переднего плана
+toocreate NSG с именем *NSG-FrontEnd* в зависимости от сценария hello завершения hello следующие шаги:
 
-1. Если вы ранее не использовали Azure PowerShell, следуйте указаниям в статье [Установка и настройка Azure PowerShell](/powershell/azure/overview) до этапа входа в Azure и выбора подписки.
-2. Создайте правило безопасности, разрешающее доступ из Интернета к порту 3389.
+1. Если ранее не пользовались Azure PowerShell, см. раздел [как tooInstall и настройка Azure PowerShell](/powershell/azure/overview) и следуйте инструкциям hello все toohello hello способом завершения toosign в Azure и выберите свою подписку.
+2. Создаете правило безопасности, разрешающее доступ из Интернета hello tooport 3389.
 
     ```powershell
     $rule1 = New-AzureRmNetworkSecurityRuleConfig -Name rdp-rule -Description "Allow RDP" `
@@ -47,7 +47,7 @@ Azure предоставляет две модели развертывания:
     -DestinationAddressPrefix * -DestinationPortRange 3389
     ```
 
-3. Создайте правило безопасности, разрешающее доступ из Интернета к порту 80.
+3. Создаете правило безопасности, разрешающее доступ из Интернета hello tooport 80.
 
     ```powershell
     $rule2 = New-AzureRmNetworkSecurityRuleConfig -Name web-rule -Description "Allow HTTP" `
@@ -56,20 +56,20 @@ Azure предоставляет две модели развертывания:
     -DestinationPortRange 80
     ```
 
-4. Добавьте созданные выше правила в новую группу безопасности сети под названием **NSG-FrontEnd**.
+4. Добавить правила hello, созданной ранее с именем новой NSG tooa **NSG-FrontEnd**.
 
     ```powershell
     $nsg = New-AzureRmNetworkSecurityGroup -ResourceGroupName TestRG -Location westus `
     -Name "NSG-FrontEnd" -SecurityRules $rule1,$rule2
     ```
 
-5. Проверьте правила, созданные в группе безопасности сети, введя следующее:
+5. Проверка hello правила, созданные в hello NSG, введя hello следующее:
 
     ```powershell
     $nsg
     ```
    
-    В выходных данных отображаются только правила безопасности:
+    Выходные данные правил безопасности просто hello отображение:
    
         SecurityRules        : [
                                  {
@@ -103,7 +103,7 @@ Azure предоставляет две модели развертывания:
                                    "ProvisioningState": "Succeeded"
                                  }
                                ]
-6. Свяжите созданную выше группу безопасности сети с подсетью *FrontEnd* .
+6. Свяжите hello NSG созданной выше toohello *переднего плана* подсети.
 
     ```powershell
     $vnet = Get-AzureRmVirtualNetwork -ResourceGroupName TestRG -Name TestVNet
@@ -111,7 +111,7 @@ Azure предоставляет две модели развертывания:
     -AddressPrefix 192.168.1.0/24 -NetworkSecurityGroup $nsg
     ```
 
-    В выходных данных отображаются только параметры подсети *FrontEnd* (обратите внимание на значение свойства **NetworkSecurityGroup** ):
+    Выходные данные отображение только hello *переднего плана* настройки подсети, значение hello уведомления для hello **NetworkSecurityGroup** свойства:
    
                     Subnets           : [
                                           {
@@ -135,25 +135,25 @@ Azure предоставляет две модели развертывания:
                                           }
    
    > [!WARNING]
-   > Результаты выполнения представленной выше команды отображают содержимое объекта конфигурации виртуальной сети, который существует только на том компьютере, где выполняется PowerShell. Чтобы сохранить эти параметры в Azure, выполните командлет `Set-AzureRmVirtualNetwork`.
+   > Hello для приведенных выше команд hello видно содержимое hello hello объекта конфигурации виртуальной сети, который существует только на компьютере hello, где запускается PowerShell. Требуется toorun hello `Set-AzureRmVirtualNetwork` toosave командлет tooAzure эти параметры.
    > 
    > 
-7. Сохраните новые параметры виртуальной сети в Azure.
+7. Сохраните hello новой виртуальной сети параметры tooAzure.
 
     ```powershell
     Set-AzureRmVirtualNetwork -VirtualNetwork $vnet
     ```
 
-    В выходных данных отображается только часть, относящаяся к группе безопасности сети:
+    Выходные данные отображаются только часть NSG hello:
    
         "NetworkSecurityGroup": {
           "Id": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/TestRG/providers/Microsoft.Network/networkSecurityGroups/NSG-FrontEnd"
         }
 
-## <a name="how-to-create-the-nsg-for-the-back-end-subnet"></a>Как создать группу безопасности сети для серверной подсети
-Чтобы создать группу безопасности сети под названием *NSG-BackEnd* по описанному ранее сценарию, выполните следующие действия:
+## <a name="how-toocreate-hello-nsg-for-hello-back-end-subnet"></a>Как toocreate hello NSG для hello конечной подсети
+toocreate NSG с именем *NSG серверной* на основании выше сценарий hello, завершения hello следующие шаги:
 
-1. Создайте правило безопасности, которое разрешает доступ из интерфейсной подсети к порту 1433 (используемому по умолчанию в SQL Server).
+1. Создаете правило безопасности, разрешающее доступ из интерфейса подсети hello tooport 1433 (по умолчанию порт, используемый сервером SQL Server).
 
     ```powershell
     $rule1 = New-AzureRmNetworkSecurityRuleConfig -Name frontend-rule `
@@ -163,7 +163,7 @@ Azure предоставляет две модели развертывания:
     -DestinationAddressPrefix * -DestinationPortRange 1433
     ```
 
-2. Создайте правило безопасности, блокирующее доступ к Интернету.
+2. Создаете правило безопасности блокирует toohello доступа к Интернету.
 
     ```powershell
     $rule2 = New-AzureRmNetworkSecurityRuleConfig -Name web-rule `
@@ -173,7 +173,7 @@ Azure предоставляет две модели развертывания:
     -DestinationAddressPrefix Internet -DestinationPortRange *
     ```
 
-3. Добавьте созданные выше правила в новую группу безопасности сети под названием **NSG-BackEnd**.
+3. Добавить правила hello, созданной ранее с именем новой NSG tooa **NSG серверной**.
 
     ```powershell
     $nsg = New-AzureRmNetworkSecurityGroup -ResourceGroupName TestRG `
@@ -181,14 +181,14 @@ Azure предоставляет две модели развертывания:
     -SecurityRules $rule1,$rule2
     ```
 
-4. Свяжите созданную выше группу безопасности сети с подсетью *BackEnd* .
+4. Свяжите hello NSG созданной выше toohello *серверной* подсети.
 
     ```powershell
     Set-AzureRmVirtualNetworkSubnetConfig -VirtualNetwork $vnet -Name BackEnd ` 
     -AddressPrefix 192.168.2.0/24 -NetworkSecurityGroup $nsg
     ```
 
-    В выходных данных отображаются только параметры подсети *BackEnd* (обратите внимание на значение свойства **NetworkSecurityGroup** ):
+    Hello только Отображение выходных данных *серверной* настройки подсети, значение hello уведомления для hello **NetworkSecurityGroup** свойства:
    
         Subnets           : [
                       {
@@ -203,16 +203,16 @@ Azure предоставляет две модели развертывания:
                         "RouteTable": null,
                         "ProvisioningState": "Succeeded"
                       }
-5. Сохраните новые параметры виртуальной сети в Azure.
+5. Сохраните hello новой виртуальной сети параметры tooAzure.
 
     ```powershell
     Set-AzureRmVirtualNetwork -VirtualNetwork $vnet
     ```
 
-## <a name="how-to-remove-an-nsg"></a>Удаление группы безопасности сети
-Для удаления существующей группы безопасности сети (в данном случае это *NSG-Frontend*) выполните следующие шаги:
+## <a name="how-tooremove-an-nsg"></a>Как tooremove NSG
+toodelete существующей NSG, вызывается *NSG-Frontend* в этом случае выполните шаг hello ниже:
 
-Выполните команду **Remove-AzureRmNetworkSecurityGroup**, показанную ниже, и обязательно укажите группу ресурсов, в которой находится группа безопасности сети.
+Запустите hello **AzureRmNetworkSecurityGroup удаление** показано ниже и быть NSG находится в hello ресурсов группы, что tooinclude hello.
 
 ```powershell
 Remove-AzureRmNetworkSecurityGroup -Name "NSG-FrontEnd" -ResourceGroupName "TestRG"

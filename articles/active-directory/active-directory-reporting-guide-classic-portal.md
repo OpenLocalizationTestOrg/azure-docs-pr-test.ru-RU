@@ -1,6 +1,6 @@
 ---
-title: "Руководство по отчетам Azure Active Directory для классического портала | Документация Майкрософт"
-description: "Руководство, содержащее все статьи об отчетах Azure Active Directory для классического портала Azure."
+title: "aaaAzure Active Directory классического портала руководство по отчетам | Документы Microsoft"
+description: "Руководства, содержащий все статьи с отчетами Azure Active Directory для hello классический портал Azure"
 services: active-directory
 documentationcenter: 
 author: dhanyahk
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/16/2017
 ms.author: femila;markvi
-ms.openlocfilehash: aed80f667faad7eaa7fb9cb744e3061daa3ea61e
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 7efe79e0bf61ad055f5a1b302b0630250d1ab9da
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-active-directory-classic-portal-reporting-guide"></a>Руководство по отчетам Azure Active Directory для классического портала
 > [!div class="op_single_selector"]

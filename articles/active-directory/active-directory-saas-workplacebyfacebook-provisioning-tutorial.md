@@ -1,6 +1,6 @@
 ---
 title: "Руководство по интеграции Azure Active Directory с Workplace by Facebook | Документация Майкрософт"
-description: "Сведения о настройке единого входа между Azure Active Directory и Workplace by Facebook."
+description: "Узнайте, как tooconfigure единый вход между Azure Active Directory и рабочей области с Facebook."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,87 +13,87 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/19/2017
 ms.author: jeedes
-ms.openlocfilehash: 9b22679c304248ed7ba7a6bd9eaf82b64f7143cf
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 551ec353a5ec1da936373587688c299a6f4acca7
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="tutorial-configuring-workplace-by-facebook-for-user-provisioning"></a>Руководство по настройке Workplace by Facebook для подготовки пользователей
 
-Цель этого руководства — показать, как в Workplace by Facebook и Azure AD настроить автоматическую подготовку и отзыв учетных записей пользователей из Azure AD в Workplace by Facebook.
+Цель этого учебника Hello — tooshow hello действия, которые следует tooperform в рабочей области с Facebook и Azure AD tooautomatically подготовки и Отмена подготовки учетных записей пользователей из Azure AD tooWorkplace с Facebook.
 
 ## <a name="prerequisites"></a>Предварительные требования
 
-Чтобы настроить интеграцию Azure AD с Workplace by Facebook, вам потребуется:
+tooconfigure интеграция Azure AD в рабочей области с Facebook, требуется hello следующих элементов:
 
 - подписка Azure AD;
 - подписка Workplace by Facebook с поддержкой единого входа.
 
 > [!NOTE]
-> Мы не рекомендуем использовать рабочую среду для проверки действий в этом учебнике.
+> в этом учебнике шаги tootest hello, не рекомендуется в рабочей среде.
 
-При проверке действий в этом учебнике соблюдайте следующие рекомендации:
+tootest hello шаги в этом учебнике, необходимо следовать приведенным ниже рекомендациям:
 
 - Не используйте рабочую среду без необходимости.
 - Если у вас нет пробной среды Azure AD, вы можете получить пробную версию на один месяц по [этой ссылке](https://azure.microsoft.com/pricing/free-trial/).
 
-## <a name="assigning-users-to-workplace-by-facebook"></a>Назначение пользователей для Workplace by Facebook
+## <a name="assigning-users-tooworkplace-by-facebook"></a>Назначение пользователей tooWorkplace с Facebook
 
-В Azure Active Directory для определения того, какие пользователи должны получать доступ к выбранным приложениям, используется концепция, называемая "назначение". В контексте автоматической подготовки учетной записи будут синхронизированы только те записи и группы, которые были "назначены" приложению в Azure AD.
+Azure Active Directory использует называемый «назначения» toodetermine пользователей, которые должны получать доступ tooselected приложений. В контексте hello автоматический подготовки пользователей. учетной записи синхронизируются только hello пользователей и групп, назначенных» «tooan приложения в Azure AD.
 
-Перед настройкой и включением службы подготовки необходимо решить, какие пользователи или группы в Azure AD представляют пользователей, которым требуется доступ к приложению Workplace by Facebook. Приняв это решение, можно будет назначить этих пользователей для приложения Workplace by Facebook, выполнив следующие действия.
+Для настройки и включения hello подготовки службы, требуется toodecide какие пользователи или группы в Azure AD представляют Привет пользователей, которым требуется доступ tooyour рабочей области приложения Facebook. После приняла решение, можно назначить эти пользователи tooyour рабочей области, приложением Facebook в соответствии с инструкциями hello здесь:
 
-[Назначение корпоративному приложению пользователя или группы](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
+[Назначить пользователю или группе tooan корпоративного приложения](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
 
-### <a name="important-tips-for-assigning-users-to-workplace-by-facebook"></a>Важные советы по назначению пользователей в Workplace by Facebook
+### <a name="important-tips-for-assigning-users-tooworkplace-by-facebook"></a>Важные советы для назначения пользователей tooWorkplace с Facebook
 
-*   Рекомендуется назначить одного пользователя Azure AD в Workplace by Facebook для тестирования конфигурации подготовки. Дополнительные пользователи и/или группы можно назначить позднее.
+*   Рекомендуется один tooWorkplace назначен пользователь Azure AD путем настройки подготовки hello tootest Facebook. Дополнительные пользователи и/или группы можно назначить позднее.
 
-*   При назначении пользователя Workplace by Facebook необходимо выбрать допустимую роль пользователя. Роль "Доступ по умолчанию" не работает для подготовки.
+*   При назначении tooWorkplace пользователя с Facebook, необходимо выбрать допустимой роли пользователя. роль «Доступ по умолчанию» Hello не работает для подготовки.
 
 ## <a name="enable-user-provisioning"></a>Включение подготовки пользователей
 
-В этом разделе описывается подключение вашего каталога Azure AD к API подготовки учетных записей пользователей в Workplace by Facebook и настройка службы подготовки для создания, обновления и отключения назначенных учетных записей пользователей в Workplace by Facebook на основе назначения пользователей и групп в Azure AD.
+Этот раздел поможет выполнить подключение к Azure AD tooWorkplace учетной записью Facebook подготовки API и настройке подготовки службы toocreate hello, обновления и отключить учетные записи пользователей, назначенные в рабочей области с Facebook, на основе пользователя и группы Назначение в Azure AD.
 
 >[!Tip]
->Для Workplace by Facebook можно также включить единый вход на основе SAML. Для этого следуйте инструкциям, приведенным на [портале Azure](https://portal.azure.com). Единый вход можно настроить независимо от автоматической подготовки, хотя эти две возможности дополняют друг друга.
+>Можно также выбрать tooenabled на основе SAML Single Sign-On для рабочей области с Facebook, следуя инструкциям hello в [портал Azure](https://portal.azure.com). Единый вход можно настроить независимо от автоматической подготовки, хотя эти две возможности дополняют друг друга.
 
-### <a name="to-configure-user-account-provisioning-to-workplace-by-facebook-in-azure-ad"></a>Настройка подготовки учетных записей пользователей в Workplace by Facebook в Azure AD
+### <a name="tooconfigure-user-account-provisioning-tooworkplace-by-facebook-in-azure-ad"></a>tooconfigure учетная запись подготовки tooWorkplace с Facebook в Azure AD:
 
-В этом разделе описано, как включить подготовку учетных записей пользователей Active Directory для Workplace by Facebook.
+Цель этого раздела Hello является toooutline как tooenable Подготовка пользователя Active Directory учетных записей tooWorkplace с Facebook.
 
-Azure AD поддерживает автоматическую синхронизацию сведений об учетных записях назначенных пользователей с Workplace by Facebook. Эта автоматическая синхронизация позволяет Workplace by Facebook получить данные, необходимые для авторизации доступа пользователя до первого входа пользователя в систему. Она также отменяет подготовку пользователей для Workplace by Facebook, если доступ для них отозван в Azure AD.
+Azure AD поддерживается tooautomatically hello возможность синхронизировать данные для учетной записи hello назначить пользователей tooWorkplace с Facebook. Автоматический процесс синхронизации включает рабочей области по Facebook tooget hello данных tooauthorize пользователей для доступа, необходимые перед их выполнением toosign в для hello в первый раз. Она также отменяет подготовку пользователей для Workplace by Facebook, если доступ для них отозван в Azure AD.
 
-1. На [портале Azure](https://portal.azure.com) перейдите в раздел **Azure Active Directory** > **Корпоративные приложения** > **Все приложения**.
+1. В hello [портал Azure](https://portal.azure.com), Обзор toohello **Azure Active Directory** > **корпоративных приложений** > **всех приложений** раздела.
 
-2. Если в Workplace by Facebook уже настроен единый вход, найдите свой экземпляр Workplace by Facebook с помощью поля поиска. В противном случае щелкните **Добавить** и найдите **Workplace by Facebook** в коллекции приложений. Выберите Workplace by Facebook в результатах поиска и добавьте в список приложений.
+2. Если вы уже настроили рабочему месту с Facebook для единого входа, поиск экземпляра рабочей области с Facebook с помощью поля поиска hello. В противном случае выберите **добавить** и выполните поиск **рабочему месту с Facebook** в галерее приложения hello. Выбор рабочей области с Facebook из результатов поиска hello и добавьте его tooyour список приложений.
 
-3. Выберите экземпляр Workplace by Facebook, а затем перейдите на вкладку **Подготовка**.
+3. Выберите свой экземпляр рабочему месту с Facebook, а затем выберите hello **Provisioning** вкладки.
 
-4. Для параметра **Режим подготовки к работе** выберите значение **Automatic** (Автоматически). 
+4. Набор hello **режим подготовки** слишком**автоматического**. 
 
     ![подготовка](./media/active-directory-saas-workplacebyfacebook-provisioning-tutorial/provisioning.png)
 
-5. В разделе **Учетные данные администратора** введите секретный токен и URL-адрес клиента администратора Workplace by Facebook.
+5. В разделе hello **учетные данные администратора** статьи, введите секрет маркера hello и hello URL-адрес клиента рабочего места администратора Facebook.
 
-6. На портале Azure щелкните **Проверить подключение** и убедитесь, что Azure AD может подключиться к приложению Workplace by Facebook. Если подключение отсутствует, убедитесь, что у учетной записи Workplace by Facebook есть разрешения администратора команды.
+6. В hello портал Azure, щелкните **проверить подключение** tooensure Azure AD могут подключаться tooyour рабочей области приложения Facebook. При сбое подключения hello, убедитесь, что рабочую область с учетной записью Facebook имеет разрешения администратора команды.
 
-7. В поле **Почтовое уведомление** введите адрес электронной почты пользователя или группы, которые должны получать уведомления об ошибках подготовки, а также установите флажок.
+7. Введите адрес электронной почты hello пользователя или группы, которые должны получить уведомления о подготовке ошибки в hello **уведомление по электронной почте** поле и установите флажок "hello".
 
 8. Нажмите кнопку **Сохранить**.
 
-9. В разделе "Сопоставления" выберите **Synchronize Azure Active Directory Users to Workplace by Facebook** (Синхронизировать пользователей Azure Active Directory с Workplace by Facebook).
+9. Установите hello сопоставлений **tooWorkplace синхронизации Azure Active Directory-пользователи с Facebook.**
 
-10. В разделе **Сопоставления атрибутов** просмотрите пользовательские атрибуты, которые синхронизированы из Azure AD в Workplace by Facebook. Атрибуты, выбранные как свойства **Matching**, используются для сопоставления учетных записей пользователей в Workplace by Facebook для операций обновления. Нажмите кнопку "Сохранить", чтобы подтвердить все изменения.
+10. В hello **сопоставления атрибутов** просмотрите hello атрибутов пользователей, которые синхронизируются из tooWorkplace Azure AD с Facebook. Здравствуйте, атрибуты, выбранные в качестве **сопоставление** свойства, используемые toomatch hello учетных записей пользователей в рабочей области с Facebook для операций обновления. Выберите toocommit кнопку hello сохранить все изменения.
 
-11. Чтобы включить службу подготовки Azure AD для Workplace by Facebook, измените значение параметра **Состояние подготовки** на **Включено** в разделе **Настройки**.
+11. tooenable hello подготовки службы Azure AD для рабочей области с Facebook, изменение hello **состояние подготовки** слишком**на** в hello **параметры** раздела
 
 12. Нажмите кнопку **Сохранить**.
 
-Дополнительные сведения о настройке автоматической подготовки см. на странице [https://developers.facebook.com/docs/facebook-at-work/provisioning/cloud-providers](https://developers.facebook.com/docs/facebook-at-work/provisioning/cloud-providers).
+Дополнительные сведения о том, как tooconfigure автоматической подготовки, в разделе [https://developers.facebook.com/docs/facebook-at-work/provisioning/cloud-providers](https://developers.facebook.com/docs/facebook-at-work/provisioning/cloud-providers)
 
-Теперь можно создать тестовую учетную запись. Подождите примерно 20 минут, чтобы убедиться, что учетная запись была синхронизирована с Workplace by Facebook.
+Теперь можно создать тестовую учетную запись. Дождитесь копирование минут too20 tooverify, hello учетная запись была синхронизирована tooWorkplace с Facebook.
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 

@@ -1,8 +1,8 @@
 ---
-title: "Синхронизация Azure AD Connect: управление учетной записью службы Azure AD | Документация Майкрософт"
-description: "В этой статье описывается процедура восстановления учетной записи службы Azure AD."
+title: "Синхронизация Azure AD Connect: как учетная запись службы toomanage hello Azure AD | Документы Microsoft"
+description: "В этом разделе описываются, как учетная запись службы toorestore hello Azure AD."
 services: active-directory
-keywords: "AADSTS70002, AADSTS50054 Как сбросить пароль для учетной записи службы соединителя синхронизации Azure AD Connect"
+keywords: "AADSTS70002, AADSTS50054, как tooreset hello пароль для hello Azure AD Connect sync учетная запись службы соединителя"
 documentationcenter: 
 author: andkjell
 manager: femila
@@ -15,31 +15,31 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: billmath
-ms.openlocfilehash: 8e9e8192ee4fcb636b5be91d2616acbc9120c8c0
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: e563518eae173de42a1d40bb5a76e63f29f9da42
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="azure-ad-connect-sync-how-to-manage-the-azure-ad-service-account"></a>Синхронизация Azure AD Connect: управление учетной записью службы Azure AD
-Учетная запись службы, используемая соединителем Azure AD, как правило, не нуждается в обслуживании. Если требуется сбросить ее учетные данные, в этой статье вы найдете необходимые сведения. Например, это потребуется, если глобальный администратор по ошибке сбросит пароль учетной записи службы с помощью PowerShell.
+# <a name="azure-ad-connect-sync-how-toomanage-hello-azure-ad-service-account"></a>Синхронизация Azure AD Connect: как учетная запись службы toomanage hello Azure AD
+бесплатные службы toobe должен Hello учетной записи службы hello соединителя Azure AD. Если вам требуется tooreset свои учетные данные, этот раздел предназначен для вас. Например, если по ошибке сброс пароля hello hello учетной записи службы с помощью PowerShell имеет глобального администратора.
 
-## <a name="reset-the-credentials"></a>Сброс учетных данных
-Если учетная запись службы, определенная в соединителе Azure AD, не может связаться с Azure AD из-за проблем с проверкой подлинности, можно сбросить пароль.
+## <a name="reset-hello-credentials"></a>Сброс учетных данных hello
+Если учетная запись службы hello, определенные для hello соединителя Azure AD не удается связаться с Azure AD из-за проблем tooauthentication, можно сбросить пароль hello.
 
-1. Войдите на сервер синхронизации Azure AD Connect и запустите PowerShell.
+1. Войдите в сервер синхронизации Azure AD Connect toohello и запустите PowerShell.
 2. Запустите `Add-ADSyncAADServiceAccount`.  
    ![Командлет PowerShell addadsyncaadserviceaccount](./media/active-directory-aadconnectsync-howto-azureadaccount/addadsyncaadserviceaccount.png)
 3. Введите учетные данные глобального администратора Azure AD.
 
-Этот командлет сбрасывает пароль для учетной записи службы и обновляет его в Azure AD и в модуле синхронизации.
+Этот командлет сбрасывает hello пароль для учетной записи службы hello и обновить его в Azure AD и в модуле синхронизации hello.
 
 ## <a name="known-issues-these-steps-can-solve"></a>Известные проблемы, которые можно решить с помощью описанных действий
-Ниже представлен список обнаруженных пользователями ошибок, которые можно исправить путем сброса учетных данных учетной записи службы Azure AD.
+В этом разделе приведен список ошибок, обнаруженных командой клиентов, которые были исправлены при помощи учетных данных, сброс hello учетной записи службы Azure AD.
 
 - - -
 Событие 6900  
-Сервер обнаружил непредвиденную ошибку при обработке уведомления об изменении пароля.  
+Hello сервер обнаружил непредвиденную ошибку при обработке уведомления об изменении пароля:  
 AADSTS70002: ошибка при проверке учетных данных. AADSTS50054: старый пароль используется для проверки подлинности.
 
 - - -

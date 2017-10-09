@@ -12,87 +12,87 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
 ms.author: billmath
-ms.openlocfilehash: 048697f87383662506fb851bb3ea510c2cddf043
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: f9653dc44fb284a9b3c1988f623c33f27ae148cc
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 #  <a name="use-a-saml-20-identity-provider-idp-for-single-sign-on"></a>Использование поставщика удостоверений (IdP) SAML 2.0 для единого входа
 
-В этом разделе содержатся сведения об использовании поставщика удостоверений на основе профилей SP-Lite, совместимого с SAML 2.0, в качестве предпочитаемой службы токенов безопасности (STS) или поставщика удостоверений. Это полезно при наличии локального каталога пользователей и хранилища паролей, доступ к которым возможен с помощью SAML 2.0. Существующий каталог пользователей может использоваться для единого входа в Office 365 и другие ресурсы, защищенные с помощью Azure AD. Профиль SAML 2.0 SP-Lite основан на широко использующемся стандарте федеративных удостоверений SAML (Security Assertion Markup Language) для предоставления единого входа и структуры обмена атрибутами.
+Этот раздел содержит сведения об использовании SAML 2.0 совместимые профилей SP-Lite поставщиком удостоверений на основе как hello основной службы маркеров безопасности (STS) или поставщика удостоверений. Это полезно при наличии локального каталога пользователей и хранилища паролей, доступ к которым возможен с помощью SAML 2.0. Существующий каталог пользователей может использоваться для входа tooOffice 365 и другим ресурсам Azure AD защищены. Hello SAML 2.0 SP-Lite профиля основан на hello широко используемые Security Assertion Markup Language (SAML) федеративного удостоверения стандартные tooprovide входа и платформы обмена.
 
 >[!NOTE]
->Перечень сторонних поставщиков удостоверений, проверенных для использования в Azure AD см. в [списке совместимости с федерацией Azure AD](active-directory-aadconnect-federation-compatibility.md).
+>Список сторонних Idps, которые были протестированы для использования с Azure AD см hello [список совместимости федерации Azure AD](active-directory-aadconnect-federation-compatibility.md)
 
-Корпорация Майкрософт поддерживает систему единого входа путем интеграции облачной службы Майкрософт, например Office 365, с правильно настроенным поставщиком удостоверений на основе профилей SAML 2.0. Поставщики удостоверений SAML 2.0 — это сторонние продукты, поэтому корпорация Майкрософт не оказывает поддержку по развертыванию, настройке, устранению неполадок и предоставлению рекомендаций, касающихся их. После настройки интеграции с поставщиком удостоверений SAML 2.0 ее правильность можно протестировать с помощью анализатора подключений Майкрософт, который подробно описывается ниже. Для получения дополнительных сведений о своем поставщике удостоверений на основе профилей SAML 2.0 SP-Lite обратитесь в предоставившую его организацию.
+Корпорация Майкрософт поддерживает эти возможности входа как интеграция hello облачной службы Майкрософт, таких как Office 365, с помощью SAML 2.0 правильно настроенного профиля на основе поставщика удостоверений. Поставщики удостоверений SAML 2.0 — это сторонние продукты, и поэтому корпорация Майкрософт не поддерживает hello развертыванию, настройке, устранение неполадок рекомендациям относительно их. После правильной настройке hello интеграция с SAML 2.0 поставщик удостоверений можно проверить на наличие правильной конфигурации с помощью анализатора подключений Майкрософт описанного ниже более подробно hello hello. Дополнительные сведения о поставщика удостоверений на основе SAML 2.0 SP-Lite профиля попросите предоставившую его организацию hello.
 
 >[!IMPORTANT]
 >В этом сценарии единого входа с помощью поставщиков удостоверений SAML 2.0 доступен только ограниченный набор клиентов, в число которых входят приведенные далее.
 
 >- Веб-клиенты, такие как Outlook Web Access и SharePoint Online
-- Полнофункциональные почтовые клиенты, использующие базовую проверку подлинности и поддерживаемый метод доступа Exchange, такой как IMAP, POP, Active Sync, MAPI и т. д. (требуется развертывание конечной точки расширенного клиентского протокола), включая следующие:
+- Полнофункциональные почтовые клиенты, использующие обычную проверку подлинности и поддерживаемый метод доступа Exchange, таких как IMAP, POP, Active Sync, MAPI, т. д. (hello расширенного клиентского протокола конечной точки является обязательным toobe развертывания), в том числе:
     - Microsoft Outlook 2010/Outlook 2013/Outlook 2016, Apple iPhone (различные версии iOS);
     - различные устройства Google Android;
     - Windows Phone 7, Windows Phone 7.8 и Windows Phone 8.0;
     - почтовый клиент Windows 8 и Windows 8.1;
     - почтовый клиент Windows 10.
 
-Все остальные клиенты не поддерживаются в сценарии единого входа с помощью поставщика удостоверений SAML 2.0. Например, клиент Lync 2010 для настольных ПК не сможет войти в службу с помощью поставщика удостоверений SAML 2.0, настроенного для единого входа.
+Все остальные клиенты не поддерживаются в сценарии единого входа с помощью поставщика удостоверений SAML 2.0. Например клиент рабочего стола hello Lync 2010 не может toologin в службу hello с поставщиком удостоверений SAML 2.0, настроенного для единого входа.
 
 ## <a name="azure-ad-saml-20-protocol-requirements"></a>Требования Azure AD к протоколу SAML 2.0
-В этом разделе подробно описываются требования к протоколу и формату сообщений, которые поставщик удостоверений SAML 2.0 должен выполнять для федерации с Azure AD с целью обеспечения единого входа в одну или несколько облачных служб Майкрософт (таких как Office 365). Проверяющей стороной SAML 2.0 (SP-STS) для облачной службы Майкрософт в этом сценарии является Azure AD.
+Этот раздел содержит подробные требования на протоколе hello и форматирования, что поставщик удостоверений SAML 2.0 должен реализовывать toofederate с Azure AD tooenable входа tooone или несколько облачных служб Майкрософт (например, Office 365) сообщений. Hello SAML 2.0 проверяющей стороны (SP-STS) для облачной службы Майкрософт, используемая в этом сценарии используется Azure AD.
 
-Рекомендуется обеспечить максимальную схожесть выходных сообщений поставщика удостоверений SAML 2.0 с предоставленными образцами трассировки. Кроме того, по возможности используйте значения атрибутов из предоставленных метаданных Azure AD. Добившись требуемых выходных сообщений, проведите тестирование с помощью анализатора подключений Майкрософт, как описано ниже.
+Рекомендуется убедиться, быть выходных сообщений поставщика удостоверений, что аналогично toohello предоставленный образец трассировок можно SAML 2.0. Кроме того используйте значения атрибутов из hello предоставил метаданные Azure AD, где это возможно. После ввода требуемых выходных сообщений можно проверить с помощью анализатора подключений Майкрософт hello как описано ниже.
 
-Метаданные Azure AD можно скачать по следующему URL-адресу: [https://nexus.microsoftonline-p.com/federationmetadata/saml20/federationmetadata.xml](http://https://nexus.microsoftonline-p.com/federationmetadata/saml20/federationmetadata.xml).
-Клиентам, использующим экземпляр Office 365, предназначенный специально для Китая, следует использовать следующую конечную точку федерации: [https://nexus.partner.microsoftonline-p.cn/federationmetadata/saml20/federationmetadata.xml](https://nexus.partner.microsoftonline-p.cn/federationmetadata/saml20/federationmetadata.xml).
+метаданные Hello Azure AD можно загрузить на этот URL-адрес: [https://nexus.microsoftonline-p.com/federationmetadata/saml20/federationmetadata.xml](http://https://nexus.microsoftonline-p.com/federationmetadata/saml20/federationmetadata.xml).
+Можно использовать для клиентов в Китае, используя hello Китая экземпляр Office 365, следующая конечная точка федерации hello: [https://nexus.partner.microsoftonline-p.cn/federationmetadata/saml20/federationmetadata.xml](https://nexus.partner.microsoftonline-p.cn/federationmetadata/saml20/federationmetadata.xml).
 
 ## <a name="saml-protocol-requirements"></a>Требования к протоколу SAML
-В этом разделе подробно описывается, как составляются пары, состоящие из запроса и ответного сообщения. Это поможет вам правильно форматировать свои сообщения.
+Этот раздел описывает как hello пар сообщений запросов и ответов, объединить в порядке toohelp вы tooformat сообщений правильно.
 
-При настройке Azure AD для работы с поставщиками удостоверений, использующими профиль SAML 2.0 SP Lite, предъявляется ряд особых требований, которые приведены ниже. Используя образцы запросов и ответных сообщений SAML в сочетании с автоматическим и ручным тестированием, вы можете обеспечить взаимодействие с Azure AD.
+Azure AD может быть настроенный toowork с поставщиками удостоверений, использующими профиль SAML 2.0 SP Lite hello предъявляется ряд особых требований, указанных ниже. Используя образец SAML запроса и ответного сообщения приветствия вместе с автоматическим и ручным тестированием, вы можете работать tooachieve взаимодействие с Azure AD.
 
 ## <a name="signature-block-requirements"></a>Требования к блоку подписи
-В ответном сообщении SAML узел Signature содержит сведения о цифровой подписи самого сообщения. К блоку подписи предъявляются указанные ниже требования.
+В пределах hello ответ SAML узел Signature сообщение hello содержит сведения о hello цифровая подпись для само сообщение hello. Hello блоку подписи предъявляются следующие требования к hello:
 
-1. Узел утверждения должен быть подписан.
-2.  В качестве метода DigestMethod необходимо использовать алгоритм RSA-sha1. Другие алгоритмы цифровой подписи не допускаются.
+1. Hello узел утверждения должен быть подписан
+2.  как hello DigestMethod необходимо использовать алгоритм RSA-sha1 Hello. Другие алгоритмы цифровой подписи не допускаются.
    `<ds:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"/>`
-3.  Также можно подписать XML-документ. 
-4.  Значения алгоритма Transform Algorithm должны соответствовать приведенным в следующем примере: `<ds:Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/>
+3.  Также можно подписать hello XML-документа. 
+4.  Hello алгоритм преобразования должна соответствовать значениям hello в следующий образец hello:`<ds:Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/>
        <ds:Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/>`
-9.  Алгоритм SignatureMethod Algorithm должен соответствовать приведенному в следующем примере:`<ds:SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1"/>`
+9.  Алгоритм SignatureMethod Hello должны совпадать следующие образец hello:`<ds:SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1"/>`
 
 ## <a name="supported-bindings"></a>Поддерживаемые привязки
-Привязки — это обязательные параметры взаимодействия, связанные с транспортом. В отношении привязок действуют указанные ниже требования.
+Привязки-это транспорт hello связанные параметры взаимодействия, которые необходимы. Привет, следующие требования применяются toohello привязки
 
-1. HTTPS — это обязательный транспорт.
+1. HTTPS-transport необходимые hello.
 2.  Службе Azure AD потребуется запрос HTTP POST для отправки токена во время входа.
-3.  Служба Azure AD будет использовать метод HTTP POST для отправки запроса проверки подлинности поставщику удостоверений и метод REDIRECT для отправки ему сообщения о выходе.
+3.  Azure AD будет использовать HTTP POST для поставщика удостоверений toohello запрос проверки подлинности hello и ПЕРЕНАПРАВЛЕНИЯ для выхода из системы сообщение hello toohello-поставщика удостоверений.
 
 ## <a name="required-attributes"></a>Требуемые атрибуты
-В таблице ниже приведены требования к определенным атрибутам в сообщении SAML 2.0.
+В этой таблице перечислены требования к для атрибутов в сообщение hello SAML 2.0.
  
 |Атрибут|Описание|
 | ----- | ----- |
-|NameID|Значение этого утверждения должно совпадать с идентификатором ImmutableID пользователя в Azure AD. Это должно быть буквенно-цифровое значение длиной до 64 символов. Все небезопасные символы HTML должны кодироваться, например, символ "+" должен быть представлен как ".2B".|
-|IDPEmail|Имя субъекта-пользователя (UPN) приводится в ответе SAML в виде элемента с именем IDPEmail. Это атрибут UserPrincipalName (UPN) пользователя в Azure AD и Office 365. Имя субъекта-пользователя указывается в формате адреса электронной почты. Значение UPN в Windows Office 365 (Azure Active Directory).|
-|Издатель|Это должен быть универсальный код ресурса (URI) поставщика удостоверений. Не следует использовать значение Issuer из образцов сообщений. Если в клиентах Azure AD несколько доменов верхнего уровня, значение Issuer должно совпадать с универсальным кодом ресурса (URI), настроенным для домена.|
+|NameID|значение этого утверждения Hello должен hello совпадает с идентификатором ImmutableID пользователя hello Azure AD. Возможность ее too64 буквенно-цифровые символы. Все небезопасные символы HTML должны кодироваться, например, символ "+" должен быть представлен как ".2B".|
+|IDPEmail|Hello имя участника пользователя (UPN) указан в hello SAML ответа как элемент с hello именем IDPEmail это — UserPrincipalName hello пользователя (UPN) в Azure AD и Office 365. Hello имени участника-пользователя находится в формате адреса электронной почты. Значение UPN в Windows Office 365 (Azure Active Directory).|
+|Издатель|Это обязательный toobe URI поставщика удостоверений hello. Не следует использовать hello издателя из образцов сообщений hello. При наличии нескольких доменов верхнего уровня в вашей Issuer должно совпадать с приветствия клиентов Azure AD hello указанного URI, настроенным для домена.|
 
 >[!IMPORTANT]
->Сейчас Azure AD поддерживает следующий формат URI для атрибута NameID в SAML 2.0: urn:oasis:names:tc:SAML:2.0:nameid-format:persistent.
+>В настоящее время Azure AD поддерживает следующие URI формат идентификатора имени для SAML 2.0:urn:oasis:names:tc:SAML:2.0:nameid hello-формат: постоянно.
 
 ## <a name="sample-saml-request-and-response-messages"></a>Примеры сообщений SAML с запросом и ответом
-Ниже приведена пара сообщений, состоящая из запроса и ответа и используемая при обмене сообщениями единого входа.
-Это пример сообщения с запросом, отправляемого из Azure AD поставщику удостоверений SAML 2.0. Поставщик удостоверений SAML 2.0 в этом примере представляет собой службы федерации Active Directory (AD FS), настроенные для использования протокола SAML-P. Тестирование взаимодействия было выполнено и для других поставщиков удостоверений SAML 2.0.
+Для обмена сообщениями входа hello показан пару сообщений запросов и ответов.
+Это пример сообщения с запросом, полученном от поставщика удостоверений SAML 2.0 образец tooa Azure AD. Службы федерации Active Directory (AD FS) настроен протокол SAML-P toouse является поставщиком удостоверений SAML 2.0 Образец Hello. Тестирование взаимодействия было выполнено и для других поставщиков удостоверений SAML 2.0.
 
     `<samlp:AuthnRequest xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol" xmlns:saml="urn:oasis:names:tc:SAML:2.0:assertion" ID="_7171b0b2-19f2-4ba2-8f94-24b5e56b7f1e" IssueInstant="2014-01-30T16:18:35Z" Version="2.0" AssertionConsumerServiceIndex="0" >
     <saml:Issuer>urn:federation:MicrosoftOnline</saml:Issuer>
     <samlp:NameIDPolicy Format="urn:oasis:names:tc:SAML:2.0:nameid-format:persistent"/>
     </samlp:AuthnRequest>`
 
-Это пример ответного сообщения, отправляемого поставщиком удостоверений, совместимым с SAML 2.0, в Azure AD или Office 365.
+Это пример сообщения ответа, полученном от поставщика удостоверений, совместимым tooAzure AD hello образец SAML 2.0 и Office 365.
 
     `<samlp:Response ID="_592c022f-e85e-4d23-b55b-9141c95cd2a5" Version="2.0" IssueInstant="2014-01-31T15:36:31.357Z" Destination="https://login.microsoftonline.com/login.srf" Consent="urn:oasis:names:tc:SAML:2.0:consent:unspecified" InResponseTo="_049917a6-1183-42fd-a190-1d2cbaf9b144" xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol">
     <Issuer xmlns="urn:oasis:names:tc:SAML:2.0:assertion">http://WS2012R2-0.contoso.com/adfs/services/trust</Issuer>
@@ -146,60 +146,60 @@ ms.lasthandoff: 08/03/2017
     </samlp:Response>`
 
 ## <a name="configure-your-saml-20-compliant-identity-provider"></a>Настройка поставщика удостоверений, совместимого с SAML 2.0
-В этом разделе содержатся рекомендации по настройке поставщика удостоверений SAML 2.0 для федерации с Azure AD с целью обеспечения единого входа в одну или несколько облачных служб Майкрософт (таких как Office 365) по протоколу SAML 2.0. В качестве проверяющей стороны SAML 2.0 для облачной службы (Майкрософт) в этом сценарии используется Azure AD.
+В этом разделе содержатся рекомендации по как tooconfigure toofederate поставщика удостоверений вашей SAML 2.0, с Azure AD tooenable доступа-tooone или дополнительные Microsoft cloud services (например, Office 365) с помощью протокола hello SAML 2.0. Hello SAML 2.0 проверяющей стороной для облачной службы Майкрософт, используемая в этом сценарии используется Azure AD.
 
 ## <a name="add-azure-ad-metadata"></a>Добавление метаданных Azure AD
-Поставщик удостоверений SAML 2.0 должен придерживаться информации о проверяющей стороне Azure AD. Azure AD публикует метаданные в https://nexus.microsoftonline-p.com/federationmetadata/saml20/federationmetadata.xml.
+Поставщик удостоверений SAML 2.0 должен tooinformation tooadhere о доверяющей стороны hello Azure AD. Azure AD публикует метаданные в https://nexus.microsoftonline-p.com/federationmetadata/saml20/federationmetadata.xml.
 
-При настройке поставщика удостоверений SAML 2.0 рекомендуется всегда импортировать новейшие метаданные Azure AD. Имейте в виду, что служба Azure AD не считывает метаданные поставщика удостоверений.
+Рекомендуется всегда импортировать метаданные hello последнюю Azure AD при настройке поставщика удостоверений SAML 2.0. Обратите внимание, что Azure AD не считывает метаданные от поставщика удостоверений hello.
 
 ## <a name="add-azure-ad-as-a-relying-party"></a>Добавление Azure AD в качестве проверяющей стороны
-Необходимо включить обмен данными между поставщиком удостоверений SAML 2.0 и Azure AD. Эта конфигурация будет зависеть от используемого поставщика удостоверений. Обратитесь к документации по нему. Идентификатор проверяющей стороны, как правило, должен совпадать с идентификатором entityID, указанным в метаданных Azure AD.
+У вас есть tooenable обмен данными между поставщиком удостоверений SAML 2.0 и Azure AD. Эта конфигурация будет зависеть от используемого поставщика удостоверений, и вы должны обращаться toodocumentation для него. Hello проверяющей стороной идентификатор toohello обычно задается то же, что entityID hello из метаданных hello Azure AD.
 
 >[!NOTE]
->Убедитесь, что часы на сервере поставщика удостоверений SAML 2.0 синхронизированы с источником точного времени. Неточное время часов может приводить к ошибкам при выполнении федеративных входов.
+>Проверьте hello часов на сервере поставщика удостоверений SAML 2.0 синхронизированные tooan источника точного времени. Неточное время часов может привести к toofail федеративных входов.
 
 ## <a name="install-windows-powershell-for-sign-on-with-saml-20-identity-provider"></a>Установка Windows PowerShell для единого входа с помощью поставщика удостоверений SAML 2.0
-После настройки поставщика удостоверений SAML 2.0 для единого входа с помощью Azure AD далее необходимо загрузить и установить модуль Azure Active Directory для Windows PowerShell. После установки эти командлеты будут использоваться для настройки доменов Azure AD в качестве федеративных доменов.
+После настройки поставщика удостоверений SAML 2.0 для использования с входом Azure AD, следующим шагом hello является toodownload и установки hello Azure Active Directory модуля для Windows PowerShell. После установки будет использовать эти командлеты tooconfigure доменов Azure AD в качестве федеративных доменов.
 
-Модуль Azure Active Directory для Windows PowerShell — это загружаемый компонент для управления данными организации в Azure AD. Он устанавливает набор командлетов в Windows PowerShell, которые служат для настройки единого входа в Azure AD и далее во все облачные службы, на которые вы подписаны. Инструкции по загрузке и установке командлетов см. на странице по адресу: [http://technet.microsoft.com/library/jj151815.aspx](http://technet.microsoft.com/library/jj151815.aspx).
+Hello Azure Active Directory модуля для Windows PowerShell можно загрузить для управления данными организации в Azure AD. Этот модуль устанавливает набор командлетов tooWindows PowerShell; выполнить эти командлеты tooset копирование tooAzure единого входа для доступа к AD и в свою очередь tooall из hello облачных служб, которые вы подписаны. Инструкции о hello как toodownload и установка командлетов см. [http://technet.microsoft.com/library/jj151815.aspx](http://technet.microsoft.com/library/jj151815.aspx)
 
 ## <a name="set-up-a-trust-between-your-saml-identity-provider-and-azure-ad"></a>Настройка отношения доверия между поставщиком удостоверений SAML и Azure AD
-Перед настройкой федерации в домене Azure AD в нем должен быть настроен личный домен. Установить федерацию с доменом по умолчанию, предоставленным корпорацией Майкрософт, нельзя. Домен по умолчанию от корпорации Майкрософт заканчивается на onmicrosoft.com.
-Чтобы добавить или преобразовать домены для единого входа, вам потребуется выполнить ряд командлетов в интерфейсе командной строки PowerShell.
+Перед настройкой федерации в домене Azure AD в нем должен быть настроен личный домен. Не удается создать федерацию домен по умолчанию hello, предоставляемой корпорацией Майкрософт. домен по умолчанию Hello корпорации Майкрософт заканчивается на «onmicrosoft.com».
+Необходимо выполнить ряд командлетов в tooadd интерфейс командной строки Windows PowerShell hello или преобразовать домены для единого входа.
 
-Каждый домен Azure Active Directory, который необходимо включить в федерацию с помощью поставщика удостоверений SAML 2.0, должен быть добавлен как домен единого входа или преобразован из стандартного домена в домен единого входа. При добавлении или преобразовании домена между поставщиком удостоверений SAML 2.0 и Azure AD настраивается отношение доверия.
+Каждый домен Azure Active Directory, который вы хотите toofederate с помощью поставщика удостоверений SAML 2.0 необходимо выполнить одно из быть добавлен как домен единого входа или преобразованное toobe домен единого входа из стандартного домена. При добавлении или преобразовании домена между поставщиком удостоверений SAML 2.0 и Azure AD настраивается отношение доверия.
 
-В следующей процедуре содержатся указания по преобразованию существующего стандартного домена в федеративный домен с помощью SAML 2.0 SP-Lite. Имейте в виду, что после выполнения этого действия домен может стать недоступен для пользователей на срок до 2 часов.
+Hello следующая процедура поможет выполнить преобразование существующего стандартного домена tooa федеративного домена с помощью SAML 2.0 SP-Lite. Обратите внимание, что домен может стать сбоя, оказывает влияние на пользователей too2 часов после выполнения этого действия.
 
 ## <a name="configuring-a-domain-in-your-azure-ad-directory-for-federation"></a>Настройка домена в каталоге Azure AD для федерации
 
 
-1. Подключитесь к каталогу Azure AD в качестве администратора клиента: Connect-MsolService.
-2.  Настройте требуемый домен Office 365 для использования федерации с SAML 2.0: `$dom = "contoso.com" $BrandName - "Sample SAML 2.0 IDP" $LogOnUrl = "https://WS2012R2-0.contoso.com/passiveLogon" $LogOffUrl = "https://WS2012R2-0.contoso.com/passiveLogOff" $ecpUrl = "https://WS2012R2-0.contoso.com/PAOS" $MyURI = "urn:uri:MySamlp2IDP" $MySigningCert = @" MIIC7jCCAdagAwIBAgIQRrjsbFPaXIlOG3GTv50fkjANBgkqhkiG9w0BAQsFADAzMTEwLwYDVQQDEyh BREZTIFNpZ25pbmcgLSBXUzIwMTJSMi0wLnN3aW5mb3JtZXIuY29tMB4XDTE0MDEyMDE1MTY0MFoXDT E1MDEyMDE1MTY0MFowMzExMC8GA1UEAxMoQURGUyBTaWduaW5nIC0gV1MyMDEyUjItMC5zd2luZm9yb WVyLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAKe+rLVmXy1QwCwZwqgbbp1/kupQ VcjKuKLitVDbssFyqbDTjP7WRjlVMWAHBI3kgNT7oE362Gf2WMJFf1b0HcrsgLin7daRXpq4Qi6OA57 sW1YFMj3sqyuTP0eZV3S4+ZbDVob6amsZIdIwxaLP9Zfywg2bLsGnVldB0+XKedZwDbCLCVg+3ZWxd9 T/jV0hpLIIWr+LCOHqq8n8beJvlivgLmDJo8f+EITnAxWcsJUvVai/35AhHCUq9tc9sqMp5PWtabAEM b2AU72/QlX/72D2/NbGQq1BWYbqUpgpCZ2nSgvlWDHlCiUo//UGsvfox01kjTFlmqQInsJVfRxF5AcC AwEAATANBgkqhkiG9w0BAQsFAAOCAQEAi8c6C4zaTEc7aQiUgvnGQgCbMZbhUXXLGRpjvFLKaQzkwa9 eq7WLJibcSNyGXBa/SfT5wJgsm3TPKgSehGAOTirhcqHheZyvBObAScY7GOT+u9pVYp6raFrc7ez3c+ CGHeV/tNvy1hJNs12FYH4X+ZCNFIT9tprieR25NCdi5SWUbPZL0tVzJsHc1y92b2M2FxqRDohxQgJvy JOpcg2mSBzZZIkvDg7gfPSUXHVS1MQs0RHSbwq/XdQocUUhl9/e/YWCbNNxlM84BxFsBUok1dH/gzBy Sx+Fc8zYi7cOq9yaBT3RLT6cGmFGVYZJW4FyhPZOCLVNsLlnPQcX3dDg9A==" "@ $uri = "http://WS2012R2-0.contoso.com/adfs/services/trust" $Protocol = "SAMLP" Set-MsolDomainAuthentication -DomainName $dom -FederationBrandName $dom -Authentication Federated -PassiveLogOnUri $MyURI -ActiveLogOnUri $ecpUrl -SigningCertificate $MySigningCert -IssuerUri $uri -LogOffUri $url -PreferredAuthenticationProtocol $Protocol` 
+1. Tooyour каталог Azure AD администратор клиента подключения: подключение MsolService.
+2.  Настройка федерации toouse требуемый домен Office 365 с SAML 2.0:`$dom = "contoso.com" $BrandName - "Sample SAML 2.0 IDP" $LogOnUrl = "https://WS2012R2-0.contoso.com/passiveLogon" $LogOffUrl = "https://WS2012R2-0.contoso.com/passiveLogOff" $ecpUrl = "https://WS2012R2-0.contoso.com/PAOS" $MyURI = "urn:uri:MySamlp2IDP" $MySigningCert = @" MIIC7jCCAdagAwIBAgIQRrjsbFPaXIlOG3GTv50fkjANBgkqhkiG9w0BAQsFADAzMTEwLwYDVQQDEyh BREZTIFNpZ25pbmcgLSBXUzIwMTJSMi0wLnN3aW5mb3JtZXIuY29tMB4XDTE0MDEyMDE1MTY0MFoXDT E1MDEyMDE1MTY0MFowMzExMC8GA1UEAxMoQURGUyBTaWduaW5nIC0gV1MyMDEyUjItMC5zd2luZm9yb WVyLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAKe+rLVmXy1QwCwZwqgbbp1/kupQ VcjKuKLitVDbssFyqbDTjP7WRjlVMWAHBI3kgNT7oE362Gf2WMJFf1b0HcrsgLin7daRXpq4Qi6OA57 sW1YFMj3sqyuTP0eZV3S4+ZbDVob6amsZIdIwxaLP9Zfywg2bLsGnVldB0+XKedZwDbCLCVg+3ZWxd9 T/jV0hpLIIWr+LCOHqq8n8beJvlivgLmDJo8f+EITnAxWcsJUvVai/35AhHCUq9tc9sqMp5PWtabAEM b2AU72/QlX/72D2/NbGQq1BWYbqUpgpCZ2nSgvlWDHlCiUo//UGsvfox01kjTFlmqQInsJVfRxF5AcC AwEAATANBgkqhkiG9w0BAQsFAAOCAQEAi8c6C4zaTEc7aQiUgvnGQgCbMZbhUXXLGRpjvFLKaQzkwa9 eq7WLJibcSNyGXBa/SfT5wJgsm3TPKgSehGAOTirhcqHheZyvBObAScY7GOT+u9pVYp6raFrc7ez3c+ CGHeV/tNvy1hJNs12FYH4X+ZCNFIT9tprieR25NCdi5SWUbPZL0tVzJsHc1y92b2M2FxqRDohxQgJvy JOpcg2mSBzZZIkvDg7gfPSUXHVS1MQs0RHSbwq/XdQocUUhl9/e/YWCbNNxlM84BxFsBUok1dH/gzBy Sx+Fc8zYi7cOq9yaBT3RLT6cGmFGVYZJW4FyhPZOCLVNsLlnPQcX3dDg9A==" "@ $uri = "http://WS2012R2-0.contoso.com/adfs/services/trust" $Protocol = "SAMLP" Set-MsolDomainAuthentication -DomainName $dom -FederationBrandName $dom -Authentication Federated -PassiveLogOnUri $MyURI -ActiveLogOnUri $ecpUrl -SigningCertificate $MySigningCert -IssuerUri $uri -LogOffUri $url -PreferredAuthenticationProtocol $Protocol` 
 
-3.  Получить строку сертификата подписи в кодировке base64 можно из файла метаданных IDP. Пример его расположения приведен, но в зависимости от особенностей развертывания оно может быть немного иным.
+3.  Вы можете получить сертификат подписи в кодировке base64 из файла метаданных IDP hello. Пример его расположения приведен, но в зависимости от особенностей развертывания оно может быть немного иным.
 
     `<IDPSSODescriptor protocolSupportEnumeration="urn:oasis:names:tc:SAML:2.0:protocol"> <KeyDescriptor use="signing"> <KeyInfo xmlns="http://www.w3.org/2000/09/xmldsig#"> <X509Data> <X509Certificate>MIIC5jCCAc6gAwIBAgIQLnaxUPzay6ZJsC8HVv/QfTANBgkqhkiG9w0BAQsFADAvMS0wKwYDVQQDEyRBREZTIFNpZ25pbmcgLSBmcy50ZWNobGFiY2VudHJhbC5vcmcwHhcNMTMxMTA0MTgxMzMyWhcNMTQxMTA0MTgxMzMyWjAvMS0wKwYDVQQDEyRBREZTIFNpZ25pbmcgLSBmcy50ZWNobGFiY2VudHJhbC5vcmcwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCwMdVLTr5YTSRp+ccbSpuuFeXMfABD9mVCi2wtkRwC30TIyPdORz642MkurdxdPCWjwgJ0HW6TvXwcO9afH3OC5V//wEGDoNcI8PV4enCzTYFe/h//w51uqyv48Fbb3lEXs+aVl8155OAj2sO9IX64OJWKey82GQWK3g7LfhWWpp17j5bKpSd9DBH5pvrV+Q1ESU3mx71TEOvikHGCZYitEPywNeVMLRKrevdWI3FAhFjcCSO6nWDiMqCqiTDYOURXIcHVYTSof1YotkJ4tG6mP5Kpjzd4VQvnR7Pjb47nhIYG6iZ3mR1F85Ns9+hBWukQWNN2hcD/uGdPXhpdMVpBAgMBAAEwDQYJKoZIhvcNAQELBQADggEBAK7h7jF7wPzhZ1dPl4e+XMAr8I7TNbhgEU3+oxKyW/IioQbvZVw1mYVCbGq9Rsw4KE06eSMybqHln3w5EeBbLS0MEkApqHY+p68iRpguqa+W7UHKXXQVgPMCpqxMFKonX6VlSQOR64FgpBme2uG+LJ8reTgypEKspQIN0WvtPWmiq4zAwBp08hAacgv868c0MM4WbOYU0rzMIR6Q+ceGVRImlCwZ5b7XKp4mJZ9hlaRjeuyVrDuzBkzROSurX1OXoci08yJvhbtiBJLf3uPOJHrhjKRwIt2TnzS9ElgFZlJiDIA26Athe73n43CT0af2IG6yC7e6sK4L3NEXJrwwUZk=</X509Certificate> </X509Data> </KeyInfo> </KeyDescriptor>` 
 
 Дополнительные сведения о командлете Set-MsolDomainAuthentication см. на странице по адресу: [http://technet.microsoft.com/library/dn194112.aspx](http://technet.microsoft.com/library/dn194112.aspx).
 
 >[!NOTE]
->Использовать атрибут "$ecpUrl = "https://WS2012R2-0.contoso.com/PAOS"" следует только в том случае, если для поставщика удостоверений настраивается расширение ECP. Клиенты Exchange Online, исключая Outlook Web Application (OWA), используют активную конечную точку на основе метода POST. Если служба токенов безопасности SAML 2.0 реализует активную конечную точку, аналогичную реализации активной конечной точки с помощью расширения ECP для Shibboleth, эти полнофункциональные клиенты могут взаимодействовать со службой Exchange Online.
+>Использовать атрибут "$ecpUrl = "https://WS2012R2-0.contoso.com/PAOS"" следует только в том случае, если для поставщика удостоверений настраивается расширение ECP. Клиенты Exchange Online, исключая Outlook Web Application (OWA), используют активную конечную точку на основе метода POST. Если служба маркеров безопасности SAML 2.0 реализует активную конечную точку как tooShibboleth ECP реализации активной конечной точки может быть возможно, что эти клиенты с расширенными возможностями toointeract с hello службой Exchange Online.
 
-После настройки федерации можно вернуться к управляемой реализации (без поддержки федерации), однако на применение этого изменения требуется до двух часов, а каждому пользователю необходимо назначить новый случайный пароль для входа в облачные службы. Переключение к управляемой реализации может потребоваться в некоторых сценариях для сброса ошибочных параметров. Дополнительные сведения о преобразовании домена см. на странице по адресу: [http://msdn.microsoft.com/library/windowsazure/dn194122.aspx](http://msdn.microsoft.com/library/windowsazure/dn194122.aspx).
+После настройки федерации можно переключиться назад слишком «нефедеративных» (или «managed»), однако это изменение будет занимать toocomplete tootwo часов, а также требуется назначить новый случайный пароль для облака на основе tooeach входа пользователя. Обратное переключение слишком «managed» может быть требуется в некоторых сценариях tooreset ошибка в параметрах настройки. Дополнительные сведения о преобразовании домена см. на странице по адресу: [http://msdn.microsoft.com/library/windowsazure/dn194122.aspx](http://msdn.microsoft.com/library/windowsazure/dn194122.aspx).
 
-## <a name="provision-user-principals-to-azure-ad--office-365"></a>Подготовка субъектов-пользователей для Azure AD и Office 365
-Чтобы пользователи могли проходить проверку подлинности в Office 365, сначала нужно подготовить в Azure AD субъектов-пользователей, соответствующих утверждению в SAML 2.0. Если эти субъекты-пользователи заранее не известны службе Azure AD, их нельзя использовать для федеративного входа. Подготовить субъектов-пользователей можно с помощью Azure AD Connect или Windows PowerShell.
+## <a name="provision-user-principals-tooazure-ad--office-365"></a>Подготовить tooAzure участников пользователя AD и Office 365
+Прежде чем входить на пользователей tooOffice 365 Azure AD необходимо подготовить для участников, которые соответствуют toohello утверждению в SAML 2.0 hello утверждения пользователя. Если эти субъекты-пользователи не известны заранее tooAzure AD их нельзя использовать для федеративного входа в систему. Azure AD Connect или Windows PowerShell можно использовать tooprovision участников-пользователей.
 
-С помощью Azure AD Connect можно подготавливать субъектов-пользователей для доменов каталога Azure AD из локальной службы Active Directory. Дополнительные сведения см. в статье [Интеграция локальных каталогов с Azure Active Directory](active-directory-aadconnect.md).
+Azure AD Connect можно используется tooprovision участников tooyour доменах в каталоге Azure AD из hello локальной Active Directory. Дополнительные сведения см. в статье [Интеграция локальных каталогов с Azure Active Directory](active-directory-aadconnect.md).
 
-С помощью Windows PowerShell также можно автоматизировать добавление новых пользователей в Azure AD и синхронизировать изменения из локального каталога. Для использования командлетов Windows PowerShell необходимо скачать [модули Azure Active Directory](https://docs.microsoft.com/powershell/azure/install-adv2?view=azureadps-2.0).
+Windows PowerShell также можно использовать tooautomate, добавление новых пользователей tooAzure AD и toosynchronize меняется с локальным каталогом hello. hello toouse командлеты Windows PowerShell, необходимо загрузить hello [модули Azure Active Directory](https://docs.microsoft.com/powershell/azure/install-adv2?view=azureadps-2.0).
 
-Ниже приведена процедура добавления отдельного пользователя в Azure AD.
+Эта процедура показывает, как tooadd tooAzure одного пользователя AD.
 
 
-1. Подключитесь к каталогу Azure AD в качестве администратора клиента: Connect-MsolService.
+1. Tooyour каталог Azure AD администратор клиента подключения: подключение MsolService.
 2.  Создайте субъекта-пользователя: ` New-MsolUser
         -UserPrincipalName elwoodf1@contoso.com
         -ImmutableId ABCDEFG1234567890
@@ -213,55 +213,55 @@ ms.lasthandoff: 08/03/2017
 Дополнительные сведения о командлете New-MsolUser см. на странице по адресу: [http://technet.microsoft.com/library/dn194096.aspx](http://technet.microsoft.com/library/dn194096.aspx).
 
 >[!NOTE]
->Значение UserPrinciplName должно совпадать со значением, которое будет отправляться для атрибута IDPEmail в утверждении SAML 2.0, а значение ImmutableID должно совпадать со значением, отправляемым в утверждении NameID.
+>Здравствуйте, «UserPrinciplName» значение должно соответствовать значение hello, которое будет отправляться для атрибута «IDPEmail» в утверждении SAML 2.0 и hello «ImmutableID» значение должно соответствовать значение hello, отправляемый в утверждение «NameID».
 
 ## <a name="verify-single-sign-on-with-your-saml-20-idp"></a>Проверка единого входа с помощью поставщика удостоверений SAML 2.0
-Перед проверкой единого входа (также называемого федерацией удостоверений) и управлением им администратору следует ознакомиться с информацией и выполнить инструкции в указанных ниже статьях, чтобы настроить единый вход с помощью поставщика удостоверений на основе SAML 2.0 SP-Lite:
+Администратор hello перед проверкой и управления единым входом (также называемого федерацией удостоверений), просмотрите сведения hello и выполните действия hello в hello следующие статьи tooset копирование единого входа с помощью поставщика удостоверений на основе SAML 2.0 SP-Lite.
 
 
-1.  Ознакомление с требованиями к протоколу SAML 2.0 для Azure AD.
+1.  После знакомства с hello требования к протоколу Azure AD SAML 2.0
 2.  Настройки поставщика удостоверений SAML 2.0.
 3.  Установка Windows PowerShell для единого входа с помощью поставщика удостоверений SAML 2.0.
 4.  Настройка отношения доверия между поставщиком удостоверений SAML 2.0 и Azure AD.
-5.  Подготовка известного тестового субъекта-пользователя для Azure Active Directory (Office 365) с помощью Windows PowerShell или Azure AD Connect.
+5.  Подготовить основной tooAzure каталога пользователя тестового Active Directory (Office 365) через Windows PowerShell или Azure AD Connect.
 6.  Настройка синхронизации каталогов с помощью [Azure AD Connect](active-directory-aadconnect.md).
 
 После настройки единого входа с помощью поставщика удостоверений на основе SAML 2.0 SP-Lite следует проверить, правильно ли он работает.
 
 >[!NOTE]
->Если вместо добавления домен преобразуется, то для настройки единого входа может понадобиться до 24 часов.
+>Если был преобразован в домен, а не добавлен, может занять tooset часы too24 копирование единого входа.
 Перед проверкой единого входа следует завершить настройку синхронизации Active Directory, синхронизировать каталоги и активировать синхронизированных пользователей.
 
-### <a name="use-the-tool-to-verify-that-single-sign-on-has-been-set-up-correctly"></a>Проверка правильной настройки единого входа с помощью средства
-Чтобы проверить, правильно ли настроен единый вход, можно выполнить следующую процедуру, позволяющую подтвердить возможность входа в облачную службу с помощью корпоративных учетных данных.
+### <a name="use-hello-tool-tooverify-that-single-sign-on-has-been-set-up-correctly"></a>Используйте hello средство tooverify, единый вход настроен неправильно
+tooverify, единый вход настроен правильно, можно выполнить следующие tooconfirm процедуры, которые могут toosign в toohello облачной службе с помощью корпоративных учетных данных hello.
 
-Корпорация Майкрософт предоставляет средство, позволяющее протестировать поставщика удостоверений на основе SAML 2.0. Перед запуском средства тестирования должна быть настроена федерация клиента Azure AD с поставщиком удостоверений.
+Корпорация Майкрософт предоставляет средства, которые можно использовать tootest SAML 2.0 на основе поставщика удостоверений. Перед запуском hello тестирования инструмент, необходимо настроить toofederate клиента Azure AD с поставщиком удостоверений.
 
 >[!NOTE]
->Для работы анализатора подключений требуется браузер Internet Explorer 10 или более поздней версии.
+>Hello анализатора подключений требуется Internet Explorer 10 или более поздней версии.
 
 
 
-1. Скачать анализатор подключений можно на странице по адресу: [https://testconnectivity.microsoft.com/?tabid=Client](https://testconnectivity.microsoft.com/?tabid=Client).
-2.  Чтобы начать загрузку и установку средства, щелкните "Установить сейчас".
+1. Загрузка hello анализатор подключений, [https://testconnectivity.microsoft.com/?tabid=Client](https://testconnectivity.microsoft.com/?tabid=Client).
+2.  Нажмите кнопку Установить сейчас toobegin Загрузка и установка средства hello.
 3.  Выберите пункт "Не удается настроить федерацию с Office 365, Azure или другими службами, использующими Azure Active Directory".
-4.  После загрузки и запуска средства откроется окно "Диагностика подключений". Средство предоставляет пошаговые инструкции по тестированию подключения федерации.
-5.  Анализатор подключений откроет поставщика удостоверений SAML 2.0, чтобы вы могли выполнить вход. Введите учетные данные тестируемого субъекта-пользователя: ![SAML](media/active-directory-aadconnect-federation-saml-idp/saml1.png)
-6.  В диалоговом окне "Вход для выполнения тестирования федерации" следует ввести имя учетной записи и пароль клиента Azure AD, который настроен для федерации с поставщиком удостоверений SAML 2.0. Средство попытается выполнить вход, используя эти учетные данные, после чего выведет подробные результаты тестов, выполненных во время попытки входа.
+4.  После загрузки и запуска средства hello, вы увидите окно диагностики подключения hello. Hello средство предоставляет пошаговые инструкции по тестированию подключения федерации.
+5.  Hello анализатор подключений будет открыть поставщика Удостоверений SAML 2.0 вы toologon, введите учетные данные hello hello тестировании участника-пользователя: ![SAML](media/active-directory-aadconnect-federation-saml-idp/saml1.png)
+6.  По hello федерации Проверьте в окне входа следует ввести имя пользователя и пароль для клиента Azure AD hello, настроенных toobe федерации с поставщиком удостоверений SAML 2.0. Средство Hello попытается toosign в с использованием этих учетных данных и подробные результаты тестов, выполненных во время попытки входа hello будут представлены в виде выходных данных.
 ![SAML](media/active-directory-aadconnect-federation-saml-idp/saml2.png)
-7. В этом окне показано, что тест не пройден. Щелкнув ссылку "Просмотреть подробные результаты", можно просмотреть сведения о результатах каждого выполненного теста. Также можно сохранить результаты на диск, чтобы поделиться ими.
+7. В этом окне показано, что тест не пройден. Щелкнув просмотрите подробные результаты можно просмотреть сведения о hello результаты для каждого выполненного теста. Можно также сохранить результаты toodisk hello в порядке tooshare их.
  
 >[!NOTE]
->Кроме того, анализатор подключений тестирует активную федерацию с помощью протоколов на основе WS*, а также протоколов ECP и PAOS. Если они не используются, следующую ошибку можно игнорировать: "Тестируется поток активного входа с помощью конечной точки активной федерации вашего поставщика удостоверений".
+>Hello анализатор подключений также тестирует активную федерацию с помощью hello WS *-протоколы на основе и ECP и PAOS. Если вы не используете можно пренебречь hello следующая ошибка: тестирование hello активного потока входа, с помощью конечной точки активной федерации вашего поставщика удостоверений.
 
 ### <a name="manually-verify-that-single-sign-on-has-been-set-up-correctly"></a>Проверка правильной настройки единого входа с помощью средства
-Проверка вручную — это дополнительный способ, с помощью которого можно убедиться в том, что поставщик удостоверений SAML 2.0 работает правильно во многих сценариях.
-Чтобы проверить, правильно ли настроен единый вход, выполните указанные ниже действия.
+Ручная проверка — это дополнительные действия, которые можно предпринять tooensure, поставщик удостоверений SAML 2.0 работает правильно во многих сценариях.
+tooverify, единый вход настроен правильно, воспользуйтесь hello следующих шагов:
 
 
-1. На присоединенном к домену компьютере войдите в облачную службу, используя то же имя для входа, что и в ваших корпоративных учетных данных.
-2.  Щелкните в поле "Пароль". Если единый вход настроен, поле "Пароль" станет темнее и отобразится следующее сообщение: "Вам нужно войти на веб-сайт <your company>".
-3.  Щелкните ссылку "Войти на веб-сайт <your company>". Если вход возможен, то единый вход настроен.
+1. На компьютере, присоединенном к домену вход tooyour облачной службы, с помощью hello же имя, которое используется для корпоративных учетных данных входа в систему.
+2.  Щелкните в поле "пароль" hello. Если единый вход настроен, hello пароля будет неактивным и вы увидите следующие сообщение hello: «вы находитесь необходимые toosign в в <your company>.»
+3.  Нажмите кнопку hello войдите в систему в <your company> ссылку. Если вы не можете toosign в, затем единый вход настроен.
 
 ## <a name="next-steps"></a>Дальнейшие действия
 

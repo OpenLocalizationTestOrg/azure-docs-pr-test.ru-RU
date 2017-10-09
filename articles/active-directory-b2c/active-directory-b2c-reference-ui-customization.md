@@ -1,6 +1,6 @@
 ---
 title: "Azure AD B2C: настройка пользовательского интерфейса | Документация Майкрософт"
-description: "В этом разделе описаны возможности настройки пользовательского интерфейса в Azure Active Directory B2C"
+description: "Раздел на hello возможности настройки интерфейса пользователя в Azure Active Directory B2C"
 services: active-directory-b2c
 documentationcenter: 
 author: saeedakhter-msft
@@ -14,42 +14,42 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/16/2017
 ms.author: saeedakhter-msft
-ms.openlocfilehash: 122fa997ea11b369aae3c59edf0043ab19d21aea
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 04f8c5f1277f8d4409cd10971d22a0ebd2024785
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="azure-active-directory-b2c-customize-the-azure-ad-b2c-user-interface-ui"></a>Azure Active Directory B2C: настройка пользовательского интерфейса Azure AD B2C
+# <a name="azure-active-directory-b2c-customize-hello-azure-ad-b2c-user-interface-ui"></a>Azure Active Directory B2C: Настройка hello Azure AD B2C пользовательского интерфейса (UI)
 
-Взаимодействие с пользователем имеет первостепенную важность в клиентском приложении.  Создавайте решения с фирменной символикой и расширяйте клиентскую базу. Azure Active Directory B2C (Azure AD B2C) позволяет настраивать страницы регистрации, входа, изменения профиля и сброса пароля с идеальной точностью.
+Взаимодействие с пользователем имеет первостепенную важность в клиентском приложении.  Расширить клиентскую базу с создания пользовательских интерфейсов с hello внешний вид и поведение фирменного стиля. Azure Active Directory B2C (Azure AD B2C) позволяет настраивать страницы регистрации, входа, изменения профиля и сброса пароля с идеальной точностью.
 
 > [!NOTE]
-> Возможность настройки пользовательского интерфейса страницы, описанная в этой статье, не применяется к политике только для входа, связанной странице сброса пароля и проверочным сообщениям электронной почты.  Вместо этого в ней используется [функция настройки фирменной символики компании](../active-directory/active-directory-add-company-branding.md).
+> Hello пользовательского интерфейса страницы настройки компонент, описанный в этой статье не применяется toohello вход только политики, соответствующие страницы сброса пароля и проверки сообщений электронной почты.  Эти функции используют hello [функция фирменной символики компании](../active-directory/active-directory-add-company-branding.md) вместо него.
 >
 
-В этой статье рассматриваются следующие темы:
+В этой статье рассматриваются следующие вопросы hello:
 
-* Возможность настройки пользовательского интерфейса.
-* Инструмент для передачи HTML-содержимого в хранилище BLOB-объектов Azure, использующийся вместе с возможностью настройки страницы пользовательского интерфейса.
-* Элементы пользовательского интерфейса, используемые Azure AD B2C, которые можно настроить с помощью каскадных таблиц стилей (CSS).
+* функции настройки пользовательского интерфейса страницы приветствия.
+* Это средство для загрузки содержимого tooAzure HTML хранилища больших двоичных объектов для использования с возможностью настройки пользовательского интерфейса страницы приветствия.
+* Здравствуйте, элементы пользовательского интерфейса, используемые Azure AD B2C, можно настроить с помощью каскадных таблиц стилей (CSS).
 * рекомендации по использованию этих возможностей.
 
-## <a name="the-page-ui-customization-feature"></a>Возможность настройки пользовательского интерфейса
+## <a name="hello-page-ui-customization-feature"></a>функции настройки пользовательского интерфейса страницы приветствия
 
-Вы можете изменять внешний вид страниц регистрации, входа в систему, сброса пароля и изменения профиля клиента (за счет настройки [политик](active-directory-b2c-reference-policies.md)). При переходе между приложением и страницами, которые обслуживает Azure AD B2C, ваши клиенты не заметят никакой разницы в работе.
+Можно настроить hello внешний вид и поведение клиента регистрации и входа в систему пароль сброса и изменения профиля страниц (путем настройки [политики](active-directory-b2c-reference-policies.md)). При переходе между приложением и страницами, которые обслуживает Azure AD B2C, ваши клиенты не заметят никакой разницы в работе.
 
-В отличие от других служб с параметрами пользовательского интерфейса в Azure AD B2C предусмотрен простой и современный подход к настройке пользовательского интерфейса.
+В отличие от других служб, где параметры пользовательского интерфейса, использует Azure AD B2C простой и современный подход tooUI настройки.
 
-Вот как это работает. Служба Azure AD B2C выполняет код в браузере пользователя и использует современный метод — [общий доступ к ресурсам независимо от источника (CORS)](http://www.w3.org/TR/cors/).  Во время выполнения содержимое загружается с URL-адреса, указанного в политике. Для разных страниц можно указать разные URL-адреса. После объединения содержимого, загруженного с URL-адреса, с HTML-фрагментом, вставленным из Azure AD B2C, страница отображается клиенту. Что следует сделать.
+Вот как это работает. Служба Azure AD B2C выполняет код в браузере пользователя и использует современный метод — [общий доступ к ресурсам независимо от источника (CORS)](http://www.w3.org/TR/cors/).  Во время выполнения содержимое загружается с URL-адреса, указанного в политике. Для разных страниц можно указать разные URL-адреса. После содержимое, загруженное из URL-адрес, объединяется с HTML-фрагмент из Azure AD B2C, страница hello является отображаемых tooyour клиента. Все, что нужно toodo является:
 
-1. Создайте корректное содержимое HTML5 и добавьте в раздел `<body>` пустой элемент `<div id="api"></div>`. Этот элемент обозначает место, в которое будет добавляться содержимое Azure AD B2C.
+1. Создание содержимого с пустым корректный HTML5 `<div id="api"></div>` элемент, расположенный где-нибудь в hello `<body>`. Этот элемент метки, вставки hello Azure AD B2C содержимого.
 1. Затем разместите это содержимое в конечной точке HTTPS (CORS-доступ должен быть включен). Обратите внимание, что при настройке CORS необходимо включить методы запроса GET и OPTIONS.
-1. Измените стиль элементов пользовательского интерфейса, которые вставляет Azure AD B2C, с помощью каскадных таблиц стилей.
+1. Использование CSS toostyle hello элементы пользовательского интерфейса, вставляет Azure AD B2C.
 
 ### <a name="a-basic-example-of-customized-html"></a>Простой пример настраиваемого содержимого HTML
 
-В следующем примере показано самое простое содержимое HTML, которое можно использовать для тестирования этой возможности. Используйте [вспомогательный инструмент](active-directory-b2c-reference-ui-customization-helper-tool.md) для передачи и настройки содержимого в хранилище BLOB-объектов Azure. Вы можете убедиться, что базовые нестилизованные кнопки и поля форм на каждой странице отображаются и работают.
+Следующий пример Hello — самый простой HTML-содержимое hello, вы tootest эту возможность можно использовать. Используйте hello [вспомогательное средство](active-directory-b2c-reference-ui-customization-helper-tool.md) tooupload и настроить это содержимое в хранилище BLOB-объектов Azure. Вы можно убедиться, что hello basic, не являющихся стилизованные кнопки & полей формы на каждой странице отображается и работает.
 
 ```HTML
 <!DOCTYPE html>
@@ -63,21 +63,21 @@ ms.lasthandoff: 08/29/2017
 </html>
 ```
 
-## <a name="test-out-the-ui-customization-feature"></a>Тестирование возможности настройки пользовательского интерфейса
+## <a name="test-out-hello-ui-customization-feature"></a>Проверить hello функции настройки пользовательского интерфейса
 
-Хотите протестировать функцию настройки пользовательского интерфейса с помощью примера содержимого HTML и CSS?  Используйте [вспомогательный инструмент](active-directory-b2c-reference-ui-customization-helper-tool.md) для отправки и настройки примера содержимого в хранилище BLOB-объектов Azure.
+Требуется tootry out hello функции настройки пользовательского интерфейса с помощью наши примеры содержимого HTML и CSS?  Используйте [вспомогательный инструмент](active-directory-b2c-reference-ui-customization-helper-tool.md) для отправки и настройки примера содержимого в хранилище BLOB-объектов Azure.
 
 > [!NOTE]
-> Вы можете разместить содержимое пользовательского интерфейса в любом расположении: на веб-серверах, CDN, AWS S3, системах обмена файлами и т. д. После того как вы разместите содержимое на общедоступной конечной точке HTTPS (CORS-доступ должен быть включен), можете приступать к тестированию. Хранилище BLOB-объектов Azure используется исключительно в качестве примера.
+> Вы можете разместить содержимое пользовательского интерфейса в любом расположении: на веб-серверах, CDN, AWS S3, системах обмена файлами и т. д. До тех пор, пока hello содержимое размещается на общедоступные конечной точки HTTPS с CORS включен, вы являются хорошим toogo. Хранилище BLOB-объектов Azure используется исключительно в качестве примера.
 >
 
-## <a name="the-ui-fragments-embedded-by-azure-ad-b2c"></a>Фрагменты пользовательского интерфейса, внедренные с помощью Azure AD B2C
+## <a name="hello-ui-fragments-embedded-by-azure-ad-b2c"></a>Здравствуйте, внедренных в Azure AD B2C фрагментов пользовательского интерфейса
 
-В разделах ниже приведены фрагменты кода HTML5, которые служба Azure AD B2C добавляет в элемент `<div id="api"></div>` в вашем содержимом. **Не вставляйте эти фрагменты в содержимое HTML5.** Служба Azure AD B2C вставляет их в во время выполнения. Используйте их для справки при разработке собственных каскадных таблиц стилей (CSS).
+Hello следующих разделах перечислены фрагменты hello HTML5, Azure AD B2C объединяются hello `<div id="api"></div>` элемент, расположенный в содержимом. **Не вставляйте эти фрагменты в содержимое HTML5.** Служба Azure AD B2C Hello вставляет их в во время выполнения. Используйте их для справки при разработке собственных каскадных таблиц стилей (CSS).
 
-### <a name="fragment-inserted-into-the-identity-provider-selection-page"></a>Фрагмент, вставленный на страницу выбора поставщика удостоверений
+### <a name="fragment-inserted-into-hello-identity-provider-selection-page"></a>Фрагмент вставлена hello «Страница выбора поставщика удостоверений»
 
-На этой странице содержится список поставщиков удостоверений, которых можно выбирать во время регистрации или входа пользователя. На соответствующих кнопках отмечены поставщики удостоверений социальных сетей, например Facebook и Google+, или локальных учетных записей (адрес электронной почты или имя пользователя).
+Эта страница содержит перечень удостоверения, поставщики, которые hello пользователя можно выбрать во время регистрации или входа в систему. На соответствующих кнопках отмечены поставщики удостоверений социальных сетей, например Facebook и Google+, или локальных учетных записей (адрес электронной почты или имя пользователя).
 
 ```HTML
 <div id="api" data-name="IdpSelections">
@@ -101,18 +101,18 @@ ms.lasthandoff: 08/29/2017
 </div>
 ```
 
-### <a name="fragment-inserted-into-the-local-account-sign-up-page"></a>Фрагмент, вставленный на страницу регистрации локальной учетной записи
+### <a name="fragment-inserted-into-hello-local-account-sign-up-page"></a>Фрагмент вставлена hello «локальная учетная запись регистрации страница»
 
-Эта страница содержит форму для регистрации локальной учетной записи по адресу электронной почты или имени пользователя. Форма может содержать различные элементы управления для ввода текста, например: текстовое поле, поле ввода пароля, переключатель, раскрывающийся список с единственным выбором или флажки множественного выбора.
+Эта страница содержит форму для регистрации локальной учетной записи по адресу электронной почты или имени пользователя. Hello форма может содержать различные элементы управления для ввода как поле ввода текста, окне ввода пароля, переключатель, раскрывающихся списков выберите один и выбрать несколько флажков.
 
 ```HTML
 <div id="api" data-name="SelfAsserted">
     <div class="intro">
-        <p>Create your account by providing the following details</p>
+        <p>Create your account by providing hello following details</p>
     </div>
 
     <div id="attributeVerification">
-        <div class="errorText" id="passwordEntryMismatch" style="display: none;">The password entry fields do not match. Please enter the same password in both fields and try again.</div>
+        <div class="errorText" id="passwordEntryMismatch" style="display: none;">hello password entry fields do not match. Please enter hello same password in both fields and try again.</div>
         <div class="errorText" id="requiredFieldMissing" style="display: none;">A required field is missing. Please fill out all required fields and try again.</div>
         <div class="errorText" id="fieldIncorrect" style="display: none;">One or more fields are filled out incorrectly. Please check your entries and try again.</div>
         <div class="errorText" id="claimVerificationServerError" style="display: none;"></div>
@@ -122,17 +122,17 @@ ms.lasthandoff: 08/29/2017
                     <div class="attrEntry validate">
                         <div>
                             <div class="verificationInfoText" id="email_intro" style="display: inline;">Verification is necessary. Please click Send button.</div>
-                            <div class="verificationInfoText" id="email_info" style="display:none">Verification code has been sent to your inbox. Please copy it to the input box below.</div>
+                            <div class="verificationInfoText" id="email_info" style="display:none">Verification code has been sent tooyour inbox. Please copy it toohello input box below.</div>
                             <div class="verificationSuccessText" id="email_success" style="display:none">E-mail address verified. You can now continue.</div>
                             <div class="verificationErrorText" id="email_fail_retry" style="display:none">Incorrect code, try again.</div>
-                            <div class="verificationErrorText" id="email_fail_no_retry" style="display:none">Exceeded number of retries you need to send new code.</div>
+                            <div class="verificationErrorText" id="email_fail_no_retry" style="display:none">Exceeded number of retries you need toosend new code.</div>
                             <div class="verificationErrorText" id="email_fail_server" style="display:none">Server error, please try again</div>
                             <div class="verificationErrorText" id="email_incorrect_format" style="display:none">Incorect format.</div>
                         </div>
 
                     <div class="helpText show">This information is required</div>
                         <label>Email</label>
-                        <input id="email" class="textInput" type="text" placeholder="Email" required="" autofocus=""><a href="javascript:void(0)" onclick="selfAssertedClient.showHelp('Email address that can be used to contact you.');" class="tiny">What is this?</a>
+                        <input id="email" class="textInput" type="text" placeholder="Email" required="" autofocus=""><a href="javascript:void(0)" onclick="selfAssertedClient.showHelp('Email address that can be used toocontact you.');" class="tiny">What is this?</a>
 
                     <div class="buttons verify" claim_id="email">
                         <div id="email_ver_wait" class="working" style="display: none;"></div>
@@ -148,9 +148,9 @@ ms.lasthandoff: 08/29/2017
                 </li>
                 <li>
                     <div class="attrEntry">
-                        <div class="helpText">8-16 characters, containing 3 out of 4 of the following: Lowercase characters, uppercase characters, digits (0-9), and one or more of the following symbols: @ # $ % ^ &amp; * - _ + = [ ] { } | \ : ' , ? / ` ~ " ( ) ; .This information is required</div>
+                        <div class="helpText">8-16 characters, containing 3 out of 4 of hello following: Lowercase characters, uppercase characters, digits (0-9), and one or more of hello following symbols: @ # $ % ^ &amp; * - _ + = [ ] { } | \ : ' , ? / ` ~ " ( ) ; .This information is required</div>
                         <label>Enter password</label>
-                        <input id="password" class="textInput" type="password" placeholder="Enter password" pattern="^((?=.*[a-z])(?=.*[A-Z])(?=.*\d)|(?=.*[a-z])(?=.*[A-Z])(?=.*[^A-Za-z0-9])|(?=.*[a-z])(?=.*\d)(?=.*[^A-Za-z0-9])|(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z0-9]))([A-Za-z\d@#$%^&amp;*\-_+=[\]{}|\\:',?/`~&quot;();!]|\.(?!@)){8,16}$" title="8-16 characters, containing 3 out of 4 of the following: Lowercase characters, uppercase characters, digits (0-9), and one or more of the following symbols: @ # $ % ^ &amp; * - _ + = [ ] { } | \ : ' , ? / ` ~ &quot; ( ) ; ." required=""><a href="javascript:void(0)" onclick="selfAssertedClient.showHelp('Enter password');" class="tiny">What is this?</a>
+                        <input id="password" class="textInput" type="password" placeholder="Enter password" pattern="^((?=.*[a-z])(?=.*[A-Z])(?=.*\d)|(?=.*[a-z])(?=.*[A-Z])(?=.*[^A-Za-z0-9])|(?=.*[a-z])(?=.*\d)(?=.*[^A-Za-z0-9])|(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z0-9]))([A-Za-z\d@#$%^&amp;*\-_+=[\]{}|\\:',?/`~&quot;();!]|\.(?!@)){8,16}$" title="8-16 characters, containing 3 out of 4 of hello following: Lowercase characters, uppercase characters, digits (0-9), and one or more of hello following symbols: @ # $ % ^ &amp; * - _ + = [ ] { } | \ : ' , ? / ` ~ &quot; ( ) ; ." required=""><a href="javascript:void(0)" onclick="selfAssertedClient.showHelp('Enter password');" class="tiny">What is this?</a>
                     </div>
                 </li>
                 <li>
@@ -202,7 +202,7 @@ ms.lasthandoff: 08/29/2017
                     <div class="attrEntry">
                         <div class="helpText">This information is required</div>
                         <label>Zip code</label>
-                        <input id="postalCode" class="textInput" type="text" placeholder="Zip code" required=""><a href="javascript:void(0)" onclick="selfAssertedClient.showHelp('The postal code of your address.');" class="tiny">What is this?</a>
+                        <input id="postalCode" class="textInput" type="text" placeholder="Zip code" required=""><a href="javascript:void(0)" onclick="selfAssertedClient.showHelp('hello postal code of your address.');" class="tiny">What is this?</a>
                     </div>
                 </li>
             </ul>
@@ -216,11 +216,11 @@ ms.lasthandoff: 08/29/2017
 </div>
 ```
 
-### <a name="fragment-inserted-into-the-social-account-sign-up-page"></a>Фрагмент, вставленный на страницу регистрации учетной записи социальных сетей
+### <a name="fragment-inserted-into-hello-social-account-sign-up-page"></a>Фрагмент вставлена hello ««социального account "Регистрация"»
 
-Эта страница появляется при регистрации с помощью имеющейся учетной записи от поставщика удостоверений в социальных сетях, например Facebook или Google+.  Она используется, если нужно собрать дополнительные сведения о пользователе с использованием формы регистрации. Эта страница аналогична странице регистрации локальных учетных записей (см. предыдущий раздел), за исключением полей для ввода пароля.
+Эта страница появляется при регистрации с помощью имеющейся учетной записи от поставщика удостоверений в социальных сетях, например Facebook или Google+.  Он используется, когда Дополнительные сведения, которые должны собираться из hello конечного пользователя, используя форму регистрации. Данная страница является аналогичные toohello локальную учетную запись регистрации (показано в предыдущем разделе hello) за исключением hello hello полей ввода пароля.
 
-### <a name="fragment-inserted-into-the-unified-sign-up-or-sign-in-page"></a>Фрагмент, вставленный на единую страницу регистрации и входа
+### <a name="fragment-inserted-into-hello-unified-sign-up-or-sign-in-page"></a>Фрагмент вставлена hello «Единой регистрации или входа страница»
 
 На этой странице обрабатывается регистрация и вход клиентов, которые могут использовать поставщики удостоверений, такие как Facebook или Google+, или локальные учетные записи.
 
@@ -273,7 +273,7 @@ ms.lasthandoff: 08/29/2017
 </div>
 ```
 
-### <a name="fragment-inserted-into-the-multi-factor-authentication-page"></a>Фрагмент, вставленный на страницу Многофакторной идентификации
+### <a name="fragment-inserted-into-hello-multi-factor-authentication-page"></a>Фрагмент вставлена hello «страница многофакторной проверки подлинности»
 
 Эта страница позволяет пользователю подтвердить свой номер телефона (с помощью SMS-сообщения или голосового звонка) во время регистрации или входа.
 
@@ -281,7 +281,7 @@ ms.lasthandoff: 08/29/2017
 <div id="api" data-name="Phonefactor">
     <div id="phonefactor_initial">
         <div class="intro">
-            <p>Enter a number below that we can send a code via SMS or phone to authenticate you.</p>
+            <p>Enter a number below that we can send a code via SMS or phone tooauthenticate you.</p>
         </div>
         <div class="errorText" id="errorMessage" style="display:none"></div>
         <div class="phoneEntry" id="phoneEntry">
@@ -317,31 +317,31 @@ ms.lasthandoff: 08/29/2017
 </div>
 ```
 
-### <a name="fragment-inserted-into-the-error-page"></a>Фрагмент, вставленный на страницу ошибки
+### <a name="fragment-inserted-into-hello-error-page"></a>Фрагмент вставлена hello «Страница ошибки «»
 
 ```HTML
 <div id="api" class="error-page-content" data-name="GlobalException">
     <h2>Sorry, but we're having trouble signing you in.</h2>
-    <div class="error-page-help">We track these errors automatically, but if the problem persists feel free to contact us. In the meantime, please try again.</div>
+    <div class="error-page-help">We track these errors automatically, but if hello problem persists feel free toocontact us. In hello meantime, please try again.</div>
     <div class="error-page-messagedetails">Your administrator hasn't provided any contact details.</div>
     <div class="error-page-messagedetails">
         <div class="error-page-correlationid">Correlation ID:1c4f0397-c6e4-4afe-bf74-42f488f2f15f</div>
         <div>Timestamp:2015-09-14 23:22:35Z</div>
-        <div class="error-page-detail">AADB2C90065: A B2C client-side error 'Access is denied.' has occurred requesting the remote resource.</div>
+        <div class="error-page-detail">AADB2C90065: A B2C client-side error 'Access is denied.' has occurred requesting hello remote resource.</div>
     </div>
 </div>
 ```
 
 ## <a name="localizing-your-html-content"></a>Локализация содержимого HTML
 
-Вы можете локализовать содержимое HTML, включив [настройку языка](active-directory-b2c-reference-language-customization.md).  Таким образом, Azure AD B2C сможет переадресовать параметр подключения Open ID Connect, `ui-locales` на конечную точку.  Сервер содержимого может использовать этот параметр для предоставления настроенных страниц HTML на конкретном языке.
+Вы можете локализовать содержимое HTML, включив [настройку языка](active-directory-b2c-reference-language-customization.md).  Включение этой функции позволяет Azure AD B2C tooforward Привет открыть подключение идентификатор параметра, `ui-locales`, tooyour конечной точки.  Сервер содержимого можно использовать этот параметр настроить tooprovide HTML-страницы, зависят от языка.
 
-## <a name="things-to-remember-when-building-your-own-content"></a>Рекомендации по созданию собственного содержимого
+## <a name="things-tooremember-when-building-your-own-content"></a>Tooremember действия при построении собственного содержимого.
 
-Если вы планируете использовать возможности настройки пользовательского интерфейса страницы, изучите следующие рекомендации.
+При планировании функции настройки пользовательского интерфейса страницы приветствия toouse просмотрите hello следующие рекомендации:
 
-* Не копируйте стандартное содержимое Azure AD B2C и не пытайтесь изменить его. Лучше создать содержимое HTML5 с нуля, используя стандартное содержимое в качестве образца.
-* В целях безопасности мы запрещаем добавлять в содержимое какие-либо сценарии JavaScript. Большинство необходимых вам возможностей уже доступны. Если вам не хватает функций, сообщите нам, используя сайт [User Voice](https://feedback.azure.com/forums/169401-azure-active-directory/category/160596-b2c) .
+* Не копировать содержимое по умолчанию hello Azure AD B2C и попробуйте toomodify его. Он является наиболее toobuild HTML5 контента от нуля и toouse содержимого по умолчанию в качестве ссылки.
+* По соображениям безопасности не разрешается вы tooinclude любой JavaScript в содержимом. Большинство необходимых должна быть доступна стандартной hello. В противном случае используйте [User Voice](https://feedback.azure.com/forums/169401-azure-active-directory/category/160596-b2c) toorequest новые функциональные возможности.
 * Поддерживаемые версии браузеров:
   * Internet Explorer 11, 10, Edge
   * Ограниченная поддержка Internet Explorer 9, 8

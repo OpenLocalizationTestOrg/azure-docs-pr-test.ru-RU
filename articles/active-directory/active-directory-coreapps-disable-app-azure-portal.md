@@ -1,6 +1,6 @@
 ---
-title: "Отключение входа пользователя в корпоративное приложение в Azure Active Directory | Документы Майкрософт"
-description: "Узнайте, как в Azure Active Directory можно отключить корпоративное приложение, чтобы пользователи не могли войти в него."
+title: "aaaDisable пользователя войти в приложение в Azure Active Directory предприятия | Документы Microsoft"
+description: "Как toodisable приложения предприятия, чтобы пользователи не могут войти в tooit в Azure Active Directory"
 services: active-directory
 documentationcenter: 
 author: curtand
@@ -14,31 +14,31 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2017
 ms.author: curtand
-ms.openlocfilehash: 5d27046370eada0c371c94fb573fa1bcf536f7cf
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 4c560b59359d433b0852a7606cc2cc0204866234
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="disable-user-sign-ins-for-an-enterprise-app-in-azure-active-directory"></a>Отключение входа пользователя в корпоративное приложение в Azure Active Directory
-В Azure Active Directory (Azure AD) вы можете легко отключить корпоративное приложение, чтобы пользователи не могли войти в него. Необходимо иметь соответствующие разрешения для управления корпоративным приложением, а также права глобального администратора для доступа к каталогу.
+Это легко toodisable приложения предприятия, чтобы пользователи не могут войти в tooit в Azure Active Directory (Azure AD). Необходимо иметь hello соответствующие разрешения toomanage hello приложений и должен быть глобальным администратором для каталога hello.
 
 ## <a name="how-do-i-disable-user-sign-ins"></a>Как отключить вход пользователей?
-1. Войдите на [портал Azure](https://portal.azure.com) с помощью учетной записи глобального администратора каталога.
-2. Выберите **Другие службы**, введите **Azure Active Directory** в текстовое поле, а затем нажмите клавишу **ВВОД**.
-3. В колонке **Azure Active Directory** -  ***имя_каталога*** (то есть в колонке Azure AD для каталога, которым вы управляете) выберите **Корпоративные приложения**.
+1. Войдите в toohello [портал Azure](https://portal.azure.com) с помощью учетной записи глобального администратора каталога hello.
+2. Выберите **дополнительные службы**, введите **Azure Active Directory** в hello текстовое поле, а затем выберите **ввод**.
+3. На hello **Azure Active Directory** -  ***directoryname*** колонке (то есть hello Azure AD колонке hello каталога, вы управляете) выберите **корпоративных приложений**.
 
     ![Открытие колонки "Корпоративные приложения"](./media/active-directory-coreapps-disable-app-azure-portal/open-enterprise-apps.png)
-4. В колонке **Корпоративные приложения** выберите **Все приложения**. Отобразится список приложений, которыми можно управлять.
-5. В колонке **Корпоративные приложения — Все приложения** выберите приложение.
-6. В колонке ***имя_приложения*** (то есть в колонке с именем выбранного приложения в заголовке) выберите **Свойства**.
+4. На hello **корпоративных приложений** колонке выберите **все приложения**. Появится список hello приложений, которыми можно управлять.
+5. На hello **корпоративных приложений - все приложения** колонке выберите приложение.
+6. На hello ***appname*** колонке (то есть hello колонке с именем hello выбранного приложения hello в заголовок hello) выберите **свойства**.
 
-    ![Выбор команды "Все приложения"](./media/active-directory-coreapps-disable-app-azure-portal/select-app.png)
-7. В колонке ***имя_приложения*** - **Свойства** для параметра **Включен ли вход для пользователей?** выберите значение **Нет**.
-8. Щелкните **Сохранить** .
+    ![При выборе команды все приложения "hello"](./media/active-directory-coreapps-disable-app-azure-portal/select-app.png)
+7. На hello ***appname*** - **свойства** колонке выберите **нет** для **доступна для пользователей в toosign?**.
+8. Выберите hello **Сохранить** команды.
 
 ## <a name="next-steps"></a>Дальнейшие действия
 * [Просмотр всех моих групп](active-directory-groups-view-azure-portal.md)
-* [Назначение корпоративному приложению пользователя или группы](active-directory-coreapps-assign-user-azure-portal.md)
+* [Назначить пользователю или группе tooan корпоративного приложения](active-directory-coreapps-assign-user-azure-portal.md)
 * [Удаление назначения пользователя или группы из корпоративного приложения](active-directory-coreapps-remove-assignment-azure-portal.md)
-* [Изменение имени или логотипа корпоративного приложения](active-directory-coreapps-change-app-logo-user-azure-portal.md)
+* [Изменение имени hello или логотип корпоративного приложения](active-directory-coreapps-change-app-logo-user-azure-portal.md)

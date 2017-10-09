@@ -1,6 +1,6 @@
 ---
-title: "MV Designer Azure AD Connect | Документация Майкрософт"
-description: "Общие сведения о вкладке \"Metaverse Designer\" (Конструктор метавселенной) в Synchronization Service Manager для Azure AD Connect."
+title: "aaaAzure AD подключения конструктор MV | Документы Microsoft"
+description: "Понимать hello hello Synchronization Service Manager на вкладке конструктор метавселенной для Azure AD Connect."
 services: active-directory
 documentationcenter: 
 author: andkjell
@@ -15,19 +15,19 @@ ms.topic: article
 ms.date: 07/13/2017
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a7df245d41695dada42b0d1b267fbe9ef637ce13
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: ab8b0841aa28e335aa369828c90ca865c094654e
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="sync-service-manager-metaverse-designer"></a>Вкладка "Metaverse Designer" (Конструктор метавселенной) в Synchronization Service Manager
 
 ![Диспетчер службы синхронизации](./media/active-directory-aadconnectsync-service-manager-ui/mvdesigner.png)
 
-Для большинства клиентов здесь ничего не нужно настраивать.
+Для большинства клиентов нет ничего tooconfigure здесь.
 
 ## <a name="next-steps"></a>Дальнейшие действия
-Узнайте больше о настройке [службы синхронизации Azure AD Connect](active-directory-aadconnectsync-whatis.md) .
+Дополнительные сведения о hello [синхронизации Azure AD Connect](active-directory-aadconnectsync-whatis.md) конфигурации.
 
 Узнайте больше об [интеграции локальных удостоверений с Azure Active Directory](active-directory-aadconnect.md).

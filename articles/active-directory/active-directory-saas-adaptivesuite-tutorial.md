@@ -1,6 +1,6 @@
 ---
 title: "Руководство по интеграции Azure Active Directory с Adaptive Suite | Документация Майкрософт"
-description: "Узнайте, как настроить единый вход между Azure Active Directory и Adaptive Suite."
+description: "Узнайте, как tooconfigure единый вход между Azure Active Directory и адаптивной Suite."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,110 +13,110 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/22/2017
 ms.author: jeedes
-ms.openlocfilehash: 5d7ba2f4c7d814e3aaa1bf804ddc5030380ccb2d
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: af309c27ab74098c1e229c80adb11c96dc2774fb
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-adaptive-suite"></a>Руководство. Интеграция Azure Active Directory с Adaptive Suite
 
-В этом руководстве описано, как интегрировать Adaptive Suite с Azure Active Directory (Azure AD).
+В этом учебнике вы узнаете, как toointegrate адаптивной Suite с Azure Active Directory (Azure AD).
 
-Интеграция приложения Adaptive Suite с Azure AD обеспечивает следующие преимущества.
+Интеграция с Azure AD адаптивной Suite предоставляет hello следующие преимущества:
 
-- С помощью Azure AD вы можете контролировать, у кого есть доступ к приложению Adaptive Suite.
-- Вы можете включить автоматический вход пользователей в Adaptive Suite (единый вход) с учетной записью Azure AD.
-- Вы можете управлять учетными записями централизованно — через портал Azure.
+- Можно управлять в Azure AD, имеющего доступ tooAdaptive Suite
+- Можно включить на пользователей tooautomatically get вошедшего tooAdaptive набора (Single Sign-On) с помощью своих учетных записей Azure AD
+- Можно управлять учетными записями в одном централизованном месте - hello портал Azure
 
-Подробнее узнать об интеграции приложений SaaS с Azure AD можно в разделе [Что такое доступ к приложениям и единый вход с помощью Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Если tooknow Дополнительные сведения об интеграции приложений SaaS в Azure AD, см. [доступ к приложению и единый вход в Azure Active Directory](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Предварительные требования
 
-Чтобы настроить интеграцию Azure AD с Adaptive Suite, вам потребуется следующее:
+tooconfigure интеграция Azure AD с адаптивной Suite необходимо hello следующих элементов:
 
 - подписка Azure AD;
 - подписка Adaptive Suite с поддержкой единого входа.
 
 > [!NOTE]
-> Мы не рекомендуем использовать рабочую среду для проверки действий в этом учебнике.
+> в этом учебнике шаги tootest hello, не рекомендуется в рабочей среде.
 
-При проверке действий в этом учебнике соблюдайте следующие рекомендации:
+tootest hello шаги в этом учебнике, необходимо следовать приведенным ниже рекомендациям:
 
 - Не используйте рабочую среду без необходимости.
 - Если у вас нет пробной среды Azure AD, вы можете получить пробную версию на один месяц по [этой ссылке](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Описание сценария
-В рамках этого руководства проводится проверка единого входа Azure AD в тестовой среде. Сценарий, описанный в этом учебнике, состоит из двух основных блоков:
+В рамках этого руководства проводится проверка единого входа Azure AD в тестовой среде. Hello сценарий, описанный в этом учебнике состоит из двух основных компонентов:
 
-1. Добавление Adaptive Suite из коллекции.
+1. Добавление адаптивной набор из галереи hello
 2. Настройка и проверка единого входа в Azure AD
 
-## <a name="adding-adaptive-suite-from-the-gallery"></a>Добавление Adaptive Suite из коллекции
-Чтобы настроить интеграцию приложения Adaptive Suite с Azure AD, вам нужно добавить это приложение из коллекции в свой список управляемых приложений SaaS.
+## <a name="adding-adaptive-suite-from-hello-gallery"></a>Добавление адаптивной набор из галереи hello
+tooconfigure hello интеграции адаптивной Suite в Azure AD, вы должны tooadd адаптивной набор из списка tooyour коллекции hello управляемых приложений SaaS.
 
-**Добавление приложения Adaptive Suite из коллекции**
+**tooadd адаптивной набор из галереи hello выполните hello следующие шаги.**
 
-1. На **[портале Azure](https://portal.azure.com)** в области навигации слева щелкните значок **Azure Active Directory**. 
+1. В hello  **[портал Azure](https://portal.azure.com)**на левой навигационной панели hello, нажмите кнопку **Azure Active Directory** значок. 
 
     ![Active Directory][1]
 
-2. Перейдите к разделу **Корпоративные приложения**. Затем выберите **Все приложения**.
+2. Перейдите в слишком**корпоративных приложений**. Затем перейдите слишком**все приложения**.
 
     ![Приложения][2]
     
-3. Чтобы добавить новое приложение, в верхней части диалогового окна нажмите кнопку **Создать приложение**.
+3. tooadd новое приложение, нажмите кнопку **новое приложение** кнопку в верхней части hello диалогового окна.
 
     ![Приложения][3]
 
-4. В поле поиска введите **Adaptive Suite**.
+4. Введите в поле поиска hello **адаптивной Suite**.
 
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-adaptivesuite-tutorial/tutorial_adaptivesuite_search.png)
 
-5. На панели результатов выберите **Adaptive Suite** и нажмите кнопку **Добавить**, чтобы добавить приложение.
+5. В панели результатов hello выберите **адаптивной Suite**и нажмите кнопку **добавить** кнопку tooadd приложения hello.
 
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-adaptivesuite-tutorial/tutorial_adaptivesuite_addfromgallery.png)
 
 ##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Настройка и проверка единого входа в Azure AD
 В этом разделе описана настройка и проверка единого входа Azure AD в приложение Adaptive Suite с использованием тестового пользователя Britta Simon.
 
-Для работы единого входа службе Azure AD нужно знать, какой пользователь в Adaptive Suite соответствует пользователю в Azure AD. Иными словами, нужно установить связь между пользователем Azure AD и соответствующим пользователем в Adaptive Suite.
+Для единого входа toowork Azure AD необходима tooknow пользователь аналог какие hello в адаптивной Suite является tooa в Azure AD. Другими словами связи между пользователя Azure AD и связанных пользователей hello в адаптивной Suite должен установить toobe.
 
-Чтобы установить эту связь, назначьте **имя пользователя** в Azure AD в качестве значения **имени пользователя** в Adaptive Suite.
+Адаптивная пакета, присвойте значение hello hello **имя пользователя** в Azure AD в качестве значения hello hello **Username** tooestablish hello связи.
 
-Чтобы настроить и проверить единый вход Azure AD в Adaptive Suite, выполните следующие действия:
+tooconfigure и теста Azure AD единого входа с адаптивной Suite, требуются следующие стандартные блоки hello toocomplete:
 
-1. **[Настройка единого входа в Azure AD](#configuring-azure-ad-single-sign-on)** необходима, чтобы пользователи могли использовать эту функцию.
-2. **[Создание тестового пользователя Azure AD](#creating-an-azure-ad-test-user)** требуется для проверки работы единого входа Azure AD от имени пользователя Britta Simon.
-3. **[Создание тестового пользователя Adaptive Suite](#creating-an-adaptive-suite-test-user)** требуется для создания в Adaptive Suite пользователя Britta Simon, связанного с соответствующим пользователем в Azure AD.
-4. **[Назначение тестового пользователя Azure AD](#assigning-the-azure-ad-test-user)** необходимо, чтобы позволить Britta Simon использовать единый вход в Azure AD.
-5. **[Testing Single Sign-On](#testing-single-sign-on)** необходима, чтобы убедиться в корректной работе конфигурации.
+1. **[Настройка Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**  -tooenable вашей toouse пользователи этой функции.
+2. **[Создание тестового пользователя Azure AD](#creating-an-azure-ad-test-user)**  -tootest Azure AD единого входа с Саймон Britta.
+3. **[Создание тестового пользователя, прошедшего адаптивной Suite](#creating-an-adaptive-suite-test-user)**  -toohave аналог Саймон Britta адаптивной набора, представление связанных toohello Azure AD пользователя.
+4. **[Назначение hello Azure AD тестового пользователя](#assigning-the-azure-ad-test-user)**  -tooenable Britta Simon toouse Azure AD единым входом.
+5. **[Тестирование единого входа](#testing-single-sign-on)**  -tooverify ли hello works конфигурации.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Настройка единого входа в Azure AD
 
-В этом разделе мы включим на портале Azure единый вход Azure AD и настроим его в приложении Adaptive Suite.
+В этом разделе включения Azure AD единым входом в портал Azure hello и настройки единого входа в приложении адаптивной Suite.
 
-**Настройка единого входа Azure AD в Adaptive Suite**
+**tooconfigure Azure AD единого входа с адаптивной Suite выполните следующие шаги hello.**
 
-1. На портале Azure на странице интеграции с приложением **Adaptive Suite** щелкните **Единый вход**.
+1. В hello в hello портала Azure **адаптивной Suite** странице интеграции приложения щелкните **единого входа**.
 
     ![Настройка единого входа][4]
 
-2. В диалоговом окне **Единый вход** в разделе **Режим** выберите **Вход на основе SAML**, чтобы включить функцию единого входа.
+2. На hello **единого входа** диалогового окна выберите **режим** как **входа на базе SAML** tooenable единого входа.
  
     ![Настройка единого входа](./media/active-directory-saas-adaptivesuite-tutorial/tutorial_adaptivesuite_samlbase.png)
 
-3. В разделе **Домены и URL-адреса приложения Adaptive Suite** сделайте следующее.
+3. На hello **URL-адреса и домена адаптивной Suite** выполните следующие шаги hello:
 
     ![Настройка единого входа](./media/active-directory-saas-adaptivesuite-tutorial/tutorial_adaptivesuite_url.png)
 
-    В текстовом поле **URL-адрес ответа** введите URL-адрес в следующем формате: `https://login.adaptiveinsights.com:443/samlsso/<unique-id>`.
+    В hello **URL-адрес ответа** текстовом поле введите URL-адрес, используя следующий шаблон hello:`https://login.adaptiveinsights.com:443/samlsso/<unique-id>`
 
     >[!NOTE]
-    > Этот адрес можно узнать на странице **Параметры единого входа SAML** клиента Adaptive Suite.
+    > Это значение можно получить из hello адаптивной Suite **настройки единого входа SAML** страницы.
     >  
 
-4. В разделе **Сертификат для подписи токена SAML** щелкните **Certificate (Base64)** (Сертификат (Base64)), а затем сохраните файл сертификата на компьютере.
+4. На hello **сертификат подписи SAML** щелкните **сертификата (Base64)** и затем сохраните файл сертификата hello на вашем компьютере.
 
     ![Настройка единого входа](./media/active-directory-saas-adaptivesuite-tutorial/tutorial_adaptivesuite_certificate.png) 
 
@@ -124,35 +124,35 @@ ms.lasthandoff: 07/11/2017
 
     ![Настройка единого входа](./media/active-directory-saas-adaptivesuite-tutorial/tutorial_general_400.png)
 
-6. В разделе **Настройка Adaptive Suite** щелкните **Настроить Adaptive Suite**, чтобы открыть окно **Настройка единого входа**. Скопируйте **идентификатор сущности SAML и URL-адрес службы единого входа SAML** из раздела **Quick Reference** (Краткий справочник).
+6. На hello **адаптивной настройку пакета** щелкните **настройки адаптивной Suite** tooopen **Настройка входа** окна. Копировать hello **идентификатор сущности SAML и SAML единого входа URL-адрес службы** из hello **краткий справочник.**
 
     ![Настройка единого входа](./media/active-directory-saas-adaptivesuite-tutorial/tutorial_adaptivesuite_configure.png) 
 
-7. В другом окне веб-браузера войдите на корпоративный сайт Adaptive Suite с правами администратора.
+7. В другом окне браузера Войдите на сайте компании tooyour адаптивной Suite в качестве администратора.
 
-8. Откройте страницу **Администратор**.
+8. Go слишком**администратора**.
    
     ![Администратор](./media/active-directory-saas-adaptivesuite-tutorial/IC805644.png "Администратор")
 
-9. В разделе **Users and Roles** (Пользователи и роли) щелкните **Manage SAML SSO Settings** (Управление параметрами единого входа SAML).
+9. В hello **пользователям и ролям** щелкните **Управление параметрами единого входа SAML**.
    
     ![Управление параметрами единого входа SAML](./media/active-directory-saas-adaptivesuite-tutorial/IC805645.png "Управление параметрами единого входа SAML")
 
-10. На странице **SAML SSO Settings** (Параметры единого входа SAML) выполните следующие действия.
+10. На hello **настройки единого входа SAML** выполните следующие шаги hello:
    
     ![Параметры единого входа SAML](./media/active-directory-saas-adaptivesuite-tutorial/IC805646.png "Параметры единого входа SAML")
 
-    а. Введите имя конфигурации в текстовое поле **Identity provider name** (Имя поставщика удостоверений).
+    а. В hello **имя поставщика удостоверений** текстовом поле введите имя для конфигурации.
     
-    b. Вставьте значение **идентификатора сущности SAML**, скопированное с портала Azure, в текстовое поле **Identity provider Entity ID** (Идентификатор сущности поставщика удостоверений).
+    b. Вставить hello **идентификатор сущности SAML** значение копируется из портала Azure hello **поставщика удостоверений идентификатор сущности** текстового поля.
   
-    c. Вставьте значение **URL-адреса службы единого входа SAML**, скопированное с портала Azure, в текстовое поле **Identity provider SSO URL** (URL-адрес единого входа поставщика удостоверений).
+    c. Вставить hello **SAML единого входа URL-адрес службы** значение копируется из портала Azure hello **поставщика удостоверений URL-адрес SSO** текстового поля.
   
-    г) Вставьте значение **URL-адреса службы единого входа SAML**, скопированное с портала Azure, в текстовое поле **Custom logout URL** (Пользовательский URL-адрес для выхода).
+    d. Вставить hello **SAML единого входа URL-адрес службы** значение копируется из портала Azure hello **URL-адрес выхода Custom** текстового поля.
   
-    д. Чтобы отправить загруженный сертификат, нажмите кнопку **Выбрать файл**.
+    д. tooupload загруженный сертификат, нажмите кнопку **выбрать файл**.
   
-    f. Выберите следующие параметры:
+    f. Выберите следующие hello для:
     * Для параметра **SAML user id** (Идентификатор пользователя SAML) выберите значение **User’s Adaptive Insights user name** (Имя пользователя Adaptive Insights).
     * Для параметра **SAML user id location** (Расположение идентификатора пользователя SAML) выберите значение **User id in NameID of Subject** (Идентификатор пользователя из NameID в Subject).
     * Для параметра **SAML NameID format** (Формат NameID SAML) выберите значение **Адрес электронной почты**.
@@ -161,86 +161,86 @@ ms.lasthandoff: 07/11/2017
     g. Щелкните **Сохранить**.
 
 > [!TIP]
-> Краткую версию этих инструкций теперь можно также прочитать на [портале Azure](https://portal.azure.com) во время настройки приложения.  После добавления этого приложения из раздела **Active Directory > Корпоративные приложения** просто выберите вкладку **Единый вход** и откройте встроенную документацию через раздел **Настройка** в нижней части страницы. Дополнительные сведения о встроенной документации см. в разделе [Встроенная документация Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985).
+> Вы сможете прочитать четкими версии этих инструкций внутри hello [портал Azure](https://portal.azure.com), а вы настраиваете приложение hello!  После добавления этого приложения из hello **Active Directory > корпоративных приложений** просто щелкните hello **Single Sign-On** вкладку и доступа hello внедренных документации с помощью hello  **Конфигурация** раздела внизу hello. Вы можете прочитать больше о документации embedded функции hello здесь: [документации внедренных Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Создание тестового пользователя Azure AD
-Цель этого раздела — создать на портале Azure тестового пользователя с именем Britta Simon.
+Цель этого раздела Hello — toocreate тестового пользователя в hello вызывается Саймон Britta портал Azure.
 
 ![Создание пользователя Azure AD][100]
 
-**Чтобы создать тестового пользователя в Azure AD, выполните следующие действия:**
+**toocreate тестового пользователя в Azure AD, выполните следующие шаги hello.**
 
-1. На **портале Azure** в области навигации слева щелкните значок **Azure Active Directory**.
+1. В hello **портал Azure**, на левой панели навигации hello, нажмите кнопку **Azure Active Directory** значок.
 
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-adaptivesuite-tutorial/create_aaduser_01.png) 
 
-2. Чтобы отобразить список пользователей, перейдите в раздел **Пользователи и группы** и щелкните **Все пользователи**.
+2. hello toodisplay список пользователей, перейдите в слишком**пользователей и групп** и нажмите кнопку **всех пользователей**.
     
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-adaptivesuite-tutorial/create_aaduser_02.png) 
 
-3. Чтобы открыть диалоговое окно **Пользователь**, в верхней части диалогового окна щелкните **Добавить**.
+3. tooopen hello **пользователя** диалоговое окно, нажмите кнопку **добавить** в верхней части hello диалогового окна "hello".
  
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-adaptivesuite-tutorial/create_aaduser_03.png) 
 
-4. На странице диалогового окна **Пользователь** выполните следующие действия.
+4. На hello **пользователя** диалогового окна выполните следующие шаги hello:
  
     ![Создание тестового пользователя Azure AD](./media/active-directory-saas-adaptivesuite-tutorial/create_aaduser_04.png) 
 
-    а. В текстовом поле **Имя** введите **BrittaSimon**.
+    а. В hello **имя** введите **BrittaSimon**.
 
-    b. В текстовом поле **Имя пользователя** введите **адрес электронной почты** учетной записи BrittaSimon.
+    b. В hello **имя пользователя** в текстовое поле типа hello **адрес электронной почты** из BrittaSimon.
 
-    c. Выберите **Показать пароль** и запишите значение поля **Пароль**.
+    c. Выберите **Показать пароль** и запишите значение hello hello **пароль**.
 
     d. Щелкните **Создать**.
  
 ### <a name="creating-an-adaptive-suite-test-user"></a>Создание тестового пользователя Adaptive Suite
 
-Чтобы пользователи Azure AD могли выполнять вход в Adaptive Suite, их следует подготовить в Adaptive Suite.  
+Пользователи toolog tooenable Azure AD в tooAdaptive Suite, их необходимо подготовить в адаптивной набор.  
 
-* В случае Adaptive Suite подготовка выполняется вручную.
+* В случае hello адаптивной набора Подготовка выполняется вручную.
 
-**Чтобы настроить подготовку учетных записей пользователей, выполните следующие действия.** 
+**tooconfigure подготовки пользователей, выполните следующие шаги hello.** 
 
-1. Выполните вход на корпоративный веб-сайт **Adaptive Suite** в качестве администратора.
-2. Перейдите на страницу **Admin**(Администратор).
+1. Войдите в tooyour **адаптивной Suite** сайт компании от имени администратора.
+2. Go слишком**администратора**.
    
    ![Администратор](./media/active-directory-saas-adaptivesuite-tutorial/IC805644.png "Администратор")
-3. В разделе **Users and Roles** (Пользователи и роли) щелкните **Добавить пользователя**.
+3. В hello **пользователям и ролям** щелкните **добавить пользователя**.
    
    ![Добавление пользователя](./media/active-directory-saas-adaptivesuite-tutorial/IC805648.png "Добавление пользователя")
-4. В разделе **New User** (Новый пользователь) выполните следующие действия.
+4. В hello **нового пользователя** выполните следующие шаги hello:
    
    ![Отправка](./media/active-directory-saas-adaptivesuite-tutorial/IC805649.png "Отправка")   
 
-   а. Введите в текстовые поля **Name** (Имя), **Login** (Имя для входа), **Email** (Адрес электронной почты) и **Password** (Пароль) соответствующие данные действующего пользователя Azure Active Directory, для которого выполняется подготовка.
+   а. Тип hello **имя**, **входа**, **электронной почты**, **пароль** действительного пользователя Azure Active Directory требуется tooprovision в связанных hello текстовые поля.
   
    b. Выберите **Роль**.
   
    c. Нажмите кнопку **Submit**(Отправить).
 
 >[!NOTE]
->Вы можете использовать любые другие средства создания учетной записи пользователя Adaptive Suite или API, предоставляемые Adaptive Suite для подготовки учетных записей пользователя AAD.
+>Можно использовать любые другие адаптивной Suite пользователя средства создания учетных записей или интерфейсы API, предоставляемые tooprovision адаптивной набора учетных записей пользователей AAD.
 >  
 
-### <a name="assigning-the-azure-ad-test-user"></a>Назначение тестового пользователя Azure AD
+### <a name="assigning-hello-azure-ad-test-user"></a>Назначение hello Azure AD тестового пользователя
 
-В этом разделе мы разрешим пользователю Britta Simon использовать единый вход Azure, предоставив этому пользователю доступ к Adaptive Suite.
+В этом разделе включите toouse Britta Simon Azure единого входа путем предоставления доступа tooAdaptive Suite.
 
 ![Назначение пользователя][200] 
 
-**Назначение пользователя Britta Simon приложению Adaptive Suite**
+**tooassign tooAdaptive Britta Simon Suite, выполните hello следующие шаги.**
 
-1. На портале Azure откройте представление приложений, перейдите к представлению каталога, а затем выберите **Корпоративные приложения** и щелкните **Все приложения**.
+1. В hello портал Azure, откройте представление приложения hello, а затем перейдите toohello представления каталога и перейти слишком**корпоративных приложений** щелкните **все приложения**.
 
     ![Назначение пользователя][201] 
 
-2. В списке приложений выберите **Adaptive Suite**.
+2. В списке приложений hello выберите **адаптивной Suite**.
 
     ![Настройка единого входа](./media/active-directory-saas-adaptivesuite-tutorial/tutorial_adaptivesuite_app.png) 
 
-3. В меню слева выберите **Пользователи и группы**.
+3. В меню слева hello hello выберите **пользователей и групп**.
 
     ![Назначение пользователя][202] 
 
@@ -248,7 +248,7 @@ ms.lasthandoff: 07/11/2017
 
     ![Назначение пользователя][203]
 
-5. В диалоговом окне **Пользователи и группы** в списке пользователей выберите **Britta Simon**.
+5. На **пользователей и групп** диалогового окна выберите **Britta Simon** в список пользователей hello.
 
 6. В диалоговом окне **Пользователи и группы** нажмите кнопку **Выбрать**.
 
@@ -256,14 +256,14 @@ ms.lasthandoff: 07/11/2017
     
 ### <a name="testing-single-sign-on"></a>Проверка единого входа
 
-Цель этого раздела — проверить конфигурацию единого входа Microsoft Azure AD с помощью панели доступа.
+Цель этого раздела Hello является tootest к Microsoft Azure AD Single Sign-On конфигурации с помощью панели доступа "hello".
 
-Щелкнув плитку Adaptive Suite на панели доступа, вы автоматически войдете в приложение Adaptive Suite.
+При выборе плитки адаптивной Suite hello в hello панели доступа, вы должны получить tooyour автоматически вошедшего адаптивной набора приложений.
 
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
-* [Список учебников по интеграции приложений SaaS с Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Список учебников по tooIntegrate приложений SaaS в Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Что такое доступ к приложениям и единый вход с помощью Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 

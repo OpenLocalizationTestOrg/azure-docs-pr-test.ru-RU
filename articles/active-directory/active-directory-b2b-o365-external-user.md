@@ -1,5 +1,5 @@
 ---
-title: "Внешний общий доступ Office 365 и служба совместной работы Azure Active Directory B2B | Документация Майкрософт"
+title: "aaaOffice 365 внешний общий доступ и совместная работа Azure Active Directory B2B | Документы Microsoft"
 description: "Справочные материалы по сопоставлению утверждений для службы совместной работы Azure Active Directory B2B."
 services: active-directory
 documentationcenter: 
@@ -15,27 +15,27 @@ ms.tgt_pltfrm: NA
 ms.workload: identity
 ms.date: 05/24/2017
 ms.author: sasubram
-ms.openlocfilehash: cad0ce8f745f3d6ca14436fd714b08c60de0e459
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 60452b27b328453eda729bd839c982b479cb6f1b
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="office-365-external-sharing-and-azure-active-directory-b2b-collaboration"></a>Внешний общий доступ Office 365 и служба совместной работы Azure Active Directory B2B
 
-Внешний общий доступ в Office 365 (OneDrive, SharePoint Online, единые группы и т. д.) и служба совместной работы Azure Active Directory (Azure AD) B2B — это одно и то же с технической точки зрения. Все решения внешнего общего доступа (за исключением OneDrive и SharePoint Online), в том числе гости в группах Office 365, уже используют для общего доступа API приглашения службы совместной работы Azure AD B2B.
+Внешний общий доступ в Office 365 (OneDrive, SharePoint Online, объединенные группы, т. д.) и Azure Active Directory (Azure AD) B2B совместной работы с технической точки зрения hello же самое. Всем внешним доступом (за исключением OneDrive или SharePoint Online), включая гостей в группах Office 365, уже использует приглашения совместной работы Azure AD B2B hello API-интерфейсы для управления доступом.
 
-В OneDrive и SharePoint Online используется другой диспетчер приглашений. Поддержка внешнего общего доступа в OneDrive и SharePoint Online была реализована до того, как ее внедрили в Azure AD. Со временем функция внешнего общего доступа OneDrive и SharePoint Online обросла дополнительными компонентами, и миллионы пользователей используют встроенную модель общего доступа этого продукта. Однако существуют незначительные различия в принципах работы внешнего общего доступа OneDrive и SharePoint Online и службы совместной работы Azure AD B2B:
+В OneDrive и SharePoint Online используется другой диспетчер приглашений. Поддержка внешнего общего доступа в OneDrive и SharePoint Online была реализована до того, как ее внедрили в Azure AD. Со временем общий доступ к OneDrive или SharePoint Online внешних начисленная несколько функций и несколько миллионов пользователей, применяющих hello продукта встроенные общий доступ к шаблону. Однако существуют незначительные различия в принципах работы внешнего общего доступа OneDrive и SharePoint Online и службы совместной работы Azure AD B2B:
 
-- OneDrive и SharePoint Online добавляют пользователей в каталог после того, как пользователи активировали приглашения. Таким образом, до активации вы не видите пользователя на портале Azure AD. В то же время если пользователь приглашается из другого сайта, то создается новое приглашение. При использовании службы совместной работы Azure AD B2B пользователь добавляется непосредственно после отправки приглашения, поэтому он сразу везде отображается.
+- OneDrive или SharePoint Online пользователи toohello каталог добавляется после пользователи активирован приглашения. Таким образом прежде чем активации, вы не видите hello пользователя на портале Azure AD. Если другой сайт приглашает пользователя в hello это время, создается новое приглашение. При использовании службы совместной работы Azure AD B2B пользователь добавляется непосредственно после отправки приглашения, поэтому он сразу везде отображается.
 
-- Процесс активации приглашения в OneDrive и SharePoint Online отличается от аналогичной процедуры в службе совместной работы Azure AD B2B. После того как пользователь активирует приглашение, интерфейсы будут выглядеть одинаково.
+- взаимодействие активации Hello в OneDrive или SharePoint Online отличается от работы hello в совместной работы Azure AD B2B. После пользователь redeems приглашение, hello взаимодействия выглядят одинаково.
 
 - Пользователей, приглашенных в службу совместной работы Azure AD B2B, можно выбирать в диалоговых окнах общего доступа OneDrive и SharePoint Online. Приглашенные пользователи OneDrive и SharePoint Online также отображаются в Azure AD после того, как они активируют свои приглашения.
 
-- Чтобы управлять внешним общим доступом в OneDrive и SharePoint Online с помощью службы совместной работы Azure AD B2B, задайте для параметра внешнего общего доступа OneDrive и SharePoint Online значение **Only allow sharing with external users already in the directory** (Разрешить общий доступ только внешним пользователям, которые уже внесены в каталог). Пользователи могут перейти на внешние сайты, предоставляющие общий доступ, и выбрать из внешних сотрудников, добавленных администратором. Администратор может добавлять внешних сотрудников с помощью интерфейсов API приглашения службы совместной работы B2B.
+- toomanage внешнего совместного использования в OneDrive или SharePoint Online с Azure AD B2B совместной работы, задайте hello OneDrive или SharePoint Online внешнего совместного использования задание слишком**только открыть доступ для внешних пользователей уже в каталоге hello**. Пользователи могут перейти tooexternally общих сайтов и выбора с внешними участниками, Здравствуйте, администратор добавил. Здравствуйте, администратор может добавить hello внешними участниками через hello приглашения совместной работы B2B API-интерфейсы.
 
-![Настройка внешнего общего доступа в OneDrive и SharePoint Online](media/active-directory-b2b-o365-external-user/odsp-sharing-setting.png)
+![OneDrive или SharePoint Online настройки общего доступа к внешней Hello](media/active-directory-b2b-o365-external-user/odsp-sharing-setting.png)
 
 ## <a name="next-steps"></a>Дальнейшие действия
 
@@ -43,7 +43,7 @@ ms.lasthandoff: 07/11/2017
 
 * [Что такое служба совместной работы Azure AD B2B?](active-directory-b2b-what-is-azure-ad-b2b.md)
 * [Свойства пользователя службы совместной работы Azure Active Directory B2B](active-directory-b2b-user-properties.md)
-* [Добавление пользователя службы совместной работы Azure Active Directory B2B в роль](active-directory-b2b-add-guest-to-role.md)
+* [Добавление роли пользователя tooa B2B совместной работы](active-directory-b2b-add-guest-to-role.md)
 * [Делегирование приглашений для службы совместной работы Azure Active Directory B2B](active-directory-b2b-delegate-invitations.md)
 * [Динамические группы и служба совместной работы Azure Active Directory B2B](active-directory-b2b-dynamic-groups.md)
 * [Примеры кода и команд PowerShell для службы совместной работы Azure Active Directory B2B](active-directory-b2b-code-samples.md)

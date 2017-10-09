@@ -1,6 +1,6 @@
 ---
 title: "Руководство. Интеграция Azure Active Directory с EasyTerritory | Документация Майкрософт"
-description: "Узнайте, как настроить единый вход между Azure Active Directory и EasyTerritory."
+description: "Узнайте, как tooconfigure единый вход между Azure Active Directory и EasyTerritory."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,187 +14,187 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/26/2017
 ms.author: jeedes
-ms.openlocfilehash: 46f99496397e2ed39b1d9410453dac7983ced612
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 4f1e9fb4d615325f0d57bebaed955529d5dcd9b1
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-easyterritory"></a>Руководство. Интеграция Azure Active Directory с EasyTerritory
 
-В этом руководстве описано, как интегрировать EasyTerritory с Azure Active Directory (Azure AD).
+В этом учебнике вы узнаете, как toointegrate EasyTerritory с Azure Active Directory (Azure AD).
 
-Интеграция Azure AD с приложением EasyTerritory обеспечивает следующие преимущества:
+Интеграция с Azure AD EasyTerritory предоставляет hello следующие преимущества:
 
-- С помощью Azure AD вы можете контролировать доступ к EasyTerritory.
-- Вы можете включить автоматический вход пользователей в EasyTerritory (единый вход) с использованием учетной записи Azure AD.
-- Вы можете управлять учетными записями централизованно — на портале Azure.
+- Можно управлять в Azure AD, имеющего доступ tooEasyTerritory.
+- Можно включить на пользователей tooautomatically get вошедшего tooEasyTerritory (Single Sign-On) с помощью своих учетных записей Azure AD.
+- Вы можете управлять учетными записями в одном централизованном месте - hello портал Azure.
 
-Подробнее узнать об интеграции приложений SaaS с Azure AD можно в разделе [Что такое доступ к приложениям и единый вход с помощью Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Если tooknow Дополнительные сведения об интеграции приложений SaaS в Azure AD, см. [доступ к приложению и единый вход в Azure Active Directory](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Предварительные требования
 
-Чтобы настроить интеграцию Azure AD с приложением EasyTerritory, вам потребуется:
+tooconfigure интеграция Azure AD с EasyTerritory требуется hello следующих элементов:
 
 - подписка Azure AD;
 - подписка EasyTerritory с поддержкой единого входа.
 
 > [!NOTE]
-> Мы не рекомендуем использовать рабочую среду для проверки действий в этом учебнике.
+> в этом учебнике шаги tootest hello, не рекомендуется в рабочей среде.
 
-При проверке действий в этом учебнике соблюдайте следующие рекомендации:
+tootest hello шаги в этом учебнике, необходимо следовать приведенным ниже рекомендациям:
 
 - Не используйте рабочую среду без необходимости.
 - Если у вас нет пробной среды Azure AD, вы можете [получить пробную версию на один месяц](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Описание сценария
-В рамках этого руководства проводится проверка единого входа Azure AD в тестовой среде. Сценарий, описанный в этом учебнике, состоит из двух основных блоков:
+В рамках этого руководства проводится проверка единого входа Azure AD в тестовой среде. Hello сценарий, описанный в этом учебнике состоит из двух основных компонентов:
 
-1. Добавление приложения EasyTerritory из коллекции
+1. Добавление EasyTerritory из галереи hello
 2. Настройка и проверка единого входа в Azure AD
 
-## <a name="adding-easyterritory-from-the-gallery"></a>Добавление приложения EasyTerritory из коллекции
-Чтобы настроить интеграцию EasyTerritory с Azure AD, необходимо добавить EasyTerritory из коллекции в список управляемых приложений SaaS.
+## <a name="adding-easyterritory-from-hello-gallery"></a>Добавление EasyTerritory из галереи hello
+tooconfigure hello интеграции EasyTerritory в Azure AD, вы должны tooadd EasyTerritory из списка tooyour коллекции hello управляемых приложений SaaS.
 
-**Чтобы добавить EasyTerritory из коллекции, сделайте следующее:**
+**tooadd EasyTerritory из галереи hello, выполните следующие шаги hello.**
 
-1. На **[портале Azure](https://portal.azure.com)** в области навигации слева щелкните значок **Azure Active Directory**. 
+1. В hello  **[портал Azure](https://portal.azure.com)**на левой навигационной панели hello, нажмите кнопку **Azure Active Directory** значок. 
 
-    ![Кнопка "Azure Active Directory"][1]
+    ![Кнопка Hello Azure Active Directory][1]
 
-2. Перейдите к разделу **Корпоративные приложения**. Затем выберите **Все приложения**.
+2. Перейдите в слишком**корпоративных приложений**. Затем перейдите слишком**все приложения**.
 
-    ![Колонка "Корпоративные приложения"][2]
+    ![Hello корпоративных приложений колонку][2]
     
-3. Чтобы добавить новое приложение, в верхней части диалогового окна нажмите кнопку **Создать приложение**.
+3. tooadd новое приложение, нажмите кнопку **новое приложение** кнопку в верхней части hello диалогового окна.
 
-    ![Кнопка "Новое приложение"][3]
+    ![Кнопка нового приложения Hello][3]
 
-4. В поле поиска введите **EasyTerritory**, выберите **EasyTerritory** на панели результатов и нажмите кнопку **Добавить**, чтобы добавить это приложение.
+4. Введите в поле поиска hello **EasyTerritory**выберите **EasyTerritory** из панели результатов щелкните **добавить** кнопку tooadd приложения hello.
 
-    ![EasyTerritory в списке результатов](./media/active-directory-saas-easyterritory-tutorial/tutorial_easyterritory_addfromgallery.png)
+    ![EasyTerritory в списке результатов hello](./media/active-directory-saas-easyterritory-tutorial/tutorial_easyterritory_addfromgallery.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Настройка и проверка единого входа в Azure AD
 
 В этом разделе описана настройка и проверка единого входа Azure AD в EasyTerritory с использованием тестового пользователя Britta Simon.
 
-Чтобы настроить единый вход Azure AD, необходимо знать, какой пользователь в EasyTerritory соответствует пользователю в Azure AD. Иными словами, необходимо установить связь между пользователем Azure AD и соответствующим пользователем в EasyTerritory.
+Для единого входа toowork Azure AD необходима tooknow пользователь аналог какие hello в EasyTerritory является tooa в Azure AD. Другими словами связи между пользователя Azure AD и связанных пользователей hello в EasyTerritory должен установить toobe.
 
-Чтобы установить эту связь, назначьте **имя пользователя** в Azure AD в качестве значения **имени пользователя** в EasyTerritory.
+В EasyTerritory, присвойте значение hello hello **имя пользователя** в Azure AD в качестве значения hello hello **Username** tooestablish hello связи.
 
-Чтобы настроить и проверить единый вход Azure AD в EasyTerritory, необходимо выполнить действия в следующих стандартных блоках:
+tooconfigure и теста Azure AD единого входа с EasyTerritory, требуются следующие стандартные блоки hello toocomplete:
 
-1. **[Настройка единого входа Azure AD](#configure-azure-ad-single-sign-on)** необходима, чтобы пользователи могли использовать эту функцию.
-2. **[Создание тестового пользователя Azure AD](#create-an-azure-ad-test-user)** требуется для проверки работы единого входа Azure AD от имени пользователя Britta Simon.
-3. **[Создание тестового пользователя EasyTerritory](#create-a-easyterritory-test-user)** требуется для того, чтобы в EasyTerritory существовал пользователь Britta Simon, связанный с одноименным пользователем в Azure AD.
-4. **[Назначение тестового пользователя Azure AD](#assign-the-azure-ad-test-user)** необходимо, чтобы позволить Britta Simon использовать единый вход Azure AD.
-5. **[Проверка единого входа](#test-single-sign-on)** необходима, чтобы убедиться в корректной работе конфигурации.
+1. **[Настройка Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)**  -tooenable вашей toouse пользователи этой функции.
+2. **[Создание тестового пользователя Azure AD](#create-an-azure-ad-test-user)**  -tootest Azure AD единого входа с Саймон Britta.
+3. **[Создание тестового пользователя EasyTerritory](#create-a-easyterritory-test-user)**  -toohave аналог Саймон Britta в EasyTerritory, который представляет связанный toohello Azure AD пользователя.
+4. **[Назначить hello Azure AD тестового пользователя](#assign-the-azure-ad-test-user)**  -tooenable Britta Simon toouse Azure AD единым входом.
+5. **[Тестирование единого входа](#test-single-sign-on)**  -tooverify ли hello works конфигурации.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Настройка единого входа Azure AD
 
-В этом разделе мы включим на портале Azure единый вход Azure AD и настроим его в приложении EasyTerritory.
+В этом разделе включения Azure AD единым входом в портал Azure hello и настройки единого входа в приложении EasyTerritory.
 
-**Чтобы настроить единый вход Azure AD в EasyTerritory, сделайте следующее:**
+**tooconfigure Azure AD единого входа с EasyTerritory, выполните следующие шаги hello.**
 
-1. На портале Azure на странице интеграции с приложением **EasyTerritory** щелкните **Единый вход**.
+1. В hello в hello портала Azure **EasyTerritory** странице интеграции приложения щелкните **единого входа**.
 
     ![Ссылка "Настройка единого входа"][4]
 
-2. В диалоговом окне **Единый вход** в разделе **Режим** выберите **Вход на основе SAML**, чтобы включить функцию единого входа.
+2. На hello **единого входа** диалогового окна выберите **режим** как **входа на базе SAML** tooenable единого входа.
  
     ![Диалоговое окно "Единый вход"](./media/active-directory-saas-easyterritory-tutorial/tutorial_easyterritory_samlbase.png)
 
-3. Если вы хотите настроить приложение в режиме, инициированном поставщиком удостоверений, в разделе **Домены и URL-адреса приложения EasyTerritory** выполните следующие действия.
+3. На hello **URL-адреса и домена EasyTerritory** выполните следующие шаги при необходимости приложение hello tooconfigure в IDP инициировал режим hello:
 
     ![Сведения о домене и URL-адресах единого входа для приложения EasyTerritory](./media/active-directory-saas-easyterritory-tutorial/tutorial_easyterritory_url.png)
 
-    а. В текстовом поле **Идентификатор** введите URL-адрес в следующем формате: `https://apps.easyterritory.com/<tenant id>/dev/`
+    а. В hello **идентификатор** текстовом поле введите URL-адрес, используя следующий шаблон hello:`https://apps.easyterritory.com/<tenant id>/dev/`
 
-    b. В текстовом поле **URL-адрес ответа** введите URL-адрес в следующем формате: `https://apps.easyterritory.com/<tenant id>/dev/authservices/acs`.
+    b. В hello **URL-адрес ответа** текстовом поле введите URL-адрес, используя следующий шаблон hello:`https://apps.easyterritory.com/<tenant id>/dev/authservices/acs`
 
-4. Установите флажок **Показать дополнительные параметры URL-адресов**, и выполните следующее действие, если хотите настроить приложение для работы в режиме, инициируемом **поставщиком услуг**:
+4. Проверьте **Показывать дополнительные параметры URL-адреса** и выполните следующий шаг при желании tooconfigure приложения hello в hello **SP** инициировал режим:
 
     ![Сведения о домене и URL-адресах единого входа для приложения EasyTerritory](./media/active-directory-saas-easyterritory-tutorial/tutorial_easyterritory_url1.png)
 
-    В текстовом поле **URL-адрес для входа** введите URL-адрес в следующем формате: `https://<company name>.easyterritory.com/`
+    В hello **URL-адрес входа** текстовом поле введите URL-адрес, используя следующий шаблон hello:`https://<company name>.easyterritory.com/`
      
     > [!NOTE] 
-    > Эти значения приведены в качестве примера. Замените их фактическими значениями идентификатора, URL-адреса ответа и URL-адреса входа. Чтобы получить их, обратитесь в [службу поддержки клиентов EasyTerritory](mailto:sales@easyterritory.com). 
+    > Эти значения приведены в качестве примера. Обновить значения hello фактический идентификатор, URL-адрес ответа и URL-адрес входа. Обратитесь к [группа поддержки клиента EasyTerritory](mailto:sales@easyterritory.com) tooget эти значения. 
 
-5. В разделе **Сертификат подписи SAML** щелкните **Metadata XML** (Метаданные XML) и сохраните файл метаданных на компьютере.
+5. На hello **сертификат подписи SAML** щелкните **метаданные в формате XML** и затем сохраните файл метаданных hello на вашем компьютере.
 
-    ![Ссылка для скачивания сертификата](./media/active-directory-saas-easyterritory-tutorial/tutorial_easyterritory_certificate.png) 
+    ![ссылку для скачивания сертификата Hello](./media/active-directory-saas-easyterritory-tutorial/tutorial_easyterritory_certificate.png) 
 
 6. Нажмите кнопку **Сохранить** .
 
     ![Кнопка "Сохранить" в окне настройки единого входа](./media/active-directory-saas-easyterritory-tutorial/tutorial_general_400.png)
 
-7. Чтобы настроить единый вход на стороне **EasyTerritory**, отправьте в [службу поддержки EasyTerritory](mailto:sales@easyterritory.com) скачанный **XML-файл метаданных**. Специалисты службы поддержки настроят подключение единого входа SAML на обеих сторонах.
+7. tooconfigure единого входа на **EasyTerritory** стороны, необходимо загрузить hello toosend **метаданные в формате XML** слишком[EasyTerritory поддержки](mailto:sales@easyterritory.com). Они устанавливаются hello toohave этот параметр задан правильно на обеих сторонах соединения единого входа SAML.
 
 > [!TIP]
-> Краткую версию этих инструкций теперь можно также прочитать на [портале Azure](https://portal.azure.com) во время настройки приложения.  После добавления этого приложения из раздела **Active Directory > Корпоративные приложения** просто выберите вкладку **Единый вход** и откройте встроенную документацию через раздел **Настройка** в нижней части страницы. Дополнительные сведения о встроенной документации см. в разделе [Встроенная документация Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985).
+> Вы сможете прочитать четкими версии этих инструкций внутри hello [портал Azure](https://portal.azure.com), а вы настраиваете приложение hello!  После добавления этого приложения из hello **Active Directory > корпоративных приложений** просто щелкните hello **Single Sign-On** вкладку и доступа hello внедренных документации с помощью hello  **Конфигурация** раздела внизу hello. Вы можете прочитать больше о документации embedded функции hello здесь: [документации внедренных Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
 
 ### <a name="create-an-azure-ad-test-user"></a>Создание тестового пользователя Azure AD
 
-Цель этого раздела — создать на портале Azure тестового пользователя с именем Britta Simon.
+Цель этого раздела Hello — toocreate тестового пользователя в hello вызывается Саймон Britta портал Azure.
 
    ![Создание тестового пользователя Azure AD][100]
 
-**Чтобы создать тестового пользователя в Azure AD, выполните следующие действия:**
+**toocreate тестового пользователя в Azure AD, выполните следующие шаги hello.**
 
-1. На портале Azure в области слева нажмите кнопку **Azure Active Directory**.
+1. В hello hello левой панели портала Azure щелкните hello **Azure Active Directory** кнопки.
 
-    ![Кнопка "Azure Active Directory"](./media/active-directory-saas-easyterritory-tutorial/create_aaduser_01.png)
+    ![Кнопка Hello Azure Active Directory](./media/active-directory-saas-easyterritory-tutorial/create_aaduser_01.png)
 
-2. Чтобы открыть список пользователей, перейдите в раздел **Пользователи и группы** и щелкните **Все пользователи**.
+2. слишком go toodisplay hello список пользователей,**пользователей и групп**, а затем нажмите кнопку **всех пользователей**.
 
-    ![Ссылки "Пользователи и группы" и "Все пользователи"](./media/active-directory-saas-easyterritory-tutorial/create_aaduser_02.png)
+    ![Здравствуйте, «Пользователи и группы» и «Все пользователи» ссылки](./media/active-directory-saas-easyterritory-tutorial/create_aaduser_02.png)
 
-3. Чтобы открыть диалоговое окно **Пользователь**, в верхней части диалогового окна **Все пользователи** щелкните **Добавить**.
+3. tooopen hello **пользователя** диалоговое окно, нажмите кнопку **добавить** вверху hello hello **всех пользователей** диалоговое окно.
 
-    ![Кнопка "Добавить"](./media/active-directory-saas-easyterritory-tutorial/create_aaduser_03.png)
+    ![Кнопка "Добавить" Hello](./media/active-directory-saas-easyterritory-tutorial/create_aaduser_03.png)
 
-4. В диалоговом окне **Пользователь** сделайте следующее.
+4. В hello **пользователя** диалогового окна выполните следующие шаги hello:
 
-    ![Диалоговое окно "Пользователь"](./media/active-directory-saas-easyterritory-tutorial/create_aaduser_04.png)
+    ![диалоговое окно приветствия пользователя](./media/active-directory-saas-easyterritory-tutorial/create_aaduser_04.png)
 
-    а. В поле **Имя** введите **BrittaSimon**.
+    а. В hello **имя** введите **BrittaSimon**.
 
-    b. В поле **Имя пользователя** введите адрес электронной почты для пользователя Britta Simon.
+    b. В hello **имя пользователя** поле типа hello адрес электронной почты пользователя Саймон Britta.
 
-    c. Установите флажок **Показать пароль** и запишите значение, которое отображается в поле **Пароль**.
+    c. Выберите hello **Показать пароль** флажок и запишите значение hello, отображаемый в hello **пароль** поле.
 
-    г) Щелкните **Создать**.
+    d. Щелкните **Создать**.
  
 ### <a name="create-a-easyterritory-test-user"></a>Создание тестового пользователя в EasyTerritory
 
-В этом разделе описано, как создать пользователя Britta Simon в приложении EasyTerritory. Обратитесь в [службу поддержки EasyTerritory](mailto:sales@easyterritory.com), чтобы добавить пользователей на платформу EasyTerritory.
+В этом разделе описано, как создать пользователя Britta Simon в приложении EasyTerritory. Можно работать с [EasyTerritory поддержки](mailto:sales@easyterritory.com) tooadd hello пользователей на платформе EasyTerritory hello.
 
-### <a name="assign-the-azure-ad-test-user"></a>Назначение тестового пользователя Azure AD
+### <a name="assign-hello-azure-ad-test-user"></a>Назначить hello Azure AD тестового пользователя
 
-В этом разделе описано, как разрешить пользователю Britta Simon использовать единый вход Azure путем предоставления доступа к EasyTerritory.
+В этом разделе включите toouse Britta Simon Azure единого входа путем предоставления tooEasyTerritory доступа.
 
-![Назначение роли пользователя][200] 
+![Назначение пользователям ролей hello][200] 
 
-**Чтобы назначить пользователя Britta Simon в EasyTerritory, сделайте следующее:**
+**tooassign tooEasyTerritory Britta Simon выполните следующие шаги hello.**
 
-1. На портале Azure откройте представление приложений, перейдите к представлению каталога, а затем выберите **Корпоративные приложения** и щелкните **Все приложения**.
+1. В hello портал Azure, откройте представление приложения hello, а затем перейдите toohello представления каталога и перейти слишком**корпоративных приложений** щелкните **все приложения**.
 
     ![Назначение пользователя][201] 
 
-2. В списке приложений выберите **EasyTerritory**.
+2. В списке приложений hello выберите **EasyTerritory**.
 
-    ![Ссылка на EasyTerritory в списке "Приложения"](./media/active-directory-saas-easyterritory-tutorial/tutorial_easyterritory_app.png)  
+    ![ссылка EasyTerritory Hello в списке приложений hello](./media/active-directory-saas-easyterritory-tutorial/tutorial_easyterritory_app.png)  
 
-3. В меню слева выберите **Пользователи и группы**.
+3. В меню слева hello hello выберите **пользователей и групп**.
 
-    ![Ссылка "Пользователи и группы"][202]
+    ![Hello ссылку «Пользователи и группы»][202]
 
 4. Нажмите кнопку **Добавить**. Затем в диалоговом окне **Добавление назначения** выберите **Пользователи и группы**.
 
-    ![Область "Добавление назначения"][203]
+    ![область назначения, добавьте Hello][203]
 
-5. В диалоговом окне **Пользователи и группы** в списке пользователей выберите **Britta Simon**.
+5. На **пользователей и групп** диалогового окна выберите **Britta Simon** в список пользователей hello.
 
 6. В диалоговом окне **Пользователи и группы** нажмите кнопку **Выбрать**.
 
@@ -202,14 +202,14 @@ ms.lasthandoff: 08/03/2017
     
 ### <a name="test-single-sign-on"></a>Проверка единого входа
 
-В этом разделе описано, как проверить конфигурацию единого входа Azure AD с помощью панели доступа.
+В этом разделе тестирования конфигурации Azure AD единого входа с помощью панели доступа hello.
 
-Щелкнув элемент EasyTerritory на панели доступа, вы автоматически войдете в приложение EasyTerritory.
-Дополнительные сведения о панели доступа см. в статье [Общие сведения о панели доступа](active-directory-saas-access-panel-introduction.md). 
+При нажатии кнопки hello EasyTerritory плитки в панели доступа hello, вы должны получить автоматически вошедшего tooyour EasyTerritory приложения.
+Дополнительные сведения о панели доступа см. в разделе [toohello введение панели доступа](active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>Дополнительные ресурсы
 
-* [Список учебников по интеграции приложений SaaS с Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Список учебников по tooIntegrate приложений SaaS в Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Что такое доступ к приложениям и единый вход с помощью Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 

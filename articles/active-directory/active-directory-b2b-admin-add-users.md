@@ -1,6 +1,6 @@
 ---
-title: "Как администраторы Azure Active Directory могут добавить пользователей службы совместной работы B2B? | Документация Майкрософт"
-description: "Администратор может добавлять в Azure AD гостевых пользователей из партнерской организации с помощью службы совместной работы Azure Active Directory B2B."
+title: "aaaHow сделать Azure Active Directory, добавьте администраторов B2B совместной работы пользователей? | Документация Майкрософт"
+description: "Из партнерской организации, совместной работы Azure Active Directory B2B с помощью администратора можно добавить tooyour гостевых пользователей Azure AD."
 services: active-directory
 documentationcenter: 
 author: sasubram
@@ -15,40 +15,40 @@ ms.tgt_pltfrm: NA
 ms.workload: identity
 ms.date: 03/15/2017
 ms.author: sasubram
-ms.openlocfilehash: 7f33165141f31c1b495313f2da0d6e4681bdf8f2
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 7bf9906bcb0e1aad67187a67ae61127b8ce4cdec
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="how-do-azure-active-directory-admins-add-b2b-collaboration-users"></a>Как администраторы Azure Active Directory могут добавить пользователей службы совместной работы B2B?
 
-Глобальные администраторы и 	администраторы с ограниченными правами могут использовать [портал Azure](https://portal.azure.com) для приглашения пользователей службы совместной работы B2B в каталог, группу или приложение.
+Глобальные администраторы и Администраторы ограниченный можно использовать hello [портал Azure](https://portal.azure.com) tooinvite B2B каталог toohello совместной работы пользователей, группы tooany или tooany приложения.
 
-## <a name="admins-adding-guest-users-to-the-directory"></a>Администраторы, добавляющие гостевых пользователей в каталог
-В следующем видеоролике показано, как администратор Azure AD может добавить пользователей службы совместной работы B2B в каталог:
+## <a name="admins-adding-guest-users-toohello-directory"></a>Добавление каталога в toohello гостевой пользователей "Администраторы"
+Добавьте B2B совместной работы пользователей toohello каталог как администратор Azure AD, как показано в следующих hello видео:
 
 >[!VIDEO https://channel9.msdn.com/Blogs/Azure/Admin-adding-guests-for-B2B-collaboration-to-Azure-AD-tenant/Player]
 
 
-## <a name="admins-adding-guest-users-to-a-group"></a>Администраторы, добавляющие гостевых пользователей в группу
-В следующем видеоролике показано, как администратор Azure AD может добавить пользователей службы совместной работы B2B в группу:
+## <a name="admins-adding-guest-users-tooa-group"></a>Добавление группы в tooa гостевых пользователей "Администраторы"
+Добавьте группы tooa B2B совместной работы пользователей с правами администратора Azure AD, как показано в следующих hello видео:
 
 >[!VIDEO https://channel9.msdn.com/Blogs/Azure/admin-adding-guests-to-a-group/Player]
 
 
-## <a name="admins-adding-guest-users-to-an-application"></a>Администраторы, добавляющие гостевых пользователей в приложение
+## <a name="admins-adding-guest-users-tooan-application"></a>Добавление приложения tooan гостевых пользователей "Администраторы"
 
-В следующем видеоролике показано, как администратор Azure AD может добавить пользователей службы совместной работы B2B в приложение:
+Добавьте пользователей tooan B2B совместной работы приложения от имени администратора Azure AD, как показано в следующих hello видео:
 
 >[!VIDEO https://channel9.msdn.com/Blogs/Azure/admin-assign-b2b-to-apps/Player]
 
-## <a name="admins-resending-invitations-to-guest-users"></a>Повторная отправка администраторами приглашений для гостевых пользователей
-Вы можете перейти на страницу профиля пользователя службы совместной работы B2B и повторно отправить приглашения тем гостевым пользователям, которые еще не активировали свои приглашения.
+## <a name="admins-resending-invitations-tooguest-users"></a>Повторная отправка приглашения tooguest пользователей "Администраторы"
+Можно перейти на страницу профиля пользователя tooa B2B совместной работы и повторно отправить приглашения tooany еще не активирован гостевых пользователей:
 
 ![повторная отправка приглашения](./media/active-directory-b2b-admin-add-users/resend-invitation.png)
 
-> ! [ПРИМЕЧАНИЕ] При повторной отправке приглашение отправляется отдельным пользователям от пользователя, выполнившего вход, даже если исходное приглашение было отправлено определенному приложению или группе.
+> ! [ПРИМЕЧАНИЕ] При повторной отправке приглашения, у пользователей tooindividual пользователя, выполнившего вход hello отправляется приглашение hello даже если было отправлено приглашение исходного hello tooa определенного приложения или группы.
 
 
 ## <a name="related-articles"></a>Связанные статьи
@@ -57,7 +57,7 @@ ms.lasthandoff: 07/11/2017
 
 * [Что такое служба совместной работы Azure AD B2B?](active-directory-b2b-what-is-azure-ad-b2b.md)
 * [Как информационные работники могут добавить пользователей службы совместной работы B2B в Azure Active Directory?](active-directory-b2b-iw-add-users.md)
-* [Элементы сообщения с приглашением в службу совместной работы B2B](active-directory-b2b-invitation-email.md)
+* [элементы Hello hello электронное приглашение B2B совместной работы](active-directory-b2b-invitation-email.md)
 * [Активация приглашения службы совместной работы B2B](active-directory-b2b-redemption-experience.md)
 * [Руководство по лицензированию службы совместной работы Azure Active Directory B2B](active-directory-b2b-licensing.md)
 * [Устранение неполадок службы совместной работы Azure Active Directory B2B](active-directory-b2b-troubleshooting.md)

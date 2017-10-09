@@ -1,6 +1,6 @@
 ---
-title: "Проблемы при использовании веб-сайта или мобильного приложения панели доступа к приложениям"
-description: "Проблемы при использовании веб-сайта или мобильного приложения панели доступа к приложениям"
+title: "с помощью приложения hello aaaProblems доступ к панели веб-сайта или мобильного приложения»"
+description: "Проблемы при использовании приложения hello доступ к панели веб-сайта или мобильного приложения»"
 services: active-directory
 documentationcenter: 
 author: ajamess
@@ -12,29 +12,29 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.openlocfilehash: d78f9c59c069664fa77bdf9a16a48bb3745b1224
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: bbec5bcc4200e26dd825e64529651e4d4974747d
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="problems-using-the-application-access-panel-website-or-mobile-application"></a>Проблемы при использовании веб-сайта или мобильного приложения панели доступа к приложениям
+# <a name="problems-using-hello-application-access-panel-website-or-mobile-application"></a>Проблемы при использовании веб-сайта панель доступа приложения hello или мобильного приложения
 
 
-## <a name="i-do-not-see-the-applications-i-expect-on-the-application-access-panel"></a>Ожидаемые приложения не отображаются на панели доступа к приложениям
-  Приведенные ниже документы помогут устранить некоторые из наиболее распространенных проблем в этой категории.
-  * [Я не знаю, почему назначенное мной приложение не отображается на панели доступа](https://docs.microsoft.com/azure/active-directory/application-access-panel-unexpected-application-not-appearing/?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav)
-  * [Я не знаю, почему приложение отображается на панели доступа](https://docs.microsoft.com/azure/active-directory/application-access-panel-unexpected-application-appears/?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav)
+## <a name="i-do-not-see-hello-applications-i-expect-on-hello-application-access-panel"></a>Я не вижу приложения hello, ожидаемые в панели доступа приложения hello
+  Hello следующие документы могут помочь tooresolve некоторые из наиболее распространенных проблем hello в этой категории.
+  * [Не знаете, почему приложение, которое следует присвоить не отображаются на панели доступа hello](https://docs.microsoft.com/azure/active-directory/application-access-panel-unexpected-application-not-appearing/?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav)
+  * [Не знаете, почему приложение появляется на панели доступа hello](https://docs.microsoft.com/azure/active-directory/application-access-panel-unexpected-application-appears/?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav)
 
-## <a name="im-having-problems-signing-in-to-the-application-access-panel"></a>Возникают проблемы при входе на панель доступа к приложениям
-  Приведенные ниже документы помогут устранить некоторые из наиболее распространенных проблем в этой категории.
-  * [Не удается войти на веб-сайт панели доступа](https://docs.microsoft.com/azure/active-directory/application-access-panel-web-sign-in-problem/?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav)
+## <a name="im-having-problems-signing-in-toohello-application-access-panel"></a>У меня возникли проблемы при входе в панель доступа toohello приложения
+  Hello следующие документы могут помочь tooresolve некоторые из наиболее распространенных проблем hello в этой категории.
+  * [Не удается войти на веб-сайте панель доступа toohello](https://docs.microsoft.com/azure/active-directory/application-access-panel-web-sign-in-problem/?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav)
 
-## <a name="im-having-problems-using-the-application-access-panel-browser-extension"></a>При использовании расширения браузера для панели доступа к приложениям возникла ошибка
-  Приведенные ниже документы помогут устранить некоторые из наиболее распространенных проблем в этой категории.
-  * [При установке расширения браузера для панели доступа к приложениям возникла ошибка](https://docs.microsoft.com/azure/active-directory/application-access-panel-extension-problem-installing/?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav)
+## <a name="im-having-problems-using-hello-application-access-panel-browser-extension"></a>У меня возникли проблемы при использовании расширение обозревателя панели доступа приложения hello
+  Hello следующие документы могут помочь tooresolve некоторые из наиболее распространенных проблем hello в этой категории.
+  * [Я видели произошла ошибка при установке расширения браузера панели доступа приложения hello](https://docs.microsoft.com/azure/active-directory/application-access-panel-extension-problem-installing/?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav)
 
-## <a name="im-having-problems-with-a-feature-on-the-application-access-panel"></a>Возникают проблемы с функциями панели доступа к приложениям
-  Приведенные ниже документы помогут устранить некоторые из наиболее распространенных проблем в этой категории.
-  * [Я не знаю, как использовать самостоятельный доступ к приложениям](https://docs.microsoft.com/azure/active-directory/application-access-panel-self-service-applications-how-to/?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav)
+## <a name="im-having-problems-with-a-feature-on-hello-application-access-panel"></a>У меня возникли проблемы с компонентом на панели доступа приложения hello
+  Hello следующие документы могут помочь tooresolve некоторые из наиболее распространенных проблем hello в этой категории.
+  * [Я не знаю, как получить доступ к приложению самообслуживания toouse](https://docs.microsoft.com/azure/active-directory/application-access-panel-self-service-applications-how-to/?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav)
   * [Возникла проблема при использовании самостоятельного доступа к приложениям](https://docs.microsoft.com/azure/active-directory/application-access-panel-self-service-applications-problem/?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav)

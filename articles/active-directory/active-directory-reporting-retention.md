@@ -1,5 +1,5 @@
 ---
-title: "Политики хранения отчетов Azure Active Directory | Документация Майкрософт"
+title: "политики хранения отчетов aaaAzure Active Directory | Документы Microsoft"
 description: "Политики хранения данных отчета в Azure Active Directory"
 services: active-directory
 documentationcenter: 
@@ -15,42 +15,42 @@ ms.workload: identity
 ms.date: 07/05/2017
 ms.author: dhanyahk;markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: ffeba8a6c32a21c75af21f948bbd6ea88dd9278c
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: c46a68198cb34e9c92662b2f8461010745392c04
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-active-directory-report-retention-policies"></a>Политики хранения отчетов Azure Active Directory
 
 
-Эта статья содержит ответы на часто задаваемые вопросы о хранении данных для разных отчетов о действиях в Azure Active Directory. 
+Этот раздел содержит ответы toohello самые распространенные вопросы в сочетании с hello хранение данных для отчетов hello другого действия в Azure Active Directory. 
 
-**Вопрос. Как начать сбор данных о действиях?**
+**Вопрос. как получить коллекцию hello данных действий запуска?**
 
 **Ответ.**
 
 | Выпуск Azure AD | Начало сбора |
 | :--              | :--   |
 | Azure AD Premium P1 <br /> Azure AD Premium P2 | При регистрации для подписки |
-| Azure AD уровня "Бесплатный" | При первом открытии [колонки Azure Active Directory](https://ms.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) или использовании [API-интерфейсов отчетности](https://aka.ms/aadreports)  |
+| Azure AD уровня "Бесплатный" | Здравствуйте, первый раз при открытии hello [колонке Azure Active Directory](https://ms.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) или использовать hello [reporting API-интерфейсы](https://aka.ms/aadreports)  |
 
 ---
-**Вопрос. Когда данные о действиях становятся доступными на портале Azure?**
+**В. когда данные о действиях доступен в hello портал Azure?**
 
 **Ответ.**
 
-- **Немедленно** — если вы уже работали с отчетами на классическом портале Azure.
-- **В течение 2 часов** — если вы не включили функцию отчетности на классическом портале Azure.
+- **Немедленно** — Если вы уже работали с отчетами в hello классический портал Azure
+- **В течение 2 часов** — Если вы не включили reporting в hello классический портал Azure
 
 ---
-**Вопрос. Как начать сбор сигналов системы безопасности?**  
+**Вопрос. как получить коллекцию hello сигналы безопасности работы?**  
 
-**Ответ.** Процесс сбора сигналов системы безопасности начинается, когда вы соглашаетесь использовать центр защиты идентификации. 
+**Ответ** сигналов безопасности hello коллекции процесс начинается при вы явно согласиться на центр защиты toouse hello удостоверения. 
 
 
 ---
-**Вопрос. Как долго хранятся собранные данные?**
+**Вопрос для продолжительность hello собранные данные хранятся?**
 
 **Ответ.**
 
