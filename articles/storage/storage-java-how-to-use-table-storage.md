@@ -1,6 +1,6 @@
 ---
-title: "Как использовать хранилище таблиц из Java | Документация Майкрософт"
-description: "Хранение структурированных данных в облаке в хранилище таблиц Azure (хранилище данных NoSQL)."
+title: "aaaHow toouse хранилище таблиц из Java | Документы Microsoft"
+description: "Хранения структурированных данных в облаке hello, с помощью хранилища таблиц Azure, хранилище данных NoSQL."
 services: storage
 documentationcenter: java
 author: mmacy
@@ -14,52 +14,52 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 12/08/2016
 ms.author: marsma
-ms.openlocfilehash: a4d6f144cc6940ffe2b2c6f27553cd7aa3bcb381
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: f72cac3fc10cf0aef74780b84c515d93d715d787
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-use-table-storage-from-java"></a><span data-ttu-id="23079-103">Использование табличного хранилища из Java</span><span class="sxs-lookup"><span data-stu-id="23079-103">How to use Table storage from Java</span></span>
+# <a name="how-toouse-table-storage-from-java"></a><span data-ttu-id="c5e41-103">Как toouse хранилище таблиц из Java</span><span class="sxs-lookup"><span data-stu-id="c5e41-103">How toouse Table storage from Java</span></span>
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
 [!INCLUDE [storage-table-cosmos-db-langsoon-tip-include](../../includes/storage-table-cosmos-db-langsoon-tip-include.md)]
 
-## <a name="overview"></a><span data-ttu-id="23079-104">Обзор</span><span class="sxs-lookup"><span data-stu-id="23079-104">Overview</span></span>
-<span data-ttu-id="23079-105">В этом руководстве показано, как реализовать типичные сценарии с использованием службы табличного хранилища Azure.</span><span class="sxs-lookup"><span data-stu-id="23079-105">This guide will show you how to perform common scenarios using the Azure Table storage service.</span></span> <span data-ttu-id="23079-106">Примеры написаны на Java и используют [пакет SDK службы хранилища Azure для Java][Azure Storage SDK for Java].</span><span class="sxs-lookup"><span data-stu-id="23079-106">The samples are written in Java and use the [Azure Storage SDK for Java][Azure Storage SDK for Java].</span></span> <span data-ttu-id="23079-107">Рассматриваются сценарии **создания**, **перечисления** и **удаления** таблиц, а также **вставки**, **запроса**, **изменения** и **удаления** сущностей в таблице.</span><span class="sxs-lookup"><span data-stu-id="23079-107">The scenarios covered include **creating**, **listing**, and **deleting** tables, as well as **inserting**, **querying**, **modifying**, and **deleting** entities in a table.</span></span> <span data-ttu-id="23079-108">Дополнительные сведения о таблицах см. в разделе [Дальнейшие действия](#Next-Steps).</span><span class="sxs-lookup"><span data-stu-id="23079-108">For more information on tables, see the [Next steps](#Next-Steps) section.</span></span>
+## <a name="overview"></a><span data-ttu-id="c5e41-104">Обзор</span><span class="sxs-lookup"><span data-stu-id="c5e41-104">Overview</span></span>
+<span data-ttu-id="c5e41-105">В этом руководстве будет показано, как tooperform распространенных сценариев использования hello службы хранилища таблиц Azure.</span><span class="sxs-lookup"><span data-stu-id="c5e41-105">This guide will show you how tooperform common scenarios using hello Azure Table storage service.</span></span> <span data-ttu-id="c5e41-106">Hello примеры написаны на Java и использовать hello [пакет SDK хранилища Azure для Java][Azure Storage SDK for Java].</span><span class="sxs-lookup"><span data-stu-id="c5e41-106">hello samples are written in Java and use hello [Azure Storage SDK for Java][Azure Storage SDK for Java].</span></span> <span data-ttu-id="c5e41-107">Hello сценарии включают **создание**, **вывод**, и **удаление** таблиц, а также **Вставка**,  **запрос**, **изменение**, и **удаление** сущностей в таблице.</span><span class="sxs-lookup"><span data-stu-id="c5e41-107">hello scenarios covered include **creating**, **listing**, and **deleting** tables, as well as **inserting**, **querying**, **modifying**, and **deleting** entities in a table.</span></span> <span data-ttu-id="c5e41-108">Дополнительные сведения о таблицах см. в разделе hello [дальнейшие действия](#Next-Steps) раздела.</span><span class="sxs-lookup"><span data-stu-id="c5e41-108">For more information on tables, see hello [Next steps](#Next-Steps) section.</span></span>
 
-<span data-ttu-id="23079-109">Примечание. Пакет SDK доступен для разработчиков, которые используют хранилище Azure на устройствах под управлением Android.</span><span class="sxs-lookup"><span data-stu-id="23079-109">Note: An SDK is available for developers who are using Azure Storage on Android devices.</span></span> <span data-ttu-id="23079-110">Дополнительные сведения см. в разделе [Microsoft Azure Storage SDK for Android][Azure Storage SDK for Android] (Пакет SDK хранилища Azure для Android).</span><span class="sxs-lookup"><span data-stu-id="23079-110">For more information, see the [Azure Storage SDK for Android][Azure Storage SDK for Android].</span></span>
+<span data-ttu-id="c5e41-109">Примечание. Пакет SDK доступен для разработчиков, которые используют хранилище Azure на устройствах под управлением Android.</span><span class="sxs-lookup"><span data-stu-id="c5e41-109">Note: An SDK is available for developers who are using Azure Storage on Android devices.</span></span> <span data-ttu-id="c5e41-110">Дополнительные сведения см. в разделе hello [пакет SDK хранилища Azure для Android][Azure Storage SDK for Android].</span><span class="sxs-lookup"><span data-stu-id="c5e41-110">For more information, see hello [Azure Storage SDK for Android][Azure Storage SDK for Android].</span></span>
 
 [!INCLUDE [storage-table-concepts-include](../../includes/storage-table-concepts-include.md)]
 
 [!INCLUDE [storage-create-account-include](../../includes/storage-create-account-include.md)]
 
-## <a name="create-a-java-application"></a><span data-ttu-id="23079-111">Создание приложения Java</span><span class="sxs-lookup"><span data-stu-id="23079-111">Create a Java application</span></span>
-<span data-ttu-id="23079-112">В этом руководстве будут использоваться компоненты хранилища, которые могут быть вызваны локально в приложении Java или в коде, работающем в веб-роли или рабочей роли в Azure.</span><span class="sxs-lookup"><span data-stu-id="23079-112">In this guide, you will use storage features which can be run within a Java application locally, or in code running within a web role or worker role in Azure.</span></span>
+## <a name="create-a-java-application"></a><span data-ttu-id="c5e41-111">Создание приложения Java</span><span class="sxs-lookup"><span data-stu-id="c5e41-111">Create a Java application</span></span>
+<span data-ttu-id="c5e41-112">В этом руководстве будут использоваться компоненты хранилища, которые могут быть вызваны локально в приложении Java или в коде, работающем в веб-роли или рабочей роли в Azure.</span><span class="sxs-lookup"><span data-stu-id="c5e41-112">In this guide, you will use storage features which can be run within a Java application locally, or in code running within a web role or worker role in Azure.</span></span>
 
-<span data-ttu-id="23079-113">Для этого необходимо установить пакет SDK для Java (JDK) и создать учетную запись хранения Azure в подписке Azure.</span><span class="sxs-lookup"><span data-stu-id="23079-113">To do so, you will need to install the Java Development Kit (JDK) and create an Azure storage account in your Azure subscription.</span></span> <span data-ttu-id="23079-114">После того, как это будет сделано, необходимо убедиться, что ваша система разработки отвечает минимальным требованиям и зависимостям, указанным в репозитории [пакета SDK службы хранилища Azure для Java][Azure Storage SDK for Java] на сайте GitHub.</span><span class="sxs-lookup"><span data-stu-id="23079-114">Once you have done so, you will need to verify that your development system meets the minimum requirements and dependencies which are listed in the [Azure Storage SDK for Java][Azure Storage SDK for Java] repository on GitHub.</span></span> <span data-ttu-id="23079-115">Если ваша система отвечает указанным требованиям можно приступить к выполнению инструкций по загрузке библиотек хранилища Azure для Java из репозитория и их установке на своей системе.</span><span class="sxs-lookup"><span data-stu-id="23079-115">If your system meets those requirements, you can follow the instructions for downloading and installing the Azure Storage Libraries for Java on your system from that repository.</span></span> <span data-ttu-id="23079-116">После завершение этих задач вы сможете приступить к созданию приложения Java с использованием примеров из данной статьи.</span><span class="sxs-lookup"><span data-stu-id="23079-116">Once you have completed those tasks, you will be able to create a Java application which uses the examples in this article.</span></span>
+<span data-ttu-id="c5e41-113">toodo таким образом, вам потребуется tooinstall hello Java Development Kit (JDK) и создать учетную запись хранилища Azure в подписке Azure.</span><span class="sxs-lookup"><span data-stu-id="c5e41-113">toodo so, you will need tooinstall hello Java Development Kit (JDK) and create an Azure storage account in your Azure subscription.</span></span> <span data-ttu-id="c5e41-114">Как только вы делали, вам потребуется tooverify, разработки система удовлетворяет минимальным требованиям hello и зависимости, которые указаны в hello [пакет SDK хранилища Azure для Java] [ Azure Storage SDK for Java] репозитория в GitHub.</span><span class="sxs-lookup"><span data-stu-id="c5e41-114">Once you have done so, you will need tooverify that your development system meets hello minimum requirements and dependencies which are listed in hello [Azure Storage SDK for Java][Azure Storage SDK for Java] repository on GitHub.</span></span> <span data-ttu-id="c5e41-115">Если компьютер соответствует этим требованиям, можно выполнить hello инструкции по загрузке и установке hello библиотеки хранилища Azure для Java в вашей системе из этого репозитория.</span><span class="sxs-lookup"><span data-stu-id="c5e41-115">If your system meets those requirements, you can follow hello instructions for downloading and installing hello Azure Storage Libraries for Java on your system from that repository.</span></span> <span data-ttu-id="c5e41-116">После завершения этих задач можно будет toocreate приложения Java, использующего hello примеры в этой статье.</span><span class="sxs-lookup"><span data-stu-id="c5e41-116">Once you have completed those tasks, you will be able toocreate a Java application which uses hello examples in this article.</span></span>
 
-## <a name="configure-your-application-to-access-table-storage"></a><span data-ttu-id="23079-117">Настройка приложения для доступа к хранилищу таблиц</span><span class="sxs-lookup"><span data-stu-id="23079-117">Configure your application to access table storage</span></span>
-<span data-ttu-id="23079-118">Если нужно использовать API-интерфейсы хранилища Microsoft Azure для доступа к таблицам, добавьте следующие инструкции импорта в верхнюю часть файла Java.</span><span class="sxs-lookup"><span data-stu-id="23079-118">Add the following import statements to the top of the Java file where you want to use Microsoft Azure storage APIs to access tables:</span></span>
+## <a name="configure-your-application-tooaccess-table-storage"></a><span data-ttu-id="c5e41-117">Настройка хранилища таблицы tooaccess приложения</span><span class="sxs-lookup"><span data-stu-id="c5e41-117">Configure your application tooaccess table storage</span></span>
+<span data-ttu-id="c5e41-118">Добавьте следующие начало toohello инструкции импорта файла Java hello, место таблиц tooaccess API-интерфейсов хранилища Microsoft Azure toouse hello:</span><span class="sxs-lookup"><span data-stu-id="c5e41-118">Add hello following import statements toohello top of hello Java file where you want toouse Microsoft Azure storage APIs tooaccess tables:</span></span>
 
 ```java
-// Include the following imports to use table APIs
+// Include hello following imports toouse table APIs
 import com.microsoft.azure.storage.*;
 import com.microsoft.azure.storage.table.*;
 import com.microsoft.azure.storage.table.TableQuery.*;
 ```
 
-## <a name="set-up-an-azure-storage-connection-string"></a><span data-ttu-id="23079-119">Настройка строки подключения к хранилищу Azure</span><span class="sxs-lookup"><span data-stu-id="23079-119">Set up an Azure storage connection string</span></span>
-<span data-ttu-id="23079-120">Клиент хранилища Azure использует строку подключения с целью хранения конечных точек и учетных данных для доступа к службам управления данными.</span><span class="sxs-lookup"><span data-stu-id="23079-120">An Azure storage client uses a storage connection string to store endpoints and credentials for accessing data management services.</span></span> <span data-ttu-id="23079-121">При работе в клиентском приложении необходимо указать для хранилища строку подключения в следующем формате, используя имя своей учетной записи хранения и первичный ключ доступа для учетной записи хранения, указанные на [портале Azure](https://portal.azure.com) значениями *AccountName* и *AccountKey*.</span><span class="sxs-lookup"><span data-stu-id="23079-121">When running in a client application, you must provide the storage connection string in the following format, using the name of your storage account and the Primary access key for the storage account listed in the [Azure portal](https://portal.azure.com) for the *AccountName* and *AccountKey* values.</span></span> <span data-ttu-id="23079-122">В этом примере показано, как объявить статическое поле для размещения строки подключения:</span><span class="sxs-lookup"><span data-stu-id="23079-122">This example shows how you can declare a static field to hold the connection string:</span></span>
+## <a name="set-up-an-azure-storage-connection-string"></a><span data-ttu-id="c5e41-119">Настройка строки подключения к хранилищу Azure</span><span class="sxs-lookup"><span data-stu-id="c5e41-119">Set up an Azure storage connection string</span></span>
+<span data-ttu-id="c5e41-120">Клиент хранилища Azure использует хранилища конечные точки toostore соединения строки и учетные данные для доступа к службам данных управления.</span><span class="sxs-lookup"><span data-stu-id="c5e41-120">An Azure storage client uses a storage connection string toostore endpoints and credentials for accessing data management services.</span></span> <span data-ttu-id="c5e41-121">При работе в клиентском приложении, необходимо указать строку соединения хранения hello в hello следующая формата, используя hello имя учетной записи и hello первичный ключ доступа для учетной записи хранения hello, перечисленные в hello [портал Azure](https://portal.azure.com)для hello *AccountName* и *AccountKey* значения.</span><span class="sxs-lookup"><span data-stu-id="c5e41-121">When running in a client application, you must provide hello storage connection string in hello following format, using hello name of your storage account and hello Primary access key for hello storage account listed in hello [Azure portal](https://portal.azure.com) for hello *AccountName* and *AccountKey* values.</span></span> <span data-ttu-id="c5e41-122">В этом примере показано, как объявить строки подключения hello toohold статического поля:</span><span class="sxs-lookup"><span data-stu-id="c5e41-122">This example shows how you can declare a static field toohold hello connection string:</span></span>
 
 ```java
-// Define the connection-string with your values.
+// Define hello connection-string with your values.
 public static final String storageConnectionString =
     "DefaultEndpointsProtocol=http;" +
     "AccountName=your_storage_account;" +
     "AccountKey=your_storage_account_key";
 ```
 
-<span data-ttu-id="23079-123">Если приложение выполняется в роли на платформе Microsoft Azure, эта строка может храниться в файле конфигурации службы *ServiceConfiguration.cscfg*, для доступа к которой можно использовать вызов метода **RoleEnvironment.getConfigurationSettings** .</span><span class="sxs-lookup"><span data-stu-id="23079-123">In an application running within a role in Microsoft Azure, this string can be stored in the service configuration file, *ServiceConfiguration.cscfg*, and can be accessed with a call to the **RoleEnvironment.getConfigurationSettings** method.</span></span> <span data-ttu-id="23079-124">Ниже приведен пример получения строки подключения из элемента **Setting** с именем *StorageConnectionString* в файле конфигурации службы:</span><span class="sxs-lookup"><span data-stu-id="23079-124">Here's an example of getting the connection string from a **Setting** element named *StorageConnectionString* in the service configuration file:</span></span>
+<span data-ttu-id="c5e41-123">Эта строка в приложения, запущенного в рамках роли в Microsoft Azure, могут храниться в файле конфигурации службы hello, *ServiceConfiguration.cscfg*и можно осуществить с помощью toohello вызова  **RoleEnvironment.getConfigurationSettings** метод.</span><span class="sxs-lookup"><span data-stu-id="c5e41-123">In an application running within a role in Microsoft Azure, this string can be stored in hello service configuration file, *ServiceConfiguration.cscfg*, and can be accessed with a call toohello **RoleEnvironment.getConfigurationSettings** method.</span></span> <span data-ttu-id="c5e41-124">Ниже приведен пример получения строки подключения hello из **параметр** элемента с именем *StorageConnectionString* в файле конфигурации службы hello:</span><span class="sxs-lookup"><span data-stu-id="c5e41-124">Here's an example of getting hello connection string from a **Setting** element named *StorageConnectionString* in hello service configuration file:</span></span>
 
 ```java
 // Retrieve storage account from connection-string.
@@ -67,10 +67,10 @@ String storageConnectionString =
     RoleEnvironment.getConfigurationSettings().get("StorageConnectionString");
 ```
 
-<span data-ttu-id="23079-125">В приведенных ниже примерах предполагается, что вы использовали одно из этих двух определений для получения строки подключения к хранилищу.</span><span class="sxs-lookup"><span data-stu-id="23079-125">The following samples assume that you have used one of these two methods to get the storage connection string.</span></span>
+<span data-ttu-id="c5e41-125">Hello следующие образцы предполагается, что используется один из этих двух методов tooget hello строки подключения к хранилищу.</span><span class="sxs-lookup"><span data-stu-id="c5e41-125">hello following samples assume that you have used one of these two methods tooget hello storage connection string.</span></span>
 
-## <a name="how-to-create-a-table"></a><span data-ttu-id="23079-126">Практическое руководство. Создание таблицы</span><span class="sxs-lookup"><span data-stu-id="23079-126">How to: Create a table</span></span>
-<span data-ttu-id="23079-127">Объект **CloudTableClient** позволяет ссылаться на объекты таблиц и сущностей.</span><span class="sxs-lookup"><span data-stu-id="23079-127">A **CloudTableClient** object lets you get reference objects for tables and entities.</span></span> <span data-ttu-id="23079-128">Следующий код создает объект **CloudTableClient** и использует его для создания нового объекта **CloudTable**, который представляет таблицу people.</span><span class="sxs-lookup"><span data-stu-id="23079-128">The following code creates a **CloudTableClient** object and uses it to create a new **CloudTable** object which represents a table named "people".</span></span> <span data-ttu-id="23079-129">(Примечание. Есть и другие способы создания объектов **CloudStorageAccount**. Дополнительные сведения см. в разделе **CloudStorageAccount** в [справочнике по пакету SDK для клиента службы хранилища Azure].)</span><span class="sxs-lookup"><span data-stu-id="23079-129">(Note: There are additional ways to create **CloudStorageAccount** objects; for more information, see **CloudStorageAccount** in the [Azure Storage Client SDK Reference].)</span></span>
+## <a name="how-to-create-a-table"></a><span data-ttu-id="c5e41-126">Практическое руководство. Создание таблицы</span><span class="sxs-lookup"><span data-stu-id="c5e41-126">How to: Create a table</span></span>
+<span data-ttu-id="c5e41-127">Объект **CloudTableClient** позволяет ссылаться на объекты таблиц и сущностей.</span><span class="sxs-lookup"><span data-stu-id="c5e41-127">A **CloudTableClient** object lets you get reference objects for tables and entities.</span></span> <span data-ttu-id="c5e41-128">Hello следующий код создает **CloudTableClient** объекта и использует его toocreate новый **CloudTable** объект, который представляет таблицу с именем «пользователи».</span><span class="sxs-lookup"><span data-stu-id="c5e41-128">hello following code creates a **CloudTableClient** object and uses it toocreate a new **CloudTable** object which represents a table named "people".</span></span> <span data-ttu-id="c5e41-129">(Примечание: существуют дополнительные способы toocreate **CloudStorageAccount** объектов; Дополнительные сведения см. в разделе **CloudStorageAccount** в hello [Azure SDK Справочник по клиентской хранилища].)</span><span class="sxs-lookup"><span data-stu-id="c5e41-129">(Note: There are additional ways toocreate **CloudStorageAccount** objects; for more information, see **CloudStorageAccount** in hello [Azure Storage Client SDK Reference].)</span></span>
 
 ```java
 try
@@ -79,23 +79,23 @@ try
     CloudStorageAccount storageAccount =
         CloudStorageAccount.parse(storageConnectionString);
 
-    // Create the table client.
+    // Create hello table client.
     CloudTableClient tableClient = storageAccount.createCloudTableClient();
 
-    // Create the table if it doesn't exist.
+    // Create hello table if it doesn't exist.
     String tableName = "people";
     CloudTable cloudTable = tableClient.getTableReference(tableName);
     cloudTable.createIfNotExists();
 }
 catch (Exception e)
 {
-    // Output the stack trace.
+    // Output hello stack trace.
     e.printStackTrace();
 }
 ```
 
-## <a name="how-to-list-the-tables"></a><span data-ttu-id="23079-130">Как перечислять таблицы</span><span class="sxs-lookup"><span data-stu-id="23079-130">How to: List the tables</span></span>
-<span data-ttu-id="23079-131">Чтобы получить список таблиц, вызовите метод **CloudTableClient.listTables()** для извлечения пригодного к итерации списка имен таблиц.</span><span class="sxs-lookup"><span data-stu-id="23079-131">To get a list of tables, call the **CloudTableClient.listTables()** method to retrieve an iterable list of table names.</span></span>
+## <a name="how-to-list-hello-tables"></a><span data-ttu-id="c5e41-130">Как: список таблиц hello</span><span class="sxs-lookup"><span data-stu-id="c5e41-130">How to: List hello tables</span></span>
+<span data-ttu-id="c5e41-131">список таблиц, вызов hello tooget **CloudTableClient.listTables()** tooretrieve метод итерируемого перечень имен таблиц.</span><span class="sxs-lookup"><span data-stu-id="c5e41-131">tooget a list of tables, call hello **CloudTableClient.listTables()** method tooretrieve an iterable list of table names.</span></span>
 
 ```java
 try
@@ -104,10 +104,10 @@ try
     CloudStorageAccount storageAccount =
         CloudStorageAccount.parse(storageConnectionString);
 
-    // Create the table client.
+    // Create hello table client.
     CloudTableClient tableClient = storageAccount.createCloudTableClient();
 
-    // Loop through the collection of table names.
+    // Loop through hello collection of table names.
     for (String table : tableClient.listTables())
     {
         // Output each table name.
@@ -116,13 +116,13 @@ try
 }
 catch (Exception e)
 {
-    // Output the stack trace.
+    // Output hello stack trace.
     e.printStackTrace();
 }
 ```
 
-## <a name="how-to-add-an-entity-to-a-table"></a><span data-ttu-id="23079-132">Практическое руководство. Добавление сущности в таблицу</span><span class="sxs-lookup"><span data-stu-id="23079-132">How to: Add an entity to a table</span></span>
-<span data-ttu-id="23079-133">Сущности сопоставляются с объектами Java с помощью настраиваемого класса, реализующего **TableEntity**.</span><span class="sxs-lookup"><span data-stu-id="23079-133">Entities map to Java objects using a custom class implementing **TableEntity**.</span></span> <span data-ttu-id="23079-134">Для удобства класс **TableServiceEntity** реализует **TableEntity** и использует отражение для сопоставления свойств с указанными для свойств методами получения и задания.</span><span class="sxs-lookup"><span data-stu-id="23079-134">For convenience, the **TableServiceEntity** class implements **TableEntity** and uses reflection to map properties to getter and setter methods named for the properties.</span></span> <span data-ttu-id="23079-135">Чтобы добавить сущность в таблицу, сначала создайте класс, который определяет свойства сущности.</span><span class="sxs-lookup"><span data-stu-id="23079-135">To add an entity to a table, first create a class that defines the properties of your entity.</span></span> <span data-ttu-id="23079-136">Следующий код определяет класс сущностей, который использует имя клиента как ключ строки, а фамилию клиента — как ключ раздела.</span><span class="sxs-lookup"><span data-stu-id="23079-136">The following code defines an entity class which uses the customer's first name as the row key, and last name as the partition key.</span></span> <span data-ttu-id="23079-137">Вместе ключ раздела и ключ строки сущности уникальным образом идентифицируют сущность в таблице.</span><span class="sxs-lookup"><span data-stu-id="23079-137">Together, an entity's partition and row key uniquely identify the entity in the table.</span></span> <span data-ttu-id="23079-138">Сущности с одним ключом раздела можно запрашивать быстрее, чем сущности с разными ключами раздела.</span><span class="sxs-lookup"><span data-stu-id="23079-138">Entities with the same partition key can be queried faster than those with different partition keys.</span></span>
+## <a name="how-to-add-an-entity-tooa-table"></a><span data-ttu-id="c5e41-132">Способ: добавьте таблицу tooa сущности</span><span class="sxs-lookup"><span data-stu-id="c5e41-132">How to: Add an entity tooa table</span></span>
+<span data-ttu-id="c5e41-133">Сущности сопоставляют объекты tooJava, используя пользовательский класс, реализующий **TableEntity**.</span><span class="sxs-lookup"><span data-stu-id="c5e41-133">Entities map tooJava objects using a custom class implementing **TableEntity**.</span></span> <span data-ttu-id="c5e41-134">Для удобства hello **TableServiceEntity** класс реализует **TableEntity** и использует отражение toomap свойства с именем toogetter и задание значения для hello свойства.</span><span class="sxs-lookup"><span data-stu-id="c5e41-134">For convenience, hello **TableServiceEntity** class implements **TableEntity** and uses reflection toomap properties toogetter and setter methods named for hello properties.</span></span> <span data-ttu-id="c5e41-135">tooadd таблицу tooa сущности сначала создать класс, определяющий hello свойства сущности.</span><span class="sxs-lookup"><span data-stu-id="c5e41-135">tooadd an entity tooa table, first create a class that defines hello properties of your entity.</span></span> <span data-ttu-id="c5e41-136">Hello следующий код определяет класс сущностей, который использует имя клиента hello как ключ строки hello и фамилию в качестве ключа секции hello.</span><span class="sxs-lookup"><span data-stu-id="c5e41-136">hello following code defines an entity class which uses hello customer's first name as hello row key, and last name as hello partition key.</span></span> <span data-ttu-id="c5e41-137">Вместе секции и ключом строки идентификации сущности hello hello таблицы.</span><span class="sxs-lookup"><span data-stu-id="c5e41-137">Together, an entity's partition and row key uniquely identify hello entity in hello table.</span></span> <span data-ttu-id="c5e41-138">Сущности с одинаковым ключом секции могут выполняться быстрее, чем с разными ключами секционирования приветствия.</span><span class="sxs-lookup"><span data-stu-id="c5e41-138">Entities with hello same partition key can be queried faster than those with different partition keys.</span></span>
 
 ```java
 public class CustomerEntity extends TableServiceEntity {
@@ -154,7 +154,7 @@ public class CustomerEntity extends TableServiceEntity {
 }
 ```
 
-<span data-ttu-id="23079-139">Табличные операций, включающие сущности, требуют объект **TableOperation** .</span><span class="sxs-lookup"><span data-stu-id="23079-139">Table operations involving entities require a **TableOperation** object.</span></span> <span data-ttu-id="23079-140">Этот объект определяет выполняемую для сущности операцию, которую можно запустить с помощью объекта **CloudTable** .</span><span class="sxs-lookup"><span data-stu-id="23079-140">This object defines the operation to be performed on an entity, which can be executed with a **CloudTable** object.</span></span> <span data-ttu-id="23079-141">В следующем коде создается новый экземпляр класса **CustomerEntity** с сохраняемыми данными клиента.</span><span class="sxs-lookup"><span data-stu-id="23079-141">The following code creates a new instance of the **CustomerEntity** class with some customer data to be stored.</span></span> <span data-ttu-id="23079-142">Далее код вызывает **TableOperation.insertOrReplace**, чтобы создать объект **TableOperation** для вставки сущности в таблицу, а также связывает с ним новый объект **CustomerEntity**.</span><span class="sxs-lookup"><span data-stu-id="23079-142">The code next calls **TableOperation.insertOrReplace** to create a **TableOperation** object to insert an entity into a table, and associates the new **CustomerEntity** with it.</span></span> <span data-ttu-id="23079-143">Наконец код вызывает метод **execute** объекта **CloudTable**, определяя таблицу people и новый объект **TableOperation**, который затем отправляет запрос в службу хранилища для вставки новой сущности клиента в таблицу people или замены сущности, если она уже существует.</span><span class="sxs-lookup"><span data-stu-id="23079-143">Finally, the code calls the **execute** method on the **CloudTable** object, specifying the "people" table and the new **TableOperation**, which then sends a request to the storage service to insert the new customer entity into the "people" table, or replace the entity if it already exists.</span></span>
+<span data-ttu-id="c5e41-139">Табличные операций, включающие сущности, требуют объект **TableOperation** .</span><span class="sxs-lookup"><span data-stu-id="c5e41-139">Table operations involving entities require a **TableOperation** object.</span></span> <span data-ttu-id="c5e41-140">Этот объект определяет toobe операции hello выполнена на сущность, которая может выполняться с **CloudTable** объекта.</span><span class="sxs-lookup"><span data-stu-id="c5e41-140">This object defines hello operation toobe performed on an entity, which can be executed with a **CloudTable** object.</span></span> <span data-ttu-id="c5e41-141">Hello следующий код создает новый экземпляр hello **CustomerEntity** класса хранимых данных toobe некоторых клиентов система.</span><span class="sxs-lookup"><span data-stu-id="c5e41-141">hello following code creates a new instance of hello **CustomerEntity** class with some customer data toobe stored.</span></span> <span data-ttu-id="c5e41-142">Здравствуйте, следующий код вызывает метод **TableOperation.insertOrReplace** toocreate **TableOperation** объекта tooinsert сущность в таблицу, и связывает hello новые **CustomerEntity**с ним.</span><span class="sxs-lookup"><span data-stu-id="c5e41-142">hello code next calls **TableOperation.insertOrReplace** toocreate a **TableOperation** object tooinsert an entity into a table, and associates hello new **CustomerEntity** with it.</span></span> <span data-ttu-id="c5e41-143">Наконец, код hello вызывает hello **выполнение** метод hello **CloudTable** указание таблицы «people» hello и новый hello объекта **TableOperation**, которая затем отправляет запрос toohello хранилища службы tooinsert hello новой сущности customer в таблицу «люди» hello, или заменяет сущность hello в том случае, если он уже существует.</span><span class="sxs-lookup"><span data-stu-id="c5e41-143">Finally, hello code calls hello **execute** method on hello **CloudTable** object, specifying hello "people" table and hello new **TableOperation**, which then sends a request toohello storage service tooinsert hello new customer entity into hello "people" table, or replace hello entity if it already exists.</span></span>
 
 ```java
 try
@@ -163,10 +163,10 @@ try
     CloudStorageAccount storageAccount =
         CloudStorageAccount.parse(storageConnectionString);
 
-    // Create the table client.
+    // Create hello table client.
     CloudTableClient tableClient = storageAccount.createCloudTableClient();
 
-    // Create a cloud table object for the table.
+    // Create a cloud table object for hello table.
     CloudTable cloudTable = tableClient.getTableReference("people");
 
     // Create a new customer entity.
@@ -174,21 +174,21 @@ try
     customer1.setEmail("Walter@contoso.com");
     customer1.setPhoneNumber("425-555-0101");
 
-    // Create an operation to add the new customer to the people table.
+    // Create an operation tooadd hello new customer toohello people table.
     TableOperation insertCustomer1 = TableOperation.insertOrReplace(customer1);
 
-    // Submit the operation to the table service.
+    // Submit hello operation toohello table service.
     cloudTable.execute(insertCustomer1);
 }
 catch (Exception e)
 {
-    // Output the stack trace.
+    // Output hello stack trace.
     e.printStackTrace();
 }
 ```
 
-## <a name="how-to-insert-a-batch-of-entities"></a><span data-ttu-id="23079-144">Практическое руководство. Вставка пакета сущностей</span><span class="sxs-lookup"><span data-stu-id="23079-144">How to: Insert a batch of entities</span></span>
-<span data-ttu-id="23079-145">Вы можете вставить пакет сущностей в таблицу в одной операции записи.</span><span class="sxs-lookup"><span data-stu-id="23079-145">You can insert a batch of entities to the table service in one write operation.</span></span> <span data-ttu-id="23079-146">Следующий код создает объект **TableBatchOperation** , а затем добавляет в него три операции вставки.</span><span class="sxs-lookup"><span data-stu-id="23079-146">The following code creates a **TableBatchOperation** object, then adds three insert operations to it.</span></span> <span data-ttu-id="23079-147">Каждая операция вставки добавляется путем создания нового объекта сущности, установки его значений и последующего вызова метода **insert** для объекта **TableBatchOperation**, чтобы связать сущность с новой операцией вставки.</span><span class="sxs-lookup"><span data-stu-id="23079-147">Each insert operation is added by creating a new entity object, setting its values, and then calling the **insert** method on the **TableBatchOperation** object to associate the entity with a new insert operation.</span></span> <span data-ttu-id="23079-148">Затем код вызывает метод **execute** объекта **CloudTable**, определяя таблицу people и объект **TableBatchOperation**, который отправляет пакет операций таблицы в службу хранилища в одном запросе.</span><span class="sxs-lookup"><span data-stu-id="23079-148">Then the code calls **execute** on the **CloudTable** object, specifying the "people" table and the **TableBatchOperation** object, which sends the batch of table operations to the storage service in a single request.</span></span>
+## <a name="how-to-insert-a-batch-of-entities"></a><span data-ttu-id="c5e41-144">Практическое руководство. Вставка пакета сущностей</span><span class="sxs-lookup"><span data-stu-id="c5e41-144">How to: Insert a batch of entities</span></span>
+<span data-ttu-id="c5e41-145">Пакет службы таблиц toohello сущностей можно вставить в одну операцию записи.</span><span class="sxs-lookup"><span data-stu-id="c5e41-145">You can insert a batch of entities toohello table service in one write operation.</span></span> <span data-ttu-id="c5e41-146">Hello следующий код создает **TableBatchOperation** объекта, а затем добавляет три вставить tooit операций.</span><span class="sxs-lookup"><span data-stu-id="c5e41-146">hello following code creates a **TableBatchOperation** object, then adds three insert operations tooit.</span></span> <span data-ttu-id="c5e41-147">Каждой операции вставки добавляется путем создания нового объекта сущностей, задание его значения и последующего вызова hello **вставить** метод hello **TableBatchOperation** объекта tooassociate hello сущности с новым операции вставки.</span><span class="sxs-lookup"><span data-stu-id="c5e41-147">Each insert operation is added by creating a new entity object, setting its values, and then calling hello **insert** method on hello **TableBatchOperation** object tooassociate hello entity with a new insert operation.</span></span> <span data-ttu-id="c5e41-148">Здравствуйте, затем код вызывает метод **выполнение** на hello **CloudTable** указание таблицы «people» hello и hello объекта **TableBatchOperation** объекта, который отправляет пакет hello таблицы Служба хранилища toohello операций в одном запросе.</span><span class="sxs-lookup"><span data-stu-id="c5e41-148">Then hello code calls **execute** on hello **CloudTable** object, specifying hello "people" table and hello **TableBatchOperation** object, which sends hello batch of table operations toohello storage service in a single request.</span></span>
 
 ```java
 try
@@ -197,52 +197,52 @@ try
     CloudStorageAccount storageAccount =
         CloudStorageAccount.parse(storageConnectionString);
 
-    // Create the table client.
+    // Create hello table client.
     CloudTableClient tableClient = storageAccount.createCloudTableClient();
 
     // Define a batch operation.
     TableBatchOperation batchOperation = new TableBatchOperation();
 
-    // Create a cloud table object for the table.
+    // Create a cloud table object for hello table.
     CloudTable cloudTable = tableClient.getTableReference("people");
 
-    // Create a customer entity to add to the table.
+    // Create a customer entity tooadd toohello table.
     CustomerEntity customer = new CustomerEntity("Smith", "Jeff");
     customer.setEmail("Jeff@contoso.com");
     customer.setPhoneNumber("425-555-0104");
     batchOperation.insertOrReplace(customer);
 
-    // Create another customer entity to add to the table.
+    // Create another customer entity tooadd toohello table.
     CustomerEntity customer2 = new CustomerEntity("Smith", "Ben");
     customer2.setEmail("Ben@contoso.com");
     customer2.setPhoneNumber("425-555-0102");
     batchOperation.insertOrReplace(customer2);
 
-    // Create a third customer entity to add to the table.
+    // Create a third customer entity tooadd toohello table.
     CustomerEntity customer3 = new CustomerEntity("Smith", "Denise");
     customer3.setEmail("Denise@contoso.com");
     customer3.setPhoneNumber("425-555-0103");
     batchOperation.insertOrReplace(customer3);
 
-    // Execute the batch of operations on the "people" table.
+    // Execute hello batch of operations on hello "people" table.
     cloudTable.execute(batchOperation);
 }
 catch (Exception e)
 {
-    // Output the stack trace.
+    // Output hello stack trace.
     e.printStackTrace();
 }
 ```
 
-<span data-ttu-id="23079-149">Некоторые другие примечания к пакетным операциям:</span><span class="sxs-lookup"><span data-stu-id="23079-149">Some things to note on batch operations:</span></span>
+<span data-ttu-id="c5e41-149">Некоторые действия toonote на пакетные операции:</span><span class="sxs-lookup"><span data-stu-id="c5e41-149">Some things toonote on batch operations:</span></span>
 
-* <span data-ttu-id="23079-150">В отдельном пакете можно выполнить до 100 операций вставки, удаления, объединения, замены, вставки или замены и вставки или замены операций в любом сочетании.</span><span class="sxs-lookup"><span data-stu-id="23079-150">You can perform up to 100 insert, delete, merge, replace, insert or merge, and insert or replace operations in any combination in a single batch.</span></span>
-* <span data-ttu-id="23079-151">Пакетная операция может иметь операцию извлечения, если она является единственной операцией в пакете.</span><span class="sxs-lookup"><span data-stu-id="23079-151">A batch operation can have a retrieve operation, if it is the only operation in the batch.</span></span>
-* <span data-ttu-id="23079-152">У всех сущностей в одной пакетной операции должен быть одинаковый ключ раздела.</span><span class="sxs-lookup"><span data-stu-id="23079-152">All entities in a single batch operation must have the same partition key.</span></span>
-* <span data-ttu-id="23079-153">Объем полезных данных пакетной операции ограничен размером 4 МБ.</span><span class="sxs-lookup"><span data-stu-id="23079-153">A batch operation is limited to a 4MB data payload.</span></span>
+* <span data-ttu-id="c5e41-150">Можно выполнять копирование too100 insert, delete, merge, replace, insert или merge и вставки или замены в любой комбинации в одном пакете.</span><span class="sxs-lookup"><span data-stu-id="c5e41-150">You can perform up too100 insert, delete, merge, replace, insert or merge, and insert or replace operations in any combination in a single batch.</span></span>
+* <span data-ttu-id="c5e41-151">В него входит только операция hello в пакете hello пакетная операция может быть операцией извлечения.</span><span class="sxs-lookup"><span data-stu-id="c5e41-151">A batch operation can have a retrieve operation, if it is hello only operation in hello batch.</span></span>
+* <span data-ttu-id="c5e41-152">Все сущности в одной пакетной операции должен иметь hello же ключ секционирования.</span><span class="sxs-lookup"><span data-stu-id="c5e41-152">All entities in a single batch operation must have hello same partition key.</span></span>
+* <span data-ttu-id="c5e41-153">Пакетная операция представляет полезные данные ограниченного tooa 4 МБ.</span><span class="sxs-lookup"><span data-stu-id="c5e41-153">A batch operation is limited tooa 4MB data payload.</span></span>
 
-## <a name="how-to-retrieve-all-entities-in-a-partition"></a><span data-ttu-id="23079-154">Практическое руководство. Получение всех сущностей в разделе</span><span class="sxs-lookup"><span data-stu-id="23079-154">How to: Retrieve all entities in a partition</span></span>
-<span data-ttu-id="23079-155">Чтобы запросить из таблицы сущности раздела, можно использовать **TableQuery**.</span><span class="sxs-lookup"><span data-stu-id="23079-155">To query a table for entities in a partition, you can use a **TableQuery**.</span></span> <span data-ttu-id="23079-156">Вызовите **TableQuery.from**, чтобы создать запрос для определенной таблицы, который возвращает результаты заданного типа.</span><span class="sxs-lookup"><span data-stu-id="23079-156">Call **TableQuery.from** to create a query on a particular table that returns a specified result type.</span></span> <span data-ttu-id="23079-157">Следующий код задает фильтр для сущностей с ключомраздела "Smith".</span><span class="sxs-lookup"><span data-stu-id="23079-157">The following code specifies a filter for entities where 'Smith' is the partition key.</span></span> <span data-ttu-id="23079-158">**TableQuery.generateFilterCondition** — это вспомогательный метод для создания фильтров запросов.</span><span class="sxs-lookup"><span data-stu-id="23079-158">**TableQuery.generateFilterCondition** is a helper method to create filters for queries.</span></span> <span data-ttu-id="23079-159">Вызовите **where** по ссылке, которую вернул метод **TableQuery.from**, чтобы применить фильтр к запросу.</span><span class="sxs-lookup"><span data-stu-id="23079-159">Call **where** on the reference returned by the **TableQuery.from** method to apply the filter to the query.</span></span> <span data-ttu-id="23079-160">При выполнении запроса с помощью вызова **execute** для объекта **CloudTable** он возвращает **Iterator** с указанным типом результата **CustomerEntity**.</span><span class="sxs-lookup"><span data-stu-id="23079-160">When the query is executed with a call to **execute** on the **CloudTable** object, it returns an **Iterator** with the **CustomerEntity** result type specified.</span></span> <span data-ttu-id="23079-161">Затем можно использовать возвращенное значение **Iterator** в каждом цикле для получения результатов.</span><span class="sxs-lookup"><span data-stu-id="23079-161">You can then use the **Iterator** returned in a for each loop to consume the results.</span></span> <span data-ttu-id="23079-162">Этот код выводит на консоль поля каждой сущности в результатах запроса.</span><span class="sxs-lookup"><span data-stu-id="23079-162">This code prints the fields of each entity in the query results to the console.</span></span>
+## <a name="how-to-retrieve-all-entities-in-a-partition"></a><span data-ttu-id="c5e41-154">Практическое руководство. Получение всех сущностей в разделе</span><span class="sxs-lookup"><span data-stu-id="c5e41-154">How to: Retrieve all entities in a partition</span></span>
+<span data-ttu-id="c5e41-155">tooquery таблицы для сущностей из секции, можно использовать **TableQuery**.</span><span class="sxs-lookup"><span data-stu-id="c5e41-155">tooquery a table for entities in a partition, you can use a **TableQuery**.</span></span> <span data-ttu-id="c5e41-156">Вызовите **TableQuery.from** toocreate запроса на определенной таблице, которая возвращает тип, заданный результат.</span><span class="sxs-lookup"><span data-stu-id="c5e41-156">Call **TableQuery.from** toocreate a query on a particular table that returns a specified result type.</span></span> <span data-ttu-id="c5e41-157">Hello следующий код задает фильтр для сущности, где ключ раздела hello 'Smith'.</span><span class="sxs-lookup"><span data-stu-id="c5e41-157">hello following code specifies a filter for entities where 'Smith' is hello partition key.</span></span> <span data-ttu-id="c5e41-158">**TableQuery.generateFilterCondition** — это вспомогательный метод toocreate фильтры для запросов.</span><span class="sxs-lookup"><span data-stu-id="c5e41-158">**TableQuery.generateFilterCondition** is a helper method toocreate filters for queries.</span></span> <span data-ttu-id="c5e41-159">Вызовите **где** hello ссылки, возвращенные hello **TableQuery.from** метод tooapply hello фильтра toohello запроса.</span><span class="sxs-lookup"><span data-stu-id="c5e41-159">Call **where** on hello reference returned by hello **TableQuery.from** method tooapply hello filter toohello query.</span></span> <span data-ttu-id="c5e41-160">Если hello запрос выполняется с помощью вызова слишком**выполнение** на hello **CloudTable** он возвращает **итератор** с hello **CustomerEntity**указан тип результата.</span><span class="sxs-lookup"><span data-stu-id="c5e41-160">When hello query is executed with a call too**execute** on hello **CloudTable** object, it returns an **Iterator** with hello **CustomerEntity** result type specified.</span></span> <span data-ttu-id="c5e41-161">Затем можно использовать hello **итератор** возвращается в для каждого цикла tooconsume hello результатов.</span><span class="sxs-lookup"><span data-stu-id="c5e41-161">You can then use hello **Iterator** returned in a for each loop tooconsume hello results.</span></span> <span data-ttu-id="c5e41-162">Этот код выводит hello поля в каждой сущности в консоли toohello результаты запроса hello.</span><span class="sxs-lookup"><span data-stu-id="c5e41-162">This code prints hello fields of each entity in hello query results toohello console.</span></span>
 
 ```java
 try
@@ -256,24 +256,24 @@ try
     CloudStorageAccount storageAccount =
         CloudStorageAccount.parse(storageConnectionString);
 
-    // Create the table client.
+    // Create hello table client.
     CloudTableClient tableClient = storageAccount.createCloudTableClient();
 
-    // Create a cloud table object for the table.
+    // Create a cloud table object for hello table.
     CloudTable cloudTable = tableClient.getTableReference("people");
 
-    // Create a filter condition where the partition key is "Smith".
+    // Create a filter condition where hello partition key is "Smith".
     String partitionFilter = TableQuery.generateFilterCondition(
         PARTITION_KEY,
         QueryComparisons.EQUAL,
         "Smith");
 
-    // Specify a partition query, using "Smith" as the partition key filter.
+    // Specify a partition query, using "Smith" as hello partition key filter.
     TableQuery<CustomerEntity> partitionQuery =
         TableQuery.from(CustomerEntity.class)
         .where(partitionFilter);
 
-    // Loop through the results, displaying information about the entity.
+    // Loop through hello results, displaying information about hello entity.
     for (CustomerEntity entity : cloudTable.execute(partitionQuery)) {
         System.out.println(entity.getPartitionKey() +
             " " + entity.getRowKey() +
@@ -283,13 +283,13 @@ try
 }
 catch (Exception e)
 {
-    // Output the stack trace.
+    // Output hello stack trace.
     e.printStackTrace();
 }
 ```
 
-## <a name="how-to-retrieve-a-range-of-entities-in-a-partition"></a><span data-ttu-id="23079-163">Практическое руководство. Получение диапазона сущностей в разделе</span><span class="sxs-lookup"><span data-stu-id="23079-163">How to: Retrieve a range of entities in a partition</span></span>
-<span data-ttu-id="23079-164">Если вы не хотите запрашивать все сущности в разделе, можно указать диапазон с помощью операторов сравнения в фильтре.</span><span class="sxs-lookup"><span data-stu-id="23079-164">If you don't want to query all the entities in a partition, you can specify a range by using comparison operators in a filter.</span></span> <span data-ttu-id="23079-165">В следующем коде совместно используются два фильтра для получения всех сущностей в разделе "Smith", где ключ строки (имя) начинается с буквы до "E" в алфавите.</span><span class="sxs-lookup"><span data-stu-id="23079-165">The following code combines two filters to get all entities in partition "Smith" where the row key (first name) starts with a letter up to 'E' in the alphabet.</span></span> <span data-ttu-id="23079-166">После чего результаты запроса выводятся на консоль.</span><span class="sxs-lookup"><span data-stu-id="23079-166">Then it prints the query results.</span></span> <span data-ttu-id="23079-167">Если вы используете сущности, добавленные в таблицу во время работы с разделом о пакетной вставке, то на этот раз возвращаются только две сущности (Ben Smith и Denise Smith), а Jeff Smith не выводится.</span><span class="sxs-lookup"><span data-stu-id="23079-167">If you use the entities added to the table in the batch insert section of this guide, only two entities are returned this time (Ben and Denise Smith); Jeff Smith is not included.</span></span>
+## <a name="how-to-retrieve-a-range-of-entities-in-a-partition"></a><span data-ttu-id="c5e41-163">Практическое руководство. Получение диапазона сущностей в разделе</span><span class="sxs-lookup"><span data-stu-id="c5e41-163">How to: Retrieve a range of entities in a partition</span></span>
+<span data-ttu-id="c5e41-164">Если вы не хотите tooquery все сущности hello в секции, можно указать диапазон с помощью операторов сравнения в фильтре.</span><span class="sxs-lookup"><span data-stu-id="c5e41-164">If you don't want tooquery all hello entities in a partition, you can specify a range by using comparison operators in a filter.</span></span> <span data-ttu-id="c5e41-165">Здравствуйте, следующий код объединяет два фильтрует tooget всех сущностей в разделе «Smith» где ключ строки hello (имя) начинается с буквы вверх too'E "hello алфавита.</span><span class="sxs-lookup"><span data-stu-id="c5e41-165">hello following code combines two filters tooget all entities in partition "Smith" where hello row key (first name) starts with a letter up too'E' in hello alphabet.</span></span> <span data-ttu-id="c5e41-166">Затем он выводит результаты запроса hello.</span><span class="sxs-lookup"><span data-stu-id="c5e41-166">Then it prints hello query results.</span></span> <span data-ttu-id="c5e41-167">При использовании таблицы добавлены toohello hello сущностей в пакете hello вставить данного руководства, возвращаются только две сущности, это время (Бен и Юлия Smith); Джефф Smith не включается.</span><span class="sxs-lookup"><span data-stu-id="c5e41-167">If you use hello entities added toohello table in hello batch insert section of this guide, only two entities are returned this time (Ben and Denise Smith); Jeff Smith is not included.</span></span>
 
 ```java
 try
@@ -303,35 +303,35 @@ try
     CloudStorageAccount storageAccount =
         CloudStorageAccount.parse(storageConnectionString);
 
-    // Create the table client.
+    // Create hello table client.
     CloudTableClient tableClient = storageAccount.createCloudTableClient();
 
-    // Create a cloud table object for the table.
+    // Create a cloud table object for hello table.
     CloudTable cloudTable = tableClient.getTableReference("people");
 
-    // Create a filter condition where the partition key is "Smith".
+    // Create a filter condition where hello partition key is "Smith".
     String partitionFilter = TableQuery.generateFilterCondition(
         PARTITION_KEY,
         QueryComparisons.EQUAL,
         "Smith");
 
-    // Create a filter condition where the row key is less than the letter "E".
+    // Create a filter condition where hello row key is less than hello letter "E".
     String rowFilter = TableQuery.generateFilterCondition(
         ROW_KEY,
         QueryComparisons.LESS_THAN,
         "E");
 
-    // Combine the two conditions into a filter expression.
+    // Combine hello two conditions into a filter expression.
     String combinedFilter = TableQuery.combineFilters(partitionFilter,
         Operators.AND, rowFilter);
 
-    // Specify a range query, using "Smith" as the partition key,
-    // with the row key being up to the letter "E".
+    // Specify a range query, using "Smith" as hello partition key,
+    // with hello row key being up toohello letter "E".
     TableQuery<CustomerEntity> rangeQuery =
         TableQuery.from(CustomerEntity.class)
         .where(combinedFilter);
 
-    // Loop through the results, displaying information about the entity
+    // Loop through hello results, displaying information about hello entity
     for (CustomerEntity entity : cloudTable.execute(rangeQuery)) {
         System.out.println(entity.getPartitionKey() +
             " " + entity.getRowKey() +
@@ -341,13 +341,13 @@ try
 }
 catch (Exception e)
 {
-    // Output the stack trace.
+    // Output hello stack trace.
     e.printStackTrace();
 }
 ```
 
-## <a name="how-to-retrieve-a-single-entity"></a><span data-ttu-id="23079-168">Практическое руководство. Извлечение одной сущности</span><span class="sxs-lookup"><span data-stu-id="23079-168">How to: Retrieve a single entity</span></span>
-<span data-ttu-id="23079-169">Можно написать запрос для получения отдельной сущности.</span><span class="sxs-lookup"><span data-stu-id="23079-169">You can write a query to retrieve a single, specific entity.</span></span> <span data-ttu-id="23079-170">В следующем коде выполняется вызов **TableOperation.retrieve** с параметрами ключа раздела и ключа строки для указания клиента Jeff Smith вместо создания **TableQuery** и применения фильтров с таким же результатом.</span><span class="sxs-lookup"><span data-stu-id="23079-170">The following code calls **TableOperation.retrieve** with partition key and row key parameters to specify the customer "Jeff Smith", instead of creating a **TableQuery** and using filters to do the same thing.</span></span> <span data-ttu-id="23079-171">При выполнении операция извлечения возвращает только одну сущность, а не коллекцию.</span><span class="sxs-lookup"><span data-stu-id="23079-171">When executed, the retrieve operation returns just one entity, rather than a collection.</span></span> <span data-ttu-id="23079-172">Метод **getResultAsType** приводит результат к типу назначенной цели — объекту **CustomerEntity**.</span><span class="sxs-lookup"><span data-stu-id="23079-172">The **getResultAsType** method casts the result to the type of the assignment target, a **CustomerEntity** object.</span></span> <span data-ttu-id="23079-173">Если этот тип не совместим с типом, указанным в запросе, возникает исключение.</span><span class="sxs-lookup"><span data-stu-id="23079-173">If this type is not compatible with the type specified for the query, an exception will be thrown.</span></span> <span data-ttu-id="23079-174">Значение NULL возвращается, если ни одна сущность не подходит по ключам раздела и строки.</span><span class="sxs-lookup"><span data-stu-id="23079-174">A null value is returned if no entity has an exact partition and row key match.</span></span> <span data-ttu-id="23079-175">Указание ключа раздела и ключа строки в запросе — самый быстрый способ извлечь одну сущность из службы таблиц.</span><span class="sxs-lookup"><span data-stu-id="23079-175">Specifying both partition and row keys in a query is the fastest way to retrieve a single entity from the Table service.</span></span>
+## <a name="how-to-retrieve-a-single-entity"></a><span data-ttu-id="c5e41-168">Практическое руководство. Извлечение одной сущности</span><span class="sxs-lookup"><span data-stu-id="c5e41-168">How to: Retrieve a single entity</span></span>
+<span data-ttu-id="c5e41-169">Можно написать tooretrieve запроса конкретную сущность.</span><span class="sxs-lookup"><span data-stu-id="c5e41-169">You can write a query tooretrieve a single, specific entity.</span></span> <span data-ttu-id="c5e41-170">Hello следующий код вызывает **TableOperation.retrieve** с секции ключ и строку параметров ключа toospecify hello клиентом «Джефф Smith», вместо создания **TableQuery** и использование фильтров toodo hello одинаково.</span><span class="sxs-lookup"><span data-stu-id="c5e41-170">hello following code calls **TableOperation.retrieve** with partition key and row key parameters toospecify hello customer "Jeff Smith", instead of creating a **TableQuery** and using filters toodo hello same thing.</span></span> <span data-ttu-id="c5e41-171">Во время выполнения получить hello, операция возвращает только одну сущность, а не коллекцию.</span><span class="sxs-lookup"><span data-stu-id="c5e41-171">When executed, hello retrieve operation returns just one entity, rather than a collection.</span></span> <span data-ttu-id="c5e41-172">Hello **getResultAsType** метод приводит hello результат toohello тип цели назначения hello, **CustomerEntity** объекта.</span><span class="sxs-lookup"><span data-stu-id="c5e41-172">hello **getResultAsType** method casts hello result toohello type of hello assignment target, a **CustomerEntity** object.</span></span> <span data-ttu-id="c5e41-173">Если этот тип несовместим с типом hello hello запросе указано, будет вызвано исключение.</span><span class="sxs-lookup"><span data-stu-id="c5e41-173">If this type is not compatible with hello type specified for hello query, an exception will be thrown.</span></span> <span data-ttu-id="c5e41-174">Значение NULL возвращается, если ни одна сущность не подходит по ключам раздела и строки.</span><span class="sxs-lookup"><span data-stu-id="c5e41-174">A null value is returned if no entity has an exact partition and row key match.</span></span> <span data-ttu-id="c5e41-175">Указание ключи секций и строк в запросе является hello самый быстрый способ tooretrieve одной сущности из службы таблиц hello.</span><span class="sxs-lookup"><span data-stu-id="c5e41-175">Specifying both partition and row keys in a query is hello fastest way tooretrieve a single entity from hello Table service.</span></span>
 
 ```java
 try
@@ -356,21 +356,21 @@ try
     CloudStorageAccount storageAccount =
         CloudStorageAccount.parse(storageConnectionString);
 
-    // Create the table client.
+    // Create hello table client.
     CloudTableClient tableClient = storageAccount.createCloudTableClient();
 
-    // Create a cloud table object for the table.
+    // Create a cloud table object for hello table.
     CloudTable cloudTable = tableClient.getTableReference("people");
 
-    // Retrieve the entity with partition key of "Smith" and row key of "Jeff"
+    // Retrieve hello entity with partition key of "Smith" and row key of "Jeff"
     TableOperation retrieveSmithJeff =
         TableOperation.retrieve("Smith", "Jeff", CustomerEntity.class);
 
-    // Submit the operation to the table service and get the specific entity.
+    // Submit hello operation toohello table service and get hello specific entity.
     CustomerEntity specificEntity =
         cloudTable.execute(retrieveSmithJeff).getResultAsType();
 
-    // Output the entity.
+    // Output hello entity.
     if (specificEntity != null)
     {
         System.out.println(specificEntity.getPartitionKey() +
@@ -381,13 +381,13 @@ try
 }
 catch (Exception e)
 {
-    // Output the stack trace.
+    // Output hello stack trace.
     e.printStackTrace();
 }
 ```
 
-## <a name="how-to-modify-an-entity"></a><span data-ttu-id="23079-176">Практическое руководство. Изменение сущности</span><span class="sxs-lookup"><span data-stu-id="23079-176">How to: Modify an entity</span></span>
-<span data-ttu-id="23079-177">Чтобы изменить сущность, извлеките ее из службы таблиц, измените объект сущности и сохраните изменения в службе таблиц с помощью операции замены или объединения.</span><span class="sxs-lookup"><span data-stu-id="23079-177">To modify an entity, retrieve it from the table service, make changes to the entity object, and save the changes back to the table service with a replace or merge operation.</span></span> <span data-ttu-id="23079-178">Следующий код изменяет существующий номер телефона клиента.</span><span class="sxs-lookup"><span data-stu-id="23079-178">The following code changes an existing customer's phone number.</span></span> <span data-ttu-id="23079-179">Вместо вызова метода **TableOperation.insert**, который мы осуществляли при вставке, этот код вызывает **TableOperation.replace**.</span><span class="sxs-lookup"><span data-stu-id="23079-179">Instead of calling **TableOperation.insert** like we did to insert, this code calls **TableOperation.replace**.</span></span> <span data-ttu-id="23079-180">Метод **CloudTableClient.execute** вызывает службу таблиц и заменяет сущность, если только другое приложение не изменило ее с момента извлечения данным приложением.</span><span class="sxs-lookup"><span data-stu-id="23079-180">The **CloudTable.execute** method calls the table service, and the entity is replaced, unless another application changed it in the time since this application retrieved it.</span></span> <span data-ttu-id="23079-181">Когда это происходит, возникает исключение, и сущность необходимо получить, изменить и сохранить повторно.</span><span class="sxs-lookup"><span data-stu-id="23079-181">When that happens, an exception is thrown, and the entity must be retrieved, modified, and saved again.</span></span> <span data-ttu-id="23079-182">Этот оптимистичный шаблон повторения в случае конфликтов широко применяется в системе распределенного хранения.</span><span class="sxs-lookup"><span data-stu-id="23079-182">This optimistic concurrency retry pattern is common in a distributed storage system.</span></span>
+## <a name="how-to-modify-an-entity"></a><span data-ttu-id="c5e41-176">Практическое руководство. Изменение сущности</span><span class="sxs-lookup"><span data-stu-id="c5e41-176">How to: Modify an entity</span></span>
+<span data-ttu-id="c5e41-177">toomodify сущности, получить его из службы таблиц hello, сделать объект сущности toohello изменения и сохранить изменения hello задней toohello службы таблиц с помощью операции слияния или замены.</span><span class="sxs-lookup"><span data-stu-id="c5e41-177">toomodify an entity, retrieve it from hello table service, make changes toohello entity object, and save hello changes back toohello table service with a replace or merge operation.</span></span> <span data-ttu-id="c5e41-178">Hello следующий код позволяет изменить номер телефона существующего клиента.</span><span class="sxs-lookup"><span data-stu-id="c5e41-178">hello following code changes an existing customer's phone number.</span></span> <span data-ttu-id="c5e41-179">Вместо вызова метода **TableOperation.insert** как мы делали tooinsert, этот код вызывает **TableOperation.replace**.</span><span class="sxs-lookup"><span data-stu-id="c5e41-179">Instead of calling **TableOperation.insert** like we did tooinsert, this code calls **TableOperation.replace**.</span></span> <span data-ttu-id="c5e41-180">Hello **CloudTable.execute** метод вызывает службу hello таблицы и сущности hello заменяется первоначально другое приложение его hello времени с момента получения данного приложения, его.</span><span class="sxs-lookup"><span data-stu-id="c5e41-180">hello **CloudTable.execute** method calls hello table service, and hello entity is replaced, unless another application changed it in hello time since this application retrieved it.</span></span> <span data-ttu-id="c5e41-181">Когда это происходит, возникает исключение и hello сущности необходимо извлечь, изменения и снова сохранить.</span><span class="sxs-lookup"><span data-stu-id="c5e41-181">When that happens, an exception is thrown, and hello entity must be retrieved, modified, and saved again.</span></span> <span data-ttu-id="c5e41-182">Этот оптимистичный шаблон повторения в случае конфликтов широко применяется в системе распределенного хранения.</span><span class="sxs-lookup"><span data-stu-id="c5e41-182">This optimistic concurrency retry pattern is common in a distributed storage system.</span></span>
 
 ```java
 try
@@ -396,38 +396,38 @@ try
     CloudStorageAccount storageAccount =
         CloudStorageAccount.parse(storageConnectionString);
 
-    // Create the table client.
+    // Create hello table client.
     CloudTableClient tableClient = storageAccount.createCloudTableClient();
 
-    // Create a cloud table object for the table.
+    // Create a cloud table object for hello table.
     CloudTable cloudTable = tableClient.getTableReference("people");
 
-    // Retrieve the entity with partition key of "Smith" and row key of "Jeff".
+    // Retrieve hello entity with partition key of "Smith" and row key of "Jeff".
     TableOperation retrieveSmithJeff =
         TableOperation.retrieve("Smith", "Jeff", CustomerEntity.class);
 
-    // Submit the operation to the table service and get the specific entity.
+    // Submit hello operation toohello table service and get hello specific entity.
     CustomerEntity specificEntity =
         cloudTable.execute(retrieveSmithJeff).getResultAsType();
 
     // Specify a new phone number.
     specificEntity.setPhoneNumber("425-555-0105");
 
-    // Create an operation to replace the entity.
+    // Create an operation tooreplace hello entity.
     TableOperation replaceEntity = TableOperation.replace(specificEntity);
 
-    // Submit the operation to the table service.
+    // Submit hello operation toohello table service.
     cloudTable.execute(replaceEntity);
 }
 catch (Exception e)
 {
-    // Output the stack trace.
+    // Output hello stack trace.
     e.printStackTrace();
 }
 ```
 
-## <a name="how-to-query-a-subset-of-entity-properties"></a><span data-ttu-id="23079-183">Практическое руководство. Запрос подмножества свойств сущности</span><span class="sxs-lookup"><span data-stu-id="23079-183">How to: Query a subset of entity properties</span></span>
-<span data-ttu-id="23079-184">Запрос к таблице может получить лишь несколько свойств сущности.</span><span class="sxs-lookup"><span data-stu-id="23079-184">A query to a table can retrieve just a few properties from an entity.</span></span> <span data-ttu-id="23079-185">Этот метод, который называется "проекцией", снижает потребление пропускной способности и может повысить производительность запросов, особенно для крупных сущностей.</span><span class="sxs-lookup"><span data-stu-id="23079-185">This technique, called projection, reduces bandwidth and can improve query performance, especially for large entities.</span></span> <span data-ttu-id="23079-186">Запрос в следующем коде использует метод **select**, чтобы возвратить только адреса электронной почты сущностей в таблице.</span><span class="sxs-lookup"><span data-stu-id="23079-186">The query in the following code uses the **select** method to return only the email addresses of entities in the table.</span></span> <span data-ttu-id="23079-187">Результаты проецируются в коллекцию **String** с помощью метода **EntityResolver**, который выполняет преобразование типов сущностей, возвращенных с сервера.</span><span class="sxs-lookup"><span data-stu-id="23079-187">The results are projected into a collection of **String** with the help of an **EntityResolver**, which does the type conversion on the entities returned from the server.</span></span> <span data-ttu-id="23079-188">Дополнительные сведения о проекции см. в записи блога [Azure Tables: Introducing Upsert and Query Projection][Azure Tables: Introducing Upsert and Query Projection] (Таблицы Azure: введение в Upsert и проекции в запросах).</span><span class="sxs-lookup"><span data-stu-id="23079-188">You can learn more about projection in [Azure Tables: Introducing Upsert and Query Projection][Azure Tables: Introducing Upsert and Query Projection].</span></span> <span data-ttu-id="23079-189">Обратите внимание, что проекция не поддерживается в эмуляторе локального хранилища, поэтому этот код выполняется только при использовании учетной записи хранения в службе таблиц.</span><span class="sxs-lookup"><span data-stu-id="23079-189">Note that projection is not supported on the local storage emulator, so this code runs only when using an account on the table service.</span></span>
+## <a name="how-to-query-a-subset-of-entity-properties"></a><span data-ttu-id="c5e41-183">Практическое руководство. Запрос подмножества свойств сущности</span><span class="sxs-lookup"><span data-stu-id="c5e41-183">How to: Query a subset of entity properties</span></span>
+<span data-ttu-id="c5e41-184">Таблицы tooa запроса можно получить только несколько свойств сущности.</span><span class="sxs-lookup"><span data-stu-id="c5e41-184">A query tooa table can retrieve just a few properties from an entity.</span></span> <span data-ttu-id="c5e41-185">Этот метод, который называется "проекцией", снижает потребление пропускной способности и может повысить производительность запросов, особенно для крупных сущностей.</span><span class="sxs-lookup"><span data-stu-id="c5e41-185">This technique, called projection, reduces bandwidth and can improve query performance, especially for large entities.</span></span> <span data-ttu-id="c5e41-186">Hello запрос в hello, следующий код использует hello **выберите** метод tooreturn только hello адреса электронной почты сущности в таблице hello.</span><span class="sxs-lookup"><span data-stu-id="c5e41-186">hello query in hello following code uses hello **select** method tooreturn only hello email addresses of entities in hello table.</span></span> <span data-ttu-id="c5e41-187">Hello результаты проецируются в коллекцию **строка** с помощью hello **EntityResolver**, который does hello преобразование типов сущностей hello, возвращенный от сервера hello.</span><span class="sxs-lookup"><span data-stu-id="c5e41-187">hello results are projected into a collection of **String** with hello help of an **EntityResolver**, which does hello type conversion on hello entities returned from hello server.</span></span> <span data-ttu-id="c5e41-188">Дополнительные сведения о проекции см. в записи блога [Azure Tables: Introducing Upsert and Query Projection][Azure Tables: Introducing Upsert and Query Projection] (Таблицы Azure: введение в Upsert и проекции в запросах).</span><span class="sxs-lookup"><span data-stu-id="c5e41-188">You can learn more about projection in [Azure Tables: Introducing Upsert and Query Projection][Azure Tables: Introducing Upsert and Query Projection].</span></span> <span data-ttu-id="c5e41-189">Обратите внимание, что проекции не поддерживается эмуляторе hello локального хранилища, поэтому этот код выполняется только при использовании учетной записи для службы таблиц hello.</span><span class="sxs-lookup"><span data-stu-id="c5e41-189">Note that projection is not supported on hello local storage emulator, so this code runs only when using an account on hello table service.</span></span>
 
 ```java
 try
@@ -436,18 +436,18 @@ try
     CloudStorageAccount storageAccount =
         CloudStorageAccount.parse(storageConnectionString);
 
-    // Create the table client.
+    // Create hello table client.
     CloudTableClient tableClient = storageAccount.createCloudTableClient();
 
-    // Create a cloud table object for the table.
+    // Create a cloud table object for hello table.
     CloudTable cloudTable = tableClient.getTableReference("people");
 
-    // Define a projection query that retrieves only the Email property
+    // Define a projection query that retrieves only hello Email property
     TableQuery<CustomerEntity> projectionQuery =
         TableQuery.from(CustomerEntity.class)
         .select(new String[] {"Email"});
 
-    // Define a Entity resolver to project the entity to the Email value.
+    // Define a Entity resolver tooproject hello entity toohello Email value.
     EntityResolver<String> emailResolver = new EntityResolver<String>() {
         @Override
         public String resolve(String PartitionKey, String RowKey, Date timeStamp, HashMap<String, EntityProperty> properties, String etag) {
@@ -455,7 +455,7 @@ try
         }
     };
 
-    // Loop through the results, displaying the Email values.
+    // Loop through hello results, displaying hello Email values.
     for (String projectedString :
         cloudTable.execute(projectionQuery, emailResolver)) {
             System.out.println(projectedString);
@@ -463,13 +463,13 @@ try
 }
 catch (Exception e)
 {
-    // Output the stack trace.
+    // Output hello stack trace.
     e.printStackTrace();
 }
 ```
 
-## <a name="how-to-insert-or-replace-an-entity"></a><span data-ttu-id="23079-190">Как вставлять и заменять сущности</span><span class="sxs-lookup"><span data-stu-id="23079-190">How to: Insert or Replace an entity</span></span>
-<span data-ttu-id="23079-191">Часто требуется добавить сущность в таблицу, не зная, присутствует ли она там.</span><span class="sxs-lookup"><span data-stu-id="23079-191">Often you want to add an entity to a table without knowing if it already exists in the table.</span></span> <span data-ttu-id="23079-192">Операция вставки или замены позволяет сделать один запрос, который вставит сущность, если она не существует, или заменит существующую сущность.</span><span class="sxs-lookup"><span data-stu-id="23079-192">An insert-or-replace operation allows you to make a single request which will insert the entity if it does not exist or replace the existing one if it does.</span></span> <span data-ttu-id="23079-193">В продолжение материала предыдущих примеров следующий код вставляет или заменяет сущность "Walter Harp".</span><span class="sxs-lookup"><span data-stu-id="23079-193">Building on prior examples, the following code inserts or replaces the entity for "Walter Harp".</span></span> <span data-ttu-id="23079-194">После создания новой сущности этот код вызывает метод **TableOperation.insertOrReplace**.</span><span class="sxs-lookup"><span data-stu-id="23079-194">After creating a new entity, this code calls the **TableOperation.insertOrReplace** method.</span></span> <span data-ttu-id="23079-195">Далее код вызывает метод **execute** объекта **CloudTable** с таблицей, а также табличными операциями вставки или замены в качестве параметров.</span><span class="sxs-lookup"><span data-stu-id="23079-195">This code then calls **execute** on the **CloudTable** object with the table and the insert or replace table operation as the parameters.</span></span> <span data-ttu-id="23079-196">Чтобы обновить только часть сущности, можно вместо этого использовать метод **TableOperation.insertOrMerge**.</span><span class="sxs-lookup"><span data-stu-id="23079-196">To update only part of an entity, the **TableOperation.insertOrMerge** method can be used instead.</span></span> <span data-ttu-id="23079-197">Обратите внимание, что операция вставить-или-заменить не поддерживается в эмуляторе локального хранилища, поэтому этот код выполняется только при использовании учетной записи хранения в службе таблиц.</span><span class="sxs-lookup"><span data-stu-id="23079-197">Note that insert-or-replace is not supported on the local storage emulator, so this code runs only when using an account on the table service.</span></span> <span data-ttu-id="23079-198">Дополнительные сведения об операциях "вставка или замена" и "вставка или объединение" см. в записи блога [Azure Tables: Introducing Upsert and Query Projection][Azure Tables: Introducing Upsert and Query Projection] (Таблицы Azure: введение в Upsert и проекции в запросах).</span><span class="sxs-lookup"><span data-stu-id="23079-198">You can learn more about insert-or-replace and insert-or-merge in this [Azure Tables: Introducing Upsert and Query Projection][Azure Tables: Introducing Upsert and Query Projection].</span></span>
+## <a name="how-to-insert-or-replace-an-entity"></a><span data-ttu-id="c5e41-190">Как вставлять и заменять сущности</span><span class="sxs-lookup"><span data-stu-id="c5e41-190">How to: Insert or Replace an entity</span></span>
+<span data-ttu-id="c5e41-191">Часто возникает необходимость tooadd tooa сущности таблицы, не зная, если он уже существует в таблице hello.</span><span class="sxs-lookup"><span data-stu-id="c5e41-191">Often you want tooadd an entity tooa table without knowing if it already exists in hello table.</span></span> <span data-ttu-id="c5e41-192">Операция вставки или замены позволяет toomake одного запроса, который будет вставлять hello сущности, если он не существует, или замените hello один существующий, если он не.</span><span class="sxs-lookup"><span data-stu-id="c5e41-192">An insert-or-replace operation allows you toomake a single request which will insert hello entity if it does not exist or replace hello existing one if it does.</span></span> <span data-ttu-id="c5e41-193">Основываясь на предыдущих примерах, hello следующий код вставляет или заменяет сущность hello для «Уолтер Harp».</span><span class="sxs-lookup"><span data-stu-id="c5e41-193">Building on prior examples, hello following code inserts or replaces hello entity for "Walter Harp".</span></span> <span data-ttu-id="c5e41-194">После создания новой сущности, этот код вызывает hello **TableOperation.insertOrReplace** метод.</span><span class="sxs-lookup"><span data-stu-id="c5e41-194">After creating a new entity, this code calls hello **TableOperation.insertOrReplace** method.</span></span> <span data-ttu-id="c5e41-195">Затем этот код вызывает **выполнение** на hello **CloudTable** объекта с помощью вставки таблицы и hello hello или заменить таблицу операцию, так как параметры hello.</span><span class="sxs-lookup"><span data-stu-id="c5e41-195">This code then calls **execute** on hello **CloudTable** object with hello table and hello insert or replace table operation as hello parameters.</span></span> <span data-ttu-id="c5e41-196">в сущности, tooupdate hello **TableOperation.insertOrMerge** можно метода.</span><span class="sxs-lookup"><span data-stu-id="c5e41-196">tooupdate only part of an entity, hello **TableOperation.insertOrMerge** method can be used instead.</span></span> <span data-ttu-id="c5e41-197">Обратите внимание, что вставки или replace не поддерживается на эмулятор локального хранилища hello, поэтому этот код выполняется только при использовании учетной записи для службы таблиц hello.</span><span class="sxs-lookup"><span data-stu-id="c5e41-197">Note that insert-or-replace is not supported on hello local storage emulator, so this code runs only when using an account on hello table service.</span></span> <span data-ttu-id="c5e41-198">Дополнительные сведения об операциях "вставка или замена" и "вставка или объединение" см. в записи блога [Azure Tables: Introducing Upsert and Query Projection][Azure Tables: Introducing Upsert and Query Projection] (Таблицы Azure: введение в Upsert и проекции в запросах).</span><span class="sxs-lookup"><span data-stu-id="c5e41-198">You can learn more about insert-or-replace and insert-or-merge in this [Azure Tables: Introducing Upsert and Query Projection][Azure Tables: Introducing Upsert and Query Projection].</span></span>
 
 ```java
 try
@@ -478,10 +478,10 @@ try
     CloudStorageAccount storageAccount =
         CloudStorageAccount.parse(storageConnectionString);
 
-    // Create the table client.
+    // Create hello table client.
     CloudTableClient tableClient = storageAccount.createCloudTableClient();
 
-    // Create a cloud table object for the table.
+    // Create a cloud table object for hello table.
     CloudTable cloudTable = tableClient.getTableReference("people");
 
     // Create a new customer entity.
@@ -489,21 +489,21 @@ try
     customer5.setEmail("Walter@contoso.com");
     customer5.setPhoneNumber("425-555-0106");
 
-    // Create an operation to add the new customer to the people table.
+    // Create an operation tooadd hello new customer toohello people table.
     TableOperation insertCustomer5 = TableOperation.insertOrReplace(customer5);
 
-    // Submit the operation to the table service.
+    // Submit hello operation toohello table service.
     cloudTable.execute(insertCustomer5);
 }
 catch (Exception e)
 {
-    // Output the stack trace.
+    // Output hello stack trace.
     e.printStackTrace();
 }
 ```
 
-## <a name="how-to-delete-an-entity"></a><span data-ttu-id="23079-199">Практическое руководство. Удаление сущности</span><span class="sxs-lookup"><span data-stu-id="23079-199">How to: Delete an entity</span></span>
-<span data-ttu-id="23079-200">Сущность можно легко удалить после ее получения.</span><span class="sxs-lookup"><span data-stu-id="23079-200">You can easily delete an entity after you have retrieved it.</span></span> <span data-ttu-id="23079-201">После получение сущности вызовите **TableOperation.delete** с удаляемой сущностью.</span><span class="sxs-lookup"><span data-stu-id="23079-201">Once the entity is retrieved, call **TableOperation.delete** with the entity to delete.</span></span> <span data-ttu-id="23079-202">Затем вызовите **execute** объекта **CloudTable**.</span><span class="sxs-lookup"><span data-stu-id="23079-202">Then call **execute** on the **CloudTable** object.</span></span> <span data-ttu-id="23079-203">Следующий код извлекает и удаляет сущность клиента.</span><span class="sxs-lookup"><span data-stu-id="23079-203">The following code retrieves and deletes a customer entity.</span></span>
+## <a name="how-to-delete-an-entity"></a><span data-ttu-id="c5e41-199">Практическое руководство. Удаление сущности</span><span class="sxs-lookup"><span data-stu-id="c5e41-199">How to: Delete an entity</span></span>
+<span data-ttu-id="c5e41-200">Сущность можно легко удалить после ее получения.</span><span class="sxs-lookup"><span data-stu-id="c5e41-200">You can easily delete an entity after you have retrieved it.</span></span> <span data-ttu-id="c5e41-201">Когда извлекается hello объекта, вызовите **TableOperation.delete** с toodelete hello сущности.</span><span class="sxs-lookup"><span data-stu-id="c5e41-201">Once hello entity is retrieved, call **TableOperation.delete** with hello entity toodelete.</span></span> <span data-ttu-id="c5e41-202">Затем вызовите **выполнение** на hello **CloudTable** объекта.</span><span class="sxs-lookup"><span data-stu-id="c5e41-202">Then call **execute** on hello **CloudTable** object.</span></span> <span data-ttu-id="c5e41-203">Привет, следующий код извлекает и удаляет сущность «клиент».</span><span class="sxs-lookup"><span data-stu-id="c5e41-203">hello following code retrieves and deletes a customer entity.</span></span>
 
 ```java
 try
@@ -512,34 +512,34 @@ try
     CloudStorageAccount storageAccount =
         CloudStorageAccount.parse(storageConnectionString);
 
-    // Create the table client.
+    // Create hello table client.
     CloudTableClient tableClient = storageAccount.createCloudTableClient();
 
-    // Create a cloud table object for the table.
+    // Create a cloud table object for hello table.
     CloudTable cloudTable = tableClient.getTableReference("people");
 
-    // Create an operation to retrieve the entity with partition key of "Smith" and row key of "Jeff".
+    // Create an operation tooretrieve hello entity with partition key of "Smith" and row key of "Jeff".
     TableOperation retrieveSmithJeff = TableOperation.retrieve("Smith", "Jeff", CustomerEntity.class);
 
-    // Retrieve the entity with partition key of "Smith" and row key of "Jeff".
+    // Retrieve hello entity with partition key of "Smith" and row key of "Jeff".
     CustomerEntity entitySmithJeff =
         cloudTable.execute(retrieveSmithJeff).getResultAsType();
 
-    // Create an operation to delete the entity.
+    // Create an operation toodelete hello entity.
     TableOperation deleteSmithJeff = TableOperation.delete(entitySmithJeff);
 
-    // Submit the delete operation to the table service.
+    // Submit hello delete operation toohello table service.
     cloudTable.execute(deleteSmithJeff);
 }
 catch (Exception e)
 {
-    // Output the stack trace.
+    // Output hello stack trace.
     e.printStackTrace();
 }
 ```
 
-## <a name="how-to-delete-a-table"></a><span data-ttu-id="23079-204">Практическое руководство. Удаление таблицы</span><span class="sxs-lookup"><span data-stu-id="23079-204">How to: Delete a table</span></span>
-<span data-ttu-id="23079-205">Наконец, следующий код удаляет таблицу из учетной записи хранения.</span><span class="sxs-lookup"><span data-stu-id="23079-205">Finally, the following code deletes a table from a storage account.</span></span> <span data-ttu-id="23079-206">Удаленную таблицу нельзя воссоздать в течение определенного времени после удаления. Этот период обычно составляет менее сорока секунд.</span><span class="sxs-lookup"><span data-stu-id="23079-206">A table which has been deleted will be unavailable to be recreated for a period of time following the deletion, usually less than forty seconds.</span></span>
+## <a name="how-to-delete-a-table"></a><span data-ttu-id="c5e41-204">Практическое руководство. Удаление таблицы</span><span class="sxs-lookup"><span data-stu-id="c5e41-204">How to: Delete a table</span></span>
+<span data-ttu-id="c5e41-205">Наконец, hello следующий код удаляет таблицы из учетной записи хранилища.</span><span class="sxs-lookup"><span data-stu-id="c5e41-205">Finally, hello following code deletes a table from a storage account.</span></span> <span data-ttu-id="c5e41-206">Таблицы, который был удален будет недоступным toobe повторно в течение заданного времени, после удаления hello, обычно менее 40 секунд.</span><span class="sxs-lookup"><span data-stu-id="c5e41-206">A table which has been deleted will be unavailable toobe recreated for a period of time following hello deletion, usually less than forty seconds.</span></span>
 
 ```java
 try
@@ -548,35 +548,35 @@ try
     CloudStorageAccount storageAccount =
         CloudStorageAccount.parse(storageConnectionString);
 
-    // Create the table client.
+    // Create hello table client.
     CloudTableClient tableClient = storageAccount.createCloudTableClient();
 
-    // Delete the table and all its data if it exists.
+    // Delete hello table and all its data if it exists.
     CloudTable cloudTable = tableClient.getTableReference("people");
     cloudTable.deleteIfExists();
 }
 catch (Exception e)
 {
-    // Output the stack trace.
+    // Output hello stack trace.
     e.printStackTrace();
 }
 ```
 [!INCLUDE [storage-check-out-samples-java](../../includes/storage-check-out-samples-java.md)]
 
-## <a name="next-steps"></a><span data-ttu-id="23079-207">Дальнейшие действия</span><span class="sxs-lookup"><span data-stu-id="23079-207">Next steps</span></span>
+## <a name="next-steps"></a><span data-ttu-id="c5e41-207">Дальнейшие действия</span><span class="sxs-lookup"><span data-stu-id="c5e41-207">Next steps</span></span>
 
-* <span data-ttu-id="23079-208">[Обозреватель хранилищ Microsoft Azure](../vs-azure-tools-storage-manage-with-storage-explorer.md) — это бесплатное автономное приложение от корпорации Майкрософт, позволяющее визуализировать данные из службы хранилища Azure на платформе Windows, macOS и Linux.</span><span class="sxs-lookup"><span data-stu-id="23079-208">[Microsoft Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) is a free, standalone app from Microsoft that enables you to work visually with Azure Storage data on Windows, macOS, and Linux.</span></span>
-* <span data-ttu-id="23079-209">[Пакет SDK службы хранилища Azure для Java][Azure Storage SDK for Java]</span><span class="sxs-lookup"><span data-stu-id="23079-209">[Azure Storage SDK for Java][Azure Storage SDK for Java]</span></span>
-* <span data-ttu-id="23079-210">[справочнике по пакету SDK для клиента службы хранилища Azure][справочнике по пакету SDK для клиента службы хранилища Azure]</span><span class="sxs-lookup"><span data-stu-id="23079-210">[Azure Storage Client SDK Reference][Azure Storage Client SDK Reference]</span></span>
-* <span data-ttu-id="23079-211">[REST API службы хранилища Azure][Azure Storage REST API]</span><span class="sxs-lookup"><span data-stu-id="23079-211">[Azure Storage REST API][Azure Storage REST API]</span></span>
-* <span data-ttu-id="23079-212">[Блог рабочей группы службы хранилища Azure][Azure Storage Team Blog]</span><span class="sxs-lookup"><span data-stu-id="23079-212">[Azure Storage Team Blog][Azure Storage Team Blog]</span></span>
+* <span data-ttu-id="c5e41-208">[Обозреватель хранилищ Microsoft Azure](../vs-azure-tools-storage-manage-with-storage-explorer.md) является бесплатной, отдельное приложение от Майкрософт, позволяющая toowork визуально с помощью данных из хранилища Azure в Windows, macOS и Linux.</span><span class="sxs-lookup"><span data-stu-id="c5e41-208">[Microsoft Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) is a free, standalone app from Microsoft that enables you toowork visually with Azure Storage data on Windows, macOS, and Linux.</span></span>
+* <span data-ttu-id="c5e41-209">[Пакет SDK службы хранилища Azure для Java][Azure Storage SDK for Java]</span><span class="sxs-lookup"><span data-stu-id="c5e41-209">[Azure Storage SDK for Java][Azure Storage SDK for Java]</span></span>
+* <span data-ttu-id="c5e41-210">[Azure SDK Справочник по клиентской хранилища][Azure SDK Справочник по клиентской хранилища]</span><span class="sxs-lookup"><span data-stu-id="c5e41-210">[Azure Storage Client SDK Reference][Azure Storage Client SDK Reference]</span></span>
+* <span data-ttu-id="c5e41-211">[REST API службы хранилища Azure][Azure Storage REST API]</span><span class="sxs-lookup"><span data-stu-id="c5e41-211">[Azure Storage REST API][Azure Storage REST API]</span></span>
+* <span data-ttu-id="c5e41-212">[Блог рабочей группы службы хранилища Azure][Azure Storage Team Blog]</span><span class="sxs-lookup"><span data-stu-id="c5e41-212">[Azure Storage Team Blog][Azure Storage Team Blog]</span></span>
 
-<span data-ttu-id="23079-213">Дополнительную информацию см. также в [Центре разработчика Java](/develop/java/).</span><span class="sxs-lookup"><span data-stu-id="23079-213">For more information, see also the [Java Developer Center](/develop/java/).</span></span>
+<span data-ttu-id="c5e41-213">Дополнительные сведения см. также: hello [центра разработчиков Java](/develop/java/).</span><span class="sxs-lookup"><span data-stu-id="c5e41-213">For more information, see also hello [Java Developer Center](/develop/java/).</span></span>
 
 [Azure SDK for Java]: http://go.microsoft.com/fwlink/?LinkID=525671
 [Azure Storage SDK for Java]: https://github.com/azure/azure-storage-java
 [Azure Storage SDK for Android]: https://github.com/azure/azure-storage-android
-<span data-ttu-id="23079-214">[справочнике по пакету SDK для клиента службы хранилища Azure]: http://dl.windowsazure.com/storage/javadoc/</span><span class="sxs-lookup"><span data-stu-id="23079-214">[Azure Storage Client SDK Reference]: http://dl.windowsazure.com/storage/javadoc/</span></span>
+[Azure SDK Справочник по клиентской хранилища]: http://dl.windowsazure.com/storage/javadoc/
 [Azure Storage REST API]: https://msdn.microsoft.com/library/azure/dd179355.aspx
 [Azure Storage Team Blog]: http://blogs.msdn.com/b/windowsazurestorage/
 [Azure Tables: Introducing Upsert and Query Projection]: http://blogs.msdn.com/b/windowsazurestorage/archive/2011/09/15/windows-azure-tables-introducing-upsert-and-query-projection.aspx

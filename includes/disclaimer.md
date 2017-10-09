@@ -1,0 +1,2 @@
+<span data-ttu-id="f7a82-101">toouse эту функцию и других новых возможностей Azure Зарегистрируйтесь для hello [бесплатным предварительным](https://account.windowsazure.com/PreviewFeatures).</span><span class="sxs-lookup"><span data-stu-id="f7a82-101">toouse this feature and other new Azure capabilities, sign up for hello [free preview](https://account.windowsazure.com/PreviewFeatures).</span></span>
+

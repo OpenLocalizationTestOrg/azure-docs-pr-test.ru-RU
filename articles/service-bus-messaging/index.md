@@ -1,15 +1,15 @@
 ---
 layout: LandingPage
-title: "Документация по обмену сообщениями через служебную шину"
-description: "Узнайте, как настроить обмен сообщениями между приложениями и службами в локальных и облачных средах."
-ms.openlocfilehash: 559bbabe07ae50b2cc83fad5e867c23c9272d6ab
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+title: "aaaService документации обмена сообщениями шины"
+description: "Узнайте, как подключается tooset сообщений, приложений и служб для локальных и облачных средах."
+ms.openlocfilehash: ea8c58b6e954cc0d53c3eed1f761b1d1e3984e66
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="service-bus-messaging-documentation"></a>Документация по обмену сообщениями через служебную шину
-Служба обмена сообщениями — это механизм обмена данными через брокер или третью сторону, обеспечивающий надежную доставку информации.
+Hello службой обмена сообщениями обеспечивает доставку надежной сведения в качестве механизма связи через посредников или сторонних разработчиков.
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -59,7 +59,7 @@ ms.lasthandoff: 08/18/2017
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Создание пространства имен с помощью портала</h3>
+                        <h3>Создание пространства имен с помощью портала hello</h3>
                     </div>
                 </div>
             </div>

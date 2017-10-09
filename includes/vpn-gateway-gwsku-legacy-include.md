@@ -1,0 +1,14 @@
+<span data-ttu-id="479d7-101">прежних версий (старая) шлюза VPN Hello номера SKU::</span><span class="sxs-lookup"><span data-stu-id="479d7-101">hello legacy (old) VPN gateway SKUs are:</span></span>
+
+* <span data-ttu-id="479d7-102">Basic</span><span class="sxs-lookup"><span data-stu-id="479d7-102">Basic</span></span>
+* <span data-ttu-id="479d7-103">Стандартная</span><span class="sxs-lookup"><span data-stu-id="479d7-103">Standard</span></span>
+* <span data-ttu-id="479d7-104">HighPerformance.</span><span class="sxs-lookup"><span data-stu-id="479d7-104">HighPerformance</span></span>
+
+<span data-ttu-id="479d7-105">VPN-шлюз не использует номер SKU шлюза UltraPerformance hello.</span><span class="sxs-lookup"><span data-stu-id="479d7-105">VPN Gateway does not use hello UltraPerformance gateway SKU.</span></span> <span data-ttu-id="479d7-106">Сведения о hello UltraPerformance SKU содержатся hello [ExpressRoute](../articles/expressroute/expressroute-about-virtual-network-gateways.md) документации.</span><span class="sxs-lookup"><span data-stu-id="479d7-106">For information about hello UltraPerformance SKU, see hello [ExpressRoute](../articles/expressroute/expressroute-about-virtual-network-gateways.md) documentation.</span></span>
+
+<span data-ttu-id="479d7-107">При работе с Здравствуйте устаревших SKU, примите во внимание hello ниже:</span><span class="sxs-lookup"><span data-stu-id="479d7-107">When working with hello legacy SKUs, consider hello following:</span></span>
+
+* <span data-ttu-id="479d7-108">Следует toouse типа VPN на политиках тип VPN необходимо использовать hello Basic SKU.</span><span class="sxs-lookup"><span data-stu-id="479d7-108">If you want toouse a PolicyBased VPN type, you must use hello Basic SKU.</span></span> <span data-ttu-id="479d7-109">Тип VPN на основе политик (ранее называемый статической маршрутизацией) не поддерживается в других номерах SKU.</span><span class="sxs-lookup"><span data-stu-id="479d7-109">PolicyBased VPNs (previously called Static Routing) are not supported on any other SKU.</span></span>
+* <span data-ttu-id="479d7-110">BGP не поддерживается в Basic SKU hello.</span><span class="sxs-lookup"><span data-stu-id="479d7-110">BGP is not supported on hello Basic SKU.</span></span>
+* <span data-ttu-id="479d7-111">Шлюз ExpressRoute VPN сосуществовать конфигурации не поддерживаются hello Basic SKU.</span><span class="sxs-lookup"><span data-stu-id="479d7-111">ExpressRoute-VPN Gateway coexist configurations are not supported on hello Basic SKU.</span></span>
+* <span data-ttu-id="479d7-112">Активный / активный S2S подключений VPN-шлюза можно настроить на hello высокопроизводительные SKU только.</span><span class="sxs-lookup"><span data-stu-id="479d7-112">Active-active S2S VPN Gateway connections can be configured on hello HighPerformance SKU only.</span></span>

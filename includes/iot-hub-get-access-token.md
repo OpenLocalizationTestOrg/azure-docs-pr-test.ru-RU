@@ -1,7 +1,7 @@
-## <a name="obtain-an-azure-resource-manager-token"></a><span data-ttu-id="71ef9-101">Получение маркера Azure Resource Manager</span><span class="sxs-lookup"><span data-stu-id="71ef9-101">Obtain an Azure Resource Manager token</span></span>
-<span data-ttu-id="71ef9-102">Все задачи, выполняемые с ресурсами с помощью диспетчера ресурсов Azure, должны пройти проверку подлинности Azure Active Directory.</span><span class="sxs-lookup"><span data-stu-id="71ef9-102">Azure Active Directory must authenticate all the tasks that you perform on resources using the Azure Resource Manager.</span></span> <span data-ttu-id="71ef9-103">В примере ниже демонстрируется проверка подлинности с использованием пароля (другие способы см. в [справочнике по Azure REST API][lnk-authenticate-arm]).</span><span class="sxs-lookup"><span data-stu-id="71ef9-103">The example shown here uses password authentication, for other approaches see [Authenticating Azure Resource Manager requests][lnk-authenticate-arm].</span></span>
+## <a name="obtain-an-azure-resource-manager-token"></a><span data-ttu-id="f5e09-101">Получение маркера Azure Resource Manager</span><span class="sxs-lookup"><span data-stu-id="f5e09-101">Obtain an Azure Resource Manager token</span></span>
+<span data-ttu-id="f5e09-102">Azure Active Directory должны пройти проверку подлинности всех hello задач, выполняемых с ресурсами с помощью диспетчера ресурсов Azure hello.</span><span class="sxs-lookup"><span data-stu-id="f5e09-102">Azure Active Directory must authenticate all hello tasks that you perform on resources using hello Azure Resource Manager.</span></span> <span data-ttu-id="f5e09-103">Hello приведенном примере пароль проверки подлинности, см. в других подходов [запросы проверки подлинности Azure Resource Manager][lnk-authenticate-arm].</span><span class="sxs-lookup"><span data-stu-id="f5e09-103">hello example shown here uses password authentication, for other approaches see [Authenticating Azure Resource Manager requests][lnk-authenticate-arm].</span></span>
 
-1. <span data-ttu-id="71ef9-104">Добавьте в метод **Main** в файле Program.cs приведенный ниже код, позволяющий получить из системы Azure AD маркер с помощью идентификатора приложения и пароля.</span><span class="sxs-lookup"><span data-stu-id="71ef9-104">Add the following code to the **Main** method in Program.cs to retrieve a token from Azure AD using the application id and password.</span></span>
+1. <span data-ttu-id="f5e09-104">Добавьте следующий код toohello hello **Main** метод в Program.cs tooretrieve токена из Azure AD, используя идентификатор приложения hello и пароль.</span><span class="sxs-lookup"><span data-stu-id="f5e09-104">Add hello following code toohello **Main** method in Program.cs tooretrieve a token from Azure AD using hello application id and password.</span></span>
    
     ```
     var authContext = new AuthenticationContext(string.Format  
@@ -12,18 +12,18 @@
    
     if (token == null)
     {
-      Console.WriteLine("Failed to obtain the token");
+      Console.WriteLine("Failed tooobtain hello token");
       return;
     }
     ```
-2. <span data-ttu-id="71ef9-105">Создайте объект **ResourceManagementClient**, который использует полученный маркер, добавив следующий код в конец метода **Main**:</span><span class="sxs-lookup"><span data-stu-id="71ef9-105">Create a **ResourceManagementClient** object that uses the token by adding the following code to the end of the **Main** method:</span></span>
+2. <span data-ttu-id="f5e09-105">Создание **ResourceManagementClient** объекта hello, использует маркер, добавив после окончания toohello кода hello hello **Main** метод:</span><span class="sxs-lookup"><span data-stu-id="f5e09-105">Create a **ResourceManagementClient** object that uses hello token by adding hello following code toohello end of hello **Main** method:</span></span>
    
     ```
     var creds = new TokenCredentials(token.AccessToken);
     var client = new ResourceManagementClient(creds);
     client.SubscriptionId = subscriptionId;
     ```
-3. <span data-ttu-id="71ef9-106">Создайте группу ресурсов, которую будете использовать, или получите ссылку на нее:</span><span class="sxs-lookup"><span data-stu-id="71ef9-106">Create, or obtain a reference to, the resource group you are using:</span></span>
+3. <span data-ttu-id="f5e09-106">Создайте или получите ссылку на группу ресурсов hello, которую вы используете:</span><span class="sxs-lookup"><span data-stu-id="f5e09-106">Create, or obtain a reference to, hello resource group you are using:</span></span>
    
     ```
     var rgResponse = client.ResourceGroups.CreateOrUpdate(rgName,

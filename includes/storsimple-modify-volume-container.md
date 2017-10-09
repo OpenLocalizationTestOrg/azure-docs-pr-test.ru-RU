@@ -1,0 +1,19 @@
+<!--author=SharS last changed: 1/7/2016-->
+
+#### <a name="toomodify-a-volume-container"></a><span data-ttu-id="9ec4f-101">toomodify контейнер тома</span><span class="sxs-lookup"><span data-stu-id="9ec4f-101">toomodify a volume container</span></span>
+1. <span data-ttu-id="9ec4f-102">На hello **устройств** страницы, выберите устройство hello, дважды щелкните его и нажмите кнопку hello **контейнеры томов** вкладки.</span><span class="sxs-lookup"><span data-stu-id="9ec4f-102">On hello **Devices** page, select hello device, double-click it, and then click hello **Volume containers** tab.</span></span>
+2. <span data-ttu-id="9ec4f-103">В hello табличном списке контейнеров томов hello, выберите параметр hello требуется toomodify и нажмите кнопку **изменить**.</span><span class="sxs-lookup"><span data-stu-id="9ec4f-103">In hello tabular listing of hello volume containers, select hello setting that you want toomodify, and click **Modify**.</span></span>
+3. <span data-ttu-id="9ec4f-104">В hello **изменение контейнера томов** диалогового окна поле, hello следующие:</span><span class="sxs-lookup"><span data-stu-id="9ec4f-104">In hello **Modify Volume container** dialog box, do hello following:</span></span>
+   
+   1. <span data-ttu-id="9ec4f-105">Измените имя hello контейнера томов hello и изменить связанные пропускной способности приветствия.</span><span class="sxs-lookup"><span data-stu-id="9ec4f-105">Change hello name of hello volume container and modify hello associated bandwidth setting.</span></span> 
+      
+       ![Изменение контейнера томов с использованием шаблона пропускной способности 1](./media/storsimple-modify-volume-container/HCS_ModifyVCBT1-include.png)
+   2. <span data-ttu-id="9ec4f-107">учетные записи хранилища и ключ шифрования Hello не может изменяться после они указаны.</span><span class="sxs-lookup"><span data-stu-id="9ec4f-107">hello encryption key and storage account cannot be changed after they are specified.</span></span> <span data-ttu-id="9ec4f-108">Если вы указали **выбрать шаблон пропускной способности**, щелкните hello стрелка tooproceed toohello следующую страницу.</span><span class="sxs-lookup"><span data-stu-id="9ec4f-108">If you specified **Select a bandwidth template**, click hello arrow tooproceed toohello next page.</span></span>
+4. <span data-ttu-id="9ec4f-109">В следующей страницы приветствия hello **изменения контейнера томов** диалоговое окно:</span><span class="sxs-lookup"><span data-stu-id="9ec4f-109">In hello next page of hello **Modify Volume Container** dialog box:</span></span>
+   
+   1. <span data-ttu-id="9ec4f-110">Из раскрывающегося списка hello выберите существующий шаблон пропускной способности.</span><span class="sxs-lookup"><span data-stu-id="9ec4f-110">From hello drop-down list, choose an existing bandwidth template.</span></span>
+   2. <span data-ttu-id="9ec4f-111">Просмотрите параметры расписания hello hello указанный шаблон пропускной способности.</span><span class="sxs-lookup"><span data-stu-id="9ec4f-111">Review hello schedule settings for hello specified bandwidth template.</span></span>
+      
+       ![Изменение контейнера томов с использованием шаблона пропускной способности 2](./media/storsimple-modify-volume-container/HCS_ModifyVCBT2-include.png)
+   3. <span data-ttu-id="9ec4f-113">Щелкните значок галочки hello ![значок галочки](./media/storsimple-modify-volume-container/HCS_CheckIcon-include.png) toosave hello обновленные параметры.</span><span class="sxs-lookup"><span data-stu-id="9ec4f-113">Click hello check icon ![check icon](./media/storsimple-modify-volume-container/HCS_CheckIcon-include.png) toosave hello updated settings.</span></span> <span data-ttu-id="9ec4f-114">Hello **контейнеры томов** страница будет обновленные tooreflect hello изменения.</span><span class="sxs-lookup"><span data-stu-id="9ec4f-114">hello **Volume containers** page will be updated tooreflect hello changes.</span></span>
+

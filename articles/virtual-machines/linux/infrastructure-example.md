@@ -1,6 +1,6 @@
 ---
-title: "Пошаговое руководство по примеру инфраструктуры Azure | Документация Майкрософт"
-description: "Изучите основные рекомендации по проектированию и реализации, касающиеся развертывания примера инфраструктуры в Azure."
+title: "Пошаговое руководство инфраструктуры Azure aaaExample | Документы Microsoft"
+description: "Дополнительные сведения о hello ключа проектирования и реализации руководства по развертыванию примере инфраструктуру в Azure."
 documentationcenter: 
 services: virtual-machines-linux
 author: iainfoulds
@@ -16,104 +16,104 @@ ms.topic: article
 ms.date: 06/26/2017
 ms.author: iainfou
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b18be0d81d6fad7328edb47c9b69af4eecd3b971
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: b6b307c0112203aa83e1fada81966fc265397a40
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="example-azure-infrastructure-walkthrough-for-linux-vms"></a><span data-ttu-id="e54d3-103">Пошаговое руководство по примеру инфраструктуры Azure для виртуальных машин Linux</span><span class="sxs-lookup"><span data-stu-id="e54d3-103">Example Azure infrastructure walkthrough for Linux VMs</span></span>
+# <a name="example-azure-infrastructure-walkthrough-for-linux-vms"></a><span data-ttu-id="97489-103">Пошаговое руководство по примеру инфраструктуры Azure для виртуальных машин Linux</span><span class="sxs-lookup"><span data-stu-id="97489-103">Example Azure infrastructure walkthrough for Linux VMs</span></span>
 
 [!INCLUDE [virtual-machines-linux-infrastructure-guidelines-intro](../../../includes/virtual-machines-linux-infrastructure-guidelines-intro.md)]
 
-<span data-ttu-id="e54d3-104">В этой статье рассматривается создание примера инфраструктуры приложений.</span><span class="sxs-lookup"><span data-stu-id="e54d3-104">This article walks through building out an example application infrastructure.</span></span> <span data-ttu-id="e54d3-105">Мы подробно рассмотрим проектирование инфраструктуры для простого интернет-магазина, учтя все рекомендации и решения по соглашениям об именовании, группам доступности, виртуальным сетям и балансировщикам нагрузки, и фактически развернем виртуальные машины.</span><span class="sxs-lookup"><span data-stu-id="e54d3-105">We detail designing an infrastructure for a simple on-line store that brings together all the guidelines and decisions around naming conventions, availability sets, virtual networks and load balancers, and actually deploying your virtual machines (VMs).</span></span>
+<span data-ttu-id="97489-104">В этой статье рассматривается создание примера инфраструктуры приложений.</span><span class="sxs-lookup"><span data-stu-id="97489-104">This article walks through building out an example application infrastructure.</span></span> <span data-ttu-id="97489-105">Мы подробно описывается проектирование инфраструктуры для простой интерактивной магазина, который объединяет в себе все hello рекомендации и решения для соглашения об именовании, группы доступности, виртуальные сети и подсистемы балансировки нагрузки и фактического развертывания виртуальных машин (ВМ).</span><span class="sxs-lookup"><span data-stu-id="97489-105">We detail designing an infrastructure for a simple on-line store that brings together all hello guidelines and decisions around naming conventions, availability sets, virtual networks and load balancers, and actually deploying your virtual machines (VMs).</span></span>
 
-## <a name="example-workload"></a><span data-ttu-id="e54d3-106">Пример рабочей нагрузки</span><span class="sxs-lookup"><span data-stu-id="e54d3-106">Example workload</span></span>
-<span data-ttu-id="e54d3-107">Adventure Works Cycles хочет создать приложение интернет-магазина в Azure, которое состоит из:</span><span class="sxs-lookup"><span data-stu-id="e54d3-107">Adventure Works Cycles wants to build an on-line store application in Azure that consists of:</span></span>
+## <a name="example-workload"></a><span data-ttu-id="97489-106">Пример рабочей нагрузки</span><span class="sxs-lookup"><span data-stu-id="97489-106">Example workload</span></span>
+<span data-ttu-id="97489-107">Adventure Works Cycles хочет toobuild интерактивном магазине приложения в Azure, которая состоит из:</span><span class="sxs-lookup"><span data-stu-id="97489-107">Adventure Works Cycles wants toobuild an on-line store application in Azure that consists of:</span></span>
 
-* <span data-ttu-id="e54d3-108">двух серверов nginx, на которых выполняется клиентский внешний интерфейс на уровне Интернета;</span><span class="sxs-lookup"><span data-stu-id="e54d3-108">Two nginx servers running the client front-end in a web tier</span></span>
-* <span data-ttu-id="e54d3-109">двух серверов nginx, обрабатывающих данные и заказы на уровне приложения;</span><span class="sxs-lookup"><span data-stu-id="e54d3-109">Two nginx servers processing data and orders in an application tier</span></span>
-* <span data-ttu-id="e54d3-110">двух серверов MongoDB, входящих в сегментированный кластер, для хранения данных продуктов и заказов на уровне базы данных;</span><span class="sxs-lookup"><span data-stu-id="e54d3-110">Two MongoDB servers part of a sharded cluster for storing product data and orders in a database tier</span></span>
-* <span data-ttu-id="e54d3-111">двух контроллеров домена Active Directory для учетных записей клиентов и поставщиков на уровне аутентификации.</span><span class="sxs-lookup"><span data-stu-id="e54d3-111">Two Active Directory domain controllers for customer accounts and suppliers in an authentication tier</span></span>
-* <span data-ttu-id="e54d3-112">Все серверы расположены в двух подсетях:</span><span class="sxs-lookup"><span data-stu-id="e54d3-112">All the servers are located in two subnets:</span></span>
-  * <span data-ttu-id="e54d3-113">интерфейсной сети для веб-серверов;</span><span class="sxs-lookup"><span data-stu-id="e54d3-113">a front-end subnet for the web servers</span></span> 
-  * <span data-ttu-id="e54d3-114">внутренней подсети для серверов приложений, кластера MongoDB и контроллеров домена.</span><span class="sxs-lookup"><span data-stu-id="e54d3-114">a back-end subnet for the application servers, MongoDB cluster, and domain controllers</span></span>
+* <span data-ttu-id="97489-108">Два сервера nginx hello клиентского интерфейса в веб-уровень</span><span class="sxs-lookup"><span data-stu-id="97489-108">Two nginx servers running hello client front-end in a web tier</span></span>
+* <span data-ttu-id="97489-109">двух серверов nginx, обрабатывающих данные и заказы на уровне приложения;</span><span class="sxs-lookup"><span data-stu-id="97489-109">Two nginx servers processing data and orders in an application tier</span></span>
+* <span data-ttu-id="97489-110">двух серверов MongoDB, входящих в сегментированный кластер, для хранения данных продуктов и заказов на уровне базы данных;</span><span class="sxs-lookup"><span data-stu-id="97489-110">Two MongoDB servers part of a sharded cluster for storing product data and orders in a database tier</span></span>
+* <span data-ttu-id="97489-111">двух контроллеров домена Active Directory для учетных записей клиентов и поставщиков на уровне аутентификации.</span><span class="sxs-lookup"><span data-stu-id="97489-111">Two Active Directory domain controllers for customer accounts and suppliers in an authentication tier</span></span>
+* <span data-ttu-id="97489-112">Все серверы hello находятся в двух подсетях:</span><span class="sxs-lookup"><span data-stu-id="97489-112">All hello servers are located in two subnets:</span></span>
+  * <span data-ttu-id="97489-113">подсеть переднего плана для hello веб-серверов</span><span class="sxs-lookup"><span data-stu-id="97489-113">a front-end subnet for hello web servers</span></span> 
+  * <span data-ttu-id="97489-114">подсеть серверной части для серверов приложений hello, MongoDB кластера и контроллеров домена</span><span class="sxs-lookup"><span data-stu-id="97489-114">a back-end subnet for hello application servers, MongoDB cluster, and domain controllers</span></span>
 
 ![Схема разных уровней для инфраструктуры приложений](./media/infrastructure-example/example-tiers.png)
 
-<span data-ttu-id="e54d3-116">Защищенный входящий веб-трафик должен быть сбалансирован между веб-серверами, пока клиенты просматривают интернет-магазин.</span><span class="sxs-lookup"><span data-stu-id="e54d3-116">Incoming secure web traffic must be load-balanced among the web servers as customers browse the on-line store.</span></span> <span data-ttu-id="e54d3-117">Трафик обработки заказов в виде HTTP-запросов от веб-серверов должен быть сбалансирован между серверами приложений.</span><span class="sxs-lookup"><span data-stu-id="e54d3-117">Order processing traffic in the form of HTTP requests from the web servers must be load-balanced among the application servers.</span></span> <span data-ttu-id="e54d3-118">Кроме того, инфраструктура должна обеспечивать высокий уровень доступности.</span><span class="sxs-lookup"><span data-stu-id="e54d3-118">Additionally, the infrastructure must be designed for high availability.</span></span>
+<span data-ttu-id="97489-116">Безопасный входящего веб-трафика должны являться балансировки нагрузки между веб-серверами hello клиентов Обзор интерактивном магазине hello.</span><span class="sxs-lookup"><span data-stu-id="97489-116">Incoming secure web traffic must be load-balanced among hello web servers as customers browse hello on-line store.</span></span> <span data-ttu-id="97489-117">Порядок обработки трафика в форме hello HTTP запрашивает hello для веб-серверов должны быть балансировки нагрузки между серверами приложения hello.</span><span class="sxs-lookup"><span data-stu-id="97489-117">Order processing traffic in hello form of HTTP requests from hello web servers must be load-balanced among hello application servers.</span></span> <span data-ttu-id="97489-118">Кроме того инфраструктура hello должны быть спроектированы для обеспечения высокой доступности.</span><span class="sxs-lookup"><span data-stu-id="97489-118">Additionally, hello infrastructure must be designed for high availability.</span></span>
 
-<span data-ttu-id="e54d3-119">В результате проект должен включать:</span><span class="sxs-lookup"><span data-stu-id="e54d3-119">The resulting design must incorporate:</span></span>
+<span data-ttu-id="97489-119">Полученный разработки Hello должно использовать:</span><span class="sxs-lookup"><span data-stu-id="97489-119">hello resulting design must incorporate:</span></span>
 
-* <span data-ttu-id="e54d3-120">подписку и учетную запись Azure;</span><span class="sxs-lookup"><span data-stu-id="e54d3-120">An Azure subscription and account</span></span>
-* <span data-ttu-id="e54d3-121">одну группу ресурсов.</span><span class="sxs-lookup"><span data-stu-id="e54d3-121">A single resource group</span></span>
-* <span data-ttu-id="e54d3-122">Управляемые диски Azure</span><span class="sxs-lookup"><span data-stu-id="e54d3-122">Azure Managed Disks</span></span>
-* <span data-ttu-id="e54d3-123">виртуальную сеть с двумя подсетями;</span><span class="sxs-lookup"><span data-stu-id="e54d3-123">A virtual network with two subnets</span></span>
-* <span data-ttu-id="e54d3-124">группы доступности для виртуальных машин с аналогичной ролью;</span><span class="sxs-lookup"><span data-stu-id="e54d3-124">Availability sets for the VMs with a similar role</span></span>
-* <span data-ttu-id="e54d3-125">Виртуальные машины</span><span class="sxs-lookup"><span data-stu-id="e54d3-125">Virtual machines</span></span>
+* <span data-ttu-id="97489-120">подписку и учетную запись Azure;</span><span class="sxs-lookup"><span data-stu-id="97489-120">An Azure subscription and account</span></span>
+* <span data-ttu-id="97489-121">одну группу ресурсов.</span><span class="sxs-lookup"><span data-stu-id="97489-121">A single resource group</span></span>
+* <span data-ttu-id="97489-122">Управляемые диски Azure</span><span class="sxs-lookup"><span data-stu-id="97489-122">Azure Managed Disks</span></span>
+* <span data-ttu-id="97489-123">виртуальную сеть с двумя подсетями;</span><span class="sxs-lookup"><span data-stu-id="97489-123">A virtual network with two subnets</span></span>
+* <span data-ttu-id="97489-124">Группы доступности для hello виртуальных машин с аналогичной роли</span><span class="sxs-lookup"><span data-stu-id="97489-124">Availability sets for hello VMs with a similar role</span></span>
+* <span data-ttu-id="97489-125">Виртуальные машины</span><span class="sxs-lookup"><span data-stu-id="97489-125">Virtual machines</span></span>
 
-<span data-ttu-id="e54d3-126">Все вышеуказанное соответствует соглашению об именовании.</span><span class="sxs-lookup"><span data-stu-id="e54d3-126">All the above follow these naming conventions:</span></span>
+<span data-ttu-id="97489-126">Все hello выше выполните следующие соглашения об именовании.</span><span class="sxs-lookup"><span data-stu-id="97489-126">All hello above follow these naming conventions:</span></span>
 
-* <span data-ttu-id="e54d3-127">В Adventure Works Cycles используется префикс **[рабочая нагрузка ИТ-среды]-[расположение]-[ресурс Azure]** .</span><span class="sxs-lookup"><span data-stu-id="e54d3-127">Adventure Works Cycles uses **[IT workload]-[location]-[Azure resource]** as a prefix</span></span>
-  * <span data-ttu-id="e54d3-128">Например, **azos** (интернет-магазин Azure) — это имя рабочей нагрузки ИТ-среды, а **use** (восточная часть США 2) — это расположение.</span><span class="sxs-lookup"><span data-stu-id="e54d3-128">For this example, "**azos**" (Azure On-line Store) is the IT workload name and "**use**" (East US 2) is the location</span></span>
-* <span data-ttu-id="e54d3-129">Для виртуальных сетей используется формат AZOS-USE-VN**[номер]**.</span><span class="sxs-lookup"><span data-stu-id="e54d3-129">Virtual networks use AZOS-USE-VN**[number]**</span></span>
-* <span data-ttu-id="e54d3-130">Для групп доступности используется формат azos-use-as-**[роль]**.</span><span class="sxs-lookup"><span data-stu-id="e54d3-130">Availability sets use azos-use-as-**[role]**</span></span>
-* <span data-ttu-id="e54d3-131">Для имен виртуальных машин используется формат use azos-use-vm-**[имя_виртуальной_машины]**.</span><span class="sxs-lookup"><span data-stu-id="e54d3-131">Virtual machine names use azos-use-vm-**[vmname]**</span></span>
+* <span data-ttu-id="97489-127">В Adventure Works Cycles используется префикс **[рабочая нагрузка ИТ-среды]-[расположение]-[ресурс Azure]** .</span><span class="sxs-lookup"><span data-stu-id="97489-127">Adventure Works Cycles uses **[IT workload]-[location]-[Azure resource]** as a prefix</span></span>
+  * <span data-ttu-id="97489-128">В этом примере «**azos**» (хранилище Azure связи) hello имени рабочей нагрузки ИТ и «**использовать**» (Восток США 2) — расположение hello</span><span class="sxs-lookup"><span data-stu-id="97489-128">For this example, "**azos**" (Azure On-line Store) is hello IT workload name and "**use**" (East US 2) is hello location</span></span>
+* <span data-ttu-id="97489-129">Для виртуальных сетей используется формат AZOS-USE-VN**[номер]**.</span><span class="sxs-lookup"><span data-stu-id="97489-129">Virtual networks use AZOS-USE-VN**[number]**</span></span>
+* <span data-ttu-id="97489-130">Для групп доступности используется формат azos-use-as-**[роль]**.</span><span class="sxs-lookup"><span data-stu-id="97489-130">Availability sets use azos-use-as-**[role]**</span></span>
+* <span data-ttu-id="97489-131">Для имен виртуальных машин используется формат use azos-use-vm-**[имя_виртуальной_машины]**.</span><span class="sxs-lookup"><span data-stu-id="97489-131">Virtual machine names use azos-use-vm-**[vmname]**</span></span>
 
-## <a name="azure-subscriptions-and-accounts"></a><span data-ttu-id="e54d3-132">Подписки и учетные записи Azure</span><span class="sxs-lookup"><span data-stu-id="e54d3-132">Azure subscriptions and accounts</span></span>
-<span data-ttu-id="e54d3-133">Компания Adventure Works Cycles использует подписку Enterprise Subscription под названием "Adventure Works Enterprise Subscription" для выставления счетов за эту рабочую нагрузку ИТ-среды.</span><span class="sxs-lookup"><span data-stu-id="e54d3-133">Adventure Works Cycles is using their Enterprise subscription, named Adventure Works Enterprise Subscription, to provide billing for this IT workload.</span></span>
+## <a name="azure-subscriptions-and-accounts"></a><span data-ttu-id="97489-132">Подписки и учетные записи Azure</span><span class="sxs-lookup"><span data-stu-id="97489-132">Azure subscriptions and accounts</span></span>
+<span data-ttu-id="97489-133">Adventure Works Cycles с помощью подписки Enterprise, с именем Adventure Works корпоративную подписку, tooprovide выставления счетов для этой рабочей нагрузки ИТ.</span><span class="sxs-lookup"><span data-stu-id="97489-133">Adventure Works Cycles is using their Enterprise subscription, named Adventure Works Enterprise Subscription, tooprovide billing for this IT workload.</span></span>
 
-## <a name="storage"></a><span data-ttu-id="e54d3-134">Хранилище</span><span class="sxs-lookup"><span data-stu-id="e54d3-134">Storage</span></span>
-<span data-ttu-id="e54d3-135">В компании Adventure Works Cycles решили использовать Управляемые диски Azure.</span><span class="sxs-lookup"><span data-stu-id="e54d3-135">Adventure Works Cycles determined that they should use Azure Managed Disks.</span></span> <span data-ttu-id="e54d3-136">При создании виртуальных машин используются хранилища обоих уровней:</span><span class="sxs-lookup"><span data-stu-id="e54d3-136">When creating VMs, both storage available storage tiers are used:</span></span>
+## <a name="storage"></a><span data-ttu-id="97489-134">Хранилище</span><span class="sxs-lookup"><span data-stu-id="97489-134">Storage</span></span>
+<span data-ttu-id="97489-135">В компании Adventure Works Cycles решили использовать Управляемые диски Azure.</span><span class="sxs-lookup"><span data-stu-id="97489-135">Adventure Works Cycles determined that they should use Azure Managed Disks.</span></span> <span data-ttu-id="97489-136">При создании виртуальных машин используются хранилища обоих уровней:</span><span class="sxs-lookup"><span data-stu-id="97489-136">When creating VMs, both storage available storage tiers are used:</span></span>
 
-* <span data-ttu-id="e54d3-137">**хранилище уровня "Стандартный"** для веб-серверов, серверов приложений, контроллеров домена и их дисков данных;</span><span class="sxs-lookup"><span data-stu-id="e54d3-137">**Standard storage** for the web servers, application servers, and domain controllers and their data disks.</span></span>
-* <span data-ttu-id="e54d3-138">**хранилище уровня "Премиум"** для серверов сегментированных кластеров MongoDB и их дисков данных.</span><span class="sxs-lookup"><span data-stu-id="e54d3-138">**Premium storage** for the MongoDB sharded cluster servers and their data disks.</span></span>
+* <span data-ttu-id="97489-137">**Стандартное хранилище** hello веб-серверы, серверы приложений и контроллеров домена и диски с данными.</span><span class="sxs-lookup"><span data-stu-id="97489-137">**Standard storage** for hello web servers, application servers, and domain controllers and their data disks.</span></span>
+* <span data-ttu-id="97489-138">**Хранилище Premium** hello MongoDB сегментированных кластера серверов и диски с данными.</span><span class="sxs-lookup"><span data-stu-id="97489-138">**Premium storage** for hello MongoDB sharded cluster servers and their data disks.</span></span>
 
-## <a name="virtual-network-and-subnets"></a><span data-ttu-id="e54d3-139">Виртуальные сети и подсети</span><span class="sxs-lookup"><span data-stu-id="e54d3-139">Virtual network and subnets</span></span>
-<span data-ttu-id="e54d3-140">Так как виртуальная сеть не требует постоянного подключения к локальной сети Adventure Work Cycles, компания выбрала облачную виртуальную сеть.</span><span class="sxs-lookup"><span data-stu-id="e54d3-140">Because the virtual network does not need ongoing connectivity to the Adventure Work Cycles on-premises network, they decided on a cloud-only virtual network.</span></span>
+## <a name="virtual-network-and-subnets"></a><span data-ttu-id="97489-139">Виртуальные сети и подсети</span><span class="sxs-lookup"><span data-stu-id="97489-139">Virtual network and subnets</span></span>
+<span data-ttu-id="97489-140">Поскольку hello виртуальной сети не требуется текущее подключение toohello Adventure рабочих циклов локальной сети, они решили в виртуальной сети только для облака.</span><span class="sxs-lookup"><span data-stu-id="97489-140">Because hello virtual network does not need ongoing connectivity toohello Adventure Work Cycles on-premises network, they decided on a cloud-only virtual network.</span></span>
 
-<span data-ttu-id="e54d3-141">Облачная виртуальная сеть создана на портале Azure с указанием следующих параметров:</span><span class="sxs-lookup"><span data-stu-id="e54d3-141">They created a cloud-only virtual network with the following settings using the Azure portal:</span></span>
+<span data-ttu-id="97489-141">Следующие параметры с помощью портала Azure hello hello они созданы только для облака виртуальной сети:</span><span class="sxs-lookup"><span data-stu-id="97489-141">They created a cloud-only virtual network with hello following settings using hello Azure portal:</span></span>
 
-* <span data-ttu-id="e54d3-142">Имя: AZOS-USE-VN01</span><span class="sxs-lookup"><span data-stu-id="e54d3-142">Name: AZOS-USE-VN01</span></span>
-* <span data-ttu-id="e54d3-143">Расположение: восточная часть США 2.</span><span class="sxs-lookup"><span data-stu-id="e54d3-143">Location: East US 2</span></span>
-* <span data-ttu-id="e54d3-144">Адресное пространство виртуальной сети: 10.0.0.0/8.</span><span class="sxs-lookup"><span data-stu-id="e54d3-144">Virtual network address space: 10.0.0.0/8</span></span>
-* <span data-ttu-id="e54d3-145">Первая подсеть:</span><span class="sxs-lookup"><span data-stu-id="e54d3-145">First subnet:</span></span>
-  * <span data-ttu-id="e54d3-146">Имя: FrontEnd.</span><span class="sxs-lookup"><span data-stu-id="e54d3-146">Name: FrontEnd</span></span>
-  * <span data-ttu-id="e54d3-147">Адресное пространство: 10.0.1.0/24.</span><span class="sxs-lookup"><span data-stu-id="e54d3-147">Address space: 10.0.1.0/24</span></span>
-* <span data-ttu-id="e54d3-148">Вторая подсеть:</span><span class="sxs-lookup"><span data-stu-id="e54d3-148">Second subnet:</span></span>
-  * <span data-ttu-id="e54d3-149">Имя: BackEnd.</span><span class="sxs-lookup"><span data-stu-id="e54d3-149">Name: BackEnd</span></span>
-  * <span data-ttu-id="e54d3-150">Адресное пространство: 10.0.2.0/24.</span><span class="sxs-lookup"><span data-stu-id="e54d3-150">Address space: 10.0.2.0/24</span></span>
+* <span data-ttu-id="97489-142">Имя: AZOS-USE-VN01</span><span class="sxs-lookup"><span data-stu-id="97489-142">Name: AZOS-USE-VN01</span></span>
+* <span data-ttu-id="97489-143">Расположение: восточная часть США 2.</span><span class="sxs-lookup"><span data-stu-id="97489-143">Location: East US 2</span></span>
+* <span data-ttu-id="97489-144">Адресное пространство виртуальной сети: 10.0.0.0/8.</span><span class="sxs-lookup"><span data-stu-id="97489-144">Virtual network address space: 10.0.0.0/8</span></span>
+* <span data-ttu-id="97489-145">Первая подсеть:</span><span class="sxs-lookup"><span data-stu-id="97489-145">First subnet:</span></span>
+  * <span data-ttu-id="97489-146">Имя: FrontEnd.</span><span class="sxs-lookup"><span data-stu-id="97489-146">Name: FrontEnd</span></span>
+  * <span data-ttu-id="97489-147">Адресное пространство: 10.0.1.0/24.</span><span class="sxs-lookup"><span data-stu-id="97489-147">Address space: 10.0.1.0/24</span></span>
+* <span data-ttu-id="97489-148">Вторая подсеть:</span><span class="sxs-lookup"><span data-stu-id="97489-148">Second subnet:</span></span>
+  * <span data-ttu-id="97489-149">Имя: BackEnd.</span><span class="sxs-lookup"><span data-stu-id="97489-149">Name: BackEnd</span></span>
+  * <span data-ttu-id="97489-150">Адресное пространство: 10.0.2.0/24.</span><span class="sxs-lookup"><span data-stu-id="97489-150">Address space: 10.0.2.0/24</span></span>
 
-## <a name="availability-sets"></a><span data-ttu-id="e54d3-151">Группы доступности</span><span class="sxs-lookup"><span data-stu-id="e54d3-151">Availability sets</span></span>
-<span data-ttu-id="e54d3-152">Чтобы обеспечить высокий уровень доступности всех четырех уровней интернет-магазина, компания Adventure Works Cycles использует четыре группы доступности:</span><span class="sxs-lookup"><span data-stu-id="e54d3-152">To maintain high availability of all four tiers of their on-line store, Adventure Works Cycles decided on four availability sets:</span></span>
+## <a name="availability-sets"></a><span data-ttu-id="97489-151">Группы доступности</span><span class="sxs-lookup"><span data-stu-id="97489-151">Availability sets</span></span>
+<span data-ttu-id="97489-152">Высокая доступность toomaintain всех четырех уровней их интерактивном магазине компании Adventure Works Cycles решение на четыре группы доступности:</span><span class="sxs-lookup"><span data-stu-id="97489-152">toomaintain high availability of all four tiers of their on-line store, Adventure Works Cycles decided on four availability sets:</span></span>
 
-* <span data-ttu-id="e54d3-153">**azos-use-as-web** для веб-серверов;</span><span class="sxs-lookup"><span data-stu-id="e54d3-153">**azos-use-as-web** for the web servers</span></span>
-* <span data-ttu-id="e54d3-154">**azos-use-as-app** для серверов приложений;</span><span class="sxs-lookup"><span data-stu-id="e54d3-154">**azos-use-as-app** for the application servers</span></span>
-* <span data-ttu-id="e54d3-155">**azos-use-as-db** для серверов в сегментированном кластере MongoDB;</span><span class="sxs-lookup"><span data-stu-id="e54d3-155">**azos-use-as-db** for the servers in the MongoDB sharded cluster</span></span>
-* <span data-ttu-id="e54d3-156">**azos-use-as-dc** для контроллеров домена.</span><span class="sxs-lookup"><span data-stu-id="e54d3-156">**azos-use-as-dc** for the domain controllers</span></span>
+* <span data-ttu-id="97489-153">**Используйте azos как web** hello веб-серверов</span><span class="sxs-lookup"><span data-stu-id="97489-153">**azos-use-as-web** for hello web servers</span></span>
+* <span data-ttu-id="97489-154">**Использование azos как приложений** для серверов приложений hello</span><span class="sxs-lookup"><span data-stu-id="97489-154">**azos-use-as-app** for hello application servers</span></span>
+* <span data-ttu-id="97489-155">**Используйте azos как db** hello серверов в кластере сегментированных MongoDB hello</span><span class="sxs-lookup"><span data-stu-id="97489-155">**azos-use-as-db** for hello servers in hello MongoDB sharded cluster</span></span>
+* <span data-ttu-id="97489-156">**Используйте azos как dc** контроллеров домена hello</span><span class="sxs-lookup"><span data-stu-id="97489-156">**azos-use-as-dc** for hello domain controllers</span></span>
 
-## <a name="virtual-machines"></a><span data-ttu-id="e54d3-157">Виртуальные машины</span><span class="sxs-lookup"><span data-stu-id="e54d3-157">Virtual machines</span></span>
-<span data-ttu-id="e54d3-158">Компания Adventure Works Cycles использует следующие имена для своих виртуальных машин Azure:</span><span class="sxs-lookup"><span data-stu-id="e54d3-158">Adventure Works Cycles decided on the following names for their Azure VMs:</span></span>
+## <a name="virtual-machines"></a><span data-ttu-id="97489-157">Виртуальные машины</span><span class="sxs-lookup"><span data-stu-id="97489-157">Virtual machines</span></span>
+<span data-ttu-id="97489-158">Компания Adventure Works Cycles, выбранного на hello следующие имена для их виртуальные машины Azure:</span><span class="sxs-lookup"><span data-stu-id="97489-158">Adventure Works Cycles decided on hello following names for their Azure VMs:</span></span>
 
-* <span data-ttu-id="e54d3-159">**azos-use-vm-web01** для первого веб-сервера;</span><span class="sxs-lookup"><span data-stu-id="e54d3-159">**azos-use-vm-web01** for the first web server</span></span>
-* <span data-ttu-id="e54d3-160">**azos-use-vm-web02** для второго веб-сервера;</span><span class="sxs-lookup"><span data-stu-id="e54d3-160">**azos-use-vm-web02** for the second web server</span></span>
-* <span data-ttu-id="e54d3-161">**azos-use-vm-app01** для первого сервера приложений;</span><span class="sxs-lookup"><span data-stu-id="e54d3-161">**azos-use-vm-app01** for the first application server</span></span>
-* <span data-ttu-id="e54d3-162">**azos-use-vm-app02** для второго сервера приложений;</span><span class="sxs-lookup"><span data-stu-id="e54d3-162">**azos-use-vm-app02** for the second application server</span></span>
-* <span data-ttu-id="e54d3-163">**azos-use-vm-db01** для первого сервера в кластере MongoDB;</span><span class="sxs-lookup"><span data-stu-id="e54d3-163">**azos-use-vm-db01** for the first MongoDB server in the cluster</span></span>
-* <span data-ttu-id="e54d3-164">**azos-use-vm-db02** для второго сервера в кластере MongoDB;</span><span class="sxs-lookup"><span data-stu-id="e54d3-164">**azos-use-vm-db02** for the second MongoDB server in the cluster</span></span>
-* <span data-ttu-id="e54d3-165">**azos-use-vm-dc01** для первого контроллера домена;</span><span class="sxs-lookup"><span data-stu-id="e54d3-165">**azos-use-vm-dc01** for the first domain controller</span></span>
-* <span data-ttu-id="e54d3-166">**azos-use-vm-dc02** для второго контроллера домена.</span><span class="sxs-lookup"><span data-stu-id="e54d3-166">**azos-use-vm-dc02** for the second domain controller</span></span>
+* <span data-ttu-id="97489-159">**azos использования vm web01** для hello первого веб-сервера</span><span class="sxs-lookup"><span data-stu-id="97489-159">**azos-use-vm-web01** for hello first web server</span></span>
+* <span data-ttu-id="97489-160">**azos использования vm web02** для hello второго веб-сервера</span><span class="sxs-lookup"><span data-stu-id="97489-160">**azos-use-vm-web02** for hello second web server</span></span>
+* <span data-ttu-id="97489-161">**azos использования vm app01** для hello первого сервера приложений</span><span class="sxs-lookup"><span data-stu-id="97489-161">**azos-use-vm-app01** for hello first application server</span></span>
+* <span data-ttu-id="97489-162">**azos использования vm app02** для hello второй сервер приложений</span><span class="sxs-lookup"><span data-stu-id="97489-162">**azos-use-vm-app02** for hello second application server</span></span>
+* <span data-ttu-id="97489-163">**azos использования vm db01** для первого сервера MongoDB hello в кластере hello</span><span class="sxs-lookup"><span data-stu-id="97489-163">**azos-use-vm-db01** for hello first MongoDB server in hello cluster</span></span>
+* <span data-ttu-id="97489-164">**azos использования vm db02** для второго сервера MongoDB hello в кластере hello</span><span class="sxs-lookup"><span data-stu-id="97489-164">**azos-use-vm-db02** for hello second MongoDB server in hello cluster</span></span>
+* <span data-ttu-id="97489-165">**azos использование vm-dc01** для hello первого контроллера домена</span><span class="sxs-lookup"><span data-stu-id="97489-165">**azos-use-vm-dc01** for hello first domain controller</span></span>
+* <span data-ttu-id="97489-166">**azos использование vm-dc02** для hello второго контроллера домена</span><span class="sxs-lookup"><span data-stu-id="97489-166">**azos-use-vm-dc02** for hello second domain controller</span></span>
 
-<span data-ttu-id="e54d3-167">Это конфигурация, которая получается в результате.</span><span class="sxs-lookup"><span data-stu-id="e54d3-167">Here is the resulting configuration.</span></span>
+<span data-ttu-id="97489-167">Здесь представлена конфигурация полученный hello.</span><span class="sxs-lookup"><span data-stu-id="97489-167">Here is hello resulting configuration.</span></span>
 
 ![Окончательная инфраструктура приложений, развернутая в Azure](./media/infrastructure-example/example-config.png)
 
-<span data-ttu-id="e54d3-169">Эта конфигурация включает:</span><span class="sxs-lookup"><span data-stu-id="e54d3-169">This configuration incorporates:</span></span>
+<span data-ttu-id="97489-169">Эта конфигурация включает:</span><span class="sxs-lookup"><span data-stu-id="97489-169">This configuration incorporates:</span></span>
 
-* <span data-ttu-id="e54d3-170">облачную виртуальную сеть с двумя подсетями (FrontEnd и BackEnd);</span><span class="sxs-lookup"><span data-stu-id="e54d3-170">A cloud-only virtual network with two subnets (FrontEnd and BackEnd)</span></span>
-* <span data-ttu-id="e54d3-171">Управляемые диски Azure с дисками уровней "Стандартный" и "Премиум";</span><span class="sxs-lookup"><span data-stu-id="e54d3-171">Azure Managed Disks using both Standard and Premium disks</span></span>
-* <span data-ttu-id="e54d3-172">четыре группы доступности, по одной для каждого уровня интернет-магазина;</span><span class="sxs-lookup"><span data-stu-id="e54d3-172">Four availability sets, one for each tier of the on-line store</span></span>
-* <span data-ttu-id="e54d3-173">виртуальные машины для четырех уровней;</span><span class="sxs-lookup"><span data-stu-id="e54d3-173">The virtual machines for the four tiers</span></span>
-* <span data-ttu-id="e54d3-174">внешний набор с балансировкой нагрузки для веб-трафика HTTPS из Интернета на веб-серверы;</span><span class="sxs-lookup"><span data-stu-id="e54d3-174">An external load balanced set for HTTPS-based web traffic from the Internet to the web servers</span></span>
-* <span data-ttu-id="e54d3-175">внешний набор с балансировкой нагрузки для незашифрованного веб-трафика с веб-серверов на серверы приложений.</span><span class="sxs-lookup"><span data-stu-id="e54d3-175">An internal load balanced set for unencrypted web traffic from the web servers to the application servers</span></span>
-* <span data-ttu-id="e54d3-176">одну группу ресурсов.</span><span class="sxs-lookup"><span data-stu-id="e54d3-176">A single resource group</span></span>
+* <span data-ttu-id="97489-170">облачную виртуальную сеть с двумя подсетями (FrontEnd и BackEnd);</span><span class="sxs-lookup"><span data-stu-id="97489-170">A cloud-only virtual network with two subnets (FrontEnd and BackEnd)</span></span>
+* <span data-ttu-id="97489-171">Управляемые диски Azure с дисками уровней "Стандартный" и "Премиум";</span><span class="sxs-lookup"><span data-stu-id="97489-171">Azure Managed Disks using both Standard and Premium disks</span></span>
+* <span data-ttu-id="97489-172">Четыре доступности набора: один для каждого уровня хранилища онлайн hello</span><span class="sxs-lookup"><span data-stu-id="97489-172">Four availability sets, one for each tier of hello on-line store</span></span>
+* <span data-ttu-id="97489-173">виртуальные машины Hello для hello четырех уровней</span><span class="sxs-lookup"><span data-stu-id="97489-173">hello virtual machines for hello four tiers</span></span>
+* <span data-ttu-id="97489-174">Внешнего комплекта балансировки нагрузки для трафика HTTPS на основе веб-от hello Internet toohello веб-серверов</span><span class="sxs-lookup"><span data-stu-id="97489-174">An external load balanced set for HTTPS-based web traffic from hello Internet toohello web servers</span></span>
+* <span data-ttu-id="97489-175">Набор для незашифрованные веб-трафика от серверов серверы toohello hello веб-приложений с балансировкой внутренней нагрузки</span><span class="sxs-lookup"><span data-stu-id="97489-175">An internal load balanced set for unencrypted web traffic from hello web servers toohello application servers</span></span>
+* <span data-ttu-id="97489-176">одну группу ресурсов.</span><span class="sxs-lookup"><span data-stu-id="97489-176">A single resource group</span></span>

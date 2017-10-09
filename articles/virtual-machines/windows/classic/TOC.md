@@ -7,8 +7,8 @@
 ## [Контейнеры](../../virtual-machines-windows-containers.md)
 
 # Начало работы
-## [Создание виртуальной машины с помощью портала](tutorial.md)
-## [Вход на виртуальную машину](connect-logon.md)
+## [Создайте виртуальную Машину с помощью портала hello](tutorial.md)
+## [Войдите на tooa виртуальной Машины](connect-logon.md)
 ## [Установка Azure PowerShell](/powershell/azure/overview)
 ## [Установка Azure CLI](../../../cli-install-nodejs.md)
 
@@ -20,9 +20,9 @@
 ### [Использование диска D: в качестве диска данных](../../virtual-machines-windows-change-drive-letter.md)
 
 ## Сеть
-### [Как настроить конечные точки](setup-endpoints.md)
+### [Как tooset настройке конечных точек](setup-endpoints.md)
 ### [Подключение виртуальных машин с помощью виртуальной сети или облачной службы](connect-vms.md)
-### [Подключение классических виртуальных сетей к виртуальным сетям Resource Manager](../../../vpn-gateway/vpn-gateway-connect-different-deployment-models-powershell.md)
+### [Подключение tooResource классических виртуальных сетей диспетчер виртуальных сетей](../../../vpn-gateway/vpn-gateway-connect-different-deployment-models-powershell.md)
 ### [Создание балансировщика нагрузки](../../../load-balancer/load-balancer-get-started-internet-classic-portal.md)
 ### [Как создать группы безопасности сети (классические) в PowerShell](../../../virtual-network/virtual-networks-create-nsg-classic-ps.md)
 
@@ -38,17 +38,17 @@
 ### [Веб-приложение Hello World на Django](python-django-web-app.md)
 
 ## Настройка
-### [Сброс службы удаленного рабочего стола или ее пароля](../../virtual-machines-windows-reset-rdp.md)
+### [Сброс пароля или hello службы удаленного рабочего стола](../../virtual-machines-windows-reset-rdp.md)
 ### [Установка и настройка Symantec Endpoint Protection](install-symantec.md)
 ### [Установка и настройка Trend Micro Deep Security как услуги](install-trend.md)
 ### [Настройка группы доступности](configure-availability.md)
-### [Изменение размера виртуальной машины Windows, созданной в классической модели развертывания](resize-vm.md)
+### [Изменение размера виртуальной Машины Windows, созданных в hello классической модели развертывания](resize-vm.md)
 ### [Обслуживание](planned-maintenance-schedule.md)
 
 ## Управление
-### [Переход с классической модели на модель Resource Manager](../../virtual-machines-windows-migration-classic-resource-manager-deep-dive.md)
+### [Перенос из классической tooResource Manager](../../virtual-machines-windows-migration-classic-resource-manager-deep-dive.md)
 ### [Управление виртуальными машинами с помощью Azure PowerShell](manage-psh.md)
-### [Сведения об агенте и расширениях виртуальной машины](agents-and-extensions.md)
+### [О hello агент ВМ и расширения](agents-and-extensions.md)
 ### [Управление расширениями виртуальной машины](manage-extensions.md)
 ### [Расширение пользовательских сценариев для виртуальных машин](extensions-customscript.md)
 ### [Включение пользовательских данных в виртуальную машину Azure](inject-custom-data.md)
@@ -64,10 +64,10 @@
 #### [Автоматическое масштабирование ресурсов](hpcpack-cluster-node-autogrowshrink.md)
 #### [Управление вычислительными узлами](hpcpack-cluster-node-manage.md)
 #### [Создание кластера](hpcpack-cluster-powershell-script.md)
-#### [Настройка кластера для выполнения приложений MPI](hpcpack-rdma-cluster.md)
+#### [Настройка приложений MPI toorun кластера](hpcpack-rdma-cluster.md)
 #### [Запуск рабочих нагрузок Excel и SOA](../../virtual-machines-windows-excel-cluster-hpcpack.md)
-#### [Создание головного узла с помощью образа Marketplace](../../virtual-machines-windows-hpcpack-cluster-headnode.md)
-#### [Отправка заданий из локальной среды в Azure](../../virtual-machines-windows-hpcpack-cluster-submit-jobs.md)
+#### [Создание головного узла hello с помощью образа Marketplace](../../virtual-machines-windows-hpcpack-cluster-headnode.md)
+#### [Отправляйте задания с локального tooAzure](../../virtual-machines-windows-hpcpack-cluster-submit-jobs.md)
 ### [MongoDB](install-mongodb.md)
 ### [MySQL](mysql-2008r2.md)
 ### [Oracle](../../workloads/oracle/oracle-considerations.md)
@@ -78,11 +78,11 @@
 ## Устранение неполадок
 ### [Подключения к удаленному рабочему столу](../../virtual-machines-windows-troubleshoot-rdp-connection.md)
 ####[Подробное руководство по устранению неполадок с подключением к удаленному рабочему столу](../../virtual-machines-windows-detailed-troubleshoot-rdp.md)
-### [Доступ к приложению](../../virtual-machines-windows-troubleshoot-app-connection.md)
+### [Приложение Access tooan](../../virtual-machines-windows-troubleshoot-app-connection.md)
 ### [Неполадки в классическом развертывании при создании виртуальной машины](troubleshoot-deployment-new-vm.md)
 ### [Неполадки в классическом развертывании при перезагрузке или изменении размера существующей виртуальной машины](virtual-machines-windows-classic-restart-resize-error-troubleshooting.md)
 ### [Сброс пароля удаленного рабочего стола](reset-rdp.md)
-### [Подключение виртуального жесткого диска для устранения неполадок виртуальной машины](troubleshoot-recovery-disks-portal.md)
+### [Подключить виртуальный жесткий диск tootroubleshooting виртуальной Машины](troubleshoot-recovery-disks-portal.md)
 
 # Справочные материалы
 ## [PowerShell](/powershell/azure/overview)

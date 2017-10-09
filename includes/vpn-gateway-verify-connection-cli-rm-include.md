@@ -1,0 +1,6 @@
+<span data-ttu-id="dbb3b-101">Вы можете убедиться в успешном подключение с помощью hello [az сети через VPN Показать](/cli/azure/network/vpn-connection#show) команды.</span><span class="sxs-lookup"><span data-stu-id="dbb3b-101">You can verify that your connection succeeded by using hello [az network vpn-connection show](/cli/azure/network/vpn-connection#show) command.</span></span> <span data-ttu-id="dbb3b-102">В примере hello "— имя" имя toohello hello подключение tootest ссылается.</span><span class="sxs-lookup"><span data-stu-id="dbb3b-102">In hello example, '--name' refers toohello name of hello connection that you want tootest.</span></span> <span data-ttu-id="dbb3b-103">Когда в процессе hello устанавливаемое подключение hello, состояние его соединения показывает «Подключение».</span><span class="sxs-lookup"><span data-stu-id="dbb3b-103">When hello connection is in hello process of being established, its connection status shows 'Connecting'.</span></span> <span data-ttu-id="dbb3b-104">После установления соединения hello hello в состояние too'Connected ".</span><span class="sxs-lookup"><span data-stu-id="dbb3b-104">Once hello connection is established, hello status changes too'Connected'.</span></span>
+
+```azurecli
+az network vpn-connection show --name VNet1toSite2 --resource-group TestRG1
+```
+

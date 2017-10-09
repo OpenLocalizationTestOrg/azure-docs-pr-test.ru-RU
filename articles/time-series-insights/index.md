@@ -1,6 +1,6 @@
 ---
-title: "Документация по Azure Time Series Insights. Руководства и справочник по API | Документация Майкрософт"
-description: "Узнайте, как выполнять в облаке аналитику IoT с помощью полностью управляемого модуля обработки событий. Анализируйте в реальном времени данные, поступающие от приложений, датчиков, устройств и из других источников."
+title: "aaaAzure документации аналитики ряда времени - учебники, справочник по API | Документы Microsoft"
+description: "Дополнительные сведения об облачных анализа IoT toorun в hello с полностью управляемого события обработки. Анализируйте в реальном времени данные, поступающие от приложений, датчиков, устройств и из других источников."
 services: time-series-insights
 author: carolz
 manager: carolz
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 04/13/2017
 ms.author: carolz
-ms.openlocfilehash: d22a3f0484da78d03dbe8411e74eb408185b1f30
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 2301d20aa2fb685279e2efc657ffcd41571af0c0
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/19/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-time-series-insights-documentation"></a>Документация по Azure Time Series Insights 
  
-Настройка среды Time Series Insights, а также просмотр и анализ данных временных рядов для решений IoT или подключенных вещей. Документация включает описание требований, руководства, справочники по API и другие материалы, которые помогут вам быстро приступить к работе. 
+Узнайте, как tooset среды аналитики ряда времени просмотра и анализа данных временных рядов для вашего решения IoT или подключен вещей. Документация являются общими hello предварительных требований, как ссылается API и другие toohelp документации, вы tooget работы в минутах. 
  
 <ul class="panelContent cardsFTitle"> 
     <li> 

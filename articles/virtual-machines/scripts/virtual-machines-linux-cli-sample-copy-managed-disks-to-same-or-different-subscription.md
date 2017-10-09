@@ -1,6 +1,6 @@
 ---
-title: "Пример сценария Azure CLI. Копирование (перемещение) управляемых дисков в ту же или другую подписку | Microsoft Docs"
-description: "Пример сценария Azure CLI. Копирование (перемещение) управляемых дисков в ту же или другую подписку"
+title: "aaaAzure образец скрипта CLI - toosame диски или другой подписке управляемых копии (перемещения) | Документы Microsoft"
+description: "Azure CLI образец скрипта - toosame дисков управляемых копии (перемещения) или другой подписке"
 services: virtual-machines-linux
 documentationcenter: storage
 author: ramankumarlive
@@ -15,39 +15,39 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 05/19/2017
 ms.author: ramankum
-ms.openlocfilehash: dcf92babf84872ffbbba81127952f8422104c723
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: b1fa207bd6e05d7094be08855e7823e3b7686013
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="copy-managed-disks-to-same-or-different-subscription-with-cli"></a><span data-ttu-id="c3a1f-103">Копирование управляемых дисков в ту же или другую подписку с помощью интерфейса командной строки</span><span class="sxs-lookup"><span data-stu-id="c3a1f-103">Copy managed disks to same or different subscription with CLI</span></span>
+# <a name="copy-managed-disks-toosame-or-different-subscription-with-cli"></a><span data-ttu-id="12e1a-103">Скопируйте toosame управляемых дисков или другую подписку с CLI</span><span class="sxs-lookup"><span data-stu-id="12e1a-103">Copy managed disks toosame or different subscription with CLI</span></span>
 
-<span data-ttu-id="c3a1f-104">Этот сценарий копирует управляемый диск в ту же или другую подписку в одном регионе.</span><span class="sxs-lookup"><span data-stu-id="c3a1f-104">This script copies a managed disk to same or different subscription but in the same region.</span></span> 
+<span data-ttu-id="12e1a-104">Этот скрипт копирует toosame управляемого диска или другую подписку, но в hello же области.</span><span class="sxs-lookup"><span data-stu-id="12e1a-104">This script copies a managed disk toosame or different subscription but in hello same region.</span></span> 
 
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="sample-script"></a><span data-ttu-id="c3a1f-105">Пример скрипта</span><span class="sxs-lookup"><span data-stu-id="c3a1f-105">Sample script</span></span>
+## <a name="sample-script"></a><span data-ttu-id="12e1a-105">Пример скрипта</span><span class="sxs-lookup"><span data-stu-id="12e1a-105">Sample script</span></span>
 
-<span data-ttu-id="c3a1f-106">[!code-azurecli[main](../../../cli_scripts/virtual-machine/copy-managed-disks-to-same-or-different-subscription/copy-managed-disks-to-same-or-different-subscription.sh "Копирование управляемого диска")]</span><span class="sxs-lookup"><span data-stu-id="c3a1f-106">[!code-azurecli[main](../../../cli_scripts/virtual-machine/copy-managed-disks-to-same-or-different-subscription/copy-managed-disks-to-same-or-different-subscription.sh "Copy managed disk")]</span></span>
+[!code-azurecli[main](../../../cli_scripts/virtual-machine/copy-managed-disks-to-same-or-different-subscription/copy-managed-disks-to-same-or-different-subscription.sh "Copy managed disk")]
 
 
-## <a name="script-explanation"></a><span data-ttu-id="c3a1f-107">Описание скрипта</span><span class="sxs-lookup"><span data-stu-id="c3a1f-107">Script explanation</span></span>
+## <a name="script-explanation"></a><span data-ttu-id="12e1a-106">Описание скрипта</span><span class="sxs-lookup"><span data-stu-id="12e1a-106">Script explanation</span></span>
 
-<span data-ttu-id="c3a1f-108">Этот сценарий использует приведенные ниже команды для создания управляемого диска в целевой подписке с помощью идентификатора исходного управляемого диска.</span><span class="sxs-lookup"><span data-stu-id="c3a1f-108">This script uses following commands to create a new managed disk in the target subscription using the Id of the source managed disk.</span></span> <span data-ttu-id="c3a1f-109">Для каждой команды в таблице приведены ссылки на соответствующую документацию.</span><span class="sxs-lookup"><span data-stu-id="c3a1f-109">Each command in the table links to command specific documentation.</span></span>
+<span data-ttu-id="12e1a-107">Этот скрипт использует следующую команды toocreate нового управляемого диска в hello целевой подписки с помощью hello идентификатор источника hello управляемого диска.</span><span class="sxs-lookup"><span data-stu-id="12e1a-107">This script uses following commands toocreate a new managed disk in hello target subscription using hello Id of hello source managed disk.</span></span> <span data-ttu-id="12e1a-108">Каждая команда в таблице hello связывает toocommand документацию.</span><span class="sxs-lookup"><span data-stu-id="12e1a-108">Each command in hello table links toocommand specific documentation.</span></span>
 
-| <span data-ttu-id="c3a1f-110">Команда</span><span class="sxs-lookup"><span data-stu-id="c3a1f-110">Command</span></span> | <span data-ttu-id="c3a1f-111">Примечания</span><span class="sxs-lookup"><span data-stu-id="c3a1f-111">Notes</span></span> |
+| <span data-ttu-id="12e1a-109">Команда</span><span class="sxs-lookup"><span data-stu-id="12e1a-109">Command</span></span> | <span data-ttu-id="12e1a-110">Примечания</span><span class="sxs-lookup"><span data-stu-id="12e1a-110">Notes</span></span> |
 |---|---|
-| [<span data-ttu-id="c3a1f-112">az disk show</span><span class="sxs-lookup"><span data-stu-id="c3a1f-112">az disk show</span></span>](https://docs.microsoft.com/cli/azure/disk#show) | <span data-ttu-id="c3a1f-113">Получает все свойства управляемого диска, используя имя и свойства группы ресурсов управляемого диска.</span><span class="sxs-lookup"><span data-stu-id="c3a1f-113">Gets all the properties of a managed disk using the name and resource group properties of the managed disk.</span></span> <span data-ttu-id="c3a1f-114">Свойство идентификатора используется для копирования управляемого диска в другую подписку.</span><span class="sxs-lookup"><span data-stu-id="c3a1f-114">Id property is used to copy the managed disk to different subscription.</span></span>  |
-| [<span data-ttu-id="c3a1f-115">az disk create</span><span class="sxs-lookup"><span data-stu-id="c3a1f-115">az disk create</span></span>](https://docs.microsoft.com/cli/azure/disk#create) | <span data-ttu-id="c3a1f-116">Копирует управляемый диск путем создания нового управляемого диска в другой подписке, используя идентификатор и имя родительского управляемого диска.</span><span class="sxs-lookup"><span data-stu-id="c3a1f-116">Copies a managed disk by creating a new managed disk in different subscription using Id and name the parent managed disk.</span></span>  |
+| [<span data-ttu-id="12e1a-111">az disk show</span><span class="sxs-lookup"><span data-stu-id="12e1a-111">az disk show</span></span>](https://docs.microsoft.com/cli/azure/disk#show) | <span data-ttu-id="12e1a-112">Возвращает все свойства hello управляемого диска с помощью hello имя ресурса группы свойств и hello управляемого диска.</span><span class="sxs-lookup"><span data-stu-id="12e1a-112">Gets all hello properties of a managed disk using hello name and resource group properties of hello managed disk.</span></span> <span data-ttu-id="12e1a-113">Идентификатор свойства — используется toocopy hello управляемого диска toodifferent подписка.</span><span class="sxs-lookup"><span data-stu-id="12e1a-113">Id property is used toocopy hello managed disk toodifferent subscription.</span></span>  |
+| [<span data-ttu-id="12e1a-114">az disk create</span><span class="sxs-lookup"><span data-stu-id="12e1a-114">az disk create</span></span>](https://docs.microsoft.com/cli/azure/disk#create) | <span data-ttu-id="12e1a-115">Копирует управляемого диска путем создания нового управляемого диска в другую подписку, используя идентификатор и имя родительского hello управляемого диска.</span><span class="sxs-lookup"><span data-stu-id="12e1a-115">Copies a managed disk by creating a new managed disk in different subscription using Id and name hello parent managed disk.</span></span>  |
 
-## <a name="next-steps"></a><span data-ttu-id="c3a1f-117">Дальнейшие действия</span><span class="sxs-lookup"><span data-stu-id="c3a1f-117">Next steps</span></span>
+## <a name="next-steps"></a><span data-ttu-id="12e1a-116">Дальнейшие действия</span><span class="sxs-lookup"><span data-stu-id="12e1a-116">Next steps</span></span>
 
-[<span data-ttu-id="c3a1f-118">Создание виртуальной машины на основе управляемого диска</span><span class="sxs-lookup"><span data-stu-id="c3a1f-118">Create a virtual machine from a managed disk</span></span>](./virtual-machines-linux-cli-sample-create-vm-from-managed-os-disks.md?toc=%2fpowershell%2fmodule%2ftoc.json)
+[<span data-ttu-id="12e1a-117">Создание виртуальной машины на основе управляемого диска</span><span class="sxs-lookup"><span data-stu-id="12e1a-117">Create a virtual machine from a managed disk</span></span>](./virtual-machines-linux-cli-sample-create-vm-from-managed-os-disks.md?toc=%2fpowershell%2fmodule%2ftoc.json)
 
-<span data-ttu-id="c3a1f-119">Дополнительные сведения об Azure CLI см. в [документации по Azure CLI](https://docs.microsoft.com/cli/azure/overview).</span><span class="sxs-lookup"><span data-stu-id="c3a1f-119">For more information on the Azure CLI, see [Azure CLI documentation](https://docs.microsoft.com/cli/azure/overview).</span></span>
+<span data-ttu-id="12e1a-118">Дополнительные сведения о hello Azure CLI см. в разделе [документации Azure CLI](https://docs.microsoft.com/cli/azure/overview).</span><span class="sxs-lookup"><span data-stu-id="12e1a-118">For more information on hello Azure CLI, see [Azure CLI documentation](https://docs.microsoft.com/cli/azure/overview).</span></span>
 
-<span data-ttu-id="c3a1f-120">Дополнительные примеры сценариев интерфейса командной строки для виртуальных машин и управляемых дисков см. в [документации по виртуальным машинам Azure под управлением Linux](../../app-service-web/app-service-cli-samples.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).</span><span class="sxs-lookup"><span data-stu-id="c3a1f-120">Additional virtual machine and managed disks CLI script samples can be found in the [Azure Linux VM documentation](../../app-service-web/app-service-cli-samples.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).</span></span>
+<span data-ttu-id="12e1a-119">Установить дополнительную виртуальную машину и управляемых дисков CLI образцы скриптов можно найти в hello [документации виртуальной Машине Linux Azure](../../app-service-web/app-service-cli-samples.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).</span><span class="sxs-lookup"><span data-stu-id="12e1a-119">Additional virtual machine and managed disks CLI script samples can be found in hello [Azure Linux VM documentation](../../app-service-web/app-service-cli-samples.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).</span></span>

@@ -1,6 +1,6 @@
 ---
-title: "Просмотр состояния задания инструмента импорта и экспорта Azure версии 1 | Документация Майкрософт"
-description: "Узнайте, как использовать файлы журнала, созданные при запуске задания импорта или экспорта, для просмотра состояния задания импорта и экспорта."
+title: "состояние задания импорта и экспорта Azure - v1 aaaReviewing | Документы Microsoft"
+description: "Узнайте, как файлы журналов hello toouse, созданные при hello импорта или экспорта задания был запущен toosee hello состояние задания импорта и экспорта hello."
 author: muralikk
 manager: syadav
 editor: tysonn
@@ -14,29 +14,29 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2017
 ms.author: muralikk
-ms.openlocfilehash: 621e41df127fded6ec6fe1f71e86cb8630965a70
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 378bc9a7ef6bfe65209413c8c4134f313a2c0d79
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="reviewing-azure-importexport-job-status-with-copy-log-files"></a><span data-ttu-id="f1577-103">Просмотр состояния задания импорта и экспорта Azure с помощью файлов журнала копирования</span><span class="sxs-lookup"><span data-stu-id="f1577-103">Reviewing Azure Import/Export job status with copy log files</span></span>
-<span data-ttu-id="f1577-104">При обработке дисков, связанных с заданием импорта или экспорта, служба импорта и экспорта Microsoft Azure записывает файлы журнала копирования в учетную запись хранения, в которую импортируются большие двоичные объекты или из которой они экспортируются.</span><span class="sxs-lookup"><span data-stu-id="f1577-104">When the Microsoft Azure Import/Export service processes drives associated with an import or export job, it writes copy log files to the storage account to or from which you are importing or exporting blobs.</span></span> <span data-ttu-id="f1577-105">Файл журнала содержит подробные сведения о состоянии каждого импортируемого или экспортируемого файла.</span><span class="sxs-lookup"><span data-stu-id="f1577-105">The log file contains detailed status about each file that was imported or exported.</span></span> <span data-ttu-id="f1577-106">При запросе состояния завершенного задания возвращается URL-адрес для каждого файла журнала копирования. Дополнительные сведения см. [здесь](/rest/api/storageservices/Get-Job3).</span><span class="sxs-lookup"><span data-stu-id="f1577-106">The URL to each copy log file is returned when you query the status of a completed job; see [Get Job](/rest/api/storageservices/Get-Job3) for more information.</span></span>  
+# <a name="reviewing-azure-importexport-job-status-with-copy-log-files"></a><span data-ttu-id="4a621-103">Просмотр состояния задания импорта и экспорта Azure с помощью файлов журнала копирования</span><span class="sxs-lookup"><span data-stu-id="4a621-103">Reviewing Azure Import/Export job status with copy log files</span></span>
+<span data-ttu-id="4a621-104">Когда hello службы импорта и экспорта Microsoft Azure обрабатывает диски, связанные с заданием импорта или экспорта, она записывает учетной записи копии журнала файлов toohello хранения tooor откуда Импорт или экспорт больших двоичных объектов.</span><span class="sxs-lookup"><span data-stu-id="4a621-104">When hello Microsoft Azure Import/Export service processes drives associated with an import or export job, it writes copy log files toohello storage account tooor from which you are importing or exporting blobs.</span></span> <span data-ttu-id="4a621-105">Hello файл журнала содержит подробное состояние каждого файла, который был импортирован или экспортирован.</span><span class="sxs-lookup"><span data-stu-id="4a621-105">hello log file contains detailed status about each file that was imported or exported.</span></span> <span data-ttu-id="4a621-106">файл журнала копирования tooeach URL-адрес Hello возвращается при запросе hello состояние завершенного задания; в разделе [получения задания](/rest/api/storageservices/Get-Job3) для получения дополнительной информации.</span><span class="sxs-lookup"><span data-stu-id="4a621-106">hello URL tooeach copy log file is returned when you query hello status of a completed job; see [Get Job](/rest/api/storageservices/Get-Job3) for more information.</span></span>  
 
-## <a name="example-urls"></a><span data-ttu-id="f1577-107">Примеры URL-адресов</span><span class="sxs-lookup"><span data-stu-id="f1577-107">Example URLs</span></span>
+## <a name="example-urls"></a><span data-ttu-id="4a621-107">Примеры URL-адресов</span><span class="sxs-lookup"><span data-stu-id="4a621-107">Example URLs</span></span>
 
-<span data-ttu-id="f1577-108">Ниже приведены примеры URL-адресов файлов журнала копирования для задания импорта с двумя дисками.</span><span class="sxs-lookup"><span data-stu-id="f1577-108">The following are example URLs for copy log files for an import job with two drives:</span></span>  
+<span data-ttu-id="4a621-108">Hello ниже приведены примеры URL-адресов для копирования файлов журнала для задания импорта с двумя дисками.</span><span class="sxs-lookup"><span data-stu-id="4a621-108">hello following are example URLs for copy log files for an import job with two drives:</span></span>  
   
  `http://myaccount.blob.core.windows.net/ImportExportStatesPath/waies/myjob_9WM35C2V_20130921-034307-902_error.xml`  
   
  `http://myaccount.blob.core.windows.net/ImportExportStatesPath/waies/myjob_9WM45A6Q_20130921-042122-021_error.xml`  
   
- <span data-ttu-id="f1577-109">Дополнительные сведения о формате журналов копирования и полный список кодов состояний см. в статье [Формат файла журнала службы импорта и экспорта Azure](storage-import-export-file-format-log.md).</span><span class="sxs-lookup"><span data-stu-id="f1577-109">See [Import/Export service Log File Format](storage-import-export-file-format-log.md) for the format of copy logs and the full list of status codes.</span></span>  
+ <span data-ttu-id="4a621-109">В разделе [службы импорта и экспорта формат файла журнала](storage-import-export-file-format-log.md) hello формата журналов копирования и полный список кодов состояния hello.</span><span class="sxs-lookup"><span data-stu-id="4a621-109">See [Import/Export service Log File Format](storage-import-export-file-format-log.md) for hello format of copy logs and hello full list of status codes.</span></span>  
   
-## <a name="next-steps"></a><span data-ttu-id="f1577-110">Дальнейшие действия</span><span class="sxs-lookup"><span data-stu-id="f1577-110">Next steps</span></span>
+## <a name="next-steps"></a><span data-ttu-id="4a621-110">Дальнейшие действия</span><span class="sxs-lookup"><span data-stu-id="4a621-110">Next steps</span></span>
  
- * [<span data-ttu-id="f1577-111">Настройка средства импорта и экспорта Azure</span><span class="sxs-lookup"><span data-stu-id="f1577-111">Setting Up the Azure Import/Export Tool</span></span>](storage-import-export-tool-setup-v1.md)   
- * [<span data-ttu-id="f1577-112">Подготовка жестких дисков для задания импорта</span><span class="sxs-lookup"><span data-stu-id="f1577-112">Preparing hard drives for an import job</span></span>](storage-import-export-tool-preparing-hard-drives-import-v1.md)   
- * [<span data-ttu-id="f1577-113">Подготовка задания импорта</span><span class="sxs-lookup"><span data-stu-id="f1577-113">Repairing an import job</span></span>](storage-import-export-tool-repairing-an-import-job-v1.md)   
- * [<span data-ttu-id="f1577-114">Подготовка задания экспорта</span><span class="sxs-lookup"><span data-stu-id="f1577-114">Repairing an export job</span></span>](storage-import-export-tool-repairing-an-export-job-v1.md)   
- * [<span data-ttu-id="f1577-115">Устранение неполадок со средством импорта и экспорта Azure</span><span class="sxs-lookup"><span data-stu-id="f1577-115">Troubleshooting the Azure Import/Export Tool</span></span>](storage-import-export-tool-troubleshooting-v1.md)
+ * [<span data-ttu-id="4a621-111">Установка hello средство импорта и экспорта Azure</span><span class="sxs-lookup"><span data-stu-id="4a621-111">Setting Up hello Azure Import/Export Tool</span></span>](storage-import-export-tool-setup-v1.md)   
+ * [<span data-ttu-id="4a621-112">Подготовка жестких дисков для задания импорта</span><span class="sxs-lookup"><span data-stu-id="4a621-112">Preparing hard drives for an import job</span></span>](storage-import-export-tool-preparing-hard-drives-import-v1.md)   
+ * [<span data-ttu-id="4a621-113">Подготовка задания импорта</span><span class="sxs-lookup"><span data-stu-id="4a621-113">Repairing an import job</span></span>](storage-import-export-tool-repairing-an-import-job-v1.md)   
+ * [<span data-ttu-id="4a621-114">Подготовка задания экспорта</span><span class="sxs-lookup"><span data-stu-id="4a621-114">Repairing an export job</span></span>](storage-import-export-tool-repairing-an-export-job-v1.md)   
+ * [<span data-ttu-id="4a621-115">Устранение неполадок средства импорта и экспорта Azure hello</span><span class="sxs-lookup"><span data-stu-id="4a621-115">Troubleshooting hello Azure Import/Export Tool</span></span>](storage-import-export-tool-troubleshooting-v1.md)

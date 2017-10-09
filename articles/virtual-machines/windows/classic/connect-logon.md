@@ -1,6 +1,6 @@
 ---
-title: "Вход на классическую виртуальную машину Azure | Документация Майкрософт"
-description: "Используйте портал Azure для входа в виртуальную машину Windows, созданную с использованием классической модели развертывания."
+title: "aaaLog на tooa классической виртуальной Машине Azure | Документы Microsoft"
+description: "Используйте hello Azure портала toolog на виртуальной машине Windows tooa, созданных с помощью hello классической модели развертывания."
 services: virtual-machines-windows
 documentationcenter: 
 author: cynthn
@@ -15,53 +15,53 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/30/2017
 ms.author: cynthn
-ms.openlocfilehash: 43d54de7e875de9212c23c49ad0539bf2272a312
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 2e32b7036c2538e73b46580e0f5f8f4979e8a685
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="log-on-to-a-windows-virtual-machine-using-the-azure-portal"></a><span data-ttu-id="0f27d-103">Вход в виртуальную машину под управлением Windows с помощью портала Azure</span><span class="sxs-lookup"><span data-stu-id="0f27d-103">Log on to a Windows virtual machine using the Azure portal</span></span>
-<span data-ttu-id="0f27d-104">На портале Azure для запуска сеанса удаленного рабочего стола и входа в виртуальную машину Windows используйте кнопку **Подключиться** .</span><span class="sxs-lookup"><span data-stu-id="0f27d-104">In the Azure portal, you use the **Connect** button to start a Remote Desktop session and log on to a Windows VM.</span></span>
+# <a name="log-on-tooa-windows-virtual-machine-using-hello-azure-portal"></a><span data-ttu-id="e714c-103">Войдите на tooa виртуальной машины Windows с помощью портала Azure hello</span><span class="sxs-lookup"><span data-stu-id="e714c-103">Log on tooa Windows virtual machine using hello Azure portal</span></span>
+<span data-ttu-id="e714c-104">Hello портал Azure, используется в hello **Connect** кнопку toostart сеанс удаленного рабочего стола и войдите в систему виртуальной Машины Windows tooa.</span><span class="sxs-lookup"><span data-stu-id="e714c-104">In hello Azure portal, you use hello **Connect** button toostart a Remote Desktop session and log on tooa Windows VM.</span></span>
 
-<span data-ttu-id="0f27d-105">Хотите подключиться к виртуальной машине Linux?</span><span class="sxs-lookup"><span data-stu-id="0f27d-105">Do you want to connect to a Linux VM?</span></span> <span data-ttu-id="0f27d-106">Ознакомьтесь со статьей [How to log on to a virtual machine running Linux](../../linux/mac-create-ssh-keys.md) (Как войти в виртуальную машину под управлением Linux).</span><span class="sxs-lookup"><span data-stu-id="0f27d-106">See [How to log on to a virtual machine running Linux](../../linux/mac-create-ssh-keys.md).</span></span>
+<span data-ttu-id="e714c-105">Вы хотите, чтобы tooconnect tooa виртуальных Машин Linux?</span><span class="sxs-lookup"><span data-stu-id="e714c-105">Do you want tooconnect tooa Linux VM?</span></span> <span data-ttu-id="e714c-106">В разделе [как toolog на tooa виртуальной машине под управлением Linux](../../linux/mac-create-ssh-keys.md).</span><span class="sxs-lookup"><span data-stu-id="e714c-106">See [How toolog on tooa virtual machine running Linux](../../linux/mac-create-ssh-keys.md).</span></span>
 
 <!--
 Deleting, but not 100% sure
-Learn how to [perform these steps using new Azure portal](../connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Learn how too[perform these steps using new Azure portal](../connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 -->
 
 > [!IMPORTANT]
-> <span data-ttu-id="0f27d-107">В Azure предлагаются две модели развертывания для создания ресурсов и работы с ними: [модель диспетчера ресурсов и классическая модель](../../../resource-manager-deployment-model.md).</span><span class="sxs-lookup"><span data-stu-id="0f27d-107">Azure has two different deployment models for creating and working with resources: [Resource Manager and Classic](../../../resource-manager-deployment-model.md).</span></span> <span data-ttu-id="0f27d-108">В этой статье рассматривается использование классической модели развертывания.</span><span class="sxs-lookup"><span data-stu-id="0f27d-108">This article covers using the Classic deployment model.</span></span> <span data-ttu-id="0f27d-109">Для большинства новых развертываний Майкрософт рекомендует использовать модель диспетчера ресурсов.</span><span class="sxs-lookup"><span data-stu-id="0f27d-109">Microsoft recommends that most new deployments use the Resource Manager model.</span></span> <span data-ttu-id="0f27d-110">Дополнительные сведения о том, как войти в виртуальную машину с помощью модели Resource Manager, см. [здесь](../connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).</span><span class="sxs-lookup"><span data-stu-id="0f27d-110">For information about how to log on to a VM using the Resource Manager model, see [here](../connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).</span></span>
+> <span data-ttu-id="e714c-107">В Azure предлагаются две модели развертывания для создания ресурсов и работы с ними: [модель диспетчера ресурсов и классическая модель](../../../resource-manager-deployment-model.md).</span><span class="sxs-lookup"><span data-stu-id="e714c-107">Azure has two different deployment models for creating and working with resources: [Resource Manager and Classic](../../../resource-manager-deployment-model.md).</span></span> <span data-ttu-id="e714c-108">В этой статье описан с помощью hello классической модели развертывания.</span><span class="sxs-lookup"><span data-stu-id="e714c-108">This article covers using hello Classic deployment model.</span></span> <span data-ttu-id="e714c-109">Корпорация Майкрософт рекомендует наиболее новые развертывания модели hello диспетчера ресурсов.</span><span class="sxs-lookup"><span data-stu-id="e714c-109">Microsoft recommends that most new deployments use hello Resource Manager model.</span></span> <span data-ttu-id="e714c-110">Сведения о как toolog на tooa виртуальной Машины с помощью hello диспетчера ресурсов модели см. в разделе [здесь](../connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).</span><span class="sxs-lookup"><span data-stu-id="e714c-110">For information about how toolog on tooa VM using hello Resource Manager model, see [here](../connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).</span></span>
 
-## <a name="connect-to-the-virtual-machine"></a><span data-ttu-id="0f27d-111">Подключение к виртуальной машине</span><span class="sxs-lookup"><span data-stu-id="0f27d-111">Connect to the virtual machine</span></span>
-1. <span data-ttu-id="0f27d-112">Войдите на портал Azure.</span><span class="sxs-lookup"><span data-stu-id="0f27d-112">Sign in to the Azure portal.</span></span>
-2. <span data-ttu-id="0f27d-113">Щелкните виртуальную машину, доступ к которой необходимо получить.</span><span class="sxs-lookup"><span data-stu-id="0f27d-113">Click on the virtual machine that you want to access.</span></span> <span data-ttu-id="0f27d-114">Имя указывается в области **Все ресурсы**.</span><span class="sxs-lookup"><span data-stu-id="0f27d-114">The name is listed in the **All resources** pane.</span></span>
+## <a name="connect-toohello-virtual-machine"></a><span data-ttu-id="e714c-111">Подключение toohello виртуальной машины</span><span class="sxs-lookup"><span data-stu-id="e714c-111">Connect toohello virtual machine</span></span>
+1. <span data-ttu-id="e714c-112">Войдите в систему toohello портал Azure.</span><span class="sxs-lookup"><span data-stu-id="e714c-112">Sign in toohello Azure portal.</span></span>
+2. <span data-ttu-id="e714c-113">Щелкните на виртуальной машине hello, tooaccess.</span><span class="sxs-lookup"><span data-stu-id="e714c-113">Click on hello virtual machine that you want tooaccess.</span></span> <span data-ttu-id="e714c-114">Hello имя указано в hello **все ресурсы** области.</span><span class="sxs-lookup"><span data-stu-id="e714c-114">hello name is listed in hello **All resources** pane.</span></span>
 
     ![Расположения виртуальных машин](./media/connect-logon/azureportaldashboard.png)
 
-3. <span data-ttu-id="0f27d-116">Щелкните **Подключиться** на панели команд вверху панели мониторинга виртуальной машины.</span><span class="sxs-lookup"><span data-stu-id="0f27d-116">Click **Connect** on the command bar atop the virtual machine dashboard.</span></span>
+3. <span data-ttu-id="e714c-116">Нажмите кнопку **Connect** на панели команд hello поверх панели мониторинга виртуальной машины hello.</span><span class="sxs-lookup"><span data-stu-id="e714c-116">Click **Connect** on hello command bar atop hello virtual machine dashboard.</span></span>
 
-    ![Значок подключения для виртуальной машины](./media/connect-logon/virtualmachine_dashboard_connect.png)
+    ![Значок для виртуальной машины hello подключения](./media/connect-logon/virtualmachine_dashboard_connect.png)
 
 <!-- Don't know if this still applies
      I think we can zap this.
 > [!TIP]
-> If the **Connect** button isn't available, see the troubleshooting tips at the end of this article.
+> If hello **Connect** button isn't available, see hello troubleshooting tips at hello end of this article.
 >
 >
 -->
 
-## <a name="log-on-to-the-virtual-machine"></a><span data-ttu-id="0f27d-118">Вход на виртуальную машину</span><span class="sxs-lookup"><span data-stu-id="0f27d-118">Log on to the virtual machine</span></span>
+## <a name="log-on-toohello-virtual-machine"></a><span data-ttu-id="e714c-118">Войдите на виртуальную машину toohello</span><span class="sxs-lookup"><span data-stu-id="e714c-118">Log on toohello virtual machine</span></span>
 [!INCLUDE [virtual-machines-log-on-win-server](../../../../includes/virtual-machines-log-on-win-server.md)]
 
-## <a name="next-steps"></a><span data-ttu-id="0f27d-119">Дальнейшие действия</span><span class="sxs-lookup"><span data-stu-id="0f27d-119">Next steps</span></span>
-* <span data-ttu-id="0f27d-120">Если кнопка **Подключиться** неактивна или возникли другие проблемы с подключением к удаленному рабочему столу, попробуйте переустановить конфигурацию.</span><span class="sxs-lookup"><span data-stu-id="0f27d-120">If the **Connect** button is inactive or you are having other problems with the Remote Desktop connection, try resetting the configuration.</span></span> <span data-ttu-id="0f27d-121">Щелкните **Сброс удаленного доступа** на панели мониторинга виртуальной машины.</span><span class="sxs-lookup"><span data-stu-id="0f27d-121">click **Reset remote access** from the virtual machine dashboard.</span></span>
+## <a name="next-steps"></a><span data-ttu-id="e714c-119">Дальнейшие действия</span><span class="sxs-lookup"><span data-stu-id="e714c-119">Next steps</span></span>
+* <span data-ttu-id="e714c-120">Если hello **Connect** кнопка неактивна, или возникли другие проблемы с подключением удаленного рабочего стола hello, попробуйте сбросить настройки hello.</span><span class="sxs-lookup"><span data-stu-id="e714c-120">If hello **Connect** button is inactive or you are having other problems with hello Remote Desktop connection, try resetting hello configuration.</span></span> <span data-ttu-id="e714c-121">Нажмите кнопку **сбросьте удаленный доступ** из панели мониторинга виртуальной машины hello.</span><span class="sxs-lookup"><span data-stu-id="e714c-121">click **Reset remote access** from hello virtual machine dashboard.</span></span>
 
     ![Сброс удаленного доступа](./media/connect-logon/virtualmachine_dashboard_reset_remote_access.png)
 
-* <span data-ttu-id="0f27d-123">Если возникли проблемы с паролем, попробуйте сбросить его.</span><span class="sxs-lookup"><span data-stu-id="0f27d-123">For problems with your password, try resetting it.</span></span> <span data-ttu-id="0f27d-124">Щелкните **Сбросить пароль** возле левого края панели мониторинга виртуальной машины, в разделе **Поддержка и устранение неполадок**.</span><span class="sxs-lookup"><span data-stu-id="0f27d-124">Click **Reset password** along the left edge of virtual machine dashboard, under **Support + Troubleshooting**.</span></span>
+* <span data-ttu-id="e714c-123">Если возникли проблемы с паролем, попробуйте сбросить его.</span><span class="sxs-lookup"><span data-stu-id="e714c-123">For problems with your password, try resetting it.</span></span> <span data-ttu-id="e714c-124">Нажмите кнопку **сброс пароля** вдоль hello левого края панели мониторинга виртуальной машины, в разделе **поддержки + Устранение неполадок**.</span><span class="sxs-lookup"><span data-stu-id="e714c-124">Click **Reset password** along hello left edge of virtual machine dashboard, under **Support + Troubleshooting**.</span></span>
 
     ![Сброс пароля](./media/connect-logon/virtualmachine_dashboard_reset_password.png)
 
-<span data-ttu-id="0f27d-126">Если эти рекомендации не помогли устранить проблему или они вам не подходят, см. статью [Устранение неполадок с подключением к удаленному рабочему столу на виртуальной машине Azure под управлением Windows](../troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).</span><span class="sxs-lookup"><span data-stu-id="0f27d-126">If those tips don't work or aren't what you need, see [Troubleshoot Remote Desktop connections to a Windows-based Azure Virtual Machine](../troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).</span></span> <span data-ttu-id="0f27d-127">В ней описывается процесс диагностики и решения распространенных проблем.</span><span class="sxs-lookup"><span data-stu-id="0f27d-127">This article walks you through diagnosing and resolving common problems.</span></span>
+<span data-ttu-id="e714c-126">Если эти советы не работают или не то, что нужно, в разделе [tooa подключений удаленного рабочего стола на устранение неполадок виртуальной машины на основе Windows Azure](../troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).</span><span class="sxs-lookup"><span data-stu-id="e714c-126">If those tips don't work or aren't what you need, see [Troubleshoot Remote Desktop connections tooa Windows-based Azure Virtual Machine](../troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).</span></span> <span data-ttu-id="e714c-127">В ней описывается процесс диагностики и решения распространенных проблем.</span><span class="sxs-lookup"><span data-stu-id="e714c-127">This article walks you through diagnosing and resolving common problems.</span></span>

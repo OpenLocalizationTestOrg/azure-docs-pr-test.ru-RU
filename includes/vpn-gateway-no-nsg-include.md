@@ -1,0 +1,5 @@
+> [!IMPORTANT]
+> <span data-ttu-id="eecab-101">При работе с подсетями шлюз, избегайте связывание подсеть шлюза toohello (NSG) группы безопасности сети.</span><span class="sxs-lookup"><span data-stu-id="eecab-101">When working with gateway subnets, avoid associating a network security group (NSG) toohello gateway subnet.</span></span> <span data-ttu-id="eecab-102">Привязка подсети toothis группы безопасности сети может привести к вашей toostop шлюза VPN, должным образом.</span><span class="sxs-lookup"><span data-stu-id="eecab-102">Associating a network security group toothis subnet may cause your VPN gateway toostop functioning as expected.</span></span> <span data-ttu-id="eecab-103">Дополнительные сведения о группах безопасности сети см. в статье [Группа безопасности сети](../articles/virtual-network/virtual-networks-nsg.md).</span><span class="sxs-lookup"><span data-stu-id="eecab-103">For more information about network security groups, see [What is a network security group?](../articles/virtual-network/virtual-networks-nsg.md)</span></span>
+> 
+> 
+

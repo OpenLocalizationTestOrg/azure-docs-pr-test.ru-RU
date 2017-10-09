@@ -1,0 +1,6 @@
+1. <span data-ttu-id="af762-101">В меню Visual Studio hello, выберите **файл > Создать > проект**.</span><span class="sxs-lookup"><span data-stu-id="af762-101">From hello Visual Studio menu, select **File > New > Project**.</span></span>
+2. <span data-ttu-id="af762-102">В разделе hello **шаблоны** раздел hello **новый проект** выберите **Visual C# > Web**.</span><span class="sxs-lookup"><span data-stu-id="af762-102">Under hello **Templates** section of hello **New Project** dialog box, select **Visual C# > Web**.</span></span>
+3. <span data-ttu-id="af762-103">Выберите **ASP.NET Core Web Application (.NET Core)**(Веб-приложение ASP.NET Core (.NET Core)).</span><span class="sxs-lookup"><span data-stu-id="af762-103">Select **ASP.NET Core Web Application (.NET Core)**.</span></span>
+4. <span data-ttu-id="af762-104">Присвойте нового приложения, имя (или по умолчанию hello take) и выберите **ОК**.</span><span class="sxs-lookup"><span data-stu-id="af762-104">Give your new application a name (or take hello default) and select **OK**.</span></span>
+5. <span data-ttu-id="af762-105">В разделе **ASP.NET Core 1.1 Templates** (Шаблоны ASP.NET Core 1.1) выберите **Веб-приложение** и нажмите кнопку **ОК**.</span><span class="sxs-lookup"><span data-stu-id="af762-105">Under **ASP.NET Core 1.1 Templates**, select **Web Application** and select **OK**.</span></span>
+

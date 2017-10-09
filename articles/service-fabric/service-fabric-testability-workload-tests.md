@@ -1,6 +1,6 @@
 ---
-title: "Моделирование сбоев в микрослужбах Azure | Документация Майкрософт"
-description: "Защита служб от нормальных и ненормальных сбоев."
+title: "aaaSimulate сбоев в Azure микрослужбами | Документы Microsoft"
+description: "Как tooharden служб от сбоев корректное и нестандартного."
 services: service-fabric
 documentationcenter: .net
 author: anmolah
@@ -14,27 +14,27 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/15/2017
 ms.author: anmola
-ms.openlocfilehash: 7ec671c23e101d0f7401bd4656fb201111602cad
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 05467e291dfc0f12a021955f8ea540881ec10746
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="simulate-failures-during-service-workloads"></a><span data-ttu-id="ba01a-103">Моделирование ошибок во время рабочих нагрузок службы</span><span class="sxs-lookup"><span data-stu-id="ba01a-103">Simulate failures during service workloads</span></span>
-<span data-ttu-id="ba01a-104">Сценарии тестирования в Azure Service Fabric позволяют разработчикам не беспокоиться об обработке отдельных ошибок.</span><span class="sxs-lookup"><span data-stu-id="ba01a-104">The testability scenarios in Azure Service Fabric enable developers to not worry about dealing with individual faults.</span></span> <span data-ttu-id="ba01a-105">Однако есть сценарии, в которых может потребоваться явное чередование клиентской рабочей нагрузки и сбоев.</span><span class="sxs-lookup"><span data-stu-id="ba01a-105">There are scenarios, however, where an explicit interleaving of client workload and failures might be needed.</span></span> <span data-ttu-id="ba01a-106">Чередование клиентской рабочей нагрузки и сбоев обеспечивает выполнение службой необходимых действий в случае сбоя.</span><span class="sxs-lookup"><span data-stu-id="ba01a-106">The interleaving of client workload and faults ensures that the service is actually performing some action when failure happens.</span></span> <span data-ttu-id="ba01a-107">Учитывая уровень управления тестированием, эти сбои могут наблюдаться именно в точках выполнения рабочей нагрузки.</span><span class="sxs-lookup"><span data-stu-id="ba01a-107">Given the level of control that testability provides, these could be at precise points of the workload execution.</span></span> <span data-ttu-id="ba01a-108">Вызывая таким образом ошибки при различных состояниях приложения, можно находить ошибки и улучшить качество.</span><span class="sxs-lookup"><span data-stu-id="ba01a-108">This induction of faults at different states in the application can find bugs and improve quality.</span></span>
+# <a name="simulate-failures-during-service-workloads"></a><span data-ttu-id="8c408-103">Моделирование ошибок во время рабочих нагрузок службы</span><span class="sxs-lookup"><span data-stu-id="8c408-103">Simulate failures during service workloads</span></span>
+<span data-ttu-id="8c408-104">сценарии тестирования Hello в Azure Service Fabric позволяют разработчикам toonot беспокойтесь о работе с отдельных ошибок.</span><span class="sxs-lookup"><span data-stu-id="8c408-104">hello testability scenarios in Azure Service Fabric enable developers toonot worry about dealing with individual faults.</span></span> <span data-ttu-id="8c408-105">Однако есть сценарии, в которых может потребоваться явное чередование клиентской рабочей нагрузки и сбоев.</span><span class="sxs-lookup"><span data-stu-id="8c408-105">There are scenarios, however, where an explicit interleaving of client workload and failures might be needed.</span></span> <span data-ttu-id="8c408-106">Hello чередованием рабочей нагрузки клиентов и ошибок гарантирует, что служба hello фактически выполняет какие-либо действия в случае сбоя.</span><span class="sxs-lookup"><span data-stu-id="8c408-106">hello interleaving of client workload and faults ensures that hello service is actually performing some action when failure happens.</span></span> <span data-ttu-id="8c408-107">Имея hello уровень управления, который предоставляет возможности тестирования, это могут быть на точное этапах выполнения рабочих нагрузок hello.</span><span class="sxs-lookup"><span data-stu-id="8c408-107">Given hello level of control that testability provides, these could be at precise points of hello workload execution.</span></span> <span data-ttu-id="8c408-108">Этот индукционная ошибок в различных состояниях в приложение hello можно находить ошибки и улучшить качество.</span><span class="sxs-lookup"><span data-stu-id="8c408-108">This induction of faults at different states in hello application can find bugs and improve quality.</span></span>
 
-## <a name="sample-custom-scenario"></a><span data-ttu-id="ba01a-109">Пример пользовательского сценария</span><span class="sxs-lookup"><span data-stu-id="ba01a-109">Sample custom scenario</span></span>
-<span data-ttu-id="ba01a-110">В этом тесте показан сценарий чередования рабочей нагрузки бизнеса с [нормальными и ненормальными сбоями](service-fabric-testability-actions.md#graceful-vs-ungraceful-fault-actions).</span><span class="sxs-lookup"><span data-stu-id="ba01a-110">This test shows a scenario that interleaves the business workload with [graceful and ungraceful failures](service-fabric-testability-actions.md#graceful-vs-ungraceful-fault-actions).</span></span> <span data-ttu-id="ba01a-111">Для получения оптимальных результатов сбои следует вызывать во время выполнения операций службы или вычислений.</span><span class="sxs-lookup"><span data-stu-id="ba01a-111">The faults should be induced in the middle of service operations or compute for best results.</span></span>
+## <a name="sample-custom-scenario"></a><span data-ttu-id="8c408-109">Пример пользовательского сценария</span><span class="sxs-lookup"><span data-stu-id="8c408-109">Sample custom scenario</span></span>
+<span data-ttu-id="8c408-110">Этот тест показывает сценарий рабочая нагрузка бизнеса, hello чередуется свойством с [сбоев корректное и нестандартного](service-fabric-testability-actions.md#graceful-vs-ungraceful-fault-actions).</span><span class="sxs-lookup"><span data-stu-id="8c408-110">This test shows a scenario that interleaves hello business workload with [graceful and ungraceful failures](service-fabric-testability-actions.md#graceful-vs-ungraceful-fault-actions).</span></span> <span data-ttu-id="8c408-111">ошибки Hello следует вносимое в середине hello операции службы или вычислений для получения наилучших результатов.</span><span class="sxs-lookup"><span data-stu-id="8c408-111">hello faults should be induced in hello middle of service operations or compute for best results.</span></span>
 
-<span data-ttu-id="ba01a-112">Рассмотрим пример службы, которая предоставляет четыре рабочих нагрузки (А, Б, В и Г). Каждая из них соответствует набору рабочих процессов и может представлять из себя вычисления, хранилище или их сочетание.</span><span class="sxs-lookup"><span data-stu-id="ba01a-112">Let's walk through an example of a service that exposes four workloads: A, B, C, and D. Each corresponds to a set of workflows and could be compute, storage, or a mix.</span></span> <span data-ttu-id="ba01a-113">Для простоты рабочие нагрузки в нашем примере абстрагированы.</span><span class="sxs-lookup"><span data-stu-id="ba01a-113">For the sake of simplicity, we will abstract out the workloads in our example.</span></span> <span data-ttu-id="ba01a-114">Различные сбои, выполненные в этом примере:</span><span class="sxs-lookup"><span data-stu-id="ba01a-114">The different faults executed in this example are:</span></span>
+<span data-ttu-id="8c408-112">Давайте рассмотрим пример службы, которая предоставляет четыре рабочих нагрузок: A, B, C и D. Каждая соответствует tooa набор рабочих процессов и может вычислений, хранения или набора.</span><span class="sxs-lookup"><span data-stu-id="8c408-112">Let's walk through an example of a service that exposes four workloads: A, B, C, and D. Each corresponds tooa set of workflows and could be compute, storage, or a mix.</span></span> <span data-ttu-id="8c408-113">Ради hello простоты мы будет абстрагировать hello рабочих нагрузок в нашем примере.</span><span class="sxs-lookup"><span data-stu-id="8c408-113">For hello sake of simplicity, we will abstract out hello workloads in our example.</span></span> <span data-ttu-id="8c408-114">различные ошибки Hello в этом примере являются:</span><span class="sxs-lookup"><span data-stu-id="8c408-114">hello different faults executed in this example are:</span></span>
 
-* <span data-ttu-id="ba01a-115">RestartNode: ненормальный сбой для моделирования перезагрузки компьютера.</span><span class="sxs-lookup"><span data-stu-id="ba01a-115">RestartNode: Ungraceful fault to simulate a machine restart.</span></span>
-* <span data-ttu-id="ba01a-116">RestartDeployedCodePackage: ненормальный сбой для моделирования аварийного завершения хост-процесса службы.</span><span class="sxs-lookup"><span data-stu-id="ba01a-116">RestartDeployedCodePackage: Ungraceful fault to simulate service host process crashes.</span></span>
-* <span data-ttu-id="ba01a-117">RemoveReplica: нормальный сбой для моделирования удаления реплики.</span><span class="sxs-lookup"><span data-stu-id="ba01a-117">RemoveReplica: Graceful fault to simulate replica removal.</span></span>
-* <span data-ttu-id="ba01a-118">MovePrimary: нормальный сбой для моделирования перемещения реплик, активированного балансировщиком нагрузки Service Fabric.</span><span class="sxs-lookup"><span data-stu-id="ba01a-118">MovePrimary: Graceful fault to simulate replica moves triggered by the Service Fabric load balancer.</span></span>
+* <span data-ttu-id="8c408-115">RestartNode: Перезапустите toosimulate нестандартного сбоя компьютера.</span><span class="sxs-lookup"><span data-stu-id="8c408-115">RestartNode: Ungraceful fault toosimulate a machine restart.</span></span>
+* <span data-ttu-id="8c408-116">RestartDeployedCodePackage: Происходит сбой хост-процесса службы toosimulate нестандартного ошибки.</span><span class="sxs-lookup"><span data-stu-id="8c408-116">RestartDeployedCodePackage: Ungraceful fault toosimulate service host process crashes.</span></span>
+* <span data-ttu-id="8c408-117">RemoveReplica: Удаление реплики toosimulate ошибка постепенного.</span><span class="sxs-lookup"><span data-stu-id="8c408-117">RemoveReplica: Graceful fault toosimulate replica removal.</span></span>
+* <span data-ttu-id="8c408-118">MovePrimary: Реплики toosimulate корректное ошибки перемещает триггеру подсистемой балансировки нагрузки Service Fabric hello.</span><span class="sxs-lookup"><span data-stu-id="8c408-118">MovePrimary: Graceful fault toosimulate replica moves triggered by hello Service Fabric load balancer.</span></span>
 
 ```csharp
-// Add a reference to System.Fabric.Testability.dll and System.Fabric.dll.
+// Add a reference tooSystem.Fabric.Testability.dll and System.Fabric.dll.
 
 using System;
 using System.Fabric;
@@ -46,7 +46,7 @@ class Test
 {
     public static int Main(string[] args)
     {
-        // Replace these strings with the actual version for your cluster and application.
+        // Replace these strings with hello actual version for your cluster and application.
         string clusterConnection = "localhost:19000";
         Uri applicationName = new Uri("fabric:/samples/PersistentToDoListApp");
         Uri serviceName = new Uri("fabric:/samples/PersistentToDoListApp/PersistentToDoListService");
@@ -93,31 +93,31 @@ class Test
     {
         // Create FabricClient with connection and security information here.
         FabricClient fabricClient = new FabricClient(clusterConnection);
-        // Maximum time to wait for a service to stabilize.
+        // Maximum time toowait for a service toostabilize.
         TimeSpan maxServiceStabilizationTime = TimeSpan.FromSeconds(120);
 
-        // How many loops of faults you want to execute.
+        // How many loops of faults you want tooexecute.
         uint testLoopCount = 20;
         Random random = new Random();
 
         for (var i = 0; i < testLoopCount; ++i)
         {
             var workload = SelectRandomValue<ServiceWorkloads>(random);
-            // Start the workload.
+            // Start hello workload.
             var workloadTask = RunWorkloadAsync(workload);
 
-            // While the task is running, induce faults into the service. They can be ungraceful faults like
+            // While hello task is running, induce faults into hello service. They can be ungraceful faults like
             // RestartNode and RestartDeployedCodePackage or graceful faults like RemoveReplica or MovePrimary.
             var fault = SelectRandomValue<ServiceFabricFaults>(random);
 
-            // Create a replica selector, which will select a primary replica from the given service to test.
+            // Create a replica selector, which will select a primary replica from hello given service tootest.
             var replicaSelector = ReplicaSelector.PrimaryOf(PartitionSelector.RandomOf(serviceName));
-            // Run the selected random fault.
+            // Run hello selected random fault.
             await RunFaultAsync(applicationName, fault, replicaSelector, fabricClient);
-            // Validate the health and stability of the service.
+            // Validate hello health and stability of hello service.
             await fabricClient.ServiceManager.ValidateServiceAsync(serviceName, maxServiceStabilizationTime);
 
-            // Wait for the workload to finish successfully.
+            // Wait for hello workload toofinish successfully.
             await workloadTask;
         }
     }
@@ -145,9 +145,9 @@ class Test
     {
         throw new NotImplementedException();
         // This is where you trigger and complete your service workload.
-        // Note that the faults induced while your service workload is running will
-        // fault the primary service. Hence, you will need to reconnect to complete or check
-        // the status of the workload.
+        // Note that hello faults induced while your service workload is running will
+        // fault hello primary service. Hence, you will need tooreconnect toocomplete or check
+        // hello status of hello workload.
     }
 
     private static T SelectRandomValue<T>(Random random)

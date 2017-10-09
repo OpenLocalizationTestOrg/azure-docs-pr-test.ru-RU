@@ -1,0 +1,5 @@
+### <a name="need-some-help"></a><span data-ttu-id="b1894-101">Нужна помощь?</span><span class="sxs-lookup"><span data-stu-id="b1894-101">Need some help?</span></span>
+<span data-ttu-id="b1894-102">Задайте вопросы в hello форумы Azure.</span><span class="sxs-lookup"><span data-stu-id="b1894-102">Post questions in hello Azure forums.</span></span><span data-ttu-id="b1894-103"> - [Обратитесь к MSDN](http://go.microsoft.com/fwlink/?LinkId=780719)</span><span class="sxs-lookup"><span data-stu-id="b1894-103"> - [Visit MSDN](http://go.microsoft.com/fwlink/?LinkId=780719)</span></span>
+
+<span data-ttu-id="b1894-104">Тег вопросы с ключевым словом hello `azure-functions`.</span><span class="sxs-lookup"><span data-stu-id="b1894-104">Tag questions with hello keyword `azure-functions`.</span></span><span data-ttu-id="b1894-105"> - [Посетите переполнение стека](http://stackoverflow.com/questions/tagged/azure-functions)</span><span class="sxs-lookup"><span data-stu-id="b1894-105"> - [Visit Stack Overflow](http://stackoverflow.com/questions/tagged/azure-functions)</span></span>
+

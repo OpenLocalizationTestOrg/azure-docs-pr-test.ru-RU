@@ -1,6 +1,6 @@
 ---
-title: "Создание виртуальных машин (классическая модель) с несколькими сетевыми картами с помощью Azure PowerShell | Документация Майкрософт"
-description: "Узнайте, как создать виртуальные машины (классическая модель) с несколькими сетевыми картами с помощью PowerShell."
+title: "aaaCreate виртуальной Машины (классические) с несколькими сетевыми адаптерами - Azure PowerShell | Документы Microsoft"
+description: "Узнайте, как toocreate виртуальной Машины (классические) с несколькими сетевыми адаптерами, с помощью PowerShell."
 services: virtual-network
 documentationcenter: na
 author: jimdial
@@ -16,42 +16,42 @@ ms.workload: infrastructure-services
 ms.date: 02/02/2016
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 923d4817d96399fc423b0a89cbf88f8d397f1af0
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 90c967929bb418042c3fb7079e0f69246faac53c
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="create-a-vm-classic-with-multiple-nics-using-powershell"></a><span data-ttu-id="38a25-103">Создание виртуальных машин (классическая модель) с несколькими сетевыми интерфейсами с помощью PowerShell</span><span class="sxs-lookup"><span data-stu-id="38a25-103">Create a VM (Classic) with multiple NICs using PowerShell</span></span>
+# <a name="create-a-vm-classic-with-multiple-nics-using-powershell"></a><span data-ttu-id="0ecf3-103">Создание виртуальных машин (классическая модель) с несколькими сетевыми интерфейсами с помощью PowerShell</span><span class="sxs-lookup"><span data-stu-id="0ecf3-103">Create a VM (Classic) with multiple NICs using PowerShell</span></span>
 
 [!INCLUDE [virtual-network-deploy-multinic-classic-selectors-include.md](../../includes/virtual-network-deploy-multinic-classic-selectors-include.md)]
 
-<span data-ttu-id="38a25-104">Можно создать виртуальные машины в Azure и подключить к каждой из них несколько сетевых карт.</span><span class="sxs-lookup"><span data-stu-id="38a25-104">You can create virtual machines (VMs) in Azure and attach multiple network interfaces (NICs) to each of your VMs.</span></span> <span data-ttu-id="38a25-105">Применение нескольких сетевых карт дает возможность разделять типы трафика между сетевыми картами.</span><span class="sxs-lookup"><span data-stu-id="38a25-105">Multiple NICs enable separation of traffic types across NICs.</span></span> <span data-ttu-id="38a25-106">Например, одна сетевая карта может обмениваться данными с Интернетом, а другая — только с внутренними ресурсами, не подключенными к Интернету.</span><span class="sxs-lookup"><span data-stu-id="38a25-106">For example, one NIC might communicate with the Internet, while another communicates only with internal resources not connected to the Internet.</span></span> <span data-ttu-id="38a25-107">Возможность разделения сетевого трафика между несколькими сетевыми картами требуется для работы многих виртуальных сетевых устройств, таких как решения для доставки приложений и оптимизации глобальной сети.</span><span class="sxs-lookup"><span data-stu-id="38a25-107">The ability to separate network traffic across multiple NICs is required for many network virtual appliances, such as application delivery and WAN optimization solutions.</span></span>
+<span data-ttu-id="0ecf3-104">Можно создавать виртуальные машины (ВМ) в Azure и присоединить несколько tooeach сетевых интерфейсов (NIC) виртуальных машин.</span><span class="sxs-lookup"><span data-stu-id="0ecf3-104">You can create virtual machines (VMs) in Azure and attach multiple network interfaces (NICs) tooeach of your VMs.</span></span> <span data-ttu-id="0ecf3-105">Применение нескольких сетевых карт дает возможность разделять типы трафика между сетевыми картами.</span><span class="sxs-lookup"><span data-stu-id="0ecf3-105">Multiple NICs enable separation of traffic types across NICs.</span></span> <span data-ttu-id="0ecf3-106">Например один сетевой Адаптер может обмениваться данными с hello Интернета, пока другой взаимодействует только с внутренним ресурсам, не подключен toohello Интернета.</span><span class="sxs-lookup"><span data-stu-id="0ecf3-106">For example, one NIC might communicate with hello Internet, while another communicates only with internal resources not connected toohello Internet.</span></span> <span data-ttu-id="0ecf3-107">для многих виртуальных сетевых устройств, таких как предоставление приложений и решений ГЛОБАЛЬНОЙ оптимизации требуется Hello возможность tooseparate сетевой трафик по нескольким сетевым картам.</span><span class="sxs-lookup"><span data-stu-id="0ecf3-107">hello ability tooseparate network traffic across multiple NICs is required for many network virtual appliances, such as application delivery and WAN optimization solutions.</span></span>
 
 > [!IMPORTANT]
-> <span data-ttu-id="38a25-108">В Azure предлагаются две модели развертывания для создания ресурсов и работы с ними: [модель Resource Manager и классическая модель](../resource-manager-deployment-model.md).</span><span class="sxs-lookup"><span data-stu-id="38a25-108">Azure has two different deployment models for creating and working with resources:  [Resource Manager and classic](../resource-manager-deployment-model.md).</span></span> <span data-ttu-id="38a25-109">В этой статье рассматривается использование классической модели развертывания.</span><span class="sxs-lookup"><span data-stu-id="38a25-109">This article covers using the classic deployment model.</span></span> <span data-ttu-id="38a25-110">Для большинства новых развертываний Майкрософт рекомендует использовать модель диспетчера ресурсов.</span><span class="sxs-lookup"><span data-stu-id="38a25-110">Microsoft recommends that most new deployments use the Resource Manager model.</span></span> <span data-ttu-id="38a25-111">Действия для модели развертывания с помощью Resource Manager см. в [этой статье](virtual-network-deploy-multinic-arm-ps.md).</span><span class="sxs-lookup"><span data-stu-id="38a25-111">Learn how to perform these steps using the [Resource Manager deployment model](virtual-network-deploy-multinic-arm-ps.md).</span></span>
+> <span data-ttu-id="0ecf3-108">В Azure предлагаются две модели развертывания для создания ресурсов и работы с ними: [модель Resource Manager и классическая модель](../resource-manager-deployment-model.md).</span><span class="sxs-lookup"><span data-stu-id="0ecf3-108">Azure has two different deployment models for creating and working with resources:  [Resource Manager and classic](../resource-manager-deployment-model.md).</span></span> <span data-ttu-id="0ecf3-109">В этой статье описан с помощью hello классической модели развертывания.</span><span class="sxs-lookup"><span data-stu-id="0ecf3-109">This article covers using hello classic deployment model.</span></span> <span data-ttu-id="0ecf3-110">Корпорация Майкрософт рекомендует наиболее новые развертывания модели hello диспетчера ресурсов.</span><span class="sxs-lookup"><span data-stu-id="0ecf3-110">Microsoft recommends that most new deployments use hello Resource Manager model.</span></span> <span data-ttu-id="0ecf3-111">Узнайте, как tooperform следующие действия с помощью hello [модели развертывания диспетчера ресурсов](virtual-network-deploy-multinic-arm-ps.md).</span><span class="sxs-lookup"><span data-stu-id="0ecf3-111">Learn how tooperform these steps using hello [Resource Manager deployment model](virtual-network-deploy-multinic-arm-ps.md).</span></span>
 
 [!INCLUDE [virtual-network-deploy-multinic-scenario-include.md](../../includes/virtual-network-deploy-multinic-scenario-include.md)]
 
-<span data-ttu-id="38a25-112">В приведенных ниже действиях используются следующие группы ресурсов: *IaaSStory* для веб-серверов и *IaaSStory-BackEnd* для серверов базы данных.</span><span class="sxs-lookup"><span data-stu-id="38a25-112">The following steps use a resource group named *IaaSStory* for the WEB servers and a resource group named *IaaSStory-BackEnd* for the DB servers.</span></span>
+<span data-ttu-id="0ecf3-112">Hello Далее используется группа ресурсов с именем *IaaSStory* hello веб-серверов и группу ресурсов с именем *IaaSStory серверной* hello DB серверов.</span><span class="sxs-lookup"><span data-stu-id="0ecf3-112">hello following steps use a resource group named *IaaSStory* for hello WEB servers and a resource group named *IaaSStory-BackEnd* for hello DB servers.</span></span>
 
-## <a name="prerequisites"></a><span data-ttu-id="38a25-113">Предварительные требования</span><span class="sxs-lookup"><span data-stu-id="38a25-113">Prerequisites</span></span>
+## <a name="prerequisites"></a><span data-ttu-id="0ecf3-113">Предварительные требования</span><span class="sxs-lookup"><span data-stu-id="0ecf3-113">Prerequisites</span></span>
 
-<span data-ttu-id="38a25-114">Перед созданием серверов базы данных необходимо создать группу ресурсов *IaaSStory* со всеми ресурсами, необходимыми для этого сценария.</span><span class="sxs-lookup"><span data-stu-id="38a25-114">Before you can create the DB servers, you need to create the *IaaSStory* resource group with all the necessary resources for this scenario.</span></span> <span data-ttu-id="38a25-115">Чтобы создать эти ресурсы, выполните приведенные ниже действия.</span><span class="sxs-lookup"><span data-stu-id="38a25-115">To create these resources, complete the steps that follow.</span></span> <span data-ttu-id="38a25-116">Создайте виртуальную сеть, следуя инструкциям в [этой статье](virtual-networks-create-vnet-classic-netcfg-ps.md).</span><span class="sxs-lookup"><span data-stu-id="38a25-116">Create a virtual network by following the steps in the [Create a virtual network](virtual-networks-create-vnet-classic-netcfg-ps.md) article.</span></span>
+<span data-ttu-id="0ecf3-114">Перед созданием hello DB серверы, необходимо toocreate hello *IaaSStory* группы ресурсов со всеми ресурсами hello необходимые для этого сценария.</span><span class="sxs-lookup"><span data-stu-id="0ecf3-114">Before you can create hello DB servers, you need toocreate hello *IaaSStory* resource group with all hello necessary resources for this scenario.</span></span> <span data-ttu-id="0ecf3-115">toocreate эти ресурсы, полный Здравствуйте, описанных ниже.</span><span class="sxs-lookup"><span data-stu-id="0ecf3-115">toocreate these resources, complete hello steps that follow.</span></span> <span data-ttu-id="0ecf3-116">Создание виртуальной сети с помощью инструкции hello в hello [создать виртуальную сеть](virtual-networks-create-vnet-classic-netcfg-ps.md) статьи.</span><span class="sxs-lookup"><span data-stu-id="0ecf3-116">Create a virtual network by following hello steps in hello [Create a virtual network](virtual-networks-create-vnet-classic-netcfg-ps.md) article.</span></span>
 
 [!INCLUDE [azure-ps-prerequisites-include.md](../../includes/azure-ps-prerequisites-include.md)]
 
-## <a name="create-the-back-end-vms"></a><span data-ttu-id="38a25-117">Создание внутренних виртуальных машин</span><span class="sxs-lookup"><span data-stu-id="38a25-117">Create the back-end VMs</span></span>
-<span data-ttu-id="38a25-118">Внутренние виртуальные машины зависят от создания следующих ресурсов:</span><span class="sxs-lookup"><span data-stu-id="38a25-118">The back-end VMs depend on the creation of the following resources:</span></span>
+## <a name="create-hello-back-end-vms"></a><span data-ttu-id="0ecf3-117">Создать hello внутренней виртуальные машины</span><span class="sxs-lookup"><span data-stu-id="0ecf3-117">Create hello back-end VMs</span></span>
+<span data-ttu-id="0ecf3-118">Hello ВМ внутренней зависят от создания hello hello следующие ресурсы:</span><span class="sxs-lookup"><span data-stu-id="0ecf3-118">hello back-end VMs depend on hello creation of hello following resources:</span></span>
 
-* <span data-ttu-id="38a25-119">**Внутренняя подсеть**.</span><span class="sxs-lookup"><span data-stu-id="38a25-119">**Backend subnet**.</span></span> <span data-ttu-id="38a25-120">Чтобы разделить трафик, серверы базы данных будут входить в отдельную подсеть.</span><span class="sxs-lookup"><span data-stu-id="38a25-120">The database servers will be part of a separate subnet, to segregate traffic.</span></span> <span data-ttu-id="38a25-121">Приведенный ниже сценарий предполагает наличие этой подсети в виртуальной сети с именем *WTestVnet*.</span><span class="sxs-lookup"><span data-stu-id="38a25-121">The script below expects this subnet to exist in a vnet named *WTestVnet*.</span></span>
-* <span data-ttu-id="38a25-122">**Учетная запись хранения для дисков данных**.</span><span class="sxs-lookup"><span data-stu-id="38a25-122">**Storage account for data disks**.</span></span> <span data-ttu-id="38a25-123">Для повышения производительности для дисков данных на серверах баз данных будет использоваться технология твердотельного накопителя (SSD), которая требует наличия учетной записи хранения класса Premium.</span><span class="sxs-lookup"><span data-stu-id="38a25-123">For better performance, the data disks on the database servers will use solid state drive (SSD) technology, which requires a premium storage account.</span></span> <span data-ttu-id="38a25-124">Расположение Azure, в которое выполняется развертывание, должно поддерживать хранилище класса Premium.</span><span class="sxs-lookup"><span data-stu-id="38a25-124">Make sure the Azure location you deploy to support premium storage.</span></span>
-* <span data-ttu-id="38a25-125">**Группа доступности**.</span><span class="sxs-lookup"><span data-stu-id="38a25-125">**Availability set**.</span></span> <span data-ttu-id="38a25-126">Все серверы баз данных будут добавлены в одну группу доступности, чтобы гарантировать, что как минимум одна из виртуальных машин будет запущена и доступна во время обслуживания.</span><span class="sxs-lookup"><span data-stu-id="38a25-126">All database servers will be added to a single availability set, to ensure at least one of the VMs is up and running during maintenance.</span></span>
+* <span data-ttu-id="0ecf3-119">**Внутренняя подсеть**.</span><span class="sxs-lookup"><span data-stu-id="0ecf3-119">**Backend subnet**.</span></span> <span data-ttu-id="0ecf3-120">серверы баз данных Hello будет частью отдельной подсети toosegregate трафика.</span><span class="sxs-lookup"><span data-stu-id="0ecf3-120">hello database servers will be part of a separate subnet, toosegregate traffic.</span></span> <span data-ttu-id="0ecf3-121">Приведенный ниже сценарий Hello ожидает tooexist этой подсети в виртуальной сети с именем *WTestVnet*.</span><span class="sxs-lookup"><span data-stu-id="0ecf3-121">hello script below expects this subnet tooexist in a vnet named *WTestVnet*.</span></span>
+* <span data-ttu-id="0ecf3-122">**Учетная запись хранения для дисков данных**.</span><span class="sxs-lookup"><span data-stu-id="0ecf3-122">**Storage account for data disks**.</span></span> <span data-ttu-id="0ecf3-123">Для повышения производительности hello диски с данными на серверах баз данных hello будет использовать технологию твердотельный накопитель (SSD), которая требуется учетная запись хранения premium.</span><span class="sxs-lookup"><span data-stu-id="0ecf3-123">For better performance, hello data disks on hello database servers will use solid state drive (SSD) technology, which requires a premium storage account.</span></span> <span data-ttu-id="0ecf3-124">Убедитесь, что hello расположение Azure, развертывание toosupport хранилище premium.</span><span class="sxs-lookup"><span data-stu-id="0ecf3-124">Make sure hello Azure location you deploy toosupport premium storage.</span></span>
+* <span data-ttu-id="0ecf3-125">**Группа доступности**.</span><span class="sxs-lookup"><span data-stu-id="0ecf3-125">**Availability set**.</span></span> <span data-ttu-id="0ecf3-126">Все серверы баз данных будет добавлен tooa одну группу доступности, хотя бы один из виртуальных машин hello tooensure работает и запущена во время обслуживания.</span><span class="sxs-lookup"><span data-stu-id="0ecf3-126">All database servers will be added tooa single availability set, tooensure at least one of hello VMs is up and running during maintenance.</span></span>
 
-### <a name="step-1---start-your-script"></a><span data-ttu-id="38a25-127">Шаг 1. Запуск сценария</span><span class="sxs-lookup"><span data-stu-id="38a25-127">Step 1 - Start your script</span></span>
-<span data-ttu-id="38a25-128">Полный сценарий PowerShell можно скачать [здесь](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/IaaS-Story/11-MultiNIC/classic/virtual-network-deploy-multinic-classic-ps.ps1).</span><span class="sxs-lookup"><span data-stu-id="38a25-128">You can download the full PowerShell script used [here](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/IaaS-Story/11-MultiNIC/classic/virtual-network-deploy-multinic-classic-ps.ps1).</span></span> <span data-ttu-id="38a25-129">Чтобы изменить сценарий для работы в вашей среде, сделайте следующее:</span><span class="sxs-lookup"><span data-stu-id="38a25-129">Follow the steps below to change the script to work in your environment.</span></span>
+### <a name="step-1---start-your-script"></a><span data-ttu-id="0ecf3-127">Шаг 1. Запуск сценария</span><span class="sxs-lookup"><span data-stu-id="0ecf3-127">Step 1 - Start your script</span></span>
+<span data-ttu-id="0ecf3-128">Вы можете загрузить hello использовать полный скрипт PowerShell [здесь](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/IaaS-Story/11-MultiNIC/classic/virtual-network-deploy-multinic-classic-ps.ps1).</span><span class="sxs-lookup"><span data-stu-id="0ecf3-128">You can download hello full PowerShell script used [here](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/IaaS-Story/11-MultiNIC/classic/virtual-network-deploy-multinic-classic-ps.ps1).</span></span> <span data-ttu-id="0ecf3-129">Выполните действия hello ниже toowork сценария toochange hello в вашей среде.</span><span class="sxs-lookup"><span data-stu-id="0ecf3-129">Follow hello steps below toochange hello script toowork in your environment.</span></span>
 
-1. <span data-ttu-id="38a25-130">Измените значения следующих переменных в зависимости от существующей группы ресурсов, развернутой в соответствии с инструкциями в разделе [Предварительные требования](#Prerequisites)выше.</span><span class="sxs-lookup"><span data-stu-id="38a25-130">Change the values of the variables below based on your existing resource group deployed above in [Prerequisites](#Prerequisites).</span></span>
+1. <span data-ttu-id="0ecf3-130">Изменить значения hello hello переменных ниже в зависимости от вашего развертывания выше в существующую группу ресурсов [необходимых компонентов](#Prerequisites).</span><span class="sxs-lookup"><span data-stu-id="0ecf3-130">Change hello values of hello variables below based on your existing resource group deployed above in [Prerequisites](#Prerequisites).</span></span>
 
     ```powershell
     $location              = "West US"
@@ -59,7 +59,7 @@ ms.lasthandoff: 08/03/2017
     $backendSubnetName     = "BackEnd"
     ```
 
-2. <span data-ttu-id="38a25-131">Измените значения следующих переменных на основе значений, которые нужно использовать для внутреннего развертывания.</span><span class="sxs-lookup"><span data-stu-id="38a25-131">Change the values of the variables below based on the values you want to use for your backend deployment.</span></span>
+2. <span data-ttu-id="0ecf3-131">Изменить значения hello hello следующих переменных на основе значений hello нужно toouse для развертывания базы данных.</span><span class="sxs-lookup"><span data-stu-id="0ecf3-131">Change hello values of hello variables below based on hello values you want toouse for your backend deployment.</span></span>
 
     ```powershell
     $backendCSName         = "IaaSStory-Backend"
@@ -73,22 +73,22 @@ ms.lasthandoff: 08/03/2017
     $numberOfVMs           = 2
     ```
 
-### <a name="step-2---create-necessary-resources-for-your-vms"></a><span data-ttu-id="38a25-132">Шаг 2. Создание необходимых ресурсов для виртуальных машин</span><span class="sxs-lookup"><span data-stu-id="38a25-132">Step 2 - Create necessary resources for your VMs</span></span>
-<span data-ttu-id="38a25-133">Необходимо создать облачную службу и учетную запись хранения для дисков данных для всех виртуальных машин.</span><span class="sxs-lookup"><span data-stu-id="38a25-133">You need to create a new cloud service and a storage account for the data disks for all VMs.</span></span> <span data-ttu-id="38a25-134">Кроме того, для виртуальных машин необходимо указать образ и учетную запись локального администратора.</span><span class="sxs-lookup"><span data-stu-id="38a25-134">You also need to specify an image, and a local administrator account for the VMs.</span></span> <span data-ttu-id="38a25-135">Чтобы создать эти ресурсы, выполните следующие действия:</span><span class="sxs-lookup"><span data-stu-id="38a25-135">To create these resources, complete the following steps:</span></span>
+### <a name="step-2---create-necessary-resources-for-your-vms"></a><span data-ttu-id="0ecf3-132">Шаг 2. Создание необходимых ресурсов для виртуальных машин</span><span class="sxs-lookup"><span data-stu-id="0ecf3-132">Step 2 - Create necessary resources for your VMs</span></span>
+<span data-ttu-id="0ecf3-133">Необходимо toocreate новой облачной службы и хранилища учетной записи для hello дисков данных для всех виртуальных машин.</span><span class="sxs-lookup"><span data-stu-id="0ecf3-133">You need toocreate a new cloud service and a storage account for hello data disks for all VMs.</span></span> <span data-ttu-id="0ecf3-134">Необходимо также toospecify изображения, а учетная запись локального администратора для hello виртуальных машин.</span><span class="sxs-lookup"><span data-stu-id="0ecf3-134">You also need toospecify an image, and a local administrator account for hello VMs.</span></span> <span data-ttu-id="0ecf3-135">завершить эти ресурсы toocreate hello следующие действия:</span><span class="sxs-lookup"><span data-stu-id="0ecf3-135">toocreate these resources, complete hello following steps:</span></span>
 
-1. <span data-ttu-id="38a25-136">Создайте облачную службу.</span><span class="sxs-lookup"><span data-stu-id="38a25-136">Create a new cloud service.</span></span>
+1. <span data-ttu-id="0ecf3-136">Создайте облачную службу.</span><span class="sxs-lookup"><span data-stu-id="0ecf3-136">Create a new cloud service.</span></span>
 
     ```powershell
     New-AzureService -ServiceName $backendCSName -Location $location
     ```
 
-2. <span data-ttu-id="38a25-137">Создайте учетную запись хранения класса Premium.</span><span class="sxs-lookup"><span data-stu-id="38a25-137">Create a new premium storage account.</span></span>
+2. <span data-ttu-id="0ecf3-137">Создайте учетную запись хранения класса Premium.</span><span class="sxs-lookup"><span data-stu-id="0ecf3-137">Create a new premium storage account.</span></span>
 
     ```powershell
     New-AzureStorageAccount -StorageAccountName $prmStorageAccountName `
     -Location $location -Type Premium_LRS
     ```
-3. <span data-ttu-id="38a25-138">Задайте созданную ранее учетную запись хранения в качестве текущей учетной записи хранения для подписки.</span><span class="sxs-lookup"><span data-stu-id="38a25-138">Set the storage account created above as the current storage account for your subscription.</span></span>
+3. <span data-ttu-id="0ecf3-138">Набор hello учетной записи хранения создана выше как hello текущей учетной записи хранения для вашей подписки.</span><span class="sxs-lookup"><span data-stu-id="0ecf3-138">Set hello storage account created above as hello current storage account for your subscription.</span></span>
 
     ```powershell
     $subscription = Get-AzureSubscription | where {$_.IsCurrent -eq $true}  
@@ -96,7 +96,7 @@ ms.lasthandoff: 08/03/2017
     -CurrentStorageAccountName $prmStorageAccountName
     ```
 
-4. <span data-ttu-id="38a25-139">Выберите образ виртуальной машины.</span><span class="sxs-lookup"><span data-stu-id="38a25-139">Select an image for the VM.</span></span>
+4. <span data-ttu-id="0ecf3-139">Выберите изображение для hello виртуальной Машины.</span><span class="sxs-lookup"><span data-stu-id="0ecf3-139">Select an image for hello VM.</span></span>
 
     ```powershell
     $image = Get-AzureVMImage `
@@ -105,22 +105,22 @@ ms.lasthandoff: 08/03/2017
     | select -ExpandProperty ImageName -First 1
     ```
 
-5. <span data-ttu-id="38a25-140">Задайте учетные данные пароля учетной записи локального администратора.</span><span class="sxs-lookup"><span data-stu-id="38a25-140">Set the local administrator account credentials.</span></span>
+5. <span data-ttu-id="0ecf3-140">Задайте учетные данные учетной записи локального администратора hello.</span><span class="sxs-lookup"><span data-stu-id="0ecf3-140">Set hello local administrator account credentials.</span></span>
 
     ```powershell
     $cred = Get-Credential -Message "Enter username and password for local admin account"
     ```
 
-### <a name="step-3---create-vms"></a><span data-ttu-id="38a25-141">Шаг 3. Создание виртуальных машин</span><span class="sxs-lookup"><span data-stu-id="38a25-141">Step 3 - Create VMs</span></span>
-<span data-ttu-id="38a25-142">Необходимо использовать цикл, чтобы создать необходимое количество виртуальных машин, и создать в нем необходимые сетевые карты и виртуальные машины.</span><span class="sxs-lookup"><span data-stu-id="38a25-142">You need to use a loop to create as many VMs as you want, and create the necessary NICs and VMs within the loop.</span></span> <span data-ttu-id="38a25-143">Чтобы создать сетевые карты и виртуальные машины, сделайте следующее:</span><span class="sxs-lookup"><span data-stu-id="38a25-143">To create the NICs and VMs, execute the following steps.</span></span>
+### <a name="step-3---create-vms"></a><span data-ttu-id="0ecf3-141">Шаг 3. Создание виртуальных машин</span><span class="sxs-lookup"><span data-stu-id="0ecf3-141">Step 3 - Create VMs</span></span>
+<span data-ttu-id="0ecf3-142">Необходимо toouse toocreate цикла, как много виртуальных машин, а создать hello необходимые сетевые адаптеры и виртуальные машины в цикле hello.</span><span class="sxs-lookup"><span data-stu-id="0ecf3-142">You need toouse a loop toocreate as many VMs as you want, and create hello necessary NICs and VMs within hello loop.</span></span> <span data-ttu-id="0ecf3-143">hello toocreate сетевых адаптеров и виртуальных машин, выполните hello следующие шаги.</span><span class="sxs-lookup"><span data-stu-id="0ecf3-143">toocreate hello NICs and VMs, execute hello following steps.</span></span>
 
-1. <span data-ttu-id="38a25-144">Запустите цикл `for` для повтора команды, которая позволяет создать виртуальную машину и две сетевые карты необходимое количество раз на основе значения переменной `$numberOfVMs`.</span><span class="sxs-lookup"><span data-stu-id="38a25-144">Start a `for` loop to repeat the commands to create a VM and two NICs as many times as necessary, based on the value of the `$numberOfVMs` variable.</span></span>
+1. <span data-ttu-id="0ecf3-144">Запуск `for` hello toorepeat цикла команды toocreate виртуальной Машины, а также две сетевые платы как столько раз, сколько необходимо, на основе hello значения hello `$numberOfVMs` переменной.</span><span class="sxs-lookup"><span data-stu-id="0ecf3-144">Start a `for` loop toorepeat hello commands toocreate a VM and two NICs as many times as necessary, based on hello value of hello `$numberOfVMs` variable.</span></span>
 
     ```powershell
     for ($suffixNumber = 1; $suffixNumber -le $numberOfVMs; $suffixNumber++){
     ```
 
-2. <span data-ttu-id="38a25-145">Создайте объект `VMConfig`, указывающий образ, размер и группу доступности для виртуальной машины.</span><span class="sxs-lookup"><span data-stu-id="38a25-145">Create a `VMConfig` object specifying the image, size, and availability set for the VM.</span></span>
+2. <span data-ttu-id="0ecf3-145">Создание `VMConfig` объект, указывающий hello изображение, размер и доступности для hello виртуальной Машины.</span><span class="sxs-lookup"><span data-stu-id="0ecf3-145">Create a `VMConfig` object specifying hello image, size, and availability set for hello VM.</span></span>
 
     ```powershell
     $vmName = $vmNamePrefix + $suffixNumber
@@ -130,7 +130,7 @@ ms.lasthandoff: 08/03/2017
         -AvailabilitySetName $avSetName
     ```
 
-3. <span data-ttu-id="38a25-146">Подготовьте виртуальную машину в качестве виртуальной машины Windows.</span><span class="sxs-lookup"><span data-stu-id="38a25-146">Provision the VM as a Windows VM.</span></span>
+3. <span data-ttu-id="0ecf3-146">Здравствуйте, подготовить виртуальную Машину в качестве виртуальной Машины Windows.</span><span class="sxs-lookup"><span data-stu-id="0ecf3-146">Provision hello VM as a Windows VM.</span></span>
 
     ```powershell
     Add-AzureProvisioningConfig -VM $vmConfig -Windows `
@@ -138,14 +138,14 @@ ms.lasthandoff: 08/03/2017
         -Password $cred.GetNetworkCredential().Password
     ```
 
-4. <span data-ttu-id="38a25-147">Задайте сетевую карту по умолчанию и назначьте ей статический IP-адрес.</span><span class="sxs-lookup"><span data-stu-id="38a25-147">Set the default NIC and assign it a static IP address.</span></span>
+4. <span data-ttu-id="0ecf3-147">Установите сетевой Адаптер по умолчанию hello и назначьте его статический IP-адрес.</span><span class="sxs-lookup"><span data-stu-id="0ecf3-147">Set hello default NIC and assign it a static IP address.</span></span>
 
     ```powershell
     Set-AzureSubnet         -SubnetNames $backendSubnetName -VM $vmConfig
     Set-AzureStaticVNetIP   -IPAddress ($ipAddressPrefix+$suffixNumber+3) -VM $vmConfig
     ```
 
-5. <span data-ttu-id="38a25-148">Добавьте вторую сетевую карту для каждой виртуальной машины.</span><span class="sxs-lookup"><span data-stu-id="38a25-148">Add a second NIC for each VM.</span></span>
+5. <span data-ttu-id="0ecf3-148">Добавьте вторую сетевую карту для каждой виртуальной машины.</span><span class="sxs-lookup"><span data-stu-id="0ecf3-148">Add a second NIC for each VM.</span></span>
 
     ```powershell
     Add-AzureNetworkInterfaceConfig -Name ("RemoteAccessNIC"+$suffixNumber) `
@@ -154,7 +154,7 @@ ms.lasthandoff: 08/03/2017
     -VM $vmConfig
     ```
 
-6. <span data-ttu-id="38a25-149">Создайте по два диска данных для каждой виртуальной машины.</span><span class="sxs-lookup"><span data-stu-id="38a25-149">Create to data disks for each VM.</span></span>
+6. <span data-ttu-id="0ecf3-149">Создание дисков toodata для каждой виртуальной Машины.</span><span class="sxs-lookup"><span data-stu-id="0ecf3-149">Create toodata disks for each VM.</span></span>
 
     ```powershell
     $dataDisk1Name = $vmName + "-" + $dataDiskSuffix + "-1"    
@@ -170,7 +170,7 @@ ms.lasthandoff: 08/03/2017
     -LUN 1
     ```
 
-7. <span data-ttu-id="38a25-150">Создайте каждую виртуальную машину и завершите цикл.</span><span class="sxs-lookup"><span data-stu-id="38a25-150">Create each VM, and end the loop.</span></span>
+7. <span data-ttu-id="0ecf3-150">Создайте каждой виртуальной Машины и hello конец цикла.</span><span class="sxs-lookup"><span data-stu-id="0ecf3-150">Create each VM, and end hello loop.</span></span>
 
     ```powershell
     New-AzureVM -VM $vmConfig `
@@ -180,10 +180,10 @@ ms.lasthandoff: 08/03/2017
     }
     ```
 
-### <a name="step-4---run-the-script"></a><span data-ttu-id="38a25-151">Шаг 4. Запуск сценария</span><span class="sxs-lookup"><span data-stu-id="38a25-151">Step 4 - Run the script</span></span>
-<span data-ttu-id="38a25-152">Теперь, когда вы скачали и изменили сценарий в соответствии со своими потребностями, запустите сценарий для создания виртуальных машин внутренней базы данных с несколькими сетевыми картами.</span><span class="sxs-lookup"><span data-stu-id="38a25-152">Now that you downloaded and changed the script based on your needs, runt he script to create the back end database VMs with multiple NICs.</span></span>
+### <a name="step-4---run-hello-script"></a><span data-ttu-id="0ecf3-151">Шаг 4. выполнение сценариев hello</span><span class="sxs-lookup"><span data-stu-id="0ecf3-151">Step 4 - Run hello script</span></span>
+<span data-ttu-id="0ecf3-152">Теперь, когда вы загрузили и изменить скрипт hello зависимости от потребностей, runt он скрипт toocreate hello базой данных виртуальных машин с несколькими сетевыми адаптерами.</span><span class="sxs-lookup"><span data-stu-id="0ecf3-152">Now that you downloaded and changed hello script based on your needs, runt he script toocreate hello back end database VMs with multiple NICs.</span></span>
 
-1. <span data-ttu-id="38a25-153">Сохраните сценарий и запустите его из командной строки **PowerShell** или **интегрированной среды сценариев PowerShell**.</span><span class="sxs-lookup"><span data-stu-id="38a25-153">Save your script and run it from the **PowerShell** command prompt, or **PowerShell ISE**.</span></span> <span data-ttu-id="38a25-154">Вы увидите начальный вывод сценария, как показано ниже.</span><span class="sxs-lookup"><span data-stu-id="38a25-154">You will see the initial output, as shown below.</span></span>
+1. <span data-ttu-id="0ecf3-153">Сохраните сценарий и запустите его из hello **PowerShell** командной строки или **интегрированной среды Сценариев PowerShell**.</span><span class="sxs-lookup"><span data-stu-id="0ecf3-153">Save your script and run it from hello **PowerShell** command prompt, or **PowerShell ISE**.</span></span> <span data-ttu-id="0ecf3-154">Вы увидите выходные данные начальной hello, как показано ниже.</span><span class="sxs-lookup"><span data-stu-id="0ecf3-154">You will see hello initial output, as shown below.</span></span>
 
         OperationDescription    OperationId                          OperationStatus
 
@@ -191,7 +191,7 @@ ms.lasthandoff: 08/03/2017
         New-AzureStorageAccount xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx Succeeded
         
         WARNING: No deployment found in service: 'IaaSStory-Backend'.
-2. <span data-ttu-id="38a25-155">Укажите учетные данные и нажмите кнопку **ОК**.</span><span class="sxs-lookup"><span data-stu-id="38a25-155">Fill out the information needed in the credentials prompt and click **OK**.</span></span> <span data-ttu-id="38a25-156">Отобразится результат, показанный ниже.</span><span class="sxs-lookup"><span data-stu-id="38a25-156">The output below is returned.</span></span>
+2. <span data-ttu-id="0ecf3-155">Заполните hello сведения, необходимые в hello запрос учетных данных и нажмите кнопку **ОК**.</span><span class="sxs-lookup"><span data-stu-id="0ecf3-155">Fill out hello information needed in hello credentials prompt and click **OK**.</span></span> <span data-ttu-id="0ecf3-156">Вывод Hello ниже возвращается.</span><span class="sxs-lookup"><span data-stu-id="0ecf3-156">hello output below is returned.</span></span>
 
         New-AzureVM             xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx Succeeded
         New-AzureVM             xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx Succeeded

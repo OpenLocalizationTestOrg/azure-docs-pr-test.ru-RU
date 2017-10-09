@@ -1,3 +1,3 @@
 > [!IMPORTANT]
-> <span data-ttu-id="871ac-101">Центр Интернета вещей будет общедоступным в качестве конечной точки DNS, поэтому не используйте конфиденциальную информацию, когда присваиваете ему имя.</span><span class="sxs-lookup"><span data-stu-id="871ac-101">The IoT hub will be publicly discoverable as a DNS endpoint, so make sure to avoid any sensitive information while naming it.</span></span>
+> <span data-ttu-id="e2437-101">Центр IoT Hello будет публично обнаруживаемый как конечную точку DNS, поэтому следует убедиться, что tooavoid важную информацию при назначении имен его.</span><span class="sxs-lookup"><span data-stu-id="e2437-101">hello IoT hub will be publicly discoverable as a DNS endpoint, so make sure tooavoid any sensitive information while naming it.</span></span>
 >

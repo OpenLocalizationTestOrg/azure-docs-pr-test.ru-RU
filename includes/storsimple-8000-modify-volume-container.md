@@ -1,32 +1,32 @@
 <!--author=alkohli last changed: 07/05/2017-->
 
 > [!NOTE] 
-> <span data-ttu-id="be906-101">После создания контейнера томов вы не сможете изменить связанные с ним параметры шифрования и учетные данные учетной записи хранения.</span><span class="sxs-lookup"><span data-stu-id="be906-101">You cannot modify the encryption settings and the storage account credentials associated with a volume container after it is created.</span></span>
+> <span data-ttu-id="ddf7d-101">Невозможно изменить параметры шифрования hello и учетные данные, связанные с контейнером томов, после создания учетной записи хранилища hello.</span><span class="sxs-lookup"><span data-stu-id="ddf7d-101">You cannot modify hello encryption settings and hello storage account credentials associated with a volume container after it is created.</span></span>
 
-#### <a name="to-modify-a-volume-container"></a><span data-ttu-id="be906-102">Изменение контейнера томов</span><span class="sxs-lookup"><span data-stu-id="be906-102">To modify a volume container</span></span>
+#### <a name="toomodify-a-volume-container"></a><span data-ttu-id="ddf7d-102">toomodify контейнер тома</span><span class="sxs-lookup"><span data-stu-id="ddf7d-102">toomodify a volume container</span></span>
 
-1. <span data-ttu-id="be906-103">В службе диспетчера устройств StorSimple выберите **Управление > Контейнеры томов**.</span><span class="sxs-lookup"><span data-stu-id="be906-103">Go to your StorSimple Device Manager service and then navigate to **Management > Volume containers**.</span></span>
+1. <span data-ttu-id="ddf7d-103">Перейдите в службе диспетчера StorSimple устройство tooyour, а затем слишком**управления > контейнеры томов**.</span><span class="sxs-lookup"><span data-stu-id="ddf7d-103">Go tooyour StorSimple Device Manager service and then navigate too**Management > Volume containers**.</span></span>
 
-2. <span data-ttu-id="be906-104">В таблице со списком контейнеров томов выберите тот, который требуется изменить.</span><span class="sxs-lookup"><span data-stu-id="be906-104">From the tabular list of volume containers, select the volume container you want to modify.</span></span> <span data-ttu-id="be906-105">На странице **Устройства** выберите устройство, дважды щелкните его и перейдите на вкладку **Контейнеры томов**.</span><span class="sxs-lookup"><span data-stu-id="be906-105">On the **Devices** page, select the device, double-click it, and then click the **Volume containers** tab.</span></span>
+2. <span data-ttu-id="ddf7d-104">Выберите контейнер томов hello требуется toomodify hello табличный список контейнеров томов.</span><span class="sxs-lookup"><span data-stu-id="ddf7d-104">From hello tabular list of volume containers, select hello volume container you want toomodify.</span></span> <span data-ttu-id="ddf7d-105">На hello **устройств** страницы, выберите устройство hello, дважды щелкните его и нажмите кнопку hello **контейнеры томов** вкладки.</span><span class="sxs-lookup"><span data-stu-id="ddf7d-105">On hello **Devices** page, select hello device, double-click it, and then click hello **Volume containers** tab.</span></span>
 
-2. <span data-ttu-id="be906-106">В таблице со списком контейнеров томов выберите тот, который требуется изменить.</span><span class="sxs-lookup"><span data-stu-id="be906-106">In the tabular listing of the volume containers, select the volume container that you want to modify.</span></span> <span data-ttu-id="be906-107">На панели команд в открывшейся колонке щелкните **Изменить**.</span><span class="sxs-lookup"><span data-stu-id="be906-107">In the blade that opens up, click **Modify** from the command bar.</span></span>
+2. <span data-ttu-id="ddf7d-106">В hello табличном списке контейнеров томов hello, выберите контейнер томов hello, что требуется toomodify.</span><span class="sxs-lookup"><span data-stu-id="ddf7d-106">In hello tabular listing of hello volume containers, select hello volume container that you want toomodify.</span></span> <span data-ttu-id="ddf7d-107">В колонке hello открывающемся щелкните **изменить** hello командной строке.</span><span class="sxs-lookup"><span data-stu-id="ddf7d-107">In hello blade that opens up, click **Modify** from hello command bar.</span></span>
 
     ![Изменение контейнера томов](./media/storsimple-8000-modify-volume-container/modify-vol-container1.png)
 
-3. <span data-ttu-id="be906-109">В колонке **Изменение контейнера томов** выполните следующие действия:</span><span class="sxs-lookup"><span data-stu-id="be906-109">In the **Modify Volume container** blade, do the following steps:</span></span>
+3. <span data-ttu-id="ddf7d-109">В hello **изменение контейнера томов** колонке hello следующие действия:</span><span class="sxs-lookup"><span data-stu-id="ddf7d-109">In hello **Modify Volume container** blade, do hello following steps:</span></span>
    
-   1. <span data-ttu-id="be906-110">После указания имени, ключа шифрования и учетной записи хранения, связанных с контейнером томов, изменить эти значения невозможно.</span><span class="sxs-lookup"><span data-stu-id="be906-110">The name, encryption key, and storage account associated with the volume container cannot be changed after they are specified.</span></span> <span data-ttu-id="be906-111">Измените соответствующий параметр пропускной способности.</span><span class="sxs-lookup"><span data-stu-id="be906-111">Change the associated bandwidth setting.</span></span>
+   1. <span data-ttu-id="ddf7d-110">Hello имя, ключ шифрования и учетную запись хранения, связанные с контейнером томов hello не может изменяться после они указаны.</span><span class="sxs-lookup"><span data-stu-id="ddf7d-110">hello name, encryption key, and storage account associated with hello volume container cannot be changed after they are specified.</span></span> <span data-ttu-id="ddf7d-111">Изменение hello связанное значение пропускной способности.</span><span class="sxs-lookup"><span data-stu-id="ddf7d-111">Change hello associated bandwidth setting.</span></span>
       
        ![Изменение параметра пропускной способности](./media/storsimple-8000-modify-volume-container/modify-vol-container2.png)
 
-   2.  <span data-ttu-id="be906-113">Нажмите кнопку **ОК**.</span><span class="sxs-lookup"><span data-stu-id="be906-113">Click **OK**.</span></span>
-4. <span data-ttu-id="be906-114">На следующей странице диалогового окна **Изменение контейнера томов** выполните следующие действия:</span><span class="sxs-lookup"><span data-stu-id="be906-114">In the next page of the **Modify Volume Container** dialog box:</span></span>
+   2.  <span data-ttu-id="ddf7d-113">Нажмите кнопку **ОК**.</span><span class="sxs-lookup"><span data-stu-id="ddf7d-113">Click **OK**.</span></span>
+4. <span data-ttu-id="ddf7d-114">В следующей страницы приветствия hello **изменения контейнера томов** диалоговое окно:</span><span class="sxs-lookup"><span data-stu-id="ddf7d-114">In hello next page of hello **Modify Volume Container** dialog box:</span></span>
    
-   1. <span data-ttu-id="be906-115">Выберите из раскрывающегося списка шаблон пропускной способности.</span><span class="sxs-lookup"><span data-stu-id="be906-115">From the drop-down list, choose an existing bandwidth template.</span></span>
-   2. <span data-ttu-id="be906-116">Проверьте параметры расписания для указанного шаблона.</span><span class="sxs-lookup"><span data-stu-id="be906-116">Review the schedule settings for the specified bandwidth template.</span></span>
-   3. <span data-ttu-id="be906-117">Нажмите кнопку **Сохранить** и подтвердите изменения.</span><span class="sxs-lookup"><span data-stu-id="be906-117">Click **Save** and confirm the changes.</span></span>
+   1. <span data-ttu-id="ddf7d-115">Из раскрывающегося списка hello выберите существующий шаблон пропускной способности.</span><span class="sxs-lookup"><span data-stu-id="ddf7d-115">From hello drop-down list, choose an existing bandwidth template.</span></span>
+   2. <span data-ttu-id="ddf7d-116">Просмотрите параметры расписания hello hello указанный шаблон пропускной способности.</span><span class="sxs-lookup"><span data-stu-id="ddf7d-116">Review hello schedule settings for hello specified bandwidth template.</span></span>
+   3. <span data-ttu-id="ddf7d-117">Нажмите кнопку **Сохранить** и Подтверждение изменений hello.</span><span class="sxs-lookup"><span data-stu-id="ddf7d-117">Click **Save** and confirm hello changes.</span></span>
       
        ![Подтверждение изменений](./media/storsimple-8000-modify-volume-container/modify-vol-container3.png)
 
-   3. <span data-ttu-id="be906-119">Колонка **Контейнеры томов** обновится, чтобы отразить изменения.</span><span class="sxs-lookup"><span data-stu-id="be906-119">The **Volume containers** blade is updated to reflect the changes.</span></span>
+   3. <span data-ttu-id="ddf7d-119">Hello **контейнеры томов** колонка находится обновленные tooreflect hello изменения.</span><span class="sxs-lookup"><span data-stu-id="ddf7d-119">hello **Volume containers** blade is updated tooreflect hello changes.</span></span>
 

@@ -1,6 +1,6 @@
 ---
-title: "Управление SDK для .NET для Azure Stream Analytics | Документация Майкрософт"
-description: "Приступая к работе с пакетом SDK для .NET для управления Stream Analytics. Узнайте, как настраивать и выполнять задания аналитики. Создание проектов, входные и выходные данные, преобразования."
+title: "aaaManagement .NET SDK для Azure Stream Analytics | Документы Microsoft"
+description: "Приступая к работе с пакетом SDK для .NET для управления Stream Analytics. Узнайте, как tooset Настройка и запуск заданий analytics. Создание проектов, входные и выходные данные, преобразования."
 keywords: "SDK .net, API аналитики"
 services: stream-analytics
 documentationcenter: 
@@ -15,53 +15,53 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 03/06/2017
 ms.author: jeffstok
-ms.openlocfilehash: f9aa812e6e82cc0f72d0cd1fe63058e53f794775
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 507c11938bc5bf2249a2e41f6bcc076db8ead3f6
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="management-net-sdk-set-up-and-run-analytics-jobs-using-the-azure-stream-analytics-api-for-net"></a><span data-ttu-id="502dc-106">Управление SDK для .NET: настройка и запуск заданий аналитики с помощью API Azure Stream Analytics для .NET.</span><span class="sxs-lookup"><span data-stu-id="502dc-106">Management .NET SDK: Set up and run analytics jobs using the Azure Stream Analytics API for .NET</span></span>
-<span data-ttu-id="502dc-107">Узнайте, как настраивать и запускать задания аналитики с помощью API Azure Stream Analytics для .NET, используя управление SDK для .NET.</span><span class="sxs-lookup"><span data-stu-id="502dc-107">Learn how to set up and run analytics jobs using the Stream Analytics API for .NET using the Management .NET SDK.</span></span> <span data-ttu-id="502dc-108">Настраивайте проект, создавайте источники входных и выходных данных и преобразования, а также запускайте и останавливайте задания.</span><span class="sxs-lookup"><span data-stu-id="502dc-108">Set up a project, create input and output sources, transformations, and start and stop jobs.</span></span> <span data-ttu-id="502dc-109">Для выполнения заданий аналитики можно осуществлять потоковую передачу данных из хранилища больших двоичных объектов или из концентратора событий.</span><span class="sxs-lookup"><span data-stu-id="502dc-109">For your analytics jobs, you can stream data from Blob storage or from an event hub.</span></span>
+# <a name="management-net-sdk-set-up-and-run-analytics-jobs-using-hello-azure-stream-analytics-api-for-net"></a><span data-ttu-id="8ee35-106">Управление .NET SDK: Настройка и запуск задания analytics, выполняемые с помощью hello Azure Stream Analytics API для .NET</span><span class="sxs-lookup"><span data-stu-id="8ee35-106">Management .NET SDK: Set up and run analytics jobs using hello Azure Stream Analytics API for .NET</span></span>
+<span data-ttu-id="8ee35-107">Узнайте, как tooset вверх и аналитика выполнения задания с помощью hello Stream Analytics API для .NET с помощью hello управления .NET SDK.</span><span class="sxs-lookup"><span data-stu-id="8ee35-107">Learn how tooset up and run analytics jobs using hello Stream Analytics API for .NET using hello Management .NET SDK.</span></span> <span data-ttu-id="8ee35-108">Настраивайте проект, создавайте источники входных и выходных данных и преобразования, а также запускайте и останавливайте задания.</span><span class="sxs-lookup"><span data-stu-id="8ee35-108">Set up a project, create input and output sources, transformations, and start and stop jobs.</span></span> <span data-ttu-id="8ee35-109">Для выполнения заданий аналитики можно осуществлять потоковую передачу данных из хранилища больших двоичных объектов или из концентратора событий.</span><span class="sxs-lookup"><span data-stu-id="8ee35-109">For your analytics jobs, you can stream data from Blob storage or from an event hub.</span></span>
 
-<span data-ttu-id="502dc-110">См. [справочную документацию по управлению API Stream Analytics для .NET](https://msdn.microsoft.com/library/azure/dn889315.aspx).</span><span class="sxs-lookup"><span data-stu-id="502dc-110">See the [management reference documentation for the Stream Analytics API for .NET](https://msdn.microsoft.com/library/azure/dn889315.aspx).</span></span>
+<span data-ttu-id="8ee35-110">В разделе hello [управления справочную документацию по hello Stream Analytics API для .NET](https://msdn.microsoft.com/library/azure/dn889315.aspx).</span><span class="sxs-lookup"><span data-stu-id="8ee35-110">See hello [management reference documentation for hello Stream Analytics API for .NET](https://msdn.microsoft.com/library/azure/dn889315.aspx).</span></span>
 
-<span data-ttu-id="502dc-111">Azure Stream Analytics является полностью управляемой службой, обеспечивающей низкую задержку и высокий уровень доступности, масштабируемую обработку сложных событий посредством потоковой передачи данных в облако.</span><span class="sxs-lookup"><span data-stu-id="502dc-111">Azure Stream Analytics is a fully managed service providing low-latency, highly available, scalable, complex event processing over streaming data in the cloud.</span></span> <span data-ttu-id="502dc-112">Stream Analytics дает клиентам возможность настраивать задания потоковой передачи данных для анализа потоков данных и выполнять их в режиме, близком к режиму реального времени.</span><span class="sxs-lookup"><span data-stu-id="502dc-112">Stream Analytics enables customers to set up streaming jobs to analyze data streams, and allows them to drive near real-time analytics.</span></span>  
+<span data-ttu-id="8ee35-111">Azure Stream Analytics является полностью управляемой службы, обеспечивая обработку событий с низкой задержкой, высокой надежности, масштабируемая и сложных потоковой передаче данных в облаке hello.</span><span class="sxs-lookup"><span data-stu-id="8ee35-111">Azure Stream Analytics is a fully managed service providing low-latency, highly available, scalable, complex event processing over streaming data in hello cloud.</span></span> <span data-ttu-id="8ee35-112">Stream Analytics позволяет клиентам tooset копирование потоковой передачи данных в потоки tooanalyze заданий и их toodrive практически в режиме реального времени.</span><span class="sxs-lookup"><span data-stu-id="8ee35-112">Stream Analytics enables customers tooset up streaming jobs tooanalyze data streams, and allows them toodrive near real-time analytics.</span></span>  
 
 > [!NOTE]
-> <span data-ttu-id="502dc-113">Мы обновили пример кода в этой статье с помощью управления SDK для .NET версии 2.х Azure Stream Analytics.</span><span class="sxs-lookup"><span data-stu-id="502dc-113">We have updated the sample code in this article with Azure Stream Analytics Management .NET SDK v2.x version.</span></span> <span data-ttu-id="502dc-114">Пример кода с использованием устаревших версий пакета SDK (1.x) см. в статье [Управление SDK для .NET: настройка и запуск заданий аналитики с помощью API Azure Stream Analytics для .NET](https://docs.microsoft.com/en-us/azure/stream-analytics/stream-analytics-dotnet-management-sdk-v1).</span><span class="sxs-lookup"><span data-stu-id="502dc-114">For sample code using the uses lagecy (1.x) SDK version, please see [Use the Management .NET SDK v1.x for Stream Analytics](https://docs.microsoft.com/en-us/azure/stream-analytics/stream-analytics-dotnet-management-sdk-v1).</span></span>
+> <span data-ttu-id="8ee35-113">Мы обновили с версией пакета SDK .NET Azure Stream Analytics управления v2.x hello образец кода в этой статье.</span><span class="sxs-lookup"><span data-stu-id="8ee35-113">We have updated hello sample code in this article with Azure Stream Analytics Management .NET SDK v2.x version.</span></span> <span data-ttu-id="8ee35-114">Пример кода, с помощью hello применяется версия пакета SDK lagecy (1.x), см. в разделе [использовать v1.x hello .NET SDK управления Stream Analytics](https://docs.microsoft.com/en-us/azure/stream-analytics/stream-analytics-dotnet-management-sdk-v1).</span><span class="sxs-lookup"><span data-stu-id="8ee35-114">For sample code using hello uses lagecy (1.x) SDK version, please see [Use hello Management .NET SDK v1.x for Stream Analytics](https://docs.microsoft.com/en-us/azure/stream-analytics/stream-analytics-dotnet-management-sdk-v1).</span></span>
 
-## <a name="prerequisites"></a><span data-ttu-id="502dc-115">Предварительные требования</span><span class="sxs-lookup"><span data-stu-id="502dc-115">Prerequisites</span></span>
-<span data-ttu-id="502dc-116">Перед началом работы с этой статьей необходимо иметь следующее:</span><span class="sxs-lookup"><span data-stu-id="502dc-116">Before you begin this article, you must have the following:</span></span>
+## <a name="prerequisites"></a><span data-ttu-id="8ee35-115">Предварительные требования</span><span class="sxs-lookup"><span data-stu-id="8ee35-115">Prerequisites</span></span>
+<span data-ttu-id="8ee35-116">Прежде чем приступать к этой статье, необходимо иметь следующие hello:</span><span class="sxs-lookup"><span data-stu-id="8ee35-116">Before you begin this article, you must have hello following:</span></span>
 
-* <span data-ttu-id="502dc-117">Установленный экземпляр Visual Studio 2017 или Visual Studio 2015.</span><span class="sxs-lookup"><span data-stu-id="502dc-117">Install Visual Studio 2017 or 2015.</span></span>
-* <span data-ttu-id="502dc-118">Скачанный и установленный [пакет SDK для Azure .NET](https://azure.microsoft.com/downloads/).</span><span class="sxs-lookup"><span data-stu-id="502dc-118">Download and install [Azure .NET SDK](https://azure.microsoft.com/downloads/).</span></span>
-* <span data-ttu-id="502dc-119">Создайте группу ресурсов Azure в своей подписке.</span><span class="sxs-lookup"><span data-stu-id="502dc-119">Create an Azure Resource Group in your subscription.</span></span> <span data-ttu-id="502dc-120">Ниже приведен пример сценария Azure PowerShell.</span><span class="sxs-lookup"><span data-stu-id="502dc-120">The following is a sample Azure PowerShell script.</span></span> <span data-ttu-id="502dc-121">Дополнительную информацию об Azure PowerShell см. в разделе [Установка и настройка Azure PowerShell](/powershell/azure/overview).</span><span class="sxs-lookup"><span data-stu-id="502dc-121">For Azure PowerShell information, see [Install and configure Azure PowerShell](/powershell/azure/overview);</span></span>  
+* <span data-ttu-id="8ee35-117">Установленный экземпляр Visual Studio 2017 или Visual Studio 2015.</span><span class="sxs-lookup"><span data-stu-id="8ee35-117">Install Visual Studio 2017 or 2015.</span></span>
+* <span data-ttu-id="8ee35-118">Скачанный и установленный [пакет SDK для Azure .NET](https://azure.microsoft.com/downloads/).</span><span class="sxs-lookup"><span data-stu-id="8ee35-118">Download and install [Azure .NET SDK](https://azure.microsoft.com/downloads/).</span></span>
+* <span data-ttu-id="8ee35-119">Создайте группу ресурсов Azure в своей подписке.</span><span class="sxs-lookup"><span data-stu-id="8ee35-119">Create an Azure Resource Group in your subscription.</span></span> <span data-ttu-id="8ee35-120">Hello ниже приведен пример сценария Azure PowerShell.</span><span class="sxs-lookup"><span data-stu-id="8ee35-120">hello following is a sample Azure PowerShell script.</span></span> <span data-ttu-id="8ee35-121">Дополнительную информацию об Azure PowerShell см. в разделе [Установка и настройка Azure PowerShell](/powershell/azure/overview).</span><span class="sxs-lookup"><span data-stu-id="8ee35-121">For Azure PowerShell information, see [Install and configure Azure PowerShell](/powershell/azure/overview);</span></span>  
 
-        # Log in to your Azure account
+        # Log in tooyour Azure account
         Add-AzureAccount
 
-        # Select the Azure subscription you want to use to create the resource group
+        # Select hello Azure subscription you want toouse toocreate hello resource group
         Select-AzureSubscription -SubscriptionName <subscription name>
 
-            # If Stream Analytics has not been registered to the subscription, remove the remark symbol (#) to run the Register-AzureRMProvider cmdlet to register the provider namespace
+            # If Stream Analytics has not been registered toohello subscription, remove hello remark symbol (#) toorun hello Register-AzureRMProvider cmdlet tooregister hello provider namespace
             #Register-AzureRMProvider -Force -ProviderNamespace 'Microsoft.StreamAnalytics'
 
         # Create an Azure resource group
         New-AzureResourceGroup -Name <YOUR RESOURCE GROUP NAME> -Location <LOCATION>
 
 
-* <span data-ttu-id="502dc-122">Задайте источник входных данных и назначение выходных данных.</span><span class="sxs-lookup"><span data-stu-id="502dc-122">Set up an input source and output target to use.</span></span> <span data-ttu-id="502dc-123">Дальнейшие указания по настройке примера входных данных см. в статье [Подключение потоковой передачи входных или ссылочных данных к заданию Stream Analytics](stream-analytics-add-inputs.md), а по настройке примера выходных данных — в статье [Настройка выходов данных для заданий Stream Analytics](stream-analytics-add-outputs.md).</span><span class="sxs-lookup"><span data-stu-id="502dc-123">For further instructions see [Add Inputs](stream-analytics-add-inputs.md) to set up a sample input and [Add Outputs](stream-analytics-add-outputs.md) to set up a sample output.</span></span>
+* <span data-ttu-id="8ee35-122">Настройка источника входных данных и вывода toouse цели.</span><span class="sxs-lookup"><span data-stu-id="8ee35-122">Set up an input source and output target toouse.</span></span> <span data-ttu-id="8ee35-123">Дополнительные инструкции см. в разделе [добавить входные данные](stream-analytics-add-inputs.md) tooset копирование входные данные выборки и [Добавление выходных элементов](stream-analytics-add-outputs.md) tooset копирование пример выходных данных.</span><span class="sxs-lookup"><span data-stu-id="8ee35-123">For further instructions see [Add Inputs](stream-analytics-add-inputs.md) tooset up a sample input and [Add Outputs](stream-analytics-add-outputs.md) tooset up a sample output.</span></span>
 
-## <a name="set-up-a-project"></a><span data-ttu-id="502dc-124">Настройка проекта</span><span class="sxs-lookup"><span data-stu-id="502dc-124">Set up a project</span></span>
-<span data-ttu-id="502dc-125">Чтобы создать задание аналитики с использованием API Stream Analytics для .NET, сначала настройте проект.</span><span class="sxs-lookup"><span data-stu-id="502dc-125">To create an analytics job use the Stream Analytics API for .NET, first set up your project.</span></span>
+## <a name="set-up-a-project"></a><span data-ttu-id="8ee35-124">Настройка проекта</span><span class="sxs-lookup"><span data-stu-id="8ee35-124">Set up a project</span></span>
+<span data-ttu-id="8ee35-125">toocreate задание analytics используйте hello Stream Analytics API для .NET, сначала настроить проект.</span><span class="sxs-lookup"><span data-stu-id="8ee35-125">toocreate an analytics job use hello Stream Analytics API for .NET, first set up your project.</span></span>
 
-1. <span data-ttu-id="502dc-126">Создайте консольное приложение Visual Studio C# .NET.</span><span class="sxs-lookup"><span data-stu-id="502dc-126">Create a Visual Studio C# .NET console application.</span></span>
-2. <span data-ttu-id="502dc-127">В консоли диспетчера пакетов выполните следующие команды, чтобы установить пакеты NuGet.</span><span class="sxs-lookup"><span data-stu-id="502dc-127">In the Package Manager Console, run the following commands to install the NuGet packages.</span></span> <span data-ttu-id="502dc-128">Первый — пакет SDK для .NET для управления Azure Stream Analytics.</span><span class="sxs-lookup"><span data-stu-id="502dc-128">The first one is the Azure Stream Analytics Management .NET SDK.</span></span> <span data-ttu-id="502dc-129">Второй — для проверки подлинности клиента Azure.</span><span class="sxs-lookup"><span data-stu-id="502dc-129">The second one is for Azure client authentication.</span></span>
+1. <span data-ttu-id="8ee35-126">Создайте консольное приложение Visual Studio C# .NET.</span><span class="sxs-lookup"><span data-stu-id="8ee35-126">Create a Visual Studio C# .NET console application.</span></span>
+2. <span data-ttu-id="8ee35-127">В hello консоль диспетчера пакетов hello выполнения следующих команд пакеты NuGet tooinstall hello.</span><span class="sxs-lookup"><span data-stu-id="8ee35-127">In hello Package Manager Console, run hello following commands tooinstall hello NuGet packages.</span></span> <span data-ttu-id="8ee35-128">Hello сначала он hello Azure Stream Analytics управления .NET SDK.</span><span class="sxs-lookup"><span data-stu-id="8ee35-128">hello first one is hello Azure Stream Analytics Management .NET SDK.</span></span> <span data-ttu-id="8ee35-129">Hello второй раз — для проверки подлинности клиента Azure.</span><span class="sxs-lookup"><span data-stu-id="8ee35-129">hello second one is for Azure client authentication.</span></span>
    
         Install-Package Microsoft.Azure.Management.StreamAnalytics -Version 2.0.0
         Install-Package Microsoft.Rest.ClientRuntime.Azure.Authentication -Version 2.3.1
-3. <span data-ttu-id="502dc-130">Добавьте следующий раздел **appSettings** в файл App.config:</span><span class="sxs-lookup"><span data-stu-id="502dc-130">Add the following **appSettings** section to the App.config file:</span></span>
+3. <span data-ttu-id="8ee35-130">Добавьте следующее hello **appSettings** файл App.config toohello раздела:</span><span class="sxs-lookup"><span data-stu-id="8ee35-130">Add hello following **appSettings** section toohello App.config file:</span></span>
    
         <appSettings>
           <add key="ClientId" value="1950a258-227b-4e31-a9cf-717495945fc2" />
@@ -70,15 +70,15 @@ ms.lasthandoff: 08/29/2017
           <add key="ActiveDirectoryTenantId" value="YOUR TENANT ID" />
         </appSettings>
 
-    <span data-ttu-id="502dc-131">Замените значения **SubscriptionId** и **ActiveDirectoryTenantId** идентификаторами подписки Azure и клиента.</span><span class="sxs-lookup"><span data-stu-id="502dc-131">Replace values for **SubscriptionId** and **ActiveDirectoryTenantId** with your Azure subscription and tenant IDs.</span></span> <span data-ttu-id="502dc-132">Вы можете получить эти значения, запустив следующий командлет Azure PowerShell:</span><span class="sxs-lookup"><span data-stu-id="502dc-132">You can get these values by running the following Azure PowerShell cmdlet:</span></span>
+    <span data-ttu-id="8ee35-131">Замените значения **SubscriptionId** и **ActiveDirectoryTenantId** идентификаторами подписки Azure и клиента.</span><span class="sxs-lookup"><span data-stu-id="8ee35-131">Replace values for **SubscriptionId** and **ActiveDirectoryTenantId** with your Azure subscription and tenant IDs.</span></span> <span data-ttu-id="8ee35-132">Эти значения можно получить, выполнив следующий командлет Azure PowerShell hello:</span><span class="sxs-lookup"><span data-stu-id="8ee35-132">You can get these values by running hello following Azure PowerShell cmdlet:</span></span>
 
         Get-AzureAccount
 
-4. <span data-ttu-id="502dc-133">Добавьте следующую ссылку в CSPROJ-файле:</span><span class="sxs-lookup"><span data-stu-id="502dc-133">Add the following reference in your .csproj file:</span></span>
+4. <span data-ttu-id="8ee35-133">Добавьте следующие ссылки в CSPROJ-файле hello:</span><span class="sxs-lookup"><span data-stu-id="8ee35-133">Add hello following reference in your .csproj file:</span></span>
 
         <Reference Include="System.Configuration" />
 
-5. <span data-ttu-id="502dc-134">Добавьте следующие операторы **using** в файл исходного кода (Program.cs) в проекте:</span><span class="sxs-lookup"><span data-stu-id="502dc-134">Add the following **using** statements to the source file (Program.cs) in the project:</span></span>
+5. <span data-ttu-id="8ee35-134">Добавьте следующее hello **с помощью** toohello инструкций исходный файл (Program.cs) в проекте hello:</span><span class="sxs-lookup"><span data-stu-id="8ee35-134">Add hello following **using** statements toohello source file (Program.cs) in hello project:</span></span>
    
         using System;
         using System.Collections.Generic;
@@ -90,7 +90,7 @@ ms.lasthandoff: 08/29/2017
         using Microsoft.Azure.Management.StreamAnalytics.Models;
         using Microsoft.Rest.Azure.Authentication;
         using Microsoft.Rest;
-6. <span data-ttu-id="502dc-135">Добавьте вспомогательный метод проверки подлинности:</span><span class="sxs-lookup"><span data-stu-id="502dc-135">Add an authentication helper method:</span></span>
+6. <span data-ttu-id="8ee35-135">Добавьте вспомогательный метод проверки подлинности:</span><span class="sxs-lookup"><span data-stu-id="8ee35-135">Add an authentication helper method:</span></span>
 
    ```
    private static async Task<ServiceClientCredentials> GetCredentials()
@@ -102,10 +102,10 @@ ms.lasthandoff: 08/29/2017
     }
    ```
 
-## <a name="create-a-stream-analytics-management-client"></a><span data-ttu-id="502dc-136">Создание клиента управления Stream Analytics</span><span class="sxs-lookup"><span data-stu-id="502dc-136">Create a Stream Analytics management client</span></span>
-<span data-ttu-id="502dc-137">Объект **StreamAnalyticsManagementClient** позволяет управлять заданием и его компонентами, такими как входные и выходные данные, а также преобразованием.</span><span class="sxs-lookup"><span data-stu-id="502dc-137">A **StreamAnalyticsManagementClient** object allows you to manage the job and the job components, such as input, output, and transformation.</span></span>
+## <a name="create-a-stream-analytics-management-client"></a><span data-ttu-id="8ee35-136">Создание клиента управления Stream Analytics</span><span class="sxs-lookup"><span data-stu-id="8ee35-136">Create a Stream Analytics management client</span></span>
+<span data-ttu-id="8ee35-137">Объект **StreamAnalyticsManagementClient** объект позволяет toomanage hello задания и hello задания компонентов, таких как ввода, вывода и преобразования.</span><span class="sxs-lookup"><span data-stu-id="8ee35-137">A **StreamAnalyticsManagementClient** object allows you toomanage hello job and hello job components, such as input, output, and transformation.</span></span>
 
-<span data-ttu-id="502dc-138">Добавьте следующий код в начало метода **Main** :</span><span class="sxs-lookup"><span data-stu-id="502dc-138">Add the following code to the beginning of the **Main** method:</span></span>
+<span data-ttu-id="8ee35-138">Добавить после начала toohello кода hello hello **Main** метод:</span><span class="sxs-lookup"><span data-stu-id="8ee35-138">Add hello following code toohello beginning of hello **Main** method:</span></span>
 
    ```
     string resourceGroupName = "<YOUR AZURE RESOURCE GROUP NAME>";
@@ -126,14 +126,14 @@ ms.lasthandoff: 08/29/2017
     };
    ```
 
-<span data-ttu-id="502dc-139">Значение переменной **resourceGroupName** должно быть таким же, как имя группы ресурсов, созданной или выбранной на предварительных шагах.</span><span class="sxs-lookup"><span data-stu-id="502dc-139">The **resourceGroupName** variable's value should be the same as the name of the resource group you created or picked in the prerequisite steps.</span></span>
+<span data-ttu-id="8ee35-139">Hello **resourceGroupName** значение переменной должно быть hello совпадает с именем hello hello ресурса группы можно создать или извлечь hello обязательные шаги.</span><span class="sxs-lookup"><span data-stu-id="8ee35-139">hello **resourceGroupName** variable's value should be hello same as hello name of hello resource group you created or picked in hello prerequisite steps.</span></span>
 
-<span data-ttu-id="502dc-140">Инструкции по автоматизации этапа создания задач, связанного с представлением учетных данных, см. в статье [Использование Azure PowerShell для создания субъекта-службы и доступа к ресурсам](../azure-resource-manager/resource-group-authenticate-service-principal.md).</span><span class="sxs-lookup"><span data-stu-id="502dc-140">To automate the credential presentation aspect of job creation, refer to [Authenticating a service principal with Azure Resource Manager](../azure-resource-manager/resource-group-authenticate-service-principal.md).</span></span>
+<span data-ttu-id="8ee35-140">tooautomate hello учетных данных презентации аспектом создания задания ссылаются слишком[проверки подлинности участника службы с помощью диспетчера ресурсов Azure](../azure-resource-manager/resource-group-authenticate-service-principal.md).</span><span class="sxs-lookup"><span data-stu-id="8ee35-140">tooautomate hello credential presentation aspect of job creation, refer too[Authenticating a service principal with Azure Resource Manager](../azure-resource-manager/resource-group-authenticate-service-principal.md).</span></span>
 
-<span data-ttu-id="502dc-141">В дальнейших разделах этой статьи предполагается, что этот код находится в начале метода **Main** .</span><span class="sxs-lookup"><span data-stu-id="502dc-141">The remaining sections of this article assume that this code is at the beginning of the **Main** method.</span></span>
+<span data-ttu-id="8ee35-141">Hello остальных разделах данной статьи предположим, что этот код в начале hello hello **Main** метод.</span><span class="sxs-lookup"><span data-stu-id="8ee35-141">hello remaining sections of this article assume that this code is at hello beginning of hello **Main** method.</span></span>
 
-## <a name="create-a-stream-analytics-job"></a><span data-ttu-id="502dc-142">Создание задания Stream Analytics</span><span class="sxs-lookup"><span data-stu-id="502dc-142">Create a Stream Analytics job</span></span>
-<span data-ttu-id="502dc-143">Следующий код создает задание Stream Analytics в группе ресурсов, которую вы определили.</span><span class="sxs-lookup"><span data-stu-id="502dc-143">The following code creates a Stream Analytics job under the resource group that you have defined.</span></span> <span data-ttu-id="502dc-144">Вы добавите входные и выходные данные, а также преобразование в задание позже.</span><span class="sxs-lookup"><span data-stu-id="502dc-144">You will add an input, output, and transformation to the job later.</span></span>
+## <a name="create-a-stream-analytics-job"></a><span data-ttu-id="8ee35-142">Создание задания Stream Analytics</span><span class="sxs-lookup"><span data-stu-id="8ee35-142">Create a Stream Analytics job</span></span>
+<span data-ttu-id="8ee35-143">Hello следующий код создает задание Stream Analytics в группе ресурсов hello, которое определено.</span><span class="sxs-lookup"><span data-stu-id="8ee35-143">hello following code creates a Stream Analytics job under hello resource group that you have defined.</span></span> <span data-ttu-id="8ee35-144">Задание toohello ввода, вывода и преобразования будет добавить позже.</span><span class="sxs-lookup"><span data-stu-id="8ee35-144">You will add an input, output, and transformation toohello job later.</span></span>
 
    ```
    // Create a streaming job
@@ -159,8 +159,8 @@ ms.lasthandoff: 08/29/2017
    StreamingJob createStreamingJobResult = streamAnalyticsManagementClient.StreamingJobs.CreateOrReplace(streamingJob, resourceGroupName, streamingJobName);
    ```
 
-## <a name="create-a-stream-analytics-input-source"></a><span data-ttu-id="502dc-145">Создание источника входных данных Stream Analytics</span><span class="sxs-lookup"><span data-stu-id="502dc-145">Create a Stream Analytics input source</span></span>
-<span data-ttu-id="502dc-146">Следующий код создает источник входных данных Stream Analytics с типом источника входных данных BLOB-объекта и сериализацией CSV.</span><span class="sxs-lookup"><span data-stu-id="502dc-146">The following code creates a Stream Analytics input source with the blob input source type and CSV serialization.</span></span> <span data-ttu-id="502dc-147">Чтобы создать источник входных данных концентратора событий, используйте **EventHubStreamInputDataSource** вместо **BlobStreamInputDataSource**.</span><span class="sxs-lookup"><span data-stu-id="502dc-147">To create an event hub input source, use **EventHubStreamInputDataSource** instead of **BlobStreamInputDataSource**.</span></span> <span data-ttu-id="502dc-148">Аналогично можно настроить тип сериализации источника входных данных.</span><span class="sxs-lookup"><span data-stu-id="502dc-148">Similarly, you can customize the serialization type of the input source.</span></span>
+## <a name="create-a-stream-analytics-input-source"></a><span data-ttu-id="8ee35-145">Создание источника входных данных Stream Analytics</span><span class="sxs-lookup"><span data-stu-id="8ee35-145">Create a Stream Analytics input source</span></span>
+<span data-ttu-id="8ee35-146">Hello следующий код создает Stream Analytics входной источник с типом источника входных данных большого двоичного объекта hello и сериализации CSV.</span><span class="sxs-lookup"><span data-stu-id="8ee35-146">hello following code creates a Stream Analytics input source with hello blob input source type and CSV serialization.</span></span> <span data-ttu-id="8ee35-147">использовать toocreate входной источник концентратора событий **EventHubStreamInputDataSource** вместо **BlobStreamInputDataSource**.</span><span class="sxs-lookup"><span data-stu-id="8ee35-147">toocreate an event hub input source, use **EventHubStreamInputDataSource** instead of **BlobStreamInputDataSource**.</span></span> <span data-ttu-id="8ee35-148">Аналогичным образом можно настроить тип сериализации hello hello источник входных данных.</span><span class="sxs-lookup"><span data-stu-id="8ee35-148">Similarly, you can customize hello serialization type of hello input source.</span></span>
 
    ```
    // Create an input
@@ -192,20 +192,20 @@ ms.lasthandoff: 08/29/2017
    Input createInputResult = streamAnalyticsManagementClient.Inputs.CreateOrReplace(input, resourceGroupName, streamingJobName, inputName);
    ```
 
-<span data-ttu-id="502dc-149">Источники входных данных из хранилища больших двоичных объектов или из концентратора событий привязываются к определенному заданию.</span><span class="sxs-lookup"><span data-stu-id="502dc-149">Input sources, whether from Blob storage or an event hub, are tied to a specific job.</span></span> <span data-ttu-id="502dc-150">Чтобы использовать один источник для разных заданий, потребуется снова вызвать метод и указать другое имя задания.</span><span class="sxs-lookup"><span data-stu-id="502dc-150">To use the same input source for different jobs, you must call the method again and specify a different job name.</span></span>
+<span data-ttu-id="8ee35-149">Источников входных данных из хранилища BLOB-объектов или концентратор событий, связанные tooa конкретного задания.</span><span class="sxs-lookup"><span data-stu-id="8ee35-149">Input sources, whether from Blob storage or an event hub, are tied tooa specific job.</span></span> <span data-ttu-id="8ee35-150">toouse Здравствуйте того же источника входных данных для разных заданий, необходимо снова вызвать метод hello и указать другое имя задания.</span><span class="sxs-lookup"><span data-stu-id="8ee35-150">toouse hello same input source for different jobs, you must call hello method again and specify a different job name.</span></span>
 
-## <a name="test-a-stream-analytics-input-source"></a><span data-ttu-id="502dc-151">Тестирование источника входных данных Stream Analytics</span><span class="sxs-lookup"><span data-stu-id="502dc-151">Test a Stream Analytics input source</span></span>
-<span data-ttu-id="502dc-152">Метод **TestConnection** тестирует, может ли задание Stream Analytics подключиться к источнику входных данных, а также другие аспекты, относящиеся к этому типу источника входных данных.</span><span class="sxs-lookup"><span data-stu-id="502dc-152">The **TestConnection** method tests whether the Stream Analytics job is able to connect to the input source as well as other aspects specific to the input source type.</span></span> <span data-ttu-id="502dc-153">Например, в источнике входных данных BLOB-объекта, созданном на более раннем шаге, метод проверит, может ли пара имени и ключа учетной записи хранения использоваться для подключения к учетной записи хранения, а также убедится, что указанный контекст существует.</span><span class="sxs-lookup"><span data-stu-id="502dc-153">For example, in the blob input source you created in an earlier step, the method will check that the Storage account name and key pair can be used to connect to the Storage account as well as check that the specified container exists.</span></span>
+## <a name="test-a-stream-analytics-input-source"></a><span data-ttu-id="8ee35-151">Тестирование источника входных данных Stream Analytics</span><span class="sxs-lookup"><span data-stu-id="8ee35-151">Test a Stream Analytics input source</span></span>
+<span data-ttu-id="8ee35-152">Hello **TestConnection** тесты метод ли задание Stream Analytics hello может tooconnect toohello поступает источника, а также другие аспекты конкретных toohello входной тип источника.</span><span class="sxs-lookup"><span data-stu-id="8ee35-152">hello **TestConnection** method tests whether hello Stream Analytics job is able tooconnect toohello input source as well as other aspects specific toohello input source type.</span></span> <span data-ttu-id="8ee35-153">Например в hello BLOB-объект источника входных данных, созданный на предыдущем шаге, метод hello проверка, имя учетной записи хранения hello и пары ключей может быть toohello tooconnect используется учетная запись хранения а также проверка наличия указанного контейнера hello.</span><span class="sxs-lookup"><span data-stu-id="8ee35-153">For example, in hello blob input source you created in an earlier step, hello method will check that hello Storage account name and key pair can be used tooconnect toohello Storage account as well as check that hello specified container exists.</span></span>
 
    ```
-   // Test the connection to the input
+   // Test hello connection toohello input
    ResourceTestStatus testInputResult = streamAnalyticsManagementClient.Inputs.Test(resourceGroupName, streamingJobName, inputName);
    ```
 
-## <a name="create-a-stream-analytics-output-target"></a><span data-ttu-id="502dc-154">Создание назначения выходных данных Stream Analytics</span><span class="sxs-lookup"><span data-stu-id="502dc-154">Create a Stream Analytics output target</span></span>
-<span data-ttu-id="502dc-155">Создание назначения выходных данных аналогично созданию источника входных данных Stream Analytics.</span><span class="sxs-lookup"><span data-stu-id="502dc-155">Creating an output target is very similar to creating a Stream Analytics input source.</span></span> <span data-ttu-id="502dc-156">Как и источники входных данных, назначения выходных данных привязываются к определенному заданию.</span><span class="sxs-lookup"><span data-stu-id="502dc-156">Like input sources, output targets are tied to a specific job.</span></span> <span data-ttu-id="502dc-157">Чтобы использовать одно назначение выходных данных для разных заданий, потребуется повторно вызвать метод и указать другое имя задания.</span><span class="sxs-lookup"><span data-stu-id="502dc-157">To use the same output target for different jobs, you must call the method again and specify a different job name.</span></span>
+## <a name="create-a-stream-analytics-output-target"></a><span data-ttu-id="8ee35-154">Создание назначения выходных данных Stream Analytics</span><span class="sxs-lookup"><span data-stu-id="8ee35-154">Create a Stream Analytics output target</span></span>
+<span data-ttu-id="8ee35-155">Создание целевого объекта выходных данных — это очень похоже toocreating источника входных данных Stream Analytics.</span><span class="sxs-lookup"><span data-stu-id="8ee35-155">Creating an output target is very similar toocreating a Stream Analytics input source.</span></span> <span data-ttu-id="8ee35-156">Как и источников входных данных выходные данные целевых объектов, связанные tooa конкретного задания.</span><span class="sxs-lookup"><span data-stu-id="8ee35-156">Like input sources, output targets are tied tooa specific job.</span></span> <span data-ttu-id="8ee35-157">toouse Здравствуйте того же конечного вывода для разных заданий, необходимо снова вызвать метод hello и указать другое имя задания.</span><span class="sxs-lookup"><span data-stu-id="8ee35-157">toouse hello same output target for different jobs, you must call hello method again and specify a different job name.</span></span>
 
-<span data-ttu-id="502dc-158">Следующий код создает назначение выходных данных (базу данных SQL Azure).</span><span class="sxs-lookup"><span data-stu-id="502dc-158">The following code creates an output target (Azure SQL database).</span></span> <span data-ttu-id="502dc-159">Вы можете настроить тип данных и тип сериализации назначения выходных данных.</span><span class="sxs-lookup"><span data-stu-id="502dc-159">You can customize the output target's data type and/or serialization type.</span></span>
+<span data-ttu-id="8ee35-158">Привет, следующий код создает целевого объекта выходных данных (база данных Azure SQL).</span><span class="sxs-lookup"><span data-stu-id="8ee35-158">hello following code creates an output target (Azure SQL database).</span></span> <span data-ttu-id="8ee35-159">Вы можете настроить hello выходных данных целевого типа данных и/или тип сериализации.</span><span class="sxs-lookup"><span data-stu-id="8ee35-159">You can customize hello output target's data type and/or serialization type.</span></span>
 
    ```
    // Create an output
@@ -223,33 +223,33 @@ ms.lasthandoff: 08/29/2017
    Output createOutputResult = streamAnalyticsManagementClient.Outputs.CreateOrReplace(output, resourceGroupName, streamingJobName, outputName);
    ```
 
-## <a name="test-a-stream-analytics-output-target"></a><span data-ttu-id="502dc-160">Тестирование назначения выходных данных Stream Analytics</span><span class="sxs-lookup"><span data-stu-id="502dc-160">Test a Stream Analytics output target</span></span>
-<span data-ttu-id="502dc-161">Назначение выходных данных Stream Analytics также содержит метод **TestConnection** для тестирования подключений.</span><span class="sxs-lookup"><span data-stu-id="502dc-161">A Stream Analytics output target also has the **TestConnection** method for testing connections.</span></span>
+## <a name="test-a-stream-analytics-output-target"></a><span data-ttu-id="8ee35-160">Тестирование назначения выходных данных Stream Analytics</span><span class="sxs-lookup"><span data-stu-id="8ee35-160">Test a Stream Analytics output target</span></span>
+<span data-ttu-id="8ee35-161">Выходные данные целевого объекта Stream Analytics также имеет hello **TestConnection** метод проверки подключения.</span><span class="sxs-lookup"><span data-stu-id="8ee35-161">A Stream Analytics output target also has hello **TestConnection** method for testing connections.</span></span>
 
    ```
-   // Test the connection to the output
+   // Test hello connection toohello output
    ResourceTestStatus testOutputResult = streamAnalyticsManagementClient.Outputs.Test(resourceGroupName, streamingJobName, outputName);
    ```
 
-## <a name="create-a-stream-analytics-transformation"></a><span data-ttu-id="502dc-162">Создание преобразования Stream Analytics</span><span class="sxs-lookup"><span data-stu-id="502dc-162">Create a Stream Analytics transformation</span></span>
-<span data-ttu-id="502dc-163">Следующий код создает преобразование Stream Analytics с запросом select * from Input и задает выделение одной единицы потоковой передачи для задания Stream Analytics.</span><span class="sxs-lookup"><span data-stu-id="502dc-163">The following code creates a Stream Analytics transformation with the query "select * from Input" and specifies to allocate one streaming unit for the Stream Analytics job.</span></span> <span data-ttu-id="502dc-164">Дополнительные сведения о настройке единиц потоковой передачи см. в статье [Масштабирование заданий Azure Stream Analytics для повышения пропускной способности базы данных](stream-analytics-scale-jobs.md).</span><span class="sxs-lookup"><span data-stu-id="502dc-164">For more information on adjusting streaming units, see [Scale Azure Stream Analytics jobs](stream-analytics-scale-jobs.md).</span></span>
+## <a name="create-a-stream-analytics-transformation"></a><span data-ttu-id="8ee35-162">Создание преобразования Stream Analytics</span><span class="sxs-lookup"><span data-stu-id="8ee35-162">Create a Stream Analytics transformation</span></span>
+<span data-ttu-id="8ee35-163">Hello следующий код создает Stream Analytics преобразование с запросом hello» выберите * из входных данных» и указывает один модуль потоковой передачи tooallocate для задания Stream Analytics hello.</span><span class="sxs-lookup"><span data-stu-id="8ee35-163">hello following code creates a Stream Analytics transformation with hello query "select * from Input" and specifies tooallocate one streaming unit for hello Stream Analytics job.</span></span> <span data-ttu-id="8ee35-164">Дополнительные сведения о настройке единиц потоковой передачи см. в статье [Масштабирование заданий Azure Stream Analytics для повышения пропускной способности базы данных](stream-analytics-scale-jobs.md).</span><span class="sxs-lookup"><span data-stu-id="8ee35-164">For more information on adjusting streaming units, see [Scale Azure Stream Analytics jobs](stream-analytics-scale-jobs.md).</span></span>
 
    ```
    // Create a transformation
    Transformation transformation = new Transformation()
    {
-       Query = "Select Id, Name from <your input name>", // '<your input name>' should be replaced with the value you put for the 'inputName' variable above or in a previous step
+       Query = "Select Id, Name from <your input name>", // '<your input name>' should be replaced with hello value you put for hello 'inputName' variable above or in a previous step
        StreamingUnits = 1
    };
    Transformation createTransformationResult = streamAnalyticsManagementClient.Transformations.CreateOrReplace(transformation, resourceGroupName, streamingJobName, transformationName);
    ```
 
-<span data-ttu-id="502dc-165">Как и входные и выходные данные, преобразования также привязываются к определенному заданию Stream Analytics, в котором они были созданы.</span><span class="sxs-lookup"><span data-stu-id="502dc-165">Like input and output, a transformation is also tied to the specific Stream Analytics job it was created under.</span></span>
+<span data-ttu-id="8ee35-165">Как ввод и вывод преобразования также содержит связанные toohello конкретном задании Stream Analytics она была создана в разделе.</span><span class="sxs-lookup"><span data-stu-id="8ee35-165">Like input and output, a transformation is also tied toohello specific Stream Analytics job it was created under.</span></span>
 
-## <a name="start-a-stream-analytics-job"></a><span data-ttu-id="502dc-166">Запуск задания Stream Analytics</span><span class="sxs-lookup"><span data-stu-id="502dc-166">Start a Stream Analytics job</span></span>
-<span data-ttu-id="502dc-167">После создания задания Stream Analytics и его входных и выходных данных, а также преобразований, можно запустить задание, вызвав метод **Start** .</span><span class="sxs-lookup"><span data-stu-id="502dc-167">After creating a Stream Analytics job and its input(s), output(s), and transformation, you can start the job by calling the **Start** method.</span></span>
+## <a name="start-a-stream-analytics-job"></a><span data-ttu-id="8ee35-166">Запуск задания Stream Analytics</span><span class="sxs-lookup"><span data-stu-id="8ee35-166">Start a Stream Analytics job</span></span>
+<span data-ttu-id="8ee35-167">После создания задания Stream Analytics и ее входными данными, выходов и преобразование, можно запустить задание hello, вызывающему Привет **запустить** метод.</span><span class="sxs-lookup"><span data-stu-id="8ee35-167">After creating a Stream Analytics job and its input(s), output(s), and transformation, you can start hello job by calling hello **Start** method.</span></span>
 
-<span data-ttu-id="502dc-168">В следующем примере кода запускается задание Stream Analytics с пользовательским временем запуска выходных данных "12 декабря 2012 г., 12:12:12 UTC":</span><span class="sxs-lookup"><span data-stu-id="502dc-168">The following sample code starts a Stream Analytics job with a custom output start time set to December 12, 2012, 12:12:12 UTC:</span></span>
+<span data-ttu-id="8ee35-168">Следующий пример кода Hello запускает задание Stream Analytics с пользовательский вывод начала времени набор tooDecember 12, 2012 г., 12:12:12 UTC:</span><span class="sxs-lookup"><span data-stu-id="8ee35-168">hello following sample code starts a Stream Analytics job with a custom output start time set tooDecember 12, 2012, 12:12:12 UTC:</span></span>
 
    ```
    // Start a streaming job
@@ -261,34 +261,34 @@ ms.lasthandoff: 08/29/2017
    streamAnalyticsManagementClient.StreamingJobs.Start(resourceGroupName, streamingJobName, startStreamingJobParameters);
    ```
 
-## <a name="stop-a-stream-analytics-job"></a><span data-ttu-id="502dc-169">Остановка задания Stream Analytics</span><span class="sxs-lookup"><span data-stu-id="502dc-169">Stop a Stream Analytics job</span></span>
-<span data-ttu-id="502dc-170">Вы можете остановить выполняющееся задание Stream Analytics, вызвав метод **Stop** .</span><span class="sxs-lookup"><span data-stu-id="502dc-170">You can stop a running Stream Analytics job by calling the **Stop** method.</span></span>
+## <a name="stop-a-stream-analytics-job"></a><span data-ttu-id="8ee35-169">Остановка задания Stream Analytics</span><span class="sxs-lookup"><span data-stu-id="8ee35-169">Stop a Stream Analytics job</span></span>
+<span data-ttu-id="8ee35-170">Можно остановить работающее задание Stream Analytics, вызывающему Привет **остановить** метод.</span><span class="sxs-lookup"><span data-stu-id="8ee35-170">You can stop a running Stream Analytics job by calling hello **Stop** method.</span></span>
 
    ```
    // Stop a streaming job
    streamAnalyticsManagementClient.StreamingJobs.Stop(resourceGroupName, streamingJobName);
    ```
 
-## <a name="delete-a-stream-analytics-job"></a><span data-ttu-id="502dc-171">Удаление задания Stream Analytics</span><span class="sxs-lookup"><span data-stu-id="502dc-171">Delete a Stream Analytics job</span></span>
-<span data-ttu-id="502dc-172">Метод **Delete** удалит задание, а также базовые вложенные ресурсы, включая входные данные, выходные данные и преобразование задания.</span><span class="sxs-lookup"><span data-stu-id="502dc-172">The **Delete** method will delete the job as well as the underlying sub-resources, including input(s), output(s), and transformation of the job.</span></span>
+## <a name="delete-a-stream-analytics-job"></a><span data-ttu-id="8ee35-171">Удаление задания Stream Analytics</span><span class="sxs-lookup"><span data-stu-id="8ee35-171">Delete a Stream Analytics job</span></span>
+<span data-ttu-id="8ee35-172">Hello **удалить** метода приведет к удалению hello задания, а также базовый вложенных ресурсов, включая входными данными, выходов и преобразование hello задания hello.</span><span class="sxs-lookup"><span data-stu-id="8ee35-172">hello **Delete** method will delete hello job as well as hello underlying sub-resources, including input(s), output(s), and transformation of hello job.</span></span>
 
    ```
    // Delete a streaming job
    streamAnalyticsManagementClient.StreamingJobs.Delete(resourceGroupName, streamingJobName);
    ```
 
-## <a name="get-support"></a><span data-ttu-id="502dc-173">Получение поддержки</span><span class="sxs-lookup"><span data-stu-id="502dc-173">Get support</span></span>
-<span data-ttu-id="502dc-174">За дополнительной помощью обращайтесь на наш [форум Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics).</span><span class="sxs-lookup"><span data-stu-id="502dc-174">For further assistance, try our [Azure Stream Analytics forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics).</span></span>
+## <a name="get-support"></a><span data-ttu-id="8ee35-173">Получение поддержки</span><span class="sxs-lookup"><span data-stu-id="8ee35-173">Get support</span></span>
+<span data-ttu-id="8ee35-174">За дополнительной помощью обращайтесь на наш [форум Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics).</span><span class="sxs-lookup"><span data-stu-id="8ee35-174">For further assistance, try our [Azure Stream Analytics forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics).</span></span>
 
-## <a name="next-steps"></a><span data-ttu-id="502dc-175">Дальнейшие действия</span><span class="sxs-lookup"><span data-stu-id="502dc-175">Next steps</span></span>
-<span data-ttu-id="502dc-176">Вы изучили основы использования пакета SDK для .NET для создания и выполнения заданий аналитики.</span><span class="sxs-lookup"><span data-stu-id="502dc-176">You've learned the basics of using a .NET SDK to create and run analytics jobs.</span></span> <span data-ttu-id="502dc-177">См. также:</span><span class="sxs-lookup"><span data-stu-id="502dc-177">To learn more, see the following:</span></span>
+## <a name="next-steps"></a><span data-ttu-id="8ee35-175">Дальнейшие действия</span><span class="sxs-lookup"><span data-stu-id="8ee35-175">Next steps</span></span>
+<span data-ttu-id="8ee35-176">Вы узнали основы использования toocreate .NET SDK hello и запуска заданий analytics.</span><span class="sxs-lookup"><span data-stu-id="8ee35-176">You've learned hello basics of using a .NET SDK toocreate and run analytics jobs.</span></span> <span data-ttu-id="8ee35-177">toolearn более, см. ниже hello:</span><span class="sxs-lookup"><span data-stu-id="8ee35-177">toolearn more, see hello following:</span></span>
 
-* [<span data-ttu-id="502dc-178">Введение в Azure Stream Analytics</span><span class="sxs-lookup"><span data-stu-id="502dc-178">Introduction to Azure Stream Analytics</span></span>](stream-analytics-introduction.md)
-* [<span data-ttu-id="502dc-179">Приступая к работе с Azure Stream Analytics</span><span class="sxs-lookup"><span data-stu-id="502dc-179">Get started using Azure Stream Analytics</span></span>](stream-analytics-real-time-fraud-detection.md)
-* [<span data-ttu-id="502dc-180">Масштабирование заданий в службе Azure Stream Analytics</span><span class="sxs-lookup"><span data-stu-id="502dc-180">Scale Azure Stream Analytics jobs</span></span>](stream-analytics-scale-jobs.md)
-* <span data-ttu-id="502dc-181">[Использование пакета SDK для .NET для управления Azure Stream Analytics](https://msdn.microsoft.com/library/azure/dn889315.aspx)</span><span class="sxs-lookup"><span data-stu-id="502dc-181">[Azure Stream Analytics Management .NET SDK](https://msdn.microsoft.com/library/azure/dn889315.aspx).</span></span>
-* [<span data-ttu-id="502dc-182">Справочник по языку запросов Azure Stream Analytics</span><span class="sxs-lookup"><span data-stu-id="502dc-182">Azure Stream Analytics Query Language Reference</span></span>](https://msdn.microsoft.com/library/azure/dn834998.aspx)
-* [<span data-ttu-id="502dc-183">Справочник по API-интерфейсу REST управления Stream Analytics</span><span class="sxs-lookup"><span data-stu-id="502dc-183">Azure Stream Analytics Management REST API Reference</span></span>](https://msdn.microsoft.com/library/azure/dn835031.aspx)
+* [<span data-ttu-id="8ee35-178">Введение tooAzure Stream Analytics</span><span class="sxs-lookup"><span data-stu-id="8ee35-178">Introduction tooAzure Stream Analytics</span></span>](stream-analytics-introduction.md)
+* [<span data-ttu-id="8ee35-179">Приступая к работе с Azure Stream Analytics</span><span class="sxs-lookup"><span data-stu-id="8ee35-179">Get started using Azure Stream Analytics</span></span>](stream-analytics-real-time-fraud-detection.md)
+* [<span data-ttu-id="8ee35-180">Масштабирование заданий в службе Azure Stream Analytics</span><span class="sxs-lookup"><span data-stu-id="8ee35-180">Scale Azure Stream Analytics jobs</span></span>](stream-analytics-scale-jobs.md)
+* <span data-ttu-id="8ee35-181">[Использование пакета SDK для .NET для управления Azure Stream Analytics](https://msdn.microsoft.com/library/azure/dn889315.aspx)</span><span class="sxs-lookup"><span data-stu-id="8ee35-181">[Azure Stream Analytics Management .NET SDK](https://msdn.microsoft.com/library/azure/dn889315.aspx).</span></span>
+* [<span data-ttu-id="8ee35-182">Справочник по языку запросов Azure Stream Analytics</span><span class="sxs-lookup"><span data-stu-id="8ee35-182">Azure Stream Analytics Query Language Reference</span></span>](https://msdn.microsoft.com/library/azure/dn834998.aspx)
+* [<span data-ttu-id="8ee35-183">Справочник по API-интерфейсу REST управления Stream Analytics</span><span class="sxs-lookup"><span data-stu-id="8ee35-183">Azure Stream Analytics Management REST API Reference</span></span>](https://msdn.microsoft.com/library/azure/dn835031.aspx)
 
 <!--Image references-->
 [5]: ./media/markdown-template-for-new-articles/octocats.png

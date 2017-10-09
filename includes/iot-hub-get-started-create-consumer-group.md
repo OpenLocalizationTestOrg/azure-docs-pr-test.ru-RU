@@ -1,0 +1,10 @@
+## <a name="add-a-consumer-group-tooyour-iot-hub"></a><span data-ttu-id="eb093-101">Добавить концентратор IoT tooyour группы потребителей</span><span class="sxs-lookup"><span data-stu-id="eb093-101">Add a consumer group tooyour IoT hub</span></span>
+
+<span data-ttu-id="eb093-102">Группы потребителей используются приложениями toopull данные из центра IoT Azure.</span><span class="sxs-lookup"><span data-stu-id="eb093-102">Consumer groups are used by applications toopull data from Azure IoT Hub.</span></span> <span data-ttu-id="eb093-103">В этом учебнике создается toobe группы потребителей, ближайшие данными tooread службы Azure из вашего центра IoT.</span><span class="sxs-lookup"><span data-stu-id="eb093-103">In this tutorial, you create a consumer group toobe used by a coming Azure service tooread data from your IoT hub.</span></span>
+
+<span data-ttu-id="eb093-104">tooadd центр IoT для tooyour группы потребителей, выполните следующие действия.</span><span class="sxs-lookup"><span data-stu-id="eb093-104">tooadd a consumer group tooyour IoT hub, follow these steps:</span></span>
+
+1. <span data-ttu-id="eb093-105">В hello [портал Azure](https://ms.portal.azure.com/), откройте ваш центр IoT.</span><span class="sxs-lookup"><span data-stu-id="eb093-105">In hello [Azure portal](https://ms.portal.azure.com/), open your IoT hub.</span></span>
+2. <span data-ttu-id="eb093-106">Hello левой панели щелкните **конечные точки**выберите **событий** на средней панели hello, введите имя в разделе **групп потребителей** на правой панели hello и нажмите кнопку  **Сохранить**.</span><span class="sxs-lookup"><span data-stu-id="eb093-106">In hello left pane, click **Endpoints**, select **Events** on hello middle pane, enter a name under **Consumer groups** on hello right pane, and then click **Save**.</span></span>
+
+   ![Создание группы потребителей в Центре Интернета вещей](../articles/iot-hub/media/iot-hub-create-consumer-group/1_iot-hub-create-consumer-group-azure.png)

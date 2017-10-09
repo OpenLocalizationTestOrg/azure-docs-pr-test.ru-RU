@@ -1,0 +1,7 @@
+
+1. <span data-ttu-id="11861-101">В hello [портал Azure](https://portal.azure.com/), нажмите кнопку **просмотреть все** > **службы приложений**и нажмите кнопку вашей серверной части мобильных приложений.</span><span class="sxs-lookup"><span data-stu-id="11861-101">In hello [Azure portal](https://portal.azure.com/), click **Browse All** > **App Services**, and click your Mobile Apps back end.</span></span> <span data-ttu-id="11861-102">В разделе **Параметры** щелкните **App Service Push** (Push-уведомления службы приложений) и выберите имя центра уведомлений.</span><span class="sxs-lookup"><span data-stu-id="11861-102">Under **Settings**, click **App Service Push**, and then click your notification hub name.</span></span>
+2. <span data-ttu-id="11861-103">Go слишком**Windows (WNS)**, введите hello **ключ безопасности** (секретный) и **ИД безопасности пакета** , полученный от узла службы Live hello и нажмите кнопку  **Сохранить**.</span><span class="sxs-lookup"><span data-stu-id="11861-103">Go too**Windows (WNS)**, enter hello **Security key** (client secret) and **Package SID** that you obtained from hello Live Services site, and then click **Save**.</span></span>
+
+    ![Портал hello, настройте раздел WNS hello](./media/app-service-mobile-configure-wns/mobile-push-wns-credentials.png)
+
+<span data-ttu-id="11861-105">В серверной части больше не настроенный toouse WNS toosend push-уведомлений.</span><span class="sxs-lookup"><span data-stu-id="11861-105">Your back end is now configured toouse WNS toosend push notifications.</span></span>

@@ -1,14 +1,14 @@
-<span data-ttu-id="68610-101">Создайте план службы приложений, выполнив команду [az appservice plan create](/cli/azure/appservice/plan#create).</span><span class="sxs-lookup"><span data-stu-id="68610-101">Create an App Service plan with the [az appservice plan create](/cli/azure/appservice/plan#create) command.</span></span>
+<span data-ttu-id="1a4c8-101">Создать план служб приложений с hello [создать план служб приложений az](/cli/azure/appservice/plan#create) команды.</span><span class="sxs-lookup"><span data-stu-id="1a4c8-101">Create an App Service plan with hello [az appservice plan create](/cli/azure/appservice/plan#create) command.</span></span>
 
 [!INCLUDE [app-service-plan](app-service-plan.md)]
 
-<span data-ttu-id="68610-102">В следующем примере создается план службы приложений с именем `myAppServicePlan` и ценовой категорией **Бесплатный**.</span><span class="sxs-lookup"><span data-stu-id="68610-102">The following example creates an App Service plan named `myAppServicePlan` in the **Free** pricing tier:</span></span>
+<span data-ttu-id="1a4c8-102">Hello следующий пример создает план службы приложений с именем `myAppServicePlan` в hello **Free** ценовой категории:</span><span class="sxs-lookup"><span data-stu-id="1a4c8-102">hello following example creates an App Service plan named `myAppServicePlan` in hello **Free** pricing tier:</span></span>
 
 ```azurecli-interactive
 az appservice plan create --name myAppServicePlan --resource-group myResourceGroup --sku FREE
 ```
 
-<span data-ttu-id="68610-103">После создания плана службы приложений в Azure CLI отображается информация следующего вида:</span><span class="sxs-lookup"><span data-stu-id="68610-103">When the App Service plan has been created, the Azure CLI shows information similar to the following example:</span></span>
+<span data-ttu-id="1a4c8-103">При создании плана служб приложений hello hello Azure CLI показано toohello аналогичные сведения, следующий пример:</span><span class="sxs-lookup"><span data-stu-id="1a4c8-103">When hello App Service plan has been created, hello Azure CLI shows information similar toohello following example:</span></span>
 
 ```json
 { 

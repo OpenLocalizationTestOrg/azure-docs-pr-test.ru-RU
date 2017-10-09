@@ -1,0 +1,12 @@
+> [!IMPORTANT] 
+> <span data-ttu-id="0311e-101">Начиная с 1 марта 2017 г. Невозможно создать новые каналы ExpressRoute в hello классической модели развертывания.</span><span class="sxs-lookup"><span data-stu-id="0311e-101">As of March 1, 2017, you can't create new ExpressRoute circuits in hello classic deployment model.</span></span>
+> 
+> - <span data-ttu-id="0311e-102">Можно переместить существующей цепи ExpressRoute из hello классической модели toohello диспетчера ресурсов развертывания модели развертывания без возникновения любой подключение по времени.</span><span class="sxs-lookup"><span data-stu-id="0311e-102">You can move an existing ExpressRoute circuit from hello classic deployment model toohello Resource Manager deployment model without experiencing any connectivity down time.</span></span> <span data-ttu-id="0311e-103">Дополнительные сведения см. в статье [Перемещение каналов ExpressRoute из классической модели развертывания в модель развертывания с помощью Resource Manager](../articles/expressroute/expressroute-move.md).</span><span class="sxs-lookup"><span data-stu-id="0311e-103">For more information, see [Move an existing circuit](../articles/expressroute/expressroute-move.md).</span></span>
+> - <span data-ttu-id="0311e-104">Можно подключиться к сетям toovirtual в hello классической модели развертывания, задав **allowClassicOperations** tooTRUE.</span><span class="sxs-lookup"><span data-stu-id="0311e-104">You can connect toovirtual networks in hello classic deployment model by setting **allowClassicOperations** tooTRUE.</span></span>
+> 
+> <span data-ttu-id="0311e-105">Используйте следующие ссылки toocreate hello и управления каналами ExpressRoute в модели развертывания диспетчера ресурсов hello:</span><span class="sxs-lookup"><span data-stu-id="0311e-105">Use hello following links toocreate and manage ExpressRoute circuits in hello Resource Manager deployment model:</span></span>
+
+> - [<span data-ttu-id="0311e-106">Создание каналов ExpressRoute и управление ими</span><span class="sxs-lookup"><span data-stu-id="0311e-106">Create and manage ExpressRoute circuits</span></span>](../articles/expressroute/expressroute-howto-circuit-portal-resource-manager.md)<br>
+> - [<span data-ttu-id="0311e-107">Настройка маршрутизации (пиринга) для каналов ExpressRoute</span><span class="sxs-lookup"><span data-stu-id="0311e-107">Configure routing (peering) for ExpressRoute circuits</span></span>](../articles/expressroute/expressroute-howto-routing-portal-resource-manager.md)
+>
+>

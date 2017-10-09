@@ -1,6 +1,6 @@
 ---
-title: "Что произошло с моим проектом облачных служб? | Документация Майкрософт"
-description: "Сведения о том, что происходит в проекте облачных служб после подключения к учетной записи хранения Azure с помощью подключенных служб Visual Studio"
+title: "aaaWhat произошло toomy проекта облачной службы? | Документация Майкрософт"
+description: "Описывает, что происходит в проекте облачных служб, после подключения tooan учетной записи хранилища Azure с помощью Visual Studio подключенные службы"
 services: storage
 documentationcenter: 
 author: TomArcher
@@ -14,30 +14,30 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/02/2016
 ms.author: tarcher
-ms.openlocfilehash: 4e0d4864c2fad624fbde39080146dc62ebebff09
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 65662dde45dd75bca1b57022283f76305f95e94a
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="what-happened-to-my-cloud-services-project-visual-studio-azure-storage-connected-service"></a><span data-ttu-id="19f76-104">Что произошло с моим проектом облачных служб (подключенными к службе хранилища Azure службами Visual Studio)?</span><span class="sxs-lookup"><span data-stu-id="19f76-104">What happened to my cloud services project (Visual Studio Azure Storage connected service)?</span></span>
-## <a name="references-added"></a><span data-ttu-id="19f76-105">Добавлены ссылки</span><span class="sxs-lookup"><span data-stu-id="19f76-105">References added</span></span>
-<span data-ttu-id="19f76-106">Пакет NuGet хранилища Azure был добавлен в проект Visual Studio.</span><span class="sxs-lookup"><span data-stu-id="19f76-106">The Azure Storage NuGet package was added to your Visual Studio project.</span></span>  
-<span data-ttu-id="19f76-107">Этот пакет добавляет следующие ссылки .NET:</span><span class="sxs-lookup"><span data-stu-id="19f76-107">This package adds the following .NET references:</span></span>
+# <a name="what-happened-toomy-cloud-services-project-visual-studio-azure-storage-connected-service"></a><span data-ttu-id="8b245-104">Какая ошибка toomy проектами облачных служб (службы Visual Studio службы хранилища Azure подключен)?</span><span class="sxs-lookup"><span data-stu-id="8b245-104">What happened toomy cloud services project (Visual Studio Azure Storage connected service)?</span></span>
+## <a name="references-added"></a><span data-ttu-id="8b245-105">Добавлены ссылки</span><span class="sxs-lookup"><span data-stu-id="8b245-105">References added</span></span>
+<span data-ttu-id="8b245-106">пакет NuGet хранилища Azure Hello был добавлен tooyour проекта Visual Studio.</span><span class="sxs-lookup"><span data-stu-id="8b245-106">hello Azure Storage NuGet package was added tooyour Visual Studio project.</span></span>  
+<span data-ttu-id="8b245-107">Этот пакет добавляет hello следующие ссылки .NET:</span><span class="sxs-lookup"><span data-stu-id="8b245-107">This package adds hello following .NET references:</span></span>
 
-* <span data-ttu-id="19f76-108">**Microsoft.Data.Edm**</span><span class="sxs-lookup"><span data-stu-id="19f76-108">**Microsoft.Data.Edm**</span></span>
-* <span data-ttu-id="19f76-109">**Microsoft.Data.OData**</span><span class="sxs-lookup"><span data-stu-id="19f76-109">**Microsoft.Data.OData**</span></span>
-* <span data-ttu-id="19f76-110">**Microsoft.Data.Services.Client**</span><span class="sxs-lookup"><span data-stu-id="19f76-110">**Microsoft.Data.Services.Client**</span></span>
-* <span data-ttu-id="19f76-111">**Microsoft.WindowsAzure.Configuration**</span><span class="sxs-lookup"><span data-stu-id="19f76-111">**Microsoft.WindowsAzure.Configuration**</span></span>
-* <span data-ttu-id="19f76-112">**Microsoft.WindowsAzure.Storage**</span><span class="sxs-lookup"><span data-stu-id="19f76-112">**Microsoft.WindowsAzure.Storage**</span></span>
-* <span data-ttu-id="19f76-113">**Newtonsoft.Json**</span><span class="sxs-lookup"><span data-stu-id="19f76-113">**Newtonsoft.Json**</span></span>
-* <span data-ttu-id="19f76-114">**System.Data**</span><span class="sxs-lookup"><span data-stu-id="19f76-114">**System.Data**</span></span>
-* <span data-ttu-id="19f76-115">**System.Spatial**</span><span class="sxs-lookup"><span data-stu-id="19f76-115">**System.Spatial**</span></span>
+* <span data-ttu-id="8b245-108">**Microsoft.Data.Edm**</span><span class="sxs-lookup"><span data-stu-id="8b245-108">**Microsoft.Data.Edm**</span></span>
+* <span data-ttu-id="8b245-109">**Microsoft.Data.OData**</span><span class="sxs-lookup"><span data-stu-id="8b245-109">**Microsoft.Data.OData**</span></span>
+* <span data-ttu-id="8b245-110">**Microsoft.Data.Services.Client**</span><span class="sxs-lookup"><span data-stu-id="8b245-110">**Microsoft.Data.Services.Client**</span></span>
+* <span data-ttu-id="8b245-111">**Microsoft.WindowsAzure.Configuration**</span><span class="sxs-lookup"><span data-stu-id="8b245-111">**Microsoft.WindowsAzure.Configuration**</span></span>
+* <span data-ttu-id="8b245-112">**Microsoft.WindowsAzure.Storage**</span><span class="sxs-lookup"><span data-stu-id="8b245-112">**Microsoft.WindowsAzure.Storage**</span></span>
+* <span data-ttu-id="8b245-113">**Newtonsoft.Json**</span><span class="sxs-lookup"><span data-stu-id="8b245-113">**Newtonsoft.Json**</span></span>
+* <span data-ttu-id="8b245-114">**System.Data**</span><span class="sxs-lookup"><span data-stu-id="8b245-114">**System.Data**</span></span>
+* <span data-ttu-id="8b245-115">**System.Spatial**</span><span class="sxs-lookup"><span data-stu-id="8b245-115">**System.Spatial**</span></span>
 
-## <a name="connection-string-for-azure-storage-added"></a><span data-ttu-id="19f76-116">Добавлена строка подключения к хранилищу Azure</span><span class="sxs-lookup"><span data-stu-id="19f76-116">Connection string for Azure Storage added</span></span>
-<span data-ttu-id="19f76-117">Созданы элементы с ключом и строкой подключения выбранной учетной записи хранилища.</span><span class="sxs-lookup"><span data-stu-id="19f76-117">Elements were created with the selected storage account's connection string and key.</span></span> <span data-ttu-id="19f76-118">Внесены изменения в следующие файлы:</span><span class="sxs-lookup"><span data-stu-id="19f76-118">Modifications were made to the following files:</span></span>
+## <a name="connection-string-for-azure-storage-added"></a><span data-ttu-id="8b245-116">Добавлена строка подключения к хранилищу Azure</span><span class="sxs-lookup"><span data-stu-id="8b245-116">Connection string for Azure Storage added</span></span>
+<span data-ttu-id="8b245-117">Элементы были созданы с помощью строки подключения и ключа учетной записи хранилища hello выбран.</span><span class="sxs-lookup"><span data-stu-id="8b245-117">Elements were created with hello selected storage account's connection string and key.</span></span> <span data-ttu-id="8b245-118">Изменений toohello следующие файлы:</span><span class="sxs-lookup"><span data-stu-id="8b245-118">Modifications were made toohello following files:</span></span>
 
-* <span data-ttu-id="19f76-119">**ServiceDefinition.csdef**</span><span class="sxs-lookup"><span data-stu-id="19f76-119">**ServiceDefinition.csdef**</span></span>
-* <span data-ttu-id="19f76-120">**ServiceConfiguration.Cloud.cscfg**</span><span class="sxs-lookup"><span data-stu-id="19f76-120">**ServiceConfiguration.Cloud.cscfg**</span></span>
-* <span data-ttu-id="19f76-121">**ServiceConfiguration.Local.cscfg**</span><span class="sxs-lookup"><span data-stu-id="19f76-121">**ServiceConfiguration.Local.cscfg**</span></span>
+* <span data-ttu-id="8b245-119">**ServiceDefinition.csdef**</span><span class="sxs-lookup"><span data-stu-id="8b245-119">**ServiceDefinition.csdef**</span></span>
+* <span data-ttu-id="8b245-120">**ServiceConfiguration.Cloud.cscfg**</span><span class="sxs-lookup"><span data-stu-id="8b245-120">**ServiceConfiguration.Cloud.cscfg**</span></span>
+* <span data-ttu-id="8b245-121">**ServiceConfiguration.Local.cscfg**</span><span class="sxs-lookup"><span data-stu-id="8b245-121">**ServiceConfiguration.Local.cscfg**</span></span>
 

@@ -1,22 +1,22 @@
-<span data-ttu-id="4752e-101">Чтобы добавить тег к группе ресурсов, используйте **набор групп Azure**.</span><span class="sxs-lookup"><span data-stu-id="4752e-101">To add a tag to a resource group, use **azure group set**.</span></span> <span data-ttu-id="4752e-102">Если у группы ресурсов нет тегов, передайте один.</span><span class="sxs-lookup"><span data-stu-id="4752e-102">If the resource group does not have any existing tags, pass in the tag.</span></span>
+<span data-ttu-id="e0bff-101">использовать tooadd группу ресурсов тег tooa **набор групп azure**.</span><span class="sxs-lookup"><span data-stu-id="e0bff-101">tooadd a tag tooa resource group, use **azure group set**.</span></span> <span data-ttu-id="e0bff-102">Если группа ресурсов hello не имеет существующие теги, передайте тег hello.</span><span class="sxs-lookup"><span data-stu-id="e0bff-102">If hello resource group does not have any existing tags, pass in hello tag.</span></span>
 
 ```azurecli
 azure group set -n tag-demo-group -t Dept=Finance
 ```
 
-<span data-ttu-id="4752e-103">При этом обновляются все теги.</span><span class="sxs-lookup"><span data-stu-id="4752e-103">Tags are updated as a whole.</span></span> <span data-ttu-id="4752e-104">Если вы хотите добавить тег к группе ресурсов, в которой уже есть теги, передайте их все.</span><span class="sxs-lookup"><span data-stu-id="4752e-104">If you want to add a tag to a resource group that has existing tags, pass all the tags.</span></span> 
+<span data-ttu-id="e0bff-103">При этом обновляются все теги.</span><span class="sxs-lookup"><span data-stu-id="e0bff-103">Tags are updated as a whole.</span></span> <span data-ttu-id="e0bff-104">Если вы хотите tooadd группу ресурсов tooa тег с существующие теги, передайте все теги hello.</span><span class="sxs-lookup"><span data-stu-id="e0bff-104">If you want tooadd a tag tooa resource group that has existing tags, pass all hello tags.</span></span> 
 
 ```azurecli
 azure group set -n tag-demo-group -t Dept=Finance;Environment=Production;Project=Upgrade
 ```
 
-<span data-ttu-id="4752e-105">Ресурсы не унаследуют теги в группе ресурсов.</span><span class="sxs-lookup"><span data-stu-id="4752e-105">Tags are not inherited by resources in a resource group.</span></span> <span data-ttu-id="4752e-106">Чтобы добавить тег к ресурсу, используйте **набор ресурсов Azure**.</span><span class="sxs-lookup"><span data-stu-id="4752e-106">To add a tag to a resource, use **azure resource set**.</span></span> <span data-ttu-id="4752e-107">Передайте номер версии API для типа ресурса, к которому добавляется тег.</span><span class="sxs-lookup"><span data-stu-id="4752e-107">Pass the API version number for the resource type that you are adding the tag to.</span></span> <span data-ttu-id="4752e-108">Если нужно получить версию API, используйте следующую команду, указав поставщик для настраиваемого типа ресурсов:</span><span class="sxs-lookup"><span data-stu-id="4752e-108">If you need to retrieve the API version, use the following command with the resource provider for the type you are setting:</span></span>
+<span data-ttu-id="e0bff-105">Ресурсы не унаследуют теги в группе ресурсов.</span><span class="sxs-lookup"><span data-stu-id="e0bff-105">Tags are not inherited by resources in a resource group.</span></span> <span data-ttu-id="e0bff-106">использовать tooadd ресурс tooa тег **набор ресурсов azure**.</span><span class="sxs-lookup"><span data-stu-id="e0bff-106">tooadd a tag tooa resource, use **azure resource set**.</span></span> <span data-ttu-id="e0bff-107">Передайте hello номер версии API для hello тип ресурса, который вы добавляете тег hello.</span><span class="sxs-lookup"><span data-stu-id="e0bff-107">Pass hello API version number for hello resource type that you are adding hello tag to.</span></span> <span data-ttu-id="e0bff-108">При необходимости tooretrieve hello API версии используйте следующую команду с поставщиком ресурсов hello для типа hello установки hello:</span><span class="sxs-lookup"><span data-stu-id="e0bff-108">If you need tooretrieve hello API version, use hello following command with hello resource provider for hello type you are setting:</span></span>
 
 ```azurecli
 azure provider show -n Microsoft.Storage --json
 ```
 
-<span data-ttu-id="4752e-109">В результатах найдите нужный тип ресурса.</span><span class="sxs-lookup"><span data-stu-id="4752e-109">In the results, look for the resource type you want.</span></span>
+<span data-ttu-id="e0bff-109">В результатах hello поиск нужного типа ресурса hello.</span><span class="sxs-lookup"><span data-stu-id="e0bff-109">In hello results, look for hello resource type you want.</span></span>
 
 ```azurecli
 "resourceTypes": [
@@ -32,19 +32,19 @@ azure provider show -n Microsoft.Storage --json
 ...
 ```
 
-<span data-ttu-id="4752e-110">Теперь укажите эту версию API, имя группы ресурсов, имя ресурса, тип ресурса и значение тега в качестве параметров.</span><span class="sxs-lookup"><span data-stu-id="4752e-110">Now, provide that API version, resource group name, resource name, resource type, and tag value as parameters.</span></span>
+<span data-ttu-id="e0bff-110">Теперь укажите эту версию API, имя группы ресурсов, имя ресурса, тип ресурса и значение тега в качестве параметров.</span><span class="sxs-lookup"><span data-stu-id="e0bff-110">Now, provide that API version, resource group name, resource name, resource type, and tag value as parameters.</span></span>
 
 ```azurecli
 azure resource set -g tag-demo-group -n storagetagdemo -r Microsoft.Storage/storageAccounts -t Dept=Finance -o 2016-01-01
 ```
 
-<span data-ttu-id="4752e-111">Существующие теги находятся непосредственно в ресурсах и группах ресурсов.</span><span class="sxs-lookup"><span data-stu-id="4752e-111">Tags exist directly on resources and resource groups.</span></span> <span data-ttu-id="4752e-112">Чтобы просмотреть существующие теги, запросите сведения о группе ресурсов и ее ресурсах с помощью команды **azure group show**.</span><span class="sxs-lookup"><span data-stu-id="4752e-112">To see the existing tags, get a resource group and its resources with **azure group show**.</span></span>
+<span data-ttu-id="e0bff-111">Существующие теги находятся непосредственно в ресурсах и группах ресурсов.</span><span class="sxs-lookup"><span data-stu-id="e0bff-111">Tags exist directly on resources and resource groups.</span></span> <span data-ttu-id="e0bff-112">существующие теги hello toosee получить группу ресурсов и его ресурсы с **Показать группу azure**.</span><span class="sxs-lookup"><span data-stu-id="e0bff-112">toosee hello existing tags, get a resource group and its resources with **azure group show**.</span></span>
 
 ```azurecli
 azure group show -n tag-demo-group --json
 ```
 
-<span data-ttu-id="4752e-113">Отобразятся метаданные о группе ресурсов, включая все примененные к ней теги.</span><span class="sxs-lookup"><span data-stu-id="4752e-113">Which returns metadata about the resource group, including any tags applied to it.</span></span>
+<span data-ttu-id="e0bff-113">Которая возвращает метаданные о hello группы ресурсов, включая любые теги, примененные tooit.</span><span class="sxs-lookup"><span data-stu-id="e0bff-113">Which returns metadata about hello resource group, including any tags applied tooit.</span></span>
 
 ```azurecli
 {
@@ -63,25 +63,25 @@ azure group show -n tag-demo-group --json
 }
 ```
 
-<span data-ttu-id="4752e-114">Теги для конкретного ресурса можно просмотреть с помощью команды **azure resource show**.</span><span class="sxs-lookup"><span data-stu-id="4752e-114">You view the tags for a particular resource by using **azure resource show**.</span></span>
+<span data-ttu-id="e0bff-114">Просмотр hello тегов для определенного ресурса с помощью **Показать ресурсов azure**.</span><span class="sxs-lookup"><span data-stu-id="e0bff-114">You view hello tags for a particular resource by using **azure resource show**.</span></span>
 
 ```azurecli
 azure resource show -g tag-demo-group -n storagetagdemo -r Microsoft.Storage/storageAccounts -o 2016-01-01 --json
 ```
 
-<span data-ttu-id="4752e-115">Чтобы получить все ресурсы со значением тега, используйте следующую команду:</span><span class="sxs-lookup"><span data-stu-id="4752e-115">To retrieve all the resources with a tag value, use:</span></span>
+<span data-ttu-id="e0bff-115">tooretrieve использовать все ресурсы hello со значением тега:</span><span class="sxs-lookup"><span data-stu-id="e0bff-115">tooretrieve all hello resources with a tag value, use:</span></span>
 
 ```azurecli
 azure resource list -t Dept=Finance --json
 ```
 
-<span data-ttu-id="4752e-116">Чтобы получить все группы ресурсов со значением тега, используйте следующую команду:</span><span class="sxs-lookup"><span data-stu-id="4752e-116">To retrieve all the resource groups with a tag value, use:</span></span>
+<span data-ttu-id="e0bff-116">Используйте для всех групп ресурсов hello со значением тега tooretrieve:</span><span class="sxs-lookup"><span data-stu-id="e0bff-116">tooretrieve all hello resource groups with a tag value, use:</span></span>
 
 ```azurecli
 azure group list -t Dept=Finance
 ```
 
-<span data-ttu-id="4752e-117">Чтобы просмотреть существующие теги в подписке, используйте следующую команду:</span><span class="sxs-lookup"><span data-stu-id="4752e-117">You can view the existing tags in your subscription with the following command:</span></span>
+<span data-ttu-id="e0bff-117">Можно просматривать существующие теги hello в вашей подписке на hello следующую команду:</span><span class="sxs-lookup"><span data-stu-id="e0bff-117">You can view hello existing tags in your subscription with hello following command:</span></span>
 
 ```azurecli
 azure tag list

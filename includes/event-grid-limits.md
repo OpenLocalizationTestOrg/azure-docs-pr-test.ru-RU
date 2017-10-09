@@ -1,0 +1,4 @@
+| <span data-ttu-id="c41c7-101">Ресурс</span><span class="sxs-lookup"><span data-stu-id="c41c7-101">Resource</span></span> | <span data-ttu-id="c41c7-102">Ограничение</span><span class="sxs-lookup"><span data-stu-id="c41c7-102">Limit</span></span> |
+| --- | --- |
+| <span data-ttu-id="c41c7-103">Подписки на события в одном регионе Azure</span><span class="sxs-lookup"><span data-stu-id="c41c7-103">Event Subscriptions per region</span></span> |<span data-ttu-id="c41c7-104">1000</span><span class="sxs-lookup"><span data-stu-id="c41c7-104">1000</span></span> |
+| <span data-ttu-id="c41c7-105">Пользовательские разделы для региона</span><span class="sxs-lookup"><span data-stu-id="c41c7-105">Custom Topics per region</span></span> |<span data-ttu-id="c41c7-106">20</span><span class="sxs-lookup"><span data-stu-id="c41c7-106">20</span></span> |

@@ -1,0 +1,17 @@
+<!--author=SharS last changed: 9/17/15-->
+
+#### <a name="tooinstall-maintenance-mode-hotfixes-via-windows-powershell-for-storsimple"></a><span data-ttu-id="eac7c-101">tooinstall исправлений в режиме обслуживания через Windows PowerShell для StorSimple</span><span class="sxs-lookup"><span data-stu-id="eac7c-101">tooinstall Maintenance mode hotfixes via Windows PowerShell for StorSimple</span></span>
+> [!IMPORTANT]
+> <span data-ttu-id="eac7c-102">В режиме обслуживания сначала требуется tooapply hello исправления на одном контроллере и затем на hello другой контроллер.</span><span class="sxs-lookup"><span data-stu-id="eac7c-102">In Maintenance mode, you need tooapply hello hotfix first on one controller and then on hello other controller.</span></span>
+> 
+> 
+
+1. <span data-ttu-id="eac7c-103">Поместите hello устройства в режим обслуживания.</span><span class="sxs-lookup"><span data-stu-id="eac7c-103">Place hello device into Maintenance mode.</span></span> <span data-ttu-id="eac7c-104">В разделе [шаг 2: режим обслуживания, введите](../articles/storsimple/storsimple-update-device.md#step2) инструкции tooenter режима обслуживания.</span><span class="sxs-lookup"><span data-stu-id="eac7c-104">See [Step 2: Enter Maintenance mode](../articles/storsimple/storsimple-update-device.md#step2) for instructions on how tooenter Maintenance mode.</span></span>
+2. <span data-ttu-id="eac7c-105">исправление tooapply hello, тип:</span><span class="sxs-lookup"><span data-stu-id="eac7c-105">tooapply hello hotfix, type:</span></span>
+   
+     `Start-HcsHotfix` 
+3. <span data-ttu-id="eac7c-106">При появлении запроса укажите hello путь toohello общей сетевой папке, содержащей файлы исправлений hello.</span><span class="sxs-lookup"><span data-stu-id="eac7c-106">When prompted, supply hello path toohello network shared folder that contains hello hotfix files.</span></span>
+4. <span data-ttu-id="eac7c-107">После этого введите подтверждение для применения этих исправлений.</span><span class="sxs-lookup"><span data-stu-id="eac7c-107">You will be prompted for confirmation.</span></span> <span data-ttu-id="eac7c-108">Тип **Y** tooproceed с установкой исправления hello.</span><span class="sxs-lookup"><span data-stu-id="eac7c-108">Type **Y** tooproceed with hello hotfix installation.</span></span>
+5. <span data-ttu-id="eac7c-109">После применения исправления hello на одном контроллере, вход в систему toohello другой контроллер.</span><span class="sxs-lookup"><span data-stu-id="eac7c-109">After you have applied hello hotfix on one controller, log on toohello other controller.</span></span> <span data-ttu-id="eac7c-110">Примените исправление hello, как и для предыдущего контроллера hello.</span><span class="sxs-lookup"><span data-stu-id="eac7c-110">Apply hello hotfix as you did for hello previous controller.</span></span>
+6. <span data-ttu-id="eac7c-111">После применения исправления hello, выйдите из режима обслуживания.</span><span class="sxs-lookup"><span data-stu-id="eac7c-111">After hello hotfixes are applied, exit Maintenance mode.</span></span> <span data-ttu-id="eac7c-112">Инструкции см. в разделе [Шаг 4. Выход из режима обслуживания](../articles/storsimple/storsimple-update-device.md#step4).</span><span class="sxs-lookup"><span data-stu-id="eac7c-112">See [Step 4: Exit Maintenance mode](../articles/storsimple/storsimple-update-device.md#step4) for instructions.</span></span>
+
