@@ -1,6 +1,6 @@
 ---
-title: "элементы marketplace aaaDownload из Azure | Документы Microsoft"
-description: "Элементы marketplace можно загрузить из Azure toomy развертывания Azure стека."
+title: "Загрузить элементы marketplace из Azure | Документы Microsoft"
+description: "Мои развертывание стека Azure можно загрузить элементы marketplace из Azure."
 services: azure-stack
 documentationcenter: 
 author: ErikjeMS
@@ -14,21 +14,23 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/03/2017
 ms.author: erikje
-ms.openlocfilehash: 734470fbacc09617908a2f6db9107ffa9c39e51d
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 4d7c335a3c68cc9bb8cb0c823883716a3dd6620a
+ms.sourcegitcommit: 90e2cced6a773b1b52f999ba73cd8877305d270b
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/13/2017
 ---
-# <a name="download-marketplace-items-from-azure-tooazure-stack"></a>Загрузить элементы marketplace из Azure tooAzure стека
+# <a name="download-marketplace-items-from-azure-to-azure-stack"></a>Загрузить элементы marketplace из Azure в стек Azure
 
-Как вы решите какие tooinclude содержимого в вашей стек Azure marketplace, рассмотрите возможность hello содержимого, доступного из hello Azure marketplace. Можно загрузить из проверенного список элементов Azure marketplace, которые были заранее протестированных toorun стек Azure. Список toothis часто добавляются новые элементы, поэтому убедитесь, что следите за новым содержимым.
+*Применяется к: стек Azure интегрированных систем и пакет средств разработки стек Azure*
 
-элементы marketplace toodownload, сначала необходимо выполнить [Azure стеком регистров с помощью Azure](azure-stack-register.md). 
+Как вы решите, какое содержимое для включения в ваш стек Azure marketplace, рассмотрите возможность содержимое из Azure marketplace. Можно загрузить из списка проверенного Azure marketplace элементов, которые были заранее протестированных для запуска на Azure стека. Часто новые элементы добавляются в этот список, поэтому убедитесь, что следите за новым содержимым.
+
+Чтобы загрузить элементы marketplace, сначала необходимо выполнить [Azure стеком регистров с помощью Azure](azure-stack-register.md). 
 
 ## <a name="download"></a>Загрузить
-1. Войдите в систему toohello портала администратора Azure стека (https://portal.local.azurestack.external).
-2. Некоторые элементы marketplace может быть очень большим.  Проверьте toomake убедиться, что имеется достаточно места на компьютере, щелкнув **поставщиков ресурсов** > **хранения**.
+1. Войдите в портал администратора Azure стека (https://portal.local.azurestack.external).
+2. Некоторые элементы marketplace может быть очень большим.  Убедитесь, что имеется достаточно места на компьютере, щелкнув **поставщиков ресурсов** > **хранения**.
 
     ![](media/azure-stack-download-azure-marketplace-item/image01.png)
 
@@ -36,16 +38,16 @@ ms.lasthandoff: 10/06/2017
 
     ![](media/azure-stack-download-azure-marketplace-item/image02.png)
 
-4. Нажмите кнопку **добавить из Azure** toosee список элементов, доступных для загрузки. Можно щелкнуть ее описание каждого элемента в списке tooview hello и размер загружаемого файла.
+4. Нажмите кнопку **добавить из Azure** для просмотра списка элементов, доступных для загрузки. Можно щелкнуть каждый элемент в списке, чтобы просмотреть ее описание и размер загружаемого файла.
 
     ![](media/azure-stack-download-azure-marketplace-item/image03.png)
 
-5. Элемент SELECT hello hello списка и нажмите кнопку **загрузить**. Запустится загрузка образа виртуальной Машины hello для выбранного элемента hello. Время загрузки различаются.
+5. Выберите элемент в списке и нажмите кнопку **загрузить**. Запустится загрузка образа виртуальной Машины для выбранного элемента. Время загрузки различаются.
 
     ![](media/azure-stack-download-azure-marketplace-item/image04.png)
 
-6. После завершения загрузки hello, вы можете развернуть новый элемент marketplace как оператор облака или пользователь клиента. Нажмите кнопку **+ создать**, поиск среди hello категории для hello создать элемент marketplace, а затем выберите элемент hello.
-7. Нажмите кнопку **создать** tooopen копирование hello возможности создания для hello вновь загружена элемента. Выполните пошаговые инструкции toodeploy hello ваш элемент.
+6. После завершения загрузки, можно развернуть новый элемент marketplace как оператор стек Azure или пользователя. Нажмите кнопку **+ создать**, поиск среди категории для нового элемента marketplace, а затем выберите элемент.
+7. Нажмите кнопку **создать** открывая процесс создания для вновь загруженного элемента. Выполните пошаговые инструкции для развертывания вашего элемента.
 
 ## <a name="next-steps"></a>Дальнейшие действия
 

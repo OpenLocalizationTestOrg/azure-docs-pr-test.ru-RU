@@ -1,6 +1,6 @@
 ---
-title: "aaaAdd ВМ по умолчанию hello образа marketplace стек Azure toohello | Документы Microsoft"
-description: "Добавьте hello виртуальной Машины Windows Server 2016 по умолчанию изображение toohello стека Azure marketplace."
+title: "Добавление образа виртуальной Машины по умолчанию в стек Azure Marketplace | Документы Microsoft"
+description: "Добавьте образ виртуальной Машины Windows Server 2016 по умолчанию в стек Azure Marketplace."
 services: azure-stack
 documentationcenter: 
 author: SnehaGunda
@@ -14,70 +14,76 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/10/2017
 ms.author: sngun
-ms.openlocfilehash: 9b5a6f4e4c73c706b059e3c3622a968b5eef9a27
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 43781cb025865df1d228376f57412f3d482d3ad0
+ms.sourcegitcommit: 90e2cced6a773b1b52f999ba73cd8877305d270b
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/13/2017
 ---
-# <a name="add-hello-windows-server-2016-vm-image-toohello-azure-stack-marketplace"></a>Добавить hello виртуальной Машины Windows Server 2016 изображения toohello стека Azure marketplace
+# <a name="add-the-windows-server-2016-vm-image-to-the-azure-stack-marketplace"></a>Добавить образ виртуальной Машины Windows Server 2016 в стек Azure Marketplace
 
-По умолчанию отсутствуют все образы виртуальных машин в hello стек Azure marketplace. администратору облака Azure стека Hello необходимо добавить toohello образа marketplace, чтобы пользователи могли использовать их. Windows Server 2016 hello изображения toohello стека Azure marketplace можно добавить с помощью одного из следующих двух методов hello:
+По умолчанию отсутствуют все образы виртуальных машин в стек Azure marketplace. Оператор стек Azure необходимо добавить изображение в Marketplace, чтобы пользователи могли использовать их. Образ Windows Server 2016 в стек Azure Marketplace можно добавить с помощью одного из следующих двух способов:
 
-* [Добавить изображение hello, загрузив его с hello Azure Marketplace](#add-the-image-by-downloading-it-from-the-Azure-marketplace) -используйте этот параметр, если вы работаете в сценарии подключенных и если вы зарегистрировали экземпляра Azure стека с помощью Azure.
+* [Добавить изображение, загрузив его из Azure Marketplace](#add-the-image-by-downloading-it-from-the-Azure-marketplace) -используйте этот параметр, если вы работаете в сценарии подключенных и если вы зарегистрировали экземпляра Azure стека с помощью Azure.
 
-* [Добавить изображение hello с помощью PowerShell](#add-the-image-by-using-powershell) -используйте этот параметр, если вы развернули стек Azure в сценарии отсоединения, или в сценариях с ограниченной подключением.
+* [Добавление изображения с помощью PowerShell](#add-the-image-by-using-powershell) -используйте этот параметр, если вы развернули стек Azure в сценарии отсоединения, или в сценариях с ограниченной подключением.
 
-## <a name="add-hello-image-by-downloading-it-from-hello-azure-marketplace"></a>Добавить изображение hello, загрузив его с hello Azure Marketplace
+## <a name="add-the-image-by-downloading-it-from-the-azure-marketplace"></a>Добавить изображение, загрузив его из Azure Marketplace
 
-1. После развертывания Azure стека, войдите в tooyour пакет средств разработки Azure стека.
+1. После развертывания Azure стека, войдите в ваш пакет средств разработки Azure стека.
 
 2. Нажмите кнопку **дополнительные службы** > **управления Marketplace** > **добавить из Azure** 
 
-3. Поиск или поиск hello **Windows Server 2016 центра обработки данных — Eval** изображение > щелкните **загрузки**
+3. Поиск **Windows Server 2016 центра обработки данных — Eval** изображение > щелкните **загрузки**
 
    ![Загрузите образ из Azure](media/azure-stack-add-default-image/download-image.png)
 
-После завершения загрузки hello hello изображение будет добавлено toohello **управления Marketplace** колонки и он также доступен из hello **виртуальные машины** колонку.
+После завершения загрузки, изображение будет добавлено к **управления Marketplace** колонки и он также доступен из **виртуальные машины** колонку.
 
-## <a name="add-hello-image-by-using-powershell"></a>Добавить изображение hello с помощью PowerShell
+## <a name="add-the-image-by-using-powershell"></a>Добавление изображения с помощью PowerShell
 
 ### <a name="prerequisites"></a>Предварительные требования 
 
-Запустите hello следующие необходимые компоненты из hello [пакет средств разработки](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-remote-desktop), или из внешнего клиента Windows в случае [подключен через виртуальную частную сеть](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-vpn):
+Выполнить следующие предварительные требования, либо из [пакет средств разработки](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-remote-desktop), или из внешнего клиента Windows в случае [подключен через виртуальную частную сеть](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-vpn):
 
 * Установка [модули Azure PowerShell Azure стека совместимой](azure-stack-powershell-install.md).  
 
-* Загрузите hello [toowork необходимые средства с Azure стека](azure-stack-powershell-download.md).  
+* Загрузить [инструменты, необходимые для работы с Azure стека](azure-stack-powershell-download.md).  
 
-* Go toohttps://www.microsoft.com/en-us/evalcenter/evaluate-windows-server-2016 и загрузка пробной версии Windows Server 2016 hello. При появлении запроса выберите hello **ISO** версии hello загрузки. Путь toohello записей hello загрузите расположение, которое будет использоваться в дальнейшем эти действия. Необходимо подключение к Интернету.  
+* Перейдите к https://www.microsoft.com/en-us/evalcenter/evaluate-windows-server-2016 и загрузить ознакомительную версию Windows Server 2016. При появлении запроса выберите **ISO** версию для загрузки. Запишите путь к расположению загрузки, который используется далее в этом пошаговом руководстве. Необходимо подключение к Интернету.  
 
-Теперь выполните следующие шаги tooadd hello изображения toohello стека Azure marketplace hello.
+Теперь выполните следующие действия, чтобы добавить изображение в стек Azure marketplace:
    
-1. Импортируйте модули Azure Connect стека и ComputeAdmin hello с помощью hello, следующие команды:
+1. Импортируйте модули Azure Connect стека и ComputeAdmin с помощью следующих команд:
 
    ```powershell
    Set-ExecutionPolicy RemoteSigned
 
-   # import hello Connect and ComputeAdmin modules   
+   # import the Connect and ComputeAdmin modules   
    Import-Module .\Connect\AzureStack.Connect.psm1
    Import-Module .\ComputeAdmin\AzureStack.ComputeAdmin.psm1
 
    ```
 
-2. Войдите в систему tooyour среды Azure стека. Выполнения hello следующий скрипт в зависимости от того, при развертывании среды стека Azure с помощью AAD или AD FS (Убедитесь, что tooreplace hello AAD имя клиента):  
+2. Войдите в среду Azure стека. Выполните следующий сценарий, в зависимости от среды стека Azure развертывается с помощью AAD или AD FS (Убедитесь, что для замены AAD tenantName, GraphAudience конечной точки и ArmEndpoint значения в зависимости от конфигурации вашей среды):  
 
-   а. **Azure Active Directory**, используйте следующий командлет hello:
+   а. **Azure Active Directory**, используйте следующий командлет:
 
    ```PowerShell
-   # Create hello Azure Stack cloud administrator's AzureRM environment by using hello following cmdlet:
+   # For Azure Stack development kit, this value is set to https://adminmanagement.local.azurestack.external. To get this value for Azure Stack integrated systems, contact your service provider.
+   $ArmEndpoint = "<Resource Manager endpoint for your environment>"
+
+   # For Azure Stack development kit, this value is set to https://graph.windows.net/. To get this value for Azure Stack integrated systems, contact your service provider.
+   $GraphAudience = "<GraphAuidence endpoint for your environment>"
+   
+   # Create the Azure Stack operator's AzureRM environment by using the following cmdlet:
    Add-AzureRMEnvironment `
      -Name "AzureStackAdmin" `
-     -ArmEndpoint "https://adminmanagement.local.azurestack.external" 
+     -ArmEndpoint $ArmEndpoint
 
    Set-AzureRmEnvironment `
     -Name "AzureStackAdmin" `
-    -GraphAudience "https://graph.windows.net/"
+    -GraphAudience $GraphAudience
 
    $TenantID = Get-AzsDirectoryTenantId `
      -AADTenantName "<myDirectoryTenantName>.onmicrosoft.com" `
@@ -88,17 +94,23 @@ ms.lasthandoff: 10/06/2017
      -TenantId $TenantID 
    ```
 
-   b. **Службы федерации Active Directory**, используйте следующий командлет hello:
+   b. **Службы федерации Active Directory**, используйте следующий командлет:
     
    ```PowerShell
-   # Create hello Azure Stack cloud administrator's AzureRM environment by using hello following cmdlet:
+   # For Azure Stack development kit, this value is set to https://adminmanagement.local.azurestack.external. To get this value for Azure Stack integrated systems, contact your service provider.
+   $ArmEndpoint = "<Resource Manager endpoint for your environment>"
+
+   # For Azure Stack development kit, this value is set to https://graph.local.azurestack.external/. To get this value for Azure Stack integrated systems, contact your service provider.
+   $GraphAudience = "<GraphAuidence endpoint for your environment>"
+
+   # Create the Azure Stack operator's AzureRM environment by using the following cmdlet:
    Add-AzureRMEnvironment `
      -Name "AzureStackAdmin" `
-     -ArmEndpoint "https://adminmanagement.local.azurestack.external"
+     -ArmEndpoint $ArmEndpoint
 
    Set-AzureRmEnvironment `
      -Name "AzureStackAdmin" `
-     -GraphAudience "https://graph.local.azurestack.external/" `
+     -GraphAudience $GraphAudience `
      -EnableAdfsAuthentication:$true
 
    $TenantID = Get-AzsDirectoryTenantId `
@@ -110,7 +122,7 @@ ms.lasthandoff: 10/06/2017
      -TenantId $TenantID 
    ```
    
-3. Добавьте Windows Server 2016 hello изображения toohello стека Azure marketplace (Убедитесь, что hello tooreplace *Path_to_ISO* с toohello путь hello загруженный ISO WS2016):
+3. Добавить образ Windows Server 2016 в стек Azure Marketplace (не забудьте заменить *Path_to_ISO* с путем к загруженный ISO WS2016):
 
    ```PowerShell
    $ISOPath = "<Fully_Qualified_Path_to_ISO>"
@@ -121,21 +133,21 @@ ms.lasthandoff: 10/06/2017
 
    ```
 
-tooensure, hello образ виртуальной Машины Windows Server 2016 имеет hello последний накопительный пакет обновления, включают hello `IncludeLatestCU` при выполнении hello `New-AzsServer2016VMImage` командлета. В разделе hello [параметры](#parameters) сведения о допустимых параметрах hello `New-AzsServer2016VMImage` командлет. Это занимает около часа toopublish hello изображения toohello стека Azure marketplace. 
+Чтобы убедиться, что образ виртуальной Машины Windows Server 2016 имеет последний накопительный пакет обновления, включите `IncludeLatestCU` во время выполнения `New-AzsServer2016VMImage` командлета. В разделе [параметры](#parameters) сведения о допустимых параметрах `New-AzsServer2016VMImage` командлета. Опубликовать изображения в магазине Azure стека занимает около часа. 
 
 ## <a name="parameters"></a>Параметры
 
 |Параметры нового AzsServer2016VMImage|Обязательный?|Описание|
 |-----|-----|------|
-|ISOPath|Да|Hello toohello полный путь загрузки Windows Server 2016 ISO.|
-|net35|Нет|Этот параметр позволяет среды выполнения .NET 3.5 hello tooinstall в образ Windows Server 2016 hello. По умолчанию это значение имеет значение tootrue. Является обязательным, что это изображение hello содержит hello .NET 3.5 среды выполнения tooinstall hello SQL и MYSQL поставщиков ресурсов. |
-|Version (версия)|Нет|Этот параметр позволяет вам toochoose ли tooadd **Core** или **полного** или **оба** образы Windows Server 2016. По умолчанию это значение «Переполнен.»|
-|VHDSizeInMB|Нет|Задает hello объем (в МБ) toobe образа виртуального жесткого диска hello добавлен tooyour среду стека Azure. По умолчанию это значение задано too40960 МБ.|
-|CreateGalleryItem|Нет|Указывает, следует ли создать элемент Marketplace для образа Windows Server 2016 hello. По умолчанию это значение имеет значение tootrue.|
-|location |Нет |Указывает расположение toowhich hello hello-образ Windows Server 2016 должна быть опубликована.|
-|IncludeLatestCU|Нет|Установите этот переключатель tooapply hello последнюю Windows Server 2016 накопительное обновление toohello нового виртуального жесткого диска.|
-|CUUri |Нет |Задайте значение toochoose hello Windows Server 2016 накопительного обновления от указанного URI. |
-|CUPath |Нет |Задайте значение toochoose hello Windows Server 2016 накопительного обновления из локального пути. Этот параметр полезен, если вы развернули экземпляр hello Azure стека в отключенной среде.|
+|ISOPath|Да|Полный путь к загруженный ISO Windows Server 2016.|
+|net35|Нет|Этот параметр позволяет установить среду выполнения .NET 3.5 в образе Windows Server 2016. По умолчанию это значение равным true.|
+|Version (версия)|Нет|Этот параметр позволяет выбрать, следует ли добавить **Core** или **полного** или **оба** образы Windows Server 2016. По умолчанию это значение равно «Full».|
+|VHDSizeInMB|Нет|Задает размер образа виртуального жесткого диска для добавления в среду Azure стека (в МБ). По умолчанию это значение будет присвоено 40960 МБ.|
+|CreateGalleryItem|Нет|Указывает, следует ли создать элемент Marketplace для образа Windows Server 2016. По умолчанию это значение равным true.|
+|location |Нет |Указывает расположение, к которому должны публиковаться образа Windows Server 2016.|
+|IncludeLatestCU|Нет|Установите этот переключатель, чтобы применить последнее накопительное обновление Windows Server 2016 для нового виртуального жесткого диска.|
+|CUUri |Нет |Это значение используется для выбора накопительное обновление Windows Server 2016 из указанного URI. |
+|CUPath |Нет |Это значение используется для выбора накопительное обновление Windows Server 2016 из локального пути. Этот параметр полезен, если вы развернули экземпляра Azure стека в отключенной среде.|
 
 ## <a name="next-steps"></a>Дальнейшие действия
 

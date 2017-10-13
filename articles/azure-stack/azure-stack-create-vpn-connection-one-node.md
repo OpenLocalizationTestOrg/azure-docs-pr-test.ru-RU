@@ -15,10 +15,10 @@ ms.topic: get-started-article
 ms.date: 7/10/2017
 ms.author: scottnap
 ms.openlocfilehash: fa2a940620e06521fa110fa13dcbc3050635a502
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.sourcegitcommit: 90e2cced6a773b1b52f999ba73cd8877305d270b
 ms.translationtype: MT
 ms.contentlocale: ru-RU
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="create-a-site-to-site-vpn-connection-between-two-virtual-networks-in-different-azure-stack-development-kit-environments"></a>Создать сеть сеть VPN-подключение между двумя виртуальными сетями в разных средах пакет средств разработки стек Azure
 ## <a name="overview"></a>Обзор

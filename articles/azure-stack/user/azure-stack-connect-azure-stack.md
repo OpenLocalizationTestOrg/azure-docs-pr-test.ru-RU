@@ -12,17 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 09/25/2017
+ms.date: 08/22/2017
 ms.author: sngun
-ms.openlocfilehash: 09c626e97832821009ce2da360ceea2b54273ffa
+ms.openlocfilehash: 914f2e5d10aa341cea5eba8c24c7c37610e6b626
 ms.sourcegitcommit: 90e2cced6a773b1b52f999ba73cd8877305d270b
 ms.translationtype: MT
 ms.contentlocale: ru-RU
 ms.lasthandoff: 10/13/2017
 ---
 # <a name="connect-to-azure-stack"></a>Подключение к Azure Stack
-
-*Применяется к: Azure стека пакет средств разработки*
 
 Для управления ресурсами, необходимо подключиться к набору разработки Azure стека. В этом разделе описаны действия, требуемые для подключения к набору разработки. Можно использовать любой из следующих параметров подключения:
 
@@ -32,15 +30,16 @@ ms.lasthandoff: 10/13/2017
 ## <a name="connect-to-azure-stack-with-remote-desktop"></a>Подключиться к Azure стека с помощью удаленного рабочего стола
 К удаленному рабочему столу параллельных однопользовательском позволяет работать с портала управления ресурсами.
 
-1. Откройте подключение к удаленному рабочему столу и подключитесь к набору разработки. Введите **AzureStack\AzureStackAdmin** как имя пользователя и пароль оператора, указанный во время настройки Azure стека.  
+1. Откройте подключение к удаленному рабочему столу и подключитесь к набору разработки. Введите **AzureStack\AzureStackAdmin** как имя пользователя и пароль администратора, указанный во время настройки Azure стека.  
 
 2. С компьютера разработки пакета, откройте диспетчер сервера, щелкните **локального сервера**, отключите усиленной безопасности Internet Explorer, а затем закройте диспетчер сервера.
 
-3. Чтобы открыть пользователь [портала](azure-stack-key-features.md#portal), перейдите к (https://portal.local.azurestack.external/) и выполните вход с помощью учетных данных пользователя. Чтобы открыть оператор стек Azure [портала](azure-stack-key-features.md#portal), перейдите к (https://adminportal.local.azurestack.external/) и выполните вход с использованием учетных данных Azure Active Directory, указанные во время установки.
+3. Чтобы открыть портал, перейдите к (https://portal.local.azurestack.external/) и выполните вход с помощью учетных данных пользователя.
+
 
 ## <a name="connect-to-azure-stack-with-vpn"></a>Подключиться к Azure стека с помощью VPN
 
-Туннель разбиение подключения виртуальной частной сети (VPN) для пакета средств разработки Azure стека можно создать. Через подключение VPN можно открыть портал оператор стек Azure, пользовательский портал и локально установленного средства, такие как Visual Studio и PowerShell для управления ресурсами Azure стека. В обоих Directory(AAD) Active Azure поддерживается VPN-подключение и Services(AD FS) федерации Active Directory на основе развертываний. VPN-подключений включить нескольких клиентов для подключения к Azure стека, в то же время. 
+Туннель разбиение подключения виртуальной частной сети (VPN) для пакета средств разработки Azure стека можно создать. Через подключение VPN доступа к порталу администратора пользовательского портала и локально установлены средства, такие как Visual Studio и PowerShell для управления ресурсами Azure стека. В обоих Directory(AAD) Active Azure поддерживается VPN-подключение и Services(AD FS) федерации Active Directory на основе развертываний. VPN-подключений включить нескольких клиентов для подключения к Azure стека, в то же время. 
 
 > [!NOTE] 
 > Это VPN-подключение не поддерживает возможность подключения к инфраструктуре Azure стека виртуальных машин. 
@@ -68,7 +67,7 @@ Import-Module .\Connect\AzureStack.Connect.psm1
 $hostIP = "<Azure Stack host IP address>"
 
 $Password = ConvertTo-SecureString `
-  "<operator's password provided when deploying Azure Stack>" `
+  "<Administrator password provided when deploying Azure Stack>" `
   -AsPlainText `
   -Force
 
@@ -104,9 +103,9 @@ Add-AzsVpnConnection `
 
 ### <a name="test-the-vpn-connectivity"></a>Проверить подключение к VPN
 
-Чтобы проверить соединение с портала, откройте браузер и перейдите на пользовательский портал (https://portal.local.azurestack.external/) или портал оператор (https://adminportal.local.azurestack.external/), вход и создание ресурсов.  
+Чтобы проверить соединение с портала, откройте браузер и перейдите на портал пользователей (https://portal.local.azurestack.external/), вход и создание ресурсов.  
 
 ## <a name="next-steps"></a>Дальнейшие действия
 
-[Доступность виртуальных машин для пользователей стек Azure](azure-stack-tutorial-tenant-vm.md)
+
 
